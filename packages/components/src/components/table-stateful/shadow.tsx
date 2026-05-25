@@ -419,7 +419,11 @@ export class KolTableStateful implements TableAPI {
 
 	public componentDidLoad(): void {
 		this.tableWcRef?.addEventListener(KolEvent.selectionChange, this.onSelectionChange);
-		this.validateAriaLabelledby(this._ariaLabelledby);
+		// Retry with a timeout for cases where the external element was not yet in the DOM
+		// during componentWillLoad (e.g. label rendered after the table).
+		if (!this.resolvedElements.length) {
+			this.validateAriaLabelledby(this._ariaLabelledby);
+		}
 	}
 
 	public disconnectedCallback(): void {
@@ -431,8 +435,11 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	public componentWillLoad(): void {
-		// Attach internals first; label resolution happens after connect.
 		this.internals = attachInternals(this.host);
+		// Early resolution: if the external element is already in the DOM (common when the
+		// label element is rendered before this component), the first render already uses
+		// externalLabelElements so the AT sees the correct name from the start.
+		this.syncExternalLabel(this._ariaLabelledby);
 
 		this.validateAllowMultiSort(this._allowMultiSort);
 		this.validateData(this._data);
