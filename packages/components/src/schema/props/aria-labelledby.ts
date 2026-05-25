@@ -6,7 +6,13 @@ import { watchValidator } from '../utils';
 
 /* types */
 /**
- * Defines an external label element for a component.
+ * An IDREF (space-separated) identifying external element(s) that label this component.
+ *
+ * Internally the component resolves the IDREF to an element reference and sets it via
+ * ElementInternals.ariaLabelledByElements so the accessible name crosses the Shadow DOM
+ * boundary. Desktop screen readers (NVDA + Chrome, JAWS + Chrome) follow this chain;
+ * mobile screen readers (TalkBack, VoiceOver iOS) do not yet support element references
+ * across shadow boundaries — use `_label` when TalkBack support is required.
  */
 export type AriaLabelledbyPropType = string;
 

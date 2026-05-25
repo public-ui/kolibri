@@ -1,5 +1,14 @@
 /**
  * Minimal ElementInternals subset for ariaLabelledByElements.
+ *
+ * Browser support note (as of 2025):
+ *   ElementInternals.ariaLabelledByElements is part of the Accessible Object Model (AOM) spec.
+ *   It resolves cross-shadow-boundary accessible names that plain aria-labelledby IDREFs cannot
+ *   express. Desktop screen readers (NVDA + Chrome, JAWS + Chrome) follow the reference chain
+ *   correctly. Mobile screen readers (TalkBack on Android, VoiceOver on iOS) do not yet
+ *   propagate element references through the Android/iOS accessibility APIs — they see the
+ *   table without a label. This is a Chrome/TalkBack limitation, not a bug in this code.
+ *   Users who require TalkBack support today should fall back to the `_label` prop.
  */
 export type HostInternals = {
 	ariaLabelledByElements: HTMLElement[];

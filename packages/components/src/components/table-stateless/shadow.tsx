@@ -32,7 +32,10 @@ export class KolTableStateless implements TableStatelessProps {
 	@State() private resolvedElements: HTMLElement[] = [];
 
 	/**
-	 * Defines an external element ID used as the table caption.
+	 * References an external element by ID that serves as the accessible label for this table.
+	 * Uses ElementInternals.ariaLabelledByElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS) — use `_label` instead.
 	 */
 	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType;
 
