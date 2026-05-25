@@ -42,6 +42,7 @@ export const PaginationPosition: FC = () => (
 						},
 					}}
 					_paginationPosition="bottom"
+					_variant="small"
 				></KolTableStateful>
 			</section>
 			<section className="grid gap-4">

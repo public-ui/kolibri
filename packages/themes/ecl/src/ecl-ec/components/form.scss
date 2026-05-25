@@ -3,8 +3,8 @@
 @use '../mixins/link' as *;
 
 @layer kol-theme-component {
-	@include kol-link('kol-link');
-	@include kol-alert-theme;
+	@include link('kol-link');
+	@include alert;
 
 	.kol-form {
 		width: 100%;

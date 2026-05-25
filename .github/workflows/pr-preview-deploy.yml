@@ -1,0 +1,93 @@
+name: PR-Preview - Deploy
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  deploy:
+    # Skip this job when the base clone URL may be different from the head clone URL.
+    if: github.event.pull_request.head.repo.fork == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Get short SHA
+        id: sha
+        run: echo "short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v5
+        name: Setup pnpm cache
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install
+        run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
+
+      - name: Build
+        run: pnpm --filter @public-ui/presentation... build
+
+      - name: Ensure .nojekyll at gh-pages root
+        run: mkdir -p /tmp/nojekyll-root && touch /tmp/nojekyll-root/.nojekyll
+
+      - name: Deploy .nojekyll to gh-pages root
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: /tmp/nojekyll-root
+          branch: gh-pages
+          clean: false
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: packages/samples/presentation/dist
+          target-folder: pr-${{ github.event.pull_request.number }}/${{ steps.sha.outputs.short }}
+          branch: gh-pages
+          clean: false
+
+      - name: Post PR comment
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const marker = '<!-- gh-pages-preview -->';
+            const pr = context.issue.number;
+            const sha = '${{ steps.sha.outputs.short }}';
+            const url = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${pr}/${sha}/`;
+            const body = `${marker}\n🚀 Preview deployed to GitHub Pages: [${url}](${url})\nCommit: \`${sha}\``;
+            const { owner, repo } = context.repo;
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr });
+            const existing = comments.find(c => c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number: pr, body });
+            }

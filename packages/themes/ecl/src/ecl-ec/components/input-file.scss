@@ -1,9 +1,10 @@
-@use '../@shared/input-text' as *;
+@use '../mixins/input-container' as *;
 @use '../mixins/button' as *;
 @use '../../mixins/to-rem' as *;
 
 @layer kol-theme-component {
-	@include kol-button('kol-button');
+	@include button('kol-button');
+	@include input-container;
 
 	.kol-button {
 		&__text {
@@ -12,10 +13,11 @@
 	}
 
 	.kol-input-container {
-		padding: 0 0 0 to-rem(8);
+		padding-left: to-rem(8);
+		column-gap: to-rem(8);
 
 		&--is-dragover {
-			border-color: var(--color-blue);
+			border-color: var(--ecl-color-primary);
 		}
 	}
 }

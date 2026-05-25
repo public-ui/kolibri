@@ -1,0 +1,19 @@
+<svg
+  width="48"
+  height="48"
+  viewBox="0 0 48 48"
+  xmlns="http://www.w3.org/2000/svg"
+>
+<path
+    d="M39 6H33V3H30V6H18V3H15V6H9C7.35 6 6 7.35 6 9V39C6 40.65 7.35 42 9 42H18V39H9V9H15V12H18V9H30V12H33V9H39V18H42V9C42 7.35 40.65 6 39 6Z"
+    fill-rule="evenodd"
+  />
+<path
+    d="M32.9997 21V24H39.8097L31.9497 31.95L34.0497 34.05L41.9997 26.07V33H44.9997V21H32.9997Z"
+    fill-rule="evenodd"
+  />
+<path
+    d="M24 42H39V36H42V42C42 43.65 40.65 45 39 45H24C22.35 45 21 43.65 21 42V27C21 25.35 22.35 24 24 24H30V27H24V42Z"
+    fill-rule="evenodd"
+  />
+</svg>

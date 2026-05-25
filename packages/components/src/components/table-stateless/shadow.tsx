@@ -10,6 +10,7 @@ import type {
 	TableHeaderCellsPropType,
 	TableSelectionPropType,
 	TableStatelessProps,
+	VariantClassNamePropType,
 } from '../../schema';
 import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
 import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
@@ -96,6 +97,11 @@ export class KolTableStateless implements TableStatelessProps {
 	 */
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	public componentWillLoad(): void {
 		this.internals = attachInternals(this.host);
 		// Early resolution: if the external element is already in the DOM (common when the
@@ -131,6 +137,7 @@ export class KolTableStateless implements TableStatelessProps {
 				_on={this._on}
 				_selection={this._selection}
 				_hasSettingsMenu={this._hasSettingsMenu}
+				_variant={this._variant}
 			/>
 		);
 	}

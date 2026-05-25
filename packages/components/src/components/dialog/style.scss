@@ -3,18 +3,14 @@
 @use '../@shared/mixins' as *;
 @use '../tooltip/style.scss' as *;
 
-@include kol-card;
-
 @layer kol-component {
+	@include kol-card;
+
 	.kol-dialog,
 	.kol-modal {
 		min-height: var(--a11y-min-size);
 		padding: 0;
 		border: 0;
-
-		&::backdrop {
-			background-color: rgb(0, 0, 0, 0.1);
-		}
 	}
 
 	.kol-dialog__close-button,

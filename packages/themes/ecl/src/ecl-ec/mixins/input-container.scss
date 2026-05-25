@@ -1,32 +1,53 @@
 @use '../../mixins/to-rem' as *;
+@use './alert' as *;
+@use './form-field' as *;
+@use './icon' as *;
 
-@mixin kol-input-container-theme {
+@mixin input-container {
+	@include alert;
+	@include form-field;
+	@include icon();
+
 	.kol-input-container {
-		color: var(--color-grey);
-		min-height: var(--a11y-min-size);
-		padding: to-rem(1) 0.5em;
-		order: 4;
+		background-color: var(--ecl-color-white);
 		align-items: center;
-		border: 1px solid var(--color-grey-75);
+		border: 1px solid var(--ecl-color-dark-80);
 
-		&:focus-within {
-			box-shadow:
-				inset to-rem(1) to-rem(1) var(--color-blue),
-				inset to-rem(-1) to-rem(-1) var(--color-blue);
-			outline: none;
+		&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
+			outline: 2px solid var(--ecl-color-primary);
+			outline-offset: -2px;
 		}
 
-		&:focus-within,
-		&:not(&--disabled):hover {
-			border-color: var(--color-blue);
+		&--error {
+			border-color: var(--ecl-color-error);
 		}
 
 		&--disabled {
-			cursor: not-allowed;
+			opacity: 0.5;
 		}
 
-		&#{&}--error {
-			border-color: var(--color-red);
+		&__smart-button {
+			position: relative;
+			z-index: 2;
+
+			.kol-button {
+				&:focus {
+					outline: 2px solid var(--ecl-color-primary);
+					outline-offset: 0;
+				}
+			}
+		}
+
+		&__adornment {
+			min-width: to-rem(8);
+
+			&--start > .kol-icon:first-child {
+				margin-left: to-rem(15);
+			}
+
+			&--end > .kol-icon:last-child {
+				margin-right: to-rem(15);
+			}
 		}
 	}
 }

@@ -1,0 +1,44 @@
+@use '../functions/to-rem' as *;
+
+@mixin kol-input-checkbox {
+	background-color: var(--color-white-100);
+	border-radius: var(--radius-m);
+	position: relative;
+	width: to-rem(16);
+	min-width: 0;
+	height: to-rem(16);
+	min-height: 0;
+	margin: to-rem(2) 0;
+	border: 1px solid var(--kol-checkbox-main-color);
+	transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
+
+	&::before {
+		display: block;
+		position: absolute;
+		inset: 0;
+	}
+
+	&::after {
+		display: flex;
+		position: absolute;
+		top: 2px;
+		height: to-rem(14);
+		align-items: center;
+		justify-content: center;
+
+		content: '';
+	}
+
+	&:checked,
+	&:indeterminate {
+		background-color: var(--kol-checkbox-main-color);
+	}
+
+	&:indeterminate::after {
+		content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7C2 6.30964 2.55964 5.75 3.25 5.75H10.75C11.4404 5.75 12 6.30964 12 7C12 7.69036 11.4404 8.25 10.75 8.25H3.25C2.55964 8.25 2 7.69036 2 7Z" fill="white"/></svg>');
+	}
+
+	&:checked::after {
+		content: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.1536 3.08049C11.573 2.66108 12.266 2.66108 12.6854 3.08049C13.1049 3.49989 13.1049 4.19289 12.6854 4.6123L6.27675 11.021C6.07472 11.223 5.79492 11.3378 5.51084 11.3378C5.22676 11.3378 4.94696 11.223 4.74494 11.021L1.31456 7.59061C0.895148 7.17121 0.895148 6.47821 1.31456 6.0588C1.73396 5.63939 2.42696 5.63939 2.84637 6.0588L5.51084 8.72327L11.1536 3.08049Z" fill="white"/></svg>');
+	}
+}

@@ -21,49 +21,8 @@ permissions:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          persist-credentials: false
-
-      # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
-      - name: Install Node.js
-        uses: actions/setup-node@v6
-        with:
-          node-version: 24
-      - name: Install pnpm
-        uses: pnpm/action-setup@v5
-        id: pnpm-install
-        with:
-          version: 10
-      - name: Get pnpm store directory
-        id: pnpm-cache
-        shell: bash
-        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v5
-        name: Setup pnpm cache
-        with:
-          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store
-      - name: Install
-        run: pnpm i --no-frozen-lockfile --no-verify-store-integrity
-
-      - name: Build
-        run: pnpm --filter @public-ui/presentation... build
-
-      - name: Attest presentation build
-        uses: actions/attest-build-provenance@v4
-        with:
-          subject-path: packages/samples/presentation/dist
-
-      - name: Netlify Deploy
-        uses: netlify/actions/cli@master
-        id: netlify
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID }}
-        with:
-          args: deploy --no-build --filter=@public-ui/presentation -d packages/samples/presentation/dist --alias="$GITHUB_REF_NAME" # Netlify conveniently sanitizes the alias for us. E.g. `release/1.7` becomes `release-1-7`
+    uses: ./.github/workflows/deploy-netlify.yml
+    secrets: inherit
+    with:
+      environment: production
+      alias: ${{ github.ref_name }}

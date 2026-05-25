@@ -1,0 +1,8 @@
+@layer kol-theme-global {
+	.badge-text-hint {
+		color: var(--color-text);
+		background-color: var(--color-mute-variant);
+		border-radius: 3px;
+		padding: 0 0.3em;
+	}
+}

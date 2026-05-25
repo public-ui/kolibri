@@ -34,7 +34,7 @@ import type {
 } from '../../schema';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { ComboboxController } from './controller';
@@ -55,6 +55,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
+	private clearButtonFocused = false;
 
 	/**
 	 * Returns the current value.
@@ -114,6 +115,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			option,
 		);
 		this.controller.setFormAssociatedValue(option);
+		this._filteredSuggestions = [...this.state._suggestions];
 		this.state._value = option;
 		this.refInput?.focus();
 	}
@@ -155,17 +157,27 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 		}
 	}
 
-	private setFilteredSuggestionsByQuery(query: string) {
+	private setFilteredSuggestionsByQuery(query: string | undefined) {
+		if (query === undefined) {
+			return;
+		}
+
 		if (query.trim() === '') {
 			this._filteredSuggestions = [...this.state._suggestions];
 		} else {
 			this._filteredSuggestions = Array.isArray(this.state._suggestions)
 				? this.state._suggestions.filter((option: W3CInputValue) => {
-						return (option as string).toLowerCase().includes(query.toLowerCase());
+						return (option as string).toLowerCase().includes(query.trim().toLowerCase());
 					})
 				: this._filteredSuggestions;
 
-			this._isOpen = this._filteredSuggestions && this._filteredSuggestions.length > 0 ? true : false;
+			if (this._filteredSuggestions?.length === 1 && this._filteredSuggestions[0] === query) {
+				this._isOpen = false;
+			} else if (this._filteredSuggestions && this._filteredSuggestions.length > 0) {
+				this._isOpen = true;
+			} else {
+				this._isOpen = false;
+			}
 		}
 	}
 
@@ -237,11 +249,11 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			role: 'combobox',
 			'aria-activedescendant': this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined,
 			'aria-autocomplete': 'both',
-			'aria-controls': 'listbox',
+			'aria-controls': this.state._id + '-listbox',
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
 			'aria-expanded': this._isOpen ? 'true' : 'false',
 			'aria-label': this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined,
-			'aria-labelledby': this.state._id,
+			'aria-labelledby': this.state._id + '-label',
 			'aria-keyshortcuts': this.state._shortKey,
 			value: this.state._value,
 			accessKey: this.state._accessKey,
@@ -253,14 +265,6 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			name: this.state._name,
 			required: this.state._required,
 			...this.controller.onFacade,
-			onFocus: (event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			},
-			onBlur: (event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
-			},
 			onChange: this.onChange.bind(this),
 			onInput: this.onInput.bind(this),
 			placeholder: this.state._placeholder,
@@ -288,23 +292,32 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 									onClick: () => {
 										this.clearSelection();
 									},
+									onFocus: () => {
+										this.clearButtonFocused = true;
+									},
+									onBlur: () => {
+										this.clearButtonFocused = false;
+									},
 								}}
 							/>
 						)}
-						<IconFC
-							icons="kolicon-chevron-down"
-							label=""
-							class={clsx('kol-custom-suggestions-toggle', {
-								'kol-custom-suggestions-toggle--disabled': isDisabled,
-							})}
+						<button
+							type="button"
+							tabIndex={-1}
+							class="kol-combobox-toggle"
 							onClick={this.toggleListbox.bind(this)}
-						/>
+							disabled={this._disabled}
+							hidden={isDisabled}
+						>
+							<IconFC icons="kolicon-chevron-down" label="" />
+						</button>
 					</div>
 					{
 						<CustomSuggestionsOptionsGroupFc
 							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
 							onKeyDown={this.handleKeyDownDropdown.bind(this)}
 							hidden={!this._isOpen || isDisabled}
+							id={this.state._id + '-listbox'}
 						>
 							{Array.isArray(this._filteredSuggestions) &&
 								this._filteredSuggestions.length > 0 &&
@@ -330,13 +343,6 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 										}}
 										onFocus={() => {
 											this.focusOption(index);
-										}}
-										onKeyDown={(e) => {
-											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-												this.selectOption(option as string);
-												this.toggleListbox();
-												e.preventDefault();
-											}
 										}}
 									/>
 								))}
@@ -388,7 +394,9 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			case ' ':
 			case 'Enter':
 			case 'NumpadEnter': {
-				if (this._isOpen) {
+				if (this.clearButtonFocused) {
+					this.clearSelection();
+				} else if (this._isOpen) {
 					if (this.selectFocusedOption()) {
 						this._isOpen = false;
 					}
@@ -396,6 +404,12 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 					this.toggleListbox();
 				}
 				event.preventDefault();
+				break;
+			}
+			case 'Space': {
+				if (this.clearButtonFocused) {
+					this.clearSelection();
+				}
 				break;
 			}
 			case 'Home': {
@@ -549,7 +563,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 		_hasValue: false,
 		_hasClearButton: true,
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('combobox'),
 		_label: '', // ⚠ required
 		_suggestions: [],
 		_value: '',
@@ -630,6 +644,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	public validateSuggestions(value?: SuggestionsPropType): void {
 		this.controller.validateSuggestions(value);
 		this._filteredSuggestions = value;
+		this.setFilteredSuggestionsByQuery(this._value);
 	}
 
 	@Watch('_hasClearButton')
@@ -673,25 +688,27 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 		this.blockSuggestionMouseOver = false;
 	}
 
-	@Listen('focusout')
-	public handleFocusOut(event: FocusEvent) {
+	@Listen('focusin')
+	public handleFocusIn(event: FocusEvent) {
 		setTimeout(() => {
-			if (!this.host?.contains(document.activeElement)) {
-				this.onBlur(event);
+			if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
+				this.controller.onFacade.onFocus(event);
+				this.inputHasFocus = true;
 			}
 		});
 	}
-	@Listen('blur')
-	public handleWindowBlur(event: FocusEvent) {
-		this.onBlur(event);
-	}
 
-	private onBlur(event: FocusEvent): void {
-		if (this._isOpen) {
-			if (event instanceof FocusEvent && event.view === window) {
-				this._isOpen = false;
+	@Listen('focusout')
+	public handleFocusOut(event: FocusEvent) {
+		setTimeout(() => {
+			if (this.inputHasFocus && !this.host?.contains(document.activeElement)) {
+				this.controller.onFacade.onBlur(event);
+				this.inputHasFocus = false;
+				if (this._isOpen) {
+					this._isOpen = false;
+				}
 			}
-		}
+		});
 	}
 
 	private onChange(event: Event): void {

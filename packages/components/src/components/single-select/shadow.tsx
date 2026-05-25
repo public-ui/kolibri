@@ -37,7 +37,7 @@ import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { SingleSelectController } from './controller';
 
@@ -60,8 +60,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 	private oldValue?: StencilUnknown;
-	// so onBlur doesn't close the panel if clear button is pressed
-	private isClearing = false;
+	private clearButtonFocused = false;
 
 	/**
 	 * Returns the current value.
@@ -104,16 +103,13 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		}
 	};
 
-	private onBlur(event: FocusEvent) {
+	private onBlur() {
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
+
 		if (matchingOption) {
-			this.selectOption(matchingOption as Option<string>);
-		} else if (!this._isOpen && this._value) {
-			this._inputValue = this.state._options?.find((option) => (option as Option<string>).value === this._value)?.label as string;
-			this._filteredOptions = [...this.state._options];
-		}
-		if (event instanceof FocusEvent && event.view === window && !this.isClearing) {
-			this._isOpen = false;
+			this.selectOption(matchingOption);
+		} else if (this._value !== null && this._value !== undefined) {
+			this._filteredOptions = [...(this.state._options ?? [])];
 		}
 	}
 
@@ -136,8 +132,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	}
 
 	private clearSelection() {
-		this.isClearing = true;
-
 		if (this.state._disabled) {
 			return;
 		}
@@ -160,10 +154,11 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
 		this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
 
-		this.isClearing = false;
+		this.refInput?.focus();
+		this._isOpen = true;
 	}
 
-	private selectOption(option: Option<string>) {
+	private selectOption(option: Option<StencilUnknown>) {
 		if (option.value === this._value) {
 			this._inputValue = option.label as string;
 			this._filteredOptions = [...this.state._options];
@@ -206,7 +201,11 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		}
 	}
 
-	private setFilteredOptionsByQuery(query: string) {
+	private setFilteredOptionsByQuery(query: string | undefined) {
+		if (query === undefined) {
+			return;
+		}
+
 		if (query?.trim() === '') {
 			this._filteredOptions = [...this.state._options];
 		} else if (Array.isArray(this.state._options) && this.state._options.length > 0 && query.length > 0) {
@@ -262,7 +261,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 
 	private selectFocusedOption(): boolean {
 		if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 && this._focusedOptionIndex >= 0) {
-			this.selectOption(this._filteredOptions[this._focusedOptionIndex] as Option<string>);
+			this.selectOption(this._filteredOptions[this._focusedOptionIndex]);
 			return true;
 		}
 		return false;
@@ -297,9 +296,11 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		return {
 			'aria-activedescendant': this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined,
 			'aria-autocomplete': 'both',
-			'aria-controls': 'listbox',
+			'aria-controls': this.state._id + '-listbox',
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
+			'aria-expanded': this._isOpen ? 'true' : 'false',
 			'aria-label': this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined,
+			'aria-labelledby': this.state._id + '-label',
 			'aria-keyshortcuts': this.state._shortKey,
 			accessKey: this.state._accessKey,
 			autocapitalize: 'off',
@@ -318,13 +319,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			onChange: this.onChange.bind(this),
 			onClick: this.onClick.bind(this),
 			onInput: this.onInput.bind(this),
-			onFocus: (event) => {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			},
-			onBlur: (event) => {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
+			onBlur: () => {
+				this.onBlur();
 			},
 		};
 	}
@@ -352,6 +348,12 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 										this.clearSelection();
 										this.refInput?.focus();
 									},
+									onFocus: () => {
+										this.clearButtonFocused = true;
+									},
+									onBlur: () => {
+										this.clearButtonFocused = false;
+									},
 								}}
 							/>
 						)}
@@ -371,6 +373,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 							onKeyDown={this.handleKeyDownDropdown.bind(this)}
 							style={{ '--visible-options': `${this._rows ?? 5}` }}
 							hidden={!this._isOpen || isDisabled}
+							id={this.state._id + '-listbox'}
 						>
 							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 								this._filteredOptions.map((option, index) => (
@@ -381,13 +384,13 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 										ref={(el) => {
 											if (el) this.refOptions[index] = el;
 										}}
-										selected={this._value === (option as Option<string>).value}
+										selected={this._value === option.value}
 										disabled={option.disabled ? true : false}
 										onClick={(event: Event) => {
 											if (option.disabled) {
 												return;
 											}
-											this.selectOption(option as Option<string>);
+											this.selectOption(option);
 											this.refInput?.focus();
 											this.toggleListbox(event);
 											this._isOpen = false;
@@ -409,7 +412,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 												return;
 											}
 											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-												this.selectOption(option as Option<string>);
+												this.selectOption(option);
 												this.refInput?.focus();
 												this.toggleListbox(e);
 												e.preventDefault();
@@ -428,19 +431,6 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
-	}
-
-	@Listen('focusout')
-	public handleFocusOut(event: FocusEvent) {
-		setTimeout(() => {
-			if (!this.host?.contains(document.activeElement)) {
-				this.onBlur(event);
-			}
-		});
-	}
-	@Listen('blur')
-	public handleWindowBlur(event: FocusEvent) {
-		this.onBlur(event);
 	}
 
 	@Listen('keydown')
@@ -485,7 +475,9 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			case ' ':
 			case 'Enter':
 			case 'NumpadEnter': {
-				if (this._isOpen) {
+				if (this.clearButtonFocused) {
+					this.clearSelection();
+				} else if (this._isOpen) {
 					if (this.selectFocusedOption()) {
 						this.refInput?.focus();
 						handleEvent(false);
@@ -632,7 +624,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
+	@Prop({ mutable: true }) public _value: StencilUnknown = null;
 
 	/**
 	 * Shows the clear button if enabled.
@@ -646,7 +638,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 
 	@State() public state: SingleSelectStates = {
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('single-select'),
 		_label: '', // ⚠ required
 		_options: [],
 		_hasClearButton: true,
@@ -720,8 +712,12 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	@Watch('_options')
 	public validateOptions(value?: OptionsPropType): void {
 		this.controller.validateOptions(value);
-		this._filteredOptions = value;
-		this.updateInputValue(this._value);
+		this._filteredOptions = [...(this.state._options ?? [])];
+		if (this._isOpen) {
+			this.setFilteredOptionsByQuery(this._inputValue);
+		} else {
+			this.updateInputValue(this._value);
+		}
 	}
 
 	@Watch('_required')
@@ -766,11 +762,31 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		this.blockSuggestionMouseOver = false;
 	}
 
+	@Listen('focusin')
+	public handleFocusIn(event: FocusEvent) {
+		setTimeout(() => {
+			if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
+				this.controller.onFacade.onFocus(event);
+				this.inputHasFocus = true;
+			}
+		});
+	}
+
+	@Listen('focusout')
+	public handleFocusOut(event: FocusEvent) {
+		this.onBlur();
+		setTimeout(() => {
+			if (this.inputHasFocus && !this.host?.contains(document.activeElement)) {
+				this.controller.onFacade.onBlur(event);
+				this.inputHasFocus = false;
+				this._isOpen = false;
+			}
+		});
+	}
+
 	private updateInputValue(value?: StencilUnknown) {
-		if (Array.isArray(this._options)) {
-			const matchedOption = this._options.find((option) => option.value === value);
-			this._inputValue = matchedOption ? String(matchedOption.label) : '';
-		}
+		const matchedOption = this.state._options?.find((option) => option.value === value);
+		this._inputValue = matchedOption ? String(matchedOption.label) : '';
 	}
 
 	public componentWillLoad(): void {

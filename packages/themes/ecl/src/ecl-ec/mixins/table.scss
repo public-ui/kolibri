@@ -1,0 +1,109 @@
+@use '../../mixins/to-rem' as *;
+@use './alert' as *;
+@use './icon' as *;
+@use './pagination' as *;
+@use './table-settings' as *;
+@use './button' as *;
+@use './checkbox' as *;
+@use './radio' as *;
+
+@mixin table {
+	@include alert;
+	@include icon;
+	@include pagination;
+	@include table-settings;
+
+	.kol-table {
+		&__caption {
+			color: var(--ecl-color-dark-80);
+			min-height: 0;
+			margin-top: var(--ecl-spacing-xs);
+
+			font-size: var(--ecl-font-size-s);
+			line-height: var(--ecl-line-height-s);
+			caption-side: bottom;
+		}
+
+		&__table {
+			border: 1px solid var(--ecl-color-neutral-60);
+			border-spacing: 0;
+		}
+
+		&__row &__cell {
+			border-top: 1px solid var(--ecl-color-neutral-60);
+		}
+
+		&__head-row:not(:first-child) &__cell {
+			border-top: 1px solid var(--ecl-color-neutral-160);
+		}
+
+		&__cell {
+			padding: var(--ecl-spacing-m);
+
+			&:not(:last-child) {
+				border-right: 1px solid var(--ecl-color-neutral-60);
+			}
+
+			&--header {
+				background-color: var(--ecl-color-neutral);
+
+				&:has(.kol-button) {
+					padding: 0;
+				}
+
+				.kol-table__sort {
+					display: flex;
+					height: 100%;
+					align-items: stretch;
+
+					&-button {
+						flex: 1 0 100%;
+					}
+				}
+
+				.kol-button {
+					padding: var(--ecl-spacing-m);
+
+					font-weight: 700;
+				}
+			}
+
+			.kol-table__head-row &--header:not(:last-child) {
+				border-right-color: var(--ecl-color-neutral-160);
+			}
+
+			.kol-table__row--body &--header {
+				border-right: 2px solid var(--ecl-color-neutral-160);
+			}
+
+			.kol-table__row--body:not(:first-child) &--header {
+				border-top-color: var(--ecl-color-neutral-160);
+			}
+		}
+
+		&__cell-actions {
+			gap: to-rem(4);
+			@include button('kol-button');
+			//	@include link('kol-link');
+		}
+
+		&__selection {
+			display: flex;
+			gap: 0.5em;
+			align-items: center;
+			grid-template-columns: 1fr auto;
+		}
+
+		&:has(.kol-table__selection-input--checkbox) {
+			--kol-checkbox-color: var(--ecl-color-primary);
+
+			@include checkbox('kol-table__selection');
+		}
+
+		&:has(.kol-table__selection-input--radio) {
+			--kol-radio-color: var(--ecl-color-primary);
+
+			@include radio('kol-table__selection');
+		}
+	}
+}

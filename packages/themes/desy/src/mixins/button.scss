@@ -1,0 +1,200 @@
+@use '../functions/to-rem' as *;
+@use './focus-outline' as *;
+@use '../mixins/icon' as *;
+
+@mixin button($block-classname) {
+	@include icon;
+
+	.#{$block-classname} {
+		$root: &;
+		--a11y-min-size: #{to-rem(36)};
+		--text-background-color: transparent;
+		--text-border-color: var(--color-blue-100);
+		--text-border-width: var(--border-width-none);
+		--text-color: var(--color-blue-100);
+
+		font-family: var(--font-family);
+
+		&:focus {
+			outline: none;
+		}
+
+		&--primary {
+			@include primaryButton();
+		}
+
+		&--secondary,
+		&--normal {
+			@include secondaryButton();
+		}
+
+		&--danger {
+			--text-border-color: var(--color-red-100);
+			--text-border-width: var(--border-width-m);
+			--text-color: var(--color-red-100);
+
+			&:not([disabled]):hover,
+			&:focus {
+				.#{$block-classname}__text::before {
+					background-color: var(--color-red-100-06);
+				}
+			}
+
+			&:disabled {
+				--text-background-color: var(--color-white-100);
+				--text-border-color: var(--color-black-60);
+				--text-color: var(--color-black-60);
+			}
+		}
+
+		&--tertiary,
+		&--ghost {
+			@include ghostButton();
+		}
+
+		&:disabled {
+			opacity: 1;
+		}
+
+		&__text {
+			color: var(--text-color);
+			background-color: var(--text-background-color);
+			border-color: var(--text-border-color);
+			border-style: solid;
+			border-radius: var(--radius-m);
+			position: relative;
+			min-height: to-rem(36);
+			border-width: var(--text-border-width, var(--border-width-m));
+
+			font-weight: 700;
+			transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
+
+			&::before {
+				position: absolute;
+				inset: 0;
+
+				content: '';
+			}
+
+			&.kol-span--hide-label {
+				width: auto;
+				padding: to-rem(4) to-rem(4);
+			}
+
+			&:not(.kol-span--hide-label) {
+				min-width: to-rem(120);
+				padding: to-rem(4) to-rem(16); // vertical padding results in specified container height of 36px
+			}
+
+			@at-root #{$root}--hide-label & {
+				.kol-span__label {
+					display: none;
+				}
+			}
+
+			@at-root #{$root}:focus & {
+				@include focus-outline;
+				position: relative; // make sure focus outline is visible and not covered by adjacent element
+			}
+		}
+
+		.kol-span__container {
+			position: relative;
+			gap: to-rem(8);
+		}
+
+		.kol-icon {
+			font-size: to-rem(24);
+		}
+
+		.badge-text-hint {
+			color: var(--color-dark-blue-100);
+			background-color: var(--color-dark-blue-100-09);
+			border-radius: var(--radius-m);
+			padding: 0 0.3em;
+		}
+
+		&--inline,
+		&--inline .kol-span {
+			min-width: 0;
+			min-height: 0;
+
+			.kol-icon {
+				font-size: inherit;
+			}
+		}
+	}
+
+	.kol-close-button .kol-button--normal {
+		--text-background-color: transparent;
+		--text-border-width: var(--border-width-none);
+		--text-color: var(--color-blue-100);
+
+		&:not([disabled]):hover,
+		&:focus {
+			.#{$block-classname}__text::before {
+				background-color: var(--color-dark-blue-100-06);
+			}
+		}
+
+		&:active {
+			.#{$block-classname}__text::before {
+				background-color: var(--color-dark-blue-100-09);
+			}
+		}
+	}
+}
+
+@mixin primaryButton() {
+	--text-background-color: var(--color-blue-100);
+	--text-border-color: var(--color-blue-100);
+	--text-border-width: var(--border-width-m);
+	--text-color: var(--color-white-100);
+
+	&:disabled {
+		--text-background-color: var(--color-black-60);
+		--text-border-color: var(--color-black-60);
+	}
+
+	&:not([disabled]):hover .kol-span::before,
+	&:focus .kol-span::before {
+		background-color: var(--color-black-100-12);
+	}
+
+	&:active .kol-span::before {
+		background-color: var(--color-black-100-24);
+	}
+}
+
+@mixin secondaryButton() {
+	--text-background-color: var(--color-white-100);
+	--text-border-color: var(--color-blue-100);
+	--text-border-width: var(--border-width-m);
+	--text-color: var(--color-blue-100);
+
+	&:disabled {
+		--text-background-color: var(--color-white-100);
+		--text-border-color: var(--color-black-60);
+		--text-color: var(--color-black-60);
+	}
+
+	&:not([disabled]):hover .kol-span::before,
+	&:focus .kol-span::before {
+		background-color: var(--color-blue-100-06);
+	}
+}
+
+@mixin ghostButton() {
+	--text-background-color: transparent;
+	--text-border-width: var(--border-width-none);
+	--text-color: var(--color-blue-100);
+
+	&:disabled {
+		--text-color: var(--color-black-60);
+	}
+
+	&:not([disabled]):hover .kol-span::before,
+	&:focus .kol-span::before {
+		background-color: var(--color-blue-100-06);
+	}
+}

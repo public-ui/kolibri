@@ -26,7 +26,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { InputCheckboxController } from './controller';
@@ -111,6 +111,15 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 				[`kol-input-checkbox__field-control--variant-${this.state._variant || 'default'}`]: true,
 			}),
 			state: this.state,
+			// Prevent blur/focus cycling when clicking the visible text label while
+			// the checkbox is already focused (Shadow DOM htmlFor-label quirk).
+			fieldControlLabelProps: {
+				onMouseDown: (e: Event) => {
+					if (this.inputHasFocus) {
+						e.preventDefault();
+					}
+				},
+			},
 		};
 	}
 
@@ -118,6 +127,13 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		return {
 			state: this.state,
 			icon: this.getIcon(),
+			// Prevent blur/focus cycling when clicking the icon area while the checkbox
+			// is already focused. Text-label clicks are handled via fieldControlLabelProps.
+			onMouseDown: (e: Event) => {
+				if (this.inputHasFocus && !(e.target instanceof HTMLInputElement)) {
+					e.preventDefault();
+				}
+			},
 			inputProps: {
 				class: clsx({
 					'visually-hidden': this.state._variant === 'button',
@@ -278,7 +294,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 			indeterminate: 'kolicon-minus',
 			unchecked: 'kolicon-cross',
 		},
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-checkbox'),
 		_indeterminate: false,
 		_label: '', // ⚠ required
 		_value: true,

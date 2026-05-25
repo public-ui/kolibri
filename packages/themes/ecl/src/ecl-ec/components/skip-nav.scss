@@ -4,16 +4,15 @@
 	.kol-skip-nav {
 		.kol-link {
 			&__text {
-				color: var(--color-white);
-				background-color: var(--color-blue);
-				border-color: var(--color-blue);
+				color: var(--ecl-color-white);
+				background-color: var(--ecl-color-primary);
+				border-color: var(--ecl-color-primary);
 				border-style: solid;
 				border-radius: 0;
 				padding: 0.25em 0.75em;
 				border-width: 2px;
 				gap: to-rem(8);
 
-				font-weight: var(--font-weight-bold);
 				line-height: 1;
 				cursor: pointer;
 			}

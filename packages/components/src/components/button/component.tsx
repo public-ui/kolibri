@@ -133,6 +133,20 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		}
 	};
 
+	private readonly onFocus = (event: FocusEvent) => {
+		this.state?._on?.onFocus?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.focus);
+		}
+	};
+
+	private readonly onBlur = (event: FocusEvent) => {
+		this.state?._on?.onBlur?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.blur);
+		}
+	};
+
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
 		const ariaDescription = this.state._ariaDescription?.trim();
@@ -165,6 +179,8 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 					name={this.state._name}
 					onClick={this.onClick}
 					onMouseDown={this.onMouseDown}
+					onFocus={this.onFocus}
+					onBlur={this.onBlur}
 					role={this.state._role}
 					tabIndex={this.state._tabIndex}
 					type={this.state._type}

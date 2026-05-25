@@ -27,6 +27,7 @@ import type {
 	TableSelectionPropType,
 	TableStatelessAPI,
 	TableStatelessStates,
+	VariantClassNamePropType,
 } from '../../schema';
 import {
 	setState,
@@ -38,6 +39,7 @@ import {
 	validateTableDataFoot,
 	validateTableHeaderCells,
 	validateTableSelection,
+	validateVariantClassName,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { KoliBriTableSelectionKey } from '../../schema/types';
@@ -86,6 +88,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	private maxCols: number = 0;
 	private fixedOffsets: number[] = [];
 	private resizeDebounceTimeout?: ReturnType<typeof setTimeout>;
+
+	private settingsChangedCounter = 0;
 
 	@State()
 	private tableDivElementHasScrollbar = false;
@@ -152,6 +156,12 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	@Prop() public _selection?: TableSelectionPropType;
 
 	/**
+	 * Defines which variant should be used for presentation.
+	 * @internal
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
+	/**
 	 * Enables the settings menu if true (default: false).
 	 */
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
@@ -211,6 +221,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		this.checkAndUpdateStickyState();
 	}
 
+	@Watch('_variant')
+	public validateVariantClassName(value?: VariantClassNamePropType): void {
+		validateVariantClassName(this, value);
+	}
+
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
 		if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
@@ -248,6 +263,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	public handleSettingsChange(event: CustomEvent<KoliBriTableHeaderCell[][]>) {
 		const updatedHeaderCells = { ...this.state._headerCells, horizontal: event.detail };
 		setState(this, '_headerCells', updatedHeaderCells);
+		this.settingsChangedCounter++;
 
 		// Call the onChangeHeaderCells callback if provided
 		if (typeof this.state._on?.[Callback.onChangeHeaderCells] === 'function') {
@@ -554,13 +570,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			dataField.push(dataRow);
 		}
 		if (data.length === 0) {
-			let colspan = 0;
+			let colspan = this.getVisibleColSpan(headers.horizontal?.[0]);
 			let rowspan = 0;
-			if (Array.isArray(headers.horizontal) && headers.horizontal.length > 0) {
-				headers.horizontal[0].forEach((col) => {
-					colspan += col.colSpan || 1;
-				});
-			}
 
 			if (Array.isArray(headers.vertical) && headers.vertical.length > 0) {
 				colspan -= headers.vertical.length;
@@ -581,6 +592,18 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			}
 		}
 		return dataField;
+	}
+
+	private getVisibleColSpan(cells?: Array<KoliBriTableCell | KoliBriTableHeaderCell>): number {
+		return (
+			cells?.reduce((acc, cell) => {
+				if ('visible' in cell && cell.visible === false) {
+					return acc;
+				}
+
+				return acc + (cell.colSpan || 1);
+			}, 0) ?? 0
+		);
 	}
 
 	private isFixedCol(index: number | undefined): 'left' | 'right' | undefined {
@@ -662,6 +685,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
 		this.validateHasSettingsMenu(this._hasSettingsMenu);
+		this.validateVariantClassName(this._variant);
 	}
 
 	/**
@@ -815,10 +839,12 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			const fixed = this.isFixedCol(colIndex);
 			const offsetLeft = fixed === 'left' ? this.getOffsetString(cell.colIndex, true) : undefined;
 			const offsetRight = fixed === 'right' ? this.getOffsetString(cell.colIndex) : undefined;
+			const hasCustomRender = typeof cell.render === 'function';
 
 			return (
 				<td
-					key={`cell-${key}`}
+					// settingsChangedCounter is needed so every cell has a unique key after a settings change and gets rerenderd
+					key={`cell-${key}-${this.settingsChangedCounter}`}
 					class={clsx(
 						'kol-table__cell kol-table__cell--body',
 						cell.textAlign && `kol-table__cell--align-${cell.textAlign}`,
@@ -836,18 +862,14 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						right: offsetRight,
 					}}
 					ref={
-						typeof cell.render === 'function'
+						hasCustomRender
 							? (el) => {
 									this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
 								}
 							: undefined
 					}
 				>
-					{isActionColumn && actionColumn && cell.data
-						? this.renderActionItems(actionColumn, cell.data, key)
-						: typeof cell.render !== 'function'
-							? cell.label
-							: ''}
+					{isActionColumn && actionColumn && cell.data ? this.renderActionItems(actionColumn, cell.data, key) : !hasCustomRender ? cell.label : ''}
 				</td>
 			);
 		}
@@ -1183,7 +1205,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private renderSpacer(variant: 'foot' | 'head', cellDefs: KoliBriTableHeaderCell[][] | KoliBriTableCell[][]): JSX.Element {
 		const verticalHeaderColpan = this.state._headerCells.vertical?.length || 0;
-		const colspan = cellDefs?.[0]?.reduce((acc, row) => acc + (row.colSpan || 1), 0);
+		const colspan = this.getVisibleColSpan(cellDefs?.[0]);
 		const selectionCell = this.state._selection ? 1 : 0;
 
 		return (
@@ -1218,7 +1240,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		const showInternalCaption = !this.externalLabelElements?.length;
 
 		return (
-			<div class="kol-table">
+			<div
+				class={clsx('kol-table', {
+					[`kol-table--${this.state._variant as string}`]: this.state._variant !== undefined,
+				})}
+			>
 				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _horizontalHeaderCells={horizontalHeaders ?? []} />}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
@@ -1226,10 +1252,9 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 				 */}
 				<div
 					ref={(element) => (this.tableDivElement = element)}
-					class="kol-table__scroll-container kol-table__focus-element"
+					class="kol-table__scroll-container"
 					tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}
 				>
-					{/* Use the internal host ID when external labels are provided so the table references a same-tree anchor. */}
 					<table
 						aria-labelledby={showInternalCaption ? 'caption' : this.host?.id}
 						class="kol-table__table"
@@ -1237,26 +1262,15 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 							minWidth: this.getTableMinWidth(),
 						}}
 					>
-						{/*
-						 * The following element allows the table to receive focus without providing redundant content to screen readers.
-						 * The `div` is technically not allowed here. But any allowed element would mutate the table semantics. Additionally, the `&nbsp;` is necessary to
-						 * prevent screen readers from just reading "blank".
-						 */}
-						<div
-							class="kol-table__focus-element"
-							// eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+						<caption
+							aria-hidden={showInternalCaption ? undefined : 'true'}
+							class="kol-table__focus-element kol-table__caption"
+							id="caption"
 							tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}
 						>
-							&nbsp;
-						</div>
-
-						{showInternalCaption && (
-							<>
-								<caption class="kol-table__caption" id="caption">
-									{this.state._label}
-								</caption>
-							</>
-						)}
+							{this.state._label}
+						</caption>
 
 						{Array.isArray(horizontalHeaders) && (
 							<thead class="kol-table__head">

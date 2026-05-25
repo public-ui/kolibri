@@ -1,7 +1,21 @@
+@use '../mixins/card' as *;
+
 @layer kol-theme-component {
+	@include card();
+
 	.kol-drawer {
-		&__wrapper {
-			box-shadow: 0 0 calc(var(--spacing-2xs) / 2) var(--color-black);
+		&__card {
+			box-shadow: var(--ecl-shadow-16);
+			padding: var(--ecl-spacing-m);
+		}
+
+		.kol-card {
+			box-shadow: none;
+			border: 0;
+		}
+
+		&__dialog::backdrop {
+			background-color: var(--ecl-color-overlay-light);
 		}
 	}
 }

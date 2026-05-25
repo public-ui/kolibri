@@ -1,0 +1,43 @@
+@use '../functions/to-rem' as *;
+@use '../breakpoints' as *;
+@use '../mixins/focus-outline' as *;
+@use '../mixins/link' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include icon;
+
+	.kol-details {
+		@include kol-link('kol-details__heading-button');
+		&__heading-button {
+			.kol-span {
+				&__container {
+					flex-direction: row-reverse;
+				}
+
+				&__label {
+					border-bottom: 0;
+				}
+			}
+		}
+	}
+
+	.kol-icon {
+		--kol-icon-alternative: var(--small-chevron-down);
+		transition: 200ms transform cubic-bezier(0.65, 0, 0.35, 1);
+
+		.collapsible--open & {
+			transform: rotate(180deg);
+		}
+	}
+
+	.collapsible--disabled {
+		.kol-icon {
+			color: var(--color-black-60);
+		}
+
+		.collapsible__content {
+			color: var(--color-black-70);
+		}
+	}
+}

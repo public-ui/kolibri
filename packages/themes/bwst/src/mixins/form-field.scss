@@ -36,6 +36,13 @@
 			}
 		}
 
+		&--disabled & {
+			&__label,
+			&__hint {
+				opacity: 0.5;
+			}
+		}
+
 		&__hint {
 			@include kol-typography-hint;
 		}

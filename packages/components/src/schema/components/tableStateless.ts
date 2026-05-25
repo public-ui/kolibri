@@ -1,14 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
-import type {
-	PropAriaLabelledby,
-	PropHasSettingsMenu,
-	PropLabel,
-	PropTableCallbacks,
-	PropTableData,
-	PropTableDataFoot,
-	PropTableSelection,
-	TableHeaderCells,
-} from '../props';
+import type { PropAriaLabelledby, PropLabel, PropTableCallbacks, PropTableData, PropTableDataFoot, PropTableSelection, PropVariantClassName, TableHeaderCells } from '../props';
+import type { PropHasSettingsMenu } from '../props/has-settings-menu';
 import type { PropTableHeaderCells } from '../props/table-header-cells';
 import type { KoliBriTableDataType, KoliBriTableSelection } from '../types';
 
@@ -26,6 +18,7 @@ type OptionalStates = {
 	fixedCols: [number, number];
 	selection: KoliBriTableSelection;
 } & PropHasSettingsMenu &
+	PropVariantClassName &
 	PropTableCallbacks;
 
 export type TableStatelessProps = Generic.Element.Members<RequiredProps, OptionalProps>;

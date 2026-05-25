@@ -3,125 +3,118 @@
 
 @layer kol-component {
 	.kol-meter {
+		--color-optimal: var(--kol-meter-color-optimal, #2ea32e);
+		--color-suboptimal: var(--kol-meter-color-suboptimal, #c8a000);
+		--color-critical: var(--kol-meter-color-critical, #c00);
+		--vertical-height: var(--kol-meter-vertical-height, 128);
+		--horizontal-height: var(--kol-meter-horizontal-height, 12);
+
 		&__bar {
 			display: grid;
-			column-gap: to-rem(0.8);
 			align-items: center;
 			grid-template-areas:
-				'LABEL LABEL LABEL'
-				'BAR VALUE UNIT';
+				'label label'
+				'bar value';
 			grid-template-columns: 1fr auto;
 
 			&-label {
 				grid-column-end: 2;
-				grid-area: LABEL;
+				grid-area: label;
 			}
 
-			svg {
-				grid-area: BAR;
-			}
-
-			&-border {
-				fill: transparent;
-				stroke: black;
-			}
-
-			&-background {
-				fill: lightgray;
-				stroke: white;
-			}
-
-			&-fill {
-				stroke: transparent;
-
-				@media (prefers-reduced-motion: no-preference) {
-					transition: 250ms ease-in-out 50ms;
-				}
-
-				&--optimum {
-					color: #2ea32e;
-					color: #2ea32e;
-					fill: #2ea32e;
-				}
-
-				&--suboptimal {
-					color: #c8a000;
-					color: #c8a000;
-					fill: #c8a000;
-				}
-
-				&--critical {
-					color: #c00;
-					color: #c00;
-					fill: #c00;
-				}
+			&-track {
+				display: flex;
+				min-width: 100%;
+				grid-area: bar;
 			}
 		}
 
 		&__value-unit {
-			display: contents;
+			grid-area: value;
 		}
 
-		&__value {
-			grid-area: VALUE;
+		&:not(&--vertical) &__value {
+			display: inline-block;
 			text-align: right;
 		}
 
-		&__unit {
-			grid-area: UNIT;
-		}
-
 		&--vertical {
-			display: inline-flex;
+			min-height: 100%;
 
 			.kol-meter__bar {
-				display: flex;
-				min-height: var(--kol-meter-height, to-rem(128));
-				row-gap: to-rem(4);
-				flex-direction: column;
-				align-items: center;
+				min-height: 100%;
+				align-items: end;
+				justify-items: center;
+				grid-template-areas:
+					'label'
+					'bar'
+					'value';
+				grid-template-columns: 1fr;
+				grid-template-rows: min-content 1fr min-content;
 
 				&-label {
 					text-align: center;
 				}
 
 				&-track {
-					background: lightgray;
-					outline: to-rem(1) solid black;
-					border-radius: to-rem(6);
 					position: relative;
-					width: to-rem(12);
-					min-height: 0;
-					overflow: hidden;
-					flex: 1;
+					min-width: 0;
+					min-height: to-rem(var(--vertical-height));
+					align-items: center;
 				}
 
-				&-fill {
-					background: currentColor;
-					border-radius: to-rem(3);
+				meter {
+					transform: rotate(-90deg);
+					transform-origin: left bottom;
 					position: absolute;
-					right: to-rem(3);
-					bottom: to-rem(3);
-					left: to-rem(3);
-
-					@media (prefers-reduced-motion: no-preference) {
-						transition: height 250ms ease-in-out 50ms;
-					}
+					bottom: 0;
+					width: to-rem(var(--vertical-height));
 				}
 			}
+		}
 
-			.kol-meter__value-unit {
-				display: contents;
-			}
+		/* Base meter styling */
+		meter {
+			width: 100%;
+			height: to-rem(var(--horizontal-height));
+			/* Remove default appearance in some browsers */
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
 
-			.kol-meter__value {
-				width: auto;
-				text-align: center;
-			}
+		/* Chrome, Safari, Edge (WebKit/Blink) */
+		meter::-webkit-meter-bar {
+			background: white;
+			height: to-rem(var(--horizontal-height));
+			border: 1px solid black;
+		}
+		meter::-webkit-meter-optimum-value {
+			background: var(--color-optimal);
+		}
+		meter::-webkit-meter-suboptimum-value {
+			background: var(--color-suboptimal);
+		}
+		meter::-webkit-meter-even-less-good-value {
+			background: var(--color-critical);
+		}
 
-			.kol-meter__unit {
-				text-align: center;
+		/* Firefox */
+		@supports (selector(::-moz-meter-bar)) {
+			meter {
+				background: white;
+				border: 1px solid black;
 			}
+		}
+
+		meter::-moz-meter-bar {
+			background: var(--color-optimal);
+		}
+		meter:-moz-meter-sub-optimum::-moz-meter-bar {
+			background: var(--color-suboptimal);
+		}
+		meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+			background: var(--color-critical);
 		}
 	}
 }

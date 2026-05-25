@@ -296,7 +296,7 @@ ROUTES.set('heading/paragraph', {
 		},
 	},
 });
-ROUTES.set('icon/font-awesome', {
+ROUTES.set('icon/font', {
 	snapshot: {
 		viewportSize: {
 			width: 250,
@@ -710,6 +710,20 @@ ROUTES.set('pagination/basic', {
 		},
 	},
 });
+ROUTES.set('pagination/button-visibility', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('pagination/sibling-boundary', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('popover-button/basic', {
 	snapshot: {
 		zoom: {
@@ -725,27 +739,6 @@ ROUTES.set('popover-button/inline', {
 	snapshot: {},
 });
 ROUTES.set('meter/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('meter/unit', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('meter/min-max', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('meter/ranges', {
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -1037,6 +1030,17 @@ ROUTES.set('table/sticky-cols', {
 		viewportSize: {
 			width: 1000,
 			height: 1000,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('table/variant', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 0,
 		},
 		zoom: {
 			skip: true,

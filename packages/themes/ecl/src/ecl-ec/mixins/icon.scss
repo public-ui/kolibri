@@ -1,0 +1,179 @@
+@mixin icon {
+	.kol-icon[class*=' kolicon-'] {
+		&.kolicon-plus {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea46';
+			}
+		}
+		&.kolicon-minus {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea38';
+			}
+		}
+		&.kolicon-chevron-down {
+			transform: rotate(180deg);
+
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea11';
+			}
+		}
+		&.kolicon-chevron-left {
+			transform: rotate(-90deg);
+
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea11';
+			}
+		}
+		&.kolicon-chevron-right {
+			transform: rotate(90deg);
+
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea11';
+			}
+		}
+		&.kolicon-chevron-up {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea11';
+			}
+		}
+
+		&.kolicon-eye-closed {
+			// no equivalent
+		}
+		&.kolicon-eye {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea1f';
+			}
+		}
+		&.kolicon-house {
+			// no equivalent
+		}
+
+		&.kolicon-link-external {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea1e';
+			}
+		}
+
+		&.kolicon-link {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea08';
+			}
+		}
+
+		&.kolicon-plus {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea46';
+			}
+		}
+
+		&.kolicon-minus {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea38';
+			}
+		}
+
+		&.kolicon-version {
+			// no equivalent
+		}
+
+		&.kolicon-alert-warning {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea5b';
+			}
+		}
+		&.kolicon-alert-error {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea1a';
+			}
+		}
+		&.kolicon-alert-success {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea09';
+			}
+		}
+		&.kolicon-alert-info {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea2d';
+			}
+		}
+
+		&.kolicon-check {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea0a';
+			}
+		}
+
+		&.kolicon-cross {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea0f';
+			}
+		}
+		&.kolicon-chevron-double-left {
+			// no equivalent
+		}
+		&.kolicon-chevron-double-right {
+			// no equivalent
+		}
+
+		&.kolicon-cogwheel {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea4c';
+			}
+		}
+		&.kolicon-settings {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea4c';
+			}
+		}
+
+		&.kolicon-sort-asc {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea50';
+			}
+		}
+
+		&.kolicon-sort-desc {
+			transform: rotate(180deg);
+
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea50';
+			}
+		}
+
+		&.kolicon-sort-neutral {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea51';
+			}
+		}
+
+		&.kolicon-up {
+			font-family: ecl-icons;
+			&::before {
+				content: '\ea58';
+			}
+		}
+	}
+}

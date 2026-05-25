@@ -17,7 +17,7 @@ on:
           - dev
           - next
           - latest
-      version: # see https://github.com/lerna/lerna/tree/main/libs/commands/version#semver-bump
+      version: # semver bump keyword passed to scripts/version.mjs
         type: choice
         description: SemVer keyword for version bump
         options:
@@ -26,7 +26,7 @@ on:
           - patch
           - preminor
           - minor
-      label: # see https://github.com/lerna/lerna/tree/main/libs/commands/version#--preid
+      label: # pre-release identifier passed as --preid to scripts/version.mjs
         type: choice
         description: SemVer pre release label (optional)
         options:
@@ -66,7 +66,7 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v5
+        uses: pnpm/action-setup@v6
         id: pnpm-install
         with:
           version: 10
@@ -94,11 +94,11 @@ jobs:
 
       - name: Bump versions without dev-tag and with git push
         if: github.event.inputs.increment == 'true' && github.event.inputs.tag != 'dev'
-        run: 'HUSKY=0 npx lerna version ${{github.event.inputs.version}} --preid=${{github.event.inputs.label}} --no-private --tag-version-prefix="" -m "chore: release %v" -y --force-publish'
+        run: 'HUSKY=0 node scripts/version.mjs ${{github.event.inputs.version}} --preid=${{github.event.inputs.label}}'
 
       - name: Bump versions with dev-tag and without git push
         if: github.event.inputs.increment == 'true' && github.event.inputs.tag == 'dev'
-        run: 'HUSKY=0 npx lerna version prerelease --preid=$GITHUB_SHA --no-private --tag-version-prefix="" -m "chore: release %v" -y --force-publish --no-push'
+        run: 'HUSKY=0 node scripts/version.mjs prerelease --preid=$GITHUB_SHA --no-push'
 
       - name: Build
         run: pnpm -r build
@@ -193,9 +193,21 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
+      - name: Build and publish theme bwst
+        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        working-directory: packages/themes/bwst
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
       - name: Build and publish theme default
         run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
         working-directory: packages/themes/default
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true
+      - name: Build and publish theme desy
+        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        working-directory: packages/themes/desy
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
@@ -208,12 +220,6 @@ jobs:
       - name: Build and publish theme kern
         run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
         working-directory: packages/themes/kern
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish theme bwst
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
-        working-directory: packages/themes/bwst
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true

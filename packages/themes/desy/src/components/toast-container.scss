@@ -1,0 +1,19 @@
+@use '../mixins/kol-alert' as *;
+@use '../functions/to-rem' as *;
+
+@layer kol-theme-component {
+	:host {
+		top: to-rem(16);
+		right: to-rem(16);
+		width: to-rem(440);
+		max-width: 100%;
+	}
+
+	@include kol-alert;
+
+	.kol-toast-item {
+		background-color: #fff;
+		display: block;
+		margin-top: to-rem(16);
+	}
+}

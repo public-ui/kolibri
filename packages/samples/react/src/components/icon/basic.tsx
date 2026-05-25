@@ -25,6 +25,8 @@ export const IconBasic: FC = () => (
 				_label=""
 				_icons="kolicon-house"
 			/>
+
+			<KolIcon className="block" _label="" _icons="codicon codicon-plus" />
 		</div>
 	</>
 );

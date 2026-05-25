@@ -79,3 +79,13 @@ if (isTestMode()) {
 }
 
 export { nonce };
+
+export const createUniqueId = (prefix: string): string => `${prefix}-${nonce()}`;
+
+export const createRelatedUniqueId = (baseId: string, suffix: string): string => {
+	const separatorIndex = baseId.lastIndexOf('-');
+	if (separatorIndex === -1) return `${baseId}-${suffix}`;
+	const lastSegment = baseId.slice(separatorIndex + 1);
+	const isNonce = lastSegment === 'nonce' || /^[0-9a-f]+$/.test(lastSegment);
+	return isNonce ? `${baseId.slice(0, separatorIndex)}-${suffix}-${lastSegment}` : `${baseId}-${suffix}`;
+};

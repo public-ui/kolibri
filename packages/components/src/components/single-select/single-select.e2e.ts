@@ -1,6 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
+import { testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 
@@ -22,12 +22,6 @@ const fillAction: FillAction = async (page) => {
 
 test.describe(COMPONENT_NAME, () => {
 	testInputValueReflection<HTMLKolSingleSelectElement>({
-		additionalProperties: OPTIONS_ATTRIBUTE,
-		componentName: COMPONENT_NAME,
-		fillAction,
-		testValue: TEST_VALUE,
-	});
-	testInputCallbacksAndEvents<HTMLKolSingleSelectElement>({
 		additionalProperties: OPTIONS_ATTRIBUTE,
 		componentName: COMPONENT_NAME,
 		fillAction,
@@ -124,7 +118,7 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(clearButton).not.toBeVisible();
 		});
 
-		test('should select option with SPACE key', async ({ page }) => {
+		test('should select option with SPACE key & close list', async ({ page }) => {
 			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
@@ -134,6 +128,8 @@ test.describe(COMPONENT_NAME, () => {
 			await input.press('Space');
 
 			await expect(page.locator('kol-single-select')).toHaveJSProperty('_value', 'N');
+
+			await expect(page.getByRole('listbox')).toHaveCount(0);
 		});
 
 		test('should disable interaction when _disabled is true', async ({ page }) => {

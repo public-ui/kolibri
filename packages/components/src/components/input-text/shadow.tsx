@@ -35,7 +35,7 @@ import type {
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import { nonce } from '../../utils/dev.utils';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputTextController } from './controller';
@@ -182,7 +182,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	private getInputProps(): InputStateWrapperProps {
-		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
 			ref: this.setInputRef,
@@ -357,7 +357,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-text'),
 		_label: '', // ⚠ required
 		_suggestions: [],
 		_type: 'text',

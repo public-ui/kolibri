@@ -17,13 +17,13 @@ export const InputPasswordShowPassword: FC = () => {
 			</SampleDescription>
 
 			<KolForm className="w-full">
-				<KolInputPassword _placeholder="With 'Show password' button" _label="Password" ref={passwordRef} className="block" _variant="visibility-toggle" />
+				<KolInputPassword _placeholder="With 'Show password' button" _label="Password" ref={passwordRef} className="block" _visibilityToggle={true} />
 				<KolInputPassword
 					_placeholder="With 'Show password' button"
 					_label="Password"
 					ref={passwordRef}
 					className="block"
-					_variant="visibility-toggle"
+					_visibilityToggle={true}
 					_value="Password"
 				/>
 				<KolInputPassword
@@ -32,7 +32,7 @@ export const InputPasswordShowPassword: FC = () => {
 					ref={passwordRef}
 					className="block"
 					_disabled
-					_variant="visibility-toggle"
+					_visibilityToggle={true}
 				/>
 			</KolForm>
 		</>

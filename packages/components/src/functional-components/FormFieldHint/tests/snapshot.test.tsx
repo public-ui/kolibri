@@ -24,7 +24,7 @@ describe('KolFormFieldHintFc', () => {
 		const id = 'test-id';
 		const page = await renderFunctionalComponentToSpecPage(() => <KolFormFieldHintFc hint={hint} id={id} />);
 
-		expect(page.root?.id).toBe(`${id}-hint`);
+		expect(page.root?.id).toBe('test-id-hint');
 	});
 
 	it('should set the correct class names', async () => {
