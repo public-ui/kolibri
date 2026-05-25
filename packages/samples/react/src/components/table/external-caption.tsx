@@ -1,5 +1,5 @@
 import { KolTableStateful, KolTableStateless } from '@public-ui/react-v19';
-import { type FC, useEffect } from 'react';
+import { type FC, useEffect, useRef } from 'react';
 import React from 'react';
 import { SampleDescription } from '../SampleDescription';
 
@@ -82,13 +82,22 @@ function defineNativeWcs() {
 		}
 
 		connectedCallback() {
-			this.#shadow.innerHTML = '<demo-inner-table></demo-inner-table>';
+			// Inject minimal styles so the table is visually distinguishable.
+			this.#shadow.innerHTML = `
+				<style>
+					demo-inner-table { display: block; }
+					table { border-collapse: collapse; }
+					th, td { border: 1px solid #888; padding: 4px 12px; }
+					th { background: #f0f0f0; }
+				</style>
+				<demo-inner-table></demo-inner-table>`;
 			this.#inner = this.#shadow.querySelector('demo-inner-table') as HTMLElement & { labelElements: HTMLElement[] };
 			this.#sync(this.getAttribute('aria-labelledby'));
 		}
 
 		attributeChangedCallback(_name: string, _old: string | null, newValue: string | null) {
-			this.#sync(newValue);
+			// Only sync when already connected; connectedCallback handles initial sync.
+			if (this.isConnected) this.#sync(newValue);
 		}
 
 		#sync(value: string | null) {
@@ -111,7 +120,17 @@ function defineNativeWcs() {
 }
 
 export const TableExternalCaption: FC = () => {
-	useEffect(defineNativeWcs, []);
+	const nativeWcContainerRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		// Define first — then create the element so no upgrade step is needed.
+		defineNativeWcs();
+		if (nativeWcContainerRef.current && !nativeWcContainerRef.current.firstChild) {
+			const el = document.createElement('demo-outer-table');
+			el.setAttribute('aria-labelledby', 'caption-native-wc');
+			nativeWcContainerRef.current.appendChild(el);
+		}
+	}, []);
 
 	return (
 		<>
@@ -236,7 +255,8 @@ export const TableExternalCaption: FC = () => {
 						<strong>Expected behavior:</strong> screen reader should announce the table with the text of the <code>&lt;h2&gt;</code> above ("5. Native Web Component…").
 						If the browser does not yet support <code>ariaLabelledByElements</code> on <code>ElementInternals</code>, the table will have no accessible name.
 					</p>
-					{React.createElement('demo-outer-table', { 'aria-labelledby': 'caption-native-wc' })}
+					{/* Imperatively mounted in useEffect after customElements.define to avoid upgrade-timing issues. */}
+					<div ref={nativeWcContainerRef} />
 				</div>
 			</section>
 		</>
