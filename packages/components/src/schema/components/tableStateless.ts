@@ -1,12 +1,20 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { PropLabel, PropTableCallbacks, PropTableData, PropTableDataFoot, PropTableSelection, TableHeaderCells } from '../props';
-import type { PropHasSettingsMenu } from '../props/has-settings-menu';
+import type {
+	PropAriaLabelledby,
+	PropHasSettingsMenu,
+	PropLabel,
+	PropTableCallbacks,
+	PropTableData,
+	PropTableDataFoot,
+	PropTableSelection,
+	TableHeaderCells,
+} from '../props';
 import type { PropTableHeaderCells } from '../props/table-header-cells';
 import type { KoliBriTableDataType, KoliBriTableSelection } from '../types';
 
 type RequiredProps = PropLabel & PropTableData & PropTableHeaderCells;
 
-type OptionalProps = PropTableCallbacks & PropTableDataFoot & PropTableSelection & PropHasSettingsMenu;
+type OptionalProps = PropAriaLabelledby & PropTableCallbacks & PropTableDataFoot & PropTableSelection & PropHasSettingsMenu;
 
 type RequiredStates = {
 	headerCells: TableHeaderCells;

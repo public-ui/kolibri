@@ -1,36 +1,33 @@
-import { Log } from '../schema';
-
+/**
+ * Minimal ElementInternals subset for ariaLabelledByElements.
+ */
 export type HostInternals = {
 	ariaLabelledByElements: HTMLElement[];
 };
 
-const resolveTargets = (host: HTMLElement | undefined, value?: string): HTMLElement[] => {
+const escapeCssIdentifier = (value: string): string => {
+	if (globalThis.CSS?.escape) {
+		return globalThis.CSS.escape(value);
+	}
+
+	return value.replace(/[^a-zA-Z0-9_-]/g, '\\$&');
+};
+
+export const resolveTargets = (host: HTMLElement | undefined, value?: string): HTMLElement[] => {
 	const ids = (value ?? '').trim().split(/\s+/).filter(Boolean);
 	if (!ids.length) return [];
-	const root = host?.getRootNode({ composed: true }) as Document | ShadowRoot | undefined;
+	// Scope the lookup to the host's current tree.
+	const root = host?.getRootNode() as Document | ShadowRoot | undefined;
 	const getById = (id: string): HTMLElement | null => {
-		return (root as Document)?.getElementById?.(id) || document.getElementById(id);
+		if (root instanceof Document) return root.getElementById(id);
+		if (root instanceof ShadowRoot) return root.querySelector(`#${escapeCssIdentifier(id)}`);
+		return document.getElementById(id);
 	};
 	return ids.map(getById).filter((el): el is HTMLElement => !!el);
 };
 
-export const handleAriaLabelledBy = (host: HTMLElement | undefined, internals: HostInternals | undefined, value?: string): void => {
-	if (internals) {
-		internals.ariaLabelledByElements = resolveTargets(host, value);
-		if (internals?.ariaLabelledByElements?.length) {
-			Log.info(['Experimental feature for linking aria-labelledby to an external caption.', host, internals, internals.ariaLabelledByElements], {
-				forceLog: true,
-			});
-		}
-	}
-};
-
-export const attachInternalsWithAria = (host: HTMLElement | undefined, value?: string): HostInternals | undefined => {
+export const attachInternals = (host: HTMLElement | undefined): HostInternals | undefined => {
+	// Stencil's HTMLElement typing does not expose attachInternals here.
 	const attach = (host as unknown as { attachInternals?: () => HostInternals }).attachInternals;
-	if (attach) {
-		const internals = attach.call(host);
-		handleAriaLabelledBy(host, internals, value);
-		return internals;
-	}
-	return undefined;
+	return attach ? attach.call(host) : undefined;
 };

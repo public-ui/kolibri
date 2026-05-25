@@ -41,7 +41,7 @@ import {
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { KoliBriTableSelectionKey } from '../../schema/types';
-import { attachInternalsWithAria, handleAriaLabelledBy, type HostInternals } from '../../utils/aria-labelledby';
+import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -100,15 +100,21 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	private previousHeaderCells?: TableHeaderCellsPropType;
 
 	/**
-	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
-	 *
-	 * ⚠️ LIMITATION: Due to Shadow DOM encapsulation, external aria-labelledby references may not
-	 * be resolved by assistive technologies. When not set, the table uses an internal caption
-	 * with the `_label` prop for reliable labeling.
-	 *
-	 * @internal This is managed by shadow.tsx — use `_ariaLabelledby` on the public component instead.
+	 * External label elements forwarded from the public wrapper.
+	 * @internal Use `_ariaLabelledby` on the public `kol-table-stateless` component instead.
 	 */
-	@Prop() public ariaLabelledby?: string;
+	@Prop() public externalLabelElements?: HTMLElement[];
+
+	@Watch('externalLabelElements')
+	protected onExternalLabelElementsChange(value?: HTMLElement[]): void {
+		if (this.internals) {
+			this.internals.ariaLabelledByElements = value ?? [];
+		}
+	}
+
+	public validateAriaLabelledby(): void {
+		this.onExternalLabelElementsChange(this.externalLabelElements);
+	}
 
 	/**
 	 * Defines the primary table data.
@@ -153,11 +159,6 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	@Watch('_hasSettingsMenu')
 	public validateHasSettingsMenu(value?: HasSettingsMenuPropType): void {
 		validateHasSettingsMenu(this, value);
-	}
-
-	@Watch('ariaLabelledby')
-	protected handleAriaLabelledBy(value?: string): void {
-		handleAriaLabelledBy(this.host, this.internals, value);
 	}
 
 	@Watch('_data')
@@ -643,7 +644,16 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	}
 
 	public componentWillLoad(): void {
-		this.internals = attachInternalsWithAria(this.host, this.ariaLabelledby);
+		// Keep the aria-labelledby anchor on this internal host.
+		// The rendered <table> is in the same tree context here; outer wrapper hosts can be in a different context.
+		if (this.host && !this.host.id) {
+			this.host.id = nonce();
+		}
+		// Resolve the external label into ElementInternals.
+		this.internals = attachInternals(this.host);
+		if (this.internals && this.externalLabelElements?.length) {
+			this.internals.ariaLabelledByElements = this.externalLabelElements;
+		}
 
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
@@ -1205,7 +1215,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 		const horizontalHeaders = this.state._headerCells.horizontal;
 
-		const showInternalCaption = !this.ariaLabelledby;
+		const showInternalCaption = !this.externalLabelElements?.length;
 
 		return (
 			<div class="kol-table">
@@ -1219,8 +1229,9 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 					class="kol-table__scroll-container kol-table__focus-element"
 					tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}
 				>
+					{/* Use the internal host ID when external labels are provided so the table references a same-tree anchor. */}
 					<table
-						aria-labelledby={showInternalCaption ? 'caption' : this.ariaLabelledby}
+						aria-labelledby={showInternalCaption ? 'caption' : this.host?.id}
 						class="kol-table__table"
 						style={{
 							minWidth: this.getTableMinWidth(),

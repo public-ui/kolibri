@@ -43,7 +43,8 @@ import {
 	watchValidator,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
-import { attachInternalsWithAria, handleAriaLabelledBy, type HostInternals } from '../../utils/aria-labelledby';
+import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
+import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -72,14 +73,34 @@ export class KolTableStateful implements TableAPI {
 
 	private internals?: HostInternals;
 
+	private externalLabelRetryTimeout?: ReturnType<typeof setTimeout>;
+
+	@State() private resolvedElements: HTMLElement[] = [];
+
 	/**
-	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
+	 * Defines an external element ID used as the table caption.
 	 */
-	@Prop() public _ariaLabelledby?: string;
+	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType;
 
 	@Watch('_ariaLabelledby')
-	protected handleAriaLabelledBy(value?: string): void {
-		handleAriaLabelledBy(this.host, this.internals, value);
+	public validateAriaLabelledby(value?: AriaLabelledbyPropType): void {
+		this.syncExternalLabel(value, true);
+	}
+
+	private syncExternalLabel(value?: AriaLabelledbyPropType, retry = false): void {
+		if (this.externalLabelRetryTimeout) {
+			clearTimeout(this.externalLabelRetryTimeout);
+			this.externalLabelRetryTimeout = undefined;
+		}
+
+		this.resolvedElements = validateAriaLabelledby(this, this.host, this.internals, value);
+
+		if (retry && value && !this.resolvedElements.length) {
+			this.externalLabelRetryTimeout = setTimeout(() => {
+				this.externalLabelRetryTimeout = undefined;
+				this.resolvedElements = validateAriaLabelledby(this, this.host, this.internals, this._ariaLabelledby);
+			}, 50);
+		}
 	}
 
 	private tableWcRef?: HTMLKolTableStatelessWcElement;
@@ -398,14 +419,20 @@ export class KolTableStateful implements TableAPI {
 
 	public componentDidLoad(): void {
 		this.tableWcRef?.addEventListener(KolEvent.selectionChange, this.onSelectionChange);
+		this.validateAriaLabelledby(this._ariaLabelledby);
 	}
 
 	public disconnectedCallback(): void {
 		this.tableWcRef?.removeEventListener(KolEvent.selectionChange, this.onSelectionChange);
+		if (this.externalLabelRetryTimeout) {
+			clearTimeout(this.externalLabelRetryTimeout);
+			this.externalLabelRetryTimeout = undefined;
+		}
 	}
 
 	public componentWillLoad(): void {
-		this.internals = attachInternalsWithAria(this.host, this._ariaLabelledby);
+		// Attach internals first; label resolution happens after connect.
+		this.internals = attachInternals(this.host);
 
 		this.validateAllowMultiSort(this._allowMultiSort);
 		this.validateData(this._data);
@@ -573,8 +600,6 @@ export class KolTableStateful implements TableAPI {
 		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination('top') : null;
 		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination('bottom') : null;
 
-		const hasExternalCaption = this.internals?.ariaLabelledByElements?.length;
-
 		const headerCells: TableHeaderCells = {
 			horizontal:
 				this.state._headers.horizontal?.map((row) =>
@@ -597,7 +622,7 @@ export class KolTableStateful implements TableAPI {
 			<Host class="kol-table-stateful">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 				<KolTableStatelessWcTag
-					ariaLabelledby={hasExternalCaption ? this._ariaLabelledby : undefined}
+					externalLabelElements={this.resolvedElements}
 					ref={this.catchRef}
 					_data={displayedData}
 					_fixedCols={this._fixedCols}

@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import { KolTableStatelessWcTag } from '../../core/component-names';
 import type {
 	FixedColsPropType,
@@ -11,7 +11,8 @@ import type {
 	TableSelectionPropType,
 	TableStatelessProps,
 } from '../../schema';
-import { attachInternalsWithAria, handleAriaLabelledBy, type HostInternals } from '../../utils/aria-labelledby';
+import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
+import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 
 @Component({
 	tag: 'kol-table-stateless',
@@ -25,19 +26,34 @@ export class KolTableStateless implements TableStatelessProps {
 
 	private internals?: HostInternals;
 
+	private externalLabelRetryTimeout?: ReturnType<typeof setTimeout>;
+
+	@State() private resolvedElements: HTMLElement[] = [];
+
 	/**
-	 * Allows labeling the table by referencing elements outside via `aria-labelledby`.
-	 *
-	 * ⚠️ LIMITATION: Due to Shadow DOM encapsulation, aria-labelledby references to elements
-	 * outside the shadow boundary may not be resolved by assistive technologies. For reliable
-	 * table labeling, use the `_label` prop instead. This property is kept for future compatibility
-	 * when cross-root ARIA references are standardized.
+	 * Defines an external element ID used as the table caption.
 	 */
-	@Prop() public _ariaLabelledby?: string;
+	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType;
 
 	@Watch('_ariaLabelledby')
-	protected handleAriaLabelledBy(value?: string): void {
-		handleAriaLabelledBy(this.host, this.internals, value);
+	public validateAriaLabelledby(value?: AriaLabelledbyPropType): void {
+		this.syncExternalLabel(value, true);
+	}
+
+	private syncExternalLabel(value?: AriaLabelledbyPropType, retry = false): void {
+		if (this.externalLabelRetryTimeout) {
+			clearTimeout(this.externalLabelRetryTimeout);
+			this.externalLabelRetryTimeout = undefined;
+		}
+
+		this.resolvedElements = validateAriaLabelledby(this, this.host, this.internals, value);
+
+		if (retry && value && !this.resolvedElements.length) {
+			this.externalLabelRetryTimeout = setTimeout(() => {
+				this.externalLabelRetryTimeout = undefined;
+				this.resolvedElements = validateAriaLabelledby(this, this.host, this.internals, this._ariaLabelledby);
+			}, 50);
+		}
 	}
 
 	/**
@@ -81,14 +97,25 @@ export class KolTableStateless implements TableStatelessProps {
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
 
 	public componentWillLoad(): void {
-		this.internals = attachInternalsWithAria(this.host, this._ariaLabelledby);
+		// Attach internals first; label resolution happens after connect.
+		this.internals = attachInternals(this.host);
+	}
+
+	public componentDidLoad(): void {
+		this.validateAriaLabelledby(this._ariaLabelledby);
+	}
+
+	public disconnectedCallback(): void {
+		if (this.externalLabelRetryTimeout) {
+			clearTimeout(this.externalLabelRetryTimeout);
+			this.externalLabelRetryTimeout = undefined;
+		}
 	}
 
 	public render(): JSX.Element {
-		const hasExternalCaption = this.internals?.ariaLabelledByElements?.length;
 		return (
 			<KolTableStatelessWcTag
-				ariaLabelledby={hasExternalCaption ? this._ariaLabelledby : undefined}
+				externalLabelElements={this.resolvedElements}
 				_data={this._data}
 				_dataFoot={this._dataFoot}
 				_fixedCols={this._fixedCols}
