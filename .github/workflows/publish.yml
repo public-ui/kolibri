@@ -37,12 +37,15 @@ on:
 permissions:
   contents: read
   id-token: write
-  packages: write
 
 jobs:
   publish:
     if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      packages: write
     steps:
       - uses: actions/create-github-app-token@v3
         id: app-token
@@ -250,12 +253,13 @@ jobs:
 
       - name: Publish sample react
         run: |
-          output=$(npm publish --access restricted 2>&1) && echo "$output" || {
-            echo "$output"
-            echo "$output" | grep -qE "already exists|previously published|E409|409 Conflict" \
+          npm publish --access restricted 2>&1 | tee /tmp/npm-publish-output.txt
+          EXIT_CODE=${PIPESTATUS[0]}
+          if [ $EXIT_CODE -ne 0 ]; then
+            grep -qE "already exists|previously published|E409|409 Conflict" /tmp/npm-publish-output.txt \
               && echo "⚠️ Publish skipped – package already exists" \
               || exit 1
-          }
+          fi
         working-directory: packages/samples/react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
