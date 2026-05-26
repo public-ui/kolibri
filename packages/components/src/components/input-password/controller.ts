@@ -21,7 +21,7 @@ import {
 } from '../../schema';
 import { validateAutoComplete } from '../../schema/props/auto-complete';
 import { validateMaxLengthBehavior } from '../../schema/props/max-length-behavior';
-import { validateVisibilityToggle, VisibilityTogglePropType } from '../../schema/props/visibility-toggle';
+import { validateVisibilityToggle, type VisibilityTogglePropType } from '../../schema/props/visibility-toggle';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
