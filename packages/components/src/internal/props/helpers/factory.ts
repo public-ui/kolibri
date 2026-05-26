@@ -1,4 +1,3 @@
-import { cloneDeep, isObject } from 'lodash-es';
 import { Log } from '../../../schema';
 
 function safeStringify(value: unknown): string {
@@ -65,7 +64,7 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 ): PropDefinition<InternalPropValue<P>, P> {
 	return {
 		propName,
-		getDefaultValue: isObject(defaultValue) ? () => cloneDeep(defaultValue) : () => defaultValue,
+		getDefaultValue: typeof defaultValue === 'object' && defaultValue !== null ? () => structuredClone(defaultValue) : () => defaultValue,
 		normalize,
 		validate,
 		apply(value, callback) {
@@ -106,7 +105,7 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 ): DependentPropDefinition<InternalPropValue<P>, TDeps, P> {
 	return {
 		propName,
-		getDefaultValue: isObject(defaultValue) ? () => cloneDeep(defaultValue) : () => defaultValue,
+		getDefaultValue: typeof defaultValue === 'object' && defaultValue !== null ? () => structuredClone(defaultValue) : () => defaultValue,
 		normalize,
 		validate,
 		apply(value, callback, deps: TDeps) {

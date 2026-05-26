@@ -8,7 +8,7 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item kol-nav__list-item--expanded kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <a aria-controls="kol-nav-nonce-list_0_0" aria-expanded="true" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#section">
+              <a aria-controls="kol-nav-list-0-0-nonce" aria-expanded="true" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#section">
                 <span class="kol-link__text kol-span">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -21,11 +21,12 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                   </span>
                 </span>
-              </a>            </div>
+              </a>
+            </div>
             <ul class="kol-nav__list kol-nav__list--nested kol-nav__list--vertical" id="kol-nav-list-0-0-nonce">
               <li class="kol-nav__list-item kol-nav__list-item--expanded kol-nav__list-item--has-children">
                 <div class="kol-nav__entry-wrapper">
-                  <a aria-controls="kol-nav-nonce-list_0_0_1_0" aria-expanded="true" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#child-link">
+                  <a aria-controls="kol-nav-list-0-0-1-0-nonce" aria-expanded="true" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#child-link">
                     <span class="kol-link__text kol-span">
                       <span class="kol-span__container">
                         <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -38,7 +39,8 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
                         <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                       </span>
                     </span>
-                  </a>                </div>
+                  </a>
+                </div>
                 <ul class="kol-nav__list kol-nav__list--nested kol-nav__list--vertical" id="kol-nav-list-0-0-1-0-nonce">
                   <li class="kol-nav__list-item kol-nav__list-item--active">
                     <div class="kol-nav__entry-wrapper">

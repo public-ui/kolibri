@@ -7,7 +7,7 @@ import { createLinkStateAccess, LinkController } from '../../internal/functional
 import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
-import { createUniqueId } from '../../utils/dev.utils';
+import { nonce } from '../../utils/dev.utils';
 
 /**
  * @internal
