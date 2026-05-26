@@ -49,6 +49,8 @@ export class InputController extends ControlledInputController implements Watche
 
 	private readonly valueChangeListeners: ValueChangeListener[] = [];
 
+	private inputHasFocus = false;
+
 	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
@@ -158,17 +160,26 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onBlur(event: Event): void {
+		// @ts-ignore
+		console.log(event.relatedTarget);
+		console.log(this.host);
+
 		if (this.component._disabled) {
 			return;
 		}
-		this.component._touched = true;
 
-		// Event handling
-		this.emitEvent(KolEvent.blur);
+		// @ts-ignore
+		if (this.inputHasFocus && event.relatedTarget !== this.host && !this.host?.contains(event.relatedTarget)) {
+			this.component._touched = true;
 
-		// Callback
-		if (typeof this.component._on?.onBlur === 'function') {
-			this.component._on.onBlur(event);
+			// Event handling
+			this.emitEvent(KolEvent.blur);
+
+			// Callback
+			if (typeof this.component._on?.onBlur === 'function') {
+				this.component._on.onBlur(event);
+			}
+			this.inputHasFocus = false;
 		}
 	}
 
@@ -237,13 +248,28 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onFocus(event: Event): void {
-		// Event handling
-		this.emitEvent(KolEvent.focus);
+		setTimeout(() => {
+			// @ts-ignore
+			console.log(event.relatedTarget);
 
-		// Callback
-		if (typeof this.component._on?.onFocus === 'function') {
-			this.component._on.onFocus(event);
-		}
+			console.log(event.target);
+
+			console.log(document.activeElement);
+			console.log(this.host);
+
+			// focusIn
+			if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
+				console.log('focusin');
+				// Event handling
+				this.emitEvent(KolEvent.focus);
+
+				// Callback
+				if (typeof this.component._on?.onFocus === 'function') {
+					this.component._on.onFocus(event);
+				}
+				this.inputHasFocus = true;
+			}
+		});
 	}
 
 	protected onKeyDown(event: KeyboardEvent): void {
