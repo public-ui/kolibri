@@ -28,6 +28,7 @@ import type {
 	TextareaResizePropType,
 	TextareaStates,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -278,6 +279,11 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: TextareaStates = {
 		_adjustHeight: false,
 		_currentLength: 0,
@@ -417,6 +423,11 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+	}
+
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
 	}
 
 	public componentDidLoad(): void {
