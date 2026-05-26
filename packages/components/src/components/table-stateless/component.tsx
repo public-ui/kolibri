@@ -1272,14 +1272,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						}}
 					>
 						{/* eslint-disable jsx-a11y/no-noninteractive-tabindex -- caption tabIndex enables keyboard access to scrollable overflow */}
-						<caption
-							aria-hidden={showInternalCaption ? undefined : 'true'}
-							class="kol-table__focus-element kol-table__caption"
-							id="caption"
-							tabindex={showInternalCaption && this.tableDivElementHasScrollbar ? '0' : undefined}
-						>
-							{this.state._label}
-						</caption>
+						{showInternalCaption && (
+							<caption class="kol-table__focus-element kol-table__caption" id="caption" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>
+								{this.state._label}
+							</caption>
+						)}
 						{/* eslint-enable jsx-a11y/no-noninteractive-tabindex */}
 
 						{Array.isArray(horizontalHeaders) && (
