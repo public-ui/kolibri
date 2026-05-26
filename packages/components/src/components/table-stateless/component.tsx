@@ -128,10 +128,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private syncTableLabel(elements?: HTMLElement[]): void {
 		if (!this.tableRef) return;
-		const hasExternalLabelElements = !!elements?.length;
 		if ('ariaLabelledByElements' in this.tableRef) {
-			this.tableRef.ariaLabelledByElements = elements ?? [];
-			Log.debug([this.tableRef, hasExternalLabelElements, elements, this.tableRef.ariaLabelledByElements]);
+			if (elements?.length) {
+				this.tableRef.ariaLabelledByElements = elements;
+			}
+			Log.debug([this.tableRef, !!elements?.length, elements, this.tableRef.ariaLabelledByElements]);
 		}
 	}
 

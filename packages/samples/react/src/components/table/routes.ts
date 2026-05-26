@@ -34,7 +34,6 @@ import { TableWithPagination } from './with-pagination';
 
 export const TABLE_ROUTES: Routes = {
 	table: {
-		'aria-labelledby': AriaLabelledby,
 		'column-alignment': TableColumnAlignment,
 		'complex-headers': TableComplexHeaders,
 		'horizontal-scrollbar': TableHorizontalScrollbar,
@@ -66,5 +65,6 @@ export const TABLE_ROUTES: Routes = {
 		big: TableBig,
 		'action-and-render': TableActionAndRenderColumns,
 		variant: TableVariant,
+		'aria-labelledby': AriaLabelledby,
 	},
 };
