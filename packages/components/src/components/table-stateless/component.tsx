@@ -30,6 +30,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import {
+	Log,
 	setState,
 	validateFixedCols,
 	validateHasSettingsMenu,
@@ -130,9 +131,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		const hasExternalLabelElements = !!elements?.length;
 		if ('ariaLabelledByElements' in this.tableRef) {
 			this.tableRef.ariaLabelledByElements = elements ?? [];
-
-			// eslint-disable-next-line no-console -- Debug log to verify forwarded externalLabelElements on native table.
-			console.log(this.tableRef, hasExternalLabelElements, elements, this.tableRef.ariaLabelledByElements);
+			Log.debug([this.tableRef, hasExternalLabelElements, elements, this.tableRef.ariaLabelledByElements]);
 		}
 	}
 

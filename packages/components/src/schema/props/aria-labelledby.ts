@@ -2,7 +2,7 @@ import type { Generic } from 'adopted-style-sheets';
 
 import type { HostInternals } from '../../utils/aria-labelledby';
 import { resolveTargets } from '../../utils/aria-labelledby';
-import { watchValidator } from '../utils';
+import { Log, watchValidator } from '../utils';
 
 /* types */
 /**
@@ -42,8 +42,7 @@ export const validateAriaLabelledby = (
 		} catch {
 			// ariaLabelledByElements is not supported in this environment — silently skip.
 		}
-		// eslint-disable-next-line no-console -- Debug log to verify that ariaLabelledByElements is being set correctly.
-		console.log('WebComponent internals', internals);
+		Log.debug(['WebComponent internals', internals]);
 	}
 	return elements;
 };
