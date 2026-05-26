@@ -13,7 +13,7 @@ import type {
 	OpenPropType,
 } from '../../schema';
 import { featureHint, validateAccordionCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -43,7 +43,7 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 export class KolAccordion implements AccordionAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolAccordionElement;
 
-	private readonly nonce = nonce();
+	private readonly id = createUniqueId('accordion');
 	private buttonWcRef?: HTMLKolButtonWcElement;
 
 	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
@@ -92,7 +92,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 		const rootClass = 'kol-accordion';
 
 		const props: CollapsibleProps = {
-			id: this.nonce,
+			id: this.id,
 			label: _label,
 			open: _open,
 			disabled: _disabled,

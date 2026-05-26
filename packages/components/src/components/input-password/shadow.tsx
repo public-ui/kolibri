@@ -36,7 +36,7 @@ import KolInputContainerStateWrapperFc from '../../functional-component-wrappers
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
-import { nonce } from '../../utils/dev.utils';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -119,11 +119,12 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	private getInputProps(): InputStateWrapperProps {
-		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
 			ref: this.setInputRef,
-			type: (this._visibilityToggle || this._variant === 'visibility-toggle') && this._passwordVisible ? 'text' : 'password',
+			// TODO v5: remove `_variant === 'visibility-toggle'` backwards-compat fallback
+			type: (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') && this._passwordVisible ? 'text' : 'password',
 			state: this.state,
 			ariaDescribedBy,
 			...this.controller.onFacade,
@@ -141,7 +142,8 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	private getShowPasswordButton(): VNode | null {
-		if (this._visibilityToggle || this._variant === 'visibility-toggle') {
+		// TODO v5: remove `_variant === 'visibility-toggle'` backwards-compat fallback
+		if (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') {
 			return (
 				<KolIconButtonFc
 					componentName="button"
@@ -317,7 +319,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-password'),
 		_label: '', // ⚠ required
 		_visibilityToggle: false,
 	};

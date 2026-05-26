@@ -18,7 +18,7 @@ describe('FormFieldMsgFc', () => {
 		const id = 'test-id';
 		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldMsgFc id={id} />);
 
-		expect(page.root?.id).toBe(`${id}-msg`);
+		expect(page.root?.id).toBe('test-id-msg');
 	});
 
 	it('should set the correct class names', async () => {

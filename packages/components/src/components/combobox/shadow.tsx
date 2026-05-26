@@ -35,7 +35,7 @@ import type {
 } from '../../schema';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { ComboboxController } from './controller';
@@ -172,7 +172,13 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 					})
 				: this._filteredSuggestions;
 
-			this._isOpen = this._filteredSuggestions && this._filteredSuggestions.length > 0 ? true : false;
+			if (this._filteredSuggestions?.length === 1 && this._filteredSuggestions[0] === query) {
+				this._isOpen = false;
+			} else if (this._filteredSuggestions && this._filteredSuggestions.length > 0) {
+				this._isOpen = true;
+			} else {
+				this._isOpen = false;
+			}
 		}
 	}
 
@@ -338,13 +344,6 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 										}}
 										onFocus={() => {
 											this.focusOption(index);
-										}}
-										onKeyDown={(e) => {
-											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-												this.selectOption(option as string);
-												this.toggleListbox();
-												e.preventDefault();
-											}
 										}}
 									/>
 								))}
@@ -570,7 +569,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 		_hasValue: false,
 		_hasClearButton: true,
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('combobox'),
 		_label: '', // ⚠ required
 		_suggestions: [],
 		_value: '',

@@ -8,14 +8,14 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item kol-nav__list-item--expanded kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <kol-link-wc _ariacontrols="kol-nav-nonce-list_0_0" _ariaexpanded="" _href="#section" _label="Section" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+              <kol-link-wc _ariacontrols="kol-nav-list-0-0-nonce" _ariaexpanded="" _href="#section" _label="Section" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
             </div>
-            <ul class="kol-nav__list kol-nav__list--nested kol-nav__list--vertical" id="kol-nav-nonce-list_0_0">
+            <ul class="kol-nav__list kol-nav__list--nested kol-nav__list--vertical" id="kol-nav-list-0-0-nonce">
               <li class="kol-nav__list-item kol-nav__list-item--expanded kol-nav__list-item--has-children">
                 <div class="kol-nav__entry-wrapper">
-                  <kol-link-wc _ariacontrols="kol-nav-nonce-list_0_0_1_0" _ariaexpanded="" _href="#child-link" _label="Child link" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+                  <kol-link-wc _ariacontrols="kol-nav-list-0-0-1-0-nonce" _ariaexpanded="" _href="#child-link" _label="Child link" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
                 </div>
-                <ul class="kol-nav__list kol-nav__list--nested kol-nav__list--vertical" id="kol-nav-nonce-list_0_0_1_0">
+                <ul class="kol-nav__list kol-nav__list--nested kol-nav__list--vertical" id="kol-nav-list-0-0-1-0-nonce">
                   <li class="kol-nav__list-item kol-nav__list-item--active">
                     <div class="kol-nav__entry-wrapper">
                       <kol-button-wc _label="Grandchild info" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>

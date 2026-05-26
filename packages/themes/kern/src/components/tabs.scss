@@ -5,7 +5,6 @@
 @layer kol-theme-component {
 	.kol-tabs {
 		@include button('kol-button');
-		@include ghostButton('kol-button');
 
 		&__button-group {
 			display: flex;
@@ -13,6 +12,8 @@
 			border-bottom: 1px solid var(--kern-color-action-default);
 
 			.kol-button {
+				@include ghostButton();
+
 				&.kol-button--normal {
 					text-decoration: none;
 				}

@@ -4,7 +4,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -23,13 +23,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input accesskey="V" aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-expanded="false" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input accesskey="V" aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -60,7 +60,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _alert="" _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -76,13 +76,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-expanded="false" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -113,7 +113,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field kol-form-field--disabled">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -129,13 +129,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-expanded="false" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--disabled" disabled="" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--disabled" disabled="" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _disabled="" _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete" hidden=""></kol-button-wc>
               <button class="kol-combobox-toggle" disabled="" hidden="" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -166,7 +166,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -182,13 +182,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-describedby="id-nonce-hint" aria-expanded="false" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-describedby="combobox-hint-nonce" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -210,7 +210,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           </div>
         </div>
       </div>
-      <span class="kol-form-field__hint" id="id-nonce-hint">
+      <span class="kol-form-field__hint" id="combobox-hint-nonce">
         Hint
       </span>
     </div>
@@ -222,7 +222,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -241,13 +241,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           </div>
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-expanded="false" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -281,7 +281,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -300,13 +300,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           </div>
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-expanded="false" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -338,7 +338,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -355,13 +355,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-expanded="false" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -395,7 +395,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _touched="" _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -411,13 +411,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-describedby="id-nonce-error" aria-expanded="false" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error kol-input--touched" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-describedby="combobox-error-nonce" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error kol-input--touched" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -448,7 +448,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -464,13 +464,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-describedby="id-nonce-msg" aria-expanded="false" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-describedby="combobox-msg-nonce" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -501,7 +501,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _readonly="" _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -517,13 +517,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-expanded="false" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -554,7 +554,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -573,13 +573,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-expanded="false" aria-keyshortcuts="S" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-expanded="false" aria-keyshortcuts="S" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -610,7 +610,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _touched="" _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field kol-form-field--touched">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -626,13 +626,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-expanded="false" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--touched" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--touched" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau
@@ -663,7 +663,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="id-nonce" id="id-nonce-label">
+      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -679,13 +679,13 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="id-nonce-listbox" aria-expanded="false" aria-labelledby="id-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="id-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
-            <ul class="kol-custom-suggestions-options-group" hidden="" id="id-nonce-listbox" role="listbox">
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-nonce-listbox" role="listbox">
               <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
                 <span>
                   Frau

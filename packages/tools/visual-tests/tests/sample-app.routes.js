@@ -756,27 +756,6 @@ ROUTES.set('meter/basic', {
 		},
 	},
 });
-ROUTES.set('meter/unit', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('meter/min-max', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('meter/ranges', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
 ROUTES.set('meter/optimum', {
 	snapshot: {
 		zoom: {

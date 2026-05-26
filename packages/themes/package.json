@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "4.1.5-rc.2",
+	"version": "4.2.0-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -45,20 +45,19 @@
 	],
 	"scripts": {
 		"build": "rollup -c",
-		"build:deps": "pnpm --filter @public-ui/themes^... build",
+		"build:deps": "pnpm --filter @public-ui/themes^... --filter @public-ui/theme-ecl --filter @public-ui/theme-desy build",
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",
 		"lint:eslint": "eslint src",
 		"lint:tsc": "tsc --noemit",
-		"prebuild": "pnpm prepare:theme-ecl-icons",
-		"prepare": "npm-run-all2 prepare:components prepare:theme-bwst prepare:theme-default prepare:theme-desy prepare:theme-ecl-icons prepare:theme-ecl prepare:theme-kern",
+		"prebuild": "pnpm build:deps && pnpm prepare",
+		"prepare": "npm-run-all2 prepare:components prepare:theme-bwst prepare:theme-default prepare:theme-desy prepare:theme-ecl prepare:theme-kern",
 		"prepare:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
 		"prepare:theme-bwst": "cpy \"bwst/assets/**/*\" assets --dot",
 		"prepare:theme-default": "cpy \"default/assets/**/*\" assets --dot",
 		"prepare:theme-desy": "cpy \"desy/assets/**/*\" assets --dot",
 		"prepare:theme-ecl": "cpy \"ecl/assets/**/*\" assets --dot",
-		"prepare:theme-ecl-icons": "pnpm --filter @public-ui/ecl-icons build",
 		"prepare:theme-kern": "cpy \"kern/assets/**/*\" assets --dot",
 		"test-all": "pnpm -r --workspace-concurrency=1 test",
 		"test:update:all": "pnpm -r --workspace-concurrency=1 test:update"
@@ -77,12 +76,12 @@
 		"eslint": "9.39.4",
 		"nodemon": "3.1.14",
 		"npm-run-all2": "8.0.4",
-		"postcss": "8.5.14",
+		"postcss": "8.5.15",
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"rollup": "4.60.4",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass-embedded": "1.99.0",
+		"sass-embedded": "1.100.0",
 		"typescript": "5.9.3"
 	},
 	"peerDependencies": {
