@@ -36,8 +36,7 @@ import type {
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { ComboboxController } from './controller';
 
 /**
@@ -51,8 +50,8 @@ import { ComboboxController } from './controller';
 	shadow: true,
 })
 export class KolCombobox implements ComboboxAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolComboboxElement;
-	private refInput?: HTMLInputElement;
+	@Element() protected readonly host?: HTMLKolComboboxElement;
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
@@ -71,24 +70,22 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.refInput!));
-	}
+	@delegateFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.refInput!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private toggleListbox = () => {
 		const isDisabled = this.state._disabled === true;
 		if (isDisabled) {
 			this._isOpen = false;
 		} else {
-			this.refInput?.focus();
+			this.ctaRef.el?.focus();
 			if (this._isOpen) {
 				// Liste schließen
 				this._isOpen = false;
@@ -101,10 +98,6 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			}
 		}
 	};
-	private readonly setInputRef = (ref?: HTMLInputElement) => {
-		this.refInput = ref;
-	};
-
 	private selectOption(option: string) {
 		this.controller.onFacade.onInput(
 			new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: option } }),
@@ -118,7 +111,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 		this.controller.setFormAssociatedValue(option);
 		this._filteredSuggestions = [...this.state._suggestions];
 		this.state._value = option;
-		this.refInput?.focus();
+		this.ctaRef.el?.focus();
 	}
 
 	private clearSelection() {
@@ -139,7 +132,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 		this.controller.onFacade.onChange(new CustomEvent('change', { bubbles: true, detail }), emptyValue);
 		this.controller.setFormAssociatedValue(emptyValue);
 
-		this.refInput?.focus();
+		this.ctaRef.el?.focus();
 	}
 
 	private onInput(event: Event) {
@@ -243,7 +236,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 		const isDisabled = this.state._disabled === true;
 
 		return {
-			ref: this.setInputRef,
+			ref: this.ctaRef,
 			state: this.state,
 			class: 'kol-combobox__input',
 			type: 'text',
@@ -361,7 +354,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			if (isOpen !== undefined) {
 				this._isOpen = isOpen;
 				if (!isOpen) {
-					this.refInput?.focus();
+					this.ctaRef.el?.focus();
 				}
 			}
 			callback?.();
@@ -382,14 +375,14 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			case 'Tab':
 				if (this._isOpen) {
 					this._isOpen = false;
-					this.refInput?.focus();
+					this.ctaRef.el?.focus();
 				}
 				break;
 			case 'Esc':
 			case 'Escape': {
 				this._isOpen = false;
 				event.preventDefault();
-				this.refInput?.focus();
+				this.ctaRef.el?.focus();
 				break;
 			}
 			case ' ':

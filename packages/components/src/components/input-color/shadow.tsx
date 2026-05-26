@@ -27,8 +27,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputColorController } from './controller';
 
 /**
@@ -44,13 +43,10 @@ import { InputColorController } from './controller';
 	shadow: true,
 })
 export class KolInputColor implements InputColorAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolInputColorElement;
-	private refInputText?: HTMLInputElement;
+	@Element() protected readonly host?: HTMLKolInputColorElement;
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refInputColor?: HTMLInputElement;
 
-	private readonly setInputRef = (ref?: HTMLInputElement) => {
-		this.refInputText = ref;
-	};
 	private readonly setColorRef = (ref?: HTMLInputElement) => {
 		this.refInputColor = ref;
 	};
@@ -68,8 +64,8 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		const value = (event.target as HTMLInputElement).value;
 		this.state._value = value;
 
-		if (this.refInputText) {
-			this.refInputText.value = value;
+		if (this.ctaRef.el) {
+			this.ctaRef.el.value = value;
 		}
 		this.controller.onFacade.onInput(event);
 	};
@@ -91,24 +87,22 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
-		return this.refInputText?.value;
+		return this.ctaRef.el?.value;
 	}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.refInputText!));
-	}
+	@delegateFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.refInputText!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private get hasSuggestions(): boolean {
 		return Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
@@ -139,7 +133,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	private getInputTextProps(): InputStateWrapperProps {
 		return {
 			...this.getGenericInputProps(),
-			ref: this.setInputRef,
+			ref: this.ctaRef,
 			type: 'text',
 			name: this.state._name ? `${this.state._name}-text` : undefined,
 			list: this.hasSuggestions ? createRelatedUniqueId(this.state._id, 'list') : undefined,

@@ -27,8 +27,7 @@ import type {
 } from '../../schema';
 
 import { createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputCheckboxController } from './controller';
 
 import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper/CheckboxStateWrapper';
@@ -52,12 +51,8 @@ import { propagateSubmitEventToForm } from '../form/controller';
 	shadow: true,
 })
 export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolInputCheckboxElement;
-	private inputRef?: HTMLInputElement;
-
-	private readonly setInputRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
-	};
+	@Element() protected readonly host?: HTMLKolInputCheckboxElement;
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	private getModelValue(): StencilUnknown {
 		return this._checked ? this.state._value : null;
@@ -76,17 +71,15 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
-	}
+	@delegateFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.inputRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
@@ -138,7 +131,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 				class: clsx({
 					'visually-hidden': this.state._variant === 'button',
 				}),
-				ref: this.setInputRef,
+				ref: this.ctaRef,
 				...this.controller.onFacade,
 				onInput: this.onInput,
 				onChange: this.onChange,
@@ -430,7 +423,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.inputRef,
+				ref: this.ctaRef.el,
 			});
 		}
 	};
