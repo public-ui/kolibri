@@ -37,6 +37,7 @@ on:
 permissions:
   contents: read
   id-token: write
+  packages: write
 
 jobs:
   publish:
@@ -248,7 +249,13 @@ jobs:
           registry-url: https://npm.pkg.github.com
 
       - name: Publish sample react
-        run: npm publish --access restricted || echo "⚠️ Publish skipped – package already exists"
+        run: |
+          output=$(npm publish --access restricted 2>&1) && echo "$output" || {
+            echo "$output"
+            echo "$output" | grep -qE "already exists|previously published|E409|409 Conflict" \
+              && echo "⚠️ Publish skipped – package already exists" \
+              || exit 1
+          }
         working-directory: packages/samples/react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
