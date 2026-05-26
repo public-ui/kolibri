@@ -13,11 +13,11 @@
 	.kol-input-color {
 		&__input {
 			&--color {
-				flex-grow: 1;
+				flex: 1 1 min-content;
 			}
 
 			&--text {
-				width: to-rem(112);
+				flex: 0 0 to-rem(112);
 			}
 		}
 

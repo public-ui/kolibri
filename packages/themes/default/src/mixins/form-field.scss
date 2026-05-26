@@ -19,6 +19,11 @@
 			order: 2;
 			grid-column: var(--form-field-grid-column-1);
 
+			&--legend {
+				// legends are strange and need float to actually behave in a grid like everyone else
+				float: left;
+			}
+
 			&-text {
 				gap: 0;
 			}
@@ -79,7 +84,11 @@
 
 		&--left {
 			--form-field-grid-column-2: 2;
-			grid-template-columns: 200px 1fr;
+			grid-template-columns: minmax(max-content, 200px) minmax(200px, 1fr);
+		}
+
+		&--left &__label {
+			align-items: center;
 		}
 	}
 }
