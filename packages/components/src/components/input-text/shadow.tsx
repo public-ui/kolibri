@@ -87,6 +87,8 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.updateCurrentLengthDebounced(this._value?.length ?? 0);
+
 		this.controller.onFacade.onKeyDown(event);
 
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {

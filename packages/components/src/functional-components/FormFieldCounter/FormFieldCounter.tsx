@@ -16,6 +16,7 @@ type FormFieldCounterProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, currentLengthDebounced, maxLength, maxLengthBehavior, id }) => {
 	let visualText: string | undefined;
 	let ariaText: string | undefined;
+	let ariaMaxReachedText: string | undefined;
 	const counterClasses = ['kol-form-field__counter'];
 
 	if (maxLengthBehavior === 'hard') {
@@ -28,6 +29,18 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, curre
 			typeof maxLength === 'number'
 				? translate('kol-character-counter-current-of-max-aria', { placeholders: { current: String(currentLengthDebounced), max: String(maxLength) } })
 				: translate('kol-character-counter-current', { placeholders: { current: String(currentLengthDebounced) } });
+
+		if (currentLength === maxLength) {
+			console.log('MAX');
+
+			ariaMaxReachedText = 'MAX!';
+
+			// das klappt noch nicht... wie lassen wir ariaMaxReachedText nach X ms verschwinden, damit der screenreader sie beim nächsten buchstaben wieder liest?
+			setTimeout(() => {
+				ariaMaxReachedText = '123';
+				console.log('MAX');
+			}, 10);
+		}
 	} else if (typeof maxLength === 'number') {
 		const remainingLive = maxLength - currentLength;
 		const exceededLive = remainingLive < 0;
@@ -56,6 +69,9 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, curre
 			</span>
 			<span id={createRelatedUniqueId(id || '', 'counter')} aria-live="polite" class="visually-hidden" data-testid="input-counter-aria">
 				{ariaText}
+			</span>
+			<span aria-live="assertive" aria-relevant="all">
+				{ariaMaxReachedText}
 			</span>
 		</>
 	);
