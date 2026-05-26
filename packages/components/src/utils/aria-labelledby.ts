@@ -11,6 +11,7 @@
  *   Users who require TalkBack support today should fall back to the `_label` prop.
  */
 export type HostInternals = {
+	role: string | null;
 	ariaLabelledByElements: HTMLElement[];
 };
 
@@ -30,7 +31,8 @@ export const resolveTargets = (host: HTMLElement | undefined, value?: string): H
 	const getById = (id: string): HTMLElement | null => {
 		if (root instanceof Document) return root.getElementById(id);
 		if (root instanceof ShadowRoot) return root.querySelector(`#${escapeCssIdentifier(id)}`);
-		return document.getElementById(id);
+		// Fallback for detached / SSR contexts — guard avoids ReferenceError outside browsers.
+		return typeof document !== 'undefined' ? document.getElementById(id) : null;
 	};
 	return ids.map(getById).filter((el): el is HTMLElement => !!el);
 };
@@ -38,5 +40,15 @@ export const resolveTargets = (host: HTMLElement | undefined, value?: string): H
 export const attachInternals = (host: HTMLElement | undefined): HostInternals | undefined => {
 	// Stencil's HTMLElement typing does not expose attachInternals here.
 	const attach = (host as unknown as { attachInternals?: () => HostInternals }).attachInternals;
-	return attach ? attach.call(host) : undefined;
+	if (!attach) return undefined;
+	try {
+		const internals = attach.call(host);
+		// WARNING: Do not set `internals.role` on the host.
+		// It can prevent screen readers from resolving and reading the inner shadow DOM content.
+		// Keep semantics on the native inner element instead.
+		// internals.role = 'table';
+		return internals;
+	} catch {
+		return undefined;
+	}
 };

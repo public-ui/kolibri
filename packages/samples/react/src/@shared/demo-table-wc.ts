@@ -1,21 +1,17 @@
 /**
- * Native Web Component pair for demonstrating ElementInternals.ariaLabelledByElements
- * across Shadow DOM boundaries.
+ * Native Web Component demos for aria-labelledby across Shadow DOM boundaries.
  *
- * Architecture:
- *   <demo-outer-table aria-labelledby="ext-id">  (shadow: open)
- *     └─ shadow root
- *          └─ <demo-inner-table id="nit-N">       (no shadow, same tree)
- *               └─ <table aria-labelledby="nit-N">
+ * demo-table-light  — no shadow root; aria-labelledby IDREF on <table> resolves
+ *                     directly in the document tree (no boundary to cross).
  *
- * Accessible-name chain:
- *   <table> ──IDREF──▶ demo-inner-table ──ariaLabelledByElements──▶ external h2
+ * demo-outer-table (shadow: open)
+ *   └─ demo-inner-table (no shadow, lives in outer shadow root)
+ *        └─ <table aria-labelledby="nit-N">
  *
- * The IDREF is tree-scoped (same shadow root → valid).
- * The ElementInternals reference is NOT tree-scoped (crosses shadow boundary).
+ * Accessible-name chain for demo-outer-table:
+ *   <table> ──IDREF──▶ demo-inner-table ──ariaLabelledByElements──▶ external element
  *
- * Import this module once anywhere in the app to register the elements.
- * The guard prevents duplicate registration when multiple modules import it.
+ * Import this module once anywhere in the app; the guard prevents duplicate registration.
  */
 type _Internals = { ariaLabelledByElements: HTMLElement[] };
 
@@ -26,6 +22,45 @@ const _outerInner = new WeakMap<HTMLElement, HTMLElement & { labelElements: HTML
 
 let _counter = 0;
 
+const TABLE_STYLES = `
+	table { border-collapse: collapse; }
+	th, td { border: 1px solid #888; padding: 4px 12px; }
+	th { background: #f0f0f0; }
+`;
+
+const TABLE_BODY = `
+	<thead><tr><th scope="col">City</th><th scope="col">Country</th></tr></thead>
+	<tbody><tr><td>Berlin</td><td>Germany</td></tr></tbody>
+`;
+
+/** Web Component WITHOUT shadow root. The table's aria-labelledby IDREF resolves in the host document. */
+class DemoTableLight extends HTMLElement {
+	static get observedAttributes() {
+		return ['aria-labelledby'];
+	}
+
+	connectedCallback() {
+		this._render();
+	}
+
+	attributeChangedCallback() {
+		if (this.isConnected) this._render();
+	}
+
+	_render() {
+		const labelId = this.getAttribute('aria-labelledby') ?? '';
+		// Build the DOM via createElement/setAttribute to avoid HTML injection from attribute values.
+		this.innerHTML = `<style>${TABLE_STYLES}</style><table>${TABLE_BODY}</table>`;
+		const table = this.querySelector('table')!;
+		if (labelId) {
+			table.setAttribute('aria-labelledby', labelId);
+		} else {
+			table.removeAttribute('aria-labelledby');
+		}
+	}
+}
+
+/** Inner part of the shadow WC pair — no shadow, lives inside demo-outer-table's shadow root. */
 class DemoInnerTable extends HTMLElement {
 	constructor() {
 		super();
@@ -38,10 +73,7 @@ class DemoInnerTable extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.innerHTML = `<table aria-labelledby="${this.id}">
-			<thead><tr><th scope="col">City</th><th scope="col">Country</th></tr></thead>
-			<tbody><tr><td>Berlin</td><td>Germany</td></tr></tbody>
-		</table>`;
+		this.innerHTML = `<table aria-labelledby="${this.id}">${TABLE_BODY}</table>`;
 	}
 
 	set labelElements(els: HTMLElement[]) {
@@ -56,6 +88,7 @@ class DemoInnerTable extends HTMLElement {
 	}
 }
 
+/** Outer part of the shadow WC pair — has shadow: open, bridges the label via ElementInternals. */
 class DemoOuterTable extends HTMLElement {
 	constructor() {
 		super();
@@ -73,12 +106,7 @@ class DemoOuterTable extends HTMLElement {
 
 	connectedCallback() {
 		const shadow = _outerShadow.get(this)!;
-		shadow.innerHTML = `<style>
-			demo-inner-table { display: block; }
-			table { border-collapse: collapse; }
-			th, td { border: 1px solid #888; padding: 4px 12px; }
-			th { background: #f0f0f0; }
-		</style><demo-inner-table></demo-inner-table>`;
+		shadow.innerHTML = `<style>demo-inner-table { display: block; }${TABLE_STYLES}</style><demo-inner-table></demo-inner-table>`;
 		_outerInner.set(this, shadow.querySelector('demo-inner-table') as HTMLElement & { labelElements: HTMLElement[] });
 		this._sync(this.getAttribute('aria-labelledby'));
 	}
@@ -89,8 +117,7 @@ class DemoOuterTable extends HTMLElement {
 
 	_sync(value: string | null) {
 		const root = this.getRootNode() as Document | ShadowRoot;
-		const getById = (id: string): HTMLElement | null =>
-			root instanceof ShadowRoot ? root.querySelector(`#${CSS.escape(id)}`) : document.getElementById(id);
+		const getById = (id: string): HTMLElement | null => (root instanceof ShadowRoot ? root.querySelector(`#${CSS.escape(id)}`) : document.getElementById(id));
 
 		const ids = (value ?? '').trim().split(/\s+/).filter(Boolean);
 		const els = ids.map(getById).filter((el): el is HTMLElement => el !== null);
@@ -109,6 +136,7 @@ class DemoOuterTable extends HTMLElement {
 }
 
 if (typeof customElements !== 'undefined') {
+	if (!customElements.get('demo-table-light')) customElements.define('demo-table-light', DemoTableLight);
 	if (!customElements.get('demo-inner-table')) customElements.define('demo-inner-table', DemoInnerTable);
 	if (!customElements.get('demo-outer-table')) customElements.define('demo-outer-table', DemoOuterTable);
 }

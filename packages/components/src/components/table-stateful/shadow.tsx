@@ -74,8 +74,6 @@ export class KolTableStateful implements TableAPI {
 
 	private internals?: HostInternals;
 
-	private externalLabelRetryTimeout?: ReturnType<typeof setTimeout>;
-
 	@State() private resolvedElements: HTMLElement[] = [];
 
 	/**
@@ -88,23 +86,11 @@ export class KolTableStateful implements TableAPI {
 
 	@Watch('_ariaLabelledby')
 	public validateAriaLabelledby(value?: AriaLabelledbyPropType): void {
-		this.syncExternalLabel(value, true);
+		this.syncExternalLabel(value);
 	}
 
-	private syncExternalLabel(value?: AriaLabelledbyPropType, retry = false): void {
-		if (this.externalLabelRetryTimeout) {
-			clearTimeout(this.externalLabelRetryTimeout);
-			this.externalLabelRetryTimeout = undefined;
-		}
-
+	private syncExternalLabel(value?: AriaLabelledbyPropType): void {
 		this.resolvedElements = validateAriaLabelledby(this, this.host, this.internals, value);
-
-		if (retry && value && !this.resolvedElements.length) {
-			this.externalLabelRetryTimeout = setTimeout(() => {
-				this.externalLabelRetryTimeout = undefined;
-				this.resolvedElements = validateAriaLabelledby(this, this.host, this.internals, this._ariaLabelledby);
-			}, 50);
-		}
 	}
 
 	private tableWcRef?: HTMLKolTableStatelessWcElement;
@@ -432,19 +418,14 @@ export class KolTableStateful implements TableAPI {
 
 	public componentDidLoad(): void {
 		this.tableWcRef?.addEventListener(KolEvent.selectionChange, this.onSelectionChange);
-		// Retry with a timeout for cases where the external element was not yet in the DOM
-		// during componentWillLoad (e.g. label rendered after the table).
+		// Re-resolve after mount to avoid depending on timer-based retries.
 		if (!this.resolvedElements.length) {
-			this.validateAriaLabelledby(this._ariaLabelledby);
+			this.syncExternalLabel(this._ariaLabelledby);
 		}
 	}
 
 	public disconnectedCallback(): void {
 		this.tableWcRef?.removeEventListener(KolEvent.selectionChange, this.onSelectionChange);
-		if (this.externalLabelRetryTimeout) {
-			clearTimeout(this.externalLabelRetryTimeout);
-			this.externalLabelRetryTimeout = undefined;
-		}
 	}
 
 	public componentWillLoad(): void {

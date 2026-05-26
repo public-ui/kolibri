@@ -43,7 +43,6 @@ import {
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { KoliBriTableSelectionKey } from '../../schema/types';
-import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -60,7 +59,7 @@ const RESIZE_DEBOUNCE_DELAY = 150;
 export class KolTableStatelessWc implements TableStatelessAPI {
 	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
 
-	private internals?: HostInternals;
+	private tableRef?: HTMLTableElement;
 
 	private readonly translateNoEntries = translate('kol-no-entries');
 
@@ -111,13 +110,30 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	@Watch('externalLabelElements')
 	protected onExternalLabelElementsChange(value?: HTMLElement[]): void {
-		if (this.internals) {
-			this.internals.ariaLabelledByElements = value ?? [];
-		}
+		this.syncTableLabel(value);
 	}
 
+	/**
+	 * @internal Required by TableStatelessAPI. Actual resolution happens in the shadow wrapper
+	 * (kol-table-stateless), which resolves IDs in the correct tree scope and passes the
+	 * resulting HTMLElement[] via externalLabelElements.
+	 */
+	@Prop() public _ariaLabelledby?: string;
+
+	@Watch('_ariaLabelledby')
 	public validateAriaLabelledby(): void {
-		this.onExternalLabelElementsChange(this.externalLabelElements);
+		// no-op — resolution is handled by the shadow wrapper via externalLabelElements
+	}
+
+	private syncTableLabel(elements?: HTMLElement[]): void {
+		if (!this.tableRef) return;
+		const hasExternalLabelElements = !!elements?.length;
+		if ('ariaLabelledByElements' in this.tableRef) {
+			this.tableRef.ariaLabelledByElements = elements ?? [];
+
+			// eslint-disable-next-line no-console -- Debug log to verify forwarded externalLabelElements on native table.
+			console.log(this.tableRef, hasExternalLabelElements, elements, this.tableRef.ariaLabelledByElements);
+		}
 	}
 
 	/**
@@ -667,17 +683,6 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	}
 
 	public componentWillLoad(): void {
-		// Keep the aria-labelledby anchor on this internal host.
-		// The rendered <table> is in the same tree context here; outer wrapper hosts can be in a different context.
-		if (this.host && !this.host.id) {
-			this.host.id = nonce();
-		}
-		// Resolve the external label into ElementInternals.
-		this.internals = attachInternals(this.host);
-		if (this.internals && this.externalLabelElements?.length) {
-			this.internals.ariaLabelledByElements = this.externalLabelElements;
-		}
-
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaderCells(this._headerCells);
@@ -1248,29 +1253,35 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _horizontalHeaderCells={horizontalHeaders ?? []} />}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
-				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
+				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`.
+				 * When an external label is active the caption is aria-hidden and must not receive focus — the scroll container div becomes the keyboard stop instead.
 				 */}
 				<div
 					ref={(element) => (this.tableDivElement = element)}
 					class="kol-table__scroll-container"
-					tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}
+					tabindex={this.tableDivElementHasScrollbar ? (showInternalCaption ? '-1' : '0') : undefined}
 				>
 					<table
-						aria-labelledby={showInternalCaption ? 'caption' : this.host?.id}
+						ref={(el) => {
+							this.tableRef = el as HTMLTableElement;
+							this.syncTableLabel(this.externalLabelElements);
+						}}
+						aria-labelledby={showInternalCaption ? 'caption' : undefined}
 						class="kol-table__table"
 						style={{
 							minWidth: this.getTableMinWidth(),
 						}}
 					>
-						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+						{/* eslint-disable jsx-a11y/no-noninteractive-tabindex -- caption tabIndex enables keyboard access to scrollable overflow */}
 						<caption
 							aria-hidden={showInternalCaption ? undefined : 'true'}
 							class="kol-table__focus-element kol-table__caption"
 							id="caption"
-							tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}
+							tabindex={showInternalCaption && this.tableDivElementHasScrollbar ? '0' : undefined}
 						>
 							{this.state._label}
 						</caption>
+						{/* eslint-enable jsx-a11y/no-noninteractive-tabindex */}
 
 						{Array.isArray(horizontalHeaders) && (
 							<thead class="kol-table__head">

@@ -27,8 +27,6 @@ export class KolTableStateless implements TableStatelessProps {
 
 	private internals?: HostInternals;
 
-	private externalLabelRetryTimeout?: ReturnType<typeof setTimeout>;
-
 	@State() private resolvedElements: HTMLElement[] = [];
 
 	/**
@@ -41,23 +39,11 @@ export class KolTableStateless implements TableStatelessProps {
 
 	@Watch('_ariaLabelledby')
 	public validateAriaLabelledby(value?: AriaLabelledbyPropType): void {
-		this.syncExternalLabel(value, true);
+		this.syncExternalLabel(value);
 	}
 
-	private syncExternalLabel(value?: AriaLabelledbyPropType, retry = false): void {
-		if (this.externalLabelRetryTimeout) {
-			clearTimeout(this.externalLabelRetryTimeout);
-			this.externalLabelRetryTimeout = undefined;
-		}
-
+	private syncExternalLabel(value?: AriaLabelledbyPropType): void {
 		this.resolvedElements = validateAriaLabelledby(this, this.host, this.internals, value);
-
-		if (retry && value && !this.resolvedElements.length) {
-			this.externalLabelRetryTimeout = setTimeout(() => {
-				this.externalLabelRetryTimeout = undefined;
-				this.resolvedElements = validateAriaLabelledby(this, this.host, this.internals, this._ariaLabelledby);
-			}, 50);
-		}
 	}
 
 	/**
@@ -114,17 +100,9 @@ export class KolTableStateless implements TableStatelessProps {
 	}
 
 	public componentDidLoad(): void {
-		// Retry with a timeout for cases where the external element was not yet in the DOM
-		// during componentWillLoad (e.g. label rendered after the table).
+		// Re-resolve after mount to avoid depending on timer-based retries.
 		if (!this.resolvedElements.length) {
-			this.validateAriaLabelledby(this._ariaLabelledby);
-		}
-	}
-
-	public disconnectedCallback(): void {
-		if (this.externalLabelRetryTimeout) {
-			clearTimeout(this.externalLabelRetryTimeout);
-			this.externalLabelRetryTimeout = undefined;
+			this.syncExternalLabel(this._ariaLabelledby);
 		}
 	}
 

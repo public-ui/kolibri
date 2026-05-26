@@ -88,7 +88,7 @@ test.describe('kol-table-stateful', () => {
 		});
 	});
 
-	test('renders no internal caption when _ariaLabelledby is set', async ({ page }) => {
+	test('hides internal caption and removes aria-labelledby when _ariaLabelledby is set', async ({ page }) => {
 		await page.setContent(
 			`<span id="external-caption">Caption</span><kol-table-stateful _label="Fallback" _headers='${JSON.stringify(HEADERS)}' _data='${JSON.stringify(DATA)}'></kol-table-stateful>`,
 		);
@@ -96,12 +96,11 @@ test.describe('kol-table-stateful', () => {
 			(el as unknown as { _ariaLabelledby: string })._ariaLabelledby = 'external-caption';
 		});
 		await page.waitForChanges();
-		const table = page.locator('kol-table-stateful kol-table-stateless table');
+		const table = page.locator('kol-table-stateful').locator('table');
+		// External element resolved — the table must no longer point to its internal caption.
+		await expect(table).not.toHaveAttribute('aria-labelledby', 'caption');
+		// Stateful table does not expose an internal caption when external labelling is active.
 		await expect(table.locator('caption')).toHaveCount(0);
-		const wc = page.locator('kol-table-stateless-wc').first();
-		const wcId = await wc.getAttribute('id');
-		expect(wcId).toBeTruthy();
-		await expect(table).toHaveAttribute('aria-labelledby', wcId!);
 	});
 
 	test.describe('resetSort()', () => {

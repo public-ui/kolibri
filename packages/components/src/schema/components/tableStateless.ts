@@ -1,5 +1,14 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { PropAriaLabelledby, PropLabel, PropTableCallbacks, PropTableData, PropTableDataFoot, PropTableSelection, PropVariantClassName, TableHeaderCells } from '../props';
+import type {
+	PropAriaLabelledby,
+	PropLabel,
+	PropTableCallbacks,
+	PropTableData,
+	PropTableDataFoot,
+	PropTableSelection,
+	PropVariantClassName,
+	TableHeaderCells,
+} from '../props';
 import type { PropHasSettingsMenu } from '../props/has-settings-menu';
 import type { PropTableHeaderCells } from '../props/table-header-cells';
 import type { KoliBriTableDataType, KoliBriTableSelection } from '../types';

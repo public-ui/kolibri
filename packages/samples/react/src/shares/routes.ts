@@ -1,7 +1,6 @@
 import { ABBR_ROUTES } from '../components/abbr/routes';
 import { ACCORDION_ROUTES } from '../components/accordion/routes';
 import { ALERT_ROUTES } from '../components/alert/routes';
-import { ARIA_ROUTES } from '../components/aria/routes';
 import { AVATAR_ROUTES } from '../components/avatar/routes';
 import { BADGE_ROUTES } from '../components/badge/routes';
 import { BREADCRUMB_ROUTES } from '../components/breadcrumb/routes';
@@ -54,7 +53,6 @@ import type { Routes } from './types';
 
 export const ROUTES: Routes = {
 	...HANDOUT_ROUTES,
-	...ARIA_ROUTES,
 	...ABBR_ROUTES,
 	...ACCORDION_ROUTES,
 	...ALERT_ROUTES,

@@ -37,7 +37,13 @@ export const validateAriaLabelledby = (
 
 	const elements = resolveTargets(host, value);
 	if (internals) {
-		internals.ariaLabelledByElements = elements;
+		try {
+			internals.ariaLabelledByElements = elements;
+		} catch {
+			// ariaLabelledByElements is not supported in this environment — silently skip.
+		}
+		// eslint-disable-next-line no-console -- Debug log to verify that ariaLabelledByElements is being set correctly.
+		console.log('WebComponent internals', internals);
 	}
 	return elements;
 };

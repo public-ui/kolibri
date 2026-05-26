@@ -2,11 +2,11 @@ import type { Routes } from '../../shares/types';
 import { TableActionColumns } from './action-columns';
 import { TableActionColumnPerformance } from './action-columns-performance';
 import { TableActionAndRenderColumns } from './action-render';
+import { AriaLabelledby } from './aria-labelledby';
 import { TableBig } from './big-table';
 import { TableColumnAlignment } from './column-alignment';
 import { TableComplexHeaders } from './complex-headers';
 import { TableDirectionAwareSort } from './direction-aware-sort';
-import { TableExternalCaption } from './external-caption';
 import { TableHighlightRow } from './highlight-row';
 import { TableHorizontalScrollbar } from './horizontal-scrollbar';
 import { InteractiveChildElements } from './interactive-child-elements';
@@ -34,9 +34,9 @@ import { TableWithPagination } from './with-pagination';
 
 export const TABLE_ROUTES: Routes = {
 	table: {
+		'aria-labelledby': AriaLabelledby,
 		'column-alignment': TableColumnAlignment,
 		'complex-headers': TableComplexHeaders,
-		'external-caption': TableExternalCaption,
 		'horizontal-scrollbar': TableHorizontalScrollbar,
 		'interactive-child-elements': InteractiveChildElements,
 		'multi-sort': MultiSortTable,
