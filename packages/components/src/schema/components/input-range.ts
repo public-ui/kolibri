@@ -17,6 +17,7 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 
@@ -39,7 +40,8 @@ type OptionalProps = {
 	PropSuggestions &
 	PropSyncValueBySelector &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = {
 	suggestions: W3CInputValue[];
@@ -61,7 +63,8 @@ type OptionalStates = {
 	PropMsg &
 	PropName &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type InputRangeProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type InputRangeStates = Generic.Element.Members<RequiredStates, OptionalStates>;

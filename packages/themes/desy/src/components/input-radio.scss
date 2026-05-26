@@ -8,14 +8,13 @@
 @layer kol-theme-component {
 	@include kol-alert;
 	@include kol-field-control-theme;
-	@include kol-form-field-order-theme;
 	@include kol-form-field;
 
 	.kol-form-field {
 		--a11y-min-size: to-rem(24);
 		--kol-radio-main-color: var(--color-blue-100);
 		padding: 0;
-		gap: to-rem(16);
+		gap: to-rem(12);
 		flex-wrap: wrap;
 		align-items: flex-start;
 

@@ -26,6 +26,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 	VisibilityTogglePropType,
 } from '../../schema';
 import { devHint } from '../../schema';
@@ -35,7 +36,6 @@ import KolInputContainerStateWrapperFc from '../../functional-component-wrappers
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
-import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
@@ -307,7 +307,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: PasswordVariantPropType = 'default';
+	@Prop() public _variant?: VariantClassNamePropType;
 
 	/**
 	 * Activates the show password button
@@ -321,7 +321,6 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		_hideMsg: false,
 		_id: createUniqueId('input-password'),
 		_label: '', // ⚠ required
-		_variant: 'default',
 		_visibilityToggle: false,
 	};
 	@State() private _passwordVisible: boolean = false;
@@ -357,8 +356,9 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
+
 	@Watch('_variant')
-	public validateVariant(value?: PasswordVariantPropType): void {
+	public validateVariant(value?: VariantClassNamePropType): void {
 		this.controller.validateVariant(value);
 	}
 

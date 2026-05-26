@@ -16,6 +16,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import { KolSelectWcTag } from '../../core/component-names';
@@ -80,6 +81,7 @@ export class KolSelect implements SelectProps, FocusableElement {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this._touched}
 					_value={this._value}
+					_variant={this._variant}
 				>
 					<slot name="expert" slot="expert"></slot>
 				</KolSelectWcTag>
@@ -194,4 +196,9 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
 }
