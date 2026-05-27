@@ -701,25 +701,21 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 
 	@Listen('focusin')
 	public handleFocusIn(event: FocusEvent) {
-		setTimeout(() => {
-			if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			}
-		});
+		if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
+			this.controller.onFacade.onFocus(event);
+			this.inputHasFocus = true;
+		}
 	}
 
 	@Listen('focusout')
 	public handleFocusOut(event: FocusEvent) {
-		setTimeout(() => {
-			if (this.inputHasFocus && !this.host?.shadowRoot?.contains(document.activeElement)) {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
-				if (this._isOpen) {
-					this._isOpen = false;
-				}
+		if (this.inputHasFocus && !this.host?.shadowRoot?.contains(document.activeElement)) {
+			this.controller.onFacade.onBlur(event);
+			this.inputHasFocus = false;
+			if (this._isOpen) {
+				this._isOpen = false;
 			}
-		});
+		}
 	}
 
 	private onChange(event: Event): void {

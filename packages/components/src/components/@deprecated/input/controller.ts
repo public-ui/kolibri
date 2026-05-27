@@ -166,25 +166,6 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
-	protected onBlur(event: FocusEvent): void {
-		if (this.component._disabled) {
-			return;
-		}
-
-		if (this.inputHasFocus && !this.host?.shadowRoot?.contains(event.relatedTarget as Node)) {
-			this.component._touched = true;
-
-			// Event handling
-			this.emitEvent(KolEvent.blur);
-
-			// Callback
-			if (typeof this.component._on?.onBlur === 'function') {
-				this.component._on.onBlur(event);
-			}
-			this.inputHasFocus = false;
-		}
-	}
-
 	/**
 	 * @param event - The original event object
 	 * @param value - Optional value. Taken from event if not defined.
@@ -250,18 +231,38 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onFocus(event: FocusEvent): void {
-		setTimeout(() => {
-			if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
-				// Event handling
-				this.emitEvent(KolEvent.focus);
+		if (!this.inputHasFocus) {
+			// Event handling
+			this.emitEvent(KolEvent.focus);
 
-				// Callback
-				if (typeof this.component._on?.onFocus === 'function') {
-					this.component._on.onFocus(event);
-				}
-				this.inputHasFocus = true;
+			// Callback
+			if (typeof this.component._on?.onFocus === 'function') {
+				this.component._on.onFocus(event);
 			}
-		});
+			this.inputHasFocus = true;
+		}
+	}
+
+	protected onBlur(event: FocusEvent): void {
+		if (this.component._disabled) {
+			return;
+		}
+
+		const root = this.host?.shadowRoot || this.host;
+		const isFocusInside = root?.contains(event.relatedTarget as Node) || this.host === event.relatedTarget;
+
+		if (this.inputHasFocus && !isFocusInside) {
+			this.component._touched = true;
+
+			// Event handling
+			this.emitEvent(KolEvent.blur);
+
+			// Callback
+			if (typeof this.component._on?.onBlur === 'function') {
+				this.component._on.onBlur(event);
+			}
+			this.inputHasFocus = false;
+		}
 	}
 
 	protected onKeyDown(event: KeyboardEvent): void {
