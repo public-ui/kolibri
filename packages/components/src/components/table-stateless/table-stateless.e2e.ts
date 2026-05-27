@@ -217,4 +217,35 @@ test.describe('kol-table-stateless', () => {
 			await expect(callbackPromise).resolves.toEqual([DATA[0].id]);
 		});
 	});
+
+	test('hides internal caption and removes aria-labelledby when external target is found', async ({ page }) => {
+		await page.locator('body').evaluate((body: HTMLBodyElement) => {
+			const external = document.createElement('span');
+			external.id = 'external-caption';
+			external.textContent = 'External Caption';
+			body.prepend(external);
+		});
+		await page.locator('kol-table-stateless').evaluate((el: HTMLKolTableStatelessElement) => {
+			(el as unknown as { _ariaLabelledby: string })._ariaLabelledby = 'external-caption';
+			el._label = 'Internal Fallback';
+		});
+		await page.waitForChanges();
+		const table = page.locator('kol-table-stateless').locator('table');
+		// External element resolved — the table must no longer point to its internal caption.
+		await expect(table).not.toHaveAttribute('aria-labelledby', 'caption');
+		// Stateless table does not expose an internal caption when external labelling is active.
+		await expect(table.locator('caption')).toHaveCount(0);
+	});
+
+	test('renders internal caption when external target is missing', async ({ page }) => {
+		await page.locator('kol-table-stateless').evaluate((el: HTMLKolTableStatelessElement) => {
+			(el as unknown as { _ariaLabelledby: string })._ariaLabelledby = 'missing';
+			el._label = 'Internal';
+		});
+		await page.waitForChanges();
+		const table = page.locator('kol-table-stateless').locator('table');
+		// No external element found — fall back to internal caption.
+		await expect(table).toHaveAttribute('aria-labelledby', 'caption');
+		await expect(table.locator('caption')).toHaveText('Internal');
+	});
 });

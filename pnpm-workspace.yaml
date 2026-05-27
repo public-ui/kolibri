@@ -25,5 +25,13 @@ packages:
   - packages/tools/mcp
   - packages/tools/stylelint-rules
   - packages/tools/visual-tests
+allowBuilds:
+  '@evilmartians/lefthook': true
+  '@modelcontextprotocol/ext-apps': true
+  chromedriver: true
+  edgedriver: true
+  esbuild: true
+  protobufjs: true
+  unrs-resolver: true
 overrides:
   qs@>=6.11.1 <=6.15.1: '>=6.15.2'

@@ -1,6 +1,14 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { PropHasSettingsMenu, PropLabel, PropTableData, PropTableDataFoot, PropTableSelection, StatefulPropTableCallbacks } from '../props';
+import type {
+	PropAriaLabelledby,
+	PropHasSettingsMenu,
+	PropLabel,
+	PropTableData,
+	PropTableDataFoot,
+	PropTableSelection,
+	StatefulPropTableCallbacks,
+} from '../props';
 import type { PropPaginationPosition } from '../props/pagination-position';
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
 import type { InternalButtonProps } from './button';
@@ -66,7 +74,8 @@ type OptionalProps = {
 	allowMultiSort: boolean;
 	fixedCols: [number, number];
 	pagination: boolean | Stringified<KoliBriTablePaginationProps>;
-} & PropTableDataFoot &
+} & PropAriaLabelledby &
+	PropTableDataFoot &
 	PropPaginationPosition &
 	PropTableSelection &
 	StatefulPropTableCallbacks &
