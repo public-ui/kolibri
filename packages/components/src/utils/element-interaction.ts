@@ -30,7 +30,10 @@ function makeMethodDecorator(fn: (this_: Record<string, unknown>) => Promise<voi
  * @param refPropName - Class property holding the focusable CtaRef
  */
 export function directFocus(refPropName: string): MethodDecorator_ {
-	return makeMethodDecorator((self) => setFocus((self[refPropName] as CtaRef).el));
+	return makeMethodDecorator((self) => {
+		const element = (self[refPropName] as CtaRef).el;
+		return element ? setFocus(element) : Promise.resolve();
+	});
 }
 
 /**
@@ -38,7 +41,10 @@ export function directFocus(refPropName: string): MethodDecorator_ {
  * @param refPropName - Class property holding the clickable CtaRef
  */
 export function directClick(refPropName: string): MethodDecorator_ {
-	return makeMethodDecorator((self) => setClick((self[refPropName] as CtaRef).el));
+	return makeMethodDecorator((self) => {
+		const element = (self[refPropName] as CtaRef).el;
+		return element ? setClick(element) : Promise.resolve();
+	});
 }
 
 /**
@@ -47,7 +53,12 @@ export function directClick(refPropName: string): MethodDecorator_ {
  * @param refPropName - Class property holding the focusable CtaRef
  */
 export function delegateFocus(refPropName: string): MethodDecorator_ {
-	return makeMethodDecorator((self) => delegateFocusImpl(self['host'] as HTMLElement, () => setFocus((self[refPropName] as CtaRef).el)));
+	return makeMethodDecorator((self) =>
+		delegateFocusImpl(self['host'] as HTMLElement, () => {
+			const element = (self[refPropName] as CtaRef).el;
+			return element ? setFocus(element) : Promise.resolve();
+		}),
+	);
 }
 
 /**
@@ -56,5 +67,10 @@ export function delegateFocus(refPropName: string): MethodDecorator_ {
  * @param refPropName - Class property holding the clickable CtaRef
  */
 export function delegateClick(refPropName: string): MethodDecorator_ {
-	return makeMethodDecorator((self) => delegateClickImpl(self['host'] as HTMLElement, () => setClick((self[refPropName] as CtaRef).el)));
+	return makeMethodDecorator((self) =>
+		delegateClickImpl(self['host'] as HTMLElement, () => {
+			const element = (self[refPropName] as CtaRef).el;
+			return element ? setClick(element) : Promise.resolve();
+		}),
+	);
 }

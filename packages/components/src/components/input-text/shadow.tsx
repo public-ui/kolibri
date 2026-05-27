@@ -37,8 +37,8 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
-import { createCtaRef } from '../../utils/element-interaction';
+import { delegateFocus as delegateFocusUtil, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputTextController } from './controller';
 
@@ -116,7 +116,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateFocus(this.host!, async () => setFocus(this.ctaRef.el!));
+		return delegateFocusUtil(this.host!, async () => setFocus(this.ctaRef.el!));
 	}
 
 	/**
