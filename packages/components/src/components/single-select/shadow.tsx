@@ -39,7 +39,7 @@ import { IconFC } from '../../internal/functional-components/icon/component';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { SingleSelectController } from './controller';
 
 /**
@@ -55,8 +55,8 @@ import { SingleSelectController } from './controller';
 	shadow: true,
 })
 export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolSingleSelectElement;
-	private refInput?: HTMLInputElement;
+	@Element() protected readonly host?: HTMLKolSingleSelectElement;
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refOptions: HTMLLIElement[] = [];
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
@@ -76,13 +76,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.refInput!));
-	}
-
-	private readonly setRefInput = (ref?: HTMLInputElement) => {
-		this.refInput = ref;
-	};
+	@delegateFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	private toggleListbox = (event: Event) => {
 		event?.preventDefault();
@@ -90,7 +85,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		if (isDisabled) {
 			return;
 		} else {
-			this.refInput?.focus();
+			this.ctaRef.el?.focus();
 			if (this._isOpen) {
 				// Liste schließen
 				this._isOpen = false;
@@ -120,13 +115,13 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			detail,
 		});
 
-		if (this.refInput) {
+		if (this.ctaRef.el) {
 			Object.defineProperty(event, 'target', {
-				value: this.refInput,
+				value: this.ctaRef.el,
 			});
 
 			Object.defineProperty(event, 'currentTarget', {
-				value: this.refInput,
+				value: this.ctaRef.el,
 			});
 		}
 		return event;
@@ -155,7 +150,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 		this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
 		this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
 
-		this.refInput?.focus();
+		this.ctaRef.el?.focus();
 		this._isOpen = true;
 	}
 
@@ -310,7 +305,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			disabled: isDisabled,
 			name: this.state._name,
 			placeholder: this.state._placeholder,
-			ref: this.setRefInput,
+			ref: this.ctaRef,
 			required: this.state._required,
 			role: 'combobox',
 			state: this.state,
@@ -347,7 +342,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 								_on={{
 									onClick: () => {
 										this.clearSelection();
-										this.refInput?.focus();
+										this.ctaRef.el?.focus();
 									},
 									onFocus: () => {
 										this.clearButtonFocused = true;
@@ -392,7 +387,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 												return;
 											}
 											this.selectOption(option);
-											this.refInput?.focus();
+											this.ctaRef.el?.focus();
 											this.toggleListbox(event);
 											this._isOpen = false;
 										}}
@@ -414,7 +409,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 											}
 											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
 												this.selectOption(option);
-												this.refInput?.focus();
+												this.ctaRef.el?.focus();
 												this.toggleListbox(e);
 												e.preventDefault();
 											}
@@ -442,7 +437,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			if (isOpen !== undefined) {
 				this._isOpen = isOpen;
 				if (!isOpen) {
-					this.refInput?.focus();
+					this.ctaRef.el?.focus();
 				}
 			}
 			callback?.();
@@ -464,7 +459,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			case 'Tab':
 				if (this._isOpen) {
 					this._isOpen = !this._isOpen;
-					this.refInput?.focus();
+					this.ctaRef.el?.focus();
 				}
 				break;
 			case 'Esc':
@@ -480,7 +475,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 					this.clearSelection();
 				} else if (this._isOpen) {
 					if (this.selectFocusedOption()) {
-						this.refInput?.focus();
+						this.ctaRef.el?.focus();
 						handleEvent(false);
 					}
 				} else {
@@ -810,8 +805,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	}
 
 	private onChange(event: Event): void {
-		if (this.oldValue !== this.refInput?.value) {
-			this.oldValue = this.refInput?.value;
+		if (this.oldValue !== this.ctaRef.el?.value) {
+			this.oldValue = this.ctaRef.el?.value;
 		}
 
 		if (!this._isOpen) {
@@ -821,7 +816,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 
 	private onClick(event: MouseEvent): void {
 		this.toggleListbox(event);
-		this.refInput?.focus();
+		this.ctaRef.el?.focus();
 		this.controller.onFacade.onClick(event);
 	}
 }

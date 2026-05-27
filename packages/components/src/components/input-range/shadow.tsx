@@ -30,8 +30,7 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolSuggestionsFc from '../../functional-components/Suggestions';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputRangeController } from './controller';
 
@@ -48,31 +47,29 @@ import { InputRangeController } from './controller';
 	shadow: true,
 })
 export class KolInputRange implements InputRangeAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolInputRangeElement;
-	private refInputNumber?: HTMLInputElement;
+	@Element() protected readonly host?: HTMLKolInputRangeElement;
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refInputRange?: HTMLInputElement;
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.refInputNumber!));
-	}
+	@delegateFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.refInputNumber!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private readonly setInputNumberRef = (element?: HTMLInputElement) => {
 		if (element) {
-			this.refInputNumber = element;
-			if (!this._value && this.refInputNumber?.value) {
-				this.validateValue(parseFloat(this.refInputNumber.value));
+			this.ctaRef(element);
+			if (!this._value && element.value) {
+				this.validateValue(parseFloat(element.value));
 			}
 		}
 	};
@@ -110,8 +107,8 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<number | NumberString | undefined> {
-		if (this.refInputNumber !== undefined) {
-			const value = this.refInputNumber.value;
+		if (this.ctaRef.el !== undefined) {
+			const value = this.ctaRef.el.value;
 			const floatValue = this.getSanitizedFloatValue(value);
 			return this.remapValue(floatValue);
 		}
@@ -137,7 +134,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.refInputNumber,
+				ref: this.ctaRef.el,
 			});
 		}
 	};
