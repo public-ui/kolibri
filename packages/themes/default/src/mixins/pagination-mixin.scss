@@ -64,8 +64,14 @@
 			}
 		}
 
-		&__page-size-select .kol-form-field-select {
-			gap: to-rem(8);
+		&__page-size-select {
+			.kol-form-field {
+				--form-field-grid-column-2: 2;
+			}
+
+			.kol-form-field-select {
+				gap: to-rem(8);
+			}
 		}
 	}
 }

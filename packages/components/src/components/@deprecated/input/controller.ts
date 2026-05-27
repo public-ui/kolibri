@@ -15,6 +15,7 @@ import type {
 	StencilUnknown,
 	Stringified,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../../schema';
 import {
 	a11yHint,
@@ -31,6 +32,7 @@ import {
 	validateMsg,
 	validateShortKey,
 	validateTooltipAlign,
+	validateVariantClassName,
 } from '../../../schema';
 import { validateTabIndex } from '../../../schema/props/tab-index';
 
@@ -136,6 +138,10 @@ export class InputController extends ControlledInputController implements Watche
 		validateTabIndex(this.component, value);
 	}
 
+	public validateVariant(value?: VariantClassNamePropType): void {
+		validateVariantClassName(this.component, value);
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAccessKey(this.component._accessKey);
@@ -150,6 +156,7 @@ export class InputController extends ControlledInputController implements Watche
 		this.validateSmartButton(this.component._smartButton);
 		this.validateOn(this.component._on);
 		this.validateTabIndex(this.component._tabIndex);
+		this.validateVariant(this.component._variant);
 		validateAccessAndShortKey(this.component._accessKey, this.component._shortKey);
 	}
 

@@ -28,6 +28,7 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -284,6 +285,11 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: InputEmailStates = {
 		_currentLength: 0,
 		_currentLengthDebounced: 0,
@@ -427,6 +433,11 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Watch('_maxLengthBehavior')
 	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
 		this.controller.validateMaxLengthBehavior(value);
+	}
+
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
 	}
 
 	public componentWillLoad(): void {

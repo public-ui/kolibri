@@ -21,6 +21,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
@@ -290,6 +291,11 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: InputRadioStates = {
 		_hideMsg: false,
 		_id: createUniqueId('input-radio'),
@@ -381,6 +387,11 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Watch('_value')
 	public validateValue(value: StencilUnknown): void {
 		this.controller.validateValue(value);
+	}
+
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
 	}
 
 	public componentWillLoad(): void {
