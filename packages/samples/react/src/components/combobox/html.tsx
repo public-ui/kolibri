@@ -1,7 +1,7 @@
 import { KolCombobox } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { logKoliBriCallbackEvent } from '../../shares/utils';
+import { logKoliBriCallbackEvent, logKoliBriNativeEvent } from '../../shares/utils';
 import { SampleDescription } from '../SampleDescription';
 
 export const ComboboxHtml: FC = () => {
@@ -17,18 +17,18 @@ export const ComboboxHtml: FC = () => {
 				_value="Herr"
 				_on={{
 					onBlur: logKoliBriCallbackEvent,
-					// onChange: logKoliBriCallbackEvent,
-					// onClick: logKoliBriCallbackEvent,
+					onChange: logKoliBriCallbackEvent,
+					onClick: logKoliBriCallbackEvent,
 					onFocus: logKoliBriCallbackEvent,
-					// onInput: logKoliBriCallbackEvent,
-					// onKeyDown: logKoliBriCallbackEvent,
+					onInput: logKoliBriCallbackEvent,
+					onKeyDown: logKoliBriCallbackEvent,
 				}}
-				//onBlur={logKoliBriNativeEvent}
-				// onChange={logKoliBriNativeEvent}
-				// onClick={logKoliBriNativeEvent}
-				//onFocus={logKoliBriNativeEvent}
-				// onInput={logKoliBriNativeEvent}
-				// onKeyDown={logKoliBriNativeEvent}
+				onBlur={logKoliBriNativeEvent}
+				onChange={logKoliBriNativeEvent}
+				onClick={logKoliBriNativeEvent}
+				onFocus={logKoliBriNativeEvent}
+				onInput={logKoliBriNativeEvent}
+				onKeyDown={logKoliBriNativeEvent}
 			/>
 		</>
 	);

@@ -121,11 +121,11 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 			ariaDescribedBy,
 			...this.controller.onFacade,
 			onInput: this.onInput,
-			onFocus: (event: Event) => {
+			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
 				this.inputHasFocus = true;
 			},
-			onBlur: (event: Event) => {
+			onBlur: (event: FocusEvent) => {
 				this.controller.onFacade.onBlur(event);
 				this.inputHasFocus = false;
 			},

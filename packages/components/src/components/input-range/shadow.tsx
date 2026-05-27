@@ -163,11 +163,11 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			...this.controller.onFacade,
 			onChange: this.onChange,
 			onInput: this.onInput,
-			onFocus: (event: Event) => {
+			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
 				this.inputHasFocus = true;
 			},
-			onBlur: (event: Event) => {
+			onBlur: (event: FocusEvent) => {
 				this.controller.onFacade.onBlur(event);
 				this.inputHasFocus = false;
 			},

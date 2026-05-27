@@ -100,11 +100,11 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 			...this.controller.onFacade,
 			onInput: this.onInput.bind(this),
 			onChange: this.onChange.bind(this),
-			onFocus: (event: Event) => {
+			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
 				this.inputHasFocus = true;
 			},
-			onBlur: (event: Event) => {
+			onBlur: (event: FocusEvent) => {
 				this.controller.onFacade.onBlur(event);
 				this.inputHasFocus = false;
 			},

@@ -166,17 +166,12 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
-	protected onBlur(event: Event): void {
-		// @ts-ignore
-		console.log(event.relatedTarget);
-		console.log(this.host);
-
+	protected onBlur(event: FocusEvent): void {
 		if (this.component._disabled) {
 			return;
 		}
 
-		// @ts-ignore
-		if (this.inputHasFocus && event.relatedTarget !== this.host && !this.host?.contains(event.relatedTarget)) {
+		if (this.inputHasFocus && !this.host?.shadowRoot?.contains(event.relatedTarget as Node)) {
 			this.component._touched = true;
 
 			// Event handling
@@ -254,19 +249,9 @@ export class InputController extends ControlledInputController implements Watche
 		}
 	}
 
-	protected onFocus(event: Event): void {
+	protected onFocus(event: FocusEvent): void {
 		setTimeout(() => {
-			// @ts-ignore
-			console.log(event.relatedTarget);
-
-			console.log(event.target);
-
-			console.log(document.activeElement);
-			console.log(this.host);
-
-			// focusIn
 			if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
-				console.log('focusin');
 				// Event handling
 				this.emitEvent(KolEvent.focus);
 

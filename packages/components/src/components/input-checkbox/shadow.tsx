@@ -143,11 +143,11 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 				onInput: this.onInput,
 				onChange: this.onChange,
 				onKeyDown: this.onKeyDown,
-				onFocus: (event: Event) => {
+				onFocus: (event: FocusEvent) => {
 					this.controller.onFacade.onFocus(event);
 					this.inputHasFocus = true;
 				},
-				onBlur: (event: Event) => {
+				onBlur: (event: FocusEvent) => {
 					if (this._disabled) {
 						return;
 					}

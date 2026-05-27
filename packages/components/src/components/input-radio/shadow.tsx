@@ -183,11 +183,11 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 				onClick: undefined, // onClick is not needed since onChange already triggers the correct event
 				onInput: this.onInput,
 				onKeyDown: this.onKeyDown.bind(this),
-				onFocus: (event: Event) => {
+				onFocus: (event: FocusEvent) => {
 					this.controller.onFacade.onFocus(event);
 					this.inputHasFocus = true;
 				},
-				onBlur: (event: Event) => {
+				onBlur: (event: FocusEvent) => {
 					this.controller.onFacade.onBlur(event);
 					this.inputHasFocus = false;
 				},
