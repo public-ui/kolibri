@@ -73,7 +73,7 @@
 		"@public-ui/schema": "workspace:*",
 		"adopted-style-sheets": "1.1.9-rc.22",
 		"i18next": "23.16.8",
-		"markdown-it": "14.1.1"
+		"markdown-it": "14.2.0"
 	},
 	"devDependencies": {
 		"@public-ui/stencil-angular-output-target": "0.9.0",
