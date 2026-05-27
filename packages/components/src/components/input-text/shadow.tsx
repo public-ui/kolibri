@@ -37,8 +37,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
-import { delegateFocus as delegateFocusUtil, setFocus } from '../../utils/element-focus';
-import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputTextController } from './controller';
 
@@ -112,12 +111,11 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	public async focus(): Promise<void> {}
 
 	/**
-	 * Focuses the primary interactive element inside this component.
+	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateFocusUtil(this.host!, async () => setFocus(this.ctaRef.el!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	/**
 	 * Get selection start of internal element.
@@ -131,7 +129,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 * Get selection end of internal element.
 	 */
 	@Method()
-	public async selectioconEnd() {
+	public async selectionEnd() {
 		return Promise.resolve(this.ctaRef.el?.selectionEnd);
 	}
 
