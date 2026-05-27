@@ -40,8 +40,8 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Returns the selected values.
 	 */
 	@Method()
-	public async getValue(): Promise<StencilUnknown[] | StencilUnknown> {
-		return this.ctaRef.el!.getValue();
+	public async getValue(): Promise<StencilUnknown[] | StencilUnknown | undefined> {
+		return this.ctaRef.el?.getValue();
 	}
 
 	/**
