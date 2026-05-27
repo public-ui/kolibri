@@ -157,7 +157,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async setRangeText(replacement: string, selectionStart?: number, selectionEnd?: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') {
-		if (selectionStart && selectionEnd) {
+		if (selectionStart !== undefined && selectionEnd !== undefined) {
 			this.ctaRef.el?.setRangeText(replacement, selectionStart, selectionEnd, selectMode);
 		} else {
 			this.ctaRef.el?.setRangeText(replacement);

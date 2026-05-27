@@ -16,6 +16,14 @@ export function createCtaRef<T extends HTMLElement = HTMLElement>(): CtaRef<T> {
 
 type MethodDecorator_ = (_target: object, _key: string, descriptor: PropertyDescriptor) => PropertyDescriptor;
 
+/**
+ * Replaces the decorated method's body with `fn(this)`. The decorated method MUST be declared with
+ * an empty body and no parameters — any code or arguments will be silently discarded.
+ *
+ *   @Method()
+ *   @delegateFocus('ctaRef')
+ *   public async focus(): Promise<void> {} // ← body must be empty
+ */
 function makeMethodDecorator(fn: (this_: Record<string, unknown>) => Promise<void>): MethodDecorator_ {
 	return (_target, _key, descriptor) => {
 		descriptor.value = async function (this: Record<string, unknown>) {

@@ -66,9 +66,11 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	public async click(): Promise<void> {}
 
 	private readonly setInputNumberRef = (element?: HTMLInputElement) => {
-		this.ctaRef(element);
-		if (element && !this._value && element.value) {
-			this.validateValue(parseFloat(element.value));
+		if (element) {
+			this.ctaRef(element);
+			if (!this._value && element.value) {
+				this.validateValue(parseFloat(element.value));
+			}
 		}
 	};
 
