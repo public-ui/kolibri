@@ -88,6 +88,21 @@ test.describe('kol-table-stateful', () => {
 		});
 	});
 
+	test('hides internal caption and removes aria-labelledby when _ariaLabelledby is set', async ({ page }) => {
+		await page.setContent(
+			`<span id="external-caption">Caption</span><kol-table-stateful _label="Fallback" _headers='${JSON.stringify(HEADERS)}' _data='${JSON.stringify(DATA)}'></kol-table-stateful>`,
+		);
+		await page.locator('kol-table-stateful').evaluate((el: HTMLKolTableStatefulElement) => {
+			(el as unknown as { _ariaLabelledby: string })._ariaLabelledby = 'external-caption';
+		});
+		await page.waitForChanges();
+		const table = page.locator('kol-table-stateful').locator('table');
+		// External element resolved — the table must no longer point to its internal caption.
+		await expect(table).not.toHaveAttribute('aria-labelledby', 'caption');
+		// Stateful table does not expose an internal caption when external labelling is active.
+		await expect(table.locator('caption')).toHaveCount(0);
+	});
+
 	test.describe('resetSort()', () => {
 		test('resets manual sort back to the default sort defined in headers', async ({ page }) => {
 			await page.setContent(`<kol-table-stateful

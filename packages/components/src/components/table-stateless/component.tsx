@@ -30,6 +30,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import {
+	Log,
 	setState,
 	validateFixedCols,
 	validateHasSettingsMenu,
@@ -58,6 +59,8 @@ const RESIZE_DEBOUNCE_DELAY = 150;
 })
 export class KolTableStatelessWc implements TableStatelessAPI {
 	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+
+	private tableRef?: HTMLTableElement;
 
 	private readonly translateNoEntries = translate('kol-no-entries');
 
@@ -99,6 +102,39 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	 */
 	@State()
 	private previousHeaderCells?: TableHeaderCellsPropType;
+
+	/**
+	 * External label elements forwarded from the public wrapper.
+	 * @internal Use `_ariaLabelledby` on the public `kol-table-stateless` component instead.
+	 */
+	@Prop() public externalLabelElements?: HTMLElement[];
+
+	@Watch('externalLabelElements')
+	protected onExternalLabelElementsChange(value?: HTMLElement[]): void {
+		this.syncTableLabel(value);
+	}
+
+	/**
+	 * @internal Required by TableStatelessAPI. Actual resolution happens in the shadow wrapper
+	 * (kol-table-stateless), which resolves IDs in the correct tree scope and passes the
+	 * resulting HTMLElement[] via externalLabelElements.
+	 */
+	@Prop() public _ariaLabelledby?: string;
+
+	@Watch('_ariaLabelledby')
+	public validateAriaLabelledby(): void {
+		// no-op — resolution is handled by the shadow wrapper via externalLabelElements
+	}
+
+	private syncTableLabel(elements?: HTMLElement[]): void {
+		if (!this.tableRef) return;
+		if ('ariaLabelledByElements' in this.tableRef) {
+			if (elements?.length) {
+				this.tableRef.ariaLabelledByElements = elements;
+			}
+			Log.debug([this.tableRef, !!elements?.length, elements, this.tableRef.ariaLabelledByElements]);
+		}
+	}
 
 	/**
 	 * Defines the primary table data.
@@ -1206,6 +1242,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 		const horizontalHeaders = this.state._headerCells.horizontal;
 
+		const showInternalCaption = !this.externalLabelElements?.length;
+
 		return (
 			<div
 				class={clsx('kol-table', {
@@ -1215,23 +1253,32 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _horizontalHeaderCells={horizontalHeaders ?? []} />}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
-				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
+				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`.
+				 * When an external label is active the caption is aria-hidden and must not receive focus — the scroll container div becomes the keyboard stop instead.
 				 */}
 				<div
 					ref={(element) => (this.tableDivElement = element)}
 					class="kol-table__scroll-container"
-					tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}
+					tabindex={this.tableDivElementHasScrollbar ? (showInternalCaption ? '-1' : '0') : undefined}
 				>
 					<table
+						ref={(el) => {
+							this.tableRef = el as HTMLTableElement;
+							this.syncTableLabel(this.externalLabelElements);
+						}}
+						aria-labelledby={showInternalCaption ? 'caption' : undefined}
 						class="kol-table__table"
 						style={{
 							minWidth: this.getTableMinWidth(),
 						}}
 					>
-						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-						<caption class="kol-table__focus-element kol-table__caption" id="caption" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>
-							{this.state._label}
-						</caption>
+						{/* eslint-disable jsx-a11y/no-noninteractive-tabindex -- caption tabIndex enables keyboard access to scrollable overflow */}
+						{showInternalCaption && (
+							<caption class="kol-table__focus-element kol-table__caption" id="caption" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>
+								{this.state._label}
+							</caption>
+						)}
+						{/* eslint-enable jsx-a11y/no-noninteractive-tabindex */}
 
 						{Array.isArray(horizontalHeaders) && (
 							<thead class="kol-table__head">
