@@ -5,7 +5,8 @@ import type { KoliBriTableHeaderCellWithLogic, KoliBriTableHeaders, KoliBriTable
 import { KolHeading, KolTableStateful } from '@public-ui/react-v19';
 import { useSearchParams } from 'react-router';
 import { SampleDescription } from '../SampleDescription';
-import { COMPLEX_DATA, configurableData } from './test-complex-data';
+import type { COMPLEX_DATA } from './test-complex-data';
+import { configurableData } from './test-complex-data';
 
 type Data = (typeof COMPLEX_DATA)[0];
 

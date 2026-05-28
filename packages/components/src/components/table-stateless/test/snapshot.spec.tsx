@@ -122,5 +122,26 @@ executeSnapshotTests<TableStatelessProps>(
 			},
 			_data: [],
 		},
+		{
+			_label: 'Table without data with hidden column shows correct colspan',
+			_headerCells: {
+				horizontal: [
+					[
+						{ key: 'header1', label: 'Header 1', textAlign: 'left', width: 180 },
+						{ key: 'header2', label: 'Header 2', textAlign: 'left', width: 180, visible: false },
+					],
+				],
+				vertical: [],
+			},
+			_data: [],
+		},
+		{
+			_label: 'Table without data with merged header shows spacer colspan greater than 1',
+			_headerCells: {
+				horizontal: [[{ label: 'Merged Header', colSpan: 2 }]],
+				vertical: [],
+			},
+			_data: [],
+		},
 	],
 );

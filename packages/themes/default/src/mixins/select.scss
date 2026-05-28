@@ -22,8 +22,12 @@
 			}
 		}
 
-		&:not([multiple]) &__option {
-			padding: 0.5em;
+		&[multiple] &__option {
+			padding: 0 to-rem(8);
+
+			&::before {
+				margin-right: to-rem(8);
+			}
 		}
 
 		&:not([multiple], [size]) {
@@ -31,9 +35,8 @@
 		}
 	}
 
-	.kol-input-container:has(:not(.kol-select[multiple])) {
+	.kol-input-container:not(:has(.kol-select[multiple])) {
 		position: relative;
-		padding: 0;
 		gap: 0;
 		grid-template-columns: auto max-content min-content;
 

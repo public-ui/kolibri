@@ -27,8 +27,10 @@ import type {
 	TableSelectionPropType,
 	TableStatelessAPI,
 	TableStatelessStates,
+	VariantClassNamePropType,
 } from '../../schema';
 import {
+	Log,
 	setState,
 	validateFixedCols,
 	validateHasSettingsMenu,
@@ -38,6 +40,7 @@ import {
 	validateTableDataFoot,
 	validateTableHeaderCells,
 	validateTableSelection,
+	validateVariantClassName,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { KoliBriTableSelectionKey } from '../../schema/types';
@@ -56,6 +59,8 @@ const RESIZE_DEBOUNCE_DELAY = 150;
 })
 export class KolTableStatelessWc implements TableStatelessAPI {
 	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
+
+	private tableRef?: HTMLTableElement;
 
 	private readonly translateNoEntries = translate('kol-no-entries');
 
@@ -99,6 +104,39 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	private previousHeaderCells?: TableHeaderCellsPropType;
 
 	/**
+	 * External label elements forwarded from the public wrapper.
+	 * @internal Use `_ariaLabelledby` on the public `kol-table-stateless` component instead.
+	 */
+	@Prop() public externalLabelElements?: HTMLElement[];
+
+	@Watch('externalLabelElements')
+	protected onExternalLabelElementsChange(value?: HTMLElement[]): void {
+		this.syncTableLabel(value);
+	}
+
+	/**
+	 * @internal Required by TableStatelessAPI. Actual resolution happens in the shadow wrapper
+	 * (kol-table-stateless), which resolves IDs in the correct tree scope and passes the
+	 * resulting HTMLElement[] via externalLabelElements.
+	 */
+	@Prop() public _ariaLabelledby?: string;
+
+	@Watch('_ariaLabelledby')
+	public validateAriaLabelledby(): void {
+		// no-op — resolution is handled by the shadow wrapper via externalLabelElements
+	}
+
+	private syncTableLabel(elements?: HTMLElement[]): void {
+		if (!this.tableRef) return;
+		if ('ariaLabelledByElements' in this.tableRef) {
+			if (elements?.length) {
+				this.tableRef.ariaLabelledByElements = elements;
+			}
+			Log.debug([this.tableRef, !!elements?.length, elements, this.tableRef.ariaLabelledByElements]);
+		}
+	}
+
+	/**
 	 * Defines the primary table data.
 	 */
 	@Prop() public _data!: TableDataPropType;
@@ -132,6 +170,12 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	 * Defines how rows can be selected and the current selection.
 	 */
 	@Prop() public _selection?: TableSelectionPropType;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 * @internal
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
 
 	/**
 	 * Enables the settings menu if true (default: false).
@@ -191,6 +235,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	public validateSelection(value?: TableSelectionPropType): void {
 		validateTableSelection(this, value);
 		this.checkAndUpdateStickyState();
+	}
+
+	@Watch('_variant')
+	public validateVariantClassName(value?: VariantClassNamePropType): void {
+		validateVariantClassName(this, value);
 	}
 
 	@Listen('keydown')
@@ -537,13 +586,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			dataField.push(dataRow);
 		}
 		if (data.length === 0) {
-			let colspan = 0;
+			let colspan = this.getVisibleColSpan(headers.horizontal?.[0]);
 			let rowspan = 0;
-			if (Array.isArray(headers.horizontal) && headers.horizontal.length > 0) {
-				headers.horizontal[0].forEach((col) => {
-					colspan += col.colSpan || 1;
-				});
-			}
 
 			if (Array.isArray(headers.vertical) && headers.vertical.length > 0) {
 				colspan -= headers.vertical.length;
@@ -564,6 +608,18 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			}
 		}
 		return dataField;
+	}
+
+	private getVisibleColSpan(cells?: Array<KoliBriTableCell | KoliBriTableHeaderCell>): number {
+		return (
+			cells?.reduce((acc, cell) => {
+				if ('visible' in cell && cell.visible === false) {
+					return acc;
+				}
+
+				return acc + (cell.colSpan || 1);
+			}, 0) ?? 0
+		);
 	}
 
 	private isFixedCol(index: number | undefined): 'left' | 'right' | undefined {
@@ -634,6 +690,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
 		this.validateHasSettingsMenu(this._hasSettingsMenu);
+		this.validateVariantClassName(this._variant);
 	}
 
 	/**
@@ -1153,7 +1210,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private renderSpacer(variant: 'foot' | 'head', cellDefs: KoliBriTableHeaderCell[][] | KoliBriTableCell[][]): JSX.Element {
 		const verticalHeaderColpan = this.state._headerCells.vertical?.length || 0;
-		const colspan = cellDefs?.[0]?.reduce((acc, row) => acc + (row.colSpan || 1), 0);
+		const colspan = this.getVisibleColSpan(cellDefs?.[0]);
 		const selectionCell = this.state._selection ? 1 : 0;
 
 		return (
@@ -1185,28 +1242,43 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 		const horizontalHeaders = this.state._headerCells.horizontal;
 
+		const showInternalCaption = !this.externalLabelElements?.length;
+
 		return (
-			<div class="kol-table">
+			<div
+				class={clsx('kol-table', {
+					[`kol-table--${this.state._variant as string}`]: this.state._variant !== undefined,
+				})}
+			>
 				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _horizontalHeaderCells={horizontalHeaders ?? []} />}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
-				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
+				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`.
+				 * When an external label is active the caption is aria-hidden and must not receive focus — the scroll container div becomes the keyboard stop instead.
 				 */}
 				<div
 					ref={(element) => (this.tableDivElement = element)}
 					class="kol-table__scroll-container"
-					tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}
+					tabindex={this.tableDivElementHasScrollbar ? (showInternalCaption ? '-1' : '0') : undefined}
 				>
 					<table
+						ref={(el) => {
+							this.tableRef = el as HTMLTableElement;
+							this.syncTableLabel(this.externalLabelElements);
+						}}
+						aria-labelledby={showInternalCaption ? 'caption' : undefined}
 						class="kol-table__table"
 						style={{
 							minWidth: this.getTableMinWidth(),
 						}}
 					>
-						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-						<caption class="kol-table__focus-element kol-table__caption" id="caption" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>
-							{this.state._label}
-						</caption>
+						{/* eslint-disable jsx-a11y/no-noninteractive-tabindex -- caption tabIndex enables keyboard access to scrollable overflow */}
+						{showInternalCaption && (
+							<caption class="kol-table__focus-element kol-table__caption" id="caption" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>
+								{this.state._label}
+							</caption>
+						)}
+						{/* eslint-enable jsx-a11y/no-noninteractive-tabindex */}
 
 						{Array.isArray(horizontalHeaders) && (
 							<thead class="kol-table__head">

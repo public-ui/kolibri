@@ -25,5 +25,11 @@ packages:
   - packages/tools/mcp
   - packages/tools/stylelint-rules
   - packages/tools/visual-tests
-overrides:
-  ip-address@<=10.1.0: '>=10.1.1'
+allowBuilds:
+  '@evilmartians/lefthook': true
+  '@modelcontextprotocol/ext-apps': true
+  chromedriver: true
+  edgedriver: true
+  esbuild: true
+  protobufjs: true
+  unrs-resolver: true

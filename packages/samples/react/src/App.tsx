@@ -86,19 +86,17 @@ export const App: FC<Props> = ({ customThemes }) => {
 							path={`${path}/all`}
 							element={
 								<div className="d-grid gap-4">
-									{themes
-										.filter((theme) => themes.map((t) => t.key).indexOf(theme.key) >= 0)
-										.map((theme) => (
-											<div className="d-grid gap-2" key={theme.key}>
-												<div className="mt-4">
-													<strong>{theme.name}</strong>
-												</div>
-												<div className="my-2">
-													<ThisRoute />
-												</div>
-												<hr aria-hidden="true" />
+									{themes.map((theme) => (
+										<div className="d-grid gap-2" key={theme.key}>
+											<div className="mt-4">
+												<strong>{theme.name}</strong>
 											</div>
-										))}
+											<div className="my-2">
+												<ThisRoute />
+											</div>
+											<hr aria-hidden="true" />
+										</div>
+									))}
 								</div>
 							}
 						/>,

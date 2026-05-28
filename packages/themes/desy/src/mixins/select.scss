@@ -33,6 +33,10 @@
 				background-color: var(--color-blue-100);
 			}
 		}
+
+		&[multiple] &__option::before {
+			margin-right: to-rem(8);
+		}
 	}
 
 	.kol-input-container {

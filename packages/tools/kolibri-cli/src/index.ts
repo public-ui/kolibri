@@ -20,15 +20,24 @@ const banner = gradient(['red', 'green'], { interpolation: 'hsv', hsvSpin: 'long
 🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | ${versionOfPublicUiKoliBriCli}
 `,
 );
-console.log(banner);
 
-const program = new Command();
+const createProgram = (): Command => {
+	const program = new Command();
+	program.name('kolibri').description('CLI for executing some helpful commands for KoliBri projects.').version(versionOfPublicUiKoliBriCli);
 
-program.name('kolibri').description('CLI for executing some helpful commands for KoliBri projects.').version(versionOfPublicUiKoliBriCli);
+	// Add commands
+	generateScss(program);
+	info(program);
+	migrate(program);
 
-// Add commands
-generateScss(program);
-info(program);
-migrate(program);
+	return program;
+};
 
-void program.parseAsync();
+export const runCli = async (): Promise<void> => {
+	console.log(banner);
+	await createProgram().parseAsync();
+};
+
+if (require.main === module) {
+	void runCli();
+}

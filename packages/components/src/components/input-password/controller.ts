@@ -7,12 +7,21 @@ import type {
 	PlaceholderPropType,
 	ReadOnlyPropType,
 	RequiredPropType,
+	VariantClassNamePropType,
 } from '../../schema';
-import { validateHasCounter, validateMaxLength, validatePattern, validatePlaceholder, validateReadOnly, validateRequired, watchString } from '../../schema';
+import {
+	validateHasCounter,
+	validateMaxLength,
+	validatePattern,
+	validatePlaceholder,
+	validateReadOnly,
+	validateRequired,
+	validateVariantClassName,
+	watchString,
+} from '../../schema';
 import { validateAutoComplete } from '../../schema/props/auto-complete';
 import { validateMaxLengthBehavior } from '../../schema/props/max-length-behavior';
-import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
-import { validatePasswordVariant } from '../../schema/props/variant/password-variant';
+import { validateVisibilityToggle, type VisibilityTogglePropType } from '../../schema/props/visibility-toggle';
 
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
@@ -43,10 +52,6 @@ export class InputPasswordController extends InputIconController implements Inpu
 
 	public validateMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
 		validateMaxLengthBehavior(this.component, value);
-	}
-
-	public validateVariant(value?: PasswordVariantPropType): void {
-		validatePasswordVariant(this.component, value);
 	}
 
 	public validateMaxLength(value?: number): void {
@@ -81,6 +86,14 @@ export class InputPasswordController extends InputIconController implements Inpu
 		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
+	public validateVariant(value?: VariantClassNamePropType): void {
+		validateVariantClassName(this.component, value);
+	}
+
+	public validateVisibilityToggle(value?: VisibilityTogglePropType): void {
+		validateVisibilityToggle(this.component, value);
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);
@@ -93,5 +106,6 @@ export class InputPasswordController extends InputIconController implements Inpu
 		this.validateRequired(this.component._required);
 		this.validateValue(this.component._value);
 		this.validateVariant(this.component._variant);
+		this.validateVisibilityToggle(this.component._visibilityToggle);
 	}
 }

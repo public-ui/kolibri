@@ -5,7 +5,7 @@ import { IconFC } from '../../internal/functional-components/icon/component';
 import type { ActivePropType, FocusFunctionOptions, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 
 /**
  * @internal
@@ -18,7 +18,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	@Element() private readonly host?: HTMLKolTreeItemWcElement;
 
 	private linkElement?: HTMLKolLinkWcElement;
-	private groupId = `tree-group-${nonce()}`;
+	private groupId = createUniqueId('tree-group');
 
 	@State() private level?: number;
 

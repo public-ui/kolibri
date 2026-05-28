@@ -14,6 +14,7 @@ import type {
 	PropSyncValueBySelector,
 	PropTooltipAlign,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { PropOrientation } from '../props/orientation';
 import type { InputTypeOnDefault, RadioOption, StencilUnknown, Stringified } from '../types';
@@ -33,7 +34,8 @@ type OptionalProps = {
 	PropRequired &
 	PropSyncValueBySelector &
 	PropTouched &
-	PropTooltipAlign;
+	PropTooltipAlign &
+	PropVariantClassName;
 
 type RequiredStates = {
 	options: RadioOption<StencilUnknown>[];
@@ -50,7 +52,8 @@ type OptionalStates = {
 	PropMsg &
 	PropName &
 	PropRequired &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type InputRadioProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type InputRadioStates = Generic.Element.Members<RequiredStates, OptionalStates>;

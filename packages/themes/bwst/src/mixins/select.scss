@@ -29,6 +29,10 @@
 		&:not([multiple], [size]) {
 			height: to-rem(40);
 		}
+
+		&[multiple] &__option::before {
+			margin-right: to-rem(8);
+		}
 	}
 
 	.kol-input-container:has(:not(.kol-select[multiple])) {

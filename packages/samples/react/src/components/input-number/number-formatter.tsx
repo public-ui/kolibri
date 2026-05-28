@@ -61,7 +61,7 @@ function KolNumericFormat({
 			thousandSeparator={thousandSeparator}
 			valueIsNumericString={false}
 			customInput={(inputProps: any) => {
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 				const inputValue = inputProps.value;
 				return (
 					<KolInputText

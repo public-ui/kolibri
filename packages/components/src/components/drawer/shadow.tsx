@@ -13,7 +13,7 @@ import type {
 } from '../../schema';
 import { setState, validateAlign, validateHasCloser, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 import { watchHeadingLevel } from '../heading/validation';
@@ -32,7 +32,7 @@ export class KolDrawer implements DrawerAPI {
 	@Element() private readonly host?: HTMLKolDetailsElement;
 	private dialogElement?: HTMLDialogElement;
 	private dialogWrapperElement?: HTMLKolCardWcElement;
-	private readonly cardHeadingId = nonce();
+	private readonly cardHeadingId = createUniqueId('drawer-heading');
 
 	@State() private isModal: boolean = true;
 
@@ -54,6 +54,10 @@ export class KolDrawer implements DrawerAPI {
 			this.dialogElement?.showModal?.();
 		} else {
 			this.dialogElement?.show?.();
+		}
+		this._on?.onToggle?.(true);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.toggle);
 		}
 	}
 
@@ -131,7 +135,7 @@ export class KolDrawer implements DrawerAPI {
 					aria-labelledby={this.cardHeadingId}
 					aria-modal={this.isModal ? 'true' : 'false'}
 					class="kol-drawer__dialog"
-					onCancel={handleCancelOverlay}
+					onCancel={this.handleCancelEvent}
 					ref={this.getRef}
 				>
 					{this.renderDialogContent()}
@@ -223,17 +227,37 @@ export class KolDrawer implements DrawerAPI {
 	public validateOn(value?: KoliBriModalEventCallbacks): void {
 		if (typeof value === 'object' && value !== null) {
 			const callbacks: KoliBriModalEventCallbacks = {};
+			if (typeof value.onCancel === 'function') {
+				callbacks.onCancel = value.onCancel;
+			}
 			if (typeof value.onClose === 'function') {
 				callbacks.onClose = value.onClose;
+			}
+			if (typeof value.onToggle === 'function') {
+				callbacks.onToggle = value.onToggle;
 			}
 			setState<KoliBriModalEventCallbacks>(this, '_on', callbacks);
 		}
 	}
 
+	private handleCancelEvent = (event: Event): void => {
+		handleCancelOverlay(event);
+		if (event.defaultPrevented) return;
+
+		this.state._on?.onCancel?.(event);
+		if (event.defaultPrevented) return;
+
+		if (this.host && !dispatchDomEvent(this.host, KolEvent.cancel)) {
+			event.preventDefault();
+		}
+	};
+
 	private handleCloseDialog() {
 		this._on?.onClose?.();
+		this._on?.onToggle?.(false);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
+			dispatchDomEvent(this.host, KolEvent.toggle);
 		}
 	}
 
