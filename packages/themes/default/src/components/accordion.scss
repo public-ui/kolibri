@@ -33,7 +33,6 @@
 			display: flex;
 			min-height: to-rem(35.2);
 			cursor: pointer;
-			text-align: left;
 
 			&:focus-within {
 				.kol-button {
@@ -45,6 +44,7 @@
 				&__container {
 					display: flex;
 					gap: 0.5em;
+					text-align: left;
 					@include kol-typography-accordion;
 				}
 			}
