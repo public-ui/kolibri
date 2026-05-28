@@ -44,7 +44,6 @@
 				&__container {
 					display: flex;
 					gap: 0.5em;
-					text-align: left;
 					@include kol-typography-accordion;
 				}
 			}
