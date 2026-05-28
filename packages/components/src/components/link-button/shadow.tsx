@@ -20,8 +20,8 @@ import type {
 	ShortKeyPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { setClick } from '../../utils/element-click';
-import { setFocus } from '../../utils/element-focus';
+import { delegateClick, setClick } from '../../utils/element-click';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -49,7 +49,7 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> {
 	@Method()
 	public async focus(): Promise<void> {
 		const anchor = this.ctrl.getAnchorRef();
-		if (anchor) return setFocus(anchor);
+		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor));
 	}
 
 	/**
@@ -58,7 +58,7 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> {
 	@Method()
 	public async click(): Promise<void> {
 		const anchor = this.ctrl.getAnchorRef();
-		if (anchor) return setClick(anchor);
+		if (anchor) return delegateClick(this.host!, () => setClick(anchor));
 	}
 
 	private readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): void => {
