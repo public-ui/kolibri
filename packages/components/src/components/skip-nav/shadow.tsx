@@ -8,6 +8,7 @@ import { watchNavLinks } from '../nav/validation';
 import type { JSX } from '@stencil/core';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { createLinkStateAccess, initLinkControllerFromProps, LinkController } from '../../internal/functional-components/link/controller';
+import { delegateFocus, setFocus } from '../../utils/element-focus';
 
 /**
  * The **SkipNav** component renders a hidden navigation that allows keyboard and assistive technology users to skip repetitive navigation sections and jump directly to the main content. It only becomes visible when reached via the Tab key.
