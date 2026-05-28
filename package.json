@@ -1,22 +1,24 @@
 {
-	"version": "4.1.5-rc.0",
+	"version": "4.2.0-rc.2",
 	"devDependencies": {
-		"license-report": "6.8.2",
-		"npm-check-updates": "19.6.6",
+		"@evilmartians/lefthook": "2.1.8",
+		"license-report": "6.8.5",
+		"npm-check-updates": "22.2.1",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.11.0",
+		"stylelint": "17.12.0",
 		"stylelint-config-recommended-scss": "17.0.1",
 		"stylelint-config-standard": "40.0.0",
 		"stylelint-order": "8.1.1",
-		"stylelint-scss": "7.0.0"
+		"stylelint-scss": "7.1.1"
 	},
 	"engines": {
 		"pnpm": "^10"
 	},
 	"private": true,
 	"scripts": {
+		"prepare": "lefthook install",
 		"build": "pnpm -r build",
 		"clean": "git clean -f -d -X",
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
@@ -25,6 +27,7 @@
 		"format:config": "prettier --write '*.{js,ts,json,yml,yaml}' '.*.{js,ts,json,yml,yaml}' 'packages/*/*.{js,ts,json,yml,yaml}' 'packages/*/.*.{js,ts,json,yml,yaml}' 'packages/*/tsconfig*.json' 'packages/*/*.config.{js,ts}' 'packages/*/eslint.config.{js,cjs,mjs}'",
 		"format:markdown": "prettier --write '**/*.md'",
 		"format:packages": "pnpm -r format --write",
+		"license:report": "node scripts/license-reports.mjs --output docs/LICENSE_REPORTS.md",
 		"lint": "pnpm -r lint",
 		"lint:eslint": "pnpm -r --no-bail lint:eslint",
 		"lint:stylelint": "pnpm -r --no-bail lint:stylelint",

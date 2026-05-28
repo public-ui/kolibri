@@ -33,18 +33,18 @@ test.describe('kol-input-text', () => {
 	testInputMessage<HTMLKolInputTextElement>(COMPONENT_NAME);
 
 	test.describe('click() method', () => {
-		test('should focus input when click() method is called', async ({ page }) => {
+		test('should dispatch click on inner input when click() method is called', async ({ page }) => {
 			await page.setContent('<kol-input-text _label="Test Input" _type="text"></kol-input-text>');
 			const kolInput = page.locator('kol-input-text');
 
 			await page.waitForChanges();
 
-			// Register focus listener before calling click() to avoid race condition
-			const focusPromise = kolInput.evaluate((el: HTMLKolInputTextElement) => {
+			// Register click listener on the inner input before calling click() to avoid race conditions
+			const clickPromise = kolInput.evaluate((el: HTMLKolInputTextElement) => {
 				return new Promise<boolean>((resolve) => {
 					const input = el.shadowRoot?.querySelector('input');
 					if (input) {
-						input.addEventListener('focus', () => resolve(true), { once: true });
+						input.addEventListener('click', () => resolve(true), { once: true });
 					} else {
 						resolve(false);
 					}
@@ -62,7 +62,7 @@ test.describe('kol-input-text', () => {
 				}
 			});
 
-			await expect(focusPromise).resolves.toBe(true);
+			await expect(clickPromise).resolves.toBe(true);
 		});
 
 		test('should focus input when host is clicked directly', async ({ page }) => {

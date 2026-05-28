@@ -22,6 +22,7 @@ import type {
 	PropSpellCheck,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
 
@@ -52,7 +53,8 @@ type OptionalProps = {
 	PropShortKey &
 	PropSpellCheck &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = {
 	adjustHeight: boolean;
@@ -84,7 +86,8 @@ type OptionalStates = {
 	PropRows &
 	PropShortKey &
 	PropSpellCheck &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type TextareaProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type TextareaStates = Generic.Element.Members<RequiredStates, OptionalStates>;

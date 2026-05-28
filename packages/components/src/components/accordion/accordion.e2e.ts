@@ -23,9 +23,9 @@ test.describe('kol-accordion', () => {
 			const content = page.locator('.collapsible__content');
 
 			await expect(button).toHaveAttribute('aria-expanded', 'false');
-			await expect(button).toHaveAttribute('aria-controls', /^.*-control$/);
+			await expect(button).toHaveAttribute('aria-controls', /-control-/);
 			await expect(content).toHaveAttribute('role', 'region');
-			await expect(content).toHaveAttribute('aria-labelledby', /^.*-heading$/);
+			await expect(content).toHaveAttribute('aria-labelledby', /-heading-/);
 			await expect(content).toHaveAttribute('aria-hidden', 'true');
 
 			await button.click();
@@ -57,6 +57,21 @@ test.describe('kol-accordion', () => {
 				return new Promise((resolve) => {
 					element._on = {
 						onClick: (_event: MouseEvent, value?: boolean) => {
+							resolve(value);
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await expect(callbackPromise).resolves.toBe(true);
+		});
+
+		test(`should call "onToggle" callback when title is clicked`, async ({ page }) => {
+			const callbackPromise = page.locator('kol-accordion').evaluate(async (element: HTMLKolAccordionElement) => {
+				return new Promise((resolve) => {
+					element._on = {
+						onToggle: (_event: MouseEvent, value?: boolean) => {
 							resolve(value);
 						},
 					};

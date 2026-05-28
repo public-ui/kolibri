@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	ci: {
 		collect: {
 			startServerCommand: 'npx http-server ./dist -p 8085 --silent',

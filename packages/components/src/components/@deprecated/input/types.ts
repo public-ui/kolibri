@@ -5,6 +5,7 @@ import type {
 	InternalButtonProps,
 	MsgPropType,
 	PropLabelWithExpertSlot,
+	PropVariantClassName,
 	ShortKeyPropType,
 	Stringified,
 } from '../../../schema';
@@ -23,6 +24,7 @@ type OptionalProps = PropLabelWithExpertSlot & {
 	smartButton: Stringified<InternalButtonProps>;
 	syncValueBySelector: string;
 	tabIndex: number;
-};
+} & PropVariantClassName;
+
 export type Props = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type Watches = Generic.Element.Watchers<RequiredProps, OptionalProps>;

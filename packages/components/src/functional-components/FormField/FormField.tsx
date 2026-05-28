@@ -4,9 +4,10 @@ import type { JSXBase } from '@stencil/core/internal';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
 import { TooltipController } from '../../internal/functional-components/tooltip/controller';
-import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../schema';
+import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType, VariantClassNamePropType } from '../../schema';
 import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import clsx from '../../utils/clsx';
+import { createRelatedUniqueId } from '../../utils/dev.utils';
 import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/FormFieldCharacterLimitHint';
 import KolFormFieldCounterFc from '../FormFieldCounter';
 import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
@@ -76,6 +77,7 @@ export type FormFieldProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	tooltipAlign?: TooltipAlignPropType;
 	tooltipFloatingRef?: (el?: HTMLDivElement) => void;
 	tooltipArrowRef?: (el?: HTMLDivElement) => void;
+	variant?: VariantClassNamePropType;
 
 	formFieldLabelProps?: JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & { component?: 'label' | 'legend' };
 	formFieldHintProps?: JSXBase.HTMLAttributes<HTMLElement>;
@@ -119,6 +121,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		showBadge,
 		tooltipAlign,
 		tooltipFloatingRef,
+		variant,
 		formFieldLabelProps,
 		formFieldHintProps,
 		formFieldTooltipProps,
@@ -134,12 +137,13 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const showMsg = isMsgDefinedAndInputTouched(msg, touched);
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const useTooltipInsteadOfLabel = showTooltip && !hasExpertSlot && hideLabel;
+	const labelId = createRelatedUniqueId(id, 'label');
 	const tooltipController = useTooltipInsteadOfLabel ? getFormFieldTooltipController(id) : undefined;
 
 	if (tooltipController) {
 		tooltipController.watchAlign(tooltipAlign);
 		tooltipController.watchBadgeText(badgeText || '');
-		tooltipController.watchId(`${id}-label`);
+		tooltipController.watchId(labelId);
 		tooltipController.watchLabel(label);
 	} else {
 		destroyFormFieldTooltipController(id);
@@ -162,6 +166,13 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		['kol-form-field--read-only']: Boolean(readOnly),
 		['kol-form-field--hidden-msg']: Boolean(hideMsg),
 	};
+
+	if (variant) {
+		stateCssClasses = {
+			...stateCssClasses,
+			[`kol-form-field--${variant}`]: true,
+		};
+	}
 
 	if (showMsg) {
 		const msgType = getMsgType(msg);
@@ -196,7 +207,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 							badgeText={badgeText || ''}
 							label={label}
 							align={tooltipAlign}
-							id={`${id}-label`}
+							id={labelId}
 							refFloating={
 								tooltipFloatingRef ??
 								((el?: HTMLDivElement) => {

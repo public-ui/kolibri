@@ -41,8 +41,8 @@ This was problematic because:
 Renders as:
 
 ```html
-<article aria-labelledby="nonce-id">
-	<h2 id="nonce-id">Card Title</h2>
+<article aria-labelledby="card-heading-nonce">
+	<h2 id="card-heading-nonce">Card Title</h2>
 	<div class="kol-card__content">Content goes here</div>
 </article>
 ```

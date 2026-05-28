@@ -19,6 +19,7 @@ import type {
 	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, SelectOption, StencilUnknown, Stringified, W3CInputValue } from '../types';
 
@@ -40,7 +41,8 @@ type OptionalProps = {
 	PropRows &
 	PropShortKey &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = {
 	hasValue: boolean;
@@ -63,7 +65,8 @@ type OptionalStates = {
 	PropRows &
 	PropMsg &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type SelectProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type SelectStates = Generic.Element.Members<RequiredStates, OptionalStates>;

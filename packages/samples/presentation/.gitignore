@@ -23,7 +23,6 @@ npm-debug.log
 Thumbs.db
 
 # Other
-/.husky/
 /.reports/
 .env
 .eslintcache

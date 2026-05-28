@@ -2,6 +2,7 @@ import type { Routes } from '../../shares/types';
 import { TableActionColumns } from './action-columns';
 import { TableActionColumnPerformance } from './action-columns-performance';
 import { TableActionAndRenderColumns } from './action-render';
+import { AriaLabelledby } from './aria-labelledby';
 import { TableBig } from './big-table';
 import { TableColumnAlignment } from './column-alignment';
 import { TableComplexHeaders } from './complex-headers';
@@ -27,6 +28,7 @@ import { TableStatelessWithSettingsMenu } from './stateless-with-settings-menu';
 import { TableStatelessWithSingleSelection } from './stateless-with-single-selection';
 import { TableStickyCol } from './sticky-col';
 import { TableStickyHeader } from './sticky-header';
+import { TableVariant } from './variant';
 import { TableWithFooter } from './with-footer';
 import { TableWithPagination } from './with-pagination';
 
@@ -62,5 +64,7 @@ export const TABLE_ROUTES: Routes = {
 		'with-pagination': TableWithPagination,
 		big: TableBig,
 		'action-and-render': TableActionAndRenderColumns,
+		variant: TableVariant,
+		'aria-labelledby': AriaLabelledby,
 	},
 };

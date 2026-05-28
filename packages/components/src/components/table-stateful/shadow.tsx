@@ -24,6 +24,7 @@ import type {
 	TableSelectionPropType,
 	TableStatefulCallbacksPropType,
 	TableStates,
+	VariantClassNamePropType,
 } from '../../schema';
 import {
 	devHint,
@@ -43,6 +44,8 @@ import {
 	watchValidator,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
+import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
+import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -68,6 +71,28 @@ type SortData = {
 })
 export class KolTableStateful implements TableAPI {
 	@Element() private readonly host?: HTMLKolTableStatefulElement;
+
+	private internals?: HostInternals;
+
+	@State() private resolvedElements: HTMLElement[] = [];
+
+	/**
+	 * References an external element by ID that serves as the accessible label for this table.
+	 * Uses ElementInternals.ariaLabelledByElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS) — use `_label` instead.
+	 */
+	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType;
+
+	@Watch('_ariaLabelledby')
+	public validateAriaLabelledby(value?: AriaLabelledbyPropType): void {
+		this.syncExternalLabel(value);
+	}
+
+	private syncExternalLabel(value?: AriaLabelledbyPropType): void {
+		this.resolvedElements = validateAriaLabelledby(this, this.host, this.internals, value);
+	}
+
 	private tableWcRef?: HTMLKolTableStatelessWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolTableStatelessWcElement) => {
@@ -131,6 +156,11 @@ export class KolTableStateful implements TableAPI {
 	 * Enables the settings menu if true (default: false).
 	 */
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
 
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
@@ -388,6 +418,10 @@ export class KolTableStateful implements TableAPI {
 
 	public componentDidLoad(): void {
 		this.tableWcRef?.addEventListener(KolEvent.selectionChange, this.onSelectionChange);
+		// Re-resolve after mount to avoid depending on timer-based retries.
+		if (!this.resolvedElements.length) {
+			this.syncExternalLabel(this._ariaLabelledby);
+		}
 	}
 
 	public disconnectedCallback(): void {
@@ -395,6 +429,12 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	public componentWillLoad(): void {
+		this.internals = attachInternals(this.host);
+		// Early resolution: if the external element is already in the DOM (common when the
+		// label element is rendered before this component), the first render already uses
+		// externalLabelElements so the AT sees the correct name from the start.
+		this.syncExternalLabel(this._ariaLabelledby);
+
 		this.validateAllowMultiSort(this._allowMultiSort);
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
@@ -467,7 +507,7 @@ export class KolTableStateful implements TableAPI {
 						_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
 						_siblingCount={this.state._pagination._siblingCount}
 						_tooltipAlign="bottom"
-						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
+						_max={this.state._pagination._max || this.state._data.length}
 						_label={label}
 					></KolPaginationWcTag>
 				</div>
@@ -505,7 +545,20 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private handleSort({ key }: SortEventPayload) {
-		const headerCell = [...(this.state._headers.horizontal || []).flat(), ...(this.state._headers.vertical || []).flat()].find((cell) => cell.key === key);
+		const horizontalHeaders = this.state._headers.horizontal ?? [];
+		const verticalHeaders = this.state._headers.vertical ?? [];
+		const allHeaders: KoliBriTableHeaderCellWithLogic[] = [];
+		for (const row of horizontalHeaders) {
+			if (Array.isArray(row)) {
+				allHeaders.push(...row);
+			}
+		}
+		for (const row of verticalHeaders) {
+			if (Array.isArray(row)) {
+				allHeaders.push(...row);
+			}
+		}
+		const headerCell = allHeaders.find((cell) => cell.key === key);
 		if (headerCell) {
 			this.changeCellSort(headerCell);
 		}
@@ -593,6 +646,7 @@ export class KolTableStateful implements TableAPI {
 			<Host class="kol-table-stateful">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 				<KolTableStatelessWcTag
+					externalLabelElements={this.resolvedElements}
 					ref={this.catchRef}
 					_data={displayedData}
 					_fixedCols={this._fixedCols}
@@ -609,6 +663,7 @@ export class KolTableStateful implements TableAPI {
 					}}
 					_selection={this.state._selection}
 					_hasSettingsMenu={this.state._hasSettingsMenu}
+					_variant={this._variant}
 				/>
 				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>
