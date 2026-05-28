@@ -473,6 +473,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 			case 'NumpadEnter': {
 				if (this.clearButtonFocused) {
 					this.clearSelection();
+					event.preventDefault();
 				} else if (this._isOpen) {
 					if (this.selectFocusedOption()) {
 						this.ctaRef.el?.focus();
