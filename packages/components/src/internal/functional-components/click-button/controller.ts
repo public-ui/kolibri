@@ -30,16 +30,17 @@ export class ClickButtonController extends BaseController<ClickButtonApi> implem
 
 	public focus(options?: FocusFunctionOptions): void {
 		if (this.buttonRef) {
-			const { afterFocus, ...scrollOptions } = options ?? {};
-			const hasScrollOptions = options !== undefined && Object.keys(scrollOptions).length > 0;
-			this.buttonRef.focus(hasScrollOptions ? { preventScroll: true } : undefined);
+			const { afterFocus, preventScroll, ...scrollOptions } = options ?? {};
+			const hasScrollOptions = Object.keys(scrollOptions).length > 0;
+			const focusOptions: FocusOptions | undefined =
+				preventScroll !== undefined || hasScrollOptions ? { preventScroll: preventScroll ?? (hasScrollOptions ? true : false) } : undefined;
+			this.buttonRef.focus(focusOptions);
 			if (hasScrollOptions) {
 				this.buttonRef.scrollIntoView(scrollOptions);
 			}
-			// Note: the afterFocus callback is invoked synchronously here.
-			// Unlike the setFocus utility (which uses IntersectionObserver for smooth-scroll
-			// completion), this simplified implementation cannot await async scroll completion
-			// due to architectural boundary constraints on this internal skeleton component.
+			// afterFocus is invoked synchronously here – unlike setFocus() which uses
+			// IntersectionObserver for smooth-scroll completion, this internal component
+			// cannot await async scroll due to architectural boundary constraints.
 			afterFocus?.();
 		}
 	}

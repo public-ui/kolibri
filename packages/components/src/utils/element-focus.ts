@@ -76,13 +76,15 @@ function isActiveElement(element: HTMLElement): boolean {
  * @see MAX_FOCUS_ATTEMPTS
  */
 export async function setFocus(element: HTMLElement, options?: FocusFunctionOptions): Promise<void> {
-	const { afterFocus, ...scrollOptions } = options ?? {};
-	const hasScrollOptions = options !== undefined && Object.keys(scrollOptions).length > 0;
+	const { afterFocus, preventScroll, ...scrollOptions } = options ?? {};
+	const hasScrollOptions = Object.keys(scrollOptions).length > 0;
+	const focusOptions: FocusOptions | undefined =
+		preventScroll !== undefined || hasScrollOptions ? { preventScroll: preventScroll ?? (hasScrollOptions ? true : false) } : undefined;
 
 	let attempts = 0;
 	do {
 		if (element) {
-			element.focus(hasScrollOptions ? { preventScroll: true } : undefined);
+			element.focus(focusOptions);
 		}
 		await new Promise((r) => requestAnimationFrame(r));
 		attempts++;
