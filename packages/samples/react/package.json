@@ -20,7 +20,6 @@
 		"prebuild": "npm-run-all2 prebuild:*",
 		"prebuild:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" public/assets --dot",
 		"prebuild:themes": "cpy \"node_modules/@public-ui/themes/assets/**/*\" public/assets --dot",
-		"prepare": "pnpm prebuild",
 		"serve": "vite",
 		"start": "vite --open",
 		"test:e2e": "playwright test",

@@ -306,7 +306,7 @@ jobs:
 
       - name: Publish sample react
         run: |
-          npm publish --access restricted 2>&1 | tee /tmp/npm-publish-output.txt
+          npm publish --access restricted --tag ${{env.prefix}}${{github.event.inputs.tag}} 2>&1 | tee /tmp/npm-publish-output.txt
           EXIT_CODE=${PIPESTATUS[0]}
           if [ $EXIT_CODE -ne 0 ]; then
             grep -qE "already exists|previously published|E409|409 Conflict" /tmp/npm-publish-output.txt \
