@@ -11,31 +11,22 @@
 		&__link {
 			display: block;
 			border: 1px solid transparent;
-
-			&.kol-link {
-				color: var(--color-text);
-				padding-right: to-rem(8);
-				padding-left: max(calc(var(--indentation) * var(--level)));
-				text-align: left;
-			}
+			color: var(--color-text);
+			padding-right: to-rem(8);
+			padding-left: max(calc(var(--indentation) * var(--level)));
+			text-align: left;
 
 			&:hover,
 			&:focus-within {
 				background-color: var(--color-primary-variant);
 				border: 1px solid var(--color-primary);
-
-				&.kol-link {
-					color: var(--color-light);
-					outline-offset: 0;
-				}
+				color: var(--color-light);
+				outline: 0;
 			}
 
 			&--active {
 				background-color: var(--color-primary);
-
-				&.kol-link {
-					color: var(--color-light);
-				}
+				color: var(--color-light);
 			}
 		}
 
