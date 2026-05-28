@@ -306,12 +306,16 @@ jobs:
 
       - name: Publish sample react
         run: |
-          npm publish --access restricted --tag ${{env.prefix}}${{github.event.inputs.tag}} 2>&1 | tee /tmp/npm-publish-output.txt
+          TAG="${{env.prefix}}${{github.event.inputs.tag}}"
+          npm publish --access restricted --tag "$TAG" 2>&1 | tee /tmp/npm-publish-output.txt
           EXIT_CODE=${PIPESTATUS[0]}
           if [ $EXIT_CODE -ne 0 ]; then
             grep -qE "already exists|previously published|E409|409 Conflict" /tmp/npm-publish-output.txt \
               && echo "⚠️ Publish skipped – package already exists" \
               || exit 1
+          fi
+          if [ "$TAG" = "dev" ] && [ $EXIT_CODE -eq 0 ]; then
+            npm dist-tag rm @public-ui/sample-react dev 2>/dev/null && echo "🗑️ Removed 'dev' dist-tag" || true
           fi
         working-directory: packages/samples/react
         env:
