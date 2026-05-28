@@ -1,5 +1,7 @@
 import { isObject } from '../../../schema';
 
+export const SAFE_CLASS_NAME_RE = /^[a-zA-Z][a-zA-Z0-9_-]{0,60}$/;
+
 export function normalizeString(value?: unknown): string | never {
 	if (typeof value === 'string') {
 		return value;

@@ -45,7 +45,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 	} = props;
 
 	const isExternal = typeof target === 'string' && target.length > 0 && target !== '_self';
-	const hasExpertSlot = showExpertSlot(label);
+	const hasExpertSlot = showExpertSlot(label) || label === false;
 	const resolvedHref = typeof href === 'string' && href.length > 0 ? href : 'javascript:void(0);';
 	const translateOpenLinkInTab = translate('kol-open-link-in-tab');
 

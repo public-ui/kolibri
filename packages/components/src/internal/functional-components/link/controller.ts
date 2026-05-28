@@ -86,7 +86,7 @@ export class LinkController extends BaseController<LinkApi> {
 			on.onClick(event, href);
 		}
 
-		return { href, shouldDispatchKolEvent: event.defaultPrevented === false };
+		return { href, shouldDispatchKolEvent: true };
 	};
 
 	public constructor(stateAccess: StateAccess<LinkApi>) {
@@ -271,18 +271,11 @@ export class LinkController extends BaseController<LinkApi> {
 	}
 
 	public setAnchorRef = (element?: HTMLAnchorElement): void => {
+		if (this.anchorRef === element) return;
 		const prev = this.anchorRef;
 		this.anchorRef = element;
 		this.tooltipCtrl.syncListeners(prev ?? null, element ?? null, true);
 	};
-
-	public focus(): void {
-		this.anchorRef?.focus();
-	}
-
-	public click(): void {
-		this.anchorRef?.click();
-	}
 
 	public destroy(): void {
 		this.unsubscribeOnLocationChange?.();
@@ -301,7 +294,9 @@ export class LinkController extends BaseController<LinkApi> {
 		const href = this.getRenderProp('href');
 		const ariaCurrentValue = this.getRenderProp('ariaCurrentValue');
 		const isCurrent = typeof location === 'string' && location === href;
-		this.setState('ariaCurrent', isCurrent ? ariaCurrentValue : '');
+		const next = isCurrent ? ariaCurrentValue : '';
+		if (this.getState('ariaCurrent') === next) return;
+		this.setState('ariaCurrent', next);
 	}
 
 	private resolveTooltipLabel(): string {
