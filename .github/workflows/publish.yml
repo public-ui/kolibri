@@ -108,139 +108,139 @@ jobs:
         run: pnpm -r build
 
       - name: Build and publish components
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/components
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v19
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v19
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v20
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v20
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter angular v21
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/adapters/angular/v21
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter react
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/adapters/react
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter react-v19
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/adapters/react-v19
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter react-standalone
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/adapters/react-standalone
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter solid
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/adapters/solid
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter svelte
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/adapters/svelte
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter vue
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/adapters/vue
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter preact
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/adapters/preact
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter hydrate
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/adapters/hydrate
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish adapter react hook form
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/adapters/react-hook-form-adapter
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish tools kolibri-cli
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/tools/kolibri-cli
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish tools mcp
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/tools/mcp
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish theme bwst
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/themes/bwst
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish theme default
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/themes/default
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish theme desy
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/themes/desy
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish theme ecl
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/themes/ecl
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish theme kern
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/themes/kern
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish themes
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/themes
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish sample react
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/samples/react
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
       - name: Build and publish tools visual-tests
-        run: pnpm publish --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}} || echo "⚠️ Publish skipped – package already exists"
+        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
         working-directory: packages/tools/visual-tests
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
