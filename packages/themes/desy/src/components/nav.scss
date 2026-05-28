@@ -23,7 +23,7 @@
 		&__entry {
 			&.kol-link {
 				display: block;
-				height: to-rem(49);
+				min-height: to-rem(49);
 				border-bottom: 1px solid var(--color-dark-blue-100-16);
 
 				.kol-link__text {
@@ -46,7 +46,7 @@
 
 			.kol-button {
 				display: block;
-				height: to-rem(49);
+				min-height: to-rem(49);
 				border-bottom: 1px solid var(--color-dark-blue-100-16);
 
 				&__text {

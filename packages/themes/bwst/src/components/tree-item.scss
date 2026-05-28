@@ -8,23 +8,23 @@
 		--indentation: #{to-rem(20)};
 
 		&__link {
-			display: block;
-			border: 1px solid transparent;
 			color: var(--color-text);
-			text-align: left;
+			display: block;
 			padding-left: max(calc(var(--indentation) * var(--level)));
+			border: 1px solid transparent;
+			text-align: left;
 
 			&:hover,
 			&:focus-within {
-				background-color: var(--color-primary-variant);
-				border: 1px solid var(--color-primary);
 				color: var(--color-light);
+				background-color: var(--color-primary-variant);
 				outline: 0;
+				border: 1px solid var(--color-primary);
 			}
 
 			&--active {
-				background-color: var(--color-primary);
 				color: var(--color-light);
+				background-color: var(--color-primary);
 			}
 		}
 
