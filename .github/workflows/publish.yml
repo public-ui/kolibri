@@ -246,6 +246,59 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
 
+      - name: Verify all packages published to npmjs
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "Verifying version: $VERSION"
+          FAILED=()
+
+          PACKAGES=(
+            "@public-ui/components"
+            "@public-ui/angular-v19"
+            "@public-ui/angular-v20"
+            "@public-ui/angular-v21"
+            "@public-ui/react"
+            "@public-ui/react-v19"
+            "@public-ui/react-standalone"
+            "@public-ui/solid"
+            "@public-ui/svelte"
+            "@public-ui/vue"
+            "@public-ui/preact"
+            "@public-ui/hydrate"
+            "@public-ui/react-hook-form-adapter"
+            "@public-ui/kolibri-cli"
+            "@public-ui/mcp"
+            "@public-ui/theme-bwst"
+            "@public-ui/theme-default"
+            "@public-ui/theme-desy"
+            "@public-ui/theme-ecl"
+            "@public-ui/theme-kern"
+            "@public-ui/themes"
+            "@public-ui/sample-react"
+            "@public-ui/visual-tests"
+          )
+
+          for PKG in "${PACKAGES[@]}"; do
+            PUBLISHED=$(npm view "${PKG}@${VERSION}" version --registry https://registry.npmjs.org 2>/dev/null || true)
+            if [ "$PUBLISHED" = "$VERSION" ]; then
+              echo "✅ ${PKG}@${VERSION}"
+            else
+              echo "❌ ${PKG}@${VERSION} – NOT found on npm (got: '$PUBLISHED')"
+              FAILED+=("$PKG")
+            fi
+          done
+
+          if [ ${#FAILED[@]} -ne 0 ]; then
+            echo ""
+            echo "❌ The following packages were NOT successfully published:"
+            printf '  - %s\n' "${FAILED[@]}"
+            exit 1
+          fi
+
+          echo "✅ All ${#PACKAGES[@]} packages verified on npmjs registry."
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+
       - uses: actions/setup-node@v6
         with:
           node-version: 24
