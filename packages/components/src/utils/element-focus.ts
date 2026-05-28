@@ -79,10 +79,7 @@ export async function setFocus(element: HTMLElement, options?: FocusFunctionOpti
 	const { afterFocus, preventScroll, ...scrollOptions } = options ?? {};
 	const hasScrollOptions = Object.keys(scrollOptions).length > 0;
 	const shouldPreventScroll = preventScroll ?? (hasScrollOptions ? true : false);
-	const focusOptions: FocusOptions | undefined =
-		preventScroll !== undefined || hasScrollOptions
-			? { preventScroll: shouldPreventScroll }
-			: undefined;
+	const focusOptions: FocusOptions | undefined = preventScroll !== undefined || hasScrollOptions ? { preventScroll: shouldPreventScroll } : undefined;
 
 	let attempts = 0;
 	do {
