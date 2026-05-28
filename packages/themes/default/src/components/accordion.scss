@@ -33,6 +33,7 @@
 			display: flex;
 			min-height: to-rem(35.2);
 			cursor: pointer;
+			text-align: left;
 
 			&:focus-within {
 				.kol-button {
