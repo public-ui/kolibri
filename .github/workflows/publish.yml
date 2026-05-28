@@ -107,141 +107,41 @@ jobs:
       - name: Build
         run: pnpm -r build
 
-      - name: Build and publish components
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/components
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter angular v19
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/adapters/angular/v19
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter angular v20
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/adapters/angular/v20
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter angular v21
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/adapters/angular/v21
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter react
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/adapters/react
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter react-v19
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/adapters/react-v19
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter react-standalone
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/adapters/react-standalone
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter solid
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/adapters/solid
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter svelte
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/adapters/svelte
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter vue
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/adapters/vue
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter preact
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/adapters/preact
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter hydrate
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/adapters/hydrate
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish adapter react hook form
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/adapters/react-hook-form-adapter
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish tools kolibri-cli
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/tools/kolibri-cli
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish tools mcp
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/tools/mcp
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish theme bwst
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/themes/bwst
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish theme default
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/themes/default
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish theme desy
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/themes/desy
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish theme ecl
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/themes/ecl
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish theme kern
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/themes/kern
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish themes
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/themes
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish sample react
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/samples/react
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
-          NPM_CONFIG_PROVENANCE: true
-      - name: Build and publish tools visual-tests
-        run: bash ${{ github.workspace }}/scripts/safe-publish.sh --access public --provenance --no-git-checks --tag ${{env.prefix}}${{github.event.inputs.tag}}
-        working-directory: packages/tools/visual-tests
+      - name: Build and publish all packages
+        run: |
+          PACKAGE_DIRS=(
+            'packages/components'
+            'packages/adapters/angular/v19'
+            'packages/adapters/angular/v20'
+            'packages/adapters/angular/v21'
+            'packages/adapters/react'
+            'packages/adapters/react-v19'
+            'packages/adapters/react-standalone'
+            'packages/adapters/solid'
+            'packages/adapters/svelte'
+            'packages/adapters/vue'
+            'packages/adapters/preact'
+            'packages/adapters/hydrate'
+            'packages/adapters/react-hook-form-adapter'
+            'packages/tools/kolibri-cli'
+            'packages/tools/mcp'
+            'packages/themes/bwst'
+            'packages/themes/default'
+            'packages/themes/desy'
+            'packages/themes/ecl'
+            'packages/themes/kern'
+            'packages/themes'
+            'packages/samples/react'
+            'packages/tools/visual-tests'
+          )
+
+          for DIR in "${PACKAGE_DIRS[@]}"; do
+            echo "Publishing package from ${DIR}"
+            (
+              cd "$DIR"
+              bash "${GITHUB_WORKSPACE}/scripts/safe-publish.sh" --access public --provenance --no-git-checks --tag "${{env.prefix}}${{github.event.inputs.tag}}"
+            )
+          done
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
@@ -252,33 +152,34 @@ jobs:
           echo "Verifying version: $VERSION"
           FAILED=()
 
-          PACKAGES=(
-            "@public-ui/components"
-            "@public-ui/angular-v19"
-            "@public-ui/angular-v20"
-            "@public-ui/angular-v21"
-            "@public-ui/react"
-            "@public-ui/react-v19"
-            "@public-ui/react-standalone"
-            "@public-ui/solid"
-            "@public-ui/svelte"
-            "@public-ui/vue"
-            "@public-ui/preact"
-            "@public-ui/hydrate"
-            "@public-ui/react-hook-form-adapter"
-            "@public-ui/kolibri-cli"
-            "@public-ui/mcp"
-            "@public-ui/theme-bwst"
-            "@public-ui/theme-default"
-            "@public-ui/theme-desy"
-            "@public-ui/theme-ecl"
-            "@public-ui/theme-kern"
-            "@public-ui/themes"
-            "@public-ui/sample-react"
-            "@public-ui/visual-tests"
+          PACKAGE_DIRS=(
+            'packages/components'
+            'packages/adapters/angular/v19'
+            'packages/adapters/angular/v20'
+            'packages/adapters/angular/v21'
+            'packages/adapters/react'
+            'packages/adapters/react-v19'
+            'packages/adapters/react-standalone'
+            'packages/adapters/solid'
+            'packages/adapters/svelte'
+            'packages/adapters/vue'
+            'packages/adapters/preact'
+            'packages/adapters/hydrate'
+            'packages/adapters/react-hook-form-adapter'
+            'packages/tools/kolibri-cli'
+            'packages/tools/mcp'
+            'packages/themes/bwst'
+            'packages/themes/default'
+            'packages/themes/desy'
+            'packages/themes/ecl'
+            'packages/themes/kern'
+            'packages/themes'
+            'packages/samples/react'
+            'packages/tools/visual-tests'
           )
 
-          for PKG in "${PACKAGES[@]}"; do
+          for DIR in "${PACKAGE_DIRS[@]}"; do
+            PKG=$(node -p "require('./${DIR}/package.json').name")
             PUBLISHED=$(npm view "${PKG}@${VERSION}" version --registry https://registry.npmjs.org 2>/dev/null || true)
             if [ "$PUBLISHED" = "$VERSION" ]; then
               echo "✅ ${PKG}@${VERSION}"
@@ -295,7 +196,7 @@ jobs:
             exit 1
           fi
 
-          echo "✅ All ${#PACKAGES[@]} packages verified on npmjs registry."
+          echo "✅ All ${#PACKAGE_DIRS[@]} packages verified on npmjs registry."
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
 
