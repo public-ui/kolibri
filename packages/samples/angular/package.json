@@ -27,14 +27,14 @@
 		"zone.js": "0.16.2"
 	},
 	"devDependencies": {
-		"@angular-devkit/build-angular": "21.2.12",
-		"@angular/cli": "21.2.12",
+		"@angular-devkit/build-angular": "21.2.13",
+		"@angular/cli": "21.2.13",
 		"@angular/compiler-cli": "21.2.14",
 		"@types/jasmine": "6.0.0",
 		"@tailwindcss/postcss": "4.3.0",
 		"adopted-style-sheets": "1.1.9-rc.22",
 		"cpy-cli": "7.0.0",
-		"hono": "4.12.22",
+		"hono": "4.12.23",
 		"karma-jasmine": "5.1.0",
 		"karma-chrome-launcher": "3.2.0",
 		"karma-jasmine-html-reporter": "2.2.0",
