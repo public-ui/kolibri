@@ -1,9 +1,10 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
-import { Fragment, h } from '@stencil/core';
+import { h } from '@stencil/core';
 
 import { translate } from '../../../i18n';
 import { showExpertSlot } from '../../../schema';
 import clsx from '../../../utils/clsx';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
 import { SpanFC } from '../span/component';
@@ -55,7 +56,20 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 	const tooltipBadgeText = accessKey || shortKey || '';
 
 	return (
-		<>
+		<BemRootNodeFC
+			block="kol-link"
+			class={clsx(hostClass, {
+				[customClass]: variant === 'custom' && customClass !== '',
+				[`kol-link--${variant}`]: variant !== '',
+			})}
+			modifiers={{
+				disabled,
+				'external-link': isExternal,
+				'hide-label': hideLabel,
+				inline,
+				standalone: !inline,
+			}}
+		>
 			<a
 				ref={refAnchor}
 				href={resolvedHref}
@@ -71,16 +85,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 				aria-owns={ariaOwns || undefined}
 				aria-label={ariaLabel}
 				aria-keyshortcuts={shortKey || undefined}
-				class={clsx('kol-link', {
-					'kol-link--disabled': disabled,
-					'kol-link--external-link': isExternal,
-					'kol-link--hide-label': hideLabel,
-					[`kol-link--${variant}`]: variant !== '',
-					'kol-link--inline': inline,
-					'kol-link--standalone': !inline,
-					[customClass]: variant === 'custom' && customClass !== '',
-					[hostClass as string]: !!hostClass,
-				})}
+				class="kol-link__anchor"
 				onClick={onAnchorClick}
 				role={role || undefined}
 				tabIndex={disabled ? -1 : tabIndex === 0 ? undefined : tabIndex}
@@ -98,11 +103,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 				</SpanFC>
 				{isExternal && <IconFC class="kol-link__icon" label={hideLabel ? '' : translateOpenLinkInTab} icons="kolicon-link-external" aria-hidden={hideLabel} />}
 			</a>
-			{hideLabel && !hasExpertSlot && (
-				<div class="kol-link__tooltip">
-					<TooltipFC badgeText={tooltipBadgeText} label={tooltipLabel} id={tooltipId} refFloating={refTooltipFloating} />
-				</div>
-			)}
-		</>
+			{hideLabel && !hasExpertSlot && <TooltipFC badgeText={tooltipBadgeText} label={tooltipLabel} id={tooltipId} refFloating={refTooltipFloating} />}
+		</BemRootNodeFC>
 	);
 };

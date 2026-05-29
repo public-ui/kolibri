@@ -262,6 +262,53 @@ private catchElement = (element?: HTMLElement): void => {
 - Is a pure renderer that receives props, callbacks, emitters and refs from the controller.
 - Avoids any side effects or state mutation. User interactions are signalled via DOM events which bubble back to the web component.
 - Maps controller props to accessible markup and wires refs for imperative access when required.
+- **Must return exactly one root node** — the BEM block container. Use `RootNodeFC` (see §4.1) instead of a raw `<div>`. Returning a JSX Fragment (`<>…</>`) or multiple top-level siblings is forbidden. All direct children of `<Host>` become flex/grid items whenever the host or a parent theme applies `display: flex` or `display: grid` with a `gap`. A conditionally rendered sibling (e.g. a tooltip) would then participate in that layout context, causing unintended spacing and alignment. Wrapping all output in a single BEM root node prevents this class of layout bugs entirely.
+- **Do not wrap child FCs in unnecessary container elements.** A child FC (e.g. `TooltipFC`) already provides its own BEM root element with all required classes and structure. Adding an extra `<div class="kol-link__tooltip">` around it is redundant — it adds DOM depth, makes CSS selectors less predictable, and suggests a styling concern that belongs inside the FC itself.
+
+  ✅ **Correct — `RootNodeFC` as single root, child FC used directly:**
+
+  ```tsx
+  export const LinkFC: FC<LinkFCProps> = ({ ..., class: hostClass, disabled, hideLabel }) => (
+  	<RootNodeFC blockClass="kol-link" modifiers={{ 'kol-link--disabled': disabled }} class={hostClass}>
+  		<a class="kol-link__anchor">…</a>
+  		{hideLabel && <TooltipFC … />}
+  	</RootNodeFC>
+  );
+  ```
+
+  ❌ **Forbidden — Fragment root, manual `hostClass` merging, unnecessary wrapper div:**
+
+  ```tsx
+  export const LinkFC: FC<LinkFCProps> = ({ ..., class: hostClass, disabled }) => (
+  	<>
+  		<a class={clsx('kol-link', { 'kol-link--disabled': disabled }, { [hostClass]: !!hostClass })}>…</a>  {/* flex/grid item #1 */}
+  		{props.hideLabel && (
+  			<div class="kol-link__tooltip">  {/* flex/grid item #2 — layout leak */}
+  				<TooltipFC … />               {/* unnecessary wrapper */}
+  			</div>
+  		)}
+  	</>
+  );
+  ```
+
+#### §4.1 RootNodeFC
+
+`RootNodeFC` is the standard single-root wrapper for all Skeleton FCs. It lives at `internal/functional-components/root-node/component.tsx`.
+
+**Responsibilities:**
+
+- Renders exactly one `<div>` — structurally enforcing the Single-Root FC rule
+- Merges `blockClass`, `modifiers` and the forwarded `class` prop (`hostClass`) into the element's class attribute
+
+**API:**
+
+| Prop         | Type                                           | Description                                                       |
+| ------------ | ---------------------------------------------- | ----------------------------------------------------------------- |
+| `blockClass` | `string`                                       | BEM block name, e.g. `'kol-link'`                                 |
+| `modifiers`  | `Record<string, boolean \| null \| undefined>` | BEM modifier map, e.g. `{ 'kol-link--disabled': true }`           |
+| `class`      | `string?`                                      | Forwarded from the FC tag — typically `hostClass` from the parent |
+
+The `class` prop on `<RootNodeFC class={hostClass}>` is the exact value passed as `class` on the surrounding FC's tag (e.g. `<LinkFC class="nav-link">`). This 1:1 forwarding means FC authors never manually write `{ [hostClass as string]: !!hostClass }` in a `clsx()` call.
 
 ### Schema Helper Layer
 
@@ -669,6 +716,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 | **FC-First Composition**         | Web component `render()` methods compose exclusively via Functional Components. KoliBri web component tags (`<kol-*>`) must never appear inside another web component's `render()`. Required controller behaviour from replaced web components must be migrated into the enclosing component's controller.                                                                                                                                                                                                               |
 | **Props Pattern**                | Functional components exclusively receive Props that contain either normalized/validated external data or internal component state. Props must always be initialized.                                                                                                                                                                                                                                                                                                                                                    |
 | **Shadow DOM First**             | All web components use `shadow: true`. Components that should not use Shadow DOM are implemented as Functional Components instead.                                                                                                                                                                                                                                                                                                                                                                                       |
+| **Single-Root FC**               | Every Functional Component returns exactly one BEM block container as its root. Fragments and multi-sibling returns are forbidden: all direct children of `<Host>` become flex/grid items when the host applies `display: flex/grid`, causing unintended layout effects for conditionally rendered siblings such as tooltip wrappers.                                                                                                                                                                                    |
 | **ARIA ID Uniqueness via nonce** | Any DOM `id` referenced by ARIA attributes (e.g. `aria-controls`, `aria-labelledby`) must be unique per component instance. Use `private readonly someId = \`prefix-${nonce()}\``with`nonce()`from`utils/dev.utils`. This prevents ID collisions when components are composed inside a shared DOM scope (e.g. multiple WC instances within one shadow root, or direct light-DOM usage). Shadow DOM alone is not sufficient when a shadow component renders multiple instances of an internal WC in the same shadow root. |
 | **State ownership**              | Web components own state (`@State`), controllers manage transitions, functional components consume state.                                                                                                                                                                                                                                                                                                                                                                                                                |
 | **Template Method Pattern**      | The WebComponent defines the lifecycle structure, while the Controller implements specific business logic steps.                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -721,7 +769,11 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Alternative_: reuse existing KoliBri WCs as child elements inside `render()`.
     - _Reason_: Nesting custom elements inside a Shadow DOM causes the browser to instantiate a full second shadow root, including its own lifecycle, re-render queue and style context. This duplicates overhead, creates hidden lifecycle coupling between the outer and inner components, and bypasses the controller layer — breaking the unidirectional data-flow contract. Using FCs directly is zero-cost (pure JSX, no custom element registration) and keeps all business logic visible in one controller.
     - _Array-based pattern_: Components that render a dynamic list of links use `@State() private _tick = 0; private readonly forceRender = () => this._tick++;` to trigger re-renders when any controller's `ariaCurrent` changes. `createLinkStateAccess(this.forceRender)` creates a closure-based `StateAccess<LinkApi>` per controller, and `initLinkControllerFromProps(ctrl, props)` maps underscore-prefixed `LinkProps` to controller initialization. All link controllers are destroyed in `disconnectedCallback` and recreated when the data prop changes.
-14. **Test co-location — all tests live next to the component**
+14. **Single root node in Functional Components**
+    - _Pattern_: Every Functional Component returns exactly one root element — the BEM block container (`<div class="kol-component">…</div>`). All conditional siblings (e.g. tooltip wrappers) are nested inside this root, never placed beside it.
+    - _Alternative_: return a JSX Fragment or multiple sibling elements directly so the `<Host>` element contains more than one direct child.
+    - _Reason_: The `<Host>` element (or the Shadow Root it represents) is the styling anchor for themes. As soon as a theme or host page sets `display: flex` or `display: grid` with a `gap` on `:host`, **every direct child becomes a layout item**. A tooltip that renders as a sibling of the interactive element (e.g. `<a>` + `<div class="…__tooltip">`) would then receive unexpected spacing, alignment, or size — even though it should be positioned independently via `position: absolute/fixed`. Wrapping all output in a single BEM root node eliminates this entire class of layout bugs and makes component styling predictable regardless of the consumer's layout context.
+15. **Test co-location — all tests live next to the component**
     - _Pattern_: All test files are placed directly alongside `component.tsx` in the same directory — **not** in a separate `test/` subdirectory. Two test categories exist:
       - **Snapshot tests** (`snapshot.spec.tsx`) — Jest-based DOM snapshot tests that render the component with various prop combinations via `executeSnapshotTests` and compare against stored snapshots (`__snapshots__/`). Snapshot files are likewise stored in the component directory.
       - **Interaction tests** (`interaction.e2e.ts`) — Playwright-based end-to-end tests that verify user interactions (clicks, keyboard input, focus management, event emission) against the rendered component in a real browser.

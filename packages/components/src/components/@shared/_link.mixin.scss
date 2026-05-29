@@ -10,14 +10,11 @@
 	}
 
 	.#{$block-classname} {
-		$root: &;
 		display: inline-flex;
 		max-width: fit-content;
 
 		align-items: baseline;
 		place-items: center;
-		text-align: left;
-		text-decoration-line: none;
 
 		&--standalone {
 			min-width: var(--a11y-min-size);
@@ -31,14 +28,21 @@
 			}
 		}
 
-		.kol-span__label {
-			text-decoration-line: underline;
-		}
+		&__anchor {
+			display: inline-flex;
+			flex: 1;
+			text-align: left;
+			text-decoration-line: none;
 
-		&:focus:not([aria-disabled], [disabled]),
-		&:hover:not([aria-disabled], [disabled]) {
 			.kol-span__label {
-				text-decoration-thickness: 0.2em;
+				text-decoration-line: underline;
+			}
+
+			&:focus:not([aria-disabled], [disabled]),
+			&:hover:not([aria-disabled], [disabled]) {
+				.kol-span__label {
+					text-decoration-thickness: 0.2em;
+				}
 			}
 		}
 
