@@ -5,18 +5,20 @@ exports[`kol-toolbar should render with _label="Label horizontal" _items=[{"type
   <template shadowrootmode="open">
     <div aria-label="Label horizontal" class="kol-toolbar kol-toolbar--orientation-horizontal" role="toolbar">
       <kol-button-wc _label="Button" _tabindex="0" _variant="normal" class="button kol-toolbar__item normal" type="button"></kol-button-wc>
-      <a class="button kol-link kol-link--inline kol-toolbar__item normal" href="#" tabindex="-1">
-        <span class="kol-link__text kol-span">
-          <span class="kol-span__container">
-            <span class="kol-span__label">
-              Link
-            </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
-              <slot name="expert" slot="expert"></slot>
+      <div class="button kol-link kol-link--inline kol-toolbar__item normal">
+        <a class="kol-link__anchor" href="#" tabindex="-1">
+          <span class="kol-link__text kol-span">
+            <span class="kol-span__container">
+              <span class="kol-span__label">
+                Link
+              </span>
+              <span aria-hidden="true" class="kol-span__label" hidden="">
+                <slot name="expert" slot="expert"></slot>
+              </span>
             </span>
           </span>
-        </span>
-      </a>
+        </a>
+      </div>
     </div>
   </template>
 </kol-toolbar>
@@ -27,18 +29,20 @@ exports[`kol-toolbar should render with _label="Label vertical" _items=[{"type":
   <template shadowrootmode="open">
     <div aria-label="Label vertical" class="kol-toolbar kol-toolbar--orientation-vertical" role="toolbar">
       <kol-button-wc _label="Button" _tabindex="0" _variant="normal" class="button kol-toolbar__item normal" type="button"></kol-button-wc>
-      <a class="button kol-link kol-link--inline kol-toolbar__item normal" href="#" tabindex="-1">
-        <span class="kol-link__text kol-span">
-          <span class="kol-span__container">
-            <span class="kol-span__label">
-              Link
-            </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
-              <slot name="expert" slot="expert"></slot>
+      <div class="button kol-link kol-link--inline kol-toolbar__item normal">
+        <a class="kol-link__anchor" href="#" tabindex="-1">
+          <span class="kol-link__text kol-span">
+            <span class="kol-span__container">
+              <span class="kol-span__label">
+                Link
+              </span>
+              <span aria-hidden="true" class="kol-span__label" hidden="">
+                <slot name="expert" slot="expert"></slot>
+              </span>
             </span>
           </span>
-        </span>
-      </a>
+        </a>
+      </div>
     </div>
   </template>
 </kol-toolbar>

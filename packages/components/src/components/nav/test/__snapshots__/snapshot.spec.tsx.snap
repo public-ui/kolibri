@@ -8,38 +8,42 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item kol-nav__list-item--expanded kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <a aria-controls="kol-nav-list-0-0-nonce" aria-expanded="true" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#section">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Section
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a aria-controls="kol-nav-list-0-0-nonce" aria-expanded="true" class="kol-link__anchor" href="#section">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Section
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
             <ul class="kol-nav__list kol-nav__list--nested kol-nav__list--vertical" id="kol-nav-list-0-0-nonce">
               <li class="kol-nav__list-item kol-nav__list-item--expanded kol-nav__list-item--has-children">
                 <div class="kol-nav__entry-wrapper">
-                  <a aria-controls="kol-nav-list-0-0-1-0-nonce" aria-expanded="true" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#child-link">
-                    <span class="kol-link__text kol-span">
-                      <span class="kol-span__container">
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                        <span class="kol-span__label">
-                          Child link
+                  <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                    <a aria-controls="kol-nav-list-0-0-1-0-nonce" aria-expanded="true" class="kol-link__anchor" href="#child-link">
+                      <span class="kol-link__text kol-span">
+                        <span class="kol-span__container">
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                          <span class="kol-span__label">
+                            Child link
+                          </span>
+                          <span aria-hidden="true" class="kol-span__label" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                         </span>
-                        <span aria-hidden="true" class="kol-span__label" hidden="">
-                          <slot name="expert" slot="expert"></slot>
-                        </span>
-                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
                       </span>
-                    </span>
-                  </a>
+                    </a>
+                  </div>
                 </div>
                 <ul class="kol-nav__list kol-nav__list--nested kol-nav__list--vertical" id="kol-nav-list-0-0-1-0-nonce">
                   <li class="kol-nav__list-item kol-nav__list-item--active">
@@ -76,56 +80,62 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Homepage
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Homepage
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--active">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Nav - aria-current
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Nav - aria-current
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <a aria-expanded="false" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      3 Navigation point
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a aria-expanded="false" class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        3 Navigation point
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item">
@@ -148,56 +158,62 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Homepage
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Homepage
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--active">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Nav - aria-current
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Nav - aria-current
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <a aria-expanded="false" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      3 Navigation point
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a aria-expanded="false" class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        3 Navigation point
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item">
@@ -223,56 +239,62 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Homepage
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Homepage
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--active">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Nav - aria-current
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Nav - aria-current
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <a aria-expanded="false" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      3 Navigation point
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a aria-expanded="false" class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        3 Navigation point
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item">
@@ -295,56 +317,62 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Homepage
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Homepage
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--active">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Nav - aria-current
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Nav - aria-current
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <a aria-expanded="false" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      3 Navigation point
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a aria-expanded="false" class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        3 Navigation point
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item">
@@ -367,56 +395,62 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Homepage
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Homepage
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--active">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Nav - aria-current
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Nav - aria-current
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <a aria-expanded="false" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      3 Navigation point
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a aria-expanded="false" class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        3 Navigation point
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item">
@@ -439,56 +473,62 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-link" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Homepage
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-link" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Homepage
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--active">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-link" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Nav - aria-current
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-link" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Nav - aria-current
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <a aria-expanded="false" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      3 Navigation point
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a aria-expanded="false" class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        3 Navigation point
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item">
@@ -511,56 +551,62 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
         <ul class="kol-nav__list">
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Homepage
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Homepage
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--active">
             <div class="kol-nav__entry-wrapper">
-              <a class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      Nav - aria-current
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        Nav - aria-current
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item kol-nav__list-item--has-children">
             <div class="kol-nav__entry-wrapper">
-              <a aria-expanded="false" class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link" href="#">
-                <span class="kol-link__text kol-span">
-                  <span class="kol-span__container">
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-                    <span class="kol-span__label">
-                      3 Navigation point
+              <div class="kol-link kol-link--inline kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link">
+                <a aria-expanded="false" class="kol-link__anchor" href="#">
+                  <span class="kol-link__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        3 Navigation point
+                      </span>
+                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                     </span>
-                    <span aria-hidden="true" class="kol-span__label" hidden="">
-                      <slot name="expert" slot="expert"></slot>
-                    </span>
-                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
                   </span>
-                </span>
-              </a>
+                </a>
+              </div>
             </div>
           </li>
           <li class="kol-nav__list-item">
