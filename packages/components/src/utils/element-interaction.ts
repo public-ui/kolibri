@@ -1,3 +1,4 @@
+import type { FocusFunctionOptions } from '../schema';
 import { delegateClick as delegateClickImpl, setClick } from './element-click';
 import { delegateFocus as delegateFocusImpl, setFocus } from './element-focus';
 
@@ -16,18 +17,19 @@ export function createCtaRef<T extends HTMLElement = HTMLElement>(): CtaRef<T> {
 
 type MethodDecorator_ = (_target: object, _key: string, descriptor: PropertyDescriptor) => PropertyDescriptor;
 
-/**
- * Replaces the decorated method's body with `fn(this)`. The decorated method MUST be declared with
- * an empty body and no parameters — any code or arguments will be silently discarded.
- *
- *   @Method()
- *   @delegateFocus('ctaRef')
- *   public async focus(): Promise<void> {} // ← body must be empty
- */
 function makeMethodDecorator(fn: (this_: Record<string, unknown>) => Promise<void>): MethodDecorator_ {
 	return (_target, _key, descriptor) => {
 		descriptor.value = async function (this: Record<string, unknown>) {
 			return fn(this);
+		};
+		return descriptor;
+	};
+}
+
+function makeFocusDecorator(fn: (this_: Record<string, unknown>, options?: FocusFunctionOptions) => Promise<void>): MethodDecorator_ {
+	return (_target, _key, descriptor) => {
+		descriptor.value = async function (this: Record<string, unknown>, options?: FocusFunctionOptions) {
+			return fn(this, options);
 		};
 		return descriptor;
 	};
@@ -38,9 +40,9 @@ function makeMethodDecorator(fn: (this_: Record<string, unknown>) => Promise<voi
  * @param refPropName - Class property holding the focusable CtaRef
  */
 export function directFocus(refPropName: string): MethodDecorator_ {
-	return makeMethodDecorator((self) => {
+	return makeFocusDecorator((self, options) => {
 		const element = (self[refPropName] as CtaRef).el;
-		return element ? setFocus(element) : Promise.resolve();
+		return element ? setFocus(element, options) : Promise.resolve();
 	});
 }
 
@@ -61,10 +63,10 @@ export function directClick(refPropName: string): MethodDecorator_ {
  * @param refPropName - Class property holding the focusable CtaRef
  */
 export function delegateFocus(refPropName: string): MethodDecorator_ {
-	return makeMethodDecorator((self) =>
+	return makeFocusDecorator((self, options) =>
 		delegateFocusImpl(self['host'] as HTMLElement, () => {
 			const element = (self[refPropName] as CtaRef).el;
-			return element ? setFocus(element) : Promise.resolve();
+			return element ? setFocus(element, options) : Promise.resolve();
 		}),
 	);
 }

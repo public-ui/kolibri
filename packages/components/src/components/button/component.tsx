@@ -60,8 +60,8 @@ import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
 import { setClick } from '../../utils/element-click';
-import { setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { createCtaRef, directFocus } from '../../utils/element-interaction';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 
@@ -74,28 +74,25 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 })
 export class KolButtonWc implements ButtonAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolButtonWcElement;
-	private buttonRef?: HTMLButtonElement;
+	private readonly ctaRef = createCtaRef<HTMLButtonElement>();
 	private readonly tooltipCtrl = new TooltipController(BaseWebComponent.stateLess);
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(options?: FocusFunctionOptions): Promise<void> {
-		return setFocus(this.buttonRef!, options);
-	}
+	@directFocus('ctaRef')
+	public async focus(options?: FocusFunctionOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return setClick(this.buttonRef!);
+		return setClick(this.ctaRef.el!);
 	}
 
-	private readonly setButtonRef = (ref?: HTMLButtonElement) => {
-		this.buttonRef = ref;
-	};
+	private readonly setButtonRef = this.ctaRef;
 
 	private readonly onClick = (event: MouseEvent) => {
 		event.stopPropagation();
@@ -104,12 +101,12 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 		if (this.state._type === 'submit') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.buttonRef,
+				ref: this.ctaRef.el,
 			});
 		} else if (this.state._type === 'reset') {
 			propagateResetEventToForm({
 				form: this.host,
-				ref: this.buttonRef,
+				ref: this.ctaRef.el,
 			});
 		} else {
 			// TODO: Static form handling
@@ -117,7 +114,7 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 
 			// Callback
 			if (typeof this.state._on?.onClick === 'function') {
-				setEventTarget(event, this.buttonRef);
+				setEventTarget(event, this.ctaRef.el);
 				this.state._on?.onClick(event, this.state._value);
 			}
 		}
@@ -489,8 +486,8 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	}
 
 	public componentDidRender(): void {
-		if (this.buttonRef) {
-			this.tooltipCtrl.syncListeners(undefined, this.buttonRef, true);
+		if (this.ctaRef.el) {
+			this.tooltipCtrl.syncListeners(undefined, this.ctaRef.el, true);
 		}
 	}
 
