@@ -64,9 +64,9 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "19.2.23",
-		"@angular/compiler": "19.2.23",
-		"@angular/compiler-cli": "19.2.23",
+		"@angular/common": "19.2.24",
+		"@angular/compiler": "19.2.24",
+		"@angular/compiler-cli": "19.2.24",
 		"@angular/core": "19.2.21",
 		"@public-ui/components": "workspace:*",
 		"minimatch": "10.2.5",
