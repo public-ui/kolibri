@@ -5,7 +5,7 @@ import clsx from '../../utils/clsx';
 import type {
 	DisabledPropType,
 	FocusableElement,
-	FocusFunctionOptions,
+	FocusOptions,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -69,7 +69,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(options?: FocusFunctionOptions): Promise<void> {
+	public async focus(options?: FocusOptions): Promise<void> {
 		return setFocus(this.selectRef!, options);
 	}
 

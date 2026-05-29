@@ -1,4 +1,4 @@
-import type { FocusFunctionOptions } from '../schema';
+import type { FocusOptions } from '../schema';
 import { delegateClick as delegateClickImpl, setClick } from './element-click';
 import { delegateFocus as delegateFocusImpl, setFocus } from './element-focus';
 
@@ -26,9 +26,9 @@ function makeMethodDecorator(fn: (this_: Record<string, unknown>) => Promise<voi
 	};
 }
 
-function makeFocusDecorator(fn: (this_: Record<string, unknown>, options?: FocusFunctionOptions) => Promise<void>): MethodDecorator_ {
+function makeFocusDecorator(fn: (this_: Record<string, unknown>, options?: FocusOptions) => Promise<void>): MethodDecorator_ {
 	return (_target, _key, descriptor) => {
-		descriptor.value = async function (this: Record<string, unknown>, options?: FocusFunctionOptions) {
+		descriptor.value = async function (this: Record<string, unknown>, options?: FocusOptions) {
 			return fn(this, options);
 		};
 		return descriptor;
@@ -41,7 +41,7 @@ function makeFocusDecorator(fn: (this_: Record<string, unknown>, options?: Focus
  */
 export function directFocus(refPropName: string): MethodDecorator_ {
 	return makeFocusDecorator((self, options) => {
-		const element = (self[refPropName] as CtaRef).el;
+		const element = (self[refPropName] as CtaRef | undefined)?.el;
 		return element ? setFocus(element, options) : Promise.resolve();
 	});
 }
@@ -63,12 +63,14 @@ export function directClick(refPropName: string): MethodDecorator_ {
  * @param refPropName - Class property holding the focusable CtaRef
  */
 export function delegateFocus(refPropName: string): MethodDecorator_ {
-	return makeFocusDecorator((self, options) =>
-		delegateFocusImpl(self['host'] as HTMLElement, () => {
-			const element = (self[refPropName] as CtaRef).el;
+	return makeFocusDecorator((self, options) => {
+		const host = self['host'] as HTMLElement | undefined;
+		if (!host) return Promise.resolve();
+		return delegateFocusImpl(host, () => {
+			const element = (self[refPropName] as CtaRef | undefined)?.el;
 			return element ? setFocus(element, options) : Promise.resolve();
-		}),
-	);
+		});
+	});
 }
 
 /**

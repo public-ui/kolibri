@@ -5,7 +5,7 @@ import type { WebComponentInterface } from '../../../../internal/functional-comp
 import type { SkeletonApi } from '../../../../internal/functional-components/skeleton/api';
 import { SkeletonFC } from '../../../../internal/functional-components/skeleton/component';
 import { SkeletonController } from '../../../../internal/functional-components/skeleton/controller';
-import type { FocusFunctionOptions } from '../../../../schema';
+import type { FocusOptions } from '../../../../schema';
 import { Log } from '../../../../schema';
 
 @Component({
@@ -19,7 +19,7 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	 * Focuses the interactive element of the component.
 	 */
 	@Method()
-	public async focus(options?: FocusFunctionOptions): Promise<void> {
+	public async focus(options?: FocusOptions): Promise<void> {
 		return Promise.resolve(this.ctrl.focus(options));
 	}
 

@@ -1,4 +1,4 @@
-import type { FocusFunctionOptions } from '../../../schema';
+import type { FocusOptions } from '../../../schema';
 import { Log } from '../../../schema';
 import { nameProp } from '../../props';
 import { BaseController } from '../base-controller';
@@ -51,7 +51,7 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 		this.setState('count', (this.getState?.('count') ?? 0) + 1);
 	};
 
-	public focus(options?: FocusFunctionOptions): void {
+	public focus(options?: FocusOptions): void {
 		this.clickButtonCtrl.focus(options);
 	}
 

@@ -4,7 +4,7 @@ import type {
 	BadgeAPI,
 	BadgeStates,
 	FocusableElement,
-	FocusFunctionOptions,
+	FocusOptions,
 	InternalButtonProps,
 	KoliBriIconsProp,
 	LabelPropType,
@@ -67,7 +67,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(options?: FocusFunctionOptions): Promise<void> {
+	public async focus(options?: FocusOptions): Promise<void> {
 		return delegateFocus(this.host!, () => setFocus(this.smartButtonRef!, options));
 	}
 

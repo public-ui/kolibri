@@ -13,7 +13,7 @@ import type {
 	CustomClassPropType,
 	DisabledPropType,
 	FocusableElement,
-	FocusFunctionOptions,
+	FocusOptions,
 	HideLabelPropType,
 	IconsPropType,
 	IdPropType,
@@ -82,7 +82,9 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	 */
 	@Method()
 	@directFocus('ctaRef')
-	public async focus(options?: FocusFunctionOptions): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {
+		void options;
+	}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

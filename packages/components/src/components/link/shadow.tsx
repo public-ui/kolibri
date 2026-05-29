@@ -8,7 +8,7 @@ import type {
 	AriaDescriptionPropType,
 	DownloadPropType,
 	FocusableElement,
-	FocusFunctionOptions,
+	FocusOptions,
 	HrefPropType,
 	InlinePropType,
 	KoliBriIconsProp,
@@ -42,7 +42,7 @@ export class KolLink implements LinkProps, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(options?: FocusFunctionOptions): Promise<void> {
+	public async focus(options?: FocusOptions): Promise<void> {
 		return delegateFocus(this.host!, () => setFocus(this.linkWcRef!, options));
 	}
 

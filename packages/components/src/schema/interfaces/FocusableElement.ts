@@ -1,9 +1,12 @@
+// Alias the browser-native FocusOptions before we shadow the name with our extended type.
+type BrowserFocusOptions = FocusOptions;
+
 /**
- * Options for the {@link FocusableElement.focus} method.
- * Extends the browser's {@link ScrollIntoViewOptions} to support custom scroll behaviour.
+ * Combined focus and scroll options for the {@link FocusableElement.focus} method.
+ * Merges the browser's {@link FocusOptions} and {@link ScrollIntoViewOptions}.
  * All properties are optional to preserve backward compatibility.
  */
-export type FocusFunctionOptions = FocusOptions &
+export type FocusOptions = BrowserFocusOptions &
 	ScrollIntoViewOptions & {
 		/**
 		 * Callback invoked after the element has received focus and has been scrolled into view.
@@ -15,5 +18,5 @@ export type FocusFunctionOptions = FocusOptions &
 	};
 
 export interface FocusableElement {
-	focus(options?: FocusFunctionOptions): Promise<void>;
+	focus(options?: FocusOptions): Promise<void>;
 }
