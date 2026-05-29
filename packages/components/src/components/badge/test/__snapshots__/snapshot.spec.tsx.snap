@@ -12,7 +12,7 @@ exports[`kol-badge should render with _label="**Te**xt" 1`] = `
             </strong>
             xt
           </span>
-          <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
         </span>
       </span>
     </span>
@@ -29,7 +29,7 @@ exports[`kol-badge should render with _label="Badge fallback" _smartButton={"_ar
           <span class="kol-span__label md">
             Badge fallback
           </span>
-          <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
         </span>
       </span>
       <kol-button-wc _ariacontrols="badge-label-nonce" _ariadescription="Badge label" _hidelabel="" _label="Remove" class="kol-badge__smart-button"></kol-button-wc>
@@ -47,7 +47,7 @@ exports[`kol-badge should render with _label="Text" _color="#000000" 1`] = `
           <span class="kol-span__label md">
             Text
           </span>
-          <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
         </span>
       </span>
     </span>
@@ -65,7 +65,7 @@ exports[`kol-badge should render with _label="Text" _icons="codicon codicon-home
           <span class="kol-span__label md">
             Text
           </span>
-          <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
         </span>
       </span>
     </span>
@@ -83,7 +83,7 @@ exports[`kol-badge should render with _label="Text" _icons="codicon codicon-home
           <span class="kol-span__label md">
             Text
           </span>
-          <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
         </span>
       </span>
     </span>
@@ -100,7 +100,7 @@ exports[`kol-badge should render with _label="Text" 1`] = `
           <span class="kol-span__label md">
             Text
           </span>
-          <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
         </span>
       </span>
     </span>
