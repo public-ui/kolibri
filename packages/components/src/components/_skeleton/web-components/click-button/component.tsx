@@ -6,6 +6,7 @@ import { ClickButtonFC } from '../../../../internal/functional-components/click-
 import { ClickButtonController } from '../../../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
 import type { FocusOptions } from '../../../../schema';
+import { ctrlFocus } from '../../../../utils/element-interaction';
 
 /**
  * @internal
@@ -32,8 +33,9 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	 * Focuses the interactive element of the component.
 	 */
 	@Method()
+	@ctrlFocus('ctrl')
 	public async focus(options?: FocusOptions): Promise<void> {
-		return Promise.resolve(this.ctrl.focus(options));
+		void options;
 	}
 
 	public componentWillLoad(): void {

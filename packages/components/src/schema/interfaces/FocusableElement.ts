@@ -1,13 +1,15 @@
-// Alias the browser-native FocusOptions before we shadow the name with our extended type.
-type BrowserFocusOptions = FocusOptions;
-
 /**
  * Combined focus and scroll options for the {@link FocusableElement.focus} method.
- * Merges the browser's {@link FocusOptions} and {@link ScrollIntoViewOptions}.
+ * Merges the browser's native focus options ({@link HTMLElement.focus}) and
+ * scroll-into-view options ({@link Element.scrollIntoView}).
  * All properties are optional to preserve backward compatibility.
  */
-export type FocusOptions = BrowserFocusOptions &
-	ScrollIntoViewOptions & {
+export type FocusOptions = {
+	/** Prevents the browser from scrolling when focus is set — scroll is then handled manually. */
+	preventScroll?: boolean;
+	/** Hints whether focus should be visible (e.g. focus ring). */
+	focusVisible?: boolean;
+} & ScrollIntoViewOptions & {
 		/**
 		 * Callback invoked after the element has received focus and has been scrolled into view.
 		 * When `behavior` is set to `'smooth'`, the callback is delayed until the element is
