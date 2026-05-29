@@ -120,7 +120,7 @@ export const SpanFC: FC<
 			<span class={spanBem('container')}>
 				{renderIcon(left, 'left')}
 				{hideExpertSlot && renderLabel(label, hideLabel, allowMarkdown, badgeText)}
-				<span aria-hidden={hideExpertSlot ? 'true' : undefined} class={spanBem('label')} hidden={hideExpertSlot}>
+				<span aria-hidden={hideExpertSlot ? 'true' : undefined} class={spanBem('slot')} hidden={hideExpertSlot}>
 					{children}
 				</span>
 				{isString(badgeText) && badgeText.length > 0 && (
