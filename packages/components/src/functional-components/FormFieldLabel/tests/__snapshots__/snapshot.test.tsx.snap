@@ -7,7 +7,7 @@ exports[`KolFormFieldLabelFc should render the correct component tag "label"  1`
       <span class="kol-span__label">
         Test Label
       </span>
-      <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
     </span>
   </span>
 </label>
@@ -20,7 +20,7 @@ exports[`KolFormFieldLabelFc should render the correct component tag "legend"  1
       <span class="kol-span__label">
         Test Label
       </span>
-      <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
     </span>
   </span>
 </legend>
@@ -37,7 +37,7 @@ exports[`KolFormFieldLabelFc should render with accessKey and shortKey 1`] = `
         </u>
         bel
       </span>
-      <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
       <kbd aria-hidden="true" class="badge-text-hint">
         A
       </kbd>
@@ -50,7 +50,7 @@ exports[`KolFormFieldLabelFc should render with expert slot 1`] = `
 <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
   <span class="kol-form-field__label-text kol-span">
     <span class="kol-span__container">
-      <span class="kol-span__label"></span>
+      <span class="kol-span__slot"></span>
     </span>
   </span>
 </label>
@@ -63,7 +63,7 @@ exports[`KolFormFieldLabelFc should render with label 1`] = `
       <span class="kol-span__label">
         Test Label
       </span>
-      <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
     </span>
   </span>
 </label>
