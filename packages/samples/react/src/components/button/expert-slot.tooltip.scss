@@ -1,0 +1,71 @@
+// kol-tooltip-wc uses shadow: false — its styles live in the light DOM.
+// These base styles mirror packages/components/src/components/tooltip/style.scss
+// and are required when the component is used without a fully bootstrapped theme.
+.kol-tooltip {
+	display: contents;
+
+	&__floating {
+		opacity: 0;
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: max-content;
+		max-width: 90vw;
+		max-height: 90vh;
+		animation-direction: normal;
+		animation-duration: 250ms;
+		animation-fill-mode: forwards;
+		animation-iteration-count: 1;
+		animation-timing-function: ease-in;
+
+		&.hide {
+			animation-name: hideTooltip;
+		}
+
+		&.show {
+			animation-name: showTooltip;
+		}
+	}
+
+	&__arrow {
+		transform: rotate(45deg);
+		background-color: #fff;
+		border: 1px solid #ccc;
+		position: absolute;
+		z-index: 999;
+		width: 10px;
+		height: 10px;
+	}
+
+	&__content {
+		background-color: #fff;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		color: #000;
+		padding: 4px 12px;
+		position: relative;
+		z-index: 1000;
+	}
+}
+
+@keyframes hideTooltip {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+		display: none;
+	}
+}
+
+@keyframes showTooltip {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

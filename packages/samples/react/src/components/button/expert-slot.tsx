@@ -4,6 +4,8 @@ import React, { useRef } from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
 import { SampleDescription } from '../SampleDescription';
 
+import './expert-slot.tooltip.scss';
+
 const KolTooltip = 'kol-tooltip-wc' as unknown as React.FC<{ _label: string }>;
 
 export const ButtonExpertSlot: FC = () => {
