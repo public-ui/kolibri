@@ -36,7 +36,7 @@ export const ButtonExpertSlot: FC = () => {
 						<KolButton _icons="kolicon-alert-warning" _label="" _variant="danger" _on={dummyEventHandler}>
 							<span slot="expert">Delete with custom text</span>
 						</KolButton>
-						<KolButton ref={iconButtonRef as React.Ref<never>} _hideLabel _label="Delete with custom text" _variant="danger" _on={dummyEventHandler}>
+						<KolButton ref={iconButtonRef as React.Ref<never>} _label="" _variant="danger" _on={dummyEventHandler}>
 							<KolIcon _icons="kolicon-alert-warning" _label="Delete with custom text" slot="expert" />
 						</KolButton>
 						<KolTooltip _label="Delete with custom text" />
