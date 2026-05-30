@@ -33,6 +33,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { IconFC } from '../../internal/functional-components/icon/component';
+import { getFeatureFlag } from '../../core/bootstrap';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -164,7 +165,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	private getStepUpButton(): VNode | null {
-		if (this._disabled || this._readOnly) {
+		if (this._disabled || this._readOnly || getFeatureFlag('inputNumberButtons') === 'hide') {
 			return null;
 		}
 
@@ -193,7 +194,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	private getStepDownButton(): VNode | null {
-		if (this._disabled || this._readOnly) {
+		if (this._disabled || this._readOnly || getFeatureFlag('inputNumberButtons') === 'hide') {
 			return null;
 		}
 

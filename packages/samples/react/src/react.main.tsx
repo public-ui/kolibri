@@ -61,6 +61,8 @@ void (async () => {
 			{
 				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
 				reflectInputValues: true,
+				// Uncomment to test the inputNumberButtons feature flag (hides step buttons on KolInputNumber):
+				// features: { inputNumberButtons: 'hide' },
 				theme: process.env.THEME_MODULE
 					? undefined
 					: {

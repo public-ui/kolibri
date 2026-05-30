@@ -5,6 +5,14 @@ import { Log, setRuntimeMode } from '../schema';
 import { setCustomTagNames } from './component-names';
 import { initializeI18n } from './i18n';
 
+export type KoliBriFeatureFlags = {
+	/**
+	 * Controls visibility of step-up/step-down buttons in KolInputNumber.
+	 * Default: 'show'
+	 */
+	inputNumberButtons?: 'show' | 'hide';
+};
+
 type KoliBriOptions = RegisterOptions & {
 	/**
 	 * The environment in which the application is running.
@@ -19,6 +27,11 @@ type KoliBriOptions = RegisterOptions & {
 	 * When enabled, all input fields will reflect their current value to the host element, making it accessible outside the shadow DOM.
 	 */
 	reflectInputValues?: boolean;
+
+	/**
+	 * Feature flags for opting in/out of optional component behaviors.
+	 */
+	features?: KoliBriFeatureFlags;
 };
 
 let initialized = false;
@@ -52,3 +65,4 @@ export const bootstrap = async (
 export const register = bootstrap;
 export const isInitialized = () => initialized;
 export const getOptions = () => options;
+export const getFeatureFlag = <K extends keyof KoliBriFeatureFlags>(key: K): KoliBriFeatureFlags[K] | undefined => options?.features?.[key];
