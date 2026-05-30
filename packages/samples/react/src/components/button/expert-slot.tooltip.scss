@@ -31,21 +31,25 @@
 	&__arrow {
 		transform: rotate(45deg);
 		background-color: #fff;
-		border: 1px solid #ccc;
+
 		position: absolute;
 		z-index: 999;
 		width: 10px;
 		height: 10px;
+
+		border: 1px solid #ccc;
 	}
 
 	&__content {
-		background-color: #fff;
-		border: 1px solid #ccc;
-		border-radius: 4px;
 		color: #000;
-		padding: 4px 12px;
+		background-color: #fff;
+		border-radius: 4px;
+
 		position: relative;
 		z-index: 1000;
+		padding: 4px 12px;
+
+		border: 1px solid #ccc;
 	}
 }
 
