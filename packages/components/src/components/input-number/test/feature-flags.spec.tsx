@@ -1,14 +1,13 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
+import { getFeatureFlag } from '../../../core/bootstrap';
 import { KolInputNumber } from '../shadow';
 
 jest.mock('../../../core/bootstrap', () => ({
-	...jest.requireActual('../../../core/bootstrap'),
 	getFeatureFlag: jest.fn(),
 }));
 
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const { getFeatureFlag } = require('../../../core/bootstrap') as { getFeatureFlag: jest.Mock };
+const mockGetFeatureFlag = getFeatureFlag as jest.MockedFunction<typeof getFeatureFlag>;
 
 const render = () =>
 	newSpecPage({
@@ -22,7 +21,7 @@ describe('KolInputNumber – inputNumberButtons feature flag', () => {
 	});
 
 	it('renders step buttons when flag is not set (default)', async () => {
-		getFeatureFlag.mockReturnValue(undefined);
+		mockGetFeatureFlag.mockReturnValue(undefined);
 		const page = await render();
 		await page.waitForChanges();
 
@@ -31,7 +30,7 @@ describe('KolInputNumber – inputNumberButtons feature flag', () => {
 	});
 
 	it('renders step buttons when flag is "show"', async () => {
-		getFeatureFlag.mockReturnValue('show');
+		mockGetFeatureFlag.mockReturnValue('show');
 		const page = await render();
 		await page.waitForChanges();
 
@@ -40,7 +39,7 @@ describe('KolInputNumber – inputNumberButtons feature flag', () => {
 	});
 
 	it('hides step buttons when flag is "hide"', async () => {
-		getFeatureFlag.mockReturnValue('hide');
+		mockGetFeatureFlag.mockReturnValue('hide');
 		const page = await render();
 		await page.waitForChanges();
 
