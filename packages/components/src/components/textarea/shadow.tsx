@@ -6,6 +6,7 @@ import type {
 	AdjustHeightPropType,
 	DisabledPropType,
 	FocusableElement,
+	FocusOptions,
 	HasCounterPropType,
 	HideLabelPropType,
 	HideMsgPropType,
@@ -81,7 +82,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

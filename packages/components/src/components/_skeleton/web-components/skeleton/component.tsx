@@ -6,6 +6,7 @@ import type { SkeletonApi } from '../../../../internal/functional-components/ske
 import { SkeletonFC } from '../../../../internal/functional-components/skeleton/component';
 import { SkeletonController } from '../../../../internal/functional-components/skeleton/controller';
 import { Log } from '../../../../schema';
+import { ctrlFocus } from '../../../../utils/element-interaction';
 
 @Component({
 	tag: 'kol-skeleton',
@@ -18,9 +19,8 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	 * Focuses the interactive element of the component.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return Promise.resolve(this.ctrl.focus());
-	}
+	@ctrlFocus('ctrl')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Toggles the visibility of the skeleton component.

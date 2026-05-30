@@ -8,6 +8,7 @@ import type {
 	AriaDescriptionPropType,
 	DownloadPropType,
 	FocusableElement,
+	FocusOptions,
 	HrefPropType,
 	InlinePropType,
 	KoliBriIconsProp,
@@ -38,7 +39,7 @@ export class KolLink implements LinkProps, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	public render(): JSX.Element {
 		return (

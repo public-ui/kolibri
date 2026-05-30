@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
-import type { FocusableElement, LabelPropType, TreeAPI, TreeStates } from '../../schema';
+import type { FocusableElement, FocusOptions, LabelPropType, TreeAPI, TreeStates } from '../../schema';
 import { validateLabel } from '../../schema';
 
 /**
@@ -37,9 +37,9 @@ export class KolTreeWc implements TreeAPI, FocusableElement {
 	 * Sets focus on the first focusable tree item.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
+	public async focus(options?: FocusOptions): Promise<void> {
 		const openItems = await this.getOpenTreeItemElements();
-		await openItems?.[0]?.focus();
+		await openItems?.[0]?.focus(options);
 	}
 
 	/**

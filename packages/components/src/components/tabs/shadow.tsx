@@ -4,6 +4,7 @@ import type {
 	AlignPropType,
 	ButtonCallbacksPropType,
 	FocusableElement,
+	FocusOptions,
 	KoliBriTabsCallbacks,
 	LabelPropType,
 	StencilUnknown,
@@ -163,7 +164,7 @@ export class KolTabs implements TabsAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	/**
 	 * Triggers a click on the currently selected tab.

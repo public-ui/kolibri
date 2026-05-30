@@ -4,6 +4,7 @@ import type {
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
+	FocusOptions,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -95,7 +96,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

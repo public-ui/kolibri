@@ -15,6 +15,7 @@ import type {
 	DisabledPropType,
 	DownloadPropType,
 	FocusableElement,
+	FocusOptions,
 	HideLabelPropType,
 	HrefPropType,
 	InlinePropType,
@@ -86,7 +87,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	 */
 	@Method()
 	@directFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

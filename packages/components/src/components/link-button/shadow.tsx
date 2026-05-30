@@ -10,6 +10,7 @@ import type {
 	CustomClassPropType,
 	DownloadPropType,
 	FocusableElement,
+	FocusOptions,
 	HrefPropType,
 	IconsPropType,
 	LabelWithExpertSlotPropType,
@@ -42,7 +43,7 @@ export class KolLinkButton implements LinkButtonProps, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

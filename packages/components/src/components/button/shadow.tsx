@@ -11,6 +11,7 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	FocusableElement,
+	FocusOptions,
 	IconsPropType,
 	InlinePropType,
 	LabelWithExpertSlotPropType,
@@ -51,7 +52,7 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

@@ -3,6 +3,7 @@ import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@sten
 import type {
 	DisabledPropType,
 	FocusableElement,
+	FocusOptions,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -77,7 +78,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	private toggleListbox = (event: Event) => {
 		event?.preventDefault();

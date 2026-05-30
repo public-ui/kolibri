@@ -6,6 +6,7 @@ import type {
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
+	FocusOptions,
 	HasCounterPropType,
 	HideLabelPropType,
 	HideMsgPropType,
@@ -74,7 +75,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

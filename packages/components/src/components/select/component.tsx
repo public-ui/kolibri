@@ -5,6 +5,7 @@ import clsx from '../../utils/clsx';
 import type {
 	DisabledPropType,
 	FocusableElement,
+	FocusOptions,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -65,7 +66,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 */
 	@Method()
 	@directFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

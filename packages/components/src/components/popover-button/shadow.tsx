@@ -8,6 +8,7 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	FocusableElement,
+	FocusOptions,
 	IconsPropType,
 	InlinePropType,
 	LabelWithExpertSlotPropType,
@@ -68,7 +69,7 @@ export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	public render(): JSX.Element {
 		return (

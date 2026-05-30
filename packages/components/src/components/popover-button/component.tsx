@@ -11,6 +11,7 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	FocusableElement,
+	FocusOptions,
 	IconsPropType,
 	IdPropType,
 	InlinePropType,
@@ -93,7 +94,7 @@ export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement 
 	 */
 	@Method()
 	@directFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
