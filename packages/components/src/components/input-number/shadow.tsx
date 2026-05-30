@@ -29,11 +29,11 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
+import { getFeatureFlag } from '../../core/bootstrap';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { IconFC } from '../../internal/functional-components/icon/component';
-import { getFeatureFlag } from '../../core/bootstrap';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
