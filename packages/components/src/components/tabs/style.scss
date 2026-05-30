@@ -52,6 +52,13 @@
 				border-bottom-color: transparent;
 				display: block;
 				border-bottom-style: solid;
+
+				@media (forced-colors: active) {
+					&.selected {
+						outline: 3px solid Highlight;
+						outline-offset: -3px;
+					}
+				}
 			}
 		}
 
