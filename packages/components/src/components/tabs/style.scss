@@ -57,6 +57,10 @@
 					&.selected {
 						outline: 3px solid Highlight;
 						outline-offset: -3px;
+
+						&:focus-visible {
+							outline-style: dashed;
+						}
 					}
 				}
 			}
