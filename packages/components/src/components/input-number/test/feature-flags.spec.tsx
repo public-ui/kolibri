@@ -1,13 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-import { getFeatureFlag } from '../../../core/bootstrap';
+import * as bootstrapModule from '../../../core/bootstrap';
 import { KolInputNumber } from '../shadow';
-
-jest.mock('../../../core/bootstrap', () => ({
-	getFeatureFlag: jest.fn(),
-}));
-
-const mockGetFeatureFlag = getFeatureFlag as jest.MockedFunction<typeof getFeatureFlag>;
 
 const render = () =>
 	newSpecPage({
@@ -17,11 +11,11 @@ const render = () =>
 
 describe('KolInputNumber – inputNumberButtons feature flag', () => {
 	afterEach(() => {
-		jest.clearAllMocks();
+		jest.restoreAllMocks();
 	});
 
 	it('renders step buttons when flag is not set (default)', async () => {
-		mockGetFeatureFlag.mockReturnValue(undefined);
+		jest.spyOn(bootstrapModule, 'getFeatureFlag').mockReturnValue(undefined);
 		const page = await render();
 		await page.waitForChanges();
 
@@ -30,7 +24,7 @@ describe('KolInputNumber – inputNumberButtons feature flag', () => {
 	});
 
 	it('renders step buttons when flag is "show"', async () => {
-		mockGetFeatureFlag.mockReturnValue('show');
+		jest.spyOn(bootstrapModule, 'getFeatureFlag').mockReturnValue('show');
 		const page = await render();
 		await page.waitForChanges();
 
@@ -39,7 +33,7 @@ describe('KolInputNumber – inputNumberButtons feature flag', () => {
 	});
 
 	it('hides step buttons when flag is "hide"', async () => {
-		mockGetFeatureFlag.mockReturnValue('hide');
+		jest.spyOn(bootstrapModule, 'getFeatureFlag').mockReturnValue('hide');
 		const page = await render();
 		await page.waitForChanges();
 
