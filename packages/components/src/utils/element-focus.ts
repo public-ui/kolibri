@@ -6,15 +6,19 @@ const MAX_FOCUS_ATTEMPTS = 10;
 /**
  * Waits until the given element intersects the viewport.
  * Resolves immediately (asynchronously) if the element is already visible in the viewport.
+ * Falls back to an immediate resolve when {@link IntersectionObserver} is unavailable (e.g. SSR).
+ * A safety timeout guarantees the promise always resolves even when the element never enters
+ * the viewport (e.g. hidden, detached, or scroll blocked).
  *
  * @param element - The element to observe
+ * @param timeoutMs - Maximum time to wait before resolving regardless of visibility (default 2000 ms)
  */
-function waitForElementInViewport(element: HTMLElement): Promise<void> {
+function waitForElementInViewport(element: HTMLElement, timeoutMs = 2000): Promise<void> {
 	return new Promise<void>((resolve) => {
-		const timeoutId = setTimeout(() => {
-			observer.disconnect();
+		if (typeof IntersectionObserver === 'undefined') {
 			resolve();
-		}, 2000);
+			return;
+		}
 
 		const observer = new IntersectionObserver(
 			(entries) => {
@@ -26,6 +30,12 @@ function waitForElementInViewport(element: HTMLElement): Promise<void> {
 			},
 			{ threshold: 0 },
 		);
+
+		const timeoutId = window.setTimeout(() => {
+			observer.disconnect();
+			resolve();
+		}, timeoutMs);
+
 		observer.observe(element);
 	});
 }
