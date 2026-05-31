@@ -6,8 +6,8 @@ import { createUniqueId } from '../../utils/dev.utils';
 
 import { KolButtonTag } from '../../core/component-names';
 import { KolToastItemFc } from '../../functional-components';
-import { Log } from '../../schema';
 import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '../../schema';
+import { Log } from '../../schema';
 
 const TRANSITION_TIMEOUT = 300;
 
