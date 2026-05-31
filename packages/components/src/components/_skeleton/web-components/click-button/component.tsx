@@ -5,6 +5,7 @@ import type { ClickButtonApi } from '../../../../internal/functional-components/
 import { ClickButtonFC } from '../../../../internal/functional-components/click-button/component';
 import { ClickButtonController } from '../../../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
+import type { FocusOptions } from '../../../../schema';
 import { ctrlFocus } from '../../../../utils/element-interaction';
 
 /**
@@ -33,7 +34,9 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	 */
 	@Method()
 	@ctrlFocus('ctrl')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: FocusOptions): Promise<void> {}
 
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({

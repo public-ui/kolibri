@@ -45,6 +45,8 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public async focus(options?: FocusOptions): Promise<void> {}
 
 	/**

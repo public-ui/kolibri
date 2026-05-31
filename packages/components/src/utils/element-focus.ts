@@ -11,9 +11,15 @@ const MAX_FOCUS_ATTEMPTS = 10;
  */
 function waitForElementInViewport(element: HTMLElement): Promise<void> {
 	return new Promise<void>((resolve) => {
+		const timeoutId = setTimeout(() => {
+			observer.disconnect();
+			resolve();
+		}, 2000);
+
 		const observer = new IntersectionObserver(
 			(entries) => {
 				if (entries.some((entry) => entry.isIntersecting)) {
+					clearTimeout(timeoutId);
 					observer.disconnect();
 					resolve();
 				}
@@ -76,10 +82,11 @@ function isActiveElement(element: HTMLElement): boolean {
  * @see MAX_FOCUS_ATTEMPTS
  */
 export async function setFocus(element: HTMLElement, options?: FocusOptions): Promise<void> {
-	const { afterFocus, preventScroll, ...scrollOptions } = options ?? {};
+	const { afterFocus, preventScroll, focusVisible, ...scrollOptions } = options ?? {};
 	const hasScrollOptions = Object.keys(scrollOptions).length > 0;
 	const shouldPreventScroll = preventScroll ?? (hasScrollOptions ? true : false);
-	const focusOptions: FocusOptions | undefined = preventScroll !== undefined || hasScrollOptions ? { preventScroll: shouldPreventScroll } : undefined;
+	const focusOptions =
+		preventScroll !== undefined || focusVisible !== undefined || hasScrollOptions ? { preventScroll: shouldPreventScroll, focusVisible } : undefined;
 
 	let attempts = 0;
 	do {
@@ -90,11 +97,13 @@ export async function setFocus(element: HTMLElement, options?: FocusOptions): Pr
 		attempts++;
 	} while (!isActiveElement(element) && attempts < MAX_FOCUS_ATTEMPTS);
 
+	const focused = isActiveElement(element);
+
 	if (hasScrollOptions) {
 		element.scrollIntoView(scrollOptions);
 	}
 
-	if (afterFocus) {
+	if (afterFocus && focused) {
 		if (hasScrollOptions && scrollOptions.behavior === 'smooth') {
 			await waitForElementInViewport(element);
 		}
