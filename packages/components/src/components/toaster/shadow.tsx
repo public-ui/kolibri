@@ -6,6 +6,7 @@ import { createUniqueId } from '../../utils/dev.utils';
 
 import { KolButtonTag } from '../../core/component-names';
 import { KolToastItemFc } from '../../functional-components';
+import { Log } from '../../schema';
 import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '../../schema';
 
 const TRANSITION_TIMEOUT = 300;
@@ -30,6 +31,12 @@ export class KolToastContainer implements ToasterAPI {
 
 	/* Keep track of render functions, so we call each only once. */
 	private knownRenderFunctions = new Set<ToastRenderFunction>();
+
+	public componentWillLoad(): void {
+		Log.warn(
+			'kol-toast-container is deprecated and will be removed in the next major version. Use kol-alert for inline notifications or kol-dialog for interactive messages instead. See https://github.com/public-ui/kolibri/issues/8372',
+		);
+	}
 
 	// Stencil requires async function:
 	/**
