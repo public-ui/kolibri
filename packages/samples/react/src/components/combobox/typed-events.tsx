@@ -14,10 +14,8 @@ import { SampleDescription } from '../SampleDescription';
 export const ComboboxTypedEvents: FC = () => {
 	const [value, setValue] = useState<string>('');
 
-	const handleChange: EventValueOrEventCallback<Event, unknown> = (_event, newValue) => {
-		if (typeof newValue === 'string') {
-			setValue(newValue);
-		}
+	const handleChange: EventValueOrEventCallback<Event, string> = (_event, newValue = '') => {
+		setValue(newValue);
 	};
 
 	return (
