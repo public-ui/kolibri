@@ -1,4 +1,4 @@
-import type { FocusOptions } from '../schema';
+import type { KolFocusOptions } from '../schema';
 import { waitForThemed } from './element-themed';
 
 const MAX_FOCUS_ATTEMPTS = 10;
@@ -91,7 +91,7 @@ function isActiveElement(element: HTMLElement): boolean {
  * @param options - Optional scroll behaviour and completion callback
  * @see MAX_FOCUS_ATTEMPTS
  */
-export async function setFocus(element: HTMLElement, options?: FocusOptions): Promise<void> {
+export async function setFocus(element: HTMLElement, options?: KolFocusOptions): Promise<void> {
 	const { afterFocus, preventScroll, focusVisible, ...scrollOptions } = options ?? {};
 	const hasScrollOptions = Object.keys(scrollOptions).length > 0;
 	const shouldPreventScroll = preventScroll ?? (hasScrollOptions ? true : false);

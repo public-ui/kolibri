@@ -6,7 +6,6 @@ import type {
 	CheckedPropType,
 	DisabledPropType,
 	FocusableElement,
-	FocusOptions,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -15,6 +14,7 @@ import type {
 	InputCheckboxIconsProp,
 	InputCheckboxStates,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelAlignPropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -75,7 +75,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@delegateFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: FocusOptions): Promise<void> {}
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

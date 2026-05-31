@@ -1,4 +1,4 @@
-import type { FocusOptions } from '../../../schema';
+import type { KolFocusOptions } from '../../../schema';
 import { labelProp } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
@@ -28,7 +28,7 @@ export class ClickButtonController extends BaseController<ClickButtonApi> implem
 		console.log(this, this.buttonRef, 'button clicked');
 	};
 
-	public focus(options?: FocusOptions): void {
+	public focus(options?: KolFocusOptions): void {
 		if (this.buttonRef) {
 			const { afterFocus, preventScroll, focusVisible, ...scrollOptions } = options ?? {};
 			const hasScrollOptions = Object.keys(scrollOptions).length > 0;

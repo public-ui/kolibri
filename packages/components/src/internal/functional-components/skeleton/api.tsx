@@ -1,4 +1,4 @@
-import type { FocusOptions } from '../../../schema';
+import type { KolFocusOptions } from '../../../schema';
 import { nameProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
@@ -20,7 +20,7 @@ export type SkeletonApi = ApiFromConfig<
 			keydown: KeyboardEvent;
 		};
 		Methods: {
-			focus: (options?: FocusOptions) => void;
+			focus: (options?: KolFocusOptions) => void;
 			toggle: () => void;
 		};
 		Refs: {

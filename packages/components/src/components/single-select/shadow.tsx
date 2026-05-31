@@ -3,12 +3,12 @@ import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@sten
 import type {
 	DisabledPropType,
 	FocusableElement,
-	FocusOptions,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
 	IconsHorizontalPropType,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -80,7 +80,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	@delegateFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: FocusOptions): Promise<void> {}
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	private toggleListbox = (event: Event) => {
 		event?.preventDefault();

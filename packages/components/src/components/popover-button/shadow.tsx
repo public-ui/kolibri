@@ -8,9 +8,9 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	FocusableElement,
-	FocusOptions,
 	IconsPropType,
 	InlinePropType,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	PopoverAlignPropType,
 	ShortKeyPropType,
@@ -71,7 +71,7 @@ export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
 	@delegateFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: FocusOptions): Promise<void> {}
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public render(): JSX.Element {
 		return (

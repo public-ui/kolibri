@@ -1,4 +1,4 @@
-import type { FocusOptions } from '../schema';
+import type { KolFocusOptions } from '../schema';
 import { delegateClick as delegateClickImpl, setClick } from './element-click';
 import { delegateFocus as delegateFocusImpl, setFocus } from './element-focus';
 
@@ -26,9 +26,9 @@ function makeMethodDecorator(fn: (this_: Record<string, unknown>) => Promise<voi
 	};
 }
 
-function makeFocusDecorator(fn: (this_: Record<string, unknown>, options?: FocusOptions) => Promise<void>): MethodDecorator_ {
+function makeFocusDecorator(fn: (this_: Record<string, unknown>, options?: KolFocusOptions) => Promise<void>): MethodDecorator_ {
 	return (_target, _key, descriptor) => {
-		descriptor.value = async function (this: Record<string, unknown>, options?: FocusOptions) {
+		descriptor.value = async function (this: Record<string, unknown>, options?: KolFocusOptions) {
 			return fn(this, options);
 		};
 		return descriptor;
@@ -80,7 +80,7 @@ export function delegateFocus(refPropName: string): MethodDecorator_ {
  */
 export function ctrlFocus(ctrlPropName: string): MethodDecorator_ {
 	return makeFocusDecorator((self, options) => {
-		const ctrl = self[ctrlPropName] as { focus?: (options?: FocusOptions) => void } | undefined;
+		const ctrl = self[ctrlPropName] as { focus?: (options?: KolFocusOptions) => void } | undefined;
 		ctrl?.focus?.(options);
 		return Promise.resolve();
 	});

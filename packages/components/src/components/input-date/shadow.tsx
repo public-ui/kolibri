@@ -6,7 +6,6 @@ import type {
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
-	FocusOptions,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
@@ -17,6 +16,7 @@ import type {
 	InputTypeOnDefault,
 	InternalButtonProps,
 	Iso8601,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -74,7 +74,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@delegateFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: FocusOptions): Promise<void> {}
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

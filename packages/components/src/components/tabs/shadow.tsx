@@ -4,7 +4,7 @@ import type {
 	AlignPropType,
 	ButtonCallbacksPropType,
 	FocusableElement,
-	FocusOptions,
+	KolFocusOptions,
 	KoliBriTabsCallbacks,
 	LabelPropType,
 	StencilUnknown,
@@ -166,7 +166,7 @@ export class KolTabs implements TabsAPI, FocusableElement {
 	@delegateFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: FocusOptions): Promise<void> {}
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Triggers a click on the currently selected tab.

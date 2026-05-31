@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
-import type { FocusableElement, FocusOptions, LabelPropType, ToolbarAPI, ToolbarItemPropType, ToolbarItemsPropType, ToolbarStates } from '../../schema';
+import type { FocusableElement, KolFocusOptions, LabelPropType, ToolbarAPI, ToolbarItemPropType, ToolbarItemsPropType, ToolbarStates } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
@@ -33,7 +33,7 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 	 * Sets focus on the currently active toolbar item.
 	 */
 	@Method()
-	public async focus(options?: FocusOptions): Promise<void> {
+	public async focus(options?: KolFocusOptions): Promise<void> {
 		const firstEnabledItem = this.indexToElement.get(this.currentIndex);
 		if (firstEnabledItem) {
 			return delegateFocus(this.host!, () => setFocus(firstEnabledItem, options));

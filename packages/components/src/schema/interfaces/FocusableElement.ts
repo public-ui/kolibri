@@ -4,7 +4,7 @@
  * scroll-into-view options ({@link Element.scrollIntoView}).
  * All properties are optional to preserve backward compatibility.
  */
-export type FocusOptions = {
+export type KolFocusOptions = {
 	/** Prevents the browser from scrolling when focus is set — scroll is then handled manually. */
 	preventScroll?: boolean;
 	/** Hints whether focus should be visible (e.g. focus ring). */
@@ -20,5 +20,5 @@ export type FocusOptions = {
 	};
 
 export interface FocusableElement {
-	focus(options?: FocusOptions): Promise<void>;
+	focus(options?: KolFocusOptions): Promise<void>;
 }

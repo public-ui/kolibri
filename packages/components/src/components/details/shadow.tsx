@@ -6,8 +6,8 @@ import type {
 	DetailsStates,
 	DisabledPropType,
 	FocusableElement,
-	FocusOptions,
 	HeadingLevel,
+	KolFocusOptions,
 	LabelPropType,
 } from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
@@ -47,7 +47,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	@delegateFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: FocusOptions): Promise<void> {}
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Triggers a click on the summary/toggle button.

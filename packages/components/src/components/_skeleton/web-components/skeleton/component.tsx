@@ -5,7 +5,7 @@ import type { WebComponentInterface } from '../../../../internal/functional-comp
 import type { SkeletonApi } from '../../../../internal/functional-components/skeleton/api';
 import { SkeletonFC } from '../../../../internal/functional-components/skeleton/component';
 import { SkeletonController } from '../../../../internal/functional-components/skeleton/controller';
-import { Log, type FocusOptions } from '../../../../schema';
+import { Log, type KolFocusOptions } from '../../../../schema';
 import { ctrlFocus } from '../../../../utils/element-interaction';
 
 @Component({
@@ -22,7 +22,7 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	@ctrlFocus('ctrl')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: FocusOptions): Promise<void> {}
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Toggles the visibility of the skeleton component.

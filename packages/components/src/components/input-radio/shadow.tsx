@@ -5,13 +5,13 @@ import clsx from '../../utils/clsx';
 import type {
 	DisabledPropType,
 	FocusableElement,
-	FocusOptions,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,
 	InputRadioAPI,
 	InputRadioStates,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -80,7 +80,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(options?: FocusOptions) {
+	public async focus(options?: KolFocusOptions) {
 		return delegateFocus(this.host!, () => setFocus(this.getFocusableInput()!, options));
 	}
 

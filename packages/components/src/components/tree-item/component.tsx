@@ -2,7 +2,7 @@ import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } fro
 
 import { KolLinkWcTag, KolTreeTag } from '../../core/component-names';
 import { IconFC } from '../../internal/functional-components/icon/component';
-import type { ActivePropType, FocusOptions, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
+import type { ActivePropType, HrefPropType, KolFocusOptions, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
@@ -174,7 +174,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	/**
 	 * Focuses the link element.
 	 */
-	@Method() async focus(options?: FocusOptions) {
+	@Method() async focus(options?: KolFocusOptions) {
 		if (this.host && this.linkElement) {
 			return Promise.resolve(this.linkElement.focus(options));
 		}

@@ -9,8 +9,8 @@ import type {
 	ButtonVariantPropType,
 	CustomClassPropType,
 	FocusableElement,
-	FocusOptions,
 	IconsPropType,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
 	SplitButtonProps,
@@ -63,7 +63,7 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 	@delegateFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: FocusOptions): Promise<void> {}
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
