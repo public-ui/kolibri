@@ -1,8 +1,7 @@
 import type { EventValueOrEventCallback } from '@public-ui/components';
+import { KolCombobox } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useState } from 'react';
-
-import { KolCombobox } from '@public-ui/react-v19';
 import { COUNTRY_SUGGESTIONS } from '../../shares/country';
 import { SampleDescription } from '../SampleDescription';
 
