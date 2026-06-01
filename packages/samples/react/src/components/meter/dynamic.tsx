@@ -9,10 +9,7 @@ export const MeterDynamic: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>
-					Demonstrates that KolMeter updates its accessible live-region immediately when <code>_value</code> changes dynamically. Screen readers announce the new
-					value without delay when the meter is updated.
-				</p>
+				<p>KolMeter announces value changes immediately to screen readers. Use the buttons below to verify the live region updates without delay.</p>
 			</SampleDescription>
 
 			<div className="grid gap-8">
