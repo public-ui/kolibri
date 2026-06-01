@@ -10,6 +10,7 @@ import type {
 	DisabledPropType,
 	FocusableElement,
 	HeadingLevel,
+	KolFocusOptions,
 	LabelPropType,
 	OpenPropType,
 } from '../../schema';
@@ -51,7 +52,9 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Triggers a click on the trigger button of the first section.

@@ -39,10 +39,14 @@ export class ClickButtonController extends BaseController<ClickButtonApi> implem
 			if (hasScrollOptions) {
 				this.buttonRef.scrollIntoView(scrollOptions);
 			}
-			// afterFocus is invoked synchronously here – unlike setFocus() which uses
-			// IntersectionObserver for smooth-scroll completion, this internal component
-			// cannot await async scroll due to architectural boundary constraints.
-			afterFocus?.();
+			const root = this.buttonRef.getRootNode();
+			const hasFocus = root instanceof ShadowRoot ? root.activeElement === this.buttonRef : document.activeElement === this.buttonRef;
+			if (hasFocus) {
+				// afterFocus is invoked synchronously here – unlike setFocus() which uses
+				// IntersectionObserver for smooth-scroll completion, this internal component
+				// cannot await async scroll due to architectural boundary constraints.
+				afterFocus?.();
+			}
 		}
 	}
 
