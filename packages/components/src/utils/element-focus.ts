@@ -4,37 +4,63 @@ import { waitForThemed } from './element-themed';
 const MAX_FOCUS_ATTEMPTS = 10;
 
 /**
- * Waits until the given element intersects the viewport.
- * Resolves immediately (asynchronously) if the element is already visible in the viewport.
- * Falls back to an immediate resolve when {@link IntersectionObserver} is unavailable (e.g. SSR).
- * A safety timeout guarantees the promise always resolves even when the element never enters
- * the viewport (e.g. hidden, detached, or scroll blocked).
+ * Waits for scroll completion affecting the given element.
+ * Uses the native `scrollend` event when available and falls back to viewport
+ * intersection detection via {@link IntersectionObserver}.
+ * A safety timeout guarantees the promise always resolves.
  *
  * @param element - The element to observe
  * @param timeoutMs - Maximum time to wait before resolving regardless of visibility (default 2000 ms)
  */
 function waitForElementInViewport(element: HTMLElement, timeoutMs = 2000): Promise<void> {
 	return new Promise<void>((resolve) => {
-		if (typeof IntersectionObserver === 'undefined') {
+		let resolved = false;
+		let observer: IntersectionObserver | undefined;
+		let removeScrollEndListener: (() => void) | undefined;
+
+		const done = () => {
+			if (resolved) {
+				return;
+			}
+			resolved = true;
+			clearTimeout(timeoutId);
+			removeScrollEndListener?.();
+			removeScrollEndListener = undefined;
+			observer?.disconnect();
 			resolve();
+		};
+
+		const timeoutId = window.setTimeout(done, timeoutMs);
+
+		if (typeof window !== 'undefined' && 'onscrollend' in window) {
+			const handleScrollEnd = (event: Event): void => {
+				const target = event.target;
+				if (!(target instanceof Node) || !target.contains(element)) {
+					return;
+				}
+				done();
+			};
+
+			document.addEventListener('scrollend', handleScrollEnd, { capture: true });
+			removeScrollEndListener = () => {
+				document.removeEventListener('scrollend', handleScrollEnd, { capture: true });
+			};
 			return;
 		}
 
-		const observer = new IntersectionObserver(
+		if (typeof IntersectionObserver === 'undefined') {
+			done();
+			return;
+		}
+
+		observer = new IntersectionObserver(
 			(entries) => {
 				if (entries.some((entry) => entry.isIntersecting)) {
-					clearTimeout(timeoutId);
-					observer.disconnect();
-					resolve();
+					done();
 				}
 			},
 			{ threshold: 0 },
 		);
-
-		const timeoutId = window.setTimeout(() => {
-			observer.disconnect();
-			resolve();
-		}, timeoutMs);
 
 		observer.observe(element);
 	});
@@ -84,8 +110,8 @@ function isActiveElement(element: HTMLElement): boolean {
  * When `options` are provided the element is scrolled into view using the supplied
  * {@link ScrollIntoViewOptions} (preventing the browser's default scroll triggered by
  * `focus()` to avoid a double-scroll). If `options.afterFocus` is set, the callback is
- * invoked after the element is focused and – for smooth-scroll transitions – after the
- * element has entered the viewport (detected via {@link IntersectionObserver}).
+ * invoked after the element is focused and – for smooth-scroll transitions – after
+ * scrolling settles (`scrollend`, with {@link IntersectionObserver} fallback).
  *
  * @param element - The element to focus
  * @param options - Optional scroll behaviour and completion callback
@@ -97,7 +123,7 @@ export async function setFocus(element: HTMLElement | undefined | null, options?
 	}
 	const { afterFocus, preventScroll, focusVisible, ...scrollOptions } = options ?? {};
 	const hasScrollOptions = Object.keys(scrollOptions).length > 0;
-	const shouldPreventScroll = preventScroll ?? (hasScrollOptions ? true : false);
+	const shouldPreventScroll = preventScroll ?? hasScrollOptions;
 	const focusOptions =
 		preventScroll !== undefined || focusVisible !== undefined || hasScrollOptions ? { preventScroll: shouldPreventScroll, focusVisible } : undefined;
 
@@ -112,12 +138,12 @@ export async function setFocus(element: HTMLElement | undefined | null, options?
 
 	const focused = isActiveElement(element);
 
-	if (hasScrollOptions) {
+	if (hasScrollOptions && shouldPreventScroll) {
 		element.scrollIntoView(scrollOptions);
 	}
 
 	if (afterFocus && focused) {
-		if (hasScrollOptions && scrollOptions.behavior === 'smooth') {
+		if (hasScrollOptions && shouldPreventScroll && scrollOptions.behavior === 'smooth') {
 			await waitForElementInViewport(element);
 		}
 		afterFocus();

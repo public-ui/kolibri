@@ -32,11 +32,11 @@ export class ClickButtonController extends BaseController<ClickButtonApi> implem
 		if (this.buttonRef) {
 			const { afterFocus, preventScroll, focusVisible, ...scrollOptions } = options ?? {};
 			const hasScrollOptions = Object.keys(scrollOptions).length > 0;
-			const shouldPreventScroll = preventScroll ?? (hasScrollOptions ? true : false);
+			const shouldPreventScroll = preventScroll ?? hasScrollOptions;
 			const focusOptions =
 				preventScroll !== undefined || focusVisible !== undefined || hasScrollOptions ? { preventScroll: shouldPreventScroll, focusVisible } : undefined;
 			this.buttonRef.focus(focusOptions);
-			if (hasScrollOptions) {
+			if (hasScrollOptions && shouldPreventScroll) {
 				this.buttonRef.scrollIntoView(scrollOptions);
 			}
 			const root = this.buttonRef.getRootNode();
