@@ -22,7 +22,7 @@ import type {
 	PropTouched,
 	PropVariantClassName,
 } from '../props';
-import { PropVisibilityToggle } from '../props/visibility-toggle';
+import type { PropVisibilityToggle } from '../props/visibility-toggle';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
 import type { InternalButtonProps } from './button';
 
