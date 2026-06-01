@@ -33,7 +33,7 @@ export const TableStickyHeader: FC = () => (
 		<SampleDescription>
 			<p>
 				This sample shows KolTableStateful with vertical scrollbar. It should be focusable and scrollable with the keyboard. The table headline should be sticky
-				at the top of the table, if your choosen theme supports sticky header. The tables maximum height is set to 75vh with the CSS property
+				at the top of the table, if your chosen theme supports sticky header. The table's maximum height is set to 75vh with the CSS property
 				--kol-table-max-height. The data lists animal species with conservation-focused details.
 			</p>
 		</SampleDescription>
