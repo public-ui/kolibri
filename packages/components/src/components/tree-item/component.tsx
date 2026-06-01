@@ -176,7 +176,7 @@ export class KolTreeItemWc implements TreeItemAPI {
 	 */
 	@Method() async focus(options?: KolFocusOptions) {
 		if (this.host && this.linkElement) {
-			return Promise.resolve(this.linkElement.focus(options));
+			return this.linkElement.focus(options);
 		}
 	}
 

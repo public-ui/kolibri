@@ -91,7 +91,10 @@ function isActiveElement(element: HTMLElement): boolean {
  * @param options - Optional scroll behaviour and completion callback
  * @see MAX_FOCUS_ATTEMPTS
  */
-export async function setFocus(element: HTMLElement, options?: KolFocusOptions): Promise<void> {
+export async function setFocus(element: HTMLElement | undefined | null, options?: KolFocusOptions): Promise<void> {
+	if (!element) {
+		return;
+	}
 	const { afterFocus, preventScroll, focusVisible, ...scrollOptions } = options ?? {};
 	const hasScrollOptions = Object.keys(scrollOptions).length > 0;
 	const shouldPreventScroll = preventScroll ?? (hasScrollOptions ? true : false);

@@ -37,7 +37,7 @@ export class KolTreeItem implements TreeItemProps {
 	 * Focuses the link element.
 	 */
 	@Method() async focus(options?: KolFocusOptions) {
-		return Promise.resolve(this.element?.focus(options));
+		return this.element?.focus(options);
 	}
 
 	/**
