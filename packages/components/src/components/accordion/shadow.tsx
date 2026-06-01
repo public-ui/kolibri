@@ -1,6 +1,7 @@
 // https://codepen.io/mbxtr/pen/OJPOYg?html-preprocessor=haml
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import type {
 	AccordionAPI,
@@ -14,8 +15,7 @@ import type {
 } from '../../schema';
 import { featureHint, validateAccordionCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { watchHeadingLevel } from '../heading/validation';
 
@@ -41,30 +41,24 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 	shadow: true,
 })
 export class KolAccordion implements AccordionAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolAccordionElement;
+	@Element() protected readonly host?: HTMLKolAccordionElement;
 
 	private readonly id = createUniqueId('accordion');
-	private buttonWcRef?: HTMLKolButtonWcElement;
-
-	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
-		this.buttonWcRef = ref;
-	};
+	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
-	}
+	@delegateFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Triggers a click on the trigger button of the first section.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.buttonWcRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private handleOnClick = (event: MouseEvent) => {
 		this._open = !this._open;
@@ -101,7 +95,7 @@ export class KolAccordion implements AccordionAPI, FocusableElement {
 			class: rootClass,
 			HeadingProps: { class: `${rootClass}__heading` },
 			HeadingButtonProps: {
-				ref: this.setButtonWcRef,
+				ref: this.ctaRef,
 				class: `${rootClass}__heading-button`,
 			},
 			ContentProps: {

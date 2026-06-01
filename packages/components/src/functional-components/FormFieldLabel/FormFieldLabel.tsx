@@ -48,7 +48,7 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 			<SpanFC class={`${baseClassName}__label-text`} label={hasExpertSlot ? '' : (label ?? '')} badgeText={badgeText}>
 				<slot name="expert"></slot>
 			</SpanFC>
-			{readOnly ? (
+			{!hasExpertSlot && readOnly ? (
 				<span class={`${baseClassName}__label__read-only`} aria-hidden="true">
 					({translateReadOnly})
 				</span>

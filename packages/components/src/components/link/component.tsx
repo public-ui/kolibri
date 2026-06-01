@@ -55,8 +55,7 @@ import {
 	validateVariantClassName,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
-import { setClick } from '../../utils/element-click';
-import { setFocus } from '../../utils/element-focus';
+import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
@@ -76,31 +75,25 @@ import clsx from '../../utils/clsx';
 export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolLinkElement;
 
-	private anchorRef?: HTMLAnchorElement;
+	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
 	private readonly tooltipCtrl = new TooltipController(BaseWebComponent.stateLess);
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
 	private readonly translateOpenLinkInTab = translate('kol-open-link-in-tab');
 
-	private readonly setAnchorRef = (ref?: HTMLAnchorElement) => {
-		this.anchorRef = ref;
-	};
-
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return setFocus(this.anchorRef!);
-	}
+	@directFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return setClick(this.anchorRef!);
-	}
+	@directClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private readonly onClick = (event: Event) => {
 		this.tooltipCtrl.hideTooltip();
@@ -109,7 +102,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 			event.preventDefault();
 		} else {
 			if (typeof this.state._on?.onClick === 'function') {
-				setEventTarget(event, this.anchorRef);
+				setEventTarget(event, this.ctaRef.el);
 				this.state._on?.onClick(event, this.state._href);
 			}
 			if (this.host) {
@@ -161,7 +154,7 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 		return (
 			<Host>
 				<a
-					ref={this.setAnchorRef}
+					ref={this.ctaRef}
 					{...tagAttrs}
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
@@ -486,8 +479,8 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	}
 
 	public componentDidRender(): void {
-		if (this.anchorRef) {
-			this.tooltipCtrl.syncListeners(undefined, this.anchorRef, true);
+		if (this.ctaRef.el) {
+			this.tooltipCtrl.syncListeners(undefined, this.ctaRef.el, true);
 		}
 	}
 

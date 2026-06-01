@@ -5,7 +5,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
   <div class="kol-table">
     <kol-table-settings-wc></kol-table-settings-wc>
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: calc(80px + 80px + 80px + 140px + 130px + 120px);">
+      <table aria-labelledby="caption" class="kol-table__table" style="min-width: calc(80px + 80px + 80px + 140px + 130px + 120px);">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with horizontal and vertical headers
         </caption>
@@ -80,7 +80,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with merged par
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: 300px;">
+      <table aria-labelledby="caption" class="kol-table__table" style="min-width: 300px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with merged parent column width only
         </caption>
@@ -130,7 +130,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: calc(150px + 180px);">
+      <table aria-labelledby="caption" class="kol-table__table" style="min-width: calc(150px + 180px);">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with only horizontal headers
         </caption>
@@ -175,7 +175,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: calc(90px + 90px + 120px + 190px);">
+      <table aria-labelledby="caption" class="kol-table__table" style="min-width: calc(90px + 90px + 120px + 190px);">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with two horizontal header rows
         </caption>
@@ -235,7 +235,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: calc(100px + 100px + 130px + 130px);">
+      <table aria-labelledby="caption" class="kol-table__table" style="min-width: calc(100px + 100px + 130px + 130px);">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table with two spanned horizontal and vertical headers
         </caption>
@@ -295,7 +295,7 @@ exports[`kol-table-stateless-wc should render with _label="Table without data sh
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: 180px;">
+      <table aria-labelledby="caption" class="kol-table__table" style="min-width: 180px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table without data shows empty hint
         </caption>
@@ -326,7 +326,7 @@ exports[`kol-table-stateless-wc should render with _label="Table without data wi
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: 180px;">
+      <table aria-labelledby="caption" class="kol-table__table" style="min-width: 180px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table without data with hidden column shows correct colspan
         </caption>
@@ -357,7 +357,7 @@ exports[`kol-table-stateless-wc should render with _label="Table without data wi
 <kol-table-stateless-wc>
   <div class="kol-table">
     <div class="kol-table__scroll-container">
-      <table class="kol-table__table" style="min-width: 0px;">
+      <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
         <caption class="kol-table__caption kol-table__focus-element" id="caption">
           Table without data with merged header shows spacer colspan greater than 1
         </caption>

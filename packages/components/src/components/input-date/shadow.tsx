@@ -27,6 +27,7 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 import { deprecatedHint } from '../../schema';
 
@@ -34,8 +35,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputDateController } from './controller';
 
@@ -52,14 +52,10 @@ import { InputDateController } from './controller';
 	shadow: true,
 })
 export class KolInputDate implements InputDateAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolInputDateElement;
-	private inputRef?: HTMLInputElement;
+	@Element() protected readonly host?: HTMLKolInputDateElement;
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	@State() private _initialValueType: 'Date' | 'String' | null = null;
-
-	private readonly setInputRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
-	};
 
 	/**
 	 * Returns the current value.
@@ -67,24 +63,22 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | Date | undefined | null> {
-		return this.inputRef && this.remapValue(this.inputRef?.value);
+		return this.ctaRef.el && this.remapValue(this.ctaRef.el?.value);
 	}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
-	}
+	@delegateFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.inputRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	/**
 	 * Resets the component's value.
@@ -100,8 +94,8 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 
 		// Setting the state value might not trigger a state change and rerender if the previous value is already an empty string,
 		// which can occur during an incomplete input. Directly setting the DOM property "forces" a reset of the native element.
-		if (this.inputRef) {
-			this.inputRef.value = '';
+		if (this.ctaRef.el) {
+			this.ctaRef.el.value = '';
 		}
 	}
 
@@ -145,10 +139,10 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	};
 
 	private readonly isNativeCalendarIconFocused = (): boolean => {
-		if (!this.inputRef || typeof window === 'undefined' || typeof window.getComputedStyle !== 'function') {
+		if (!this.ctaRef.el || typeof window === 'undefined' || typeof window.getComputedStyle !== 'function') {
 			return false;
 		}
-		const computedStyle = window.getComputedStyle(this.inputRef);
+		const computedStyle = window.getComputedStyle(this.ctaRef.el);
 		return computedStyle.content.includes('native-icon-focused');
 	};
 
@@ -158,7 +152,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		if ((event.code === 'Enter' || event.code === 'NumpadEnter') && !this.isNativeCalendarIconFocused()) {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.inputRef,
+				ref: this.ctaRef.el,
 			});
 		}
 		if (this.state._readOnly && event.code === 'Space') {
@@ -179,7 +173,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 
 	private getInputProps(): InputStateWrapperProps {
 		return {
-			ref: this.setInputRef,
+			ref: this.ctaRef,
 			state: this.state,
 			...this.controller.onFacade,
 			onBlur: this.onBlur,
@@ -330,6 +324,11 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Iso8601 | Date | null;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: InputDateStates = {
 		_hasValue: false,
 		_hideMsg: false,
@@ -469,6 +468,11 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 			// Don't switch type when value was reset to null
 			this.setInitialValueType(value);
 		}
+	}
+
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
 	}
 
 	public componentWillLoad(): void {

@@ -24,14 +24,14 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
 import { createUniqueId } from '../../utils/dev.utils';
-import { setClick } from '../../utils/element-click';
-import { setFocus } from '../../utils/element-focus';
+import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { SelectController } from './controller';
 
@@ -45,11 +45,7 @@ import { SelectController } from './controller';
 })
 export class KolSelectWc implements SelectAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolSelectWcElement;
-	private selectRef?: HTMLSelectElement;
-
-	private readonly setSelectRef = (ref?: HTMLSelectElement) => {
-		this.selectRef = ref;
-	};
+	protected readonly ctaRef = createCtaRef<HTMLSelectElement>();
 
 	/**
 	 * Returns the current value.
@@ -68,17 +64,15 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return setFocus(this.selectRef!);
-	}
+	@directFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return setClick(this.selectRef!);
-	}
+	@directClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
@@ -87,14 +81,14 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 				'kol-form-field--has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.selectRef?.focus(),
+			onClick: () => this.ctaRef.el?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
 
 	private getSelectProps(): SelectStateWrapperProps {
 		return {
-			ref: this.setSelectRef,
+			ref: this.ctaRef,
 			state: this.state,
 			...this.controller.onFacade,
 			onInput: this.onInput.bind(this),
@@ -119,7 +113,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 							event.preventDefault();
 							propagateSubmitEventToForm({
 								form: this.host,
-								ref: this.selectRef,
+								ref: this.ctaRef.el,
 							});
 						}}
 					>
@@ -241,6 +235,11 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: SelectStates = {
 		_hasValue: false,
 		_hideMsg: false,
@@ -356,6 +355,11 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 		this.controller.validateValue(value);
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
+	}
+
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
@@ -365,7 +369,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	}
 
 	private onInput(event: Event): void {
-		const selectedValues = Array.from(this.selectRef?.options || [])
+		const selectedValues = Array.from(this.ctaRef.el?.options || [])
 			.filter((option) => option.selected)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
 

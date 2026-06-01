@@ -10,7 +10,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
             <kbd aria-hidden="true" class="badge-text-hint">
@@ -41,7 +41,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -69,7 +69,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -97,7 +97,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -128,7 +128,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -162,7 +162,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -194,7 +194,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -226,7 +226,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -254,7 +254,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -282,7 +282,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -313,7 +313,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
             <kbd aria-hidden="true" class="badge-text-hint">
@@ -344,7 +344,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -376,7 +376,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
             <kbd aria-hidden="true" class="badge-text-hint">
@@ -412,7 +412,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -445,7 +445,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -478,7 +478,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -514,7 +514,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -553,7 +553,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -590,7 +590,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -627,7 +627,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -660,7 +660,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -693,7 +693,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -729,7 +729,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
             <kbd aria-hidden="true" class="badge-text-hint">
@@ -765,7 +765,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -802,7 +802,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -835,7 +835,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -868,7 +868,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>
@@ -896,7 +896,7 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert"></slot>
             </span>
           </span>

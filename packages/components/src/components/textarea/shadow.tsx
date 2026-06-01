@@ -28,14 +28,14 @@ import type {
 	TextareaResizePropType,
 	TextareaStates,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper/TextAreaStateWrapper';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { TextareaController } from './controller';
 
 /**
@@ -64,12 +64,8 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	shadow: true,
 })
 export class KolTextarea implements TextareaAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolTextareaElement;
-	private textareaRef?: HTMLTextAreaElement;
-
-	private readonly setTextareaRef = (ref?: HTMLTextAreaElement) => {
-		this.textareaRef = ref;
-	};
+	@Element() protected readonly host?: HTMLKolTextareaElement;
+	protected readonly ctaRef = createCtaRef<HTMLTextAreaElement>();
 
 	/**
 	 * Returns the current value.
@@ -77,24 +73,22 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
-		return this.textareaRef?.value;
+		return this.ctaRef.el?.value;
 	}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.textareaRef!));
-	}
+	@delegateFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.textareaRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
@@ -112,7 +106,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
-			ref: this.setTextareaRef,
+			ref: this.ctaRef,
 			state: this.state,
 			style: {
 				resize: this.state._resize,
@@ -278,6 +272,11 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: TextareaStates = {
 		_adjustHeight: false,
 		_currentLength: 0,
@@ -419,11 +418,15 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 		this.controller.validateValue(value);
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
+	}
+
 	public componentDidLoad(): void {
 		setTimeout(() => {
-			if (this._adjustHeight === true && this.textareaRef /* SSR instanceof HTMLTextAreaElement */) {
-				this._rows =
-					this.state?._rows && this.state._rows > increaseTextareaHeight(this.textareaRef) ? this.state._rows : increaseTextareaHeight(this.textareaRef);
+			if (this._adjustHeight === true && this.ctaRef.el /* SSR instanceof HTMLTextAreaElement */) {
+				this._rows = this.state?._rows && this.state._rows > increaseTextareaHeight(this.ctaRef.el) ? this.state._rows : increaseTextareaHeight(this.ctaRef.el);
 			} else if (!this._rows) {
 				this._rows = 1;
 			}
@@ -438,10 +441,10 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	private readonly onInput = (event: InputEvent) => {
-		if (this.textareaRef instanceof HTMLTextAreaElement) {
-			this._value = this.textareaRef.value;
+		if (this.ctaRef.el instanceof HTMLTextAreaElement) {
+			this._value = this.ctaRef.el.value;
 			if (this.state._adjustHeight) {
-				this._rows = increaseTextareaHeight(this.textareaRef);
+				this._rows = increaseTextareaHeight(this.ctaRef.el);
 			}
 			this.controller.onFacade.onInput(event);
 		}

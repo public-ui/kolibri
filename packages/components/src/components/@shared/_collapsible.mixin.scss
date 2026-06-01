@@ -59,6 +59,10 @@
 		&__heading-button button {
 			.kol-span {
 				align-items: flex-start;
+
+				&__container {
+					text-align: left;
+				}
 			}
 		}
 	}

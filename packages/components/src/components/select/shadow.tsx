@@ -16,10 +16,11 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import { KolSelectWcTag } from '../../core/component-names';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 /**
  * @slot - The label of the input field.
@@ -32,34 +33,29 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 	shadow: true,
 })
 export class KolSelect implements SelectProps, FocusableElement {
-	@Element() private readonly host?: HTMLKolSelectElement;
-	private selectWcRef?: HTMLKolSelectWcElement;
-
-	private readonly setSelectWcRef = (ref?: HTMLKolSelectWcElement) => {
-		this.selectWcRef = ref;
-	};
+	@Element() protected readonly host?: HTMLKolSelectElement;
+	protected readonly ctaRef = createCtaRef<HTMLKolSelectWcElement>();
 
 	/**
 	 * Returns the selected values.
 	 */
 	@Method()
-	public async getValue(): Promise<StencilUnknown[] | StencilUnknown> {
-		return this.selectWcRef?.getValue();
+	public async getValue(): Promise<StencilUnknown[] | StencilUnknown | undefined> {
+		return this.ctaRef.el?.getValue();
 	}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.selectWcRef!));
-	}
+	@delegateFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-select">
 				<KolSelectWcTag
-					ref={this.setSelectWcRef}
+					ref={this.ctaRef}
 					_accessKey={this._accessKey}
 					_disabled={this._disabled}
 					_hideLabel={this._hideLabel}
@@ -80,6 +76,7 @@ export class KolSelect implements SelectProps, FocusableElement {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this._touched}
 					_value={this._value}
+					_variant={this._variant}
 				>
 					<slot name="expert" slot="expert"></slot>
 				</KolSelectWcTag>
@@ -194,4 +191,9 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
 }

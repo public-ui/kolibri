@@ -19,7 +19,7 @@ export type BooleanPropertyValueMapping = {
 	result: BooleanMappingResult;
 };
 
-export type BareSourceResult = BooleanMappingResult;
+type BareSourceResult = BooleanMappingResult;
 
 export abstract class AbstractMapPropertyValueToBooleanTask extends AbstractTask {
 	private readonly componentTagRegExp: RegExp;

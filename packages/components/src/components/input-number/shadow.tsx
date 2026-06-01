@@ -26,6 +26,7 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -33,8 +34,7 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import { createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputNumberController } from './controller';
 
@@ -51,12 +51,8 @@ import { InputNumberController } from './controller';
 	shadow: true,
 })
 export class KolInputNumber implements InputNumberAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolInputNumberElement;
-	private inputRef?: HTMLInputElement;
-
-	private readonly setInputRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
-	};
+	@Element() protected readonly host?: HTMLKolInputNumberElement;
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	/**
 	 * Returns the current value.
@@ -71,17 +67,15 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
-	}
+	@delegateFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.inputRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private setInitialValueType(value?: number | NumberString | null) {
 		if (this.controller.isNumberString(value)) {
@@ -108,13 +102,13 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	}
 
 	private readonly onInput = (event: InputEvent) => {
-		const newValue = this.inputRef?.value;
+		const newValue = this.ctaRef.el?.value;
 		this._value = this.remapValue(newValue === '' ? null : Number(newValue));
 		this.controller.onFacade.onInput(event, true, this._value);
 	};
 
 	private readonly onChange = (event: Event) => {
-		const newValue = this.inputRef?.value;
+		const newValue = this.ctaRef.el?.value;
 		const mappedValue = this.remapValue(newValue === '' ? null : Number(newValue));
 		this.controller.onFacade.onChange(event, mappedValue);
 	};
@@ -125,7 +119,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.inputRef,
+				ref: this.ctaRef.el,
 			});
 		}
 	};
@@ -143,7 +137,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 
 	private getInputProps(): InputStateWrapperProps {
 		return {
-			ref: this.setInputRef,
+			ref: this.ctaRef,
 			state: this.state,
 			type: 'number',
 			...this.controller.onFacade,
@@ -181,15 +175,15 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				class="kol-input-number__step-button kol-input-number__step-button-up kol-input-container__smart-button"
 				data-testid="kol-input-number-step-up"
 				onClick={(event: MouseEvent): void => {
-					this.inputRef?.stepUp();
+					this.ctaRef.el?.stepUp();
 					// Manually trigger onInput since stepUp() doesn't fire input events
-					const newValue = this.inputRef?.value;
+					const newValue = this.ctaRef.el?.value;
 					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
 					// Pass MouseEvent as Event - onInput handler accepts generic Event type
 					this.controller.onFacade.onInput(event, true, this._value);
 					// native number buttons also throw the change event on every click
 					this.controller.onFacade.onChange(event, this._value);
-					this.inputRef?.focus();
+					this.ctaRef.el?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}
 			>
@@ -210,15 +204,15 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 				class="kol-input-number__step-button kol-input-number__step-button-down kol-input-container__smart-button"
 				data-testid="kol-input-number-step-down"
 				onClick={(event: MouseEvent): void => {
-					this.inputRef?.stepDown();
+					this.ctaRef.el?.stepDown();
 					// Manually trigger onInput since stepDown() doesn't fire input events
-					const newValue = this.inputRef?.value;
+					const newValue = this.ctaRef.el?.value;
 					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
 					// Pass MouseEvent as Event - onInput handler accepts generic Event type
 					this.controller.onFacade.onInput(event, true, this._value);
 					// native number buttons also throw the change event on every click
 					this.controller.onFacade.onChange(event, this._value);
-					this.inputRef?.focus();
+					this.ctaRef.el?.focus();
 				}}
 				disabled={this._disabled || this._readOnly}
 			>
@@ -367,6 +361,11 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString | null;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: InputNumberStates = {
 		_hasValue: false,
 		_hideMsg: false,
@@ -502,6 +501,11 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 			// Don't switch type when value was reset to null
 			this.setInitialValueType(value);
 		}
+	}
+
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
 	}
 
 	public componentWillLoad(): void {

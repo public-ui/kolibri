@@ -19,8 +19,7 @@ import type {
 	ShortKeyPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 
 /**
  * The **LinkButton** component is semantically a link but has the appearance of a button. All relevant properties of the Link component are adopted and extended with the design-defining properties of a button.
@@ -35,33 +34,27 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 	shadow: true,
 })
 export class KolLinkButton implements LinkButtonProps, FocusableElement {
-	@Element() private readonly host?: HTMLKolLinkButtonElement;
-	private linkWcRef?: HTMLKolLinkWcElement;
-
-	private readonly setLinkWcRef = (ref?: HTMLKolLinkWcElement) => {
-		this.linkWcRef = ref;
-	};
+	@Element() protected readonly host?: HTMLKolLinkButtonElement;
+	protected readonly ctaRef = createCtaRef<HTMLKolLinkWcElement>();
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.linkWcRef!));
-	}
+	@delegateFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.linkWcRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	public render(): JSX.Element {
 		return (
 			<KolLinkWcTag
-				ref={this.setLinkWcRef}
+				ref={this.ctaRef}
 				_accessKey={this._accessKey}
 				_ariaCurrentValue={this._ariaCurrentValue}
 				_ariaControls={this._ariaControls}

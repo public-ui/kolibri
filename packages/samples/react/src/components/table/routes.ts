@@ -2,6 +2,7 @@ import type { Routes } from '../../shares/types';
 import { TableActionColumns } from './action-columns';
 import { TableActionColumnPerformance } from './action-columns-performance';
 import { TableActionAndRenderColumns } from './action-render';
+import { AriaLabelledby } from './aria-labelledby';
 import { TableBig } from './big-table';
 import { TableColumnAlignment } from './column-alignment';
 import { TableComplexHeaders } from './complex-headers';
@@ -64,5 +65,6 @@ export const TABLE_ROUTES: Routes = {
 		big: TableBig,
 		'action-and-render': TableActionAndRenderColumns,
 		variant: TableVariant,
+		'aria-labelledby': AriaLabelledby,
 	},
 };

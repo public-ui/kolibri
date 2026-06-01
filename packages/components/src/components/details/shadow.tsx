@@ -3,8 +3,7 @@ import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-compon
 import type { DetailsAPI, DetailsCallbacksPropType, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { watchHeadingLevel } from '../heading/validation';
 
@@ -27,30 +26,24 @@ import { watchHeadingLevel } from '../heading/validation';
 	shadow: true,
 })
 export class KolDetails implements DetailsAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolDetailsElement;
+	@Element() protected readonly host?: HTMLKolDetailsElement;
 
 	private readonly id = createUniqueId('details');
-	private buttonWcRef?: HTMLKolButtonWcElement;
-
-	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
-		this.buttonWcRef = ref;
-	};
+	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
-	}
+	@delegateFocus('ctaRef')
+	public async focus(): Promise<void> {}
 
 	/**
 	 * Triggers a click on the summary/toggle button.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.buttonWcRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private toggleTimeout?: ReturnType<typeof setTimeout>;
 
@@ -89,7 +82,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 			class: rootClass,
 			HeadingProps: { class: `${rootClass}__heading` },
 			HeadingButtonProps: {
-				ref: this.setButtonWcRef,
+				ref: this.ctaRef,
 				class: `${rootClass}__heading-button`,
 				_icons: 'kolicon-chevron-right',
 			},
