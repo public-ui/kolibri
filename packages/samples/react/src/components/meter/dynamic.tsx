@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 export const MeterDynamic: FC = () => {
-	const [value, setValue] = useState(50);
+	const [usedStorage, setUsedStorage] = useState(120);
 
 	return (
 		<>
@@ -15,12 +15,12 @@ export const MeterDynamic: FC = () => {
 			<div className="grid gap-8">
 				<section className="grid gap-4">
 					<KolHeading _level={2} _label="Dynamic value" />
-					<KolMeter _label="Storage used" _max={100} _min={0} _unit="%" _value={value} />
+					<KolMeter _label="Used hard disk space" _max={500} _min={0} _unit="GB" _value={usedStorage} />
 					<div className="flex gap-4">
-						<KolButton _label="25 %" _on={{ onClick: () => setValue(25) }} _variant="secondary" />
-						<KolButton _label="50 %" _on={{ onClick: () => setValue(50) }} _variant="secondary" />
-						<KolButton _label="75 %" _on={{ onClick: () => setValue(75) }} _variant="secondary" />
-						<KolButton _label="100 %" _on={{ onClick: () => setValue(100) }} _variant="secondary" />
+						<KolButton _label="120 GB" _on={{ onClick: () => setUsedStorage(120) }} _variant="secondary" />
+						<KolButton _label="240 GB" _on={{ onClick: () => setUsedStorage(240) }} _variant="secondary" />
+						<KolButton _label="360 GB" _on={{ onClick: () => setUsedStorage(360) }} _variant="secondary" />
+						<KolButton _label="480 GB" _on={{ onClick: () => setUsedStorage(480) }} _variant="secondary" />
 					</div>
 				</section>
 			</div>
