@@ -138,6 +138,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 		});
 	}
 
+	public disconnectedCallback(): void {
+		this.ctrl.destroy();
+	}
+
 	public render(): JSX.Element {
 		const { high, low, optimum } = this.ctrl.getMeterData();
 		return (
