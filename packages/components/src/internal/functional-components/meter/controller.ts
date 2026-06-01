@@ -113,6 +113,7 @@ export class MeterController extends BaseController<MeterApi> implements Control
 			value,
 			(v) => {
 				this.setRenderProp('value', v);
+				this.setState('liveValue', v);
 			},
 			{ min: this.getRenderProp('min'), max: this.getRenderProp('max') },
 		);
