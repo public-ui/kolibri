@@ -82,7 +82,7 @@
 				position: absolute;
 				top: 0;
 				right: 0;
-				bottom: -2px;
+				bottom: -1px;
 				width: to-rem(2);
 
 				content: '';
@@ -152,7 +152,7 @@
 			--kol-selection-input-main-color: var(--color-primary);
 			--kol-selection-input-off-color: var(--color-subtle);
 			--kol-selection-input-focus-color: var(--color-primary-variant);
-			--kol-selection-input-hover-color: rgb(8, 35, 48, 0.24);
+			--kol-selection-input-hover-color: rgba(8, 35, 48, 0.24);
 			--kol-selection-input-icon-color: var(--color-light);
 
 			&-input {
@@ -209,7 +209,7 @@
 				--kol-selection-input-main-color: var(--color-light);
 				--kol-selection-input-off-color: var(--color-mute);
 				--kol-selection-input-focus-color: var(--color-mute-variant);
-				--kol-selection-input-hover-color: rgb(255, 255, 255, 0.24);
+				--kol-selection-input-hover-color: rgba(255, 255, 255, 0.24);
 				--kol-selection-input-icon-color: var(--color-primary);
 			}
 		}
@@ -234,11 +234,11 @@
 			line-height: 1;
 		}
 
-		tbody tr:nth-child(2n) {
+		tbody tr:nth-child(odd) {
 			background-color: var(--color-mute);
 		}
 
-		tbody tr:nth-child(2n) th {
+		tbody tr:nth-child(odd) th {
 			background-color: var(--color-light);
 		}
 	}
