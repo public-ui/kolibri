@@ -5,6 +5,7 @@ import { ButtonBaselined } from './baselined';
 import { ButtonBasic } from './basic';
 import { ButtonDisabled } from './disabled';
 import { ButtonExpertSlot } from './expert-slot';
+import { ButtonFocusOptions } from './focus-options';
 import { ButtonHideLabel } from './hide-label';
 import { ButtonIcons } from './icons';
 import { ButtonRowReverseTooltip } from './row-reverse-tooltip';
@@ -28,5 +29,6 @@ export const BUTTON_ROUTES: Routes = {
 		'short-key': ButtonShortKey,
 		'expert-slot': ButtonExpertSlot,
 		'row-reverse-tooltip': ButtonRowReverseTooltip,
+		'focus-options': ButtonFocusOptions,
 	},
 };
