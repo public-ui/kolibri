@@ -50,19 +50,11 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 	const hasExpertSlot = showExpertSlot(label) || label === false;
 	const resolvedHref = typeof href === 'string' && href.length > 0 ? href : 'javascript:void(0);';
 	const translateOpenLinkInTab = translate('kol-open-link-in-tab');
-	const isButton = role === 'button';
 
 	const ariaLabel = hideLabel && typeof label === 'string' ? `${label}${isExternal ? ` (${translateOpenLinkInTab})` : ''}` : undefined;
 
 	const tooltipLabel = typeof label === 'string' && label.length > 0 ? label : typeof href === 'string' ? href : '';
 	const tooltipBadgeText = accessKey || shortKey || '';
-
-	const handleKeyDown = (event: KeyboardEvent): void => {
-		if (isButton && event.code === 'Space') {
-			event.preventDefault();
-			onAnchorClick(event);
-		}
-	};
 
 	return (
 		<BemRootNodeFC
@@ -96,7 +88,6 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 				aria-keyshortcuts={shortKey || undefined}
 				class="kol-link__anchor"
 				onClick={onAnchorClick}
-				onKeyDown={handleKeyDown}
 				role={role || undefined}
 				tabIndex={disabled ? -1 : tabIndex === 0 ? undefined : tabIndex}
 			>
