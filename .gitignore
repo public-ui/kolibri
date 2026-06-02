@@ -5,6 +5,7 @@
 /test-migration/
 
 # in all sub folders
+.playwright-mcp/
 .DS_Store/
 dist/
 node_modules/
