@@ -1,8 +1,29 @@
 import type { KolFocusOptions, SelectOption } from '@public-ui/components';
 import { KolButton, KolHeading, KolInputCheckbox, KolSelect } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React, { useCallback, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
+
+const BEHAVIOR_OPTIONS: SelectOption<string>[] = [
+	{ label: 'Auto (instant)', value: 'auto' },
+	{ label: 'Smooth (animated)', value: 'smooth' },
+];
+
+const ALIGNMENT_OPTIONS: SelectOption<string>[] = [
+	{ label: 'Start', value: 'start' },
+	{ label: 'Center', value: 'center' },
+	{ label: 'End', value: 'end' },
+	{ label: 'Nearest', value: 'nearest' },
+];
+
+const SPACER_FULL = 'calc(100vh - 2rem)';
+const SPACER_HALF = 'calc(50vh - 1rem)';
+
+const SELECT_CONFIGS = [
+	{ label: 'Behavior', key: 'behavior' as const, options: BEHAVIOR_OPTIONS },
+	{ label: 'Block (vertical alignment)', key: 'block' as const, options: ALIGNMENT_OPTIONS },
+	{ label: 'Inline (horizontal alignment)', key: 'inline' as const, options: ALIGNMENT_OPTIONS },
+];
 
 export const ButtonFocusOptions: FC = () => {
 	const targetRef = useRef<HTMLKolButtonElement>(null);
@@ -28,37 +49,19 @@ export const ButtonFocusOptions: FC = () => {
 		}
 	}, [focusOptions]);
 
-	const toggleOption = useCallback((key: keyof typeof focusOptions) => {
+	const toggleBooleanOption = useCallback((key: 'preventScroll' | 'focusVisible') => {
 		setFocusOptions((prev) => ({
 			...prev,
 			[key]: !prev[key],
 		}));
 	}, []);
 
-	const setSelectOption = useCallback((key: keyof typeof focusOptions, value: string) => {
+	const setSelectOption = useCallback((key: 'behavior' | 'block' | 'inline', value: string) => {
 		setFocusOptions((prev) => ({
 			...prev,
 			[key]: value,
 		}));
 	}, []);
-
-	const behaviorOptions = useMemo<SelectOption<string>[]>(
-		() => [
-			{ label: 'Auto (instant)', value: 'auto' },
-			{ label: 'Smooth (animated)', value: 'smooth' },
-		],
-		[],
-	);
-
-	const alignmentOptions = useMemo<SelectOption<string>[]>(
-		() => [
-			{ label: 'Start', value: 'start' },
-			{ label: 'Center', value: 'center' },
-			{ label: 'End', value: 'end' },
-			{ label: 'Nearest', value: 'nearest' },
-		],
-		[],
-	);
 
 	return (
 		<>
@@ -79,14 +82,14 @@ export const ButtonFocusOptions: FC = () => {
 							_label="Prevent Scroll (manual scroll control)"
 							_checked={focusOptions.preventScroll}
 							_on={{
-								onChange: () => toggleOption('preventScroll'),
+								onChange: () => toggleBooleanOption('preventScroll'),
 							}}
 						/>
 						<KolInputCheckbox
 							_label="Focus Visible (show focus ring)"
 							_checked={focusOptions.focusVisible}
 							_on={{
-								onChange: () => toggleOption('focusVisible'),
+								onChange: () => toggleBooleanOption('focusVisible'),
 							}}
 						/>
 					</div>
@@ -101,44 +104,20 @@ export const ButtonFocusOptions: FC = () => {
 					</p>
 
 					<div className="grid gap-4">
-						<div className="grid gap-2">
-							<KolSelect
-								_label="Behavior"
-								_options={behaviorOptions}
-								_value={focusOptions.behavior}
-								_on={{
-									onChange: (_event, v) => {
-										setSelectOption('behavior', v as string);
-									},
-								}}
-							/>
-						</div>
-
-						<div className="grid gap-2">
-							<KolSelect
-								_label="Block (vertical alignment)"
-								_options={alignmentOptions}
-								_value={focusOptions.block}
-								_on={{
-									onChange: (_event, v) => {
-										setSelectOption('block', v as string);
-									},
-								}}
-							/>
-						</div>
-
-						<div className="grid gap-2">
-							<KolSelect
-								_label="Inline (horizontal alignment)"
-								_options={alignmentOptions}
-								_value={focusOptions.inline}
-								_on={{
-									onChange: (_event, v) => {
-										setSelectOption('inline', v as string);
-									},
-								}}
-							/>
-						</div>
+						{SELECT_CONFIGS.map((config) => (
+							<div key={config.key} className="grid gap-2">
+								<KolSelect
+									_label={config.label}
+									_options={config.options}
+									_value={focusOptions[config.key]}
+									_on={{
+										onChange: (_event, v) => {
+											setSelectOption(config.key, v as string);
+										},
+									}}
+								/>
+							</div>
+						))}
 					</div>
 				</section>
 
@@ -163,7 +142,7 @@ export const ButtonFocusOptions: FC = () => {
 				</section>
 
 				{/* Spacer to push target below viewport */}
-				<div style={{ height: '100vh' }} />
+				<div style={{ height: SPACER_FULL }} />
 
 				{/* Target Button */}
 				<section className="grid gap-4">
@@ -172,7 +151,7 @@ export const ButtonFocusOptions: FC = () => {
 				</section>
 
 				{/* More spacer */}
-				<div style={{ height: '50vh' }} />
+				<div style={{ height: SPACER_HALF }} />
 
 				{/* Description */}
 				<section className="grid gap-4">
