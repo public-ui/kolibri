@@ -62,6 +62,11 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 		: translate('kol-live-value-bounded', { placeholders: { value: String(liveMeterValue), max: String(max), unit } });
 	const liveValueWithState = hasStateClassification ? `${liveValueText} – ${stateLabel}` : liveValueText;
 
+	const staticValueText = isPercentage
+		? translate('kol-live-value', { placeholders: { value: String(displayValue), unit } })
+		: translate('kol-live-value-bounded', { placeholders: { value: String(value), max: String(max), unit } });
+	const staticValueWithState = hasStateClassification ? `${staticValueText} – ${stateLabel}` : staticValueText;
+
 	const charCount = max.toString().length > min.toString().length ? max.toString().length + 'ch' : min.toString().length + 'ch';
 
 	return (
@@ -77,8 +82,16 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 					)}
 				</div>
 
-				<div class="kol-meter__bar-track">
-					<meter aria-label={label} high={high} low={low} max={max} min={min} optimum={optimum} value={value}></meter>
+				<div
+					role="meter"
+					aria-label={label}
+					aria-valuenow={value}
+					aria-valuemin={min}
+					aria-valuemax={max}
+					aria-valuetext={staticValueWithState}
+					class="kol-meter__bar-track"
+				>
+					<meter aria-hidden="true" high={high} low={low} max={max} min={min} optimum={optimum} value={value}></meter>
 				</div>
 				<span class="kol-meter__value-unit">
 					<span class="kol-meter__value" style={{ 'min-width': charCount }}>
