@@ -82,16 +82,8 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 					)}
 				</div>
 
-				<div
-					role="meter"
-					aria-label={label}
-					aria-valuenow={value}
-					aria-valuemin={min}
-					aria-valuemax={max}
-					aria-valuetext={staticValueWithState}
-					class="kol-meter__bar-track"
-				>
-					<meter aria-hidden="true" high={high} low={low} max={max} min={min} optimum={optimum} value={value}></meter>
+				<div class="kol-meter__bar-track">
+					<meter aria-label={label} aria-valuetext={staticValueWithState} high={high} low={low} max={max} min={min} optimum={optimum} value={value}></meter>
 				</div>
 				<span class="kol-meter__value-unit">
 					<span class="kol-meter__value" style={{ 'min-width': charCount }}>
