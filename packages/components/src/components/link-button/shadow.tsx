@@ -18,6 +18,7 @@ import type {
 	LinkOnCallbacksPropType,
 	LinkTargetPropType,
 	ShortKeyPropType,
+	TabIndexPropType,
 	TooltipAlignPropType,
 } from '../../schema';
 import { setClick } from '../../utils/element-click';
@@ -111,15 +112,19 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> {
 			ariaControls: this._ariaControls,
 			ariaCurrentValue: this._ariaCurrentValue,
 			ariaDescription: this._ariaDescription,
+			ariaExpanded: this._ariaExpanded,
+			ariaOwns: this._ariaOwns,
 			customClass: this._customClass,
 			disabled: this._disabled,
 			download: this._download,
 			hideLabel: this._hideLabel,
 			icons: this._icons,
+			inline: this._inline,
 			label: this._label,
 			on: this._on,
 			role: this._role,
 			shortKey: this._shortKey,
+			tabIndex: this._tabIndex,
 			target: this._target,
 			tooltipAlign: this._tooltipAlign,
 			variant: this._variant,
@@ -152,6 +157,16 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> {
 		this.ctrl.watchAriaDescription(value);
 	}
 
+	@Watch('_ariaExpanded')
+	public watchAriaExpanded(value?: boolean): void {
+		this.ctrl.watchAriaExpanded(value);
+	}
+
+	@Watch('_ariaOwns')
+	public watchAriaOwns(value?: string): void {
+		this.ctrl.watchAriaOwns(value);
+	}
+
 	@Watch('_customClass')
 	public watchCustomClass(value?: CustomClassPropType): void {
 		this.ctrl.watchCustomClass(value);
@@ -182,6 +197,11 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> {
 		this.ctrl.watchIcons(value);
 	}
 
+	@Watch('_inline')
+	public watchInline(value?: boolean): void {
+		this.ctrl.watchInline(value);
+	}
+
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
 		this.ctrl.watchLabel(value);
@@ -200,6 +220,11 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> {
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
 		this.ctrl.watchShortKey(value);
+	}
+
+	@Watch('_tabIndex')
+	public watchTabIndex(value?: TabIndexPropType): void {
+		this.ctrl.watchTabIndex(value);
 	}
 
 	@Watch('_target')
@@ -240,6 +265,16 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> {
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/**
+	 * Marks this element as open/expanded, or that the connected element is open/expanded.
+	 */
+	@Prop() public _ariaExpanded?: boolean;
+
+	/**
+	 * Defines the contextual relationship between a parent and its child elements.
+	 */
+	@Prop() public _ariaOwns?: string;
+
+	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
 	@Prop() public _customClass?: CustomClassPropType;
@@ -272,6 +307,11 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> {
 	@Prop() public _icons?: IconsPropType;
 
 	/**
+	 * Defines whether the component is displayed inline without enforcing a minimum size of 44px.
+	 */
+	@Prop() public _inline?: boolean = true;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
@@ -292,6 +332,11 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> {
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
+
+	/**
+	 * Defines which tab-index the primary element of the component has.
+	 */
+	@Prop() public _tabIndex?: TabIndexPropType;
 
 	/**
 	 * Defines where to open the link.
