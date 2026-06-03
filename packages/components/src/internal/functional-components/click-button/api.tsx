@@ -11,6 +11,9 @@ export type ClickButtonApi = ApiFromConfig<
 		Callbacks: {
 			click: () => void;
 		};
+		Methods: {
+			focus: () => void;
+		};
 		Refs: {
 			button: HTMLButtonElement;
 		};
