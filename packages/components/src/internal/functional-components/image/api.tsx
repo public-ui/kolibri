@@ -6,4 +6,12 @@ export const imagePropsConfig = {
 	required: [altProp, srcProp],
 } as const satisfies PropsConfigShape;
 
-export type ImageApi = ApiFromConfig<typeof imagePropsConfig>;
+export type ImageApi = ApiFromConfig<
+	typeof imagePropsConfig,
+	{
+		Emitters: {
+			error: Event;
+			load: Event;
+		};
+	}
+>;

@@ -1,11 +1,10 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import type { KoliBriImageEventCallbacks } from '../../../schema/components/image';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { ImageApi } from './api';
 
-export const ImageFC: FC<FunctionalComponentProps<ImageApi> & KoliBriImageEventCallbacks> = (props) => {
+export const ImageFC: FC<FunctionalComponentProps<ImageApi>> = (props) => {
 	const { alt, loading, sizes, src, srcset, onError, onLoad } = props;
 
 	return (
@@ -16,8 +15,8 @@ export const ImageFC: FC<FunctionalComponentProps<ImageApi> & KoliBriImageEventC
 			sizes={sizes || undefined}
 			src={src}
 			srcset={srcset || undefined}
-			onError={onError}
-			onLoad={onLoad}
+			onError={(e) => onError.emit(e)}
+			onLoad={(e) => onLoad.emit(e)}
 		/>
 	);
 };
