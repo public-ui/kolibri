@@ -33,6 +33,11 @@
 		&[multiple] &__option::before {
 			margin-right: to-rem(8);
 		}
+
+		&:not([multiple]) {
+			// space for the native arrow down icon
+			padding-right: to-rem(16);
+		}
 	}
 
 	.kol-input-container:has(:not(.kol-select[multiple])) {

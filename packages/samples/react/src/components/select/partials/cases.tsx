@@ -24,6 +24,10 @@ const SALUTATION_OPTIONS: SelectOption<string>[] = [
 		label: 'Divers',
 		value: 'Divers',
 	},
+	{
+		label: 'Prof. Dr. very long value with more word so it really really breaks the layout ',
+		value: 'long',
+	},
 ];
 
 const SALUTATION_OPTIONS_DISABLED = SALUTATION_OPTIONS.map((option, index) =>
