@@ -4,8 +4,6 @@ import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../ge
 import type { MeterApi } from './api';
 import { meterPropsConfig } from './api';
 
-const LIVE_VALUE_DEBOUNCE_MS = 300;
-
 type MeterData = {
 	high: number | undefined;
 	low: number | undefined;
@@ -13,7 +11,6 @@ type MeterData = {
 };
 
 export class MeterController extends BaseController<MeterApi> implements ControllerInterface<MeterApi> {
-	private liveValueTimeout?: ReturnType<typeof setTimeout>;
 	private meterData: MeterData = { high: undefined, low: undefined, optimum: undefined };
 
 	public constructor(stateAccess: StateAccess<MeterApi>) {
@@ -31,16 +28,6 @@ export class MeterController extends BaseController<MeterApi> implements Control
 		this.watchOrientation(orientation);
 		this.watchUnit(unit);
 		this.watchValue(value);
-
-		// Set liveValue synchronously on initial load – no announcement needed, debounce not desired.
-		clearTimeout(this.liveValueTimeout);
-		this.liveValueTimeout = undefined;
-		this.setState('liveValue', this.getRenderProp('value'));
-	}
-
-	public destroy(): void {
-		clearTimeout(this.liveValueTimeout);
-		this.liveValueTimeout = undefined;
 	}
 
 	public getMeterData(): MeterData {
@@ -115,17 +102,8 @@ export class MeterController extends BaseController<MeterApi> implements Control
 			value,
 			(v) => {
 				this.setRenderProp('value', v);
-				this.scheduleLiveValueUpdate(v);
 			},
 			{ min: this.getRenderProp('min'), max: this.getRenderProp('max') },
 		);
-	}
-
-	private scheduleLiveValueUpdate(value: number): void {
-		clearTimeout(this.liveValueTimeout);
-		this.liveValueTimeout = setTimeout(() => {
-			this.setState('liveValue', value);
-			this.liveValueTimeout = undefined;
-		}, LIVE_VALUE_DEBOUNCE_MS);
 	}
 }

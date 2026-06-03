@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { MeterApi } from '../../internal/functional-components/meter/api';
@@ -121,9 +121,6 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 		this.ctrl.watchValue(value);
 	}
 
-	@State()
-	public liveValue: number = 0;
-
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({
 			high: this._high,
@@ -138,10 +135,6 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 		});
 	}
 
-	public disconnectedCallback(): void {
-		this.ctrl.destroy();
-	}
-
 	public render(): JSX.Element {
 		const { high, low, optimum } = this.ctrl.getMeterData();
 		return (
@@ -150,7 +143,6 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 					high={high}
 					label={this.ctrl.getRenderProp('label')}
 					low={low}
-					liveValue={this.liveValue}
 					max={this.ctrl.getRenderProp('max')}
 					min={this.ctrl.getRenderProp('min')}
 					optimum={optimum}

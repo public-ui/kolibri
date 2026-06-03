@@ -45,24 +45,18 @@ type MeterFCProps = Omit<FunctionalComponentProps<MeterApi>, 'high' | 'low' | 'o
 };
 
 export const MeterFC: FC<MeterFCProps> = (props) => {
-	const { high, label, low, liveValue, max, min, optimum, orientation, unit, value } = props;
+	const { high, label, low, max, min, optimum, orientation, unit, value } = props;
 
 	const isVertical = orientation === 'vertical';
 	const isPercentage = unit === '%';
 	const displayValue = isPercentage ? Math.round(((value - min) / (max - min)) * 100) : value;
-	const liveMeterValue = isPercentage ? `${Math.round(((liveValue - min) / (max - min)) * 100)}` : liveValue;
 	const state = getMeterState(value, min, max, low, high, optimum);
 
 	// State classification is only meaningful when low or high boundaries are defined
 	const hasStateClassification = low !== undefined || high !== undefined;
 	const stateLabel = hasStateClassification ? translate(`kol-meter-state-${state}` as TranslationKey) : '';
 
-	const liveValueText = isPercentage
-		? translate('kol-live-value', { placeholders: { value: String(liveMeterValue), unit } })
-		: translate('kol-live-value-bounded', { placeholders: { value: String(liveMeterValue), max: String(max), unit } });
-	const liveValueWithState = hasStateClassification ? `${liveValueText} – ${stateLabel}` : liveValueText;
-
-	const charCount = max.toString().length > min.toString().length ? max.toString().length + 'ch' : min.toString().length + 'ch';
+	const charCount = `${Math.max(max.toString().length, min.toString().length) + 1 + unit.length}ch`;
 
 	return (
 		<div class={{ 'kol-meter': true, 'kol-meter--vertical': isVertical }}>
@@ -82,15 +76,10 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 				</div>
 				<span class="kol-meter__value-unit">
 					<span class="kol-meter__value" style={{ 'min-width': charCount }}>
-						{displayValue}
+						{displayValue}&nbsp;{unit}
 					</span>
-					<span class="kol-meter__unit">{unit}</span>
 				</span>
 			</div>
-
-			<span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-				{liveValueWithState}
-			</span>
 		</div>
 	);
 };
