@@ -4,6 +4,7 @@ import clsx from '../../utils/clsx';
 
 import type {
 	AccessKeyPropType,
+	AriaDetailsPropType,
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
@@ -32,6 +33,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { validateAriaDetails } from '../../schema/props/aria-details';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -183,6 +185,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 			ref: this.ctaRef,
 			state: this.state,
 			ariaDescribedBy,
+			ariaDetails: this._ariaDetails,
 			...this.controller.onFacade,
 			onBlur: this.onBlur,
 			onChange: this.onChange,
@@ -213,6 +216,16 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		validateAriaDetails(this, this.host, undefined, value);
+	}
 
 	/**
 	 * Shows a character counter for the input element.

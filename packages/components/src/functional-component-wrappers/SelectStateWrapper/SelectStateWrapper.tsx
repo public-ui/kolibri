@@ -33,8 +33,9 @@ function getSelectProps(state: SelectStates): SelectProps {
 	return props;
 }
 
-const SelectStateWrapper: FC<SelectStateWrapperProps> = ({ state, ...other }) => {
-	return <KolSelectFc {...getSelectProps(state)} {...other} />;
+const SelectStateWrapper: FC<SelectStateWrapperProps> = ({ state, ariaDetails, ...other }) => {
+	const selectProps = getSelectProps(state);
+	return <KolSelectFc {...selectProps} {...other} ariaDetails={ariaDetails} />;
 };
 
 export default SelectStateWrapper;

@@ -11,6 +11,7 @@ import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomS
 import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type {
+	AriaDetailsPropType,
 	ComboboxAPI,
 	ComboboxStates,
 	DisabledPropType,
@@ -34,6 +35,7 @@ import type {
 	W3CInputValue,
 } from '../../schema';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
+import { validateAriaDetails } from '../../schema/props/aria-details';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -249,6 +251,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			'aria-label': this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined,
 			'aria-labelledby': this.state._id + '-label',
 			'aria-keyshortcuts': this.state._shortKey,
+			'aria-details': this._ariaDetails,
 			value: this.state._value,
 			accessKey: this.state._accessKey,
 			autocapitalize: 'off',
@@ -456,6 +459,16 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this combobox.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		validateAriaDetails(this, this.host, undefined, value);
+	}
 
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.

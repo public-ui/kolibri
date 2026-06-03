@@ -11,6 +11,7 @@ export type TextAreaStateWrapperProps = Partial<TextAreaProps> & {
 function getTextAreaProps(state: TextareaStates, other: Partial<TextAreaProps>): TextAreaProps {
 	const renderStates = getRenderStates(state);
 	const ariaDescribedBy = [...renderStates.ariaDescribedBy, ...(other.ariaDescribedBy ?? [])];
+	const ariaDetails = other.ariaDetails;
 
 	const props: TextAreaProps = {
 		id: state._id,
@@ -28,6 +29,7 @@ function getTextAreaProps(state: TextareaStates, other: Partial<TextAreaProps>):
 		msg: state._msg as MsgPropType,
 		...other,
 		ariaDescribedBy,
+		ariaDetails,
 	};
 
 	if ('_maxLength' in state && '_maxLengthBehavior' in state && state._maxLengthBehavior === 'hard') {

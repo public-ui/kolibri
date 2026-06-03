@@ -4,6 +4,7 @@ import clsx from '../../utils/clsx';
 
 import type {
 	AdjustHeightPropType,
+	AriaDetailsPropType,
 	DisabledPropType,
 	FocusableElement,
 	HasCounterPropType,
@@ -30,6 +31,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { validateAriaDetails } from '../../schema/props/aria-details';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -112,6 +114,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 				resize: this.state._resize,
 			},
 			ariaDescribedBy,
+			ariaDetails: this._ariaDetails,
 			...this.controller.onFacade,
 			onInput: this.onInput,
 			onFocus: (event: Event) => {
@@ -147,6 +150,16 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 * @TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
 	 */
 	@Prop() public _adjustHeight?: boolean = false;
+
+	/**
+	 * References an external element by ID that provides accessible details for this textarea.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		validateAriaDetails(this, this.host, undefined, value);
+	}
 
 	/**
 	 * Makes the element not focusable and ignore all events.

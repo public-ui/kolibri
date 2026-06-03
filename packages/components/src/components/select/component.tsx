@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from '../../utils/clsx';
 
 import type {
+	AriaDetailsPropType,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -26,6 +27,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { validateAriaDetails } from '../../schema/props/aria-details';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -90,6 +92,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 		return {
 			ref: this.ctaRef,
 			state: this.state,
+			ariaDetails: this._ariaDetails,
 			...this.controller.onFacade,
 			onInput: this.onInput.bind(this),
 			onChange: this.onChange.bind(this),
@@ -131,6 +134,16 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this select.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		validateAriaDetails(this, this.host, undefined, value);
+	}
 
 	/**
 	 * Makes the element not focusable and ignore all events.
