@@ -265,5 +265,4 @@ export type ControllerInterface<T extends ComponentApi = ComponentApi> = {
 	getRenderProp<K extends keyof InternalProps<T>>(key: K): StrictFields<InternalProps<T>>[K];
 } & ComponentWatchers<ExternalProps<T>> &
 	ControllerCallbackHandlers<ExtractCallbacks<T>> &
-	ControllerListeners<ExtractListeners<T>> &
-	ExtractMethods<T>;
+	ControllerListeners<ExtractListeners<T>>;

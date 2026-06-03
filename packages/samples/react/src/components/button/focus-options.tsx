@@ -1,8 +1,7 @@
-import type { KolFocusOptions, KoliBriTableCell, SelectOption } from '@public-ui/components';
-import { createReactRenderElement, KolButton, KolHeading, KolSelect, KolTableStateless } from '@public-ui/react-v19';
+import type { KolFocusOptions, SelectOption } from '@public-ui/components';
+import { KolButton, KolHeading, KolSelect } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useCallback, useRef, useState } from 'react';
-import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
 
 const BEHAVIOR_OPTIONS: SelectOption<string>[] = [
@@ -17,39 +16,33 @@ const ALIGNMENT_OPTIONS: SelectOption<string>[] = [
 	{ label: 'Nearest', value: 'nearest' },
 ];
 
-const SPACER_FULL = 'calc(100vh - 2rem)';
-const SPACER_HALF = 'calc(50vh - 1rem)';
-
 const SELECT_CONFIGS = [
 	{ label: 'Behavior', key: 'behavior' as const, options: BEHAVIOR_OPTIONS },
 	{ label: 'Block (vertical alignment)', key: 'block' as const, options: ALIGNMENT_OPTIONS },
 	{ label: 'Inline (horizontal alignment)', key: 'inline' as const, options: ALIGNMENT_OPTIONS },
 ];
 
-const TABLE_DATA = [
-	{ id: 1, name: 'Alice Johnson', department: 'Engineering', status: 'Active' },
-	{ id: 2, name: 'Bob Smith', department: 'Sales', status: 'Active' },
-	{ id: 3, name: 'Carol White', department: 'Marketing', status: 'Inactive' },
-	{ id: 4, name: 'David Brown', department: 'Engineering', status: 'Active' },
-	{ id: 5, name: 'Eva Garcia', department: 'HR', status: 'Active' },
-];
+const SCROLL_CONTAINER_STYLE: React.CSSProperties = {
+	padding: '1rem',
+	marginTop: '1rem',
+	border: '1px solid #ccc',
+};
 
 export const ButtonFocusOptions: FC = () => {
-	const targetRef = useRef<HTMLKolButtonElement>(null);
-	const tableActionRef = useRef<HTMLKolButtonElement>(null);
+	const backToTopRef = useRef<HTMLKolButtonElement>(null);
+	const behaviorSelectRef = useRef<HTMLKolSelectElement>(null);
 	const [focusOptions, setFocusOptions] = useState<KolFocusOptions>({
 		behavior: 'smooth',
 		block: 'start',
-		inline: 'nearest',
+		inline: 'start',
 	});
 	const [afterFocusCalled, setAfterFocusCalled] = useState(false);
-	const [activeTab, setActiveTab] = useState<'vertical' | 'horizontal'>('vertical');
 
 	const handleFocus = useCallback(async () => {
-		if (targetRef.current) {
+		if (backToTopRef.current) {
 			setAfterFocusCalled(false);
 
-			await targetRef.current.focus({
+			await backToTopRef.current.focus({
 				...focusOptions,
 				afterFocus: () => {
 					setAfterFocusCalled(true);
@@ -58,11 +51,11 @@ export const ButtonFocusOptions: FC = () => {
 		}
 	}, [focusOptions]);
 
-	const handleTableFocus = useCallback(async () => {
-		if (tableActionRef.current) {
+	const handleBackToTop = useCallback(async () => {
+		if (behaviorSelectRef.current) {
 			setAfterFocusCalled(false);
 
-			await tableActionRef.current.focus({
+			await behaviorSelectRef.current.focus({
 				...focusOptions,
 				afterFocus: () => {
 					setAfterFocusCalled(true);
@@ -78,13 +71,22 @@ export const ButtonFocusOptions: FC = () => {
 		}));
 	}, []);
 
+	const handleReset = useCallback(() => {
+		setFocusOptions({
+			behavior: 'smooth',
+			block: 'start',
+			inline: 'start',
+		});
+		setAfterFocusCalled(false);
+	}, []);
+
 	return (
 		<>
 			<SampleDescription>
 				<p>
 					This story demonstrates KolFocusOptions for manual focus control with scroll-into-view behavior. It showcases vertical scrolling (element positioned
-					below viewport) and horizontal scrolling (action button in wide table). The focus options control how the element is scrolled into view, with the
-					afterFocus callback triggering after scrolling completes.
+					below viewport) and horizontal scrolling (element positioned outside viewport). The focus options control how the element is scrolled into view, with
+					the afterFocus callback triggering after scrolling completes.
 				</p>
 			</SampleDescription>
 
@@ -98,10 +100,11 @@ export const ButtonFocusOptions: FC = () => {
 					</p>
 
 					<div className="grid gap-4">
-						{SELECT_CONFIGS.map((config) => (
+						{SELECT_CONFIGS.map((config, index) => (
 							<div key={config.key} className="grid gap-2">
 								{/* eslint-disable @typescript-eslint/no-unsafe-member-access */}
 								<KolSelect
+									ref={index === 0 ? behaviorSelectRef : null}
 									_label={config.label}
 									_options={config.options}
 									_value={focusOptions[config.key as keyof KolFocusOptions]}
@@ -116,87 +119,45 @@ export const ButtonFocusOptions: FC = () => {
 					</div>
 				</section>
 
-				{/* Tab Selection */}
+				{/* Scroll Example */}
 				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Scroll Examples" />
-					<div className="flex gap-2">
-						<KolButton _label="Vertical Scroll" _variant={activeTab === 'vertical' ? 'primary' : 'secondary'} onClick={() => setActiveTab('vertical')} />
-						<KolButton _label="Horizontal Scroll" _variant={activeTab === 'horizontal' ? 'primary' : 'secondary'} onClick={() => setActiveTab('horizontal')} />
+					<KolHeading _level={2} _label="Scroll Example" />
+					<p>The target button is positioned bottom-right. Scroll down and right to find it, then click &quot;Focus Target&quot; to apply scroll behavior.</p>
+
+					<div className="flex gap-4">
+						<KolButton _label="Focus Target" _variant="primary" onClick={handleFocus} />
 					</div>
-				</section>
+					<p>
+						Callback invoked: <strong>{afterFocusCalled ? 'Yes ✓' : 'No'}</strong>
+					</p>
 
-				{/* Vertical Scroll Example */}
-				{activeTab === 'vertical' && (
-					<section className="grid gap-4">
-						<KolHeading _level={3} _label="Vertical Scroll Example" />
-						<p>Scroll down to see the target button below the spacer. Click &quot;Focus Target&quot; to apply scroll behavior.</p>
-
-						<div className="flex gap-4">
-							<KolButton _label="Focus Target" _variant="primary" onClick={handleFocus} />
-							<KolButton _label="Reset" _variant="secondary" onClick={() => setAfterFocusCalled(false)} />
-						</div>
-						<p>
-							Callback invoked: <strong>{afterFocusCalled ? 'Yes ✓' : 'No'}</strong>
-						</p>
-
-						<div style={{ height: SPACER_FULL }} />
-
-						<KolButton ref={targetRef} _label="Vertical Target (scroll here)" _variant="primary" />
-
-						<div style={{ height: SPACER_HALF }} />
-					</section>
-				)}
-
-				{/* Horizontal Scroll Example */}
-				{activeTab === 'horizontal' && (
-					<section className="grid gap-4">
-						<KolHeading _level={3} _label="Horizontal Scroll Example" />
-						<p>The action button is in the rightmost column. Click &quot;Focus Action&quot; to focus it and apply scroll behavior.</p>
-
-						<div className="flex gap-4">
-							<KolButton _label="Focus Action" _variant="primary" onClick={handleTableFocus} />
-							<KolButton _label="Reset" _variant="secondary" onClick={() => setAfterFocusCalled(false)} />
-						</div>
-						<p>
-							Callback invoked: <strong>{afterFocusCalled ? 'Yes ✓' : 'No'}</strong>
-						</p>
-
-						<div style={{ overflowX: 'auto', marginTop: '1rem' }}>
-							<KolTableStateless
-								_label="Employee Table"
-								_headerCells={{
-									horizontal: [
-										[
-											{ key: 'id', label: 'ID' },
-											{ key: 'name', label: 'Name' },
-											{ key: 'department', label: 'Department' },
-											{ key: 'status', label: 'Status' },
-											{
-												key: 'action',
-												label: 'Action',
-												render: (element: HTMLElement, cell: KoliBriTableCell) => {
-													const row = cell as unknown as (typeof TABLE_DATA)[0];
-													const isTarget = row?.id === 5;
-													getRoot(createReactRenderElement(element)).render(
-														<KolButton ref={isTarget ? tableActionRef : null} _label="Edit" _variant="secondary" _icon-only={false} />,
-													);
-												},
-											},
-										],
-									],
-								}}
-								_data={TABLE_DATA.map((row) => ({
-									id: row.id,
-									name: row.name,
-									department: row.department,
-									status: row.status,
-								}))}
-								className="block"
-								style={{ fontSize: '0.875rem' }}
+					<div
+						style={{
+							...SCROLL_CONTAINER_STYLE,
+							overflow: 'auto',
+							width: '500px',
+							height: '600px',
+						}}
+					>
+						<div
+							style={{
+								width: '2400px',
+								height: '2400px',
+								padding: '1rem',
+								position: 'relative',
+							}}
+						>
+							<div style={{ padding: '1rem', backgroundColor: '#f9f9f9', borderRadius: '4px' }}>Content area (scroll to find button)</div>
+							<KolButton
+								ref={backToTopRef}
+								_label="Back to Top"
+								_variant="primary"
+								onClick={handleBackToTop}
+								style={{ position: 'absolute', bottom: '1rem', right: '1rem' }}
 							/>
 						</div>
-					</section>
-				)}
+					</div>
+				</section>
 
 				<hr />
 
