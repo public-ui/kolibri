@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ImageApi } from '../../internal/functional-components/image/api';
@@ -7,6 +7,7 @@ import { ImageFC } from '../../internal/functional-components/image/component';
 import { ImageController } from '../../internal/functional-components/image/controller';
 import type { LoadingType } from '../../internal/props';
 import type { KoliBriImageEventCallbacks } from '../../schema/components/image';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * The **Image** component renders an image with support for responsive loading via `srcset` and `sizes`, lazy loading, and accessible alternative text.
@@ -19,7 +20,23 @@ import type { KoliBriImageEventCallbacks } from '../../schema/components/image';
 	shadow: true,
 })
 export class KolImage implements WebComponentInterface<ImageApi> {
+	@Element() private readonly host?: HTMLKolImageElement;
+
 	private readonly ctrl = new ImageController(BaseWebComponent.stateLess);
+
+	private readonly handleError = (event: Event): void => {
+		this._on?.onError?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.error);
+		}
+	};
+
+	private readonly handleLoad = (event: Event): void => {
+		this._on?.onLoad?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.load);
+		}
+	};
 
 	/**
 	 * Sets the alternative text of the image.
@@ -101,8 +118,8 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 					sizes={this.ctrl.getRenderProp('sizes')}
 					src={this.ctrl.getRenderProp('src')}
 					srcset={this.ctrl.getRenderProp('srcset')}
-					onError={this._on?.onError}
-					onLoad={this._on?.onLoad}
+					onError={this.handleError}
+					onLoad={this.handleLoad}
 				/>
 			</Host>
 		);

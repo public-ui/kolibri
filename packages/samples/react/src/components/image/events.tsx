@@ -1,41 +1,53 @@
 import { KolImage } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 export const ImageEvents: FC = () => {
-	const [errorLog, setErrorLog] = useState<string[]>([]);
-	const [loadLog, setLoadLog] = useState<string[]>([]);
+	const [onErrorLog, setOnErrorLog] = useState<string[]>([]);
+	const [onLoadLog, setOnLoadLog] = useState<string[]>([]);
+	const [nativeErrorLog, setNativeErrorLog] = useState<string[]>([]);
+	const [nativeLoadLog, setNativeLoadLog] = useState<string[]>([]);
+	const nativeRef = useRef<HTMLKolImageElement>(null);
 
-	const handleError = () => {
-		setErrorLog((prev) => [...prev, `Error at ${new Date().toLocaleTimeString()}`]);
-	};
-
-	const handleLoad = () => {
-		setLoadLog((prev) => [...prev, `Loaded at ${new Date().toLocaleTimeString()}`]);
-	};
+	useEffect(() => {
+		const el = nativeRef.current;
+		if (!el) return;
+		const onError = () => setNativeErrorLog((prev) => [...prev, new Date().toLocaleTimeString()]);
+		const onLoad = () => setNativeLoadLog((prev) => [...prev, new Date().toLocaleTimeString()]);
+		el.addEventListener('error', onError);
+		el.addEventListener('load', onLoad);
+		return () => {
+			el.removeEventListener('error', onError);
+			el.removeEventListener('load', onLoad);
+		};
+	}, []);
 
 	return (
 		<>
 			<SampleDescription>
 				<p>
-					KolImage supports <code>_on.onError</code> and <code>_on.onLoad</code> callbacks. The first image uses a broken URL to trigger{' '}
-					<code>onError</code>; the second uses a valid URL to trigger <code>onLoad</code>.
+					KolImage fires both <code>_on.onError</code> / <code>_on.onLoad</code> callbacks and native <code>error</code> / <code>load</code> DOM
+					events on the host element. Both approaches are demonstrated below.
 				</p>
 			</SampleDescription>
 
-			<h3>Broken image (triggers onError)</h3>
-			<KolImage _alt="This image will fail to load" _src="/this-image-does-not-exist.png" _on={{ onError: handleError }} />
-			<p>Error events: {errorLog.length === 0 ? 'none yet' : errorLog.join(', ')}</p>
-
-			<h3>Valid image (triggers onLoad)</h3>
+			<h3>Via _on prop</h3>
 			<KolImage
-				_alt="KoliBri design system illustration"
-				_src="sample-image.png"
-				_on={{ onLoad: handleLoad }}
-				className="w-image"
+				_alt="This image will fail to load"
+				_src="/this-image-does-not-exist.png"
+				_on={{
+					onError: () => setOnErrorLog((prev) => [...prev, new Date().toLocaleTimeString()]),
+					onLoad: () => setOnLoadLog((prev) => [...prev, new Date().toLocaleTimeString()]),
+				}}
 			/>
-			<p>Load events: {loadLog.length === 0 ? 'none yet' : loadLog.join(', ')}</p>
+			<p>onError fired: {onErrorLog.length === 0 ? 'not yet' : onErrorLog.join(', ')}</p>
+			<p>onLoad fired: {onLoadLog.length === 0 ? 'not yet' : onLoadLog.join(', ')}</p>
+
+			<h3>Via native addEventListener</h3>
+			<KolImage ref={nativeRef} _alt="KoliBri design system illustration" _src="sample-image.png" className="w-image" />
+			<p>native error fired: {nativeErrorLog.length === 0 ? 'not yet' : nativeErrorLog.join(', ')}</p>
+			<p>native load fired: {nativeLoadLog.length === 0 ? 'not yet' : nativeLoadLog.join(', ')}</p>
 		</>
 	);
 };
