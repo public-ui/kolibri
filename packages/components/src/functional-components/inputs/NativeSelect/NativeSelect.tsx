@@ -12,7 +12,6 @@ export type SelectProps = DefaultInputProps<SelectAttributes> &
 	NativeOptionListProps & {
 		touched?: boolean;
 		msg?: Stringified<MsgPropType>;
-		ariaDetails?: string;
 	} & {
 		[key: `aria-${string}`]: unknown;
 		[key: `data-${string}`]: unknown;
@@ -30,7 +29,6 @@ const NativeSelectFc: FC<SelectProps> = (props) => {
 		OptionProps,
 		OptionGroupProps,
 		ariaDescribedBy,
-		ariaDetails,
 		hideLabel,
 		label,
 		...other
@@ -47,7 +45,7 @@ const NativeSelectFc: FC<SelectProps> = (props) => {
 		class: clsx('kol-select', stateCssClasses, classNames),
 		required: required,
 		disabled: disabled,
-		...getDefaultProps({ ariaDescribedBy, ariaDetails, hideLabel, label }),
+		...getDefaultProps({ ariaDescribedBy, hideLabel, label }),
 		...other,
 	};
 

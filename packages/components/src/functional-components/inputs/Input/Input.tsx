@@ -12,14 +12,13 @@ export type InputProps = DefaultInputProps<JSXBase.InputHTMLAttributes<HTMLInput
 	spellcheck?: boolean;
 	suggestions?: VNode;
 	value?: string | number | string[];
-	ariaDetails?: string;
 } & {
 	[key: `aria-${string}`]: unknown;
 	[key: `data-${string}`]: unknown;
 };
 
 const InputFc: FC<InputProps> = (props) => {
-	const { class: classNames, msg, required, disabled, touched, readonly, ariaDescribedBy, ariaDetails, hideLabel, label, suggestions, value, ...other } = props;
+	const { class: classNames, msg, required, disabled, touched, readonly, ariaDescribedBy, hideLabel, label, suggestions, value, ...other } = props;
 
 	const stateCssClasses = {
 		['kol-input--disabled']: Boolean(disabled),
@@ -36,7 +35,7 @@ const InputFc: FC<InputProps> = (props) => {
 		readonly: readonly,
 		type: 'text',
 		list: suggestions && typeof other.id === 'string' ? createRelatedUniqueId(other.id, 'list') : undefined,
-		...getDefaultProps({ ariaDescribedBy, ariaDetails, hideLabel, label }),
+		...getDefaultProps({ ariaDescribedBy, hideLabel, label }),
 		...other,
 	};
 

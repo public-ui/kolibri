@@ -36,6 +36,7 @@ import type {
 } from '../../schema';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import { validateAriaDetails } from '../../schema/props/aria-details';
+import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -56,6 +57,8 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
+
+	private internals?: HostInternals;
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private clearButtonFocused = false;
 
@@ -251,7 +254,6 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			'aria-label': this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined,
 			'aria-labelledby': this.state._id + '-label',
 			'aria-keyshortcuts': this.state._shortKey,
-			'aria-details': this._ariaDetails,
 			value: this.state._value,
 			accessKey: this.state._accessKey,
 			autocapitalize: 'off',
@@ -467,7 +469,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 
 	@Watch('_ariaDetails')
 	public validateAriaDetails(value?: AriaDetailsPropType): void {
-		validateAriaDetails(this, this.host, undefined, value);
+		validateAriaDetails(this, this.host, this.internals, value);
 	}
 
 	/**
@@ -691,6 +693,9 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
+		this.internals = attachInternals(this.host);
+		this.validateAriaDetails(this._ariaDetails);
+
 		this.refSuggestions = [];
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();

@@ -41,7 +41,6 @@ export type InputStateWrapperProps = Partial<InputProps> & {
 function getInputProps(state: InputState, other: Partial<InputProps>, customSuggestions?: boolean): InputProps {
 	const renderStates = getRenderStates(state);
 	const ariaDescribedBy = [...renderStates.ariaDescribedBy, ...(other.ariaDescribedBy ?? [])];
-	const ariaDetails = other.ariaDetails;
 
 	const props: InputProps = {
 		id: state._id,
@@ -82,7 +81,6 @@ function getInputProps(state: InputState, other: Partial<InputProps>, customSugg
 		...props,
 		...other,
 		ariaDescribedBy,
-		ariaDetails,
 	};
 }
 

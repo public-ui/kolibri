@@ -9,14 +9,13 @@ export type TextAreaProps = DefaultInputProps<JSXBase.TextareaHTMLAttributes<HTM
 	value: string;
 	touched?: boolean;
 	msg?: Stringified<MsgPropType>;
-	ariaDetails?: string;
 } & {
 	[key: `aria-${string}`]: unknown;
 	[key: `data-${string}`]: unknown;
 };
 
 const TextAreaFc: FC<TextAreaProps> = (props) => {
-	const { class: classNames, msg, touched, readonly, disabled, required, ariaDescribedBy, ariaDetails, hideLabel, label, ...other } = props;
+	const { class: classNames, msg, touched, readonly, disabled, required, ariaDescribedBy, hideLabel, label, ...other } = props;
 
 	const stateCssClasses = {
 		['kol-textarea--disabled']: Boolean(disabled),
@@ -31,7 +30,7 @@ const TextAreaFc: FC<TextAreaProps> = (props) => {
 		required: required,
 		disabled: disabled,
 		readonly: readonly,
-		...getDefaultProps({ ariaDescribedBy, ariaDetails, hideLabel, label }),
+		...getDefaultProps({ ariaDescribedBy, hideLabel, label }),
 		...other,
 	};
 
