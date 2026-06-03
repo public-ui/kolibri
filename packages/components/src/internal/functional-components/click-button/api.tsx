@@ -1,4 +1,3 @@
-import type { KolFocusOptions } from '../../../schema';
 import { labelProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
@@ -11,9 +10,6 @@ export type ClickButtonApi = ApiFromConfig<
 	{
 		Callbacks: {
 			click: () => void;
-		};
-		Methods: {
-			focus: (options?: KolFocusOptions) => void;
 		};
 		Refs: {
 			button: HTMLButtonElement;

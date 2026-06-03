@@ -9,7 +9,11 @@ const clickButtonBem = bem.forBlock('kol-click-button');
 const BEM_CLASS_CLICK_BUTTON = clickButtonBem();
 const BEM_CLASS_CLICK_BUTTON__LABEL = clickButtonBem('label');
 
-export const ClickButtonFC: FC<FunctionalComponentProps<ClickButtonApi>> = ({ label, handleClick, refButton }) => (
+type ClickButtonFCProps = Pick<FunctionalComponentProps<ClickButtonApi>, 'handleClick' | 'label'> & {
+	refButton: (element?: HTMLButtonElement) => void;
+};
+
+export const ClickButtonFC: FC<ClickButtonFCProps> = ({ label, handleClick, refButton }) => (
 	<button class={BEM_CLASS_CLICK_BUTTON} ref={refButton} onClick={handleClick} onKeyDown={(event) => event.preventDefault()}>
 		<span class={BEM_CLASS_CLICK_BUTTON__LABEL}>{label}</span>
 	</button>

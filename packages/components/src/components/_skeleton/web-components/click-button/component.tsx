@@ -48,14 +48,7 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<ClickButtonFC
-					label={this.ctrl.getRenderProp('label')}
-					refButton={(el) => {
-						this.buttonRef(el);
-						this.ctrl.setButtonRef(el);
-					}}
-					handleClick={this.ctrl.handleClick}
-				/>
+				<ClickButtonFC label={this.ctrl.getRenderProp('label')} refButton={this.buttonRef} handleClick={this.ctrl.handleClick} />
 			</Host>
 		);
 	}
