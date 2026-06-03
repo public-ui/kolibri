@@ -102,10 +102,10 @@ function isActiveElement(element: HTMLElement): boolean {
 	return document.activeElement === element;
 }
 
-const FOCUS_OPTIONS: FocusOptions = {
-	preventScroll: true,
+const FOCUS_OPTIONS = {
 	focusVisible: true,
-};
+	preventScroll: true,
+} satisfies FocusOptions & { focusVisible?: boolean };
 
 /**
  * Attempts to focus the given element on each animation frame until
