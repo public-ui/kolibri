@@ -6,6 +6,7 @@
 		width: 100%;
 		min-width: var(--a11y-min-size);
 		min-height: var(--a11y-min-size);
+		position: relative;
 
 		align-items: center;
 		grid-template-columns: 1fr;
@@ -17,6 +18,7 @@
 
 		&__container {
 			position: relative;
+			z-index: 1;
 		}
 
 		&__adornment {
