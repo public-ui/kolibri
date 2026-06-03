@@ -27,9 +27,9 @@ export const InputTextAriaDetails: FC = () => (
 					_label="Country"
 					_ariaDetails="details-box"
 					_options={[
-						{ _label: 'Germany', _value: 'de' },
-						{ _label: 'Austria', _value: 'at' },
-						{ _label: 'Switzerland', _value: 'ch' },
+						{ label: 'Germany', value: 'de' },
+						{ label: 'Austria', value: 'at' },
+						{ label: 'Switzerland', value: 'ch' },
 					]}
 				/>
 
