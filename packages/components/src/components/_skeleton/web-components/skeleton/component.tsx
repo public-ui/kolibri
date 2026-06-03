@@ -6,7 +6,7 @@ import type { SkeletonApi } from '../../../../internal/functional-components/ske
 import { SkeletonFC } from '../../../../internal/functional-components/skeleton/component';
 import { SkeletonController } from '../../../../internal/functional-components/skeleton/controller';
 import { Log, type KolFocusOptions } from '../../../../schema';
-import { ctrlFocus } from '../../../../utils/element-interaction';
+import { createCtaRef, delegateFocus } from '../../../../utils/element-interaction';
 
 @Component({
 	tag: 'kol-skeleton',
@@ -14,12 +14,13 @@ import { ctrlFocus } from '../../../../utils/element-interaction';
 })
 export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebComponentInterface<SkeletonApi> {
 	private readonly ctrl = new SkeletonController(this.stateAccess);
+	private readonly buttonRef = createCtaRef<HTMLButtonElement>();
 
 	/**
 	 * Focuses the interactive element of the component.
 	 */
 	@Method()
-	@ctrlFocus('ctrl')
+	@delegateFocus('buttonRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public async focus(options?: KolFocusOptions): Promise<void> {}
@@ -43,12 +44,21 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 		this.ctrl.watchName(value);
 	}
 
+	/**
+	 * Tracks the current count value for the skeleton.
+	 */
 	@State()
 	public count: number = 0;
 
+	/**
+	 * The label text displayed on the click button.
+	 */
 	@State()
 	public label: string = 'Label';
 
+	/**
+	 * Controls the visibility of the skeleton component.
+	 */
 	@State()
 	public show: boolean = true;
 
@@ -70,6 +80,9 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	 */
 	@Event() public rendered!: EventEmitter<void>;
 
+	/**
+	 * Global keydown listener. Auto-cleaned by Stencil on component removal.
+	 */
 	@Listen('keydown', { target: 'window' })
 	public onKeydown(event: KeyboardEvent): void {
 		this.ctrl.onKeydown(event);
@@ -103,11 +116,14 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 					count={this.count}
 					label={this.label}
 					name={this.ctrl.getRenderProp('name')}
-					handleClick={() => this.ctrl.handleClick()}
+					handleClick={this.ctrl.handleClick}
 					onLoaded={this.loaded}
 					onRendered={this.rendered}
 					show={this.show}
-					refButton={(element) => this.ctrl.setButtonRef(element)}
+					refButton={(element) => {
+						this.buttonRef(element);
+						this.ctrl.setButtonRef(element);
+					}}
 				/>
 			</Host>
 		);

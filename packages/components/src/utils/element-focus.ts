@@ -30,7 +30,7 @@ function waitForElementInViewport(element: HTMLElement, timeoutMs = 2000): Promi
 			resolve();
 		};
 
-		const timeoutId = window.setTimeout(done, timeoutMs);
+		const timeoutId = setTimeout(done, timeoutMs);
 
 		if (typeof window !== 'undefined' && 'onscrollend' in window) {
 			const handleScrollEnd = (event: Event): void => {
@@ -121,11 +121,9 @@ export async function setFocus(element: HTMLElement | undefined | null, options?
 	if (!element) {
 		return;
 	}
-	const { afterFocus, preventScroll, focusVisible, ...scrollOptions } = options ?? {};
-	const hasScrollOptions = Object.keys(scrollOptions).length > 0;
-	const shouldPreventScroll = preventScroll ?? hasScrollOptions;
-	const focusOptions =
-		preventScroll !== undefined || focusVisible !== undefined || hasScrollOptions ? { preventScroll: shouldPreventScroll, focusVisible } : undefined;
+	const { afterFocus, ...scrollOptions } = options ?? {};
+	const hasScrollOptions = options && ('behavior' in scrollOptions || 'block' in scrollOptions || 'inline' in scrollOptions);
+	const focusOptions = { preventScroll: hasScrollOptions, focusVisible: true };
 
 	let attempts = 0;
 	do {
@@ -138,12 +136,13 @@ export async function setFocus(element: HTMLElement | undefined | null, options?
 
 	const focused = isActiveElement(element);
 
-	if (hasScrollOptions && shouldPreventScroll) {
-		element.scrollIntoView(scrollOptions);
+	if (hasScrollOptions) {
+		const scrollIntoViewOptions = { ...scrollOptions, behavior: scrollOptions.behavior ?? 'smooth' };
+		element.scrollIntoView(scrollIntoViewOptions);
 	}
 
 	if (afterFocus && focused) {
-		if (hasScrollOptions && shouldPreventScroll && scrollOptions.behavior === 'smooth') {
+		if (hasScrollOptions && scrollOptions.behavior === 'smooth') {
 			await waitForElementInViewport(element);
 		}
 		afterFocus();

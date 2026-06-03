@@ -6,7 +6,7 @@ import { ClickButtonFC } from '../../../../internal/functional-components/click-
 import { ClickButtonController } from '../../../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
 import type { KolFocusOptions } from '../../../../schema';
-import { ctrlFocus } from '../../../../utils/element-interaction';
+import { createCtaRef, delegateFocus } from '../../../../utils/element-interaction';
 
 /**
  * @internal
@@ -17,6 +17,7 @@ import { ctrlFocus } from '../../../../utils/element-interaction';
 })
 export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements WebComponentInterface<ClickButtonApi> {
 	private readonly ctrl = new ClickButtonController(this.stateAccess);
+	private readonly buttonRef = createCtaRef<HTMLButtonElement>();
 
 	/**
 	 * Sets the label of the click button component.
@@ -33,7 +34,7 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	 * Focuses the interactive element of the component.
 	 */
 	@Method()
-	@ctrlFocus('ctrl')
+	@delegateFocus('buttonRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public async focus(options?: KolFocusOptions): Promise<void> {}
@@ -47,7 +48,14 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<ClickButtonFC label={this.ctrl.getRenderProp('label')} refButton={this.ctrl.setButtonRef} handleClick={this.ctrl.handleClick} />
+				<ClickButtonFC
+					label={this.ctrl.getRenderProp('label')}
+					refButton={(el) => {
+						this.buttonRef(el);
+						this.ctrl.setButtonRef(el);
+					}}
+					handleClick={this.ctrl.handleClick}
+				/>
 			</Host>
 		);
 	}

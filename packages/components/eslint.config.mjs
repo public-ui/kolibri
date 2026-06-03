@@ -145,7 +145,7 @@ export default [
 					pattern: ['src/internal/functional-components/click-button', 'src/internal/functional-components/skeleton'],
 					mode: 'folder',
 				},
-				{ type: 'focus-decorator-utils', pattern: 'src/utils/element-interaction.ts', mode: 'file' },
+				{ type: 'focus-decorator-utils', pattern: ['src/utils/element-interaction.ts', 'src/utils/element-focus.ts'], mode: 'file' },
 				{ type: 'internal-functional-components', pattern: 'src/internal/functional-components', mode: 'folder' },
 				{ type: 'internal-props', pattern: 'src/internal/props', mode: 'folder' },
 				{ type: 'schema', pattern: 'src/schema', mode: 'folder' },
@@ -180,7 +180,9 @@ export default [
 						},
 						{
 							from: { type: 'skeleton-functional-components' },
-							allow: { to: { type: ['skeleton-functional-components', 'internal-functional-components', 'internal-props', 'schema'] } },
+							allow: {
+								to: { type: ['skeleton-functional-components', 'internal-functional-components', 'internal-props', 'schema', 'focus-decorator-utils'] },
+							},
 						},
 					],
 				},

@@ -51,8 +51,9 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 		this.setState('count', (this.getState?.('count') ?? 0) + 1);
 	};
 
-	public focus(options?: KolFocusOptions): void {
-		this.clickButtonCtrl.focus(options);
+	// eslint-disable-next-line @typescript-eslint/no-misused-promises
+	public async focus(options?: KolFocusOptions): Promise<void> {
+		return this.clickButtonCtrl.focus(options);
 	}
 
 	public setButtonRef = (element?: HTMLButtonElement): void => {

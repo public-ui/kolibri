@@ -1,4 +1,5 @@
 import type { KolFocusOptions } from '../../../schema';
+import { setFocus } from '../../../utils/element-focus';
 import { labelProp } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
@@ -17,6 +18,11 @@ export class ClickButtonController extends BaseController<ClickButtonApi> implem
 		this.watchLabel(label);
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-misused-promises
+	public async focus(options?: KolFocusOptions): Promise<void> {
+		return setFocus(this.buttonRef, options);
+	}
+
 	public watchLabel(value?: string): void {
 		labelProp.apply(value, (v) => {
 			this.setRenderProp('label', v);
@@ -27,28 +33,6 @@ export class ClickButtonController extends BaseController<ClickButtonApi> implem
 		// eslint-disable-next-line no-console
 		console.log(this, this.buttonRef, 'button clicked');
 	};
-
-	public focus(options?: KolFocusOptions): void {
-		if (this.buttonRef) {
-			const { afterFocus, preventScroll, focusVisible, ...scrollOptions } = options ?? {};
-			const hasScrollOptions = Object.keys(scrollOptions).length > 0;
-			const shouldPreventScroll = preventScroll ?? hasScrollOptions;
-			const focusOptions =
-				preventScroll !== undefined || focusVisible !== undefined || hasScrollOptions ? { preventScroll: shouldPreventScroll, focusVisible } : undefined;
-			this.buttonRef.focus(focusOptions);
-			if (hasScrollOptions && shouldPreventScroll) {
-				this.buttonRef.scrollIntoView(scrollOptions);
-			}
-			const root = this.buttonRef.getRootNode();
-			const hasFocus = root instanceof ShadowRoot ? root.activeElement === this.buttonRef : document.activeElement === this.buttonRef;
-			if (hasFocus) {
-				// afterFocus is invoked synchronously here – unlike setFocus() which uses
-				// IntersectionObserver for smooth-scroll completion, this internal component
-				// cannot await async scroll due to architectural boundary constraints.
-				afterFocus?.();
-			}
-		}
-	}
 
 	public setButtonRef = (element?: HTMLButtonElement): void => {
 		this.buttonRef = element;

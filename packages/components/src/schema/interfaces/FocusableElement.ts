@@ -1,14 +1,16 @@
 /**
- * Combined focus and scroll options for the {@link FocusableElement.focus} method.
- * Merges the browser's native focus options ({@link HTMLElement.focus}) and
- * scroll-into-view options ({@link Element.scrollIntoView}).
- * All properties are optional to preserve backward compatibility.
+ * Scroll options for the {@link FocusableElement.focus} method.
+ * Merges scroll-into-view options ({@link Element.scrollIntoView}).
+ *
+ * Note: `preventScroll` and `focusVisible` are always enabled internally for consistent focus behavior.
+ * They are intentionally typed as `true` only: callers may omit them or explicitly opt in with `true`,
+ * but `false` is not supported by this API contract.
  */
 export type KolFocusOptions = {
 	/** Prevents the browser from scrolling when focus is set — scroll is then handled manually. */
-	preventScroll?: boolean;
+	preventScroll?: true;
 	/** Hints whether focus should be visible (e.g. focus ring). */
-	focusVisible?: boolean;
+	focusVisible?: true;
 } & ScrollIntoViewOptions & {
 		/**
 		 * Callback invoked after the element has received focus and (if requested) has been scrolled into view.

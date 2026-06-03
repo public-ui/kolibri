@@ -79,10 +79,9 @@ export function delegateFocus(refPropName: string): MethodDecorator_ {
  * @param ctrlPropName - Class property holding the controller
  */
 export function ctrlFocus(ctrlPropName: string): MethodDecorator_ {
-	return makeFocusDecorator((self, options) => {
-		const ctrl = self[ctrlPropName] as { focus?: (options?: KolFocusOptions) => void } | undefined;
-		ctrl?.focus?.(options);
-		return Promise.resolve();
+	return makeFocusDecorator(async (self, options) => {
+		const ctrl = self[ctrlPropName] as { focus?: (options?: KolFocusOptions) => Promise<void> } | undefined;
+		await ctrl?.focus?.(options);
 	});
 }
 
