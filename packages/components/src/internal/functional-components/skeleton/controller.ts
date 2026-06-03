@@ -1,31 +1,25 @@
 import type { KolFocusOptions } from '../../../schema';
 import { Log } from '../../../schema';
+import { setFocus } from '../../../utils/element-focus';
+import { createCtaRef } from '../../../utils/element-interaction';
 import { nameProp } from '../../props';
 import { BaseController } from '../base-controller';
-import { BaseWebComponent } from '../base-web-component';
-import { ClickButtonController } from '../click-button/controller';
 import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { SkeletonApi } from './api';
 import { skeletonPropsConfig } from './api';
 
 export class SkeletonController extends BaseController<SkeletonApi> implements ControllerInterface<SkeletonApi> {
-	private readonly clickButtonCtrl: ClickButtonController;
+	private readonly buttonRef = createCtaRef<HTMLButtonElement>();
 	private intervalId?: ReturnType<typeof setTimeout>;
 
 	public constructor(stateAccess: StateAccess<SkeletonApi>) {
 		super(stateAccess, skeletonPropsConfig);
-
-		this.clickButtonCtrl = new ClickButtonController(BaseWebComponent.stateLess);
 		this.startLoadedEventInterval();
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<SkeletonApi>): void {
 		const { name } = props;
 		this.watchName(name);
-
-		this.clickButtonCtrl.componentWillLoad({
-			label: 'Click me',
-		});
 	}
 
 	public watchName(value?: string): void {
@@ -51,13 +45,12 @@ export class SkeletonController extends BaseController<SkeletonApi> implements C
 		this.setState('count', (this.getState?.('count') ?? 0) + 1);
 	};
 
-	// eslint-disable-next-line @typescript-eslint/no-misused-promises
-	public async focus(options?: KolFocusOptions): Promise<void> {
-		return this.clickButtonCtrl.focus(options);
+	public focus(options?: KolFocusOptions): void {
+		void setFocus(this.buttonRef.el, options);
 	}
 
 	public setButtonRef = (element?: HTMLButtonElement): void => {
-		this.clickButtonCtrl.setButtonRef(element);
+		this.buttonRef(element);
 	};
 
 	private startLoadedEventInterval(): void {

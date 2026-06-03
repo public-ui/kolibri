@@ -102,6 +102,11 @@ function isActiveElement(element: HTMLElement): boolean {
 	return document.activeElement === element;
 }
 
+const FOCUS_OPTIONS: FocusOptions = {
+	preventScroll: true,
+	focusVisible: true,
+};
+
 /**
  * Attempts to focus the given element on each animation frame until
  * it becomes the active element or the maximum number of attempts is reached.
@@ -123,12 +128,11 @@ export async function setFocus(element: HTMLElement | undefined | null, options?
 	}
 	const { afterFocus, ...scrollOptions } = options ?? {};
 	const hasScrollOptions = options && ('behavior' in scrollOptions || 'block' in scrollOptions || 'inline' in scrollOptions);
-	const focusOptions = { preventScroll: hasScrollOptions, focusVisible: true };
 
 	let attempts = 0;
 	do {
 		if (element) {
-			element.focus(focusOptions);
+			element.focus(FOCUS_OPTIONS);
 		}
 		await new Promise((r) => requestAnimationFrame(r));
 		attempts++;
@@ -137,7 +141,7 @@ export async function setFocus(element: HTMLElement | undefined | null, options?
 	const focused = isActiveElement(element);
 
 	if (hasScrollOptions) {
-		const scrollIntoViewOptions = { ...scrollOptions, behavior: scrollOptions.behavior ?? 'smooth' };
+		const scrollIntoViewOptions: ScrollIntoViewOptions = { ...scrollOptions, behavior: scrollOptions.behavior ?? 'smooth' };
 		element.scrollIntoView(scrollIntoViewOptions);
 	}
 
