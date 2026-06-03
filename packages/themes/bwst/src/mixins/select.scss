@@ -36,7 +36,6 @@
 	}
 
 	.kol-input-container:has(:not(.kol-select[multiple])) {
-		position: relative;
 		padding: 0;
 		gap: 0;
 		grid-template-columns: auto max-content min-content;
