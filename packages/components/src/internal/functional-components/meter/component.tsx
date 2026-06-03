@@ -56,7 +56,7 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 	const hasStateClassification = low !== undefined || high !== undefined;
 	const stateLabel = hasStateClassification ? translate(`kol-meter-state-${state}` as TranslationKey) : '';
 
-	const charCount = `${Math.max(max.toString().length, min.toString().length) + 1 + unit.length}ch`;
+	const charCount = max.toString().length > min.toString().length ? max.toString().length + 'ch' : min.toString().length + 'ch';
 
 	return (
 		<div class={{ 'kol-meter': true, 'kol-meter--vertical': isVertical }}>
@@ -76,8 +76,9 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 				</div>
 				<span class="kol-meter__value-unit">
 					<span class="kol-meter__value" style={{ 'min-width': charCount }}>
-						{displayValue}&nbsp;{unit}
+						{displayValue}
 					</span>
+					<span class="kol-meter__unit">{unit}</span>
 				</span>
 			</div>
 		</div>
