@@ -6,6 +6,7 @@ import type { ImageApi } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
 import { ImageController } from '../../internal/functional-components/image/controller';
 import type { LoadingType } from '../../internal/props';
+import type { KoliBriImageEventCallbacks } from '../../schema/components/image';
 
 /**
  * The **Image** component renders an image with support for responsive loading via `srcset` and `sizes`, lazy loading, and accessible alternative text.
@@ -75,6 +76,12 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 		this.ctrl.watchSrcset(value);
 	}
 
+	/**
+	 * Defines callbacks for image load events (`onError`, `onLoad`).
+	 */
+	@Prop()
+	public _on?: KoliBriImageEventCallbacks;
+
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({
 			alt: this._alt,
@@ -94,6 +101,8 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 					sizes={this.ctrl.getRenderProp('sizes')}
 					src={this.ctrl.getRenderProp('src')}
 					srcset={this.ctrl.getRenderProp('srcset')}
+					onError={this._on?.onError}
+					onLoad={this._on?.onLoad}
 				/>
 			</Host>
 		);

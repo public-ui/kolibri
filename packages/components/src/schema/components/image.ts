@@ -1,6 +1,12 @@
 import type { Generic } from 'adopted-style-sheets';
 
 import type { PropAlt, PropImageSizes, PropImageSource, PropImageSrcset, PropLoading } from '../props';
+import type { EventCallback } from '../types';
+
+export type KoliBriImageEventCallbacks = {
+	onError?: EventCallback<Event>;
+	onLoad?: EventCallback<Event>;
+};
 
 type RequiredProps = PropAlt & PropImageSource;
 type OptionalProps = PropLoading & PropImageSizes & PropImageSrcset;
