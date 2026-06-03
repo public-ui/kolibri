@@ -112,6 +112,10 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		});
 	}
 
+	public validateAriaDetails(): void {
+		// no-op — resolution is handled by ElementInternals
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateOrientation(this.component._orientation);

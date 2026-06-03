@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
@@ -29,6 +30,8 @@ type OptionalProps = {
 	placeholder: string;
 	value: string;
 } & PropAccessKey &
+	PropAriaDetails &
+	PropAriaDetails &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &

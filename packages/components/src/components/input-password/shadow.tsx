@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from '../../utils/clsx';
 
 import type {
+	AriaDetailsPropType,
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
@@ -36,6 +37,7 @@ import KolInputContainerStateWrapperFc from '../../functional-component-wrappers
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
+import { validateAriaDetails } from '../../schema/props/aria-details';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -173,6 +175,14 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -332,6 +342,11 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		this.controller.validateAccessKey(value);
 	}
 
+	@Watch('_ariaDetails')
+	public validateAriaDetails(): void {
+		// no-op — resolution is handled by ElementInternals
+	}
+
 	@Watch('_autoComplete')
 	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
@@ -457,6 +472,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
+		validateAriaDetails(this, this.host, this.controller.internals, this._ariaDetails);
 		this.controller.componentWillLoad();
 
 		this.state._hasValue = !!this.state._value;

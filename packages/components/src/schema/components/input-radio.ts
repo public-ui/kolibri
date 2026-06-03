@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
+	PropAriaDetails,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
@@ -24,7 +25,8 @@ type OptionalProps = {
 	msg: Stringified<MsgPropType>;
 	on: InputTypeOnDefault;
 	value: StencilUnknown;
-} & PropDisabled &
+} & PropAriaDetails &
+	PropDisabled &
 	PropHideLabel &
 	PropHideMsg &
 	PropHint &

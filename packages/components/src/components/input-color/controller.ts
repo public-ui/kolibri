@@ -26,6 +26,10 @@ export class InputColorController extends InputIconController implements InputCo
 		this.setFormAssociatedValue(this.component.state._value as string);
 	}
 
+	public validateAriaDetails(): void {
+		// no-op — resolution is handled by ElementInternals
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);

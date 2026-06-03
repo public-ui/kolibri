@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropAutoComplete,
 	PropDisabled,
 	PropHasCounter,
@@ -36,6 +37,7 @@ type OptionalProps = {
 	value: string;
 	msg: Stringified<MsgPropType>;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropAutoComplete &
 	PropDisabled &
 	PropHasCounter &

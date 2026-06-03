@@ -1,6 +1,6 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import type { IconsHorizontalPropType, NumberString } from '../../../schema';
+import type { AriaDetailsPropType, IconsHorizontalPropType, NumberString } from '../../../schema';
 import { validateIcons, watchValidator } from '../../../schema';
 
 import { InputController } from './controller';
@@ -14,6 +14,10 @@ export class InputIconController extends InputController implements Watches {
 	public constructor(component: Generic.Element.Component & Props, name: string, host?: HTMLElement) {
 		super(component, name, host);
 		this.component = component;
+	}
+
+	public validateAriaDetails(_value?: AriaDetailsPropType): void {
+		// Delegated to component for internals handling
 	}
 
 	public validateIcons(value?: IconsHorizontalPropType): void {

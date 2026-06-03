@@ -4,6 +4,7 @@ import clsx from '../../utils/clsx';
 
 import type {
 	AcceptPropType,
+	AriaDetailsPropType,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -31,6 +32,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { translate } from '../../i18n';
+import { validateAriaDetails } from '../../schema/props/aria-details';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputFileController } from './controller';
@@ -145,6 +147,14 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -268,6 +278,11 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		this.controller.validateAccessKey(value);
 	}
 
+	@Watch('_ariaDetails')
+	public validateAriaDetails(): void {
+		// no-op — resolution is handled by ElementInternals
+	}
+
 	@Watch('_disabled')
 	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
@@ -350,6 +365,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
+		validateAriaDetails(this, this.host, this.controller.internals, this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 

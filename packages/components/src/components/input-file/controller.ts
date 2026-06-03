@@ -25,6 +25,10 @@ export class InputFileController extends InputIconController implements InputFil
 		validateRequired(this.component, value);
 	}
 
+	public validateAriaDetails(): void {
+		// no-op — resolution is handled by ElementInternals
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAccept(this.component._accept);

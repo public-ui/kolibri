@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from '../../utils/clsx';
 
 import type {
+	AriaDetailsPropType,
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
@@ -29,6 +30,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolSuggestionsFc from '../../functional-components/Suggestions';
+import { validateAriaDetails } from '../../schema/props/aria-details';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -234,6 +236,14 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	@Prop() public _accessKey?: string;
 
 	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	/**
 	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
@@ -363,6 +373,11 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		this.controller.validateAccessKey(value);
 	}
 
+	@Watch('_ariaDetails')
+	public validateAriaDetails(): void {
+		// no-op — resolution is handled by ElementInternals
+	}
+
 	@Watch('_autoComplete')
 	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
@@ -466,6 +481,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			this.setInitialValueType(this._value);
 		}
 		this._touched = this._touched === true;
+		validateAriaDetails(this, this.host, this.controller.internals, this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 }

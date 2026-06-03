@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from '../../utils/clsx';
 
 import type {
+	AriaDetailsPropType,
 	CheckedPropType,
 	DisabledPropType,
 	FocusableElement,
@@ -26,6 +27,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
+import { validateAriaDetails } from '../../schema/props/aria-details';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputCheckboxController } from './controller';
@@ -248,6 +250,14 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Prop() public _required?: boolean = false;
 
 	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
@@ -308,6 +318,11 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
+	}
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(): void {
+		// no-op — resolution is handled by ElementInternals
 	}
 
 	@Watch('_checked')
@@ -402,6 +417,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
+		validateAriaDetails(this, this.host, this.controller.internals, this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 

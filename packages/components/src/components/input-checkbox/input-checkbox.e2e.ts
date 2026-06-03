@@ -124,4 +124,87 @@ test.describe(COMPONENT_NAME, () => {
 
 		expect(defaultPrevented).toBe(true);
 	});
+
+	test.describe('_ariaDetails', () => {
+		test('resolves external element reference', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Accept" _ariaDetails="terms-details"></kol-input-checkbox>
+				<div id="terms-details">Terms and conditions apply</div>
+			`);
+			await page.waitForChanges();
+
+			const input = page.locator('input[type="checkbox"]');
+			const hasAriaDetailsSet = await input.evaluate((el) => {
+				const internalsRef = (el as any).internals || (el as any).getInternals?.();
+				return internalsRef?.ariaDetailsElements?.length > 0;
+			});
+
+			expect(hasAriaDetailsSet).toBe(true);
+		});
+
+		test('updates when prop changes', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Test" _ariaDetails="details-1"></kol-input-checkbox>
+				<div id="details-1">Details 1</div>
+				<div id="details-2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const component = page.locator(COMPONENT_NAME);
+			const input = page.locator('input[type="checkbox"]');
+
+			let ariaDetailsLength = await input.evaluate((el) => {
+				const internalsRef = (el as any).internals || (el as any).getInternals?.();
+				return internalsRef?.ariaDetailsElements?.length || 0;
+			});
+			expect(ariaDetailsLength).toBeGreaterThan(0);
+
+			await component.evaluate((el: HTMLKolInputCheckboxElement) => {
+				(el as any)._ariaDetails = 'details-2';
+			});
+			await page.waitForChanges();
+
+			ariaDetailsLength = await input.evaluate((el) => {
+				const internals = (el as any).internals || (el as any).getInternals?.();
+				return internals?.ariaDetailsElements?.length || 0;
+			});
+			expect(ariaDetailsLength).toBeGreaterThan(0);
+		});
+
+		test('handles missing ID gracefully', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Test" _ariaDetails="non-existent-id"></kol-input-checkbox>
+			`);
+			await page.waitForChanges();
+
+			const input = page.locator('input[type="checkbox"]');
+			const noErrorThrown = await input.evaluate((el) => {
+				try {
+					const internalsRef = (el as any).internals || (el as any).getInternals?.();
+					return internalsRef !== undefined;
+				} catch {
+					return false;
+				}
+			});
+
+			expect(noErrorThrown).toBe(true);
+		});
+
+		test('resolves multiple IDs (space-separated)', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Test" _ariaDetails="id1 id2"></kol-input-checkbox>
+				<div id="id1">Details 1</div>
+				<div id="id2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const input = page.locator('input[type="checkbox"]');
+			const ariaDetailsCount = await input.evaluate((el) => {
+				const internals = (el as any).internals || (el as any).getInternals?.();
+				return internals?.ariaDetailsElements?.length || 0;
+			});
+
+			expect(ariaDetailsCount).toBeGreaterThanOrEqual(1);
+		});
+	});
 });

@@ -68,6 +68,10 @@ export class SingleSelectController extends InputIconController implements Singl
 		watchNumber(this.component, '_rows', value);
 	}
 
+	public validateAriaDetails(): void {
+		// no-op — resolution is handled by ElementInternals
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateOptions(this.component._options);

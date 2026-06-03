@@ -21,6 +21,10 @@ export class InputEmailController extends InputTextEmailController implements In
 		validateMaxLengthBehavior(this.component, value);
 	}
 
+	public validateAriaDetails(): void {
+		// no-op — resolution is handled by ElementInternals
+	}
+
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateMaxLengthBehavior(this.component._maxLengthBehavior);

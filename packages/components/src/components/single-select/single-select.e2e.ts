@@ -184,4 +184,87 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await getChangeCount()).toBe(1);
 		});
 	});
+
+	test.describe('_ariaDetails', () => {
+		test('resolves external element reference', async ({ page }) => {
+			await page.setContent(`
+				<kol-single-select _label="Select option" _ariaDetails="select-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<div id="select-details">Choose one of these options carefully</div>
+			`);
+			await page.waitForChanges();
+
+			const input = page.locator('input.kol-single-select__input');
+			const hasAriaDetailsSet = await input.evaluate((el) => {
+				const internalsRef = (el as any).internals || (el as any).getInternals?.();
+				return internalsRef?.ariaDetailsElements?.length > 0;
+			});
+
+			expect(hasAriaDetailsSet).toBe(true);
+		});
+
+		test('updates when prop changes', async ({ page }) => {
+			await page.setContent(`
+				<kol-single-select _label="Select option" _ariaDetails="details-1" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<div id="details-1">Details 1</div>
+				<div id="details-2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const component = page.locator(COMPONENT_NAME);
+			const input = page.locator('input.kol-single-select__input');
+
+			let ariaDetailsLength = await input.evaluate((el) => {
+				const internalsRef = (el as any).internals || (el as any).getInternals?.();
+				return internalsRef?.ariaDetailsElements?.length || 0;
+			});
+			expect(ariaDetailsLength).toBeGreaterThan(0);
+
+			await component.evaluate((el: HTMLKolSingleSelectElement) => {
+				(el as any)._ariaDetails = 'details-2';
+			});
+			await page.waitForChanges();
+
+			ariaDetailsLength = await input.evaluate((el) => {
+				const internalsRef = (el as any).internals || (el as any).getInternals?.();
+				return internalsRef?.ariaDetailsElements?.length || 0;
+			});
+			expect(ariaDetailsLength).toBeGreaterThan(0);
+		});
+
+		test('handles missing ID gracefully', async ({ page }) => {
+			await page.setContent(`
+				<kol-single-select _label="Select option" _ariaDetails="non-existent-id" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+			`);
+			await page.waitForChanges();
+
+			const input = page.locator('input.kol-single-select__input');
+			const noErrorThrown = await input.evaluate((el) => {
+				try {
+					const internalsRef = (el as any).internals || (el as any).getInternals?.();
+					return internalsRef !== undefined;
+				} catch {
+					return false;
+				}
+			});
+
+			expect(noErrorThrown).toBe(true);
+		});
+
+		test('resolves multiple IDs (space-separated)', async ({ page }) => {
+			await page.setContent(`
+				<kol-single-select _label="Select option" _ariaDetails="id1 id2" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<div id="id1">Details 1</div>
+				<div id="id2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const input = page.locator('input.kol-single-select__input');
+			const ariaDetailsCount = await input.evaluate((el) => {
+				const internalsRef = (el as any).internals || (el as any).getInternals?.();
+				return internalsRef?.ariaDetailsElements?.length || 0;
+			});
+
+			expect(ariaDetailsCount).toBeGreaterThanOrEqual(1);
+		});
+	});
 });
