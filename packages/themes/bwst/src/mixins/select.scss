@@ -28,6 +28,8 @@
 
 		&:not([multiple], [size]) {
 			height: to-rem(40);
+			// space for the native arrow down icon
+			padding-right: to-rem(16);
 		}
 
 		&[multiple] &__option::before {
