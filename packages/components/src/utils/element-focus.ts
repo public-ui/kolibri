@@ -103,9 +103,8 @@ function isActiveElement(element: HTMLElement): boolean {
 }
 
 const FOCUS_OPTIONS = {
-	focusVisible: true,
 	preventScroll: true,
-} satisfies FocusOptions & { focusVisible?: boolean };
+} satisfies FocusOptions;
 
 /**
  * Attempts to focus the given element on each animation frame until
