@@ -1,6 +1,7 @@
-import { KolImage } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
+
+import { KolImage } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
 export const ImageEvents: FC = () => {
@@ -26,10 +27,7 @@ export const ImageEvents: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>
-					KolImage fires both <code>_on.onError</code> / <code>_on.onLoad</code> callbacks and native <code>error</code> / <code>load</code> DOM
-					events on the host element. Both approaches are demonstrated below.
-				</p>
+				<p>KolImage fires both _on.onError / _on.onLoad callbacks and native error / load DOM events on the host element.</p>
 			</SampleDescription>
 
 			<h3>Via _on prop</h3>
