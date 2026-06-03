@@ -13,7 +13,6 @@
 	}
 
 	.kol-input-container {
-		position: relative;
 		padding: 0;
 		gap: 0;
 		grid-template-columns: auto max-content min-content;
@@ -45,11 +44,6 @@
 
 		&:has(&__adornment--end &__icon + &__smart-button) .#{$clickable-classname} {
 			padding-right: to-rem(76);
-		}
-
-		&__container {
-			position: relative;
-			z-index: 1;
 		}
 	}
 }
