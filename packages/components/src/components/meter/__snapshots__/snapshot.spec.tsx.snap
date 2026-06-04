@@ -20,9 +20,6 @@ exports[`kol-meter should render with _label="Label" _max=1 _min=0 _value=0 1`] 
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -48,9 +45,6 @@ exports[`kol-meter should render with _label="Label" _max=1 _min=0 _value=0.5 1`
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -76,9 +70,6 @@ exports[`kol-meter should render with _label="Label" _max=1 _min=0 _value=1 1`] 
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -104,9 +95,6 @@ exports[`kol-meter should render with _label="Label" _max=42 _value=21 _unit="kg
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value-bounded
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -132,9 +120,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=0 1`] = `
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -163,9 +148,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=10 _low=25 
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value – kol-meter-state-optimum
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -194,9 +176,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=10 _low=25 
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value – kol-meter-state-suboptimal
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -225,9 +204,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=10 _low=25 
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value – kol-meter-state-suboptimal
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -253,9 +229,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=25 _orienta
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -284,9 +257,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=30 _low=25 
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value – kol-meter-state-optimum
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -312,9 +282,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=42 1`] = `
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -343,9 +310,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=50 _low=25 
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value – kol-meter-state-optimum
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -371,9 +335,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=60 _orienta
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -402,9 +363,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=90 _low=25 
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value – kol-meter-state-suboptimal
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -433,9 +391,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=90 _low=25 
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value – kol-meter-state-suboptimal
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -464,9 +419,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=90 _low=25 
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value – kol-meter-state-optimum
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -492,9 +444,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=90 _orienta
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value
-      </span>
     </div>
   </template>
 </kol-meter>
@@ -520,9 +469,6 @@ exports[`kol-meter should render with _label="Label" _max=100 _value=100 1`] = `
           </span>
         </span>
       </div>
-      <span aria-live="polite" aria-relevant="additions text" class="visually-hidden">
-        kol-live-value
-      </span>
     </div>
   </template>
 </kol-meter>
