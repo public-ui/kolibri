@@ -301,7 +301,10 @@ export const mapStringOrBoolean2String = (value?: string | boolean): string | un
  * Traverses the DOM including shadow roots and slotted content via BFS.
  * `onNode` is called once per node; returning `true` stops traversal early.
  */
-const traverseShadowDom = (rootNode: Document | HTMLElement | ShadowRoot, onNode: (node: ParentNode) => boolean): void => {
+const traverseShadowDom = (rootNode: ParentNode, onNode: (node: ParentNode) => boolean): void => {
+	if (!rootNode) {
+		return;
+	}
 	const visited = new Set<Node>();
 	const queue: ParentNode[] = [rootNode];
 	let index = 0;
@@ -332,7 +335,7 @@ const traverseShadowDom = (rootNode: Document | HTMLElement | ShadowRoot, onNode
 	}
 };
 
-const querySelectorShadow = <T extends Element>(selector: string, rootNode: Document | HTMLElement | ShadowRoot): T | null => {
+const querySelectorShadow = <T extends Element>(selector: string, rootNode: ParentNode): T | null => {
 	let result: T | null = null;
 	traverseShadowDom(rootNode, (current) => {
 		if (current instanceof Element && current.matches(selector)) {
@@ -344,7 +347,7 @@ const querySelectorShadow = <T extends Element>(selector: string, rootNode: Docu
 	return result;
 };
 
-const querySelectorAllShadow = <T extends Element>(selector: string, rootNode: Document | HTMLElement | ShadowRoot): T[] => {
+const querySelectorAllShadow = <T extends Element>(selector: string, rootNode: ParentNode): T[] => {
 	const results: T[] = [];
 	traverseShadowDom(rootNode, (current) => {
 		if (current instanceof Element && current.matches(selector)) {
