@@ -1,21 +1,20 @@
+// kol-tooltip-wc uses shadow: false — its styles live in the light DOM.
+// These base styles mirror packages/components/src/components/tooltip/style.scss
+// and are required when the component is used without a fully bootstrapped theme.
 .kol-tooltip {
 	display: contents;
 
-	.tooltip-floating {
+	&__floating {
 		opacity: 0;
 		display: none;
 		position: fixed;
-
-		/* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
 		top: 0;
 		left: 0;
-		/* Can be used to specify the tooltip-width from the outside. Unset by default. */
-		width: var(--kol-tooltip-width, unset);
+		width: max-content;
 		max-width: 90vw;
 		max-height: 90vh;
 		animation-direction: normal;
-		/* Can be used to specify the animation duration from the outside. 250ms by default. */
-		animation-duration: var(--kolibri-tooltip-animation-duration, 250ms);
+		animation-duration: 250ms;
 		animation-fill-mode: forwards;
 		animation-iteration-count: 1;
 		animation-timing-function: ease-in;
@@ -29,53 +28,28 @@
 		}
 	}
 
-	/* Shared between content and arrow */
-	.tooltip-area {
-		color: #000;
-		background-color: #fff;
-	}
-
-	.tooltip-arrow {
+	&__arrow {
 		transform: rotate(45deg);
+		background-color: #fff;
+
 		position: absolute;
 		z-index: 999;
 		width: 10px;
 		height: 10px;
+
+		border: 1px solid #ccc;
 	}
 
-	.tooltip-content {
+	&__content {
+		color: #000;
+		background-color: #fff;
+		border-radius: 4px;
+
 		position: relative;
 		z-index: 1000;
-	}
+		padding: 4px 12px;
 
-	.tooltip-floating {
-		border-radius: var(--border-radius);
-		border: var(--border-width) solid var(--color-subtle);
-	}
-
-	.tooltip-arrow {
-		border: var(--border-width) solid var(--color-subtle);
-	}
-
-	.tooltip-area {
-		background-color: var(--color-light);
-	}
-
-	.tooltip-content {
-		border-radius: var(--border-radius);
-		padding: to-rem(8) to-rem(12);
-
-		line-height: 1.5;
-	}
-
-	.kol-span-wc {
-		display: grid;
-		gap: 8px;
-
-		span {
-			display: flex;
-			gap: 8px;
-		}
+		border: 1px solid #ccc;
 	}
 }
 
