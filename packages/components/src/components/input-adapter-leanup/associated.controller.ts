@@ -37,12 +37,12 @@ export class AssociatedInputController implements Watches {
 
 	protected readonly component: Generic.Element.Component & Props;
 	protected readonly type: string;
-	protected readonly host?: HTMLElement;
+	protected readonly host?: Element;
 
 	public readonly formAssociated?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 	public syncToOwnInput?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
-	public constructor(component: Generic.Element.Component & Props, type: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & Props, type: string, host?: Element) {
 		this.component = component;
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
@@ -89,11 +89,13 @@ export class AssociatedInputController implements Watches {
 	 * The associated elements must not reside within the ShadowRoot and must
 	 * reside as children in the host to be recognized by native forms.
 	 */
-	private findHostWithShadowRoot(host?: HTMLElement): HTMLElement | undefined {
+	private findHostWithShadowRoot(host?: Element): Element | undefined {
 		while (host?.shadowRoot === null && host !== document.body) {
-			host = host?.parentNode as HTMLElement;
-			if ((host as unknown as ShadowRoot).host) {
-				host = (host as unknown as ShadowRoot).host as HTMLElement;
+			const parent = host?.parentNode;
+			if (parent instanceof ShadowRoot) {
+				host = parent.host;
+			} else {
+				host = parent instanceof Element ? parent : undefined;
 			}
 		}
 		return host;
