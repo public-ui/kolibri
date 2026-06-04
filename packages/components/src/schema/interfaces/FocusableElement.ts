@@ -13,10 +13,8 @@ export type KolFocusOptions = {
 	focusVisible?: true;
 } & ScrollIntoViewOptions & {
 		/**
-		 * Callback invoked after the element has received focus and (if requested) has been scrolled into view.
-		 * If scroll options are provided with `behavior: 'smooth'`, the callback is delayed until the element is
-		 * considered settled (`scrollend`, with {@link IntersectionObserver} fallback).
-		 * Otherwise the callback is invoked immediately after focus has been set.
+		 * Callback invoked after focus and (if smooth scroll is requested) after scrolling settles.
+		 * Waits for smooth scroll completion only if `behavior: 'smooth'` is explicitly provided.
 		 */
 		afterFocus?: () => void;
 	};

@@ -140,7 +140,7 @@ export async function setFocus(element: HTMLElement | undefined | null, options?
 	const focused = isActiveElement(element);
 
 	if (hasScrollOptions) {
-		const scrollIntoViewOptions: ScrollIntoViewOptions = { ...scrollOptions, behavior: scrollOptions.behavior ?? 'smooth' };
+		const scrollIntoViewOptions: ScrollIntoViewOptions = { ...scrollOptions, behavior: scrollOptions.behavior };
 		element.scrollIntoView(scrollIntoViewOptions);
 	}
 

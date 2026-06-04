@@ -32,7 +32,7 @@ export const ButtonFocusOptions: FC = () => {
 	const backToTopRef = useRef<HTMLKolButtonElement>(null);
 	const behaviorSelectRef = useRef<HTMLKolSelectElement>(null);
 	const [focusOptions, setFocusOptions] = useState<KolFocusOptions>({
-		behavior: 'smooth',
+		behavior: 'auto',
 		block: 'start',
 		inline: 'start',
 	});
