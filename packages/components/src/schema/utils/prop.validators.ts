@@ -298,7 +298,7 @@ export const mapStringOrBoolean2String = (value?: string | boolean): string | un
 };
 
 /**
- * Traverses the DOM including shadow roots and slotted content via BFS.
+ * Traverses the DOM including shadow roots and slotted elements via BFS.
  * `onNode` is called once per node; returning `true` stops traversal early.
  */
 const traverseShadowDom = (rootNode: ParentNode, onNode: (node: ParentNode) => boolean): void => {
