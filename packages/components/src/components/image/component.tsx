@@ -1,11 +1,12 @@
 import type { EventEmitter, JSX } from '@stencil/core';
-import { Component, Event, h, Host, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ImageApi } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
 import { ImageController } from '../../internal/functional-components/image/controller';
 import type { LoadingType } from '../../internal/props';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * The **Image** component renders an image with support for responsive loading via `srcset` and `sizes`, lazy loading, and accessible alternative text.
@@ -18,6 +19,7 @@ import type { LoadingType } from '../../internal/props';
 	shadow: true,
 })
 export class KolImage implements WebComponentInterface<ImageApi> {
+	@Element() private readonly host?: HTMLKolImageElement;
 	private readonly ctrl = new ImageController(BaseWebComponent.stateLess);
 
 	/**
@@ -32,15 +34,21 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 	@Event()
 	public load!: EventEmitter<Event>;
 
-	@Listen('error')
-	public handleErrorEvent(event: Event): void {
+	private readonly handleError = (event: Event): void => {
+		this.error.emit(event);
 		this._on?.onError?.(event);
-	}
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.error, event);
+		}
+	};
 
-	@Listen('load')
-	public handleLoadEvent(event: Event): void {
+	private readonly handleLoad = (event: Event): void => {
+		this.load.emit(event);
 		this._on?.onLoad?.(event);
-	}
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.load, event);
+		}
+	};
 
 	/**
 	 * Sets the alternative text of the image.
@@ -122,8 +130,8 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 					sizes={this.ctrl.getRenderProp('sizes')}
 					src={this.ctrl.getRenderProp('src')}
 					srcset={this.ctrl.getRenderProp('srcset')}
-					onError={this.error}
-					onLoad={this.load}
+					handleError={this.handleError}
+					handleLoad={this.handleLoad}
 				/>
 			</Host>
 		);

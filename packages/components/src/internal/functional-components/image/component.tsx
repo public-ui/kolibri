@@ -1,11 +1,20 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import type { FunctionalComponentProps } from '../generic-types';
-import type { ImageApi } from './api';
+import type { LoadingType } from '../../props';
 
-export const ImageFC: FC<FunctionalComponentProps<ImageApi>> = (props) => {
-	const { alt, loading, sizes, src, srcset, onError, onLoad } = props;
+type ImageFCProps = {
+	alt: string;
+	loading?: LoadingType;
+	sizes?: string;
+	src: string;
+	srcset?: string;
+	handleError: (event: Event) => void;
+	handleLoad: (event: Event) => void;
+};
+
+export const ImageFC: FC<ImageFCProps> = (props) => {
+	const { alt, loading, sizes, src, srcset, handleError, handleLoad } = props;
 
 	return (
 		<img
@@ -15,8 +24,8 @@ export const ImageFC: FC<FunctionalComponentProps<ImageApi>> = (props) => {
 			sizes={sizes || undefined}
 			src={src}
 			srcset={srcset || undefined}
-			onError={(e) => onError.emit(e)}
-			onLoad={(e) => onLoad.emit(e)}
+			onError={(e) => handleError(e)}
+			onLoad={(e) => handleLoad(e)}
 		/>
 	);
 };
