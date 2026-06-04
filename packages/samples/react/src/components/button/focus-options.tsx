@@ -71,15 +71,6 @@ export const ButtonFocusOptions: FC = () => {
 		}));
 	}, []);
 
-	const handleReset = useCallback(() => {
-		setFocusOptions({
-			behavior: 'smooth',
-			block: 'start',
-			inline: 'start',
-		});
-		setAfterFocusCalled(false);
-	}, []);
-
 	return (
 		<>
 			<SampleDescription>
