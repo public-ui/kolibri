@@ -390,19 +390,15 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 			case 'NumpadEnter': {
 				if (this.clearButtonFocused) {
 					this.clearSelection();
+					event.preventDefault();
 				} else if (this._isOpen) {
 					if (this.selectFocusedOption()) {
 						this._isOpen = false;
+						event.preventDefault();
 					}
 				} else {
 					this.toggleListbox();
-				}
-				event.preventDefault();
-				break;
-			}
-			case 'Space': {
-				if (this.clearButtonFocused) {
-					this.clearSelection();
+					event.preventDefault();
 				}
 				break;
 			}
