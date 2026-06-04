@@ -69,7 +69,7 @@
 		"@modelcontextprotocol/sdk": "1.29.0",
 		"@public-ui/components": "workspace:*",
 		"express": "5.2.1",
-		"fuse.js": "7.4.0",
+		"fuse.js": "7.4.1",
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
@@ -82,11 +82,11 @@
 		"eslint": "9.39.4",
 		"eslint-plugin-json": "4.0.1",
 		"globals": "17.6.0",
-		"knip": "6.14.2",
+		"knip": "6.15.0",
 		"nodemon": "3.1.14",
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"tsx": "4.22.3",
+		"tsx": "4.22.4",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},

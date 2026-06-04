@@ -64,7 +64,7 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "21.2.15",
+		"@angular/common": "21.2.16",
 		"@angular/compiler": "21.2.12",
 		"@angular/compiler-cli": "21.2.12",
 		"@angular/core": "21.2.12",
