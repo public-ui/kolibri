@@ -19,8 +19,6 @@ packages:
   - packages/tools/kolibri-cli
   - packages/tools/visual-tests
 overrides:
-  axios@=1.15.2: '>=1.16.0'
-  axios@>=1.0.0 <1.16.0: '>=1.16.0'
   diff@>=5.0.0 <5.2.2: '>=5.2.2'
   dompurify@<3.3.2: '>=3.3.2'
   dompurify@<3.4.0: '>=3.4.0'
