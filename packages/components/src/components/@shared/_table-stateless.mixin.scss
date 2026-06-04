@@ -39,6 +39,11 @@
 			text-align: start;
 		}
 
+		// table without caption but settings needs space above for the settings button
+		kol-table-settings-wc + &__scroll-container:not(:has(&__caption)) {
+			margin-top: var(--a11y-min-size);
+		}
+
 		&__sort-button {
 			.kol-button {
 				color: inherit;
