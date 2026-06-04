@@ -1,5 +1,5 @@
-import type { EventEmitter, JSX } from '@stencil/core';
-import { Component, Element, Event, h, Host, Prop, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ImageApi } from '../../internal/functional-components/image/api';
@@ -22,20 +22,7 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 	@Element() private readonly host?: HTMLKolImageElement;
 	private readonly ctrl = new ImageController(BaseWebComponent.stateLess);
 
-	/**
-	 * Emitted when the image fails to load.
-	 */
-	@Event()
-	public error!: EventEmitter<Event>;
-
-	/**
-	 * Emitted when the image has successfully loaded.
-	 */
-	@Event()
-	public load!: EventEmitter<Event>;
-
 	private readonly handleError = (event: Event): void => {
-		this.error.emit(event);
 		this._on?.onError?.(event);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.error, event);
@@ -43,7 +30,6 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 	};
 
 	private readonly handleLoad = (event: Event): void => {
-		this.load.emit(event);
 		this._on?.onLoad?.(event);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.load, event);
