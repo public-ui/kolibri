@@ -16,7 +16,7 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
                       <span class="kol-span__label">
                         Section
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
@@ -36,7 +36,7 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
                           <span class="kol-span__label">
                             Child link
                           </span>
-                          <span aria-hidden="true" class="kol-span__label" hidden="">
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
                             <slot name="expert" slot="expert"></slot>
                           </span>
                           <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-minus" role="presentation"></i>
@@ -88,7 +88,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Homepage
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -108,7 +108,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Nav - aria-current
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -128,7 +128,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         3 Navigation point
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
@@ -166,7 +166,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Homepage
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -186,7 +186,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Nav - aria-current
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -206,7 +206,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         3 Navigation point
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
@@ -247,7 +247,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Homepage
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -267,7 +267,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Nav - aria-current
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -287,7 +287,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         3 Navigation point
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
@@ -325,7 +325,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Homepage
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -345,7 +345,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Nav - aria-current
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -365,7 +365,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         3 Navigation point
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
@@ -403,7 +403,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Homepage
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -423,7 +423,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Nav - aria-current
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -443,7 +443,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         3 Navigation point
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
@@ -481,7 +481,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Homepage
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -501,7 +501,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Nav - aria-current
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -521,7 +521,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         3 Navigation point
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>
@@ -559,7 +559,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Homepage
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -579,7 +579,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         Nav - aria-current
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
@@ -599,7 +599,7 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
                       <span class="kol-span__label">
                         3 Navigation point
                       </span>
-                      <span aria-hidden="true" class="kol-span__label" hidden="">
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
                         <slot name="expert" slot="expert"></slot>
                       </span>
                       <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-plus" role="presentation"></i>

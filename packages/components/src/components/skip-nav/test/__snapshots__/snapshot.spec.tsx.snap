@@ -13,7 +13,7 @@ exports[`kol-skip-nav should render with _label="Label" _links=[{"_href":"https:
                   <span class="kol-span__label">
                     Zum Anfang
                   </span>
-                  <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
                     <slot name="expert" slot="expert"></slot>
                   </span>
                 </span>
@@ -29,7 +29,7 @@ exports[`kol-skip-nav should render with _label="Label" _links=[{"_href":"https:
                   <span class="kol-span__label">
                     Zum Formular
                   </span>
-                  <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
                     <slot name="expert" slot="expert"></slot>
                   </span>
                 </span>
@@ -45,7 +45,7 @@ exports[`kol-skip-nav should render with _label="Label" _links=[{"_href":"https:
                   <span class="kol-span__label">
                     Zum Ende
                   </span>
-                  <span aria-hidden="true" class="kol-span__label" hidden="">
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
                     <slot name="expert" slot="expert"></slot>
                   </span>
                 </span>

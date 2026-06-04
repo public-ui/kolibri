@@ -11,7 +11,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert" slot="expert"></slot>
             </span>
           </span>
@@ -34,7 +34,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert" slot="expert"></slot>
             </span>
           </span>
@@ -57,7 +57,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert" slot="expert"></slot>
             </span>
           </span>
@@ -77,7 +77,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
         <span class="kol-link__text kol-span kol-span--hide-label">
           <span class="kol-span__container">
             <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert" slot="expert"></slot>
             </span>
           </span>
@@ -91,7 +91,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+            <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
           </span>
         </span>
       </div>
@@ -111,7 +111,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert" slot="expert"></slot>
             </span>
           </span>
@@ -134,7 +134,7 @@ exports[`kol-link-button should render with _href="https://example.com" _icons="
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert" slot="expert"></slot>
             </span>
           </span>
@@ -156,7 +156,7 @@ exports[`kol-link-button should render with _label="Label" _href="" _download="d
             <span class="kol-span__label">
               Label
             </span>
-            <span aria-hidden="true" class="kol-span__label" hidden="">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
               <slot name="expert" slot="expert"></slot>
             </span>
           </span>

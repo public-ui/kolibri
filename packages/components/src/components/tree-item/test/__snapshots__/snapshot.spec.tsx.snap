@@ -10,7 +10,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
           <a class="kol-link__anchor" href="https://example.com" role="treeitem" tabindex="-1">
             <span class="kol-link__text kol-span">
               <span class="kol-span__container">
-                <span class="kol-span__label">
+                <span class="kol-span__slot">
                   <slot-fb name="expert" slot="expert">
                     <span class="kol-tree-item__link-inner" slot="expert">
                       <span class="kol-tree-item__toggle-button-placeholder"></span>
@@ -43,7 +43,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
           <a class="kol-link__anchor" href="https://example.com" role="treeitem">
             <span class="kol-link__text kol-span">
               <span class="kol-span__container">
-                <span class="kol-span__label">
+                <span class="kol-span__slot">
                   <slot-fb name="expert" slot="expert">
                     <span class="kol-tree-item__link-inner" slot="expert">
                       <span class="kol-tree-item__toggle-button-placeholder"></span>
@@ -76,7 +76,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
           <a class="kol-link__anchor" href="https://example.com" role="treeitem" tabindex="-1">
             <span class="kol-link__text kol-span">
               <span class="kol-span__container">
-                <span class="kol-span__label">
+                <span class="kol-span__slot">
                   <slot-fb name="expert" slot="expert">
                     <span class="kol-tree-item__link-inner" slot="expert">
                       <span class="kol-tree-item__toggle-button-placeholder"></span>
@@ -109,7 +109,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
           <a class="kol-link__anchor" href="https://example.com" role="treeitem" tabindex="-1">
             <span class="kol-link__text kol-span">
               <span class="kol-span__container">
-                <span class="kol-span__label">
+                <span class="kol-span__slot">
                   <slot-fb name="expert" slot="expert">
                     <span class="kol-tree-item__link-inner" slot="expert">
                       <span class="kol-tree-item__toggle-button-placeholder"></span>
@@ -142,7 +142,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
           <a class="kol-link__anchor" href="https://example.com" role="treeitem" tabindex="-1">
             <span class="kol-link__text kol-span">
               <span class="kol-span__container">
-                <span class="kol-span__label">
+                <span class="kol-span__slot">
                   <slot-fb name="expert" slot="expert">
                     <span class="kol-tree-item__link-inner" slot="expert">
                       <span class="kol-tree-item__toggle-button-placeholder"></span>
