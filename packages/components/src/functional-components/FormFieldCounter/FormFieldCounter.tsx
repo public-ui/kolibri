@@ -5,6 +5,9 @@ import type { MaxLengthBehaviorPropType } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
 
+let timeout: NodeJS.Timeout | undefined;
+let maxTextElem: HTMLSpanElement | undefined;
+
 type FormFieldCounterProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 	currentLength: number;
 	currentLengthDebounced: number;
@@ -13,11 +16,31 @@ type FormFieldCounterProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
 	id?: string;
 };
 
+function maxMessageRef(elem: HTMLSpanElement | undefined) {
+	maxTextElem = elem;
+}
+
+function maxTextLogic() {
+	timeout = setTimeout(() => {
+		console.log('timeout called');
+
+		maxTextElem?.removeAttribute('hidden');
+	}, 1000);
+}
+
 const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, currentLengthDebounced, maxLength, maxLengthBehavior, id }) => {
 	let visualText: string | undefined;
 	let ariaText: string | undefined;
-	let ariaMaxReachedText: string | undefined;
+	let ariaMaxReachedText: string | undefined = 'MAX!';
 	const counterClasses = ['kol-form-field__counter'];
+
+	console.log('counter rerender');
+	console.log(maxTextElem);
+
+	if (timeout) {
+		clearTimeout(timeout);
+		maxTextLogic();
+	}
 
 	if (maxLengthBehavior === 'hard') {
 		visualText =
@@ -31,15 +54,9 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, curre
 				: translate('kol-character-counter-current', { placeholders: { current: String(currentLengthDebounced) } });
 
 		if (currentLength === maxLength) {
-			console.log('MAX');
-
-			ariaMaxReachedText = 'MAX!';
-
-			// das klappt noch nicht... wie lassen wir ariaMaxReachedText nach X ms verschwinden, damit der screenreader sie beim nächsten buchstaben wieder liest?
-			setTimeout(() => {
-				ariaMaxReachedText = '123';
-				console.log('MAX');
-			}, 10);
+			maxTextLogic();
+		} else {
+			maxTextElem?.setAttribute('hidden', 'true');
 		}
 	} else if (typeof maxLength === 'number') {
 		const remainingLive = maxLength - currentLength;
@@ -70,7 +87,7 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, curre
 			<span id={createRelatedUniqueId(id || '', 'counter')} aria-live="polite" class="visually-hidden" data-testid="input-counter-aria">
 				{ariaText}
 			</span>
-			<span aria-live="assertive" aria-relevant="all">
+			<span aria-live="assertive" aria-relevant="all" ref={(elem) => maxMessageRef(elem)} hidden>
 				{ariaMaxReachedText}
 			</span>
 		</>
