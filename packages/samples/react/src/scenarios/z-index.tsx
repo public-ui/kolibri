@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import React, { useEffect, useRef } from 'react';
 
-import { KolButton, KolCombobox, KolDialog, KolPopoverButton } from '@public-ui/react-v19';
+import { KolButton, KolCombobox, KolDialog, KolInputNumber, KolPopoverButton } from '@public-ui/react-v19';
 import { useSearchParams } from 'react-router';
 import { SampleDescription } from '../components/SampleDescription';
 
@@ -42,6 +42,7 @@ export const ZIndexScenario: FC = () => {
 							</div>
 						</KolPopoverButton>
 						<KolCombobox _label="With string array in html" _suggestions="['Herr','Frau','Firma']" _value="Herr" _hideLabel />
+						<KolInputNumber _label="Amount" />
 					</KolDialog>
 				</div>
 			</div>

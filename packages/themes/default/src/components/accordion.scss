@@ -40,12 +40,10 @@
 				}
 			}
 
-			.kol-span {
-				&__container {
-					display: flex;
-					gap: 0.5em;
-					@include kol-typography-accordion;
-				}
+			.kol-span__container {
+				display: flex;
+				gap: 0.5em;
+				@include kol-typography-accordion;
 			}
 
 			.kol-button {

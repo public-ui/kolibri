@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/mcp",
-	"version": "4.2.0-rc.2",
+	"version": "4.2.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -69,7 +69,7 @@
 		"@modelcontextprotocol/sdk": "1.29.0",
 		"@public-ui/components": "workspace:*",
 		"express": "5.2.1",
-		"fuse.js": "7.3.0",
+		"fuse.js": "7.4.0",
 		"zod": "4.4.3"
 	},
 	"devDependencies": {

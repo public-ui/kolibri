@@ -1,0 +1,65 @@
+name: Weekly License Report
+
+env:
+  issue: 9999
+
+on:
+  schedule:
+    - cron: '30 11 * * 1' # Every Monday at 11:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  license-report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: develop
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - uses: pnpm/action-setup@v6
+        id: pnpm-install
+        with:
+          version: 10
+          run_install: false
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v5
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store
+      - name: Install
+        run: pnpm i --frozen-lockfile
+      - name: Generate license report
+        run: pnpm license:report
+      - name: Format generated markdown
+        run: pnpm exec prettier --write docs/LICENSE_REPORTS.md
+      - name: Check for changes
+        id: verify-changed-files
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Create Pull Request
+        if: steps.verify-changed-files.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          base: develop
+          branch: ${{ env.issue }}/license-report
+          commit-message: 'chore: update license reports'
+          title: 'chore: update license reports'
+          body: 'Automated license report update from issue #${{ env.issue }}.'
+          draft: true
+          delete-branch: true

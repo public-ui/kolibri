@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/presentation",
-	"version": "4.2.0-rc.2",
+	"version": "4.2.0",
 	"description": "This package contains presentation samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -31,7 +31,7 @@
 		"adopted-style-sheets": "1.1.9-rc.22",
 		"react": "19.2.6",
 		"react-dom": "19.2.6",
-		"react-router-dom": "7.15.1"
+		"react-router-dom": "7.16.0"
 	},
 	"devDependencies": {
 		"@types/node": "25.9.1",

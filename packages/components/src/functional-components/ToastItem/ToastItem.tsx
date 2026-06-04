@@ -11,6 +11,10 @@ type ToastItemProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
 	onClose: () => void;
 };
 
+/**
+ * @deprecated Will be removed in the next major version together with `kol-toast-container`. See https://github.com/public-ui/kolibri/issues/8372
+ * @internal
+ */
 const ToastItemFc: FC<ToastItemProps> = ({ status, toast, onClose, ...other }) => {
 	const { type, label, description, variant } = toast;
 

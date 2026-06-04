@@ -36,6 +36,15 @@ export const InputTextExpertSlot = () => {
 						</KolPopoverButton>
 					</div>
 				</KolInputText>
+
+				<KolInputText _label="" _type="text" _readOnly _value="(read only) is also not appended">
+					<div slot="expert" className="inline-block">
+						<span className="expert-slot-required-label">Username</span>
+						<KolPopoverButton _label="Help" _icons="kolicon-alert-info" _variant="ghost" _hideLabel _inline>
+							<div className="w-sm p-2 border border-solid border-gray">Readonly is also not appended</div>
+						</KolPopoverButton>
+					</div>
+				</KolInputText>
 			</div>
 		</>
 	);

@@ -1,5 +1,15 @@
 # Scripts Overview
 
+## license-reports.mjs
+
+Generate and merge all package license reports into one Markdown file:
+
+```bash
+pnpm license:report
+```
+
+The script uses `pnpm license-report` internally for every package and fails with a non-zero exit code if one report cannot be generated or parsed.
+
 ## dist-tags.sh
 
 Run the helper script to update npm dist-tags:

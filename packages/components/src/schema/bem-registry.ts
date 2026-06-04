@@ -160,6 +160,9 @@ export type KoliBriComponentsBemSchema = {
 			label: {
 				modifiers: null;
 			};
+			slot: {
+				modifiers: null;
+			};
 		};
 		modifiers: Set<'has-badge' | 'hide-label'>;
 	};
@@ -271,6 +274,7 @@ const BEM: KoliBriComponentsBemSchema = {
 			container: { modifiers: null },
 			icon: { modifiers: new Set(['bottom', 'left', 'right', 'top']) },
 			label: { modifiers: null },
+			slot: { modifiers: null },
 		},
 		modifiers: new Set(['has-badge', 'hide-label']),
 	},
