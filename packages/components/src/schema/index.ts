@@ -24,8 +24,13 @@ const _origCreateTheme = _base.createTheme.bind(_base);
 	cssMap: Record<string, string>,
 	featureFlags?: KoliBriFeatureFlags,
 ): Generic.Theming.RegisterPatch<string, string, string> => {
-	if (featureFlags) _themeFeatureFlagsRegistry.set(name, featureFlags);
-	return _origCreateTheme(name, cssMap);
+	const result = _origCreateTheme(name, cssMap);
+	if (featureFlags) {
+		_themeFeatureFlagsRegistry.set(name, featureFlags);
+	} else {
+		_themeFeatureFlagsRegistry.delete(name);
+	}
+	return result;
 };
 
 export const KoliBri = _base as unknown as Omit<typeof _base, 'createTheme'> & {

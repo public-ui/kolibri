@@ -1,5 +1,5 @@
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
-import { getDefaultThemeName, register as coreRegister } from 'adopted-style-sheets';
+import { register as coreRegister, getDefaultThemeName } from 'adopted-style-sheets';
 import type { KoliBriFeatureFlags, Mode } from '../schema';
 import { getThemeFeatureFlags, Log, setRuntimeMode } from '../schema';
 import { setCustomTagNames } from './component-names';
@@ -80,5 +80,4 @@ export const getFeatureFlag = <K extends keyof KoliBriFeatureFlags>(key: K): Kol
  * @example
  * bootstrap(themes, loaders, { features: mergeFeatureFlags({ inputNumberButtons: 'hide' }) });
  */
-export const mergeFeatureFlags = (...flagSets: (KoliBriFeatureFlags | undefined)[]): KoliBriFeatureFlags =>
-	Object.assign({}, ...flagSets.filter(Boolean));
+export const mergeFeatureFlags = (...flagSets: (KoliBriFeatureFlags | undefined)[]): KoliBriFeatureFlags => Object.assign({}, ...flagSets.filter(Boolean));
