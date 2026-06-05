@@ -409,9 +409,6 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 						this._isOpen = false;
 						event.preventDefault();
 					}
-				} else {
-					this.toggleListbox();
-					event.preventDefault();
 				}
 				break;
 			}
