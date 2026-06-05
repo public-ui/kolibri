@@ -6,6 +6,7 @@ import type { ImageApi } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
 import { ImageController } from '../../internal/functional-components/image/controller';
 import type { LoadingType } from '../../internal/props';
+import type { KoliBriImageEventCallbacks } from '../../schema/components/image';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -95,7 +96,7 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 	 * Defines callbacks for image load events (`onError`, `onLoad`).
 	 */
 	@Prop()
-	public _on?: { onError?: (event: Event) => void; onLoad?: (event: Event) => void };
+	public _on?: KoliBriImageEventCallbacks;
 
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({
