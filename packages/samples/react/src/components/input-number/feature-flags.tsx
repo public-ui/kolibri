@@ -9,12 +9,25 @@ export const InputNumberFeatureFlags: FC = () => (
 		<SampleDescription>
 			<p>
 				The <code>inputNumberButtons</code> feature flag controls whether the step-up/step-down buttons are rendered inside <code>KolInputNumber</code>.
-				Configure it at bootstrap time to opt out globally:
+			</p>
+			<p>
+				Each theme can export a <code>*_FEATURE_FLAGS</code> object (e.g. <code>DEFAULT_FEATURE_FLAGS</code> from <code>@public-ui/themes</code>) that acts as
+				the recommended baseline for that theme. Use <code>mergeFeatureFlags()</code> to combine it with app-level overrides:
 			</p>
 			<pre>
-				<code>{"bootstrap(themes, loaders, { features: { inputNumberButtons: 'hide' } })"}</code>
+				<code>
+					{`import { bootstrap, mergeFeatureFlags } from '@public-ui/components';
+import { DEFAULT_FEATURE_FLAGS } from '@public-ui/themes';
+
+bootstrap(themes, loaders, {
+  features: mergeFeatureFlags(DEFAULT_FEATURE_FLAGS, { inputNumberButtons: 'hide' }),
+});`}
+				</code>
 			</pre>
-			<p>The inputs below reflect the current bootstrap configuration. Uncomment the feature flag in react.main.tsx to see the buttons hidden.</p>
+			<p>
+				The inputs below reflect the current bootstrap configuration. Edit <code>react.main.tsx</code> and swap the commented <code>features</code> line to see
+				the buttons hidden.
+			</p>
 		</SampleDescription>
 		<div className="grid gap-4">
 			<KolInputNumber _label="Default (step buttons follow feature flag)" _min={0} _max={100} _step={1} _value={42} />

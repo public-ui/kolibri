@@ -2,7 +2,7 @@ export { getDefaultThemeName } from 'adopted-style-sheets';
 export * from './components.d';
 export { setCurrentLocation } from './components/link/ariaCurrentService';
 export { ToasterService } from './components/toaster/toaster';
-export { bootstrap, getFeatureFlag, isInitialized, register } from './core/bootstrap';
+export { bootstrap, getFeatureFlag, isInitialized, mergeFeatureFlags, register } from './core/bootstrap';
 export type { KoliBriFeatureFlags } from './core/bootstrap';
 export * from './enums/bund';
 export * from './kolibri';

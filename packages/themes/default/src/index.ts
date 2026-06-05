@@ -1,4 +1,4 @@
-import { KoliBri } from '@public-ui/components';
+import { KoliBri, type KoliBriFeatureFlags } from '@public-ui/components';
 import abbrCss from './components/abbr.scss';
 import accordionCss from './components/accordion.scss';
 import alertCss from './components/alert.scss';
@@ -94,3 +94,17 @@ export const DEFAULT = KoliBri.createTheme('default', {
 	'KOL-TREE': treeCss,
 	'KOL-TREE-ITEM': treeItemCss,
 });
+
+/**
+ * Recommended KoliBriFeatureFlags for the Default theme.
+ * Pass this as the first argument to mergeFeatureFlags() in bootstrap() so every app using this theme
+ * starts from the same baseline, with per-app overrides applied on top.
+ *
+ * @example
+ * import { mergeFeatureFlags } from '@public-ui/components';
+ * import { DEFAULT_FEATURE_FLAGS } from '@public-ui/themes';
+ * bootstrap(themes, loaders, { features: mergeFeatureFlags(DEFAULT_FEATURE_FLAGS, appOverrides) });
+ */
+export const DEFAULT_FEATURE_FLAGS: KoliBriFeatureFlags = {
+	inputNumberButtons: 'show',
+};

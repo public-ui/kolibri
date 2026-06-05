@@ -66,3 +66,13 @@ export const register = bootstrap;
 export const isInitialized = () => initialized;
 export const getOptions = () => options;
 export const getFeatureFlag = <K extends keyof KoliBriFeatureFlags>(key: K): KoliBriFeatureFlags[K] | undefined => options?.features?.[key];
+
+/**
+ * Merges multiple KoliBriFeatureFlags objects left-to-right (later entries win).
+ * Themes can export a flags object; apps pass it as the first argument and add their own overrides after it.
+ *
+ * @example
+ * bootstrap(themes, loaders, { features: mergeFeatureFlags(DEFAULT_FEATURE_FLAGS, { inputNumberButtons: 'hide' }) });
+ */
+export const mergeFeatureFlags = (...flagSets: (KoliBriFeatureFlags | undefined)[]): KoliBriFeatureFlags =>
+	Object.assign({}, ...flagSets.filter(Boolean));
