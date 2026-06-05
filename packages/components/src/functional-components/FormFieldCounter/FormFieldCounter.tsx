@@ -20,27 +20,33 @@ function maxMessageRef(elem: HTMLSpanElement | undefined) {
 	maxTextElem = elem;
 }
 
-function maxTextLogic() {
-	timeout = setTimeout(() => {
-		console.log('timeout called');
+function maxTextLogic(currentLength: number, maxLength: number | undefined) {
+	let ariaMaxReachedText: string | undefined = 'MAX!';
 
-		maxTextElem?.removeAttribute('hidden');
-	}, 1000);
+	clearTimeout(timeout);
+	if (!maxTextElem) {
+		return;
+	}
+	maxTextElem.textContent = '';
+
+	if (currentLength === maxLength) {
+		timeout = setTimeout(() => {
+			if (!maxTextElem) {
+				return;
+			}
+			maxTextElem.textContent = ariaMaxReachedText;
+		}, 200);
+	}
 }
 
 const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, currentLengthDebounced, maxLength, maxLengthBehavior, id }) => {
 	let visualText: string | undefined;
 	let ariaText: string | undefined;
-	let ariaMaxReachedText: string | undefined = 'MAX!';
 	const counterClasses = ['kol-form-field__counter'];
 
-	console.log('counter rerender');
-	console.log(maxTextElem);
+	console.log('rerender');
 
-	if (timeout) {
-		clearTimeout(timeout);
-		maxTextLogic();
-	}
+	maxTextLogic(currentLength, maxLength);
 
 	if (maxLengthBehavior === 'hard') {
 		visualText =
@@ -52,12 +58,6 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, curre
 			typeof maxLength === 'number'
 				? translate('kol-character-counter-current-of-max-aria', { placeholders: { current: String(currentLengthDebounced), max: String(maxLength) } })
 				: translate('kol-character-counter-current', { placeholders: { current: String(currentLengthDebounced) } });
-
-		if (currentLength === maxLength) {
-			maxTextLogic();
-		} else {
-			maxTextElem?.setAttribute('hidden', 'true');
-		}
 	} else if (typeof maxLength === 'number') {
 		const remainingLive = maxLength - currentLength;
 		const exceededLive = remainingLive < 0;
@@ -87,9 +87,7 @@ const KolFormFieldCounterFc: FC<FormFieldCounterProps> = ({ currentLength, curre
 			<span id={createRelatedUniqueId(id || '', 'counter')} aria-live="polite" class="visually-hidden" data-testid="input-counter-aria">
 				{ariaText}
 			</span>
-			<span aria-live="assertive" aria-relevant="all" ref={(elem) => maxMessageRef(elem)} hidden>
-				{ariaMaxReachedText}
-			</span>
+			<span aria-live="polite" ref={(elem) => maxMessageRef(elem)} class="visually-hidden"></span>
 		</>
 	);
 };

@@ -219,7 +219,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 				)}
 			</InputContainer>
 			{counter ? <KolFormFieldCounterFc id={id} {...counter} /> : null}
-			{maxLength ? <KolFormFieldCharacterLimitHintFc id={id} maxLength={maxLength} /> : null}
+			{maxLength && !counter ? <KolFormFieldCharacterLimitHintFc id={id} maxLength={maxLength} /> : null}
 			{showMsg && !hideMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} />}
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 			{anotherChildren}
