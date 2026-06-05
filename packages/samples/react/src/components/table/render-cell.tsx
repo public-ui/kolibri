@@ -7,7 +7,7 @@ import { getRoot } from '../../shares/react-roots';
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 
-import type { IconsPropType, KoliBriTableCell, KoliBriTableHeaders } from '@public-ui/components';
+import type { IconsPropType, KoliBriTableCell, KoliBriTableHeaders, KoliBriTableSelection } from '@public-ui/components';
 import { useToasterService } from '../../hooks/useToasterService';
 
 type Data = {
@@ -122,12 +122,18 @@ const HEADERS: KoliBriTableHeaders = {
 	],
 };
 
+const selection: KoliBriTableSelection = {
+	label: (row) => `Selection for ${(row as Data).order}`,
+	multiple: false,
+	keyPropertyName: 'internalIdentifier',
+};
+
 export const TableRenderCell: FC = () => (
 	<>
 		<SampleDescription>
 			<p>This sample shows KolTableStateful using React render functions for the cell contents.</p>
 		</SampleDescription>
 
-		<KolTableStateful _label="Sort by date column" _data={DATA} _headers={HEADERS} className="w-full" _hasSettingsMenu />
+		<KolTableStateful _label="Sort by date column" _data={DATA} _headers={HEADERS} className="w-full" _hasSettingsMenu _selection={selection} />
 	</>
 );

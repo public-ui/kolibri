@@ -91,6 +91,9 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private settingsChangedCounter = 0;
 
+	private dataVersion = 0;
+	private cellsLastRenderedKey = new Map<HTMLElement, string>();
+
 	@State()
 	private tableDivElementHasScrollbar = false;
 
@@ -191,6 +194,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	public validateData(value?: TableDataPropType) {
 		validateTableData(this, value, {
 			beforePatch: (nextValue) => {
+				this.dataVersion++;
 				this.updateDataToKeyMap(nextValue as KoliBriTableDataType[]);
 			},
 		});
@@ -388,18 +392,28 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	 */
 	private cellRender(cell: KoliBriTableCell, el?: HTMLElement): void {
 		if (el) {
-			clearTimeout(this.cellsToRenderTimeouts.get(el));
-			this.cellsToRenderTimeouts.set(
-				el,
-				setTimeout(() => {
-					if (typeof cell.render === 'function') {
-						const renderContent = cell.render(el, cell, cell.data, this.state._data);
-						if (typeof renderContent === 'string') {
-							el.textContent = renderContent;
+			const cacheKey = `${this.dataVersion}:${this.getDataKey(cell.data ?? {})}`;
+
+			if (cacheKey === this.cellsLastRenderedKey.get(el)) {
+				console.log('cache');
+
+				return;
+			} else {
+				this.cellsLastRenderedKey.set(el, cacheKey);
+				clearTimeout(this.cellsToRenderTimeouts.get(el));
+				this.cellsToRenderTimeouts.set(
+					el,
+					setTimeout(() => {
+						console.log('render');
+						if (typeof cell.render === 'function') {
+							const renderContent = cell.render(el, cell, cell.data, this.state._data);
+							if (typeof renderContent === 'string') {
+								el.textContent = renderContent;
+							}
 						}
-					}
-				}),
-			);
+					}),
+				);
+			}
 		}
 	}
 
