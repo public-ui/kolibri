@@ -3,13 +3,13 @@ export * from './components.d';
 export { setCurrentLocation } from './components/link/ariaCurrentService';
 export { ToasterService } from './components/toaster/toaster';
 export { bootstrap, getFeatureFlag, isInitialized, mergeFeatureFlags, register } from './core/bootstrap';
-export type { KoliBriFeatureFlags } from './core/bootstrap';
 export * from './enums/bund';
 export * from './kolibri';
 export { KoliBri, KoliBriDevHelper } from './schema';
 export type {
 	EventValueOrEventCallback,
 	FocusableElement,
+	KoliBriFeatureFlags,
 	KoliBriTableCell,
 	KoliBriTableHeaderCell,
 	KoliBriTableHeaderCellWithLogic,

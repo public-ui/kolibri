@@ -5,8 +5,6 @@ import { getThemeFeatureFlags, Log, setRuntimeMode } from '../schema';
 import { setCustomTagNames } from './component-names';
 import { initializeI18n } from './i18n';
 
-export type { KoliBriFeatureFlags } from '../schema';
-
 type KoliBriOptions = RegisterOptions & {
 	/**
 	 * The environment in which the application is running.
