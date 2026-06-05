@@ -19,11 +19,10 @@ export const getThemeFeatureFlags = (themeName: string): KoliBriFeatureFlags | u
 const _base = new Theme<'kol', keyof typeof KeyEnum, keyof typeof TagEnum>('kol', KeyEnum, TagEnum);
 const _origCreateTheme = _base.createTheme.bind(_base);
 
-(_base as any).createTheme = (
-	name: string,
-	cssMap: Record<string, string>,
-	featureFlags?: KoliBriFeatureFlags,
-): Generic.Theming.RegisterPatch<string, string, string> => {
+const _patchable = _base as unknown as {
+	createTheme: (name: string, cssMap: Record<string, string>, featureFlags?: KoliBriFeatureFlags) => Generic.Theming.RegisterPatch<string, string, string>;
+};
+_patchable.createTheme = (name, cssMap, featureFlags) => {
 	const result = _origCreateTheme(name, cssMap);
 	if (featureFlags) {
 		_themeFeatureFlagsRegistry.set(name, featureFlags);
