@@ -1,7 +1,7 @@
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
 import { getDefaultThemeName, register as coreRegister } from 'adopted-style-sheets';
 import type { KoliBriFeatureFlags, Mode } from '../schema';
-import { Log, getThemeFeatureFlags, setRuntimeMode } from '../schema';
+import { getThemeFeatureFlags, Log, setRuntimeMode } from '../schema';
 import { setCustomTagNames } from './component-names';
 import { initializeI18n } from './i18n';
 

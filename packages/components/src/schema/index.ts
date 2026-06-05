@@ -14,8 +14,7 @@ export type KoliBriFeatureFlags = {
 
 const _themeFeatureFlagsRegistry = new Map<string, KoliBriFeatureFlags>();
 
-export const getThemeFeatureFlags = (themeName: string): KoliBriFeatureFlags | undefined =>
-	_themeFeatureFlagsRegistry.get(themeName);
+export const getThemeFeatureFlags = (themeName: string): KoliBriFeatureFlags | undefined => _themeFeatureFlagsRegistry.get(themeName);
 
 const _base = new Theme<'kol', keyof typeof KeyEnum, keyof typeof TagEnum>('kol', KeyEnum, TagEnum);
 const _origCreateTheme = _base.createTheme.bind(_base);
@@ -30,11 +29,7 @@ const _origCreateTheme = _base.createTheme.bind(_base);
 };
 
 export const KoliBri = _base as unknown as Omit<typeof _base, 'createTheme'> & {
-	createTheme(
-		name: string,
-		cssMap: Record<string, string>,
-		featureFlags?: KoliBriFeatureFlags,
-	): Generic.Theming.RegisterPatch<string, string, string>;
+	createTheme(name: string, cssMap: Record<string, string>, featureFlags?: KoliBriFeatureFlags): Generic.Theming.RegisterPatch<string, string, string>;
 };
 
 export * from './components';
