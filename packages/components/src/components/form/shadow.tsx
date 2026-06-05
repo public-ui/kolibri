@@ -6,7 +6,7 @@ import { translate } from '../../i18n';
 
 import { KolLinkWcTag } from '../../core/component-names';
 import KolAlertFc from '../../functional-components/Alert';
-import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
+import type { ErrorListPropType, FormAPI, FormStates, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -25,6 +25,9 @@ export class KolForm implements FormAPI {
 	@Element() private readonly host?: HTMLKolFormElement;
 	errorListBlock?: HTMLElement;
 	errorListFirstLink?: HTMLElement;
+	scrollOptions: KolFocusOptions = {
+		behavior: 'smooth',
+	};
 	private readonly translateErrorListMessage = translate('kol-error-list-message');
 	private readonly translateErrorList = translate('kol-error-list');
 	private readonly translateFormDescription = translate('kol-form-description');
@@ -54,8 +57,7 @@ export class KolForm implements FormAPI {
 	private readonly handleLinkClick = (selector: string) => {
 		const targetElement = document.querySelector<HTMLElement>(selector);
 		if (targetElement && typeof targetElement.focus === 'function') {
-			targetElement.scrollIntoView({ behavior: 'smooth' });
-			targetElement.focus();
+			targetElement.focus(this.scrollOptions);
 		}
 	};
 
