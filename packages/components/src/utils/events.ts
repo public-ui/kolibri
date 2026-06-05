@@ -33,7 +33,7 @@ function createKoliBriEvent<T>(event: KolEvent, detail: T | null = null): Custom
 	});
 }
 
-function dispatchDomEvent<T>(target: HTMLElement, event: KolEvent, detail?: T): boolean {
+function dispatchDomEvent<T>(target: EventTarget, event: KolEvent, detail?: T): boolean {
 	return target.dispatchEvent(createKoliBriEvent<T>(event, detail));
 }
 

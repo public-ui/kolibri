@@ -8,6 +8,7 @@ import type {
 	HintPropType,
 	IconsHorizontalPropType,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -77,7 +78,9 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	private toggleListbox = (event: Event) => {
 		event?.preventDefault();

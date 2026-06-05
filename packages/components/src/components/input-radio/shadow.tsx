@@ -11,6 +11,7 @@ import type {
 	InputRadioAPI,
 	InputRadioStates,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -79,8 +80,9 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.getFocusableInput()!));
+	public async focus(options?: KolFocusOptions) {
+		const input = this.getFocusableInput();
+		return delegateFocus(this.host!, () => setFocus(input, options));
 	}
 
 	/**

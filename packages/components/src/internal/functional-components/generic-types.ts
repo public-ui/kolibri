@@ -260,15 +260,9 @@ type ControllerListeners<Listeners> = {
 	[K in keyof Listeners as `on${Capitalize<string & K>}`]: (event: Listeners[K]) => void;
 };
 
-type ControllerRefSetters<Refs> = {
-	[K in keyof Refs as `set${Capitalize<string & K>}Ref`]: (element?: Refs[K]) => void;
-};
-
 export type ControllerInterface<T extends ComponentApi = ComponentApi> = {
 	componentWillLoad(props: ResolvedInputProps<T>): void;
 	getRenderProp<K extends keyof InternalProps<T>>(key: K): StrictFields<InternalProps<T>>[K];
 } & ComponentWatchers<ExternalProps<T>> &
 	ControllerCallbackHandlers<ExtractCallbacks<T>> &
-	ControllerListeners<ExtractListeners<T>> &
-	ExtractMethods<T> &
-	ControllerRefSetters<ExtractRefs<T>>;
+	ControllerListeners<ExtractListeners<T>>;

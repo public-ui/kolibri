@@ -1,6 +1,15 @@
 import { Component, Element, h, type JSX, Method, Prop, State, Watch } from '@stencil/core';
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
-import type { DetailsAPI, DetailsCallbacksPropType, DetailsStates, DisabledPropType, FocusableElement, HeadingLevel, LabelPropType } from '../../schema';
+import type {
+	DetailsAPI,
+	DetailsCallbacksPropType,
+	DetailsStates,
+	DisabledPropType,
+	FocusableElement,
+	HeadingLevel,
+	KolFocusOptions,
+	LabelPropType,
+} from '../../schema';
 import { validateDetailsCallbacks, validateDisabled, validateLabel, validateOpen } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -36,7 +45,9 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Triggers a click on the summary/toggle button.

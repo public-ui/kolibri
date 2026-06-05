@@ -297,7 +297,14 @@ export const mapStringOrBoolean2String = (value?: string | boolean): string | un
 	return typeof value === 'string' ? value : mapBoolean2String(value);
 };
 
-const querySelectorShadow = <T extends Element>(selector: string, rootNode: Document | HTMLElement | ShadowRoot): T | null => {
+/**
+ * Traverses the DOM including shadow roots and slotted elements via BFS.
+ * `onNode` is called once per node; returning `true` stops traversal early.
+ */
+const traverseShadowDom = (rootNode: ParentNode, onNode: (node: ParentNode) => boolean): void => {
+	if (!rootNode) {
+		return;
+	}
 	const visited = new Set<Node>();
 	const queue: ParentNode[] = [rootNode];
 	let index = 0;
@@ -307,8 +314,8 @@ const querySelectorShadow = <T extends Element>(selector: string, rootNode: Docu
 			continue;
 		}
 		visited.add(current);
-		if (current instanceof Element && current.matches(selector)) {
-			return current as T;
+		if (onNode(current)) {
+			return;
 		}
 		const children = Array.from(current.children || []);
 		for (let i = 0; i < children.length; i++) {
@@ -326,41 +333,28 @@ const querySelectorShadow = <T extends Element>(selector: string, rootNode: Docu
 			}
 		}
 	}
-	return null;
 };
 
-const querySelectorAllShadow = <T extends Element>(selector: string, rootNode: Document | HTMLElement | ShadowRoot): T[] => {
-	const visited = new Set<Node>();
+const querySelectorShadow = <T extends Element>(selector: string, rootNode: ParentNode): T | null => {
+	let result: T | null = null;
+	traverseShadowDom(rootNode, (current) => {
+		if (current instanceof Element && current.matches(selector)) {
+			result = current as T;
+			return true;
+		}
+		return false;
+	});
+	return result;
+};
+
+const querySelectorAllShadow = <T extends Element>(selector: string, rootNode: ParentNode): T[] => {
 	const results: T[] = [];
-	const resultSet = new Set<Element>();
-	const queue: ParentNode[] = [rootNode];
-	let index = 0;
-	while (index < queue.length) {
-		const current = queue[index++];
-		if (visited.has(current)) {
-			continue;
-		}
-		visited.add(current);
-		if (current instanceof Element && current.matches(selector) && !resultSet.has(current)) {
+	traverseShadowDom(rootNode, (current) => {
+		if (current instanceof Element && current.matches(selector)) {
 			results.push(current as T);
-			resultSet.add(current);
 		}
-		const children = Array.from(current.children || []);
-		for (let i = 0; i < children.length; i++) {
-			queue.push(children[i]);
-		}
-		if (current instanceof HTMLElement && current.shadowRoot) {
-			queue.push(current.shadowRoot);
-		}
-		if (current instanceof HTMLSlotElement) {
-			const assigned = current.assignedNodes({ flatten: true });
-			for (let i = 0; i < assigned.length; i++) {
-				if (assigned[i] instanceof Element) {
-					queue.push(assigned[i] as HTMLElement);
-				}
-			}
-		}
-	}
+		return false;
+	});
 	return results;
 };
 

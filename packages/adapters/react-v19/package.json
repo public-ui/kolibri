@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/react-v19",
-	"version": "4.2.0",
+	"version": "4.2.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -49,7 +49,7 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"@types/react": "19.2.15",
+		"@types/react": "19.2.16",
 		"@types/react-dom": "19.2.3",
 		"minimatch": "10.2.5",
 		"react": "19.2.6",
