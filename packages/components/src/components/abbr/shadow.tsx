@@ -1,8 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { TooltipFC } from '../../internal/functional-components/tooltip/component';
-import { TooltipController } from '../../internal/functional-components/tooltip/controller';
+import { TooltipDecorator } from '../../internal/functional-components/tooltip/decorator';
 import type { AbbrAPI, AbbrStates, LabelPropType } from '../../schema';
 import { validateLabel } from '../../schema';
 
@@ -22,7 +20,9 @@ import { validateLabel } from '../../schema';
 export class KolAbbr implements AbbrAPI {
 	private abbrRef?: HTMLElement;
 
-	private readonly tooltipCtrl = new TooltipController(BaseWebComponent.stateLess);
+	private readonly tooltip = new TooltipDecorator({
+		getTrigger: () => this.abbrRef,
+	});
 
 	private readonly setAbbrRef = (ref?: HTMLElement) => {
 		this.abbrRef = ref;
@@ -35,15 +35,10 @@ export class KolAbbr implements AbbrAPI {
 				<abbr ref={this.setAbbrRef} tabIndex={this.state._label ? 0 : undefined}>
 					<slot />
 				</abbr>
-				{this.state._label ? (
-					<TooltipFC
-						aria-hidden="true"
-						label={typeof this.state._label === 'string' ? this.state._label : ''}
-						badgeText={''}
-						id={this.tooltipCtrl.getRenderProp('id')}
-						refFloating={this.tooltipCtrl.setTooltipElementRef}
-					/>
-				) : null}
+				{this.tooltip.render({
+					label: typeof this.state._label === 'string' ? this.state._label : '',
+					visible: Boolean(this.state._label),
+				})}
 			</Host>
 		);
 	}
@@ -60,23 +55,21 @@ export class KolAbbr implements AbbrAPI {
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
 		validateLabel(this, value);
-		this.tooltipCtrl.watchLabel(value);
+		this.tooltip.watchLabel(value);
 	}
 
 	public componentWillLoad(): void {
 		this.validateLabel(this._label);
-		this.tooltipCtrl.componentWillLoad({
+		this.tooltip.componentWillLoad({
 			label: typeof this._label === 'string' ? this._label : '',
 		});
 	}
 
 	public componentDidRender(): void {
-		if (this.abbrRef) {
-			this.tooltipCtrl.syncListeners(undefined, this.abbrRef, true);
-		}
+		this.tooltip.componentDidRender();
 	}
 
 	public disconnectedCallback(): void {
-		this.tooltipCtrl.destroy();
+		this.tooltip.disconnectedCallback();
 	}
 }
