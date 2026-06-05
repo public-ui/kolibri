@@ -3,9 +3,9 @@ import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter as Router } from 'react-router-dom';
 
-import { bootstrap, getDefaultThemeName, KoliBriDevHelper, mergeFeatureFlags } from '@public-ui/components';
+import { bootstrap, getDefaultThemeName, KoliBriDevHelper } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
-import { BWSt, DEFAULT, DEFAULT_FEATURE_FLAGS, DesyV11, ECL_EC, ECL_EU, KERN_V2 } from '@public-ui/themes';
+import { BWSt, DEFAULT, DesyV11, ECL_EC, ECL_EU, KERN_V2 } from '@public-ui/themes';
 import { setCustomThemes } from './shares/store';
 
 import { App } from './App';
@@ -61,9 +61,9 @@ void (async () => {
 			{
 				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
 				reflectInputValues: true,
-				// Use theme-provided feature flags as a base; add per-app overrides as a second argument:
-				features: mergeFeatureFlags(DEFAULT_FEATURE_FLAGS),
-				// features: mergeFeatureFlags(DEFAULT_FEATURE_FLAGS, { inputNumberButtons: 'hide' }),
+				// Theme-declared flags (from KoliBri.createTheme third arg) are applied automatically.
+				// Pass features here only to override specific flags for this app:
+				// features: { inputNumberButtons: 'hide' },
 				theme: process.env.THEME_MODULE
 					? undefined
 					: {

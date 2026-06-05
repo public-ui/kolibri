@@ -1,17 +1,11 @@
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
-import { register as coreRegister } from 'adopted-style-sheets';
-import type { Mode } from '../schema';
-import { Log, setRuntimeMode } from '../schema';
+import { getDefaultThemeName, register as coreRegister } from 'adopted-style-sheets';
+import type { KoliBriFeatureFlags, Mode } from '../schema';
+import { Log, getThemeFeatureFlags, setRuntimeMode } from '../schema';
 import { setCustomTagNames } from './component-names';
 import { initializeI18n } from './i18n';
 
-export type KoliBriFeatureFlags = {
-	/**
-	 * Controls visibility of step-up/step-down buttons in KolInputNumber.
-	 * Default: 'show'
-	 */
-	inputNumberButtons?: 'show' | 'hide';
-};
+export type { KoliBriFeatureFlags } from '../schema';
 
 type KoliBriOptions = RegisterOptions & {
 	/**
@@ -29,7 +23,8 @@ type KoliBriOptions = RegisterOptions & {
 	reflectInputValues?: boolean;
 
 	/**
-	 * Feature flags for opting in/out of optional component behaviors.
+	 * App-level feature flag overrides. These take priority over flags declared by the active theme.
+	 * To rely solely on the theme's declared flags, omit this option.
 	 */
 	features?: KoliBriFeatureFlags;
 };
@@ -65,14 +60,27 @@ export const bootstrap = async (
 export const register = bootstrap;
 export const isInitialized = () => initialized;
 export const getOptions = () => options;
-export const getFeatureFlag = <K extends keyof KoliBriFeatureFlags>(key: K): KoliBriFeatureFlags[K] | undefined => options?.features?.[key];
+
+/**
+ * Returns the value of a feature flag, with the following priority:
+ * 1. App-level override (features option passed to bootstrap)
+ * 2. Active theme's declared flags (set via KoliBri.createTheme third argument)
+ * 3. undefined (component falls back to its built-in default)
+ */
+export const getFeatureFlag = <K extends keyof KoliBriFeatureFlags>(key: K): KoliBriFeatureFlags[K] | undefined => {
+	if (options?.features?.[key] !== undefined) {
+		return options.features[key];
+	}
+	const themeName = getDefaultThemeName();
+	return themeName ? getThemeFeatureFlags(themeName)?.[key] : undefined;
+};
 
 /**
  * Merges multiple KoliBriFeatureFlags objects left-to-right (later entries win).
- * Themes can export a flags object; apps pass it as the first argument and add their own overrides after it.
+ * Useful for composing app-level overrides on top of a base set.
  *
  * @example
- * bootstrap(themes, loaders, { features: mergeFeatureFlags(DEFAULT_FEATURE_FLAGS, { inputNumberButtons: 'hide' }) });
+ * bootstrap(themes, loaders, { features: mergeFeatureFlags({ inputNumberButtons: 'hide' }) });
  */
 export const mergeFeatureFlags = (...flagSets: (KoliBriFeatureFlags | undefined)[]): KoliBriFeatureFlags =>
 	Object.assign({}, ...flagSets.filter(Boolean));
