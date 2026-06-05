@@ -1,7 +1,6 @@
 import { h, type VNode } from '@stencil/core';
 
 import type { TooltipAlignPropType } from '../../../schema';
-import clsx from '../../../utils/clsx';
 import { BaseWebComponent } from '../base-web-component';
 import { TooltipFC } from './component';
 import { TooltipController } from './controller';
@@ -55,6 +54,7 @@ export type RenderTooltipProps = {
  */
 export class TooltipDecorator {
 	private readonly controller = new TooltipController(BaseWebComponent.stateLess);
+	private lastTrigger?: HTMLElement;
 
 	public constructor(private readonly options: TooltipDecoratorOptions) {}
 
@@ -66,17 +66,25 @@ export class TooltipDecorator {
 		});
 	}
 
-	/** Synchronizes the event listeners with the current trigger element. Call from the component's `componentDidRender`. */
+	/**
+	 * Synchronizes the event listeners with the current trigger element. Call from
+	 * the component's `componentDidRender`. When the anchored element changes (or is
+	 * removed), listeners are detached from the previous trigger first, so the
+	 * decorator stays leak-safe even if the trigger is swapped over time.
+	 */
 	public componentDidRender(): void {
 		const trigger = this.options.getTrigger();
-		if (trigger) {
-			this.controller.syncListeners(undefined, trigger, true);
+		if (trigger === this.lastTrigger) {
+			return;
 		}
+		this.controller.syncListeners(this.lastTrigger, trigger, true);
+		this.lastTrigger = trigger;
 	}
 
 	/** Tears down listeners and timers. Call from the component's `disconnectedCallback`. */
 	public disconnectedCallback(): void {
 		this.controller.destroy();
+		this.lastTrigger = undefined;
 	}
 
 	/** Forwards the `_label` watcher to the tooltip controller. */
@@ -95,18 +103,19 @@ export class TooltipDecorator {
 	}
 
 	/**
-	 * Renders the tooltip, or `null` when nothing should be shown. The visibility
-	 * condition stays in the component because it is component-specific.
+	 * Renders the tooltip, or `null` when it should not be shown. Visibility is the
+	 * caller's responsibility (it is component-specific), so this is the single
+	 * source of truth and does not add any further conditions of its own.
 	 */
 	public render({ label, badgeText, visible }: RenderTooltipProps): VNode | null {
-		if (!visible || !label) {
+		if (!visible) {
 			return null;
 		}
 
 		const tooltip = (
-			<TooltipFC label={label} badgeText={badgeText ?? ''} id={this.controller.getRenderProp('id')} refFloating={this.controller.setTooltipElementRef} />
+			<TooltipFC label={label ?? ''} badgeText={badgeText ?? ''} id={this.controller.getRenderProp('id')} refFloating={this.controller.setTooltipElementRef} />
 		);
 
-		return this.options.wrapperClass ? <div class={clsx(this.options.wrapperClass)}>{tooltip}</div> : tooltip;
+		return this.options.wrapperClass ? <div class={this.options.wrapperClass}>{tooltip}</div> : tooltip;
 	}
 }

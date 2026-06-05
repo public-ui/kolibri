@@ -10,9 +10,9 @@ describe('TooltipDecorator', () => {
 			expect(decorator.render({ label: 'Some label', visible: false })).toBeNull();
 		});
 
-		it('returns null when there is no label', () => {
+		it('returns a vnode when visible, even without a label', () => {
 			const decorator = createDecorator();
-			expect(decorator.render({ label: '', visible: true })).toBeNull();
+			expect(decorator.render({ label: '', visible: true })).not.toBeNull();
 		});
 
 		it('returns a vnode when visible and a label is set', () => {
