@@ -10,6 +10,7 @@ import type {
 	KoliBriPaginationButtonCallbacks,
 	KoliBriSortDirection,
 	KoliBriTableDataType,
+	KoliBriTableHeaderCell,
 	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
@@ -327,9 +328,13 @@ export class KolTableStateful implements TableAPI {
 				watchValidator(this, '_headers', (value): boolean => typeof value === 'object' && value !== null, new Set(['KoliBriTableHeaders']), value, {
 					hooks: {
 						beforePatch: (nextValue: unknown) => {
-							// A new header definition invalidates any settings the user applied to the previous one.
-							this.adjustedHeaderCells = undefined;
 							const headers: KoliBriTableHeaders = nextValue as KoliBriTableHeaders;
+							// Only drop the user's settings when the column structure actually changes. A new
+							// object reference with identical keys (common with inline/non-memoized headers in
+							// React) must keep the customisation. (#10344)
+							if (this.headerKeysChanged(this.state._headers, headers)) {
+								this.adjustedHeaderCells = undefined;
+							}
 							const hasSortedCells = this.initializeSortFromHeaders(headers);
 							if (hasSortedCells) {
 								setTimeout(() => this.updateSortedData());
@@ -634,19 +639,72 @@ export class KolTableStateful implements TableAPI {
 	};
 
 	/**
+	 * Returns true if the set or order of column keys differs between two header definitions. Used to
+	 * decide whether persisted settings are still applicable to a new `_headers` value. (#10344)
+	 */
+	private headerKeysChanged(previous: KoliBriTableHeaders, next: KoliBriTableHeaders): boolean {
+		const getKeys = (headers: KoliBriTableHeaders): string[] => [
+			...(headers.horizontal?.flatMap((row) => row.map((cell) => cell?.key).filter((key): key is string => Boolean(key))) ?? []),
+			...(headers.vertical?.flatMap((column) => column.map((cell) => cell?.key).filter((key): key is string => Boolean(key))) ?? []),
+		];
+		const previousKeys = getKeys(previous);
+		const nextKeys = getKeys(next);
+		return previousKeys.length !== nextKeys.length || previousKeys.some((key, index) => key !== nextKeys[index]);
+	}
+
+	/**
+	 * Merges the user-adjusted header cells (order, visibility, width) back onto the original
+	 * `_headers` definition, matched by `key`. Logic-only fields like `compareFn` and `actions` are
+	 * always taken from the authoritative `_headers` cell, so the adjusted cells never need to carry
+	 * (or lose) them. (#10344)
+	 */
+	private mergeAdjustedHeaderCells(adjusted: KoliBriTableHeaderCell[][]): KoliBriTableHeaderCellWithLogic[][] {
+		const originalByKey = new Map<string, KoliBriTableHeaderCellWithLogic>();
+		this.state._headers.horizontal?.forEach((row) =>
+			row.forEach((cell) => {
+				if (cell?.key) {
+					originalByKey.set(cell.key, cell);
+				}
+			}),
+		);
+
+		return adjusted.map((row) =>
+			row.map((cell) => {
+				const original = cell?.key ? originalByKey.get(cell.key) : undefined;
+				if (!original) {
+					return cell as KoliBriTableHeaderCellWithLogic;
+				}
+				// Keep logic fields from the original definition, overlay only the user-adjustable settings.
+				const merged = { ...original } as KoliBriTableHeaderCellWithLogic;
+				if (cell.visible !== undefined) merged.visible = cell.visible;
+				if (cell.width !== undefined) merged.width = cell.width;
+				if (cell.hidable !== undefined) merged.hidable = cell.hidable;
+				if (cell.sortable !== undefined) merged.sortable = cell.sortable;
+				if (cell.resizable !== undefined) merged.resizable = cell.resizable;
+				return merged;
+			}),
+		);
+	}
+
+	/**
 	 * Builds the header cells passed to the stateless table. When the user has adjusted the columns
-	 * via the settings menu (`adjustedHeaderCells`), those horizontal cells are used as the base so
-	 * the customisation (visibility, width, order) is preserved. The current sort state is always
-	 * overlaid on top. (#10344)
+	 * via the settings menu (`adjustedHeaderCells`), those horizontal cells are merged onto the
+	 * original `_headers` so the customisation (visibility, width, order) is preserved. The current
+	 * sort state is always overlaid on top. (#10344)
 	 */
 	private buildHeaderCells(): TableHeaderCells {
-		const overlaySortState = (cell: KoliBriTableHeaderCellWithLogic) => ({
-			...cell,
-			sortDirection: this.getHeaderCellSortState(cell),
-			sortOrder: this.getHeaderCellSortOrder(cell),
-		});
+		const overlaySortState = (cell: KoliBriTableHeaderCellWithLogic) =>
+			cell
+				? {
+						...cell,
+						sortDirection: this.getHeaderCellSortState(cell),
+						sortOrder: this.getHeaderCellSortOrder(cell),
+					}
+				: cell;
 
-		const horizontalHeaders = (this.adjustedHeaderCells?.horizontal as KoliBriTableHeaderCellWithLogic[][] | undefined) ?? this.state._headers.horizontal;
+		const horizontalHeaders = this.adjustedHeaderCells?.horizontal
+			? this.mergeAdjustedHeaderCells(this.adjustedHeaderCells.horizontal)
+			: this.state._headers.horizontal;
 
 		return {
 			horizontal: horizontalHeaders?.map((row) => row.map(overlaySortState)) ?? [],

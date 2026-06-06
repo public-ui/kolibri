@@ -13,6 +13,7 @@ type Internal = {
 	adjustedHeaderCells?: TableHeaderCells;
 	buildHeaderCells: () => TableHeaderCells;
 	handleChangeHeaderCells: (headerCells: TableHeaderCells) => void;
+	headerKeysChanged: (previous: KoliBriTableHeaders, next: KoliBriTableHeaders) => boolean;
 };
 
 const HEADERS: KoliBriTableHeaders = {
@@ -55,17 +56,47 @@ describe('KolTableStateful settings persistence (#10344)', () => {
 		expect(result.horizontal?.[0][1].visible).toBe(false);
 	});
 
-	it('overlays the current sort state on the persisted header cells', () => {
+	it('takes logic fields (compareFn) from the original headers and overlays the sort state', () => {
 		const table = new KolTableStateful() as unknown as Internal;
 		const compareFn = () => 0;
+		// Original headers carry the compareFn; the adjusted cells (from the settings menu) do not.
 		table.state._headers = { horizontal: [[{ key: 'a', label: 'A', compareFn }]] } as unknown as KoliBriTableHeaders;
-
-		table.handleChangeHeaderCells({ horizontal: [[{ key: 'a', label: 'A', width: 300, compareFn }]] } as unknown as TableHeaderCells);
+		table.handleChangeHeaderCells({ horizontal: [[{ key: 'a', label: 'A', width: 300 }]] });
 		table.sortData = [{ label: 'A', key: 'a', compareFn, direction: 'DESC' }];
 
 		const result = table.buildHeaderCells();
 
 		expect(result.horizontal?.[0][0].width).toBe(300);
+		// compareFn was recovered from _headers, so the column is still recognised as sortable.
 		expect(result.horizontal?.[0][0].sortDirection).toBe('DESC');
+	});
+
+	it('only treats a header update as structural when the column keys change', () => {
+		const table = new KolTableStateful() as unknown as Internal;
+
+		// Same keys, different labels / new reference -> not structural (settings must survive).
+		expect(
+			table.headerKeysChanged(HEADERS, {
+				horizontal: [
+					[
+						{ key: 'a', label: 'A2' },
+						{ key: 'b', label: 'B2' },
+					],
+				],
+			}),
+		).toBe(false);
+		// Removed column -> structural.
+		expect(table.headerKeysChanged(HEADERS, { horizontal: [[{ key: 'a', label: 'A' }]] })).toBe(true);
+		// Reordered keys -> structural.
+		expect(
+			table.headerKeysChanged(HEADERS, {
+				horizontal: [
+					[
+						{ key: 'b', label: 'B' },
+						{ key: 'a', label: 'A' },
+					],
+				],
+			}),
+		).toBe(true);
 	});
 });

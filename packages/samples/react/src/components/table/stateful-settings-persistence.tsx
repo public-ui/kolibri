@@ -1,7 +1,7 @@
 import type { KoliBriTableDataType, KoliBriTableHeaders } from '@public-ui/components';
-import { KolTableStateful } from '@public-ui/react-v19';
+import { KolButton, KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
 
 type UserRow = {
@@ -28,7 +28,10 @@ const compareByKey =
 		return direction === 'DESC' ? -result : result;
 	};
 
-const HEADERS: KoliBriTableHeaders = {
+// Intentionally created inline on every render so the `_headers` prop receives a fresh object
+// reference each time. This mirrors the common React pattern of non-memoized headers and verifies
+// that applied settings survive parent re-renders as long as the column keys stay the same (#10344).
+const buildHeaders = (): KoliBriTableHeaders => ({
 	horizontal: [
 		[
 			{ key: 'id', label: 'ID', visible: true, width: 120 },
@@ -38,31 +41,37 @@ const HEADERS: KoliBriTableHeaders = {
 			{ key: 'status', label: 'Status', visible: true, width: 160, compareFn: compareByKey('status') },
 		],
 	],
+});
+
+export const TableStatefulSettingsPersistence: FC = () => {
+	const [renderCount, setRenderCount] = useState(0);
+
+	return (
+		<>
+			<SampleDescription>
+				<p>
+					This example demonstrates that column settings applied via the settings menu are remembered. Open the settings menu and change a column&apos;s
+					width, visibility or order and apply. Then sort a column, switch the pagination page, select a row, or use the &quot;Force parent re-render&quot;
+					button &ndash; the customized columns must stay as you configured them and must no longer reset to their defaults (issue #10344).
+				</p>
+			</SampleDescription>
+
+			<KolButton _label={`Force parent re-render (${renderCount})`} _on={{ onClick: () => setRenderCount((count) => count + 1) }} className="block" />
+
+			<KolTableStateful
+				_label="Table that remembers settings across sorting, pagination and selection"
+				_hasSettingsMenu
+				_pagination={{ _page: 1, _pageSize: 3 }}
+				_selection={{
+					label: (row) => `Select ${(row as UserRow).name}`,
+					keyPropertyName: 'id',
+					selectedKeys: [],
+				}}
+				_headers={buildHeaders()}
+				_data={DATA}
+				className="block"
+				style={{ maxWidth: '900px' }}
+			/>
+		</>
+	);
 };
-
-export const TableStatefulSettingsPersistence: FC = () => (
-	<>
-		<SampleDescription>
-			<p>
-				This example demonstrates that column settings applied via the settings menu are remembered. Open the settings menu and change a column&apos;s width,
-				visibility or order and apply. Then sort a column, switch the pagination page or select a row &ndash; the customized columns must stay as you
-				configured them and must no longer reset to their defaults (issue #10344).
-			</p>
-		</SampleDescription>
-
-		<KolTableStateful
-			_label="Table that remembers settings across sorting, pagination and selection"
-			_hasSettingsMenu
-			_pagination={{ _page: 1, _pageSize: 3 }}
-			_selection={{
-				label: (row) => `Select ${(row as UserRow).name}`,
-				keyPropertyName: 'id',
-				selectedKeys: [],
-			}}
-			_headers={HEADERS}
-			_data={DATA}
-			className="block"
-			style={{ maxWidth: '900px' }}
-		/>
-	</>
-);
