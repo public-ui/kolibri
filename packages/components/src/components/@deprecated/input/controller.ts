@@ -171,6 +171,7 @@ export class InputController extends ControlledInputController implements Watche
 	 * @param value - Optional value. Taken from event if not defined.
 	 */
 	protected onChange(event: Event, value?: StencilUnknown): void {
+		event.stopPropagation();
 		if (typeof value === 'undefined') {
 			value = (event.target as HTMLInputElement).value;
 		}
@@ -202,6 +203,7 @@ export class InputController extends ControlledInputController implements Watche
 	 * @param value - Optional value. Taken from event if not defined.
 	 */
 	protected onInput(event: Event, shouldSetFormAssociatedValue = true, value?: StencilUnknown): void {
+		event.stopPropagation();
 		if (typeof value === 'undefined') {
 			value = (event.target as HTMLInputElement).value;
 		}

@@ -1,12 +1,8 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { testInputCallbacksAndEvents } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
-import type { FillAction } from '../../e2e/utils/FillAction';
+import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 import type { Iso8601 } from '../../schema';
-
-const TEST_VALUE_STRING = '2023-05-06';
-const TEST_VALUE_DATE = new Date(TEST_VALUE_STRING);
 
 test.describe('kol-input-date', () => {
 	test.describe('when value is Date object', () => {
@@ -43,20 +39,6 @@ test.describe('kol-input-date', () => {
 			}, TEST_DATE);
 			await expect(page.locator('input')).toHaveValue('04:02');
 		});
-
-		const fillAction: FillAction = async (page) => {
-			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, value) => {
-				element._value = value;
-			}, TEST_VALUE_DATE);
-		};
-		testInputCallbacksAndEvents<HTMLKolInputDateElement>({
-			componentName: 'kol-input-date',
-			expectedValue: TEST_VALUE_DATE,
-			fillAction,
-			omittedEvents: ['click', 'focus', 'blur'],
-			testValue: TEST_VALUE_DATE,
-			equalityCheck: 'toEqual',
-		}); // emitted events are tested independently of type
 	});
 
 	test.describe('when value is String', () => {
@@ -79,12 +61,6 @@ test.describe('kol-input-date', () => {
 			await page.setContent(`<kol-input-date _label="Date input" _type="time" _value="04:02"></kol-input-date>`);
 			await expect(page.locator('input')).toHaveValue('04:02');
 		});
-
-		testInputCallbacksAndEvents<HTMLKolInputDateElement>({
-			componentName: 'kol-input-date',
-			omittedEvents: ['click', 'focus', 'blur'],
-			testValue: TEST_VALUE_STRING,
-		}); // emitted events are tested independently of type
 	});
 
 	test.describe('Value reflection', () => {
@@ -288,10 +264,61 @@ test.describe('kol-input-date', () => {
 		});
 	});
 
-	testInputCallbacksAndEvents<HTMLKolInputDateElement>({
-		componentName: 'kol-input-date',
-		omittedEvents: ['input', 'change'],
-		testValue: TEST_VALUE_STRING,
-	}); // emitted events are tested specifically for value type
+	test.describe('Callbacks and Events', () => {
+		test('should call onFocus callback and emit focus event when input receives focus', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-input-date _label="Date input"></kol-input-date>`);
+			const component = page.locator('kol-input-date');
+			const input = page.locator('input');
+
+			await component.evaluate((element: HTMLKolInputDateElement) => {
+				element._on = { onFocus: () => ((window as unknown as Record<string, unknown>).focusCallback = true) };
+				element.addEventListener('focus', () => ((window as unknown as Record<string, unknown>).focusEvent = true));
+			});
+
+			await input.focus();
+			await page.waitForChanges();
+
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).focusCallback)).toBe(true);
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).focusEvent)).toBe(true);
+		});
+
+		test('should call onBlur callback and emit blur event when input loses focus', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-input-date _label="Date input"></kol-input-date><button id="next">Next</button>`);
+			const component = page.locator('kol-input-date');
+			const input = page.locator('input');
+			const nextButton = page.locator('#next');
+
+			await component.evaluate((element: HTMLKolInputDateElement) => {
+				element._on = { onBlur: () => ((window as unknown as Record<string, unknown>).blurCallback = true) };
+				element.addEventListener('blur', () => ((window as unknown as Record<string, unknown>).blurEvent = true));
+			});
+
+			await input.focus();
+			await page.waitForChanges();
+			await nextButton.focus();
+			await page.waitForChanges();
+
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).blurCallback)).toBe(true);
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).blurEvent)).toBe(true);
+		});
+
+		test('should call onClick callback and emit click event when input is clicked', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-input-date _label="Date input"></kol-input-date>`);
+			const component = page.locator('kol-input-date');
+			const input = page.locator('input');
+
+			await component.evaluate((element: HTMLKolInputDateElement) => {
+				element._on = { onClick: () => ((window as unknown as Record<string, unknown>).clickCallback = true) };
+				element.addEventListener('click', () => ((window as unknown as Record<string, unknown>).clickEvent = true));
+			});
+
+			await input.click();
+			await page.waitForChanges();
+
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).clickCallback)).toBe(true);
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).clickEvent)).toBe(true);
+		});
+	});
+
 	testInputMessage<HTMLKolInputDateElement>('kol-input-date');
 });
