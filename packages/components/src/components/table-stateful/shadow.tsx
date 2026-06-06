@@ -3,6 +3,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { KolPaginationWcTag, KolTableStatelessWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
+	ChangeHeaderCellsEventPayload,
 	FixedColsPropType,
 	HasSettingsMenuPropType,
 	KoliBriDataCompareFn,
@@ -104,6 +105,13 @@ export class KolTableStateful implements TableAPI {
 	private pageStartSlice = 0;
 	private pageEndSlice = 10;
 	private disableSort = false;
+
+	/**
+	 * Holds the header cells adjusted via the settings menu (visibility, width, order). Persisting
+	 * them here ensures the customisation survives re-renders triggered by sorting, pagination,
+	 * selection or data updates instead of being reset to the original `_headers`. (#10344)
+	 */
+	@State() private adjustedHeaderCells?: TableHeaderCells;
 
 	/**
 	 * Defines whether to allow multi sort.
@@ -319,6 +327,8 @@ export class KolTableStateful implements TableAPI {
 				watchValidator(this, '_headers', (value): boolean => typeof value === 'object' && value !== null, new Set(['KoliBriTableHeaders']), value, {
 					hooks: {
 						beforePatch: (nextValue: unknown) => {
+							// A new header definition invalidates any settings the user applied to the previous one.
+							this.adjustedHeaderCells = undefined;
 							const headers: KoliBriTableHeaders = nextValue as KoliBriTableHeaders;
 							const hasSortedCells = this.initializeSortFromHeaders(headers);
 							if (hasSortedCells) {
@@ -615,6 +625,35 @@ export class KolTableStateful implements TableAPI {
 		this.updateSortedData();
 	}
 
+	/**
+	 * Stores the header cells the user adjusted via the settings menu so they are reapplied on the
+	 * next render. Called from the `onChangeHeaderCells` callback of the stateless table. (#10344)
+	 */
+	private readonly handleChangeHeaderCells = (headerCells: ChangeHeaderCellsEventPayload): void => {
+		this.adjustedHeaderCells = headerCells;
+	};
+
+	/**
+	 * Builds the header cells passed to the stateless table. When the user has adjusted the columns
+	 * via the settings menu (`adjustedHeaderCells`), those horizontal cells are used as the base so
+	 * the customisation (visibility, width, order) is preserved. The current sort state is always
+	 * overlaid on top. (#10344)
+	 */
+	private buildHeaderCells(): TableHeaderCells {
+		const overlaySortState = (cell: KoliBriTableHeaderCellWithLogic) => ({
+			...cell,
+			sortDirection: this.getHeaderCellSortState(cell),
+			sortOrder: this.getHeaderCellSortOrder(cell),
+		});
+
+		const horizontalHeaders = (this.adjustedHeaderCells?.horizontal as KoliBriTableHeaderCellWithLogic[][] | undefined) ?? this.state._headers.horizontal;
+
+		return {
+			horizontal: horizontalHeaders?.map((row) => row.map(overlaySortState)) ?? [],
+			vertical: this.state._headers.vertical?.map((column) => column.map(overlaySortState)) ?? [],
+		};
+	}
+
 	public render(): JSX.Element {
 		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
@@ -624,24 +663,7 @@ export class KolTableStateful implements TableAPI {
 		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination('top') : null;
 		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination('bottom') : null;
 
-		const headerCells: TableHeaderCells = {
-			horizontal:
-				this.state._headers.horizontal?.map((row) =>
-					row.map((cell) => ({
-						...cell,
-						sortDirection: this.getHeaderCellSortState(cell),
-						sortOrder: this.getHeaderCellSortOrder(cell),
-					})),
-				) ?? [],
-			vertical:
-				this.state._headers.vertical?.map((column) =>
-					column.map((cell) => ({
-						...cell,
-						sortDirection: this.getHeaderCellSortState(cell),
-						sortOrder: this.getHeaderCellSortOrder(cell),
-					})),
-				) ?? [],
-		};
+		const headerCells: TableHeaderCells = this.buildHeaderCells();
 		return (
 			<Host class="kol-table-stateful">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
@@ -659,6 +681,9 @@ export class KolTableStateful implements TableAPI {
 						},
 						onSelectionChange: (event: Event, value: KoliBriTableSelectionKeys) => {
 							this.handleSelectionChange(event, value);
+						},
+						onChangeHeaderCells: (_event: Event, headerCells: ChangeHeaderCellsEventPayload) => {
+							this.handleChangeHeaderCells(headerCells);
 						},
 					}}
 					_selection={this.state._selection}
