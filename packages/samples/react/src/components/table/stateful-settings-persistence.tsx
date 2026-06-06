@@ -50,9 +50,9 @@ export const TableStatefulSettingsPersistence: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					This example demonstrates that column settings applied via the settings menu are remembered. Open the settings menu and change a column&apos;s
-					width, visibility or order and apply. Then sort a column, switch the pagination page, select a row, or use the &quot;Force parent re-render&quot;
-					button &ndash; the customized columns must stay as you configured them and must no longer reset to their defaults (issue #10344).
+					This example demonstrates that column settings applied via the settings menu are remembered. Open the settings menu and change a column&apos;s width,
+					visibility or order and apply. Then sort a column, switch the pagination page, select a row, or use the &quot;Force parent re-render&quot; button
+					&ndash; the customized columns must stay as you configured them and must no longer reset to their defaults (issue #10344).
 				</p>
 			</SampleDescription>
 
