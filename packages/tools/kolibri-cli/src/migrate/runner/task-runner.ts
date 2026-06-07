@@ -168,13 +168,16 @@ export class TaskRunner {
 		taskDependencies.forEach((dependentTask) => {
 			this.dependentTaskRun(dependentTask, dependentTask.getTaskDependencies());
 		});
-		if (taskDependencies.length === 0 || taskDependencies.every((dependentTask) => dependentTask.getStatus() === 'done')) {
+		// A dependency that is excluded for the current version range ends up as `'skipped'`.
+		// Such dependencies must not block an otherwise applicable dependent task from running.
+		if (taskDependencies.length === 0 || taskDependencies.every((dependentTask) => ['done', 'skipped'].includes(dependentTask.getStatus()))) {
 			displayProgressBar(this.completedTasks, this.tasks.size, task.getTitle());
-			// Only count a task once: tasks added to the Map mid-iteration are revisited by
-			// `Map.forEach`, so without this guard `completedTasks` would climb past `tasks.size`.
+			// Only count a task once and only if it is actually part of the progress total:
+			// tasks revisited by `Map.forEach`, or dependencies excluded from `this.tasks`,
+			// would otherwise push `completedTasks` past `tasks.size`.
 			const wasPending = task.getStatus() === 'pending';
 			this.runTask(task);
-			if (wasPending) {
+			if (wasPending && this.tasks.has(task.getIdentifier())) {
 				this.completedTasks++;
 			}
 		}

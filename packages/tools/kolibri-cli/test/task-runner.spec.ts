@@ -49,4 +49,34 @@ describe('TaskRunner', () => {
 		assert.equal(status.done, 3);
 		assert.equal(status.pending, 0);
 	});
+
+	// Regression test for https://github.com/public-ui/kolibri/issues/10314
+	// A dependency excluded for the current version range becomes `'skipped'` and is not
+	// registered in `this.tasks`. It must neither block the applicable dependent task from
+	// running nor let `completedTasks` overshoot the (registered) total.
+	it('does not overshoot completedTasks when dependencies are excluded (#10314)', () => {
+		// Version range not satisfied by the CLI version below -> task is excluded.
+		class ExcludedTask extends AbstractTask {
+			public constructor(identifier: string) {
+				super(identifier, identifier, [], '^2.0.0', []);
+			}
+
+			public run(): void {
+				// no-op
+			}
+		}
+
+		const excludedChild = new ExcludedTask('regression-excluded-child');
+		const parent = new NoopTask('regression-excluded-parent', [excludedChild]);
+
+		const runner = new TaskRunner('.', '1.3.0', '0.5.0', { migrate: { tasks: {} } });
+		runner.registerTasks([parent]);
+
+		assert.doesNotThrow(() => runner.run());
+
+		const status = runner.getStatus();
+		assert.equal(status.total, 1);
+		assert.equal(status.done, 1);
+		assert.equal(status.pending, 0);
+	});
 });
