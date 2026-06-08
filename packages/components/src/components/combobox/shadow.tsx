@@ -388,7 +388,6 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 				this.ctaRef.el?.focus();
 				break;
 			}
-			case ' ':
 			case 'Enter':
 			case 'NumpadEnter': {
 				if (this.clearButtonFocused) {
@@ -403,9 +402,16 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 				event.preventDefault();
 				break;
 			}
-			case 'Space': {
+			// Space key
+			case ' ': {
 				if (this.clearButtonFocused) {
 					this.clearSelection();
+					event.preventDefault();
+				} else if (this._isOpen) {
+					if (this.selectFocusedOption()) {
+						this._isOpen = false;
+						event.preventDefault();
+					}
 				}
 				break;
 			}
