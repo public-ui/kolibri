@@ -18,8 +18,10 @@ const MIN_VERSION_OF_PUBLIC_UI = '1.4.2';
  */
 function displayProgressBar(current: number, total: number, title: string = ''): void {
 	const barLength = 30;
-	const percentage = total === 0 ? 0 : (current / total) * 100;
-	const filledLength = Math.round((barLength * current) / total);
+	// Clamp to 100 % so the bar stays valid even if the counter overshoots `total`
+	// (e.g. when tasks are revisited during iteration). Prevents `String.repeat(-1)`.
+	const percentage = total === 0 ? 0 : Math.min(100, (current / total) * 100);
+	const filledLength = total === 0 ? 0 : Math.min(barLength, Math.round((barLength * current) / total));
 	const emptyLength = barLength - filledLength;
 
 	const bar = chalk.green('█'.repeat(filledLength)) + chalk.gray('░'.repeat(emptyLength));
@@ -166,10 +168,18 @@ export class TaskRunner {
 		taskDependencies.forEach((dependentTask) => {
 			this.dependentTaskRun(dependentTask, dependentTask.getTaskDependencies());
 		});
-		if (taskDependencies.length === 0 || taskDependencies.every((dependentTask) => dependentTask.getStatus() === 'done')) {
+		// A dependency that is excluded for the current version range ends up as `'skipped'`.
+		// Such dependencies must not block an otherwise applicable dependent task from running.
+		if (taskDependencies.length === 0 || taskDependencies.every((dependentTask) => ['done', 'skipped'].includes(dependentTask.getStatus()))) {
 			displayProgressBar(this.completedTasks, this.tasks.size, task.getTitle());
+			// Only count a task once and only if it is actually part of the progress total:
+			// tasks revisited by `Map.forEach`, or dependencies excluded from `this.tasks`,
+			// would otherwise push `completedTasks` past `tasks.size`.
+			const wasPending = task.getStatus() === 'pending';
 			this.runTask(task);
-			this.completedTasks++;
+			if (wasPending && this.tasks.has(task.getIdentifier())) {
+				this.completedTasks++;
+			}
 		}
 	}
 
