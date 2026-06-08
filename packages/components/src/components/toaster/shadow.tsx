@@ -78,14 +78,16 @@ export class KolToastContainer implements ToasterAPI {
 	}
 
 	private handleClose(toastState: ToastState) {
+		const current = this.state._toastStates.find((t) => t.id === toastState.id);
+		if (!current || current.status === 'removing') {
+			return;
+		}
+
 		this.state = {
 			...this.state,
-			_toastStates: this.state._toastStates.map((localToastState) => {
-				if (localToastState.id === toastState.id) {
-					localToastState.status = 'removing';
-				}
-				return localToastState;
-			}),
+			_toastStates: this.state._toastStates.map((localToastState) =>
+				localToastState.id === toastState.id ? { ...localToastState, status: 'removing' } : localToastState,
+			),
 		};
 
 		setTimeout(() => {
@@ -93,6 +95,9 @@ export class KolToastContainer implements ToasterAPI {
 				...this.state,
 				_toastStates: this.state._toastStates.filter((localToastState) => localToastState.id !== toastState.id),
 			};
+			if (typeof toastState.toast.render === 'function') {
+				this.knownRenderFunctions.delete(toastState.toast.render);
+			}
 			toastState.toast.onClose?.();
 		}, TRANSITION_TIMEOUT);
 	}
@@ -108,6 +113,7 @@ export class KolToastContainer implements ToasterAPI {
 				...this.state,
 				_toastStates: [],
 			};
+			this.knownRenderFunctions.clear();
 		} else {
 			const toastsToClose = [...this.state._toastStates]; // Create a snapshot of the open toasts at the time closeAll has been called
 
@@ -125,6 +131,9 @@ export class KolToastContainer implements ToasterAPI {
 					_toastStates: this.state._toastStates.filter((toastState) => toastsToClose.every((toastToClose) => toastToClose.id !== toastState.id)),
 				};
 				toastsToClose.forEach((toastState) => {
+					if (typeof toastState.toast.render === 'function') {
+						this.knownRenderFunctions.delete(toastState.toast.render);
+					}
 					toastState.toast.onClose?.();
 				});
 			}, TRANSITION_TIMEOUT);
