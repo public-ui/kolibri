@@ -9,11 +9,12 @@ describe('GitIgnoreAddRuleTask', () => {
 		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
 		const cwd = process.cwd();
 		process.chdir(tmpDir);
-
-		const task = GitIgnoreAddRuleTask.getInstance('dist', '^1');
-		task.run();
-
-		process.chdir(cwd);
+		try {
+			const task = GitIgnoreAddRuleTask.getInstance('dist', '^1');
+			task.run();
+		} finally {
+			process.chdir(cwd);
+		}
 		const content = fs.readFileSync(path.join(tmpDir, '.gitignore'), 'utf8');
 		assert.ok(content.includes('dist'));
 	});
@@ -22,12 +23,14 @@ describe('GitIgnoreAddRuleTask', () => {
 		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
 		const cwd = process.cwd();
 		process.chdir(tmpDir);
-		fs.writeFileSync(path.join(tmpDir, '.gitignore'), 'node_modules\n.kolibri.config.json\n');
+		try {
+			fs.writeFileSync(path.join(tmpDir, '.gitignore'), 'node_modules\n.kolibri.config.json\n');
 
-		const task = GitIgnoreAddRuleTask.getInstance('.kolibri.config.json', '^1');
-		task.run();
-
-		process.chdir(cwd);
+			const task = GitIgnoreAddRuleTask.getInstance('.kolibri.config.json', '^1');
+			task.run();
+		} finally {
+			process.chdir(cwd);
+		}
 		const content = fs.readFileSync(path.join(tmpDir, '.gitignore'), 'utf8');
 		const occurrences = (content.match(/\.kolibri\.config\.json/g) ?? []).length;
 		assert.strictEqual(occurrences, 1, 'rule must not be duplicated on LF files');
@@ -37,13 +40,15 @@ describe('GitIgnoreAddRuleTask', () => {
 		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-cli-'));
 		const cwd = process.cwd();
 		process.chdir(tmpDir);
-		// Simulate a Windows .gitignore with CRLF line endings where the rule already exists
-		fs.writeFileSync(path.join(tmpDir, '.gitignore'), 'node_modules\r\n.kolibri.config.json\r\n');
+		try {
+			// Simulate a Windows .gitignore with CRLF line endings where the rule already exists
+			fs.writeFileSync(path.join(tmpDir, '.gitignore'), 'node_modules\r\n.kolibri.config.json\r\n');
 
-		// getInstance returns a cached singleton; run() reads process.cwd() dynamically
-		GitIgnoreAddRuleTask.getInstance('.kolibri.config.json', '*').run();
-
-		process.chdir(cwd);
+			// getInstance returns a cached singleton; run() reads process.cwd() dynamically
+			GitIgnoreAddRuleTask.getInstance('.kolibri.config.json', '*').run();
+		} finally {
+			process.chdir(cwd);
+		}
 		const content = fs.readFileSync(path.join(tmpDir, '.gitignore'), 'utf8');
 		const occurrences = (content.match(/\.kolibri\.config\.json/g) ?? []).length;
 		assert.strictEqual(occurrences, 1, 'rule must not be duplicated on CRLF files');

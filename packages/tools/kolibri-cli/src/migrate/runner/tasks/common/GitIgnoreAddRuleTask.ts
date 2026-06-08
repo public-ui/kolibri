@@ -36,7 +36,7 @@ export class GitIgnoreAddRuleTask extends AbstractTask {
 		} else {
 			const fileContent = fs.readFileSync(gitignorePath, 'utf8');
 
-			if (!fileContent.split(/\r?\n/).map((l) => l.trim()).includes(lineToAdd)) {
+			if (!fileContent.split(/\r?\n/).map((l) => l.trimEnd()).includes(lineToAdd)) {
 				fs.appendFileSync(gitignorePath, '\n' + lineToAdd);
 			}
 		}
