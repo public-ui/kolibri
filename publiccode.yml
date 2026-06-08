@@ -4,7 +4,7 @@ genericName: Accessible WebComponent Library
 url: https://github.com/public-ui/kolibri
 landingURL: https://github.com/public-ui
 releaseDate: '2026-06-08'
-softwareVersion: 4.3.0-rc.0
+softwareVersion: 4.3.0-rc.1
 logo: kolibri.logo.png
 developmentStatus: stable
 softwareType: library
