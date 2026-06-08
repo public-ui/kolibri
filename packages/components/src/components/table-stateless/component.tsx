@@ -80,6 +80,13 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	private cellsToRenderTimeouts = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 	private dataToKeyMap = new Map<KoliBriTableDataType, string>();
 
+	/** Per-render cache for the computed primary headers, keyed by header object reference. */
+	private primaryHeadersCache?: { headers: KoliBriTableHeaders; result: KoliBriTableHeaderCell[]; horizontal: boolean };
+
+	/** Per-render lookup sets for selection state to avoid O(n²) scans of the key arrays per row. */
+	private selectedKeysStringSet = new Set<string>();
+	private disabledKeysStringSet = new Set<string>();
+
 	private checkboxRefs: HTMLInputElement[] = [];
 
 	private translateSort = translate('kol-sort');
@@ -343,6 +350,9 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	}
 
 	private updateDataToKeyMap(data: KoliBriTableDataType[]) {
+		/* Use a Set for O(1) membership checks. Using data.includes() inside the
+		 * cleanup loop below would be O(n²) and dominates rendering for large data sets. */
+		const dataSet = new Set(data);
 		data.forEach((data) => {
 			if (!this.dataToKeyMap.has(data)) {
 				this.dataToKeyMap.set(data, nonce());
@@ -351,7 +361,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 		/* Cleanup old values from map */
 		this.dataToKeyMap.forEach((_, key) => {
-			if (!data.includes(key)) {
+			if (!dataSet.has(key)) {
 				this.dataToKeyMap.delete(key);
 			}
 		});
@@ -458,6 +468,17 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	}
 
 	private getPrimaryHeaders(headers: KoliBriTableHeaders): KoliBriTableHeaderCell[] {
+		/**
+		 * Memoize by reference: within a single render the header object is stable, so this
+		 * avoids rebuilding the primary-header array for every cell (e.g. via getActionColumnHeader),
+		 * which would otherwise be O(rows × cols × headers). The cache invalidates automatically
+		 * whenever a new header object is assigned to the state.
+		 */
+		if (this.primaryHeadersCache?.headers === headers) {
+			this.horizontal = this.primaryHeadersCache.horizontal;
+			return this.primaryHeadersCache.result;
+		}
+
 		let primaryHeaders: KoliBriTableHeaderCell[] = this.getThePrimaryHeadersWithKeyOrRenderFunction(headers.horizontal ?? []);
 
 		/**
@@ -471,6 +492,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 				this.horizontal = false;
 			}
 		}
+
+		this.primaryHeadersCache = { headers, result: primaryHeaders, horizontal: this.horizontal };
 		return primaryHeaders;
 	}
 
@@ -712,16 +735,9 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		const keyProperty = firstCellData[keyPropertyName] as string | number;
 		const isMultiple = selection.multiple || selection.multiple === undefined;
 
-		const selected = (() => {
-			const v = selection?.selectedKeys;
-			const arr = v === undefined ? [] : Array.isArray(v) ? v : [v];
-			return arr.some((k) => String(k) === String(keyProperty));
-		})();
-		const disabled = (() => {
-			const v = selection?.disabledKeys;
-			const arr = v === undefined ? [] : Array.isArray(v) ? v : [v];
-			return arr.some((k) => String(k) === String(keyProperty));
-		})();
+		const keyPropertyString = String(keyProperty);
+		const selected = this.selectedKeysStringSet.has(keyPropertyString);
+		const disabled = this.disabledKeysStringSet.has(keyPropertyString);
 
 		const label = selection.label(firstCellData);
 		const props = {
@@ -912,37 +928,31 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		return this.state._selection?.keyPropertyName ?? 'id';
 	}
 
+	private static normalizeKeys(value?: KoliBriTableSelectionKey | KoliBriTableSelectionKey[]): KoliBriTableSelectionKey[] {
+		return value === undefined ? [] : Array.isArray(value) ? value : [value];
+	}
+
+	/**
+	 * Rebuilds the per-render lookup sets for the current selection. Doing this once per render
+	 * allows O(1) membership checks per row instead of scanning the full key arrays for every row,
+	 * which would otherwise be O(rows × keys).
+	 */
+	private updateSelectionKeySets() {
+		this.selectedKeysStringSet = new Set(KolTableStatelessWc.normalizeKeys(this.state._selection?.selectedKeys).map(String));
+		this.disabledKeysStringSet = new Set(KolTableStatelessWc.normalizeKeys(this.state._selection?.disabledKeys).map(String));
+	}
+
 	private getDataWithSelectionEnabled() {
 		const keyPropertyName = this.getSelectionKeyPropertyName();
-		return this.state._data.filter((item) => {
-			const v = this.state._selection?.disabledKeys;
-			const arr = v === undefined ? [] : Array.isArray(v) ? v : [v];
-			return !arr.some((k) => String(k) === String(item[keyPropertyName] as KoliBriTableSelectionKey));
-		});
+		return this.state._data.filter((item) => !this.disabledKeysStringSet.has(String(item[keyPropertyName] as KoliBriTableSelectionKey)));
 	}
 
 	private getSelectedKeysWithoutDisabledKeys() {
-		const sel = (() => {
-			const v = this.state._selection?.selectedKeys;
-			return v === undefined ? [] : Array.isArray(v) ? v : [v];
-		})();
-		const dis = (() => {
-			const v = this.state._selection?.disabledKeys;
-			return v === undefined ? [] : Array.isArray(v) ? v : [v];
-		})();
-		return sel.filter((k) => !dis.some((d) => String(d) === String(k)));
+		return KolTableStatelessWc.normalizeKeys(this.state._selection?.selectedKeys).filter((k) => !this.disabledKeysStringSet.has(String(k)));
 	}
 
 	private getSelectedKeysWithDisabledKeysOnly() {
-		const sel = (() => {
-			const v = this.state._selection?.selectedKeys;
-			return v === undefined ? [] : Array.isArray(v) ? v : [v];
-		})();
-		const dis = (() => {
-			const v = this.state._selection?.disabledKeys;
-			return v === undefined ? [] : Array.isArray(v) ? v : [v];
-		})();
-		return sel.filter((k) => dis.some((d) => String(d) === String(k)));
+		return KolTableStatelessWc.normalizeKeys(this.state._selection?.selectedKeys).filter((k) => this.disabledKeysStringSet.has(String(k)));
 	}
 
 	private getRevertedSelection(selectAll: boolean) {
@@ -1237,6 +1247,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	}
 
 	public render(): JSX.Element {
+		this.updateSelectionKeySets();
 		const dataField = this.createDataField(this.state._data, this.state._headerCells);
 		this.checkboxRefs = [];
 

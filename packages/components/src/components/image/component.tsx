@@ -1,11 +1,13 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Host, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ImageApi } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
 import { ImageController } from '../../internal/functional-components/image/controller';
 import type { LoadingType } from '../../internal/props';
+import type { KoliBriImageEventCallbacks } from '../../schema/components/image';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * The **Image** component renders an image with support for responsive loading via `srcset` and `sizes`, lazy loading, and accessible alternative text.
@@ -18,7 +20,22 @@ import type { LoadingType } from '../../internal/props';
 	shadow: true,
 })
 export class KolImage implements WebComponentInterface<ImageApi> {
+	@Element() private readonly host?: HTMLKolImageElement;
 	private readonly ctrl = new ImageController(BaseWebComponent.stateLess);
+
+	private readonly handleError = (event: Event): void => {
+		this._on?.onError?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.error, event);
+		}
+	};
+
+	private readonly handleLoad = (event: Event): void => {
+		this._on?.onLoad?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.load, event);
+		}
+	};
 
 	/**
 	 * Sets the alternative text of the image.
@@ -75,6 +92,12 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 		this.ctrl.watchSrcset(value);
 	}
 
+	/**
+	 * Defines callbacks for image load events (`onError`, `onLoad`).
+	 */
+	@Prop()
+	public _on?: KoliBriImageEventCallbacks;
+
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({
 			alt: this._alt,
@@ -94,6 +117,8 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 					sizes={this.ctrl.getRenderProp('sizes')}
 					src={this.ctrl.getRenderProp('src')}
 					srcset={this.ctrl.getRenderProp('srcset')}
+					handleError={this.handleError}
+					handleLoad={this.handleLoad}
 				/>
 			</Host>
 		);

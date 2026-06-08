@@ -21,6 +21,7 @@ import type {
 	HintPropType,
 	IconsHorizontalPropType,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -74,7 +75,9 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
@@ -388,7 +391,6 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 				this.ctaRef.el?.focus();
 				break;
 			}
-			case ' ':
 			case 'Enter':
 			case 'NumpadEnter': {
 				if (this.clearButtonFocused) {
@@ -403,9 +405,16 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 				event.preventDefault();
 				break;
 			}
-			case 'Space': {
+			// Space key
+			case ' ': {
 				if (this.clearButtonFocused) {
 					this.clearSelection();
+					event.preventDefault();
+				} else if (this._isOpen) {
+					if (this.selectFocusedOption()) {
+						this._isOpen = false;
+						event.preventDefault();
+					}
 				}
 				break;
 			}

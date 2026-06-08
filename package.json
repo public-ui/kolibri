@@ -1,9 +1,9 @@
 {
-	"version": "4.2.0",
+	"version": "4.3.0-rc.1",
 	"devDependencies": {
 		"@evilmartians/lefthook": "2.1.9",
 		"license-report": "6.8.5",
-		"npm-check-updates": "22.2.1",
+		"npm-check-updates": "22.2.2",
 		"npm-run-all2": "8.0.4",
 		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
@@ -11,7 +11,7 @@
 		"stylelint-config-recommended-scss": "17.0.1",
 		"stylelint-config-standard": "40.0.0",
 		"stylelint-order": "8.1.1",
-		"stylelint-scss": "7.1.1"
+		"stylelint-scss": "7.2.0"
 	},
 	"engines": {
 		"pnpm": "^10"

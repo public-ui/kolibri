@@ -38,7 +38,7 @@ export const resolveTargets = (host: HTMLElement | undefined, value?: string): H
 	return ids.map(getById).filter((el): el is HTMLElement => !!el);
 };
 
-export const attachInternals = (host: HTMLElement | undefined): HostInternals | undefined => {
+export const attachInternals = (host: HTMLElement | Element | undefined): HostInternals | undefined => {
 	// Stencil's HTMLElement typing does not expose attachInternals here.
 	const attach = (host as unknown as { attachInternals?: () => HostInternals }).attachInternals;
 	if (!attach) return undefined;
