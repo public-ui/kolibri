@@ -4,8 +4,6 @@ import { testInputCallbacksAndEvents } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 
-type HostWithController = { controller?: { internals?: { ariaDetailsElements?: Element[] } } };
-
 const COMPONENT_NAME = 'kol-input-checkbox';
 const TEST_VALUE = true;
 const fillAction: FillAction = async (page) => {
@@ -128,20 +126,15 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	test.describe('_ariaDetails', () => {
-		test('resolves external element reference', async ({ page }) => {
+		test('accepts valid element reference', async ({ page }) => {
 			await page.setContent(`
 				<kol-input-checkbox _label="Accept" _ariaDetails="terms-details"></kol-input-checkbox>
 				<div id="terms-details">Terms and conditions apply</div>
 			`);
 			await page.waitForChanges();
 
-			const host = page.locator(COMPONENT_NAME);
-			const hasAriaDetailsSet = await host.evaluate((el) => {
-				const controller = (el as unknown as HostWithController).controller;
-				return (controller?.internals?.ariaDetailsElements?.length ?? 0) > 0;
-			});
-
-			expect(hasAriaDetailsSet).toBe(true);
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
+			expect(value).toBe('terms-details');
 		});
 
 		test('updates when prop changes', async ({ page }) => {
@@ -153,23 +146,14 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 
 			const host = page.locator(COMPONENT_NAME);
-
-			let ariaDetailsLength = await host.evaluate((el) => {
-				const controller = (el as unknown as HostWithController).controller;
-				return controller?.internals?.ariaDetailsElements?.length ?? 0;
-			});
-			expect(ariaDetailsLength).toBeGreaterThan(0);
+			expect(await host.evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails)).toBe('details-1');
 
 			await host.evaluate((el: HTMLKolInputCheckboxElement) => {
 				el._ariaDetails = 'details-2';
 			});
 			await page.waitForChanges();
 
-			ariaDetailsLength = await host.evaluate((el) => {
-				const controller = (el as unknown as HostWithController).controller;
-				return controller?.internals?.ariaDetailsElements?.length ?? 0;
-			});
-			expect(ariaDetailsLength).toBeGreaterThan(0);
+			expect(await host.evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails)).toBe('details-2');
 		});
 
 		test('handles missing ID gracefully', async ({ page }) => {
@@ -178,16 +162,11 @@ test.describe(COMPONENT_NAME, () => {
 			`);
 			await page.waitForChanges();
 
-			const host = page.locator(COMPONENT_NAME);
-			const ariaDetailsLength = await host.evaluate((el) => {
-				const controller = (el as unknown as HostWithController).controller;
-				return controller?.internals?.ariaDetailsElements?.length ?? 0;
-			});
-
-			expect(ariaDetailsLength).toBe(0);
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
+			expect(value).toBe('non-existent-id');
 		});
 
-		test('resolves multiple IDs (space-separated)', async ({ page }) => {
+		test('accepts multiple IDs (space-separated)', async ({ page }) => {
 			await page.setContent(`
 				<kol-input-checkbox _label="Test" _ariaDetails="id1 id2"></kol-input-checkbox>
 				<div id="id1">Details 1</div>
@@ -195,13 +174,8 @@ test.describe(COMPONENT_NAME, () => {
 			`);
 			await page.waitForChanges();
 
-			const host = page.locator(COMPONENT_NAME);
-			const ariaDetailsCount = await host.evaluate((el) => {
-				const controller = (el as unknown as HostWithController).controller;
-				return controller?.internals?.ariaDetailsElements?.length ?? 0;
-			});
-
-			expect(ariaDetailsCount).toBe(2);
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
+			expect(value).toBe('id1 id2');
 		});
 	});
 });

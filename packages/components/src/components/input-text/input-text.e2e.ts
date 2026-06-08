@@ -3,8 +3,6 @@ import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputCharacterLimit, testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 
-type HostWithController = { controller?: { internals?: { ariaDetailsElements?: Element[] } } };
-
 const COMPONENT_NAME = 'kol-input-text';
 const TEST_VALUE = 'Hello World';
 
@@ -90,20 +88,15 @@ test.describe('kol-input-text', () => {
 		});
 
 		test.describe('_ariaDetails', () => {
-			test('resolves external element reference', async ({ page }) => {
+			test('accepts valid element reference', async ({ page }) => {
 				await page.setContent(`
 					<kol-input-text _label="Email" _ariaDetails="email-details"></kol-input-text>
 					<div id="email-details">We'll use this for account recovery</div>
 				`);
 				await page.waitForChanges();
 
-				const host = page.locator('kol-input-text');
-				const hasAriaDetailsSet = await host.evaluate((el) => {
-					const controller = (el as unknown as HostWithController).controller;
-					return (controller?.internals?.ariaDetailsElements?.length ?? 0) > 0;
-				});
-
-				expect(hasAriaDetailsSet).toBe(true);
+				const value = await page.locator('kol-input-text').evaluate((el: HTMLKolInputTextElement) => el._ariaDetails);
+				expect(value).toBe('email-details');
 			});
 
 			test('updates when prop changes', async ({ page }) => {
@@ -115,23 +108,14 @@ test.describe('kol-input-text', () => {
 				await page.waitForChanges();
 
 				const host = page.locator('kol-input-text');
-
-				let ariaDetailsLength = await host.evaluate((el) => {
-					const controller = (el as unknown as HostWithController).controller;
-					return controller?.internals?.ariaDetailsElements?.length ?? 0;
-				});
-				expect(ariaDetailsLength).toBeGreaterThan(0);
+				expect(await host.evaluate((el: HTMLKolInputTextElement) => el._ariaDetails)).toBe('details-1');
 
 				await host.evaluate((el: HTMLKolInputTextElement) => {
 					el._ariaDetails = 'details-2';
 				});
 				await page.waitForChanges();
 
-				ariaDetailsLength = await host.evaluate((el) => {
-					const controller = (el as unknown as HostWithController).controller;
-					return controller?.internals?.ariaDetailsElements?.length ?? 0;
-				});
-				expect(ariaDetailsLength).toBeGreaterThan(0);
+				expect(await host.evaluate((el: HTMLKolInputTextElement) => el._ariaDetails)).toBe('details-2');
 			});
 
 			test('handles missing ID gracefully', async ({ page }) => {
@@ -140,16 +124,11 @@ test.describe('kol-input-text', () => {
 				`);
 				await page.waitForChanges();
 
-				const host = page.locator('kol-input-text');
-				const ariaDetailsLength = await host.evaluate((el) => {
-					const controller = (el as unknown as HostWithController).controller;
-					return controller?.internals?.ariaDetailsElements?.length ?? 0;
-				});
-
-				expect(ariaDetailsLength).toBe(0);
+				const value = await page.locator('kol-input-text').evaluate((el: HTMLKolInputTextElement) => el._ariaDetails);
+				expect(value).toBe('non-existent-id');
 			});
 
-			test('resolves multiple IDs (space-separated)', async ({ page }) => {
+			test('accepts multiple IDs (space-separated)', async ({ page }) => {
 				await page.setContent(`
 					<kol-input-text _label="Email" _ariaDetails="id1 id2"></kol-input-text>
 					<div id="id1">Details 1</div>
@@ -157,13 +136,8 @@ test.describe('kol-input-text', () => {
 				`);
 				await page.waitForChanges();
 
-				const host = page.locator('kol-input-text');
-				const ariaDetailsCount = await host.evaluate((el) => {
-					const controller = (el as unknown as HostWithController).controller;
-					return controller?.internals?.ariaDetailsElements?.length ?? 0;
-				});
-
-				expect(ariaDetailsCount).toBe(2);
+				const value = await page.locator('kol-input-text').evaluate((el: HTMLKolInputTextElement) => el._ariaDetails);
+				expect(value).toBe('id1 id2');
 			});
 		});
 	});
