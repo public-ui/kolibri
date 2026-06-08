@@ -39,7 +39,6 @@ import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomS
 import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
-import { validateAriaDetails } from '../../schema/props/aria-details';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
@@ -547,7 +546,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 
 	@Watch('_ariaDetails')
 	public validateAriaDetails(value?: AriaDetailsPropType): void {
-		validateAriaDetails(this, this.host, this.controller.internals, value);
+		this.controller.validateAriaDetails(value);
 	}
 
 	/**
@@ -817,7 +816,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	public componentWillLoad(): void {
 		this.refOptions = [];
 		this._touched = this._touched === true;
-		validateAriaDetails(this, this.host, this.controller.internals, this._ariaDetails);
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 		this.oldValue = this._value;
 		this._filteredOptions = this.state._options;

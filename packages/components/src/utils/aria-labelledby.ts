@@ -24,7 +24,7 @@ const escapeCssIdentifier = (value: string): string => {
 	return value.replace(/[^a-zA-Z0-9_-]/g, '\\$&');
 };
 
-export const resolveTargets = (host: HTMLElement | undefined, value?: string): HTMLElement[] => {
+export const resolveTargets = (host: HTMLElement | Element | undefined, value?: string): HTMLElement[] => {
 	const ids = (value ?? '').trim().split(/\s+/).filter(Boolean);
 	if (!ids.length) return [];
 	// Scope the lookup to the host's current tree.

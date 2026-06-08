@@ -2,6 +2,9 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from '../../utils/clsx';
 
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
 import type {
 	AriaDetailsPropType,
 	DisabledPropType,
@@ -28,11 +31,6 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { validateAriaDetails } from '../../schema/props/aria-details';
-
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
-import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -144,7 +142,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 
 	@Watch('_ariaDetails')
 	public validateAriaDetails(value?: AriaDetailsPropType): void {
-		validateAriaDetails(this, this.host, this.controller.internals, value);
+		this.controller.validateAriaDetails(value);
 	}
 
 	/**

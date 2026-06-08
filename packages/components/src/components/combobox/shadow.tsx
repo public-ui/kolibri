@@ -36,7 +36,6 @@ import type {
 	W3CInputValue,
 } from '../../schema';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
-import { validateAriaDetails } from '../../schema/props/aria-details';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -476,7 +475,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 
 	@Watch('_ariaDetails')
 	public validateAriaDetails(value?: AriaDetailsPropType): void {
-		validateAriaDetails(this, this.host, this.controller.internals, value);
+		this.controller.validateAriaDetails(value);
 	}
 
 	/**

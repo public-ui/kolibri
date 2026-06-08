@@ -23,7 +23,7 @@ export type PropAriaDetails = {
 /* validator */
 export const validateAriaDetails = (
 	component: unknown,
-	host: HTMLElement | undefined,
+	host: HTMLElement | Element | undefined,
 	internals: HostInternals | undefined,
 	value?: AriaDetailsPropType,
 ): HTMLElement[] => {

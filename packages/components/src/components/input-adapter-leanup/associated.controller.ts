@@ -3,6 +3,7 @@ import { devHint, devWarning, getExperimentalMode, validateName } from '../../sc
 
 import type { Generic } from 'adopted-style-sheets';
 import { getOptions } from '../../core/bootstrap';
+import { validateAriaDetails } from '../../schema/props/aria-details';
 import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 
 type RequiredProps = NonNullable<unknown>;
@@ -219,6 +220,10 @@ export class AssociatedInputController implements Watches {
 				this.syncToOwnInput = input;
 			}
 		}
+	}
+
+	public validateAriaDetails(value?: string): void {
+		validateAriaDetails(this.component, this.host, this.internals, value);
 	}
 
 	public componentWillLoad(): void {

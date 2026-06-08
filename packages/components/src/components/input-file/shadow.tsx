@@ -33,7 +33,6 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { translate } from '../../i18n';
-import { validateAriaDetails } from '../../schema/props/aria-details';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputFileController } from './controller';
@@ -283,7 +282,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 	@Watch('_ariaDetails')
 	public validateAriaDetails(value?: AriaDetailsPropType): void {
-		validateAriaDetails(this, this.host, this.controller.internals, value);
+		this.controller.validateAriaDetails(value);
 	}
 
 	@Watch('_disabled')
@@ -368,7 +367,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
-		validateAriaDetails(this, this.host, this.controller.internals, this._ariaDetails);
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 

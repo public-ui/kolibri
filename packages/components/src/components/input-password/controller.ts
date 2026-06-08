@@ -94,10 +94,6 @@ export class InputPasswordController extends InputIconController implements Inpu
 		validateVisibilityToggle(this.component, value);
 	}
 
-	public validateAriaDetails(): void {
-		// no-op — resolution is handled by ElementInternals
-	}
-
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateAutoComplete(this.component._autoComplete);

@@ -26,7 +26,6 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
-import { validateAriaDetails } from '../../schema/props/aria-details';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
@@ -333,7 +332,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 	@Watch('_ariaDetails')
 	public validateAriaDetails(value?: AriaDetailsPropType): void {
-		validateAriaDetails(this, this.host, this.controller.internals, value);
+		this.controller.validateAriaDetails(value);
 	}
 
 	@Watch('_disabled')
@@ -413,7 +412,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
-		validateAriaDetails(this, this.host, this.controller.internals, this._ariaDetails);
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 

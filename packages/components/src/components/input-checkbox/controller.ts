@@ -76,10 +76,6 @@ export class InputCheckboxController extends InputCheckboxRadioController implem
 		validateVariantInputCheckbox(this.component, value);
 	}
 
-	public validateAriaDetails(): void {
-		// no-op — resolution is handled by ElementInternals
-	}
-
 	public componentWillLoad(): void {
 		super.componentWillLoad();
 		this.validateChecked(this.component._checked);

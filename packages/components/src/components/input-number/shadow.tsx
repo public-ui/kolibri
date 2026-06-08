@@ -35,7 +35,6 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { IconFC } from '../../internal/functional-components/icon/component';
-import { validateAriaDetails } from '../../schema/props/aria-details';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -404,7 +403,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 
 	@Watch('_ariaDetails')
 	public validateAriaDetails(value?: AriaDetailsPropType): void {
-		validateAriaDetails(this, this.host, this.controller.internals, value);
+		this.controller.validateAriaDetails(value);
 	}
 
 	@Watch('_autoComplete')
@@ -531,7 +530,7 @@ export class KolInputNumber implements InputNumberAPI, FocusableElement {
 			this.setInitialValueType(this._value);
 		}
 		this._touched = this._touched === true;
-		validateAriaDetails(this, this.host, this.controller.internals, this._ariaDetails);
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 
 		this.state._hasValue = !!this.state._value;
