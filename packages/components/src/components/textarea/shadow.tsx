@@ -36,7 +36,6 @@ import { validateAriaDetails } from '../../schema/props/aria-details';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper/TextAreaStateWrapper';
-import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { TextareaController } from './controller';
@@ -69,8 +68,6 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 export class KolTextarea implements TextareaAPI, FocusableElement {
 	@Element() protected readonly host?: HTMLKolTextareaElement;
 	protected readonly ctaRef = createCtaRef<HTMLTextAreaElement>();
-
-	private internals?: HostInternals;
 
 	/**
 	 * Returns the current value.
@@ -160,7 +157,7 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 
 	@Watch('_ariaDetails')
 	public validateAriaDetails(value?: AriaDetailsPropType): void {
-		validateAriaDetails(this, this.host, this.internals, value);
+		validateAriaDetails(this, this.host, this.controller.internals, value);
 	}
 
 	/**
@@ -449,7 +446,6 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
-		this.internals = attachInternals(this.host);
 		this.validateAriaDetails(this._ariaDetails);
 
 		this._touched = this._touched === true;

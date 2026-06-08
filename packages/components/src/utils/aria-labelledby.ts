@@ -13,6 +13,7 @@
 export type HostInternals = {
 	role: string | null;
 	ariaLabelledByElements: HTMLElement[];
+	ariaDetailsElements?: HTMLElement[];
 };
 
 const escapeCssIdentifier = (value: string): string => {

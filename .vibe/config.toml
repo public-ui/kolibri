@@ -10,6 +10,9 @@ permission = "always"
 [tools.search_replace]
 permission = "always"
 
+[tools.kolibri-mcp_search]
+permission = "always"
+
 [[mcp_servers]]
 name = "kolibri-mcp"
 transport = "http"

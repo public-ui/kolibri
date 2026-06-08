@@ -543,8 +543,8 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	@Watch('_ariaDetails')
-	public validateAriaDetails(): void {
-		// no-op — resolution is handled by ElementInternals
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		validateAriaDetails(this, this.host, this.controller.internals, value);
 	}
 
 	/**

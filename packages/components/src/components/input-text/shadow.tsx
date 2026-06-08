@@ -38,7 +38,6 @@ import { validateAriaDetails } from '../../schema/props/aria-details';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -60,8 +59,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Element() protected readonly host?: HTMLKolInputTextElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private oldValue?: string;
-
-	private internals?: HostInternals;
 
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
@@ -226,7 +223,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 
 	@Watch('_ariaDetails')
 	public validateAriaDetails(value?: AriaDetailsPropType): void {
-		validateAriaDetails(this, this.host, this.internals, value);
+		validateAriaDetails(this, this.host, this.controller.internals, value);
 	}
 
 	/**
@@ -525,7 +522,6 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
-		this.internals = attachInternals(this.host);
 		this.validateAriaDetails(this._ariaDetails);
 
 		this._touched = this._touched === true;

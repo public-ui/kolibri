@@ -321,8 +321,8 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	}
 
 	@Watch('_ariaDetails')
-	public validateAriaDetails(): void {
-		// no-op — resolution is handled by ElementInternals
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		validateAriaDetails(this, this.host, this.controller.internals, value);
 	}
 
 	@Watch('_checked')

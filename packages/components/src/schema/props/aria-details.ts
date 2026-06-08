@@ -38,7 +38,7 @@ export const validateAriaDetails = (
 	const elements = resolveTargets(host, value);
 	if (internals) {
 		try {
-			(internals as unknown as { ariaDetailsElements?: HTMLElement[] }).ariaDetailsElements = elements;
+			internals.ariaDetailsElements = elements;
 		} catch {
 			// ariaDetailsElements is not supported in this environment — silently skip.
 		}
