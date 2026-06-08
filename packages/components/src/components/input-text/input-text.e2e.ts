@@ -3,7 +3,7 @@ import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputCharacterLimit, testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 
-type WithAriaInternals = { internals?: { ariaDetailsElements?: Element[] }; getInternals?: () => { ariaDetailsElements?: Element[] } | undefined };
+type HostWithController = { controller?: { internals?: { ariaDetailsElements?: Element[] } } };
 
 const COMPONENT_NAME = 'kol-input-text';
 const TEST_VALUE = 'Hello World';
@@ -97,10 +97,10 @@ test.describe('kol-input-text', () => {
 				`);
 				await page.waitForChanges();
 
-				const input = page.locator('input[type="text"]');
-				const hasAriaDetailsSet = await input.evaluate((el) => {
-					const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
-					return internalsRef?.ariaDetailsElements?.length > 0;
+				const host = page.locator('kol-input-text');
+				const hasAriaDetailsSet = await host.evaluate((el) => {
+					const controller = (el as unknown as HostWithController).controller;
+					return (controller?.internals?.ariaDetailsElements?.length ?? 0) > 0;
 				});
 
 				expect(hasAriaDetailsSet).toBe(true);
@@ -114,23 +114,22 @@ test.describe('kol-input-text', () => {
 				`);
 				await page.waitForChanges();
 
-				const component = page.locator('kol-input-text');
-				const input = page.locator('input[type="text"]');
+				const host = page.locator('kol-input-text');
 
-				let ariaDetailsLength = await input.evaluate((el) => {
-					const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
-					return internalsRef?.ariaDetailsElements?.length || 0;
+				let ariaDetailsLength = await host.evaluate((el) => {
+					const controller = (el as unknown as HostWithController).controller;
+					return controller?.internals?.ariaDetailsElements?.length ?? 0;
 				});
 				expect(ariaDetailsLength).toBeGreaterThan(0);
 
-				await component.evaluate((el: HTMLKolInputTextElement) => {
+				await host.evaluate((el: HTMLKolInputTextElement) => {
 					el._ariaDetails = 'details-2';
 				});
 				await page.waitForChanges();
 
-				ariaDetailsLength = await input.evaluate((el) => {
-					const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
-					return internalsRef?.ariaDetailsElements?.length || 0;
+				ariaDetailsLength = await host.evaluate((el) => {
+					const controller = (el as unknown as HostWithController).controller;
+					return controller?.internals?.ariaDetailsElements?.length ?? 0;
 				});
 				expect(ariaDetailsLength).toBeGreaterThan(0);
 			});
@@ -141,17 +140,13 @@ test.describe('kol-input-text', () => {
 				`);
 				await page.waitForChanges();
 
-				const input = page.locator('input[type="text"]');
-				const noErrorThrown = await input.evaluate((el) => {
-					try {
-						const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
-						return internalsRef !== undefined;
-					} catch {
-						return false;
-					}
+				const host = page.locator('kol-input-text');
+				const ariaDetailsLength = await host.evaluate((el) => {
+					const controller = (el as unknown as HostWithController).controller;
+					return controller?.internals?.ariaDetailsElements?.length ?? 0;
 				});
 
-				expect(noErrorThrown).toBe(true);
+				expect(ariaDetailsLength).toBe(0);
 			});
 
 			test('resolves multiple IDs (space-separated)', async ({ page }) => {
@@ -162,13 +157,13 @@ test.describe('kol-input-text', () => {
 				`);
 				await page.waitForChanges();
 
-				const input = page.locator('input[type="text"]');
-				const ariaDetailsCount = await input.evaluate((el) => {
-					const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
-					return internalsRef?.ariaDetailsElements?.length || 0;
+				const host = page.locator('kol-input-text');
+				const ariaDetailsCount = await host.evaluate((el) => {
+					const controller = (el as unknown as HostWithController).controller;
+					return controller?.internals?.ariaDetailsElements?.length ?? 0;
 				});
 
-				expect(ariaDetailsCount).toBeGreaterThanOrEqual(1);
+				expect(ariaDetailsCount).toBe(2);
 			});
 		});
 	});

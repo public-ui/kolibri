@@ -31,7 +31,6 @@ type OptionalProps = {
 	value: string;
 } & PropAccessKey &
 	PropAriaDetails &
-	PropAriaDetails &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &

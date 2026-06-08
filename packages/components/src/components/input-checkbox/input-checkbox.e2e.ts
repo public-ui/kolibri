@@ -4,7 +4,7 @@ import { testInputCallbacksAndEvents } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 
-type WithAriaInternals = { internals?: { ariaDetailsElements?: Element[] }; getInternals?: () => { ariaDetailsElements?: Element[] } | undefined };
+type HostWithController = { controller?: { internals?: { ariaDetailsElements?: Element[] } } };
 
 const COMPONENT_NAME = 'kol-input-checkbox';
 const TEST_VALUE = true;
@@ -135,10 +135,10 @@ test.describe(COMPONENT_NAME, () => {
 			`);
 			await page.waitForChanges();
 
-			const input = page.locator('input[type="checkbox"]');
-			const hasAriaDetailsSet = await input.evaluate((el) => {
-				const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
-				return internalsRef?.ariaDetailsElements?.length > 0;
+			const host = page.locator(COMPONENT_NAME);
+			const hasAriaDetailsSet = await host.evaluate((el) => {
+				const controller = (el as unknown as HostWithController).controller;
+				return (controller?.internals?.ariaDetailsElements?.length ?? 0) > 0;
 			});
 
 			expect(hasAriaDetailsSet).toBe(true);
@@ -152,23 +152,22 @@ test.describe(COMPONENT_NAME, () => {
 			`);
 			await page.waitForChanges();
 
-			const component = page.locator(COMPONENT_NAME);
-			const input = page.locator('input[type="checkbox"]');
+			const host = page.locator(COMPONENT_NAME);
 
-			let ariaDetailsLength = await input.evaluate((el) => {
-				const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
-				return internalsRef?.ariaDetailsElements?.length || 0;
+			let ariaDetailsLength = await host.evaluate((el) => {
+				const controller = (el as unknown as HostWithController).controller;
+				return controller?.internals?.ariaDetailsElements?.length ?? 0;
 			});
 			expect(ariaDetailsLength).toBeGreaterThan(0);
 
-			await component.evaluate((el: HTMLKolInputCheckboxElement) => {
+			await host.evaluate((el: HTMLKolInputCheckboxElement) => {
 				el._ariaDetails = 'details-2';
 			});
 			await page.waitForChanges();
 
-			ariaDetailsLength = await input.evaluate((el) => {
-				const internals = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
-				return internals?.ariaDetailsElements?.length || 0;
+			ariaDetailsLength = await host.evaluate((el) => {
+				const controller = (el as unknown as HostWithController).controller;
+				return controller?.internals?.ariaDetailsElements?.length ?? 0;
 			});
 			expect(ariaDetailsLength).toBeGreaterThan(0);
 		});
@@ -179,17 +178,13 @@ test.describe(COMPONENT_NAME, () => {
 			`);
 			await page.waitForChanges();
 
-			const input = page.locator('input[type="checkbox"]');
-			const noErrorThrown = await input.evaluate((el) => {
-				try {
-					const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
-					return internalsRef !== undefined;
-				} catch {
-					return false;
-				}
+			const host = page.locator(COMPONENT_NAME);
+			const ariaDetailsLength = await host.evaluate((el) => {
+				const controller = (el as unknown as HostWithController).controller;
+				return controller?.internals?.ariaDetailsElements?.length ?? 0;
 			});
 
-			expect(noErrorThrown).toBe(true);
+			expect(ariaDetailsLength).toBe(0);
 		});
 
 		test('resolves multiple IDs (space-separated)', async ({ page }) => {
@@ -200,13 +195,13 @@ test.describe(COMPONENT_NAME, () => {
 			`);
 			await page.waitForChanges();
 
-			const input = page.locator('input[type="checkbox"]');
-			const ariaDetailsCount = await input.evaluate((el) => {
-				const internals = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
-				return internals?.ariaDetailsElements?.length || 0;
+			const host = page.locator(COMPONENT_NAME);
+			const ariaDetailsCount = await host.evaluate((el) => {
+				const controller = (el as unknown as HostWithController).controller;
+				return controller?.internals?.ariaDetailsElements?.length ?? 0;
 			});
 
-			expect(ariaDetailsCount).toBeGreaterThanOrEqual(1);
+			expect(ariaDetailsCount).toBe(2);
 		});
 	});
 });
