@@ -4,6 +4,8 @@ import { testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 
+type WithAriaInternals = { internals?: { ariaDetailsElements?: Element[] }; getInternals?: () => { ariaDetailsElements?: Element[] } | undefined };
+
 const COMPONENT_NAME = 'kol-single-select';
 const TEST_VALUE = 'E';
 const TEST_LABEL = 'East';
@@ -195,7 +197,7 @@ test.describe(COMPONENT_NAME, () => {
 
 			const input = page.locator('input.kol-single-select__input');
 			const hasAriaDetailsSet = await input.evaluate((el) => {
-				const internalsRef = (el as any).internals || (el as any).getInternals?.();
+				const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
 				return internalsRef?.ariaDetailsElements?.length > 0;
 			});
 
@@ -214,18 +216,18 @@ test.describe(COMPONENT_NAME, () => {
 			const input = page.locator('input.kol-single-select__input');
 
 			let ariaDetailsLength = await input.evaluate((el) => {
-				const internalsRef = (el as any).internals || (el as any).getInternals?.();
+				const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
 				return internalsRef?.ariaDetailsElements?.length || 0;
 			});
 			expect(ariaDetailsLength).toBeGreaterThan(0);
 
 			await component.evaluate((el: HTMLKolSingleSelectElement) => {
-				(el as any)._ariaDetails = 'details-2';
+				el._ariaDetails = 'details-2';
 			});
 			await page.waitForChanges();
 
 			ariaDetailsLength = await input.evaluate((el) => {
-				const internalsRef = (el as any).internals || (el as any).getInternals?.();
+				const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
 				return internalsRef?.ariaDetailsElements?.length || 0;
 			});
 			expect(ariaDetailsLength).toBeGreaterThan(0);
@@ -240,7 +242,7 @@ test.describe(COMPONENT_NAME, () => {
 			const input = page.locator('input.kol-single-select__input');
 			const noErrorThrown = await input.evaluate((el) => {
 				try {
-					const internalsRef = (el as any).internals || (el as any).getInternals?.();
+					const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
 					return internalsRef !== undefined;
 				} catch {
 					return false;
@@ -260,7 +262,7 @@ test.describe(COMPONENT_NAME, () => {
 
 			const input = page.locator('input.kol-single-select__input');
 			const ariaDetailsCount = await input.evaluate((el) => {
-				const internalsRef = (el as any).internals || (el as any).getInternals?.();
+				const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
 				return internalsRef?.ariaDetailsElements?.length || 0;
 			});
 

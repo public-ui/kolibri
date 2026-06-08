@@ -3,6 +3,8 @@ import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputCharacterLimit, testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 
+type WithAriaInternals = { internals?: { ariaDetailsElements?: Element[] }; getInternals?: () => { ariaDetailsElements?: Element[] } | undefined };
+
 const COMPONENT_NAME = 'kol-input-text';
 const TEST_VALUE = 'Hello World';
 
@@ -97,7 +99,7 @@ test.describe('kol-input-text', () => {
 
 				const input = page.locator('input[type="text"]');
 				const hasAriaDetailsSet = await input.evaluate((el) => {
-					const internalsRef = (el as any).internals || (el as any).getInternals?.();
+					const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
 					return internalsRef?.ariaDetailsElements?.length > 0;
 				});
 
@@ -116,18 +118,18 @@ test.describe('kol-input-text', () => {
 				const input = page.locator('input[type="text"]');
 
 				let ariaDetailsLength = await input.evaluate((el) => {
-					const internalsRef = (el as any).internals || (el as any).getInternals?.();
+					const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
 					return internalsRef?.ariaDetailsElements?.length || 0;
 				});
 				expect(ariaDetailsLength).toBeGreaterThan(0);
 
 				await component.evaluate((el: HTMLKolInputTextElement) => {
-					(el as any)._ariaDetails = 'details-2';
+					el._ariaDetails = 'details-2';
 				});
 				await page.waitForChanges();
 
 				ariaDetailsLength = await input.evaluate((el) => {
-					const internalsRef = (el as any).internals || (el as any).getInternals?.();
+					const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
 					return internalsRef?.ariaDetailsElements?.length || 0;
 				});
 				expect(ariaDetailsLength).toBeGreaterThan(0);
@@ -142,7 +144,7 @@ test.describe('kol-input-text', () => {
 				const input = page.locator('input[type="text"]');
 				const noErrorThrown = await input.evaluate((el) => {
 					try {
-						const internalsRef = (el as any).internals || (el as any).getInternals?.();
+						const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
 						return internalsRef !== undefined;
 					} catch {
 						return false;
@@ -162,7 +164,7 @@ test.describe('kol-input-text', () => {
 
 				const input = page.locator('input[type="text"]');
 				const ariaDetailsCount = await input.evaluate((el) => {
-					const internalsRef = (el as any).internals || (el as any).getInternals?.();
+					const internalsRef = (el as unknown as WithAriaInternals).internals ?? (el as unknown as WithAriaInternals).getInternals?.();
 					return internalsRef?.ariaDetailsElements?.length || 0;
 				});
 
