@@ -944,18 +944,15 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private getDataWithSelectionEnabled() {
 		const keyPropertyName = this.getSelectionKeyPropertyName();
-		const disabled = new Set(KolTableStatelessWc.normalizeKeys(this.state._selection?.disabledKeys).map(String));
-		return this.state._data.filter((item) => !disabled.has(String(item[keyPropertyName] as KoliBriTableSelectionKey)));
+		return this.state._data.filter((item) => !this.disabledKeysStringSet.has(String(item[keyPropertyName] as KoliBriTableSelectionKey)));
 	}
 
 	private getSelectedKeysWithoutDisabledKeys() {
-		const disabled = new Set(KolTableStatelessWc.normalizeKeys(this.state._selection?.disabledKeys).map(String));
-		return KolTableStatelessWc.normalizeKeys(this.state._selection?.selectedKeys).filter((k) => !disabled.has(String(k)));
+		return KolTableStatelessWc.normalizeKeys(this.state._selection?.selectedKeys).filter((k) => !this.disabledKeysStringSet.has(String(k)));
 	}
 
 	private getSelectedKeysWithDisabledKeysOnly() {
-		const disabled = new Set(KolTableStatelessWc.normalizeKeys(this.state._selection?.disabledKeys).map(String));
-		return KolTableStatelessWc.normalizeKeys(this.state._selection?.selectedKeys).filter((k) => disabled.has(String(k)));
+		return KolTableStatelessWc.normalizeKeys(this.state._selection?.selectedKeys).filter((k) => this.disabledKeysStringSet.has(String(k)));
 	}
 
 	private getRevertedSelection(selectAll: boolean) {
