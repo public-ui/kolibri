@@ -11,6 +11,7 @@ import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomS
 import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type {
+	AriaDetailsPropType,
 	ComboboxAPI,
 	ComboboxStates,
 	DisabledPropType,
@@ -55,6 +56,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
+
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private clearButtonFocused = false;
 
@@ -467,6 +469,16 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	@Prop() public _accessKey?: string;
 
 	/**
+	 * References an external element by ID that provides accessible details for this combobox.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
+	}
+
+	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
 	@Prop() public _placeholder?: string;
@@ -687,6 +699,8 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
+		this.validateAriaDetails(this._ariaDetails);
+
 		this.refSuggestions = [];
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();

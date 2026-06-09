@@ -2,8 +2,12 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from '../../utils/clsx';
 
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper/TextAreaStateWrapper';
 import type {
 	AdjustHeightPropType,
+	AriaDetailsPropType,
 	DisabledPropType,
 	FocusableElement,
 	HasCounterPropType,
@@ -31,10 +35,6 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
-import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper/TextAreaStateWrapper';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { TextareaController } from './controller';
@@ -150,6 +150,16 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	 * @TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
 	 */
 	@Prop() public _adjustHeight?: boolean = false;
+
+	/**
+	 * References an external element by ID that provides accessible details for this textarea.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
+	}
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -437,6 +447,8 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
+		this.validateAriaDetails(this._ariaDetails);
+
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 		this.state._hasValue = !!this.state._value;

@@ -86,5 +86,59 @@ test.describe('kol-input-text', () => {
 			await kolInput.click();
 			await expect(focusPromise).resolves.toBe(true);
 		});
+
+		test.describe('_ariaDetails', () => {
+			test('accepts valid element reference', async ({ page }) => {
+				await page.setContent(`
+					<kol-input-text _label="Email" _aria-details="email-details"></kol-input-text>
+					<div id="email-details">We'll use this for account recovery</div>
+				`);
+				await page.waitForChanges();
+
+				const value = await page.locator('kol-input-text').evaluate((el: HTMLKolInputTextElement) => el._ariaDetails);
+				expect(value).toBe('email-details');
+			});
+
+			test('updates when prop changes', async ({ page }) => {
+				await page.setContent(`
+					<kol-input-text _label="Email" _aria-details="details-1"></kol-input-text>
+					<div id="details-1">Details 1</div>
+					<div id="details-2">Details 2</div>
+				`);
+				await page.waitForChanges();
+
+				const host = page.locator('kol-input-text');
+				expect(await host.evaluate((el: HTMLKolInputTextElement) => el._ariaDetails)).toBe('details-1');
+
+				await host.evaluate((el: HTMLKolInputTextElement) => {
+					el._ariaDetails = 'details-2';
+				});
+				await page.waitForChanges();
+
+				expect(await host.evaluate((el: HTMLKolInputTextElement) => el._ariaDetails)).toBe('details-2');
+			});
+
+			test('handles missing ID gracefully', async ({ page }) => {
+				await page.setContent(`
+					<kol-input-text _label="Email" _aria-details="non-existent-id"></kol-input-text>
+				`);
+				await page.waitForChanges();
+
+				const value = await page.locator('kol-input-text').evaluate((el: HTMLKolInputTextElement) => el._ariaDetails);
+				expect(value).toBe('non-existent-id');
+			});
+
+			test('accepts multiple IDs (space-separated)', async ({ page }) => {
+				await page.setContent(`
+					<kol-input-text _label="Email" _aria-details="id1 id2"></kol-input-text>
+					<div id="id1">Details 1</div>
+					<div id="id2">Details 2</div>
+				`);
+				await page.waitForChanges();
+
+				const value = await page.locator('kol-input-text').evaluate((el: HTMLKolInputTextElement) => el._ariaDetails);
+				expect(value).toBe('id1 id2');
+			});
+		});
 	});
 });
