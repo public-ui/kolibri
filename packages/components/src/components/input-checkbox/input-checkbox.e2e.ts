@@ -128,7 +128,7 @@ test.describe(COMPONENT_NAME, () => {
 	test.describe('_ariaDetails', () => {
 		test('accepts valid element reference', async ({ page }) => {
 			await page.setContent(`
-				<kol-input-checkbox _label="Accept" _ariaDetails="terms-details"></kol-input-checkbox>
+				<kol-input-checkbox _label="Accept" _aria-details="terms-details"></kol-input-checkbox>
 				<div id="terms-details">Terms and conditions apply</div>
 			`);
 			await page.waitForChanges();
@@ -139,7 +139,7 @@ test.describe(COMPONENT_NAME, () => {
 
 		test('updates when prop changes', async ({ page }) => {
 			await page.setContent(`
-				<kol-input-checkbox _label="Test" _ariaDetails="details-1"></kol-input-checkbox>
+				<kol-input-checkbox _label="Test" _aria-details="details-1"></kol-input-checkbox>
 				<div id="details-1">Details 1</div>
 				<div id="details-2">Details 2</div>
 			`);
@@ -158,7 +158,7 @@ test.describe(COMPONENT_NAME, () => {
 
 		test('handles missing ID gracefully', async ({ page }) => {
 			await page.setContent(`
-				<kol-input-checkbox _label="Test" _ariaDetails="non-existent-id"></kol-input-checkbox>
+				<kol-input-checkbox _label="Test" _aria-details="non-existent-id"></kol-input-checkbox>
 			`);
 			await page.waitForChanges();
 
@@ -168,7 +168,7 @@ test.describe(COMPONENT_NAME, () => {
 
 		test('accepts multiple IDs (space-separated)', async ({ page }) => {
 			await page.setContent(`
-				<kol-input-checkbox _label="Test" _ariaDetails="id1 id2"></kol-input-checkbox>
+				<kol-input-checkbox _label="Test" _aria-details="id1 id2"></kol-input-checkbox>
 				<div id="id1">Details 1</div>
 				<div id="id2">Details 2</div>
 			`);

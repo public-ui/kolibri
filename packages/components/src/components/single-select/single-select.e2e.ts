@@ -188,7 +188,7 @@ test.describe(COMPONENT_NAME, () => {
 	test.describe('_ariaDetails', () => {
 		test('accepts valid element reference', async ({ page }) => {
 			await page.setContent(`
-				<kol-single-select _label="Select option" _ariaDetails="select-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<kol-single-select _label="Select option" _aria-details="select-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
 				<div id="select-details">Choose one of these options carefully</div>
 			`);
 			await page.waitForChanges();
@@ -199,7 +199,7 @@ test.describe(COMPONENT_NAME, () => {
 
 		test('updates when prop changes', async ({ page }) => {
 			await page.setContent(`
-				<kol-single-select _label="Select option" _ariaDetails="details-1" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<kol-single-select _label="Select option" _aria-details="details-1" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
 				<div id="details-1">Details 1</div>
 				<div id="details-2">Details 2</div>
 			`);
@@ -218,7 +218,7 @@ test.describe(COMPONENT_NAME, () => {
 
 		test('handles missing ID gracefully', async ({ page }) => {
 			await page.setContent(`
-				<kol-single-select _label="Select option" _ariaDetails="non-existent-id" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<kol-single-select _label="Select option" _aria-details="non-existent-id" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
 			`);
 			await page.waitForChanges();
 
@@ -228,7 +228,7 @@ test.describe(COMPONENT_NAME, () => {
 
 		test('accepts multiple IDs (space-separated)', async ({ page }) => {
 			await page.setContent(`
-				<kol-single-select _label="Select option" _ariaDetails="id1 id2" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<kol-single-select _label="Select option" _aria-details="id1 id2" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
 				<div id="id1">Details 1</div>
 				<div id="id2">Details 2</div>
 			`);

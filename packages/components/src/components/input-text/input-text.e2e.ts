@@ -90,7 +90,7 @@ test.describe('kol-input-text', () => {
 		test.describe('_ariaDetails', () => {
 			test('accepts valid element reference', async ({ page }) => {
 				await page.setContent(`
-					<kol-input-text _label="Email" _ariaDetails="email-details"></kol-input-text>
+					<kol-input-text _label="Email" _aria-details="email-details"></kol-input-text>
 					<div id="email-details">We'll use this for account recovery</div>
 				`);
 				await page.waitForChanges();
@@ -101,7 +101,7 @@ test.describe('kol-input-text', () => {
 
 			test('updates when prop changes', async ({ page }) => {
 				await page.setContent(`
-					<kol-input-text _label="Email" _ariaDetails="details-1"></kol-input-text>
+					<kol-input-text _label="Email" _aria-details="details-1"></kol-input-text>
 					<div id="details-1">Details 1</div>
 					<div id="details-2">Details 2</div>
 				`);
@@ -120,7 +120,7 @@ test.describe('kol-input-text', () => {
 
 			test('handles missing ID gracefully', async ({ page }) => {
 				await page.setContent(`
-					<kol-input-text _label="Email" _ariaDetails="non-existent-id"></kol-input-text>
+					<kol-input-text _label="Email" _aria-details="non-existent-id"></kol-input-text>
 				`);
 				await page.waitForChanges();
 
@@ -130,7 +130,7 @@ test.describe('kol-input-text', () => {
 
 			test('accepts multiple IDs (space-separated)', async ({ page }) => {
 				await page.setContent(`
-					<kol-input-text _label="Email" _ariaDetails="id1 id2"></kol-input-text>
+					<kol-input-text _label="Email" _aria-details="id1 id2"></kol-input-text>
 					<div id="id1">Details 1</div>
 					<div id="id2">Details 2</div>
 				`);
