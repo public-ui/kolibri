@@ -41,6 +41,7 @@ jobs:
           - '@public-ui/angular-v19'
           - '@public-ui/angular-v20'
           - '@public-ui/angular-v21'
+          - '@public-ui/angular-v22'
           - '@public-ui/components'
           - '@public-ui/hydrate'
           - '@public-ui/kolibri-cli'
