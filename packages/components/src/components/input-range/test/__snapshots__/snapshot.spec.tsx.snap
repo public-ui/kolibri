@@ -22,7 +22,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input accesskey="V" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -53,7 +53,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -84,7 +84,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-range__input kol-input-range__input--range" disabled="" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-range__input kol-input-range__input--number" disabled="" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -115,7 +115,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-describedby="input-range-hint-nonce" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input aria-describedby="input-range-hint-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -152,7 +152,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
             <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
           </div>
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -189,7 +189,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
             <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
           </div>
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -222,7 +222,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -256,7 +256,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-describedby="input-range-error-nonce" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input aria-describedby="input-range-error-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -287,7 +287,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-describedby="input-range-msg-nonce" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input aria-describedby="input-range-msg-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -318,7 +318,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -352,7 +352,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -386,7 +386,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input accesskey="V" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input accesskey="V" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -429,7 +429,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -472,7 +472,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-range__input kol-input-range__input--range" disabled="" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-range__input kol-input-range__input--number" disabled="" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -515,7 +515,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-describedby="input-range-hint-nonce" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input aria-describedby="input-range-hint-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -564,7 +564,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
             <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
           </div>
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -613,7 +613,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
             <i aria-hidden="true" class="codicon codicon-arrow-left kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
           </div>
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -658,7 +658,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container">
           <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -704,7 +704,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-describedby="input-range-error-nonce" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input aria-describedby="input-range-error-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -747,7 +747,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-describedby="input-range-msg-nonce" aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input aria-describedby="input-range-msg-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -790,7 +790,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -836,7 +836,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input aria-keyshortcuts="S" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -879,7 +879,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -922,7 +922,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" list="input-range-list-nonce" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" list="input-range-list-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -965,7 +965,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
@@ -996,7 +996,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(2ch + 2em);">
+            <div class="kol-input-range__inputs-wrapper" style="--kolibri-input-range--input-number--width: calc(4ch + 2em);">
               <input aria-hidden="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--range" max="10" min="1" name="field-range" step="1" tabindex="-1" type="range" value="5">
               <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-range__input kol-input-range__input--number" id="input-range-nonce" max="10" min="1" name="field-number" step="1" type="number" value="5">
             </div>
