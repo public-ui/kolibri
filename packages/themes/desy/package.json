@@ -80,7 +80,7 @@
 		"rollup": "4.61.1",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass-embedded": "1.100.0",
-		"stylelint": "17.12.0",
+		"stylelint": "17.13.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
