@@ -16,6 +16,7 @@
 			display: flex;
 			flex-grow: 1;
 			flex-direction: row;
+			flex-wrap: wrap;
 			align-items: center;
 		}
 
@@ -24,6 +25,7 @@
 
 			&--number {
 				width: var(--kolibri-input-range--input-number--width);
+				text-align: right;
 			}
 
 			&--range {
@@ -31,6 +33,7 @@
 				display: inline-block;
 				/* Design-Hack - related with flex-grow */
 				width: 0;
+				min-width: to-rem(128);
 				height: to-rem(8);
 				margin: 0;
 				padding: 0;
