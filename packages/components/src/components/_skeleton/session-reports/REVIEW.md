@@ -42,7 +42,7 @@ Discovery via `grep -rl "extends BaseWebComponent"`:
 **Avatar Controller: JSDoc auf privaten Hilfsfunktionen**
 
 - `src/internal/functional-components/avatar/controller.ts:9-38`
-- `formatNameAsInitial` und `normalizeInitials` tragen mehrzeilige JSDoc-Blöcke, die WHAT beschreiben. ARC42 Architecture Constraints: „JSDoc only on Stencil-Decorators". Fixability: 5.
+- `formatNameAsInitial` und `normalizeInitials` tragen mehrzeilige JSDoc-Blöcke, die WHAT beschreiben statt ein nicht-offensichtliches WHY. Clean-Code-Konvention: Kommentare nur für nicht-offensichtliche Invarianten, keine beschreibenden Docstrings auf privaten Hilfsfunktionen. Fixability: 5.
 - Spec-Update: nein
 
 **Progress Controller: erklärender Kommentar**
@@ -58,7 +58,7 @@ Discovery via `grep -rl "extends BaseWebComponent"`:
 - Begründung: Höchste Severität (🟡 High) unter allen wählbaren Findings; Fixability 5; 1 Datei; nicht API-breaking.
 - Geänderte Dateien:
   - `packages/components/src/internal/functional-components/spin/controller.ts`
-    - `import type { SpinVariantType } from '../../props';` hinzugefügt
+    - `type SpinVariantType` als Inline-Type-Import in den bestehenden `../../props`-Import aufgenommen: `import { ..., type SpinVariantType } from '../../props';`
     - `watchVariant(value?: unknown)` → `watchVariant(value?: SpinVariantType)`
 - Spec-Update: Kein Spec-Update — ARC42 § 8 „Type safety" deckt das Prinzip bereits ab.
 
