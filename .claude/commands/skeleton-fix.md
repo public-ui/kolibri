@@ -180,12 +180,6 @@ Team Collaboration Score: [X/100]
 
 ## Phase 7 — Commit & PR
 
-```bash
-# Git-User
-git config user.name "Skeleton Routine"
-git config user.email "noreply@kolibri.dev"
-```
-
 Offene PRs prüfen — suche nach `skeleton-fix` im Branch-Namen unter den offenen PRs (via GitHub MCP Tool `mcp__github__list_pull_requests` mit state=open, oder `gh pr list`).
 
 Wenn offener `skeleton-fix/*`-PR existiert → Review-Abschnitt als Kommentar posten (via `mcp__github__add_issue_comment` oder `gh pr comment`), kein neuer Branch.
