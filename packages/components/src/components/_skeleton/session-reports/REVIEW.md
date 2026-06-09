@@ -1,6 +1,12 @@
-# Skeleton Pattern Review — 2026-06-09
+# Skeleton Pattern Review — Laufendes Protokoll
 
-## Analysierte Components
+<!-- Jede Session fügt einen neuen datierten Abschnitt am Ende an. -->
+
+---
+
+## Session 2026-06-09
+
+### Analysierte Components
 
 Discovery via `grep -rl "extends BaseWebComponent"`:
 
@@ -9,9 +15,9 @@ Discovery via `grep -rl "extends BaseWebComponent"`:
 - `progress`
 - `spin`
 
-## Finding-Liste
+### Finding-Liste
 
-### 🟡 High
+#### 🟡 High
 
 **Spin Controller: `watchVariant` parameter typed as `unknown`** *(umgesetzt)*
 - `src/internal/functional-components/spin/controller.ts:39`
@@ -20,15 +26,15 @@ Discovery via `grep -rl "extends BaseWebComponent"`:
 
 **Meter: `getMeterData()` Dual-Access-Pattern** *(Needs Deeper Look)*
 - `src/internal/functional-components/meter/controller.ts`, `meter/api.tsx`, `meter/component.tsx` (FC)
-- `high`, `low`, `optimum` werden in einem privaten `meterData`-Feld des Controllers gehalten und via `getMeterData()` exponiert — nicht via `getRenderProp()`. Begründet durch das `StrictFields`-Constraint in `ResolvedProps<T>`, das `undefined` ausschließt. Erzeugt zwei parallele Datenzugriffspfade (ARC42 § 4: „Delegates rendering to the controller output via `controller.getRenderProp(key)`"). Fixability: 2 — erfordert Erweiterung des generischen Typsystems.
+- `high`, `low`, `optimum` werden in einem privaten `meterData`-Feld des Controllers gehalten und via `getMeterData()` exponiert — nicht via `getRenderProp()`. Begründet durch das `StrictFields`-Constraint in `ResolvedProps<T>`, das `undefined` ausschließt. Erzeugt zwei parallele Datenzugriffspfade (ARC42 § 4). Fixability: 2.
 - Spec-Update: ja — Dokumentation eines legitimen Ausnahmemusters für nullable Optional-Props
 
 **Meter API: manuelles `interface MeterApi extends ComponentApi` statt `ApiFromConfig`** *(Needs Deeper Look)*
 - `src/internal/functional-components/meter/api.tsx`
 - Gekoppelt an das `getMeterData()`-Pattern. `high`, `low`, `optimum` sind im Typ, aber nicht im `meterPropsConfig`. Fixability: 2.
-- Spec-Update: ja — ARC42 § 4 „API Definition" dokumentiert `ApiFromConfig` als Standard, erwähnt aber keine Ausnahmeregelung für Props, die aus dem renderProps-Pipeline herausfallen müssen.
+- Spec-Update: ja — ARC42 § 4 „API Definition" dokumentiert `ApiFromConfig` als Standard, erwähnt aber keine Ausnahmeregelung für Props, die aus der renderProps-Pipeline herausfallen müssen.
 
-### 🟢 Low
+#### 🟢 Low
 
 **Avatar Controller: JSDoc auf privaten Hilfsfunktionen**
 - `src/internal/functional-components/avatar/controller.ts:9-38`
@@ -37,10 +43,10 @@ Discovery via `grep -rl "extends BaseWebComponent"`:
 
 **Progress Controller: erklärender Kommentar**
 - `src/internal/functional-components/progress/controller.ts:62`
-- `// a11y: says the value of the component every 5s` erklärt WAS die Methode tut, nicht eine nicht-offensichtliche Invariante. Clean Code. Fixability: 5.
+- `// a11y: says the value of the component every 5s` erklärt WAS, nicht eine nicht-offensichtliche Invariante. Clean Code. Fixability: 5.
 - Spec-Update: nein
 
-## Umgesetztes Finding
+### Umgesetztes Finding
 
 **Spin Controller: `watchVariant` parameter typed as `unknown`**
 - Begründung: Höchste Severität (🟡 High) unter allen wählbaren Findings; Fixability 5; 1 Datei; nicht API-breaking.
@@ -48,24 +54,20 @@ Discovery via `grep -rl "extends BaseWebComponent"`:
   - `packages/components/src/internal/functional-components/spin/controller.ts`
     - `import type { SpinVariantType } from '../../props';` hinzugefügt
     - `watchVariant(value?: unknown)` → `watchVariant(value?: SpinVariantType)`
-- Spec-Update: Kein Spec-Update — ARC42 § 8 „Type safety" deckt das Prinzip bereits ab. Das Finding war ein isolierter Verstoß ohne neue Spec-Lücke.
+- Spec-Update: Kein Spec-Update — ARC42 § 8 „Type safety" deckt das Prinzip bereits ab.
 
-## Offene Findings
+### Offene Findings
 
 - **🟢 Low** — Avatar Controller: JSDoc auf privaten Hilfsfunktionen (`avatar/controller.ts:9-38`)
 - **🟢 Low** — Progress Controller: erklärender Kommentar (`progress/controller.ts:62`)
 
-## Needs Deeper Look
+### Needs Deeper Look
 
 - **🟡 High** — Meter `getMeterData()` Dual-Access-Pattern: Fixability 2; erfordert Überarbeitung von `StrictFields` / nullable Render-Prop-Unterstützung in `BaseController`. Scope: 3+ Dateien.
 - **🟡 High** — Meter API manuelles `interface MeterApi extends ComponentApi`: Fixability 2; an obiges Finding gekoppelt.
 
-## Pädagoge
+### Pädagoge
 
 **Team Collaboration Score: 88/100**
 
-**Minimalismus:** Eingehalten — exakt eine Zeile Logik geändert, eine Zeile Import hinzugefügt. Keine Nebenbaustellen.
-
-**Clean Code:** Der `watchVariant`-Fix macht den impliziten Typpakt der `ControllerInterface`-Generik sichtbar. Der bestehende Kommentar in `watchShow` (Zeile 29–30) wurde korrekt als WHY-Kommentar (Accessibility-Invariante) eingestuft und nicht angefasst.
-
-**Spec-First:** Zwei Meter-Findings korrekt als Needs Deeper Look zurückgestellt — die `StrictFields`-Grenze ist ein echtes Constraint des generischen Typsystems, kein einfacher Code-Fix. Das Spec-Update für das Meter-Ausnahmmuster wäre die wertvollere Arbeit, scheitert aber an Fixability.
+Minimalismus eingehalten — exakt eine Zeile Logik, eine Zeile Import. Zwei Meter-Findings korrekt als Needs Deeper Look zurückgestellt. Der bestehende WHY-Kommentar in `watchShow` (Accessibility-Invariante) wurde korrekt nicht angefasst.
