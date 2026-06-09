@@ -1,4 +1,5 @@
 import { translate } from '../../../i18n';
+import type { SpinVariantType } from '../../props';
 import { labelProp, showProp, variantSpinProp } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
@@ -36,7 +37,7 @@ export class SpinController extends BaseController<SpinApi> implements Controlle
 		});
 	}
 
-	public watchVariant(value?: unknown): void {
+	public watchVariant(value?: SpinVariantType): void {
 		variantSpinProp.apply(value, (v) => {
 			this.setRenderProp('variant', v);
 		});
