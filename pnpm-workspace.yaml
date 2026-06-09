@@ -18,4 +18,5 @@ packages:
   - packages/tools/hydrate-server
   - packages/tools/visual-tests
 overrides:
+  hono@<4.12.21: '>=4.12.21'
   ip-address@<=10.1.0: '>=10.1.1'

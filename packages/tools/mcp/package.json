@@ -69,15 +69,15 @@
 		"@modelcontextprotocol/sdk": "1.29.0",
 		"@public-ui/components": "workspace:*",
 		"express": "5.2.1",
-		"fuse.js": "7.4.1",
+		"fuse.js": "7.4.2",
 		"zod": "3.25.76"
 	},
 	"devDependencies": {
 		"@eslint/eslintrc": "3.3.5",
 		"@eslint/js": "9.39.4",
-		"@modelcontextprotocol/inspector": "0.21.2",
+		"@modelcontextprotocol/inspector": "0.22.0",
 		"@types/express": "5.0.6",
-		"@types/node": "24.12.4",
+		"@types/node": "24.13.1",
 		"@typescript-eslint/eslint-plugin": "8.58.2",
 		"@typescript-eslint/parser": "8.58.2",
 		"eslint": "9.39.4",
