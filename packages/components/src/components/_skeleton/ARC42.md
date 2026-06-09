@@ -130,36 +130,36 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 
 #### Constructor Pattern
 
-All controllers receive `setState` and `getState` from the web component, regardless of whether their `Api` declares `States`.
+All controllers receive a `stateAccess: StateAccess<Api>` bundle from the web component. `BaseWebComponent` exposes `this.stateAccess` (a `{ setState, getState }` object) for controllers that manage `@State` fields, and `BaseWebComponent.stateLess` as a frozen sentinel for controllers that only use render props.
 
-The web component passes both `this.setState` and `this.getState` so the controller can trigger Stencil re-renders and read back current state:
+The web component passes `this.stateAccess` to the controller constructor:
 
 ```ts
-// Web Component — passes this.setState and this.getState to the controller
+// Web Component — passes this.stateAccess to the controller
 export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebComponentInterface<SkeletonApi> {
-  private readonly ctrl = new SkeletonController(this.setState, this.getState);
+  private readonly ctrl = new SkeletonController(this.stateAccess);
 }
 
-// Controller — accepts and forwards setState and getState to BaseController
-public constructor(setState: SetStateFn<SkeletonApi>, getState: GetStateFn<SkeletonApi>) {
-  super(skeletonPropsConfig, setState, getState);
+// Controller — accepts StateAccess and forwards to BaseController
+public constructor(stateAccess: StateAccess<SkeletonApi>) {
+  super(stateAccess, skeletonPropsConfig);
 }
 ```
 
-All controllers receive `setState` and `getState` regardless of whether their `Api` declares `States`. `BaseController` always requires both parameters. The `PropsConfigShape` passed to `super()` contains arrays of prop definitions from which `BaseController` derives the initial render props automatically via `buildDefaultPropsFromConfig()`.
+The `PropsConfigShape` passed as the second argument to `super()` contains arrays of prop definitions from which `BaseController` derives the initial render props automatically via `buildDefaultPropsFromConfig()`.
 
-Composition inside other controllers forwards the same callbacks:
+Composition inside other controllers forwards the same `stateAccess` bundle:
 
 ```ts
-// Skeleton controller — composes ClickButtonController, forwarding setState/getState
-this.clickButtonCtrl = new ClickButtonController(setState, getState);
+// Skeleton controller — composes ClickButtonController, forwarding stateAccess
+this.clickButtonCtrl = new ClickButtonController(stateAccess);
 ```
 
 #### State Reader (`getState`)
 
-`BaseController` requires a `getState: GetStateFn<Api>` parameter alongside `setState`. This lets the controller read back current `@State` values from the web component without holding a direct reference to the component instance.
+`BaseController` extracts `setState` and `getState` from the `StateAccess<Api>` bundle it receives at construction. This lets the controller read back current `@State` values from the web component without holding a direct reference to the component instance.
 
-Both `setState` and `getState` are provided as pre-bound arrow properties by `BaseWebComponent`, ensuring type-safe access to reactive state:
+Both are accessible as `protected readonly` fields of `BaseController`, ensuring type-safe access to reactive state:
 
 ```ts
 // Controller — reading state back from the web component
@@ -167,15 +167,15 @@ const currentCount = this.getState('count');
 this.setState('count', currentCount + 1);
 ```
 
-The web component passes both `this.setState` and `this.getState`:
+The web component passes `this.stateAccess`:
 
 ```ts
-// Web Component — passes both setState and getState
-private readonly ctrl = new SkeletonController(this.setState, this.getState);
+// Web Component — passes stateAccess bundle
+private readonly ctrl = new SkeletonController(this.stateAccess);
 
-// Controller — constructor declares both as required
-public constructor(setState: SetStateFn<SkeletonApi>, getState: GetStateFn<SkeletonApi>) {
-  super(skeletonPropsConfig, setState, getState);
+// Controller — constructor accepts StateAccess
+public constructor(stateAccess: StateAccess<SkeletonApi>) {
+  super(stateAccess, skeletonPropsConfig);
 }
 ```
 
