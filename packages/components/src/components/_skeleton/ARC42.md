@@ -108,7 +108,7 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 
 ### Web Component Layer
 
-- Extends `BaseWebComponent<Api>`, which provides the type-safe `setState` arrow property pre-bound to the component instance. This property is passed to the controller constructor so the controller can trigger Stencil re-renders.
+- Extends `BaseWebComponent<Api>`, which provides `this.stateAccess` — a `StateAccess<Api>` bundle (`{ setState, getState }`) passed to the controller constructor. Controllers with no `@State` fields receive `BaseWebComponent.stateLess` instead (a frozen sentinel that throws on access).
 - Declares the public API using underscored props (e.g. `_name`).
 - Hosts lifecycle hooks and ties DOM events to controller callbacks.
 - Owns the Stencil-specific decorators (`@Prop`, `@Event`, `@Watch`). Watchers normalise incoming values and forward them to the controller.
@@ -121,7 +121,7 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 ### Controller Layer
 
 - Encapsulates business rules, validation orchestration and derived state.
-- Extends `BaseController<Api>`, which receives a `PropsConfigShape` (runtime props configuration containing `required` and `optional` arrays of prop definitions), a `SetStateFn<Api>` and a `GetStateFn<Api>` callback. `BaseController` derives default render props automatically from the config.
+- Extends `BaseController<Api>`, which receives a `StateAccess<Api>` bundle and a `PropsConfigShape` (runtime props configuration containing `required` and `optional` arrays of prop definitions). `BaseController` derives default render props automatically from the config and exposes `setState`/`getState` as `protected readonly` fields.
 - `BaseController` provides `setRenderProp(key, value)` to store normalized props internally and exposes `setState` to write back to the web component's `@State` fields (triggering Stencil re-renders) and `getState` to read current `@State` values without holding a reference to the component instance.
 - Implements `componentWillLoad` to bootstrap its internal state from the current prop snapshot.
 - Exposes watcher entry points (e.g. `watchName`) that receive raw values, request normalisation/validation from the schema helpers and update internal state accordingly.
@@ -148,11 +148,11 @@ public constructor(stateAccess: StateAccess<SkeletonApi>) {
 
 The `PropsConfigShape` passed as the second argument to `super()` contains arrays of prop definitions from which `BaseController` derives the initial render props automatically via `buildDefaultPropsFromConfig()`.
 
-Composition inside other controllers forwards the same `stateAccess` bundle:
+When composing a controller that has no `@State` fields, pass `BaseWebComponent.stateLess` — forwarding `stateAccess` would cause a TypeScript error because `StateAccess<ParentApi>` is not assignable to `StateAccess<ChildApi>` when their `States` types differ:
 
 ```ts
-// Skeleton controller — composes ClickButtonController, forwarding stateAccess
-this.clickButtonCtrl = new ClickButtonController(stateAccess);
+// ClickButtonApi has no @State fields → use stateLess sentinel
+this.clickButtonCtrl = new ClickButtonController(BaseWebComponent.stateLess);
 ```
 
 #### State Reader (`getState`)
