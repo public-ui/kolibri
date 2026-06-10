@@ -5,7 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 overrides:
-  hono@<4.12.21: '>=4.12.21'
   ip-address@<=10.1.0: '>=10.1.1'
 
 importers:
@@ -25,11 +24,11 @@ importers:
         specifier: 8.0.4
         version: 8.0.4
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       stylelint:
         specifier: 16.26.1
         version: 16.26.1(typescript@5.9.3)
@@ -163,11 +162,11 @@ importers:
         specifier: 4.2.0
         version: 4.2.0(chai@4.5.0)(enzyme-adapter-react-16@1.15.8(enzyme@3.11.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(enzyme@3.11.0)(mocha@11.7.4)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
@@ -257,11 +256,11 @@ importers:
         specifier: 9.39.4
         version: 9.39.4(jiti@2.6.1)
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       react:
         specifier: 19.2.3
         version: 19.2.3
@@ -538,11 +537,11 @@ importers:
         specifier: 9.1.0
         version: 9.1.0(postcss@8.5.15)
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       pug:
         specifier: 3.0.4
         version: 3.0.4
@@ -647,11 +646,11 @@ importers:
         specifier: 8.5.15
         version: 8.5.15
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       tailwindcss:
         specifier: 3.4.19
         version: 3.4.19(ts-node@10.9.2(@swc/core@1.15.11)(@types/node@24.13.1)(typescript@5.9.3))
@@ -771,11 +770,11 @@ importers:
         specifier: 8.0.4
         version: 8.0.4
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       stylelint:
         specifier: 16.26.1
         version: 16.26.1(typescript@5.9.3)
@@ -828,11 +827,11 @@ importers:
         specifier: 8.5.15
         version: 8.5.15
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       rollup:
         specifier: 4.61.1
         version: 4.61.1
@@ -897,11 +896,11 @@ importers:
         specifier: 8.5.15
         version: 8.5.15
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       rollup:
         specifier: 4.61.1
         version: 4.61.1
@@ -972,11 +971,11 @@ importers:
         specifier: 8.5.15
         version: 8.5.15
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       rollup:
         specifier: 4.61.1
         version: 4.61.1
@@ -1044,11 +1043,11 @@ importers:
         specifier: 8.0.4
         version: 8.0.4
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
@@ -1099,11 +1098,11 @@ importers:
         specifier: 10.8.2
         version: 10.8.2
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -1129,14 +1128,14 @@ importers:
         specifier: 1.9.2
         version: 1.9.2
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       semver:
-        specifier: 7.8.3
-        version: 7.8.3
+        specifier: 7.8.4
+        version: 7.8.4
       typed-bem:
         specifier: 1.0.2
         version: 1.0.2
@@ -1260,11 +1259,11 @@ importers:
         specifier: 3.1.14
         version: 3.1.14
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
       tsx:
         specifier: 4.22.4
         version: 4.22.4
@@ -1318,11 +1317,11 @@ importers:
         specifier: 5.88.1
         version: 5.88.1(@types/node@24.13.1)(typescript@5.9.3)
       prettier:
-        specifier: 3.8.3
-        version: 3.8.3
+        specifier: 3.8.4
+        version: 3.8.4
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.8.3)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
 
 packages:
 
@@ -2949,7 +2948,7 @@ packages:
     resolution: {integrity: sha512-TsQLe4i2gvoTtrHje625ngThGBySOgSK3Xo2XRYOdqGN1teR8+I7vchQC46uLJi8OF62YTYA3AhSpumtkhsaKQ==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
-      hono: '>=4.12.21'
+      hono: ^4
 
   '@hookform/resolvers@3.10.0':
     resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
@@ -11440,8 +11439,8 @@ packages:
       vue-tsc:
         optional: true
 
-  prettier@3.8.3:
-    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
+  prettier@3.8.4:
+    resolution: {integrity: sha512-N2MylSdi48+5N/6S5j+maeHbUSIzzZ5uOcX5Hm4QpV8Dkb1HFjfAKTKX6yNPJQD9AhcT3ifHNB66tWTTJDi11Q==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -12503,8 +12502,8 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  semver@7.8.3:
-    resolution: {integrity: sha512-wnilbGyMxzbY7dNOl7jpKbLSjcfeweJWU5j4+u5qW+6/wuGD9KzIGOyZnQVSBM9E7DtWaaH3CyHkppYrKYoxwg==}
+  semver@7.8.4:
+    resolution: {integrity: sha512-rUCObTnP32Q08R2uuIrt7r9PlEonuTmtuXYcW6s5kjdlj3xbnwe+21yXptAUYcMAABLkYYTtnmzb3w3EDZfueA==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -16895,7 +16894,7 @@ snapshots:
       proggy: 3.0.0
       promise-all-reject-late: 1.0.1
       promise-call-limit: 3.0.2
-      semver: 7.8.3
+      semver: 7.8.4
       ssri: 12.0.0
       treeverse: 3.0.0
       walk-up-path: 4.0.0
@@ -16904,11 +16903,11 @@ snapshots:
 
   '@npmcli/fs@4.0.0':
     dependencies:
-      semver: 7.8.3
+      semver: 7.8.4
 
   '@npmcli/fs@5.0.0':
     dependencies:
-      semver: 7.8.3
+      semver: 7.8.4
 
   '@npmcli/git@6.0.3':
     dependencies:
@@ -16918,7 +16917,7 @@ snapshots:
       npm-pick-manifest: 10.0.0
       proc-log: 5.0.0
       promise-retry: 2.0.1
-      semver: 7.8.3
+      semver: 7.8.4
       which: 5.0.0
 
   '@npmcli/git@7.0.1':
@@ -16929,7 +16928,7 @@ snapshots:
       npm-pick-manifest: 11.0.3
       proc-log: 6.0.0
       promise-retry: 2.0.1
-      semver: 7.8.3
+      semver: 7.8.4
       which: 6.0.0
 
   '@npmcli/installed-package-contents@3.0.0':
@@ -16955,7 +16954,7 @@ snapshots:
       json-parse-even-better-errors: 5.0.0
       pacote: 21.3.1
       proc-log: 6.0.0
-      semver: 7.8.3
+      semver: 7.8.4
     transitivePeerDependencies:
       - supports-color
 
@@ -16974,7 +16973,7 @@ snapshots:
       hosted-git-info: 9.0.0
       json-parse-even-better-errors: 5.0.0
       proc-log: 6.0.0
-      semver: 7.8.3
+      semver: 7.8.4
       validate-npm-package-license: 3.0.4
 
   '@npmcli/package-json@7.0.4':
@@ -16984,7 +16983,7 @@ snapshots:
       hosted-git-info: 9.0.0
       json-parse-even-better-errors: 5.0.0
       proc-log: 6.0.0
-      semver: 7.8.3
+      semver: 7.8.4
       validate-npm-package-license: 3.0.4
 
   '@npmcli/promise-spawn@8.0.2':
@@ -17021,7 +17020,7 @@ snapshots:
       enquirer: 2.3.6
       minimatch: 9.0.3
       nx: 22.3.3(@swc/core@1.15.11)
-      semver: 7.8.3
+      semver: 7.8.4
       tslib: 2.8.1
       yargs-parser: 21.1.1
 
@@ -17430,7 +17429,7 @@ snapshots:
       extract-zip: 2.0.1
       progress: 2.0.3
       proxy-agent: 6.5.0
-      semver: 7.8.3
+      semver: 7.8.4
       tar-fs: 3.1.1
       yargs: 17.7.2
     transitivePeerDependencies:
@@ -18822,7 +18821,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 8.58.2
       debug: 4.4.3(supports-color@5.5.0)
       minimatch: 10.2.5
-      semver: 7.8.3
+      semver: 7.8.4
       tinyglobby: 0.2.15
       ts-api-utils: 2.5.0(typescript@5.9.3)
       typescript: 5.9.3
@@ -20463,7 +20462,7 @@ snapshots:
       handlebars: 4.7.8
       json-stringify-safe: 5.0.1
       meow: 8.1.2
-      semver: 7.8.3
+      semver: 7.8.4
       split: 1.0.1
 
   conventional-commits-filter@3.0.0:
@@ -20577,7 +20576,7 @@ snapshots:
       normalize-package-data: 7.0.1
       read-pkg-up: 10.1.0
       recursive-readdir: 2.2.3
-      semver: 7.8.3
+      semver: 7.8.4
       type-fest: 4.41.0
       yargs: 17.7.2
     transitivePeerDependencies:
@@ -20621,7 +20620,7 @@ snapshots:
       postcss-modules-scope: 3.2.1(postcss@8.5.15)
       postcss-modules-values: 4.0.0(postcss@8.5.15)
       postcss-value-parser: 4.2.0
-      semver: 7.8.3
+      semver: 7.8.4
     optionalDependencies:
       webpack: 5.105.2(@swc/core@1.15.11)(esbuild@0.27.3)(lightningcss@1.32.0)(postcss@8.5.12)
 
@@ -22334,7 +22333,7 @@ snapshots:
   git-semver-tags@5.0.1:
     dependencies:
       meow: 8.1.2
-      semver: 7.8.3
+      semver: 7.8.4
 
   git-up@7.0.0:
     dependencies:
@@ -22813,7 +22812,7 @@ snapshots:
       npm-package-arg: 13.0.2
       promzard: 2.0.0
       read: 4.1.0
-      semver: 7.8.3
+      semver: 7.8.4
       validate-npm-package-license: 3.0.4
       validate-npm-package-name: 6.0.2
 
@@ -23142,7 +23141,7 @@ snapshots:
       '@babel/parser': 7.29.7
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.2.2
-      semver: 7.8.3
+      semver: 7.8.4
     transitivePeerDependencies:
       - supports-color
 
@@ -23525,7 +23524,7 @@ snapshots:
       jest-resolve: 26.6.2
       natural-compare: 1.4.0
       pretty-format: 26.6.2
-      semver: 7.8.3
+      semver: 7.8.4
     transitivePeerDependencies:
       - supports-color
 
@@ -23986,7 +23985,7 @@ snapshots:
       npm-package-arg: 13.0.2
       npm-registry-fetch: 19.1.1
       proc-log: 5.0.0
-      semver: 7.8.3
+      semver: 7.8.4
       sigstore: 4.0.0
       ssri: 12.0.0
     transitivePeerDependencies:
@@ -24001,7 +24000,7 @@ snapshots:
       got: 15.0.5
       ini: 7.0.0
       rc: 1.2.8
-      semver: 7.8.3
+      semver: 7.8.4
       tablemark: 4.1.0
       text-table: 0.2.0
       visit-values: 2.0.0
@@ -24279,7 +24278,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.8.3
+      semver: 7.8.4
 
   make-error@1.3.6: {}
 
@@ -24562,7 +24561,7 @@ snapshots:
       pkg-types: 2.2.0
       postcss: 8.5.15
       postcss-nested: 7.0.2(postcss@8.5.15)
-      semver: 7.8.3
+      semver: 7.8.4
       tinyglobby: 0.2.15
     optionalDependencies:
       sass: 1.100.0
@@ -24779,7 +24778,7 @@ snapshots:
       make-fetch-happen: 15.0.3
       nopt: 9.0.0
       proc-log: 6.0.0
-      semver: 7.8.3
+      semver: 7.8.4
       tar: 7.5.11
       tinyglobby: 0.2.15
       which: 6.0.0
@@ -24794,7 +24793,7 @@ snapshots:
     dependencies:
       growly: 1.3.0
       is-wsl: 2.2.0
-      semver: 7.8.3
+      semver: 7.8.4
       shellwords: 0.1.1
       uuid: 8.3.2
       which: 2.0.2
@@ -24834,19 +24833,19 @@ snapshots:
     dependencies:
       hosted-git-info: 4.1.0
       is-core-module: 2.16.1
-      semver: 7.8.3
+      semver: 7.8.4
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@6.0.2:
     dependencies:
       hosted-git-info: 7.0.2
-      semver: 7.8.3
+      semver: 7.8.4
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@7.0.1:
     dependencies:
       hosted-git-info: 8.1.0
-      semver: 7.8.3
+      semver: 7.8.4
       validate-npm-package-license: 3.0.4
 
   normalize-path@2.1.1:
@@ -24871,11 +24870,11 @@ snapshots:
 
   npm-install-checks@7.1.2:
     dependencies:
-      semver: 7.8.3
+      semver: 7.8.4
 
   npm-install-checks@8.0.0:
     dependencies:
-      semver: 7.8.3
+      semver: 7.8.4
 
   npm-normalize-package-bin@4.0.0: {}
 
@@ -24885,21 +24884,21 @@ snapshots:
     dependencies:
       hosted-git-info: 8.1.0
       proc-log: 5.0.0
-      semver: 7.8.3
+      semver: 7.8.4
       validate-npm-package-name: 6.0.2
 
   npm-package-arg@13.0.1:
     dependencies:
       hosted-git-info: 9.0.0
       proc-log: 5.0.0
-      semver: 7.8.3
+      semver: 7.8.4
       validate-npm-package-name: 6.0.2
 
   npm-package-arg@13.0.2:
     dependencies:
       hosted-git-info: 9.0.0
       proc-log: 6.0.0
-      semver: 7.8.3
+      semver: 7.8.4
       validate-npm-package-name: 7.0.2
 
   npm-packlist@10.0.3:
@@ -24912,14 +24911,14 @@ snapshots:
       npm-install-checks: 7.1.2
       npm-normalize-package-bin: 4.0.0
       npm-package-arg: 12.0.2
-      semver: 7.8.3
+      semver: 7.8.4
 
   npm-pick-manifest@11.0.3:
     dependencies:
       npm-install-checks: 8.0.0
       npm-normalize-package-bin: 5.0.0
       npm-package-arg: 13.0.2
-      semver: 7.8.3
+      semver: 7.8.4
 
   npm-registry-fetch@19.1.0:
     dependencies:
@@ -25004,7 +25003,7 @@ snapshots:
       open: 8.4.2
       ora: 5.3.0
       resolve.exports: 2.0.3
-      semver: 7.8.3
+      semver: 7.8.4
       string-width: 4.2.3
       tar-stream: 2.2.0
       tmp: 0.2.5
@@ -25670,7 +25669,7 @@ snapshots:
       cosmiconfig: 9.0.0(typescript@5.9.3)
       jiti: 2.6.1
       postcss: 8.5.12
-      semver: 7.8.3
+      semver: 7.8.4
     optionalDependencies:
       webpack: 5.105.2(@swc/core@1.15.11)(esbuild@0.27.3)(lightningcss@1.32.0)(postcss@8.5.12)
     transitivePeerDependencies:
@@ -26002,12 +26001,12 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-organize-imports@4.3.0(prettier@3.8.3)(typescript@5.9.3):
+  prettier-plugin-organize-imports@4.3.0(prettier@3.8.4)(typescript@5.9.3):
     dependencies:
-      prettier: 3.8.3
+      prettier: 3.8.4
       typescript: 5.9.3
 
-  prettier@3.8.3: {}
+  prettier@3.8.4: {}
 
   pretty-bytes@7.0.1: {}
 
@@ -27133,7 +27132,7 @@ snapshots:
 
   semver@7.8.1: {}
 
-  semver@7.8.3: {}
+  semver@7.8.4: {}
 
   send@0.19.0:
     dependencies:
@@ -27341,7 +27340,7 @@ snapshots:
 
   simple-update-notifier@2.0.0:
     dependencies:
-      semver: 7.8.3
+      semver: 7.8.4
 
   sirv@3.0.2:
     dependencies:
