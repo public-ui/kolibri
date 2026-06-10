@@ -9,7 +9,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { AlternativeButtonLinkRole } from '../../internal/props/alternative-button-link-role';
 import type { ButtonType } from '../../internal/props/button-type';
 import type { ButtonVariant } from '../../internal/props/button-variant';
-import type { KolFocusOptions, StencilUnknown, TooltipAlignPropType } from '../../schema';
+import type { IconsPropType, KolFocusOptions, StencilUnknown, TooltipAlignPropType } from '../../schema';
 import { setEventTarget } from '../../schema';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -116,7 +116,7 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: string;
+	@Prop() public _icons?: IconsPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
@@ -235,7 +235,7 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	}
 
 	@Watch('_icons')
-	public watchIcons(value?: string): void {
+	public watchIcons(value?: IconsPropType): void {
 		this.ctrl.watchIcons(value);
 	}
 

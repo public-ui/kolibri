@@ -1,4 +1,4 @@
-import type { StencilUnknown, TooltipAlignPropType } from '../../../schema';
+import type { IconsPropType, StencilUnknown, TooltipAlignPropType } from '../../../schema';
 import {
 	accessKeyProp,
 	alternativeButtonLinkRoleProp,
@@ -11,12 +11,12 @@ import {
 	customClassProp,
 	disabledProp,
 	hideLabelProp,
-	iconsProp,
 	idProp,
 	inlineProp,
 	labelWithExpertSlotProp,
 	nameProp,
 	shortKeyProp,
+	spanIconsProp,
 	tabIndexProp,
 	tooltipAlignProp,
 } from '../../props';
@@ -138,8 +138,8 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 		});
 	}
 
-	public watchIcons(value?: string): void {
-		iconsProp.apply(value, (v) => {
+	public watchIcons(value?: IconsPropType): void {
+		spanIconsProp.apply(value, (v) => {
 			this.setRenderProp('icons', v);
 		});
 	}
