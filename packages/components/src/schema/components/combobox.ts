@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
@@ -17,6 +18,7 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 
@@ -28,6 +30,7 @@ type OptionalProps = {
 	placeholder: string;
 	value: string;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
@@ -37,7 +40,8 @@ type OptionalProps = {
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = {
 	hasValue: boolean;
@@ -59,7 +63,8 @@ type OptionalStates = {
 	PropRequired &
 	PropMsg &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type ComboboxProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type ComboboxStates = Generic.Element.Members<RequiredStates, OptionalStates>;

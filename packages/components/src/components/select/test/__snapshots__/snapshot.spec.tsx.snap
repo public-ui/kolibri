@@ -490,6 +490,266 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 </kol-select>
 `;
 
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _accessKey="V" 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _accesskey="V" _hint="" _label="Label" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _alert=true 1`] = `
+<kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _disabled=true 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _disabled="" _hint="" _label="Label" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _hint="Hint" 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="Hint" _label="Label" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hidemsg="" _hint="" _label="Label" _name="field" _rows="3" _tooltipalign="top" _touched="">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true _accessKey="V" 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _accesskey="V" _hint="" _label="Label" _multiple="" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true _alert=true 1`] = `
+<kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _multiple="" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true _disabled=true 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _disabled="" _hint="" _label="Label" _multiple="" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true _hint="Hint" 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="Hint" _label="Label" _multiple="" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true _icons={"left":{"icon":"codicon codicon-arrow-left"},"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _multiple="" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true _icons={"left":{"icon":"codicon codicon-arrow-left"}} 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _multiple="" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true _icons={"right":{"icon":"codicon codicon-arrow-right"}} 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _multiple="" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hidemsg="" _hint="" _label="Label" _multiple="" _name="field" _rows="3" _tooltipalign="top" _touched="">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _multiple="" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true _readOnly=true 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _multiple="" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true _shortKey="S" 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _multiple="" _name="field" _rows="3" _shortkey="S" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true _touched=true 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _multiple="" _name="field" _rows="3" _tooltipalign="top" _touched="">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _multiple=true 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _multiple="" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _readOnly=true 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _shortKey="S" 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _name="field" _rows="3" _shortkey="S" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 _touched=true 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _name="field" _rows="3" _tooltipalign="top" _touched="">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
+exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _rows=3 1`] = `
+<kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
+  <template shadowrootmode="open">
+    <kol-select-wc _hint="" _label="Label" _name="field" _rows="3" _tooltipalign="top">
+      <slot name="expert" slot="expert"></slot>
+    </kol-select-wc>
+  </template>
+</kol-select>
+`;
+
 exports[`kol-select should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _shortKey="S" 1`] = `
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">

@@ -1,0 +1,15 @@
+<svg
+  width="48"
+  height="48"
+  viewBox="0 0 48 48"
+  xmlns="http://www.w3.org/2000/svg"
+>
+<path d="M33 18H15V21H33V18Z" fill-rule="evenodd" />
+<path d="M15 12H33V15H15V12Z" fill-rule="evenodd" />
+<path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M3 3V6H6V27C6 28.65 7.35 30 9 30H22.5V36.96L14.16 42.51L15.81 45L23.97 39.54L32.13 45L33.78 42.51L25.44 36.96V30H38.94C40.59 30 41.94 28.65 41.94 27V6H44.94V3H3ZM39 27H9V6H39V27Z"
+    fill-rule="evenodd"
+  />
+</svg>

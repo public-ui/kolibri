@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
@@ -19,6 +20,7 @@ import type {
 	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, SelectOption, StencilUnknown, Stringified, W3CInputValue } from '../types';
 
@@ -29,6 +31,7 @@ type OptionalProps = {
 	tabIndex: number;
 	value: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
@@ -40,7 +43,8 @@ type OptionalProps = {
 	PropRows &
 	PropShortKey &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = {
 	hasValue: boolean;
@@ -54,6 +58,7 @@ type OptionalStates = {
 	on: InputTypeOnDefault;
 	tabIndex: number;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropDisabled &
 	PropHideLabel &
 	PropHint &
@@ -63,7 +68,8 @@ type OptionalStates = {
 	PropRows &
 	PropMsg &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type SelectProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type SelectStates = Generic.Element.Members<RequiredStates, OptionalStates>;

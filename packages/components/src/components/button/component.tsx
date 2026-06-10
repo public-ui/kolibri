@@ -1,72 +1,210 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import type {
+	AccessKeyPropType,
+	AlternativeButtonLinkRolePropType,
+	AriaDescriptionPropType,
+	AriaExpandedPropType,
+	AriaSelectedPropType,
+	ButtonAPI,
+	ButtonCallbacksPropType,
+	ButtonStates,
+	ButtonTypePropType,
+	CustomClassPropType,
+	DisabledPropType,
+	FocusableElement,
+	HideLabelPropType,
+	IconsPropType,
+	IdPropType,
+	InlinePropType,
+	KolFocusOptions,
+	LabelWithExpertSlotPropType,
+	ShortKeyPropType,
+	StencilUnknown,
+	SyncValueBySelectorPropType,
+	TooltipAlignPropType,
+	VariantClassNamePropType,
+} from '../../schema';
+import {
+	mapBoolean2String,
+	mapStringOrBoolean2String,
+	setEventTarget,
+	setState,
+	showExpertSlot,
+	validateAccessKey,
+	validateAlternativeButtonLinkRole,
+	validateAriaControls,
+	validateAriaDescription,
+	validateAriaExpanded,
+	validateAriaSelected,
+	validateButtonCallbacks,
+	validateButtonType,
+	validateCustomClass,
+	validateDisabled,
+	validateHideLabel,
+	validateIcons,
+	validateInline,
+	validateLabelWithExpertSlot,
+	validateShortKey,
+	validateTooltipAlign,
+	validateVariantClassName,
+	watchString,
+} from '../../schema';
+import { validateTabIndex } from '../../schema/props/tab-index';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { ButtonApi } from '../../internal/functional-components/button/api';
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { ButtonController } from '../../internal/functional-components/button/controller';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { AlternativeButtonLinkRole } from '../../internal/props/alternative-button-link-role';
-import type { ButtonType } from '../../internal/props/button-type';
-import type { ButtonVariant } from '../../internal/props/button-variant';
-import { setEventTarget } from '../../schema';
+import { SpanFC } from '../../internal/functional-components/span/component';
+import { TooltipFC } from '../../internal/functional-components/tooltip/component';
+import { TooltipController } from '../../internal/functional-components/tooltip/controller';
+import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
+import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import clsx from '../../utils/clsx';
+import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 
 /**
- * The **Button** component is used to present users with action options and arrange them in a clear hierarchy.
- * It helps users find the most important actions on a page or within a viewport and allows them to execute those actions.
- * The button label clearly indicates which action will be triggered. Buttons allow users to confirm a change, complete steps in a task, or make decisions.
- *
- * @slot expert - Custom label content, e.g. for rich text or icons.
+ * @internal
  */
 @Component({
-	tag: 'kol-button',
-	styleUrls: {
-		default: './style.scss',
-	},
-	shadow: true,
+	tag: 'kol-button-wc',
+	shadow: false,
 })
-export class KolButton extends BaseWebComponent<ButtonApi> implements WebComponentInterface<ButtonApi> {
-	@Element() private readonly host?: HTMLKolButtonElement;
-	private readonly ctrl = new ButtonController(this.stateAccess);
-	private readonly formController: AssociatedInputController;
-
-	public constructor() {
-		super();
-		this.formController = new AssociatedInputController(this, 'button', this.host);
-	}
+export class KolButtonWc implements ButtonAPI, FocusableElement {
+	@Element() protected readonly host?: HTMLKolButtonWcElement;
+	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
+	private readonly tooltipCtrl = new TooltipController(BaseWebComponent.stateLess);
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return Promise.resolve(this.ctrl.focus());
-	}
+	@directFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return Promise.resolve(this.ctrl.click());
+	@directClick('ctaRef')
+	public async click(): Promise<void> {}
+
+	private readonly onClick = (event: MouseEvent) => {
+		event.stopPropagation();
+		this.tooltipCtrl.hideTooltip();
+
+		if (this.state._type === 'submit') {
+			propagateSubmitEventToForm({
+				form: this.host,
+				ref: this.ctaRef.el,
+			});
+		} else if (this.state._type === 'reset') {
+			propagateResetEventToForm({
+				form: this.host,
+				ref: this.ctaRef.el,
+			});
+		} else {
+			// TODO: Static form handling
+			this.controller.setFormAssociatedValue(this.state._value);
+
+			// Callback
+			if (typeof this.state._on?.onClick === 'function') {
+				setEventTarget(event, this.ctaRef.el);
+				this.state._on?.onClick(event, this.state._value);
+			}
+		}
+
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.click, this.state._value);
+		}
+	};
+
+	private readonly onMouseDown = (event: MouseEvent) => {
+		this.state?._on?.onMouseDown?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.mousedown);
+		}
+	};
+
+	private readonly onFocus = (event: FocusEvent) => {
+		this.state?._on?.onFocus?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.focus);
+		}
+	};
+
+	private readonly onBlur = (event: FocusEvent) => {
+		this.state?._on?.onBlur?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.blur);
+		}
+	};
+
+	public render(): JSX.Element {
+		const hasExpertSlot = showExpertSlot(this.state._label);
+		const ariaDescription = this.state._ariaDescription?.trim();
+		const badgeText = this.state._accessKey || this.state._shortKey;
+		const isDisabled = this.state._disabled === true;
+		const hideLabel = this.state._hideLabel === true;
+
+		return (
+			<Host>
+				<button
+					ref={this.ctaRef}
+					accessKey={this.state._accessKey}
+					aria-controls={this.state._ariaControls}
+					aria-description={ariaDescription || undefined}
+					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
+					aria-haspopup={this._ariaHasPopup}
+					aria-keyshortcuts={this.state._shortKey}
+					aria-label={hideLabel && typeof this.state._label === 'string' && this.state._label.length > 0 ? this.state._label : undefined}
+					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
+					class={clsx('kol-button', {
+						'kol-button--disabled': isDisabled,
+						[`kol-button--${this.state._variant as string}`]: this.state._variant !== 'custom',
+						'kol-button--inline': this.state._inline === true,
+						'kol-button--standalone': this.state._inline === false,
+						'kol-button--hide-label': hideLabel,
+						[this.state._customClass as string]: typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
+					})}
+					disabled={isDisabled}
+					id={this.state._id}
+					name={this.state._name}
+					onClick={this.onClick}
+					onMouseDown={this.onMouseDown}
+					onFocus={this.onFocus}
+					onBlur={this.onBlur}
+					role={this.state._role}
+					tabIndex={this.state._tabIndex}
+					type={this.state._type}
+				>
+					<SpanFC class="kol-button__text" badgeText={badgeText} icons={this.state._icons} hideLabel={hideLabel} label={hasExpertSlot ? '' : this.state._label}>
+						<slot name="expert" slot="expert"></slot>
+					</SpanFC>
+				</button>
+				{hideLabel && typeof this.state._label === 'string' && this.state._label.length > 0 && (
+					<div class="kol-button__tooltip">
+						<TooltipFC
+							badgeText={badgeText || ''}
+							label={this.state._label}
+							id={this.tooltipCtrl.getRenderProp('id')}
+							refFloating={this.tooltipCtrl.setTooltipElementRef}
+						/>
+					</div>
+				)}
+			</Host>
+		);
 	}
 
-	/**
-	 * Returns the current value.
-	 */
-	@Method()
-	public async getValue(): Promise<unknown> {
-		return Promise.resolve(this.ctrl.getValue());
-	}
+	private readonly controller: AssociatedInputController;
 
-	// Props
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	@Prop() public _accessKey?: string;
+	@Prop() public _accessKey?: AccessKeyPropType;
 
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
@@ -76,12 +214,18 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
-	@Prop() public _ariaDescription?: string;
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop() public _ariaExpanded?: boolean;
+
+	/**
+	 * Defines the aria-haspopup attribute. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-haspopup)
+	 * @internal
+	 */
+	@Prop() public _ariaHasPopup?: AriaHasPopupPropType;
 
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
@@ -91,7 +235,7 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -101,29 +245,30 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
 	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
-	@Prop() public _icons?: string;
+	@Prop() public _icons?: IconsPropType;
 
 	/**
 	 * Defines the internal ID of the primary component element.
 	 * @internal
 	 */
-	@Prop() public _id?: string;
+	@Prop() public _id?: IdPropType;
 
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
 	 */
-	@Prop() public _inline?: boolean = false;
+	@Prop() public _inline?: InlinePropType = false;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Defines the technical name of an input field.
@@ -132,30 +277,24 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 
 	/**
 	 * Defines the callback functions for button events.
-	 * @deprecated Use native event listeners instead
 	 */
-	@Prop() public _on?: {
-		onClick?: (event: MouseEvent, value?: unknown) => void;
-		onMouseDown?: (event: MouseEvent) => void;
-	};
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 
 	/**
 	 * Defines the role of the components primary element.
-	 *
-	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
-	@Prop() public _role?: AlternativeButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
-	@Prop() public _shortKey?: string;
+	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
-	@Prop() public _syncValueBySelector?: string;
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
@@ -165,238 +304,192 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: string = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
-	@Prop() public _type?: ButtonType = 'button';
+	@Prop() public _type?: ButtonTypePropType = 'button';
 
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop() public _value?: unknown;
+	@Prop() public _value?: StencilUnknown;
 
 	/**
 	 * Defines which variant should be used for presentation.
+	 * @internal
 	 */
-	@Prop() public _variant?: ButtonVariant = 'normal';
+	@Prop() public _variant?: VariantClassNamePropType;
 
-	// Watchers
+	@State() public state: ButtonStates = {
+		_icons: {},
+		_label: '', // ⚠ required
+		_on: {},
+		_type: 'button',
+		_variant: 'normal',
+	};
+
+	public constructor() {
+		this.controller = new AssociatedInputController(this, 'button', this.host);
+	}
+
 	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
-		this.ctrl.watchAccessKey(value);
+	public validateAccessKey(value?: AccessKeyPropType): void {
+		validateAccessKey(this, value);
+		validateAccessAndShortKey(value, this._shortKey);
 	}
 
 	@Watch('_ariaControls')
-	public watchAriaControls(value?: string): void {
-		this.ctrl.watchAriaControls(value);
+	public validateAriaControls(value?: string): void {
+		validateAriaControls(this, value);
 	}
 
 	@Watch('_ariaDescription')
-	public watchAriaDescription(value?: string): void {
-		this.ctrl.watchAriaDescription(value);
+	public validateAriaDescription(value?: AriaDescriptionPropType): void {
+		validateAriaDescription(this, value);
 	}
 
 	@Watch('_ariaExpanded')
-	public watchAriaExpanded(value?: boolean): void {
-		this.ctrl.watchAriaExpanded(value);
+	public validateAriaExpanded(value?: AriaExpandedPropType): void {
+		validateAriaExpanded(this, value);
 	}
 
 	@Watch('_ariaSelected')
-	public watchAriaSelected(value?: boolean): void {
-		this.ctrl.watchAriaSelected(value);
+	public validateAriaSelected(value?: AriaSelectedPropType): void {
+		validateAriaSelected(this, value);
 	}
 
 	@Watch('_customClass')
-	public watchCustomClass(value?: string): void {
-		this.ctrl.watchCustomClass(value);
+	public validateCustomClass(value?: CustomClassPropType): void {
+		validateCustomClass(this, value);
 	}
 
 	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
-		this.ctrl.watchDisabled(value);
+	public validateDisabled(value?: DisabledPropType): void {
+		validateDisabled(this, value);
 	}
 
 	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
-		this.ctrl.watchHideLabel(value);
+	public validateHideLabel(value?: HideLabelPropType): void {
+		validateHideLabel(this, value);
 	}
 
 	@Watch('_icons')
-	public watchIcons(value?: string): void {
-		this.ctrl.watchIcons(value);
+	public validateIcons(value?: IconsPropType): void {
+		validateIcons(this, value);
 	}
 
 	@Watch('_id')
-	public watchId(value?: string): void {
-		this.ctrl.watchId(value);
+	public validateId(value?: IdPropType): void {
+		watchString(this, '_id', value);
 	}
 
 	@Watch('_inline')
-	public watchInline(value?: boolean): void {
-		this.ctrl.watchInline(value);
+	public validateInline(value?: InlinePropType): void {
+		validateInline(this, value, {
+			defaultValue: false,
+		});
 	}
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
-		this.ctrl.watchLabel(value);
+	public validateLabel(value?: LabelWithExpertSlotPropType): void {
+		validateLabelWithExpertSlot(this, value, {
+			required: true,
+		});
+		this.tooltipCtrl.watchLabel(typeof value === 'string' ? value : undefined);
 	}
 
 	@Watch('_name')
-	public watchName(value?: string): void {
-		this.ctrl.watchName(value);
-		this.formController.validateName(value);
+	public validateName(value?: string): void {
+		this.controller.validateName(value);
+	}
+
+	@Watch('_on')
+	public validateOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
+		validateButtonCallbacks(this, value);
 	}
 
 	@Watch('_role')
-	public watchRole(value?: string): void {
-		this.ctrl.watchRole(value);
+	public validateRole(value?: AlternativeButtonLinkRolePropType): void {
+		validateAlternativeButtonLinkRole(this, value);
 	}
 
 	@Watch('_shortKey')
-	public watchShortKey(value?: string): void {
-		this.ctrl.watchShortKey(value);
+	public validateShortKey(value?: ShortKeyPropType): void {
+		validateShortKey(this, value);
+		validateAccessAndShortKey(this._accessKey, value);
 	}
 
 	@Watch('_syncValueBySelector')
-	public watchSyncValueBySelector(value?: string): void {
-		this.formController.validateSyncValueBySelector(value);
+	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.controller.validateSyncValueBySelector(value);
 	}
 
 	@Watch('_tabIndex')
-	public watchTabIndex(value?: number): void {
-		this.ctrl.watchTabIndex(value);
+	public validateTabIndex(value?: number): void {
+		validateTabIndex(this, value);
 	}
 
 	@Watch('_tooltipAlign')
-	public watchTooltipAlign(value?: string): void {
-		this.ctrl.watchAlign(value);
+	public validateTooltipAlign(value?: TooltipAlignPropType): void {
+		validateTooltipAlign(this, value);
+		this.tooltipCtrl.watchAlign(value);
 	}
 
 	@Watch('_type')
-	public watchType(value?: string): void {
-		this.ctrl.watchType(value);
+	public validateType(value?: ButtonTypePropType): void {
+		validateButtonType(this, value);
 	}
 
 	@Watch('_value')
-	public watchValue(value?: unknown): void {
-		this.ctrl.setValue(value);
-		this.formController.setFormAssociatedValue(value);
+	public validateValue(value?: StencilUnknown): void {
+		setState(this, '_value', value);
+		this.controller.setFormAssociatedValue(this.state._value);
 	}
 
 	@Watch('_variant')
-	public watchVariant(value?: string): void {
-		this.ctrl.watchVariant(value);
+	public validateVariant(value?: VariantClassNamePropType): void {
+		validateVariantClassName(this, value);
 	}
 
-	// Event handlers
-	private readonly onClick = (event: MouseEvent): void => {
-		this.ctrl.handleClick(event);
-
-		const type = this.ctrl.getRenderProp('type');
-		const buttonElement = this.host?.shadowRoot?.querySelector('button');
-
-		if (type === 'submit') {
-			propagateSubmitEventToForm({
-				form: this.host,
-				ref: buttonElement || undefined,
-			});
-		} else if (type === 'reset') {
-			propagateResetEventToForm({
-				form: this.host,
-				ref: buttonElement || undefined,
-			});
-		} else {
-			// Regular button - set form value and trigger callback
-			this.formController.setFormAssociatedValue(this._value);
-
-			if (typeof this._on?.onClick === 'function') {
-				setEventTarget(event, buttonElement || undefined);
-				this._on.onClick(event, this._value);
-			}
-		}
-
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.click, this._value);
-		}
-	};
-
-	private readonly onMouseDown = (event: MouseEvent): void => {
-		this._on?.onMouseDown?.(event);
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.mousedown);
-		}
-	};
-
-	// Lifecycle
 	public componentWillLoad(): void {
-		this.ctrl.componentWillLoad({
-			accessKey: this._accessKey,
+		this.validateAccessKey(this._accessKey);
+		this.validateAriaControls(this._ariaControls);
+		this.validateAriaDescription(this._ariaDescription);
+		this.validateAriaExpanded(this._ariaExpanded);
+		this.validateAriaSelected(this._ariaSelected);
+		this.validateCustomClass(this._customClass);
+		this.validateDisabled(this._disabled);
+		this.validateHideLabel(this._hideLabel);
+		this.validateIcons(this._icons);
+		this.validateId(this._id);
+		this.validateInline(this._inline);
+		this.validateLabel(this._label);
+		this.validateName(this._name);
+		this.validateOn(this._on);
+		this.validateRole(this._role);
+		this.validateShortKey(this._shortKey);
+		this.validateSyncValueBySelector(this._syncValueBySelector);
+		this.validateTabIndex(this._tabIndex);
+		this.validateTooltipAlign(this._tooltipAlign);
+		this.validateType(this._type);
+		this.validateValue(this._value);
+		this.validateVariant(this._variant);
+		validateAccessAndShortKey(this._accessKey, this._shortKey);
+		this.tooltipCtrl.componentWillLoad({
+			label: typeof this.state._label === 'string' ? this.state._label : '',
 			align: this._tooltipAlign,
-			ariaControls: this._ariaControls,
-			ariaDescription: this._ariaDescription,
-			ariaExpanded: this._ariaExpanded,
-			ariaSelected: this._ariaSelected,
-			customClass: this._customClass,
-			disabled: this._disabled,
-			hideLabel: this._hideLabel,
-			icons: this._icons,
-			id: this._id,
-			inline: this._inline,
-			label: this._label,
-			name: this._name,
-			role: this._role,
-			shortKey: this._shortKey,
-			tabIndex: this._tabIndex,
-			type: this._type,
-			variant: this._variant,
 		});
-
-		this.ctrl.setValue(this._value);
 	}
 
 	public componentDidRender(): void {
-		const buttonElement = this.host?.shadowRoot?.querySelector<HTMLButtonElement>('button');
-		if (buttonElement) {
-			this.ctrl.syncTooltipListeners(buttonElement);
+		if (this.ctaRef.el) {
+			this.tooltipCtrl.syncListeners(undefined, this.ctaRef.el, true);
 		}
 	}
 
 	public disconnectedCallback(): void {
-		this.ctrl.destroy();
-	}
-
-	public render(): JSX.Element {
-		return (
-			<Host>
-				<ButtonFC
-					accessKey={this.ctrl.getRenderProp('accessKey')}
-					align={this.ctrl.getRenderProp('align')}
-					ariaControls={this.ctrl.getRenderProp('ariaControls')}
-					ariaDescription={this.ctrl.getRenderProp('ariaDescription')}
-					ariaExpanded={this.ctrl.getRenderProp('ariaExpanded')}
-					ariaSelected={this.ctrl.getRenderProp('ariaSelected')}
-					customClass={this.ctrl.getRenderProp('customClass')}
-					disabled={this.ctrl.getRenderProp('disabled')}
-					hideLabel={this.ctrl.getRenderProp('hideLabel')}
-					icons={this.ctrl.getRenderProp('icons')}
-					id={this.ctrl.getRenderProp('id')}
-					inline={this.ctrl.getRenderProp('inline')}
-					label={this.ctrl.getRenderProp('label')}
-					name={this.ctrl.getRenderProp('name')}
-					role={this.ctrl.getRenderProp('role')}
-					shortKey={this.ctrl.getRenderProp('shortKey')}
-					tabIndex={this.ctrl.getRenderProp('tabIndex')}
-					type={this.ctrl.getRenderProp('type')}
-					variant={this.ctrl.getRenderProp('variant')}
-					handleClick={this.onClick}
-					handleMouseDown={this.onMouseDown}
-					refButton={this.ctrl.setButtonRef}
-					refTooltipFloating={this.ctrl.setTooltipFloatingRef}
-					tooltipId={this.ctrl.getTooltipId()}
-				/>
-			</Host>
-		);
+		this.tooltipCtrl.destroy();
 	}
 }

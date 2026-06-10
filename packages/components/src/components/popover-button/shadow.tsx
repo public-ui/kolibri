@@ -10,6 +10,7 @@ import type {
 	FocusableElement,
 	IconsPropType,
 	InlinePropType,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	PopoverAlignPropType,
 	ShortKeyPropType,
@@ -18,8 +19,7 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 import type { PopoverButtonProps } from '../../schema/components/popover-button';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 
 /**
  * A button that toggles the visibility of a popover overlay containing arbitrary content.
@@ -36,8 +36,8 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 	shadow: true,
 })
 export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
-	@Element() private readonly host?: HTMLKolPopoverButtonElement;
-	private ref?: HTMLKolPopoverButtonWcElement;
+	@Element() protected readonly host?: HTMLKolPopoverButtonElement;
+	protected readonly ctaRef = createCtaRef<HTMLKolPopoverButtonWcElement>();
 
 	/**
 	 * Hides the popover programmatically by forwarding the call to the web component.
@@ -45,7 +45,7 @@ export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async hidePopover() {
-		void this.ref?.hidePopover();
+		void this.ctaRef.el?.hidePopover();
 	}
 
 	/**
@@ -54,33 +54,29 @@ export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async showPopover() {
-		void this.ref?.showPopover();
+		void this.ctaRef.el?.showPopover();
 	}
-
-	private readonly setRef = (ref?: HTMLKolPopoverButtonWcElement) => {
-		this.ref = ref;
-	};
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.ref!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.ref!));
-	}
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public render(): JSX.Element {
 		return (
 			<KolPopoverButtonWcTag
-				ref={this.setRef}
+				ref={this.ctaRef}
 				_accessKey={this._accessKey}
 				_ariaDescription={this._ariaDescription}
 				_customClass={this._customClass}

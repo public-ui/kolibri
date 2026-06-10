@@ -21,7 +21,7 @@ function getSelectProps(state: SelectStates): SelectProps {
 		disabled: state._disabled,
 		name: state._name,
 		ariaDescribedBy: ariaDescribedBy,
-		size: state._rows,
+		size: state._multiple ? state._rows : undefined,
 		multiple: state._multiple,
 		required: state._required,
 		touched: state._touched,

@@ -4,6 +4,7 @@ import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents, testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
+import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 import type { NumberString } from '../../schema';
 
 const COMPONENT_NAME = 'kol-input-number';
@@ -111,7 +112,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('HTML: should handle undefined type correctly', async ({ page }) => {
-			await page.setContent('<kol-input-number _label="Number input"></kol-input-number>');
+			await setContentWithRetry(page, '<kol-input-number _label="Number input"></kol-input-number>');
 			await setInitialValue(page, undefined);
 
 			const getValueResult = await getCurrentValue(page);
@@ -130,7 +131,7 @@ test.describe(COMPONENT_NAME, () => {
 				<script type="module">
 					import React from 'https://esm.sh/react';
 					import { createRoot } from 'https://esm.sh/react-dom/client';
-					
+
 					// Create a simple wrapper that renders a kol-input-number
 					const root = createRoot(document.getElementById('root'));
 					const element = React.createElement('kol-input-number', {
@@ -278,7 +279,7 @@ test.describe(COMPONENT_NAME, () => {
 				<script type="module">
 					import React from 'https://esm.sh/react';
 					import { createRoot } from 'https://esm.sh/react-dom/client';
-					
+
 					const root = createRoot(document.getElementById('root'));
 					const element = React.createElement('kol-input-number', {
 						_label: 'Number input',

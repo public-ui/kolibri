@@ -1,0 +1,32 @@
+name: PR-Preview - Cleanup
+
+on:
+  pull_request:
+    types: [closed]
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    # Skip this job when the base clone URL may be different from the head clone URL.
+    if: github.event.pull_request.head.repo.fork == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: gh-pages
+          persist-credentials: true
+
+      - name: Remove PR preview folder
+        run: |
+          PR_FOLDER="pr-${{ github.event.pull_request.number }}"
+          if [ -d "$PR_FOLDER" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git rm -rf "$PR_FOLDER"
+            git commit -m "chore: remove preview for PR #${{ github.event.pull_request.number }}"
+            git push
+          else
+            echo "No preview folder found for PR #${{ github.event.pull_request.number }}, skipping."
+          fi

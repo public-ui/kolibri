@@ -4,6 +4,7 @@ import type {
 	InputTextTypePropType,
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropAutoComplete,
 	PropDisabled,
 	PropHasCounter,
@@ -23,6 +24,7 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 import type { InternalButtonProps } from './button';
@@ -38,6 +40,7 @@ type OptionalProps = {
 	type: InputTextTypePropType;
 	value: string;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropAutoComplete &
 	PropDisabled &
 	PropHasCounter &
@@ -53,7 +56,8 @@ type OptionalProps = {
 	PropSpellCheck &
 	PropSuggestions &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = {
 	currentLength: number;
@@ -72,6 +76,7 @@ type OptionalStates = {
 	smartButton: InternalButtonProps;
 	value: string;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropAutoComplete &
 	PropDisabled &
 	PropHasCounter &
@@ -85,7 +90,8 @@ type OptionalStates = {
 	PropRequired &
 	PropShortKey &
 	PropSpellCheck &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type InputTextProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type InputTextStates = Generic.Element.Members<RequiredStates, OptionalStates>;

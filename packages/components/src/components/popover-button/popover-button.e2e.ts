@@ -110,12 +110,14 @@ test.describe('kol-popover-button', () => {
 			// Focus and press Space
 			await button.focus();
 			await page.keyboard.press(' ');
+			await page.waitForChanges();
 
 			// Should be visible after Space
 			await expect(popover).toBeVisible();
 
 			// Press Space again to close
 			await page.keyboard.press(' ');
+			await page.waitForChanges();
 			await expect(popover).not.toBeVisible();
 		});
 

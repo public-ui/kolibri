@@ -3,6 +3,7 @@ import PackageJson from '@public-ui/components/package.json';
 import { UNSTYLED_THEME, type Theme } from './theme';
 
 type Store = {
+	customThemes?: Theme[];
 	darkMode: boolean;
 	theme: string;
 	nextTheme?: string;
@@ -88,4 +89,12 @@ export const getThemeName = (theme: string) => {
 	} else {
 		throw new Error(`The theme identifier "${theme}" is not valid or an available option.`);
 	}
+};
+
+export const setCustomThemes = (themes: Theme[] | undefined) => {
+	STORE.customThemes = themes;
+};
+
+export const getCustomThemes = (): Theme[] | undefined => {
+	return STORE.customThemes;
 };

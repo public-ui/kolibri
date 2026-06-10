@@ -1,10 +1,12 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
 
 import type {
+	AriaDetailsPropType,
 	FocusableElement,
 	IconsHorizontalPropType,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -16,10 +18,12 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import { KolSelectWcTag } from '../../core/component-names';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { validateAriaDetails } from '../../schema/props/aria-details';
+import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 /**
  * @slot - The label of the input field.
@@ -32,35 +36,33 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 	shadow: true,
 })
 export class KolSelect implements SelectProps, FocusableElement {
-	@Element() private readonly host?: HTMLKolSelectElement;
-	private selectWcRef?: HTMLKolSelectWcElement;
-
-	private readonly setSelectWcRef = (ref?: HTMLKolSelectWcElement) => {
-		this.selectWcRef = ref;
-	};
+	@Element() protected readonly host?: HTMLKolSelectElement;
+	protected readonly ctaRef = createCtaRef<HTMLKolSelectWcElement>();
 
 	/**
 	 * Returns the selected values.
 	 */
 	@Method()
-	public async getValue(): Promise<StencilUnknown[] | StencilUnknown> {
-		return this.selectWcRef?.getValue();
+	public async getValue(): Promise<StencilUnknown[] | StencilUnknown | undefined> {
+		return this.ctaRef.el?.getValue();
 	}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.selectWcRef!));
-	}
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-select">
 				<KolSelectWcTag
-					ref={this.setSelectWcRef}
+					ref={this.ctaRef}
 					_accessKey={this._accessKey}
+					_ariaDetails={this._ariaDetails}
 					_disabled={this._disabled}
 					_hideLabel={this._hideLabel}
 					_hideMsg={this._hideMsg}
@@ -80,6 +82,7 @@ export class KolSelect implements SelectProps, FocusableElement {
 					_tooltipAlign={this._tooltipAlign}
 					_touched={this._touched}
 					_value={this._value}
+					_variant={this._variant}
 				>
 					<slot name="expert" slot="expert"></slot>
 				</KolSelectWcTag>
@@ -91,6 +94,16 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this select.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		validateAriaDetails(this, this.host, undefined, value);
+	}
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -194,4 +207,9 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Defines the value of the element.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
 }

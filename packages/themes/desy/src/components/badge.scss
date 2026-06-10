@@ -1,0 +1,36 @@
+@use '../functions/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include icon;
+
+	.kol-badge {
+		border-radius: 60rem;
+		display: inline-flex;
+		padding: to-rem(2) to-rem(4) 0 to-rem(4);
+		align-items: center;
+		justify-content: center;
+
+		font-family: var(--font-family);
+		font-size: to-rem(12);
+		font-weight: 700;
+		line-height: 1;
+		font-style: normal;
+
+		&--has-smart-button {
+			align-items: center;
+		}
+
+		&__label {
+			padding: to-rem(4) to-rem(8);
+			gap: to-rem(8);
+			align-items: center;
+			font-style: normal;
+
+			.kol-span__container {
+				display: flex;
+				gap: to-rem(4);
+			}
+		}
+	}
+}

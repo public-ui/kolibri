@@ -1,0 +1,124 @@
+@use '../@shared/input-core' as *;
+@use '../functions/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include icon;
+
+	.kol-input {
+		opacity: 0 !important;
+	}
+
+	.kol-input-container {
+		padding: 0;
+		gap: 0;
+		grid-template-columns: auto max-content min-content;
+
+		&__adornment {
+			position: absolute;
+
+			.kol-icon {
+				font-size: to-rem(24);
+			}
+
+			&--start {
+				left: 0;
+
+				.kol-input-container__smart-button > .kol-icon {
+					border-right: 1px solid var(--border-color);
+				}
+
+				> .kol-icon {
+					color: var(--color-blue-100);
+					margin-left: to-rem(17);
+				}
+			}
+
+			&--end {
+				right: 0;
+
+				.kol-input-container__smart-button > .kol-icon {
+					border-left: 1px solid var(--border-color);
+				}
+
+				> .kol-icon {
+					margin-right: to-rem(7);
+				}
+			}
+		}
+
+		&:has(&__adornment--start:not(:empty)) .kol-button {
+			padding-left: to-rem(48);
+		}
+
+		&:has(&__adornment--end:not(:empty)) .kol-input {
+			padding-right: to-rem(38);
+		}
+
+		&:has(&__adornment--end &__icon + &__smart-button) .kol-input,
+		&:has(&__adornment--end &__smart-button + &__icon) .kol-input {
+			padding-right: to-rem(80);
+		}
+
+		&__adornment--end &__smart-button + &__icon {
+			padding-left: to-rem(7);
+			border-left: 1px solid var(--border-color);
+		}
+
+		&__container {
+			position: relative;
+			z-index: 1;
+			gap: 0 to-rem(8);
+		}
+
+		.kol-button {
+			color: var(--color-blue-100);
+			display: flex;
+			min-height: to-rem(38);
+			padding-right: to-rem(17);
+			padding-left: to-rem(17);
+			align-items: center;
+			justify-content: center;
+
+			font-weight: 700;
+			border-right: 1px solid var(--border-color);
+
+			&__text {
+				display: flex;
+				place-items: center;
+
+				.kol-span__label {
+					display: inline-flex;
+				}
+			}
+		}
+
+		&__container {
+			display: flex;
+			overflow: hidden;
+			flex-direction: row-reverse;
+			align-items: center;
+
+			white-space: nowrap;
+			transition: 80ms cubic-bezier(0.65, 0, 0.35, 1);
+		}
+
+		&__filename {
+			color: var(--color-dark-blue-100);
+		}
+
+		&--is-dragover:not(&--disabled) .kol-button,
+		&:not(&--disabled):hover .kol-button {
+			background-color: var(--color-blue-100-06);
+		}
+
+		&--disabled &__filename {
+			color: var(--color-black-60);
+		}
+
+		&--disabled .kol-button {
+			opacity: 1;
+			color: var(--color-black-60);
+		}
+	}
+}

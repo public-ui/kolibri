@@ -13,7 +13,7 @@ exports[`kol-abbr should render with _label="Text" 1`] = `
           <span class="kol-span__label">
             Text
           </span>
-          <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
         </span>
       </span>
     </div>

@@ -4,6 +4,7 @@ import { translate } from '../../i18n';
 import { SpanFC } from '../../internal/functional-components/span/component';
 import { buildBadgeTextString } from '../../schema';
 import clsx from '../../utils/clsx';
+import { createRelatedUniqueId } from '../../utils/dev.utils';
 
 type FormFieldLabelProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & {
 	component?: 'label' | 'legend';
@@ -40,14 +41,14 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 		<Component
 			{...other}
 			class={clsx(`${baseClassName}__label`, classNames)}
-			id={!useTooltipInsteadOfLabel ? `${id}-label` : undefined}
+			id={!useTooltipInsteadOfLabel ? createRelatedUniqueId(id, 'label') : undefined}
 			hidden={useTooltipInsteadOfLabel}
 			htmlFor={id}
 		>
 			<SpanFC class={`${baseClassName}__label-text`} label={hasExpertSlot ? '' : (label ?? '')} badgeText={badgeText}>
 				<slot name="expert"></slot>
 			</SpanFC>
-			{readOnly ? (
+			{!hasExpertSlot && readOnly ? (
 				<span class={`${baseClassName}__label__read-only`} aria-hidden="true">
 					({translateReadOnly})
 				</span>

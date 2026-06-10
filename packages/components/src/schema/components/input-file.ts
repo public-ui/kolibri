@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
@@ -17,6 +18,7 @@ import type {
 	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
 import type { InternalButtonProps } from './button';
@@ -28,6 +30,7 @@ type OptionalProps = {
 	on: InputTypeOnDefault;
 	smartButton: Stringified<InternalButtonProps>;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
@@ -38,7 +41,8 @@ type OptionalProps = {
 	PropRequired &
 	PropShortKey &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = PropId & PropLabelWithExpertSlot & PropHideMsg;
 type OptionalStates = {
@@ -55,7 +59,8 @@ type OptionalStates = {
 	PropName &
 	PropRequired &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type InputFileProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type InputFileStates = Generic.Element.Members<RequiredStates, OptionalStates>;

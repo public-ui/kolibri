@@ -18,7 +18,7 @@ export const DrawerBasic: FC = () => {
 
 	useEffect(() => {
 		if (defaultAlign) {
-			drawerElement.current?.open();
+			drawerElement.current?.showModal();
 		}
 	}, [defaultAlign]);
 	return (
@@ -46,7 +46,7 @@ export const DrawerBasic: FC = () => {
 					_label="I am a drawer"
 					_align={align}
 					_hasCloser={hasCloser}
-					_on={{ onClose: () => console.log('Drawer onClose triggered!') }}
+					_on={{ onClose: () => console.log('Drawer onClose triggered!'), onToggle: (open) => console.log('Drawer onToggle triggered!', open) }}
 				>
 					<div className={align === 'left' || align === 'right' ? 'drawer-content-vertical' : ''}>
 						<p className="mt-0">
@@ -56,7 +56,7 @@ export const DrawerBasic: FC = () => {
 						<KolButton _label="Close drawer" _on={{ onClick: () => drawerElement.current?.close() }} />
 					</div>
 				</KolDrawer>
-				<KolButton _label="Open drawer" _on={{ onClick: () => drawerElement.current?.open() }} />
+				<KolButton _label="Open drawer" _on={{ onClick: () => drawerElement.current?.showModal() }} />
 			</div>
 		</>
 	);

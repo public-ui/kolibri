@@ -40,7 +40,7 @@
 		}
 
 		&__scroll-container {
-			max-height: 80vh;
+			max-height: var(--kol-table-max-height, 80vh);
 			overflow: auto;
 
 			@at-root #{$root}:has(#{$root}__focus-element:focus) & {

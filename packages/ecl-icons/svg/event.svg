@@ -1,0 +1,15 @@
+<svg
+  width="48"
+  height="48"
+  viewBox="0 0 48 48"
+  xmlns="http://www.w3.org/2000/svg"
+>
+<path
+    d="M18 3H15V6H9C7.35 6 6 7.35 6 9V39C6 40.65 7.35 42 9 42H21V39H9V9H15V12H18V9H30V12H33V9H39V21H42V9C42 7.35 40.65 6 39 6H33V3H30V6H18V3Z"
+    fill-rule="evenodd"
+  />
+<path
+    d="M36.0293 24H33.0293V33.03H24V36.03H33.0293V45.06H36.0293V36.03H45.06V33.03H36.0293V24Z"
+    fill-rule="evenodd"
+  />
+</svg>

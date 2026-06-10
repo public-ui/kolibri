@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropAutoComplete,
 	PropDisabled,
 	PropHideLabel,
@@ -21,6 +22,7 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified, W3CInputValue } from '../types';
 import type { InternalButtonProps } from './button';
@@ -35,6 +37,7 @@ type OptionalProps = {
 	smartButton: Stringified<InternalButtonProps>;
 	value: string;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropAutoComplete &
 	PropDisabled &
 	PropHideMsg &
@@ -49,7 +52,8 @@ type OptionalProps = {
 	PropShortKey &
 	PropSuggestions &
 	PropSyncValueBySelector &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = {
 	hasValue: boolean;
@@ -80,7 +84,8 @@ type OptionalStates = {
 	PropReadOnly &
 	PropRequired &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type InputEmailProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type InputEmailStates = Generic.Element.Members<RequiredStates, OptionalStates>;

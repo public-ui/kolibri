@@ -1,22 +1,24 @@
 {
+	"version": "4.3.0-rc.1",
 	"devDependencies": {
-		"lerna": "9.0.7",
-		"license-report": "6.8.2",
-		"npm-check-updates": "19.6.6",
+		"@evilmartians/lefthook": "2.1.9",
+		"license-report": "6.8.5",
+		"npm-check-updates": "22.2.3",
 		"npm-run-all2": "8.0.4",
-		"prettier": "3.8.1",
+		"prettier": "3.8.3",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.6.0",
-		"stylelint-config-recommended-scss": "17.0.0",
+		"stylelint": "17.13.0",
+		"stylelint-config-recommended-scss": "17.0.1",
 		"stylelint-config-standard": "40.0.0",
 		"stylelint-order": "8.1.1",
-		"stylelint-scss": "7.0.0"
+		"stylelint-scss": "7.2.0"
 	},
 	"engines": {
 		"pnpm": "^10"
 	},
 	"private": true,
 	"scripts": {
+		"prepare": "lefthook install",
 		"build": "pnpm -r build",
 		"clean": "git clean -f -d -X",
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
@@ -25,13 +27,14 @@
 		"format:config": "prettier --write '*.{js,ts,json,yml,yaml}' '.*.{js,ts,json,yml,yaml}' 'packages/*/*.{js,ts,json,yml,yaml}' 'packages/*/.*.{js,ts,json,yml,yaml}' 'packages/*/tsconfig*.json' 'packages/*/*.config.{js,ts}' 'packages/*/eslint.config.{js,cjs,mjs}'",
 		"format:markdown": "prettier --write '**/*.md'",
 		"format:packages": "pnpm -r format --write",
+		"license:report": "node scripts/license-reports.mjs --output docs/LICENSE_REPORTS.md",
 		"lint": "pnpm -r lint",
 		"lint:eslint": "pnpm -r --no-bail lint:eslint",
 		"lint:stylelint": "pnpm -r --no-bail lint:stylelint",
 		"lint:tsc": "pnpm -r --no-bail lint:tsc",
 		"unused": "pnpm -r unused",
 		"ncu:major": "ncu && pnpm -r exec ncu",
-		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @kern-ux/*,@stencil/core",
+		"ncu:minor": "ncu -t minor -u && pnpm -r exec ncu -t minor -u -x @kern-ux/*,@stencil/*,@typescript-eslint/*",
 		"ncu:patch": "ncu -t patch -u && pnpm -r exec ncu -t patch -u -x @kern-ux/*",
 		"pack": "pnpm -r exec pnpm pack",
 		"reinstall": "pnpm clean:pnpm && pnpm i",

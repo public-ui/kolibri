@@ -18,59 +18,118 @@
 	}
 
 	:host {
-		--color-blue: #004494;
-		--color-yellow: #ffd617;
-		--color-grey: #404040;
-		--color-blue-130: #002f67;
-		--color-blue-120: #003776;
-		--color-blue-110: #003d84;
-		--color-blue-100: var(--color-blue);
-		--color-blue-75: #4073af;
-		--color-blue-50: #bfd0e4;
-		--color-blue-25: #bfd0e4;
-		--color-blue-5: #f2f5f9;
-		--color-yellow-120: #f8ae21;
-		--color-yellow-110: #fbc11d;
-		--color-yellow-100: var(--color-yellow);
-		--color-yellow-75: #ffde39;
-		--color-yellow-50: #ffe879;
-		--color-yellow-25: #fff4bb;
-		--color-grey-100: var(--color-grey);
-		--color-grey-75: #707070;
-		--color-grey-50: #9f9f9f;
-		--color-grey-25: #cfcfcf;
-		--color-grey-20: #d9d9d9;
-		--color-grey-15: #e3e3e3;
-		--color-grey-10: #ebebeb;
-		--color-grey-5: #f5f5f5;
-		--color-grey-3: #f9f9f9;
-		--color-blue-n: #006fb4;
-		--color-orange: #f29527;
-		--color-green: #467a39;
-		--color-red: #da2131;
-		--color-red-1xx: #981722;
-		--color-black: #000;
-		--color-white: #fff;
-		--font-family: Arial, sans-serif;
-		--font-size: #{to-rem(16)};
-		--font-weight: 400;
-		--font-weight-bold: 600;
+		--ecl-color-primary: var(--ecl-color-primary-100);
+		--ecl-color-primary-180: #051036;
+		--ecl-color-primary-160: #0a1f6c;
+		--ecl-color-primary-140: #0f2fa2;
+		--ecl-color-primary-120: #143fd9;
+		--ecl-color-primary-100: #3860ed;
+		--ecl-color-primary-80: #5577f0;
+		--ecl-color-primary-60: #89a1f4;
+		--ecl-color-primary-40: #b1c0f8;
+		--ecl-color-primary-20: #d8e0fb;
+		--ecl-color-secondary: var(--ecl-color-secondary-100);
+		--ecl-color-secondary-180: #8f5600;
+		--ecl-color-secondary-160: #e08700;
+		--ecl-color-secondary-140: #ff9d0a;
+		--ecl-color-secondary-120: #ffad33;
+		--ecl-color-secondary-100: #ffbe5c;
+		--ecl-color-secondary-80: #ffcb7c;
+		--ecl-color-secondary-60: #ffd89d;
+		--ecl-color-secondary-40: #ffe5be;
+		--ecl-color-secondary-20: #fff2de;
+		--ecl-color-dark: var(--ecl-color-dark-100);
+		--ecl-color-dark-100: #26324b;
+		--ecl-color-dark-80: #546fa6;
+		--ecl-color-dark-60: #9ac;
+		--ecl-color-dark-06-o: rgb(38, 50, 75, 0.06);
+		--ecl-color-dark-05-o: rgb(38, 50, 75, 0.05);
+		--ecl-color-info: var(--ecl-color-primary-100);
+		--ecl-color-success: #24a148;
+		--ecl-color-error: #da1e28;
+		--ecl-color-warning: #f39811;
+		--ecl-color-background: #fcfcfc;
+		--ecl-color-branding: #004494;
+		--ecl-color-stroke: color-mix(in srgb, var(--ecl-color-primary) 50%, transparent);
+		--ecl-color-overlay-light: color-mix(in srgb, var(--ecl-color-dark) 70%, transparent);
+		--ecl-color-overlay-dark: color-mix(in srgb, var(--ecl-color-dark) 90%, transparent);
+		--ecl-color-white: #fff;
+		--ecl-color-neutral: var(--ecl-color-neutral-100);
+		--ecl-color-neutral-180: #6c85d1;
+		--ecl-color-neutral-160: #7f95d7;
+		--ecl-color-neutral-140: #92a5dd;
+		--ecl-color-neutral-120: #a6b5e3;
+		--ecl-color-neutral-100: #b9c5e9;
+		--ecl-color-neutral-80: #cdd5ef;
+		--ecl-color-neutral-60: #e0e5f5;
+		--ecl-color-neutral-40: #f3f5fb;
+		--ecl-color-neutral-20: #f8f9fd;
+		--ecl-color-accent: var(--ecl-color-accent-100);
+		--ecl-color-accent-160: #887de8;
+		--ecl-color-accent-140: #978cf2;
+		--ecl-color-accent-120: #a89efa;
+		--ecl-color-accent-100: #bbb3ff;
+		--ecl-color-accent-80: #bfb2ff;
+		--ecl-color-accent-60: #d1ccff;
+		--ecl-color-accent-40: #fafaff;
+
+		--ecl-font-family-default: arial, sans-serif;
+		--ecl-font-size: #{to-rem(16)};
+		--ecl-font-weight: 400;
+		--ecl-font-weight-bold: 700;
 		--line-height-regular: 1.5;
-		--line-height-heading: 1.2;
-		--spacing-4xl: #{to-rem(64)};
-		--spacing-3xl: #{to-rem(48)};
-		--spacing-2xl: #{to-rem(40)};
-		--spacing-xl: #{to-rem(32)};
-		--spacing-l: #{to-rem(24)};
-		--spacing-m: #{to-rem(16)};
-		--spacing-s: #{to-rem(12)};
-		--spacing-xs: #{to-rem(8)};
-		--spacing-2xs: #{to-rem(4)};
+
+		--ecl-spacing-2xs: #{to-rem(4)};
+		--ecl-spacing-xs: #{to-rem(8)};
+		--ecl-spacing-s: #{to-rem(12)};
+		--ecl-spacing-m: #{to-rem(16)};
+		--ecl-spacing-l: #{to-rem(20)};
+		--ecl-spacing-xl: #{to-rem(24)};
+		--ecl-spacing-2xl: #{to-rem(32)};
+		--ecl-spacing-3xl: #{to-rem(40)};
+		--ecl-spacing-4xl: #{to-rem(48)};
+		--ecl-spacing-5xl: #{to-rem(56)};
+		--ecl-spacing-6xl: #{to-rem(64)};
+		--ecl-shadow-1:
+			0 0 1px var(--ecl-color-dark-06-o), 2px 2px 2px var(--ecl-color-dark-05-o), 4px 4px 6px var(--ecl-color-dark-05-o),
+			0 1px 0 var(--ecl-color-neutral-60) inset;
+		--ecl-shadow-6:
+			0 0 6px var(--ecl-color-dark-06-o), 12px 12px 12px var(--ecl-color-dark-05-o), 24px 24px 36px var(--ecl-color-dark-05-o),
+			0 1px 0 var(--ecl-color-neutral-60) inset;
+		--ecl-shadow-12:
+			0 0 12px var(--ecl-color-dark-06-o), 24px 24px 24px var(--ecl-color-dark-05-o), 48px 48px 72px var(--ecl-color-dark-05-o),
+			0 1px 0 var(--ecl-color-neutral-60) inset;
+		--ecl-shadow-16:
+			0 0 16px var(--ecl-color-dark-06-o), 32px 32px 32px var(--ecl-color-dark-05-o), 64px 64px 96px var(--ecl-color-dark-05-o),
+			0 1px 0 var(--ecl-color-neutral-60) inset;
+		--ecl-max-width: 80ch;
+
+		--ecl-font-size-xs: #{to-rem(12)};
+		--ecl-font-size-s: #{to-rem(14)};
+		--ecl-font-size-m: #{to-rem(16)};
+		--ecl-font-size-l: #{to-rem(20)};
+		--ecl-font-size-xl: #{to-rem(24)};
+		--ecl-font-size-2xl: #{to-rem(28)};
+		--ecl-font-size-3xl: #{to-rem(40)};
+		--ecl-font-size-4xl: #{to-rem(52)};
+
+		--ecl-line-height-xs: #{to-rem(18)};
+		--ecl-line-height-s: #{to-rem(18)};
+		--ecl-line-height-m: #{to-rem(24)};
+		--ecl-line-height-l: #{to-rem(28)};
+		--ecl-line-height-xl: #{to-rem(36)};
+		--ecl-line-height-2xl: #{to-rem(36)};
+		--ecl-line-height-3xl: #{to-rem(44)};
+		--ecl-line-height-4xl: #{to-rem(54)};
 	}
 
 	:host {
-		font-family: var(--font-family);
-		font-size: var(--font-size);
+		color: var(--ecl-color-dark);
+
+		font-family: var(--ecl-font-family-default);
+		font-size: var(--ecl-font-size-m);
+		font-weight: var(--ecl-font-weight);
+		line-height: var(--ecl-line-height-m);
 	}
 
 	a,
@@ -86,28 +145,19 @@
 	h6 {
 		margin: 0;
 		padding: 0;
-
-		font-weight: var(--font-weight-bold);
-		line-height: var(--line-height-heading);
-	}
-
-	p {
-		font-weight: var(--font-weight);
-	}
-
-	.kol-span,
-	.kol-span__container {
-		gap: 0.5em;
-	}
-
-	.required label span::after,
-	.required legend span::after {
-		color: var(--color-red);
-		padding-left: 0.25em;
 	}
 
 	.badge-text-hint {
 		border-radius: 3px;
 		padding: 0 0.3em;
+	}
+
+	.disabled label,
+	.disabled:focus-within label,
+	[aria-disabled='true'],
+	[aria-disabled='true']:focus,
+	[disabled],
+	[disabled]:focus {
+		opacity: 0.5;
 	}
 }

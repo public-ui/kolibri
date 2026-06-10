@@ -4,6 +4,7 @@ import type {
 	MsgPropType,
 	PlaceholderPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropAutoComplete,
 	PropDisabled,
 	PropHideLabel,
@@ -20,6 +21,7 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 import type { InternalButtonProps } from './button';
@@ -35,6 +37,7 @@ type OptionalProps = {
 	step: number | NumberString;
 	value: number | NumberString | null;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropAutoComplete &
 	PropDisabled &
 	PropHideLabel &
@@ -45,7 +48,8 @@ type OptionalProps = {
 	PropReadOnly &
 	PropRequired &
 	PropSuggestions &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = {
 	hasValue: boolean;
@@ -74,7 +78,8 @@ type OptionalStates = {
 	PropRequired &
 	PropSyncValueBySelector &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type InputNumberProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type InputNumberStates = Generic.Element.Members<RequiredStates, OptionalStates>;

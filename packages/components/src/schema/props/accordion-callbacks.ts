@@ -6,6 +6,7 @@ import { watchValidator } from '../utils';
 /* types */
 export type AccordionCallbacksPropType<T> = {
 	[Callback.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
+	[Callback.onToggle]?: EventValueOrEventCallback<MouseEvent, T>;
 };
 
 /**
@@ -17,5 +18,11 @@ export type PropAccordionCallbacks<T> = {
 
 /* validator */
 export const validateAccordionCallbacks = (component: Generic.Element.Component, value?: AccordionCallbacksPropType<boolean>): void => {
-	watchValidator(component, `_on`, (value) => typeof value === 'object' && value !== null, new Set(['AccordionCallbacksPropType {Events.onClick}']), value);
+	watchValidator(
+		component,
+		`_on`,
+		(value) => typeof value === 'object' && value !== null,
+		new Set(['AccordionCallbacksPropType {Events.onClick, Events.onToggle}']),
+		value,
+	);
 };

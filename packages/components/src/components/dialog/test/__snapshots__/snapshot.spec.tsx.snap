@@ -5,7 +5,7 @@ exports[`kol-dialog should render with _label="Blank Dialog" _variant="blank" _w
   <template shadowrootmode="open">
     <kol-dialog-wc>
       <!---->
-      <dialog aria-label="Blank Dialog" class="kol-dialog kol-dialog__blank kol-modal kol-modal__blank" style="width: 80%;">
+      <dialog aria-label="Blank Dialog" aria-modal="true" class="kol-dialog kol-dialog__blank kol-modal kol-modal__blank" style="width: 80%;">
         <slot></slot>
       </dialog>
     </kol-dialog-wc>
@@ -18,8 +18,8 @@ exports[`kol-dialog should render with _label="Dialog as Card" _variant="card" _
   <template shadowrootmode="open">
     <kol-dialog-wc>
       <!---->
-      <dialog aria-label="Dialog as Card" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
-        <kol-card-wc _hascloser="" _label="Dialog as Card">
+      <dialog aria-labelledby="dialog-heading-nonce" aria-modal="true" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
+        <kol-card-wc _hascloser="" _headingid="dialog-heading-nonce" _label="Dialog as Card" _level="0">
           <slot></slot>
         </kol-card-wc>
       </dialog>
@@ -33,7 +33,7 @@ exports[`kol-modal should render with _label="Blank Dialog" _variant="blank" _wi
   <template shadowrootmode="open">
     <kol-dialog-wc>
       <!---->
-      <dialog aria-label="Blank Dialog" class="kol-dialog kol-dialog__blank kol-modal kol-modal__blank" style="width: 80%;">
+      <dialog aria-label="Blank Dialog" aria-modal="true" class="kol-dialog kol-dialog__blank kol-modal kol-modal__blank" style="width: 80%;">
         <slot></slot>
       </dialog>
     </kol-dialog-wc>
@@ -46,8 +46,8 @@ exports[`kol-modal should render with _label="Dialog as Card" _variant="card" _w
   <template shadowrootmode="open">
     <kol-dialog-wc>
       <!---->
-      <dialog aria-label="Dialog as Card" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
-        <kol-card-wc _hascloser="" _label="Dialog as Card">
+      <dialog aria-labelledby="dialog-heading-nonce" aria-modal="true" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
+        <kol-card-wc _hascloser="" _headingid="dialog-heading-nonce" _label="Dialog as Card" _level="0">
           <slot></slot>
         </kol-card-wc>
       </dialog>

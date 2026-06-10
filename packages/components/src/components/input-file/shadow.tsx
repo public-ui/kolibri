@@ -4,6 +4,7 @@ import clsx from '../../utils/clsx';
 
 import type {
 	AcceptPropType,
+	AriaDetailsPropType,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -14,6 +15,7 @@ import type {
 	InputFileStates,
 	InputTypeOnDefault,
 	InternalButtonProps,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	MultiplePropType,
@@ -23,6 +25,7 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import { KolButtonWcTag } from '../../core/component-names';
@@ -30,9 +33,8 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { translate } from '../../i18n';
-import { nonce } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createUniqueId } from '../../utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputFileController } from './controller';
 
 /**
@@ -48,15 +50,11 @@ import { InputFileController } from './controller';
 	shadow: true,
 })
 export class KolInputFile implements InputFileAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolInputFileElement;
-	private inputRef?: HTMLInputElement;
+	@Element() protected readonly host?: HTMLKolInputFileElement;
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	private readonly translateDataBrowseText = translate('kol-data-browse-text');
 	private readonly translateFilenameText = translate('kol-filename-text');
-
-	private readonly setInputRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
-	};
 
 	/**
 	 * Returns the current value.
@@ -64,24 +62,24 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<FileList | null | undefined> {
-		return this.inputRef?.files;
+		return this.ctaRef.el?.files;
 	}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
-	}
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.inputRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	/**
 	 * Resets the component's value.
@@ -93,8 +91,8 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		this.filename = this.translateFilenameText;
 		this.hasFileSelected = false;
 
-		if (this.inputRef) {
-			this.inputRef.value = '';
+		if (this.ctaRef.el) {
+			this.ctaRef.el.value = '';
 		}
 	}
 
@@ -109,7 +107,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 	private getInputProps(): InputStateWrapperProps {
 		return {
-			ref: this.setInputRef,
+			ref: this.ctaRef,
 			state: this.state,
 			type: 'file',
 			accept: this.state._accept,
@@ -151,6 +149,14 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -240,12 +246,17 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() private filename: string = this.translateFilenameText;
 	@State() private hasFileSelected: boolean = false;
 
 	@State() public state: InputFileStates = {
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-file'),
 		_label: '', // ⚠ required
 	};
 
@@ -267,6 +278,11 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
+	}
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
 	}
 
 	@Watch('_disabled')
@@ -344,13 +360,19 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		this.controller.validateTouched(value);
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
+	}
+
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 
 	public componentDidLoad(): void {
-		const container = this.inputRef?.parentElement?.parentElement;
+		const container = this.ctaRef.el?.parentElement?.parentElement;
 		container?.addEventListener('dragover', this.onDragOver);
 		container?.addEventListener('dragleave', this.onDragLeave);
 		container?.addEventListener('drop', this.onDrop);
@@ -358,22 +380,22 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 	private onDragOver = (event: DragEvent): void => {
 		event.preventDefault();
-		this.inputRef?.parentElement?.parentElement?.classList.add('kol-input-container--is-dragover');
+		this.ctaRef.el?.parentElement?.parentElement?.classList.add('kol-input-container--is-dragover');
 	};
 
 	private onDragLeave = (): void => {
-		this.inputRef?.parentElement?.parentElement?.classList.remove('kol-input-container--is-dragover');
+		this.ctaRef.el?.parentElement?.parentElement?.classList.remove('kol-input-container--is-dragover');
 	};
 
 	private onDrop = (event: DragEvent): void => {
 		event.preventDefault();
-		if (!this.inputRef) {
+		if (!this.ctaRef.el) {
 			return;
 		}
-		this.inputRef.parentElement?.parentElement?.classList.remove('kol-input-container--is-dragover');
+		this.ctaRef.el.parentElement?.parentElement?.classList.remove('kol-input-container--is-dragover');
 		if (event.dataTransfer?.files.length) {
 			const files = event.dataTransfer.files;
-			this.inputRef.files = files;
+			this.ctaRef.el.files = files;
 			this.filename = Array.from(files)
 				.map((file) => file.name)
 				.join(', ');
@@ -383,8 +405,8 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		}
 	};
 	private onChange = (event: Event): void => {
-		if (this.inputRef instanceof HTMLInputElement && this.inputRef.type === 'file') {
-			const value = this.inputRef.files;
+		if (this.ctaRef.el instanceof HTMLInputElement && this.ctaRef.el.type === 'file') {
+			const value = this.ctaRef.el.files;
 			this.hasFileSelected = !!value?.length;
 			this.filename = value?.length
 				? Array.from(value)
@@ -398,8 +420,8 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	};
 
 	private onInput = (event: Event): void => {
-		if (this.inputRef instanceof HTMLInputElement && this.inputRef.type === 'file') {
-			const files = this.inputRef.files;
+		if (this.ctaRef.el instanceof HTMLInputElement && this.ctaRef.el.type === 'file') {
+			const files = this.ctaRef.el.files;
 			this.controller.onFacade.onInput(event, false, files);
 		}
 	};

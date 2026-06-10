@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from '../../utils/clsx';
 
 import type {
+	AriaDetailsPropType,
 	CheckedPropType,
 	DisabledPropType,
 	FocusableElement,
@@ -14,6 +15,7 @@ import type {
 	InputCheckboxIconsProp,
 	InputCheckboxStates,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelAlignPropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -26,9 +28,8 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import { nonce } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createUniqueId } from '../../utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputCheckboxController } from './controller';
 
 import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper/CheckboxStateWrapper';
@@ -52,12 +53,8 @@ import { propagateSubmitEventToForm } from '../form/controller';
 	shadow: true,
 })
 export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolInputCheckboxElement;
-	private inputRef?: HTMLInputElement;
-
-	private readonly setInputRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
-	};
+	@Element() protected readonly host?: HTMLKolInputCheckboxElement;
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	private getModelValue(): StencilUnknown {
 		return this._checked ? this.state._value : null;
@@ -76,17 +73,17 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
-	}
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.inputRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
@@ -111,6 +108,15 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 				[`kol-input-checkbox__field-control--variant-${this.state._variant || 'default'}`]: true,
 			}),
 			state: this.state,
+			// Prevent blur/focus cycling when clicking the visible text label while
+			// the checkbox is already focused (Shadow DOM htmlFor-label quirk).
+			fieldControlLabelProps: {
+				onMouseDown: (e: Event) => {
+					if (this.inputHasFocus) {
+						e.preventDefault();
+					}
+				},
+			},
 		};
 	}
 
@@ -118,11 +124,18 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		return {
 			state: this.state,
 			icon: this.getIcon(),
+			// Prevent blur/focus cycling when clicking the icon area while the checkbox
+			// is already focused. Text-label clicks are handled via fieldControlLabelProps.
+			onMouseDown: (e: Event) => {
+				if (this.inputHasFocus && !(e.target instanceof HTMLInputElement)) {
+					e.preventDefault();
+				}
+			},
 			inputProps: {
 				class: clsx({
 					'visually-hidden': this.state._variant === 'button',
 				}),
-				ref: this.setInputRef,
+				ref: this.ctaRef,
 				...this.controller.onFacade,
 				onInput: this.onInput,
 				onChange: this.onChange,
@@ -239,6 +252,14 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Prop() public _required?: boolean = false;
 
 	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
@@ -278,7 +299,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 			indeterminate: 'kolicon-minus',
 			unchecked: 'kolicon-cross',
 		},
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-checkbox'),
 		_indeterminate: false,
 		_label: '', // ⚠ required
 		_value: true,
@@ -299,6 +320,11 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
+	}
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
 	}
 
 	@Watch('_checked')
@@ -393,6 +419,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 
@@ -414,7 +441,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.inputRef,
+				ref: this.ctaRef.el,
 			});
 		}
 	};

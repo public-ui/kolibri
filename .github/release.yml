@@ -1,0 +1,33 @@
+changelog:
+  exclude:
+    labels:
+      - release:ignore
+      - dependabot
+    authors:
+      - dependabot[bot]
+      - dependabot
+  categories:
+    - title: 💥 Breaking Changes
+      labels:
+        - release:breaking-change
+    - title: 🎉 New Features
+      labels:
+        - release:feature
+    - title: 🐞 Bug Fixes
+      labels:
+        - release:fix
+    - title: 🚀 Improvements
+      labels:
+        - release:improvement
+    - title: 🔧 Engineering
+      labels:
+        - release:engineering
+    - title: 📚 Samples
+      labels:
+        - release:sample
+    - title: 🌈 Theming
+      labels:
+        - release:theming
+    - title: 💪 Other Changes
+      labels:
+        - "*"

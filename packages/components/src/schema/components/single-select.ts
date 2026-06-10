@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
@@ -18,6 +19,7 @@ import type {
 	PropShortKey,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, Option, StencilUnknown, Stringified } from '../types';
 
@@ -29,6 +31,7 @@ type OptionalProps = {
 	value: StencilUnknown;
 	hasClearButton: boolean;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
@@ -39,7 +42,8 @@ type OptionalProps = {
 	PropRows &
 	PropSyncValueBySelector &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = {
 	options: Option<StencilUnknown>[];
@@ -60,7 +64,8 @@ type OptionalStates = {
 	PropRows &
 	PropMsg &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type SingleSelectProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type SingleSelectStates = Generic.Element.Members<RequiredStates, OptionalStates>;

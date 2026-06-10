@@ -5,14 +5,14 @@ exports[`kol-card should render with _label="Überschrift" _level=0 _hasCloser=f
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="card-heading-nonce">
           Überschrift
         </strong>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -23,15 +23,15 @@ exports[`kol-card should render with _label="Überschrift" _level=0 _hasCloser=t
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="card-heading-nonce">
           Überschrift
         </strong>
         <div class="kol-card__content">
           <slot></slot>
         </div>
         <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -42,14 +42,14 @@ exports[`kol-card should render with _label="Überschrift" _level=0 1`] = `
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="card-heading-nonce">
           Überschrift
         </strong>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -60,14 +60,14 @@ exports[`kol-card should render with _label="Überschrift" _level=1 _hasCloser=f
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h1 class="kol-card__header kol-headline kol-headline--h1 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h1 class="kol-card__header kol-headline kol-headline--h1 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h1>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -78,15 +78,15 @@ exports[`kol-card should render with _label="Überschrift" _level=1 _hasCloser=t
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h1 class="kol-card__header kol-headline kol-headline--h1 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h1 class="kol-card__header kol-headline kol-headline--h1 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h1>
         <div class="kol-card__content">
           <slot></slot>
         </div>
         <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -97,14 +97,14 @@ exports[`kol-card should render with _label="Überschrift" _level=1 1`] = `
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h1 class="kol-card__header kol-headline kol-headline--h1 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h1 class="kol-card__header kol-headline kol-headline--h1 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h1>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -115,14 +115,14 @@ exports[`kol-card should render with _label="Überschrift" _level=2 _hasCloser=f
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h2 class="kol-card__header kol-headline kol-headline--h2 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h2 class="kol-card__header kol-headline kol-headline--h2 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h2>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -133,15 +133,15 @@ exports[`kol-card should render with _label="Überschrift" _level=2 _hasCloser=t
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h2 class="kol-card__header kol-headline kol-headline--h2 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h2 class="kol-card__header kol-headline kol-headline--h2 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h2>
         <div class="kol-card__content">
           <slot></slot>
         </div>
         <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -152,14 +152,14 @@ exports[`kol-card should render with _label="Überschrift" _level=2 1`] = `
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h2 class="kol-card__header kol-headline kol-headline--h2 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h2 class="kol-card__header kol-headline kol-headline--h2 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h2>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -170,14 +170,14 @@ exports[`kol-card should render with _label="Überschrift" _level=3 _hasCloser=f
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h3 class="kol-card__header kol-headline kol-headline--h3 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h3 class="kol-card__header kol-headline kol-headline--h3 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h3>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -188,15 +188,15 @@ exports[`kol-card should render with _label="Überschrift" _level=3 _hasCloser=t
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h3 class="kol-card__header kol-headline kol-headline--h3 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h3 class="kol-card__header kol-headline kol-headline--h3 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h3>
         <div class="kol-card__content">
           <slot></slot>
         </div>
         <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -207,14 +207,14 @@ exports[`kol-card should render with _label="Überschrift" _level=3 1`] = `
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h3 class="kol-card__header kol-headline kol-headline--h3 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h3 class="kol-card__header kol-headline kol-headline--h3 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h3>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -225,14 +225,14 @@ exports[`kol-card should render with _label="Überschrift" _level=4 _hasCloser=f
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h4 class="kol-card__header kol-headline kol-headline--h4 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h4 class="kol-card__header kol-headline kol-headline--h4 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h4>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -243,15 +243,15 @@ exports[`kol-card should render with _label="Überschrift" _level=4 _hasCloser=t
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h4 class="kol-card__header kol-headline kol-headline--h4 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h4 class="kol-card__header kol-headline kol-headline--h4 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h4>
         <div class="kol-card__content">
           <slot></slot>
         </div>
         <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -262,14 +262,14 @@ exports[`kol-card should render with _label="Überschrift" _level=4 1`] = `
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h4 class="kol-card__header kol-headline kol-headline--h4 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h4 class="kol-card__header kol-headline kol-headline--h4 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h4>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -280,14 +280,14 @@ exports[`kol-card should render with _label="Überschrift" _level=5 _hasCloser=f
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h5 class="kol-card__header kol-headline kol-headline--h5 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h5 class="kol-card__header kol-headline kol-headline--h5 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h5>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -298,15 +298,15 @@ exports[`kol-card should render with _label="Überschrift" _level=5 _hasCloser=t
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h5 class="kol-card__header kol-headline kol-headline--h5 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h5 class="kol-card__header kol-headline kol-headline--h5 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h5>
         <div class="kol-card__content">
           <slot></slot>
         </div>
         <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -317,14 +317,14 @@ exports[`kol-card should render with _label="Überschrift" _level=5 1`] = `
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h5 class="kol-card__header kol-headline kol-headline--h5 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h5 class="kol-card__header kol-headline kol-headline--h5 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h5>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -335,14 +335,14 @@ exports[`kol-card should render with _label="Überschrift" _level=6 _hasCloser=f
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h6 class="kol-card__header kol-headline kol-headline--h6 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h6 class="kol-card__header kol-headline kol-headline--h6 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h6>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -353,15 +353,15 @@ exports[`kol-card should render with _label="Überschrift" _level=6 _hasCloser=t
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h6 class="kol-card__header kol-headline kol-headline--h6 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h6 class="kol-card__header kol-headline kol-headline--h6 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h6>
         <div class="kol-card__content">
           <slot></slot>
         </div>
         <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -372,14 +372,14 @@ exports[`kol-card should render with _label="Überschrift" _level=6 1`] = `
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <h6 class="kol-card__header kol-headline kol-headline--h6 kol-headline--single" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <h6 class="kol-card__header kol-headline kol-headline--h6 kol-headline--single" id="card-heading-nonce">
           Überschrift
         </h6>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>
@@ -390,14 +390,14 @@ exports[`kol-card should render with _label="Überschrift" 1`] = `
   <template shadowrootmode="open">
     <kol-card-wc>
       <!---->
-      <div aria-labelledby="nonce" class="kol-card" role="group">
-        <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="nonce">
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="card-heading-nonce">
           Überschrift
         </strong>
         <div class="kol-card__content">
           <slot></slot>
         </div>
-      </div>
+      </article>
     </kol-card-wc>
   </template>
 </kol-card>

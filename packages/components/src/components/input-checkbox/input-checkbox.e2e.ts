@@ -76,4 +76,106 @@ test.describe(COMPONENT_NAME, () => {
 		const isFocused = await input.evaluate((el) => el === document.activeElement || (el.getRootNode() as ShadowRoot | Document).activeElement === el);
 		expect(isFocused).toBe(true);
 	});
+
+	test(`should not fire blur when clicking label text while checkbox is already focused`, async ({ page }) => {
+		await page.setContent(`<kol-input-checkbox _label="Checkbox"></kol-input-checkbox>`);
+
+		const component = page.locator(COMPONENT_NAME);
+
+		// Focus the checkbox
+		await component.evaluate((el: HTMLKolInputCheckboxElement) => el.focus());
+		await page.waitForChanges();
+
+		// Dispatch mousedown directly on the shadow-DOM text label and verify that
+		// preventDefault() is called. This prevents the browser from triggering the
+		// blur→focus cycle that would occur when the label's htmlFor target is already focused.
+		const defaultPrevented = await page.evaluate(() => {
+			const host = document.querySelector('kol-input-checkbox');
+			const label = host?.shadowRoot?.querySelector('label.kol-field-control__label');
+			if (!label) return null;
+			const event = new MouseEvent('mousedown', { bubbles: true, cancelable: true });
+			label.dispatchEvent(event);
+			return event.defaultPrevented;
+		});
+
+		expect(defaultPrevented).toBe(true);
+	});
+
+	test(`should not fire blur when clicking the checkbox icon while already focused`, async ({ page }) => {
+		await page.setContent(`<kol-input-checkbox _label="Checkbox"></kol-input-checkbox>`);
+
+		const component = page.locator(COMPONENT_NAME);
+
+		// Focus the checkbox
+		await component.evaluate((el: HTMLKolInputCheckboxElement) => el.focus());
+		await page.waitForChanges();
+
+		// The icon element has pointer-events: none in CSS, so real pointer events land on the
+		// enclosing kol-checkbox label. Dispatch mousedown on that label and verify that
+		// preventDefault() is called, preventing a spurious blur→focus cycle.
+		const defaultPrevented = await page.evaluate(() => {
+			const host = document.querySelector('kol-input-checkbox');
+			const checkboxLabel = host?.shadowRoot?.querySelector('label.kol-checkbox');
+			if (!checkboxLabel) return null;
+			const event = new MouseEvent('mousedown', { bubbles: true, cancelable: true });
+			checkboxLabel.dispatchEvent(event);
+			return event.defaultPrevented;
+		});
+
+		expect(defaultPrevented).toBe(true);
+	});
+
+	test.describe('_ariaDetails', () => {
+		test('accepts valid element reference', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Accept" _aria-details="terms-details"></kol-input-checkbox>
+				<div id="terms-details">Terms and conditions apply</div>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
+			expect(value).toBe('terms-details');
+		});
+
+		test('updates when prop changes', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Test" _aria-details="details-1"></kol-input-checkbox>
+				<div id="details-1">Details 1</div>
+				<div id="details-2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const host = page.locator(COMPONENT_NAME);
+			expect(await host.evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails)).toBe('details-1');
+
+			await host.evaluate((el: HTMLKolInputCheckboxElement) => {
+				el._ariaDetails = 'details-2';
+			});
+			await page.waitForChanges();
+
+			expect(await host.evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails)).toBe('details-2');
+		});
+
+		test('handles missing ID gracefully', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Test" _aria-details="non-existent-id"></kol-input-checkbox>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
+			expect(value).toBe('non-existent-id');
+		});
+
+		test('accepts multiple IDs (space-separated)', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Test" _aria-details="id1 id2"></kol-input-checkbox>
+				<div id="id1">Details 1</div>
+				<div id="id2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
+			expect(value).toBe('id1 id2');
+		});
+	});
 });

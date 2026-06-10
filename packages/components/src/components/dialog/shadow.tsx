@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Method, Prop } from '@stencil/core';
 import { KolDialogWcTag } from '../../core/component-names';
-import type { DialogProps, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
+import type { DialogProps, HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 
 /**
@@ -23,23 +23,49 @@ export class KolDialog implements DialogProps {
 
 	/**
 	 * Opens the dialog.
+	 * @deprecated Use showModal() instead.
 	 */
 	@Method()
-	public async openModal() {
-		await this.dialogRef?.openModal();
+	public openModal(): Promise<void> {
+		return this.showModal();
+	}
+
+	/**
+	 * Opens the dialog as a modal.
+	 */
+	@Method()
+	public showModal(): Promise<void> {
+		return this.dialogRef?.showModal() ?? Promise.resolve();
+	}
+
+	/**
+	 * Opens the dialog. Pass true to open as a modal dialog.
+	 */
+	@Method()
+	public show(modal: boolean = false): Promise<void> {
+		return this.dialogRef?.show(modal) ?? Promise.resolve();
 	}
 
 	/**
 	 * Closes the dialog.
 	 */
 	@Method()
-	public async closeModal() {
-		await this.dialogRef?.closeModal();
+	public close(): Promise<void> {
+		return this.dialogRef?.close() ?? Promise.resolve();
+	}
+
+	/**
+	 * Closes the dialog.
+	 * @deprecated Use close() instead.
+	 */
+	@Method()
+	public closeModal(): Promise<void> {
+		return this.close();
 	}
 
 	public render(): JSX.Element {
 		return (
-			<KolDialogWcTag ref={this.catchRef} _label={this._label} _on={this._on} _variant={this._variant} _width={this._width}>
+			<KolDialogWcTag ref={this.catchRef} _label={this._label} _level={this._level} _on={this._on} _variant={this._variant} _width={this._width}>
 				<slot />
 			</KolDialogWcTag>
 		);
@@ -49,6 +75,11 @@ export class KolDialog implements DialogProps {
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
+
+	/**
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 */
+	@Prop() public _level?: HeadingLevel = 0;
 
 	/**
 	 * Defines the modal callback functions.

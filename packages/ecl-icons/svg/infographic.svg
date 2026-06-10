@@ -1,0 +1,23 @@
+<svg
+  width="48"
+  height="48"
+  viewBox="0 0 48 48"
+  xmlns="http://www.w3.org/2000/svg"
+>
+<path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M3 3H15V39H3V3ZM6 36H12V6H6V36Z"
+  />
+<path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M18 9H30V39H18V9ZM21 36H27V12H21V36Z"
+  />
+<path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M33 15V39H45V15H33ZM42 36H36V18H42V36Z"
+  />
+<path d="M3 42H45V45H3V42Z" fill-rule="evenodd" />
+</svg>

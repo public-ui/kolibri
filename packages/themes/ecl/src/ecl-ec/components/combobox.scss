@@ -3,52 +3,28 @@
 @use '../mixins/custom-suggestions-option' as *;
 @use '../mixins/custom-suggestions-options-group' as *;
 @use '../mixins/custom-suggestions-toggle' as *;
-@use '../@shared/input-text' as *;
+@use '../mixins/input-text' as *;
 
 $option-height: to-rem(40);
 $visible-options: 5;
 
 @layer kol-theme-component {
-	@include kol-alert-theme;
+	@include input-text;
+	@include alert;
 	@include kol-custom-suggestions-option-theme($option-height);
 	@include kol-custom-suggestions-options-group-theme($option-height, $visible-options);
 	@include kol-custom-suggestions-toggle-theme;
 
 	.kol-combobox {
 		&__group {
-			color: var(--color-grey);
 			display: inline-flex;
 			width: 100%;
-			min-height: var(--a11y-min-size);
-			min-height: var(--a11y-min-size);
-			padding: to-rem(1) 0.5em;
-			order: 4;
 			align-items: center;
-			align-items: center;
-			text-align: left;
 		}
 
-		&__input {
-			position: relative;
-			width: calc(100% - to-rem(24));
-			flex-grow: 1;
-			border: none;
-
-			&::placeholder {
-				color: var(--color-grey-50);
-			}
-
-			&:first-child {
-				padding-left: var(--spacing);
-			}
-
-			&:last-child {
-				padding-right: var(--spacing);
-			}
-
-			&:focus {
-				border: none;
-			}
+		&__delete {
+			margin-top: -2px;
+			margin-bottom: -2px;
 		}
 	}
 }

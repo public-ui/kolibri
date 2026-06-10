@@ -10,6 +10,7 @@ import type {
 	CustomClassPropType,
 	FocusableElement,
 	IconsPropType,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
 	SplitButtonProps,
@@ -22,8 +23,7 @@ import type {
 import { KolButtonWcTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 
 /**
  * The **SplitButton** component can be used to display a two-part button. The primary button is typically used for
@@ -39,13 +39,9 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 	shadow: true,
 })
 export class KolSplitButton implements SplitButtonProps, FocusableElement /*, SplitButtonAPI*/ {
-	@Element() private readonly host?: HTMLKolSplitButtonElement;
-	private primaryButtonWcRef?: HTMLKolButtonWcElement;
+	@Element() protected readonly host?: HTMLKolSplitButtonElement;
+	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
 	private popoverButtonRef?: HTMLKolPopoverButtonWcElement;
-
-	private readonly setPrimaryButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
-		this.primaryButtonWcRef = ref;
-	};
 
 	private readonly setPopoverButtonRef = (ref?: HTMLKolPopoverButtonWcElement) => {
 		this.popoverButtonRef = ref;
@@ -64,17 +60,17 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.primaryButtonWcRef!));
-	}
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.primaryButtonWcRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private readonly clickButtonHandler = {
 		onClick: (event: MouseEvent) => {
@@ -96,7 +92,7 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 							[this._variant as string]: this._variant !== 'custom',
 							[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 						})}
-						ref={this.setPrimaryButtonWcRef}
+						ref={this.ctaRef}
 						_accessKey={this._accessKey}
 						_ariaControls={this._ariaControls}
 						_ariaDescription={this._ariaDescription}

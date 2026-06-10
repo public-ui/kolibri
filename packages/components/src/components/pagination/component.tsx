@@ -77,51 +77,53 @@ export class KolPaginationWc implements PaginationAPI {
 
 	private readonly getCount = (): number => this.calcCount(this.state._max, this.state._pageSize);
 
-	private getPageStart(): string {
-		return (this.state._page - 1) * this.state._pageSize + 1 + '';
+	private getPageStart(): number {
+		return Math.max(0, (this.state._page - 1) * this.state._pageSize + 1);
 	}
 
-	private getPageEnd(): string {
-		return this.state._page * this.state._pageSize + '';
+	private getPageEnd(): number {
+		const highest = this.state._page * this.state._pageSize;
+		if (this.state._max < highest) {
+			return this.state._max;
+		}
+		return highest;
 	}
 
 	public render(): JSX.Element {
 		let ellipsis = false;
 		const count = this.getCount();
-		const pageButtons = Array.from(Array(count).keys())
-			.map((index: number) => index + 1)
-			.map((page: number) => {
-				if (
-					page <= this.state._boundaryCount ||
-					page > count - this.state._boundaryCount ||
-					(page >= this.state._page - this.state._siblingCount && page <= this.state._page + this.state._siblingCount)
-				) {
-					ellipsis = true;
-					if (this.state._page === page) {
-						return this.getSelectedPageButton(page);
-					} else {
-						return this.getUnselectedPageButton(page);
-					}
-				} else if (ellipsis === true) {
-					ellipsis = false;
-					return (
-						<li key={nonce()}>
-							<span class="kol-pagination__separator" aria-hidden="true"></span>
-						</li>
-					);
+		const pageButtons = Array.from({ length: count }, (_, i) => i + 1).map((page: number) => {
+			if (
+				page <= this.state._boundaryCount ||
+				page > count - this.state._boundaryCount ||
+				(page >= this.state._page - this.state._siblingCount && page <= this.state._page + this.state._siblingCount)
+			) {
+				ellipsis = true;
+				if (this.state._page === page) {
+					return this.getSelectedPageButton(page);
 				} else {
-					return null;
+					return this.getUnselectedPageButton(page);
 				}
-			});
+			} else if (ellipsis === true) {
+				ellipsis = false;
+				return (
+					<li key={nonce()}>
+						<span class="kol-pagination__separator" aria-hidden="true"></span>
+					</li>
+				);
+			} else {
+				return null;
+			}
+		});
 
 		return (
 			<Host class="kol-pagination">
 				<span role="status" aria-live="polite" class="kol-pagination__entries">
 					{translate('kol-table-visible-range', {
 						placeholders: {
-							start: this.getPageStart(),
-							end: this.getPageEnd(),
-							total: this.state._max.toString(),
+							start: NUMBER_FORMATTER.format(this.getPageStart()),
+							end: NUMBER_FORMATTER.format(this.getPageEnd()),
+							total: NUMBER_FORMATTER.format(this.state._max),
 						},
 					})}
 				</span>
@@ -366,7 +368,6 @@ export class KolPaginationWc implements PaginationAPI {
 					class="kol-pagination__button kol-pagination__button--selected selected"
 					_ariaDescription={ariaDescription}
 					_customClass={this.state._customClass}
-					_disabled={true}
 					_label={pageText}
 				></KolButtonWcTag>
 			</li>

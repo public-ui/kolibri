@@ -10,6 +10,7 @@ import type {
 	FocusableElement,
 	HrefPropType,
 	InlinePropType,
+	KolFocusOptions,
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
@@ -20,7 +21,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 @Component({
 	tag: 'kol-link',
@@ -30,25 +31,22 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 	shadow: true,
 })
 export class KolLink implements LinkProps, FocusableElement {
-	@Element() private readonly host?: HTMLKolLinkElement;
-	private linkWcRef?: HTMLKolLinkWcElement;
-
-	private readonly setLinkWcRef = (ref?: HTMLKolLinkWcElement) => {
-		this.linkWcRef = ref;
-	};
+	@Element() protected readonly host?: HTMLKolLinkElement;
+	protected readonly ctaRef = createCtaRef<HTMLKolLinkWcElement>();
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.linkWcRef!));
-	}
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public render(): JSX.Element {
 		return (
 			<KolLinkWcTag
-				ref={this.setLinkWcRef}
+				ref={this.ctaRef}
 				_accessKey={this._accessKey}
 				_ariaCurrentValue={this._ariaCurrentValue}
 				_ariaControls={this._ariaControls}

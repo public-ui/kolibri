@@ -22,18 +22,22 @@
 			}
 		}
 
-		&:not([multiple]) &__option {
-			padding: 0.5em;
+		&[multiple] &__option {
+			padding: 0 to-rem(8);
+
+			&::before {
+				margin-right: to-rem(8);
+			}
 		}
 
 		&:not([multiple], [size]) {
 			height: to-rem(40);
+			// space for the native arrow down icon
+			padding-right: to-rem(16);
 		}
 	}
 
-	.kol-input-container:has(:not(.kol-select[multiple])) {
-		position: relative;
-		padding: 0;
+	.kol-input-container:not(:has(.kol-select[multiple])) {
 		gap: 0;
 		grid-template-columns: auto max-content min-content;
 

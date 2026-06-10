@@ -1,7 +1,7 @@
 import { Component, h, type JSX, Method, Prop } from '@stencil/core';
 
 import { KolTreeItemWcTag } from '../../core/component-names';
-import type { HrefPropType, LabelPropType, OpenPropType, TreeItemProps } from '../../schema';
+import type { HrefPropType, KolFocusOptions, LabelPropType, OpenPropType, TreeItemProps } from '../../schema';
 
 @Component({
 	tag: 'kol-tree-item', // keep in sync with `const TREE_ITEM_TAG_NAME`
@@ -36,8 +36,8 @@ export class KolTreeItem implements TreeItemProps {
 	/**
 	 * Focuses the link element.
 	 */
-	@Method() async focus() {
-		return Promise.resolve(this.element?.focus());
+	@Method() async focus(options?: KolFocusOptions) {
+		return this.element?.focus(options);
 	}
 
 	/**

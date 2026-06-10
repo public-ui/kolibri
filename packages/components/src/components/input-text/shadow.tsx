@@ -2,8 +2,12 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from '../../utils/clsx';
 
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import type {
 	AccessKeyPropType,
+	AriaDetailsPropType,
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
@@ -17,6 +21,7 @@ import type {
 	InputTextTypePropType,
 	InputTypeOnDefault,
 	InternalButtonProps,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MaxLengthBehaviorPropType,
 	MsgPropType,
@@ -30,13 +35,10 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
-
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
-import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import { nonce } from '../../utils/dev.utils';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputTextController } from './controller';
 
@@ -53,13 +55,9 @@ import { InputTextController } from './controller';
 	shadow: true,
 })
 export class KolInputText implements InputTextAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolInputTextElement;
-	private inputRef?: HTMLInputElement;
+	@Element() protected readonly host?: HTMLKolInputTextElement;
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private oldValue?: string;
-
-	private readonly setInputRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
-	};
 
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
@@ -67,7 +65,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	private readonly onChange = (event: Event) => {
-		const value = this.inputRef?.value;
+		const value = this.ctaRef.el?.value;
 
 		if (this.oldValue !== value) {
 			this.oldValue = value;
@@ -82,7 +80,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		this._value = this.inputRef?.value ?? '';
+		this._value = this.ctaRef.el?.value ?? '';
 		this.controller.onFacade.onInput(event);
 	};
 
@@ -92,7 +90,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.inputRef,
+				ref: this.ctaRef.el,
 			});
 		}
 	};
@@ -103,39 +101,39 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
-		return this.inputRef?.value;
+		return this.ctaRef.el?.value;
 	}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
-	}
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
-	 * Focuses the primary interactive element inside this component.
+	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateFocus(this.host!, async () => setFocus(this.inputRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	/**
 	 * Get selection start of internal element.
 	 */
 	@Method()
 	public async selectionStart() {
-		return Promise.resolve(this.inputRef?.selectionStart);
+		return Promise.resolve(this.ctaRef.el?.selectionStart);
 	}
 
 	/**
 	 * Get selection end of internal element.
 	 */
 	@Method()
-	public async selectioconEnd() {
-		return Promise.resolve(this.inputRef?.selectionEnd);
+	public async selectionEnd() {
+		return Promise.resolve(this.ctaRef.el?.selectionEnd);
 	}
 
 	/**
@@ -144,7 +142,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async setSelectionRange(selectionStart: number, selectionEnd: number, selectionDirection?: 'forward' | 'backward' | 'none') {
-		this.inputRef?.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
+		this.ctaRef.el?.setSelectionRange(selectionStart, selectionEnd, selectionDirection);
 	}
 
 	/**
@@ -153,7 +151,7 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async setSelectionStart(selectionStart: number) {
-		this.inputRef?.setSelectionRange(selectionStart, selectionStart);
+		this.ctaRef.el?.setSelectionRange(selectionStart, selectionStart);
 	}
 
 	/**
@@ -162,10 +160,10 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async setRangeText(replacement: string, selectionStart?: number, selectionEnd?: number, selectMode?: 'select' | 'start' | 'end' | 'preserve') {
-		if (selectionStart && selectionEnd) {
-			this.inputRef?.setRangeText(replacement, selectionStart, selectionEnd, selectMode);
+		if (selectionStart !== undefined && selectionEnd !== undefined) {
+			this.ctaRef.el?.setRangeText(replacement, selectionStart, selectionEnd, selectMode);
 		} else {
-			this.inputRef?.setRangeText(replacement);
+			this.ctaRef.el?.setRangeText(replacement);
 		}
 	}
 
@@ -182,10 +180,10 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	}
 
 	private getInputProps(): InputStateWrapperProps {
-		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
-			ref: this.setInputRef,
+			ref: this.ctaRef,
 			state: this.state,
 			ariaDescribedBy,
 			...this.controller.onFacade,
@@ -218,6 +216,16 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
+	}
 
 	/**
 	 * Shows a character counter for the input element.
@@ -352,12 +360,17 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: InputTextStates = {
 		_currentLength: 0,
 		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-text'),
 		_label: '', // ⚠ required
 		_suggestions: [],
 		_type: 'text',
@@ -504,7 +517,14 @@ export class KolInputText implements InputTextAPI, FocusableElement {
 		this.oldValue = value;
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
+	}
+
 	public componentWillLoad(): void {
+		this.validateAriaDetails(this._ariaDetails);
+
 		this._touched = this._touched === true;
 		this.oldValue = this._value;
 		this.controller.componentWillLoad();

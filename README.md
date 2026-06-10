@@ -10,6 +10,8 @@
 
 > "The accessible HTML standard"
 
+KoliBri is **not a design system** in the traditional sense. Rather, we extend the HTML5 standard with self-contained, accessible Web Components — new HTML elements that work independently from any design or branding. These atomic components form a foundation that any design library, framework, or style guide can reuse and theme according to their needs.
+
 **KoliBri** stands for "component library for accessibility" and was released as
 open source by the
 [Informationstechnikzentrum Bund (ITZBund)](https://itzbund.de) for reuse and

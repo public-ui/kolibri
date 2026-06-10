@@ -1,10 +1,10 @@
-import js from '@eslint/js';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 import tsPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default [
 	{
@@ -28,10 +28,7 @@ export default [
 		plugins: {
 			'@typescript-eslint': tsPlugin,
 		},
-		rules: {
-			...js.configs.recommended.rules,
-			...tsPlugin.configs['recommended'].rules,
-		},
+		rules: {},
 	},
 	{
 		files: ['test/**/*.mjs'],
@@ -45,8 +42,6 @@ export default [
 				ecmaVersion: 2022,
 			},
 		},
-		rules: {
-			...js.configs.recommended.rules,
-		},
+		rules: {},
 	},
 ];

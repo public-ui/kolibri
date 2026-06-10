@@ -14,6 +14,7 @@ import type {
 	IconsPropType,
 	IdPropType,
 	InlinePropType,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	PopoverAlignPropType,
 	ShortKeyPropType,
@@ -24,9 +25,8 @@ import type {
 import { validateInline, validatePopoverAlign } from '../../schema';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
 import clsx from '../../utils/clsx';
-import { nonce } from '../../utils/dev.utils';
-import { setClick } from '../../utils/element-click';
-import { setFocus } from '../../utils/element-focus';
+import { createUniqueId } from '../../utils/dev.utils';
+import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 
 /**
  * @internal
@@ -41,10 +41,10 @@ import { setFocus } from '../../utils/element-focus';
 })
 // class implementing PopoverButtonProps and not API because we don't want to repeat the entire state and validation for button props
 export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement {
-	private refButton?: HTMLKolButtonWcElement;
+	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
 	private readonly popoverCtrl = new PopoverController();
 	private popoverElement?: HTMLDivElement;
-	private readonly popoverId = `popover-${nonce()}`;
+	private readonly popoverId = createUniqueId('popover');
 
 	private readonly setPopoverElementRef = (element?: HTMLDivElement) => {
 		this.popoverElement = element;
@@ -52,7 +52,7 @@ export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement 
 	};
 
 	private readonly setButtonElementRef = (element?: HTMLKolButtonWcElement) => {
-		this.refButton = element;
+		this.ctaRef(element);
 		if (element) {
 			this.popoverCtrl.setTriggerElement(element as HTMLElement);
 		}
@@ -93,17 +93,17 @@ export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement 
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return setFocus(this.refButton!);
-	}
+	@directFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return setClick(this.refButton!);
-	}
+	@directClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private handleToggle = (event: Event): void => {
 		this.popoverOpen = (event as ToggleEvent).newState === 'open';

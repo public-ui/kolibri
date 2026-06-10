@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
 import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
-import type { FocusableElement, LabelPropType, ToolbarAPI, ToolbarItemPropType, ToolbarItemsPropType, ToolbarStates } from '../../schema';
+import type { FocusableElement, KolFocusOptions, LabelPropType, ToolbarAPI, ToolbarItemPropType, ToolbarItemsPropType, ToolbarStates } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
@@ -33,10 +33,10 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 	 * Sets focus on the currently active toolbar item.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
+	public async focus(options?: KolFocusOptions): Promise<void> {
 		const firstEnabledItem = this.indexToElement.get(this.currentIndex);
 		if (firstEnabledItem) {
-			return delegateFocus(this.host!, () => setFocus(firstEnabledItem));
+			return delegateFocus(this.host!, () => setFocus(firstEnabledItem, options));
 		}
 	}
 
@@ -154,9 +154,13 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 				break;
 		}
 
-		if (currentIndex === nextIndex) return;
+		if (currentIndex === nextIndex) {
+			return;
+		}
 
-		if (this.state._items?.[nextIndex]?._disabled) return;
+		if (this.state._items?.[nextIndex]?._disabled) {
+			return;
+		}
 
 		this.currentIndex = nextIndex;
 		const item = this.getCurrentToolbarItem(nextIndex);
@@ -168,8 +172,8 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 	/**
 	 * Resets the tabIndexes of the toolbar to default.
 	 */
-	@Listen('blur', { capture: true })
-	public handleBlur(event: FocusEvent) {
+	@Listen('focusout', { capture: true })
+	public handleFocusout(event: FocusEvent) {
 		if (event.target === this.host) this.setFirstEnabledItemIndex();
 	}
 

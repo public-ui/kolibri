@@ -8,7 +8,7 @@ exports[`SpanFC should allow markdown in label 1`] = `
         Bold Label
       </strong>
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
   </span>
 </span>
 `;
@@ -19,7 +19,7 @@ exports[`SpanFC should handle badge text with no match in label 1`] = `
     <span class="kol-span__label">
       Test Label
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
     <kbd aria-hidden="true" class="badge-text-hint">
       X
     </kbd>
@@ -30,7 +30,7 @@ exports[`SpanFC should handle badge text with no match in label 1`] = `
 exports[`SpanFC should hide label when hideLabel is true 1`] = `
 <span class="kol-span kol-span--hide-label">
   <span class="kol-span__container">
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
   </span>
 </span>
 `;
@@ -44,7 +44,7 @@ exports[`SpanFC should render with badge text 1`] = `
         Badge
       </u>
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
     <kbd aria-hidden="true" class="badge-text-hint">
       Badge
     </kbd>
@@ -58,7 +58,7 @@ exports[`SpanFC should render with default props 1`] = `
     <span class="kol-span__label">
       Default Label
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
   </span>
 </span>
 `;
@@ -71,7 +71,7 @@ exports[`SpanFC should render with icons 1`] = `
     <span class="kol-span__label">
       Label with Icons
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right right-icon" role="presentation"></i>
   </span>
   <i aria-hidden="true" class="bottom-icon kol-icon kol-icon__icon kol-span__icon kol-span__icon--bottom" role="presentation"></i>
@@ -84,7 +84,7 @@ exports[`SpanFC should try lowercase badge text variant when no uppercase match 
     <span class="kol-span__label">
       Test Label
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
     <kbd aria-hidden="true" class="badge-text-hint">
       TEST
     </kbd>
@@ -98,7 +98,7 @@ exports[`SpanFC should try uppercase badge text variant when no exact match 1`] 
     <span class="kol-span__label">
       Test Label
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
     <kbd aria-hidden="true" class="badge-text-hint">
       test
     </kbd>
@@ -115,7 +115,7 @@ exports[`SpanFC should underline exact badge text match in label 1`] = `
       </u>
       est Label
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
     <kbd aria-hidden="true" class="badge-text-hint">
       T
     </kbd>
@@ -133,7 +133,7 @@ exports[`SpanFC should underline multi-char badge text in label 1`] = `
       </u>
       Label
     </span>
-    <span aria-hidden="true" class="kol-span__label" hidden=""></span>
+    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
     <kbd aria-hidden="true" class="badge-text-hint">
       st
     </kbd>

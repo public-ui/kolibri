@@ -1,53 +1,37 @@
-import fs from 'fs';
-
-import { MARKUP_EXTENSIONS } from '../../../../types';
-import { filterFilesByExt, MODIFIED_FILES } from '../../../shares/reuse';
 import { AbstractTask } from '../../abstract-task';
+import { AbstractMapPropertyValueToBooleanTask, BooleanPropertyValueMapping } from '../common/AbstractMapPropertyValueToBooleanTask';
 
-export class RenameClearButtonPropTask extends AbstractTask {
-	private constructor(identifier: string, versionRange: string) {
-		super(identifier, 'Rename _hide-clear-button to _has-clear-button', MARKUP_EXTENSIONS, versionRange);
+export class RenameClearButtonPropTask extends AbstractMapPropertyValueToBooleanTask {
+	public static readonly supportedTags = ['kol-combobox', 'kol-single-select'] as const;
+	private static readonly mappings: BooleanPropertyValueMapping[] = [
+		{ fromValue: 'false', result: 'true' },
+		{ fromValue: 'true', result: 'false' },
+	];
+
+	private constructor(identifier: string, tag: (typeof RenameClearButtonPropTask.supportedTags)[number], versionRange: string) {
+		super(
+			identifier,
+			`Rename _hide-clear-button to _has-clear-button for "${tag}"`,
+			tag,
+			'_hide-clear-button',
+			'_has-clear-button',
+			RenameClearButtonPropTask.mappings,
+			versionRange,
+			[],
+			false,
+			'false',
+		);
 	}
 
-	public static getInstance(versionRange: string): RenameClearButtonPropTask {
-		const identifier = 'rename-clear-button-prop';
+	public static getInstance(versionRange: string, tag: (typeof RenameClearButtonPropTask.supportedTags)[number] = 'kol-combobox'): RenameClearButtonPropTask {
+		const identifier = `rename-clear-button-prop-${tag}`;
 		if (!this.instances.has(identifier)) {
-			this.instances.set(identifier, new RenameClearButtonPropTask(identifier, versionRange));
+			this.instances.set(identifier, new RenameClearButtonPropTask(identifier, tag, versionRange));
 		}
 		return this.instances.get(identifier) as RenameClearButtonPropTask;
 	}
-
-	public run(baseDir: string): void {
-		filterFilesByExt(baseDir, MARKUP_EXTENSIONS).forEach((file) => {
-			const content = fs.readFileSync(file, 'utf8');
-			const newContent = content
-				.replace(/_hide-clear-button\s*=\s*"(true|false)"/g, (_match, value: string) => {
-					return `_has-clear-button="${value === 'true' ? 'false' : 'true'}"`;
-				})
-				.replace(/_hide-clear-button\s*=\s*'(true|false)'/g, (_match, value: string) => {
-					return `_has-clear-button='${value === 'true' ? 'false' : 'true'}'`;
-				})
-				.replace(/_hide-clear-button\s*=\s*\{\s*(true|false)\s*\}/g, (_match, value: string) => {
-					return `_has-clear-button={${value === 'true' ? 'false' : 'true'}}`;
-				})
-				.replace(/_hideClearButton\s*=\s*"(true|false)"/g, (_match, value: string) => {
-					return `_hasClearButton="${value === 'true' ? 'false' : 'true'}"`;
-				})
-				.replace(/_hideClearButton\s*=\s*'(true|false)'/g, (_match, value: string) => {
-					return `_hasClearButton='${value === 'true' ? 'false' : 'true'}'`;
-				})
-				.replace(/_hideClearButton\s*=\s*\{\s*(true|false)\s*\}/g, (_match, value: string) => {
-					return `_hasClearButton={${value === 'true' ? 'false' : 'true'}}`;
-				})
-				.replace(/_hide-clear-button(?=[\s/>])/g, '_has-clear-button="false"')
-				.replace(/_hideClearButton(?=[\s/>])/g, '_hasClearButton={false}');
-
-			if (content !== newContent) {
-				fs.writeFileSync(file, newContent);
-				MODIFIED_FILES.add(file);
-			}
-		});
-	}
 }
 
-export const RenameClearButtonPropTasks: AbstractTask[] = [RenameClearButtonPropTask.getInstance('^4')];
+export const RenameClearButtonPropTasks: AbstractTask[] = RenameClearButtonPropTask.supportedTags.map((tag) =>
+	RenameClearButtonPropTask.getInstance('^4', tag),
+);

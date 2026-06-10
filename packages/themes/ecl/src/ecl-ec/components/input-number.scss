@@ -1,1 +1,28 @@
-@use '../@shared/input-text' as *;
+@use '../mixins/input-text' as *;
+
+@layer kol-theme-component {
+	@include input-text;
+
+	.kol-input-number {
+		.kol-input-number__step-button {
+			color: var(--ecl-color-primary);
+
+			font-weight: 700;
+			transition-duration: 0.3s;
+			transition-property: background-color, color;
+
+			&:focus {
+				outline: 0;
+			}
+
+			&:hover {
+				color: var(--ecl-color-white);
+				background-color: var(--ecl-color-primary-140);
+			}
+		}
+
+		.kol-input {
+			min-width: calc(3 * var(--a11y-min-size) + 8px); // at least 2 buttons + text with a11y min size + gaps
+		}
+	}
+}

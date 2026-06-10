@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from '../../utils/clsx';
 
 import type {
+	AriaDetailsPropType,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -11,6 +12,7 @@ import type {
 	InputRadioAPI,
 	InputRadioStates,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -21,9 +23,10 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
-import { nonce } from '../../utils/dev.utils';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -78,8 +81,9 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.getFocusableInput()!));
+	public async focus(options?: KolFocusOptions) {
+		const input = this.getFocusableInput();
+		return delegateFocus(this.host!, () => setFocus(input, options));
 	}
 
 	/**
@@ -195,7 +199,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	private renderOption(option: RadioOption<StencilUnknown>, index: number): JSX.Element {
-		const customId = `${this.state._id}-${index}`;
+		const customId = createRelatedUniqueId(this.state._id, String(index));
 		const selected = this.state._value === option.value;
 
 		return (
@@ -206,6 +210,14 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	private readonly controller: InputRadioController;
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -290,9 +302,14 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: InputRadioStates = {
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-radio'),
 		_label: '', // ⚠ required
 		_options: [],
 		_orientation: 'vertical',
@@ -311,6 +328,11 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	@Watch('_tooltipAlign')
 	public validateTooltipAlign(value?: TooltipAlignPropType): void {
 		this.controller.validateTooltipAlign(value);
+	}
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
 	}
 
 	@Watch('_disabled')
@@ -383,8 +405,14 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		this.controller.validateValue(value);
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
+	}
+
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 

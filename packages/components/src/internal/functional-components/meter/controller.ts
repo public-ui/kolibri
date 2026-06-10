@@ -1,4 +1,5 @@
-import { highProp, labelProp, lowProp, maxProp, minProp, numberValueProp, optimumProp, orientationProp, unitProp } from '../../props';
+import type { OrientationPropType } from '../../props';
+import { clampedNumberValueProp, highProp, labelProp, lowProp, maxProp, minProp, optimumProp, orientationProp, unitProp } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { MeterApi } from './api';
@@ -11,7 +12,6 @@ type MeterData = {
 };
 
 export class MeterController extends BaseController<MeterApi> implements ControllerInterface<MeterApi> {
-	private interval?: ReturnType<typeof setInterval>;
 	private meterData: MeterData = { high: undefined, low: undefined, optimum: undefined };
 
 	public constructor(stateAccess: StateAccess<MeterApi>) {
@@ -29,16 +29,6 @@ export class MeterController extends BaseController<MeterApi> implements Control
 		this.watchOrientation(orientation);
 		this.watchUnit(unit);
 		this.watchValue(value);
-
-		this.setState('liveValue', this.getRenderProp('value'));
-		this.startLiveValueInterval();
-	}
-
-	public destroy(): void {
-		if (this.interval) {
-			clearInterval(this.interval);
-			this.interval = undefined;
-		}
 	}
 
 	public getMeterData(): MeterData {
@@ -74,12 +64,14 @@ export class MeterController extends BaseController<MeterApi> implements Control
 	public watchMax(value?: number): void {
 		maxProp.apply(value, (v) => {
 			this.setRenderProp('max', v);
+			this.watchValue(this.getRawProp('value'));
 		});
 	}
 
 	public watchMin(value?: number): void {
 		minProp.apply(value, (v) => {
 			this.setRenderProp('min', v);
+			this.watchValue(this.getRawProp('value'));
 		});
 	}
 
@@ -93,7 +85,7 @@ export class MeterController extends BaseController<MeterApi> implements Control
 		}
 	}
 
-	public watchOrientation(value?: string): void {
+	public watchOrientation(value?: OrientationPropType): void {
 		orientationProp.apply(value, (v) => {
 			this.setRenderProp('orientation', v);
 		});
@@ -106,17 +98,13 @@ export class MeterController extends BaseController<MeterApi> implements Control
 	}
 
 	public watchValue(value?: number): void {
-		numberValueProp.apply(value, (v) => {
-			this.setRenderProp('value', v);
-		});
-	}
-
-	private startLiveValueInterval(): void {
-		this.interval = setInterval(() => {
-			const value = this.getRenderProp('value');
-			if (this.getState('liveValue') !== value) {
-				this.setState('liveValue', value);
-			}
-		}, 5000);
+		this.setRawProp('value', value);
+		clampedNumberValueProp.apply(
+			value,
+			(v) => {
+				this.setRenderProp('value', v);
+			},
+			{ min: this.getRenderProp('min'), max: this.getRenderProp('max') },
+		);
 	}
 }

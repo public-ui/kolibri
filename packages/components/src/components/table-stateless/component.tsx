@@ -27,8 +27,10 @@ import type {
 	TableSelectionPropType,
 	TableStatelessAPI,
 	TableStatelessStates,
+	VariantClassNamePropType,
 } from '../../schema';
 import {
+	Log,
 	setState,
 	validateFixedCols,
 	validateHasSettingsMenu,
@@ -38,6 +40,7 @@ import {
 	validateTableDataFoot,
 	validateTableHeaderCells,
 	validateTableSelection,
+	validateVariantClassName,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { KoliBriTableSelectionKey } from '../../schema/types';
@@ -57,6 +60,8 @@ const RESIZE_DEBOUNCE_DELAY = 150;
 export class KolTableStatelessWc implements TableStatelessAPI {
 	@Element() private readonly host?: HTMLKolTableStatelessWcElement;
 
+	private tableRef?: HTMLTableElement;
+
 	private readonly translateNoEntries = translate('kol-no-entries');
 
 	@State() public state: TableStatelessStates = {
@@ -75,6 +80,13 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	private cellsToRenderTimeouts = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 	private dataToKeyMap = new Map<KoliBriTableDataType, string>();
 
+	/** Per-render cache for the computed primary headers, keyed by header object reference. */
+	private primaryHeadersCache?: { headers: KoliBriTableHeaders; result: KoliBriTableHeaderCell[]; horizontal: boolean };
+
+	/** Per-render lookup sets for selection state to avoid O(n²) scans of the key arrays per row. */
+	private selectedKeysStringSet = new Set<string>();
+	private disabledKeysStringSet = new Set<string>();
+
 	private checkboxRefs: HTMLInputElement[] = [];
 
 	private translateSort = translate('kol-sort');
@@ -83,6 +95,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	private maxCols: number = 0;
 	private fixedOffsets: number[] = [];
 	private resizeDebounceTimeout?: ReturnType<typeof setTimeout>;
+
+	private settingsChangedCounter = 0;
 
 	@State()
 	private tableDivElementHasScrollbar = false;
@@ -95,6 +109,39 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	 */
 	@State()
 	private previousHeaderCells?: TableHeaderCellsPropType;
+
+	/**
+	 * External label elements forwarded from the public wrapper.
+	 * @internal Use `_ariaLabelledby` on the public `kol-table-stateless` component instead.
+	 */
+	@Prop() public externalLabelElements?: HTMLElement[];
+
+	@Watch('externalLabelElements')
+	protected onExternalLabelElementsChange(value?: HTMLElement[]): void {
+		this.syncTableLabel(value);
+	}
+
+	/**
+	 * @internal Required by TableStatelessAPI. Actual resolution happens in the shadow wrapper
+	 * (kol-table-stateless), which resolves IDs in the correct tree scope and passes the
+	 * resulting HTMLElement[] via externalLabelElements.
+	 */
+	@Prop() public _ariaLabelledby?: string;
+
+	@Watch('_ariaLabelledby')
+	public validateAriaLabelledby(): void {
+		// no-op — resolution is handled by the shadow wrapper via externalLabelElements
+	}
+
+	private syncTableLabel(elements?: HTMLElement[]): void {
+		if (!this.tableRef) return;
+		if ('ariaLabelledByElements' in this.tableRef) {
+			if (elements?.length) {
+				this.tableRef.ariaLabelledByElements = elements;
+			}
+			Log.debug([this.tableRef, !!elements?.length, elements, this.tableRef.ariaLabelledByElements]);
+		}
+	}
 
 	/**
 	 * Defines the primary table data.
@@ -130,6 +177,12 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	 * Defines how rows can be selected and the current selection.
 	 */
 	@Prop() public _selection?: TableSelectionPropType;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 * @internal
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
 
 	/**
 	 * Enables the settings menu if true (default: false).
@@ -191,6 +244,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		this.checkAndUpdateStickyState();
 	}
 
+	@Watch('_variant')
+	public validateVariantClassName(value?: VariantClassNamePropType): void {
+		validateVariantClassName(this, value);
+	}
+
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
 		if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
@@ -228,6 +286,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	public handleSettingsChange(event: CustomEvent<KoliBriTableHeaderCell[][]>) {
 		const updatedHeaderCells = { ...this.state._headerCells, horizontal: event.detail };
 		setState(this, '_headerCells', updatedHeaderCells);
+		this.settingsChangedCounter++;
 
 		// Call the onChangeHeaderCells callback if provided
 		if (typeof this.state._on?.[Callback.onChangeHeaderCells] === 'function') {
@@ -291,6 +350,9 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	}
 
 	private updateDataToKeyMap(data: KoliBriTableDataType[]) {
+		/* Use a Set for O(1) membership checks. Using data.includes() inside the
+		 * cleanup loop below would be O(n²) and dominates rendering for large data sets. */
+		const dataSet = new Set(data);
 		data.forEach((data) => {
 			if (!this.dataToKeyMap.has(data)) {
 				this.dataToKeyMap.set(data, nonce());
@@ -299,7 +361,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 		/* Cleanup old values from map */
 		this.dataToKeyMap.forEach((_, key) => {
-			if (!data.includes(key)) {
+			if (!dataSet.has(key)) {
 				this.dataToKeyMap.delete(key);
 			}
 		});
@@ -406,6 +468,17 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	}
 
 	private getPrimaryHeaders(headers: KoliBriTableHeaders): KoliBriTableHeaderCell[] {
+		/**
+		 * Memoize by reference: within a single render the header object is stable, so this
+		 * avoids rebuilding the primary-header array for every cell (e.g. via getActionColumnHeader),
+		 * which would otherwise be O(rows × cols × headers). The cache invalidates automatically
+		 * whenever a new header object is assigned to the state.
+		 */
+		if (this.primaryHeadersCache?.headers === headers) {
+			this.horizontal = this.primaryHeadersCache.horizontal;
+			return this.primaryHeadersCache.result;
+		}
+
 		let primaryHeaders: KoliBriTableHeaderCell[] = this.getThePrimaryHeadersWithKeyOrRenderFunction(headers.horizontal ?? []);
 
 		/**
@@ -419,6 +492,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 				this.horizontal = false;
 			}
 		}
+
+		this.primaryHeadersCache = { headers, result: primaryHeaders, horizontal: this.horizontal };
 		return primaryHeaders;
 	}
 
@@ -534,13 +609,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			dataField.push(dataRow);
 		}
 		if (data.length === 0) {
-			let colspan = 0;
+			let colspan = this.getVisibleColSpan(headers.horizontal?.[0]);
 			let rowspan = 0;
-			if (Array.isArray(headers.horizontal) && headers.horizontal.length > 0) {
-				headers.horizontal[0].forEach((col) => {
-					colspan += col.colSpan || 1;
-				});
-			}
 
 			if (Array.isArray(headers.vertical) && headers.vertical.length > 0) {
 				colspan -= headers.vertical.length;
@@ -561,6 +631,18 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			}
 		}
 		return dataField;
+	}
+
+	private getVisibleColSpan(cells?: Array<KoliBriTableCell | KoliBriTableHeaderCell>): number {
+		return (
+			cells?.reduce((acc, cell) => {
+				if ('visible' in cell && cell.visible === false) {
+					return acc;
+				}
+
+				return acc + (cell.colSpan || 1);
+			}, 0) ?? 0
+		);
 	}
 
 	private isFixedCol(index: number | undefined): 'left' | 'right' | undefined {
@@ -631,6 +713,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
 		this.validateHasSettingsMenu(this._hasSettingsMenu);
+		this.validateVariantClassName(this._variant);
 	}
 
 	/**
@@ -652,16 +735,9 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		const keyProperty = firstCellData[keyPropertyName] as string | number;
 		const isMultiple = selection.multiple || selection.multiple === undefined;
 
-		const selected = (() => {
-			const v = selection?.selectedKeys;
-			const arr = v === undefined ? [] : Array.isArray(v) ? v : [v];
-			return arr.some((k) => String(k) === String(keyProperty));
-		})();
-		const disabled = (() => {
-			const v = selection?.disabledKeys;
-			const arr = v === undefined ? [] : Array.isArray(v) ? v : [v];
-			return arr.some((k) => String(k) === String(keyProperty));
-		})();
+		const keyPropertyString = String(keyProperty);
+		const selected = this.selectedKeysStringSet.has(keyPropertyString);
+		const disabled = this.disabledKeysStringSet.has(keyPropertyString);
 
 		const label = selection.label(firstCellData);
 		const props = {
@@ -784,10 +860,12 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			const fixed = this.isFixedCol(colIndex);
 			const offsetLeft = fixed === 'left' ? this.getOffsetString(cell.colIndex, true) : undefined;
 			const offsetRight = fixed === 'right' ? this.getOffsetString(cell.colIndex) : undefined;
+			const hasCustomRender = typeof cell.render === 'function';
 
 			return (
 				<td
-					key={`cell-${key}`}
+					// settingsChangedCounter is needed so every cell has a unique key after a settings change and gets rerenderd
+					key={`cell-${key}-${this.settingsChangedCounter}`}
 					class={clsx(
 						'kol-table__cell kol-table__cell--body',
 						cell.textAlign && `kol-table__cell--align-${cell.textAlign}`,
@@ -805,18 +883,14 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						right: offsetRight,
 					}}
 					ref={
-						typeof cell.render === 'function'
+						hasCustomRender
 							? (el) => {
 									this.cellRender(cell as KoliBriTableHeaderCellWithLogic & { render: KoliBriTableRender }, el);
 								}
 							: undefined
 					}
 				>
-					{isActionColumn && actionColumn && cell.data
-						? this.renderActionItems(actionColumn, cell.data, key)
-						: typeof cell.render !== 'function'
-							? cell.label
-							: ''}
+					{isActionColumn && actionColumn && cell.data ? this.renderActionItems(actionColumn, cell.data, key) : !hasCustomRender ? cell.label : ''}
 				</td>
 			);
 		}
@@ -854,37 +928,31 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		return this.state._selection?.keyPropertyName ?? 'id';
 	}
 
+	private static normalizeKeys(value?: KoliBriTableSelectionKey | KoliBriTableSelectionKey[]): KoliBriTableSelectionKey[] {
+		return value === undefined ? [] : Array.isArray(value) ? value : [value];
+	}
+
+	/**
+	 * Rebuilds the per-render lookup sets for the current selection. Doing this once per render
+	 * allows O(1) membership checks per row instead of scanning the full key arrays for every row,
+	 * which would otherwise be O(rows × keys).
+	 */
+	private updateSelectionKeySets() {
+		this.selectedKeysStringSet = new Set(KolTableStatelessWc.normalizeKeys(this.state._selection?.selectedKeys).map(String));
+		this.disabledKeysStringSet = new Set(KolTableStatelessWc.normalizeKeys(this.state._selection?.disabledKeys).map(String));
+	}
+
 	private getDataWithSelectionEnabled() {
 		const keyPropertyName = this.getSelectionKeyPropertyName();
-		return this.state._data.filter((item) => {
-			const v = this.state._selection?.disabledKeys;
-			const arr = v === undefined ? [] : Array.isArray(v) ? v : [v];
-			return !arr.some((k) => String(k) === String(item[keyPropertyName] as KoliBriTableSelectionKey));
-		});
+		return this.state._data.filter((item) => !this.disabledKeysStringSet.has(String(item[keyPropertyName] as KoliBriTableSelectionKey)));
 	}
 
 	private getSelectedKeysWithoutDisabledKeys() {
-		const sel = (() => {
-			const v = this.state._selection?.selectedKeys;
-			return v === undefined ? [] : Array.isArray(v) ? v : [v];
-		})();
-		const dis = (() => {
-			const v = this.state._selection?.disabledKeys;
-			return v === undefined ? [] : Array.isArray(v) ? v : [v];
-		})();
-		return sel.filter((k) => !dis.some((d) => String(d) === String(k)));
+		return KolTableStatelessWc.normalizeKeys(this.state._selection?.selectedKeys).filter((k) => !this.disabledKeysStringSet.has(String(k)));
 	}
 
 	private getSelectedKeysWithDisabledKeysOnly() {
-		const sel = (() => {
-			const v = this.state._selection?.selectedKeys;
-			return v === undefined ? [] : Array.isArray(v) ? v : [v];
-		})();
-		const dis = (() => {
-			const v = this.state._selection?.disabledKeys;
-			return v === undefined ? [] : Array.isArray(v) ? v : [v];
-		})();
-		return sel.filter((k) => dis.some((d) => String(d) === String(k)));
+		return KolTableStatelessWc.normalizeKeys(this.state._selection?.selectedKeys).filter((k) => this.disabledKeysStringSet.has(String(k)));
 	}
 
 	private getRevertedSelection(selectAll: boolean) {
@@ -1152,7 +1220,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private renderSpacer(variant: 'foot' | 'head', cellDefs: KoliBriTableHeaderCell[][] | KoliBriTableCell[][]): JSX.Element {
 		const verticalHeaderColpan = this.state._headerCells.vertical?.length || 0;
-		const colspan = cellDefs?.[0]?.reduce((acc, row) => acc + (row.colSpan || 1), 0);
+		const colspan = this.getVisibleColSpan(cellDefs?.[0]);
 		const selectionCell = this.state._selection ? 1 : 0;
 
 		return (
@@ -1179,33 +1247,49 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	}
 
 	public render(): JSX.Element {
+		this.updateSelectionKeySets();
 		const dataField = this.createDataField(this.state._data, this.state._headerCells);
 		this.checkboxRefs = [];
 
 		const horizontalHeaders = this.state._headerCells.horizontal;
 
+		const showInternalCaption = !this.externalLabelElements?.length;
+
 		return (
-			<div class="kol-table">
+			<div
+				class={clsx('kol-table', {
+					[`kol-table--${this.state._variant as string}`]: this.state._variant !== undefined,
+				})}
+			>
 				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _horizontalHeaderCells={horizontalHeaders ?? []} />}
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
-				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`
+				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`.
+				 * When an external label is active the caption is aria-hidden and must not receive focus — the scroll container div becomes the keyboard stop instead.
 				 */}
 				<div
 					ref={(element) => (this.tableDivElement = element)}
 					class="kol-table__scroll-container"
-					tabindex={this.tableDivElementHasScrollbar ? '-1' : undefined}
+					tabindex={this.tableDivElementHasScrollbar ? (showInternalCaption ? '-1' : '0') : undefined}
 				>
 					<table
+						ref={(el) => {
+							this.tableRef = el as HTMLTableElement;
+							this.syncTableLabel(this.externalLabelElements);
+						}}
+						aria-labelledby={showInternalCaption ? 'caption' : undefined}
 						class="kol-table__table"
 						style={{
 							minWidth: this.getTableMinWidth(),
 						}}
 					>
-						{/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
-						<caption class="kol-table__focus-element kol-table__caption" id="caption" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>
-							{this.state._label}
-						</caption>
+						{/* eslint-disable jsx-a11y/no-noninteractive-tabindex -- caption tabIndex enables keyboard access to scrollable overflow */}
+						{showInternalCaption && (
+							<caption class="kol-table__focus-element kol-table__caption" id="caption" tabindex={this.tableDivElementHasScrollbar ? '0' : undefined}>
+								{this.state._label}
+							</caption>
+						)}
+						{/* eslint-enable jsx-a11y/no-noninteractive-tabindex */}
 
 						{Array.isArray(horizontalHeaders) && (
 							<thead class="kol-table__head">

@@ -25,8 +25,6 @@ export class InputDateController extends InputIconController implements InputDat
 	private static readonly isoTimeRegex = /^[0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?/;
 	private static readonly isoWeekRegex = /^\d{4}-W(?:[0-4]\d|5[0-3])$/;
 
-	private static readonly DEFAULT_MAX_DATE = new Date(9999, 11, 31, 23, 59, 59);
-
 	protected readonly component: Generic.Element.Component & InputDateProps;
 
 	public constructor(component: Generic.Element.Component & InputDateProps, name: string, host?: HTMLElement) {
@@ -153,13 +151,7 @@ export class InputDateController extends InputIconController implements InputDat
 	}
 
 	public validateMax(value?: Iso8601 | Date): void {
-		const ensuredValue =
-			(value === undefined || value === null) &&
-			(this.component._type === 'date' || this.component._type === 'month' || this.component._type === 'datetime-local')
-				? InputDateController.DEFAULT_MAX_DATE
-				: value;
-
-		this.validateIso8601('_max', ensuredValue);
+		this.validateIso8601('_max', value);
 	}
 
 	public validateMin(value?: Iso8601 | Date): void {

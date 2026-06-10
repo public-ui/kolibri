@@ -2,12 +2,5 @@
 @use '../mixins/link' as *;
 
 @layer kol-theme-component {
-	@include kol-link('kol-button');
-
-	.badge-text-hint {
-		color: var(--color-text);
-		background-color: var(--color-mute-variant);
-		border-radius: 3px;
-		padding: 0 0.3em;
-	}
+	@include link('kol-button');
 }

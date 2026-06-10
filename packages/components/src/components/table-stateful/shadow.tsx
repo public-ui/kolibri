@@ -3,12 +3,14 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { KolPaginationWcTag, KolTableStatelessWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
+	ChangeHeaderCellsEventPayload,
 	FixedColsPropType,
 	HasSettingsMenuPropType,
 	KoliBriDataCompareFn,
 	KoliBriPaginationButtonCallbacks,
 	KoliBriSortDirection,
 	KoliBriTableDataType,
+	KoliBriTableHeaderCell,
 	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
@@ -24,6 +26,7 @@ import type {
 	TableSelectionPropType,
 	TableStatefulCallbacksPropType,
 	TableStates,
+	VariantClassNamePropType,
 } from '../../schema';
 import {
 	devHint,
@@ -43,6 +46,8 @@ import {
 	watchValidator,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
+import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
+import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 const PAGINATION_OPTIONS = [10, 20, 50, 100];
@@ -68,6 +73,28 @@ type SortData = {
 })
 export class KolTableStateful implements TableAPI {
 	@Element() private readonly host?: HTMLKolTableStatefulElement;
+
+	private internals?: HostInternals;
+
+	@State() private resolvedElements: HTMLElement[] = [];
+
+	/**
+	 * References an external element by ID that serves as the accessible label for this table.
+	 * Uses ElementInternals.ariaLabelledByElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS) — use `_label` instead.
+	 */
+	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType;
+
+	@Watch('_ariaLabelledby')
+	public validateAriaLabelledby(value?: AriaLabelledbyPropType): void {
+		this.syncExternalLabel(value);
+	}
+
+	private syncExternalLabel(value?: AriaLabelledbyPropType): void {
+		this.resolvedElements = validateAriaLabelledby(this, this.host, this.internals, value);
+	}
+
 	private tableWcRef?: HTMLKolTableStatelessWcElement;
 
 	private readonly catchRef = (ref?: HTMLKolTableStatelessWcElement) => {
@@ -79,6 +106,13 @@ export class KolTableStateful implements TableAPI {
 	private pageStartSlice = 0;
 	private pageEndSlice = 10;
 	private disableSort = false;
+
+	/**
+	 * Holds the header cells adjusted via the settings menu (visibility, width, order). Persisting
+	 * them here ensures the customisation survives re-renders triggered by sorting, pagination,
+	 * selection or data updates instead of being reset to the original `_headers`. (#10344)
+	 */
+	@State() private adjustedHeaderCells?: TableHeaderCells;
 
 	/**
 	 * Defines whether to allow multi sort.
@@ -131,6 +165,11 @@ export class KolTableStateful implements TableAPI {
 	 * Enables the settings menu if true (default: false).
 	 */
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
 
 	@State() public state: TableStates = {
 		_allowMultiSort: false,
@@ -234,6 +273,39 @@ export class KolTableStateful implements TableAPI {
 		}
 	}
 
+	private initializeSortFromHeaders(headers: KoliBriTableHeaders): boolean {
+		let hasSortedCells = false;
+		const applySort = (cells: KoliBriTableHeaderCellWithLogic[]) => {
+			this.sortData = [];
+			cells.forEach((cell) => {
+				if (cell.type !== undefined && cell.type !== 'default') {
+					return;
+				}
+
+				if (typeof cell.compareFn === 'function' && !cell.key) {
+					devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
+					return;
+				}
+				const key = cell.key;
+				if (!key) {
+					return;
+				}
+				const sortDirection = cell.sortDirection;
+				if (sortDirection === 'ASC' || sortDirection === 'DESC') {
+					if (typeof cell.compareFn === 'function') {
+						if (this.state._allowMultiSort || this.sortData.length === 0) {
+							this.sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction: sortDirection });
+						}
+						hasSortedCells = true;
+					}
+				}
+			});
+		};
+		headers.horizontal?.forEach(applySort);
+		headers.vertical?.forEach(applySort);
+		return hasSortedCells;
+	}
+
 	@Watch('_headers')
 	public validateHeaders(value?: Stringified<KoliBriTableHeaders>): void {
 		/**
@@ -256,40 +328,17 @@ export class KolTableStateful implements TableAPI {
 				watchValidator(this, '_headers', (value): boolean => typeof value === 'object' && value !== null, new Set(['KoliBriTableHeaders']), value, {
 					hooks: {
 						beforePatch: (nextValue: unknown) => {
-							const applySort = (headers: KoliBriTableHeaderCellWithLogic[]) => {
-								let hasSortedCells = false;
-								this.sortData = [];
-								headers.forEach((cell) => {
-									if (cell.type !== undefined && cell.type !== 'default') {
-										return;
-									}
-
-									if (typeof cell.compareFn === 'function' && !cell.key) {
-										devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
-										return;
-									}
-									const key = cell.key;
-									if (!key) {
-										return;
-									}
-									const sortDirection = cell.sortDirection;
-									if (sortDirection === 'ASC' || sortDirection === 'DESC') {
-										if (typeof cell.compareFn === 'function') {
-											if (this.state._allowMultiSort || this.sortData.length === 0) {
-												this.sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction: sortDirection });
-											}
-											hasSortedCells = true;
-										}
-									}
-								});
-								if (hasSortedCells) {
-									setTimeout(() => this.updateSortedData());
-								}
-							};
-
 							const headers: KoliBriTableHeaders = nextValue as KoliBriTableHeaders;
-							headers.horizontal?.forEach(applySort);
-							headers.vertical?.forEach(applySort);
+							// Only drop the user's settings when the column structure actually changes. A new
+							// object reference with identical keys (common with inline/non-memoized headers in
+							// React) must keep the customisation. (#10344)
+							if (this.headerKeysChanged(this.state._headers, headers)) {
+								this.adjustedHeaderCells = undefined;
+							}
+							const hasSortedCells = this.initializeSortFromHeaders(headers);
+							if (hasSortedCells) {
+								setTimeout(() => this.updateSortedData());
+							}
 
 							if (headers.horizontal && headers.vertical && headers.horizontal?.length > 0 && headers.vertical?.length > 0) {
 								this.disableSort = true;
@@ -384,6 +433,10 @@ export class KolTableStateful implements TableAPI {
 
 	public componentDidLoad(): void {
 		this.tableWcRef?.addEventListener(KolEvent.selectionChange, this.onSelectionChange);
+		// Re-resolve after mount to avoid depending on timer-based retries.
+		if (!this.resolvedElements.length) {
+			this.syncExternalLabel(this._ariaLabelledby);
+		}
 	}
 
 	public disconnectedCallback(): void {
@@ -391,6 +444,12 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	public componentWillLoad(): void {
+		this.internals = attachInternals(this.host);
+		// Early resolution: if the external element is already in the DOM (common when the
+		// label element is rendered before this component), the first render already uses
+		// externalLabelElements so the AT sees the correct name from the start.
+		this.syncExternalLabel(this._ariaLabelledby);
+
 		this.validateAllowMultiSort(this._allowMultiSort);
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
@@ -463,7 +522,7 @@ export class KolTableStateful implements TableAPI {
 						_pageSizeOptions={this.state._pagination._pageSizeOptions || PAGINATION_OPTIONS}
 						_siblingCount={this.state._pagination._siblingCount}
 						_tooltipAlign="bottom"
-						_max={this.state._pagination._max || this.state._pagination._max || this.state._data.length}
+						_max={this.state._pagination._max || this.state._data.length}
 						_label={label}
 					></KolPaginationWcTag>
 				</div>
@@ -501,7 +560,20 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private handleSort({ key }: SortEventPayload) {
-		const headerCell = [...(this.state._headers.horizontal || []).flat(), ...(this.state._headers.vertical || []).flat()].find((cell) => cell.key === key);
+		const horizontalHeaders = this.state._headers.horizontal ?? [];
+		const verticalHeaders = this.state._headers.vertical ?? [];
+		const allHeaders: KoliBriTableHeaderCellWithLogic[] = [];
+		for (const row of horizontalHeaders) {
+			if (Array.isArray(row)) {
+				allHeaders.push(...row);
+			}
+		}
+		for (const row of verticalHeaders) {
+			if (Array.isArray(row)) {
+				allHeaders.push(...row);
+			}
+		}
+		const headerCell = allHeaders.find((cell) => cell.key === key);
 		if (headerCell) {
 			this.changeCellSort(headerCell);
 		}
@@ -548,6 +620,98 @@ export class KolTableStateful implements TableAPI {
 		return this.getSelectedData(selectedKeys);
 	}
 
+	/**
+	 * Resets the sort state to the default values defined in the `_headers` prop.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async resetSort(): Promise<void> {
+		this.initializeSortFromHeaders(this.state._headers);
+		this.updateSortedData();
+	}
+
+	/**
+	 * Stores the header cells the user adjusted via the settings menu so they are reapplied on the
+	 * next render. Called from the `onChangeHeaderCells` callback of the stateless table. (#10344)
+	 */
+	private readonly handleChangeHeaderCells = (headerCells: ChangeHeaderCellsEventPayload): void => {
+		this.adjustedHeaderCells = headerCells;
+	};
+
+	/**
+	 * Returns true if the set or order of column keys differs between two header definitions. Used to
+	 * decide whether persisted settings are still applicable to a new `_headers` value. (#10344)
+	 */
+	private headerKeysChanged(previous: KoliBriTableHeaders, next: KoliBriTableHeaders): boolean {
+		const getKeys = (headers: KoliBriTableHeaders): string[] => [
+			...(headers.horizontal?.flatMap((row) => row.map((cell) => cell?.key).filter((key): key is string => Boolean(key))) ?? []),
+			...(headers.vertical?.flatMap((column) => column.map((cell) => cell?.key).filter((key): key is string => Boolean(key))) ?? []),
+		];
+		const previousKeys = getKeys(previous);
+		const nextKeys = getKeys(next);
+		return previousKeys.length !== nextKeys.length || previousKeys.some((key, index) => key !== nextKeys[index]);
+	}
+
+	/**
+	 * Merges the user-adjusted header cells (order, visibility, width) back onto the original
+	 * `_headers` definition, matched by `key`. Logic-only fields like `compareFn` and `actions` are
+	 * always taken from the authoritative `_headers` cell, so the adjusted cells never need to carry
+	 * (or lose) them. (#10344)
+	 */
+	private mergeAdjustedHeaderCells(adjusted: KoliBriTableHeaderCell[][]): KoliBriTableHeaderCellWithLogic[][] {
+		const originalByKey = new Map<string, KoliBriTableHeaderCellWithLogic>();
+		this.state._headers.horizontal?.forEach((row) =>
+			row.forEach((cell) => {
+				if (cell?.key) {
+					originalByKey.set(cell.key, cell);
+				}
+			}),
+		);
+
+		return adjusted.map((row) =>
+			row.map((cell) => {
+				const original = cell?.key ? originalByKey.get(cell.key) : undefined;
+				if (!original) {
+					return cell as KoliBriTableHeaderCellWithLogic;
+				}
+				// Keep logic fields from the original definition, overlay only the user-adjustable settings.
+				const merged = { ...original } as KoliBriTableHeaderCellWithLogic;
+				if (cell.visible !== undefined) merged.visible = cell.visible;
+				if (cell.width !== undefined) merged.width = cell.width;
+				if (cell.hidable !== undefined) merged.hidable = cell.hidable;
+				if (cell.sortable !== undefined) merged.sortable = cell.sortable;
+				if (cell.resizable !== undefined) merged.resizable = cell.resizable;
+				return merged;
+			}),
+		);
+	}
+
+	/**
+	 * Builds the header cells passed to the stateless table. When the user has adjusted the columns
+	 * via the settings menu (`adjustedHeaderCells`), those horizontal cells are merged onto the
+	 * original `_headers` so the customisation (visibility, width, order) is preserved. The current
+	 * sort state is always overlaid on top. (#10344)
+	 */
+	private buildHeaderCells(): TableHeaderCells {
+		const overlaySortState = (cell: KoliBriTableHeaderCellWithLogic) =>
+			cell
+				? {
+						...cell,
+						sortDirection: this.getHeaderCellSortState(cell),
+						sortOrder: this.getHeaderCellSortOrder(cell),
+					}
+				: cell;
+
+		const horizontalHeaders = this.adjustedHeaderCells?.horizontal
+			? this.mergeAdjustedHeaderCells(this.adjustedHeaderCells.horizontal)
+			: this.state._headers.horizontal;
+
+		return {
+			horizontal: horizontalHeaders?.map((row) => row.map(overlaySortState)) ?? [],
+			vertical: this.state._headers.vertical?.map((column) => column.map(overlaySortState)) ?? [],
+		};
+	}
+
 	public render(): JSX.Element {
 		const displayedData: KoliBriTableDataType[] = this.selectDisplayedData(
 			this.state._sortedData,
@@ -557,28 +721,12 @@ export class KolTableStateful implements TableAPI {
 		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination('top') : null;
 		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination('bottom') : null;
 
-		const headerCells: TableHeaderCells = {
-			horizontal:
-				this.state._headers.horizontal?.map((row) =>
-					row.map((cell) => ({
-						...cell,
-						sortDirection: this.getHeaderCellSortState(cell),
-						sortOrder: this.getHeaderCellSortOrder(cell),
-					})),
-				) ?? [],
-			vertical:
-				this.state._headers.vertical?.map((column) =>
-					column.map((cell) => ({
-						...cell,
-						sortDirection: this.getHeaderCellSortState(cell),
-						sortOrder: this.getHeaderCellSortOrder(cell),
-					})),
-				) ?? [],
-		};
+		const headerCells: TableHeaderCells = this.buildHeaderCells();
 		return (
 			<Host class="kol-table-stateful">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
 				<KolTableStatelessWcTag
+					externalLabelElements={this.resolvedElements}
 					ref={this.catchRef}
 					_data={displayedData}
 					_fixedCols={this._fixedCols}
@@ -592,9 +740,13 @@ export class KolTableStateful implements TableAPI {
 						onSelectionChange: (event: Event, value: KoliBriTableSelectionKeys) => {
 							this.handleSelectionChange(event, value);
 						},
+						onChangeHeaderCells: (_event: Event, headerCells: ChangeHeaderCellsEventPayload) => {
+							this.handleChangeHeaderCells(headerCells);
+						},
 					}}
 					_selection={this.state._selection}
 					_hasSettingsMenu={this.state._hasSettingsMenu}
+					_variant={this._variant}
 				/>
 				{this.pageEndSlice > 0 && this.showPagination && paginationBottom}
 			</Host>

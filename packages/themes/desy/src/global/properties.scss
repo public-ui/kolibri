@@ -1,0 +1,76 @@
+@layer kol-theme-global {
+	:host {
+		--font-family: 'BundesSans Web', sans-serif;
+
+		--border-width-none: 0;
+		--border-width-s: 1px;
+		--border-width-m: 2px;
+		--border-width-l: 6px;
+
+		--radius-none: 0;
+		--radius-s: 2px;
+		--radius-m: 3px;
+		--radius-l: 6px;
+		--radius-xl: 12px;
+		--radius-round: 50%;
+
+		--color-blue-100: #2d6f9e;
+		--color-blue-100-06: rgb(45, 111, 158, 0.06);
+		--color-blue-100-09: rgb(45, 111, 158, 0.09);
+		--color-blue-100-12: rgb(45, 111, 158, 0.12);
+		--color-blue-40: #dce7ef;
+		--color-blue-30: #e9f0f5;
+		--color-blue-20: #f5f8fa;
+		--color-blue-10: #fbfcfd;
+
+		--color-light-blue-100: #edf8ff;
+		--color-light-blue-40: #dcf1ff;
+		--color-light-blue-30: #edf8ff;
+
+		--color-dark-blue-100: #1f3347;
+		--color-dark-blue-100-06: rgb(31, 51, 71, 0.06);
+		--color-dark-blue-100-09: rgb(31, 51, 71, 0.09);
+		--color-dark-blue-100-16: rgb(31, 51, 71, 0.16);
+		--color-dark-blue-70: #6f7c89;
+		--color-dark-blue-60: #b6bcc3;
+		--color-dark-blue-40: #dadde0;
+		--color-dark-blue-30: #eceeef;
+		--color-dark-blue-20: #f5f6f7;
+
+		--color-green-100: #008a27;
+		--color-green-20: #f5fbf5;
+		--color-green-10: #fcfefc;
+
+		--color-yellow-100: #ff980c;
+		--color-yellow-60: #ffdeb0;
+		--color-yellow-30: #fff7eb;
+		--color-yellow-20: #fffbf5;
+		--color-yellow-10: #fffefc;
+
+		--color-red-100: #cd1408;
+		--color-red-100-06: rgb(205, 21, 8, 0.06);
+		--color-red-20: #fdf5f5;
+		--color-red-10: #fffcfc;
+
+		--color-black-100: #000000;
+		--color-black-100-12: rgb(0, 0, 0, 0.12);
+		--color-black-100-24: rgb(0, 0, 0, 0.24);
+		--color-black-100-30: rgb(0, 0, 0, 0.3);
+		--color-black-70: #6c6c6c;
+		--color-black-60: #b2b2b2;
+		--color-black-10: #fcfcfc;
+
+		--color-white-100: #ffffff;
+
+		--color-transparent: transparent;
+
+		--color-text: var(--kolibri-color-text, #202020);
+		--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
+
+		--small-chevron-down: '\ea22';
+		--small-chevron-right: '\ea24';
+		--small-chevron-left: '\ea23';
+
+		--big-chevron-down: '\ea1d';
+	}
+}

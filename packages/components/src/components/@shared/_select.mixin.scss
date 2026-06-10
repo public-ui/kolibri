@@ -13,6 +13,7 @@
 	.kol-select {
 		background-color: transparent;
 		width: 100%;
+		padding: 0; // for firefox
 
 		&:not(:disabled) {
 			cursor: pointer;
@@ -30,9 +31,10 @@
 			content: '✓ ';
 		}
 
-		/* needed hack for vertical alignment */
 		&[multiple] option {
-			padding: calc((var(--a11y-min-size) - to-rem(16)) / 2) 0.5em;
+			display: flex;
+			min-height: var(--a11y-min-size);
+			align-items: center;
 		}
 	}
 }

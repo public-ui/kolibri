@@ -39,6 +39,12 @@
 			text-align: start;
 		}
 
+		// table without caption but settings needs space above for the settings button
+		kol-table-settings-wc:not(:has(~ &__scroll-container &__caption)) {
+			display: block;
+			min-height: var(--a11y-min-size);
+		}
+
 		&__sort-button {
 			.kol-button {
 				color: inherit;
@@ -176,7 +182,7 @@
 				}
 
 				&--checkbox {
-					background-color: rgb(255, 255, 255);
+					background-color: white;
 					display: flex;
 					position: relative;
 					min-width: calc(var(--a11y-min-size) / 2);
@@ -206,7 +212,7 @@
 					}
 
 					&:checked:before {
-						background-color: #000;
+						background-color: black;
 
 						@media (forced-colors: active) {
 							/* Give it a visible background in forced colors mode */

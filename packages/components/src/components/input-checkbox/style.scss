@@ -2,11 +2,13 @@
 @use '../@shared/field-control.mixin' as *;
 @use '../@shared/form-field.mixin' as *;
 @use '../@shared/mixins' as *;
+@use '../@shared/alert.mixin' as *;
 @use '../@shared/icon.mixin' as *;
 @use '../host-display-block' as *;
 @use '../tooltip/style' as *;
 
 @layer kol-component {
+	@include kol-alert;
 	@include kol-form-field;
 	@include kol-field-control;
 	@include kol-icon-styles();
@@ -32,7 +34,7 @@
 		}
 
 		.kol-input {
-			background-color: #fff;
+			background-color: white;
 			border-style: solid;
 			margin: 0;
 			border-width: 2px;
@@ -89,7 +91,7 @@
 			height: 1.7em;
 
 			&::before {
-				background-color: #000;
+				background-color: black;
 				position: absolute;
 				top: calc(0.25em - to-rem(2));
 				left: calc(0.25em - to-rem(2));
@@ -109,7 +111,7 @@
 
 		.kol-icon {
 			transform: translate(0, -50%);
-			color: #000;
+			color: black;
 			display: flex;
 			position: absolute;
 			top: 50%;

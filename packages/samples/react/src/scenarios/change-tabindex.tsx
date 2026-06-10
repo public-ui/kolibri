@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/tabindex-no-positive */
-
 import type { Option, StencilUnknown } from '@public-ui/components';
 import {
 	KolButton,
@@ -159,7 +157,7 @@ export const ChangeTabindex: FC = () => {
 							_label="InputRadio 3, Tabindex 2"
 							_msg={{ _type: 'error', _description: ERROR_MSG }}
 							tabIndex={2}
-						/>{' '}
+						/>
 						<KolInputRadio
 							_options="[{'label':'Mrs.','value':'Mrs.'},{'disabled':true,'label':'Mr. (disabled)','value':'Mr.'},{'label':'Company','value':'Company'}]"
 							_label="InputRadio 4, Tabindex 1"

@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from '../../utils/clsx';
 
 import type {
+	AriaDetailsPropType,
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
@@ -15,6 +16,7 @@ import type {
 	InputPasswordStates,
 	InputTypeOnDefault,
 	InternalButtonProps,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MaxLengthBehaviorPropType,
 	MsgPropType,
@@ -26,6 +28,8 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
+	VisibilityTogglePropType,
 } from '../../schema';
 import { devHint } from '../../schema';
 
@@ -34,10 +38,8 @@ import KolInputContainerStateWrapperFc from '../../functional-component-wrappers
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
-import type { PasswordVariantPropType } from '../../schema/props/variant/password-variant';
-import { nonce } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputPasswordController } from './controller';
 
@@ -54,15 +56,11 @@ import { InputPasswordController } from './controller';
 	shadow: true,
 })
 export class KolInputPassword implements InputPasswordAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolInputPasswordElement;
-	private inputRef?: HTMLInputElement;
+	@Element() protected readonly host?: HTMLKolInputPasswordElement;
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	private readonly translateHidePassword = translate('kol-hide-password');
 	private readonly translateShowPassword = translate('kol-show-password');
-
-	private readonly setInputRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
-	};
 
 	/**
 	 * Returns the current value.
@@ -70,24 +68,24 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
-		return this.inputRef?.value;
+		return this.ctaRef.el?.value;
 	}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
-	}
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.inputRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		this.controller.onFacade.onKeyDown(event);
@@ -95,7 +93,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.inputRef,
+				ref: this.ctaRef.el,
 			});
 		}
 	};
@@ -118,11 +116,12 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	private getInputProps(): InputStateWrapperProps {
-		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
-			ref: this.setInputRef,
-			type: this._passwordVisible ? 'text' : 'password',
+			ref: this.ctaRef,
+			// TODO v5: remove `_variant === 'visibility-toggle'` backwards-compat fallback
+			type: (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') && this._passwordVisible ? 'text' : 'password',
 			state: this.state,
 			ariaDescribedBy,
 			...this.controller.onFacade,
@@ -140,25 +139,26 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	}
 
 	private getShowPasswordButton(): VNode | null {
-		if (this._variant !== 'visibility-toggle') {
-			return null;
+		// TODO v5: remove `_variant === 'visibility-toggle'` backwards-compat fallback
+		if (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') {
+			return (
+				<KolIconButtonFc
+					componentName="button"
+					class="kol-input-password__password-toggle-button kol-input-container__smart-button"
+					data-testid="kol-input-password-toggle-button"
+					label={this._passwordVisible ? this.translateHidePassword : this.translateShowPassword}
+					buttonVariant="ghost"
+					onClick={(): void => {
+						this._passwordVisible = !this._passwordVisible;
+						this.ctaRef.el?.focus();
+					}}
+					icon={`${this._passwordVisible ? 'kolicon-eye-closed' : 'kolicon-eye'}`}
+					disabled={this._disabled}
+				/>
+			);
 		}
 
-		return (
-			<KolIconButtonFc
-				componentName="button"
-				class="kol-input-password__password-toggle-button kol-input-container__smart-button"
-				data-testid="kol-input-password-toggle-button"
-				label={this._passwordVisible ? this.translateHidePassword : this.translateShowPassword}
-				buttonVariant="ghost"
-				onClick={(): void => {
-					this._passwordVisible = !this._passwordVisible;
-					this.inputRef?.focus();
-				}}
-				icon={`${this._passwordVisible ? 'kolicon-eye-closed' : 'kolicon-eye'}`}
-				disabled={this._disabled}
-			/>
-		);
+		return null;
 	}
 
 	public render(): JSX.Element {
@@ -177,6 +177,14 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -304,16 +312,21 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: PasswordVariantPropType = 'default';
+	@Prop() public _variant?: VariantClassNamePropType;
+
+	/**
+	 * Activates the show password button
+	 */
+	@Prop() public _visibilityToggle?: VisibilityTogglePropType = false;
 
 	@State() public state: InputPasswordStates = {
 		_currentLength: 0,
 		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-password'),
 		_label: '', // ⚠ required
-		_variant: 'default',
+		_visibilityToggle: false,
 	};
 	@State() private _passwordVisible: boolean = false;
 	@State() private inputHasFocus = false;
@@ -329,6 +342,11 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
+	}
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
 	}
 
 	@Watch('_autoComplete')
@@ -348,8 +366,9 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
 	}
+
 	@Watch('_variant')
-	public validateVariant(value?: PasswordVariantPropType): void {
+	public validateVariant(value?: VariantClassNamePropType): void {
 		this.controller.validateVariant(value);
 	}
 
@@ -448,8 +467,14 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 		this.controller.validateValue(value);
 	}
 
+	@Watch('_visibilityToggle')
+	public validateVisibilityToggle(value?: boolean): void {
+		this.controller.validateVisibilityToggle(value);
+	}
+
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 
 		this.state._hasValue = !!this.state._value;

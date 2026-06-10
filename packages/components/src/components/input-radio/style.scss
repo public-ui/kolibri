@@ -74,7 +74,7 @@
 
 			&:checked {
 				&:before {
-					background-color: #000;
+					background-color: black;
 
 					@media (forced-colors: active) {
 						/* Give it a visible background in forced colors mode */
@@ -84,7 +84,6 @@
 			}
 
 			&:disabled {
-				opacity: 0.5;
 				cursor: not-allowed;
 			}
 		}

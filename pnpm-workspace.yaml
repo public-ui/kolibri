@@ -8,12 +8,14 @@ packages:
   - packages/adapters/vue
   - packages/components
   - packages/icons
+  - packages/ecl-icons
   - packages/samples/angular
   - packages/samples/presentation
   - packages/samples/react
   - packages/test-tag-name-transformer
   - packages/themes/bwst
   - packages/themes/default
+  - packages/themes/desy
   - packages/themes/ecl
   - packages/themes/kern
   - packages/themes
@@ -23,3 +25,11 @@ packages:
   - packages/tools/mcp
   - packages/tools/stylelint-rules
   - packages/tools/visual-tests
+allowBuilds:
+  '@evilmartians/lefthook': true
+  '@modelcontextprotocol/ext-apps': true
+  chromedriver: true
+  edgedriver: true
+  esbuild: true
+  protobufjs: true
+  unrs-resolver: true

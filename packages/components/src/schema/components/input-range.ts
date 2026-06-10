@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropAutoComplete,
 	PropDisabled,
 	PropHideLabel,
@@ -17,6 +18,7 @@ import type {
 	PropSuggestions,
 	PropSyncValueBySelector,
 	PropTouched,
+	PropVariantClassName,
 } from '../props';
 import type { InputTypeOnDefault, KoliBriHIcons, NumberString, Stringified, W3CInputValue } from '../types';
 
@@ -29,6 +31,7 @@ type OptionalProps = {
 	step: number | NumberString;
 	value: number | NumberString;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropAutoComplete &
 	PropDisabled &
 	PropHideMsg &
@@ -39,7 +42,8 @@ type OptionalProps = {
 	PropSuggestions &
 	PropSyncValueBySelector &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 type RequiredStates = {
 	suggestions: W3CInputValue[];
@@ -61,7 +65,8 @@ type OptionalStates = {
 	PropMsg &
 	PropName &
 	PropShortKey &
-	PropTouched;
+	PropTouched &
+	PropVariantClassName;
 
 export type InputRangeProps = Generic.Element.Members<RequiredProps, OptionalProps>;
 export type InputRangeStates = Generic.Element.Members<RequiredStates, OptionalStates>;

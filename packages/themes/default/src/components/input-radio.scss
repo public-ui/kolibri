@@ -24,11 +24,6 @@
 			font-weight: 700;
 		}
 
-		&__label {
-			display: inline-block;
-			padding: 0;
-		}
-
 		&__input {
 			gap: to-rem(4);
 
@@ -36,6 +31,10 @@
 				margin-top: calc(var(--spacing) / 2);
 				gap: var(--spacing) calc(var(--spacing) * 2);
 			}
+		}
+
+		&__msg {
+			order: 4;
 		}
 	}
 
@@ -76,6 +75,7 @@
 			}
 
 			&:disabled {
+				opacity: 0.5;
 				background-color: var(--color-mute-variant);
 			}
 		}

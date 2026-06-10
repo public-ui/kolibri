@@ -4,6 +4,7 @@ import type {
 	AlignPropType,
 	ButtonCallbacksPropType,
 	FocusableElement,
+	KolFocusOptions,
 	KoliBriTabsCallbacks,
 	LabelPropType,
 	StencilUnknown,
@@ -32,8 +33,7 @@ import { KeyboardKey } from '../../schema/enums';
 import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
 import { validateHasCreateButton } from '../../schema/props/has-create-button';
 import clsx from '../../utils/clsx';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
 
@@ -48,11 +48,11 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	shadow: true,
 })
 export class KolTabs implements TabsAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolTabsElement;
+	@Element() protected readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;
 	private currentFocusIndex: number | undefined;
-	private currentTabButtonRef?: HTMLKolButtonWcElement;
+	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
 
 	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
 		const nextOffset = offset + step;
@@ -163,21 +163,17 @@ export class KolTabs implements TabsAPI, FocusableElement {
 	 * Sets focus on the current tab button.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.currentTabButtonRef!));
-	}
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Triggers a click on the currently selected tab.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.currentTabButtonRef!));
-	}
-
-	private readonly setCurrentTabButtonRef = (ref?: HTMLKolButtonWcElement) => {
-		this.currentTabButtonRef = ref;
-	};
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private renderButtonGroup() {
 		return (
@@ -186,7 +182,7 @@ export class KolTabs implements TabsAPI, FocusableElement {
 			<div aria-label={this.state._label} class="kol-tabs__button-group" role="tablist" onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
 				{this.state._tabs.map((button: TabButtonProps, index: number) => (
 					<KolButtonWcTag
-						ref={this.state._selected === index ? this.setCurrentTabButtonRef : undefined}
+						ref={this.state._selected === index ? this.ctaRef : undefined}
 						_disabled={button._disabled}
 						_icons={button._icons}
 						_hideLabel={button._hideLabel}

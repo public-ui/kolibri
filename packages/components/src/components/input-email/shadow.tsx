@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from '../../utils/clsx';
 
 import type {
+	AriaDetailsPropType,
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
@@ -15,6 +16,7 @@ import type {
 	InputEmailStates,
 	InputTypeOnDefault,
 	InternalButtonProps,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MaxLengthBehaviorPropType,
 	MsgPropType,
@@ -28,14 +30,14 @@ import type {
 	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import { nonce } from '../../utils/dev.utils';
-import { delegateClick, setClick } from '../../utils/element-click';
-import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputEmailController } from './controller';
 
@@ -52,12 +54,8 @@ import { InputEmailController } from './controller';
 	shadow: true,
 })
 export class KolInputEmail implements InputEmailAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolInputEmailElement;
-	private inputRef?: HTMLInputElement;
-
-	private readonly setInputRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
-	};
+	@Element() protected readonly host?: HTMLKolInputEmailElement;
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	/**
 	 * Returns the current value.
@@ -65,24 +63,24 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<string | undefined> {
-		return this.inputRef?.value;
+		return this.ctaRef.el?.value;
 	}
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus() {
-		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
-	}
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.inputRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		this.controller.onFacade.onKeyDown(event);
@@ -90,7 +88,7 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: this.inputRef,
+				ref: this.ctaRef.el,
 			});
 		}
 	};
@@ -113,10 +111,10 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	}
 
 	private getInputProps(): InputStateWrapperProps {
-		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [`${this.state._id}-character-limit-hint`] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
 
 		return {
-			ref: this.setInputRef,
+			ref: this.ctaRef,
 			state: this.state,
 			type: 'email',
 			ariaDescribedBy,
@@ -150,6 +148,14 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -284,12 +290,17 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: InputEmailStates = {
 		_currentLength: 0,
 		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('input-email'),
 		_label: '', // ⚠ required
 		_suggestions: [],
 	};
@@ -307,6 +318,11 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
+	}
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
 	}
 
 	@Watch('_autoComplete')
@@ -429,8 +445,14 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 		this.controller.validateMaxLengthBehavior(value);
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
+	}
+
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 
 		this.state._hasValue = !!this.state._value;

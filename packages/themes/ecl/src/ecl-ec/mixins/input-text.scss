@@ -1,33 +1,62 @@
 @use '../../mixins/to-rem' as *;
+@use './input-container' as *;
 
-@mixin kol-input-text-theme {
-	.kol-input,
-	.kol-select,
-	.kol-textarea {
-		outline: none;
-		margin: to-rem(1);
+@mixin input-text($clickable-classname: 'kol-input') {
+	@include input-container;
+
+	.kol-input {
+		background-color: transparent;
+		height: to-rem(40);
+		padding: 0 to-rem(15);
 		border: none;
-	}
 
-	.kol-input,
-	.kol-select:not([multiple]) {
-		height: var(--a11y-min-size);
-		min-height: var(--a11y-min-size);
-	}
+		&::placeholder {
+			color: var(--ecl-color-dark-60);
+		}
 
-	.kol-input,
-	.kol-select,
-	.kol-textarea {
-		&:focus {
-			border-bottom: 1px solid var(--color-blue);
-			border-top: 1px solid var(--color-blue);
+		&--disabled {
+			opacity: 1;
 		}
 	}
 
-	.kol-input,
-	.kol-textarea {
-		&::placeholder {
-			color: var(--color-grey-50);
+	.kol-input-container {
+		padding: 0;
+		gap: 0;
+		grid-template-columns: auto max-content min-content;
+
+		&__adornment {
+			position: absolute;
+			top: to-rem(-1);
+
+			&--start {
+				left: 0;
+			}
+
+			&--end {
+				right: 0;
+			}
+		}
+
+		&:has(&__adornment--start:not(:empty)) .#{$clickable-classname} {
+			padding-left: to-rem(48);
+		}
+
+		&:has(&__adornment--start &__smart-button + &__icon) .#{$clickable-classname} {
+			padding-left: to-rem(76);
+		}
+
+		&:has(&__adornment--end:not(:empty)) .#{$clickable-classname} {
+			padding-right: to-rem(48);
+		}
+
+		&:has(&__adornment--end &__icon + &__smart-button) .#{$clickable-classname},
+		&:has(&__adornment--end &__smart-button + &__icon) .#{$clickable-classname} {
+			padding-right: to-rem(76);
+		}
+
+		&__container {
+			position: relative;
+			z-index: 1;
 		}
 	}
 }

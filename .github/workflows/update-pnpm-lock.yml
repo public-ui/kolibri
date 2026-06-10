@@ -1,0 +1,150 @@
+name: 04 - Update pnpm Lock
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_branch:
+        description: 'Branch that should receive a refreshed pnpm-lock.yaml'
+        required: true
+        type: string
+
+concurrency:
+  group: 'workflow-${{ github.workflow }}-${{ inputs.target_branch }}'
+  cancel-in-progress: true
+
+jobs:
+  validate-branch:
+    runs-on: ubuntu-latest
+    outputs:
+      target_branch: ${{ steps.validate.outputs.target_branch }}
+    steps:
+      - name: Validate target branch
+        id: validate
+        run: |
+          RAW_TARGET_BRANCH='${{ inputs.target_branch }}'
+          TARGET_BRANCH="${RAW_TARGET_BRANCH#refs/heads/}"
+          TARGET_BRANCH="${TARGET_BRANCH#origin/}"
+
+          if [ -z "$TARGET_BRANCH" ]; then
+            echo 'The workflow requires a target branch.' >&2
+            exit 1
+          fi
+
+          if [ "${TARGET_BRANCH#refs/}" != "$TARGET_BRANCH" ]; then
+            echo "Use a branch name instead of a ref: '$RAW_TARGET_BRANCH'." >&2
+            exit 1
+          fi
+
+          if ! LC_ALL=C printf '%s' "$TARGET_BRANCH" | grep -Eq '^[ -~]+$'; then
+            echo "Branch '$TARGET_BRANCH' must only contain printable ASCII characters." >&2
+            exit 1
+          fi
+
+          if ! git check-ref-format --branch "$TARGET_BRANCH" >/dev/null 2>&1; then
+            echo "Branch '$TARGET_BRANCH' is not a valid branch name." >&2
+            exit 1
+          fi
+
+          case "$TARGET_BRANCH" in
+            develop|release/*)
+              echo "The workflow must not run for branch '$TARGET_BRANCH'." >&2
+              exit 1
+              ;;
+          esac
+
+          echo "target_branch=$TARGET_BRANCH" >> "$GITHUB_OUTPUT"
+
+  update:
+    needs: validate-branch
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.detect.outputs.changed }}
+    steps:
+      - name: Checkout target branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.validate-branch.outputs.target_branch }}
+          persist-credentials: false
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v6
+        with:
+          version: 10
+          run_install: false
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Refresh pnpm lock file
+        run: pnpm install --ignore-scripts --lockfile-only --no-frozen-lockfile
+
+      - name: Git status after lock file refresh
+        run: git status
+
+      - name: Check for lock file changes
+        id: detect
+        run: |
+          if git diff --quiet -- pnpm-lock.yaml; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload lock file artifact
+        if: steps.detect.outputs.changed == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: pnpm-lock-${{ github.run_id }}
+          path: pnpm-lock.yaml
+          if-no-files-found: error
+          retention-days: 1
+
+  push:
+    needs: [validate-branch, update]
+    if: needs.update.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          client-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Get GitHub App User ID
+        id: get-user-id
+        run: echo "user-id=$(gh api "/users/${{ steps.app-token.outputs.app-slug }}[bot]" --jq .id)" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+
+      - name: Checkout target branch
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.validate-branch.outputs.target_branch }}
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Download lock file artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: pnpm-lock-${{ github.run_id }}
+          path: lockfile-artifact
+
+      - name: Apply lock file update
+        run: cp lockfile-artifact/pnpm-lock.yaml pnpm-lock.yaml
+
+      - name: Stage lock file
+        run: git add pnpm-lock.yaml
+
+      - name: Git status after staging
+        run: git status
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: 'chore: update pnpm-lock.yaml'
+          # Disable internal git add so that only the file staged above is committed.
+          file_pattern: ''
+          commit_user_name: '${{ steps.app-token.outputs.app-slug }}[bot]'
+          commit_user_email: '${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com'

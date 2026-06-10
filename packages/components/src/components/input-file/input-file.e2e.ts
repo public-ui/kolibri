@@ -1,3 +1,5 @@
+import { Buffer } from 'buffer';
+
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputCallbacksAndEvents } from '../../e2e';
@@ -12,7 +14,7 @@ const fillAction: FillAction = async (page) => {
 	await page.locator('input').setInputFiles({
 		name: 'file.txt',
 		mimeType: 'text/plain',
-		buffer: Buffer.from('this is test'),
+		buffer: Buffer.from('this is test', 'utf8'),
 	});
 };
 

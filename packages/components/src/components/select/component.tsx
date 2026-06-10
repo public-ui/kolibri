@@ -2,7 +2,11 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from '../../utils/clsx';
 
+import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
+import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
 import type {
+	AriaDetailsPropType,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -10,6 +14,7 @@ import type {
 	HintPropType,
 	IconsHorizontalPropType,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	MultiplePropType,
@@ -24,14 +29,10 @@ import type {
 	Stringified,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
-
-import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
-import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
-import { nonce } from '../../utils/dev.utils';
-import { setClick } from '../../utils/element-click';
-import { setFocus } from '../../utils/element-focus';
+import { createUniqueId } from '../../utils/dev.utils';
+import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { SelectController } from './controller';
 
@@ -45,11 +46,7 @@ import { SelectController } from './controller';
 })
 export class KolSelectWc implements SelectAPI, FocusableElement {
 	@Element() private readonly host?: HTMLKolSelectWcElement;
-	private selectRef?: HTMLSelectElement;
-
-	private readonly setSelectRef = (ref?: HTMLSelectElement) => {
-		this.selectRef = ref;
-	};
+	protected readonly ctaRef = createCtaRef<HTMLSelectElement>();
 
 	/**
 	 * Returns the current value.
@@ -68,17 +65,17 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return setFocus(this.selectRef!);
-	}
+	@directFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return setClick(this.selectRef!);
-	}
+	@directClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
@@ -87,14 +84,14 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 				'kol-form-field--has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			onClick: () => this.selectRef?.focus(),
+			onClick: () => this.ctaRef.el?.focus(),
 			alert: this.showAsAlert(),
 		};
 	}
 
 	private getSelectProps(): SelectStateWrapperProps {
 		return {
-			ref: this.setSelectRef,
+			ref: this.ctaRef,
 			state: this.state,
 			...this.controller.onFacade,
 			onInput: this.onInput.bind(this),
@@ -119,7 +116,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 							event.preventDefault();
 							propagateSubmitEventToForm({
 								form: this.host,
-								ref: this.selectRef,
+								ref: this.ctaRef.el,
 							});
 						}}
 					>
@@ -137,6 +134,16 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this select.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
+	}
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -241,10 +248,15 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
 	@State() public state: SelectStates = {
 		_hasValue: false,
 		_hideMsg: false,
-		_id: `id-${nonce()}`,
+		_id: createUniqueId('select'),
 		_label: '', // ⚠ required
 		_multiple: false,
 		_options: [],
@@ -356,7 +368,14 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 		this.controller.validateValue(value);
 	}
 
+	@Watch('_variant')
+	public validateVariant(value?: VariantClassNamePropType): void {
+		this.controller.validateVariant(value);
+	}
+
 	public componentWillLoad(): void {
+		this.validateAriaDetails(this._ariaDetails);
+
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
 
@@ -365,7 +384,7 @@ export class KolSelectWc implements SelectAPI, FocusableElement {
 	}
 
 	private onInput(event: Event): void {
-		const selectedValues = Array.from(this.selectRef?.options || [])
+		const selectedValues = Array.from(this.ctaRef.el?.options || [])
 			.filter((option) => option.selected)
 			.map((option) => this.controller.getOptionByKey(option.value)?.value as string);
 

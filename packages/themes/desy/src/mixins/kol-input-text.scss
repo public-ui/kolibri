@@ -1,0 +1,74 @@
+@use '../functions/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@mixin kol-input-text {
+	@include icon;
+
+	.kol-input {
+		background-color: transparent;
+		height: to-rem(40);
+		padding: 0 to-rem(7);
+		border: none;
+	}
+
+	.kol-input-container {
+		padding: 0;
+		gap: 0;
+		grid-template-columns: auto max-content min-content;
+
+		&__adornment {
+			position: absolute;
+
+			.kol-icon {
+				font-size: to-rem(24);
+			}
+
+			&--start {
+				left: 0;
+
+				.kol-input-container__smart-button > .kol-icon {
+					border-right: 1px solid var(--border-color);
+				}
+
+				> .kol-icon {
+					margin-left: to-rem(7);
+				}
+			}
+
+			&--end {
+				right: 0;
+
+				.kol-input-container__smart-button > .kol-icon {
+					border-left: 1px solid var(--border-color);
+				}
+
+				> .kol-icon {
+					margin-right: to-rem(7);
+				}
+			}
+		}
+
+		&:has(&__adornment--start:not(:empty)) .kol-input {
+			padding-left: to-rem(38);
+		}
+
+		&:has(&__adornment--end:not(:empty)) .kol-input {
+			padding-right: to-rem(42);
+		}
+
+		&:has(&__adornment--end &__icon + &__smart-button) .kol-input,
+		&:has(&__adornment--end &__smart-button + &__icon) .kol-input {
+			padding-right: to-rem(80);
+		}
+
+		&__adornment--end &__smart-button + &__icon {
+			padding-left: to-rem(7);
+			border-left: 1px solid var(--border-color);
+		}
+
+		&__container {
+			position: relative;
+			z-index: 1;
+		}
+	}
+}

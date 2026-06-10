@@ -33,18 +33,18 @@ test.describe('kol-input-text', () => {
 	testInputMessage<HTMLKolInputTextElement>(COMPONENT_NAME);
 
 	test.describe('click() method', () => {
-		test('should focus input when click() method is called', async ({ page }) => {
+		test('should dispatch click on inner input when click() method is called', async ({ page }) => {
 			await page.setContent('<kol-input-text _label="Test Input" _type="text"></kol-input-text>');
 			const kolInput = page.locator('kol-input-text');
 
 			await page.waitForChanges();
 
-			// Register focus listener before calling click() to avoid race condition
-			const focusPromise = kolInput.evaluate((el: HTMLKolInputTextElement) => {
+			// Register click listener on the inner input before calling click() to avoid race conditions
+			const clickPromise = kolInput.evaluate((el: HTMLKolInputTextElement) => {
 				return new Promise<boolean>((resolve) => {
 					const input = el.shadowRoot?.querySelector('input');
 					if (input) {
-						input.addEventListener('focus', () => resolve(true), { once: true });
+						input.addEventListener('click', () => resolve(true), { once: true });
 					} else {
 						resolve(false);
 					}
@@ -62,7 +62,7 @@ test.describe('kol-input-text', () => {
 				}
 			});
 
-			await expect(focusPromise).resolves.toBe(true);
+			await expect(clickPromise).resolves.toBe(true);
 		});
 
 		test('should focus input when host is clicked directly', async ({ page }) => {
@@ -85,6 +85,60 @@ test.describe('kol-input-text', () => {
 
 			await kolInput.click();
 			await expect(focusPromise).resolves.toBe(true);
+		});
+
+		test.describe('_ariaDetails', () => {
+			test('accepts valid element reference', async ({ page }) => {
+				await page.setContent(`
+					<kol-input-text _label="Email" _aria-details="email-details"></kol-input-text>
+					<div id="email-details">We'll use this for account recovery</div>
+				`);
+				await page.waitForChanges();
+
+				const value = await page.locator('kol-input-text').evaluate((el: HTMLKolInputTextElement) => el._ariaDetails);
+				expect(value).toBe('email-details');
+			});
+
+			test('updates when prop changes', async ({ page }) => {
+				await page.setContent(`
+					<kol-input-text _label="Email" _aria-details="details-1"></kol-input-text>
+					<div id="details-1">Details 1</div>
+					<div id="details-2">Details 2</div>
+				`);
+				await page.waitForChanges();
+
+				const host = page.locator('kol-input-text');
+				expect(await host.evaluate((el: HTMLKolInputTextElement) => el._ariaDetails)).toBe('details-1');
+
+				await host.evaluate((el: HTMLKolInputTextElement) => {
+					el._ariaDetails = 'details-2';
+				});
+				await page.waitForChanges();
+
+				expect(await host.evaluate((el: HTMLKolInputTextElement) => el._ariaDetails)).toBe('details-2');
+			});
+
+			test('handles missing ID gracefully', async ({ page }) => {
+				await page.setContent(`
+					<kol-input-text _label="Email" _aria-details="non-existent-id"></kol-input-text>
+				`);
+				await page.waitForChanges();
+
+				const value = await page.locator('kol-input-text').evaluate((el: HTMLKolInputTextElement) => el._ariaDetails);
+				expect(value).toBe('non-existent-id');
+			});
+
+			test('accepts multiple IDs (space-separated)', async ({ page }) => {
+				await page.setContent(`
+					<kol-input-text _label="Email" _aria-details="id1 id2"></kol-input-text>
+					<div id="id1">Details 1</div>
+					<div id="id2">Details 2</div>
+				`);
+				await page.waitForChanges();
+
+				const value = await page.locator('kol-input-text').evaluate((el: HTMLKolInputTextElement) => el._ariaDetails);
+				expect(value).toBe('id1 id2');
+			});
 		});
 	});
 });
