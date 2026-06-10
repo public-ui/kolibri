@@ -1,3 +1,4 @@
+import type { OrientationPropType } from '../../props';
 import { clampedNumberValueProp, highProp, labelProp, lowProp, maxProp, minProp, optimumProp, orientationProp, unitProp } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
@@ -84,7 +85,7 @@ export class MeterController extends BaseController<MeterApi> implements Control
 		}
 	}
 
-	public watchOrientation(value?: string): void {
+	public watchOrientation(value?: OrientationPropType): void {
 		orientationProp.apply(value, (v) => {
 			this.setRenderProp('orientation', v);
 		});
