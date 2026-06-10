@@ -18,3 +18,5 @@ packages:
   - packages/tools/benchmark-tests
   - packages/tools/kolibri-cli
   - packages/tools/visual-tests
+overrides:
+  shell-quote@>=1.1.0 <=1.8.3: '>=1.8.4'
