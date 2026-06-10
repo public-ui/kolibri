@@ -9,7 +9,9 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { AlternativeButtonLinkRole } from '../../internal/props/alternative-button-link-role';
 import type { ButtonType } from '../../internal/props/button-type';
 import type { ButtonVariant } from '../../internal/props/button-variant';
+import type { KolFocusOptions, StencilUnknown, TooltipAlignPropType } from '../../schema';
 import { setEventTarget } from '../../schema';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
@@ -29,9 +31,16 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 	shadow: true,
 })
 export class KolButton extends BaseWebComponent<ButtonApi> implements WebComponentInterface<ButtonApi> {
-	@Element() private readonly host?: HTMLKolButtonElement;
+	@Element() protected readonly host?: HTMLKolButtonElement;
+	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
 	private readonly ctrl = new ButtonController(this.stateAccess);
 	private readonly formController: AssociatedInputController;
+
+	/**
+	 * Transitional bridge for the legacy AssociatedInputController, which validates
+	 * props through the adopted-style-sheets state machinery.
+	 */
+	public state: Record<string, unknown> = {};
 
 	public constructor() {
 		super();
@@ -42,23 +51,23 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
-		return Promise.resolve(this.ctrl.focus());
-	}
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	public async click(): Promise<void> {
-		return Promise.resolve(this.ctrl.click());
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	/**
 	 * Returns the current value.
 	 */
 	@Method()
-	public async getValue(): Promise<unknown> {
+	public async getValue(): Promise<StencilUnknown> {
 		return Promise.resolve(this.ctrl.getValue());
 	}
 
@@ -137,6 +146,8 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	@Prop() public _on?: {
 		onClick?: (event: MouseEvent, value?: unknown) => void;
 		onMouseDown?: (event: MouseEvent) => void;
+		onFocus?: (event: FocusEvent) => void;
+		onBlur?: (event: FocusEvent) => void;
 	};
 
 	/**
@@ -165,7 +176,7 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
-	@Prop() public _tooltipAlign?: string = 'top';
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	/**
 	 * Defines either the type of the component or of the components interactive element.
@@ -175,7 +186,7 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop() public _value?: unknown;
+	@Prop() public _value?: StencilUnknown;
 
 	/**
 	 * Defines which variant should be used for presentation.
@@ -250,7 +261,7 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	}
 
 	@Watch('_role')
-	public watchRole(value?: string): void {
+	public watchRole(value?: AlternativeButtonLinkRole): void {
 		this.ctrl.watchRole(value);
 	}
 
@@ -270,23 +281,23 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	}
 
 	@Watch('_tooltipAlign')
-	public watchTooltipAlign(value?: string): void {
-		this.ctrl.watchAlign(value);
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.ctrl.watchTooltipAlign(value);
 	}
 
 	@Watch('_type')
-	public watchType(value?: string): void {
+	public watchType(value?: ButtonType): void {
 		this.ctrl.watchType(value);
 	}
 
 	@Watch('_value')
-	public watchValue(value?: unknown): void {
+	public watchValue(value?: StencilUnknown): void {
 		this.ctrl.setValue(value);
 		this.formController.setFormAssociatedValue(value);
 	}
 
 	@Watch('_variant')
-	public watchVariant(value?: string): void {
+	public watchVariant(value?: ButtonVariant): void {
 		this.ctrl.watchVariant(value);
 	}
 
@@ -295,24 +306,23 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 		this.ctrl.handleClick(event);
 
 		const type = this.ctrl.getRenderProp('type');
-		const buttonElement = this.host?.shadowRoot?.querySelector('button');
 
 		if (type === 'submit') {
 			propagateSubmitEventToForm({
 				form: this.host,
-				ref: buttonElement || undefined,
+				ref: this.ctaRef.el,
 			});
 		} else if (type === 'reset') {
 			propagateResetEventToForm({
 				form: this.host,
-				ref: buttonElement || undefined,
+				ref: this.ctaRef.el,
 			});
 		} else {
 			// Regular button - set form value and trigger callback
 			this.formController.setFormAssociatedValue(this._value);
 
 			if (typeof this._on?.onClick === 'function') {
-				setEventTarget(event, buttonElement || undefined);
+				setEventTarget(event, this.ctaRef.el);
 				this._on.onClick(event, this._value);
 			}
 		}
@@ -329,11 +339,24 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 		}
 	};
 
+	private readonly onFocus = (event: FocusEvent): void => {
+		this._on?.onFocus?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.focus);
+		}
+	};
+
+	private readonly onBlur = (event: FocusEvent): void => {
+		this._on?.onBlur?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.blur);
+		}
+	};
+
 	// Lifecycle
 	public componentWillLoad(): void {
 		this.ctrl.componentWillLoad({
 			accessKey: this._accessKey,
-			align: this._tooltipAlign,
 			ariaControls: this._ariaControls,
 			ariaDescription: this._ariaDescription,
 			ariaExpanded: this._ariaExpanded,
@@ -349,6 +372,7 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 			role: this._role,
 			shortKey: this._shortKey,
 			tabIndex: this._tabIndex,
+			tooltipAlign: this._tooltipAlign,
 			type: this._type,
 			variant: this._variant,
 		});
@@ -357,10 +381,7 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	}
 
 	public componentDidRender(): void {
-		const buttonElement = this.host?.shadowRoot?.querySelector<HTMLButtonElement>('button');
-		if (buttonElement) {
-			this.ctrl.syncTooltipListeners(buttonElement);
-		}
+		this.ctrl.syncTooltipListeners(this.ctaRef.el);
 	}
 
 	public disconnectedCallback(): void {
@@ -372,7 +393,6 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 			<Host>
 				<ButtonFC
 					accessKey={this.ctrl.getRenderProp('accessKey')}
-					align={this.ctrl.getRenderProp('align')}
 					ariaControls={this.ctrl.getRenderProp('ariaControls')}
 					ariaDescription={this.ctrl.getRenderProp('ariaDescription')}
 					ariaExpanded={this.ctrl.getRenderProp('ariaExpanded')}
@@ -388,11 +408,14 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 					role={this.ctrl.getRenderProp('role')}
 					shortKey={this.ctrl.getRenderProp('shortKey')}
 					tabIndex={this.ctrl.getRenderProp('tabIndex')}
+					tooltipAlign={this.ctrl.getRenderProp('tooltipAlign')}
 					type={this.ctrl.getRenderProp('type')}
 					variant={this.ctrl.getRenderProp('variant')}
 					handleClick={this.onClick}
 					handleMouseDown={this.onMouseDown}
-					refButton={this.ctrl.setButtonRef}
+					handleFocus={this.onFocus}
+					handleBlur={this.onBlur}
+					refButton={this.ctaRef}
 					refTooltipFloating={this.ctrl.setTooltipFloatingRef}
 					tooltipId={this.ctrl.getTooltipId()}
 				/>

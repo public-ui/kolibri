@@ -1,4 +1,4 @@
-import type { SimpleProp } from './helpers/factory';
+import type { Prop } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
@@ -26,13 +26,17 @@ export type AlternativeButtonLinkRole = (typeof ALTERNATIVE_ROLES)[number];
  * @see https://www.w3.org/TR/wai-aria-1.2/#link
  * @see https://www.w3.org/TR/wai-aria-1.2/#tab
  */
-export type AlternativeButtonLinkRoleProp = SimpleProp<'role', AlternativeButtonLinkRole>;
+/**
+ * Internally the empty string represents "not set", so no role attribute is
+ * rendered and the semantic role of the native HTML element is used.
+ */
+export type AlternativeButtonLinkRoleProp = Prop<'role', AlternativeButtonLinkRole, AlternativeButtonLinkRole | ''>;
 export const alternativeButtonLinkRoleProp = createPropDefinition<AlternativeButtonLinkRoleProp>(
 	'role',
-	'button',
+	'',
 	(value: unknown) => {
 		const normalized = normalizeString(value);
-		return ALTERNATIVE_ROLES.includes(normalized as AlternativeButtonLinkRole) ? (normalized as AlternativeButtonLinkRole) : 'button';
+		return ALTERNATIVE_ROLES.includes(normalized as AlternativeButtonLinkRole) ? (normalized as AlternativeButtonLinkRole) : '';
 	},
-	(v) => ALTERNATIVE_ROLES.includes(v),
+	(v) => v === '' || ALTERNATIVE_ROLES.includes(v),
 );

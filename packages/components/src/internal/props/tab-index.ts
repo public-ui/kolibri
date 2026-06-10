@@ -1,4 +1,4 @@
-import type { SimpleProp } from './helpers/factory';
+import type { Prop } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeInteger } from './helpers/normalizers';
 
@@ -22,5 +22,9 @@ import { normalizeInteger } from './helpers/normalizers';
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
  * @see https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html
  */
-export type TabIndexProp = SimpleProp<'tabIndex', number>;
-export const tabIndexProp = createPropDefinition<TabIndexProp>('tabIndex', 0, normalizeInteger);
+/**
+ * Internally the empty string represents "not set", so no tabindex attribute
+ * is rendered unless the prop is explicitly provided.
+ */
+export type TabIndexProp = Prop<'tabIndex', number, number | ''>;
+export const tabIndexProp = createPropDefinition<TabIndexProp>('tabIndex', '', normalizeInteger);

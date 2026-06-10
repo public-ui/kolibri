@@ -1,4 +1,4 @@
-import type { SimpleProp } from './helpers/factory';
+import type { Prop } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeBoolean } from './helpers/normalizers';
 
@@ -18,5 +18,10 @@ import { normalizeBoolean } from './helpers/normalizers';
  * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded
  * @see https://www.w3.org/TR/wai-aria-1.2/#aria-expanded
  */
-export type AriaExpandedProp = SimpleProp<'ariaExpanded', boolean>;
-export const ariaExpandedProp = createPropDefinition<AriaExpandedProp>('ariaExpanded', false, normalizeBoolean);
+/**
+ * Internally the value is normalized to the attribute string ('true' | 'false').
+ * The empty string represents "not set", so the attribute is omitted entirely
+ * for elements that do not control expandable content.
+ */
+export type AriaExpandedProp = Prop<'ariaExpanded', boolean, 'true' | 'false' | ''>;
+export const ariaExpandedProp = createPropDefinition<AriaExpandedProp>('ariaExpanded', '', (value) => (normalizeBoolean(value) ? 'true' : 'false'));

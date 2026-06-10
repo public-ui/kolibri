@@ -1,6 +1,6 @@
+import type { StencilUnknown, TooltipAlignPropType } from '../../../schema';
 import {
 	accessKeyProp,
-	alignProp,
 	alternativeButtonLinkRoleProp,
 	ariaControlsProp,
 	ariaDescriptionProp,
@@ -18,7 +18,11 @@ import {
 	nameProp,
 	shortKeyProp,
 	tabIndexProp,
+	tooltipAlignProp,
 } from '../../props';
+import type { AlternativeButtonLinkRole } from '../../props/alternative-button-link-role';
+import type { ButtonType } from '../../props/button-type';
+import type { ButtonVariant } from '../../props/button-variant';
 import { BaseController } from '../base-controller';
 import { BaseWebComponent } from '../base-web-component';
 import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
@@ -27,9 +31,8 @@ import type { ButtonApi } from './api';
 import { buttonPropsConfig } from './api';
 
 export class ButtonController extends BaseController<ButtonApi> implements ControllerInterface<ButtonApi> {
-	private buttonRef?: HTMLButtonElement;
 	private readonly tooltipCtrl: TooltipController;
-	private value?: unknown;
+	private value?: StencilUnknown;
 
 	public constructor(stateAccess: StateAccess<ButtonApi>) {
 		super(stateAccess, buttonPropsConfig);
@@ -39,7 +42,6 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 	public componentWillLoad(props: ResolvedInputProps<ButtonApi>): void {
 		const {
 			accessKey,
-			align,
 			ariaControls,
 			ariaDescription,
 			ariaExpanded,
@@ -55,12 +57,12 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 			role,
 			shortKey,
 			tabIndex,
+			tooltipAlign,
 			type,
 			variant,
 		} = props;
 
 		this.watchAccessKey(accessKey);
-		this.watchAlign(align);
 		this.watchAriaControls(ariaControls);
 		this.watchAriaDescription(ariaDescription);
 		this.watchAriaExpanded(ariaExpanded);
@@ -76,13 +78,14 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 		this.watchRole(role);
 		this.watchShortKey(shortKey);
 		this.watchTabIndex(tabIndex);
+		this.watchTooltipAlign(tooltipAlign);
 		this.watchType(type);
 		this.watchVariant(variant);
 
 		// Initialize tooltip
 		this.tooltipCtrl.componentWillLoad({
 			label: typeof label === 'string' ? label : '',
-			align: align || 'top',
+			align: tooltipAlign || 'top',
 		});
 	}
 
@@ -90,13 +93,6 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 	public watchAccessKey(value?: string): void {
 		accessKeyProp.apply(value, (v) => {
 			this.setRenderProp('accessKey', v);
-		});
-	}
-
-	public watchAlign(value?: string): void {
-		alignProp.apply(value, (v) => {
-			this.setRenderProp('align', v);
-			this.tooltipCtrl.watchAlign(v);
 		});
 	}
 
@@ -173,7 +169,7 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 		});
 	}
 
-	public watchRole(value?: string): void {
+	public watchRole(value?: AlternativeButtonLinkRole): void {
 		alternativeButtonLinkRoleProp.apply(value, (v) => {
 			this.setRenderProp('role', v);
 		});
@@ -191,13 +187,20 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 		});
 	}
 
-	public watchType(value?: string): void {
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		tooltipAlignProp.apply(value, (v) => {
+			this.setRenderProp('tooltipAlign', v);
+			this.tooltipCtrl.watchAlign(v);
+		});
+	}
+
+	public watchType(value?: ButtonType): void {
 		buttonTypeProp.apply(value, (v) => {
 			this.setRenderProp('type', v);
 		});
 	}
 
-	public watchVariant(value?: string): void {
+	public watchVariant(value?: ButtonVariant): void {
 		buttonVariantProp.apply(value, (v) => {
 			this.setRenderProp('variant', v);
 		});
@@ -211,28 +214,16 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 	};
 
 	// Ref setters - arrow properties
-	public setButtonRef = (element?: HTMLButtonElement): void => {
-		this.buttonRef = element;
-	};
-
 	public setTooltipFloatingRef = (element?: HTMLElement): void => {
 		this.tooltipCtrl.setTooltipElementRef(element);
 	};
 
 	// Public methods
-	public focus(): void {
-		this.buttonRef?.focus();
-	}
-
-	public click(): void {
-		this.buttonRef?.click();
-	}
-
-	public getValue(): unknown {
+	public getValue(): StencilUnknown {
 		return this.value;
 	}
 
-	public setValue(value?: unknown): void {
+	public setValue(value?: StencilUnknown): void {
 		this.value = value;
 	}
 

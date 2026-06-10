@@ -3,6 +3,7 @@ import { h } from '@stencil/core';
 
 import { showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
+import clsx from '../../../utils/clsx';
 import type { FunctionalComponentProps } from '../generic-types';
 import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
@@ -10,28 +11,12 @@ import type { ButtonApi } from './api';
 
 const buttonBem = bem.forBlock('kol-button');
 
-function mapBoolean2String(value?: boolean): string | undefined {
-	if (value === true) {
-		return 'true';
-	}
-	if (value === false) {
-		return 'false';
-	}
-	return undefined;
-}
-
-function mapStringOrBoolean2String(value?: string | boolean): string | undefined {
-	if (typeof value === 'boolean') {
-		return mapBoolean2String(value);
-	}
-	if (typeof value === 'string') {
-		return value;
-	}
-	return undefined;
-}
-
 type ButtonFCProps = FunctionalComponentProps<ButtonApi> & {
 	tooltipId?: string;
+	handleClick: (event: MouseEvent) => void;
+	handleMouseDown: (event: MouseEvent) => void;
+	handleFocus: (event: FocusEvent) => void;
+	handleBlur: (event: FocusEvent) => void;
 };
 
 export const ButtonFC: FC<ButtonFCProps> = (props) => {
@@ -56,6 +41,8 @@ export const ButtonFC: FC<ButtonFCProps> = (props) => {
 		variant,
 		handleClick,
 		handleMouseDown,
+		handleFocus,
+		handleBlur,
 		refButton,
 		refTooltipFloating,
 		tooltipId,
@@ -67,33 +54,37 @@ export const ButtonFC: FC<ButtonFCProps> = (props) => {
 	const isDisabled = disabled === true;
 	const hideLabel_ = hideLabel === true;
 
-	const buttonClass = buttonBem({
-		disabled: isDisabled,
-		[`${variant}`]: variant !== 'custom',
-		inline: inline === true,
-		standalone: inline === false,
-		'hide-label': hideLabel_,
-		[customClass]: typeof customClass === 'string' && customClass.length > 0,
-	});
+	const buttonClass = clsx(
+		buttonBem({
+			disabled: isDisabled,
+			[`${variant}`]: variant !== 'custom',
+			inline: inline === true,
+			standalone: inline === false,
+			'hide-label': hideLabel_,
+		}),
+		typeof customClass === 'string' && customClass.length > 0 ? customClass : undefined,
+	);
 
 	return (
 		<button
 			ref={refButton}
-			accessKey={accessKey}
-			aria-controls={ariaControls}
+			accessKey={accessKey || undefined}
+			aria-controls={ariaControls || undefined}
 			aria-description={ariaDescriptionValue || undefined}
-			aria-expanded={mapBoolean2String(ariaExpanded)}
-			aria-keyshortcuts={shortKey}
+			aria-expanded={ariaExpanded || undefined}
+			aria-keyshortcuts={shortKey || undefined}
 			aria-label={hideLabel_ && typeof label === 'string' && label.length > 0 ? label : undefined}
-			aria-selected={mapStringOrBoolean2String(ariaSelected)}
+			aria-selected={ariaSelected || undefined}
 			class={buttonClass}
 			disabled={isDisabled}
-			id={id}
-			name={name}
+			id={id || undefined}
+			name={name || undefined}
 			onClick={handleClick}
 			onMouseDown={handleMouseDown}
-			role={role}
-			tabIndex={tabIndex}
+			onFocus={handleFocus}
+			onBlur={handleBlur}
+			role={role || undefined}
+			tabIndex={tabIndex === '' ? undefined : tabIndex}
 			type={type}
 		>
 			<SpanFC class={buttonBem('text')} badgeText={badgeText} icons={icons} hideLabel={hideLabel_} label={hasExpertSlot ? '' : label}>

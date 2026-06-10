@@ -1,6 +1,6 @@
+import type { KolFocusOptions, StencilUnknown } from '../../../schema';
 import {
 	accessKeyProp,
-	alignProp,
 	alternativeButtonLinkRoleProp,
 	ariaControlsProp,
 	ariaDescriptionProp,
@@ -18,6 +18,7 @@ import {
 	nameProp,
 	shortKeyProp,
 	tabIndexProp,
+	tooltipAlignProp,
 } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
@@ -25,7 +26,6 @@ export const buttonPropsConfig = {
 	required: [labelWithExpertSlotProp],
 	optional: [
 		accessKeyProp,
-		alignProp,
 		alternativeButtonLinkRoleProp,
 		ariaControlsProp,
 		ariaDescriptionProp,
@@ -42,20 +42,17 @@ export const buttonPropsConfig = {
 		nameProp,
 		shortKeyProp,
 		tabIndexProp,
+		tooltipAlignProp,
 	],
 } as const satisfies PropsConfigShape;
 
 export type ButtonApi = ApiFromConfig<
 	typeof buttonPropsConfig,
 	{
-		Callbacks: {
-			click: (event: MouseEvent, value?: unknown) => void;
-			mouseDown: (event: MouseEvent) => void;
-		};
 		Methods: {
 			click: () => void;
-			focus: () => void;
-			getValue: () => unknown;
+			focus: (options?: KolFocusOptions) => void;
+			getValue: () => StencilUnknown;
 		};
 		Refs: {
 			button: HTMLButtonElement;
