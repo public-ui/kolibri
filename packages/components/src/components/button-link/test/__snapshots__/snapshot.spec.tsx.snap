@@ -1,11 +1,214 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`kol-button-link should render with _label="Beschreibung" _accessKey="a" 1`] = `
+<kol-button-link>
+  <template shadowrootmode="open">
+    <button accesskey="a" class="kol-button kol-button--inline kol-button--normal" type="button">
+      <span class="kol-button__text kol-span kol-span--has-badge">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Beschreibung
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden="">
+            <slot name="expert" slot="expert"></slot>
+          </span>
+          <kbd aria-hidden="true" class="badge-text-hint">
+            a
+          </kbd>
+        </span>
+      </span>
+    </button>
+  </template>
+</kol-button-link>
+`;
+
+exports[`kol-button-link should render with _label="Beschreibung" _ariaDescription="Aria Description" 1`] = `
+<kol-button-link>
+  <template shadowrootmode="open">
+    <button aria-description="Aria Description" class="kol-button kol-button--inline kol-button--normal" type="button">
+      <span class="kol-button__text kol-span">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Beschreibung
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden="">
+            <slot name="expert" slot="expert"></slot>
+          </span>
+        </span>
+      </span>
+    </button>
+  </template>
+</kol-button-link>
+`;
+
+exports[`kol-button-link should render with _label="Beschreibung" _disabled=true 1`] = `
+<kol-button-link>
+  <template shadowrootmode="open">
+    <button class="kol-button kol-button--disabled kol-button--inline kol-button--normal" disabled="" type="button">
+      <span class="kol-button__text kol-span">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Beschreibung
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden="">
+            <slot name="expert" slot="expert"></slot>
+          </span>
+        </span>
+      </span>
+    </button>
+  </template>
+</kol-button-link>
+`;
+
+exports[`kol-button-link should render with _label="Beschreibung" _hideLabel=true 1`] = `
+<kol-button-link>
+  <template shadowrootmode="open">
+    <button aria-label="Beschreibung" class="kol-button kol-button--hide-label kol-button--inline kol-button--normal" type="button">
+      <span class="kol-button__text kol-span kol-span--hide-label">
+        <span class="kol-span__container">
+          <span aria-hidden="true" class="kol-span__slot" hidden="">
+            <slot name="expert" slot="expert"></slot>
+          </span>
+        </span>
+      </span>
+    </button>
+  </template>
+</kol-button-link>
+`;
+
+exports[`kol-button-link should render with _label="Beschreibung" _icons="codicon codicon-home" 1`] = `
+<kol-button-link>
+  <template shadowrootmode="open">
+    <button class="kol-button kol-button--inline kol-button--normal" type="button">
+      <span class="kol-button__text kol-span">
+        <span class="kol-span__container">
+          <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+          <span class="kol-span__label">
+            Beschreibung
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden="">
+            <slot name="expert" slot="expert"></slot>
+          </span>
+        </span>
+      </span>
+    </button>
+  </template>
+</kol-button-link>
+`;
+
+exports[`kol-button-link should render with _label="Beschreibung" _inline=false 1`] = `
+<kol-button-link>
+  <template shadowrootmode="open">
+    <button class="kol-button kol-button--normal kol-button--standalone" type="button">
+      <span class="kol-button__text kol-span">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Beschreibung
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden="">
+            <slot name="expert" slot="expert"></slot>
+          </span>
+        </span>
+      </span>
+    </button>
+  </template>
+</kol-button-link>
+`;
+
+exports[`kol-button-link should render with _label="Beschreibung" _inline=true 1`] = `
+<kol-button-link>
+  <template shadowrootmode="open">
+    <button class="kol-button kol-button--inline kol-button--normal" type="button">
+      <span class="kol-button__text kol-span">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Beschreibung
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden="">
+            <slot name="expert" slot="expert"></slot>
+          </span>
+        </span>
+      </span>
+    </button>
+  </template>
+</kol-button-link>
+`;
+
+exports[`kol-button-link should render with _label="Beschreibung" _shortKey="Ctrl+S" 1`] = `
+<kol-button-link>
+  <template shadowrootmode="open">
+    <button aria-keyshortcuts="Ctrl+S" class="kol-button kol-button--inline kol-button--normal" type="button">
+      <span class="kol-button__text kol-span kol-span--has-badge">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Beschreibung
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden="">
+            <slot name="expert" slot="expert"></slot>
+          </span>
+          <kbd aria-hidden="true" class="badge-text-hint">
+            Ctrl+S
+          </kbd>
+        </span>
+      </span>
+    </button>
+  </template>
+</kol-button-link>
+`;
+
+exports[`kol-button-link should render with _label="Beschreibung" _type="submit" 1`] = `
+<kol-button-link>
+  <template shadowrootmode="open">
+    <button class="kol-button kol-button--inline kol-button--normal" type="submit">
+      <span class="kol-button__text kol-span">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Beschreibung
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden="">
+            <slot name="expert" slot="expert"></slot>
+          </span>
+        </span>
+      </span>
+    </button>
+  </template>
+</kol-button-link>
+`;
+
+exports[`kol-button-link should render with _label="Beschreibung" _variant="my-variant" 1`] = `
+<kol-button-link>
+  <template shadowrootmode="open">
+    <button class="kol-button kol-button--inline kol-button--my-variant" type="button">
+      <span class="kol-button__text kol-span">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Beschreibung
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden="">
+            <slot name="expert" slot="expert"></slot>
+          </span>
+        </span>
+      </span>
+    </button>
+  </template>
+</kol-button-link>
+`;
+
 exports[`kol-button-link should render with _label="Beschreibung" 1`] = `
 <kol-button-link>
   <template shadowrootmode="open">
-    <kol-button-wc _inline="" _label="Beschreibung" _tooltipalign="top" _type="button">
-      <slot name="expert" slot="expert"></slot>
-    </kol-button-wc>
+    <button class="kol-button kol-button--inline kol-button--normal" type="button">
+      <span class="kol-button__text kol-span">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Beschreibung
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden="">
+            <slot name="expert" slot="expert"></slot>
+          </span>
+        </span>
+      </span>
+    </button>
   </template>
 </kol-button-link>
 `;

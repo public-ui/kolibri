@@ -31,6 +31,82 @@ test.describe('kol-button', () => {
 		});
 	});
 
+	test.describe('Focus and blur callbacks', () => {
+		test('should call onFocus and onBlur callbacks', async ({ page }) => {
+			await page.setContent('<kol-button _label="Button"></kol-button>');
+			const kolButton = page.locator('kol-button');
+
+			const callbackPromise = kolButton.evaluate((element: HTMLKolButtonElement) => {
+				return new Promise<string[]>((resolve) => {
+					const seen: string[] = [];
+					element._on = {
+						onFocus: () => {
+							seen.push('focus');
+						},
+						onBlur: () => {
+							seen.push('blur');
+							resolve(seen);
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+
+			await page.locator('button').focus();
+			await page.locator('button').blur();
+			await expect(callbackPromise).resolves.toEqual(['focus', 'blur']);
+		});
+	});
+
+	test('should not call onClick callback or emit click when disabled', async ({ page }) => {
+		await page.setContent('<kol-button _label="Button" _disabled="true" _value="my-value"></kol-button>');
+		const kolButton = page.locator('kol-button');
+
+		await kolButton.evaluate((element: HTMLKolButtonElement) => {
+			window.sessionStorage.setItem('kol-button-callback-count', '0');
+			window.sessionStorage.setItem('kol-button-event-count', '0');
+			element._on = {
+				onClick: () => {
+					window.sessionStorage.setItem('kol-button-callback-count', '1');
+				},
+			};
+			element.addEventListener('click', (event) => {
+				if (event instanceof CustomEvent) {
+					window.sessionStorage.setItem('kol-button-event-count', '1');
+				}
+			});
+		});
+		await page.waitForChanges();
+
+		await page.locator('button').dispatchEvent('click');
+
+		await expect
+			.poll(async () => {
+				return await page.evaluate(() => ({
+					callbackCount: window.sessionStorage.getItem('kol-button-callback-count'),
+					eventCount: window.sessionStorage.getItem('kol-button-event-count'),
+				}));
+			})
+			.toEqual({ callbackCount: '0', eventCount: '0' });
+	});
+
+	test('should emit click CustomEvent with _value as detail', async ({ page }) => {
+		await page.setContent('<kol-button _label="Button" _value="my-value"></kol-button>');
+		const detailPromise = page.locator('kol-button').evaluate((element: HTMLKolButtonElement) => {
+			return new Promise<unknown>((resolve) => {
+				element.addEventListener('click', (event) => {
+					if (event instanceof CustomEvent) {
+						resolve(event.detail);
+					}
+				});
+			});
+		});
+		await page.waitForChanges();
+
+		await page.locator('button').click();
+		await expect(detailPromise).resolves.toBe('my-value');
+	});
+
 	test.describe('DOM events', () => {
 		['click', 'mousedown'].forEach((event) => {
 			test(`should emit ${event} when internal button emits ${event}`, async ({ page }) => {

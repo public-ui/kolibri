@@ -1,6 +1,11 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Method, Prop } from '@stencil/core';
-import { KolButtonWcTag } from '../../core/component-names';
+import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
+
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { ButtonApi } from '../../internal/functional-components/button/api';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { ButtonLinkController } from '../../internal/functional-components/button/controller';
+import type { ButtonVariant } from '../../internal/props/button-variant';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -21,6 +26,9 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
+import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 
 /**
  * The **ButtonLink** component is semantically a button but has the appearance of a link. All relevant properties of the Button component are adopted and extended with the design-defining properties of a link.
@@ -42,17 +50,29 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolButtonLink implements ButtonLinkProps, FocusableElement {
+export class KolButtonLink extends BaseWebComponent<ButtonApi> implements ButtonLinkProps, FocusableElement {
 	@Element() protected readonly host?: HTMLKolButtonLinkElement;
-	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
+	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
+	private readonly ctrl = new ButtonLinkController(this.stateAccess);
+	private readonly formController: AssociatedInputController;
+
+	/**
+	 * Transitional bridge for the legacy AssociatedInputController, which validates
+	 * props through the adopted-style-sheets state machinery.
+	 */
+	public state: Record<string, unknown> = {};
+
+	public constructor() {
+		super();
+		this.formController = new AssociatedInputController(this, 'button', this.host);
+	}
 
 	/**
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
 	public async getValue(): Promise<StencilUnknown> {
-		return this._value;
+		return Promise.resolve(this.ctrl.getValue());
 	}
 
 	/**
@@ -71,34 +91,7 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	@delegateClick('ctaRef')
 	public async click(): Promise<void> {}
 
-	public render(): JSX.Element {
-		return (
-			<KolButtonWcTag
-				ref={this.ctaRef}
-				_accessKey={this._accessKey}
-				_ariaControls={this._ariaControls}
-				_ariaDescription={this._ariaDescription}
-				_ariaExpanded={this._ariaExpanded}
-				_ariaSelected={this._ariaSelected}
-				_disabled={this._disabled}
-				_hideLabel={this._hideLabel}
-				_icons={this._icons}
-				_inline={this._inline}
-				_label={this._label}
-				_name={this._name}
-				_on={this._on}
-				_shortKey={this._shortKey}
-				_syncValueBySelector={this._syncValueBySelector}
-				_tooltipAlign={this._tooltipAlign}
-				_type={this._type}
-				_value={this._value}
-				_variant={this._variant}
-			>
-				<slot name="expert" slot="expert"></slot>
-			</KolButtonWcTag>
-		);
-	}
-
+	// Props
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
@@ -201,4 +194,220 @@ export class KolButtonLink implements ButtonLinkProps, FocusableElement {
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: VariantClassNamePropType;
+
+	// Watchers
+	@Watch('_accessKey')
+	public watchAccessKey(value?: string): void {
+		this.ctrl.watchAccessKey(value);
+	}
+
+	@Watch('_ariaControls')
+	public watchAriaControls(value?: string): void {
+		this.ctrl.watchAriaControls(value);
+	}
+
+	@Watch('_ariaDescription')
+	public watchAriaDescription(value?: string): void {
+		this.ctrl.watchAriaDescription(value);
+	}
+
+	@Watch('_ariaExpanded')
+	public watchAriaExpanded(value?: boolean): void {
+		this.ctrl.watchAriaExpanded(value);
+	}
+
+	@Watch('_ariaSelected')
+	public watchAriaSelected(value?: boolean): void {
+		this.ctrl.watchAriaSelected(value);
+	}
+
+	@Watch('_disabled')
+	public watchDisabled(value?: boolean): void {
+		this.ctrl.watchDisabled(value);
+	}
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: boolean): void {
+		this.ctrl.watchHideLabel(value);
+	}
+
+	@Watch('_icons')
+	public watchIcons(value?: IconsPropType): void {
+		this.ctrl.watchIcons(value);
+	}
+
+	@Watch('_inline')
+	public watchInline(value?: boolean): void {
+		this.ctrl.watchInline(value);
+	}
+
+	@Watch('_label')
+	public watchLabel(value?: string): void {
+		this.ctrl.watchLabel(value);
+	}
+
+	@Watch('_name')
+	public watchName(value?: string): void {
+		this.ctrl.watchName(value);
+		this.formController.validateName(value);
+	}
+
+	@Watch('_on')
+	public watchOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
+		this.ctrl.watchOn(value);
+	}
+
+	@Watch('_role')
+	public watchRole(value?: AlternativeButtonLinkRolePropType): void {
+		this.ctrl.watchRole(value);
+	}
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: string): void {
+		this.ctrl.watchShortKey(value);
+	}
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: string): void {
+		this.formController.validateSyncValueBySelector(value);
+	}
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.ctrl.watchTooltipAlign(value);
+	}
+
+	@Watch('_type')
+	public watchType(value?: ButtonTypePropType): void {
+		this.ctrl.watchType(value);
+	}
+
+	@Watch('_value')
+	public watchValue(value?: StencilUnknown): void {
+		this.ctrl.setValue(value);
+		this.formController.setFormAssociatedValue(value);
+	}
+
+	@Watch('_variant')
+	public watchVariant(value?: string): void {
+		this.ctrl.watchVariant(value);
+	}
+
+	// Event handlers - callbacks are invoked by the controller, the web component
+	// layer only handles host concerns (form propagation, DOM events).
+	private readonly onClick = (event: MouseEvent): void => {
+		const { value, formAction, shouldDispatchKolEvent } = this.ctrl.handleClick(event);
+
+		if (formAction === 'submit') {
+			propagateSubmitEventToForm({
+				form: this.host,
+				ref: this.ctaRef.el,
+			});
+		} else if (formAction === 'reset') {
+			propagateResetEventToForm({
+				form: this.host,
+				ref: this.ctaRef.el,
+			});
+		} else if (shouldDispatchKolEvent) {
+			this.formController.setFormAssociatedValue(value);
+		}
+
+		if (shouldDispatchKolEvent && this.host) {
+			dispatchDomEvent(this.host, KolEvent.click, value);
+		}
+	};
+
+	private readonly onMouseDown = (event: MouseEvent): void => {
+		this.ctrl.handleMouseDown(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.mousedown);
+		}
+	};
+
+	private readonly onFocus = (event: FocusEvent): void => {
+		this.ctrl.handleFocus(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.focus);
+		}
+	};
+
+	private readonly onBlur = (event: FocusEvent): void => {
+		this.ctrl.handleBlur(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.blur);
+		}
+	};
+
+	// Ref setter: keeps the CtaRef for the focus/click decorators in sync and
+	// lets the controller attach the tooltip listeners exactly once per element.
+	private readonly refButton = (el?: HTMLButtonElement): void => {
+		this.ctaRef(el);
+		this.ctrl.setButtonRef(el);
+	};
+
+	// Lifecycle
+	public componentWillLoad(): void {
+		this.ctrl.componentWillLoad({
+			accessKey: this._accessKey,
+			ariaControls: this._ariaControls,
+			ariaDescription: this._ariaDescription,
+			ariaExpanded: this._ariaExpanded,
+			ariaSelected: this._ariaSelected,
+			disabled: this._disabled,
+			hideLabel: this._hideLabel,
+			icons: this._icons,
+			inline: this._inline,
+			label: this._label,
+			name: this._name,
+			on: this._on,
+			role: this._role,
+			shortKey: this._shortKey,
+			tooltipAlign: this._tooltipAlign,
+			type: this._type,
+			// Free-form variant class name; ButtonLinkController normalizes it via variantClassNameProp.
+			variant: this._variant as ButtonVariant | undefined,
+		});
+
+		this.ctrl.setValue(this._value);
+	}
+
+	public disconnectedCallback(): void {
+		this.ctrl.destroy();
+	}
+
+	public render(): JSX.Element {
+		return (
+			<Host>
+				<ButtonFC
+					accessKey={this.ctrl.getRenderProp('accessKey')}
+					ariaControls={this.ctrl.getRenderProp('ariaControls')}
+					ariaDescription={this.ctrl.getRenderProp('ariaDescription')}
+					ariaExpanded={this.ctrl.getRenderProp('ariaExpanded')}
+					ariaSelected={this.ctrl.getRenderProp('ariaSelected')}
+					customClass={this.ctrl.getRenderProp('customClass')}
+					disabled={this.ctrl.getRenderProp('disabled')}
+					hideLabel={this.ctrl.getRenderProp('hideLabel')}
+					icons={this.ctrl.getRenderProp('icons')}
+					id={this.ctrl.getRenderProp('id')}
+					inline={this.ctrl.getRenderProp('inline')}
+					label={this.ctrl.getRenderProp('label')}
+					name={this.ctrl.getRenderProp('name')}
+					on={this.ctrl.getRenderProp('on')}
+					role={this.ctrl.getRenderProp('role')}
+					shortKey={this.ctrl.getRenderProp('shortKey')}
+					tabIndex={this.ctrl.getRenderProp('tabIndex')}
+					tooltipAlign={this.ctrl.getRenderProp('tooltipAlign')}
+					type={this.ctrl.getRenderProp('type')}
+					variant={this.ctrl.getRenderProp('variant')}
+					handleClick={this.onClick}
+					handleMouseDown={this.onMouseDown}
+					handleFocus={this.onFocus}
+					handleBlur={this.onBlur}
+					refButton={this.refButton}
+					refTooltipFloating={this.ctrl.setTooltipFloatingRef}
+					tooltipId={this.ctrl.getTooltipId()}
+				/>
+			</Host>
+		);
+	}
 }

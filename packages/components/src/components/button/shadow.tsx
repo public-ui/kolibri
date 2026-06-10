@@ -6,11 +6,16 @@ import type { ButtonApi } from '../../internal/functional-components/button/api'
 import { ButtonFC } from '../../internal/functional-components/button/component';
 import { ButtonController } from '../../internal/functional-components/button/controller';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { AlternativeButtonLinkRole } from '../../internal/props/alternative-button-link-role';
 import type { ButtonType } from '../../internal/props/button-type';
 import type { ButtonVariant } from '../../internal/props/button-variant';
-import type { IconsPropType, KolFocusOptions, StencilUnknown, TooltipAlignPropType } from '../../schema';
-import { setEventTarget } from '../../schema';
+import type {
+	AlternativeButtonLinkRolePropType,
+	ButtonCallbacksPropType,
+	IconsPropType,
+	KolFocusOptions,
+	StencilUnknown,
+	TooltipAlignPropType,
+} from '../../schema';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
@@ -143,19 +148,14 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 	 * Defines the callback functions for button events.
 	 * @deprecated Use native event listeners instead
 	 */
-	@Prop() public _on?: {
-		onClick?: (event: MouseEvent, value?: unknown) => void;
-		onMouseDown?: (event: MouseEvent) => void;
-		onFocus?: (event: FocusEvent) => void;
-		onBlur?: (event: FocusEvent) => void;
-	};
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 
 	/**
 	 * Defines the role of the components primary element.
 	 *
 	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
-	@Prop() public _role?: AlternativeButtonLinkRole;
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
@@ -260,8 +260,13 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 		this.formController.validateName(value);
 	}
 
+	@Watch('_on')
+	public watchOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
+		this.ctrl.watchOn(value);
+	}
+
 	@Watch('_role')
-	public watchRole(value?: AlternativeButtonLinkRole): void {
+	public watchRole(value?: AlternativeButtonLinkRolePropType): void {
 		this.ctrl.watchRole(value);
 	}
 
@@ -301,56 +306,56 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 		this.ctrl.watchVariant(value);
 	}
 
-	// Event handlers
+	// Event handlers - callbacks are invoked by the controller, the web component
+	// layer only handles host concerns (form propagation, DOM events).
 	private readonly onClick = (event: MouseEvent): void => {
-		this.ctrl.handleClick(event);
+		const { value, formAction, shouldDispatchKolEvent } = this.ctrl.handleClick(event);
 
-		const type = this.ctrl.getRenderProp('type');
-
-		if (type === 'submit') {
+		if (formAction === 'submit') {
 			propagateSubmitEventToForm({
 				form: this.host,
 				ref: this.ctaRef.el,
 			});
-		} else if (type === 'reset') {
+		} else if (formAction === 'reset') {
 			propagateResetEventToForm({
 				form: this.host,
 				ref: this.ctaRef.el,
 			});
-		} else {
-			// Regular button - set form value and trigger callback
-			this.formController.setFormAssociatedValue(this._value);
-
-			if (typeof this._on?.onClick === 'function') {
-				setEventTarget(event, this.ctaRef.el);
-				this._on.onClick(event, this._value);
-			}
+		} else if (shouldDispatchKolEvent) {
+			this.formController.setFormAssociatedValue(value);
 		}
 
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.click, this._value);
+		if (shouldDispatchKolEvent && this.host) {
+			dispatchDomEvent(this.host, KolEvent.click, value);
 		}
 	};
 
 	private readonly onMouseDown = (event: MouseEvent): void => {
-		this._on?.onMouseDown?.(event);
+		this.ctrl.handleMouseDown(event);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.mousedown);
 		}
 	};
 
 	private readonly onFocus = (event: FocusEvent): void => {
-		this._on?.onFocus?.(event);
+		this.ctrl.handleFocus(event);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.focus);
 		}
 	};
 
 	private readonly onBlur = (event: FocusEvent): void => {
-		this._on?.onBlur?.(event);
+		this.ctrl.handleBlur(event);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.blur);
 		}
+	};
+
+	// Ref setter: keeps the CtaRef for the focus/click decorators in sync and
+	// lets the controller attach the tooltip listeners exactly once per element.
+	private readonly refButton = (el?: HTMLButtonElement): void => {
+		this.ctaRef(el);
+		this.ctrl.setButtonRef(el);
 	};
 
 	// Lifecycle
@@ -369,6 +374,7 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 			inline: this._inline,
 			label: this._label,
 			name: this._name,
+			on: this._on,
 			role: this._role,
 			shortKey: this._shortKey,
 			tabIndex: this._tabIndex,
@@ -378,10 +384,6 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 		});
 
 		this.ctrl.setValue(this._value);
-	}
-
-	public componentDidRender(): void {
-		this.ctrl.syncTooltipListeners(this.ctaRef.el);
 	}
 
 	public disconnectedCallback(): void {
@@ -405,6 +407,7 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 					inline={this.ctrl.getRenderProp('inline')}
 					label={this.ctrl.getRenderProp('label')}
 					name={this.ctrl.getRenderProp('name')}
+					on={this.ctrl.getRenderProp('on')}
 					role={this.ctrl.getRenderProp('role')}
 					shortKey={this.ctrl.getRenderProp('shortKey')}
 					tabIndex={this.ctrl.getRenderProp('tabIndex')}
@@ -415,7 +418,7 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements WebCompone
 					handleMouseDown={this.onMouseDown}
 					handleFocus={this.onFocus}
 					handleBlur={this.onBlur}
-					refButton={this.ctaRef}
+					refButton={this.refButton}
 					refTooltipFloating={this.ctrl.setTooltipFloatingRef}
 					tooltipId={this.ctrl.getTooltipId()}
 				/>

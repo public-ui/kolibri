@@ -1,4 +1,5 @@
-import type { IconsPropType, StencilUnknown, TooltipAlignPropType } from '../../../schema';
+import type { AlternativeButtonLinkRolePropType, ButtonCallbacksPropType, IconsPropType, StencilUnknown, TooltipAlignPropType } from '../../../schema';
+import { setEventTarget } from '../../../schema';
 import {
 	accessKeyProp,
 	alternativeButtonLinkRoleProp,
@@ -6,6 +7,7 @@ import {
 	ariaDescriptionProp,
 	ariaExpandedProp,
 	ariaSelectedProp,
+	buttonCallbacksProp,
 	buttonTypeProp,
 	buttonVariantProp,
 	customClassProp,
@@ -19,23 +21,35 @@ import {
 	spanIconsProp,
 	tabIndexProp,
 	tooltipAlignProp,
+	variantClassNameProp,
 } from '../../props';
-import type { AlternativeButtonLinkRole } from '../../props/alternative-button-link-role';
 import type { ButtonType } from '../../props/button-type';
 import type { ButtonVariant } from '../../props/button-variant';
 import { BaseController } from '../base-controller';
 import { BaseWebComponent } from '../base-web-component';
-import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
+import type { ControllerInterface, PropsConfigShape, ResolvedInputProps, StateAccess } from '../generic-types';
 import { TooltipController } from '../tooltip/controller';
 import type { ButtonApi } from './api';
-import { buttonPropsConfig } from './api';
+import { buttonLinkPropsConfig, buttonPropsConfig } from './api';
+
+/**
+ * Result of the controller-level click handling. The web component layer uses it
+ * to decide about form propagation and DOM event dispatching, which require
+ * access to the host element.
+ */
+export type ButtonClickHandlingResult = {
+	value: StencilUnknown;
+	formAction?: 'submit' | 'reset';
+	shouldDispatchKolEvent: boolean;
+};
 
 export class ButtonController extends BaseController<ButtonApi> implements ControllerInterface<ButtonApi> {
 	private readonly tooltipCtrl: TooltipController;
+	private buttonRef?: HTMLButtonElement;
 	private value?: StencilUnknown;
 
-	public constructor(stateAccess: StateAccess<ButtonApi>) {
-		super(stateAccess, buttonPropsConfig);
+	public constructor(stateAccess: StateAccess<ButtonApi>, propsConfig: PropsConfigShape = buttonPropsConfig) {
+		super(stateAccess, propsConfig);
 		this.tooltipCtrl = new TooltipController(BaseWebComponent.stateLess);
 	}
 
@@ -54,6 +68,7 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 			inline,
 			label,
 			name,
+			on,
 			role,
 			shortKey,
 			tabIndex,
@@ -75,6 +90,7 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 		this.watchInline(inline);
 		this.watchLabel(label);
 		this.watchName(name);
+		this.watchOn(on);
 		this.watchRole(role);
 		this.watchShortKey(shortKey);
 		this.watchTabIndex(tabIndex);
@@ -169,7 +185,13 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 		});
 	}
 
-	public watchRole(value?: AlternativeButtonLinkRole): void {
+	public watchOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
+		buttonCallbacksProp.apply(value, (v) => {
+			this.setRenderProp('on', v);
+		});
+	}
+
+	public watchRole(value?: AlternativeButtonLinkRolePropType): void {
 		alternativeButtonLinkRoleProp.apply(value, (v) => {
 			this.setRenderProp('role', v);
 		});
@@ -207,13 +229,46 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 	}
 
 	// Event handlers - arrow properties
-	public handleClick = (event: MouseEvent): void => {
+	public handleClick = (event: MouseEvent): ButtonClickHandlingResult => {
 		event.stopPropagation();
 		this.tooltipCtrl.hideTooltip();
-		// Callback will be handled by web component layer
+		const value = this.value;
+
+		if (this.getRenderProp('disabled')) {
+			return { value, shouldDispatchKolEvent: false };
+		}
+
+		const type = this.getRenderProp('type');
+		if (type === 'submit' || type === 'reset') {
+			return { value, formAction: type, shouldDispatchKolEvent: true };
+		}
+
+		const on = this.getRenderProp('on');
+		if (typeof on.onClick === 'function') {
+			setEventTarget(event, this.buttonRef);
+			on.onClick(event, value);
+		}
+		return { value, shouldDispatchKolEvent: true };
+	};
+
+	public handleMouseDown = (event: MouseEvent): void => {
+		this.getRenderProp('on').onMouseDown?.(event);
+	};
+
+	public handleFocus = (event: FocusEvent): void => {
+		this.getRenderProp('on').onFocus?.(event);
+	};
+
+	public handleBlur = (event: FocusEvent): void => {
+		this.getRenderProp('on').onBlur?.(event);
 	};
 
 	// Ref setters - arrow properties
+	public setButtonRef = (element?: HTMLButtonElement): void => {
+		this.tooltipCtrl.syncListeners(this.buttonRef ?? null, element ?? null, true);
+		this.buttonRef = element;
+	};
+
 	public setTooltipFloatingRef = (element?: HTMLElement): void => {
 		this.tooltipCtrl.setTooltipElementRef(element);
 	};
@@ -227,17 +282,28 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 		this.value = value;
 	}
 
-	public syncTooltipListeners(element?: HTMLButtonElement): void {
-		if (element) {
-			this.tooltipCtrl.syncListeners(undefined, element, true);
-		}
-	}
-
 	public getTooltipId(): string {
 		return this.tooltipCtrl.getRenderProp('id');
 	}
 
 	public destroy(): void {
 		this.tooltipCtrl.destroy();
+	}
+}
+
+/**
+ * Controller for kol-button-link: reuses the complete button behavior, but uses
+ * the button-link props config (no customClass/id/tabIndex) and accepts a
+ * free-form variant class name instead of the ButtonVariant enum.
+ */
+export class ButtonLinkController extends ButtonController {
+	public constructor(stateAccess: StateAccess<ButtonApi>) {
+		super(stateAccess, buttonLinkPropsConfig);
+	}
+
+	public override watchVariant(value?: string): void {
+		variantClassNameProp.apply(value, (v) => {
+			this.setRenderProp('variant', v as ButtonVariant);
+		});
 	}
 }

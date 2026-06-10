@@ -1,9 +1,10 @@
+import type { AlternativeButtonLinkRolePropType } from '../../schema';
 import type { Prop } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
-const ALTERNATIVE_ROLES = ['button', 'link', 'tab'] as const;
-export type AlternativeButtonLinkRole = (typeof ALTERNATIVE_ROLES)[number];
+const ALTERNATIVE_ROLES = ['tab', 'treeitem'] as const;
+export type AlternativeButtonLinkRole = AlternativeButtonLinkRolePropType;
 
 /**
  * Alternative Button Link Role prop for semantic role
@@ -13,9 +14,8 @@ export type AlternativeButtonLinkRole = (typeof ALTERNATIVE_ROLES)[number];
  * Allows semantic override of the native button element.
  *
  * Usage (according to WAI-ARIA):
- * - button: Interactive control that triggers an action
- * - link: Navigation to another page or location
  * - tab: Tab in a tablist (part of tabs pattern)
+ * - treeitem: Item in a tree (part of tree pattern)
  *
  * Note: This prop is deprecated. We prefer using semantic HTML elements.
  *

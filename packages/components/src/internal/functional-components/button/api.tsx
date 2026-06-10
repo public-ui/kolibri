@@ -6,6 +6,7 @@ import {
 	ariaDescriptionProp,
 	ariaExpandedProp,
 	ariaSelectedProp,
+	buttonCallbacksProp,
 	buttonTypeProp,
 	buttonVariantProp,
 	customClassProp,
@@ -19,6 +20,7 @@ import {
 	spanIconsProp,
 	tabIndexProp,
 	tooltipAlignProp,
+	variantClassNameProp,
 } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
@@ -31,6 +33,7 @@ export const buttonPropsConfig = {
 		ariaDescriptionProp,
 		ariaExpandedProp,
 		ariaSelectedProp,
+		buttonCallbacksProp,
 		buttonTypeProp,
 		buttonVariantProp,
 		customClassProp,
@@ -61,3 +64,30 @@ export type ButtonApi = ApiFromConfig<
 		States: Record<never, never>;
 	}
 >;
+
+/**
+ * Props config for kol-button-link: a button that is styled as a link.
+ * Differences to kol-button: no customClass/id/tabIndex in the public API and
+ * the variant is a free-form class name instead of the ButtonVariant enum.
+ */
+export const buttonLinkPropsConfig = {
+	required: [labelWithExpertSlotProp],
+	optional: [
+		accessKeyProp,
+		alternativeButtonLinkRoleProp,
+		ariaControlsProp,
+		ariaDescriptionProp,
+		ariaExpandedProp,
+		ariaSelectedProp,
+		buttonCallbacksProp,
+		buttonTypeProp,
+		disabledProp,
+		hideLabelProp,
+		inlineProp,
+		nameProp,
+		shortKeyProp,
+		spanIconsProp,
+		tooltipAlignProp,
+		variantClassNameProp,
+	],
+} as const satisfies PropsConfigShape;
