@@ -47,6 +47,7 @@ overrides:
   serialize-javascript@<=7.0.2: '>=7.0.3'
   serialize-javascript@>=5.0.0 <7.0.5: '>=7.0.5'
   serialize-javascript@>=6.0.0 <6.0.2: '>=6.0.2'
+  shell-quote@>=1.1.0 <=1.8.3: '>=1.8.4'
   uuid@<11.1.1: '>=11.1.1'
   webpack-dev-server@<=5.2.0: '>=5.2.1'
   webpack-dev-server@<=5.2.3: '>=5.2.4'
