@@ -19,7 +19,7 @@ import { generateBemClassNames } from 'typed-bem';
 /**
  * Complete schema definition for all KoliBri components
  */
-type KoliBriComponentsBemSchema = {
+export type KoliBriComponentsBemSchema = {
 	'kol-alert': {
 		/**
 		 * Here we define the elements we needed
@@ -66,6 +66,9 @@ type KoliBriComponentsBemSchema = {
 	};
 	'kol-button': {
 		elements: {
+			button: {
+				modifiers: null;
+			};
 			text: {
 				modifiers: null;
 			};
@@ -227,6 +230,7 @@ const BEM: KoliBriComponentsBemSchema = {
 	},
 	'kol-button': {
 		elements: {
+			button: { modifiers: null },
 			text: { modifiers: null },
 			tooltip: { modifiers: null },
 		},

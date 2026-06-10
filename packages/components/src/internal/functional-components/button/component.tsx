@@ -3,7 +3,8 @@ import { h } from '@stencil/core';
 
 import { showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
-import clsx from '../../../utils/clsx';
+import type { BlockModifiers } from '../bem-root-node/component';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
@@ -54,47 +55,48 @@ export const ButtonFC: FC<ButtonFCProps> = (props) => {
 	const isDisabled = disabled === true;
 	const hideLabel_ = hideLabel === true;
 
-	const buttonClass = clsx(
-		buttonBem({
-			disabled: isDisabled,
-			[`${variant}`]: variant !== 'custom',
-			inline: inline === true,
-			standalone: inline === false,
-			'hide-label': hideLabel_,
-		}),
-		typeof customClass === 'string' && customClass.length > 0 ? customClass : undefined,
-	);
+	// The free-form variant of kol-button-link is not part of the typed modifier set,
+	// but produces a valid `kol-button--<variant>` class at runtime.
+	const modifiers = {
+		disabled: isDisabled,
+		[`${variant}`]: variant !== 'custom',
+		inline: inline === true,
+		standalone: inline === false,
+		'hide-label': hideLabel_,
+	} as BlockModifiers<'kol-button'>;
 
 	return (
-		<button
-			ref={refButton}
-			accessKey={accessKey || undefined}
-			aria-controls={ariaControls || undefined}
-			aria-description={ariaDescriptionValue || undefined}
-			aria-expanded={ariaExpanded || undefined}
-			aria-keyshortcuts={shortKey || undefined}
-			aria-label={hideLabel_ && typeof label === 'string' && label.length > 0 ? label : undefined}
-			aria-selected={ariaSelected || undefined}
-			class={buttonClass}
-			disabled={isDisabled}
-			id={id || undefined}
-			name={name || undefined}
-			onClick={handleClick}
-			onMouseDown={handleMouseDown}
-			onFocus={handleFocus}
-			onBlur={handleBlur}
-			role={role || undefined}
-			tabIndex={tabIndex === '' ? undefined : tabIndex}
-			type={type}
-		>
-			<SpanFC class={buttonBem('text')} badgeText={badgeText} icons={icons} hideLabel={hideLabel_} label={hasExpertSlot ? '' : label}>
-				<slot name="expert" slot="expert"></slot>
-			</SpanFC>
-			{hideLabel_ && typeof label === 'string' && label.length > 0 && tooltipId && (
+		<BemRootNodeFC block="kol-button" modifiers={modifiers} class={typeof customClass === 'string' && customClass.length > 0 ? customClass : undefined}>
+			<button
+				ref={refButton}
+				accessKey={accessKey || undefined}
+				aria-controls={ariaControls || undefined}
+				aria-description={ariaDescriptionValue || undefined}
+				aria-expanded={ariaExpanded || undefined}
+				aria-keyshortcuts={shortKey || undefined}
+				aria-label={hideLabel_ && typeof label === 'string' && label.length > 0 ? label : undefined}
+				aria-selected={ariaSelected || undefined}
+				class={buttonBem('button')}
+				disabled={isDisabled}
+				id={id || undefined}
+				name={name || undefined}
+				onClick={handleClick}
+				onMouseDown={handleMouseDown}
+				onFocus={handleFocus}
+				onBlur={handleBlur}
+				role={role || undefined}
+				tabIndex={tabIndex === '' ? undefined : tabIndex}
+				type={type}
+			>
+				<SpanFC class={buttonBem('text')} badgeText={badgeText} icons={icons} hideLabel={hideLabel_} label={hasExpertSlot ? '' : label}>
+					<slot name="expert" slot="expert"></slot>
+				</SpanFC>
+			</button>
+			{hideLabel_ && typeof label === 'string' && label.length > 0 && (
 				<div class={buttonBem('tooltip')}>
 					<TooltipFC badgeText={badgeText || ''} label={label} id={tooltipId} refFloating={refTooltipFloating} />
 				</div>
 			)}
-		</button>
+		</BemRootNodeFC>
 	);
 };

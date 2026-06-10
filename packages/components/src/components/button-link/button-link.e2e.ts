@@ -11,15 +11,15 @@ test.describe('kol-button-link', () => {
 	test('it supports inline rendering via _inline', async ({ page }) => {
 		await page.setContent('<kol-button-link _label="Inline ButtonLink" _inline></kol-button-link>');
 		const kolButtonLink = page.locator('kol-button-link');
-		const button = kolButtonLink.locator('button');
-		await expect(button).toHaveClass(/kol-button--inline/);
+		const rootNode = kolButtonLink.locator('.kol-button');
+		await expect(rootNode).toHaveClass(/kol-button--inline/);
 	});
 
 	test('it maps legacy _variant to inline handling', async ({ page }) => {
 		await page.setContent('<kol-button-link _label="Legacy Variant" _variant="standalone" _inline="false"></kol-button-link>');
 		const kolButtonLink = page.locator('kol-button-link');
-		const button = kolButtonLink.locator('button');
-		await expect(button).toHaveClass(/kol-button--standalone/);
+		const rootNode = kolButtonLink.locator('.kol-button');
+		await expect(rootNode).toHaveClass(/kol-button--standalone/);
 	});
 
 	test.describe('Callbacks', () => {
@@ -116,6 +116,15 @@ test.describe('kol-button-link', () => {
 
 		await page.locator('button').click();
 		await expect(submitPromise).resolves.toBeUndefined();
+	});
+
+	test('should render the tooltip as sibling of the button when _hide-label is set', async ({ page }) => {
+		await page.setContent('<kol-button-link _label="Tooltip ButtonLink" _hide-label="true"></kol-button-link>');
+		const tooltip = page.locator('.kol-button > .kol-button__tooltip .kol-tooltip__floating');
+		await expect(tooltip).toBeAttached();
+
+		await page.locator('button').focus();
+		await expect.poll(async () => await tooltip.evaluate((el) => el.classList.contains('show')), { timeout: 3000 }).toBe(true);
 	});
 
 	test('should focus the internal button via focus() method', async ({ page }) => {

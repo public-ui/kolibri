@@ -5,6 +5,18 @@
 @layer kol-component {
 	@include kol-link-styles('kol-button');
 
+	/* Inner button of the skeleton markup: fills the BEM root node and
+	 * inherits the link typography instead of the user agent button styles. */
+	.kol-button__button {
+		display: inline-flex;
+		flex: 1;
+		align-items: baseline;
+		font: inherit;
+		color: inherit;
+		text-align: inherit;
+		text-decoration-line: none;
+	}
+
 	// Inline may have the height and width of the flowing text and do not necessarily have to be 44px high or width.
 	.kol-button--inline {
 		min-width: unset;

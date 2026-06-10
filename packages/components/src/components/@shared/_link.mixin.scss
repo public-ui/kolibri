@@ -35,8 +35,8 @@
 			text-decoration-line: underline;
 		}
 
-		&:focus:not([aria-disabled], [disabled]),
-		&:hover:not([aria-disabled], [disabled]) {
+		&:focus-within:not([aria-disabled], [disabled], .#{$block-classname}--disabled),
+		&:hover:not([aria-disabled], [disabled], .#{$block-classname}--disabled) {
 			.kol-span__label {
 				text-decoration-thickness: 0.2em;
 			}

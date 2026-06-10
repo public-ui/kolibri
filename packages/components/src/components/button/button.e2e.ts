@@ -167,6 +167,16 @@ test.describe('kol-button', () => {
 		});
 	});
 
+	test('should render the tooltip as sibling of the button when _hide-label is set', async ({ page }) => {
+		await page.setContent('<kol-button _label="Tooltip Button" _hide-label="true"></kol-button>');
+		const tooltip = page.locator('.kol-button > .kol-button__tooltip .kol-tooltip__floating');
+		await expect(tooltip).toBeAttached();
+		await expect(page.locator('.kol-button > .kol-button__button + .kol-button__tooltip')).toBeAttached();
+
+		await page.locator('button').focus();
+		await expect.poll(async () => await tooltip.evaluate((el) => el.classList.contains('show')), { timeout: 3000 }).toBe(true);
+	});
+
 	test.skip('should hide tooltip after click until button is left and focused again', async ({ page }) => {
 		await page.setContent('<kol-button _label="Tooltip Button" _hide-label="true"></kol-button>');
 		const button = page.locator('button');

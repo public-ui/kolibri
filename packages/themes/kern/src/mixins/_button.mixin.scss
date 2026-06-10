@@ -11,11 +11,17 @@
 
 		font-size: var(--kern-typography-font-size-static-medium);
 
-		&:focus-visible {
+		&:is(:focus-visible, :has(:focus-visible)) {
 			@include focus-outline;
 		}
 
-		&:disabled {
+		/* Suppress the user agent outline on the inner button of the skeleton markup;
+		 * the theme renders its own focus style on the root node. */
+		&__button:focus {
+			outline: none;
+		}
+
+		&:is(:disabled, .#{$block-classname}--disabled) {
 			opacity: 0.4;
 		}
 
@@ -61,7 +67,7 @@
 			--button-text-background-color: var(--button-text-background-color-default);
 			--button-text-color: var(--kern-color-action-on-default);
 
-			&:not([disabled]):hover {
+			&:not([disabled], [class*='--disabled']):hover {
 				@supports (color-mix: color) {
 					--button-text-background-color: color-mix(in srgb, var(--kern-color-feedback-danger) 85%, black);
 				}
@@ -70,7 +76,7 @@
 				}
 			}
 
-			&:not([disabled]):active {
+			&:not([disabled], [class*='--disabled']):active {
 				@supports (color-mix: color) {
 					--button-text-background-color: color-mix(in srgb, var(--kern-color-feedback-danger) 80%, black);
 				}
@@ -100,12 +106,12 @@
 	--button-text-border-color: var(--kern-color-action-default);
 	--button-text-color: var(--kern-color-action-on-default);
 
-	&:not([disabled]):hover {
+	&:not([disabled], [class*='--disabled']):hover {
 		--button-text-background-color: var(--kern-color-action-state-indicator-shade-hover);
 		--button-text-border-color: var(--kern-color-action-state-indicator-shade-hover);
 	}
 
-	&:not([disabled]):active {
+	&:not([disabled], [class*='--disabled']):active {
 		--button-text-background-color: var(--kern-color-action-state-indicator-shade-active);
 		--button-text-border-color: var(--kern-color-action-state-indicator-shade-active);
 	}
@@ -117,11 +123,11 @@
 	--button-text-border-color: var(--kern-color-action-default);
 	--button-text-color: var(--kern-color-action-default);
 
-	&:not([disabled]):hover {
+	&:not([disabled], [class*='--disabled']):hover {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 	}
 
-	&:not([disabled]):active {
+	&:not([disabled], [class*='--disabled']):active {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-active-opacity);
 	}
 }
@@ -133,18 +139,18 @@
 	--button-badge-color: var(--kern-neutral-000);
 	text-decoration-color: var(--kern-color-action-default);
 
-	&:not([disabled]):hover {
+	&:not([disabled], [class*='--disabled']):hover {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 	}
 
-	&:not([disabled]):active {
+	&:not([disabled], [class*='--disabled']):active {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-active-opacity);
 	}
 
 	&:not(:has(.kol-icon)) {
 		text-decoration-line: underline;
 
-		&:not([disabled]):hover {
+		&:not([disabled], [class*='--disabled']):hover {
 			text-decoration-thickness: var(--kern-3, 3px);
 		}
 	}

@@ -9,7 +9,7 @@
 		font-weight: 400;
 		font-style: normal;
 
-		&:focus {
+		&:focus-within {
 			outline: none;
 
 			.#{$block-classname}__text {
@@ -19,8 +19,8 @@
 			}
 		}
 
-		&:focus:not([aria-disabled], [disabled]),
-		&:hover:not([aria-disabled], [disabled]) {
+		&:focus-within:not([aria-disabled], [disabled], .#{$block-classname}--disabled),
+		&:hover:not([aria-disabled], [disabled], .#{$block-classname}--disabled) {
 			.kol-span__label {
 				text-decoration-thickness: 0.25em;
 			}
