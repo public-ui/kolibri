@@ -444,8 +444,8 @@ importers:
         specifier: 4.38.3
         version: 4.38.3
       '@stencil/playwright':
-        specifier: 0.2.3
-        version: 0.2.3(@playwright/test@1.60.0)(@stencil/core@4.38.3)
+        specifier: 0.4.3
+        version: 0.4.3(@playwright/test@1.60.0)(@stencil/core@4.38.3)
       '@stencil/sass':
         specifier: 3.2.3
         version: 3.2.3(@stencil/core@4.38.3)
@@ -5977,12 +5977,12 @@ packages:
     engines: {node: '>=16.0.0', npm: '>=7.10.0'}
     hasBin: true
 
-  '@stencil/playwright@0.2.3':
-    resolution: {integrity: sha512-UUQOPu2DvI2zXSLbL1uYbhbYpn7cR11nQyWZDE2Pl7xuwLmmZQLiYvp6IQTMOwm/PS4h+jXU7Jgj7Fu/bSOAEQ==}
+  '@stencil/playwright@0.4.3':
+    resolution: {integrity: sha512-p5VWjPUTStntdLYjnQdoMhh/FpdTbl9oV8wVAFkY9fjstCS7zB/CADYfillDKNtfsb7VGNbD1SkJaQ7ez2yQhA==}
     engines: {node: '>=12.0.0', npm: '>=6.0.0'}
     peerDependencies:
-      '@playwright/test': '>=1.41.2'
-      '@stencil/core': '>=4.13.0'
+      '@playwright/test': '>=1.50.0'
+      '@stencil/core': ^4.0.0 || >=5.0.0-alpha.0 <5.0.0-beta.0
 
   '@stencil/sass@3.2.3':
     resolution: {integrity: sha512-Wru76NJqa6D79/fDjSuiXoe2U0Ky1j7LLycqn7DV0jCmVO3tiWqXHBUPg0gMXJtxEiIbIJeiH/VpKhjNrBIUkQ==}
@@ -19710,7 +19710,7 @@ snapshots:
       '@rollup/rollup-win32-arm64-msvc': 4.34.9
       '@rollup/rollup-win32-x64-msvc': 4.34.9
 
-  '@stencil/playwright@0.2.3(@playwright/test@1.60.0)(@stencil/core@4.38.3)':
+  '@stencil/playwright@0.4.3(@playwright/test@1.60.0)(@stencil/core@4.38.3)':
     dependencies:
       '@playwright/test': 1.60.0
       '@stencil/core': 4.38.3
