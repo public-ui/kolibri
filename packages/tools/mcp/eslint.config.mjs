@@ -9,7 +9,8 @@ export default [
 		typeChecked: true,
 	}),
 	...nodeConfig({
-		files: ['test/**/*.{js,mjs,ts}'],
+		// Test sources are plain JS/MJS; the default (Espree) parser cannot read `.ts`.
+		files: ['test/**/*.{js,mjs}'],
 		rules: {
 			'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
 		},

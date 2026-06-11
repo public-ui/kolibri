@@ -110,7 +110,10 @@ export function typescriptConfig({
 	jsx = false,
 	typeChecked = false,
 	rules = {},
-}) {
+} = {}) {
+	if (!tsconfigRootDir) {
+		throw new Error('typescriptConfig requires `tsconfigRootDir` (pass `import.meta.dirname`) to resolve tsconfig paths correctly in the monorepo.');
+	}
 	return [
 		{
 			ignores: [...defaultIgnores, ...ignores],
@@ -131,15 +134,15 @@ export function typescriptConfig({
 				'@typescript-eslint': tsPlugin,
 			},
 			rules: {
-				...(typeChecked
-					? {
-							...js.configs.recommended.rules,
-							...tsRecommendedRules,
-							...tsTypeCheckedRules,
-							// TypeScript itself reports unresolved identifiers more reliably.
-							'no-undef': 'off',
-						}
-					: {}),
+				// Standard recommended rules apply to every TypeScript package.
+				...js.configs.recommended.rules,
+				...tsRecommendedRules,
+				// The noisy type-aware rule set is opt-in via `typeChecked`.
+				...(typeChecked ? tsTypeCheckedRules : {}),
+				// TypeScript itself reports unresolved identifiers more reliably than `no-undef`.
+				'no-undef': 'off',
+				// Monorepo-wide convention: ignore underscore-prefixed args and intentionally unused caught errors.
+				'@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_', caughtErrors: 'none', ignoreRestSiblings: true }],
 				...baseRules,
 				...rules,
 			},
@@ -156,7 +159,7 @@ export function typescriptConfig({
  * @param {Record<string, unknown>} [options.rules] Additional or overriding rules.
  * @returns {import('eslint').Linter.Config[]}
  */
-export function themeConfig({ tsconfigRootDir, rules = {} }) {
+export function themeConfig({ tsconfigRootDir, rules = {} } = {}) {
 	return typescriptConfig({
 		tsconfigRootDir,
 		rules: {
@@ -178,48 +181,45 @@ export function themeConfig({ tsconfigRootDir, rules = {} }) {
  * @param {Record<string, unknown>} [options.rules] Additional or overriding rules.
  * @returns {import('eslint').Linter.Config[]}
  */
-export function reactConfig({ tsconfigRootDir, ignores = [], rules = {} }) {
+export function reactConfig({ tsconfigRootDir, ignores = [], rules = {} } = {}) {
 	return [
-		{
-			ignores: [...defaultIgnores, ...ignores],
-		},
+		// Reuse the shared TypeScript setup (parser, ignores, recommended rules).
+		...typescriptConfig({
+			tsconfigRootDir,
+			project: true,
+			files: ['src/**/*.{js,jsx,ts,tsx}'],
+			ignores,
+			jsx: true,
+			globals: { ...globals.browser, ...globals.node },
+			rules: {
+				'@typescript-eslint/consistent-type-imports': 'error',
+				'@typescript-eslint/no-unsafe-member-access': 'error',
+				/**
+				 * These are demonstration applications: examples intentionally use
+				 * `any` to stay terse, so explicit `any` is allowed here.
+				 */
+				'@typescript-eslint/no-explicit-any': 'off',
+				...rules,
+			},
+		}),
+		// React / Hooks / a11y layer on top of the TypeScript base.
+		//
+		// The plugins' full `recommended` rule sets are intentionally NOT spread in
+		// here: these are demonstration apps and enabling them surfaces ~100
+		// pre-existing findings (positive tabindex, unescaped entities, exhaustive
+		// deps, …) that are out of scope for the shared lint setup. A curated subset
+		// is enabled instead; individual samples can opt into more via `rules`.
 		{
 			files: ['src/**/*.{js,jsx,ts,tsx}'],
-			languageOptions: {
-				parser: tsParser,
-				parserOptions: {
-					ecmaFeatures: { jsx: true },
-					ecmaVersion: 'latest',
-					project: true,
-					sourceType: 'module',
-					tsconfigRootDir,
-				},
-				globals: {
-					...globals.browser,
-					...globals.node,
-				},
-			},
 			plugins: {
-				'@typescript-eslint': tsPlugin,
 				react: reactPlugin,
 				'react-hooks': reactHooksPlugin,
 				'jsx-a11y': jsxA11yPlugin,
 			},
 			rules: {
-				...baseRules,
-				'@typescript-eslint/consistent-type-imports': 'error',
-				'@typescript-eslint/no-unsafe-member-access': 'error',
-				'@typescript-eslint/no-unused-vars': [
-					'warn',
-					{
-						argsIgnorePattern: '^_',
-						caughtErrors: 'none',
-						ignoreRestSiblings: true,
-					},
-				],
 				'react/no-unused-state': 'error',
 				'react/react-in-jsx-scope': 'off',
-				...rules,
+				'react-hooks/rules-of-hooks': 'error',
 			},
 			settings: {
 				react: { version: 'detect' },
