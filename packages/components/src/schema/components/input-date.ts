@@ -4,6 +4,7 @@ import type {
 	InputDateTypePropType,
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropAutoComplete,
 	PropDisabled,
 	PropHideLabel,
@@ -36,6 +37,7 @@ type OptionalProps = {
 	type: InputDateTypePropType;
 	value: Iso8601 | Date | null;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropAutoComplete &
 	PropDisabled &
 	PropHideLabel &

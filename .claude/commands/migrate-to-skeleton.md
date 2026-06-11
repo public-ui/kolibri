@@ -113,6 +113,37 @@ If ARC42 text and implementation differ, follow implementation.
 - Remove unused imports/types/commented code.
 - Ensure no unreferenced migration leftovers remain.
 
+#### Dead Schema Detection
+
+Nach der Skeleton-Migration müssen alte Legacy-Schemas bereinigt werden:
+
+1. **Identifizieren:** Alte Schemas in `packages/components/src/schema/components/$ARGUMENTS.ts` (falls vorhanden)
+2. **Prüfen, ob noch genutzt:**
+
+   ```bash
+   grep -r "from '../../schema/components/$ARGUMENTS'" packages/components/src --include="*.ts*"
+   ```
+
+   - 0 Treffer → Dead Code
+   - Treffer → noch in Nutzung (z.B. in Samples, Tests)
+
+3. **Export entfernen:**
+   - In `packages/components/src/schema/index.ts` nach alten Re-Exports suchen
+   - Entfernen falls vorhanden
+
+4. **Datei löschen:**
+   - Nur wenn vollständig Dead (kein Import, kein Export, kein Test)
+
+**Beispiel:**
+
+```bash
+# Alte image.ts Schemas prüfen
+grep -r "schema/components/image" packages/components/src
+
+# Falls keine Treffer → image.ts löschen
+rm packages/components/src/schema/components/image.ts
+```
+
 ### Phase 5: Validation
 
 Run from repo root:

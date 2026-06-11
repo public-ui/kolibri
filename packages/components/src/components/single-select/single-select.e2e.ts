@@ -184,4 +184,58 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await getChangeCount()).toBe(1);
 		});
 	});
+
+	test.describe('_ariaDetails', () => {
+		test('accepts valid element reference', async ({ page }) => {
+			await page.setContent(`
+				<kol-single-select _label="Select option" _aria-details="select-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<div id="select-details">Choose one of these options carefully</div>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
+			expect(value).toBe('select-details');
+		});
+
+		test('updates when prop changes', async ({ page }) => {
+			await page.setContent(`
+				<kol-single-select _label="Select option" _aria-details="details-1" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<div id="details-1">Details 1</div>
+				<div id="details-2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const host = page.locator(COMPONENT_NAME);
+			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails)).toBe('details-1');
+
+			await host.evaluate((el: HTMLKolSingleSelectElement) => {
+				el._ariaDetails = 'details-2';
+			});
+			await page.waitForChanges();
+
+			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails)).toBe('details-2');
+		});
+
+		test('handles missing ID gracefully', async ({ page }) => {
+			await page.setContent(`
+				<kol-single-select _label="Select option" _aria-details="non-existent-id" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
+			expect(value).toBe('non-existent-id');
+		});
+
+		test('accepts multiple IDs (space-separated)', async ({ page }) => {
+			await page.setContent(`
+				<kol-single-select _label="Select option" _aria-details="id1 id2" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<div id="id1">Details 1</div>
+				<div id="id2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
+			expect(value).toBe('id1 id2');
+		});
+	});
 });

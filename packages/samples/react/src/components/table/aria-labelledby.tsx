@@ -91,7 +91,7 @@ export const AriaLabelledby: FC = () => (
 					The <code>&lt;h2&gt;</code> above serves as the accessible label via <code>_ariaLabelledby</code>. No internal <code>&lt;caption&gt;</code> is
 					rendered.
 				</p>
-				<KolTableStateless _ariaLabelledby="caption-stateless" {...PROPS} />
+				<KolTableStateless _ariaLabelledby="caption-stateless" {...PROPS} _hasSettingsMenu />
 			</div>
 
 			<hr aria-hidden="true" className="border-0" />

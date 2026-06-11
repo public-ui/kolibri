@@ -1,6 +1,16 @@
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import { SpanFC } from '../../internal/functional-components/span/component';
-import type { BadgeAPI, BadgeStates, FocusableElement, InternalButtonProps, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
+import type {
+	BadgeAPI,
+	BadgeStates,
+	FocusableElement,
+	InternalButtonProps,
+	KolFocusOptions,
+	KoliBriIconsProp,
+	LabelPropType,
+	PropColor,
+	Stringified,
+} from '../../schema';
 import { featureHint, handleColorChange, objectObjectHandler, parseJson, setState, validateColor, validateIcons } from '../../schema';
 
 import { createUniqueId } from '../../utils/dev.utils';
@@ -54,7 +64,9 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public render(): JSX.Element {
 		const hasSmartButton = typeof this.state._smartButton === 'object' && this.state._smartButton !== null;

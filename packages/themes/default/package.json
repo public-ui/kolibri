@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-default",
-	"version": "4.2.0",
+	"version": "4.3.0-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -75,12 +75,12 @@
 		"nodemon": "3.1.14",
 		"npm-run-all2": "8.0.4",
 		"postcss": "8.5.15",
-		"prettier": "3.8.3",
+		"prettier": "3.8.4",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"rollup": "4.60.4",
+		"rollup": "4.61.1",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass-embedded": "1.100.0",
-		"stylelint": "17.12.0",
+		"stylelint": "17.13.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},

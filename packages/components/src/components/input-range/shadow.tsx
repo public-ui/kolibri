@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from '../../utils/clsx';
 
 import type {
+	AriaDetailsPropType,
 	AutoCompletePropType,
 	DisabledPropType,
 	FocusableElement,
@@ -13,6 +14,7 @@ import type {
 	InputRangeAPI,
 	InputRangeStates,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -56,7 +58,9 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
@@ -209,8 +213,8 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 
 	public render(): JSX.Element {
 		const inputsWrapperStyle = {
-			// use number of digits in max value plus some space for the number input arrow buttons
-			'--kolibri-input-range--input-number--width': `calc(${String(this.state._max).length}ch + 2em)`,
+			// use number of digits in max or min value plus some space for the number input arrow buttons; minimum 4 digits
+			'--kolibri-input-range--input-number--width': `calc(${Math.max(String(this.state._max ?? 100).length, String(this.state._min ?? 0).length, 4)}ch + 2em)`,
 		};
 
 		return (
@@ -232,6 +236,14 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -363,6 +375,11 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 		this.controller.validateAccessKey(value);
 	}
 
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
+	}
+
 	@Watch('_autoComplete')
 	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
@@ -466,6 +483,7 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			this.setInitialValueType(this._value);
 		}
 		this._touched = this._touched === true;
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 }

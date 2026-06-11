@@ -13,6 +13,7 @@ export * from './alternative-button-link-role';
 export * from './aria-controls';
 export * from './aria-current-value';
 export * from './aria-description';
+export * from './aria-details';
 export * from './aria-expanded';
 export * from './aria-labelledby';
 export * from './aria-owns';
