@@ -118,7 +118,7 @@ test.describe('kol-link', () => {
 			const eventPromise = page.locator('kol-link').evaluate(async (element: HTMLKolLinkElement) => {
 				return new Promise<string | undefined>((resolve) => {
 					element.addEventListener('click', (event: Event) => {
-						const customEvent = event as CustomEvent;
+						const customEvent = event as CustomEvent<string>;
 						resolve(customEvent.detail);
 					});
 				});
@@ -257,7 +257,7 @@ test.describe('kol-link', () => {
 			const detailPromise = page.locator('kol-link').evaluate(async (element: HTMLKolLinkElement) => {
 				return new Promise<string | undefined>((resolve) => {
 					element.addEventListener('click', (event: Event) => {
-						const customEvent = event as CustomEvent;
+						const customEvent = event as CustomEvent<string>;
 						resolve(customEvent.detail);
 					});
 				});
