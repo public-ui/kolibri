@@ -68,15 +68,13 @@
 		"pretest:update": "pnpm build"
 	},
 	"devDependencies": {
-		"@eslint/eslintrc": "3.3.5",
 		"@public-ui/components": "workspace:*",
+		"@public-ui/eslint-config": "workspace:*",
 		"@public-ui/stylelint-rules": "workspace:*",
 		"@public-ui/visual-tests": "workspace:*",
 		"@rollup/plugin-commonjs": "29.0.3",
 		"@rollup/plugin-node-resolve": "16.0.3",
 		"@rollup/plugin-typescript": "12.3.0",
-		"@typescript-eslint/eslint-plugin": "8.58.2",
-		"@typescript-eslint/parser": "8.58.2",
 		"autoprefixer": "10.5.0",
 		"cpy-cli": "7.0.0",
 		"cross-env": "10.1.0",

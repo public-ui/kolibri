@@ -1,22 +1,23 @@
-import js from '@eslint/js';
-import stencilPlugin from '@stencil-community/eslint-plugin';
-import tseslintPlugin from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import boundariesPlugin from 'eslint-plugin-boundaries';
-import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
-import kolibriPlugin from '../../eslint-rules/index.js';
+import {
+	baseRules,
+	boundariesPlugin,
+	defaultIgnores,
+	js,
+	jsxA11yPlugin,
+	kolibriPlugin,
+	stencilPlugin,
+	tsParser,
+	tsPlugin,
+	tsRecommendedRules,
+	tsTypeCheckedRules,
+} from '@public-ui/eslint-config';
 
 /**
- * Extract recommended rules from plugin legacy configs.
- * The plugins expose their presets in legacy format ({ plugins, rules }),
- * so we spread only the `rules` portion into the flat config objects.
+ * Stencil exposes its preset in legacy format ({ plugins, rules }), so only the
+ * `rules` portion is spread into the flat config object. The `react/jsx-no-bind`
+ * rule is dropped because it would require the unregistered `react` plugin.
  */
-const tsRecommendedRules = tseslintPlugin.configs?.recommended?.rules ?? {};
-const tsTypeCheckedRules =
-	tseslintPlugin.configs?.['recommended-type-checked']?.rules ?? tseslintPlugin.configs?.['recommended-requiring-type-checking']?.rules ?? {};
-const stencilRecommendedRules = stencilPlugin.configs?.recommended?.rules ?? {};
-
-// Remove rules from stencil recommended that require unregistered plugins
+const stencilRecommendedRules = { ...stencilPlugin.configs?.recommended?.rules };
 delete stencilRecommendedRules['react/jsx-no-bind'];
 
 const jsxA11yRecommendedRules = jsxA11yPlugin.flatConfigs?.recommended?.rules ?? {};
@@ -24,7 +25,7 @@ const jsxA11yRecommendedRules = jsxA11yPlugin.flatConfigs?.recommended?.rules ??
 export default [
 	// Global ignores (replaces .eslintignore)
 	{
-		ignores: ['**/assets/**', 'scripts/*.js', 'src/**/*.js', 'src/**/*.html'],
+		ignores: [...defaultIgnores, 'scripts/*.js', 'src/**/*.js', 'src/**/*.html'],
 	},
 
 	// Base recommended JS rules
@@ -34,7 +35,7 @@ export default [
 	{
 		files: ['src/**/*.ts', 'src/**/*.tsx'],
 		plugins: {
-			'@typescript-eslint': tseslintPlugin,
+			'@typescript-eslint': tsPlugin,
 			'@stencil-community': stencilPlugin,
 			kolibri: kolibriPlugin,
 		},
@@ -58,6 +59,7 @@ export default [
 			...tsRecommendedRules,
 			...tsTypeCheckedRules,
 			...stencilRecommendedRules,
+			...baseRules,
 
 			// Disable rules that TypeScript already handles
 			'no-undef': 'off',
@@ -120,7 +122,6 @@ export default [
 			'@stencil-community/strict-boolean-conditions': 'off',
 			'@stencil-community/ban-default-true': 'off',
 
-			eqeqeq: 'error',
 			'no-console': 'error',
 			'no-mixed-spaces-and-tabs': 'off',
 		},

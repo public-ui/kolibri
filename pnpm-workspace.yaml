@@ -20,6 +20,7 @@ packages:
   - packages/themes/kern
   - packages/themes
   - packages/tools/benchmark-tests
+  - packages/tools/eslint-config
   - packages/tools/kolibri-cli
   - packages/tools/hydrate-server
   - packages/tools/mcp
