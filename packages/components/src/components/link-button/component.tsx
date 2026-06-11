@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { LinkApi } from '../../internal/functional-components/link/api';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { LinkController } from '../../internal/functional-components/link/controller';
@@ -37,12 +38,12 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolLinkButton extends BaseWebComponent<LinkApi> {
+export class KolLinkButton extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi> {
 	@Element() private readonly host?: HTMLKolLinkButtonElement;
 
 	private readonly ctrl = new LinkController(this.stateAccess);
 
-	@State() private ariaCurrent: string = '';
+	@State() public ariaCurrent: string = '';
 
 	/**
 	 * Sets focus on the internal anchor element.
@@ -203,7 +204,7 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> {
 	}
 
 	@Watch('_label')
-	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+	public watchLabel(value?: string | false): void {
 		this.ctrl.watchLabel(value);
 	}
 
@@ -213,7 +214,7 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> {
 	}
 
 	@Watch('_role')
-	public watchRole(value?: AlternativeButtonLinkRolePropType): void {
+	public watchRole(value?: string): void {
 		this.ctrl.watchRole(value);
 	}
 
@@ -238,7 +239,7 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> {
 	}
 
 	@Watch('_variant')
-	public watchVariant(value?: ButtonVariantPropType): void {
+	public watchVariant(value?: string): void {
 		this.ctrl.watchVariant(value);
 	}
 
