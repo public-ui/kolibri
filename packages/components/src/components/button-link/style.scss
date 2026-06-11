@@ -19,8 +19,15 @@
 	}
 
 	// Inline may have the height and width of the flowing text and do not necessarily have to be 44px high or width.
+	// The inner button also needs the override because the a11y preset enforces
+	// a minimum size of 44px on all <button> elements.
 	.kol-button--inline {
 		min-width: unset;
 		min-height: unset;
+
+		.kol-button__button {
+			min-width: unset;
+			min-height: unset;
+		}
 	}
 }
