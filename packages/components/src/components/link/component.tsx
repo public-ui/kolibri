@@ -6,17 +6,30 @@ import type { LinkApi } from '../../internal/functional-components/link/api';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { LinkController } from '../../internal/functional-components/link/controller';
 import type {
+	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
-	KoliBriIconsProp,
+	AriaDescriptionPropType,
+	CustomClassPropType,
+	DownloadPropType,
+	HrefPropType,
+	IconsPropType,
 	LinkOnCallbacksPropType,
 	LinkTargetPropType,
+	ShortKeyPropType,
+	TabIndexPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 import { setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
+/**
+ * The **Link** component renders a semantic, accessible anchor (`<a>`) with optional icon, tooltip, external-link handling and automatic active-state (`aria-current`) detection.
+ *
+ * @slot expert - Custom label content, e.g. for rich text or icons.
+ */
 @Component({
 	tag: 'kol-link',
 	styleUrls: {
@@ -93,16 +106,16 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	// ── Props ──────────────────────────────────────────────────────────────
 
 	/** Defines the key combination that can be used to trigger or focus the component's interactive element. */
-	@Prop() public _accessKey?: string;
+	@Prop() public _accessKey?: AccessKeyPropType;
 
-	/** Defines which elements are controlled by this component. */
+	/** Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls) */
 	@Prop() public _ariaControls?: string;
 
 	/** Defines the value for the aria-current attribute. */
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
 
 	/** Defines the value for the aria-description attribute. */
-	@Prop() public _ariaDescription?: string;
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 
 	/** Marks this element as open/expanded, or that the connected element is open/expanded. */
 	@Prop() public _ariaExpanded?: boolean;
@@ -111,27 +124,27 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	@Prop() public _ariaOwns?: string;
 
 	/** Defines the custom class attribute if _variant="custom" is set. */
-	@Prop() public _customClass?: string;
+	@Prop() public _customClass?: CustomClassPropType;
 
 	/** Makes the element not focusable and ignore all events. */
 	@Prop() public _disabled?: boolean = false;
 
 	/** Tells the browser that the link contains a file. Optionally sets the filename. */
-	@Prop() public _download?: string;
+	@Prop() public _download?: DownloadPropType;
 
 	/** Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it. */
 	@Prop() public _hideLabel?: boolean = false;
 
 	/** Sets the target URI of the link or citation source. */
-	@Prop() public _href!: string;
+	@Prop() public _href!: HrefPropType;
 
 	/** Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`). */
-	@Prop() public _icons?: KoliBriIconsProp | string;
+	@Prop() public _icons?: IconsPropType;
 
 	/** Defines whether the component is displayed inline without enforcing a minimum size of 44px. */
 	@Prop() public _inline?: boolean = true;
 
-	/** Defines the visible or semantic label of the component. Set to `false` to enable the expert slot. */
+	/** Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot. */
 	@Prop() public _label?: string | false;
 
 	/** Defines the callback functions for links. */
@@ -141,10 +154,10 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 
 	/** Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud. */
-	@Prop() public _shortKey?: string;
+	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/** Defines which tab-index the primary element of the component has. */
-	@Prop() public _tabIndex?: number;
+	@Prop() public _tabIndex?: TabIndexPropType;
 
 	/** Defines where to open the link. */
 	@Prop() public _target?: LinkTargetPropType;
@@ -153,7 +166,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 
 	/** Defines which variant should be used for presentation. */
-	@Prop() public _variant?: string;
+	@Prop() public _variant?: VariantClassNamePropType;
 
 	// ── State ─────────────────────────────────────────────────────────────
 
@@ -163,7 +176,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	// ── Watchers ──────────────────────────────────────────────────────────
 
 	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
+	public watchAccessKey(value?: AccessKeyPropType): void {
 		this.ctrl.watchAccessKey(value);
 	}
 
@@ -178,7 +191,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	}
 
 	@Watch('_ariaDescription')
-	public watchAriaDescription(value?: string): void {
+	public watchAriaDescription(value?: AriaDescriptionPropType): void {
 		this.ctrl.watchAriaDescription(value);
 	}
 
@@ -193,7 +206,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	}
 
 	@Watch('_customClass')
-	public watchCustomClass(value?: string): void {
+	public watchCustomClass(value?: CustomClassPropType): void {
 		this.ctrl.watchCustomClass(value);
 	}
 
@@ -203,7 +216,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	}
 
 	@Watch('_download')
-	public watchDownload(value?: string): void {
+	public watchDownload(value?: DownloadPropType): void {
 		this.ctrl.watchDownload(value);
 	}
 
@@ -213,12 +226,12 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	}
 
 	@Watch('_href')
-	public watchHref(value?: string): void {
+	public watchHref(value?: HrefPropType): void {
 		this.ctrl.watchHref(value);
 	}
 
 	@Watch('_icons')
-	public watchIcons(value?: KoliBriIconsProp | string): void {
+	public watchIcons(value?: IconsPropType): void {
 		this.ctrl.watchIcons(value);
 	}
 
@@ -243,12 +256,12 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	}
 
 	@Watch('_shortKey')
-	public watchShortKey(value?: string): void {
+	public watchShortKey(value?: ShortKeyPropType): void {
 		this.ctrl.watchShortKey(value);
 	}
 
 	@Watch('_tabIndex')
-	public watchTabIndex(value?: number): void {
+	public watchTabIndex(value?: TabIndexPropType): void {
 		this.ctrl.watchTabIndex(value);
 	}
 
@@ -263,7 +276,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	}
 
 	@Watch('_variant')
-	public watchVariant(value?: string): void {
+	public watchVariant(value?: VariantClassNamePropType): void {
 		this.ctrl.watchVariant(value);
 	}
 
