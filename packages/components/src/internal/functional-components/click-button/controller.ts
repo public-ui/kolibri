@@ -5,8 +5,6 @@ import type { ClickButtonApi } from './api';
 import { clickButtonPropsConfig } from './api';
 
 export class ClickButtonController extends BaseController<ClickButtonApi> implements ControllerInterface<ClickButtonApi> {
-	private buttonRef?: HTMLButtonElement;
-
 	public constructor(stateAccess: StateAccess<ClickButtonApi>) {
 		super(stateAccess, clickButtonPropsConfig);
 	}
@@ -24,14 +22,6 @@ export class ClickButtonController extends BaseController<ClickButtonApi> implem
 
 	public handleClick = (): void => {
 		// eslint-disable-next-line no-console
-		console.log(this, this.buttonRef, 'button clicked');
-	};
-
-	public focus(): void {
-		this.buttonRef?.focus();
-	}
-
-	public setButtonRef = (element?: HTMLButtonElement): void => {
-		this.buttonRef = element;
+		console.log(this, 'button clicked');
 	};
 }

@@ -9,6 +9,10 @@ import { COUNTRY_OPTIONS } from '../../../shares/country';
 
 const SALUTATION_OPTIONS: SelectOption<string>[] = [
 	{
+		label: 'Prof. Dr. very long value with more word so it really really breaks the layout ',
+		value: 'long',
+	},
+	{
 		label: 'No salutation',
 		value: '',
 	},

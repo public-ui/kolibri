@@ -11,6 +11,7 @@ import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomS
 import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type {
+	AriaDetailsPropType,
 	ComboboxAPI,
 	ComboboxStates,
 	DisabledPropType,
@@ -20,6 +21,7 @@ import type {
 	HintPropType,
 	IconsHorizontalPropType,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -54,6 +56,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
+
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private clearButtonFocused = false;
 
@@ -71,7 +74,9 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
@@ -385,7 +390,6 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 				this.ctaRef.el?.focus();
 				break;
 			}
-			case ' ':
 			case 'Enter':
 			case 'NumpadEnter': {
 				if (this.clearButtonFocused) {
@@ -400,9 +404,16 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 				event.preventDefault();
 				break;
 			}
-			case 'Space': {
+			// Space key
+			case ' ': {
 				if (this.clearButtonFocused) {
 					this.clearSelection();
+					event.preventDefault();
+				} else if (this._isOpen) {
+					if (this.selectFocusedOption()) {
+						this._isOpen = false;
+						event.preventDefault();
+					}
 				}
 				break;
 			}
@@ -456,6 +467,16 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this combobox.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
+	}
 
 	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
@@ -678,6 +699,8 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
+		this.validateAriaDetails(this._ariaDetails);
+
 		this.refSuggestions = [];
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
