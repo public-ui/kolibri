@@ -64,7 +64,7 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 
 	const staticValueText = isPercentage
 		? translate('kol-live-value', { placeholders: { value: String(displayValue), unit } })
-		: translate('kol-live-value-bounded', { placeholders: { value: String(value), max: String(max), unit } });
+		: translate('kol-live-value-bounded', { placeholders: { value: String(displayValue), max: String(max), unit } });
 	const staticValueWithState = hasStateClassification ? `${staticValueText} – ${stateLabel}` : staticValueText;
 
 	const charCount = max.toString().length > min.toString().length ? max.toString().length + 'ch' : min.toString().length + 'ch';
