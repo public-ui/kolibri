@@ -48,19 +48,64 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
                 <ul class="kol-nav__list kol-nav__list--nested kol-nav__list--vertical" id="kol-nav-list-0-0-1-0-nonce">
                   <li class="kol-nav__list-item kol-nav__list-item--active">
                     <div class="kol-nav__entry-wrapper">
-                      <kol-button-wc _label="Grandchild info" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+                      <div class="kol-button kol-button--normal kol-button--standalone kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
+                        <button class="kol-button__button" type="button">
+                          <span class="kol-button__text kol-span">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                              <span class="kol-span__label">
+                                Grandchild info
+                              </span>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
+                            </span>
+                          </span>
+                        </button>
+                      </div>
                     </div>
                   </li>
                 </ul>
               </li>
               <li class="kol-nav__list-item">
                 <div class="kol-nav__entry-wrapper">
-                  <kol-button-wc _label="Child button" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
+                    <button class="kol-button__button" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                          <span class="kol-span__label">
+                            Child button
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </li>
               <li class="kol-nav__list-item">
                 <div class="kol-nav__entry-wrapper">
-                  <kol-button-wc _label="Child hint" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
+                    <button class="kol-button__button" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                          <span class="kol-span__label">
+                            Child hint
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -140,7 +185,22 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+              <div class="kol-button kol-button--normal kol-button--standalone kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
+                <button class="kol-button__button" type="button">
+                  <span class="kol-button__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        6 Keine eigene Seite, mit Icon
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
+                    </span>
+                  </span>
+                </button>
+              </div>
             </div>
           </li>
         </ul>
@@ -218,13 +278,52 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+              <div class="kol-button kol-button--normal kol-button--standalone kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
+                <button class="kol-button__button" type="button">
+                  <span class="kol-button__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        6 Keine eigene Seite, mit Icon
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
+                    </span>
+                  </span>
+                </button>
+              </div>
             </div>
           </li>
         </ul>
       </nav>
       <div class="kol-nav__compact">
-        <kol-button-wc _ariacontrols="kol-nav-nonce" _ariaexpanded="" _hidelabel="" _icons="kolicon-chevron-left" _label="kol-nav-minimize" _tooltipalign="right" class="kol-nav__toggle-button"></kol-button-wc>
+        <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-nav__toggle-button">
+          <button aria-controls="kol-nav-nonce" aria-expanded="true" aria-label="kol-nav-minimize" class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span kol-span--hide-label">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+          <div class="kol-button__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    kol-nav-minimize
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -299,7 +398,22 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+              <div class="kol-button kol-button--normal kol-button--standalone kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
+                <button class="kol-button__button" type="button">
+                  <span class="kol-button__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        6 Keine eigene Seite, mit Icon
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
+                    </span>
+                  </span>
+                </button>
+              </div>
             </div>
           </li>
         </ul>
@@ -377,7 +491,22 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+              <div class="kol-button kol-button--normal kol-button--standalone kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
+                <button class="kol-button__button" type="button">
+                  <span class="kol-button__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="codicon codicon-squirrel kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        6 Keine eigene Seite, mit Icon
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
+                    </span>
+                  </span>
+                </button>
+              </div>
             </div>
           </li>
         </ul>
@@ -455,7 +584,22 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+              <div class="kol-button kol-button--normal kol-button--standalone kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
+                <button class="kol-button__button" type="button">
+                  <span class="kol-button__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        6 Keine eigene Seite, mit Icon
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
+                    </span>
+                  </span>
+                </button>
+              </div>
             </div>
           </li>
         </ul>
@@ -533,7 +677,32 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <kol-button-wc _hidelabel="" _label="6 Keine eigene Seite, mit Icon" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+              <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
+                <button aria-label="6 Keine eigene Seite, mit Icon" class="kol-button__button" type="button">
+                  <span class="kol-button__text kol-span kol-span--hide-label">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="codicon codicon-squirrel kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
+                    </span>
+                  </span>
+                </button>
+                <div class="kol-button__tooltip">
+                  <div class="kol-tooltip__floating">
+                    <div class="kol-tooltip__arrow"></div>
+                    <span class="kol-span kol-tooltip__content">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          6 Keine eigene Seite, mit Icon
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </li>
         </ul>
@@ -611,7 +780,22 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
           <li class="kol-nav__list-item">
             <div class="kol-nav__entry-wrapper">
-              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+              <div class="kol-button kol-button--normal kol-button--standalone kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible">
+                <button class="kol-button__button" type="button">
+                  <span class="kol-button__text kol-span">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                      <span class="kol-span__label">
+                        6 Keine eigene Seite, mit Icon
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
+                    </span>
+                  </span>
+                </button>
+              </div>
             </div>
           </li>
         </ul>

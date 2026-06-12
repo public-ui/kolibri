@@ -20,10 +20,14 @@ import type {
 	TooltipAlignPropType,
 } from '../../schema';
 
-import { KolButtonWcTag, KolPopoverButtonWcTag } from '../../core/component-names';
+import { KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { renderButtonFC } from '../../internal/functional-components/button/render';
 import clsx from '../../utils/clsx';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 
 /**
  * The **SplitButton** component can be used to display a two-part button. The primary button is typically used for
@@ -40,7 +44,8 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 })
 export class KolSplitButton implements SplitButtonProps, FocusableElement /*, SplitButtonAPI*/ {
 	@Element() protected readonly host?: HTMLKolSplitButtonElement;
-	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
+	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
+	private readonly buttonCtrl = new ButtonController(BaseWebComponent.stateLess);
 	private popoverButtonRef?: HTMLKolPopoverButtonWcElement;
 
 	private readonly setPopoverButtonRef = (ref?: HTMLKolPopoverButtonWcElement) => {
@@ -87,31 +92,41 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 		return (
 			<div class="kol-split-button">
 				<div class="kol-split-button__root">
-					<KolButtonWcTag
-						class={clsx('kol-split-button__button', {
-							[this._variant as string]: this._variant !== 'custom',
-							[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
-						})}
-						ref={this.ctaRef}
-						_accessKey={this._accessKey}
-						_ariaControls={this._ariaControls}
-						_ariaDescription={this._ariaDescription}
-						_ariaExpanded={this._ariaExpanded}
-						_ariaSelected={this._ariaSelected}
-						_customClass={this._customClass}
-						_disabled={this._disabled}
-						_icons={this._icons}
-						_hideLabel={this._hideLabel}
-						_label={this._label}
-						_name={this._name}
-						_on={this.clickButtonHandler}
-						_shortKey={this._shortKey}
-						_syncValueBySelector={this._syncValueBySelector}
-						_tooltipAlign={this._tooltipAlign}
-						_type={this._type}
-						_value={this._value}
-						_variant={this._variant}
-					></KolButtonWcTag>
+					{(() => {
+						initButtonControllerFromProps(this.buttonCtrl, {
+							_accessKey: this._accessKey,
+							_ariaControls: this._ariaControls,
+							_ariaDescription: this._ariaDescription,
+							_ariaExpanded: this._ariaExpanded,
+							_ariaSelected: this._ariaSelected,
+							_customClass: this._customClass,
+							_disabled: this._disabled,
+							_icons: this._icons,
+							_hideLabel: this._hideLabel,
+							_label: this._label,
+							_name: this._name,
+							_on: this.clickButtonHandler,
+							_shortKey: this._shortKey,
+							_tooltipAlign: this._tooltipAlign,
+							_type: this._type,
+							_value: this._value,
+							_variant: this._variant,
+						});
+						return renderButtonFC(this.buttonCtrl, {
+							class: clsx('kol-split-button__button', {
+								[this._variant as string]: this._variant !== 'custom',
+								[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
+							}),
+							refButton: this.ctaRef,
+							onClick: (_event, result) => {
+								if (result.formAction === 'submit') {
+									propagateSubmitEventToForm({ form: this.host, ref: this.ctaRef.el });
+								} else if (result.formAction === 'reset') {
+									propagateResetEventToForm({ form: this.host, ref: this.ctaRef.el });
+								}
+							},
+						});
+					})()}
 					<div class="kol-split-button__horizontal-line"></div>
 					<KolPopoverButtonWcTag
 						class="kol-split-button__secondary-button"
