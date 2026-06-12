@@ -3,8 +3,8 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { LinkApi } from '../../internal/functional-components/link/api';
-import { LinkFC } from '../../internal/functional-components/link/component';
 import { LinkController } from '../../internal/functional-components/link/controller';
+import { renderLinkFC } from '../../internal/functional-components/link/render';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -15,6 +15,7 @@ import type {
 	DownloadPropType,
 	HrefPropType,
 	IconsPropType,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
 	LinkTargetPropType,
@@ -49,9 +50,9 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> implements WebCompo
 	 * Sets focus on the internal anchor element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
+	public async focus(options?: KolFocusOptions): Promise<void> {
 		const anchor = this.ctrl.getAnchorRef();
-		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor));
+		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor, options));
 	}
 
 	/**
@@ -72,38 +73,7 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> implements WebCompo
 	};
 
 	public render(): JSX.Element {
-		return (
-			<Host>
-				<LinkFC
-					accessKey={this.ctrl.getRenderProp('accessKey')}
-					ariaControls={this.ctrl.getRenderProp('ariaControls')}
-					ariaCurrent={this.ariaCurrent}
-					ariaCurrentValue={this.ctrl.getRenderProp('ariaCurrentValue')}
-					ariaDescription={this.ctrl.getRenderProp('ariaDescription')}
-					ariaExpanded={this.ctrl.getRenderProp('ariaExpanded')}
-					ariaOwns={this.ctrl.getRenderProp('ariaOwns')}
-					customClass={this.ctrl.getRenderProp('customClass')}
-					disabled={this.ctrl.getRenderProp('disabled')}
-					download={this.ctrl.getRenderProp('download')}
-					hideLabel={this.ctrl.getRenderProp('hideLabel')}
-					href={this.ctrl.getRenderProp('href')}
-					icons={this.ctrl.getRenderProp('icons')}
-					inline={this.ctrl.getRenderProp('inline')}
-					label={this.ctrl.getRenderProp('label')}
-					on={this.ctrl.getRenderProp('on')}
-					role={this.ctrl.getRenderProp('role')}
-					shortKey={this.ctrl.getRenderProp('shortKey')}
-					tabIndex={this.ctrl.getRenderProp('tabIndex')}
-					target={this.ctrl.getRenderProp('target')}
-					tooltipAlign={this.ctrl.getRenderProp('tooltipAlign')}
-					variant={this.ctrl.getRenderProp('variant')}
-					onAnchorClick={this.handleAnchorClick}
-					tooltipId={this.ctrl.getTooltipId()}
-					refTooltipFloating={this.ctrl.setTooltipRef}
-					refAnchor={(el) => this.ctrl.setAnchorRef(el)}
-				/>
-			</Host>
-		);
+		return <Host>{renderLinkFC(this.ctrl, this.ariaCurrent, this.handleAnchorClick)}</Host>;
 	}
 
 	public componentWillLoad(): void {

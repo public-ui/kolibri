@@ -1,5 +1,5 @@
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
-import type { FocusableElement, LabelPropType, LinkProps, SkipNavAPI, SkipNavStates, Stringified } from '../../schema';
+import type { FocusableElement, KolFocusOptions, LabelPropType, LinkProps, SkipNavAPI, SkipNavStates, Stringified } from '../../schema';
 import { validateLabel } from '../../schema';
 
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
@@ -77,9 +77,9 @@ export class KolSkipNav implements SkipNavAPI, FocusableElement {
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
+	public async focus(options?: KolFocusOptions): Promise<void> {
 		const anchor = this.linkCtrls[0]?.getAnchorRef();
-		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor));
+		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor, options));
 	}
 
 	/**

@@ -67,7 +67,6 @@ const EXCLUDE_TAGS = [
 	'kol-card-wc',
 	'kol-click-button',
 	'kol-dialog-wc',
-	'kol-link-wc',
 	'kol-pagination-wc',
 	'kol-popover-button-wc',
 	'kol-select-wc',
