@@ -4,4 +4,17 @@
 
 @layer kol-component {
 	@include kol-button-styles('kol-link');
+
+	.kol-link__anchor {
+		display: flex;
+		flex: 1;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.kol-link--disabled {
+		pointer-events: none;
+	}
 }

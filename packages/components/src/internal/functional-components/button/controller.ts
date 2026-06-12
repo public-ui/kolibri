@@ -8,20 +8,20 @@ import {
 	ariaExpandedProp,
 	ariaSelectedProp,
 	buttonCallbacksProp,
+	buttonInlineProp,
+	buttonTooltipAlignProp,
 	buttonTypeProp,
 	buttonVariantProp,
 	customClassProp,
 	disabledProp,
 	hideLabelProp,
 	idProp,
-	inlineProp,
 	labelWithExpertSlotProp,
 	nameProp,
 	shortKeyProp,
 	spanIconsProp,
 	tabIndexProp,
-	tooltipAlignProp,
-	variantClassNameProp,
+	variantProp,
 } from '../../props';
 import type { ButtonType } from '../../props/button-type';
 import type { ButtonVariant } from '../../props/button-variant';
@@ -167,7 +167,7 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 	}
 
 	public watchInline(value?: boolean): void {
-		inlineProp.apply(value, (v) => {
+		buttonInlineProp.apply(value, (v) => {
 			this.setRenderProp('inline', v);
 		});
 	}
@@ -210,7 +210,7 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 	}
 
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
-		tooltipAlignProp.apply(value, (v) => {
+		buttonTooltipAlignProp.apply(value, (v) => {
 			this.setRenderProp('tooltipAlign', v);
 			this.tooltipCtrl.watchAlign(v);
 		});
@@ -302,8 +302,9 @@ export class ButtonLinkController extends ButtonController {
 	}
 
 	public override watchVariant(value?: string): void {
-		variantClassNameProp.apply(value, (v) => {
-			this.setRenderProp('variant', v as ButtonVariant);
+		variantProp.apply(value, (v) => {
+			// The empty string is the prop default and maps to the 'normal' presentation.
+			this.setRenderProp('variant', (v === '' ? 'normal' : v) as ButtonVariant);
 		});
 	}
 }

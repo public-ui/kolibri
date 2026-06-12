@@ -2,10 +2,12 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import { isEqual } from 'lodash-es';
-import { KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag } from '../../core/component-names';
+import { KolButtonWcTag, KolTableSettingsWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
+import { LinkFC } from '../../internal/functional-components/link/component';
+import { createLinkStateAccess, initLinkControllerFromProps, LinkController } from '../../internal/functional-components/link/controller';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
 import type {
 	ActionColumnHeaderCell,
@@ -88,6 +90,10 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	private disabledKeysStringSet = new Set<string>();
 
 	private checkboxRefs: HTMLInputElement[] = [];
+
+	@State() private _tick = 0;
+	private readonly forceRender = () => this._tick++;
+	private actionLinkCtrls = new Map<string, LinkController>();
 
 	private translateSort = translate('kol-sort');
 	private translateSortOrder = translate('kol-table-sort-order');
@@ -201,6 +207,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 				this.updateDataToKeyMap(nextValue as KoliBriTableDataType[]);
 			},
 		});
+		for (const ctrl of this.actionLinkCtrls.values()) ctrl.destroy();
+		this.actionLinkCtrls.clear();
 	}
 
 	@Watch('_dataFoot')
@@ -297,6 +305,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	public disconnectedCallback() {
 		this.tableDivElementResizeObserver?.disconnect();
 		clearTimeout(this.resizeDebounceTimeout);
+		for (const ctrl of this.actionLinkCtrls.values()) ctrl.destroy();
+		this.actionLinkCtrls.clear();
 	}
 
 	private handleResize() {
@@ -915,8 +925,45 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						const { ...buttonProps } = action;
 						return <KolButtonWcTag key={`action-${key}-${actionIndex}`} {...buttonProps} _variant={buttonProps._variant} />;
 					} else if (action.type === 'link') {
-						const { ...linkProps } = action;
-						return <KolLinkWcTag key={`action-${key}-${actionIndex}`} {...linkProps} />;
+						const ctrlKey = `${key}-${actionIndex}`;
+						let ctrl = this.actionLinkCtrls.get(ctrlKey);
+						if (!ctrl) {
+							ctrl = new LinkController(createLinkStateAccess(this.forceRender));
+							initLinkControllerFromProps(ctrl, action as { _href: string } & Partial<Record<string, unknown>>);
+							this.actionLinkCtrls.set(ctrlKey, ctrl);
+						}
+						const linkCtrl = ctrl;
+						return (
+							<LinkFC
+								key={`action-${key}-${actionIndex}`}
+								href={linkCtrl.getRenderProp('href')}
+								label={linkCtrl.getRenderProp('label')}
+								icons={linkCtrl.getRenderProp('icons')}
+								hideLabel={linkCtrl.getRenderProp('hideLabel')}
+								target={linkCtrl.getRenderProp('target')}
+								download={linkCtrl.getRenderProp('download')}
+								on={linkCtrl.getRenderProp('on')}
+								inline={linkCtrl.getRenderProp('inline')}
+								disabled={linkCtrl.getRenderProp('disabled')}
+								role={linkCtrl.getRenderProp('role')}
+								tabIndex={linkCtrl.getRenderProp('tabIndex')}
+								accessKey={linkCtrl.getRenderProp('accessKey')}
+								shortKey={linkCtrl.getRenderProp('shortKey')}
+								tooltipAlign={linkCtrl.getRenderProp('tooltipAlign')}
+								ariaControls={linkCtrl.getRenderProp('ariaControls')}
+								ariaCurrentValue={linkCtrl.getRenderProp('ariaCurrentValue')}
+								ariaDescription={linkCtrl.getRenderProp('ariaDescription')}
+								ariaExpanded={linkCtrl.getRenderProp('ariaExpanded')}
+								ariaOwns={linkCtrl.getRenderProp('ariaOwns')}
+								customClass={linkCtrl.getRenderProp('customClass')}
+								variant={linkCtrl.getRenderProp('variant')}
+								ariaCurrent={linkCtrl.getAriaCurrent()}
+								onAnchorClick={linkCtrl.handleAnchorClick}
+								tooltipId={linkCtrl.getTooltipId()}
+								refTooltipFloating={linkCtrl.setTooltipRef}
+								refAnchor={(el) => linkCtrl.setAnchorRef(el)}
+							/>
+						);
 					}
 					return null;
 				})}

@@ -230,7 +230,37 @@ Do not add `class="kol-..."` to `<Host>`.
 
 Only keep `@State()` fields that are actually read and updated for reactive UI.
 
-### 4. Event Listener Leaks
+### 4. KoliBri WC tag inside `render()` instead of FC
+
+KoliBri web component custom element tags must **never** appear inside a `render()` method of another web component. Always use the corresponding Functional Component.
+
+```tsx
+// ❌ Wrong — nests a full custom element with its own shadow root and lifecycle:
+public render(): JSX.Element {
+	return (
+		<Host>
+			<kol-link _href={this.ctrl.getRenderProp('href')} _label={this.ctrl.getRenderProp('label')} />
+		</Host>
+	);
+}
+
+// ✅ Correct — use the Functional Component directly:
+public render(): JSX.Element {
+	return (
+		<Host>
+			<LinkFC
+				href={this.ctrl.getRenderProp('href')}
+				label={this.ctrl.getRenderProp('label')}
+				onAnchorClick={this.ctrl.handleAnchorClick}
+			/>
+		</Host>
+	);
+}
+```
+
+If the legacy code used a KoliBri WC inside `render()` and that WC encapsulates controller behaviour (event handlers, ref management, normalization), migrate that behaviour into the controller of the component you are refactoring. See [ARC42 §9 #14](../../packages/components/src/components/_skeleton/ARC42.md#9-design-decisions) for the rationale.
+
+### 5. Event Listener Leaks
 
 Do not register inline listeners with new function references in lifecycle hooks.
 Use stable arrow-property handlers.

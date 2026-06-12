@@ -3,7 +3,8 @@
 	 * Dieses CSS stellt sicher, dass der Standard-Style
 	 * von A und Button resettet werden.
 	 */
-	:is(a, button) {
+	a,
+	button {
 		background-color: transparent;
 		width: 100%;
 		margin: 0;

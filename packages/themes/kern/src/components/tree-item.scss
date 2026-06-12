@@ -14,8 +14,23 @@
 		&__link {
 			background-color: var(--kern-color-layout-background-hued);
 			display: flex;
+			width: 100%;
+			padding-right: 0;
+			padding-left: max(calc(var(--indentation) * var(--level)));
 			gap: var(--kern-metric-space-small);
 			flex-direction: row;
+
+			&:focus {
+				outline-color: var(--kern-color-action-focus-background);
+			}
+
+			.kol-span,
+			.kol-span__container,
+			.kol-span__label,
+			.kol-tree-item__link-inner,
+			.kol-tree-item__text {
+				width: 100%;
+			}
 
 			@include kol-link('kol-tree-item__toggle-button');
 
@@ -24,24 +39,6 @@
 
 				&:hover .kol-icon {
 					font-size: to-rem(32);
-				}
-			}
-
-			.kol-link {
-				width: 100%;
-				padding-right: 0;
-				padding-left: max(calc(var(--indentation) * var(--level)));
-
-				&:focus {
-					outline-color: var(--kern-color-action-focus-background);
-				}
-
-				.kol-span,
-				.kol-span__container,
-				.kol-span__label,
-				.kol-tree-item__link-inner,
-				.kol-tree-item__text {
-					width: 100%;
 				}
 			}
 

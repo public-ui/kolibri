@@ -1,34 +1,37 @@
-import type { TooltipAlignPropType } from '../../schema';
+import type { AlignPropType } from '../../schema';
 import { alignPropTypeOptions } from '../../schema';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
-/**
- * Tooltip Align prop for positioning the tooltip of a component
- *
- * Description:
- * Controls where the tooltip is preferably shown relative to its reference
- * element: top, right, bottom or left.
- *
- * Valid values: 'top' | 'right' | 'bottom' | 'left'
- * Default: 'top'
- *
- * Accessibility:
- * - Alignment should be chosen to ensure the tooltip is visible and does not obscure
- *   important content for users with low vision or screen magnification
- */
-export type TooltipAlignProp = SimpleProp<'tooltipAlign', TooltipAlignPropType>;
-
+export type TooltipAlignProp = SimpleProp<'tooltipAlign', AlignPropType>;
 export const tooltipAlignProp = createPropDefinition<TooltipAlignProp>(
 	'tooltipAlign',
-	'top',
+	'right' as AlignPropType,
 	(value) => {
+		if (value === undefined || value === null || value === '') return 'right' as AlignPropType;
 		const str = normalizeString(value);
 		if ((alignPropTypeOptions as readonly string[]).includes(str)) {
-			return str as TooltipAlignPropType;
+			return str as AlignPropType;
 		}
-		throw new Error(`Invalid tooltipAlign value: ${str}`);
+		throw new Error(`Invalid tooltipAlign: ${str}`);
+	},
+	(v) => (alignPropTypeOptions as readonly string[]).includes(v),
+);
+
+/**
+ * Buttons show their tooltip above by default (unlike links, which default to the right).
+ */
+export const buttonTooltipAlignProp = createPropDefinition<TooltipAlignProp>(
+	'tooltipAlign',
+	'top' as AlignPropType,
+	(value) => {
+		if (value === undefined || value === null || value === '') return 'top' as AlignPropType;
+		const str = normalizeString(value);
+		if ((alignPropTypeOptions as readonly string[]).includes(str)) {
+			return str as AlignPropType;
+		}
+		throw new Error(`Invalid tooltipAlign: ${str}`);
 	},
 	(v) => (alignPropTypeOptions as readonly string[]).includes(v),
 );

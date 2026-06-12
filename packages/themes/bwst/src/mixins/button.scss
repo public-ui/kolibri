@@ -7,6 +7,8 @@
 	}
 
 	.#{$block-classname} {
+		--text-color: var(--color-text);
+
 		$root: &;
 
 		&__text {

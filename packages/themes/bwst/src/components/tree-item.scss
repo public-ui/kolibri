@@ -5,34 +5,26 @@
 	@include kol-icon-theme;
 	.kol-tree-item {
 		$root: &;
-		--tree-item-indentation: #{to-rem(20)};
+		--indentation: #{to-rem(20)};
 
 		&__link {
+			color: var(--color-text);
 			display: block;
+			padding-left: max(calc(var(--indentation) * var(--level)));
 			border: 1px solid transparent;
-
-			.kol-link {
-				color: var(--color-text);
-				text-align: left;
-			}
+			text-align: left;
 
 			&:hover,
 			&:focus-within {
+				color: var(--color-light);
 				background-color: var(--color-primary-variant);
+				outline: 0;
 				border: 1px solid var(--color-primary);
-
-				.kol-link {
-					color: var(--color-light);
-					outline-offset: 0;
-				}
 			}
 
 			&--active {
+				color: var(--color-light);
 				background-color: var(--color-primary);
-
-				.kol-link {
-					color: var(--color-light);
-				}
 			}
 		}
 

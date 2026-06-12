@@ -85,7 +85,7 @@ export const ButtonFC: FC<ButtonFCProps> = (props) => {
 				onFocus={handleFocus}
 				onBlur={handleBlur}
 				role={role || undefined}
-				tabIndex={tabIndex === '' ? undefined : tabIndex}
+				tabIndex={tabIndex === 0 ? undefined : tabIndex}
 				type={type}
 			>
 				<SpanFC class={buttonBem('text')} badgeText={badgeText} icons={icons} hideLabel={hideLabel_} label={hasExpertSlot ? '' : label}>

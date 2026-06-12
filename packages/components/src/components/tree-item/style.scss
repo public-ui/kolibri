@@ -9,7 +9,7 @@
 		$root: &;
 
 		&__link {
-			.kol-link {
+			&.kol-link {
 				display: inline-flex;
 				min-height: var(--a11y-min-size);
 				align-items: center;

@@ -6,8 +6,9 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
-import { KolLinkWcTag } from '../../core/component-names';
 import { IconFC } from '../../internal/functional-components/icon/component';
+import { LinkFC } from '../../internal/functional-components/link/component';
+import { createLinkStateAccess, initLinkControllerFromProps, LinkController } from '../../internal/functional-components/link/controller';
 
 /**
  * The **Breadcrumb** component can be used to display the path to the current position of a web page within a hierarchical structure.
@@ -20,8 +21,13 @@ import { IconFC } from '../../internal/functional-components/icon/component';
 	shadow: true,
 })
 export class KolBreadcrumb implements BreadcrumbAPI {
+	@State() private _tick = 0;
+	private readonly forceRender = () => this._tick++;
+	private linkCtrls: LinkController[] = [];
+
 	private readonly renderLink = (link: BreadcrumbLinkProps, index: number): JSX.Element => {
 		const lastIndex = this.state._links.length - 1;
+		const ctrl = this.linkCtrls[index];
 		return (
 			<li class="kol-breadcrumb__list-element" key={index}>
 				{index === lastIndex ? (
@@ -32,9 +38,37 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 							<>{link._label}</>
 						)}
 					</span>
-				) : (
-					<KolLinkWcTag class="kol-breadcrumb__link" _inline={false} {...link}></KolLinkWcTag>
-				)}
+				) : ctrl ? (
+					<LinkFC
+						class="kol-breadcrumb__link"
+						accessKey={ctrl.getRenderProp('accessKey')}
+						ariaControls={ctrl.getRenderProp('ariaControls')}
+						ariaCurrent={ctrl.getAriaCurrent()}
+						ariaCurrentValue={ctrl.getRenderProp('ariaCurrentValue')}
+						ariaDescription={ctrl.getRenderProp('ariaDescription')}
+						ariaExpanded={ctrl.getRenderProp('ariaExpanded')}
+						ariaOwns={ctrl.getRenderProp('ariaOwns')}
+						customClass={ctrl.getRenderProp('customClass')}
+						disabled={ctrl.getRenderProp('disabled')}
+						download={ctrl.getRenderProp('download')}
+						hideLabel={ctrl.getRenderProp('hideLabel')}
+						href={ctrl.getRenderProp('href')}
+						icons={ctrl.getRenderProp('icons')}
+						inline={false}
+						label={ctrl.getRenderProp('label')}
+						on={ctrl.getRenderProp('on')}
+						role={ctrl.getRenderProp('role')}
+						shortKey={ctrl.getRenderProp('shortKey')}
+						tabIndex={ctrl.getRenderProp('tabIndex')}
+						target={ctrl.getRenderProp('target')}
+						tooltipAlign={ctrl.getRenderProp('tooltipAlign')}
+						variant={ctrl.getRenderProp('variant')}
+						onAnchorClick={ctrl.handleAnchorClick}
+						tooltipId={ctrl.getTooltipId()}
+						refTooltipFloating={ctrl.setTooltipRef}
+						refAnchor={(el) => ctrl.setAnchorRef(el)}
+					/>
+				) : null}
 				{index !== lastIndex && <IconFC class="kol-breadcrumb__separator" label="" icons="kolicon-chevron-right" />}
 			</li>
 		);
@@ -85,6 +119,18 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 	@Watch('_links')
 	public validateLinks(value?: Stringified<LinkProps[]>): void {
 		watchNavLinks('KolBreadcrumb', this, value);
+		this.syncLinkControllers();
+	}
+
+	private syncLinkControllers(): void {
+		this.linkCtrls.forEach((c) => c.destroy());
+		// Last link is rendered as a span (aria-current="page"), not as a link
+		const nonLastLinks = this.state._links.slice(0, -1);
+		this.linkCtrls = nonLastLinks.map((link) => {
+			const ctrl = new LinkController(createLinkStateAccess(this.forceRender));
+			initLinkControllerFromProps(ctrl, { ...link, _inline: false });
+			return ctrl;
+		});
 	}
 
 	public componentWillLoad(): void {
@@ -94,5 +140,7 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 
 	public disconnectedCallback(): void {
 		removeNavLabel(this.state._label);
+		this.linkCtrls.forEach((c) => c.destroy());
+		this.linkCtrls = [];
 	}
 }

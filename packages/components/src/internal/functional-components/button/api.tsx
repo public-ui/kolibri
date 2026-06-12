@@ -7,6 +7,8 @@ import {
 	ariaExpandedProp,
 	ariaSelectedProp,
 	buttonCallbacksProp,
+	buttonInlineProp,
+	buttonTooltipAlignProp,
 	buttonTypeProp,
 	buttonVariantProp,
 	customClassProp,
@@ -19,8 +21,7 @@ import {
 	shortKeyProp,
 	spanIconsProp,
 	tabIndexProp,
-	tooltipAlignProp,
-	variantClassNameProp,
+	variantProp,
 } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
@@ -38,14 +39,14 @@ export const buttonPropsConfig = {
 		buttonVariantProp,
 		customClassProp,
 		disabledProp,
+		buttonInlineProp,
 		hideLabelProp,
 		idProp,
-		inlineProp,
 		nameProp,
 		shortKeyProp,
 		spanIconsProp,
+		buttonTooltipAlignProp,
 		tabIndexProp,
-		tooltipAlignProp,
 	],
 } as const satisfies PropsConfigShape;
 
@@ -87,7 +88,7 @@ export const buttonLinkPropsConfig = {
 		nameProp,
 		shortKeyProp,
 		spanIconsProp,
-		tooltipAlignProp,
-		variantClassNameProp,
+		buttonTooltipAlignProp,
+		variantProp,
 	],
 } as const satisfies PropsConfigShape;

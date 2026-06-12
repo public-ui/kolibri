@@ -34,7 +34,6 @@ export let KolInputTextTag = 'kol-input-text' as const;
 export let KolKolibriTag = 'kol-kolibri' as const;
 export let KolLinkButtonTag = 'kol-link-button' as const;
 export let KolLinkTag = 'kol-link' as const;
-export let KolLinkWcTag = 'kol-link-wc' as const;
 export let KolMeterTag = 'kol-meter' as const;
 export let KolModalTag = 'kol-modal' as const;
 export let KolNavTag = 'kol-nav' as const;
@@ -102,7 +101,6 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolKolibriTag = transformTagName(KolKolibriTag as string) as 'kol-kolibri';
 	KolLinkButtonTag = transformTagName(KolLinkButtonTag as string) as 'kol-link-button';
 	KolLinkTag = transformTagName(KolLinkTag as string) as 'kol-link';
-	KolLinkWcTag = transformTagName(KolLinkWcTag as string) as 'kol-link-wc';
 	KolMeterTag = transformTagName(KolMeterTag as string) as 'kol-meter';
 	KolModalTag = transformTagName(KolModalTag as string) as 'kol-modal';
 	KolNavTag = transformTagName(KolNavTag as string) as 'kol-nav';

@@ -108,7 +108,7 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 
 ### Web Component Layer
 
-- Extends `BaseWebComponent<Api>`, which provides the type-safe `setState` arrow property pre-bound to the component instance. This property is passed to the controller constructor so the controller can trigger Stencil re-renders.
+- Extends `BaseWebComponent<Api>`, which provides `this.stateAccess` — a `StateAccess<Api>` bundle (`{ setState, getState }`) passed to the controller constructor. Controllers with no `@State` fields receive `BaseWebComponent.stateLess` instead (a frozen sentinel that throws on access).
 - Declares the public API using underscored props (e.g. `_name`).
 - Hosts lifecycle hooks and ties DOM events to controller callbacks.
 - Owns the Stencil-specific decorators (`@Prop`, `@Event`, `@Watch`). Watchers normalise incoming values and forward them to the controller.
@@ -117,11 +117,12 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 - Delegates rendering to the controller output via `controller.getRenderProp(key)`.
 - Renders the functional component always wrapped in a bare `<Host>` element without redundant class attributes (no `<Host class="kol-component-name">`). **All web components use shadow DOM (shadow: true) to ensure style isolation and prevent CSS conflicts** with host page styles. The shadow DOM handles styling isolation; the host tag name itself is sufficient for component identification.
 - **Components that should not use Shadow DOM are implemented as Functional Components instead** (not web components), avoiding complexity and ensuring clean style boundaries.
+- **The `render()` method must only use Functional Components — never other KoliBri web component tags** (e.g. `<kol-link>`, `<kol-button>`). Nesting custom elements inside a Shadow DOM introduces unnecessary browser overhead, hidden lifecycle dependencies, and bypasses the controller layer. When a Functional Component requires behaviour previously provided by a KoliBri web component (e.g. event handling, ref management, normalization), that behaviour must be implemented in the enclosing component's controller instead.
 
 ### Controller Layer
 
 - Encapsulates business rules, validation orchestration and derived state.
-- Extends `BaseController<Api>`, which receives a `PropsConfigShape` (runtime props configuration containing `required` and `optional` arrays of prop definitions), a `SetStateFn<Api>` and a `GetStateFn<Api>` callback. `BaseController` derives default render props automatically from the config.
+- Extends `BaseController<Api>`, which receives a `StateAccess<Api>` bundle and a `PropsConfigShape` (runtime props configuration containing `required` and `optional` arrays of prop definitions). `BaseController` derives default render props automatically from the config and exposes `setState`/`getState` as `protected readonly` fields.
 - `BaseController` provides `setRenderProp(key, value)` to store normalized props internally and exposes `setState` to write back to the web component's `@State` fields (triggering Stencil re-renders) and `getState` to read current `@State` values without holding a reference to the component instance.
 - Implements `componentWillLoad` to bootstrap its internal state from the current prop snapshot.
 - Exposes watcher entry points (e.g. `watchName`) that receive raw values, request normalisation/validation from the schema helpers and update internal state accordingly.
@@ -130,36 +131,36 @@ The blueprint enforces unidirectional data flow and delegates responsibilities t
 
 #### Constructor Pattern
 
-All controllers receive `setState` and `getState` from the web component, regardless of whether their `Api` declares `States`.
+All controllers receive a `stateAccess: StateAccess<Api>` bundle from the web component. `BaseWebComponent` exposes `this.stateAccess` (a `{ setState, getState }` object) for controllers that manage `@State` fields, and `BaseWebComponent.stateLess` as a frozen sentinel for controllers that only use render props.
 
-The web component passes both `this.setState` and `this.getState` so the controller can trigger Stencil re-renders and read back current state:
+The web component passes `this.stateAccess` to the controller constructor:
 
 ```ts
-// Web Component — passes this.setState and this.getState to the controller
+// Web Component — passes this.stateAccess to the controller
 export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebComponentInterface<SkeletonApi> {
-  private readonly ctrl = new SkeletonController(this.setState, this.getState);
+  private readonly ctrl = new SkeletonController(this.stateAccess);
 }
 
-// Controller — accepts and forwards setState and getState to BaseController
-public constructor(setState: SetStateFn<SkeletonApi>, getState: GetStateFn<SkeletonApi>) {
-  super(skeletonPropsConfig, setState, getState);
+// Controller — accepts StateAccess and forwards to BaseController
+public constructor(stateAccess: StateAccess<SkeletonApi>) {
+  super(stateAccess, skeletonPropsConfig);
 }
 ```
 
-All controllers receive `setState` and `getState` regardless of whether their `Api` declares `States`. `BaseController` always requires both parameters. The `PropsConfigShape` passed to `super()` contains arrays of prop definitions from which `BaseController` derives the initial render props automatically via `buildDefaultPropsFromConfig()`.
+The `PropsConfigShape` passed as the second argument to `super()` contains arrays of prop definitions from which `BaseController` derives the initial render props automatically via `buildDefaultPropsFromConfig()`.
 
-Composition inside other controllers forwards the same callbacks:
+When composing a controller that has no `@State` fields, pass `BaseWebComponent.stateLess` — forwarding `stateAccess` would cause a TypeScript error because `StateAccess<ParentApi>` is not assignable to `StateAccess<ChildApi>` when their `States` types differ:
 
 ```ts
-// Skeleton controller — composes ClickButtonController, forwarding setState/getState
-this.clickButtonCtrl = new ClickButtonController(setState, getState);
+// ClickButtonApi has no @State fields → use stateLess sentinel
+this.clickButtonCtrl = new ClickButtonController(BaseWebComponent.stateLess);
 ```
 
 #### State Reader (`getState`)
 
-`BaseController` requires a `getState: GetStateFn<Api>` parameter alongside `setState`. This lets the controller read back current `@State` values from the web component without holding a direct reference to the component instance.
+`BaseController` extracts `setState` and `getState` from the `StateAccess<Api>` bundle it receives at construction. This lets the controller read back current `@State` values from the web component without holding a direct reference to the component instance.
 
-Both `setState` and `getState` are provided as pre-bound arrow properties by `BaseWebComponent`, ensuring type-safe access to reactive state:
+Both are accessible as `protected readonly` fields of `BaseController`, ensuring type-safe access to reactive state:
 
 ```ts
 // Controller — reading state back from the web component
@@ -167,15 +168,15 @@ const currentCount = this.getState('count');
 this.setState('count', currentCount + 1);
 ```
 
-The web component passes both `this.setState` and `this.getState`:
+The web component passes `this.stateAccess`:
 
 ```ts
-// Web Component — passes both setState and getState
-private readonly ctrl = new SkeletonController(this.setState, this.getState);
+// Web Component — passes stateAccess bundle
+private readonly ctrl = new SkeletonController(this.stateAccess);
 
-// Controller — constructor declares both as required
-public constructor(setState: SetStateFn<SkeletonApi>, getState: GetStateFn<SkeletonApi>) {
-  super(skeletonPropsConfig, setState, getState);
+// Controller — constructor accepts StateAccess
+public constructor(stateAccess: StateAccess<SkeletonApi>) {
+  super(stateAccess, skeletonPropsConfig);
 }
 ```
 
@@ -261,6 +262,53 @@ private catchElement = (element?: HTMLElement): void => {
 - Is a pure renderer that receives props, callbacks, emitters and refs from the controller.
 - Avoids any side effects or state mutation. User interactions are signalled via DOM events which bubble back to the web component.
 - Maps controller props to accessible markup and wires refs for imperative access when required.
+- **Must return exactly one root node** — the BEM block container. Use `RootNodeFC` (see §4.1) instead of a raw `<div>`. Returning a JSX Fragment (`<>…</>`) or multiple top-level siblings is forbidden. All direct children of `<Host>` become flex/grid items whenever the host or a parent theme applies `display: flex` or `display: grid` with a `gap`. A conditionally rendered sibling (e.g. a tooltip) would then participate in that layout context, causing unintended spacing and alignment. Wrapping all output in a single BEM root node prevents this class of layout bugs entirely.
+- **Do not wrap child FCs in unnecessary container elements.** A child FC (e.g. `TooltipFC`) already provides its own BEM root element with all required classes and structure. Adding an extra `<div class="kol-link__tooltip">` around it is redundant — it adds DOM depth, makes CSS selectors less predictable, and suggests a styling concern that belongs inside the FC itself.
+
+  ✅ **Correct — `RootNodeFC` as single root, child FC used directly:**
+
+  ```tsx
+  export const LinkFC: FC<LinkFCProps> = ({ ..., class: hostClass, disabled, hideLabel }) => (
+  	<RootNodeFC blockClass="kol-link" modifiers={{ 'kol-link--disabled': disabled }} class={hostClass}>
+  		<a class="kol-link__anchor">…</a>
+  		{hideLabel && <TooltipFC … />}
+  	</RootNodeFC>
+  );
+  ```
+
+  ❌ **Forbidden — Fragment root, manual `hostClass` merging, unnecessary wrapper div:**
+
+  ```tsx
+  export const LinkFC: FC<LinkFCProps> = ({ ..., class: hostClass, disabled }) => (
+  	<>
+  		<a class={clsx('kol-link', { 'kol-link--disabled': disabled }, { [hostClass]: !!hostClass })}>…</a>  {/* flex/grid item #1 */}
+  		{props.hideLabel && (
+  			<div class="kol-link__tooltip">  {/* flex/grid item #2 — layout leak */}
+  				<TooltipFC … />               {/* unnecessary wrapper */}
+  			</div>
+  		)}
+  	</>
+  );
+  ```
+
+#### §4.1 RootNodeFC
+
+`RootNodeFC` is the standard single-root wrapper for all Skeleton FCs. It lives at `internal/functional-components/root-node/component.tsx`.
+
+**Responsibilities:**
+
+- Renders exactly one `<div>` — structurally enforcing the Single-Root FC rule
+- Merges `blockClass`, `modifiers` and the forwarded `class` prop (`hostClass`) into the element's class attribute
+
+**API:**
+
+| Prop         | Type                                           | Description                                                       |
+| ------------ | ---------------------------------------------- | ----------------------------------------------------------------- |
+| `blockClass` | `string`                                       | BEM block name, e.g. `'kol-link'`                                 |
+| `modifiers`  | `Record<string, boolean \| null \| undefined>` | BEM modifier map, e.g. `{ 'kol-link--disabled': true }`           |
+| `class`      | `string?`                                      | Forwarded from the FC tag — typically `hostClass` from the parent |
+
+The `class` prop on `<RootNodeFC class={hostClass}>` is the exact value passed as `class` on the surrounding FC's tag (e.g. `<LinkFC class="nav-link">`). This 1:1 forwarding means FC authors never manually write `{ [hostClass as string]: !!hostClass }` in a `clsx()` call.
 
 ### Schema Helper Layer
 
@@ -659,19 +707,21 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 
 ## 8. Cross-cutting Concepts
 
-| Concept                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Composition over inheritance**              | Controllers compose behaviour (e.g. `ClickButtonController`) rather than relying on inheritance.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| **Declarative rendering**                     | Functional components are pure and stateless.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| **Decoupling**                                | Each layer only knows its direct neighbours. Controllers can be reused or replaced without altering renderers or schemas.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| **Event-driven communication**                | User interaction is emitted as DOM events rather than calling functions across layers.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| **Props Pattern**                             | Functional components exclusively receive Props that contain either normalized/validated external data or internal component state. Props must always be initialized.                                                                                                                                                                                                                                                                                                                                                                                                              |
-| **Shadow DOM First**                          | All web components use `shadow: true`. Components that should not use Shadow DOM are implemented as Functional Components instead.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| **ARIA ID Uniqueness via readable nonce IDs** | Any DOM `id` referenced by ARIA attributes (e.g. `aria-controls`, `aria-labelledby`) must be unique per component instance and follow the pattern `readable-identifier-<nonce>`. Use `private readonly someId = createUniqueId('readable-identifier')` from `utils/dev.utils`. This prevents ID collisions when components are composed inside a shared DOM scope (e.g. multiple WC instances within one shadow root, or direct light-DOM usage). Shadow DOM alone is not sufficient when a shadow component renders multiple instances of an internal WC in the same shadow root. |
-| **State ownership**                           | Web components own state (`@State`), controllers manage transitions, functional components consume state.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| **Template Method Pattern**                   | The WebComponent defines the lifecycle structure, while the Controller implements specific business logic steps.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| **Type safety**                               | `WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps` encode compile-time contracts between layers.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| **Watcher placement**                         | Attach `@Watch` only to underscored public props (e.g. `_name`); internal state fields use `@State`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Concept                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Composition over inheritance** | Controllers compose behaviour (e.g. `ClickButtonController`) rather than relying on inheritance.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| **Declarative rendering**        | Functional components are pure and stateless.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| **Decoupling**                   | Each layer only knows its direct neighbours. Controllers can be reused or replaced without altering renderers or schemas.                                                                                                                                                                                                                                                                                                                                                                                                |
+| **Event-driven communication**   | User interaction is emitted as DOM events rather than calling functions across layers.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| **FC-First Composition**         | Web component `render()` methods compose exclusively via Functional Components. KoliBri web component tags (`<kol-*>`) must never appear inside another web component's `render()`. Required controller behaviour from replaced web components must be migrated into the enclosing component's controller.                                                                                                                                                                                                               |
+| **Props Pattern**                | Functional components exclusively receive Props that contain either normalized/validated external data or internal component state. Props must always be initialized.                                                                                                                                                                                                                                                                                                                                                    |
+| **Shadow DOM First**             | All web components use `shadow: true`. Components that should not use Shadow DOM are implemented as Functional Components instead.                                                                                                                                                                                                                                                                                                                                                                                       |
+| **Single-Root FC**               | Every Functional Component returns exactly one BEM block container as its root. Fragments and multi-sibling returns are forbidden: all direct children of `<Host>` become flex/grid items when the host applies `display: flex/grid`, causing unintended layout effects for conditionally rendered siblings such as tooltip wrappers.                                                                                                                                                                                    |
+| **ARIA ID Uniqueness via nonce** | Any DOM `id` referenced by ARIA attributes (e.g. `aria-controls`, `aria-labelledby`) must be unique per component instance. Use `private readonly someId = \`prefix-${nonce()}\``with`nonce()`from`utils/dev.utils`. This prevents ID collisions when components are composed inside a shared DOM scope (e.g. multiple WC instances within one shadow root, or direct light-DOM usage). Shadow DOM alone is not sufficient when a shadow component renders multiple instances of an internal WC in the same shadow root. |
+| **State ownership**              | Web components own state (`@State`), controllers manage transitions, functional components consume state.                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **Template Method Pattern**      | The WebComponent defines the lifecycle structure, while the Controller implements specific business logic steps.                                                                                                                                                                                                                                                                                                                                                                                                         |
+| **Type safety**                  | `WebComponentInterface`, `ControllerInterface` and `FunctionalComponentProps` encode compile-time contracts between layers.                                                                                                                                                                                                                                                                                                                                                                                              |
+| **Watcher placement**            | Attach `@Watch` only to underscored public props (e.g. `_name`); internal state fields use `@State`.                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 ## 9. Design Decisions
 
@@ -714,7 +764,16 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Pattern_: Do not add `data-testid` attributes to component markup. Tests select elements via their BEM class names using `page.locator('.kol-component__element')`. For nested interactive elements, chain locators: `page.locator('.kol-component button')`.
     - _Alternative_: Add `data-testid="..."` attributes to markup and use `getByTestId()` in tests.
     - _Reason_: `data-testid` is production markup with no semantic value. BEM class names are already present, stable, and semantically tied to the component structure. Using them as test selectors keeps the component markup clean and avoids leaking test concerns into production output.
-13. **Test co-location — all tests live next to the component**
+13. **No KoliBri web component tags in `render()` — use Functional Components**
+    - _Pattern_: The `render()` method of a web component must only instantiate Functional Components (e.g. `<LinkFC />`, `<ButtonFC />`). KoliBri custom element tags (`<kol-link>`, `<kol-button>`, etc.) are strictly forbidden inside `render()`. If a Functional Component depends on behaviour that was previously encapsulated in another KoliBri web component (e.g. click handling, anchor ref management, normalization), that behaviour must be ported into the controller of the composing web component. Concretely: a composing web component instantiates the foreign controller (e.g. `new LinkController(this.stateAccess)`) and wires its `componentWillLoad`, `@Watch` handlers, and `disconnectedCallback` to keep the controller in sync.
+    - _Alternative_: reuse existing KoliBri WCs as child elements inside `render()`.
+    - _Reason_: Nesting custom elements inside a Shadow DOM causes the browser to instantiate a full second shadow root, including its own lifecycle, re-render queue and style context. This duplicates overhead, creates hidden lifecycle coupling between the outer and inner components, and bypasses the controller layer — breaking the unidirectional data-flow contract. Using FCs directly is zero-cost (pure JSX, no custom element registration) and keeps all business logic visible in one controller.
+    - _Array-based pattern_: Components that render a dynamic list of links use `@State() private _tick = 0; private readonly forceRender = () => this._tick++;` to trigger re-renders when any controller's `ariaCurrent` changes. `createLinkStateAccess(this.forceRender)` creates a closure-based `StateAccess<LinkApi>` per controller, and `initLinkControllerFromProps(ctrl, props)` maps underscore-prefixed `LinkProps` to controller initialization. All link controllers are destroyed in `disconnectedCallback` and recreated when the data prop changes.
+14. **Single root node in Functional Components**
+    - _Pattern_: Every Functional Component returns exactly one root element — the BEM block container (`<div class="kol-component">…</div>`). All conditional siblings (e.g. tooltip wrappers) are nested inside this root, never placed beside it.
+    - _Alternative_: return a JSX Fragment or multiple sibling elements directly so the `<Host>` element contains more than one direct child.
+    - _Reason_: The `<Host>` element (or the Shadow Root it represents) is the styling anchor for themes. As soon as a theme or host page sets `display: flex` or `display: grid` with a `gap` on `:host`, **every direct child becomes a layout item**. A tooltip that renders as a sibling of the interactive element (e.g. `<a>` + `<div class="…__tooltip">`) would then receive unexpected spacing, alignment, or size — even though it should be positioned independently via `position: absolute/fixed`. Wrapping all output in a single BEM root node eliminates this entire class of layout bugs and makes component styling predictable regardless of the consumer's layout context.
+15. **Test co-location — all tests live next to the component**
     - _Pattern_: All test files are placed directly alongside `component.tsx` in the same directory — **not** in a separate `test/` subdirectory. Two test categories exist:
       - **Snapshot tests** (`snapshot.spec.tsx`) — Jest-based DOM snapshot tests that render the component with various prop combinations via `executeSnapshotTests` and compare against stored snapshots (`__snapshots__/`). Snapshot files are likewise stored in the component directory.
       - **Interaction tests** (`interaction.e2e.ts`) — Playwright-based end-to-end tests that verify user interactions (clicks, keyboard input, focus management, event emission) against the rendered component in a real browser.

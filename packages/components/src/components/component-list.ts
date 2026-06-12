@@ -29,9 +29,8 @@ import { KolInputRadio } from './input-radio/shadow';
 import { KolInputRange } from './input-range/shadow';
 import { KolInputText } from './input-text/shadow';
 import { KolKolibri } from './kolibri/shadow';
-import { KolLinkButton } from './link-button/shadow';
-import { KolLinkWc } from './link/component';
-import { KolLink } from './link/shadow';
+import { KolLinkButton } from './link-button/component';
+import { KolLink } from './link/component';
 import { KolMeter } from './meter/component';
 import { KolModal } from './modal/shadow';
 import { KolNav } from './nav/shadow';
@@ -89,7 +88,6 @@ export const COMPONENTS = [
 	KolKolibri,
 	KolLink,
 	KolLinkButton,
-	KolLinkWc,
 	KolMeter,
 	KolModal,
 	KolNav,

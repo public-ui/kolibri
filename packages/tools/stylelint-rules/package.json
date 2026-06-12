@@ -22,7 +22,7 @@
 		"knip": "6.16.1",
 		"mocha": "11.7.6",
 		"postcss-scss": "4.0.9",
-		"prettier": "3.8.3",
+		"prettier": "3.8.4",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "17.4.0"
 	},

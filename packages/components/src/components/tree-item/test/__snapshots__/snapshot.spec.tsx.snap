@@ -6,14 +6,24 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
     <kol-tree-item-wc>
       <!---->
       <li class="kol-tree-item" style="--level: 0;">
-        <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="kol-tree-item__link kol-tree-item__link--first-level">
-          <span class="kol-tree-item__link-inner" slot="expert">
-            <span class="kol-tree-item__toggle-button-placeholder"></span>
-            <span class="kol-tree-item__text">
-              Label
+        <div class="kol-link kol-link--inline kol-tree-item__link kol-tree-item__link--first-level">
+          <a class="kol-link__anchor" href="https://example.com" role="treeitem" tabindex="-1">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__slot">
+                  <slot-fb name="expert" slot="expert">
+                    <span class="kol-tree-item__link-inner" slot="expert">
+                      <span class="kol-tree-item__toggle-button-placeholder"></span>
+                      <span class="kol-tree-item__text">
+                        Label
+                      </span>
+                    </span>
+                  </slot-fb>
+                </span>
+              </span>
             </span>
-          </span>
-        </kol-link-wc>
+          </a>
+        </div>
         <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
           <slot></slot>
         </ul>
@@ -29,14 +39,24 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
     <kol-tree-item-wc>
       <!---->
       <li class="kol-tree-item" style="--level: 0;">
-        <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="0" class="kol-tree-item__link kol-tree-item__link--active kol-tree-item__link--first-level">
-          <span class="kol-tree-item__link-inner" slot="expert">
-            <span class="kol-tree-item__toggle-button-placeholder"></span>
-            <span class="kol-tree-item__text">
-              Label
+        <div class="kol-link kol-link--inline kol-tree-item__link kol-tree-item__link--active kol-tree-item__link--first-level">
+          <a class="kol-link__anchor" href="https://example.com" role="treeitem">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__slot">
+                  <slot-fb name="expert" slot="expert">
+                    <span class="kol-tree-item__link-inner" slot="expert">
+                      <span class="kol-tree-item__toggle-button-placeholder"></span>
+                      <span class="kol-tree-item__text">
+                        Label
+                      </span>
+                    </span>
+                  </slot-fb>
+                </span>
+              </span>
             </span>
-          </span>
-        </kol-link-wc>
+          </a>
+        </div>
         <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
           <slot></slot>
         </ul>
@@ -52,14 +72,24 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
     <kol-tree-item-wc>
       <!---->
       <li class="kol-tree-item" style="--level: 0;">
-        <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="kol-tree-item__link kol-tree-item__link--first-level">
-          <span class="kol-tree-item__link-inner" slot="expert">
-            <span class="kol-tree-item__toggle-button-placeholder"></span>
-            <span class="kol-tree-item__text">
-              Label
+        <div class="kol-link kol-link--inline kol-tree-item__link kol-tree-item__link--first-level">
+          <a class="kol-link__anchor" href="https://example.com" role="treeitem" tabindex="-1">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__slot">
+                  <slot-fb name="expert" slot="expert">
+                    <span class="kol-tree-item__link-inner" slot="expert">
+                      <span class="kol-tree-item__toggle-button-placeholder"></span>
+                      <span class="kol-tree-item__text">
+                        Label
+                      </span>
+                    </span>
+                  </slot-fb>
+                </span>
+              </span>
             </span>
-          </span>
-        </kol-link-wc>
+          </a>
+        </div>
         <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
           <slot></slot>
         </ul>
@@ -75,14 +105,24 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
     <kol-tree-item-wc>
       <!---->
       <li class="kol-tree-item" style="--level: 0;">
-        <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="kol-tree-item__link kol-tree-item__link--first-level">
-          <span class="kol-tree-item__link-inner" slot="expert">
-            <span class="kol-tree-item__toggle-button-placeholder"></span>
-            <span class="kol-tree-item__text">
-              Label
+        <div class="kol-link kol-link--inline kol-tree-item__link kol-tree-item__link--first-level">
+          <a class="kol-link__anchor" href="https://example.com" role="treeitem" tabindex="-1">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__slot">
+                  <slot-fb name="expert" slot="expert">
+                    <span class="kol-tree-item__link-inner" slot="expert">
+                      <span class="kol-tree-item__toggle-button-placeholder"></span>
+                      <span class="kol-tree-item__text">
+                        Label
+                      </span>
+                    </span>
+                  </slot-fb>
+                </span>
+              </span>
             </span>
-          </span>
-        </kol-link-wc>
+          </a>
+        </div>
         <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
           <slot></slot>
         </ul>
@@ -98,14 +138,24 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
     <kol-tree-item-wc>
       <!---->
       <li class="kol-tree-item" style="--level: 0;">
-        <kol-link-wc _href="https://example.com" _label="" _role="treeitem" _tabindex="-1" class="kol-tree-item__link kol-tree-item__link--first-level">
-          <span class="kol-tree-item__link-inner" slot="expert">
-            <span class="kol-tree-item__toggle-button-placeholder"></span>
-            <span class="kol-tree-item__text">
-              Label
+        <div class="kol-link kol-link--inline kol-tree-item__link kol-tree-item__link--first-level">
+          <a class="kol-link__anchor" href="https://example.com" role="treeitem" tabindex="-1">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__slot">
+                  <slot-fb name="expert" slot="expert">
+                    <span class="kol-tree-item__link-inner" slot="expert">
+                      <span class="kol-tree-item__toggle-button-placeholder"></span>
+                      <span class="kol-tree-item__text">
+                        Label
+                      </span>
+                    </span>
+                  </slot-fb>
+                </span>
+              </span>
             </span>
-          </span>
-        </kol-link-wc>
+          </a>
+        </div>
         <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
           <slot></slot>
         </ul>

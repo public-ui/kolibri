@@ -23,8 +23,10 @@ import {
 	validateLabel,
 } from '../../schema';
 
-import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
+import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import { LinkFC } from '../../internal/functional-components/link/component';
+import { createLinkStateAccess, initLinkControllerFromProps, LinkController } from '../../internal/functional-components/link/controller';
 import type { StencilUnknown } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
@@ -71,6 +73,40 @@ export class KolNav implements NavAPI {
 	private readonly navId = createUniqueId('kol-nav');
 
 	private readonly listId = createRelatedUniqueId(this.navId, 'list');
+
+	@State() private _tick = 0;
+	private readonly forceRender = () => this._tick++;
+	private navLinkCtrls = new Map<LinkWithChildrenProps, LinkController>();
+
+	private syncNavLinkControllers(): void {
+		const newEntries = new Set<LinkWithChildrenProps>();
+
+		const traverse = (links: ButtonOrLinkOrTextWithChildrenProps[]) => {
+			for (const link of links) {
+				if (entryIsLink(link)) {
+					newEntries.add(link);
+					if (!this.navLinkCtrls.has(link)) {
+						const ctrl = new LinkController(createLinkStateAccess(this.forceRender));
+						initLinkControllerFromProps(ctrl, link as { _href: string } & Partial<Record<string, unknown>>);
+						this.navLinkCtrls.set(link, ctrl);
+					}
+				}
+				if (Array.isArray(link._children)) {
+					traverse(link._children);
+				}
+			}
+		};
+
+		traverse(this.state._links);
+
+		// Destroy controllers for removed entries
+		for (const [entry, ctrl] of this.navLinkCtrls) {
+			if (!newEntries.has(entry)) {
+				ctrl.destroy();
+				this.navLinkCtrls.delete(entry);
+			}
+		}
+	}
 
 	private expandChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
 		this.state = {
@@ -127,16 +163,42 @@ export class KolNav implements NavAPI {
 		return (
 			<div class="kol-nav__entry-wrapper">
 				{entryIsLink(entry) ? (
-					<KolLinkWcTag
-						class={clsx('kol-nav__entry kol-nav__entry--link', {
-							'kol-nav__entry--collapsible': collapsible,
-						})}
-						{...entry}
-						_hideLabel={this.state._hideLabel}
-						_icons={icons}
-						_ariaControls={collapsible && hasChildren && expanded ? ariaID : undefined}
-						_ariaExpanded={collapsible && hasChildren ? expanded : undefined}
-					/>
+					(() => {
+						const ctrl = this.navLinkCtrls.get(entry)!;
+						return (
+							<LinkFC
+								class={clsx('kol-nav__entry kol-nav__entry--link', {
+									'kol-nav__entry--collapsible': collapsible,
+								})}
+								href={ctrl.getRenderProp('href')}
+								label={ctrl.getRenderProp('label')}
+								icons={icons}
+								hideLabel={ctrl.getRenderProp('hideLabel')}
+								target={ctrl.getRenderProp('target')}
+								download={ctrl.getRenderProp('download')}
+								on={ctrl.getRenderProp('on')}
+								inline={ctrl.getRenderProp('inline')}
+								disabled={ctrl.getRenderProp('disabled')}
+								role={ctrl.getRenderProp('role')}
+								tabIndex={ctrl.getRenderProp('tabIndex')}
+								accessKey={ctrl.getRenderProp('accessKey')}
+								shortKey={ctrl.getRenderProp('shortKey')}
+								tooltipAlign={ctrl.getRenderProp('tooltipAlign')}
+								ariaControls={collapsible && hasChildren && expanded ? ariaID : ctrl.getRenderProp('ariaControls')}
+								ariaCurrentValue={ctrl.getRenderProp('ariaCurrentValue')}
+								ariaDescription={ctrl.getRenderProp('ariaDescription')}
+								ariaExpanded={collapsible && hasChildren ? String(expanded) : ctrl.getRenderProp('ariaExpanded')}
+								ariaOwns={ctrl.getRenderProp('ariaOwns')}
+								customClass={ctrl.getRenderProp('customClass')}
+								variant={ctrl.getRenderProp('variant')}
+								ariaCurrent={ctrl.getAriaCurrent()}
+								onAnchorClick={ctrl.handleAnchorClick}
+								tooltipId={ctrl.getTooltipId()}
+								refTooltipFloating={ctrl.setTooltipRef}
+								refAnchor={ctrl.setAnchorRef}
+							/>
+						);
+					})()
 				) : (
 					<KolButtonWcTag
 						class={clsx('kol-nav__entry kol-nav__entry--button', {
@@ -344,6 +406,7 @@ export class KolNav implements NavAPI {
 		devHint(`[KolNav] The navigation structure is not yet validated recursively.`);
 		//Re-initialize expansion on links change
 		this.initializeExpandedChildren();
+		this.syncNavLinkControllers();
 	}
 
 	public componentWillLoad(): void {
@@ -358,5 +421,9 @@ export class KolNav implements NavAPI {
 
 	public disconnectedCallback(): void {
 		removeNavLabel(this.state._label);
+		for (const ctrl of this.navLinkCtrls.values()) {
+			ctrl.destroy();
+		}
+		this.navLinkCtrls.clear();
 	}
 }
