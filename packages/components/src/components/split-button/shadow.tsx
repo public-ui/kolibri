@@ -27,6 +27,7 @@ import { ButtonController, initButtonControllerFromProps } from '../../internal/
 import { renderButtonFC } from '../../internal/functional-components/button/render';
 import clsx from '../../utils/clsx';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 
 /**
@@ -123,6 +124,10 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 									propagateSubmitEventToForm({ form: this.host, ref: this.ctaRef.el });
 								} else if (result.formAction === 'reset') {
 									propagateResetEventToForm({ form: this.host, ref: this.ctaRef.el });
+								}
+								// Keep the legacy host click event contract of the embedded button.
+								if (result.shouldDispatchKolEvent && this.host) {
+									dispatchDomEvent(this.host, KolEvent.click, result.value);
 								}
 							},
 						});

@@ -21,6 +21,7 @@ import { ButtonController, initButtonControllerFromProps } from '../../internal/
 import { renderButtonFC } from '../../internal/functional-components/button/render';
 import clsx from '../../utils/clsx';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
 /**
@@ -51,6 +52,13 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 		return renderButtonFC(this.smartButtonCtrl, {
 			class: 'kol-badge__smart-button',
 			refButton: this.ctaRef,
+			onClick: (_event, result) => {
+				// The legacy kol-button-wc dispatched the Kol click event on itself; keep
+				// that contract on the badge host (the controller stops native propagation).
+				if (result.shouldDispatchKolEvent && this.host) {
+					dispatchDomEvent(this.host, KolEvent.click, result.value);
+				}
+			},
 		});
 	}
 
