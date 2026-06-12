@@ -81,16 +81,9 @@ export const ButtonIcons: FC = () => {
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{
-								top: {
-									style: {
-										transform: 'rotate(45deg)',
-									},
-									icon: 'kolicon-chevron-up',
-								},
+								top: 'kolicon-chevron-up',
 								bottom: 'kolicon-chevron-down',
-								left: {
-									icon: 'kolicon-chevron-left',
-								},
+								left: 'kolicon-chevron-left',
 								right: 'kolicon-chevron-right',
 							}}
 							_label="All Directions"

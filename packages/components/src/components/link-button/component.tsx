@@ -15,6 +15,7 @@ import type {
 	DownloadPropType,
 	HrefPropType,
 	IconsPropType,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
 	LinkTargetPropType,
@@ -49,9 +50,9 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> implements WebCompo
 	 * Sets focus on the internal anchor element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
+	public async focus(options?: KolFocusOptions): Promise<void> {
 		const anchor = this.ctrl.getAnchorRef();
-		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor));
+		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor, options));
 	}
 
 	/**

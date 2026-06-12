@@ -4,7 +4,7 @@ import { Component, Element, Fragment, h, Listen, Method, Prop, State, Watch } f
 import { KolButtonWcTag } from '../../core/component-names';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { createLinkStateAccess, initLinkControllerFromProps, LinkController } from '../../internal/functional-components/link/controller';
-import type { FocusableElement, LabelPropType, ToolbarAPI, ToolbarItemPropType, ToolbarItemsPropType, ToolbarStates } from '../../schema';
+import type { FocusableElement, KolFocusOptions, LabelPropType, ToolbarAPI, ToolbarItemPropType, ToolbarItemsPropType, ToolbarStates } from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
@@ -39,10 +39,10 @@ export class KolToolbar implements ToolbarAPI, FocusableElement {
 	 * Sets focus on the currently active toolbar item.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
+	public async focus(options?: KolFocusOptions): Promise<void> {
 		const firstEnabledItem = this.indexToElement.get(this.currentIndex);
 		if (firstEnabledItem) {
-			return delegateFocus(this.host!, () => setFocus(firstEnabledItem));
+			return delegateFocus(this.host!, () => setFocus(firstEnabledItem, options));
 		}
 	}
 

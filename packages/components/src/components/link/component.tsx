@@ -14,6 +14,7 @@ import type {
 	DownloadPropType,
 	HrefPropType,
 	IconsPropType,
+	KolFocusOptions,
 	LinkOnCallbacksPropType,
 	LinkTargetPropType,
 	ShortKeyPropType,
@@ -46,9 +47,9 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	 * Sets focus on the internal anchor element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
+	public async focus(options?: KolFocusOptions): Promise<void> {
 		const anchor = this.ctrl.getAnchorRef();
-		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor));
+		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor, options));
 	}
 
 	/**

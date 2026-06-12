@@ -6,6 +6,7 @@ import type {
 	InputCheckboxVariantPropType,
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropChecked,
 	PropDisabled,
 	PropHideLabel,
@@ -31,6 +32,7 @@ type OptionalProps = {
 	value: StencilUnknown;
 	variant: InputCheckboxVariantPropType;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropChecked &
 	PropDisabled &
 	PropHideMsg &

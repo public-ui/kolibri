@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop } from '@stencil/core';
 
 import { KolTreeWcTag } from '../../core/component-names';
-import type { FocusableElement, LabelPropType, TreeProps } from '../../schema';
+import type { FocusableElement, KolFocusOptions, LabelPropType, TreeProps } from '../../schema';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 @Component({
@@ -26,7 +26,9 @@ export class KolTree implements TreeProps, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public render(): JSX.Element {
 		return (

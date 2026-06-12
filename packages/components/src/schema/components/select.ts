@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
@@ -30,6 +31,7 @@ type OptionalProps = {
 	tabIndex: number;
 	value: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
@@ -56,6 +58,7 @@ type OptionalStates = {
 	on: InputTypeOnDefault;
 	tabIndex: number;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropDisabled &
 	PropHideLabel &
 	PropHint &

@@ -3,6 +3,8 @@ import { devHint, devWarning, getExperimentalMode, validateName } from '../../sc
 
 import type { Generic } from 'adopted-style-sheets';
 import { getOptions } from '../../core/bootstrap';
+import { validateAriaDetails } from '../../schema/props/aria-details';
+import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
@@ -37,15 +39,17 @@ export class AssociatedInputController implements Watches {
 
 	protected readonly component: Generic.Element.Component & Props;
 	protected readonly type: string;
-	protected readonly host?: HTMLElement;
+	protected readonly host?: Element;
+	public internals?: HostInternals;
 
 	public readonly formAssociated?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 	public syncToOwnInput?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
-	public constructor(component: Generic.Element.Component & Props, type: string, host?: HTMLElement) {
+	public constructor(component: Generic.Element.Component & Props, type: string, host?: Element) {
 		this.component = component;
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
+		this.internals = attachInternals(this.host);
 
 		if (getOptions()?.reflectInputValues && isAssociatedTagName(this.host?.tagName) && component._name) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
@@ -89,11 +93,13 @@ export class AssociatedInputController implements Watches {
 	 * The associated elements must not reside within the ShadowRoot and must
 	 * reside as children in the host to be recognized by native forms.
 	 */
-	private findHostWithShadowRoot(host?: HTMLElement): HTMLElement | undefined {
+	private findHostWithShadowRoot(host?: Element): Element | undefined {
 		while (host?.shadowRoot === null && host !== document.body) {
-			host = host?.parentNode as HTMLElement;
-			if ((host as unknown as ShadowRoot).host) {
-				host = (host as unknown as ShadowRoot).host as HTMLElement;
+			const parent = host?.parentNode;
+			if (parent instanceof ShadowRoot) {
+				host = parent.host;
+			} else {
+				host = parent instanceof Element ? parent : undefined;
 			}
 		}
 		return host;
@@ -214,6 +220,10 @@ export class AssociatedInputController implements Watches {
 				this.syncToOwnInput = input;
 			}
 		}
+	}
+
+	public validateAriaDetails(value?: string): void {
+		validateAriaDetails(this.component, this.host, this.internals, value);
 	}
 
 	public componentWillLoad(): void {

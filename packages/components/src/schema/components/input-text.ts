@@ -4,6 +4,7 @@ import type {
 	InputTextTypePropType,
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropAutoComplete,
 	PropDisabled,
 	PropHasCounter,
@@ -39,6 +40,7 @@ type OptionalProps = {
 	type: InputTextTypePropType;
 	value: string;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropAutoComplete &
 	PropDisabled &
 	PropHasCounter &
@@ -74,6 +76,7 @@ type OptionalStates = {
 	smartButton: InternalButtonProps;
 	value: string;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropAutoComplete &
 	PropDisabled &
 	PropHasCounter &

@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropAutoComplete,
 	PropDisabled,
 	PropHasCounter,
@@ -22,7 +23,7 @@ import type {
 	PropTouched,
 	PropVariantClassName,
 } from '../props';
-import { PropVisibilityToggle } from '../props/visibility-toggle';
+import type { PropVisibilityToggle } from '../props/visibility-toggle';
 import type { InputTypeOnDefault, KoliBriHIcons, Stringified } from '../types';
 import type { InternalButtonProps } from './button';
 
@@ -36,6 +37,7 @@ type OptionalProps = {
 	value: string;
 	msg: Stringified<MsgPropType>;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropAutoComplete &
 	PropDisabled &
 	PropHasCounter &
