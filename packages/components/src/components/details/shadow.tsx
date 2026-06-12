@@ -1,5 +1,7 @@
 import { Component, Element, h, type JSX, Method, Prop, State, Watch } from '@stencil/core';
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import type {
 	DetailsAPI,
 	DetailsCallbacksPropType,
@@ -38,7 +40,8 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 	@Element() protected readonly host?: HTMLKolDetailsElement;
 
 	private readonly id = createUniqueId('details');
-	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
+	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
+	private readonly headingButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
 
 	/**
 	 * Sets focus on the internal element.
@@ -92,6 +95,7 @@ export class KolDetails implements DetailsAPI, FocusableElement {
 			onClick: this.handleOnClick,
 			class: rootClass,
 			HeadingProps: { class: `${rootClass}__heading` },
+			buttonCtrl: this.headingButtonCtrl,
 			HeadingButtonProps: {
 				ref: this.ctaRef,
 				class: `${rootClass}__heading-button`,

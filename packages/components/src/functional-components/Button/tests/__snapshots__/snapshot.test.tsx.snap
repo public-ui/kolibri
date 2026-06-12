@@ -1,39 +1,116 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KolButtonFc should handle click event 1`] = `
-<kol-button-wc
-  _label="Test Button"
-/>
+<div class="kol-button kol-button--normal kol-button--standalone">
+  <button class="kol-button__button" type="button">
+    <span class="kol-button__text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Button
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </button>
+</div>
 `;
 
 exports[`KolButtonFc should hide label when hideLabel is true 1`] = `
-<kol-button-wc
-  _hidelabel=""
-  _label="Test Button"
-/>
+<div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+  <button aria-label="Test Button" class="kol-button__button" type="button">
+    <span class="kol-button__text kol-span kol-span--hide-label">
+      <span class="kol-span__container">
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </button>
+  <div class="kol-button__tooltip">
+    <div class="kol-tooltip__floating">
+      <div class="kol-tooltip__arrow"></div>
+      <span class="kol-span kol-tooltip__content">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Test Button
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`KolButtonFc should render correctly 1`] = `
-<kol-button-wc
-  _label="Test Button"
-/>
+<div class="kol-button kol-button--normal kol-button--standalone">
+  <button class="kol-button__button" type="button">
+    <span class="kol-button__text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Button
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </button>
+</div>
 `;
 
 exports[`KolButtonFc should render with a long tooltip inside a row-reverse flex container 1`] = `
 <div style="display: flex; flex-direction: row-reverse; width: 200px;">
-  <kol-button-wc _hidelabel="" _icons="codicon codicon-home" _label="This is a very long tooltip text that demonstrates the behavior in a row-reverse layout" variant="primary"></kol-button-wc>
+  <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+    <button aria-label="This is a very long tooltip text that demonstrates the behavior in a row-reverse layout" class="kol-button__button" type="button">
+      <span class="kol-button__text kol-span kol-span--hide-label">
+        <span class="kol-span__container">
+          <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+        </span>
+      </span>
+    </button>
+    <div class="kol-button__tooltip">
+      <div class="kol-tooltip__floating">
+        <div class="kol-tooltip__arrow"></div>
+        <span class="kol-span kol-tooltip__content">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              This is a very long tooltip text that demonstrates the behavior in a row-reverse layout
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`KolButtonFc should render with custom class 1`] = `
-<kol-button-wc
-  _label="Test Button"
-  class="custom-class"
-/>
+<div class="custom-class kol-button kol-button--normal kol-button--standalone">
+  <button class="kol-button__button" type="button">
+    <span class="kol-button__text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Test Button
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </button>
+</div>
 `;
 
 exports[`KolButtonFc should render with icons 1`] = `
-<kol-button-wc
-  _label="Test Button"
-/>
+<div class="kol-button kol-button--normal kol-button--standalone">
+  <button class="kol-button__button" type="button">
+    <span class="kol-button__text kol-span">
+      <span class="kol-span__container">
+        <i aria-hidden="true" class="icon-left kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+        <span class="kol-span__label">
+          Test Button
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+        <i aria-hidden="true" class="icon-right kol-icon kol-icon__icon kol-span__icon kol-span__icon--right" role="presentation"></i>
+      </span>
+    </span>
+  </button>
+</div>
 `;

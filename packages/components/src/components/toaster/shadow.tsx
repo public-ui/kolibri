@@ -6,6 +6,8 @@ import { createUniqueId } from '../../utils/dev.utils';
 
 import { KolButtonTag } from '../../core/component-names';
 import { KolToastItemFc } from '../../functional-components';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import type { Toast, ToasterAPI, ToasterStates, ToastRenderFunction, ToastState } from '../../schema';
 import { Log } from '../../schema';
 
@@ -28,6 +30,16 @@ export class KolToastContainer implements ToasterAPI {
 	};
 
 	private readonly translateToastCloseAll = translate('kol-toast-close-all');
+	private readonly toastCloseButtonCtrls = new Map<string, ButtonController>();
+
+	private getToastCloseButtonCtrl(id: string): ButtonController {
+		let ctrl = this.toastCloseButtonCtrls.get(id);
+		if (!ctrl) {
+			ctrl = new ButtonController(BaseWebComponent.stateLess);
+			this.toastCloseButtonCtrls.set(id, ctrl);
+		}
+		return ctrl;
+	}
 
 	/* Keep track of render functions, so we call each only once. */
 	private knownRenderFunctions = new Set<ToastRenderFunction>();
@@ -168,6 +180,7 @@ export class KolToastContainer implements ToasterAPI {
 						ref={(element?: HTMLDivElement) => this.handleToastRef(toastState, element)}
 						toast={toastState.toast}
 						status={toastState.status}
+						closeButtonCtrl={this.getToastCloseButtonCtrl(toastState.id)}
 					/>
 				))}
 			</Host>

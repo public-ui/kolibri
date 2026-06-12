@@ -1,7 +1,9 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import { KolButtonWcTag } from '../../core/component-names';
+import type { ButtonController } from '../../internal/functional-components/button/controller';
+import { initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { renderButtonFC } from '../../internal/functional-components/button/render';
 import type { EventValueOrEventCallback, HeadingLevel, IconsPropType, StencilUnknown } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
@@ -27,10 +29,13 @@ export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id' | 
 	};
 
 	HeadingButtonProps?: {
-		ref?: ((elm?: HTMLKolButtonWcElement | undefined) => void) | undefined;
+		ref?: ((elm?: HTMLButtonElement | undefined) => void) | undefined;
 		class?: ClassType;
 		_icons?: IconsPropType;
 	};
+
+	/** Controller owned by the host component that drives the heading button. */
+	buttonCtrl: ButtonController;
 
 	ContentProps?: {
 		class?: ClassType;
@@ -40,7 +45,20 @@ export type CollapsibleProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id' | 
 };
 
 const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
-	const { id, class: classNames, label, level = 1, disabled, open, onClick, HeadingProps = {}, HeadingButtonProps = {}, ContentProps = {}, ...other } = props;
+	const {
+		id,
+		class: classNames,
+		label,
+		level = 1,
+		disabled,
+		open,
+		onClick,
+		buttonCtrl,
+		HeadingProps = {},
+		HeadingButtonProps = {},
+		ContentProps = {},
+		...other
+	} = props;
 	const icon = open ? 'kolicon-chevron-down' : 'kolicon-chevron-right';
 
 	const headingId = createRelatedUniqueId(id, 'heading');
@@ -60,18 +78,21 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 			{...other}
 		>
 			<KolHeadingFc ref={HeadingProps?.ref} level={level} class={clsx('collapsible__heading', HeadingProps?.class)}>
-				<KolButtonWcTag
-					class={clsx('collapsible__heading-button', HeadingButtonProps?.class)}
-					ref={HeadingButtonProps?.ref}
-					slot="expert"
-					id={headingId}
-					_ariaControls={controlId}
-					_ariaExpanded={open}
-					_disabled={disabled}
-					_icons={HeadingButtonProps?._icons || `${icon}`}
-					_label={label}
-					_on={{ onClick }}
-				></KolButtonWcTag>
+				{(() => {
+					initButtonControllerFromProps(buttonCtrl, {
+						_id: headingId,
+						_ariaControls: controlId,
+						_ariaExpanded: open,
+						_disabled: disabled,
+						_icons: HeadingButtonProps?._icons || `${icon}`,
+						_label: label,
+						_on: { onClick },
+					});
+					return renderButtonFC(buttonCtrl, {
+						class: clsx('collapsible__heading-button', HeadingButtonProps?.class),
+						refButton: HeadingButtonProps?.ref,
+					});
+				})()}
 			</KolHeadingFc>
 			<div class={clsx('collapsible__wrapper', ContentProps?.wrapperClass)}>
 				<div class={clsx('collapsible__wrapper-animation', ContentProps?.animationClass)}>

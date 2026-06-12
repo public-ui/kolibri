@@ -8,8 +8,8 @@ describe('KolIconButtonFc', () => {
 		const props: IconButtonProps = { componentName: 'button', label: 'Test Button', icon: 'test-icon' };
 		const page = await renderFunctionalComponentToSpecPage(() => <KolIconButtonFc {...props} />);
 		expect(page.root).toMatchSnapshot();
-		expect(page.root?.tagName).toBe('KOL-BUTTON-WC');
-		expect(page.root?.getAttribute('_label')).toContain('Test Button');
+		expect(page.root?.className).toContain('kol-button');
+		expect(page.root?.querySelector('button')?.getAttribute('aria-label')).toContain('Test Button');
 	});
 
 	it('should render icon component correctly', async () => {
@@ -34,7 +34,9 @@ describe('KolIconButtonFc', () => {
 		const onClick = jest.fn();
 		const props: IconButtonProps = { componentName: 'button', label: 'Test Button', icon: 'test-icon', onClick };
 		const page = await renderFunctionalComponentToSpecPage(() => <KolIconButtonFc {...props} />);
-		expect(page.root?.getAttribute('onClick')).toBeDefined();
+		page.root?.querySelector('button')?.click();
+		await page.waitForChanges();
+		expect(onClick).toHaveBeenCalled();
 	});
 
 	it('should render with additional props', async () => {

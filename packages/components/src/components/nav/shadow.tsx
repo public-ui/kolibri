@@ -92,17 +92,15 @@ export class KolNav implements NavAPI {
 	}
 
 	private syncNavLinkControllers(): void {
-		const newEntries = new Set<LinkWithChildrenProps>();
+		const newEntries = new Set<ButtonOrLinkOrTextWithChildrenProps>();
 
 		const traverse = (links: ButtonOrLinkOrTextWithChildrenProps[]) => {
 			for (const link of links) {
-				if (entryIsLink(link)) {
-					newEntries.add(link);
-					if (!this.navLinkCtrls.has(link)) {
-						const ctrl = new LinkController(createLinkStateAccess(this.forceRender));
-						initLinkControllerFromProps(ctrl, link as { _href: string } & Partial<Record<string, unknown>>);
-						this.navLinkCtrls.set(link, ctrl);
-					}
+				newEntries.add(link);
+				if (entryIsLink(link) && !this.navLinkCtrls.has(link)) {
+					const ctrl = new LinkController(createLinkStateAccess(this.forceRender));
+					initLinkControllerFromProps(ctrl, link as { _href: string } & Partial<Record<string, unknown>>);
+					this.navLinkCtrls.set(link, ctrl);
 				}
 				if (Array.isArray(link._children)) {
 					traverse(link._children);
@@ -117,6 +115,12 @@ export class KolNav implements NavAPI {
 			if (!newEntries.has(entry)) {
 				ctrl.destroy();
 				this.navLinkCtrls.delete(entry);
+			}
+		}
+		for (const [entry, ctrl] of this.navButtonCtrls) {
+			if (!newEntries.has(entry)) {
+				ctrl.destroy();
+				this.navButtonCtrls.delete(entry);
 			}
 		}
 	}

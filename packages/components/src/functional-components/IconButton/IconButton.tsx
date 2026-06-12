@@ -1,4 +1,5 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
+import type { ButtonController } from '../../internal/functional-components/button/controller';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { ButtonVariantPropType } from '../../schema';
 import KolButtonFc, { type ButtonProps } from '../Button';
@@ -22,7 +23,10 @@ type ButtonType = Partial<Omit<ButtonProps, 'icons'>> & {
 	onClick?: (event: MouseEvent) => void;
 };
 
-export type IconButtonProps = IconType | ButtonType;
+export type IconButtonProps = (IconType | ButtonType) & {
+	/** Controller owned by the host component, used when a button is rendered. */
+	buttonCtrl?: ButtonController;
+};
 
 /**
  * `KolIconButtonFc` is a functional component that renders either a Button or an Icon based on the provided props.
@@ -50,10 +54,12 @@ export type IconButtonProps = IconType | ButtonType;
  * @returns {JSX.Element} - The rendered JSX element (Button or Icon).
  */
 const KolIconButtonFc: FC<IconButtonProps> = (props) => {
-	const { componentName = 'button', label, icon, onClick, ...other } = props;
-	const Component = componentName === 'button' ? KolButtonFc : IconFC;
+	const { componentName = 'button', label, icon, onClick, buttonCtrl, ...other } = props;
 
-	return <Component label={label || ''} hideLabel icons={`${icon}`} onClick={onClick} {...other} />;
+	if (componentName === 'button') {
+		return <KolButtonFc label={label || ''} hideLabel icons={`${icon}`} onClick={onClick} buttonCtrl={buttonCtrl} {...other} />;
+	}
+	return <IconFC label={label || ''} icons={`${icon}`} onClick={onClick} {...other} />;
 };
 
 export default KolIconButtonFc;

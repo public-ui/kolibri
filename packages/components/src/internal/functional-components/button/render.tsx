@@ -1,8 +1,10 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import { BaseWebComponent } from '../base-web-component';
 import { ButtonFC } from './component';
-import type { ButtonClickHandlingResult, ButtonController } from './controller';
+import type { ButtonClickHandlingResult } from './controller';
+import { ButtonController } from './controller';
 
 export type RenderButtonFCOptions = {
 	/** Additional classes for the BEM root node (e.g. 'kol-toolbar__item'). */
@@ -68,3 +70,20 @@ export const renderButtonFC = (ctrl: ButtonController, options: RenderButtonFCOp
 		tooltipId={ctrl.getTooltipId()}
 	/>
 );
+
+/**
+ * Module-level cache of button controllers for FunctionalComponent-embedded
+ * buttons that cannot own a controller themselves (pure FCs with no instance).
+ * Keyed by a caller-provided stable id so the controller — and therefore its
+ * tooltip listener identity — survives re-renders.
+ */
+const embeddedButtonControllers = new Map<string, ButtonController>();
+
+export function getEmbeddedButtonController(key: string): ButtonController {
+	let ctrl = embeddedButtonControllers.get(key);
+	if (!ctrl) {
+		ctrl = new ButtonController(BaseWebComponent.stateLess);
+		embeddedButtonControllers.set(key, ctrl);
+	}
+	return ctrl;
+}

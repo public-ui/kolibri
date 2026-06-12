@@ -1,22 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`KolIconButtonFc should render button component correctly 1`] = `
-<kol-button-wc
-  _hidelabel=""
-  _icons="test-icon"
-  _label="Test Button"
-/>
+<div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+  <button aria-label="Test Button" class="kol-button__button" type="button">
+    <span class="kol-button__text kol-span kol-span--hide-label">
+      <span class="kol-span__container">
+        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left test-icon" role="presentation"></i>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </button>
+  <div class="kol-button__tooltip">
+    <div class="kol-tooltip__floating">
+      <div class="kol-tooltip__arrow"></div>
+      <span class="kol-span kol-tooltip__content">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Test Button
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
 `;
 
-exports[`KolIconButtonFc should render icon component correctly 1`] = `<i aria-hidden="true" class="kol-icon kol-icon__icon test-icon" hidelabel="" role="presentation"></i>`;
+exports[`KolIconButtonFc should render icon component correctly 1`] = `<i aria-hidden="true" class="kol-icon kol-icon__icon test-icon" role="presentation"></i>`;
 
-exports[`KolIconButtonFc should render icon with correct classes when componentName is icon 1`] = `<i aria-hidden="true" class="custom-icon-class fa-star fas kol-icon kol-icon__icon" hidelabel="" role="presentation"></i>`;
+exports[`KolIconButtonFc should render icon with correct classes when componentName is icon 1`] = `<i aria-hidden="true" class="custom-icon-class fa-star fas kol-icon kol-icon__icon" role="presentation"></i>`;
 
 exports[`KolIconButtonFc should render with additional props 1`] = `
-<kol-button-wc
-  _hidelabel=""
-  _icons="test-icon"
-  _label="Test Button"
-  class="custom-class"
-/>
+<div class="custom-class kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+  <button aria-label="Test Button" class="kol-button__button" type="button">
+    <span class="kol-button__text kol-span kol-span--hide-label">
+      <span class="kol-span__container">
+        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left test-icon" role="presentation"></i>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </button>
+  <div class="kol-button__tooltip">
+    <div class="kol-tooltip__floating">
+      <div class="kol-tooltip__arrow"></div>
+      <span class="kol-span kol-tooltip__content">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Test Button
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+        </span>
+      </span>
+    </div>
+  </div>
+</div>
 `;

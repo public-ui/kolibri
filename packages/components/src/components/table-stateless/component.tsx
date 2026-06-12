@@ -2,9 +2,12 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import { isEqual } from 'lodash-es';
-import { KolButtonWcTag, KolTableSettingsWcTag } from '../../core/component-names';
+import { KolTableSettingsWcTag } from '../../core/component-names';
 import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { createLinkStateAccess, initLinkControllerFromProps, LinkController } from '../../internal/functional-components/link/controller';
@@ -94,6 +97,26 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	@State() private _tick = 0;
 	private readonly forceRender = () => this._tick++;
 	private actionLinkCtrls = new Map<string, LinkController>();
+	private actionButtonCtrls = new Map<string, ButtonController>();
+	private sortButtonCtrls = new Map<string, ButtonController>();
+
+	private getActionButtonCtrl(key: string): ButtonController {
+		let ctrl = this.actionButtonCtrls.get(key);
+		if (!ctrl) {
+			ctrl = new ButtonController(BaseWebComponent.stateLess);
+			this.actionButtonCtrls.set(key, ctrl);
+		}
+		return ctrl;
+	}
+
+	private getSortButtonCtrl(key: string): ButtonController {
+		let ctrl = this.sortButtonCtrls.get(key);
+		if (!ctrl) {
+			ctrl = new ButtonController(BaseWebComponent.stateLess);
+			this.sortButtonCtrls.set(key, ctrl);
+		}
+		return ctrl;
+	}
 
 	private translateSort = translate('kol-sort');
 	private translateSortOrder = translate('kol-table-sort-order');
@@ -209,6 +232,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		});
 		for (const ctrl of this.actionLinkCtrls.values()) ctrl.destroy();
 		this.actionLinkCtrls.clear();
+		for (const ctrl of this.actionButtonCtrls.values()) ctrl.destroy();
+		this.actionButtonCtrls.clear();
 	}
 
 	@Watch('_dataFoot')
@@ -307,6 +332,10 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		clearTimeout(this.resizeDebounceTimeout);
 		for (const ctrl of this.actionLinkCtrls.values()) ctrl.destroy();
 		this.actionLinkCtrls.clear();
+		for (const ctrl of this.actionButtonCtrls.values()) ctrl.destroy();
+		this.actionButtonCtrls.clear();
+		for (const ctrl of this.sortButtonCtrls.values()) ctrl.destroy();
+		this.sortButtonCtrls.clear();
 	}
 
 	private handleResize() {
@@ -923,7 +952,9 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 				{actions.map((action, actionIndex) => {
 					if (action.type === 'button') {
 						const { ...buttonProps } = action;
-						return <KolButtonWcTag key={`action-${key}-${actionIndex}`} {...buttonProps} _variant={buttonProps._variant} />;
+						const buttonCtrl = this.getActionButtonCtrl(`${key}-${actionIndex}`);
+						initButtonControllerFromProps(buttonCtrl, buttonProps);
+						return <span key={`action-${key}-${actionIndex}`}>{renderButtonFC(buttonCtrl)}</span>;
 					} else if (action.type === 'link') {
 						const ctrlKey = `${key}-${actionIndex}`;
 						let ctrl = this.actionLinkCtrls.get(ctrlKey);
@@ -1230,28 +1261,31 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			>
 				{canSort && cell.sortDirection ? (
 					<span class="kol-table__sort">
-						<KolButtonWcTag
-							class="kol-table__sort-button"
-							_icons={{ right: sortButtonIcon }}
-							_label={cell.label}
-							_ariaDescription={sortDescription}
-							_on={{
-								onClick: (event: MouseEvent) => {
-									if (typeof this.state._on?.onSort === 'function' && cell.key && cell.sortDirection) {
-										this.state._on.onSort(event, {
-											key: cell.key,
-											currentSortDirection: cell.sortDirection,
-										});
-									}
-									if (this.host) {
-										dispatchDomEvent(this.host, KolEvent.sort, {
-											key: cell.key,
-											currentSortDirection: cell.sortDirection,
-										});
-									}
+						{(() => {
+							const sortCtrl = this.getSortButtonCtrl(cell.key ?? cell.label);
+							initButtonControllerFromProps(sortCtrl, {
+								_icons: { right: sortButtonIcon },
+								_label: cell.label,
+								_ariaDescription: sortDescription,
+								_on: {
+									onClick: (event: MouseEvent) => {
+										if (typeof this.state._on?.onSort === 'function' && cell.key && cell.sortDirection) {
+											this.state._on.onSort(event, {
+												key: cell.key,
+												currentSortDirection: cell.sortDirection,
+											});
+										}
+										if (this.host) {
+											dispatchDomEvent(this.host, KolEvent.sort, {
+												key: cell.key,
+												currentSortDirection: cell.sortDirection,
+											});
+										}
+									},
 								},
-							}}
-						></KolButtonWcTag>
+							});
+							return renderButtonFC(sortCtrl, { class: 'kol-table__sort-button' });
+						})()}
 						{sortOrder && (
 							<span aria-hidden="true" class="kol-table__sort-order">
 								{sortOrder}

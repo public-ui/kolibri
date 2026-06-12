@@ -6,7 +6,6 @@ import { KolAvatar } from './avatar/component';
 import { KolBadge } from './badge/shadow';
 import { KolBreadcrumb } from './breadcrumb/shadow';
 import { KolButtonLink } from './button-link/shadow';
-import { KolButtonWc } from './button/component';
 import { KolButton } from './button/shadow';
 import { KolCard } from './card/shadow';
 import { KolCombobox } from './combobox/shadow';
@@ -64,7 +63,6 @@ export const COMPONENTS = [
 	KolBreadcrumb,
 	KolButton,
 	KolButtonLink,
-	KolButtonWc,
 	KolCard,
 	KolCombobox,
 	KolDetails,

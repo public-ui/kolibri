@@ -38,6 +38,8 @@ import KolInputContainerStateWrapperFc from '../../functional-component-wrappers
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -58,6 +60,7 @@ import { InputPasswordController } from './controller';
 export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 	@Element() protected readonly host?: HTMLKolInputPasswordElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+	private readonly toggleButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
 
 	private readonly translateHidePassword = translate('kol-hide-password');
 	private readonly translateShowPassword = translate('kol-show-password');
@@ -144,6 +147,7 @@ export class KolInputPassword implements InputPasswordAPI, FocusableElement {
 			return (
 				<KolIconButtonFc
 					componentName="button"
+					buttonCtrl={this.toggleButtonCtrl}
 					class="kol-input-password__password-toggle-button kol-input-container__smart-button"
 					data-testid="kol-input-password-toggle-button"
 					label={this._passwordVisible ? this.translateHidePassword : this.translateShowPassword}
