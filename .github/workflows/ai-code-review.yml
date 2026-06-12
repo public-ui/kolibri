@@ -1,0 +1,130 @@
+name: AI Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Both reviewers post comments, so they need write access to the PR.
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ai-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  # --------------------------------------------------------------------------
+  # Reviewer A: Claude (Anthropic) via the official action.
+  # --------------------------------------------------------------------------
+  claude-review:
+    name: Claude Review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Run Claude review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Reviewe diesen Pull Request für die Web-Component-Library KoliBri
+            (Stencil + TypeScript, barrierefreie Komponenten, Lizenz EUPL-1.2).
+            Prüfe insbesondere:
+            - Barrierefreiheit: BITV 2.0 bzw. WCAG 2.1 AA (Semantik, ARIA,
+              Fokus-Reihenfolge, Tastaturbedienung, Kontrast).
+            - Stencil-Konventionen: @Prop/@State/@Watch/@Method-Nutzung, Schema-
+              Validierung, Shadow-DOM, keine unkontrollierten Re-Renders.
+            - Tests: ausreichende Abdeckung neuer/geänderter Logik.
+            - Lizenz: EUPL-1.2-Kompatibilität neu hinzugefügter Abhängigkeiten.
+            Maßstab sind die Repo-Regeln in AGENTS.md,
+            .github/copilot-instructions.md und CONTRIBUTING.md.
+            Antworte auf Deutsch und gib konkrete Datei:Zeile-Hinweise.
+
+  # --------------------------------------------------------------------------
+  # Reviewer B: Mistral (eigener, paralleler Job — getrennte Reviewer-Identität).
+  # EU-gehosteter Endpoint (api.mistral.ai, Frankreich): kein Drittanbieter
+  # im Datenpfad, passend zum Souveränitäts-Profil.
+  # --------------------------------------------------------------------------
+  mistral-review:
+    name: Mistral Review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Build PR diff
+        run: |
+          git diff "${{ github.event.pull_request.base.sha }}...HEAD" > /tmp/diff.txt
+          if [ ! -s /tmp/diff.txt ]; then
+            echo "Kein Diff gegenüber Basis — überspringe Review."
+            exit 0
+          fi
+          # Diff begrenzen, damit der Request nicht das Kontext-Limit sprengt.
+          head -c 60000 /tmp/diff.txt > /tmp/diff_capped.txt
+          if [ "$(wc -c < /tmp/diff.txt)" -gt 60000 ]; then
+            printf '\n\n[... Diff gekürzt: nur die ersten 60 kB werden gereviewt ...]\n' >> /tmp/diff_capped.txt
+          fi
+
+      - name: Mistral review
+        env:
+          MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${MISTRAL_API_KEY:-}" ]; then
+            echo "MISTRAL_API_KEY nicht gesetzt — überspringe Mistral-Review."
+            exit 0
+          fi
+          if [ ! -s /tmp/diff_capped.txt ]; then
+            echo "Kein Diff vorhanden — überspringe Mistral-Review."
+            exit 0
+          fi
+
+          SYSTEM_PROMPT='Du bist ein Code-Reviewer für die barrierefreie Web-Component-Library KoliBri (Stencil + TypeScript, Lizenz EUPL-1.2). Prüfe Code-Qualität, Barrierefreiheit (BITV 2.0 / WCAG 2.1 AA), Stencil-Konventionen, Testabdeckung und EUPL-1.2-Kompatibilität neuer Abhängigkeiten. Antworte auf Deutsch als knappes Markdown-PR-Review mit konkreten Datei:Zeile-Referenzen. Wenn keine Probleme auffallen, sage das explizit.'
+
+          # Payload sicher per jq bauen (Diff korrekt als JSON-String escapen).
+          # mistral-large-latest = generalistisch (gut für A11y/Architektur);
+          # codestral-latest waere die code-spezifische Alternative.
+          jq -Rs \
+            --arg model "mistral-large-latest" \
+            --arg system "$SYSTEM_PROMPT" \
+            '{
+              model: $model,
+              temperature: 0.2,
+              messages: [
+                { role: "system", content: $system },
+                { role: "user", content: ("Reviewe diesen Diff:\n\n```diff\n" + . + "\n```") }
+              ]
+            }' /tmp/diff_capped.txt > /tmp/payload.json
+
+          HTTP_CODE=$(curl -sS -o /tmp/resp.json -w '%{http_code}' \
+            https://api.mistral.ai/v1/chat/completions \
+            -H "Authorization: Bearer $MISTRAL_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d @/tmp/payload.json) || true
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "Mistral-API antwortete mit HTTP $HTTP_CODE:"
+            cat /tmp/resp.json || true
+            exit 1
+          fi
+
+          REVIEW=$(jq -r '.choices[0].message.content // empty' /tmp/resp.json)
+          if [ -z "$REVIEW" ]; then
+            echo "Leere Antwort von Mistral — kein Kommentar gepostet."
+            cat /tmp/resp.json || true
+            exit 1
+          fi
+
+          printf '### 🐈 Mistral Review\n\n%s\n' "$REVIEW" > /tmp/comment.md
+          gh pr comment "$PR_NUMBER" --body-file /tmp/comment.md
