@@ -17,7 +17,8 @@
 		"declarationDir": "dist",
 		"experimentalDecorators": true,
 		"forceConsistentCasingInFileNames": true,
-		"lib": ["dom", "es2017"],
+		"ignoreDeprecations": "6.0",
+		"lib": ["dom", "es2022"],
 		"module": "ESNext",
 		"moduleResolution": "node",
 		"noImplicitAny": true,
@@ -30,7 +31,7 @@
 		"importHelpers": true,
 		"rootDir": "src",
 		"strictPropertyInitialization": false,
-		"target": "es2015",
+		"target": "es2022",
 		"skipLibCheck": true
 	},
 	"files": ["src/index.ts"],

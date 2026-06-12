@@ -1,11 +1,11 @@
 # KoliBri Angular Adapter (v22)
 
-[![npm](https://img.shields.io/npm/v/@public-ui/angular-22)](https://www.npmjs.com/package/@public-ui/components)
-[![license](https://img.shields.io/npm/l/@public-ui/angular-22)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
-[![downloads](https://img.shields.io/npm/dt/@public-ui/angular-22)](https://www.npmjs.com/package/@public-ui/angular-22)
+[![npm](https://img.shields.io/npm/v/@public-ui/angular-v22)](https://www.npmjs.com/package/@public-ui/angular-v22)
+[![license](https://img.shields.io/npm/l/@public-ui/angular-v22)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
+[![downloads](https://img.shields.io/npm/dt/@public-ui/angular-v22)](https://www.npmjs.com/package/@public-ui/angular-v22)
 [![issues](https://img.shields.io/github/issues/public-ui/kolibri)](https://github.com/public-ui/kolibri/issues)
 [![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
-[![size](https://img.shields.io/bundlephobia/min/@public-ui/angular-22)](https://bundlephobia.com/result?p=@public-ui/angular-22)
+[![size](https://img.shields.io/bundlephobia/min/@public-ui/angular-v22)](https://bundlephobia.com/result?p=@public-ui/angular-v22)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
 
 This package provides an Angular adapter for KoliBri components, making them easily usable in Angular applications.
