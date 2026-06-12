@@ -3,6 +3,7 @@ import { h } from '@stencil/core';
 
 import { showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
+import clsx from '../../../utils/clsx';
 import type { BlockModifiers } from '../bem-root-node/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
@@ -13,6 +14,11 @@ import type { ButtonApi } from './api';
 const buttonBem = bem.forBlock('kol-button');
 
 type ButtonFCProps = FunctionalComponentProps<ButtonApi> & {
+	/** Additional classes forwarded onto the BEM root node (e.g. from embedding components). */
+	class?: string;
+	'data-testid'?: string;
+	hidden?: boolean;
+	ariaCurrent?: string;
 	tooltipId?: string;
 	handleClick: (event: MouseEvent) => void;
 	handleMouseDown: (event: MouseEvent) => void;
@@ -22,6 +28,10 @@ type ButtonFCProps = FunctionalComponentProps<ButtonApi> & {
 
 export const ButtonFC: FC<ButtonFCProps> = (props) => {
 	const {
+		class: hostClass,
+		'data-testid': dataTestId,
+		hidden: hostHidden,
+		ariaCurrent,
 		accessKey,
 		ariaControls,
 		ariaDescription,
@@ -66,11 +76,18 @@ export const ButtonFC: FC<ButtonFCProps> = (props) => {
 	} as BlockModifiers<'kol-button'>;
 
 	return (
-		<BemRootNodeFC block="kol-button" modifiers={modifiers} class={typeof customClass === 'string' && customClass.length > 0 ? customClass : undefined}>
+		<BemRootNodeFC
+			block="kol-button"
+			modifiers={modifiers}
+			class={clsx(hostClass, typeof customClass === 'string' && customClass.length > 0 ? customClass : undefined) || undefined}
+			data-testid={dataTestId}
+			hidden={hostHidden}
+		>
 			<button
 				ref={refButton}
 				accessKey={accessKey || undefined}
 				aria-controls={ariaControls || undefined}
+				aria-current={ariaCurrent || undefined}
 				aria-description={ariaDescriptionValue || undefined}
 				aria-expanded={ariaExpanded || undefined}
 				aria-keyshortcuts={shortKey || undefined}

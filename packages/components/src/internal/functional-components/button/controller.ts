@@ -308,3 +308,37 @@ export class ButtonLinkController extends ButtonController {
 		});
 	}
 }
+
+/**
+ * Initializes a `ButtonController` from public underscore-prefixed button props.
+ * Counterpart of `initLinkControllerFromProps` for components that embed buttons
+ * (toolbar items, pagination, table actions, ...).
+ *
+ * @param ctrl  - An already-constructed `ButtonController`.
+ * @param props - A partial public button props object (all `_`-prefixed).
+ */
+export function initButtonControllerFromProps(ctrl: ButtonController, props: Partial<Record<string, unknown>>): void {
+	ctrl.componentWillLoad({
+		accessKey: props['_accessKey'] as string | undefined,
+		ariaControls: props['_ariaControls'] as string | undefined,
+		ariaDescription: props['_ariaDescription'] as string | undefined,
+		ariaExpanded: props['_ariaExpanded'] as boolean | undefined,
+		ariaSelected: props['_ariaSelected'] as boolean | undefined,
+		customClass: props['_customClass'] as string | undefined,
+		disabled: props['_disabled'] as boolean | undefined,
+		hideLabel: props['_hideLabel'] as boolean | undefined,
+		icons: props['_icons'] as IconsPropType | undefined,
+		id: props['_id'] as string | undefined,
+		inline: props['_inline'] as boolean | undefined,
+		label: props['_label'] as string,
+		name: props['_name'] as string | undefined,
+		on: props['_on'] as ButtonCallbacksPropType<StencilUnknown> | undefined,
+		role: props['_role'] as AlternativeButtonLinkRolePropType | undefined,
+		shortKey: props['_shortKey'] as string | undefined,
+		tabIndex: props['_tabIndex'] as number | undefined,
+		tooltipAlign: props['_tooltipAlign'] as TooltipAlignPropType | undefined,
+		type: props['_type'] as ButtonType | undefined,
+		variant: props['_variant'] as ButtonVariant | undefined,
+	});
+	ctrl.setValue(props['_value'] as StencilUnknown);
+}

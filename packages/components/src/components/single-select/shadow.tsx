@@ -28,7 +28,6 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
-import { KolButtonWcTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -37,6 +36,9 @@ import KolInputStateWrapperFc from '../../functional-component-wrappers/InputSta
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
 import { translate } from '../../i18n';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
@@ -61,6 +63,19 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refOptions: HTMLLIElement[] = [];
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
+	private readonly clearButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
+	private readonly clearButtonCallbacks = {
+		onClick: () => {
+			this.clearSelection();
+			this.ctaRef.el?.focus();
+		},
+		onFocus: () => {
+			this.clearButtonFocused = true;
+		},
+		onBlur: () => {
+			this.clearButtonFocused = false;
+		},
+	};
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 	private oldValue?: StencilUnknown;
 	private clearButtonFocused = false;
@@ -333,30 +348,23 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 					<div class="kol-single-select__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
 
-						{this._inputValue && this.state._hasClearButton && (
-							<KolButtonWcTag
-								_icons="kolicon-cross"
-								_label={this.translateDeleteSelection}
-								_hideLabel
-								_variant="ghost"
-								_disabled={isDisabled}
-								data-testid="single-select-delete"
-								class="kol-single-select__delete"
-								hidden={isDisabled}
-								_on={{
-									onClick: () => {
-										this.clearSelection();
-										this.ctaRef.el?.focus();
-									},
-									onFocus: () => {
-										this.clearButtonFocused = true;
-									},
-									onBlur: () => {
-										this.clearButtonFocused = false;
-									},
-								}}
-							/>
-						)}
+						{this._inputValue &&
+							this.state._hasClearButton &&
+							(() => {
+								initButtonControllerFromProps(this.clearButtonCtrl, {
+									_icons: 'kolicon-cross',
+									_label: this.translateDeleteSelection,
+									_hideLabel: true,
+									_variant: 'ghost',
+									_disabled: isDisabled,
+									_on: this.clearButtonCallbacks,
+								});
+								return renderButtonFC(this.clearButtonCtrl, {
+									class: 'kol-single-select__delete',
+									dataTestId: 'single-select-delete',
+									hidden: isDisabled,
+								});
+							})()}
 
 						<IconFC
 							icons="kolicon-chevron-down"

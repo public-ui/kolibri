@@ -30,7 +30,29 @@ exports[`kol-card should render with _label="Überschrift" _level=0 _hasCloser=t
         <div class="kol-card__content">
           <slot></slot>
         </div>
-        <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
+        <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-card__close-button kol-close-button" data-testid="card-close-button">
+          <button aria-label="kol-close" class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span kol-span--hide-label">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </button>
+          <div class="kol-button__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    kol-close
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
       </article>
     </kol-card-wc>
   </template>
@@ -85,7 +107,29 @@ exports[`kol-card should render with _label="Überschrift" _level=1 _hasCloser=t
         <div class="kol-card__content">
           <slot></slot>
         </div>
-        <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
+        <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-card__close-button kol-close-button" data-testid="card-close-button">
+          <button aria-label="kol-close" class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span kol-span--hide-label">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </button>
+          <div class="kol-button__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    kol-close
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
       </article>
     </kol-card-wc>
   </template>
@@ -140,7 +184,29 @@ exports[`kol-card should render with _label="Überschrift" _level=2 _hasCloser=t
         <div class="kol-card__content">
           <slot></slot>
         </div>
-        <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
+        <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-card__close-button kol-close-button" data-testid="card-close-button">
+          <button aria-label="kol-close" class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span kol-span--hide-label">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </button>
+          <div class="kol-button__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    kol-close
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
       </article>
     </kol-card-wc>
   </template>
@@ -195,7 +261,29 @@ exports[`kol-card should render with _label="Überschrift" _level=3 _hasCloser=t
         <div class="kol-card__content">
           <slot></slot>
         </div>
-        <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
+        <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-card__close-button kol-close-button" data-testid="card-close-button">
+          <button aria-label="kol-close" class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span kol-span--hide-label">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </button>
+          <div class="kol-button__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    kol-close
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
       </article>
     </kol-card-wc>
   </template>
@@ -250,7 +338,29 @@ exports[`kol-card should render with _label="Überschrift" _level=4 _hasCloser=t
         <div class="kol-card__content">
           <slot></slot>
         </div>
-        <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
+        <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-card__close-button kol-close-button" data-testid="card-close-button">
+          <button aria-label="kol-close" class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span kol-span--hide-label">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </button>
+          <div class="kol-button__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    kol-close
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
       </article>
     </kol-card-wc>
   </template>
@@ -305,7 +415,29 @@ exports[`kol-card should render with _label="Überschrift" _level=5 _hasCloser=t
         <div class="kol-card__content">
           <slot></slot>
         </div>
-        <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
+        <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-card__close-button kol-close-button" data-testid="card-close-button">
+          <button aria-label="kol-close" class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span kol-span--hide-label">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </button>
+          <div class="kol-button__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    kol-close
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
       </article>
     </kol-card-wc>
   </template>
@@ -360,7 +492,29 @@ exports[`kol-card should render with _label="Überschrift" _level=6 _hasCloser=t
         <div class="kol-card__content">
           <slot></slot>
         </div>
-        <kol-button-wc _hidelabel="" _label="kol-close" _tooltipalign="left" class="kol-card__close-button kol-close-button" data-testid="card-close-button"></kol-button-wc>
+        <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-card__close-button kol-close-button" data-testid="card-close-button">
+          <button aria-label="kol-close" class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span kol-span--hide-label">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </button>
+          <div class="kol-button__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    kol-close
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
       </article>
     </kol-card-wc>
   </template>

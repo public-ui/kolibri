@@ -26,7 +26,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input accesskey="V" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -58,7 +71,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -90,7 +116,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _disabled="" _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--disabled kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" disabled="" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -122,7 +161,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input aria-describedby="input-file-hint-nonce" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -160,7 +212,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
@@ -198,7 +263,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
         </div>
@@ -232,7 +310,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <i aria-hidden="true" class="codicon codicon-arrow-right kol-icon kol-icon__icon kol-input-container__icon" role="presentation"></i>
@@ -267,7 +358,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input aria-describedby="input-file-error-nonce" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -299,7 +403,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input aria-describedby="input-file-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -331,7 +448,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -366,7 +496,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input aria-keyshortcuts="S" autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -399,7 +542,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <kol-button-wc _hidelabel="" _label="einblenden" class="kol-input-container__smart-button"></kol-button-wc>
@@ -434,7 +590,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--touched" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -466,7 +635,20 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
               kol-filename-text
             </span>
             <input autocapitalize="off" autocorrect="off" class="kol-input" id="input-file-nonce" name="field" type="file">
-            <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
+            <div class="kol-button kol-button--primary kol-button--standalone kol-input-container__button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-data-browse-text
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

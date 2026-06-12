@@ -1,6 +1,5 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { KolButtonWcTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -9,6 +8,9 @@ import KolInputStateWrapperFc from '../../functional-component-wrappers/InputSta
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
 import { translate } from '../../i18n';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type {
 	AriaDetailsPropType,
@@ -59,6 +61,18 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private clearButtonFocused = false;
+	private readonly clearButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
+	private readonly clearButtonCallbacks = {
+		onClick: () => {
+			this.clearSelection();
+		},
+		onFocus: () => {
+			this.clearButtonFocused = true;
+		},
+		onBlur: () => {
+			this.clearButtonFocused = false;
+		},
+	};
 
 	/**
 	 * Returns the current value.
@@ -277,29 +291,23 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 				<KolInputContainerFc state={this.state}>
 					<div class="kol-combobox__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
-						{this.state._value && this.state._hasClearButton && (
-							<KolButtonWcTag
-								_icons="kolicon-cross"
-								_label={this.translateDeleteSelection}
-								_hideLabel
-								_variant="ghost"
-								_disabled={isDisabled}
-								data-testid="combobox-delete"
-								class="kol-combobox__delete"
-								hidden={isDisabled}
-								_on={{
-									onClick: () => {
-										this.clearSelection();
-									},
-									onFocus: () => {
-										this.clearButtonFocused = true;
-									},
-									onBlur: () => {
-										this.clearButtonFocused = false;
-									},
-								}}
-							/>
-						)}
+						{this.state._value &&
+							this.state._hasClearButton &&
+							(() => {
+								initButtonControllerFromProps(this.clearButtonCtrl, {
+									_icons: 'kolicon-cross',
+									_label: this.translateDeleteSelection,
+									_hideLabel: true,
+									_variant: 'ghost',
+									_disabled: isDisabled,
+									_on: this.clearButtonCallbacks,
+								});
+								return renderButtonFC(this.clearButtonCtrl, {
+									class: 'kol-combobox__delete',
+									dataTestId: 'combobox-delete',
+									hidden: isDisabled,
+								});
+							})()}
 						<button
 							type="button"
 							tabIndex={-1}
