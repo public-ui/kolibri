@@ -3,7 +3,7 @@ import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import { KolAlertWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import { renderButtonFC } from '../../internal/functional-components/button/render';
 import type { KoliBriTableHeaderCell } from '../../schema';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -177,26 +177,26 @@ export class KolTableSettings {
 											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key ?? '', value) }}
 										/>
 										{(() => {
-											const upCtrl = this.getMoveButtonCtrl(`${column.key ?? ''}-up`);
-											initButtonControllerFromProps(upCtrl, {
-												_icons: 'kolicon-chevron-up',
-												_label: translate('kol-table-settings-move-up', { placeholders: { column: column.label } }),
-												_hideLabel: true,
-												_variant: 'ghost',
-												_on: { onClick: () => this.moveColumn(column.key ?? '', 'up') },
-												_disabled: column.sortable === false || index === 0,
+											const upCtrl = this.getMoveButtonCtrl(`${column.key ?? column.label}-up`);
+											upCtrl.applyProps({
+												icons: 'kolicon-chevron-up',
+												label: translate('kol-table-settings-move-up', { placeholders: { column: column.label } }),
+												hideLabel: true,
+												variant: 'ghost',
+												on: { onClick: () => this.moveColumn(column.key ?? '', 'up') },
+												disabled: column.sortable === false || index === 0,
 											});
 											return renderButtonFC(upCtrl, { dataTestId: 'table-settings-move-up' });
 										})()}
 										{(() => {
-											const downCtrl = this.getMoveButtonCtrl(`${column.key ?? ''}-down`);
-											initButtonControllerFromProps(downCtrl, {
-												_icons: 'kolicon-chevron-down',
-												_label: translate('kol-table-settings-move-down', { placeholders: { column: column.label } }),
-												_hideLabel: true,
-												_variant: 'ghost',
-												_on: { onClick: () => this.moveColumn(column.key ?? '', 'down') },
-												_disabled: column.sortable === false || index === columns.length - 1,
+											const downCtrl = this.getMoveButtonCtrl(`${column.key ?? column.label}-down`);
+											downCtrl.applyProps({
+												icons: 'kolicon-chevron-down',
+												label: translate('kol-table-settings-move-down', { placeholders: { column: column.label } }),
+												hideLabel: true,
+												variant: 'ghost',
+												on: { onClick: () => this.moveColumn(column.key ?? '', 'down') },
+												disabled: column.sortable === false || index === columns.length - 1,
 											});
 											return renderButtonFC(downCtrl, { dataTestId: 'table-settings-move-down' });
 										})()}
@@ -207,18 +207,18 @@ export class KolTableSettings {
 
 						<div class="kol-table-settings__actions">
 							{(() => {
-								initButtonControllerFromProps(this.cancelButtonCtrl, {
-									_label: this.translateTableSettingsCancel,
-									_variant: 'secondary',
-									_on: { onClick: () => this.handleCancel() },
+								this.cancelButtonCtrl.applyProps({
+									label: this.translateTableSettingsCancel,
+									variant: 'secondary',
+									on: { onClick: () => this.handleCancel() },
 								});
 								return renderButtonFC(this.cancelButtonCtrl, { dataTestId: 'table-settings-cancel' });
 							})()}
 							{(() => {
-								initButtonControllerFromProps(this.applyButtonCtrl, {
-									_label: this.translateTableSettingsApply,
-									_variant: 'primary',
-									_type: 'submit',
+								this.applyButtonCtrl.applyProps({
+									label: this.translateTableSettingsApply,
+									variant: 'primary',
+									type: 'submit',
 								});
 								return renderButtonFC(this.applyButtonCtrl, { dataTestId: 'table-settings-apply' });
 							})()}

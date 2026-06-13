@@ -9,7 +9,7 @@ import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggest
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
 import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type {
@@ -294,13 +294,13 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 						{this.state._value &&
 							this.state._hasClearButton &&
 							(() => {
-								initButtonControllerFromProps(this.clearButtonCtrl, {
-									_icons: 'kolicon-cross',
-									_label: this.translateDeleteSelection,
-									_hideLabel: true,
-									_variant: 'ghost',
-									_disabled: isDisabled,
-									_on: this.clearButtonCallbacks,
+								this.clearButtonCtrl.applyProps({
+									icons: 'kolicon-cross',
+									label: this.translateDeleteSelection,
+									hideLabel: true,
+									variant: 'ghost',
+									disabled: isDisabled,
+									on: this.clearButtonCallbacks,
 								});
 								return renderButtonFC(this.clearButtonCtrl, {
 									class: 'kol-combobox__delete',

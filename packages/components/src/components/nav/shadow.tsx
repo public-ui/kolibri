@@ -25,7 +25,7 @@ import {
 
 import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { createLinkStateAccess, initLinkControllerFromProps, LinkController } from '../../internal/functional-components/link/controller';
@@ -218,13 +218,13 @@ export class KolNav implements NavAPI {
 						})()
 					: (() => {
 							const ctrl = this.getNavButtonCtrl(entry);
-							initButtonControllerFromProps(ctrl, {
-								_label: entry._label,
-								_hideLabel: this.state._hideLabel,
-								_icons: icons,
-								_ariaControls: collapsible && hasChildren && expanded ? ariaID : undefined,
-								_ariaExpanded: collapsible && hasChildren ? expanded : undefined,
-								_on: {
+							ctrl.applyProps({
+								label: entry._label,
+								hideLabel: this.state._hideLabel,
+								icons: icons,
+								ariaControls: collapsible && hasChildren && expanded ? ariaID : undefined,
+								ariaExpanded: collapsible && hasChildren ? expanded : undefined,
+								on: {
 									onClick: (event: MouseEvent, value: Stringified<StencilUnknown>) => {
 										if (entryIsButton(entry) && typeof entry._on.onClick === 'function') {
 											entry._on.onClick(event, value);
@@ -323,13 +323,13 @@ export class KolNav implements NavAPI {
 				{this.state._hasCompactButton && (
 					<div class="kol-nav__compact">
 						{(() => {
-							initButtonControllerFromProps(this.compactButtonCtrl, {
-								_ariaControls: this.navId,
-								_ariaExpanded: !this.state._hideLabel,
-								_icons: this.state._hideLabel ? 'kolicon-chevron-right' : 'kolicon-chevron-left',
-								_hideLabel: true,
-								_label: translate(this.state._hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize'),
-								_on: {
+							this.compactButtonCtrl.applyProps({
+								ariaControls: this.navId,
+								ariaExpanded: !this.state._hideLabel,
+								icons: this.state._hideLabel ? 'kolicon-chevron-right' : 'kolicon-chevron-left',
+								hideLabel: true,
+								label: translate(this.state._hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize'),
+								on: {
 									onClick: (): void => {
 										this.state = {
 											...this.state,
@@ -337,7 +337,7 @@ export class KolNav implements NavAPI {
 										};
 									},
 								},
-								_tooltipAlign: 'right',
+								tooltipAlign: 'right',
 							});
 							return renderButtonFC(this.compactButtonCtrl, { class: 'kol-nav__toggle-button' });
 						})()}

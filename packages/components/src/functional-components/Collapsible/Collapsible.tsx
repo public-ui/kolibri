@@ -2,7 +2,6 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import type { ButtonController } from '../../internal/functional-components/button/controller';
-import { initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
 import { renderButtonFC } from '../../internal/functional-components/button/render';
 import type { EventValueOrEventCallback, HeadingLevel, IconsPropType, StencilUnknown } from '../../schema';
 import clsx from '../../utils/clsx';
@@ -79,14 +78,14 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 		>
 			<KolHeadingFc ref={HeadingProps?.ref} level={level} class={clsx('collapsible__heading', HeadingProps?.class)}>
 				{(() => {
-					initButtonControllerFromProps(buttonCtrl, {
-						_id: headingId,
-						_ariaControls: controlId,
-						_ariaExpanded: open,
-						_disabled: disabled,
-						_icons: HeadingButtonProps?._icons || `${icon}`,
-						_label: label,
-						_on: { onClick },
+					buttonCtrl.applyProps({
+						id: headingId,
+						ariaControls: controlId,
+						ariaExpanded: open,
+						disabled: disabled,
+						icons: HeadingButtonProps?._icons || `${icon}`,
+						label: label,
+						on: { onClick },
 					});
 					return renderButtonFC(buttonCtrl, {
 						class: clsx('collapsible__heading-button', HeadingButtonProps?.class),

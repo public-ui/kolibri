@@ -512,6 +512,67 @@ This separation ensures that:
 - Web components satisfy the Stencil `@Method()` Promise requirement automatically
 - `Awaited<R>` is used internally for idempotency — writing `() => Promise<void>` in the API still resolves to `Promise<void>`, not `Promise<Promise<void>>`
 
+### Render Props vs. Imperative / Runtime State
+
+Not every external input is a render prop. Inputs fall into two categories:
+
+1. **Render props** — normalized and validated through schema helpers, stored via `setRenderProp`, read via `getRenderProp` and passed to the Functional Component. They determine the visual output (e.g. `_label`, `_disabled`).
+2. **Imperative / runtime state** — inputs that do **not** affect rendering: form values, payloads read at interaction time, or values mirrored from the DOM at runtime. They bypass the render-prop pipeline entirely — stored via a dedicated controller setter, exposed through `Methods` (not `Props`), **never** passed to the Functional Component and **never** run through `*Prop.apply`.
+
+**Canonical example — a button's `value`** (native `<button value>` semantics):
+
+- **API** — declared under `Methods` (`getValue`), **not** in the props config:
+
+  ```ts
+  // internal/functional-components/button/api.tsx
+  Methods: {
+  	getValue: () => StencilUnknown;
+  } // value is a Method, not a Prop
+  ```
+
+- **Web Component** — a normal underscored `@Prop`, but its watcher routes to `setValue` + form association (not to a render prop). The initial value is applied in `componentWillLoad`, because `@Watch` only fires on _change_:
+
+  ```ts
+  // components/button/shadow.tsx
+  @Prop() public _value?: StencilUnknown;
+
+  @Watch('_value')
+  public watchValue(value?: StencilUnknown): void {
+    this.ctrl.setValue(value);                          // for click / callback / form result
+    this.formController.setFormAssociatedValue(value);  // native form submission
+  }
+
+  public componentWillLoad(): void {
+    this.ctrl.componentWillLoad({ /* …render props… */ }); // value is NOT part of this
+    this.ctrl.setValue(this._value);                       // initial value, applied separately
+  }
+  ```
+
+- **Controller** — a private field with `setValue`/`getValue`; the value is read at interaction time in `handleClick` and handed to the consumer callback and form submit/reset. No `valueProp.apply` validation, since the payload is arbitrary `StencilUnknown`.
+- **Runtime sync** — `_syncValueBySelector` lets the value mirror another element's value at runtime, a deliberate write that sits outside the validate/render pipeline.
+
+**Setting it from the outside is unchanged.** Consumers assign `el._value = …` exactly like any other `_`-prop — only the _internal route_ differs:
+
+| Input                                       | External entry | Internal route                                          |
+| ------------------------------------------- | -------------- | ------------------------------------------------------- |
+| Render-affecting (`_label`, `_disabled`, …) | `_x`           | `@Watch → ctrl.watchX → xProp.apply → renderProp → FC`  |
+| `_value`                                    | `_value`       | `@Watch('_value') → ctrl.setValue (+ form association)` |
+
+**Embedding.** Components that embed a button drive a `ButtonController` directly and feed render props **and** the value in one type-safe call via `applyProps`, which wraps `componentWillLoad` + `setValue`. The lifecycle-named `componentWillLoad` stays for the genuine web-component lifecycle:
+
+```ts
+// controller.ts — value-aware entry for embedders
+public applyProps(props: ResolvedInputProps<ButtonApi> & { value?: StencilUnknown }): void {
+  this.componentWillLoad(props);
+  this.setValue(props.value);
+}
+
+// embedding site
+ctrl.applyProps({ label: 'Submit', type: 'submit', value: payload });
+```
+
+> **Do not confuse this with a _render-affecting_ value** such as the blueprint's numeric `value` prop (see §4 _Available Properties_), which **is** a normal validated render prop. The category is decided by whether the input affects rendering — not by the name `value`.
+
 ### Implementation Flow
 
 1. **Initialisation** – `componentWillLoad` forwards the current prop snapshot to the controller, ensuring that internal state reflects external values before the first render.
@@ -715,6 +776,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 | **Event-driven communication**   | User interaction is emitted as DOM events rather than calling functions across layers.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | **FC-First Composition**         | Web component `render()` methods compose exclusively via Functional Components. KoliBri web component tags (`<kol-*>`) must never appear inside another web component's `render()`. Required controller behaviour from replaced web components must be migrated into the enclosing component's controller.                                                                                                                                                                                                               |
 | **Props Pattern**                | Functional components exclusively receive Props that contain either normalized/validated external data or internal component state. Props must always be initialized.                                                                                                                                                                                                                                                                                                                                                    |
+| **Render vs. runtime state**     | External inputs are either validated render props (→ Functional Component) or imperative/runtime state (e.g. a button's `value`: form-associated and runtime-synced) exposed via `Methods` and dedicated setters. Runtime state never reaches the renderer and skips validation. See §4 _Render Props vs. Imperative / Runtime State_.                                                                                                                                                                                   |
 | **Shadow DOM First**             | All web components use `shadow: true`. Components that should not use Shadow DOM are implemented as Functional Components instead.                                                                                                                                                                                                                                                                                                                                                                                       |
 | **Single-Root FC**               | Every Functional Component returns exactly one BEM block container as its root. Fragments and multi-sibling returns are forbidden: all direct children of `<Host>` become flex/grid items when the host applies `display: flex/grid`, causing unintended layout effects for conditionally rendered siblings such as tooltip wrappers.                                                                                                                                                                                    |
 | **ARIA ID Uniqueness via nonce** | Any DOM `id` referenced by ARIA attributes (e.g. `aria-controls`, `aria-labelledby`) must be unique per component instance. Use `private readonly someId = \`prefix-${nonce()}\``with`nonce()`from`utils/dev.utils`. This prevents ID collisions when components are composed inside a shared DOM scope (e.g. multiple WC instances within one shadow root, or direct light-DOM usage). Shadow DOM alone is not sufficient when a shadow component renders multiple instances of an internal WC in the same shadow root. |
@@ -780,6 +842,10 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - Both file names are **uniform** across all components — no component-specific prefixes.
     - _Alternative_: group all tests into a dedicated `test/` subdirectory per component.
     - _Reason_: co-located tests are easier to discover, eliminate unnecessary directory nesting, and keep related files visible side-by-side. This reduces cognitive overhead when navigating the codebase and aligns with common industry conventions.
+16. **`value` as imperative/form state, not a render prop**
+    - _Pattern_: Inputs that do not affect rendering (e.g. a button `value`) are exposed via `Methods` (`getValue`) and a dedicated controller setter (`setValue`), never via the props config. They skip `*Prop.apply` and are never passed to the Functional Component. See §4 _Render Props vs. Imperative / Runtime State_.
+    - _Alternative_: model `value` as a normal entry in the props config (a render prop the FC ignores).
+    - _Reason_: it has no presentational effect, carries arbitrary `StencilUnknown` payload (nothing to validate), is read at interaction time and integrates with form association (`AssociatedInputController`) plus runtime sync (`_syncValueBySelector`) — concerns that belong at the web-component/controller boundary, not in the render-prop pipeline. Forcing it into the pipeline would create a misleading "render prop" that never renders and would still require a web-component-level form hook. Embedders feed it through the value-aware `ButtonController.applyProps({ …, value })`.
 
 ## 10. Quality Requirements
 
@@ -797,12 +863,13 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 
 ## 12. Glossary
 
-| Term                     | Definition                                                                                                                                     |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **BEM**                  | Block Element Modifier naming convention for CSS class names.                                                                                  |
-| **Controller**           | Orchestrates state transitions and validation; extends `BaseController`.                                                                       |
-| **Functional Component** | Pure renderer without side effects that exclusively works with Props.                                                                          |
-| **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized.                                  |
-| **Schema Helper**        | Utility providing `normalize` (unknown → TInternal), `validate` (TInternal → boolean) and `apply` (normalize + validate + callback) for props. |
-| **Stencil**              | Compiler for building framework-agnostic web components.                                                                                       |
-| **Watch Decorator**      | Stencil decorator (`@Watch`) that observes prop changes.                                                                                       |
+| Term                     | Definition                                                                                                                                                                               |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **BEM**                  | Block Element Modifier naming convention for CSS class names.                                                                                                                            |
+| **Controller**           | Orchestrates state transitions and validation; extends `BaseController`.                                                                                                                 |
+| **Functional Component** | Pure renderer without side effects that exclusively works with Props.                                                                                                                    |
+| **Props**                | Normalized and validated props or internal state passed to functional components. Must always be initialized.                                                                            |
+| **Runtime/Form State**   | External input that does not affect rendering (e.g. a button `value`); exposed via `Methods` + a dedicated setter, integrates with form association, and skips the render-prop pipeline. |
+| **Schema Helper**        | Utility providing `normalize` (unknown → TInternal), `validate` (TInternal → boolean) and `apply` (normalize + validate + callback) for props.                                           |
+| **Stencil**              | Compiler for building framework-agnostic web components.                                                                                                                                 |
+| **Watch Decorator**      | Stencil decorator (`@Watch`) that observes prop changes.                                                                                                                                 |
