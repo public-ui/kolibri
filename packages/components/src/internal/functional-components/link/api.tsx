@@ -5,6 +5,7 @@ import {
 	ariaDescriptionProp,
 	ariaExpandedProp,
 	ariaOwnsProp,
+	buttonVariantProp,
 	customClassProp,
 	disabledProp,
 	downloadProp,
@@ -64,3 +65,34 @@ export type LinkApi = ApiFromConfig<
 		};
 	}
 >;
+
+/**
+ * Props config for kol-link-button: a link that is styled as a button.
+ * Differences to kol-link: the variant is the typed `ButtonVariant` enum
+ * (matching the button presentation) instead of the free-form class name.
+ */
+export const linkButtonPropsConfig = {
+	required: [hrefProp],
+	optional: [
+		accessKeyProp,
+		ariaControlsProp,
+		ariaCurrentValueProp,
+		ariaDescriptionProp,
+		ariaExpandedProp,
+		ariaOwnsProp,
+		buttonVariantProp,
+		customClassProp,
+		disabledProp,
+		downloadProp,
+		hideLabelProp,
+		spanIconsProp,
+		inlineProp,
+		linkLabelProp,
+		linkCallbacksProp,
+		linkRoleProp,
+		shortKeyProp,
+		tabIndexProp,
+		targetProp,
+		tooltipAlignProp,
+	],
+} as const satisfies PropsConfigShape;

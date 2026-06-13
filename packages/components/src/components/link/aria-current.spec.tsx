@@ -1,7 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
 
 import { setCurrentLocation } from './ariaCurrentService';
-import { KolLink } from './component';
+import { KolLink } from './shadow';
 
 describe('kol-link aria-current', () => {
 	const getAnchor = (root?: HTMLElement): HTMLAnchorElement | null => root?.shadowRoot?.querySelector('a') ?? null;

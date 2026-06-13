@@ -27,7 +27,7 @@ export type RenderButtonFCOptions = {
 
 /**
  * Shared ButtonFC prop-wiring for components that embed a button driven by a
- * {@link ButtonController} (the counterpart of `renderLinkFC` for links).
+ * {@link ButtonController}.
  */
 export const renderButtonFC = (ctrl: ButtonController, options: RenderButtonFCOptions = {}): JSX.Element => (
 	<ButtonFC
