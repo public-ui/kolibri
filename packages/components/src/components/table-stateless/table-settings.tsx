@@ -177,7 +177,7 @@ export class KolTableSettings {
 											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key ?? '', value) }}
 										/>
 										{(() => {
-											const upCtrl = this.getMoveButtonCtrl(`${column.key ?? ''}-up`);
+											const upCtrl = this.getMoveButtonCtrl(`${column.key ?? column.label}-up`);
 											upCtrl.applyProps({
 												icons: 'kolicon-chevron-up',
 												label: translate('kol-table-settings-move-up', { placeholders: { column: column.label } }),
@@ -189,7 +189,7 @@ export class KolTableSettings {
 											return renderButtonFC(upCtrl, { dataTestId: 'table-settings-move-up' });
 										})()}
 										{(() => {
-											const downCtrl = this.getMoveButtonCtrl(`${column.key ?? ''}-down`);
+											const downCtrl = this.getMoveButtonCtrl(`${column.key ?? column.label}-down`);
 											downCtrl.applyProps({
 												icons: 'kolicon-chevron-down',
 												label: translate('kol-table-settings-move-down', { placeholders: { column: column.label } }),
