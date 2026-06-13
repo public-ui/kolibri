@@ -33,7 +33,7 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -136,10 +136,10 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 					<span class={clsx('kol-input-container__filename', { 'kol-input-container__filename--has-file': this.hasFileSelected })}>{this.filename}</span>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
 					{(() => {
-						initButtonControllerFromProps(this.browseButtonCtrl, {
-							_label: this.translateDataBrowseText,
-							_variant: 'primary',
-							_disabled: this._disabled,
+						this.browseButtonCtrl.componentWillLoad({
+							label: this.translateDataBrowseText,
+							variant: 'primary',
+							disabled: this._disabled,
 						});
 						return renderButtonFC(this.browseButtonCtrl, { class: 'kol-input-container__button' });
 					})()}

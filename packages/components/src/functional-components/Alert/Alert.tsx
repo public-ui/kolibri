@@ -4,7 +4,6 @@ import clsx from '../../utils/clsx';
 
 import { translate } from '../../i18n';
 import type { ButtonController } from '../../internal/functional-components/button/controller';
-import { initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
 import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { type InternalAlertProps } from '../../schema';
 import { bem } from '../../schema/bem-registry';
@@ -109,13 +108,13 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 				{hasCloser &&
 					closeButtonCtrl &&
 					(() => {
-						initButtonControllerFromProps(closeButtonCtrl, {
-							_ariaDescription: label?.trim() || '',
-							_hideLabel: true,
-							_icons: { left: { icon: 'kolicon-cross' } },
-							_label: translateCloseAlert,
-							_on: { onClick: onCloserClick },
-							_tooltipAlign: 'left',
+						closeButtonCtrl.componentWillLoad({
+							ariaDescription: label?.trim() || '',
+							hideLabel: true,
+							icons: { left: { icon: 'kolicon-cross' } },
+							label: translateCloseAlert,
+							on: { onClick: onCloserClick },
+							tooltipAlign: 'left',
 						});
 						return renderButtonFC(closeButtonCtrl, {
 							class: BEM_CLASS_ALERT__CLOSER + ' kol-close-button',

@@ -29,7 +29,7 @@ import {
 import type { Generic } from 'adopted-style-sheets';
 import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { KeyboardKey } from '../../schema/enums';
 import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
@@ -196,32 +196,32 @@ export class KolTabs implements TabsAPI, FocusableElement {
 				{this.state._tabs.map((button: TabButtonProps, index: number) => {
 					const selected = this.state._selected === index;
 					const ctrl = this.getTabButtonCtrl(index);
-					initButtonControllerFromProps(ctrl, {
-						_disabled: button._disabled,
-						_icons: button._icons,
-						_hideLabel: button._hideLabel,
-						_label: button._label, // TODO: ariaLabel-Konzept prüfen
-						_on: this.callbacks as ButtonCallbacksPropType<StencilUnknown>,
-						_tabIndex: selected ? 0 : -1,
-						_tooltipAlign: button._tooltipAlign,
-						_variant: selected ? 'custom' : undefined,
-						_customClass: selected ? 'selected' : '',
-						_ariaControls: `tabpanel-${index}`,
-						_ariaSelected: selected,
-						_id: `${this.state._label.replace(/\s/g, '-')}-tab-${index}`,
-						_role: 'tab',
-						_value: index,
+					ctrl.componentWillLoad({
+						disabled: button._disabled,
+						icons: button._icons,
+						hideLabel: button._hideLabel,
+						label: button._label, // TODO: ariaLabel-Konzept prüfen
+						on: this.callbacks as ButtonCallbacksPropType<StencilUnknown>,
+						tabIndex: selected ? 0 : -1,
+						tooltipAlign: button._tooltipAlign,
+						variant: selected ? 'custom' : undefined,
+						customClass: selected ? 'selected' : '',
+						ariaControls: `tabpanel-${index}`,
+						ariaSelected: selected,
+						id: `${this.state._label.replace(/\s/g, '-')}-tab-${index}`,
+						role: 'tab',
 					});
+					ctrl.setValue(index);
 					return renderButtonFC(ctrl, {
 						refButton: selected ? this.ctaRef : undefined,
 					});
 				})}
 				{this.state._hasCreateButton &&
 					(() => {
-						initButtonControllerFromProps(this.createButtonCtrl, {
-							_label: this.onCreateLabel,
-							_on: { onClick: this.onCreate },
-							_icons: 'kolicon-plus',
+						this.createButtonCtrl.componentWillLoad({
+							label: this.onCreateLabel,
+							on: { onClick: this.onCreate },
+							icons: 'kolicon-plus',
 						});
 						return renderButtonFC(this.createButtonCtrl, {
 							class: 'kol-tabs__button-create',

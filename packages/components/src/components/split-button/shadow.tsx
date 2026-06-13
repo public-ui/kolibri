@@ -23,7 +23,7 @@ import type {
 import { KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import { renderButtonFC } from '../../internal/functional-components/button/render';
 import clsx from '../../utils/clsx';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -94,25 +94,25 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 			<div class="kol-split-button">
 				<div class="kol-split-button__root">
 					{(() => {
-						initButtonControllerFromProps(this.buttonCtrl, {
-							_accessKey: this._accessKey,
-							_ariaControls: this._ariaControls,
-							_ariaDescription: this._ariaDescription,
-							_ariaExpanded: this._ariaExpanded,
-							_ariaSelected: this._ariaSelected,
-							_customClass: this._customClass,
-							_disabled: this._disabled,
-							_icons: this._icons,
-							_hideLabel: this._hideLabel,
-							_label: this._label,
-							_name: this._name,
-							_on: this.clickButtonHandler,
-							_shortKey: this._shortKey,
-							_tooltipAlign: this._tooltipAlign,
-							_type: this._type,
-							_value: this._value,
-							_variant: this._variant,
+						this.buttonCtrl.componentWillLoad({
+							accessKey: this._accessKey,
+							ariaControls: this._ariaControls,
+							ariaDescription: this._ariaDescription,
+							ariaExpanded: this._ariaExpanded,
+							ariaSelected: this._ariaSelected,
+							customClass: this._customClass,
+							disabled: this._disabled,
+							icons: this._icons,
+							hideLabel: this._hideLabel,
+							label: this._label,
+							name: this._name,
+							on: this.clickButtonHandler,
+							shortKey: this._shortKey,
+							tooltipAlign: this._tooltipAlign,
+							type: this._type,
+							variant: this._variant,
 						});
+						this.buttonCtrl.setValue(this._value);
 						return renderButtonFC(this.buttonCtrl, {
 							class: clsx('kol-split-button__button', {
 								[this._variant as string]: this._variant !== 'custom',

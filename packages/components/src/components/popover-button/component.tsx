@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Fragment, h, Method, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { PopoverFC } from '../../internal/functional-components/popover/component';
 import { PopoverController } from '../../internal/functional-components/popover/controller';
@@ -116,27 +116,27 @@ export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement 
 		return (
 			<>
 				{(() => {
-					initButtonControllerFromProps(this.buttonCtrl, {
-						_accessKey: this._accessKey,
-						_ariaControls: this.popoverId,
-						_ariaDescription: this._ariaDescription,
-						_ariaExpanded: this.popoverOpen,
-						_customClass: this._customClass,
-						_disabled: this._disabled,
-						_hideLabel: this._hideLabel,
-						_icons: this._icons,
-						_id: this._id,
-						_inline: this._inline,
-						_label: this._label,
-						_name: this._name,
-						_on: this.on,
-						_shortKey: this._shortKey,
-						_tabIndex: this._tabIndex,
-						_tooltipAlign: this._tooltipAlign,
-						_type: this._type,
-						_value: this._value,
-						_variant: this._variant,
+					this.buttonCtrl.componentWillLoad({
+						accessKey: this._accessKey,
+						ariaControls: this.popoverId,
+						ariaDescription: this._ariaDescription,
+						ariaExpanded: this.popoverOpen,
+						customClass: this._customClass,
+						disabled: this._disabled,
+						hideLabel: this._hideLabel,
+						icons: this._icons,
+						id: this._id,
+						inline: this._inline,
+						label: this._label,
+						name: this._name,
+						on: this.on,
+						shortKey: this._shortKey,
+						tabIndex: this._tabIndex,
+						tooltipAlign: this._tooltipAlign,
+						type: this._type,
+						variant: this._variant,
 					});
+					this.buttonCtrl.setValue(this._value);
 					return renderButtonFC(this.buttonCtrl, {
 						class: clsx('kol-popover-button', {
 							'kol-popover-button--open': this.popoverOpen,
