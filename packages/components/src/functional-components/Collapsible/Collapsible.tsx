@@ -78,7 +78,7 @@ const KolCollapsibleFc: FC<CollapsibleProps> = (props, children) => {
 		>
 			<KolHeadingFc ref={HeadingProps?.ref} level={level} class={clsx('collapsible__heading', HeadingProps?.class)}>
 				{(() => {
-					buttonCtrl.componentWillLoad({
+					buttonCtrl.applyProps({
 						id: headingId,
 						ariaControls: controlId,
 						ariaExpanded: open,

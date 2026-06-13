@@ -218,7 +218,7 @@ export class KolNav implements NavAPI {
 						})()
 					: (() => {
 							const ctrl = this.getNavButtonCtrl(entry);
-							ctrl.componentWillLoad({
+							ctrl.applyProps({
 								label: entry._label,
 								hideLabel: this.state._hideLabel,
 								icons: icons,
@@ -323,7 +323,7 @@ export class KolNav implements NavAPI {
 				{this.state._hasCompactButton && (
 					<div class="kol-nav__compact">
 						{(() => {
-							this.compactButtonCtrl.componentWillLoad({
+							this.compactButtonCtrl.applyProps({
 								ariaControls: this.navId,
 								ariaExpanded: !this.state._hideLabel,
 								icons: this.state._hideLabel ? 'kolicon-chevron-right' : 'kolicon-chevron-left',

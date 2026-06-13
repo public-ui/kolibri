@@ -94,7 +94,7 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 			<div class="kol-split-button">
 				<div class="kol-split-button__root">
 					{(() => {
-						this.buttonCtrl.componentWillLoad({
+						this.buttonCtrl.applyProps({
 							accessKey: this._accessKey,
 							ariaControls: this._ariaControls,
 							ariaDescription: this._ariaDescription,
@@ -110,9 +110,9 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 							shortKey: this._shortKey,
 							tooltipAlign: this._tooltipAlign,
 							type: this._type,
+							value: this._value,
 							variant: this._variant,
 						});
-						this.buttonCtrl.setValue(this._value);
 						return renderButtonFC(this.buttonCtrl, {
 							class: clsx('kol-split-button__button', {
 								[this._variant as string]: this._variant !== 'custom',

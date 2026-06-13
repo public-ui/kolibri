@@ -331,7 +331,7 @@ export class KolPaginationWc implements PaginationAPI {
 		ctrl: ButtonController,
 		props: { class: string; disabled: boolean; icons: IconsPropType; label: string; on: ButtonCallbacksPropType<StencilUnknown> },
 	): JSX.Element {
-		ctrl.componentWillLoad({
+		ctrl.applyProps({
 			customClass: this.state._customClass,
 			disabled: props.disabled,
 			icons: props.icons,
@@ -368,7 +368,7 @@ export class KolPaginationWc implements PaginationAPI {
 		const pageText = NUMBER_FORMATTER.format(page);
 		const ariaDescription = `${this.translatePage} ${pageText}`;
 		const ctrl = this.getPageButtonCtrl(page);
-		ctrl.componentWillLoad({
+		ctrl.applyProps({
 			ariaDescription: ariaDescription,
 			customClass: this.state._customClass,
 			label: pageText,
@@ -390,7 +390,7 @@ export class KolPaginationWc implements PaginationAPI {
 	private getSelectedPageButton(page: number): JSX.Element {
 		const pageText = NUMBER_FORMATTER.format(page);
 		const ariaDescription = `${this.translatePage} ${pageText}`;
-		this.selectedButtonCtrl.componentWillLoad({
+		this.selectedButtonCtrl.applyProps({
 			ariaDescription: ariaDescription,
 			customClass: this.state._customClass,
 			label: pageText,

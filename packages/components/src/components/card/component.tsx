@@ -144,7 +144,7 @@ export class KolCardWc implements CardAPI {
 		this.validateLabel(this._label);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
-		this.closeButtonCtrl.componentWillLoad({
+		this.closeButtonCtrl.applyProps({
 			hideLabel: true,
 			icons: { left: { icon: 'kolicon-cross' } },
 			label: this.translateClose,

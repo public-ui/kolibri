@@ -136,7 +136,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 					<span class={clsx('kol-input-container__filename', { 'kol-input-container__filename--has-file': this.hasFileSelected })}>{this.filename}</span>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
 					{(() => {
-						this.browseButtonCtrl.componentWillLoad({
+						this.browseButtonCtrl.applyProps({
 							label: this.translateDataBrowseText,
 							variant: 'primary',
 							disabled: this._disabled,

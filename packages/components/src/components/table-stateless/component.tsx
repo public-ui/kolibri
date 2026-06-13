@@ -1263,7 +1263,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 					<span class="kol-table__sort">
 						{(() => {
 							const sortCtrl = this.getSortButtonCtrl(cell.key ?? cell.label);
-							sortCtrl.componentWillLoad({
+							sortCtrl.applyProps({
 								icons: { right: sortButtonIcon },
 								label: cell.label,
 								ariaDescription: sortDescription,

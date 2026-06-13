@@ -282,6 +282,17 @@ export class ButtonController extends BaseController<ButtonApi> implements Contr
 		this.value = value;
 	}
 
+	/**
+	 * Applies a full set of (already clean-named) button props and synchronises the
+	 * value in one call. Intended for components that embed a button and re-feed it
+	 * on every render — the readable, value-aware counterpart of the lifecycle-named
+	 * `componentWillLoad`. Validation still runs through the per-prop watchers.
+	 */
+	public applyProps(props: ResolvedInputProps<ButtonApi> & { value?: StencilUnknown }): void {
+		this.componentWillLoad(props);
+		this.setValue(props.value);
+	}
+
 	public getTooltipId(): string {
 		return this.tooltipCtrl.getRenderProp('id');
 	}

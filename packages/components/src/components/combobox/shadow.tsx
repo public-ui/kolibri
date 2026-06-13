@@ -294,7 +294,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 						{this.state._value &&
 							this.state._hasClearButton &&
 							(() => {
-								this.clearButtonCtrl.componentWillLoad({
+								this.clearButtonCtrl.applyProps({
 									icons: 'kolicon-cross',
 									label: this.translateDeleteSelection,
 									hideLabel: true,

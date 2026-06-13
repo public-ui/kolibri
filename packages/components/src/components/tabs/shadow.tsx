@@ -196,7 +196,7 @@ export class KolTabs implements TabsAPI, FocusableElement {
 				{this.state._tabs.map((button: TabButtonProps, index: number) => {
 					const selected = this.state._selected === index;
 					const ctrl = this.getTabButtonCtrl(index);
-					ctrl.componentWillLoad({
+					ctrl.applyProps({
 						disabled: button._disabled,
 						icons: button._icons,
 						hideLabel: button._hideLabel,
@@ -210,15 +210,15 @@ export class KolTabs implements TabsAPI, FocusableElement {
 						ariaSelected: selected,
 						id: `${this.state._label.replace(/\s/g, '-')}-tab-${index}`,
 						role: 'tab',
+						value: index,
 					});
-					ctrl.setValue(index);
 					return renderButtonFC(ctrl, {
 						refButton: selected ? this.ctaRef : undefined,
 					});
 				})}
 				{this.state._hasCreateButton &&
 					(() => {
-						this.createButtonCtrl.componentWillLoad({
+						this.createButtonCtrl.applyProps({
 							label: this.onCreateLabel,
 							on: { onClick: this.onCreate },
 							icons: 'kolicon-plus',

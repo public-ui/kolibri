@@ -178,7 +178,7 @@ export class KolTableSettings {
 										/>
 										{(() => {
 											const upCtrl = this.getMoveButtonCtrl(`${column.key ?? ''}-up`);
-											upCtrl.componentWillLoad({
+											upCtrl.applyProps({
 												icons: 'kolicon-chevron-up',
 												label: translate('kol-table-settings-move-up', { placeholders: { column: column.label } }),
 												hideLabel: true,
@@ -190,7 +190,7 @@ export class KolTableSettings {
 										})()}
 										{(() => {
 											const downCtrl = this.getMoveButtonCtrl(`${column.key ?? ''}-down`);
-											downCtrl.componentWillLoad({
+											downCtrl.applyProps({
 												icons: 'kolicon-chevron-down',
 												label: translate('kol-table-settings-move-down', { placeholders: { column: column.label } }),
 												hideLabel: true,
@@ -207,7 +207,7 @@ export class KolTableSettings {
 
 						<div class="kol-table-settings__actions">
 							{(() => {
-								this.cancelButtonCtrl.componentWillLoad({
+								this.cancelButtonCtrl.applyProps({
 									label: this.translateTableSettingsCancel,
 									variant: 'secondary',
 									on: { onClick: () => this.handleCancel() },
@@ -215,7 +215,7 @@ export class KolTableSettings {
 								return renderButtonFC(this.cancelButtonCtrl, { dataTestId: 'table-settings-cancel' });
 							})()}
 							{(() => {
-								this.applyButtonCtrl.componentWillLoad({
+								this.applyButtonCtrl.applyProps({
 									label: this.translateTableSettingsApply,
 									variant: 'primary',
 									type: 'submit',

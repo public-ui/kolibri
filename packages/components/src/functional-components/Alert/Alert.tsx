@@ -108,7 +108,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 				{hasCloser &&
 					closeButtonCtrl &&
 					(() => {
-						closeButtonCtrl.componentWillLoad({
+						closeButtonCtrl.applyProps({
 							ariaDescription: label?.trim() || '',
 							hideLabel: true,
 							icons: { left: { icon: 'kolicon-cross' } },

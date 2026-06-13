@@ -116,7 +116,7 @@ export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement 
 		return (
 			<>
 				{(() => {
-					this.buttonCtrl.componentWillLoad({
+					this.buttonCtrl.applyProps({
 						accessKey: this._accessKey,
 						ariaControls: this.popoverId,
 						ariaDescription: this._ariaDescription,
@@ -134,9 +134,9 @@ export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement 
 						tabIndex: this._tabIndex,
 						tooltipAlign: this._tooltipAlign,
 						type: this._type,
+						value: this._value,
 						variant: this._variant,
 					});
-					this.buttonCtrl.setValue(this._value);
 					return renderButtonFC(this.buttonCtrl, {
 						class: clsx('kol-popover-button', {
 							'kol-popover-button--open': this.popoverOpen,
