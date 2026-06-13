@@ -8,6 +8,7 @@ import type {
 	ButtonCallbacksPropType,
 	ButtonLinkProps,
 	ButtonTypePropType,
+	ClickableElement,
 	FocusableElement,
 	IconsPropType,
 	InlinePropType,
@@ -42,7 +43,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolButtonLink implements ButtonLinkProps, FocusableElement {
+export class KolButtonLink implements ButtonLinkProps, FocusableElement, ClickableElement {
 	@Element() protected readonly host?: HTMLKolButtonLinkElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
 

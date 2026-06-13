@@ -1,6 +1,7 @@
 import { Component, Element, h, type JSX, Method, Prop, State, Watch } from '@stencil/core';
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
 import type {
+	ClickableElement,
 	DetailsAPI,
 	DetailsCallbacksPropType,
 	DetailsStates,
@@ -34,7 +35,7 @@ import { watchHeadingLevel } from '../heading/validation';
 	},
 	shadow: true,
 })
-export class KolDetails implements DetailsAPI, FocusableElement {
+export class KolDetails implements DetailsAPI, FocusableElement, ClickableElement {
 	@Element() protected readonly host?: HTMLKolDetailsElement;
 
 	private readonly id = createUniqueId('details');

@@ -4,6 +4,7 @@ import clsx from '../../utils/clsx';
 
 import type {
 	AriaDetailsPropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -51,7 +52,7 @@ import type { OrientationPropType } from '../../schema/props/orientation';
 	},
 	shadow: true,
 })
-export class KolInputRadio implements InputRadioAPI, FocusableElement {
+export class KolInputRadio implements InputRadioAPI, FocusableElement, ClickableElement {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
 	private inputRef?: HTMLInputElement;
 	private inputRefs = new Map<number, HTMLInputElement>();

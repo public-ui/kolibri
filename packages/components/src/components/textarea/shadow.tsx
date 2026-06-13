@@ -8,6 +8,7 @@ import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../..
 import type {
 	AdjustHeightPropType,
 	AriaDetailsPropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HasCounterPropType,
@@ -64,7 +65,7 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	},
 	shadow: true,
 })
-export class KolTextarea implements TextareaAPI, FocusableElement {
+export class KolTextarea implements TextareaAPI, FocusableElement, ClickableElement {
 	@Element() protected readonly host?: HTMLKolTextareaElement;
 	protected readonly ctaRef = createCtaRef<HTMLTextAreaElement>();
 

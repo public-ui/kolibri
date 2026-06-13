@@ -5,6 +5,7 @@ import clsx from '../../utils/clsx';
 import type {
 	AriaDetailsPropType,
 	AutoCompletePropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -52,7 +53,7 @@ import { InputNumberController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputNumber implements InputNumberAPI, FocusableElement {
+export class KolInputNumber implements InputNumberAPI, FocusableElement, ClickableElement {
 	@Element() protected readonly host?: HTMLKolInputNumberElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 

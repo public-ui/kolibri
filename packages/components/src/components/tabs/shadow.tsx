@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import type {
 	AlignPropType,
 	ButtonCallbacksPropType,
+	ClickableElement,
 	FocusableElement,
 	KolFocusOptions,
 	KoliBriTabsCallbacks,
@@ -47,7 +48,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolTabs implements TabsAPI, FocusableElement {
+export class KolTabs implements TabsAPI, FocusableElement, ClickableElement {
 	@Element() protected readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;

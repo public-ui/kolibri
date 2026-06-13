@@ -12,6 +12,7 @@ import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type {
 	AriaDetailsPropType,
+	ClickableElement,
 	ComboboxAPI,
 	ComboboxStates,
 	DisabledPropType,
@@ -51,7 +52,7 @@ import { ComboboxController } from './controller';
 	},
 	shadow: true,
 })
-export class KolCombobox implements ComboboxAPI, FocusableElement {
+export class KolCombobox implements ComboboxAPI, FocusableElement, ClickableElement {
 	@Element() protected readonly host?: HTMLKolComboboxElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refSuggestions: HTMLLIElement[] = [];

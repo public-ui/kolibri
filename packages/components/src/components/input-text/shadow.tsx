@@ -9,6 +9,7 @@ import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
 	AutoCompletePropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HasCounterPropType,
@@ -54,7 +55,7 @@ import { InputTextController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputText implements InputTextAPI, FocusableElement {
+export class KolInputText implements InputTextAPI, FocusableElement, ClickableElement {
 	@Element() protected readonly host?: HTMLKolInputTextElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private oldValue?: string;
