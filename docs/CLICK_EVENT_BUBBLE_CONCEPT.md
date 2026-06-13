@@ -1,10 +1,14 @@
 # Click Event Bubble/Emission Concept
 
-Beschreibt, wie Click-Events durch die KoliBri-Komponentenschichten propagiert werden: HTML5-Element → Light DOM WC → Host-Element (als Custom Event).
+Beschreibt, wie Click-Events durch die KoliBri-Komponentenschichten propagiert werden: HTML5-Element (im Shadow DOM) → Host-Element (als Custom Event).
+
+Das Konzept gilt allgemein für alle interaktiven Komponenten. Als repräsentatives Beispiel dient durchgängig `kol-button`; `kol-link`/`kol-link-button` folgen demselben Muster und werden als Variante beschrieben.
 
 ## Überblick
 
-KoliBri Web Components verwenden Shadow DOM für Style-Isolation. Native Click-Events von Elementen innerhalb eines Shadow DOM geben zwar durch `composed: true` den Shadow-Grenzwert durch, berichten jedoch den Shadow Host als `event.target` – das eigentliche innere Element ist außen nicht sichtbar. Außerdem würde bei mehrfach verschachtelten Komponenten ein unkontrolliertes Durchsickern von Click-Events zu unerwünschtem Verhalten führen.
+KoliBri Web Components verwenden Shadow DOM für Style-Isolation. Das primäre interaktive HTML5-Element (`<button>`, `<a>`, `<input>`, …) wird über eine **Functional Component** (z. B. `ButtonFC`, `LinkFC`) **direkt im Shadow Root des Hosts** gerendert, ohne ein zusätzliches inneres Web Component dazwischen.
+
+Native Click-Events von Elementen innerhalb eines Shadow DOM passieren durch `composed: true` zwar die Shadow-Grenze, werden dabei aber auf den Shadow Host **retargetiert** (`event.target` wird zum Host, z. B. `kol-button`) – das eigentliche innere Element ist außen nicht sichtbar. Außerdem würde ein unkontrolliertes Durchsickern des nativen Events zusätzlich zum kontrollierten Custom Event zu doppelten Signalen führen.
 
 KoliBri löst dieses Problem mit einem kontrollierten Zwei-Kanal-System:
 
@@ -13,49 +17,51 @@ KoliBri löst dieses Problem mit einem kontrollierten Zwei-Kanal-System:
 
 ## Architektur
 
-### Der Zwei-Kanal-Ansatz
+Die Verarbeitung ist gemäß Skeleton-Blueprint auf zwei Schichten aufgeteilt:
+
+- **Controller** (`internal/functional-components/<name>/controller.ts`) – kapselt die Event-Logik: `stopPropagation`, Tooltip, Disabled-Guard, Korrektur des Targets und Callback-Aufruf.
+- **Web Component** (`components/<name>/shadow.tsx`) – behandelt nur Host-Belange: Form-Propagation und das Dispatchen des Custom Events. Sie rendert die Functional Component mit dem primären HTML5-Element.
+
+### Der Zwei-Kanal-Ansatz (Beispiel `kol-button`)
 
 ```
-┌──────────────────────────────────────────────────────────────────┐
-│ Äußeres Konsumenten-Element                                      │
-│                                                                  │
-│   element.addEventListener('click', handler)              (2)   │
-│   OR: _on={{ onClick: handler }}                          (1)   │
-└──────────────────────────────┬───────────────────────────────────┘
-                    CustomEvent│ bubbles, composed (2)
-                               │ dispatchDomEvent(host, KolEvent.click)
-┌──────────────────────────────┴───────────────────────────────────┐
-│ Light DOM Component: kol-button-wc / kol-link-wc (shadow: false) │
-│                                                                  │
-│   onClick(event) {                                               │
-│     event.stopPropagation()          ← native click abfangen     │
-│     setEventTarget(event, innerRef)  ← Target korrigieren (1)   │
-│     _on?.onClick(event, value)       ← Callback aufrufen (1)    │
-│     dispatchDomEvent(host, KolEvent.click, value)  ← Event (2)  │
-│   }                                                              │
-└──────────────────────────────┬───────────────────────────────────┘
-                     native    │ click (stopPropagation verhindert Austritt)
-                    MouseEvent │
-┌──────────────────────────────┴───────────────────────────────────┐
-│ HTML5 Element: <button> / <a>                                    │
-│ Ursprung des nativen Click-Events                                │
-└──────────────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────────┐
+│ Äußeres Konsumenten-Element                                        │
+│   element.addEventListener('click', handler)                (2)   │
+│   ODER: _on={{ onClick: handler }}                          (1)   │
+└────────────────────────────────┬───────────────────────────────────┘
+                      CustomEvent │ bubbles, composed (2)
+                                  │ dispatchDomEvent(host, KolEvent.click, value)
+┌────────────────────────────────┴───────────────────────────────────┐
+│ Host: kol-button (shadow: true)                                    │
+│                                                                    │
+│   onClick(event) {                            ← WC-Handler (Host)  │
+│     const { value, shouldDispatchKolEvent }                        │
+│       = ctrl.handleClick(event);              ← Controller-Logik:  │
+│           • event.stopPropagation()           ← natives Event abfangen
+│           • setEventTarget(event, buttonRef)  ← Target korrigieren (1)
+│           • _on?.onClick(event, value)        ← Callback aufrufen (1)
+│     if (shouldDispatchKolEvent)                                    │
+│       dispatchDomEvent(host, KolEvent.click, value);  ← Event (2)  │
+│   }                                                                │
+│                                                                    │
+│   ┌──────────────────────────────────────────────────────────┐   │
+│   │ Shadow Root: ButtonFC (Functional Component)              │   │
+│   │   <button onClick={onClick}> … </button>  ← HTML5-Element │   │
+│   └──────────────────────────────────────────────────────────┘   │
+└────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Warum `event.stopPropagation()` bei Buttons?
 
-Native Click-Events haben `composed: true`, können also die Shadow-DOM-Grenze passieren.
-Bei `kol-button-wc` (light DOM) ist das kein Shadow-DOM-Problem, aber das Durchsickern des
-nativen Events nach außen würde:
+Native Click-Events haben `composed: true` und können die Shadow-DOM-Grenze passieren. Ohne `stopPropagation()` würde das native Event – beim Überqueren der Grenze auf den Host `kol-button` retargetiert – **zusätzlich** zum kontrollierten Custom Event nach außen bubbeln. Das würde:
 
-- das falsche `event.target` (das `<button>`-Element statt des WC-Hosts) liefern
-- die Callback-/DOM-Event-Dualität untergraben, da Konsumenten beide Signale erhalten würden
+- die Callback-/DOM-Event-Dualität untergraben, da Konsumenten zwei Click-Signale erhielten (natives Event + Custom Event)
+- ein Event ohne den **Komponentenwert** in `event.detail` liefern
 
-Deshalb wird die native Propagation mit `stopPropagation()` unterbrochen und ein kontrolliertes
-Custom Event vom Host-Element neu ausgelöst.
+Deshalb fängt der Controller die native Propagation mit `stopPropagation()` ab, und der Host löst ein kontrolliertes Custom Event neu aus.
 
-> **Hinweis zu Links:** `kol-link-wc` ruft kein `stopPropagation()` auf, da die native Navigation
-> des `<a>`-Elements über `event.preventDefault()` gesteuert wird (bei `_disabled: true`).
+> **Hinweis zu Links:** Der Link-Controller ruft **kein** `stopPropagation()` auf. Das native Click-Event des `<a>` darf weiter bubbeln, damit z. B. SPA-Router oder Event-Delegation auf Anker-Klicks reagieren können. Die native Navigation wird stattdessen gezielt über `event.preventDefault()` gesteuert (bei `_disabled: true`).
 
 ## Utility-Funktionen und Typen
 
@@ -118,82 +124,100 @@ export type EventValueOrEventCallback<E extends Event, V> = ((event: E, value: V
 
 ## Umsetzung in Komponenten
 
-### Interaktive Elemente (Button, Link)
+### Repräsentatives Beispiel: `kol-button`
 
-#### `kol-button-wc` (`shadow: false`)
+Die Verarbeitung ist zwischen **Controller** (Event-Logik) und **Web Component** (Host-Belange) aufgeteilt. Das `<button>` wird von `ButtonFC` direkt im Shadow Root gerendert und ruft über sein `onClick` den WC-Handler auf.
+
+**Controller** — `internal/functional-components/button/controller.ts`:
 
 ```typescript
-@Component({ tag: 'kol-button-wc', shadow: false })
-export class KolButtonWc implements ButtonAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolButtonWcElement;
-	private buttonRef?: HTMLButtonElement;
+public handleClick = (event: MouseEvent): ButtonClickHandlingResult => {
+	event.stopPropagation(); // natives Event abfangen
+	this.tooltipCtrl.hideTooltip();
+	const value = this.value;
 
-	private readonly setButtonRef = (ref?: HTMLButtonElement) => {
-		this.buttonRef = ref;
-	};
-
-	private readonly onClick = (event: MouseEvent) => {
-		event.stopPropagation(); // Natives Event abfangen
-
-		// ...Tooltip-Logik und Form-Handling...
-
-		if (typeof this.state._on?.onClick === 'function') {
-			setEventTarget(event, this.buttonRef); // Target korrigieren
-			this.state._on?.onClick(event, this.state._value); // (1) Callback
-		}
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.click, this.state._value); // (2) DOM-Event
-		}
-	};
-
-	public render(): JSX.Element {
-		return (
-			<Host>
-				<button ref={this.setButtonRef} onClick={this.onClick}>
-					{/* Inhalt */}
-				</button>
-			</Host>
-		);
+	if (this.getRenderProp('disabled')) {
+		return { value, shouldDispatchKolEvent: false };
 	}
+
+	const type = this.getRenderProp('type');
+	if (type === 'submit' || type === 'reset') {
+		return { value, formAction: type, shouldDispatchKolEvent: true };
+	}
+
+	const on = this.getRenderProp('on');
+	if (typeof on.onClick === 'function') {
+		setEventTarget(event, this.buttonRef); // Target korrigieren (1)
+		on.onClick(event, value); // (1) Callback
+	}
+	return { value, shouldDispatchKolEvent: true };
+};
+```
+
+**Web Component** — `components/button/shadow.tsx`:
+
+```typescript
+private readonly onClick = (event: MouseEvent): void => {
+	const { value, formAction, shouldDispatchKolEvent } = this.ctrl.handleClick(event);
+
+	// Host-Belange: Form-Propagation bei type=submit/reset
+	if (formAction === 'submit') {
+		propagateSubmitEventToForm({ form: this.host, ref: this.ctaRef.el });
+	} else if (formAction === 'reset') {
+		propagateResetEventToForm({ form: this.host, ref: this.ctaRef.el });
+	}
+
+	// (2) DOM-Event-Kanal
+	if (shouldDispatchKolEvent && this.host) {
+		dispatchDomEvent(this.host, KolEvent.click, value);
+	}
+};
+
+public render(): JSX.Element {
+	return (
+		<Host>
+			<ButtonFC handleClick={this.onClick} /* … weitere Render-Props … */ />
+		</Host>
+	);
 }
 ```
 
-#### `kol-link-wc` (`shadow: false`)
+### Variante: `kol-link` / `kol-link-button`
+
+Links folgen demselben Muster (Controller + Web Component, `<a>` von `LinkFC` im Shadow Root), mit zwei Unterschieden:
+
+- **Kein `stopPropagation()`** — das native Anker-Click darf bubbeln (Router/Delegation); bei `_disabled` wird `event.preventDefault()` aufgerufen, um die Navigation zu verhindern.
+- Der Komponentenwert in `event.detail` ist der `_href`.
 
 ```typescript
-@Component({ tag: 'kol-link-wc', shadow: false })
-export class KolLinkWc implements InternalLinkAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolLinkElement;
-	private anchorRef?: HTMLAnchorElement;
+// internal/functional-components/link/controller.ts
+public readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): LinkClickHandlingResult => {
+	this.hideTooltip();
+	const href = this.getRenderProp('href');
 
-	private readonly setAnchorRef = (ref?: HTMLAnchorElement) => {
-		this.anchorRef = ref;
-	};
-
-	private readonly onClick = (event: Event) => {
-		if (this.state._disabled === true) {
-			event.preventDefault(); // Navigation verhindern
-		} else {
-			if (typeof this.state._on?.onClick === 'function') {
-				setEventTarget(event, this.anchorRef); // Target korrigieren
-				this.state._on?.onClick(event, this.state._href); // (1) Callback
-			}
-			if (this.host) {
-				dispatchDomEvent(this.host, KolEvent.click, this.state._href); // (2) DOM-Event
-			}
-		}
-	};
-
-	public render(): JSX.Element {
-		return (
-			<Host>
-				<a ref={this.setAnchorRef} onClick={this.onClick} onKeyPress={this.onClick}>
-					{/* Inhalt */}
-				</a>
-			</Host>
-		);
+	if (this.getRenderProp('disabled')) {
+		event.preventDefault(); // Navigation verhindern
+		return { href, shouldDispatchKolEvent: false };
 	}
-}
+
+	const on = this.getRenderProp('on');
+	if (typeof on.onClick === 'function') {
+		setEventTarget(event, this.anchorRef); // Target korrigieren (1)
+		on.onClick(event, href); // (1) Callback
+	}
+	return { href, shouldDispatchKolEvent: true };
+};
+```
+
+Der Host (`components/link/shadow.tsx`, `components/link-button/shadow.tsx`) dispatcht analog zum Button das Custom Event:
+
+```typescript
+private readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): void => {
+	const { href, shouldDispatchKolEvent } = this.ctrl.handleAnchorClick(event);
+	if (shouldDispatchKolEvent && this.host) {
+		dispatchDomEvent(this.host, KolEvent.click, href); // (2) DOM-Event
+	}
+};
 ```
 
 ### Input-Elemente
@@ -237,18 +261,20 @@ document.querySelector('kol-button').addEventListener('click', (event: CustomEve
 
 ## Zusammenfassung
 
-| Schritt | Was passiert                                                                 |
-| ------- | ---------------------------------------------------------------------------- |
-| 1       | Nutzer klickt → nativer `MouseEvent` auf `<button>` / `<a>`                  |
-| 2       | WC-Handler fängt Event ab, ruft `event.stopPropagation()` (nur Button)       |
-| 3       | `setEventTarget(event, innerRef)` korrigiert das Event-Target                |
-| 4       | `_on?.onClick(event, value)` — Callback-Kanal wird bedient                   |
-| 5       | `dispatchDomEvent(host, KolEvent.click, value)` — neues Custom Event am Host |
-| 6       | Das Custom Event bubblet mit `composed: true` durch den DOM-Baum             |
+| Schritt | Was passiert                                                                                                                |
+| ------- | --------------------------------------------------------------------------------------------------------------------------- |
+| 1       | Nutzer klickt → nativer `MouseEvent` auf `<button>` / `<a>` (im Shadow Root)                                                |
+| 2       | Die Functional Component leitet an den WC-Handler weiter → `ctrl.handleClick()` ruft `event.stopPropagation()` (nur Button) |
+| 3       | `setEventTarget(event, innerRef)` korrigiert das Event-Target                                                               |
+| 4       | `_on?.onClick(event, value)` — Callback-Kanal wird bedient                                                                  |
+| 5       | `dispatchDomEvent(host, KolEvent.click, value)` — neues Custom Event am Host                                                |
+| 6       | Das Custom Event bubblet mit `composed: true` durch den DOM-Baum                                                            |
 
 **Wichtig:**
 
-- Das native Click-Event verlässt die Komponente **nicht** unkontrolliert (außer bei Links mit `onKeyPress`)
+- Das native Click-Event verlässt **Buttons** nicht unkontrolliert (`stopPropagation()`); bei **Links** darf es bewusst bubbeln (Router/Delegation), die Navigation wird per `preventDefault()` gesteuert
 - Das Custom Event trägt stets den **Komponentenwert** in `event.detail` (kein DOM-Wert)
 - `setEventTarget` stellt sicher, dass der Callback das **innere Element** als Target erhält
 - Im Gegensatz zu Focus benötigt das **Bubbling des Click-Custom-Events** kein Warten auf die Theme-Bereitschaft (`data-themed`). Programmatische/delegierte Clicks (z. B. über `delegateClick()`) warten hingegen bewusst auf `data-themed`, um konsistentes visuelles Feedback und Fokus-Styling sicherzustellen.
+  </content>
+  </invoke>
