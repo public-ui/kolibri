@@ -25,22 +25,132 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list">
           <li>
-            <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--first"></kol-button-wc>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+              <button aria-label="kol-page-first" class="kol-button__button" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-first
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__button" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 1" _customclass="" _label="1" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-current="page" aria-description="kol-page 1" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 2" _customclass="" _label="2" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-description="kol-page 2" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      2
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-last" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--last"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+              <button aria-label="kol-page-last" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-last
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </nav>
@@ -59,34 +169,177 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list">
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--first"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+              <button aria-label="kol-page-first" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-first
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 1" _customclass="" _label="1" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-description="kol-page 1" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 2" _customclass="" _label="2" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-description="kol-page 2" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      2
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
             <span aria-hidden="true" class="kol-pagination__separator"></span>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 8" _customclass="" _label="8" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-description="kol-page 8" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      8
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 9" _customclass="" _label="9" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-description="kol-page 9" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      9
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 10" _customclass="" _label="10" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-current="page" aria-description="kol-page 10" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      10
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__button" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-last" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--last"></kol-button-wc>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+              <button aria-label="kol-page-last" class="kol-button__button" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-last
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </nav>
@@ -105,22 +358,99 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=6
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list">
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 5" _customclass="" _label="5" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-description="kol-page 5" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      5
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 6" _customclass="" _label="6" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-current="page" aria-description="kol-page 6" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      6
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 7" _customclass="" _label="7" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-description="kol-page 7" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      7
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
             <span aria-hidden="true" class="kol-pagination__separator"></span>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </nav>
@@ -139,31 +469,174 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list">
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--first"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+              <button aria-label="kol-page-first" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-first
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 1" _customclass="" _label="1" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-description="kol-page 1" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 2" _customclass="" _label="2" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-description="kol-page 2" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      2
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 3" _customclass="" _label="3" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-current="page" aria-description="kol-page 3" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      3
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 4" _customclass="" _label="4" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-description="kol-page 4" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      4
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 5" _customclass="" _label="5" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-description="kol-page 5" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      5
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-last" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--last"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+              <button aria-label="kol-page-last" class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-last
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </nav>

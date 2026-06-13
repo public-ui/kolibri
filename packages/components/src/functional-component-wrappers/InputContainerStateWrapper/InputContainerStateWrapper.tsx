@@ -19,6 +19,7 @@ import {
 import { isObject, isString } from 'lodash-es';
 import KolIconButtonFc from '../../functional-components/IconButton';
 import KolInputContainerFc, { type InputContainerProps } from '../../functional-components/InputContainer';
+import { getEmbeddedButtonController } from '../../internal/functional-components/button/render';
 import { IconFC } from '../../internal/functional-components/icon/component';
 
 type InputState =
@@ -102,7 +103,14 @@ const InputContainerStateWrapperFc: FC<InputContainerStateWrapperProps> = (
 
 	if (isObject(smartButton)) {
 		endAdornment.push(
-			<KolIconButtonFc componentName="button" class="kol-input-container__smart-button" {...smartButton} hideLabel={true} disabled={disabled} />,
+			<KolIconButtonFc
+				componentName="button"
+				buttonCtrl={getEmbeddedButtonController(`smart-button-${state._id}`)}
+				class="kol-input-container__smart-button"
+				{...smartButton}
+				hideLabel={true}
+				disabled={disabled}
+			/>,
 		);
 	}
 

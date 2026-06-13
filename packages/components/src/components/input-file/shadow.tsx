@@ -28,11 +28,13 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
-import { KolButtonWcTag } from '../../core/component-names';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { translate } from '../../i18n';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController } from '../../internal/functional-components/button/controller';
+import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputFileController } from './controller';
@@ -54,6 +56,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	private readonly translateDataBrowseText = translate('kol-data-browse-text');
+	private readonly browseButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
 	private readonly translateFilenameText = translate('kol-filename-text');
 
 	/**
@@ -132,7 +135,14 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 				<KolInputContainerFc state={this.state}>
 					<span class={clsx('kol-input-container__filename', { 'kol-input-container__filename--has-file': this.hasFileSelected })}>{this.filename}</span>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
-					<KolButtonWcTag class="kol-input-container__button" _label={this.translateDataBrowseText} _variant="primary" _disabled={this._disabled} />
+					{(() => {
+						this.browseButtonCtrl.applyProps({
+							label: this.translateDataBrowseText,
+							variant: 'primary',
+							disabled: this._disabled,
+						});
+						return renderButtonFC(this.browseButtonCtrl, { class: 'kol-input-container__button' });
+					})()}
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);

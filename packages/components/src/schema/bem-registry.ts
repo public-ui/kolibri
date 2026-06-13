@@ -64,6 +64,24 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-button': {
+		elements: {
+			button: {
+				modifiers: null;
+			};
+			text: {
+				modifiers: null;
+			};
+			tooltip: {
+				modifiers: null;
+			};
+		};
+		/**
+		 * Modifiers reflect the kol-button component properties
+		 * (variant, disabled, inline/standalone and hide-label).
+		 */
+		modifiers: Set<'custom' | 'danger' | 'disabled' | 'ghost' | 'hide-label' | 'inline' | 'normal' | 'primary' | 'secondary' | 'standalone' | 'tertiary'>;
+	};
 	'kol-icon': {
 		elements: {
 			icon: {
@@ -223,6 +241,14 @@ const BEM: KoliBriComponentsBemSchema = {
 			initials: { modifiers: null },
 		},
 		modifiers: null,
+	},
+	'kol-button': {
+		elements: {
+			button: { modifiers: null },
+			text: { modifiers: null },
+			tooltip: { modifiers: null },
+		},
+		modifiers: new Set(['custom', 'danger', 'disabled', 'ghost', 'hide-label', 'inline', 'normal', 'primary', 'secondary', 'standalone', 'tertiary']),
 	},
 	'kol-icon': {
 		elements: {

@@ -390,7 +390,18 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-button-wc _hidelabel="" _label="einblenden" class="kol-input-container__smart-button"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left undefined" role="presentation"></i>
+                    <span class="kol-span__slot">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -789,7 +800,18 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             </div>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-button-wc _hidelabel="" _label="einblenden" class="kol-input-container__smart-button"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button">
+              <button class="kol-button__button" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left undefined" role="presentation"></i>
+                    <span class="kol-span__slot">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ test.describe('kol-input-text', () => {
 			});
 
 			await page.setContent(`<kol-input-text _label="With Smart Button" _type="text" _smart-button='${smartButton}'></kol-input-text>`);
-			const kolButton = page.locator('kol-button-wc');
+			const kolButton = page.locator('.kol-input-container__smart-button');
 			await expect(kolButton).toHaveCount(1);
 
 			await kolButton.click();

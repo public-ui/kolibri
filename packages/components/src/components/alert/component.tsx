@@ -1,6 +1,8 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 import KolAlertFc, { type KolAlertFcProps } from '../../functional-components/Alert';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import type {
 	AlertAPI,
 	AlertStates,
@@ -25,6 +27,7 @@ import { watchHeadingLevel } from '../heading/validation';
 })
 export class KolAlertWc implements AlertAPI {
 	@Element() private readonly host?: HTMLKolAlertWcElement;
+	private readonly closeButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
 
 	private readonly close = () => {
 		this._on?.onClose?.(new Event('Close'));
@@ -49,6 +52,7 @@ export class KolAlertWc implements AlertAPI {
 			variant: _variant,
 			onCloserClick: this.close,
 			onAlertTimeout: this.handleAlertTimeout,
+			closeButtonCtrl: this.closeButtonCtrl,
 		};
 
 		return (

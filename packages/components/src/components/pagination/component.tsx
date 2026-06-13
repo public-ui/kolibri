@@ -1,7 +1,9 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 import type {
+	ButtonCallbacksPropType,
 	CustomClassPropType,
+	IconsPropType,
 	KoliBriPaginationButtonCallbacks,
 	LabelPropType,
 	MaxPropType,
@@ -9,6 +11,7 @@ import type {
 	PaginationAPI,
 	PaginationHasButton,
 	PaginationStates,
+	StencilUnknown,
 	Stringified,
 	TooltipAlignPropType,
 } from '../../schema';
@@ -24,8 +27,11 @@ import {
 	watchValidator,
 } from '../../schema';
 
-import { KolButtonWcTag, KolSelectWcTag } from '../../core/component-names';
+import { KolSelectWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController } from '../../internal/functional-components/button/controller';
+import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
@@ -131,59 +137,47 @@ export class KolPaginationWc implements PaginationAPI {
 					<ul class="kol-pagination__navigation-list">
 						{this.state._hasButtons.first && (
 							<li>
-								<KolButtonWcTag
-									class="kol-pagination__button kol-pagination__button--first"
-									_customClass={this.state._customClass}
-									_disabled={this.state._page <= 1}
-									_icons={leftDoubleArrowIcon}
-									_hideLabel
-									_label={this.translatePageFirst}
-									_on={this.onGoToFirst}
-									_tooltipAlign={this.state._tooltipAlign}
-								></KolButtonWcTag>
+								{this.renderNavButton(this.firstButtonCtrl, {
+									class: 'kol-pagination__button kol-pagination__button--first',
+									disabled: this.state._page <= 1,
+									icons: leftDoubleArrowIcon,
+									label: this.translatePageFirst,
+									on: this.onGoToFirst,
+								})}
 							</li>
 						)}
 						{this.state._hasButtons.previous && (
 							<li>
-								<KolButtonWcTag
-									class="kol-pagination__button kol-pagination__button--previous"
-									_customClass={this.state._customClass}
-									_disabled={this.state._page <= 1}
-									_icons={leftSingleArrow}
-									_hideLabel
-									_label={this.translatePageBack}
-									_on={this.onGoBackward}
-									_tooltipAlign={this.state._tooltipAlign}
-								></KolButtonWcTag>
+								{this.renderNavButton(this.previousButtonCtrl, {
+									class: 'kol-pagination__button kol-pagination__button--previous',
+									disabled: this.state._page <= 1,
+									icons: leftSingleArrow,
+									label: this.translatePageBack,
+									on: this.onGoBackward,
+								})}
 							</li>
 						)}
 						{pageButtons}
 						{this.state._hasButtons.next && (
 							<li>
-								<KolButtonWcTag
-									class="kol-pagination__button kol-pagination__button--next"
-									_customClass={this.state._customClass}
-									_disabled={count <= this.state._page}
-									_icons={rightSingleArrowIcon}
-									_hideLabel
-									_label={this.translatePageNext}
-									_on={this.onGoForward}
-									_tooltipAlign={this.state._tooltipAlign}
-								></KolButtonWcTag>
+								{this.renderNavButton(this.nextButtonCtrl, {
+									class: 'kol-pagination__button kol-pagination__button--next',
+									disabled: count <= this.state._page,
+									icons: rightSingleArrowIcon,
+									label: this.translatePageNext,
+									on: this.onGoForward,
+								})}
 							</li>
 						)}
 						{this.state._hasButtons.last && (
 							<li>
-								<KolButtonWcTag
-									class="kol-pagination__button kol-pagination__button--last"
-									_customClass={this.state._customClass}
-									_disabled={count <= this.state._page}
-									_icons={rightDoubleArrowIcon}
-									_hideLabel
-									_label={this.translatePageLast}
-									_on={this.onGoToEnd}
-									_tooltipAlign={this.state._tooltipAlign}
-								></KolButtonWcTag>
+								{this.renderNavButton(this.lastButtonCtrl, {
+									class: 'kol-pagination__button kol-pagination__button--last',
+									disabled: count <= this.state._page,
+									icons: rightDoubleArrowIcon,
+									label: this.translatePageLast,
+									on: this.onGoToEnd,
+								})}
 							</li>
 						)}
 					</ul>
@@ -317,6 +311,38 @@ export class KolPaginationWc implements PaginationAPI {
 		}
 	};
 
+	private readonly firstButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
+	private readonly previousButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
+	private readonly nextButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
+	private readonly lastButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
+	private readonly selectedButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
+	private readonly pageButtonCtrls = new Map<number, ButtonController>();
+
+	private getPageButtonCtrl(page: number): ButtonController {
+		let ctrl = this.pageButtonCtrls.get(page);
+		if (!ctrl) {
+			ctrl = new ButtonController(BaseWebComponent.stateLess);
+			this.pageButtonCtrls.set(page, ctrl);
+		}
+		return ctrl;
+	}
+
+	private renderNavButton(
+		ctrl: ButtonController,
+		props: { class: string; disabled: boolean; icons: IconsPropType; label: string; on: ButtonCallbacksPropType<StencilUnknown> },
+	): JSX.Element {
+		ctrl.applyProps({
+			customClass: this.state._customClass,
+			disabled: props.disabled,
+			icons: props.icons,
+			hideLabel: true,
+			label: props.label,
+			on: props.on,
+			tooltipAlign: this.state._tooltipAlign,
+		});
+		return renderButtonFC(ctrl, { class: props.class });
+	}
+
 	private readonly onGoToFirst = {
 		onClick: (event: Event) => {
 			this.onClick(event, 1);
@@ -341,19 +367,22 @@ export class KolPaginationWc implements PaginationAPI {
 	private getUnselectedPageButton(page: number): JSX.Element {
 		const pageText = NUMBER_FORMATTER.format(page);
 		const ariaDescription = `${this.translatePage} ${pageText}`;
+		const ctrl = this.getPageButtonCtrl(page);
+		ctrl.applyProps({
+			ariaDescription: ariaDescription,
+			customClass: this.state._customClass,
+			label: pageText,
+			on: {
+				onClick: (event: Event) => {
+					this.onClick(event, page);
+				},
+			},
+		});
 		return (
-			<li key={nonce()}>
-				<KolButtonWcTag
-					class="kol-pagination__button kol-pagination__button--numbers"
-					_ariaDescription={ariaDescription}
-					_customClass={this.state._customClass}
-					_label={pageText}
-					_on={{
-						onClick: (event: Event) => {
-							this.onClick(event, page);
-						},
-					}}
-				></KolButtonWcTag>
+			<li key={page}>
+				{renderButtonFC(ctrl, {
+					class: 'kol-pagination__button kol-pagination__button--numbers',
+				})}
 			</li>
 		);
 	}
@@ -361,15 +390,17 @@ export class KolPaginationWc implements PaginationAPI {
 	private getSelectedPageButton(page: number): JSX.Element {
 		const pageText = NUMBER_FORMATTER.format(page);
 		const ariaDescription = `${this.translatePage} ${pageText}`;
+		this.selectedButtonCtrl.applyProps({
+			ariaDescription: ariaDescription,
+			customClass: this.state._customClass,
+			label: pageText,
+		});
 		return (
-			<li key={nonce()}>
-				<KolButtonWcTag
-					aria-current="page"
-					class="kol-pagination__button kol-pagination__button--selected selected"
-					_ariaDescription={ariaDescription}
-					_customClass={this.state._customClass}
-					_label={pageText}
-				></KolButtonWcTag>
+			<li key={`selected-${page}`}>
+				{renderButtonFC(this.selectedButtonCtrl, {
+					class: 'kol-pagination__button kol-pagination__button--selected selected',
+					ariaCurrent: 'page',
+				})}
 			</li>
 		);
 	}

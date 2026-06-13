@@ -16,9 +16,12 @@ import { featureHint, handleColorChange, objectObjectHandler, parseJson, setStat
 import { createUniqueId } from '../../utils/dev.utils';
 
 import type { JSX } from '@stencil/core';
-import { KolButtonWcTag } from '../../core/component-names';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
+import { renderButtonFC } from '../../internal/functional-components/button/render';
 import clsx from '../../utils/clsx';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
 /**
@@ -37,26 +40,26 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	private bgColorStr = '#000';
 	private colorStr = '#fff';
 	private readonly id = createUniqueId('badge-label');
-	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
+	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
+	private readonly smartButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
 
 	private renderSmartButton(props: InternalButtonProps): JSX.Element {
-		return (
-			<KolButtonWcTag
-				ref={this.ctaRef}
-				class="kol-badge__smart-button"
-				_ariaControls={this.id}
-				_ariaDescription={props._ariaDescription}
-				_variant={props._variant}
-				_customClass={props._customClass}
-				_disabled={props._disabled}
-				_hideLabel={true}
-				_icons={props._icons}
-				_id={props._id}
-				_label={props._label}
-				_on={props._on}
-				_tooltipAlign={props._tooltipAlign}
-			/>
-		);
+		initButtonControllerFromProps(this.smartButtonCtrl, {
+			...props,
+			_ariaControls: this.id,
+			_hideLabel: true,
+		});
+		return renderButtonFC(this.smartButtonCtrl, {
+			class: 'kol-badge__smart-button',
+			refButton: this.ctaRef,
+			onClick: (_event, result) => {
+				// The legacy kol-button-wc dispatched the Kol click event on itself; keep
+				// that contract on the badge host (the controller stops native propagation).
+				if (result.shouldDispatchKolEvent && this.host) {
+					dispatchDomEvent(this.host, KolEvent.click, result.value);
+				}
+			},
+		});
 	}
 
 	/**

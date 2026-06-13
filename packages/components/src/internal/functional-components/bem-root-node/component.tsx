@@ -36,6 +36,10 @@ type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema> = {
 	 * (i.e. the `class` attribute set by a parent component).
 	 */
 	class?: JSXBase.HTMLAttributes<HTMLElement>['class'];
+	/** Optional test id forwarded onto the root node. */
+	'data-testid'?: string;
+	/** Optional hidden attribute forwarded onto the root node. */
+	hidden?: boolean;
 };
 
 /**
@@ -61,9 +65,13 @@ type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema> = {
  * ```
  */
 export const BemRootNodeFC = <TBlock extends keyof KoliBriComponentsBemSchema>(
-	{ block, modifiers, class: hostClass }: BemRootNodeFCProps<TBlock>,
+	{ block, modifiers, class: hostClass, 'data-testid': dataTestId, hidden }: BemRootNodeFCProps<TBlock>,
 	children: FCChildren,
 ) => {
 	const blockBem = bem.forBlock(block);
-	return <div class={clsx(blockBem(modifiers as BlockModifiers<TBlock>), hostClass)}>{children}</div>;
+	return (
+		<div class={clsx(blockBem(modifiers as BlockModifiers<TBlock>), hostClass)} data-testid={dataTestId} hidden={hidden}>
+			{children}
+		</div>
+	);
 };

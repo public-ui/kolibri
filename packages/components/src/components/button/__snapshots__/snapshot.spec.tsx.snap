@@ -1,0 +1,463 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-button should render with _label="Label" _accessKey="a" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button accesskey="a" class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span kol-span--has-badge">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              L
+              <u>
+                a
+              </u>
+              bel
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              a
+            </kbd>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _ariaDescription="Aria Description" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button aria-description="Aria Description" class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _disabled=false 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _disabled=true 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--disabled kol-button--normal kol-button--standalone">
+      <button class="kol-button__button" disabled="" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _hideLabel=false 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _hideLabel=true 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+      <button aria-label="Label" class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span kol-span--hide-label">
+          <span class="kol-span__container">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+      <div class="kol-button__tooltip">
+        <div class="kol-tooltip__floating">
+          <div class="kol-tooltip__arrow"></div>
+          <span class="kol-span kol-tooltip__content">
+            <span class="kol-span__container">
+              <span class="kol-span__label">
+                Label
+              </span>
+              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _icons="codicon codicon-home" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _inline=false 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _inline=true 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--inline kol-button--normal">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _shortKey="Ctrl+S" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button aria-keyshortcuts="Ctrl+S" class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span kol-span--has-badge">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              Ctrl+S
+            </kbd>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _type="button" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _type="reset" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button class="kol-button__button" type="reset">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _type="submit" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button class="kol-button__button" type="submit">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _value="Hello" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _variant="custom" _customClass="my-custom-class" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--standalone my-custom-class">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _variant="danger" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--danger kol-button--standalone">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _variant="ghost" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--ghost kol-button--standalone">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _variant="normal" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _variant="primary" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--primary kol-button--standalone">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" _variant="secondary" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--secondary kol-button--standalone">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;
+
+exports[`kol-button should render with _label="Label" 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button class="kol-button__button" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;

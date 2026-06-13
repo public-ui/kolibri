@@ -5,6 +5,8 @@ import { validateErrorList, watchBoolean, watchString } from '../../schema';
 import { translate } from '../../i18n';
 
 import KolAlertFc from '../../functional-components/Alert';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { createLinkStateAccess, LinkController } from '../../internal/functional-components/link/controller';
 import type { ErrorListPropType, FormAPI, FormStates, KoliBriFormCallbacks, Stringified } from '../../schema';
@@ -65,6 +67,7 @@ export class KolForm implements FormAPI {
 	};
 
 	private readonly setBlockElement = (el?: HTMLElement) => (this.errorListBlock = el);
+	private readonly alertCloseButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
 
 	private syncErrorLinkControllers(errorList?: ErrorListPropType[]): void {
 		this.errorLinkCtrls.forEach((c) => c.destroy());
@@ -81,7 +84,14 @@ export class KolForm implements FormAPI {
 
 	private renderErrorList(errorList?: ErrorListPropType[]): JSX.Element {
 		return (
-			<KolAlertFc class="kol-form__alert" ref={this.setBlockElement} type="error" variant="card" label={this.translateErrorListMessage}>
+			<KolAlertFc
+				class="kol-form__alert"
+				ref={this.setBlockElement}
+				type="error"
+				variant="card"
+				label={this.translateErrorListMessage}
+				closeButtonCtrl={this.alertCloseButtonCtrl}
+			>
 				<nav aria-label={this.translateErrorList}>
 					<ul>
 						{errorList?.map((_error, index) => {

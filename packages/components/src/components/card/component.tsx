@@ -6,8 +6,10 @@ import { setState, validateHasCloser, validateLabel } from '../../schema';
 import { translate } from '../../i18n';
 import { watchHeadingLevel } from '../heading/validation';
 
-import { KolButtonWcTag } from '../../core/component-names';
 import { KolHeadingFc } from '../../functional-components';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController } from '../../internal/functional-components/button/controller';
+import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { createUniqueId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -50,6 +52,8 @@ export class KolCardWc implements CardAPI {
 		onClick: this.close,
 	};
 
+	private readonly closeButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
+
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -65,21 +69,11 @@ export class KolCardWc implements CardAPI {
 					<div class="kol-card__content">
 						<slot />
 					</div>
-					{this.state._hasCloser && (
-						<KolButtonWcTag
-							class="kol-card__close-button kol-close-button"
-							data-testid="card-close-button"
-							_hideLabel
-							_icons={{
-								left: {
-									icon: 'kolicon-cross',
-								},
-							}}
-							_label={this.translateClose}
-							_on={this.on}
-							_tooltipAlign="left"
-						/>
-					)}
+					{this.state._hasCloser &&
+						renderButtonFC(this.closeButtonCtrl, {
+							class: 'kol-card__close-button kol-close-button',
+							dataTestId: 'card-close-button',
+						})}
 				</article>
 			</Host>
 		);
@@ -150,5 +144,12 @@ export class KolCardWc implements CardAPI {
 		this.validateLabel(this._label);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
+		this.closeButtonCtrl.applyProps({
+			hideLabel: true,
+			icons: { left: { icon: 'kolicon-cross' } },
+			label: this.translateClose,
+			on: this.on,
+			tooltipAlign: 'left',
+		});
 	}
 }
