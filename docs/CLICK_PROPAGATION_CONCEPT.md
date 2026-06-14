@@ -269,4 +269,3 @@ Analog zu Focus sollte Click als echte Delegation von Host nach innen modelliert
 - Click (Soll): Host-Klick -> inneres Element `click()`
 
 So wird die Komponente aus Konsumentensicht konsistent: Der Host ist die oeffentliche Interaktionsflaeche, die innere Aktivierung bleibt korrekt und kontrolliert.
-</content>

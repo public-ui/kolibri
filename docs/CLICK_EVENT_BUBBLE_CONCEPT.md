@@ -276,5 +276,3 @@ document.querySelector('kol-button').addEventListener('click', (event: CustomEve
 - Das Custom Event trägt stets den **Komponentenwert** in `event.detail` (kein DOM-Wert)
 - `setEventTarget` stellt sicher, dass der Callback das **innere Element** als Target erhält
 - Im Gegensatz zu Focus benötigt das **Bubbling des Click-Custom-Events** kein Warten auf die Theme-Bereitschaft (`data-themed`). Programmatische/delegierte Clicks (z. B. über `delegateClick()`) warten hingegen bewusst auf `data-themed`, um konsistentes visuelles Feedback und Fokus-Styling sicherzustellen.
-  </content>
-  </invoke>
