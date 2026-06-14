@@ -2,7 +2,7 @@ import { KolButtonTag } from '../../core/component-names';
 import type { InternalButtonProps } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
 
-import { KolButton } from './shadow';
+import { KolButton } from './component';
 
 executeSnapshotTests<InternalButtonProps>(
 	KolButtonTag,

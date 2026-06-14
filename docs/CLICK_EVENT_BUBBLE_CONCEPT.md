@@ -20,7 +20,7 @@ KoliBri löst dieses Problem mit einem kontrollierten Zwei-Kanal-System:
 Die Verarbeitung ist gemäß Skeleton-Blueprint auf zwei Schichten aufgeteilt:
 
 - **Controller** (`internal/functional-components/<name>/controller.ts`) – kapselt die Event-Logik: `stopPropagation`, Tooltip, Disabled-Guard, Korrektur des Targets und Callback-Aufruf.
-- **Web Component** (`components/<name>/shadow.tsx`) – behandelt nur Host-Belange: Form-Propagation und das Dispatchen des Custom Events. Sie rendert die Functional Component mit dem primären HTML5-Element.
+- **Web Component** (`components/<name>/component.tsx`) – behandelt nur Host-Belange: Form-Propagation und das Dispatchen des Custom Events. Sie rendert die Functional Component mit dem primären HTML5-Element.
 
 ### Der Zwei-Kanal-Ansatz (Beispiel `kol-button`)
 
@@ -154,7 +154,7 @@ public handleClick = (event: MouseEvent): ButtonClickHandlingResult => {
 };
 ```
 
-**Web Component** — `components/button/shadow.tsx`:
+**Web Component** — `components/button/component.tsx`:
 
 ```typescript
 private readonly onClick = (event: MouseEvent): void => {
@@ -209,7 +209,7 @@ public readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): LinkCli
 };
 ```
 
-Der Host (`components/link/shadow.tsx`, `components/link-button/shadow.tsx`) dispatcht analog zum Button das Custom Event:
+Der Host (`components/link/component.tsx`, `components/link-button/component.tsx`) dispatcht analog zum Button das Custom Event:
 
 ```typescript
 private readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): void => {
