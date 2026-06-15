@@ -67,7 +67,7 @@
 		"@angular/common": "21.2.16",
 		"@angular/compiler": "21.2.12",
 		"@angular/compiler-cli": "21.2.12",
-		"@angular/core": "21.2.12",
+		"@angular/core": "21.2.17",
 		"@public-ui/components": "workspace:*",
 		"minimatch": "10.2.5",
 		"rimraf": "6.1.3",
