@@ -57,6 +57,10 @@ for (const source of sources) {
 		continue;
 	}
 	const srcDir = path.join(packageDir, subdir);
+	if (!path.resolve(srcDir).startsWith(path.resolve(packageDir) + path.sep)) {
+		console.warn(`[copy-assets] Skip ${name}/${subdir}: subdir escapes the package directory.`);
+		continue;
+	}
 	if (!existsSync(srcDir)) {
 		console.warn(`[copy-assets] Skip ${name}/${subdir}: directory not found.`);
 		continue;
