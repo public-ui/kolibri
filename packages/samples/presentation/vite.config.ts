@@ -31,7 +31,8 @@ export default defineConfig({
 		'process.env.PLATFORM': JSON.stringify(process.platform),
 	},
 	build: {
-		sourcemap: true,
+		// Dev server (vite serve) always emits sourcemaps; disable them for the production build to keep the output small.
+		sourcemap: false,
 	},
 	server: {
 		allowedHosts: true,
