@@ -56,7 +56,7 @@ import { SingleSelectController } from './controller';
 	},
 	shadow: true,
 })
-export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
+export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 	@Element() protected readonly host?: HTMLKolSingleSelectElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refOptions: HTMLLIElement[] = [];

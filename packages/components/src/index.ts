@@ -7,6 +7,7 @@ export * from './enums/bund';
 export * from './kolibri';
 export { KoliBri, KoliBriDevHelper } from './schema';
 export type {
+	ClickableElement,
 	EventValueOrEventCallback,
 	FocusableElement,
 	KoliBriTableCell,

@@ -5,6 +5,7 @@ import clsx from '../../utils/clsx';
 import type {
 	AriaDetailsPropType,
 	CheckedPropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -52,7 +53,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 	},
 	shadow: true,
 })
-export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
+export class KolInputCheckbox implements ClickableElement, FocusableElement, InputCheckboxAPI {
 	@Element() protected readonly host?: HTMLKolInputCheckboxElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 

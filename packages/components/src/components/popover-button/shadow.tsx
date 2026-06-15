@@ -6,6 +6,7 @@ import type {
 	AriaDescriptionPropType,
 	ButtonTypePropType,
 	ButtonVariantPropType,
+	ClickableElement,
 	CustomClassPropType,
 	FocusableElement,
 	IconsPropType,
@@ -35,7 +36,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolPopoverButton implements PopoverButtonProps, FocusableElement {
+export class KolPopoverButton implements ClickableElement, FocusableElement, PopoverButtonProps {
 	@Element() protected readonly host?: HTMLKolPopoverButtonElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolPopoverButtonWcElement>();
 

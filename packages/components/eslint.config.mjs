@@ -11,6 +11,7 @@ import {
 	tsRecommendedRules,
 	tsTypeCheckedRules,
 } from '@public-ui/eslint-config';
+import perfectionistPlugin from 'eslint-plugin-perfectionist';
 
 /**
  * Stencil exposes its preset in legacy format ({ plugins, rules }), so only the
@@ -38,6 +39,7 @@ export default [
 			'@typescript-eslint': tsPlugin,
 			'@stencil-community': stencilPlugin,
 			kolibri: kolibriPlugin,
+			perfectionist: perfectionistPlugin,
 		},
 		languageOptions: {
 			parser: tsParser,
@@ -122,6 +124,10 @@ export default [
 			'@stencil-community/strict-boolean-conditions': 'off',
 			'@stencil-community/ban-default-true': 'off',
 
+			/**
+			 * Keep `implements` / `extends` heritage clauses sorted alphabetically.
+			 */
+			'perfectionist/sort-heritage-clauses': ['error', { type: 'alphabetical', order: 'asc' }],
 			'no-console': 'error',
 			'no-mixed-spaces-and-tabs': 'off',
 		},

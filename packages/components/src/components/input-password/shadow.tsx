@@ -5,6 +5,7 @@ import clsx from '../../utils/clsx';
 import type {
 	AriaDetailsPropType,
 	AutoCompletePropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HasCounterPropType,
@@ -55,7 +56,7 @@ import { InputPasswordController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputPassword implements InputPasswordAPI, FocusableElement {
+export class KolInputPassword implements ClickableElement, FocusableElement, InputPasswordAPI {
 	@Element() protected readonly host?: HTMLKolInputPasswordElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
