@@ -7,7 +7,6 @@ import { TaskRunner } from '../src/migrate/runner/task-runner';
 import { RemovePropertyNameTask } from '../src/migrate/runner/tasks/common/RemovePropertyNameTask';
 import { RenamePropertyNameTask } from '../src/migrate/runner/tasks/common/RenamePropertyNameTask';
 import { RenameTagNameTask } from '../src/migrate/runner/tasks/common/RenameTagNameTask';
-import { getAssetTasks } from '../src/migrate/runner/tasks/v1/assets';
 import { setRemoveMode } from '../src/migrate/shares/reuse';
 
 function createStubModules(baseDir: string) {
@@ -64,27 +63,5 @@ describe('end-to-end migration', () => {
 		assert.ok(!htmlContent.includes('_remove'));
 
 		setRemoveMode('prefix');
-	});
-
-	it('wires component-asset copying through the kolibri-copy-assets bin (no node_modules path)', () => {
-		const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'kolibri-assets-'));
-		fs.writeFileSync(path.join(tmpDir, 'package.json'), `${JSON.stringify({ name: 'demo', scripts: {} }, null, 2)}\n`);
-		fs.mkdirSync(path.join(tmpDir, 'public', 'assets', 'codicons'), { recursive: true });
-
-		// JsonTask writes to process.cwd()/package.json, so run from the temp project.
-		const cwd = process.cwd();
-		try {
-			process.chdir(tmpDir);
-			const runner = new TaskRunner(tmpDir, '3.0.0', '1.0.0', { migrate: { tasks: {} } });
-			runner.registerTasks(getAssetTasks(tmpDir));
-			runner.run();
-		} finally {
-			process.chdir(cwd);
-		}
-
-		const prepare = JSON.parse(fs.readFileSync(path.join(tmpDir, 'package.json'), 'utf8')).scripts?.prepare ?? '';
-		assert.ok(prepare.includes('kolibri-copy-assets'), 'prepare should use the kolibri-copy-assets bin');
-		assert.ok(prepare.includes('@public-ui/components'), 'prepare should reference @public-ui/components');
-		assert.ok(!prepare.includes('node_modules/'), 'prepare must not use a hardcoded node_modules/ path');
 	});
 });

@@ -1,5 +1,7 @@
 import { POST_MESSAGES, findIndexHtml, resolveIndexHtmlPath } from '../../../shares/reuse';
 import { AbstractTask } from '../../abstract-task';
+import { ExecTask } from '../common/ExecTask';
+import { HandleDependencyTask } from '../common/HandleDependencyTask';
 import { JsonTask } from '../common/JsonTask';
 import { MergeHtmlTask } from '../common/MergeHtmlTask';
 import { RemoveTask } from '../common/RemoveTask';
@@ -8,23 +10,40 @@ export const getAssetTasks = (baseDir: string) => {
 	const assetTasks: AbstractTask[] = [];
 	const indexHtml = findIndexHtml(baseDir);
 
-	// Copy the component assets via the `kolibri-copy-assets` bin (shipped by
-	// @public-ui/components), which resolves the package through Node module
-	// resolution. A hardcoded `node_modules/@public-ui/components/...` path only
-	// works in a flat workspace and breaks in pnpm's isolated layout, where the
-	// dependency is a sibling in the .pnpm store rather than nested. The script is
-	// wired into `prepare`, so it runs on install once the dependency is present.
-	const addScript = JsonTask.getInstance(
-		'scripts.prepare',
+	const removeDeps = HandleDependencyTask.getInstance(
+		'remove',
+		{},
 		{
-			scripts: {
-				prepare: `kolibri-copy-assets --dest "${indexHtml}/assets" @public-ui/components`,
-			},
+			'cpy-cli': '5.0.0',
+			rimraf: '3.0.2',
 		},
 		'^1',
 	);
 
+	const installDeps = HandleDependencyTask.getInstance(
+		'add',
+		{},
+		{
+			'cpy-cli': '5.0.0',
+			rimraf: '3.0.2',
+		},
+		'^1',
+		[removeDeps],
+	);
+
+	const addScript = JsonTask.getInstance(
+		'scripts.prepare',
+		{
+			scripts: {
+				prepare: `cpy "node_modules/@public-ui/components/assets/**/*" "${indexHtml}/assets" --dot`,
+			},
+		},
+		'^1',
+		[installDeps],
+	);
+
 	const removeTask = RemoveTask.getInstance('public/assets/codicons', '^1', [addScript]);
+	const execTask = ExecTask.getInstance(`npx cpy "node_modules/@public-ui/components/assets/**/*" "${indexHtml}/assets" --dot`, '^1', [removeTask]);
 
 	if (indexHtml) {
 		const htmlTask = MergeHtmlTask.getInstance(
@@ -33,7 +52,7 @@ export const getAssetTasks = (baseDir: string) => {
 			'index.html',
 			'<link rel="stylesheet" href="assets/codicons/codicon.css" />',
 			'^1',
-			[removeTask],
+			[execTask],
 		);
 		assetTasks.push(htmlTask);
 	} else {
@@ -41,7 +60,7 @@ export const getAssetTasks = (baseDir: string) => {
 			message: `We could not find your index.html file. Please integrate the assets manually to your project.`,
 			type: 'warn',
 		});
-		assetTasks.push(removeTask);
+		assetTasks.push(execTask);
 	}
 
 	return assetTasks;
