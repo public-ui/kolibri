@@ -9,6 +9,10 @@ on:
         description: 'Delete ALL pr-* preview deployments from gh-pages (leave unchecked to do nothing)'
         type: boolean
         default: false
+      purge_history:
+        description: 'Squash the whole gh-pages history into a single commit to reclaim repository/clone size (destructive force-push; runs after delete_all)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -53,3 +57,14 @@ jobs:
           git rm -rf "${folders[@]}"
           git commit -m "chore: remove all PR preview deployments"
           git push
+
+      - name: Squash gh-pages history
+        if: github.event_name == 'workflow_dispatch' && inputs.purge_history
+        run: |
+          # Collapse the entire gh-pages history into one commit so the accumulated
+          # build blobs become unreachable and can be garbage-collected by GitHub.
+          # Operates on the current tree, i.e. after the delete_all step (if any).
+          git checkout --orphan _gh_pages_squashed
+          git add -A
+          git commit -m "chore: reset gh-pages history to reclaim space"
+          git push -f origin _gh_pages_squashed:gh-pages
