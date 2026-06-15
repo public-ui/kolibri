@@ -16,7 +16,10 @@ function getGitCommitHash(): string | null {
 export default defineConfig({
 	root: __dirname,
 	base: './',
-	plugins: [react(), UnoCSS()],
+	/* UnoCSS resolves its config relative to the process cwd (the package root), not the Vite root,
+	   so the config file must be referenced explicitly – otherwise the project's custom rules are
+	   silently dropped and the rendered layout differs from the snapshots. */
+	plugins: [react(), UnoCSS({ configFile: path.resolve(__dirname, 'unocss.config.ts') })],
 	resolve: {
 		dedupe: ['react', 'react-dom'],
 	},
