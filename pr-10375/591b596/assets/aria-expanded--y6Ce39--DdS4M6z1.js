@@ -1,2 +1,0 @@
-import{At as e,Dt as t,jt as n}from"./index-CUu5rV_t.js";var r=[`tab`,`treeitem`],i=(e,t)=>{n(e,`_role`,e=>typeof e==`string`&&r.includes(e),new Set([`KoliBriAlternativeButtonLinkRole {${r.join(`, `)}`]),t)},a=(t,n)=>{e(t,`_ariaControls`,n)},o=(t,n)=>{e(t,`_ariaDescription`,n)},s=(e,n)=>{t(e,`_ariaExpanded`,n)};export{s as i,a as n,o as r,i as t};
-//# sourceMappingURL=aria-expanded--y6Ce39--DdS4M6z1.js.map

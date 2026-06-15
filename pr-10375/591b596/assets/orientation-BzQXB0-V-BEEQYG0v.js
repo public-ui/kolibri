@@ -1,2 +1,0 @@
-import{jt as e}from"./index-CUu5rV_t.js";var t=[`horizontal`,`vertical`],n=(n,r,i=`horizontal`)=>{e(n,`_orientation`,e=>typeof e==`string`&&t.includes(e),new Set([`KoliBriOrientation {${t.join(`, `)}`]),r,{defaultValue:i})};export{n as t};
-//# sourceMappingURL=orientation-BzQXB0-V-BEEQYG0v.js.map
