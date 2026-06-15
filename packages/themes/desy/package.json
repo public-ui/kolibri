@@ -50,7 +50,7 @@
 		"lint:eslint": "eslint src",
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
-		"prepare": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
+		"prepare": "kolibri-copy-assets --dest assets @public-ui/components",
 		"start": "npm-run-all2 --parallel dev serve",
 		"serve": "sh serve.sh DesyV11",
 		"test": "cross-env THEME_MODULE=dist THEME_EXPORT=DesyV11 THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test",

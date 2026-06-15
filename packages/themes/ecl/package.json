@@ -44,7 +44,7 @@
 	"sideEffects": false,
 	"scripts": {
 		"assets:all": "npm-run-all2 assets:components assets:ecl-icons",
-		"assets:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
+		"assets:components": "kolibri-copy-assets --dest assets @public-ui/components",
 		"assets:ecl-icons": "pnpm --filter @public-ui/ecl-icons build",
 		"build": "rollup -c",
 		"dev": "rollup -c --watch",
