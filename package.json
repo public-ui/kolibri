@@ -20,6 +20,7 @@
 	"scripts": {
 		"prepare": "lefthook install",
 		"build": "pnpm -r build",
+		"check:scripts": "node scripts/check-no-relative-node-modules.mjs",
 		"clean": "git clean -f -d -X",
 		"clean:branches": "git branch --merged | grep -v \\* | xargs git branch -D",
 		"clean:pnpm": "pnpm -r exec rimraf pnpm-lock.yaml && rimraf pnpm-lock.yaml && pnpm clean",
