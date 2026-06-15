@@ -1,0 +1,2 @@
+import{Et as e,Ot as t}from"./index-CUu5rV_t.js";var n=(n,r,i)=>{t(r,`_links`,e=>typeof e==`object`&&(typeof e._href==`string`||typeof e._label==`string`),i),e(n,r.state._links.length)};export{n as t};
+//# sourceMappingURL=validation-B8MhupBp-K6Y7U0WM.js.map

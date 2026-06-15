@@ -1,0 +1,2 @@
+import{jt as e}from"./index-CUu5rV_t.js";import{t}from"./level-CfQolHx4-BPYUVv0J.js";var n=(n,r)=>{e(n,`_level`,e=>typeof e==`number`&&t.includes(e),new Set(t.map(String)),r,{defaultValue:1,required:!0})};export{n as t};
+//# sourceMappingURL=validation-VhuthteS-MytgwyAh.js.map
