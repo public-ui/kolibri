@@ -712,7 +712,7 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	@Listen('focusout')
 	public handleFocusOut(event: FocusEvent) {
 		const relatedTarget = event.relatedTarget as HTMLElement | null;
-		const isFocusInside = relatedTarget && (this.host?.contains(relatedTarget) || relatedTarget === this.host);
+		const isFocusInside = relatedTarget && (relatedTarget === this.host || this.host?.contains(relatedTarget));
 
 		if (this.inputHasFocus && !isFocusInside) {
 			this.controller.onFacade.onBlur(event);
