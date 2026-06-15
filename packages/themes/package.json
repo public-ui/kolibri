@@ -45,7 +45,8 @@
 	],
 	"scripts": {
 		"build": "rollup -c",
-		"build:deps": "pnpm --filter @public-ui/themes^... --filter @public-ui/theme-ecl --filter @public-ui/theme-desy build",
+		"build:deps": "pnpm --filter @public-ui/theme-ecl --filter @public-ui/theme-desy build",
+		"build:standalone": "pnpm --filter @public-ui/themes^... build && pnpm build",
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",

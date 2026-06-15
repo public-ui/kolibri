@@ -197,8 +197,8 @@ After making changes to components or themes:
 
 2. **Theme Changes Testing:**
    ```bash
-   # Build themes first
-   pnpm --filter @public-ui/themes build
+   # Build themes including their dependencies (components + theme-* packages)
+   pnpm --filter @public-ui/themes build:standalone
    # Start React sample and verify styling changes
    cd packages/samples/react && pnpm start
    ```
@@ -255,8 +255,8 @@ pnpm prepare:components && pnpm prepare:themes
 # Error: Package build failures
 # Solution: Build packages in dependency order
 pnpm --filter @public-ui/components build  # First - generates adapters
-pnpm --filter @public-ui/themes build      # Themes can build independently
-pnpm --filter @public-ui/theme-default build
+pnpm --filter @public-ui/theme-default build  # Build individual themes before the aggregator
+pnpm --filter @public-ui/themes build      # Aggregator (use build:standalone to also build its deps)
 pnpm --filter @public-ui/sample-react build
 ```
 
