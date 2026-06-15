@@ -67,7 +67,7 @@
 		"eslint": "8.57.1",
 		"nodemon": "3.1.14",
 		"postcss": "8.5.15",
-		"rollup": "4.61.1",
+		"rollup": "4.62.0",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass-embedded": "1.100.0",
 		"typescript": "5.9.3"
