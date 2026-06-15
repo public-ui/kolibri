@@ -69,8 +69,6 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 					label={this.ctrl.getRenderProp('label')}
 					variant={this.ctrl.getRenderProp('variant')}
 					showToggled={this.showToggled}
-					handleGetTranslateActionRunning={this.ctrl.handleGetTranslateActionRunning}
-					handleGetTranslateActionDone={this.ctrl.handleGetTranslateActionDone}
 				/>
 			</Host>
 		);

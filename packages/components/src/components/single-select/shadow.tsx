@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import type {
+	AriaDetailsPropType,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -8,6 +9,7 @@ import type {
 	HintPropType,
 	IconsHorizontalPropType,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -54,7 +56,7 @@ import { SingleSelectController } from './controller';
 	},
 	shadow: true,
 })
-export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
+export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 	@Element() protected readonly host?: HTMLKolSingleSelectElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refOptions: HTMLLIElement[] = [];
@@ -77,7 +79,9 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	private toggleListbox = (event: Event) => {
 		event?.preventDefault();
@@ -533,6 +537,19 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	@Prop() public _accessKey?: string;
 
 	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
+	}
+
+	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
 	@Prop() public _placeholder?: string;
@@ -799,6 +816,7 @@ export class KolSingleSelect implements SingleSelectAPI, FocusableElement {
 	public componentWillLoad(): void {
 		this.refOptions = [];
 		this._touched = this._touched === true;
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 		this.oldValue = this._value;
 		this._filteredOptions = this.state._options;

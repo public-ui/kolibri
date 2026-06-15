@@ -1,5 +1,5 @@
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
-import type { FocusableElement, LabelPropType, LinkProps, SkipNavAPI, SkipNavStates, Stringified } from '../../schema';
+import type { FocusableElement, KolFocusOptions, LabelPropType, LinkProps, SkipNavAPI, SkipNavStates, Stringified } from '../../schema';
 import { validateLabel } from '../../schema';
 
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
@@ -19,7 +19,7 @@ import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 	},
 	shadow: true,
 })
-export class KolSkipNav implements SkipNavAPI, FocusableElement {
+export class KolSkipNav implements FocusableElement, SkipNavAPI {
 	@Element() protected readonly host?: HTMLKolSkipNavElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolLinkWcElement>();
 
@@ -44,7 +44,9 @@ export class KolSkipNav implements SkipNavAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).

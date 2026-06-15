@@ -1,4 +1,4 @@
-import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp } from '../../props';
+import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp, type ProgressVariantType } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { ProgressApi } from './api';
@@ -53,7 +53,7 @@ export class ProgressController extends BaseController<ProgressApi> implements C
 		);
 	}
 
-	public watchVariant(value?: string): void {
+	public watchVariant(value?: ProgressVariantType): void {
 		variantProgressProp.apply(value, (v) => {
 			this.setRenderProp('variant', v);
 		});

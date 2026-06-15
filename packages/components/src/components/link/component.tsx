@@ -11,6 +11,7 @@ import type {
 	AriaDescriptionPropType,
 	AriaExpandedPropType,
 	AriaOwnsPropType,
+	ClickableElement,
 	CustomClassPropType,
 	DisabledPropType,
 	DownloadPropType,
@@ -19,6 +20,7 @@ import type {
 	HrefPropType,
 	InlinePropType,
 	InternalLinkAPI,
+	KolFocusOptions,
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
@@ -72,7 +74,7 @@ import clsx from '../../utils/clsx';
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements InternalLinkAPI, FocusableElement {
+export class KolLinkWc implements ClickableElement, FocusableElement, InternalLinkAPI {
 	@Element() private readonly host?: HTMLKolLinkElement;
 
 	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
@@ -86,7 +88,9 @@ export class KolLinkWc implements InternalLinkAPI, FocusableElement {
 	 */
 	@Method()
 	@directFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

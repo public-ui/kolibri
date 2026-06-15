@@ -45,3 +45,15 @@ executeInputSnapshotTests<SelectProps>(KolSelectTag, [KolSelect], {
 	_hideMsg: true,
 	_msg: { _type: 'error', _description: 'This is a combined error message' },
 });
+
+// Regression test for #10328: _rows must not activate listbox appearance without _multiple
+executeInputSnapshotTests<SelectProps>(KolSelectTag, [KolSelect], {
+	_options: options,
+	_rows: 3,
+});
+
+executeInputSnapshotTests<SelectProps>(KolSelectTag, [KolSelect], {
+	_options: options,
+	_rows: 3,
+	_multiple: true,
+});

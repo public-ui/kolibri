@@ -10,6 +10,7 @@ import type {
 	ButtonCallbacksPropType,
 	ButtonStates,
 	ButtonTypePropType,
+	ClickableElement,
 	CustomClassPropType,
 	DisabledPropType,
 	FocusableElement,
@@ -17,6 +18,7 @@ import type {
 	IconsPropType,
 	IdPropType,
 	InlinePropType,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
 	StencilUnknown,
@@ -70,7 +72,7 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements ButtonAPI, FocusableElement {
+export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElement {
 	@Element() protected readonly host?: HTMLKolButtonWcElement;
 	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
 	private readonly tooltipCtrl = new TooltipController(BaseWebComponent.stateLess);
@@ -80,7 +82,9 @@ export class KolButtonWc implements ButtonAPI, FocusableElement {
 	 */
 	@Method()
 	@directFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

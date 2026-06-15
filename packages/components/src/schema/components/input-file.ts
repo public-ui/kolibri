@@ -3,6 +3,7 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	MsgPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
@@ -29,6 +30,7 @@ type OptionalProps = {
 	on: InputTypeOnDefault;
 	smartButton: Stringified<InternalButtonProps>;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &

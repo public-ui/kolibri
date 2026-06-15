@@ -13,6 +13,7 @@
 export type HostInternals = {
 	role: string | null;
 	ariaLabelledByElements: HTMLElement[];
+	ariaDetailsElements?: HTMLElement[];
 };
 
 const escapeCssIdentifier = (value: string): string => {
@@ -23,7 +24,7 @@ const escapeCssIdentifier = (value: string): string => {
 	return value.replace(/[^a-zA-Z0-9_-]/g, '\\$&');
 };
 
-export const resolveTargets = (host: HTMLElement | undefined, value?: string): HTMLElement[] => {
+export const resolveTargets = (host: HTMLElement | Element | undefined, value?: string): HTMLElement[] => {
 	const ids = (value ?? '').trim().split(/\s+/).filter(Boolean);
 	if (!ids.length) return [];
 	// Scope the lookup to the host's current tree.
@@ -37,7 +38,7 @@ export const resolveTargets = (host: HTMLElement | undefined, value?: string): H
 	return ids.map(getById).filter((el): el is HTMLElement => !!el);
 };
 
-export const attachInternals = (host: HTMLElement | undefined): HostInternals | undefined => {
+export const attachInternals = (host: HTMLElement | Element | undefined): HostInternals | undefined => {
 	// Stencil's HTMLElement typing does not expose attachInternals here.
 	const attach = (host as unknown as { attachInternals?: () => HostInternals }).attachInternals;
 	if (!attach) return undefined;

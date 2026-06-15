@@ -7,9 +7,11 @@ import type {
 	ButtonCallbacksPropType,
 	ButtonTypePropType,
 	ButtonVariantPropType,
+	ClickableElement,
 	CustomClassPropType,
 	FocusableElement,
 	IconsPropType,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
 	SplitButtonProps,
@@ -37,7 +39,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolSplitButton implements SplitButtonProps, FocusableElement /*, SplitButtonAPI*/ {
+export class KolSplitButton implements ClickableElement, FocusableElement, SplitButtonProps /*, SplitButtonAPI*/ {
 	@Element() protected readonly host?: HTMLKolSplitButtonElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
 	private popoverButtonRef?: HTMLKolPopoverButtonWcElement;
@@ -60,7 +62,9 @@ export class KolSplitButton implements SplitButtonProps, FocusableElement /*, Sp
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

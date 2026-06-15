@@ -3,7 +3,9 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from '../../utils/clsx';
 
 import type {
+	AriaDetailsPropType,
 	AutoCompletePropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -16,6 +18,7 @@ import type {
 	InputTypeOnDefault,
 	InternalButtonProps,
 	Iso8601,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -51,7 +54,7 @@ import { InputDateController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputDate implements InputDateAPI, FocusableElement {
+export class KolInputDate implements ClickableElement, FocusableElement, InputDateAPI {
 	@Element() protected readonly host?: HTMLKolInputDateElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -71,7 +74,9 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
@@ -200,6 +205,14 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
 	 * Defines whether the input can be auto-completed.
@@ -353,6 +366,11 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		this.controller.validateAccessKey(value);
 	}
 
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
+	}
+
 	@Watch('_autoComplete')
 	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
@@ -478,6 +496,7 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 	public componentWillLoad(): void {
 		if (this._value !== undefined) this.setInitialValueType(this._value);
 		this._touched = this._touched === true;
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 
 		this.state._hasValue = !!this.state._value;

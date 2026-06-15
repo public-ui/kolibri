@@ -3,7 +3,9 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import type {
 	AlignPropType,
 	ButtonCallbacksPropType,
+	ClickableElement,
 	FocusableElement,
+	KolFocusOptions,
 	KoliBriTabsCallbacks,
 	LabelPropType,
 	StencilUnknown,
@@ -46,7 +48,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolTabs implements TabsAPI, FocusableElement {
+export class KolTabs implements ClickableElement, FocusableElement, TabsAPI {
 	@Element() protected readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;
@@ -163,7 +165,9 @@ export class KolTabs implements TabsAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Triggers a click on the currently selected tab.

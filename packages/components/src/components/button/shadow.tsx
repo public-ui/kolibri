@@ -9,10 +9,12 @@ import type {
 	ButtonProps,
 	ButtonTypePropType,
 	ButtonVariantPropType,
+	ClickableElement,
 	CustomClassPropType,
 	FocusableElement,
 	IconsPropType,
 	InlinePropType,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
 	StencilUnknown,
@@ -33,7 +35,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolButton implements ButtonProps, FocusableElement {
+export class KolButton implements ButtonProps, ClickableElement, FocusableElement {
 	@Element() protected readonly host?: HTMLKolButtonElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
 
@@ -51,7 +53,9 @@ export class KolButton implements ButtonProps, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.

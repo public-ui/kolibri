@@ -124,4 +124,58 @@ test.describe(COMPONENT_NAME, () => {
 
 		expect(defaultPrevented).toBe(true);
 	});
+
+	test.describe('_ariaDetails', () => {
+		test('accepts valid element reference', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Accept" _aria-details="terms-details"></kol-input-checkbox>
+				<div id="terms-details">Terms and conditions apply</div>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
+			expect(value).toBe('terms-details');
+		});
+
+		test('updates when prop changes', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Test" _aria-details="details-1"></kol-input-checkbox>
+				<div id="details-1">Details 1</div>
+				<div id="details-2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const host = page.locator(COMPONENT_NAME);
+			expect(await host.evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails)).toBe('details-1');
+
+			await host.evaluate((el: HTMLKolInputCheckboxElement) => {
+				el._ariaDetails = 'details-2';
+			});
+			await page.waitForChanges();
+
+			expect(await host.evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails)).toBe('details-2');
+		});
+
+		test('handles missing ID gracefully', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Test" _aria-details="non-existent-id"></kol-input-checkbox>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
+			expect(value).toBe('non-existent-id');
+		});
+
+		test('accepts multiple IDs (space-separated)', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Test" _aria-details="id1 id2"></kol-input-checkbox>
+				<div id="id1">Details 1</div>
+				<div id="id2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
+			expect(value).toBe('id1 id2');
+		});
+	});
 });

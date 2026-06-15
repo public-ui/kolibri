@@ -54,10 +54,3 @@ export async function setClick(element: HTMLElement): Promise<void> {
 		attempts++;
 	} while (!isElementVisible(element) && attempts < MAX_CLICK_ATTEMPTS);
 }
-
-/**
- * Interface for elements that support async click behavior.
- */
-export interface ClickableElement {
-	click(): Promise<void>;
-}

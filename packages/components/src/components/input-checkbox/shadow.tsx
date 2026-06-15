@@ -3,7 +3,9 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from '../../utils/clsx';
 
 import type {
+	AriaDetailsPropType,
 	CheckedPropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -14,6 +16,7 @@ import type {
 	InputCheckboxIconsProp,
 	InputCheckboxStates,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelAlignPropType,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
@@ -50,7 +53,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 	},
 	shadow: true,
 })
-export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
+export class KolInputCheckbox implements ClickableElement, FocusableElement, InputCheckboxAPI {
 	@Element() protected readonly host?: HTMLKolInputCheckboxElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -72,7 +75,9 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
@@ -248,6 +253,14 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Prop() public _required?: boolean = false;
 
 	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
@@ -308,6 +321,11 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 	@Watch('_accessKey')
 	public validateAccessKey(value?: string): void {
 		this.controller.validateAccessKey(value);
+	}
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
 	}
 
 	@Watch('_checked')
@@ -402,6 +420,7 @@ export class KolInputCheckbox implements InputCheckboxAPI, FocusableElement {
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 

@@ -1,10 +1,12 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core';
 
 import type {
+	AriaDetailsPropType,
 	FocusableElement,
 	IconsHorizontalPropType,
 	InputTypeOnDefault,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	NamePropType,
@@ -20,6 +22,7 @@ import type {
 } from '../../schema';
 
 import { KolSelectWcTag } from '../../core/component-names';
+import { validateAriaDetails } from '../../schema/props/aria-details';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 /**
@@ -32,7 +35,7 @@ import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 	},
 	shadow: true,
 })
-export class KolSelect implements SelectProps, FocusableElement {
+export class KolSelect implements FocusableElement, SelectProps {
 	@Element() protected readonly host?: HTMLKolSelectElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolSelectWcElement>();
 
@@ -49,7 +52,9 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public render(): JSX.Element {
 		return (
@@ -57,6 +62,7 @@ export class KolSelect implements SelectProps, FocusableElement {
 				<KolSelectWcTag
 					ref={this.ctaRef}
 					_accessKey={this._accessKey}
+					_ariaDetails={this._ariaDetails}
 					_disabled={this._disabled}
 					_hideLabel={this._hideLabel}
 					_hideMsg={this._hideMsg}
@@ -88,6 +94,16 @@ export class KolSelect implements SelectProps, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this select.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		validateAriaDetails(this, this.host, undefined, value);
+	}
 
 	/**
 	 * Makes the element not focusable and ignore all events.

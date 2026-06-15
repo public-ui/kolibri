@@ -4,6 +4,8 @@ import clsx from '../../utils/clsx';
 
 import type {
 	AcceptPropType,
+	AriaDetailsPropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -14,6 +16,7 @@ import type {
 	InputFileStates,
 	InputTypeOnDefault,
 	InternalButtonProps,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	MultiplePropType,
@@ -47,7 +50,7 @@ import { InputFileController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputFile implements InputFileAPI, FocusableElement {
+export class KolInputFile implements ClickableElement, FocusableElement, InputFileAPI {
 	@Element() protected readonly host?: HTMLKolInputFileElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -68,7 +71,9 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	public async focus(): Promise<void> {}
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
@@ -145,6 +150,14 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: string;
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -268,6 +281,11 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 		this.controller.validateAccessKey(value);
 	}
 
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
+	}
+
 	@Watch('_disabled')
 	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
@@ -350,6 +368,7 @@ export class KolInputFile implements InputFileAPI, FocusableElement {
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 

@@ -4,6 +4,7 @@ import tseslintPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import boundariesPlugin from 'eslint-plugin-boundaries';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
+import perfectionistPlugin from 'eslint-plugin-perfectionist';
 import kolibriPlugin from '../../eslint-rules/index.js';
 
 /**
@@ -37,6 +38,7 @@ export default [
 			'@typescript-eslint': tseslintPlugin,
 			'@stencil-community': stencilPlugin,
 			kolibri: kolibriPlugin,
+			perfectionist: perfectionistPlugin,
 		},
 		languageOptions: {
 			parser: tsParser,
@@ -120,6 +122,11 @@ export default [
 			'@stencil-community/strict-boolean-conditions': 'off',
 			'@stencil-community/ban-default-true': 'off',
 
+			/**
+			 * Keep `implements` / `extends` heritage clauses sorted alphabetically.
+			 */
+			'perfectionist/sort-heritage-clauses': ['error', { type: 'alphabetical', order: 'asc' }],
+
 			eqeqeq: 'error',
 			'no-console': 'error',
 			'no-mixed-spaces-and-tabs': 'off',
@@ -145,6 +152,7 @@ export default [
 					pattern: ['src/internal/functional-components/click-button', 'src/internal/functional-components/skeleton'],
 					mode: 'folder',
 				},
+				{ type: 'focus-decorator-utils', pattern: ['src/utils/element-interaction.ts', 'src/utils/element-focus.ts'], mode: 'file' },
 				{ type: 'internal-functional-components', pattern: 'src/internal/functional-components', mode: 'folder' },
 				{ type: 'internal-props', pattern: 'src/internal/props', mode: 'folder' },
 				{ type: 'schema', pattern: 'src/schema', mode: 'folder' },
@@ -165,12 +173,23 @@ export default [
 						{
 							from: { type: 'skeleton-web-components' },
 							allow: {
-								to: { type: ['skeleton-web-components', 'skeleton-functional-components', 'internal-functional-components', 'schema', 'testing-utils'] },
+								to: {
+									type: [
+										'skeleton-web-components',
+										'skeleton-functional-components',
+										'internal-functional-components',
+										'focus-decorator-utils',
+										'schema',
+										'testing-utils',
+									],
+								},
 							},
 						},
 						{
 							from: { type: 'skeleton-functional-components' },
-							allow: { to: { type: ['skeleton-functional-components', 'internal-functional-components', 'internal-props', 'schema'] } },
+							allow: {
+								to: { type: ['skeleton-functional-components', 'internal-functional-components', 'internal-props', 'schema', 'focus-decorator-utils'] },
+							},
 						},
 					],
 				},

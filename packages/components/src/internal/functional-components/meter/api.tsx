@@ -24,7 +24,4 @@ export interface MeterApi extends ComponentApi {
 		Optional: HighProp & LowProp & MinProp & OptimumProp & OrientationProp & UnitProp;
 		Required: LabelProp & MaxProp & NumberValueProp;
 	};
-	States: {
-		liveValue: number;
-	};
 }

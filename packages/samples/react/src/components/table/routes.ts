@@ -19,6 +19,7 @@ import { TableSettingsColumnOptions } from './settings-column-options';
 import { TableSortData } from './sort-data';
 import { TableStatefulExport } from './stateful-export';
 import { TableStatefulResetSort } from './stateful-reset-sort';
+import { TableStatefulSettingsPersistence } from './stateful-settings-persistence';
 import { TableStatefulWithSelection } from './stateful-with-selection';
 import { TableStatefulWithSingleSelection } from './stateful-with-single-selection';
 import { TableStateless } from './stateless';
@@ -51,6 +52,7 @@ export const TABLE_ROUTES: Routes = {
 		'direction-aware-sort': TableDirectionAwareSort,
 		'stateful-export': TableStatefulExport,
 		'stateful-reset-sort': TableStatefulResetSort,
+		'stateful-settings-persistence': TableStatefulSettingsPersistence,
 		'stateful-with-selection': TableStatefulWithSelection,
 		'stateless-with-settings-menu': TableStatelessWithSettingsMenu,
 		'stateful-with-single-selection': TableStatefulWithSingleSelection,
