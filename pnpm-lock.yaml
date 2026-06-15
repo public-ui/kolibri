@@ -814,6 +814,12 @@ importers:
       adopted-style-sheets:
         specifier: 1.1.9-rc.22
         version: 1.1.9-rc.22
+      cpy-cli:
+        specifier: 7.0.0
+        version: 7.0.0
+      npm-run-all2:
+        specifier: 8.0.4
+        version: 8.0.4
       papaparse:
         specifier: 5.5.3
         version: 5.5.3
@@ -863,9 +869,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: 8.58.2
         version: 8.58.2(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3)
-      cpy-cli:
-        specifier: 7.0.0
-        version: 7.0.0
       eslint:
         specifier: 9.39.4
         version: 9.39.4(jiti@2.7.0)
@@ -884,9 +887,6 @@ importers:
       knip:
         specifier: 6.16.1
         version: 6.16.1
-      npm-run-all2:
-        specifier: 8.0.4
-        version: 8.0.4
       prettier:
         specifier: 3.8.4
         version: 3.8.4
