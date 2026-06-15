@@ -10,7 +10,7 @@
 // (published/consumer) and npm/yarn hoisted layouts, and bypasses the package
 // "exports" gate (e.g. @public-ui/themes does not expose "./package.json").
 // Missing packages or asset folders are skipped with a warning instead of failing.
-import { cpSync, existsSync, mkdirSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readdirSync, rmSync, statSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 
@@ -46,6 +46,24 @@ function findPackageDir(name) {
 	return null;
 }
 
+// Recursively merge srcDir into destDir, overwriting existing files. Each target
+// is removed first so read-only or pnpm-hard-linked files (a published package may
+// ship a deduplicated copy of the same asset, making src and dest share an inode)
+// are replaced instead of triggering fs.cpSync's ERR_FS_CP_EEXIST.
+function copyInto(srcDir, destDir) {
+	mkdirSync(destDir, { recursive: true });
+	for (const name of readdirSync(srcDir)) {
+		const src = path.join(srcDir, name);
+		const dest = path.join(destDir, name);
+		if (statSync(src).isDirectory()) {
+			copyInto(src, dest);
+		} else {
+			rmSync(dest, { force: true });
+			copyFileSync(src, dest);
+		}
+	}
+}
+
 let copied = 0;
 for (const source of sources) {
 	const separator = source.lastIndexOf(':');
@@ -65,7 +83,7 @@ for (const source of sources) {
 		console.warn(`[copy-assets] Skip ${name}/${subdir}: directory not found.`);
 		continue;
 	}
-	cpSync(srcDir, destDir, { recursive: true });
+	copyInto(srcDir, destDir);
 	console.log(`[copy-assets] ${name}/${subdir} -> ${path.relative(process.cwd(), destDir)}`);
 	copied++;
 }
