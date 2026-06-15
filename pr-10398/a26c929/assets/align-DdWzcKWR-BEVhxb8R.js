@@ -1,0 +1,2 @@
+import{jt as e}from"./index-BeKetKBb.js";var t=(t,n,r)=>{e(t,n,e=>typeof e==`string`&&i.includes(e),new Set(i),r,{defaultValue:`top`})},n=[`left`,`right`],r=[`top`,`bottom`],i=[...n,...r],a=(e,n)=>{t(e,`_align`,n)};export{a as n,t as r,i as t};
+//# sourceMappingURL=align-DdWzcKWR-BEVhxb8R.js.map

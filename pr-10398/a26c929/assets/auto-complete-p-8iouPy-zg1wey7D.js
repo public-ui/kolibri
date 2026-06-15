@@ -1,0 +1,2 @@
+import{jt as e}from"./index-BeKetKBb.js";var t=[`on`,`off`],n=(n,r)=>{e(n,`_autoComplete`,e=>t.includes(e)||typeof e==`string`&&e.length>0,new Set(t),r,{defaultValue:`off`})};export{n as t};
+//# sourceMappingURL=auto-complete-p-8iouPy-zg1wey7D.js.map
