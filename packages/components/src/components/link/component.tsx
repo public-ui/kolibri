@@ -22,7 +22,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { setClick } from '../../utils/element-click';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -58,7 +58,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	@Method()
 	public async click(): Promise<void> {
 		const anchor = this.ctrl.getAnchorRef();
-		if (anchor) return setClick(anchor);
+		if (anchor) return delegateClick(this.host!, () => setClick(anchor));
 	}
 
 	private readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): void => {
