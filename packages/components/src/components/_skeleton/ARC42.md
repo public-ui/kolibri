@@ -533,7 +533,7 @@ Not every external input is a render prop. Inputs fall into two categories:
 - **Web Component** — a normal underscored `@Prop`, but its watcher routes to `setValue` + form association (not to a render prop). The initial value is applied in `componentWillLoad`, because `@Watch` only fires on _change_:
 
   ```ts
-  // components/button/shadow.tsx
+  // components/button/component.tsx
   @Prop() public _value?: StencilUnknown;
 
   @Watch('_value')

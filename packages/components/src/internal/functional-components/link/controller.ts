@@ -4,7 +4,7 @@ import { setEventTarget } from '../../../schema';
 import type { AlignPropType } from '../../../schema/props/align';
 import type { KoliBriIconsProp } from '../../../schema/types/icons';
 import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
-import type { AriaCurrentValuePropType } from '../../props';
+import type { AriaCurrentValuePropType, ButtonVariant } from '../../props';
 import {
 	accessKeyProp,
 	ariaControlsProp,
@@ -12,6 +12,7 @@ import {
 	ariaDescriptionProp,
 	ariaExpandedProp,
 	ariaOwnsProp,
+	buttonVariantProp,
 	customClassProp,
 	disabledProp,
 	downloadProp,
@@ -29,10 +30,10 @@ import {
 	variantProp,
 } from '../../props';
 import { BaseController } from '../base-controller';
-import type { ResolvedInputProps, StateAccess } from '../generic-types';
+import type { PropsConfigShape, ResolvedInputProps, StateAccess } from '../generic-types';
 import { TooltipController } from '../tooltip/controller';
 import type { LinkApi } from './api';
-import { linkPropsConfig } from './api';
+import { linkButtonPropsConfig, linkPropsConfig } from './api';
 
 /**
  * Creates a closure-based StateAccess for LinkApi that stores `ariaCurrent`
@@ -89,8 +90,8 @@ export class LinkController extends BaseController<LinkApi> {
 		return { href, shouldDispatchKolEvent: true };
 	};
 
-	public constructor(stateAccess: StateAccess<LinkApi>) {
-		super(stateAccess, linkPropsConfig);
+	public constructor(stateAccess: StateAccess<LinkApi>, propsConfig: PropsConfigShape = linkPropsConfig) {
+		super(stateAccess, propsConfig);
 	}
 
 	public componentWillLoad(props: ResolvedInputProps<LinkApi>): void {
@@ -304,6 +305,33 @@ export class LinkController extends BaseController<LinkApi> {
 		const href = this.getRenderProp('href');
 		if (typeof label === 'string' && label.length > 0) return label;
 		return href;
+	}
+}
+
+/**
+ * Controller for kol-link-button: reuses the complete link behavior, but uses
+ * the link-button props config and the typed `ButtonVariant` enum for the
+ * variant instead of the free-form link class name.
+ */
+export class LinkButtonController extends LinkController {
+	public constructor(stateAccess: StateAccess<LinkApi>) {
+		super(stateAccess, linkButtonPropsConfig);
+	}
+
+	public override watchVariant(value?: string): void {
+		buttonVariantProp.apply(value, (v) => {
+			this.setRenderProp('variant', v);
+		});
+	}
+
+	/**
+	 * Returns the validated render variant as the typed {@link ButtonVariant} union.
+	 *
+	 * The assertion is safe because {@link watchVariant} normalizes every value through
+	 * `buttonVariantProp`, which only ever stores one of the known button variants.
+	 */
+	public getVariant(): ButtonVariant {
+		return this.getRenderProp('variant') as ButtonVariant;
 	}
 }
 

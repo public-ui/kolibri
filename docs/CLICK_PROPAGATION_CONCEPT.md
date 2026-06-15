@@ -13,48 +13,34 @@ Dieses Dokument beschreibt das Click-Delegationskonzept sowie noch geplante Erwe
 
 Wenn ein Konsument auf das Host-Element klickt (z. B. `kol-button`), soll nicht nur ein Event nach aussen signalisiert werden, sondern der Klick nach innen auf das primaere interaktive Element delegiert werden.
 
+Das primäre Element wird von der Functional Component (z. B. `ButtonFC`, `LinkFC`) direkt im Shadow Root des Hosts gerendert, ohne ein zusätzliches inneres Web Component dazwischen.
+
 Beispiele:
 
-- `kol-button` -> primaer: `<button>` in `kol-button-wc`
-- `kol-link` -> primaer: `<a>` in `kol-link-wc`
-- `kol-input-text` -> primaer: `<input>`
+- `kol-button` -> primaer: internes `<button>` (im Shadow Root, gerendert von `ButtonFC`)
+- `kol-link` -> primaer: internes `<a>` (im Shadow Root, gerendert von `LinkFC`)
+- `kol-input-text` -> primaer: internes `<input>`
 
 ## Architektur
 
 ### Delegationsfluss (analog zu Focus)
 
-Variante A: Shadow -> Light DOM WC -> HTML5-Element
+Der Shadow-Host delegiert den Klick direkt auf das primaere HTML5-Element im Shadow Root:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
 │ Shadow Component: kol-button (shadow: true)            │
-│ @Method click() -> delegateClick(host, () => setClick(wc))
+│ @Method() click() -> @delegateClick('ctaRef')           │
+│   wartet auf data-themed, dann setClick(ctaRef.el)      │
 └─────────────────────────┬───────────────────────────────┘
                           ↓
 ┌─────────────────────────────────────────────────────────┐
-│ Light DOM Component: kol-button-wc (shadow: false)     │
-│ click() -> setClick(buttonRef)                          │
-└─────────────────────────┬───────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│ HTML5 Element: <button>                                 │
+│ HTML5 Element: <button> (im Shadow Root, via ButtonFC)  │
 │ tatsächlich aktiviert (native click action)            │
 └─────────────────────────────────────────────────────────┘
 ```
 
-Variante B: Shadow -> HTML5-Element direkt
-
-```
-┌─────────────────────────────────────────────────────────┐
-│ Shadow Component: kol-input-text (shadow: true)        │
-│ @Method click() -> delegateClick(host, () => setClick(input))
-└─────────────────────────┬───────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│ HTML5 Element: <input>                                  │
-│ tatsaechlich aktiviert                                  │
-└─────────────────────────────────────────────────────────┘
-```
+Für `kol-link` (inneres `<a>`), `kol-input-text` (inneres `<input>`) usw. gilt derselbe Fluss mit dem jeweiligen primaeren Element.
 
 ## Kernideen
 
@@ -74,9 +60,9 @@ Das waere aber aus UX- und Test-Sicht nicht authentisch:
 
 Deshalb gilt analog zu Focus: Click-Delegation darf erst starten, wenn `data-themed` gesetzt ist.
 
-## Utility Functions (Vorschlag)
+## Utility Functions
 
-Datei (neu): `packages/components/src/utils/element-click.ts`
+Datei: `packages/components/src/utils/element-click.ts` (Low-Level-Primitive) sowie die Method-Decorator-Schicht in `packages/components/src/utils/element-interaction.ts`.
 
 ### `delegateClick(host, callback)`
 
@@ -122,6 +108,14 @@ Prueft, ob das Element sichtbar ist (Groesse > 0). Dies stellt sicher, dass das 
 
 Kann 1:1 aus dem Focus-Utility wiederverwendet werden.
 
+### Method-Decorators — `packages/components/src/utils/element-interaction.ts`
+
+Auf den Primitiven baut eine Decorator-Schicht auf, die den Methodenrumpf von `click()`/`focus()` generiert:
+
+- `@delegateClick('<refProp>')` / `@delegateFocus('<refProp>')` — für Shadow Components; wartet auf `data-themed` und ruft `setClick`/`setFocus` auf dem per `CtaRef` referenzierten Element auf.
+- `@directClick('<refProp>')` / `@directFocus('<refProp>')` — für Non-Shadow-Komponenten (`shadow: false`); ruft `setClick`/`setFocus` ohne Theme-Wartezeit auf.
+- `createCtaRef<T>()` — erzeugt einen Ref-Setter, der das primaere Element festhält und über `.el` verfügbar macht.
+
 ### Konstanten
 
 ```typescript
@@ -156,39 +150,34 @@ Damit erzwingen wir API-Homogenitaet analog zum HTML-Standard.
 
 ### Regel 1: Shadow Component (`shadow: true`)
 
-Der Host delegiert nach innen via `delegateClick`:
+Der Host delegiert nach innen. In der aktuellen Umsetzung kapselt der Method-Decorator `@delegateClick('ctaRef')` (aus `utils/element-interaction.ts`) das Warten auf `data-themed` und den `setClick` auf das per `CtaRef` referenzierte innere Element:
 
 ```typescript
 @Component({ tag: 'kol-button', shadow: true })
 export class KolButton implements ClickableElement {
 	@Element() private readonly host?: HTMLKolButtonElement;
-	private buttonWcRef?: HTMLKolButtonWcElement;
+	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
 
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, () => setClick(this.buttonWcRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 }
 ```
+
+Der `ctaRef` wird beim Rendern an das innere `<button>` der Functional Component (`ButtonFC`) gebunden.
 
 Hinweis:
 
 - `delegateClick` wartet zwingend auf `data-themed` vor der Klick-Delegation, um konsistentes visuelles Feedback zu sichern.
 
-### Regel 2: Light DOM Component (`shadow: false`)
+### Regel 2: Low-Level-Primitive und Non-Shadow-Komponenten
 
-Kein `delegateClick` notwendig. Nur `setClick` auf dem primaeren HTML-Element:
+Auf der untersten Ebene fuehrt `setClick` den nativen Klick direkt auf dem Ziel-Element aus – ohne `data-themed`-Wartezeit. `@delegateClick` baut darauf auf. Reine Non-Shadow-Komponenten (`shadow: false`) verwenden den analogen Decorator `@directClick('<refProp>')`:
 
 ```typescript
-@Component({ tag: 'kol-button-wc', shadow: false })
-export class KolButtonWc implements ClickableElement {
-	private buttonRef?: HTMLButtonElement;
-
-	@Method()
-	public async click(): Promise<void> {
-		return setClick(this.buttonRef!);
-	}
-}
+@Method()
+@directClick('ctaRef')
+public async click(): Promise<void> {}
 ```
 
 ### Regel 3: Primaeres Ziel je Komponente festlegen
