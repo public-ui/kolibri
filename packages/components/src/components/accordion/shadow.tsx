@@ -42,7 +42,7 @@ featureHint(`[KolAccordion] Tab-Sperre des Inhalts im geschlossenen Zustand.`);
 	},
 	shadow: true,
 })
-export class KolAccordion implements AccordionAPI, FocusableElement, ClickableElement {
+export class KolAccordion implements AccordionAPI, ClickableElement, FocusableElement {
 	@Element() protected readonly host?: HTMLKolAccordionElement;
 
 	private readonly id = createUniqueId('accordion');

@@ -53,7 +53,7 @@ import { InputNumberController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputNumber implements InputNumberAPI, FocusableElement, ClickableElement {
+export class KolInputNumber implements ClickableElement, FocusableElement, InputNumberAPI {
 	@Element() protected readonly host?: HTMLKolInputNumberElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 

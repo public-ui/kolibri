@@ -54,7 +54,7 @@ import { InputEmailController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputEmail implements InputEmailAPI, FocusableElement, ClickableElement {
+export class KolInputEmail implements ClickableElement, FocusableElement, InputEmailAPI {
 	@Element() protected readonly host?: HTMLKolInputEmailElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 

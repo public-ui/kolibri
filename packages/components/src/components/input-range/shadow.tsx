@@ -49,7 +49,7 @@ import { InputRangeController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputRange implements InputRangeAPI, FocusableElement, ClickableElement {
+export class KolInputRange implements ClickableElement, FocusableElement, InputRangeAPI {
 	@Element() protected readonly host?: HTMLKolInputRangeElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refInputRange?: HTMLInputElement;

@@ -45,7 +45,7 @@ import { InputColorController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputColor implements InputColorAPI, FocusableElement, ClickableElement {
+export class KolInputColor implements ClickableElement, FocusableElement, InputColorAPI {
 	@Element() protected readonly host?: HTMLKolInputColorElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refInputColor?: HTMLInputElement;

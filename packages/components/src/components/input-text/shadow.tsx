@@ -55,7 +55,7 @@ import { InputTextController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputText implements InputTextAPI, FocusableElement, ClickableElement {
+export class KolInputText implements ClickableElement, FocusableElement, InputTextAPI {
 	@Element() protected readonly host?: HTMLKolInputTextElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private oldValue?: string;

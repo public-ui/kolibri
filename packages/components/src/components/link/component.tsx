@@ -74,7 +74,7 @@ import clsx from '../../utils/clsx';
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc implements InternalLinkAPI, FocusableElement, ClickableElement {
+export class KolLinkWc implements ClickableElement, FocusableElement, InternalLinkAPI {
 	@Element() private readonly host?: HTMLKolLinkElement;
 
 	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();

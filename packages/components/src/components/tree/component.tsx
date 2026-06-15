@@ -12,7 +12,7 @@ import { validateLabel } from '../../schema';
 	tag: 'kol-tree-wc',
 	shadow: false,
 })
-export class KolTreeWc implements TreeAPI, FocusableElement {
+export class KolTreeWc implements FocusableElement, TreeAPI {
 	@Element() private readonly host?: HTMLKolTreeWcElement;
 
 	@State() public state: TreeStates = {

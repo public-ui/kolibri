@@ -65,7 +65,7 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	},
 	shadow: true,
 })
-export class KolTextarea implements TextareaAPI, FocusableElement, ClickableElement {
+export class KolTextarea implements ClickableElement, FocusableElement, TextareaAPI {
 	@Element() protected readonly host?: HTMLKolTextareaElement;
 	protected readonly ctaRef = createCtaRef<HTMLTextAreaElement>();
 

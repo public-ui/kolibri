@@ -52,7 +52,7 @@ import type { OrientationPropType } from '../../schema/props/orientation';
 	},
 	shadow: true,
 })
-export class KolInputRadio implements InputRadioAPI, FocusableElement, ClickableElement {
+export class KolInputRadio implements ClickableElement, FocusableElement, InputRadioAPI {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
 	private inputRef?: HTMLInputElement;
 	private inputRefs = new Map<number, HTMLInputElement>();

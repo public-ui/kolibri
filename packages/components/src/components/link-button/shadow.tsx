@@ -35,7 +35,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolLinkButton implements LinkButtonProps, FocusableElement, ClickableElement {
+export class KolLinkButton implements ClickableElement, FocusableElement, LinkButtonProps {
 	@Element() protected readonly host?: HTMLKolLinkButtonElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolLinkWcElement>();
 

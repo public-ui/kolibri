@@ -35,7 +35,7 @@ import { watchHeadingLevel } from '../heading/validation';
 	},
 	shadow: true,
 })
-export class KolDetails implements DetailsAPI, FocusableElement, ClickableElement {
+export class KolDetails implements ClickableElement, DetailsAPI, FocusableElement {
 	@Element() protected readonly host?: HTMLKolDetailsElement;
 
 	private readonly id = createUniqueId('details');

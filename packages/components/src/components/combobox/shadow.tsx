@@ -52,7 +52,7 @@ import { ComboboxController } from './controller';
 	},
 	shadow: true,
 })
-export class KolCombobox implements ComboboxAPI, FocusableElement, ClickableElement {
+export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElement {
 	@Element() protected readonly host?: HTMLKolComboboxElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refSuggestions: HTMLLIElement[] = [];

@@ -54,7 +54,7 @@ import { InputDateController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputDate implements InputDateAPI, FocusableElement, ClickableElement {
+export class KolInputDate implements ClickableElement, FocusableElement, InputDateAPI {
 	@Element() protected readonly host?: HTMLKolInputDateElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 

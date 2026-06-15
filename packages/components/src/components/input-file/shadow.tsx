@@ -50,7 +50,7 @@ import { InputFileController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputFile implements InputFileAPI, FocusableElement, ClickableElement {
+export class KolInputFile implements ClickableElement, FocusableElement, InputFileAPI {
 	@Element() protected readonly host?: HTMLKolInputFileElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 

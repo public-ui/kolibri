@@ -26,7 +26,7 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 	},
 	shadow: true,
 })
-export class KolToolbar implements ToolbarAPI, FocusableElement, ClickableElement {
+export class KolToolbar implements ClickableElement, FocusableElement, ToolbarAPI {
 	@Element() private readonly host?: HTMLElement;
 
 	@State() public state: ToolbarStates = {

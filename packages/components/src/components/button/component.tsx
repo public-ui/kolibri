@@ -72,7 +72,7 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc implements ButtonAPI, FocusableElement, ClickableElement {
+export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElement {
 	@Element() protected readonly host?: HTMLKolButtonWcElement;
 	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
 	private readonly tooltipCtrl = new TooltipController(BaseWebComponent.stateLess);

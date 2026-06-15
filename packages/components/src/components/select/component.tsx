@@ -45,7 +45,7 @@ import { SelectController } from './controller';
 	tag: 'kol-select-wc',
 	shadow: false,
 })
-export class KolSelectWc implements SelectAPI, FocusableElement, ClickableElement {
+export class KolSelectWc implements ClickableElement, FocusableElement, SelectAPI {
 	@Element() private readonly host?: HTMLKolSelectWcElement;
 	protected readonly ctaRef = createCtaRef<HTMLSelectElement>();
 

@@ -48,7 +48,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolTabs implements TabsAPI, FocusableElement, ClickableElement {
+export class KolTabs implements ClickableElement, FocusableElement, TabsAPI {
 	@Element() protected readonly host?: HTMLKolTabsElement;
 	private tabPanelsElement?: HTMLElement;
 	private onCreateLabel = `${translate('kol-new')} …`;

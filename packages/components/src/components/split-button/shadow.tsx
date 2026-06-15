@@ -39,7 +39,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolSplitButton implements SplitButtonProps, FocusableElement, ClickableElement /*, SplitButtonAPI*/ {
+export class KolSplitButton implements ClickableElement, FocusableElement, SplitButtonProps /*, SplitButtonAPI*/ {
 	@Element() protected readonly host?: HTMLKolSplitButtonElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
 	private popoverButtonRef?: HTMLKolPopoverButtonWcElement;

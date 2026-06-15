@@ -41,7 +41,7 @@ import { createCtaRef, directClick, directFocus } from '../../utils/element-inte
 	shadow: false,
 })
 // class implementing PopoverButtonProps and not API because we don't want to repeat the entire state and validation for button props
-export class KolPopoverButtonWc implements PopoverButtonProps, FocusableElement, ClickableElement {
+export class KolPopoverButtonWc implements ClickableElement, FocusableElement, PopoverButtonProps {
 	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
 	private readonly popoverCtrl = new PopoverController();
 	private popoverElement?: HTMLDivElement;
