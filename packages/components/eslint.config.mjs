@@ -228,4 +228,19 @@ export default [
 			'jsx-a11y/label-has-associated-control': 'off',
 		},
 	},
+
+	// E2E test overrides — relax strict typing for Playwright test patterns
+	// MUST come after TypeScript config to override its rules
+	{
+		files: ['src/**/*.e2e.ts'],
+		rules: {
+			// E2E tests use (window as any) for state sharing between test setup and assertions
+			'@typescript-eslint/no-explicit-any': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off',
+			// Playwright's evaluate() returns sync values but ESLint sees them as potentially async
+			'@typescript-eslint/await-thenable': 'off',
+			// Unused test variables are often intentional for documentation
+			'@typescript-eslint/no-unused-vars': 'off',
+		},
+	},
 ];

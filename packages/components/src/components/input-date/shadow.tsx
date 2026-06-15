@@ -120,12 +120,12 @@ export class KolInputDate implements ClickableElement, FocusableElement, InputDa
 		return this._initialValueType === 'Date' ? new Date(newValue) : (newValue as Iso8601);
 	}
 
-	private readonly onBlur = (event: Event) => {
+	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
 		this.inputHasFocus = false;
 	};
 
-	private readonly onFocus = (event: Event) => {
+	private readonly onFocus = (event: FocusEvent) => {
 		this.controller.onFacade.onFocus(event);
 		this.inputHasFocus = true;
 	};
