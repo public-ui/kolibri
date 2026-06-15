@@ -5,6 +5,7 @@ import clsx from '../../utils/clsx';
 import type {
 	AcceptPropType,
 	AriaDetailsPropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -49,7 +50,7 @@ import { InputFileController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputFile implements InputFileAPI, FocusableElement {
+export class KolInputFile implements ClickableElement, FocusableElement, InputFileAPI {
 	@Element() protected readonly host?: HTMLKolInputFileElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 

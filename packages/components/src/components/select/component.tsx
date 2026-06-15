@@ -7,6 +7,7 @@ import KolInputContainerFc from '../../functional-component-wrappers/InputContai
 import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
 import type {
 	AriaDetailsPropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -44,7 +45,7 @@ import { SelectController } from './controller';
 	tag: 'kol-select-wc',
 	shadow: false,
 })
-export class KolSelectWc implements SelectAPI, FocusableElement {
+export class KolSelectWc implements ClickableElement, FocusableElement, SelectAPI {
 	@Element() private readonly host?: HTMLKolSelectWcElement;
 	protected readonly ctaRef = createCtaRef<HTMLSelectElement>();
 

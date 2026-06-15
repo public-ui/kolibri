@@ -5,6 +5,7 @@ import clsx from '../../utils/clsx';
 import type {
 	AriaDetailsPropType,
 	AutoCompletePropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -53,7 +54,7 @@ import { InputDateController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputDate implements InputDateAPI, FocusableElement {
+export class KolInputDate implements ClickableElement, FocusableElement, InputDateAPI {
 	@Element() protected readonly host?: HTMLKolInputDateElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 

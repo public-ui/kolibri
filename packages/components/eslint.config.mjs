@@ -4,6 +4,7 @@ import tseslintPlugin from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import boundariesPlugin from 'eslint-plugin-boundaries';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
+import perfectionistPlugin from 'eslint-plugin-perfectionist';
 import kolibriPlugin from '../../eslint-rules/index.js';
 
 /**
@@ -37,6 +38,7 @@ export default [
 			'@typescript-eslint': tseslintPlugin,
 			'@stencil-community': stencilPlugin,
 			kolibri: kolibriPlugin,
+			perfectionist: perfectionistPlugin,
 		},
 		languageOptions: {
 			parser: tsParser,
@@ -119,6 +121,11 @@ export default [
 			'@stencil-community/ban-exported-const-enums': 'off',
 			'@stencil-community/strict-boolean-conditions': 'off',
 			'@stencil-community/ban-default-true': 'off',
+
+			/**
+			 * Keep `implements` / `extends` heritage clauses sorted alphabetically.
+			 */
+			'perfectionist/sort-heritage-clauses': ['error', { type: 'alphabetical', order: 'asc' }],
 
 			eqeqeq: 'error',
 			'no-console': 'error',

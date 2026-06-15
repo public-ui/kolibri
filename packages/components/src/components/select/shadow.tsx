@@ -35,7 +35,7 @@ import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 	},
 	shadow: true,
 })
-export class KolSelect implements SelectProps, FocusableElement {
+export class KolSelect implements FocusableElement, SelectProps {
 	@Element() protected readonly host?: HTMLKolSelectElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolSelectWcElement>();
 

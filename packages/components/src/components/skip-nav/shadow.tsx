@@ -19,7 +19,7 @@ import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 	},
 	shadow: true,
 })
-export class KolSkipNav implements SkipNavAPI, FocusableElement {
+export class KolSkipNav implements FocusableElement, SkipNavAPI {
 	@Element() protected readonly host?: HTMLKolSkipNavElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolLinkWcElement>();
 
