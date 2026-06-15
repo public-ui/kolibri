@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { LinkApi } from '../../internal/functional-components/link/api';
+import type { LinkButtonApi } from '../../internal/functional-components/link/api';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { LinkButtonController } from '../../internal/functional-components/link/controller';
 import type {
@@ -39,7 +39,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolLinkButton extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi> {
+export class KolLinkButton extends BaseWebComponent<LinkButtonApi> implements WebComponentInterface<LinkButtonApi> {
 	@Element() private readonly host?: HTMLKolLinkButtonElement;
 
 	private readonly ctrl = new LinkButtonController(this.stateAccess);
@@ -97,7 +97,7 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> implements WebCompo
 					tabIndex={this.ctrl.getRenderProp('tabIndex')}
 					target={this.ctrl.getRenderProp('target')}
 					tooltipAlign={this.ctrl.getRenderProp('tooltipAlign')}
-					variant={this.ctrl.getRenderProp('variant')}
+					variant={this.ctrl.getVariant()}
 					onAnchorClick={this.handleAnchorClick}
 					tooltipId={this.ctrl.getTooltipId()}
 					refTooltipFloating={this.ctrl.setTooltipRef}

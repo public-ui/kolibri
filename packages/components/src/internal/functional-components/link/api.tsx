@@ -96,3 +96,24 @@ export const linkButtonPropsConfig = {
 		tooltipAlignProp,
 	],
 } as const satisfies PropsConfigShape;
+
+/**
+ * Public API type for kol-link-button. Mirrors {@link LinkApi} but is derived
+ * from {@link linkButtonPropsConfig}, so the `variant` render/prop type is the
+ * typed `ButtonVariant` enum instead of the free-form link class name.
+ */
+export type LinkButtonApi = ApiFromConfig<
+	typeof linkButtonPropsConfig,
+	{
+		Methods: {
+			focus: () => void;
+			click: () => void;
+		};
+		Refs: {
+			anchor: HTMLAnchorElement;
+		};
+		States: {
+			ariaCurrent: string;
+		};
+	}
+>;

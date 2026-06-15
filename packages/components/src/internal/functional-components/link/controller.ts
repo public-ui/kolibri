@@ -4,7 +4,7 @@ import { setEventTarget } from '../../../schema';
 import type { AlignPropType } from '../../../schema/props/align';
 import type { KoliBriIconsProp } from '../../../schema/types/icons';
 import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
-import type { AriaCurrentValuePropType } from '../../props';
+import type { AriaCurrentValuePropType, ButtonVariant } from '../../props';
 import {
 	accessKeyProp,
 	ariaControlsProp,
@@ -322,6 +322,16 @@ export class LinkButtonController extends LinkController {
 		buttonVariantProp.apply(value, (v) => {
 			this.setRenderProp('variant', v);
 		});
+	}
+
+	/**
+	 * Returns the validated render variant as the typed {@link ButtonVariant} union.
+	 *
+	 * The assertion is safe because {@link watchVariant} normalizes every value through
+	 * `buttonVariantProp`, which only ever stores one of the known button variants.
+	 */
+	public getVariant(): ButtonVariant {
+		return this.getRenderProp('variant') as ButtonVariant;
 	}
 }
 
