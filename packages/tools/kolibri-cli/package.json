@@ -47,7 +47,7 @@
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
 		"@public-ui/eslint-config": "workspace:*",
-		"@types/node": "25.9.2",
+		"@types/node": "25.9.3",
 		"@types/semver": "7.7.1",
 		"cross-env": "10.1.0",
 		"eslint": "9.39.4",

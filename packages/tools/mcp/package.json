@@ -76,7 +76,7 @@
 		"@modelcontextprotocol/inspector": "0.22.0",
 		"@public-ui/eslint-config": "workspace:*",
 		"@types/express": "5.0.6",
-		"@types/node": "25.9.2",
+		"@types/node": "25.9.3",
 		"eslint": "9.39.4",
 		"knip": "6.16.1",
 		"nodemon": "3.1.14",
