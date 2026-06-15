@@ -1,4 +1,6 @@
 /dist/
+/app/dist/
+/app/public/assets/
 
 *~
 *.sw[mnpcod]

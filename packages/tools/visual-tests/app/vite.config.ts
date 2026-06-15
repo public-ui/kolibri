@@ -14,6 +14,7 @@ function getGitCommitHash(): string | null {
 }
 
 export default defineConfig({
+	root: __dirname,
 	base: './',
 	plugins: [react(), UnoCSS()],
 	resolve: {
@@ -31,6 +32,7 @@ export default defineConfig({
 		'process.env.PLATFORM': JSON.stringify(process.platform),
 	},
 	build: {
+		emptyOutDir: true,
 		sourcemap: true,
 	},
 	server: {

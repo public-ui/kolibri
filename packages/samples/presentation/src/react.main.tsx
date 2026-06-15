@@ -4,7 +4,11 @@ import { HashRouter as Router } from 'react-router-dom';
 
 import { bootstrap } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
-import { BWSt, DEFAULT, DesyV11, ECL_EC, ECL_EU, KERN_V2 } from '@public-ui/themes';
+import { BWSt } from '@public-ui/theme-bwst';
+import { DEFAULT } from '@public-ui/theme-default';
+import { DesyV11 } from '@public-ui/theme-desy';
+import { ECL_EC, ECL_EU } from '@public-ui/theme-ecl';
+import { KERN_V2 } from '@public-ui/theme-kern';
 
 import { App } from '@public-ui/sample-react';
 
