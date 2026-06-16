@@ -1,0 +1,2 @@
+import{Mt as e}from"./index-D0irt19k.js";var t=(t,n,r)=>{e(t,n,e=>typeof e==`string`&&i.includes(e),new Set(i),r,{defaultValue:`top`})},n=[`left`,`right`],r=[`top`,`bottom`],i=[...n,...r],a=(e,n)=>{t(e,`_align`,n)};export{a as n,t as r,i as t};
+//# sourceMappingURL=align-EYZIy9bM-gEasf_XE.js.map

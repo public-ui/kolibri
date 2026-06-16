@@ -1,0 +1,2 @@
+import{Dt as e,kt as t}from"./index-D0irt19k.js";var n=(n,r,i)=>{t(r,`_links`,e=>typeof e==`object`&&(typeof e._href==`string`||typeof e._label==`string`),i),e(n,r.state._links.length)};export{n as t};
+//# sourceMappingURL=validation-eb_lrBTV-DmaghXo1.js.map

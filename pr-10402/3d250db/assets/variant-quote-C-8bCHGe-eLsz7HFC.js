@@ -1,0 +1,2 @@
+import{n as e,o as t}from"./normalizers-872FeReY-BfvDM2nn.js";function n(){throw Error(`This controller does not use component state.`)}var r=class{constructor(){this.stateAccess={setState:(e,t)=>{this[e]=t},getState:e=>this[e]}}};r.stateLess=Object.freeze({setState:n,getState:n});var i=new Set([`eager`,`lazy`]),a=e(`loading`,`lazy`,e=>t(e),e=>i.has(e)),o=new Set([`block`,`inline`]),s=e(`variant`,`inline`,e=>t(e),e=>o.has(e));export{a as n,s as r,r as t};
+//# sourceMappingURL=variant-quote-C-8bCHGe-eLsz7HFC.js.map
