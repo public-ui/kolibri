@@ -1,7 +1,7 @@
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
 import { register as coreRegister, getDefaultThemeName } from 'adopted-style-sheets';
 import type { KoliBriFeatureFlags, Mode } from '../schema';
-import { getRegisteredThemeFeatureFlag, getThemeFeatureFlags, Log, setRuntimeMode } from '../schema';
+import { getConflictingThemeFeatureFlagKeys, getRegisteredThemeFeatureFlag, getThemeFeatureFlags, Log, setRuntimeMode } from '../schema';
 import { setCustomTagNames } from './component-names';
 import { initializeI18n } from './i18n';
 
@@ -48,6 +48,20 @@ export const bootstrap = async (
 	const coreRegisterReturnValue = await coreRegister(themes, loaders, koliBriOptions);
 	initialized = true;
 	options = koliBriOptions;
+
+	// In 'auto' theme detection mode adopted-style-sheets does not expose a global active theme,
+	// so theme-declared feature flags are resolved from the first registered theme that declares
+	// them (see getRegisteredThemeFeatureFlag). Warn when registered themes declare conflicting
+	// values for the same flag, because the resolved value may then not match the visually active
+	// theme; an app-level `features` override removes the ambiguity.
+	if (!getDefaultThemeName()) {
+		const conflictingFeatureFlags = getConflictingThemeFeatureFlagKeys();
+		if (conflictingFeatureFlags.length > 0) {
+			Log.warn(
+				`Registered themes declare conflicting feature flag(s) ${conflictingFeatureFlags.map((key) => `"${String(key)}"`).join(', ')} while theme detection mode is 'auto'. The first registered theme's value is used – set the flag via the bootstrap "features" option to resolve the ambiguity.`,
+			);
+		}
+	}
 
 	// Only log development message when actually in development mode
 	Log.info('Development mode active - Enhanced debugging features available');

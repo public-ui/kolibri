@@ -20,6 +20,7 @@ interface SchemaApi {
 	KoliBri: { createTheme: (name: string, cssMap: Record<string, string>, featureFlags?: KoliBriFeatureFlags) => unknown };
 	getThemeFeatureFlags: (themeName: string) => KoliBriFeatureFlags | undefined;
 	getRegisteredThemeFeatureFlag: <K extends FeatureFlagKey>(key: K) => KoliBriFeatureFlags[K] | undefined;
+	getConflictingThemeFeatureFlagKeys: () => FeatureFlagKey[];
 }
 
 const importBootstrap = async (): Promise<BootstrapApi> => (await import('../bootstrap')) as unknown as BootstrapApi;
@@ -137,5 +138,19 @@ describe('theme feature-flag registry', () => {
 		schemaApi.KoliBri.createTheme('empty-theme', { GLOBAL: '' });
 
 		expect(schemaApi.getRegisteredThemeFeatureFlag('inputNumberButtons')).toBeUndefined();
+	});
+
+	it('detects flags declared with conflicting values across registered themes', () => {
+		schemaApi.KoliBri.createTheme('light-theme', { GLOBAL: '' }, { inputNumberButtons: 'show' });
+		schemaApi.KoliBri.createTheme('dark-theme', { GLOBAL: '' }, { inputNumberButtons: 'hide' });
+
+		expect(schemaApi.getConflictingThemeFeatureFlagKeys()).toEqual(['inputNumberButtons']);
+	});
+
+	it('reports no conflict when registered themes agree on a flag value', () => {
+		schemaApi.KoliBri.createTheme('first-theme', { GLOBAL: '' }, { inputNumberButtons: 'hide' });
+		schemaApi.KoliBri.createTheme('second-theme', { GLOBAL: '' }, { inputNumberButtons: 'hide' });
+
+		expect(schemaApi.getConflictingThemeFeatureFlagKeys()).toEqual([]);
 	});
 });

@@ -34,6 +34,31 @@ export const getRegisteredThemeFeatureFlag = <K extends keyof KoliBriFeatureFlag
 	return undefined;
 };
 
+/**
+ * Returns the feature-flag keys that registered themes declare with more than one distinct
+ * value. In theme detection mode `'auto'` there is no global active theme, so such conflicts
+ * cannot be resolved deterministically – `getRegisteredThemeFeatureFlag()` falls back to the
+ * first registered value. `bootstrap()` warns about these keys so the ambiguity is surfaced.
+ */
+export const getConflictingThemeFeatureFlagKeys = (): (keyof KoliBriFeatureFlags)[] => {
+	const firstValueByKey = new Map<keyof KoliBriFeatureFlags, KoliBriFeatureFlags[keyof KoliBriFeatureFlags]>();
+	const conflicting = new Set<keyof KoliBriFeatureFlags>();
+	for (const flags of _themeFeatureFlagsRegistry.values()) {
+		for (const key of Object.keys(flags) as (keyof KoliBriFeatureFlags)[]) {
+			const value = flags[key];
+			if (value === undefined) {
+				continue;
+			}
+			if (!firstValueByKey.has(key)) {
+				firstValueByKey.set(key, value);
+			} else if (firstValueByKey.get(key) !== value) {
+				conflicting.add(key);
+			}
+		}
+	}
+	return [...conflicting];
+};
+
 const _base = new Theme<'kol', keyof typeof KeyEnum, keyof typeof TagEnum>('kol', KeyEnum, TagEnum);
 const _origCreateTheme = _base.createTheme.bind(_base);
 
