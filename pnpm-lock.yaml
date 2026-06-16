@@ -904,6 +904,22 @@ importers:
         specifier: 17.13.0
         version: 17.13.0(typescript@5.9.3)
 
+  packages/samples/ssr:
+    dependencies:
+      '@public-ui/hydrate':
+        specifier: workspace:*
+        version: link:../../adapters/hydrate
+    devDependencies:
+      '@public-ui/components':
+        specifier: workspace:*
+        version: link:../../components
+      prettier:
+        specifier: 3.8.4
+        version: 3.8.4
+      prettier-plugin-organize-imports:
+        specifier: 4.3.0
+        version: 4.3.0(prettier@3.8.4)(typescript@5.9.3)
+
   packages/test-tag-name-transformer:
     devDependencies:
       '@public-ui/themes':

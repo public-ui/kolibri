@@ -12,6 +12,7 @@ packages:
   - packages/samples/angular
   - packages/samples/presentation
   - packages/samples/react
+  - packages/samples/ssr
   - packages/test-tag-name-transformer
   - packages/themes/bwst
   - packages/themes/default

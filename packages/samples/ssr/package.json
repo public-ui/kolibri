@@ -1,0 +1,50 @@
+{
+	"name": "@public-ui/sample-ssr",
+	"version": "4.3.0-rc.1",
+	"description": "Server-side rendering (SSR) reference sample for KoliBri using @public-ui/hydrate and Declarative Shadow DOM (e.g. for TYPO3 and other CMS).",
+	"license": "EUPL-1.2",
+	"private": true,
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/public-ui/kolibri"
+	},
+	"bugs": {
+		"url": "https://github.com/public-ui/kolibri/issues",
+		"email": "kolibri@itzbund.de"
+	},
+	"author": {
+		"name": "Informationstechnikzentrum Bund",
+		"email": "kolibri@itzbund.de"
+	},
+	"keywords": [
+		"cms",
+		"declarative-shadow-dom",
+		"hydrate",
+		"kolibri",
+		"server-side-rendering",
+		"ssr",
+		"typo3"
+	],
+	"scripts": {
+		"build": "node src/build.mjs",
+		"build:deps": "pnpm --filter @public-ui/sample-ssr^... build",
+		"format": "prettier --check src test",
+		"serve": "node src/server.mjs",
+		"start": "node src/server.mjs",
+		"test:unit": "node --test --test-force-exit \"test/**/*.test.mjs\""
+	},
+	"dependencies": {
+		"@public-ui/hydrate": "workspace:*"
+	},
+	"devDependencies": {
+		"@public-ui/components": "workspace:*",
+		"prettier": "3.8.4",
+		"prettier-plugin-organize-imports": "4.3.0"
+	},
+	"files": [
+		"README.md",
+		"src",
+		"typo3"
+	]
+}
