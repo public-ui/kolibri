@@ -1,7 +1,7 @@
 import type { Generic, LoaderCallback, RegisterOptions } from 'adopted-style-sheets';
 import { register as coreRegister, getDefaultThemeName } from 'adopted-style-sheets';
 import type { KoliBriFeatureFlags, Mode } from '../schema';
-import { getThemeFeatureFlags, Log, setRuntimeMode } from '../schema';
+import { getRegisteredThemeFeatureFlag, getThemeFeatureFlags, Log, setRuntimeMode } from '../schema';
 import { setCustomTagNames } from './component-names';
 import { initializeI18n } from './i18n';
 
@@ -62,15 +62,24 @@ export const getOptions = () => options;
 /**
  * Returns the value of a feature flag, with the following priority:
  * 1. App-level override (features option passed to bootstrap)
- * 2. Active theme's declared flags (set via KoliBri.createTheme third argument)
- * 3. undefined (component falls back to its built-in default)
+ * 2. Active default theme's declared flags (set via KoliBri.createTheme third argument)
+ * 3. Any registered theme's declared flags – fallback for theme detection mode 'auto'
+ * 4. undefined (component falls back to its built-in default)
  */
 export const getFeatureFlag = <K extends keyof KoliBriFeatureFlags>(key: K): KoliBriFeatureFlags[K] | undefined => {
+	// 1. App-level override.
 	if (options?.features?.[key] !== undefined) {
 		return options.features[key];
 	}
+	// 2. Declared flags of the active default theme. getDefaultThemeName() only resolves a
+	//    name in detection mode 'fixed'; in mode 'auto' it returns null (see step 3).
 	const themeName = getDefaultThemeName();
-	return themeName ? getThemeFeatureFlags(themeName)?.[key] : undefined;
+	if (themeName) {
+		return getThemeFeatureFlags(themeName)?.[key];
+	}
+	// 3. Fallback for detection mode 'auto': no global default theme is set, so resolve the
+	//    flag from any registered theme that declares it.
+	return getRegisteredThemeFeatureFlag(key);
 };
 
 /**
