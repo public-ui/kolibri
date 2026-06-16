@@ -1,0 +1,2 @@
+import{o as e}from"./index-CcZkV93W.js";import{t}from"./component-CXsKiPA_-D6muGqgg.js";var n=({label:n,badgeText:r,id:i,refFloating:a})=>e(`div`,{class:`kol-tooltip__floating`,hidden:n.length===0,ref:a},e(`div`,{class:`kol-tooltip__arrow`}),e(t,{class:`kol-tooltip__content`,id:i||void 0,badgeText:r,label:n}));export{n as t};
+//# sourceMappingURL=component-BvH_TpvQ-DPFePzrL.js.map
