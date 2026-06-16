@@ -1,0 +1,486 @@
+import{Ct as e,K as t,a as n,jt as r,o as i,s as a}from"./index-COQinNDk.js";import{n as o}from"./dev.utils-W9Q9EkQD-CsUfHC-c.js";import"./isArray-CcrBs4JM-DiEJ1b3e.js";import"./_Uint8Array-kJHDjtoP-CTkgs_0o.js";import"./normalizers-B5NKuJgN-DHYURfeK.js";import"./label-BT-6lb8r-mVMZt5RX.js";import"./base-web-component-CArCAUxk-C2mHqcmx.js";import"./base-controller-CXhqh4cR-BNzx0WwK.js";import{t as s}from"./tslib.es6-QNbPBOk5-DpzS01Oy.js";import{t as c}from"./clsx-COFh-Vc8-alQuJLqj.js";import"./component--kVItxH9-BbZbKP7g.js";import"./component-CBypoTPN-DgJ3q8lv.js";import"./component-rq1Vzq3l-CSonqhST.js";import"./align-floating-elements-CqZdcuwL-CsqcG2uX.js";import"./align-DdWzcKWR-BOx50GX6.js";import"./controller-CJs4fTO0-DO9M07KD.js";import"./Heading-BjXtppmV-BkoqM3zM.js";import"./disabled-DzYBnXfG-CRNqatQC.js";import"./label-BiOix5de-ZLLPIDCB.js";import"./element-focus-BQXzaLL9-oq1SsV6e.js";import{n as l,r as u,t as d}from"./element-interaction-C5-6aPzz-CwUv4L8C.js";import"./i18n-CFuSxM6N-Ddcp8cez.js";import"./Alert-fNlqHwku-BAWF7Bmf.js";import"./icons-BfxrxChI-CmAKbTte.js";import"./access-and-short-key-C7QS_Tel-BWthbtoz.js";import"./hide-label-jbOZNqJV-mV5uciyV.js";import"./tooltip-align-BZrIplzz-Cop6IbsE.js";import"./variant-class-name-B1jsQGPM-DIIIXknx.js";import{n as f}from"./controller-B21n_zqt-BJPX00x5.js";import"./aria-labelledby-6-ki3akM-C6lJ0lQF.js";import"./aria-details-CG4GFq8t-Cc62iZik.js";import"./associated.controller-4x11SU1V-2jvLWwne.js";import{t as p}from"./FormFieldStateWrapper-DtrgCLRz-D5XkpsYZ.js";import{n as m,t as h}from"./controller-icon-U-abwErp-CqMIeR4O.js";import"./Input-D5CL-1xG-yKy2gKAR.js";import{t as g}from"./InputStateWrapper-DNCSa5jy-Bo1K2FlS.js";import{t as _}from"./required-By197yB9-ClhhWQgx.js";import{t as v}from"./suggestions-C2o-U3UR-gi6HoOhE.js";import{t as y}from"./auto-complete-p-8iouPy-BKVnxM5u.js";import{t as b}from"./read-only-DIC7Vhiy-chwcOtOW.js";var x=[`date`,`datetime-local`,`month`,`time`,`week`],S=e=>typeof e==`string`&&x.includes(e),C=(e,t)=>{r(e,`_type`,S,new Set(x),t)},w=class t extends m{constructor(e,n,i){super(e,n,i),this.validateIso8601=(e,n,i)=>r(this.component,e,e=>e==null||e===``||this.validateDateString(e),new Set([`Date`,`string{ISO-8601}`]),t.tryParseToString(n,this.component._type,this.component._step),{hooks:{afterPatch:e=>{typeof e==`string`&&i&&i(e)}}}),this.component=e}validateAutoComplete(e){y(this.component,e)}validateSuggestions(e){v(this.component,e)}static tryParseToString(e,t,n){if(typeof e==`string`||e===null)return e;if(typeof e==`object`&&e instanceof Date){let r=e.getFullYear(),i=String(e.getMonth()+1).padStart(2,`0`),a=String(e.getDate()).padStart(2,`0`),o=String(e.getHours()).padStart(2,`0`),s=String(e.getMinutes()).padStart(2,`0`),c=String(e.getSeconds()).padStart(2,`0`),l=[r,i,a].join(`-`),u=[o,s,c].join(`:`);switch(t){case`date`:return l;case`datetime-local`:return`${l}T${u}`;case`month`:return`${r}-${i}`;case`time`:return n===void 0||String(n)===`60`?`${o}:${s}`:u;case`week`:return`${r}-W${this.getWeekNumberOfDate(e)}`}}}static getWeekNumberOfDate(e){let t=new Date(e),n=(t.getDay()+6)%7;t.setDate(t.getDate()-n+3);let r=t.valueOf();return t.setMonth(0,1),t.getDay()!==4&&t.setMonth(0,1+(4-t.getDay()+7)%7),(1+Math.ceil((r-t.valueOf())/6048e5)).toString().padStart(2,`0`)}validateDateString(e){switch(this.component._type){case`date`:return t.isoDateRegex.test(e);case`datetime-local`:return t.isoLocalDateTimeRegex.test(e);case`month`:return t.isoMonthRegex.test(e);case`time`:return t.isoTimeRegex.test(e);case`week`:return t.isoWeekRegex.test(e);default:return!1}}onBlur(e){super.onBlur(e),!!e.target.value!=!!this.component._value&&(this.component._value=e.target.value)}validateMax(e){this.validateIso8601(`_max`,e)}validateMin(e){this.validateIso8601(`_min`,e)}validateOn(t){e(this.component,`_on`,Object.assign(Object.assign({},t),{onChange:(e,n)=>{!!n!=!!this.component._value&&(this.component._value=n),t?.onChange&&t.onChange(e,n)}}))}validateReadOnly(e){b(this.component,e)}validateRequired(e){_(this.component,e)}validateStep(e){this.validateNumber(`_step`,e)}validateType(e){C(this.component,e)}validateValue(e){this.validateValueEx(e)}validateValueEx(e,t){this.validateIso8601(`_value`,e,t),this.setFormAssociatedValue(this.component.state._value)}componentWillLoad(){super.componentWillLoad(),this.validateAutoComplete(this.component._autoComplete),this.validateMax(this.component._max),this.validateMin(this.component._min),this.validateLabel(this.component._label),this.validateSuggestions(this.component._suggestions),this.validateOn(this.component._on),this.validateReadOnly(this.component._readOnly),this.validateRequired(this.component._required),this.validateStep(this.component._step),this.validateType(this.component._type),this.validateValue(this.component._value)}};w.isoDateRegex=/^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])/,w.isoLocalDateTimeRegex=/^\d{4}-([0]\d|1[0-2])-([0-2]\d|3[01])[T ][0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?/,w.isoMonthRegex=/^\d{4}-([0]\d|1[0-2])/,w.isoTimeRegex=/^[0-2]\d:[0-5]\d(:[0-5]\d(?:\.\d+)?)?/,w.isoWeekRegex=/^\d{4}-W(?:[0-4]\d|5[0-3])$/;var T=`@charset "UTF-8";
+/*
+* This file defines the layer order for all CSS layers used in KoliBri.
+* The order is important as it determines the cascade priority.
+*
+* Layer order (lowest to highest priority):
+* 1. kol-a11y - Accessibility defaults and requirements
+* 2. kol-global - Global component styles and resets
+* 3. kol-component - Component-specific styles
+* 4. kol-theme-global - Theme-specific global styles
+* 5. kol-theme-component - Theme-specific component styles
+*/
+@layer kol-a11y, kol-global, kol-component, kol-theme-global, kol-theme-component;
+/* forward the rem function */
+/*
+ * This file contains all rules for accessibility.
+ */
+@layer kol-a11y {
+  :host {
+    /*
+                   * Minimum size of interactive elements.
+                   */
+    --a11y-min-size: calc(44 * 1rem / var(--kolibri-root-font-size, 16));
+    /*
+     * No element should be used without verifying the contrast ratio of its background and font colors.
+     * By initially setting the background color to white and the font color to black,
+     * the contrast ratio is ensured and explicit adjustment is forced.
+     */
+    color: black;
+    background-color: white;
+    /*
+     * Verdana is an accessible font that can be used without requiring additional loading time.
+     */
+    font-family: Verdana;
+    /*
+     * Letter spacing is required for all texts.
+     */
+    letter-spacing: inherit;
+    /*
+     * Word spacing is required for all texts.
+     */
+    word-spacing: inherit;
+    /*
+     * Text should be aligned left by default to provide a predictable starting point.
+     */
+    text-align: left;
+  }
+  * {
+    /*
+     * This rule enables the word dividing for all texts. That is important for high zoom levels.
+     */
+    hyphens: auto;
+    /*
+     * This rule enables the word dividing for all texts. That is important for high zoom levels.
+     */
+    word-break: break-word;
+  }
+  /*
+   * All interactive elements should have a minimum size of to-rem(44).
+   */
+  /* input:not([type='checkbox'], [type='radio'], [type='range']), */
+  /* option, */
+  /* select, */
+  /* textarea, */
+  button,
+  .kol-input .input {
+    min-width: var(--a11y-min-size);
+    min-height: var(--a11y-min-size);
+  }
+  /*
+   * Some interactive elements should not inherit the font-family and font-size.
+   */
+  a,
+  button,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  input,
+  option,
+  select,
+  textarea {
+    /*
+     * All elements should inherit the text color from his parent element.
+     */
+    color: inherit;
+    /*
+     * All elements should inherit the font family from his parent element.
+     */
+    font-family: inherit;
+    /*
+     * All elements should inherit the font size from his parent element.
+     */
+    font-size: inherit;
+    /*
+     * Letter spacing is required for all texts.
+     */
+    letter-spacing: inherit;
+    /*
+     * Word spacing is required for all texts.
+     */
+    word-spacing: inherit;
+  }
+  /**
+  * Sometimes we need the semantic element for accessibility reasons,
+  * but we don't want to show it.
+  *
+  * - https://www.a11yproject.com/posts/how-to-hide-content/
+  */
+  .visually-hidden {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+}
+@layer kol-global {
+  /*
+   * Dieses CSS stellt sicher, dass der Standard-Style
+   * von A und Button resettet werden.
+   */
+  :is(a, button) {
+    background-color: transparent;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    /* 100% needed for custom width from outside */
+  }
+  /*
+   * Ensure elements with hidden attribute to be actually not visible
+   * @see https://meowni.ca/hidden.is.a.lie.html
+   */
+  [hidden] {
+    display: none !important;
+  }
+  .badge-text-hint {
+    color: black;
+    background-color: white;
+  }
+}
+@layer kol-global {
+  :host {
+    /*
+     * The max-width is needed to prevent the table from overflowing the
+     * parent node, if the table is wider than the parent node.
+     */
+    max-width: 100%;
+    font-size: calc(16 * 1rem / var(--kolibri-root-font-size, 16));
+  }
+  * {
+    /*
+     * We prefer to box-sizing: border-box for all elements.
+     */
+    box-sizing: border-box;
+  }
+  .kol-span {
+    /* KolSpan is a layout component with icons in all directions and a label text in the middle. */
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    /* The sub span in KolSpan is the horizontal span with icon left and right and the label text in the middle. */
+  }
+  .kol-span__container {
+    display: flex;
+    align-items: center;
+  }
+  a,
+  button {
+    cursor: pointer;
+  }
+  .kol-span .kol-span__label--hide-label .kol-span__label {
+    display: none;
+  }
+  /* Reset browser agent style. */
+  button:disabled {
+    color: unset;
+  }
+  .disabled label,
+  .disabled:focus-within label,
+  [aria-disabled=true],
+  [aria-disabled=true]:focus,
+  [disabled],
+  [disabled]:focus {
+    outline: none;
+    cursor: not-allowed;
+  }
+  [aria-disabled=true]:focus .kol-span,
+  [disabled]:focus .kol-span {
+    outline: none !important;
+  }
+  .hastooltip {
+    z-index: 900 !important;
+  }
+}
+@layer kol-component {
+  :host {
+    display: block;
+  }
+}
+@font-face {
+  font-family: "kolicons";
+  src: url("kolicons.eot?t=1781640823580"); /* IE9*/
+  src: url("kolicons.eot?t=1781640823580#iefix") format("embedded-opentype"), url("kolicons.woff2?t=1781640823580") format("woff2"), url("kolicons.woff?t=1781640823580") format("woff"), url("kolicons.ttf?t=1781640823580") format("truetype"), url("kolicons.svg?t=1781640823580#kolicons") format("svg"); /* iOS 4.1- */
+}
+@layer kol-component {
+  [class^=kolicon-], [class*=" kolicon-"] {
+    font-family: "kolicons";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .kolicon-alert-error::before {
+    content: "\\ea01";
+  }
+  .kolicon-alert-info::before {
+    content: "\\ea02";
+  }
+  .kolicon-alert-success::before {
+    content: "\\ea03";
+  }
+  .kolicon-alert-warning::before {
+    content: "\\ea04";
+  }
+  .kolicon-check::before {
+    content: "\\ea05";
+  }
+  .kolicon-chevron-double-left::before {
+    content: "\\ea06";
+  }
+  .kolicon-chevron-double-right::before {
+    content: "\\ea07";
+  }
+  .kolicon-chevron-down::before {
+    content: "\\ea08";
+  }
+  .kolicon-chevron-left::before {
+    content: "\\ea09";
+  }
+  .kolicon-chevron-right::before {
+    content: "\\ea0a";
+  }
+  .kolicon-chevron-up::before {
+    content: "\\ea0b";
+  }
+  .kolicon-cogwheel::before {
+    content: "\\ea0c";
+  }
+  .kolicon-cross::before {
+    content: "\\ea0d";
+  }
+  .kolicon-eye-closed::before {
+    content: "\\ea0e";
+  }
+  .kolicon-eye::before {
+    content: "\\ea0f";
+  }
+  .kolicon-house::before {
+    content: "\\ea10";
+  }
+  .kolicon-kolibri::before {
+    content: "\\ea11";
+  }
+  .kolicon-link-external::before {
+    content: "\\ea12";
+  }
+  .kolicon-link::before {
+    content: "\\ea13";
+  }
+  .kolicon-minus::before {
+    content: "\\ea14";
+  }
+  .kolicon-plus::before {
+    content: "\\ea15";
+  }
+  .kolicon-settings::before {
+    content: "\\ea16";
+  }
+  .kolicon-sort-asc::before {
+    content: "\\ea17";
+  }
+  .kolicon-sort-desc::before {
+    content: "\\ea18";
+  }
+  .kolicon-sort-neutral::before {
+    content: "\\ea19";
+  }
+  .kolicon-up::before {
+    content: "\\ea1a";
+  }
+  .kolicon-version::before {
+    content: "\\ea1b";
+  }
+}
+@layer kol-component {
+  .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  .kol-tooltip {
+    display: contents;
+  }
+  .kol-tooltip__floating {
+    opacity: 0;
+    display: none;
+    position: fixed;
+    /* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
+    top: 0;
+    left: 0;
+    /* Can be used to specify the tooltip-width from the outside. Unset by default.  */
+    width: var(--kol-tooltip-width, max-content);
+    min-width: calc(8 * 1rem / var(--kolibri-root-font-size, 16));
+    max-width: 90vw;
+    max-height: 90vh;
+    animation-direction: normal;
+    /* Can be used to specify the animation duration from the outside. 250ms by default. */
+    animation-duration: var(--kolibri-tooltip-animation-duration, 250ms);
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+  .kol-tooltip__floating.hide {
+    animation-name: hideTooltip;
+  }
+  .kol-tooltip__floating.show {
+    animation-name: showTooltip;
+  }
+  .kol-tooltip__arrow {
+    transform: rotate(45deg);
+    color: black;
+    background-color: white;
+    position: absolute;
+    z-index: 999;
+    width: calc(10 * 1rem / var(--kolibri-root-font-size, 16));
+    height: calc(10 * 1rem / var(--kolibri-root-font-size, 16));
+  }
+  .kol-tooltip__content {
+    color: black;
+    background-color: white;
+    position: relative;
+    z-index: 1000;
+  }
+  @keyframes hideTooltip {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
+  @keyframes showTooltip {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+@layer kol-component {
+  .kol-alert .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  .kol-alert :host {
+    display: inline-block;
+  }
+  .kol-alert .kol-button {
+    display: flex;
+    min-height: var(--a11y-min-size);
+    font-style: calc(16 * 1rem / var(--kolibri-root-font-size, 16));
+    text-decoration-line: none;
+  }
+  .kol-alert .kol-button::before {
+    /* Render zero-width character as first element to set the baseline correctly. */
+    content: "​";
+  }
+  .kol-alert .kol-button__text {
+    flex: 1 0 100%;
+  }
+  .kol-alert {
+    display: grid;
+  }
+  .kol-alert__container {
+    display: flex;
+    place-items: center;
+  }
+  .kol-alert__container-content {
+    flex-grow: 1;
+  }
+  .kol-alert__closer {
+    /* Visible with forced colors */
+    outline: transparent solid calc(1 * 1rem / var(--kolibri-root-font-size, 16));
+  }
+  .kol-form-field {
+    display: grid;
+  }
+  .kol-form-field:not(.kol-form-field--disabled) .kol-form-field__label {
+    cursor: pointer;
+  }
+  .kol-form-field__label-text {
+    flex-flow: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .kol-form-field--required .kol-form-field__label-text:has(.kol-span__slot[hidden])::after,
+  .kol-form-field--required .kol-tooltip__content .kol-span__label::after {
+    content: "*"/"";
+  }
+  .kol-input-container {
+    background-color: transparent;
+    display: grid;
+    position: relative;
+    width: 100%;
+    min-width: var(--a11y-min-size);
+    min-height: var(--a11y-min-size);
+    align-items: center;
+    grid-template-columns: 1fr;
+  }
+  .kol-input-container:has(> .kol-input-container__adornment--start) {
+    grid-template-columns: auto 1fr auto;
+  }
+  .kol-input-container__container {
+    position: relative;
+    z-index: 1;
+  }
+  .kol-input-container__adornment {
+    display: flex;
+    align-items: center;
+  }
+  .kol-input-container__adornment .kol-icon {
+    display: grid;
+    min-height: var(--a11y-min-size);
+    place-items: center;
+  }
+  .kol-input {
+    background-color: transparent;
+    width: 100%;
+    min-width: var(--a11y-min-size);
+  }
+  .kol-input:focus {
+    outline: none;
+  }
+  /**
+   * Workaround for detecting focus state of the native date input's calendar icon.
+   * The \`:focus-visible\` pseudo class does not work on the icon itself, but only on the input element.
+   * By using the \`content\` property we can detect whether the icon is focused by inspecting the computed style in JS.
+   * This should be replaced once native focus detection for the icon is available.
+   */
+  :host input[type=date],
+  :host input[type=datetime-local],
+  :host input[type=month],
+  :host input[type=time],
+  :host input[type=week] {
+    content: "native-icon-focused";
+  }
+  :host input[type=date]:focus-visible,
+  :host input[type=datetime-local]:focus-visible,
+  :host input[type=month]:focus-visible,
+  :host input[type=time]:focus-visible,
+  :host input[type=week]:focus-visible {
+    content: "native-icon-not-focused";
+  }
+  .kol-input {
+    cursor: text;
+  }
+  .kol-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+  }
+}`,E=class{async getValue(){return this.ctaRef.el&&this.remapValue(this.ctaRef.el?.value)}async focus(e){}async click(){}async reset(){this.state=Object.assign(Object.assign({},this.state),{_value:null}),this.controller.setFormAssociatedValue(``),this.ctaRef.el&&(this.ctaRef.el.value=``)}setInitialValueType(e){e instanceof Date?this._initialValueType=`Date`:typeof e==`string`?this._initialValueType=`String`:this._initialValueType=null}remapValue(e){return e===``?null:this._initialValueType===`Date`?new Date(e):e}getFormFieldProps(){return{state:this.state,class:c(`kol-input-date`,this.state._type,{"has-value":this.state._hasValue}),tooltipAlign:this._tooltipAlign,alert:this.showAsAlert()}}getInputProps(){return Object.assign(Object.assign({ref:this.ctaRef,state:this.state},this.controller.onFacade),{onBlur:this.onBlur,onFocus:this.onFocus,onKeyDown:this.onKeyDown,onChange:this.onChange,onInput:this.onInput})}render(){return i(p,Object.assign({key:`bdb5b2be3c97955e8036ff0eb2da5929b5fe7340`},this.getFormFieldProps()),i(h,{key:`ea6eaa82809610fe695a0fa769ccafc05823dbb6`,state:this.state},i(g,Object.assign({key:`d3df3c7f6806029661795c6e60052b6c077f0f0c`},this.getInputProps()))))}constructor(e){a(this,e),this.ctaRef=d(),this._initialValueType=null,this.onBlur=e=>{this.controller.onFacade.onBlur(e),this.inputHasFocus=!1},this.onFocus=e=>{this.controller.onFacade.onFocus(e),this.inputHasFocus=!0},this.onChange=e=>{let t=e.target.value,n=this.remapValue(t);this.controller.onFacade.onChange(e,n)},this.onInput=e=>{let t=e.target.value,n=this.remapValue(t);this._value=n,this.controller.onFacade.onInput(e,!0,n)},this.isNativeCalendarIconFocused=()=>!this.ctaRef.el||typeof window>`u`||typeof window.getComputedStyle!=`function`?!1:window.getComputedStyle(this.ctaRef.el).content.includes(`native-icon-focused`),this.onKeyDown=e=>{this.controller.onFacade.onKeyDown(e),(e.code===`Enter`||e.code===`NumpadEnter`)&&!this.isNativeCalendarIconFocused()&&f({form:this.host}),this.state._readOnly&&e.code===`Space`&&e.preventDefault()},this._autoComplete=`off`,this._disabled=!1,this._hideMsg=!1,this._hideLabel=!1,this._hint=``,this._readOnly=!1,this._required=!1,this._tooltipAlign=`top`,this._touched=!1,this._type=`date`,this.state={_hasValue:!1,_hideMsg:!1,_id:o(`input-date`),_label:``,_suggestions:[],_type:`datetime-local`},this.inputHasFocus=!1,this.controller=new w(this,`date`,this.host)}showAsAlert(){return!!this.state._touched&&!this.inputHasFocus}validateAccessKey(e){this.controller.validateAccessKey(e)}validateAriaDetails(e){this.controller.validateAriaDetails(e)}validateAutoComplete(e){this.controller.validateAutoComplete(e)}validateDisabled(e){this.controller.validateDisabled(e)}validateHideMsg(e){this.controller.validateHideMsg(e)}validateHideLabel(e){this.controller.validateHideLabel(e)}validateHint(e){this.controller.validateHint(e)}validateIcons(e){this.controller.validateIcons(e)}validateLabel(e){this.controller.validateLabel(e)}validateMax(e){this.controller.validateMax(e)}validateMin(e){this.controller.validateMin(e)}validateMsg(e){this.controller.validateMsg(e)}validateName(e){this.controller.validateName(e)}validateOn(e){this.controller.validateOn(e)}validateReadOnly(e){this.controller.validateReadOnly(e)}validateRequired(e){this.controller.validateRequired(e)}validateShortKey(e){this.controller.validateShortKey(e)}validateSmartButton(e){this.controller.validateSmartButton(e)}validateSuggestions(e){this.controller.validateSuggestions(e)}validateStep(e){this.controller.validateStep(e)}validateSyncValueBySelector(e){this.controller.validateSyncValueBySelector(e)}validateTouched(e){this.controller.validateTouched(e)}validateType(e){this.controller.validateType(e)}validateValue(e){e instanceof Date&&t("Date type will be removed in v3. Use `Iso8601` instead."),this.controller.validateValueEx(e),e!=null&&this.setInitialValueType(e)}validateVariant(e){this.controller.validateVariant(e)}componentWillLoad(){this._value!==void 0&&this.setInitialValueType(this._value),this._touched=this._touched===!0,this.validateAriaDetails(this._ariaDetails),this.controller.componentWillLoad(),this.state._hasValue=!!this.state._value,this.controller.addValueChangeListener(e=>this.state._hasValue=!!e)}get host(){return n(this)}static get watchers(){return{_accessKey:[`validateAccessKey`],_ariaDetails:[`validateAriaDetails`],_autoComplete:[`validateAutoComplete`],_disabled:[`validateDisabled`],_hideMsg:[`validateHideMsg`],_hideLabel:[`validateHideLabel`],_hint:[`validateHint`],_icons:[`validateIcons`],_label:[`validateLabel`],_max:[`validateMax`],_min:[`validateMin`],_msg:[`validateMsg`],_name:[`validateName`],_on:[`validateOn`],_readOnly:[`validateReadOnly`],_required:[`validateRequired`],_shortKey:[`validateShortKey`],_smartButton:[`validateSmartButton`],_suggestions:[`validateSuggestions`],_step:[`validateStep`],_syncValueBySelector:[`validateSyncValueBySelector`],_touched:[`validateTouched`],_type:[`validateType`],_value:[`validateValue`],_variant:[`validateVariant`]}}};s([u(`ctaRef`)],E.prototype,`focus`,null),s([l(`ctaRef`)],E.prototype,`click`,null),E.style={default:T};export{E as kol_input_date};
