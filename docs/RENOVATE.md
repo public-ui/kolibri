@@ -8,10 +8,11 @@ This document is the outcome of issue [#10270](https://github.com/public-ui/koli
 3. how to enable Renovate, and
 4. the migration checklist for retiring the current tooling.
 
-> **Status:** The `renovate.json` is committed as an **exemplary, ready-to-run configuration**.
-> Renovate is **not active yet** — it requires the Renovate GitHub App to be installed on the
-> `public-ui` organization (see [Enabling Renovate](#enabling-renovate)). Until then the existing
-> Dependabot + npm-check-updates automation stays in charge.
+> **Status:** The `renovate.json` and a self-hosted runner workflow
+> ([`.github/workflows/renovate.yml`](../.github/workflows/renovate.yml)) are committed as an
+> **exemplary, ready-to-run setup**. Renovate stays **idle** until that workflow runs — either on its
+> weekly schedule or via the manual **Run workflow** button (see [Enabling Renovate](#enabling-renovate)).
+> Until then the existing Dependabot + npm-check-updates automation stays in charge.
 
 ---
 
@@ -101,42 +102,35 @@ npx --yes --package renovate renovate-config-validator renovate.json
 
 ## 3. Enabling Renovate
 
-Pick **one** of two ways to run it.
+Two ways to run it; **this repo is wired for Option A**.
 
-### Option A — Mend-hosted GitHub App (recommended, zero maintenance)
+### Option A — Self-hosted via GitHub Actions (committed in this repo)
 
-1. An **org admin** installs the [Renovate GitHub App](https://github.com/apps/renovate) on
+This repo ships [`.github/workflows/renovate.yml`](../.github/workflows/renovate.yml). It runs Renovate
+on a weekly schedule (Mondays 04:00 UTC) **and** on demand via the **Run workflow** button
+(`workflow_dispatch`, with an optional `dry_run` preview). It authenticates through the existing GitHub
+App (`APP_ID` / `PRIVATE_KEY` secrets, shared with _04 - Update pnpm Lock_).
+
+To activate it:
+
+1. Ensure that GitHub App installation grants **contents: write**, **pull-requests: write**,
+   **issues: write** (for the Dependency Dashboard) and **workflows: write** (so the `github-actions`
+   manager may update `.github/workflows/*`). _Alternative:_ replace the app-token step with a
+   `RENOVATE_TOKEN` PAT/fine-grained token carrying the same scopes.
+2. Trigger the workflow once via **Run workflow** (optionally with `dry_run` enabled) to verify it, then
+   let the weekly schedule take over.
+
+> **Tip:** The `dry_run` input maps to `RENOVATE_DRY_RUN=full`, so the first manual run previews every PR
+> Renovate _would_ open without creating anything.
+
+### Option B — Mend-hosted GitHub App (alternative, zero maintenance)
+
+If you would rather not self-host, delete `.github/workflows/renovate.yml` and instead:
+
+1. Have an **org admin** install the [Renovate GitHub App](https://github.com/apps/renovate) on
    `public-ui` (or just on `public-ui/kolibri`).
-2. Renovate detects `renovate.json` and opens an onboarding/Dependency Dashboard issue.
+2. Renovate detects `renovate.json` and opens a Dependency Dashboard issue.
 3. Review the dashboard, then let it run on the weekly schedule.
-
-### Option B — Self-hosted via GitHub Actions (full control, no third-party app)
-
-Add `.github/workflows/renovate.yml`:
-
-```yaml
-name: Renovate
-on:
-  schedule:
-    - cron: "0 4 * * 1" # Mondays, 04:00 UTC
-  workflow_dispatch:
-permissions:
-  contents: write
-  pull-requests: write
-jobs:
-  renovate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - uses: renovatebot/github-action@v43
-        with:
-          token: ${{ secrets.RENOVATE_TOKEN }} # PAT or GitHub App token with repo + PR scope
-        env:
-          RENOVATE_REPOSITORIES: public-ui/kolibri
-```
-
-> **Tip:** For the very first run, set `"dryRun": "full"` (or run the Action with
-> `RENOVATE_DRY_RUN=full`) to preview the PRs Renovate _would_ open without creating them.
 
 ---
 
@@ -152,8 +146,8 @@ Once Renovate runs green for a cycle, retire the overlapping automation to avoid
 - [ ] Keep `04 - Update pnpm Lock` if you still want a manual lockfile-refresh button; otherwise
       Renovate's `lockFileMaintenance` covers it.
 
-Until every box is ticked, **leave the existing tooling in place** — the `renovate.json` is inert
-without the App/Action from step 3, so there is no conflict in the meantime.
+Until every box is ticked, **leave the existing tooling in place** — Renovate only acts once the
+workflow (or app) from [§3](#3-enabling-renovate) actually runs, so there is no conflict in the meantime.
 
 ---
 
@@ -170,8 +164,10 @@ fixierten Major-Version halten (`angular/v19|v20|v21`, `react*`), sichere Update
 - **npm-check-updates** ist nur ein CLI ohne eigene Automatisierung (läuft heute im Workflow
   `auto-dependency-updater.yml`).
 
-Die fertige [`renovate.json`](../renovate.json) liegt im Repo-Root und ist mit dem offiziellen
-`renovate-config-validator` geprüft. **Aktiv wird Renovate erst**, wenn ein Org-Admin die
-[Renovate-GitHub-App](https://github.com/apps/renovate) installiert (Option A) oder der
-self-hosted Workflow (Option B) eingerichtet wird. Bis dahin bleibt die bestehende
-Dependabot-/ncu-Automatisierung zuständig; danach greift die Migrations-Checkliste oben.
+Die fertige [`renovate.json`](../renovate.json) liegt im Repo-Root (geprüft mit dem offiziellen
+`renovate-config-validator`), und der self-hosted Runner-Workflow
+[`.github/workflows/renovate.yml`](../.github/workflows/renovate.yml) ist ebenfalls committet.
+**Renovate läuft**, sobald der Workflow startet — wöchentlich per Zeitplan oder manuell über den
+**Run workflow**-Button (Option A); alternativ kann ein Org-Admin die
+[Renovate-GitHub-App](https://github.com/apps/renovate) installieren (Option B). Bis dahin bleibt die
+bestehende Dependabot-/ncu-Automatisierung zuständig; danach greift die Migrations-Checkliste oben.
