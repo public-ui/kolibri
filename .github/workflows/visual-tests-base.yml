@@ -110,11 +110,14 @@ jobs:
           PACKAGE="${{ matrix.package }}"
           if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
             REPORT_DIR="packages/test-tag-name-transformer/playwright-report"
+            SLUG="tag-name-transformer"
           else
             THEME_DIR="${PACKAGE#theme-}"
             REPORT_DIR="packages/themes/${THEME_DIR}/playwright-report"
+            SLUG="${THEME_DIR}"
           fi
           echo "path=${REPORT_DIR}" >> $GITHUB_OUTPUT
+          echo "slug=${SLUG}" >> $GITHUB_OUTPUT
           if [ -d "${REPORT_DIR}" ]; then
             echo "exists=true" >> $GITHUB_OUTPUT
           else
@@ -126,29 +129,64 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: ${{ steps.report-path.outputs.path }}
-          target-folder: pr-${{ github.event.pull_request.number }}/${{ matrix.package }}
+          target-folder: pr-${{ github.event.pull_request.number }}/snaps-${{ steps.report-path.outputs.slug }}
           branch: gh-pages
           clean: false
 
-      - name: Find existing PR comment
-        if: always() && github.event.pull_request.head.repo.fork == false
-        uses: peter-evans/find-comment@v4
-        id: fc
+  report-comment:
+    needs: visual-tests-snapshots
+    if: ${{ !cancelled() && github.event.pull_request.draft == false && github.event.pull_request.head.repo.fork == false }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v6
         with:
-          issue-number: ${{ github.event.pull_request.number }}
-          comment-author: 'github-actions[bot]'
-          body-includes: '<!-- visual-test-report-${{ matrix.package }} -->'
+          ref: gh-pages
+          persist-credentials: true
 
-      - name: Post PR comment with report link
-        if: always() && github.event.pull_request.head.repo.fork == false
-        uses: peter-evans/create-or-update-comment@v5
+      - name: Ensure .nojekyll at gh-pages root
+        run: |
+          if [ ! -f .nojekyll ]; then
+            touch .nojekyll
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add .nojekyll
+            git commit -m "chore: add .nojekyll to gh-pages root"
+            git push
+          fi
+
+      - name: Post consolidated PR comment with report links
+        uses: actions/github-script@v9
         with:
-          comment-id: ${{ steps.fc.outputs.comment-id }}
-          issue-number: ${{ github.event.pull_request.number }}
-          edit-mode: replace
-          body: |
-            <!-- visual-test-report-${{ matrix.package }} -->
-            ## Visual Test Report — `${{ matrix.package }}`
-            [Open Playwright Report](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${{ github.event.pull_request.number }}/${{ matrix.package }}/)
-
-            Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          script: |
+            const fs = require('fs');
+            const pr = context.issue.number;
+            const marker = '<!-- visual-test-reports -->';
+            const base = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${pr}`;
+            const run = `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`;
+            const reports = [
+              { slug: 'default', label: 'theme-default' },
+              { slug: 'bwst', label: 'theme-bwst' },
+              { slug: 'ecl', label: 'theme-ecl' },
+              { slug: 'desy', label: 'theme-desy' },
+              { slug: 'kern', label: 'theme-kern' },
+              { slug: 'tag-name-transformer', label: 'test-tag-name-transformer' },
+            ];
+            const rows = reports
+              .filter((r) => fs.existsSync(`pr-${pr}/snaps-${r.slug}/index.html`))
+              .map((r) => `| \`${r.label}\` | [Open report](${base}/snaps-${r.slug}/) |`);
+            const body = rows.length === 0
+              ? `${marker}\n## 📸 Visual Test Reports\n\nNo Playwright HTML reports were produced for this run.\n\nRun: ${run}`
+              : `${marker}\n## 📸 Visual Test Reports\n\n| Theme | Report |\n| --- | --- |\n${rows.join('\n')}\n\nRun: ${run}`;
+            const { owner, repo } = context.repo;
+            try {
+              const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr });
+              const existing = comments.find((c) => c.body.includes(marker));
+              if (existing) {
+                await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+              } else {
+                await github.rest.issues.createComment({ owner, repo, issue_number: pr, body });
+              }
+            } catch (error) {
+              core.warning(`Could not post visual test report comment to PR #${pr}: ${error.message}`);
+            }
