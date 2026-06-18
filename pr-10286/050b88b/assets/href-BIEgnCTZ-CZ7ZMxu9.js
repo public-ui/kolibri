@@ -1,0 +1,1 @@
+import{jt as e}from"./index-BtjXiepV.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};
