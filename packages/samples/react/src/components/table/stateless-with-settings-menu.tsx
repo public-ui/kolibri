@@ -29,10 +29,12 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 					<strong>ID</strong> keeps a fixed width with <code>resizable: false</code> while still allowing sorting.
 				</li>
 				<li>
-					<strong>Name</strong> represents the default behavior with both sorting and resizing enabled.
+					<strong>Name</strong> represents the default behavior with both sorting and resizing enabled and a preset <code>width</code> of 220px, which
+					is shown as the current value in the settings menu.
 				</li>
 				<li>
-					<strong>Role</strong> disables sorting but keeps <code>resizable: true</code> so users can widen the column if necessary.
+					<strong>Role</strong> disables sorting but keeps <code>resizable: true</code> with a preset <code>width</code> of 160px so users can adjust it
+					starting from its current value.
 				</li>
 				<li>
 					<strong>E-Mail</strong> allows sorting but locks its width with <code>resizable: false</code> to keep the layout stable.
@@ -65,6 +67,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 							sortDirection: 'NOS',
 							sortable: true,
 							resizable: true,
+							width: 220,
 						},
 						{
 							key: 'role',
@@ -73,6 +76,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 							sortDirection: 'NOS',
 							sortable: false,
 							resizable: true,
+							width: 160,
 						},
 						{
 							key: 'email',
