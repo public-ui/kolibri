@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-Dcf_6s25.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};
