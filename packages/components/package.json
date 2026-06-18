@@ -17,6 +17,9 @@
 	},
 	"main": "dist/index.cjs.js",
 	"module": "dist/index.js",
+	"bin": {
+		"kolibri-copy-assets": "./copy-assets.mjs"
+	},
 	"exports": {
 		".": {
 			"types": "./dist/types/index.d.ts",
@@ -148,6 +151,7 @@
 	},
 	"files": [
 		"assets",
+		"copy-assets.mjs",
 		"dist",
 		"doc",
 		"custom-elements.json",

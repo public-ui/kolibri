@@ -53,7 +53,7 @@
 		"lint:tsc": "tsc --noemit",
 		"prebuild": "pnpm build:deps && pnpm prepare",
 		"prepare": "npm-run-all2 prepare:components prepare:theme-bwst prepare:theme-default prepare:theme-desy prepare:theme-ecl prepare:theme-kern",
-		"prepare:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
+		"prepare:components": "kolibri-copy-assets --dest assets @public-ui/components",
 		"prepare:theme-bwst": "cpy \"bwst/assets/**/*\" assets --dot",
 		"prepare:theme-default": "cpy \"default/assets/**/*\" assets --dot",
 		"prepare:theme-desy": "cpy \"desy/assets/**/*\" assets --dot",
