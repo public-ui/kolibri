@@ -17,6 +17,8 @@
 
 			--button-group-flex-direction: column;
 			--button-group-order: 2;
+			--button-group-overflow-x: hidden;
+			--button-group-overflow-y: auto;
 		}
 
 		&--align-left {
@@ -25,6 +27,8 @@
 
 			--button-group-flex-direction: column;
 			--button-group-order: 0;
+			--button-group-overflow-x: hidden;
+			--button-group-overflow-y: auto;
 		}
 
 		&--align-bottom {
@@ -46,12 +50,15 @@
 			order: var(--button-group-order);
 
 			flex-direction: var(--button-group-flex-direction);
-			flex-wrap: wrap;
+			flex-wrap: nowrap;
+			overflow-x: var(--button-group-overflow-x, auto);
+			overflow-y: var(--button-group-overflow-y, hidden);
 
 			.kol-button {
 				border-bottom-color: transparent;
 				display: block;
 				border-bottom-style: solid;
+				flex: 0 0 fit-content;
 
 				@media (forced-colors: active) {
 					&.selected {

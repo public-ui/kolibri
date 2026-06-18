@@ -120,6 +120,15 @@ test.describe('kol-tabs', () => {
 		});
 	});
 
+	test('renders the tab button group on a single line without wrapping', async ({ page }) => {
+		await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+		const buttonGroup = page.locator('.kol-tabs__button-group');
+		await expect(buttonGroup).toHaveCSS('flex-wrap', 'nowrap');
+	});
+
 	test('after click only 1 tab has selected class', async ({ page }) => {
 		await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs">
 				<div slot="tab-0">Contents of Tab 1</div>
