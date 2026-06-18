@@ -51,8 +51,8 @@ export const ButtonShortKey: FC = () => {
 				</p>
 				<p>
 					If you need a native, browser-handled shortcut instead, use{' '}
-					<KolLink _label="_accessKey" _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey" _target="_blank" />. Note that native
-					access keys are triggered in a browser-specific way (e.g. <kbd>Alt</kbd> + <kbd>Shift</kbd> + key in Chrome on Windows).
+					<KolLink _label="_accessKey" _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey" _target="_blank" />. Note that
+					native access keys are triggered in a browser-specific way (e.g. <kbd>Alt</kbd> + <kbd>Shift</kbd> + key in Chrome on Windows).
 				</p>
 			</KolAlert>
 
