@@ -24,6 +24,10 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 				This sample shows <code>KolTableStateless</code> with the settings menu enabled via
 				<code>_hasSettingsMenu</code>. Each column demonstrates a different combination of sorting and resizing options.
 			</p>
+			<p>
+				Every column declares an explicit <code>width</code>, so the width fields in the settings menu show the current pixel values instead of
+				starting empty. This also prevents a resizable column from collapsing when its width is adjusted from the menu.
+			</p>
 			<ul>
 				<li>
 					<strong>ID</strong> keeps a fixed width with <code>resizable: false</code> while still allowing sorting.
@@ -57,6 +61,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 							sortDirection: 'NOS',
 							sortable: true,
 							resizable: false,
+							width: 120,
 						},
 						{
 							key: 'name',
@@ -65,6 +70,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 							sortDirection: 'NOS',
 							sortable: true,
 							resizable: true,
+							width: 200,
 						},
 						{
 							key: 'role',
@@ -73,6 +79,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 							sortDirection: 'NOS',
 							sortable: false,
 							resizable: true,
+							width: 160,
 						},
 						{
 							key: 'email',
@@ -81,6 +88,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 							sortDirection: 'NOS',
 							sortable: true,
 							resizable: false,
+							width: 240,
 						},
 						{
 							key: 'active',
@@ -89,6 +97,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 							sortDirection: 'NOS',
 							sortable: false,
 							resizable: false,
+							width: 120,
 						},
 					],
 				],

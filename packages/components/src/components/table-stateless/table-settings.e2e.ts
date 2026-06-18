@@ -170,6 +170,23 @@ test.describe('kol-table-settings', () => {
 			const idColumn = page.locator('kol-table-stateless-wc th').filter({ hasText: 'ID' });
 			await expect(idColumn).toHaveCSS('width', '50px');
 		});
+
+		test('it does not collapse a column when the width field is cleared', async ({ page }) => {
+			const settingsButton = page.locator('.kol-table-settings').locator('button').first();
+			await settingsButton.click();
+
+			// Clearing the field used to apply width 0 -> the column collapsed to a sliver.
+			const nameWidthInput = page.getByRole('spinbutton', { name: 'Name' });
+			await nameWidthInput.fill('');
+
+			const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
+			await applyButton.click();
+
+			// The column should fall back to auto width instead of collapsing.
+			const nameColumn = page.locator('kol-table-stateless-wc th').filter({ hasText: 'Name' });
+			const box = await nameColumn.boundingBox();
+			expect(box?.width ?? 0).toBeGreaterThan(10);
+		});
 	});
 
 	test.describe('Column Order Management', () => {
