@@ -125,7 +125,7 @@
 		"@types/wcag-contrast": "3.0.3",
 		"@typescript-eslint/eslint-plugin": "8.58.2",
 		"@typescript-eslint/parser": "8.58.2",
-		"adopted-style-sheets": "1.1.9-rc.22",
+		"adopted-style-sheets": "1.1.9-rc.25",
 		"autoprefixer": "10.5.0",
 		"cross-env": "10.1.0",
 		"cssnano": "8.0.2",
@@ -151,7 +151,7 @@
 		"typescript": "5.9.3"
 	},
 	"peerDependencies": {
-		"adopted-style-sheets": "1.1.9-rc.22"
+		"adopted-style-sheets": "1.1.9-rc.25"
 	},
 	"files": [
 		"assets",
