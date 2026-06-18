@@ -16,14 +16,16 @@ export const AccordionBasic: FC = () => (
 
 		<div className="grid gap-4">
 			<KolAccordion _label="Heading Accordion Tab 1 (open)" _open>
-				Contents Accordion Tab 1
+				<p>Contents Accordion Tab 1</p>
 			</KolAccordion>
-			<KolAccordion _label="Heading Accordion Tab 2">Contents Accordion Tab 2</KolAccordion>
+			<KolAccordion _label="Heading Accordion Tab 2">
+				<p>Contents Accordion Tab 2</p>
+			</KolAccordion>
 			<KolAccordion _label="Heading Accordion Tab 3 (deactivated)" _disabled>
-				Contents Accordion Tab 3
+				<p>Contents Accordion Tab 3</p>
 			</KolAccordion>
 			<KolAccordion _label="Heading Accordion Tab 4 (disabled and open)" _disabled _open>
-				Contents Accordion Tab 4
+				<p>Contents Accordion Tab 4</p>
 			</KolAccordion>
 		</div>
 	</>
