@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-Ya-dsQP9.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
