@@ -1,23 +1,87 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
-import { testInputCallbacksAndEvents } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
+import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 
 const COMPONENT_NAME = 'kol-input-checkbox';
 const TEST_VALUE = true;
 const fillAction: FillAction = async (page) => {
 	await page.locator('input').check();
 };
-const OMITTED_EVENTS = ['click'];
 
 test.describe(COMPONENT_NAME, () => {
-	testInputCallbacksAndEvents<HTMLKolInputCheckboxElement>({
-		componentName: COMPONENT_NAME,
-		fillAction,
-		omittedEvents: OMITTED_EVENTS,
-		testValue: TEST_VALUE,
+	test.describe('Callbacks and Events', () => {
+		test('should call onFocus callback and emit focus event when input receives focus', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input"></${COMPONENT_NAME}>`);
+			const component = page.locator(COMPONENT_NAME);
+			const input = page.locator('input');
+
+			await component.evaluate((element: HTMLKolInputCheckboxElement) => {
+				element._on = { onFocus: () => ((window as unknown as Record<string, unknown>).focusCallback = true) };
+				element.addEventListener('focus', () => ((window as unknown as Record<string, unknown>).focusEvent = true));
+			});
+
+			await input.focus();
+			await page.waitForChanges();
+
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).focusCallback)).toBe(true);
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).focusEvent)).toBe(true);
+		});
+
+		test('should call onBlur callback and emit blur event when input loses focus', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input"></${COMPONENT_NAME}><button id="next">Next</button>`);
+			const component = page.locator(COMPONENT_NAME);
+			const input = page.locator('input');
+			const nextButton = page.locator('#next');
+
+			await component.evaluate((element: HTMLKolInputCheckboxElement) => {
+				element._on = { onBlur: () => ((window as unknown as Record<string, unknown>).blurCallback = true) };
+				element.addEventListener('blur', () => ((window as unknown as Record<string, unknown>).blurEvent = true));
+			});
+
+			await input.focus();
+			await page.waitForChanges();
+			await nextButton.focus();
+			await page.waitForChanges();
+
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).blurCallback)).toBe(true);
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).blurEvent)).toBe(true);
+		});
+
+		test('should call onInput callback and emit input event with value when checkbox is checked', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input"></${COMPONENT_NAME}>`);
+			const component = page.locator(COMPONENT_NAME);
+
+			await component.evaluate((element: HTMLKolInputCheckboxElement) => {
+				element._on = { onInput: (_event: Event, value?: unknown) => ((window as unknown as Record<string, unknown>).inputValue = value) };
+				element.addEventListener('input', (event: Event) => ((window as unknown as Record<string, unknown>).inputDetail = (event as CustomEvent).detail));
+			});
+
+			await fillAction(page);
+			await page.waitForChanges();
+
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).inputValue)).toBe(TEST_VALUE);
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).inputDetail)).toBe(TEST_VALUE);
+		});
+
+		test('should call onChange callback and emit change event with value when checkbox is checked', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input"></${COMPONENT_NAME}>`);
+			const component = page.locator(COMPONENT_NAME);
+
+			await component.evaluate((element: HTMLKolInputCheckboxElement) => {
+				element._on = { onChange: (_event: Event, value?: unknown) => ((window as unknown as Record<string, unknown>).changeValue = value) };
+				element.addEventListener('change', (event: Event) => ((window as unknown as Record<string, unknown>).changeDetail = (event as CustomEvent).detail));
+			});
+
+			await fillAction(page);
+			await page.waitForChanges();
+
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).changeValue)).toBe(TEST_VALUE);
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).changeDetail)).toBe(TEST_VALUE);
+		});
 	});
+
 	testInputMessage<HTMLKolInputCheckboxElement>(COMPONENT_NAME);
 
 	test(`should reflect the _checked property on the web component`, async ({ page }) => {
@@ -123,5 +187,59 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		expect(defaultPrevented).toBe(true);
+	});
+
+	test.describe('_ariaDetails', () => {
+		test('accepts valid element reference', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Accept" _aria-details="terms-details"></kol-input-checkbox>
+				<div id="terms-details">Terms and conditions apply</div>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
+			expect(value).toBe('terms-details');
+		});
+
+		test('updates when prop changes', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Test" _aria-details="details-1"></kol-input-checkbox>
+				<div id="details-1">Details 1</div>
+				<div id="details-2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const host = page.locator(COMPONENT_NAME);
+			expect(await host.evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails)).toBe('details-1');
+
+			await host.evaluate((el: HTMLKolInputCheckboxElement) => {
+				el._ariaDetails = 'details-2';
+			});
+			await page.waitForChanges();
+
+			expect(await host.evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails)).toBe('details-2');
+		});
+
+		test('handles missing ID gracefully', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Test" _aria-details="non-existent-id"></kol-input-checkbox>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
+			expect(value).toBe('non-existent-id');
+		});
+
+		test('accepts multiple IDs (space-separated)', async ({ page }) => {
+			await page.setContent(`
+				<kol-input-checkbox _label="Test" _aria-details="id1 id2"></kol-input-checkbox>
+				<div id="id1">Details 1</div>
+				<div id="id2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
+			expect(value).toBe('id1 id2');
+		});
 	});
 });

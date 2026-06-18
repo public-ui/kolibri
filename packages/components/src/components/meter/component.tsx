@@ -15,7 +15,7 @@ import type { OrientationPropType } from '../../internal/props';
 	shadow: true,
 })
 export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponentInterface<MeterApi> {
-	private readonly ctrl = new MeterController(this.stateAccess);
+	private readonly ctrl = new MeterController(BaseWebComponent.stateLess);
 
 	/**
 	 * From this value to the max value is the high range of the meter. Below this value is the middle range.

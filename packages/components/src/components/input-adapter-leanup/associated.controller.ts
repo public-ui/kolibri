@@ -3,6 +3,8 @@ import { devHint, devWarning, getExperimentalMode, validateName } from '../../sc
 
 import type { Generic } from 'adopted-style-sheets';
 import { getOptions } from '../../core/bootstrap';
+import { validateAriaDetails } from '../../schema/props/aria-details';
+import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 
 type RequiredProps = NonNullable<unknown>;
 type OptionalProps = {
@@ -38,6 +40,7 @@ export class AssociatedInputController implements Watches {
 	protected readonly component: Generic.Element.Component & Props;
 	protected readonly type: string;
 	protected readonly host?: Element;
+	public internals?: HostInternals;
 
 	public readonly formAssociated?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 	public syncToOwnInput?: HTMLButtonElement | HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
@@ -46,6 +49,7 @@ export class AssociatedInputController implements Watches {
 		this.component = component;
 		this.host = this.findHostWithShadowRoot(host);
 		this.type = type;
+		this.internals = attachInternals(this.host);
 
 		if (getOptions()?.reflectInputValues && isAssociatedTagName(this.host?.tagName) && component._name) {
 			this.host?.querySelectorAll('input,select,textarea').forEach((el) => {
@@ -216,6 +220,10 @@ export class AssociatedInputController implements Watches {
 				this.syncToOwnInput = input;
 			}
 		}
+	}
+
+	public validateAriaDetails(value?: string): void {
+		validateAriaDetails(this.component, this.host, this.internals, value);
 	}
 
 	public componentWillLoad(): void {

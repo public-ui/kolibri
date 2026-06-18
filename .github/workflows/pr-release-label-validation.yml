@@ -1,0 +1,27 @@
+name: PR Release Label Validation
+
+on:
+  pull_request:
+    types: [opened, labeled, unlabeled, synchronize, reopened]
+
+jobs:
+  validate-release-label:
+    if: github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+      - name: Ensure a release:* label is set
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const labels = context.payload.pull_request.labels.map((l) => l.name);
+            const hasReleaseLabel = labels.some((name) => name.startsWith('release:'));
+            if (!hasReleaseLabel) {
+              core.setFailed(
+                'This PR needs a "release:*" label (e.g. release:feature, release:fix, ' +
+                  'release:improvement, release:engineering, or release:ignore) so it is ' +
+                  'categorized correctly in the changelog. ' +
+                  'See .github/release.yml for the available categories.',
+              );
+            }

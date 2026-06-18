@@ -1,6 +1,7 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 
+import { translate } from '../../../i18n';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { SpinApi } from './api';
 
@@ -43,7 +44,7 @@ function renderSpinVariant(variant: string): unknown {
 }
 
 export const SpinFC: FC<FunctionalComponentProps<SpinApi>> = (props) => {
-	const { show, label, variant, showToggled, handleGetTranslateActionRunning, handleGetTranslateActionDone } = props;
+	const { show, label, variant, showToggled } = props;
 
 	return (
 		<Fragment>
@@ -51,13 +52,13 @@ export const SpinFC: FC<FunctionalComponentProps<SpinApi>> = (props) => {
 				<Fragment>
 					<span class={`kol-spin__spinner kol-spin__spinner--${variant}`}>{renderSpinVariant(variant)}</span>
 					<span aria-busy="true" class="visually-hidden" role="alert">
-						{label || handleGetTranslateActionRunning()}
+						{label || translate('kol-action-running')}
 					</span>
 				</Fragment>
 			) : (
 				showToggled && (
 					<span aria-busy="false" class="visually-hidden" role="alert">
-						{label || handleGetTranslateActionDone()}
+						{label || translate('kol-action-done')}
 					</span>
 				)
 			)}

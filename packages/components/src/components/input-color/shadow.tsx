@@ -1,7 +1,9 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import type {
+	AriaDetailsPropType,
 	AutoCompletePropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -43,7 +45,7 @@ import { InputColorController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputColor implements InputColorAPI, FocusableElement {
+export class KolInputColor implements ClickableElement, FocusableElement, InputColorAPI {
 	@Element() protected readonly host?: HTMLKolInputColorElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refInputColor?: HTMLInputElement;
@@ -174,6 +176,14 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 	@Prop() public _accessKey?: string;
 
 	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	/**
 	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
@@ -291,6 +301,11 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 		this.controller.validateAccessKey(value);
 	}
 
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
+	}
+
 	@Watch('_autoComplete')
 	public validateAutoComplete(value?: AutoCompletePropType): void {
 		this.controller.validateAutoComplete(value);
@@ -384,6 +399,7 @@ export class KolInputColor implements InputColorAPI, FocusableElement {
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 }

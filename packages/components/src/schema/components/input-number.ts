@@ -4,6 +4,7 @@ import type {
 	MsgPropType,
 	PlaceholderPropType,
 	PropAccessKey,
+	PropAriaDetails,
 	PropAutoComplete,
 	PropDisabled,
 	PropHideLabel,
@@ -36,6 +37,7 @@ type OptionalProps = {
 	step: number | NumberString;
 	value: number | NumberString | null;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropAutoComplete &
 	PropDisabled &
 	PropHideLabel &

@@ -3,6 +3,8 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import clsx from '../../utils/clsx';
 
 import type {
+	AriaDetailsPropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -50,7 +52,7 @@ import type { OrientationPropType } from '../../schema/props/orientation';
 	},
 	shadow: true,
 })
-export class KolInputRadio implements InputRadioAPI, FocusableElement {
+export class KolInputRadio implements ClickableElement, FocusableElement, InputRadioAPI {
 	@Element() private readonly host?: HTMLKolInputRadioElement;
 	private inputRef?: HTMLInputElement;
 	private inputRefs = new Map<number, HTMLInputElement>();
@@ -185,11 +187,11 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 				onClick: undefined, // onClick is not needed since onChange already triggers the correct event
 				onInput: this.onInput,
 				onKeyDown: this.onKeyDown.bind(this),
-				onFocus: (event: Event) => {
+				onFocus: (event: FocusEvent) => {
 					this.controller.onFacade.onFocus(event);
 					this.inputHasFocus = true;
 				},
-				onBlur: (event: Event) => {
+				onBlur: (event: FocusEvent) => {
 					this.controller.onFacade.onBlur(event);
 					this.inputHasFocus = false;
 				},
@@ -209,6 +211,14 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 	}
 
 	private readonly controller: InputRadioController;
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -321,6 +331,11 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 		this.controller.validateTooltipAlign(value);
 	}
 
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
+	}
+
 	@Watch('_disabled')
 	public validateDisabled(value?: DisabledPropType): void {
 		this.controller.validateDisabled(value);
@@ -398,6 +413,7 @@ export class KolInputRadio implements InputRadioAPI, FocusableElement {
 
 	public componentWillLoad(): void {
 		this._touched = this._touched === true;
+		this.validateAriaDetails(this._ariaDetails);
 		this.controller.componentWillLoad();
 	}
 

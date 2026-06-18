@@ -3,14 +3,24 @@ name: PR-Preview - Cleanup
 on:
   pull_request:
     types: [closed]
+  workflow_dispatch:
+    inputs:
+      delete_all:
+        description: 'Delete ALL pr-* preview deployments from gh-pages (leave unchecked to do nothing)'
+        type: boolean
+        default: false
+      purge_history:
+        description: 'Squash the whole gh-pages history into a single commit to reclaim repository/clone size (destructive force-push; runs after delete_all)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
 
 jobs:
   cleanup:
-    # Skip this job when the base clone URL may be different from the head clone URL.
-    if: github.event.pull_request.head.repo.fork == false
+    # On PR close, skip forks (their token cannot push). Manual runs are always allowed.
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -18,15 +28,43 @@ jobs:
           ref: gh-pages
           persist-credentials: true
 
-      - name: Remove PR preview folder
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Remove preview for the closed PR
+        if: github.event_name == 'pull_request'
         run: |
           PR_FOLDER="pr-${{ github.event.pull_request.number }}"
           if [ -d "$PR_FOLDER" ]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
             git rm -rf "$PR_FOLDER"
             git commit -m "chore: remove preview for PR #${{ github.event.pull_request.number }}"
             git push
           else
             echo "No preview folder found for PR #${{ github.event.pull_request.number }}, skipping."
           fi
+
+      - name: Remove all PR previews
+        if: github.event_name == 'workflow_dispatch' && inputs.delete_all
+        run: |
+          mapfile -t folders < <(find . -maxdepth 1 -type d -name 'pr-*' -printf '%P\n')
+          if [ ${#folders[@]} -eq 0 ]; then
+            echo "No pr-* preview folders found on gh-pages, nothing to delete."
+            exit 0
+          fi
+          echo "Removing ${#folders[@]} preview folder(s): ${folders[*]}"
+          git rm -rf "${folders[@]}"
+          git commit -m "chore: remove all PR preview deployments"
+          git push
+
+      - name: Squash gh-pages history
+        if: github.event_name == 'workflow_dispatch' && inputs.purge_history
+        run: |
+          # Collapse the entire gh-pages history into one commit so the accumulated
+          # build blobs become unreachable and can be garbage-collected by GitHub.
+          # Operates on the current tree, i.e. after the delete_all step (if any).
+          git checkout --orphan _gh_pages_squashed
+          git add -A
+          git commit -m "chore: reset gh-pages history to reclaim space"
+          git push -f origin _gh_pages_squashed:gh-pages

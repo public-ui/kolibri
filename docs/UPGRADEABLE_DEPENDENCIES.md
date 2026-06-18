@@ -8,11 +8,19 @@
 
 ## 🔴 Critical (Breaking Changes – Manual Work Required)
 
-### 1. **@stencil/core** | 4.38.3 → 4.43.3 (patch) / 5.0.0-next.0 (major)
+### 1. **@stencil/core** | 4.38.3 (pinned) → 4.43.5 (patch, BLOCKED) / 5.0.0-alpha.7 (major)
 
-- **Status:** v5 is in pre-release (next channel), v4.43.3 is latest stable
-- **Breaking Changes:**
-  - v5.0.0-next.0 is not production-ready (next channel)
+- **Status:** ⚠️ Pinned to 4.38.3 — every newer 4.x release changes runtime behavior
+  (verified 2026-06-11 by E2E A/B bisect on this codebase):
+  - 4.39.0 / 4.40.0: build fails (SCSS parse error in input-date; fixed in 4.40.1)
+  - 4.40.1: tooltip no longer hides when a popover opens
+    (popover-button.e2e.ts:41 fails consistently); CI visual tests fail across all
+    themes; hydrate output differs (e.g. kol-input-file browse button renders
+    `kol-button--normal` → behavior drift in SSR output)
+  - 4.41.0 – 4.43.5: native Popover API broken — `showPopover()` elements stay
+    hidden (kol-popover, kol-popover-button, kol-split-button, table settings)
+- **Breaking Changes (v5):**
+  - v5.0.0-alpha.7 is not production-ready (alpha channel)
   - Multiple output-target packages block v5 upgrade:
     - @public-ui/stencil-angular-output-target
     - @public-ui/stencil-react-output-target
@@ -20,8 +28,10 @@
     - @public-ui/stencil-vue-output-target
   - @stencil/playwright requires >=4.13.0, conflicts with 5.x
 - **Risk:** VERY HIGH – Core platform dependency
-- **Recommendation:** Stay on v4.43.3 until v5 is stable and output-targets are compatible
-- **Effort:** Would require coordinating 4+ downstream packages
+- **Recommendation:** Stay on 4.38.3; before any future bump, run the popover/tooltip
+  E2E suites and the visual tests against the candidate version
+- **Effort:** Would require coordinating 4+ downstream packages plus resolving the
+  popover/tooltip regressions (upstream fix or component-side adaptation)
 
 ### 2. **eslint** | 9.39.4 → 10.1.0
 
@@ -243,7 +253,8 @@
    - @public-ui/stencil-solid-output-target (requires >=2.17.2)
    - @public-ui/stencil-vue-output-target (requires >=4)
    - @stencil/playwright (requires >=4.13.0)
-   ACTION: Keep on v4.43.3 until output-targets are v5-compatible
+   ACTION: Keep on 4.38.3 — 4.39+ regresses popover/tooltip behavior (see Critical #1);
+   v5 additionally blocked until output-targets are v5-compatible
 
 2. eslint@10.0.0 blocks:
    - @stencil-community/eslint-plugin (requires ^8.0.0 || ^9.0.0)

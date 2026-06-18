@@ -124,10 +124,6 @@ function configureServer(server: McpServer): McpServer {
 				kind: z.enum(KIND_OPTIONS).optional(),
 				limit: z.number().optional(),
 			},
-			outputSchema: {
-				query: z.string(),
-				totalResults: z.number(),
-			},
 		},
 		({ query, kind, limit }: { query?: string; kind?: string; limit?: number }) => {
 			log('tool', 'search called', { query, kind, limit });
@@ -197,11 +193,6 @@ function configureServer(server: McpServer): McpServer {
 				'Get a specific sample, specification, or documentation entry by its ID. Parameter: id (required string, e.g. "button/basic", "spec/button", or "docs/getting-started")',
 			inputSchema: {
 				id: z.string(),
-			},
-			outputSchema: {
-				id: z.string(),
-				kind: z.string(),
-				name: z.string(),
 			},
 		},
 		({ id }) => {
