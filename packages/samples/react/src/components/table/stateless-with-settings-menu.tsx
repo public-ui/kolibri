@@ -25,8 +25,8 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 				<code>_hasSettingsMenu</code>. Each column demonstrates a different combination of sorting and resizing options.
 			</p>
 			<p>
-				Every column declares an explicit <code>width</code>, so the width fields in the settings menu show the current pixel values instead of
-				starting empty. This also prevents a resizable column from collapsing when its width is adjusted from the menu.
+				Every column declares an explicit <code>width</code>, so the width fields in the settings menu show the current pixel values instead of starting empty.
+				This also prevents a resizable column from collapsing when its width is adjusted from the menu.
 			</p>
 			<ul>
 				<li>
