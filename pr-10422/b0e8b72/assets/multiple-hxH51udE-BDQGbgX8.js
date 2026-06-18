@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-CAm3r2nf.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};
