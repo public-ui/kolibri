@@ -75,11 +75,10 @@ export class KolTableSettings {
 	}
 
 	private handleWidthChange(key: string, width: unknown): void {
-		// An empty or invalid input must not be coerced to `0` (Number('') === 0),
-		// otherwise applying the settings collapses the column to ~1px. Treat such
-		// input as "no explicit width" (undefined) so the column keeps its automatic width.
-		const numericWidth = width === '' || width === null || width === undefined ? Number.NaN : Number(width);
-		const newWidth = parseColumnWidth(numericWidth);
+		// parseColumnWidth filters out non-positive and non-finite values, so an empty or
+		// invalid input (Number('') === 0, Number(undefined) === NaN) becomes undefined
+		// instead of collapsing the column to ~1px when the settings are applied.
+		const newWidth = parseColumnWidth(Number(width));
 		const row = this.getPrimaryRow().map((col) => (col.key === key && col.resizable !== false ? { ...col, width: newWidth } : col));
 		this.updatePrimaryRow(row);
 	}

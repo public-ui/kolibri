@@ -29,8 +29,8 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 					<strong>ID</strong> keeps a fixed width with <code>resizable: false</code> while still allowing sorting.
 				</li>
 				<li>
-					<strong>Name</strong> represents the default behavior with both sorting and resizing enabled and a preset <code>width</code> of 220px, which
-					is shown as the current value in the settings menu.
+					<strong>Name</strong> represents the default behavior with both sorting and resizing enabled and a preset <code>width</code> of 220px, which is shown
+					as the current value in the settings menu.
 				</li>
 				<li>
 					<strong>Role</strong> disables sorting but keeps <code>resizable: true</code> with a preset <code>width</code> of 160px so users can adjust it
