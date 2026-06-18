@@ -73,15 +73,11 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
-		"@eslint/js": "9.39.4",
 		"@modelcontextprotocol/inspector": "0.22.0",
+		"@public-ui/eslint-config": "workspace:*",
 		"@types/express": "5.0.6",
 		"@types/node": "25.9.3",
-		"@typescript-eslint/eslint-plugin": "8.58.2",
-		"@typescript-eslint/parser": "8.58.2",
 		"eslint": "9.39.4",
-		"eslint-plugin-json": "4.0.1",
-		"globals": "17.6.0",
 		"knip": "6.16.1",
 		"nodemon": "3.1.14",
 		"prettier": "3.8.4",
