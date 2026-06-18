@@ -1,0 +1,1 @@
+import{kt as e}from"./index-Csh82DDU.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
