@@ -47,18 +47,18 @@
 
 		&__button-group {
 			display: flex;
+			overflow-x: var(--button-group-overflow-x, auto);
+			overflow-y: var(--button-group-overflow-y, hidden);
 			order: var(--button-group-order);
 
 			flex-direction: var(--button-group-flex-direction);
 			flex-wrap: nowrap;
-			overflow-x: var(--button-group-overflow-x, auto);
-			overflow-y: var(--button-group-overflow-y, hidden);
 
 			.kol-button {
 				border-bottom-color: transparent;
 				display: block;
-				border-bottom-style: solid;
 				flex: 0 0 auto;
+				border-bottom-style: solid;
 
 				@media (forced-colors: active) {
 					&.selected {
