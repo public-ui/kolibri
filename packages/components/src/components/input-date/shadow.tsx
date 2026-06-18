@@ -5,6 +5,7 @@ import clsx from '../../utils/clsx';
 import type {
 	AriaDetailsPropType,
 	AutoCompletePropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -53,7 +54,7 @@ import { InputDateController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputDate implements InputDateAPI, FocusableElement {
+export class KolInputDate implements ClickableElement, FocusableElement, InputDateAPI {
 	@Element() protected readonly host?: HTMLKolInputDateElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -119,12 +120,12 @@ export class KolInputDate implements InputDateAPI, FocusableElement {
 		return this._initialValueType === 'Date' ? new Date(newValue) : (newValue as Iso8601);
 	}
 
-	private readonly onBlur = (event: Event) => {
+	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
 		this.inputHasFocus = false;
 	};
 
-	private readonly onFocus = (event: Event) => {
+	private readonly onFocus = (event: FocusEvent) => {
 		this.controller.onFacade.onFocus(event);
 		this.inputHasFocus = true;
 	};

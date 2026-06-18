@@ -12,6 +12,10 @@ node_modules/
 *.log
 *.tgz
 
+# lefthook installs its hooks into .git/hooks; the .husky directory is a leftover
+# from the former husky setup and must not be committed.
+.husky/
+
 /packages/components/src/components/*/readme.md
 # Diese Readme's wurde nicht in die Doku übernommen.
 !/packages/components/src/components/logo/readme.md

@@ -5,6 +5,7 @@ import clsx from '../../utils/clsx';
 import type {
 	AriaDetailsPropType,
 	AutoCompletePropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -48,7 +49,7 @@ import { InputRangeController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputRange implements InputRangeAPI, FocusableElement {
+export class KolInputRange implements ClickableElement, FocusableElement, InputRangeAPI {
 	@Element() protected readonly host?: HTMLKolInputRangeElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refInputRange?: HTMLInputElement;
@@ -164,11 +165,11 @@ export class KolInputRange implements InputRangeAPI, FocusableElement {
 			...this.controller.onFacade,
 			onChange: this.onChange,
 			onInput: this.onInput,
-			onFocus: (event: Event) => {
+			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
 				this.inputHasFocus = true;
 			},
-			onBlur: (event: Event) => {
+			onBlur: (event: FocusEvent) => {
 				this.controller.onFacade.onBlur(event);
 				this.inputHasFocus = false;
 			},

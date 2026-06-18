@@ -38,10 +38,9 @@
 		"portfinder": "1.0.38"
 	},
 	"devDependencies": {
-		"@eslint/js": "9.39.4",
 		"@playwright/test": "1.60.0",
+		"@public-ui/eslint-config": "workspace:*",
 		"eslint": "9.39.4",
-		"globals": "17.6.0",
 		"knip": "6.16.1",
 		"prettier": "3.8.4",
 		"prettier-plugin-organize-imports": "4.3.0"

@@ -261,6 +261,7 @@ private catchElement = (element?: HTMLElement): void => {
 - Is a pure renderer that receives props, callbacks, emitters and refs from the controller.
 - Avoids any side effects or state mutation. User interactions are signalled via DOM events which bubble back to the web component.
 - Maps controller props to accessible markup and wires refs for imperative access when required.
+- May call stateless utility functions (e.g. `translate()`, formatters) directly — the `Callbacks` bucket in `ComponentApi` is reserved for event-driven callbacks only, not data accessors.
 
 ### Schema Helper Layer
 

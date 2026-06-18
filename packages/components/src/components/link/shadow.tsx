@@ -30,7 +30,7 @@ import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 	},
 	shadow: true,
 })
-export class KolLink implements LinkProps, FocusableElement {
+export class KolLink implements FocusableElement, LinkProps {
 	@Element() protected readonly host?: HTMLKolLinkElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolLinkWcElement>();
 
