@@ -15,16 +15,24 @@ export const ButtonShortKey: FC = () => {
 	// wire up a keyboard handler. The example below shows how to make it interactive by
 	// registering a matching `keydown` listener yourself.
 	const interactiveShortKey = 'm';
+	// Keep a stable reference to the (per-render) handler so the global listener is
+	// registered only once instead of on every render.
+	const dummyClickEventHandlerRef = React.useRef(dummyClickEventHandler);
+	React.useEffect(() => {
+		dummyClickEventHandlerRef.current = dummyClickEventHandler;
+	}, [dummyClickEventHandler]);
 	React.useEffect(() => {
 		const handleKeyDown = (event: KeyboardEvent) => {
-			if (event.altKey && event.key.toLowerCase() === interactiveShortKey) {
+			// Match on `event.code` (layout-independent): on macOS, Alt + M emits a special
+			// character, so `event.key` would not equal "m".
+			if (event.altKey && event.code === 'KeyM') {
 				event.preventDefault();
-				dummyClickEventHandler();
+				dummyClickEventHandlerRef.current();
 			}
 		};
 		document.addEventListener('keydown', handleKeyDown);
 		return () => document.removeEventListener('keydown', handleKeyDown);
-	}, [dummyClickEventHandler]);
+	}, []);
 
 	return (
 		<>
@@ -43,7 +51,7 @@ export const ButtonShortKey: FC = () => {
 				</p>
 				<p>
 					If you need a native, browser-handled shortcut instead, use{' '}
-					<KolLink _label="_accessKey" _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey" _target="blank" />. Note that native
+					<KolLink _label="_accessKey" _href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey" _target="_blank" />. Note that native
 					access keys are triggered in a browser-specific way (e.g. <kbd>Alt</kbd> + <kbd>Shift</kbd> + key in Chrome on Windows).
 				</p>
 			</KolAlert>
