@@ -27,8 +27,20 @@ export const ComboboxCases = ({ accessKey = 'c', shortKey = 's', ...props }: Com
 				_placeholder="Placeholder"
 				_required
 			/>
-			<KolCombobox {...props} _label={`With access key (Alt+${accessKey})`} _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} _accessKey={accessKey} />
-			<KolCombobox {...props} _label={`With short key (${shortKey})`} _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} _shortKey={shortKey} />
+			<KolCombobox
+				{...props}
+				_label={`With access key (Alt+${accessKey.toUpperCase()})`}
+				_suggestions={COUNTRY_SUGGESTIONS}
+				_value={'Deutschland'}
+				_accessKey={accessKey}
+			/>
+			<KolCombobox
+				{...props}
+				_label={`With short key (${shortKey.toUpperCase()})`}
+				_suggestions={COUNTRY_SUGGESTIONS}
+				_value={'Deutschland'}
+				_shortKey={shortKey}
+			/>
 		</div>
 	);
 };
