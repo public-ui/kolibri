@@ -9,11 +9,11 @@ export const ComboboxVariants = (props: Partial<Components.KolCombobox>) => {
 		<SampleColumns>
 			<fieldset>
 				<legend>Text</legend>
-				<ComboboxCases {...props} />
+				<ComboboxCases {...props} accessKey="c" shortKey="s" />
 			</fieldset>
 			<fieldset>
 				<legend>Text (hideLabel)</legend>
-				<ComboboxCases {...props} _hideLabel />
+				<ComboboxCases {...props} _hideLabel accessKey="v" shortKey="x" />
 			</fieldset>
 		</SampleColumns>
 	);

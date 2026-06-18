@@ -6,7 +6,14 @@ import type { Components } from '@public-ui/components';
 import { ERROR_MSG, HINT_MSG } from '../../../shares/constants';
 import { COUNTRY_SUGGESTIONS } from '../../../shares/country';
 
-export const ComboboxCases = (props: Partial<Components.KolCombobox>) => {
+type ComboboxCasesProps = Partial<Components.KolCombobox> & {
+	/** Access key for the "With access key" example. Must be unique across all instances rendered on the same page. */
+	accessKey?: string;
+	/** Short key for the "With short key" example. Must be unique across all instances rendered on the same page. */
+	shortKey?: string;
+};
+
+export const ComboboxCases = ({ accessKey = 'c', shortKey = 's', ...props }: ComboboxCasesProps) => {
 	return (
 		<div className="grid gap-4">
 			<KolCombobox {...props} _hint={HINT_MSG} _label="Label" _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} />
@@ -20,8 +27,8 @@ export const ComboboxCases = (props: Partial<Components.KolCombobox>) => {
 				_placeholder="Placeholder"
 				_required
 			/>
-			<KolCombobox {...props} _label="With access key" _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} _accessKey="c" />
-			<KolCombobox {...props} _label="With short key" _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} _shortKey="s" />
+			<KolCombobox {...props} _label={`With access key (Alt+${accessKey})`} _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} _accessKey={accessKey} />
+			<KolCombobox {...props} _label={`With short key (${shortKey})`} _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} _shortKey={shortKey} />
 		</div>
 	);
 };
