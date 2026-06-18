@@ -4,17 +4,12 @@ import React from 'react';
 import { KolTabs } from '@public-ui/react-v19';
 import { SampleDescription } from '../SampleDescription';
 
-const tabs = Array.from({ length: 12 }, (_, index) => ({
-	_label: `Tab ${index + 1}`,
-}));
+const tabs = Array.from({ length: 12 }, (_, index) => ({ _label: `Tab ${index + 1}` }));
 
 export const TabsOverflow: FC = () => (
 	<>
 		<SampleDescription>
-			<p>
-				This sample shows KolTabs with more tab captions than fit into the available width. Instead of wrapping the captions onto multiple rows, the
-				tab bar stays on a single line and becomes horizontally scrollable.
-			</p>
+			<p>This sample shows KolTabs with more tabs than fit the available width: the tab bar scrolls horizontally instead of wrapping onto multiple rows.</p>
 		</SampleDescription>
 
 		<div style={{ maxWidth: '24rem' }}>

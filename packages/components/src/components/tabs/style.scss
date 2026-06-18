@@ -58,7 +58,7 @@
 				border-bottom-color: transparent;
 				display: block;
 				border-bottom-style: solid;
-				flex: 0 0 fit-content;
+				flex: 0 0 auto;
 
 				@media (forced-colors: active) {
 					&.selected {
