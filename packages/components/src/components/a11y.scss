@@ -7,9 +7,9 @@
 @layer kol-a11y {
 	:host {
 		/*
-                 * Minimum size of interactive elements.
-                 */
-		--a11y-min-size: #{to-rem(44)};
+		 * Minimum size of interactive elements.
+		 */
+		--a11y-min-size: #{to-rem(50)};
 		/*
 		 * No element should be used without verifying the contrast ratio of its background and font colors.
 		 * By initially setting the background color to white and the font color to black,
