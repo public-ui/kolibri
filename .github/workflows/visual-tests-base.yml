@@ -2,7 +2,7 @@ name: Visual Tests Snapshot Comparison
 
 on:
   pull_request:
-    types: [opened, ready_for_review, reopened, synchronize]
+    types: [opened, reopened, synchronize]
     paths:
       - 'packages/components/**'
       - 'packages/themes/**'
@@ -22,7 +22,6 @@ permissions:
 
 jobs:
   visual-tests-snapshots:
-    if: github.event.pull_request.draft == false
     strategy:
       matrix:
         package: ['test-tag-name-transformer', 'theme-default', 'theme-bwst', 'theme-ecl', 'theme-desy', 'theme-kern']
