@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-Csh82DDU.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};

@@ -1,1 +1,0 @@
-import{jt as e}from"./index-nPFz9HOy.js";var t=[`on`,`off`],n=(n,r)=>{e(n,`_autoComplete`,e=>t.includes(e)||typeof e==`string`&&e.length>0,new Set(t),r,{defaultValue:`off`})};export{n as t};
