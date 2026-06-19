@@ -106,6 +106,130 @@ jobs:
         if: failure()
         with:
           name: report-${{ matrix.package }}
+      - name: Determine report path
+        id: report-path
+        if: ${{ !cancelled() }}
+        run: |
+          PACKAGE="${{ matrix.package }}"
+          if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
+            REPORT_DIR="packages/test-tag-name-transformer/playwright-report"
+            SLUG="tag-name-transformer"
+          else
+            THEME_DIR="${PACKAGE#theme-}"
+            REPORT_DIR="packages/themes/${THEME_DIR}/playwright-report"
+            SLUG="${THEME_DIR}"
+          fi
+          echo "dir=${REPORT_DIR}" >> "$GITHUB_OUTPUT"
+          echo "slug=${SLUG}" >> "$GITHUB_OUTPUT"
+          if [ -d "${REPORT_DIR}" ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Upload HTML report for consolidation
+        if: ${{ !cancelled() && steps.report-path.outputs.exists == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-report-${{ steps.report-path.outputs.slug }}
+          path: ${{ steps.report-path.outputs.dir }}
+          if-no-files-found: ignore
+          retention-days: 5
+
+  visual-tests-report:
+    needs: visual-tests
+    if: ${{ !cancelled() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == false }}
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Download report artifacts
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          pattern: visual-report-*
+          path: artifacts
+      - name: Stage reports under snaps-<theme>
+        id: stage
+        run: |
+          set -o pipefail
+          rm -rf public
+          mkdir -p public
+          shopt -s nullglob
+          count=0
+          for d in artifacts/visual-report-*/; do
+            slug="$(basename "$d")"
+            slug="${slug#visual-report-}"
+            index="$(find "$d" -name index.html -printf '%d %p\n' 2>/dev/null | sort -n | head -1 | cut -d' ' -f2- || true)"
+            if [ -n "$index" ]; then
+              src="$(dirname "$index")"
+              mkdir -p "public/snaps-${slug}"
+              cp -a "${src}/." "public/snaps-${slug}/"
+              count=$((count + 1))
+            fi
+          done
+          echo "count=${count}" >> "$GITHUB_OUTPUT"
+          echo "Staged ${count} report(s)."
+      - name: Ensure .nojekyll at gh-pages root
+        if: ${{ steps.stage.outputs.count != '0' }}
+        run: mkdir -p nojekyll-root && touch nojekyll-root/.nojekyll
+      - name: Deploy .nojekyll to gh-pages root
+        if: ${{ steps.stage.outputs.count != '0' }}
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: nojekyll-root
+          branch: gh-pages
+          clean: false
+      - name: Deploy reports to GitHub Pages
+        if: ${{ steps.stage.outputs.count != '0' }}
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: public
+          target-folder: pr-${{ github.event.pull_request.number }}
+          branch: gh-pages
+          clean: false
+      - name: Post consolidated PR comment with report links
+        if: ${{ !cancelled() }}
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const pr = context.issue.number;
+            const marker = '<!-- visual-test-reports -->';
+            const base = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${pr}`;
+            const run = `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`;
+            const dir = 'public';
+            const slugs = fs.existsSync(dir)
+              ? fs
+                  .readdirSync(dir)
+                  .filter((n) => n.startsWith('snaps-') && fs.existsSync(path.join(dir, n, 'index.html')))
+                  .map((n) => n.replace(/^snaps-/, ''))
+                  .sort()
+              : [];
+            const label = (slug) => (slug === 'tag-name-transformer' ? 'test-tag-name-transformer' : `theme-${slug}`);
+            const rows = slugs.map((slug) => `| \`${label(slug)}\` | [Open report](${base}/snaps-${slug}/) |`);
+            const body =
+              rows.length === 0
+                ? `${marker}\n## 📸 Visual Test Reports\n\nNo Playwright HTML reports were produced for this run.\n\nRun: ${run}`
+                : `${marker}\n## 📸 Visual Test Reports\n\n| Theme | Report |\n| --- | --- |\n${rows.join('\n')}\n\nRun: ${run}`;
+            const { owner, repo } = context.repo;
+            try {
+              const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr });
+              const existing = comments.find((c) => c.body.includes(marker));
+              if (existing) {
+                await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+              } else {
+                await github.rest.issues.createComment({ owner, repo, issue_number: pr, body });
+              }
+            } catch (error) {
+              core.warning(`Could not post visual test report comment to PR #${pr}: ${error.message}`);
+            }
 
   # lighthouse:
   #   continue-on-error: true
