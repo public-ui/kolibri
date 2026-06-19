@@ -22,6 +22,11 @@ export default defineConfig({
 	plugins: [react(), UnoCSS({ configFile: path.resolve(__dirname, 'unocss.config.ts') })],
 	resolve: {
 		dedupe: ['react', 'react-dom'],
+		alias: {
+			/* Bundle the theme under test (THEME_MODULE) at build time. Falls back to an empty stub so
+			   the app can still be built/served without a theme (e.g. local debugging). */
+			'@kolibri-vt/theme': process.env.THEME_MODULE ? path.resolve(process.env.THEME_MODULE) : path.resolve(__dirname, 'src/empty-theme.ts'),
+		},
 	},
 	define: {
 		'process.env.THEME_MODULE': JSON.stringify(process.env.THEME_MODULE || ''),

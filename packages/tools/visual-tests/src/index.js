@@ -61,6 +61,14 @@ if (fs.existsSync(themeAssetsPath)) {
 	console.log(`No theme assets found at ${themeAssetsPath}; continuing without overlay.`);
 }
 
+/* The app loads the theme's inject-assets.css (font-face/icon declarations) via a relative <link>,
+   so copy it into the served build root. Its own @import url('./assets/…') statements then resolve
+   against the overlaid assets above. */
+if (process.env.THEME_CSS && fs.existsSync(process.env.THEME_CSS)) {
+	fs.copyFileSync(process.env.THEME_CSS, path.join(buildPath, 'inject-assets.css'));
+	console.log(`Theme CSS copied from ${process.env.THEME_CSS}.`);
+}
+
 console.log(`Visual-Tests App build finished. Directory:`, buildPath);
 
 void (async () => {

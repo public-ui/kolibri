@@ -33,13 +33,12 @@ const getThemes = async (): Promise<Theme[]> => {
 	if (!process.env.THEME_MODULE) {
 		throw new Error('Environment variable THEME_MODULE not specified. The visual-tests app must be started via "kolibri-visual-test".');
 	}
-	if (process.env.PLATFORM === 'win32') {
-		/* Add leading slash, required for ESBuild on Windows.
-		   Note: process.env.THEME_MODULE must be used literally in the import(). Moving it to a constant breaks the import. */
-		process.env.THEME_MODULE = `/${process.env.THEME_MODULE}`;
-	}
-	const { [(process.env.THEME_EXPORT as string) || 'default']: theme } = (await import(/* @vite-ignore */ process.env.THEME_MODULE)) as Record<string, Theme>;
-	return [theme];
+	/* The theme under test is bundled at build time through the "@kolibri-vt/theme" alias (see
+	   vite.config.ts), which resolves to the THEME_MODULE path. The theme module depends on
+	   @public-ui/components, so it must be bundled – a runtime import of the absolute filesystem path
+	   would only resolve in the Vite dev server, not in the statically served production build. */
+	const themeModule = (await import('@kolibri-vt/theme')) as Record<string, Theme>;
+	return [themeModule[(process.env.THEME_EXPORT as string) || 'default']];
 };
 
 void (async () => {

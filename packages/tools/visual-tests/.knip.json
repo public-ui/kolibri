@@ -1,5 +1,5 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
-	"entry": ["app/unocss.config.ts", "tests/**/*.spec.js"],
+	"entry": ["app/unocss.config.ts", "app/src/env.d.ts", "tests/**/*.spec.js"],
 	"ignoreDependencies": ["http-server", "uno.css", "tslib"]
 }
