@@ -119,8 +119,12 @@ test.describe(COMPONENT_NAME, () => {
 				});
 			});
 
-			await input.fill('North');
-			await input.press('Enter');
+			// Commit a value through the listbox: open it, focus the first option ('North') and select it with Enter.
+			// This exercises the component's actual commit path (selectOption) and avoids relying on the
+			// browser's native change-on-Enter, which the combobox suppresses via preventDefault.
+			await input.focus();
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('Enter');
 			await page.waitForChanges();
 
 			changeCallbackValue = await page.evaluate(() => (window as any).changeCallbackValue);
