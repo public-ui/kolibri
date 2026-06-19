@@ -7,6 +7,7 @@
 		"lib": ["dom", "dom.iterable", "ES2017", "ESNext.Disposable"],
 		"moduleResolution": "node",
 		"module": "ESNext",
+		"ignoreDeprecations": "6.0",
 		"target": "ES2017",
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
@@ -17,6 +18,7 @@
 		"importHelpers": true,
 		"removeComments": true,
 		"typeRoots": ["node_modules/@types"],
+		"types": ["jest"],
 		"strict": true,
 		"skipLibCheck": true
 	},
