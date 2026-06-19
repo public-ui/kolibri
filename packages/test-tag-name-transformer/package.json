@@ -4,7 +4,7 @@
 	"scripts": {
 		"prepare": "npm-run-all2 prepare:snapshots prepare:assets",
 		"prepare:snapshots": "cpy \"../themes/default/snapshots\" ./ --dot",
-		"prepare:assets": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" ./assets --dot",
+		"prepare:assets": "kolibri-copy-assets --dest assets @public-ui/components",
 		"test": "cross-env THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test"
 	},
 	"devDependencies": {
