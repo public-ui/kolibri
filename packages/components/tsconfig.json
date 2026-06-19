@@ -7,7 +7,6 @@
 		"lib": ["dom", "dom.iterable", "ES2017", "ESNext.Disposable"],
 		"moduleResolution": "node",
 		"module": "ESNext",
-		"ignoreDeprecations": "6.0",
 		"target": "ES2017",
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
