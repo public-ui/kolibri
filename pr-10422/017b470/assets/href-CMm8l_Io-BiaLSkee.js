@@ -1,0 +1,1 @@
+import{At as e}from"./index-BH6DHii3.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};
