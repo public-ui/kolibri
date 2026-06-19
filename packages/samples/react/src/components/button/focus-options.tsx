@@ -93,7 +93,6 @@ export const ButtonFocusOptions: FC = () => {
 					<div className="grid gap-4">
 						{SELECT_CONFIGS.map((config, index) => (
 							<div key={config.key} className="grid gap-2">
-								{/* eslint-disable @typescript-eslint/no-unsafe-member-access */}
 								<KolSelect
 									ref={index === 0 ? behaviorSelectRef : null}
 									_label={config.label}

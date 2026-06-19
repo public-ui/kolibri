@@ -141,7 +141,7 @@ export class InputDateController extends InputIconController implements InputDat
 		);
 	};
 
-	protected onBlur(event: Event): void {
+	protected onBlur(event: FocusEvent): void {
 		super.onBlur(event);
 
 		// set the value here when the value is switched between blank and set (or vice versa) to enable value resets via setting null as value.

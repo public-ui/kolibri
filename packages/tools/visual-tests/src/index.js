@@ -45,10 +45,16 @@ const buildResult = child_process.spawnSync('pnpm', ['run', 'build', `--outDir="
 });
 
 if (buildResult.status !== 0) {
-	console.log('Build status:', buildResult.status);
-	console.log('Build stdout:', buildResult.stdout);
-	console.log('Build stderr:', buildResult.stderr);
-	console.log('Build error:', buildResult.error);
+	console.error('React Sample App build FAILED — aborting visual tests.');
+	console.error('Build status:', buildResult.status);
+	console.error('Build stdout:', buildResult.stdout);
+	console.error('Build stderr:', buildResult.stderr);
+	console.error('Build error:', buildResult.error);
+	console.error(
+		'The build output directory was not created, so Playwright cannot serve it. ' +
+			'Fix the build error above and re-run. (Previously surfaced as a misleading "spawn /bin/sh ENOENT".)',
+	);
+	process.exit(buildResult.status || 1); // status is null on signal termination → fall back to 1
 }
 
 /* Overlay the theme's own assets (icon fonts, inject-variants_*.json, …) onto the built app so the

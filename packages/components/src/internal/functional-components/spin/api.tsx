@@ -11,9 +11,5 @@ export type SpinApi = ApiFromConfig<
 		States: {
 			showToggled: boolean;
 		};
-		Callbacks: {
-			getTranslateActionRunning: () => string;
-			getTranslateActionDone: () => string;
-		};
 	}
 >;

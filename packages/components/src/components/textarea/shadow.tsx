@@ -8,6 +8,7 @@ import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../..
 import type {
 	AdjustHeightPropType,
 	AriaDetailsPropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HasCounterPropType,
@@ -64,7 +65,7 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	},
 	shadow: true,
 })
-export class KolTextarea implements TextareaAPI, FocusableElement {
+export class KolTextarea implements ClickableElement, FocusableElement, TextareaAPI {
 	@Element() protected readonly host?: HTMLKolTextareaElement;
 	protected readonly ctaRef = createCtaRef<HTMLTextAreaElement>();
 
@@ -117,11 +118,11 @@ export class KolTextarea implements TextareaAPI, FocusableElement {
 			ariaDescribedBy,
 			...this.controller.onFacade,
 			onInput: this.onInput,
-			onFocus: (event: Event) => {
+			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
 				this.inputHasFocus = true;
 			},
-			onBlur: (event: Event) => {
+			onBlur: (event: FocusEvent) => {
 				this.controller.onFacade.onBlur(event);
 				this.inputHasFocus = false;
 			},

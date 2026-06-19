@@ -30,9 +30,6 @@ export default defineConfig({
 		'process.env.COMMIT_HASH': JSON.stringify(getGitCommitHash()),
 		'process.env.PLATFORM': JSON.stringify(process.platform),
 	},
-	build: {
-		sourcemap: true,
-	},
 	server: {
 		allowedHosts: true,
 		port: parseInt(process.env.KOLIBRI_VISUAL_TEST_PORT || '9191', 10),
