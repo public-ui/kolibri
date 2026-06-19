@@ -1,0 +1,1 @@
+import"./index-CA-ulXGI.js";import{r as e}from"./align-DdWzcKWR-CyxlyIAn.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};

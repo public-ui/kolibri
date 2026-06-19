@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-CA-ulXGI.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
