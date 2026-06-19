@@ -4,6 +4,7 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropAdjustHeight,
+	PropAriaDetails,
 	PropDisabled,
 	PropHasCounter,
 	PropHideLabel,
@@ -38,6 +39,7 @@ type OptionalProps = {
 	resize: CSSResize;
 	value: string;
 } & PropAccessKey &
+	PropAriaDetails &
 	PropAdjustHeight &
 	PropDisabled &
 	PropHasCounter &

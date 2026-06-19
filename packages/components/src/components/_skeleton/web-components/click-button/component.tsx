@@ -16,7 +16,7 @@ import { createCtaRef, delegateFocus } from '../../../../utils/element-interacti
 	shadow: true,
 })
 export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements WebComponentInterface<ClickButtonApi> {
-	private readonly ctrl = new ClickButtonController(this.stateAccess);
+	private readonly ctrl = new ClickButtonController(BaseWebComponent.stateLess);
 	private readonly buttonRef = createCtaRef<HTMLButtonElement>();
 
 	/**

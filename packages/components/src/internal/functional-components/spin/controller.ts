@@ -1,14 +1,10 @@
-import { translate } from '../../../i18n';
-import { labelProp, showProp, variantSpinProp } from '../../props';
+import { labelProp, showProp, variantSpinProp, type SpinVariantType } from '../../props';
 import { BaseController } from '../base-controller';
 import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { SpinApi } from './api';
 import { spinPropsConfig } from './api';
 
 export class SpinController extends BaseController<SpinApi> implements ControllerInterface<SpinApi> {
-	private readonly translateActionRunning: string = translate('kol-action-running');
-	private readonly translateActionDone: string = translate('kol-action-done');
-
 	public constructor(stateAccess: StateAccess<SpinApi>) {
 		super(stateAccess, spinPropsConfig);
 	}
@@ -36,17 +32,9 @@ export class SpinController extends BaseController<SpinApi> implements Controlle
 		});
 	}
 
-	public watchVariant(value?: unknown): void {
+	public watchVariant(value?: SpinVariantType): void {
 		variantSpinProp.apply(value, (v) => {
 			this.setRenderProp('variant', v);
 		});
 	}
-
-	public handleGetTranslateActionRunning = (): string => {
-		return this.translateActionRunning;
-	};
-
-	public handleGetTranslateActionDone = (): string => {
-		return this.translateActionDone;
-	};
 }

@@ -11,6 +11,8 @@ import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomS
 import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type {
+	AriaDetailsPropType,
+	ClickableElement,
 	ComboboxAPI,
 	ComboboxStates,
 	DisabledPropType,
@@ -50,11 +52,12 @@ import { ComboboxController } from './controller';
 	},
 	shadow: true,
 })
-export class KolCombobox implements ComboboxAPI, FocusableElement {
+export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElement {
 	@Element() protected readonly host?: HTMLKolComboboxElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refSuggestions: HTMLLIElement[] = [];
 	private _focusedOptionIndex: number = -1;
+
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private clearButtonFocused = false;
 
@@ -140,11 +143,13 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 
 	private onInput(event: Event) {
 		const target = event.target as HTMLInputElement;
-		this.state._value = target.value;
-		this._value = target.value;
-		this.controller.onFacade.onInput(event);
-		this.setFilteredSuggestionsByQuery(target.value);
+		const value = target.value;
+		this.state._value = value;
+		this._value = value;
+		this.controller.onFacade.onInput(event, true, value);
+		this.setFilteredSuggestionsByQuery(value);
 		this._focusedOptionIndex = -1;
+		event.stopImmediatePropagation();
 	}
 
 	private handleKeyDownDropdown(event: KeyboardEvent) {
@@ -467,6 +472,16 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	@Prop() public _accessKey?: string;
 
 	/**
+	 * References an external element by ID that provides accessible details for this combobox.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public validateAriaDetails(value?: AriaDetailsPropType): void {
+		this.controller.validateAriaDetails(value);
+	}
+
+	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
 	@Prop() public _placeholder?: string;
@@ -687,6 +702,8 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 	}
 
 	public componentWillLoad(): void {
+		this.validateAriaDetails(this._ariaDetails);
+
 		this.refSuggestions = [];
 		this._touched = this._touched === true;
 		this.controller.componentWillLoad();
@@ -703,31 +720,32 @@ export class KolCombobox implements ComboboxAPI, FocusableElement {
 
 	@Listen('focusin')
 	public handleFocusIn(event: FocusEvent) {
-		setTimeout(() => {
-			if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
-				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
-			}
-		});
+		if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
+			this.controller.onFacade.onFocus(event);
+			this.inputHasFocus = true;
+		}
 	}
 
 	@Listen('focusout')
 	public handleFocusOut(event: FocusEvent) {
-		setTimeout(() => {
-			if (this.inputHasFocus && !this.host?.contains(document.activeElement)) {
-				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
-				if (this._isOpen) {
-					this._isOpen = false;
-				}
+		const relatedTarget = event.relatedTarget as HTMLElement | null;
+		const isFocusInside = relatedTarget && (relatedTarget === this.host || this.host?.contains(relatedTarget));
+
+		if (this.inputHasFocus && !isFocusInside) {
+			this.controller.onFacade.onBlur(event);
+			this.inputHasFocus = false;
+			if (this._isOpen) {
+				this._isOpen = false;
 			}
-		});
+		}
 	}
 
 	private onChange(event: Event): void {
-		this.controller.onFacade.onChange(event);
+		event.stopPropagation();
+		const value = this.state._value;
+		this.controller.onFacade.onChange(event, value);
 
 		// Static form handling
-		this.controller.setFormAssociatedValue(this.state._value as unknown as string);
+		this.controller.setFormAssociatedValue(value as unknown as string);
 	}
 }

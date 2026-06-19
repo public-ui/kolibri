@@ -12,7 +12,7 @@ import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 	},
 	shadow: true,
 })
-export class KolTree implements TreeProps, FocusableElement {
+export class KolTree implements FocusableElement, TreeProps {
 	@Element() protected readonly host?: HTMLKolTreeElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolTreeWcElement>();
 

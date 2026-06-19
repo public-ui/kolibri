@@ -3,6 +3,7 @@ import { test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
+import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 
 const COMPONENT_NAME = 'kol-single-select';
 const TEST_VALUE = 'E';
@@ -31,7 +32,7 @@ test.describe(COMPONENT_NAME, () => {
 
 	test.describe('kol-single-select additional interactions', () => {
 		test('should open listbox on button click and close on ESC', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
@@ -44,7 +45,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should move focus with arrow keys and select with Enter', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
@@ -60,7 +61,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should filter options when typing and select the filtered one', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
 
@@ -80,7 +81,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should clear the selection when clear button is clicked', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
 
@@ -99,7 +100,7 @@ test.describe(COMPONENT_NAME, () => {
 
 		test('should not render clear button when _hasClearButton is false', async ({ page }) => {
 			// Use setContent like other tests to ensure proper setup
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
 			// Set _hasClearButton to false after component is loaded
 			await page.evaluate(() => {
@@ -119,7 +120,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should select option with SPACE key & close list', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
 
@@ -133,7 +134,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should disable interaction when _disabled is true', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _disabled="true" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _disabled="true" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
 			await expect(page.locator('input.kol-single-select__input')).toBeDisabled();
 
@@ -142,7 +143,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should display no results message when input does not match', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Test" _options='[{"label":"North","value":"N"}]'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Test" _options='[{"label":"North","value":"N"}]'></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.fill('Something');
 			const noResult = page.getByText('Keine Ergebnisse gefunden.');
@@ -150,7 +151,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should only trigger onChange when the value actually changes', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 
 			const input = page.locator('input.kol-single-select__input');
 			const singleSelect = page.locator('kol-single-select');
@@ -182,6 +183,60 @@ test.describe(COMPONENT_NAME, () => {
 			// 2) Click on free space -> onChange must NOT fire (counter stays 1)
 			await page.click('html', { position: { x: 0, y: 0 } });
 			expect(await getChangeCount()).toBe(1);
+		});
+	});
+
+	test.describe('_ariaDetails', () => {
+		test('accepts valid element reference', async ({ page }) => {
+			await page.setContent(`
+				<kol-single-select _label="Select option" _aria-details="select-details" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<div id="select-details">Choose one of these options carefully</div>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
+			expect(value).toBe('select-details');
+		});
+
+		test('updates when prop changes', async ({ page }) => {
+			await page.setContent(`
+				<kol-single-select _label="Select option" _aria-details="details-1" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<div id="details-1">Details 1</div>
+				<div id="details-2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const host = page.locator(COMPONENT_NAME);
+			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails)).toBe('details-1');
+
+			await host.evaluate((el: HTMLKolSingleSelectElement) => {
+				el._ariaDetails = 'details-2';
+			});
+			await page.waitForChanges();
+
+			expect(await host.evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails)).toBe('details-2');
+		});
+
+		test('handles missing ID gracefully', async ({ page }) => {
+			await page.setContent(`
+				<kol-single-select _label="Select option" _aria-details="non-existent-id" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
+			expect(value).toBe('non-existent-id');
+		});
+
+		test('accepts multiple IDs (space-separated)', async ({ page }) => {
+			await page.setContent(`
+				<kol-single-select _label="Select option" _aria-details="id1 id2" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>
+				<div id="id1">Details 1</div>
+				<div id="id2">Details 2</div>
+			`);
+			await page.waitForChanges();
+
+			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
+			expect(value).toBe('id1 id2');
 		});
 	});
 });
