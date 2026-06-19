@@ -216,6 +216,31 @@ test.describe('kol-table-stateless', () => {
 
 			await expect(callbackPromise).resolves.toEqual([DATA[0].id]);
 		});
+
+		test('renders the multi-select selection column header as a th with an accessible name', async ({ page }) => {
+			const kolTableStateless = page.locator('kol-table-stateless');
+			const selectionHeader = kolTableStateless.locator('th.kol-table__cell--selection');
+
+			await expect(selectionHeader).toHaveAttribute('scope', 'col');
+			await expect(selectionHeader).toHaveAttribute('aria-label', /.+/);
+		});
+
+		test('renders the single-select selection column header as a th with an accessible name', async ({ page }) => {
+			const kolTableStateless = page.locator('kol-table-stateless');
+			await kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
+				const currentSelection = element._selection as KoliBriTableSelection;
+				element._selection = {
+					...currentSelection,
+					multiple: false,
+				};
+			});
+			await page.waitForChanges();
+
+			const selectionHeader = kolTableStateless.locator('th.kol-table__cell--selection');
+
+			await expect(selectionHeader).toHaveAttribute('scope', 'col');
+			await expect(selectionHeader).toHaveAttribute('aria-label', /.+/);
+		});
 	});
 
 	test('hides internal caption and removes aria-labelledby when external target is found', async ({ page }) => {

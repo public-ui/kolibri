@@ -1029,7 +1029,14 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		}
 
 		if (selection.multiple === false) {
-			return <td key={`thead-0-selection`} class="kol-table__cell kol-table__cell--header kol-table__cell--selection"></td>;
+			return (
+				<th
+					key={`thead-0-selection`}
+					scope="col"
+					class="kol-table__cell kol-table__cell--header kol-table__cell--selection"
+					aria-label={translate('kol-table-selection')}
+				></th>
+			);
 		}
 
 		const selectedKeyLength = this.getSelectedKeysWithoutDisabledKeys()?.length ?? 0;
@@ -1045,7 +1052,12 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		}
 		const label = translate(translationKey);
 		return (
-			<th key={`thead-0-selection`} class="kol-table__cell kol-table__cell--header kol-table__cell--selection">
+			<th
+				key={`thead-0-selection`}
+				scope="col"
+				class="kol-table__cell kol-table__cell--header kol-table__cell--selection"
+				aria-label={translate('kol-table-selection')}
+			>
 				<div
 					class={clsx('kol-table__selection', {
 						'kol-table__selection--indeterminate': indeterminate,
