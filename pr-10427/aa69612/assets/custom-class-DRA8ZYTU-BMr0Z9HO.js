@@ -1,0 +1,1 @@
+import{At as e}from"./index-6je8PRCm.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
