@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-BTfcNUTK.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
