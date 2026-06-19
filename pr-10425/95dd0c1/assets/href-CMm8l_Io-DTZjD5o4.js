@@ -1,0 +1,1 @@
+import{At as e}from"./index-BKmk_gYg.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};
