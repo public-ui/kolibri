@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
 import { TooltipController } from '../../internal/functional-components/tooltip/controller';
@@ -159,7 +160,6 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	};
 
 	let timeoutMaxText: NodeJS.Timeout | undefined;
-	let ariaMaxReachedText: string | undefined = 'MAX!';
 
 	const forwardedMaxTextRef = formFieldInputProps?.ref as ((el?: HTMLSpanElement) => void) | undefined;
 	const setMaxTextRef = (el?: HTMLSpanElement): void => {
@@ -175,20 +175,60 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 
 				if (counter.currentLength === maxLength) {
 					setTimeout(() => {
-						el.textContent = ariaMaxReachedText;
+						el.textContent = translate('kol-character-counter-max-aria');
 					}, 50);
 				}
 			}, 400);
 		}
 	};
 
-	let counterText: string | undefined = '/' + maxLength;
-
-	const forwardedCounterRef = formFieldInputProps?.ref as ((el?: HTMLSpanElement) => void) | undefined;
+	// counter
 	const setCounterRef = (el?: HTMLSpanElement): void => {
-		forwardedCounterRef?.(el);
 		if (counter && el) {
-			el.textContent = counter.currentLength + counterText;
+			if (typeof counter.maxLength !== 'number') {
+				// Counter ohne maximaler Wert > 'XX Zeichen'
+				el.textContent = translate('kol-character-counter-current', { placeholders: { current: String(counter.currentLength) } });
+			} else if (counter.maxLengthBehavior === 'soft') {
+				const remainingChars = counter.maxLength - counter.currentLength;
+				if (remainingChars < 0) {
+					// Counter mit weichem maximalen Wert überschritten > 'XX Zeichen zu viel'
+					el.textContent = translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remainingChars)) } });
+					el.classList.add('kol-form-field__counter--exceeded');
+				} else {
+					// Counter mit weichem maximalen Wert > 'Noch XX Zeichen übrig'
+					el.textContent = translate('kol-character-limit-remaining', { placeholders: { remaining: String(remainingChars) } });
+					el.classList.remove('kol-form-field__counter--exceeded');
+				}
+			} else if (counter.maxLengthBehavior === 'hard') {
+				// Counter mit festem maximalen Wert > 'XX/MAX Zeichen'
+				el.textContent = translate('kol-character-counter-current-of-max', {
+					placeholders: { current: String(counter.currentLength), max: String(maxLength) },
+				});
+			}
+		}
+	};
+
+	// counter aria text - Alle mit debounced counter length!
+	const setCounterAriaRef = (el?: HTMLSpanElement): void => {
+		if (counter && el) {
+			if (typeof counter.maxLength !== 'number') {
+				// Counter ohne maximaler Wert > 'XX Zeichen'
+				el.textContent = translate('kol-character-counter-current', { placeholders: { current: String(counter.currentLengthDebounced) } });
+			} else if (counter.maxLengthBehavior === 'soft') {
+				const remainingChars = counter.maxLength - counter.currentLengthDebounced;
+				if (remainingChars < 0) {
+					// Counter mit weichem maximalen Wert überschritten > 'XX Zeichen zu viel'
+					el.textContent = translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remainingChars)) } });
+				} else {
+					// Counter mit weichem maximalen Wert > 'Noch XX Zeichen übrig'
+					el.textContent = translate('kol-character-limit-remaining', { placeholders: { remaining: String(remainingChars) } });
+				}
+			} else if (counter.maxLengthBehavior === 'hard') {
+				// Counter mit festem maximalen Wert > 'XX von MAX Zeichen'
+				el.textContent = translate('kol-character-counter-current-of-max-aria', {
+					placeholders: { current: String(counter.currentLengthDebounced), max: String(maxLength) },
+				});
+			}
 		}
 	};
 
@@ -252,12 +292,11 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					</div>
 				)}
 			</InputContainer>
-			<div>
-				<span class="kol-form-field__counter" ref={setCounterRef} aria-live="polite"></span>
+			<div class="kol-form-field__counter">
+				<span ref={setCounterRef} data-testid="input-counter" aria-hidden="true"></span>
+				<span ref={setCounterAriaRef} data-testid="input-counter-aria" aria-live="polite" class="visually-hidden"></span>
 				<span class="kol-form-field__max" ref={setMaxTextRef} aria-live="polite"></span>
 			</div>
-			{/* {counter ? <KolFormFieldCounterFc id={id} {...counter} /> : null}
-			{maxLength ? <KolFormFieldCharacterLimitHintFc id={id} maxLength={maxLength} /> : null} */}
 			{showMsg && !hideMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} />}
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 			{anotherChildren}

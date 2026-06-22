@@ -285,8 +285,6 @@ export class InputController extends ControlledInputController implements Watche
 	};
 
 	public readonly updateCurrentLengthDebounced = debounce((length: number) => {
-		console.log('debounce');
-
 		setState(this.component, '_currentLengthDebounced', length);
 	}, 500);
 
