@@ -86,8 +86,6 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
-		this.controller.updateCurrentLengthDebounced(this._value?.length ?? 0);
-
 		this.controller.onFacade.onKeyDown(event);
 
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
@@ -96,6 +94,10 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 				ref: this.ctaRef.el,
 			});
 		}
+	};
+
+	private readonly onKeyUp = () => {
+		this.controller.updateCurrentLengthDebounced(this._value?.length ?? 0);
 	};
 
 	/**
@@ -195,6 +197,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 			onFocus: this.onFocus,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
+			onKeyUp: this.onKeyUp,
 		};
 	}
 

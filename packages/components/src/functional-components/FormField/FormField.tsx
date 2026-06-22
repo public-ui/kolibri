@@ -8,8 +8,6 @@ import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignP
 import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
-import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/FormFieldCharacterLimitHint';
-import KolFormFieldCounterFc from '../FormFieldCounter';
 import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
 import KolFormFieldLabelFc from '../FormFieldLabel';
 import KolFormFieldMsgFc from '../FormFieldMsg';
@@ -94,6 +92,8 @@ const InputContainer: FC<JSXBase.HTMLAttributes<HTMLDivElement>> = ({ class: cla
 	);
 };
 
+let oldLength: number = 0;
+
 const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const {
 		component: Component = 'div',
@@ -158,6 +158,40 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		}
 	};
 
+	let timeoutMaxText: NodeJS.Timeout | undefined;
+	let ariaMaxReachedText: string | undefined = 'MAX!';
+
+	const forwardedMaxTextRef = formFieldInputProps?.ref as ((el?: HTMLSpanElement) => void) | undefined;
+	const setMaxTextRef = (el?: HTMLSpanElement): void => {
+		forwardedMaxTextRef?.(el);
+		clearTimeout(timeoutMaxText);
+
+		if (counter && el && (counter.currentLengthDebounced !== oldLength || counter.currentLengthDebounced == maxLength)) {
+			oldLength = counter.currentLengthDebounced;
+			timeoutMaxText = setTimeout(() => {
+				el.textContent = '';
+
+				console.log(counter.currentLength);
+
+				if (counter.currentLength === maxLength) {
+					setTimeout(() => {
+						el.textContent = ariaMaxReachedText;
+					}, 50);
+				}
+			}, 400);
+		}
+	};
+
+	let counterText: string | undefined = '/' + maxLength;
+
+	const forwardedCounterRef = formFieldInputProps?.ref as ((el?: HTMLSpanElement) => void) | undefined;
+	const setCounterRef = (el?: HTMLSpanElement): void => {
+		forwardedCounterRef?.(el);
+		if (counter && el) {
+			el.textContent = counter.currentLength + counterText;
+		}
+	};
+
 	let stateCssClasses = {
 		['kol-form-field--disabled']: Boolean(disabled),
 		['kol-form-field--required']: Boolean(required),
@@ -218,8 +252,12 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					</div>
 				)}
 			</InputContainer>
-			{counter ? <KolFormFieldCounterFc id={id} {...counter} /> : null}
-			{maxLength && !counter ? <KolFormFieldCharacterLimitHintFc id={id} maxLength={maxLength} /> : null}
+			<div>
+				<span class="kol-form-field__counter" ref={setCounterRef} aria-live="polite"></span>
+				<span class="kol-form-field__max" ref={setMaxTextRef} aria-live="polite"></span>
+			</div>
+			{/* {counter ? <KolFormFieldCounterFc id={id} {...counter} /> : null}
+			{maxLength ? <KolFormFieldCharacterLimitHintFc id={id} maxLength={maxLength} /> : null} */}
 			{showMsg && !hideMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} />}
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 			{anotherChildren}
