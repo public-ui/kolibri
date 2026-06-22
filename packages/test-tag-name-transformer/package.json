@@ -2,7 +2,8 @@
 	"name": "@public-ui/test-tag-name-transformer",
 	"private": true,
 	"scripts": {
-		"prepare": "npm-run-all2 prepare:snapshots prepare:assets prepare:theme prepare:css",
+		"pretest": "npm-run-all2 build:theme prepare:snapshots prepare:assets prepare:theme prepare:css",
+		"build:theme": "pnpm --filter @public-ui/theme-default... build",
 		"prepare:snapshots": "cpy \"../themes/default/snapshots\" ./ --dot",
 		"prepare:assets": "kolibri-copy-assets --dest assets @public-ui/theme-default",
 		"prepare:theme": "kolibri-copy-assets --dest theme @public-ui/theme-default:dist",
