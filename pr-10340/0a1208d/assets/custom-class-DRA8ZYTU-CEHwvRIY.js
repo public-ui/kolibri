@@ -1,0 +1,1 @@
+import{At as e}from"./index-Ctgs24_X.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};

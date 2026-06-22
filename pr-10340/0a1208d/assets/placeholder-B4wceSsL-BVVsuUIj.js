@@ -1,0 +1,1 @@
+import{At as e}from"./index-Ctgs24_X.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
