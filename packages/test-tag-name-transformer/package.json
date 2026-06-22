@@ -2,10 +2,12 @@
 	"name": "@public-ui/test-tag-name-transformer",
 	"private": true,
 	"scripts": {
-		"prepare": "npm-run-all2 prepare:snapshots prepare:assets",
+		"prepare": "npm-run-all2 prepare:snapshots prepare:assets prepare:theme prepare:css",
 		"prepare:snapshots": "cpy \"../themes/default/snapshots\" ./ --dot",
-		"prepare:assets": "cpy \"node_modules/@public-ui/theme-default/assets/**/*\" ./assets --dot",
-		"test": "cross-env THEME_MODULE=theme ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test"
+		"prepare:assets": "cpy \"../themes/default/assets/**/*\" ./assets --dot",
+		"prepare:theme": "cpy \"../themes/default/dist/**/*\" ./theme --dot",
+		"prepare:css": "cpy \"../themes/default/inject-assets.css\" ./ --dot",
+		"test": "cross-env THEME_MODULE=theme THEME_EXPORT=DEFAULT THEME_CSS=$(pwd)/inject-assets.css ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test"
 	},
 	"devDependencies": {
 		"@public-ui/theme-default": "workspace:*",
