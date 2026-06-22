@@ -2,7 +2,7 @@ name: Visual Tests Snapshot Comparison
 
 on:
   pull_request:
-    types: [opened, ready_for_review, reopened, synchronize]
+    types: [opened, reopened, synchronize]
     paths:
       - 'packages/components/**'
       - 'packages/themes/**'
@@ -22,14 +22,13 @@ permissions:
 
 jobs:
   visual-tests-snapshots:
-    if: github.event.pull_request.draft == false
     strategy:
       matrix:
         package: ['test-tag-name-transformer', 'theme-default', 'theme-bwst', 'theme-ecl', 'theme-desy', 'theme-kern']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout base branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.base.sha }}
           persist-credentials: false
@@ -61,7 +60,7 @@ jobs:
           fi
 
       - name: Checkout head branch
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false

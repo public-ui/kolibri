@@ -24,12 +24,10 @@
  *   import { normalizeString } from '../../schema/props/helpers/normalizers';
  */
 
-'use strict';
-
-const path = require('path');
+import path from 'node:path';
 
 /** @type {import('eslint').Rule.RuleModule} */
-module.exports = {
+export default {
 	meta: {
 		type: 'problem',
 		docs: {

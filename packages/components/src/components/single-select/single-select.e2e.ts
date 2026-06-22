@@ -3,6 +3,7 @@ import { test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
+import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 
 const COMPONENT_NAME = 'kol-single-select';
 const TEST_VALUE = 'E';
@@ -31,7 +32,7 @@ test.describe(COMPONENT_NAME, () => {
 
 	test.describe('kol-single-select additional interactions', () => {
 		test('should open listbox on button click and close on ESC', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
@@ -44,7 +45,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should move focus with arrow keys and select with Enter', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
@@ -60,7 +61,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should filter options when typing and select the filtered one', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
 
@@ -80,7 +81,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should clear the selection when clear button is clicked', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
 
@@ -99,7 +100,7 @@ test.describe(COMPONENT_NAME, () => {
 
 		test('should not render clear button when _hasClearButton is false', async ({ page }) => {
 			// Use setContent like other tests to ensure proper setup
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
 			// Set _hasClearButton to false after component is loaded
 			await page.evaluate(() => {
@@ -119,7 +120,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should select option with SPACE key & close list', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.click();
 
@@ -133,7 +134,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should disable interaction when _disabled is true', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _disabled="true" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _disabled="true" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
 			await expect(page.locator('input.kol-single-select__input')).toBeDisabled();
 
@@ -142,7 +143,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should display no results message when input does not match', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Test" _options='[{"label":"North","value":"N"}]'></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Test" _options='[{"label":"North","value":"N"}]'></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');
 			await input.fill('Something');
 			const noResult = page.getByText('Keine Ergebnisse gefunden.');
@@ -150,7 +151,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		test('should only trigger onChange when the value actually changes', async ({ page }) => {
-			await page.setContent(`<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}' ></kol-single-select>`);
 
 			const input = page.locator('input.kol-single-select__input');
 			const singleSelect = page.locator('kol-single-select');

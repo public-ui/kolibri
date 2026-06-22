@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`kol-abbr should render with _label="Text" 1`] = `
-<kol-abbr class="kol-abbr">
+<kol-abbr>
   <template shadowrootmode="open">
-    <abbr tabindex="0">
+    <abbr class="kol-abbr" tabindex="0">
       <slot></slot>
     </abbr>
     <div class="kol-tooltip__floating">

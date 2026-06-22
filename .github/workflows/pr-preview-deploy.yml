@@ -19,7 +19,7 @@ jobs:
     if: github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -84,10 +84,17 @@ jobs:
             const url = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${pr}/${sha}/`;
             const body = `${marker}\n🚀 Preview deployed to GitHub Pages: [${url}](${url})\nCommit: \`${sha}\``;
             const { owner, repo } = context.repo;
-            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr });
-            const existing = comments.find(c => c.body.includes(marker));
-            if (existing) {
-              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
-            } else {
-              await github.rest.issues.createComment({ owner, repo, issue_number: pr, body });
+            try {
+              const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr });
+              const existing = comments.find(c => c.body.includes(marker));
+              if (existing) {
+                await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+              } else {
+                await github.rest.issues.createComment({ owner, repo, issue_number: pr, body });
+              }
+            } catch (error) {
+              // The deployment itself already succeeded at this point. Failing to post the
+              // preview comment (e.g. the PR was closed and its conversation locked, returning
+              // 403/410) must not fail the job, so we only emit a warning.
+              core.warning(`Could not post preview comment to PR #${pr}: ${error.message}`);
             }
