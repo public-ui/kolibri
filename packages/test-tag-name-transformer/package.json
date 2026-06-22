@@ -4,8 +4,8 @@
 	"scripts": {
 		"prepare": "npm-run-all2 prepare:snapshots prepare:assets prepare:theme prepare:css",
 		"prepare:snapshots": "cpy \"../themes/default/snapshots\" ./ --dot",
-		"prepare:assets": "cpy \"../themes/default/assets/**/*\" ./assets --dot",
-		"prepare:theme": "cpy \"../themes/default/dist/**/*\" ./theme --dot",
+		"prepare:assets": "kolibri-copy-assets --dest assets @public-ui/theme-default",
+		"prepare:theme": "kolibri-copy-assets --dest theme @public-ui/theme-default:dist",
 		"prepare:css": "cpy \"../themes/default/inject-assets.css\" ./ --dot",
 		"test": "cross-env THEME_MODULE=theme THEME_EXPORT=DEFAULT THEME_CSS=$(pwd)/inject-assets.css ENABLE_TAG_NAME_TRANSFORMER=true kolibri-visual-test"
 	},
