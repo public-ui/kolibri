@@ -1,1 +1,0 @@
-import{g as e,h as t,st as n}from"./index-7ZE5iP5T.js";var r=(n,r)=>(t()??e(`de`)).translate(n,r);n()&&(r=e=>e);export{r as t};
