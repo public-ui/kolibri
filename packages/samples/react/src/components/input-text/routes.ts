@@ -1,5 +1,6 @@
 import type { Routes } from '../../shares/types';
 import { InputTextAccessShortKey } from './access-short-key';
+import { InputTextAriaDetails } from './aria-details';
 import { InputTextBackground } from './background-test';
 import { InputTextBasic } from './basic';
 import { InputTextCounter } from './counter';
@@ -20,6 +21,7 @@ import { InputVariant } from './variant';
 
 export const INPUT_TEXT_ROUTES: Routes = {
 	'input-text': {
+		'aria-details': InputTextAriaDetails,
 		basic: InputTextBasic,
 		'get-value': InputTextOnInputOnChange,
 		'message-types': InputTextMessageTypes,

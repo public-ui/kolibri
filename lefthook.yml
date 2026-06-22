@@ -4,3 +4,6 @@ pre-commit:
       glob: '**/*.{js,ts,tsx,jsx,mjs,cjs,json,yml,yaml,css,scss,md,vue,svelte,html}'
       run: pnpm prettier --write {staged_files}
       stage_fixed: true
+    check-scripts:
+      glob: '**/package.json'
+      run: node scripts/check-no-relative-node-modules.mjs

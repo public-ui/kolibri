@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "4.2.1",
+	"version": "4.3.0-rc.1",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -53,7 +53,7 @@
 		"lint:tsc": "tsc --noemit",
 		"prebuild": "pnpm build:deps && pnpm prepare",
 		"prepare": "npm-run-all2 prepare:components prepare:theme-bwst prepare:theme-default prepare:theme-desy prepare:theme-ecl prepare:theme-kern",
-		"prepare:components": "cpy \"node_modules/@public-ui/components/assets/**/*\" assets --dot",
+		"prepare:components": "kolibri-copy-assets --dest assets @public-ui/components",
 		"prepare:theme-bwst": "cpy \"bwst/assets/**/*\" assets --dot",
 		"prepare:theme-default": "cpy \"default/assets/**/*\" assets --dot",
 		"prepare:theme-desy": "cpy \"desy/assets/**/*\" assets --dot",
@@ -63,23 +63,20 @@
 		"test:update:all": "pnpm -r --workspace-concurrency=1 test:update"
 	},
 	"devDependencies": {
-		"@eslint/eslintrc": "3.3.5",
-		"@eslint/js": "9.39.4",
 		"@public-ui/components": "workspace:*",
+		"@public-ui/eslint-config": "workspace:*",
 		"@rollup/plugin-commonjs": "29.0.3",
 		"@rollup/plugin-node-resolve": "16.0.3",
 		"@rollup/plugin-typescript": "12.3.0",
-		"@typescript-eslint/eslint-plugin": "8.58.2",
-		"@typescript-eslint/parser": "8.58.2",
 		"autoprefixer": "10.5.0",
 		"cpy-cli": "7.0.0",
 		"eslint": "9.39.4",
 		"nodemon": "3.1.14",
 		"npm-run-all2": "8.0.4",
 		"postcss": "8.5.15",
-		"prettier": "3.8.3",
+		"prettier": "3.8.4",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"rollup": "4.61.1",
+		"rollup": "4.62.0",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass-embedded": "1.100.0",
 		"typescript": "5.9.3"

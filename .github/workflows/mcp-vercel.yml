@@ -38,7 +38,7 @@ jobs:
       VERCEL_TOKEN: ${{ secrets.VERCEL_MCP_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
@@ -84,12 +84,27 @@ jobs:
           const pkgPath = path.resolve('package.json');
           const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
 
-          if (pkg.dependencies && pkg.dependencies['@public-ui/components']) {
-            console.log('Removing @public-ui/components dependency before deployment');
-            delete pkg.dependencies['@public-ui/components'];
+          // Vercel installs with npm, which cannot resolve the `workspace:` protocol.
+          // The artifacts are pre-built, so none of the workspace packages are needed
+          // at deploy time — strip every workspace dependency from all dependency fields.
+          let changed = false;
+          for (const field of ['dependencies', 'devDependencies', 'peerDependencies', 'optionalDependencies']) {
+            const deps = pkg[field];
+            if (!deps) continue;
+            for (const [name, version] of Object.entries(deps)) {
+              if (typeof version === 'string' && version.startsWith('workspace:')) {
+                console.log(`Removing ${field} entry "${name}" before deployment`);
+                delete deps[name];
+                changed = true;
+              }
+            }
+            if (Object.keys(deps).length === 0) delete pkg[field];
+          }
+
+          if (changed) {
             fs.writeFileSync(pkgPath, `${JSON.stringify(pkg, null, 2)}\n`);
           } else {
-            console.log('No @public-ui/components dependency found; nothing to strip.');
+            console.log('No workspace dependencies found; nothing to strip.');
           }
           NODE
           pnpm exec prettier --write package.json

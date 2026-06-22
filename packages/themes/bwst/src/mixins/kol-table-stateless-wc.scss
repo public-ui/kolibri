@@ -82,7 +82,7 @@
 				position: absolute;
 				top: 0;
 				right: 0;
-				bottom: -2px;
+				bottom: -1px;
 				width: to-rem(2);
 
 				content: '';
@@ -234,11 +234,11 @@
 			line-height: 1;
 		}
 
-		tbody tr:nth-child(2n) {
+		tbody tr:nth-child(odd) {
 			background-color: var(--color-mute);
 		}
 
-		tbody tr:nth-child(2n) th {
+		tbody tr:nth-child(odd) th {
 			background-color: var(--color-light);
 		}
 	}

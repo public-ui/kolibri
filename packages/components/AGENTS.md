@@ -71,6 +71,23 @@ their controllers must import these validators instead of implementing custom
 logic. Always use the validator exported from the prop schema to keep behaviour
 consistent across components.
 
+#### `_ariaDetails` — Cross-Shadow-DOM Accessible Details
+
+All form field components expose `_ariaDetails?: string` (space-separated element IDs, per W3C ARIA spec). It uses the Accessible Object Model (AOM) to cross the Shadow DOM boundary without `aria-details` on the shadow root.
+
+**How it works:**
+
+- `AssociatedInputController` (base class for all form field controllers) owns the canonical implementation in `validateAriaDetails(value?: string)`.
+- It calls `validateAriaDetails()` from `src/schema/props/aria-details.ts`, which resolves the IDs via `resolveTargets()` and assigns the result to `ElementInternals.ariaDetailsElements`.
+- `attachInternals()` is called exactly once in the `AssociatedInputController` constructor — never again in component lifecycle hooks.
+- Each component's `@Watch('_ariaDetails')` simply delegates: `this.controller.validateAriaDetails(value)`.
+- `componentWillLoad()` calls `this.validateAriaDetails(this._ariaDetails)` to initialize on first render.
+
+**Controller inheritance chain (all share `validateAriaDetails`):**  
+`InputCheckboxController → InputCheckboxRadioController → ... → InputIconController → InputController → ControlledInputController → AssociatedInputController`
+
+**Do not** add a `validateAriaDetails` override in any subcontroller — it would silently disable the implementation via method override.
+
 #### Open vs Show
 
 Use `_open` when the component renders an element on demand, for example a drawer or popover that appears from nothing. Use `_show` when the element already exists in the DOM and you only toggle its visibility.

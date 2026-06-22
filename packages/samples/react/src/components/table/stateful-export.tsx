@@ -39,6 +39,7 @@ const triggerBlobDownload = (blob: Blob, fileName: string): void => {
 const sanitizeFileName = (value: string): string => {
 	const sanitized = value
 		.trim()
+		// eslint-disable-next-line no-control-regex -- intentionally strips control characters from generated file names
 		.replace(/[<>:"/\\|?*\u0000-\u001F]/g, '-')
 		.replace(/\.+$/, '');
 	return sanitized.length > 0 ? sanitized : 'table-export';

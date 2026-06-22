@@ -21,6 +21,6 @@
 		"skipLibCheck": true,
 		"resolveJsonModule": true
 	},
-	"include": [".eslintrc.js", "playwright.config.ts", "stencil.config.ts", "test-env.js", "scripts/vaadin.js"],
+	"include": ["playwright.config.ts", "stencil.config.ts", "test-env.js", "scripts/vaadin.js"],
 	"exclude": ["node_modules"]
 }

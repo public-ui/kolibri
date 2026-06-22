@@ -20,6 +20,7 @@ packages:
   - packages/themes/kern
   - packages/themes
   - packages/tools/benchmark-tests
+  - packages/tools/eslint-config
   - packages/tools/kolibri-cli
   - packages/tools/hydrate-server
   - packages/tools/mcp
@@ -33,3 +34,6 @@ allowBuilds:
   esbuild: true
   protobufjs: true
   unrs-resolver: true
+overrides:
+  esbuild@>=0.17.0 <0.28.1: '>=0.28.1'
+  esbuild@>=0.27.3 <0.28.1: '>=0.28.1'
