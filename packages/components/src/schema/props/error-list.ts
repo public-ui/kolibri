@@ -1,5 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
-import { KolFocusOptions } from '../interfaces';
+import type { KolFocusOptions } from '../interfaces';
 import type { EventCallback } from '../types';
 import { watchValidator } from '../utils';
 
