@@ -1,4 +1,5 @@
 import type { Generic } from 'adopted-style-sheets';
+import { KolFocusOptions } from '../interfaces';
 import type { EventCallback } from '../types';
 import { watchValidator } from '../utils';
 
@@ -6,6 +7,7 @@ import { watchValidator } from '../utils';
 export type ErrorListPropType = {
 	message: string;
 	selector: string | EventCallback<Event>;
+	options?: KolFocusOptions;
 };
 
 export type PropErrorList = {

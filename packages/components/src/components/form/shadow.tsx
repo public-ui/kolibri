@@ -25,8 +25,9 @@ export class KolForm implements FormAPI {
 	@Element() private readonly host?: HTMLKolFormElement;
 	errorListBlock?: HTMLElement;
 	errorListFirstLink?: HTMLElement;
-	scrollOptions: KolFocusOptions = {
+	scrollOptionsFallback: KolFocusOptions = {
 		behavior: 'smooth',
+		block: 'nearest',
 	};
 	private readonly translateErrorListMessage = translate('kol-error-list-message');
 	private readonly translateErrorList = translate('kol-error-list');
@@ -54,10 +55,10 @@ export class KolForm implements FormAPI {
 		}
 	};
 
-	private readonly handleLinkClick = (selector: string) => {
+	private readonly handleLinkClick = (selector: string, options?: KolFocusOptions) => {
 		const targetElement = document.querySelector<HTMLElement>(selector);
 		if (targetElement && typeof targetElement.focus === 'function') {
-			targetElement.focus(this.scrollOptions);
+			targetElement.focus(options ? options : this.scrollOptionsFallback);
 		}
 	};
 
@@ -76,7 +77,7 @@ export class KolForm implements FormAPI {
 									class="kol-form__link"
 									_href=""
 									_label={error.message}
-									_on={{ onClick: typeof error.selector === 'string' ? () => this.handleLinkClick(String(error.selector)) : error.selector }}
+									_on={{ onClick: typeof error.selector === 'string' ? () => this.handleLinkClick(String(error.selector), error.options) : error.selector }}
 									ref={index === 0 ? this.setFirstLinkElement : undefined}
 								/>
 							</li>
@@ -115,13 +116,9 @@ export class KolForm implements FormAPI {
 		);
 	}
 
-	private scrollToErrorList(): void {
-		this.errorListBlock?.scrollIntoView({
-			behavior: 'smooth',
-			block: 'start',
-		});
+	private scrollToErrorList(options?: KolFocusOptions): void {
 		setTimeout(() => {
-			this.errorListFirstLink?.querySelector('a')?.focus();
+			this.errorListFirstLink?.querySelector('a')?.focus(options ? options : this.scrollOptionsFallback);
 		}, 250);
 	}
 
@@ -129,8 +126,8 @@ export class KolForm implements FormAPI {
 	 * Scrolls to the error list and focuses the first link.
 	 */
 	@Method()
-	async focusErrorList(): Promise<void> {
-		this.scrollToErrorList();
+	async focusErrorList(options?: KolFocusOptions): Promise<void> {
+		this.scrollToErrorList(options);
 		return Promise.resolve();
 	}
 
