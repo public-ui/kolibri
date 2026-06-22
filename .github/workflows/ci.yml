@@ -128,7 +128,7 @@ jobs:
           fi
       - name: Upload HTML report for consolidation
         if: ${{ !cancelled() && steps.report-path.outputs.exists == 'true' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: visual-report-${{ steps.report-path.outputs.slug }}
           path: ${{ steps.report-path.outputs.dir }}
@@ -244,7 +244,7 @@ jobs:
   #       run: pnpm --filter @public-ui/sample-react^... build
   #     - name: Lighthouse CI
   #       run: pnpm --filter @public-ui/sample-react lighthouse
-  #     - uses: actions/upload-artifact@v4
+  #     - uses: actions/upload-artifact@v7
   #       if: always()
   #       with:
   #         name: lighthouse-report
