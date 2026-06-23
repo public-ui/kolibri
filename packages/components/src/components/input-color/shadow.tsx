@@ -3,6 +3,7 @@ import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core
 import type {
 	AriaDetailsPropType,
 	AutoCompletePropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HideLabelPropType,
@@ -44,7 +45,7 @@ import { InputColorController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputColor implements InputColorAPI, FocusableElement {
+export class KolInputColor implements ClickableElement, FocusableElement, InputColorAPI {
 	@Element() protected readonly host?: HTMLKolInputColorElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refInputColor?: HTMLInputElement;

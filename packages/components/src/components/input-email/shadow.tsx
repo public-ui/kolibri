@@ -5,6 +5,7 @@ import clsx from '../../utils/clsx';
 import type {
 	AriaDetailsPropType,
 	AutoCompletePropType,
+	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
 	HasCounterPropType,
@@ -53,7 +54,7 @@ import { InputEmailController } from './controller';
 	},
 	shadow: true,
 })
-export class KolInputEmail implements InputEmailAPI, FocusableElement {
+export class KolInputEmail implements ClickableElement, FocusableElement, InputEmailAPI {
 	@Element() protected readonly host?: HTMLKolInputEmailElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
@@ -121,11 +122,11 @@ export class KolInputEmail implements InputEmailAPI, FocusableElement {
 			...this.controller.onFacade,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
-			onFocus: (event: Event) => {
+			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
 				this.inputHasFocus = true;
 			},
-			onBlur: (event: Event) => {
+			onBlur: (event: FocusEvent) => {
 				this.controller.onFacade.onBlur(event);
 				this.inputHasFocus = false;
 			},

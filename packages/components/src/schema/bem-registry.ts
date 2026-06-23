@@ -20,6 +20,9 @@ import { generateBemClassNames } from 'typed-bem';
  * Complete schema definition for all KoliBri components
  */
 export type KoliBriComponentsBemSchema = {
+	'kol-abbr': {
+		modifiers: null;
+	};
 	'kol-alert': {
 		/**
 		 * Here we define the elements we needed
@@ -207,6 +210,9 @@ export const bem = generateBemClassNames<KoliBriComponentsBemSchema>();
  * to generate SCSS files in themes.
  */
 const BEM: KoliBriComponentsBemSchema = {
+	'kol-abbr': {
+		modifiers: null,
+	},
 	'kol-alert': {
 		elements: {
 			closer: { modifiers: null },

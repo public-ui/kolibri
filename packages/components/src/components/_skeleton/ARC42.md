@@ -262,6 +262,7 @@ private catchElement = (element?: HTMLElement): void => {
 - Is a pure renderer that receives props, callbacks, emitters and refs from the controller.
 - Avoids any side effects or state mutation. User interactions are signalled via DOM events which bubble back to the web component.
 - Maps controller props to accessible markup and wires refs for imperative access when required.
+- May call stateless utility functions (e.g. `translate()`, formatters) directly — the `Callbacks` bucket in `ComponentApi` is reserved for event-driven callbacks only, not data accessors.
 - **Must return exactly one root node** — the BEM block container. Use `RootNodeFC` (see §4.1) instead of a raw `<div>`. Returning a JSX Fragment (`<>…</>`) or multiple top-level siblings is forbidden. All direct children of `<Host>` become flex/grid items whenever the host or a parent theme applies `display: flex` or `display: grid` with a `gap`. A conditionally rendered sibling (e.g. a tooltip) would then participate in that layout context, causing unintended spacing and alignment. Wrapping all output in a single BEM root node prevents this class of layout bugs entirely.
 - **Do not wrap child FCs in unnecessary container elements.** A child FC (e.g. `TooltipFC`) already provides its own BEM root element with all required classes and structure. Adding an extra `<div class="kol-link__tooltip">` around it is redundant — it adds DOM depth, makes CSS selectors less predictable, and suggests a styling concern that belongs inside the FC itself.
 

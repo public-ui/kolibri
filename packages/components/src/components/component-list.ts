@@ -1,4 +1,4 @@
-import { KolAbbr } from './abbr/shadow';
+import { KolAbbr } from './abbr/component';
 import { KolAccordion } from './accordion/shadow';
 import { KolAlertWc } from './alert/component';
 import { KolAlert } from './alert/shadow';
