@@ -20,7 +20,7 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 	},
 	shadow: true,
 })
-export class KolSkipNav implements SkipNavAPI, FocusableElement {
+export class KolSkipNav implements FocusableElement, SkipNavAPI {
 	@Element() private readonly host?: HTMLKolSkipNavElement;
 
 	@State() private _tick = 0;
