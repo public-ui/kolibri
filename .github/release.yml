@@ -30,4 +30,4 @@ changelog:
         - release:theming
     - title: 💪 Other Changes
       labels:
-        - "*"
+        - '*'
