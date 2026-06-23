@@ -1,0 +1,1 @@
+import{jt as e}from"./index-Cm65LA4v.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
