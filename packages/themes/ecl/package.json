@@ -83,7 +83,7 @@
 		"postcss": "8.5.15",
 		"prettier": "3.8.4",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"rollup": "4.62.0",
+		"rollup": "4.62.2",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass-embedded": "1.100.0",
 		"stylelint": "16.26.1",
