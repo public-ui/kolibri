@@ -28,7 +28,7 @@
 			}
 		}
 
-		.kol-button {
+		.kol-button__button {
 			color: var(--color-dark-blue-100);
 			position: relative;
 			padding: to-rem(16) to-rem(20);
@@ -75,7 +75,7 @@
 			}
 		}
 
-		&.collapsible--open .kol-button {
+		&.collapsible--open .kol-button__button {
 			box-shadow: inset 3px 0 0 rgb(31, 51, 71, 0.16);
 			padding-top: to-rem(24);
 

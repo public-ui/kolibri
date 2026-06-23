@@ -13,9 +13,9 @@
 }
 
 @mixin kol-alert-theme {
-	.kol-alert {
-		@include kol-button('kol-button');
+	@include kol-button('kol-button');
 
+	.kol-alert {
 		background-color: var(--color-light);
 
 		display: flex;
@@ -77,13 +77,9 @@
 
 	.kol-alert__closer {
 		place-self: center;
+		@include kol-button-ghost();
 
-		.kol-button {
-			border-radius: 50%; // visible on focus
-			width: var(--a11y-min-size);
-			height: var(--a11y-min-size);
-			cursor: pointer;
-
+		.kol-button__button:not(:hover) {
 			.kol-alert--variant-msg & {
 				--text-color: var(--alert-accent-color);
 			}
@@ -124,7 +120,6 @@
 		}
 
 		.kol-alert--variant-card & {
-			margin-top: to-rem(-4);
 			justify-self: right;
 
 			font-size: to-rem(20);

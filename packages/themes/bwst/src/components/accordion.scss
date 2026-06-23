@@ -42,12 +42,6 @@
 			min-height: to-rem(35.2);
 			cursor: pointer;
 
-			&:focus-within {
-				.kol-button {
-					outline: 0;
-				}
-			}
-
 			.kol-span {
 				&__container {
 					display: flex;
@@ -56,11 +50,12 @@
 				}
 			}
 
-			.kol-button {
+			.kol-button__button {
 				padding: to-rem(12) to-rem(8);
 
-				:focus {
+				&:focus {
 					outline: none;
+					border-width: 0;
 				}
 			}
 
