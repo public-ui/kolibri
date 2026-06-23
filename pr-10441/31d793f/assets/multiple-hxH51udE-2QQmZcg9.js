@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-BYZfT_Sr.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};
