@@ -49,7 +49,7 @@ export const ButtonLinkBasic: FC = () => {
 					<KolButtonLink _label="With access key" _accessKey="c" _inline={false} _on={dummyEventHandler} />
 				</p>
 				<p>
-					<KolButtonLink _label="Disabled ButtonLink" _inline={false} _shortKey="s" />
+					<KolButtonLink _label="With short key" _shortKey="s" _inline={false} _on={dummyEventHandler} />
 				</p>
 				<p>
 					<KolButtonLink _label="Special Variant ButtonLink" _variant="theme-link" />

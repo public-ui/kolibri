@@ -126,6 +126,82 @@ exports[`kol-table-stateless-wc should render with _label="Table with merged par
 </kol-table-stateless-wc>
 `;
 
+exports[`kol-table-stateless-wc should render with _label="Table with multiple selection renders selection header with accessible name" _selection={"selectedKeys":[],"keyPropertyName":"id"} _headerCells={"horizontal":[[{"key":"header1","label":"Header 1","width":180}]],"vertical":[]} _data=[{"id":"1","header1":"Cell 1.1"}] 1`] = `
+<kol-table-stateless-wc>
+  <div class="kol-table">
+    <div class="kol-table__scroll-container">
+      <table aria-labelledby="caption" class="kol-table__table" style="min-width: 180px;">
+        <caption class="kol-table__caption kol-table__focus-element" id="caption">
+          Table with multiple selection renders selection header with accessible name
+        </caption>
+        <thead class="kol-table__head">
+          <tr class="kol-table__head-row">
+            <th class="kol-table__cell kol-table__cell--header kol-table__cell--selection" scope="col">
+              <span class="visually-hidden">
+                kol-table-selection
+              </span>
+              <div class="kol-table__selection">
+                <label class="kol-table__selection-label">
+                  <i aria-hidden="true" class="kol-icon kol-icon__icon kol-table__selection-icon kolicon" role="presentation"></i>
+                  <input aria-label="kol-table-selection-all" class="kol-table__selection-input kol-table__selection-input--checkbox" data-testid="selection-checkbox-all" name="selection" type="checkbox">
+                </label>
+                <div class="kol-table__selection-input-tooltip">
+                  <div class="kol-tooltip__floating">
+                    <div class="kol-tooltip__arrow"></div>
+                    <span class="kol-span kol-tooltip__content" id="kol-table-selection-all-label">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          kol-table-selection-all
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </th>
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col" style="width: 180px;">
+              Header 1
+            </th>
+          </tr>
+          <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="2"></td>
+          </tr>
+        </thead>
+        <tbody class="kol-table__body">
+          <tr class="kol-table__row kol-table__row--body">
+            <td class="kol-table__cell kol-table__cell--selection">
+              <div class="kol-table__selection">
+                <label class="kol-table__selection-label">
+                  <i aria-hidden="true" class="kol-icon kol-icon__icon kol-table__selection-icon kolicon" role="presentation"></i>
+                  <input aria-label="Selection" class="kol-table__selection-input kol-table__selection-input--checkbox" id="1" name="selection" type="checkbox">
+                </label>
+                <div class="kol-table__selection-input-tooltip">
+                  <div class="kol-tooltip__floating">
+                    <div class="kol-tooltip__arrow"></div>
+                    <span class="kol-span kol-tooltip__content" id="1-label">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          Selection
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="kol-table__cell kol-table__cell--body">
+              Cell 1.1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</kol-table-stateless-wc>
+`;
+
 exports[`kol-table-stateless-wc should render with _label="Table with only horizontal headers" _headerCells={"horizontal":[[{"key":"header1","label":"Header 1","textAlign":"left","width":150},{"key":"header2","label":"Header 2","textAlign":"center","width":180}]],"vertical":[]} _data=[{"header1":"Cell 1.1","header2":"Cell 1.2"},{"header1":"Cell 2.1","header2":"Cell 2.2"}] 1`] = `
 <kol-table-stateless-wc>
   <div class="kol-table">
@@ -162,6 +238,62 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
             </td>
             <td class="kol-table__cell kol-table__cell--align-center kol-table__cell--body" style="text-align: center;">
               Cell 2.2
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</kol-table-stateless-wc>
+`;
+
+exports[`kol-table-stateless-wc should render with _label="Table with single selection renders selection header with accessible name" _selection={"multiple":false,"selectedKeys":[],"keyPropertyName":"id"} _headerCells={"horizontal":[[{"key":"header1","label":"Header 1","width":180}]],"vertical":[]} _data=[{"id":"1","header1":"Cell 1.1"}] 1`] = `
+<kol-table-stateless-wc>
+  <div class="kol-table">
+    <div class="kol-table__scroll-container">
+      <table aria-labelledby="caption" class="kol-table__table" style="min-width: 180px;">
+        <caption class="kol-table__caption kol-table__focus-element" id="caption">
+          Table with single selection renders selection header with accessible name
+        </caption>
+        <thead class="kol-table__head">
+          <tr class="kol-table__head-row">
+            <th class="kol-table__cell kol-table__cell--header kol-table__cell--selection" scope="col">
+              <span class="visually-hidden">
+                kol-table-selection
+              </span>
+            </th>
+            <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col" style="width: 180px;">
+              Header 1
+            </th>
+          </tr>
+          <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+            <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="2"></td>
+          </tr>
+        </thead>
+        <tbody class="kol-table__body">
+          <tr class="kol-table__row kol-table__row--body">
+            <td class="kol-table__cell kol-table__cell--selection">
+              <div class="kol-table__selection">
+                <label class="kol-table__selection-label">
+                  <input aria-label="Selection" class="kol-table__selection-input kol-table__selection-input--radio" id="1" name="selection" type="radio">
+                </label>
+                <div class="kol-table__selection-input-tooltip">
+                  <div class="kol-tooltip__floating">
+                    <div class="kol-tooltip__arrow"></div>
+                    <span class="kol-span kol-tooltip__content" id="1-label">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          Selection
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td class="kol-table__cell kol-table__cell--body">
+              Cell 1.1
             </td>
           </tr>
         </tbody>
