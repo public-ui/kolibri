@@ -31,16 +31,21 @@ export const FormErrorList: FC = () => {
 				}}
 				_errorList={[
 					{
-						message: 'Error in Input 2',
+						message: 'Error in Input 2 (default scroll behaviour)',
 						selector: '#input2',
 					},
 					{
-						message: 'Error in Input 3',
+						message: 'Error in Input 3 (no scrolling, just alert)',
 						selector: () => alert('Error in Input 3'),
+					},
+					{
+						message: 'Error in Input 4 (custom scroll behaviour)',
+						selector: '#input4',
+						options: { behavior: 'instant', block: 'start', afterFocus: () => console.log('after Focus Input 4') },
 					},
 				]}
 			>
-				<div className="grid gap-2">
+				<div className="grid gap-250">
 					<KolInputText id="input1" _label="Input 1" />
 					<KolInputText
 						id="input2"
@@ -54,6 +59,15 @@ export const FormErrorList: FC = () => {
 					<KolInputText
 						id="input3"
 						_label="Input 3"
+						_touched
+						_msg={{
+							_description: 'Input error',
+							_type: 'error',
+						}}
+					/>
+					<KolInputText
+						id="input4"
+						_label="Input 4"
 						_touched
 						_msg={{
 							_description: 'Input error',
