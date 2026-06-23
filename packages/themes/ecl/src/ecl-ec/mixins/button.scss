@@ -10,9 +10,15 @@
 		--button-focus-outline-offset: -3px;
 		--button-focus-outline-width: 1px;
 
-		&:focus {
+		&:focus-within {
 			outline: var(--button-focus-outline-color) solid var(--button-focus-outline-width);
 			outline-offset: var(--button-focus-outline-offset);
+		}
+
+		/* Suppress the user agent outline on the inner button of the skeleton markup;
+		 * the theme renders its own focus style on the root node. */
+		&__button:focus {
+			outline: none;
 		}
 
 		&--primary {
@@ -20,11 +26,11 @@
 			--button-border-color: var(--ecl-color-primary);
 			--button-text-color: var(--ecl-color-white);
 
-			&:focus {
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [class*='--disabled']):hover {
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
 			}
@@ -35,14 +41,14 @@
 			--button-border-color: var(--ecl-color-primary);
 			--button-text-color: var(--ecl-color-primary);
 
-			&:focus {
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-white);
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
 				--button-text-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [class*='--disabled']):hover {
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
 				--button-text-color: var(--ecl-color-white);
@@ -55,13 +61,13 @@
 			--button-border-color: transparent;
 			--button-border-width: 1px;
 
-			&:focus {
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-primary);
 				--button-focus-outline-offset: 0;
 				--button-focus-outline-width: 2px;
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [class*='--disabled']):hover {
 				--button-background-color: var(--ecl-color-primary-20);
 				--button-border-color: var(--ecl-color-dark-80);
 			}
@@ -73,13 +79,13 @@
 			--button-border-color: transparent;
 			--button-border-width: 1px;
 
-			&:focus {
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-primary);
 				--button-focus-outline-offset: 0;
 				--button-focus-outline-width: 2px;
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [class*='--disabled']):hover {
 				--button-background-color: var(--ecl-color-primary-20);
 				--button-border-color: var(--ecl-color-dark-80);
 			}
@@ -90,7 +96,7 @@
 			--button-border-color: var(--ecl-color-secondary);
 			--button-text-color: var(--ecl-color-dark);
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [class*='--disabled']):hover {
 				--button-background-color: var(--ecl-color-secondary-120);
 				--button-border-color: var(--ecl-color-secondary-120);
 			}
@@ -101,11 +107,11 @@
 			--button-border-color: var(--ecl-color-error);
 			--button-text-color: var(--ecl-color-white);
 
-			&:focus {
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [class*='--disabled']):hover {
 				--button-background-color: var(--ecl-color-error);
 				--button-border-color: var(--ecl-color-dark);
 			}
@@ -152,13 +158,13 @@
 	--button-border-width: 1px;
 	--button-text-color: var(--ecl-color-primary);
 
-	&:focus {
+	&:focus-within {
 		--button-focus-outline-color: var(--ecl-color-primary);
 		--button-focus-outline-offset: 0;
 		--button-focus-outline-width: 2px;
 	}
 
-	&:not(:disabled):hover {
+	&:not(:disabled, [class*='--disabled']):hover {
 		--button-background-color: var(--ecl-color-primary-20);
 		--button-border-color: var(--ecl-color-dark-80);
 		--button-text-color: var(--ecl-color-dark);

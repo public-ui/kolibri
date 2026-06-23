@@ -15,17 +15,20 @@
 
 		font-family: var(--font-family);
 
-		&:focus {
+		/* Suppress the user agent outline; the theme renders its own focus style.
+		 * The skeleton markup focuses the inner &__button, the legacy markup the root itself. */
+		&:focus,
+		&__button:focus {
 			outline: none;
 		}
 
 		&--primary {
-			@include primaryButton();
+			@include primaryButton($block-classname);
 		}
 
 		&--secondary,
 		&--normal {
-			@include secondaryButton();
+			@include secondaryButton($block-classname);
 		}
 
 		&--danger {
@@ -33,14 +36,14 @@
 			--text-border-width: var(--border-width-m);
 			--text-color: var(--color-red-100);
 
-			&:not([disabled]):hover,
-			&:focus {
+			&:not([disabled], .#{$block-classname}--disabled):hover,
+			&:focus-within {
 				.#{$block-classname}__text::before {
 					background-color: var(--color-red-100-06);
 				}
 			}
 
-			&:disabled {
+			&:is(:disabled, .#{$block-classname}--disabled) {
 				--text-background-color: var(--color-white-100);
 				--text-border-color: var(--color-black-60);
 				--text-color: var(--color-black-60);
@@ -49,10 +52,10 @@
 
 		&--tertiary,
 		&--ghost {
-			@include ghostButton();
+			@include ghostButton($block-classname);
 		}
 
-		&:disabled {
+		&:is(:disabled, .#{$block-classname}--disabled) {
 			opacity: 1;
 		}
 
@@ -92,7 +95,7 @@
 				}
 			}
 
-			@at-root #{$root}:focus & {
+			@at-root #{$root}:focus-within & {
 				@include focus-outline;
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
@@ -130,8 +133,8 @@
 		--text-border-width: var(--border-width-none);
 		--text-color: var(--color-blue-100);
 
-		&:not([disabled]):hover,
-		&:focus {
+		&:not([disabled], .#{$block-classname}--disabled):hover,
+		&:focus-within {
 			.#{$block-classname}__text::before {
 				background-color: var(--color-dark-blue-100-06);
 			}
@@ -145,19 +148,19 @@
 	}
 }
 
-@mixin primaryButton() {
+@mixin primaryButton($block-classname: 'kol-button') {
 	--text-background-color: var(--color-blue-100);
 	--text-border-color: var(--color-blue-100);
 	--text-border-width: var(--border-width-m);
 	--text-color: var(--color-white-100);
 
-	&:disabled {
+	&:is(:disabled, .#{$block-classname}--disabled) {
 		--text-background-color: var(--color-black-60);
 		--text-border-color: var(--color-black-60);
 	}
 
-	&:not([disabled]):hover .kol-span::before,
-	&:focus .kol-span::before {
+	&:not([disabled], .#{$block-classname}--disabled):hover .kol-span::before,
+	&:focus-within .kol-span::before {
 		background-color: var(--color-black-100-12);
 	}
 
@@ -166,35 +169,35 @@
 	}
 }
 
-@mixin secondaryButton() {
+@mixin secondaryButton($block-classname: 'kol-button') {
 	--text-background-color: var(--color-white-100);
 	--text-border-color: var(--color-blue-100);
 	--text-border-width: var(--border-width-m);
 	--text-color: var(--color-blue-100);
 
-	&:disabled {
+	&:is(:disabled, .#{$block-classname}--disabled) {
 		--text-background-color: var(--color-white-100);
 		--text-border-color: var(--color-black-60);
 		--text-color: var(--color-black-60);
 	}
 
-	&:not([disabled]):hover .kol-span::before,
-	&:focus .kol-span::before {
+	&:not([disabled], .#{$block-classname}--disabled):hover .kol-span::before,
+	&:focus-within .kol-span::before {
 		background-color: var(--color-blue-100-06);
 	}
 }
 
-@mixin ghostButton() {
+@mixin ghostButton($block-classname: 'kol-button') {
 	--text-background-color: transparent;
 	--text-border-width: var(--border-width-none);
 	--text-color: var(--color-blue-100);
 
-	&:disabled {
+	&:is(:disabled, .#{$block-classname}--disabled) {
 		--text-color: var(--color-black-60);
 	}
 
-	&:not([disabled]):hover .kol-span::before,
-	&:focus .kol-span::before {
+	&:not([disabled], .#{$block-classname}--disabled):hover .kol-span::before,
+	&:focus-within .kol-span::before {
 		background-color: var(--color-blue-100-06);
 	}
 }

@@ -3,6 +3,8 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 
 import KolCollapsibleFc, { type CollapsibleProps } from '../../functional-components/Collapsible';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController } from '../../internal/functional-components/button/controller';
 import type {
 	AccordionAPI,
 	AccordionCallbacksPropType,
@@ -46,7 +48,8 @@ export class KolAccordion implements AccordionAPI, ClickableElement, FocusableEl
 	@Element() protected readonly host?: HTMLKolAccordionElement;
 
 	private readonly id = createUniqueId('accordion');
-	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
+	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
+	private readonly headingButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
 
 	/**
 	 * Sets focus on the internal element.
@@ -98,6 +101,7 @@ export class KolAccordion implements AccordionAPI, ClickableElement, FocusableEl
 			onClick: this.handleOnClick,
 			class: rootClass,
 			HeadingProps: { class: `${rootClass}__heading` },
+			buttonCtrl: this.headingButtonCtrl,
 			HeadingButtonProps: {
 				ref: this.ctaRef,
 				class: `${rootClass}__heading-button`,

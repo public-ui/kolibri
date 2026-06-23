@@ -8,7 +8,6 @@ import type { ActivePropType, HrefPropType, KolFocusOptions, LabelPropType, Open
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
-import { setFocus } from '../../utils/element-focus';
 
 /**
  * @internal
@@ -206,7 +205,8 @@ export class KolTreeItemWc implements TreeItemAPI {
 	@Method()
 	public async focus(options?: KolFocusOptions): Promise<void> {
 		const anchor = this.linkCtrl.getAnchorRef();
-		if (anchor) return setFocus(anchor, options);
+		if (anchor) anchor.focus(options);
+		return Promise.resolve();
 	}
 
 	private async handleExpandClick(event: MouseEvent) {

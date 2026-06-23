@@ -32,7 +32,30 @@ exports[`kol-badge should render with _label="Badge fallback" _smartButton={"_ar
           <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
         </span>
       </span>
-      <kol-button-wc _ariacontrols="badge-label-nonce" _ariadescription="Badge label" _hidelabel="" _label="Remove" class="kol-badge__smart-button"></kol-button-wc>
+      <div class="kol-badge__smart-button kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+        <button aria-controls="badge-label-nonce" aria-description="Badge label" aria-label="Remove" class="kol-button__button" type="button">
+          <span class="kol-button__text kol-span kol-span--hide-label">
+            <span class="kol-span__container">
+              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                <slot name="expert" slot="expert"></slot>
+              </span>
+            </span>
+          </span>
+        </button>
+        <div class="kol-button__tooltip">
+          <div class="kol-tooltip__floating">
+            <div class="kol-tooltip__arrow"></div>
+            <span class="kol-span kol-tooltip__content">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Remove
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
     </span>
   </template>
 </kol-badge>

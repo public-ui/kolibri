@@ -14,11 +14,17 @@
 		font-weight: 400;
 		font-style: normal;
 
-		&:focus {
+		&:focus-within {
 			outline: none;
 
 			--text-border-radius: var(--border-radius);
 			--text-outline: calc(var(--border-width) * 2) solid;
+		}
+
+		/* Suppress the user agent outline on the inner button of the skeleton markup;
+		 * the theme renders its own focus style via &__text. */
+		&__button:focus {
+			outline: none;
 		}
 
 		&:visited {
@@ -26,13 +32,13 @@
 		}
 
 		&__text {
-			@at-root #{$root}:focus & {
+			@at-root #{$root}:focus-within & {
 				outline: var(--text-outline);
 				border-radius: var(--text-border-radius);
 			}
 
 			.kol-span__label {
-				@at-root #{$root}:is(:focus, :hover):not([aria-disabled], [disabled]) & {
+				@at-root #{$root}:is(:focus-within, :hover):not([aria-disabled], [disabled], #{$root}--disabled) & {
 					text-decoration-thickness: 0.25em;
 				}
 			}

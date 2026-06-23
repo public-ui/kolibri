@@ -16,7 +16,7 @@
 			--text-color: #fff;
 			--text-focus-outline-color: #fff;
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [class*='--disabled']):hover {
 				--text-background-color: #3e6cd5;
 			}
 		}
@@ -27,7 +27,7 @@
 			--text-border-color: #0e47cb;
 			--text-focus-outline-color: #fff;
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [class*='--disabled']):hover {
 				--text-color: #0e47cb;
 			}
 		}
@@ -38,7 +38,7 @@
 			--text-focus-outline-color: #000;
 			--text-border-color: #fc0;
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [class*='--disabled']):hover {
 				--text-background-color: #fc0;
 			}
 		}
@@ -48,7 +48,7 @@
 			--text-border-color: var(--color-red);
 			--text-color: var(--color-white);
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [class*='--disabled']):hover {
 				--text-background-color: var(--color-red);
 				--text-border-color: var(--color-red);
 			}
@@ -58,12 +58,15 @@
 			--text-color: #0e47cb;
 			--text-focus-outline-color: #0e47cb;
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [class*='--disabled']):hover {
 				--text-color: #0e47cb;
 			}
 		}
 
-		&:focus {
+		/* Suppress the user agent outline; the theme renders its own focus style.
+		 * The skeleton markup focuses the inner &__button, the legacy markup the root itself. */
+		&:focus,
+		&__button:focus {
 			outline: none;
 		}
 
@@ -85,7 +88,7 @@
 			line-height: 1.2;
 
 			&:active,
-			&:not(:disabled):hover {
+			&:not(:disabled, [class*='--disabled']):hover {
 				box-shadow:
 					0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
 					0 0 to-rem(10) rgb(9 49 142 / 4%),
@@ -98,11 +101,11 @@
 				border: 2px solid #0e47cb;
 			}
 
-			@at-root #{$root}--secondary.button:focus-visible & {
+			@at-root #{$root}--secondary.button:is(:focus-visible, :has(:focus-visible)) & {
 				box-shadow: inset 0 0 0 to-rem(4) #0e47cb;
 			}
 
-			@at-root #{$root}:focus-visible & {
+			@at-root #{$root}:is(:focus-visible, :has(:focus-visible)) & {
 				outline: var(--text-focus-outline-color) solid to-rem(2);
 				outline-offset: -4px;
 			}

@@ -28,9 +28,17 @@ function normalizeSpanIcons(value: unknown): KoliBriIconsProp | never {
 	if (!value || (typeof value === 'string' && value === '')) {
 		return {};
 	}
-	// If it's a string, return it as-is
+	// If it's a string, it can be a JSON-stringified icons object or a single icon class
 	if (typeof value === 'string') {
-		return normalizeString(value);
+		const str = normalizeString(value);
+		if (str.startsWith('{')) {
+			try {
+				return normalizeObject(str) as KoliBriIconsProp;
+			} catch {
+				// not JSON, fall through to treating it as an icon class
+			}
+		}
+		return str;
 	}
 	// If it's an object, normalize it
 	if (typeof value === 'object') {

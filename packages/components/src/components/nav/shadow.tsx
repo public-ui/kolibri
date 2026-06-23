@@ -23,8 +23,10 @@ import {
 	validateLabel,
 } from '../../schema';
 
-import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController } from '../../internal/functional-components/button/controller';
+import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { createLinkStateAccess, initLinkControllerFromProps, LinkController } from '../../internal/functional-components/link/controller';
 import type { StencilUnknown } from '../../schema';
@@ -77,19 +79,28 @@ export class KolNav implements NavAPI {
 	@State() private _tick = 0;
 	private readonly forceRender = () => this._tick++;
 	private navLinkCtrls = new Map<LinkWithChildrenProps, LinkController>();
+	private navButtonCtrls = new Map<ButtonOrLinkOrTextWithChildrenProps, ButtonController>();
+	private readonly compactButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
+
+	private getNavButtonCtrl(entry: ButtonOrLinkOrTextWithChildrenProps): ButtonController {
+		let ctrl = this.navButtonCtrls.get(entry);
+		if (!ctrl) {
+			ctrl = new ButtonController(BaseWebComponent.stateLess);
+			this.navButtonCtrls.set(entry, ctrl);
+		}
+		return ctrl;
+	}
 
 	private syncNavLinkControllers(): void {
-		const newEntries = new Set<LinkWithChildrenProps>();
+		const newEntries = new Set<ButtonOrLinkOrTextWithChildrenProps>();
 
 		const traverse = (links: ButtonOrLinkOrTextWithChildrenProps[]) => {
 			for (const link of links) {
-				if (entryIsLink(link)) {
-					newEntries.add(link);
-					if (!this.navLinkCtrls.has(link)) {
-						const ctrl = new LinkController(createLinkStateAccess(this.forceRender));
-						initLinkControllerFromProps(ctrl, link as { _href: string } & Partial<Record<string, unknown>>);
-						this.navLinkCtrls.set(link, ctrl);
-					}
+				newEntries.add(link);
+				if (entryIsLink(link) && !this.navLinkCtrls.has(link)) {
+					const ctrl = new LinkController(createLinkStateAccess(this.forceRender));
+					initLinkControllerFromProps(ctrl, link as { _href: string } & Partial<Record<string, unknown>>);
+					this.navLinkCtrls.set(link, ctrl);
 				}
 				if (Array.isArray(link._children)) {
 					traverse(link._children);
@@ -104,6 +115,12 @@ export class KolNav implements NavAPI {
 			if (!newEntries.has(entry)) {
 				ctrl.destroy();
 				this.navLinkCtrls.delete(entry);
+			}
+		}
+		for (const [entry, ctrl] of this.navButtonCtrls) {
+			if (!newEntries.has(entry)) {
+				ctrl.destroy();
+				this.navButtonCtrls.delete(entry);
 			}
 		}
 	}
@@ -162,63 +179,66 @@ export class KolNav implements NavAPI {
 
 		return (
 			<div class="kol-nav__entry-wrapper">
-				{entryIsLink(entry) ? (
-					(() => {
-						const ctrl = this.navLinkCtrls.get(entry)!;
-						return (
-							<LinkFC
-								class={clsx('kol-nav__entry kol-nav__entry--link', {
+				{entryIsLink(entry)
+					? (() => {
+							const ctrl = this.navLinkCtrls.get(entry)!;
+							return (
+								<LinkFC
+									class={clsx('kol-nav__entry kol-nav__entry--link', {
+										'kol-nav__entry--collapsible': collapsible,
+									})}
+									href={ctrl.getRenderProp('href')}
+									label={ctrl.getRenderProp('label')}
+									icons={icons}
+									hideLabel={ctrl.getRenderProp('hideLabel')}
+									target={ctrl.getRenderProp('target')}
+									download={ctrl.getRenderProp('download')}
+									on={ctrl.getRenderProp('on')}
+									inline={ctrl.getRenderProp('inline')}
+									disabled={ctrl.getRenderProp('disabled')}
+									role={ctrl.getRenderProp('role')}
+									tabIndex={ctrl.getRenderProp('tabIndex')}
+									accessKey={ctrl.getRenderProp('accessKey')}
+									shortKey={ctrl.getRenderProp('shortKey')}
+									tooltipAlign={ctrl.getRenderProp('tooltipAlign')}
+									ariaControls={collapsible && hasChildren && expanded ? ariaID : ctrl.getRenderProp('ariaControls')}
+									ariaCurrentValue={ctrl.getRenderProp('ariaCurrentValue')}
+									ariaDescription={ctrl.getRenderProp('ariaDescription')}
+									ariaExpanded={collapsible && hasChildren ? String(expanded) : ctrl.getRenderProp('ariaExpanded')}
+									ariaOwns={ctrl.getRenderProp('ariaOwns')}
+									customClass={ctrl.getRenderProp('customClass')}
+									variant={ctrl.getRenderProp('variant')}
+									ariaCurrent={ctrl.getAriaCurrent()}
+									onAnchorClick={ctrl.handleAnchorClick}
+									tooltipId={ctrl.getTooltipId()}
+									refTooltipFloating={ctrl.setTooltipRef}
+									refAnchor={ctrl.setAnchorRef}
+								/>
+							);
+						})()
+					: (() => {
+							const ctrl = this.getNavButtonCtrl(entry);
+							ctrl.applyProps({
+								label: entry._label,
+								hideLabel: this.state._hideLabel,
+								icons: icons,
+								ariaControls: collapsible && hasChildren && expanded ? ariaID : undefined,
+								ariaExpanded: collapsible && hasChildren ? expanded : undefined,
+								on: {
+									onClick: (event: MouseEvent, value: Stringified<StencilUnknown>) => {
+										if (entryIsButton(entry) && typeof entry._on.onClick === 'function') {
+											entry._on.onClick(event, value);
+										}
+										this.handleToggleExpansionClick(entry._children);
+									},
+								},
+							});
+							return renderButtonFC(ctrl, {
+								class: clsx('kol-nav__entry kol-nav__entry--button', {
 									'kol-nav__entry--collapsible': collapsible,
-								})}
-								href={ctrl.getRenderProp('href')}
-								label={ctrl.getRenderProp('label')}
-								icons={icons}
-								hideLabel={ctrl.getRenderProp('hideLabel')}
-								target={ctrl.getRenderProp('target')}
-								download={ctrl.getRenderProp('download')}
-								on={ctrl.getRenderProp('on')}
-								inline={ctrl.getRenderProp('inline')}
-								disabled={ctrl.getRenderProp('disabled')}
-								role={ctrl.getRenderProp('role')}
-								tabIndex={ctrl.getRenderProp('tabIndex')}
-								accessKey={ctrl.getRenderProp('accessKey')}
-								shortKey={ctrl.getRenderProp('shortKey')}
-								tooltipAlign={ctrl.getRenderProp('tooltipAlign')}
-								ariaControls={collapsible && hasChildren && expanded ? ariaID : ctrl.getRenderProp('ariaControls')}
-								ariaCurrentValue={ctrl.getRenderProp('ariaCurrentValue')}
-								ariaDescription={ctrl.getRenderProp('ariaDescription')}
-								ariaExpanded={collapsible && hasChildren ? String(expanded) : ctrl.getRenderProp('ariaExpanded')}
-								ariaOwns={ctrl.getRenderProp('ariaOwns')}
-								customClass={ctrl.getRenderProp('customClass')}
-								variant={ctrl.getRenderProp('variant')}
-								ariaCurrent={ctrl.getAriaCurrent()}
-								onAnchorClick={ctrl.handleAnchorClick}
-								tooltipId={ctrl.getTooltipId()}
-								refTooltipFloating={ctrl.setTooltipRef}
-								refAnchor={ctrl.setAnchorRef}
-							/>
-						);
-					})()
-				) : (
-					<KolButtonWcTag
-						class={clsx('kol-nav__entry kol-nav__entry--button', {
-							'kol-nav__entry--collapsible': collapsible,
-						})}
-						_label={entry._label}
-						_hideLabel={this.state._hideLabel}
-						_icons={icons}
-						_ariaControls={collapsible && hasChildren && expanded ? ariaID : undefined}
-						_ariaExpanded={collapsible && hasChildren ? expanded : undefined}
-						_on={{
-							onClick: (event: MouseEvent, value: Stringified<StencilUnknown>) => {
-								if (entryIsButton(entry) && typeof entry._on.onClick === 'function') {
-									entry._on.onClick(event, value);
-								}
-								this.handleToggleExpansionClick(entry._children);
-							},
-						}}
-					/>
-				)}
+								}),
+							});
+						})()}
 			</div>
 		);
 	}
@@ -302,23 +322,25 @@ export class KolNav implements NavAPI {
 				</nav>
 				{this.state._hasCompactButton && (
 					<div class="kol-nav__compact">
-						<KolButtonWcTag
-							class="kol-nav__toggle-button"
-							_ariaControls={this.navId}
-							_ariaExpanded={!this.state._hideLabel}
-							_icons={this.state._hideLabel ? 'kolicon-chevron-right' : 'kolicon-chevron-left'}
-							_hideLabel
-							_label={translate(this.state._hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
-							_on={{
-								onClick: (): void => {
-									this.state = {
-										...this.state,
-										_hideLabel: !this.state._hideLabel,
-									};
+						{(() => {
+							this.compactButtonCtrl.applyProps({
+								ariaControls: this.navId,
+								ariaExpanded: !this.state._hideLabel,
+								icons: this.state._hideLabel ? 'kolicon-chevron-right' : 'kolicon-chevron-left',
+								hideLabel: true,
+								label: translate(this.state._hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize'),
+								on: {
+									onClick: (): void => {
+										this.state = {
+											...this.state,
+											_hideLabel: !this.state._hideLabel,
+										};
+									},
 								},
-							}}
-							_tooltipAlign="right"
-						></KolButtonWcTag>
+								tooltipAlign: 'right',
+							});
+							return renderButtonFC(this.compactButtonCtrl, { class: 'kol-nav__toggle-button' });
+						})()}
 					</div>
 				)}
 			</div>

@@ -1,7 +1,10 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
-import { KolAlertWcTag, KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
+import { KolAlertWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonController } from '../../internal/functional-components/button/controller';
+import { renderButtonFC } from '../../internal/functional-components/button/render';
 import type { KoliBriTableHeaderCell } from '../../schema';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { parseColumnWidth } from './controller';
@@ -21,6 +24,18 @@ export class KolTableSettings {
 	private readonly translateTableSettings = translate('kol-table-settings');
 	private readonly translateTableSettingsCancel = translate('kol-table-settings-cancel');
 	private readonly translateTableSettingsApply = translate('kol-table-settings-apply');
+	private readonly cancelButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
+	private readonly applyButtonCtrl = new ButtonController(BaseWebComponent.stateLess);
+	private readonly moveButtonCtrls = new Map<string, ButtonController>();
+
+	private getMoveButtonCtrl(key: string): ButtonController {
+		let ctrl = this.moveButtonCtrls.get(key);
+		if (!ctrl) {
+			ctrl = new ButtonController(BaseWebComponent.stateLess);
+			this.moveButtonCtrls.set(key, ctrl);
+		}
+		return ctrl;
+	}
 	private readonly translateErrorAllInvisible = translate('kol-table-settings-error-all-invisible');
 	private readonly translateColumnNotHidable = translate('kol-table-settings-column-not-hidable');
 
@@ -161,37 +176,52 @@ export class KolTableSettings {
 											_disabled={column.resizable === false}
 											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key ?? '', value) }}
 										/>
-										<KolButtonWcTag
-											_icons="kolicon-chevron-up"
-											_label={translate('kol-table-settings-move-up', { placeholders: { column: column.label } })}
-											_hideLabel
-											_variant="ghost"
-											_on={{ onClick: () => this.moveColumn(column.key ?? '', 'up') }}
-											_disabled={column.sortable === false || index === 0}
-											data-testid="table-settings-move-up"
-										/>
-										<KolButtonWcTag
-											_icons="kolicon-chevron-down"
-											_label={translate('kol-table-settings-move-down', { placeholders: { column: column.label } })}
-											_hideLabel
-											_variant="ghost"
-											_on={{ onClick: () => this.moveColumn(column.key ?? '', 'down') }}
-											_disabled={column.sortable === false || index === columns.length - 1}
-											data-testid="table-settings-move-down"
-										/>
+										{(() => {
+											const upCtrl = this.getMoveButtonCtrl(`${column.key ?? column.label}-up`);
+											upCtrl.applyProps({
+												icons: 'kolicon-chevron-up',
+												label: translate('kol-table-settings-move-up', { placeholders: { column: column.label } }),
+												hideLabel: true,
+												variant: 'ghost',
+												on: { onClick: () => this.moveColumn(column.key ?? '', 'up') },
+												disabled: column.sortable === false || index === 0,
+											});
+											return renderButtonFC(upCtrl, { dataTestId: 'table-settings-move-up' });
+										})()}
+										{(() => {
+											const downCtrl = this.getMoveButtonCtrl(`${column.key ?? column.label}-down`);
+											downCtrl.applyProps({
+												icons: 'kolicon-chevron-down',
+												label: translate('kol-table-settings-move-down', { placeholders: { column: column.label } }),
+												hideLabel: true,
+												variant: 'ghost',
+												on: { onClick: () => this.moveColumn(column.key ?? '', 'down') },
+												disabled: column.sortable === false || index === columns.length - 1,
+											});
+											return renderButtonFC(downCtrl, { dataTestId: 'table-settings-move-down' });
+										})()}
 									</div>
 								))}
 							</div>
 						</div>
 
 						<div class="kol-table-settings__actions">
-							<KolButtonWcTag
-								_label={this.translateTableSettingsCancel}
-								_variant="secondary"
-								_on={{ onClick: () => this.handleCancel() }}
-								data-testid="table-settings-cancel"
-							/>
-							<KolButtonWcTag _label={this.translateTableSettingsApply} _variant="primary" _type="submit" data-testid="table-settings-apply" />
+							{(() => {
+								this.cancelButtonCtrl.applyProps({
+									label: this.translateTableSettingsCancel,
+									variant: 'secondary',
+									on: { onClick: () => this.handleCancel() },
+								});
+								return renderButtonFC(this.cancelButtonCtrl, { dataTestId: 'table-settings-cancel' });
+							})()}
+							{(() => {
+								this.applyButtonCtrl.applyProps({
+									label: this.translateTableSettingsApply,
+									variant: 'primary',
+									type: 'submit',
+								});
+								return renderButtonFC(this.applyButtonCtrl, { dataTestId: 'table-settings-apply' });
+							})()}
 						</div>
 					</form>
 				</div>

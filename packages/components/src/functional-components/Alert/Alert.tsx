@@ -2,8 +2,9 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import { type JSXBase } from '@stencil/core/internal';
 import clsx from '../../utils/clsx';
 
-import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import type { ButtonController } from '../../internal/functional-components/button/controller';
+import { renderButtonFC } from '../../internal/functional-components/button/render';
 import { type InternalAlertProps } from '../../schema';
 import { bem } from '../../schema/bem-registry';
 import AlertIcon from '../AlertIcon';
@@ -17,6 +18,8 @@ export type KolAlertFcProps = JSXBase.HTMLAttributes<HTMLDivElement> &
 	Partial<Omit<InternalAlertProps, 'on'>> & {
 		onCloserClick?: () => void;
 		onAlertTimeout?: () => void;
+		/** Controller owned by the host component that drives the close button (required when hasCloser). */
+		closeButtonCtrl?: ButtonController;
 	};
 
 /**
@@ -55,6 +58,7 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 		variant = 'msg',
 		onAlertTimeout,
 		onCloserClick,
+		closeButtonCtrl,
 		...other
 	} = props;
 
@@ -101,22 +105,22 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 						</span>
 					)}
 				</div>
-				{hasCloser && (
-					<KolButtonWcTag
-						class={BEM_CLASS_ALERT__CLOSER + ' kol-close-button'}
-						data-testid="alert-close-button"
-						_ariaDescription={label?.trim() || ''}
-						_hideLabel
-						_icons={{
-							left: {
-								icon: 'kolicon-cross',
-							},
-						}}
-						_label={translateCloseAlert}
-						_on={{ onClick: onCloserClick }}
-						_tooltipAlign="left"
-					/>
-				)}
+				{hasCloser &&
+					closeButtonCtrl &&
+					(() => {
+						closeButtonCtrl.applyProps({
+							ariaDescription: label?.trim() || '',
+							hideLabel: true,
+							icons: { left: { icon: 'kolicon-cross' } },
+							label: translateCloseAlert,
+							on: { onClick: onCloserClick },
+							tooltipAlign: 'left',
+						});
+						return renderButtonFC(closeButtonCtrl, {
+							class: BEM_CLASS_ALERT__CLOSER + ' kol-close-button',
+							dataTestId: 'alert-close-button',
+						});
+					})()}
 			</div>
 			{variant === 'card' && (
 				<div class={BEM_CLASS_ALERT__CONTENT} aria-describedby={label ? 'heading' : undefined}>

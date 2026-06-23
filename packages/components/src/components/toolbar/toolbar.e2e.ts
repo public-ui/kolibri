@@ -33,7 +33,7 @@ test.describe(COMPONENT_NAME, () => {
 		await setItems(tb, ITEMS_ICONS_FIRST);
 		await page.waitForChanges();
 
-		const btnWcs = tb.locator('kol-button-wc');
+		const btnWcs = tb.locator('.kol-button');
 		await expect(btnWcs).toHaveCount(2);
 
 		await tb.evaluate((el) => {
@@ -57,7 +57,7 @@ test.describe(COMPONENT_NAME, () => {
 		await setItems(tb, ITEMS_DISABLED_FIRST);
 		await page.waitForChanges();
 
-		const btnWcs = tb.locator('kol-button-wc');
+		const btnWcs = tb.locator('.kol-button');
 		await expect(btnWcs).toHaveCount(2);
 
 		await tb.evaluate((el) => {
@@ -86,7 +86,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 		await page.waitForChanges();
 
-		const btnWcs = tb.locator('kol-button-wc');
+		const btnWcs = tb.locator('.kol-button');
 		await expect(btnWcs).toHaveCount(2);
 
 		const firstBtn = btnWcs.first().locator('button');
@@ -113,7 +113,7 @@ test.describe(COMPONENT_NAME, () => {
 		});
 		await page.waitForChanges();
 
-		const btnWcs = tb.locator('kol-button-wc');
+		const btnWcs = tb.locator('.kol-button');
 		await expect(btnWcs).toHaveCount(3);
 
 		const firstInnerBtn = innerButtonOf(btnWcs.first());

@@ -5,10 +5,66 @@ exports[`kol-tabs should render with _label="Text" _selected=1 _tabs=[{"_icons":
   <template shadowrootmode="open">
     <div class="kol-tabs kol-tabs--align-top">
       <div aria-label="Text" class="kol-tabs__button-group" role="tablist">
-        <kol-button-wc _ariacontrols="tabpanel-0" _customclass="" _icons="codicon codicon-pie-chart" _id="Text-tab-0" _label="Erster Tab" _role="tab" _tabindex="-1" _value="0"></kol-button-wc>
-        <kol-button-wc _ariacontrols="tabpanel-1" _ariaselected="" _customclass="selected" _icons="codicon codicon-calendar" _id="Text-tab-1" _label="Zweiter Tab" _role="tab" _tabindex="0" _value="1" _variant="custom"></kol-button-wc>
-        <kol-button-wc _ariacontrols="tabpanel-2" _customclass="" _disabled="" _icons="codicon codicon-briefcase" _id="Text-tab-2" _label="Deaktivierter Tab" _role="tab" _tabindex="-1" _value="2"></kol-button-wc>
-        <kol-button-wc _ariacontrols="tabpanel-3" _customclass="" _icons="codicon codicon-telescope" _id="Text-tab-3" _label="Letzter Tab" _role="tab" _tabindex="-1" _value="3"></kol-button-wc>
+        <div class="kol-button kol-button--normal kol-button--standalone">
+          <button aria-controls="tabpanel-0" aria-selected="false" class="kol-button__button" id="Text-tab-0" role="tab" tabindex="-1" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="codicon codicon-pie-chart kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                <span class="kol-span__label">
+                  Erster Tab
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
+        <div class="kol-button kol-button--standalone selected">
+          <button aria-controls="tabpanel-1" aria-selected="true" class="kol-button__button" id="Text-tab-1" role="tab" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="codicon codicon-calendar kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                <span class="kol-span__label">
+                  Zweiter Tab
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
+        <div class="kol-button kol-button--disabled kol-button--normal kol-button--standalone">
+          <button aria-controls="tabpanel-2" aria-selected="false" class="kol-button__button" disabled="" id="Text-tab-2" role="tab" tabindex="-1" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="codicon codicon-briefcase kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                <span class="kol-span__label">
+                  Deaktivierter Tab
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
+        <div class="kol-button kol-button--normal kol-button--standalone">
+          <button aria-controls="tabpanel-3" aria-selected="false" class="kol-button__button" id="Text-tab-3" role="tab" tabindex="-1" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="codicon codicon-telescope kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                <span class="kol-span__label">
+                  Letzter Tab
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
       </div>
       <div class="kol-tabs__content">
         <div aria-labelledby="Text-tab-0" hidden="" id="tabpanel-0" role="tabpanel" tabindex="0">

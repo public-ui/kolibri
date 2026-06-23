@@ -14,6 +14,7 @@ import type {
 	DownloadPropType,
 	HrefPropType,
 	IconsPropType,
+	KolFocusOptions,
 	LinkOnCallbacksPropType,
 	LinkTargetPropType,
 	ShortKeyPropType,
@@ -21,7 +22,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { setClick } from '../../utils/element-click';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -46,9 +47,9 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	 * Sets focus on the internal anchor element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
+	public async focus(options?: KolFocusOptions): Promise<void> {
 		const anchor = this.ctrl.getAnchorRef();
-		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor));
+		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor, options));
 	}
 
 	/**
@@ -57,7 +58,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	@Method()
 	public async click(): Promise<void> {
 		const anchor = this.ctrl.getAnchorRef();
-		if (anchor) return setClick(anchor);
+		if (anchor) return delegateClick(this.host!, () => setClick(anchor));
 	}
 
 	private readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): void => {
@@ -97,7 +98,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 					onAnchorClick={this.handleAnchorClick}
 					tooltipId={this.ctrl.getTooltipId()}
 					refTooltipFloating={this.ctrl.setTooltipRef}
-					refAnchor={(el) => this.ctrl.setAnchorRef(el)}
+					refAnchor={this.ctrl.setAnchorRef}
 				/>
 			</Host>
 		);

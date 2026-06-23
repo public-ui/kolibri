@@ -18,3 +18,20 @@ export const tooltipAlignProp = createPropDefinition<TooltipAlignProp>(
 	},
 	(v) => (alignPropTypeOptions as readonly string[]).includes(v),
 );
+
+/**
+ * Buttons show their tooltip above by default (unlike links, which default to the right).
+ */
+export const buttonTooltipAlignProp = createPropDefinition<TooltipAlignProp>(
+	'tooltipAlign',
+	'top' as AlignPropType,
+	(value) => {
+		if (value === undefined || value === null || value === '') return 'top' as AlignPropType;
+		const str = normalizeString(value);
+		if ((alignPropTypeOptions as readonly string[]).includes(str)) {
+			return str as AlignPropType;
+		}
+		throw new Error(`Invalid tooltipAlign: ${str}`);
+	},
+	(v) => (alignPropTypeOptions as readonly string[]).includes(v),
+);

@@ -2,9 +2,9 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { LinkApi } from '../../internal/functional-components/link/api';
+import type { LinkButtonApi } from '../../internal/functional-components/link/api';
 import { LinkFC } from '../../internal/functional-components/link/component';
-import { LinkController } from '../../internal/functional-components/link/controller';
+import { LinkButtonController } from '../../internal/functional-components/link/controller';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -15,6 +15,7 @@ import type {
 	DownloadPropType,
 	HrefPropType,
 	IconsPropType,
+	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
 	LinkTargetPropType,
@@ -22,7 +23,7 @@ import type {
 	TabIndexPropType,
 	TooltipAlignPropType,
 } from '../../schema';
-import { setClick } from '../../utils/element-click';
+import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -38,10 +39,10 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolLinkButton extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi> {
+export class KolLinkButton extends BaseWebComponent<LinkButtonApi> implements WebComponentInterface<LinkButtonApi> {
 	@Element() private readonly host?: HTMLKolLinkButtonElement;
 
-	private readonly ctrl = new LinkController(this.stateAccess);
+	private readonly ctrl = new LinkButtonController(this.stateAccess);
 
 	@State() public ariaCurrent: string = '';
 
@@ -49,9 +50,9 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> implements WebCompo
 	 * Sets focus on the internal anchor element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
+	public async focus(options?: KolFocusOptions): Promise<void> {
 		const anchor = this.ctrl.getAnchorRef();
-		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor));
+		if (anchor) return delegateFocus(this.host!, () => setFocus(anchor, options));
 	}
 
 	/**
@@ -60,7 +61,7 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> implements WebCompo
 	@Method()
 	public async click(): Promise<void> {
 		const anchor = this.ctrl.getAnchorRef();
-		if (anchor) return setClick(anchor);
+		if (anchor) return delegateClick(this.host!, () => setClick(anchor));
 	}
 
 	private readonly handleAnchorClick = (event: MouseEvent | KeyboardEvent): void => {
@@ -96,11 +97,11 @@ export class KolLinkButton extends BaseWebComponent<LinkApi> implements WebCompo
 					tabIndex={this.ctrl.getRenderProp('tabIndex')}
 					target={this.ctrl.getRenderProp('target')}
 					tooltipAlign={this.ctrl.getRenderProp('tooltipAlign')}
-					variant={this.ctrl.getRenderProp('variant')}
+					variant={this.ctrl.getVariant()}
 					onAnchorClick={this.handleAnchorClick}
 					tooltipId={this.ctrl.getTooltipId()}
 					refTooltipFloating={this.ctrl.setTooltipRef}
-					refAnchor={(el) => this.ctrl.setAnchorRef(el)}
+					refAnchor={this.ctrl.setAnchorRef}
 				/>
 			</Host>
 		);

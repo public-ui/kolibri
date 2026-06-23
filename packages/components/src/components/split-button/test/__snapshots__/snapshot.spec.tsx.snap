@@ -5,7 +5,20 @@ exports[`kol-split-button should render with _label="Label" _disabled=true 1`] =
   <template shadowrootmode="open">
     <div class="kol-split-button">
       <div class="kol-split-button__root">
-        <kol-button-wc _disabled="" _label="Label" _tooltipalign="top" _type="button" _variant="normal" class="kol-split-button__button normal"></kol-button-wc>
+        <div class="kol-button kol-button--disabled kol-button--normal kol-button--standalone kol-split-button__button normal">
+          <button class="kol-button__button" disabled="" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
         <div class="kol-split-button__horizontal-line"></div>
         <kol-popover-button-wc _disabled="" _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
           <slot></slot>
@@ -21,7 +34,30 @@ exports[`kol-split-button should render with _label="Label" _hideLabel=true 1`] 
   <template shadowrootmode="open">
     <div class="kol-split-button">
       <div class="kol-split-button__root">
-        <kol-button-wc _hidelabel="" _label="Label" _tooltipalign="top" _type="button" _variant="normal" class="kol-split-button__button normal"></kol-button-wc>
+        <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-split-button__button normal">
+          <button aria-label="Label" class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span kol-span--hide-label">
+              <span class="kol-span__container">
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+          <div class="kol-button__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Label
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
         <div class="kol-split-button__horizontal-line"></div>
         <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
           <slot></slot>
@@ -37,7 +73,21 @@ exports[`kol-split-button should render with _label="Label" _icons="codicon codi
   <template shadowrootmode="open">
     <div class="kol-split-button">
       <div class="kol-split-button__root">
-        <kol-button-wc _icons="codicon codicon-git-pull-request" _label="Label" _tooltipalign="top" _type="button" _variant="normal" class="kol-split-button__button normal"></kol-button-wc>
+        <div class="kol-button kol-button--normal kol-button--standalone kol-split-button__button normal">
+          <button class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="codicon codicon-git-pull-request kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
         <div class="kol-split-button__horizontal-line"></div>
         <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
           <slot></slot>
@@ -53,7 +103,20 @@ exports[`kol-split-button should render with _label="Label" _name="Name" 1`] = `
   <template shadowrootmode="open">
     <div class="kol-split-button">
       <div class="kol-split-button__root">
-        <kol-button-wc _label="Label" _name="Name" _tooltipalign="top" _type="button" _variant="normal" class="kol-split-button__button normal"></kol-button-wc>
+        <div class="kol-button kol-button--normal kol-button--standalone kol-split-button__button normal">
+          <button class="kol-button__button" name="Name" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
         <div class="kol-split-button__horizontal-line"></div>
         <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
           <slot></slot>
@@ -69,7 +132,20 @@ exports[`kol-split-button should render with _label="Label" _variant="danger" 1`
   <template shadowrootmode="open">
     <div class="kol-split-button">
       <div class="kol-split-button__root">
-        <kol-button-wc _label="Label" _tooltipalign="top" _type="button" _variant="danger" class="danger kol-split-button__button"></kol-button-wc>
+        <div class="danger kol-button kol-button--danger kol-button--standalone kol-split-button__button">
+          <button class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
         <div class="kol-split-button__horizontal-line"></div>
         <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
           <slot></slot>
@@ -85,7 +161,20 @@ exports[`kol-split-button should render with _label="Label" _variant="ghost" 1`]
   <template shadowrootmode="open">
     <div class="kol-split-button">
       <div class="kol-split-button__root">
-        <kol-button-wc _label="Label" _tooltipalign="top" _type="button" _variant="ghost" class="ghost kol-split-button__button"></kol-button-wc>
+        <div class="ghost kol-button kol-button--ghost kol-button--standalone kol-split-button__button">
+          <button class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
         <div class="kol-split-button__horizontal-line"></div>
         <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
           <slot></slot>
@@ -101,7 +190,20 @@ exports[`kol-split-button should render with _label="Label" _variant="normal" 1`
   <template shadowrootmode="open">
     <div class="kol-split-button">
       <div class="kol-split-button__root">
-        <kol-button-wc _label="Label" _tooltipalign="top" _type="button" _variant="normal" class="kol-split-button__button normal"></kol-button-wc>
+        <div class="kol-button kol-button--normal kol-button--standalone kol-split-button__button normal">
+          <button class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
         <div class="kol-split-button__horizontal-line"></div>
         <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
           <slot></slot>
@@ -117,7 +219,20 @@ exports[`kol-split-button should render with _label="Label" _variant="primary" 1
   <template shadowrootmode="open">
     <div class="kol-split-button">
       <div class="kol-split-button__root">
-        <kol-button-wc _label="Label" _tooltipalign="top" _type="button" _variant="primary" class="kol-split-button__button primary"></kol-button-wc>
+        <div class="kol-button kol-button--primary kol-button--standalone kol-split-button__button primary">
+          <button class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
         <div class="kol-split-button__horizontal-line"></div>
         <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
           <slot></slot>
@@ -133,7 +248,20 @@ exports[`kol-split-button should render with _label="Label" _variant="secondary"
   <template shadowrootmode="open">
     <div class="kol-split-button">
       <div class="kol-split-button__root">
-        <kol-button-wc _label="Label" _tooltipalign="top" _type="button" _variant="secondary" class="kol-split-button__button secondary"></kol-button-wc>
+        <div class="kol-button kol-button--secondary kol-button--standalone kol-split-button__button secondary">
+          <button class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
         <div class="kol-split-button__horizontal-line"></div>
         <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
           <slot></slot>
@@ -149,7 +277,20 @@ exports[`kol-split-button should render with _label="Label" 1`] = `
   <template shadowrootmode="open">
     <div class="kol-split-button">
       <div class="kol-split-button__root">
-        <kol-button-wc _label="Label" _tooltipalign="top" _type="button" _variant="normal" class="kol-split-button__button normal"></kol-button-wc>
+        <div class="kol-button kol-button--normal kol-button--standalone kol-split-button__button normal">
+          <button class="kol-button__button" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
         <div class="kol-split-button__horizontal-line"></div>
         <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
           <slot></slot>

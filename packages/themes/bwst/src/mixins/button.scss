@@ -19,7 +19,10 @@
 			font-weight: 200;
 		}
 
-		&:focus {
+		/* Suppress the user agent outline; the theme renders its own focus style.
+		 * The skeleton markup focuses the inner &__button, the legacy markup the root itself. */
+		&:focus,
+		&__button:focus {
 			outline: none;
 		}
 
@@ -63,7 +66,7 @@
 		&--normal,
 		&--danger,
 		&--ghost {
-			&:not([disabled], [aria-disabled='true']):hover {
+			&:not([disabled], [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--text-background-color: var(--color-primary-variant);
 				--text-border-color: var(--color-primary-variant);
 				--text-color: var(--color-light);
@@ -74,7 +77,7 @@
 		}
 
 		&--danger {
-			&:not([disabled], [aria-disabled='true']):hover {
+			&:not([disabled], [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--text-background-color: var(--color-danger);
 				--text-border-color: var(--color-danger);
 				outline-color: var(--color-danger);
@@ -106,12 +109,12 @@
 				}
 			}
 
-			@at-root #{$root}:focus-visible {
+			@at-root #{$root}:is(:focus-visible, :has(:focus-visible)) {
 				@include focus-outline;
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
 
-			@at-root #{$root}:is(:disabled, [aria-disabled='true']):hover & {
+			@at-root #{$root}:is(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover & {
 				color: var(--text-color);
 				background-color: var(--text-background-color);
 				box-shadow: none;
