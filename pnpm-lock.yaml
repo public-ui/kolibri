@@ -1534,6 +1534,15 @@ importers:
       '@public-ui/sample-react':
         specifier: workspace:*
         version: link:../../samples/react
+      '@unocss/preset-mini':
+        specifier: 66.7.0
+        version: 66.7.0
+      '@unocss/vite':
+        specifier: 66.7.0
+        version: 66.7.0(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
+      '@vitejs/plugin-react-swc':
+        specifier: 4.3.1
+        version: 4.3.1(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
       adopted-style-sheets:
         specifier: 1.1.9-rc.22
         version: 1.1.9-rc.22
@@ -1543,6 +1552,9 @@ importers:
       http-server:
         specifier: 14.1.1
         version: 14.1.1
+      npm-run-all2:
+        specifier: 8.0.4
+        version: 8.0.4
       portfinder:
         specifier: 1.0.38
         version: 1.0.38
@@ -1555,6 +1567,9 @@ importers:
       react-router-dom:
         specifier: 7.17.0
         version: 7.17.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      vite:
+        specifier: 8.0.16
+        version: 8.0.16(@types/node@25.9.2)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
     devDependencies:
       '@playwright/test':
         specifier: 1.60.0
@@ -1571,24 +1586,12 @@ importers:
       '@types/react-dom':
         specifier: 19.2.3
         version: 19.2.3(@types/react@19.2.17)
-      '@unocss/preset-mini':
-        specifier: 66.7.0
-        version: 66.7.0
-      '@unocss/vite':
-        specifier: 66.7.0
-        version: 66.7.0(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
-      '@vitejs/plugin-react-swc':
-        specifier: 4.3.1
-        version: 4.3.1(vite@8.0.16(@types/node@25.9.2)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
       eslint:
         specifier: 9.39.4
         version: 9.39.4(jiti@2.7.0)
       knip:
         specifier: 6.16.1
         version: 6.16.1
-      npm-run-all2:
-        specifier: 8.0.4
-        version: 8.0.4
       prettier:
         specifier: 3.8.4
         version: 3.8.4
@@ -1601,9 +1604,6 @@ importers:
       typescript:
         specifier: 5.9.3
         version: 5.9.3
-      vite:
-        specifier: 8.0.16
-        version: 8.0.16(@types/node@25.9.2)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0)
 
 packages:
 
