@@ -1,0 +1,1 @@
+import{Et as e,Ot as t,wt as n}from"./index-D99H9wcB.js";var r=(e,t,r)=>{n(e,`_hasCounter`,t,r)},i=(t,n,r={})=>{e(t,`_maxLength`,n,Object.assign({min:0},r))},a=[`hard`,`soft`],o=(e,n)=>{t(e,`_maxLengthBehavior`,e=>typeof e==`string`&&a.includes(e),new Set([`String {hard, soft}`]),n)};export{i as n,o as r,r as t};
