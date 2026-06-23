@@ -48,7 +48,7 @@
 			border-bottom: to-rem(1) solid var(--color-primary);
 		}
 
-		.kol-button {
+		.kol-button__button {
 			color: var(--color-subtle);
 			background-color: transparent;
 			border-radius: var(--border-radius);
@@ -126,7 +126,7 @@
 			height: 100%;
 		}
 
-		.kol-button {
+		.kol-button__button {
 			width: 100%;
 		}
 

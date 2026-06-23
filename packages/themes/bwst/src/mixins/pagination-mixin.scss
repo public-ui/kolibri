@@ -21,7 +21,7 @@
 			gap: to-rem(8);
 		}
 
-		.kol-button {
+		.kol-button__button {
 			&:focus .kol-button__text {
 				@include focus-outline;
 			}
@@ -54,7 +54,7 @@
 			}
 		}
 
-		&__button--selected .kol-button {
+		&__button--selected .kol-button__button {
 			opacity: 1;
 
 			&__text {

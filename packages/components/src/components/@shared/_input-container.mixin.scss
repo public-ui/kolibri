@@ -1,5 +1,9 @@
+@use 'button.mixin' as *;
+
 @mixin kol-input-container {
 	.kol-input-container {
+		// @include kol-button-styles('kol-button');
+
 		$root: &;
 		background-color: transparent;
 		display: grid;
