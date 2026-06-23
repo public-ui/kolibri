@@ -36,6 +36,7 @@ export default {
 	'error-list-message': 'Bitte korrigieren Sie folgende Fehler:',
 	version: 'Versionsnummer',
 	'table-visible-range': 'Einträge {{start}} bis {{end}} von {{total}}',
+	'table-selection': 'Auswahl',
 	'table-selection-all': 'Alle auswählen',
 	'table-selection-none': 'Alle abwählen',
 	'table-selection-indeterminate': 'Alle auswählen bei teilweiser Auswahl',
