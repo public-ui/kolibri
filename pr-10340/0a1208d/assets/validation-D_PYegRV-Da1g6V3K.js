@@ -1,1 +1,0 @@
-import{jt as e}from"./index-Ctgs24_X.js";import{t}from"./level-Kr0RFikR-VcBpsT1Q.js";var n=(n,r)=>{e(n,`_level`,e=>typeof e==`number`&&t.includes(e),new Set(t.map(String)),r,{defaultValue:1,required:!0})};export{n as t};
