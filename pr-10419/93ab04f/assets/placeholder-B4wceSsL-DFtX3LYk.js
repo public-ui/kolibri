@@ -1,1 +1,0 @@
-import{At as e}from"./index-7K0-I0Tx.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
