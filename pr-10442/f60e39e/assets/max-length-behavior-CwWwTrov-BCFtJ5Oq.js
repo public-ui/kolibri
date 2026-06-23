@@ -1,0 +1,1 @@
+import{jt as e,kt as t}from"./index-zTdb5-gA.js";var n=(e,n,r={})=>{t(e,`_maxLength`,n,Object.assign({min:0},r))},r=[`hard`,`soft`],i=(t,n)=>{e(t,`_maxLengthBehavior`,e=>typeof e==`string`&&r.includes(e),new Set([`String {hard, soft}`]),n)};export{i as n,n as t};

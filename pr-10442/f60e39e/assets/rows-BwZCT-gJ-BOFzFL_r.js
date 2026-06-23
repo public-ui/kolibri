@@ -1,0 +1,1 @@
+import{kt as e}from"./index-zTdb5-gA.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
