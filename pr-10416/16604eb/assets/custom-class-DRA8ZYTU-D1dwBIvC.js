@@ -1,1 +1,0 @@
-import{At as e}from"./index-l4gRJKr3.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
