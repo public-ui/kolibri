@@ -1,6 +1,8 @@
+import type * as AdoptedStyleSheets from 'adopted-style-sheets';
+
 // The component reads the flag via adopted-style-sheets' getFeatureFlag; mock only that export.
 jest.mock('adopted-style-sheets', () => {
-	const actual = jest.requireActual('adopted-style-sheets');
+	const actual: typeof AdoptedStyleSheets = jest.requireActual('adopted-style-sheets');
 	return { ...actual, getFeatureFlag: jest.fn() };
 });
 
