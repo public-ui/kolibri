@@ -143,5 +143,32 @@ executeSnapshotTests<TableStatelessProps>(
 			},
 			_data: [],
 		},
+		{
+			_label: 'Table with single selection renders selection header with accessible name',
+			_selection: {
+				label: () => 'Selection',
+				multiple: false,
+				selectedKeys: [],
+				keyPropertyName: 'id',
+			},
+			_headerCells: {
+				horizontal: [[{ key: 'header1', label: 'Header 1', width: 180 }]],
+				vertical: [],
+			},
+			_data: [{ id: '1', header1: 'Cell 1.1' }],
+		},
+		{
+			_label: 'Table with multiple selection renders selection header with accessible name',
+			_selection: {
+				label: () => 'Selection',
+				selectedKeys: [],
+				keyPropertyName: 'id',
+			},
+			_headerCells: {
+				horizontal: [[{ key: 'header1', label: 'Header 1', width: 180 }]],
+				vertical: [],
+			},
+			_data: [{ id: '1', header1: 'Cell 1.1' }],
+		},
 	],
 );

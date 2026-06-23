@@ -2,24 +2,20 @@
 
 @mixin kol-form-field {
 	.kol-form-field {
-		$root: &;
-
 		display: grid;
 
-		&__label {
-			#{$root}:not(#{$root}--disabled) & {
-				cursor: pointer;
-			}
-
-			&-text {
-				flex-flow: row;
-				align-items: flex-start;
-				justify-content: flex-start;
-			}
+		&:not(&--disabled) &__label {
+			cursor: pointer;
 		}
 
-		&--required {
-			#{$root}__label-text:has(.kol-span__slot[hidden])::after,
+		&__label-text {
+			flex-flow: row;
+			align-items: flex-start;
+			justify-content: flex-start;
+		}
+
+		&--required & {
+			&__label-text:has(.kol-span__slot[hidden])::after,
 			.kol-tooltip__content .kol-span__label::after {
 				content: '*' / '';
 			}

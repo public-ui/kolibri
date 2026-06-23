@@ -36,6 +36,7 @@ export default {
 	'error-list-message': 'Please correct the following errors',
 	version: 'Version number',
 	'table-visible-range': 'Entries {{start}} to {{end}} of {{total}}',
+	'table-selection': 'Selection',
 	'table-selection-all': 'Select all',
 	'table-selection-none': 'Deselect all',
 	'table-selection-indeterminate': 'Select all with partial selection',

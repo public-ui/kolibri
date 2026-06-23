@@ -1,6 +1,5 @@
 @mixin kol-field-control {
 	.kol-field-control {
-		$base: &;
 		display: grid;
 
 		min-height: var(--a11y-min-size);
@@ -70,15 +69,8 @@
 		}
 
 		&--required & {
-			&__label-text {
-				&::after {
-					content: '*' / '';
-				}
-			}
-		}
-
-		&--required .kol-tooltip {
-			.kol-span__label::after {
+			&__label-text:has(.kol-span__slot[hidden])::after,
+			.kol-tooltip__content .kol-span__label::after {
 				content: '*' / '';
 			}
 		}
