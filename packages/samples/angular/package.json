@@ -5,7 +5,7 @@
 		"build": "ng build",
 		"build:deps": "pnpm --filter @public-ui/sample-angular^... build",
 		"format": "prettier --check src",
-		"prebuild": "kolibri-copy-assets --dest src/assets @public-ui/components @public-ui/themes",
+		"prebuild": "kolibri-copy-assets --dest src/assets @public-ui/components @public-ui/theme-default",
 		"prepare": "pnpm prebuild",
 		"start": "ng serve",
 		"unused": "knip"
@@ -19,7 +19,7 @@
 		"@angular/router": "21.2.17",
 		"@public-ui/angular-v21": "workspace:*",
 		"@public-ui/components": "workspace:*",
-		"@public-ui/themes": "workspace:*",
+		"@public-ui/theme-default": "workspace:*",
 		"rxjs": "7.8.2",
 		"tslib": "2.8.1",
 		"zone.js": "0.16.2"

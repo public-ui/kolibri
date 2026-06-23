@@ -6,7 +6,7 @@ import os from 'node:os';
 import path from 'node:path';
 import portfinder from 'portfinder';
 import * as process from 'process';
-import { fileURLToPath, pathToFileURL } from 'url';
+import { fileURLToPath } from 'url';
 
 const tempDir = process.env.RUNNER_TEMP || process.env.TMPDIR || os.tmpdir(); // TODO: Check on Windows
 
@@ -17,24 +17,26 @@ if (!tempDir) {
 	throw new Error('Neither environment variable RUNNER_TEMP or TMPDIR specified.');
 }
 
+/* The current working directory is the theme folder. We keep a reference to its assets (icon fonts,
+   variant data, …) so we can overlay them onto the built app below. */
+const themeAssetsPath = path.join(process.cwd(), 'assets');
+
 process.env.THEME_MODULE = path.join(process.cwd(), process.env.THEME_MODULE); // Use current working directory (i.e. the theme folder) to complete module path
+
 const visualsTestModulePath = fileURLToPath(new URL('..', import.meta.url));
 const binaryPath = fileURLToPath(new URL('../node_modules/.bin', import.meta.url));
-const sampleReactPackageJsonPath = import.meta.resolve('@public-ui/sample-react/package.json');
-const workingDir = fileURLToPath(path.dirname(sampleReactPackageJsonPath));
 
-if (!fs.existsSync(workingDir)) {
-	throw new Error('Could not find React Sample App package. Please install it with "npm install @public-ui/sample-react".');
-}
-
-const buildPath = path.join(tempDir, `kolibri-visual-testing-build-${crypto.randomUUID()}`);
-const rawPackageJsonPath = new URL(path.join(workingDir, 'package.json'), import.meta.url).href;
-const packageJsonPath = process.platform === 'win32' ? pathToFileURL(rawPackageJsonPath) : rawPackageJsonPath;
-const packageJsonContent = await readFile(new URL(packageJsonPath, import.meta.url), 'utf8');
+/* The visual-tests package now ships its own runnable Vite app (./app) that embeds <App> from
+   @public-ui/sample-react and injects the theme via THEME_MODULE. We build this local app instead of
+   the sample app itself – that is what breaks the former circular dependency. */
+const workingDir = visualsTestModulePath;
+const packageJsonContent = await readFile(path.join(workingDir, 'package.json'), 'utf8');
 const packageJson = JSON.parse(packageJsonContent);
 
+const buildPath = path.join(tempDir, `kolibri-visual-testing-build-${crypto.randomUUID()}`);
+
 console.log(`
-Building React Sample App (v${packageJson?.version ?? '#.#.#'}) …`);
+Building Visual-Tests App (v${packageJson?.version ?? '#.#.#'}) …`);
 
 const buildResult = child_process.spawnSync('pnpm', ['run', 'build', `--outDir="${buildPath}"`], {
 	cwd: workingDir,
@@ -55,7 +57,25 @@ if (buildResult.status !== 0) {
 	process.exit(buildResult.status || 1); // status is null on signal termination → fall back to 1
 }
 
-console.log(`React Sample App build finished. Directory:`, buildPath);
+/* Overlay the theme's own assets (icon fonts, inject-variants_*.json, …) onto the built app so the
+   snapshots render exactly the theme under test. The app itself has no dependency on any theme
+   package – the theme provides its assets from its own folder at test time. */
+if (fs.existsSync(themeAssetsPath)) {
+	fs.cpSync(themeAssetsPath, path.join(buildPath, 'assets'), { recursive: true });
+	console.log(`Theme assets copied from ${themeAssetsPath}.`);
+} else {
+	console.log(`No theme assets found at ${themeAssetsPath}; continuing without overlay.`);
+}
+
+/* The app loads the theme's inject-assets.css (font-face/icon declarations) via a relative <link>,
+   so copy it into the served build root. Its own @import url('./assets/…') statements then resolve
+   against the overlaid assets above. */
+if (process.env.THEME_CSS && fs.existsSync(process.env.THEME_CSS)) {
+	fs.copyFileSync(process.env.THEME_CSS, path.join(buildPath, 'inject-assets.css'));
+	console.log(`Theme CSS copied from ${process.env.THEME_CSS}.`);
+}
+
+console.log(`Visual-Tests App build finished. Directory:`, buildPath);
 
 void (async () => {
 	const playwright = child_process.spawn(`"${path.join(binaryPath, 'playwright')}"`, ['test', ...process.argv.slice(2)], {
