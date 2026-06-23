@@ -2,15 +2,22 @@
 @use '../tooltip/style' as *;
 @use './table-settings.mixin' as *;
 @use 'mixins' as *;
+@use './alert.mixin' as *;
+@use './button.mixin' as *;
+@use './popover-button.mixin' as *;
 @use './button.mixin' as *;
 @use './link.mixin' as *;
 @use './icon.mixin' as *;
 
 @mixin kol-table-stateless-styles {
 	@include kol-table-settings-styles;
-	@include kol-icon-styles();
 
 	.kol-table {
+		@include kol-alert;
+		@include kol-button-styles('kol-button');
+		@include kol-popover-button-styles;
+		@include kol-icon-styles();
+
 		$root: &;
 
 		--kol-table-selection-col-width: var(--a11y-min-size);

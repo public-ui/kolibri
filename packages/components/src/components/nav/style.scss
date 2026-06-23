@@ -2,9 +2,13 @@
 @use '../@shared/global' as *;
 @use '../tooltip/style.scss' as *;
 @use '../@shared/icon.mixin' as *;
+@use '../@shared/link.mixin' as *;
 
 @layer kol-component {
+	@include kol-link-styles('kol-link');
+	@include kol-link-styles('kol-button');
 	@include kol-icon-styles();
+
 	.kol-nav {
 		$root: &;
 
@@ -14,6 +18,10 @@
 		&__navigation {
 			#{$root}:not(#{$root}--is-compact) & {
 				width: 100%;
+			}
+
+			.kol-link__anchor {
+				min-height: var(--a11y-min-size);
 			}
 
 			.kol-span {
@@ -45,9 +53,5 @@
 		&__entry {
 			flex-grow: 1;
 		}
-	}
-
-	.kol-button {
-		text-align: left;
 	}
 }

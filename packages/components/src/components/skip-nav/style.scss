@@ -3,8 +3,9 @@
 @use '../@shared/link.mixin' as *;
 
 @layer kol-component {
-	@include kol-link-styles('kol-link');
 	.kol-skip-nav {
+		@include kol-link-styles('kol-link');
+
 		&__list {
 			display: grid;
 			place-items: center;
@@ -15,7 +16,7 @@
 			height: 0;
 		}
 
-		.kol-link {
+		.kol-link__anchor {
 			position: absolute;
 			left: to-rem(-99999);
 			z-index: 9999999;

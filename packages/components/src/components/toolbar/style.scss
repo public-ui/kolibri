@@ -4,15 +4,15 @@
 @use '../@shared/button.mixin' as *;
 
 @layer kol-component {
-	@include kol-button-styles('kol-link');
-	@include kol-button-styles('kol-button');
-
 	// Override the kol-global preset width:100% so toolbar links size to their content
 	a.kol-link {
 		width: auto;
 	}
 
 	.kol-toolbar {
+		@include kol-button-styles('kol-link');
+		@include kol-button-styles('kol-button');
+
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
