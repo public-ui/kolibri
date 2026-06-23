@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-Q-porgkY.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};
