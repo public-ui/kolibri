@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-S3lMY_dt.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};
