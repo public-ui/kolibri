@@ -1,1 +1,0 @@
-import{At as e}from"./index-mbiPRS-a.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
