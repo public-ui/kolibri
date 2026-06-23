@@ -4,10 +4,11 @@ import { KolTreeTag } from '../../core/component-names';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import { LinkFC } from '../../internal/functional-components/link/component';
 import { createLinkStateAccess, LinkController } from '../../internal/functional-components/link/controller';
-import type { ActivePropType, HrefPropType, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
+import type { ActivePropType, HrefPropType, KolFocusOptions, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
 import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
+import { setFocus } from '../../utils/element-focus';
 
 /**
  * @internal
@@ -203,10 +204,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 	 * Focuses the link element.
 	 */
 	@Method()
-	public async focus(): Promise<void> {
+	public async focus(options?: KolFocusOptions): Promise<void> {
 		const anchor = this.linkCtrl.getAnchorRef();
-		if (anchor) anchor.focus();
-		return Promise.resolve();
+		if (anchor) return setFocus(anchor, options);
 	}
 
 	private async handleExpandClick(event: MouseEvent) {
