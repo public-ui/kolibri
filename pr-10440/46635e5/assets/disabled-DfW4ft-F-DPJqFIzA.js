@@ -1,0 +1,1 @@
+import{G as e,Ot as t}from"./index-ChxeQV5o.js";var n=(n,r)=>{t(n,`_disabled`,r,{hooks:{afterPatch:t=>{t===!0&&e()}}})};export{n as t};
