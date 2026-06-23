@@ -1,14 +1,18 @@
 @use '../mixins/to-rem' as *;
 @use '../mixins/focus-outline' as *;
+@use '../mixins/link' as *;
 @use '../mixins/icon' as *;
 
 @layer kol-theme-component {
-	@include kol-icon-theme;
 	:host {
 		background-color: var(--color-mute);
 	}
 
 	.kol-nav {
+		@include kol-icon-theme;
+		@include kol-link('kol-link');
+		@include kol-link('kol-button');
+
 		--kol-nav-item-padding-left: 0;
 		--kol-nav-item-padding-right: 16;
 
@@ -36,10 +40,16 @@
 				align-items: center;
 				text-align: left;
 
-				text-decoration: none;
+				.kol-span__label {
+					text-decoration: none;
+				}
 
 				&:focus-visible {
 					@include focus-outline;
+
+					.kol-span {
+						outline: 0;
+					}
 				}
 
 				#{$root}__list & {
@@ -55,8 +65,12 @@
 					font-weight: bold;
 				}
 
-				&:hover .kol-span__label {
-					text-decoration: underline;
+				&:hover,
+				&:focus {
+					.kol-span__label:not([aria-disabled], [disabled]) {
+						text-decoration: underline;
+						text-decoration-thickness: 1px;
+					}
 				}
 			}
 		}

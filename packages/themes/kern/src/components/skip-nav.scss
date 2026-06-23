@@ -3,7 +3,7 @@
 @layer kol-theme-component {
 	@include kol-link('kol-link');
 
-	.kol-link {
+	.kol-link__anchor {
 		background-color: var(--kern-color-layout-background-hued);
 		padding: var(--kern-metric-space-default);
 	}

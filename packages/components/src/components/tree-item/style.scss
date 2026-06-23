@@ -1,11 +1,9 @@
 @use '../@shared/mixins' as *;
 @use '../@shared/global' as *;
 @use '../@shared/icon.mixin' as *;
-@use '../@shared/link.mixin' as *;
 
 @layer kol-component {
 	.kol-tree-item {
-		@include kol-link-styles('kol-link');
 		@include kol-icon-styles();
 
 		&__link.kol-link .kol-link__anchor {
