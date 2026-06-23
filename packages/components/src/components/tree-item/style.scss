@@ -8,14 +8,8 @@
 	.kol-tree-item {
 		$root: &;
 
-		&__link {
-			&.kol-link {
-				display: inline-flex;
-				min-height: var(--a11y-min-size);
-				align-items: center;
-
-				text-decoration: none;
-			}
+		&__link.kol-link .kol-link__anchor {
+			text-decoration: none;
 		}
 
 		&__link-inner {

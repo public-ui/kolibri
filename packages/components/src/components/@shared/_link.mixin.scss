@@ -13,9 +13,6 @@
 		display: inline-flex;
 		max-width: fit-content;
 
-		align-items: baseline;
-		place-items: center;
-
 		&--standalone {
 			min-width: var(--a11y-min-size);
 			min-height: var(--a11y-min-size);
@@ -28,9 +25,13 @@
 			}
 		}
 
-		&__anchor {
+		&__anchor,
+		&__button {
 			display: inline-flex;
 			flex: 1;
+
+			align-items: baseline;
+			place-items: center;
 			text-align: left;
 			text-decoration-line: none;
 

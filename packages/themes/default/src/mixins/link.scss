@@ -2,13 +2,12 @@
 
 @mixin kol-link($block-classname) {
 	.#{$block-classname} {
-		gap: to-rem(8);
-
 		font-weight: 400;
 		font-style: normal;
 
 		&__anchor {
 			color: var(--color-primary);
+			gap: to-rem(8);
 
 			&:focus {
 				outline: none;

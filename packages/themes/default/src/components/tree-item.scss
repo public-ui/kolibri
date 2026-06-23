@@ -5,10 +5,9 @@
 	@include kol-icon-theme;
 
 	.kol-tree-item {
-		$root: &;
 		--indentation: #{to-rem(16)};
 
-		&__link {
+		&__link .kol-link__anchor {
 			color: var(--color-text);
 			display: block;
 			padding-right: to-rem(8);
