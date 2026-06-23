@@ -123,7 +123,7 @@
 		}
 	}
 
-	.kol-close-button .#{$block-classname}--normal {
+	.kol-close-button.#{$block-classname}--normal {
 		@include kol-button-ghost();
 
 		--kol-focus-outline-offset: -2px;

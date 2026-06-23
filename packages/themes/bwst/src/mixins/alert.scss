@@ -77,7 +77,6 @@
 
 	.kol-alert__closer {
 		place-self: center;
-		@include kol-button-ghost();
 
 		.kol-button__button:not(:hover) {
 			.kol-alert--variant-msg & {

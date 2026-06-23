@@ -22,10 +22,7 @@
 
 		&__close-button {
 			line-height: to-rem(16);
-
-			.kol-button {
-				@include ghostButton();
-			}
+			@include ghostButton();
 
 			.kol-icon {
 				font-size: to-rem(24);

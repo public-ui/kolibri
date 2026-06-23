@@ -20,6 +20,7 @@
 			'content content';
 		grid-template-columns: 1fr min-content;
 		grid-template-rows: min-content 1fr;
+		align-items: baseline;
 
 		&__header {
 			align-self: start;
