@@ -18,6 +18,7 @@ packages:
   - packages/tools/hydrate-server
   - packages/tools/visual-tests
 overrides:
-  esbuild@>=0.17.0 <0.28.1: '>=0.28.1'
   esbuild@>=0.27.3 <0.28.1: '>=0.28.1'
   ip-address@<=10.1.0: '>=10.1.1'
+  protobufjs@<=7.6.0: '>=7.6.1'
+  protobufjs@<=7.6.2: '>=7.6.3'
