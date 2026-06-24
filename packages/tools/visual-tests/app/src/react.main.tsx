@@ -54,6 +54,11 @@ void (async () => {
 			{
 				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
 				reflectInputValues: true,
+				// Feature flags declared by a theme (KoliBri.createTheme's third argument) are stored per
+				// theme. Each component resolves the flag for its active theme (nearest data-theme ancestor
+				// / fixed default), so different themes can differ on the same page. Pass `features` here
+				// only to force a global app-level override that wins over every theme:
+				// features: { inputNumberButtons: 'show' },
 				/* The theme is injected via THEME_MODULE, so auto-detection must stay disabled. */
 				theme: undefined,
 				translation: {
