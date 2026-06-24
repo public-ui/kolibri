@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-Ck6RwnLo.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
