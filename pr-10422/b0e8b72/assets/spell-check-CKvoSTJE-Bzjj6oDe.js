@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-CAm3r2nf.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};

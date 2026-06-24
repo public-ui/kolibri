@@ -1,1 +1,0 @@
-import{At as e}from"./index-CAm3r2nf.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
