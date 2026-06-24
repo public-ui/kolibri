@@ -1,0 +1,1 @@
+import{jt as e}from"./index-L5QHoR7d.js";var t=/^[a-zA-Z][a-zA-Z0-9_-]{3,60}$/,n=e=>typeof e==`string`&&t.test(e),r=new Set([t.source]),i=(t,i)=>{e(t,`_variant`,n,r,i)};export{i as t};
