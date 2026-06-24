@@ -1,5 +1,6 @@
 @use '../mixins/to-rem' as *;
 @use './focus-outline' as *;
+@use './button' as *;
 
 @mixin kol-input-theme {
 	.kol-input-container {
@@ -54,12 +55,9 @@
 			}
 		}
 
-		&__smart-button {
-			position: relative;
+		&__smart-button.kol-button {
+			@include kol-button-ghost();
 			z-index: 2;
-			.kol-button:focus {
-				@include focus-outline;
-			}
 		}
 
 		&--error {

@@ -23,8 +23,11 @@
 		}
 	}
 
-	.kol-button__button {
-		min-height: to-rem(40);
+	.kol-button {
+		&__button {
+			min-height: to-rem(40);
+		}
+
 		&__text {
 			white-space: nowrap;
 			border-bottom-left-radius: 0;
