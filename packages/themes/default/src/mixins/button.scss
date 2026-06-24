@@ -102,7 +102,7 @@
 			}
 
 			@at-root #{$root}--hide-label & {
-				padding: to-rem(12);
+				padding: 0;
 
 				.kol-span__label {
 					display: none;
@@ -127,6 +127,8 @@
 		@include kol-button-ghost();
 
 		--kol-focus-outline-offset: -2px;
+
+		font-weight: normal;
 	}
 }
 

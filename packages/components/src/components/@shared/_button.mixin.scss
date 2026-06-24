@@ -21,7 +21,8 @@
 			content: '\200B';
 		}
 
-		&__button {
+		&__button,
+		&__anchor {
 			color: inherit;
 			display: flex;
 			flex: 1;
