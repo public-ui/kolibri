@@ -469,8 +469,8 @@ importers:
         specifier: 3.0.3
         version: 3.0.3
       adopted-style-sheets:
-        specifier: 1.1.9-rc.22
-        version: 1.1.9-rc.22
+        specifier: 1.1.9-rc.25
+        version: 1.1.9-rc.25
       autoprefixer:
         specifier: 10.5.0
         version: 10.5.0(postcss@8.5.15)
@@ -6527,6 +6527,9 @@ packages:
 
   adopted-style-sheets@1.1.9-rc.22:
     resolution: {integrity: sha512-dWR5cKLub6mqvBe5r0TSNVGGjuETHHmqDX/cpkTf5JBOU7TDearwzu8YYgY4I6axeovboKLxAWkQiiHR6Dv0Cg==}
+
+  adopted-style-sheets@1.1.9-rc.25:
+    resolution: {integrity: sha512-YTAJ3i7V3e3azDb6uktTcslbLRd+JCvIuOtGtJOI7YWja8EQ0uQdDX+ZRCDpUML3R47h+pMhhTNFWoUVPbo5dA==}
 
   agent-base@7.1.4:
     resolution: {integrity: sha512-MnA+YT8fwfJPgBx3m60MNqakm30XOkyIoH1y6huTQvC0PwZG7ki8NacLBcrPbNoo8vEZy7Jpuk7+jMO+CUovTQ==}
@@ -19808,6 +19811,10 @@ snapshots:
   adm-zip@0.5.17: {}
 
   adopted-style-sheets@1.1.9-rc.22:
+    dependencies:
+      loglevel: 1.9.2
+
+  adopted-style-sheets@1.1.9-rc.25:
     dependencies:
       loglevel: 1.9.2
 
