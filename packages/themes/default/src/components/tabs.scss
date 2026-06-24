@@ -1,73 +1,46 @@
 @use '../mixins/to-rem' as *;
 @use '../mixins/icon' as *;
+@use '../mixins/button' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
+	@include kol-button('kol-button');
+
 	.kol-tabs {
 		display: grid;
 		grid-template-columns: var(--grid-template-columns);
 		grid-template-rows: var(--grid-template-rows);
 
-		&--align-right {
-			--display: grid;
-			--grid-template-columns: 1fr auto;
-
-			--button-group-display: grid;
-			--button-group-order: 1;
-		}
-
-		&--align-left {
-			--display: grid;
-			--grid-template-columns: auto 1fr;
-
-			--button-group-order: 0;
-		}
-
-		&--align-bottom {
-			--display: flex;
-			--grid-template-rows: 1fr auto;
-
-			--button-group-gap: #{to-rem(32)};
-			--button-group-order: 1;
-		}
-
-		&--align-top {
-			--display: flex;
-			--grid-template-rows: auto 1fr;
-
-			--button-group-gap: #{to-rem(32)};
-			--button-group-order: 0;
-		}
-
 		&__button-group {
-			display: var(--display);
-
-			gap: var(--button-group-gap);
-			order: var(--button-group-order);
-			flex-wrap: wrap;
+			gap: to-rem(32);
 		}
 
 		.kol-button {
-			color: var(--color-subtle);
-			background-color: transparent;
+			--text-color: var(--color-subtle);
+			--text-background-color: transparent;
+			--border-width: 0;
+
 			border-radius: var(--border-radius);
 			min-width: var(--a11y-min-size);
 			min-height: var(--a11y-min-size);
 			padding: 0;
 
-			font-size: to-rem(18);
-			font-weight: 700;
-			line-height: 1.2;
-			border: none;
-			font-style: normal;
+			&__button {
+				font-size: to-rem(18);
+				font-weight: 700;
+				line-height: 1.2;
+				font-style: normal;
+			}
 
 			&:hover {
-				color: var(--color-primary);
+				--text-color: var(--color-primary);
+				--text-background-color: transparent;
+				--kol-focus-outline-width: 0;
 			}
 
 			&.primary,
 			&.selected {
-				color: var(--color-primary);
+				--text-color: var(--color-primary);
 			}
 
 			&:not(&.selected) {
@@ -85,6 +58,10 @@
 			.kol-span__container {
 				gap: to-rem(8);
 			}
+
+			&__text {
+				padding: 0;
+			}
 		}
 
 		&__content {
@@ -93,10 +70,6 @@
 
 		&__panel {
 			height: 100%;
-		}
-
-		.kol-button {
-			width: 100%;
 		}
 	}
 }

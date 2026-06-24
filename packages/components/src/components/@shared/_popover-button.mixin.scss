@@ -8,8 +8,11 @@
 			border: 0;
 		}
 
-		&--inline &__button {
+		&--inline,
+		&--inline .kol-button__button {
 			display: inline;
+			min-width: 0px;
+			min-height: 1em;
 		}
 	}
 

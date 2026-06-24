@@ -1,7 +1,7 @@
 @use '../mixins/to-rem' as *;
 
 @mixin focus-outline {
-	outline: var(--color-primary-variant) solid to-rem(3);
+	outline: var(--kol-focus-outline-color, var(--color-primary-variant)) solid var(--kol-focus-outline-width, 3px);
 	border-radius: var(--border-radius);
 	outline-offset: var(--kol-focus-outline-offset, 2px);
 	transition: 200ms outline-offset linear;

@@ -30,8 +30,4 @@
 			border-top: var(--border-width) solid var(--color-mute-variant);
 		}
 	}
-
-	.kol-button:focus {
-		@include focus-outline;
-	}
 }

@@ -89,22 +89,27 @@
 			}
 
 			&--header {
-				color: var(--color-light);
 				background-color: var(--color-primary);
-
+				color: var(--color-light);
 				font-weight: normal;
 
-				.kol-button:focus {
-					outline-color: var(--color-mute-variant);
-				}
-			}
-
-			&--ascending,
-			&--descending {
-				font-weight: 700;
-
 				.kol-button {
-					font-weight: 700;
+					--text-color: var(--color-light);
+					--text-background-color: var(--color-primary);
+					--kol-focus-outline-color: var(--color-mute-variant);
+					--border-width: 0;
+
+					&__button {
+						font-weight: normal;
+					}
+
+					&:hover {
+						--text-background-color: var(--color-primary);
+					}
+
+					&__text {
+						padding: 0;
+					}
 				}
 			}
 
