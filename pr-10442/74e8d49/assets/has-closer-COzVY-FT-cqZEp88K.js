@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-DSlceoBf.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
