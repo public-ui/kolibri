@@ -75,7 +75,7 @@ function getFormFieldProps(
 
 	if ('_hasCounter' in state && state._hasCounter === true) {
 		props.counter = {
-			maxLength: '_maxLength' in state ? (state._maxLength as number | undefined) : undefined,
+			maxLength: '_maxLength' in state ? state._maxLength : undefined,
 			maxLengthBehavior: ('_maxLengthBehavior' in state ? state._maxLengthBehavior : undefined) || 'hard',
 			...counterRefs,
 		};
