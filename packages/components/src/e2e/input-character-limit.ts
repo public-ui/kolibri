@@ -18,6 +18,31 @@ const testInputCharacterLimit = (componentName: string) => {
 				await expect(page.getByTestId('input-counter-aria')).toHaveText('3 von 10 Zeichen');
 			});
 
+			test('Should re-announce the character limit message on blocked input attempts (hard)', async ({ page }) => {
+				await page.setContent(`<${componentName} _label="Input" _value="abc" _max-length="3" _has-counter></${componentName}>`);
+				await page.waitForChanges();
+				const ariaCounter = page.getByTestId('input-counter-aria');
+				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht!');
+
+				// The native maxlength blocks the input, so no input event fires; the keydown listener must
+				// re-trigger the live region. The aria span is first cleared to force a re-announcement ...
+				await page.locator('input,textarea').press('a');
+				await expect(ariaCounter).toHaveText('');
+				// ... and then re-populated with the message after the 1 s debounce.
+				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht!', { timeout: 1500 });
+			});
+
+			test('Should not re-trigger the live region for control keys at the limit (hard)', async ({ page }) => {
+				await page.setContent(`<${componentName} _label="Input" _value="abc" _max-length="3" _has-counter></${componentName}>`);
+				await page.waitForChanges();
+				const ariaCounter = page.getByTestId('input-counter-aria');
+				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht!');
+
+				// Control keys are no input attempts and must not clear/re-announce the live region.
+				await page.locator('input,textarea').press('ArrowLeft');
+				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht!');
+			});
+
 			test.describe('With _maxLengthBehaviour="soft"', () => {
 				test(`should show the initial remaining characters`, async ({ page }) => {
 					await page.setContent(`<${componentName} _label="Input" _max-length="10" _has-counter _max-length-behavior="soft" _value="abc"></${componentName}>`);

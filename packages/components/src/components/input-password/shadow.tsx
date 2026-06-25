@@ -93,6 +93,7 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		this.controller.onFacade.onKeyDown(event);
+		this.counterUpdater.handleKeyDown(event, this.ctaRef.el?.value.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
