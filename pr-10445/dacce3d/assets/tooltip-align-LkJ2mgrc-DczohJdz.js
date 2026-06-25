@@ -1,0 +1,1 @@
+import"./index-BtcjugC4.js";import{r as e}from"./align-BdqBkiyq-Csg112KR.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
