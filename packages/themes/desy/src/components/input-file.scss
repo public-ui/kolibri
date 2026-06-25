@@ -91,6 +91,10 @@
 					display: inline-flex;
 				}
 			}
+
+			&__button {
+				min-height: to-rem(38);
+			}
 		}
 
 		&__container {

@@ -20,8 +20,15 @@
 			color: var(--color-blue-100);
 		}
 
-		&:focus {
-			outline: none;
+		&__anchor:focus,
+		&__button:focus {
+			outline: 2px solid var(--color-dark-blue-100);
+			border-radius: var(--radius-s);
+			outline-offset: 4px;
+
+			.kol-span__label {
+				text-decoration-thickness: 1px;
+			}
 		}
 
 		.kol-span {
@@ -81,14 +88,6 @@
 
 			font-size: to-rem(14);
 			line-height: 1.25;
-		}
-
-		&__text {
-			@at-root #{$root}:focus & {
-				outline: 2px solid var(--color-dark-blue-100);
-				border-radius: var(--radius-s);
-				outline-offset: 4px;
-			}
 		}
 	}
 }

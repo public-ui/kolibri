@@ -3,11 +3,11 @@
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
+
 	.kol-tree-item {
-		$root: &;
 		--indentation: #{to-rem(20)};
 
-		&__link {
+		&__link .kol-link__anchor {
 			color: var(--color-text);
 			display: block;
 			padding-left: max(calc(var(--indentation) * var(--level)));

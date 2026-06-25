@@ -12,7 +12,6 @@
 
 	.#{$block-classname} {
 		display: flex;
-		min-height: var(--a11y-min-size);
 		font-style: to-rem(16);
 		text-decoration-line: none;
 
@@ -23,6 +22,7 @@
 
 		&__button,
 		&__anchor {
+			min-height: var(--a11y-min-size);
 			color: inherit;
 			display: flex;
 			flex: 1;

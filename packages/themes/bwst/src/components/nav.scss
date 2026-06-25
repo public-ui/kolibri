@@ -37,7 +37,9 @@
 				align-items: center;
 				text-align: left;
 
-				text-decoration: none;
+				.kol-span__label {
+					text-decoration: none;
+				}
 
 				&:focus-visible {
 					@include focus-outline;

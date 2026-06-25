@@ -8,31 +8,31 @@
 
 	.kol-link {
 		.kol-span__label {
-			color: var(--color-rot);
+			color: var(--color-red-100);
 		}
 	}
 
 	.kol-alert {
 		&__content {
 			ul {
-				color: var(--color-rot);
+				color: var(--color-red-100);
 				display: flex;
 				margin: 0;
 				gap: 8px;
 				flex-direction: column;
 				list-style-type: decimal;
 
-				.kol-link {
-					&:focus .kol-link__text {
-						outline-color: var(--color-rot);
-					}
+				.kol-link__anchor {
+					color: var(--color-red-100);
+
+					outline-color: var(--color-red-100);
 
 					.kol-span__label {
 						font-weight: bold;
 					}
 
 					&::before {
-						color: var(--color-rot);
+						color: var(--color-red-100);
 						display: inline-block;
 						margin-right: to-rem(4);
 						padding: 0 to-rem(3);
