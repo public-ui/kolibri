@@ -14,7 +14,7 @@
 			gap: to-rem(8);
 		}
 
-		&__button--selected .kol-button {
+		&__button--selected.kol-button {
 			@include primaryButton();
 			opacity: 0.4;
 		}
