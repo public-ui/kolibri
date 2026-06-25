@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-DovYI7cd.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
