@@ -56,8 +56,6 @@ type OptionalProps = {
 	PropVisibilityToggle;
 
 type RequiredStates = {
-	currentLength: number;
-	currentLengthDebounced: number;
 	hasValue: boolean;
 } & PropId &
 	PropHideMsg &

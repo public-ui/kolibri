@@ -39,6 +39,7 @@ import KolInputContainerStateWrapperFc from '../../functional-component-wrappers
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
+import { CounterDomUpdater } from '../../utils/counter-dom-updater';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -59,6 +60,8 @@ import { InputPasswordController } from './controller';
 export class KolInputPassword implements ClickableElement, FocusableElement, InputPasswordAPI {
 	@Element() protected readonly host?: HTMLKolInputPasswordElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+	private readonly counterUpdater = new CounterDomUpdater();
+	private updatingFromInput = false;
 
 	private readonly translateHidePassword = translate('kol-hide-password');
 	private readonly translateShowPassword = translate('kol-show-password');
@@ -100,8 +103,11 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 	};
 
 	private readonly onInput = (event: InputEvent) => {
+		this.updatingFromInput = true;
 		this._value = (event.target as HTMLInputElement).value;
 		this.controller.onFacade.onInput(event);
+		this.counterUpdater.update(this._value.length, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+		this.updatingFromInput = false;
 	};
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -113,6 +119,10 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 			}),
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
+			counterRefs: {
+				visualRef: this.counterUpdater.setVisualRef,
+				ariaRef: this.counterUpdater.setAriaRef,
+			},
 		};
 	}
 
@@ -321,8 +331,6 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 	@Prop() public _visibilityToggle?: VisibilityTogglePropType = false;
 
 	@State() public state: InputPasswordStates = {
-		_currentLength: 0,
-		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
 		_id: createUniqueId('input-password'),
@@ -466,11 +474,24 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+		if (!this.updatingFromInput) {
+			this.counterUpdater.updateImmediate(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+		}
 	}
 
 	@Watch('_visibilityToggle')
 	public validateVisibilityToggle(value?: boolean): void {
 		this.controller.validateVisibilityToggle(value);
+	}
+
+	public componentDidLoad(): void {
+		if (this.controller.hasCounter() || this.controller.hasSoftCharacterLimit()) {
+			this.counterUpdater.updateImmediate(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+		}
+	}
+
+	public disconnectedCallback(): void {
+		this.counterUpdater.destroy();
 	}
 
 	public componentWillLoad(): void {

@@ -35,13 +35,6 @@ export class TextareaController extends InputIconController implements TextareaW
 		this.component = component;
 	}
 
-	private afterSyncCharCounter = () => {
-		if (typeof this.component._value === 'string') {
-			this.component.state._currentLength = this.component._value.length;
-			this.updateCurrentLengthDebounced(this.component._value.length);
-		}
-	};
-
 	public validateHasCounter(value?: HasCounterPropType): void {
 		validateHasCounter(this.component, value);
 	}
@@ -51,9 +44,7 @@ export class TextareaController extends InputIconController implements TextareaW
 	}
 
 	public validateMaxLength(value?: number): void {
-		validateMaxLength(this.component, value, {
-			hooks: { afterPatch: this.afterSyncCharCounter },
-		});
+		validateMaxLength(this.component, value);
 	}
 
 	public validatePlaceholder(value?: PlaceholderPropType): void {
@@ -81,11 +72,7 @@ export class TextareaController extends InputIconController implements TextareaW
 	}
 
 	public validateValue(value?: string): void {
-		watchString(this.component, '_value', value, {
-			hooks: {
-				afterPatch: this.afterSyncCharCounter,
-			},
-		});
+		watchString(this.component, '_value', value);
 		this.setFormAssociatedValue(this.component._value);
 	}
 

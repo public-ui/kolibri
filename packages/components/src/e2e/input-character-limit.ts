@@ -30,9 +30,10 @@ const testInputCharacterLimit = (componentName: string) => {
 					await page.setContent(`<${componentName} _label="Input" _max-length="10" _has-counter _max-length-behavior="soft" _value="abc"></${componentName}>`);
 					await page.waitForChanges();
 					await page.locator('input,textarea').fill('abcdef');
-					await page.waitForTimeout(500);
+					// Visual counter updates immediately
 					await expect(page.getByTestId('input-counter')).toHaveText('Es sind noch 4 Zeichen verfügbar.');
-					await expect(page.getByTestId('input-counter-aria')).toHaveText('Es sind noch 4 Zeichen verfügbar.');
+					// Aria counter is debounced by 1 s to avoid noisy screen-reader announcements during typing
+					await expect(page.getByTestId('input-counter-aria')).toHaveText('Es sind noch 4 Zeichen verfügbar.', { timeout: 1500 });
 				});
 
 				test('should render an alternative text and modifier class when the limit has been exceeded', async ({ page }) => {
@@ -41,7 +42,8 @@ const testInputCharacterLimit = (componentName: string) => {
 					await page.locator('input,textarea').fill('a'.repeat(12));
 					await expect(page.getByTestId('input-counter')).toHaveText('Es sind 2 Zeichen zu viel.');
 					await expect(page.getByTestId('input-counter')).toHaveClass('kol-form-field__counter kol-form-field__counter--exceeded');
-					await expect(page.getByTestId('input-counter-aria')).toHaveText('Es sind 2 Zeichen zu viel.');
+					// Aria counter is debounced by 1 s to avoid noisy screen-reader announcements during typing
+					await expect(page.getByTestId('input-counter-aria')).toHaveText('Es sind 2 Zeichen zu viel.', { timeout: 1500 });
 				});
 
 				test(`should update the remaining characters in the aria-live region with a delay`, async ({ page }) => {

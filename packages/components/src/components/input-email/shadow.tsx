@@ -37,6 +37,7 @@ import type {
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import { CounterDomUpdater } from '../../utils/counter-dom-updater';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -57,6 +58,8 @@ import { InputEmailController } from './controller';
 export class KolInputEmail implements ClickableElement, FocusableElement, InputEmailAPI {
 	@Element() protected readonly host?: HTMLKolInputEmailElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+	private readonly counterUpdater = new CounterDomUpdater();
+	private updatingFromInput = false;
 
 	/**
 	 * Returns the current value.
@@ -95,8 +98,11 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 	};
 
 	private readonly onInput = (event: InputEvent) => {
+		this.updatingFromInput = true;
 		this._value = (event.target as HTMLInputElement).value;
 		this.controller.onFacade.onInput(event);
+		this.counterUpdater.update(this._value.length, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+		this.updatingFromInput = false;
 	};
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -108,6 +114,10 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 			}),
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
+			counterRefs: {
+				visualRef: this.counterUpdater.setVisualRef,
+				ariaRef: this.counterUpdater.setAriaRef,
+			},
 		};
 	}
 
@@ -297,8 +307,6 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 	@Prop() public _variant?: VariantClassNamePropType;
 
 	@State() public state: InputEmailStates = {
-		_currentLength: 0,
-		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
 		_id: createUniqueId('input-email'),
@@ -439,6 +447,9 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+		if (!this.updatingFromInput) {
+			this.counterUpdater.updateImmediate(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+		}
 	}
 
 	@Watch('_maxLengthBehavior')
@@ -449,6 +460,16 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 	@Watch('_variant')
 	public validateVariant(value?: VariantClassNamePropType): void {
 		this.controller.validateVariant(value);
+	}
+
+	public componentDidLoad(): void {
+		if (this.controller.hasCounter() || this.controller.hasSoftCharacterLimit()) {
+			this.counterUpdater.updateImmediate(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+		}
+	}
+
+	public disconnectedCallback(): void {
+		this.counterUpdater.destroy();
 	}
 
 	public componentWillLoad(): void {

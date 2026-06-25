@@ -38,6 +38,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { CounterDomUpdater } from '../../utils/counter-dom-updater';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -59,6 +60,8 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	@Element() protected readonly host?: HTMLKolInputTextElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private oldValue?: string;
+	private readonly counterUpdater = new CounterDomUpdater();
+	private updatingFromInput = false;
 
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
@@ -81,8 +84,11 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	};
 
 	private readonly onInput = (event: InputEvent) => {
+		this.updatingFromInput = true;
 		this._value = this.ctaRef.el?.value ?? '';
 		this.controller.onFacade.onInput(event);
+		this.counterUpdater.update(this._value.length, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+		this.updatingFromInput = false;
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -94,10 +100,6 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 				ref: this.ctaRef.el,
 			});
 		}
-	};
-
-	private readonly onKeyUp = () => {
-		this.controller.updateCurrentLengthDebounced(this._value?.length ?? 0);
 	};
 
 	/**
@@ -181,6 +183,10 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 			}),
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
+			counterRefs: {
+				visualRef: this.counterUpdater.setVisualRef,
+				ariaRef: this.counterUpdater.setAriaRef,
+			},
 		};
 	}
 
@@ -197,7 +203,6 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 			onFocus: this.onFocus,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,
-			onKeyUp: this.onKeyUp,
 		};
 	}
 
@@ -372,8 +377,6 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	@Prop() public _variant?: VariantClassNamePropType;
 
 	@State() public state: InputTextStates = {
-		_currentLength: 0,
-		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
 		_id: createUniqueId('input-text'),
@@ -521,11 +524,24 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
 		this.oldValue = value;
+		if (!this.updatingFromInput) {
+			this.counterUpdater.updateImmediate(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+		}
 	}
 
 	@Watch('_variant')
 	public validateVariant(value?: VariantClassNamePropType): void {
 		this.controller.validateVariant(value);
+	}
+
+	public componentDidLoad(): void {
+		if (this.controller.hasCounter() || this.controller.hasSoftCharacterLimit()) {
+			this.counterUpdater.updateImmediate(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+		}
+	}
+
+	public disconnectedCallback(): void {
+		this.counterUpdater.destroy();
 	}
 
 	public componentWillLoad(): void {

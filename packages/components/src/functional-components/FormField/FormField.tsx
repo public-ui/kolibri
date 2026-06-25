@@ -63,7 +63,12 @@ export type FormFieldProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	hideMsg?: boolean;
 	accessKey?: string;
 	shortKey?: string;
-	counter?: { currentLength: number; currentLengthDebounced: number; maxLengthBehavior: MaxLengthBehaviorPropType; maxLength?: number; id?: string };
+	counter?: {
+		maxLengthBehavior: MaxLengthBehaviorPropType;
+		maxLength?: number;
+		visualRef?: (el?: HTMLSpanElement) => void;
+		ariaRef?: (el?: HTMLSpanElement) => void;
+	};
 	readOnly?: boolean;
 	touched?: boolean;
 	required?: boolean;
@@ -92,47 +97,6 @@ const InputContainer: FC<JSXBase.HTMLAttributes<HTMLDivElement>> = ({ class: cla
 		</div>
 	);
 };
-
-type CounterProp = NonNullable<FormFieldProps['counter']>;
-
-const getCounterVisualText = (counter: CounterProp): string => {
-	if (typeof counter.maxLength !== 'number') {
-		return translate('kol-character-counter-current', { placeholders: { current: String(counter.currentLength) } });
-	}
-	if (counter.maxLengthBehavior === 'soft') {
-		const remaining = counter.maxLength - counter.currentLength;
-		return remaining < 0
-			? translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remaining)) } })
-			: translate('kol-character-limit-remaining', { placeholders: { remaining: String(remaining) } });
-	}
-	return translate('kol-character-counter-current-of-max', {
-		placeholders: { current: String(counter.currentLength), max: String(counter.maxLength) },
-	});
-};
-
-const getCounterAriaText = (counter: CounterProp): string => {
-	if (typeof counter.maxLength !== 'number') {
-		return translate('kol-character-counter-current', { placeholders: { current: String(counter.currentLengthDebounced) } });
-	}
-	if (counter.maxLengthBehavior === 'soft') {
-		const remaining = counter.maxLength - counter.currentLengthDebounced;
-		return remaining < 0
-			? translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remaining)) } })
-			: translate('kol-character-limit-remaining', { placeholders: { remaining: String(remaining) } });
-	}
-	return translate('kol-character-counter-current-of-max-aria', {
-		placeholders: { current: String(counter.currentLengthDebounced), max: String(counter.maxLength) },
-	});
-};
-
-const getCounterMaxText = (counter: CounterProp): string => {
-	if (counter.maxLengthBehavior === 'hard' && typeof counter.maxLength === 'number' && counter.currentLength >= counter.maxLength) {
-		return translate('kol-character-counter-max-aria');
-	}
-	return '';
-};
-
-const getCombinedAriaText = (counter: CounterProp): string => [getCounterAriaText(counter), getCounterMaxText(counter)].filter(Boolean).join(' ');
 
 const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const {
@@ -260,19 +224,8 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 			</InputContainer>
 			{counter && !(counter.maxLengthBehavior === 'soft' && typeof counter.maxLength !== 'number') && (
 				<div class="kol-form-field__counter">
-					<span
-						data-testid="input-counter"
-						aria-hidden="true"
-						class={clsx('kol-form-field__counter', {
-							'kol-form-field__counter--exceeded':
-								counter.maxLengthBehavior === 'soft' && typeof counter.maxLength === 'number' && counter.currentLength > counter.maxLength,
-						})}
-					>
-						{getCounterVisualText(counter)}
-					</span>
-					<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id={createRelatedUniqueId(id, 'counter')}>
-						{getCombinedAriaText(counter)}
-					</span>
+					<span data-testid="input-counter" aria-hidden="true" class="kol-form-field__counter" ref={counter.visualRef} />
+					<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id={createRelatedUniqueId(id, 'counter')} ref={counter.ariaRef} />
 				</div>
 			)}
 			{showMsg && !hideMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} />}

@@ -39,7 +39,6 @@ import { validateTabIndex } from '../../../schema/props/tab-index';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { ControlledInputController } from '../../input-adapter-leanup/controller';
 
-import { debounce } from 'lodash-es';
 import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
 import type { Props as AdapterProps } from '../../input-adapter-leanup/types';
 import type { Props, Watches } from './types';
@@ -297,10 +296,6 @@ export class InputController extends ControlledInputController implements Watche
 		onInput: this.onInput.bind(this),
 		onKeyDown: this.onKeyDown.bind(this),
 	};
-
-	public readonly updateCurrentLengthDebounced = debounce((length: number) => {
-		setState(this.component, '_currentLengthDebounced', length);
-	}, 1000);
 
 	public hasSoftCharacterLimit() {
 		return typeof this.component.state._maxLength === 'number' && this.component.state._maxLengthBehavior === 'soft';
