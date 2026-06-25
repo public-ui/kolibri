@@ -55,9 +55,12 @@
 			}
 		}
 
-		&__smart-button.kol-button {
-			@include kol-button-ghost();
+		&__smart-button {
 			z-index: 2;
+
+			&.kol-button {
+				@include kol-button-ghost();
+			}
 		}
 
 		&--error {

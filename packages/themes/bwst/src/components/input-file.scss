@@ -24,7 +24,8 @@
 	}
 
 	.kol-button {
-		&__button {
+		&__button,
+		& {
 			min-height: to-rem(40);
 		}
 

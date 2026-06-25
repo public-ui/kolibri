@@ -94,11 +94,25 @@
 
 				font-weight: bold;
 
-				.kol-button:focus {
-					outline-color: var(--color-mute-variant);
-				}
-				.kol-button__text {
-					font-weight: bold;
+				.kol-button {
+					--text-color: var(--color-text);
+					--text-background-color: transparent;
+					--kol-focus-outline-color: var(--color-mute-variant);
+					--border-width: 0;
+
+					&:hover {
+						--text-background-color: transparent;
+						--text-color: var(--color-text);
+					}
+
+					&__text:hover {
+						box-shadow: none;
+					}
+
+					&__text {
+						padding: 0;
+						font-weight: bold;
+					}
 				}
 			}
 

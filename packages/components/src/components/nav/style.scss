@@ -3,6 +3,7 @@
 @use '../tooltip/style.scss' as *;
 @use '../@shared/icon.mixin' as *;
 @use '../@shared/link.mixin' as *;
+@use '../@shared/button.mixin' as *;
 
 @layer kol-component {
 	@include kol-link-styles('kol-link');
@@ -52,6 +53,10 @@
 
 		&__entry {
 			flex-grow: 1;
+		}
+
+		&__compact {
+			@include kol-button-styles('kol-button');
 		}
 	}
 }

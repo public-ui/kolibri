@@ -12,7 +12,7 @@
 		min-height: var(--a11y-min-size);
 		border-width: var(--border-width);
 
-		&__button .kol-button__button {
+		&__button .kol-button {
 			// Temp-Fix Hover-effect on Button clipping border
 			.kol-span {
 				border-bottom-left-radius: var(--border-radius);
@@ -66,7 +66,7 @@
 			}
 		}
 
-		.kol-button__button {
+		.kol-button {
 			height: 100%;
 
 			&__text {

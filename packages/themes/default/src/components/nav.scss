@@ -77,9 +77,12 @@
 		}
 
 		&__compact {
+			padding-bottom: to-rem(5);
+
 			@include kol-button('kol-button');
 			.kol-button {
 				@include kol-button-ghost();
+				--text-background-color: var(--color-light);
 			}
 		}
 	}
