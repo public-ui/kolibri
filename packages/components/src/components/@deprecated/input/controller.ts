@@ -300,7 +300,7 @@ export class InputController extends ControlledInputController implements Watche
 
 	public readonly updateCurrentLengthDebounced = debounce((length: number) => {
 		setState(this.component, '_currentLengthDebounced', length);
-	}, 500);
+	}, 1000);
 
 	public hasSoftCharacterLimit() {
 		return typeof this.component.state._maxLength === 'number' && this.component.state._maxLengthBehavior === 'soft';
