@@ -22,7 +22,6 @@ export class KolTableSettings {
 	private readonly translateTableSettingsCancel = translate('kol-table-settings-cancel');
 	private readonly translateTableSettingsApply = translate('kol-table-settings-apply');
 	private readonly translateErrorAllInvisible = translate('kol-table-settings-error-all-invisible');
-	private readonly translateColumnNotHidable = translate('kol-table-settings-column-not-hidable');
 
 	/**
 	 * The horizontal header cells configuration for the table.
@@ -150,7 +149,11 @@ export class KolTableSettings {
 									<div key={column.key} class="kol-table-settings__column">
 										<KolInputCheckboxTag
 											_checked={column.visible !== false}
-											_label={`${column.label}${column.hidable === false ? ` (${this.translateColumnNotHidable})` : ''}`}
+											_label={
+												column.hidable
+													? translate('kol-table-settings-column-hidable', { placeholders: { column: column.label } })
+													: translate('kol-table-settings-column-not-hidable', { placeholders: { column: column.label } })
+											}
 											_value={true}
 											_hideLabel
 											_disabled={column.hidable === false}
