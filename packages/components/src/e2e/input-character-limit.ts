@@ -121,6 +121,18 @@ const testInputCharacterLimit = (componentName: string) => {
 				const hintElement = page.locator('[id*="character-limit-hint"]');
 				await expect(hintElement).not.toBeAttached();
 			});
+
+			test('Should not render character limit hint when a counter is shown (info is conveyed by the counter)', async ({ page }) => {
+				await page.setContent(`<${componentName} _label="Input" _max-length="10" _has-counter _value="abc"></${componentName}>`);
+				await page.waitForChanges();
+				const inputElement = page.locator('input,textarea');
+				const hintElement = page.locator('[id*="character-limit-hint"]');
+
+				// The redundant hint is not rendered, and the input must not reference its (non-existent) id.
+				await expect(hintElement).not.toBeAttached();
+				const describedBy = (await inputElement.getAttribute('aria-describedby')) ?? '';
+				expect(describedBy).not.toContain('character-limit-hint');
+			});
 		});
 	});
 };

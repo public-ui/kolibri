@@ -231,7 +231,10 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 			{showMsg && !hideMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} />}
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 			{anotherChildren}
-			{typeof maxLength === 'number' && (
+			{typeof maxLength === 'number' && !counter && (
+				// Der visuell versteckte Zeichenlimit-Hinweis wird nur gerendert, wenn KEIN Zähler aktiv ist.
+				// Ist ein Zähler vorhanden, vermitteln dessen Spans (`input-counter`/`input-counter-aria`) das
+				// Maximum bereits, sodass der zusätzliche Hinweis redundant wäre.
 				<span id={createRelatedUniqueId(id, 'character-limit-hint')} class="visually-hidden">
 					{translate('kol-character-limit-hint', { placeholders: { limit: String(maxLength) } })}
 				</span>

@@ -37,7 +37,9 @@ Der sichtbare Zähler wird **genau dann gerendert, wenn `_hasCounter === true`**
   (`…-character-limit-hint`, referenziert über das `aria-describedby` des Inputs) informiert
   Screenreader-Benutzer vorab über das Maximum (z. B. _„Es können bis zu 10 Zeichen eingegeben werden."_).
 - **Mit `_hasCounter`:** Der Zähler wird angezeigt, und das Hard-Limit (Standard) gilt weiterhin,
-  sofern nicht `_maxLengthBehavior="soft"` gesetzt ist.
+  sofern nicht `_maxLengthBehavior="soft"` gesetzt ist. Der zusätzliche Zeichenlimit-Hinweis wird in
+  diesem Fall **nicht** gerendert (und nicht über `aria-describedby` referenziert), da die Zähler-Spans
+  das Maximum bereits vermitteln und der Hinweis sonst redundant wäre.
 
 ### Verhaltensmatrix
 
@@ -47,8 +49,8 @@ Der sichtbare Zähler wird **genau dann gerendert, wenn `_hasCounter === true`**
 |      –       |    `true`     |          –           |     nein      |    ja (Anzahl)    |         nein         |
 |      10      |       –       |  `hard` (Standard)   |    **ja**     |       nein        |        **ja**        |
 |      10      |       –       |        `soft`        |     nein      |       nein        |          ja          |
-|      10      |    `true`     |  `hard` (Standard)   |    **ja**     |      **ja**       |          ja          |
-|      10      |    `true`     |        `soft`        |     nein      |      **ja**       |          ja          |
+|      10      |    `true`     |  `hard` (Standard)   |    **ja**     |      **ja**       |   nein (redundant)   |
+|      10      |    `true`     |        `soft`        |     nein      |      **ja**       |   nein (redundant)   |
 |      10      |    `false`    |         any          | je Verhalten  |       nein        |          ja          |
 
 ## Zählerinhalt (wenn `_hasCounter`)
@@ -203,7 +205,7 @@ Alle sichtbaren und angekündigten Texte sind i18n-gesteuert. Die relevanten Key
 
 | Key                                     | Platzhalter              | Deutsch (`de`)                                          | Englisch (`en`)                                | Verwendet in                                                                  |
 | --------------------------------------- | ------------------------ | ------------------------------------------------------- | ---------------------------------------------- | ----------------------------------------------------------------------------- |
-| `character-limit-hint`                  | `{{limit}}`              | `Es können bis zu {{limit}} Zeichen eingegeben werden.` | `You can enter up to {{limit}} characters`     | `FormFieldCharacterLimitHint` (visually-hidden, `aria-describedby`)           |
+| `character-limit-hint`                  | `{{limit}}`              | `Es können bis zu {{limit}} Zeichen eingegeben werden.` | `You can enter up to {{limit}} characters`     | visually-hidden Hinweis (`aria-describedby`) – **nur ohne `_hasCounter`**     |
 | `character-counter-current`             | `{{current}}`            | `{{current}} Zeichen`                                   | `{{current}} characters`                       | Span 1 + Span 2 – hard, kein `_maxLength`                                     |
 | `character-counter-current-of-max`      | `{{current}}`, `{{max}}` | `{{current}}/{{max}} Zeichen`                           | `{{current}}/{{max}} characters`               | **Span 1** – hard + `_maxLength` (visuell, sofort)                            |
 | `character-counter-current-of-max-aria` | `{{current}}`, `{{max}}` | `{{current}} von {{max}} Zeichen`                       | `{{current}} of {{max}} characters`            | **Span 2** – hard + `_maxLength` (aria, entprellt)                            |

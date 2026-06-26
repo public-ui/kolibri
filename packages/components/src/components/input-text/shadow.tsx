@@ -192,7 +192,8 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	}
 
 	private getInputProps(): InputStateWrapperProps {
-		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy =
+			typeof this.state._maxLength === 'number' && !this.controller.hasCounter() ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined but no counter is shown, we provide an additional hint referenced by aria-describedby. With a counter, its spans already convey the limit.
 
 		return {
 			ref: this.ctaRef,
