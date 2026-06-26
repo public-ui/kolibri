@@ -23,13 +23,16 @@ const testInputCharacterLimit = (componentName: string) => {
 				await page.waitForChanges();
 				const ariaCounter = page.getByTestId('input-counter-aria');
 				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht!');
+				const initialContent = await ariaCounter.textContent();
 
 				// The native maxlength blocks the input, so no input event fires; the keydown listener must
-				// re-trigger the live region. The aria span is first cleared to force a re-announcement ...
+				// re-trigger the live region. To force a re-announcement of the identical message, an invisible
+				// NBSP is toggled so the raw text content actually changes after the 1 s debounce.
 				await page.locator('input,textarea').press('a');
-				await expect(ariaCounter).toHaveText('');
-				// ... and then re-populated with the message after the 1 s debounce.
-				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht!', { timeout: 1500 });
+				await page.waitForTimeout(1300);
+				expect(await ariaCounter.textContent()).not.toBe(initialContent);
+				// The visible message itself is unchanged (whitespace, incl. the NBSP, is normalized away).
+				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht!');
 			});
 
 			test('Should not re-trigger the live region for control keys at the limit (hard)', async ({ page }) => {
@@ -37,10 +40,13 @@ const testInputCharacterLimit = (componentName: string) => {
 				await page.waitForChanges();
 				const ariaCounter = page.getByTestId('input-counter-aria');
 				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht!');
+				const initialContent = await ariaCounter.textContent();
 
-				// Control keys are no input attempts and must not clear/re-announce the live region.
+				// Control keys are no input attempts and must not re-trigger the live region. Wait past the
+				// debounce window and assert the raw content did not change (no toggled NBSP).
 				await page.locator('input,textarea').press('ArrowLeft');
-				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht!');
+				await page.waitForTimeout(1300);
+				expect(await ariaCounter.textContent()).toBe(initialContent);
 			});
 
 			test.describe('With _maxLengthBehaviour="soft"', () => {

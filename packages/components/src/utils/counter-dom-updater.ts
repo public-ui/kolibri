@@ -8,10 +8,14 @@ import type { MaxLengthBehaviorPropType } from '../schema';
  */
 const isCharacterInputKey = (event: KeyboardEvent): boolean => event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey;
 
+/** Nicht sichtbares geschütztes Leerzeichen (NBSP), das zur Erzwingung einer erneuten Live-Region-Ankündigung dient. */
+const REANNOUNCE_MARKER = '\u00A0';
+
 export class CounterDomUpdater {
 	private visualSpan?: HTMLSpanElement;
 	private ariaSpan?: HTMLSpanElement;
 	private debounceTimer?: ReturnType<typeof setTimeout>;
+	private reannounceToggle = false;
 
 	readonly setVisualRef = (el?: HTMLSpanElement): void => {
 		this.visualSpan = el;
@@ -30,11 +34,25 @@ export class CounterDomUpdater {
 		);
 	}
 
-	private doUpdateAria(currentLength: number, maxLength: number | undefined, maxLengthBehavior: MaxLengthBehaviorPropType): void {
+	private doUpdateAria(currentLength: number, maxLength: number | undefined, maxLengthBehavior: MaxLengthBehaviorPropType, forceReannounce = false): void {
 		if (!this.ariaSpan) return;
 		const ariaText = getCounterAriaText(maxLengthBehavior, maxLength, currentLength);
 		const maxText = getCounterMaxText(maxLengthBehavior, maxLength, currentLength);
-		this.ariaSpan.innerText = [ariaText, maxText].filter(Boolean).join(' ');
+		let text = [ariaText, maxText].filter(Boolean).join(' ');
+
+		if (forceReannounce) {
+			// `aria-live` kündigt nur an, wenn sich der Inhalt gegenüber dem zuletzt vorgelesenen Text ändert.
+			// Bei wiederholten Eingabeversuchen ist der Text identisch, sodass ein bloßes Neu-Setzen (auch nach
+			// vorherigem Leeren) von Screenreadern nicht erneut vorgelesen wird. Daher wird abwechselnd ein
+			// nicht sichtbares NBSP angehängt, damit sich der Textinhalt tatsächlich ändert und die Meldung
+			// erneut angekündigt wird.
+			this.reannounceToggle = !this.reannounceToggle;
+			if (this.reannounceToggle) {
+				text += REANNOUNCE_MARKER;
+			}
+		}
+
+		this.ariaSpan.innerText = text;
 	}
 
 	/** Sofortiges Update des visuellen Spans, entprelltes Update des Aria-Spans (1 s). */
@@ -69,14 +87,13 @@ export class CounterDomUpdater {
 	};
 
 	/**
-	 * Erzwingt eine erneute Ankündigung der Live-Region. Der Inhalt wird zunächst geleert, damit der
-	 * identische Text nach dem Debounce als Änderung erkannt und vom Screenreader erneut vorgelesen wird.
+	 * Erzwingt – entprellt – eine erneute Ankündigung der Live-Region. `doUpdateAria` hängt dazu abwechselnd
+	 * ein nicht sichtbares NBSP an, sodass der Screenreader die identische Meldung als Änderung erkennt.
 	 */
 	private retriggerAria(currentLength: number, maxLength: number | undefined, maxLengthBehavior: MaxLengthBehaviorPropType): void {
 		if (!this.ariaSpan) return;
-		this.ariaSpan.innerText = '';
 		clearTimeout(this.debounceTimer);
-		this.debounceTimer = setTimeout(() => this.doUpdateAria(currentLength, maxLength, maxLengthBehavior), 1000);
+		this.debounceTimer = setTimeout(() => this.doUpdateAria(currentLength, maxLength, maxLengthBehavior, true), 1000);
 	}
 
 	destroy(): void {

@@ -104,9 +104,14 @@ Host-Komponente einen **`keydown`-Event-Listener**, der die Live-Region in diese
 - Es werden ausschließlich **Eingabeversuche** berücksichtigt, d. h. druckbare Einzelzeichen
   (`event.key.length === 1` ohne `Strg`/`Meta`/`Alt`). Steuertasten (Pfeiltasten, `Tab`, `Backspace`, …)
   lösen **keine** erneute Ankündigung aus.
-- Um eine erneute Ankündigung trotz **identischen** Textes zu erzwingen, wird Span 2 zunächst geleert
-  (`innerText = ''`) und der vollständige Text inkl. _„Zeichenlimit erreicht!"_ nach dem Debounce erneut
-  gesetzt. Die Änderung leer → Text wird von `aria-live="polite"` als neue Ankündigung erkannt.
+- Um eine erneute Ankündigung trotz **identischen** Textes zu erzwingen, reicht ein bloßes Leeren und
+  Neu-Setzen von Span 2 **nicht** aus: `aria-live` vergleicht gegen den zuletzt vorgelesenen Text, sodass
+  ein unveränderter Text (auch nach einem zwischenzeitlichen Leeren) von vielen Screenreadern **nicht**
+  erneut angekündigt wird. Stattdessen wird an den vollständigen Text inkl. _„Zeichenlimit erreicht!"_
+  **abwechselnd** ein nicht sichtbares geschütztes Leerzeichen (NBSP, ` `) angehängt. Dadurch
+  unterscheidet sich der Textinhalt bei jedem Eingabeversuch tatsächlich vom vorherigen Stand und
+  `aria-live="polite"` erkennt die Änderung als neue Ankündigung. Das NBSP ist optisch und akustisch
+  unauffällig (kein zusätzlich vorgelesenes Zeichen).
 - Das Debouncing fasst schnelle Tastenanschläge zusammen: Erst nach 1 s ohne weiteren Eingabeversuch
   wird die Meldung erneut vorgelesen.
 - Der visuelle Zähler (Span 1) und der Input-`_value` bleiben unberührt.
@@ -129,9 +134,9 @@ input-Event
 
 keydown-Event (nur hard + _maxLength + currentLength ≥ _maxLength + druckbares Zeichen)
   │
-  └─► spanAria.innerText = ''   (leeren, erzwingt erneute Ankündigung des identischen Textes)
-      Debounce (1 s): spanAria.innerText = getCounterAriaText(currentLength)
+  └─► Debounce (1 s): spanAria.innerText = getCounterAriaText(currentLength)
                                            + getCounterMaxText(currentLength)
+                                           + abwechselnd NBSP (erzwingt erneute Ankündigung)
 ```
 
 ### Refs
@@ -161,8 +166,8 @@ private updateCounterSpanAria(currentLength: number): void {
 }
 ```
 
-Der `keydown`-Listener nutzt denselben Timer und leert Span 2 vor dem erneuten Setzen, damit der
-identische Text als Änderung erkannt wird:
+Der `keydown`-Listener nutzt denselben Timer und hängt beim erneuten Setzen abwechselnd ein nicht
+sichtbares NBSP an, damit der identische Text als Änderung erkannt wird (ein bloßes Leeren genügt nicht):
 
 ```ts
 private handleCounterKeyDown(event: KeyboardEvent, currentLength: number): void {
@@ -170,8 +175,8 @@ private handleCounterKeyDown(event: KeyboardEvent, currentLength: number): void 
     const isCharacterInput = event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey;
     if (!isAtHardLimit || !isCharacterInput || !this.counterSpanAriaRef) return;
 
-    this.counterSpanAriaRef.innerText = ''; // erzwingt erneute Ankündigung
-    this.updateCounterSpanAria(currentLength);
+    // entprellt erneut setzen; getCounterAriaText hängt abwechselnd ein NBSP an → erzwingt Ankündigung
+    this.updateCounterSpanAria(currentLength, /* forceReannounce */ true);
 }
 ```
 
