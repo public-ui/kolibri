@@ -1,0 +1,1 @@
+import{Tt as e,W as t}from"./index-CDUDeEK0.js";var n=(n,r)=>{e(n,`_disabled`,r,{hooks:{afterPatch:e=>{e===!0&&t()}}})};export{n as t};

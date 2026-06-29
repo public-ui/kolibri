@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-CDUDeEK0.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
