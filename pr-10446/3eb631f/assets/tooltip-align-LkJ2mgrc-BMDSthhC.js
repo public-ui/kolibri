@@ -1,1 +1,0 @@
-import"./index-LdNSPsPU.js";import{r as e}from"./align-BdqBkiyq-D4ROg2db.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
