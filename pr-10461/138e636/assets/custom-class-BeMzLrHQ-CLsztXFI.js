@@ -1,0 +1,1 @@
+import{jt as e}from"./index-0K5lheJ5.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
