@@ -1,1 +1,0 @@
-import{At as e}from"./index-Cc1kdgI6.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
