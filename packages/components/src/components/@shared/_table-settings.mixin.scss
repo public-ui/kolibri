@@ -17,18 +17,18 @@
 		}
 
 		&__columns {
+			display: grid;
 			max-height: to-rem(200);
 			overflow: auto;
-			display: grid;
 			grid-auto-rows: min-content;
 			grid-template-columns: min-content minmax(max-content, 1fr) to-rem(140) auto auto;
 		}
 
 		&__column {
 			display: grid;
+			align-items: center;
 			grid-template-columns: subgrid;
 			grid-column: 1 / 6;
-			align-items: center;
 		}
 	}
 }

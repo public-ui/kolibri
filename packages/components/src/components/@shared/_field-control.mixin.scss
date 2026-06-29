@@ -44,12 +44,12 @@
 			grid-area: label;
 
 			&--visually-hidden {
+				display: none;
 				height: 0;
 				margin: 0;
 				padding: 0;
 
 				visibility: hidden;
-				display: none;
 			}
 
 			&-text {
