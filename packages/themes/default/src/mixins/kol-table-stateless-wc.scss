@@ -89,8 +89,9 @@
 			}
 
 			&--header {
-				background-color: var(--color-primary);
 				color: var(--color-light);
+				background-color: var(--color-primary);
+
 				font-weight: normal;
 
 				.kol-button {

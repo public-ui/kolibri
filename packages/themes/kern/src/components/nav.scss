@@ -15,8 +15,8 @@
 		&__entry {
 			.kol-link__anchor,
 			.kol-button__button {
-				display: flex;
 				border-radius: var(--kern-metric-border-radius-default);
+				display: flex;
 				width: 100%;
 				min-width: var(--a11y-min-size);
 				min-height: var(--a11y-min-size);
@@ -24,8 +24,9 @@
 				padding-right: var(--kol-nav-list-item-padding);
 				padding-left: to-rem(var(--kol-nav-item-padding-left));
 				align-items: center;
-				text-align: left;
+
 				text-decoration: none;
+				text-align: left;
 
 				&:hover {
 					background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);

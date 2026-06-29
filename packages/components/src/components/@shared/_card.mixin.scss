@@ -14,13 +14,13 @@
 		display: grid;
 		height: 100%;
 		overflow: visible;
+		align-items: baseline;
 
 		grid-template-areas:
 			'header  close'
 			'content content';
 		grid-template-columns: 1fr min-content;
 		grid-template-rows: min-content 1fr;
-		align-items: baseline;
 
 		&__header {
 			align-self: start;

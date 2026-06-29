@@ -22,14 +22,14 @@
 
 		&__button,
 		&__anchor {
-			min-height: var(--a11y-min-size);
 			color: inherit;
 			display: flex;
+			min-height: var(--a11y-min-size);
 			flex: 1;
+			align-items: stretch;
 			/* The user agent styles of <button> do not inherit font and color. */
 			font: inherit;
 			text-decoration-line: none;
-			align-items: stretch;
 		}
 
 		&__text {

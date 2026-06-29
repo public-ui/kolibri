@@ -30,9 +30,9 @@
 				padding-left: to-rem(8);
 				gap: to-rem(8);
 				align-items: center;
-				text-align: left;
 
 				text-decoration: none;
+				text-align: left;
 
 				&:focus-visible {
 					outline: 2px solid var(--ecl-color-primary);
