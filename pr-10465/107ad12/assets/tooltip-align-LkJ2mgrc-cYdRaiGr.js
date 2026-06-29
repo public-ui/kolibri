@@ -1,0 +1,1 @@
+import"./index-COR3G_-f.js";import{r as e}from"./align-BdqBkiyq-CPtePtvD.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
