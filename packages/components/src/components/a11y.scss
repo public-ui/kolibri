@@ -8,8 +8,13 @@
 	:host {
 		/*
 		 * Minimum size of interactive elements.
+		 *
+		 * The `max(…, 44px)` floor guarantees the WCAG 2.5.5 (AAA) target size of 44px:
+		 * `to-rem(44)` runs the value through a `calc()` rem round-trip which can lose
+		 * sub-pixel precision and resolve to e.g. 43.99px depending on the browser's
+		 * rounding, dropping just below the required minimum.
 		 */
-		--a11y-min-size: #{to-rem(44)};
+		--a11y-min-size: max(#{to-rem(44)}, 44px);
 		/*
 		 * No element should be used without verifying the contrast ratio of its background and font colors.
 		 * By initially setting the background color to white and the font color to black,

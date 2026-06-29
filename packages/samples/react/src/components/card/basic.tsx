@@ -13,7 +13,7 @@ export const CardBasic: FC = () => (
 
 		<div className="w-full grid grid-cols-2 gap-4">
 			<KolCard _label="Card with title and content">
-				<div>Card contents.</div>
+				<p>Card contents.</p>
 			</KolCard>
 
 			<KolCard _label="Card with closer" _hasCloser>

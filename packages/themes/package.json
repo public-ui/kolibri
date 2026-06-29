@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "4.3.0-rc.1",
+	"version": "4.3.0-rc.2",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -15,7 +15,8 @@
 		"name": "Informationstechnikzentrum Bund",
 		"email": "kolibri@itzbund.de"
 	},
-	"description": "Contains the style guides and themes of various corporate designs for KoliBri - The accessible HTML-Standard.",
+	"description": "[DEPRECATED] Meta package that bundles all KoliBri themes. Deprecated in favor of the individual @public-ui/theme-* packages and scheduled for removal in version 5. See docs/BREAKING_CHANGES.v5.md for migration instructions.",
+	"deprecated": "@public-ui/themes is deprecated and will be removed in version 5. Depend on the individual @public-ui/theme-* packages instead (e.g. @public-ui/theme-default). See https://github.com/public-ui/kolibri/blob/develop/docs/BREAKING_CHANGES.v5.md",
 	"keywords": [
 		"accessibility",
 		"accessible",

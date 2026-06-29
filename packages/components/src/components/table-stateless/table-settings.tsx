@@ -90,7 +90,11 @@ export class KolTableSettings {
 	}
 
 	private handleWidthChange(key: string, width: unknown): void {
-		const row = this.getPrimaryRow().map((col) => (col.key === key && col.resizable !== false ? { ...col, width: Number(width) } : col));
+		// Clearing/invalid input must not collapse the column: parseColumnWidth maps
+		// non-positive or non-finite values (e.g. an emptied field => 0) back to undefined,
+		// which renders as an auto-width column instead of a 0px/1px sliver.
+		const parsedWidth = parseColumnWidth(Number(width));
+		const row = this.getPrimaryRow().map((col) => (col.key === key && col.resizable !== false ? { ...col, width: parsedWidth } : col));
 		this.updatePrimaryRow(row);
 	}
 

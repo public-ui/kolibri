@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/presentation",
-	"version": "4.3.0-rc.1",
+	"version": "4.3.0-rc.2",
 	"description": "This package contains presentation samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -15,23 +15,29 @@
 		"lint:eslint": "eslint src",
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
-		"prebuild": "kolibri-copy-assets --dest public/assets @public-ui/components @public-ui/themes",
+		"prebuild": "kolibri-copy-assets --dest public/assets @public-ui/components @public-ui/theme-bwst @public-ui/theme-default @public-ui/theme-desy @public-ui/theme-ecl @public-ui/theme-kern",
 		"prepare": "pnpm prebuild",
 		"serve": "vite",
 		"start": "vite --open",
+		"test:e2e": "playwright test",
 		"unused": "knip"
 	},
 	"dependencies": {
 		"@public-ui/components": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
 		"@public-ui/sample-react": "workspace:*",
-		"@public-ui/themes": "workspace:*",
+		"@public-ui/theme-bwst": "workspace:*",
+		"@public-ui/theme-default": "workspace:*",
+		"@public-ui/theme-desy": "workspace:*",
+		"@public-ui/theme-ecl": "workspace:*",
+		"@public-ui/theme-kern": "workspace:*",
 		"adopted-style-sheets": "1.1.9-rc.22",
 		"react": "19.2.7",
 		"react-dom": "19.2.7",
 		"react-router-dom": "7.17.0"
 	},
 	"devDependencies": {
+		"@playwright/test": "1.60.0",
 		"@public-ui/eslint-config": "workspace:*",
 		"@types/node": "25.9.3",
 		"@types/react": "19.2.17",

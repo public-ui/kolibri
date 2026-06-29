@@ -5,11 +5,7 @@ import { HashRouter as Router } from 'react-router-dom';
 
 import { bootstrap, getDefaultThemeName, KoliBriDevHelper } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
-import { BWSt, DEFAULT, DesyV11, ECL_EC, ECL_EU, KERN_V2 } from '@public-ui/themes';
-import { setCustomThemes } from './shares/store';
-
-import { App } from './App';
-import { sampleAppDataService } from './shares/sampleAppDataService';
+import { App, setCustomThemes } from '@public-ui/sample-react';
 
 import type { Generic } from 'adopted-style-sheets';
 
@@ -29,31 +25,28 @@ if (ENABLE_TAG_NAME_TRANSFORMER) {
 	setTagNameTransformer(tagNameTransformer);
 }
 
-const getThemes = async () => {
-	if (process.env.THEME_MODULE) {
-		/* Visual regression testing mode: Themes are overridden with a certain theme module, that should be used instead. */
-		if (process.env.PLATFORM === 'win32') {
-			/* Add leading slash, required for ESBuild on Windows.
-			   Note: process.env.THEME_MODULE must be used literally in the import(). Moving it to a constant breaks the import. */
-			process.env.THEME_MODULE = `/${process.env.THEME_MODULE}`;
-		}
-		const { [(process.env.THEME_EXPORT as string) || 'default']: theme } = (await import(/* @vite-ignore */ process.env.THEME_MODULE)) as Record<string, Theme>;
-		return [theme];
+/* Visual regression testing host: the theme is always injected via the THEME_MODULE that the
+   theme package provides (see the `kolibri-visual-test` invocation in each theme's `test` script).
+   This app intentionally never imports a theme package itself – that is what breaks the former
+   circular dependency between the themes, the visual-tests runner and the sample app. */
+const getThemes = async (): Promise<Theme[]> => {
+	if (!process.env.THEME_MODULE) {
+		throw new Error('Environment variable THEME_MODULE not specified. The visual-tests app must be started via "kolibri-visual-test".');
 	}
-
-	/* List of regular sample app themes */
-	return [DEFAULT, BWSt, ECL_EC, ECL_EU, KERN_V2, DesyV11] as Theme[];
+	/* The theme under test is bundled at build time through the "@kolibri-vt/theme" alias (see
+	   vite.config.ts), which resolves to the THEME_MODULE path. The theme module depends on
+	   @public-ui/components, so it must be bundled – a runtime import of the absolute filesystem path
+	   would only resolve in the Vite dev server, not in the statically served production build. */
+	const themeModule = (await import('@kolibri-vt/theme')) as Record<string, Theme>;
+	return [themeModule[(process.env.THEME_EXPORT as string) || 'default']];
 };
 
 void (async () => {
-	const sampleAppDataInitialization = sampleAppDataService.initialize();
-
 	try {
 		await bootstrap(
 			await getThemes(),
 			() => {
 				// @see https://github.com/ionic-team/stencil/issues/2847
-
 				defineCustomElements(window, {
 					transformTagName: ENABLE_TAG_NAME_TRANSFORMER ? tagNameTransformer : undefined,
 				} as any);
@@ -61,11 +54,13 @@ void (async () => {
 			{
 				environment: process.env.NODE_ENV === 'development' ? 'development' : 'production',
 				reflectInputValues: true,
-				theme: process.env.THEME_MODULE
-					? undefined
-					: {
-							detect: 'auto',
-						},
+				// Feature flags declared by a theme (KoliBri.createTheme's third argument) are stored per
+				// theme. Each component resolves the flag for its active theme (nearest data-theme ancestor
+				// / fixed default), so different themes can differ on the same page. Pass `features` here
+				// only to force a global app-level override that wins over every theme:
+				// features: { inputNumberButtons: 'show' },
+				/* The theme is injected via THEME_MODULE, so auto-detection must stay disabled. */
+				theme: undefined,
 				translation: {
 					name: 'en',
 				},
@@ -118,28 +113,11 @@ void (async () => {
 		console.warn('Theme registration failed:', error);
 	}
 
-	/* In visual regression testing mode, derive the theme key from the actually registered
-	   default theme name so it matches the inject-variants JSON file exactly. */
-	const defaultThemeName = process.env.THEME_MODULE ? getDefaultThemeName() : null;
+	/* Derive the theme key from the actually registered default theme name so it matches the
+	   inject-variants JSON file exactly and the variant samples render the injected theme. */
+	const defaultThemeName = getDefaultThemeName();
 	const customThemes = defaultThemeName ? [{ key: defaultThemeName, name: defaultThemeName }] : undefined;
 	setCustomThemes(customThemes);
-
-	/**
-	 * You should patch the theme after the components and your default theme are registered.
-	 **
-	 * ↓ That is a tiny sample!
-	 */
-	// KoliBriDevHelper.patchTheme(
-	// 	'default',
-	// 	{
-	// 		'KOL-BUTTON': 'button{border:2px solid red;}',
-	// 	},
-	// 	{
-	// 		append: true,
-	// 	},
-	// );
-
-	await sampleAppDataInitialization;
 
 	const htmlDivElement = document.querySelector('div#app');
 	if (htmlDivElement instanceof HTMLDivElement) {
