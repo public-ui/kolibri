@@ -1,0 +1,1 @@
+import{c as e,r as t}from"./normalizers-BZrXYlGW-Fy82_0aI.js";var n=t(`label`,``,e);export{n as t};
