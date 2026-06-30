@@ -10,36 +10,43 @@
 	.kol-toolbar {
 		background-color: var(--color-light);
 		border-radius: var(--border-radius);
-	}
 
-	.kol-link__text,
-	.kol-button__text {
-		border-radius: 0;
-
-		.kol-toolbar--orientation-horizontal & {
-			border-right: 0;
+		.kol-link__text,
+		.kol-button__text {
+			border-radius: var(--toolbar-border-radius, 0);
+			border-right-width: var(--toolbar-border-right-width, var(--border-width));
+			border-bottom-width: var(--toolbar-border-bottom-width, var(--border-width));
 		}
 
-		.kol-toolbar--orientation-vertical & {
-			border-bottom: 0;
+		&--orientation-horizontal {
+			--toolbar-border-right-width: 0;
+
+			.kol-toolbar__item:first-child {
+				--toolbar-border-radius: var(--border-radius) 0 0 var(--border-radius);
+			}
+
+			.kol-toolbar__item:last-child {
+				--toolbar-border-radius: 0 var(--border-radius) var(--border-radius) 0;
+				--toolbar-border-right-width: : var(--border-width);
+			}
 		}
 
-		.kol-toolbar--orientation-vertical .kol-toolbar__item:first-child & {
-			border-radius: var(--border-radius) var(--border-radius) 0 0;
-		}
+		&--orientation-vertical {
+			--toolbar-border-bottom-width: 0;
 
-		.kol-toolbar--orientation-horizontal .kol-toolbar__item:first-child & {
-			border-radius: var(--border-radius) 0 0 var(--border-radius);
-		}
+			.kol-span--hide-label {
+				padding: 0 0 0 to-rem(14);
+				align-items: flex-start;
+			}
 
-		.kol-toolbar--orientation-vertical .kol-toolbar__item:last-child & {
-			border-radius: 0 0 var(--border-radius) var(--border-radius);
-			border-bottom: var(--border-width) solid var(--text-border-color);
-		}
+			.kol-toolbar__item:first-child {
+				--toolbar-border-radius: var(--border-radius) var(--border-radius) 0 0;
+			}
 
-		.kol-toolbar--orientation-horizontal .kol-toolbar__item:last-child & {
-			border-radius: 0 var(--border-radius) var(--border-radius) 0;
-			border-right: var(--border-width) solid var(--text-border-color);
+			.kol-toolbar__item:last-child {
+				--toolbar-border-radius: 0 0 var(--border-radius) var(--border-radius);
+				--toolbar-border-bottom-width: : var(--border-width);
+			}
 		}
 	}
 }

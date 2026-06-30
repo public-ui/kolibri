@@ -70,9 +70,8 @@ export class KolToolbar implements FocusableElement, ToolbarAPI {
 
 		const props = {
 			key: index,
-			class: 'button normal kol-toolbar__item',
+			class: 'kol-toolbar__item',
 			_tabIndex: tabIndex,
-			_variant: 'normal',
 		};
 
 		if (element.type === 'link') {
@@ -81,7 +80,7 @@ export class KolToolbar implements FocusableElement, ToolbarAPI {
 			const linkCtrl = ctrl;
 			return (
 				<LinkFC
-					class={props.class}
+					class={props.class + ' kol-button--normal'}
 					href={linkCtrl.getRenderProp('href')}
 					label={linkCtrl.getRenderProp('label')}
 					icons={linkCtrl.getRenderProp('icons')}
@@ -120,7 +119,6 @@ export class KolToolbar implements FocusableElement, ToolbarAPI {
 		initButtonControllerFromProps(ctrl, {
 			...element,
 			_tabIndex: tabIndex,
-			_variant: 'normal',
 		});
 		return renderButtonFC(ctrl, {
 			class: props.class,
