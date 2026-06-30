@@ -4,7 +4,7 @@ exports[`kol-toolbar should render with _label="Label horizontal" _items=[{"type
 <kol-toolbar>
   <template shadowrootmode="open">
     <div aria-label="Label horizontal" class="kol-toolbar kol-toolbar--orientation-horizontal" role="toolbar">
-      <div class="button kol-button kol-button--normal kol-button--standalone kol-toolbar__item normal">
+      <div class="kol-button kol-button--normal kol-button--standalone kol-toolbar__item">
         <button class="kol-button__button" type="button">
           <span class="kol-button__text kol-span">
             <span class="kol-span__container">
@@ -18,7 +18,7 @@ exports[`kol-toolbar should render with _label="Label horizontal" _items=[{"type
           </span>
         </button>
       </div>
-      <div class="button kol-link kol-link--inline kol-toolbar__item normal">
+      <div class="kol-button--normal kol-link kol-link--inline kol-toolbar__item">
         <a class="kol-link__anchor" href="#" tabindex="-1">
           <span class="kol-link__text kol-span">
             <span class="kol-span__container">
@@ -41,7 +41,7 @@ exports[`kol-toolbar should render with _label="Label vertical" _items=[{"type":
 <kol-toolbar>
   <template shadowrootmode="open">
     <div aria-label="Label vertical" class="kol-toolbar kol-toolbar--orientation-vertical" role="toolbar">
-      <div class="button kol-button kol-button--normal kol-button--standalone kol-toolbar__item normal">
+      <div class="kol-button kol-button--normal kol-button--standalone kol-toolbar__item">
         <button class="kol-button__button" type="button">
           <span class="kol-button__text kol-span">
             <span class="kol-span__container">
@@ -55,7 +55,7 @@ exports[`kol-toolbar should render with _label="Label vertical" _items=[{"type":
           </span>
         </button>
       </div>
-      <div class="button kol-link kol-link--inline kol-toolbar__item normal">
+      <div class="kol-button--normal kol-link kol-link--inline kol-toolbar__item">
         <a class="kol-link__anchor" href="#" tabindex="-1">
           <span class="kol-link__text kol-span">
             <span class="kol-span__container">
