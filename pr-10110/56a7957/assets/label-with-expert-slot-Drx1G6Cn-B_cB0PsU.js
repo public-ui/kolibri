@@ -1,0 +1,1 @@
+import{c as e,r as t}from"./normalizers-BZrXYlGW-DLPC_Qmg.js";var n=t(`label`,``,e);export{n as t};
