@@ -2,19 +2,38 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
 import { translate } from '../../../i18n';
-import { showExpertSlot } from '../../../schema';
+import { AlignPropType, AriaCurrentValuePropType, IconsPropType, LabelWithExpertSlotPropType, showExpertSlot } from '../../../schema';
 import clsx from '../../../utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
-import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
 import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
-import type { LinkApi } from './api';
 
-type LinkFCProps = FunctionalComponentProps<LinkApi> & {
-	onAnchorClick: (event: MouseEvent | KeyboardEvent) => void;
-	tooltipId: string;
-	refTooltipFloating: (el?: HTMLElement) => void;
+export type LinkFCProps = {
+	href: string;
+	accessKey?: string;
+	ariaControls?: string;
+	ariaCurrent?: AriaCurrentValuePropType;
+	ariaDescription?: string;
+	ariaExpanded?: boolean | string;
+	ariaOwns?: string;
+	class?: string;
+	disabled?: boolean;
+	download?: string;
+	hideLabel?: boolean;
+	icons?: IconsPropType;
+	inline?: boolean;
+	label?: LabelWithExpertSlotPropType | boolean;
+	role?: string;
+	shortKey?: string;
+	tabIndex?: number;
+	target?: string;
+	variant?: string;
+	refAnchor?: (elm?: HTMLAnchorElement) => void;
+	onAnchorClick?: (event: MouseEvent | KeyboardEvent) => void;
+	tooltipId?: string;
+	tooltipAlign?: AlignPropType;
+	refTooltipFloating: (el?: HTMLDivElement) => void;
 };
 
 export const LinkFC: FC<LinkFCProps> = (props, children) => {
@@ -26,7 +45,6 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 		ariaDescription,
 		ariaExpanded,
 		ariaOwns,
-		customClass,
 		disabled,
 		download,
 		hideLabel,
@@ -44,10 +62,11 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 		refTooltipFloating,
 		refAnchor,
 		class: hostClass,
+		//tooltipAlign,
 	} = props;
 
 	const isExternal = typeof target === 'string' && target.length > 0 && target !== '_self';
-	const hasExpertSlot = showExpertSlot(label) || label === false;
+	const hasExpertSlot = showExpertSlot(label);
 	const resolvedHref = typeof href === 'string' && href.length > 0 ? href : 'javascript:void(0);';
 	const translateOpenLinkInTab = translate('kol-open-link-in-tab');
 
@@ -60,7 +79,6 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 		<BemRootNodeFC
 			block="kol-link"
 			class={clsx(hostClass, {
-				[customClass]: variant === 'custom' && customClass !== '',
 				[`kol-link--${variant}`]: variant !== '',
 			})}
 			modifiers={{

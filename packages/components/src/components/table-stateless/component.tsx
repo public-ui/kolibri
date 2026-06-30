@@ -966,14 +966,12 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						const linkCtrl = ctrl;
 						return (
 							<LinkFC
-								key={`action-${key}-${actionIndex}`}
 								href={linkCtrl.getRenderProp('href')}
 								label={linkCtrl.getRenderProp('label')}
 								icons={linkCtrl.getRenderProp('icons')}
 								hideLabel={linkCtrl.getRenderProp('hideLabel')}
 								target={linkCtrl.getRenderProp('target')}
 								download={linkCtrl.getRenderProp('download')}
-								on={linkCtrl.getRenderProp('on')}
 								inline={linkCtrl.getRenderProp('inline')}
 								disabled={linkCtrl.getRenderProp('disabled')}
 								role={linkCtrl.getRenderProp('role')}
@@ -982,13 +980,10 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 								shortKey={linkCtrl.getRenderProp('shortKey')}
 								tooltipAlign={linkCtrl.getRenderProp('tooltipAlign')}
 								ariaControls={linkCtrl.getRenderProp('ariaControls')}
-								ariaCurrentValue={linkCtrl.getRenderProp('ariaCurrentValue')}
 								ariaDescription={linkCtrl.getRenderProp('ariaDescription')}
 								ariaExpanded={linkCtrl.getRenderProp('ariaExpanded')}
 								ariaOwns={linkCtrl.getRenderProp('ariaOwns')}
-								customClass={linkCtrl.getRenderProp('customClass')}
 								variant={linkCtrl.getRenderProp('variant')}
-								ariaCurrent={linkCtrl.getAriaCurrent()}
 								onAnchorClick={linkCtrl.handleAnchorClick}
 								tooltipId={linkCtrl.getTooltipId()}
 								refTooltipFloating={linkCtrl.setTooltipRef}

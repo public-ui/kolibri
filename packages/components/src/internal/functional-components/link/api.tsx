@@ -1,3 +1,4 @@
+import { LinkProps } from '../../../schema';
 import {
 	accessKeyProp,
 	ariaControlsProp,
@@ -23,6 +24,7 @@ import {
 	variantProp,
 } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
+import { LinkFCProps } from './component';
 
 export const linkPropsConfig = {
 	required: [hrefProp],
@@ -117,3 +119,25 @@ export type LinkButtonApi = ApiFromConfig<
 		};
 	}
 >;
+
+export function matchLinkPropsToLinkFCProps(element: LinkProps): LinkFCProps {
+	return {
+		accessKey: element._accessKey,
+		ariaControls: element._ariaControls,
+		ariaCurrent: element._ariaCurrentValue,
+		ariaDescription: element._ariaDescription,
+		disabled: element._disabled,
+		download: element._download,
+		hideLabel: element._hideLabel,
+		href: element._href,
+		icons: element._icons,
+		inline: element._inline,
+		label: element._label,
+		//on: element._on,
+		role: element._role,
+		shortKey: element._shortKey,
+		target: element._target,
+		tabIndex: element._tabIndex,
+		tooltipAlign: element._tooltipAlign,
+	} as LinkFCProps;
+}

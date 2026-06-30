@@ -19,8 +19,8 @@ import { nonce } from '../../utils/dev.utils';
 export class KolTreeItemWc implements TreeItemAPI {
 	@Element() private readonly host?: HTMLKolTreeItemWcElement;
 
-	@State() private ariaCurrent: string = '';
-	private readonly linkCtrl = new LinkController(createLinkStateAccess(() => (this.ariaCurrent = this.linkCtrl.getAriaCurrent())));
+	// @State() private ariaCurrent: string = '';
+	private readonly linkCtrl = new LinkController(createLinkStateAccess());
 	private groupId = `tree-group-${nonce()}`;
 
 	@State() private level?: number;
@@ -42,12 +42,9 @@ export class KolTreeItemWc implements TreeItemAPI {
 						})}
 						accessKey={this.linkCtrl.getRenderProp('accessKey')}
 						ariaControls={this.linkCtrl.getRenderProp('ariaControls')}
-						ariaCurrent={this.ariaCurrent}
-						ariaCurrentValue={this.linkCtrl.getRenderProp('ariaCurrentValue')}
 						ariaDescription={this.linkCtrl.getRenderProp('ariaDescription')}
 						ariaExpanded={_hasChildren ? (_open ? 'true' : 'false') : ''}
 						ariaOwns={_hasChildren ? this.groupId : ''}
-						customClass={this.linkCtrl.getRenderProp('customClass')}
 						disabled={this.linkCtrl.getRenderProp('disabled')}
 						download={this.linkCtrl.getRenderProp('download')}
 						hideLabel={this.linkCtrl.getRenderProp('hideLabel')}
@@ -55,7 +52,6 @@ export class KolTreeItemWc implements TreeItemAPI {
 						icons={this.linkCtrl.getRenderProp('icons')}
 						inline={this.linkCtrl.getRenderProp('inline')}
 						label=""
-						on={this.linkCtrl.getRenderProp('on')}
 						role="treeitem"
 						shortKey={this.linkCtrl.getRenderProp('shortKey')}
 						tabIndex={_active ? 0 : -1}

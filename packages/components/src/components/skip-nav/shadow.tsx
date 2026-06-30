@@ -39,12 +39,9 @@ export class KolSkipNav implements FocusableElement, SkipNavAPI {
 									<LinkFC
 										accessKey={ctrl.getRenderProp('accessKey')}
 										ariaControls={ctrl.getRenderProp('ariaControls')}
-										ariaCurrent={ctrl.getAriaCurrent()}
-										ariaCurrentValue={ctrl.getRenderProp('ariaCurrentValue')}
 										ariaDescription={ctrl.getRenderProp('ariaDescription')}
 										ariaExpanded={ctrl.getRenderProp('ariaExpanded')}
 										ariaOwns={ctrl.getRenderProp('ariaOwns')}
-										customClass={ctrl.getRenderProp('customClass')}
 										disabled={ctrl.getRenderProp('disabled')}
 										download={ctrl.getRenderProp('download')}
 										hideLabel={ctrl.getRenderProp('hideLabel')}
@@ -52,7 +49,6 @@ export class KolSkipNav implements FocusableElement, SkipNavAPI {
 										icons={ctrl.getRenderProp('icons')}
 										inline={ctrl.getRenderProp('inline')}
 										label={ctrl.getRenderProp('label')}
-										on={ctrl.getRenderProp('on')}
 										role={ctrl.getRenderProp('role')}
 										shortKey={ctrl.getRenderProp('shortKey')}
 										tabIndex={ctrl.getRenderProp('tabIndex')}

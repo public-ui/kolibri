@@ -193,7 +193,6 @@ export class KolNav implements NavAPI {
 									hideLabel={ctrl.getRenderProp('hideLabel')}
 									target={ctrl.getRenderProp('target')}
 									download={ctrl.getRenderProp('download')}
-									on={ctrl.getRenderProp('on')}
 									inline={ctrl.getRenderProp('inline')}
 									disabled={ctrl.getRenderProp('disabled')}
 									role={ctrl.getRenderProp('role')}
@@ -202,13 +201,10 @@ export class KolNav implements NavAPI {
 									shortKey={ctrl.getRenderProp('shortKey')}
 									tooltipAlign={ctrl.getRenderProp('tooltipAlign')}
 									ariaControls={collapsible && hasChildren && expanded ? ariaID : ctrl.getRenderProp('ariaControls')}
-									ariaCurrentValue={ctrl.getRenderProp('ariaCurrentValue')}
 									ariaDescription={ctrl.getRenderProp('ariaDescription')}
 									ariaExpanded={collapsible && hasChildren ? String(expanded) : ctrl.getRenderProp('ariaExpanded')}
 									ariaOwns={ctrl.getRenderProp('ariaOwns')}
-									customClass={ctrl.getRenderProp('customClass')}
 									variant={ctrl.getRenderProp('variant')}
-									ariaCurrent={ctrl.getAriaCurrent()}
 									onAnchorClick={ctrl.handleAnchorClick}
 									tooltipId={ctrl.getTooltipId()}
 									refTooltipFloating={ctrl.setTooltipRef}

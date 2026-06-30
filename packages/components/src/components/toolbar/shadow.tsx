@@ -1,12 +1,18 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, Fragment, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { ButtonController, initButtonControllerFromProps } from '../../internal/functional-components/button/controller';
-import { renderButtonFC } from '../../internal/functional-components/button/render';
+import { matchLinkPropsToLinkFCProps } from '../../internal/functional-components/link/api';
 import { LinkFC } from '../../internal/functional-components/link/component';
-import { createLinkStateAccess, initLinkControllerFromProps, LinkController } from '../../internal/functional-components/link/controller';
-import type { FocusableElement, KolFocusOptions, LabelPropType, ToolbarAPI, ToolbarItemPropType, ToolbarItemsPropType, ToolbarStates } from '../../schema';
+import type {
+	ClickableElement,
+	FocusableElement,
+	KolFocusOptions,
+	LabelPropType,
+	ToolbarAPI,
+	ToolbarItemPropType,
+	ToolbarItemsPropType,
+	ToolbarStates,
+} from '../../schema';
 import { validateLabel, validateToolbarItems } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
@@ -21,7 +27,7 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 	},
 	shadow: true,
 })
-export class KolToolbar implements FocusableElement, ToolbarAPI {
+export class KolToolbar implements ClickableElement, FocusableElement, ToolbarAPI {
 	@Element() private readonly host?: HTMLElement;
 
 	@State() public state: ToolbarStates = {
@@ -31,12 +37,7 @@ export class KolToolbar implements FocusableElement, ToolbarAPI {
 
 	@State() private currentIndex: number = 0;
 
-	private indexToElement = new Map<number, HTMLAnchorElement | HTMLButtonElement>();
-
-	@State() private _tick = 0;
-	private readonly forceRender = () => this._tick++;
-	private toolbarLinkCtrls = new Map<number, LinkController>();
-	private toolbarButtonCtrls = new Map<number, ButtonController>();
+	private indexToElement = new Map<number, HTMLElement>();
 
 	/**
 	 * Sets focus on the currently active toolbar item.
@@ -68,64 +69,19 @@ export class KolToolbar implements FocusableElement, ToolbarAPI {
 		const element = this.normalizeItem(raw);
 		const tabIndex = index === this.currentIndex && !element?._disabled ? 0 : -1;
 
-		const props = {
-			key: index,
-			class: 'kol-toolbar__item',
-			_tabIndex: tabIndex,
+		const catchRef = (el?: HTMLElement) => {
+			if (el) this.indexToElement.set(index, el);
 		};
 
 		if (element.type === 'link') {
-			const ctrl = this.toolbarLinkCtrls.get(index);
-			if (!ctrl) return <></>;
-			const linkCtrl = ctrl;
-			return (
-				<LinkFC
-					class={props.class + ' kol-button--normal'}
-					href={linkCtrl.getRenderProp('href')}
-					label={linkCtrl.getRenderProp('label')}
-					icons={linkCtrl.getRenderProp('icons')}
-					hideLabel={linkCtrl.getRenderProp('hideLabel')}
-					target={linkCtrl.getRenderProp('target')}
-					download={linkCtrl.getRenderProp('download')}
-					on={linkCtrl.getRenderProp('on')}
-					inline={linkCtrl.getRenderProp('inline')}
-					disabled={linkCtrl.getRenderProp('disabled')}
-					role={linkCtrl.getRenderProp('role')}
-					tabIndex={tabIndex}
-					accessKey={linkCtrl.getRenderProp('accessKey')}
-					shortKey={linkCtrl.getRenderProp('shortKey')}
-					tooltipAlign={linkCtrl.getRenderProp('tooltipAlign')}
-					ariaControls={linkCtrl.getRenderProp('ariaControls')}
-					ariaCurrentValue={linkCtrl.getRenderProp('ariaCurrentValue')}
-					ariaDescription={linkCtrl.getRenderProp('ariaDescription')}
-					ariaExpanded={linkCtrl.getRenderProp('ariaExpanded')}
-					ariaOwns={linkCtrl.getRenderProp('ariaOwns')}
-					customClass={linkCtrl.getRenderProp('customClass')}
-					variant={linkCtrl.getRenderProp('variant')}
-					ariaCurrent={linkCtrl.getAriaCurrent()}
-					onAnchorClick={linkCtrl.handleAnchorClick}
-					tooltipId={linkCtrl.getTooltipId()}
-					refTooltipFloating={linkCtrl.setTooltipRef}
-					refAnchor={(el) => {
-						linkCtrl.setAnchorRef(el);
-						if (el) this.indexToElement.set(index, el);
-					}}
-				/>
-			);
+			const props = matchLinkPropsToLinkFCProps(element);
+			props.tabIndex = tabIndex;
+			props.class = 'kol-button--normal kol-toolbar__item';
+
+			return <LinkFC {...props} refAnchor={catchRef}></LinkFC>;
 		}
 
-		const ctrl = this.toolbarButtonCtrls.get(index);
-		if (!ctrl) return <></>;
-		initButtonControllerFromProps(ctrl, {
-			...element,
-			_tabIndex: tabIndex,
-		});
-		return renderButtonFC(ctrl, {
-			class: props.class,
-			refButton: (el) => {
-				if (el) this.indexToElement.set(index, el);
-			},
-		});
+		return '';
 	};
 
 	public render(): JSX.Element {
@@ -159,19 +115,6 @@ export class KolToolbar implements FocusableElement, ToolbarAPI {
 	public validateItems(value?: ToolbarItemsPropType): void {
 		validateToolbarItems(this, value);
 		this.indexToElement.clear();
-		for (const ctrl of this.toolbarLinkCtrls.values()) ctrl.destroy();
-		this.toolbarLinkCtrls.clear();
-		for (const ctrl of this.toolbarButtonCtrls.values()) ctrl.destroy();
-		this.toolbarButtonCtrls.clear();
-		this.state._items.forEach((item, index) => {
-			if (item.type === 'link') {
-				const ctrl = new LinkController(createLinkStateAccess(this.forceRender));
-				initLinkControllerFromProps(ctrl, item as { _href: string } & Partial<Record<string, unknown>>);
-				this.toolbarLinkCtrls.set(index, ctrl);
-			} else {
-				this.toolbarButtonCtrls.set(index, new ButtonController(BaseWebComponent.stateLess));
-			}
-		});
 		this.setFirstEnabledItemIndex();
 	}
 
@@ -186,7 +129,7 @@ export class KolToolbar implements FocusableElement, ToolbarAPI {
 	 *
 	 * @returns An array of HTMLElements representing the toolbar items.
 	 */
-	private getCurrentToolbarItem(index?: number): HTMLAnchorElement | HTMLButtonElement | undefined {
+	private getCurrentToolbarItem(index?: number): HTMLElement | undefined {
 		return typeof index === 'number' ? this.indexToElement.get(index) : undefined;
 	}
 
@@ -248,10 +191,5 @@ export class KolToolbar implements FocusableElement, ToolbarAPI {
 		this.validateItems(this._items);
 		this.validateOrientation(this._orientation);
 		this.setFirstEnabledItemIndex();
-	}
-
-	public disconnectedCallback(): void {
-		for (const ctrl of this.toolbarLinkCtrls.values()) ctrl.destroy();
-		this.toolbarLinkCtrls.clear();
 	}
 }

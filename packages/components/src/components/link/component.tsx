@@ -75,12 +75,9 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 				<LinkFC
 					accessKey={this.ctrl.getRenderProp('accessKey')}
 					ariaControls={this.ctrl.getRenderProp('ariaControls')}
-					ariaCurrent={this.ariaCurrent}
-					ariaCurrentValue={this.ctrl.getRenderProp('ariaCurrentValue')}
 					ariaDescription={this.ctrl.getRenderProp('ariaDescription')}
 					ariaExpanded={this.ctrl.getRenderProp('ariaExpanded')}
 					ariaOwns={this.ctrl.getRenderProp('ariaOwns')}
-					customClass={this.ctrl.getRenderProp('customClass')}
 					disabled={this.ctrl.getRenderProp('disabled')}
 					download={this.ctrl.getRenderProp('download')}
 					hideLabel={this.ctrl.getRenderProp('hideLabel')}
@@ -88,7 +85,6 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 					icons={this.ctrl.getRenderProp('icons')}
 					inline={this.ctrl.getRenderProp('inline')}
 					label={this.ctrl.getRenderProp('label')}
-					on={this.ctrl.getRenderProp('on')}
 					role={this.ctrl.getRenderProp('role')}
 					shortKey={this.ctrl.getRenderProp('shortKey')}
 					tabIndex={this.ctrl.getRenderProp('tabIndex')}
