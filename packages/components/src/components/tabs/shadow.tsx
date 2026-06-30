@@ -431,7 +431,7 @@ export class KolTabs implements ClickableElement, FocusableElement, TabsAPI {
 			div.setAttribute('id', `tabpanel-${i}`);
 			div.setAttribute('role', 'tabpanel');
 			div.setAttribute('hidden', '');
-			div.setAttribute('tabindex', '0');
+			// div.setAttribute('tabindex', '0'); Panel soll nicht tabbar sein; siehe https://github.com/public-ui/kolibri/issues/10082
 			const slot = document.createElement('slot');
 			slot.setAttribute('name', `tabpanel-slot-${i}`);
 			div.appendChild(slot);

@@ -67,16 +67,16 @@ exports[`kol-tabs should render with _label="Text" _selected=1 _tabs=[{"_icons":
         </div>
       </div>
       <div class="kol-tabs__content">
-        <div aria-labelledby="Text-tab-0" hidden="" id="tabpanel-0" role="tabpanel" tabindex="0">
+        <div aria-labelledby="Text-tab-0" hidden="" id="tabpanel-0" role="tabpanel">
           <slot name="tabpanel-slot-0"></slot>
         </div>
-        <div aria-labelledby="Text-tab-1" id="tabpanel-1" role="tabpanel" tabindex="0">
+        <div aria-labelledby="Text-tab-1" id="tabpanel-1" role="tabpanel">
           <slot name="tabpanel-slot-1"></slot>
         </div>
-        <div aria-labelledby="Text-tab-2" hidden="" id="tabpanel-2" role="tabpanel" tabindex="0">
+        <div aria-labelledby="Text-tab-2" hidden="" id="tabpanel-2" role="tabpanel">
           <slot name="tabpanel-slot-2"></slot>
         </div>
-        <div aria-labelledby="Text-tab-3" hidden="" id="tabpanel-3" role="tabpanel" tabindex="0">
+        <div aria-labelledby="Text-tab-3" hidden="" id="tabpanel-3" role="tabpanel">
           <slot name="tabpanel-slot-3"></slot>
         </div>
       </div>
