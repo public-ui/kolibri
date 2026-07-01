@@ -124,7 +124,7 @@ export function matchLinkPropsToLinkFCProps(element: LinkProps): LinkFCProps {
 	return {
 		accessKey: element._accessKey,
 		ariaControls: element._ariaControls,
-		ariaCurrent: element._ariaCurrentValue,
+		ariaCurrentValue: element._ariaCurrentValue,
 		ariaDescription: element._ariaDescription,
 		disabled: element._disabled,
 		download: element._download,

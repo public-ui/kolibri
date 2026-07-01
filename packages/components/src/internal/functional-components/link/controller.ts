@@ -174,7 +174,7 @@ export class LinkController extends BaseController<LinkApi> {
 
 	public watchCustomClass(value?: string): void {
 		customClassProp.apply(value, (v) => {
-			this.setRenderProp('customClass', v);
+			this.setRenderProp('variant', v);
 		});
 	}
 

@@ -14,10 +14,12 @@ export type LinkFCProps = {
 	accessKey?: string;
 	ariaControls?: string;
 	ariaCurrent?: AriaCurrentValuePropType;
+	ariaCurrentValue?: AriaCurrentValuePropType;
 	ariaDescription?: string;
 	ariaExpanded?: boolean | string;
 	ariaOwns?: string;
 	class?: string;
+	customClass?: string;
 	disabled?: boolean;
 	download?: string;
 	hideLabel?: boolean;
@@ -57,12 +59,13 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 		tabIndex,
 		target,
 		variant,
+		customClass,
 		onAnchorClick,
 		tooltipId,
 		refTooltipFloating,
 		refAnchor,
 		class: hostClass,
-		//tooltipAlign,
+		tooltipAlign,
 	} = props;
 
 	const isExternal = typeof target === 'string' && target.length > 0 && target !== '_self';
@@ -80,6 +83,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 			block="kol-link"
 			class={clsx(hostClass, {
 				[`kol-link--${variant}`]: variant !== '',
+				[`kol-link--${customClass}`]: customClass !== '',
 			})}
 			modifiers={{
 				disabled,
@@ -107,7 +111,7 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 				class="kol-link__anchor"
 				onClick={onAnchorClick}
 				role={role || undefined}
-				tabIndex={disabled ? -1 : tabIndex === 0 ? undefined : tabIndex}
+				tabIndex={disabled ? -1 : tabIndex}
 			>
 				<SpanFC
 					class="kol-link__text"
@@ -122,7 +126,15 @@ export const LinkFC: FC<LinkFCProps> = (props, children) => {
 				</SpanFC>
 				{isExternal && <IconFC class="kol-link__icon" label={hideLabel ? '' : translateOpenLinkInTab} icons="kolicon-link-external" aria-hidden={hideLabel} />}
 			</a>
-			{hideLabel && !hasExpertSlot && <TooltipFC badgeText={tooltipBadgeText} label={tooltipLabel} id={tooltipId} refFloating={refTooltipFloating} />}
+			{hideLabel && !hasExpertSlot && (
+				<TooltipFC
+					badgeText={tooltipBadgeText}
+					label={tooltipLabel}
+					id={tooltipId}
+					refFloating={refTooltipFloating}
+					align={tooltipAlign ? tooltipAlign : 'right'}
+				/>
+			)}
 		</BemRootNodeFC>
 	);
 };
