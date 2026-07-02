@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-IhdJe_Lb.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};
