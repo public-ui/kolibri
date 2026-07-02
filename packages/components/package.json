@@ -134,7 +134,7 @@
 		"jest-cli": "29.7.0",
 		"knip": "6.16.1",
 		"mustache": "4.2.0",
-		"postcss": "8.5.15",
+		"postcss": "8.5.16",
 		"postcss-sorting": "10.0.0",
 		"prettier": "3.8.4",
 		"prettier-plugin-organize-imports": "4.3.0",
