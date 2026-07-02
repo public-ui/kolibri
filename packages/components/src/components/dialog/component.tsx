@@ -8,6 +8,7 @@ import { validateModalVariant } from '../../schema/props/variant/modal';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { lockScroll, unlockScroll } from '../../utils/scroll-lock';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 import { watchHeadingLevel } from '../heading/validation';
 
@@ -32,6 +33,7 @@ export class KolDialogWc implements DialogAPI {
 
 	public disconnectedCallback(): void {
 		void this.close();
+		unlockScroll(this);
 	}
 
 	private handleCancelEvent = (event: Event): void => {
@@ -52,6 +54,7 @@ export class KolDialogWc implements DialogAPI {
 		if (event.target !== this.refDialog) {
 			return;
 		}
+		unlockScroll(this);
 		if (typeof this.state._on?.onClose === 'function') {
 			this.state._on.onClose();
 		}
@@ -72,6 +75,9 @@ export class KolDialogWc implements DialogAPI {
 		this.isModal = modal;
 		if (modal) {
 			this.refDialog?.showModal?.();
+			if (this.refDialog) {
+				lockScroll(this);
+			}
 		} else {
 			this.refDialog?.show?.();
 		}

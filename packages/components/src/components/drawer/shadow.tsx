@@ -15,6 +15,7 @@ import { setState, validateAlign, validateHasCloser, validateLabel, validateOpen
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { lockScroll, unlockScroll } from '../../utils/scroll-lock';
 import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 import { watchHeadingLevel } from '../heading/validation';
 
@@ -52,6 +53,9 @@ export class KolDrawer implements DrawerAPI {
 		};
 		if (modal) {
 			this.dialogElement?.showModal?.();
+			if (this.dialogElement) {
+				lockScroll(this);
+			}
 		} else {
 			this.dialogElement?.show?.();
 		}
@@ -262,6 +266,7 @@ export class KolDrawer implements DrawerAPI {
 	}
 
 	private readonly handleClose = () => {
+		unlockScroll(this);
 		void (async () => {
 			await this.close();
 			this.handleCloseDialog();
@@ -283,6 +288,7 @@ export class KolDrawer implements DrawerAPI {
 	public disconnectedCallback(): void {
 		this.dialogElement?.removeEventListener('animationend', this.handleAnimationEnd);
 		this.dialogElement?.removeEventListener('close', this.handleClose);
+		unlockScroll(this);
 	}
 
 	public componentWillLoad() {

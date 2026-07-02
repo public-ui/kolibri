@@ -1,3 +1,4 @@
+import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
@@ -121,6 +122,60 @@ dialogTags.forEach((tag) => {
 				await page.keyboard.press('Escape');
 
 				await expect(eventPromise).resolves.toBeUndefined();
+			});
+		});
+
+		test.describe('scroll lock', () => {
+			const getDocumentOverflow = (page: Page) => page.evaluate(() => getComputedStyle(document.documentElement).overflow);
+
+			test('it locks the background scroll while open and unlocks it after closing', async ({ page }) => {
+				await page.setContent(`<div style="height: 200vh;"><${tag} _label="">Modal content</${tag}></div>`);
+				const dialogElement = page.locator(tag);
+
+				await dialogElement.evaluate((element) => (element as HTMLKolDialogElement).openModal());
+				await expect.poll(() => getDocumentOverflow(page)).toBe('hidden');
+
+				await dialogElement.evaluate((element) => (element as HTMLKolDialogElement).closeModal());
+				await expect.poll(() => getDocumentOverflow(page)).toBe('visible');
+			});
+
+			test('it unlocks the background scroll when the dialog closes natively', async ({ page }) => {
+				await page.setContent(`<div style="height: 200vh;"><${tag} _label="">Modal content</${tag}></div>`);
+				const dialogElement = page.locator(tag);
+
+				await dialogElement.evaluate((element) => (element as HTMLKolDialogElement).openModal());
+				await expect.poll(() => getDocumentOverflow(page)).toBe('hidden');
+
+				await page.keyboard.press('Escape');
+				await expect.poll(() => getDocumentOverflow(page)).toBe('visible');
+			});
+
+			test('it does not lock the background scroll when opened non-modally', async ({ page }) => {
+				await page.setContent(`<div style="height: 200vh;"><${tag} _label="">Modal content</${tag}></div>`);
+				const dialogElement = page.locator(tag);
+
+				await dialogElement.evaluate((element) => (element as HTMLKolDialogElement).show());
+				await expect(page.locator('dialog')).toBeVisible();
+				expect(await getDocumentOverflow(page)).toBe('visible');
+			});
+
+			test('it keeps the lock until the last of two stacked dialogs closes', async ({ page }) => {
+				await page.setContent(
+					`<div style="height: 200vh;"><${tag} id="outer" _label="">Outer content</${tag}><${tag} id="inner" _label="">Inner content</${tag}></div>`,
+				);
+				const outer = page.locator('#outer');
+				const inner = page.locator('#inner');
+
+				await outer.evaluate((element) => (element as HTMLKolDialogElement).openModal());
+				await inner.evaluate((element) => (element as HTMLKolDialogElement).openModal());
+				await expect.poll(() => getDocumentOverflow(page)).toBe('hidden');
+
+				await inner.evaluate((element) => (element as HTMLKolDialogElement).closeModal());
+				await expect(page.locator('#inner dialog')).toBeHidden();
+				expect(await getDocumentOverflow(page)).toBe('hidden');
+
+				await outer.evaluate((element) => (element as HTMLKolDialogElement).closeModal());
+				await expect.poll(() => getDocumentOverflow(page)).toBe('visible');
 			});
 		});
 
