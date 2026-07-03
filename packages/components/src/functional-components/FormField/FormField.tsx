@@ -63,7 +63,12 @@ export type FormFieldProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	hideMsg?: boolean;
 	accessKey?: string;
 	shortKey?: string;
-	counter?: { currentLength: number; currentLengthDebounced: number; maxLengthBehavior: MaxLengthBehaviorPropType; maxLength?: number; id?: string };
+	counter?: {
+		maxLengthBehavior: MaxLengthBehaviorPropType;
+		maxLength?: number;
+		visualRef?: (el?: HTMLSpanElement) => void;
+		ariaRef?: (el?: HTMLSpanElement) => void;
+	};
 	readOnly?: boolean;
 	touched?: boolean;
 	required?: boolean;
@@ -92,8 +97,6 @@ const InputContainer: FC<JSXBase.HTMLAttributes<HTMLDivElement>> = ({ class: cla
 		</div>
 	);
 };
-
-let oldLength: number = 0;
 
 const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const {
@@ -159,79 +162,6 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		}
 	};
 
-	let timeoutMaxText: NodeJS.Timeout | undefined;
-
-	const forwardedMaxTextRef = formFieldInputProps?.ref as ((el?: HTMLSpanElement) => void) | undefined;
-	const setMaxTextRef = (el?: HTMLSpanElement): void => {
-		forwardedMaxTextRef?.(el);
-		clearTimeout(timeoutMaxText);
-
-		if (counter && el && (counter.currentLengthDebounced !== oldLength || counter.currentLengthDebounced == maxLength)) {
-			oldLength = counter.currentLengthDebounced;
-			timeoutMaxText = setTimeout(() => {
-				el.textContent = '';
-
-				console.log(counter.currentLength);
-
-				if (counter.currentLength === maxLength) {
-					setTimeout(() => {
-						el.textContent = translate('kol-character-counter-max-aria');
-					}, 50);
-				}
-			}, 400);
-		}
-	};
-
-	// counter
-	const setCounterRef = (el?: HTMLSpanElement): void => {
-		if (counter && el) {
-			if (typeof counter.maxLength !== 'number') {
-				// Counter ohne maximaler Wert > 'XX Zeichen'
-				el.textContent = translate('kol-character-counter-current', { placeholders: { current: String(counter.currentLength) } });
-			} else if (counter.maxLengthBehavior === 'soft') {
-				const remainingChars = counter.maxLength - counter.currentLength;
-				if (remainingChars < 0) {
-					// Counter mit weichem maximalen Wert überschritten > 'XX Zeichen zu viel'
-					el.textContent = translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remainingChars)) } });
-					el.classList.add('kol-form-field__counter--exceeded');
-				} else {
-					// Counter mit weichem maximalen Wert > 'Noch XX Zeichen übrig'
-					el.textContent = translate('kol-character-limit-remaining', { placeholders: { remaining: String(remainingChars) } });
-					el.classList.remove('kol-form-field__counter--exceeded');
-				}
-			} else if (counter.maxLengthBehavior === 'hard') {
-				// Counter mit festem maximalen Wert > 'XX/MAX Zeichen'
-				el.textContent = translate('kol-character-counter-current-of-max', {
-					placeholders: { current: String(counter.currentLength), max: String(maxLength) },
-				});
-			}
-		}
-	};
-
-	// counter aria text - Alle mit debounced counter length!
-	const setCounterAriaRef = (el?: HTMLSpanElement): void => {
-		if (counter && el) {
-			if (typeof counter.maxLength !== 'number') {
-				// Counter ohne maximaler Wert > 'XX Zeichen'
-				el.textContent = translate('kol-character-counter-current', { placeholders: { current: String(counter.currentLengthDebounced) } });
-			} else if (counter.maxLengthBehavior === 'soft') {
-				const remainingChars = counter.maxLength - counter.currentLengthDebounced;
-				if (remainingChars < 0) {
-					// Counter mit weichem maximalen Wert überschritten > 'XX Zeichen zu viel'
-					el.textContent = translate('kol-character-limit-exceeded', { placeholders: { over: String(Math.abs(remainingChars)) } });
-				} else {
-					// Counter mit weichem maximalen Wert > 'Noch XX Zeichen übrig'
-					el.textContent = translate('kol-character-limit-remaining', { placeholders: { remaining: String(remainingChars) } });
-				}
-			} else if (counter.maxLengthBehavior === 'hard') {
-				// Counter mit festem maximalen Wert > 'XX von MAX Zeichen'
-				el.textContent = translate('kol-character-counter-current-of-max-aria', {
-					placeholders: { current: String(counter.currentLengthDebounced), max: String(maxLength) },
-				});
-			}
-		}
-	};
-
 	let stateCssClasses = {
 		['kol-form-field--disabled']: Boolean(disabled),
 		['kol-form-field--required']: Boolean(required),
@@ -292,14 +222,23 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					</div>
 				)}
 			</InputContainer>
-			<div class="kol-form-field__counter">
-				<span ref={setCounterRef} data-testid="input-counter" aria-hidden="true"></span>
-				<span ref={setCounterAriaRef} data-testid="input-counter-aria" aria-live="polite" class="visually-hidden"></span>
-				<span class="kol-form-field__max" ref={setMaxTextRef} aria-live="polite"></span>
-			</div>
+			{counter && !(counter.maxLengthBehavior === 'soft' && typeof counter.maxLength !== 'number') && (
+				<div class="kol-form-field__counter">
+					<span data-testid="input-counter" aria-hidden="true" class="kol-form-field__counter" ref={counter.visualRef} />
+					<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id={createRelatedUniqueId(id, 'counter')} ref={counter.ariaRef} />
+				</div>
+			)}
 			{showMsg && !hideMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} />}
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 			{anotherChildren}
+			{typeof maxLength === 'number' && !counter && (
+				// Der visuell versteckte Zeichenlimit-Hinweis wird nur gerendert, wenn KEIN Zähler aktiv ist.
+				// Ist ein Zähler vorhanden, vermitteln dessen Spans (`input-counter`/`input-counter-aria`) das
+				// Maximum bereits, sodass der zusätzliche Hinweis redundant wäre.
+				<span id={createRelatedUniqueId(id, 'character-limit-hint')} class="visually-hidden">
+					{translate('kol-character-limit-hint', { placeholders: { limit: String(maxLength) } })}
+				</span>
+			)}
 		</Component>
 	);
 };

@@ -30,8 +30,22 @@ describe('kol-input-text aria-describedby', () => {
 		const ids = (input?.getAttribute('aria-describedby') ?? '').split(' ');
 		expect(ids).toContain('input-text-msg-nonce');
 		expect(ids).toContain('input-text-counter-nonce');
-		expect(ids).toContain('input-text-character-limit-hint-nonce');
+		// With a counter present, the redundant character-limit hint is neither rendered nor referenced.
+		expect(ids).not.toContain('input-text-character-limit-hint-nonce');
 		expect(page.root?.shadowRoot?.querySelector('#input-text-msg-nonce')).not.toBeNull();
 		expect(page.root?.shadowRoot?.querySelector('#input-text-counter-nonce')).not.toBeNull();
+		expect(page.root?.shadowRoot?.querySelector('#input-text-character-limit-hint-nonce')).toBeNull();
+	});
+
+	it('references the character-limit hint when a max length is set without a counter', async () => {
+		const page = await newSpecPage({
+			components: [KolInputText],
+			template: () => <kol-input-text _label="Label" _maxLength={10} />,
+		});
+
+		const input = page.root?.shadowRoot?.querySelector('input');
+		const ids = (input?.getAttribute('aria-describedby') ?? '').split(' ');
+		expect(ids).toContain('input-text-character-limit-hint-nonce');
+		expect(page.root?.shadowRoot?.querySelector('#input-text-character-limit-hint-nonce')).not.toBeNull();
 	});
 });

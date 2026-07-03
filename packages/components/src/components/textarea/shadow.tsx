@@ -36,6 +36,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { CounterDomUpdater } from '../../utils/counter-dom-updater';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { TextareaController } from './controller';
@@ -68,6 +69,8 @@ const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 export class KolTextarea implements ClickableElement, FocusableElement, TextareaAPI {
 	@Element() protected readonly host?: HTMLKolTextareaElement;
 	protected readonly ctaRef = createCtaRef<HTMLTextAreaElement>();
+	private readonly counterUpdater = new CounterDomUpdater();
+	private updatingFromInput = false;
 
 	/**
 	 * Returns the current value.
@@ -103,11 +106,16 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 			}),
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
+			counterRefs: {
+				visualRef: this.counterUpdater.setVisualRef,
+				ariaRef: this.counterUpdater.setAriaRef,
+			},
 		};
 	}
 
 	private getTextAreaProps(): TextAreaStateWrapperProps {
-		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy =
+			typeof this.state._maxLength === 'number' && !this.controller.hasCounter() ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined but no counter is shown, we provide an additional hint referenced by aria-describedby. With a counter, its spans already convey the limit.
 
 		return {
 			ref: this.ctaRef,
@@ -118,6 +126,7 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 			ariaDescribedBy,
 			...this.controller.onFacade,
 			onInput: this.onInput,
+			onKeyDown: this.onKeyDown,
 			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
 				this.inputHasFocus = true;
@@ -293,8 +302,6 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 
 	@State() public state: TextareaStates = {
 		_adjustHeight: false,
-		_currentLength: 0,
-		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
 		_id: createUniqueId('textarea'),
@@ -430,6 +437,9 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
+		if (!this.updatingFromInput) {
+			this.counterUpdater.updateImmediate(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+		}
 	}
 
 	@Watch('_variant')
@@ -438,6 +448,9 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 	}
 
 	public componentDidLoad(): void {
+		if (this.controller.hasCounter() || this.controller.hasSoftCharacterLimit()) {
+			this.counterUpdater.updateImmediate(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+		}
 		setTimeout(() => {
 			if (this._adjustHeight === true && this.ctaRef.el /* SSR instanceof HTMLTextAreaElement */) {
 				this._rows = this.state?._rows && this.state._rows > increaseTextareaHeight(this.ctaRef.el) ? this.state._rows : increaseTextareaHeight(this.ctaRef.el);
@@ -445,6 +458,10 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 				this._rows = 1;
 			}
 		});
+	}
+
+	public disconnectedCallback(): void {
+		this.counterUpdater.destroy();
 	}
 
 	public componentWillLoad(): void {
@@ -456,13 +473,21 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 		this.controller.addValueChangeListener((v) => (this.state._hasValue = !!v));
 	}
 
+	private readonly onKeyDown = (event: KeyboardEvent) => {
+		this.controller.onFacade.onKeyDown(event);
+		this.counterUpdater.handleKeyDown(event, this.ctaRef.el?.value.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+	};
+
 	private readonly onInput = (event: InputEvent) => {
 		if (this.ctaRef.el instanceof HTMLTextAreaElement) {
+			this.updatingFromInput = true;
 			this._value = this.ctaRef.el.value;
 			if (this.state._adjustHeight) {
 				this._rows = increaseTextareaHeight(this.ctaRef.el);
 			}
 			this.controller.onFacade.onInput(event);
+			this.counterUpdater.update(this._value.length, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+			this.updatingFromInput = false;
 		}
 	};
 }
