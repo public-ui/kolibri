@@ -93,6 +93,7 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		this.controller.onFacade.onKeyDown(event);
+		this.counterUpdater.handleKeyDown(event, this.ctaRef.el?.value.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
@@ -127,7 +128,8 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 	}
 
 	private getInputProps(): InputStateWrapperProps {
-		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy =
+			typeof this.state._maxLength === 'number' && !this.controller.hasCounter() ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined but no counter is shown, we provide an additional hint referenced by aria-describedby. With a counter, its spans already convey the limit.
 
 		return {
 			ref: this.ctaRef,

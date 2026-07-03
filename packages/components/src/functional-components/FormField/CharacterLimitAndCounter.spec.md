@@ -37,7 +37,9 @@ Der sichtbare Zähler wird **genau dann gerendert, wenn `_hasCounter === true`**
   (`…-character-limit-hint`, referenziert über das `aria-describedby` des Inputs) informiert
   Screenreader-Benutzer vorab über das Maximum (z. B. _„Es können bis zu 10 Zeichen eingegeben werden."_).
 - **Mit `_hasCounter`:** Der Zähler wird angezeigt, und das Hard-Limit (Standard) gilt weiterhin,
-  sofern nicht `_maxLengthBehavior="soft"` gesetzt ist.
+  sofern nicht `_maxLengthBehavior="soft"` gesetzt ist. Der zusätzliche Zeichenlimit-Hinweis wird in
+  diesem Fall **nicht** gerendert (und nicht über `aria-describedby` referenziert), da die Zähler-Spans
+  das Maximum bereits vermitteln und der Hinweis sonst redundant wäre.
 
 ### Verhaltensmatrix
 
@@ -47,8 +49,8 @@ Der sichtbare Zähler wird **genau dann gerendert, wenn `_hasCounter === true`**
 |      –       |    `true`     |          –           |     nein      |    ja (Anzahl)    |         nein         |
 |      10      |       –       |  `hard` (Standard)   |    **ja**     |       nein        |        **ja**        |
 |      10      |       –       |        `soft`        |     nein      |       nein        |          ja          |
-|      10      |    `true`     |  `hard` (Standard)   |    **ja**     |      **ja**       |          ja          |
-|      10      |    `true`     |        `soft`        |     nein      |      **ja**       |          ja          |
+|      10      |    `true`     |  `hard` (Standard)   |    **ja**     |      **ja**       |   nein (redundant)   |
+|      10      |    `true`     |        `soft`        |     nein      |      **ja**       |   nein (redundant)   |
 |      10      |    `false`    |         any          | je Verhalten  |       nein        |          ja          |
 
 ## Zählerinhalt (wenn `_hasCounter`)
@@ -66,7 +68,9 @@ per `element.innerText` aktualisiert — ohne Re-Render der Host-Komponente.
 **Span 2** verwendet einen **entprellten** Wert (1 s Debounce), damit der Screenreader bei schneller
 Eingabe nur den letzten Stand ankündigt. Er enthält gleichzeitig die optionale
 „Zeichenlimit erreicht!"-Meldung (bei `hard` + `_maxLength` und `currentLength ≥ _maxLength`). Auch
-er wird ausschließlich per `element.innerText` gesetzt — kein State, kein Re-Render.
+er wird ausschließlich per `element.innerText` gesetzt — kein State, kein Re-Render. Bei blockierten
+Eingabeversuchen am Hard-Limit wird er zusätzlich über einen `keydown`-Listener entprellt erneut
+gesetzt, um die Meldung wiederholt anzukündigen (siehe unten).
 
 Für `hard` unterscheiden sich visueller Text (Span 1) und angekündigter Text (Span 2)
 (unterschiedliche Locale-Keys):
@@ -83,11 +87,36 @@ Wenn `_maxLengthBehavior="hard"` mit einem numerischen `_maxLength` und `current
 hängt der Debounce-Handler **zusätzlich** den Text _„Zeichenlimit erreicht!"_ (`character-counter-max-aria`)
 an den Inhalt von Span 2.
 
-- Wechsel leer → Text: `aria-live="polite"` kündigt die Meldung **einmalig** an.
-- Solange das Limit gehalten wird und keine weiteren `input`-Events feuern (native `maxlength`
-  blockiert), bleibt Span 2 unverändert → **keine Wiederholung** bei blockierten Tastenanschlägen.
+- Wechsel leer → Text: `aria-live="polite"` kündigt die Meldung an, sobald das Limit erstmals erreicht wird.
 - Fällt die Länge unter das Limit, setzt der Debounce-Handler Span 2 auf den reinen Zählertext ohne
   Max-Meldung (keine Ankündigung bei unverändertem Text).
+
+### Wiederholte Ankündigung bei blockierten Eingabeversuchen
+
+Sobald das Hard-Limit erreicht ist, blockiert das native `maxlength`-Attribut weitere Eingaben, **ohne**
+ein `input`-Event auszulösen. Span 2 würde dadurch unverändert bleiben und der Screenreader die
+Meldung bei weiteren Eingabeversuchen nicht erneut vorlesen.
+
+Damit der Benutzer auch bei wiederholten Eingabeversuchen Feedback erhält, registriert die
+Host-Komponente einen **`keydown`-Event-Listener**, der die Live-Region in diesem Fall **entprellt**
+(1 s) erneut triggert:
+
+- Der Listener reagiert nur, wenn `_maxLengthBehavior="hard"`, `_maxLength` numerisch und
+  `currentLength ≥ _maxLength` ist.
+- Es werden ausschließlich **Eingabeversuche** berücksichtigt, d. h. druckbare Einzelzeichen
+  (`event.key.length === 1` ohne `Strg`/`Meta`/`Alt`). Steuertasten (Pfeiltasten, `Tab`, `Backspace`, …)
+  lösen **keine** erneute Ankündigung aus.
+- Um eine erneute Ankündigung trotz **identischen** Textes zu erzwingen, reicht ein bloßes Leeren und
+  Neu-Setzen von Span 2 **nicht** aus: `aria-live` vergleicht gegen den zuletzt vorgelesenen Text, sodass
+  ein unveränderter Text (auch nach einem zwischenzeitlichen Leeren) von vielen Screenreadern **nicht**
+  erneut angekündigt wird. Stattdessen wird an den vollständigen Text inkl. _„Zeichenlimit erreicht!"_
+  **abwechselnd** ein nicht sichtbares geschütztes Leerzeichen (NBSP, ` `) angehängt. Dadurch
+  unterscheidet sich der Textinhalt bei jedem Eingabeversuch tatsächlich vom vorherigen Stand und
+  `aria-live="polite"` erkennt die Änderung als neue Ankündigung. Das NBSP ist optisch und akustisch
+  unauffällig (kein zusätzlich vorgelesenes Zeichen).
+- Das Debouncing fasst schnelle Tastenanschläge zusammen: Erst nach 1 s ohne weiteren Eingabeversuch
+  wird die Meldung erneut vorgelesen.
+- Der visuelle Zähler (Span 1) und der Input-`_value` bleiben unberührt.
 
 ## Imperative DOM-Aktualisierung (ohne Re-Rendering)
 
@@ -104,6 +133,12 @@ input-Event
   │
   └─► Debounce (1 s): spanAria.innerText = getCounterAriaText(currentLength)
                                            + optional getCounterMaxText(currentLength)
+
+keydown-Event (nur hard + _maxLength + currentLength ≥ _maxLength + druckbares Zeichen)
+  │
+  └─► Debounce (1 s): spanAria.innerText = getCounterAriaText(currentLength)
+                                           + getCounterMaxText(currentLength)
+                                           + abwechselnd NBSP (erzwingt erneute Ankündigung)
 ```
 
 ### Refs
@@ -133,6 +168,23 @@ private updateCounterSpanAria(currentLength: number): void {
 }
 ```
 
+Der `keydown`-Listener nutzt denselben Timer und hängt beim erneuten Setzen abwechselnd ein nicht
+sichtbares NBSP an, damit der identische Text als Änderung erkannt wird (ein bloßes Leeren genügt nicht):
+
+```ts
+private handleCounterKeyDown(event: KeyboardEvent, currentLength: number): void {
+    const isAtHardLimit = this.maxLengthBehavior === 'hard' && typeof this.maxLength === 'number' && currentLength >= this.maxLength;
+    const isCharacterInput = event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey;
+    if (!isAtHardLimit || !isCharacterInput || !this.counterSpanAriaRef) return;
+
+    // entprellt erneut setzen; getCounterAriaText hängt abwechselnd ein NBSP an → erzwingt Ankündigung
+    this.updateCounterSpanAria(currentLength, /* forceReannounce */ true);
+}
+```
+
+Diese Logik ist in `CounterDomUpdater.handleKeyDown(...)` gekapselt und wird von den Host-Komponenten
+(`kol-input-text`, `kol-input-email`, `kol-input-password`, `kol-textarea`) im `keydown`-Handler aufgerufen.
+
 ## Rendering-Einschränkungen
 
 - Beide Spans werden **einmalig** beim ersten Render erzeugt und verbleiben dauerhaft im DOM,
@@ -141,9 +193,11 @@ private updateCounterSpanAria(currentLength: number): void {
   `innerText`-Setzen auf den Span-Refs.
 - Der Input-`_value` wird von der Zählerlogik **niemals** umgeschrieben (keine Cursor-Sprünge,
   kein erneutes Tippen).
-- Die „Zeichenlimit erreicht!"-Meldung wird **einmalig** angekündigt, wenn das Limit erstmals
-  erreicht wird — nicht wiederholt, solange der Benutzer weiter dagegen tippt (da native
-  `maxlength` keine weiteren `input`-Events auslöst und Span 2 unverändert bleibt).
+- Die „Zeichenlimit erreicht!"-Meldung wird angekündigt, wenn das Limit erstmals erreicht wird.
+  Da native `maxlength` keine weiteren `input`-Events auslöst, sorgt ein zusätzlicher
+  `keydown`-Event-Listener dafür, dass die Meldung bei weiteren **Eingabeversuchen** (druckbare
+  Zeichen) **entprellt** erneut vorgelesen wird (siehe „Wiederholte Ankündigung bei blockierten
+  Eingabeversuchen"). Steuertasten lösen keine Wiederholung aus.
 
 ## Locale-Texte
 
@@ -151,7 +205,7 @@ Alle sichtbaren und angekündigten Texte sind i18n-gesteuert. Die relevanten Key
 
 | Key                                     | Platzhalter              | Deutsch (`de`)                                          | Englisch (`en`)                                | Verwendet in                                                                  |
 | --------------------------------------- | ------------------------ | ------------------------------------------------------- | ---------------------------------------------- | ----------------------------------------------------------------------------- |
-| `character-limit-hint`                  | `{{limit}}`              | `Es können bis zu {{limit}} Zeichen eingegeben werden.` | `You can enter up to {{limit}} characters`     | `FormFieldCharacterLimitHint` (visually-hidden, `aria-describedby`)           |
+| `character-limit-hint`                  | `{{limit}}`              | `Es können bis zu {{limit}} Zeichen eingegeben werden.` | `You can enter up to {{limit}} characters`     | visually-hidden Hinweis (`aria-describedby`) – **nur ohne `_hasCounter`**     |
 | `character-counter-current`             | `{{current}}`            | `{{current}} Zeichen`                                   | `{{current}} characters`                       | Span 1 + Span 2 – hard, kein `_maxLength`                                     |
 | `character-counter-current-of-max`      | `{{current}}`, `{{max}}` | `{{current}}/{{max}} Zeichen`                           | `{{current}}/{{max}} characters`               | **Span 1** – hard + `_maxLength` (visuell, sofort)                            |
 | `character-counter-current-of-max-aria` | `{{current}}`, `{{max}}` | `{{current}} von {{max}} Zeichen`                       | `{{current}} of {{max}} characters`            | **Span 2** – hard + `_maxLength` (aria, entprellt)                            |
