@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-BxtiXVt1.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
