@@ -1,5 +1,9 @@
 import { KolDrawer } from '../shadow';
 
+afterEach(() => {
+	jest.restoreAllMocks();
+});
+
 describe('kol-drawer methods', () => {
 	it('does not throw in open when dialog showModal is unavailable', async () => {
 		const drawer = new KolDrawer();

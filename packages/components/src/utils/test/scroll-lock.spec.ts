@@ -21,6 +21,11 @@ describe('scroll-lock', () => {
 		docEl.style.removeProperty('padding-right');
 	});
 
+	afterAll(() => {
+		// Remove the stubbed own property so the prototype getter applies again.
+		Reflect.deleteProperty(docEl, 'clientWidth');
+	});
+
 	it('hides the document overflow on the first lock', () => {
 		lockScroll(ownerA);
 
