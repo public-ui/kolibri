@@ -1,1 +1,0 @@
-import{Ot as e,U as t}from"./index-C8RN8Rjp.js";var n=(n,r)=>{e(n,`_suggestions`,e=>typeof e==`string`||typeof e==`number`,r,void 0,{hooks:{afterPatch:e=>{Array.isArray(e)&&e.length&&t(`Property suggestions: Options have accessibility issues in how browsers implemented them and should not be used for now.`)}}})};export{n as t};

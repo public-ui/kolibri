@@ -1,1 +1,0 @@
-var e=t=>{let n=``;if(typeof t==`string`||typeof t==`number`)n+=t;else if(typeof t==`object`&&t)if(Array.isArray(t)){for(let r of t)if(r){let t=e(r);t&&(n&&(n+=` `),n+=t)}}else for(let e in t)t[e]&&(n&&(n+=` `),n+=e);return n},t=(...t)=>{let n=``;for(let r of t)if(r){let t=e(r);t&&(n&&(n+=` `),n+=t)}return n};export{t};

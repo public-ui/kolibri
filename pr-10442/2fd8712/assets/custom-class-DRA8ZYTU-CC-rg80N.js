@@ -1,1 +1,0 @@
-import{At as e}from"./index--ePntkib.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};

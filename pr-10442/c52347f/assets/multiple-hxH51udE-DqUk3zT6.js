@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-CPJfmpaK.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};
