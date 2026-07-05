@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-BwMm2EE5.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
