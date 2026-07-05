@@ -1,0 +1,1 @@
+import{jt as e}from"./index-TSriMm8_.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
