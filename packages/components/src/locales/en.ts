@@ -47,6 +47,7 @@ export default {
 	'table-settings-column-width': 'Width of column "{{column}}" in pixel.',
 	'table-settings-move-up': 'Move column "{{column}}" up.',
 	'table-settings-move-down': 'Move column "{{column}}" down.',
+	'table-settings-not-move': 'Column "{{column}}" cannot be moved.',
 	'table-settings-error-all-invisible': 'At least one column must be visible.',
 	'table-settings-column-not-hidable': 'Column "{{column}}" cannot be hidden.',
 	'table-settings-column-hidable': 'Hide column "{{column}}".',

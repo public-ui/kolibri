@@ -47,6 +47,7 @@ export default {
 	'table-settings-column-width': 'Breite von Spalte "{{column}}" in Pixel.',
 	'table-settings-move-up': 'Spalte "{{column}}" nach oben verschieben.',
 	'table-settings-move-down': 'Spalte "{{column}}" nach unten verschieben.',
+	'table-settings-not-move': 'Spalte "{{column}}" kann nicht verschoben werden.',
 	'table-settings-error-all-invisible': 'Mindestens eine Spalte muss sichtbar sein.',
 	'table-settings-column-not-hidable': 'Spalte "{{column}}" kann nicht ausgeblendet werden.',
 	'table-settings-column-hidable': 'Spalte "{{column}}" ausblenden.',

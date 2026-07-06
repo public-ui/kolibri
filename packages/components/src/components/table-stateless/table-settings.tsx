@@ -169,7 +169,11 @@ export class KolTableSettings {
 									/>
 									<KolButtonWcTag
 										_icons="kolicon-chevron-up"
-										_label={translate('kol-table-settings-move-up', { placeholders: { column: column.label } })}
+										_label={
+											column.sortable === false || index === 0
+												? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
+												: translate('kol-table-settings-move-up', { placeholders: { column: column.label } })
+										}
 										_hideLabel
 										_variant="ghost"
 										_on={{ onClick: () => this.moveColumn(column.key ?? '', 'up') }}
@@ -178,7 +182,11 @@ export class KolTableSettings {
 									/>
 									<KolButtonWcTag
 										_icons="kolicon-chevron-down"
-										_label={translate('kol-table-settings-move-down', { placeholders: { column: column.label } })}
+										_label={
+											column.sortable === false || index === columns.length - 1
+												? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
+												: translate('kol-table-settings-move-down', { placeholders: { column: column.label } })
+										}
 										_hideLabel
 										_variant="ghost"
 										_on={{ onClick: () => this.moveColumn(column.key ?? '', 'down') }}
