@@ -53,9 +53,9 @@ export const SameHeightOfAllInteractiveElements: FC = () => {
 				<KolInputPassword _hideLabel _icons="kolicon-house" _label="Input-Password" />
 				<KolInputRange _hideLabel _icons="kolicon-house" _label="Input-Range" />
 				<KolInputText _hideLabel _icons="kolicon-house" _label="Input-Text" />
-				<KolSelect _hideLabel _icons="kolicon-house" _label="Combobox" _options={[]} />
-				<KolSingleSelect _hideLabel _icons="kolicon-house" _label="Combobox" _options={[]} />
-				<KolTextarea _hideLabel _icons="kolicon-house" _label="Combobox" />
+				<KolSelect _hideLabel _icons="kolicon-house" _label="Select" _options={[]} />
+				<KolSingleSelect _hideLabel _icons="kolicon-house" _label="Single Select" _options={[]} />
+				<KolTextarea _hideLabel _icons="kolicon-house" _label="Textarea" />
 			</div>
 		</>
 	);
