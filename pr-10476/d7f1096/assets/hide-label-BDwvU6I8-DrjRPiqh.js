@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-CSiQjTV8.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};
