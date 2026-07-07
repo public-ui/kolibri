@@ -14,10 +14,15 @@
 			grid-column: var(--form-field-grid-column-2);
 		}
 
+		&__label[hidden] ~ &__msg {
+			margin-bottom: to-rem(2);
+		}
+
 		&__label {
 			display: flex;
 			order: 2;
 			grid-column: var(--form-field-grid-column-1);
+			margin-bottom: to-rem(2);
 
 			&--legend {
 				// legends are strange and need float to actually behave in a grid like everyone else
