@@ -1,0 +1,1 @@
+import{s as e}from"./index-DmoVM3oL.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};
