@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-BsL_cJXj.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
