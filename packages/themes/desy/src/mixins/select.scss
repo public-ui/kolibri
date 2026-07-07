@@ -16,7 +16,7 @@
 		}
 
 		&:not([multiple], [size]) {
-			height: to-rem(40);
+			height: to-rem(34);
 		}
 
 		&:disabled {
@@ -87,7 +87,7 @@
 		}
 
 		&__adornment {
-			height: to-rem(40);
+			height: to-rem(34);
 		}
 	}
 }

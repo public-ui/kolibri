@@ -7,6 +7,9 @@
 		--track-border-color: var(--color-blue-100);
 		--track-bg-color: var(--color-white-100);
 		--thumb-outline-width: 0;
+		height: 100%;
+
+		align-content: center;
 
 		&__inputs-wrapper {
 			gap: 1em;
