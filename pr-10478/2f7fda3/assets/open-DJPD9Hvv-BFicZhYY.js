@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-DBCt5E1r.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
