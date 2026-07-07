@@ -54,9 +54,10 @@
 		}
 
 		.kol-form-field__label {
+			margin-bottom: to-rem(2);
+
 			font-size: to-rem(14);
 			font-weight: bold;
-			margin-bottom: to-rem(2);
 		}
 
 		&__label[hidden] ~ &__msg {
