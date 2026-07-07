@@ -111,16 +111,19 @@ kolibri-mcp
 
 #### VS Code Copilot (Local)
 
+Open the global configuration via `Strg` + `Shift` + `P` and search for "MCP: Open User Configuration" or define the MCP servers per project at `.vscode/mcp.json`. Add lokal server to the json file:
+
 ```json
 {
 	"servers": {
 		"kolibri": {
 			"command": "kolibri-mcp"
 		}
-	},
-	"inputs": []
+	}
 }
 ```
+
+For general documentation about MCP in VSCode see https://code.visualstudio.com/docs/agent-customization/mcp-servers.
 
 #### Claude Desktop (Local)
 
