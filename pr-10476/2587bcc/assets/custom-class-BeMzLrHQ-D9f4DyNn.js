@@ -1,0 +1,1 @@
+import{jt as e}from"./index-C0rT_6If.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};

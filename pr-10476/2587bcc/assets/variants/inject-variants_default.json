@@ -1,0 +1,17 @@
+{
+	"iconVariants": [
+		"fa-solid fa-house",
+        "fa-solid fa-heart",
+        "fa-solid fa-thumbs-up",
+        "fa-brands fa-github"
+	],
+	"iconVariantsButton": [
+		"fa-solid fa-circle-user"
+	],
+	"iconVariantsInput": [
+		"fa-solid fa-city"
+	], 
+	"inputVariants": [
+		"left"
+	]
+}

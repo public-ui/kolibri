@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-C0rT_6If.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};
