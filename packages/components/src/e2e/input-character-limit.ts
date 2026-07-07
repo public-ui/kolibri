@@ -18,6 +18,20 @@ const testInputCharacterLimit = (componentName: string) => {
 				await expect(page.getByTestId('input-counter-aria')).toHaveText('3 von 10 Zeichen');
 			});
 
+			test('Should refresh the counter when _max-length changes programmatically', async ({ page }) => {
+				await page.setContent(`<${componentName} _label="Input" _value="abc" _max-length="10" _has-counter></${componentName}>`);
+				await page.waitForChanges();
+				await expect(page.getByTestId('input-counter')).toHaveText('3/10 Zeichen');
+
+				// Shortening the max length must be reflected by the counter even though the value stays unchanged.
+				await page.locator(componentName).evaluate((el) => {
+					el.setAttribute('_max-length', '5');
+				});
+				await page.waitForChanges();
+				await expect(page.getByTestId('input-counter')).toHaveText('3/5 Zeichen');
+				await expect(page.getByTestId('input-counter-aria')).toHaveText('3 von 5 Zeichen');
+			});
+
 			test('Should re-announce the character limit message on blocked input attempts (hard)', async ({ page }) => {
 				await page.setContent(`<${componentName} _label="Input" _value="abc" _max-length="3" _has-counter></${componentName}>`);
 				await page.waitForChanges();

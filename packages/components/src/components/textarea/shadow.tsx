@@ -70,7 +70,6 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 	@Element() protected readonly host?: HTMLKolTextareaElement;
 	protected readonly ctaRef = createCtaRef<HTMLTextAreaElement>();
 	private readonly counterUpdater = new CounterDomUpdater();
-	private updatingFromInput = false;
 
 	/**
 	 * Returns the current value.
@@ -367,6 +366,7 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 	@Watch('_maxLength')
 	public validateMaxLength(value?: number): void {
 		this.controller.validateMaxLength(value);
+		this.counterUpdater.updateImmediate(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	}
 
 	@Watch('_maxLengthBehavior')
@@ -437,9 +437,7 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
-		if (!this.updatingFromInput) {
-			this.counterUpdater.updateImmediate(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
-		}
+		this.counterUpdater.update(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	}
 
 	@Watch('_variant')
@@ -480,14 +478,11 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 
 	private readonly onInput = (event: InputEvent) => {
 		if (this.ctaRef.el instanceof HTMLTextAreaElement) {
-			this.updatingFromInput = true;
 			this._value = this.ctaRef.el.value;
 			if (this.state._adjustHeight) {
 				this._rows = increaseTextareaHeight(this.ctaRef.el);
 			}
 			this.controller.onFacade.onInput(event);
-			this.counterUpdater.update(this._value.length, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
-			this.updatingFromInput = false;
 		}
 	};
 }

@@ -61,7 +61,6 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private oldValue?: string;
 	private readonly counterUpdater = new CounterDomUpdater();
-	private updatingFromInput = false;
 
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
@@ -84,11 +83,8 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		this.updatingFromInput = true;
 		this._value = this.ctaRef.el?.value ?? '';
 		this.controller.onFacade.onInput(event);
-		this.counterUpdater.update(this._value.length, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
-		this.updatingFromInput = false;
 	};
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
@@ -450,6 +446,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	@Watch('_maxLength')
 	public validateMaxLength(value?: number): void {
 		this.controller.validateMaxLength(value);
+		this.counterUpdater.updateImmediate(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	}
 
 	@Watch('_msg')
@@ -526,9 +523,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
 		this.oldValue = value;
-		if (!this.updatingFromInput) {
-			this.counterUpdater.updateImmediate(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
-		}
+		this.counterUpdater.update(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	}
 
 	@Watch('_variant')

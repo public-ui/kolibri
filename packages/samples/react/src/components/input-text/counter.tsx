@@ -11,8 +11,6 @@ export const InputTextCounter: FC = () => (
 
 		<div className="grid gap-4">
 			<KolInputText _label="Name" _icons="kolicon-house" _value="Anderson-Clark" _hasCounter _maxLength={30} />
-
-			<KolInputText _label="max length ohne counter?" _icons="kolicon-house" _value="12" _maxLength={3} />
 		</div>
 	</>
 );
