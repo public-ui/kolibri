@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-CCR_iWWY.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
