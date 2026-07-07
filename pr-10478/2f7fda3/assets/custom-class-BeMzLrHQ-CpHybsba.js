@@ -1,1 +1,0 @@
-import{jt as e}from"./index-DBCt5E1r.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
