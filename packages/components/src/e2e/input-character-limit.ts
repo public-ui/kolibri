@@ -24,9 +24,9 @@ const testInputCharacterLimit = (componentName: string) => {
 				await expect(page.getByTestId('input-counter')).toHaveText('3/10 Zeichen');
 
 				// Shortening the max length must be reflected by the counter even though the value stays unchanged.
-				await page.locator(componentName).evaluate((el, componentName) => {
-					document.querySelector(componentName)?.setAttribute('_max-length', '5');
-				}, componentName);
+				await page.locator(componentName).evaluate((el) => {
+					el.setAttribute('_max-length', '5');
+				});
 				await page.waitForChanges();
 				await expect(page.getByTestId('input-counter')).toHaveText('3/5 Zeichen');
 				await expect(page.getByTestId('input-counter-aria')).toHaveText('3 von 5 Zeichen');
