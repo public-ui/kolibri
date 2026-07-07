@@ -61,7 +61,6 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 	@Element() protected readonly host?: HTMLKolInputPasswordElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private readonly counterUpdater = new CounterDomUpdater();
-	private updatingFromInput = false;
 
 	private readonly translateHidePassword = translate('kol-hide-password');
 	private readonly translateShowPassword = translate('kol-show-password');
@@ -104,11 +103,8 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		this.updatingFromInput = true;
 		this._value = (event.target as HTMLInputElement).value;
 		this.controller.onFacade.onInput(event);
-		this.counterUpdater.update(this._value.length, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
-		this.updatingFromInput = false;
 	};
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -416,6 +412,7 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 	@Watch('_maxLength')
 	public validateMaxLength(value?: number): void {
 		this.controller.validateMaxLength(value);
+		this.counterUpdater.updateImmediate(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	}
 
 	@Watch('_msg')
@@ -476,9 +473,7 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
-		if (!this.updatingFromInput) {
-			this.counterUpdater.updateImmediate(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
-		}
+		this.counterUpdater.update(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	}
 
 	@Watch('_visibilityToggle')

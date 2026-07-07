@@ -59,7 +59,6 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 	@Element() protected readonly host?: HTMLKolInputEmailElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private readonly counterUpdater = new CounterDomUpdater();
-	private updatingFromInput = false;
 
 	/**
 	 * Returns the current value.
@@ -99,11 +98,8 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 	};
 
 	private readonly onInput = (event: InputEvent) => {
-		this.updatingFromInput = true;
 		this._value = (event.target as HTMLInputElement).value;
 		this.controller.onFacade.onInput(event);
-		this.counterUpdater.update(this._value.length, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
-		this.updatingFromInput = false;
 	};
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -379,6 +375,7 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 	@Watch('_maxLength')
 	public validateMaxLength(value?: number): void {
 		this.controller.validateMaxLength(value);
+		this.counterUpdater.updateImmediate(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	}
 
 	@Watch('_msg')
@@ -449,9 +446,7 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 	@Watch('_value')
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
-		if (!this.updatingFromInput) {
-			this.counterUpdater.updateImmediate(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
-		}
+		this.counterUpdater.update(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	}
 
 	@Watch('_maxLengthBehavior')
