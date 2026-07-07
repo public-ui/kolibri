@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-1Rni1avn.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
