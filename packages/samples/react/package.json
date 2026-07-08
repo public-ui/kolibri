@@ -47,7 +47,7 @@
 		"stylelint": "17.13.0"
 	},
 	"files": [
-		"public",
+		"assets",
 		"src",
 		"tsconfig.json"
 	],
