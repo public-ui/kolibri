@@ -1,0 +1,1 @@
+import"./index-LDft-Wwg.js";import{r as e}from"./align-BdqBkiyq-Cp9aYsYF.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
