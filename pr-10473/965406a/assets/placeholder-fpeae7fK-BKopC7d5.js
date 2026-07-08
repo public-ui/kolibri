@@ -1,0 +1,1 @@
+import{jt as e}from"./index-rG6M_he5.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
