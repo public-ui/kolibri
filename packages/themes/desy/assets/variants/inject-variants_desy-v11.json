@@ -1,3 +1,23 @@
 {
+	"buttonVariants": [
+		"primary",
+		"secondary",
+		"tertiary",
+		"normal",
+		"danger",
+		"ghost"
+	],
+	"iconVariants": [
+		"desy-home",
+        "desy-settings",
+        "desy-dgs",
+        "desy-alert-circle"
+	],
+	"iconVariantsButton": [
+		"desy-settings"
+	],
+	"iconVariantsInput": [
+		"desy-file-add"
+	],
 	"linkVariants": ["small"]
 }

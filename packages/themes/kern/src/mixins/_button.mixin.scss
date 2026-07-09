@@ -10,6 +10,8 @@
 		--button-padding: var(--kern-metric-space-small) var(--kern-metric-space-default);
 
 		font-size: var(--kern-typography-font-size-static-medium);
+		min-height: var(--button-min-size);
+		min-width: var(--button-min-size);
 
 		&:focus-visible {
 			@include focus-outline;
@@ -90,6 +92,13 @@
 		&--tertiary,
 		&--ghost {
 			@include ghostButton();
+		}
+
+		&--x-small {
+			--button-min-size: var(--kern-metric-dimension-large);
+			--button-padding: var(--kern-metric-space-none) var(--kern-metric-space-small);
+
+			font-size: var(--kern-typography-font-size-static-small);
 		}
 	}
 }
