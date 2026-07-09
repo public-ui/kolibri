@@ -5,7 +5,6 @@ import type {
 	AccessKeyPropType,
 	AriaDescriptionPropType,
 	ButtonTypePropType,
-	ButtonVariantPropType,
 	ClickableElement,
 	CustomClassPropType,
 	FocusableElement,
@@ -18,6 +17,7 @@ import type {
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 import type { PopoverButtonProps } from '../../schema/components/popover-button';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -188,5 +188,5 @@ export class KolPopoverButton implements ClickableElement, FocusableElement, Pop
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _variant?: VariantClassNamePropType = 'normal';
 }

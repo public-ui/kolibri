@@ -9,7 +9,6 @@ import type {
 	PropAriaSelected,
 	PropButtonCallbacks,
 	PropButtonType,
-	PropButtonVariant,
 	PropCustomClass,
 	PropDisabled,
 	PropHideLabel,
@@ -37,7 +36,7 @@ export type OptionalButtonProps = {
 	PropAriaSelected &
 	PropButtonCallbacks<StencilUnknown> &
 	PropButtonType &
-	PropButtonVariant &
+	PropVariantClassName &
 	PropCustomClass &
 	PropDisabled &
 	PropHideLabel &
@@ -49,18 +48,13 @@ export type OptionalButtonProps = {
 	PropSyncValueBySelector &
 	PropTooltipAlign;
 
-export type RequiredButtonStates = PropIcons & PropLabelWithExpertSlot & PropButtonCallbacks<StencilUnknown> & PropButtonType & PropButtonVariant;
+export type RequiredButtonStates = PropIcons & PropLabelWithExpertSlot & PropButtonCallbacks<StencilUnknown> & PropButtonType & PropVariantClassName;
 export type OptionalButtonStates = Omit<
 	OptionalButtonProps,
-	keyof PropIcons | keyof PropLabelWithExpertSlot | keyof PropButtonCallbacks<StencilUnknown> | keyof PropButtonType | keyof PropButtonVariant
+	keyof PropIcons | keyof PropLabelWithExpertSlot | keyof PropButtonCallbacks<StencilUnknown> | keyof PropButtonType | keyof PropVariantClassName
 >;
 
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
-export type InternalButtonProps = Generic.Element.Members<RequiredButtonProps, Omit<OptionalButtonProps, keyof PropButtonVariant> & PropVariantClassName>;
+export type InternalButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 export type ButtonStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
-export type ButtonAPI = Generic.Element.ComponentApi<
-	RequiredButtonProps,
-	Omit<OptionalButtonProps, keyof PropButtonVariant> & PropVariantClassName,
-	RequiredButtonStates,
-	OptionalButtonStates
->;
+export type ButtonAPI = Generic.Element.ComponentApi<RequiredButtonProps, OptionalButtonProps, RequiredButtonStates, OptionalButtonStates>;

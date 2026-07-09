@@ -6,7 +6,6 @@ import type {
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
 	AriaDescriptionPropType,
-	ButtonVariantPropType,
 	ClickableElement,
 	CustomClassPropType,
 	DownloadPropType,
@@ -20,6 +19,7 @@ import type {
 	LinkTargetPropType,
 	ShortKeyPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 
@@ -168,5 +168,5 @@ export class KolLinkButton implements ClickableElement, FocusableElement, LinkBu
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _variant?: VariantClassNamePropType = 'normal';
 }

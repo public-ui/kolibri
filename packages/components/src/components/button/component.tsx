@@ -27,6 +27,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import {
+	classNameFromVariant,
 	mapBoolean2String,
 	mapStringOrBoolean2String,
 	setEventTarget,
@@ -165,7 +166,7 @@ export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElemen
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={clsx('kol-button', {
 						'kol-button--disabled': isDisabled,
-						[`kol-button--${this.state._variant as string}`]: this.state._variant !== 'custom',
+						[classNameFromVariant(this.state._variant, 'button')]: this.state._variant !== undefined,
 						'kol-button--inline': this.state._inline === true,
 						'kol-button--standalone': this.state._inline === false,
 						'kol-button--hide-label': hideLabel,
