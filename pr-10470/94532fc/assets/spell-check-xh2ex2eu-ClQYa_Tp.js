@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-IhdJe_Lb.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};

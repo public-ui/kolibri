@@ -1,1 +1,0 @@
-import{jt as e}from"./index-CVVv4N3o.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
