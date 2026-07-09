@@ -1,0 +1,23 @@
+{
+	"buttonVariants": [
+		"primary",
+		"secondary",
+		"tertiary",
+		"normal",
+		"danger",
+		"ghost"
+	],
+	"iconVariants": [
+		"ecl-icons-livestreaming",
+        "ecl-icons-log-in",
+        "ecl-icons-digital",
+        "ecl-icons-information-round"
+	],
+	"iconVariantsButton": [
+		"ecl-icons-livestreaming"
+	],
+	"iconVariantsInput": [
+		"ecl-icons-digital"
+	],
+	"linkVariants": ["brand"]
+}
