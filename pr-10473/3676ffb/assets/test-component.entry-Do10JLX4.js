@@ -1,0 +1,1 @@
+import{s as e}from"./index-yAp1GEpb.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};

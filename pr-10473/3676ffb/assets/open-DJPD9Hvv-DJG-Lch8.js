@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-yAp1GEpb.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
