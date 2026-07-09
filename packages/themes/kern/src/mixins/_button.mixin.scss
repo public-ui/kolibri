@@ -8,10 +8,10 @@
 
 		--button-min-size: var(--kern-metric-dimension-x-large);
 		--button-padding: var(--kern-metric-space-small) var(--kern-metric-space-default);
+		min-width: var(--button-min-size);
+		min-height: var(--button-min-size);
 
 		font-size: var(--kern-typography-font-size-static-medium);
-		min-height: var(--button-min-size);
-		min-width: var(--button-min-size);
 
 		&:focus-visible {
 			@include focus-outline;

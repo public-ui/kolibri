@@ -17,18 +17,13 @@ const SAFE_CLASS_NAME_ALLOWED = new Set([SAFE_CLASS_NAME_RE.source]);
 
 const beforePatchString = (component: Generic.Element.Component): void => {
 	if (component.nextState?.has('_variant')) {
-		const variants = component.nextState?.get('_variant') as unknown;
+		const variants = component.nextState?.get('_variant');
 		let nextStateVariants: VariantClassNamePropType = [];
 		if (isString(variants, 1)) {
-			console.log('isString');
 			nextStateVariants = (variants as string).split(' ');
 		} else if (Array.isArray(variants)) {
-			console.log('isarray');
-
 			nextStateVariants = variants;
 		}
-		console.log(nextStateVariants);
-
 		component.nextState?.set('_variant', nextStateVariants);
 	}
 };
