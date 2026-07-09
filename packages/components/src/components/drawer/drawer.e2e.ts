@@ -1,3 +1,4 @@
+import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 
@@ -84,6 +85,31 @@ test.describe('kol-drawer', () => {
 				element._open = false;
 			});
 			await expect(page.getByTestId('drawer-content')).not.toBeVisible();
+		});
+	});
+
+	test.describe('scroll lock', () => {
+		const getDocumentOverflow = (page: Page) => page.evaluate(() => getComputedStyle(document.documentElement).overflow);
+
+		test('it locks the background scroll while open and unlocks it after closing', async ({ page }) => {
+			await page.setContent('<div style="height: 200vh;"><kol-drawer _label="Details" _open>Drawer content</kol-drawer></div>');
+			await page.waitForChanges();
+			await expect.poll(() => getDocumentOverflow(page)).toBe('hidden');
+
+			await page.keyboard.press('Escape');
+			// The scroll lock is released after the slide-out animation, when the native dialog closes.
+			await expect.poll(() => getDocumentOverflow(page)).toBe('visible');
+		});
+
+		test('it does not lock the background scroll when opened non-modally', async ({ page }) => {
+			await page.setContent(
+				'<div style="height: 200vh;"><kol-drawer _label="Details"><div data-testid="drawer-content">Drawer content</div></kol-drawer></div>',
+			);
+			const kolDrawer = page.locator('kol-drawer');
+
+			await kolDrawer.evaluate((element: HTMLKolDrawerElement) => element.show());
+			await expect(page.getByTestId('drawer-content')).toBeVisible();
+			expect(await getDocumentOverflow(page)).toBe('visible');
 		});
 	});
 
