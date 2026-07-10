@@ -170,7 +170,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	if (variant) {
 		stateCssClasses = {
 			...stateCssClasses,
-			[classNameFromVariant(variant, 'form-field')]: variant !== undefined,
+			[classNameFromVariant(variant, 'form-field')]: true,
 		};
 	}
 
