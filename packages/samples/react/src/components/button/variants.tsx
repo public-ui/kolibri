@@ -1,4 +1,5 @@
 import { KolButton, KolHeading } from '@public-ui/react-v19';
+import type { ButtonVariant } from '@public-ui/theme-default';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -45,6 +46,8 @@ export const ButtonVariants: FC = () => {
 							})
 						)}
 					</div>
+
+					<KolButton _variant={ButtonVariant} _label="variant"></KolButton>
 				</section>
 			</div>
 		</>

@@ -100,3 +100,5 @@ export const DEFAULT = KoliBri.createTheme(
 		inputNumberButtons: 'show',
 	},
 );
+
+export * from './variants';
