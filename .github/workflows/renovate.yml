@@ -1,0 +1,65 @@
+name: Renovate
+
+# Self-hosted Renovate runner — see docs/RENOVATE.md.
+#
+# Triggers:
+#   - schedule:          Mondays 04:00 UTC. The repo's renovate.json additionally limits PR
+#                        creation to "before 6am on monday" (Europe/Berlin).
+#   - workflow_dispatch: manual "Run workflow" button; optionally tick "dry_run" to preview
+#                        what Renovate would do without creating branches/PRs.
+#
+# Auth: reuses the existing GitHub App (secrets.APP_ID / secrets.PRIVATE_KEY — the same app as
+#       "04 - Update pnpm Lock"). The app installation must grant:
+#         contents: write, pull-requests: write, issues: write (Dependency Dashboard)
+#         and workflows: write (so the github-actions manager can update .github/workflows/*).
+# Alternative: drop the app-token step and pass a PAT via `token: ${{ secrets.RENOVATE_TOKEN }}`.
+
+on:
+  schedule:
+    - cron: '0 4 * * 1'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Preview only — do not create branches/PRs'
+        type: boolean
+        default: false
+      log_level:
+        description: 'Renovate log level'
+        type: choice
+        options:
+          - info
+          - debug
+        default: info
+
+concurrency:
+  group: 'workflow-${{ github.workflow }}'
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  renovate:
+    # Never run on forks (scheduled workflows would otherwise fire there too).
+    if: github.repository == 'public-ui/kolibri'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@v46.1.18
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+        env:
+          LOG_LEVEL: ${{ inputs.log_level || 'info' }}
+          RENOVATE_PLATFORM: github
+          RENOVATE_AUTODISCOVER: 'false'
+          RENOVATE_REPOSITORIES: ${{ github.repository }}
+          RENOVATE_ONBOARDING: 'false'
+          # Empty string is ignored by Renovate (skips unset env vars), so non-dry runs are unaffected.
+          RENOVATE_DRY_RUN: ${{ inputs.dry_run == true && 'full' || '' }}

@@ -118,9 +118,14 @@
 		}
 	}
 
-	.kol-close-button .#{$block-classname}--normal {
-		@include kol-button-ghost();
-		--kol-focus-outline-offset: -2px;
+	.kol-close-button {
+		align-self: self-start;
+
+		.#{$block-classname}--normal {
+			@include kol-button-ghost();
+
+			--kol-focus-outline-offset: -2px;
+		}
 	}
 
 	.kol-button--hide-label {

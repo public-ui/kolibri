@@ -19,6 +19,7 @@
 
 		&__columns {
 			padding: to-rem(8); // some space for hover and focus styles
+			gap: to-rem(8);
 		}
 
 		&__actions {

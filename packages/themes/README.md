@@ -8,6 +8,15 @@
 [![size](https://img.shields.io/bundlephobia/min/@public-ui/themes)](https://bundlephobia.com/result?p=@public-ui/themes)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
 
+> [!WARNING]
+> **`@public-ui/themes` is deprecated and will be removed in version 5.**
+>
+> This meta package only re-exports and bundles the individual theme packages. Depend on the
+> individual `@public-ui/theme-*` packages directly instead (for example `@public-ui/theme-default`,
+> `@public-ui/theme-ecl`, …). If your application uses several themes, add each one as its own
+> dependency. See [docs/BREAKING_CHANGES.v5.md](https://github.com/public-ui/kolibri/blob/develop/docs/BREAKING_CHANGES.v5.md)
+> for the full migration guide.
+
 The **Themes** module contains numerous themes (style guides) for the component library. They can be loaded in combination with the Components module.
 
 You can read more about **modularization** in the [architecture concept](https://public-ui.github.io/docs/concepts/architecture).

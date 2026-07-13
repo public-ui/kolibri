@@ -31,9 +31,5 @@
 				margin-bottom: 0;
 			}
 		}
-
-		&__close-button .kol-button {
-			@include ghost-button();
-		}
 	}
 }

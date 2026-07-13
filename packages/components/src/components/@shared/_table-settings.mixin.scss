@@ -16,20 +16,19 @@
 			border: 1px solid black;
 		}
 
-		&__columns-container {
-			max-height: to-rem(200);
-			overflow: auto;
-		}
-
 		&__columns {
 			display: grid;
-			align-items: center;
+			max-height: to-rem(200);
+			overflow: auto;
 			grid-auto-rows: min-content;
 			grid-template-columns: min-content minmax(max-content, 1fr) to-rem(140) auto auto;
 		}
 
 		&__column {
-			display: contents;
+			display: grid;
+			align-items: center;
+			grid-template-columns: subgrid;
+			grid-column: 1 / 6;
 		}
 	}
 }

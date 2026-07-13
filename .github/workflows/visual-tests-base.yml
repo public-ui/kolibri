@@ -7,6 +7,7 @@ on:
       - 'packages/components/**'
       - 'packages/themes/**'
       - 'packages/samples/react/**'
+      - 'packages/tools/visual-tests/**'
       - 'packages/test-tag-name-transformer/**'
       - '.github/workflows/visual-tests-base.yml'
       - '.github/actions/pnpm-setup/**'
@@ -39,7 +40,7 @@ jobs:
         run: npx playwright install --with-deps firefox
 
       - name: Build base branch
-        run: pnpm --filter @public-ui/sample-react^... build
+        run: pnpm --filter @public-ui/visual-tests^... build
 
       - name: Generate base snapshots
         run: pnpm --filter=@public-ui/${{ matrix.package }} test:update:e2e
@@ -84,7 +85,7 @@ jobs:
           fi
 
       - name: Build head branch
-        run: pnpm --filter @public-ui/sample-react^... build
+        run: pnpm --filter @public-ui/visual-tests^... build
 
       - name: Visual Tests
         run: pnpm --filter=@public-ui/${{ matrix.package }} test

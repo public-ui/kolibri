@@ -57,7 +57,7 @@ jobs:
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
       - name: Cache Playwright browsers
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -67,10 +67,10 @@ jobs:
         run: npx playwright install --with-deps chromium firefox webkit
       - name: E2E Test components
         run: pnpm --filter @public-ui/components test:e2e
-      - name: React samples build dependencies
-        run: pnpm --filter @public-ui/sample-react^... build
+      - name: Presentation build dependencies
+        run: pnpm --filter @public-ui/presentation^... build
       - name: E2E Test react samples
-        run: pnpm --filter @public-ui/sample-react test:e2e
+        run: pnpm --filter @public-ui/presentation test:e2e
       - uses: ./.github/actions/upload-reports
         if: failure()
         with:
@@ -90,7 +90,7 @@ jobs:
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
       - name: Cache Playwright browsers
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -99,7 +99,7 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps firefox
       - name: Build
-        run: pnpm --filter @public-ui/sample-react^... build
+        run: pnpm --filter @public-ui/visual-tests^... build
       - name: Visual Tests
         run: pnpm --filter=@public-ui/${{ matrix.package }} test
       - uses: ./.github/actions/upload-reports

@@ -3,6 +3,7 @@ import { ButtonAccessKey } from './access-key';
 import { ButtonAriaDescription } from './aria-description';
 import { ButtonBaselined } from './baselined';
 import { ButtonBasic } from './basic';
+import { ButtonInFixedGrid } from './buttons-in-fixed-grid';
 import { ButtonDisabled } from './disabled';
 import { ButtonExpertSlot } from './expert-slot';
 import { ButtonFocusOptions } from './focus-options';
@@ -30,5 +31,6 @@ export const BUTTON_ROUTES: Routes = {
 		'expert-slot': ButtonExpertSlot,
 		'row-reverse-tooltip': ButtonRowReverseTooltip,
 		'focus-options': ButtonFocusOptions,
+		'fixed-grid': ButtonInFixedGrid,
 	},
 };
