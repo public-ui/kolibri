@@ -12,6 +12,7 @@
 
 	.#{$block-classname} {
 		display: flex;
+		height: 100%;
 		min-height: var(--a11y-min-size);
 		font-style: to-rem(16);
 		text-decoration-line: none;

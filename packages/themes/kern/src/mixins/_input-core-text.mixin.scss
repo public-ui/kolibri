@@ -41,10 +41,6 @@
 					padding-right: var(--kern-metric-space-small);
 				}
 			}
-
-			.kol-icon {
-				font-size: var(--kern-metric-dimension-default);
-			}
 		}
 
 		&:has(&__adornment--start:not(:empty)) .kol-input {
