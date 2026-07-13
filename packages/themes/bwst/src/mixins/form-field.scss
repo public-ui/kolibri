@@ -52,9 +52,16 @@
 				color: var(--color-danger);
 			}
 		}
+
 		.kol-form-field__label {
+			margin-bottom: to-rem(2);
+
 			font-size: to-rem(14);
 			font-weight: bold;
+		}
+
+		&__label[hidden] ~ &__msg {
+			margin-bottom: to-rem(2);
 		}
 	}
 }
