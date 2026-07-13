@@ -323,7 +323,7 @@ export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElemen
 	 * Defines which variant should be used for presentation.
 	 * @internal
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = getFeatureFlag('buttonStandardVariant', this.host) ?? 'normal';
+	@Prop() public _variant?: VariantClassNamePropType = getFeatureFlag('buttonVariantDefaultVariant', this.host) ?? 'normal';
 
 	@State() public state: ButtonStates = {
 		_icons: {},

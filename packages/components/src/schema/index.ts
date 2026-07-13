@@ -28,7 +28,11 @@ declare module 'adopted-style-sheets' {
 		 * so themes that do not declare it keep the existing behaviour.
 		 */
 		inputNumberButtons: 'show' | 'hide';
-		buttonStandardVariant: VariantClassNamePropType;
+		/**
+		 * Controls the standard variant for buttons/linkbuttons.
+		 * When set this is the variant used whenever no variant is provided
+		 */
+		buttonVariantDefault: VariantClassNamePropType;
 	}
 }
 

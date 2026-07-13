@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
+import { getFeatureFlag } from 'adopted-style-sheets';
 import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 import type {
 	ClickableElement,
@@ -70,9 +71,10 @@ export class KolToolbar implements ClickableElement, FocusableElement, ToolbarAP
 
 		const props = {
 			key: index,
-			class: 'button normal kol-toolbar__item',
+			class: 'kol-toolbar__item',
 			_tabIndex: tabIndex,
-			_variant: 'normal',
+			_inline: false,
+			_variant: getFeatureFlag('buttonVariantDefaultVariant', this.host) ?? 'normal',
 		};
 		const catchRef = (el?: HTMLKolLinkWcElement | HTMLKolButtonWcElement) => {
 			if (el) this.indexToElement.set(index, el);

@@ -98,6 +98,6 @@ export const KERN_V2 = KoliBri.createTheme(
 	},
 	{
 		inputNumberButtons: 'hide',
-		buttonStandardVariant: 'secondary',
+		buttonVariantDefaultVariant: 'secondary',
 	},
 );
