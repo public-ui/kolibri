@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-Ch39WRAX.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};

@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-JeFZbl2t.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};
