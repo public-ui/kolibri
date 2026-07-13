@@ -98,6 +98,6 @@ export const DEFAULT = KoliBri.createTheme(
 	},
 	{
 		inputNumberButtons: 'show',
-		buttonVariantDefaultVariant: 'normal',
+		buttonVariantDefault: 'normal',
 	},
 );

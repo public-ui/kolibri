@@ -176,5 +176,5 @@ export class KolLinkButton implements ClickableElement, FocusableElement, LinkBu
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = getFeatureFlag('buttonVariantDefaultVariant', this.host) ?? 'normal';
+	@Prop() public _variant?: VariantClassNamePropType = getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal';
 }

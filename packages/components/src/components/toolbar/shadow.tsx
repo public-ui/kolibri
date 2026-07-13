@@ -74,7 +74,7 @@ export class KolToolbar implements ClickableElement, FocusableElement, ToolbarAP
 			class: 'kol-toolbar__item',
 			_tabIndex: tabIndex,
 			_inline: false,
-			_variant: getFeatureFlag('buttonVariantDefaultVariant', this.host) ?? 'normal',
+			_variant: getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal',
 		};
 		const catchRef = (el?: HTMLKolLinkWcElement | HTMLKolButtonWcElement) => {
 			if (el) this.indexToElement.set(index, el);
