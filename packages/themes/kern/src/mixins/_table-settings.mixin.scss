@@ -25,6 +25,7 @@
 
 		&__columns {
 			padding: var(--kern-metric-space-small);
+			gap: var(--kern-metric-space-default) var(--kern-metric-space-small);
 		}
 
 		&__actions {
