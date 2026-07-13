@@ -54,6 +54,7 @@ import {
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
 
+import { getFeatureFlag } from 'adopted-style-sheets';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { SpanFC } from '../../internal/functional-components/span/component';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
@@ -322,14 +323,13 @@ export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElemen
 	 * Defines which variant should be used for presentation.
 	 * @internal
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType = getFeatureFlag('buttonStandardVariant', this.host) ?? 'normal';
 
 	@State() public state: ButtonStates = {
 		_icons: {},
 		_label: '', // ⚠ required
 		_on: {},
 		_type: 'button',
-		_variant: 'normal',
 	};
 
 	public constructor() {

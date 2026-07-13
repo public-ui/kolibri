@@ -1,6 +1,7 @@
 import { Theme } from 'adopted-style-sheets';
 
 import { KeyEnum } from './i18n-keys';
+import { VariantClassNamePropType } from './props';
 import { TagEnum } from './tag-names';
 
 /**
@@ -27,6 +28,7 @@ declare module 'adopted-style-sheets' {
 		 * so themes that do not declare it keep the existing behaviour.
 		 */
 		inputNumberButtons: 'show' | 'hide';
+		buttonStandardVariant: VariantClassNamePropType;
 	}
 }
 
