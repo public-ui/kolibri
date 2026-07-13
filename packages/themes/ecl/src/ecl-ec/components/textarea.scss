@@ -1,5 +1,17 @@
+@use '../../mixins/to-rem' as *;
 @use '../mixins/input-text' as *;
 
 @layer kol-theme-component {
 	@include input-text;
+
+	.kol-textarea {
+		background-color: transparent;
+		min-height: to-rem(40);
+		padding: to-rem(2) to-rem(15);
+		border: none;
+
+		&::placeholder {
+			color: var(--ecl-color-dark-60);
+		}
+	}
 }

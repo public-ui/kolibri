@@ -96,3 +96,9 @@ hr {
 		display: none !important;
 	}
 }
+
+.fixed-height-grid {
+	margin-top: 32px;
+	grid-auto-rows: 60px;
+	grid-template-columns: repeat(4, 1fr);
+}

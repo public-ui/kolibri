@@ -14,8 +14,13 @@
 			grid-column: var(--form-field-grid-column-2);
 		}
 
+		&__label[hidden] ~ &__msg {
+			margin-bottom: to-rem(2);
+		}
+
 		&__label {
 			display: flex;
+			margin-bottom: to-rem(2);
 			order: 2;
 			grid-column: var(--form-field-grid-column-1);
 

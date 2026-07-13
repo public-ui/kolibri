@@ -22,6 +22,10 @@
 
 		&-container {
 			background: var(--color-white-100);
+
+			&__adornment .kol-icon {
+				font-size: to-rem(24);
+			}
 		}
 	}
 }
