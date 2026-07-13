@@ -12,11 +12,14 @@
 		&__dialog {
 			padding: 0;
 			border: none;
+			/* Prevent scroll chaining from scrollable drawer content to the page. */
+			overscroll-behavior: contain;
 		}
 
 		&__wrapper {
 			position: fixed;
 			overflow: auto;
+			overscroll-behavior: contain;
 
 			&--left,
 			&--right {
@@ -64,5 +67,6 @@
 
 	.kol-drawer__dialog .kol-card__content {
 		overflow-y: auto;
+		overscroll-behavior: contain;
 	}
 }

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/themes",
-	"version": "4.3.0-rc.2",
+	"version": "4.3.0-rc.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -47,7 +47,7 @@
 	"scripts": {
 		"build": "rollup -c",
 		"build:deps": "pnpm --filter @public-ui/themes^... --filter @public-ui/theme-ecl --filter @public-ui/theme-desy build",
-		"dev": "rollup -c --watch",
+		"dev:all": "pnpm -r --parallel dev",
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",
 		"lint:eslint": "eslint src",
