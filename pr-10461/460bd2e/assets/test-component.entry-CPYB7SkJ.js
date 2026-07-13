@@ -1,0 +1,1 @@
+import{s as e}from"./index-JeFZbl2t.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};
