@@ -1,1 +1,0 @@
-import{jt as e}from"./index-DGsOu2pM.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};

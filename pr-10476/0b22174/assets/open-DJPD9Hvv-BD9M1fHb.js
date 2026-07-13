@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-CcDOJrN6.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};

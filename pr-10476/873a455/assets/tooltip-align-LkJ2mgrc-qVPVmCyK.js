@@ -1,1 +1,0 @@
-import"./index-CDROILra.js";import{r as e}from"./align-BdqBkiyq-xfC9CT2T.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};

@@ -1,1 +1,0 @@
-import{At as e}from"./index-BAsXnWyk.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
