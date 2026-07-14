@@ -1,5 +1,4 @@
 import { KolButton, KolHeading } from '@public-ui/react-v19';
-import { ButtonVariantsEnum } from '@public-ui/theme-default';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -24,7 +23,7 @@ export const ButtonVariants: FC = () => {
 			<SampleDescription>
 				<p>
 					This story showcases all available button variants for this theme. You can import <code>ButtonVariantsEnum</code> from your theme to always use the
-					right variants (see last button sample).
+					right variants.
 				</p>
 			</SampleDescription>
 
@@ -49,9 +48,6 @@ export const ButtonVariants: FC = () => {
 							})
 						)}
 					</div>
-				</section>
-				<section className="flex flex-wrap gap-4 items-center mt-20">
-					<KolButton _variant={ButtonVariantsEnum.Primary} _label="ButtonVariantsEnum.Primary"></KolButton>
 				</section>
 			</div>
 		</>
