@@ -5,8 +5,7 @@ import type { AbbrApi } from '../../internal/functional-components/abbr/api';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 
 /**
- * The **Abbr** component implements the HTML tag `abbr` with an accessible tooltip.
- * The tooltip for the description is displayed and read aloud when the **Abbr** component is focused or hovered.
+ * The **Abbr** component implements the HTML tag `abbr`.
  *
  * @slot - The abbreviation (short form).
  */
