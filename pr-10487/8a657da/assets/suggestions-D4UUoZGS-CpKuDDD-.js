@@ -1,1 +1,0 @@
-import{W as e,kt as t}from"./index-DpaBJRtH.js";var n=(n,r)=>{t(n,`_suggestions`,e=>typeof e==`string`||typeof e==`number`,r,void 0,{hooks:{afterPatch:t=>{Array.isArray(t)&&t.length&&e(`Property suggestions: Options have accessibility issues in how browsers implemented them and should not be used for now.`)}}})};export{n as t};

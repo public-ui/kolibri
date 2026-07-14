@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-BEQQHAW4.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};

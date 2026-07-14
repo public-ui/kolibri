@@ -1,1 +1,0 @@
-import{At as e}from"./index-CL5GLQnm.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
