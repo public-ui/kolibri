@@ -6,7 +6,7 @@
 
 	.kol-input {
 		background-color: transparent;
-		height: to-rem(40);
+		height: to-rem(36);
 		padding: 0 to-rem(7);
 		border: none;
 	}
@@ -18,10 +18,8 @@
 
 		&__adornment {
 			position: absolute;
-
-			.kol-icon {
-				font-size: to-rem(24);
-			}
+			top: 0;
+			bottom: 0;
 
 			&--start {
 				left: 0;

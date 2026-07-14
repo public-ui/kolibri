@@ -75,26 +75,13 @@
 		}
 	}
 
-	.kol-alert__closer {
-		place-self: center;
-
-		.kol-button {
-			border-radius: 50%; // visible on focus
-			width: var(--a11y-min-size);
-			height: var(--a11y-min-size);
-			cursor: pointer;
-
-			.kol-alert--variant-msg & {
-				--text-color: var(--alert-accent-color);
-			}
-
-			.kol-alert--variant-card & {
-				--text-color: var(--color-light);
-			}
+	.kol-alert__closer .kol-button {
+		.kol-alert--variant-msg & {
+			--text-color: var(--alert-accent-color);
 		}
 
-		.kol-icon {
-			font-size: to-rem(19.2);
+		.kol-alert--variant-card & {
+			--text-color: var(--color-light);
 		}
 	}
 

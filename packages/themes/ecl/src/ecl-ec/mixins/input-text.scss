@@ -27,6 +27,7 @@
 		&__adornment {
 			position: absolute;
 			top: to-rem(-1);
+			bottom: to-rem(-1);
 
 			&--start {
 				left: 0;

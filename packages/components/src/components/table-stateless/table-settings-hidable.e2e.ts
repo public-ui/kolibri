@@ -39,8 +39,8 @@ test.describe('kol-table-settings hidable functionality', () => {
 		await expect(idCheckbox).toBeDisabled();
 		await expect(idCheckbox).toBeChecked(); // Should be checked since it's visible
 
-		// Check that the label contains "nicht ausblendbar" text
-		await expect(idColumnRow).toContainText('nicht ausblendbar');
+		// Check that the label contains "kann nicht ausgeblendet werden" text
+		await expect(idColumnRow).toContainText('kann nicht ausgeblendet werden');
 
 		// Check that other columns have enabled checkboxes
 		const nameColumnRow = page.locator('.kol-table-settings__column').filter({ hasText: 'Name' });

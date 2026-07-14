@@ -105,5 +105,9 @@
 				}
 			}
 		}
+
+		&__adornment .kol-icon {
+			font-size: var(--kern-metric-dimension-default);
+		}
 	}
 }

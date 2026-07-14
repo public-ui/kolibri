@@ -1246,7 +1246,6 @@ ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
 		skipFailures: true,
 	},
 	snapshot: {
-		skip: true,
 		zoom: {
 			skip: true,
 		},
