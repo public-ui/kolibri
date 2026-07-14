@@ -45,7 +45,7 @@
 		"wcag"
 	],
 	"scripts": {
-		"build": "rollup -c",
+		"build": "pnpm -r build",
 		"build:deps": "pnpm --filter @public-ui/themes^... --filter @public-ui/theme-ecl --filter @public-ui/theme-desy build",
 		"dev:all": "pnpm -r --parallel dev",
 		"format": "prettier --check src",
