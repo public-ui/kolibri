@@ -6,7 +6,6 @@ import type {
 	AriaDescriptionPropType,
 	ButtonCallbacksPropType,
 	ButtonTypePropType,
-	ButtonVariantPropType,
 	ClickableElement,
 	CustomClassPropType,
 	FocusableElement,
@@ -19,6 +18,7 @@ import type {
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 
 import { KolButtonWcTag, KolPopoverButtonWcTag } from '../../core/component-names';
@@ -241,7 +241,7 @@ export class KolSplitButton implements ClickableElement, FocusableElement, Split
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _variant?: VariantClassNamePropType = 'normal';
 
 	@State() public state: SplitButtonStates = {
 		_show: false,

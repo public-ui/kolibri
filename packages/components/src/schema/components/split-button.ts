@@ -3,7 +3,6 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	ButtonCallbacksPropType,
 	PropAlternativeButtonLinkRole,
-	PropButtonVariant,
 	PropDisabled,
 	PropHideLabel,
 	PropIcons,
@@ -11,6 +10,7 @@ import type {
 	PropName,
 	PropShow,
 	PropTooltipAlign,
+	PropVariantClassName,
 } from '../props';
 import type { StencilUnknown } from '../types';
 
@@ -22,7 +22,7 @@ type OptionalProps = {
 	PropAlternativeButtonLinkRole &
 	PropIcons &
 	PropTooltipAlign &
-	PropButtonVariant &
+	PropVariantClassName &
 	PropName;
 
 type RequiredStates = PropShow;

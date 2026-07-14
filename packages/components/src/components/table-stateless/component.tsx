@@ -30,6 +30,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import {
+	classNameFromVariant,
 	Log,
 	setState,
 	validateFixedCols,
@@ -1263,7 +1264,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		return (
 			<div
 				class={clsx('kol-table', {
-					[`kol-table--${this.state._variant as string}`]: this.state._variant !== undefined,
+					[classNameFromVariant(this.state._variant, 'table')]: this.state._variant !== undefined,
 				})}
 			>
 				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _horizontalHeaderCells={horizontalHeaders ?? []} />}
