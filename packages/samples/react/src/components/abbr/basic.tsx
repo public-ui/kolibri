@@ -11,11 +11,7 @@ export const AbbrBasic: FC = () => (
 		</SampleDescription>
 
 		<p>
-			I am <KolAbbr _label="as an example">e.g.</KolAbbr> an abbreviation.
-		</p>
-
-		<p>
-			I am <KolAbbr>e.g.</KolAbbr> an abbreviation without label.
+			I am <KolAbbr>e.g.</KolAbbr> an abbreviation.
 		</p>
 	</>
 );
