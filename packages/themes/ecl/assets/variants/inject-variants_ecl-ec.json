@@ -8,16 +8,15 @@
 		"ghost"
 	],
 	"iconVariants": [
-		"desy-home",
-        "desy-settings",
-        "desy-dgs",
-        "desy-alert-circle"
+		"ecl-icons-livestreaming",
+        "ecl-icons-log-in",
+        "ecl-icons-digital",
+        "ecl-icons-information-round"
 	],
 	"iconVariantsButton": [
-		"desy-settings"
+		"ecl-icons-livestreaming"
 	],
 	"iconVariantsInput": [
-		"desy-file-add"
-	],
-	"linkVariants": ["small"]
+		"ecl-icons-digital"
+	]
 }

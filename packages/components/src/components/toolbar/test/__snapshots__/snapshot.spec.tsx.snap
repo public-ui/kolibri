@@ -4,8 +4,8 @@ exports[`kol-toolbar should render with _label="Label horizontal" _items=[{"type
 <kol-toolbar>
   <template shadowrootmode="open">
     <div aria-label="Label horizontal" class="kol-toolbar kol-toolbar--orientation-horizontal" role="toolbar">
-      <kol-button-wc _label="Button" _tabindex="0" _variant="normal" class="button kol-toolbar__item normal" type="button"></kol-button-wc>
-      <kol-link-wc _href="#" _label="Link" _tabindex="-1" _variant="normal" class="button kol-toolbar__item normal" type="link"></kol-link-wc>
+      <kol-button-wc _label="Button" _tabindex="0" _variant="normal" class="kol-toolbar__item" type="button"></kol-button-wc>
+      <kol-link-wc _href="#" _label="Link" _tabindex="-1" _variant="normal" class="kol-toolbar__item" type="link"></kol-link-wc>
     </div>
   </template>
 </kol-toolbar>
@@ -15,8 +15,8 @@ exports[`kol-toolbar should render with _label="Label vertical" _items=[{"type":
 <kol-toolbar>
   <template shadowrootmode="open">
     <div aria-label="Label vertical" class="kol-toolbar kol-toolbar--orientation-vertical" role="toolbar">
-      <kol-button-wc _label="Button" _tabindex="0" _variant="normal" class="button kol-toolbar__item normal" type="button"></kol-button-wc>
-      <kol-link-wc _href="#" _label="Link" _tabindex="-1" _variant="normal" class="button kol-toolbar__item normal" type="link"></kol-link-wc>
+      <kol-button-wc _label="Button" _tabindex="0" _variant="normal" class="kol-toolbar__item" type="button"></kol-button-wc>
+      <kol-link-wc _href="#" _label="Link" _tabindex="-1" _variant="normal" class="kol-toolbar__item" type="link"></kol-link-wc>
     </div>
   </template>
 </kol-toolbar>

@@ -8,7 +8,6 @@ import type {
 	AriaDescriptionPropType,
 	ButtonCallbacksPropType,
 	ButtonTypePropType,
-	ButtonVariantPropType,
 	ClickableElement,
 	CustomClassPropType,
 	FocusableElement,
@@ -22,6 +21,7 @@ import type {
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 import { validateInline, validatePopoverAlign } from '../../schema';
 import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
@@ -242,7 +242,7 @@ export class KolPopoverButtonWc implements ClickableElement, FocusableElement, P
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _variant?: VariantClassNamePropType = 'normal';
 
 	@Watch('_inline')
 	public validateInline(value?: InlinePropType): void {

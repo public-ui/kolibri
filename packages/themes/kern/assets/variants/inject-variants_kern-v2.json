@@ -1,4 +1,12 @@
 {
+	"buttonVariants": [
+		"primary",
+		"secondary",
+		"tertiary",
+		"primary x-small",
+		"secondary x-small",
+		"tertiary x-small"
+	],
 	"linkVariants": ["small"],
 	"iconVariants": [
 		"icon icon-dark-mode",
