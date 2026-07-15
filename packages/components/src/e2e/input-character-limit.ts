@@ -60,14 +60,14 @@ const testInputCharacterLimit = (componentName: string) => {
 				await page.setContent(`<${componentName} _label="Input" _value="abc" _max-length="3" _has-counter></${componentName}>`);
 				await page.waitForChanges();
 				const ariaCounter = page.getByTestId('input-counter-aria');
-				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht! ');
-				const initialContent = await ariaCounter.textContent();
+				const expectedText = '3 von 3 Zeichen Zeichenlimit erreicht! ';
+				await expect(ariaCounter).toHaveText(expectedText);
 
 				// Control keys are no input attempts and must not re-trigger the live region. Wait past the
 				// debounce window and assert the raw content did not change (no toggled NBSP).
 				await page.locator('input,textarea').press('ArrowLeft');
 				await page.waitForTimeout(1300);
-				expect(await ariaCounter.textContent()).toBe(initialContent);
+				await expect(ariaCounter).toHaveText(expectedText);
 			});
 
 			test.describe('With _maxLengthBehaviour="soft"', () => {
