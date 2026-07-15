@@ -67,6 +67,8 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
 
 /**
  * @internal
+ *
+ * @slot expert - Custom label content, e.g. for rich text or icons.
  */
 @Component({
 	tag: 'kol-button-wc',

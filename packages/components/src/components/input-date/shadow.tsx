@@ -45,7 +45,7 @@ import { InputDateController } from './controller';
 /**
  * The **Date** input type creates an input field for date values. These can be specific dates as well as weeks, months, or time values.
  *
- * @slot - The label of the input field.
+ * @slot expert - Custom label content, e.g. for rich text or icons.
  */
 @Component({
 	tag: 'kol-input-date',

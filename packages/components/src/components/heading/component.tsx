@@ -10,7 +10,7 @@ import type { HeadingLevel, LabelWithExpertSlotPropType } from '../../schema';
 
 /**
  *
- * @slot - Inhalt der Überschrift.
+ * @slot expert - Custom label content, e.g. for rich text or icons.
  */
 @Component({
 	tag: 'kol-heading',

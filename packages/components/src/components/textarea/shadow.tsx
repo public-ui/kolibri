@@ -42,6 +42,8 @@ import { TextareaController } from './controller';
 
 /**
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
+ *
+ * @slot expert - Custom label content, e.g. for rich text or icons.
  */
 const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
 	el.style.overflow = 'hidden'; // verhindert, dass ein Scrollbalken kurz angezeigt wird

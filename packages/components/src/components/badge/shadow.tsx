@@ -7,7 +7,7 @@ import type {
 	InternalButtonProps,
 	KolFocusOptions,
 	KoliBriIconsProp,
-	LabelPropType,
+	LabelWithExpertSlotPropType,
 	PropColor,
 	Stringified,
 } from '../../schema';
@@ -24,6 +24,8 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 /**
  * The **Badge** component allows you to visually highlight specific information.
  * In addition to specifying the background color and automatically calculating the text color, it also supports adding an icon and/or a different font style.
+ *
+ * @slot expert - Custom label content, e.g. for rich text or icons.
  */
 @Component({
 	tag: 'kol-badge',
@@ -100,7 +102,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).

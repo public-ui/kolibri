@@ -26,7 +26,7 @@ import { validateAriaDetails } from '../../schema/props/aria-details';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 /**
- * @slot - The label of the input field.
+ * @slot expert - Custom label content, e.g. for rich text or icons.
  */
 @Component({
 	tag: 'kol-select',

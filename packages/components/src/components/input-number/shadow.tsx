@@ -45,7 +45,7 @@ import { InputNumberController } from './controller';
 /**
  * The **Number** input type creates an input field for numeric values. Use the `_min`, `_max`, and `_step` properties to restrict the accepted value range.
  *
- * @slot - The label of the input field.
+ * @slot expert - Custom label content, e.g. for rich text or icons.
  */
 @Component({
 	tag: 'kol-input-number',
