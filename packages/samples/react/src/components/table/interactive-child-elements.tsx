@@ -1,4 +1,4 @@
-import type { ButtonVariantPropType, KoliBriTableCell, KoliBriTableHeaderCell } from '@public-ui/components';
+import type { KoliBriTableCell, KoliBriTableHeaderCell, VariantClassNamePropType } from '@public-ui/components';
 import { createReactRenderElement, KolButton, KolButtonLink, KolLink, KolLinkButton, KolTableStateless } from '@public-ui/react-v19';
 import type { ComponentProps, FC } from 'react';
 import React from 'react';
@@ -16,7 +16,7 @@ function KolButtonWrapper(props: KolButtonProps) {
 	return <KolButton {...props} _on={dummyEventHandler} />;
 }
 
-const getButtonHeaderCell = (variant: ButtonVariantPropType): KoliBriTableHeaderCell => {
+const getButtonHeaderCell = (variant: VariantClassNamePropType): KoliBriTableHeaderCell => {
 	const variantLabel = `${variant}`;
 	const capitalizedVariant = variantLabel.charAt(0).toUpperCase() + variantLabel.slice(1);
 	return {

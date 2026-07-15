@@ -6,7 +6,7 @@ import { BaseWebComponent } from '../../internal/functional-components/base-web-
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
 import { TooltipController } from '../../internal/functional-components/tooltip/controller';
 import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType, VariantClassNamePropType } from '../../schema';
-import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
+import { buildBadgeTextString, classNameFromVariant, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
 import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
@@ -174,7 +174,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	if (variant) {
 		stateCssClasses = {
 			...stateCssClasses,
-			[`kol-form-field--${variant}`]: true,
+			[classNameFromVariant(variant, 'form-field')]: true,
 		};
 	}
 

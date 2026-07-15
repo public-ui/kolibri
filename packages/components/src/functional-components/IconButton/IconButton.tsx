@@ -1,6 +1,6 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import { IconFC } from '../../internal/functional-components/icon/component';
-import type { ButtonVariantPropType } from '../../schema';
+import type { VariantClassNamePropType } from '../../schema';
 import KolButtonFc, { type ButtonProps } from '../Button';
 
 type IconType = {
@@ -17,7 +17,7 @@ type ButtonType = Partial<Omit<ButtonProps, 'icons'>> & {
 	icon?: string;
 	label?: string;
 	class?: string;
-	buttonVariant?: ButtonVariantPropType;
+	buttonVariant?: VariantClassNamePropType;
 
 	onClick?: (event: MouseEvent) => void;
 };

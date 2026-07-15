@@ -8,7 +8,6 @@ import type {
 	ButtonCallbacksPropType,
 	ButtonProps,
 	ButtonTypePropType,
-	ButtonVariantPropType,
 	ClickableElement,
 	CustomClassPropType,
 	FocusableElement,
@@ -20,6 +19,7 @@ import type {
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 
@@ -196,5 +196,5 @@ export class KolButton implements ButtonProps, ClickableElement, FocusableElemen
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _variant?: VariantClassNamePropType;
 }
