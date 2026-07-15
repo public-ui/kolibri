@@ -1,0 +1,1 @@
+import{jt as e}from"./index-R3jasSzo.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};

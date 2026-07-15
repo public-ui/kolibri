@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-R3jasSzo.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};
