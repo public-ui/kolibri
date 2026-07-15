@@ -33,7 +33,7 @@
 		}
 
 		&__caption {
-			min-height: calc(var(--a11y-min-size) + 2px); // leave some extra space so the settings button doesn't overlap the table borders
+			min-height: calc(var(--a11y-min-size) + 10px); // leave some extra space so the settings button doesn't overlap the table borders
 			padding-top: to-rem(12);
 			padding-bottom: to-rem(4);
 		}
