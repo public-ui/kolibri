@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-BWK5248q.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};
