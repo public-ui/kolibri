@@ -34,7 +34,7 @@
 
 		&__caption {
 			min-height: calc(var(--a11y-min-size) + 2px); // leave some extra space so the settings button doesn't overlap the table borders
-			padding: to-rem(8) var(--a11y-min-size) to-rem(8) 0;
+			line-height: var(--a11y-min-size);
 		}
 
 		&__scroll-container {
