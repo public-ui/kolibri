@@ -80,6 +80,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	private readonly onFocus = (event: FocusEvent) => {
 		this.controller.onFacade.onFocus(event);
 		this.inputHasFocus = true;
+		this.counterUpdater.retriggerAria(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	};
 
 	private readonly onInput = (event: InputEvent) => {

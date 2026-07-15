@@ -90,7 +90,7 @@ export class CounterDomUpdater {
 	 * Erzwingt – entprellt – eine erneute Ankündigung der Live-Region. `doUpdateAria` hängt dazu abwechselnd
 	 * ein nicht sichtbares NBSP an, sodass der Screenreader die identische Meldung als Änderung erkennt.
 	 */
-	private retriggerAria(currentLength: number, maxLength: number | undefined, maxLengthBehavior: MaxLengthBehaviorPropType): void {
+	public retriggerAria(currentLength: number, maxLength: number | undefined, maxLengthBehavior: MaxLengthBehaviorPropType): void {
 		if (!this.ariaSpan) return;
 		clearTimeout(this.debounceTimer);
 		this.debounceTimer = setTimeout(() => this.doUpdateAria(currentLength, maxLength, maxLengthBehavior, true), 1000);
