@@ -1,0 +1,1 @@
+import{jt as e}from"./index-Beh1_3G5.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};

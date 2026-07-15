@@ -1,0 +1,1 @@
+import{jt as e}from"./index-Beh1_3G5.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
