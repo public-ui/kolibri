@@ -21,8 +21,6 @@
 		$selection-width: to-rem(68);
 		--kol-table-selection-col-width: #{$selection-width};
 
-		padding: to-rem(8);
-
 		&__table {
 			width: 100%;
 			border-spacing: 0;
