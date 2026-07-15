@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-DE4MMFnD.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
