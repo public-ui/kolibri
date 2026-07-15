@@ -45,7 +45,7 @@ import { InputEmailController } from './controller';
 /**
  * The **Email** input type creates an input field for email addresses. It supports built-in format validation, multiple addresses via the `_multiple` property, and auto-complete suggestions.
  *
- * @slot expert - Custom label content, e.g. for rich text or icons.
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
 	tag: 'kol-input-email',

@@ -70,7 +70,7 @@ import clsx from '../../utils/clsx';
 /**
  * @internal
  *
- * @slot expert - Custom label content, e.g. for rich text or icons.
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
 	tag: 'kol-link-wc',

@@ -47,7 +47,7 @@ import { InputPasswordController } from './controller';
 /**
  * The **Password** input type creates an input field for passwords. The input is masked with dot symbols.
  *
- * @slot expert - Custom label content, e.g. for rich text or icons.
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
 	tag: 'kol-input-password',
