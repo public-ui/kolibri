@@ -49,11 +49,18 @@ const testInputCharacterLimit = (componentName: string) => {
 				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht!');
 			});
 
+			test('Should re-trigger the live region on focus', async ({ page }) => {
+				await page.setContent(`<${componentName} _label="Input" _value="abc" _max-length="3" _has-counter></${componentName}>`);
+				await page.waitForChanges();
+				const ariaCounter = page.getByTestId('input-counter-aria');
+				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht! ');
+			});
+
 			test('Should not re-trigger the live region for control keys at the limit (hard)', async ({ page }) => {
 				await page.setContent(`<${componentName} _label="Input" _value="abc" _max-length="3" _has-counter></${componentName}>`);
 				await page.waitForChanges();
 				const ariaCounter = page.getByTestId('input-counter-aria');
-				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht!');
+				await expect(ariaCounter).toHaveText('3 von 3 Zeichen Zeichenlimit erreicht! ');
 				const initialContent = await ariaCounter.textContent();
 
 				// Control keys are no input attempts and must not re-trigger the live region. Wait past the
