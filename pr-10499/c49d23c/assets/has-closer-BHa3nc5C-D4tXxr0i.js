@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-Cw75AVvI.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
