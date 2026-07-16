@@ -1,9 +1,11 @@
 import type { FC } from 'react';
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 
-import { KolButton, KolHeading, KolSelect, KolVersion } from '@public-ui/react-v19';
+import { KolButton, KolDrawer, KolHeading, KolSelect, KolVersion } from '@public-ui/react-v19';
+import { useMobile } from '../hooks/useMobile';
 
 import type { SelectOption } from '@public-ui/components';
+import { useLocation } from 'react-router';
 import type { Theme } from '../shares/theme';
 import type { Routes } from '../shares/types';
 import Navigation from './Navigation';
@@ -81,6 +83,14 @@ export const Sidebar: FC<Props> = ({ version, themes, theme, routes, routeList, 
 		[themes],
 	);
 
+	const isMobile = useMobile();
+	const locationWatch = useLocation();
+
+	useEffect(() => {
+		drawerElement.current?.close();
+	}, [locationWatch]);
+	const drawerElement = useRef<HTMLKolDrawerElement>(null);
+
 	return (
 		<aside className="app-sidebar p-4">
 			<div className="scrollable-container-wrapper">
@@ -89,16 +99,35 @@ export const Sidebar: FC<Props> = ({ version, themes, theme, routes, routeList, 
 					<KolVersion _label={version}></KolVersion>
 				</div>
 				<BuildInformation buildDate={buildDate} commitHash={commitHash} />
-				<KolSelect _label="Theme" _options={themeOption} _on={{ onChange: handleThemeSelectChange }} _value={theme} class="mt"></KolSelect>
-				<KolHeading _label="Components" _level={2} className="block mt"></KolHeading>
+				{!isMobile ? <KolSelect _label="Theme" _options={themeOption} _on={{ onChange: handleThemeSelectChange }} _value={theme} class="mt"></KolSelect> : ''}
+				{!isMobile ? <KolHeading _label="Components" _level={2} className="block mt"></KolHeading> : ''}
 				<div className="flex flex-justify-between flex-items-center mt">
 					<KolButton _icons="kolicon-chevron-left" _hideLabel _label="Previous component" _on={{ onClick: handlePreviousClick }} />
-					<span className="text-base text-center">
-						{formatSampleAsLabel()} ({getIndexOfSample() + 1}/{routeList.length})
-					</span>
+
+					{isMobile ? (
+						<div className="flex gap-4 flex-items-center">
+							<span className="text-base text-center">
+								{formatSampleAsLabel()} ({getIndexOfSample() + 1}/{routeList.length})
+							</span>
+							<KolButton _label="Navigation" _hideLabel _icons={{ right: 'kolicon-settings' }} _on={{ onClick: () => drawerElement.current?.showModal() }} />
+						</div>
+					) : (
+						<span className="text-base text-center">
+							{formatSampleAsLabel()} ({getIndexOfSample() + 1}/{routeList.length})
+						</span>
+					)}
+
 					<KolButton _icons="kolicon-chevron-right" _hideLabel _label="Next component" _on={{ onClick: handleNextClick }} />
 				</div>
-				<Navigation routes={routes} />
+				{isMobile ? (
+					<KolDrawer _align="top" _label="Navigation" _hasCloser={true} ref={drawerElement}>
+						<KolSelect _label="Theme" _options={themeOption} _on={{ onChange: handleThemeSelectChange }} _value={theme} class="mt"></KolSelect>
+						<KolHeading _label="Components" _level={2} className="block mt"></KolHeading>
+						<Navigation routes={routes} />
+					</KolDrawer>
+				) : (
+					<Navigation routes={routes} />
+				)}
 			</div>
 		</aside>
 	);
