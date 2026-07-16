@@ -101,3 +101,5 @@ export const DEFAULT = KoliBri.createTheme(
 		buttonVariantDefault: 'normal',
 	},
 );
+
+export * from './variants';

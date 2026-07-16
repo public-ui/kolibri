@@ -21,7 +21,10 @@ export const ButtonVariants: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This story showcases all available button variants: primary, secondary, tertiary, normal, danger, and ghost.</p>
+				<p>
+					This story showcases all available button variants for this theme. You can import <code>ButtonVariantsEnum</code> from your theme to always use the
+					right variants.
+				</p>
 			</SampleDescription>
 
 			<div className="grid gap-8">
