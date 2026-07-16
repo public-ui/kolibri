@@ -110,7 +110,7 @@ function Navigation({ routes }: NavigationProps): React.ReactNode {
 					},
 				}}
 			/>
-			<nav>
+			<nav className="main-nav">
 				<KolTree _label="Navigation" class="block">
 					{parentTreeElements}
 				</KolTree>
