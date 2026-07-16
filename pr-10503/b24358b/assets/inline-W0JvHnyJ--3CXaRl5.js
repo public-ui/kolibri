@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-DBisvX-t.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};
