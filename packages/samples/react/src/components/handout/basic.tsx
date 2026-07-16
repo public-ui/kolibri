@@ -242,11 +242,7 @@ export const HandoutBasic: FC = () => {
 				<KolCard className="col-span-6 sm:col-span-6 md:col-span-3 xl:col-span-2" _label="Abbreviation and Progress" _level={2}>
 					<div slot="" className="grid gap-2 p-2">
 						<p>
-							I am <KolAbbr _label="as an example">e.g.</KolAbbr> an abbreviation.
-						</p>
-
-						<p>
-							I am <KolAbbr>e.g.</KolAbbr> an abbreviation without label.
+							I am <KolAbbr>e.g.</KolAbbr> an abbreviation.
 						</p>
 						<KolProgress _variant="bar" _max={100} _value={33} _label="Progress" />
 						<KolProgress _variant="cycle" _max={100} _value={66} _label="Progress" />
@@ -455,7 +451,7 @@ export const HandoutBasic: FC = () => {
 								<KolInputRadio _orientation="horizontal" _options="[{'label':'Mr.','value':0},{'label':'Mrs.','value':1}]" _value="0" _label={`Salutation`} />
 								<KolInputCheckbox _label="">
 									<span slot="expert">
-										I accept the <KolAbbr _label="General Terms and Conditions">AGB</KolAbbr>.
+										I accept the <KolAbbr>AGB</KolAbbr>.
 									</span>
 								</KolInputCheckbox>
 							</div>
