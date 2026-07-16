@@ -7,15 +7,11 @@ import type { FC } from 'react';
 export const AbbrBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>KolAbbr shows an abbreviation and uses kol-tooltip-wc to display the long form, if provided.</p>
+			<p>KolAbbr shows an abbreviation.</p>
 		</SampleDescription>
 
 		<p>
-			I am <KolAbbr _label="as an example">e.g.</KolAbbr> an abbreviation.
-		</p>
-
-		<p>
-			I am <KolAbbr>e.g.</KolAbbr> an abbreviation without label.
+			I am <KolAbbr>e.g.</KolAbbr> an abbreviation.
 		</p>
 	</>
 );

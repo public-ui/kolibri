@@ -1,110 +1,102 @@
-import type { KoliBriTableCell, KoliBriTableDataType, KoliBriTableSelection } from '@public-ui/components';
-import { createReactRenderElement, KolButton, KolTableStateful } from '@public-ui/react-v19';
+import type { KoliBriTableDataType, KoliBriTableSelection } from '@public-ui/components';
+import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
-import { useToasterService } from '../../hooks/useToasterService';
-import { getRoot } from '../../shares/react-roots';
+import React from 'react';
+
 import { SampleDescription } from '../SampleDescription';
 
-const DATA = [
-	{ id: '1001', name: 'Foo Bar', internalIdentifier: `AAA1001` },
-	{ id: '1002', name: 'Foo Baz', internalIdentifier: `AAA1002` },
-];
+import type { KoliBriTableHeaderCellWithLogic } from '@public-ui/components';
 
-type Data = (typeof DATA)[0];
-type KolTableStatefulElement = {
-	addEventListener: (type: string, listener: (event: CustomEvent<Data[]>) => void) => void;
-	removeEventListener: (type: string, listener: (event: CustomEvent<Data[]>) => void) => void;
-	getSelection?: () => Promise<KoliBriTableDataType[] | null>;
+type ProjectTask = {
+	id: string;
+	project: string;
+	owner: string;
 };
 
-function KolButtonWrapper({ label }: { label: string }) {
-	const { dummyClickEventHandler } = useToasterService();
+const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
+	horizontal: [
+		[
+			{ key: 'id', label: 'ID', width: 80 },
+			{ key: 'project', label: 'Project', width: 200 },
+			{ key: 'owner', label: 'Owner', width: 200 },
+			{
+				type: 'action',
+				key: 'actions',
+				label: 'Actions',
+				width: 250,
+				actions: (row) => {
+					const simpleRow = row as ProjectTask;
+					return [
+						{
+							type: 'button',
+							_label: 'Start',
+							_icons: 'kolicon-chevron-right',
+							_variant: 'secondary',
+							_on: {
+								onClick: () => alert(`Start task ${simpleRow.id}`),
+							},
+						},
+					];
+				},
+			},
+		],
+	],
+};
 
-	const dummyEventHandler = {
-		onClick: dummyClickEventHandler,
-	};
-
-	return <KolButton _label={label} _on={dummyEventHandler} />;
-}
+const DATA: ProjectTask[] = [
+	{
+		id: 'T-01',
+		project: 'Onboarding checklist',
+		owner: 'Alex Rivera',
+	},
+	{
+		id: 'T-02',
+		project: 'Accessibility audit',
+		owner: 'Jamie Chen',
+	},
+	{
+		id: 'T-03',
+		project: 'UX audit',
+		owner: 'Tyler  Gray',
+	},
+	{
+		id: 'T-04',
+		project: 'Software Architectur',
+		owner: 'Tess Richardson',
+	},
+];
 
 export const TableStatefulWithSingleSelection: FC = () => {
-	const [selectedValue, setSelectedValue] = useState<Data | null>();
-
 	const selection: KoliBriTableSelection = {
-		label: (row) => `Selection for ${(row as Data).name}`,
+		label: (row) => `Selection for ${(row as ProjectTask).id}`,
+		selectedKeys: ['T-01'],
+		disabledKeys: ['T-04'],
+		keyPropertyName: 'id',
 		multiple: false,
-		selectedKeys: selectedValue ? [selectedValue.internalIdentifier] : [],
-		keyPropertyName: 'internalIdentifier',
 	};
 
-	const kolTableStatefulRef = useRef<HTMLKolTableStatefulElement>(null);
-
-	const handleSelectionChangeEvent = ({ detail: selection }: CustomEvent<Data[]>) => {
-		console.log('Selection change via event', selection);
-	};
 	const handleSelectionChangeCallback = (_event: Event, selection: KoliBriTableDataType[] | null) => {
 		console.log('Selection change via callback', selection);
-	};
-
-	const handleButtonClick = async () => {
-		const tableElement = kolTableStatefulRef.current as unknown as KolTableStatefulElement | null;
-		const selection = await tableElement?.getSelection?.();
-		setSelectedValue(selection as Data | null);
-	};
-
-	useEffect(() => {
-		const tableElement = kolTableStatefulRef.current as unknown as KolTableStatefulElement | null;
-		const selectionChangeEvent = 'kolSelectionChange';
-		tableElement?.addEventListener(selectionChangeEvent, handleSelectionChangeEvent);
-
-		return () => {
-			tableElement?.removeEventListener(selectionChangeEvent, handleSelectionChangeEvent);
-		};
-	}, [kolTableStatefulRef]);
-
-	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
-		const data = (cell as { data?: Data }).data;
-		const id = data?.id;
-		getRoot(createReactRenderElement(element)).render(<KolButtonWrapper label={`Click ${id}`} />);
 	};
 
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows KolTableStateful with radio buttons for selection enabled.</p>
+				<p>
+					Simple example using the refactored action column: Actions are defined once in the column header definition using a factory function. Two rows with
+					inline action buttons demonstrate clean separation between data and UI behavior.
+				</p>
 			</SampleDescription>
 
 			<section className="w-full">
 				<KolTableStateful
-					_label="Table with selection radio"
-					_headers={{
-						horizontal: [
-							[
-								{ key: 'id', label: '#ID', textAlign: 'left' },
-								{ key: 'name', label: 'Name', textAlign: 'left' },
-								{ key: 'action', label: 'Action', textAlign: 'left', render: renderButton },
-							],
-						],
-					}}
+					_label="Tasks with action buttons"
+					_headers={HEADERS}
 					_data={DATA}
+					className="block"
 					_selection={selection}
 					_on={{ onSelectionChange: handleSelectionChangeCallback }}
-					className="block"
-					style={{ maxWidth: '600px' }}
-					ref={kolTableStatefulRef}
 				/>
-				<div className="grid grid-cols-3 items-end gap-4 mt-4">
-					<KolButton
-						_label="getSelection()"
-						_on={{
-							onClick: () => {
-								void handleButtonClick();
-							},
-						}}
-					></KolButton>
-					<pre className="text-base">{JSON.stringify(selectedValue, null, 2)}</pre>
-				</div>
 			</section>
 		</>
 	);

@@ -60,8 +60,6 @@ type OptionalProps = {
 
 type RequiredStates = {
 	adjustHeight: boolean;
-	currentLength: number;
-	currentLengthDebounced: number;
 	hasValue: boolean;
 	resize: CSSResize;
 } & PropAdjustHeight &
