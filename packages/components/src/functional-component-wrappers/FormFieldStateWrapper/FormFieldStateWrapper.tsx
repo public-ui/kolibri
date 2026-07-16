@@ -31,9 +31,16 @@ type InputState =
 
 export type FormFieldStateWrapperProps = Partial<FormFieldProps> & {
 	state: InputState;
+	counterRefs?: {
+		visualRef?: (el?: HTMLSpanElement) => void;
+		ariaRef?: (el?: HTMLSpanElement) => void;
+	};
 };
 
-function getFormFieldProps(state: InputState): FormFieldProps {
+function getFormFieldProps(
+	state: InputState,
+	counterRefs?: { visualRef?: (el?: HTMLSpanElement) => void; ariaRef?: (el?: HTMLSpanElement) => void },
+): FormFieldProps {
 	const props: FormFieldProps = {
 		id: state._id,
 		disabled: state._disabled,
@@ -66,20 +73,12 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 		props.maxLength = state._maxLength;
 	}
 
-	if (
-		'_currentLength' in state &&
-		typeof state._currentLength === 'number' &&
-		'_currentLengthDebounced' in state &&
-		typeof state._currentLengthDebounced === 'number'
-	) {
-		if ('_hasCounter' in state && state._hasCounter === true) {
-			props.counter = {
-				currentLength: state._currentLength,
-				currentLengthDebounced: state._currentLengthDebounced,
-				maxLength: state._maxLength,
-				maxLengthBehavior: state._maxLengthBehavior || 'hard',
-			};
-		}
+	if ('_hasCounter' in state && state._hasCounter === true) {
+		props.counter = {
+			maxLength: '_maxLength' in state ? state._maxLength : undefined,
+			maxLengthBehavior: ('_maxLengthBehavior' in state ? state._maxLengthBehavior : undefined) || 'hard',
+			...counterRefs,
+		};
 	}
 
 	if ('_variant' in state) {
@@ -89,11 +88,11 @@ function getFormFieldProps(state: InputState): FormFieldProps {
 	return props;
 }
 
-const FormFieldStateWrapper: FC<FormFieldStateWrapperProps> = ({ state, ...other }, children) => {
+const FormFieldStateWrapper: FC<FormFieldStateWrapperProps> = ({ state, counterRefs, ...other }, children) => {
 	const { ariaDescribedBy: ariaDescribedByArray } = getRenderStates(state);
 	const isRadioVariant = other.component === 'fieldset' || ('_options' in state && '_orientation' in state);
 	const ariaDescribedBy = isRadioVariant && ariaDescribedByArray.length > 0 ? ariaDescribedByArray.join(' ') : undefined;
-	const baseProps = getFormFieldProps(state);
+	const baseProps = getFormFieldProps(state, counterRefs);
 
 	return (
 		<KolFormFieldFc {...baseProps} {...other} ariaDescribedBy={ariaDescribedBy}>

@@ -1,6 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
 import { TooltipController } from '../../internal/functional-components/tooltip/controller';
@@ -8,8 +9,6 @@ import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignP
 import { buildBadgeTextString, classNameFromVariant, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
-import KolFormFieldCharacterLimitHintFc from '../FormFieldCharacterLimitHint/FormFieldCharacterLimitHint';
-import KolFormFieldCounterFc from '../FormFieldCounter';
 import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
 import KolFormFieldLabelFc from '../FormFieldLabel';
 import KolFormFieldMsgFc from '../FormFieldMsg';
@@ -64,7 +63,12 @@ export type FormFieldProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	hideMsg?: boolean;
 	accessKey?: string;
 	shortKey?: string;
-	counter?: { currentLength: number; currentLengthDebounced: number; maxLengthBehavior: MaxLengthBehaviorPropType; maxLength?: number; id?: string };
+	counter?: {
+		maxLengthBehavior: MaxLengthBehaviorPropType;
+		maxLength?: number;
+		visualRef?: (el?: HTMLSpanElement) => void;
+		ariaRef?: (el?: HTMLSpanElement) => void;
+	};
 	readOnly?: boolean;
 	touched?: boolean;
 	required?: boolean;
@@ -218,11 +222,23 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					</div>
 				)}
 			</InputContainer>
-			{counter ? <KolFormFieldCounterFc id={id} {...counter} /> : null}
-			{maxLength ? <KolFormFieldCharacterLimitHintFc id={id} maxLength={maxLength} /> : null}
+			{counter && !(counter.maxLengthBehavior === 'soft' && typeof counter.maxLength !== 'number') && (
+				<div class="kol-form-field__counter">
+					<span data-testid="input-counter" aria-hidden="true" class="kol-form-field__counter" ref={counter.visualRef} />
+					<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id={createRelatedUniqueId(id, 'counter')} ref={counter.ariaRef} />
+				</div>
+			)}
 			{showMsg && !hideMsg && <KolFormFieldMsgFc {...(formFieldMsgProps || {})} id={id} alert={alert} msg={msg} />}
 			{showHint && <KolFormFieldHintFc {...(formFieldHintProps || {})} id={id} hint={hint} />}
 			{anotherChildren}
+			{typeof maxLength === 'number' && !counter && (
+				// Der visuell versteckte Zeichenlimit-Hinweis wird nur gerendert, wenn KEIN Zähler aktiv ist.
+				// Ist ein Zähler vorhanden, vermitteln dessen Spans (`input-counter`/`input-counter-aria`) das
+				// Maximum bereits, sodass der zusätzliche Hinweis redundant wäre.
+				<span id={createRelatedUniqueId(id, 'character-limit-hint')} class="visually-hidden">
+					{translate('kol-character-limit-hint', { placeholders: { limit: String(maxLength) } })}
+				</span>
+			)}
 		</Component>
 	);
 };
