@@ -60,8 +60,6 @@ type OptionalProps = {
 	PropVariantClassName;
 
 type RequiredStates = {
-	currentLength: number;
-	currentLengthDebounced: number;
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
 	type: InputTextTypePropType;
