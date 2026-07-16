@@ -101,3 +101,5 @@ export const KERN_V2 = KoliBri.createTheme(
 		buttonVariantDefault: 'secondary',
 	},
 );
+
+export * from './variants';

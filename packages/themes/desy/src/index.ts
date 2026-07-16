@@ -92,3 +92,5 @@ export const DesyV11 = KoliBri.createTheme('desy-v11', {
 	'KOL-TREE': treeCss,
 	'KOL-TREE-ITEM': treeItemCss,
 });
+
+export * from './variants';
