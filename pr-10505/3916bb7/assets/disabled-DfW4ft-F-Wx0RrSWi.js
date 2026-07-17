@@ -1,1 +1,0 @@
-import{G as e,Ot as t}from"./index-BWK5248q.js";var n=(n,r)=>{t(n,`_disabled`,r,{hooks:{afterPatch:t=>{t===!0&&e()}}})};export{n as t};

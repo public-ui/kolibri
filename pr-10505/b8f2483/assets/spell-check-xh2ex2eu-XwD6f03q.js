@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-Beh1_3G5.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};

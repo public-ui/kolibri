@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-Beh1_3G5.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};
