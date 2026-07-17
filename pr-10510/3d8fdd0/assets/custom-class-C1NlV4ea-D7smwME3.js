@@ -1,0 +1,1 @@
+import{jt as e}from"./index-Bn1O-Ihy.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
