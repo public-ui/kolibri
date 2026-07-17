@@ -60,6 +60,11 @@ hr {
 	list-style: none;
 }
 
+.main-nav {
+	max-height: 60vh;
+	overflow-y: auto;
+}
+
 @media (min-width: 1024px) {
 	.app-container {
 		display: grid;
