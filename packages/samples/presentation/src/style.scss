@@ -60,8 +60,14 @@ hr {
 	list-style: none;
 }
 
+.scrollable-container {
+	display: grid;
+	grid-template-rows: min-content 1fr;
+	overflow: hidden;
+	gap: 16px;
+}
+
 .main-nav {
-	max-height: 60vh;
 	overflow-y: auto;
 }
 
@@ -78,20 +84,21 @@ hr {
 		border-right: 1px solid gray;
 
 		& .scrollable-container-wrapper {
-			display: flex;
+			display: grid;
 			max-height: calc(100vh - 32px);
-			flex-direction: column;
-
-			& .scrollable-container {
-				overflow: auto;
-				flex: 1 auto;
-			}
+			grid-template-rows: repeat(5, min-content) 1fr;
 		}
 	}
 
 	main {
 		max-height: calc(100vh);
 		overflow: auto;
+	}
+}
+
+@media (max-width: 1023px) {
+	.scrollable-container {
+		max-height: 60vh;
 	}
 }
 
