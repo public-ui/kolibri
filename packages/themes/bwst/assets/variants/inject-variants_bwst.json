@@ -1,4 +1,12 @@
 {
+	"buttonVariants": [
+		"primary",
+		"secondary",
+		"tertiary",
+		"normal",
+		"danger",
+		"ghost"
+	],
 	"iconVariants": [
 		"kolicon-house",
         "kolicon-settings",

@@ -10,7 +10,7 @@
 		&__group {
 			display: inline-flex;
 			width: 100%;
-			min-height: to-rem(40);
+			min-height: to-rem(36);
 			align-items: center;
 		}
 
@@ -26,8 +26,8 @@
 		}
 
 		&__delete .kol-button {
-			min-width: to-rem(38);
-			min-height: to-rem(40);
+			min-width: to-rem(36);
+			min-height: to-rem(36);
 
 			&:hover {
 				background-color: var(--color-blue-100-06);

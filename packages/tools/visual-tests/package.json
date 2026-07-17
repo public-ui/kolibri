@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "4.3.0-rc.2",
+	"version": "4.3.0-rc.5",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -24,7 +24,7 @@
 		"build": "vite build --config app/vite.config.ts",
 		"build:deps": "pnpm --filter @public-ui/visual-tests^... build",
 		"prebuild": "npm-run-all2 prebuild:*",
-		"prebuild:components": "kolibri-copy-assets --dest app/public/assets @public-ui/components",
+		"prebuild:components": "kolibri-copy-assets --dest app/public/assets @public-ui/components @public-ui/sample-react",
 		"format": "prettier --check src app/src",
 		"lint": "pnpm lint:eslint",
 		"lint:eslint": "eslint src",

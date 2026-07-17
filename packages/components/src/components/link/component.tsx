@@ -32,6 +32,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import {
+	classNameFromVariant,
 	devHint,
 	setEventTarget,
 	showExpertSlot,
@@ -179,7 +180,7 @@ export class KolLinkWc implements ClickableElement, FocusableElement, InternalLi
 						'kol-link--disabled': this.state._disabled === true,
 						'kol-link--external-link': isExternal,
 						'kol-link--hide-label': this.state._hideLabel === true,
-						[`kol-link--${this.state._variant as string}`]: this.state._variant !== undefined,
+						[classNameFromVariant(this.state._variant, 'link')]: this.state._variant !== undefined,
 						'kol-link--inline': this.state._inline === true,
 						'kol-link--standalone': this.state._inline === false,
 						[this.state._customClass as string]:

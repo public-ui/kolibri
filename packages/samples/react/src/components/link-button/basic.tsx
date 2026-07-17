@@ -1,28 +1,64 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { KolLinkButton } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { useToasterService } from '../../hooks/useToasterService';
+import { fetchVariantData } from '../../shares/fetchVariantData';
+import { getCustomThemes } from '../../shares/store';
 import { SampleDescription } from '../SampleDescription';
 
-const ARGS = {
-	_href: '#/back-page',
+export const LinkButtonBasic: FC = () => {
+	const [searchParams] = useSearchParams();
+	const theme = searchParams.get('theme') ?? getCustomThemes()?.[0]?.key;
+	const data = useMemo(() => (theme ? fetchVariantData(theme, 'buttonVariants') : []), [theme]);
+
+	const { dummyClickEventHandler } = useToasterService();
+
+	const dummyEventHandler = {
+		onClick: dummyClickEventHandler,
+	};
+	return (
+		<>
+			<SampleDescription>
+				<p>KolLinkButton renders a link that looks like a button. The sample shows the different theme exclusive styling variants.</p>
+			</SampleDescription>
+
+			<div className="grid gap-8">
+				<section className="grid gap-4">
+					<div className="flex flex-wrap gap-4 items-center">
+						{!Array.isArray(data) || data.length === 0 ? (
+							<p>This theme has no variants for this component.</p>
+						) : (
+							data.map((element) => {
+								return (
+									<KolLinkButton _href="#/back-page" _icons="kolicon-house" _label={`${element}`} _variant={element} key={element} _on={dummyEventHandler} />
+								);
+							})
+						)}
+					</div>
+					<div className="flex flex-wrap gap-4 items-center">
+						{!Array.isArray(data) || data.length === 0 ? (
+							<p>This theme has no variants for this component.</p>
+						) : (
+							data.map((element) => {
+								return (
+									<KolLinkButton
+										_href="#/back-page"
+										_hideLabel
+										_icons="kolicon-settings"
+										_label={`${element}`}
+										_variant={element}
+										key={element}
+										_on={dummyEventHandler}
+									/>
+								);
+							})
+						)}
+					</div>
+				</section>
+			</div>
+		</>
+	);
 };
-
-export const LinkButtonBasic: FC = () => (
-	<>
-		<SampleDescription>
-			<p>KolLinkButton renders a link that looks like a button. The sample shows the different styling variants.</p>
-		</SampleDescription>
-
-		<div className="flex flex-wrap gap-2">
-			<KolLinkButton _label="Primary" _variant="primary" {...ARGS}></KolLinkButton>
-			<KolLinkButton _label="Secondary" _variant="secondary" {...ARGS}></KolLinkButton>
-			<KolLinkButton _label="Normal" _variant="normal" {...ARGS}></KolLinkButton>
-			<KolLinkButton _label="Danger" _variant="danger" {...ARGS}></KolLinkButton>
-			<KolLinkButton _label="Ghost" _variant="ghost" {...ARGS}></KolLinkButton>
-			<KolLinkButton _label="Access Key" _variant="primary" _accessKey="c" {...ARGS}></KolLinkButton>
-			<KolLinkButton _label="Short Key" _variant="primary" _shortKey="s" {...ARGS}></KolLinkButton>
-		</div>
-	</>
-);

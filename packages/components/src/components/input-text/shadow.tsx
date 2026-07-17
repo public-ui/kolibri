@@ -38,6 +38,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { CounterDomUpdater } from '../../utils/counter-dom-updater';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
@@ -59,6 +60,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	@Element() protected readonly host?: HTMLKolInputTextElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private oldValue?: string;
+	private readonly counterUpdater = new CounterDomUpdater();
 
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
@@ -78,6 +80,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	private readonly onFocus = (event: FocusEvent) => {
 		this.controller.onFacade.onFocus(event);
 		this.inputHasFocus = true;
+		this.counterUpdater.retriggerAria(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	};
 
 	private readonly onInput = (event: InputEvent) => {
@@ -87,6 +90,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		this.controller.onFacade.onKeyDown(event);
+		this.counterUpdater.handleKeyDown(event, this.ctaRef.el?.value.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({
@@ -177,11 +181,16 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 			}),
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
+			counterRefs: {
+				visualRef: this.counterUpdater.setVisualRef,
+				ariaRef: this.counterUpdater.setAriaRef,
+			},
 		};
 	}
 
 	private getInputProps(): InputStateWrapperProps {
-		const ariaDescribedBy = typeof this.state._maxLength === 'number' ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined, we provide an additional hint referenced by aria-describedby.
+		const ariaDescribedBy =
+			typeof this.state._maxLength === 'number' && !this.controller.hasCounter() ? [createRelatedUniqueId(this.state._id, 'character-limit-hint')] : undefined; // When a character limit is defined but no counter is shown, we provide an additional hint referenced by aria-describedby. With a counter, its spans already convey the limit.
 
 		return {
 			ref: this.ctaRef,
@@ -367,8 +376,6 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	@Prop() public _variant?: VariantClassNamePropType;
 
 	@State() public state: InputTextStates = {
-		_currentLength: 0,
-		_currentLengthDebounced: 0,
 		_hasValue: false,
 		_hideMsg: false,
 		_id: createUniqueId('input-text'),
@@ -440,6 +447,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	@Watch('_maxLength')
 	public validateMaxLength(value?: number): void {
 		this.controller.validateMaxLength(value);
+		this.counterUpdater.updateImmediate(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	}
 
 	@Watch('_msg')
@@ -516,11 +524,22 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	public validateValue(value?: string): void {
 		this.controller.validateValue(value);
 		this.oldValue = value;
+		this.counterUpdater.update(value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	}
 
 	@Watch('_variant')
 	public validateVariant(value?: VariantClassNamePropType): void {
 		this.controller.validateVariant(value);
+	}
+
+	public componentDidLoad(): void {
+		if (this.controller.hasCounter() || this.controller.hasSoftCharacterLimit()) {
+			this.counterUpdater.updateImmediate(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
+		}
+	}
+
+	public disconnectedCallback(): void {
+		this.counterUpdater.destroy();
 	}
 
 	public componentWillLoad(): void {

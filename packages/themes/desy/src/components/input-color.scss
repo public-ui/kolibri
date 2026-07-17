@@ -14,7 +14,7 @@
 			&--text,
 			&--color {
 				background-color: var(--color-light);
-				min-height: var(--a11y-min-size);
+				min-height: to-rem(36);
 				border: to-rem(1) solid var(--color-subtle);
 			}
 		}

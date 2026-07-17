@@ -92,3 +92,5 @@ export const BWSt = KoliBri.createTheme('bwst', {
 	'KOL-TREE': treeCss,
 	'KOL-TREE-ITEM': treeItemCss,
 });
+
+export * from './variants';

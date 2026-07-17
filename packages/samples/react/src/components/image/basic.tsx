@@ -11,7 +11,7 @@ export const ImageBasic: FC = () => (
 
 		<KolImage
 			_alt="KoliBri design system illustration showing three people working on laptops surrounded by UI components, charts, and the KoliBri hummingbird logo"
-			_src="sample-image.png"
+			_src="assets/sample-image.png"
 			className="w-image"
 		/>
 	</>

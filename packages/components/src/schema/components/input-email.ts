@@ -58,8 +58,6 @@ type OptionalProps = {
 type RequiredStates = {
 	hasValue: boolean;
 	suggestions: W3CInputValue[];
-	currentLength: number;
-	currentLengthDebounced: number;
 } & PropId &
 	PropHideMsg &
 	PropLabelWithExpertSlot;

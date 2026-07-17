@@ -144,6 +144,16 @@
 			}
 		}
 	}
+
+	.kol-close-button {
+		align-self: self-start;
+
+		.#{$block-classname}--normal {
+			@include ghost-button();
+
+			--kol-focus-outline-offset: -2px;
+		}
+	}
 }
 
 @mixin ghost-button() {

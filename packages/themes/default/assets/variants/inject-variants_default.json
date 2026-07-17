@@ -1,4 +1,12 @@
 {
+	"buttonVariants": [
+		"primary",
+		"secondary",
+		"tertiary",
+		"normal",
+		"danger",
+		"ghost"
+	],
 	"iconVariants": [
 		"fa-solid fa-house",
         "fa-solid fa-heart",

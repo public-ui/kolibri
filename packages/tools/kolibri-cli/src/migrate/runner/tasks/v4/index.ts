@@ -1,4 +1,5 @@
 import { AbstractTask } from '../../abstract-task';
+import { RemoveAbbrLabelPropTask } from './abbr';
 import { RenameClearButtonPropTasks } from './clear-button';
 import { RenameKolEventNamesTasks } from './events';
 import { RenameKolFocusMethodsTask } from './focus';
@@ -24,3 +25,4 @@ v4Tasks.push(RemoveToastVariantTask.getInstance('^4'));
 v4Tasks.push(RemoveToasterGetInstanceOptionsTask.getInstance('^4'));
 v4Tasks.push(UpdateLoaderImportPathTask.getInstance('^4'));
 v4Tasks.push(...RenamePasswordVariantToVisibilityToggleTasks);
+v4Tasks.push(RemoveAbbrLabelPropTask);

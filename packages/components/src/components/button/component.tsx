@@ -27,6 +27,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import {
+	classNameFromVariant,
 	mapBoolean2String,
 	mapStringOrBoolean2String,
 	setEventTarget,
@@ -53,6 +54,7 @@ import {
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
 
+import { getFeatureFlag } from 'adopted-style-sheets';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { SpanFC } from '../../internal/functional-components/span/component';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
@@ -167,7 +169,7 @@ export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElemen
 					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
 					class={clsx('kol-button', {
 						'kol-button--disabled': isDisabled,
-						[`kol-button--${this.state._variant as string}`]: this.state._variant !== 'custom',
+						[classNameFromVariant(this.state._variant, 'button')]: this.state._variant !== undefined,
 						'kol-button--inline': this.state._inline === true,
 						'kol-button--standalone': this.state._inline === false,
 						'kol-button--hide-label': hideLabel,
@@ -323,14 +325,13 @@ export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElemen
 	 * Defines which variant should be used for presentation.
 	 * @internal
 	 */
-	@Prop() public _variant?: VariantClassNamePropType;
+	@Prop() public _variant?: VariantClassNamePropType = getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal';
 
 	@State() public state: ButtonStates = {
 		_icons: {},
 		_label: '', // ⚠ required
 		_on: {},
 		_type: 'button',
-		_variant: 'normal',
 	};
 
 	public constructor() {

@@ -19,7 +19,7 @@ export class KolAll implements Generic.Element.ComponentApi<RequiredProps, Optio
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<kol-abbr _label=""></kol-abbr>
+				<kol-abbr></kol-abbr>
 				<kol-accordion _label=""></kol-accordion>
 				<kol-alert></kol-alert>
 				<kol-badge _label="Label"></kol-badge>

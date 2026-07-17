@@ -98,5 +98,8 @@ export const KERN_V2 = KoliBri.createTheme(
 	},
 	{
 		inputNumberButtons: 'hide',
+		buttonVariantDefault: 'secondary',
 	},
 );
+
+export * from './variants';

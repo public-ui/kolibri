@@ -1,18 +1,19 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop } from '@stencil/core';
+import { getFeatureFlag } from 'adopted-style-sheets';
 import { KolLinkWcTag } from '../../core/component-names';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaCurrentValuePropType,
 	AriaDescriptionPropType,
-	ButtonVariantPropType,
 	ClickableElement,
 	CustomClassPropType,
 	DownloadPropType,
 	FocusableElement,
 	HrefPropType,
 	IconsPropType,
+	InlinePropType,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	LinkButtonProps,
@@ -20,6 +21,7 @@ import type {
 	LinkTargetPropType,
 	ShortKeyPropType,
 	TooltipAlignPropType,
+	VariantClassNamePropType,
 } from '../../schema';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 
@@ -69,6 +71,7 @@ export class KolLinkButton implements ClickableElement, FocusableElement, LinkBu
 				_hideLabel={this._hideLabel}
 				_href={this._href}
 				_icons={this._icons}
+				_inline={this._inline}
 				_label={this._label}
 				_on={this._on}
 				_shortKey={this._shortKey}
@@ -134,6 +137,11 @@ export class KolLinkButton implements ClickableElement, FocusableElement, LinkBu
 	@Prop() public _icons?: IconsPropType;
 
 	/**
+	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
+	 */
+	@Prop() public _inline?: InlinePropType = false;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label?: LabelWithExpertSlotPropType;
@@ -168,5 +176,5 @@ export class KolLinkButton implements ClickableElement, FocusableElement, LinkBu
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: ButtonVariantPropType = 'normal';
+	@Prop() public _variant?: VariantClassNamePropType = getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal';
 }
