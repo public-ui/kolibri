@@ -62,9 +62,9 @@ hr {
 
 .scrollable-container {
 	display: grid;
-	grid-template-rows: min-content 1fr;
 	overflow: hidden;
 	gap: 16px;
+	grid-template-rows: min-content 1fr;
 }
 
 .main-nav {
