@@ -20,7 +20,7 @@ jobs:
         with:
           ref: develop
           persist-credentials: false
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
       - uses: pnpm/action-setup@v6
