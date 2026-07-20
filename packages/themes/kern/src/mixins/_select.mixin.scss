@@ -27,6 +27,7 @@
 			background: var(--kern-color-feedback-danger-background);
 		}
 
+		&[multiple][size='1'],
 		&:not([multiple]) {
 			padding-right: calc(var(--a11y-min-size) + #{to-rem(7)});
 			padding-left: to-rem(7);
@@ -88,6 +89,7 @@
 			padding: 0 0 0 var(--kern-metric-space-default);
 		}
 
+		&__container:has(select[multiple][size='1']),
 		&__container:not(:has(select[multiple])) {
 			&::after {
 				transform: translateY(-50%);
