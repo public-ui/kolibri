@@ -29,6 +29,7 @@
 			padding: 0.5em;
 		}
 
+		&[multiple][size='1'],
 		&:not([multiple], [size]) {
 			height: to-rem(40);
 			// space for the native arrow down icon
@@ -36,6 +37,7 @@
 		}
 	}
 
+	.kol-input-container:has(.kol-select[multiple][size='1']),
 	.kol-input-container:has(:not(.kol-select[multiple])) {
 		padding: 0;
 		gap: 0;
