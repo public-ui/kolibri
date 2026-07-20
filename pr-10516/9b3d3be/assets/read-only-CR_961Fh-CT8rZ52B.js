@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-F7fmqrg3.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
