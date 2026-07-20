@@ -52,7 +52,7 @@ jobs:
 
       # https://github.com/pnpm/action-setup#use-cache-to-reduce-installation-time
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 20
           registry-url: '${{env.npmjs-registry}}'
@@ -195,7 +195,7 @@ jobs:
           NPM_CONFIG_PROVENANCE: true
 
       # Publish packages on GitHub packages
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 20
           registry-url: '${{env.github-registry}}'
