@@ -800,6 +800,17 @@ ROUTES.set('select/basic?noColumns', {
 		},
 	},
 });
+ROUTES.set('select/multiple-dropdown', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('skip-nav/basic', {
 	snapshot: {
 		zoom: {
