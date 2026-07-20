@@ -23,6 +23,10 @@
 			height: 2.75em;
 		}
 
+		&[multiple][size='1'] {
+			height: 2.75em;
+		}
+
 		&:focus {
 			outline: none;
 		}
@@ -35,6 +39,15 @@
 			display: flex;
 			min-height: var(--a11y-min-size);
 			align-items: center;
+		}
+
+		&[multiple][size='1'] option {
+			&::checkmark {
+				height: 1em;
+			}
+			&:checked::before {
+				display: none;
+			}
 		}
 	}
 }
