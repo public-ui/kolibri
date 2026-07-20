@@ -43,7 +43,7 @@
 
 		&[multiple][size='1'] option {
 			&::checkmark {
-				height: 1em;
+				height: 100%;
 			}
 			&:checked::before {
 				display: none;
