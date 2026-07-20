@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-BMR8Bgnl.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
