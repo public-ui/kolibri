@@ -1,1 +1,0 @@
-import{jt as e}from"./index-CdT3B0rM.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
