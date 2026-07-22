@@ -6,16 +6,9 @@
 	@include kol-alert;
 	@include kol-link('kol-link');
 
-	.kol-link {
-		.kol-span__label {
-			color: var(--color-rot);
-		}
-	}
-
 	.kol-alert {
 		&__content {
 			ul {
-				color: var(--color-rot);
 				display: flex;
 				margin: 0;
 				gap: 8px;
@@ -23,23 +16,17 @@
 				list-style-type: decimal;
 
 				.kol-link {
-					&:focus .kol-link__text {
-						outline-color: var(--color-rot);
-					}
-
 					.kol-span__label {
 						font-weight: bold;
 					}
 
 					&::before {
-						color: var(--color-rot);
 						display: inline-block;
 						margin-right: to-rem(4);
 						padding: 0 to-rem(3);
 
-						content: '\f309';
-						font-family: 'Font Awesome 6 Free';
-						font-size: to-rem(11);
+						content: '\ea0e';
+						font-family: desy-icons;
 						font-weight: 900;
 					}
 				}
