@@ -7,7 +7,7 @@ import type {
 	InternalButtonProps,
 	KolFocusOptions,
 	KoliBriIconsProp,
-	LabelWithExpertSlotPropType,
+	LabelPropType,
 	PropColor,
 	Stringified,
 } from '../../schema';
@@ -102,7 +102,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Prop() public _label!: LabelPropType;
 
 	/**
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
