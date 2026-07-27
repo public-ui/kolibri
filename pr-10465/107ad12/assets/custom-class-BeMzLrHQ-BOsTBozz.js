@@ -1,1 +1,0 @@
-import{jt as e}from"./index-COR3G_-f.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};

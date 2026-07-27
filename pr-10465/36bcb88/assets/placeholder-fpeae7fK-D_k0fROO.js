@@ -1,1 +1,0 @@
-import{jt as e}from"./index-B3GlpWmg.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
