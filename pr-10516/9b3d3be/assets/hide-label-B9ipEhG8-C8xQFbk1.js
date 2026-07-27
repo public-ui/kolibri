@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-F7fmqrg3.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};
