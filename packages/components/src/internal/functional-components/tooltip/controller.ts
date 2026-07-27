@@ -83,6 +83,7 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 			tooltipClosed();
 			this.tooltipElement.classList.remove('show');
 			this.tooltipElement.classList.add('hide');
+			// Why? - https://github.com/public-ui/kolibri/issues/10471
 			this.tooltipElement.addEventListener(
 				'animationend',
 				(): void => {
