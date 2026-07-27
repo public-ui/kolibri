@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-yAp1GEpb.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
