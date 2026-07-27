@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-CrkukHz3.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
