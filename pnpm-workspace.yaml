@@ -39,7 +39,7 @@ overrides:
   form-data@>=4.0.0 <4.0.6: '>=4.0.6'
   http-proxy-middleware@>=0.16.0 <2.0.10: '>=2.0.10'
   ip-address@<=10.1.0: '>=10.1.1'
-  js-yaml@<=4.1.1: '>=4.2.0'
+  js-yaml@<=4.1.1: '>=4.3.0'
   js-yaml@>=4.0.0 <4.1.1: '>=4.1.1'
   launch-editor@<=2.14.0: '>=2.14.1'
   minimatch@<3.1.3: '>=3.1.3'
