@@ -83,6 +83,17 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 			tooltipClosed();
 			this.tooltipElement.classList.remove('show');
 			this.tooltipElement.classList.add('hide');
+			this.tooltipElement.addEventListener(
+				'animationend',
+				(): void => {
+					// double-check if tooltip is still hidden at animation's end
+					if (this.tooltipElement?.classList.contains('hide')) {
+						// remove element style property from showTooltip (required in gecko browsers)
+						this.tooltipElement.style.removeProperty('display');
+					}
+				},
+				{ once: true },
+			);
 
 			if (this.cleanupAutoPositioning) {
 				this.cleanupAutoPositioning();
