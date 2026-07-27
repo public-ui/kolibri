@@ -31,7 +31,7 @@
 		"@types/jasmine": "6.0.0",
 		"@tailwindcss/postcss": "4.3.1",
 		"adopted-style-sheets": "1.1.9-rc.22",
-		"hono": "4.12.25",
+		"hono": "4.12.27",
 		"karma-jasmine": "5.1.0",
 		"karma-chrome-launcher": "3.2.0",
 		"karma-jasmine-html-reporter": "2.2.0",
