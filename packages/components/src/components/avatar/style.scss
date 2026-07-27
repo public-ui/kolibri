@@ -3,6 +3,29 @@
 @use '../host-display-block' as *;
 
 @layer kol-component {
+	// The avatar has no size-related custom property of its own: it simply fills its host,
+	// so consumers resize it with plain CSS (width/height) on the `kol-avatar` element,
+	// like any other block-level element. The default size is a SCSS variable, not a custom
+	// property, since it's an internal default rather than an intentional public API.
+	$kol-avatar-default-size: to-rem(100);
+	$kol-avatar-initials-ratio: 40cqh;
+
+	:host {
+		display: flex;
+
+		// `width` is the size-defaulting axis: if only `height` is set, `width` keeps
+		// this default and, together with the max() below, the larger value wins - so
+		// setting only `width` is the reliable way to size the avatar below its default.
+		// `aspect-ratio` derives `height` from `width` whenever `height` itself is auto
+		// (i.e. neither is set, or only `width` is set).
+		width: $kol-avatar-default-size;
+		aspect-ratio: 1;
+		align-items: center;
+		justify-content: center;
+
+		container-type: size;
+	}
+
 	.kol-avatar,
 	.kol-avatar__image,
 	.kol-avatar__initials {
@@ -12,16 +35,26 @@
 	.kol-avatar {
 		/* Visible with forced colors  */
 		outline: transparent solid to-rem(1);
-
 		display: flex;
-		width: to-rem(100);
-		height: to-rem(100);
+
+		// Always square: if the host ends up with mismatched width/height (e.g. both
+		// were set explicitly to different values), use the larger of the two.
+		width: max(100cqw, 100cqh);
+		height: max(100cqw, 100cqh);
+
+		// `:host` is a flex container (to center this element), so without this the
+		// default flex-shrink would squeeze this element's width back down to fit
+		// the host whenever the computed square is wider than the host itself.
+		flex-shrink: 0;
+
+		container-type: size;
 
 		&__initials {
 			background-color: inherit;
 			margin: auto;
 
-			font-size: to-rem(40);
+			// Derived from the container's own (now guaranteed square) height.
+			font-size: $kol-avatar-initials-ratio;
 		}
 	}
 }

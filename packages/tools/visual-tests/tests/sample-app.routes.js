@@ -74,6 +74,13 @@ ROUTES.set('avatar/basic', {
 		},
 	},
 });
+ROUTES.set('avatar/size', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('badge/basic', {
 	snapshot: {
 		skip: true,

@@ -45,3 +45,27 @@ exports[`kol-avatar should render with _label="Erika" _src=undefined _color=unde
   </template>
 </kol-avatar>
 `;
+
+exports[`kol-avatar should render with _label="Erika" style={"width":"48px","height":"48px"} 1`] = `
+<kol-avatar style="width: 48px; height: 48px;">
+  <template shadowrootmode="open">
+    <div aria-label="kol-avatar-alt" class="kol-avatar" role="img" style="background-color: #d3d3d3; color: #3f3f3f;">
+      <span aria-hidden="true" class="kol-avatar__initials">
+        E
+      </span>
+    </div>
+  </template>
+</kol-avatar>
+`;
+
+exports[`kol-avatar should render with _label="Erika" style={"width":"50px","height":"90px"} 1`] = `
+<kol-avatar style="width: 50px; height: 90px;">
+  <template shadowrootmode="open">
+    <div aria-label="kol-avatar-alt" class="kol-avatar" role="img" style="background-color: #d3d3d3; color: #3f3f3f;">
+      <span aria-hidden="true" class="kol-avatar__initials">
+        E
+      </span>
+    </div>
+  </template>
+</kol-avatar>
+`;
