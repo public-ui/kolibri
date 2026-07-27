@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-Cd3A2IZW.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};
