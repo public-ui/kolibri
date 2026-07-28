@@ -468,8 +468,11 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 				break;
 			case 'Esc':
 			case 'Escape': {
-				this._isOpen = false;
-				handleEvent(false);
+				if (this._isOpen) {
+					event.preventDefault();
+					this._isOpen = false;
+					this.ctaRef.el?.focus();
+				}
 				break;
 			}
 			case ' ':
