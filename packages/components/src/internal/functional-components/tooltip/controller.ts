@@ -159,7 +159,7 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 			this.tooltipElement.classList.remove('hide');
 			this.tooltipElement.classList.add('show');
 			this.tooltipElement.style.setProperty('display', 'block');
-			getDocument().addEventListener('keyup', this.hideTooltipByEscape, { once: true });
+			getDocument().addEventListener('keydown', this.hideTooltipByEscape, { once: true });
 
 			const target = this.previousSibling;
 			const tooltipEl = this.tooltipElement;
@@ -182,6 +182,8 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 
 	private hideTooltipByEscape = (event: KeyboardEvent): void => {
 		if (event.key === 'Escape') {
+			event.stopPropagation();
+			event.preventDefault();
 			this.hideTooltip();
 		}
 	};
