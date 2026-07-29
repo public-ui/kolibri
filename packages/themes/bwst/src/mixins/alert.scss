@@ -18,19 +18,26 @@
 
 		background-color: var(--color-light);
 
-		display: flex;
 		width: 100%;
 		overflow: unset;
 	}
 
 	.kol-alert--variant-msg {
+		gap: to-rem(4) to-rem(8);
 		align-items: start;
 	}
 
 	.kol-alert--variant-card {
+		background-color: var(--alert-accent-color);
 		filter: drop-shadow(0 to-rem(2) to-rem(4) rgb(8, 35, 48, 0.24));
 		border-radius: var(--border-radius);
+		gap: 0 to-rem(8);
 		flex-direction: column;
+		grid-template-areas:
+			'icon heading close'
+			'content content content';
+		grid-template-columns: min-content 1fr min-content;
+		grid-template-rows: min-content min-content;
 		border: var(--border-width) solid var(--alert-accent-color);
 	}
 
@@ -54,47 +61,31 @@
 		--alert-accent-color: var(--color-warning);
 	}
 
-	.kol-alert__container {
-		display: flex;
-		gap: 0.5em;
-		place-items: center;
-
-		.kol-alert--variant-card & {
-			background-color: var(--alert-accent-color);
-			padding: to-rem(8) to-rem(16);
-		}
-	}
-
-	.kol-alert__container-content {
-		display: grid;
-		gap: to-rem(4);
-
-		.kol-alert--variant-card & {
-			width: 100%;
-			min-height: to-rem(20);
-		}
-	}
-
-	.kol-alert__closer .kol-button {
-		.kol-alert--variant-msg & {
+	.kol-alert__closer {
+		.kol-alert--variant-msg & .kol-button {
 			--text-color: var(--alert-accent-color);
 		}
 
 		.kol-alert--variant-card & {
-			--text-color: var(--color-light);
+			padding-right: to-rem(16);
+			padding-block: to-rem(8);
+
+			.kol-button {
+				--text-color: var(--color-light);
+			}
 		}
 	}
 
 	.kol-alert__heading {
 		.kol-alert--variant-msg & {
 			color: var(--alert-accent-color);
-			padding-top: calc(var(--spacing) / 2);
+			padding-top: calc(--var-spacing / 2);
 		}
 
 		.kol-alert--variant-card & {
 			color: var(--color-light);
 			display: flex;
-			width: 100%;
+			align-items: center;
 
 			font-size: to-rem(20);
 			line-height: 1;
@@ -107,19 +98,23 @@
 
 		.kol-alert--variant-msg & {
 			color: var(--alert-accent-color);
-			place-items: baseline;
+			align-self: center;
 		}
 
 		.kol-alert--variant-card & {
-			margin-top: to-rem(-4);
-			justify-self: right;
+			display: flex;
+			padding-left: to-rem(16);
+			align-items: center;
 
 			font-size: to-rem(20);
+			padding-block: to-rem(8);
 		}
 	}
 
 	.kol-alert__content {
 		.kol-alert--variant-card & {
+			background-color: var(--color-light);
+			border-radius: 0 0 var(--inner-border-radius) var(--inner-border-radius);
 			padding: to-rem(16);
 		}
 	}
