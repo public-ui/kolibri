@@ -10,7 +10,7 @@ test.describe('kol-input-date', () => {
 
 		test('should set the correct value for type date', async ({ page }) => {
 			await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: Date) => {
 				element._value = date;
 			}, TEST_DATE);
 			await expect(page.locator('input')).toHaveValue('2020-03-03');
@@ -18,7 +18,7 @@ test.describe('kol-input-date', () => {
 
 		test('should set the correct value for type datetime-local', async ({ page }) => {
 			await page.setContent('<kol-input-date _label="Date input" _type="datetime-local"></kol-input-date>');
-			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: Date) => {
 				element._value = date;
 			}, TEST_DATE);
 			await expect(page.locator('input')).toHaveValue('2020-03-03T04:02:01');
@@ -26,7 +26,7 @@ test.describe('kol-input-date', () => {
 
 		test('should set the correct value for type month', async ({ page }) => {
 			await page.setContent('<kol-input-date _label="Date input" _type="month"></kol-input-date>');
-			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: Date) => {
 				element._value = date;
 			}, TEST_DATE);
 			await expect(page.locator('input')).toHaveValue('2020-03');
@@ -34,7 +34,7 @@ test.describe('kol-input-date', () => {
 
 		test('should set the correct value for type time', async ({ page }) => {
 			await page.setContent('<kol-input-date _label="Date input" _type="time"></kol-input-date>');
-			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: Date) => {
 				element._value = date;
 			}, TEST_DATE);
 			await expect(page.locator('input')).toHaveValue('04:02');
@@ -64,7 +64,7 @@ test.describe('kol-input-date', () => {
 	});
 
 	test.describe('Value reflection', () => {
-		const testValues = [
+		const testValues: Array<{ label: string; value: Iso8601 | Date }> = [
 			{ label: 'ISO String', value: '2020-03-03' as Iso8601 },
 			{ label: 'Date Object', value: new Date('2020-03-03T03:02:01.099Z') },
 		];
@@ -73,7 +73,7 @@ test.describe('kol-input-date', () => {
 			test.describe(`when initial value is a ${label}`, () => {
 				test(`should return the correct value for getValue() as ${label}`, async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
+					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: Iso8601 | Date) => {
 						element._value = date;
 					}, value);
 
@@ -91,7 +91,7 @@ test.describe('kol-input-date', () => {
 
 				test(`should reflect the correct _value property as ${label} on the web component`, async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date) => {
+					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: Iso8601 | Date) => {
 						element._value = date; // set the initial value
 					}, value);
 
@@ -172,7 +172,7 @@ test.describe('kol-input-date', () => {
 				await page.setContent(`<kol-input-date _label="Date input" _type="date"></kol-input-date>`);
 
 				await page.locator('kol-input-date').evaluate(
-					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: Date; maxDateFormat: Date }) => {
 						element._min = minDateFormat;
 						element._max = maxDateFormat;
 					},
@@ -190,7 +190,7 @@ test.describe('kol-input-date', () => {
 				await page.setContent(`<kol-input-date _label="Date input" _type="time"></kol-input-date>`);
 
 				await page.locator('kol-input-date').evaluate(
-					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: Date; maxDateFormat: Date }) => {
 						element._min = minDateFormat;
 						element._max = maxDateFormat;
 					},
@@ -207,7 +207,7 @@ test.describe('kol-input-date', () => {
 				await page.setContent(`<kol-input-date _label="Date input" _type="datetime-local"></kol-input-date>`);
 
 				await page.locator('kol-input-date').evaluate(
-					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: Date; maxDateFormat: Date }) => {
 						element._min = minDateFormat;
 						element._max = maxDateFormat;
 					},
@@ -224,7 +224,7 @@ test.describe('kol-input-date', () => {
 				await page.setContent(`<kol-input-date _label="Date input" _type="week"></kol-input-date>`);
 
 				await page.locator('kol-input-date').evaluate(
-					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: Date; maxDateFormat: Date }) => {
 						element._min = minDateFormat;
 						element._max = maxDateFormat;
 					},
@@ -241,7 +241,7 @@ test.describe('kol-input-date', () => {
 				await page.setContent(`<kol-input-date _label="Date input" _type="month"></kol-input-date>`);
 
 				await page.locator('kol-input-date').evaluate(
-					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }) => {
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: Date; maxDateFormat: Date }) => {
 						element._min = minDateFormat;
 						element._max = maxDateFormat;
 					},
