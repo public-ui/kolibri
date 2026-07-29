@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-DP0ToEnR.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
