@@ -69,11 +69,11 @@
 		"prepack": "npm run build && cp package.json package.bak.json && rimraf dist/collection dist/kolibri/assets/@leanup dist/types/assets/@leanup && node scripts/anonymous.js && node scripts/minify.js"
 	},
 	"dependencies": {
-		"@floating-ui/dom": "1.7.6",
+		"@floating-ui/dom": "1.8.0",
 		"@public-ui/schema": "workspace:*",
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"i18next": "23.16.8",
-		"markdown-it": "14.2.0"
+		"markdown-it": "14.3.0"
 	},
 	"devDependencies": {
 		"@public-ui/stencil-angular-output-target": "0.9.0",
@@ -82,7 +82,7 @@
 		"@public-ui/stencil-vue-output-target": "0.9.0",
 		"@stencil-community/postcss": "2.2.0",
 		"@stencil/core": "4.20.0",
-		"@stencil/sass": "3.2.3",
+		"@stencil/sass": "3.3.2",
 		"@types/color-convert": "2.0.4",
 		"@types/jest": "26.0.24",
 		"@types/markdown-it": "14.1.2",
@@ -92,7 +92,7 @@
 		"@types/wcag-contrast": "3.0.3",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
-		"autoprefixer": "10.5.0",
+		"autoprefixer": "10.5.4",
 		"clean-css": "5.3.3",
 		"color-convert": "2.0.1",
 		"color-rgba": "2.4.0",
@@ -108,9 +108,9 @@
 		"jest-cli": "26.6.3",
 		"lighthouse": "12.8.2",
 		"mustache": "4.2.0",
-		"postcss": "8.5.15",
+		"postcss": "8.5.24",
 		"postcss-sorting": "8.0.2",
-		"prettier": "3.8.4",
+		"prettier": "3.9.6",
 		"pug": "3.0.4",
 		"query-selector-all-shadow-root": "0.0.3",
 		"query-selector-shadow-root": "0.0.3",
@@ -118,7 +118,7 @@
 		"rimraf": "6.1.3",
 		"rxjs": "7.8.2",
 		"stencil-awesome-test": "1.0.6",
-		"terser": "5.48.0",
+		"terser": "5.49.0",
 		"twig": "1.17.1",
 		"typescript": "5.9.3",
 		"wcag-contrast": "3.0.0"

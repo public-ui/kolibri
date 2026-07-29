@@ -61,7 +61,7 @@
 		"@typescript-eslint/parser": "7.18.0",
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"eslint": "8.57.1",
-		"prettier": "3.8.4",
+		"prettier": "3.9.6",
 		"ts-prune": "0.10.3",
 		"typescript": "5.9.3",
 		"unbuild": "1.2.1"
