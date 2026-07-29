@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-JKv_b-13.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};
