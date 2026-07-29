@@ -344,6 +344,8 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 									onClick: () => {
 										this.clearSelection();
 										this.ctaRef.el?.focus();
+										//FF bekommt das blur nicht mehr mit deswegen hier extra gesetzt
+										this.clearButtonFocused = false;
 									},
 									onFocus: () => {
 										this.clearButtonFocused = true;
