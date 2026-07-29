@@ -319,9 +319,6 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 			onChange: this.onChange.bind(this),
 			onClick: this.onClick.bind(this),
 			onInput: this.onInput.bind(this),
-			onBlur: () => {
-				this.onBlur();
-			},
 		};
 	}
 
