@@ -10,33 +10,33 @@ test.describe('kol-input-date', () => {
 
 		test('should set the correct value for type date', async ({ page }) => {
 			await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: Date) => {
-				element._value = date;
-			}, TEST_DATE);
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: unknown) => {
+				element._value = new Date(date as string);
+			}, TEST_DATE.toISOString());
 			await expect(page.locator('input')).toHaveValue('2020-03-03');
 		});
 
 		test('should set the correct value for type datetime-local', async ({ page }) => {
 			await page.setContent('<kol-input-date _label="Date input" _type="datetime-local"></kol-input-date>');
-			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: Date) => {
-				element._value = date;
-			}, TEST_DATE);
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: unknown) => {
+				element._value = new Date(date as string);
+			}, TEST_DATE.toISOString());
 			await expect(page.locator('input')).toHaveValue('2020-03-03T04:02:01');
 		});
 
 		test('should set the correct value for type month', async ({ page }) => {
 			await page.setContent('<kol-input-date _label="Date input" _type="month"></kol-input-date>');
-			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: Date) => {
-				element._value = date;
-			}, TEST_DATE);
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: unknown) => {
+				element._value = new Date(date as string);
+			}, TEST_DATE.toISOString());
 			await expect(page.locator('input')).toHaveValue('2020-03');
 		});
 
 		test('should set the correct value for type time', async ({ page }) => {
 			await page.setContent('<kol-input-date _label="Date input" _type="time"></kol-input-date>');
-			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: Date) => {
-				element._value = date;
-			}, TEST_DATE);
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: unknown) => {
+				element._value = new Date(date as string);
+			}, TEST_DATE.toISOString());
 			await expect(page.locator('input')).toHaveValue('04:02');
 		});
 	});
@@ -73,9 +73,10 @@ test.describe('kol-input-date', () => {
 			test.describe(`when initial value is a ${label}`, () => {
 				test(`should return the correct value for getValue() as ${label}`, async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: Iso8601 | Date) => {
-						element._value = date;
-					}, value);
+					const valueToSet = value instanceof Date ? value.toISOString() : value;
+					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: unknown) => {
+						element._value = (typeof date === 'string' ? date : new Date(date as string)) as Iso8601 | Date;
+					}, valueToSet);
 
 					const getValue = await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => {
 						return element.getValue();
@@ -91,9 +92,10 @@ test.describe('kol-input-date', () => {
 
 				test(`should reflect the correct _value property as ${label} on the web component`, async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: Iso8601 | Date) => {
-						element._value = date; // set the initial value
-					}, value);
+					const valueToSet = value instanceof Date ? value.toISOString() : value;
+					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: unknown) => {
+						element._value = (typeof date === 'string' ? date : new Date(date as string)) as Iso8601 | Date; // set the initial value
+					}, valueToSet);
 
 					const NEW_DATE = '2021-03-03';
 					await page.locator('input').fill(NEW_DATE);
@@ -172,11 +174,11 @@ test.describe('kol-input-date', () => {
 				await page.setContent(`<kol-input-date _label="Date input" _type="date"></kol-input-date>`);
 
 				await page.locator('kol-input-date').evaluate(
-					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: Date; maxDateFormat: Date }) => {
-						element._min = minDateFormat;
-						element._max = maxDateFormat;
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: unknown; maxDateFormat: unknown }) => {
+						element._min = new Date(minDateFormat as string) as unknown as Date;
+						element._max = new Date(maxDateFormat as string) as unknown as Date;
 					},
-					{ minDateFormat, maxDateFormat },
+					{ minDateFormat: minDateFormat.toISOString(), maxDateFormat: maxDateFormat.toISOString() },
 				);
 				await page.waitForChanges();
 
@@ -190,11 +192,11 @@ test.describe('kol-input-date', () => {
 				await page.setContent(`<kol-input-date _label="Date input" _type="time"></kol-input-date>`);
 
 				await page.locator('kol-input-date').evaluate(
-					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: Date; maxDateFormat: Date }) => {
-						element._min = minDateFormat;
-						element._max = maxDateFormat;
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: unknown; maxDateFormat: unknown }) => {
+						element._min = new Date(minDateFormat as string) as unknown as Date;
+						element._max = new Date(maxDateFormat as string) as unknown as Date;
 					},
-					{ minDateFormat, maxDateFormat },
+					{ minDateFormat: minDateFormat.toISOString(), maxDateFormat: maxDateFormat.toISOString() },
 				);
 
 				await expect(page.locator('input')).toHaveAttribute('min', minTime);
@@ -207,11 +209,11 @@ test.describe('kol-input-date', () => {
 				await page.setContent(`<kol-input-date _label="Date input" _type="datetime-local"></kol-input-date>`);
 
 				await page.locator('kol-input-date').evaluate(
-					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: Date; maxDateFormat: Date }) => {
-						element._min = minDateFormat;
-						element._max = maxDateFormat;
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: unknown; maxDateFormat: unknown }) => {
+						element._min = new Date(minDateFormat as string) as unknown as Date;
+						element._max = new Date(maxDateFormat as string) as unknown as Date;
 					},
-					{ minDateFormat, maxDateFormat },
+					{ minDateFormat: minDateFormat.toISOString(), maxDateFormat: maxDateFormat.toISOString() },
 				);
 
 				await expect(page.locator('input')).toHaveAttribute('min', minDayTime);
@@ -224,11 +226,11 @@ test.describe('kol-input-date', () => {
 				await page.setContent(`<kol-input-date _label="Date input" _type="week"></kol-input-date>`);
 
 				await page.locator('kol-input-date').evaluate(
-					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: Date; maxDateFormat: Date }) => {
-						element._min = minDateFormat;
-						element._max = maxDateFormat;
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: unknown; maxDateFormat: unknown }) => {
+						element._min = new Date(minDateFormat as string) as unknown as Date;
+						element._max = new Date(maxDateFormat as string) as unknown as Date;
 					},
-					{ minDateFormat, maxDateFormat },
+					{ minDateFormat: minDateFormat.toISOString(), maxDateFormat: maxDateFormat.toISOString() },
 				);
 
 				await expect(page.locator('input')).toHaveAttribute('min', minWeek);
@@ -241,11 +243,11 @@ test.describe('kol-input-date', () => {
 				await page.setContent(`<kol-input-date _label="Date input" _type="month"></kol-input-date>`);
 
 				await page.locator('kol-input-date').evaluate(
-					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: Date; maxDateFormat: Date }) => {
-						element._min = minDateFormat;
-						element._max = maxDateFormat;
+					(element: HTMLKolInputDateElement, { minDateFormat, maxDateFormat }: { minDateFormat: unknown; maxDateFormat: unknown }) => {
+						element._min = new Date(minDateFormat as string) as unknown as Date;
+						element._max = new Date(maxDateFormat as string) as unknown as Date;
 					},
-					{ minDateFormat, maxDateFormat },
+					{ minDateFormat: minDateFormat.toISOString(), maxDateFormat: maxDateFormat.toISOString() },
 				);
 
 				await expect(page.locator('input')).toHaveAttribute('min', minMonth);
