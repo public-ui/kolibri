@@ -1,7 +1,5 @@
 # Welcome to KoliBri
 
-[![MCP Toplist](https://mcptoplist.com/badge/glama%2Fpublic-ui%2Fkolibri.svg)](https://mcptoplist.com/server/glama%2Fpublic-ui%2Fkolibri)
-
 [![npm](https://img.shields.io/npm/v/@public-ui/components)](https://www.npmjs.com/package/@public-ui/components)
 [![license](https://img.shields.io/npm/l/@public-ui/components)](https://github.com/public-ui/kolibri/blob/main/LICENSE)
 [![downloads](https://img.shields.io/npm/dt/@public-ui/components)](https://www.npmjs.com/package/@public-ui/components)
@@ -9,6 +7,7 @@
 [![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
 [![size](https://img.shields.io/bundlephobia/min/@public-ui/components)](https://bundlephobia.com/result?p=@public-ui/components)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
+[![mcp-oplist](https://mcptoplist.com/badge/glama%2Fpublic-ui%2Fkolibri.svg)](https://mcptoplist.com/server/glama%2Fpublic-ui%2Fkolibri)
 
 > "The accessible HTML standard"
 
