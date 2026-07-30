@@ -7,6 +7,8 @@
 		@include icon();
 		@include button('kol-button');
 
+		align-items: center;
+
 		&--variant-msg {
 			color: var(--alert-accent-color);
 
@@ -15,10 +17,6 @@
 
 				font-size: to-rem(20);
 				line-height: to-rem(20);
-			}
-
-			.kol-alert__container {
-				line-height: var(--ecl-line-height-s);
 			}
 
 			.kol-alert__content {
@@ -38,10 +36,11 @@
 
 				font-size: to-rem(32);
 			}
+		}
 
-			.kol-alert__content {
-				margin-left: to-rem(40);
-			}
+		&:not(:has(.kol-alert__heading)) {
+			grid-template-areas: 'icon content close';
+			grid-template-rows: min-content;
 		}
 
 		&--type-default {
