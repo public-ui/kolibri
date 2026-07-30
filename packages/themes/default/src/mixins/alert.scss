@@ -24,10 +24,14 @@
 
 	.kol-alert--variant-msg {
 		gap: to-rem(4) to-rem(8);
-		align-items: start;
+		align-items: center;
 
 		&:not(:has(.kol-alert__heading)) {
 			display: flex;
+
+			.kol-alert__closer {
+				order: 10; /* damit er immer ganz rechts ist */
+			}
 		}
 	}
 
