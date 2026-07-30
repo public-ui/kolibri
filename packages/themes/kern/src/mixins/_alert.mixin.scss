@@ -13,11 +13,11 @@
 		/* Variant msg */
 		&--variant-msg {
 			color: var(--alert-msg-text-color);
+			gap: to-rem(4);
+			align-items: center;
 			grid-template-areas:
 				'icon heading close'
 				'icon content close';
-			gap: to-rem(4);
-			align-items: center;
 
 			&:not(:has(#{$root}__heading)) {
 				grid-template-areas: 'icon content close';
@@ -53,15 +53,14 @@
 
 		/* Elements */
 		&--variant-card {
-			border-radius: var(--kern-metric-border-radius-default);
-			border: var(--kern-metric-border-width-default) solid var(--alert-msg-text-color);
-
 			background: var(--alert-accent-color);
+			border-radius: var(--kern-metric-border-radius-default);
+			padding-top: var(--kern-metric-space-default);
+			gap: var(--kern-metric-space-default) to-rem(8);
 			grid-template-areas:
 				'icon heading close'
 				'content content content';
-			padding-top: var(--kern-metric-space-default);
-			gap: var(--kern-metric-space-default) to-rem(8);
+			border: var(--kern-metric-border-width-default) solid var(--alert-msg-text-color);
 
 			#{$root}__closer {
 				margin-right: var(--kern-metric-space-default);
@@ -76,8 +75,8 @@
 			}
 
 			#{$root}__icon {
-				margin-left: var(--kern-metric-space-default);
 				color: var(--alert-msg-text-color);
+				margin-left: var(--kern-metric-space-default);
 			}
 		}
 
