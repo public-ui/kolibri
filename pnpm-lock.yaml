@@ -423,8 +423,8 @@ importers:
         version: 3.0.0
     devDependencies:
       '@playwright/test':
-        specifier: 1.62.0
-        version: 1.62.0
+        specifier: 1.60.0
+        version: 1.60.0
       '@public-ui/eslint-config':
         specifier: workspace:*
         version: link:../tools/eslint-config
@@ -454,7 +454,7 @@ importers:
         version: 4.38.3
       '@stencil/playwright':
         specifier: 0.4.3
-        version: 0.4.3(@playwright/test@1.62.0)(@stencil/core@4.38.3)
+        version: 0.4.3(@playwright/test@1.60.0)(@stencil/core@4.38.3)
       '@stencil/sass':
         specifier: 3.2.3
         version: 3.2.3(@stencil/core@4.38.3)
@@ -710,8 +710,8 @@ importers:
         version: 7.18.2(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       '@playwright/test':
-        specifier: 1.62.0
-        version: 1.62.0
+        specifier: 1.60.0
+        version: 1.60.0
       '@public-ui/eslint-config':
         specifier: workspace:*
         version: link:../../tools/eslint-config
@@ -1248,8 +1248,8 @@ importers:
   packages/tools/benchmark-tests:
     devDependencies:
       '@playwright/test':
-        specifier: 1.62.0
-        version: 1.62.0
+        specifier: 1.60.0
+        version: 1.60.0
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -1539,6 +1539,9 @@ importers:
       '@axe-core/playwright':
         specifier: 4.12.1
         version: 4.12.1(playwright-core@1.62.0)
+      '@playwright/test':
+        specifier: 1.60.0
+        version: 1.60.0
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
@@ -1585,9 +1588,6 @@ importers:
         specifier: 8.1.5
         version: 8.1.5(@types/node@25.9.5)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.49.0)(tsx@4.23.1)(yaml@2.9.0)
     devDependencies:
-      '@playwright/test':
-        specifier: 1.62.0
-        version: 1.62.0
       '@public-ui/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
@@ -4578,9 +4578,9 @@ packages:
     resolution: {integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@playwright/test@1.62.0':
-    resolution: {integrity: sha512-9zOJ6ZQRAena31MpOH9VSzIz8Ou3YJ/wtY/eQm5T2uhfhG7/U3COrMS8xOtUrZrp9OgdmzEnIYODye3nY1VqzA==}
-    engines: {node: '>=20'}
+  '@playwright/test@1.60.0':
+    resolution: {integrity: sha512-O71yZIbAh/PxDMNGns37GHBIfrVkEVyn+AXyIa5dOTfb4/xNvRWV+Vv/NMbNCtODB/pO7vLlF2OTmMVLhmr7Ag==}
+    engines: {node: '>=18'}
     hasBin: true
 
   '@polka/url@1.0.0-next.29':
@@ -11616,14 +11616,19 @@ packages:
     resolution: {integrity: sha512-+KD8hJtqQMYoTuL1bbGOqxb4z+nZkTAwVdNtWwe8Tc2xNbEmdJYIYoc6Qt0uF55e6YW6KuTHw1DjQ18gMhzepw==}
     engines: {node: '>=16.0.0'}
 
+  playwright-core@1.60.0:
+    resolution: {integrity: sha512-9bW6zvX/m0lEbgTKJ6YppOKx8H3VOPBMOCFh2irXFOT4BbHgrx5hPjwJYLT40Lu+4qtD36qKc/Hn56StUW57IA==}
+    engines: {node: '>=18'}
+    hasBin: true
+
   playwright-core@1.62.0:
     resolution: {integrity: sha512-nsNRyq0r2zsG8AcRHWknc9QRA5XCueC7gWMrs+Gx2tlZn9hcl8zudfh00lhJPY1DE7NmZ6bDsT9g2yey8mXljA==}
     engines: {node: '>=20'}
     hasBin: true
 
-  playwright@1.62.0:
-    resolution: {integrity: sha512-Z14dG305dgaLu6foB1TXQagFiW8JfSUIUaUuPaKQ6NtBPKF1P/qXcqfh6c6K/icPqdy37JmjbiBXf6JNg6Sylw==}
-    engines: {node: '>=20'}
+  playwright@1.60.0:
+    resolution: {integrity: sha512-hheHdokM8cdqCb0lcE3s+zT4t4W+vvjpGxsZlDnikarzx8tSzMebh3UiFtgqwFwnTnjYQcsyMF8ei2mCO/tpeA==}
+    engines: {node: '>=18'}
     hasBin: true
 
   pngjs@3.4.0:
@@ -18322,9 +18327,9 @@ snapshots:
   '@pkgr/core@0.2.9':
     optional: true
 
-  '@playwright/test@1.62.0':
+  '@playwright/test@1.60.0':
     dependencies:
-      playwright: 1.62.0
+      playwright: 1.60.0
 
   '@polka/url@1.0.0-next.29': {}
 
@@ -19362,9 +19367,9 @@ snapshots:
       '@rollup/rollup-win32-arm64-msvc': 4.34.9
       '@rollup/rollup-win32-x64-msvc': 4.34.9
 
-  '@stencil/playwright@0.4.3(@playwright/test@1.62.0)(@stencil/core@4.38.3)':
+  '@stencil/playwright@0.4.3(@playwright/test@1.60.0)(@stencil/core@4.38.3)':
     dependencies:
-      '@playwright/test': 1.62.0
+      '@playwright/test': 1.60.0
       '@stencil/core': 4.38.3
       deepmerge: 4.3.1
       find-up: 8.0.0
@@ -26562,11 +26567,13 @@ snapshots:
       pvutils: 1.1.5
       tslib: 2.8.1
 
+  playwright-core@1.60.0: {}
+
   playwright-core@1.62.0: {}
 
-  playwright@1.62.0:
+  playwright@1.60.0:
     dependencies:
-      playwright-core: 1.62.0
+      playwright-core: 1.60.0
     optionalDependencies:
       fsevents: 2.3.2
 
