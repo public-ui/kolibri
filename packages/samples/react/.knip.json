@@ -1,5 +1,6 @@
 {
 	"$schema": "https://unpkg.com/knip@5/schema.json",
 	"entry": ["src/**/routes.ts"],
+	"ignore": ["src/scenarios/appointment-form/**"],
 	"project": ["**/*.ts", "**/*.tsx"]
 }
