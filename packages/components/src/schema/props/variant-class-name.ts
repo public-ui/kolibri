@@ -1,6 +1,7 @@
 import type { Generic } from 'adopted-style-sheets';
 
-import { WatchOptions, watchValidator } from '../utils';
+import type { WatchOptions } from '../utils';
+import { watchValidator } from '../utils';
 import { isString } from '../validators';
 
 export type VariantClassNamePropType = string | string[];

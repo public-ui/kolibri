@@ -3,7 +3,7 @@ import { Component, h, Host, Prop } from '@stencil/core';
 
 import type { AbbrApi } from '../../internal/functional-components/abbr/api';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { LabelPropType } from '../../schema';
+import type { LabelPropType } from '../../schema';
 
 /**
  * The **Abbr** component implements the HTML tag `abbr`.

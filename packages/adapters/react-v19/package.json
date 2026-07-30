@@ -51,7 +51,7 @@
 		"@public-ui/components": "workspace:*",
 		"@types/react": "19.2.17",
 		"@types/react-dom": "19.2.3",
-		"minimatch": "10.2.5",
+		"minimatch": "10.2.6",
 		"react": "19.2.6",
 		"react-dom": "19.2.6",
 		"typescript": "5.9.3",
