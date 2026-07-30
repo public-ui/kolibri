@@ -1,5 +1,5 @@
 @use '../mixins/badge-text-hint' as *;
-@use '../mixins/kol-alert' as *;
+@use '../mixins/alert' as *;
 @use '../mixins/kol-form-field' as *;
 @use '../mixins/kol-input' as *;
 @use '../mixins/kol-input-container' as *;
@@ -11,7 +11,7 @@
 	}
 
 	@include badge-text-hint;
-	@include kol-alert;
+	@include alert;
 	@include kol-form-field;
 	@include kol-input;
 	@include kol-input-container;

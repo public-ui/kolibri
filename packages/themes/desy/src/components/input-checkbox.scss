@@ -1,4 +1,4 @@
-@use '../mixins/kol-alert' as *;
+@use '../mixins/alert' as *;
 @use '../functions/to-rem' as *;
 @use '../mixins/field-control' as *;
 @use '../mixins/form-field-order' as *;
@@ -6,7 +6,7 @@
 @use '../mixins/checkbox-states' as *;
 
 @layer kol-theme-component {
-	@include kol-alert;
+	@include alert;
 	@include kol-field-control-theme;
 	@include kol-form-field;
 

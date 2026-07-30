@@ -1,4 +1,4 @@
-@use '../mixins/kol-alert' as *;
+@use '../mixins/alert' as *;
 @use '../functions/to-rem' as *;
 
 @layer kol-theme-component {
@@ -9,7 +9,7 @@
 		max-width: 100%;
 	}
 
-	@include kol-alert;
+	@include alert;
 
 	.kol-toast-item {
 		background-color: #fff;

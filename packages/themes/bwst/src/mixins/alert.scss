@@ -32,7 +32,6 @@
 		filter: drop-shadow(0 to-rem(2) to-rem(4) rgb(8, 35, 48, 0.24));
 		border-radius: var(--border-radius);
 		gap: 0 to-rem(8);
-		flex-direction: column;
 		grid-template-areas:
 			'icon heading close'
 			'content content content';

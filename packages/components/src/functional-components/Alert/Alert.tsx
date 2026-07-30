@@ -89,9 +89,11 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 		<div role={alert ? 'alert' : undefined} {...rootProps} data-testid="alert">
 			<AlertIcon label={label} type={type} />
 
-			<KolHeadingFc class={BEM_CLASS__HEADING} level={level} id="heading">
-				{label}
-			</KolHeadingFc>
+			{label && (
+				<KolHeadingFc class={BEM_CLASS__HEADING} level={level} id="heading">
+					{label}
+				</KolHeadingFc>
+			)}
 
 			{hasCloser && (
 				<KolButtonWcTag
