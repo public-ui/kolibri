@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-B_B8_sPr.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};

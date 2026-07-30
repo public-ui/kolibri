@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-B_B8_sPr.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};

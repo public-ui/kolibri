@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-B_B8_sPr.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
