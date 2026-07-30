@@ -1,0 +1,205 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: theme-snapshots.spec.js >> snapshot for input-text/variant?noColumns
+- Location: tests/theme-snapshots.spec.js:29:2
+
+# Error details
+
+```
+Error: expect(page).toHaveScreenshot(expected) failed
+
+  24 pixels (ratio 0.01 of all image pixels) are different.
+
+  Snapshot: snapshot-for-input-text-variant-noColumns.png
+
+Call log:
+  - Expect "toHaveScreenshot(snapshot-for-input-text-variant-noColumns.png)" with timeout 10000ms
+    - verifying given screenshot expectation
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - 24 pixels (ratio 0.01 of all image pixels) are different.
+  - waiting 100ms before taking screenshot
+  - taking page screenshot
+    - disabled all CSS animations
+  - waiting for fonts to load...
+  - fonts loaded
+  - captured a stable screenshot
+  - 24 pixels (ratio 0.01 of all image pixels) are different.
+
+```
+
+# Page snapshot
+
+```yaml
+- main [ref=e4]:
+  - heading "input-text variant" [level=1] [ref=e5]
+  - generic [ref=e7]:
+    - 'heading "Variante: left" [level=2] [ref=e8]'
+    - generic [ref=e10]:
+      - generic [ref=e11] [cursor=pointer]: Input Text
+      - textbox "Input Text" [ref=e18]
+      - generic [ref=e19]:
+        - text: 0 characters
+        - generic [ref=e20]: 0 characters
+      - alert [ref=e21]:
+        - generic [ref=e22]:
+          - generic [ref=e23]: Error
+          - generic [ref=e24]: 
+          - generic [ref=e25]: Error message
+      - generic [ref=e27]: Enter your surname
+    - generic [ref=e29]:
+      - generic [ref=e30] [cursor=pointer]: Input Passwort
+      - textbox "Input Passwort" [ref=e37]
+    - generic [ref=e39]:
+      - generic [ref=e40] [cursor=pointer]: Input Color
+      - generic [ref=e47]:
+        - textbox [ref=e48] [cursor=pointer]: "#000000"
+        - textbox "Input Color" [ref=e49] [cursor=pointer]: "#000000"
+    - generic [ref=e51]:
+      - generic [ref=e52] [cursor=pointer]: Input Date
+      - textbox "Input Date" [ref=e59]
+    - generic [ref=e61]:
+      - generic [ref=e62] [cursor=pointer]: Input Email
+      - textbox "Input Email" [ref=e69]
+    - generic [ref=e71]:
+      - generic [ref=e72] [cursor=pointer]: Input File
+      - generic [ref=e78]:
+        - generic [ref=e79]: Choose a file or drop it here...
+        - button "Input File" [ref=e80] [cursor=pointer]
+        - button "Browse" [ref=e82] [cursor=pointer]
+    - generic [ref=e87]:
+      - generic [ref=e88] [cursor=pointer]: Input Number
+      - generic [ref=e93]:
+        - button [ref=e95] [cursor=pointer]:
+          - generic [ref=e96]: 
+        - spinbutton "Input Number" [ref=e98]
+        - button [ref=e100] [cursor=pointer]:
+          - generic [ref=e101]: 
+    - generic [ref=e103]:
+      - generic [ref=e104] [cursor=pointer]: Input Range
+      - generic [ref=e111]:
+        - slider [ref=e112]: "50"
+        - spinbutton "Input Range" [ref=e113]: "50"
+    - generic [ref=e116]:
+      - generic [ref=e117] [cursor=pointer]: Select
+      - combobox "Select" [ref=e125] [cursor=pointer]:
+        - option "✓ Please select…" [selected]
+        - option "One"
+        - option "Two"
+    - generic [ref=e127]:
+      - generic [ref=e128] [cursor=pointer]: Single Select
+      - generic [ref=e135]:
+        - combobox "Single Select" [ref=e136]
+        - generic [ref=e137] [cursor=pointer]: 
+    - generic [ref=e139]:
+      - generic [ref=e140] [cursor=pointer]: Combobox
+      - generic [ref=e147]:
+        - combobox "Combobox" [ref=e148]
+        - button [ref=e149] [cursor=pointer]:
+          - generic [ref=e150]: 
+    - group "Radio Group" [ref=e152]:
+      - generic [ref=e157]:
+        - generic [ref=e158]:
+          - radio "Field 1" [ref=e161] [cursor=pointer]
+          - generic [ref=e162] [cursor=pointer]: Field 1
+        - generic [ref=e166]:
+          - radio "Field 2" [ref=e169] [cursor=pointer]
+          - generic [ref=e170] [cursor=pointer]: Field 2
+    - generic [ref=e175]:
+      - generic [ref=e176] [cursor=pointer]: Textarea
+      - textbox "Textarea" [ref=e183]
+```
+
+# Test source
+
+```ts
+  1  | import { expect, test } from '@playwright/test';
+  2  | import { ROUTES } from './sample-app.routes.js';
+  3  | 
+  4  | // https://playwright.dev/docs/emulation
+  5  | test.use({
+  6  | 	colorScheme: 'light',
+  7  | 	locale: 'de-DE',
+  8  | 	isMobile: false,
+  9  | 	timezoneId: 'Europe/Berlin',
+  10 | 	viewport: {
+  11 | 		width: 800,
+  12 | 		height: 0,
+  13 | 	},
+  14 | });
+  15 | 
+  16 | const DEFAULT_SNAPSHOT_OPTIONS = {
+  17 | 	animations: 'disabled',
+  18 | 	fullPage: true,
+  19 | 	maxDiffPixelRatio: 0,
+  20 | 	scale: 'css', // 'css' or 'device'
+  21 | 	timeout: 10000,
+  22 | };
+  23 | 
+  24 | ROUTES.forEach((options, route) => {
+  25 | 	// Skip unnecessary snapshot tests
+  26 | 	if (options?.snapshot?.skip === true && options?.snapshot?.zoom?.skip === true) {
+  27 | 		return;
+  28 | 	}
+  29 | 	test(`snapshot for ${route}`, async ({ page }) => {
+  30 | 		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
+  31 | 		await page.goto(`/#${route}${hideMenusParam}`);
+  32 | 		await page.waitForLoadState('networkidle');
+  33 | 		await page.waitForSelector('.loading', { state: 'hidden' });
+  34 | 		await page.addStyleTag({
+  35 | 			content: `
+  36 | 				* {
+  37 | 					transition: none !important;
+  38 | 					animation: none !important;
+  39 | 				}
+  40 | 			`,
+  41 | 		});
+  42 | 		if (options?.snapshot?.viewportSize) {
+  43 | 			await page.setViewportSize(options?.snapshot?.viewportSize);
+  44 | 		}
+  45 | 		if (options?.snapshot?.waitForTimeout) {
+  46 | 			await page.waitForTimeout(options?.snapshot?.waitForTimeout);
+  47 | 		}
+  48 | 
+  49 | 		/**
+  50 | 		 * We would like to use a readable name for the snapshot file.
+  51 | 		 */
+  52 | 		const snapshotName = `snapshot-for-${route.replace(/(\/|\?|&|=)/g, '-')}`;
+  53 | 
+  54 | 		const SNAPSHOT_OPTIONS = {
+  55 | 			...DEFAULT_SNAPSHOT_OPTIONS,
+  56 | 			...options?.snapshot?.options,
+  57 | 		};
+  58 | 
+  59 | 		// Skip unnecessary normal tests
+  60 | 		if (options?.snapshot?.skip !== true) {
+> 61 | 			await expect(page).toHaveScreenshot(`${snapshotName}.png`, SNAPSHOT_OPTIONS);
+     |                       ^ Error: expect(page).toHaveScreenshot(expected) failed
+  62 | 		}
+  63 | 
+  64 | 		// Skip unnecessary zoom tests
+  65 | 		if (options?.snapshot?.zoom?.skip !== true) {
+  66 | 			await page.evaluate(() => {
+  67 | 				// eslint-disable-next-line no-undef
+  68 | 				document.body.style.zoom = '400%';
+  69 | 				// document.body.style.transform = 'scale(4)';
+  70 | 				// document.body.style.transformOrigin = 'top left';
+  71 | 				// document.body.style.width = '25vw';
+  72 | 			});
+  73 | 			await expect(page).toHaveScreenshot(`${snapshotName}-zoom.png`, {
+  74 | 				...SNAPSHOT_OPTIONS,
+  75 | 				...options?.snapshot?.zoom?.options,
+  76 | 			});
+  77 | 		}
+  78 | 	});
+  79 | });
+  80 | 
+```
