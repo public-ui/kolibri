@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/svelte",
-	"version": "4.3.0-rc.5",
+	"version": "4.3.0-rc.6",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -50,7 +50,7 @@
 	"devDependencies": {
 		"@babel/types": "7.29.7",
 		"@public-ui/components": "workspace:*",
-		"minimatch": "10.2.5",
+		"minimatch": "10.2.6",
 		"svelte": "5.55.7",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"

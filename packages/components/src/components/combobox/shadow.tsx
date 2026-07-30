@@ -388,9 +388,11 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 				break;
 			case 'Esc':
 			case 'Escape': {
-				this._isOpen = false;
-				event.preventDefault();
-				this.ctaRef.el?.focus();
+				if (this._isOpen) {
+					event.preventDefault();
+					this._isOpen = false;
+					this.ctaRef.el?.focus();
+				}
 				break;
 			}
 			case 'Enter':

@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/mcp",
-	"version": "4.3.0-rc.5",
+	"version": "4.3.0-rc.6",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -66,23 +66,23 @@
 		"vercel:deploy:prod": "vercel --prod"
 	},
 	"dependencies": {
-		"@modelcontextprotocol/sdk": "1.29.0",
+		"@modelcontextprotocol/sdk": "1.30.0",
 		"@public-ui/components": "workspace:*",
 		"express": "5.2.1",
-		"fuse.js": "7.4.2",
+		"fuse.js": "7.5.0",
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
 		"@modelcontextprotocol/inspector": "0.22.0",
 		"@public-ui/eslint-config": "workspace:*",
 		"@types/express": "5.0.6",
-		"@types/node": "25.9.3",
-		"eslint": "9.39.4",
-		"knip": "6.16.1",
+		"@types/node": "25.9.5",
+		"eslint": "9.39.5",
+		"knip": "6.29.0",
 		"nodemon": "3.1.14",
-		"prettier": "3.8.4",
+		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"tsx": "4.22.4",
+		"tsx": "4.23.1",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},

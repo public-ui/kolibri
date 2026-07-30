@@ -1,7 +1,7 @@
 import { Theme } from 'adopted-style-sheets';
 
 import { KeyEnum } from './i18n-keys';
-import { VariantClassNamePropType } from './props';
+import type { VariantClassNamePropType } from './props';
 import { TagEnum } from './tag-names';
 
 /**
