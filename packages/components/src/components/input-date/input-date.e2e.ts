@@ -73,10 +73,13 @@ test.describe('kol-input-date', () => {
 			test.describe(`when initial value is a ${label}`, () => {
 				test(`should return the correct value for getValue() as ${label}`, async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-					const valueToSet = value instanceof Date ? value.toISOString() : value;
-					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: unknown) => {
-						element._value = (typeof date === 'string' ? date : new Date(date as string)) as Iso8601 | Date;
-					}, valueToSet);
+					const valueToSet: { kind: 'date'; iso: string } | { kind: 'string'; value: Iso8601 } =
+						value instanceof Date ? { kind: 'date', iso: value.toISOString() } : { kind: 'string', value };
+					await page
+						.locator('kol-input-date')
+						.evaluate((element: HTMLKolInputDateElement, date: { kind: 'date'; iso: string } | { kind: 'string'; value: Iso8601 }) => {
+							element._value = date.kind === 'date' ? new Date(date.iso) : date.value;
+						}, valueToSet);
 
 					const getValue = await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => {
 						return element.getValue();
@@ -92,10 +95,13 @@ test.describe('kol-input-date', () => {
 
 				test(`should reflect the correct _value property as ${label} on the web component`, async ({ page }) => {
 					await page.setContent('<kol-input-date _label="Date input"></kol-input-date>');
-					const valueToSet = value instanceof Date ? value.toISOString() : value;
-					await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement, date: unknown) => {
-						element._value = (typeof date === 'string' ? date : new Date(date as string)) as Iso8601 | Date; // set the initial value
-					}, valueToSet);
+					const valueToSet: { kind: 'date'; iso: string } | { kind: 'string'; value: Iso8601 } =
+						value instanceof Date ? { kind: 'date', iso: value.toISOString() } : { kind: 'string', value };
+					await page
+						.locator('kol-input-date')
+						.evaluate((element: HTMLKolInputDateElement, date: { kind: 'date'; iso: string } | { kind: 'string'; value: Iso8601 }) => {
+							element._value = date.kind === 'date' ? new Date(date.iso) : date.value; // set the initial value
+						}, valueToSet);
 
 					const NEW_DATE = '2021-03-03';
 					await page.locator('input').fill(NEW_DATE);
