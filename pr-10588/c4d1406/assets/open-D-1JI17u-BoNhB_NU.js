@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-BDrkE4r0.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
