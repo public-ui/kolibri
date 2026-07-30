@@ -1,5 +1,4 @@
 import type { Routes } from '../../shares/types';
-import { InputCheckboxAriaDetails } from './aria-details';
 import { InputCheckboxBasic } from './basic';
 import { InputCheckboxButton } from './button';
 import { InputCheckboxFocusEvents } from './focus-events';
@@ -13,6 +12,5 @@ export const INPUT_CHECKBOX_ROUTES: Routes = {
 		'focus-events': InputCheckboxFocusEvents,
 		switch: InputCheckboxSwitch,
 		button: InputCheckboxButton,
-		'aria-details': InputCheckboxAriaDetails,
 	},
 };

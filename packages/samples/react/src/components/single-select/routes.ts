@@ -1,5 +1,4 @@
 import type { Routes } from '../../shares/types';
-import { SingleSelectAriaDetails } from './aria-details';
 import { SingleSelectBasic } from './basic';
 import { SingleSelectOnInputOnChange } from './get-value';
 import { SingleSelectLazyLoaded } from './lazy-loaded';
@@ -9,6 +8,5 @@ export const SINGLE_SELECT_ROUTES: Routes = {
 		basic: SingleSelectBasic,
 		'get-value': SingleSelectOnInputOnChange,
 		'lazy-loaded': SingleSelectLazyLoaded,
-		'aria-details': SingleSelectAriaDetails,
 	},
 };
