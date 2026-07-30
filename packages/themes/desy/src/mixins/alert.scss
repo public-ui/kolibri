@@ -51,6 +51,7 @@
 			color: var(--alert-msg-text-color);
 			display: block;
 			padding-right: to-rem(26);
+			padding-left: to-rem(20);
 
 			#{$root}__closer {
 				position: absolute;
@@ -66,11 +67,23 @@
 				}
 			}
 
-			#{$root}__icon,
 			#{$root}__heading,
 			#{$root}__content {
 				display: inline;
 				margin-right: to-rem(4);
+			}
+
+			#{$root}__icon {
+				display: flex;
+				align-items: center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+			}
+
+			&:has(#{$root}--type-default) {
+				padding-left: 0;
 			}
 		}
 
