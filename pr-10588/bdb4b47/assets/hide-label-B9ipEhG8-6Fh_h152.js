@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-DuvJcCzs.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};
