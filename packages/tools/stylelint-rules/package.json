@@ -17,11 +17,11 @@
 	},
 	"devDependencies": {
 		"@public-ui/eslint-config": "workspace:*",
-		"eslint": "9.39.4",
-		"knip": "6.16.1",
+		"eslint": "9.39.5",
+		"knip": "6.29.0",
 		"mocha": "11.7.6",
 		"postcss-scss": "4.0.9",
-		"prettier": "3.8.4",
+		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "17.4.0"
 	},

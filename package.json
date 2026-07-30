@@ -1,13 +1,13 @@
 {
 	"version": "4.3.0-rc.5",
 	"devDependencies": {
-		"@evilmartians/lefthook": "2.1.9",
+		"@evilmartians/lefthook": "2.1.10",
 		"license-report": "6.8.5",
-		"npm-check-updates": "22.2.3",
+		"npm-check-updates": "22.2.9",
 		"npm-run-all2": "8.0.4",
-		"prettier": "3.8.4",
+		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.13.0",
+		"stylelint": "17.14.1",
 		"stylelint-config-recommended-scss": "17.0.1",
 		"stylelint-config-standard": "40.0.0",
 		"stylelint-order": "8.1.1",
