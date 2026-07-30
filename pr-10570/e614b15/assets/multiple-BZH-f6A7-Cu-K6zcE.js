@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-JKv_b-13.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};

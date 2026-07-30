@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-JKv_b-13.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
