@@ -54,9 +54,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 
-			const value = await page
-				.locator('kol-single-select')
-				.evaluate<string | null>((element) => (element as HTMLKolSingleSelectElement)._value as string | null);
+			const value = await page.locator('kol-single-select').evaluate((element) => (element as HTMLKolSingleSelectElement)._value);
 			expect(value).toBe('S');
 		});
 
@@ -74,9 +72,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 
-			const value = await page
-				.locator('kol-single-select')
-				.evaluate<string | null>((element) => (element as HTMLKolSingleSelectElement)._value as string | null);
+			const value = await page.locator('kol-single-select').evaluate((element) => (element as HTMLKolSingleSelectElement)._value);
 			expect(value).toBe('W');
 		});
 
