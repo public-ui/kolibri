@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-zcX-W4Gv.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
