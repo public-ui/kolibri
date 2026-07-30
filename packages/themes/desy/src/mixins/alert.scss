@@ -49,12 +49,12 @@
 
 		&--variant-msg {
 			color: var(--alert-msg-text-color);
-			display: flex;
-			gap: to-rem(4);
-			align-items: center;
+			display: block;
+			padding-right: to-rem(26);
 
 			#{$root}__closer {
-				order: 10; /* damit er immer ganz rechts ist */
+				position: absolute;
+				right: 0;
 				width: to-rem(20);
 				height: to-rem(20);
 
@@ -66,8 +66,11 @@
 				}
 			}
 
+			#{$root}__icon,
+			#{$root}__heading,
 			#{$root}__content {
-				flex: 1;
+				display: inline;
+				margin-right: to-rem(4);
 			}
 		}
 
