@@ -40,7 +40,6 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
-		"@public-ui/eslint-config": "workspace:*",
 		"eslint": "9.39.5",
 		"knip": "6.29.0",
 		"prettier": "3.9.6",

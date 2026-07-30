@@ -104,7 +104,7 @@
 		"wcag-contrast": "3.0.0"
 	},
 	"devDependencies": {
-		"@playwright/test": "1.60.0",
+		"@playwright/test": "1.62.0",
 		"@public-ui/eslint-config": "workspace:*",
 		"@public-ui/stencil-angular-output-target": "0.9.0",
 		"@public-ui/stencil-react-output-target": "0.6.0",
@@ -134,7 +134,7 @@
 		"jest-cli": "29.7.0",
 		"knip": "6.29.0",
 		"mustache": "4.2.0",
-		"postcss": "8.5.24",
+		"postcss": "8.5.25",
 		"postcss-sorting": "10.0.0",
 		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",
