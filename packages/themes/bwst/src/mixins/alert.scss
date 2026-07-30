@@ -25,6 +25,10 @@
 	.kol-alert--variant-msg {
 		gap: to-rem(4) to-rem(8);
 		align-items: start;
+
+		&:not(:has(.kol-alert__heading)) {
+			display: flex;
+		}
 	}
 
 	.kol-alert--variant-card {
