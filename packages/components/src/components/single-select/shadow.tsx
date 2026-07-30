@@ -319,9 +319,6 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 			onChange: this.onChange.bind(this),
 			onClick: this.onClick.bind(this),
 			onInput: this.onInput.bind(this),
-			onBlur: () => {
-				this.onBlur();
-			},
 		};
 	}
 
@@ -347,6 +344,8 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 									onClick: () => {
 										this.clearSelection();
 										this.ctaRef.el?.focus();
+										//FF bekommt das blur nicht mehr mit deswegen hier extra gesetzt
+										this.clearButtonFocused = false;
 									},
 									onFocus: () => {
 										this.clearButtonFocused = true;
