@@ -10,7 +10,7 @@
 | typescript            | Apache-2.0    | 5.8.3      | Microsoft Corp.                                    |
 | minimatch             | BlueOak-1.0.0 | 10.2.5     | Isaac Z. Schlueter                                 |
 | rimraf                | BlueOak-1.0.0 | 6.1.3      | Isaac Z. Schlueter                                 |
-| @public-ui/components | EUPL-1.2      | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components | EUPL-1.2      | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | @angular/common       | MIT           | 19.2.25    | angular                                            |
 | @angular/compiler     | MIT           | 19.2.25    | angular                                            |
 | @angular/compiler-cli | MIT           | 19.2.25    | n/a                                                |
@@ -26,7 +26,7 @@
 | typescript            | Apache-2.0    | 5.9.3      | Microsoft Corp.                                    |
 | minimatch             | BlueOak-1.0.0 | 10.2.5     | Isaac Z. Schlueter                                 |
 | rimraf                | BlueOak-1.0.0 | 6.1.3      | Isaac Z. Schlueter                                 |
-| @public-ui/components | EUPL-1.2      | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components | EUPL-1.2      | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | @angular/common       | MIT           | 20.3.25    | angular                                            |
 | @angular/compiler     | MIT           | 20.3.20    | angular                                            |
 | @angular/compiler-cli | MIT           | 20.3.20    | n/a                                                |
@@ -42,7 +42,7 @@
 | typescript            | Apache-2.0    | 5.9.3      | Microsoft Corp.                                    |
 | minimatch             | BlueOak-1.0.0 | 10.2.5     | Isaac Z. Schlueter                                 |
 | rimraf                | BlueOak-1.0.0 | 6.1.3      | Isaac Z. Schlueter                                 |
-| @public-ui/components | EUPL-1.2      | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components | EUPL-1.2      | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | @angular/common       | MIT           | 21.2.17    | angular                                            |
 | @angular/compiler     | MIT           | 21.2.12    | angular                                            |
 | @angular/compiler-cli | MIT           | 21.2.12    | n/a                                                |
@@ -55,7 +55,7 @@
 | Package                          | License       | Version    | Author                                             |
 | -------------------------------- | ------------- | ---------- | -------------------------------------------------- |
 | rimraf                           | BlueOak-1.0.0 | 6.1.3      | Isaac Z. Schlueter                                 |
-| @public-ui/components            | EUPL-1.2      | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components            | EUPL-1.2      | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | chai                             | MIT           | 6.2.2      | Jake Luer                                          |
 | cross-env                        | MIT           | 10.1.0     | Kent C. Dodds                                      |
 | mocha                            | MIT           | 11.7.5     | TJ Holowaychuk                                     |
@@ -68,8 +68,8 @@
 | Package               | License    | Version    | Author                                             |
 | --------------------- | ---------- | ---------- | -------------------------------------------------- |
 | typescript            | Apache-2.0 | 5.9.3      | Microsoft Corp.                                    |
-| @public-ui/components | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
-| @public-ui/react      | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/react      | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | preact                | MIT        | 10.29.1    | n/a                                                |
 | react                 | MIT        | 18.3.1     | n/a                                                |
 | react-dom             | MIT        | 18.3.1     | n/a                                                |
@@ -81,7 +81,7 @@
 | --------------------- | ------------- | ---------- | -------------------------------------------------- |
 | typescript            | Apache-2.0    | 5.9.3      | Microsoft Corp.                                    |
 | minimatch             | BlueOak-1.0.0 | 10.2.5     | Isaac Z. Schlueter                                 |
-| @public-ui/components | EUPL-1.2      | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components | EUPL-1.2      | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | @types/react          | MIT           | 18.3.31    | n/a                                                |
 | @types/react-dom      | MIT           | 18.3.7     | n/a                                                |
 | react                 | MIT           | 18.3.1     | n/a                                                |
@@ -95,8 +95,8 @@
 | Package               | License       | Version    | Author                                                        |
 | --------------------- | ------------- | ---------- | ------------------------------------------------------------- |
 | rimraf                | BlueOak-1.0.0 | 6.1.3      | Isaac Z. Schlueter                                            |
-| @public-ui/components | EUPL-1.2      | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de            |
-| @public-ui/react      | EUPL-1.2      | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de            |
+| @public-ui/components | EUPL-1.2      | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de            |
+| @public-ui/react      | EUPL-1.2      | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de            |
 | cpy-cli               | MIT           | 7.0.0      | Sindre Sorhus sindresorhus@gmail.com https://sindresorhus.com |
 | react                 | MIT           | 18.3.1     | n/a                                                           |
 | react-dom             | MIT           | 18.3.1     | n/a                                                           |
@@ -109,7 +109,7 @@
 | --------------------- | ------------- | ---------- | -------------------------------------------------- |
 | typescript            | Apache-2.0    | 5.9.3      | Microsoft Corp.                                    |
 | minimatch             | BlueOak-1.0.0 | 10.2.5     | Isaac Z. Schlueter                                 |
-| @public-ui/components | EUPL-1.2      | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components | EUPL-1.2      | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | solid-js              | MIT           | 1.9.12     | Ryan Carniato                                      |
 | solid-js              | MIT           | 1.9.12     | Ryan Carniato                                      |
 | unbuild               | MIT           | 3.6.1      | n/a                                                |
@@ -120,7 +120,7 @@
 | --------------------- | ------------- | ---------- | -------------------------------------------------- |
 | typescript            | Apache-2.0    | 5.9.3      | Microsoft Corp.                                    |
 | minimatch             | BlueOak-1.0.0 | 10.2.5     | Isaac Z. Schlueter                                 |
-| @public-ui/components | EUPL-1.2      | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components | EUPL-1.2      | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | @babel/types          | MIT           | 7.29.7     | The Babel Team (https://babel.dev/team)            |
 | svelte                | MIT           | 5.55.7     | n/a                                                |
 | svelte                | MIT           | 5.55.7     | n/a                                                |
@@ -132,7 +132,7 @@
 | --------------------- | ------------- | ---------- | -------------------------------------------------- |
 | typescript            | Apache-2.0    | 5.9.3      | Microsoft Corp.                                    |
 | minimatch             | BlueOak-1.0.0 | 10.2.5     | Isaac Z. Schlueter                                 |
-| @public-ui/components | EUPL-1.2      | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components | EUPL-1.2      | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | @babel/types          | MIT           | 7.29.7     | The Babel Team (https://babel.dev/team)            |
 | unbuild               | MIT           | 3.6.1      | n/a                                                |
 | vue                   | MIT           | 3.5.34     | Evan You                                           |
@@ -148,7 +148,7 @@
 | terser                                   | BSD-2-Clause  | 5.48.0      | Mihai Bazon                                                    |
 | twig                                     | BSD-2-Clause  | 3.0.0       | John Roepke                                                    |
 | wcag-contrast                            | BSD-2-Clause  | 3.0.0       | Tom MacWright                                                  |
-| adopted-style-sheets                     | EUPL-1.2      | 1.1.9-rc.22 | Martin Oppitz github@martinoppitz.com https://martinoppitz.com |
+| adopted-style-sheets                     | EUPL-1.2      | 1.1.9-rc.25 | Martin Oppitz github@martinoppitz.com https://martinoppitz.com |
 | stencil-awesome-test                     | EUPL-1.2      | 1.0.6       | Martin Oppitz github@martinoppitz.com https://martinoppitz.com |
 | knip                                     | ISC           | 6.16.1      | Lars Kappert lars@webpro.nl                                    |
 | @floating-ui/dom                         | MIT           | 1.7.6       | atomiks                                                        |
@@ -222,13 +222,10 @@
 | Package                            | License           | Version     | Author                                                         |
 | ---------------------------------- | ----------------- | ----------- | -------------------------------------------------------------- |
 | tslib                              | 0BSD              | 2.8.1       | Microsoft Corp.                                                |
-| @lhci/cli                          | Apache-2.0        | 0.15.1      | n/a                                                            |
-| @playwright/test                   | Apache-2.0        | 1.60.0      | Microsoft Corporation                                          |
 | typescript                         | Apache-2.0        | 5.9.3       | Microsoft Corp.                                                |
-| @public-ui/components              | EUPL-1.2          | 4.3.0-rc.1  | Informationstechnikzentrum Bund kolibri@itzbund.de             |
-| @public-ui/react-hook-form-adapter | EUPL-1.2          | 4.3.0-rc.1  | Informationstechnikzentrum Bund kolibri@itzbund.de             |
-| @public-ui/react-v19               | EUPL-1.2          | 4.3.0-rc.1  | Informationstechnikzentrum Bund kolibri@itzbund.de             |
-| @public-ui/themes                  | EUPL-1.2          | 4.3.0-rc.1  | Informationstechnikzentrum Bund kolibri@itzbund.de             |
+| @public-ui/components              | EUPL-1.2          | 4.3.0-rc.5  | Informationstechnikzentrum Bund kolibri@itzbund.de             |
+| @public-ui/react-hook-form-adapter | EUPL-1.2          | 4.3.0-rc.5  | Informationstechnikzentrum Bund kolibri@itzbund.de             |
+| @public-ui/react-v19               | EUPL-1.2          | 4.3.0-rc.5  | Informationstechnikzentrum Bund kolibri@itzbund.de             |
 | adopted-style-sheets               | EUPL-1.2          | 1.1.9-rc.22 | Martin Oppitz github@martinoppitz.com https://martinoppitz.com |
 | knip                               | ISC               | 6.16.1      | Lars Kappert lars@webpro.nl                                    |
 | world_countries_lists              | LGPL-3.0-or-later | 3.3.0       | Stefan Gabos                                                   |
@@ -238,11 +235,7 @@
 | @types/papaparse                   | MIT               | 5.5.2       | n/a                                                            |
 | @types/react                       | MIT               | 19.2.17     | n/a                                                            |
 | @types/react-dom                   | MIT               | 19.2.3      | n/a                                                            |
-| @unocss/preset-mini                | MIT               | 66.7.2      | Anthony Fu                                                     |
-| @unocss/vite                       | MIT               | 66.7.2      | Anthony Fu                                                     |
-| @vitejs/plugin-react-swc           | MIT               | 4.3.1       | Arnaud Barré (https://github.com/ArnaudBarre)                  |
 | eslint                             | MIT               | 9.39.4      | Nicholas C. Zakas                                              |
-| http-server                        | MIT               | 14.1.1      | n/a                                                            |
 | papaparse                          | MIT               | 5.5.3       | Matthew Holt https://twitter.com/mholt6                        |
 | prettier                           | MIT               | 3.8.4       | James Long                                                     |
 | prettier-plugin-organize-imports   | MIT               | 4.3.0       | Simon Haenisch (https://github.com/simonhaenisch)              |
@@ -253,17 +246,15 @@
 | react-router                       | MIT               | 7.17.0      | Remix Software                                                 |
 | react-router-dom                   | MIT               | 7.17.0      | Remix Software                                                 |
 | stylelint                          | MIT               | 17.13.0     | stylelint                                                      |
-| vite                               | MIT               | 7.3.5       | Evan You                                                       |
 | zod                                | MIT               | 4.4.3       | Colin McDonnell                                                |
-| @public-ui/eslint-config           | n/a               | 4.3.0-rc.1  | n/a                                                            |
 
 ## theme-bwst
 
 | Package                          | License    | Version    | Author                                             |
 | -------------------------------- | ---------- | ---------- | -------------------------------------------------- |
 | typescript                       | Apache-2.0 | 5.9.3      | Microsoft Corp.                                    |
-| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
-| @public-ui/visual-tests          | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/visual-tests          | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | @rollup/plugin-commonjs          | MIT        | 29.0.3     | Rich Harris                                        |
 | @rollup/plugin-node-resolve      | MIT        | 16.0.3     | Rich Harris                                        |
 | @rollup/plugin-typescript        | MIT        | 12.3.0     | Oskar Segersvärd                                   |
@@ -288,8 +279,8 @@
 | Package                          | License    | Version    | Author                                             |
 | -------------------------------- | ---------- | ---------- | -------------------------------------------------- |
 | typescript                       | Apache-2.0 | 5.9.3      | Microsoft Corp.                                    |
-| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
-| @public-ui/visual-tests          | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/visual-tests          | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | @rollup/plugin-commonjs          | MIT        | 29.0.3     | Rich Harris                                        |
 | @rollup/plugin-node-resolve      | MIT        | 16.0.3     | Rich Harris                                        |
 | @rollup/plugin-typescript        | MIT        | 12.3.0     | Oskar Segersvärd                                   |
@@ -314,8 +305,8 @@
 | Package                          | License    | Version    | Author                                             |
 | -------------------------------- | ---------- | ---------- | -------------------------------------------------- |
 | typescript                       | Apache-2.0 | 5.9.3      | Microsoft Corp.                                    |
-| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
-| @public-ui/visual-tests          | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/visual-tests          | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | @rollup/plugin-commonjs          | MIT        | 29.0.3     | Rich Harris                                        |
 | @rollup/plugin-node-resolve      | MIT        | 16.0.3     | Rich Harris                                        |
 | @rollup/plugin-typescript        | MIT        | 12.3.0     | Oskar Segersvärd                                   |
@@ -340,8 +331,8 @@
 | Package                          | License    | Version    | Author                                             |
 | -------------------------------- | ---------- | ---------- | -------------------------------------------------- |
 | typescript                       | Apache-2.0 | 5.9.3      | Microsoft Corp.                                    |
-| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
-| @public-ui/visual-tests          | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/visual-tests          | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | @rollup/plugin-commonjs          | MIT        | 29.0.3     | Rich Harris                                        |
 | @rollup/plugin-node-resolve      | MIT        | 16.0.3     | Rich Harris                                        |
 | @rollup/plugin-typescript        | MIT        | 12.3.0     | Oskar Segersvärd                                   |
@@ -367,8 +358,8 @@
 | -------------------------------- | ---------- | ---------- | -------------------------------------------------- |
 | typescript                       | Apache-2.0 | 5.9.3      | Microsoft Corp.                                    |
 | @kern-ux/native                  | EUPL-1.2   | 2.3.0      | Kern-UX                                            |
-| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
-| @public-ui/visual-tests          | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
+| @public-ui/visual-tests          | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de |
 | @rollup/plugin-commonjs          | MIT        | 29.0.3     | Rich Harris                                        |
 | @rollup/plugin-node-resolve      | MIT        | 16.0.3     | Rich Harris                                        |
 | @rollup/plugin-typescript        | MIT        | 12.3.0     | Oskar Segersvärd                                   |
@@ -393,7 +384,7 @@
 | Package                          | License    | Version    | Author                                                        |
 | -------------------------------- | ---------- | ---------- | ------------------------------------------------------------- |
 | typescript                       | Apache-2.0 | 5.9.3      | Microsoft Corp.                                               |
-| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de            |
+| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de            |
 | @rollup/plugin-commonjs          | MIT        | 29.0.3     | Rich Harris                                                   |
 | @rollup/plugin-node-resolve      | MIT        | 16.0.3     | Rich Harris                                                   |
 | @rollup/plugin-typescript        | MIT        | 12.3.0     | Oskar Segersvärd                                              |
@@ -415,7 +406,7 @@
 | Package                          | License    | Version    | Author                                                         |
 | -------------------------------- | ---------- | ---------- | -------------------------------------------------------------- |
 | typescript                       | Apache-2.0 | 5.9.3      | Microsoft Corp.                                                |
-| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de             |
+| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de             |
 | knip                             | ISC        | 6.16.1     | Lars Kappert lars@webpro.nl                                    |
 | semver                           | ISC        | 7.8.4      | GitHub Inc.                                                    |
 | @types/node                      | MIT        | 25.9.3     | n/a                                                            |
@@ -441,7 +432,7 @@
 | -------------------------------- | ---------------------- | ---------- | ---------------------------------------------------- |
 | fuse.js                          | Apache-2.0             | 7.4.2      | Kiro Risk kirollos@gmail.com http://kiro.me          |
 | typescript                       | Apache-2.0             | 5.9.3      | Microsoft Corp.                                      |
-| @public-ui/components            | EUPL-1.2               | 4.3.0-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de   |
+| @public-ui/components            | EUPL-1.2               | 4.3.0-rc.5 | Informationstechnikzentrum Bund kolibri@itzbund.de   |
 | knip                             | ISC                    | 6.16.1     | Lars Kappert lars@webpro.nl                          |
 | @modelcontextprotocol/sdk        | MIT                    | 1.29.0     | Anthropic, PBC (https://anthropic.com)               |
 | @types/express                   | MIT                    | 5.0.6      | n/a                                                  |
@@ -459,16 +450,32 @@
 
 ## tools-visual-tests
 
-| Package                          | License    | Version    | Author                                            |
-| -------------------------------- | ---------- | ---------- | ------------------------------------------------- |
-| @playwright/test                 | Apache-2.0 | 1.60.0     | Microsoft Corporation                             |
-| @public-ui/sample-react          | EUPL-1.2   | 4.3.0-rc.1 | n/a                                               |
-| knip                             | ISC        | 6.16.1     | Lars Kappert lars@webpro.nl                       |
-| axe-html-reporter                | MIT        | 2.2.11     | Liliia Pelypenko (liliia.pelypenko@gmail.com)     |
-| eslint                           | MIT        | 9.39.4     | Nicholas C. Zakas                                 |
-| http-server                      | MIT        | 14.1.1     | n/a                                               |
-| portfinder                       | MIT        | 1.0.38     | Charlie Robbins                                   |
-| prettier                         | MIT        | 3.8.4      | James Long                                        |
-| prettier-plugin-organize-imports | MIT        | 4.3.0      | Simon Haenisch (https://github.com/simonhaenisch) |
-| @axe-core/playwright             | MPL-2.0    | 4.11.3     | n/a                                               |
-| @public-ui/eslint-config         | n/a        | 4.3.0-rc.1 | n/a                                               |
+| Package                          | License    | Version     | Author                                                         |
+| -------------------------------- | ---------- | ----------- | -------------------------------------------------------------- |
+| tslib                            | 0BSD       | 2.8.1       | Microsoft Corp.                                                |
+| @playwright/test                 | Apache-2.0 | 1.60.0      | Microsoft Corporation                                          |
+| typescript                       | Apache-2.0 | 5.9.3       | Microsoft Corp.                                                |
+| @public-ui/components            | EUPL-1.2   | 4.3.0-rc.5  | Informationstechnikzentrum Bund kolibri@itzbund.de             |
+| @public-ui/react-v19             | EUPL-1.2   | 4.3.0-rc.5  | Informationstechnikzentrum Bund kolibri@itzbund.de             |
+| @public-ui/sample-react          | EUPL-1.2   | 4.3.0-rc.5  | n/a                                                            |
+| adopted-style-sheets             | EUPL-1.2   | 1.1.9-rc.22 | Martin Oppitz github@martinoppitz.com https://martinoppitz.com |
+| knip                             | ISC        | 6.16.1      | Lars Kappert lars@webpro.nl                                    |
+| @types/node                      | MIT        | 25.9.2      | n/a                                                            |
+| @types/react                     | MIT        | 19.2.17     | n/a                                                            |
+| @types/react-dom                 | MIT        | 19.2.3      | n/a                                                            |
+| @unocss/preset-mini              | MIT        | 66.7.0      | Anthony Fu                                                     |
+| @unocss/vite                     | MIT        | 66.7.0      | Anthony Fu                                                     |
+| @vitejs/plugin-react-swc         | MIT        | 4.3.1       | Arnaud Barré (https://github.com/ArnaudBarre)                  |
+| axe-html-reporter                | MIT        | 2.2.11      | Liliia Pelypenko (liliia.pelypenko@gmail.com)                  |
+| eslint                           | MIT        | 9.39.4      | Nicholas C. Zakas                                              |
+| http-server                      | MIT        | 14.1.1      | n/a                                                            |
+| npm-run-all2                     | MIT        | 8.0.4       | Toru Nagashima                                                 |
+| portfinder                       | MIT        | 1.0.38      | Charlie Robbins                                                |
+| prettier                         | MIT        | 3.8.4       | James Long                                                     |
+| prettier-plugin-organize-imports | MIT        | 4.3.0       | Simon Haenisch (https://github.com/simonhaenisch)              |
+| react                            | MIT        | 19.2.7      | n/a                                                            |
+| react-dom                        | MIT        | 19.2.7      | n/a                                                            |
+| react-router-dom                 | MIT        | 7.17.0      | Remix Software                                                 |
+| vite                             | MIT        | 8.0.16      | Evan You                                                       |
+| @axe-core/playwright             | MPL-2.0    | 4.11.3      | n/a                                                            |
+| @public-ui/eslint-config         | n/a        | 4.3.0-rc.1  | n/a                                                            |

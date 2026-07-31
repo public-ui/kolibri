@@ -7,6 +7,7 @@
 [![pull requests](https://img.shields.io/github/issues-pr/public-ui/kolibri)](https://github.com/public-ui/kolibri/pulls)
 [![size](https://img.shields.io/bundlephobia/min/@public-ui/components)](https://bundlephobia.com/result?p=@public-ui/components)
 ![contributors](https://img.shields.io/github/contributors/public-ui/kolibri)
+[![mcp-oplist](https://mcptoplist.com/badge/glama%2Fpublic-ui%2Fkolibri.svg)](https://mcptoplist.com/server/glama%2Fpublic-ui%2Fkolibri)
 
 > "The accessible HTML standard"
 

@@ -30,6 +30,7 @@
 			}
 		}
 
+		&[multiple][size='1'],
 		&:not([multiple], [size]) {
 			height: to-rem(40);
 			// space for the native arrow down icon
@@ -37,6 +38,7 @@
 		}
 	}
 
+	.kol-input-container:has(.kol-select[multiple][size='1']),
 	.kol-input-container:not(:has(.kol-select[multiple])) {
 		gap: 0;
 		grid-template-columns: auto max-content min-content;

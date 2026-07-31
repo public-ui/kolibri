@@ -83,6 +83,18 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 			tooltipClosed();
 			this.tooltipElement.classList.remove('show');
 			this.tooltipElement.classList.add('hide');
+			// Why? - https://github.com/public-ui/kolibri/issues/10471
+			this.tooltipElement.addEventListener(
+				'animationend',
+				(): void => {
+					// double-check if tooltip is still hidden at animation's end
+					if (this.tooltipElement?.classList.contains('hide')) {
+						// remove element style property from showTooltip (required in gecko browsers)
+						this.tooltipElement.style.removeProperty('display');
+					}
+				},
+				{ once: true },
+			);
 
 			if (this.cleanupAutoPositioning) {
 				this.cleanupAutoPositioning();
@@ -147,7 +159,7 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 			this.tooltipElement.classList.remove('hide');
 			this.tooltipElement.classList.add('show');
 			this.tooltipElement.style.setProperty('display', 'block');
-			getDocument().addEventListener('keyup', this.hideTooltipByEscape, { once: true });
+			getDocument().addEventListener('keydown', this.hideTooltipByEscape, { once: true });
 
 			const target = this.previousSibling;
 			const tooltipEl = this.tooltipElement;
@@ -170,6 +182,8 @@ export class TooltipController extends BaseController<TooltipApi> implements Con
 
 	private hideTooltipByEscape = (event: KeyboardEvent): void => {
 		if (event.key === 'Escape') {
+			event.stopPropagation();
+			event.preventDefault();
 			this.hideTooltip();
 		}
 	};

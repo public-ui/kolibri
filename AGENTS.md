@@ -225,9 +225,69 @@ In the theme component layer, you can set what ever you need to realize your own
 ### CSS Custom Properties and SASS Variables
 
 CSS custom properties remain part of the global cascade and are not isolated by the Shadow DOM.
-Overusing them in theme files can collide with variables defined on a host page.
-Expose only well‑prefixed design tokens as custom properties and rely on SASS variables for
-internal calculations to keep components robust and avoid unintended style leaks.
+Overusing them (in theme files as well as in component styles) can collide with variables defined
+on a host page, and every custom property you declare is implicitly overridable from outside,
+whether you intended that or not.
+
+**Prefer plain CSS over a custom property.** Before adding a custom property, check whether the
+platform already gives the consumer a way to control it — the standard box model (`width`,
+`height`), inherited properties (`color`, `font-size` via `em`), or relative units (`%`, container
+query units). A component that simply fills its host (`width: 100%; height: 100%` inside, a sane
+default `width`/`height` on `:host`) can be resized with plain CSS, exactly like a native element —
+no bespoke API, no documentation burden, nothing to keep in sync. Only reach for a custom property
+when the value genuinely cannot be derived this way (e.g. a semantic color token that isn't just
+`currentColor`, or a value with no corresponding native CSS mechanism).
+
+**Rule:** only declare a CSS custom property when it is a deliberate, documented customization
+point (a `--kol-<component>-<name>` design token). For anything else — internal aliases,
+intermediate values, ratios, or derived defaults — use a SASS `$variable` instead. SASS variables
+are resolved at build time, can't leak into the global cascade, and can't be overridden from a host
+page, so they can't accidentally become part of the public API.
+
+Do not introduce a second, internal custom property just to make the code more readable:
+
+```scss
+// ❌ Bad: `--color-bar` is an unintended, additional public custom property.
+// It reacts to overrides from a host page exactly like `--kol-progress-color-bar`,
+// even though only the latter was meant to be part of the API.
+.kol-progress {
+	--color-bar: var(--kol-progress-color-bar, #0075ff);
+
+	&__bar-progress {
+		fill: var(--color-bar);
+	}
+}
+```
+
+```scss
+// ✅ Good: the SASS variable holds the default value; the only custom property
+// is `--kol-progress-color-bar`, referenced directly wherever needed.
+$kol-progress-default-color-bar: #0075ff;
+
+.kol-progress {
+	&__bar-progress {
+		fill: var(--kol-progress-color-bar, #{$kol-progress-default-color-bar});
+	}
+}
+```
+
+Any further unit conversion or math that doesn't depend on a runtime custom property (e.g. `to-rem()`,
+ratios, breakpoints) belongs in SASS, not in an extra layer of `calc()`/custom-property indirection.
+
+`kol-avatar` is an example of preferring plain CSS: instead of a `--kol-avatar-size` custom property,
+`:host` gets a default `width` and an `aspect-ratio: 1`, and the inner element derives its size from the
+host via container query units (`cqw`/`cqh`) instead of a separate ratio calculation. Consumers resize it
+the same way they'd resize any block-level element — with plain `width`/`height`.
+
+The avatar must always stay square, even if `width` and `height` end up different (e.g. both are set
+explicitly to different values), so the inner element uses `max(100cqw, 100cqh)` for both its own `width`
+and `height` — the larger of the two wins, and `:host` centers it (`align-items`/`justify-content`), so it
+may visually extend beyond the host on the smaller axis. Since CSS can't distinguish "our default" from
+"an explicit author value" on two independent properties, only setting `width` reliably resizes the avatar
+below its 100px default; setting only `height` below 100px does not shrink it, because our own default
+`width` is still in effect and wins the `max()`. This is a deliberate, documented trade-off, not a bug —
+achieving full symmetry would require either a custom property or JavaScript, both of which cost more
+than the trade-off is worth.
 
 ### SCSS Architecture Guidelines: BEM with Smart Nesting
 

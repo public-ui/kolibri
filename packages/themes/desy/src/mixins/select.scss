@@ -10,11 +10,13 @@
 		appearance: none; // hide the native "arrow icon"
 		border: none;
 
+		&[multiple][size='1'],
 		&:not([multiple]) {
 			padding-right: calc(var(--a11y-min-size) + #{to-rem(7)});
 			padding-left: to-rem(7);
 		}
 
+		&[multiple][size='1'],
 		&:not([multiple], [size]) {
 			height: to-rem(34);
 		}
@@ -53,6 +55,7 @@
 			--border-color: var(--color-dark-blue-100);
 		}
 
+		&__container:has(select[multiple][size='1']),
 		&__container:not(:has(select[multiple])) {
 			&::after {
 				color: var(--color-blue-100);

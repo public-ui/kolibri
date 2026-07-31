@@ -74,6 +74,13 @@ ROUTES.set('avatar/basic', {
 		},
 	},
 });
+ROUTES.set('avatar/size', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('badge/basic', {
 	snapshot: {
 		skip: true,
@@ -790,6 +797,17 @@ ROUTES.set('quote/block', {
 	},
 });
 ROUTES.set('select/basic?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('select/multiple-dropdown', {
 	snapshot: {
 		viewportSize: {
 			width: 500,

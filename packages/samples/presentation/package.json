@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/presentation",
-	"version": "4.3.0-rc.5",
+	"version": "4.3.0-rc.6",
 	"description": "This package contains presentation samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -31,28 +31,28 @@
 		"@public-ui/theme-desy": "workspace:*",
 		"@public-ui/theme-ecl": "workspace:*",
 		"@public-ui/theme-kern": "workspace:*",
-		"adopted-style-sheets": "1.1.9-rc.22",
-		"react": "19.2.7",
-		"react-dom": "19.2.7",
-		"react-router-dom": "7.17.0"
+		"adopted-style-sheets": "1.1.9-rc.25",
+		"react": "19.2.8",
+		"react-dom": "19.2.8",
+		"react-router-dom": "7.18.2"
 	},
 	"devDependencies": {
 		"@playwright/test": "1.60.0",
 		"@public-ui/eslint-config": "workspace:*",
-		"@types/node": "25.9.3",
+		"@types/node": "25.9.5",
 		"@types/react": "19.2.17",
 		"@types/react-dom": "19.2.3",
-		"@unocss/preset-mini": "66.7.2",
-		"@unocss/vite": "66.7.2",
-		"@vitejs/plugin-react-swc": "4.3.1",
-		"eslint": "9.39.4",
-		"knip": "6.16.1",
-		"prettier": "3.8.4",
+		"@unocss/preset-mini": "66.7.5",
+		"@unocss/vite": "66.7.5",
+		"@vitejs/plugin-react-swc": "4.3.2",
+		"eslint": "9.39.5",
+		"knip": "6.29.0",
+		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.13.0",
+		"stylelint": "17.14.1",
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
-		"vite": "8.0.16"
+		"vite": "8.1.5"
 	},
 	"files": [
 		"dist",
