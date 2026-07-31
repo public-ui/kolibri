@@ -11,7 +11,7 @@ export type CheckboxStateWrapperProps = Omit<CheckboxProps, 'inputProps'> & {
 };
 
 function getCheckboxProps(state: InputCheckboxStates, inputProps: Partial<InputProps> = {}): InputProps {
-	const { ariaDescribedBy } = getRenderStates(state);
+	const { ariaDescribedBy, hasError } = getRenderStates(state);
 
 	const props: InputProps = {
 		id: state._id,
@@ -32,7 +32,7 @@ function getCheckboxProps(state: InputCheckboxStates, inputProps: Partial<InputP
 	if ('_msg' in state) props.msg = state._msg as MsgPropType;
 	if ('_shortKey' in state) props['aria-keyshortcuts'] = state._shortKey;
 
-	return { ...props, ...inputProps };
+	return { ...props, ...inputProps, 'aria-invalid': hasError ? 'true' : undefined };
 }
 
 const CheckboxStateWrapper: FC<CheckboxStateWrapperProps> = ({ state, inputProps, ...other }) => {

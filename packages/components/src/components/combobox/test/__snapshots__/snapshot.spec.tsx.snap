@@ -411,7 +411,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-combobox__group">
-              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-describedby="combobox-error-nonce" aria-expanded="false" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error kol-input--touched" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
+              <input aria-autocomplete="both" aria-controls="combobox-nonce-listbox" aria-describedby="combobox-error-nonce" aria-expanded="false" aria-invalid="true" aria-labelledby="combobox-nonce-label" autocapitalize="off" autocorrect="off" class="kol-combobox__input kol-input kol-input--error kol-input--touched" id="combobox-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="Herr">
               <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="kol-delete-selection" _variant="ghost" class="kol-combobox__delete" data-testid="combobox-delete"></kol-button-wc>
               <button class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
