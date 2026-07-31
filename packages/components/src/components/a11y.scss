@@ -20,12 +20,16 @@
 		 * By initially setting the background color to white and the font color to black,
 		 * the contrast ratio is ensured and explicit adjustment is forced.
 		 */
-		color: black;
-		background-color: white;
+		--kol-a11y-font-color: black;
+		--kol-a11y-background-color: white;
+		color: var(--kol-a11y-font-color);
+		background-color: var(--kol-a11y-background-color);
+
 		/*
 		 * Verdana is an accessible font that can be used without requiring additional loading time.
 		 */
-		font-family: Verdana;
+		--kol-a11y-font-family: Verdana;
+		font-family: var(--kol-a11y-font-family);
 		/*
 		 * Letter spacing is required for all texts.
 		 */
