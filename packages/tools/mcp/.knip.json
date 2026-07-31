@@ -2,6 +2,6 @@
 	"$schema": "https://unpkg.com/knip@5/schema.json",
 	"ignore": ["api/index.js"],
 	"ignoreBinaries": ["vercel"],
-	"ignoreDependencies": ["@public-ui/components", "tsx"],
+	"ignoreDependencies": ["@public-ui/components"],
 	"project": ["**/*"]
 }

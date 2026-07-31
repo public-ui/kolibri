@@ -5,6 +5,14 @@ import { createRequire } from 'node:module';
 import { z } from 'zod';
 import { getAllEntries, getEntryById, getSampleIndexMetadata } from './data.js';
 import { searchEntries, type SearchOptions } from './search.js';
+import {
+	getAllTemplateTags,
+	getTemplateCodeBlocks,
+	getTemplateResource,
+	getTemplateTypes,
+	initializeTemplateIndex,
+	searchTemplates,
+} from './templates/index.js';
 
 const KIND_OPTIONS = ['doc', 'sample', 'scenario', 'spec'] as const;
 type KindOption = (typeof KIND_OPTIONS)[number];
@@ -97,7 +105,7 @@ function log(type: 'info' | 'tool' | 'resource' | 'error', message: string, data
  * Create a configured KoliBri MCP server instance.
  * Can be used with both stdio and HTTP transports.
  */
-export function createKolibriMcpServer(): McpServer {
+export async function createKolibriMcpServer(): Promise<McpServer> {
 	const server = new McpServer({
 		name: PACKAGE_NAME,
 		version: PACKAGE_VERSION,
@@ -111,7 +119,14 @@ export function createKolibriMcpServer(): McpServer {
  * @param server - The MCP server to configure
  * @returns The configured MCP server
  */
-function configureServer(server: McpServer): McpServer {
+async function configureServer(server: McpServer): Promise<McpServer> {
+	// Initialize template index (non-blocking — continues with empty index on failure)
+	try {
+		await initializeTemplateIndex();
+	} catch (error) {
+		console.error('Failed to initialize template index:', error);
+	}
+
 	// Add search tool for KoliBri samples and docs
 	server.registerTool(
 		'search',
@@ -347,6 +362,198 @@ Use the 'fetch' tool to retrieve full code samples for specific components.
 		},
 	);
 
+	// Add search_templates tool for searching KoliBri template repositories
+	server.registerTool(
+		'search_templates',
+		{
+			title: 'Search KoliBri Templates',
+			description:
+				'Searches through KoliBri template repositories (generic, react, theme) for code examples and documentation. ' +
+				'Returns matching templates with metadata, previews, and code blocks. ' +
+				'Use `type` to filter by resource type (markdown, code, config). ' +
+				'Use `templateType` to filter by template type (generic, react, theme). ' +
+				'Use `repoId` to filter by specific repository. ' +
+				'Use `tags` to filter by tags. ' +
+				'Use `limit` to control max results (default: 20).',
+			inputSchema: {
+				query: z.string().describe('Search query (e.g., "button", "form", "dark theme").'),
+				type: z.enum(['all', 'markdown', 'code', 'config']).optional().default('all').describe('Filter by resource type.'),
+				templateType: z.string().optional().describe('Filter by template type (generic, react, theme).'),
+				repoId: z.string().optional().describe('Filter by repository ID.'),
+				tags: z.array(z.string()).optional().describe('Filter by tags.'),
+				limit: z.number().int().min(1).max(50).optional().default(20).describe('Maximum number of results.'),
+			},
+		},
+		({ query, type, templateType, repoId, tags, limit }) => {
+			log('tool', 'search_templates called', { query, type, templateType, repoId, limit });
+
+			const results = searchTemplates(query, {
+				type: type === 'all' ? undefined : type,
+				templateType,
+				repoId,
+				tags,
+				limit,
+			});
+
+			log('tool', 'search_templates completed', { resultCount: results.length });
+
+			return {
+				content: [
+					{
+						type: 'text',
+						text:
+							results.length === 0
+								? `No templates found for "${query}"`
+								: `Found ${results.length} template(s) for "${query}":\n\n` +
+									results
+										.map((result, index) => {
+											const matchScore = (result.score ?? 0).toFixed(1);
+											return (
+												`${index + 1}. **${result.metadata.name}** (${result.repoId})\n` +
+												`   Type: ${result.type} | Template: ${result.metadata.templateType}\n` +
+												`   Tags: ${result.metadata.tags.join(', ')}\n` +
+												`   Score: ${matchScore}\n` +
+												`   Preview: ${result.content.substring(0, 100)}...`
+											);
+										})
+										.join('\n\n'),
+					},
+				],
+				structuredContent: {
+					query,
+					total: results.length,
+					results: results.map((result) => ({
+						id: result.id,
+						name: result.metadata.name,
+						description: result.metadata.description,
+						repoId: result.repoId,
+						path: result.path,
+						type: result.type,
+						templateType: result.metadata.templateType,
+						tags: result.metadata.tags,
+						score: result.score,
+						stats: result.stats,
+					})),
+				},
+			};
+		},
+	);
+
+	// Add fetch_template tool for retrieving specific template resources
+	server.registerTool(
+		'fetch_template',
+		{
+			title: 'Fetch KoliBri Template',
+			description:
+				'Fetches a specific template resource by ID. Returns the full content with metadata and extracted code blocks. ' +
+				'Use `search_templates` first to find valid IDs.',
+			inputSchema: {
+				id: z.string().describe('Template resource ID (e.g., "public-ui-templates:src/button/button.stories.md").'),
+				includeCodeBlocks: z.boolean().optional().default(true).describe('Whether to extract code blocks from markdown.'),
+			},
+		},
+		({ id, includeCodeBlocks }) => {
+			log('tool', 'fetch_template called', { id, includeCodeBlocks });
+
+			const resource = getTemplateResource(id);
+
+			if (!resource) {
+				log('error', 'fetch_template failed: resource not found', { id });
+				throw new Error(`Template not found: ${id}. Use \`search_templates\` to find valid IDs.`);
+			}
+
+			const codeBlocks = includeCodeBlocks && resource.type === 'markdown' ? getTemplateCodeBlocks(resource) : [];
+
+			log('tool', 'fetch_template completed', {
+				id,
+				contentLength: resource.content.length,
+				codeBlockCount: codeBlocks.length,
+			});
+
+			return {
+				content: [
+					{
+						type: 'text',
+						text:
+							`# ${resource.metadata.name}\n\n` +
+							`**Repository:** ${resource.repoId}\n\n` +
+							`**Path:** ${resource.path}\n\n` +
+							`**Type:** ${resource.type}\n\n` +
+							`**Template Type:** ${resource.metadata.templateType}\n\n` +
+							`**Tags:** ${resource.metadata.tags.join(', ')}\n\n` +
+							`---\n\n` +
+							resource.content,
+					},
+				],
+				structuredContent: {
+					id: resource.id,
+					name: resource.metadata.name,
+					description: resource.metadata.description,
+					repoId: resource.repoId,
+					path: resource.path,
+					type: resource.type,
+					templateType: resource.metadata.templateType,
+					tags: resource.metadata.tags,
+					language: resource.metadata.language,
+					stats: resource.stats,
+					codeBlocks: codeBlocks.map((block) => ({
+						language: block.language,
+						title: block.title,
+						codeLength: block.code.length,
+					})),
+				},
+			};
+		},
+	);
+
+	// Add list_template_tags tool
+	server.registerTool(
+		'list_template_tags',
+		{
+			title: 'List Template Tags',
+			description: 'Returns all available tags for filtering templates.',
+			inputSchema: {},
+		},
+		() => {
+			const tags = getAllTemplateTags();
+			return {
+				content: [
+					{
+						type: 'text',
+						text: `Available template tags (${tags.length}):\n\n` + tags.map((tag) => `- ${tag}`).join('\n'),
+					},
+				],
+				structuredContent: {
+					tags,
+				},
+			};
+		},
+	);
+
+	// Add list_template_types tool
+	server.registerTool(
+		'list_template_types',
+		{
+			title: 'List Template Types',
+			description: 'Returns all available template types (generic, react, theme).',
+			inputSchema: {},
+		},
+		() => {
+			const types = getTemplateTypes();
+			return {
+				content: [
+					{
+						type: 'text',
+						text: `Available template types:\n\n` + types.map((type) => `- ${type}`).join('\n'),
+					},
+				],
+				structuredContent: {
+					types,
+				},
+			};
+		},
+	);
+
 	return server;
 }
 
@@ -357,44 +564,46 @@ if (
 	process.argv[1]?.endsWith('/mcp.cjs') ||
 	process.argv[1]?.endsWith('/mcp.mjs')
 ) {
-	const server = createKolibriMcpServer();
+	void (async () => {
+		const server = await createKolibriMcpServer();
 
-	// Set up Express and HTTP transport
-	const app = express();
-	app.use(express.json());
+		// Set up Express and HTTP transport
+		const app = express();
+		app.use(express.json());
 
-	app.post('/mcp', async (req, res) => {
-		// Create a new transport for each request to prevent request ID collisions
-		const transport = new StreamableHTTPServerTransport({
-			sessionIdGenerator: undefined,
-			enableJsonResponse: true,
+		app.post('/mcp', async (req, res) => {
+			// Create a new transport for each request to prevent request ID collisions
+			const transport = new StreamableHTTPServerTransport({
+				sessionIdGenerator: undefined,
+				enableJsonResponse: true,
+			});
+
+			res.on('close', () => {
+				void transport.close();
+			});
+
+			await server.connect(transport);
+			await transport.handleRequest(req, res, req.body);
 		});
 
-		res.on('close', () => {
-			void transport.close();
-		});
+		const port = parseInt(process.env.PORT || '3000');
+		void app
+			.listen(port, () => {
+				console.log(`KoliBri MCP Server v${PACKAGE_VERSION} running on http://localhost:${port}/mcp`);
+				const metadata = getSampleIndexMetadata();
+				console.log(
+					`Loaded ${metadata.counts.total} entries (${metadata.counts.totalDocs} docs, ${metadata.counts.totalSamples} samples, ${metadata.counts.totalScenarios ?? 0} scenarios)`,
+				);
 
-		await server.connect(transport);
-		await transport.handleRequest(req, res, req.body);
-	});
-
-	const port = parseInt(process.env.PORT || '3000');
-	void app
-		.listen(port, () => {
-			console.log(`KoliBri MCP Server v${PACKAGE_VERSION} running on http://localhost:${port}/mcp`);
-			const metadata = getSampleIndexMetadata();
-			console.log(
-				`Loaded ${metadata.counts.total} entries (${metadata.counts.totalDocs} docs, ${metadata.counts.totalSamples} samples, ${metadata.counts.totalScenarios ?? 0} scenarios)`,
-			);
-
-			if (ENABLE_LOGGING) {
-				console.log('🔍 Logging is ENABLED (MCP_LOGGING=true)');
-			} else {
-				console.log('💡 Logging is disabled. Set MCP_LOGGING=true to enable request logging');
-			}
-		})
-		.on('error', (error) => {
-			console.error('Server error:', error);
-			process.exit(1);
-		});
+				if (ENABLE_LOGGING) {
+					console.log('🔍 Logging is ENABLED (MCP_LOGGING=true)');
+				} else {
+					console.log('💡 Logging is disabled. Set MCP_LOGGING=true to enable request logging');
+				}
+			})
+			.on('error', (error) => {
+				console.error('Server error:', error);
+				process.exit(1);
+			});
+	})();
 }
