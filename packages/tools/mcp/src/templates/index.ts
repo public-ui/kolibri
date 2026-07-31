@@ -125,13 +125,6 @@ export function getTemplateTypes(): string[] {
 }
 
 /**
- * Liste aller verfügbaren Repo-IDs
- */
-export function getTemplateRepoIds(): string[] {
-	return TEMPLATE_REPOS.map((repo) => repo.id);
-}
-
-/**
  * Liste aller verfügbaren Tags
  */
 export function getAllTemplateTags(): string[] {
@@ -144,4 +137,4 @@ export function getAllTemplateTags(): string[] {
 	return Array.from(tags).sort();
 }
 
-export { TEMPLATE_REPOS, type IndexedTemplateResource };
+export { type IndexedTemplateResource };

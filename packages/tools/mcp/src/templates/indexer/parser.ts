@@ -31,68 +31,6 @@ export function extractCodeBlocksFromMarkdown(markdown: string): Array<{
 }
 
 /**
- * Interface für package.json-Inhalte
- */
-interface PackageJsonLike {
-	dependencies?: Record<string, unknown>;
-	devDependencies?: Record<string, unknown>;
-	peerDependencies?: Record<string, unknown>;
-}
-
-/**
- * Extrahiere Abhängigkeiten aus package.json-Inhalten
- */
-export function extractDependencies(content: string): string[] {
-	try {
-		const packageJson = JSON.parse(content) as PackageJsonLike;
-		const dependencies: string[] = [];
-
-		if (packageJson.dependencies) {
-			dependencies.push(...Object.keys(packageJson.dependencies));
-		}
-		if (packageJson.devDependencies) {
-			dependencies.push(...Object.keys(packageJson.devDependencies));
-		}
-		if (packageJson.peerDependencies) {
-			dependencies.push(...Object.keys(packageJson.peerDependencies));
-		}
-
-		return [...new Set(dependencies)].sort();
-	} catch {
-		return [];
-	}
-}
-
-/**
- * Extrahiere KoliBri-spezifische Importe aus Code
- */
-export function extractKolibriImports(code: string): string[] {
-	const importRegex = /from\s+['"](@public-ui\/[^'"]+|kolibri[^'"]+)['"]/g;
-	const imports: Set<string> = new Set();
-
-	let match: RegExpExecArray | null;
-	while ((match = importRegex.exec(code)) !== null) {
-		imports.add(match[1]);
-	}
-
-	return Array.from(imports);
-}
-
-/**
- * Erzeuge eine Vorschau für eine Ressource
- */
-export function generatePreview(resource: IndexedTemplateResource, maxLines: number = 10): string {
-	const lines = resource.content.split('\n');
-	const previewLines = lines.slice(0, maxLines);
-
-	if (lines.length > maxLines) {
-		previewLines.push(`... (${lines.length - maxLines} more lines)`);
-	}
-
-	return previewLines.join('\n');
-}
-
-/**
  * Berechne einen Similarity-Score für Suchanfragen
  */
 export function calculateSimilarityScore(resource: IndexedTemplateResource, query: string): number {

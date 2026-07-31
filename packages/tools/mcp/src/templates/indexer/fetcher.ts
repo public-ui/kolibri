@@ -99,7 +99,7 @@ function getLanguage(filePath: string): string {
 /**
  * Extrahiert Metadaten aus Frontmatter (für Markdown-Dateien)
  */
-export function extractFrontmatter(content: string): Record<string, unknown> {
+function extractFrontmatter(content: string): Record<string, unknown> {
 	const frontmatterRegex = /^---[\s\S]*?---/;
 	const match = content.match(frontmatterRegex);
 
@@ -160,7 +160,7 @@ async function indexFile(repoPath: string, filePath: string, repoConfig: Templat
 /**
  * Indexiert ein komplettes Template-Repo
  */
-export async function indexTemplateRepo(repoConfig: TemplateRepoConfig): Promise<IndexedTemplateResource[]> {
+async function indexTemplateRepo(repoConfig: TemplateRepoConfig): Promise<IndexedTemplateResource[]> {
 	console.log(`📁 Indexing ${repoConfig.id}...`);
 
 	const repoPath = await cloneOrUpdateRepo(repoConfig);
@@ -185,7 +185,7 @@ export async function indexTemplateRepo(repoConfig: TemplateRepoConfig): Promise
 /**
  * Indexiert alle konfigurierten Template-Repos
  */
-export async function indexAllTemplateRepos(): Promise<IndexedTemplateResource[]> {
+async function indexAllTemplateRepos(): Promise<IndexedTemplateResource[]> {
 	const allResources: IndexedTemplateResource[] = [];
 
 	for (const repoConfig of TEMPLATE_REPOS) {
