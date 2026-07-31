@@ -1,1 +1,0 @@
-import{kt as e}from"./index-Db_FMvWP.js";import{t}from"./level-At6QFNwQ-tYki2-W7.js";var n=(n,r)=>{e(n,`_level`,e=>typeof e==`number`&&t.includes(e),new Set(t.map(String)),r,{defaultValue:1,required:!0})};export{n as t};

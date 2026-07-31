@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-DGTk07GH.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
