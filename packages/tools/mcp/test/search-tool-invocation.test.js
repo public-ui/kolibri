@@ -19,7 +19,7 @@ import { createKolibriMcpServer } from '../dist/mcp.mjs';
  * test runner does not leak open transports/streams.
  */
 async function connectClient() {
-	const server = createKolibriMcpServer();
+	const server = await createKolibriMcpServer();
 	const [clientTransport, serverTransport] = InMemoryTransport.createLinkedPair();
 
 	const client = new Client({ name: 'test-client', version: '0.0.0' });

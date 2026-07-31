@@ -1,5 +1,5 @@
 {
-	"version": "4.3.0-rc.5",
+	"version": "4.3.0-rc.6",
 	"devDependencies": {
 		"@evilmartians/lefthook": "2.1.10",
 		"license-report": "6.8.5",
