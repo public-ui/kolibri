@@ -1,7 +1,7 @@
 import { KolLink } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { SampleDescription } from '../SampleDescription';
 
 export const LinkReactRouter: FC = () => {

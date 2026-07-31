@@ -33,7 +33,7 @@ import {
 } from '@public-ui/react-v19';
 import type { FC, ForwardRefRenderFunction } from 'react';
 import React, { forwardRef, useCallback, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 import { SampleDescription } from '../components/SampleDescription';
 
 const getFocusElements = () => {
