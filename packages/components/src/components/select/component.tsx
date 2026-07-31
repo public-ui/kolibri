@@ -39,7 +39,7 @@ import { SelectController } from './controller';
 
 /**
  * @internal
- * @slot - The label of the input field.
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
 	tag: 'kol-select-wc',

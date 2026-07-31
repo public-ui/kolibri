@@ -42,6 +42,8 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 import { TextareaController } from './controller';
 
 /**
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
+ *
  * https://stackoverflow.com/questions/17772260/textarea-auto-height
  */
 const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {

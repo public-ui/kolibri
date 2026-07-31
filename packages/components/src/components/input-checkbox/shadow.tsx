@@ -44,7 +44,7 @@ import { propagateSubmitEventToForm } from '../form/controller';
 /**
  * The **Checkbox** input type generates a rectangular box that can be activated and deactivated by clicking. When activated, a colored checkmark is shown inside the box.
  *
- * @slot expert - Checkbox description.
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
 	tag: 'kol-input-checkbox',
