@@ -11,7 +11,7 @@ const DEFAULT_LIMIT = 5;
 /**
  * Create server with registered tools for testing
  */
-function createServerWithRegisteredTools() {
+async function createServerWithRegisteredTools() {
 	const registeredTools = new Map();
 	const originalRegisterTool = McpServer.prototype.registerTool;
 
@@ -22,7 +22,7 @@ function createServerWithRegisteredTools() {
 			return tool;
 		};
 
-		const server = createKolibriMcpServer();
+		const server = await createKolibriMcpServer();
 		return { server, registeredTools };
 	} finally {
 		McpServer.prototype.registerTool = originalRegisterTool;
@@ -42,7 +42,7 @@ async function runSearch(tools, query = 'button', limit = DEFAULT_LIMIT) {
  * Verify consistent results across multiple calls
  */
 test('search tool results stay consistent with fetch results', async () => {
-	const { registeredTools } = createServerWithRegisteredTools();
+	const { registeredTools } = await createServerWithRegisteredTools();
 	const structuredContent = await runSearch(registeredTools);
 
 	assert.ok(structuredContent.results.length > 0, 'search should return at least one result');
