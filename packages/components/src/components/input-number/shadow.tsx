@@ -177,6 +177,7 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 		return (
 			<button
 				type="button"
+				aria-hidden="true"
 				tabIndex={-1}
 				class="kol-input-number__step-button kol-input-number__step-button-up kol-input-container__smart-button"
 				data-testid="kol-input-number-step-up"
@@ -206,6 +207,7 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 		return (
 			<button
 				type="button"
+				aria-hidden="true"
 				tabIndex={-1}
 				class="kol-input-number__step-button kol-input-number__step-button-down kol-input-container__smart-button"
 				data-testid="kol-input-number-step-down"
