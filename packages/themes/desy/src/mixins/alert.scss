@@ -18,7 +18,7 @@
 		&--variant-card {
 			box-shadow: inset to-rem(7) 0 0 var(--alert-accent-color);
 			border-radius: var(--radius-l);
-			gap: 0 to-rem(8);
+			gap: to-rem(8);
 			grid-template-areas:
 				'icon heading close'
 				'icon content content';
@@ -37,6 +37,10 @@
 				}
 			}
 
+			&:not(:has(#{$root}__closer)) {
+				padding-right: to-rem(36);
+			}
+
 			#{$root}__heading,
 			#{$root}__icon {
 				padding-top: to-rem(12);
@@ -50,8 +54,11 @@
 		&--variant-msg {
 			color: var(--alert-msg-text-color);
 			display: block;
-			padding-right: to-rem(26);
 			padding-left: to-rem(20);
+
+			&:has(#{$root}__closer) {
+				padding-right: to-rem(26);
+			}
 
 			#{$root}__closer {
 				position: absolute;
