@@ -32,8 +32,8 @@
 			border-inline-start: 4px solid var(--alert-accent-color);
 
 			.kol-alert__icon {
-				align-self: flex-start;
 				margin-right: var(--ecl-spacing-xs);
+				align-self: flex-start;
 
 				font-size: to-rem(32);
 			}
