@@ -1,9 +1,9 @@
 @use '../mixins/link' as *;
-@use '../mixins/kol-alert' as *;
+@use '../mixins/alert' as *;
 @use '../functions/to-rem' as *;
 
 @layer kol-theme-component {
-	@include kol-alert;
+	@include alert;
 	@include kol-link('kol-link');
 
 	.kol-alert {

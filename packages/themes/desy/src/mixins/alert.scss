@@ -1,7 +1,7 @@
 @use '../functions/to-rem' as *;
 @use './icon' as *;
 
-@mixin kol-alert {
+@mixin alert {
 	@include icon;
 
 	.kol-alert {
@@ -10,11 +10,7 @@
 		--alert-msg-text-color: var(--alert-accent-color);
 		color: var(--color-dark-blue-100);
 		background: var(--alert-background-color, #fdfefe);
-		display: flex;
 		position: relative;
-		flex-wrap: wrap;
-
-		align-items: center;
 
 		font-family: var(--font-family);
 		line-height: 1.25;
@@ -22,31 +18,53 @@
 		&--variant-card {
 			box-shadow: inset to-rem(7) 0 0 var(--alert-accent-color);
 			border-radius: var(--radius-l);
-			display: block;
+			gap: 0 to-rem(8);
+			grid-template-areas:
+				'icon heading close'
+				'icon content content';
+			grid-template-columns: min-content 1fr min-content;
+			grid-template-rows: min-content min-content;
 			max-width: to-rem(480);
-			padding: to-rem(16) to-rem(56) to-rem(16) to-rem(50);
+			padding: to-rem(4) to-rem(4) to-rem(16) to-rem(16);
 			border: var(--border-width-s) solid var(--alert-accent-color);
 
-			#{$root}__content {
-				display: inline;
-				vertical-align: middle;
+			&:not(:has(#{$root}__heading)) {
+				grid-template-areas: 'icon content close';
+				grid-template-rows: min-content;
+
+				#{$root}__content {
+					padding-top: to-rem(12);
+				}
+			}
+
+			&:not(:has(#{$root}__closer)) {
+				padding-right: to-rem(36);
+			}
+
+			#{$root}__heading,
+			#{$root}__icon {
+				padding-top: to-rem(12);
 			}
 
 			#{$root}__closer {
-				position: absolute;
-				top: to-rem(4);
-				right: to-rem(4);
-
 				font-size: to-rem(24);
 			}
 		}
 
 		&--variant-msg {
 			color: var(--alert-msg-text-color);
+			display: block;
+
+			&:has(#{$root}__closer) {
+				padding-right: to-rem(26);
+			}
+
+			&:has(#{$root}__icon) {
+				padding-left: to-rem(20);
+			}
 
 			#{$root}__closer {
 				position: absolute;
-				top: 0;
 				right: 0;
 				width: to-rem(20);
 				height: to-rem(20);
@@ -57,6 +75,25 @@
 					min-width: to-rem(20);
 					min-height: to-rem(20);
 				}
+			}
+
+			#{$root}__heading,
+			#{$root}__content {
+				display: inline;
+				margin-right: to-rem(4);
+			}
+
+			#{$root}__icon {
+				display: flex;
+				align-items: center;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+			}
+
+			&#{$root}--type-default {
+				padding-left: 0;
 			}
 		}
 
@@ -102,41 +139,12 @@
 			}
 		}
 
-		&__container {
-			align-items: center;
-
-			#{$root}--variant-card & {
-				display: inline-flex;
-				margin-left: to-rem(-34);
-				gap: to-rem(8);
-				vertical-align: middle;
-			}
-
-			#{$root}--variant-msg & {
-				display: flex;
-				gap: to-rem(4);
-			}
-		}
-
-		&__container-content {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-		}
-
 		&__heading {
 			margin: 0;
-
-			&::after {
-				content: '\00A0'; // nbsp
-				white-space: pre; // ensure space renders
-			}
 		}
 
 		&__icon {
 			color: var(--alert-accent-color);
-
-			font-family: desy-icons;
 
 			#{$root}--variant-card & {
 				font-size: to-rem(24);
