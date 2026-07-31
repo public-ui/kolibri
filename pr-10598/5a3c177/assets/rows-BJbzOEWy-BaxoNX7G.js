@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-DoalvMyF.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
