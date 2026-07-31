@@ -20,9 +20,9 @@
 		 * By initially setting the background color to white and the font color to black,
 		 * the contrast ratio is ensured and explicit adjustment is forced.
 		 */
-		--kol-a11y-text-color: black;
+		--kol-a11y-font-color: black;
 		--kol-a11y-background-color: white;
-		color: var(--kol-a11y-text-color);
+		color: var(--kol-a11y-font-color);
 		background-color: var(--kol-a11y-background-color);
 
 		/*
