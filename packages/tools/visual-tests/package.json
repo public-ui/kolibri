@@ -45,7 +45,7 @@
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"axe-html-reporter": "2.2.11",
 		"http-server": "14.1.1",
-		"npm-run-all2": "8.0.4",
+		"npm-run-all2": "9.0.3",
 		"portfinder": "1.0.38",
 		"react": "19.2.8",
 		"react-dom": "19.2.8",
@@ -54,7 +54,7 @@
 	},
 	"devDependencies": {
 		"@public-ui/eslint-config": "workspace:*",
-		"@types/node": "25.9.5",
+		"@types/node": "26.1.2",
 		"@types/react": "19.2.17",
 		"@types/react-dom": "19.2.3",
 		"eslint": "9.39.5",
