@@ -29,8 +29,8 @@
 		"react",
 		"typescript"
 	],
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
+	"main": "dist/mcp.cjs",
+	"module": "dist/mcp.mjs",
 	"bin": {
 		"@public-ui/mcp": "dist/cli.cjs",
 		"kolibri-mcp": "dist/cli.cjs"
