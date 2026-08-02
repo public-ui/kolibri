@@ -1,4 +1,5 @@
 import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { TEMPLATE_REPOS, type IndexedTemplateResource } from './indexer/config.js';
 import { calculateSimilarityScore, extractCodeBlocksFromMarkdown } from './indexer/parser.js';
@@ -6,7 +7,16 @@ import { calculateSimilarityScore, extractCodeBlocksFromMarkdown } from './index
 /**
  * Statischer Pfad zum Template-Index (wird zur Build-Zeit erzeugt und mit dem npm-Paket ausgeliefert)
  */
-const INDEX_PATH = fileURLToPath(new URL('../../shared/template-index.json', import.meta.url));
+function getIndexPath(): string {
+	const currentDir = fileURLToPath(new URL('.', import.meta.url));
+	// dist/ liegt eine Ebene höher als src/templates/, daher muss der Pfad angepasst werden
+	if (currentDir.includes('/dist/')) {
+		return resolve(currentDir, '../shared/template-index.json');
+	}
+	return resolve(currentDir, '../../shared/template-index.json');
+}
+
+const INDEX_PATH = getIndexPath();
 
 /**
  * Geladener Template-Index (wird beim Start geladen)
