@@ -7,5 +7,5 @@ shared/*.json
 # Generated landing page with resolved counters
 public/index.html
 
-# Template index cache (cloned repos + generated index)
-data/templates/
+# Template cache (cloned repos during build)
+.template-cache/

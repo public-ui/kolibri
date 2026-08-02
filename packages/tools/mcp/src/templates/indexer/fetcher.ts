@@ -1,13 +1,20 @@
 import { glob } from 'glob';
 import { promises as fs } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import simpleGit from 'simple-git';
 import { TEMPLATE_REPOS, type IndexedTemplateResource, type TemplateRepoConfig } from './config.js';
 
 /**
- * Cache-Verzeichnis für geklonte Repos
+ * Zielverzeichnis für den statischen Template-Index (wird ins npm-Paket gepackt)
  */
-const CACHE_DIR = join(process.cwd(), 'data', 'templates');
+const SHARED_DIR = fileURLToPath(new URL('../../../shared', import.meta.url));
+const INDEX_PATH = join(SHARED_DIR, 'template-index.json');
+
+/**
+ * Temporäres Verzeichnis für geklonte Repos (nur zur Build-Zeit)
+ */
+const CACHE_DIR = join(process.cwd(), '.template-cache');
 
 /**
  * Klont oder aktualisiert ein Git-Repository
@@ -201,16 +208,15 @@ async function indexAllTemplateRepos(): Promise<IndexedTemplateResource[]> {
 }
 
 /**
- * Aktualisiert den Template-Index (wird periodisch aufgerufen)
+ * Aktualisiert den Template-Index (wird zur Build-Zeit via `pnpm update-templates` aufgerufen)
  */
 export async function updateTemplateIndex(): Promise<void> {
 	console.log('🔄 Updating template index...');
 	const resources = await indexAllTemplateRepos();
 
-	// Speichern in JSON-Datei für schnellen Zugriff
-	const indexPath = join(CACHE_DIR, 'template-index.json');
-	await fs.mkdir(CACHE_DIR, { recursive: true });
-	await fs.writeFile(indexPath, JSON.stringify(resources, null, 2));
+	// Speichern in shared/ damit der Index im npm-Paket enthalten ist
+	await fs.mkdir(SHARED_DIR, { recursive: true });
+	await fs.writeFile(INDEX_PATH, JSON.stringify(resources, null, 2));
 
 	console.log(`✅ Template index updated with ${resources.length} resources`);
 }

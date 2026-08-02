@@ -1,13 +1,12 @@
-import { promises as fs } from 'node:fs';
-import { join } from 'node:path';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { TEMPLATE_REPOS, type IndexedTemplateResource } from './indexer/config.js';
-import { updateTemplateIndex } from './indexer/fetcher.js';
 import { calculateSimilarityScore, extractCodeBlocksFromMarkdown } from './indexer/parser.js';
 
 /**
- * Cache-Verzeichnis für geklonte Repos
+ * Statischer Pfad zum Template-Index (wird zur Build-Zeit erzeugt und mit dem npm-Paket ausgeliefert)
  */
-const CACHE_DIR = join(process.cwd(), 'data', 'templates');
+const INDEX_PATH = fileURLToPath(new URL('../../shared/template-index.json', import.meta.url));
 
 /**
  * Geladener Template-Index (wird beim Start geladen)
@@ -15,16 +14,15 @@ const CACHE_DIR = join(process.cwd(), 'data', 'templates');
 let templateIndex: IndexedTemplateResource[] = [];
 
 /**
- * Lädt den Template-Index aus dem Cache
+ * Lädt den Template-Index aus der statischen JSON-Datei
  */
-async function loadTemplateIndex(): Promise<IndexedTemplateResource[]> {
+function loadTemplateIndex(): IndexedTemplateResource[] {
 	try {
-		const indexPath = join(CACHE_DIR, 'template-index.json');
-		const content = await fs.readFile(indexPath, 'utf-8');
+		const content = readFileSync(INDEX_PATH, 'utf-8');
 		const parsed = JSON.parse(content) as IndexedTemplateResource[];
 		return Array.isArray(parsed) ? parsed : [];
 	} catch {
-		// Index existiert noch nicht
+		// Index existiert noch nicht (z. B. weil `pnpm update-templates` nicht ausgeführt wurde)
 		return [];
 	}
 }
@@ -35,20 +33,12 @@ async function loadTemplateIndex(): Promise<IndexedTemplateResource[]> {
 export async function initializeTemplateIndex(): Promise<void> {
 	console.log('📚 Initializing template index...');
 
-	try {
-		templateIndex = await loadTemplateIndex();
+	templateIndex = loadTemplateIndex();
 
-		// Falls Index leer oder veraltet, neu erstellen
-		if (templateIndex.length === 0) {
-			await updateTemplateIndex();
-			templateIndex = await loadTemplateIndex();
-		}
-
+	if (templateIndex.length === 0) {
+		console.warn('⚠️  Template index is empty. Run `pnpm update-templates` before building to include template data.');
+	} else {
 		console.log(`✅ Template index loaded with ${templateIndex.length} resources`);
-	} catch (error) {
-		console.error('❌ Failed to initialize template index:', error);
-		// Mit leerem Index weitermachen
-		templateIndex = [];
 	}
 }
 

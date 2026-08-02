@@ -44,10 +44,10 @@
 	"scripts": {
 		"build:deps": "pnpm --filter @public-ui/mcp^... build",
 		"generate-index": "node ./scripts/generate-sample-index.mjs",
-		"update-templates": "tsx ./scripts/update-templates.mjs",
-		"prebuild": "pnpm generate-index",
+		"generate-templates-index": "tsx ./scripts/generate-templates-index.mjs",
+		"prebuild": "pnpm generate-index && pnpm generate-templates-index",
 		"build": "unbuild",
-		"predev": "pnpm generate-index",
+		"predev": "pnpm generate-index && pnpm generate-templates-index",
 		"dev": "nodemon",
 		"format": "prettier -c src test public",
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Skript zum manuellen Aktualisieren des Template-Index.
- * Klont/aktualisiert die konfigurierten Template-Repos und baut einen Suchindex.
+ * Generates the static template index at build time.
+ * Clones/updates the configured template repositories and builds a search index.
  *
- * Usage: pnpm update-templates
+ * Usage: pnpm generate-templates-index
  */
 
 import { updateTemplateIndex } from '../src/templates/indexer/fetcher.ts';
