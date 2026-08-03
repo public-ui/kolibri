@@ -18,6 +18,9 @@ test-results/
 # from the former husky setup and must not be committed.
 .husky/
 
+# Generated index files (regenerated via pnpm prebuild / pnpm generate-*-index)
+/packages/tools/mcp/shared/*.json
+
 /packages/components/src/components/*/readme.md
 # Diese Readme's wurde nicht in die Doku übernommen.
 !/packages/components/src/components/logo/readme.md
