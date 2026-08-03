@@ -53,7 +53,7 @@
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",
 		"lint:eslint": "eslint src test",
 		"lint:tsc": "tsc --noemit",
-		"preinspect": "pnpm generate-index",
+		"preinspect": "pnpm generate-index && pnpm generate-templates-index",
 		"inspect": "mcp-inspector tsx src/cli.ts",
 		"prestart": "pnpm build",
 		"start": "node dist/mcp.cjs",
