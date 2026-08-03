@@ -64,10 +64,10 @@
 		"import": "./dist/index.js"
 	},
 	"devDependencies": {
-		"@angular/common": "21.2.19",
-		"@angular/compiler": "21.2.12",
+		"@angular/common": "22.0.2",
+		"@angular/compiler": "21.2.19",
 		"@angular/compiler-cli": "21.2.12",
-		"@angular/core": "21.2.12",
+		"@angular/core": "21.2.17",
 		"@public-ui/components": "workspace:*",
 		"minimatch": "10.2.6",
 		"rimraf": "6.1.3",
