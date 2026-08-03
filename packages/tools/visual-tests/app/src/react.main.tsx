@@ -1,7 +1,7 @@
 import { setTagNameTransformer } from '@public-ui/react-v19';
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router';
 
 import { bootstrap, getDefaultThemeName, KoliBriDevHelper } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';

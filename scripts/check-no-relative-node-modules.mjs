@@ -22,6 +22,7 @@ const ALLOW = [
 function findPackageJsons(dir, out = []) {
 	for (const entry of readdirSync(dir, { withFileTypes: true })) {
 		if (entry.name === 'node_modules') continue;
+		if (entry.name === '.template-cache') continue;
 		const full = path.join(dir, entry.name);
 		if (entry.isDirectory()) {
 			findPackageJsons(full, out);

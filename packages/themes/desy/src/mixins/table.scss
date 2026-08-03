@@ -1,6 +1,6 @@
 @use '../functions/to-rem' as *;
 @use './table-settings' as *;
-@use './kol-alert' as *;
+@use './alert' as *;
 @use './focus-outline' as *;
 @use './input-checkbox' as *;
 @use './input-radio' as *;
@@ -11,7 +11,7 @@
 
 @mixin table {
 	@include table-settings;
-	@include kol-alert;
+	@include alert;
 	@include pagination;
 
 	.kol-table {

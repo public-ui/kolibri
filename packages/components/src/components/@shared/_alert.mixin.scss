@@ -7,19 +7,28 @@
 	.kol-alert {
 		@include kol-button-styles('kol-button');
 		display: grid;
+		grid-template-areas:
+			'icon heading close'
+			'icon content close';
+		grid-template-columns: min-content 1fr min-content;
+		grid-template-rows: min-content min-content;
 
-		&__container {
-			display: flex;
-			place-items: center;
+		&__icon {
+			grid-area: icon;
 		}
 
-		&__container-content {
-			flex-grow: 1;
+		&__heading {
+			grid-area: heading;
 		}
 
 		&__closer {
 			/* Visible with forced colors */
 			outline: transparent solid to-rem(1);
+			grid-area: close;
+		}
+
+		&__content {
+			grid-area: content;
 		}
 	}
 }

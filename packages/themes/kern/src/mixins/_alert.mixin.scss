@@ -3,76 +3,26 @@
 
 @mixin kol-alert {
 	.kol-alert {
+		$root: &;
+
 		position: relative;
 		flex-direction: column;
+		--alert-accent-color: var(--kern-color-form-input-border);
 		--alert-background-color: var(--kern-color-layout-background-default);
-
-		/* Type modifiers with icons */
-		&--type-info &__icon {
-			color: var(--kern-color-feedback-info);
-
-			&::before {
-				content: '\e910';
-			}
-		}
-
-		&--type-error &__icon {
-			color: var(--kern-color-feedback-danger);
-
-			&::before {
-				content: '\e919';
-			}
-		}
-
-		&--type-success &__icon {
-			color: var(--kern-color-feedback-success);
-
-			&::before {
-				content: '\e906';
-			}
-		}
-
-		&--type-warning &__icon {
-			color: var(--kern-color-feedback-warning);
-
-			&::before {
-				content: '\e903';
-			}
-		}
-
-		/* Variant card base */
-		&--variant-card {
-			border-radius: var(--kern-metric-border-radius-default);
-			border: var(--kern-metric-border-width-default) solid transparent;
-		}
-
-		&--variant-card.kol-alert--type-default {
-			border-color: var(--kern-color-form-input-border);
-		}
-
-		&--variant-card.kol-alert--type-error {
-			border-color: var(--kern-color-feedback-danger);
-		}
-
-		&--variant-card.kol-alert--type-info {
-			border-color: var(--kern-color-feedback-info);
-		}
-
-		&--variant-card.kol-alert--type-success {
-			border-color: var(--kern-color-feedback-success);
-		}
-
-		&--variant-card.kol-alert--type-warning {
-			border-color: var(--kern-color-feedback-warning);
-		}
-
-		&--variant-card .kol-alert__closer {
-			top: var(--kern-metric-space-default);
-		}
 
 		/* Variant msg */
 		&--variant-msg {
 			color: var(--alert-msg-text-color);
+			gap: to-rem(4);
+			align-items: center;
+			grid-template-areas:
+				'icon heading close'
+				'icon content close';
+
+			&:not(:has(#{$root}__heading)) {
+				grid-template-areas: 'icon content close';
+				grid-template-rows: min-content;
+			}
 		}
 
 		/* Type variants */
@@ -83,7 +33,7 @@
 
 		&--type-info {
 			--alert-accent-color: var(--kern-color-feedback-info-background);
-			--alert-msg-text-color: var(--kern-color-feedback-info,);
+			--alert-msg-text-color: var(--kern-color-feedback-info);
 		}
 
 		&--type-error {
@@ -102,32 +52,32 @@
 		}
 
 		/* Elements */
-		&--variant-card &__content {
-			background: var(--kern-color-layout-background-default, #fff);
-			display: flex;
-			padding: var(--kern-metric-space-default) var(--kern-metric-space-large) var(--kern-metric-space-default) var(--kern-metric-space-large);
-			gap: var(--kern-metric-space-small);
-			flex-direction: column;
-		}
+		&--variant-card {
+			background: var(--alert-accent-color);
+			border-radius: var(--kern-metric-border-radius-default);
+			padding-top: var(--kern-metric-space-default);
+			gap: var(--kern-metric-space-default) to-rem(8);
+			grid-template-areas:
+				'icon heading close'
+				'content content content';
+			border: var(--kern-metric-border-width-default) solid var(--alert-msg-text-color);
 
-		&__container {
-			display: flex;
-			gap: to-rem(8);
-			align-items: center;
-		}
+			#{$root}__closer {
+				margin-right: var(--kern-metric-space-default);
+			}
 
-		&--variant-card &__container {
-			background-color: var(--alert-accent-color);
-			padding: var(--kern-metric-space-default);
-		}
+			#{$root}__content {
+				background: var(--kern-color-layout-background-default);
+				display: flex;
+				padding: var(--kern-metric-space-default) var(--kern-metric-space-large) var(--kern-metric-space-default) var(--kern-metric-space-large);
+				gap: var(--kern-metric-space-small);
+				flex-direction: column;
+			}
 
-		&--variant-msg &__container {
-			gap: to-rem(4);
-		}
-
-		&__container-content {
-			display: grid;
-			gap: calc(4rem / var(--kolibri-root-font-size));
+			#{$root}__icon {
+				color: var(--alert-msg-text-color);
+				margin-left: var(--kern-metric-space-default);
+			}
 		}
 
 		&__closer {
@@ -146,11 +96,6 @@
 
 		&__heading {
 			@include kern-title;
-
-			&::after {
-				content: '\00A0'; /* nbsp */
-				white-space: pre; /* ensure space renders */
-			}
 		}
 
 		&--variant-card &__heading {

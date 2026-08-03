@@ -1,4 +1,4 @@
-import type { RGB } from 'color-convert/conversions';
+import type { RGB } from 'color-convert';
 import { hex } from 'wcag-contrast';
 
 import rgba from 'color-rgba';

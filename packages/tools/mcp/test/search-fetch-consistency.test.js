@@ -11,7 +11,7 @@ const DEFAULT_LIMIT = 5;
 /**
  * Create server with registered tools for testing
  */
-function createServerWithRegisteredTools() {
+async function createServerWithRegisteredTools() {
 	const registeredTools = new Map();
 	const originalRegisterTool = McpServer.prototype.registerTool;
 
@@ -22,7 +22,7 @@ function createServerWithRegisteredTools() {
 			return tool;
 		};
 
-		const server = createKolibriMcpServer();
+		const server = await createKolibriMcpServer();
 		return { server, registeredTools };
 	} finally {
 		McpServer.prototype.registerTool = originalRegisterTool;
@@ -33,7 +33,7 @@ async function runSearch(tools, query = 'button', limit = DEFAULT_LIMIT) {
 	const searchTool = tools.get('search');
 	assert.ok(searchTool, 'expected search tool to be registered');
 
-	const response = await searchTool.callback({ query, limit });
+	const response = await searchTool.handler({ query, limit });
 	assert.ok(response?.structuredContent, 'search tool should return structured content');
 	return response.structuredContent;
 }
@@ -42,7 +42,7 @@ async function runSearch(tools, query = 'button', limit = DEFAULT_LIMIT) {
  * Verify consistent results across multiple calls
  */
 test('search tool results stay consistent with fetch results', async () => {
-	const { registeredTools } = createServerWithRegisteredTools();
+	const { registeredTools } = await createServerWithRegisteredTools();
 	const structuredContent = await runSearch(registeredTools);
 
 	assert.ok(structuredContent.results.length > 0, 'search should return at least one result');
@@ -63,7 +63,7 @@ test('search tool results stay consistent with fetch results', async () => {
 		assert.strictEqual(result.description, entry.description ?? 'N/A');
 		assert.deepStrictEqual(result.tags, Array.isArray(entry.tags) ? entry.tags : []);
 
-		const fetchResponse = await fetchTool.callback({ id: result.id });
+		const fetchResponse = await fetchTool.handler({ id: result.id });
 		assert.ok(fetchResponse?.structuredContent, 'fetch tool should return structured content');
 		assert.strictEqual(fetchResponse.structuredContent.id, result.id);
 		assert.strictEqual(typeof fetchResponse.structuredContent.code, 'string', 'fetch should include code content');

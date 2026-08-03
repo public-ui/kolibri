@@ -23,6 +23,11 @@ import type {
 } from '../../schema';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
+/**
+ *
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
+ */
+
 @Component({
 	tag: 'kol-link',
 	styleUrls: {
