@@ -47,7 +47,7 @@ import { InputTextController } from './controller';
 /**
  * The **Text** input type creates an input field for plain text, search terms, URLs, or phone numbers.
  *
- * @slot - The label of the input field.
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
 	tag: 'kol-input-text',

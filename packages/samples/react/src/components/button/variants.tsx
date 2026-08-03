@@ -1,7 +1,7 @@
 import { KolButton, KolHeading } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 import { useToasterService } from '../../hooks/useToasterService';
 import { fetchVariantData } from '../../shares/fetchVariantData';
 import { getCustomThemes } from '../../shares/store';

@@ -87,42 +87,34 @@ const KolAlertFc: FC<KolAlertFcProps> = (props, children) => {
 
 	return (
 		<div role={alert ? 'alert' : undefined} {...rootProps} data-testid="alert">
-			<div class="kol-alert__container">
-				<AlertIcon label={label} type={type} />
-				<div class="kol-alert__container-content">
-					{label && (
-						<KolHeadingFc class={BEM_CLASS__HEADING} level={level} id="heading">
-							{label}
-						</KolHeadingFc>
-					)}
-					{variant === 'msg' && (
-						<span class={BEM_CLASS_ALERT__CONTENT} aria-describedby={label ? 'heading' : undefined}>
-							{children}
-						</span>
-					)}
-				</div>
-				{hasCloser && (
-					<KolButtonWcTag
-						class={BEM_CLASS_ALERT__CLOSER + ' kol-close-button'}
-						data-testid="alert-close-button"
-						_ariaDescription={label?.trim() || ''}
-						_hideLabel
-						_icons={{
-							left: {
-								icon: 'kolicon-cross',
-							},
-						}}
-						_label={translateCloseAlert}
-						_on={{ onClick: onCloserClick }}
-						_tooltipAlign="left"
-					/>
-				)}
-			</div>
-			{variant === 'card' && (
-				<div class={BEM_CLASS_ALERT__CONTENT} aria-describedby={label ? 'heading' : undefined}>
-					{children}
-				</div>
+			<AlertIcon label={label} type={type} />
+
+			{label && (
+				<KolHeadingFc class={BEM_CLASS__HEADING} level={level} id="heading">
+					{label}
+				</KolHeadingFc>
 			)}
+
+			{hasCloser && (
+				<KolButtonWcTag
+					class={BEM_CLASS_ALERT__CLOSER + ' kol-close-button'}
+					data-testid="alert-close-button"
+					_ariaDescription={label?.trim() || ''}
+					_hideLabel
+					_icons={{
+						left: {
+							icon: 'kolicon-cross',
+						},
+					}}
+					_label={translateCloseAlert}
+					_on={{ onClick: onCloserClick }}
+					_tooltipAlign="left"
+				/>
+			)}
+
+			<div class={BEM_CLASS_ALERT__CONTENT} aria-describedby={label ? 'heading' : undefined}>
+				{children}
+			</div>
 		</div>
 	);
 };

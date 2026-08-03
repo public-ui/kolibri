@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 
 import type { AlignPropType } from '@public-ui/components';
 import { KolButton, KolDrawer, KolInputCheckbox } from '@public-ui/react-v19';

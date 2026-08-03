@@ -1,10 +1,10 @@
 {
-	"version": "4.3.0-rc.6",
+	"version": "4.3.0-rc.8",
 	"devDependencies": {
 		"@evilmartians/lefthook": "2.1.10",
 		"license-report": "6.8.5",
-		"npm-check-updates": "22.2.9",
-		"npm-run-all2": "8.0.4",
+		"npm-check-updates": "23.0.0",
+		"npm-run-all2": "9.0.3",
 		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "17.14.1",

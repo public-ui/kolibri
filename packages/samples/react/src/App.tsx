@@ -1,7 +1,6 @@
 import type { FC } from 'react';
 import React, { useEffect, useMemo, useState } from 'react';
-import { useLocation } from 'react-router';
-import { Navigate, Route, Routes, useSearchParams } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation, useSearchParams } from 'react-router';
 
 import PackageJson from '@public-ui/components/package.json';
 

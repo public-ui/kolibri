@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/mcp",
-	"version": "4.3.0-rc.6",
+	"version": "4.3.0-rc.8",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -17,7 +17,7 @@
 	},
 	"type": "module",
 	"private": false,
-	"description": "Model Context Protocol server providing AI agents access to 136+ KoliBri component examples and source code.",
+	"description": "Model Context Protocol server providing AI agents access to 136+ KoliBri component examples, source code, and template repositories.",
 	"keywords": [
 		"mcp",
 		"model-context-protocol",
@@ -29,8 +29,8 @@
 		"react",
 		"typescript"
 	],
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
+	"main": "dist/mcp.cjs",
+	"module": "dist/mcp.mjs",
 	"bin": {
 		"@public-ui/mcp": "dist/cli.cjs",
 		"kolibri-mcp": "dist/cli.cjs"
@@ -44,15 +44,16 @@
 	"scripts": {
 		"build:deps": "pnpm --filter @public-ui/mcp^... build",
 		"generate-index": "node ./scripts/generate-sample-index.mjs",
-		"prebuild": "pnpm generate-index",
+		"generate-templates-index": "tsx ./scripts/generate-templates-index.mjs",
+		"prebuild": "pnpm generate-index && pnpm generate-templates-index",
 		"build": "unbuild",
-		"predev": "pnpm generate-index",
+		"predev": "pnpm generate-index && pnpm generate-templates-index",
 		"dev": "nodemon",
 		"format": "prettier -c src test public",
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",
 		"lint:eslint": "eslint src test",
 		"lint:tsc": "tsc --noemit",
-		"preinspect": "pnpm generate-index",
+		"preinspect": "pnpm generate-index && pnpm generate-templates-index",
 		"inspect": "mcp-inspector tsx src/cli.ts",
 		"prestart": "pnpm build",
 		"start": "node dist/mcp.cjs",
@@ -70,13 +71,15 @@
 		"@public-ui/components": "workspace:*",
 		"express": "5.2.1",
 		"fuse.js": "7.5.0",
+		"glob": "13.0.6",
+		"simple-git": "3.36.0",
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
-		"@modelcontextprotocol/inspector": "0.22.0",
+		"@modelcontextprotocol/inspector": "2.0.0",
 		"@public-ui/eslint-config": "workspace:*",
 		"@types/express": "5.0.6",
-		"@types/node": "25.9.5",
+		"@types/node": "26.1.2",
 		"eslint": "9.39.5",
 		"knip": "6.29.0",
 		"nodemon": "3.1.14",

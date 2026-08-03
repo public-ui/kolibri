@@ -1,6 +1,6 @@
 import { KolButton, KolHeading, KolIcon } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React, { useRef } from 'react';
+import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
 import { SampleDescription } from '../SampleDescription';
 
@@ -10,7 +10,6 @@ const KolTooltip = 'kol-tooltip-wc' as unknown as React.FC<{ _label: string }>;
 
 export const ButtonExpertSlot: FC = () => {
 	const { dummyClickEventHandler } = useToasterService();
-	const iconButtonRef = useRef<HTMLElement>(null);
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
@@ -38,7 +37,7 @@ export const ButtonExpertSlot: FC = () => {
 						<KolButton _icons="kolicon-alert-warning" _label="" _variant="danger" _on={dummyEventHandler}>
 							<span slot="expert">Delete with custom text</span>
 						</KolButton>
-						<KolButton ref={iconButtonRef as React.Ref<never>} _label="" _variant="danger" _on={dummyEventHandler}>
+						<KolButton _label="" _variant="danger" _on={dummyEventHandler}>
 							<KolIcon _icons="kolicon-alert-warning" _label="Delete with custom text" slot="expert" />
 						</KolButton>
 						<KolTooltip _label="Delete with custom text" />

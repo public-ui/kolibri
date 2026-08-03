@@ -2,14 +2,10 @@
 
 exports[`KolAlertFc should render 1`] = `
 <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
-  <div class="kol-alert__container">
-    <span class="visually-hidden">
-      kol-message
-    </span>
-    <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-    <div class="kol-alert__container-content">
-      <span class="kol-alert__content"></span>
-    </div>
-  </div>
+  <span class="visually-hidden">
+    kol-message
+  </span>
+  <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+  <div class="kol-alert__content"></div>
 </div>
 `;
