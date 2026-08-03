@@ -1,7 +1,12 @@
 {
 	"editor.formatOnSave": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit",
+		"source.fixAll.stylelint": "explicit"
+	},
 	"editor.renderWhitespace": "all",
+	"files.autoSave": "onWindowChange",
 	// Configure glob patterns for excluding files and folders.
 	// For example, the files explorer decides which files and folders to show
 	// or hide based on this setting.
