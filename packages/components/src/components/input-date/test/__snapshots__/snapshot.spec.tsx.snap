@@ -235,7 +235,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input aria-describedby="input-date-error-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-date-nonce" name="field" type="date" value="2025-01-01">
+            <input aria-describedby="input-date-error-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-date-nonce" name="field" type="date" value="2025-01-01">
           </div>
         </div>
       </div>

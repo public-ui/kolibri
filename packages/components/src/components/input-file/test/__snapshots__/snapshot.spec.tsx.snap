@@ -266,7 +266,7 @@ exports[`kol-input-file should render with _label="Label" _name="field" _placeho
             <span class="kol-input-container__filename">
               kol-filename-text
             </span>
-            <input aria-describedby="input-file-error-nonce" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-file-nonce" name="field" type="file">
+            <input aria-describedby="input-file-error-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-file-nonce" name="field" type="file">
             <kol-button-wc _label="kol-data-browse-text" _variant="primary" class="kol-input-container__button"></kol-button-wc>
           </div>
         </div>

@@ -81,6 +81,7 @@ function getInputProps(state: InputState, other: Partial<InputProps>, customSugg
 		...props,
 		...other,
 		ariaDescribedBy,
+		'aria-invalid': renderStates.hasError ? 'true' : undefined,
 	};
 }
 
