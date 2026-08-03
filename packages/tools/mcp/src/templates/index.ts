@@ -40,7 +40,7 @@ function loadTemplateIndex(): IndexedTemplateResource[] {
 /**
  * Initialisiert den Template-Index (wird beim Server-Start aufgerufen)
  */
-export async function initializeTemplateIndex(): Promise<void> {
+export function initializeTemplateIndex(): void {
 	console.log('📚 Initializing template index...');
 
 	templateIndex = loadTemplateIndex();

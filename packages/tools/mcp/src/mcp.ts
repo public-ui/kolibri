@@ -105,7 +105,7 @@ function log(type: 'info' | 'tool' | 'resource' | 'error', message: string, data
  * Create a configured KoliBri MCP server instance.
  * Can be used with both stdio and HTTP transports.
  */
-export async function createKolibriMcpServer(): Promise<McpServer> {
+export function createKolibriMcpServer(): McpServer {
 	const server = new McpServer({
 		name: PACKAGE_NAME,
 		version: PACKAGE_VERSION,
@@ -119,10 +119,10 @@ export async function createKolibriMcpServer(): Promise<McpServer> {
  * @param server - The MCP server to configure
  * @returns The configured MCP server
  */
-async function configureServer(server: McpServer): Promise<McpServer> {
+function configureServer(server: McpServer): McpServer {
 	// Initialize template index (non-blocking — continues with empty index on failure)
 	try {
-		await initializeTemplateIndex();
+		initializeTemplateIndex();
 	} catch (error) {
 		console.error('Failed to initialize template index:', error);
 	}
@@ -564,8 +564,8 @@ if (
 	process.argv[1]?.endsWith('/mcp.cjs') ||
 	process.argv[1]?.endsWith('/mcp.mjs')
 ) {
-	void (async () => {
-		const server = await createKolibriMcpServer();
+	void (() => {
+		const server = createKolibriMcpServer();
 
 		// Set up Express and HTTP transport
 		const app = express();
