@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-CbvMSx3c.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
