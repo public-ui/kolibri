@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 
 import { KolButton, KolIcon, KolInputText } from '@public-ui/react-v19';
 

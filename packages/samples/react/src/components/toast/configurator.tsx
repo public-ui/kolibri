@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router';
 
 import type { AlertTypePropType } from '@public-ui/components';
 import { ToasterService } from '@public-ui/components';
