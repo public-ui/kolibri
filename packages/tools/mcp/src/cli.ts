@@ -15,7 +15,7 @@ const ENABLE_LOGGING = process.env.MCP_LOGGING === 'true' || process.env.MCP_LOG
  * Used for local MCP clients like Claude Desktop, VS Code, etc.
  */
 async function main() {
-	const server = await createKolibriMcpServer();
+	const server = createKolibriMcpServer();
 	const transport = new StdioServerTransport();
 
 	await server.connect(transport);

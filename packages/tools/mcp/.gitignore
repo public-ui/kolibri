@@ -1,11 +1,11 @@
 .cache/
 api/samples.mjs
 
-# Generated sample index (static)
-shared/*.json
-
 # Generated landing page with resolved counters
 public/index.html
 
-# Template index cache (cloned repos + generated index)
-data/templates/
+# Template cache (cloned repos during build)
+.template-cache/
+
+# Note: shared/template-index.json and shared/sample-index.json are intentionally tracked
+# They are required for the Vercel deployment and are regenerated during prebuild.
