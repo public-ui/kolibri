@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-DVZKbp1F.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
