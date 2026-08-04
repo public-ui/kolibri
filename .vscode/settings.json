@@ -6,7 +6,6 @@
 		"source.fixAll.stylelint": "explicit"
 	},
 	"editor.renderWhitespace": "all",
-	"files.autoSave": "onWindowChange",
 	// Configure glob patterns for excluding files and folders.
 	// For example, the files explorer decides which files and folders to show
 	// or hide based on this setting.
