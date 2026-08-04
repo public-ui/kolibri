@@ -33,6 +33,12 @@ declare module 'adopted-style-sheets' {
 		 * When set this is the variant used whenever no variant is provided
 		 */
 		buttonVariantDefault: VariantClassNamePropType;
+		/**
+		 * Controls wether KolBreadcrumb shows the current page as the last entry.
+		 * When unset, the component treats the flag as `'show'` (current page visible),
+		 * so themes that do not declare it keep the existing behaviour.
+		 */
+		breadcrumbCurrentPage: 'show' | 'hide';
 	}
 }
 
