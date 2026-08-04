@@ -132,7 +132,7 @@ export class KolLinkButton implements ClickableElement, FocusableElement, LinkBu
 	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsPropType;
 
