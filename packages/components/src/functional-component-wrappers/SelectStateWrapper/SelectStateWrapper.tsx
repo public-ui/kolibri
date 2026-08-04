@@ -9,7 +9,7 @@ export type SelectStateWrapperProps = Partial<SelectProps> & {
 };
 
 function getSelectProps(state: SelectStates): SelectProps {
-	const { ariaDescribedBy } = getRenderStates(state);
+	const { ariaDescribedBy, hasError } = getRenderStates(state);
 
 	const props: SelectProps = {
 		id: state._id,
@@ -20,6 +20,7 @@ function getSelectProps(state: SelectStates): SelectProps {
 		accessKey: state._accessKey,
 		disabled: state._disabled,
 		name: state._name,
+		'aria-invalid': hasError ? 'true' : undefined,
 		ariaDescribedBy: ariaDescribedBy,
 		size: state._multiple ? state._rows : undefined,
 		multiple: state._multiple,

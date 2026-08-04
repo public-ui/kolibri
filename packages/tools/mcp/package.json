@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/mcp",
-	"version": "4.3.0-rc.7",
+	"version": "4.3.0-rc.9",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -29,8 +29,8 @@
 		"react",
 		"typescript"
 	],
-	"main": "dist/index.cjs",
-	"module": "dist/index.mjs",
+	"main": "dist/mcp.cjs",
+	"module": "dist/mcp.mjs",
 	"bin": {
 		"@public-ui/mcp": "dist/cli.cjs",
 		"kolibri-mcp": "dist/cli.cjs"
@@ -44,16 +44,16 @@
 	"scripts": {
 		"build:deps": "pnpm --filter @public-ui/mcp^... build",
 		"generate-index": "node ./scripts/generate-sample-index.mjs",
-		"update-templates": "tsx ./scripts/update-templates.mjs",
-		"prebuild": "pnpm generate-index",
+		"generate-templates-index": "tsx ./scripts/generate-templates-index.mjs",
+		"prebuild": "pnpm generate-index && pnpm generate-templates-index",
 		"build": "unbuild",
-		"predev": "pnpm generate-index",
+		"predev": "pnpm generate-index && pnpm generate-templates-index",
 		"dev": "nodemon",
 		"format": "prettier -c src test public",
 		"lint": "pnpm lint:eslint && pnpm lint:tsc",
 		"lint:eslint": "eslint src test",
 		"lint:tsc": "tsc --noemit",
-		"preinspect": "pnpm generate-index",
+		"preinspect": "pnpm generate-index && pnpm generate-templates-index",
 		"inspect": "mcp-inspector tsx src/cli.ts",
 		"prestart": "pnpm build",
 		"start": "node dist/mcp.cjs",

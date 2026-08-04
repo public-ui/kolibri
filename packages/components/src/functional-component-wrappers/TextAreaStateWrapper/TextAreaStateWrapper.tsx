@@ -28,6 +28,7 @@ function getTextAreaProps(state: TextareaStates, other: Partial<TextAreaProps>):
 		msg: state._msg as MsgPropType,
 		...other,
 		ariaDescribedBy,
+		'aria-invalid': renderStates.hasError ? 'true' : undefined,
 	};
 
 	if ('_maxLength' in state && '_maxLengthBehavior' in state && state._maxLengthBehavior === 'hard') {
