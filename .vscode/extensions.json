@@ -1,3 +1,10 @@
 {
-	"recommendations": ["editorconfig.editorconfig", "dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "stylelint.vscode-stylelint"]
+	"recommendations": [
+		"dbaeumer.vscode-eslint",
+		"editorconfig.editorconfig",
+		"esbenp.prettier-vscode",
+		"mermaidchart.vscode-mermaid-chart",
+		"stylelint.vscode-stylelint",
+		"vizzletf.geminicommit"
+	]
 }
