@@ -1,0 +1,18 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Install All Recommended Extensions",
+			"type": "shell",
+			"linux": {
+				"command": "node -pe \"JSON.parse(require('fs').readFileSync('./.vscode/extensions.json','utf8')).recommendations.join('\\\\n')\" | xargs -n 1 code --install-extension"
+			},
+			"runOptions": {
+				"runOn": "folderOpen"
+			},
+			"problemMatcher": []
+		}
+	]
+}
