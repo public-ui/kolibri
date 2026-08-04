@@ -1,5 +1,4 @@
 .cache/
-.template-cache/
 api/samples.mjs
 
 # Generated landing page with resolved counters
