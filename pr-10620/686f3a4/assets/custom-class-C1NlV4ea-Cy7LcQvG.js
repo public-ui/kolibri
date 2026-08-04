@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-CE-qleOB.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
