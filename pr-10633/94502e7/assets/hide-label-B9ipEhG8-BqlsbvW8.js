@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-CdEx4Zi_.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};

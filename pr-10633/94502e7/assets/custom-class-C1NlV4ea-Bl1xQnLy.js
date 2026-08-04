@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-CdEx4Zi_.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};

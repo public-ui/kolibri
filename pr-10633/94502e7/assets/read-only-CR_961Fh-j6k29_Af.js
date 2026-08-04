@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-CdEx4Zi_.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
