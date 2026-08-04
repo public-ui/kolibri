@@ -99,6 +99,7 @@ export const DEFAULT = KoliBri.createTheme(
 	{
 		inputNumberButtons: 'show',
 		buttonVariantDefault: 'normal',
+		breadcrumbCurrentPage: 'show',
 	},
 );
 
