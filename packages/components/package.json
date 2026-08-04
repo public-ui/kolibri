@@ -88,7 +88,6 @@
 		"test:unit": "mkdir -p dist && cross-env NODE_ENV=test stencil test --spec --json --outputFile dist/jest-test-results.json",
 		"test:update:unit": "pnpm test:unit -u",
 		"test:watch": "cross-env NODE_ENV=test stencil test --spec --watchAll",
-		"postinstall": "node ./postinstall.js",
 		"prebuild:light": "pnpm clear && pnpm assets:kolicons",
 		"pretest:e2e": "pnpm assets:kolicons",
 		"xunused": "knip"
@@ -157,7 +156,6 @@
 		"custom-elements.json",
 		"index.scss",
 		"loader",
-		"postinstall.js",
 		"vscode-custom-data.json"
 	]
 }
