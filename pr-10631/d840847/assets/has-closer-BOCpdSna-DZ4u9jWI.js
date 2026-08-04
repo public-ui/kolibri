@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-C5FnfDRP.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
