@@ -21,6 +21,20 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	],
 };
 
+const HEADERS_HORIZONTAL_SORT: KoliBriTableHeaders = {
+	horizontal: [
+		[
+			{ label: 'ID', key: 'id', textAlign: 'right', width: 160, sortDirection: 'ASC' },
+			{ label: 'Common name', key: 'common_name', textAlign: 'left', width: 160, sortDirection: 'ASC' },
+			{ label: 'Scientific name', key: 'scientific_name', textAlign: 'left', width: 160, sortDirection: 'ASC' },
+			{ label: 'Conservation status', key: 'conservation_status', textAlign: 'left', width: 160, sortDirection: 'ASC' },
+			{ label: 'Habitat', key: 'habitat', textAlign: 'left', width: 160, sortDirection: 'ASC' },
+			{ label: 'Diet', key: 'diet', textAlign: 'left', width: 160, sortDirection: 'ASC' },
+			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 160, sortDirection: 'ASC' },
+		],
+	],
+};
+
 const LoadingOverlayFC: FC<{
 	label: string;
 	show: boolean;
@@ -50,6 +64,13 @@ export const TableStatelessAsync: FC = () => {
 		setCurrentAction(action);
 		getAsyncData().then((result: Awaited<ReturnType<typeof getAsyncData>>) => {
 			setComplexData(result.COMPLEX_DATA.slice(0, 15));
+			if (action === 'sort') {
+				if (header === HEADERS_HORIZONTAL) {
+					setHeader(HEADERS_HORIZONTAL_SORT);
+				} else {
+					setHeader(HEADERS_HORIZONTAL);
+				}
+			}
 			setLoading(false);
 		});
 	};
@@ -57,6 +78,7 @@ export const TableStatelessAsync: FC = () => {
 	const [complexData, setComplexData] = useState<ComplexData[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [currentAction, setCurrentAction] = useState<'sort' | 'paginate'>('sort');
+	const [header, setHeader] = useState<KoliBriTableHeaders>(HEADERS_HORIZONTAL);
 
 	useEffect(() => loadData('sort'), []);
 
@@ -72,7 +94,7 @@ export const TableStatelessAsync: FC = () => {
 			<section className="w-full relative">
 				<KolTableStateless
 					_label="Table for demonstration purposes"
-					_headerCells={HEADERS_HORIZONTAL}
+					_headerCells={header}
 					_data={complexData}
 					_on={{
 						onSort: () => loadData('sort'),
