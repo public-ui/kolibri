@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-CE-qleOB.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};

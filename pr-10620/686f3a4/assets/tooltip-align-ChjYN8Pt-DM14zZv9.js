@@ -1,0 +1,1 @@
+import"./index-CE-qleOB.js";import{r as e}from"./align-DpNc6EKs-DJru64Jh.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
