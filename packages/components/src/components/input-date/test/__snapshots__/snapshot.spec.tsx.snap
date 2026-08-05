@@ -102,9 +102,7 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
             </span>
           </span>
         </span>
-        <kol-popover-button-wc _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="kol-hint-button" _popoveralign="bottom" _variant="ghost" class="kol-form-field__hint-button kol-popover-button--inline">
-          Hint
-        </kol-popover-button-wc>
+        <kol-button-wc _hidelabel="" _icons="kolicon-alert-info" _label="Hint" buttonvariant="ghost" class="kol-form-field__hint-button"></kol-button-wc>
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">

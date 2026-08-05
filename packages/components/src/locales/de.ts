@@ -77,5 +77,4 @@ export default {
 	'meter-state-optimum': 'Optimal',
 	'meter-state-suboptimal': 'Suboptimal',
 	'meter-state-critical': 'Kritisch',
-	'hint-button': 'Hinweis anzeigen',
 };

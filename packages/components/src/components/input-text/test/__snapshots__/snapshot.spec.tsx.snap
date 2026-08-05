@@ -102,14 +102,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
             </span>
           </span>
         </span>
-        <kol-popover-button-wc class="kol-form-field__hint-button kol-popover-button--inline">
-          <!---->
-          <kol-button-wc _ariacontrols="popover-nonce" _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="kol-hint-button" _tooltipalign="top" _type="button" _variant="ghost" class="kol-popover-button kol-popover-button--inline"></kol-button-wc>
-          <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
-            <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
-            Hint
-          </div>
-        </kol-popover-button-wc>
+        <kol-button-wc _hidelabel="" _icons="kolicon-alert-info" _label="Hint" buttonvariant="ghost" class="kol-form-field__hint-button"></kol-button-wc>
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">

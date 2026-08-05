@@ -1,11 +1,11 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import { KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { SpanFC } from '../../internal/functional-components/span/component';
 import { buildBadgeTextString } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
+import KolIconButtonFc from '../IconButton/IconButton';
 
 type FormFieldLabelProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & {
 	component?: 'label' | 'legend';
@@ -53,17 +53,7 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 				<slot name="expert"></slot>
 			</SpanFC>
 			{showHint && (
-				<KolPopoverButtonWcTag
-					class={clsx(`${baseClassName}__hint-button`, 'kol-popover-button--inline')}
-					_label={translate('kol-hint-button')}
-					_hideLabel
-					_icons="kolicon-alert-info"
-					_popoverAlign="bottom"
-					_inline
-					_variant="ghost"
-				>
-					{hint}
-				</KolPopoverButtonWcTag>
+				<KolIconButtonFc class={`${baseClassName}__hint-button`} componentName="button" label={hint} icon="kolicon-alert-info" buttonVariant="ghost" />
 			)}
 			{!hasExpertSlot && readOnly ? (
 				<span class={`${baseClassName}__label__read-only`} aria-hidden="true">
