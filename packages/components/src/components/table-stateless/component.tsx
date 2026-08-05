@@ -90,10 +90,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private checkboxRefs: HTMLInputElement[] = [];
 
-	private translateSort = translate('kol-sort');
-	private translateSortOrder = translate('kol-table-sort-order');
-
 	private maxCols: number = 0;
+
+	private translateSortAscending = translate('kol-sort-ascending');
+	private translateSortDescending = translate('kol-sort-descending');
+	private translateSortAnnouncement = translate('kol-table-sort-announcement');
 	private fixedOffsets: number[] = [];
 	private resizeDebounceTimeout?: ReturnType<typeof setTimeout>;
 
@@ -1123,17 +1124,6 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	 * @param {number} colIndex  The index of the current column in the row.
 	 * @returns {JSX.Element}  The rendered header cell with possible sorting controls.
 	 */
-	private formatSortOrderDescription(order: number): string {
-		return this.translateSortOrder.replace('{{order}}', `${order}`);
-	}
-
-	private getSortAriaDescription(order?: number): string {
-		if (typeof order === 'number' && order > 0) {
-			return `${this.translateSort} – ${this.formatSortOrderDescription(order)}`;
-		}
-		return this.translateSort;
-	}
-
 	private renderHeadingCell(cell: KoliBriTableHeaderCell, rowIndex: number, colIndex: number, isVertical: boolean): JSX.Element {
 		// Skip rendering if the column is not visible
 		if (cell.visible === false) {
@@ -1165,7 +1155,6 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		const scope = isVertical ? 'row' : typeof cell.colSpan === 'number' && cell.colSpan > 1 ? 'colgroup' : 'col';
 
 		const sortOrder = typeof cell.sortOrder === 'number' && cell.sortOrder > 0 ? cell.sortOrder : undefined;
-		const sortDescription = this.getSortAriaDescription(sortOrder);
 		const width = cell.width !== undefined ? `${cell.width}px` : undefined;
 		const fixed = this.isFixedCol(colIndex);
 		const offsetLeft = fixed === 'left' ? this.getOffsetString(colIndex, true) : undefined;
@@ -1193,7 +1182,6 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 							class="kol-table__sort-button"
 							_icons={{ right: sortButtonIcon }}
 							_label={cell.label}
-							_ariaDescription={sortDescription}
 							_on={{
 								onClick: (event: MouseEvent) => {
 									if (typeof this.state._on?.onSort === 'function' && cell.key && cell.sortDirection) {
@@ -1252,6 +1240,26 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		);
 	}
 
+	private getSortAnnouncement(): string {
+		const horizontalHeaders = this.state._headerCells.horizontal;
+		if (!Array.isArray(horizontalHeaders) || horizontalHeaders.length === 0) {
+			return '';
+		}
+
+		for (const row of horizontalHeaders) {
+			for (const cell of row) {
+				if (cell.sortDirection === 'ASC') {
+					return this.translateSortAnnouncement.replace('{{columnName}}', cell.label).replace('{{direction}}', this.translateSortAscending);
+				}
+				if (cell.sortDirection === 'DESC') {
+					return this.translateSortAnnouncement.replace('{{columnName}}', cell.label).replace('{{direction}}', this.translateSortDescending);
+				}
+			}
+		}
+
+		return '';
+	}
+
 	public render(): JSX.Element {
 		this.updateSelectionKeySets();
 		const dataField = this.createDataField(this.state._data, this.state._headerCells);
@@ -1268,6 +1276,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 				})}
 			>
 				{this.state._hasSettingsMenu && <KolTableSettingsWcTag _horizontalHeaderCells={horizontalHeaders ?? []} />}
+
+				{/* Live region for screen reader announcements of sort changes. */}
+				<span role="status" aria-live="polite" class="visually-hidden">
+					{this.getSortAnnouncement()}
+				</span>
 
 				{/* Firefox automatically makes the following div focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
 				 * <div class="focus-element"> to receive focus. Hence, we disable focus for the div to avoid having two focusable elements by setting `tabindex="-1"`.

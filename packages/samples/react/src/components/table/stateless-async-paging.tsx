@@ -21,6 +21,20 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	],
 };
 
+const HEADERS_HORIZONTAL_SORT: KoliBriTableHeaders = {
+	horizontal: [
+		[
+			{ label: 'ID', key: 'id', textAlign: 'right', width: 160, sortDirection: 'ASC' },
+			{ label: 'Common name', key: 'common_name', textAlign: 'left', width: 160, sortDirection: 'NOS' },
+			{ label: 'Scientific name', key: 'scientific_name', textAlign: 'left', width: 160, sortDirection: 'NOS' },
+			{ label: 'Conservation status', key: 'conservation_status', textAlign: 'left', width: 160, sortDirection: 'NOS' },
+			{ label: 'Habitat', key: 'habitat', textAlign: 'left', width: 160, sortDirection: 'NOS' },
+			{ label: 'Diet', key: 'diet', textAlign: 'left', width: 160, sortDirection: 'NOS' },
+			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 160, sortDirection: 'NOS' },
+		],
+	],
+};
+
 const LoadingOverlayFC: FC<{
 	label: string;
 	show: boolean;
@@ -57,6 +71,7 @@ export const TableStatelessAsync: FC = () => {
 	const [complexData, setComplexData] = useState<ComplexData[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
 	const [currentAction, setCurrentAction] = useState<'sort' | 'paginate'>('sort');
+	const [header, setHeader] = useState<KoliBriTableHeaders>(HEADERS_HORIZONTAL);
 
 	useEffect(() => loadData('sort'), []);
 
@@ -65,17 +80,20 @@ export const TableStatelessAsync: FC = () => {
 			<SampleDescription>
 				<p>
 					This sample shows how KolTableStateless can be used async and with KolPagination. Paging and sorting are not functional here, because a backend would
-					offer this in real life.
+					offer this in real life. The sort button demonstrates the screen-reader announcement when the sort order changes.
 				</p>
 			</SampleDescription>
 
 			<section className="w-full relative">
 				<KolTableStateless
 					_label="Table for demonstration purposes"
-					_headerCells={HEADERS_HORIZONTAL}
+					_headerCells={header}
 					_data={complexData}
 					_on={{
-						onSort: () => loadData('sort'),
+						onSort: () => {
+							setHeader((prev) => (prev === HEADERS_HORIZONTAL ? HEADERS_HORIZONTAL_SORT : HEADERS_HORIZONTAL));
+							loadData('sort');
+						},
 					}}
 				/>
 				<KolPagination
