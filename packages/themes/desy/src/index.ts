@@ -95,8 +95,8 @@ export const DesyV11 = KoliBri.createTheme(
 		'KOL-TREE-ITEM': treeItemCss,
 	},
 	{
-		buttonVariantDefault: 'normal',
 		breadcrumbCurrentPage: 'hide',
+		buttonVariantDefault: 'normal',
 	},
 );
 

@@ -97,9 +97,9 @@ export const DEFAULT = KoliBri.createTheme(
 		'KOL-TREE-ITEM': treeItemCss,
 	},
 	{
-		inputNumberButtons: 'show',
-		buttonVariantDefault: 'normal',
 		breadcrumbCurrentPage: 'show',
+		buttonVariantDefault: 'normal',
+		inputNumberButtons: 'show',
 	},
 );
 
