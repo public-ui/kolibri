@@ -1274,12 +1274,14 @@ ROUTES.set('scenarios/focus-elements?component=singleSelect', {
 	axe: {
 		skipFailures: true,
 	},
-	viewportSize: {
-		width: 300,
-		height: 100,
-	},
-	zoom: {
-		skip: true,
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 100,
+		},
+		zoom: {
+			skip: true,
+		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=textarea', {

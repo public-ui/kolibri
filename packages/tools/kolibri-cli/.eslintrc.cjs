@@ -4,7 +4,7 @@ module.exports = {
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 		'plugin:jsdoc/recommended',
-		'plugin:json/recommended',
+		'plugin:json/recommended-legacy',
 		'plugin:jsx-a11y/recommended',
 		'plugin:react/recommended',
 		'prettier',
