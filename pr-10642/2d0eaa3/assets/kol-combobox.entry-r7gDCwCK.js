@@ -1,0 +1,548 @@
+import{Ot as e,Tt as t,_ as n,a as r,o as i,s as a}from"./index-g0nlQi03.js";import{n as o}from"./dev.utils-BUt19n2f-BF-7RwtV.js";import"./base-web-component-BT6jbe_v-Vp21XLG3.js";import{t as s}from"./tslib.es6-QNbPBOk5-DpzS01Oy.js";import{t as c}from"./clsx-COFh-Vc8-alQuJLqj.js";import"./Heading-BGEnUxXW-CseXDpZe.js";import"./disabled-jKlKAF7J-C7UKDwDn.js";import"./label-Dwxm-V_h-Dl-Vld9v.js";import{n as l,r as u,t as d}from"./element-interaction-C5-6aPzz-CwUv4L8C.js";import"./isArray-CcrBs4JM-DiEJ1b3e.js";import"./_Uint8Array-kJHDjtoP-CTkgs_0o.js";import"./normalizers-Cpy0t9-X-w9x1p8by.js";import{t as f}from"./i18n-D8kFHvIt-JEWSsX2W.js";import{t as p}from"./component-Cam6i5s--CjyDOyju.js";import"./Alert-DSjZwkeY-BNSAKO25.js";import"./label-BGcJjCR_-dWrNrEgK.js";import"./variant-quote-CZ5CemUm-CdZsI56l.js";import"./component-BYL32eGP-DG7v1P5P.js";import"./icons-BYRL_f0i-C7zG9wws.js";import"./access-and-short-key-VGm6CSC--Vti_Zzcw.js";import"./hide-label-C_IKiUpx-CYtHJO11.js";import"./align-CCcqVV8A-DyNFL8yC.js";import"./tooltip-align-B40m4aqW-ruQde04u.js";import"./variant-class-name-BCVDdbOR-CX5AkevK.js";import"./component-B3ZP1CAm-C-w283G1.js";import"./align-floating-elements-8q78rXbD-CcLARn5N.js";import"./controller-Bt_GTg1G-CtbMGhYV.js";import"./aria-details-WJh-R8i2-BSho6EUs.js";import"./associated.controller-D4Xnuy8v-CvsY6Dgb.js";import{s as m,t as h}from"./FormFieldStateWrapper-RlGPuh3D-BYJElpYj.js";import{n as g,t as _}from"./controller-icon-4SaJaBB6-B7ll45T0.js";import"./Input-D7Sr5v5L-CQ0sBeR0.js";import{t as v}from"./InputStateWrapper-BIPSnM5q-CUXi_uWJ.js";import{n as y,t as b}from"./CustomSuggestionsOptionsGroup-BGymZU8r-CdXuntPJ.js";import{t as x}from"./placeholder-DitmQbvz-DFgI5JZg.js";import{t as S}from"./required-Jalqrrjz-CDNxgYZ1.js";import{t as C}from"./suggestions-BfWyHL3T-C3DDpW9-.js";var w=class extends g{constructor(e,t,n){super(e,t,n),this.component=e}validateHasClearButton(e){t(this.component,`_hasClearButton`,e)}validatePlaceholder(e){x(this.component,e)}validateRequired(e){S(this.component,e)}validateSuggestions(e){C(this.component,e)}validateValue(t){e(this.component,`_value`,t)}componentWillLoad(){super.componentWillLoad(),this.validateHasClearButton(this.component._hasClearButton),this.validatePlaceholder(this.component._placeholder),this.validateRequired(this.component._required),this.validateSuggestions(this.component._suggestions),this.validateValue(this.component._value)}},T=`@charset "UTF-8";
+/*
+* This file defines the layer order for all CSS layers used in KoliBri.
+* The order is important as it determines the cascade priority.
+*
+* Layer order (lowest to highest priority):
+* 1. kol-a11y - Accessibility defaults and requirements
+* 2. kol-global - Global component styles and resets
+* 3. kol-component - Component-specific styles
+* 4. kol-theme-global - Theme-specific global styles
+* 5. kol-theme-component - Theme-specific component styles
+*/
+@layer kol-a11y, kol-global, kol-component, kol-theme-global, kol-theme-component;
+/* forward the rem function */
+/*
+ * This file contains all rules for accessibility.
+ */
+@layer kol-a11y {
+  :host {
+    /*
+     * Minimum size of interactive elements.
+     *
+     * The \`max(…, 44px)\` floor guarantees the WCAG 2.5.5 (AAA) target size of 44px:
+     * \`to-rem(44)\` runs the value through a \`calc()\` rem round-trip which can lose
+     * sub-pixel precision and resolve to e.g. 43.99px depending on the browser's
+     * rounding, dropping just below the required minimum.
+     */
+    --a11y-min-size: max(calc(44 * 1rem / var(--kolibri-root-font-size, 16)), 44px);
+    /*
+     * No element should be used without verifying the contrast ratio of its background and font colors.
+     * By initially setting the background color to white and the font color to black,
+     * the contrast ratio is ensured and explicit adjustment is forced.
+     */
+    --kol-a11y-font-color: black;
+    --kol-a11y-background-color: white;
+    color: var(--kol-a11y-font-color);
+    background-color: var(--kol-a11y-background-color);
+    /*
+     * Verdana is an accessible font that can be used without requiring additional loading time.
+     */
+    --kol-a11y-font-family: Verdana;
+    font-family: var(--kol-a11y-font-family);
+    /*
+     * Letter spacing is required for all texts.
+     */
+    letter-spacing: inherit;
+    /*
+     * Word spacing is required for all texts.
+     */
+    word-spacing: inherit;
+    /*
+     * Text should be aligned left by default to provide a predictable starting point.
+     */
+    text-align: left;
+  }
+  * {
+    /*
+     * This rule enables the word dividing for all texts. That is important for high zoom levels.
+     */
+    hyphens: auto;
+    /*
+     * This rule enables the word dividing for all texts. That is important for high zoom levels.
+     */
+    word-break: break-word;
+  }
+  /*
+   * All interactive elements should have a minimum size of to-rem(44).
+   */
+  /* input:not([type='checkbox'], [type='radio'], [type='range']), */
+  /* option, */
+  /* select, */
+  /* textarea, */
+  button,
+  .kol-input .input {
+    min-width: var(--a11y-min-size);
+    min-height: var(--a11y-min-size);
+  }
+  /*
+   * Some interactive elements should not inherit the font-family and font-size.
+   */
+  a,
+  button,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  input,
+  option,
+  select,
+  textarea {
+    /*
+     * All elements should inherit the text color from his parent element.
+     */
+    color: inherit;
+    /*
+     * All elements should inherit the font family from his parent element.
+     */
+    font-family: inherit;
+    /*
+     * All elements should inherit the font size from his parent element.
+     */
+    font-size: inherit;
+    /*
+     * Letter spacing is required for all texts.
+     */
+    letter-spacing: inherit;
+    /*
+     * Word spacing is required for all texts.
+     */
+    word-spacing: inherit;
+  }
+  /**
+  * Sometimes we need the semantic element for accessibility reasons,
+  * but we don't want to show it.
+  *
+  * - https://www.a11yproject.com/posts/how-to-hide-content/
+  */
+  .visually-hidden {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+}
+@layer kol-global {
+  /*
+   * Dieses CSS stellt sicher, dass der Standard-Style
+   * von A und Button resettet werden.
+   */
+  :is(a, button) {
+    background-color: transparent;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    /* 100% needed for custom width from outside */
+  }
+  /*
+   * Ensure elements with hidden attribute to be actually not visible
+   * @see https://meowni.ca/hidden.is.a.lie.html
+   */
+  [hidden] {
+    display: none !important;
+  }
+  .badge-text-hint {
+    color: black;
+    background-color: white;
+  }
+}
+@layer kol-global {
+  :host {
+    /*
+     * The max-width is needed to prevent the table from overflowing the
+     * parent node, if the table is wider than the parent node.
+     */
+    max-width: 100%;
+    font-size: calc(16 * 1rem / var(--kolibri-root-font-size, 16));
+  }
+  * {
+    /*
+     * We prefer to box-sizing: border-box for all elements.
+     */
+    box-sizing: border-box;
+  }
+  .kol-span {
+    /* KolSpan is a layout component with icons in all directions and a label text in the middle. */
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    /* The sub span in KolSpan is the horizontal span with icon left and right and the label text in the middle. */
+  }
+  .kol-span__container {
+    display: flex;
+    align-items: center;
+  }
+  a,
+  button {
+    cursor: pointer;
+  }
+  .kol-span .kol-span__label--hide-label .kol-span__label {
+    display: none;
+  }
+  /* Reset browser agent style. */
+  button:disabled {
+    color: unset;
+  }
+  .disabled label,
+  .disabled:focus-within label,
+  [aria-disabled=true],
+  [aria-disabled=true]:focus,
+  [disabled],
+  [disabled]:focus {
+    outline: none;
+    cursor: not-allowed;
+  }
+  [aria-disabled=true]:focus .kol-span,
+  [disabled]:focus .kol-span {
+    outline: none !important;
+  }
+  .hastooltip {
+    z-index: 900 !important;
+  }
+}
+@layer kol-component {
+  :host {
+    display: block;
+  }
+}
+@font-face {
+  font-family: "kolicons";
+  src: url("kolicons.eot?t=1785963997539"); /* IE9*/
+  src: url("kolicons.eot?t=1785963997539#iefix") format("embedded-opentype"), url("kolicons.woff2?t=1785963997539") format("woff2"), url("kolicons.woff?t=1785963997539") format("woff"), url("kolicons.ttf?t=1785963997539") format("truetype"), url("kolicons.svg?t=1785963997539#kolicons") format("svg"); /* iOS 4.1- */
+}
+@layer kol-component {
+  [class^=kolicon-], [class*=" kolicon-"] {
+    font-family: "kolicons";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .kolicon-alert-error::before {
+    content: "\\ea01";
+  }
+  .kolicon-alert-info::before {
+    content: "\\ea02";
+  }
+  .kolicon-alert-success::before {
+    content: "\\ea03";
+  }
+  .kolicon-alert-warning::before {
+    content: "\\ea04";
+  }
+  .kolicon-check::before {
+    content: "\\ea05";
+  }
+  .kolicon-chevron-double-left::before {
+    content: "\\ea06";
+  }
+  .kolicon-chevron-double-right::before {
+    content: "\\ea07";
+  }
+  .kolicon-chevron-down::before {
+    content: "\\ea08";
+  }
+  .kolicon-chevron-left::before {
+    content: "\\ea09";
+  }
+  .kolicon-chevron-right::before {
+    content: "\\ea0a";
+  }
+  .kolicon-chevron-up::before {
+    content: "\\ea0b";
+  }
+  .kolicon-cogwheel::before {
+    content: "\\ea0c";
+  }
+  .kolicon-cross::before {
+    content: "\\ea0d";
+  }
+  .kolicon-eye-closed::before {
+    content: "\\ea0e";
+  }
+  .kolicon-eye::before {
+    content: "\\ea0f";
+  }
+  .kolicon-house::before {
+    content: "\\ea10";
+  }
+  .kolicon-kolibri::before {
+    content: "\\ea11";
+  }
+  .kolicon-link-external::before {
+    content: "\\ea12";
+  }
+  .kolicon-link::before {
+    content: "\\ea13";
+  }
+  .kolicon-minus::before {
+    content: "\\ea14";
+  }
+  .kolicon-plus::before {
+    content: "\\ea15";
+  }
+  .kolicon-settings::before {
+    content: "\\ea16";
+  }
+  .kolicon-sort-asc::before {
+    content: "\\ea17";
+  }
+  .kolicon-sort-desc::before {
+    content: "\\ea18";
+  }
+  .kolicon-sort-neutral::before {
+    content: "\\ea19";
+  }
+  .kolicon-up::before {
+    content: "\\ea1a";
+  }
+  .kolicon-version::before {
+    content: "\\ea1b";
+  }
+}
+@layer kol-component {
+  .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  .kol-tooltip {
+    display: contents;
+  }
+  .kol-tooltip__floating {
+    opacity: 0;
+    display: none;
+    position: fixed;
+    /* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
+    top: 0;
+    left: 0;
+    /* Can be used to specify the tooltip-width from the outside. Unset by default.  */
+    width: var(--kol-tooltip-width, max-content);
+    min-width: calc(8 * 1rem / var(--kolibri-root-font-size, 16));
+    max-width: 90vw;
+    max-height: 90vh;
+    animation-direction: normal;
+    /* Can be used to specify the animation duration from the outside. 250ms by default. */
+    animation-duration: var(--kolibri-tooltip-animation-duration, 250ms);
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+  .kol-tooltip__floating.hide {
+    animation-name: hideTooltip;
+  }
+  .kol-tooltip__floating.show {
+    animation-name: showTooltip;
+  }
+  .kol-tooltip__arrow {
+    transform: rotate(45deg);
+    color: black;
+    background-color: white;
+    position: absolute;
+    z-index: 999;
+    width: calc(10 * 1rem / var(--kolibri-root-font-size, 16));
+    height: calc(10 * 1rem / var(--kolibri-root-font-size, 16));
+  }
+  .kol-tooltip__content {
+    color: black;
+    background-color: white;
+    position: relative;
+    z-index: 1000;
+  }
+  @keyframes hideTooltip {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
+  @keyframes showTooltip {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+@layer kol-component {
+  .kol-alert .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  .kol-alert :host {
+    display: inline-block;
+  }
+  .kol-alert .kol-button {
+    display: flex;
+    height: 100%;
+    min-height: var(--a11y-min-size);
+    font-style: calc(16 * 1rem / var(--kolibri-root-font-size, 16));
+    text-decoration-line: none;
+  }
+  .kol-alert .kol-button::before {
+    /* Render zero-width character as first element to set the baseline correctly. */
+    content: "​";
+  }
+  .kol-alert .kol-button__text {
+    flex: 1 0 100%;
+  }
+  .kol-alert {
+    display: grid;
+    grid-template-areas: "icon heading close" "icon content close";
+    grid-template-columns: min-content 1fr min-content;
+    grid-template-rows: min-content min-content;
+  }
+  .kol-alert__icon {
+    grid-area: icon;
+  }
+  .kol-alert__heading {
+    grid-area: heading;
+  }
+  .kol-alert__closer {
+    /* Visible with forced colors */
+    outline: transparent solid calc(1 * 1rem / var(--kolibri-root-font-size, 16));
+    grid-area: close;
+  }
+  .kol-alert__content {
+    grid-area: content;
+  }
+  .kol-custom-suggestions-option {
+    line-height: 1.5;
+    white-space: normal;
+    cursor: pointer;
+    overflow-wrap: break-word;
+  }
+  .kol-custom-suggestions-options-group--cursor-hidden .kol-custom-suggestions-option {
+    cursor: none !important;
+  }
+  .kol-custom-suggestions-option--disabled:focus, .kol-custom-suggestions-option--disabled:focus * {
+    cursor: not-allowed;
+  }
+  .kol-custom-suggestions-options-group {
+    background-color: white;
+    display: block;
+    position: absolute;
+    z-index: 2;
+    max-height: calc(250 * 1rem / var(--kolibri-root-font-size, 16));
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    list-style-type: none;
+  }
+  .kol-input-container:has(.kol-custom-suggestions-options-group--open) {
+    z-index: 10;
+  }
+  .kol-custom-suggestions-toggle {
+    display: flex;
+    min-width: var(--a11y-min-size);
+    min-height: var(--a11y-min-size);
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+  }
+  .kol-custom-suggestions-toggle.kol-custom-suggestions-toggle--disabled {
+    cursor: not-allowed;
+  }
+  .kol-form-field {
+    display: grid;
+  }
+  .kol-form-field:not(.kol-form-field--disabled) .kol-form-field__label {
+    cursor: pointer;
+  }
+  .kol-form-field__label-text {
+    flex-flow: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .kol-form-field--required .kol-form-field__label-text:has(.kol-span__slot[hidden])::after,
+  .kol-form-field--required .kol-form-field .kol-tooltip__content .kol-span__label::after {
+    content: "*"/"";
+  }
+  .kol-input-container {
+    background-color: transparent;
+    display: grid;
+    position: relative;
+    width: 100%;
+    min-width: var(--a11y-min-size);
+    min-height: var(--a11y-min-size);
+    align-items: center;
+    grid-template-columns: 1fr;
+  }
+  .kol-input-container:has(> .kol-input-container__adornment--start) {
+    grid-template-columns: auto 1fr auto;
+  }
+  .kol-input-container__container {
+    position: relative;
+    z-index: 1;
+  }
+  .kol-input-container__adornment {
+    display: flex;
+    align-items: center;
+  }
+  .kol-input-container__adornment .kol-icon {
+    display: grid;
+    place-items: center;
+  }
+  .kol-input {
+    background-color: transparent;
+    width: 100%;
+    min-width: var(--a11y-min-size);
+  }
+  .kol-input:focus {
+    outline: none;
+  }
+  .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  .kol-combobox__delete .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  .kol-combobox__delete :host {
+    display: inline-block;
+  }
+  .kol-combobox__delete .kol-button {
+    display: flex;
+    height: 100%;
+    min-height: var(--a11y-min-size);
+    font-style: calc(16 * 1rem / var(--kolibri-root-font-size, 16));
+    text-decoration-line: none;
+  }
+  .kol-combobox__delete .kol-button::before {
+    /* Render zero-width character as first element to set the baseline correctly. */
+    content: "​";
+  }
+  .kol-combobox__delete .kol-button__text {
+    flex: 1 0 100%;
+  }
+  .kol-combobox-toggle {
+    min-height: 0;
+    flex: 0;
+    align-self: stretch;
+  }
+}`,E=class{async getValue(){return this.state._value}async focus(e){}async click(){}selectOption(e){var t;this.controller.onFacade.onInput(new CustomEvent(`input`,{bubbles:!0,detail:{name:this.state._name,value:e}}),!0,e),this.controller.onFacade.onChange(new CustomEvent(`change`,{bubbles:!0,detail:{name:this.state._name,value:e}}),e),this.controller.setFormAssociatedValue(e),this._filteredSuggestions=[...this.state._suggestions],this.state._value=e,(t=this.ctaRef.el)==null||t.focus()}clearSelection(){var e;if(this.state._disabled===!0)return;this._focusedOptionIndex=-1,this._value=``,this.state._value=``,this._filteredSuggestions=[...this.state._suggestions],this._isOpen=!1;let t={name:this.state._name,value:``};this.controller.onFacade.onInput(new CustomEvent(`input`,{bubbles:!0,detail:t}),!0,``),this.controller.onFacade.onChange(new CustomEvent(`change`,{bubbles:!0,detail:t}),``),this.controller.setFormAssociatedValue(``),(e=this.ctaRef.el)==null||e.focus()}onInput(e){let t=e.target.value;this.state._value=t,this._value=t,this.controller.onFacade.onInput(e,!0,t),this.setFilteredSuggestionsByQuery(t),this._focusedOptionIndex=-1,e.stopImmediatePropagation()}handleKeyDownDropdown(e){e.key.length===1&&/[a-z0-9]/i.test(e.key)&&(this._isOpen=!0,this.focusSuggestionStartingWith(e.key))}setFilteredSuggestionsByQuery(e){e!==void 0&&(e.trim()===``?this._filteredSuggestions=[...this.state._suggestions]:(this._filteredSuggestions=Array.isArray(this.state._suggestions)?this.state._suggestions.filter(t=>t.toLowerCase().includes(e.trim().toLowerCase())):this._filteredSuggestions,this._isOpen=this._filteredSuggestions?.length===1&&this._filteredSuggestions[0]===e?!1:!!(this._filteredSuggestions&&this._filteredSuggestions.length>0)))}moveFocus(e){if(!this._filteredSuggestions)return;let t=this._focusedOptionIndex+e;t>=this._filteredSuggestions.length&&(t=0),t<0&&(t=this._filteredSuggestions.length-1),this.focusOption(t)}focusOption(e){this._focusedOptionIndex=e,this.refSuggestions&&this.refSuggestions[e]?.focus()}selectFocusedOption(){return this._filteredSuggestions&&this._focusedOptionIndex>=0&&this._focusedOptionIndex<this._filteredSuggestions.length?(this.selectOption(this._filteredSuggestions[this._focusedOptionIndex]),!0):!1}focusSuggestionStartingWith(e){let t=e.toLowerCase(),n=Array.isArray(this._filteredSuggestions)&&this._filteredSuggestions.length>0&&this._filteredSuggestions.findIndex(e=>e.toLowerCase().startsWith(t));typeof n==`number`&&this.focusOption(n)}getFormFieldProps(){return{state:this.state,class:c(`kol-combobox`,{"has-value":this.state._hasValue}),tooltipAlign:this._tooltipAlign,alert:this.showAsAlert()}}getInputProps(){let{ariaDescribedBy:e}=m(this.state),t=this.state._disabled===!0;return Object.assign(Object.assign({ref:this.ctaRef,state:this.state,class:`kol-combobox__input`,type:`text`,role:`combobox`,"aria-activedescendant":this._isOpen&&this._focusedOptionIndex>=0?`option-${this._focusedOptionIndex}`:void 0,"aria-autocomplete":`both`,"aria-controls":this.state._id+`-listbox`,"aria-describedby":e.length>0?e.join(` `):void 0,"aria-expanded":this._isOpen?`true`:`false`,"aria-label":this.state._hideLabel&&typeof this.state._label==`string`?this.state._label:void 0,"aria-labelledby":this.state._id+`-label`,"aria-keyshortcuts":this.state._shortKey,value:this.state._value,accessKey:this.state._accessKey,autocapitalize:`off`,autocorrect:`off`,autocomplete:`off`,disabled:t,customSuggestions:!0,id:this.state._id,name:this.state._name,required:this.state._required},this.controller.onFacade),{onChange:this.onChange.bind(this),onInput:this.onInput.bind(this),placeholder:this.state._placeholder})}render(){let e=this.state._disabled===!0;return i(h,Object.assign({key:`25cb77f0f0600a5926bf7b34deca4a94ff77bb91`},this.getFormFieldProps()),i(_,{key:`5dc21990fbab01d25081866187189a4094ffb583`,state:this.state},i(`div`,{key:`53f13e0dfb9d48c9cc689b895a21ef00366ef3f0`,class:`kol-combobox__group`},i(v,Object.assign({key:`3a338311ae0161b4ad3652530dd3e52ed043badc`},this.getInputProps())),this.state._value&&this.state._hasClearButton&&i(n,{key:`30d59db123c1cf465d1203f2137769f5e8aa94c9`,_icons:`kolicon-cross`,_label:this.translateDeleteSelection,_hideLabel:!0,_variant:`ghost`,_disabled:e,"data-testid":`combobox-delete`,class:`kol-combobox__delete`,hidden:e,_on:{onClick:()=>{this.clearSelection()},onFocus:()=>{this.clearButtonFocused=!0},onBlur:()=>{this.clearButtonFocused=!1}}}),i(`button`,{key:`9f8df794bbfde87df14965dbb45d1e9c3473e713`,type:`button`,tabIndex:-1,class:`kol-combobox-toggle`,onClick:this.toggleListbox.bind(this),disabled:this._disabled,hidden:e},i(p,{key:`a837765c6974405ac0d645ad50455aa17028df35`,icons:`kolicon-chevron-down`,label:``}))),i(y,{key:`f20d8d422948ed99941a9e620d74005a276d35eb`,blockSuggestionMouseOver:this.blockSuggestionMouseOver,onKeyDown:this.handleKeyDownDropdown.bind(this),hidden:!this._isOpen||e,id:this.state._id+`-listbox`},Array.isArray(this._filteredSuggestions)&&this._filteredSuggestions.length>0&&this._filteredSuggestions.map((e,t)=>i(b,{disabled:!1,index:t,option:e,searchTerm:this.state._value,ref:e=>{e&&(this.refSuggestions[t]=e)},selected:this.state._value===e,onClick:()=>{this.selectOption(e),this.toggleListbox(),this._isOpen=!1},onMouseOver:()=>{this.blockSuggestionMouseOver||this.focusOption(t)},onFocus:()=>{this.focusOption(t)}})))))}handleKeyDown(e){var t,n;let r=(t,n)=>{var r;e.preventDefault(),t!==void 0&&(this._isOpen=t,t||(r=this.ctaRef.el)==null||r.focus()),n?.()};switch(e.key){case`Down`:case`ArrowDown`:this.blockSuggestionMouseOver=!0,r(!0,()=>this.moveFocus(1));break;case`Up`:case`ArrowUp`:this.blockSuggestionMouseOver=!0,r(!0,()=>this.moveFocus(-1));break;case`Tab`:this._isOpen&&(this._isOpen=!1,(t=this.ctaRef.el)==null||t.focus());break;case`Esc`:case`Escape`:this._isOpen&&(e.preventDefault(),this._isOpen=!1,(n=this.ctaRef.el)==null||n.focus());break;case`Enter`:case`NumpadEnter`:this.clearButtonFocused?this.clearSelection():this._isOpen?this.selectFocusedOption()&&(this._isOpen=!1):this.toggleListbox(),e.preventDefault();break;case` `:this.clearButtonFocused?(this.clearSelection(),e.preventDefault()):this._isOpen&&this.selectFocusedOption()&&(this._isOpen=!1,e.preventDefault());break;case`Home`:this.blockSuggestionMouseOver=!0,r(void 0,()=>{this._isOpen&&this.focusOption(0)});break;case`End`:this.blockSuggestionMouseOver=!0,r(void 0,()=>{this._isOpen&&this.focusOption(this._filteredSuggestions?this._filteredSuggestions.length-1:0)});break;case`PageUp`:this.blockSuggestionMouseOver=!0,r(void 0,()=>this._isOpen&&this.moveFocus(-10));break;case`PageDown`:this.blockSuggestionMouseOver=!0,r(void 0,()=>this._isOpen&&this.moveFocus(10))}}handleWindowClick(e){this.host!==void 0&&!this.host.contains(e.target)&&(this._isOpen=!1)}validateAriaDetails(e){this.controller.validateAriaDetails(e)}constructor(e){a(this,e),this.ctaRef=d(),this.refSuggestions=[],this._focusedOptionIndex=-1,this.translateDeleteSelection=f(`kol-delete-selection`),this.clearButtonFocused=!1,this.toggleListbox=()=>{var e;if(this.state._disabled===!0)this._isOpen=!1;else if((e=this.ctaRef.el)==null||e.focus(),this._isOpen)this._isOpen=!1;else if(Array.isArray(this._filteredSuggestions)&&this._filteredSuggestions.length>0){this._isOpen=!0;let e=this._filteredSuggestions.findIndex(e=>e===this.state._value);this._focusedOptionIndex=e>=0?e:-1,this.focusOption(this._focusedOptionIndex)}},this.blockSuggestionMouseOver=!1,this._isOpen=!1,this._disabled=!1,this._hideMsg=!1,this._hideLabel=!1,this._hint=``,this._hasClearButton=!0,this._required=!1,this._tooltipAlign=`top`,this._touched=!1,this.state={_hasValue:!1,_hasClearButton:!0,_hideMsg:!1,_id:o(`combobox`),_label:``,_suggestions:[],_value:``},this.inputHasFocus=!1,this.controller=new w(this,`combobox`,this.host),this.onInput=this.onInput.bind(this)}showAsAlert(){return!!this.state._touched&&!this.inputHasFocus}validatePlaceholder(e){this.controller.validatePlaceholder(e)}validateAccessKey(e){this.controller.validateAccessKey(e)}validateDisabled(e){this.controller.validateDisabled(e)}validateHideMsg(e){this.controller.validateHideMsg(e)}validateHideLabel(e){this.controller.validateHideLabel(e)}validateHint(e){this.controller.validateHint(e)}validateIcons(e){this.controller.validateIcons(e)}validateLabel(e){this.controller.validateLabel(e)}validateMsg(e){this.controller.validateMsg(e)}validateName(e){this.controller.validateName(e)}validateOn(e){this.controller.validateOn(e)}validateShortKey(e){this.controller.validateShortKey(e)}validateSuggestions(e){this.controller.validateSuggestions(e),this._filteredSuggestions=e,this.setFilteredSuggestionsByQuery(this._value)}validateHasClearButton(e){this.controller.validateHasClearButton(e)}validateRequired(e){this.controller.validateRequired(e)}validateSyncValueBySelector(e){this.controller.validateSyncValueBySelector(e)}validateTouched(e){this.controller.validateTouched(e)}validateValue(e){this.controller.validateValue(e),this.controller.setFormAssociatedValue(e)}validateVariant(e){this.controller.validateVariant(e)}componentWillLoad(){this.validateAriaDetails(this._ariaDetails),this.refSuggestions=[],this._touched=this._touched===!0,this.controller.componentWillLoad(),this.state._hasValue=!!this.state._value,this.controller.addValueChangeListener(e=>this.state._hasValue=!!e),this._filteredSuggestions=this.state._suggestions}handleMouseEvent(){this.blockSuggestionMouseOver=!1}handleFocusIn(e){this.host?.contains(document.activeElement)&&!this.inputHasFocus&&(this.controller.onFacade.onFocus(e),this.inputHasFocus=!0)}handleFocusOut(e){let t=e.relatedTarget,n=t&&(t===this.host||this.host?.contains(t));this.inputHasFocus&&!n&&(this.controller.onFacade.onBlur(e),this.inputHasFocus=!1,this._isOpen&&=!1)}onChange(e){e.stopPropagation();let t=this.state._value;this.controller.onFacade.onChange(e,t),this.controller.setFormAssociatedValue(t)}get host(){return r(this)}static get watchers(){return{_ariaDetails:[`validateAriaDetails`],_placeholder:[`validatePlaceholder`],_accessKey:[`validateAccessKey`],_disabled:[`validateDisabled`],_hideMsg:[`validateHideMsg`],_hideLabel:[`validateHideLabel`],_hint:[`validateHint`],_icons:[`validateIcons`],_label:[`validateLabel`],_msg:[`validateMsg`],_name:[`validateName`],_on:[`validateOn`],_shortKey:[`validateShortKey`],_suggestions:[`validateSuggestions`],_hasClearButton:[`validateHasClearButton`],_required:[`validateRequired`],_syncValueBySelector:[`validateSyncValueBySelector`],_touched:[`validateTouched`],_value:[`validateValue`],_variant:[`validateVariant`]}}};s([u(`ctaRef`)],E.prototype,`focus`,null),s([l(`ctaRef`)],E.prototype,`click`,null),E.style={default:T};export{E as kol_combobox};
