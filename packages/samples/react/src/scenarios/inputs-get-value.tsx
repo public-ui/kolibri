@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
 import {
 	KolButton,
@@ -44,10 +44,10 @@ const Scenario = (props: Props) => {
 	const eventTarget = useContext(EventTargetContext);
 	const eventLoggerActive = useContext(EventLoggerActiveContext);
 
-	const handleButtonClick = async () => {
+	const handleButtonClick = useCallback(async () => {
 		const value = await ref.current?.getValue();
 		setDisplayValue(value);
-	};
+	}, []);
 
 	useEffect(() => {
 		const handleRunAll = () => {
@@ -58,7 +58,7 @@ const Scenario = (props: Props) => {
 		return () => {
 			eventTarget?.removeEventListener('runAll', handleRunAll);
 		};
-	}, [eventTarget]);
+	}, [eventTarget, handleButtonClick]);
 
 	const eventListeners = Object.fromEntries(
 		['onInput', 'onChange', 'onBlur', 'onClick', 'onFocus', 'onMouseDown'].map((eventName) => [
