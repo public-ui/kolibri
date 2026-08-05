@@ -32,7 +32,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { deprecatedHint } from '../../schema';
+import { deprecatedHint, isInvalid } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -180,6 +180,7 @@ export class KolInputDate implements ClickableElement, FocusableElement, InputDa
 		return {
 			ref: this.ctaRef,
 			state: this.state,
+			'aria-invalid': isInvalid(this.state._msg, this.state._touched),
 			...this.controller.onFacade,
 			onBlur: this.onBlur,
 			onFocus: this.onFocus,

@@ -32,7 +32,7 @@ import type {
 	VariantClassNamePropType,
 	VisibilityTogglePropType,
 } from '../../schema';
-import { devHint } from '../../schema';
+import { devHint, isInvalid } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
@@ -133,6 +133,7 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 			type: (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') && this._passwordVisible ? 'text' : 'password',
 			state: this.state,
 			ariaDescribedBy,
+			'aria-invalid': isInvalid(this.state._msg, this.state._touched),
 			...this.controller.onFacade,
 			onInput: this.onInput,
 			onKeyDown: this.onKeyDown,

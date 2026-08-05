@@ -2,30 +2,31 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from '../../utils/clsx';
 
-import type {
-	AriaDetailsPropType,
-	AutoCompletePropType,
-	ClickableElement,
-	DisabledPropType,
-	FocusableElement,
-	HideLabelPropType,
-	HideMsgPropType,
-	HintPropType,
-	IconsHorizontalPropType,
-	InputRangeAPI,
-	InputRangeStates,
-	InputTypeOnDefault,
-	KolFocusOptions,
-	LabelWithExpertSlotPropType,
-	MsgPropType,
-	NamePropType,
-	NumberString,
-	ShortKeyPropType,
-	Stringified,
-	SuggestionsPropType,
-	SyncValueBySelectorPropType,
-	TooltipAlignPropType,
-	VariantClassNamePropType,
+import {
+	isInvalid,
+	type AriaDetailsPropType,
+	type AutoCompletePropType,
+	type ClickableElement,
+	type DisabledPropType,
+	type FocusableElement,
+	type HideLabelPropType,
+	type HideMsgPropType,
+	type HintPropType,
+	type IconsHorizontalPropType,
+	type InputRangeAPI,
+	type InputRangeStates,
+	type InputTypeOnDefault,
+	type KolFocusOptions,
+	type LabelWithExpertSlotPropType,
+	type MsgPropType,
+	type NamePropType,
+	type NumberString,
+	type ShortKeyPropType,
+	type Stringified,
+	type SuggestionsPropType,
+	type SyncValueBySelectorPropType,
+	type TooltipAlignPropType,
+	type VariantClassNamePropType,
 } from '../../schema';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -196,6 +197,7 @@ export class KolInputRange implements ClickableElement, FocusableElement, InputR
 	private getInputNumberProps(): InputStateWrapperProps {
 		return {
 			...this.getGenericInputProps(),
+			'aria-invalid': isInvalid(this.state._msg, this.state._touched),
 			name: this.state._name ? `${this.state._name}-number` : undefined,
 			list: this.hasSuggestions ? createRelatedUniqueId(this.state._id, 'list') : undefined,
 			type: 'number',

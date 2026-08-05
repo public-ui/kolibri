@@ -2,29 +2,30 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from '../../utils/clsx';
 
-import type {
-	AriaDetailsPropType,
-	ClickableElement,
-	DisabledPropType,
-	FocusableElement,
-	HideLabelPropType,
-	HideMsgPropType,
-	HintPropType,
-	InputRadioAPI,
-	InputRadioStates,
-	InputTypeOnDefault,
-	KolFocusOptions,
-	LabelWithExpertSlotPropType,
-	MsgPropType,
-	NamePropType,
-	RadioOption,
-	RadioOptionsPropType,
-	RequiredPropType,
-	StencilUnknown,
-	Stringified,
-	SyncValueBySelectorPropType,
-	TooltipAlignPropType,
-	VariantClassNamePropType,
+import {
+	isInvalid,
+	type AriaDetailsPropType,
+	type ClickableElement,
+	type DisabledPropType,
+	type FocusableElement,
+	type HideLabelPropType,
+	type HideMsgPropType,
+	type HintPropType,
+	type InputRadioAPI,
+	type InputRadioStates,
+	type InputTypeOnDefault,
+	type KolFocusOptions,
+	type LabelWithExpertSlotPropType,
+	type MsgPropType,
+	type NamePropType,
+	type RadioOption,
+	type RadioOptionsPropType,
+	type RequiredPropType,
+	type StencilUnknown,
+	type Stringified,
+	type SyncValueBySelectorPropType,
+	type TooltipAlignPropType,
+	type VariantClassNamePropType,
 } from '../../schema';
 
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
@@ -175,6 +176,7 @@ export class KolInputRadio implements ClickableElement, FocusableElement, InputR
 						this.setInputRef(ref);
 					}
 				},
+				'aria-invalid': isInvalid(this.state._msg, this.state._touched),
 				'aria-label': this.state._hideLabel && typeof option.label === 'string' ? option.label : undefined,
 				type: 'radio',
 				name: this.state._name || this.state._id,
