@@ -41,8 +41,6 @@ allowBuilds:
   ttf2woff2: true
   unrs-resolver: true
 overrides:
-  brace-expansion@<1.1.18: '>=1.1.18'
-  brace-expansion@>=4.0.0 <5.0.9: '>=5.0.9'
   fast-uri@>=3.0.0 <3.1.5: '>=3.1.5'
   fast-uri@>=4.0.0 <4.1.2: '>=4.1.2'
   ip-address@<=10.3.0: '>=10.3.1'
