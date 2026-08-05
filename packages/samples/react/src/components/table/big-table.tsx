@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import type { KoliBriTableHeaderCellWithLogic, KoliBriTableHeaders, KoliBriTableSelection } from '@public-ui/components';
 import { KolHeading, KolTableStateful } from '@public-ui/react-v19';
