@@ -7,7 +7,10 @@ import { SampleDescription } from '../SampleDescription';
 export const InputTextBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This story showcases the most important InputText variants: default, required, validation error, disabled, read-only, and with icons.</p>
+			<p>
+				This story showcases the most important InputText variants: default, required, validation error, hint popover button, disabled, read-only, and with
+				icons.
+			</p>
 		</SampleDescription>
 
 		<div className="grid gap-4">

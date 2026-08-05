@@ -77,4 +77,5 @@ export default {
 	'meter-state-optimum': 'Optimum',
 	'meter-state-suboptimal': 'Suboptimal',
 	'meter-state-critical': 'Critical',
+	'hint-button': 'Show hint',
 };

@@ -196,6 +196,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					id={id}
 					hasExpertSlot={hasExpertSlot}
 					hideLabel={hideLabel}
+					hint={hint}
 					label={label}
 					accessKey={accessKey}
 					shortKey={shortKey}
