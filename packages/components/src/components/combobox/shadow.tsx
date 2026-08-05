@@ -263,6 +263,7 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 			accessKey: this.state._accessKey,
 			autocapitalize: 'off',
 			autocorrect: 'off',
+			autocomplete: 'off',
 			disabled: isDisabled,
 			customSuggestions: true,
 			id: this.state._id,

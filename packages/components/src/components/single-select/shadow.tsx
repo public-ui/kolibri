@@ -307,6 +307,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 			accessKey: this.state._accessKey,
 			autocapitalize: 'off',
 			autocorrect: 'off',
+			autocomplete: 'off',
 			class: 'kol-single-select__input',
 			disabled: isDisabled,
 			name: this.state._name,
