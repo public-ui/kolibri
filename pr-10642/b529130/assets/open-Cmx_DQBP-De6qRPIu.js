@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-UXZ-oa9d.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
