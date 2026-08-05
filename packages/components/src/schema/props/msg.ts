@@ -62,6 +62,15 @@ export function isMsgDefinedAndInputTouched(msg?: Stringified<MsgPropType>, touc
 
 export const checkHasMsg = isMsgDefinedAndInputTouched;
 
+/**
+ * @param msg
+ * @param touched
+ * @returns Wether the field shows a type error msg -> field is invalid
+ */
+export function isInvalid(msg?: Stringified<MsgPropType>, touched?: boolean): boolean {
+	return Boolean(msg) && (msg as MsgPropType)._type === 'error' && touched === true;
+}
+
 export function normalizeMsg(msg?: Stringified<MsgPropType>): MsgPropType | undefined {
 	if (typeof msg === 'string') {
 		try {

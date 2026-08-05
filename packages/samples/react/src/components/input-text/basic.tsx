@@ -30,7 +30,7 @@ export const InputTextBasic: FC = () => (
 				onKeyDown={logKoliBriNativeEvent}
 			/>
 			<KolInputText _label="Name" _required _msg={{ _type: 'error', _description: 'Please enter your name' }} _touched />
-			<KolInputText _label="Name" _required _hint="Enter your surname" />
+			<KolInputText _label="Name" _required _hint="Enter your surname" _msg={{ _type: 'error', _description: 'Please enter your name' }} />
 			<KolInputText _label="Name" _value="Anderson-Clark" _disabled />
 			<KolInputText _label="Name" _readOnly _value="Anderson-Clark" />
 			<KolInputText _label="Name" _icons="kolicon-house" _value="Anderson-Clark" />
