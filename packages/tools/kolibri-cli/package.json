@@ -42,7 +42,7 @@
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
 		"@types/gradient-string": "1.1.6",
-		"@types/semver": "7.7.1",
+		"@types/semver": "7.8.0",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
 		"cpy-cli": "5.0.0",
