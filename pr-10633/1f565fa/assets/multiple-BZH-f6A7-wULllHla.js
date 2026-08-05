@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-CVI763te.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};
