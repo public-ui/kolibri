@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-Ci2SfrJK.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};

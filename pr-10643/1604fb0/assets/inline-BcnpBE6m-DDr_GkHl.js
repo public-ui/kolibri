@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-Ci2SfrJK.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};
