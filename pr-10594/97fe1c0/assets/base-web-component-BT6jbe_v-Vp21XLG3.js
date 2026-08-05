@@ -1,1 +1,0 @@
-function e(){throw Error(`This controller does not use component state.`)}var t=class{constructor(){this.stateAccess={setState:(e,t)=>{this[e]=t},getState:e=>this[e]}}};t.stateLess=Object.freeze({setState:e,getState:e});export{t};
