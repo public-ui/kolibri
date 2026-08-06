@@ -1,0 +1,22 @@
+@use '~@public-ui/components/index' as *;
+@use './button.mixin' as *;
+
+@mixin popover-button {
+	@include button('kol-button');
+
+	.kol-popover-button {
+		&--inline {
+			margin: 0 to-rem(4);
+
+			.kol-button--inline {
+				--button-padding: 0;
+			}
+		}
+
+		// &__popover {
+		// 	background-color: var(--color-light);
+		// 	padding: to-rem(8);
+		// 	border: 1px solid var(--color-subtle);
+		// }
+	}
+}
