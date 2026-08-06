@@ -159,12 +159,9 @@ export function watchValidator<T>(
 	value?: T,
 	options: WatchOptions = {},
 ): void {
-	if (validationFunction(value)) {
-		/**
-		 * Triff zu, wenn der Wert VALIDE ist.
-		 */
-		setState(component, propName, value, options.hooks);
-	} else if (value === undefined && options.required !== true && validationFunction(options.defaultValue as T)) {
+	const prod = process.env['NODE_ENV'] === 'production'; // We use the bracket notation to access NODE_ENV to prevent the Stencil build from replacing the expression with its build environment.
+
+	if (value === undefined && options.required !== true && (prod || validationFunction(options.defaultValue as T))) {
 		/**
 		 * Triff zu, wenn der Wert entweder ...
 		 * - UNDEFINED oder NULL
@@ -172,6 +169,11 @@ export function watchValidator<T>(
 		 * ... ist.
 		 */
 		setState(component, propName, options.defaultValue, options.hooks);
+	} else if (prod || validationFunction(value)) {
+		/**
+		 * Triff zu, wenn der Wert VALIDE ist.
+		 */
+		setState(component, propName, value, options.hooks);
 	} else {
 		/**
 		 * Triff zu, wenn der Wert NICHT valide ist.
