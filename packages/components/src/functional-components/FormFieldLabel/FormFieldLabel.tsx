@@ -1,10 +1,17 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+import { KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { SpanFC } from '../../internal/functional-components/span/component';
+import type { IconsPropType, PopoverButtonProps } from '../../schema';
 import { buildBadgeTextString } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
+
+export type FormFieldLabelInfoPopoverProps = Omit<PopoverButtonProps, '_icons' | '_hideLabel' | '_inline'> & {
+	_content: string;
+	_icons: IconsPropType;
+};
 
 type FormFieldLabelProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & {
 	component?: 'label' | 'legend';
@@ -17,6 +24,7 @@ type FormFieldLabelProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLe
 	baseClassName?: string;
 	showBadge?: boolean;
 	readOnly?: boolean;
+	infoPopover?: FormFieldLabelInfoPopoverProps;
 };
 
 const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
@@ -31,11 +39,15 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 	hasExpertSlot,
 	showBadge = true,
 	readOnly,
+	infoPopover,
 	...other
 }) => {
 	const useTooltipInsteadOfLabel = !hasExpertSlot && hideLabel;
 	const translateReadOnly = translate('kol-readonly');
 	const badgeText = showBadge === false ? undefined : buildBadgeTextString(accessKey, shortKey);
+
+	// eslint-disable-next-line no-console
+	console.log(infoPopover);
 
 	return (
 		<Component
@@ -48,6 +60,11 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 			<SpanFC class={`${baseClassName}__label-text`} label={hasExpertSlot ? '' : (label ?? '')} badgeText={badgeText}>
 				<slot name="expert"></slot>
 			</SpanFC>
+			{!hasExpertSlot && infoPopover && (
+				<KolPopoverButtonWcTag _variant="ghost" {...infoPopover} _hideLabel _inline={true}>
+					{infoPopover._content}
+				</KolPopoverButtonWcTag>
+			)}
 			{!hasExpertSlot && readOnly ? (
 				<span class={`${baseClassName}__label__read-only`} aria-hidden="true">
 					({translateReadOnly})
