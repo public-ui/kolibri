@@ -219,7 +219,8 @@ export function reactConfig({ tsconfigRootDir, ignores = [], rules = {} } = {}) 
 			rules: {
 				'react/no-unused-state': 'error',
 				'react/react-in-jsx-scope': 'off',
-				'react-hooks/rules-of-hooks': 'error',
+				// Enable all recommended react-hooks rules
+				...reactHooksPlugin.configs.recommended.rules,
 			},
 			settings: {
 				react: { version: 'detect' },

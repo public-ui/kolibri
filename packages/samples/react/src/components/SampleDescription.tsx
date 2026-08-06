@@ -17,13 +17,13 @@ export const SampleDescription: FC<PropsWithChildren> = (props) => {
 		return paths[0] === 'scenarios'
 			? null // Scenarios are not a component and hence have no documentation.
 			: `${PUBLIC_DOC_COMPONENT_URL}/${paths[0]}`;
-	}, [location.hash]);
+	}, [paths]);
 
 	const codeLink = useMemo(() => {
 		return paths[0] === 'scenarios'
 			? null // Scenarios are not a component and hence have no documentation.
 			: `${PUBLIC_CODE_COMPONENT_URL}/${paths[0]}/${paths[1]}.tsx`;
-	}, [location.hash]);
+	}, [paths]);
 
 	return (
 		<>

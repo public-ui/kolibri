@@ -40,15 +40,17 @@ export const App: FC<Props> = ({ customThemes }) => {
 
 	useEffect(() => {
 		let isActive = true;
-		if (sampleAppDataService.isInitialized(themes)) {
-			setIsSampleAppDataInitialized(true);
+		const isInit = sampleAppDataService.isInitialized(themes);
+		const updateState = (value: boolean) => {
+			if (isActive) setIsSampleAppDataInitialized(value);
+		};
+		if (isInit) {
+			setTimeout(() => updateState(true), 0);
 			return;
 		}
-		setIsSampleAppDataInitialized(false);
+		updateState(false);
 		void sampleAppDataService.initialize(themes).then(() => {
-			if (isActive) {
-				setIsSampleAppDataInitialized(true);
-			}
+			updateState(true);
 		});
 		return () => {
 			isActive = false;
@@ -122,8 +124,8 @@ export const App: FC<Props> = ({ customThemes }) => {
 		return tree;
 	};
 
-	const ROUTE_LIST = useMemo(() => getRouteList(ROUTES), [customThemes]);
-	const ROUTE_TREE = useMemo(() => getRouteTree(ROUTES), [customThemes]);
+	const ROUTE_LIST = useMemo(() => getRouteList(ROUTES), []);
+	const ROUTE_TREE = useMemo(() => getRouteTree(ROUTES), []);
 
 	const componentList: Map<string, Option<string>> = new Map();
 	ROUTE_LIST.forEach((route) => {
@@ -139,9 +141,11 @@ export const App: FC<Props> = ({ customThemes }) => {
 	setTheme(theme); // set for `getTheme` usages within the application
 	useSetCurrentLocation();
 
-	document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
-	document.body.setAttribute('class', theme);
-	document.body.dataset.theme = theme;
+	useEffect(() => {
+		document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
+		document.body.setAttribute('class', theme);
+		document.body.dataset.theme = theme;
+	}, [theme]);
 
 	const handleThemeChange = (theme: unknown) => {
 		setSearchParams({ theme: theme as string });
