@@ -1,5 +1,6 @@
 @use '../mixins/to-rem' as *;
 @use './alert' as *;
+@use './popover-button' as *;
 @use './typography' as *;
 
 @mixin kol-form-field-theme {
@@ -53,11 +54,26 @@
 			}
 		}
 
-		.kol-form-field__label {
+		&__label {
+			@include popover-button;
+
+			display: flex;
 			margin-bottom: to-rem(2);
+			gap: to-rem(4);
+			order: 2;
+			grid-column: var(--form-field-grid-column-1);
 
 			font-size: to-rem(14);
 			font-weight: bold;
+
+			&--legend {
+				// legends are strange and need float to actually behave in a grid like everyone else
+				float: left;
+			}
+
+			&-text {
+				gap: 0;
+			}
 		}
 
 		&__label[hidden] ~ &__msg {
