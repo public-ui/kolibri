@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-urqO1w15.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};
