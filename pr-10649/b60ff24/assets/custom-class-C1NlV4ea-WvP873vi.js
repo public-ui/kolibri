@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-C-25nKqe.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
