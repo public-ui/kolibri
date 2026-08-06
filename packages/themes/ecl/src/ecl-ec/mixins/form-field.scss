@@ -1,11 +1,16 @@
 @use '../../mixins/to-rem' as *;
-@use '../mixins/alert' as *;
+@use './alert' as *;
+@use './popover-button' as *;
 
 @mixin form-field {
 	.kol-form-field {
 		gap: var(--ecl-spacing-xs);
 
 		&__label {
+			@include popover-button;
+
+			display: flex;
+			gap: to-rem(4);
 			order: 1;
 
 			&-text::after {
