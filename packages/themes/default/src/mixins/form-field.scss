@@ -1,5 +1,6 @@
-@use '../mixins/to-rem' as *;
+@use './to-rem' as *;
 @use './alert' as *;
+@use './popover-button' as *;
 @use './typography' as *;
 
 @mixin kol-form-field-theme {
@@ -19,8 +20,11 @@
 		}
 
 		&__label {
+			@include popover-button;
+
 			display: flex;
 			margin-bottom: to-rem(2);
+			gap: to-rem(4);
 			order: 2;
 			grid-column: var(--form-field-grid-column-1);
 
