@@ -17,8 +17,11 @@
 
 		&__popover {
 			background-color: var(--color-light);
-			padding: to-rem(8);
-			border: 1px solid var(--color-subtle);
+			border-radius: var(--border-radius);
+			padding: to-rem(8) to-rem(12);
+
+			line-height: 1.5;
+			border: var(--border-width) solid var(--color-subtle);
 		}
 	}
 }
