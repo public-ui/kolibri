@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-5Gemodms.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};
