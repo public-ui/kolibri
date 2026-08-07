@@ -119,6 +119,10 @@
 			min-width: 0;
 			min-height: 0;
 
+			&.kol-span--hide-label {
+				padding: 0;
+			}
+
 			.kol-icon {
 				font-size: inherit;
 			}

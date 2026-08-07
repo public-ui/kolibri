@@ -7,10 +7,6 @@
 	.kol-popover-button {
 		&--inline {
 			margin: 0 to-rem(4);
-
-			.kol-button--inline {
-				--button-padding: 0;
-			}
 		}
 
 		&__popover--styled {

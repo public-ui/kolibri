@@ -10,6 +10,9 @@
 		--button-focus-outline-offset: -3px;
 		--button-focus-outline-width: 1px;
 
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+
 		&:focus {
 			outline: var(--button-focus-outline-color) solid var(--button-focus-outline-width);
 			outline-offset: var(--button-focus-outline-offset);
@@ -140,6 +143,11 @@
 			&.kol-span--hide-label {
 				padding: var(--ecl-spacing-xs);
 			}
+		}
+
+		&--inline {
+			min-width: 0;
+			min-height: 0;
 		}
 	}
 
