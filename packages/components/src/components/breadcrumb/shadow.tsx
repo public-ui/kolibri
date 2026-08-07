@@ -1,4 +1,4 @@
-import { Component, Fragment, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Fragment, h, Prop, State, Watch } from '@stencil/core';
 import type { BreadcrumbAPI, BreadcrumbLinkProps, BreadcrumbStates, LabelPropType, LinkProps, Stringified } from '../../schema';
 import { a11yHintLabelingLandmarks, validateLabel } from '../../schema';
 
@@ -6,6 +6,7 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from '../nav/validation';
 
 import type { JSX } from '@stencil/core';
+import { getFeatureFlag } from 'adopted-style-sheets';
 import { KolLinkWcTag } from '../../core/component-names';
 import { IconFC } from '../../internal/functional-components/icon/component';
 
@@ -20,8 +21,18 @@ import { IconFC } from '../../internal/functional-components/icon/component';
 	shadow: true,
 })
 export class KolBreadcrumb implements BreadcrumbAPI {
+	@Element() private readonly host?: HTMLElement;
+
 	private readonly renderLink = (link: BreadcrumbLinkProps, index: number): JSX.Element => {
 		const lastIndex = this.state._links.length - 1;
+
+		const showCurrent = getFeatureFlag('breadcrumbCurrentPage', this.host) !== 'hide';
+		const showSeparator = showCurrent ? index !== lastIndex : index < lastIndex - 1;
+
+		if (index === lastIndex && !showCurrent) {
+			return <></>;
+		}
+
 		return (
 			<li class="kol-breadcrumb__list-element" key={index}>
 				{index === lastIndex ? (
@@ -35,7 +46,7 @@ export class KolBreadcrumb implements BreadcrumbAPI {
 				) : (
 					<KolLinkWcTag class="kol-breadcrumb__link" _inline={false} {...link}></KolLinkWcTag>
 				)}
-				{index !== lastIndex && <IconFC class="kol-breadcrumb__separator" label="" icons="kolicon-chevron-right" />}
+				{showSeparator && <IconFC class="kol-breadcrumb__separator" label="" icons="kolicon-chevron-right" />}
 			</li>
 		);
 	};
