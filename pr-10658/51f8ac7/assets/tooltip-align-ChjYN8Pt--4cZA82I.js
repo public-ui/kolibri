@@ -1,1 +1,0 @@
-import"./index-5Gemodms.js";import{r as e}from"./align-DpNc6EKs-CRJyGfPw.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
