@@ -1,12 +1,10 @@
-import type { JSX, VNode } from '@stencil/core';
+import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from '../../utils/clsx';
 
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import KolIconButtonFc from '../../functional-components/IconButton';
-import { translate } from '../../i18n';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
@@ -101,30 +99,6 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 			});
 		}
 	};
-
-	private readonly translateClearSearch = translate('kol-clear-search');
-
-	private getClearButton(): VNode | null {
-		if (this.state._type === 'search' && !this._disabled && this.state._hasValue) {
-			return (
-				<KolIconButtonFc
-					componentName="button"
-					class="kol-input-text__clear-button kol-input-container__smart-button"
-					data-testid="kol-input-text-clear-button"
-					label={this.translateClearSearch}
-					buttonVariant="ghost"
-					onClick={(): void => {
-						this._value = '';
-						this.ctaRef.el?.focus();
-					}}
-					icon="kolicon-x"
-					disabled={this._disabled}
-				/>
-			);
-		}
-
-		return null;
-	}
 
 	/**
 	 * Returns the current value.
@@ -234,7 +208,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	public render(): JSX.Element {
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
-				<KolInputContainerFc state={this.state} endAdornment={this.getClearButton()}>
+				<KolInputContainerFc state={this.state}>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>

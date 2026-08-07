@@ -7,7 +7,7 @@ import { SampleDescription } from '../SampleDescription';
 export const InputTextBasic: FC = () => (
 	<>
 		<SampleDescription>
-			<p>This story showcases the most important InputText variants: default, required, validation error, disabled, read-only, search with clear button, and with icons.</p>
+			<p>This story showcases the most important InputText variants: default, required, validation error, disabled, read-only and with icons.</p>
 		</SampleDescription>
 
 		<div className="grid gap-4">
@@ -34,7 +34,6 @@ export const InputTextBasic: FC = () => (
 			<KolInputText _label="Name" _value="Anderson-Clark" _disabled />
 			<KolInputText _label="Name" _readOnly _value="Anderson-Clark" />
 			<KolInputText _label="Name" _icons="kolicon-house" _value="Anderson-Clark" />
-			<KolInputText _label="Search" _type="search" _value="test" _placeholder="Search with clear button" />
 		</div>
 	</>
 );

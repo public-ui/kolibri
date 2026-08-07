@@ -57,7 +57,6 @@ export default {
 	'close-alert': 'Close notification',
 	'show-password': 'Show',
 	'hide-password': 'Hide',
-	'clear-search': 'Clear search',
 	'no-results-message': 'No results found.',
 	'delete-selection': 'Delete selection',
 	'filename-text': 'Choose a file or drop it here...',
