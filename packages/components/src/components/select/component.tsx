@@ -171,7 +171,7 @@ export class KolSelectWc implements ClickableElement, FocusableElement, SelectAP
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
 

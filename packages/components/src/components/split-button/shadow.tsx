@@ -186,7 +186,7 @@ export class KolSplitButton implements ClickableElement, FocusableElement, Split
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsPropType;
 
