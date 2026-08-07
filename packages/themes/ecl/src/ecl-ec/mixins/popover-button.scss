@@ -15,10 +15,10 @@
 			}
 		}
 
-		// &__popover {
-		// 	background-color: var(--color-light);
-		// 	padding: to-rem(8);
-		// 	border: 1px solid var(--color-subtle);
-		// }
+		&__popover--styled {
+			background-color: var(--ecl-color-white);
+			padding: to-rem(8);
+			border: 1px solid var(--ecl-color-primary);
+		}
 	}
 }

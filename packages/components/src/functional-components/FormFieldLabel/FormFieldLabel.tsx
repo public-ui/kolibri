@@ -62,7 +62,7 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 			</SpanFC>
 			{!hasExpertSlot && infoPopover && (
 				<KolPopoverButtonWcTag _variant="ghost" {...infoPopover} _hideLabel _inline={true}>
-					{infoPopover._content}
+					<div class="kol-popover-button__popover--styled">{infoPopover._content}</div>
 				</KolPopoverButtonWcTag>
 			)}
 			{!hasExpertSlot && readOnly ? (
