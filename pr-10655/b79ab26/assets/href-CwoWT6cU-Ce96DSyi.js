@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-BvU5TpSF.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};
