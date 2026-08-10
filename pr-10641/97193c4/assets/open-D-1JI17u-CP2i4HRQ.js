@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-_w60BPZe.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
