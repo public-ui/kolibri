@@ -3,6 +3,7 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 import type {
 	CardAPI,
 	CardStates,
+	ClickableElement,
 	FocusableElement,
 	HasCloserPropType,
 	HeadingLevel,
@@ -20,7 +21,7 @@ import { watchHeadingLevel } from '../heading/validation';
 import { KolButtonWcTag } from '../../core/component-names';
 import { KolHeadingFc } from '../../functional-components';
 import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, directFocus } from '../../utils/element-interaction';
+import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -45,7 +46,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	tag: 'kol-card-wc',
 	shadow: false,
 })
-export class KolCardWc implements CardAPI, FocusableElement {
+export class KolCardWc implements CardAPI, FocusableElement, ClickableElement {
 	@Element() private readonly host?: HTMLKolCardElement;
 	private readonly translateClose = translate('kol-close');
 	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
@@ -58,6 +59,13 @@ export class KolCardWc implements CardAPI, FocusableElement {
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public async focus(options?: KolFocusOptions): Promise<void> {}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	@directClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	private readonly close = () => {
 		if (this._on?.onClose !== undefined) {
@@ -87,8 +95,6 @@ export class KolCardWc implements CardAPI, FocusableElement {
 	};
 
 	public render(): JSX.Element {
-		console.log(this.ctaRef);
-
 		return (
 			<Host>
 				{/*

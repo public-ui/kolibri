@@ -1,9 +1,18 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Method, Prop } from '@stencil/core';
-import type { CardProps, FocusableElement, HeadingLevel, HrefPropType, KoliBriCardEventCallbacks, LabelPropType, LinkTargetPropType } from '../../schema';
+import type {
+	CardProps,
+	ClickableElement,
+	FocusableElement,
+	HeadingLevel,
+	HrefPropType,
+	KoliBriCardEventCallbacks,
+	LabelPropType,
+	LinkTargetPropType,
+} from '../../schema';
 
 import { KolCardWcTag } from '../../core/component-names';
-import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 
 /**
  * The **Card** component is ideal for visually highlighting individual sections of your website. It allows you to structure your content very easily.
@@ -21,7 +30,7 @@ import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 	},
 	shadow: true,
 })
-export class KolCard implements CardProps, FocusableElement {
+export class KolCard implements CardProps, FocusableElement, ClickableElement {
 	protected readonly ctaRef = createCtaRef<HTMLKolCardWcElement>();
 
 	/**
@@ -32,6 +41,13 @@ export class KolCard implements CardProps, FocusableElement {
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public async focus(options?: KolFocusOptions): Promise<void> {}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	public render(): JSX.Element {
 		return (
