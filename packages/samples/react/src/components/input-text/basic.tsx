@@ -36,13 +36,13 @@ export const InputTextBasic: FC = () => (
 				_label="Name"
 				_required
 				_value="Anderson-Clark"
-				_infoPopover={{ _label: 'hint', _content: 'ich bin ein hinweis', _icons: 'kolicon-alert-info' }}
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 			/>
 			<KolInputText
 				_label="Name"
 				_readOnly
 				_value="Anderson-Clark"
-				_infoPopover={{ _label: 'hint', _content: 'ich bin ein hinweis', _icons: 'kolicon-alert-info' }}
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 			/>
 			<KolInputText _label="Name" _icons="kolicon-house" _value="Anderson-Clark" />
 		</div>
