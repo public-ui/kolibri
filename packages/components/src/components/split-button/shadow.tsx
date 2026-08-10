@@ -84,7 +84,6 @@ export class KolSplitButton implements ClickableElement, FocusableElement, Split
 	};
 
 	public render(): JSX.Element {
-		const i18nDropdownLabel = 'kol-split-button-dropdown-label';
 		return (
 			<div class="kol-split-button">
 				<div class="kol-split-button__root">
@@ -120,7 +119,7 @@ export class KolSplitButton implements ClickableElement, FocusableElement, Split
 						_disabled={this._disabled}
 						_hideLabel
 						_icons="kolicon-chevron-down"
-						_label={translate(`${i18nDropdownLabel}-open`)}
+						_label={translate('kol-split-button-dropdown-label-open')}
 						_popoverAlign="bottom"
 					>
 						<slot />
