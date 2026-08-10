@@ -236,7 +236,7 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
 

@@ -28,7 +28,7 @@ export const DialogBasic: FC = () => {
 			blankRef.current?.openModal();
 			cardRef.current?.openModal();
 		}
-	}, []);
+	}, [showDialog]);
 
 	return (
 		<>

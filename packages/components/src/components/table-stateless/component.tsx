@@ -3,7 +3,6 @@ import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@st
 
 import { isEqual } from 'lodash-es';
 import { KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag } from '../../core/component-names';
-import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
@@ -1041,14 +1040,14 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		const dataLength = this.getDataWithSelectionEnabled().length;
 		const isChecked = selectedKeyLength === dataLength;
 		const indeterminate = selectedKeyLength !== 0 && !isChecked;
-		let translationKey = 'kol-table-selection-indeterminate' as TranslationKey;
-		if (isChecked && !indeterminate) {
-			translationKey = 'kol-table-selection-none';
-		}
+		let label: string;
 		if (selectedKeyLength === 0) {
-			translationKey = 'kol-table-selection-all';
+			label = translate('kol-table-selection-all');
+		} else if (isChecked && !indeterminate) {
+			label = translate('kol-table-selection-none');
+		} else {
+			label = translate('kol-table-selection-indeterminate');
 		}
-		const label = translate(translationKey);
 		return (
 			<th scope="col" key={`thead-0-selection`} class="kol-table__cell kol-table__cell--header kol-table__cell--selection">
 				<span class="visually-hidden">{translate('kol-table-selection')}</span>
@@ -1075,7 +1074,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						/>
 					</label>
 					<div class="kol-table__selection-input-tooltip">
-						<TooltipFC label={label} badgeText="" id={`${translationKey}-label`} refFloating={() => {}} />
+						<TooltipFC label={label} badgeText="" refFloating={() => {}} />
 					</div>
 				</div>
 			</th>

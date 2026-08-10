@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Navigate, Route, Routes, useLocation, useSearchParams } from 'react-router';
 
 import PackageJson from '@public-ui/components/package.json';
@@ -36,24 +36,15 @@ export const App: FC<Props> = ({ customThemes }) => {
 		return allThemes;
 	}, [customThemes]);
 	const theme: string = searchParams.get('theme') ?? getTheme();
-	const [isSampleAppDataInitialized, setIsSampleAppDataInitialized] = useState(() => sampleAppDataService.isInitialized(themes));
-
-	useEffect(() => {
-		let isActive = true;
+	const [isSampleAppDataInitialized, setIsSampleAppDataInitialized] = useState(() => {
 		if (sampleAppDataService.isInitialized(themes)) {
-			setIsSampleAppDataInitialized(true);
-			return;
+			return true;
 		}
-		setIsSampleAppDataInitialized(false);
 		void sampleAppDataService.initialize(themes).then(() => {
-			if (isActive) {
-				setIsSampleAppDataInitialized(true);
-			}
+			setIsSampleAppDataInitialized(true);
 		});
-		return () => {
-			isActive = false;
-		};
-	}, [themes]);
+		return false;
+	});
 
 	const getRouteList = (routes: MyRoutes, offset = '/'): string[] => {
 		let list: string[] = [];
