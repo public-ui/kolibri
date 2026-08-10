@@ -18,14 +18,14 @@
 		&--variant-card {
 			box-shadow: inset to-rem(7) 0 0 var(--alert-accent-color);
 			border-radius: var(--radius-l);
+			max-width: to-rem(480);
+			padding: to-rem(4) to-rem(4) to-rem(16) to-rem(16);
 			gap: 0 to-rem(8);
 			grid-template-areas:
 				'icon heading close'
 				'icon content content';
 			grid-template-columns: min-content 1fr min-content;
 			grid-template-rows: min-content min-content;
-			max-width: to-rem(480);
-			padding: to-rem(4) to-rem(4) to-rem(16) to-rem(16);
 			border: var(--border-width-s) solid var(--alert-accent-color);
 
 			&:not(:has(#{$root}__heading)) {
@@ -85,11 +85,11 @@
 
 			#{$root}__icon {
 				display: flex;
-				align-items: center;
 				position: absolute;
 				top: 0;
-				left: 0;
 				bottom: 0;
+				left: 0;
+				align-items: center;
 			}
 
 			&#{$root}--type-default {

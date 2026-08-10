@@ -40,9 +40,10 @@
 		}
 
 		&__link::after {
-			content: '';
 			position: absolute;
 			inset: 0;
+
+			content: '';
 			cursor: pointer;
 		}
 	}
