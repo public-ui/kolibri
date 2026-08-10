@@ -1322,6 +1322,17 @@ ROUTES.set('scenarios/focus-elements?component=buttonLink', {
 		},
 	},
 });
+ROUTES.set('scenarios/focus-elements?component=card', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('scenarios/focus-elements?component=combobox', {
 	snapshot: {
 		viewportSize: {
