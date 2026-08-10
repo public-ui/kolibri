@@ -60,16 +60,16 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 			<SpanFC class={`${baseClassName}__label-text`} label={hasExpertSlot ? '' : (label ?? '')} badgeText={badgeText}>
 				<slot name="expert"></slot>
 			</SpanFC>
+			{!hasExpertSlot && readOnly && (
+				<span class={`${baseClassName}__label__read-only`} aria-hidden="true">
+					({translateReadOnly})
+				</span>
+			)}
 			{!hasExpertSlot && infoPopover && (
 				<KolPopoverButtonWcTag _variant="ghost" {...infoPopover} _hideLabel _inline={true}>
 					<div class="kol-popover-button__popover--styled">{infoPopover._content}</div>
 				</KolPopoverButtonWcTag>
 			)}
-			{!hasExpertSlot && readOnly ? (
-				<span class={`${baseClassName}__label__read-only`} aria-hidden="true">
-					({translateReadOnly})
-				</span>
-			) : null}
 		</Component>
 	);
 };
