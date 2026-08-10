@@ -1,7 +1,17 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
-import type { CardAPI, CardStates, HasCloserPropType, HeadingLevel, KoliBriAlertEventCallbacks, KoliBriCardEventCallbacks, LabelPropType } from '../../schema';
-import { setState, validateHasCloser, validateLabel } from '../../schema';
+import type {
+	CardAPI,
+	CardStates,
+	HasCloserPropType,
+	HeadingLevel,
+	HrefPropType,
+	KoliBriAlertEventCallbacks,
+	KoliBriCardEventCallbacks,
+	LabelPropType,
+	LinkTargetPropType,
+} from '../../schema';
+import { setState, validateHasCloser, validateHref, validateLabel, validateLinkTarget } from '../../schema';
 
 import { translate } from '../../i18n';
 import { watchHeadingLevel } from '../heading/validation';
@@ -59,9 +69,18 @@ export class KolCardWc implements CardAPI {
 					wrap them in a list (<ul> / <ol>) to preserve clean page navigation.
 				*/}
 				<article aria-labelledby={this._headingId} class="kol-card">
-					<KolHeadingFc class="kol-card__header" id={this._headingId} level={this.state._level}>
-						{this.state._label}
-					</KolHeadingFc>
+					{this._href && (
+						<a href={this._href} target={this._target} class="kol-card__link">
+							<KolHeadingFc class="kol-card__header" id={this._headingId} level={this.state._level}>
+								{this.state._label}
+							</KolHeadingFc>
+						</a>
+					)}
+					{!this._href && (
+						<KolHeadingFc class="kol-card__header" id={this._headingId} level={this.state._level}>
+							{this.state._label}
+						</KolHeadingFc>
+					)}
 					<div class="kol-card__content">
 						<slot />
 					</div>
@@ -98,6 +117,11 @@ export class KolCardWc implements CardAPI {
 	@Prop() public _headingId?: string = createUniqueId('card-heading');
 
 	/**
+	 * Sets the target URI of the link or citation source.
+	 */
+	@Prop() public _href?: HrefPropType;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
@@ -112,6 +136,11 @@ export class KolCardWc implements CardAPI {
 	 */
 	@Prop() public _on?: KoliBriCardEventCallbacks;
 
+	/**
+	 * Defines where to open the link.
+	 */
+	@Prop() public _target?: LinkTargetPropType;
+
 	@State() public state: CardStates = {
 		_label: '', // ⚠ required
 	};
@@ -122,6 +151,13 @@ export class KolCardWc implements CardAPI {
 	@Watch('_hasCloser')
 	public validateHasCloser(value?: HasCloserPropType): void {
 		validateHasCloser(this, value);
+	}
+
+	@Watch('_href')
+	public validateHref(value?: string): void {
+		validateHref(this, value, {
+			required: true,
+		});
 	}
 
 	@Watch('_label')
@@ -145,10 +181,17 @@ export class KolCardWc implements CardAPI {
 		}
 	}
 
+	@Watch('_target')
+	public validateTarget(value?: LinkTargetPropType): void {
+		validateLinkTarget(this, value);
+	}
+
 	public componentWillLoad(): void {
 		this.validateHasCloser(this._hasCloser);
+		this.validateHref(this._href);
 		this.validateLabel(this._label);
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
+		this.validateTarget(this._target);
 	}
 }

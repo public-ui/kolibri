@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop } from '@stencil/core';
-import type { CardProps, HeadingLevel, KoliBriCardEventCallbacks, LabelPropType } from '../../schema';
+import type { CardProps, HeadingLevel, HrefPropType, KoliBriCardEventCallbacks, LabelPropType, LinkTargetPropType } from '../../schema';
 
 import { KolCardWcTag } from '../../core/component-names';
 
@@ -23,7 +23,7 @@ import { KolCardWcTag } from '../../core/component-names';
 export class KolCard implements CardProps {
 	public render(): JSX.Element {
 		return (
-			<KolCardWcTag _on={this._on} _hasCloser={this._hasCloser} _label={this._label} _level={this._level}>
+			<KolCardWcTag _on={this._on} _hasCloser={this._hasCloser} _label={this._label} _level={this._level} _href={this._href} _target={this._target}>
 				<slot />
 			</KolCardWcTag>
 		);
@@ -41,6 +41,11 @@ export class KolCard implements CardProps {
 	@Prop() public _hasCloser?: boolean = false;
 
 	/**
+	 * Sets the target URI of the link or citation source.
+	 */
+	@Prop() public _href?: HrefPropType;
+
+	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
@@ -49,4 +54,9 @@ export class KolCard implements CardProps {
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
 	@Prop() public _level?: HeadingLevel = 0;
+
+	/**
+	 * Defines where to open the link.
+	 */
+	@Prop() public _target?: LinkTargetPropType;
 }

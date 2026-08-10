@@ -34,5 +34,16 @@
 		&__close-button {
 			grid-area: close;
 		}
+
+		&:has(&__link) {
+			position: relative;
+		}
+
+		&__link::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			cursor: pointer;
+		}
 	}
 }
