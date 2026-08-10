@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-CNte_sah.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
