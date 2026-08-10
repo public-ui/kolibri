@@ -87,6 +87,8 @@ export class KolCardWc implements CardAPI, FocusableElement {
 	};
 
 	public render(): JSX.Element {
+		console.log(this.ctaRef);
+
 		return (
 			<Host>
 				{/*
@@ -96,7 +98,7 @@ export class KolCardWc implements CardAPI, FocusableElement {
 				*/}
 				<article aria-labelledby={this._headingId} class="kol-card">
 					{this._href && (
-						<a href={this._href} target={this._target} class="kol-card__link" onFocus={this.onFocus} onBlur={this.onBlur}>
+						<a href={this._href} target={this._target} class="kol-card__link" onFocus={this.onFocus} onBlur={this.onBlur} ref={this.ctaRef}>
 							<KolHeadingFc class="kol-card__header" id={this._headingId} level={this.state._level}>
 								{this.state._label}
 							</KolHeadingFc>

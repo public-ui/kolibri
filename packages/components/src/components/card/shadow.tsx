@@ -35,7 +35,15 @@ export class KolCard implements CardProps, FocusableElement {
 
 	public render(): JSX.Element {
 		return (
-			<KolCardWcTag _on={this._on} _hasCloser={this._hasCloser} _label={this._label} _level={this._level} _href={this._href} _target={this._target}>
+			<KolCardWcTag
+				_on={this._on}
+				_hasCloser={this._hasCloser}
+				_label={this._label}
+				_level={this._level}
+				_href={this._href}
+				_target={this._target}
+				ref={this.ctaRef}
+			>
 				<slot />
 			</KolCardWcTag>
 		);
