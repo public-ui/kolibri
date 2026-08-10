@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-DrR1_uap.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
