@@ -504,9 +504,10 @@ export class KolTableStateful implements TableAPI {
 	 * @returns {JSX.Element} The rendered pagination controls including page range and navigation.
 	 */
 	private renderPagination(position: 'top' | 'bottom'): JSX.Element {
+		const positionLabel = position === 'top' ? translate('kol-pagination-position-top') : translate('kol-pagination-position-bottom');
 		const label = translate('kol-table-pagination-label', {
 			placeholders: {
-				label: `${this.state._label} (${translate(`kol-pagination-position-${position}`)})`,
+				label: `${this.state._label} (${positionLabel})`,
 			},
 		});
 		return (
