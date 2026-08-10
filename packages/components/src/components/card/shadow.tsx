@@ -1,8 +1,9 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Prop } from '@stencil/core';
-import type { CardProps, HeadingLevel, HrefPropType, KoliBriCardEventCallbacks, LabelPropType, LinkTargetPropType } from '../../schema';
+import { Component, h, Method, Prop } from '@stencil/core';
+import type { CardProps, FocusableElement, HeadingLevel, HrefPropType, KoliBriCardEventCallbacks, LabelPropType, LinkTargetPropType } from '../../schema';
 
 import { KolCardWcTag } from '../../core/component-names';
+import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 /**
  * The **Card** component is ideal for visually highlighting individual sections of your website. It allows you to structure your content very easily.
@@ -20,7 +21,18 @@ import { KolCardWcTag } from '../../core/component-names';
 	},
 	shadow: true,
 })
-export class KolCard implements CardProps {
+export class KolCard implements CardProps, FocusableElement {
+	protected readonly ctaRef = createCtaRef<HTMLKolCardWcElement>();
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
+
 	public render(): JSX.Element {
 		return (
 			<KolCardWcTag _on={this._on} _hasCloser={this._hasCloser} _label={this._label} _level={this._level} _href={this._href} _target={this._target}>
