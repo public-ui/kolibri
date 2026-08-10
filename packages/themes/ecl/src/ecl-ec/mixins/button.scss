@@ -142,7 +142,8 @@
 			}
 		}
 
-		&--inline {
+		&--inline,
+		&--inline .#{$block-classname}__text {
 			min-width: 0;
 			min-height: 0;
 		}

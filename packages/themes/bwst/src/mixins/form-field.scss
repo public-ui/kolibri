@@ -46,6 +46,8 @@
 
 		&__hint {
 			@include kol-typography-hint;
+
+			order: 4;
 		}
 
 		&__counter {
@@ -74,6 +76,14 @@
 			&-text {
 				gap: 0;
 			}
+		}
+
+		&__msg {
+			order: 1;
+		}
+
+		&__input {
+			order: 3;
 		}
 
 		&__label[hidden] ~ &__msg {

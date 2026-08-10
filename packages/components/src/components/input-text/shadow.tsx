@@ -5,7 +5,7 @@ import clsx from '../../utils/clsx';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import { FormFieldLabelInfoPopoverProps } from '../../functional-components/FormFieldLabel/FormFieldLabel';
+import type { FormFieldLabelInfoPopoverProps } from '../../functional-components/FormFieldLabel/FormFieldLabel';
 import type {
 	AccessKeyPropType,
 	AriaDetailsPropType,
