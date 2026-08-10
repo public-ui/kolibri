@@ -168,6 +168,13 @@ ROUTES.set('card/basic', {
 		},
 	},
 });
+ROUTES.set('card/linked', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('card/headlines', {
 	snapshot: {
 		zoom: {
