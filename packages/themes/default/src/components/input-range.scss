@@ -28,11 +28,24 @@
 
 			&::-webkit-slider-thumb {
 				background: var(--color-primary-variant);
+				outline: solid var(--thumb-outline-width) var(--color-primary-variant);
 				-webkit-appearance: none;
+				outline-offset: 2px;
 			}
 
 			&::-moz-range-thumb {
 				background: var(--color-primary-variant);
+				outline: solid var(--thumb-outline-width) var(--color-primary-variant);
+				outline-offset: 2px;
+			}
+
+			&:focus {
+				outline: 0;
+				--thumb-outline-width: 2px;
+			}
+
+			&:hover {
+				--thumb-outline-width: 2px;
 			}
 		}
 	}
