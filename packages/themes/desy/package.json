@@ -71,7 +71,7 @@
 		"eslint": "9.39.5",
 		"nodemon": "3.1.14",
 		"npm-run-all2": "9.0.3",
-		"postcss": "8.5.25",
+		"postcss": "8.5.26",
 		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"rollup": "4.62.4",
