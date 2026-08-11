@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-CGSDSizY.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
