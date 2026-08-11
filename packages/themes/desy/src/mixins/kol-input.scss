@@ -20,6 +20,10 @@
 			}
 		}
 
+		&:focus {
+			outline: none;
+		}
+
 		&-container {
 			background: var(--color-white-100);
 

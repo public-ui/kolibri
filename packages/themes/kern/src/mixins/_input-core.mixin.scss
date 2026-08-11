@@ -32,6 +32,10 @@
 				color: var(--color-black-60);
 			}
 		}
+
+		&:focus {
+			outline: none;
+		}
 	}
 
 	.kol-input-container {
