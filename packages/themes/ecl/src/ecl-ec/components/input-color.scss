@@ -17,6 +17,10 @@
 				min-height: calc(var(--a11y-min-size) - to-rem(8));
 				border: 0;
 			}
+
+			&:focus {
+				outline: none;
+			}
 		}
 	}
 }
