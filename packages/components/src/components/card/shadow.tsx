@@ -30,7 +30,7 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolCard implements CardProps, FocusableElement, ClickableElement {
+export class KolCard implements CardProps, ClickableElement, FocusableElement {
 	protected readonly ctaRef = createCtaRef<HTMLKolCardWcElement>();
 
 	/**

@@ -46,7 +46,7 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	tag: 'kol-card-wc',
 	shadow: false,
 })
-export class KolCardWc implements CardAPI, FocusableElement, ClickableElement {
+export class KolCardWc implements CardAPI, ClickableElement, FocusableElement {
 	@Element() private readonly host?: HTMLKolCardElement;
 	private readonly translateClose = translate('kol-close');
 	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
