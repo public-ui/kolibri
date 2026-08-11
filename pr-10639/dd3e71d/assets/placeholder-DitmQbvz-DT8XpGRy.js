@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-DPR3iAgi.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
