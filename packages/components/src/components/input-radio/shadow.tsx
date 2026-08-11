@@ -43,6 +43,7 @@ import type { OrientationPropType } from '../../schema/props/orientation';
 /**
  * The **InputRadio** input type consists of a collection of radio elements, providing a choice between different values. Only a single value can be selected at a time. Selected radio elements are typically represented by a filled, visually highlighted circle.
  *
+ * @slot - The label of the input field.
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
