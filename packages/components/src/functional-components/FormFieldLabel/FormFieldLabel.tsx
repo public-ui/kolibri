@@ -46,9 +46,6 @@ const KolFormFieldLabelFc: FC<FormFieldLabelProps> = ({
 	const translateReadOnly = translate('kol-readonly');
 	const badgeText = showBadge === false ? undefined : buildBadgeTextString(accessKey, shortKey);
 
-	// eslint-disable-next-line no-console
-	console.log(infoPopover);
-
 	return (
 		<Component
 			{...other}
