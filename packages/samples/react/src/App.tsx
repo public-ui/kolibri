@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Navigate, Route, Routes, useLocation, useSearchParams } from 'react-router';
 
 import PackageJson from '@public-ui/components/package.json';
@@ -36,15 +36,26 @@ export const App: FC<Props> = ({ customThemes }) => {
 		return allThemes;
 	}, [customThemes]);
 	const theme: string = searchParams.get('theme') ?? getTheme();
-	const [isSampleAppDataInitialized, setIsSampleAppDataInitialized] = useState(() => {
-		if (sampleAppDataService.isInitialized(themes)) {
-			return true;
+	const [isSampleAppDataInitialized, setIsSampleAppDataInitialized] = useState(() => sampleAppDataService.isInitialized(themes));
+
+	useEffect(() => {
+		let isActive = true;
+		const isInit = sampleAppDataService.isInitialized(themes);
+		const updateState = (value: boolean) => {
+			if (isActive) setIsSampleAppDataInitialized(value);
+		};
+		if (isInit) {
+			setTimeout(() => updateState(true), 0);
+			return;
 		}
+		updateState(false);
 		void sampleAppDataService.initialize(themes).then(() => {
-			setIsSampleAppDataInitialized(true);
+			updateState(true);
 		});
-		return false;
-	});
+		return () => {
+			isActive = false;
+		};
+	}, [themes]);
 
 	const getRouteList = (routes: MyRoutes, offset = '/'): string[] => {
 		let list: string[] = [];
@@ -113,8 +124,8 @@ export const App: FC<Props> = ({ customThemes }) => {
 		return tree;
 	};
 
-	const ROUTE_LIST = useMemo(() => getRouteList(ROUTES), [customThemes]);
-	const ROUTE_TREE = useMemo(() => getRouteTree(ROUTES), [customThemes]);
+	const ROUTE_LIST = useMemo(() => getRouteList(ROUTES), []);
+	const ROUTE_TREE = useMemo(() => getRouteTree(ROUTES), []);
 
 	const componentList: Map<string, Option<string>> = new Map();
 	ROUTE_LIST.forEach((route) => {
@@ -130,9 +141,11 @@ export const App: FC<Props> = ({ customThemes }) => {
 	setTheme(theme); // set for `getTheme` usages within the application
 	useSetCurrentLocation();
 
-	document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
-	document.body.setAttribute('class', theme);
-	document.body.dataset.theme = theme;
+	useEffect(() => {
+		document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
+		document.body.setAttribute('class', theme);
+		document.body.dataset.theme = theme;
+	}, [theme]);
 
 	const handleThemeChange = (theme: unknown) => {
 		setSearchParams({ theme: theme as string });
