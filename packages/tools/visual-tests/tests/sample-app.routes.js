@@ -508,7 +508,6 @@ ROUTES.set('input-range/basic?noColumns', {
 });
 ROUTES.set('input-text/basic?noColumns', {
 	snapshot: {
-		skip: true,
 		zoom: {
 			skip: true,
 		},

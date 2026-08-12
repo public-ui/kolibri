@@ -118,16 +118,14 @@
 		&__text {
 			color: var(--button-text-color);
 			background-color: var(--button-background-color);
-			border-color: var(--button-border-color);
-			border-style: solid;
-
 			border-radius: 2px;
+
 			min-width: var(--a11y-min-size);
 			min-height: var(--a11y-min-size);
 			padding: var(--ecl-spacing-xs) var(--ecl-spacing-m);
-			border-width: var(--button-border-width);
 
 			line-height: 1.2;
+			border: var(--button-border-color) solid var(--button-border-width);
 
 			.kol-span {
 				&__container {
@@ -142,6 +140,12 @@
 			&.kol-span--hide-label {
 				padding: var(--ecl-spacing-xs);
 			}
+		}
+
+		&--inline,
+		&--inline .#{$block-classname}__text {
+			min-width: 0;
+			min-height: 0;
 		}
 	}
 
