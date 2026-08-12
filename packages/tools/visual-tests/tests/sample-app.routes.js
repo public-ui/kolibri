@@ -168,6 +168,13 @@ ROUTES.set('card/basic', {
 		},
 	},
 });
+ROUTES.set('card/linked', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('card/headlines', {
 	snapshot: {
 		zoom: {
@@ -1305,6 +1312,17 @@ ROUTES.set('scenarios/focus-elements?component=button', {
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=buttonLink', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=card', {
 	snapshot: {
 		viewportSize: {
 			width: 300,
