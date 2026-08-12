@@ -1324,11 +1324,9 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 							</thead>
 						)}
 						<tbody class="kol-table__body">
-							{!!this.state._loading && (
-								<div class="kol-table__cell--loader">
-									<SpinFC label={this.state._loading} show={true} variant="cycle" showToggled={true} />
-								</div>
-							)}
+							<div class={clsx(this.state._loading && 'kol-table__loader--shown')}>
+								<SpinFC label={this.state._loading ?? ''} show={!!this.state._loading} variant="cycle" showToggled={false} />
+							</div>
 							{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}
 						</tbody>
 						{this.renderFoot()}
