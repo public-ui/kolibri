@@ -27,6 +27,10 @@
 			font-weight: bold;
 			border: 0;
 			text-align: left;
+
+			&:focus {
+				outline: none;
+			}
 		}
 
 		&__input--range {
