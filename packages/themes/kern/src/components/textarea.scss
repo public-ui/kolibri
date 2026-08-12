@@ -12,5 +12,9 @@
 		display: block;
 		height: auto;
 		border: none;
+
+		&:focus {
+			outline: none;
+		}
 	}
 }

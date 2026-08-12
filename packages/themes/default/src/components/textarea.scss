@@ -23,5 +23,9 @@
 		&::placeholder {
 			color: var(--color-subtle);
 		}
+
+		&:focus {
+			outline: none;
+		}
 	}
 }
