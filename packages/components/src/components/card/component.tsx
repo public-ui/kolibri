@@ -189,9 +189,7 @@ export class KolCardWc implements CardAPI, ClickableElement, FocusableElement {
 
 	@Watch('_href')
 	public validateHref(value?: string): void {
-		validateHref(this, value, {
-			required: true,
-		});
+		validateHref(this, value);
 	}
 
 	@Watch('_label')

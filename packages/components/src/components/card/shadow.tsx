@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Method, Prop } from '@stencil/core';
+import { Component, Element, h, Method, Prop } from '@stencil/core';
 import type {
 	CardProps,
 	ClickableElement,
@@ -31,6 +31,8 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	shadow: true,
 })
 export class KolCard implements CardProps, ClickableElement, FocusableElement {
+	// @ts-expect-error: host is needed by the decorator.
+	@Element() private readonly host?: HTMLKolCardElement;
 	protected readonly ctaRef = createCtaRef<HTMLKolCardWcElement>();
 
 	/**
