@@ -282,7 +282,7 @@ export class KolLinkWc implements ClickableElement, FocusableElement, InternalLi
 	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 

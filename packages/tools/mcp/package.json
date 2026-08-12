@@ -76,16 +76,16 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
-		"@modelcontextprotocol/inspector": "2.0.0",
+		"@modelcontextprotocol/inspector": "2.1.0",
 		"@public-ui/eslint-config": "workspace:*",
 		"@types/express": "5.0.6",
-		"@types/node": "26.1.2",
+		"@types/node": "26.2.0",
 		"eslint": "9.39.5",
-		"knip": "6.31.0",
+		"knip": "6.32.1",
 		"nodemon": "3.1.14",
 		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"tsx": "4.23.7",
+		"tsx": "4.23.12",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},

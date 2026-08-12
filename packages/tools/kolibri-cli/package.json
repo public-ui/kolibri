@@ -47,11 +47,11 @@
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
 		"@public-ui/eslint-config": "workspace:*",
-		"@types/node": "26.1.2",
+		"@types/node": "26.2.0",
 		"@types/semver": "7.8.0",
 		"cross-env": "10.1.0",
 		"eslint": "9.39.5",
-		"knip": "6.31.0",
+		"knip": "6.32.1",
 		"mocha": "11.8.0",
 		"nodemon": "3.1.14",
 		"ts-node": "10.9.2",

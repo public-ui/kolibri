@@ -130,7 +130,7 @@ export class KolPopoverButton implements ClickableElement, FocusableElement, Pop
 	@Prop() public _hideLabel?: boolean = false;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsPropType;
 

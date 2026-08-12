@@ -17,7 +17,7 @@ export const TooltipFC: FC<TooltipFCProps> = ({ label, badgeText, id, refFloatin
 	return (
 		<div class="kol-tooltip__floating" hidden={label.length === 0} ref={refFloating}>
 			<div class="kol-tooltip__arrow" />
-			<SpanFC class="kol-tooltip__content" id={id || undefined} badgeText={badgeText} label={label} />
+			<SpanFC class="kol-tooltip__content" badgeText={badgeText} id={id} label={label} />
 		</div>
 	);
 };

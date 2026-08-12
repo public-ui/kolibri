@@ -95,7 +95,7 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	@Prop() public _color?: Stringified<PropColor> = '#000';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 

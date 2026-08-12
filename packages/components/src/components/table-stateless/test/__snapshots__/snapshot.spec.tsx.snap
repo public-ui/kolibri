@@ -148,7 +148,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with multiple s
                 <div class="kol-table__selection-input-tooltip">
                   <div class="kol-tooltip__floating">
                     <div class="kol-tooltip__arrow"></div>
-                    <span class="kol-span kol-tooltip__content" id="kol-table-selection-all-label">
+                    <span class="kol-span kol-tooltip__content">
                       <span class="kol-span__container">
                         <span class="kol-span__label">
                           kol-table-selection-all

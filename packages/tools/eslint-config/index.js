@@ -17,6 +17,7 @@ import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import globals from 'globals';
+import noTranslateCastOrConcat from './rules/no-translate-cast-or-concat.js';
 import requireBarrelImport from './rules/require-barrel-import.js';
 
 /**
@@ -25,6 +26,7 @@ import requireBarrelImport from './rules/require-barrel-import.js';
 export const kolibriPlugin = {
 	rules: {
 		'require-barrel-import': requireBarrelImport,
+		'no-translate-cast-or-concat': noTranslateCastOrConcat,
 	},
 };
 

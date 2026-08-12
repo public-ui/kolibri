@@ -246,7 +246,7 @@ export class KolNav implements NavAPI {
 							_ariaExpanded={!this.state._hideLabel}
 							_icons={this.state._hideLabel ? 'kolicon-chevron-right' : 'kolicon-chevron-left'}
 							_hideLabel
-							_label={translate(this.state._hideLabel ? 'kol-nav-maximize' : 'kol-nav-minimize')}
+							_label={this.state._hideLabel ? translate('kol-nav-maximize') : translate('kol-nav-minimize')}
 							_on={{
 								onClick: (): void => {
 									this.state = {

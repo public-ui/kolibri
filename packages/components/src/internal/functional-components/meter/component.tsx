@@ -1,6 +1,5 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
-import type { TranslationKey } from '../../../i18n';
 import { translate } from '../../../i18n';
 
 import type { FunctionalComponentProps } from '../generic-types';
@@ -54,7 +53,16 @@ export const MeterFC: FC<MeterFCProps> = (props) => {
 
 	// State classification is only meaningful when low or high boundaries are defined
 	const hasStateClassification = low !== undefined || high !== undefined;
-	const stateLabel = hasStateClassification ? translate(`kol-meter-state-${state}` as TranslationKey) : '';
+	let stateLabel = '';
+	if (hasStateClassification) {
+		if (state === 'critical') {
+			stateLabel = translate('kol-meter-state-critical');
+		} else if (state === 'optimum') {
+			stateLabel = translate('kol-meter-state-optimum');
+		} else {
+			stateLabel = translate('kol-meter-state-suboptimal');
+		}
+	}
 
 	const staticValueText = isPercentage
 		? translate('kol-live-value', { placeholders: { value: String(displayValue), unit } })

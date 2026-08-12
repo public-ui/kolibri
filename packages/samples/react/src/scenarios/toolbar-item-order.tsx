@@ -1,34 +1,25 @@
 import type { ToolbarItemsPropType } from '@public-ui/components';
 import { KolHeading, KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 export const ToolbarItemOrder: FC = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [isSubmitting2, setIsSubmitting2] = useState(false);
 
-	useEffect(() => {
-		let timer: ReturnType<typeof setTimeout>;
-		if (isSubmitting) {
-			timer = setTimeout(() => {
-				setIsSubmitting(false);
-			}, 2000);
-		}
-		return () => clearTimeout(timer);
-	}, [isSubmitting]);
+	const handleSubmit = () => {
+		setIsSubmitting(true);
+		setTimeout(() => {
+			setIsSubmitting(false);
+		}, 2000);
+	};
 
-	useEffect(() => {
-		let timer: ReturnType<typeof setTimeout>;
-		if (isSubmitting2) {
-			timer = setTimeout(() => {
-				setIsSubmitting2(false);
-			}, 2000);
-		}
-		return () => clearTimeout(timer);
-	}, [isSubmitting2]);
-
-	const handleSubmit = () => setIsSubmitting(true);
-	const handleSubmit2 = () => setIsSubmitting2(true);
+	const handleSubmit2 = () => {
+		setIsSubmitting2(true);
+		setTimeout(() => {
+			setIsSubmitting2(false);
+		}, 2000);
+	};
 
 	const toolbarItems = useMemo(() => {
 		const items: ToolbarItemsPropType = Array.from({ length: 5 }, (_item, index) => ({

@@ -45,6 +45,7 @@ import { InputDateController } from './controller';
 /**
  * The **Date** input type creates an input field for date values. These can be specific dates as well as weeks, months, or time values.
  *
+ * @slot - The label of the input field.
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
@@ -244,7 +245,7 @@ export class KolInputDate implements ClickableElement, FocusableElement, InputDa
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
 
