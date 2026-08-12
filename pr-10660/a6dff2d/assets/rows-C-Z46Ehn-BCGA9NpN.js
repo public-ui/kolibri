@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-DtDs96kH.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
