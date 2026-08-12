@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-Dq0pfie8.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
