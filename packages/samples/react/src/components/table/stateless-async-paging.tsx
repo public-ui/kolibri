@@ -1,5 +1,5 @@
 import type { KoliBriTableHeaders } from '@public-ui/components';
-import { KolPagination, KolSpin, KolTableStateless } from '@public-ui/react-v19';
+import { KolPagination, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -19,28 +19,6 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 160, sortDirection: 'NOS' },
 		],
 	],
-};
-
-const LoadingOverlayFC: FC<{
-	label: string;
-	show: boolean;
-}> = ({ label, show }) => {
-	if (show) {
-		return (
-			<div className="loading-overlay">
-				<KolSpin
-					_label={label}
-					_show={show}
-					_variant="cycle"
-					style={{
-						backgroundColor: 'transparent',
-					}}
-				/>
-			</div>
-		);
-	} else {
-		return null;
-	}
 };
 
 export const TableStatelessAsync: FC = () => {
@@ -72,6 +50,7 @@ export const TableStatelessAsync: FC = () => {
 			<section className="w-full relative">
 				<KolTableStateless
 					_label="Table for demonstration purposes"
+					_loading={loading ? (currentAction === 'sort' ? 'Table is being sorted...' : 'Page is loading...') : ''}
 					_headerCells={HEADERS_HORIZONTAL}
 					_data={complexData}
 					_on={{
@@ -88,7 +67,6 @@ export const TableStatelessAsync: FC = () => {
 						onChangePage: () => loadData('paginate'),
 					}}
 				/>
-				<LoadingOverlayFC label={currentAction === 'sort' ? 'Table is being sorted...' : 'Page is loading...'} show={loading} />
 			</section>
 		</>
 	);

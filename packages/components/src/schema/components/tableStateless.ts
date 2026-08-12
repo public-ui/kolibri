@@ -15,7 +15,13 @@ import type { KoliBriTableDataType, KoliBriTableSelection } from '../types';
 
 type RequiredProps = PropLabel & PropTableData & PropTableHeaderCells;
 
-type OptionalProps = PropAriaLabelledby & PropTableCallbacks & PropTableDataFoot & PropTableSelection & PropHasSettingsMenu;
+type OptionalProps = {
+	loading: string;
+} & PropAriaLabelledby &
+	PropTableCallbacks &
+	PropTableDataFoot &
+	PropTableSelection &
+	PropHasSettingsMenu;
 
 type RequiredStates = {
 	headerCells: TableHeaderCells;
@@ -25,6 +31,7 @@ type RequiredStates = {
 type OptionalStates = {
 	dataFoot: KoliBriTableDataType[];
 	fixedCols: [number, number];
+	loading: string;
 	selection: KoliBriTableSelection;
 } & PropHasSettingsMenu &
 	PropVariantClassName &

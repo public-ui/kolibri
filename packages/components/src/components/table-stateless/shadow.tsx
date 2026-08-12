@@ -72,6 +72,11 @@ export class KolTableStateless implements TableStatelessProps {
 	@Prop() public _label!: string;
 
 	/**
+	 * If set the table shows a loading spinner with this string as it's label
+	 */
+	@Prop() public _loading?: string;
+
+	/**
 	 * Defines the callback functions for table events.
 	 */
 	@Prop() public _on?: TableCallbacksPropType;
@@ -115,6 +120,7 @@ export class KolTableStateless implements TableStatelessProps {
 				_fixedCols={this._fixedCols}
 				_headerCells={this._headerCells}
 				_label={this._label}
+				_loading={this._loading}
 				_on={this._on}
 				_selection={this._selection}
 				_hasSettingsMenu={this._hasSettingsMenu}

@@ -69,6 +69,12 @@
 			.kol-button__text {
 				justify-items: start;
 			}
+
+			&:has(.kol-table__cell--loader) {
+				position: relative;
+				// der body braucht etwas höhe für die darstellung der lade animation
+				min-height: calc(var(--a11y-min-size) * 5);
+			}
 		}
 
 		&__cell {
@@ -129,6 +135,19 @@
 
 			&--sticky-right:nth-child(1 of .kol-table__cell--sticky-left) {
 				border-left: 2px solid black;
+			}
+
+			&--loader {
+				background: white;
+				display: flex;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				z-index: 1;
+				align-items: center;
+				justify-content: center;
 			}
 		}
 
