@@ -17,6 +17,7 @@ import { PredefinedSettings } from './predefined-settings';
 import { TableRenderCell } from './render-cell';
 import { TableSettingsColumnOptions } from './settings-column-options';
 import { TableSortData } from './sort-data';
+import { TableStatefulAsync } from './stateful-async-paging';
 import { TableStatefulExport } from './stateful-export';
 import { TableStatefulResetSort } from './stateful-reset-sort';
 import { TableStatefulSettingsPersistence } from './stateful-settings-persistence';
@@ -50,6 +51,7 @@ export const TABLE_ROUTES: Routes = {
 		'settings-column-options': TableSettingsColumnOptions,
 		'sort-data': TableSortData,
 		'direction-aware-sort': TableDirectionAwareSort,
+		'stateful-async': TableStatefulAsync,
 		'stateful-export': TableStatefulExport,
 		'stateful-reset-sort': TableStatefulResetSort,
 		'stateful-settings-persistence': TableStatefulSettingsPersistence,
