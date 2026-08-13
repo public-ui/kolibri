@@ -5,7 +5,7 @@ exports[`kol-button should render with _label="Label" _ariaDescription="Aria Des
   <template shadowrootmode="open">
     <kol-button-wc>
       <!---->
-      <button aria-description="Aria Description" class="kol-button kol-button--normal kol-button--standalone" type="button">
+      <button aria-describedby="nonce" class="kol-button kol-button--normal kol-button--standalone" type="button">
         <span class="kol-button__text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -17,6 +17,9 @@ exports[`kol-button should render with _label="Label" _ariaDescription="Aria Des
           </span>
         </span>
       </button>
+      <span class="visually-hidden" id="nonce">
+        Aria Description
+      </span>
     </kol-button-wc>
   </template>
 </kol-button>
