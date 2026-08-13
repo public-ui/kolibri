@@ -145,9 +145,9 @@ export class KolTableStateful implements TableAPI {
 	@Prop() public _label!: string;
 
 	/**
-	 * If set the table shows a loading spinner with this string as it's label
+	 * Wether the table shows a loading spinner (default: false).
 	 */
-	@Prop() public _loading?: string;
+	@Prop() public _loading?: boolean;
 
 	/**
 	 * Defines whether to show the data distributed over multiple pages.

@@ -43,12 +43,7 @@ export const TableStatefulAsync: FC = () => {
 			</SampleDescription>
 
 			<section className="w-full relative">
-				<KolTableStateful
-					_label="Table for demonstration purposes"
-					_loading={loading ? 'Data is loading...' : ''}
-					_headers={HEADERS_HORIZONTAL}
-					_data={complexData}
-				/>
+				<KolTableStateful _label="Table for demonstration purposes" _loading={loading} _headers={HEADERS_HORIZONTAL} _data={complexData} />
 			</section>
 		</>
 	);

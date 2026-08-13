@@ -50,7 +50,7 @@ export const TableStatelessAsync: FC = () => {
 			<section className="w-full relative">
 				<KolTableStateless
 					_label="Table for demonstration purposes"
-					_loading={loading ? (currentAction === 'sort' ? 'Table is being sorted...' : 'Page is loading...') : ''}
+					_loading={loading}
 					_headerCells={HEADERS_HORIZONTAL}
 					_data={complexData}
 					_on={{

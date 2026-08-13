@@ -42,7 +42,7 @@ import {
 	validateTableHeaderCells,
 	validateTableSelection,
 	validateVariantClassName,
-	watchString,
+	watchBoolean,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { KoliBriTableSelectionKey } from '../../schema/types';
@@ -93,6 +93,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private translateSort = translate('kol-sort');
 	private translateSortOrder = translate('kol-table-sort-order');
+	private translateDataLoading = translate('kol-table-data-loading');
+	private translateDataLoaded = translate('kol-table-data-loaded');
 
 	private maxCols: number = 0;
 	private fixedOffsets: number[] = [];
@@ -171,9 +173,9 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	@Prop() public _label!: string;
 
 	/**
-	 * If set the table shows a loading spinner with this string as it's label
+	 * Wether the table shows a loading spinner (default: false).
 	 */
-	@Prop() public _loading?: string;
+	@Prop() public _loading?: boolean;
 
 	/**
 	 * Defines the callback functions for table events.
@@ -241,8 +243,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	}
 
 	@Watch('_loading')
-	public validateLoading(value?: LabelPropType): void {
-		watchString(this, '_loading', value);
+	public validateLoading(value?: boolean): void {
+		watchBoolean(this, '_loading', value);
 	}
 
 	@Watch('_on')
@@ -1325,7 +1327,15 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						)}
 						<tbody class="kol-table__body">
 							<div class={clsx(this.state._loading && 'kol-table__loader--shown')}>
-								<SpinFC label={this.state._loading ?? ''} show={!!this.state._loading} variant="cycle" showToggled={false} />
+								<SpinFC
+									label={
+										this.state._loading
+											? this.translateDataLoading.replace('{{caption}}', this.state._label)
+											: this.translateDataLoaded.replace('{{caption}}', this.state._label)
+									}
+									show={!!this.state._loading}
+									variant="cycle"
+								/>
 							</div>
 							{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}
 						</tbody>
