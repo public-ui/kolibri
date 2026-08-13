@@ -1,5 +1,6 @@
 @use '~@public-ui/components/index' as *;
 @use '../mixins/button.mixin' as *;
+@use './focus-outline.mixin' as *;
 
 @mixin card {
 	@include button('kol-button');
@@ -30,6 +31,25 @@
 			.kol-icon {
 				font-size: to-rem(24);
 			}
+		}
+
+		&__link {
+			color: var(--kern-color-action-default);
+			&:focus {
+				outline: 0;
+
+				&::after {
+					@include focus-outline;
+				}
+			}
+
+			&:hover {
+				text-decoration-thickness: var(--kern-3);
+			}
+		}
+
+		&:has(&__link:hover) {
+			background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 		}
 	}
 }

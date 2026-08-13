@@ -1,0 +1,27 @@
+@use './button' as *;
+@use './to-rem' as *;
+@use './icon' as *;
+
+@mixin popover-button {
+	@include kol-icon-theme;
+	@include kol-button('kol-button');
+
+	.kol-popover-button {
+		&--inline {
+			margin: 0 to-rem(4);
+
+			.kol-button__text {
+				padding: 0;
+			}
+		}
+
+		&__popover--styled {
+			background-color: var(--color-light);
+			border-radius: var(--border-radius);
+			padding: to-rem(8) to-rem(12);
+
+			line-height: 1.5;
+			border: var(--border-width) solid var(--color-subtle);
+		}
+	}
+}

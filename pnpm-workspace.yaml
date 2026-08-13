@@ -29,6 +29,7 @@ packages:
 allowBuilds:
   '@evilmartians/lefthook': true
   '@modelcontextprotocol/ext-apps': true
+  '@modelcontextprotocol/inspector': true
   '@parcel/watcher': true
   '@swc/core': true
   chromedriver: true

@@ -6,21 +6,4 @@
 @layer kol-component {
 	@include kol-button-styles('kol-button');
 	@include kol-popover-button-styles;
-
-	.kol-popover-button {
-		&--open {
-			.kol-button__tooltip {
-				display: none;
-			}
-		}
-
-		&--inline {
-			display: inline-block;
-
-			.kol-button {
-				min-width: 0;
-				min-height: 1em;
-			}
-		}
-	}
 }

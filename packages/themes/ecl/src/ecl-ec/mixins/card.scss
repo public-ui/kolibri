@@ -31,5 +31,27 @@
 				margin-bottom: 0;
 			}
 		}
+
+		&__link {
+			color: var(--ecl-color-primary);
+
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+				text-decoration-thickness: from-font;
+				text-underline-offset: clamp(3px, 0.245em, 10px);
+			}
+
+			&:focus {
+				outline: 2px solid var(--ecl-color-primary);
+				border-radius: 1px;
+				outline-offset: 2px;
+			}
+
+			&::after {
+				display: none;
+			}
+		}
 	}
 }

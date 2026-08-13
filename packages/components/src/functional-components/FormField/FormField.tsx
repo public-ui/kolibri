@@ -11,6 +11,7 @@ import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
 import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
 import KolFormFieldLabelFc from '../FormFieldLabel';
+import type { FormFieldLabelInfoPopoverProps } from '../FormFieldLabel/FormFieldLabel';
 import KolFormFieldMsgFc from '../FormFieldMsg';
 
 const formFieldTooltipControllerById = new Map<string, TooltipController>();
@@ -61,6 +62,7 @@ export type FormFieldProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	label: string;
 	hideLabel?: boolean;
 	hideMsg?: boolean;
+	infoPopover?: FormFieldLabelInfoPopoverProps;
 	accessKey?: string;
 	shortKey?: string;
 	counter?: {
@@ -114,6 +116,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 		hideMsg,
 		hideLabel,
 		label,
+		infoPopover,
 		hint,
 		accessKey,
 		shortKey,
@@ -201,6 +204,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 					shortKey={shortKey}
 					readOnly={readOnly}
 					showBadge={showBadge}
+					infoPopover={infoPopover}
 				/>
 			)}
 			<InputContainer {...formFieldInputProps} ref={setInputContainerRef}>

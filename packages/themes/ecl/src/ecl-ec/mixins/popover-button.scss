@@ -1,0 +1,24 @@
+@use './button' as *;
+@use './icon' as *;
+@use '../../mixins/to-rem' as *;
+
+@mixin popover-button {
+	@include icon;
+	@include button('kol-button');
+
+	.kol-popover-button {
+		&--inline {
+			margin: 0 to-rem(4);
+
+			.kol-button__text {
+				padding: 0;
+			}
+		}
+
+		&__popover--styled {
+			background-color: var(--ecl-color-white);
+			padding: to-rem(8);
+			border: 1px solid var(--ecl-color-primary);
+		}
+	}
+}
