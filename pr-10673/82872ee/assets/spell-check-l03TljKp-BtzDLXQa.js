@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-X5JHTDOF.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
