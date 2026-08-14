@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-4DMEGY3P.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
