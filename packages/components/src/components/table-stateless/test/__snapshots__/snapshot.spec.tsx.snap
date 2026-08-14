@@ -27,6 +27,11 @@ exports[`kol-table-stateless-wc should render with _label="Table with horizontal
           </tr>
         </thead>
         <tbody class="kol-table__body">
+          <div>
+            <span aria-busy="false" class="visually-hidden" role="alert">
+              kol-table-data-loaded
+            </span>
+          </div>
           <tr class="kol-table__row kol-table__row--body">
             <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="row" style="width: 80px;">
               Row 1
@@ -103,6 +108,11 @@ exports[`kol-table-stateless-wc should render with _label="Table with merged par
           </tr>
         </thead>
         <tbody class="kol-table__body">
+          <div>
+            <span aria-busy="false" class="visually-hidden" role="alert">
+              kol-table-data-loaded
+            </span>
+          </div>
           <tr class="kol-table__row kol-table__row--body">
             <td class="kol-table__cell kol-table__cell--body">
               John
@@ -169,6 +179,11 @@ exports[`kol-table-stateless-wc should render with _label="Table with multiple s
           </tr>
         </thead>
         <tbody class="kol-table__body">
+          <div>
+            <span aria-busy="false" class="visually-hidden" role="alert">
+              kol-table-data-loaded
+            </span>
+          </div>
           <tr class="kol-table__row kol-table__row--body">
             <td class="kol-table__cell kol-table__cell--selection">
               <div class="kol-table__selection">
@@ -224,6 +239,11 @@ exports[`kol-table-stateless-wc should render with _label="Table with only horiz
           </tr>
         </thead>
         <tbody class="kol-table__body">
+          <div>
+            <span aria-busy="false" class="visually-hidden" role="alert">
+              kol-table-data-loaded
+            </span>
+          </div>
           <tr class="kol-table__row kol-table__row--body">
             <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
               Cell 1.1
@@ -271,6 +291,11 @@ exports[`kol-table-stateless-wc should render with _label="Table with single sel
           </tr>
         </thead>
         <tbody class="kol-table__body">
+          <div>
+            <span aria-busy="false" class="visually-hidden" role="alert">
+              kol-table-data-loaded
+            </span>
+          </div>
           <tr class="kol-table__row kol-table__row--body">
             <td class="kol-table__cell kol-table__cell--selection">
               <div class="kol-table__selection">
@@ -334,6 +359,11 @@ exports[`kol-table-stateless-wc should render with _label="Table with two horizo
           </tr>
         </thead>
         <tbody class="kol-table__body">
+          <div>
+            <span aria-busy="false" class="visually-hidden" role="alert">
+              kol-table-data-loaded
+            </span>
+          </div>
           <tr class="kol-table__row kol-table__row--body">
             <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="row" style="width: 90px;">
               Row 1
@@ -391,6 +421,11 @@ exports[`kol-table-stateless-wc should render with _label="Table with two spanne
           </tr>
         </thead>
         <tbody class="kol-table__body">
+          <div>
+            <span aria-busy="false" class="visually-hidden" role="alert">
+              kol-table-data-loaded
+            </span>
+          </div>
           <tr class="kol-table__row kol-table__row--body">
             <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" rowspan="2" scope="row">
               V-Header
@@ -442,6 +477,11 @@ exports[`kol-table-stateless-wc should render with _label="Table without data sh
           </tr>
         </thead>
         <tbody class="kol-table__body">
+          <div>
+            <span aria-busy="false" class="visually-hidden" role="alert">
+              kol-table-data-loaded
+            </span>
+          </div>
           <tr class="kol-table__row kol-table__row--body">
             <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="1" rowspan="1">
               kol-no-entries
@@ -473,6 +513,11 @@ exports[`kol-table-stateless-wc should render with _label="Table without data wi
           </tr>
         </thead>
         <tbody class="kol-table__body">
+          <div>
+            <span aria-busy="false" class="visually-hidden" role="alert">
+              kol-table-data-loaded
+            </span>
+          </div>
           <tr class="kol-table__row kol-table__row--body">
             <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="1" rowspan="1">
               kol-no-entries
@@ -504,6 +549,11 @@ exports[`kol-table-stateless-wc should render with _label="Table without data wi
           </tr>
         </thead>
         <tbody class="kol-table__body">
+          <div>
+            <span aria-busy="false" class="visually-hidden" role="alert">
+              kol-table-data-loaded
+            </span>
+          </div>
           <tr class="kol-table__row kol-table__row--body">
             <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="2" rowspan="1">
               kol-no-entries
