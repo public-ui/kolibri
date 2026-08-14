@@ -83,21 +83,19 @@ jobs:
       matrix:
         package: ['test-tag-name-transformer', 'theme-bwst', 'theme-default', 'theme-desy', 'theme-kern', 'theme-ecl']
     runs-on: ubuntu-latest
+    # Pinned Playwright image – must match the @playwright/test version in
+    # packages/tools/visual-tests/package.json (enforced by the "Verify Playwright version" step).
+    container: mcr.microsoft.com/playwright:v1.60.0-noble
     steps:
       - name: Checkout
         uses: actions/checkout@v7
         with:
           persist-credentials: false
       - uses: ./.github/actions/pnpm-setup
-      - name: Cache Playwright browsers
-        uses: actions/cache@v6
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-playwright-
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps firefox
+      - name: Verify Playwright version matches container image
+        run: |
+          INSTALLED=$(pnpm --filter @public-ui/visual-tests exec node -p "require('@playwright/test/package.json').version")
+          [ "$INSTALLED" = "1.60.0" ] || { echo "::error::@playwright/test $INSTALLED does not match container image v1.60.0 – update the image tags in the workflows"; exit 1; }
       - name: Build
         run: pnpm --filter @public-ui/visual-tests^... build
       - name: Visual Tests
