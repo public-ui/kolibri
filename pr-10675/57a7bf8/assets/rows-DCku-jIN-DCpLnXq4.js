@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-0wlrwTYG.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
