@@ -24,7 +24,8 @@
 
 		&__button {
 			min-height: to-rem(40);
-			&__text {
+
+			.kol-button__text {
 				white-space: nowrap;
 				border-bottom-left-radius: 0;
 				border-bottom-right-radius: calc(var(--border-radius) - 2px);
