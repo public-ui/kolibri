@@ -33,7 +33,7 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputRadioController } from './controller';
 
-import { FormFieldLabelInfoPopoverProps } from '../../components';
+import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import KolFieldControlStateWrapperFc, {
 	type FieldControlStateWrapperProps,
 } from '../../functional-component-wrappers/FieldControlStateWrapper/FieldControlStateWrapper';

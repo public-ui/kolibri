@@ -5,9 +5,13 @@
 @use '../@shared/input-core' as *;
 @use '../mixins/field-control' as *;
 @use '../mixins/icon' as *;
+@use '../mixins/form-field' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
+	@include kol-form-field-theme;
+	@include kol-field-control-theme;
+
 	:host {
 		--theme-visibility-delay: 0.5s;
 	}
@@ -21,8 +25,6 @@
 			}
 		}
 	}
-
-	@include kol-field-control-theme;
 
 	.kol-field-control {
 		$root: &;

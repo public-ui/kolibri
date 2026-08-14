@@ -100,7 +100,6 @@ export class KolInputCheckbox implements ClickableElement, FocusableElement, Inp
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
 			renderNoTooltip: true,
-			infoPopover: this._infoPopover,
 		};
 	}
 
@@ -121,6 +120,7 @@ export class KolInputCheckbox implements ClickableElement, FocusableElement, Inp
 					}
 				},
 			},
+			infoPopover: this._infoPopover,
 		};
 	}
 
