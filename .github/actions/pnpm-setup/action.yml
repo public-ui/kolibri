@@ -2,6 +2,13 @@ name: pnpm Setup
 runs:
   using: 'composite'
   steps: # https://pnpm.io/continuous-integration#github-actions
+    - name: Mark workspace as safe git directory
+      # In container jobs (e.g. the pinned Playwright image) the workspace is owned by the runner
+      # user while the container runs as root. Git then refuses to operate in the repository
+      # ("detected dubious ownership"), which breaks `lefthook install` during `pnpm install`.
+      # No-op on regular runner jobs.
+      run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      shell: bash
     - name: Install pnpm
       uses: pnpm/action-setup@v6
       with:
