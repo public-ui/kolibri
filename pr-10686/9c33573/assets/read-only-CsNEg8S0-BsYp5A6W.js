@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-Z4BbNVRn.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
