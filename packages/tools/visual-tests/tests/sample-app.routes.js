@@ -1309,6 +1309,17 @@ ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
 	},
 });
 
+ROUTES.set('scenarios/same-height-of-all-form-elements-with-label', {
+	axe: {
+		skipFailures: true,
+	},
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+
 /* Focus tests */
 ROUTES.set('scenarios/focus-elements?component=accordion', {
 	snapshot: {
