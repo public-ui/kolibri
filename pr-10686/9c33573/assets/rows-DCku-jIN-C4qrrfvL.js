@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-Z4BbNVRn.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
