@@ -671,6 +671,11 @@ ROUTES.set('link-button/basic', {
 		skip: true,
 	},
 });
+ROUTES.set('link-button/target', {
+	snapshot: {
+		skip: true,
+	},
+});
 ROUTES.set('link/basic', {
 	snapshot: {
 		zoom: {
