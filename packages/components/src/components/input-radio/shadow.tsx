@@ -33,6 +33,7 @@ import { delegateFocus, setFocus } from '../../utils/element-focus';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputRadioController } from './controller';
 
+import { FormFieldLabelInfoPopoverProps } from '../../components';
 import KolFieldControlStateWrapperFc, {
 	type FieldControlStateWrapperProps,
 } from '../../functional-component-wrappers/FieldControlStateWrapper/FieldControlStateWrapper';
@@ -136,6 +137,7 @@ export class KolInputRadio implements ClickableElement, FocusableElement, InputR
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
 			hideLabel: false,
+			infoPopover: this._infoPopover,
 		};
 	}
 
@@ -244,6 +246,11 @@ export class KolInputRadio implements ClickableElement, FocusableElement, InputR
 	 * Defines the hint text.
 	 */
 	@Prop() public _hint?: string = '';
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
