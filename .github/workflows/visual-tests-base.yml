@@ -29,7 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     # Pinned Playwright image – must match the @playwright/test version in
     # packages/tools/visual-tests/package.json (enforced by the "Verify Playwright version" step).
-    container: mcr.microsoft.com/playwright:v1.60.0-noble
+    # --user 1001 (pwuser, same uid as the runner user): Firefox refuses to launch as root,
+    # see https://playwright.dev/docs/ci#via-containers
+    container:
+      image: mcr.microsoft.com/playwright:v1.60.0-noble
+      options: --user 1001
     steps:
       - name: Checkout base branch
         uses: actions/checkout@v7
