@@ -13,6 +13,9 @@ export const ROUTES = new Map();
  *   - options:
  *     - maxDiffPixelRatio: number (Default: 0)
  *   - skip: boolean (Default: false)
+ *   - forceFullPage: boolean (Default: false) – capture the route as one full-page screenshot even if
+ *     the view contains `data-visual-block` containers. Use for deliberate composition tests
+ *     (component spacing, page layout).
  *   - viewportSize:
  *     - width (Default: 800)
  *     - height (Default: 100)

@@ -63,4 +63,18 @@ In the following runs, new screenshots will be compared to this reference.
 
 To update the reference screenshots call `npm run test:update`.
 
+### Element screenshots (`data-visual-block`)
+
+Sample views in the [React Sample App](https://github.com/public-ui/kolibri/tree/develop/packages/samples/react) mark their variant blocks with a `data-visual-block` attribute — either via the `SampleBlock` helper component or by setting the attribute directly on a container element (e.g. a `<fieldset>`). When a route contains such blocks, the visual tests capture **one element screenshot per block** (`<route-slug>--<block-id>.png`) instead of one full-page screenshot. This isolates diffs: a change to one variant no longer invalidates the entire page screenshot through layout shifts.
+
+Rules for block ids:
+
+- kebab-case (`[a-z0-9]+(-[a-z0-9]+)*`), max. 30 characters — enforced by the test.
+- Unique within a route — duplicates fail the test.
+- Hard-code ids instead of deriving them from visible labels, so text changes don't rename snapshot files.
+- Blocks must be visible in `?hideMenus` mode and must not have zero size.
+- Overlay content (tooltips, toasts, popovers) that extends beyond the block's bounding box is clipped — such routes should use full-page screenshots instead.
+
+Routes without any `data-visual-block` container fall back to a full-page screenshot. Routes that should deliberately be captured as a whole page (composition tests) set `snapshot.forceFullPage: true` in `tests/sample-app.routes.js`.
+
 For details on theming see the [default theme README](../../themes/default/README.md).
