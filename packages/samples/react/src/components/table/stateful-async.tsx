@@ -1,5 +1,5 @@
 import type { KoliBriTableHeaders } from '@public-ui/components';
-import { KolPagination, KolTableStateless } from '@public-ui/react-v19';
+import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -21,8 +21,8 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	],
 };
 
-export const TableStatelessAsync: FC = () => {
-	const getAsyncData = () => new Promise<{ COMPLEX_DATA: ComplexData[] }>((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 5000));
+export const TableStatefulAsync: FC = () => {
+	const getAsyncData = () => new Promise<{ COMPLEX_DATA: ComplexData[] }>((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 50000));
 	const loadData = () => {
 		setLoading(true);
 		getAsyncData().then((result: Awaited<ReturnType<typeof getAsyncData>>) => {
@@ -39,32 +39,11 @@ export const TableStatelessAsync: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>
-					This sample shows how KolTableStateless can be used async and with KolPagination. Paging and sorting are not functional here, because a backend would
-					offer this in real life.
-				</p>
+				<p>This sample shows how KolTableStateful can load data async.</p>
 			</SampleDescription>
 
 			<section className="w-full relative">
-				<KolTableStateless
-					_label="Table for demonstration purposes"
-					_loading={loading}
-					_headerCells={HEADERS_HORIZONTAL}
-					_data={complexData}
-					_on={{
-						onSort: () => loadData(),
-					}}
-				/>
-				<KolPagination
-					_max={200}
-					_page={1}
-					_siblingCount={0}
-					_boundaryCount={2}
-					_pageSize={15}
-					_on={{
-						onChangePage: () => loadData(),
-					}}
-				/>
+				<KolTableStateful _label="Table for demonstration purposes" _loading={loading} _headers={HEADERS_HORIZONTAL} _data={complexData} />
 			</section>
 		</>
 	);

@@ -170,5 +170,21 @@ executeSnapshotTests<TableStatelessProps>(
 			},
 			_data: [{ id: '1', header1: 'Cell 1.1' }],
 		},
+		{
+			_label: 'Table shows loading spinner',
+			_headerCells: {
+				horizontal: [
+					[
+						{ key: 'header1', label: 'Header 1', textAlign: 'left', width: 150 },
+						{ key: 'header2', label: 'Header 2', textAlign: 'center', width: 180 },
+					],
+				],
+			},
+			_data: [
+				{ header1: 'Cell 1.1', header2: 'Cell 1.2' },
+				{ header1: 'Cell 2.1', header2: 'Cell 2.2' },
+			],
+			_loading: true,
+		},
 	],
 );

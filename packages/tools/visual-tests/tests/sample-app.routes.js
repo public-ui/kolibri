@@ -1090,6 +1090,39 @@ ROUTES.set('table/variant', {
 		},
 	},
 });
+ROUTES.set('table/empty', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('table/stateful-async', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('table/stateless-async', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('tabs/basic', {
 	snapshot: {
 		zoom: {
