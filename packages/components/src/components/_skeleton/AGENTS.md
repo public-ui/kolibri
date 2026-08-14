@@ -8,7 +8,7 @@ This directory contains the `kol-skeleton` component blueprint — the reference
 
 ## Props-First Refactoring Workflow
 
-**CRITICAL:** Always establish props before implementing controllers or renderers.
+**CRITICAL:** Always establish props before implementing behaviors or renderers.
 
 When refactoring an existing component to match the Skeleton architecture:
 
@@ -19,18 +19,18 @@ When refactoring an existing component to match the Skeleton architecture:
    - Implement normalization and validation via `createPropDefinition<P>()`
    - Export all props from `src/internal/props/index.ts`
 3. **API Definition** — Create or update `api.tsx` using the migrated prop types
-4. **Implementation** — Build controller, functional component, web component using the type-safe props
+4. **Implementation** — Build the web component (orchestrator) and functional component using the type-safe props. The WC absorbs all prop normalization logic directly — no separate controller/aspect class.
 5. **Tests** — Add snapshot and interaction tests alongside component files
 
 **Why Props-First?**
 
 - Establishes the complete API contract before any code is written
 - Ensures no properties are forgotten during migration
-- Provides type-safe interfaces to controller, tests, and web component from day one
+- Provides type-safe interfaces to WC, behaviors, and FC from day one
 - Prevents architectural rework or type mismatches after implementation
 - Makes it clear which props are domain-specific vs. shared across components
 
-**State Management Reference:** See [ARC42 § Controller State Management](./ARC42.md#controller-state-management)
+**State Management Reference:** See [ARC42 § WC State Management](./ARC42.md#wc-state-management)
 for how to distinguish between normalized props (`setRenderProp()`) and derived UI state (`setState()`).
 
 ## Quick Reference
@@ -39,7 +39,8 @@ for how to distinguish between normalized props (`setRenderProp()`) and derived 
 - **Directory layout**: [ARC42 §1 – Blueprint Layout](./ARC42.md#blueprint-layout)
 - **Prop types & validation**: [ARC42 §4 – Schema Helper Layer](./ARC42.md#schema-helper-layer)
 - **Event handler convention**: [ARC42 §4 – Event Handler Policy](./ARC42.md#event-handler-policy)
-- **Controller constructor pattern**: [ARC42 §4 – Constructor Pattern](./ARC42.md#constructor-pattern)
-- **State management**: [ARC42 § Controller State Management](./ARC42.md#controller-state-management)
+- **Behavior composition**: [ARC42 §4 – Behavior Layer](./ARC42.md#behavior-layer)
+- **State management**: [ARC42 § WC State Management](./ARC42.md#wc-state-management)
+- **BemRootNodeFC pattern**: [ARC42 §4 – Functional Component Layer](./ARC42.md#functional-component-layer)
+- **Transitional shadow:false**: [ARC42 §4 – Transitional Pattern](./ARC42.md#transitional-pattern-shadowfalse)
 - **Design decisions**: [ARC42 §9](./ARC42.md#9-design-decisions)
-- **Performance analysis**: [PERFORMANCE_ANALYSIS.md](./PERFORMANCE_ANALYSIS.md)

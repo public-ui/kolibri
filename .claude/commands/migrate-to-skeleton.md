@@ -26,6 +26,8 @@ Work methodically: analyze, plan, implement, validate.
 
 Refactor component **`$ARGUMENTS`** so it conforms to the Skeleton Blueprint architecture and current internals implementation.
 
+> **Architecture note (2-layer model).** The target architecture is **WC (orchestrator) → optional Behaviors + FC**. There is **no controller/aspect class** between the custom element and the FC. The WC extends `BaseWebComponent<Api>` and handles all logic inline (`initRenderProps`, `setRenderProp`, `getRenderProp`, `setState`/`getState`). If the legacy component still has a separate controller/aspect layer, absorb that logic into the WC. Only genuinely reusable cross-component logic becomes a `Behavior` (extending `BaseBehavior`).
+
 ---
 
 ## Working Directories
@@ -42,14 +44,13 @@ Use these in this order:
 1. **Current implementation code** in:
    - `packages/components/src/components/_skeleton/web-components/skeleton/component.tsx`
    - `packages/components/src/internal/functional-components/skeleton/api.tsx`
-   - `packages/components/src/internal/functional-components/skeleton/controller.ts`
    - `packages/components/src/internal/functional-components/skeleton/component.tsx`
-   - `packages/components/src/internal/functional-components/base-controller.ts`
    - `packages/components/src/internal/functional-components/base-web-component.ts`
+   - `packages/components/src/internal/functional-components/base-behavior.ts`
    - `packages/components/src/internal/functional-components/generic-types.ts`
 2. [`ARC42.md`](packages/components/src/components/_skeleton/ARC42.md) as architecture narrative.
 
-If ARC42 text and implementation differ, follow implementation.
+If ARC42 text and implementation differ, follow implementation — ARC42 is the specification, but the implementation is what tests and builds run against. A divergence is a bug in one of the two: fix the doc when the code is correct, or flag it when the code should conform.
 
 ---
 
@@ -61,14 +62,14 @@ If ARC42 text and implementation differ, follow implementation.
 2. Read the skeleton and base internals listed above.
 3. Create a **gap analysis** table:
 
-| Aspect      | Legacy (Current) | Skeleton (Target)                                               | Action Required |
-| ----------- | ---------------- | --------------------------------------------------------------- | --------------- |
-| Inheritance | ...              | `BaseWebComponent<Api>` or `BaseWebComponent.stateLess` pattern | ...             |
-| Controller  | ...              | `BaseController<Api>`                                           | ...             |
-| Props       | ...              | `internal/props` definitions + prop triangle                    | ...             |
-| Rendering   | ...              | Stateless FC + bare `<Host>`                                    | ...             |
+| Aspect      | Legacy (Current)                        | Skeleton (Target)                                                 | Action Required |
+| ----------- | --------------------------------------- | ----------------------------------------------------------------- | --------------- |
+| Inheritance | ...                                     | `BaseWebComponent<Api>`                                           | ...             |
+| Logic layer | Controller/Aspect class OR inline in WC | Absorbed into the WC (orchestrator); Behaviors only when reusable | ...             |
+| Props       | ...                                     | `internal/props` definitions + prop triangle                      | ...             |
+| Rendering   | ...                                     | Stateless FC + `BemRootNodeFC` + bare `<Host>`                    | ...             |
 
-### Phase 2: Props First (Do This Before Controller Refactor)
+### Phase 2: Props First (Do This Before WC Refactor)
 
 1. Collect all existing `@Prop()` declarations.
 2. Reuse existing prop definitions from `packages/components/src/internal/props/` where possible.
@@ -83,25 +84,25 @@ If ARC42 text and implementation differ, follow implementation.
    - Derive API type using `ApiFromConfig`.
    - Only declare needed API sections (`Callbacks`, `Emitters`, `Listeners`, `Methods`, `Refs`, `States`).
 
-2. **Controller** (`packages/components/src/internal/functional-components/$ARGUMENTS/controller.ts`)
-   - Extend `BaseController<Api>`.
-   - Constructor signature: `constructor(stateAccess: StateAccess<Api>)`.
-   - Call `super(stateAccess, propsConfig)`.
-   - Implement `componentWillLoad(props: ResolvedInputProps<Api>)`.
-   - Use `propDefinition.apply(value, callback)` in watchers.
-   - Use arrow properties for handlers/ref setters; prototype methods for lifecycle/watchers/methods.
-
-3. **Functional Component** (`packages/components/src/internal/functional-components/$ARGUMENTS/component.tsx`)
+2. **Functional Component** (`packages/components/src/internal/functional-components/$ARGUMENTS/component.tsx`)
    - Stateless renderer with `FunctionalComponentProps<Api>`.
-   - Build BEM classes via `bem.forBlock('kol-$ARGUMENTS')`.
+   - Wrap the single root node in `BemRootNodeFC` (typed `block` + `modifiers`, merged `class`).
    - No side effects and no state mutation.
 
-4. **Web Component** (`packages/components/src/components/$ARGUMENTS/component.tsx`)
+3. **Behavior** (`packages/components/src/internal/functional-components/$ARGUMENTS/behavior.ts`) — **only when needed**
+   - Create a `Behavior` (extends `BaseBehavior<Api>`, implements `BehaviorInterface<Api>`) **only** when the logic is genuinely shared across multiple components (e.g. `TooltipBehavior`).
+   - Most components have **no Behavior** — keep all logic in the WC.
+   - If the legacy component had a controller/aspect, absorb its logic into the WC first; extract a Behavior only for reusable logic.
+
+4. **Web Component** (`packages/components/src/components/$ARGUMENTS/component.tsx`) — the orchestrator
    - `@Component({ tag: 'kol-$ARGUMENTS', shadow: true })`.
    - Extend `BaseWebComponent<Api>` and implement `WebComponentInterface<Api>`.
-   - Create controller with `new Controller(this.stateAccess)`.
-   - For every `@Prop()`: add matching `@Watch()` and initialize in `componentWillLoad()` (prop triangle).
-   - Render with bare `<Host>` and pass normalized props via `this.ctrl.getRenderProp('key')`.
+   - In `componentWillLoad()`: call `this.initRenderProps(propsConfig)` once, then apply each prop via its factory: `xxxProp.apply(this._xxx, (v) => this.setRenderProp('xxx', v))`. If a Behavior is composed, initialize it here too.
+   - For every `@Prop()`: add matching `@Watch()` that applies the prop factory inline (prop triangle).
+   - Manage `@State()` fields via `this.setState(key, value)` / `this.getState(key)`.
+   - Render with bare `<Host>` and pass normalized props via `this.getRenderProp('key')`.
+   - Compose optional Behaviors: `private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess)` (or `BaseWebComponent.stateLess` for stateless Behaviors).
+   - **Behavior lifecycle (required when composing a Behavior):** `componentDidRender()` must sync the Behavior's listeners (`this.tooltipBehavior.syncListeners(undefined, this.anchorRef.el, true)`), and `disconnectedCallback()` must tear the Behavior down (`this.tooltipBehavior.destroy()`) plus unsubscribe any external stores — otherwise listeners leak (see `components/link/component.tsx` for the full pattern).
 
 5. **Tests** (co-located next to `component.tsx`)
    - `snapshot.spec.tsx` via `executeSnapshotTests`.
@@ -109,7 +110,7 @@ If ARC42 text and implementation differ, follow implementation.
 
 ### Phase 4: Remove Legacy Residue
 
-- Delete orphaned files and obsolete wrappers.
+- Delete orphaned files, obsolete wrappers and old controller/aspect modules (their logic now lives in the WC or a Behavior).
 - Remove unused imports/types/commented code.
 - Ensure no unreferenced migration leftovers remain.
 
@@ -166,7 +167,29 @@ Do not cancel running commands.
 
 ## State Access Pattern (Current)
 
-Controllers receive bundled state access:
+The WC is the orchestrator. `BaseWebComponent<Api>` provides everything inline — no controller/aspect class:
+
+```typescript
+export class KolMyComponent extends BaseWebComponent<MyApi> implements WebComponentInterface<MyApi> {
+	// Optional: compose a Behavior (only for genuinely reusable logic)
+	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
+
+	@Prop() public _myProp?: string;
+
+	@Watch('_myProp')
+	public watchMyProp(value?: string): void {
+		myProp.apply(value, (v) => this.setRenderProp('myProp', v));
+	}
+
+	public componentWillLoad(): void {
+		this.initRenderProps(myPropsConfig);
+		this.watchMyProp(this._myProp);
+		this.tooltipBehavior.componentWillLoad({ label: this._label }); // only if a Behavior exists
+	}
+}
+```
+
+`StateAccess<Api>` is a bundled `{ setState, getState }` type used to hand the WC's state to composed **Behaviors**:
 
 ```typescript
 export type StateAccess<Api extends ComponentApi> = {
@@ -175,27 +198,13 @@ export type StateAccess<Api extends ComponentApi> = {
 };
 ```
 
-Preferred web component pattern:
+Stateless/sentinel pattern for Behaviors that manage no `@State`:
 
 ```typescript
-export class KolMyComponent extends BaseWebComponent<MyApi> {
-	private readonly ctrl = new MyController(this.stateAccess);
-}
-
-export class MyController extends BaseController<MyApi> {
-	public constructor(stateAccess: StateAccess<MyApi>) {
-		super(stateAccess, myPropsConfig);
-	}
-}
+private readonly myBehavior = new MyBehavior(BaseWebComponent.stateLess);
 ```
 
-Stateless/sentinel pattern for composed or legacy controllers:
-
-```typescript
-private readonly ctrl = new MyController(BaseWebComponent.stateLess);
-```
-
-`BaseWebComponent.stateLess` throws on state access by design. Use it only for controllers that never call `setState`/`getState`.
+`BaseWebComponent.stateLess` throws on state access by design. Use it only for Behaviors that never call `setState`/`getState`.
 
 ---
 
@@ -206,8 +215,7 @@ private readonly ctrl = new MyController(BaseWebComponent.stateLess);
 - Underscored external props (`_name`, `_label`).
 - Tests co-located with component files.
 - No new barrel files.
-- ARIA reference IDs (`aria-controls`, `aria-labelledby`, `aria-describedby`, `aria-owns`) must be unique per instance, e.g.:
-  - `private readonly myId = \`prefix-${nonce()}\``from`utils/dev.utils`.
+- ARIA reference IDs (`aria-controls`, `aria-labelledby`, `aria-describedby`, `aria-owns`) must be unique per instance — use `createUniqueId('prefix')` or `createRelatedUniqueId(baseId, 'suffix')` from `utils/dev.utils` (see ARC42 Design Decision 12).
 - Do not add `data-testid` to component markup; use stable BEM selectors in tests.
 
 ---
@@ -216,11 +224,11 @@ private readonly ctrl = new MyController(BaseWebComponent.stateLess);
 
 ### 1. Incomplete Prop Triangle
 
-Every `@Prop()` needs all three:
+Every `@Prop()` needs all three — all inside the WC:
 
 - declaration
-- matching `@Watch()`
-- initialization forwarding in `componentWillLoad()`
+- matching `@Watch()` that applies the prop factory inline
+- application in `componentWillLoad()` via the same watcher, after `this.initRenderProps(propsConfig)`
 
 ### 2. Host Class Anti-Pattern
 
@@ -243,7 +251,7 @@ Use dedicated definitions in `src/internal/props/`.
 ### 6. Wrong Sentinel Assumption
 
 Do not use `noopStateAccess` (not part of current implementation).
-Use `BaseWebComponent.stateLess`.
+Use `BaseWebComponent.stateLess` — and only for stateless Behaviors.
 
 ### 7. JSDoc Type Noise in TS
 
@@ -255,10 +263,11 @@ Do not add redundant `@param {}` / `@returns {}` JSDoc type annotations in TypeS
 
 - [ ] Gap analysis completed and used as migration plan
 - [ ] API uses `PropsConfigShape` + `ApiFromConfig`
-- [ ] Controller extends `BaseController<Api>` and receives `StateAccess<Api>`
-- [ ] Web component uses `new Controller(this.stateAccess)` or justified `BaseWebComponent.stateLess`
+- [ ] WC is the orchestrator — extends `BaseWebComponent<Api>`, no controller/aspect class, calls `this.initRenderProps(propsConfig)` in `componentWillLoad()`
+- [ ] Watchers apply prop factories inline: `xxxProp.apply(value, (v) => this.setRenderProp('xxx', v))`
+- [ ] Behavior (if any) extends `BaseBehavior<Api>` / implements `BehaviorInterface<Api>` and is composed via `this.stateAccess` or justified `BaseWebComponent.stateLess`
 - [ ] Prop triangle complete for every `@Prop()`
-- [ ] Functional component is stateless
+- [ ] Functional component is stateless and wraps its root in `BemRootNodeFC`
 - [ ] `<Host>` has no redundant class attribute
 - [ ] No dead code or orphaned files
 - [ ] Tests co-located and updated

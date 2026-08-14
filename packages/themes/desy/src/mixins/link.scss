@@ -5,86 +5,88 @@
 	@include icon;
 
 	.#{$block-classname} {
-		$root: &;
-		color: var(--color-blue-100);
-
 		font-size: to-rem(16);
 		font-weight: 400;
 		line-height: 1.25;
 		font-style: var(--font-family);
-		text-decoration-line: none;
-		transition: color var(--transition);
-		transition: 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
-		&:visited {
+		&__anchor {
 			color: var(--color-blue-100);
-		}
 
-		&:focus {
-			outline: none;
-		}
+			text-decoration-line: none;
+			transition: color var(--transition);
+			transition: 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
-		.kol-span {
-			&__container {
-				gap: to-rem(8);
-			}
-		}
-
-		.kol-icon {
-			font-size: to-rem(24);
-		}
-
-		&:has(.kol-icon) .kol-span__label {
-			text-decoration: none;
-		}
-
-		&:not([aria-disabled='true']):is(:focus, :hover, :active) {
-			color: var(--color-dark-blue-100);
-
-			.kol-span__label {
-				text-decoration: underline;
-			}
-		}
-
-		&--secondary {
-			color: var(--color-dark-blue-100);
-
-			&:hover,
-			&:focus {
-				text-decoration: underline;
+			&:visited {
+				color: var(--color-blue-100);
 			}
 
 			&:focus {
-				outline: var(--outline-width) solid var(--color-dark-blue-100);
-				border-radius: var(--radius-s);
-				outline-offset: var(--outline-offset);
-			}
-		}
-
-		&--tertiary {
-			color: var(--color-black-70);
-
-			&:hover,
-			&:focus {
-				text-decoration: underline;
+				outline: none;
 			}
 
-			&:focus {
-				outline: var(--outline-width) solid var(--color-black-70);
-				border-radius: var(--radius-s);
-				outline-offset: var(--outline-offset);
+			.kol-span {
+				&__container {
+					gap: to-rem(8);
+				}
 			}
-		}
 
-		&--small {
-			color: var(--color-black-70);
+			.kol-icon {
+				font-size: to-rem(24);
+			}
 
-			font-size: to-rem(14);
-			line-height: 1.25;
+			&:has(.kol-icon) .kol-span__label {
+				text-decoration: none;
+			}
+
+			&:not([aria-disabled='true']):is(:focus, :hover, :active) {
+				color: var(--color-dark-blue-100);
+
+				.kol-span__label {
+					text-decoration: underline;
+				}
+			}
+
+			.#{$block-classname}--secondary & {
+				color: var(--color-dark-blue-100);
+
+				&:hover,
+				&:focus {
+					text-decoration: underline;
+				}
+
+				&:focus {
+					outline: var(--outline-width) solid var(--color-dark-blue-100);
+					border-radius: var(--radius-s);
+					outline-offset: var(--outline-offset);
+				}
+			}
+
+			.#{$block-classname}--tertiary & {
+				color: var(--color-black-70);
+
+				&:hover,
+				&:focus {
+					text-decoration: underline;
+				}
+
+				&:focus {
+					outline: var(--outline-width) solid var(--color-black-70);
+					border-radius: var(--radius-s);
+					outline-offset: var(--outline-offset);
+				}
+			}
+
+			.#{$block-classname}--small & {
+				color: var(--color-black-70);
+
+				font-size: to-rem(14);
+				line-height: 1.25;
+			}
 		}
 
 		&__text {
-			@at-root #{$root}:focus & {
+			.#{$block-classname}__anchor:focus & {
 				outline: 2px solid var(--color-dark-blue-100);
 				border-radius: var(--radius-s);
 				outline-offset: 4px;

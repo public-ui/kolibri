@@ -1,4 +1,4 @@
-import type { ComponentApi, GetStateFn, PropsConfigShape, ResolvedInputProps, ResolvedProps, SetStateFn, StateAccess, StrictFields } from './generic-types';
+import type { ComponentApi, GetStateFn, PropsConfigShape, ResolvedProps, SetStateFn, StateAccess, StrictFields } from './generic-types';
 
 /**
  * Builds a record of default property values from a props configuration.
@@ -14,22 +14,28 @@ function buildDefaultPropsFromConfig(config: PropsConfigShape): Record<string, u
 }
 
 /**
- * Abstract base class for component controllers.
- * Controllers encapsulate validation, normalization, and business logic
- * for component properties, keeping web components thin.
+ * Abstract base class for composable behaviors.
  *
- * Each controller manages two property layers:
- * - **Raw props**: the unprocessed values received from the web component.
- * - **Render props**: the validated and normalized values used for rendering.
+ * A behavior is a reusable unit of logic that lives INSIDE a web component.
+ * It manages its own render props but receives state access from its host
+ * WC — either a real `StateAccess` or {@link BaseWebComponent.stateLess}
+ * for stateless behaviors.
  *
- * State access (setState/getState) is provided by the web component via
- * {@link StateAccess}. Controllers that do not need component state
- * receive {@link BaseWebComponent.stateLess}.
+ * Example:
+ * ```ts
+ * export class TooltipBehavior extends BaseBehavior<TooltipApi> {
+ *   // show/hide tooltip, listener syncing, positioning...
+ * }
+ *
+ * // Inside a WC:
+ * private readonly tooltip = new TooltipBehavior(this.stateAccess);
+ * ```
+ *
+ * Key rule: a WC has exactly one orchestrator (itself), plus N behaviors.
+ * Behaviors must never instantiate other behaviors directly — the WC
+ * composes them.
  */
-export abstract class BaseController<Api extends ComponentApi> {
-	/** Stores unprocessed property values as received from the web component. */
-	private readonly rawProps: Partial<Record<string, unknown>> = {};
-
+export abstract class BaseBehavior<Api extends ComponentApi> {
 	/** Stores validated and normalized property values ready for rendering. */
 	private readonly renderProps: StrictFields<ResolvedProps<Api>>;
 
@@ -41,7 +47,7 @@ export abstract class BaseController<Api extends ComponentApi> {
 
 	/**
 	 * @param stateAccess - Bundled setState/getState provided by the web component,
-	 *   or {@link BaseWebComponent.stateLess} for stateless controllers.
+	 *   or {@link BaseWebComponent.stateLess} for stateless behaviors.
 	 * @param propsConfig - Property configuration defining required/optional props
 	 *   and their default values.
 	 */
@@ -49,19 +55,6 @@ export abstract class BaseController<Api extends ComponentApi> {
 		this.setState = stateAccess.setState;
 		this.getState = stateAccess.getState;
 		this.renderProps = buildDefaultPropsFromConfig(propsConfig) as StrictFields<ResolvedProps<Api>>;
-	}
-
-	/**
-	 * Stores an unprocessed property value before validation.
-	 * Useful for comparisons in watch handlers to detect actual changes.
-	 */
-	protected setRawProp<K extends keyof ResolvedInputProps<Api>>(key: K, value: ResolvedInputProps<Api>[K] | undefined): void {
-		this.rawProps[key as string] = value;
-	}
-
-	/** Returns the last stored raw (unprocessed) value for a property. */
-	protected getRawProp<K extends keyof ResolvedInputProps<Api>>(key: K): ResolvedInputProps<Api>[K] | undefined {
-		return this.rawProps[key as string] as ResolvedInputProps<Api>[K] | undefined;
 	}
 
 	/**

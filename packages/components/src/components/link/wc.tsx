@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { LinkApi } from '../../internal/functional-components/link/api';
@@ -39,23 +39,30 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
 
 /**
- * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
+ * Transitional `kol-link-wc` — a `shadow:false` wrapper that renders `LinkFC` directly into the light DOM.
+ *
+ * This exists because Legacy consumers (link-button, skip-nav, tree-item, nav, etc.) render
+ * `<kol-link-wc>` inside their own shadow DOM and rely on being able to reach the inner `.kol-link`
+ * CSS classes from their stylesheets. A `shadow:true` element would encapsulate those classes
+ * behind a shadow boundary, breaking consumer styling.
+ *
+ * When a consumer migrates to the Skeleton pattern, it should render `LinkFC` directly (inline JSX)
+ * instead of instantiating this element. Once all consumers have migrated, this component can be deleted.
+ *
+ * @internal
  */
 @Component({
-	tag: 'kol-link',
-	styleUrls: {
-		default: './style.scss',
-	},
-	shadow: true,
+	tag: 'kol-link-wc',
+	shadow: false,
 })
-export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi> {
-	@Element() protected readonly host?: HTMLKolLinkElement;
+export class KolLinkWc extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi> {
+	@Element() protected readonly host?: HTMLKolLinkWcElement;
 
 	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
 
@@ -170,13 +177,13 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	// --- Public methods ---
 
 	@Method()
-	@delegateFocus('ctaRef')
+	@directFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	@Method()
-	@delegateClick('ctaRef')
+	@directClick('ctaRef')
 	public async click(): Promise<void> {}
 
 	// --- Refs ---
@@ -189,36 +196,34 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 
 	public render(): JSX.Element {
 		return (
-			<Host>
-				<LinkFC
-					accessKey={this.getRenderProp('accessKey')}
-					ariaControls={this.getRenderProp('ariaControls')}
-					ariaCurrent={this.ariaCurrent}
-					ariaCurrentValue={this.getRenderProp('ariaCurrentValue')}
-					ariaDescription={this.getRenderProp('ariaDescription')}
-					ariaExpanded={this.getRenderProp('ariaExpanded')}
-					ariaOwns={this.getRenderProp('ariaOwns')}
-					customClass={this.getRenderProp('customClass')}
-					disabled={this.getRenderProp('disabled')}
-					download={this.getRenderProp('download')}
-					handleAnchorClick={this.handleAnchorClick}
-					hideLabel={this.getRenderProp('hideLabel')}
-					href={this.getRenderProp('href')}
-					icons={this.getRenderProp('icons')}
-					inline={this.getRenderProp('inline')}
-					label={this.getRenderProp('label')}
-					on={this.getRenderProp('on')}
-					refAnchor={this.setAnchorRef}
-					refTooltip={this.tooltipBehavior.setTooltipElementRef}
-					role={this.getRenderProp('role')}
-					shortKey={this.getRenderProp('shortKey')}
-					tabIndex={this.getRenderProp('tabIndex')}
-					target={this.getRenderProp('target')}
-					tooltipAlign={this.getRenderProp('tooltipAlign')}
-					variant={this.getRenderProp('variant')}
-					expertSlot={this.expertSlot}
-				/>
-			</Host>
+			<LinkFC
+				accessKey={this.getRenderProp('accessKey')}
+				ariaControls={this.getRenderProp('ariaControls')}
+				ariaCurrent={this.ariaCurrent}
+				ariaCurrentValue={this.getRenderProp('ariaCurrentValue')}
+				ariaDescription={this.getRenderProp('ariaDescription')}
+				ariaExpanded={this.getRenderProp('ariaExpanded')}
+				ariaOwns={this.getRenderProp('ariaOwns')}
+				customClass={this.getRenderProp('customClass')}
+				disabled={this.getRenderProp('disabled')}
+				download={this.getRenderProp('download')}
+				handleAnchorClick={this.handleAnchorClick}
+				hideLabel={this.getRenderProp('hideLabel')}
+				href={this.getRenderProp('href')}
+				icons={this.getRenderProp('icons')}
+				inline={this.getRenderProp('inline')}
+				label={this.getRenderProp('label')}
+				on={this.getRenderProp('on')}
+				refAnchor={this.setAnchorRef}
+				refTooltip={this.tooltipBehavior.setTooltipElementRef}
+				role={this.getRenderProp('role')}
+				shortKey={this.getRenderProp('shortKey')}
+				tabIndex={this.getRenderProp('tabIndex')}
+				target={this.getRenderProp('target')}
+				tooltipAlign={this.getRenderProp('tooltipAlign')}
+				variant={this.getRenderProp('variant')}
+				expertSlot={this.expertSlot}
+			/>
 		);
 	}
 

@@ -4,12 +4,12 @@ import { alignFloatingElements } from '../../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../../utils/overlay';
 import { tooltipClosed, tooltipOpened } from '../../../utils/tooltip-open-tracking';
 import { alignProp, badgeTextProp, idProp, labelProp } from '../../props';
-import { BaseController } from '../base-controller';
-import type { ControllerInterface, ResolvedInputProps, StateAccess } from '../generic-types';
+import { BaseBehavior } from '../base-behavior';
+import type { BehaviorInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { TooltipApi } from './api';
 import { tooltipPropsConfig } from './api';
 
-export class TooltipController extends BaseController<TooltipApi> implements ControllerInterface<TooltipApi> {
+export class TooltipBehavior extends BaseBehavior<TooltipApi> implements BehaviorInterface<TooltipApi> {
 	private previousSibling?: HTMLElement;
 	private tooltipElement?: HTMLElement;
 

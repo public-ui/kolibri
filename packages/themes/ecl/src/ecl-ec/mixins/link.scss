@@ -1,20 +1,22 @@
 @mixin link($block-classname) {
 	.#{$block-classname} {
-		color: var(--ecl-color-primary);
+		&__anchor {
+			color: var(--ecl-color-primary);
 
-		.kol-span__label {
-			text-decoration-thickness: from-font;
-			text-underline-offset: clamp(3px, 0.245em, 10px);
-		}
+			.kol-span__label {
+				text-decoration-thickness: from-font;
+				text-underline-offset: clamp(3px, 0.245em, 10px);
+			}
 
-		&:hover {
-			color: var(--ecl-color-primary-140);
-		}
+			&:hover {
+				color: var(--ecl-color-primary-140);
+			}
 
-		&:focus {
-			outline: 2px solid var(--ecl-color-primary);
-			border-radius: 1px;
-			outline-offset: 2px;
+			&:focus {
+				outline: 2px solid var(--ecl-color-primary);
+				border-radius: 1px;
+				outline-offset: 2px;
+			}
 		}
 	}
 }

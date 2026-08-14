@@ -1,8 +1,8 @@
 import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
-import { TooltipController } from '../../internal/functional-components/tooltip/controller';
 import {
 	buildBadgeTextString,
 	getMsgType,
@@ -18,25 +18,25 @@ import { createRelatedUniqueId } from '../../utils/dev.utils';
 import KolFieldControlHintFc from '../FormFieldHint';
 import KolFieldControlLabelFc from '../FormFieldLabel';
 
-const fieldControlTooltipControllerById = new Map<string, TooltipController>();
+const fieldControlTooltipBehaviorPool = new Map<string, TooltipBehavior>();
 
-const getFieldControlTooltipController = (id: string): TooltipController => {
-	const tooltipController = fieldControlTooltipControllerById.get(id);
-	if (tooltipController) {
-		return tooltipController;
+const getFieldControlTooltipBehavior = (id: string): TooltipBehavior => {
+	const tooltipBehavior = fieldControlTooltipBehaviorPool.get(id);
+	if (tooltipBehavior) {
+		return tooltipBehavior;
 	}
 
-	const nextTooltipController = new TooltipController(BaseWebComponent.stateLess);
-	nextTooltipController.componentWillLoad({ label: '' });
-	fieldControlTooltipControllerById.set(id, nextTooltipController);
-	return nextTooltipController;
+	const nextTooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
+	nextTooltipBehavior.componentWillLoad({ label: '' });
+	fieldControlTooltipBehaviorPool.set(id, nextTooltipBehavior);
+	return nextTooltipBehavior;
 };
 
-const destroyFieldControlTooltipController = (id: string): void => {
-	const tooltipController = fieldControlTooltipControllerById.get(id);
-	if (tooltipController) {
-		tooltipController.destroy();
-		fieldControlTooltipControllerById.delete(id);
+const destroyFieldControlTooltipBehavior = (id: string): void => {
+	const tooltipBehavior = fieldControlTooltipBehaviorPool.get(id);
+	if (tooltipBehavior) {
+		tooltipBehavior.destroy();
+		fieldControlTooltipBehaviorPool.delete(id);
 	}
 };
 
@@ -111,23 +111,23 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 	const useTooltipInsteadOfLabel = canShowTooltip && !hasExpertSlot && hideLabel;
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const labelId = createRelatedUniqueId(id, 'label');
-	const tooltipController = useTooltipInsteadOfLabel ? getFieldControlTooltipController(id) : undefined;
+	const tooltipBehavior = useTooltipInsteadOfLabel ? getFieldControlTooltipBehavior(id) : undefined;
 
-	if (tooltipController) {
-		tooltipController.watchAlign(tooltipAlign);
-		tooltipController.watchBadgeText(badgeText || '');
-		tooltipController.watchId(labelId);
-		tooltipController.watchLabel(label);
+	if (tooltipBehavior) {
+		tooltipBehavior.watchAlign(tooltipAlign);
+		tooltipBehavior.watchBadgeText(badgeText || '');
+		tooltipBehavior.watchId(labelId);
+		tooltipBehavior.watchLabel(label);
 	} else {
-		destroyFieldControlTooltipController(id);
+		destroyFieldControlTooltipBehavior(id);
 	}
 
 	const forwardedInputRef = fieldControlInputProps?.ref as ((el?: HTMLDivElement) => void) | undefined;
 	const setInputContainerRef = (el?: HTMLDivElement): void => {
 		forwardedInputRef?.(el);
-		if (tooltipController && el) {
-			tooltipController.initContext(el);
-			tooltipController.syncListeners(undefined, el, true);
+		if (tooltipBehavior && el) {
+			tooltipBehavior.initContext(el);
+			tooltipBehavior.syncListeners(undefined, el, true);
 		}
 	};
 
@@ -146,7 +146,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 						refFloating={
 							tooltipFloatingRef ??
 							((el?: HTMLDivElement) => {
-								tooltipController?.setTooltipElementRef(el);
+								tooltipBehavior?.setTooltipElementRef(el);
 							})
 						}
 					/>
