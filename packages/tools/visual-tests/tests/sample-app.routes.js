@@ -13,6 +13,9 @@ export const ROUTES = new Map();
  *   - options:
  *     - maxDiffPixelRatio: number (Default: 0)
  *   - skip: boolean (Default: false)
+ *   - forceFullPage: boolean (Default: false) – capture the route as one full-page screenshot even if
+ *     the view contains `data-visual-block` containers. Use for deliberate composition tests
+ *     (component spacing, page layout).
  *   - viewportSize:
  *     - width (Default: 800)
  *     - height (Default: 100)
@@ -1077,6 +1080,39 @@ ROUTES.set('table/sticky-cols', {
 	},
 });
 ROUTES.set('table/variant', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('table/empty', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('table/stateful-async', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('table/stateless-async', {
 	snapshot: {
 		viewportSize: {
 			width: 1000,

@@ -18,11 +18,7 @@ export class SpinController extends BaseController<SpinApi> implements Controlle
 
 	public watchShow(value?: boolean): void {
 		showProp.apply(value, (v) => {
-			const previousShow = this.getRenderProp('show');
 			this.setRenderProp('show', v);
-			// Emit done state only when the spinner toggles from visible to hidden,
-			// so screen readers receive a completion announcement once.
-			this.setState('showToggled', previousShow === true && v === false);
 		});
 	}
 

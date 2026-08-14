@@ -47,6 +47,8 @@ export default {
 	sort: 'sort',
 	'split-button-dropdown-label-open': 'Show options',
 	success: 'Success',
+	'table-data-loading': 'Data in table {{caption}} is loading.',
+	'table-data-loaded': 'Data in table {{caption}} got loaded.',
 	'table-pagination-label': 'Pagination for table {{label}}',
 	'table-selection': 'Selection',
 	'table-selection-all': 'Select all',
