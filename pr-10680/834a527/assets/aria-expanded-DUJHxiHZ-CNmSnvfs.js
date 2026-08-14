@@ -1,0 +1,1 @@
+import{Ot as e,Tt as t,kt as n}from"./index--LewHX57.js";var r=[`tab`,`treeitem`],i=(e,t)=>{n(e,`_role`,e=>typeof e==`string`&&r.includes(e),new Set([`KoliBriAlternativeButtonLinkRole {${r.join(`, `)}`]),t)},a=(t,n)=>{e(t,`_ariaControls`,n)},o=(t,n)=>{e(t,`_ariaDescription`,n)},s=(e,n)=>{t(e,`_ariaExpanded`,n)};export{s as i,a as n,o as r,i as t};
