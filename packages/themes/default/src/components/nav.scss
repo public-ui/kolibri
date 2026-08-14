@@ -45,6 +45,10 @@
 					@include focus-outline;
 				}
 
+				.kol-link__anchor:focus-visible {
+					@include focus-outline;
+				}
+
 				#{$root}__list & {
 					padding-left: to-rem(var(--kol-nav-item-padding-left));
 					border-left: 2px solid transparent;

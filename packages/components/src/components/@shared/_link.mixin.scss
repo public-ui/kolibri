@@ -11,6 +11,8 @@
 
 	.#{$block-classname} {
 		display: inline-flex;
+		// Prevents the link from stretching to fill flex/block parents
+		max-width: fit-content;
 
 		&--standalone {
 			min-width: var(--a11y-min-size);

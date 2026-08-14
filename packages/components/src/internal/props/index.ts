@@ -23,7 +23,6 @@ export * from './label';
 export * from './label-with-expert-slot';
 export * from './level';
 export * from './link-callbacks';
-export * from './link-label';
 export * from './link-role';
 export * from './link-target';
 export * from './loading';

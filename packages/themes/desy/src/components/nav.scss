@@ -38,7 +38,8 @@
 				}
 
 				&:hover,
-				&:focus {
+				&:focus,
+				.kol-link__anchor:focus {
 					.kol-span__label {
 						text-decoration: none;
 					}
