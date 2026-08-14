@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-DaOCWC1Z.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
