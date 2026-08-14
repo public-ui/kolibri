@@ -23,9 +23,8 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 
 export const TableStatelessAsync: FC = () => {
 	const getAsyncData = () => new Promise<{ COMPLEX_DATA: ComplexData[] }>((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 5000));
-	const loadData = (action: 'sort' | 'paginate') => {
+	const loadData = () => {
 		setLoading(true);
-		setCurrentAction(action);
 		getAsyncData().then((result: Awaited<ReturnType<typeof getAsyncData>>) => {
 			setComplexData(result.COMPLEX_DATA.slice(0, 15));
 			setLoading(false);
@@ -34,9 +33,8 @@ export const TableStatelessAsync: FC = () => {
 
 	const [complexData, setComplexData] = useState<ComplexData[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
-	const [currentAction, setCurrentAction] = useState<'sort' | 'paginate'>('sort');
 
-	useEffect(() => loadData('sort'), []);
+	useEffect(() => loadData(), []);
 
 	return (
 		<>
@@ -54,7 +52,7 @@ export const TableStatelessAsync: FC = () => {
 					_headerCells={HEADERS_HORIZONTAL}
 					_data={complexData}
 					_on={{
-						onSort: () => loadData('sort'),
+						onSort: () => loadData(),
 					}}
 				/>
 				<KolPagination
@@ -64,7 +62,7 @@ export const TableStatelessAsync: FC = () => {
 					_boundaryCount={2}
 					_pageSize={15}
 					_on={{
-						onChangePage: () => loadData('paginate'),
+						onChangePage: () => loadData(),
 					}}
 				/>
 			</section>
