@@ -1,0 +1,1 @@
+import"./index-Da15S0DA.js";import{r as e}from"./align-mIloBnU0-o7xt8tUu.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
