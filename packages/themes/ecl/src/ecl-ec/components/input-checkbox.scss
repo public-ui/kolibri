@@ -1,6 +1,7 @@
 @use '../../mixins/to-rem' as *;
 @use '../mixins/alert' as *;
 @use '../mixins/checkbox' as *;
+@use '../mixins/popover-button' as *;
 
 @layer kol-theme-component {
 	@include alert;
@@ -28,6 +29,13 @@
 	}
 
 	.kol-field-control {
+		&__label {
+			@include popover-button;
+
+			display: flex;
+			gap: to-rem(4);
+		}
+
 		&--label-align-left &__label {
 			padding-right: to-rem(8);
 		}
