@@ -7,6 +7,7 @@ import { TableBig } from './big-table';
 import { TableColumnAlignment } from './column-alignment';
 import { TableComplexHeaders } from './complex-headers';
 import { TableDirectionAwareSort } from './direction-aware-sort';
+import { TableEmpty } from './empty';
 import { TableHighlightRow } from './highlight-row';
 import { TableHorizontalScrollbar } from './horizontal-scrollbar';
 import { InteractiveChildElements } from './interactive-child-elements';
@@ -17,7 +18,7 @@ import { PredefinedSettings } from './predefined-settings';
 import { TableRenderCell } from './render-cell';
 import { TableSettingsColumnOptions } from './settings-column-options';
 import { TableSortData } from './sort-data';
-import { TableStatefulAsync } from './stateful-async-paging';
+import { TableStatefulAsync } from './stateful-async';
 import { TableStatefulExport } from './stateful-export';
 import { TableStatefulResetSort } from './stateful-reset-sort';
 import { TableStatefulSettingsPersistence } from './stateful-settings-persistence';
@@ -38,6 +39,7 @@ export const TABLE_ROUTES: Routes = {
 	table: {
 		'column-alignment': TableColumnAlignment,
 		'complex-headers': TableComplexHeaders,
+		empty: TableEmpty,
 		'horizontal-scrollbar': TableHorizontalScrollbar,
 		'interactive-child-elements': InteractiveChildElements,
 		'multi-sort': MultiSortTable,

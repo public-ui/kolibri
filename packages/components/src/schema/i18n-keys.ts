@@ -47,6 +47,8 @@ export enum KeyEnum {
 	sort,
 	'split-button-dropdown-label-open',
 	success,
+	'table-data-loading',
+	'table-data-loaded',
 	'table-pagination-label',
 	'table-selection',
 	'table-selection-all',

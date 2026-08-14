@@ -1,11 +1,8 @@
 import type { KoliBriTableHeaders } from '@public-ui/components';
 import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { SampleDescription } from '../SampleDescription';
-
-import type { ComplexData } from './test-complex-data';
-import { COMPLEX_DATA } from './test-complex-data';
 
 const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
@@ -21,30 +18,14 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	],
 };
 
-export const TableStatefulAsync: FC = () => {
-	const getAsyncData = () => new Promise<{ COMPLEX_DATA: ComplexData[] }>((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 5000));
-	const loadData = () => {
-		setLoading(true);
-		getAsyncData().then((result: Awaited<ReturnType<typeof getAsyncData>>) => {
-			setComplexData(result.COMPLEX_DATA.slice(0, 15));
-			setLoading(false);
-		});
-	};
-
-	const [complexData, setComplexData] = useState<ComplexData[]>([]);
-	const [loading, setLoading] = useState<boolean>(true);
-
-	useEffect(() => loadData(), []);
-
+export const TableEmpty: FC = () => {
 	return (
 		<>
 			<SampleDescription>
-				<p>This sample shows how KolTableStateful can load data async.</p>
+				<p>This sample shows an empty KolTableStateful.</p>
 			</SampleDescription>
 
-			<section className="w-full relative">
-				<KolTableStateful _label="Table for demonstration purposes" _loading={loading} _headers={HEADERS_HORIZONTAL} _data={complexData} />
-			</section>
+			<KolTableStateful _label="Table for demonstration purposes" _headers={HEADERS_HORIZONTAL} _data={[]} />
 		</>
 	);
 };
