@@ -38,6 +38,7 @@ export const InputFileCases = forwardRef<HTMLKolInputFileElement, Components.Kol
 					},
 				}}
 				_touched
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 			/>
 			<KolInputFile {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Upload file" _touched />
 			<KolInputFile {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Upload file" _touched />
