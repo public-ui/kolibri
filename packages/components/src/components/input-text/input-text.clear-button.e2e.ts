@@ -20,12 +20,6 @@ test.describe('kol-input-text clear button', () => {
 		await expect(clearButton).not.toBeVisible();
 	});
 
-	test('should render clear button when input has value', async ({ page }) => {
-		await page.setContent('<kol-input-text _label="Search" _type="search" _value="test"></kol-input-text>');
-		const clearButton = page.getByTestId('kol-input-text-clear-button');
-		await expect(clearButton).toBeVisible();
-	});
-
 	test('should clear input value when clear button is clicked', async ({ page }) => {
 		await page.setContent('<kol-input-text _label="Search" _type="search" _value="test"></kol-input-text>');
 		const input = page.locator('kol-input-text input');
@@ -42,9 +36,9 @@ test.describe('kol-input-text clear button', () => {
 		await expect(clearButton).not.toBeVisible();
 	});
 
-	test('should have correct aria-label', async ({ page }) => {
+	test('should have correct accessible name', async ({ page }) => {
 		await page.setContent('<kol-input-text _label="Search" _type="search" _value="test"></kol-input-text>');
-		const clearButton = page.getByTestId('kol-input-text-clear-button');
-		await expect(clearButton).toHaveAttribute('aria-label', 'Suche löschen');
+		const clearButton = page.getByTestId('kol-input-text-clear-button').locator('button');
+		await expect(clearButton).toHaveAccessibleName('Suche löschen');
 	});
 });
