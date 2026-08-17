@@ -57,7 +57,7 @@ export default {
 	'close-alert': 'Benachrichtigung schließen',
 	'show-password': 'einblenden',
 	'hide-password': 'ausblenden',
-t'clear-search': 'Suche löschen',
+	'clear-search': 'Suche löschen',
 	'no-results-message': 'Keine Ergebnisse gefunden.',
 	'delete-selection': 'Auswahl entfernen',
 	'filename-text': 'Datei auswählen oder hier ablegen...',
