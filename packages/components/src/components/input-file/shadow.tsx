@@ -29,7 +29,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
-import { FormFieldLabelInfoPopoverProps } from '../../components';
+import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import { KolButtonWcTag } from '../../core/component-names';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';

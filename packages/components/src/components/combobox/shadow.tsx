@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { FormFieldLabelInfoPopoverProps } from '../../components';
+import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import { KolButtonWcTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';

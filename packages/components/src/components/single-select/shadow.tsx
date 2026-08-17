@@ -28,7 +28,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
-import { FormFieldLabelInfoPopoverProps } from '../../components';
+import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import { KolButtonWcTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';

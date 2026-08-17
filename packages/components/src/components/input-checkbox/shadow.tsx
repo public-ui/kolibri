@@ -33,7 +33,7 @@ import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputCheckboxController } from './controller';
 
-import { FormFieldLabelInfoPopoverProps } from '../../components';
+import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper/CheckboxStateWrapper';
 import KolFieldControlStateWrapperFc, {
 	type FieldControlStateWrapperProps,

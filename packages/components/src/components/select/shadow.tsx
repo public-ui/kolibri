@@ -21,7 +21,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
-import { FormFieldLabelInfoPopoverProps } from '../../components';
+import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import { KolSelectWcTag } from '../../core/component-names';
 import { validateAriaDetails } from '../../schema/props/aria-details';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
