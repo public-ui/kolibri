@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-Ded3SLwK.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};

@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-DbEsAMyT.js";var t=(t,n)=>{e(t,`_target`,n)};export{t};

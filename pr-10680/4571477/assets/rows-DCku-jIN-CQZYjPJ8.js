@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-Ded3SLwK.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
