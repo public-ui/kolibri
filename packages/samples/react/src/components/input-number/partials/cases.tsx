@@ -26,6 +26,7 @@ export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, Components
 						icon: 'kolicon-kolibri',
 					},
 				}}
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 			/>
 			<KolInputNumber {...props} _required _msg={{ _type: 'error', _description: ERROR_MSG }} _touched _value={123} _label="Number input" />
 			<KolInputNumber {...props} _required _msg={{ _type: 'warning', _description: ERROR_MSG }} _touched _value={123} _label="Number input" />

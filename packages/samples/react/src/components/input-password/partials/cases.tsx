@@ -28,6 +28,7 @@ export const InputPasswordCases = forwardRef<HTMLKolInputPasswordElement, Compon
 					},
 				}}
 				_touched
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 			/>
 			<KolInputPassword {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Passwort" _touched />
 			<KolInputPassword {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Passwort" _touched />
