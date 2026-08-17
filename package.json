@@ -1,5 +1,5 @@
 {
-	"version": "4.3.1-rc.0",
+	"version": "4.3.1-rc.1",
 	"devDependencies": {
 		"@evilmartians/lefthook": "2.1.10",
 		"js-yaml": "5.2.3",

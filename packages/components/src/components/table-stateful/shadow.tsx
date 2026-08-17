@@ -145,6 +145,11 @@ export class KolTableStateful implements TableAPI {
 	@Prop() public _label!: string;
 
 	/**
+	 * Wether the table shows a loading spinner (default: false).
+	 */
+	@Prop() public _loading?: boolean;
+
+	/**
 	 * Defines whether to show the data distributed over multiple pages.
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
@@ -733,6 +738,7 @@ export class KolTableStateful implements TableAPI {
 					_fixedCols={this._fixedCols}
 					_headerCells={headerCells}
 					_label={this.state._label}
+					_loading={this._loading}
 					_dataFoot={this.state._dataFoot}
 					_on={{
 						onSort: (_: MouseEvent, payload: SortEventPayload) => {

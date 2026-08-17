@@ -47,6 +47,8 @@ export default {
 	sort: 'sortieren',
 	'split-button-dropdown-label-open': 'Optionen anzeigen',
 	success: 'Erfolg',
+	'table-data-loading': 'Daten für Tabelle {{caption}} werden geladen.',
+	'table-data-loaded': 'Daten für Tabelle {{caption}} wurden geladen.',
 	'table-pagination-label': 'Paginierung für die Tabelle {{label}}',
 	'table-selection': 'Auswahl',
 	'table-selection-all': 'Alle auswählen',
