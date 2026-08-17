@@ -119,7 +119,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 						this._value = '';
 						this.ctaRef.el?.focus();
 					}}
-					icon="kolicon-x"
+					icon="kolicon-cross"
 					disabled={this._disabled}
 				/>
 			);

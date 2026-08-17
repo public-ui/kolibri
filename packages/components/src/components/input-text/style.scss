@@ -10,4 +10,10 @@
 	@include kol-form-field;
 	@include kol-input-container;
 	@include kol-input;
+
+	input[type='search'] {
+		&::-webkit-search-cancel-button {
+			display: none;
+		}
+	}
 }
