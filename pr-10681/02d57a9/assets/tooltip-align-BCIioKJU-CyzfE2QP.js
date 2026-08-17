@@ -1,0 +1,1 @@
+import"./index-BK3mYSTo.js";import{r as e}from"./align-CMg-YzqB-DBL_LEzo.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
