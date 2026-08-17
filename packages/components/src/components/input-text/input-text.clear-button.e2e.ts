@@ -28,6 +28,21 @@ test.describe('kol-input-text clear button', () => {
 		await expect(input).toHaveValue('test');
 		await clearButton.click();
 		await expect(input).toHaveValue('');
+		await expect(clearButton).not.toBeVisible();
+	});
+
+	test('should show clear button while typing and hide it when field is emptied', async ({ page }) => {
+		await page.setContent('<kol-input-text _label="Search" _type="search"></kol-input-text>');
+		const input = page.locator('kol-input-text input');
+		const clearButton = page.getByTestId('kol-input-text-clear-button');
+
+		await expect(clearButton).not.toBeVisible();
+
+		await input.fill('test');
+		await expect(clearButton).toBeVisible();
+
+		await input.fill('');
+		await expect(clearButton).not.toBeVisible();
 	});
 
 	test('should not render clear button when disabled', async ({ page }) => {
