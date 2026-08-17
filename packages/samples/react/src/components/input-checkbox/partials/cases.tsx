@@ -18,7 +18,13 @@ export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Compon
 			<KolInputCheckbox {...props} _msg={{ _type: 'error', _description: ERROR_MSG }} _label="With error" _touched _value={true} _hint="Hint text" _required />
 			<KolInputCheckbox {...props} _label="With access key" _accessKey="c" _value={null}></KolInputCheckbox>
 			<KolInputCheckbox {...props} _label="With short key" _shortKey="s" _value={null}></KolInputCheckbox>
-			<KolInputCheckbox {...props} _label="" _value={false} _required>
+			<KolInputCheckbox
+				{...props}
+				_label="With popover"
+				_value={false}
+				_required
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
+			>
 				<span slot="expert">Expert Slot & required</span>
 			</KolInputCheckbox>
 		</div>

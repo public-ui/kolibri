@@ -1,7 +1,15 @@
 @use '../mixins/to-rem' as *;
+@use './popover-button' as *;
 
 @mixin kol-field-control-theme {
 	.kol-field-control {
+		&__label {
+			@include popover-button;
+
+			display: flex;
+			gap: to-rem(4);
+		}
+
 		&__label-text {
 			gap: 0;
 		}

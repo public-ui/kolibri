@@ -33,6 +33,7 @@ import type {
 } from '../../schema';
 
 import { getFeatureFlag } from 'adopted-style-sheets';
+import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
@@ -139,6 +140,7 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 			}),
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
+			infoPopover: this._infoPopover,
 		};
 	}
 
@@ -288,6 +290,11 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.

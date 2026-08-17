@@ -20,6 +20,7 @@ export const InputDateCases = forwardRef<HTMLKolInputDateElement, Components.Kol
 				_label="Local datetime (with seconds)"
 				_required
 				_touched
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 			/>
 			<KolInputDate {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Date" _touched />
 			<KolInputDate {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Date" _touched />

@@ -77,6 +77,7 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, Components.KolSelect
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_hint={HINT_MSG}
 				_touched
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 			/>
 			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="With access key" _accessKey="c" />
 			<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="With short key" _shortKey="s" />
