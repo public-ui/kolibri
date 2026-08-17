@@ -187,4 +187,24 @@ test.describe('kol-tabs', () => {
 			expect(finalCount).toBe(1);
 		});
 	});
+
+	test.describe('Label with special characters', () => {
+		test('focuses the selected tab on switch when _label contains a comma', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs, mit Hinweis">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+			await secondTab.click();
+
+			// A comma in _label used to break the `button#<label>-tab-<i>` selector lookup in
+			// focusTabById, so the selected tab button was not focused on switch and screen
+			// readers did not announce the newly selected tab/tabpanel.
+			const tabId = await secondTab.evaluate((el) => el.id);
+			expect(tabId).toMatch(/^[a-zA-Z0-9_-]+$/);
+			await expect(secondTab).toBeFocused();
+			await expect(page.locator('.kol-tabs .selected')).toHaveCount(1);
+		});
+	});
 });

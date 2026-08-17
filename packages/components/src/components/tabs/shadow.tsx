@@ -55,6 +55,18 @@ export class KolTabs implements ClickableElement, FocusableElement, TabsAPI {
 	private currentFocusIndex: number | undefined;
 	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
 
+	/**
+	 * Converts the component `_label` into a string that is safe to use as part of a DOM id
+	 * and as a CSS selector argument. The previous implementation only replaced whitespace,
+	 * so labels containing characters such as a comma (e.g. "Tabs, with note") produced ids
+	 * like "Tabs, with note-tab-0". A comma splits a CSS selector list, which broke the
+	 * `button#...` lookup in `focusTabById` and therefore the focus/announcement of the tab
+	 * button and its tabpanel (`aria-labelledby` <-> `id`) on tab switches.
+	 */
+	private toIdPrefix(label: string): string {
+		return label.replace(/[^a-zA-Z0-9_-]/g, '-');
+	}
+
 	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
 		const nextOffset = offset + step;
 
@@ -195,7 +207,7 @@ export class KolTabs implements ClickableElement, FocusableElement, TabsAPI {
 						_customClass={this.state._selected === index ? 'selected' : ''}
 						_ariaControls={`tabpanel-${index}`}
 						_ariaSelected={this.state._selected === index}
-						_id={`${this.state._label.replace(/\s/g, '-')}-tab-${index}`}
+						_id={`${this.toIdPrefix(this.state._label)}-tab-${index}`}
 						_role="tab"
 						_value={index}
 					></KolButtonWcTag>
@@ -407,7 +419,7 @@ export class KolTabs implements ClickableElement, FocusableElement, TabsAPI {
 		}
 		for (let i = 0; i < this.state._tabs?.length; i++) {
 			const div = document.createElement('div');
-			div.setAttribute('aria-labelledby', `${this.state._label.replace(/\s/g, '-')}-tab-${i}`);
+			div.setAttribute('aria-labelledby', `${this.toIdPrefix(this.state._label)}-tab-${i}`);
 			div.setAttribute('id', `tabpanel-${i}`);
 			div.setAttribute('role', 'tabpanel');
 			div.setAttribute('hidden', '');
@@ -441,7 +453,7 @@ export class KolTabs implements ClickableElement, FocusableElement, TabsAPI {
 
 	private focusTabById(index: number): void {
 		if (this.tabPanelsElement /* SSR instanceof HTMLElement */) {
-			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.state._label.replace(/\s/g, '-')}-tab-${index}`, this.tabPanelsElement);
+			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.toIdPrefix(this.state._label)}-tab-${index}`, this.tabPanelsElement);
 			button?.focus();
 		}
 	}
