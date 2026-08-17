@@ -46,7 +46,7 @@
 		"@vitejs/plugin-react-swc": "4.3.3",
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"eslint": "9.39.5",
-		"knip": "6.32.1",
+		"knip": "6.32.2",
 		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "17.14.1",

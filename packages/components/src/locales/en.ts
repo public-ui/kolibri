@@ -9,6 +9,7 @@ export default {
 	'character-limit-exceeded': 'You have {{over}} characters too many.',
 	'character-limit-hint': 'You can enter up to {{limit}} characters',
 	'character-limit-remaining': 'You have {{remaining}} characters remaining.',
+	'clear-search': 'Clear search',
 	close: 'Close',
 	'close-alert': 'Close notification',
 	'data-browse-text': 'Browse',

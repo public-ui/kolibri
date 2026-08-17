@@ -28,6 +28,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
+import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import { KolButtonWcTag } from '../../core/component-names';
 import { getRenderStates } from '../../functional-component-wrappers/_helpers/getRenderStates';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
@@ -286,6 +287,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 			class: 'kol-single-select',
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
+			infoPopover: this._infoPopover,
 		};
 	}
 
@@ -584,6 +586,11 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 	 * Defines the icon classnames (e.g. `icons="fa-solid fa-user"`).
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
