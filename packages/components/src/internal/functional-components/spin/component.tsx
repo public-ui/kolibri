@@ -15,27 +15,27 @@ function renderSpinVariant(variant: string): unknown {
 			return (
 				<>
 					<span
-						class={`kol-spin__spinner-element 
-							kol-spin__spinner-element--1 
-							kol-spin__spinner--${variant}__element 
+						class={`kol-spin__spinner-element
+							kol-spin__spinner-element--1
+							kol-spin__spinner--${variant}__element
 							kol-spin__spinner--${variant}__element--1`}
 					></span>
 					<span
-						class={`kol-spin__spinner-element 
-							kol-spin__spinner-element--2 
-							kol-spin__spinner--${variant}__element 
+						class={`kol-spin__spinner-element
+							kol-spin__spinner-element--2
+							kol-spin__spinner--${variant}__element
 							kol-spin__spinner--${variant}__element--2`}
 					></span>
 					<span
-						class={`kol-spin__spinner-element 
-							kol-spin__spinner-element--3 
-							kol-spin__spinner--${variant}__element 
+						class={`kol-spin__spinner-element
+							kol-spin__spinner-element--3
+							kol-spin__spinner--${variant}__element
 							kol-spin__spinner--${variant}__element--3`}
 					></span>
 					<span
-						class={`kol-spin__spinner-element 
-							kol-spin__spinner-element--neutral 
-							kol-spin__spinner--${variant}__element 
+						class={`kol-spin__spinner-element
+							kol-spin__spinner-element--neutral
+							kol-spin__spinner--${variant}__element
 							kol-spin__spinner--${variant}__element--4`}
 					></span>
 				</>
@@ -44,7 +44,7 @@ function renderSpinVariant(variant: string): unknown {
 }
 
 export const SpinFC: FC<FunctionalComponentProps<SpinApi>> = (props) => {
-	const { show, label, variant, showToggled } = props;
+	const { show, label, variant } = props;
 
 	return (
 		<Fragment>
@@ -56,11 +56,9 @@ export const SpinFC: FC<FunctionalComponentProps<SpinApi>> = (props) => {
 					</span>
 				</Fragment>
 			) : (
-				showToggled && (
-					<span aria-busy="false" class="visually-hidden" role="alert">
-						{label || translate('kol-action-done')}
-					</span>
-				)
+				<span aria-busy="false" class="visually-hidden" role="alert">
+					{label || translate('kol-action-done')}
+				</span>
 			)}
 		</Fragment>
 	);

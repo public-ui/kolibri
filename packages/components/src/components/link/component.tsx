@@ -58,6 +58,7 @@ import {
 	validateVariantClassName,
 } from '../../schema';
 import { validateTabIndex } from '../../schema/props/tab-index';
+import { nonce } from '../../utils/dev.utils';
 import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
@@ -80,6 +81,7 @@ export class KolLinkWc implements ClickableElement, FocusableElement, InternalLi
 
 	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
 	private readonly tooltipCtrl = new TooltipController(BaseWebComponent.stateLess);
+	private readonly internalDescriptionById = nonce();
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
 	private readonly translateOpenLinkInTab = translate('kol-open-link-in-tab');
@@ -154,7 +156,7 @@ export class KolLinkWc implements ClickableElement, FocusableElement, InternalLi
 	public render(): JSX.Element {
 		const { isExternal, tagAttrs } = this.getRenderValues();
 		const hasExpertSlot = showExpertSlot(this.state._label);
-		const ariaDescription = this.state._ariaDescription?.trim();
+		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
 
 		return (
 			<Host>
@@ -164,7 +166,7 @@ export class KolLinkWc implements ClickableElement, FocusableElement, InternalLi
 					accessKey={this.state._accessKey}
 					aria-current={this.state._ariaCurrent}
 					aria-controls={this.state._ariaControls}
-					aria-description={ariaDescription || undefined}
+					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-disabled={this.state._disabled ? 'true' : undefined}
 					aria-expanded={typeof this.state._ariaExpanded === 'boolean' ? String(this.state._ariaExpanded) : undefined}
 					aria-owns={this.state._ariaOwns}
@@ -218,6 +220,11 @@ export class KolLinkWc implements ClickableElement, FocusableElement, InternalLi
 							refFloating={this.tooltipCtrl.setTooltipElementRef}
 						/>
 					</div>
+				)}
+				{hasAriaDescription && (
+					<span class="visually-hidden" id={this.internalDescriptionById}>
+						{this.state._ariaDescription}
+					</span>
 				)}
 			</Host>
 		);
@@ -282,7 +289,7 @@ export class KolLinkWc implements ClickableElement, FocusableElement, InternalLi
 	@Prop() public _href!: HrefPropType;
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 

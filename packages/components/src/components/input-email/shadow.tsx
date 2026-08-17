@@ -34,6 +34,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
+import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
@@ -46,6 +47,7 @@ import { InputEmailController } from './controller';
 /**
  * The **Email** input type creates an input field for email addresses. It supports built-in format validation, multiple addresses via the `_multiple` property, and auto-complete suggestions.
  *
+ * @slot - The label of the input field.
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
@@ -115,6 +117,7 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 				visualRef: this.counterUpdater.setVisualRef,
 				ariaRef: this.counterUpdater.setAriaRef,
 			},
+			infoPopover: this._infoPopover,
 		};
 	}
 
@@ -207,9 +210,14 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.

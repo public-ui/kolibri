@@ -29,6 +29,7 @@ packages:
 allowBuilds:
   '@evilmartians/lefthook': true
   '@modelcontextprotocol/ext-apps': true
+  '@modelcontextprotocol/inspector': true
   '@parcel/watcher': true
   '@swc/core': true
   chromedriver: true
@@ -41,8 +42,4 @@ allowBuilds:
   ttf2woff2: true
   unrs-resolver: true
 overrides:
-  fast-uri@>=3.0.0 <3.1.5: '>=3.1.5'
-  fast-uri@>=4.0.0 <4.1.2: '>=4.1.2'
-  ip-address@<=10.3.0: '>=10.3.1'
-  ip-address@>=10.1.1 <=10.2.0: '>=10.2.1'
-  ip-address@>=10.1.1 <=10.2.1: '>=10.2.2'
+  js-yaml@>=4.0.0 <4.3.1: '>=4.3.1'

@@ -10,7 +10,16 @@ export const TextareaCases = forwardRef<HTMLKolTextareaElement, Components.KolTe
 			<div className="black-background">
 				<KolTextarea {...props} ref={ref} _placeholder="Placeholder" _label="Text" />
 			</div>
-			<KolTextarea {...props} _placeholder="Placeholder" _required _msg={{ _type: 'error', _description: ERROR_MSG }} _label="Text" _touched _hint={HINT_MSG} />
+			<KolTextarea
+				{...props}
+				_placeholder="Placeholder"
+				_required
+				_msg={{ _type: 'error', _description: ERROR_MSG }}
+				_label="Text"
+				_touched
+				_hint={HINT_MSG}
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
+			/>
 			<KolTextarea {...props} _placeholder="Placeholder" _label="Text" _msg={{ _type: 'info', _description: 'Just a hint' }} _touched />
 			<KolTextarea {...props} _placeholder="Placeholder" _label="Text" _msg={{ _type: 'warning', _description: 'Small warning' }} _touched />
 			<KolTextarea {...props} _placeholder="Placeholder" _label="Text" _msg={{ _type: 'success', _description: 'Success message' }} _touched />

@@ -21,6 +21,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
+import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import { KolSelectWcTag } from '../../core/component-names';
 import { validateAriaDetails } from '../../schema/props/aria-details';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
@@ -68,6 +69,7 @@ export class KolSelect implements FocusableElement, SelectProps {
 					_hideMsg={this._hideMsg}
 					_hint={this._hint}
 					_icons={this._icons}
+					_infoPopover={this._infoPopover}
 					_label={this._label}
 					_msg={this._msg}
 					_multiple={this._multiple}
@@ -130,9 +132,14 @@ export class KolSelect implements FocusableElement, SelectProps {
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.

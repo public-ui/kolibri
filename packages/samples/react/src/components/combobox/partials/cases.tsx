@@ -19,6 +19,7 @@ export const ComboboxCases = (props: Partial<Components.KolCombobox>) => {
 				_label="Label"
 				_placeholder="Placeholder"
 				_required
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 			/>
 			<KolCombobox {...props} _label="With access key" _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} _accessKey="c" />
 			<KolCombobox {...props} _label="With short key" _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} _shortKey="s" />

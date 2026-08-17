@@ -145,6 +145,11 @@ export class KolTableStateful implements TableAPI {
 	@Prop() public _label!: string;
 
 	/**
+	 * Wether the table shows a loading spinner (default: false).
+	 */
+	@Prop() public _loading?: boolean;
+
+	/**
 	 * Defines whether to show the data distributed over multiple pages.
 	 */
 	@Prop() public _pagination?: boolean | Stringified<KoliBriTablePaginationProps>;
@@ -504,9 +509,10 @@ export class KolTableStateful implements TableAPI {
 	 * @returns {JSX.Element} The rendered pagination controls including page range and navigation.
 	 */
 	private renderPagination(position: 'top' | 'bottom'): JSX.Element {
+		const positionLabel = position === 'top' ? translate('kol-pagination-position-top') : translate('kol-pagination-position-bottom');
 		const label = translate('kol-table-pagination-label', {
 			placeholders: {
-				label: `${this.state._label} (${translate(`kol-pagination-position-${position}`)})`,
+				label: `${this.state._label} (${positionLabel})`,
 			},
 		});
 		return (
@@ -732,6 +738,7 @@ export class KolTableStateful implements TableAPI {
 					_fixedCols={this._fixedCols}
 					_headerCells={headerCells}
 					_label={this.state._label}
+					_loading={this._loading}
 					_dataFoot={this.state._dataFoot}
 					_on={{
 						onSort: (_: MouseEvent, payload: SortEventPayload) => {

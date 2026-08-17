@@ -32,6 +32,7 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, Components.K
 				_value="Company"
 				_options="[{'label':'Mrs.','value':'Mrs.'},{'disabled':true,'label':'Mr. (disabled)'},{'label':'Company','value':'Company'}]"
 				_label="Salutation (horizontal)"
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 			/>
 			<KolInputRadio
 				{...props}

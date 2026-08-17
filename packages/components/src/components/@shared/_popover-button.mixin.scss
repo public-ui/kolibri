@@ -8,8 +8,23 @@
 			border: 0;
 		}
 
-		&--inline &__button {
-			display: inline;
+		&--open {
+			.kol-button__tooltip {
+				display: none;
+			}
+		}
+
+		&--inline {
+			display: inline-block;
+
+			&__button {
+				display: inline;
+			}
+
+			.kol-button {
+				min-width: 0;
+				min-height: 1em;
+			}
 		}
 	}
 

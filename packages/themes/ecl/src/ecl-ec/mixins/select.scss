@@ -9,6 +9,10 @@
 	.kol-select {
 		border: none;
 
+		&:focus {
+			outline: none;
+		}
+
 		&[multiple] {
 			overflow: auto;
 		}

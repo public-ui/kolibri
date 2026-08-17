@@ -84,7 +84,6 @@ function getFormFieldProps(
 	if ('_variant' in state) {
 		props.variant = state._variant;
 	}
-
 	return props;
 }
 

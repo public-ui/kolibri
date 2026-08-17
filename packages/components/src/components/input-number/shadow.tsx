@@ -33,6 +33,7 @@ import type {
 } from '../../schema';
 
 import { getFeatureFlag } from 'adopted-style-sheets';
+import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
@@ -45,6 +46,7 @@ import { InputNumberController } from './controller';
 /**
  * The **Number** input type creates an input field for numeric values. Use the `_min`, `_max`, and `_step` properties to restrict the accepted value range.
  *
+ * @slot - The label of the input field.
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
@@ -138,6 +140,7 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 			}),
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
+			infoPopover: this._infoPopover,
 		};
 	}
 
@@ -284,9 +287,14 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.

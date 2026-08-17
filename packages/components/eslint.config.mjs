@@ -63,6 +63,13 @@ export default [
 			...stencilRecommendedRules,
 			...baseRules,
 
+			/**
+			 * translate() must be called with a plain 'kol-...' string literal.
+			 * Forbids casts (as TranslationKey), template literals, variables
+			 * and concatenation so keys stay statically resolvable.
+			 */
+			'kolibri/no-translate-cast-or-concat': 'error',
+
 			// Disable rules that TypeScript already handles
 			'no-undef': 'off',
 

@@ -1,5 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`kol-card should render with _label="Überschrift" _href="#/blank_link" _target="_blank" _level=2 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <kol-card-wc>
+      <!---->
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <a class="kol-card__link" href="#/blank_link" target="_blank">
+          <h2 class="kol-card__header kol-headline kol-headline--h2 kol-headline--single" id="card-heading-nonce">
+            Überschrift
+          </h2>
+        </a>
+        <div class="kol-card__content">
+          <slot></slot>
+        </div>
+      </article>
+    </kol-card-wc>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _href="#/blank_link" _target="_blank" 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <kol-card-wc>
+      <!---->
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <a class="kol-card__link" href="#/blank_link" target="_blank">
+          <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="card-heading-nonce">
+            Überschrift
+          </strong>
+        </a>
+        <div class="kol-card__content">
+          <slot></slot>
+        </div>
+      </article>
+    </kol-card-wc>
+  </template>
+</kol-card>
+`;
+
+exports[`kol-card should render with _label="Überschrift" _href="#/blank_link" 1`] = `
+<kol-card>
+  <template shadowrootmode="open">
+    <kol-card-wc>
+      <!---->
+      <article aria-labelledby="card-heading-nonce" class="kol-card">
+        <a class="kol-card__link" href="#/blank_link">
+          <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="card-heading-nonce">
+            Überschrift
+          </strong>
+        </a>
+        <div class="kol-card__content">
+          <slot></slot>
+        </div>
+      </article>
+    </kol-card-wc>
+  </template>
+</kol-card>
+`;
+
 exports[`kol-card should render with _label="Überschrift" _level=0 _hasCloser=false 1`] = `
 <kol-card>
   <template shadowrootmode="open">

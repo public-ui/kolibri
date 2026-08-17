@@ -13,6 +13,9 @@ export const ROUTES = new Map();
  *   - options:
  *     - maxDiffPixelRatio: number (Default: 0)
  *   - skip: boolean (Default: false)
+ *   - forceFullPage: boolean (Default: false) – capture the route as one full-page screenshot even if
+ *     the view contains `data-visual-block` containers. Use for deliberate composition tests
+ *     (component spacing, page layout).
  *   - viewportSize:
  *     - width (Default: 800)
  *     - height (Default: 100)
@@ -162,6 +165,13 @@ ROUTES.set('button/short-key', {
 	},
 });
 ROUTES.set('card/basic', {
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('card/linked', {
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -501,7 +511,6 @@ ROUTES.set('input-range/basic?noColumns', {
 });
 ROUTES.set('input-text/basic?noColumns', {
 	snapshot: {
-		skip: true,
 		zoom: {
 			skip: true,
 		},
@@ -661,6 +670,11 @@ ROUTES.set('kolibri/basic', {
 	},
 });
 ROUTES.set('link-button/basic', {
+	snapshot: {
+		skip: true,
+	},
+});
+ROUTES.set('link-button/target', {
 	snapshot: {
 		skip: true,
 	},
@@ -1076,6 +1090,39 @@ ROUTES.set('table/variant', {
 		},
 	},
 });
+ROUTES.set('table/empty', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('table/stateful-async', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('table/stateless-async', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
 ROUTES.set('tabs/basic', {
 	snapshot: {
 		zoom: {
@@ -1270,6 +1317,17 @@ ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
 	},
 });
 
+ROUTES.set('scenarios/same-height-of-all-form-elements-with-label', {
+	axe: {
+		skipFailures: true,
+	},
+	snapshot: {
+		zoom: {
+			skip: true,
+		},
+	},
+});
+
 /* Focus tests */
 ROUTES.set('scenarios/focus-elements?component=accordion', {
 	snapshot: {
@@ -1305,6 +1363,17 @@ ROUTES.set('scenarios/focus-elements?component=button', {
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=buttonLink', {
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 0,
+		},
+		zoom: {
+			skip: true,
+		},
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=card', {
 	snapshot: {
 		viewportSize: {
 			width: 300,

@@ -3,9 +3,9 @@ import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@st
 
 import { isEqual } from 'lodash-es';
 import { KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag } from '../../core/component-names';
-import type { TranslationKey } from '../../i18n';
 import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
+import { SpinFC } from '../../internal/functional-components/spin/component';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
 import type {
 	ActionColumnHeaderCell,
@@ -42,6 +42,7 @@ import {
 	validateTableHeaderCells,
 	validateTableSelection,
 	validateVariantClassName,
+	watchBoolean,
 } from '../../schema';
 import { Callback } from '../../schema/enums';
 import type { KoliBriTableSelectionKey } from '../../schema/types';
@@ -92,6 +93,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private translateSort = translate('kol-sort');
 	private translateSortOrder = translate('kol-table-sort-order');
+	private translateDataLoading = translate('kol-table-data-loading');
+	private translateDataLoaded = translate('kol-table-data-loaded');
 
 	private maxCols: number = 0;
 	private fixedOffsets: number[] = [];
@@ -170,6 +173,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	@Prop() public _label!: string;
 
 	/**
+	 * Wether the table shows a loading spinner (default: false).
+	 */
+	@Prop() public _loading?: boolean;
+
+	/**
 	 * Defines the callback functions for table events.
 	 */
 	@Prop() public _on?: TableCallbacksPropType;
@@ -232,6 +240,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		validateLabel(this, value, {
 			required: true,
 		});
+	}
+
+	@Watch('_loading')
+	public validateLoading(value?: boolean): void {
+		watchBoolean(this, '_loading', value);
 	}
 
 	@Watch('_on')
@@ -711,6 +724,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		this.validateDataFoot(this._dataFoot);
 		this.validateHeaderCells(this._headerCells);
 		this.validateLabel(this._label);
+		this.validateLoading(this._loading);
 		this.validateOn(this._on);
 		this.validateSelection(this._selection);
 		this.validateHasSettingsMenu(this._hasSettingsMenu);
@@ -1041,14 +1055,14 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		const dataLength = this.getDataWithSelectionEnabled().length;
 		const isChecked = selectedKeyLength === dataLength;
 		const indeterminate = selectedKeyLength !== 0 && !isChecked;
-		let translationKey = 'kol-table-selection-indeterminate' as TranslationKey;
-		if (isChecked && !indeterminate) {
-			translationKey = 'kol-table-selection-none';
-		}
+		let label: string;
 		if (selectedKeyLength === 0) {
-			translationKey = 'kol-table-selection-all';
+			label = translate('kol-table-selection-all');
+		} else if (isChecked && !indeterminate) {
+			label = translate('kol-table-selection-none');
+		} else {
+			label = translate('kol-table-selection-indeterminate');
 		}
-		const label = translate(translationKey);
 		return (
 			<th scope="col" key={`thead-0-selection`} class="kol-table__cell kol-table__cell--header kol-table__cell--selection">
 				<span class="visually-hidden">{translate('kol-table-selection')}</span>
@@ -1075,7 +1089,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						/>
 					</label>
 					<div class="kol-table__selection-input-tooltip">
-						<TooltipFC label={label} badgeText="" id={`${translationKey}-label`} refFloating={() => {}} />
+						<TooltipFC label={label} badgeText="" refFloating={() => {}} />
 					</div>
 				</div>
 			</th>
@@ -1312,6 +1326,17 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 							</thead>
 						)}
 						<tbody class="kol-table__body">
+							<div class={clsx(this.state._loading && 'kol-table__loader--shown')}>
+								<SpinFC
+									label={
+										this.state._loading
+											? this.translateDataLoading.replace('{{caption}}', this.state._label)
+											: this.translateDataLoaded.replace('{{caption}}', this.state._label)
+									}
+									show={!!this.state._loading}
+									variant="cycle"
+								/>
+							</div>
 							{dataField.map((row: (KoliBriTableCell & KoliBriTableDataType)[], rowIndex: number) => this.renderTableRow(row, rowIndex, true))}
 						</tbody>
 						{this.renderFoot()}

@@ -1,0 +1,27 @@
+@use '../functions/to-rem' as *;
+@use './button' as *;
+
+@mixin popover-button {
+	@include button('kol-button');
+
+	.kol-popover-button {
+		&--inline {
+			margin: 0 to-rem(4);
+		}
+
+		&__popover--styled {
+			color: var(--color-dark-blue-100);
+			background-color: var(--color-white-100);
+
+			border-radius: var(--radius-l);
+			max-width: to-rem(400);
+			padding: to-rem(24);
+
+			font-family: var(--font-family);
+			font-size: to-rem(16);
+			line-height: 1.55;
+
+			border: var(--border-width-s) solid var(--color-blue-100);
+		}
+	}
+}

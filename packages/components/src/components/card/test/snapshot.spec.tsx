@@ -33,5 +33,9 @@ executeSnapshotTests<CardProps>(
 		{ _label: 'Überschrift', _level: 4, _hasCloser: true },
 		{ _label: 'Überschrift', _level: 5, _hasCloser: true },
 		{ _label: 'Überschrift', _level: 6, _hasCloser: true },
+
+		{ _label: 'Überschrift', _href: '#/blank_link' },
+		{ _label: 'Überschrift', _href: '#/blank_link', _target: '_blank' },
+		{ _label: 'Überschrift', _href: '#/blank_link', _target: '_blank', _level: 2 },
 	],
 );

@@ -5,6 +5,7 @@ import clsx from '../../utils/clsx';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import type { FormFieldLabelInfoPopoverProps } from '../../functional-components/FormFieldLabel/FormFieldLabel';
 import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
 import type {
@@ -49,6 +50,7 @@ import { InputTextController } from './controller';
 /**
  * The **Text** input type creates an input field for plain text, search terms, URLs, or phone numbers.
  *
+ * @slot - The label of the input field.
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
@@ -211,6 +213,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 				visualRef: this.counterUpdater.setVisualRef,
 				ariaRef: this.counterUpdater.setAriaRef,
 			},
+			infoPopover: this._infoPopover,
 		};
 	}
 
@@ -298,9 +301,14 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	@Prop() public _hint?: string = '';
 
 	/**
-	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
+	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsHorizontalPropType;
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.

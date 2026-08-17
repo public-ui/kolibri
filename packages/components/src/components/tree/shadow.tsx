@@ -5,6 +5,9 @@ import { KolTreeWcTag } from '../../core/component-names';
 import type { FocusableElement, KolFocusOptions, LabelPropType, TreeProps } from '../../schema';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
+/**
+ * @slot - Children as TreeItem Components
+ */
 @Component({
 	tag: 'kol-tree',
 	styleUrls: {

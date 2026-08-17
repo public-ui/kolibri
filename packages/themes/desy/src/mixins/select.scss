@@ -26,6 +26,10 @@
 			color: var(--color-black-60);
 		}
 
+		&:focus {
+			outline: none;
+		}
+
 		&__option {
 			&:active:not(:disabled),
 			&:checked:not(:disabled),

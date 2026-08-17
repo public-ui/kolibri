@@ -20,6 +20,10 @@
 			height: to-rem(36);
 			border: 1px solid var(--color-subtle);
 			text-align: right;
+
+			&:focus {
+				outline: none;
+			}
 		}
 
 		&__input--range {
@@ -28,11 +32,24 @@
 
 			&::-webkit-slider-thumb {
 				background: var(--color-primary-variant);
+				outline: solid var(--thumb-outline-width) var(--color-primary-variant);
 				-webkit-appearance: none;
+				outline-offset: 2px;
 			}
 
 			&::-moz-range-thumb {
 				background: var(--color-primary-variant);
+				outline: solid var(--thumb-outline-width) var(--color-primary-variant);
+				outline-offset: 2px;
+			}
+
+			&:focus {
+				outline: none;
+				--thumb-outline-width: 2px;
+			}
+
+			&:hover {
+				--thumb-outline-width: 2px;
 			}
 		}
 	}

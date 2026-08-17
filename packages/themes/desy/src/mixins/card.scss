@@ -43,5 +43,19 @@
 			font-size: to-rem(24);
 			line-height: to-rem(16);
 		}
+
+		&__link {
+			text-decoration: none;
+
+			&:focus {
+				outline: 0;
+			}
+		}
+
+		&:has(&__link:hover),
+		&:has(&__link:focus) {
+			background-color: var(--color-blue-100-09);
+			box-shadow: inset 0 to-rem(-3) 0 0 #2d6f9e;
+		}
 	}
 }

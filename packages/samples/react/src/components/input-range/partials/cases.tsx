@@ -36,6 +36,7 @@ export const InputRangeCases = forwardRef<HTMLKolInputRangeElement, Components.K
 				_msg={{ _type: 'error', _description: ERROR_MSG }}
 				_label="Slider with error"
 				_touched
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 			/>
 			<KolInputRange {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Slider" _touched />
 			<KolInputRange {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Slider" _touched />

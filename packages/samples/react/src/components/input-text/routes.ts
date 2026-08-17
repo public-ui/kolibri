@@ -3,6 +3,7 @@ import { InputTextAccessShortKey } from './access-short-key';
 import { InputTextAriaDetails } from './aria-details';
 import { InputTextBackground } from './background-test';
 import { InputTextBasic } from './basic';
+import { InputTextClearButton } from './clear-button';
 import { InputTextCounter } from './counter';
 import { InputTextDisabled } from './disabled';
 import { InputTextExpertSlot } from './expert-slot';
@@ -23,6 +24,7 @@ export const INPUT_TEXT_ROUTES: Routes = {
 	'input-text': {
 		'aria-details': InputTextAriaDetails,
 		basic: InputTextBasic,
+		'clear-button': InputTextClearButton,
 		'get-value': InputTextOnInputOnChange,
 		'message-types': InputTextMessageTypes,
 		placeholder: InputTextPlaceholder,

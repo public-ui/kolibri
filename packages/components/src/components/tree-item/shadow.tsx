@@ -3,6 +3,9 @@ import { Component, h, type JSX, Method, Prop } from '@stencil/core';
 import { KolTreeItemWcTag } from '../../core/component-names';
 import type { HrefPropType, KolFocusOptions, LabelPropType, OpenPropType, TreeItemProps } from '../../schema';
 
+/**
+ * @slot - Further Children as TreeItem Components
+ */
 @Component({
 	tag: 'kol-tree-item', // keep in sync with `const TREE_ITEM_TAG_NAME`
 	styleUrls: {

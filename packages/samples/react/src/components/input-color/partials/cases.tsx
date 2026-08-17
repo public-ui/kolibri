@@ -33,6 +33,11 @@ export const InputColorCases = forwardRef<HTMLKolInputColorElement, Components.K
 			<KolInputColor {...props} _disabled _label="Color (Disabled)" _value="#f08080" />
 			<KolInputColor {...props} _label="With access key" _accessKey="c"></KolInputColor>
 			<KolInputColor {...props} _label="With short key" _shortKey="s"></KolInputColor>
+			<KolInputColor
+				{...props}
+				_label="With short popover"
+				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
+			></KolInputColor>
 		</div>
 	);
 });

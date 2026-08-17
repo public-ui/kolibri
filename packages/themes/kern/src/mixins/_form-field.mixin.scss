@@ -1,4 +1,5 @@
 @use '~@public-ui/components/index' as *;
+@use './popover-button' as *;
 
 @mixin kol-form-field {
 	.kol-form-field {
@@ -11,16 +12,25 @@
 		font-family: var(--kern-typography-font-family-default);
 
 		&__label {
+			@include popover-button;
+
 			color: var(--kern-color-layout-text-default);
 
+			display: flex;
 			padding: var(--kern-metric-baseline-label-default-padding-top) var(--kern-metric-space-none) var(--kern-metric-baseline-label-default-padding-bottom)
 				var(--kern-metric-space-none);
 			order: 1;
+			align-items: flex-end;
 
 			font-size: var(--kern-typography-font-size-static-medium);
 			font-weight: var(--kern-typography-font-weight-medium);
 			line-height: var(--kern-typography-line-height-static-medium);
 			letter-spacing: var(--kern-metric-space-none);
+
+			&--legend {
+				// legends are strange and need float to actually behave in a grid like everyone else
+				float: left;
+			}
 
 			&__read-only {
 				display: none;
