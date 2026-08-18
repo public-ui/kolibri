@@ -62,14 +62,14 @@
 		"@rollup/plugin-typescript": "12.3.0",
 		"@typescript-eslint/eslint-plugin": "7.18.0",
 		"@typescript-eslint/parser": "7.18.0",
-		"autoprefixer": "10.5.0",
+		"autoprefixer": "10.5.4",
 		"cpy-cli": "6.0.0",
 		"eslint": "8.57.1",
 		"nodemon": "3.1.14",
-		"postcss": "8.5.15",
-		"rollup": "4.62.0",
+		"postcss": "8.5.26",
+		"rollup": "4.62.4",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass-embedded": "1.100.0",
+		"sass-embedded": "1.102.0",
 		"typescript": "5.9.3"
 	},
 	"peerDependencies": {

@@ -38,8 +38,8 @@
 		"deepmerge": "4.3.1",
 		"gradient-string": "3.0.0",
 		"loglevel": "1.9.2",
-		"prettier": "3.8.4",
-		"semver": "7.8.4"
+		"prettier": "3.9.6",
+		"semver": "7.8.5"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
@@ -54,7 +54,7 @@
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
 		"knip": "5.88.1",
-		"mocha": "11.7.6",
+		"mocha": "11.8.0",
 		"nodemon": "3.1.14",
 		"rimraf": "6.1.3",
 		"ts-node": "10.9.2",
