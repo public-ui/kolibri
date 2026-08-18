@@ -17,7 +17,7 @@
 		"unused": "knip"
 	},
 	"dependencies": {
-		"@hookform/resolvers": "5.9.0",
+		"@hookform/resolvers": "5.9.1",
 		"@public-ui/react-hook-form-adapter": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
 		"@stencil/core": "4.38.3",
