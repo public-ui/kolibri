@@ -29,6 +29,7 @@ export const InputEmailCases = forwardRef<HTMLKolInputEmailElement, Components.K
 					},
 				}}
 			/>
+			<KolInputEmail {...props} _required _label="E-Mail" _infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }} />
 			<KolInputEmail {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="E-Mail" _touched />
 			<KolInputEmail {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="E-Mail" _touched />
 			<KolInputEmail {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="E-Mail" _touched />

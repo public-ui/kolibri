@@ -3,6 +3,7 @@
 @use '../@shared/button.mixin' as *;
 @use '../@shared/popover-button.mixin' as *;
 @use '../@shared/table-stateless.mixin' as *;
+@use '../@shared/spin.mixin' as *;
 @use '../@shared/mixins' as *;
 @use '../host-display-block' as *;
 @use '../tooltip/style' as *;
@@ -12,4 +13,5 @@
 	@include kol-button-styles('kol-button');
 	@include kol-popover-button-styles;
 	@include kol-table-stateless-styles;
+	@include kol-spin;
 }

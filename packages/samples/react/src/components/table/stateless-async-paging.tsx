@@ -1,5 +1,5 @@
 import type { KoliBriTableHeaders } from '@public-ui/components';
-import { KolPagination, KolSpin, KolTableStateless } from '@public-ui/react-v19';
+import { KolPagination, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -21,33 +21,10 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	],
 };
 
-const LoadingOverlayFC: FC<{
-	label: string;
-	show: boolean;
-}> = ({ label, show }) => {
-	if (show) {
-		return (
-			<div className="loading-overlay">
-				<KolSpin
-					_label={label}
-					_show={show}
-					_variant="cycle"
-					style={{
-						backgroundColor: 'transparent',
-					}}
-				/>
-			</div>
-		);
-	} else {
-		return null;
-	}
-};
-
 export const TableStatelessAsync: FC = () => {
 	const getAsyncData = () => new Promise<{ COMPLEX_DATA: ComplexData[] }>((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 5000));
-	const loadData = (action: 'sort' | 'paginate') => {
+	const loadData = () => {
 		setLoading(true);
-		setCurrentAction(action);
 		getAsyncData().then((result: Awaited<ReturnType<typeof getAsyncData>>) => {
 			setComplexData(result.COMPLEX_DATA.slice(0, 15));
 			setLoading(false);
@@ -56,9 +33,8 @@ export const TableStatelessAsync: FC = () => {
 
 	const [complexData, setComplexData] = useState<ComplexData[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
-	const [currentAction, setCurrentAction] = useState<'sort' | 'paginate'>('sort');
 
-	useEffect(() => loadData('sort'), []);
+	useEffect(() => loadData(), []);
 
 	return (
 		<>
@@ -72,10 +48,11 @@ export const TableStatelessAsync: FC = () => {
 			<section className="w-full relative">
 				<KolTableStateless
 					_label="Table for demonstration purposes"
+					_loading={loading}
 					_headerCells={HEADERS_HORIZONTAL}
 					_data={complexData}
 					_on={{
-						onSort: () => loadData('sort'),
+						onSort: () => loadData(),
 					}}
 				/>
 				<KolPagination
@@ -85,10 +62,9 @@ export const TableStatelessAsync: FC = () => {
 					_boundaryCount={2}
 					_pageSize={15}
 					_on={{
-						onChangePage: () => loadData('paginate'),
+						onChangePage: () => loadData(),
 					}}
 				/>
-				<LoadingOverlayFC label={currentAction === 'sort' ? 'Table is being sorted...' : 'Page is loading...'} show={loading} />
 			</section>
 		</>
 	);

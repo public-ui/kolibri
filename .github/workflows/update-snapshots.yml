@@ -23,21 +23,42 @@ jobs:
           - name: hydrate
             path: packages/adapters/hydrate
             type: unit
+          # container: pinned Playwright image – must match the @playwright/test version in
+          # packages/tools/visual-tests/package.json (enforced by the "Verify Playwright version" step).
+          # --user 1001 (pwuser, same uid as the runner user): Firefox refuses to launch as root,
+          # see https://playwright.dev/docs/ci#via-containers
           - name: theme-bwst
             path: packages/themes/bwst
             type: e2e
+            container:
+              image: mcr.microsoft.com/playwright:v1.60.0-noble
+              options: --user 1001
           - name: theme-default
             path: packages/themes/default
             type: e2e
+            container:
+              image: mcr.microsoft.com/playwright:v1.60.0-noble
+              options: --user 1001
           - name: theme-desy
             path: packages/themes/desy
             type: e2e
+            container:
+              image: mcr.microsoft.com/playwright:v1.60.0-noble
+              options: --user 1001
           - name: theme-kern
             path: packages/themes/kern
             type: e2e
+            container:
+              image: mcr.microsoft.com/playwright:v1.60.0-noble
+              options: --user 1001
           - name: theme-ecl
             path: packages/themes/ecl
             type: e2e
+            container:
+              image: mcr.microsoft.com/playwright:v1.60.0-noble
+              options: --user 1001
+    # Empty value (unit entries) = no container, job runs directly on the runner.
+    container: ${{ matrix.container }}
     steps:
       - name: Checkout branch
         uses: actions/checkout@v7
@@ -47,9 +68,11 @@ jobs:
 
       - uses: ./.github/actions/pnpm-setup
 
-      - name: Install Playwright browsers
+      - name: Verify Playwright version matches container image
         if: matrix.type == 'e2e'
-        run: npx playwright install --with-deps firefox
+        run: |
+          INSTALLED=$(pnpm --filter @public-ui/visual-tests exec node -p "require('@playwright/test/package.json').version")
+          [ "$INSTALLED" = "1.60.0" ] || { echo "::error::@playwright/test $INSTALLED does not match container image v1.60.0 – update the image tags in the workflows"; exit 1; }
 
       - name: Build
         run: pnpm --filter @public-ui/visual-tests^... build

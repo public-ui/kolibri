@@ -25,5 +25,9 @@
 		&__text {
 			flex: 1 0 100%;
 		}
+
+		&--external-link > .kolicon-link-external::before {
+			content: none;
+		}
 	}
 }
