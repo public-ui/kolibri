@@ -14,6 +14,63 @@ updates:
     schedule:
       interval: weekly
 
+  # The npm entries only carry ignore rules for Dependabot security updates:
+  # each Angular adapter (and the Angular sample) is pinned to one Angular major
+  # line on purpose (see docs/RENOVATE.md), so updates to the next major are
+  # ignored. Security updates respect `versions`-based ignore rules, while
+  # `update-types` would only affect version updates. Regular npm version
+  # updates stay disabled (`open-pull-requests-limit: 0`), as they are handled
+  # by the dependency-update automation of the team.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    ignore:
+      - dependency-name: '@angular/*'
+        versions:
+          - '>=20.0.0'
+
+  - package-ecosystem: npm
+    directory: /packages/adapters/angular/v19
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    ignore:
+      - dependency-name: '@angular/*'
+        versions:
+          - '>=20.0.0'
+
+  - package-ecosystem: npm
+    directory: /packages/adapters/angular/v20
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    ignore:
+      - dependency-name: '@angular/*'
+        versions:
+          - '>=21.0.0'
+
+  - package-ecosystem: npm
+    directory: /packages/adapters/angular/v21
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    ignore:
+      - dependency-name: '@angular/*'
+        versions:
+          - '>=22.0.0'
+
+  - package-ecosystem: npm
+    directory: /packages/samples/angular
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+    ignore:
+      - dependency-name: '@angular/*'
+        versions:
+          - '>=22.0.0'
+
   # === Release Branch: v3 ===
   - package-ecosystem: github-actions
     directory: /
