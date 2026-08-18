@@ -27,6 +27,13 @@ jobs:
       matrix:
         package: ['test-tag-name-transformer', 'theme-default', 'theme-bwst', 'theme-ecl', 'theme-desy', 'theme-kern']
     runs-on: ubuntu-latest
+    # Pinned Playwright image – must match the @playwright/test version in
+    # packages/tools/visual-tests/package.json (enforced by the "Verify Playwright version" step).
+    # --user 1001 (pwuser, same uid as the runner user): Firefox refuses to launch as root,
+    # see https://playwright.dev/docs/ci#via-containers
+    container:
+      image: mcr.microsoft.com/playwright:v1.60.0-noble
+      options: --user 1001
     steps:
       - name: Checkout base branch
         uses: actions/checkout@v7
@@ -36,8 +43,10 @@ jobs:
 
       - uses: ./.github/actions/pnpm-setup
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps firefox
+      - name: Verify Playwright version matches container image
+        run: |
+          INSTALLED=$(pnpm --filter @public-ui/visual-tests exec node -p "require('@playwright/test/package.json').version")
+          [ "$INSTALLED" = "1.60.0" ] || { echo "::error::@playwright/test $INSTALLED does not match container image v1.60.0 – update the image tags in the workflows"; exit 1; }
 
       - name: Build base branch
         run: pnpm --filter @public-ui/visual-tests^... build
@@ -57,7 +66,7 @@ jobs:
             SNAPSHOT_DIR="packages/themes/${THEME_DIR}/snapshots"
           fi
           if [ -d "$SNAPSHOT_DIR" ]; then
-            rsync -a "$SNAPSHOT_DIR/" "/tmp/snapshots/${PACKAGE}/"
+            cp -a "$SNAPSHOT_DIR/." "/tmp/snapshots/${PACKAGE}/"
           fi
 
       - name: Checkout head branch
@@ -81,7 +90,7 @@ jobs:
           rm -rf "$SNAPSHOT_DIR"
           mkdir -p "$SNAPSHOT_DIR"
           if [ -d "/tmp/snapshots/${PACKAGE}" ]; then
-            rsync -a "/tmp/snapshots/${PACKAGE}/" "$SNAPSHOT_DIR/"
+            cp -a "/tmp/snapshots/${PACKAGE}/." "$SNAPSHOT_DIR/"
           fi
 
       - name: Build head branch
