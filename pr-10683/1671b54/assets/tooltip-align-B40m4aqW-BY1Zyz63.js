@@ -1,1 +1,0 @@
-import"./index-CKlnMLg6.js";import{r as e}from"./align-CCcqVV8A-5-GymOyu.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
