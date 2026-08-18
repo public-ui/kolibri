@@ -34,6 +34,7 @@ import { KeyboardKey } from '../../schema/enums';
 import type { HasCreateButtonPropType } from '../../schema/props/has-create-button';
 import { validateHasCreateButton } from '../../schema/props/has-create-button';
 import clsx from '../../utils/clsx';
+import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 // https://www.w3.org/TR/wai-aria-practices-1.1/examples/tabs/tabs-2/tabs.html
@@ -56,16 +57,12 @@ export class KolTabs implements ClickableElement, FocusableElement, TabsAPI {
 	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
 
 	/**
-	 * Converts the component `_label` into a string that is safe to use as part of a DOM id
-	 * and as a CSS selector argument. The previous implementation only replaced whitespace,
-	 * so labels containing characters such as a comma (e.g. "Tabs, with note") produced ids
-	 * like "Tabs, with note-tab-0". A comma splits a CSS selector list, which broke the
-	 * `button#...` lookup in `focusTabById` and therefore the focus/announcement of the tab
-	 * button and its tabpanel (`aria-labelledby` <-> `id`) on tab switches.
+	 * Instance-unique prefix for all tab button and tabpanel ids (`id`, `aria-controls`,
+	 * `aria-labelledby`, `focusTabById` selector). Must not be derived from `_label`:
+	 * label characters (e.g. commas, which split CSS selector lists) would break the
+	 * `button#...` lookup, and identical labels on multiple `<kol-tabs>` would collide.
 	 */
-	private toIdPrefix(label: string): string {
-		return label.replace(/[^a-zA-Z0-9_-]/g, '-');
-	}
+	private readonly id = createUniqueId('tabs');
 
 	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
 		const nextOffset = offset + step;
@@ -205,9 +202,9 @@ export class KolTabs implements ClickableElement, FocusableElement, TabsAPI {
 						_tooltipAlign={button._tooltipAlign}
 						_variant={this.state._selected === index ? 'custom' : undefined}
 						_customClass={this.state._selected === index ? 'selected' : ''}
-						_ariaControls={`tabpanel-${index}`}
+						_ariaControls={`${this.id}-panel-${index}`}
 						_ariaSelected={this.state._selected === index}
-						_id={`${this.toIdPrefix(this.state._label)}-tab-${index}`}
+						_id={`${this.id}-tab-${index}`}
 						_role="tab"
 						_value={index}
 					></KolButtonWcTag>
@@ -419,8 +416,8 @@ export class KolTabs implements ClickableElement, FocusableElement, TabsAPI {
 		}
 		for (let i = 0; i < this.state._tabs?.length; i++) {
 			const div = document.createElement('div');
-			div.setAttribute('aria-labelledby', `${this.toIdPrefix(this.state._label)}-tab-${i}`);
-			div.setAttribute('id', `tabpanel-${i}`);
+			div.setAttribute('aria-labelledby', `${this.id}-tab-${i}`);
+			div.setAttribute('id', `${this.id}-panel-${i}`);
 			div.setAttribute('role', 'tabpanel');
 			div.setAttribute('hidden', '');
 			// div.setAttribute('tabindex', '0'); Panel soll nicht tabbar sein; siehe https://github.com/public-ui/kolibri/issues/10082
@@ -453,7 +450,7 @@ export class KolTabs implements ClickableElement, FocusableElement, TabsAPI {
 
 	private focusTabById(index: number): void {
 		if (this.tabPanelsElement /* SSR instanceof HTMLElement */) {
-			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.toIdPrefix(this.state._label)}-tab-${index}`, this.tabPanelsElement);
+			const button: HTMLElement | null = koliBriQuerySelector(`button#${this.id}-tab-${index}`, this.tabPanelsElement);
 			button?.focus();
 		}
 	}
