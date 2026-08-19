@@ -49,11 +49,11 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
-		"@types/minimatch": "6.0.0",
+
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
-		"@types/react": "19.2.17",
-		"@types/react-dom": "19.2.3",
+		"@types/react": "19.2.18",
+		"@types/react-dom": "19.2.4",
 		"react": "19.2.7",
 		"react-dom": "19.2.7",
 		"typescript": "5.9.3",
@@ -61,8 +61,8 @@
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
-		"react": ">=19.2.7",
-		"react-dom": ">=19.2.7"
+		"react": ">=19.2.8",
+		"react-dom": ">=19.2.8"
 	},
 	"sideEffects": false,
 	"type": "module",
