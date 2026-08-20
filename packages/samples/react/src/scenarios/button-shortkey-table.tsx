@@ -3,8 +3,8 @@ import { ToasterService } from '@public-ui/components';
 import { createReactRenderElement, KolButton, KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useRef } from 'react';
+import { SampleBlock } from '../components/SampleBlock';
 import { SampleDescription } from '../components/SampleDescription';
-import { SampleBlock } from '../SampleBlock';
 import { getRoot } from '../shares/react-roots';
 
 const RowActions: FC<{ label: string }> = ({ label }) => {
