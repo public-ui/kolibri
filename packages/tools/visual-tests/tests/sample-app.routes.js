@@ -1114,6 +1114,8 @@ ROUTES.set('table/empty', {
 });
 ROUTES.set('table/stateful-async', {
 	snapshot: {
+		// loading state only (50s async delay) – the block container collapses to zero height
+		forceFullPage: true,
 		viewportSize: {
 			width: 1000,
 			height: 0,

@@ -42,7 +42,7 @@ export const TableStatefulAsync: FC = () => {
 				<p>This sample shows how KolTableStateful can load data async.</p>
 			</SampleDescription>
 
-			<section className="w-full relative" data-visual-block="async">
+			<section className="w-full relative">
 				<KolTableStateful _label="Table for demonstration purposes" _loading={loading} _headers={HEADERS_HORIZONTAL} _data={complexData} />
 			</section>
 		</>

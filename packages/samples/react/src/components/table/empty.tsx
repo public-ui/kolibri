@@ -25,7 +25,9 @@ export const TableEmpty: FC = () => {
 				<p>This sample shows an empty KolTableStateful.</p>
 			</SampleDescription>
 
-			<KolTableStateful data-visual-block="empty" _label="Table for demonstration purposes" _headers={HEADERS_HORIZONTAL} _data={[]} />
+			<div className="w-full" data-visual-block="empty">
+				<KolTableStateful _label="Table for demonstration purposes" _headers={HEADERS_HORIZONTAL} _data={[]} />
+			</div>
 		</>
 	);
 };
