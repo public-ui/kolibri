@@ -1,0 +1,1 @@
+import{n as e,o as t}from"./normalizers-DwZ6RXph-BB3dqgmE.js";var n=new Set([`eager`,`lazy`]),r=e(`loading`,`lazy`,e=>t(e),e=>n.has(e)),i=new Set([`block`,`inline`]),a=e(`variant`,`inline`,e=>t(e),e=>i.has(e));export{a as n,r as t};
