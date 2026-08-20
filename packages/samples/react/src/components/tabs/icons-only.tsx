@@ -38,7 +38,7 @@ export const TabsIconsOnly: FC = () => (
 			<p>This sample shows KolTabs with hidden labels.</p>
 		</SampleDescription>
 
-		<KolTabs _label="Tabs with icons" _tabs={tabs}>
+		<KolTabs _label="Tabs with icons" _tabs={tabs} data-visual-block="icons-only">
 			<div slot="tab-0">Contents of Tab 1</div>
 			<div slot="tab-1">Contents of Tab 2</div>
 			<div slot="tab-2">Contents of Tab 3</div>
