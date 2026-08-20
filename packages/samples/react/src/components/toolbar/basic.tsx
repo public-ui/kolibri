@@ -61,7 +61,7 @@ export const ToolbarBasic: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<div className="flex flex-col gap-4">
+			<div className="flex flex-col gap-4" data-visual-block="basic">
 				<KolHeading _label="Orientation horizontal" _level={2} />
 				<KolToolbar class="block w-fit" _label="Toolbar" _items={TOOLBAR_ITEMS} />
 

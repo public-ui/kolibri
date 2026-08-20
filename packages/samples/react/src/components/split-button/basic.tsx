@@ -43,7 +43,7 @@ export const SplitButtonBasic: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<div className="flex flex-col gap-4">
+			<div className="flex flex-col gap-4" data-visual-block="basic">
 				<KolSplitButton _label="Edit" _on={dummyEventHandler}>
 					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
 				</KolSplitButton>

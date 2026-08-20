@@ -13,6 +13,7 @@ export const ToolbarDisabled: FC = () => {
 			<KolToolbar
 				_label="Toolbar"
 				class="block w-fit"
+				data-visual-block="disabled"
 				_items={[
 					{
 						type: 'button',

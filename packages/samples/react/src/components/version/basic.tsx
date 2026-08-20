@@ -10,6 +10,6 @@ export const VersionBasic: FC = () => (
 			<p>KolVersion renders a label showing the given version number.</p>
 		</SampleDescription>
 
-		<KolVersion _label="1.1.1" />
+		<KolVersion _label="1.1.1" data-visual-block="basic" />
 	</>
 );
