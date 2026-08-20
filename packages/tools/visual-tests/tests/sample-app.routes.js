@@ -1103,6 +1103,8 @@ ROUTES.set('table/variant', {
 });
 ROUTES.set('table/empty', {
 	snapshot: {
+		// the empty table renders no visible box – element screenshots would fail with zero size
+		forceFullPage: true,
 		viewportSize: {
 			width: 1000,
 			height: 0,
