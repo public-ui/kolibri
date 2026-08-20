@@ -34,7 +34,7 @@ export const InputVariant: FC = () => {
 
 			<div className="grid grid-cols-2 gap-8 p-8">
 				{!Array.isArray(inputVariants) || inputVariants.length === 0 ? (
-					<p>This theme has no variants for inputs.</p>
+					<p data-visual-block="no-variants">This theme has no variants for inputs.</p>
 				) : (
 					inputVariants.map((element) => {
 						return (
