@@ -11,6 +11,6 @@ export const SpinBasic: FC = () => (
 			<p>KolSpin renders a loading indicator. This sample shows the default variant &quot;dot&quot;.</p>
 		</SampleDescription>
 
-		<KolSpin _show />
+		<KolSpin _show data-visual-block="basic" />
 	</>
 );

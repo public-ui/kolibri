@@ -15,7 +15,7 @@ export const PaginationSiblingBoundary: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="sibling-boundary">
 			{/* Default: siblingCount=1, boundaryCount=1 */}
 			<KolPagination _max={20} _page={5} _pageSize={1} _label="Default: siblingCount=1, boundaryCount=1 (shows pages 1, 4, 5, 6, 20)" _on={{}} />
 

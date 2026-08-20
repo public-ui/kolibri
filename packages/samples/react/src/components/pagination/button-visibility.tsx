@@ -14,7 +14,7 @@ export const PaginationButtonVisibility: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="button-visibility">
 			{/* Default: All buttons visible */}
 			<KolPagination
 				_max={100}

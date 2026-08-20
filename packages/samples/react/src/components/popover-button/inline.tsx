@@ -13,7 +13,7 @@ export const PopoverButtonInline: FC = () => {
 					than 44px by 44px.
 				</p>
 			</SampleDescription>
-			<div className="flex flex-col gap-4">
+			<div className="flex flex-col gap-4" data-visual-block="inline">
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur aut dolore dolores itaque praesentium reprehenderit sed voluptatum!
 					Exercitationem ipsa magni maiores modi, placeat quas quos reprehenderit rerum sit veniam vitae.

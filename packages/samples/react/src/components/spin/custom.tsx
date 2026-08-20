@@ -16,7 +16,7 @@ export const SpinCustom: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<KolSpin _show _variant="none">
+		<KolSpin _show _variant="none" data-visual-block="custom">
 			<span slot="expert" className="loader"></span>
 		</KolSpin>
 	</>

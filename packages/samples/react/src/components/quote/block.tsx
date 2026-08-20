@@ -11,6 +11,7 @@ export const QuoteBlock: FC = () => (
 		</SampleDescription>
 
 		<KolQuote
+			data-visual-block="block"
 			_label="RFC 1149"
 			_href="https://datatracker.ietf.org/doc/html/rfc1149"
 			_quote="Avian carriers can provide high delay, low throughput, and low altitude
