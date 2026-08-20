@@ -1,6 +1,7 @@
 import { KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 const DATA = [{ left: 'Left Example', center: 'Center Example', right: 'Right Example' }, {}, {}, {}];
@@ -11,7 +12,7 @@ export const TableStateless: FC = () => (
 			<p>This sample shows how KolTableStateless can be used directly, with the KolTableStateful wrapper.</p>
 		</SampleDescription>
 
-		<section className="w-full" data-visual-block="stateless">
+		<SampleBlock id="stateless" className="w-full">
 			<KolTableStateless
 				_label="Table for demonstration purposes"
 				_headerCells={{
@@ -41,6 +42,6 @@ export const TableStateless: FC = () => (
 					},
 				}}
 			/>
-		</section>
+		</SampleBlock>
 	</>
 );

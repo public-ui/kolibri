@@ -65,7 +65,9 @@ To update the reference screenshots call `npm run test:update`.
 
 ### Element screenshots (`data-visual-block`)
 
-Sample views in the [React Sample App](https://github.com/public-ui/kolibri/tree/develop/packages/samples/react) mark their variant blocks with a `data-visual-block` attribute — either via the `SampleBlock` helper component or by setting the attribute directly on a container element (e.g. a `<fieldset>`). When a route contains such blocks, the visual tests capture **one element screenshot per block** (`<route-slug>--<block-id>.png`) instead of one full-page screenshot. This isolates diffs: a change to one variant no longer invalidates the entire page screenshot through layout shifts.
+Sample views in the [React Sample App](https://github.com/public-ui/kolibri/tree/develop/packages/samples/react) mark their variant blocks with the `SampleBlock` component, which renders the `data-visual-block` attribute. `SampleBlock` is the **only** place that sets the attribute — samples must not set it directly on their own elements. When a route contains such blocks, the visual tests capture **one element screenshot per block** (`<route-slug>--<block-id>.png`) instead of one full-page screenshot. This isolates diffs: a change to one variant no longer invalidates the entire page screenshot through layout shifts.
+
+`SampleBlock` renders an optional heading (`heading`/`level` props) above the block content and hides it automatically in snapshot mode (`?hideMenus`, via `HideMenusContext`) — headings are sample chrome, so heading changes never invalidate snapshots. The default container layout (`grid gap-4`) can be overridden with the `className` prop.
 
 Rules for block ids:
 

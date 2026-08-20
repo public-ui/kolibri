@@ -3,23 +3,21 @@ import React, { forwardRef } from 'react';
 import { InputDateCases } from './cases';
 
 import type { Components } from '@public-ui/components';
+import { SampleBlock } from '../../SampleBlock';
 import { SampleColumns } from '../../SampleColumns';
 import { InputDateMinMaxCases } from './minMax';
 export const InputDateVariants = forwardRef<HTMLKolInputDateElement, Components.KolInputDate>(function InputDateVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset data-visual-block="date">
-				<legend>Date</legend>
+			<SampleBlock id="date" heading="Date">
 				<InputDateCases {...props} />
-			</fieldset>
-			<fieldset data-visual-block="date-hide-label">
-				<legend>Date (hideLabel)</legend>
+			</SampleBlock>
+			<SampleBlock id="date-hide-label" heading="Date (hideLabel)">
 				<InputDateCases ref={ref} {...props} _hideLabel />
-			</fieldset>
-			<fieldset data-visual-block="date-min-max">
-				<legend>Date (with min/max)</legend>
+			</SampleBlock>
+			<SampleBlock id="date-min-max" heading="Date (with min/max)">
 				<InputDateMinMaxCases {...props} />
-			</fieldset>
+			</SampleBlock>
 		</SampleColumns>
 	);
 });

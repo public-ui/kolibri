@@ -3,18 +3,17 @@ import React, { forwardRef } from 'react';
 import { InputPasswordCases } from './cases';
 
 import type { Components } from '@public-ui/components';
+import { SampleBlock } from '../../SampleBlock';
 import { SampleColumns } from '../../SampleColumns';
 export const InputPasswordVariants = forwardRef<HTMLKolInputPasswordElement, Components.KolInputPassword>(function InputPasswordVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset data-visual-block="password">
-				<legend>Password</legend>
+			<SampleBlock id="password" heading="Password">
 				<InputPasswordCases {...props} />
-			</fieldset>
-			<fieldset data-visual-block="password-hide-label">
-				<legend>Password (hideLabel)</legend>
+			</SampleBlock>
+			<SampleBlock id="password-hide-label" heading="Password (hideLabel)">
 				<InputPasswordCases ref={ref} {...props} _hideLabel />
-			</fieldset>
+			</SampleBlock>
 		</SampleColumns>
 	);
 });

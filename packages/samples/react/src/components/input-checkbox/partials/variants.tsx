@@ -3,29 +3,26 @@ import React, { forwardRef } from 'react';
 import { InputCheckboxCases } from './cases';
 
 import type { Components } from '@public-ui/components';
+import { SampleBlock } from '../../SampleBlock';
 import { SampleColumns } from '../../SampleColumns';
 export const InputCheckboxVariants = forwardRef<HTMLKolInputCheckboxElement, Components.KolInputCheckbox>(function InputCheckboxVariant(props, ref) {
 	return (
 		<>
 			<SampleColumns>
-				<fieldset data-visual-block="label-left">
-					<legend>Label align &quot;left&quot; with label</legend>
+				<SampleBlock id="label-left" heading='Label align "left" with label'>
 					<InputCheckboxCases {...props} _labelAlign="left" />
-				</fieldset>
-				<fieldset data-visual-block="label-left-hide-label">
-					<legend>Label align &quot;left&quot; without Label (hideLabel)</legend>
+				</SampleBlock>
+				<SampleBlock id="label-left-hide-label" heading='Label align "left" without Label (hideLabel)'>
 					<InputCheckboxCases ref={ref} {...props} _hideLabel _labelAlign="left" />
-				</fieldset>
+				</SampleBlock>
 			</SampleColumns>
 			<SampleColumns>
-				<fieldset data-visual-block="label-right">
-					<legend>Label align &quot;right&quot; with label</legend>
+				<SampleBlock id="label-right" heading='Label align "right" with label'>
 					<InputCheckboxCases {...props} />
-				</fieldset>
-				<fieldset data-visual-block="label-right-hide-label">
-					<legend>Label align &quot;right&quot; without Label (hideLabel)</legend>
+				</SampleBlock>
+				<SampleBlock id="label-right-hide-label" heading='Label align "right" without Label (hideLabel)'>
 					<InputCheckboxCases ref={ref} {...props} _hideLabel />
-				</fieldset>
+				</SampleBlock>
 			</SampleColumns>
 		</>
 	);

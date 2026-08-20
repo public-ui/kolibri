@@ -3,6 +3,7 @@ import React from 'react';
 import { KolForm, KolTextarea } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 export const TextareaResize: FC = () => (
 	<>
@@ -13,11 +14,11 @@ export const TextareaResize: FC = () => (
 		</SampleDescription>
 
 		<KolForm className="w-full">
-			<div className="flex flex-col gap-4" data-visual-block="resize">
+			<SampleBlock id="resize" className="flex flex-col gap-4">
 				<KolTextarea _label="Text input (unset)" />
 				<KolTextarea _resize="vertical" _label="Text input (vertical)" />
 				<KolTextarea _resize="none" _label="Text input (none)" />
-			</div>
+			</SampleBlock>
 		</KolForm>
 	</>
 );

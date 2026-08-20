@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import { KolHeading, KolInputCheckbox, KolTableStateful } from '@public-ui/react-v19';
 
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 import type { Data } from './test-data';
@@ -58,7 +59,7 @@ export const TableHorizontalScrollbar: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<section className="w-full flex flex-col gap-4" data-visual-block="scrollbar">
+			<SampleBlock id="scrollbar" className="w-full flex flex-col gap-4">
 				<div className="w-[400px] flex flex-col gap-4">
 					<KolTableStateful
 						_label="Table for demonstration purposes with horizontal scrollbar."
@@ -98,7 +99,7 @@ export const TableHorizontalScrollbar: FC = () => {
 					className="block"
 					_pagination
 				/>
-			</section>
+			</SampleBlock>
 		</>
 	);
 };

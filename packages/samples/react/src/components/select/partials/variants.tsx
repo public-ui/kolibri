@@ -3,18 +3,17 @@ import React, { forwardRef } from 'react';
 import { SelectCases } from './cases';
 
 import type { Components } from '@public-ui/components';
+import { SampleBlock } from '../../SampleBlock';
 import { SampleColumns } from '../../SampleColumns';
 export const SelectVariants = forwardRef<HTMLKolSelectElement, Components.KolSelect>(function SelectVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset data-visual-block="text">
-				<legend>Text</legend>
+			<SampleBlock id="text" heading="Text">
 				<SelectCases {...props} />
-			</fieldset>
-			<fieldset data-visual-block="text-hide-label">
-				<legend>Text (hideLabel)</legend>
+			</SampleBlock>
+			<SampleBlock id="text-hide-label" heading="Text (hideLabel)">
 				<SelectCases ref={ref} {...props} _hideLabel />
-			</fieldset>
+			</SampleBlock>
 		</SampleColumns>
 	);
 });

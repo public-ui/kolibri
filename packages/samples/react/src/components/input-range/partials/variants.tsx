@@ -3,18 +3,17 @@ import React, { forwardRef } from 'react';
 import { InputRangeCases } from './cases';
 
 import type { Components } from '@public-ui/components';
+import { SampleBlock } from '../../SampleBlock';
 import { SampleColumns } from '../../SampleColumns';
 export const InputRangeVariants = forwardRef<HTMLKolInputRangeElement, Components.KolInputRange>(function InputRangeVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset data-visual-block="range">
-				<legend>Range</legend>
+			<SampleBlock id="range" heading="Range">
 				<InputRangeCases {...props} />
-			</fieldset>
-			<fieldset data-visual-block="range-hide-label">
-				<legend>Range (hideLabel)</legend>
+			</SampleBlock>
+			<SampleBlock id="range-hide-label" heading="Range (hideLabel)">
 				<InputRangeCases ref={ref} {...props} _hideLabel />
-			</fieldset>
+			</SampleBlock>
 		</SampleColumns>
 	);
 });

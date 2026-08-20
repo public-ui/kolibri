@@ -1,5 +1,6 @@
 import { KolBadge, KolIcon, KolInputText, KolPopoverButton } from '@public-ui/react-v19';
 import * as React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputTextExpertSlot = () => {
@@ -9,7 +10,7 @@ export const InputTextExpertSlot = () => {
 				<p>This sample shows KolInputText with expert slot. The expert slot allows for complex custom content beyond simple text inputs.</p>
 			</SampleDescription>
 
-			<div className="grid gap-4" data-visual-block="expert-slot">
+			<SampleBlock id="expert-slot">
 				<KolInputText _label="" _type="text">
 					<span slot="expert">I am more than just a input field</span>
 				</KolInputText>
@@ -45,7 +46,7 @@ export const InputTextExpertSlot = () => {
 						</KolPopoverButton>
 					</div>
 				</KolInputText>
-			</div>
+			</SampleBlock>
 		</>
 	);
 };

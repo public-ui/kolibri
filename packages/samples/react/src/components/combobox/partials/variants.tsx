@@ -1,20 +1,19 @@
 import type { Components } from '@public-ui/components';
 import React from 'react';
 
+import { SampleBlock } from '../../SampleBlock';
 import { SampleColumns } from '../../SampleColumns';
 import { ComboboxCases } from './cases';
 
 export const ComboboxVariants = (props: Partial<Components.KolCombobox>) => {
 	return (
 		<SampleColumns>
-			<fieldset data-visual-block="text">
-				<legend>Text</legend>
+			<SampleBlock id="text" heading="Text">
 				<ComboboxCases {...props} />
-			</fieldset>
-			<fieldset data-visual-block="text-hide-label">
-				<legend>Text (hideLabel)</legend>
+			</SampleBlock>
+			<SampleBlock id="text-hide-label" heading="Text (hideLabel)">
 				<ComboboxCases {...props} _hideLabel />
-			</fieldset>
+			</SampleBlock>
 		</SampleColumns>
 	);
 };

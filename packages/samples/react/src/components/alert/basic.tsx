@@ -2,6 +2,7 @@ import type { AlertTypePropType, AlertVariantPropType, HeadingLevel } from '@pub
 import { KolAlert } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 type PropsByType = {
@@ -31,13 +32,13 @@ const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (
 );
 
 export const AlertVariants: FC<PropsBasic> = ({ variant = 'msg' }) => (
-	<div className="grid gap-4" data-visual-block="variants">
+	<SampleBlock id="variants">
 		<AlertByType level={1} type="default" variant={variant} />
 		<AlertByType level={2} type="error" variant={variant} />
 		<AlertByType level={3} type="info" variant={variant} />
 		<AlertByType level={4} type="success" variant={variant} />
 		<AlertByType level={5} type="warning" variant={variant} />
-	</div>
+	</SampleBlock>
 );
 
 export const AlertBasic: FC<PropsBasic> = () => (

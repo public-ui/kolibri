@@ -3,20 +3,18 @@ import React, { forwardRef } from 'react';
 import { InputRadioCases } from './cases';
 
 import type { Components } from '@public-ui/components';
-import { KolHeading } from '@public-ui/react-v19';
+import { SampleBlock } from '../../SampleBlock';
 import { SampleColumns } from '../../SampleColumns';
 
 export const InputRadioVariants = forwardRef<HTMLKolInputRadioElement, Components.KolInputRadio>(function InputRadioVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<div className="border border-solid border-dark-100 p-3" data-visual-block="radio">
-				<KolHeading _level={2} _label="Radio" className="block mb-2" />
+			<SampleBlock id="radio" heading="Radio">
 				<InputRadioCases {...props} />
-			</div>
-			<div className="border border-solid border-dark-100 p-3" data-visual-block="radio-hide-label">
-				<KolHeading _level={2} _label="Radio (hideLabel)" className="block mb-2" />
+			</SampleBlock>
+			<SampleBlock id="radio-hide-label" heading="Radio (hideLabel)">
 				<InputRadioCases ref={ref} {...props} _hideLabel />
-			</div>
+			</SampleBlock>
 		</SampleColumns>
 	);
 });

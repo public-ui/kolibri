@@ -3,18 +3,17 @@ import React, { forwardRef } from 'react';
 import { InputColorCases } from './cases';
 
 import type { Components } from '@public-ui/components';
+import { SampleBlock } from '../../SampleBlock';
 import { SampleColumns } from '../../SampleColumns';
 export const InputColorVariants = forwardRef<HTMLKolInputColorElement, Components.KolInputColor>(function InputColorVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset data-visual-block="color">
-				<legend>Color</legend>
+			<SampleBlock id="color" heading="Color">
 				<InputColorCases {...props} />
-			</fieldset>
-			<fieldset data-visual-block="color-hide-label">
-				<legend>Color (hideLabel)</legend>
+			</SampleBlock>
+			<SampleBlock id="color-hide-label" heading="Color (hideLabel)">
 				<InputColorCases ref={ref} {...props} _hideLabel />
-			</fieldset>
+			</SampleBlock>
 		</SampleColumns>
 	);
 });

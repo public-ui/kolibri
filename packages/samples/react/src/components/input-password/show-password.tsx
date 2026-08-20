@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import React, { useRef } from 'react';
 
 import { KolForm, KolInputPassword } from '@public-ui/react-v19';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputPasswordShowPassword: FC = () => {
@@ -16,25 +17,27 @@ export const InputPasswordShowPassword: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<KolForm className="w-full" data-visual-block="show-password">
-				<KolInputPassword _placeholder="With 'Show password' button" _label="Password" ref={passwordRef} className="block" _visibilityToggle={true} />
-				<KolInputPassword
-					_placeholder="With 'Show password' button"
-					_label="Password"
-					ref={passwordRef}
-					className="block"
-					_visibilityToggle={true}
-					_value="Password"
-				/>
-				<KolInputPassword
-					_placeholder="With 'Show password' button and disabled"
-					_label="Password"
-					ref={passwordRef}
-					className="block"
-					_disabled
-					_visibilityToggle={true}
-				/>
-			</KolForm>
+			<SampleBlock id="show-password">
+				<KolForm className="w-full">
+					<KolInputPassword _placeholder="With 'Show password' button" _label="Password" ref={passwordRef} className="block" _visibilityToggle={true} />
+					<KolInputPassword
+						_placeholder="With 'Show password' button"
+						_label="Password"
+						ref={passwordRef}
+						className="block"
+						_visibilityToggle={true}
+						_value="Password"
+					/>
+					<KolInputPassword
+						_placeholder="With 'Show password' button and disabled"
+						_label="Password"
+						ref={passwordRef}
+						className="block"
+						_disabled
+						_visibilityToggle={true}
+					/>
+				</KolForm>
+			</SampleBlock>
 		</>
 	);
 };

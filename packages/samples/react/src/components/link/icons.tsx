@@ -3,6 +3,7 @@ import React from 'react';
 import { KolLink } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const LinkIcons: FC = () => (
@@ -11,7 +12,7 @@ export const LinkIcons: FC = () => (
 			<p>This sample shows KolLink with icons in different alignments and combinations.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4" data-visual-block="icons">
+		<SampleBlock id="icons">
 			<KolLink _icons="kolicon-house" _label="I am a link with an icon on the left" _href="#/back-page" />
 			<KolLink
 				_icons={{
@@ -81,6 +82,6 @@ export const LinkIcons: FC = () => (
 					left: 'kolicon-house',
 				}}
 			/>
-		</div>
+		</SampleBlock>
 	</>
 );

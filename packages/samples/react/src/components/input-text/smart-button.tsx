@@ -1,6 +1,7 @@
 import { ToasterService } from '@public-ui/components';
 import { KolInputText } from '@public-ui/react-v19';
 import * as React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 const smartButtonProps = {
@@ -36,7 +37,7 @@ export const InputTextSmartButton = () => {
 				<p>This sample shows the smart button feature for KolInputText. It allows the usage of a button inside the bnput.</p>
 			</SampleDescription>
 
-			<div className="grid gap-4" data-visual-block="smart-button">
+			<SampleBlock id="smart-button">
 				<KolInputText
 					_label="Input with button and icons"
 					_type="text"
@@ -57,7 +58,7 @@ export const InputTextSmartButton = () => {
 					}}
 					_icons={icons}
 				></KolInputText>
-			</div>
+			</SampleBlock>
 		</>
 	);
 };

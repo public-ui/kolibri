@@ -3,6 +3,7 @@ import React from 'react';
 import { KolPagination } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const PaginationBasic: FC = () => (
@@ -14,7 +15,7 @@ export const PaginationBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4" data-visual-block="basic">
+		<SampleBlock id="basic">
 			<KolPagination
 				_max={316514}
 				_page={15475}
@@ -101,6 +102,6 @@ export const PaginationBasic: FC = () => (
 				_label="No boundary buttons, sibling count 2 (Entries 61 to 90 of 250)"
 				_on={{}}
 			/>
-		</div>
+		</SampleBlock>
 	</>
 );

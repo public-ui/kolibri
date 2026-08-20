@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { KolBreadcrumb } from '@public-ui/react-v19';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
@@ -11,7 +12,7 @@ export const BreadcrumbBasic: FC = () => (
 			<p>KolBreadcrumb shows a breadcrumb navigation. The sample illustrates a variation of link, text and icon elements.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4" data-visual-block="basic">
+		<SampleBlock id="basic">
 			<KolBreadcrumb
 				_label="Breadcrumb aus Text-Links"
 				_links={[
@@ -57,6 +58,6 @@ export const BreadcrumbBasic: FC = () => (
 				]}
 			></KolBreadcrumb>
 			<KolBreadcrumb _label="Minimal Breadcrumb" _links={[{ _label: 'Homepage', _href: '#/back-page' }]}></KolBreadcrumb>
-		</div>
+		</SampleBlock>
 	</>
 );

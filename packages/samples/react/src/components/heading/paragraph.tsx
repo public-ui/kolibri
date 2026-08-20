@@ -3,6 +3,7 @@ import React from 'react';
 import { KolHeading } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const HeadingParagraph: FC = () => (
@@ -11,7 +12,7 @@ export const HeadingParagraph: FC = () => (
 			<p>This sample shows KolHeading with its different levels combined with some text content each.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4" data-visual-block="paragraph">
+		<SampleBlock id="paragraph">
 			<KolHeading _label="Ich bin eine H1-Überschrift" _level={1} />
 			<p>
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -48,6 +49,6 @@ export const HeadingParagraph: FC = () => (
 				voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.
 			</p>
-		</div>
+		</SampleBlock>
 	</>
 );

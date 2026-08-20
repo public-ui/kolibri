@@ -3,6 +3,7 @@ import React from 'react';
 import { KolLink } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const LinkTarget: FC = () => (
@@ -13,7 +14,7 @@ export const LinkTarget: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="text-base d-flex gap-4" data-visual-block="target">
+		<SampleBlock id="target" className="text-base d-flex gap-4">
 			<ul>
 				<li>
 					<KolLink _href="#/back-page" _label="Link without target" />
@@ -34,6 +35,6 @@ export const LinkTarget: FC = () => (
 					<KolLink _href="#/back-page" _icons="kolicon-house" _hideLabel _label="Link with target (_blank)" _target="_blank" />
 				</li>
 			</ul>
-		</div>
+		</SampleBlock>
 	</>
 );

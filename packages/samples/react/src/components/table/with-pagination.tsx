@@ -3,6 +3,7 @@ import React from 'react';
 
 import { KolTableStateful } from '@public-ui/react-v19';
 
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 import type { Data } from './test-data';
@@ -25,8 +26,8 @@ export const TableWithPagination: FC = () => (
 		<SampleDescription>
 			<p>This sample shows how KolTableStateful can be navigated using a pagination.</p>
 		</SampleDescription>
-		<div className="w-full" data-visual-block="with-pagination">
+		<SampleBlock id="with-pagination" className="w-full">
 			<KolTableStateful _label="Table description" _data={DATA} _headers={HEADERS} _pagination={PAGINATION}></KolTableStateful>
-		</div>
+		</SampleBlock>
 	</>
 );

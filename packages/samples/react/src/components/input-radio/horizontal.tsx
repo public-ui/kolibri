@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import { KolButton, KolForm, KolInputCheckbox, KolInputRadio } from '@public-ui/react-v19';
 
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 import type { OrientationPropType } from '@public-ui/components';
@@ -37,10 +38,10 @@ export const InputRadioHorizontal: FC = () => {
 			</div>
 			{show && (
 				<KolForm>
-					<div className="container my-4 d-grid gap-4" data-visual-block="orientation">
+					<SampleBlock id="orientation" className="container my-4 d-grid gap-4">
 						<KolInputRadio _label={`Test (${orientation})`} _options={options} _orientation={orientation} _required />
 						<KolInputRadio _hideLabel _label={`Test (${orientation})`} _options={options} _orientation={orientation} _required />
-					</div>
+					</SampleBlock>
 				</KolForm>
 			)}
 		</div>

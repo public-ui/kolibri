@@ -1,6 +1,7 @@
 import { KolCombobox, KolInputText, KolSelect, KolTextarea } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputTextAriaDetails: FC = () => (
@@ -16,7 +17,7 @@ export const InputTextAriaDetails: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-8" data-visual-block="aria-details">
+		<SampleBlock id="aria-details" className="grid gap-8">
 			{/* Input Form with all 4 components */}
 			<div className="grid gap-4 p-4 border border-gray-300 rounded">
 				<h2 className="text-lg font-semibold">Form Inputs with Shared Details</h2>
@@ -56,6 +57,6 @@ export const InputTextAriaDetails: FC = () => (
 					</li>
 				</ul>
 			</div>
-		</div>
+		</SampleBlock>
 	</>
 );

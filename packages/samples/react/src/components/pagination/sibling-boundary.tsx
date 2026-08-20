@@ -3,6 +3,7 @@ import React from 'react';
 import { KolPagination } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const PaginationSiblingBoundary: FC = () => (
@@ -15,7 +16,7 @@ export const PaginationSiblingBoundary: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4" data-visual-block="sibling-boundary">
+		<SampleBlock id="sibling-boundary">
 			{/* Default: siblingCount=1, boundaryCount=1 */}
 			<KolPagination _max={20} _page={5} _pageSize={1} _label="Default: siblingCount=1, boundaryCount=1 (shows pages 1, 4, 5, 6, 20)" _on={{}} />
 
@@ -117,6 +118,6 @@ export const PaginationSiblingBoundary: FC = () => (
 				_label="Larger dataset: _max=100, _page=50, siblingCount=3, boundaryCount=2"
 				_on={{}}
 			/>
-		</div>
+		</SampleBlock>
 	</>
 );

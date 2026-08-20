@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router';
 import { KolLink } from '@public-ui/react-v19';
 import { fetchVariantData } from '../../shares/fetchVariantData';
 import { getCustomThemes } from '../../shares/store';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
@@ -19,7 +20,7 @@ export const LinkVariant: FC = () => {
 				<p>This sample shows the theme specific variants of KolLink.</p>
 			</SampleDescription>
 
-			<div className="grid gap-4" data-visual-block="variants">
+			<SampleBlock id="variants">
 				<KolLink _href="#/back-page" _label="Normal link without a variant" />
 				{!Array.isArray(data) || data.length === 0 ? (
 					<p>This theme has no variants for this component.</p>
@@ -28,7 +29,7 @@ export const LinkVariant: FC = () => {
 						return <KolLink _href="#/back-page" _label={`Theme exclusive variant: ${element}`} _variant={element} key={element} />;
 					})
 				)}
-			</div>
+			</SampleBlock>
 		</>
 	);
 };

@@ -4,6 +4,7 @@ import type { FC } from 'react';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
 import { getRoot } from '../../shares/react-roots';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 type SelectionValue = string | number;
@@ -72,7 +73,7 @@ export const TableStatelessWithSingleSelection: FC = () => {
 				<p>This sample shows KolTableStateless with checkboxes for selection enabled.</p>
 			</SampleDescription>
 
-			<section className="w-full" data-visual-block="single-selection">
+			<SampleBlock id="single-selection" className="w-full">
 				<KolTableStateless
 					_label="Table with selection checkboxes"
 					_headerCells={{
@@ -91,7 +92,7 @@ export const TableStatelessWithSingleSelection: FC = () => {
 					style={{ maxWidth: '600px' }}
 					ref={kolTableStatelessRef}
 				/>
-			</section>
+			</SampleBlock>
 		</>
 	);
 };

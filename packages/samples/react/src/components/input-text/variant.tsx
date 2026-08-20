@@ -18,7 +18,7 @@ import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router';
 import { fetchVariantData } from '../../shares/fetchVariantData';
 import { getCustomThemes } from '../../shares/store';
-import { toKebabCase } from '../SampleBlock';
+import { SampleBlock, toKebabCase } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputVariant: FC = () => {
@@ -34,12 +34,13 @@ export const InputVariant: FC = () => {
 
 			<div className="grid grid-cols-2 gap-8 p-8">
 				{!Array.isArray(inputVariants) || inputVariants.length === 0 ? (
-					<p data-visual-block="no-variants">This theme has no variants for inputs.</p>
+					<SampleBlock id="no-variants">
+						<p>This theme has no variants for inputs.</p>
+					</SampleBlock>
 				) : (
 					inputVariants.map((element) => {
 						return (
-							<div key={element} className="grid gap-4 p-8" data-visual-block={`variant-${toKebabCase(String(element))}`}>
-								<h2>Variante: {element}</h2>
+							<SampleBlock key={element} id={`variant-${toKebabCase(String(element))}`} heading={`Variante: ${String(element)}`} className="grid gap-4 p-8">
 								<KolInputText
 									_label="Input Text"
 									_hint="Enter your surname"
@@ -82,7 +83,7 @@ export const InputVariant: FC = () => {
 									_variant={element}
 								/>
 								<KolTextarea _label="Textarea" _variant={element} />
-							</div>
+							</SampleBlock>
 						);
 					})
 				)}

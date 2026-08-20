@@ -4,6 +4,7 @@ import { KolButtonLink, KolHeading } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonLinkBasic: FC = () => {
@@ -20,7 +21,7 @@ export const ButtonLinkBasic: FC = () => {
 					display-properties such as <code>block</code>, <code>inline-block</code> and <code>inline</code>. It also demonstrates the disabled-state.
 				</p>
 			</SampleDescription>
-			<section className="text-base" data-visual-block="basic">
+			<SampleBlock id="basic" className="text-base">
 				<KolHeading _level={2} _label="Button-Link with _inline" />
 
 				<p>
@@ -54,7 +55,7 @@ export const ButtonLinkBasic: FC = () => {
 				<p>
 					<KolButtonLink _label="Special Variant ButtonLink" _variant="theme-link" />
 				</p>
-			</section>
+			</SampleBlock>
 		</>
 	);
 };

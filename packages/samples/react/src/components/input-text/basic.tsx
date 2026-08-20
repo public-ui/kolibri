@@ -2,6 +2,7 @@ import { KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { logKoliBriCallbackEvent, logKoliBriNativeEvent } from '../../shares/utils';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputTextBasic: FC = () => (
@@ -13,7 +14,7 @@ export const InputTextBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4" data-visual-block="basic">
+		<SampleBlock id="basic">
 			<KolInputText
 				_label="Name"
 				_value="Anderson-Clark"
@@ -49,6 +50,6 @@ export const InputTextBasic: FC = () => (
 			/>
 			<KolInputText _label="Name" _icons="kolicon-house" _value="Anderson-Clark" />
 			<KolInputText _label="Search" _type="search" _value="test" _placeholder="Search with clear button" />
-		</div>
+		</SampleBlock>
 	</>
 );

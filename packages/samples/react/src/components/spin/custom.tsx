@@ -1,3 +1,4 @@
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 import './custom.css';
 
@@ -16,8 +17,10 @@ export const SpinCustom: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<KolSpin _show _variant="none" data-visual-block="custom">
-			<span slot="expert" className="loader"></span>
-		</KolSpin>
+		<SampleBlock id="custom">
+			<KolSpin _show _variant="none">
+				<span slot="expert" className="loader"></span>
+			</KolSpin>
+		</SampleBlock>
 	</>
 );

@@ -1,6 +1,7 @@
 import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 const DATA = [
@@ -14,22 +15,23 @@ export const TableNonHidableColumns: FC = () => (
 			<p>This example demonstrates a column that cannot be hidden in the settings.</p>
 		</SampleDescription>
 
-		<KolTableStateful
-			data-visual-block="non-hidable"
-			_label="Table with a non-hidable column"
-			_hasSettingsMenu
-			_headers={{
-				horizontal: [
-					[
-						{ key: 'id', label: 'ID', hidable: false, width: 160 },
-						{ key: 'name', label: 'Name', width: 160 },
-						{ key: 'age', label: 'Age', width: 160 },
+		<SampleBlock id="non-hidable">
+			<KolTableStateful
+				_label="Table with a non-hidable column"
+				_hasSettingsMenu
+				_headers={{
+					horizontal: [
+						[
+							{ key: 'id', label: 'ID', hidable: false, width: 160 },
+							{ key: 'name', label: 'Name', width: 160 },
+							{ key: 'age', label: 'Age', width: 160 },
+						],
 					],
-				],
-			}}
-			_data={DATA}
-			className="block"
-			style={{ maxWidth: '600px' }}
-		/>
+				}}
+				_data={DATA}
+				className="block"
+				style={{ maxWidth: '600px' }}
+			/>
+		</SampleBlock>
 	</>
 );

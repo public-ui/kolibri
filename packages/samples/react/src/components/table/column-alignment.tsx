@@ -3,6 +3,7 @@ import React from 'react';
 
 import { KolHeading, KolTableStateful } from '@public-ui/react-v19';
 
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 const DATA = [{ left: 'Left Example', center: 'Center Example', right: 'Right Example' }];
@@ -14,7 +15,7 @@ export const TableColumnAlignment: FC = () => (
 			<p>This sample shows KolTableStateful with columns headers and data in different text alignments.</p>
 		</SampleDescription>
 
-		<section className="w-full flex flex-col" data-visual-block="column-alignment">
+		<SampleBlock id="column-alignment" className="w-full flex flex-col">
 			<KolHeading _label="Simple table" _level={3}></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with different text align properties"
@@ -83,6 +84,6 @@ export const TableColumnAlignment: FC = () => (
 				className="block"
 				style={{ maxWidth: '600px' }}
 			/>
-		</section>
+		</SampleBlock>
 	</>
 );

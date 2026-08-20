@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { KolAccordion } from '@public-ui/react-v19';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const AccordionHeadlines: FC = () => (
@@ -10,7 +11,7 @@ export const AccordionHeadlines: FC = () => (
 			<p>This sample shows KolAccordion with the different heading levels from 1-6.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4" data-visual-block="headlines">
+		<SampleBlock id="headlines">
 			<KolAccordion _label="Heading Level 1" _level={1}>
 				<p>Contents Accordion Tab 1</p>
 			</KolAccordion>
@@ -29,6 +30,6 @@ export const AccordionHeadlines: FC = () => (
 			<KolAccordion _label="Heading Level 6" _level={6}>
 				<p>Contents Accordion Tab 6</p>
 			</KolAccordion>
-		</div>
+		</SampleBlock>
 	</>
 );

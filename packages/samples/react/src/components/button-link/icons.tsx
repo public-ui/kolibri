@@ -3,6 +3,7 @@ import React from 'react';
 import { KolButtonLink } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonLinkIcons: FC = () => (
@@ -11,7 +12,7 @@ export const ButtonLinkIcons: FC = () => (
 			<p>This sample shows KolButtonLink with icons in different locations.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4" data-visual-block="icons">
+		<SampleBlock id="icons">
 			<KolButtonLink _icons="kolicon-house" _label="I am a link with an icon on the left" />
 			<KolButtonLink
 				_icons={{
@@ -41,6 +42,6 @@ export const ButtonLinkIcons: FC = () => (
 				_label="I am a link with all icons"
 			/>
 			<KolButtonLink _icons="kolicon-house" _hideLabel _label="I am a link with icon only" />
-		</div>
+		</SampleBlock>
 	</>
 );

@@ -1,6 +1,7 @@
 import { KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputTextMsgAndCounter: FC = () => (
@@ -10,7 +11,7 @@ export const InputTextMsgAndCounter: FC = () => (
 			<p>Open DevTools and inspect each input to confirm aria-describedby contains both IDs.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4" data-visual-block="msg-and-counter">
+		<SampleBlock id="msg-and-counter">
 			<KolInputText _label="Warning + Counter" _msg={{ _type: 'warning', _description: 'Bitte prüfen Sie Ihre Eingabe.' }} _hasCounter _maxLength={30} />
 			<KolInputText
 				_label="Error + Counter (touched)"
@@ -20,6 +21,6 @@ export const InputTextMsgAndCounter: FC = () => (
 				_touched
 			/>
 			<KolInputText _label="Info + Counter" _msg={{ _type: 'info', _description: 'Hinweis: maximal 20 Zeichen.' }} _hasCounter _maxLength={20} />
-		</div>
+		</SampleBlock>
 	</>
 );

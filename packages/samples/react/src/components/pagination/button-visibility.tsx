@@ -3,6 +3,7 @@ import React from 'react';
 import { KolPagination } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const PaginationButtonVisibility: FC = () => (
@@ -14,7 +15,7 @@ export const PaginationButtonVisibility: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4" data-visual-block="button-visibility">
+		<SampleBlock id="button-visibility">
 			{/* Default: All buttons visible */}
 			<KolPagination
 				_max={100}
@@ -109,6 +110,6 @@ export const PaginationButtonVisibility: FC = () => (
 				_on={{}}
 				_hasButtons={{ first: true, last: true, next: false, previous: true }}
 			/>
-		</div>
+		</SampleBlock>
 	</>
 );

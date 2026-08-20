@@ -3,18 +3,17 @@ import React, { forwardRef } from 'react';
 import { InputNumberCases } from './cases';
 
 import type { Components } from '@public-ui/components';
+import { SampleBlock } from '../../SampleBlock';
 import { SampleColumns } from '../../SampleColumns';
 export const InputNumberVariants = forwardRef<HTMLKolInputNumberElement, Components.KolInputNumber>(function InputNumberVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset data-visual-block="number">
-				<legend>Number</legend>
+			<SampleBlock id="number" heading="Number">
 				<InputNumberCases {...props} />
-			</fieldset>
-			<fieldset data-visual-block="number-hide-label">
-				<legend>Number (hideLabel)</legend>
+			</SampleBlock>
+			<SampleBlock id="number-hide-label" heading="Number (hideLabel)">
 				<InputNumberCases ref={ref} {...props} _hideLabel />
-			</fieldset>
+			</SampleBlock>
 		</SampleColumns>
 	);
 });

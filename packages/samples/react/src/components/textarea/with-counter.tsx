@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { KolTextarea } from '@public-ui/react-v19';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const TextareaWithCounter: FC = () => (
@@ -13,11 +14,11 @@ export const TextareaWithCounter: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<section className="w-full flex flex-col gap-4" data-visual-block="with-counter">
+		<SampleBlock id="with-counter" className="w-full flex flex-col gap-4">
 			<KolTextarea _label="Textarea with soft max length" _value={'Lorem Ipsum'} className="mt-2" _maxLength={20} _hasCounter _maxLengthBehavior="soft" />
 			<KolTextarea _label="Textarea with max length" _value={'Lorem Ipsum'} className="mt-2" _maxLength={20} />
 			<KolTextarea _label="Textarea with max length and counter" _value={'Lorem Ipsum'} className="mt-2" _maxLength={20} _hasCounter />
 			<KolTextarea _label="Textarea with counter" _value={'Lorem Ipsum'} className="mt-2" _hasCounter />
-		</section>
+		</SampleBlock>
 	</>
 );

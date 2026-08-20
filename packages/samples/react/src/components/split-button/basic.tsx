@@ -3,6 +3,7 @@ import React from 'react';
 import type { ToolbarItemsPropType } from '@public-ui/components';
 import { KolSplitButton, KolToolbar } from '@public-ui/react-v19';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
@@ -43,11 +44,11 @@ export const SplitButtonBasic: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<div className="flex flex-col gap-4" data-visual-block="basic">
+			<SampleBlock id="basic" className="flex flex-col gap-4">
 				<KolSplitButton _label="Edit" _on={dummyEventHandler}>
 					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
 				</KolSplitButton>
-			</div>
+			</SampleBlock>
 		</>
 	);
 };

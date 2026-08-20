@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { KolAccordion } from '@public-ui/react-v19';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
@@ -14,7 +15,7 @@ export const AccordionBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4" data-visual-block="basic">
+		<SampleBlock id="basic">
 			<KolAccordion _label="Heading Accordion Tab 1 (open)" _open>
 				<p>Contents Accordion Tab 1</p>
 			</KolAccordion>
@@ -27,6 +28,6 @@ export const AccordionBasic: FC = () => (
 			<KolAccordion _label="Heading Accordion Tab 4 (disabled and open)" _disabled _open>
 				<p>Contents Accordion Tab 4</p>
 			</KolAccordion>
-		</div>
+		</SampleBlock>
 	</>
 );
