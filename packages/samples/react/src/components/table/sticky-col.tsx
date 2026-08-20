@@ -39,6 +39,7 @@ export const TableStickyCol: FC = () => (
 
 		<KolHeading _level={2} _label="Sticky columns" />
 		<KolTableStateful
+			data-visual-block="sticky-cols"
 			_label="Animal species overview"
 			_data={COMPLEX_DATA}
 			_headers={HEADERS_HORIZONTAL}

@@ -58,7 +58,7 @@ export const TableHorizontalScrollbar: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<section className="w-full flex flex-col gap-4">
+			<section className="w-full flex flex-col gap-4" data-visual-block="scrollbar">
 				<div className="w-[400px] flex flex-col gap-4">
 					<KolTableStateful
 						_label="Table for demonstration purposes with horizontal scrollbar."

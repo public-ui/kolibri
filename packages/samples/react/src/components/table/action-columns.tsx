@@ -98,7 +98,7 @@ export const TableActionColumns: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<section className="w-full">
+		<section className="w-full" data-visual-block="action-columns">
 			<KolTableStateful _label="Tasks with action buttons" _headers={HEADERS} _data={DATA} className="block" />
 		</section>
 	</>

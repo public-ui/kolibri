@@ -9,7 +9,7 @@ export const TableComplexHeaders: FC = () => (
 			<p>This sample shows KolTableStateful using vertical and horizontal headers, applying colspan and rowspan.</p>
 		</SampleDescription>
 
-		<section className="w-full flex flex-col">
+		<section className="w-full flex flex-col" data-visual-block="complex-headers">
 			<KolTableStateful
 				_label="Business hours"
 				_data={[

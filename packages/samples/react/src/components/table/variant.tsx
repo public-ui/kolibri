@@ -33,7 +33,7 @@ export const TableVariant: FC = () => {
 				<p>This sample shows KolTableStateful with different variants controlled by the theme.</p>
 			</SampleDescription>
 
-			<section className="w-full flex flex-col gap-14">
+			<section className="w-full flex flex-col gap-14" data-visual-block="variants">
 				{!Array.isArray(tableVariants) || tableVariants.length === 0 ? (
 					<p>This theme has no variants for tables.</p>
 				) : (

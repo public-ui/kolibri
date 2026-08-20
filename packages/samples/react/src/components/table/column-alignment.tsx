@@ -14,7 +14,7 @@ export const TableColumnAlignment: FC = () => (
 			<p>This sample shows KolTableStateful with columns headers and data in different text alignments.</p>
 		</SampleDescription>
 
-		<section className="w-full flex flex-col">
+		<section className="w-full flex flex-col" data-visual-block="column-alignment">
 			<KolHeading _label="Simple table" _level={3}></KolHeading>
 			<KolTableStateful
 				_label="Table for demonstration purposes with different text align properties"

@@ -15,6 +15,7 @@ export const TableNonHidableColumns: FC = () => (
 		</SampleDescription>
 
 		<KolTableStateful
+			data-visual-block="non-hidable"
 			_label="Table with a non-hidable column"
 			_hasSettingsMenu
 			_headers={{

@@ -45,7 +45,7 @@ export const TableStatelessAsync: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<section className="w-full relative">
+			<section className="w-full relative" data-visual-block="async">
 				<KolTableStateless
 					_label="Table for demonstration purposes"
 					_loading={loading}

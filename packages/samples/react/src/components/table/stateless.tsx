@@ -11,7 +11,7 @@ export const TableStateless: FC = () => (
 			<p>This sample shows how KolTableStateless can be used directly, with the KolTableStateful wrapper.</p>
 		</SampleDescription>
 
-		<section className="w-full">
+		<section className="w-full" data-visual-block="stateless">
 			<KolTableStateless
 				_label="Table for demonstration purposes"
 				_headerCells={{

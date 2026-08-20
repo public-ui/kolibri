@@ -88,7 +88,7 @@ export const TableStatefulWithSingleSelection: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<section className="w-full">
+			<section className="w-full" data-visual-block="single-selection">
 				<KolTableStateful
 					_label="Tasks with action buttons"
 					_headers={HEADERS}

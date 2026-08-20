@@ -72,7 +72,7 @@ export const TableStatelessWithSingleSelection: FC = () => {
 				<p>This sample shows KolTableStateless with checkboxes for selection enabled.</p>
 			</SampleDescription>
 
-			<section className="w-full">
+			<section className="w-full" data-visual-block="single-selection">
 				<KolTableStateless
 					_label="Table with selection checkboxes"
 					_headerCells={{
