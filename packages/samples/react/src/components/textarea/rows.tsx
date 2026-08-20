@@ -13,7 +13,7 @@ export const TextareaRows: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<KolForm className="w-full">
+		<KolForm className="w-full" data-visual-block="rows">
 			<KolTextarea _rows={10} _label="Texteingabe" />
 		</KolForm>
 	</>

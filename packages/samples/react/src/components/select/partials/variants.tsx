@@ -7,11 +7,11 @@ import { SampleColumns } from '../../SampleColumns';
 export const SelectVariants = forwardRef<HTMLKolSelectElement, Components.KolSelect>(function SelectVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset>
+			<fieldset data-visual-block="text">
 				<legend>Text</legend>
 				<SelectCases {...props} />
 			</fieldset>
-			<fieldset>
+			<fieldset data-visual-block="text-hide-label">
 				<legend>Text (hideLabel)</legend>
 				<SelectCases ref={ref} {...props} _hideLabel />
 			</fieldset>

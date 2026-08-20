@@ -21,7 +21,7 @@ export const IconFont: FC = () => {
 				<p>KolIcon renders different icon fonts depending on your theme.</p>
 			</SampleDescription>
 
-			<div className="grid grid-cols-2 gap-8 p-8">
+			<div className="grid grid-cols-2 gap-8 p-8" data-visual-block="icons">
 				{!Array.isArray(iconVariants) || iconVariants.length === 0 ? (
 					<p>This theme has no variants for icons.</p>
 				) : (
@@ -35,7 +35,7 @@ export const IconFont: FC = () => {
 					})
 				)}
 			</div>
-			<div className="grid grid-cols-2 gap-8 p-8">
+			<div className="grid grid-cols-2 gap-8 p-8" data-visual-block="buttons">
 				{!Array.isArray(iconVariantsButton) || iconVariantsButton.length === 0 ? (
 					<p>This theme has no variants for icons in buttons.</p>
 				) : (
@@ -49,7 +49,7 @@ export const IconFont: FC = () => {
 					})
 				)}
 			</div>
-			<div className="grid gap-8 p-8">
+			<div className="grid gap-8 p-8" data-visual-block="inputs">
 				{!Array.isArray(iconVariantsInput) || iconVariantsInput.length === 0 ? (
 					<p>This theme has no variants for icons in inputs.</p>
 				) : (

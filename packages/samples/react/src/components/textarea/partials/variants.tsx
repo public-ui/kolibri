@@ -7,11 +7,11 @@ import { SampleColumns } from '../../SampleColumns';
 export const TextareaVariants = forwardRef<HTMLKolTextareaElement, Components.KolTextarea>(function TextareaVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset>
+			<fieldset data-visual-block="text">
 				<legend>Text</legend>
 				<TextareaCases {...props} />
 			</fieldset>
-			<fieldset>
+			<fieldset data-visual-block="text-hide-label">
 				<legend>Text (hideLabel)</legend>
 				<TextareaCases ref={ref} {...props} _hideLabel />
 			</fieldset>

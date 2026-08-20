@@ -10,7 +10,7 @@ export const InputTextMsgAndCounter: FC = () => (
 			<p>Open DevTools and inspect each input to confirm aria-describedby contains both IDs.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="msg-and-counter">
 			<KolInputText _label="Warning + Counter" _msg={{ _type: 'warning', _description: 'Bitte prüfen Sie Ihre Eingabe.' }} _hasCounter _maxLength={30} />
 			<KolInputText
 				_label="Error + Counter (touched)"

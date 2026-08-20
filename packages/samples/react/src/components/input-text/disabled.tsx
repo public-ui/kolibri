@@ -9,7 +9,7 @@ export const InputTextDisabled: FC = () => (
 			<p>This story demonstrates the disabled state of KolInputText. Disabled inputs cannot be edited or focused.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="disabled">
 			<KolInputText _label="Disabled with placeholder" _placeholder="Placeholder text" _disabled />
 			<KolInputText _label="Disabled with value" _value="This field is disabled" _disabled />
 			<KolInputText _label="Disabled with error message" _value="Invalid value" _msg={{ _type: 'error', _description: 'Error message' }} _disabled _touched />

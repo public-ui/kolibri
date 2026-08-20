@@ -14,7 +14,7 @@ export const AccordionBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="basic">
 			<KolAccordion _label="Heading Accordion Tab 1 (open)" _open>
 				<p>Contents Accordion Tab 1</p>
 			</KolAccordion>

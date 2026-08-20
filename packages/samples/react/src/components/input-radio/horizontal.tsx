@@ -37,7 +37,7 @@ export const InputRadioHorizontal: FC = () => {
 			</div>
 			{show && (
 				<KolForm>
-					<div className="container my-4 d-grid gap-4">
+					<div className="container my-4 d-grid gap-4" data-visual-block="orientation">
 						<KolInputRadio _label={`Test (${orientation})`} _options={options} _orientation={orientation} _required />
 						<KolInputRadio _hideLabel _label={`Test (${orientation})`} _options={options} _orientation={orientation} _required />
 					</div>

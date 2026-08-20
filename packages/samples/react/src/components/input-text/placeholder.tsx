@@ -9,7 +9,7 @@ export const InputTextPlaceholder: FC = () => (
 			<p>This story demonstrates the placeholder feature of KolInputText.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="placeholder">
 			<KolInputText _label="First name" _placeholder="Enter your first name" />
 			<KolInputText _label="Email address" _placeholder="user@example.com" />
 			<KolInputText _label="Phone number" _placeholder="+49 123 456789" _type="tel" />

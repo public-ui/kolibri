@@ -13,7 +13,7 @@ export const TextareaResize: FC = () => (
 		</SampleDescription>
 
 		<KolForm className="w-full">
-			<div className="flex flex-col gap-4">
+			<div className="flex flex-col gap-4" data-visual-block="resize">
 				<KolTextarea _label="Text input (unset)" />
 				<KolTextarea _resize="vertical" _label="Text input (vertical)" />
 				<KolTextarea _resize="none" _label="Text input (none)" />

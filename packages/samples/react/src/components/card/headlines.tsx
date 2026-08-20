@@ -12,7 +12,7 @@ export const CardHeadlines: FC = () => {
 				<p>This sample shows cards with all headline levels as title.</p>
 			</SampleDescription>
 
-			<div className="w-full grid grid-cols-2 gap-4">
+			<div className="w-full grid grid-cols-2 gap-4" data-visual-block="headlines">
 				<KolCard _label="Card with headline level 0" _level={0}>
 					<p>Card contents.</p>
 				</KolCard>

@@ -1,9 +1,10 @@
 import type { KoliBriTableHeaders } from '@public-ui/components';
 import { ToasterService } from '@public-ui/components';
-import { createReactRenderElement, KolButton, KolHeading, KolTableStateful } from '@public-ui/react-v19';
+import { createReactRenderElement, KolButton, KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useRef } from 'react';
 import { SampleDescription } from '../components/SampleDescription';
+import { SampleBlock } from '../SampleBlock';
 import { getRoot } from '../shares/react-roots';
 
 const RowActions: FC<{ label: string }> = ({ label }) => {
@@ -113,8 +114,7 @@ export const ButtonShortkeyTable: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Interactive Table with Button Shortkeys" />
+				<SampleBlock id="interactive-table-button" heading="Interactive Table with Button Shortkeys">
 					<KolTableStateful
 						_label={`Interactive table with shortkey buttons in each row`}
 						_data={DATA}
@@ -123,7 +123,7 @@ export const ButtonShortkeyTable: FC = () => {
 							_page: 1,
 						}}
 					/>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

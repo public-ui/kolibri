@@ -11,7 +11,7 @@ export const CardBasic: FC = () => (
 			<p>KolCard shows a card with title and slot content. The second sample features a close button.</p>
 		</SampleDescription>
 
-		<div className="w-full grid grid-cols-2 gap-4">
+		<div className="w-full grid grid-cols-2 gap-4" data-visual-block="basic">
 			<KolCard _label="Card with title and content">
 				<p>Card contents.</p>
 			</KolCard>

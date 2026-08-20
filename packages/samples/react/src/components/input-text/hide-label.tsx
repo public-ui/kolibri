@@ -12,15 +12,15 @@ export const InputTextHideLabel: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<section>
+		<section data-visual-block="search">
 			<KolInputText _hideLabel _label="Search" _placeholder="Search..." _type="search" />
 		</section>
 
-		<section>
+		<section data-visual-block="error">
 			<KolInputText _hideLabel _label="Email" _placeholder="Enter email" _msg={{ _type: 'error', _description: 'Invalid email format' }} _touched />
 		</section>
 
-		<section>
+		<section data-visual-block="address-group">
 			<fieldset className="grid md:grid-cols-2 gap-4">
 				<legend>Street Address</legend>
 				<KolAlert className="col-span-2" _level={0} _type="error">

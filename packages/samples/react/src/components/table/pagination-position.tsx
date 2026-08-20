@@ -26,7 +26,7 @@ export const PaginationPosition: FC = () => (
 		</SampleDescription>
 
 		<section className="w-full flex flex-col gap-14">
-			<section className="grid gap-4">
+			<section className="grid gap-4" data-visual-block="bottom">
 				<KolHeading _level={2} _label="Table with pagination at the bottom."></KolHeading>
 				<KolTableStateful
 					_label="Sample table with pagination at the bottom"
@@ -45,7 +45,7 @@ export const PaginationPosition: FC = () => (
 					_variant="small"
 				></KolTableStateful>
 			</section>
-			<section className="grid gap-4">
+			<section className="grid gap-4" data-visual-block="top">
 				<KolHeading _level={2} _label="Table with pagination at the top."></KolHeading>
 				<KolTableStateful
 					_label="Sample table with pagination at the top"
@@ -63,7 +63,7 @@ export const PaginationPosition: FC = () => (
 					_paginationPosition="top"
 				></KolTableStateful>
 			</section>
-			<section className="grid gap-4">
+			<section className="grid gap-4" data-visual-block="both">
 				<KolHeading _level={2} _label="Table with pagination at both top and bottom."></KolHeading>
 				<KolTableStateful
 					_label="Sample table with pagination at both top and bottom"

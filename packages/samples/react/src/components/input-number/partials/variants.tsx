@@ -7,11 +7,11 @@ import { SampleColumns } from '../../SampleColumns';
 export const InputNumberVariants = forwardRef<HTMLKolInputNumberElement, Components.KolInputNumber>(function InputNumberVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset>
+			<fieldset data-visual-block="number">
 				<legend>Number</legend>
 				<InputNumberCases {...props} />
 			</fieldset>
-			<fieldset>
+			<fieldset data-visual-block="number-hide-label">
 				<legend>Number (hideLabel)</legend>
 				<InputNumberCases ref={ref} {...props} _hideLabel />
 			</fieldset>

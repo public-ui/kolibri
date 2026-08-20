@@ -208,7 +208,7 @@ export function InputTextFormatterDemo() {
 					field displays the <em>formatted</em> value for better readability.
 				</p>
 			</SampleDescription>
-			<section className="w-full flex flex-col">
+			<section className="w-full flex flex-col" data-visual-block="iban">
 				<div className="p-2">
 					<KolHeading _label="Live Formatting - IBAN" _level={2} />
 					<p className="text-sm mb-2">Formatting occurs during input with intelligent cursor control</p>
@@ -241,7 +241,7 @@ export function InputTextFormatterDemo() {
 				</div>
 			</section>
 
-			<section className="w-full flex flex-col">
+			<section className="w-full flex flex-col" data-visual-block="currency">
 				<div className="p-2">
 					<KolHeading _label="On-Blur Formatting - Currency" _level={2} />
 					<p className="text-sm mb-2">Formatting occurs when leaving the field (onBlur) for uninterrupted input</p>

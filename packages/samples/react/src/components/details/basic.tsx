@@ -14,7 +14,7 @@ export const DetailsBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<section className="grid gap-4">
+		<section className="grid gap-4" data-visual-block="basic">
 			<KolDetails _label="Closed initially">
 				<p>
 					Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam

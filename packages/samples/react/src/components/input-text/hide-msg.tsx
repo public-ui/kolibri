@@ -12,10 +12,10 @@ export const InputTextHideMsg: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<section>
+		<section data-visual-block="single-error">
 			<KolInputText _msg={{ _type: 'error', _description: 'Error message' }} _label="Input with error" _touched />
 		</section>
-		<section>
+		<section data-visual-block="combined-error">
 			<fieldset className="grid md:grid-cols-2 gap-4">
 				<legend>Combined input field</legend>
 				<KolAlert className="col-span-2" _level={0} _type="error">

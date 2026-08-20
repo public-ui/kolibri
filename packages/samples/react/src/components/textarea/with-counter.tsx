@@ -13,7 +13,7 @@ export const TextareaWithCounter: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<section className="w-full flex flex-col gap-4">
+		<section className="w-full flex flex-col gap-4" data-visual-block="with-counter">
 			<KolTextarea _label="Textarea with soft max length" _value={'Lorem Ipsum'} className="mt-2" _maxLength={20} _hasCounter _maxLengthBehavior="soft" />
 			<KolTextarea _label="Textarea with max length" _value={'Lorem Ipsum'} className="mt-2" _maxLength={20} />
 			<KolTextarea _label="Textarea with max length and counter" _value={'Lorem Ipsum'} className="mt-2" _maxLength={20} _hasCounter />

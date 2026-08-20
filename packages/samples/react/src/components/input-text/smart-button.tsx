@@ -36,7 +36,7 @@ export const InputTextSmartButton = () => {
 				<p>This sample shows the smart button feature for KolInputText. It allows the usage of a button inside the bnput.</p>
 			</SampleDescription>
 
-			<div className="grid gap-4">
+			<div className="grid gap-4" data-visual-block="smart-button">
 				<KolInputText
 					_label="Input with button and icons"
 					_type="text"

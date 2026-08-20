@@ -171,7 +171,7 @@ export function InputNumberNumberFormatter() {
 				</p>
 			</SampleDescription>
 			<section className="w-full grid gap-4">
-				<div>
+				<div data-visual-block="whole-number">
 					<KolForm>
 						<KolInputNumber
 							_label="Whole number"
@@ -195,7 +195,7 @@ export function InputNumberNumberFormatter() {
 					<pre className="text-base mt-2">{JSON.stringify({ value, touched }, null, 2)}</pre>
 				</div>
 
-				<div>
+				<div data-visual-block="currency">
 					<KolForm _on={{ onSubmit: handleCurrencySubmit }}>
 						<KolNumericFormatController
 							control={currencyForm.control as any}

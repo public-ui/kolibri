@@ -7,11 +7,11 @@ import { SampleColumns } from '../../SampleColumns';
 export const InputPasswordVariants = forwardRef<HTMLKolInputPasswordElement, Components.KolInputPassword>(function InputPasswordVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset>
+			<fieldset data-visual-block="password">
 				<legend>Password</legend>
 				<InputPasswordCases {...props} />
 			</fieldset>
-			<fieldset>
+			<fieldset data-visual-block="password-hide-label">
 				<legend>Password (hideLabel)</legend>
 				<InputPasswordCases ref={ref} {...props} _hideLabel />
 			</fieldset>

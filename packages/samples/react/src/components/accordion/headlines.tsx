@@ -10,7 +10,7 @@ export const AccordionHeadlines: FC = () => (
 			<p>This sample shows KolAccordion with the different heading levels from 1-6.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="headlines">
 			<KolAccordion _label="Heading Level 1" _level={1}>
 				<p>Contents Accordion Tab 1</p>
 			</KolAccordion>

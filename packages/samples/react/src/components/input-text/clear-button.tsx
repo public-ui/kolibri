@@ -9,7 +9,7 @@ export const InputTextClearButton: FC = () => (
 			<p>This sample demonstrates the clear button for search type input fields.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="clear-button">
 			<KolInputText _label="Search" _type="search" _placeholder="Enter search term" />
 			<KolInputText _label="Search (with value)" _type="search" _value="test" _placeholder="Enter search term" />
 			<KolInputText _label="Search (disabled)" _type="search" _disabled _value="test" _placeholder="Disabled search" />

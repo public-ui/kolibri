@@ -8,21 +8,21 @@ export const InputCheckboxVariants = forwardRef<HTMLKolInputCheckboxElement, Com
 	return (
 		<>
 			<SampleColumns>
-				<fieldset>
+				<fieldset data-visual-block="label-left">
 					<legend>Label align &quot;left&quot; with label</legend>
 					<InputCheckboxCases {...props} _labelAlign="left" />
 				</fieldset>
-				<fieldset>
+				<fieldset data-visual-block="label-left-hide-label">
 					<legend>Label align &quot;left&quot; without Label (hideLabel)</legend>
 					<InputCheckboxCases ref={ref} {...props} _hideLabel _labelAlign="left" />
 				</fieldset>
 			</SampleColumns>
 			<SampleColumns>
-				<fieldset>
+				<fieldset data-visual-block="label-right">
 					<legend>Label align &quot;right&quot; with label</legend>
 					<InputCheckboxCases {...props} />
 				</fieldset>
-				<fieldset>
+				<fieldset data-visual-block="label-right-hide-label">
 					<legend>Label align &quot;right&quot; without Label (hideLabel)</legend>
 					<InputCheckboxCases ref={ref} {...props} _hideLabel />
 				</fieldset>

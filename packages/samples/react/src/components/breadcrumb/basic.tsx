@@ -11,7 +11,7 @@ export const BreadcrumbBasic: FC = () => (
 			<p>KolBreadcrumb shows a breadcrumb navigation. The sample illustrates a variation of link, text and icon elements.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="basic">
 			<KolBreadcrumb
 				_label="Breadcrumb aus Text-Links"
 				_links={[

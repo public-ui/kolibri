@@ -31,7 +31,7 @@ const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (
 );
 
 export const AlertVariants: FC<PropsBasic> = ({ variant = 'msg' }) => (
-	<div className="grid gap-4">
+	<div className="grid gap-4" data-visual-block="variants">
 		<AlertByType level={1} type="default" variant={variant} />
 		<AlertByType level={2} type="error" variant={variant} />
 		<AlertByType level={3} type="info" variant={variant} />

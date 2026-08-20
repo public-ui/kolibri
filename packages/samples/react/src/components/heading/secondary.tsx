@@ -13,7 +13,7 @@ export const HeadingSecondary: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="secondary">
 			<KolHeading _label="This is a H1 headline" _secondaryHeadline="This is a secondary headline" _level={1} />
 		</div>
 	</>

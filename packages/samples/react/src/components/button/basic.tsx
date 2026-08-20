@@ -1,7 +1,8 @@
-import { KolButton, KolHeading } from '@public-ui/react-v19';
+import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonBasic: FC = () => {
@@ -21,9 +22,7 @@ export const ButtonBasic: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				{/* Button Variants */}
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Button Variants" />
+				<SampleBlock id="variants" heading="Button Variants">
 					<div className="flex flex-wrap gap-4">
 						<KolButton _icons="kolicon-house" _label="Primary" _variant="primary" onClick={dummyClickEventHandler} />
 						<KolButton _icons="kolicon-kolibri" _label="Secondary" _variant="secondary" onClick={dummyClickEventHandler} />
@@ -32,31 +31,25 @@ export const ButtonBasic: FC = () => {
 						<KolButton _icons="kolicon-alert-warning" _label="Danger" _variant="danger" _on={dummyEventHandler} />
 						<KolButton _icons="kolicon-eye-closed" _label="Ghost" _variant="ghost" _on={dummyEventHandler} />
 					</div>
-				</section>
+				</SampleBlock>
 
-				{/* Disabled State */}
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Disabled State" />
+				<SampleBlock id="disabled" heading="Disabled State">
 					<div className="flex flex-wrap gap-4">
 						<KolButton _disabled _icons="kolicon-house" _label="Primary" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _disabled _icons="kolicon-kolibri" _label="Secondary" _variant="secondary" _on={dummyEventHandler} />
 						<KolButton _disabled _icons="kolicon-alert-warning" _label="Danger" _variant="danger" _on={dummyEventHandler} />
 					</div>
-				</section>
+				</SampleBlock>
 
-				{/* Hidden Label */}
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Hidden Label (Icon Only)" />
+				<SampleBlock id="hide-label" heading="Hidden Label (Icon Only)">
 					<div className="flex flex-wrap gap-4">
 						<KolButton _hideLabel _icons="kolicon-house" _label="Primary" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _hideLabel _icons="kolicon-kolibri" _label="Secondary" _variant="secondary" _on={dummyEventHandler} />
 						<KolButton _hideLabel _icons="kolicon-alert-warning" _label="Danger" _variant="danger" _on={dummyEventHandler} />
 					</div>
-				</section>
+				</SampleBlock>
 
-				{/* Icon Positions */}
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Icon Positions" />
+				<SampleBlock id="icon-positions" heading="Icon Positions">
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{
@@ -81,7 +74,7 @@ export const ButtonBasic: FC = () => {
 							_on={dummyEventHandler}
 						/>
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

@@ -10,7 +10,7 @@ export const AbbrBasic: FC = () => (
 			<p>KolAbbr shows an abbreviation.</p>
 		</SampleDescription>
 
-		<p>
+		<p data-visual-block="basic">
 			I am <KolAbbr>e.g.</KolAbbr> an abbreviation.
 		</p>
 	</>

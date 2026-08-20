@@ -20,7 +20,7 @@ export const ButtonLinkBasic: FC = () => {
 					display-properties such as <code>block</code>, <code>inline-block</code> and <code>inline</code>. It also demonstrates the disabled-state.
 				</p>
 			</SampleDescription>
-			<section className="text-base">
+			<section className="text-base" data-visual-block="basic">
 				<KolHeading _level={2} _label="Button-Link with _inline" />
 
 				<p>

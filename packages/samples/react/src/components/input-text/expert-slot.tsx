@@ -9,7 +9,7 @@ export const InputTextExpertSlot = () => {
 				<p>This sample shows KolInputText with expert slot. The expert slot allows for complex custom content beyond simple text inputs.</p>
 			</SampleDescription>
 
-			<div className="grid gap-4">
+			<div className="grid gap-4" data-visual-block="expert-slot">
 				<KolInputText _label="" _type="text">
 					<span slot="expert">I am more than just a input field</span>
 				</KolInputText>

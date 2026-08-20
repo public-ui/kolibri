@@ -25,7 +25,7 @@ export const InputTextSelectRange = () => {
 			<SampleDescription>
 				<p>This sample shows how to change the selection in a KolInputText.</p>
 			</SampleDescription>
-			<div className="grid gap-4">
+			<div className="grid gap-4" data-visual-block="select-range">
 				<KolInputText _value="Very long value" _label="Text Input Label" ref={textInput} />
 				<KolButtonLink _label="Set Start" onClick={setSelectioStart} />
 				<KolButtonLink _label="Set Range" onClick={setSelectionRange} />

@@ -7,11 +7,11 @@ import { SingleSelectCases } from './cases';
 export const SingleSelectVariants = (props: Components.KolSingleSelect) => {
 	return (
 		<SampleColumns>
-			<fieldset>
+			<fieldset data-visual-block="text">
 				<legend>Text</legend>
 				<SingleSelectCases {...props} />
 			</fieldset>
-			<fieldset>
+			<fieldset data-visual-block="text-hide-label">
 				<legend>Text (hideLabel)</legend>
 				<SingleSelectCases {...props} _hideLabel />
 			</fieldset>

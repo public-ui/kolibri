@@ -1,7 +1,8 @@
-import { KolButton, KolHeading } from '@public-ui/react-v19';
+import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonSpinner: FC = () => {
@@ -21,8 +22,7 @@ export const ButtonSpinner: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Animated Spinner Icon via CSS Part" />
+				<SampleBlock id="animated-spinner-icon-css-part" heading="Animated Spinner Icon via CSS Part">
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							className="spinner-button"
@@ -55,10 +55,9 @@ export const ButtonSpinner: FC = () => {
 							_on={dummyEventHandler}
 						/>
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Spinner with Label" />
+				<SampleBlock id="spinner-label" heading="Spinner with Label">
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							className="spinner-button"
@@ -79,7 +78,7 @@ export const ButtonSpinner: FC = () => {
 							_on={dummyEventHandler}
 						/>
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 
 			<style>

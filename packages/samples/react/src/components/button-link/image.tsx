@@ -11,7 +11,7 @@ export const ButtonLinkImage: FC = () => (
 			<p>This sample shows KolButtonLink with slot-content instead of a label. The sample uses an image as content.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="image">
 			<KolButtonLink _label="I am a link that is rendered as text" />
 			<KolButtonLink _label="">
 				<KolImage

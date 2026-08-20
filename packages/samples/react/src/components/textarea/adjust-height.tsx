@@ -19,7 +19,7 @@ export const TextareaAdjustHeight: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<KolForm className="w-full">
+		<KolForm className="w-full" data-visual-block="adjust-height">
 			<KolTextarea _adjustHeight={true} _value={VALUE} _label="Text input (auto grow)" />
 		</KolForm>
 	</>

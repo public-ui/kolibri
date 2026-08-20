@@ -1,7 +1,8 @@
-import { KolButton, KolHeading } from '@public-ui/react-v19';
+import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonDisabled: FC = () => {
@@ -18,8 +19,7 @@ export const ButtonDisabled: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Disabled Buttons" />
+				<SampleBlock id="disabled" heading="Disabled Buttons">
 					<div className="flex flex-wrap gap-4">
 						<KolButton _disabled _icons="kolicon-house" _label="Primary" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _disabled _icons="kolicon-kolibri" _label="Secondary" _variant="secondary" _on={dummyEventHandler} />
@@ -28,15 +28,14 @@ export const ButtonDisabled: FC = () => {
 						<KolButton _disabled _icons="kolicon-alert-warning" _label="Danger" _variant="danger" _on={dummyEventHandler} />
 						<KolButton _disabled _icons="kolicon-eye-closed" _label="Ghost" _variant="ghost" _on={dummyEventHandler} />
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Comparison: Enabled vs Disabled" />
+				<SampleBlock id="comparison" heading="Comparison: Enabled vs Disabled">
 					<div className="flex flex-wrap gap-4">
 						<KolButton _icons="kolicon-house" _label="Enabled" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _disabled _icons="kolicon-house" _label="Disabled" _variant="primary" _on={dummyEventHandler} />
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

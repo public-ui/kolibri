@@ -1,7 +1,8 @@
-import { KolButton, KolHeading } from '@public-ui/react-v19';
+import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonIcons: FC = () => {
@@ -20,8 +21,7 @@ export const ButtonIcons: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Basic Icon Positions" />
+				<SampleBlock id="basic-positions" heading="Basic Icon Positions">
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{
@@ -52,10 +52,9 @@ export const ButtonIcons: FC = () => {
 							_on={dummyEventHandler}
 						/>
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Multiple Icon Positions" />
+				<SampleBlock id="multiple-positions" heading="Multiple Icon Positions">
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{
@@ -74,10 +73,9 @@ export const ButtonIcons: FC = () => {
 							_on={dummyEventHandler}
 						/>
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="All Icon Positions" />
+				<SampleBlock id="all-positions" heading="All Icon Positions">
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{
@@ -90,19 +88,17 @@ export const ButtonIcons: FC = () => {
 							_on={dummyEventHandler}
 						/>
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Simple Icon String" />
+				<SampleBlock id="icon-string" heading="Simple Icon String">
 					<div className="flex flex-wrap gap-4">
 						<KolButton _icons="kolicon-house" _label="Home Icon" _on={dummyEventHandler} />
 						<KolButton _icons="kolicon-kolibri" _label="Heart Icon" _on={dummyEventHandler} />
 						<KolButton _icons="kolicon-alert-warning" _label="Trash Icon" _on={dummyEventHandler} />
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Large Icon on Top" />
+				<SampleBlock id="large-icon" heading="Large Icon on Top">
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{
@@ -117,7 +113,7 @@ export const ButtonIcons: FC = () => {
 							_on={dummyEventHandler}
 						/>
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

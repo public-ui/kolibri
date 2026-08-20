@@ -11,7 +11,7 @@ export const HeadingParagraph: FC = () => (
 			<p>This sample shows KolHeading with its different levels combined with some text content each.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="paragraph">
 			<KolHeading _label="Ich bin eine H1-Überschrift" _level={1} />
 			<p>
 				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam

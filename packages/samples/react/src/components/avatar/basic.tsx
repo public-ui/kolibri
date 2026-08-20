@@ -12,7 +12,7 @@ export const AvatarBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="flex flex-wrap gap-4">
+		<div className="flex flex-wrap gap-4" data-visual-block="basic">
 			<KolAvatar _src="assets/img_avatar.jpg" _label="Elke Mustermann" />
 
 			{/* intentional trailing space   👇 - it's supposed to be trimmed */}

@@ -11,7 +11,7 @@ export const HeadingBasic: FC = () => (
 			<p>KolHeading renders a heading with the given level.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="basic">
 			<KolHeading _label="I'm a H1-heading" _level={1} />
 			<KolHeading _label="I'm a H2-heading" _level={2} />
 			<KolHeading _label="I'm a H3-heading" _level={3} />

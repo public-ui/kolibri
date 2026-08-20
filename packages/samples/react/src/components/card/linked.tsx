@@ -12,7 +12,7 @@ export const CardLinked: FC = () => {
 				<p>This sample shows KolCards with links. The headline is wrapped with an a-tag. The whole card is clickable.</p>
 			</SampleDescription>
 
-			<div className="w-full grid grid-cols-2 gap-4">
+			<div className="w-full grid grid-cols-2 gap-4" data-visual-block="linked">
 				<KolCard _label="Card with title and content" _href="#/back-page">
 					<p>This card has a link.</p>
 				</KolCard>

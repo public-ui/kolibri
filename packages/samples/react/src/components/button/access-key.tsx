@@ -1,7 +1,8 @@
-import { KolButton, KolHeading, KolLink } from '@public-ui/react-v19';
+import { KolButton, KolLink } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonAccessKey: FC = () => {
@@ -22,24 +23,21 @@ export const ButtonAccessKey: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Buttons with Access Keys" />
+				<SampleBlock id="buttons-access-keys" heading="Buttons with Access Keys">
 					<div className="flex flex-wrap gap-4">
 						<KolButton _label="With S access key" _accessKey="S" _on={dummyEventHandler} />
 						<KolButton _label="Very small b" _accessKey="b" _on={dummyEventHandler} />
 						<KolButton _label="Access key does not appear in label" _accessKey="x" _on={dummyEventHandler} />
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Access Key with Hidden Label" />
+				<SampleBlock id="access-key-hidden-label" heading="Access Key with Hidden Label">
 					<div className="flex flex-wrap gap-4">
 						<KolButton _label="access key without label" _hideLabel _accessKey="a" _icons="kolicon-cogwheel" _on={dummyEventHandler} />
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Access Key with Inline Icons" />
+				<SampleBlock id="access-key-inline-icons" heading="Access Key with Inline Icons">
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_label="with inline icons"
@@ -51,7 +49,7 @@ export const ButtonAccessKey: FC = () => {
 							_on={dummyEventHandler}
 						/>
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

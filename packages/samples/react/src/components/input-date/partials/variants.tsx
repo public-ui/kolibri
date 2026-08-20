@@ -8,15 +8,15 @@ import { InputDateMinMaxCases } from './minMax';
 export const InputDateVariants = forwardRef<HTMLKolInputDateElement, Components.KolInputDate>(function InputDateVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset>
+			<fieldset data-visual-block="date">
 				<legend>Date</legend>
 				<InputDateCases {...props} />
 			</fieldset>
-			<fieldset>
+			<fieldset data-visual-block="date-hide-label">
 				<legend>Date (hideLabel)</legend>
 				<InputDateCases ref={ref} {...props} _hideLabel />
 			</fieldset>
-			<fieldset>
+			<fieldset data-visual-block="date-min-max">
 				<legend>Date (with min/max)</legend>
 				<InputDateMinMaxCases {...props} />
 			</fieldset>

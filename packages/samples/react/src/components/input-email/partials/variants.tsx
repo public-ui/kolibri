@@ -7,11 +7,11 @@ import { SampleColumns } from '../../SampleColumns';
 export const InputEmailVariants = forwardRef<HTMLKolInputEmailElement, Components.KolInputEmail>(function InputEmailVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset>
+			<fieldset data-visual-block="email">
 				<legend>Email</legend>
 				<InputEmailCases {...props} />
 			</fieldset>
-			<fieldset>
+			<fieldset data-visual-block="email-hide-label">
 				<legend>Email (hideLabel)</legend>
 				<InputEmailCases ref={ref} {...props} _hideLabel />
 			</fieldset>

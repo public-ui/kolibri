@@ -18,6 +18,7 @@ import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router';
 import { fetchVariantData } from '../../shares/fetchVariantData';
 import { getCustomThemes } from '../../shares/store';
+import { toKebabCase } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputVariant: FC = () => {
@@ -37,7 +38,7 @@ export const InputVariant: FC = () => {
 				) : (
 					inputVariants.map((element) => {
 						return (
-							<div key={element} className="grid gap-4 p-8">
+							<div key={element} className="grid gap-4 p-8" data-visual-block={`variant-${toKebabCase(String(element))}`}>
 								<h2>Variante: {element}</h2>
 								<KolInputText
 									_label="Input Text"

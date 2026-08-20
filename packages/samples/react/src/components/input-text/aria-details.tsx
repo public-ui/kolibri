@@ -16,7 +16,7 @@ export const InputTextAriaDetails: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-8">
+		<div className="grid gap-8" data-visual-block="aria-details">
 			{/* Input Form with all 4 components */}
 			<div className="grid gap-4 p-4 border border-gray-300 rounded">
 				<h2 className="text-lg font-semibold">Form Inputs with Shared Details</h2>

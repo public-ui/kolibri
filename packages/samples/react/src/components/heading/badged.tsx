@@ -13,7 +13,7 @@ export const HeadingBadged: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="badged">
 			<KolHeading _label="" _level={1}>
 				<span slot="expert">
 					A heading with a <KolBadge _label="Label"></KolBadge>

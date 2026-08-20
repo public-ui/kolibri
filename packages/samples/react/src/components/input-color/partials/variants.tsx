@@ -7,11 +7,11 @@ import { SampleColumns } from '../../SampleColumns';
 export const InputColorVariants = forwardRef<HTMLKolInputColorElement, Components.KolInputColor>(function InputColorVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset>
+			<fieldset data-visual-block="color">
 				<legend>Color</legend>
 				<InputColorCases {...props} />
 			</fieldset>
-			<fieldset>
+			<fieldset data-visual-block="color-hide-label">
 				<legend>Color (hideLabel)</legend>
 				<InputColorCases ref={ref} {...props} _hideLabel />
 			</fieldset>

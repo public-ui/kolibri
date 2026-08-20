@@ -13,7 +13,7 @@ export const InputTextBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="basic">
 			<KolInputText
 				_label="Name"
 				_value="Anderson-Clark"

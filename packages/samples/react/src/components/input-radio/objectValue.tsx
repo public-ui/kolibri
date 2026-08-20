@@ -21,14 +21,14 @@ export const InputRadioObjectValue: FC = () => {
 				<p>
 					In this example for <code>KolInputRadio</code>, the values of the options are defined as objects.
 				</p>
-				<div className="container my-4 d-grid gap-4">
+				<div className="container my-4 d-grid gap-4" data-visual-block="object-value">
 					<KolInputRadio _value={options[1].value} _options={options} _label="Test (with object value)" />
 				</div>
 
 				<p>
 					In this example for <code>KolInputRadio</code>, no value is set.
 				</p>
-				<div className="container my-4 d-grid gap-4">
+				<div className="container my-4 d-grid gap-4" data-visual-block="no-value">
 					<KolInputRadio _options={options} _label="Test (without value)" />
 				</div>
 			</KolForm>

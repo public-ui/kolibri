@@ -11,7 +11,7 @@ export const InputTextPattern: FC = () => (
 		<SampleDescription>
 			<p>This sample demonstrates HTML5 pattern validation for both native input and KolInputText components.</p>
 		</SampleDescription>
-		<form className="grid gap-4">
+		<form className="grid gap-4" data-visual-block="pattern">
 			<div className="grid gap-2">
 				<label htmlFor="native-input">Native Input (Pattern: AAA-123, case-insensitive)</label>
 				<input id="native-input" name="native-input" pattern={PATTERN} type="text" />

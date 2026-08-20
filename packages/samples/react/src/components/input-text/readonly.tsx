@@ -9,7 +9,7 @@ export const InputTextReadonly: FC = () => (
 			<p>This story demonstrates the readonly state of KolInputText. Readonly inputs can be focused but not edited.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="readonly">
 			<KolInputText _label="Readonly with placeholder" _placeholder="Placeholder text" _readOnly />
 			<KolInputText _label="Readonly with value" _value="This field is readonly" _readOnly />
 			<KolInputText

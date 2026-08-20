@@ -25,6 +25,7 @@ export const FormErrorList: FC = () => {
 
 			<KolForm
 				className="w-full"
+				data-visual-block="error-list"
 				ref={formRef}
 				_on={{
 					onSubmit: scrollTo,

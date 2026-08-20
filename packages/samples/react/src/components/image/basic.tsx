@@ -13,6 +13,7 @@ export const ImageBasic: FC = () => (
 			_alt="KoliBri design system illustration showing three people working on laptops surrounded by UI components, charts, and the KoliBri hummingbird logo"
 			_src="assets/sample-image.png"
 			className="w-image"
+			data-visual-block="basic"
 		/>
 	</>
 );
