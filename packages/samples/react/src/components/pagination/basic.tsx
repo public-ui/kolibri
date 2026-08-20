@@ -14,7 +14,7 @@ export const PaginationBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="basic">
 			<KolPagination
 				_max={316514}
 				_page={15475}

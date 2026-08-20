@@ -11,7 +11,7 @@ export const LinkIcons: FC = () => (
 			<p>This sample shows KolLink with icons in different alignments and combinations.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="icons">
 			<KolLink _icons="kolicon-house" _label="I am a link with an icon on the left" _href="#/back-page" />
 			<KolLink
 				_icons={{

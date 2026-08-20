@@ -13,7 +13,7 @@ export const LinkBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="basic">
 			<KolLink _href="#/back-page" _inline={false} _label="Simple Link" />
 			<KolLink _disabled _href="#/back-page" _inline={false} _label="Simple Link (disabled)" />
 			<KolLink _hideLabel _icons="kolicon-house" _href="#/back-page" _inline={false} _label="Icon Link" />

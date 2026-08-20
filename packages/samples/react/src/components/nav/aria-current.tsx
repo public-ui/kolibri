@@ -15,6 +15,7 @@ export const NavAriaCurrent: FC = () => (
 		</SampleDescription>
 
 		<KolNav
+			data-visual-block="aria-current"
 			class="block w-sm"
 			_label="Main navigation"
 			_links={[

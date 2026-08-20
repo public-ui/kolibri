@@ -10,7 +10,7 @@ export const LinkImage: FC = () => (
 			<p>KolLink can be used with slot-content instead of a label as well. This sample demonstrates the slot content used to display an image.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<div className="grid gap-4" data-visual-block="image">
 			<KolLink _href="#/back-page" _label="I am a link that is rendered as text" />
 			<KolLink _href="#/back-page" _label="">
 				<KolImage

@@ -19,7 +19,7 @@ export const LinkVariant: FC = () => {
 				<p>This sample shows the theme specific variants of KolLink.</p>
 			</SampleDescription>
 
-			<div className="grid gap-4">
+			<div className="grid gap-4" data-visual-block="variants">
 				<KolLink _href="#/back-page" _label="Normal link without a variant" />
 				{!Array.isArray(data) || data.length === 0 ? (
 					<p>This theme has no variants for this component.</p>
