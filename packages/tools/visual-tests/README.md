@@ -75,6 +75,8 @@ Rules for block ids:
 - Blocks must be visible in `?hideMenus` mode and must not have zero size.
 - Overlay content (tooltips, toasts, popovers) that extends beyond the block's bounding box is clipped — such routes should use full-page screenshots instead.
 
-Routes without any `data-visual-block` container fall back to a full-page screenshot. Routes that should deliberately be captured as a whole page (composition tests) set `snapshot.forceFullPage: true` in `tests/sample-app.routes.js`.
+Every route must either contain at least one `data-visual-block` container or set `snapshot.forceFullPage: true` in `tests/sample-app.routes.js` — a route with neither fails the test. `forceFullPage` is meant for deliberate whole-page captures: overlays that extend beyond any block (dialogs, drawers, toasts, open popovers), focus-dependent content (skip-nav) and composition tests (`scenarios/*`, `form/basic`).
+
+Snapshot files are named after the route: `button/basic` → `button-basic--<block-id>.png` (element screenshots) or `button-basic.png` (full page).
 
 For details on theming see the [default theme README](../../themes/default/README.md).

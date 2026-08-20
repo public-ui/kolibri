@@ -13,9 +13,10 @@ export const ROUTES = new Map();
  *   - options:
  *     - maxDiffPixelRatio: number (Default: 0)
  *   - skip: boolean (Default: false)
- *   - forceFullPage: boolean (Default: false) – capture the route as one full-page screenshot even if
- *     the view contains `data-visual-block` containers. Use for deliberate composition tests
- *     (component spacing, page layout).
+ *   - forceFullPage: boolean (Default: false) – capture the route as one full-page screenshot instead
+ *     of one element screenshot per `data-visual-block` container. Required for routes without blocks:
+ *     overlays that extend beyond any block (dialog, drawer, toast, open popover), focus-dependent
+ *     content (skip-nav) and deliberate composition tests (scenarios/*, form/basic).
  *   - viewportSize:
  *     - width (Default: 800)
  *     - height (Default: 100)
@@ -199,6 +200,7 @@ ROUTES.set('details/basic', {
 });
 ROUTES.set('dialog/basic?show-dialog=true', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 1920,
 			height: 600,
@@ -210,6 +212,7 @@ ROUTES.set('dialog/basic?show-dialog=true', {
 });
 ROUTES.set('drawer/basic?align=left', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 600,
 			height: 400,
@@ -221,6 +224,7 @@ ROUTES.set('drawer/basic?align=left', {
 });
 ROUTES.set('drawer/basic?align=top', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 600,
 			height: 400,
@@ -232,6 +236,7 @@ ROUTES.set('drawer/basic?align=top', {
 });
 ROUTES.set('drawer/basic?align=right', {
 	snapshot: {
+		forceFullPage: true,
 		skip: true,
 		zoom: {
 			skip: true,
@@ -240,6 +245,7 @@ ROUTES.set('drawer/basic?align=right', {
 });
 ROUTES.set('drawer/basic?align=bottom', {
 	snapshot: {
+		forceFullPage: true,
 		skip: true,
 		zoom: {
 			skip: true,
@@ -248,6 +254,7 @@ ROUTES.set('drawer/basic?align=bottom', {
 });
 ROUTES.set('drawer/basic?align=left&closer=true', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 600,
 			height: 400,
@@ -259,6 +266,7 @@ ROUTES.set('drawer/basic?align=left&closer=true', {
 });
 ROUTES.set('form/basic', {
 	snapshot: {
+		forceFullPage: true,
 		skip: true,
 		zoom: {
 			skip: true,
@@ -707,6 +715,7 @@ ROUTES.set('link/target', {
 ROUTES.set('link/link-variant', {});
 ROUTES.set('modal/basic?show-dialog=true', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 1920,
 			height: 600,
@@ -758,6 +767,7 @@ ROUTES.set('pagination/sibling-boundary', {
 });
 ROUTES.set('popover-button/basic', {
 	snapshot: {
+		forceFullPage: true,
 		zoom: {
 			skip: true,
 		},
@@ -834,6 +844,7 @@ ROUTES.set('select/multiple-dropdown', {
 });
 ROUTES.set('skip-nav/basic', {
 	snapshot: {
+		forceFullPage: true,
 		zoom: {
 			skip: true,
 		},
@@ -1198,6 +1209,7 @@ ROUTES.set('textarea/with-counter', {
 });
 ROUTES.set('toast/configurator', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 600,
 			height: 750,
@@ -1264,6 +1276,7 @@ ROUTES.set('version/context', {
 });
 ROUTES.set('scenarios/accordion-components', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 200,
 			height: 0,
@@ -1278,6 +1291,7 @@ ROUTES.set('scenarios/static-form', {
 		skipFailures: true,
 	},
 	snapshot: {
+		forceFullPage: true,
 		skip: true,
 		zoom: {
 			skip: true,
@@ -1289,6 +1303,7 @@ ROUTES.set('scenarios/sample-form-with-validation', {
 		skipFailures: true,
 	},
 	snapshot: {
+		forceFullPage: true,
 		skip: true,
 		zoom: {
 			skip: true,
@@ -1300,6 +1315,7 @@ ROUTES.set('scenarios/disabled-interactive-scenario', {
 		skipFailures: true,
 	},
 	snapshot: {
+		forceFullPage: true,
 		skip: true,
 		zoom: {
 			skip: true,
@@ -1311,6 +1327,7 @@ ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
 		skipFailures: true,
 	},
 	snapshot: {
+		forceFullPage: true,
 		zoom: {
 			skip: true,
 		},
@@ -1322,6 +1339,7 @@ ROUTES.set('scenarios/same-height-of-all-form-elements-with-label', {
 		skipFailures: true,
 	},
 	snapshot: {
+		forceFullPage: true,
 		zoom: {
 			skip: true,
 		},
@@ -1331,6 +1349,7 @@ ROUTES.set('scenarios/same-height-of-all-form-elements-with-label', {
 /* Focus tests */
 ROUTES.set('scenarios/focus-elements?component=accordion', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1342,6 +1361,7 @@ ROUTES.set('scenarios/focus-elements?component=accordion', {
 });
 ROUTES.set('scenarios/focus-elements?component=badge', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1353,6 +1373,7 @@ ROUTES.set('scenarios/focus-elements?component=badge', {
 });
 ROUTES.set('scenarios/focus-elements?component=button', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1364,6 +1385,7 @@ ROUTES.set('scenarios/focus-elements?component=button', {
 });
 ROUTES.set('scenarios/focus-elements?component=buttonLink', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1375,6 +1397,7 @@ ROUTES.set('scenarios/focus-elements?component=buttonLink', {
 });
 ROUTES.set('scenarios/focus-elements?component=card', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1386,6 +1409,7 @@ ROUTES.set('scenarios/focus-elements?component=card', {
 });
 ROUTES.set('scenarios/focus-elements?component=combobox', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1397,6 +1421,7 @@ ROUTES.set('scenarios/focus-elements?component=combobox', {
 });
 ROUTES.set('scenarios/focus-elements?component=details', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1408,6 +1433,7 @@ ROUTES.set('scenarios/focus-elements?component=details', {
 });
 ROUTES.set('scenarios/focus-elements?component=inputCheckbox', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1419,6 +1445,7 @@ ROUTES.set('scenarios/focus-elements?component=inputCheckbox', {
 });
 ROUTES.set('scenarios/focus-elements?component=inputColor', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1430,6 +1457,7 @@ ROUTES.set('scenarios/focus-elements?component=inputColor', {
 });
 ROUTES.set('scenarios/focus-elements?component=inputDate', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1441,6 +1469,7 @@ ROUTES.set('scenarios/focus-elements?component=inputDate', {
 });
 ROUTES.set('scenarios/focus-elements?component=inputEmail', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1452,6 +1481,7 @@ ROUTES.set('scenarios/focus-elements?component=inputEmail', {
 });
 ROUTES.set('scenarios/focus-elements?component=inputFile', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1463,6 +1493,7 @@ ROUTES.set('scenarios/focus-elements?component=inputFile', {
 });
 ROUTES.set('scenarios/focus-elements?component=inputFileMultiple', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1474,6 +1505,7 @@ ROUTES.set('scenarios/focus-elements?component=inputFileMultiple', {
 });
 ROUTES.set('scenarios/focus-elements?component=inputNumber', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1485,6 +1517,7 @@ ROUTES.set('scenarios/focus-elements?component=inputNumber', {
 });
 ROUTES.set('scenarios/focus-elements?component=inputPassword', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1496,6 +1529,7 @@ ROUTES.set('scenarios/focus-elements?component=inputPassword', {
 });
 ROUTES.set('scenarios/focus-elements?component=inputRadio', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1507,6 +1541,7 @@ ROUTES.set('scenarios/focus-elements?component=inputRadio', {
 });
 ROUTES.set('scenarios/focus-elements?component=inputRange', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1518,6 +1553,7 @@ ROUTES.set('scenarios/focus-elements?component=inputRange', {
 });
 ROUTES.set('scenarios/focus-elements?component=inputText', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1529,6 +1565,7 @@ ROUTES.set('scenarios/focus-elements?component=inputText', {
 });
 ROUTES.set('scenarios/focus-elements?component=link', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1540,6 +1577,7 @@ ROUTES.set('scenarios/focus-elements?component=link', {
 });
 ROUTES.set('scenarios/focus-elements?component=linkButton', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1551,6 +1589,7 @@ ROUTES.set('scenarios/focus-elements?component=linkButton', {
 });
 ROUTES.set('scenarios/focus-elements?component=select', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1562,6 +1601,7 @@ ROUTES.set('scenarios/focus-elements?component=select', {
 });
 ROUTES.set('scenarios/focus-elements?component=selectMultiple', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1576,6 +1616,7 @@ ROUTES.set('scenarios/focus-elements?component=singleSelect', {
 		skipFailures: true,
 	},
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1587,6 +1628,7 @@ ROUTES.set('scenarios/focus-elements?component=singleSelect', {
 });
 ROUTES.set('scenarios/focus-elements?component=popoverButton', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1598,6 +1640,7 @@ ROUTES.set('scenarios/focus-elements?component=popoverButton', {
 });
 ROUTES.set('scenarios/focus-elements?component=skipNav', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1609,6 +1652,7 @@ ROUTES.set('scenarios/focus-elements?component=skipNav', {
 });
 ROUTES.set('scenarios/focus-elements?component=splitButton', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1620,6 +1664,7 @@ ROUTES.set('scenarios/focus-elements?component=splitButton', {
 });
 ROUTES.set('scenarios/focus-elements?component=tabs', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1631,6 +1676,7 @@ ROUTES.set('scenarios/focus-elements?component=tabs', {
 });
 ROUTES.set('scenarios/focus-elements?component=textarea', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1642,6 +1688,7 @@ ROUTES.set('scenarios/focus-elements?component=textarea', {
 });
 ROUTES.set('scenarios/focus-elements?component=toolbar', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
@@ -1653,6 +1700,7 @@ ROUTES.set('scenarios/focus-elements?component=toolbar', {
 });
 ROUTES.set('scenarios/focus-elements?component=tree', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
