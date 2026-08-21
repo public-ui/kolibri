@@ -1,2 +1,0 @@
-import{Et as e,Ot as t}from"./index-BeKetKBb.js";var n=(n,r,i)=>{t(r,`_links`,e=>typeof e==`object`&&(typeof e._href==`string`||typeof e._label==`string`),i),e(n,r.state._links.length)};export{n as t};
-//# sourceMappingURL=validation-DFynMQYA-DPs3aj55.js.map

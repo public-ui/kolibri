@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-DijRMURg.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};

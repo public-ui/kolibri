@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-BSuGaMNI.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};

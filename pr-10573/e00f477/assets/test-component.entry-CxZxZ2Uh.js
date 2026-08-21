@@ -1,1 +1,0 @@
-import{s as e}from"./index-B_B8_sPr.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};

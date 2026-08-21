@@ -1,2 +1,0 @@
-import{Mt as e}from"./index-CcZkV93W.js";var t=/^[a-zA-Z][a-zA-Z0-9_-]{3,60}$/,n=e=>typeof e==`string`&&t.test(e),r=new Set([t.source]),i=(t,i)=>{e(t,`_variant`,n,r,i)};export{i as t};
-//# sourceMappingURL=variant-class-name-BEv65n6p-BduT_XaK.js.map

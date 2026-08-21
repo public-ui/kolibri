@@ -1,1 +1,0 @@
-import{At as e}from"./index-wA10gywi.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};

@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-eNuSm7YY.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};

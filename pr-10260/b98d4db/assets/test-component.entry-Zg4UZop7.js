@@ -1,1 +1,0 @@
-import{s as e}from"./index-R3jasSzo.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};

@@ -1,1 +1,0 @@
-import"./index-D--h4UDb.js";import{r as e}from"./align-DpNc6EKs-CS_g8Xk9.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};

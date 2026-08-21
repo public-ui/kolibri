@@ -1,2 +1,0 @@
-import{Mt as e}from"./index-CcZkV93W.js";var t=(t,n,r)=>{e(t,n,e=>typeof e==`string`&&i.includes(e),new Set(i),r,{defaultValue:`top`})},n=[`left`,`right`],r=[`top`,`bottom`],i=[...n,...r],a=(e,n)=>{t(e,`_align`,n)};export{a as n,t as r,i as t};
-//# sourceMappingURL=align-CmftpO30-DW9Yb-kU.js.map

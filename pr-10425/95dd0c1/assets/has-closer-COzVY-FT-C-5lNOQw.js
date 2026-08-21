@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-BKmk_gYg.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};

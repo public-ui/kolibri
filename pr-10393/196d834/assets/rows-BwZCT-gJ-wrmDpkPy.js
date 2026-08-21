@@ -1,1 +1,0 @@
-import{kt as e}from"./index-eNuSm7YY.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};

@@ -1,2 +1,0 @@
-import{Mt as e}from"./index-CcZkV93W.js";import{t}from"./level-DVBaLQDy-C9kAovMH.js";var n=(n,r)=>{e(n,`_level`,e=>typeof e==`number`&&t.includes(e),new Set(t.map(String)),r,{defaultValue:1,required:!0})};export{n as t};
-//# sourceMappingURL=validation-DLj2YtgQ-BuTCml_O.js.map

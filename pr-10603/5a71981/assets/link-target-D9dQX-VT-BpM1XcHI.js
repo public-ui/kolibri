@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-Bm_RO8Uf.js";var t=(t,n)=>{e(t,`_target`,n)};export{t};

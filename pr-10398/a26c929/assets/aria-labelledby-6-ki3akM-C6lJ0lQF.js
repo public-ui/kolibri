@@ -1,2 +1,0 @@
-var e=e=>globalThis.CSS?.escape?globalThis.CSS.escape(e):e.replace(/[^a-zA-Z0-9_-]/g,`\\$&`),t=(t,n)=>{let r=(n??``).trim().split(/\s+/).filter(Boolean);if(!r.length)return[];let i=t?.getRootNode();return r.map(t=>i instanceof Document?i.getElementById(t):i instanceof ShadowRoot?i.querySelector(`#${e(t)}`):typeof document<`u`?document.getElementById(t):null).filter(e=>!!e)},n=e=>{let t=e.attachInternals;if(t)try{return t.call(e)}catch{return}};export{t as n,n as t};
-//# sourceMappingURL=aria-labelledby-6-ki3akM-C6lJ0lQF.js.map

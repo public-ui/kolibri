@@ -1,1 +1,0 @@
-import{jt as e}from"./index-C4_mUiVk.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
