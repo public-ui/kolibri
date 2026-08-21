@@ -1,19 +1,19 @@
 import React from 'react';
 
 import type { Components } from '@public-ui/components';
-import { SampleBlock } from '../../SampleBlock';
 import { SampleColumns } from '../../SampleColumns';
+import { SampleGroup } from '../../SampleGroup';
 import { SingleSelectCases } from './cases';
 
 export const SingleSelectVariants = (props: Components.KolSingleSelect) => {
 	return (
 		<SampleColumns>
-			<SampleBlock id="text" heading="Text">
-				<SingleSelectCases {...props} />
-			</SampleBlock>
-			<SampleBlock id="text-hide-label" heading="Text (hideLabel)">
-				<SingleSelectCases {...props} _hideLabel />
-			</SampleBlock>
+			<SampleGroup heading="Text">
+				<SingleSelectCases blockIdPrefix="label" {...props} />
+			</SampleGroup>
+			<SampleGroup heading="Text (hideLabel)">
+				<SingleSelectCases blockIdPrefix="hide-label" {...props} _hideLabel />
+			</SampleGroup>
 		</SampleColumns>
 	);
 };

@@ -5,28 +5,74 @@ import { KolInputCheckbox } from '@public-ui/react-v19';
 import { ERROR_MSG } from '../../../shares/constants';
 
 import type { Components } from '@public-ui/components';
-export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, Components.KolInputCheckbox>(function InputCheckboxCases(props, ref) {
+import { SampleBlock } from '../../SampleBlock';
+
+type InputCheckboxCasesProps = Components.KolInputCheckbox & {
+	/** Prefixes the visual block ids so the same cases can be rendered more than once per route. */
+	blockIdPrefix: string;
+};
+
+export const InputCheckboxCases = forwardRef<HTMLKolInputCheckboxElement, InputCheckboxCasesProps>(function InputCheckboxCases(
+	{ blockIdPrefix, ...props },
+	ref,
+) {
 	return (
 		<div className="grid gap-4">
-			<KolInputCheckbox {...props} _label="Not selected" _value={false} _required />
-			<KolInputCheckbox {...props} _label="Indeterminate" _value={null} _indeterminate />
-			<KolInputCheckbox {...props} ref={ref} _accessKey="A" _checked _label="Selected" _tooltipAlign="right" _value={true} />
-			<KolInputCheckbox {...props} _checked _icons={{ unchecked: 'ckolicon-cross' }} _label={'With a very long label and upheavals '.repeat(5)} _value={true} />
-			<KolInputCheckbox {...props} _disabled _label="Disabled" _value={true} _hint="Hint text" />
-			<KolInputCheckbox {...props} _checked _disabled _label="Checked and disabled" />
-			<KolInputCheckbox {...props} _indeterminate _disabled _label="Indeterminate and disabled" />
-			<KolInputCheckbox {...props} _msg={{ _type: 'error', _description: ERROR_MSG }} _label="With error" _touched _value={true} _hint="Hint text" _required />
-			<KolInputCheckbox {...props} _label="With access key" _accessKey="c" _value={null}></KolInputCheckbox>
-			<KolInputCheckbox {...props} _label="With short key" _shortKey="s" _value={null}></KolInputCheckbox>
-			<KolInputCheckbox
-				{...props}
-				_label="With popover"
-				_value={false}
-				_required
-				_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
-			>
-				<span slot="expert">Expert Slot & required</span>
-			</KolInputCheckbox>
+			<SampleBlock id={`${blockIdPrefix}-unchecked`}>
+				<KolInputCheckbox {...props} _label="Not selected" _value={false} _required />
+			</SampleBlock>
+			<SampleBlock id={`${blockIdPrefix}-indeterminate`}>
+				<KolInputCheckbox {...props} _label="Indeterminate" _value={null} _indeterminate />
+			</SampleBlock>
+			<SampleBlock id={`${blockIdPrefix}-checked`}>
+				<KolInputCheckbox {...props} ref={ref} _accessKey="A" _checked _label="Selected" _tooltipAlign="right" _value={true} />
+			</SampleBlock>
+			<SampleBlock id={`${blockIdPrefix}-long-label`}>
+				<KolInputCheckbox
+					{...props}
+					_checked
+					_icons={{ unchecked: 'ckolicon-cross' }}
+					_label={'With a very long label and upheavals '.repeat(5)}
+					_value={true}
+				/>
+			</SampleBlock>
+			<SampleBlock id={`${blockIdPrefix}-disabled`}>
+				<KolInputCheckbox {...props} _disabled _label="Disabled" _value={true} _hint="Hint text" />
+			</SampleBlock>
+			<SampleBlock id={`${blockIdPrefix}-checked-disabled`}>
+				<KolInputCheckbox {...props} _checked _disabled _label="Checked and disabled" />
+			</SampleBlock>
+			<SampleBlock id={`${blockIdPrefix}-indet-disabled`}>
+				<KolInputCheckbox {...props} _indeterminate _disabled _label="Indeterminate and disabled" />
+			</SampleBlock>
+			<SampleBlock id={`${blockIdPrefix}-error`}>
+				<KolInputCheckbox
+					{...props}
+					_msg={{ _type: 'error', _description: ERROR_MSG }}
+					_label="With error"
+					_touched
+					_value={true}
+					_hint="Hint text"
+					_required
+				/>
+			</SampleBlock>
+			<SampleBlock id={`${blockIdPrefix}-access-key`}>
+				<KolInputCheckbox {...props} _label="With access key" _accessKey="c" _value={null}></KolInputCheckbox>
+			</SampleBlock>
+			<SampleBlock id={`${blockIdPrefix}-short-key`}>
+				<KolInputCheckbox {...props} _label="With short key" _shortKey="s" _value={null}></KolInputCheckbox>
+			</SampleBlock>
+			<SampleBlock id={`${blockIdPrefix}-info-popover`}>
+				<KolInputCheckbox
+					{...props}
+					_label="With popover"
+					_value={false}
+					_required
+					_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
+				>
+					<span slot="expert">Expert Slot & required</span>
+				</KolInputCheckbox>
+			</SampleBlock>
 		</div>
 	);
 });

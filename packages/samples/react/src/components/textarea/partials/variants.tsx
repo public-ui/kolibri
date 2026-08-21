@@ -3,17 +3,17 @@ import React, { forwardRef } from 'react';
 import { TextareaCases } from './cases';
 
 import type { Components } from '@public-ui/components';
-import { SampleBlock } from '../../SampleBlock';
 import { SampleColumns } from '../../SampleColumns';
+import { SampleGroup } from '../../SampleGroup';
 export const TextareaVariants = forwardRef<HTMLKolTextareaElement, Components.KolTextarea>(function TextareaVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<SampleBlock id="text" heading="Text">
-				<TextareaCases {...props} />
-			</SampleBlock>
-			<SampleBlock id="text-hide-label" heading="Text (hideLabel)">
-				<TextareaCases ref={ref} {...props} _hideLabel />
-			</SampleBlock>
+			<SampleGroup heading="Text">
+				<TextareaCases blockIdPrefix="label" {...props} />
+			</SampleGroup>
+			<SampleGroup heading="Text (hideLabel)">
+				<TextareaCases blockIdPrefix="hide-label" ref={ref} {...props} _hideLabel />
+			</SampleGroup>
 		</SampleColumns>
 	);
 });

@@ -32,12 +32,12 @@ export const InputTextSmartButton = () => {
 	};
 
 	return (
-		<>
+		<div className="grid gap-4">
 			<SampleDescription>
 				<p>This sample shows the smart button feature for KolInputText. It allows the usage of a button inside the bnput.</p>
 			</SampleDescription>
 
-			<SampleBlock id="smart-button">
+			<SampleBlock id="enabled">
 				<KolInputText
 					_label="Input with button and icons"
 					_type="text"
@@ -48,6 +48,8 @@ export const InputTextSmartButton = () => {
 					}}
 					_icons={icons}
 				></KolInputText>
+			</SampleBlock>
+			<SampleBlock id="disabled">
 				<KolInputText
 					_label="Disabled input with button and icons"
 					_disabled
@@ -59,6 +61,6 @@ export const InputTextSmartButton = () => {
 					_icons={icons}
 				></KolInputText>
 			</SampleBlock>
-		</>
+		</div>
 	);
 };

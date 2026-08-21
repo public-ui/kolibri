@@ -5,16 +5,17 @@ import { SampleDescription } from '../SampleDescription';
 
 export const InputTextExpertSlot = () => {
 	return (
-		<>
+		<div className="grid gap-4">
 			<SampleDescription>
 				<p>This sample shows KolInputText with expert slot. The expert slot allows for complex custom content beyond simple text inputs.</p>
 			</SampleDescription>
 
-			<SampleBlock id="expert-slot">
+			<SampleBlock id="text">
 				<KolInputText _label="" _type="text">
 					<span slot="expert">I am more than just a input field</span>
 				</KolInputText>
-
+			</SampleBlock>
+			<SampleBlock id="badge">
 				<KolInputText _label="" _type="text" _value="Complex example">
 					<div slot="expert" className="flex items-center gap-2">
 						<KolBadge _label="Premium" _color="#1a73e8" />
@@ -22,13 +23,15 @@ export const InputTextExpertSlot = () => {
 						<span>Verified account with premium features</span>
 					</div>
 				</KolInputText>
-
+			</SampleBlock>
+			<SampleBlock id="note">
 				<KolInputText _label="" _type="text" _placeholder="Enter your email">
 					<div slot="expert" style={{ padding: '0.5rem', backgroundColor: '#f0f0f0', borderRadius: '4px' }}>
 						<strong>Note:</strong> This email will be used for account recovery and notifications.
 					</div>
 				</KolInputText>
-
+			</SampleBlock>
+			<SampleBlock id="required">
 				<KolInputText _label="" _type="text" _required>
 					<div slot="expert" className="inline-block">
 						<span className="expert-slot-required-label">Username</span>
@@ -37,7 +40,8 @@ export const InputTextExpertSlot = () => {
 						</KolPopoverButton>
 					</div>
 				</KolInputText>
-
+			</SampleBlock>
+			<SampleBlock id="readonly">
 				<KolInputText _label="" _type="text" _readOnly _value="(read only) is also not appended">
 					<div slot="expert" className="inline-block">
 						<span className="expert-slot-required-label">Username</span>
@@ -47,6 +51,6 @@ export const InputTextExpertSlot = () => {
 					</div>
 				</KolInputText>
 			</SampleBlock>
-		</>
+		</div>
 	);
 };

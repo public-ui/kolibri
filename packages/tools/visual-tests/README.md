@@ -69,6 +69,25 @@ Sample views in the [React Sample App](https://github.com/public-ui/kolibri/tree
 
 `SampleBlock` renders an optional heading (`heading`/`level` props) above the captured block — headings are sample chrome and stay outside the `data-visual-block` container, so heading changes never invalidate snapshots. The default container layout (`grid gap-4`) can be overridden with the `className` prop.
 
+Wrap each block around a **single case**, so a change to one case only invalidates that case's snapshot. Samples that render the same set of cases more than once per route (the input, select and textarea samples render them with and without `_hideLabel`) group each repetition with `SampleGroup`. `SampleGroup` renders the heading but **no** `data-visual-block` container, so the nested blocks stay individual screenshots instead of being captured together. The cases component takes a `blockIdPrefix` and prefixes every block id with it, which keeps the ids unique within the route:
+
+```tsx
+// partials/variants.tsx
+<SampleColumns>
+	<SampleGroup heading="Email">
+		<InputEmailCases blockIdPrefix="label" {...props} />
+	</SampleGroup>
+	<SampleGroup heading="Email (hideLabel)">
+		<InputEmailCases blockIdPrefix="hide-label" {...props} _hideLabel />
+	</SampleGroup>
+</SampleColumns>
+
+// partials/cases.tsx
+<SampleBlock id={`${blockIdPrefix}-disabled`}>
+	<KolInputEmail {...props} _disabled _value="test@mail.de" _label="E-Mail (Disabled)" />
+</SampleBlock>
+```
+
 By default the block container spans the full sample width, so narrow samples produce a snapshot that is mostly empty space. Set the `fitContent` prop to shrink the container to the width its content actually needs (`width: fit-content`):
 
 ```tsx
@@ -95,6 +114,7 @@ Rules for block ids:
 - kebab-case (`[a-z0-9]+(-[a-z0-9]+)*`), max. 30 characters — enforced by the test.
 - Unique within a route — duplicates fail the test.
 - Hard-code ids instead of deriving them from visible labels, so text changes don't rename snapshot files.
+- Cases that are rendered more than once per route are prefixed via `blockIdPrefix` – the prefix counts towards the 30 character limit.
 - Blocks must be visible in `?hideMenus` mode and must not have zero size.
 - Overlay content (tooltips, toasts, popovers) that extends beyond the block's bounding box is clipped — such routes should use full-page screenshots instead.
 
