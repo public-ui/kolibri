@@ -1,1 +1,0 @@
-import"./index-DwiBCCs4.js";import{r as e}from"./align-BfBLgCnS-B6L2C9kj.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};

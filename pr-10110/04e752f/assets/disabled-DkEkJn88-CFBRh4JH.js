@@ -1,1 +1,0 @@
-import{U as e,wt as t}from"./index-BlBPbof5.js";var n=(n,r)=>{t(n,`_disabled`,r,{hooks:{afterPatch:t=>{t===!0&&e()}}})};export{n as t};

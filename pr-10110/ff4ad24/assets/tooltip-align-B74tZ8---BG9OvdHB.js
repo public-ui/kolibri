@@ -1,1 +1,0 @@
-import"./index-C8upsUnp.js";import{r as e}from"./align-tkjswpJx-DNKWI0kX.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};

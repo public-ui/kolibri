@@ -1,1 +1,0 @@
-import{Ot as e}from"./index-DCx2WQ8I.js";var t=(t,n)=>{e(t,`_target`,n)};export{t};

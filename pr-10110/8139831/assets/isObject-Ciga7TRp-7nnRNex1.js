@@ -1,1 +1,0 @@
-import{kt as e}from"./index-BYMCFgVO.js";var t=/^[a-zA-Z][a-zA-Z0-9_-]{3,60}$/,n=e=>typeof e==`string`&&t.test(e),r=new Set([t.source]),i=(t,i)=>{e(t,`_variant`,n,r,i)};function a(e){var t=typeof e;return e!=null&&(t==`object`||t==`function`)}export{i as n,a as t};

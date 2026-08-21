@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-C8nBkpLD.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
