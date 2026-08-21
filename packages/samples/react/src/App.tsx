@@ -7,6 +7,7 @@ import PackageJson from '@public-ui/components/package.json';
 import { BackPage } from './components/BackPage';
 import { Sidebar } from './components/Sidebar';
 import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
+import { useVisualBlockOutline } from './hooks/useVisualBlockOutline';
 import { HideMenusContext } from './shares/HideMenusContext';
 import { ROUTES } from './shares/routes';
 import { sampleAppDataService } from './shares/sampleAppDataService';
@@ -140,6 +141,7 @@ export const App: FC<Props> = ({ customThemes }) => {
 
 	setTheme(theme); // set for `getTheme` usages within the application
 	useSetCurrentLocation();
+	useVisualBlockOutline();
 
 	useEffect(() => {
 		document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;

@@ -11,10 +11,10 @@ export const AbbrBasic: FC = () => (
 			<p>KolAbbr shows an abbreviation.</p>
 		</SampleDescription>
 
-		<SampleBlock id="basic">
-			<p>
+		<SampleBlock id="basic" fitContent>
+			<span>
 				I am <KolAbbr>e.g.</KolAbbr> an abbreviation.
-			</p>
+			</span>
 		</SampleBlock>
 	</>
 );

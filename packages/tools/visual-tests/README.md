@@ -67,7 +67,28 @@ To update the reference screenshots call `npm run test:update`.
 
 Sample views in the [React Sample App](https://github.com/public-ui/kolibri/tree/develop/packages/samples/react) mark their variant blocks with the `SampleBlock` component, which renders the `data-visual-block` attribute. `SampleBlock` is the **only** place that sets the attribute — samples must not set it directly on their own elements. When a route contains such blocks, the visual tests capture **one element screenshot per block** (`<route-slug>--<block-id>.png`) instead of one full-page screenshot. This isolates diffs: a change to one variant no longer invalidates the entire page screenshot through layout shifts.
 
-`SampleBlock` renders an optional heading (`heading`/`level` props) above the block content and hides it automatically in snapshot mode (`?hideMenus`, via `HideMenusContext`) — headings are sample chrome, so heading changes never invalidate snapshots. The default container layout (`grid gap-4`) can be overridden with the `className` prop.
+`SampleBlock` renders an optional heading (`heading`/`level` props) above the captured block — headings are sample chrome and stay outside the `data-visual-block` container, so heading changes never invalidate snapshots. The default container layout (`grid gap-4`) can be overridden with the `className` prop.
+
+By default the block container spans the full sample width, so narrow samples produce a snapshot that is mostly empty space. Set the `fitContent` prop to shrink the container to the width its content actually needs (`width: fit-content`):
+
+```tsx
+<SampleBlock id="basic" fitContent>
+	<span>
+		I am <KolAbbr>e.g.</KolAbbr> an abbreviation.
+	</span>
+</SampleBlock>
+```
+
+Use it for narrow, inline-ish samples (abbr, badge, link, …). Don't use it for components that depend on the available width (tables, form fields, cards) — shrinking the container would change how they render.
+
+### Making the blocks visible while developing
+
+The block containers are invisible by design. To see what an element screenshot actually captures, switch on the debug outline:
+
+- `Ctrl+Alt+B` toggles it at runtime (no reload) and remembers the choice for the next visit,
+- `?visualBlocks` enables it for a URL, `?visualBlocks=0` disables it again — combinable with `?hideMenus`.
+
+The outline is drawn as a CSS `outline`, so it takes no space and doesn't shift the layout: the page looks exactly the same with and without it. It can't affect snapshots either, because Playwright starts every run with a fresh browser context (no stored preference) and the test URLs never carry `visualBlocks`.
 
 Rules for block ids:
 
