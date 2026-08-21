@@ -41,14 +41,6 @@ ROUTES.set('accordion/basic', {
 		},
 	},
 });
-ROUTES.set('accordion/headlines', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
 ROUTES.set('alert/basic', {
 	snapshot: {
 		zoom: {
@@ -71,13 +63,6 @@ ROUTES.set('alert/html', {
 		},
 	},
 });
-ROUTES.set('avatar/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
 ROUTES.set('avatar/size', {
 	snapshot: {
 		zoom: {
@@ -87,12 +72,9 @@ ROUTES.set('avatar/size', {
 });
 ROUTES.set('badge/basic', {
 	snapshot: {
-		skip: true,
-	},
-});
-ROUTES.set('badge/button', {
-	snapshot: {
-		skip: true,
+		zoom: {
+			skip: true,
+		},
 	},
 });
 ROUTES.set('breadcrumb/basic', {
@@ -111,7 +93,6 @@ ROUTES.set('breadcrumb/basic', {
 });
 ROUTES.set('button-link/basic', {
 	snapshot: {
-		skip: true,
 		zoom: {
 			skip: true,
 		},
@@ -119,32 +100,12 @@ ROUTES.set('button-link/basic', {
 });
 ROUTES.set('button-link/icons', {
 	snapshot: {
-		skip: true,
-	},
-});
-ROUTES.set('button-link/image', {
-	snapshot: {
-		skip: true,
 		zoom: {
 			skip: true,
 		},
 	},
 });
 ROUTES.set('button/variants', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/disabled', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/hide-label', {
 	snapshot: {
 		zoom: {
 			skip: true,
@@ -266,8 +227,10 @@ ROUTES.set('drawer/basic?align=left&closer=true', {
 });
 ROUTES.set('form/basic', {
 	snapshot: {
-		forceFullPage: true,
-		skip: true,
+		viewportSize: {
+			width: 300,
+			height: 600,
+		},
 		zoom: {
 			skip: true,
 		},
@@ -279,17 +242,6 @@ ROUTES.set('form/error-list', {
 			width: 500,
 			height: 600,
 		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('heading/badge', {
-	axe: {
-		skipFailures: true,
-	},
-	snapshot: {
-		skip: true,
 		zoom: {
 			skip: true,
 		},
@@ -310,17 +262,6 @@ ROUTES.set('heading/basic', {
 	},
 });
 ROUTES.set('heading/secondary');
-ROUTES.set('heading/paragraph', {
-	axe: {
-		skipFailures: true,
-	},
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
 ROUTES.set('icon/font', {
 	snapshot: {
 		viewportSize: {
@@ -735,10 +676,6 @@ ROUTES.set('nav/aria-current', {
 });
 ROUTES.set('nav/basic', {
 	snapshot: {
-		viewportSize: {
-			width: 400,
-			height: 0,
-		},
 		zoom: {
 			skip: true,
 		},
@@ -778,7 +715,12 @@ ROUTES.set('popover-button/basic', {
 	},
 });
 ROUTES.set('popover-button/inline', {
-	snapshot: {},
+	snapshot: {
+		viewportSize: {
+			width: 300,
+			height: 420,
+		},
+	},
 });
 ROUTES.set('meter/basic', {
 	snapshot: {
@@ -852,10 +794,6 @@ ROUTES.set('skip-nav/basic', {
 });
 ROUTES.set('spin/basic', {
 	snapshot: {
-		viewportSize: {
-			width: 100,
-			height: 0,
-		},
 		zoom: {
 			skip: true,
 		},
@@ -868,28 +806,6 @@ ROUTES.set('single-select/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
-			height: 0,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('spin/custom', {
-	snapshot: {
-		viewportSize: {
-			width: 100,
-			height: 0,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('spin/cycle', {
-	snapshot: {
-		viewportSize: {
-			width: 100,
 			height: 0,
 		},
 		zoom: {

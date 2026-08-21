@@ -22,7 +22,7 @@ export const ButtonBasic: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<SampleBlock id="variants" heading="Button Variants">
+				<SampleBlock id="variants" heading="Button Variants" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _icons="kolicon-house" _label="Primary" _variant="primary" onClick={dummyClickEventHandler} />
 						<KolButton _icons="kolicon-kolibri" _label="Secondary" _variant="secondary" onClick={dummyClickEventHandler} />
@@ -33,7 +33,7 @@ export const ButtonBasic: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="disabled" heading="Disabled State">
+				<SampleBlock id="disabled" heading="Disabled State" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _disabled _icons="kolicon-house" _label="Primary" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _disabled _icons="kolicon-kolibri" _label="Secondary" _variant="secondary" _on={dummyEventHandler} />
@@ -41,7 +41,7 @@ export const ButtonBasic: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="hide-label" heading="Hidden Label (Icon Only)">
+				<SampleBlock id="hide-label" heading="Hidden Label (Icon Only)" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _hideLabel _icons="kolicon-house" _label="Primary" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _hideLabel _icons="kolicon-kolibri" _label="Secondary" _variant="secondary" _on={dummyEventHandler} />
@@ -49,7 +49,7 @@ export const ButtonBasic: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="icon-positions" heading="Icon Positions">
+				<SampleBlock id="icon-positions" heading="Icon Positions" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{

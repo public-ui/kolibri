@@ -31,7 +31,7 @@ export const TreeBasic: FC = () => {
 				<p>KolTree renders a keyboard accessible nested navigation. Branches of the tree can be collapsed or expanded.</p>
 			</SampleDescription>
 
-			<SampleBlock id="tree">
+			<SampleBlock id="tree" fitContent>
 				<KolTree _label="Sitemap" class="block w-fit">
 					<KolTreeItem _label={homeLabel} {...getItemProps('home')}></KolTreeItem>
 					<KolTreeItem _label="2 About (open initially)" {...getItemProps('about')} _open>

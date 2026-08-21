@@ -22,7 +22,7 @@ export const ButtonHideLabel: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<SampleBlock id="hide-label" heading="Buttons with Hidden Labels">
+				<SampleBlock id="hide-label" heading="Buttons with Hidden Labels" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _hideLabel _icons="kolicon-house" _label="Home" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _hideLabel _icons="kolicon-kolibri" _label="Like" _variant="secondary" _on={dummyEventHandler} />
@@ -33,14 +33,14 @@ export const ButtonHideLabel: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="comparison" heading="Comparison: With and Without Hidden Label">
+				<SampleBlock id="comparison" heading="Comparison: With and Without Hidden Label" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _icons="kolicon-house" _label="Home" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _hideLabel _icons="kolicon-house" _label="Home" _variant="primary" _on={dummyEventHandler} />
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="disabled" heading="Disabled with Hidden Label">
+				<SampleBlock id="disabled" heading="Disabled with Hidden Label" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _disabled _hideLabel _icons="kolicon-house" _label="Home" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _disabled _hideLabel _icons="kolicon-kolibri" _label="Like" _variant="secondary" _on={dummyEventHandler} />

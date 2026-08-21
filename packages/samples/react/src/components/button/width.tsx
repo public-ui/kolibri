@@ -22,7 +22,7 @@ export const ButtonWidth: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<SampleBlock id="fixed-width-buttons-8rem" heading="Fixed Width Buttons (8rem)">
+				<SampleBlock id="fixed-width-buttons-8rem" heading="Fixed Width Buttons (8rem)" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _label="Primary" _variant="primary" {...ARGS} />
 						<KolButton _label="Secondary" _variant="secondary" {...ARGS} />
@@ -32,7 +32,7 @@ export const ButtonWidth: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="fixed-width-disabled-buttons" heading="Fixed Width Disabled Buttons (8rem)">
+				<SampleBlock id="fixed-width-disabled-buttons" heading="Fixed Width Disabled Buttons (8rem)" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _disabled _label="Primary" _variant="primary" {...ARGS} />
 						<KolButton _disabled _label="Secondary" _variant="secondary" {...ARGS} />

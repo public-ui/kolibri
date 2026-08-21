@@ -29,7 +29,7 @@ export const CreateButton: FC = () => {
 				<p>This sample shows KolTabs with a &quot;create tab&quot; button.</p>
 			</SampleDescription>
 
-			<SampleBlock id="create-button">
+			<SampleBlock id="create-button" fitContent>
 				<KolTabs _tabs={tabs} className="mt-4" _label="Tabs with create button" _hasCreateButton _on={{ onCreate: addTab }}>
 					{tabs.map((tab, index) => (
 						<div key={`tab-${index}`} slot={`tab-${index}`}>

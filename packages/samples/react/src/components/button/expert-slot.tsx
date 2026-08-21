@@ -26,7 +26,7 @@ export const ButtonExpertSlot: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<SampleBlock id="buttons-expert-slot-content" heading="Buttons with Expert Slot Content">
+				<SampleBlock id="buttons-expert-slot-content" heading="Buttons with Expert Slot Content" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _icons="kolicon-house" _label="" _variant="primary" _on={dummyEventHandler}>
 							<span slot="expert">I am more than just a button</span>
@@ -44,7 +44,7 @@ export const ButtonExpertSlot: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="disabled-buttons-expert-slot" heading="Disabled Buttons with Expert Slot">
+				<SampleBlock id="disabled-buttons-expert-slot" heading="Disabled Buttons with Expert Slot" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _disabled _icons="kolicon-house" _label="" _variant="primary" _on={dummyEventHandler}>
 							<span slot="expert">Disabled expert slot</span>

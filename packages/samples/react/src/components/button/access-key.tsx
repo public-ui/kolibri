@@ -23,7 +23,7 @@ export const ButtonAccessKey: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<SampleBlock id="buttons-access-keys" heading="Buttons with Access Keys">
+				<SampleBlock id="buttons-access-keys" heading="Buttons with Access Keys" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _label="With S access key" _accessKey="S" _on={dummyEventHandler} />
 						<KolButton _label="Very small b" _accessKey="b" _on={dummyEventHandler} />
@@ -31,13 +31,13 @@ export const ButtonAccessKey: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="access-key-hidden-label" heading="Access Key with Hidden Label">
+				<SampleBlock id="access-key-hidden-label" heading="Access Key with Hidden Label" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _label="access key without label" _hideLabel _accessKey="a" _icons="kolicon-cogwheel" _on={dummyEventHandler} />
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="access-key-inline-icons" heading="Access Key with Inline Icons">
+				<SampleBlock id="access-key-inline-icons" heading="Access Key with Inline Icons" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_label="with inline icons"

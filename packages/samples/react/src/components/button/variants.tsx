@@ -29,7 +29,7 @@ export const ButtonVariants: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<SampleBlock id="variants" heading="All theme exclusive button variants">
+				<SampleBlock id="variants" heading="All theme exclusive button variants" fitContent>
 					<div className="flex flex-wrap gap-4 items-center">
 						{!Array.isArray(data) || data.length === 0 ? (
 							<p>This theme has no variants for this component.</p>

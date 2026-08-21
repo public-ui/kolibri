@@ -41,7 +41,7 @@ export const TabsBasic: FC = () => (
 			<p>KolTabs renders tab captions and their associated content. This sample shows tab captions with and without icons and disabled tabs.</p>
 		</SampleDescription>
 
-		<SampleBlock id="regular">
+		<SampleBlock id="regular" fitContent>
 			<KolTabs _tabs={tabsWithoutIcons} _label="Regular tabs">
 				<div slot="tab-0">Contents of Tab 1</div>
 				<div slot="tab-1">Contents of Tab 2</div>
@@ -50,7 +50,7 @@ export const TabsBasic: FC = () => (
 			</KolTabs>
 		</SampleBlock>
 
-		<SampleBlock id="icons">
+		<SampleBlock id="icons" fitContent>
 			<KolTabs _tabs={tabs} className="mt-4" _label="Tabs with icons">
 				<div slot="tab-0">Contents of Tab 1</div>
 				<div slot="tab-1">Contents of Tab 2</div>

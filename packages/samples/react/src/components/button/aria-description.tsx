@@ -22,7 +22,7 @@ export const ButtonAriaDescription: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<SampleBlock id="buttons-aria-description" heading="Buttons with and without ARIA Description">
+				<SampleBlock id="buttons-aria-description" heading="Buttons with and without ARIA Description" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _label="Button without ARIA description" _on={dummyEventHandler} />
 						<KolButton _label="Button with ARIA description" _ariaDescription="This button performs an important action" _on={dummyEventHandler} />

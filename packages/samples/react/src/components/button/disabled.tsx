@@ -19,7 +19,7 @@ export const ButtonDisabled: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<SampleBlock id="disabled" heading="Disabled Buttons">
+				<SampleBlock id="disabled" heading="Disabled Buttons" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _disabled _icons="kolicon-house" _label="Primary" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _disabled _icons="kolicon-kolibri" _label="Secondary" _variant="secondary" _on={dummyEventHandler} />
@@ -30,7 +30,7 @@ export const ButtonDisabled: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="comparison" heading="Comparison: Enabled vs Disabled">
+				<SampleBlock id="comparison" heading="Comparison: Enabled vs Disabled" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _icons="kolicon-house" _label="Enabled" _variant="primary" _on={dummyEventHandler} />
 						<KolButton _disabled _icons="kolicon-house" _label="Disabled" _variant="primary" _on={dummyEventHandler} />

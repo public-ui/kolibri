@@ -16,7 +16,7 @@ export const AvatarSize: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<SampleBlock id="size" className="flex flex-wrap items-center gap-4">
+		<SampleBlock className="flex flex-wrap items-center gap-4" id="size" fitContent>
 			<KolAvatar style={{ width: '30px' }} _label="Elke Mustermann" />
 			<KolAvatar style={{ width: '30px', height: '45px' }} _label="Marianne" />
 			<KolAvatar style={{ width: '60px', height: '30px' }} _color="#0000FF" _label="Christian" />

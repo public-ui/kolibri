@@ -48,10 +48,10 @@ const FIT_CONTENT_STYLE: CSSProperties = { width: 'fit-content' };
  * See packages/tools/visual-tests/README.md.
  */
 export const SampleBlock: FC<SampleBlockProps> = ({ id, heading, level = 2, className, fitContent, children, ...rest }) => (
-	<section className={className ?? 'grid gap-4'} {...rest}>
+	<section {...rest}>
 		{/* The heading is sample chrome, not component content: it stays outside the captured block so heading changes never invalidate snapshots. */}
 		{heading ? <KolHeading _level={level} _label={heading} /> : null}
-		<div data-visual-block={id} style={fitContent ? FIT_CONTENT_STYLE : undefined}>
+		<div data-visual-block={id} className={className ?? 'grid gap-4'} style={fitContent ? FIT_CONTENT_STYLE : undefined}>
 			{children}
 		</div>
 	</section>

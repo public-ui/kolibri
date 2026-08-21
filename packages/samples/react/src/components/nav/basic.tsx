@@ -30,7 +30,7 @@ export const NavBasic: FC = () => {
 						}}
 					></KolInputCheckbox>
 				</section>
-				<SampleBlock id="navigation-submenu" heading="Navigation without submenu">
+				<SampleBlock id="navigation-submenu" heading="Navigation without submenu" fitContent>
 					<KolNav
 						class="block w-fit"
 						_label="Navigation without submenu"
@@ -39,10 +39,10 @@ export const NavBasic: FC = () => {
 						_hasIconsWhenExpanded={hasIconsWhenExpanded}
 					/>
 				</SampleBlock>
-				<SampleBlock id="navigation-submenu-2" heading="Navigation with submenu">
+				<SampleBlock id="navigation-submenu-2" heading="Navigation with submenu" fitContent>
 					<KolNav class="block w-fit" _label="Navigation with submenu" _links={LINKS} _hasCompactButton _hasIconsWhenExpanded={hasIconsWhenExpanded} />
 				</SampleBlock>
-				<SampleBlock id="navigation-submenu-active" heading="Navigation with submenu active">
+				<SampleBlock id="navigation-submenu-active" heading="Navigation with submenu active" fitContent>
 					<KolNav
 						class="block w-fit"
 						_label="Navigation with submenu active"

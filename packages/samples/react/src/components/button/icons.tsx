@@ -21,7 +21,7 @@ export const ButtonIcons: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<SampleBlock id="basic-positions" heading="Basic Icon Positions">
+				<SampleBlock id="basic-positions" heading="Basic Icon Positions" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{
@@ -54,7 +54,7 @@ export const ButtonIcons: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="multiple-positions" heading="Multiple Icon Positions">
+				<SampleBlock id="multiple-positions" heading="Multiple Icon Positions" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{
@@ -75,7 +75,7 @@ export const ButtonIcons: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="all-positions" heading="All Icon Positions">
+				<SampleBlock id="all-positions" heading="All Icon Positions" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{
@@ -90,7 +90,7 @@ export const ButtonIcons: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="icon-string" heading="Simple Icon String">
+				<SampleBlock id="icon-string" heading="Simple Icon String" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _icons="kolicon-house" _label="Home Icon" _on={dummyEventHandler} />
 						<KolButton _icons="kolicon-kolibri" _label="Heart Icon" _on={dummyEventHandler} />
@@ -98,7 +98,7 @@ export const ButtonIcons: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="large-icon" heading="Large Icon on Top">
+				<SampleBlock id="large-icon" heading="Large Icon on Top" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_icons={{

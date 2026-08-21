@@ -22,7 +22,7 @@ export const ButtonSpinner: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<SampleBlock id="animated-spinner-icon-css-part" heading="Animated Spinner Icon via CSS Part">
+				<SampleBlock id="animated-spinner-icon-css-part" heading="Animated Spinner Icon via CSS Part" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							className="spinner-button"
@@ -57,7 +57,7 @@ export const ButtonSpinner: FC = () => {
 					</div>
 				</SampleBlock>
 
-				<SampleBlock id="spinner-label" heading="Spinner with Label">
+				<SampleBlock id="spinner-label" heading="Spinner with Label" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							className="spinner-button"

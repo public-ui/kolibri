@@ -22,7 +22,7 @@ export const ButtonBaselined: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<SampleBlock id="vertically-aligned-buttons" heading="Vertically Aligned Buttons">
+				<SampleBlock id="vertically-aligned-buttons" heading="Vertically Aligned Buttons" fitContent>
 					<div className="flex flex-wrap gap-2">
 						<KolButton _label="Label-Text" _on={dummyEventHandler} />
 						<KolButton _icons="kolicon-cogwheel" _label="Label-Text with Icon" _on={dummyEventHandler} />

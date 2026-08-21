@@ -1,10 +1,10 @@
-import { KolForm, KolInputText } from '@public-ui/react-v19';
+import { KolButton, KolForm, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useRef } from 'react';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
-export const FormErrorList: FC = () => {
+export const FormErrorListScroll: FC = () => {
 	const formRef = useRef<HTMLKolFormElement | null>(null);
 
 	const scrollTo = () => {
@@ -47,7 +47,7 @@ export const FormErrorList: FC = () => {
 						},
 					]}
 				>
-					<div className="flex flex-col gap-2">
+					<div className="flex flex-col gap-250">
 						<KolInputText id="input1" _label="Input 1" />
 						<KolInputText
 							id="input2"
@@ -76,6 +76,9 @@ export const FormErrorList: FC = () => {
 								_type: 'error',
 							}}
 						/>
+						<div>
+							<KolButton _label="ScrollTo" _type="submit" />
+						</div>
 					</div>
 				</KolForm>
 			</SampleBlock>

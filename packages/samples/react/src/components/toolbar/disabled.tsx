@@ -11,7 +11,7 @@ export const ToolbarDisabled: FC = () => {
 				<p>This sample shows KolToolbars with some of the elements disabled.</p>
 			</SampleDescription>
 
-			<SampleBlock id="disabled">
+			<SampleBlock id="disabled" fitContent>
 				<KolToolbar
 					_label="Toolbar"
 					class="block w-fit"
