@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-yfaSjdtr.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};

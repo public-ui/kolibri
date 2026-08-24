@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-yfaSjdtr.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
