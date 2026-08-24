@@ -40,7 +40,7 @@ function ensureStyleElement(): void {
 	document.head.appendChild(style);
 }
 
-export function isVisualBlockOutlineEnabled(): boolean {
+function isVisualBlockOutlineEnabled(): boolean {
 	return document.documentElement.hasAttribute(ROOT_ATTRIBUTE);
 }
 
