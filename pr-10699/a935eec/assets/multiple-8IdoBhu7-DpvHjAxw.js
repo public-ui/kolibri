@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-C-W_e_HA.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};

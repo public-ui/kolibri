@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-Cyf6d5ya.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
