@@ -10,7 +10,7 @@ export const ImageBasic: FC = () => (
 			<p>KolImage renders an image. The sample shows an image with alternative text.</p>
 		</SampleDescription>
 
-		<SampleBlock id="basic">
+		<SampleBlock id="basic" fitContent>
 			<KolImage
 				_alt="KoliBri design system illustration showing three people working on laptops surrounded by UI components, charts, and the KoliBri hummingbird logo"
 				_src="assets/sample-image.png"

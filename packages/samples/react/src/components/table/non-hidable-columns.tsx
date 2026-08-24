@@ -15,7 +15,7 @@ export const TableNonHidableColumns: FC = () => (
 			<p>This example demonstrates a column that cannot be hidden in the settings.</p>
 		</SampleDescription>
 
-		<SampleBlock id="non-hidable">
+		<SampleBlock id="non-hidable" fitContent>
 			<KolTableStateful
 				_label="Table with a non-hidable column"
 				_hasSettingsMenu

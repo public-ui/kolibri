@@ -98,7 +98,7 @@ By default the block container spans the full sample width, so narrow samples pr
 </SampleBlock>
 ```
 
-Use it for narrow, inline-ish samples (abbr, badge, link, …). Don't use it for components that depend on the available width (tables, form fields, cards) — shrinking the container would change how they render.
+Use it wherever the content has an intrinsic width and the block would otherwise be mostly empty space — inline-ish samples (abbr, badge, link, …) as well as tables and images that size themselves. Do not use it for components that stretch to fill the available width (form fields, cards): there the inline `width: fit-content` overrides the layout class and changes how they render.
 
 ### Reflow (320 px) snapshots
 
