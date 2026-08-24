@@ -33,9 +33,36 @@ const BLOCK_SELECTOR = '[data-visual-block]';
 const BLOCK_ID_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/; // kebab-case
 const MAX_BLOCK_ID_LENGTH = 30; // keeps snapshot file paths safely below the Windows path limit
 
+/**
+ * Blocks that set SampleBlock's `narrow` prop are captured a second time at 320 px viewport width to
+ * guard the reflow behaviour required by WCAG 1.4.10 – the successor of the former 400 % zoom pass,
+ * which produced one whole-page screenshot per route and was switched off on 150 of 158 routes.
+ * The opt-in deliberately lives on the block instead of the route: only the sample itself knows
+ * whether narrow width changes its layout.
+ */
+const NARROW_SELECTOR = '[data-visual-block][data-visual-narrow]';
+const NARROW_VIEWPORT = { width: 320, height: 0 };
+
+/** Reads the `data-visual-block` ids of all elements matching `selector`, in document order. */
+async function readBlockIds(page, selector) {
+	return page.$$eval(selector, (elements) => elements.map((element) => element.getAttribute('data-visual-block')));
+}
+
+/** Captures one element screenshot per block id and fails on blocks that are invisible or have zero size. */
+async function captureBlocks(page, route, blockIds, snapshotName, suffix, options) {
+	for (const blockId of blockIds) {
+		const block = page.locator(`[data-visual-block="${blockId}"]`);
+		const boundingBox = await block.boundingBox();
+		if (!boundingBox || boundingBox.width === 0 || boundingBox.height === 0) {
+			throw new Error(`Route "${route}": data-visual-block "${blockId}" is not visible or has zero size${suffix ? ` at ${NARROW_VIEWPORT.width}px` : ''}`);
+		}
+		await expect(block).toHaveScreenshot(`${snapshotName}--${blockId}${suffix}.png`, options);
+	}
+}
+
 ROUTES.forEach((options, route) => {
 	// Skip unnecessary snapshot tests
-	if (options?.snapshot?.skip === true && options?.snapshot?.zoom?.skip === true) {
+	if (options?.snapshot?.skip === true) {
 		return;
 	}
 	test(`snapshot for ${route}`, async ({ page }) => {
@@ -67,56 +94,39 @@ ROUTES.forEach((options, route) => {
 			...DEFAULT_SNAPSHOT_OPTIONS,
 			...options?.snapshot?.options,
 		};
+		const { fullPage: _fullPage, ...ELEMENT_SNAPSHOT_OPTIONS } = SNAPSHOT_OPTIONS; // fullPage is not allowed for element screenshots
 
-		// Skip unnecessary normal tests
-		if (options?.snapshot?.skip !== true) {
-			if (options?.snapshot?.forceFullPage === true) {
-				await expect(page).toHaveScreenshot(`${snapshotName}.png`, SNAPSHOT_OPTIONS);
-			} else {
-				const blockIds = await page.$$eval(BLOCK_SELECTOR, (elements) => elements.map((element) => element.getAttribute('data-visual-block')));
-
-				if (blockIds.length === 0) {
-					throw new Error(
-						`Route "${route}": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js.`,
-					);
-				}
-
-				const seenBlockIds = new Set();
-				for (const blockId of blockIds) {
-					if (!blockId || !BLOCK_ID_PATTERN.test(blockId) || blockId.length > MAX_BLOCK_ID_LENGTH) {
-						throw new Error(`Route "${route}": invalid data-visual-block id "${blockId}" (must be kebab-case, max. ${MAX_BLOCK_ID_LENGTH} characters)`);
-					}
-					if (seenBlockIds.has(blockId)) {
-						throw new Error(`Route "${route}": duplicate data-visual-block id "${blockId}"`);
-					}
-					seenBlockIds.add(blockId);
-				}
-
-				const { fullPage: _fullPage, ...ELEMENT_SNAPSHOT_OPTIONS } = SNAPSHOT_OPTIONS; // fullPage is not allowed for element screenshots
-				for (const blockId of blockIds) {
-					const block = page.locator(`[data-visual-block="${blockId}"]`);
-					const boundingBox = await block.boundingBox();
-					if (!boundingBox || boundingBox.width === 0 || boundingBox.height === 0) {
-						throw new Error(`Route "${route}": data-visual-block "${blockId}" is not visible or has zero size`);
-					}
-					await expect(block).toHaveScreenshot(`${snapshotName}--${blockId}.png`, ELEMENT_SNAPSHOT_OPTIONS);
-				}
-			}
+		if (options?.snapshot?.forceFullPage === true) {
+			await expect(page).toHaveScreenshot(`${snapshotName}.png`, SNAPSHOT_OPTIONS);
+			return; // Whole-page routes have no blocks, so there is nothing to capture at narrow width either.
 		}
 
-		// Skip unnecessary zoom tests
-		if (options?.snapshot?.zoom?.skip !== true) {
-			await page.evaluate(() => {
-				// eslint-disable-next-line no-undef
-				document.body.style.zoom = '400%';
-				// document.body.style.transform = 'scale(4)';
-				// document.body.style.transformOrigin = 'top left';
-				// document.body.style.width = '25vw';
-			});
-			await expect(page).toHaveScreenshot(`${snapshotName}-zoom.png`, {
-				...SNAPSHOT_OPTIONS,
-				...options?.snapshot?.zoom?.options,
-			});
+		const blockIds = await readBlockIds(page, BLOCK_SELECTOR);
+
+		if (blockIds.length === 0) {
+			throw new Error(
+				`Route "${route}": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js.`,
+			);
+		}
+
+		const seenBlockIds = new Set();
+		for (const blockId of blockIds) {
+			if (!blockId || !BLOCK_ID_PATTERN.test(blockId) || blockId.length > MAX_BLOCK_ID_LENGTH) {
+				throw new Error(`Route "${route}": invalid data-visual-block id "${blockId}" (must be kebab-case, max. ${MAX_BLOCK_ID_LENGTH} characters)`);
+			}
+			if (seenBlockIds.has(blockId)) {
+				throw new Error(`Route "${route}": duplicate data-visual-block id "${blockId}"`);
+			}
+			seenBlockIds.add(blockId);
+		}
+
+		await captureBlocks(page, route, blockIds, snapshotName, '', ELEMENT_SNAPSHOT_OPTIONS);
+
+		// Reflow pass – runs last because it changes the viewport for the rest of the test.
+		const narrowBlockIds = await readBlockIds(page, NARROW_SELECTOR);
+		if (narrowBlockIds.length > 0) {
+			await page.setViewportSize(NARROW_VIEWPORT);
+			await captureBlocks(page, route, narrowBlockIds, snapshotName, `-${NARROW_VIEWPORT.width}`, ELEMENT_SNAPSHOT_OPTIONS);
 		}
 	});
 });

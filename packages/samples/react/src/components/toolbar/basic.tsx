@@ -62,7 +62,7 @@ export const ToolbarBasic: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<SampleBlock id="horizontal" heading="Orientation horizontal" fitContent>
+			<SampleBlock id="horizontal" heading="Orientation horizontal" fitContent narrow>
 				<KolToolbar class="block w-fit" _label="Toolbar" _items={TOOLBAR_ITEMS} />
 			</SampleBlock>
 

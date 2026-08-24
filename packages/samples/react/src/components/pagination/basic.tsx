@@ -15,7 +15,7 @@ export const PaginationBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<SampleBlock id="basic">
+		<SampleBlock id="basic" narrow>
 			<KolPagination
 				_max={316514}
 				_page={15475}

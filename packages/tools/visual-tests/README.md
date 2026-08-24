@@ -100,6 +100,22 @@ By default the block container spans the full sample width, so narrow samples pr
 
 Use it for narrow, inline-ish samples (abbr, badge, link, …). Don't use it for components that depend on the available width (tables, form fields, cards) — shrinking the container would change how they render.
 
+### Reflow (320 px) snapshots
+
+Set the `narrow` prop on a block to capture it a **second time at 320 px viewport width**
+(`<route-slug>--<block-id>-320.png`). 320 CSS pixels is the width WCAG 1.4.10 (Reflow) asks for, so this is where a layout that refuses to wrap, a grid that keeps two columns or a table that pushes the page into horizontal scrolling shows up:
+
+```tsx
+<SampleBlock id="basic" className="w-full grid grid-cols-2 gap-4" narrow>
+	<KolCard _label="…" />
+	<KolCard _label="…" />
+</SampleBlock>
+```
+
+Opt in deliberately — every flagged block doubles its snapshot count, and blocks whose layout does not depend on the available width (badges, abbreviations, icons) gain nothing from it. There is no per-route switch: only the sample itself knows whether narrow width changes its layout, so the decision lives next to the block. Routes captured with `forceFullPage` have no blocks and therefore cannot opt in.
+
+This replaces the former 400 % zoom pass (`snapshot.zoom`), which produced one whole-page screenshot per route, was switched off on 150 of 158 routes, and cascaded diffs across the entire page.
+
 ### Making the blocks visible while developing
 
 The block containers are invisible by design. To see what an element screenshot actually captures, switch on the debug outline:

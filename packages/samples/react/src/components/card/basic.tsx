@@ -12,7 +12,7 @@ export const CardBasic: FC = () => (
 			<p>KolCard shows a card with title and slot content. The second sample features a close button.</p>
 		</SampleDescription>
 
-		<SampleBlock id="basic" className="w-full grid grid-cols-2 gap-4">
+		<SampleBlock id="basic" className="w-full grid grid-cols-2 gap-4" narrow>
 			<KolCard _label="Card with title and content">
 				<p>Card contents.</p>
 			</KolCard>

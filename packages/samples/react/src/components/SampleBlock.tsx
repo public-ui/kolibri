@@ -33,6 +33,13 @@ type SampleBlockProps = PropsWithChildren<
 		 * Don't use it for components that rely on the available width (tables, form fields, cards).
 		 */
 		fitContent?: boolean;
+		/**
+		 * Captures a second element screenshot of this block at 320 px viewport width
+		 * (`<route-slug>--<block-id>-320.png`) to guard the reflow behaviour required by
+		 * WCAG 1.4.10. Opt in only where narrow width actually changes the layout —
+		 * every flagged block doubles its snapshot count.
+		 */
+		narrow?: boolean;
 	} & Omit<HTMLAttributes<HTMLElement>, 'className' | 'id'>
 >;
 
@@ -47,11 +54,16 @@ const FIT_CONTENT_STYLE: CSSProperties = { width: 'fit-content' };
  * see `shares/visualBlockOutline`.
  * See packages/tools/visual-tests/README.md.
  */
-export const SampleBlock: FC<SampleBlockProps> = ({ id, heading, level = 2, className, fitContent, children, ...rest }) => (
+export const SampleBlock: FC<SampleBlockProps> = ({ id, heading, level = 2, className, fitContent, narrow, children, ...rest }) => (
 	<section {...rest}>
 		{/* The heading is sample chrome, not component content: it stays outside the captured block so heading changes never invalidate snapshots. */}
 		{heading ? <KolHeading _level={level} _label={heading} /> : null}
-		<div data-visual-block={id} className={className ?? 'grid gap-4'} style={fitContent ? FIT_CONTENT_STYLE : undefined}>
+		<div
+			data-visual-block={id}
+			data-visual-narrow={narrow ? '' : undefined}
+			className={className ?? 'grid gap-4'}
+			style={fitContent ? FIT_CONTENT_STYLE : undefined}
+		>
 			{children}
 		</div>
 	</section>

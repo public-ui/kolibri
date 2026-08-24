@@ -12,7 +12,7 @@ export const BreadcrumbBasic: FC = () => (
 			<p>KolBreadcrumb shows a breadcrumb navigation. The sample illustrates a variation of link, text and icon elements.</p>
 		</SampleDescription>
 
-		<SampleBlock id="basic">
+		<SampleBlock id="basic" narrow>
 			<KolBreadcrumb
 				_label="Breadcrumb aus Text-Links"
 				_links={[
