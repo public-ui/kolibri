@@ -60,7 +60,7 @@ export const TableHorizontalScrollbar: FC = () => {
 			</SampleDescription>
 
 			<div className="w-[400px] flex flex-col gap-4">
-				<SampleBlock id="scrollbar-horizontal" className="w-full flex flex-col gap-4" narrow>
+				<SampleBlock id="scrollbar-horizontal" className="w-full flex flex-col gap-4">
 					<KolTableStateful
 						_label="Table for demonstration purposes with horizontal scrollbar."
 						_headers={hasWidthRestriction ? HEADERS : COMPACT_HEADERS}
@@ -69,7 +69,7 @@ export const TableHorizontalScrollbar: FC = () => {
 					/>
 				</SampleBlock>
 				<KolTableStateful _label="Table for demonstration horizontal scrolling with pagination." _headers={ORDER_HEADERS} _data={tableData} _pagination />
-				<SampleBlock id="scrollbar-horizontal-empty" className="w-full flex flex-col gap-4" narrow>
+				<SampleBlock id="scrollbar-horizontal-empty" className="w-full flex flex-col gap-4">
 					<KolTableStateful
 						_label="Table for demonstration purposes with horizontal scrollbar with auto width calculation."
 						_headers={hasWidthRestriction ? HEADERS : COMPACT_HEADERS}
