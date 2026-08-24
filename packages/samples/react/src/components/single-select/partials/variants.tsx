@@ -12,7 +12,7 @@ export const SingleSelectVariants = (props: Components.KolSingleSelect) => {
 				<SingleSelectCases blockIdPrefix="label" {...props} />
 			</SampleGroup>
 			<SampleGroup heading="Text (hideLabel)">
-				<SingleSelectCases blockIdPrefix="hide-label" {...props} _hideLabel />
+				<SingleSelectCases blockIdPrefix="hide-label" snapshotOnly="error" {...props} _hideLabel />
 			</SampleGroup>
 		</SampleColumns>
 	);

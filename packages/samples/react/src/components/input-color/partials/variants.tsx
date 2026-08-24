@@ -12,7 +12,7 @@ export const InputColorVariants = forwardRef<HTMLKolInputColorElement, Component
 				<InputColorCases blockIdPrefix="label" {...props} />
 			</SampleGroup>
 			<SampleGroup heading="Color (hideLabel)">
-				<InputColorCases blockIdPrefix="hide-label" ref={ref} {...props} _hideLabel />
+				<InputColorCases blockIdPrefix="hide-label" snapshotOnly="suggestions-error" ref={ref} {...props} _hideLabel />
 			</SampleGroup>
 		</SampleColumns>
 	);

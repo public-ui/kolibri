@@ -12,7 +12,7 @@ export const InputEmailVariants = forwardRef<HTMLKolInputEmailElement, Component
 				<InputEmailCases blockIdPrefix="label" {...props} />
 			</SampleGroup>
 			<SampleGroup heading="Email (hideLabel)">
-				<InputEmailCases blockIdPrefix="hide-label" ref={ref} {...props} _hideLabel />
+				<InputEmailCases blockIdPrefix="hide-label" snapshotOnly="suggestions" ref={ref} {...props} _hideLabel />
 			</SampleGroup>
 		</SampleColumns>
 	);

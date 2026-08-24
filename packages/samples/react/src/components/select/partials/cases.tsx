@@ -51,12 +51,21 @@ const groupedOptionsArray = Object.values(groupedOptions);
 type SelectCasesProps = Components.KolSelect & {
 	/** Prefixes the visual block ids so the same cases can be rendered more than once per route. */
 	blockIdPrefix: string;
+	/**
+	 * Restricts the snapshots of this rendering to the case with this id; every other block is
+	 * rendered with `skipSnapshot`. Used for the `_hideLabel` groups: hiding the label mainly
+	 * changes how the message is laid out, so snapshotting every case a second time would only
+	 * duplicate the labelled group.
+	 */
+	snapshotOnly?: string;
 };
 
-export const SelectCases = forwardRef<HTMLKolSelectElement, SelectCasesProps>(function SelectCases({ blockIdPrefix, ...props }, ref) {
+export const SelectCases = forwardRef<HTMLKolSelectElement, SelectCasesProps>(function SelectCases({ blockIdPrefix, snapshotOnly, ...props }, ref) {
+	// Blocks outside `snapshotOnly` stay visible in the sample but are excluded from the snapshots.
+	const block = (caseId: string) => ({ id: `${blockIdPrefix}-${caseId}`, skipSnapshot: snapshotOnly !== undefined && caseId !== snapshotOnly });
 	return (
 		<div className="grid gap-4">
-			<SampleBlock id={`${blockIdPrefix}-salutation-icons`}>
+			<SampleBlock {...block('salutation-icons')}>
 				<KolSelect
 					{...props}
 					ref={ref}
@@ -73,10 +82,10 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, SelectCasesProps>(fu
 					}}
 				/>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-disabled`}>
+			<SampleBlock {...block('disabled')}>
 				<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="Disabled" _disabled />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-error`}>
+			<SampleBlock {...block('error')}>
 				<KolSelect
 					{...props}
 					_options={SALUTATION_OPTIONS_DISABLED}
@@ -85,10 +94,10 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, SelectCasesProps>(fu
 					_touched
 				/>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-multiple`}>
+			<SampleBlock {...block('multiple')}>
 				<KolSelect {...props} _options={COUNTRY_OPTIONS} _label="Multiple choice" _multiple />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-multiple-error`}>
+			<SampleBlock {...block('multiple-error')}>
 				<KolSelect
 					{...props}
 					_options={COUNTRY_OPTIONS}
@@ -101,16 +110,16 @@ export const SelectCases = forwardRef<HTMLKolSelectElement, SelectCasesProps>(fu
 					_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 				/>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-access-key`}>
+			<SampleBlock {...block('access-key')}>
 				<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="With access key" _accessKey="c" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-short-key`}>
+			<SampleBlock {...block('short-key')}>
 				<KolSelect {...props} _options={SALUTATION_OPTIONS} _label="With short key" _shortKey="s" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-grouped`}>
+			<SampleBlock {...block('grouped')}>
 				<KolSelect {...props} _options={groupedOptionsArray} _label="With grouped by first letter" _value="Albanien" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-grouped-multiple`}>
+			<SampleBlock {...block('grouped-multiple')}>
 				<KolSelect {...props} _options={groupedOptionsArray} _label="With grouped by first letter (multiple)" _multiple _value={['Albanien']} />
 			</SampleBlock>
 		</div>

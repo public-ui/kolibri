@@ -13,7 +13,7 @@ export const InputCheckboxVariants = forwardRef<HTMLKolInputCheckboxElement, Com
 					<InputCheckboxCases blockIdPrefix="left" {...props} _labelAlign="left" />
 				</SampleGroup>
 				<SampleGroup heading='Label align "left" without Label (hideLabel)'>
-					<InputCheckboxCases blockIdPrefix="left-hide" ref={ref} {...props} _hideLabel _labelAlign="left" />
+					<InputCheckboxCases blockIdPrefix="left-hide" snapshotOnly="error" ref={ref} {...props} _hideLabel _labelAlign="left" />
 				</SampleGroup>
 			</SampleColumns>
 			<SampleColumns>
@@ -21,7 +21,7 @@ export const InputCheckboxVariants = forwardRef<HTMLKolInputCheckboxElement, Com
 					<InputCheckboxCases blockIdPrefix="right" {...props} />
 				</SampleGroup>
 				<SampleGroup heading='Label align "right" without Label (hideLabel)'>
-					<InputCheckboxCases blockIdPrefix="right-hide" ref={ref} {...props} _hideLabel />
+					<InputCheckboxCases blockIdPrefix="right-hide" snapshotOnly="error" ref={ref} {...props} _hideLabel />
 				</SampleGroup>
 			</SampleColumns>
 		</>

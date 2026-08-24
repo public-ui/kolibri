@@ -8,12 +8,24 @@ import { SampleBlock } from '../../SampleBlock';
 type InputRangeCasesProps = Components.KolInputRange & {
 	/** Prefixes the visual block ids so the same cases can be rendered more than once per route. */
 	blockIdPrefix: string;
+	/**
+	 * Restricts the snapshots of this rendering to the case with this id; every other block is
+	 * rendered with `skipSnapshot`. Used for the `_hideLabel` groups: hiding the label mainly
+	 * changes how the message is laid out, so snapshotting every case a second time would only
+	 * duplicate the labelled group.
+	 */
+	snapshotOnly?: string;
 };
 
-export const InputRangeCases = forwardRef<HTMLKolInputRangeElement, InputRangeCasesProps>(function InputRangeCases({ blockIdPrefix, ...props }, ref) {
+export const InputRangeCases = forwardRef<HTMLKolInputRangeElement, InputRangeCasesProps>(function InputRangeCases(
+	{ blockIdPrefix, snapshotOnly, ...props },
+	ref,
+) {
+	// Blocks outside `snapshotOnly` stay visible in the sample but are excluded from the snapshots.
+	const block = (caseId: string) => ({ id: `${blockIdPrefix}-${caseId}`, skipSnapshot: snapshotOnly !== undefined && caseId !== snapshotOnly });
 	return (
 		<div className="grid gap-4">
-			<SampleBlock id={`${blockIdPrefix}-black-bg`} className="black-background">
+			<SampleBlock {...block('black-bg')} className="black-background">
 				<KolInputRange
 					{...props}
 					_min={0}
@@ -31,7 +43,7 @@ export const InputRangeCases = forwardRef<HTMLKolInputRangeElement, InputRangeCa
 					_touched
 				/>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-error`}>
+			<SampleBlock {...block('error')}>
 				<KolInputRange
 					{...props}
 					ref={ref}
@@ -46,28 +58,28 @@ export const InputRangeCases = forwardRef<HTMLKolInputRangeElement, InputRangeCa
 					_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 				/>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-msg-info`}>
+			<SampleBlock {...block('msg-info')}>
 				<KolInputRange {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Slider" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-msg-warning`}>
+			<SampleBlock {...block('msg-warning')}>
 				<KolInputRange {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Slider" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-msg-success`}>
+			<SampleBlock {...block('msg-success')}>
 				<KolInputRange {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="Slider" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-msg-default`}>
+			<SampleBlock {...block('msg-default')}>
 				<KolInputRange {...props} _msg={{ _type: 'default', _description: 'Default message' }} _label="Slider" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-disabled`}>
+			<SampleBlock {...block('disabled')}>
 				<KolInputRange {...props} _disabled _min={0} _max={50} _label="Slider (disabled)" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-access-key`}>
+			<SampleBlock {...block('access-key')}>
 				<KolInputRange {...props} _min={0} _max={50} _label="With access key" _accessKey="c" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-short-key`}>
+			<SampleBlock {...block('short-key')}>
 				<KolInputRange {...props} _min={0} _max={50} _label="With short key" _shortKey="s" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-small-range`}>
+			<SampleBlock {...block('small-range')}>
 				<KolInputRange {...props} _min={0} _max={5} _label="Small range (max=5): number input should not be narrower than 4 digits wide" />
 			</SampleBlock>
 		</div>

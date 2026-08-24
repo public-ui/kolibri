@@ -8,18 +8,27 @@ import { SampleBlock } from '../../SampleBlock';
 type InputPasswordCasesProps = Components.KolInputPassword & {
 	/** Prefixes the visual block ids so the same cases can be rendered more than once per route. */
 	blockIdPrefix: string;
+	/**
+	 * Restricts the snapshots of this rendering to the case with this id; every other block is
+	 * rendered with `skipSnapshot`. Used for the `_hideLabel` groups: hiding the label mainly
+	 * changes how the message is laid out, so snapshotting every case a second time would only
+	 * duplicate the labelled group.
+	 */
+	snapshotOnly?: string;
 };
 
 export const InputPasswordCases = forwardRef<HTMLKolInputPasswordElement, InputPasswordCasesProps>(function InputPasswordCases(
-	{ blockIdPrefix, ...props },
+	{ blockIdPrefix, snapshotOnly, ...props },
 	ref,
 ) {
+	// Blocks outside `snapshotOnly` stay visible in the sample but are excluded from the snapshots.
+	const block = (caseId: string) => ({ id: `${blockIdPrefix}-${caseId}`, skipSnapshot: snapshotOnly !== undefined && caseId !== snapshotOnly });
 	return (
 		<div className="grid gap-4">
-			<SampleBlock id={`${blockIdPrefix}-black-bg`} className="black-background">
+			<SampleBlock {...block('black-bg')} className="black-background">
 				<KolInputPassword {...props} _label="Passwort (Black background test)" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-icons-error`}>
+			<SampleBlock {...block('icons-error')}>
 				<KolInputPassword
 					{...props}
 					ref={ref}
@@ -41,28 +50,28 @@ export const InputPasswordCases = forwardRef<HTMLKolInputPasswordElement, InputP
 					_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 				/>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-msg-info`}>
+			<SampleBlock {...block('msg-info')}>
 				<KolInputPassword {...props} _msg={{ _type: 'info', _description: 'Just a hint' }} _label="Passwort" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-msg-warning`}>
+			<SampleBlock {...block('msg-warning')}>
 				<KolInputPassword {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Passwort" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-msg-success`}>
+			<SampleBlock {...block('msg-success')}>
 				<KolInputPassword {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="Passwort" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-msg-default`}>
+			<SampleBlock {...block('msg-default')}>
 				<KolInputPassword {...props} _msg={{ _type: 'default', _description: 'Default message' }} _label="Passwort" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-disabled`}>
+			<SampleBlock {...block('disabled')}>
 				<KolInputPassword {...props} _disabled _msg={{ _type: 'error', _description: ERROR_MSG }} _label="Passwort (Disabled)" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-readonly`}>
+			<SampleBlock {...block('readonly')}>
 				<KolInputPassword {...props} _readOnly _label="Passwort (Readonly)" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-access-key`}>
+			<SampleBlock {...block('access-key')}>
 				<KolInputPassword {...props} ref={ref} _shortKey="c" _label="With access key" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-short-key`}>
+			<SampleBlock {...block('short-key')}>
 				<KolInputPassword {...props} ref={ref} _shortKey="s" _label="With short key" />
 			</SampleBlock>
 		</div>

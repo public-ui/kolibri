@@ -8,12 +8,24 @@ import { SampleBlock } from '../../SampleBlock';
 type InputColorCasesProps = Components.KolInputColor & {
 	/** Prefixes the visual block ids so the same cases can be rendered more than once per route. */
 	blockIdPrefix: string;
+	/**
+	 * Restricts the snapshots of this rendering to the case with this id; every other block is
+	 * rendered with `skipSnapshot`. Used for the `_hideLabel` groups: hiding the label mainly
+	 * changes how the message is laid out, so snapshotting every case a second time would only
+	 * duplicate the labelled group.
+	 */
+	snapshotOnly?: string;
 };
 
-export const InputColorCases = forwardRef<HTMLKolInputColorElement, InputColorCasesProps>(function InputColorCases({ blockIdPrefix, ...props }, ref) {
+export const InputColorCases = forwardRef<HTMLKolInputColorElement, InputColorCasesProps>(function InputColorCases(
+	{ blockIdPrefix, snapshotOnly, ...props },
+	ref,
+) {
+	// Blocks outside `snapshotOnly` stay visible in the sample but are excluded from the snapshots.
+	const block = (caseId: string) => ({ id: `${blockIdPrefix}-${caseId}`, skipSnapshot: snapshotOnly !== undefined && caseId !== snapshotOnly });
 	return (
 		<div className="grid gap-4">
-			<SampleBlock id={`${blockIdPrefix}-black-bg`} className="black-background">
+			<SampleBlock {...block('black-bg')} className="black-background">
 				<KolInputColor
 					{...props}
 					_msg={{ _type: 'error', _description: ERROR_MSG }}
@@ -24,7 +36,7 @@ export const InputColorCases = forwardRef<HTMLKolInputColorElement, InputColorCa
 					_value="#f08080"
 				/>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-suggestions-error`}>
+			<SampleBlock {...block('suggestions-error')}>
 				<KolInputColor
 					{...props}
 					_msg={{ _type: 'error', _description: ERROR_MSG }}
@@ -33,31 +45,31 @@ export const InputColorCases = forwardRef<HTMLKolInputColorElement, InputColorCa
 					_touched
 				/>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-msg-info`}>
+			<SampleBlock {...block('msg-info')}>
 				<KolInputColor {...props} _msg={{ _type: 'info', _description: 'Just a hint message.' }} _label="Color" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-msg-warning`}>
+			<SampleBlock {...block('msg-warning')}>
 				<KolInputColor {...props} _msg={{ _type: 'warning', _description: 'Small warning' }} _label="Color" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-msg-success`}>
+			<SampleBlock {...block('msg-success')}>
 				<KolInputColor {...props} _msg={{ _type: 'success', _description: 'Success message' }} _label="Color" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-msg-default`}>
+			<SampleBlock {...block('msg-default')}>
 				<KolInputColor {...props} _msg={{ _type: 'default', _description: 'Default message' }} _label="Color" _touched />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-hint`}>
+			<SampleBlock {...block('hint')}>
 				<KolInputColor {...props} ref={ref} _accessKey="C" _hint="Hint text" _label="Color with hint" _value="#f08080" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-disabled`}>
+			<SampleBlock {...block('disabled')}>
 				<KolInputColor {...props} _disabled _label="Color (Disabled)" _value="#f08080" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-access-key`}>
+			<SampleBlock {...block('access-key')}>
 				<KolInputColor {...props} _label="With access key" _accessKey="c"></KolInputColor>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-short-key`}>
+			<SampleBlock {...block('short-key')}>
 				<KolInputColor {...props} _label="With short key" _shortKey="s"></KolInputColor>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-info-popover`}>
+			<SampleBlock {...block('info-popover')}>
 				<KolInputColor
 					{...props}
 					_label="With short popover"

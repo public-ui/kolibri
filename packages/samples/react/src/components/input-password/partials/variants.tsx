@@ -12,7 +12,7 @@ export const InputPasswordVariants = forwardRef<HTMLKolInputPasswordElement, Com
 				<InputPasswordCases blockIdPrefix="label" {...props} />
 			</SampleGroup>
 			<SampleGroup heading="Password (hideLabel)">
-				<InputPasswordCases blockIdPrefix="hide-label" ref={ref} {...props} _hideLabel />
+				<InputPasswordCases blockIdPrefix="hide-label" snapshotOnly="icons-error" ref={ref} {...props} _hideLabel />
 			</SampleGroup>
 		</SampleColumns>
 	);

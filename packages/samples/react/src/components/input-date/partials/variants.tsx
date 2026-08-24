@@ -13,7 +13,7 @@ export const InputDateVariants = forwardRef<HTMLKolInputDateElement, Components.
 				<InputDateCases blockIdPrefix="label" {...props} />
 			</SampleGroup>
 			<SampleGroup heading="Date (hideLabel)">
-				<InputDateCases blockIdPrefix="hide-label" ref={ref} {...props} _hideLabel />
+				<InputDateCases blockIdPrefix="hide-label" snapshotOnly="datetime-seconds" ref={ref} {...props} _hideLabel />
 			</SampleGroup>
 			<SampleGroup heading="Date (with min/max)">
 				<InputDateMinMaxCases blockIdPrefix="min-max" {...props} />

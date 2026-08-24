@@ -12,7 +12,7 @@ export const TextareaVariants = forwardRef<HTMLKolTextareaElement, Components.Ko
 				<TextareaCases blockIdPrefix="label" {...props} />
 			</SampleGroup>
 			<SampleGroup heading="Text (hideLabel)">
-				<TextareaCases blockIdPrefix="hide-label" ref={ref} {...props} _hideLabel />
+				<TextareaCases blockIdPrefix="hide-label" snapshotOnly="error" ref={ref} {...props} _hideLabel />
 			</SampleGroup>
 		</SampleColumns>
 	);

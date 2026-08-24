@@ -12,7 +12,7 @@ export const ComboboxVariants = (props: Partial<Components.KolCombobox>) => {
 				<ComboboxCases blockIdPrefix="label" {...props} />
 			</SampleGroup>
 			<SampleGroup heading="Text (hideLabel)">
-				<ComboboxCases blockIdPrefix="hide-label" {...props} _hideLabel />
+				<ComboboxCases blockIdPrefix="hide-label" snapshotOnly="error" {...props} _hideLabel />
 			</SampleGroup>
 		</SampleColumns>
 	);

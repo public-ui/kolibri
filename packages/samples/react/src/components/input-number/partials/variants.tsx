@@ -12,7 +12,7 @@ export const InputNumberVariants = forwardRef<HTMLKolInputNumberElement, Compone
 				<InputNumberCases blockIdPrefix="label" {...props} />
 			</SampleGroup>
 			<SampleGroup heading="Number (hideLabel)">
-				<InputNumberCases blockIdPrefix="hide-label" ref={ref} {...props} _hideLabel />
+				<InputNumberCases blockIdPrefix="hide-label" snapshotOnly="msg-error" ref={ref} {...props} _hideLabel />
 			</SampleGroup>
 		</SampleColumns>
 	);

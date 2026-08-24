@@ -12,7 +12,7 @@ export const InputRangeVariants = forwardRef<HTMLKolInputRangeElement, Component
 				<InputRangeCases blockIdPrefix="label" {...props} />
 			</SampleGroup>
 			<SampleGroup heading="Range (hideLabel)">
-				<InputRangeCases blockIdPrefix="hide-label" ref={ref} {...props} _hideLabel />
+				<InputRangeCases blockIdPrefix="hide-label" snapshotOnly="error" ref={ref} {...props} _hideLabel />
 			</SampleGroup>
 		</SampleColumns>
 	);

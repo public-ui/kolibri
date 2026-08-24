@@ -12,7 +12,7 @@ export const SelectVariants = forwardRef<HTMLKolSelectElement, Components.KolSel
 				<SelectCases blockIdPrefix="label" {...props} />
 			</SampleGroup>
 			<SampleGroup heading="Text (hideLabel)">
-				<SelectCases blockIdPrefix="hide-label" ref={ref} {...props} _hideLabel />
+				<SelectCases blockIdPrefix="hide-label" snapshotOnly="error" ref={ref} {...props} _hideLabel />
 			</SampleGroup>
 		</SampleColumns>
 	);

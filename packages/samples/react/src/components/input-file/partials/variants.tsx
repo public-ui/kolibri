@@ -12,7 +12,7 @@ export const InputFileVariants = forwardRef<HTMLKolInputFileElement, Components.
 				<InputFileCases blockIdPrefix="label" {...props} />
 			</SampleGroup>
 			<SampleGroup heading="File (hideLabel)">
-				<InputFileCases blockIdPrefix="hide-label" ref={ref} {...props} _hideLabel />
+				<InputFileCases blockIdPrefix="hide-label" snapshotOnly="error" ref={ref} {...props} _hideLabel />
 			</SampleGroup>
 		</SampleColumns>
 	);

@@ -12,18 +12,27 @@ import { SampleBlock } from '../../SampleBlock';
 type SingleSelectCasesProps = Components.KolSingleSelect & {
 	/** Prefixes the visual block ids so the same cases can be rendered more than once per route. */
 	blockIdPrefix: string;
+	/**
+	 * Restricts the snapshots of this rendering to the case with this id; every other block is
+	 * rendered with `skipSnapshot`. Used for the `_hideLabel` groups: hiding the label mainly
+	 * changes how the message is laid out, so snapshotting every case a second time would only
+	 * duplicate the labelled group.
+	 */
+	snapshotOnly?: string;
 };
 
-export const SingleSelectCases = ({ blockIdPrefix, ...props }: SingleSelectCasesProps) => {
+export const SingleSelectCases = ({ blockIdPrefix, snapshotOnly, ...props }: SingleSelectCasesProps) => {
+	// Blocks outside `snapshotOnly` stay visible in the sample but are excluded from the snapshots.
+	const block = (caseId: string) => ({ id: `${blockIdPrefix}-${caseId}`, skipSnapshot: snapshotOnly !== undefined && caseId !== snapshotOnly });
 	return (
 		<div className="grid gap-4">
-			<SampleBlock id={`${blockIdPrefix}-hint`}>
+			<SampleBlock {...block('hint')}>
 				<KolSingleSelect {...props} _hint={HINT_MSG} _label="Label" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-disabled`}>
+			<SampleBlock {...block('disabled')}>
 				<KolSingleSelect {...props} _label="Disabled" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _disabled />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-error`}>
+			<SampleBlock {...block('error')}>
 				<KolSingleSelect
 					{...props}
 					_options={COUNTRY_OPTIONS as Option<StencilUnknown>[]}
@@ -36,16 +45,16 @@ export const SingleSelectCases = ({ blockIdPrefix, ...props }: SingleSelectCases
 					_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 				/>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-access-key`}>
+			<SampleBlock {...block('access-key')}>
 				<KolSingleSelect {...props} _label="With access key" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _accessKey="c" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-short-key`}>
+			<SampleBlock {...block('short-key')}>
 				<KolSingleSelect {...props} _label="With short key" _options={COUNTRY_OPTIONS as Option<StencilUnknown>[]} _value={'de'} _shortKey="s" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-long-labels`}>
+			<SampleBlock {...block('long-labels')}>
 				<KolSingleSelect {...props} _label="With long labels" _options={LONG_OPTIONS as Option<StencilUnknown>[]} _placeholder="Placeholder" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-no-clear-button`}>
+			<SampleBlock {...block('no-clear-button')}>
 				<KolSingleSelect
 					{...props}
 					_label="With hidden clear button"
@@ -54,7 +63,7 @@ export const SingleSelectCases = ({ blockIdPrefix, ...props }: SingleSelectCases
 					_hasClearButton={false}
 				/>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-boolean-values`}>
+			<SampleBlock {...block('boolean-values')}>
 				<KolSingleSelect
 					{...props}
 					_label="Boolean option values (Issue #9122)"
@@ -67,7 +76,7 @@ export const SingleSelectCases = ({ blockIdPrefix, ...props }: SingleSelectCases
 					_value={false}
 				/>
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-disabled-options`}>
+			<SampleBlock {...block('disabled-options')}>
 				<KolSingleSelect
 					{...props}
 					_hint={HINT_MSG}

@@ -13,7 +13,7 @@ export const InputRadioVariants = forwardRef<HTMLKolInputRadioElement, Component
 				<InputRadioCases blockIdPrefix="label" {...props} />
 			</SampleGroup>
 			<SampleGroup heading="Radio (hideLabel)">
-				<InputRadioCases blockIdPrefix="hide-label" ref={ref} {...props} _hideLabel />
+				<InputRadioCases blockIdPrefix="hide-label" snapshotOnly="error" ref={ref} {...props} _hideLabel />
 			</SampleGroup>
 		</SampleColumns>
 	);
