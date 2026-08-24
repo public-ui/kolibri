@@ -3,6 +3,7 @@ import React from 'react';
 
 import { KolForm, KolInputRadio } from '@public-ui/react-v19';
 
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputRadioObjectValue: FC = () => {
@@ -21,16 +22,16 @@ export const InputRadioObjectValue: FC = () => {
 				<p>
 					In this example for <code>KolInputRadio</code>, the values of the options are defined as objects.
 				</p>
-				<div className="container my-4 d-grid gap-4">
+				<SampleBlock id="object-value" className="container my-4 d-grid gap-4">
 					<KolInputRadio _value={options[1].value} _options={options} _label="Test (with object value)" />
-				</div>
+				</SampleBlock>
 
 				<p>
 					In this example for <code>KolInputRadio</code>, no value is set.
 				</p>
-				<div className="container my-4 d-grid gap-4">
+				<SampleBlock id="no-value" className="container my-4 d-grid gap-4">
 					<KolInputRadio _options={options} _label="Test (without value)" />
-				</div>
+				</SampleBlock>
 			</KolForm>
 		</div>
 	);

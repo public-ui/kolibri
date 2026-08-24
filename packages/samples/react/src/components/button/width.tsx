@@ -1,7 +1,8 @@
-import { KolButton, KolHeading } from '@public-ui/react-v19';
+import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonWidth: FC = () => {
@@ -21,8 +22,7 @@ export const ButtonWidth: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Fixed Width Buttons (8rem)" />
+				<SampleBlock id="fixed-width-buttons-8rem" heading="Fixed Width Buttons (8rem)" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _label="Primary" _variant="primary" {...ARGS} />
 						<KolButton _label="Secondary" _variant="secondary" {...ARGS} />
@@ -30,10 +30,9 @@ export const ButtonWidth: FC = () => {
 						<KolButton _label="Danger" _variant="danger" {...ARGS} />
 						<KolButton _label="Ghost" _variant="ghost" {...ARGS} />
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Fixed Width Disabled Buttons (8rem)" />
+				<SampleBlock id="fixed-width-disabled-buttons" heading="Fixed Width Disabled Buttons (8rem)" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _disabled _label="Primary" _variant="primary" {...ARGS} />
 						<KolButton _disabled _label="Secondary" _variant="secondary" {...ARGS} />
@@ -41,7 +40,7 @@ export const ButtonWidth: FC = () => {
 						<KolButton _disabled _label="Danger" _variant="danger" {...ARGS} />
 						<KolButton _disabled _label="Ghost" _variant="ghost" {...ARGS} />
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

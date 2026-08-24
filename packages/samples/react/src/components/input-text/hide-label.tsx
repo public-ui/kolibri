@@ -1,6 +1,7 @@
 import { KolAlert, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputTextHideLabel: FC = () => (
@@ -12,15 +13,15 @@ export const InputTextHideLabel: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<section>
+		<SampleBlock id="search">
 			<KolInputText _hideLabel _label="Search" _placeholder="Search..." _type="search" />
-		</section>
+		</SampleBlock>
 
-		<section>
+		<SampleBlock id="error">
 			<KolInputText _hideLabel _label="Email" _placeholder="Enter email" _msg={{ _type: 'error', _description: 'Invalid email format' }} _touched />
-		</section>
+		</SampleBlock>
 
-		<section>
+		<SampleBlock id="address-group">
 			<fieldset className="grid md:grid-cols-2 gap-4">
 				<legend>Street Address</legend>
 				<KolAlert className="col-span-2" _level={0} _type="error">
@@ -43,6 +44,6 @@ export const InputTextHideLabel: FC = () => (
 					_touched
 				/>
 			</fieldset>
-		</section>
+		</SampleBlock>
 	</div>
 );

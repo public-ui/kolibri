@@ -2,6 +2,7 @@ import type { KoliBriTableHeaders } from '@public-ui/components';
 import { KolPagination, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useState } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 import type { ComplexData } from './test-complex-data';
@@ -45,7 +46,7 @@ export const TableStatelessAsync: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<section className="w-full relative">
+			<SampleBlock id="async" className="w-full relative">
 				<KolTableStateless
 					_label="Table for demonstration purposes"
 					_loading={loading}
@@ -65,7 +66,7 @@ export const TableStatelessAsync: FC = () => {
 						onChangePage: () => loadData(),
 					}}
 				/>
-			</section>
+			</SampleBlock>
 		</>
 	);
 };

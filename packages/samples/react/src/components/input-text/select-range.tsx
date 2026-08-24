@@ -1,5 +1,6 @@
 import { KolButtonLink, KolInputText } from '@public-ui/react-v19';
 import * as React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputTextSelectRange = () => {
@@ -25,12 +26,12 @@ export const InputTextSelectRange = () => {
 			<SampleDescription>
 				<p>This sample shows how to change the selection in a KolInputText.</p>
 			</SampleDescription>
-			<div className="grid gap-4">
+			<SampleBlock id="select-range">
 				<KolInputText _value="Very long value" _label="Text Input Label" ref={textInput} />
 				<KolButtonLink _label="Set Start" onClick={setSelectioStart} />
 				<KolButtonLink _label="Set Range" onClick={setSelectionRange} />
 				<KolButtonLink _label="Set Range Text" onClick={setRangeText} />
-			</div>
+			</SampleBlock>
 		</>
 	);
 };

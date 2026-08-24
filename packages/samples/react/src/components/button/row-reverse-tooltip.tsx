@@ -1,6 +1,7 @@
-import { KolButton, KolHeading } from '@public-ui/react-v19';
+import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonRowReverseTooltip: FC = () => {
@@ -14,12 +15,11 @@ export const ButtonRowReverseTooltip: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Button in Row-Reverse Container" />
+				<SampleBlock id="button-row-reverse-container" heading="Button in Row-Reverse Container">
 					<div className="flex flex-row-reverse">
 						<KolButton _icons="kolicon-house" _hideLabel _label="This is a very, very long tooltip text that exceeds the width." _variant="primary" />
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

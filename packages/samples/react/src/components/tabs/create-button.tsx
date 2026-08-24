@@ -1,6 +1,7 @@
 import { KolTabs } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useState } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const CreateButton: FC = () => {
@@ -28,15 +29,17 @@ export const CreateButton: FC = () => {
 				<p>This sample shows KolTabs with a &quot;create tab&quot; button.</p>
 			</SampleDescription>
 
-			<KolTabs _tabs={tabs} className="mt-4" _label="Tabs with create button" _hasCreateButton _on={{ onCreate: addTab }}>
-				{tabs.map((tab, index) => (
-					<div key={`tab-${index}`} slot={`tab-${index}`}>
-						Contents of {tab._label}
-					</div>
-				))}
+			<SampleBlock id="create-button" fitContent>
+				<KolTabs _tabs={tabs} className="mt-4" _label="Tabs with create button" _hasCreateButton _on={{ onCreate: addTab }}>
+					{tabs.map((tab, index) => (
+						<div key={`tab-${index}`} slot={`tab-${index}`}>
+							Contents of {tab._label}
+						</div>
+					))}
 
-				<div slot="tab-1">Contents of Tab 2</div>
-			</KolTabs>
+					<div slot="tab-1">Contents of Tab 2</div>
+				</KolTabs>
+			</SampleBlock>
 		</>
 	);
 };

@@ -46,6 +46,7 @@
 		"test:e2e": "pnpm -r test:e2e",
 		"test:unit": "pnpm -r test:unit",
 		"test:update": "pnpm test:update:e2e && pnpm test:update:unit",
+		"test:update:docker": "node scripts/snapshots-docker.mjs",
 		"test:update:e2e": "pnpm -r --workspace-concurrency=1 test:update:e2e",
 		"test:update:unit": "pnpm -r --workspace-concurrency=1 test:update:unit",
 		"update": "pnpm ncu:minor && pnpm ncu:major",

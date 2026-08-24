@@ -1,6 +1,7 @@
-import { KolButton, KolHeading, KolMeter } from '@public-ui/react-v19';
+import { KolButton, KolMeter } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useState } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const MeterDynamic: FC = () => {
@@ -13,8 +14,7 @@ export const MeterDynamic: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Dynamic value" />
+				<SampleBlock id="dynamic-value" heading="Dynamic value">
 					<KolMeter _label="Used hard disk space" _max={500} _min={0} _unit="GB" _value={usedStorage} />
 					<div className="flex gap-4">
 						<KolButton _label="120 GB" _on={{ onClick: () => setUsedStorage(120) }} _variant="secondary" />
@@ -22,7 +22,7 @@ export const MeterDynamic: FC = () => {
 						<KolButton _label="360 GB" _on={{ onClick: () => setUsedStorage(360) }} _variant="secondary" />
 						<KolButton _label="480 GB" _on={{ onClick: () => setUsedStorage(480) }} _variant="secondary" />
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

@@ -3,6 +3,7 @@ import React, { type BaseSyntheticEvent } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { NumericFormat, type NumberFormatValues, type NumericFormatProps } from 'react-number-format';
 
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 type KolInputTextEvents = {
@@ -171,7 +172,7 @@ export function InputNumberNumberFormatter() {
 				</p>
 			</SampleDescription>
 			<section className="w-full grid gap-4">
-				<div>
+				<SampleBlock id="whole-number">
 					<KolForm>
 						<KolInputNumber
 							_label="Whole number"
@@ -193,9 +194,9 @@ export function InputNumberNumberFormatter() {
 						/>
 					</KolForm>
 					<pre className="text-base mt-2">{JSON.stringify({ value, touched }, null, 2)}</pre>
-				</div>
+				</SampleBlock>
 
-				<div>
+				<SampleBlock id="currency">
 					<KolForm _on={{ onSubmit: handleCurrencySubmit }}>
 						<KolNumericFormatController
 							control={currencyForm.control as any}
@@ -208,7 +209,7 @@ export function InputNumberNumberFormatter() {
 						/>
 					</KolForm>
 					<pre className="text-base mt-2">{JSON.stringify(currencyValues, null, 2)}</pre>
-				</div>
+				</SampleBlock>
 			</section>
 		</>
 	);

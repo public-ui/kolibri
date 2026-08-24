@@ -3,6 +3,7 @@ import React from 'react';
 import { KolCard } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const CardBasic: FC = () => (
@@ -11,7 +12,7 @@ export const CardBasic: FC = () => (
 			<p>KolCard shows a card with title and slot content. The second sample features a close button.</p>
 		</SampleDescription>
 
-		<div className="w-full grid grid-cols-2 gap-4">
+		<SampleBlock id="basic" className="w-full grid grid-cols-2 gap-4" narrow>
 			<KolCard _label="Card with title and content">
 				<p>Card contents.</p>
 			</KolCard>
@@ -19,6 +20,6 @@ export const CardBasic: FC = () => (
 			<KolCard _label="Card with closer" _hasCloser>
 				<p>This card has a close button.</p>
 			</KolCard>
-		</div>
+		</SampleBlock>
 	</>
 );

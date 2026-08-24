@@ -1,6 +1,7 @@
 import { KolForm, KolHeading, KolInputText } from '@public-ui/react-v19';
 import * as React from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 /**
@@ -208,7 +209,7 @@ export function InputTextFormatterDemo() {
 					field displays the <em>formatted</em> value for better readability.
 				</p>
 			</SampleDescription>
-			<section className="w-full flex flex-col">
+			<SampleBlock id="iban" className="w-full flex flex-col">
 				<div className="p-2">
 					<KolHeading _label="Live Formatting - IBAN" _level={2} />
 					<p className="text-sm mb-2">Formatting occurs during input with intelligent cursor control</p>
@@ -239,9 +240,9 @@ export function InputTextFormatterDemo() {
 					<KolHeading _label="Model (Unformatted Value)" _level={2} />
 					<pre className="text-base">{JSON.stringify(ibanForm.watch(), null, 2)}</pre>
 				</div>
-			</section>
+			</SampleBlock>
 
-			<section className="w-full flex flex-col">
+			<SampleBlock id="currency" className="w-full flex flex-col">
 				<div className="p-2">
 					<KolHeading _label="On-Blur Formatting - Currency" _level={2} />
 					<p className="text-sm mb-2">Formatting occurs when leaving the field (onBlur) for uninterrupted input</p>
@@ -275,7 +276,7 @@ export function InputTextFormatterDemo() {
 					<KolHeading _label="Model (Numeric Value)" _level={2} />
 					<pre className="text-base">{JSON.stringify(currencyForm.watch(), null, 2)}</pre>
 				</div>
-			</section>
+			</SampleBlock>
 		</>
 	);
 }
