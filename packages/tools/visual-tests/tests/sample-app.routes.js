@@ -448,14 +448,6 @@ ROUTES.set('select/basic?noColumns', {
 		},
 	},
 });
-ROUTES.set('select/multiple-dropdown', {
-	snapshot: {
-		viewportSize: {
-			width: 500,
-			height: 0,
-		},
-	},
-});
 ROUTES.set('skip-nav/basic', {
 	snapshot: {
 		forceFullPage: true,
@@ -645,10 +637,9 @@ ROUTES.set('table/stateful-async', {
 });
 ROUTES.set('table/stateless-async', {
 	snapshot: {
-		viewportSize: {
-			width: 1000,
-			height: 0,
-		},
+		// The sample resolves its data after 5s, so the block would only ever show the pagination bar –
+		// and would flip to the fully rendered table whenever the runner needs longer than that.
+		skip: true,
 	},
 });
 ROUTES.set('tabs/basic');

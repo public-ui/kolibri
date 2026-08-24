@@ -15,6 +15,7 @@ export const PaginationButtonVisibility: FC = () => (
 			</p>
 		</SampleDescription>
 
+		{/* Snapshotted: the three distinct shapes the button group can take – full, inner buttons only, none at all. */}
 		<SampleBlock id="button-visibility">
 			{/* Default: All buttons visible */}
 			<KolPagination
@@ -25,18 +26,6 @@ export const PaginationButtonVisibility: FC = () => (
 				_boundaryCount={1}
 				_label="Default: All buttons visible (first, previous, next, last)"
 				_on={{}}
-			/>
-
-			{/* Only first and last buttons */}
-			<KolPagination
-				_max={100}
-				_page={5}
-				_pageSize={10}
-				_siblingCount={2}
-				_boundaryCount={1}
-				_label="Only first and last buttons"
-				_on={{}}
-				_hasButtons={{ first: true, last: true, next: false, previous: false }}
 			/>
 
 			{/* Only previous and next buttons */}
@@ -61,6 +50,21 @@ export const PaginationButtonVisibility: FC = () => (
 				_label="No navigation buttons, only page numbers"
 				_on={{}}
 				_hasButtons={false}
+			/>
+		</SampleBlock>
+
+		{/* Not snapshotted: these combinations only differ in which button is missing – prop logic, no additional theme styling. */}
+		<SampleBlock id="button-combinations" skipSnapshot>
+			{/* Only first and last buttons */}
+			<KolPagination
+				_max={100}
+				_page={5}
+				_pageSize={10}
+				_siblingCount={2}
+				_boundaryCount={1}
+				_label="Only first and last buttons"
+				_on={{}}
+				_hasButtons={{ first: true, last: true, next: false, previous: false }}
 			/>
 
 			{/* All buttons except first */}
