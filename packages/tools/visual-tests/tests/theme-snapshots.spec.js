@@ -41,20 +41,34 @@ const MAX_BLOCK_ID_LENGTH = 30; // keeps snapshot file paths safely below the Wi
  * whether narrow width changes its layout.
  */
 const NARROW_SELECTOR = '[data-visual-block][data-visual-narrow]';
-const NARROW_VIEWPORT = { width: 320, height: 0 };
+/**
+ * 320 × 256 CSS pixels is the viewport WCAG 1.4.10 asks content to reflow into. The height must be a
+ * real value: with `height: 0` components that size themselves from the viewport collapse to zero
+ * height (KolTable does so in the default and bwst themes) and the block becomes uncapturable.
+ * Element screenshots capture the whole block even when it is far taller than the viewport, so the
+ * small height costs no coverage.
+ */
+const NARROW_VIEWPORT = { width: 320, height: 256 };
+const BLOCK_VISIBLE_TIMEOUT = 10000;
 
 /** Reads the `data-visual-block` ids of all elements matching `selector`, in document order. */
 async function readBlockIds(page, selector) {
 	return page.$$eval(selector, (elements) => elements.map((element) => element.getAttribute('data-visual-block')));
 }
 
-/** Captures one element screenshot per block id and fails on blocks that are invisible or have zero size. */
+/** Captures one element screenshot per block id and fails on blocks that stay invisible or zero-sized. */
 async function captureBlocks(page, route, blockIds, snapshotName, suffix, options) {
 	for (const blockId of blockIds) {
 		const block = page.locator(`[data-visual-block="${blockId}"]`);
-		const boundingBox = await block.boundingBox();
-		if (!boundingBox || boundingBox.width === 0 || boundingBox.height === 0) {
-			throw new Error(`Route "${route}": data-visual-block "${blockId}" is not visible or has zero size${suffix ? ` at ${NARROW_VIEWPORT.width}px` : ''}`);
+		try {
+			/* Playwright's `visible` requires a non-empty bounding box, so this covers zero-size blocks
+			   as well. Waiting instead of measuring once matters after a viewport change: components can
+			   report a zero height for a moment while they re-layout. */
+			await block.waitFor({ state: 'visible', timeout: BLOCK_VISIBLE_TIMEOUT });
+		} catch {
+			throw new Error(
+				`Route "${route}": data-visual-block "${blockId}" is not visible or has zero size${suffix ? ` at ${NARROW_VIEWPORT.width}px viewport width` : ''}`,
+			);
 		}
 		await expect(block).toHaveScreenshot(`${snapshotName}--${blockId}${suffix}.png`, options);
 	}
