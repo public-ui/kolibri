@@ -40,6 +40,14 @@ type SampleBlockProps = PropsWithChildren<
 		 * every flagged block doubles its snapshot count.
 		 */
 		narrow?: boolean;
+		/**
+		 * Excludes this block from the visual tests without turning it back into a plain `div`:
+		 * heading, layout and the debug outline stay, only `data-visual-block` is dropped so no
+		 * screenshot is taken. Use it for samples that can't be captured deterministically
+		 * (animations, timestamps, random data) or that are only there to be looked at.
+		 * The outline marks such blocks **red** instead of blue, and `narrow` has no effect on them.
+		 */
+		skipSnapshot?: boolean;
 	} & Omit<HTMLAttributes<HTMLElement>, 'className' | 'id'>
 >;
 
@@ -54,13 +62,16 @@ const FIT_CONTENT_STYLE: CSSProperties = { width: 'fit-content' };
  * see `shares/visualBlockOutline`.
  * See packages/tools/visual-tests/README.md.
  */
-export const SampleBlock: FC<SampleBlockProps> = ({ id, heading, level = 2, className, fitContent, narrow, children, ...rest }) => (
+export const SampleBlock: FC<SampleBlockProps> = ({ id, heading, level = 2, className, fitContent, narrow, skipSnapshot, children, ...rest }) => (
 	<section {...rest}>
 		{/* The heading is sample chrome, not component content: it stays outside the captured block so heading changes never invalidate snapshots. */}
 		{heading ? <KolHeading _level={level} _label={heading} /> : null}
 		<div
-			data-visual-block={id}
-			data-visual-narrow={narrow ? '' : undefined}
+			/* Excluded blocks keep their id under a different attribute: the tests only look for
+			   `data-visual-block`, while the debug outline can still find and mark them. */
+			data-visual-block={skipSnapshot ? undefined : id}
+			data-visual-block-skipped={skipSnapshot ? id : undefined}
+			data-visual-narrow={narrow && !skipSnapshot ? '' : undefined}
 			className={className ?? 'grid gap-4'}
 			style={fitContent ? FIT_CONTENT_STYLE : undefined}
 		>

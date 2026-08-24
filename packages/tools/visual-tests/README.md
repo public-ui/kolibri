@@ -116,9 +116,23 @@ Opt in deliberately — every flagged block doubles its snapshot count, and bloc
 
 This replaces the former 400 % zoom pass (`snapshot.zoom`), which produced one whole-page screenshot per route, was switched off on 150 of 158 routes, and cascaded diffs across the entire page.
 
+### Excluding a single block (`skipSnapshot`)
+
+Set `skipSnapshot` to keep a block as a block but take no screenshot of it — no need to turn it back into a plain `div` and lose the heading and the layout container:
+
+```tsx
+<SampleBlock id="clock" heading="Live clock" skipSnapshot>
+	<KolBadge _label={new Date().toISOString()} />
+</SampleBlock>
+```
+
+Use it for samples that cannot be captured deterministically (animations, timestamps, random data) or that exist purely to be looked at. The block keeps its id — under `data-visual-block-skipped` instead of `data-visual-block` — so the tests do not see it while the debug outline still marks it, in **red** rather than blue. `narrow` has no effect on an excluded block.
+
+If this leaves a route without a single captured block, the test fails with `no data-visual-block containers found`. That is intentional: such a route has to declare what it wants instead — `snapshot.skip` to drop it, or `snapshot.forceFullPage` to capture the whole page.
+
 ### Making the blocks visible while developing
 
-The block containers are invisible by design. To see what an element screenshot actually captures, switch on the debug outline:
+The block containers are invisible by design. To see what an element screenshot actually captures, switch on the debug outline — captured blocks are outlined blue, blocks excluded via `skipSnapshot` red:
 
 - `Ctrl+Alt+B` toggles it at runtime (no reload) and remembers the choice for the next visit,
 - `?visualBlocks` enables it for a URL, `?visualBlocks=0` disables it again — combinable with `?hideMenus`.

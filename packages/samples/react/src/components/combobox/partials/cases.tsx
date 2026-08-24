@@ -36,7 +36,7 @@ export const ComboboxCases = ({ blockIdPrefix, ...props }: ComboboxCasesProps) =
 			<SampleBlock id={`${blockIdPrefix}-access-key`}>
 				<KolCombobox {...props} _label="With access key" _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} _accessKey="c" />
 			</SampleBlock>
-			<SampleBlock id={`${blockIdPrefix}-short-key`}>
+			<SampleBlock id={`${blockIdPrefix}-short-key`} skipSnapshot={props._hideLabel}>
 				<KolCombobox {...props} _label="With short key" _suggestions={COUNTRY_SUGGESTIONS} _value={'Deutschland'} _shortKey="s" />
 			</SampleBlock>
 		</div>

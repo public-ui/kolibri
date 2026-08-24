@@ -1,6 +1,8 @@
 /**
  * Debug aid for the visual tests: draws an outline around every `data-visual-block` container
  * (see `components/SampleBlock`) so you can see what an element screenshot actually captures.
+ * Blocks excluded via SampleBlock's `skipSnapshot` prop are outlined red instead of blue, so it is
+ * visible at a glance which sample is captured and which one is only there to be looked at.
  *
  * It is off by default and never ends up in a snapshot:
  * - it is drawn as an `outline`, which takes no space – the layout is identical whether it is on or off,
@@ -11,10 +13,15 @@
 
 const ROOT_ATTRIBUTE = 'data-visual-blocks';
 const STORAGE_KEY = 'public-ui.sample.visual-blocks';
+const SKIPPED_ATTRIBUTE = 'data-visual-block-skipped';
 const STYLE_ELEMENT_ID = 'visual-block-outline-style';
 const STYLE_CONTENT = `
 	html[${ROOT_ATTRIBUTE}] [data-visual-block] {
 		outline: 2px solid darkblue;
+		outline-offset: 0;
+	}
+	html[${ROOT_ATTRIBUTE}] [${SKIPPED_ATTRIBUTE}] {
+		outline: 2px solid orangered;
 		outline-offset: 0;
 	}
 `;
