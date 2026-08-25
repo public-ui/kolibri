@@ -3,6 +3,7 @@ import React from 'react';
 import { KolDetails } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const DetailsBasic: FC = () => (
@@ -14,7 +15,7 @@ export const DetailsBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<section className="grid gap-4">
+		<SampleBlock id="basic">
 			<KolDetails _label="Closed initially">
 				<p>
 					Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
@@ -36,6 +37,6 @@ export const DetailsBasic: FC = () => (
 					Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.
 				</p>
 			</KolDetails>
-		</section>
+		</SampleBlock>
 	</>
 );

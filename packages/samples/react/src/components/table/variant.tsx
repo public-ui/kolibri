@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 
 import { KolTableStateful } from '@public-ui/react-v19';
 
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 import type { Data } from './test-data';
@@ -33,7 +34,7 @@ export const TableVariant: FC = () => {
 				<p>This sample shows KolTableStateful with different variants controlled by the theme.</p>
 			</SampleDescription>
 
-			<section className="w-full flex flex-col gap-14">
+			<SampleBlock id="variants" className="w-full flex flex-col gap-14">
 				{!Array.isArray(tableVariants) || tableVariants.length === 0 ? (
 					<p>This theme has no variants for tables.</p>
 				) : (
@@ -58,7 +59,7 @@ export const TableVariant: FC = () => {
 						);
 					})
 				)}
-			</section>
+			</SampleBlock>
 		</div>
 	);
 };

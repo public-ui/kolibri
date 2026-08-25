@@ -2,7 +2,8 @@ import type { FC } from 'react';
 import React from 'react';
 
 import type { KoliBriTableDataType, KoliBriTableHeaders } from '@public-ui/components';
-import { KolHeading, KolTableStateful } from '@public-ui/react-v19';
+import { KolTableStateful } from '@public-ui/react-v19';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 import type { Data } from './test-data';
 import { DATA } from './test-data';
@@ -61,14 +62,12 @@ export const TableSortData: FC = () => (
 		</SampleDescription>
 
 		<section className="w-full grid gap-4">
-			<section className="grid gap-4">
-				<KolHeading _level={2} _label="Vertical headers" />
+			<SampleBlock id="vertical-headers" heading="Vertical headers">
 				<KolTableStateful _label="Sort a date column" _data={DATA.slice(0, 10)} _headers={HEADERS_VERTICAL} className="block" />
-			</section>
-			<section className="grid gap-4">
-				<KolHeading _level={2} _label="Horizontal headers" />
+			</SampleBlock>
+			<SampleBlock id="horizontal-headers" heading="Horizontal headers">
 				<KolTableStateful _label="Sort a date column" _data={DATA} _headers={HEADERS_HORIZONTAL} className="block" />
-			</section>
+			</SampleBlock>
 		</section>
 	</>
 );

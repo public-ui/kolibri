@@ -4,17 +4,16 @@ import { InputPasswordCases } from './cases';
 
 import type { Components } from '@public-ui/components';
 import { SampleColumns } from '../../SampleColumns';
+import { SampleGroup } from '../../SampleGroup';
 export const InputPasswordVariants = forwardRef<HTMLKolInputPasswordElement, Components.KolInputPassword>(function InputPasswordVariant(props, ref) {
 	return (
 		<SampleColumns>
-			<fieldset>
-				<legend>Password</legend>
-				<InputPasswordCases {...props} />
-			</fieldset>
-			<fieldset>
-				<legend>Password (hideLabel)</legend>
-				<InputPasswordCases ref={ref} {...props} _hideLabel />
-			</fieldset>
+			<SampleGroup heading="Password">
+				<InputPasswordCases blockIdPrefix="label" {...props} />
+			</SampleGroup>
+			<SampleGroup heading="Password (hideLabel)">
+				<InputPasswordCases blockIdPrefix="hide-label" snapshotOnly="icons-error" ref={ref} {...props} _hideLabel />
+			</SampleGroup>
 		</SampleColumns>
 	);
 });

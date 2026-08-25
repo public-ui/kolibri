@@ -3,6 +3,7 @@ import React from 'react';
 import { KolButtonLink, KolImage } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonLinkImage: FC = () => (
@@ -11,7 +12,7 @@ export const ButtonLinkImage: FC = () => (
 			<p>This sample shows KolButtonLink with slot-content instead of a label. The sample uses an image as content.</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<SampleBlock id="image">
 			<KolButtonLink _label="I am a link that is rendered as text" />
 			<KolButtonLink _label="">
 				<KolImage
@@ -21,6 +22,6 @@ export const ButtonLinkImage: FC = () => (
 					slot="expert"
 				/>
 			</KolButtonLink>
-		</div>
+		</SampleBlock>
 	</>
 );
