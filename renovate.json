@@ -8,7 +8,7 @@
 	"semanticCommitScope": "deps",
 	"timezone": "Europe/Berlin",
 	"schedule": ["before 6am on monday"],
-	"labels": ["dependencies", "renovate", "release:engineering"],
+	"labels": ["dependencies", "renovate", "release:engineering", "release:ignore"],
 	"rebaseWhen": "behind-base-branch",
 	"prConcurrentLimit": 10,
 	"prHourlyLimit": 4,

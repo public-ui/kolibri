@@ -63,3 +63,4 @@ jobs:
           body: 'Automated license report update from issue #${{ env.issue }}.'
           draft: true
           delete-branch: true
+          labels: release:ignore
