@@ -76,10 +76,10 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
-		"@modelcontextprotocol/inspector": "2.2.0",
+		"@modelcontextprotocol/inspector": "2.3.0",
 		"@public-ui/eslint-config": "workspace:*",
 		"@types/express": "5.0.6",
-		"@types/node": "26.2.0",
+		"@types/node": "26.3.0",
 		"eslint": "9.39.5",
 		"knip": "6.32.2",
 		"nodemon": "3.1.14",
