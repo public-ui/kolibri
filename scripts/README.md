@@ -1,5 +1,38 @@
 # Scripts Overview
 
+## snapshots-docker.mjs
+
+Update theme snapshots locally in the very same Playwright container the CI uses, without the
+check-in → CI round trip:
+
+```bash
+pnpm test:update:docker default
+```
+
+Snapshots are platform specific – `snapshotPathTemplate` contains `{platform}` and font rendering
+differs between operating systems – so snapshots generated on a developer machine are only usable if
+they are produced inside the pinned Linux image. The script therefore:
+
+1. resolves the image tag from the `@playwright/test` version in `packages/tools/visual-tests`
+   (same pin the `03 - Update Snapshots` workflow verifies),
+2. mirrors the working tree (including uncommitted changes, excluding `node_modules`, `.git` and
+   build output) into the Docker volume `kolibri-visual-tests-work`,
+3. runs `pnpm install`, builds the visual-test dependencies and executes `test:update:e2e` as
+   uid 1001 (`pwuser` – Firefox refuses to start as root),
+4. mirrors only the generated snapshots back into the repository.
+
+Host `node_modules` are never touched; the install inside the volume is reused across runs.
+
+| Option       | Effect                                                                    |
+| ------------ | ------------------------------------------------------------------------- |
+| `<theme> …`  | Themes to update (default: `default`)                                     |
+| `--all`      | All themes, like the CI matrix                                            |
+| `--check`    | Only run the tests, write nothing back                                    |
+| `--no-purge` | Keep existing snapshots instead of regenerating them from scratch         |
+| `--shell`    | Interactive shell inside the prepared container                           |
+| `--reset`    | Drop the volume, forcing a fresh install on the next run                  |
+| `-- <args>`  | Everything after `--` is passed on to Playwright, e.g. `-- --grep Button` |
+
 ## license-reports.mjs
 
 Generate and merge all package license reports into one Markdown file:

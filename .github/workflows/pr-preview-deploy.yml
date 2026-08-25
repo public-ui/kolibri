@@ -70,9 +70,9 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: packages/samples/presentation/dist
-          target-folder: pr-${{ github.event.pull_request.number }}/${{ steps.sha.outputs.short }}
+          target-folder: pr-${{ github.event.pull_request.number }}
           branch: gh-pages
-          clean: false
+          clean: true
 
       - name: Post PR comment
         uses: actions/github-script@v9
@@ -81,7 +81,7 @@ jobs:
             const marker = '<!-- gh-pages-preview -->';
             const pr = context.issue.number;
             const sha = '${{ steps.sha.outputs.short }}';
-            const url = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${pr}/${sha}/`;
+            const url = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${pr}/`;
             const body = `${marker}\n🚀 Preview deployed to GitHub Pages: [${url}](${url})\nCommit: \`${sha}\``;
             const { owner, repo } = context.repo;
             try {

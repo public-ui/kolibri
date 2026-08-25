@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 
 import { KolHeading, KolInputCheckbox, KolTableStateful } from '@public-ui/react-v19';
 
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 import type { Data } from './test-data';
@@ -58,39 +59,43 @@ export const TableHorizontalScrollbar: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<section className="w-full flex flex-col gap-4">
-				<div className="w-[400px] flex flex-col gap-4">
+			<div className="w-[400px] flex flex-col gap-4">
+				<SampleBlock id="scrollbar-horizontal" className="w-full flex flex-col gap-4">
 					<KolTableStateful
 						_label="Table for demonstration purposes with horizontal scrollbar."
 						_headers={hasWidthRestriction ? HEADERS : COMPACT_HEADERS}
 						_data={DATA}
 						className="block"
 					/>
-					<KolTableStateful _label="Table for demonstration horizontal scrolling with pagination." _headers={ORDER_HEADERS} _data={tableData} _pagination />
+				</SampleBlock>
+				<KolTableStateful _label="Table for demonstration horizontal scrolling with pagination." _headers={ORDER_HEADERS} _data={tableData} _pagination />
+				<SampleBlock id="scrollbar-horizontal-empty" className="w-full flex flex-col gap-4">
 					<KolTableStateful
 						_label="Table for demonstration purposes with horizontal scrollbar with auto width calculation."
 						_headers={hasWidthRestriction ? HEADERS : COMPACT_HEADERS}
 						_data={[]}
 						className="block"
 					/>
-				</div>
+				</SampleBlock>
+			</div>
 
-				<KolInputCheckbox
-					_checked={hasWidthRestriction}
-					_label="Toggle width restriction"
-					_variant="switch"
-					_on={{
-						onChange: (_event, value) => {
-							setHasWidthRestriction(Boolean(value));
-						},
-					}}
-				></KolInputCheckbox>
+			<KolInputCheckbox
+				_checked={hasWidthRestriction}
+				_label="Toggle width restriction"
+				_variant="switch"
+				_on={{
+					onChange: (_event, value) => {
+						setHasWidthRestriction(Boolean(value));
+					},
+				}}
+			></KolInputCheckbox>
 
-				<KolHeading _label="Same table without scrollbar" _level={2} className="block mt-4" />
-				<p className="mt-0">
-					<i>Scrollbar appears on very small viewport sizes</i>
-				</p>
+			<KolHeading _label="Same table without scrollbar" _level={2} className="block mt-4" />
+			<p className="mt-0">
+				<i>Scrollbar appears on very small viewport sizes</i>
+			</p>
 
+			<SampleBlock id="scrollbar-horizontal-large" className="w-full flex flex-col gap-4" skipSnapshot>
 				<KolTableStateful
 					_label="Table for demonstration purposes without horizontal scrollbar"
 					_headers={HEADERS}
@@ -98,7 +103,7 @@ export const TableHorizontalScrollbar: FC = () => {
 					className="block"
 					_pagination
 				/>
-			</section>
+			</SampleBlock>
 		</>
 	);
 };

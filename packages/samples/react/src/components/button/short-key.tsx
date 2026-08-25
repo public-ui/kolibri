@@ -1,7 +1,8 @@
-import { KolAlert, KolButton, KolHeading, KolLink } from '@public-ui/react-v19';
+import { KolAlert, KolButton, KolLink } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonShortKey: FC = () => {
@@ -57,24 +58,21 @@ export const ButtonShortKey: FC = () => {
 			</KolAlert>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Buttons with Short Keys" />
+				<SampleBlock id="short-keys" heading="Buttons with Short Keys" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _label="With S short key" _shortKey="S" _on={dummyEventHandler} />
 						<KolButton _label="Very small b" _shortKey="b" _on={dummyEventHandler} />
 						<KolButton _label="Short key does not appear in label" _shortKey="x" _on={dummyEventHandler} />
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Short Key with Hidden Label" />
+				<SampleBlock id="hide-label" heading="Short Key with Hidden Label" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _label="short key without label" _hideLabel _shortKey="k" _icons="kolicon-cogwheel" _on={dummyEventHandler} />
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Short Key with Inline Icons" />
+				<SampleBlock id="inline-icons" heading="Short Key with Inline Icons" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton
 							_label="with inline icons"
@@ -86,18 +84,15 @@ export const ButtonShortKey: FC = () => {
 							_on={dummyEventHandler}
 						/>
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Interactive Short Key" />
-					<p>
-						This button wires the announced short key up manually: a <code>keydown</code> listener triggers the same action as a click. Press <kbd>Alt</kbd> +{' '}
-						<kbd>M</kbd> (or click the button) to open the toast.
-					</p>
-					<div className="flex flex-wrap gap-4">
-						<KolButton _label="With working M short key" _shortKey={interactiveShortKey} _on={dummyEventHandler} />
-					</div>
-				</section>
+				<p>
+					This button wires the announced short key up manually: a <code>keydown</code> listener triggers the same action as a click. Press <kbd>Alt</kbd> +{' '}
+					<kbd>M</kbd> (or click the button) to open the toast.
+				</p>
+				<div className="flex flex-wrap gap-4">
+					<KolButton _label="With working M short key" _shortKey={interactiveShortKey} _on={dummyEventHandler} />
+				</div>
 			</div>
 		</>
 	);

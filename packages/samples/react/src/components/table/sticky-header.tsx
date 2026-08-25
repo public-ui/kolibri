@@ -2,7 +2,8 @@ import type { FC } from 'react';
 import React from 'react';
 
 import type { KoliBriTableHeaders, KoliBriTableSelection } from '@public-ui/components';
-import { KolHeading, KolTableStateful } from '@public-ui/react-v19';
+import { KolTableStateful } from '@public-ui/react-v19';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 import { COMPLEX_DATA } from './test-complex-data';
 
@@ -38,14 +39,15 @@ export const TableStickyHeader: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<KolHeading _level={2} _label="Sticky headers" />
-		<KolTableStateful
-			_label="Animal species overview"
-			_data={COMPLEX_DATA}
-			_headers={HEADERS_HORIZONTAL}
-			className="block"
-			_selection={selection}
-			style={{ '--kol-table-max-height': '75vh' }}
-		/>
+		<SampleBlock id="sticky-header" heading="Sticky headers">
+			<KolTableStateful
+				_label="Animal species overview"
+				_data={COMPLEX_DATA}
+				_headers={HEADERS_HORIZONTAL}
+				className="block"
+				_selection={selection}
+				style={{ '--kol-table-max-height': '75vh' }}
+			/>
+		</SampleBlock>
 	</>
 );

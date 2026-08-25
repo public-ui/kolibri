@@ -1,7 +1,8 @@
-import { KolButton, KolHeading } from '@public-ui/react-v19';
+import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 import { useToasterService } from '../../hooks/useToasterService';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonAriaDescription: FC = () => {
@@ -21,13 +22,12 @@ export const ButtonAriaDescription: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Buttons with and without ARIA Description" />
+				<SampleBlock id="buttons-aria-description" heading="Buttons with and without ARIA Description" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _label="Button without ARIA description" _on={dummyEventHandler} />
 						<KolButton _label="Button with ARIA description" _ariaDescription="This button performs an important action" _on={dummyEventHandler} />
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

@@ -1,5 +1,6 @@
 import type { FC, ReactNode } from 'react';
 import React, { useMemo, useState } from 'react';
+import { SampleBlock, toKebabCase } from './SampleBlock';
 
 type EventHandlers = {
 	onChange: (_event: Event, value: unknown) => void;
@@ -8,10 +9,12 @@ type EventHandlers = {
 
 type Props = {
 	label: string;
+	/** Overrides the visual block id derived from `label`. */
+	blockId?: string;
 	renderInput: (handlers: EventHandlers) => ReactNode;
 };
 
-export const InputEventValueDemo: FC<Props> = ({ label, renderInput }) => {
+export const InputEventValueDemo: FC<Props> = ({ label, blockId, renderInput }) => {
 	const [changeValue, setChangeValue] = useState<unknown>(null);
 	const [inputValue, setInputValue] = useState<unknown>(null);
 
@@ -28,7 +31,7 @@ export const InputEventValueDemo: FC<Props> = ({ label, renderInput }) => {
 	);
 
 	return (
-		<section className="grid gap-4 mb-6" aria-label={`Event callback demo: ${label}`}>
+		<SampleBlock id={blockId ?? toKebabCase(label)} className="grid gap-4 mb-6" aria-label={`Event callback demo: ${label}`}>
 			{renderInput(handlers)}
 			<div className="grid gap-2">
 				<p>
@@ -38,6 +41,6 @@ export const InputEventValueDemo: FC<Props> = ({ label, renderInput }) => {
 					<strong>onChange value:</strong> <code>{JSON.stringify(changeValue)}</code>
 				</p>
 			</div>
-		</section>
+		</SampleBlock>
 	);
 };
