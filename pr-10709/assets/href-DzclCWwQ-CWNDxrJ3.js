@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-c4Gd8YY_.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};
