@@ -53,9 +53,9 @@
 		"@types/minimist": "1.2.5",
 		"@types/normalize-package-data": "2.4.4",
 		"@types/react": "19.2.18",
-		"@types/react-dom": "19.2.4",
-		"react": "19.2.7",
-		"react-dom": "19.2.7",
+		"@types/react-dom": "19.2.5",
+		"react": "19.2.8",
+		"react-dom": "19.2.8",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},

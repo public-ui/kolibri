@@ -18,3 +18,7 @@ packages:
   - packages/tools/benchmark-tests
   - packages/tools/kolibri-cli
   - packages/tools/visual-tests
+overrides:
+  immutable@>=5.0.0-beta.1 <5.1.8: '>=5.1.8'
+  nanoid@<3.3.18: '>=3.3.18'
+  shell-quote@<=1.8.4: '>=1.9.0'
