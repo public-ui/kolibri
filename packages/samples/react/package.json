@@ -21,7 +21,7 @@
 		"@public-ui/react-hook-form-adapter": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
 		"@stencil/core": "4.38.3",
-		"@types/node": "26.3.0",
+		"@types/node": "26.4.0",
 		"@types/papaparse": "5.5.2",
 		"papaparse": "5.7.0",
 		"react-hook-form": "7.86.0",
@@ -36,7 +36,7 @@
 		"@types/react-dom": "19.2.5",
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"eslint": "9.39.5",
-		"knip": "6.32.2",
+		"knip": "6.32.3",
 		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "17.14.1"

@@ -54,11 +54,11 @@
 	},
 	"devDependencies": {
 		"@public-ui/eslint-config": "workspace:*",
-		"@types/node": "26.3.0",
+		"@types/node": "26.4.0",
 		"@types/react": "19.2.18",
 		"@types/react-dom": "19.2.5",
 		"eslint": "9.39.5",
-		"knip": "6.32.2",
+		"knip": "6.32.3",
 		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"tslib": "2.8.1",
