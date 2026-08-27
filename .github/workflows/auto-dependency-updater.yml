@@ -88,7 +88,7 @@ jobs:
           body: 'Automated dependency updates from issue #${{ env.issue }} for ${{ env.version }}.'
           draft: true
           delete-branch: true
-          labels: release:ignore
+          labels: release:engineering
 
       - name: Run audit
         if: steps.verify-changed-files.outputs.changed == 'true'
