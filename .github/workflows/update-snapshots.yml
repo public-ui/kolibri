@@ -65,7 +65,7 @@ jobs:
         run: pnpm i --no-frozen-lockfile
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps firefox
+        run: pnpm exec playwright install --with-deps
 
       - name: Build
         run: pnpm --filter @public-ui/sample-react^... build
