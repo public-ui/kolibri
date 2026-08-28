@@ -46,7 +46,7 @@
 		"prettier": "3.9.6"
 	},
 	"peerDependencies": {
-		"@playwright/test": "1.62.1"
+		"@playwright/test": "1.60.0"
 	},
 	"files": [
 		"playwright.config.js",
