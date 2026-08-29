@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-DrSNQype.js";var t=(t,n)=>{e(t,`_target`,n)};export{t};
