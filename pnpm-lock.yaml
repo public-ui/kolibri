@@ -7,6 +7,7 @@ settings:
 overrides:
   immutable@>=5.0.0-beta.1 <5.1.8: '>=5.1.8'
   nanoid@<3.3.18: '>=3.3.18'
+  playwright: 1.60.0
   shell-quote@<=1.8.4: '>=1.9.0'
 
 importers:
@@ -1198,7 +1199,7 @@ importers:
         version: link:../../samples/react
       axe-playwright:
         specifier: 2.2.2
-        version: 2.2.2(playwright@1.62.1)
+        version: 2.2.2(playwright@1.60.0)
       http-server:
         specifier: 14.1.1
         version: 14.1.1
@@ -6551,7 +6552,7 @@ packages:
   axe-playwright@2.2.2:
     resolution: {integrity: sha512-h350/grzDCPgpuWV7eEOqr/f61Xn07Gi9f9B3Ew4rW6/nFtpdEJYW6jgRATorgAGXjEAYFTnaY3sEys39wDw4A==}
     peerDependencies:
-      playwright: '>1.0.0'
+      playwright: 1.60.0
 
   axios@1.18.1:
     resolution: {integrity: sha512-3nTvFlvpn9Zu/RkHUqtc7/+al4UpRW5az71ap5zccp6e8RAYEzhMTecX8Dz1wWDYrPpUoB1HAQEGEAEvUr7S9g==}
@@ -11654,19 +11655,9 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  playwright-core@1.62.1:
-    resolution: {integrity: sha512-wPYSwEBJY9GHraISXqyqtx0na0LpO3XEX7jNDhntbex7tzUS7kLnZsOlFruFJB4Hi/rhDMjXGqHewDZ68nYZVw==}
-    engines: {node: '>=20'}
-    hasBin: true
-
   playwright@1.60.0:
     resolution: {integrity: sha512-hheHdokM8cdqCb0lcE3s+zT4t4W+vvjpGxsZlDnikarzx8tSzMebh3UiFtgqwFwnTnjYQcsyMF8ei2mCO/tpeA==}
     engines: {node: '>=18'}
-    hasBin: true
-
-  playwright@1.62.1:
-    resolution: {integrity: sha512-0M+L3LAD8/nm554LOla9Ayx0j0tmFZ0FBcoQ7F1VuVHpM/XpiC8RcDzBQB8W5+hA8L22THxELzeF+2WcUzvcLg==}
-    engines: {node: '>=20'}
     hasBin: true
 
   portfinder@1.0.38:
@@ -21041,14 +21032,14 @@ snapshots:
       axe-core: 4.10.3
       mustache: 4.2.0
 
-  axe-playwright@2.2.2(playwright@1.62.1):
+  axe-playwright@2.2.2(playwright@1.60.0):
     dependencies:
       '@types/junit-report-builder': 3.0.2
       axe-core: 4.10.3
       axe-html-reporter: 2.2.11(axe-core@4.10.3)
       junit-report-builder: 5.1.1
       picocolors: 1.1.1
-      playwright: 1.62.1
+      playwright: 1.60.0
 
   axios@1.18.1(debug@4.4.3(supports-color@7.2.0))(supports-color@7.2.0):
     dependencies:
@@ -27690,17 +27681,9 @@ snapshots:
 
   playwright-core@1.60.0: {}
 
-  playwright-core@1.62.1: {}
-
   playwright@1.60.0:
     dependencies:
       playwright-core: 1.60.0
-    optionalDependencies:
-      fsevents: 2.3.2
-
-  playwright@1.62.1:
-    dependencies:
-      playwright-core: 1.62.1
     optionalDependencies:
       fsevents: 2.3.2
 
