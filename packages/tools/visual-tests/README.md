@@ -65,16 +65,91 @@ To update the reference screenshots call `npm run test:update`.
 
 ### Element screenshots (`data-visual-block`)
 
-Sample views in the [React Sample App](https://github.com/public-ui/kolibri/tree/develop/packages/samples/react) mark their variant blocks with a `data-visual-block` attribute — either via the `SampleBlock` helper component or by setting the attribute directly on a container element (e.g. a `<fieldset>`). When a route contains such blocks, the visual tests capture **one element screenshot per block** (`<route-slug>--<block-id>.png`) instead of one full-page screenshot. This isolates diffs: a change to one variant no longer invalidates the entire page screenshot through layout shifts.
+Sample views in the [React Sample App](https://github.com/public-ui/kolibri/tree/develop/packages/samples/react) mark their variant blocks with the `SampleBlock` component, which renders the `data-visual-block` attribute. `SampleBlock` is the **only** place that sets the attribute — samples must not set it directly on their own elements. When a route contains such blocks, the visual tests capture **one element screenshot per block** (`<route-slug>--<block-id>.png`) instead of one full-page screenshot. This isolates diffs: a change to one variant no longer invalidates the entire page screenshot through layout shifts.
+
+`SampleBlock` renders an optional heading (`heading`/`level` props) above the captured block — headings are sample chrome and stay outside the `data-visual-block` container, so heading changes never invalidate snapshots. The default container layout (`grid gap-4`) can be overridden with the `className` prop.
+
+Wrap each block around a **single case**, so a change to one case only invalidates that case's snapshot. Samples that render the same set of cases more than once per route (the input, select and textarea samples render them with and without `_hideLabel`) group each repetition with `SampleGroup`. `SampleGroup` renders the heading but **no** `data-visual-block` container, so the nested blocks stay individual screenshots instead of being captured together. The cases component takes a `blockIdPrefix` and prefixes every block id with it, which keeps the ids unique within the route:
+
+```tsx
+// partials/variants.tsx
+<SampleColumns>
+	<SampleGroup heading="Email">
+		<InputEmailCases blockIdPrefix="label" {...props} />
+	</SampleGroup>
+	<SampleGroup heading="Email (hideLabel)">
+		<InputEmailCases blockIdPrefix="hide-label" {...props} _hideLabel />
+	</SampleGroup>
+</SampleColumns>
+
+// partials/cases.tsx
+<SampleBlock id={`${blockIdPrefix}-disabled`}>
+	<KolInputEmail {...props} _disabled _value="test@mail.de" _label="E-Mail (Disabled)" />
+</SampleBlock>
+```
+
+By default the block container spans the full sample width, so narrow samples produce a snapshot that is mostly empty space. Set the `fitContent` prop to shrink the container to the width its content actually needs (`width: fit-content`):
+
+```tsx
+<SampleBlock id="basic" fitContent>
+	<span>
+		I am <KolAbbr>e.g.</KolAbbr> an abbreviation.
+	</span>
+</SampleBlock>
+```
+
+Use it wherever the content has an intrinsic width and the block would otherwise be mostly empty space — inline-ish samples (abbr, badge, link, …) as well as tables and images that size themselves. Do not use it for components that stretch to fill the available width (form fields, cards): there the inline `width: fit-content` overrides the layout class and changes how they render.
+
+### Reflow (320 px) snapshots
+
+Set the `narrow` prop on a block to capture it a **second time at 320 px viewport width**
+(`<route-slug>--<block-id>-320.png`). 320 CSS pixels is the width WCAG 1.4.10 (Reflow) asks for, so this is where a layout that refuses to wrap, a grid that keeps two columns or a table that pushes the page into horizontal scrolling shows up:
+
+```tsx
+<SampleBlock id="basic" className="w-full grid grid-cols-2 gap-4" narrow>
+	<KolCard _label="…" />
+	<KolCard _label="…" />
+</SampleBlock>
+```
+
+Opt in deliberately — every flagged block doubles its snapshot count, and blocks whose layout does not depend on the available width (badges, abbreviations, icons) gain nothing from it. There is no per-route switch: only the sample itself knows whether narrow width changes its layout, so the decision lives next to the block. Routes captured with `forceFullPage` have no blocks and therefore cannot opt in.
+
+This replaces the former 400 % zoom pass (`snapshot.zoom`), which produced one whole-page screenshot per route, was switched off on 150 of 158 routes, and cascaded diffs across the entire page.
+
+### Excluding a single block (`skipSnapshot`)
+
+Set `skipSnapshot` to keep a block as a block but take no screenshot of it — no need to turn it back into a plain `div` and lose the heading and the layout container:
+
+```tsx
+<SampleBlock id="clock" heading="Live clock" skipSnapshot>
+	<KolBadge _label={new Date().toISOString()} />
+</SampleBlock>
+```
+
+Use it for samples that cannot be captured deterministically (animations, timestamps, random data) or that exist purely to be looked at. The block keeps its id — under `data-visual-block-skipped` instead of `data-visual-block` — so the tests do not see it while the debug outline still marks it, in **red** rather than blue. `narrow` has no effect on an excluded block.
+
+If this leaves a route without a single captured block, the test fails with `no data-visual-block containers found`. That is intentional: such a route has to declare what it wants instead — `snapshot.skip` to drop it, or `snapshot.forceFullPage` to capture the whole page.
+
+### Making the blocks visible while developing
+
+The block containers are invisible by design. To see what an element screenshot actually captures, switch on the debug outline — captured blocks are outlined blue, blocks excluded via `skipSnapshot` red:
+
+- `Ctrl+Alt+B` toggles it at runtime (no reload) and remembers the choice for the next visit,
+- `?visualBlocks` enables it for a URL, `?visualBlocks=0` disables it again — combinable with `?hideMenus`.
+
+The outline is drawn as a CSS `outline`, so it takes no space and doesn't shift the layout: the page looks exactly the same with and without it. It can't affect snapshots either, because Playwright starts every run with a fresh browser context (no stored preference) and the test URLs never carry `visualBlocks`.
 
 Rules for block ids:
 
 - kebab-case (`[a-z0-9]+(-[a-z0-9]+)*`), max. 30 characters — enforced by the test.
 - Unique within a route — duplicates fail the test.
 - Hard-code ids instead of deriving them from visible labels, so text changes don't rename snapshot files.
+- Cases that are rendered more than once per route are prefixed via `blockIdPrefix` – the prefix counts towards the 30 character limit.
 - Blocks must be visible in `?hideMenus` mode and must not have zero size.
 - Overlay content (tooltips, toasts, popovers) that extends beyond the block's bounding box is clipped — such routes should use full-page screenshots instead.
 
-Routes without any `data-visual-block` container fall back to a full-page screenshot. Routes that should deliberately be captured as a whole page (composition tests) set `snapshot.forceFullPage: true` in `tests/sample-app.routes.js`.
+Every route must either contain at least one `data-visual-block` container or set `snapshot.forceFullPage: true` in `tests/sample-app.routes.js` — a route with neither fails the test. `forceFullPage` is meant for deliberate whole-page captures: overlays that extend beyond any block (dialogs, drawers, toasts, open popovers), focus-dependent content (skip-nav) and composition tests (`scenarios/*`, `form/basic`).
+
+Snapshot files are named after the route: `button/basic` → `button-basic--<block-id>.png` (element screenshots) or `button-basic.png` (full page).
 
 For details on theming see the [default theme README](../../themes/default/README.md).

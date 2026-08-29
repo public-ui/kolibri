@@ -3,6 +3,7 @@ import React from 'react';
 import { KolCard } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const CardHeadlines: FC = () => {
@@ -12,7 +13,7 @@ export const CardHeadlines: FC = () => {
 				<p>This sample shows cards with all headline levels as title.</p>
 			</SampleDescription>
 
-			<div className="w-full grid grid-cols-2 gap-4">
+			<SampleBlock id="headlines" className="w-full grid grid-cols-2 gap-4">
 				<KolCard _label="Card with headline level 0" _level={0}>
 					<p>Card contents.</p>
 				</KolCard>
@@ -40,7 +41,7 @@ export const CardHeadlines: FC = () => {
 				<KolCard _label="Card with headline level 6" _level={6}>
 					<p>Card contents.</p>
 				</KolCard>
-			</div>
+			</SampleBlock>
 		</>
 	);
 };

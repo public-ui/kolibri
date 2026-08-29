@@ -39,6 +39,7 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import { nonce } from '../../utils/dev.utils';
 import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
@@ -202,6 +203,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements WebComponent
 				ariaCurrent={this.ariaCurrent}
 				ariaCurrentValue={this.getRenderProp('ariaCurrentValue')}
 				ariaDescription={this.getRenderProp('ariaDescription')}
+				ariaDescriptionId={this.ariaDescriptionId}
 				ariaExpanded={this.getRenderProp('ariaExpanded')}
 				ariaOwns={this.getRenderProp('ariaOwns')}
 				customClass={this.getRenderProp('customClass')}
@@ -230,6 +232,8 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements WebComponent
 	// --- @State ---
 
 	@State() public ariaCurrent: string = '';
+
+	@State() public ariaDescriptionId: string = nonce();
 
 	@State() public expertSlot: boolean = false;
 

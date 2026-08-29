@@ -90,6 +90,12 @@ export type LinkApi = ApiFromConfig<
 			 */
 			ariaCurrent: string;
 			/**
+			 * DOM id of the visually-hidden span that carries the aria description. Generated
+			 * once per web component instance and referenced by the anchor's aria-describedby
+			 * attribute, since aria-description lacks screen reader support.
+			 */
+			ariaDescriptionId: string;
+			/**
 			 * Whether the expert slot should be rendered. True only when the consumer explicitly
 			 * passed an empty-string label. When the label is undefined (default ''), the expert
 			 * slot stays off and the href is used as the fallback label text.

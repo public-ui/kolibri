@@ -1,10 +1,11 @@
-import { KolButton, KolHeading } from '@public-ui/react-v19';
+import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router';
 import { useToasterService } from '../../hooks/useToasterService';
 import { fetchVariantData } from '../../shares/fetchVariantData';
 import { getCustomThemes } from '../../shares/store';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonVariants: FC = () => {
@@ -28,8 +29,7 @@ export const ButtonVariants: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="All theme exclusive button variants" />
+				<SampleBlock id="variants" heading="All theme exclusive button variants" fitContent>
 					<div className="flex flex-wrap gap-4 items-center">
 						{!Array.isArray(data) || data.length === 0 ? (
 							<p>This theme has no variants for this component.</p>
@@ -48,7 +48,7 @@ export const ButtonVariants: FC = () => {
 							})
 						)}
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

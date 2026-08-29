@@ -187,4 +187,40 @@ test.describe('kol-tabs', () => {
 			expect(finalCount).toBe(1);
 		});
 	});
+
+	test.describe('Id generation', () => {
+		test('focuses the selected tab on switch when _label contains a comma', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs, mit Hinweis">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+			await secondTab.click();
+
+			// Ids are nonce-based and never derived from `_label`, so special characters in the
+			// label cannot break the `button#...` selector lookup in focusTabById ('nonce' in
+			// test mode, random hex otherwise).
+			const tabId = await secondTab.evaluate((el) => el.id);
+			expect(tabId).toMatch(/^tabs-(nonce|[0-9a-f]+)-tab-\d+$/);
+			await expect(secondTab).toBeFocused();
+			await expect(page.locator('.kol-tabs .selected')).toHaveCount(1);
+		});
+
+		test('generates unique tab ids for multiple instances with the same label', async ({ page }) => {
+			await page.setContent(`<kol-tabs id="first" _tabs='${JSON.stringify(TABS)}' _label="Tabs">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>
+			<kol-tabs id="second" _tabs='${JSON.stringify(TABS)}' _label="Tabs">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const firstIds = await page.locator('#first [role="tab"]').evaluateAll((tabs) => tabs.map((tab) => tab.id));
+			const secondIds = await page.locator('#second [role="tab"]').evaluateAll((tabs) => tabs.map((tab) => tab.id));
+			expect(firstIds.length).toBe(2);
+			expect(secondIds.length).toBe(2);
+			expect(firstIds.some((id) => secondIds.includes(id))).toBe(false);
+		});
+	});
 });

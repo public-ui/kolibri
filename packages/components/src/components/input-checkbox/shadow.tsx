@@ -33,6 +33,7 @@ import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputCheckboxController } from './controller';
 
+import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper/CheckboxStateWrapper';
 import KolFieldControlStateWrapperFc, {
 	type FieldControlStateWrapperProps,
@@ -119,6 +120,7 @@ export class KolInputCheckbox implements ClickableElement, FocusableElement, Inp
 					}
 				},
 			},
+			infoPopover: this._infoPopover,
 		};
 	}
 
@@ -215,6 +217,11 @@ export class KolInputCheckbox implements ClickableElement, FocusableElement, Inp
 	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: Stringified<InputCheckboxIconsProp>;
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
 
 	/**
 	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.

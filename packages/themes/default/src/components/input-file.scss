@@ -21,19 +21,19 @@
 		&--is-dragover {
 			border-color: var(--color-primary);
 		}
-	}
 
-	.kol-button {
-		min-height: to-rem(40);
-		&__text {
-			white-space: nowrap;
-			border-bottom-left-radius: 0;
-			border-bottom-right-radius: calc(var(--border-radius) - 2px);
-			border-top-left-radius: 0;
-			border-top-right-radius: calc(var(--border-radius) - 2px);
+		&__button .kol-button {
+			min-height: to-rem(40);
+
+			.kol-button__text {
+				white-space: nowrap;
+				border-bottom-left-radius: 0;
+				border-bottom-right-radius: calc(var(--border-radius) - 2px);
+				border-top-left-radius: 0;
+				border-top-right-radius: calc(var(--border-radius) - 2px);
+			}
 		}
 	}
-
 	.kol-input {
 		opacity: 0;
 	}

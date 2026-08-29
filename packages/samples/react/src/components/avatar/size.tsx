@@ -1,6 +1,7 @@
 import { KolAvatar } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const AvatarSize: FC = () => (
@@ -15,12 +16,12 @@ export const AvatarSize: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="flex flex-wrap items-center gap-4">
+		<SampleBlock className="flex flex-wrap items-center gap-4" id="size" fitContent>
 			<KolAvatar style={{ width: '30px' }} _label="Elke Mustermann" />
 			<KolAvatar style={{ width: '30px', height: '45px' }} _label="Marianne" />
 			<KolAvatar style={{ width: '60px', height: '30px' }} _color="#0000FF" _label="Christian" />
 			<KolAvatar _src="assets/img_avatar.jpg" _label="Elke Mustermann" />
 			<KolAvatar style={{ width: '150px' }} _src="assets/img_avatar.jpg" _label="Elke Mustermann" />
-		</div>
+		</SampleBlock>
 	</>
 );

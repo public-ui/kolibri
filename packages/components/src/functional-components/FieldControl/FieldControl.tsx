@@ -17,6 +17,7 @@ import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
 import KolFieldControlHintFc from '../FormFieldHint';
 import KolFieldControlLabelFc from '../FormFieldLabel';
+import type { FormFieldLabelInfoPopoverProps } from '../FormFieldLabel/FormFieldLabel';
 
 const fieldControlTooltipBehaviorPool = new Map<string, TooltipBehavior>();
 
@@ -45,6 +46,7 @@ export type FieldControlProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> 
 	hint?: string;
 	label: string;
 	hideLabel?: boolean;
+	infoPopover?: FormFieldLabelInfoPopoverProps;
 	labelAlign?: LabelAlignPropType;
 	accessKey?: string;
 	shortKey?: string;
@@ -89,6 +91,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 		labelAlign,
 		renderNoTooltip,
 		hint,
+		infoPopover,
 		renderNoHint,
 		accessKey,
 		shortKey,
@@ -164,6 +167,7 @@ const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
 			label={label}
 			accessKey={accessKey}
 			shortKey={shortKey}
+			infoPopover={infoPopover}
 		/>,
 	];
 

@@ -18,7 +18,7 @@
 	"devDependencies": {
 		"@public-ui/eslint-config": "workspace:*",
 		"eslint": "9.39.5",
-		"knip": "6.32.1",
+		"knip": "6.32.3",
 		"mocha": "11.8.0",
 		"postcss-scss": "4.0.9",
 		"prettier": "3.9.6",

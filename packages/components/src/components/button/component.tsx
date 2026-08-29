@@ -62,6 +62,7 @@ import { TooltipFC } from '../../internal/functional-components/tooltip/componen
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
+import { nonce } from '../../utils/dev.utils';
 import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
@@ -78,6 +79,7 @@ export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElemen
 	@Element() protected readonly host?: HTMLKolButtonWcElement;
 	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
 	private readonly tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
+	private readonly internalDescriptionById = nonce();
 
 	/**
 	 * Sets focus on the internal element.
@@ -148,7 +150,7 @@ export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElemen
 
 	public render(): JSX.Element {
 		const hasExpertSlot = showExpertSlot(this.state._label);
-		const ariaDescription = this.state._ariaDescription?.trim();
+		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
 		const badgeText = this.state._accessKey || this.state._shortKey;
 		const isDisabled = this.state._disabled === true;
 		const hideLabel = this.state._hideLabel === true;
@@ -159,7 +161,7 @@ export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElemen
 					ref={this.ctaRef}
 					accessKey={this.state._accessKey}
 					aria-controls={this.state._ariaControls}
-					aria-description={ariaDescription || undefined}
+					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
 					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
 					aria-haspopup={this._ariaHasPopup}
 					aria-keyshortcuts={this.state._shortKey}
@@ -197,6 +199,11 @@ export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElemen
 							refFloating={this.tooltipBehavior.setTooltipElementRef}
 						/>
 					</div>
+				)}
+				{hasAriaDescription && (
+					<span class="visually-hidden" id={this.internalDescriptionById}>
+						{this.state._ariaDescription}
+					</span>
 				)}
 			</Host>
 		);

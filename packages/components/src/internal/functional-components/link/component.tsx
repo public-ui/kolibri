@@ -18,6 +18,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 		ariaControls,
 		ariaCurrent,
 		ariaDescription,
+		ariaDescriptionId,
 		ariaExpanded,
 		ariaOwns,
 		customClass,
@@ -57,7 +58,6 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 
 	const trimmedAriaDescription = ariaDescription?.trim();
 	const roleValue = role || undefined;
-
 	return (
 		<BemRootNodeFC
 			block="kol-link"
@@ -80,7 +80,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 				accessKey={accessKey || undefined}
 				aria-current={ariaCurrent || undefined}
 				aria-controls={ariaControls || undefined}
-				aria-description={trimmedAriaDescription || undefined}
+				aria-describedby={trimmedAriaDescription ? ariaDescriptionId : undefined}
 				aria-disabled={disabled ? 'true' : undefined}
 				aria-expanded={typeof ariaExpanded === 'boolean' ? String(ariaExpanded) : undefined}
 				aria-owns={ariaOwns || undefined}
@@ -107,6 +107,11 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 						refFloating={refTooltip}
 					/>
 				</div>
+			)}
+			{trimmedAriaDescription && (
+				<span class="visually-hidden" id={ariaDescriptionId}>
+					{trimmedAriaDescription}
+				</span>
 			)}
 		</BemRootNodeFC>
 	);

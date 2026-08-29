@@ -1,8 +1,19 @@
 @use '../functions/to-rem' as *;
+@use './popover-button' as *;
 
 @mixin kol-field-control-theme {
 	.kol-field-control {
 		margin: 0 0 to-rem(12) 0;
+
+		&__label {
+			@include popover-button;
+
+			color: var(--color-dark-blue-100);
+
+			display: flex;
+			margin-bottom: to-rem(4);
+			align-items: flex-end;
+		}
 
 		&__hint {
 			color: var(--color-black-70);
