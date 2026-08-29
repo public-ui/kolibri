@@ -82,7 +82,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 				aria-controls={ariaControls || undefined}
 				aria-describedby={trimmedAriaDescription ? ariaDescriptionId : undefined}
 				aria-disabled={disabled ? 'true' : undefined}
-				aria-expanded={typeof ariaExpanded === 'boolean' ? String(ariaExpanded) : undefined}
+				aria-expanded={ariaExpanded === '' ? undefined : ariaExpanded}
 				aria-owns={ariaOwns || undefined}
 				aria-label={hideLabel && typeof label === 'string' ? `${label}${isExternal ? ` (${translateOpenLinkInTab})` : ''}` : undefined}
 				aria-keyshortcuts={shortKey || undefined}
