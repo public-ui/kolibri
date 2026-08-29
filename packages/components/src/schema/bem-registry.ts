@@ -169,6 +169,20 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'has-badge' | 'hide-label'>;
 	};
+	'kol-link': {
+		elements: {
+			anchor: {
+				modifiers: null;
+			};
+			icon: {
+				modifiers: null;
+			};
+			text: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'disabled' | 'external-link' | 'hide-label' | 'inline' | 'standalone'>;
+	};
 	'kol-spin': {
 		elements: {
 			spinner: {
@@ -182,20 +196,6 @@ export type KoliBriComponentsBemSchema = {
 			};
 		};
 		modifiers: null;
-	};
-	'kol-link': {
-		elements: {
-			anchor: {
-				modifiers: null;
-			};
-			text: {
-				modifiers: null;
-			};
-			icon: {
-				modifiers: null;
-			};
-		};
-		modifiers: Set<'disabled' | 'external-link' | 'hide-label' | 'inline' | 'standalone'>;
 	};
 };
 
@@ -284,14 +284,6 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: new Set(['has-badge', 'hide-label']),
 	},
-	'kol-spin': {
-		elements: {
-			loader: { modifiers: null },
-			spinner: { modifiers: new Set(['cycle', 'dot', 'none']) },
-			'spinner-element': { modifiers: new Set(['1', '2', '3', 'neutral']) },
-		},
-		modifiers: null,
-	},
 	'kol-link': {
 		elements: {
 			anchor: { modifiers: null },
@@ -299,6 +291,14 @@ const BEM: KoliBriComponentsBemSchema = {
 			text: { modifiers: null },
 		},
 		modifiers: new Set(['disabled', 'external-link', 'hide-label', 'inline', 'standalone']),
+	},
+	'kol-spin': {
+		elements: {
+			loader: { modifiers: null },
+			spinner: { modifiers: new Set(['cycle', 'dot', 'none']) },
+			'spinner-element': { modifiers: new Set(['1', '2', '3', 'neutral']) },
+		},
+		modifiers: null,
 	},
 };
 
