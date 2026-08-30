@@ -10,7 +10,8 @@
 		--button-focus-outline-offset: -3px;
 		--button-focus-outline-width: 1px;
 
-		&:focus {
+		&:focus,
+		&__anchor:focus {
 			outline: var(--button-focus-outline-color) solid var(--button-focus-outline-width);
 			outline-offset: var(--button-focus-outline-offset);
 		}
@@ -20,7 +21,8 @@
 			--button-border-color: var(--ecl-color-primary);
 			--button-text-color: var(--ecl-color-white);
 
-			&:focus {
+			&:focus,
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-white);
 			}
 
@@ -35,7 +37,8 @@
 			--button-border-color: var(--ecl-color-primary);
 			--button-text-color: var(--ecl-color-primary);
 
-			&:focus {
+			&:focus,
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-white);
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
@@ -55,7 +58,8 @@
 			--button-border-color: transparent;
 			--button-border-width: 1px;
 
-			&:focus {
+			&:focus,
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-primary);
 				--button-focus-outline-offset: 0;
 				--button-focus-outline-width: 2px;
@@ -73,7 +77,8 @@
 			--button-border-color: transparent;
 			--button-border-width: 1px;
 
-			&:focus {
+			&:focus,
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-primary);
 				--button-focus-outline-offset: 0;
 				--button-focus-outline-width: 2px;
@@ -101,7 +106,8 @@
 			--button-border-color: var(--ecl-color-error);
 			--button-text-color: var(--ecl-color-white);
 
-			&:focus {
+			&:focus,
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-white);
 			}
 
@@ -166,7 +172,8 @@
 	--button-border-width: 1px;
 	--button-text-color: var(--ecl-color-primary);
 
-	&:focus {
+	&:focus,
+	&:focus-within {
 		--button-focus-outline-color: var(--ecl-color-primary);
 		--button-focus-outline-offset: 0;
 		--button-focus-outline-width: 2px;
