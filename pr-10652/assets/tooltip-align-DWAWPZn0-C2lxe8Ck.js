@@ -1,1 +1,0 @@
-import"./index-aRATu4Pl.js";import{r as e}from"./align-BNmcYY75-BGN6tpNG.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};

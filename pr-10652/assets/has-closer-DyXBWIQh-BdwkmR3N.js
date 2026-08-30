@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-aRATu4Pl.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
