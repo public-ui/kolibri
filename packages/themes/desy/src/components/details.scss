@@ -8,7 +8,7 @@
 	@include icon;
 
 	.kol-details {
-		@include kol-link('kol-details__heading-button');
+		@include kol-link('kol-details__heading-button', $anchor-scoped: false);
 		&__heading-button {
 			.kol-span {
 				&__container {

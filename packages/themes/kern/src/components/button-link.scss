@@ -1,7 +1,7 @@
 @use '../mixins/link.mixin' as *;
 
 @layer kol-theme-component {
-	@include kol-link('kol-button');
+	@include kol-link('kol-button', $anchor-scoped: false);
 
 	.kol-button {
 		--color-mute-variant: var(--kern-color-feedback-info-background);

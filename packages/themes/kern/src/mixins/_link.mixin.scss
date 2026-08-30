@@ -1,7 +1,165 @@
 @use '~@public-ui/components/index' as *;
 @use '~@kern-ux/native/src/scss/core/utilities/mixins' as *;
 
-@mixin kol-link($block-classname: 'kol-link') {
+/*
+ * Interactive link styles. With $anchor-scoped (default) they attach to the inner
+ * `kol-link__anchor` of the skeleton DOM. Otherwise they attach to the class carrier
+ * itself, whose element is the interactive one (e.g. `kol-button`, the tree-item label
+ * spans), matching the component DOM before the kol-link skeleton migration.
+ */
+@mixin kol-link-interactive($block-classname, $anchor-scoped: true) {
+	color: var(--kern-color-action-default);
+
+	text-decoration-line: underline;
+	text-decoration-skip-ink: auto;
+	text-decoration-style: solid;
+	text-decoration-thickness: var(--kern-1);
+	text-underline-offset: var(--kern-metric-space-2x-small);
+	text-underline-position: from-font;
+
+	.kol-span {
+		&__container {
+			gap: var(--kern-metric-space-x-small);
+		}
+	}
+
+	.kol-icon {
+		color: var(--kern-color-action-default);
+
+		font-size: var(--kern-metric-dimension-default);
+	}
+
+	&:has(.kol-icon) {
+		text-decoration: none;
+
+		&:active,
+		&:hover {
+			.kol-span__label {
+				text-decoration-line: underline;
+				text-decoration-skip-ink: auto;
+				text-decoration-style: solid;
+				text-decoration-thickness: var(--kern-3);
+				text-underline-offset: var(--kern-metric-space-2x-small);
+				text-underline-position: from-font;
+			}
+		}
+
+		.kol-link__text,
+		.kol-span__label {
+			text-decoration: none;
+		}
+	}
+
+	&:visited {
+		color: var(--kern-color-action-visited);
+
+		.kol-icon {
+			color: var(--kern-color-action-visited);
+		}
+	}
+
+	@if $anchor-scoped {
+		.#{$block-classname}:not(.#{$block-classname}--disabled) & {
+			&:focus {
+				outline: none;
+			}
+
+			&:hover {
+				text-decoration-thickness: var(--kern-3);
+			}
+
+			&:active {
+				color: var(--kern-color-action-default,);
+				text-decoration-thickness: var(--kern-3);
+
+				.kern-icon {
+					color: var(--kern-color-action-default);
+				}
+			}
+
+			&:visited {
+				color: var(--kern-color-action-visited);
+
+				.kern-icon {
+					color: var(--kern-color-action-visited);
+				}
+			}
+		}
+
+		.#{$block-classname}:not(.#{$block-classname}--stretched) & {
+			&:focus-visible {
+				box-shadow:
+					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 2px var(--kern-color-action-on-default),
+					/* TODO: Variable mit Design überprüfen */
+						var(--kern-metric-space-none, 0)
+						var(--kern-metric-space-none, 0)
+						var(--kern-metric-space-none, 0)
+						4px
+						var(--kern-color-action-focus-border-inside),
+					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 6px var(--kern-color-action-focus-border-outside);
+				outline-color: transparent;
+				border-radius: var(--kern-metric-border-radius-small, 0.125rem);
+				position: relative;
+				z-index: 1;
+			}
+		}
+
+		.#{$block-classname}--small & {
+			gap: var(--kern-metric-space-2x-small);
+		}
+	} @else {
+		&:not(&--disabled) {
+			&:focus {
+				outline: none;
+			}
+
+			&:hover {
+				text-decoration-thickness: var(--kern-3);
+			}
+
+			&:active {
+				color: var(--kern-color-action-default,);
+				text-decoration-thickness: var(--kern-3);
+
+				.kern-icon {
+					color: var(--kern-color-action-default);
+				}
+			}
+
+			&:visited {
+				color: var(--kern-color-action-visited);
+
+				.kern-icon {
+					color: var(--kern-color-action-visited);
+				}
+			}
+		}
+
+		&:not(&--stretched) {
+			&:focus-visible {
+				box-shadow:
+					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 2px var(--kern-color-action-on-default),
+					/* TODO: Variable mit Design überprüfen */
+						var(--kern-metric-space-none, 0)
+						var(--kern-metric-space-none, 0)
+						var(--kern-metric-space-none, 0)
+						4px
+						var(--kern-color-action-focus-border-inside),
+					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 6px var(--kern-color-action-focus-border-outside);
+				outline-color: transparent;
+				border-radius: var(--kern-metric-border-radius-small, 0.125rem);
+				position: relative;
+				z-index: 1;
+			}
+		}
+
+		&--small {
+			gap: var(--kern-metric-space-2x-small);
+		}
+	}
+}
+
+@mixin kol-link($block-classname: 'kol-link', $anchor-scoped: true) {
 	.#{$block-classname} {
 		@include normalize;
 		@include body-default;
@@ -14,7 +172,6 @@
 		}
 
 		&--small {
-			gap: var(--kern-metric-space-x-small);
 			@include body-small;
 
 			.kol-icon {
@@ -25,101 +182,16 @@
 			}
 		}
 
-		&--external-link .#{$block-classname}__anchor {
-			flex-direction: row-reverse;
-		}
-
-		&__anchor {
-			color: var(--kern-color-action-default);
-
-			text-decoration-line: underline;
-			text-decoration-skip-ink: auto;
-			text-decoration-style: solid;
-			text-decoration-thickness: var(--kern-1);
-			text-underline-offset: var(--kern-metric-space-2x-small);
-			text-underline-position: from-font;
-
-			.kol-span {
-				&__container {
-					gap: var(--kern-metric-space-x-small);
-				}
+		@if $anchor-scoped {
+			&--external-link .#{$block-classname}__anchor {
+				flex-direction: row-reverse;
 			}
 
-			.kol-icon {
-				color: var(--kern-color-action-default);
-
-				font-size: var(--kern-metric-dimension-default);
+			&__anchor {
+				@include kol-link-interactive($block-classname);
 			}
-
-			&:has(.kol-icon) {
-				text-decoration: none;
-
-				&:active,
-				&:hover {
-					.kol-span__label {
-						text-decoration-line: underline;
-						text-decoration-skip-ink: auto;
-						text-decoration-style: solid;
-						text-decoration-thickness: var(--kern-3);
-						text-underline-offset: var(--kern-metric-space-2x-small);
-						text-underline-position: from-font;
-					}
-				}
-
-				.kol-link__text,
-				.kol-span__label {
-					text-decoration: none;
-				}
-			}
-
-			&:visited {
-				color: var(--kern-color-action-visited);
-
-				.kol-icon {
-					color: var(--kern-color-action-visited);
-				}
-			}
-
-			.#{$block-classname}:not(.#{$block-classname}--disabled) & {
-				&:focus {
-					outline: none;
-				}
-
-				&:hover {
-					text-decoration-thickness: var(--kern-3);
-				}
-
-				&:active {
-					color: var(--kern-color-action-default,);
-					text-decoration-thickness: var(--kern-3);
-
-					.kern-icon {
-						color: var(--kern-color-action-default);
-					}
-				}
-
-				&:visited {
-					color: var(--kern-color-action-visited);
-
-					.kern-icon {
-						color: var(--kern-color-action-visited);
-					}
-				}
-			}
-
-			.#{$block-classname}:not(.#{$block-classname}--stretched) & {
-				&:focus-visible {
-					box-shadow:
-						var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 2px var(--kern-color-action-on-default),
-						/* TODO: Variable mit Design überprüfen */ var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 4px
-							var(--kern-color-action-focus-border-inside),
-						var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 6px var(--kern-color-action-focus-border-outside);
-					outline-color: transparent;
-					border-radius: var(--kern-metric-border-radius-small, 0.125rem);
-					position: relative;
-					z-index: 1;
-				}
-			}
+		} @else {
+			@include kol-link-interactive($block-classname, false);
 		}
 	}
 }
