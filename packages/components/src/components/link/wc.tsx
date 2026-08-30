@@ -76,6 +76,10 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements WebComponent
 
 	public componentWillLoad(): void {
 		this.initRenderProps(linkPropsConfig);
+		// The props config seeds `tabIndex` with its default `0`. An unset tabindex must not
+		// render as `tabindex="0"` — links are natively tabbable and the attribute would trigger
+		// focus outlines that the predecessor did not draw.
+		this.setRenderProp('tabIndex', undefined as unknown as number);
 
 		accessKeyProp.apply(this._accessKey, (v) => this.setRenderProp('accessKey', v));
 		ariaControlsProp.apply(this._ariaControls, (v) => this.setRenderProp('ariaControls', v));
@@ -94,7 +98,11 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements WebComponent
 		linkCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
 		linkRoleProp.apply(this._role, (v) => this.setRenderProp('role', v));
 		shortKeyProp.apply(this._shortKey, (v) => this.setRenderProp('shortKey', v));
-		tabIndexProp.apply(this._tabIndex, (v) => this.setRenderProp('tabIndex', v));
+		// An unset tabindex must not render as `tabindex="0"` — links are natively tabbable and
+		// the attribute would trigger focus outlines that the predecessor did not draw.
+		if (typeof this._tabIndex === 'number') {
+			tabIndexProp.apply(this._tabIndex, (v) => this.setRenderProp('tabIndex', v));
+		}
 		linkTargetProp.apply(this._target, (v) => this.setRenderProp('target', v));
 		this.applyTooltipAlign(this._tooltipAlign);
 		variantProp.apply(this._variant, (v) => this.setRenderProp('variant', v));

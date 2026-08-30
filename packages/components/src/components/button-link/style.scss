@@ -5,6 +5,16 @@
 @layer kol-component {
 	@include kol-link-styles('kol-button');
 
+	/* The button DOM has no `__anchor` element, so the alignment declarations that the shared
+	   link mixin now scopes to `&__anchor` must be applied to the button root itself
+	   (as they were before the skeleton migration). */
+	.kol-button {
+		align-items: baseline;
+		place-items: center;
+		text-align: left;
+		text-decoration-line: none;
+	}
+
 	// Inline may have the height and width of the flowing text and do not necessarily have to be 44px high or width.
 	.kol-button--inline {
 		min-width: unset;

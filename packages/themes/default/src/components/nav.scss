@@ -41,6 +41,15 @@
 
 				text-decoration: none;
 
+				/* The link skeleton renders the entry as `.kol-link` wrapper inside the entry element.
+				   The wrapper must fill the entry so that trailing icons (expand) stay at the row end. */
+				flex: 1 1 auto;
+
+				/* The UA default underline sits on the anchor itself. */
+				.kol-link__anchor {
+					text-decoration: none;
+				}
+
 				&:focus-visible {
 					@include focus-outline;
 				}
