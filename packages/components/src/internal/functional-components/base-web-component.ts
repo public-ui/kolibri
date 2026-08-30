@@ -1,17 +1,5 @@
 import type { ComponentApi, InternalOf, PropsConfigShape, ResolvedInputProps, ResolvedProps, StateAccess, StrictFields } from './generic-types';
-
-/**
- * Builds a record of default property values from a props configuration.
- * Iterates over all required and optional property definitions and
- * collects their initial values.
- */
-function buildDefaultPropsFromConfig(config: PropsConfigShape): Record<string, unknown> {
-	const defaults: Record<string, unknown> = {};
-	for (const def of [...(config.required ?? []), ...(config.optional ?? [])]) {
-		defaults[def.propName] = def.getDefaultValue();
-	}
-	return defaults;
-}
+import { buildDefaultPropsFromConfig } from './props-from-config';
 
 /**
  * Throws when a stateless behavior accidentally attempts to read or write state.

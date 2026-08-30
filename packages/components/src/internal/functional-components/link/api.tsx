@@ -68,9 +68,9 @@ export type LinkApi = ApiFromConfig<
 	{
 		Callbacks: {
 			/**
-			 * Click handler bound to the anchor element. Implemented by the controller; the
-			 * `dispatchClick` function (supplied by the web component for host access) is used
-			 * to emit the custom `KolEvent.click` event.
+			 * Click handler bound to the anchor element. Implemented by the web component
+			 * (`handleAnchorClick`), which also dispatches the custom `KolEvent.click` event
+			 * on the host element.
 			 */
 			anchorClick: (event: Event) => void;
 		};
