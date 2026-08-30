@@ -51,17 +51,18 @@ adjust styles until they match.**
 
 - Metric (cumulative visual delta vs develop, run at repo root):
   `git diff --name-only origin/develop...HEAD -- '*.png' | wc -l`
-- Status as of 2026-08-30 (Abend): **default 0** (294/294 grün via lokaler Docker-Pipeline
-  `node scripts/snapshots-docker.mjs default --check`, Snapshots auf develop-Stand
-  zurückgestellt und mit dem Fix committet). Offen: bwst 31, ecl 27, kern 22, desy 21 —
-  Summe **101**.
+- Status as of 2026-08-30 (Nacht): **ALLE THEMES 0** — default, bwst, ecl, kern, desy je
+  294/294 grün via lokaler Docker-Pipeline (`node scripts/snapshots-docker.mjs <theme> --check`);
+  sämtliche Theme-Snapshots stehen auf develop-Stand. `git diff origin/develop..HEAD -- '*.png'`
+  = **0**. Commits: 016038670a (default), c40ce57340 (bwst), 4e9106f6d8 (ecl),
+  e4fceaeb97+5482632f2c (kern), 8c30ed9b75 (desy).
 - Iteration loop per adjustment (lokale Pipeline, ~6 min/Theme, deterministisch wie CI):
   1. Vor jedem Lauf root-Cleanup im Volume:
      `docker run --rm -u 0 -v kolibri-visual-tests-work:/work mcr.microsoft.com/playwright:v1.60.0-noble bash -c 'rm -rf /work/repo/packages/themes/<theme>/test-results /work/repo/packages/themes/<theme>/playwright-report'`
   2. `node scripts/snapshots-docker.mjs <theme> --check` — Fehlliste nehmen.
   3. Render vergleichen (`git show origin/develop:<png> > /tmp/dev.png`), CSS in der
-     richtigen Schicht anpassen (Theme-Mixin vs. Basis `_link.mixin.scss`; non-link-Blöcke
-     brauchen `$anchor-scoped: false` in desy/kern).
+     richtigen Schicht anpassen (Theme-Mixin vs. Basis; non-link-Blöcke brauchen
+     `$anchor-scoped: false` in desy/kern/ecl).
   4. Bei grün: Theme-PNGs auf develop-Stand stellen (`git checkout origin/develop -- packages/themes/<theme>/snapshots`), mit dem Fix committen — nur wenn der Check grün ist!
   5. Alternative zur CI: `gh workflow run update-snapshots.yml --ref <branch>` bleibt
      für den finalen Merge-Vorlauf.
@@ -119,11 +120,25 @@ Continue the skeleton migration for further legacy components (~80% pending); se
   see `linkRoleProp` and `ariaExpandedProp`.
 - **Theme mixin reuse**: a mixin included with a non-link block class (e.g. `kol-button`)
   must not rely on `kol-link__anchor` children — use the `$anchor-scoped: false` mode
-  (desy/kern `kol-link` mixins) or verify the target DOM first.
+  (desy/kern/ecl `kol-link` mixins) or verify the target DOM first.
 - `tsc` failures about missing `HTMLKol*Element` types usually mean stale generated
   `components.d.ts` — run the components build once.
 - Nested internal `-wc` tags are rendered by peer components; grep the tag constant
   (e.g. `KolLinkWcTag`) before planning removals.
+- **Sass `X &` in mixins**: inside a nested block `&` is the full parent path —
+  `X &` silently produces descendant selectors (`​.kol-link__anchor .kol-link …`) that
+  never match. Prefer plain `&:…` on the carrier level or `@at-root`.
+- **Proben müssen Route-Viewports beachten**: einige Routen setzen
+  `snapshot.viewportSize` (breadcrumb 600, narrow-320-Blöcke). Eigene Playwright-Proben
+  ohne diese Option rendern ein anderes Layout als der Check und führen in die Irre.
+- **Mirror löscht Fremddateien**: `mirror-dir.mjs` entfernt im Volume alles, was im
+  Quell-Repo fehlt — temporäre probe.spec.js NACH dem Spiegeln ins Volume schreiben.
+- **`:focus-within` statt `:focus` am Wrapper**: der skeleton-Wrapper ist nie fokussiert;
+  Fokus-Optik (Outline/box-shadow/Füllung) braucht `:focus-within`-Varianten bzw.
+  `__anchor:focus`-Unterdrückung der UA-Outline — je Theme-Button-Mixin.
+- Root-Stile (padding, Farbe, Marker-::before) müssen im Zweifel auf den Anker wandern,
+  wenn develop sie auf dem anchor-as-root trug — sonst verschieben sich Fokus-Ring-Box
+  und Zeilenhöhen (kern skip-nav/breadcrumb).
 
 ## Validation commands (run before every commit)
 

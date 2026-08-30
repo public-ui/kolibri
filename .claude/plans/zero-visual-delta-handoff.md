@@ -1,4 +1,11 @@
-# Handoff: Zero-Visual-Delta für Default-Theme-Snapshots (PR #10652) — DONE
+# Handoff: Zero-Visual-Delta für ALLE Themes (PR #10652) — DONE
+
+> **Finale Lage (2026-08-30, Nacht):** default, bwst, ecl, kern, desy — jedes Theme
+> 294/294 grün gegen die develop-Baselines in der lokalen Docker-Pipeline
+> (`node scripts/snapshots-docker.mjs <theme> --check`).
+> `git diff origin/develop..HEAD -- '*.png'` = **0**. Fix-Commits: 016038670a (default),
+> c40ce57340 (bwst), 4e9106f6d8 (ecl), e4fceaeb97 + 5482632f2c (kern), 8c30ed9b75 (desy).
+> Ursachen-Katalog je Theme im Companion-Plan (Pitfalls).
 
 > Stand: 2026-08-30 · Branch `refactor/migrate-kol-link-skeleton-2th`
 > **Erledigt am 2026-08-30:** `node scripts/snapshots-docker.mjs default --check` → **294 passed**, Exit 0.
