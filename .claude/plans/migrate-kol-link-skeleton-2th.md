@@ -90,12 +90,25 @@ toolbar, table-stateless, nav, breadcrumb, tree-item, link-button.
 
 ### 2. Decision points (need repo-owner decision, do not implement unilaterally)
 
-- `tabindex="0"` is now always rendered on link anchors (`tabIndexProp` default `0`).
-  Either accept + document the new DOM contract, or switch to the `''` sentinel pattern.
+- **tabIndex (partially resolved, review #10716 §3):** unset `_tabIndex` no longer renders
+  `tabindex="0"` — done in `016038670a` via double-cast + factory bypass in
+  `component.tsx`/`wc.tsx` (duplicated). Open owner decision: refactor to the `''` sentinel
+  pattern in `tabIndexProp` itself (like `ariaExpandedProp`), which removes both copies and
+  the cast. The entry below is the outdated original text, kept for the record:
+  ~~`tabindex="0"` is now always rendered on link anchors (`tabIndexProp` default `0`).~~
 - `ariaCurrentValue` is destructured but unused in `LinkFC` (aria-current computation
   happens in the WCs via `onLocationChange`). Drop from the FC face or move computation.
-- bwst `mixins/link.scss` gained `gap: to-rem(8)` on `__anchor` — confirm intent
-  (harmonization with default theme or accidental visual delta).
+- ~~bwst `mixins/link.scss` gained `gap: to-rem(8)` on `__anchor`~~ — RESOLVED: the gap was
+  an accidental visual delta and broke link/icons, link/target, quote, table, modal against
+  develop; removed in `c40ce5734` (bwst 294/294 green without it).
+- **Open regression issues not yet tracked here (review #10716 §5):** #10687
+  (`setEventTarget`/`event.target`), #10688 (`_download=""` triggers no download —
+  `internal/functional-components/link/component.tsx:52`), #10689 (disabled on block
+  modifier vs `aria-disabled` on anchor), #10690 (`a11yHint`/`uiUxHint`). Owner: decide
+  "before merge" vs "after merge, consciously" for each.
+- **Test coverage for `kol-link-wc` (review #10716 §4.2):** `link/test/snapshot.spec.tsx`
+  renders only `[KolLink]`; the path all 8 consumers use has no unit test. Restore before
+  starting the consumer migration (Open work §1).
 
 ### 3. CI baselines before merge — DONE (2026-08-30)
 
