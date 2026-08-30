@@ -72,6 +72,7 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 	defaultValue: InternalPropValue<P>,
 	normalize: (value: unknown) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>) => boolean = () => true,
+	options?: { required?: boolean },
 ): PropDefinition<InternalPropValue<P>, P> {
 	return {
 		propName,
@@ -80,6 +81,9 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 		validate,
 		apply(value, callback) {
 			if (value === undefined || value === null) {
+				if (options?.required) {
+					devWarning(`The required property '_${propName}' did not receive a value. The default value is used instead.`);
+				}
 				if (this.validate(defaultValue)) {
 					callback(defaultValue);
 				} else {
