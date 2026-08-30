@@ -19,9 +19,18 @@ explicitly accepted in the allowlist there).
 Architecture spec: `packages/components/src/components/_skeleton/ARC42.md` (leading),
 tutorial: `docs/tutorials/NEW_COMPONENT.md`.
 
-## Current state (2026-08-30)
+## Current state (2026-08-30, Abend)
 
 Branch contains, on top of the develop merge (`01c202b4`):
+
+**Zero-Visual-Delta default theme: DONE (2026-08-30, commit `016038670a`).**
+`node scripts/snapshots-docker.mjs default --check` → 294/294 passed, Exit 0; the 26
+default-theme PNGs are restored to develop state (committed with the fix). Remaining
+open deltas vs develop: bwst 31, ecl 27, kern 22, desy 21 (default 0). Fixes: shared
+mixins `__anchor`-scoping (button/link), tabIndex sentinel in `link/component.tsx` +
+`wc.tsx` (no `tabindex="0"` when unset), skip-nav `:focus-within`, tree-item full-width
+anchor + `padding-right` on `__anchor`, SpanFC empty-icon guard, default-theme
+nav/tree-item/button focus selectors, updated link hydrate snapshots.
 
 | Commit     | Content                                                                                                                                                                                                                                                                     |
 | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -42,21 +51,20 @@ adjust styles until they match.**
 
 - Metric (cumulative visual delta vs develop, run at repo root):
   `git diff --name-only origin/develop...HEAD -- '*.png' | wc -l`
-- Baseline as of 2026-08-30: **127** changed PNGs ≈ 25 test scenarios × 5 themes
-  (link, link-button, button-link, nav, tree, toolbar, skip-nav, scenarios/focus …).
-- Iteration loop per adjustment:
-  1. Identify a differing scenario and compare renders:
-     `git show origin/develop:<png-path> > /tmp/dev.png` next to the working-tree PNG
-     (both can be opened as images; the CI runner is deterministic, so differences are
-     real layout/style deltas, not rendering noise).
-  2. Adjust CSS — in the affected theme mixin (`packages/themes/<theme>/src/mixins/link*`
-     or component scss) or, when the cause is the shared skeleton DOM, in the basis layer
-     `packages/components/src/components/@shared/_link.mixin.scss`.
-     Mind the mixin-reuse rule: non-link blocks need `$anchor-scoped: false` (desy/kern).
-  3. Validate locally: theme stylelint, components unit tests, `pnpm format`.
-  4. Push, re-run `gh workflow run update-snapshots.yml --ref <branch>`, wait green,
-     pull, re-measure. PNGs that become identical to develop drop out of the diff
-     automatically (the workflow only commits changed files).
+- Status as of 2026-08-30 (Abend): **default 0** (294/294 grün via lokaler Docker-Pipeline
+  `node scripts/snapshots-docker.mjs default --check`, Snapshots auf develop-Stand
+  zurückgestellt und mit dem Fix committet). Offen: bwst 31, ecl 27, kern 22, desy 21 —
+  Summe **101**.
+- Iteration loop per adjustment (lokale Pipeline, ~6 min/Theme, deterministisch wie CI):
+  1. Vor jedem Lauf root-Cleanup im Volume:
+     `docker run --rm -u 0 -v kolibri-visual-tests-work:/work mcr.microsoft.com/playwright:v1.60.0-noble bash -c 'rm -rf /work/repo/packages/themes/<theme>/test-results /work/repo/packages/themes/<theme>/playwright-report'`
+  2. `node scripts/snapshots-docker.mjs <theme> --check` — Fehlliste nehmen.
+  3. Render vergleichen (`git show origin/develop:<png> > /tmp/dev.png`), CSS in der
+     richtigen Schicht anpassen (Theme-Mixin vs. Basis `_link.mixin.scss`; non-link-Blöcke
+     brauchen `$anchor-scoped: false` in desy/kern).
+  4. Bei grün: Theme-PNGs auf develop-Stand stellen (`git checkout origin/develop -- packages/themes/<theme>/snapshots`), mit dem Fix committen — nur wenn der Check grün ist!
+  5. Alternative zur CI: `gh workflow run update-snapshots.yml --ref <branch>` bleibt
+     für den finalen Merge-Vorlauf.
 - Expected root causes to investigate first (skeleton DOM adds a `div.kol-link` wrapper
   around the anchor that the old anchor-as-root did not have): wrapper
   `display:inline-flex` + `max-width:fit-content` vs old inline anchor sizing, anchor
