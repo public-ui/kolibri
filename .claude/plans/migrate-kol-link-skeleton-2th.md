@@ -12,6 +12,10 @@ functional component directly; the transitional `kol-link-wc` wrapper
 style its internal `.kol-link*` classes from their own stylesheets. Once every consumer
 renders `LinkFC` itself, `wc.tsx` is deleted.
 
+**Acceptance criterion: the migration is visually invisible** — see "0. GOAL" under
+Open work: zero changed snapshot PNGs vs develop in the PR #10652 diff (or diffs
+explicitly accepted in the allowlist there).
+
 Architecture spec: `packages/components/src/components/_skeleton/ARC42.md` (leading),
 tutorial: `docs/tutorials/NEW_COMPONENT.md`.
 
@@ -29,6 +33,38 @@ Branch contains, on top of the develop merge (`01c202b4`):
 | `f11a38e4` | CI snapshot baselines updated via `update-snapshots.yml` (run 33298340921, all jobs green): 127 PNGs across all five themes, 51 link-related                                                                                                                                |
 
 ## Open work, in priority order
+
+### 0. GOAL (acceptance criterion for the whole PR): zero visual delta
+
+**Every snapshot PNG in the PR diff (https://github.com/public-ui/kolibri/pull/10652/files)
+must look exactly like on develop. As long as PNGs differ, the CSS is not finished —
+adjust styles until they match.**
+
+- Metric (cumulative visual delta vs develop, run at repo root):
+  `git diff --name-only origin/develop...HEAD -- '*.png' | wc -l`
+- Baseline as of 2026-08-30: **127** changed PNGs ≈ 25 test scenarios × 5 themes
+  (link, link-button, button-link, nav, tree, toolbar, skip-nav, scenarios/focus …).
+- Iteration loop per adjustment:
+  1. Identify a differing scenario and compare renders:
+     `git show origin/develop:<png-path> > /tmp/dev.png` next to the working-tree PNG
+     (both can be opened as images; the CI runner is deterministic, so differences are
+     real layout/style deltas, not rendering noise).
+  2. Adjust CSS — in the affected theme mixin (`packages/themes/<theme>/src/mixins/link*`
+     or component scss) or, when the cause is the shared skeleton DOM, in the basis layer
+     `packages/components/src/components/@shared/_link.mixin.scss`.
+     Mind the mixin-reuse rule: non-link blocks need `$anchor-scoped: false` (desy/kern).
+  3. Validate locally: theme stylelint, components unit tests, `pnpm format`.
+  4. Push, re-run `gh workflow run update-snapshots.yml --ref <branch>`, wait green,
+     pull, re-measure. PNGs that become identical to develop drop out of the diff
+     automatically (the workflow only commits changed files).
+- Expected root causes to investigate first (skeleton DOM adds a `div.kol-link` wrapper
+  around the anchor that the old anchor-as-root did not have): wrapper
+  `display:inline-flex` + `max-width:fit-content` vs old inline anchor sizing, anchor
+  `flex:1` inside it, baseline/`align-items` interplay with `line-height`, `--standalone`
+  `min-height` via `align-items:stretch`, tooltip positioning relative to the anchor.
+- Escape valve: a diff is only acceptable when it is an _intended_ change, explicitly
+  listed here with reason and owner approval (currently: none). Everything else counts
+  as open work. Do not weaken this by bulk-accepting baseline diffs.
 
 ### 1. Migrate consumers off `kol-link-wc` (the strategic step)
 
