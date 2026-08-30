@@ -86,24 +86,6 @@
 			}
 		}
 
-		.#{$block-classname}:not(.#{$block-classname}--stretched) & {
-			&:focus-visible {
-				box-shadow:
-					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 2px var(--kern-color-action-on-default),
-					/* TODO: Variable mit Design überprüfen */
-						var(--kern-metric-space-none, 0)
-						var(--kern-metric-space-none, 0)
-						var(--kern-metric-space-none, 0)
-						4px
-						var(--kern-color-action-focus-border-inside),
-					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 6px var(--kern-color-action-focus-border-outside);
-				outline-color: transparent;
-				border-radius: var(--kern-metric-border-radius-small, 0.125rem);
-				position: relative;
-				z-index: 1;
-			}
-		}
-
 		.#{$block-classname}--small & {
 			/* body-small recolours the whole link on the class carrier — the anchor needs the same
 			   colour, otherwise the interactive default colour would win over the inherited one. */
@@ -193,6 +175,31 @@
 
 			&__anchor {
 				@include kol-link-interactive($block-classname);
+
+				/* The external-link icon aligns to the top edge, as it did inside the
+				   anchor-as-root (the anchor baseline-centres it otherwise). */
+				> .kol-link__icon {
+					align-self: flex-start;
+				}
+			}
+
+			/* The focus ring encloses the whole carrier box (padding included), like the
+			   anchor-as-root did before the skeleton migration. :focus-within also matches when
+			   the inner anchor is the focused element. */
+			&:not(&--stretched):focus-within {
+				box-shadow:
+					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 2px var(--kern-color-action-on-default),
+					/* TODO: Variable mit Design überprüfen */
+						var(--kern-metric-space-none, 0)
+						var(--kern-metric-space-none, 0)
+						var(--kern-metric-space-none, 0)
+						4px
+						var(--kern-color-action-focus-border-inside),
+					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 6px var(--kern-color-action-focus-border-outside);
+				outline-color: transparent;
+				border-radius: var(--kern-metric-border-radius-small, 0.125rem);
+				position: relative;
+				z-index: 1;
 			}
 		} @else {
 			@include kol-link-interactive($block-classname, false);

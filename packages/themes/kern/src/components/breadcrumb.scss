@@ -34,6 +34,10 @@
 
 	.kol-link {
 		border-radius: var(--kern-metric-border-radius-large);
+
+		/* The padding sits on the anchor below; the normalized wrapper padding would enlarge
+		   the link box beyond the pre-migration anchor-as-root box. */
+		padding: 0;
 		align-items: center;
 		justify-content: center;
 
@@ -50,6 +54,7 @@
 		color: var(--kern-color-layout-text-default);
 		border-radius: var(--kern-metric-border-radius-large);
 		padding: $vertical-padding $horizontal-padding;
+		align-items: center;
 
 		&:hover {
 			color: var(--kern-color-action-default);
