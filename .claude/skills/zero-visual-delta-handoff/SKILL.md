@@ -19,7 +19,7 @@ Bewährt in: kolibri kol-link-Skeleton-Migration (5 Themes, je 294 Szenarien, 12
 1. **Lokale deterministische Prüfpipeline finden oder bauen** — nicht über die CI laufen! Suchen nach Skripten wie `scripts/*snapshot*`, Docker-basierten Visual-Test-Setup oder Playwright-Konfiguration mit fixem Runner-Image. Muss denselben Renderer wie die CI nutzen (Browser+Version+OS), sonst sind Vergleiche wertlos. Ohne so eine Pipeline: erst die Pipeline bauen — sie amortisiert sich ab dem zweiten Fix.
 2. **Ziel-Baselines vor den Läufen auf Base-Stand stellen**: `git checkout origin/<base> -- <snapshot-dir>` — dann misst der Check exakt das Zielkriterium (aktueller Code vs. Base-Baseline). NICHT `--update-snapshots` benutzen: Das erzeugt neue Baselines und verwischt das Kriterium.
 3. **Pixel-Werkzeuge bereithalten** (PIL/python genügt):
-   - Differenz-Prothertzähler: geänderte Pixel, Bounding-Box, Zeilenbänder mit Farbproben (`exp=(r,g,b) act=(r,g,b)`) — zeigt Verschiebung vs. Fehlen vs. Farbwechsel.
+   - Pixel-Differenzzähler: geänderte Pixel, Bounding-Box, Zeilenbänder mit Farbproben (`exp=(r,g,b) act=(r,g,b)`) — zeigt Verschiebung vs. Fehlen vs. Farbwechsel.
    - Farbraster-Ausdruck (Bild als Buchstabenraster, Zelle 3–8 px): macht auch ohne Bildbetrachtung sichtbar, WO Inhalte stehen.
 4. **Soll-App parallel bereithalten**: `git worktree add <dir> origin/<base>` + dieselbe Pipeline dagegen bauen. Damit sind DOM-Proben im Seitenvergleich möglich (Soll vs. Ist unter identischen Bedingungen).
 5. **DOM-Probe-Vorlage**: kleines Playwright-Skript, das pro Host den Schatten-Baum läuft und pro Element `getBoundingClientRect()` + `getComputedStyle()` (display, gap, padding, margin, outline, boxShadow, color, font-size, flex-direction) druckt. Selektoren: IMMER vom Host (`host.shadowRoot`) aus laufen — `document.querySelectorAll` durchdringt keine Shadow-Roots, und `querySelector(".a, .b")` liefert bei Skeleton-DOM gern den Wrapper statt des Ankers.
@@ -28,7 +28,7 @@ Bewährt in: kolibri kol-link-Skeleton-Migration (5 Themes, je 294 Szenarien, 12
 
 1. Check laufen lassen, Fehlliste nehmen (vor jedem Lauf Ergebnisordner als root aufräumen, sonst EACCES im Reporter).
 2. Differenzpixel analysieren (Werkzeug 3): LIEGT etwas falsch (Verschiebung um n px), FEHLT etwas (weiß statt Farbe) oder IST etwas ZU VIEL? Erst diese Frage beantworten, dann CSS anfassen.
-3. Hypothese: betroffene Elemente in Ist- und Soll-App probe'n (Werkzeug 5). **Route-Optionen beachten!** Viele Sample-Routen setzen `viewportSize` (z. B. 600 statt 800) — eine Probe ohne Route-Viewport rendert ein anderes Layout als der Check und führt stundenlang in die Irre.
+3. Hypothese: betroffene Elemente in Ist- und Soll-App proben (Werkzeug 5). **Route-Optionen beachten!** Viele Sample-Routen setzen `viewportSize` (z. B. 600 statt 800) — eine Probe ohne Route-Viewport rendert ein anderes Layout als der Check und führt stundenlang in die Irre.
 4. Fix in der richtigen Schicht (Theme-Mixin vs. Consumer-Datei vs. Basis), Fix-Batches nach Ursache bündeln, nicht pro Einzelszenario.
 5. Re-Check. Grün → Snapshots auf Base-Stand committen (falls noch nicht) + Quell-Fix committen.
 
