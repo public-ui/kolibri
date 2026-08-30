@@ -19,16 +19,18 @@
 					.kol-span__label {
 						font-weight: bold;
 					}
+				}
 
-					&::before {
-						display: inline-block;
-						margin-right: to-rem(4);
-						padding: 0 to-rem(3);
+				/* The list marker sat inside the anchor-as-root before the skeleton migration — it has
+				   to be attached to the anchor, otherwise it inherits the alert text colour. */
+				.kol-link__anchor::before {
+					display: inline-block;
+					margin-right: to-rem(4);
+					padding: 0 to-rem(3);
 
-						content: '\ea0e';
-						font-family: desy-icons;
-						font-weight: 900;
-					}
+					content: '\ea0e';
+					font-family: desy-icons;
+					font-weight: 900;
 				}
 			}
 		}
