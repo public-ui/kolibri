@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-BtDvv0Nk.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
