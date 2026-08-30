@@ -26,6 +26,7 @@ Branch contains, on top of the develop merge (`01c202b4`):
 | `9853c479` | desy/kern theme fix: `kol-link` mixins take `$anchor-scoped` flag; legacy blocks (kol-button, details heading, tree-item spans) keep root-level styles; kern `--small` gap on anchor with `2x-small`; desy nav anchor stretched; kern tree-item focus rule scoped to anchor |
 | `773c10f3` | Quick wins: `buildDefaultPropsFromConfig` deduplicated (`props-from-config.ts`), stale controller comments fixed (meter/api, link/api, icon FC), prop factory logs visible `devWarning` for invalid values                                                                  |
 | `26eb56fb` | `createPropDefinition` supports `{ required: true }`: unset required props warn and fall back to default; `hrefProp` is required (explicit `''` stays warning-free by design)                                                                                               |
+| `f11a38e4` | CI snapshot baselines updated via `update-snapshots.yml` (run 33298340921, all jobs green): 127 PNGs across all five themes, 51 link-related                                                                                                                                |
 
 ## Open work, in priority order
 
@@ -51,12 +52,13 @@ toolbar, table-stateless, nav, breadcrumb, tree-item, link-button.
 - bwst `mixins/link.scss` gained `gap: to-rem(8)` on `__anchor` — confirm intent
   (harmonization with default theme or accidental visual delta).
 
-### 3. CI baselines before merge
+### 3. CI baselines before merge — DONE (2026-08-30)
 
-Push the branch, then trigger `gh workflow run update-snapshots.yml --ref
-refactor/migrate-kol-link-skeleton-2th` and review the visual diffs (the restored
-kern/desy styles must reproduce the previous look). Theme visual snapshots carry a
-`{platform}` suffix — only CI (linux) can update them.
+Branch pushed (fast-forward, no conflicts: develop had not moved since merge `01c202b4`),
+`update-snapshots.yml` triggered (run 33298340921) and completed green; CI committed
+`f11a38e4` ("Update all snapshots", 127 PNGs: bwst 31, ecl 27, default 26, kern 22,
+desy 21 — 51 link-related) and the branch was fast-forwarded locally. Visual review of
+the regenerated baselines can be done via the commit diff on GitHub.
 
 ### 4. Afterwards
 
