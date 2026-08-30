@@ -33,9 +33,7 @@
 	}
 
 	.kol-link {
-		color: var(--kern-color-layout-text-default);
 		border-radius: var(--kern-metric-border-radius-large);
-		padding: $vertical-padding $horizontal-padding;
 		align-items: center;
 		justify-content: center;
 
@@ -44,6 +42,14 @@
 		.kol-icon {
 			font-size: to-rem(18);
 		}
+	}
+
+	/* The colour, padding and hover state sat on the anchor-as-root before the skeleton
+	   migration — the interactive anchor has to carry them again. */
+	.kol-link__anchor {
+		color: var(--kern-color-layout-text-default);
+		border-radius: var(--kern-metric-border-radius-large);
+		padding: $vertical-padding $horizontal-padding;
 
 		&:hover {
 			color: var(--kern-color-action-default);

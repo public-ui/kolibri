@@ -2,4 +2,18 @@
 
 @layer kol-theme-component {
 	@include button('kol-link');
+
+	/* The link skeleton renders the focusable anchor inside the `.kol-link` wrapper, so the
+	   focus ring has to attach to the wrapper via :focus-within — it sat on the anchor-as-root
+	   before the migration (same layers as kol-link-interactive). */
+	.kol-link:not(.kol-link--stretched):focus-within {
+		box-shadow:
+			var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 2px var(--kern-color-action-on-default),
+			var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 4px var(--kern-color-action-focus-border-inside),
+			var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 6px var(--kern-color-action-focus-border-outside);
+		outline-color: transparent;
+		border-radius: var(--kern-metric-border-radius-small, 0.125rem);
+		position: relative;
+		z-index: 1;
+	}
 }

@@ -105,6 +105,10 @@
 		}
 
 		.#{$block-classname}--small & {
+			/* body-small recolours the whole link on the class carrier — the anchor needs the same
+			   colour, otherwise the interactive default colour would win over the inherited one. */
+			color: var(--kern-color-layout-text-default);
+
 			gap: var(--kern-metric-space-2x-small);
 		}
 	} @else {
