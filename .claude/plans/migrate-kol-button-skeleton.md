@@ -167,8 +167,10 @@ Zero-Visual-Delta-Lauf plus Owner-Freigabe.
 ### 5. Verhaltenstests (Link-Finding #10, dort „teilweise")
 
 Fehlen weiterhin: tabIndex-Reset am `wc`, ungültiges `_role`/`_ariaExpanded` (jetzt mit
-`devWarning` — testbar), `_customClass` + `_variant="custom"`. Playwright/Interaction-Tests waren
-für die Erst-Session ausdrücklich ausgeklammert.
+`devWarning` — testbar), `_customClass` + `_variant="custom"`. **Neue** Playwright-Tests waren für
+die Erst-Session ausdrücklich ausgeklammert; der **bestehende** e2e-Bestand läuft in CI und ist
+grün (`8c273b9`: zwei Assertions in `button-link.e2e.ts` adressieren jetzt `.kol-button` statt des
+inneren `<button>`, weil die Block-Modifier auf der BEM-Wurzel sitzen).
 
 ## Pitfalls
 
@@ -209,6 +211,11 @@ pnpm --filter @public-ui/components format
 pnpm --filter @public-ui/components lint            # eslint + stylelint + tsc + i18n
 pnpm -r test:unit                                   # NICHT nur --filter components (siehe Pitfalls)
 pnpm unused
+
+# e2e: die vorinstallierte Chromium-Revision passt nicht zur gepinnten @playwright/test-Version,
+# deshalb eine lokale Config mit launchOptions.executablePath: '/opt/pw-browsers/chromium'
+# ableiten (Original-Config replizieren, nicht spreaden — sonst geht die baseURL verloren)
+# und NICHT committen. `npx playwright install` ist in dieser Umgebung nicht erlaubt.
 
 # DOM-/Struktur-Änderungen zusätzlich:
 pnpm --filter @public-ui/hydrate build:deps && pnpm --filter @public-ui/hydrate test:unit
