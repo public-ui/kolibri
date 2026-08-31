@@ -21,6 +21,29 @@ test.describe('kol-link', () => {
 			await page.locator('a').dispatchEvent('click');
 			await expect(callbackPromise).resolves.toBeUndefined();
 		});
+
+		['kol-link', 'kol-link-wc'].forEach((tag) => {
+			test(`should pass the internal anchor as event.target to the onClick callback (${tag})`, async ({ page }) => {
+				await page.setContent(`<${tag} _label="Link"></${tag}>`);
+				const kolLink = page.locator(tag);
+
+				const targetIsAnchorPromise = kolLink.evaluate((element: HTMLKolLinkElement) => {
+					return new Promise<boolean>((resolve) => {
+						element._on = {
+							onClick: (event: MouseEvent) => {
+								resolve(event.target instanceof HTMLAnchorElement && event.target.classList.contains('kol-link__anchor'));
+							},
+						};
+					});
+				});
+				await page.waitForChanges();
+
+				// Dispatch directly on the anchor to verify that setEventTarget pins the target
+				await page.locator(`${tag} a`).dispatchEvent('click');
+
+				await expect(targetIsAnchorPromise).resolves.toBe(true);
+			});
+		});
 	});
 
 	test.describe('DOM events', () => {
