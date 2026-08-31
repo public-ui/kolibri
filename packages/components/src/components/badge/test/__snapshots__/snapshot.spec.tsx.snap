@@ -4,7 +4,7 @@ exports[`kol-badge should render with _label="**Te**xt" 1`] = `
 <kol-badge>
   <template shadowrootmode="open">
     <span class="kol-badge" style="background-color: #000; color: #959595;">
-      <span class="kol-badge__label kol-span">
+      <span class="kol-badge__label kol-span kol-span--has-icon">
         <span class="kol-span__container">
           <span class="kol-span__label md">
             <strong>
@@ -24,7 +24,7 @@ exports[`kol-badge should render with _label="Badge fallback" _smartButton={"_ar
 <kol-badge>
   <template shadowrootmode="open">
     <span class="kol-badge kol-badge--has-smart-button" style="background-color: #000; color: #959595;">
-      <span class="kol-badge__label kol-span" id="badge-label-nonce">
+      <span class="kol-badge__label kol-span kol-span--has-icon" id="badge-label-nonce">
         <span class="kol-span__container">
           <span class="kol-span__label md">
             Badge fallback
@@ -42,7 +42,7 @@ exports[`kol-badge should render with _label="Text" _color="#000000" 1`] = `
 <kol-badge>
   <template shadowrootmode="open">
     <span class="kol-badge" style="background-color: #000; color: #959595;">
-      <span class="kol-badge__label kol-span">
+      <span class="kol-badge__label kol-span kol-span--has-icon">
         <span class="kol-span__container">
           <span class="kol-span__label md">
             Text
@@ -59,7 +59,7 @@ exports[`kol-badge should render with _label="Text" _icons="codicon codicon-home
 <kol-badge>
   <template shadowrootmode="open">
     <span class="kol-badge" style="background-color: #000; color: #959595;">
-      <span class="kol-badge__label kol-span">
+      <span class="kol-badge__label kol-span kol-span--has-icon">
         <span class="kol-span__container">
           <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
           <span class="kol-span__label md">
@@ -77,7 +77,7 @@ exports[`kol-badge should render with _label="Text" _icons="codicon codicon-home
 <kol-badge>
   <template shadowrootmode="open">
     <span class="kol-badge" style="background-color: #000; color: #959595;">
-      <span class="kol-badge__label kol-span">
+      <span class="kol-badge__label kol-span kol-span--has-icon">
         <span class="kol-span__container">
           <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
           <span class="kol-span__label md">
@@ -95,7 +95,7 @@ exports[`kol-badge should render with _label="Text" 1`] = `
 <kol-badge>
   <template shadowrootmode="open">
     <span class="kol-badge" style="background-color: #000; color: #959595;">
-      <span class="kol-badge__label kol-span">
+      <span class="kol-badge__label kol-span kol-span--has-icon">
         <span class="kol-span__container">
           <span class="kol-span__label md">
             Text

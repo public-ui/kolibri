@@ -6,7 +6,7 @@ exports[`kol-button should render with _label="Label" _ariaDescription="Aria Des
     <kol-button-wc>
       <!---->
       <button aria-describedby="nonce" class="kol-button kol-button--normal kol-button--standalone" type="button">
-        <span class="kol-button__text kol-span">
+        <span class="kol-button__text kol-span kol-span--has-icon">
           <span class="kol-span__container">
             <span class="kol-span__label">
               Label
@@ -31,7 +31,7 @@ exports[`kol-button should render with _label="Label" _disabled=false 1`] = `
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--normal kol-button--standalone" type="button">
-        <span class="kol-button__text kol-span">
+        <span class="kol-button__text kol-span kol-span--has-icon">
           <span class="kol-span__container">
             <span class="kol-span__label">
               Label
@@ -53,7 +53,7 @@ exports[`kol-button should render with _label="Label" _disabled=true 1`] = `
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--disabled kol-button--normal kol-button--standalone" disabled="" type="button">
-        <span class="kol-button__text kol-span">
+        <span class="kol-button__text kol-span kol-span--has-icon">
           <span class="kol-span__container">
             <span class="kol-span__label">
               Label
@@ -75,7 +75,7 @@ exports[`kol-button should render with _label="Label" _value="Hello" 1`] = `
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--normal kol-button--standalone" type="button">
-        <span class="kol-button__text kol-span">
+        <span class="kol-button__text kol-span kol-span--has-icon">
           <span class="kol-span__container">
             <span class="kol-span__label">
               Label
@@ -97,7 +97,7 @@ exports[`kol-button should render with _label="Label" _variant="danger" 1`] = `
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--danger kol-button--standalone" type="button">
-        <span class="kol-button__text kol-span">
+        <span class="kol-button__text kol-span kol-span--has-icon">
           <span class="kol-span__container">
             <span class="kol-span__label">
               Label
@@ -119,7 +119,7 @@ exports[`kol-button should render with _label="Label" _variant="ghost" 1`] = `
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--ghost kol-button--standalone" type="button">
-        <span class="kol-button__text kol-span">
+        <span class="kol-button__text kol-span kol-span--has-icon">
           <span class="kol-span__container">
             <span class="kol-span__label">
               Label
@@ -141,7 +141,7 @@ exports[`kol-button should render with _label="Label" _variant="normal" 1`] = `
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--normal kol-button--standalone" type="button">
-        <span class="kol-button__text kol-span">
+        <span class="kol-button__text kol-span kol-span--has-icon">
           <span class="kol-span__container">
             <span class="kol-span__label">
               Label
@@ -163,7 +163,7 @@ exports[`kol-button should render with _label="Label" _variant="primary" 1`] = `
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--primary kol-button--standalone" type="button">
-        <span class="kol-button__text kol-span">
+        <span class="kol-button__text kol-span kol-span--has-icon">
           <span class="kol-span__container">
             <span class="kol-span__label">
               Label
@@ -185,7 +185,7 @@ exports[`kol-button should render with _label="Label" _variant="secondary" 1`] =
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--secondary kol-button--standalone" type="button">
-        <span class="kol-button__text kol-span">
+        <span class="kol-button__text kol-span kol-span--has-icon">
           <span class="kol-span__container">
             <span class="kol-span__label">
               Label
@@ -207,7 +207,7 @@ exports[`kol-button should render with _label="Label" 1`] = `
     <kol-button-wc>
       <!---->
       <button class="kol-button kol-button--normal kol-button--standalone" type="button">
-        <span class="kol-button__text kol-span">
+        <span class="kol-button__text kol-span kol-span--has-icon">
           <span class="kol-span__container">
             <span class="kol-span__label">
               Label
