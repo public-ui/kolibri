@@ -1,6 +1,7 @@
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
+import { labelHints } from './hints/label-hints';
 
 /**
  * Label prop for accessible names
@@ -23,4 +24,6 @@ import { normalizeString } from './helpers/normalizers';
  * @see https://www.w3.org/TR/accname-1.2/
  */
 export type LabelProp = SimpleProp<'label', string>;
-export const labelProp = createPropDefinition<LabelProp>('label', '', normalizeString, (v) => v === '' || (v.length >= 2 && v.length <= 80));
+export const labelProp = createPropDefinition<LabelProp>('label', '', normalizeString, (v) => v === '' || (v.length >= 2 && v.length <= 80), {
+	hints: labelHints,
+});
