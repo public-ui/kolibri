@@ -10,7 +10,7 @@
 			.kol-button {
 				width: max-content;
 
-				@include ghost-button;
+				@include ghost-button('kol-button');
 
 				.kol-span__container {
 					flex-direction: row-reverse;

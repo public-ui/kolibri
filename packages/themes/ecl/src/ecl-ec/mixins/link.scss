@@ -12,7 +12,7 @@
 		text-underline-offset: clamp(3px, 0.245em, 10px);
 	}
 
-	&:hover {
+	&:not([aria-disabled='true'], :disabled):hover {
 		color: var(--ecl-color-primary-140);
 	}
 
