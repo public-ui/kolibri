@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-CE1Sf1xv.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
