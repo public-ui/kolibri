@@ -2,10 +2,12 @@
 @use '../@shared/global' as *;
 @use '../host-display-block' as *;
 @use '../tooltip/style.scss' as *;
+@use '../@shared/button.mixin' as *;
 @use '../@shared/icon.mixin' as *;
 
 @layer kol-component {
 	@include kol-icon-styles();
+	@include kol-button-wc-box-styles('kol-button');
 	.kol-tabs {
 		display: var(--display);
 		grid-template-columns: var(--grid-template-columns);
@@ -49,9 +51,15 @@
 			flex-wrap: wrap;
 
 			.kol-button {
-				border-bottom-color: transparent;
 				display: block;
-				border-bottom-style: solid;
+
+				/* The underline belongs to the interactive element — it carries the UA `medium`
+				   border-width from the shared wc-box styles, so the selected-tab underline keeps
+				   the exact box it had when the button element itself carried `kol-button`. */
+				.kol-button__button {
+					border-bottom-color: transparent;
+					border-bottom-style: solid;
+				}
 
 				@media (forced-colors: active) {
 					&.selected {

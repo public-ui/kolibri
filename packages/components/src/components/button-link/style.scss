@@ -10,8 +10,16 @@
 	@include kol-link-styles('kol-button', $interactive-element: 'button');
 
 	// Inline may have the height and width of the flowing text and do not necessarily have to be 44px high or width.
+	// The inner interactive element needs the same exemption: the a11y layer pins every `button`
+	// to 44×44, and before the skeleton migration the inline exemption applied to that same
+	// element directly (it carried the `kol-button` class itself).
 	.kol-button--inline {
 		min-width: unset;
 		min-height: unset;
+
+		& .kol-button__button {
+			min-width: unset;
+			min-height: unset;
+		}
 	}
 }

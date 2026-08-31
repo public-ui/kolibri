@@ -6,8 +6,10 @@
 @use '../@shared/icon.mixin' as *;
 @use '../host-display-block' as *;
 @use '../tooltip/style' as *;
+@use '../@shared/button.mixin' as *;
 
 @layer kol-component {
+	@include kol-button-wc-box-styles('kol-button');
 	@include kol-alert;
 	@include kol-form-field;
 	@include kol-field-control;

@@ -63,3 +63,47 @@
 		}
 	}
 }
+
+/*
+ * Minimal box replication for trees that do not include `kol-button-styles` but render
+ * `kol-button-wc` (transitional light-DOM output). Before the skeleton migration the button
+ * element itself carried the `kol-button` class, so the `kol-global` reset
+ * (`background`, `width`, `margin`, `padding`, `border`) and the a11y layer `min-height`/
+ * `min-width` applied to it, on top of the UA `inline-block`. The wrapper div now carries the
+ * class but receives none of that automatically, so this mixin replicates the exact outer box,
+ * while the inner `kol-button__button` degrades to a plain block container to avoid the
+ * inline-level baseline gap the UA `inline-block` would add below it.
+ */
+@mixin kol-button-wc-box-styles($block-classname) {
+	.#{$block-classname} {
+		background-color: transparent;
+
+		display: inline-block;
+		width: 100%;
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+		margin: 0;
+		padding: 0;
+
+		/* User-agent stylesheets center button text; a `div` inherits instead, so the old
+		   inherited alignment (usually `left` from the a11y `:host` rule) has to be replicated
+		   explicitly for the inner content to sit at the same position as before. */
+		text-align: center;
+
+		/* Replicate the reset the real button received: width stays at the initial `medium`, only
+		   the style becomes `none`. Consumer rules that flip e.g. `border-bottom-style` back to
+		   `solid` (tabs) must therefore target the inner button (see the `__button` override
+		   below), because Firefox vertically centers button content inside the content box, which
+		   shrinks by the border — exactly as it did when the real button carried these rules. */
+		&__button {
+			border-style: none;
+			display: block;
+			border-width: medium;
+
+			/* The UA pins `text-align: center` directly on every `button`, which would beat any
+			   alignment inherited from the wrapper (e.g. nav's `text-align: left`). Inheriting
+			   restores the old flow, where the alignment applied to the button element itself. */
+			text-align: inherit;
+		}
+	}
+}

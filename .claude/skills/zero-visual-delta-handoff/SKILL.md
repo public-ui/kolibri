@@ -7,7 +7,7 @@ description: Disziplin für visuell unsichtbare Refactorings und Komponenten-/Th
 
 Refactorings an UI-Komponenten (Skeleton-Migrationen, DOM-Umbauten, Style-Konsolidierung, Theme-Anpassungen nach DOM-Änderungen), die visuell unsichtbar bleiben sollen: Verhalten und DOM dürfen sich ändern, das gerenderte Bild nicht. Der Patch gilt erst als fertig, wenn der lokale Docker-Check gegen die Base-Baselines komplett grün ist — und der Zustand so dokumentiert ist, dass jede neue Session nahtlos übernehmen kann.
 
-Bewährt in: kolibri kol-link-Skeleton-Migration (PR #10652: 5 Themes, je 294 Szenarien, 127 PNG-Diffs → 0, plus unstyled-Theme 293/294-Szenarien grün). Nächste Anwendung: kol-button-Theme-Worklist (PR #10734, ~162 Selektoren im Button-Kontext).
+Bewährt in: Strukturumbau-Kampagnen über 5 Themes + unstyled (je ~294 Szenarien, initial 127 PNG-Diffs → 0). Anstehende Aufgaben und ihre Companion-Pläne liegen unter `.claude/plans/`.
 
 ## 0. Voraussetzung: Docker — ohne Docker kein Start
 
@@ -36,7 +36,7 @@ node scripts/snapshots-docker.mjs <theme> --check
 # weitere Varianten:
 node scripts/snapshots-docker.mjs default kern --check   # mehrere Themes
 node scripts/snapshots-docker.mjs --all --check          # alle Themes (wie die CI)
-node scripts/snapshots-docker.mjs default -- --grep Button   # Args an Playwright durchreichen
+node scripts/snapshots-docker.mjs default -- --grep <Muster>   # Args an Playwright durchreichen
 node scripts/snapshots-docker.mjs --shell                # interaktive Shell im Container
 node scripts/snapshots-docker.mjs --reset                # Volume verwerfen (Neuinstallation)
 
@@ -50,7 +50,7 @@ docker run --rm -u 0 -v kolibri-visual-tests-work:/work mcr.microsoft.com/playwr
 
 Regeln:
 
-- **Baselines vor jedem Lauf auf Base-Stand stellen**: `git checkout origin/develop -- <snapshot-dir>` — der Check misst dann exakt aktullen Branch-Code gegen Base-Baselines.
+- **Baselines vor jedem Lauf auf Base-Stand stellen**: `git checkout origin/develop -- <snapshot-dir>` — der Check misst dann exakt aktuellen Branch-Code gegen Base-Baselines.
 - **NIEMALS `--update-snapshots` bzw. `test:update:e2e` nutzen**, um Diffs „wegzudrücken": Das erzeugt neue Baselines und verwischt das Kriterium. (`snapshots-docker.mjs <theme>` ohne `--check` updated nur für den finalen Merge-Vorlauf.)
 - **Themes**: `default`, `bwst`, `ecl`, `kern`, `desy` (unter `packages/themes/`) sowie `unstyled` (liegt unter `packages/unstyled/`, kein Theme-CSS, nur Basis-Layer — sensitiver Indikator für DOM-Umbauten im Basis-Styling).
 - **CI-Alternative für den finalen Merge-Vorlauf**: `gh workflow run update-snapshots.yml --ref <branch>` — nur dort, wo neue Baselines bewusst erzeugt werden sollen.
@@ -74,16 +74,16 @@ Regeln:
 
 ## 5. Pflicht nach jedem Theme: Erfahrungswerte in diesen Skill
 
-**Nach jedem abgeschlossenen Theme (grüner Docker-Check) werden die Erfahrungen dieses Themes in Abschnitt 12 nachgetragen — ohne Ausnahme, vor dem Wechsel zum nächsten Theme.** Ziel: Jedes folgende Theme und jede folgende Styling-Aufgabe startet mit dem angesammelten Wissen statt es neu zu erfinden. Die 5-Theme-Kampagne des Link-PRs hat gezeigt, dass die Ursachen sich pro Theme wiederholen — wer die Muster des Vorgänger-Themes kennt, ist deutlich schneller.
+**Nach jedem abgeschlossenen Theme (grüner Docker-Check) werden die Erfahrungen dieses Themes in Abschnitt 12 nachgetragen — ohne Ausnahme, vor dem Wechsel zum nächsten Theme.** Ziel: Jedes folgende Theme und jede folgende Styling-Aufgabe startet mit dem angesammelten Wissen statt es neu zu erfinden. Abgeschlossene Kampagnen haben gezeigt, dass sich die Ursachen pro Theme wiederholen — wer die Muster des Vorgänger-Themes kennt, ist deutlich schneller.
 
-Pro Theme ein Eintrag mit diesem Minimum:
+Pro Theme ein Eintrag mit diesem Minimum (Aufgabe/Scope statt Komponenten-Bezug formulieren — die Muster sind das Wissen, nicht die Einzelfundstelle):
 
 ```markdown
-### <Datum> — <Komponente/Migration>: Theme <name>
+### <Datum> — <Aufgabe/Strukturumbau>: Theme <name>
 
 - **Ausgangslage**: <Anzahl Diffs>, betroffene Szenarien/Blöcke
 - **Ursachen & Fix-Muster**: welche Muster aus Abschnitt 6 griffen, welche nicht
-- **Theme-Spezifika**: Eigenheiten dieses Themes (Struktur, Mixin-Signaturen, bekannte Tücken)
+- **Theme-Spezifika**: Eigenheiten dieses Themes (Struktur, Mixin-Konventionen, bekannte Tücken)
 - **Fix-Commit(s)**: <Hashes>
 - **Evidenz**: <Prüfbefehl + Ergebnis, z. B. „294/294 passed, Exit 0">
 ```
@@ -172,50 +172,62 @@ Abgeschlossene Abschnitte als „DONE (Datum)" markieren und stehen lassen — d
 
 ## 12. Erfahrungswerte (fortlaufend aktualisiert)
 
-### 2026-08-30 — kol-link-Skeleton-Migration (PR #10652): Kampagnen-Ergebnis
+### 2026-08-30 — Strukturumbau (interaktives Element in Wrapper): Kampagnen-Ergebnis über 5 Themes
 
 - **Ausgangslage**: 5 Themes, je 294 Szenarien, initial 127 PNG-Diffs (bwst 31, ecl 27, default 26, kern 22, desy 21) — alle auf 0 reduziert.
-- **Hauptursachen** (>90 %): tote Selektoren (Muster 1), Fokus-Optik am Wrapper (Muster 2), Doppel-Padding durch Root-Stile am falschen Element (Muster 4).
+- **Hauptursachen** (>90 %): tote Selektoren (Muster 1), Zustands-Optik am Wrapper (Muster 2), Doppel-Padding durch Root-Stile am falschen Element (Muster 4).
 - **Evidenz**: je Theme `node scripts/snapshots-docker.mjs <theme> --check` → 294/294 passed, Exit 0; `git diff origin/develop..HEAD -- '*.png'` = 0. Fix-Commits: 016038670a (default), c40ce57340 (bwst), 4e9106f6d8 (ecl), e4fceaeb97 + 5482632f2c (kern), 8c30ed9b75 (desy).
 - **Erkenntnisse**:
   - Route-ViewportSize ist die teuerste Fehlerquelle — immer prüfen.
-  - `text-decoration: none` muss auf Shadow-Root-Anker zusätzlich gesetzt werden.
+  - Reset-Regeln (z. B. `text-decoration`) müssen auf das innere semantische Element zusätzlich gesetzt werden.
   - Docker-Check ist identisch mit CI-Ergebnissen — lokale Tests ohne Docker waren irreführend.
   - Kompiliertes CSS prüfen statt Sass-Verschachtelung zu vertrauen.
   - Review-Finding: PNG-Diff-Zahl nach Baseline-Checkout ist selbstbestätigend (deshalb Evidenzregel in Abschnitt 1); CI-Job `visual-tests (theme-<name>)` als unabhängige Abnahme führen.
 
-### 2026-08-30 — kol-link-Skeleton-Migration: Theme default (26 Diffs → 0)
+### 2026-08-30 — Strukturumbau (interaktives Element in Wrapper): Theme default (26 Diffs → 0)
 
-- **Ursachen & Fix-Muster**: Shared-Mixins `__anchor`-Scoping; tabIndex-Sentinel (kein `tabindex="0"` wenn ungesetzt); Skip-Nav `:focus-within`; Tree-Item Full-Width-Anker; SpanFC Empty-Icon-Guard; nav/tree-item/button-Fokus-Selektoren.
-- **Letztes Delta**: `scenarios/focus-elements?component=tree` (x=281..283, erwartete Farbe (0,90,143) = `--color-primary-variant`) — behoben durch Verschieben von `padding-right: to-rem(8)` vom `.kol-link`-Wrapper auf `.kol-link__anchor` (`themes/default/src/components/tree-item.scss`): Die Fokus-Outline des Ankers reicht damit wieder bis zur Zeilenkante wie der ehemalige Full-Width-Anker. Exakt Muster 4.
-- **Theme-Spezifika**: nav/tree-item sind die diff-reichsten Blöcke; Fokus-Farbe kommt über `--color-primary-variant`.
+- **Ursachen & Fix-Muster**: überwiegend Muster 1, 2 und 4. Letztes Delta: Fokus-Outline reichte nicht mehr bis zur Zeilenkante — behoben durch Verschieben eines horizontalen Paddings vom Wrapper auf das innere Element (exakt Muster 4). Zusätzlich: Attribut-Sentinel gegen ein `tabindex="0"`-Leak, `:focus-within`-Varianten für Blöcke mit delegiertem Fokus, Full-Width-Innenelement für Baum-/Navi-Blöcke.
+- **Theme-Spezifika**: Navi- und Baum-Szenarien sind die diff-reichsten; Fokus-Farbe kommt über die Theme-Primärvariable.
 - **Evidenz**: 294/294 passed, Exit 0; CI-Job theme-default unabhängig grün.
 
-### 2026-08-30 — kol-link-Skeleton-Migration: Theme bwst (31 Diffs → 0)
+### 2026-08-30 — Strukturumbau (interaktives Element in Wrapper): Theme bwst (31 Diffs → 0)
 
-- **Theme-Spezifika / Fehlerquelle**: Ein während der Fixes eingefügtes `gap: to-rem(8)` auf `__anchor` (`mixins/link.scss`) war selbst ein visuelles Delta — es brach link/icons, link/target, quote, table und modal gegen develop. Entfernt (Commit c40ce5734): 294/294 grün ohne den Gap.
+- **Fehlerquelle**: Ein während der Fixes eingefügter „Verbesserungs"-Gap am inneren Element war selbst ein visuelles Delta und brach mehrere Szenarien gegen den Base — entfernt (Commit c40ce5734), danach 294/294 grün.
 - **Lektion**: Jeder „Verbesserungs"-Fix während der Kampagne ist selbst ein Delta-Kandidat — nur fixen, was der Pixel-Vergleich belegt, nichts präventiv.
 
-### 2026-08-30 — kol-link-Skeleton-Migration: Theme kern (22 Diffs → 0)
+### 2026-08-30 — Strukturumbau (interaktives Element in Wrapper): Theme kern (22 Diffs → 0)
 
-- **Ursachen & Fix-Muster**: Root-Stile (Padding, Farbe, Marker) von skip-nav/breadcrumb mussten auf den Anker wandern (Muster 4 — Fokus-Ring-Box und Zeilenhöhen); `--small`-Gap am Anker nur mit `2x-small`; tree-item-Fokus-Regel auf den Anker gescoped.
-- **Theme-Spezifika**: `kern` braucht `$anchor-scoped`-artige Flags an Mixin-Includes für Legacy-Blöcke (details-heading, tree-item-spans), deren DOM sich nicht ändert.
+- **Ursachen & Fix-Muster**: Root-Stile (Padding, Farbe, Marker) mussten auf das innere Element wandern (Muster 4 — Fokus-Ring-Box und Zeilenhöhen); größenabhängige Abstände gelten nur in der jeweils dokumentierten Kombination; Fokus-Regeln auf das innere Element gescoped.
+- **Theme-Spezifika**: Mixin-Includes für Legacy-Blöcke, deren DOM sich nicht ändert, brauchen den Parameter „Stile auf dem Klassenträger" statt auf dem inneren Element.
 - **Evidenz**: 294/294 passed, Exit 0 (Commits e4fceaeb97 + 5482632f2c).
 
-### 2026-08-30 — kol-link-Skeleton-Migration: Themes ecl (27 Diffs) & desy (21 Diffs) → 0
+### 2026-08-30 — Strukturumbau (interaktives Element in Wrapper): Themes ecl (27 Diffs) & desy (21 Diffs) → 0
 
-- **desy-Ursachen**: nav-Anker musste gestreckt werden (Muster 3: `flex` am Wrapper/Anker); Legacy-Blöcke (details-heading, tree-item) mit Root-Level-Stilen über Mixin-Flag stabilisiert.
-- **ecl**: eigene Mixin-Struktur (`ecl-ec`/`ecl-eu` ohne `src/mixins`-Standard) — Include-Sites einzeln prüfen, Worklist-Grep aus Abschnitt 6b nutzen.
+- **desy-Ursachen**: inneres Element musste die Zeile füllen (Muster 3); Legacy-Blöcke über den Mixin-Parameter „Stile auf dem Klassenträger" stabilisiert.
+- **ecl-Theme-Spezifika**: eigene Mixin-Struktur (`ecl-ec`/`ecl-eu` ohne `src/mixins`-Standard) — Include-Sites einzeln prüfen (Grep aus Abschnitt 6b).
 - **Evidenz**: je 294/294 passed, Exit 0 (ecl 4e9106f6d8, desy 8c30ed9b75).
 
-### 2026-08-31 — kol-link-Skeleton-Migration: Theme unstyled (0 Diffs, 293 Szenarien)
+### 2026-08-31 — Strukturumbau (interaktives Element in Wrapper): Theme unstyled (0 Diffs, 293 Szenarien)
 
-- **Ausgangslage**: 408 PNGs auf Linux (Commit 6a028d8c37), diff-los gegen develop — unstyled zeigt nur den Basis-Layer und bestätigt damit, dass der DOM-Umbau basis-stabil war.
+- **Ausgangslage**: 408 PNGs auf Linux, diff-los gegen den Base — unstyled zeigt nur den Basis-Layer und bestätigt damit, dass der Strukturumbau basis-stabil war.
 - **Theme-Spezifika**: kein Build-Schritt (`theme.ts` direkt); Docker-Support war nachzurüsten — `discoverThemes()` liest jetzt auch `packages/unstyled` (pkg-Name aus package.json statt `@public-ui/theme-*`-Konvention); Route `icon/font` wird für `THEME_EXPORT=UNSTYLED` übersprungen.
 - **Fallstricke**: lokale Tests ohne Docker erzeugen `firefox-darwin`-Snapshots (CI braucht `firefox-linux`) — nie committen.
 - **Evidenz**: `node scripts/snapshots-docker.mjs unstyled --check` → 293 passed, 0 failed (4,7 min), Exit 0.
 
-### [Datum] — [Komponente/Migration]: Theme [name]
+### 2026-08-31 — Button-Skeleton-Migration (kol-button-wc rendert ButtonFC mit Wrapper-div): Theme unstyled (25 Diffs → 0)
+
+- **Ausgangslage**: Nach der Button-Skeleton-Migration (kol-button-wc rendert jetzt `<div class="kol-button"><button class="kol-button__button">` statt `<button class="kol-button">`) 25 PNG-Diffs im unstyled Theme — Tabs, Nav, Form-Inputs, Button-Link, Popover-Button, Split-Button.
+- **Ursachen & Fix-Muster** (alle Varianten von Muster 5 — UA-/Basis-Optik des inneren Elements):
+  - **Wer den Stil je Baum lieferte, unterscheidet sich**: Bäume MIT `kol-button-styles`-Include (alert, card, combobox, details, input-file, link-button, popover-button, single-select, table-*, toolbar) behalten das volle Mixin; Bäume OHNE (tabs, nav, pagination, badge, split-button, alle Form-Inputs via form-field) bekamen das neue `kol-button-wc-box-styles`, das die alte Außenbox des Buttons exakt repliziert: `display: inline-block`, `width: 100%`, `min-width/min-height: var(--a11y-min-size)`, `margin: 0`, `padding: 0`, `background: transparent`, `text-align: center`, `border-width: medium; border-style: none`. Blindes `kol-button-styles`-Nachrüsten hätte Over-Styling erzeugt (develop hatte das Mixin in diesen Bäumen nie).
+  - **Firefox zentriert Button-Inhalt vertikal innerhalb der Content-Box** (UA-Mechanik): Eine Consumer-Regel `border-bottom-style: solid` (tabs) reaktivierte am echten Button die `medium`-Breite (3px) und schrumpfte die Content-Box — Text saß 1,5px höher. Deshalb `border-width: medium; border-style: none` (NICHT `border-width: 0`) am inneren Button replizieren, sonst verschieben sich Textzeilen um 1,5px.
+  - **`text-align: center` (UA) trifft den echten Button direkt**, das `div` erbt stattdessen — ohne Replikation rücken kurze Labels in breite Nav-Einträge ein. Zusätzlich `text-align: inherit` auf `__button`, sonst schlägt UA-center eine vererbte `left`-Regel (nav).
+  - **Popover-Button-Inline-Exemption** (`min-width: 0; min-height: 1em`) muss BOTH treffen: `.kol-button` UND `.kol-button .kol-button__button` — sonst bleibt der 44px-a11y-Button stehen (16px-Info-Icons wurden 44px → +22px Höhen in Form-Feldern).
+  - **button-link inline-Exemption** analog auf `.kol-button__button` erweitern (21px statt 44px Text-Links).
+- **Diagnose-Goldweg**: Docker-Run mit Serve der gebauten App + Playwright-`evaluate` (getBoundingClientRect + computed styles) gegen einen `git worktree` des Base-Branch —_pxakt gleiche Pipeline, Zahlen statt Vermutung_. Erst Geometrie-Diff auf 0, dann Pixel-Check.
+- **Theme-Spezifika**: Der Fehlermodus „unterschiedliche include-Historie pro Consumer-Baum“ ist themen-unabhängig — für default/bwst/ecl/kern/desy gilt dieselbe Prüfung je Baums.
+- **Evidenz**: `node scripts/snapshots-docker.mjs unstyled --check` → 293 passed, 0 failed, Exit 0.
+
+### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 
 - **Ausgangslage**:
 - **Ursachen & Fix-Muster**:

@@ -75,7 +75,7 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 
 ## Offene Arbeit, nach Priorität
 
-### 1. GOAL: Zero Visual Delta — **noch nicht verifiziert**
+### 1. GOAL: Zero Visual Delta — unstyled ✅ DONE (2026-08-31), Theme-Worklist offen
 
 Disziplin und Werkzeuge: `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
 
@@ -84,8 +84,16 @@ node scripts/snapshots-docker.mjs <theme> --check     # je Theme, ca. 6 min
 git diff origin/develop..HEAD -- '*.png'              # muss leer sein
 ```
 
-Themes: default, bwst, ecl, kern, desy (+ unstyled). **„CI grün" ist kein Nachweis** — die
-Snapshot-Workflows committen neue Baselines und werden dadurch selbst grün.
+**unstyled: 293 passed, 0 failed, Exit 0** — die Basis-Layer-Abweichungen der Migration sind
+behoben (Fix-Batch: `kol-button-wc-box-styles`-Mixin für Bäume ohne volles `kol-button-styles`,
+UA-Button-Replikation `text-align: center` / `border-width: medium; border-style: none` /
+`text-align: inherit` auf `__button`, Inline-Exemptions bei popover-button und button-link auf
+`__button` erweitert). Details: Abschnitt 12 des Skills.
+
+Themes: default, bwst, ecl, kern, desy (+ unstyled ✅). **„CI grün" ist kein Nachweis** — die
+Snapshot-Workflows committen neue Baselines und werden dadurch selbst grün. Die Theme-Arbeit
+(sichtbare Selektoren an `__button` etc.) ist bewusst nicht Teil des PRs und liegt in
+`.claude/plans/kol-button-theme-worklist.md`.
 
 **Erwartung: zunächst viele Diffs.** Der `BemRootNodeFC`-Umbau verschiebt das interaktive Element
 nach innen; ~162 Theme-Selektoren im Button-Kontext hängen an Zuständen des `<button>`. Die
@@ -102,7 +110,8 @@ Zwei DOM-Änderungen überlagern sich, in dieser Reihenfolge suchen:
    Beim Link-PR verursachte genau diese Änderung nachweislich null SCSS-Anpassungen, sie ist also
    der unwahrscheinlichere Kandidat.
 
-In der Erst-Session nicht ausführbar (kein Docker-Daemon); wird lokal vom Owner gefahren.
+In der Erst-Session nicht ausführbar (kein Docker-Daemon); inzwischen lokal mit Docker gefahren —
+unstyled 293/293 grün (siehe oben).
 
 ### 2. Konsumenten-Migration weg von `kol-button-wc` (der strategische Schritt)
 
