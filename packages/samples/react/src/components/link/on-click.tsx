@@ -7,7 +7,6 @@ import { SampleDescription } from '../SampleDescription';
 
 export const LinkOnClick: FC = () => {
 	const [clickCount, setClickCount] = useState(0);
-	const [navigateCount, setNavigateCount] = useState(0);
 
 	// Test 1: onClick ohne preventDefault - sollte navigieren UND onClick ausführen
 	const onClickWithoutPrevent = {
@@ -50,11 +49,6 @@ export const LinkOnClick: FC = () => {
 		},
 	};
 
-	// Track navigation (für Demo-Zwecke)
-	const handleNavigation = () => {
-		setNavigateCount((n) => n + 1);
-	};
-
 	return (
 		<>
 			<SampleDescription>
@@ -92,11 +86,7 @@ export const LinkOnClick: FC = () => {
 						<p>
 							<strong>onClick executions:</strong> {clickCount}
 						</p>
-						<p>
-							<strong>Page navigations:</strong> {navigateCount}
-							<br />
-							<span className="text-sm text-gray-600">(Open browser console to see detailed logs)</span>
-						</p>
+						<p className="text-sm text-gray-600">(Open browser console to see detailed logs)</p>
 						<p className="text-sm text-gray-600">
 							Note: This demo uses href=&quot;#test&quot; to avoid actual page reloads. Check the URL hash and console output.
 						</p>
@@ -147,10 +137,10 @@ export const LinkOnClick: FC = () => {
 							</a>
 							<a
 								href="#native-test-2"
-								onClick={(e) => {
+								onClick={(event: React.MouseEvent) => {
 									console.log('Native a: onClick mit preventDefault');
 									setClickCount((c) => c + 1);
-									e.preventDefault();
+									event.preventDefault();
 								}}
 								className="btn btn-primary"
 							>
@@ -158,7 +148,7 @@ export const LinkOnClick: FC = () => {
 							</a>
 							<a
 								href="#native-test-3"
-								onClick={(e) => {
+								onClick={() => {
 									console.log('Native a: onClick mit return false');
 									setClickCount((c) => c + 1);
 									return false;
