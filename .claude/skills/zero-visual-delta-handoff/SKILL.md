@@ -16,8 +16,26 @@ Bewährt in: kolibri kol-link-Skeleton-Migration (5 Themes, je 294 Szenarien, 12
 
 ## 2. Einrichtung (einmal pro Repo, bevor der erste Fix läuft)
 
-1. **Lokale deterministische Prüfpipeline finden oder bauen** — nicht über die CI laufen! Suchen nach Skripten wie `scripts/*snapshot*`, Docker-basierten Visual-Test-Setup oder Playwright-Konfiguration mit fixem Runner-Image. Muss denselben Renderer wie die CI nutzen (Browser+Version+OS), sonst sind Vergleiche wertlos. Ohne so eine Pipeline: erst die Pipeline bauen — sie amortisiert sich ab dem zweiten Fix.
-2. **Ziel-Baselines vor den Läufen auf Base-Stand stellen**: `git checkout origin/<base> -- <snapshot-dir>` — dann misst der Check exakt das Zielkriterium (aktueller Code vs. Base-Baseline). NICHT `--update-snapshots` benutzen: Das erzeugt neue Baselines und verwischt das Kriterium.
+1. **Docker-basierte Prüfpipeline einrichten** — lokale Snapshot-Prüfungen laufen immer in einem Docker-Container, um exakt die gleiche Rendering-Umgebung wie die CI zu gewährleisten (Browser-Version, OS, Font-Rendering). Docker-Compose oder Docker-Run-Skript im Repo bereitstellen, das:
+   - Den gleichen Browser verwendet wie CI (z.B. Chromium/Playwright mit fixer Version)
+   - Die Snapshots aus dem gemounteten Repo lädt
+   - Die Ergebnisse zurück in den Host schreibt
+   - Reproduzierbar läuft (`--no-cache` rebuild bei Docker-Änderungen)
+
+   Beispiel:
+
+   ```bash
+   docker compose run --rm snapshot-check
+   # oder
+   docker run --rm -v $(pwd):/work -w /work my-snapshot-image npm run test:visual
+   ```
+
+2. **Feature-Branch-Szenario**:
+   - Feature-Branch auschecken: `git checkout feature/my-refactor`
+   - Baselines auf `origin/develop` stellen: `git checkout origin/develop -- <snapshot-dir>`
+   - Docker-Check laufen: vergleicht **aktuellen Feature-Branch-Code** gegen **Develop-Baselines**
+   - Ziel: Alle Diffs auf null reduzieren durch CSS-Anpassung im Feature-Branch
+   - NIEMALS `--update-snapshots` nutzen — das würde neue Baselines erzeugen und das Kriterium verwischen
 3. **Pixel-Werkzeuge bereithalten** (PIL/python genügt):
    - Pixel-Differenzzähler: geänderte Pixel, Bounding-Box, Zeilenbänder mit Farbproben (`exp=(r,g,b) act=(r,g,b)`) — zeigt Verschiebung vs. Fehlen vs. Farbwechsel.
    - Farbraster-Ausdruck (Bild als Buchstabenraster, Zelle 3–8 px): macht auch ohne Bildbetrachtung sichtbar, WO Inhalte stehen.
@@ -82,3 +100,27 @@ Abgeschlossene Abschnitte als „DONE (Datum)" markieren und stehen lassen — d
 - [ ] Route-Viewport bei allen Proben beachtet; kompiliertes CSS bei Selector-Zweifeln gegriffen
 - [ ] Plan aktualisiert (Current state, Open work, Pitfalls), Decision points ergänzt statt entschieden
 - [ ] Validation commands vor jedem Commit ausgeführt
+- [ ] Erfahrungswerte in diesem Skill (Abschnitt 10) dokumentiert
+
+## 10. Erfahrungswerte (fortlaufend aktualisiert)
+
+### 2025-08-30 — Kolibri kol-link-Skeleton-Migration
+
+- **Szenario**: 5 Themes, je 294 Szenarien, initial 127 PNG-Diffs
+- **Lösungsweg**:
+  1. Docker-Container mit Playwright/Chromium fixer Version eingerichtet
+  2. Baselines vor jedem Lauf auf `origin/develop` gestellt
+  3. Pixel-Analyse mit PIL-Skript (Bounding-Box, Farbproben)
+  4. Fix-Muster angewandt (siehe Abschnitt 4) — Hauptursachen waren tote Selektoren, Fokus-Optik am Wrapper, Doppel-Padding
+  5. Alle Diffs auf null reduziert, keine visuellen Änderungen
+- **Erkenntnisse**:
+  - Route-ViewportSize ist teuerste Fehlerquelle — immer prüfen
+  - `text-decoration: none` muss auf Shadow-Root-Anker zusätzlich gesetzt werden
+  - Docker-Check ist identisch mit CI-Ergebnissen — lokale Tests ohne Docker waren irreführend
+  - Kompiliertes CSS prüfen statt Sass-Verschachtelung zu vertrauen
+
+### [Datum] — [Projekt/Migration]
+
+- **Szenario**: [Anzahl Themes/Szenarien, initialer Diff-Zähler]
+- **Lösungsweg**:
+- **Erkenntnisse**:
