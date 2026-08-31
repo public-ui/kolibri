@@ -136,6 +136,9 @@ ROUTES.set('heading/basic', {
 ROUTES.set('heading/secondary');
 ROUTES.set('icon/font', {
 	snapshot: {
+		// The "unstyled" package (see packages/unstyled/theme.ts) registers no theme at all, so this
+		// route – which lists the active theme's icon font variants – has no blocks to capture there.
+		skip: process.env.THEME_EXPORT === 'UNSTYLED',
 		viewportSize: {
 			width: 250,
 			height: 345,

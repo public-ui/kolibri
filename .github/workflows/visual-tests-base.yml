@@ -9,6 +9,7 @@ on:
       - 'packages/samples/react/**'
       - 'packages/tools/visual-tests/**'
       - 'packages/test-tag-name-transformer/**'
+      - 'packages/unstyled/**'
       - '.github/workflows/visual-tests-base.yml'
       - '.github/actions/pnpm-setup/**'
       - '.github/actions/upload-reports/**'
@@ -25,7 +26,7 @@ jobs:
   visual-tests-snapshots:
     strategy:
       matrix:
-        package: ['test-tag-name-transformer', 'theme-default', 'theme-bwst', 'theme-ecl', 'theme-desy', 'theme-kern']
+        package: ['test-tag-name-transformer', 'unstyled', 'theme-default', 'theme-bwst', 'theme-ecl', 'theme-desy', 'theme-kern']
     runs-on: ubuntu-latest
     # Pinned Playwright image – must match the @playwright/test version in
     # packages/tools/visual-tests/package.json (enforced by the "Verify Playwright version" step).
@@ -61,6 +62,8 @@ jobs:
           mkdir -p "/tmp/snapshots/${PACKAGE}"
           if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
             SNAPSHOT_DIR="packages/test-tag-name-transformer/snapshots"
+          elif [[ "${PACKAGE}" == 'unstyled' ]]; then
+            SNAPSHOT_DIR="packages/unstyled/snapshots"
           else
             THEME_DIR="${PACKAGE#theme-}"
             SNAPSHOT_DIR="packages/themes/${THEME_DIR}/snapshots"
@@ -83,6 +86,8 @@ jobs:
           PACKAGE="${{ matrix.package }}"
           if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
             SNAPSHOT_DIR="packages/test-tag-name-transformer/snapshots"
+          elif [[ "${PACKAGE}" == 'unstyled' ]]; then
+            SNAPSHOT_DIR="packages/unstyled/snapshots"
           else
             THEME_DIR="${PACKAGE#theme-}"
             SNAPSHOT_DIR="packages/themes/${THEME_DIR}/snapshots"
@@ -119,6 +124,8 @@ jobs:
           PACKAGE="${{ matrix.package }}"
           if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
             REPORT_DIR="packages/test-tag-name-transformer/playwright-report"
+          elif [[ "${PACKAGE}" == 'unstyled' ]]; then
+            REPORT_DIR="packages/unstyled/playwright-report"
           else
             THEME_DIR="${PACKAGE#theme-}"
             REPORT_DIR="packages/themes/${THEME_DIR}/playwright-report"
