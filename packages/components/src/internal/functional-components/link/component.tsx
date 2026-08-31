@@ -49,7 +49,9 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 		href: typeof href === 'string' && href.length > 0 ? href : 'javascript:void(0);',
 		target: typeof target === 'string' && target.length > 0 ? target : undefined,
 		rel: isExternal ? 'noopener' : undefined,
-		download: typeof download === 'string' && download.length > 0 ? download : undefined,
+		// `download` is a presence attribute: an explicitly empty string means "download without a
+		// suggested filename" and must render as `download=""`, unlike an unset download.
+		download: typeof download === 'string' ? download : undefined,
 	};
 
 	if (hideLabel === true && !label) {
