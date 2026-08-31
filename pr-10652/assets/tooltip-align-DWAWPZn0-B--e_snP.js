@@ -1,0 +1,1 @@
+import"./index-CgPfWNDb.js";import{r as e}from"./align-BNmcYY75-Bj0g_OXf.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
