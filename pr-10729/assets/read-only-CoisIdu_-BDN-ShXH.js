@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-CC-c4ApZ.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
