@@ -69,6 +69,9 @@ export type KoliBriComponentsBemSchema = {
 	};
 	'kol-button': {
 		elements: {
+			button: {
+				modifiers: null;
+			};
 			text: {
 				modifiers: null;
 			};
@@ -243,6 +246,7 @@ const BEM: KoliBriComponentsBemSchema = {
 	},
 	'kol-button': {
 		elements: {
+			button: { modifiers: null },
 			text: { modifiers: null },
 			tooltip: { modifiers: null },
 		},

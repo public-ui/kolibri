@@ -20,26 +20,25 @@ Architektur-Spec: `packages/components/src/components/_skeleton/ARC42.md` (führ
 **Akzeptanzkriterium: die Migration ist visuell unsichtbar** — null geänderte Snapshot-PNGs gegen
 develop, siehe „Offene Arbeit / 1".
 
-## Abgrenzung zur Link-Migration — die wichtigste Lehre
+## Verhältnis zur Link-Migration
 
-Der Link-PR umfasste 125 Dateien. Sein **gesamter SCSS-Anteil** (2 Shared-Mixins + 7 Theme-Pakete,
-13 Iterationsrunden, 127 PNG-Diffs) geht auf **eine** Entscheidung zurück: `LinkFC` wurde in
-`BemRootNodeFC` gewickelt, aus `<a class="kol-link">` wurde
-`<div class="kol-link"><a class="kol-link__anchor">`. Jeder SCSS-Hunk dreht sich um `__anchor`;
-**kein einziger** betrifft das Entfernen des `<kol-link-wc>`-Elements aus dem Shadow-Root.
+`ButtonFC` nutzt `BemRootNodeFC` — wie `LinkFC`. Aus `<button class="kol-button">` wird
+`<div class="kol-button"><button class="kol-button__button">`.
 
-`ButtonFC` macht das bewusst **nicht**: semantische Wurzel bleibt `<button class="kol-button">`, die
-BEM-Klasse wird mit `bem.forBlock('kol-button')` gebaut. ARC42 § _„When not to use it"_ deckt genau
-diesen Fall ab. Folge: der Button-PR ändert **keine SCSS-Zeile**.
+**Korrektur einer früheren Fehleinschätzung auf diesem Branch:** Zwischenzeitlich war der FC ohne
+`BemRootNodeFC` gebaut, begründet mit ARC42 §4 _„When not to use it"_. Diese Ausnahme gilt aber
+FCs mit **einer** Nicht-div-Wurzel (`ClickButtonFC` → ein `<button>`); `ButtonFC` hat drei Wurzeln
+(Button, Tooltip, Description) und erfüllte damit weder Ausnahme noch Regel. Das Konzept fordert
+den Wrapper an drei Stellen unbedingt: §8 Cross-cutting Concepts („FCs render a single root `<div>`
+via `BemRootNodeFC`"), §9 Design Decision 10 und die Pre-Review-Checkliste der Migrations-Skill.
 
-Zusätzliches Argument gegen ein `kol-button__button`: der Link-PR hat den Theme-Mixins gerade erst
-`$anchor-scoped: false` verpasst — mit der Begründung, dass das **Button-DOM kein `__anchor` hat**
-(`themes/{desy,ecl,kern}/.../{nav,split-button,button-link,details}.scss`). Ein Anker-Wrapper im
-Button würde diese frisch gebaute Unterscheidung entwerten.
+Was daraus folgt: Anders als zunächst angenommen ist das **nicht** SCSS-frei. Der Link-PR hat für
+denselben Umbau 5 Themes über 13 Runden angefasst; jeder SCSS-Hunk dort dreht sich um `__anchor`.
+Für Button gilt das Gleiche mit `__button` — siehe `.claude/plans/kol-button-theme-worklist.md`.
 
-**Merksatz für die nächsten Migrationen:** `BemRootNodeFC` nur dort, wo die semantische Wurzel
-tatsächlich ein `<div>` ist. Bei interaktiven Wurzelelementen (`<button>`, `<a>`) kostet der Wrapper
-mehr Theme-Arbeit, als er an Struktur bringt.
+Der `$anchor-scoped`-Schalter aus #10652 wird dabei durch einen Namensparameter ersetzt
+(`$interactive-element: 'anchor' | 'button' | null`), weil beide Blöcke jetzt ein inneres
+interaktives Element haben — nur mit unterschiedlichem Namen. Im Components-Paket ist das erledigt.
 
 ## Aktueller Stand
 
@@ -65,7 +64,14 @@ Nachbesserungen aus dem Link-Review-Abgleich:
   zurück (Link-Finding #3); die Normalizer von `aria-expanded`, `aria-selected`, `aria-has-popup`
   und `link-role` werfen bei ungültigen Werten, statt still auf `''` zu degradieren, sodass die
   Prop-Factory ein `devWarning` loggt (Link-Finding #6 / Issue #10719).
-- **Hydrate-SSR-Snapshot** aktualisiert (der `kol-button`-Eintrag enthielt den `kol-button-wc`-Wrapper).
+- **Hydrate-SSR-Snapshot** aktualisiert — erst wegen des entfallenen `kol-button-wc`-Wrappers,
+  dann wegen des `BemRootNodeFC`-Umbaus (8 Einträge: button, button-link, pagination, split-button,
+  accordion, details, input-file, popover-button).
+- **`BemRootNodeFC`:** `ButtonFC` rendert den Wrapper, das `<button>` trägt `kol-button__button`;
+  Element `button` ist in `bem-registry.ts` registriert. Die geteilten Mixins `kol-button-styles` /
+  `kol-link-styles` nehmen `$interactive-element`; die Cross-Includes in `toolbar`, `link-button`
+  und `button-link` sind angepasst. **Die Theme-Pakete sind bewusst offen** —
+  `.claude/plans/kol-button-theme-worklist.md`.
 
 ## Offene Arbeit, nach Priorität
 
@@ -81,17 +87,22 @@ git diff origin/develop..HEAD -- '*.png'              # muss leer sein
 Themes: default, bwst, ecl, kern, desy (+ unstyled). **„CI grün" ist kein Nachweis** — die
 Snapshot-Workflows committen neue Baselines und werden dadurch selbst grün.
 
-Erwartung: null Diffs. Begründung: alle Theme-Selektoren adressieren `.kol-button` (Klasse) und das
-Button-DOM ist unverändert; die einzige DOM-Änderung ist das entfallene `<kol-button-wc>`-Element im
-Shadow-Root von `kol-button`, und genau diese Art Änderung verursachte im Link-PR nachweislich null
-SCSS-Anpassungen.
+**Erwartung: zunächst viele Diffs.** Der `BemRootNodeFC`-Umbau verschiebt das interaktive Element
+nach innen; ~162 Theme-Selektoren im Button-Kontext hängen an Zuständen des `<button>`. Die
+Theme-Arbeit ist bewusst nicht Teil des PRs und in
+`.claude/plans/kol-button-theme-worklist.md` als Worklist abgelegt — inklusive der Regel, welche
+Selektoren wandern müssen und welche am Wrapper bleiben dürfen.
 
-Restrisiko, falls doch Diffs auftauchen: aus
-`host(inline-block) > kol-button-wc(inline) > button(flex, height:100%)` wurde
-`host(inline-block) > button(flex, height:100%)`. Erst dort suchen (Block-in-Inline-Splitting,
-Auflösung von `height: 100%`), bevor irgendetwas anderes verdächtigt wird.
+Zwei DOM-Änderungen überlagern sich, in dieser Reihenfolge suchen:
 
-Wurde in der Erst-Session nicht ausgeführt: kein Docker-Daemon verfügbar.
+1. `<div class="kol-button"><button class="kol-button__button">` statt `<button class="kol-button">`
+   — der Hauptverursacher; Muster und Fundstellen in der Worklist.
+2. Im Shadow-Root von `kol-button` ist zusätzlich das `<kol-button-wc>`-Element entfallen
+   (`host(inline-block) > kol-button-wc(inline) > button` → `host(inline-block) > div > button`).
+   Beim Link-PR verursachte genau diese Änderung nachweislich null SCSS-Anpassungen, sie ist also
+   der unwahrscheinlichere Kandidat.
+
+In der Erst-Session nicht ausführbar (kein Docker-Daemon); wird lokal vom Owner gefahren.
 
 ### 2. Konsumenten-Migration weg von `kol-button-wc` (der strategische Schritt)
 

@@ -3,5 +3,5 @@
 @use '../@shared/button.mixin' as *;
 
 @layer kol-component {
-	@include kol-button-styles('kol-link');
+	@include kol-button-styles('kol-link', $interactive-element: 'anchor');
 }

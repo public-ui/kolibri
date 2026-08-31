@@ -1,26 +1,27 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
-import { Fragment, h } from '@stencil/core';
+import { h } from '@stencil/core';
 
 import { bem } from '../../../schema/bem-registry';
 import { classNameFromVariant } from '../../../schema/props/variant-class-name';
 import clsx from '../../../utils/clsx';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
 import type { ButtonApi } from './api';
 
 const buttonBem = bem.forBlock('kol-button');
+const BEM_CLASS_BUTTON__BUTTON = buttonBem('button');
 const BEM_CLASS_BUTTON__TEXT = buttonBem('text');
 const BEM_CLASS_BUTTON__TOOLTIP = buttonBem('tooltip');
 
 /**
- * Renders the button, its tooltip and its visually-hidden description.
+ * Renders the button, its tooltip and its visually-hidden description inside a single BEM root.
  *
- * The semantic root is the `<button>` itself, so the BEM root class is built with
- * `bem.forBlock('kol-button')` rather than `BemRootNodeFC` (ARC42 § "When not to use it"). The
- * tooltip and the description span are siblings of the button, not children: a tooltip nested
- * inside the button would become part of its accessible name, and the description span is
- * referenced by `aria-describedby` from outside.
+ * The tooltip and the description span cannot live inside the `<button>` — a nested tooltip would
+ * become part of the accessible name, and the description is referenced by `aria-describedby` from
+ * outside. They are therefore siblings of the button within the `BemRootNodeFC` wrapper, the same
+ * shape `LinkFC` uses.
  */
 export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 	const {
@@ -57,7 +58,19 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 	const hasAriaDescription = ariaDescription.trim().length > 0;
 
 	return (
-		<Fragment>
+		<BemRootNodeFC
+			block="kol-button"
+			class={clsx({
+				[classNameFromVariant(variant, 'button')]: variant.length > 0,
+				[customClass]: customClass.length > 0,
+			})}
+			modifiers={{
+				disabled,
+				'hide-label': hideLabel,
+				inline: inline === true,
+				standalone: inline === false,
+			}}
+		>
 			<button
 				ref={refButton}
 				accessKey={accessKey || undefined}
@@ -68,18 +81,7 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 				aria-keyshortcuts={shortKey || undefined}
 				aria-label={hideLabel && hasLabelText ? label : undefined}
 				aria-selected={ariaSelected || undefined}
-				class={clsx(
-					buttonBem({
-						disabled,
-						'hide-label': hideLabel,
-						inline: inline === true,
-						standalone: inline === false,
-					}),
-					{
-						[classNameFromVariant(variant, 'button')]: variant.length > 0,
-						[customClass]: customClass.length > 0,
-					},
-				)}
+				class={BEM_CLASS_BUTTON__BUTTON}
 				disabled={disabled}
 				id={id || undefined}
 				name={name || undefined}
@@ -105,6 +107,6 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 					{ariaDescription}
 				</span>
 			)}
-		</Fragment>
+		</BemRootNodeFC>
 	);
 };
