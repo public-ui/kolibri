@@ -45,19 +45,17 @@ git diff --quiet origin/develop -- packages/unstyled/snapshots && echo "No diffe
 Der `scripts/snapshots-docker.mjs` erkennt aktuell nur Themes unter `packages/themes/`.
 Für `unstyled` (unter `packages/unstyled/`) muss Unterstützung hinzugefügt werden.
 
-**Status:** ⏳ Noch nicht erledigt
-
-**Aufgaben:**
-
-- `scripts/snapshots-docker.mjs` um `unstyled` erweitern
-- Prüfbefehl `node scripts/snapshots-docker.mjs unstyled --check` zum Laufen bringen
-- CI-Workflows ggf. anpassen (`.github/workflows/ci.yml`, `.github/workflows/update-snapshots.yml`)
+**Status:** ✅ DONE (2026-08-31) — `discoverThemes()` liest jetzt auch `packages/unstyled`
+(pkg-Name aus package.json statt `@public-ui/theme-*`-Konvention). Check läuft:
+`node scripts/snapshots-docker.mjs unstyled --check`
 
 ### 2. Validierung im aktuellen Branch
 
 Wenn Docker-Support da ist: deterministischen Check gegen develop-Baselines laufen.
 
-**Status:** ⏳ Warten auf Schritt 1
+**Status:** ✅ DONE (2026-08-31) — `node scripts/snapshots-docker.mjs unstyled --check`
+im CI-gleichen Container (playwright v1.60.0-noble, Firefox/Linux): **293 passed,
+0 failed** (4,7 min), Exit 0. Baselines unverändert, nichts zurückgeschrieben.
 
 ## Pitfalls
 
