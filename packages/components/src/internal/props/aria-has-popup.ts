@@ -15,11 +15,18 @@ export type AriaHasPopupProp = Prop<'ariaHasPopup', AriaHasPopupPropType | undef
 /**
  * Normalizes the value to one of the aria-haspopup tokens.
  *
- * Anything that is not a known token degrades to the sentinel `''` so the attribute is omitted.
+ * The empty string means "not set" and yields the sentinel. Any other unknown value throws, so
+ * the factory logs a `devWarning` and keeps the previous value instead of degrading silently.
  * undefined/null are handled by the factory's `apply` before this is reached.
  */
 function normalizeAriaHasPopup(value: unknown): AriaHasPopupPropType | '' {
-	return typeof value === 'string' && (ARIA_HAS_POPUP_OPTIONS as readonly string[]).includes(value) ? (value as AriaHasPopupPropType) : '';
+	if (value === '') {
+		return '';
+	}
+	if (typeof value === 'string' && (ARIA_HAS_POPUP_OPTIONS as readonly string[]).includes(value)) {
+		return value as AriaHasPopupPropType;
+	}
+	throw new Error(`Invalid aria-haspopup value: expected one of ${ARIA_HAS_POPUP_OPTIONS.join(', ')}, got ${JSON.stringify(value)}`);
 }
 
 export const ariaHasPopupProp = createPropDefinition<AriaHasPopupProp>('ariaHasPopup', '', normalizeAriaHasPopup);

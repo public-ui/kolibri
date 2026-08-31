@@ -12,9 +12,10 @@ export type AriaExpandedProp = Prop<'ariaExpanded', boolean | undefined, 'true' 
 /**
  * Normalizes the value to the aria-expanded tokens.
  *
- * Booleans and their string equivalents map to `'true'`/`'false'`; anything else degrades to
- * the sentinel `''` so the attribute is omitted. undefined/null are handled by the factory's
- * `apply` before this is reached.
+ * Booleans and their string equivalents map to `'true'`/`'false'`; the empty string means "not
+ * set" and yields the sentinel. Anything else throws, so the factory logs a `devWarning` and
+ * keeps the previous value instead of degrading silently. undefined/null are handled by the
+ * factory's `apply` before this is reached.
  */
 function normalizeAriaExpanded(value: unknown): 'true' | 'false' | '' {
 	if (value === true || value === 'true') {
@@ -23,7 +24,10 @@ function normalizeAriaExpanded(value: unknown): 'true' | 'false' | '' {
 	if (value === false || value === 'false') {
 		return 'false';
 	}
-	return '';
+	if (value === '') {
+		return '';
+	}
+	throw new Error(`Invalid aria-expanded value: expected a boolean, got ${JSON.stringify(value)}`);
 }
 
 export const ariaExpandedProp = createPropDefinition<AriaExpandedProp>('ariaExpanded', '', normalizeAriaExpanded);

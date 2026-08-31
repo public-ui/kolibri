@@ -110,9 +110,12 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 
 	public componentWillLoad(): void {
 		this.initRenderProps(buttonPropsConfig);
-		// The props config seeds `tabIndex` with its default `0`. An unset tabindex must not render
-		// as `tabindex="0"` — buttons are natively tabbable and the attribute would pin them into
-		// the document tab order.
+		// Seed `tabIndex` as unset before any watcher runs. `watchTabIndex` below does the same for
+		// the regular path, but this component can abort mid-initialization: under SSR `@Element()`
+		// is not populated in the constructor of a `shadow: false` component, `AssociatedInputController`
+		// then throws on `attachInternals(undefined)` and `watchName` hits an undefined controller —
+		// Stencil swallows that error and renders anyway. Without this line the props config default
+		// `0` would survive such an abort and emit a stray `tabindex="0"`.
 		this.setRenderProp('tabIndex', undefined as unknown as number);
 
 		this.watchAccessKey(this._accessKey);
@@ -445,10 +448,14 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _tabIndex?: number;
 	@Watch('_tabIndex')
 	public watchTabIndex(value?: number): void {
-		// An unset tabindex must not render as `tabindex="0"` — buttons are natively tabbable and
-		// the attribute would pin them into the document tab order.
+		// The props config seeds `tabIndex` with its default `0`, but an unset tabindex must not
+		// render as `tabindex="0"` — buttons are natively tabbable and the attribute would pin them
+		// into the document tab order. Unsetting the prop has to restore that state, so the else
+		// branch is not optional: without it a reset would keep the previous number.
 		if (typeof value === 'number') {
 			tabIndexProp.apply(value, (v) => this.setRenderProp('tabIndex', v));
+		} else {
+			this.setRenderProp('tabIndex', undefined as unknown as number);
 		}
 	}
 
