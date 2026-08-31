@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router';
 
 import { KolLink } from '@public-ui/react-v19';
 import { fetchVariantData } from '../../shares/fetchVariantData';
-import { getCustomThemes } from '../../shares/store';
+import { getTheme } from '../../shares/store';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
@@ -11,7 +11,7 @@ import type { FC } from 'react';
 
 export const LinkVariant: FC = () => {
 	const [searchParams] = useSearchParams();
-	const theme = searchParams.get('theme') ?? getCustomThemes()?.[0]?.key;
+	const theme = searchParams.get('theme') ?? getTheme();
 	const data = useMemo(() => (theme ? fetchVariantData(theme, 'linkVariants') : []), [theme]);
 
 	return (

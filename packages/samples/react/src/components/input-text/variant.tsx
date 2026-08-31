@@ -17,13 +17,13 @@ import type { FC } from 'react';
 import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router';
 import { fetchVariantData } from '../../shares/fetchVariantData';
-import { getCustomThemes } from '../../shares/store';
+import { getTheme } from '../../shares/store';
 import { SampleBlock, toKebabCase } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const InputVariant: FC = () => {
 	const [searchParams] = useSearchParams();
-	const theme = searchParams.get('theme') ?? getCustomThemes()?.[0]?.key;
+	const theme = searchParams.get('theme') ?? getTheme();
 	const inputVariants = useMemo(() => (theme ? fetchVariantData(theme, 'inputVariants') : []), [theme]);
 
 	return (
