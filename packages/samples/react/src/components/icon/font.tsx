@@ -34,8 +34,10 @@ export const IconFont: FC = () => {
 					iconVariants.map((element) => {
 						return (
 							<div className="flex gap-4" key={element}>
-								<KolIcon _label="" _icons={element} />
-								<span>&lt;KolIcon _icons='{element}' _label="" /&gt;</span>
+								<KolIcon _label={element} _icons={element} />
+								<span>
+									&lt;KolIcon _icons='{element}' _label="{element}" /&gt;
+								</span>
 							</div>
 						);
 					})

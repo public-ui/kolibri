@@ -3,7 +3,7 @@
 
 @layer kol-theme-component {
 	@include kol-link('kol-link');
-	@include kol-link('kol-button');
+	@include kol-link('kol-button', $anchor-scoped: false);
 
 	.kol-nav {
 		--kol-nav-item-padding-left: -16;
@@ -38,11 +38,20 @@
 				}
 
 				&:hover,
-				&:focus {
+				&:focus,
+				.kol-link__anchor:focus {
 					.kol-span__label {
 						text-decoration: none;
 					}
 				}
+			}
+
+			// The kol-link wrapper carries the 49px row box; stretch the anchor inside so the
+			// whole row stays clickable and focusable (before the skeleton migration the
+			// anchor itself was the row element).
+			.kol-link__anchor {
+				width: 100%;
+				height: 100%;
 			}
 		}
 	}

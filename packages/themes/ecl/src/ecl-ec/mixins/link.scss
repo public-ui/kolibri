@@ -1,20 +1,36 @@
-@mixin link($block-classname) {
+/*
+ * Link styles. With $anchor-scoped (default) they attach to the inner `kol-link__anchor`
+ * of the skeleton DOM. Otherwise they attach to the class carrier itself, whose element
+ * is the interactive one (e.g. `kol-button` in button-link), matching the component DOM
+ * before the kol-link skeleton migration.
+ */
+@mixin link-carrier {
+	color: var(--ecl-color-primary);
+
+	.kol-span__label {
+		text-decoration-thickness: from-font;
+		text-underline-offset: clamp(3px, 0.245em, 10px);
+	}
+
+	&:hover {
+		color: var(--ecl-color-primary-140);
+	}
+
+	&:focus {
+		outline: 2px solid var(--ecl-color-primary);
+		border-radius: 1px;
+		outline-offset: 2px;
+	}
+}
+
+@mixin link($block-classname, $anchor-scoped: true) {
 	.#{$block-classname} {
-		color: var(--ecl-color-primary);
-
-		.kol-span__label {
-			text-decoration-thickness: from-font;
-			text-underline-offset: clamp(3px, 0.245em, 10px);
-		}
-
-		&:hover {
-			color: var(--ecl-color-primary-140);
-		}
-
-		&:focus {
-			outline: 2px solid var(--ecl-color-primary);
-			border-radius: 1px;
-			outline-offset: 2px;
+		@if $anchor-scoped {
+			&__anchor {
+				@include link-carrier;
+			}
+		} @else {
+			@include link-carrier;
 		}
 	}
 }

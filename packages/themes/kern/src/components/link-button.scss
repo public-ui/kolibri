@@ -1,5 +1,17 @@
 @use '../mixins/button.mixin' as *;
+@use '../mixins/focus-outline.mixin' as *;
 
 @layer kol-theme-component {
 	@include button('kol-link');
+
+	/* The link skeleton renders the focusable anchor inside the `.kol-link` wrapper, so the
+	   focus ring has to attach to the wrapper via :focus-within — it sat on the
+	   anchor-as-root before the migration (same focus-outline as the button itself). */
+	.kol-link:not(.kol-link--stretched):focus-within {
+		@include focus-outline;
+	}
+
+	.kol-link__anchor:focus {
+		outline: none;
+	}
 }

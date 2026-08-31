@@ -2,5 +2,5 @@
 @use '../mixins/link' as *;
 
 @layer kol-theme-component {
-	@include link('kol-button');
+	@include link('kol-button', $anchor-scoped: false);
 }

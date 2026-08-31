@@ -2,7 +2,7 @@
 @use '../functions/to-rem' as *;
 
 @layer kol-theme-component {
-	@include kol-link('kol-button');
+	@include kol-link('kol-button', $anchor-scoped: false);
 
 	.kol-popover__content {
 		border: 0;

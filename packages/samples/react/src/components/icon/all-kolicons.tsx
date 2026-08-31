@@ -26,7 +26,7 @@ export const IconAllKolicons: FC = () => {
 				{Object.entries(icons).map(([key]) => {
 					return (
 						<div className="flex gap-4" key={key}>
-							<KolIcon _label="" _icons={'kolicon-' + key} />
+							<KolIcon _label={`Icon ${key}`} _icons={'kolicon-' + key} />
 							<span>kolicon-{key}</span>
 						</div>
 					);

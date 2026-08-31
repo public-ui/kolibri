@@ -19,7 +19,7 @@ import { generateBemClassNames } from 'typed-bem';
 /**
  * Complete schema definition for all KoliBri components
  */
-type KoliBriComponentsBemSchema = {
+export type KoliBriComponentsBemSchema = {
 	'kol-abbr': {
 		modifiers: null;
 	};
@@ -169,6 +169,20 @@ type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'has-badge' | 'hide-label'>;
 	};
+	'kol-link': {
+		elements: {
+			anchor: {
+				modifiers: null;
+			};
+			icon: {
+				modifiers: null;
+			};
+			text: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'disabled' | 'external-link' | 'hide-label' | 'inline' | 'standalone'>;
+	};
 	'kol-spin': {
 		elements: {
 			spinner: {
@@ -269,6 +283,14 @@ const BEM: KoliBriComponentsBemSchema = {
 			slot: { modifiers: null },
 		},
 		modifiers: new Set(['has-badge', 'hide-label']),
+	},
+	'kol-link': {
+		elements: {
+			anchor: { modifiers: null },
+			icon: { modifiers: null },
+			text: { modifiers: null },
+		},
+		modifiers: new Set(['disabled', 'external-link', 'hide-label', 'inline', 'standalone']),
 	},
 	'kol-spin': {
 		elements: {
