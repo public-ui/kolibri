@@ -50,6 +50,7 @@
 		"build:deps": "pnpm --filter @public-ui/hydrate-server^... build",
 		"format": "prettier --check src test",
 		"lint": "pnpm lint:eslint",
+		"prepare": "pnpm run build",
 		"lint:eslint": "eslint src",
 		"pretest:unit": "pnpm run build",
 		"pretest:update:unit": "pnpm run pretest:unit",
