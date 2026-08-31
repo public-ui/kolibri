@@ -7,10 +7,10 @@
 		gap: var(--ecl-spacing-xs);
 
 		&__label {
+			--kol-span-badge-gap: #{to-rem(4)};
+
 			@include popover-button;
 
-			display: flex;
-			gap: to-rem(4);
 			order: 1;
 
 			&-text::after {

@@ -16,11 +16,9 @@
 
 			color: var(--kern-color-layout-text-default);
 
-			display: flex;
 			padding: var(--kern-metric-baseline-label-default-padding-top) var(--kern-metric-space-none) var(--kern-metric-baseline-label-default-padding-bottom)
 				var(--kern-metric-space-none);
 			order: 1;
-			align-items: flex-end;
 
 			font-size: var(--kern-typography-font-size-static-medium);
 			font-weight: var(--kern-typography-font-weight-medium);
