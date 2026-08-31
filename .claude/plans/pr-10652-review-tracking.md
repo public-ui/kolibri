@@ -24,6 +24,10 @@
 | K3  | Umfang 115 Dateien; Controller-Entkopplung als vorgelagerter PR                                      | ➖ nicht umsetzbar | Rückwirkend nicht teilbar — Branch ist konsolidiert; Folge-Migrationen laufen pro Komponente.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | K4  | `.claude/plans/*` überleben den Merge nicht                                                          | ✅ bekannt         | Bewusste Arbeitsnotizen; werden vor dem Merge ausgedünnt (siehe Plan, „when the last consumer is migrated … prune this plan").                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
+### ℹ️ Nicht durch diesen PR verursacht (für Reviewer)
+
+- **Sidebar-Tree nicht fokussierbar, Pfeiltasten ohne Wirkung** → [#10721](https://github.com/public-ui/kolibri/issues/10721). Auf `develop` genauso kaputt wie auf diesem Branch: `git diff origin/develop...HEAD -- packages/components/src/components/tree/ packages/components/src/components/tree-item/` zeigt als einzige Änderung `tree-item/style.scss` (+9 Zeilen, reiner CSS-Anker-Breiten-Fix). Die Tastaturlogik (Keydown-Handler, Focus-Kette tree-item → kol-link-wc → Anker, Roving-Tabindex) ist byte-identisch. **Kein Review-Kriterium für diesen PR.**
+
 ### Nachfolge-Arbeiten (Branch-Plan, keine Review-Findings im engeren Sinn)
 
 1. Unit-Test für `kol-link-wc` (aktuell rendert `snapshot.spec.tsx` nur `[KolLink]`) — **vor** der Konsumenten-Migration.
