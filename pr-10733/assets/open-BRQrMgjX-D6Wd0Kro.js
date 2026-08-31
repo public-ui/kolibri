@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-BtkcooTa.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
