@@ -1,0 +1,1 @@
+import{Ot as e}from"./index-CTv3ihCU.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
