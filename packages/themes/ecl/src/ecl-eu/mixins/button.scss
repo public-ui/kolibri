@@ -63,7 +63,9 @@
 			}
 		}
 
-		&:focus {
+		/* The link skeleton renders the focusable element as `__anchor` inside the wrapper. */
+		&:focus,
+		&__anchor:focus {
 			outline: none;
 		}
 

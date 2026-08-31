@@ -3,9 +3,8 @@
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="bottom" 1`] = `
 <kol-link>
   <template shadowrootmode="open">
-    <kol-link-wc>
-      <!---->
-      <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
+    <div class="kol-link kol-link--external-link kol-link--inline">
+      <a class="kol-link__anchor" href="https://example.com" rel="noopener" target="self">
         <span class="kol-link__text kol-span">
           <span class="kol-span__container">
             <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -19,7 +18,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
         </span>
         <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
       </a>
-    </kol-link-wc>
+    </div>
   </template>
 </kol-link>
 `;
@@ -27,9 +26,8 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="left" 1`] = `
 <kol-link>
   <template shadowrootmode="open">
-    <kol-link-wc>
-      <!---->
-      <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
+    <div class="kol-link kol-link--external-link kol-link--inline">
+      <a class="kol-link__anchor" href="https://example.com" rel="noopener" target="self">
         <span class="kol-link__text kol-span">
           <span class="kol-span__container">
             <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -43,7 +41,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
         </span>
         <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
       </a>
-    </kol-link-wc>
+    </div>
   </template>
 </kol-link>
 `;
@@ -51,9 +49,8 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="right" 1`] = `
 <kol-link>
   <template shadowrootmode="open">
-    <kol-link-wc>
-      <!---->
-      <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
+    <div class="kol-link kol-link--external-link kol-link--inline">
+      <a class="kol-link__anchor" href="https://example.com" rel="noopener" target="self">
         <span class="kol-link__text kol-span">
           <span class="kol-span__container">
             <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -67,7 +64,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
         </span>
         <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
       </a>
-    </kol-link-wc>
+    </div>
   </template>
 </kol-link>
 `;
@@ -75,9 +72,8 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="top" _hideLabel=true 1`] = `
 <kol-link>
   <template shadowrootmode="open">
-    <kol-link-wc>
-      <!---->
-      <a aria-label="Label (kol-open-link-in-tab)" class="kol-link kol-link--external-link kol-link--hide-label kol-link--inline" href="https://example.com" rel="noopener" target="self">
+    <div class="kol-link kol-link--external-link kol-link--hide-label kol-link--inline">
+      <a aria-label="Label (kol-open-link-in-tab)" class="kol-link__anchor" href="https://example.com" rel="noopener" target="self">
         <span class="kol-link__text kol-span kol-span--hide-label">
           <span class="kol-span__container">
             <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -101,7 +97,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
           </span>
         </div>
       </div>
-    </kol-link-wc>
+    </div>
   </template>
 </kol-link>
 `;
@@ -109,9 +105,8 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="top" 1`] = `
 <kol-link>
   <template shadowrootmode="open">
-    <kol-link-wc>
-      <!---->
-      <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
+    <div class="kol-link kol-link--external-link kol-link--inline">
+      <a class="kol-link__anchor" href="https://example.com" rel="noopener" target="self">
         <span class="kol-link__text kol-span">
           <span class="kol-span__container">
             <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -125,7 +120,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
         </span>
         <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
       </a>
-    </kol-link-wc>
+    </div>
   </template>
 </kol-link>
 `;
@@ -133,9 +128,8 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" 1`] = `
 <kol-link>
   <template shadowrootmode="open">
-    <kol-link-wc>
-      <!---->
-      <a class="kol-link kol-link--external-link kol-link--inline" href="https://example.com" rel="noopener" target="self">
+    <div class="kol-link kol-link--external-link kol-link--inline">
+      <a class="kol-link__anchor" href="https://example.com" rel="noopener" target="self">
         <span class="kol-link__text kol-span">
           <span class="kol-span__container">
             <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
@@ -149,7 +143,7 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
         </span>
         <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
       </a>
-    </kol-link-wc>
+    </div>
   </template>
 </kol-link>
 `;
@@ -157,9 +151,8 @@ exports[`kol-link should render with _href="https://example.com" _icons="codicon
 exports[`kol-link should render with _label="Label" _href="" _download="download-file.zip" _target="blank" 1`] = `
 <kol-link>
   <template shadowrootmode="open">
-    <kol-link-wc>
-      <!---->
-      <a class="kol-link kol-link--external-link kol-link--inline" download="download-file.zip" href="javascript:void(0);" rel="noopener" target="blank">
+    <div class="kol-link kol-link--external-link kol-link--inline">
+      <a class="kol-link__anchor" download="download-file.zip" href="javascript:void(0);" rel="noopener" target="blank">
         <span class="kol-link__text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -172,7 +165,7 @@ exports[`kol-link should render with _label="Label" _href="" _download="download
         </span>
         <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
       </a>
-    </kol-link-wc>
+    </div>
   </template>
 </kol-link>
 `;

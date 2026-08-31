@@ -14,9 +14,14 @@
 
 			.kol-link {
 				color: var(--color-text);
-				padding-right: to-rem(8);
 				padding-left: max(calc(var(--indentation) * var(--level)));
 				text-align: left;
+			}
+
+			/* The padding-right lives on the anchor: its focus outline has to reach the row edge
+			   so that it covers the list frame exactly like the former full-width anchor did. */
+			.kol-link__anchor {
+				padding-right: to-rem(8);
 			}
 
 			&:hover,
@@ -25,6 +30,11 @@
 				border: 1px solid var(--color-primary);
 
 				.kol-link {
+					color: var(--color-light);
+					outline-offset: 0;
+				}
+
+				.kol-link__anchor {
 					color: var(--color-light);
 					outline-offset: 0;
 				}

@@ -2,9 +2,10 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Host, Method, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../../../internal/functional-components/base-web-component';
 import type { ClickButtonApi } from '../../../../internal/functional-components/click-button/api';
+import { clickButtonPropsConfig } from '../../../../internal/functional-components/click-button/api';
 import { ClickButtonFC } from '../../../../internal/functional-components/click-button/component';
-import { ClickButtonController } from '../../../../internal/functional-components/click-button/controller';
 import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
+import { labelProp } from '../../../../internal/props';
 import type { KolFocusOptions } from '../../../../schema';
 import { createCtaRef, delegateFocus } from '../../../../utils/element-interaction';
 
@@ -16,7 +17,6 @@ import { createCtaRef, delegateFocus } from '../../../../utils/element-interacti
 	shadow: true,
 })
 export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements WebComponentInterface<ClickButtonApi> {
-	private readonly ctrl = new ClickButtonController(BaseWebComponent.stateLess);
 	private readonly buttonRef = createCtaRef<HTMLButtonElement>();
 
 	/**
@@ -27,7 +27,7 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 
 	@Watch('_label')
 	public watchLabel(value?: string): void {
-		this.ctrl.watchLabel(value);
+		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**
@@ -40,15 +40,20 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public componentWillLoad(): void {
-		this.ctrl.componentWillLoad({
-			label: this._label,
-		});
+		this.initRenderProps(clickButtonPropsConfig);
+
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
 	}
+
+	public handleClick = (): void => {
+		// eslint-disable-next-line no-console
+		console.log(this, 'button clicked');
+	};
 
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<ClickButtonFC label={this.ctrl.getRenderProp('label')} refButton={this.buttonRef} handleClick={this.ctrl.handleClick} />
+				<ClickButtonFC label={this.getRenderProp('label')} refButton={this.buttonRef} handleClick={this.handleClick} />
 			</Host>
 		);
 	}

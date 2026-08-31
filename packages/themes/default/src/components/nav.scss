@@ -37,11 +37,24 @@
 				padding-right: to-rem(var(--kol-nav-item-padding-right));
 				padding-left: to-rem(8);
 				gap: to-rem(8);
+
+				/* The link skeleton renders the entry as `.kol-link` wrapper inside the entry element.
+				   The wrapper must fill the entry so that trailing icons (expand) stay at the row end. */
+				flex: 1 1 auto;
 				align-items: center;
 
 				text-decoration: none;
 
+				/* The UA default underline sits on the anchor itself. */
+				.kol-link__anchor {
+					text-decoration: none;
+				}
+
 				&:focus-visible {
+					@include focus-outline;
+				}
+
+				.kol-link__anchor:focus-visible {
 					@include focus-outline;
 				}
 
