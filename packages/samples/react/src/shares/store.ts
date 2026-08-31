@@ -96,5 +96,7 @@ export const setCustomThemes = (themes: Theme[] | undefined) => {
 };
 
 export const getCustomThemes = (): Theme[] | undefined => {
+	console.log(STORE.theme);
+
 	return STORE.customThemes;
 };
