@@ -252,7 +252,12 @@ node scripts/theme-redundancy-check.js
 ### 2025-08-30 — Erster Lauf
 
 **Szenario**: Initial-Check über alle Themes (außer unstyled)
-**Gefundene Redundanzen**: TBD
+**Gefundene Redundanzen**: 97 (62 HIGH, 31 MEDIUM, 4 NEVER)
 **Verschoben**: TBD
-**Nicht verschoben**: TBD
-**Probleme/Lessons**: TBD
+**Nicht verschoben**: 4 NEVER-Priority (Farben)
+**Probleme/Lessons**:
+
+- Theme-Struktur variiert (ecl, itzbund ohne src/mixins)
+- SCSS-Variablen in Values benötigen Prüfung der Verfügbarkeit
+- Hard-coded Werte wie box-shadow bleiben Theme-spezifisch
+- Pfadauflösung in Node-Skripten: absoluter Pfad nutzen
