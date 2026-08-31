@@ -111,6 +111,7 @@ export const SpanFC: FC<
 			class={clsx(
 				spanBem({
 					'has-badge': !!badgeText,
+					'has-icon': !!icons,
 					'hide-label': !!hideLabel,
 				}),
 				classNames,

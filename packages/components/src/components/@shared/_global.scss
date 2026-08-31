@@ -20,15 +20,15 @@
 		box-sizing: border-box;
 	}
 
-	.kol-span {
-		/* KolSpan is a layout component with icons in all directions and a label text in the middle. */
+	.kol-span--has-icon {
+		/* KolSpan can have icons in all directions and a label text in the middle. If no icons are present KolSpan is just a normal inline span. */
 		display: flex;
 		flex-flow: column;
 		align-items: center;
 		justify-content: center;
 
 		/* The sub span in KolSpan is the horizontal span with icon left and right and the label text in the middle. */
-		&__container {
+		.kol-span__container {
 			display: flex;
 			align-items: center;
 		}
