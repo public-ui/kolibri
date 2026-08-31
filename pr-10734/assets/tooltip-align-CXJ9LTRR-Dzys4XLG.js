@@ -1,1 +1,0 @@
-import"./index-B-C_vkia.js";import{r as e}from"./align-DnuTHmUs-BBBo0XaJ.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
