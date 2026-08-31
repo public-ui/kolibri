@@ -41,6 +41,58 @@ nav/tree-item/button focus selectors, updated link hydrate snapshots.
 | `26eb56fb` | `createPropDefinition` supports `{ required: true }`: unset required props warn and fall back to default; `hrefProp` is required (explicit `''` stays warning-free by design)                                                                                               |
 | `f11a38e4` | CI snapshot baselines updated via `update-snapshots.yml` (run 33298340921, all jobs green): 127 PNGs across all five themes, 51 link-related                                                                                                                                |
 
+## Public API parity (PR-Review Punkt 9) — ERLEDIGT (2026-08-31)
+
+Erledigt in `fix: restore kol-link public API parity with develop and pin it in a skeleton
+contract test` (komponenten: `component.tsx`, `wc.tsx`, `_skeleton/ARC42.md`,
+`_skeleton/AGENTS.md`, `_skeleton/public-api.spec.ts`, dieser Plan). Vorab vom Owner gelesen
+und freigegeben.
+
+Befund (PR-Review, Punkt 9): Der öffentliche Vertrag von `kol-link` war gewachsen
+(`_ariaOwns`, `_customClass`, `_tabIndex`, wirksames `_role`, `click()`), während gleichzeitig
+alle `@Prop`/`@Method`-JSDocs und die Schema-Typen (`implements LinkProps`) verschwanden —
+`docs-vscode`/`custom-elements.json` werden aber aus `prop.docs`/`method.docs` generiert.
+
+Anforderung des Owners: **Die öffentliche API (alle `_`-Props + Methoden) muss exakt der auf
+`develop` entsprechen. FC-Props sind intern und werden nicht 1:1 nach außen exponiert.** Diese
+Regel ist jetzt auch Teil des Skeleton-Konzepts (siehe unten).
+
+Umsetzung:
+
+- `component.tsx` (`kol-link`, öffentlicher Tag): `_ariaOwns`, `_customClass`, `_tabIndex`
+  und `click()` entfernt (entspricht develop `shadow.tsx`, dort nie öffentlich); develop-JSDoc
+  wörtlich restauriert (inkl. `@TODO`-Stencil-Notizen und `@deprecated` an `_role`); Schema-Aliase
+  statt Primitive (`AccessKeyPropType`, `HrefPropType`, `LabelWithExpertSlotPropType`,
+  `LinkTargetPropType`, …); `implements FocusableElement, LinkProps` zusätzlich zu
+  `WebComponentInterface<LinkApi>`. Die Watcher/Apply-Aufrufe der drei entfernten Props sind
+  mitentfernt; der `tabIndex`-Seed bleibt (FC-Default `0` darf nicht als `tabindex="0"` rendern),
+  die Render-Mappings bleiben (liefern jetzt konstant die FC-Defaults → Nullwirkung wie develop).
+- `wc.tsx` (`kol-link-wc`, intern; develop hatte dort alle 21 Props + `click()`): Prop-Satz
+  unverändert gelassen, JSDoc/Typen/implements analog restauriert (`ClickableElement,
+FocusableElement, LinkProps`). `InternalLinkAPI` ist bewusst **nicht** wiederhergestellt — es
+  fordert das Legacy-`state`-Member, das die Render-Prop-Store-Architektur ersetzt.
+- Konzept: `_skeleton/ARC42.md` §4 neuer Abschnitt „Public API Contract (Migration Parity)“ +
+  §9 Designentscheidung 15; `_skeleton/AGENTS.md` Props-First-Workflow um Paritätsregel und
+  Verifikationspflicht ergänzt.
+- Neuer Contract-Test `packages/components/src/components/_skeleton/public-api.spec.ts`: extrahiert
+  `@Prop`/`@Method` (+ JSDoc, Typ, Default, Required) aus den Quelldateien und pinned die
+  öffentliche kol-link-API (17 Props + `focus`) als handgeschriebene Golden-Tabelle; generische
+  Regel „jedes öffentliche Member hat JSDoc“ für component.tsx + wc.tsx; Pin-Aufnahme ist für
+  jede künftige Skeleton-Migration Pflicht (in ARC42/AGENTS.md so festgeschrieben).
+- Verifikation: Extract-Diff von `@Prop`/`@Method` + JSDoc gegen `git show origin/develop:…`
+  → kol-link-wc 23/23 Member identisch (inkl. Doku + Typen); kol-link identisch bis auf eine
+  Owner-Entscheidung (siehe unten). `lint:tsc`, `eslint` und `test:unit` (jetzt 890 Tests
+  inkl. Contract-Test) grün.
+- Owner-Entscheidung (2026-08-30, „keine public role nur an der FC“): `_role` ist an `kol-link`
+  **komplett entfernt** — nicht wie auf develop deklariert-ohne-Wirkung, sondern gar nicht mehr
+  öffentlich. Die Rolle existiert nur noch intern am `LinkFC` (`role` Render-Prop, Default `''`
+  → kein Attribut) und als `_role` am internen `kol-link-wc` (dort brauchen sie die Legacy-
+  Konsumenten, z. B. tree-item `_role="treeitem"`; develop hatte sie dort wirksam). Damit geht
+  die auf develop angekündigte Deprecation („We will remove this prop in the future“) jetzt in
+  Erfüllung — Breaking Change gegenüber der develop-Deklaration, bewusst vom Owner so entschieden.
+  Konsequenz: kein Consumer/Sample setzt `_role` an `kol-link` (verifiziert), Tests/Snapshots
+  unverändert.
+
 ## Open work, in priority order
 
 ### 0. GOAL (acceptance criterion for the whole PR): zero visual delta

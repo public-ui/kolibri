@@ -12,8 +12,6 @@ import {
 	ariaCurrentValueProp,
 	ariaDescriptionProp,
 	ariaExpandedProp,
-	ariaOwnsProp,
-	customClassProp,
 	disabledProp,
 	downloadProp,
 	hideLabelProp,
@@ -21,26 +19,34 @@ import {
 	inlineProp,
 	labelWithExpertSlotProp,
 	linkCallbacksProp,
-	linkRoleProp,
 	linkTargetProp,
 	shortKeyProp,
 	spanIconsProp,
-	tabIndexProp,
 	tooltipAlignProp,
 	variantProp,
 } from '../../internal/props';
 import type {
+	AccessKeyPropType,
 	AriaCurrentValuePropType,
+	AriaDescriptionPropType,
+	DownloadPropType,
+	FocusableElement,
+	HrefPropType,
+	InlinePropType,
 	KolFocusOptions,
 	KoliBriIconsProp,
+	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
+	LinkProps,
+	LinkTargetPropType,
+	ShortKeyPropType,
 	Stringified,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { nonce } from '../../utils/dev.utils';
-import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import type { UnsubscribeFunction } from './ariaCurrentService';
 import { onLocationChange } from './ariaCurrentService';
@@ -55,7 +61,7 @@ import { onLocationChange } from './ariaCurrentService';
 	},
 	shadow: true,
 })
-export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi> {
+export class KolLink extends BaseWebComponent<LinkApi> implements FocusableElement, LinkProps, WebComponentInterface<LinkApi> {
 	@Element() protected readonly host?: HTMLKolLinkElement;
 
 	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
@@ -79,8 +85,6 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 		ariaCurrentValueProp.apply(this._ariaCurrentValue, (v) => this.setRenderProp('ariaCurrentValue', v));
 		ariaDescriptionProp.apply(this._ariaDescription, (v) => this.setRenderProp('ariaDescription', v));
 		ariaExpandedProp.apply(this._ariaExpanded, (v) => this.setRenderProp('ariaExpanded', v));
-		ariaOwnsProp.apply(this._ariaOwns, (v) => this.setRenderProp('ariaOwns', v));
-		customClassProp.apply(this._customClass, (v) => this.setRenderProp('customClass', v));
 		disabledProp.apply(this._disabled, (v) => this.setRenderProp('disabled', v));
 		downloadProp.apply(this._download, (v) => this.setRenderProp('download', v));
 		hideLabelProp.apply(this._hideLabel, (v) => this.setRenderProp('hideLabel', v));
@@ -89,13 +93,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 		inlineProp.apply(this._inline, (v) => this.setRenderProp('inline', v));
 		this.applyLabel(this._label);
 		linkCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
-		linkRoleProp.apply(this._role, (v) => this.setRenderProp('role', v));
 		shortKeyProp.apply(this._shortKey, (v) => this.setRenderProp('shortKey', v));
-		// An unset tabindex must not render as `tabindex="0"` — links are natively tabbable and
-		// the attribute would trigger focus outlines that the predecessor did not draw.
-		if (typeof this._tabIndex === 'number') {
-			tabIndexProp.apply(this._tabIndex, (v) => this.setRenderProp('tabIndex', v));
-		}
 		linkTargetProp.apply(this._target, (v) => this.setRenderProp('target', v));
 		this.applyTooltipAlign(this._tooltipAlign);
 		variantProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
@@ -178,15 +176,14 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 
 	// --- Public methods ---
 
+	/**
+	 * Sets focus on the internal element.
+	 */
 	@Method()
 	@delegateFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public async focus(options?: KolFocusOptions): Promise<void> {}
-
-	@Method()
-	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
 
 	// --- Refs ---
 
@@ -242,126 +239,156 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 
 	// --- Props + Watchers ---
 
-	@Prop() public _accessKey?: string;
+	/**
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
 	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
+	public watchAccessKey(value?: AccessKeyPropType): void {
 		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
 	}
 
+	/**
+	 * Defines the value for the aria-current attribute.
+	 */
+	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
+	@Watch('_ariaCurrentValue')
+	public watchAriaCurrentValue(value?: AriaCurrentValuePropType): void {
+		ariaCurrentValueProp.apply(value, (v) => this.setRenderProp('ariaCurrentValue', v));
+	}
+
+	/**
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 */
 	@Prop() public _ariaControls?: string;
 	@Watch('_ariaControls')
 	public watchAriaControls(value?: string): void {
 		ariaControlsProp.apply(value, (v) => this.setRenderProp('ariaControls', v));
 	}
 
-	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
-	@Watch('_ariaCurrentValue')
-	public watchAriaCurrentValue(value?: string): void {
-		ariaCurrentValueProp.apply(value, (v) => this.setRenderProp('ariaCurrentValue', v));
-	}
-
-	@Prop() public _ariaDescription?: string;
+	/**
+	 * Defines the value for the aria-description attribute.
+	 */
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 	@Watch('_ariaDescription')
-	public watchAriaDescription(value?: string): void {
+	public watchAriaDescription(value?: AriaDescriptionPropType): void {
 		ariaDescriptionProp.apply(value, (v) => this.setRenderProp('ariaDescription', v));
 	}
 
+	/**
+	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 * @TODO: Change type back to `AriaExpandedPropType` after Stencil#4663 has been resolved.
+	 */
 	@Prop() public _ariaExpanded?: boolean;
 	@Watch('_ariaExpanded')
 	public watchAriaExpanded(value?: boolean): void {
 		ariaExpandedProp.apply(value, (v) => this.setRenderProp('ariaExpanded', v));
 	}
 
-	@Prop() public _ariaOwns?: string;
-	@Watch('_ariaOwns')
-	public watchAriaOwns(value?: string): void {
-		ariaOwnsProp.apply(value, (v) => this.setRenderProp('ariaOwns', v));
-	}
-
-	@Prop() public _customClass?: string;
-	@Watch('_customClass')
-	public watchCustomClass(value?: string): void {
-		customClassProp.apply(value, (v) => this.setRenderProp('customClass', v));
-	}
-
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 */
 	@Prop() public _disabled?: boolean = false;
 	@Watch('_disabled')
 	public watchDisabled(value?: boolean): void {
 		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
 	}
 
-	@Prop() public _download?: string;
+	/**
+	 * Tells the browser that the link contains a file. Optionally sets the filename.
+	 */
+	@Prop() public _download?: DownloadPropType;
 	@Watch('_download')
-	public watchDownload(value?: string): void {
+	public watchDownload(value?: DownloadPropType): void {
 		downloadProp.apply(value, (v) => this.setRenderProp('download', v));
 	}
 
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
 	@Prop() public _hideLabel?: boolean = false;
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: boolean): void {
 		hideLabelProp.apply(value, (v) => this.setRenderProp('hideLabel', v));
 	}
 
-	@Prop() public _href!: string;
+	/**
+	 * Sets the target URI of the link or citation source.
+	 */
+	@Prop() public _href!: HrefPropType;
 	@Watch('_href')
-	public watchHref(value?: string): void {
+	public watchHref(value?: HrefPropType): void {
 		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
 	}
 
+	/**
+	 * Defines the icon classnames.
+	 */
 	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 	@Watch('_icons')
 	public watchIcons(value?: Stringified<KoliBriIconsProp>): void {
 		spanIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
 	}
 
-	@Prop() public _inline?: boolean = true;
+	/**
+	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
+	 */
+	@Prop() public _inline?: InlinePropType = true;
 	@Watch('_inline')
-	public watchInline(value?: boolean): void {
+	public watchInline(value?: InlinePropType): void {
 		inlineProp.apply(value, (v) => this.setRenderProp('inline', v));
 	}
 
-	@Prop() public _label?: string;
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 */
+	@Prop() public _label?: LabelWithExpertSlotPropType;
 	@Watch('_label')
-	public watchLabel(value?: string): void {
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
 		this.applyLabel(value);
 	}
 
+	/**
+	 * Defines the callback functions for links.
+	 */
 	@Prop() public _on?: LinkOnCallbacksPropType;
 	@Watch('_on')
 	public watchOn(value?: LinkOnCallbacksPropType): void {
 		linkCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
 	}
 
-	@Prop() public _role?: 'tab' | 'treeitem';
-	@Watch('_role')
-	public watchRole(value?: 'tab' | 'treeitem'): void {
-		linkRoleProp.apply(value, (v) => this.setRenderProp('role', v));
-	}
-
-	@Prop() public _shortKey?: string;
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
 	@Watch('_shortKey')
-	public watchShortKey(value?: string): void {
+	public watchShortKey(value?: ShortKeyPropType): void {
 		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
 	}
 
-	@Prop() public _tabIndex?: number;
-	@Watch('_tabIndex')
-	public watchTabIndex(value?: number): void {
-		tabIndexProp.apply(value, (v) => this.setRenderProp('tabIndex', v));
-	}
-
-	@Prop() public _target?: string;
+	/**
+	 * Defines where to open the link.
+	 */
+	@Prop() public _target?: LinkTargetPropType;
 	@Watch('_target')
-	public watchTarget(value?: string): void {
+	public watchTarget(value?: LinkTargetPropType): void {
 		linkTargetProp.apply(value, (v) => this.setRenderProp('target', v));
 	}
 
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'right';
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
 		this.applyTooltipAlign(value);
 	}
 
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
 	@Prop() public _variant?: VariantClassNamePropType;
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {

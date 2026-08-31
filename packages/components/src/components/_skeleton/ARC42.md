@@ -163,6 +163,55 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 }
 ```
 
+### Public API Contract (Migration Parity)
+
+The public API of a web component is exactly its set of `@Prop`/`@Method` members — for KoliBri
+the underscored props (`_href`, `_label`, …) plus the public methods (`focus()`, `click()`, …) —
+**including** their JSDoc comments, their types, their defaults and any `@deprecated` markers.
+
+**Migration rule: the public API of a migrated component must be identical to its predecessor.**
+When refactoring a legacy component to the skeleton architecture, the migrated WC must expose the
+same public members, with the same types (schema aliases, not downgraded primitives), the same
+defaults and the same documentation. It must not add, remove, rename, retype or undocumented any
+public member. A behavioural difference behind an unchanged member is a separate, consciously
+reviewed decision — never a side effect of the migration.
+
+**The FC's props are internal, not public API.** The functional component is an internal renderer
+contract: it may offer more (or differently typed) props than the WC exposes. The WC is the API
+gate — it decides which render props are fed from public props and which stay at their internal
+defaults. Never derive the public API from the FC's props, and never add a public `@Prop` "because
+the FC has one". Conversely, internal-only capabilities (e.g. `ariaOwns`, `customClass`, `tabIndex`
+on `LinkFC`) may stay unreachable from the outside when the predecessor component did not expose
+them either.
+
+**Why the JSDoc is part of the contract:** `stencil build --docs` generates `docs-vscode`,
+`docs-readme` and — via `generateCustomElementsJson` — the `custom-elements.json` descriptors
+directly from `prop.docs` / `method.docs`. A `@Prop` without a JSDoc comment silently loses
+IntelliSense and generated documentation for every adapter package. The same applies to
+`@deprecated` markers, which announce planned removals to consumers.
+
+**Compile-time enforcement:** the WC implements the schema interface from `src/schema` (e.g.
+`implements LinkProps`) **in addition to** `WebComponentInterface<Api>`. The generic
+`WebComponentInterface` alone derives its prop types from the internal prop definitions
+(primitives like `string`/`boolean`), which would allow the public types to silently drift away
+from the schema. The schema alias types (`HrefPropType`, `LabelWithExpertSlotPropType`,
+`AlternativeButtonLinkRolePropType`, …) are structurally identical to the internal external types,
+so both `implements` clauses can coexist. Legacy state-shape requirements of `*API` types (e.g.
+`InternalLinkAPI`'s `state` member) are replaced by the render-prop store; implement the `*Props`
+interface instead.
+
+**Verification (mandatory before merging a migration):** extract every `@Prop`/`@Method`
+declaration with its preceding JSDoc block from the predecessor file (`git show <base>:<path>`)
+and from the migrated file, and diff the two member lists. Any difference is a finding that needs
+an explicit justification in the PR description.
+
+This is enforced continuously by the skeleton contract test
+[`_skeleton/public-api.spec.ts`](./public-api.spec.ts): it extracts the `@Prop`/`@Method` members
+(including JSDoc, types, defaults and requiredness) from the component sources and compares them
+against a hand-written pinned contract. **Extend the spec with a pinned contract for every newly
+migrated component** — the pin makes any future public API change fail the build, which is exactly
+the point: such a change is a breaking change and must be an explicit, reviewable edit.
+
 ### Behavior Layer
 
 A Behavior is a reusable unit of logic that lives **inside** a WC. It extends `BaseBehavior<Api>` and:
@@ -596,6 +645,10 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Pattern_: all test files sit directly alongside `component.tsx` — snapshot tests (`snapshot.spec.tsx`, Jest) and interaction tests (`interaction.e2e.ts`, Playwright). File names are uniform across components.
     - _Alternative_: group tests into a dedicated `test/` subdirectory.
     - _Reason_: co-located tests are easier to discover and keep related files visible side-by-side.
+15. **Public API parity during migration — the FC face is not the public face**
+    - _Pattern_: a skeleton migration keeps the WC's public `@Prop`/`@Method` set byte-identical to the predecessor: same members, same schema-alias types, same defaults, same JSDoc (including `@deprecated`). The WC implements the schema `*Props` interface alongside `WebComponentInterface<Api>` so drift fails the build. Internal FC props without a public predecessor prop stay internal (fed from defaults, no public `@Prop` added).
+    - _Alternative_: expose every FC prop 1:1 as a public `@Prop` and declare props with the internal primitive types.
+    - _Reason_: the public API is a compatibility contract (adapters, IntelliSense, `custom-elements.json` are generated from `prop.docs`/`method.docs`). Growing it silently (e.g. link gained `_ariaOwns`, `_customClass`, `_tabIndex`, `click()`) or dropping its documentation is a breaking change disguised as a refactor. See [§4 Public API Contract](#public-api-contract-migration-parity).
 
 ## 10. Quality Requirements
 

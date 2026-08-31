@@ -12,7 +12,7 @@ This directory contains the `kol-skeleton` component blueprint — the reference
 
 When refactoring an existing component to match the Skeleton architecture:
 
-1. **Props Inventory** — Collect all existing `@Prop()` declarations from the current component
+1. **Props Inventory** — Collect all existing `@Prop()` declarations from the current component, including their JSDoc comments, types (schema aliases), defaults and `@deprecated` markers. This inventory **is** the public API contract to preserve.
 2. **Props Migration** — Create dedicated prop files under `src/internal/props/`:
    - File per prop: `<prop-name>.ts` (e.g. `label.ts`, `href.ts`, `disabled.ts`)
    - Use `Prop<K, TExternal, TInternal>` or `SimpleProp<K, T>` types
@@ -29,6 +29,18 @@ When refactoring an existing component to match the Skeleton architecture:
 - Provides type-safe interfaces to WC, behaviors, and FC from day one
 - Prevents architectural rework or type mismatches after implementation
 - Makes it clear which props are domain-specific vs. shared across components
+
+**CRITICAL — Public API parity:** The migrated WC must expose **exactly** the same public
+`@Prop`/`@Method` surface as the predecessor: same members, same schema-alias types, same
+defaults, same JSDoc (the generated `custom-elements.json`, `docs-vscode` and adapter
+IntelliSense are built from `prop.docs`/`method.docs`). The FC's props are an **internal**
+renderer contract — a prop existing on the FC must not automatically become a public `@Prop`,
+and a predecessor prop without an FC counterpart must not silently disappear. Implement the
+schema `*Props` interface (e.g. `implements LinkProps`) alongside `WebComponentInterface<Api>`
+so drift fails the build. Pin the public API in the skeleton contract test
+[`public-api.spec.ts`](./public-api.spec.ts) and diff against the predecessor during review.
+Details and the mandatory diff verification: see
+[ARC42 § Public API Contract](./ARC42.md#public-api-contract-migration-parity).
 
 **State Management Reference:** See [ARC42 § WC State Management](./ARC42.md#wc-state-management)
 for how to distinguish between normalized props (`setRenderProp()`) and derived UI state (`setState()`).
