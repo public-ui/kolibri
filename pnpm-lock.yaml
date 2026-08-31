@@ -1607,6 +1607,18 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
 
+  packages/unstyled:
+    devDependencies:
+      '@public-ui/components':
+        specifier: workspace:*
+        version: link:../components
+      '@public-ui/visual-tests':
+        specifier: workspace:*
+        version: link:../tools/visual-tests
+      cross-env:
+        specifier: 10.1.0
+        version: 10.1.0
+
 packages:
 
   '@alcalzone/ansi-tokenize@0.2.5':

@@ -57,6 +57,12 @@ jobs:
             container:
               image: mcr.microsoft.com/playwright:v1.60.0-noble
               options: --user 1001
+          - name: unstyled
+            path: packages/unstyled
+            type: e2e
+            container:
+              image: mcr.microsoft.com/playwright:v1.60.0-noble
+              options: --user 1001
     # Empty value (unit entries) = no container, job runs directly on the runner.
     container: ${{ matrix.container }}
     steps:

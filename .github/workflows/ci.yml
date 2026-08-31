@@ -81,7 +81,7 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        package: ['test-tag-name-transformer', 'theme-bwst', 'theme-default', 'theme-desy', 'theme-kern', 'theme-ecl']
+        package: ['test-tag-name-transformer', 'unstyled', 'theme-bwst', 'theme-default', 'theme-desy', 'theme-kern', 'theme-ecl']
     runs-on: ubuntu-latest
     # Pinned Playwright image – must match the @playwright/test version in
     # packages/tools/visual-tests/package.json (enforced by the "Verify Playwright version" step).
@@ -116,6 +116,9 @@ jobs:
           if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
             REPORT_DIR="packages/test-tag-name-transformer/playwright-report"
             SLUG="tag-name-transformer"
+          elif [[ "${PACKAGE}" == 'unstyled' ]]; then
+            REPORT_DIR="packages/unstyled/playwright-report"
+            SLUG="unstyled"
           else
             THEME_DIR="${PACKAGE#theme-}"
             REPORT_DIR="packages/themes/${THEME_DIR}/playwright-report"
@@ -214,7 +217,7 @@ jobs:
                   .map((n) => n.replace(/^snaps-/, ''))
                   .sort()
               : [];
-            const label = (slug) => (slug === 'tag-name-transformer' ? 'test-tag-name-transformer' : `theme-${slug}`);
+            const label = (slug) => (slug === 'tag-name-transformer' ? 'test-tag-name-transformer' : slug === 'unstyled' ? 'unstyled' : `theme-${slug}`);
             const rows = slugs.map((slug) => `| \`${label(slug)}\` | [Open report](${base}/snaps-${slug}/) |`);
             const body =
               rows.length === 0
