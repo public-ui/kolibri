@@ -1,7 +1,9 @@
 @use '../mixins/kol-table-stateless-wc' as *;
 @use '../mixins/icon' as *;
+@use '../mixins/dialog' as *;
 
 @layer kol-theme-component {
+	@include kol-dialog;
 	@include kol-icon-theme;
 	@include kol-table-stateless-theme;
 
