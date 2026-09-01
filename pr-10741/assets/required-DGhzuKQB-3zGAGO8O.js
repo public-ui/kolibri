@@ -1,0 +1,1 @@
+import{wt as e}from"./index-BGNH9c3h.js";var t=(t,n)=>{e(t,`_required`,n)};export{t};
