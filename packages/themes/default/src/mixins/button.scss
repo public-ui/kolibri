@@ -9,6 +9,14 @@
 	.#{$block-classname} {
 		$root: &;
 
+		/* The shared skeleton mixin sets `text-align: left` on the interactive element (copied from
+		   the anchor case). A real `<button>` had the user-agent `text-align: center` before the
+		   migration, so a wrapping label (e.g. a narrow icon-only pill) would otherwise align left
+		   instead of centred. */
+		&__button {
+			text-align: center;
+		}
+
 		&__text {
 			border-style: solid;
 			border-radius: var(--border-radius);
