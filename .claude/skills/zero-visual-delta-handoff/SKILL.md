@@ -96,7 +96,22 @@ Regeln:
 
 ## 5. Pflicht nach jedem Theme: Erfahrungswerte in diesen Skill
 
-**Nach jedem abgeschlossenen Theme (grüner Docker-Check) werden die Erfahrungen dieses Themes in Abschnitt 12 nachgetragen — ohne Ausnahme, vor dem Wechsel zum nächsten Theme.** Ziel: Jedes folgende Theme und jede folgende Styling-Aufgabe startet mit dem angesammelten Wissen statt es neu zu erfinden. Abgeschlossene Kampagnen haben gezeigt, dass sich die Ursachen pro Theme wiederholen — wer die Muster des Vorgänger-Themes kennt, ist deutlich schneller.
+**Nach jedem abgeschlossenen Theme (grüner Docker-Check) werden die Erfahrungen dieses Themes in Abschnitt 12 nachgetragen — ohne Ausnahme, vor dem Wechsel zum nächsten Theme.**
+
+**Was ein Erfahrungswert ist (Aufnahmekriterium):** ausschließlich Erkenntnisse aus der realen Abarbeitung, die die Abarbeitung deutlich beschleunigt hätten, wenn man früher darauf gestoßen wäre (Früher-gewusst-Test). Keine Erfahrungswerte sind:
+
+- **System-Config** — einmalig entschieden und im Code verbaut (z. B. CI=0 im Docker-Script, Worker-Default in der Playwright-Config). Gilt ab jetzt von selbst, braucht weder Ranking noch Pflege.
+- **Prozess-Regeln** — verbindliche Anweisungen dieser Disziplin (Docker-Pflicht, Baselines-Stand, Stichproben-Strategie, Allowlist). Leben in Abschnitten 0–4 und 8–9, werden nicht gerankt.
+
+Erfahrungswerte sind dagegen wiederverwendbares Diagnose- und Abarbeitungswissen: Fallen, die Stunden kosten (Route-Viewport), Fix-Rezepte mit Beleg (Firefox-UA-Pins), Reihenfolgen, die Zeit sparen (Muster 1/2/4 zuerst), Sackgassen, die Rückschläge verhindern.
+
+Eintragen heißt auch pflegen:
+
+- **Bestätigt**: Griffe eine Erfahrung erneut, Zähler hochzählen und ggf. im Ranking aufsteigen — Vermerk bei der Erfahrung, kein neuer Log-Block.
+- **Widerlegt/veraltet**: Stimmte eine Aussage nicht (mehr), wird sie korrigiert oder gestrichen; ein Ein-Satz-Vermerk im Log hält fest, was und warum.
+- **Destillation**: Das Log (Abschnitt 12) führt den Verlauf mit Zahlen und Commits als Beleg; die Ranking-Tabelle trägt das destillierte Wissen. Log-Einträge ohne Wiederholung und ohne zukünftige Relevanz werden beim nächsten Kampagnen-Abschluss gekürzt oder entfernt.
+
+Ziel: Jedes folgende Theme und jede folgende Styling-Aufgabe startet mit dem angesammelten Wissen statt es neu zu erfinden. Abgeschlossene Kampagnen haben gezeigt, dass sich die Ursachen pro Theme wiederholen — wer die Muster des Vorgänger-Themes kennt, ist deutlich schneller.
 
 Pro Theme ein Eintrag mit diesem Minimum (Aufgabe/Scope statt Komponenten-Bezug formulieren — die Muster sind das Wissen, nicht die Einzelfundstelle):
 
@@ -197,6 +212,59 @@ Abgeschlossene Abschnitte als „DONE (Datum)" markieren und stehen lassen — d
 - [ ] Theme fertig? → Erfahrungswerte für dieses Theme in Abschnitt 12 nachgetragen (Pflicht, siehe Abschnitt 5)
 
 ## 12. Erfahrungswerte (fortlaufend aktualisiert)
+
+Verlaufs-Log mit Belegen (Zahlen, Commits, Exit-Codes); das wiederverwendbare Wissen selbst lebt in Abschnitten 6–7. Lebenszyklus siehe Abschnitt 5.
+
+### Erfahrungswerte-Ranking (absteigend: Bestätigungen × Zeitersparnis/Schadenshöhe)
+
+Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer Abarbeitung, die die Abarbeitung deutlich beschleunigt hätte. System-Config und Prozess-Regeln werden hier NICHT gerankt — sie gelten von selbst bzw. über Abschnitte 0–4. Bei jeder Bestätigung: Zähler hochzählen, ggf. umsortieren.
+
+**Block A — Diagnose-Beschleuniger (immer gültig)**
+
+| #   | Erfahrung (Detail)                                                                                                                              | Bestätigt                                 | Zeitersparnis bei früherer Kenntnis        |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | ------------------------------------------ |
+| 1   | Route-ViewportSize bei jeder Probe beachten → Fallstricke                                                                                       | 5-Theme-Kampagne + 2 Migrationen          | Stunden Fehldiagnose                       |
+| 2   | Im Prüf-Viewport messen (800×0), nie mit „normalem" Viewport — Geometrie ist viewport-gebunden → Fallstricke                                    | Migration default (48px nur bei height 0) | Fix für ein Phantom-Problem verhindert     |
+| 3   | Muster 1/2/4 zuerst prüfen (tote Selektoren, Zustands-Optik am Wrapper, Doppel-Padding) — >90 % der Diffs → 6a                                  | 5-Theme-Kampagne (127 Diffs)              | Ursachensuche am falschen Ende verhindert  |
+| 4   | Kompiliertes CSS greppen statt Sass vertrauen (`X &`-Sackgasse) → Werkzeug 5                                                                    | Kampagne + Migrationen                    | Tote Selektoren stundenlang                |
+| 5   | probe.spec.js im echten Runner (~4s) für Geometrie statt raten → Fallstricke                                                                    | Migration default (48px-Row-Beweis)       | Statt Blind-Fix-Runden                     |
+| 6   | Nur fixen, was der Pixel-Vergleich belegt — keine „Verbesserungen" nebenbei → Log bwst                                                          | Theme bwst                                | Neue Diffs durch den Fix selbst verhindert |
+| 7   | Diagnose-Goldweg: Playwright-`evaluate` (Geometrie + computed styles) gegen Base-Worktree; erst Geometrie-Diff auf 0, dann Pixel → Log unstyled | Migration unstyled + default              | Vermutungsgetriebenes Fixen verhindert     |
+| 8   | Bei „Baseline stale"-Verdacht: Base-Code selbst laufen lassen → Fallstricke                                                                     | Migration default                         | Unnötige Baseline-Regenerierung verhindert |
+
+**Block B — Wrapper-Umbauten / Button-Migration**
+
+| #   | Erfahrung (Detail)                                                                                                 | Bestätigt                         | Zeitersparnis bei früherer Kenntnis           |
+| --- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------- | --------------------------------------------- |
+| 9   | State-Prädikate vollständig auf `__element`; kombinierte `:not(...)` kehren sich am Wrapper um → 6b                | Migration default                 | disabled-Hover-Bugs direkt gefunden           |
+| 10  | Firefox-UA pinnt `font-weight: 400` auf jedes `<button>` → `inherit` → Log default                                 | Migration unstyled + default      | Text-Fettungs-Diffs direkt erklärt            |
+| 11  | `border-width: medium; border-style: none` statt `0` (Firefox zentriert in der Content-Box) → Log unstyled         | Migration unstyled                | 1,5px-Verschiebungen direkt erklärt           |
+| 12  | `text-align: center` (UA) trifft echten Button direkt → `inherit` auf `__element` → Log unstyled                   | Migration unstyled                | Label-Einrückungen direkt erklärt             |
+| 13  | Padding/Min-Size-Overrides auf `__element` statt Wrapper (stapeln auf a11y-Min-Size) → Muster 4                    | Migration default (+96px-Heading) | Zeilenhöhen-Diffs direkt erklärt              |
+| 14  | Include-Historie pro Consumer-Baum prüfen (mit/ohne Mixin ≠ gleiches Fix-Rezept) → Log unstyled                    | Migration unstyled                | Over-Styling in anderen Bäumen verhindert     |
+| 15  | Exemption-Regeln (z. B. `min-width: 0`) müssen Wrapper UND inneres Element treffen → Log unstyled                  | Migration unstyled                | 44px-Icon-Diffs direkt erklärt                |
+| 16  | Selektoren IMMER vom Host (`host.shadowRoot`) aus — `querySelectorAll` durchdringt keine Shadow-Roots → Werkzeug 4 | Kampagne + Migrationen            | Wrapper statt Zielelement gemessen verhindert |
+
+**Block C — Betrieb**
+
+| #   | Erfahrung (Detail)                                                                                             | Bestätigt              | Zeitersparnis bei früherer Kenntnis           |
+| --- | -------------------------------------------------------------------------------------------------------------- | ---------------------- | --------------------------------------------- |
+| 17  | grep-Passthrough flaky (webServer-Exit 127/spawn ENOENT) → http-server@14.1.1 einmalig im Volume → Fallstricke | mehrfach               | Statt Abbruch + voller 8-min-Lauf             |
+| 18  | probe.spec.js NACH Workspace-Spiegeln schreiben, NIE committen → Fallstricke                                   | Migration default      | Sync löscht Datei, Repo bleibt sauber         |
+| 19  | Hydrate-SSR-Snapshot pinnt Shadow-DOM: Components-Build davor, `pnpm -r test:unit` → Fallstricke               | Kampagne               | Rote Unit-Tests nach DOM-Änderung verhindert  |
+| 20  | `tsc`-Fehler über fehlende `HTMLKol*Element`-Typen = stale `components.d.ts` → bauen → Fallstricke             | mehrfach               | Scheinbare Typfehler sofort erkannt           |
+| 21  | `''`-Sentinel für „Attribut nur wenn gesetzt" statt `undefined` → Fallstricke                                  | Migration default      | `tabindex`-Leak-Diffs verhindert              |
+| 22  | Fokus-Kette über `shadowRoot.activeElement` abwärts → Fallstricke                                              | Kampagne               | „Fokussiert, aber keine Optik" sofort erklärt |
+| 23  | Transitional-Tags (z. B. `-wc`) vor Löschung im Components-Paket greppen → Fallstricke                         | Kampagne               | Brechende Peer-Komponenten verhindert         |
+| 24  | unstyled zeigt nur Basis-Layer, kein Build-Schritt, `icon/font` übersprungen → Fallstricke                     | Strukturumbau-Kampagne | Fehlinterpretation der Diffs verhindert       |
+
+**Block D — Sackgassen (nach Schadenshöhe; nie „bestätigen", nur entfernen, wenn Kontext entfällt)**
+
+| #   | Warnung                                               | Belegt durch                    | Verhinderter Rückschlag       |
+| --- | ----------------------------------------------------- | ------------------------------- | ----------------------------- |
+| 25  | ⚠ NICHT: `outline` statt Border am Input-Container    | 52 statt 13 Fails (Log default) | Massiver Rückschlag           |
+| 26  | ⚠ NICHT: `grid-template-rows: minmax(...)` gegen +4px | 20 statt 13 Fails (Log default) | Bricht andere Input-Typen     |
+| 27  | ⚠ NICHT: `border-width: 0` um Höhe zu fixen           | Rahmen unsichtbar (Log default) | Unzulässiger visueller Defekt |
 
 ### 2026-08-30 — Strukturumbau (interaktives Element in Wrapper): Kampagnen-Ergebnis über 5 Themes
 
