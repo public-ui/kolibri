@@ -17,7 +17,8 @@
 			font-weight: 700;
 		}
 
-		&:focus {
+		&:focus,
+		&__button:focus {
 			outline: none;
 		}
 
@@ -61,7 +62,9 @@
 		&--normal,
 		&--danger,
 		&--ghost {
-			&:not([disabled], [aria-disabled='true']):hover {
+			/* State predicates live on the interactive element: on the wrapper `:not([disabled])`
+			   would always be true, re-enabling hover styling for disabled buttons. */
+			&__button:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-primary-variant);
 				--text-border-color: var(--color-primary-variant);
 				--text-color: var(--color-light);
@@ -72,7 +75,7 @@
 		}
 
 		&--danger {
-			&:not([disabled], [aria-disabled='true']):hover {
+			&__button:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-danger);
 				--text-border-color: var(--color-danger);
 				outline-color: var(--color-danger);
@@ -104,13 +107,12 @@
 				}
 			}
 
-			@at-root #{$root}:focus,
-				#{$root}__anchor:focus {
+			@at-root #{$root}__button:focus {
 				@include focus-outline;
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
 
-			@at-root #{$root}:is(:disabled, [aria-disabled='true']):hover & {
+			@at-root #{$root}__button:is(:disabled, [aria-disabled='true']):hover & {
 				color: var(--text-color);
 				background-color: var(--text-background-color);
 				box-shadow: none;

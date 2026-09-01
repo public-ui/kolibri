@@ -14,11 +14,16 @@
 		&__smart-button {
 			.kol-button {
 				color: inherit;
-				padding: to-rem(3.2);
-				border-bottom-right-radius: var(--border-radius);
-				border-top-right-radius: var(--border-radius);
 
-				&:hover {
+				/* Box styles and hover belong to the interactive element: on the wrapper the padding
+				   would stack on top of the inner button's a11y min-size and grow the badge. */
+				.kol-button__button {
+					padding: to-rem(3.2);
+					border-bottom-right-radius: var(--border-radius);
+					border-top-right-radius: var(--border-radius);
+				}
+
+				&__button:hover {
 					color: var(--color-light);
 					background-color: var(--color-primary-variant);
 				}

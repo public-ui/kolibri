@@ -52,6 +52,13 @@
 			flex: 1 0 100%;
 		}
 
+		/* The tooltip wrapper holds only the absolutely positioned floating tooltip. In the legacy
+		   DOM it sat in a block flow and collapsed to zero height; as a flex/grid item it would
+		   stretch to the container height instead, adding phantom rows to the layout. */
+		&__tooltip {
+			height: 0;
+		}
+
 		&--external-link > .kolicon-link-external::before {
 			content: none;
 		}
@@ -100,10 +107,19 @@
 			display: block;
 			border-width: medium;
 
-			/* The UA pins `text-align: center` directly on every `button`, which would beat any
-			   alignment inherited from the wrapper (e.g. nav's `text-align: left`). Inheriting
-			   restores the old flow, where the alignment applied to the button element itself. */
+			/* The UA pins `text-align: center` and (in Firefox) `font-weight: 400` directly on every
+			   `button`, which would beat any alignment or font weight inherited through the wrapper
+			   (e.g. nav's `text-align: left`, or a bold active entry that used to apply to the button
+			   element itself). Inheriting restores the old flow. */
+			font-style: inherit;
+			font-weight: inherit;
 			text-align: inherit;
+		}
+
+		/* See kol-button-styles: the tooltip wrapper must stay zero-height, also when the wrapper
+		   div is a flex or grid item (e.g. nav entry rows). */
+		&__tooltip {
+			height: 0;
 		}
 	}
 }

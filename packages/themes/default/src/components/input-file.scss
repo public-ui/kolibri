@@ -23,7 +23,11 @@
 		}
 
 		&__button .kol-button {
-			min-height: to-rem(40);
+			/* The min-height override belongs to the interactive element — the a11y layer pins every
+			   real `button` to 44px, so on the wrapper it would not shrink the visible button. */
+			.kol-button__button {
+				min-height: to-rem(40);
+			}
 
 			.kol-button__text {
 				white-space: nowrap;
