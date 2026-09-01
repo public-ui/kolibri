@@ -126,6 +126,9 @@ grep -rn "@include" packages/themes/*/src packages/components/src --include='*.s
 
 ## 7. Fallstricke aus der Praxis
 
+- **Viewport-Abhängigkeit von Layout-Diffs**: Die Snapshots laufen mit `viewport: { width: 800, height: 0 }` — Messproben mit „normalem" Viewport (z. B. 800×600) können komplett andere Werte zeigen (Gemessenes Beispiel: input-container 44px in beiden Bäumen bei 600px Höhe, aber 48 vs. 44px bei height 0). IMMER im Prüf-Viewport messen — dafür die probe.spec.js-Methode.
+- **Kosten-Disziplin**: Ein voller Check-Lauf kostet ~6–8 min. Bei Arbeit an Einzelfällen: `-- --grep "<route-fragment>"` (~10s) oder eine probe.spec.js (~4s) nehmen; den vollen Lauf nur zur Absicherung eines Fix-Batches über alle betroffene Routen und vor dem Commit. Vorsicht: der grep-Passthrough ist gelegentlich flaky (webServer-Exit 127/spawn ENOENT) — dann hilft ein voller Lauf oder `npm install -g --prefix /work/npm-global http-server@14.1.1` einmalig im Volume.
+
 - **Route-ViewportSize bei Proben** (siehe Loop 3) — teuerste Fehldiagnose-Quelle. Grenzwertige Umbrüche (Label, das auf dem Base 1 px vor dem Umbruch liegt) flaken dann wie zufällig; Ursache ist fast immer Muster 4 (Doppel-Padding). Messen mit Route-Viewport, nicht raten.
 - **App-Probe ≠ Check-Kontext**: Bei Widerspruch eine temporäre `probe.spec.js` direkt in den Tests-Ordner der Prüfpipeline legen und im echten Runner mit `--grep=probe` ausführen. Die Datei NACH dem Workspace-Spiegeln ins Volume schreiben (Sync-Tools löschen Fremddateien) und NIE committen.
 - **„Baseline ist stale"-Verdacht**: Vor jedem solchen Urteil den Base-Code selbst gegen die Baselines laufen lassen. Ist der Base-Check grün, sind die Baselines reproduzierbar und der Branch schuldet jede Differenz. Erst wenn der Base-Check selbst rot ist: Baselines-Regenerierung MIT Begründung und Owner-Absprache (siehe Allowlist).
@@ -226,6 +229,27 @@ Abgeschlossene Abschnitte als „DONE (Datum)" markieren und stehen lassen — d
 - **Diagnose-Goldweg**: Docker-Run mit Serve der gebauten App + Playwright-`evaluate` (getBoundingClientRect + computed styles) gegen einen `git worktree` des Base-Branch —_pxakt gleiche Pipeline, Zahlen statt Vermutung_. Erst Geometrie-Diff auf 0, dann Pixel-Check.
 - **Theme-Spezifika**: Der Fehlermodus „unterschiedliche include-Historie pro Consumer-Baum“ ist themen-unabhängig — für default/bwst/ecl/kern/desy gilt dieselbe Prüfung je Baums.
 - **Evidenz**: `node scripts/snapshots-docker.mjs unstyled --check` → 293 passed, 0 failed, Exit 0.
+
+### 2026-08-31 — Button-Skeleton-Migration: Theme default (27 Diffs → 13 offen, pausiert)
+
+- **Ausgangslage**: 27 PNG-Diffs nach der Migration (Startpunkt der Theme-Runde).
+- **Ursachen & Fix-Muster** (14 Diffs behoben):
+  1. **State-Prädikate am Wrapper sterben oder kehren sich um** (Muster 6b, bestätigt): `&:not([disabled]):hover` am Wrapper trifft `:not([disabled])` IMMER (der Wrapper trägt nie `disabled`) → deaktivierte Buttons bekommen Hover-Optik. Fix: komplette Regeln auf `&__button` scopen — getan für button-mixin (hover/focus/disabled), nav, pagination, button-link, badge, accordion, input-file, table-settings, table-stateless, input.
+  2. **Firefox UA pinnt `font-weight: 400` direkt auf jedes `<button>`** (minimal verifiziert: div[bold] > button → 400, span → 700): Author-Regeln am Wrapper verlieren gegen die direkte UA-Deklaration. Fix: `font-weight: inherit` auf `__button` (im `kol-button-wc-box-styles`-Mixin). Gleiches Muster gilt für `text-align: center` (UA).
+  3. **Box-Paddings am Wrapper stapeln sich auf der a11y-Min-Size des inneren Buttons** statt die alte Button-Box zu vergrößern: accordion-Heading `padding: to-rem(12) to-rem(8)` → +24px pro Kopf (4× = +96px); badge smart-button `padding: to-rem(3.2)` → +13px Badge-Höhe. Fix: Padding auf `&__button` verschieben (Muster 4).
+  4. **Min-Height-Overrides am Wrapper schrumpfen den echten Button nicht** (input-file `min-height: to-rem(40)`): a11y-Layer pinnt den inneren `button` auf 44px → +4px. Fix: Override auf `&__button`.
+- **Offene 13 Diffs, kategorisiert** (Stand im Companion-Plan `migrate-kol-button-skeleton.md`):
+  - **+4px-Familie** (input-file, input-text/variant, same-height×2, focus-inputFile×2): `.kol-input-container` 48 statt 44px im Prüf-Viewport (800×0). Die 2px-Theme-Border wirkt aufs Grid-Row-Layout (develop: Row 40px, Input ragt in die Border). **Im 600px-Viewport messen beide Bäume identisch 44px — der Effekt ist viewport-gebunden!**
+  - **tabs×3 + focus-tabs**: Blockbreite 448→425; Button-Geometrie identisch.
+  - **icon/font, focus-details, focus-linkButton**: einzeln zu prüfen.
+- **Sackgassen (NICHT wiederholen)**:
+  - `border-width: 0` am input-container: fixt die Höhe, macht den Rahmen unsichtbar → unzulässig.
+  - `grid-template-rows: minmax(0, calc(--a11y-min-size - 4px))`: fixt die +4px-Blöcke, bricht aber input-color/range/select (deren Rows brauchen andere Höhen) → 20 statt 13 Fails.
+  - `outline: 2px solid; outline-offset: -2px` statt Border: massiver Rückschlag (52 Fails) — Outline-Optik ≠ Border-Optik (zeichnet über dem Input-Hintergrund, folgt ggf. nicht allen Radius-Ecken).
+- **Werkzeuge, die funktionieren**:
+  - **probe.spec.js-Methode**: temporäre `tests/probe.spec.js` ins visual-tests-Paket + `node scripts/snapshots-docker.mjs default --check -- --grep probe` → live-Geometrie (getBoundingClientRect + getComputedStyle) im exakten Runner-Kontext (800×0-Viewport!) in ~4s. Danach Datei löschen. Damit wurde die 48px-Row direkt gegen develop gemessen.
+  - **Develop-Selbstcheck**: `cd <develop-worktree> && node scripts/snapshots-docker.mjs default --check` → 294/294 grün bewies, dass die Baselines NICHT stale sind (Verdacht #10714 hatte sich nicht bestätigt) und jeder Diff dem Branch zuzuschreiben ist.
+- **Evidenz**: 281 passed, 13 failed (vor der Theme-Runde: 267/27). Fix-Commit df7a923b5f.
 
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 
