@@ -75,7 +75,12 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 
 ## Offene Arbeit, nach Priorität
 
-### 1. GOAL: Zero Visual Delta — unstyled ✅ 293/293, default ✅ 294/294, bwst ✅ 294/294, ecl ✅ 294/294, desy ✅ 294/294, kern 🟡 291/294 (3 offen)
+### 1. GOAL: Zero Visual Delta — unstyled ✅, default ✅, bwst ✅, ecl ✅, desy ✅ (je 293–294/294, Exit 0); kern ✅ bis auf 3 Allowlist-Einträge (291/294 + 3 bewusst akzeptiert)
+
+**Akzeptanzkriterium (Skill §1/§8) erfüllt:** jede Snapshot-Datei ist entweder bit-identisch zum
+Base-Branch ODER ein expliziter Allowlist-Eintrag mit Begründung + Owner-Freigabe. Die 3 kern-
+Ausnahmen sind unten in **Abschnitt 8 (Allowlist)** gelistet; Owner-Entscheidung 2026-09-01:
+„an die DOM/Components-Migration weiterreichen, keine Theme-Arbeit".
 
 **Stand 2026-09-01 (diese Session, 2. Teil):**
 
@@ -241,6 +246,36 @@ Fehlen weiterhin: tabIndex-Reset am `wc`, ungültiges `_role`/`_ariaExpanded` (j
 die Erst-Session ausdrücklich ausgeklammert; der **bestehende** e2e-Bestand läuft in CI und ist
 grün (`8c273b9`: zwei Assertions in `button-link.e2e.ts` adressieren jetzt `.kol-button` statt des
 inneren `<button>`, weil die Block-Modifier auf der BEM-Wurzel sitzen).
+
+## 8. Allowlist (Skill §8) — bewusst akzeptierte Snapshot-Abweichungen
+
+Default: leer. Ein Eintrag ist nur mit Begründung **und** Owner-Freigabe zulässig.
+
+### A1 — kern: `dialog/basic`, `drawer/basic?align=left&closer=true`, `modal/basic` (je 1 PNG)
+
+- **Was**: Der „Close"-Button-Tooltip (`--hide-label`) rendert den Bubble-Text in Firefox mit
+  ~2px anderer Antialiasing-Deckung (kein sauberer Versatz — Pixel-Zeilen-Analyse zeigt pro
+  Zeile unterschiedliche Dunkelpixel-Zahlen, z. B. Zeile 264: exp 16 / act 24).
+- **Warum kein Fix**: Volldiagnostiziert per Shadow-durchdringender Probe (rekursiv alle
+  `shadowRoot` sammeln). Jede Computed-Property und Bounding-Box ist bit-identisch zu develop:
+  `kol-tooltip__floating` `top: 271px`, `kol-tooltip__arrow` y=274.43 mit identischer
+  Rotations-Matrix, `kol-tooltip__content` y=271 h=21, `font-family=Verdana`, `font-size=16px`,
+  `line-height=normal`, `font-kerning=auto`, `text-rendering=auto`, `letter-spacing=normal`.
+  `kol-button__tooltip` ist auf develop **und** Branch ein Geschwister des Buttons (nicht Kind;
+  develop-`component.tsx` `render()` rendert `<div class="kol-button__tooltip">` als Sibling im
+  `<Host>`). Einziger Unterschied: der `position: fixed`, animations-belegte `__floating`-Layer
+  hat auf dem Branch einen zusätzlichen `<div class="kol-button">`-Vorfahren, und der JS-`left`
+  ist fraktioniert (`1154.68px`) — wie Firefox diese Compositing-Layer aufs Pixelraster rundet,
+  hängt am Render-Tree. develop und Branch haben **identisches Tooltip-CSS**, also keinen
+  CSS-Angriffspunkt.
+- **Verworfene Fixversuche**: `&__tooltip { width: 100% }` → 6 Regressionen; `&__tooltip {
+position: absolute }` im Basis-Mixin → kein Effekt; Tooltip zurück in den `<button>` → per
+  a11y verboten (im FC dokumentiert: „a nested tooltip would become part of the accessible name").
+- **Owner-Freigabe**: 2026-09-01 — „an die DOM/Components-Migration weiterreichen, keine
+  Theme-Arbeit". Eine echte Lösung braucht DOM-Arbeit im Skeleton (Tooltip-Platzierung, die die
+  `<button>`-Box reproduziert) → Migrations-Aufgabe **1a** oben.
+- **Evidenz**: `node scripts/snapshots-docker.mjs kern --check` → 291 passed, 3 failed, Exit 1;
+  die 3 Fails sind exakt diese 3 Szenarien, alle anderen 291 grün.
 
 ## Pitfalls
 
