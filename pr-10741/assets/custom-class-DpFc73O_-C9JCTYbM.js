@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-BGNH9c3h.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
