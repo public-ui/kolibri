@@ -1,11 +1,6 @@
 @use './to-rem' as *;
 @use './button' as *;
 
-@mixin kol-alert {
-	display: block;
-	width: 100%;
-}
-
 @mixin kol-input-error-with-kol-alert-error($color: null) {
 	color: var($color);
 
@@ -44,8 +39,6 @@
 		grid-template-areas:
 			'icon heading close'
 			'content content content';
-		grid-template-columns: min-content 1fr min-content;
-		grid-template-rows: min-content min-content;
 		border: var(--border-width) solid var(--alert-accent-color);
 	}
 

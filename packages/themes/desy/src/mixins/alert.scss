@@ -24,8 +24,6 @@
 			grid-template-areas:
 				'icon heading close'
 				'icon content content';
-			grid-template-columns: min-content 1fr min-content;
-			grid-template-rows: min-content min-content;
 			border: var(--border-width-s) solid var(--alert-accent-color);
 
 			&:not(:has(#{$root}__heading)) {
