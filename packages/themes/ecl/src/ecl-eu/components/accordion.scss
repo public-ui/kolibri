@@ -56,7 +56,8 @@
 					border-end-start-radius: to-rem(2);
 				}
 
-				&:focus {
+				/* The focusable element is the inner `<button>`; the class carrier is a `div`. */
+				&__button:focus {
 					outline: none;
 				}
 			}

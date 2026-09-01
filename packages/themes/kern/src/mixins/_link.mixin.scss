@@ -119,8 +119,17 @@
 			gap: var(--kern-metric-space-2x-small);
 		}
 	} @else {
+		/*
+		 * `$ie` is the focusable element relative to the class carrier: the carrier itself for
+		 * blocks whose DOM did not change (tree-item spans), or its inner element when the button
+		 * skeleton migration moved the focusable element into a wrapper (button-link, nav).
+		 * `:focus`/`:focus-visible` do not propagate to ancestors, so they must sit on it;
+		 * `:hover`/`:active` do and stay on the carrier.
+		 */
+		$ie: if($interactive-suffix, '.#{$block-classname}__#{$interactive-suffix}', '&');
+
 		&:not(&--disabled) {
-			&:focus {
+			#{$ie}:focus {
 				outline: none;
 			}
 
@@ -147,7 +156,7 @@
 		}
 
 		&:not(&--stretched) {
-			&:focus-visible {
+			#{$ie}:focus-visible {
 				box-shadow:
 					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 2px var(--kern-color-action-on-default),
 					/* TODO: Variable mit Design überprüfen */

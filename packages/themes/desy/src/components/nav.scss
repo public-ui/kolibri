@@ -37,8 +37,9 @@
 					border-bottom-color: var(--color-blue-100);
 				}
 
+				/* `:hover` propagates to the wrapper, `:focus` does not — it only matches on the
+				   interactive element inside. */
 				&:hover,
-				&:focus,
 				.kol-link__anchor:focus,
 				.kol-button__button:focus {
 					.kol-span__label {

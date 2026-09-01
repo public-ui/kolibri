@@ -31,7 +31,8 @@
 			z-index: 2;
 
 			.kol-button {
-				&:focus {
+				/* The focusable element is the inner `<button>`; the class carrier is a `div`. */
+				&__button:focus {
 					outline: 2px solid var(--ecl-color-primary);
 					outline-offset: 0;
 				}

@@ -70,7 +70,9 @@
 					display: none;
 				}
 
-				&:not(:disabled):hover {
+				/* `:not(:disabled)` is always true on the wrapper — ask the interactive element
+				   inside, like the `:has(:disabled)` rule above. */
+				&:not(:has(:disabled)):hover {
 					background: var(--color-dark-blue-100-06);
 				}
 

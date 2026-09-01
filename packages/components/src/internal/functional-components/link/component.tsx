@@ -12,6 +12,17 @@ import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
 import type { LinkApi } from './api';
 
+/**
+ * Renders the link, its floating tooltip and its visually-hidden description.
+ *
+ * Unlike {@link ButtonFC}, the tooltip and the description live *inside* the `BemRootNodeFC`
+ * wrapper here. That is a deliberate divergence, not an oversight: for the button the extra
+ * ancestor above the `position: fixed` tooltip subtree makes Firefox rasterise its compositing
+ * layer ~2px differently (visible on `kern`'s dialog close-button tooltip), so `ButtonFC` keeps
+ * them as siblings of the wrapper, which is also where the pre-skeleton DOM had them. The same
+ * has not been measured for the link. Issue #10745 decides whether both converge — until then,
+ * changing the placement in one file means checking the other.
+ */
 export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 	const {
 		accessKey,

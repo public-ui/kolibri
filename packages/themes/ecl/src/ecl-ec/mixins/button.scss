@@ -4,6 +4,15 @@
 @mixin button($block-classname) {
 	@include icon();
 
+	/*
+	 * The interactive element inside the BEM root — `__button` for `kol-button`, `__anchor` for
+	 * `kol-link`. This mixin is included for both blocks, so both names are matched.
+	 *
+	 * It has to be a plain descendant: inside a modifier block (`&--primary { … }`) a nested
+	 * `&__button` would expand to `.kol-button--primary__button`, a class that exists nowhere.
+	 */
+	$interactive-element: ':is(.#{$block-classname}__button, .#{$block-classname}__anchor)';
+
 	.#{$block-classname} {
 		--button-border-width: 2px;
 		--button-focus-outline-color: var(--ecl-color-dark);
@@ -14,7 +23,6 @@
 		   for buttons, `#{$block-classname}__anchor` for links. The class carrier is never focused,
 		   so the theme focus ring has to be scoped to the inner element — there it also overrides
 		   the user-agent focus ring of the real control. */
-		&:focus,
 		&__button:focus,
 		&__anchor:focus {
 			outline: var(--button-focus-outline-color) solid var(--button-focus-outline-width);
@@ -26,12 +34,13 @@
 			--button-border-color: var(--ecl-color-primary);
 			--button-text-color: var(--ecl-color-white);
 
-			&:focus,
+			/* `:focus` never matches the wrapper; `:focus-within` does and already covers focus
+			   landing on the interactive element inside it. */
 			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled):hover {
+			#{$interactive-element}:not(:disabled):hover {
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
 			}
@@ -42,7 +51,8 @@
 			--button-border-color: var(--ecl-color-primary);
 			--button-text-color: var(--ecl-color-primary);
 
-			&:focus,
+			/* `:focus` never matches the wrapper; `:focus-within` does and already covers focus
+			   landing on the interactive element inside it. */
 			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-white);
 				--button-background-color: var(--ecl-color-primary-140);
@@ -50,7 +60,7 @@
 				--button-text-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled):hover {
+			#{$interactive-element}:not(:disabled):hover {
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
 				--button-text-color: var(--ecl-color-white);
@@ -63,14 +73,15 @@
 			--button-border-color: transparent;
 			--button-border-width: 1px;
 
-			&:focus,
+			/* `:focus` never matches the wrapper; `:focus-within` does and already covers focus
+			   landing on the interactive element inside it. */
 			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-primary);
 				--button-focus-outline-offset: 0;
 				--button-focus-outline-width: 2px;
 			}
 
-			&:not(:disabled):hover {
+			#{$interactive-element}:not(:disabled):hover {
 				--button-background-color: var(--ecl-color-primary-20);
 				--button-border-color: var(--ecl-color-dark-80);
 			}
@@ -82,14 +93,15 @@
 			--button-border-color: transparent;
 			--button-border-width: 1px;
 
-			&:focus,
+			/* `:focus` never matches the wrapper; `:focus-within` does and already covers focus
+			   landing on the interactive element inside it. */
 			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-primary);
 				--button-focus-outline-offset: 0;
 				--button-focus-outline-width: 2px;
 			}
 
-			&:not(:disabled):hover {
+			#{$interactive-element}:not(:disabled):hover {
 				--button-background-color: var(--ecl-color-primary-20);
 				--button-border-color: var(--ecl-color-dark-80);
 			}
@@ -100,7 +112,7 @@
 			--button-border-color: var(--ecl-color-secondary);
 			--button-text-color: var(--ecl-color-dark);
 
-			&:not(:disabled):hover {
+			#{$interactive-element}:not(:disabled):hover {
 				--button-background-color: var(--ecl-color-secondary-120);
 				--button-border-color: var(--ecl-color-secondary-120);
 			}
@@ -111,19 +123,20 @@
 			--button-border-color: var(--ecl-color-error);
 			--button-text-color: var(--ecl-color-white);
 
-			&:focus,
+			/* `:focus` never matches the wrapper; `:focus-within` does and already covers focus
+			   landing on the interactive element inside it. */
 			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled):hover {
+			#{$interactive-element}:not(:disabled):hover {
 				--button-background-color: var(--ecl-color-error);
 				--button-border-color: var(--ecl-color-dark);
 			}
 		}
 
 		&--ghost {
-			@include ghost-button();
+			@include ghost-button($block-classname);
 		}
 
 		&__text {
@@ -164,27 +177,35 @@
 		align-self: self-start;
 
 		.#{$block-classname}--normal {
-			@include ghost-button();
+			@include ghost-button($block-classname);
 
 			--kol-focus-outline-offset: -2px;
 		}
 	}
 }
 
-@mixin ghost-button() {
+/*
+ * Included from within `&--ghost` and from `.kol-close-button .#{$block-classname}--normal`, so the
+ * interactive element has to be addressed as a plain descendant — a nested `&__button` would build
+ * `.kol-button--ghost__button`. `$interactive-element` is scoped to `@mixin button`, so this mixin
+ * takes the block name and builds the selector itself.
+ */
+@mixin ghost-button($block-classname: 'kol-button') {
+	$interactive-element: ':is(.#{$block-classname}__button, .#{$block-classname}__anchor)';
+
 	--button-background-color: transparent;
 	--button-border-color: transparent;
 	--button-border-width: 1px;
 	--button-text-color: var(--ecl-color-primary);
 
-	&:focus,
+	/* `:focus` never matches the wrapper; `:focus-within` does and already covers it. */
 	&:focus-within {
 		--button-focus-outline-color: var(--ecl-color-primary);
 		--button-focus-outline-offset: 0;
 		--button-focus-outline-width: 2px;
 	}
 
-	&:not(:disabled):hover {
+	#{$interactive-element}:not(:disabled):hover {
 		--button-background-color: var(--ecl-color-primary-20);
 		--button-border-color: var(--ecl-color-dark-80);
 		--button-text-color: var(--ecl-color-dark);

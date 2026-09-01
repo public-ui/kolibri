@@ -32,7 +32,8 @@
 		}
 	}
 
-	.kol-button:focus {
+	/* The focusable element is the inner `<button>`; the class carrier is a `div`. */
+	.kol-button__button:focus {
 		@include focus-outline;
 	}
 }

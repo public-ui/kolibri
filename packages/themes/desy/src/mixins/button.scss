@@ -18,7 +18,6 @@
 		/* The skeleton DOM moves the focusable element into the wrapper: `__button` for buttons,
 		   `__anchor` for links. Suppress the UA focus ring on the real control; the theme ring is
 		   drawn on `__text` via the `:focus-within` rule further down. */
-		&:focus,
 		&:focus-within,
 		&__button:focus,
 		&__anchor:focus {
@@ -39,8 +38,10 @@
 			--text-border-width: var(--border-width-m);
 			--text-color: var(--color-red-100);
 
-			&:not([disabled]):hover,
-			&:focus,
+			/* On the wrapper `[disabled]` is never present and `:focus` never matches. `:has(:disabled)`
+			   asks the interactive element inside instead, and `:focus-within` already covers its
+			   focus, so the dead `:focus` alternative is dropped. */
+			&:not(:has(:disabled)):hover,
 			&:focus-within {
 				.#{$block-classname}__text::before {
 					background-color: var(--color-red-100-06);
@@ -99,8 +100,9 @@
 				}
 			}
 
-			@at-root #{$root}:focus &,
-				#{$root}:focus-within & {
+			/* `:focus` never matches the wrapper; `:focus-within` does and covers focus landing on
+			   the interactive element inside it. */
+			@at-root #{$root}:focus-within & {
 				@include focus-outline;
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
@@ -142,8 +144,8 @@
 		--text-border-width: var(--border-width-none);
 		--text-color: var(--color-blue-100);
 
-		&:not([disabled]):hover,
-		&:focus,
+		/* On the wrapper `[disabled]` is never present and `:focus` never matches. */
+		&:not(:has(:disabled)):hover,
 		&:focus-within {
 			.#{$block-classname}__text::before {
 				background-color: var(--color-dark-blue-100-06);
@@ -169,8 +171,9 @@
 		--text-border-color: var(--color-black-60);
 	}
 
-	&:not([disabled]):hover .kol-span::before,
-	&:focus .kol-span::before,
+	/* On the wrapper `[disabled]` is never present and `:focus` never matches. `:has(:disabled)`
+	   asks the interactive element inside instead, and `:focus-within` already covers its focus. */
+	&:not(:has(:disabled)):hover .kol-span::before,
 	&:focus-within .kol-span::before {
 		background-color: var(--color-black-100-12);
 	}
@@ -192,8 +195,9 @@
 		--text-color: var(--color-black-60);
 	}
 
-	&:not([disabled]):hover .kol-span::before,
-	&:focus .kol-span::before,
+	/* On the wrapper `[disabled]` is never present and `:focus` never matches. `:has(:disabled)`
+	   asks the interactive element inside instead, and `:focus-within` already covers its focus. */
+	&:not(:has(:disabled)):hover .kol-span::before,
 	&:focus-within .kol-span::before {
 		background-color: var(--color-blue-100-06);
 	}
@@ -208,8 +212,9 @@
 		--text-color: var(--color-black-60);
 	}
 
-	&:not([disabled]):hover .kol-span::before,
-	&:focus .kol-span::before,
+	/* On the wrapper `[disabled]` is never present and `:focus` never matches. `:has(:disabled)`
+	   asks the interactive element inside instead, and `:focus-within` already covers its focus. */
+	&:not(:has(:disabled)):hover .kol-span::before,
 	&:focus-within .kol-span::before {
 		background-color: var(--color-blue-100-06);
 	}

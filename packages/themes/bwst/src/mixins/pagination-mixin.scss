@@ -22,18 +22,22 @@
 		}
 
 		.kol-button {
-			&:focus .kol-button__text {
+			/* Every state predicate hangs off the interactive element — it carried the
+			   `kol-button` class itself before the skeleton migration. On the wrapper `div`
+			   `:focus` never matches, and `:not(:disabled)` is always true, which would apply
+			   the hover/active look to disabled buttons. */
+			&__button:focus .kol-button__text {
 				@include focus-outline;
 			}
 
-			&:is(:active, :hover):not(:disabled) .kol-button__text {
+			&__button:is(:active, :hover):not(:disabled) .kol-button__text {
 				color: var(--color-light);
 				background-color: var(--color-primary-variant);
 				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 				border-color: var(--color-primary-variant);
 			}
 
-			&:active .kol-button__text {
+			&__button:active .kol-button__text {
 				color: var(--color-light);
 				outline: none;
 			}

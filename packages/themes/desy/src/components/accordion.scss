@@ -55,8 +55,10 @@
 				}
 			}
 
-			&:not(:disabled):hover,
-			&:not(:disabled):active {
+			/* On the wrapper `div` `:not(:disabled)` is always true — it has to ask the interactive
+			   element inside, like the `:has(:disabled)` rules further down. */
+			&:not(:has(:disabled)):hover,
+			&:not(:has(:disabled)):active {
 				&::before {
 					border-radius: 6px 0 0 6px;
 					display: block;
@@ -70,11 +72,11 @@
 				}
 			}
 
-			&:not(:disabled):hover {
+			&:not(:has(:disabled)):hover {
 				background: var(--color-blue-20);
 			}
 
-			&:not(:disabled):active {
+			&:not(:has(:disabled)):active {
 				background: var(--color-blue-30);
 			}
 

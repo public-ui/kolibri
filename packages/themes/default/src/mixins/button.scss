@@ -25,7 +25,8 @@
 			font-weight: 700;
 		}
 
-		&:focus,
+		/* The focusable element is the inner interactive element; the class carrier is a wrapper
+		   `div` and never receives focus. */
 		&__button:focus {
 			outline: none;
 		}
@@ -71,8 +72,11 @@
 		&--danger,
 		&--ghost {
 			/* State predicates live on the interactive element: on the wrapper `:not([disabled])`
-			   would always be true, re-enabling hover styling for disabled buttons. */
-			&__button:not([disabled], [aria-disabled='true']):hover {
+			   would always be true, re-enabling hover styling for disabled buttons.
+			   The interactive element has to be addressed as a plain descendant (`#{$root}__button`
+			   after a space) — a nested `&__button` would expand to `#{$root}--primary__button`,
+			   a class that exists nowhere. */
+			& #{$root}__button:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-primary-variant);
 				--text-border-color: var(--color-primary-variant);
 				--text-color: var(--color-light);
@@ -83,7 +87,8 @@
 		}
 
 		&--danger {
-			&__button:not([disabled], [aria-disabled='true']):hover {
+			/* Plain descendant, see the block above. */
+			& #{$root}__button:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-danger);
 				--text-border-color: var(--color-danger);
 				outline-color: var(--color-danger);

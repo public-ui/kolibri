@@ -16,9 +16,9 @@ import {
 	labelWithExpertSlotProp,
 	linkRoleProp,
 	nameProp,
+	optionalTabIndexProp,
 	shortKeyProp,
 	spanIconsProp,
-	tabIndexProp,
 	tooltipAlignProp,
 	variantProp,
 } from '../../props';
@@ -36,6 +36,9 @@ import type { ApiFromConfig, PropsConfigShape, WebComponentInterface } from '../
  *   object), not a plain icon class string.
  * - `linkRoleProp`: the button shares the `'tab' | 'treeitem'` role union with the link
  *   (`AlternativeButtonLinkRolePropType`), so it reuses the same definition.
+ * - `optionalTabIndexProp` (not `tabIndexProp`): a `<button>` is in the tab order without the
+ *   attribute, so the default is "unset" rather than `0` — otherwise every button would render a
+ *   stray `tabindex="0"`, and unsetting `_tabIndex` could not restore the unset state.
  * - `_syncValueBySelector` and `_value` are deliberately absent: neither is rendered, and both are
  *   opaque pass-throughs to `AssociatedInputController` (a CSS selector resolved against the
  *   document, and an arbitrary `StencilUnknown` payload). They stay raw `@Prop`s on the web
@@ -59,9 +62,9 @@ export const buttonPropsConfig = {
 		inlineProp,
 		linkRoleProp,
 		nameProp,
+		optionalTabIndexProp,
 		shortKeyProp,
 		spanIconsProp,
-		tabIndexProp,
 		tooltipAlignProp,
 		variantProp,
 	],

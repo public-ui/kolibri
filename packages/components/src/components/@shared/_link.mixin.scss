@@ -64,12 +64,22 @@
 			text-decoration-line: underline;
 		}
 
-		/* Root-level hover/focus decoration: kept for blocks rendered without an inner interactive
-		   element, and harmless where one exists (the wrapper is hovered together with it). */
-		&:focus:not([aria-disabled], [disabled]),
+		/* Root-level hover decoration: `:hover` propagates to ancestors, so the carrier is hovered
+		   together with the interactive element and the rule stays here. `:focus` does not
+		   propagate — on a wrapper it would be dead — so it only belongs on the carrier for blocks
+		   rendered without an inner interactive element. Where one exists it carries its own
+		   `:focus` rule above. */
 		&:hover:not([aria-disabled], [disabled]) {
 			.kol-span__label {
 				text-decoration-thickness: 0.2em;
+			}
+		}
+
+		@if not $interactive-element {
+			&:focus:not([aria-disabled], [disabled]) {
+				.kol-span__label {
+					text-decoration-thickness: 0.2em;
+				}
 			}
 		}
 

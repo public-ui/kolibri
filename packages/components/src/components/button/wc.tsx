@@ -26,9 +26,9 @@ import {
 	labelWithExpertSlotProp,
 	linkRoleProp,
 	nameProp,
+	optionalTabIndexProp,
 	shortKeyProp,
 	spanIconsProp,
-	tabIndexProp,
 	tooltipAlignProp,
 	variantProp,
 } from '../../internal/props';
@@ -75,6 +75,19 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
  * JSX) instead of instantiating this element. Once all consumers have migrated, this component can
  * be deleted.
  *
+ * Most of this class duplicates `components/button/component.tsx`. Until the shared parts are
+ * lifted into a common base, the differences to that file are these — and only these:
+ *
+ * - `@directFocus`/`@directClick` instead of `@delegateFocus`/`@delegateClick`: this element has no
+ *   shadow root, so the interactive element is reached directly.
+ * - three extra props that only legacy consumers set from inside their own shadow DOM:
+ *   `_ariaHasPopup`, `_id` and `_tabIndex` (see `ButtonWebComponentInterface`).
+ * - no `getValue()`: reading the value is part of the public `kol-button` surface only.
+ *
+ * Everything else — watchers, event handlers, the form-association adapter, the `_variant`
+ * feature-flag fallback and the `_role` deprecation — is intentionally identical. A change to one
+ * file belongs in the other.
+ *
  * @internal
  */
 @Component({
@@ -110,13 +123,6 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 
 	public componentWillLoad(): void {
 		this.initRenderProps(buttonPropsConfig);
-		// Seed `tabIndex` as unset before any watcher runs. `watchTabIndex` below does the same for
-		// the regular path, but this component can abort mid-initialization: under SSR `@Element()`
-		// is not populated in the constructor of a `shadow: false` component, `AssociatedInputController`
-		// then throws on `attachInternals(undefined)` and `watchName` hits an undefined controller —
-		// Stencil swallows that error and renders anyway. Without this line the props config default
-		// `0` would survive such an abort and emit a stray `tabindex="0"`.
-		this.setRenderProp('tabIndex', undefined as unknown as number);
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaControls(this._ariaControls);
@@ -414,6 +420,8 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 
 	/**
 	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 	@Watch('_role')
@@ -448,15 +456,9 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _tabIndex?: number;
 	@Watch('_tabIndex')
 	public watchTabIndex(value?: number): void {
-		// The props config seeds `tabIndex` with its default `0`, but an unset tabindex must not
-		// render as `tabindex="0"` — buttons are natively tabbable and the attribute would pin them
-		// into the document tab order. Unsetting the prop has to restore that state, so the else
-		// branch is not optional: without it a reset would keep the previous number.
-		if (typeof value === 'number') {
-			tabIndexProp.apply(value, (v) => this.setRenderProp('tabIndex', v));
-		} else {
-			this.setRenderProp('tabIndex', undefined as unknown as number);
-		}
+		// `optionalTabIndexProp` defaults to unset, so clearing the prop restores the unset state
+		// instead of keeping the previous number — a plain `apply` is enough.
+		optionalTabIndexProp.apply(value, (v) => this.setRenderProp('tabIndex', v));
 	}
 
 	/**
@@ -493,9 +495,13 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	 * Defines which variant should be used for presentation.
 	 * @internal
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal';
+	@Prop() public _variant?: VariantClassNamePropType;
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		// Resolved here rather than as a `@Prop` default, mirroring `kol-button`. A field
+		// initializer runs in the constructor, where `@Element()` is not yet populated for a
+		// `shadow: false` component under SSR — the theme-scoped flag would silently be ignored
+		// there. The rendered default is `normal` either way.
+		variantProp.apply(value ?? getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal', (v) => this.setRenderProp('variant', v));
 	}
 }

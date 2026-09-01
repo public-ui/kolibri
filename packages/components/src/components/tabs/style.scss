@@ -66,7 +66,11 @@
 						outline: 3px solid Highlight;
 						outline-offset: -3px;
 
-						&:focus-visible {
+						/* The outline is declared on the class carrier, but the focusable element is
+						   now the inner `<button>` — `&:focus-visible` would never match. `:has()`
+						   keeps the override on the element that owns the outline, exactly as when
+						   the button element itself carried `kol-button`. */
+						&:has(.kol-button__button:focus-visible) {
 							outline-style: dashed;
 						}
 					}

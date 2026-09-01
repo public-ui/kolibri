@@ -35,7 +35,7 @@
 				border-color: var(--color-primary-variant);
 			}
 
-			&:active .kol-button__text {
+			&__button:active .kol-button__text {
 				color: var(--color-light);
 				outline: none;
 			}

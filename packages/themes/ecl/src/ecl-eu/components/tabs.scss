@@ -15,13 +15,14 @@
 			margin-bottom: to-rem(-1);
 			border: none;
 
-			&:hover:not(:disabled) {
+			/* Both predicates hang off the interactive element: on the wrapper `div`
+			   `:not(:disabled)` is always true and `:focus` never matches. */
+			.kol-button__button:hover:not(:disabled) {
 				.kol-span {
 					color: var(--color-blue-130);
 				}
 			}
 
-			&:focus .kol-span,
 			.kol-button__button:focus .kol-span {
 				outline: var(--color-blue-130) solid to-rem(2);
 			}
