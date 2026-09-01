@@ -1,0 +1,1 @@
+import{s as e}from"./index-C5v4vktf.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};

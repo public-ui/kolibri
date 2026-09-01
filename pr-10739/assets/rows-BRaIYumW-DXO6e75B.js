@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-C5v4vktf.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
