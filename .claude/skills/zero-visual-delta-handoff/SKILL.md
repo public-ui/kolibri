@@ -221,29 +221,33 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 
 **Block A — Diagnose-Beschleuniger (immer gültig)**
 
-| #   | Erfahrung (Detail)                                                                                                                              | Bestätigt                                 | Zeitersparnis bei früherer Kenntnis        |
-| --- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | ------------------------------------------ |
-| 1   | Route-ViewportSize bei jeder Probe beachten → Fallstricke                                                                                       | 5-Theme-Kampagne + 2 Migrationen          | Stunden Fehldiagnose                       |
-| 2   | Im Prüf-Viewport messen (800×0), nie mit „normalem" Viewport — Geometrie ist viewport-gebunden → Fallstricke                                    | Migration default (48px nur bei height 0) | Fix für ein Phantom-Problem verhindert     |
-| 3   | Muster 1/2/4 zuerst prüfen (tote Selektoren, Zustands-Optik am Wrapper, Doppel-Padding) — >90 % der Diffs → 6a                                  | 5-Theme-Kampagne (127 Diffs)              | Ursachensuche am falschen Ende verhindert  |
-| 4   | Kompiliertes CSS greppen statt Sass vertrauen (`X &`-Sackgasse) → Werkzeug 5                                                                    | Kampagne + Migrationen                    | Tote Selektoren stundenlang                |
-| 5   | probe.spec.js im echten Runner (~4s) für Geometrie statt raten → Fallstricke                                                                    | Migration default (48px-Row-Beweis)       | Statt Blind-Fix-Runden                     |
-| 6   | Nur fixen, was der Pixel-Vergleich belegt — keine „Verbesserungen" nebenbei → Log bwst                                                          | Theme bwst                                | Neue Diffs durch den Fix selbst verhindert |
-| 7   | Diagnose-Goldweg: Playwright-`evaluate` (Geometrie + computed styles) gegen Base-Worktree; erst Geometrie-Diff auf 0, dann Pixel → Log unstyled | Migration unstyled + default              | Vermutungsgetriebenes Fixen verhindert     |
-| 8   | Bei „Baseline stale"-Verdacht: Base-Code selbst laufen lassen → Fallstricke                                                                     | Migration default                         | Unnötige Baseline-Regenerierung verhindert |
+| #   | Erfahrung (Detail)                                                                                                                              | Bestätigt                                                  | Zeitersparnis bei früherer Kenntnis        |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------ |
+| 1   | Route-ViewportSize bei jeder Probe beachten → Fallstricke                                                                                       | 5-Theme-Kampagne + 3 Migrationen (u. a. icon/font 250×345) | Stunden Fehldiagnose                       |
+| 2   | Im Prüf-Viewport messen (800×0), nie mit „normalem" Viewport — Geometrie ist viewport-gebunden → Fallstricke                                    | Migration default (48px nur bei height 0)                  | Fix für ein Phantom-Problem verhindert     |
+| 3   | Muster 1/2/4 zuerst prüfen (tote Selektoren, Zustands-Optik am Wrapper, Doppel-Padding) — >90 % der Diffs → 6a                                  | 5-Theme-Kampagne (127 Diffs)                               | Ursachensuche am falschen Ende verhindert  |
+| 4   | Kompiliertes CSS greppen statt Sass vertrauen (`X &`-Sackgasse) → Werkzeug 5                                                                    | Kampagne + Migrationen                                     | Tote Selektoren stundenlang                |
+| 5   | probe.spec.js im echten Runner (~4s) für Geometrie statt raten → Fallstricke                                                                    | Migration default (48px-Row-Beweis)                        | Statt Blind-Fix-Runden                     |
+| 6   | Nur fixen, was der Pixel-Vergleich belegt — keine „Verbesserungen" nebenbei → Log bwst                                                          | Theme bwst                                                 | Neue Diffs durch den Fix selbst verhindert |
+| 7   | Diagnose-Goldweg: Playwright-`evaluate` (Geometrie + computed styles) gegen Base-Worktree; erst Geometrie-Diff auf 0, dann Pixel → Log unstyled | Migration unstyled + default                               | Vermutungsgetriebenes Fixen verhindert     |
+| 8   | Bei „Baseline stale"-Verdacht: Base-Code selbst laufen lassen → Fallstricke                                                                     | Migration default                                          | Unnötige Baseline-Regenerierung verhindert |
 
 **Block B — Wrapper-Umbauten / Button-Migration**
 
-| #   | Erfahrung (Detail)                                                                                                 | Bestätigt                         | Zeitersparnis bei früherer Kenntnis           |
-| --- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------- | --------------------------------------------- |
-| 9   | State-Prädikate vollständig auf `__element`; kombinierte `:not(...)` kehren sich am Wrapper um → 6b                | Migration default                 | disabled-Hover-Bugs direkt gefunden           |
-| 10  | Firefox-UA pinnt `font-weight: 400` auf jedes `<button>` → `inherit` → Log default                                 | Migration unstyled + default      | Text-Fettungs-Diffs direkt erklärt            |
-| 11  | `border-width: medium; border-style: none` statt `0` (Firefox zentriert in der Content-Box) → Log unstyled         | Migration unstyled                | 1,5px-Verschiebungen direkt erklärt           |
-| 12  | `text-align: center` (UA) trifft echten Button direkt → `inherit` auf `__element` → Log unstyled                   | Migration unstyled                | Label-Einrückungen direkt erklärt             |
-| 13  | Padding/Min-Size-Overrides auf `__element` statt Wrapper (stapeln auf a11y-Min-Size) → Muster 4                    | Migration default (+96px-Heading) | Zeilenhöhen-Diffs direkt erklärt              |
-| 14  | Include-Historie pro Consumer-Baum prüfen (mit/ohne Mixin ≠ gleiches Fix-Rezept) → Log unstyled                    | Migration unstyled                | Over-Styling in anderen Bäumen verhindert     |
-| 15  | Exemption-Regeln (z. B. `min-width: 0`) müssen Wrapper UND inneres Element treffen → Log unstyled                  | Migration unstyled                | 44px-Icon-Diffs direkt erklärt                |
-| 16  | Selektoren IMMER vom Host (`host.shadowRoot`) aus — `querySelectorAll` durchdringt keine Shadow-Roots → Werkzeug 4 | Kampagne + Migrationen            | Wrapper statt Zielelement gemessen verhindert |
+| #   | Erfahrung (Detail)                                                                                                                                                                          | Bestätigt                         | Zeitersparnis bei früherer Kenntnis                |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- | -------------------------------------------------- |
+| 9   | State-Prädikate vollständig auf `__element`; kombinierte `:not(...)` kehren sich am Wrapper um → 6b                                                                                         | Migration default                 | disabled-Hover-Bugs direkt gefunden                |
+| 10  | Firefox-UA pinnt `font-weight: 400` auf jedes `<button>` → `inherit` → Log default                                                                                                          | Migration unstyled + default      | Text-Fettungs-Diffs direkt erklärt                 |
+| 11  | `border-width: medium; border-style: none` statt `0` (Firefox zentriert in der Content-Box) → Log unstyled                                                                                  | Migration unstyled                | 1,5px-Verschiebungen direkt erklärt                |
+| 12  | `text-align: center` (UA) trifft echten Button direkt → `inherit` auf `__element` → Log unstyled                                                                                            | Migration unstyled                | Label-Einrückungen direkt erklärt                  |
+| 13  | Padding/Min-Size-Overrides auf `__element` statt Wrapper (stapeln auf a11y-Min-Size) → Muster 4                                                                                             | Migration default (+96px-Heading) | Zeilenhöhen-Diffs direkt erklärt                   |
+| 14  | Include-Historie pro Consumer-Baum prüfen (mit/ohne Mixin ≠ gleiches Fix-Rezept) → Log unstyled                                                                                             | Migration unstyled                | Over-Styling in anderen Bäumen verhindert          |
+| 15  | Exemption-/Größen-Override-Regeln müssen Wrapper UND inneres Element treffen → Log unstyled, bestätigt input-file-40px (Log default)                                                        | Migration unstyled + default      | 44px-Icon- und +4px-Container-Diffs direkt erklärt |
+| 16  | Selektoren IMMER vom Host (`host.shadowRoot`) aus — `querySelectorAll` durchdringt keine Shadow-Roots → Werkzeug 4                                                                          | Kampagne + Migrationen            | Wrapper statt Zielelement gemessen verhindert      |
+| 16b | Theme-`border: none` und border-radius müssen auf `__element` wandern: die Reserve (3px) verschiebt zentrierte Labels um 1,5px, der Radius rundet die Fokus-Outline → Log default (tabs)    | Migration default                 | 1,5px-Text- und Outline-Eck-Diffs direkt erklärt   |
+| 16c | Bäume OHNE Button-Mixin: Fokus-Ring auf `__element:focus` legen — dort überschreibt er auch den UA-Ring des echten `button`; am Wrapper bleibt der UA-Ring sichtbar → Log default (details) | Migration default                 | Doppel-Ring-Diffs direkt erklärt                   |
+| 16d | Geteilte Mixins für Link- UND Button-Blöcke: Fokus-Regeln brauchen BEIDE Varianten (`__anchor` + `__button`) → Log default (link-button via kol-button('kol-link'))                         | Migration default                 | Fehlender Fokus-Ring bei Cross-Blöcken verhindert  |
+| 16e | Sample-Drift Branch↔Base ist eine Diff-Quelle: Variant-Auflösung (getTheme vs getCustomThemes) ändert Sample-Inhalt → Umbruch; Samples auf Base-Stand syncen → Log default (icon/font)      | Migration default                 | Phantom-Diffs in unverdächtigen Routen verhindert  |
 
 **Block C — Betrieb**
 
@@ -321,7 +325,7 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 - **Theme-Spezifika**: Der Fehlermodus „unterschiedliche include-Historie pro Consumer-Baum“ ist themen-unabhängig — für default/bwst/ecl/kern/desy gilt dieselbe Prüfung je Baums.
 - **Evidenz**: `node scripts/snapshots-docker.mjs unstyled --check` → 293 passed, 0 failed, Exit 0.
 
-### 2026-08-31 — Button-Skeleton-Migration: Theme default (27 Diffs → 13 offen, pausiert)
+### 2026-08-31 — Button-Skeleton-Migration: Theme default (27 Diffs → 1 offen: icon/font 51px)
 
 - **Ausgangslage**: 27 PNG-Diffs nach der Migration (Startpunkt der Theme-Runde).
 - **Ursachen & Fix-Muster** (14 Diffs behoben):
@@ -340,7 +344,9 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 - **Werkzeuge, die funktionieren**:
   - **probe.spec.js-Methode**: temporäre `tests/probe.spec.js` ins visual-tests-Paket + `node scripts/snapshots-docker.mjs default --check -- --grep probe` → live-Geometrie (getBoundingClientRect + getComputedStyle) im exakten Runner-Kontext (800×0-Viewport!) in ~4s. Danach Datei löschen. Damit wurde die 48px-Row direkt gegen develop gemessen.
   - **Develop-Selbstcheck**: `cd <develop-worktree> && node scripts/snapshots-docker.mjs default --check` → 294/294 grün bewies, dass die Baselines NICHT stale sind (Verdacht #10714 hatte sich nicht bestätigt) und jeder Diff dem Branch zuzuschreiben ist.
-- **Evidenz**: 281 passed, 13 failed (vor der Theme-Runde: 267/27). Fix-Commit df7a923b5f.
+- **Abschlussrunde** (Commits df7a923b5f + 6dfe5f2a59): +4px-Familie behoben — die input-file-Über-/Unterschiede (min-height 40px auf Wrapper UND `__button`; Wurzelursache: develop schrumpfte den echten Button auf 40px, der Branch-Pinning auf 44px kam vom wc-box-Mixin + a11y-Layer). tabs×3 + focus-tabs: `border: none` und `border-radius` auf `__button` (1,5px-Label-Versatz durch die 3px-Reserve; Outline-Eckigkeit ohne Radius). focus-details: Ring auf `__button:focus` (überschreibt dort auch den UA-Ring; am Wrapper blieb der UA-Ring sichtbar). focus-linkButton: `__anchor:focus`-Variante im Button-Mixin wiederhergestellt (link-button nutzt kol-button('kol-link')). Samples auf develop-Stand gesynct (getTheme statt getCustomThemes — die Branch-Variante löste andere Variant-Daten und damit einen anderen Code-Span-Umbruch aus).
+- **Verbleibend: icon/font, 51px deterministic** — block/button/pill/icon/span-Geometrie UND computed styles via probe.spec.js IM ROUTE-VIEWPORT (250×345!) bit-identisch gegen develop; Rest ist ein Firefox-Paint-Artefakt des umgebrochenen Button-Labels im zusätzlichen Wrapper-Kontext. Für Owner-Entscheidung dokumentiert (Allowlist oder tiefere Font-/Hyphenation-Untersuchung).
+- **Evidenz**: 296 passed, 1 failed (icon/font) — vor der Theme-Runde: 267/27. Fix-Commits df7a923b5f + 6dfe5f2a59.
 
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 

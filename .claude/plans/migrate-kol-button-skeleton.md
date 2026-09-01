@@ -75,66 +75,50 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 
 ## Offene Arbeit, nach Priorität
 
-### 1. GOAL: Zero Visual Delta — unstyled ✅ 293/293, default 🟡 281/294 (13 offen), Rest offen
+### 1. GOAL: Zero Visual Delta — unstyled ✅ 293/293, default 🟡 296/297 (1 offen: icon/font 51px), bwst/ecl/kern/desy offen
 
-Disziplin und Werkzeuge: `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
+Disziplin, Stichproben-Strategie und Werkzeuge: `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
 
 ```bash
-node scripts/snapshots-docker.mjs <theme> --check     # je Theme, ca. 6 min
+node scripts/snapshots-docker.mjs <theme> --check     # voller Lauf = Abnahme-Evidenz
+node scripts/snapshots-docker.mjs <theme> --check -- --grep <route>   # Stichprobe
 git diff origin/develop..HEAD -- '*.png'              # muss leer sein
 ```
 
-**unstyled: 293 passed, 0 failed, Exit 0** — die Basis-Layer-Abweichungen der Migration sind
-behoben (Fix-Batch: `kol-button-wc-box-styles`-Mixin für Bäume ohne volles `kol-button-styles`,
-UA-Button-Replikation `text-align: center` / `border-width: medium; border-style: none` /
-`text-align: inherit` auf `__button`, Inline-Exemptions bei popover-button und button-link auf
-`__button` erweitert). Details: Abschnitt 12 des Skills.
+**unstyled: 293 passed, 0 failed, Exit 0.** Basis-Layer behoben mit `kol-button-wc-box-styles`
+(Bäume ohne volles `kol-button-styles`), UA-Replikation auf `__button` (`text-align: center`,
+`border-width: medium; border-style: none`, `text-align`/`font-style`/`font-weight: inherit`),
+Inline-Exemptions bei popover-button und button-link, tabs-Unterstrich auf `__button`.
+Details: Abschnitt 12 des Skills.
 
-**default: 281 passed, 13 failed** (Start: 27 failed). Gefixt: State-Prädikate auf `__button`
-gescoped (button-mixin hover/focus/disabled, nav, pagination, button-link, badge, accordion,
-input-file, table-settings, table-stateless, input). Verbleibende 13, kategorisiert:
+**default: 296 passed, 1 failed (icon/font, 51px)** — Start 27, über zwei Fix-Runden
+(df7a923b5f + 6dfe5f2a59):
 
-1. **+4px-Familie** (input-file, input-text/variant, same-height×2, focus-inputFile×2):
-   `.kol-input-container` ist im Prüf-Viewport (800×0) **48px hoch statt 44px** — die 2px-
-   Theme-Border wirkt aufs Grid (develop: 44px, Input überlappt die Border). Im 600px-
-   Viewport messen beide Bäume 44px — der Effekt ist an den Test-Viewport gebunden.
-   Demonstriert: `border-width: 0` ⇒ 44px (aber Rahmen unsichtbar — unzulässig);
-   `grid-template-rows: minmax(0, calc(--a11y-min-size - 4px))` ⇒ fixt die +4-Blöcke,
-   bricht aber input-color/range/select. **Nächster Schritt:** Grid-Row-Verhalten im
-   0-Viewport systematisch mit dem Probe-Runner untersuchen.
-2. **tabs×3 + focus-tabs**: Block-Breite 448→425; Button-Geometrie (x/y/w/h) identisch
-   gemessen — Ursache im KolTabs-Umfeld (gap/Breitenberechnung) im 0-Viewport.
-3. **icon/font**: Migrationsbedingt (Icon-Vererbung im neuen Button-DOM) — develop-
-   selfcheck 294/294 grün, also nicht stale.
-4. **focus-details, focus-linkButton**: Pixel-Diffs ohne Größenänderung.
+- State-Prädikate auf `__button` gescoped (button-mixin hover/focus/disabled, nav, pagination,
+  button-link, badge, accordion, table-settings, table-stateless, input).
+- +4px-Familie (input-file/variant, same-height, focus-inputFile): `min-height: 40px`-Override
+  auf Wrapper UND `__button` — develop schrumpfte den echten Button auf 40px; der 44px-Pinning
+  kam vom wc-box-Mixin (Wrapper) und a11y-Layer (innerer Button).
+- tabs×3 + focus-tabs: `border: none` + `border-radius` auf `__button` (3px-Reserve verschiebt
+  zentrierte Labels um 1,5px; Radius rundet die Fokus-Outline).
+- focus-details: Ring auf `__button:focus` — überschreibt dort auch den UA-Fokus-Ring des
+  echten `button` (am Wrapper blieben beide Ringe sichtbar).
+- focus-linkButton: `__anchor:focus`-Variante im Button-Mixin wiederhergestellt (link-button
+  inkludiert `kol-button('kol-link')`).
+- Samples auf develop-Stand gesynct (`getTheme` statt `getCustomThemes`) — die Branch-Variante
+  löste andere Variant-Daten und damit einen anderen Code-Span-Umbruch aus.
 
-Werkzeug (funktioniert): temporäre `tests/probe.spec.js` im visual-tests-Paket +
-`node scripts/snapshots-docker.mjs default --check -- --grep probe` — live-Geometrie im
-exakten Runner-Kontext (800×0-Viewport!) in ~4s. Danach Datei wieder löschen. Der grep-
-Passthrough kann flaky sein (webServer 127) — dann vollen Lauf fahren.
+**Offen: icon/font — 51px, deterministic** (3× identisch reproduziert). Beweislage:
+block/button/pill/icon/span-Geometrie UND computed styles via probe.spec.js **im Route-Viewport
+(250×345)** bit-identisch gegen develop-Worktree; Samples identisch; develop-Selbstcheck
+294/294 grün. Rest ist ein Firefox-Paint-Artefakt des umgebrochenen Button-Labels
+(„Button" hypheniert im 37px schmalen Pill) im zusätzlichen Wrapper-Kontext.
+**Decision Point für Owner:** Allowlist-Eintrag oder tiefere Font-/Hyphenation-Untersuchung
+(z. B. `hyphens`-Verhalten am `__button` prüfen).
 
 Themes: default 🟡, bwst, ecl, kern, desy (+ unstyled ✅). **„CI grün" ist kein Nachweis** — die
-Snapshot-Workflows committen neue Baselines und werden dadurch selbst grün. Die Theme-Arbeit
-(sichtbare Selektoren an `__button` etc.) ist bewusst nicht Teil des PRs und liegt in
-`.claude/plans/kol-button-theme-worklist.md`.
-
-**Erwartung: zunächst viele Diffs.** Der `BemRootNodeFC`-Umbau verschiebt das interaktive Element
-nach innen; ~162 Theme-Selektoren im Button-Kontext hängen an Zuständen des `<button>`. Die
-Theme-Arbeit ist bewusst nicht Teil des PRs und in
-`.claude/plans/kol-button-theme-worklist.md` als Worklist abgelegt — inklusive der Regel, welche
-Selektoren wandern müssen und welche am Wrapper bleiben dürfen.
-
-Zwei DOM-Änderungen überlagern sich, in dieser Reihenfolge suchen:
-
-1. `<div class="kol-button"><button class="kol-button__button">` statt `<button class="kol-button">`
-   — der Hauptverursacher; Muster und Fundstellen in der Worklist.
-2. Im Shadow-Root von `kol-button` ist zusätzlich das `<kol-button-wc>`-Element entfallen
-   (`host(inline-block) > kol-button-wc(inline) > button` → `host(inline-block) > div > button`).
-   Beim Link-PR verursachte genau diese Änderung nachweislich null SCSS-Anpassungen, sie ist also
-   der unwahrscheinlichere Kandidat.
-
-In der Erst-Session nicht ausführbar (kein Docker-Daemon); inzwischen lokal mit Docker gefahren —
-unstyled 293/293 grün (siehe oben).
+Snapshot-Workflows committen neue Baselines und werden dadurch selbst grün. Die verbleibende
+Theme-Arbeit liegt in `.claude/plans/kol-button-theme-worklist.md`.
 
 ### 2. Konsumenten-Migration weg von `kol-button-wc` (der strategische Schritt)
 
