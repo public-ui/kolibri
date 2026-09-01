@@ -75,7 +75,7 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 
 ## Offene Arbeit, nach Priorität
 
-### 1. GOAL: Zero Visual Delta — unstyled ✅ DONE (2026-08-31), Theme-Worklist offen
+### 1. GOAL: Zero Visual Delta — unstyled ✅ 293/293, default 🟡 281/294 (13 offen), Rest offen
 
 Disziplin und Werkzeuge: `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
 
@@ -90,7 +90,30 @@ UA-Button-Replikation `text-align: center` / `border-width: medium; border-style
 `text-align: inherit` auf `__button`, Inline-Exemptions bei popover-button und button-link auf
 `__button` erweitert). Details: Abschnitt 12 des Skills.
 
-Themes: default, bwst, ecl, kern, desy (+ unstyled ✅). **„CI grün" ist kein Nachweis** — die
+**default: 281 passed, 13 failed** (Start: 27 failed). Gefixt: State-Prädikate auf `__button`
+gescoped (button-mixin hover/focus/disabled, nav, pagination, button-link, badge, accordion,
+input-file, table-settings, table-stateless, input). Verbleibende 13, kategorisiert:
+
+1. **+4px-Familie** (input-file, input-text/variant, same-height×2, focus-inputFile×2):
+   `.kol-input-container` ist im Prüf-Viewport (800×0) **48px hoch statt 44px** — die 2px-
+   Theme-Border wirkt aufs Grid (develop: 44px, Input überlappt die Border). Im 600px-
+   Viewport messen beide Bäume 44px — der Effekt ist an den Test-Viewport gebunden.
+   Demonstriert: `border-width: 0` ⇒ 44px (aber Rahmen unsichtbar — unzulässig);
+   `grid-template-rows: minmax(0, calc(--a11y-min-size - 4px))` ⇒ fixt die +4-Blöcke,
+   bricht aber input-color/range/select. **Nächster Schritt:** Grid-Row-Verhalten im
+   0-Viewport systematisch mit dem Probe-Runner untersuchen.
+2. **tabs×3 + focus-tabs**: Block-Breite 448→425; Button-Geometrie (x/y/w/h) identisch
+   gemessen — Ursache im KolTabs-Umfeld (gap/Breitenberechnung) im 0-Viewport.
+3. **icon/font**: Migrationsbedingt (Icon-Vererbung im neuen Button-DOM) — develop-
+   selfcheck 294/294 grün, also nicht stale.
+4. **focus-details, focus-linkButton**: Pixel-Diffs ohne Größenänderung.
+
+Werkzeug (funktioniert): temporäre `tests/probe.spec.js` im visual-tests-Paket +
+`node scripts/snapshots-docker.mjs default --check -- --grep probe` — live-Geometrie im
+exakten Runner-Kontext (800×0-Viewport!) in ~4s. Danach Datei wieder löschen. Der grep-
+Passthrough kann flaky sein (webServer 127) — dann vollen Lauf fahren.
+
+Themes: default 🟡, bwst, ecl, kern, desy (+ unstyled ✅). **„CI grün" ist kein Nachweis** — die
 Snapshot-Workflows committen neue Baselines und werden dadurch selbst grün. Die Theme-Arbeit
 (sichtbare Selektoren an `__button` etc.) ist bewusst nicht Teil des PRs und liegt in
 `.claude/plans/kol-button-theme-worklist.md`.
