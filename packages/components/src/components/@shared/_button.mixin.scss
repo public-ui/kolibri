@@ -49,6 +49,11 @@
 		}
 
 		&__text {
+			/* Every theme paints the text as a solid-bordered box; color and width are theme tokens.
+			   `border-width: 0` keeps the theme-less fallback borderless — a theme opts into the
+			   visible border purely via its own `border-width`. */
+			border-style: solid;
+			border-width: 0;
 			flex: 1 0 100%;
 		}
 

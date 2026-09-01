@@ -7,8 +7,6 @@
 	}
 
 	.#{$block-classname} {
-		$root: &;
-
 		/* The shared skeleton mixin sets `text-align: left` on the interactive element (copied from
 		   the anchor case). A real `<button>` had the user-agent `text-align: center` before the
 		   migration, so a wrapping label (e.g. a narrow icon-only pill) would otherwise align left
@@ -18,7 +16,6 @@
 		}
 
 		&__text {
-			border-style: solid;
 			border-radius: var(--border-radius);
 			border-width: var(--border-width);
 
@@ -108,7 +105,7 @@
 				border-color: var(--text-border-color);
 			}
 
-			@at-root #{$root}--hide-label & {
+			.#{$block-classname}--hide-label & {
 				padding: to-rem(12);
 
 				.kol-span__label {
@@ -116,19 +113,19 @@
 				}
 			}
 
-			@at-root #{$root}:focus-visible,
-				#{$root}__button:focus-visible,
-				#{$root}__anchor:focus-visible {
-				@include focus-outline;
-				position: relative; // make sure focus outline is visible and not covered by adjacent element
-			}
-
-			@at-root #{$root}__button:is(:disabled, [aria-disabled='true']):hover & {
+			.#{$block-classname}__button:is(:disabled, [aria-disabled='true']):hover & {
 				color: var(--text-color);
 				background-color: var(--text-background-color);
 				box-shadow: none;
 				border-color: var(--text-border-color);
 			}
+		}
+
+		&:focus-visible,
+		&__button:focus-visible,
+		&__anchor:focus-visible {
+			@include focus-outline;
+			position: relative; // make sure focus outline is visible and not covered by adjacent element
 		}
 	}
 
