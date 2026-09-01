@@ -93,20 +93,10 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 - **kern (15→3)**: `$interactive-element`-Parameter am `button()`-Mixin (`'button'`/`'anchor'`) +
   `$interactive-suffix` am `_link.mixin.scss` (wie desy). Gefixt: icon/font, button/variants,
   link-button, toolbar, input-text, nav, tree, same-height, button-link, tabs. Commit `30caed4b69`.
-  **Offen (3): `dialog`/`drawer`/`modal` „Close"-Button-Tooltip** — ~2px vertikaler Textversatz
-  im Tooltip-Bubble. **Voll diagnostiziert (Shadow-durchdringende Probe, DEV vs BR):** jede
-  Computed-Property und jede Bounding-Box ist bit-identisch — `kol-tooltip__floating` y=271,
-  `kol-tooltip__arrow` y=274.43 mit identischer Rotations-Matrix, `kol-tooltip__content` y=271;
-  `font-family=Verdana`, `font-size=16px`, `line-height=normal`, `font-weight=400`,
-  `font-kerning=auto`, `text-rendering=auto`, `letter-spacing=normal` — alles gleich. Einziger
-  Messunterschied: die `kol-button__tooltip`-Anker-`<div>`-Breite (0 statt 44px, weil jetzt
-  Flex-Geschwister von `__button` statt Block-Kind des `<button>`) — ändert die JS-positionierte
-  Tooltip-Lage NICHT (beide y=271). `&__tooltip { display: block; width: 100% }` in kern
-  ausprobiert → brach 6 andere Szenarien, verworfen. **Fazit: echtes Firefox-Sub-Pixel-Paint-
-  Artefakt des Verdana-Fallback-Texts im zusätzlichen Wrapper-Kontext, ohne CSS-Angriffspunkt
-  (develop und Branch haben identisches Tooltip-CSS).** → **Allowlist-Kandidat (§8), braucht
-  Owner-Freigabe.** Andere Themes zeigen es nicht (ihre Tooltips erben eine andere, hinting-
-  robustere Font).
+  **Offen (3): `dialog`/`drawer`/`modal` „Close"-Button-Tooltip** — ~2px Textversatz, voll
+  diagnostiziert, **kein Theme-Fix** (jede Computed-Property + Box bit-identisch zu develop).
+  Owner-Entscheidung 2026-09-01: an die DOM-/Components-Migration weiterreichen — siehe Abschnitt
+  **1a** oben (Tooltip-Platzierung nach dem Wrapper-Umbau). Kein weiterer Theme-Aufwand.
 
 Details + Fix-Muster: SKILL.md §12 (ecl/desy/default+bwst/kern-Einträge). `git diff
 origin/develop...HEAD -- '*.png'` = 0, Stylelint je Theme sauber.
@@ -156,9 +146,33 @@ block/button/pill/icon/span-Geometrie UND computed styles via probe.spec.js **im
 **Decision Point für Owner:** Allowlist-Eintrag oder tiefere Font-/Hyphenation-Untersuchung
 (z. B. `hyphens`-Verhalten am `__button` prüfen).
 
-Themes: default 🟡, bwst ✅, kern 🟡, ecl, desy (+ unstyled ✅). **„CI grün“ ist kein Nachweis** — die
-Snapshot-Workflows committen neue Baselines und werden dadurch selbst grün. Die verbleibende
-Theme-Arbeit liegt in `.claude/plans/kol-button-theme-worklist.md`.
+Themes: default ✅, bwst ✅, ecl ✅, desy ✅, kern 🟡 3 offen (unstyled ✅). **„CI grün“ ist kein
+Nachweis** — die Snapshot-Workflows committen neue Baselines und werden dadurch selbst grün.
+
+#### 1a. DOM-/Migrations-Aufgabe (keine Theme-Arbeit): Tooltip-Platzierung nach dem Wrapper-Umbau
+
+**Owner-Entscheidung 2026-09-01: nicht theme-lokal lösbar, an die Migration weiterreichen.**
+
+Die 3 verbleibenden kern-Diffs (`dialog`/`drawer`/`modal`, „Close"-Button-Tooltip) sind
+volldiagnostiziert (Shadow-durchdringende Probe, DEV vs. Branch): **jede Computed-Property und
+Bounding-Box ist bit-identisch** — `kol-tooltip__floating` y=271, `kol-tooltip__arrow` y=274.43 mit
+identischer Rotations-Matrix, `kol-tooltip__content` y=271; `font-family=Verdana`, `font-size=16px`,
+`line-height=normal`, `font-kerning=auto`, `text-rendering=auto`, `letter-spacing=normal`.
+
+Einziger struktureller Unterschied: `ButtonFC` rendert `kol-button__tooltip` jetzt als Flex-
+**Geschwister** von `kol-button__button` im Wrapper-`<div>` (Breite 0), vorher war es ein
+**Block-Kind** des `<button>` (Breite 44px). Das ändert die JS-Tooltip-Lage NICHT (beide y=271),
+aber Firefox rendert den Verdana-Fallback-Text im tieferen DOM-Kontext ~2px versetzt — ein
+Sub-Pixel-Paint-Artefakt ohne CSS-Angriffspunkt (develop und Branch haben identisches Tooltip-CSS).
+`&__tooltip { width: 100% }` in kern probiert → brach 6 andere Szenarien, verworfen.
+
+**Was die Migration prüfen sollte:** ob `kol-button__tooltip` im Skeleton-DOM so platziert/
+dimensioniert werden kann, dass es die Box des `<button>` reproduziert (z. B. Tooltip innerhalb
+des `__button` rendern statt als Wrapper-Geschwister, oder `__tooltip` per CSS die
+Button-Box spiegeln lassen). Andere Themes sind nicht betroffen — ihre Tooltips erben eine
+hinting-robustere Font statt des Verdana-a11y-Fallbacks, weshalb der 2px-Versatz dort unsichtbar
+bleibt. Bis dahin: `visual-tests (theme-kern)` bleibt für diese 3 Szenarien rot bzw.
+Allowlist-Eintrag mit Owner-Freigabe.
 
 ### 2. Konsumenten-Migration weg von `kol-button-wc` (der strategische Schritt)
 
