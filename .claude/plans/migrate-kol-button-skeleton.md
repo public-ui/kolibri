@@ -75,7 +75,7 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 
 ## Offene Arbeit, nach Priorität
 
-### 1. GOAL: Zero Visual Delta — unstyled ✅ 293/293, default 🟡 296/297 (1 offen: icon/font 51px), bwst/ecl/kern/desy offen
+### 1. GOAL: Zero Visual Delta — unstyled ✅ 293/293, default 🟡 296/297 (1 offen: icon/font 51px), bwst ✅ 288/288, kern 🟡 284/295 (11 offen, Ursachen identifiziert → SKILL §12 kern-Eintrag), ecl/desy offen
 
 Disziplin, Stichproben-Strategie und Werkzeuge: `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
 
@@ -116,7 +116,7 @@ block/button/pill/icon/span-Geometrie UND computed styles via probe.spec.js **im
 **Decision Point für Owner:** Allowlist-Eintrag oder tiefere Font-/Hyphenation-Untersuchung
 (z. B. `hyphens`-Verhalten am `__button` prüfen).
 
-Themes: default 🟡, bwst, ecl, kern, desy (+ unstyled ✅). **„CI grün" ist kein Nachweis** — die
+Themes: default 🟡, bwst ✅, kern 🟡, ecl, desy (+ unstyled ✅). **„CI grün“ ist kein Nachweis** — die
 Snapshot-Workflows committen neue Baselines und werden dadurch selbst grün. Die verbleibende
 Theme-Arbeit liegt in `.claude/plans/kol-button-theme-worklist.md`.
 
