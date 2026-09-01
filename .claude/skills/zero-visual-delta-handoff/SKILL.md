@@ -30,13 +30,13 @@ Warum Docker zwingend ist:
 Einrichtung ist abgeschlossen: `scripts/snapshots-docker.mjs` spiegelt den Workspace in ein Docker-Volume (`kolibri-visual-tests-work`), installiert und baut dort und läuft mit dem CI-identischen Image. Die `node_modules` des Hosts bleiben unangetastet.
 
 ```bash
-# Standard-Prüflauf (nur prüfen, nichts schreiben) — immer mit Workers:
-node scripts/snapshots-docker.mjs <theme> --check -- --workers=4
+# Standard-Prüflauf (nur prüfen, nichts schreiben):
+node scripts/snapshots-docker.mjs <theme> --check
 
 # weitere Varianten:
-node scripts/snapshots-docker.mjs default kern --check -- --workers=4   # mehrere Themes
-node scripts/snapshots-docker.mjs --all --check -- --workers=4          # alle Themes (wie die CI)
-node scripts/snapshots-docker.mjs <theme> --check -- --workers=4 --grep <Muster>   # Teillauf (Stichproben-Strategie, Abschnitt 4)
+node scripts/snapshots-docker.mjs default kern --check   # mehrere Themes
+node scripts/snapshots-docker.mjs --all --check          # alle Themes (wie die CI)
+node scripts/snapshots-docker.mjs <theme> --check -- --grep <Muster>   # Teillauf (Stichproben-Strategie, Abschnitt 4)
 node scripts/snapshots-docker.mjs <theme> --shell                # interaktive Shell im Container
 node scripts/snapshots-docker.mjs --reset                # Volume verwerfen (Neuinstallation)
 
@@ -48,7 +48,7 @@ docker run --rm -u 0 -v kolibri-visual-tests-work:/work mcr.microsoft.com/playwr
   bash -c 'rm -rf /work/repo/packages/themes/<theme>/test-results /work/repo/packages/themes/<theme>/playwright-report'
 ```
 
-Performance-Hintergrund: Das Docker-Script setzt `CI=0` fix (keine Retries, parallele Worker möglich). Ohne `--workers` bleibt die Abarbeitung trotzdem seriell — Worker-Zahl immer angeben. CI-identischer Kontrolllauf: `-- --workers=1 --retries=2`.
+Performance-Hintergrund (System-Config, gilt von selbst): Das Docker-Script setzt `CI=0` fix (keine Retries), die Playwright-Config defaultet auf 4 parallele Worker; `KOLIBRI_VISUAL_TESTS_WORKERS` oder `--workers=N` überschreiben. CI-identischer Kontrolllauf: `-- --workers=1 --retries=2`.
 
 Regeln:
 
@@ -71,18 +71,18 @@ Regeln:
 
 Ein Fix betrifft fast immer einen Komponenten-Baum. Deshalb von klein nach groß prüfen — nie umgekehrt:
 
-| Stufe                | Umfang                                 | grep                                               | Dauer (4 Worker) |
-| -------------------- | -------------------------------------- | -------------------------------------------------- | ---------------- |
-| 1 — Block-Stichprobe | ein einziger betroffener Block         | `--grep "<route-fragment>"` (z. B. `button/icons`) | Sekunden         |
-| 2 — Cluster          | alle Routen der betroffenen Komponente | `--grep "<komponente>"` (z. B. `button`)           | 10–30s           |
-| 3 — Cluster-Gruppe   | bei Cross-Component-Fixen              | `--grep "(button\|tabs\|nav)"`                     | ~1 min           |
-| 4 — Voller Lauf      | Abschluss, Pflicht vor jedem Commit    | kein grep                                          | ~2–3 min         |
+| Stufe                | Umfang                                                        | grep                                               | Dauer (4 Worker) |
+| -------------------- | ------------------------------------------------------------- | -------------------------------------------------- | ---------------- |
+| 1 — Block-Stichprobe | ein einziger betroffener Block                                | `--grep "<route-fragment>"` (z. B. `button/icons`) | Sekunden         |
+| 2 — Cluster          | alle Routen der betroffenen Komponente                        | `--grep "<komponente>"` (z. B. `button`)           | 10–30s           |
+| 3 — Cluster-Gruppe   | bei Cross-Component-Fixen                                     | `--grep "(button\|tabs\|nav)"`                     | ~1 min           |
+| 4 — Voller Lauf      | Abnahme (Theme fertig / PR-reif), NICHT pro Iterations-Commit | kein grep                                          | ~2–3 min         |
 
 Regeln:
 
 - **Stufe 1 zuerst, immer.** Fix-Hypothese an einem einzigen Block bestätigen oder verwerfen, bevor irgendetwas skaliert wird.
 - **Nicht über Stufen springen.** Kein voller Lauf, solange der betroffene Cluster rot ist — er verbirgt die Signal-Diffs hinter bekanntem Rauschen.
-- **Stufe 4 ist Pflicht vor jedem Commit.** Teilläufe beschleunigen die Iteration, sind aber nie ein Abschlussbeweis.
+- **Stufe 4 gehört zur Abnahme, nicht zu jedem Iterations-Commit.** Sind die betroffenen Cluster grün, reicht der Commit — Nebenwirkungen fängt die CI ab (`visual-tests-base.yml` vergleicht gegen Base-Baselines). Vor der Abnahme („Theme fertig", PR-reif) muss genau einmal ein voller Lauf grün sein: lokal ODER als CI-Job als Evidenz (siehe Abschnitt 1).
 - Reine Geometrie-Fragen (keine Pixel) mit einer probe.spec.js klären (~4s, siehe Fallstricke) statt Blöcke zu fotografieren.
 
 ### Iterations-Loop (pro Theme/Scope)
@@ -203,7 +203,7 @@ Abgeschlossene Abschnitte als „DONE (Datum)" markieren und stehen lassen — d
 - [ ] Docker-Daemon läuft (`docker info`); ohne Docker: Arbeit als offene Position im Companion-Plan dokumentieren, keine lokalen Ersatzläufe
 - [ ] Zieldiff gemessen und mit Plan-Eintrag abgeglichen; Evidenz = Docker-Check-Exit-Code/CI-Job, nicht die zurückgesetzte PNG-Zahl
 - [ ] Vor jedem Check-Lauf: Ergebnisordner geräumt, Baselines auf Base-Stand
-- [ ] Fix-Iteration über Stichproben-Strategie (Stufe 1 → 4); voller Lauf als Abschluss vor jedem Commit
+- [ ] Fix-Iteration über Stichproben-Strategie (Stufe 1 → 4); voller Lauf einmalig als Abnahme-Evidenz (lokal oder CI-Job), nicht pro Iterations-Commit
 - [ ] Diffs klassifiziert (verschiebt/fehlt/zu viel), Muster-Katalog (6a + 6b) abgegangen, Fix-Batches nach Ursache
 - [ ] Route-Viewport bei allen Proben beachtet; kompiliertes CSS bei Selector-Zweifeln gegriffen
 - [ ] Bei DOM-Änderungen: Hydrate-Snapshot aktualisiert (Components-Build davor), `pnpm -r test:unit`
