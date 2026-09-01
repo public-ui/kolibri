@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
-import { KolAlertWcTag, KolButtonWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag, KolPopoverButtonWcTag } from '../../core/component-names';
+import { KolAlertWcTag, KolButtonWcTag, KolDialogWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type { KoliBriTableHeaderCell } from '../../schema';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -38,7 +38,7 @@ export class KolTableSettings {
 		this.handleHeaderCellsChange(this._horizontalHeaderCells);
 	}
 
-	private popoverRef: HTMLKolPopoverButtonWcElement | undefined;
+	private dialogRef: HTMLKolDialogWcElement | undefined;
 
 	private getPrimaryRow(): KoliBriTableHeaderCell[] {
 		return this.editingHeaderCells[this.editingHeaderCells.length - 1] ?? [];
@@ -85,7 +85,7 @@ export class KolTableSettings {
 	private handleCancel() {
 		this.editingHeaderCells = this.headerCells.map((row) => [...row]);
 		this.errorMessage = null;
-		void this.popoverRef?.hidePopover();
+		void this.dialogRef?.close();
 	}
 
 	private handleSubmit(event: Event): void {
@@ -121,94 +121,101 @@ export class KolTableSettings {
 				}),
 			);
 			dispatchDomEvent(this.host, KolEvent.changeHeaderCells, sanitizedHeaderCells);
-			void this.popoverRef?.hidePopover();
+			void this.dialogRef?.close();
 		}
 	}
 
 	public render(): JSX.Element {
 		const columns = this.getPrimaryRow();
 
+		const onOpenDialog = {
+			onClick: () => this.dialogRef?.showModal(),
+		};
+
 		return (
-			<KolPopoverButtonWcTag
-				ref={(el) => (this.popoverRef = el)}
-				class="kol-table-settings"
-				_icons="kolicon-settings"
-				_label={this.translateTableSettings}
-				_popoverAlign="top"
-				_hideLabel
-			>
-				<div class="kol-table-settings__content">
-					<KolHeadingTag _label={this.translateTableSettings} _level={0} />
+			<div>
+				<KolButtonWcTag
+					class="kol-table-settings"
+					_icons="kolicon-settings"
+					_label={this.translateTableSettings}
+					_hideLabel
+					_on={onOpenDialog}
+				></KolButtonWcTag>
 
-					{this.errorMessage && <KolAlertWcTag _type="error" _label={this.errorMessage} _variant="msg" class="kol-table-settings__error-message" />}
+				<KolDialogWcTag _label={this.translateTableSettings} _variant="card" ref={(el) => (this.dialogRef = el)} _width="fit-content">
+					<div class="kol-table-settings__content">
+						<KolHeadingTag _label={this.translateTableSettings} _level={0} />
 
-					<form onSubmit={this.handleSubmit.bind(this)}>
-						<div class="kol-table-settings__columns">
-							{columns.map((column, index) => (
-								<div key={column.key} class="kol-table-settings__column">
-									<KolInputCheckboxTag
-										_checked={column.visible !== false}
-										_label={
-											column.hidable
-												? translate('kol-table-settings-column-hidable', { placeholders: { column: column.label } })
-												: translate('kol-table-settings-column-not-hidable', { placeholders: { column: column.label } })
-										}
-										_value={true}
-										_hideLabel
-										_disabled={column.hidable === false}
-										_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key ?? '', value) }}
-									/>
-									<span class="kol-table-settings__column-label">{column.label}</span>
-									<KolInputNumberTag
-										_hideLabel
-										_value={parseColumnWidth(column.width)}
-										_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
-										_min={1}
-										_disabled={column.resizable === false}
-										_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key ?? '', value) }}
-									/>
-									<KolButtonWcTag
-										_icons="kolicon-chevron-up"
-										_label={
-											column.sortable === false || index === 0
-												? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
-												: translate('kol-table-settings-move-up', { placeholders: { column: column.label } })
-										}
-										_hideLabel
-										_variant="ghost"
-										_on={{ onClick: () => this.moveColumn(column.key ?? '', 'up') }}
-										_disabled={column.sortable === false || index === 0}
-										data-testid="table-settings-move-up"
-									/>
-									<KolButtonWcTag
-										_icons="kolicon-chevron-down"
-										_label={
-											column.sortable === false || index === columns.length - 1
-												? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
-												: translate('kol-table-settings-move-down', { placeholders: { column: column.label } })
-										}
-										_hideLabel
-										_variant="ghost"
-										_on={{ onClick: () => this.moveColumn(column.key ?? '', 'down') }}
-										_disabled={column.sortable === false || index === columns.length - 1}
-										data-testid="table-settings-move-down"
-									/>
-								</div>
-							))}
-						</div>
+						{this.errorMessage && <KolAlertWcTag _type="error" _label={this.errorMessage} _variant="msg" class="kol-table-settings__error-message" />}
 
-						<div class="kol-table-settings__actions">
-							<KolButtonWcTag
-								_label={this.translateTableSettingsCancel}
-								_variant="secondary"
-								_on={{ onClick: () => this.handleCancel() }}
-								data-testid="table-settings-cancel"
-							/>
-							<KolButtonWcTag _label={this.translateTableSettingsApply} _variant="primary" _type="submit" data-testid="table-settings-apply" />
-						</div>
-					</form>
-				</div>
-			</KolPopoverButtonWcTag>
+						<form onSubmit={this.handleSubmit.bind(this)}>
+							<div class="kol-table-settings__columns">
+								{columns.map((column, index) => (
+									<div key={column.key} class="kol-table-settings__column">
+										<KolInputCheckboxTag
+											_checked={column.visible !== false}
+											_label={
+												column.hidable
+													? translate('kol-table-settings-column-hidable', { placeholders: { column: column.label } })
+													: translate('kol-table-settings-column-not-hidable', { placeholders: { column: column.label } })
+											}
+											_value={true}
+											_hideLabel
+											_disabled={column.hidable === false}
+											_on={{ onInput: (_, value: unknown) => this.handleVisibilityChange(column.key ?? '', value) }}
+										/>
+										<span class="kol-table-settings__column-label">{column.label}</span>
+										<KolInputNumberTag
+											_hideLabel
+											_value={parseColumnWidth(column.width)}
+											_label={translate('kol-table-settings-column-width', { placeholders: { column: column.label } })}
+											_min={1}
+											_disabled={column.resizable === false}
+											_on={{ onInput: (_, value: unknown) => this.handleWidthChange(column.key ?? '', value) }}
+										/>
+										<KolButtonWcTag
+											_icons="kolicon-chevron-up"
+											_label={
+												column.sortable === false || index === 0
+													? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
+													: translate('kol-table-settings-move-up', { placeholders: { column: column.label } })
+											}
+											_hideLabel
+											_variant="ghost"
+											_on={{ onClick: () => this.moveColumn(column.key ?? '', 'up') }}
+											_disabled={column.sortable === false || index === 0}
+											data-testid="table-settings-move-up"
+										/>
+										<KolButtonWcTag
+											_icons="kolicon-chevron-down"
+											_label={
+												column.sortable === false || index === columns.length - 1
+													? translate('kol-table-settings-not-move', { placeholders: { column: column.label } })
+													: translate('kol-table-settings-move-down', { placeholders: { column: column.label } })
+											}
+											_hideLabel
+											_variant="ghost"
+											_on={{ onClick: () => this.moveColumn(column.key ?? '', 'down') }}
+											_disabled={column.sortable === false || index === columns.length - 1}
+											data-testid="table-settings-move-down"
+										/>
+									</div>
+								))}
+							</div>
+
+							<div class="kol-table-settings__actions">
+								<KolButtonWcTag
+									_label={this.translateTableSettingsCancel}
+									_variant="secondary"
+									_on={{ onClick: () => this.handleCancel() }}
+									data-testid="table-settings-cancel"
+								/>
+								<KolButtonWcTag _label={this.translateTableSettingsApply} _variant="primary" _type="submit" data-testid="table-settings-apply" />
+							</div>
+						</form>
+					</div>
+				</KolDialogWcTag>
+			</div>
 		);
 	}
 }
