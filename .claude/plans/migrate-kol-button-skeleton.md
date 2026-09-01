@@ -95,7 +95,11 @@ geschlossen (siehe unten).
   Beschreibungs-Span wandert aus dem Wrapper) — `pnpm -r test:unit` 916/916 grün,
   `_skeleton/public-api.spec.ts` grün.
 - **Alle 6 Themes danach voll re-gecheckt**: 294/294 (bzw. 293/293 unstyled), Exit 0, keine
-  Regression.
+  Regression. Auch als 1-Worker-Pre-Push-Abnahme (`--all --check`): alle grün.
+- **Bewusste Divergenz zu `LinkFC`**: `LinkFC` hält Tooltip/Beschreibung weiterhin **innerhalb**
+  `BemRootNodeFC` (Link-Skeleton ist in develop gemergt, dort zero-delta; das 2px-Problem tritt bei
+  Links nicht auf). Ob `LinkFC` aus Symmetrie nachzieht → **Issue [#10745](https://github.com/public-ui/kolibri/issues/10745)**
+  (deleonio), separat mit eigener Pixel-Verifikation, nicht in diesem PR.
 
 **Stand 2026-09-01 (diese Session, 2. Teil):**
 
