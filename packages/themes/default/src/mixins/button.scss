@@ -107,7 +107,8 @@
 				}
 			}
 
-			@at-root #{$root}__button:focus {
+			@at-root #{$root}__anchor:focus,
+				#{$root}__button:focus {
 				@include focus-outline;
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}

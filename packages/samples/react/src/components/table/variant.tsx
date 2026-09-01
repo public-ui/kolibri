@@ -12,7 +12,7 @@ import { DATA } from './test-data';
 import type { KoliBriTableHeaders } from '@public-ui/components';
 import { useSearchParams } from 'react-router';
 import { fetchVariantData } from '../../shares/fetchVariantData';
-import { getCustomThemes } from '../../shares/store';
+import { getTheme } from '../../shares/store';
 
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
@@ -25,7 +25,7 @@ const HEADERS: KoliBriTableHeaders = {
 
 export const TableVariant: FC = () => {
 	const [searchParams] = useSearchParams();
-	const theme = searchParams.get('theme') ?? getCustomThemes()?.[0]?.key;
+	const theme = searchParams.get('theme') ?? getTheme();
 	const tableVariants = useMemo(() => (theme ? fetchVariantData(theme, 'tableVariants') : []), [theme]);
 
 	return (

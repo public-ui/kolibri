@@ -23,8 +23,11 @@
 		}
 
 		&__button .kol-button {
-			/* The min-height override belongs to the interactive element — the a11y layer pins every
-			   real `button` to 44px, so on the wrapper it would not shrink the visible button. */
+			/* The 40px override must shrink BOTH elements: the wrapper (pinned to the 44px a11y
+			   minimum by the shared wc-box mixin) and the interactive element (pinned directly
+			   by the a11y layer). In the legacy DOM this single rule shrank the real button. */
+			min-height: to-rem(40);
+
 			.kol-button__button {
 				min-height: to-rem(40);
 			}
