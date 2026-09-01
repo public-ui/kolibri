@@ -16,10 +16,10 @@ exports[`kol-button should render with _label="Label" _ariaDescription="Aria Des
           </span>
         </span>
       </button>
-      <span class="visually-hidden" id="nonce">
-        Aria Description
-      </span>
     </div>
+    <span class="visually-hidden" id="nonce">
+      Aria Description
+    </span>
   </template>
 </kol-button>
 `;

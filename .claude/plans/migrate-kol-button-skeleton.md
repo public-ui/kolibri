@@ -75,12 +75,27 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 
 ## Offene Arbeit, nach Priorität
 
-### 1. GOAL: Zero Visual Delta — unstyled ✅, default ✅, bwst ✅, ecl ✅, desy ✅ (je 293–294/294, Exit 0); kern ✅ bis auf 3 Allowlist-Einträge (291/294 + 3 bewusst akzeptiert)
+### 1. GOAL: Zero Visual Delta — ✅ ERREICHT: unstyled 293/293, default/bwst/ecl/desy/**kern** je 294/294, alle Exit 0, `git diff origin/develop..HEAD -- '*.png'` = 0
 
-**Akzeptanzkriterium (Skill §1/§8) erfüllt:** jede Snapshot-Datei ist entweder bit-identisch zum
-Base-Branch ODER ein expliziter Allowlist-Eintrag mit Begründung + Owner-Freigabe. Die 3 kern-
-Ausnahmen sind unten in **Abschnitt 8 (Allowlist)** gelistet; Owner-Entscheidung 2026-09-01:
-„an die DOM/Components-Migration weiterreichen, keine Theme-Arbeit".
+**Akzeptanzkriterium (Skill §1) erfüllt:** jede Snapshot-Datei ist bit-identisch zum Base-Branch.
+Die Allowlist (Abschnitt 8) ist wieder leer — die 3 kern-Tooltip-Diffs wurden per DOM-Fix
+geschlossen (siehe unten).
+
+**Stand 2026-09-01 (diese Session, 3. Teil — kern 3→0):**
+
+- **DOM-Fix in `ButtonFC`** (`internal/functional-components/button/component.tsx`): `kol-button__tooltip`
+  und die visually-hidden Beschreibung werden jetzt als **Geschwister** von `BemRootNodeFC`
+  gerendert (direkte Host-Kinder), nicht mehr im Wrapper-`<div>` — exakt die develop-Struktur.
+  Grund: der `position: fixed`, animations-belegte Tooltip-Layer im zusätzlichen Wrapper-`<div>`
+  wurde von Firefox ~2px anders rastert (nur bei kern sichtbar, weil dessen Tooltip-Font weniger
+  hinting-robust ist). FC gibt jetzt ein `<Fragment>` zurück; `wc.tsx` rendert `ButtonFC` direkt
+  → beide Elemente (`kol-button`, `kol-button-wc`) profitieren.
+- **Snapshots nachgezogen**: Hydrate-SSR (`components.spec.js.mocha-snapshot`, 4 pagination-
+  Einträge mit hide-label-Tooltip) und der button-Jest-Snapshot (`snapshot.spec.tsx.snap`,
+  Beschreibungs-Span wandert aus dem Wrapper) — `pnpm -r test:unit` 916/916 grün,
+  `_skeleton/public-api.spec.ts` grün.
+- **Alle 6 Themes danach voll re-gecheckt**: 294/294 (bzw. 293/293 unstyled), Exit 0, keine
+  Regression.
 
 **Stand 2026-09-01 (diese Session, 2. Teil):**
 
@@ -249,9 +264,14 @@ inneren `<button>`, weil die Block-Modifier auf der BEM-Wurzel sitzen).
 
 ## 8. Allowlist (Skill §8) — bewusst akzeptierte Snapshot-Abweichungen
 
-Default: leer. Ein Eintrag ist nur mit Begründung **und** Owner-Freigabe zulässig.
+Default: leer (Stand 2026-09-01: leer — A1 wurde per DOM-Fix gelöst statt allowlisted). Ein
+Eintrag ist nur mit Begründung **und** Owner-Freigabe zulässig.
 
-### A1 — kern: `dialog/basic`, `drawer/basic?align=left&closer=true`, `modal/basic` (je 1 PNG)
+### A1 — kern: `dialog/basic`, `drawer/basic?align=left&closer=true`, `modal/basic` — ✅ GELÖST 2026-09-01
+
+**Kein Allowlist-Eintrag mehr nötig.** Per DOM-Fix in `ButtonFC` geschlossen (Tooltip als
+Geschwister von `BemRootNodeFC` statt im Wrapper-`<div>`, = develop-Struktur). Details: Abschnitt 1,
+Teil 3. Der ursprüngliche Befund bleibt als Doku stehen:
 
 - **Was**: Der „Close"-Button-Tooltip (`--hide-label`) rendert den Bubble-Text in Firefox mit
   ~2px anderer Antialiasing-Deckung (kein sauberer Versatz — Pixel-Zeilen-Analyse zeigt pro

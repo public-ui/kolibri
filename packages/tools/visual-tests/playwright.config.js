@@ -37,8 +37,10 @@ export default defineConfig({
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
 	retries: process.env.CI ? 2 : 0,
-	/* Parallel workers; default 4 (CI runners have 4 vCPUs). */
-	workers: Number(process.env.KOLIBRI_VISUAL_TESTS_WORKERS || 4),
+	/* Parallel workers. Local runs default to 4 (fast iteration); CI defaults to 1 for maximum
+	   snapshot stability (parallel Firefox instances can produce sub-pixel-flaky renders).
+	   `KOLIBRI_VISUAL_TESTS_WORKERS` overrides both — e.g. set it to 1 for the pre-push full run. */
+	workers: Number(process.env.KOLIBRI_VISUAL_TESTS_WORKERS || (process.env.CI ? 1 : 4)),
 	/* Allow to override the expectation timeout for slow environments */
 	timeout: TIMEOUT,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
