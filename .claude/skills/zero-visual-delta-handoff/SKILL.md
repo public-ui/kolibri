@@ -348,6 +348,19 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 - **Verbleibend: icon/font, 51px deterministic** — block/button/pill/icon/span-Geometrie UND computed styles via probe.spec.js IM ROUTE-VIEWPORT (250×345!) bit-identisch gegen develop; Rest ist ein Firefox-Paint-Artefakt des umgebrochenen Button-Labels im zusätzlichen Wrapper-Kontext. Für Owner-Entscheidung dokumentiert (Allowlist oder tiefere Font-/Hyphenation-Untersuchung).
 - **Evidenz**: 296 passed, 1 failed (icon/font) — vor der Theme-Runde: 267/27. Fix-Commits df7a923b5f + 6dfe5f2a59.
 
+### 2026-09-01 — Button-Skeleton-Migration (kol-button-wc rendert ButtonFC mit Wrapper-div): Theme bwst (25 Diffs → 0)
+
+- **Ausgangslage**: 25 PNG-Diffs nach der Button-Skeleton-Migration im bwst theme (accordion, badge, details, input-file, popover-button, split-button, tabs×3, dialog, drawer, icon/font, toolbar, scenarios-accordion, scenarios-same-height×2, scenarios-focus-elements×4)
+- **Ursachen & Fix-Muster**:
+  - **State-Prädikate auf `__button` gescoped** (button-mixin hover/focus/disabled): Alle `&:not([disabled], [aria-disabled='true']):hover` und `&:focus`-Regeln mussten auf `&__button` verschoben werden (Muster 2 & 6b). Die kombinierten Prädikate am Wrapper kehren sich um und würden deaktivierte Buttons mit Hover-Styling versehen.
+  - **Padding auf inneres Element verschoben** (accordion, badge): Box-Stile, die sich auf die a11y-Min-Size stapeln würden, müssen auf `__button` liegen (Muster 4).
+  - **Fokus-Ring auf interaktives Element** (details, nav, button-link): `:focus`-Regeln müssen auf `__button` (oder `__anchor` bei button-link) liegen, um den UA-Ring des echten Elements zu überschreiben.
+  - **min-height Override auf beide Elemente** (input-file): Die 40px-Override muss sowohl auf den Wrapper als auch auf `__button` angewendet werden (a11y-Layer pinnt `__button` auf 44px).
+  - **border: none auf `__button`** (tabs): Die `border: none` muss auf dem inneren Element liegen, damit die Labels baseline-korrekt bleiben. Die selected-border und border-radius bleiben auf dem Container.
+- **Theme-Spezifika**: bwst hat sehr ähnliche Struktur wie default, aber mit leicht unterschiedlichen Werten (font-weight 200 statt 700, to-rem-Funktion statt CSS-Units). Die Fix-Muster sind identisch.
+- **Fix-Commit(s)**: TBD (nicht committet)
+- **Evidenz**: `node scripts/snapshots-docker.mjs bwst --check` → 288/288 passed, Exit 0 (vorher: 25 failed)
+
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 
 - **Ausgangslage**:

@@ -52,6 +52,8 @@
 			color: var(--color-subtle);
 			background-color: transparent;
 			border-radius: var(--border-radius);
+			position: relative;
+			top: 1px;
 			min-width: var(--a11y-min-size);
 			min-height: var(--a11y-min-size);
 			padding: 0 to-rem(4);
@@ -59,11 +61,16 @@
 			font-size: to-rem(16);
 			font-weight: normal;
 			line-height: 1.2;
+			border: to-rem(1) solid transparent;
+			/*border: none;*/
 			font-style: normal;
 
-			/* In the legacy DOM `border: none` applied to the button itself:
-			   the border removal keeps the vertically centered labels at the baseline position. */
+			/* In the legacy DOM `border: none` and the radius applied to the button itself:
+			   the border removal keeps the vertically centered labels at the baseline position,
+			   and the radius rounds the focus outline (Firefox draws the outline following the
+			   element's border-radius). */
 			.kol-button__button {
+				border-radius: to-rem(4);
 				border: none;
 			}
 
@@ -83,12 +90,10 @@
 			}
 
 			&.selected {
-				border: to-rem(1) solid transparent;
 				border-color: var(--color-primary);
 				border-radius: to-rem(4) to-rem(4) 0 0;
 				border-bottom-color: var(--color-light);
 				position: relative;
-				top: 1px;
 
 				.kol-span__container {
 					//border-top: 0.25em solid;
