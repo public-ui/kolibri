@@ -75,12 +75,29 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 
 ## Offene Arbeit, nach Priorität
 
-### 1. GOAL: Zero Visual Delta — unstyled ✅ 293/293, default 🟡 296/297 (1 offen: icon/font 51px), bwst ✅ 288/288, ecl ✅ 296/296, desy ✅ 294/294, kern 🟡 284/295 (11 offen, Ursachen identifiziert → SKILL §12 kern-Eintrag)
+### 1. GOAL: Zero Visual Delta — unstyled ✅ 293/293, default ✅ 294/294, bwst ✅ 294/294, ecl ✅ 294/294, desy ✅ 294/294, kern 🟡 291/294 (3 offen)
 
-**Stand 2026-09-01 (diese Session):** ecl (18→0) und desy (33→0) abgeschlossen, je voller Docker-Check
-grün (Exit 0), `git diff origin/develop...HEAD -- '*.png'` = 0, Stylelint sauber. Details +
-Fix-Muster: SKILL.md §12 ecl-/desy-Einträge. Damit sind alle Themes außer kern grün; kern bleibt
-mit 11 offenen Diffs (Ursachen dokumentiert) als einzige offene Position.
+**Stand 2026-09-01 (diese Session, 2. Teil):**
+
+- **ecl (18→0)**, **desy (33→0)**: abgeschlossen, Commits `cf4d4004b8` / `8feddef911`.
+- **default (1→0)**: der lange offene `icon/font`-Diff war KEIN Firefox-Paint-Artefakt, sondern
+  `kol-button-styles` (Basis) setzt `text-align: left` auf `&__button` (aus dem Anchor-Fall kopiert)
+  — ein umbrechendes Pill-Label richtete sich links statt zentriert aus. Fix theme-lokal
+  (`text-align: center` auf `.kol-button__button` im default-`button()`-Mixin). Eine Basis-Änderung
+  brach ecl/desy, daher revertet.
+- **bwst (~5→0)**: war NICHT wirklich 288/288 (stale Evidenz — tabs failte schon vor dieser Session
+  ohne bwst/Components-Änderung). Zwei echte Regressionen aus f2c7fcde87: `icon/font` (dasselbe
+  `text-align`) und tabs (Border/Radius/Deko nur auf `&.selected`/Wrapper statt auf jedem
+  Tab-`<button>`). Fix: Box + `::before/::after` auf `.kol-button__button`, `top: 1px` am Wrapper.
+  Dead `tabs-old.scss` entfernt. Commit `7374681c60`.
+- **kern (15→3)**: `$interactive-element`-Parameter am `button()`-Mixin (`'button'`/`'anchor'`) +
+  `$interactive-suffix` am `_link.mixin.scss` (wie desy). Gefixt: icon/font, button/variants,
+  link-button, toolbar, input-text, nav, tree, same-height, button-link, tabs. Commit `30caed4b69`.
+  **Offen (3): `dialog`/`drawer`/`modal` „Close"-Button** — ~2px vertikaler Textversatz (der Button
+  hat einen Tooltip-Nachbarn). Probe scheitert an verschachtelten Shadow-Roots. → Decision Point.
+
+Details + Fix-Muster: SKILL.md §12 (ecl/desy/default+bwst/kern-Einträge). `git diff
+origin/develop...HEAD -- '*.png'` = 0, Stylelint je Theme sauber.
 
 Disziplin, Stichproben-Strategie und Werkzeuge: `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
 
