@@ -6,5 +6,12 @@
 	.kol-button {
 		--color-mute-variant: var(--kern-color-feedback-info-background);
 		--color-text: var(--kern-color-layout-text-default);
+
+		/* Firefox pins `line-height: normal` directly on every `button` — the inner element would
+		   drop the line-height themed on the wrapper via body-default (the button element itself
+		   carried it before the skeleton migration), shrinking the text line by 2px. */
+		.kol-button__button {
+			line-height: inherit;
+		}
 	}
 }

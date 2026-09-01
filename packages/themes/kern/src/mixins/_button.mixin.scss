@@ -11,13 +11,23 @@
 		min-width: var(--button-min-size);
 		min-height: var(--button-min-size);
 
+		/* Size overrides (`--inline`, `--x-small`) must shrink the interactive element as well: the
+		   a11y layer pins every `button` to 44×44, and the wrapper alone used to be the button
+		   before the skeleton migration. */
+		&__button {
+			min-width: var(--button-min-size);
+			min-height: var(--button-min-size);
+		}
+
 		font-size: var(--kern-typography-font-size-static-medium);
 
-		&:focus-visible {
+		&:focus-visible,
+		&__button:focus-visible {
 			@include focus-outline;
 		}
 
-		&:disabled {
+		&__button:disabled,
+		&__button[disabled] {
 			opacity: 0.4;
 		}
 
@@ -109,12 +119,12 @@
 	--button-text-border-color: var(--kern-color-action-default);
 	--button-text-color: var(--kern-color-action-on-default);
 
-	&:not([disabled]):hover {
+	&__button:not([disabled]):hover {
 		--button-text-background-color: var(--kern-color-action-state-indicator-shade-hover);
 		--button-text-border-color: var(--kern-color-action-state-indicator-shade-hover);
 	}
 
-	&:not([disabled]):active {
+	&__button:not([disabled]):active {
 		--button-text-background-color: var(--kern-color-action-state-indicator-shade-active);
 		--button-text-border-color: var(--kern-color-action-state-indicator-shade-active);
 	}
@@ -126,11 +136,11 @@
 	--button-text-border-color: var(--kern-color-action-default);
 	--button-text-color: var(--kern-color-action-default);
 
-	&:not([disabled]):hover {
+	&__button:not([disabled]):hover {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 	}
 
-	&:not([disabled]):active {
+	&__button:not([disabled]):active {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-active-opacity);
 	}
 }
@@ -142,19 +152,31 @@
 	--button-badge-color: var(--kern-neutral-000);
 	text-decoration-color: var(--kern-color-action-default);
 
-	&:not([disabled]):hover {
+	/* The real button paints its own decoration — the wrapper's would not propagate into the
+	   atomic inline-level button box. */
+	&__button {
+		text-decoration-color: var(--kern-color-action-default);
+	}
+
+	&__button:not([disabled]):hover {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 	}
 
-	&:not([disabled]):active {
+	&__button:not([disabled]):active {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-active-opacity);
 	}
 
 	&:not(:has(.kol-icon)) {
 		text-decoration-line: underline;
 
-		&:not([disabled]):hover {
-			text-decoration-thickness: var(--kern-3, 3px);
+		/* A plain descendant keeps this correct in every include context — a second `&` would
+		   re-expand the full carrier selector and demand the block as its own descendant. */
+		.kol-button__button {
+			text-decoration-line: underline;
+
+			&:not([disabled]):hover {
+				text-decoration-thickness: var(--kern-3, 3px);
+			}
 		}
 	}
 }

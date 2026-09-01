@@ -45,6 +45,13 @@
 				font-size: var(--kern-typography-font-size-static-medium);
 				font-weight: var(--kern-typography-font-weight-semi-bold);
 
+				/* Firefox pins `font-weight: 400` directly on every `button` — the inner element would
+				   drop the weight themed on the wrapper (the button element itself before the skeleton
+				   migration), narrowing label and icon glyph advances. */
+				.kol-button__button {
+					font-weight: inherit;
+				}
+
 				.kol-span__container {
 					gap: var(--kern-metric-space-x-small);
 				}
