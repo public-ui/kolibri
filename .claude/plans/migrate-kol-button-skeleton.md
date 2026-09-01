@@ -93,8 +93,20 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 - **kern (15→3)**: `$interactive-element`-Parameter am `button()`-Mixin (`'button'`/`'anchor'`) +
   `$interactive-suffix` am `_link.mixin.scss` (wie desy). Gefixt: icon/font, button/variants,
   link-button, toolbar, input-text, nav, tree, same-height, button-link, tabs. Commit `30caed4b69`.
-  **Offen (3): `dialog`/`drawer`/`modal` „Close"-Button** — ~2px vertikaler Textversatz (der Button
-  hat einen Tooltip-Nachbarn). Probe scheitert an verschachtelten Shadow-Roots. → Decision Point.
+  **Offen (3): `dialog`/`drawer`/`modal` „Close"-Button-Tooltip** — ~2px vertikaler Textversatz
+  im Tooltip-Bubble. **Voll diagnostiziert (Shadow-durchdringende Probe, DEV vs BR):** jede
+  Computed-Property und jede Bounding-Box ist bit-identisch — `kol-tooltip__floating` y=271,
+  `kol-tooltip__arrow` y=274.43 mit identischer Rotations-Matrix, `kol-tooltip__content` y=271;
+  `font-family=Verdana`, `font-size=16px`, `line-height=normal`, `font-weight=400`,
+  `font-kerning=auto`, `text-rendering=auto`, `letter-spacing=normal` — alles gleich. Einziger
+  Messunterschied: die `kol-button__tooltip`-Anker-`<div>`-Breite (0 statt 44px, weil jetzt
+  Flex-Geschwister von `__button` statt Block-Kind des `<button>`) — ändert die JS-positionierte
+  Tooltip-Lage NICHT (beide y=271). `&__tooltip { display: block; width: 100% }` in kern
+  ausprobiert → brach 6 andere Szenarien, verworfen. **Fazit: echtes Firefox-Sub-Pixel-Paint-
+  Artefakt des Verdana-Fallback-Texts im zusätzlichen Wrapper-Kontext, ohne CSS-Angriffspunkt
+  (develop und Branch haben identisches Tooltip-CSS).** → **Allowlist-Kandidat (§8), braucht
+  Owner-Freigabe.** Andere Themes zeigen es nicht (ihre Tooltips erben eine andere, hinting-
+  robustere Font).
 
 Details + Fix-Muster: SKILL.md §12 (ecl/desy/default+bwst/kern-Einträge). `git diff
 origin/develop...HEAD -- '*.png'` = 0, Stylelint je Theme sauber.
