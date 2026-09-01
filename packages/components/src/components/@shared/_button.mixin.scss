@@ -107,12 +107,13 @@
 			display: block;
 			border-width: medium;
 
+			font-weight: inherit;
+
 			/* The UA pins `text-align: center` and (in Firefox) `font-weight: 400` directly on every
 			   `button`, which would beat any alignment or font weight inherited through the wrapper
 			   (e.g. nav's `text-align: left`, or a bold active entry that used to apply to the button
 			   element itself). Inheriting restores the old flow. */
 			font-style: inherit;
-			font-weight: inherit;
 			text-align: inherit;
 		}
 
