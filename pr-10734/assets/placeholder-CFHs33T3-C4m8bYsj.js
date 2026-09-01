@@ -1,0 +1,1 @@
+import{Et as e}from"./index-KFcSHE-O.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
