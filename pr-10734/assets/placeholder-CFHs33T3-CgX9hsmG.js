@@ -1,1 +1,0 @@
-import{Et as e}from"./index-CiWX4VQT.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
