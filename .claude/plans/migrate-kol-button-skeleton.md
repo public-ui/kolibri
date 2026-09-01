@@ -89,7 +89,13 @@ git diff origin/develop..HEAD -- '*.png'              # muss leer sein
 (Bäume ohne volles `kol-button-styles`), UA-Replikation auf `__button` (`text-align: center`,
 `border-width: medium; border-style: none`, `text-align`/`font-style`/`font-weight: inherit`),
 Inline-Exemptions bei popover-button und button-link, tabs-Unterstrich auf `__button`.
-Details: Abschnitt 12 des Skills.
+Details: Abschnitt 12 des Skills. **Re-verifiziert 2026-09-01** gegen aktuellen develop-Stand
+(`18a71e5a3c`) nach den kern/bwst-Theme-Fixes (Commits bis `90597fc488`): Baselines waren bereits
+identisch zu develop (0 Zeilen Diff vor dem Lauf), voller Docker-Check erneut 293/293 passed,
+Exit 0; `git diff origin/develop..HEAD -- '*.png'` = 0. **Erneut re-verifiziert 2026-09-01
+(zweite Runde)** gegen `18a71e5a3c` (develop-Stand unverändert): Baselines identisch zu develop,
+Ergebnisordner geräumt, voller Docker-Check `node scripts/snapshots-docker.mjs unstyled --check`
+→ 293 passed (1.3m), 0 failed, Exit 0; PNG-Diff-Metrik = 0.
 
 **default: 296 passed, 1 failed (icon/font, 51px)** — Start 27, über zwei Fix-Runden
 (df7a923b5f + 6dfe5f2a59):
