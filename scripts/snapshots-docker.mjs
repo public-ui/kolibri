@@ -124,7 +124,7 @@ set -euo pipefail
 
 export HOME=/work/home
 export PATH="/work/npm-global/bin:$PATH"
-export CI=1                       # gleiche Playwright-Einstellungen wie im CI-Lauf (workers=1, retries=2)
+export CI=0                       # keine Retries + parallele Workers — für schnelle lokale Entwicklung
 mkdir -p "$HOME" "${CONTAINER_WORKSPACE}"
 
 if ! command -v pnpm >/dev/null 2>&1; then

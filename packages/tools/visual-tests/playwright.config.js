@@ -37,8 +37,10 @@ export default defineConfig({
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
 	retries: process.env.CI ? 2 : 0,
-	/* Opt out of parallel tests on CI. */
-	workers: process.env.CI ? 1 : undefined,
+	/* Parallel workers. CI (GitHub Actions, ubuntu-latest = 4 vCPUs) defaults to 4 — override with
+	   PLAYWRIGHT_WORKERS (e.g. =1 for bisection). Locally KOLIBRI_VISUAL_TESTS_WORKERS applies.
+	   Measured in the identical Playwright container: ~3x faster than 1 worker, same results. */
+	workers: process.env.CI ? Number(process.env.PLAYWRIGHT_WORKERS || 4) : Number(process.env.KOLIBRI_VISUAL_TESTS_WORKERS || 4),
 	/* Allow to override the expectation timeout for slow environments */
 	timeout: TIMEOUT,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */

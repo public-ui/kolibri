@@ -30,14 +30,14 @@ Warum Docker zwingend ist:
 Einrichtung ist abgeschlossen: `scripts/snapshots-docker.mjs` spiegelt den Workspace in ein Docker-Volume (`kolibri-visual-tests-work`), installiert und baut dort und läuft mit dem CI-identischen Image. Die `node_modules` des Hosts bleiben unangetastet.
 
 ```bash
-# Prüflauf (nur prüfen, nichts schreiben) — das Standardwerkzeug, ca. 6 min pro Theme:
-node scripts/snapshots-docker.mjs <theme> --check
+# Standard-Prüflauf (nur prüfen, nichts schreiben) — immer mit Workers:
+node scripts/snapshots-docker.mjs <theme> --check -- --workers=4
 
 # weitere Varianten:
-node scripts/snapshots-docker.mjs default kern --check   # mehrere Themes
-node scripts/snapshots-docker.mjs --all --check          # alle Themes (wie die CI)
-node scripts/snapshots-docker.mjs default -- --grep <Muster>   # Args an Playwright durchreichen
-node scripts/snapshots-docker.mjs --shell                # interaktive Shell im Container
+node scripts/snapshots-docker.mjs default kern --check -- --workers=4   # mehrere Themes
+node scripts/snapshots-docker.mjs --all --check -- --workers=4          # alle Themes (wie die CI)
+node scripts/snapshots-docker.mjs <theme> --check -- --workers=4 --grep <Muster>   # Teillauf (Stichproben-Strategie, Abschnitt 4)
+node scripts/snapshots-docker.mjs <theme> --shell                # interaktive Shell im Container
 node scripts/snapshots-docker.mjs --reset                # Volume verwerfen (Neuinstallation)
 
 # Tracking-Metrik gegen den Base-Branch:
@@ -47,6 +47,8 @@ git diff --name-only origin/develop...HEAD -- '*.png' | wc -l
 docker run --rm -u 0 -v kolibri-visual-tests-work:/work mcr.microsoft.com/playwright:v1.60.0-noble \
   bash -c 'rm -rf /work/repo/packages/themes/<theme>/test-results /work/repo/packages/themes/<theme>/playwright-report'
 ```
+
+Performance-Hintergrund: Das Docker-Script setzt `CI=0` fix (keine Retries, parallele Worker möglich). Ohne `--workers` bleibt die Abarbeitung trotzdem seriell — Worker-Zahl immer angeben. CI-identischer Kontrolllauf: `-- --workers=1 --retries=2`.
 
 Regeln:
 
@@ -63,13 +65,33 @@ Regeln:
 4. **DOM-Probe-Vorlage**: kleines Playwright-Skript, das pro Host den Schatten-Baum läuft und pro Element `getBoundingClientRect()` + `getComputedStyle()` (display, gap, padding, margin, outline, boxShadow, color, font-size, flex-direction) druckt. Selektoren IMMER vom Host (`host.shadowRoot`) aus laufen — `document.querySelectorAll` durchdringt keine Shadow-Roots, und `querySelector(".a, .b")` liefert nach Wrapper-Umbauten gern den Wrapper statt des Ziel-Elements.
 5. **Kompiliertes CSS greppen statt Sass zu vertrauen**: `tr '}' '\n' < <gebautes-css> | grep <klasse>` — Sass-`X &`-Verschachtelung kompiliert innerhalb eines Blocks zu Descendant-Selektoren, die nie matchen (siehe Muster 6).
 
-## 4. Iterations-Loop (pro Theme/Scope, ~6 min pro Check-Lauf)
+## 4. Stichproben-Strategie und Iterations-Loop
+
+### Stichproben-Strategie (verbindlich, in dieser Reihenfolge)
+
+Ein Fix betrifft fast immer einen Komponenten-Baum. Deshalb von klein nach groß prüfen — nie umgekehrt:
+
+| Stufe                | Umfang                                 | grep                                               | Dauer (4 Worker) |
+| -------------------- | -------------------------------------- | -------------------------------------------------- | ---------------- |
+| 1 — Block-Stichprobe | ein einziger betroffener Block         | `--grep "<route-fragment>"` (z. B. `button/icons`) | Sekunden         |
+| 2 — Cluster          | alle Routen der betroffenen Komponente | `--grep "<komponente>"` (z. B. `button`)           | 10–30s           |
+| 3 — Cluster-Gruppe   | bei Cross-Component-Fixen              | `--grep "(button\|tabs\|nav)"`                     | ~1 min           |
+| 4 — Voller Lauf      | Abschluss, Pflicht vor jedem Commit    | kein grep                                          | ~2–3 min         |
+
+Regeln:
+
+- **Stufe 1 zuerst, immer.** Fix-Hypothese an einem einzigen Block bestätigen oder verwerfen, bevor irgendetwas skaliert wird.
+- **Nicht über Stufen springen.** Kein voller Lauf, solange der betroffene Cluster rot ist — er verbirgt die Signal-Diffs hinter bekanntem Rauschen.
+- **Stufe 4 ist Pflicht vor jedem Commit.** Teilläufe beschleunigen die Iteration, sind aber nie ein Abschlussbeweis.
+- Reine Geometrie-Fragen (keine Pixel) mit einer probe.spec.js klären (~4s, siehe Fallstricke) statt Blöcke zu fotografieren.
+
+### Iterations-Loop (pro Theme/Scope)
 
 1. Docker-Check laufen lassen, Fehlliste nehmen (vor jedem Lauf Ergebnisordner räumen, Baselines auf Base-Stand).
 2. Differenzpixel analysieren (Werkzeug 1): LIEGT etwas falsch (Verschiebung um n px), FEHLT etwas (weiß statt Farbe) oder IST etwas ZU VIEL? Erst diese Frage beantworten, dann CSS anfassen.
 3. Hypothese: betroffene Elemente in Ist- und Soll-App proben (Werkzeuge 3/4). **Route-Optionen beachten!** Viele Sample-Routen setzen `viewportSize` (z. B. 600 statt 800) — eine Probe ohne Route-Viewport rendert ein anderes Layout als der Check und führt stundenlang in die Irre.
 4. Fix in der richtigen Schicht (Theme-Mixin vs. Consumer-Datei vs. Basis), Fix-Batches nach Ursache bündeln, nicht pro Einzelszenario.
-5. Re-Check. Grün → Snapshots auf Base-Stand committen + Quell-Fix committen. Abgeschlossen ist das Theme erst mit dokumentierter Evidenz (Exit-Code/„N passed") im Companion-Plan.
+5. Re-Check nach Stichproben-Strategie. Grün → Snapshots auf Base-Stand committen + Quell-Fix committen. Abgeschlossen ist das Theme erst mit dokumentierter Evidenz (Exit-Code/„N passed") im Companion-Plan.
 6. **Sofort danach: Erfahrungswerte zu diesem Theme in Abschnitt 12 dieses Skills nachtragen** (Pflicht, siehe Abschnitt 5) — erst dann das nächste Theme anfangen.
 
 ## 5. Pflicht nach jedem Theme: Erfahrungswerte in diesen Skill
@@ -127,7 +149,7 @@ grep -rn "@include" packages/themes/*/src packages/components/src --include='*.s
 ## 7. Fallstricke aus der Praxis
 
 - **Viewport-Abhängigkeit von Layout-Diffs**: Die Snapshots laufen mit `viewport: { width: 800, height: 0 }` — Messproben mit „normalem" Viewport (z. B. 800×600) können komplett andere Werte zeigen (Gemessenes Beispiel: input-container 44px in beiden Bäumen bei 600px Höhe, aber 48 vs. 44px bei height 0). IMMER im Prüf-Viewport messen — dafür die probe.spec.js-Methode.
-- **Kosten-Disziplin**: Ein voller Check-Lauf kostet ~6–8 min. Bei Arbeit an Einzelfällen: `-- --grep "<route-fragment>"` (~10s) oder eine probe.spec.js (~4s) nehmen; den vollen Lauf nur zur Absicherung eines Fix-Batches über alle betroffene Routen und vor dem Commit. Vorsicht: der grep-Passthrough ist gelegentlich flaky (webServer-Exit 127/spawn ENOENT) — dann hilft ein voller Lauf oder `npm install -g --prefix /work/npm-global http-server@14.1.1` einmalig im Volume.
+- **Kosten-Disziplin**: Stichproben-Strategie aus Abschnitt 4 einhalten — nie volle Läufe für die Fix-Iteration. Voller Lauf: ~2–3 min mit 4 Workern (seriell ~8 min, mit CI-Retries ×3); Timeouts für Docker-Läufe mind. 600s ansetzen. Vorsicht: der grep-Passthrough ist gelegentlich flaky (webServer-Exit 127/spawn ENOENT) — dann hilft ein voller Lauf oder `npm install -g --prefix /work/npm-global http-server@14.1.1` einmalig im Volume.
 
 - **Route-ViewportSize bei Proben** (siehe Loop 3) — teuerste Fehldiagnose-Quelle. Grenzwertige Umbrüche (Label, das auf dem Base 1 px vor dem Umbruch liegt) flaken dann wie zufällig; Ursache ist fast immer Muster 4 (Doppel-Padding). Messen mit Route-Viewport, nicht raten.
 - **App-Probe ≠ Check-Kontext**: Bei Widerspruch eine temporäre `probe.spec.js` direkt in den Tests-Ordner der Prüfpipeline legen und im echten Runner mit `--grep=probe` ausführen. Die Datei NACH dem Workspace-Spiegeln ins Volume schreiben (Sync-Tools löschen Fremddateien) und NIE committen.
@@ -166,6 +188,7 @@ Abgeschlossene Abschnitte als „DONE (Datum)" markieren und stehen lassen — d
 - [ ] Docker-Daemon läuft (`docker info`); ohne Docker: Arbeit als offene Position im Companion-Plan dokumentieren, keine lokalen Ersatzläufe
 - [ ] Zieldiff gemessen und mit Plan-Eintrag abgeglichen; Evidenz = Docker-Check-Exit-Code/CI-Job, nicht die zurückgesetzte PNG-Zahl
 - [ ] Vor jedem Check-Lauf: Ergebnisordner geräumt, Baselines auf Base-Stand
+- [ ] Fix-Iteration über Stichproben-Strategie (Stufe 1 → 4); voller Lauf als Abschluss vor jedem Commit
 - [ ] Diffs klassifiziert (verschiebt/fehlt/zu viel), Muster-Katalog (6a + 6b) abgegangen, Fix-Batches nach Ursache
 - [ ] Route-Viewport bei allen Proben beachtet; kompiliertes CSS bei Selector-Zweifeln gegriffen
 - [ ] Bei DOM-Änderungen: Hydrate-Snapshot aktualisiert (Components-Build davor), `pnpm -r test:unit`
