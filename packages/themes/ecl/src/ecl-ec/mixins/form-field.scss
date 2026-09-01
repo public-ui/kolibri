@@ -13,7 +13,7 @@
 			gap: to-rem(4);
 			order: 1;
 
-			&-text::after {
+			.kol-span__label::after {
 				color: var(--ecl-color-error);
 				margin-left: var(--ecl-spacing-2xs);
 				vertical-align: text-bottom;
