@@ -14,8 +14,16 @@
 			.kol-button {
 				@include ghostButton();
 
-				&.kol-button--normal {
+				/* `ghostButton` sets `text-decoration-line: underline` on the interactive element
+				   itself, so suppressing the tab-label underline has to reach `.kol-button__button`
+				   too — the wrapper's `text-decoration: none` does not override it. */
+				&.kol-button--normal,
+				&.selected {
 					text-decoration: none;
+
+					.kol-button__button {
+						text-decoration: none;
+					}
 				}
 
 				&__button:focus-visible {
@@ -25,7 +33,12 @@
 				&.selected {
 					border-bottom-color: var(--kern-color-action-default);
 
-					text-decoration: none;
+					/* The selected underline must land on the interactive element: it carries the 3px
+					   bottom-border reserve from the shared tabs styles, while the wrapper's own
+					   border stays `none` and would paint nothing. */
+					.kol-button__button {
+						border-bottom-color: var(--kern-color-action-default);
+					}
 				}
 			}
 		}
