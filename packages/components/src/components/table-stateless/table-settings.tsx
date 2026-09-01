@@ -1,6 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
-import { KolAlertWcTag, KolButtonWcTag, KolDialogWcTag, KolHeadingTag, KolInputCheckboxTag, KolInputNumberTag } from '../../core/component-names';
+import { KolAlertWcTag, KolButtonWcTag, KolDialogWcTag, KolInputCheckboxTag, KolInputNumberTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type { KoliBriTableHeaderCell } from '../../schema';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
@@ -144,8 +144,6 @@ export class KolTableSettings {
 
 				<KolDialogWcTag _label={this.translateTableSettings} _variant="card" ref={(el) => (this.dialogRef = el)} _width="fit-content">
 					<div class="kol-table-settings__content">
-						<KolHeadingTag _label={this.translateTableSettings} _level={0} />
-
 						{this.errorMessage && <KolAlertWcTag _type="error" _label={this.errorMessage} _variant="msg" class="kol-table-settings__error-message" />}
 
 						<form onSubmit={this.handleSubmit.bind(this)}>
