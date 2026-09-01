@@ -75,7 +75,12 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 
 ## Offene Arbeit, nach Priorität
 
-### 1. GOAL: Zero Visual Delta — unstyled ✅ 293/293, default 🟡 296/297 (1 offen: icon/font 51px), bwst ✅ 288/288, ecl ✅ 296/296, kern 🟡 284/295 (11 offen, Ursachen identifiziert → SKILL §12 kern-Eintrag), desy offen
+### 1. GOAL: Zero Visual Delta — unstyled ✅ 293/293, default 🟡 296/297 (1 offen: icon/font 51px), bwst ✅ 288/288, ecl ✅ 296/296, desy ✅ 294/294, kern 🟡 284/295 (11 offen, Ursachen identifiziert → SKILL §12 kern-Eintrag)
+
+**Stand 2026-09-01 (diese Session):** ecl (18→0) und desy (33→0) abgeschlossen, je voller Docker-Check
+grün (Exit 0), `git diff origin/develop...HEAD -- '*.png'` = 0, Stylelint sauber. Details +
+Fix-Muster: SKILL.md §12 ecl-/desy-Einträge. Damit sind alle Themes außer kern grün; kern bleibt
+mit 11 offenen Diffs (Ursachen dokumentiert) als einzige offene Position.
 
 Disziplin, Stichproben-Strategie und Werkzeuge: `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
 

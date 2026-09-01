@@ -47,7 +47,7 @@
 			}
 		}
 
-		&:has(&__adornment--start:not(:empty)) .kol-button {
+		&:has(&__adornment--start:not(:empty)) .kol-button .kol-button__button {
 			padding-left: to-rem(48);
 		}
 
@@ -75,13 +75,25 @@
 			color: var(--color-blue-100);
 			display: flex;
 			min-height: to-rem(36);
-			padding-right: to-rem(17);
-			padding-left: to-rem(17);
-			align-items: center;
-			justify-content: center;
+			align-items: stretch;
 
-			font-weight: 700;
-			border-right: 1px solid var(--border-color);
+			/* Box (min-size, padding, the divider border), the bold weight and centring belong to
+			   the interactive element: on the wrapper the a11y min-size layer still pins the inner
+			   button to 40px and grows the input-container row by 4px, Firefox pins
+			   `font-weight: 400` on the real button (beating the inherited 700 → thinner label), and
+			   the inner button — not the wrapper — is the flex context that centres the label. */
+			.kol-button__button {
+				display: flex;
+				min-height: to-rem(36);
+				padding-right: to-rem(17);
+				padding-left: to-rem(17);
+				flex: 1;
+				align-items: center;
+				justify-content: center;
+
+				font-weight: 700;
+				border-right: 1px solid var(--border-color);
+			}
 
 			&__text {
 				display: flex;

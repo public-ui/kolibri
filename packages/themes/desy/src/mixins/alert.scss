@@ -74,6 +74,13 @@
 				.kol-button {
 					min-width: to-rem(20);
 					min-height: to-rem(20);
+
+					/* The a11y min-size layer still pins the inner button — the 20px closer box has
+					   to be replicated on the interactive element too. */
+					.kol-button__button {
+						min-width: to-rem(20);
+						min-height: to-rem(20);
+					}
 				}
 			}
 
