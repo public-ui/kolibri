@@ -61,7 +61,11 @@
 					}
 				}
 
-				.kol-button {
+				/* Box padding and font-weight belong to the interactive element: on the wrapper the
+				   padding would stack on top of the inner button's a11y min-size and grow the header
+				   cell, and Firefox pins `font-weight: 400` directly on the real `button`, beating any
+				   weight inherited through the wrapper. */
+				.kol-button .kol-button__button {
 					padding: var(--ecl-spacing-m);
 
 					font-weight: 700;

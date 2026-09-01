@@ -8,7 +8,8 @@
 		--kolibri-spacing: #{to-rem(4)};
 		border-radius: 4px;
 
-		&:focus {
+		&:focus,
+		&__button:focus {
 			outline: none;
 		}
 	}
@@ -25,7 +26,8 @@
 			normal normal 400 to-rem(16) / to-rem(20) Arial,
 			sans-serif;
 
-		.kol-button:focus-visible & {
+		.kol-button:focus-visible &,
+		.kol-button__button:focus-visible & {
 			outline: 2px solid var(--color-black);
 			outline-offset: -4px;
 		}

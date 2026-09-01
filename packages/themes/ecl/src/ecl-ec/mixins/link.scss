@@ -15,12 +15,12 @@
 	&:hover {
 		color: var(--ecl-color-primary-140);
 	}
+}
 
-	&:focus {
-		outline: 2px solid var(--ecl-color-primary);
-		border-radius: 1px;
-		outline-offset: 2px;
-	}
+@mixin link-focus {
+	outline: 2px solid var(--ecl-color-primary);
+	border-radius: 1px;
+	outline-offset: 2px;
 }
 
 @mixin link($block-classname, $anchor-scoped: true) {
@@ -28,9 +28,20 @@
 		@if $anchor-scoped {
 			&__anchor {
 				@include link-carrier;
+
+				&:focus {
+					@include link-focus;
+				}
 			}
 		} @else {
 			@include link-carrier;
+
+			/* The skeleton DOM makes `#{$block-classname}__button` the focusable element; the
+			   class carrier is a wrapper that never receives focus, so the focus ring has to be
+			   scoped to the inner button to keep parity with the pre-migration component DOM. */
+			&__button:focus {
+				@include link-focus;
+			}
 		}
 	}
 }

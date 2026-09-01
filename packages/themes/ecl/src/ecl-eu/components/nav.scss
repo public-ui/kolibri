@@ -74,7 +74,8 @@
 					}
 				}
 
-				&:focus {
+				&:focus,
+				&__button:focus {
 					outline: none;
 				}
 
@@ -104,7 +105,8 @@
 							0 to-rem(-4) to-rem(4) rgb(9 49 142 / 4%);
 					}
 
-					@at-root #{$root}:focus-visible & {
+					@at-root #{$root}:focus-visible &,
+						#{$root}__button:focus-visible & {
 						outline: var(--text-focus-outline-color) solid to-rem(2);
 						outline-offset: -4px;
 					}

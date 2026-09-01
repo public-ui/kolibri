@@ -75,7 +75,7 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 
 ## Offene Arbeit, nach Priorität
 
-### 1. GOAL: Zero Visual Delta — unstyled ✅ 293/293, default 🟡 296/297 (1 offen: icon/font 51px), bwst ✅ 288/288, kern 🟡 284/295 (11 offen, Ursachen identifiziert → SKILL §12 kern-Eintrag), ecl/desy offen
+### 1. GOAL: Zero Visual Delta — unstyled ✅ 293/293, default 🟡 296/297 (1 offen: icon/font 51px), bwst ✅ 288/288, ecl ✅ 296/296, kern 🟡 284/295 (11 offen, Ursachen identifiziert → SKILL §12 kern-Eintrag), desy offen
 
 Disziplin, Stichproben-Strategie und Werkzeuge: `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
 

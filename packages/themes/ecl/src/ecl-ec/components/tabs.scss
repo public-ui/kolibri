@@ -8,24 +8,35 @@
 
 		.kol-button {
 			margin-bottom: -2px;
-			padding: var(--ecl-spacing-xs) var(--ecl-spacing-m);
-			border: none;
-			border-bottom: solid 2px transparent;
 
-			&:hover:not(:disabled) {
+			/* Box padding and the bottom border are part of the button box — after the skeleton
+			   migration the class sits on the wrapper, so keeping the padding here would stack it on
+			   top of the inner button's a11y min-size (+16px per tab). Both move to the interactive
+			   element to keep the button box, the label baseline and the selected-tab underline
+			   exactly where they were. */
+			.kol-button__button {
+				padding: var(--ecl-spacing-xs) var(--ecl-spacing-m);
+				border: none;
+				border-bottom: solid 2px transparent;
+			}
+
+			.kol-button__button:hover:not(:disabled) {
 				border-bottom-color: var(--ecl-color-dark-80);
 			}
 
-			&:focus {
+			&:focus,
+			.kol-button__button:focus {
 				outline: 2px solid var(--ecl-color-primary);
 				border-radius: 1px;
 				outline-offset: -2px;
 			}
 
 			&.selected {
-				border-bottom-color: var(--ecl-color-primary);
-
 				font-weight: var(--ecl-font-weight-bold);
+
+				.kol-button__button {
+					border-bottom-color: var(--ecl-color-primary);
+				}
 			}
 		}
 	}
