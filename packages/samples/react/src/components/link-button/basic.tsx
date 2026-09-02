@@ -4,7 +4,7 @@ import { KolLinkButton } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 import { useSearchParams } from 'react-router';
-import { useToasterService } from '../../hooks/useToasterService';
+import { useAlert } from '../../hooks/useAlert';
 import { fetchVariantData } from '../../shares/fetchVariantData';
 import { getCustomThemes } from '../../shares/store';
 import { SampleBlock } from '../SampleBlock';
@@ -15,7 +15,7 @@ export const LinkButtonBasic: FC = () => {
 	const theme = searchParams.get('theme') ?? getCustomThemes()?.[0]?.key;
 	const data = useMemo(() => (theme ? fetchVariantData(theme, 'buttonVariants') : []), [theme]);
 
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
