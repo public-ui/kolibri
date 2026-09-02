@@ -10,8 +10,8 @@
 	"schedule": ["before 6am on monday"],
 	"labels": ["dependencies", "renovate", "release:engineering"],
 	"rebaseWhen": "behind-base-branch",
-	"prConcurrentLimit": 10,
-	"prHourlyLimit": 4,
+	"prConcurrentLimit": 15,
+	"prHourlyLimit": 6,
 	"postUpdateOptions": ["pnpmDedupe"],
 	"platformAutomerge": true,
 	"baseBranchPatterns": ["develop", "release/3", "release/2", "release/1"],
@@ -34,12 +34,27 @@
 			"enabled": false
 		},
 		{
-			"description": "Major updates always require manual approval via the dependency dashboard — KoliBri pins its major lines deliberately (Angular v19/v20/v21, React 18/19, Stencil 4, ESLint 9, …).",
+			"description": "Patch updates: more frequent schedule (Mon–Fri) for safe, backwards-compatible fixes.",
+			"matchUpdateTypes": ["patch"],
+			"schedule": ["before 6am every weekday"]
+		},
+		{
+			"description": "Minor/major updates: weekly schedule (Monday) to reduce noise and allow manual review.",
+			"matchUpdateTypes": ["minor", "major"],
+			"schedule": ["before 6am on monday"]
+		},
+		{
+			"description": "GitHub Actions: separate schedule (Tuesday) to avoid Monday PR spikes.",
+			"matchManagers": ["github-actions"],
+			"schedule": ["before 6am on tuesday"]
+		},
+		{
+			"description": "Major updates require manual approval via the dependency dashboard — KoliBri pins its major lines deliberately (Angular v19/v20/v21, React 18/19, Stencil 4, ESLint 9, …).",
 			"matchUpdateTypes": ["major"],
 			"dependencyDashboardApproval": true
 		},
 		{
-			"description": "Group GitHub Actions updates and automerge them (replaces the github-actions entries in .github/dependabot.yml).",
+			"description": "Group GitHub Actions updates and automerge them.",
 			"matchManagers": ["github-actions"],
 			"groupName": "github-actions",
 			"addLabels": ["github-actions"],
@@ -54,93 +69,102 @@
 			"automerge": true
 		},
 		{
-			"description": "Never bump the Angular toolchain across a major — each adapter folder (v19/v20/v21) is intentionally pinned to its Angular major. A new Angular major means a new adapter folder, not an auto-update.",
+			"description": "Angular toolchain: never bump across majors within the same adapter folder (v19/v20/v21 are intentionally pinned).",
 			"matchPackageNames": ["@angular/*", "@angular-devkit/*", "ng-packagr", "zone.js"],
 			"matchUpdateTypes": ["major"],
 			"enabled": false
 		},
 		{
-			"description": "Group within-major updates of the Angular 19 toolchain (packages/adapters/angular/v19).",
-			"matchFileNames": ["packages/adapters/angular/v19/**"],
+			"description": "Angular toolchain: group within-major updates per adapter folder and automerge safe patch/minor bumps.",
+			"matchFileNames": ["packages/adapters/angular/v*/**"],
 			"matchPackageNames": ["@angular/*", "@angular-devkit/*", "ng-packagr", "zone.js"],
-			"groupName": "Angular 19 (v19 adapter)"
+			"groupName": "Angular toolchain ({{baseBranch}})",
+			"matchUpdateTypes": ["minor", "patch"],
+			"automerge": true
 		},
 		{
-			"description": "Group within-major updates of the Angular 20 toolchain (packages/adapters/angular/v20).",
-			"matchFileNames": ["packages/adapters/angular/v20/**"],
-			"matchPackageNames": ["@angular/*", "@angular-devkit/*", "ng-packagr", "zone.js"],
-			"groupName": "Angular 20 (v20 adapter)"
-		},
-		{
-			"description": "Group within-major updates of the Angular 21 toolchain (packages/adapters/angular/v21).",
-			"matchFileNames": ["packages/adapters/angular/v21/**"],
-			"matchPackageNames": ["@angular/*", "@angular-devkit/*", "ng-packagr", "zone.js"],
-			"groupName": "Angular 21 (v21 adapter)"
-		},
-		{
-			"description": "Never bump React across a major — the react / react-v19 / react-standalone / preact adapters each pin their React major on purpose.",
+			"description": "React toolchain: never bump across majors (react/react-v19/react-standalone/precept adapters pin their React major).",
 			"matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
 			"matchUpdateTypes": ["major"],
 			"enabled": false
 		},
 		{
-			"description": "Group the within-major React updates of the React adapters (review manually instead of automerging the framework).",
-			"matchFileNames": ["packages/adapters/react/**", "packages/adapters/react-v19/**", "packages/adapters/react-standalone/**"],
+			"description": "React toolchain: group within-major updates across all React adapters.",
+			"matchFileNames": ["packages/adapters/react*/**"],
 			"matchPackageNames": ["react", "react-dom", "@types/react", "@types/react-dom"],
-			"groupName": "React adapters",
-			"automerge": false
+			"groupName": "React toolchain",
+			"matchUpdateTypes": ["minor", "patch"],
+			"automerge": true
 		},
 		{
-			"description": "Stencil is hard-pinned: every 4.39+ release breaks the Popover API, tooltips and the visual tests (see docs/UPGRADEABLE_DEPENDENCIES.md). Require manual approval for ALL Stencil updates.",
+			"description": "Stencil: require manual approval for ALL updates (every 4.39+ release breaks Popover API, tooltips and visual tests).",
 			"matchPackageNames": ["@stencil/*", "@stencil-community/*"],
 			"groupName": "Stencil",
 			"automerge": false,
 			"dependencyDashboardApproval": true
 		},
 		{
-			"description": "@kern-ux/* (theming) is upgraded by hand together with theming work — surface it on the dashboard but do not open PRs automatically.",
+			"description": "@kern-ux/* (theming) is upgraded by hand together with theming work — surface on dashboard but do not open PRs automatically.",
 			"matchPackageNames": ["@kern-ux/*"],
 			"groupName": "kern-ux",
 			"automerge": false,
 			"dependencyDashboardApproval": true
 		},
 		{
-			"description": "typescript-eslint minor/major bumps must stay in sync with the ESLint config — group and require manual approval.",
+			"description": "typescript-eslint: group minor/major bumps (must stay in sync with ESLint config).",
 			"matchPackageNames": ["@typescript-eslint/*", "typescript-eslint"],
 			"groupName": "typescript-eslint",
-			"matchUpdateTypes": ["minor", "major"],
-			"dependencyDashboardApproval": true
+			"matchUpdateTypes": ["minor", "major", "patch"],
+			"automerge": false
 		},
 		{
-			"description": "ESLint core and its plugins are mid-migration (9 → 10 is breaking) — group and require manual approval for non-patch updates.",
+			"description": "ESLint: group all ESLint-related packages and require manual approval for non-patch updates (mid-migration 9 → 10).",
 			"matchPackageNames": ["eslint", "@eslint/*", "eslint-plugin-*", "eslint-config-*"],
 			"groupName": "ESLint",
-			"matchUpdateTypes": ["minor", "major"],
-			"dependencyDashboardApproval": true
+			"matchUpdateTypes": ["minor", "major", "patch"],
+			"automerge": false
 		},
 		{
-			"description": "Jest major jumps are breaking (Node/TS baseline changes — see docs/UPGRADEABLE_DEPENDENCIES.md). Group and require manual approval for majors.",
+			"description": "Jest: group all Jest packages and automerge safe patch updates (majors are breaking).",
 			"matchPackageNames": ["jest", "jest-*", "@types/jest", "babel-jest", "ts-jest"],
 			"groupName": "Jest",
-			"matchUpdateTypes": ["major"],
-			"dependencyDashboardApproval": true
+			"matchUpdateTypes": ["patch"],
+			"automerge": true
 		},
 		{
-			"description": "TypeScript moves in lock-step with the framework toolchains — coordinate minor/major bumps manually.",
+			"description": "TypeScript: coordinate minor/major bumps manually (moves in lock-step with framework toolchains).",
 			"matchPackageNames": ["typescript"],
 			"groupName": "TypeScript",
-			"matchUpdateTypes": ["minor", "major"],
-			"dependencyDashboardApproval": true
+			"matchUpdateTypes": ["minor", "major", "patch"],
+			"automerge": false
 		},
 		{
-			"description": "Group the Stylelint toolchain into a single PR.",
+			"description": "Stylelint: group the Stylelint toolchain into a single PR.",
 			"matchPackageNames": ["stylelint", "stylelint-*"],
-			"groupName": "Stylelint"
+			"groupName": "Stylelint",
+			"matchUpdateTypes": ["major", "minor", "patch"],
+			"automerge": true
 		},
 		{
-			"description": "Group the Playwright packages into a single PR.",
+			"description": "Playwright: group Playwright packages into a single PR.",
 			"matchPackageNames": ["@playwright/test", "playwright", "playwright-*"],
-			"groupName": "Playwright"
+			"groupName": "Playwright",
+			"matchUpdateTypes": ["major", "minor", "patch"],
+			"automerge": true
+		},
+		{
+			"description": "Node.js tooling: group Vite/Rollup/ESBuild updates and automerge safe patches.",
+			"matchPackageNames": ["vite", "rollup", "esbuild", "@rollup/*", "@vitejs/*"],
+			"groupName": "Node.js build tooling",
+			"matchUpdateTypes": ["patch"],
+			"automerge": true
+		},
+		{
+			"description": "Testing utilities: group testing library updates (Jest DOM, Testing Library, etc.) and automerge patches.",
+			"matchPackageNames": ["@testing-library/*", "jest-environment-*", "@jest/*"],
+			"groupName": "Testing utilities",
+			"matchUpdateTypes": ["patch"],
+			"automerge": true
 		}
 	]
 }
