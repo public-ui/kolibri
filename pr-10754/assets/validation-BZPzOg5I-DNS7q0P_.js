@@ -1,0 +1,1 @@
+import{Et as e,wt as t}from"./index-ECijqoS-.js";var n=(n,r,i)=>{e(r,`_links`,e=>typeof e==`object`&&(typeof e._href==`string`||typeof e._label==`string`),i),t(n,r.state._links.length)};export{n as t};
