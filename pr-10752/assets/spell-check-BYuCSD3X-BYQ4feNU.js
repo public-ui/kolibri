@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-B4L7Q61p.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};

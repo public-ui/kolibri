@@ -1,1 +1,0 @@
-import{H as e,Tt as t}from"./index-B4L7Q61p.js";var n=(n,r)=>{t(n,`_disabled`,r,{hooks:{afterPatch:t=>{t===!0&&e()}}})};export{n as t};
