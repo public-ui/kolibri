@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-z150is4F.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
