@@ -81,7 +81,7 @@
 			&--align-left {
 				text-align: left;
 
-				.kol-button__text {
+				.kol-table__sort-button .kol-button__text {
 					align-items: start;
 				}
 
@@ -93,7 +93,7 @@
 			&--align-center {
 				text-align: center;
 
-				& .kol-button__text {
+				.kol-table__sort-button .kol-button__text {
 					align-items: center;
 				}
 			}
@@ -101,7 +101,7 @@
 			&--align-right {
 				text-align: right;
 
-				.kol-button__text {
+				.kol-table__sort-button .kol-button__text {
 					align-items: end;
 				}
 
