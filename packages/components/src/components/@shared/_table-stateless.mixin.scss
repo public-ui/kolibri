@@ -84,6 +84,10 @@
 				.kol-button__text {
 					align-items: start;
 				}
+
+				.kol-table__cell-actions {
+					justify-content: flex-start;
+				}
 			}
 
 			&--align-center {
@@ -99,6 +103,10 @@
 
 				.kol-button__text {
 					align-items: end;
+				}
+
+				.kol-table__cell-actions {
+					justify-content: flex-end;
 				}
 			}
 
