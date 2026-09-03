@@ -2,27 +2,48 @@
 @use './@shared/mixins' as *;
 
 /*
- * This file contains all rules for the highcontrast mode
+ * This file contains all rules for forced-colors and highcontrast modes
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/system-color to see all color keywords the browsers are providing
  */
 @layer kol-forced-colors {
 	@media (forced-colors: active) {
-		.kol-dialog,
-		.kol-modal {
-			color: CanvasText;
-			background-color: Canvas;
-			border: 2px solid ButtonText;
-		}
-
 		.kol-button {
-			color: CanvasText;
-			background-color: Canvas;
-			border: 2px solid ButtonText;
+			&__text {
+				color: ButtonText;
+				background-color: ButtonFace;
+				border: 2px solid ButtonBorder;
+			}
+
+			&--disabled &__text {
+				color: GrayText;
+				border-color: GrayText;
+			}
 		}
 
 		.kol-card {
 			color: CanvasText;
 			background-color: Canvas;
-			border: 2px solid ButtonText;
+			border: 1px solid ButtonText;
+		}
+
+		.kol-dialog,
+		.kol-modal {
+			color: CanvasText;
+			background-color: Canvas;
+			border: 1px solid ButtonText;
+		}
+
+		.kol-pagination {
+			&__button--selected {
+				.kol-button {
+					opacity: 1;
+
+					&__text {
+						color: SelectedItemText;
+						background-color: SelectedItem;
+					}
+				}
+			}
 		}
 	}
 }
