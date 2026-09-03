@@ -10,23 +10,6 @@
 	@include kol-form-field;
 	@include kol-input-container;
 	@include kol-input;
-	.kol-input-color {
-		&__input {
-			&--color {
-				flex: 1 1 min-content;
-			}
-
-			&--text {
-				flex: 0 0 to-rem(86);
-			}
-		}
-
-		&__inputs-wrapper {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-		}
-	}
 
 	.kol-input {
 		cursor: pointer;

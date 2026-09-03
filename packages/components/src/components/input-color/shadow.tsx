@@ -74,17 +74,6 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 		this.controller.onFacade.onInput(event);
 	};
 
-	private readonly onTextInput = (event: InputEvent) => {
-		let value = (event.target as HTMLInputElement).value;
-		if (!value.startsWith('#')) {
-			value = `#${value}`;
-		}
-		this._value = value;
-		if (this.refInputColor) {
-			this.refInputColor.value = value;
-		}
-		this.controller.onFacade.onInput(event);
-	};
 	/**
 	 * Returns the current value.
 	 */
@@ -120,7 +109,6 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 			class: 'kol-input-color',
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
-			infoPopover: this._infoPopover,
 		};
 	}
 
@@ -137,16 +125,6 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 			onInput: this.onColorInput,
 		};
 	}
-	private getInputTextProps(): InputStateWrapperProps {
-		return {
-			...this.getGenericInputProps(),
-			ref: this.ctaRef,
-			type: 'text',
-			name: this.state._name ? `${this.state._name}-text` : undefined,
-			list: this.hasSuggestions ? createRelatedUniqueId(this.state._id, 'list') : undefined,
-			onInput: this.onTextInput,
-		};
-	}
 
 	private getGenericInputProps() {
 		return {
@@ -161,10 +139,7 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
 				<KolInputContainerFc state={this.state} class="kol-input-color__inputs-wrapper">
-					<div class="kol-input-color__inputs-wrapper">
-						<KolInputStateWrapperFc class="kol-input-color__input kol-input-color__input--color" {...this.getInputColorProps()} />
-						<KolInputStateWrapperFc class="kol-input-color__input kol-input-color__input--text" {...this.getInputTextProps()} />
-					</div>
+					<KolInputStateWrapperFc class="kol-input-color__input kol-input-color__input--color" {...this.getInputColorProps()} />
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
