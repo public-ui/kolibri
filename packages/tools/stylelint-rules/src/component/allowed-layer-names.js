@@ -23,9 +23,9 @@ const ruleFunction = (primaryOption) => {
 		const fileName = path.basename(filePath);
 
 		if (!normalizedPath.includes('/packages/components/')) return;
-		if (fileName === 'a11y.scss' || fileName === '_layer-order.scss') return;
+		if (fileName === 'a11y.scss' || fileName === '_layer-order.scss' || fileName === 'forced-colors.scss') return;
 
-		const allowedLayers = ['kol-a11y', 'kol-global', 'kol-component'];
+		const allowedLayers = ['kol-a11y', 'kol-global', 'kol-component', 'kol-forced-colors'];
 
 		root.walkAtRules('layer', (atRule) => {
 			const layerNames = atRule.params.split(',').map((name) => name.trim());

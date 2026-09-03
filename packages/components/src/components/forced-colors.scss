@@ -1,0 +1,28 @@
+@use './layer-order' as *;
+@use './@shared/mixins' as *;
+
+/*
+ * This file contains all rules for the highcontrast mode
+ */
+@layer kol-forced-colors {
+	@media (forced-colors: active) {
+		.kol-dialog,
+		.kol-modal {
+			color: CanvasText;
+			background-color: Canvas;
+			border: 2px solid ButtonText;
+		}
+
+		.kol-button {
+			color: CanvasText;
+			background-color: Canvas;
+			border: 2px solid ButtonText;
+		}
+
+		.kol-card {
+			color: CanvasText;
+			background-color: Canvas;
+			border: 2px solid ButtonText;
+		}
+	}
+}
