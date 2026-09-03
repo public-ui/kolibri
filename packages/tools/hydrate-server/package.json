@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/hydrate-server",
-	"version": "4.3.1-rc.1",
+	"version": "4.3.1-rc.5",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -50,6 +50,7 @@
 		"build:deps": "pnpm --filter @public-ui/hydrate-server^... build",
 		"format": "prettier --check src test",
 		"lint": "pnpm lint:eslint",
+		"prepare": "pnpm run build",
 		"lint:eslint": "eslint src",
 		"pretest:unit": "pnpm run build",
 		"pretest:update:unit": "pnpm run pretest:unit",

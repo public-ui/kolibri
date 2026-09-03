@@ -47,7 +47,7 @@ type PropsDefinition = {
 };
 
 export interface ComponentApi {
-	Callbacks?: Record<string, () => unknown>;
+	Callbacks?: Record<string, (...args: never[]) => unknown>;
 	Emitters?: Record<string, unknown>;
 	Listeners?: Record<string, unknown>;
 	Methods?: Record<string, (...args: never[]) => unknown>;
@@ -150,7 +150,7 @@ type ExternalProps<T extends ComponentApi> = ExternalOf<AllProps<T>>;
 
 /**
  * Function signature for setting component state in a type-safe manner.
- * Used by controllers to update reactive @State fields with generic type safety.
+ * Used by web components and behaviors to update reactive @State fields with generic type safety.
  */
 export type SetStateFn<Api extends ComponentApi> = <K extends keyof InternalOf<NonNullable<Api['States']>>>(
 	key: K,
@@ -159,7 +159,7 @@ export type SetStateFn<Api extends ComponentApi> = <K extends keyof InternalOf<N
 
 /**
  * Function signature for reading component state in a type-safe manner.
- * Used by controllers to access reactive @State fields with generic type safety.
+ * Used by web components and behaviors to access reactive @State fields with generic type safety.
  */
 export type GetStateFn<Api extends ComponentApi> = <K extends keyof InternalOf<NonNullable<Api['States']>>>(
 	key: K,
@@ -167,9 +167,9 @@ export type GetStateFn<Api extends ComponentApi> = <K extends keyof InternalOf<N
 
 /**
  * Bundles setState and getState as a single unit.
- * Controllers receive this as their state access mechanism — either a real
- * implementation from a web component or `BaseController.stateLess` for
- * controllers that manage state purely via render props.
+ * Behaviors receive this as their state access mechanism — either a real
+ * implementation from a web component or `BaseWebComponent.stateLess` for
+ * behaviors that manage state purely via render props.
  */
 export type StateAccess<Api extends ComponentApi> = {
 	setState: SetStateFn<Api>;
@@ -249,20 +249,20 @@ export type FunctionalComponentProps<T extends ComponentApi> = StrictFields<Inte
 	Partial<Omit<JSXBase.HTMLAttributes<HTMLElement>, keyof InternalProps<T> | keyof ExtractStates<T>>>;
 
 // ============================================================================
-// Controller Types
+// Behavior Types
 // ============================================================================
 
-type ControllerCallbackHandlers<Callbacks> = {
-	[K in keyof Callbacks as `handle${Capitalize<string & K>}`]: (element?: Callbacks[K]) => void;
+type BehaviorCallbackHandlers<Callbacks> = {
+	[K in keyof Callbacks as `handle${Capitalize<string & K>}`]: Callbacks[K];
 };
 
-type ControllerListeners<Listeners> = {
+type BehaviorListeners<Listeners> = {
 	[K in keyof Listeners as `on${Capitalize<string & K>}`]: (event: Listeners[K]) => void;
 };
 
-export type ControllerInterface<T extends ComponentApi = ComponentApi> = {
+export type BehaviorInterface<T extends ComponentApi = ComponentApi> = {
 	componentWillLoad(props: ResolvedInputProps<T>): void;
 	getRenderProp<K extends keyof InternalProps<T>>(key: K): StrictFields<InternalProps<T>>[K];
 } & ComponentWatchers<ExternalProps<T>> &
-	ControllerCallbackHandlers<ExtractCallbacks<T>> &
-	ControllerListeners<ExtractListeners<T>>;
+	BehaviorCallbackHandlers<ExtractCallbacks<T>> &
+	BehaviorListeners<ExtractListeners<T>>;

@@ -25,6 +25,12 @@
 					color: var(--color-light);
 					outline-offset: 0;
 				}
+
+				/* The focus outline sits on the anchor inside the skeleton wrapper — offset 0 makes
+				   it cover the row border exactly like the former anchor-as-root did. */
+				.kol-link__anchor {
+					outline-offset: 0;
+				}
 			}
 
 			&--active {

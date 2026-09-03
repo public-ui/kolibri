@@ -3,8 +3,8 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
-import { TooltipController } from '../../internal/functional-components/tooltip/controller';
 import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType, VariantClassNamePropType } from '../../schema';
 import { buildBadgeTextString, classNameFromVariant, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import clsx from '../../utils/clsx';
@@ -14,25 +14,25 @@ import KolFormFieldLabelFc from '../FormFieldLabel';
 import type { FormFieldLabelInfoPopoverProps } from '../FormFieldLabel/FormFieldLabel';
 import KolFormFieldMsgFc from '../FormFieldMsg';
 
-const formFieldTooltipControllerById = new Map<string, TooltipController>();
+const formFieldTooltipBehaviorPool = new Map<string, TooltipBehavior>();
 
-const getFormFieldTooltipController = (id: string): TooltipController => {
-	const tooltipController = formFieldTooltipControllerById.get(id);
-	if (tooltipController) {
-		return tooltipController;
+const getFormFieldTooltipBehavior = (id: string): TooltipBehavior => {
+	const tooltipBehavior = formFieldTooltipBehaviorPool.get(id);
+	if (tooltipBehavior) {
+		return tooltipBehavior;
 	}
 
-	const nextTooltipController = new TooltipController(BaseWebComponent.stateLess);
-	nextTooltipController.componentWillLoad({ label: '' });
-	formFieldTooltipControllerById.set(id, nextTooltipController);
-	return nextTooltipController;
+	const nextTooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
+	nextTooltipBehavior.componentWillLoad({ label: '' });
+	formFieldTooltipBehaviorPool.set(id, nextTooltipBehavior);
+	return nextTooltipBehavior;
 };
 
-const destroyFormFieldTooltipController = (id: string): void => {
-	const tooltipController = formFieldTooltipControllerById.get(id);
-	if (tooltipController) {
-		tooltipController.destroy();
-		formFieldTooltipControllerById.delete(id);
+const destroyFormFieldTooltipBehavior = (id: string): void => {
+	const tooltipBehavior = formFieldTooltipBehaviorPool.get(id);
+	if (tooltipBehavior) {
+		tooltipBehavior.destroy();
+		formFieldTooltipBehaviorPool.delete(id);
 	}
 };
 
@@ -145,23 +145,23 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const useTooltipInsteadOfLabel = showTooltip && !hasExpertSlot && hideLabel;
 	const labelId = createRelatedUniqueId(id, 'label');
-	const tooltipController = useTooltipInsteadOfLabel ? getFormFieldTooltipController(id) : undefined;
+	const tooltipBehavior = useTooltipInsteadOfLabel ? getFormFieldTooltipBehavior(id) : undefined;
 
-	if (tooltipController) {
-		tooltipController.watchAlign(tooltipAlign);
-		tooltipController.watchBadgeText(badgeText || '');
-		tooltipController.watchId(labelId);
-		tooltipController.watchLabel(label);
+	if (tooltipBehavior) {
+		tooltipBehavior.watchAlign(tooltipAlign);
+		tooltipBehavior.watchBadgeText(badgeText || '');
+		tooltipBehavior.watchId(labelId);
+		tooltipBehavior.watchLabel(label);
 	} else {
-		destroyFormFieldTooltipController(id);
+		destroyFormFieldTooltipBehavior(id);
 	}
 
 	const forwardedInputRef = formFieldInputProps?.ref as ((el?: HTMLDivElement) => void) | undefined;
 	const setInputContainerRef = (el?: HTMLDivElement): void => {
 		forwardedInputRef?.(el);
-		if (tooltipController && el) {
-			tooltipController.initContext(el);
-			tooltipController.syncListeners(undefined, el, true);
+		if (tooltipBehavior && el) {
+			tooltipBehavior.initContext(el);
+			tooltipBehavior.syncListeners(undefined, el, true);
 		}
 	};
 
@@ -219,7 +219,7 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 							refFloating={
 								tooltipFloatingRef ??
 								((el?: HTMLDivElement) => {
-									tooltipController?.setTooltipElementRef(el);
+									tooltipBehavior?.setTooltipElementRef(el);
 								})
 							}
 						/>

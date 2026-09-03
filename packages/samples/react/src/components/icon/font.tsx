@@ -5,13 +5,13 @@ import { KolButton, KolIcon, KolInputText } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 import { fetchVariantData } from '../../shares/fetchVariantData';
-import { getCustomThemes } from '../../shares/store';
+import { getTheme } from '../../shares/store';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const IconFont: FC = () => {
 	const [searchParams] = useSearchParams();
-	const theme = searchParams.get('theme') ?? getCustomThemes()?.[0]?.key;
+	const theme = searchParams.get('theme') ?? getTheme();
 	const iconVariants = useMemo(() => (theme ? fetchVariantData(theme, 'iconVariants') : []), [theme]);
 	const iconVariantsButton = useMemo(() => (theme ? fetchVariantData(theme, 'iconVariantsButton') : []), [theme]);
 	const iconVariantsInput = useMemo(() => (theme ? fetchVariantData(theme, 'iconVariantsInput') : []), [theme]);
@@ -34,8 +34,10 @@ export const IconFont: FC = () => {
 					iconVariants.map((element) => {
 						return (
 							<div className="flex gap-4" key={element}>
-								<KolIcon _label="" _icons={element} />
-								<span>&lt;KolIcon _icons='{element}' _label="" /&gt;</span>
+								<KolIcon _label={element} _icons={element} />
+								<span>
+									&lt;KolIcon _icons='{element}' _label="{element}" /&gt;
+								</span>
 							</div>
 						);
 					})

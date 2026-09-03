@@ -1,5 +1,5 @@
 import { cloneDeep, isObject } from 'lodash-es';
-import { Log } from '../../../schema';
+import { devWarning } from '../../../schema';
 
 function safeStringify(value: unknown): string {
 	try {
@@ -7,6 +7,16 @@ function safeStringify(value: unknown): string {
 	} catch {
 		return '[unserializable]';
 	}
+}
+
+/**
+ * Logs a visible developer warning for an invalid property value. Invalid values are
+ * ignored (the render prop keeps its previous or default value), matching the behavior
+ * of the legacy `watchValidator` based validation — but visibly instead of silently.
+ */
+function warnInvalidValue(propName: string, value: unknown, cause?: unknown): void {
+	const reason = cause instanceof Error ? ` (${cause.message})` : '';
+	devWarning(`The property value ${safeStringify(value)} for '${propName}' is not valid${reason}. The value is ignored.`);
 }
 
 /**
@@ -62,6 +72,7 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 	defaultValue: InternalPropValue<P>,
 	normalize: (value: unknown) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>) => boolean = () => true,
+	options?: { required?: boolean },
 ): PropDefinition<InternalPropValue<P>, P> {
 	return {
 		propName,
@@ -70,6 +81,9 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 		validate,
 		apply(value, callback) {
 			if (value === undefined || value === null) {
+				if (options?.required) {
+					devWarning(`The required property '_${propName}' did not receive a value. The default value is used instead.`);
+				}
 				if (this.validate(defaultValue)) {
 					callback(defaultValue);
 				} else {
@@ -81,9 +95,11 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 				const normalized = this.normalize(value);
 				if (this.validate(normalized)) {
 					callback(normalized);
+				} else {
+					warnInvalidValue(propName, value);
 				}
-			} catch (e) {
-				Log.debug(e);
+			} catch (error) {
+				warnInvalidValue(propName, value, error);
 			}
 		},
 	};
@@ -124,9 +140,11 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 				const normalized = this.normalize(value, deps);
 				if (this.validate(normalized, deps)) {
 					callback(normalized);
+				} else {
+					warnInvalidValue(propName, value);
 				}
-			} catch (e) {
-				Log.debug(e);
+			} catch (error) {
+				warnInvalidValue(propName, value, error);
 			}
 		},
 	};

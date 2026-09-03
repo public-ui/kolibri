@@ -31,9 +31,18 @@
 				min-height: var(--a11y-min-size);
 				padding-right: to-rem(var(--kol-nav-item-padding-right));
 				padding-left: to-rem(16);
+
+				/* The link skeleton renders a `.kol-link` wrapper inside the entry element — it must
+				   fill the entry so trailing chevrons stay at the row end like before the migration. */
+				flex: 1 1 auto;
 				align-items: center;
 
 				text-decoration: none;
+
+				/* The UA default underline sits on the anchor itself — the nav rows show none. */
+				.kol-link__anchor {
+					text-decoration: none;
+				}
 
 				.kol-span__icon--right {
 					transform: rotate(180deg);

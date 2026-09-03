@@ -3,9 +3,26 @@ import { Component, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { MeterApi } from '../../internal/functional-components/meter/api';
+import { meterPropsConfig } from '../../internal/functional-components/meter/api';
 import { MeterFC } from '../../internal/functional-components/meter/component';
-import { MeterController } from '../../internal/functional-components/meter/controller';
-import type { OrientationPropType } from '../../internal/props';
+import {
+	clampedNumberValueProp,
+	highProp,
+	labelProp,
+	lowProp,
+	maxProp,
+	minProp,
+	optimumProp,
+	orientationProp,
+	unitProp,
+	type OrientationPropType,
+} from '../../internal/props';
+
+type MeterData = {
+	high: number | undefined;
+	low: number | undefined;
+	optimum: number | undefined;
+};
 
 @Component({
 	tag: 'kol-meter',
@@ -15,7 +32,7 @@ import type { OrientationPropType } from '../../internal/props';
 	shadow: true,
 })
 export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponentInterface<MeterApi> {
-	private readonly ctrl = new MeterController(BaseWebComponent.stateLess);
+	private meterData: MeterData = { high: undefined, low: undefined, optimum: undefined };
 
 	/**
 	 * From this value to the max value is the high range of the meter. Below this value is the middle range.
@@ -25,7 +42,13 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_high')
 	public watchHigh(value?: number): void {
-		this.ctrl.watchHigh(value);
+		if (value === undefined) {
+			this.meterData.high = undefined;
+		} else {
+			highProp.apply(value, (v) => {
+				this.meterData.high = v;
+			});
+		}
 	}
 
 	/**
@@ -36,7 +59,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_label')
 	public watchLabel(value?: string): void {
-		this.ctrl.watchLabel(value);
+		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**
@@ -47,7 +70,13 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_low')
 	public watchLow(value?: number): void {
-		this.ctrl.watchLow(value);
+		if (value === undefined) {
+			this.meterData.low = undefined;
+		} else {
+			lowProp.apply(value, (v) => {
+				this.meterData.low = v;
+			});
+		}
 	}
 
 	/**
@@ -59,7 +88,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_max')
 	public watchMax(value?: number): void {
-		this.ctrl.watchMax(value);
+		maxProp.apply(value, (v) => {
+			this.setRenderProp('max', v);
+			this.watchValue(this.getRawProp('value'));
+		});
 	}
 
 	/**
@@ -71,7 +103,10 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_min')
 	public watchMin(value?: number): void {
-		this.ctrl.watchMin(value);
+		minProp.apply(value, (v) => {
+			this.setRenderProp('min', v);
+			this.watchValue(this.getRawProp('value'));
+		});
 	}
 
 	/**
@@ -85,7 +120,13 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_optimum')
 	public watchOptimum(value?: number): void {
-		this.ctrl.watchOptimum(value);
+		if (value === undefined) {
+			this.meterData.optimum = undefined;
+		} else {
+			optimumProp.apply(value, (v) => {
+				this.meterData.optimum = v;
+			});
+		}
 	}
 
 	/**
@@ -96,7 +137,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_orientation')
 	public watchOrientation(value?: OrientationPropType): void {
-		this.ctrl.watchOrientation(value);
+		orientationProp.apply(value, (v) => this.setRenderProp('orientation', v));
 	}
 
 	/**
@@ -107,7 +148,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_unit')
 	public watchUnit(value?: string): void {
-		this.ctrl.watchUnit(value);
+		unitProp.apply(value, (v) => this.setRenderProp('unit', v));
 	}
 
 	/**
@@ -118,37 +159,50 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 
 	@Watch('_value')
 	public watchValue(value?: number): void {
-		this.ctrl.watchValue(value);
+		this.setRawProp('value', value);
+		clampedNumberValueProp.apply(
+			value,
+			(v) => {
+				this.setRenderProp('value', v);
+			},
+			{ min: this.getRenderProp('min'), max: this.getRenderProp('max') },
+		);
 	}
 
 	public componentWillLoad(): void {
-		this.ctrl.componentWillLoad({
-			high: this._high,
-			label: this._label,
-			low: this._low,
-			max: this._max,
-			min: this._min,
-			optimum: this._optimum,
-			orientation: this._orientation,
-			unit: this._unit,
-			value: this._value,
+		this.initRenderProps(meterPropsConfig);
+
+		this.watchHigh(this._high);
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		this.watchLow(this._low);
+		maxProp.apply(this._max, (v) => {
+			this.setRenderProp('max', v);
+			this.watchValue(this.getRawProp('value'));
 		});
+		minProp.apply(this._min, (v) => {
+			this.setRenderProp('min', v);
+			this.watchValue(this.getRawProp('value'));
+		});
+		this.watchOptimum(this._optimum);
+		orientationProp.apply(this._orientation, (v) => this.setRenderProp('orientation', v));
+		unitProp.apply(this._unit, (v) => this.setRenderProp('unit', v));
+		this.watchValue(this._value);
 	}
 
 	public render(): JSX.Element {
-		const { high, low, optimum } = this.ctrl.getMeterData();
+		const { high, low, optimum } = this.meterData;
 		return (
 			<Host>
 				<MeterFC
 					high={high}
-					label={this.ctrl.getRenderProp('label')}
+					label={this.getRenderProp('label')}
 					low={low}
-					max={this.ctrl.getRenderProp('max')}
-					min={this.ctrl.getRenderProp('min')}
+					max={this.getRenderProp('max')}
+					min={this.getRenderProp('min')}
 					optimum={optimum}
-					orientation={this.ctrl.getRenderProp('orientation')}
-					unit={this.ctrl.getRenderProp('unit')}
-					value={this.ctrl.getRenderProp('value')}
+					orientation={this.getRenderProp('orientation')}
+					unit={this.getRenderProp('unit')}
+					value={this.getRenderProp('value')}
 				/>
 			</Host>
 		);

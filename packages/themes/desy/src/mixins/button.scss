@@ -15,7 +15,9 @@
 
 		font-family: var(--font-family);
 
-		&:focus {
+		&:focus,
+		&:focus-within,
+		&__anchor:focus {
 			outline: none;
 		}
 
@@ -34,7 +36,8 @@
 			--text-color: var(--color-red-100);
 
 			&:not([disabled]):hover,
-			&:focus {
+			&:focus,
+			&:focus-within {
 				.#{$block-classname}__text::before {
 					background-color: var(--color-red-100-06);
 				}
@@ -92,7 +95,8 @@
 				}
 			}
 
-			@at-root #{$root}:focus & {
+			@at-root #{$root}:focus &,
+				#{$root}:focus-within & {
 				@include focus-outline;
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
@@ -135,7 +139,8 @@
 		--text-color: var(--color-blue-100);
 
 		&:not([disabled]):hover,
-		&:focus {
+		&:focus,
+		&:focus-within {
 			.#{$block-classname}__text::before {
 				background-color: var(--color-dark-blue-100-06);
 			}
@@ -161,7 +166,8 @@
 	}
 
 	&:not([disabled]):hover .kol-span::before,
-	&:focus .kol-span::before {
+	&:focus .kol-span::before,
+	&:focus-within .kol-span::before {
 		background-color: var(--color-black-100-12);
 	}
 
@@ -183,7 +189,8 @@
 	}
 
 	&:not([disabled]):hover .kol-span::before,
-	&:focus .kol-span::before {
+	&:focus .kol-span::before,
+	&:focus-within .kol-span::before {
 		background-color: var(--color-blue-100-06);
 	}
 }
@@ -198,7 +205,8 @@
 	}
 
 	&:not([disabled]):hover .kol-span::before,
-	&:focus .kol-span::before {
+	&:focus .kol-span::before,
+	&:focus-within .kol-span::before {
 		background-color: var(--color-blue-100-06);
 	}
 }

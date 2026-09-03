@@ -10,19 +10,20 @@
 	}
 
 	.#{$block-classname} {
-		$root: &;
 		display: inline-flex;
+		// Prevents the link from stretching to fill flex/block parents
 		max-width: fit-content;
-
-		align-items: baseline;
-		place-items: center;
-		text-align: left;
-		text-decoration-line: none;
 
 		&--standalone {
 			min-width: var(--a11y-min-size);
 			min-height: var(--a11y-min-size);
 			align-items: stretch;
+
+			/* The anchor is the flex container positioning the text — it must stretch its
+			   content so the text pill keeps the full standalone height. */
+			.#{$block-classname}__anchor {
+				align-items: stretch;
+			}
 
 			.#{$block-classname}__text {
 				display: inline-flex;
@@ -31,6 +32,25 @@
 			}
 		}
 
+		&__anchor {
+			display: inline-flex;
+			flex: 1;
+
+			align-items: baseline;
+			place-items: center;
+			text-align: left;
+			text-decoration-line: none;
+
+			&:focus:not([aria-disabled], [disabled]),
+			&:hover:not([aria-disabled], [disabled]) {
+				.kol-span__label {
+					text-decoration-thickness: 0.2em;
+				}
+			}
+		}
+
+		/* Root-level label decoration: the button DOM (button-link) has no `__anchor`, so the
+		   underline must be carried outside the anchor scope — as it was before the migration. */
 		.kol-span__label {
 			text-decoration-line: underline;
 		}
