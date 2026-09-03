@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-CfrnX-mV.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
