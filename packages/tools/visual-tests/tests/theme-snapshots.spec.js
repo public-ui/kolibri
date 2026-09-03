@@ -98,6 +98,9 @@ ROUTES.forEach((options, route) => {
 		if (options?.snapshot?.waitForTimeout) {
 			await page.waitForTimeout(options?.snapshot?.waitForTimeout);
 		}
+		if (options?.snapshot?.emulateMedia) {
+			await page.emulateMedia(options.snapshot.emulateMedia);
+		}
 
 		/**
 		 * We would like to use a readable name for the snapshot file, e.g. `button-basic` for `button/basic`.

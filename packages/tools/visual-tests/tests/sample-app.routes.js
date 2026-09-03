@@ -417,6 +417,11 @@ ROUTES.set('nav/aria-current', {
 });
 ROUTES.set('nav/basic');
 ROUTES.set('pagination/basic');
+ROUTES.set('pagination/basic', {
+	snapshot: {
+		emulateMedia: { forcedColors: 'active' },
+	},
+});
 ROUTES.set('pagination/button-visibility');
 ROUTES.set('pagination/sibling-boundary');
 ROUTES.set('popover-button/basic', {
