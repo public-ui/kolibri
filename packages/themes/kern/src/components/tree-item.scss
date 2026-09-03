@@ -9,7 +9,7 @@
 
 		--indentation: #{to-rem(16)};
 
-		@include kol-link('kol-tree-item__text');
+		@include kol-link('kol-tree-item__text', $anchor-scoped: false);
 
 		&__link {
 			background-color: var(--kern-color-layout-background-hued);
@@ -17,7 +17,7 @@
 			gap: var(--kern-metric-space-small);
 			flex-direction: row;
 
-			@include kol-link('kol-tree-item__toggle-button');
+			@include kol-link('kol-tree-item__toggle-button', $anchor-scoped: false);
 
 			.kol-tree-item__toggle-button {
 				align-items: center;
@@ -32,7 +32,8 @@
 				padding-right: 0;
 				padding-left: max(calc(var(--indentation) * var(--level)));
 
-				&:focus {
+				// The focus ring lives on the anchor since the kol-link skeleton migration.
+				&__anchor:focus {
 					outline-color: var(--kern-color-action-focus-background);
 				}
 

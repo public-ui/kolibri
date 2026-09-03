@@ -1,0 +1,13 @@
+{
+	"name": "@public-ui/unstyled",
+	"private": true,
+	"scripts": {
+		"test": "cross-env THEME_MODULE=theme.ts THEME_EXPORT=UNSTYLED kolibri-visual-test",
+		"test:update:e2e": "cross-env THEME_MODULE=theme.ts THEME_EXPORT=UNSTYLED kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js"
+	},
+	"devDependencies": {
+		"@public-ui/components": "workspace:*",
+		"@public-ui/visual-tests": "workspace:*",
+		"cross-env": "10.1.0"
+	}
+}

@@ -185,6 +185,7 @@ export default [
 										'skeleton-web-components',
 										'skeleton-functional-components',
 										'internal-functional-components',
+										'internal-props',
 										'focus-decorator-utils',
 										'schema',
 										'testing-utils',

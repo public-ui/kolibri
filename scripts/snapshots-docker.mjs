@@ -28,11 +28,31 @@ const KNOWN_FLAGS = ['--all', '--shell', '--reset', '--no-purge', '--check'];
 /* Nicht spiegeln: plattformabhängig, sehr groß oder im Container ohnehin neu erzeugt. */
 const SYNC_EXCLUDES = ['node_modules', '.git', 'dist', 'test-results', 'playwright-report', '.turbo', '.vscode', 'license-reports'];
 
-const ALL_THEMES = fs
-	.readdirSync(path.join(REPO_ROOT, 'packages/themes'), { withFileTypes: true })
-	.filter((entry) => entry.isDirectory() && fs.existsSync(path.join(REPO_ROOT, 'packages/themes', entry.name, 'package.json')))
-	.map((entry) => entry.name)
-	.sort();
+/** Themepakete als { name, dir, pkg }: `dir` ist der Pfad im Repo, `pkg` der pnpm-Filter-Name. */
+function discoverThemes() {
+	const themes = [];
+	for (const dir of ['packages/themes', 'packages']) {
+		const root = path.join(REPO_ROOT, dir);
+		if (!fs.existsSync(root)) continue;
+		for (const entry of fs.readdirSync(root, { withFileTypes: true })) {
+			/* Unter packages/themes ist jedes Verzeichnis ein Theme; unter packages nur `unstyled`
+			   (Theme ohne Theme-CSS, liegt absichtlich außerhalb von packages/themes). */
+			const isTheme = dir === 'packages/themes' ? entry.isDirectory() : entry.name === 'unstyled' && entry.isDirectory();
+			const pkgJsonPath = path.join(root, entry.name, 'package.json');
+			if (isTheme && fs.existsSync(pkgJsonPath)) {
+				themes.push({
+					name: entry.name,
+					dir: `${dir}/${entry.name}`,
+					pkg: JSON.parse(fs.readFileSync(pkgJsonPath, 'utf8')).name,
+				});
+			}
+		}
+	}
+	return themes.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+const ALL_THEMES = discoverThemes();
+const THEME_NAMES = ALL_THEMES.map((theme) => theme.name);
 
 /** Image-Tag aus der Playwright-Version ableiten, damit lokal und CI nie auseinanderlaufen. */
 function resolveImage() {
@@ -70,11 +90,11 @@ function parseArgs(argv) {
 		if (!KNOWN_FLAGS.includes(flag)) throw new Error(`Unbekannte Option: ${flag}. Erlaubt: ${KNOWN_FLAGS.join(', ')}`);
 	}
 	for (const theme of themes) {
-		if (!ALL_THEMES.includes(theme)) throw new Error(`Unbekanntes Theme "${theme}". Verfügbar: ${ALL_THEMES.join(', ')}`);
+		if (!THEME_NAMES.includes(theme)) throw new Error(`Unbekanntes Theme "${theme}". Verfügbar: ${THEME_NAMES.join(', ')}`);
 	}
 
 	return {
-		themes: flags.has('--all') ? ALL_THEMES : themes,
+		themes: flags.has('--all') ? ALL_THEMES : ALL_THEMES.filter((theme) => themes.includes(theme.name)),
 		shell: flags.has('--shell'),
 		reset: flags.has('--reset'),
 		purge: !flags.has('--no-purge'),
@@ -91,10 +111,10 @@ function buildScript({ themes, purge, check, playwrightArgs }) {
 
 	const perTheme = themes
 		.map(
-			(theme) => `
-echo "==> Theme ${theme}: ${task}"
-${purge && !check ? `find packages/themes/${theme} -name '*.png' -path '*/snapshots/*' -not -path '*/node_modules/*' -delete` : ''}
-pnpm --filter @public-ui/theme-${theme} ${task}${extra}
+			({ name, dir, pkg }) => `
+echo "==> Theme ${name}: ${task}"
+${purge && !check ? `find ${dir} -name '*.png' -path '*/snapshots/*' -not -path '*/node_modules/*' -delete` : ''}
+pnpm --filter ${pkg} ${task}${extra}
 `,
 		)
 		.join('');
@@ -138,9 +158,9 @@ echo "==> Testlauf beendet"
 function buildWriteBackScript(themes) {
 	return themes
 		.map(
-			(theme) => `
-echo "==> Snapshots von ${theme} ins Repo zurückschreiben"
-node /src/scripts/mirror-dir.mjs "${CONTAINER_WORKSPACE}/packages/themes/${theme}/snapshots" "/src/packages/themes/${theme}/snapshots"
+			({ name, dir }) => `
+echo "==> Snapshots von ${name} ins Repo zurückschreiben"
+node /src/scripts/mirror-dir.mjs "${CONTAINER_WORKSPACE}/${dir}/snapshots" "/src/${dir}/snapshots"
 `,
 		)
 		.join('');
@@ -160,7 +180,7 @@ function main() {
 	}
 	if (!options.shell && options.themes.length === 0) {
 		if (options.reset) return;
-		options.themes.push('default');
+		options.themes = ALL_THEMES.filter((theme) => theme.name === 'default');
 	}
 
 	const image = resolveImage();
@@ -200,7 +220,7 @@ function main() {
 		process.exit(docker([...runArgs('1001'), '-it', image, 'bash'], { interactive: true }));
 	}
 
-	console.log(`==> Themes: ${options.themes.join(', ')}${options.check ? ' (nur prüfen)' : ''}`);
+	console.log(`==> Themes: ${options.themes.map((theme) => theme.name).join(', ')}${options.check ? ' (nur prüfen)' : ''}`);
 	const status = docker([...runArgs('1001'), image, 'bash', '-c', buildScript(options)]);
 
 	if (options.check) {

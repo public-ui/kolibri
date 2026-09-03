@@ -26,6 +26,7 @@ packages:
   - packages/tools/mcp
   - packages/tools/stylelint-rules
   - packages/tools/visual-tests
+  - packages/unstyled
 allowBuilds:
   '@evilmartians/lefthook': true
   '@modelcontextprotocol/ext-apps': true

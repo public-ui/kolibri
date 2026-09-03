@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/mcp",
-	"version": "4.3.1-rc.1",
+	"version": "4.3.1-rc.5",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -76,12 +76,12 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
-		"@modelcontextprotocol/inspector": "2.3.0",
+		"@modelcontextprotocol/inspector": "2.4.0",
 		"@public-ui/eslint-config": "workspace:*",
 		"@types/express": "5.0.6",
-		"@types/node": "26.3.0",
+		"@types/node": "26.4.0",
 		"eslint": "9.39.5",
-		"knip": "6.32.2",
+		"knip": "6.32.3",
 		"nodemon": "3.1.14",
 		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",

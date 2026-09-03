@@ -1,5 +1,7 @@
 /.idea/
 /.nx/
+/.vibe/
+/.zcode/
 /license-reports/*.html
 /packages/**/pnpm-lock.yaml
 /test-migration/

@@ -58,13 +58,13 @@ Bei Widersprüchen hat die ARC42.md Vorrang.
    - Nutze `Prop<K, TExternal, TInternal>` oder `SimpleProp<K, T>`
    - Implementiere `normalize()` und `validate()` via `createPropDefinition<P>()`
 3. **Props exportieren** in `src/internal/props/index.ts`
-4. **Props-Typen im Controller** verwenden (z.B. `InternalOf<P>`, `ExternalOf<P>`)
+4. **Props in der API-Definition** über `ApiFromConfig` verwenden — die Phantom-Prop-Typen werden automatisch aus den `required`/`optional`-Arrays der PropsConfig gemergt; `InternalOf`/`ExternalOf` müssen (und dürfen) nicht manuell importiert werden
 
 **Warum Props-First?**
 
 - API-Verträge sind klar, bevor Implementation beginnt
 - Keine Props gehen verloren oder werden vergessen
-- Controller und Tests haben sichere Typen von Anfang an
+- WC und Tests haben sichere Typen von Anfang an
 - Architektur muss nicht nachträglich angepasst werden
 
 ### 3. Refactoring: Komponenten-Implementierung
@@ -72,10 +72,10 @@ Bei Widersprüchen hat die ARC42.md Vorrang.
 Erstelle bzw. ersetze die Dateien im Komponentenverzeichnis gemäß der ARC42-Schichten:
 
 1. **API-Definition** (`api.tsx`) — Interface für die Komponente (nutzt Props-Typen aus Schritt 2)
-2. **Controller** — erweitert `BaseController`, nutzt normalisierte Props, empfängt `setState` und `getState` als Callbacks
-3. **Functional Component** — stateless Renderer
-4. **Web Component** — Stencil `@Component` mit Lifecycle, Watchers, Rendering; erweitert `BaseWebComponent<Api>` und übergibt `this.setState` und `this.getState` an den Controller
-5. **CSS/SCSS** — bestehende Styles beibehalten, bei Bedarf anpassen
+2. **Functional Component** — stateless Renderer. Wrappe den Output in `<BemRootNodeFC block="kol-xxx" modifiers={{...}}>` für einen Single-Root BEM-Wrapper.
+3. **Web Component** — Stencil `@Component` mit Lifecycle, Watchers, Rendering; erweitert `BaseWebComponent<Api>`. Die WC **ist der Orchestrator** — sie ruft `this.initRenderProps(config)` in `componentWillLoad` auf und normalisiert Props direkt in `@Watch`-Handlern via `xxxProp.apply(value, v => this.setRenderProp('xxx', v))`. Es gibt keine separate Controller-/Aspect-Klasse.
+4. **Behaviors** (optional) — Wenn die Komponente wiederverwendbare Logik braucht (z.B. Tooltip-Management), erstelle eine Behavior-Klasse, die `BaseBehavior<Api>` erweitert, und komponiere sie in der WC: `private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess)`.
+5. **CSS/SCSS** — bestehende Styles beibehalten, bei Bedarf anpassen. Bei BEM-Wrapper-Umstellung: Interaktions-Styles (`:focus`, `:hover`) auf `&__anchor` (BEM-Element) statt auf den Block verschieben.
 6. **Tests** — Testdateien **neben** `component.tsx` erstellen bzw. aktualisieren (kein `test/`-Unterordner, siehe ARC42 Design Decision 11):
    - `snapshot.spec.tsx` — Jest DOM-Snapshot-Tests (`executeSnapshotTests`)
    - `interaction.e2e.ts` — Playwright Interaction-Tests (Klick, Tastatur, Events)
@@ -84,7 +84,7 @@ Erstelle bzw. ersetze die Dateien im Komponentenverzeichnis gemäß der ARC42-Sc
 
 Nach dem Refactoring darf **kein veralteter Code** zurückbleiben:
 
-- **Dateien löschen**: alte Type-/Interface-Dateien, alte Controller, verwaiste Module, leere Dateien.
+- **Dateien löschen**: alte Type-/Interface-Dateien, alte Controller/Aspects, verwaiste Module, leere Dateien.
 - **Code entfernen**: unused Types, Imports, auskommentierter Code, deprecated Wrapper.
 - **Prüfen**: Keine Datei ohne Referenz, keine Barrel-Files.
 

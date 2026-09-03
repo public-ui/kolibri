@@ -13,7 +13,10 @@ import { normalizeString } from './helpers/normalizers';
  * - Valid URL: href="https://example.com"
  * - Relative path: href="/page"
  * - Fragment: href="#section"
- * - Empty/undefined: href="" (no link target, should prevent navigation)
+ * - Explicit empty string: href="" (no link target, should prevent navigation)
+ *
+ * The prop is required: leaving it unset (undefined) logs a dev warning and falls back to
+ * the empty-string default. A target-less link must be set explicitly via an empty string.
  *
  * Consumers should check if href is non-empty before rendering clickable links.
  * An empty href means the component should not resolve to a link.
@@ -21,4 +24,4 @@ import { normalizeString } from './helpers/normalizers';
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
  */
 export type HrefProp = SimpleProp<'href', string>;
-export const hrefProp = createPropDefinition<HrefProp>('href', '', normalizeString, (v) => typeof v === 'string');
+export const hrefProp = createPropDefinition<HrefProp>('href', '', normalizeString, (v) => typeof v === 'string', { required: true });

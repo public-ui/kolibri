@@ -5,6 +5,13 @@
 
 	.kol-link {
 		background-color: var(--kern-color-layout-background-hued);
+
+		/* The padding lives on the anchor below; the wrapper must not add its normalized
+		   padding, otherwise the focus ring encloses a box larger than before the migration. */
+		padding: 0;
+	}
+
+	.kol-link__anchor {
 		padding: var(--kern-metric-space-default);
 	}
 }

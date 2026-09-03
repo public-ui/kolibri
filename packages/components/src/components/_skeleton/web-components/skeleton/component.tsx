@@ -3,8 +3,9 @@ import { Component, Event, h, Host, Listen, Method, Prop, State, Watch } from '@
 import { BaseWebComponent } from '../../../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
 import type { SkeletonApi } from '../../../../internal/functional-components/skeleton/api';
+import { skeletonPropsConfig } from '../../../../internal/functional-components/skeleton/api';
 import { SkeletonFC } from '../../../../internal/functional-components/skeleton/component';
-import { SkeletonController } from '../../../../internal/functional-components/skeleton/controller';
+import { nameProp } from '../../../../internal/props';
 import { Log, type KolFocusOptions } from '../../../../schema';
 import { createCtaRef, delegateFocus } from '../../../../utils/element-interaction';
 
@@ -13,8 +14,8 @@ import { createCtaRef, delegateFocus } from '../../../../utils/element-interacti
 	shadow: true,
 })
 export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebComponentInterface<SkeletonApi> {
-	private readonly ctrl = new SkeletonController(this.stateAccess);
 	private readonly buttonRef = createCtaRef<HTMLButtonElement>();
+	private intervalId?: ReturnType<typeof setTimeout>;
 
 	/**
 	 * Focuses the interactive element of the component.
@@ -30,7 +31,8 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	 */
 	@Method()
 	public async toggle(): Promise<void> {
-		return Promise.resolve(this.ctrl.toggle());
+		this.setState('show', !(this.getState('show') ?? false));
+		return Promise.resolve();
 	}
 
 	/**
@@ -41,7 +43,7 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 
 	@Watch('_name')
 	public watchName(value?: string): void {
-		this.ctrl.watchName(value);
+		nameProp.apply(value, (v) => this.setRenderProp('name', v));
 	}
 
 	/**
@@ -66,7 +68,7 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	public handleKeyDown(event: KeyboardEvent): void {
 		if (event.key === 'Enter' || event.key === ' ') {
 			Log.debug('button pressed');
-			this.ctrl.handleClick();
+			this.handleClick();
 		}
 	}
 
@@ -85,18 +87,27 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	 */
 	@Listen('keydown', { target: 'window' })
 	public onKeydown(event: KeyboardEvent): void {
-		this.ctrl.onKeydown(event);
+		if (event.key === 'Escape') {
+			// eslint-disable-next-line no-console
+			console.log('Show should be toggled');
+			void this.toggle();
+		}
 	}
 
-	public componentWillLoad(): void {
-		this.ctrl.componentWillLoad({
-			name: this._name,
-		});
+	public handleClick = (): void => {
+		Log.debug('Button clicked, count should be increased');
+		this.setState('count', (this.getState('count') ?? 0) + 1);
+	};
 
-		// Set up the callback for emitting loaded events
-		this.ctrl.setOnLoadedCallback((count: number) => {
-			this.loaded.emit(count);
-		});
+	public componentWillLoad(): void {
+		this.initRenderProps(skeletonPropsConfig);
+
+		nameProp.apply(this._name, (v) => this.setRenderProp('name', v));
+
+		// Emit loaded event every 2 seconds with current count value
+		this.intervalId = setInterval(() => {
+			this.loaded.emit(this.getState('count') ?? 0);
+		}, 2000);
 	}
 
 	public componentDidLoad(): void {
@@ -106,7 +117,10 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	}
 
 	public disconnectedCallback(): void {
-		this.ctrl.destroy();
+		if (this.intervalId) {
+			clearInterval(this.intervalId);
+			this.intervalId = undefined;
+		}
 	}
 
 	public render(): JSX.Element {
@@ -115,15 +129,12 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 				<SkeletonFC
 					count={this.count}
 					label={this.label}
-					name={this.ctrl.getRenderProp('name')}
-					handleClick={this.ctrl.handleClick}
+					name={this.getRenderProp('name')}
+					handleClick={this.handleClick}
 					onLoaded={this.loaded}
 					onRendered={this.rendered}
 					show={this.show}
-					refButton={(element) => {
-						this.buttonRef(element);
-						this.ctrl.setButtonRef(element);
-					}}
+					refButton={this.buttonRef}
 				/>
 			</Host>
 		);

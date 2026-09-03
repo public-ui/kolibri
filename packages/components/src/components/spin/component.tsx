@@ -3,9 +3,9 @@ import { Component, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { SpinApi } from '../../internal/functional-components/spin/api';
+import { spinPropsConfig } from '../../internal/functional-components/spin/api';
 import { SpinFC } from '../../internal/functional-components/spin/component';
-import { SpinController } from '../../internal/functional-components/spin/controller';
-import type { SpinVariantType } from '../../internal/props/variant-spin';
+import { labelProp, showProp, variantSpinProp, type SpinVariantType } from '../../internal/props';
 
 @Component({
 	tag: 'kol-spin',
@@ -15,8 +15,6 @@ import type { SpinVariantType } from '../../internal/props/variant-spin';
 	shadow: true,
 })
 export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentInterface<SpinApi> {
-	private readonly ctrl = new SpinController(this.stateAccess);
-
 	/**
 	 * Makes the element show up.
 	 */
@@ -25,7 +23,7 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 
 	@Watch('_show')
 	public watchShow(value?: boolean): void {
-		this.ctrl.watchShow(value);
+		this.applyShow(value);
 	}
 
 	/**
@@ -36,7 +34,7 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 
 	@Watch('_label')
 	public watchLabel(value?: string): void {
-		this.ctrl.watchLabel(value);
+		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**
@@ -47,21 +45,25 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 
 	@Watch('_variant')
 	public watchVariant(value?: SpinVariantType): void {
-		this.ctrl.watchVariant(value);
+		variantSpinProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 
 	public componentWillLoad(): void {
-		this.ctrl.componentWillLoad({
-			show: this._show,
-			label: this._label,
-			variant: this._variant,
-		});
+		this.initRenderProps(spinPropsConfig);
+
+		this.applyShow(this._show);
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		variantSpinProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
+	}
+
+	private applyShow(value?: boolean): void {
+		showProp.apply(value, (v) => this.setRenderProp('show', v));
 	}
 
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<SpinFC show={this.ctrl.getRenderProp('show')} label={this.ctrl.getRenderProp('label')} variant={this.ctrl.getRenderProp('variant')} />
+				<SpinFC show={this.getRenderProp('show')} label={this.getRenderProp('label')} variant={this.getRenderProp('variant')} />
 			</Host>
 		);
 	}

@@ -23,7 +23,7 @@ function normalizeIcon(icon: IconOrIconClass | undefined | null): NormalizedIcon
 	if (icon !== null && icon !== undefined && isCustomIcon(icon)) {
 		return icon;
 	}
-	if (isString(icon)) {
+	if (isString(icon) && icon.length > 0) {
 		return { icon };
 	}
 	return null;
@@ -91,7 +91,9 @@ export const SpanFC: FC<
 		left = normalizeIcon(icons.left);
 		right = normalizeIcon(icons.right);
 		bottom = normalizeIcon(icons.bottom);
-	} else if (isString(icons)) {
+	} else if (isString(icons) && icons.length > 0) {
+		// An empty icon string must not render an (invisible) icon element: it would still
+		// occupy a slot in the flex container and shift the label by the container gap.
 		left = { icon: icons };
 	}
 

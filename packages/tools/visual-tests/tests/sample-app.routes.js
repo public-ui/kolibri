@@ -136,6 +136,8 @@ ROUTES.set('heading/basic', {
 ROUTES.set('heading/secondary');
 ROUTES.set('icon/font', {
 	snapshot: {
+		// Breaks when a theme has no custom icon font
+		skip: true,
 		viewportSize: {
 			width: 250,
 			height: 345,

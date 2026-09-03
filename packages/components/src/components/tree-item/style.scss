@@ -11,10 +11,19 @@
 		&__link {
 			.kol-link {
 				display: inline-flex;
+				width: 100%;
 				min-height: var(--a11y-min-size);
 				align-items: center;
 
 				text-decoration: none;
+
+				/* The anchor inside the link skeleton carries the UA default underline itself and
+				   replaces the former full-width anchor, so it has to fill the wrapper. */
+				&__anchor {
+					flex: 1 1 auto;
+
+					text-decoration: none;
+				}
 			}
 		}
 
