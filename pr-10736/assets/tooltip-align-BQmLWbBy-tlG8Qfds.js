@@ -1,1 +1,0 @@
-import"./index-CgdN604h.js";import{r as e}from"./align-C8fl12z_-B-YPhasi.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
