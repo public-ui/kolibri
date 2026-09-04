@@ -115,7 +115,6 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 			type: 'color',
 			name: this.state._name ? `${this.state._name}-color` : undefined,
 			list: this.hasSuggestions ? createRelatedUniqueId(this.state._id, 'list') : undefined,
-			id: undefined,
 			onInput: this.onColorInput,
 		};
 	}
