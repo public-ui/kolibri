@@ -33,6 +33,25 @@ Host `node_modules` are never touched; the install inside the volume is reused a
 | `--reset`    | Drop the volume, forcing a fresh install on the next run                  |
 | `-- <args>`  | Everything after `--` is passed on to Playwright, e.g. `-- --grep Button` |
 
+## visual-review/
+
+Helpers around the visual report the Playwright runs write to `<package>/visual-report/report.json`
+(see [packages/tools/visual-tests](../packages/tools/visual-tests/README.md#visual-report-visual-reportreportjson)).
+
+- `snapshot-paths.mjs` – discovers every package whose `test` script runs `kolibri-visual-test`
+  (`theme-default`, `unstyled`, …) and maps it to its folder, its `snapshots/theme-<export>` sub
+  folder and its report folder. The export-derived folder names (`theme-desyv11`, `theme-kern_v2`)
+  are not guessable from the directory, so every script resolves them here; a new theme package
+  takes part without registration. The CI matrices in `ci.yml` and `visual-baseline.yml` still list
+  the packages by hand – a unit test in `packages/tools/visual-tests` pins the discovered set.
+- `assert-no-errors.mjs <package>` – prints the report summary (and appends it to the GitHub job
+  summary), then fails only if routes could not be compared at all. Screenshot differences are a
+  review case, not an error.
+
+```bash
+node scripts/visual-review/assert-no-errors.mjs theme-default
+```
+
 ## license-reports.mjs
 
 Generate and merge all package license reports into one Markdown file:
