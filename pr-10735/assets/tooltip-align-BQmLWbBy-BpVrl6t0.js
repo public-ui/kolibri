@@ -1,1 +1,0 @@
-import"./index-BNUQawlk.js";import{r as e}from"./align-C8fl12z_-CERMLHo_.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
