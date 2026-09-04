@@ -1,8 +1,13 @@
 @use '../../mixins/to-rem' as *;
 @use './button' as *;
+@use '../mixins/dialog' as *;
 
 @mixin table-settings {
+	@include dialog();
+
 	.kol-table-settings {
+		@include button('kol-button');
+
 		display: flex;
 		position: static;
 		justify-content: flex-end;

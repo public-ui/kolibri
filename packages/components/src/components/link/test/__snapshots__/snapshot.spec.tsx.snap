@@ -1,5 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _download="" 1`] = `
+<kol-link>
+  <template shadowrootmode="open">
+    <div class="kol-link kol-link--external-link kol-link--inline">
+      <a class="kol-link__anchor" download="" href="https://example.com" rel="noopener" target="self">
+        <span class="kol-link__text kol-span">
+          <span class="kol-span__container">
+            <i aria-hidden="true" class="codicon codicon-home kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
+      </a>
+    </div>
+  </template>
+</kol-link>
+`;
+
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _tooltipAlign="bottom" 1`] = `
 <kol-link>
   <template shadowrootmode="open">

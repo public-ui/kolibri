@@ -1,14 +1,6 @@
-import { ToasterService } from '@public-ui/components';
-
-export function useToasterService() {
-	const toaster = ToasterService.getInstance(document);
-
+export function useAlert() {
 	const message = (message?: string) => {
-		void toaster.enqueue({
-			description: message || 'Hello',
-			label: `Hello`,
-			type: 'info',
-		});
+		void alert(message || 'The Element was clicked');
 	};
 
 	const dummyClickEventHandler = () => {

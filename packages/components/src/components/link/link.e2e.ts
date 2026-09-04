@@ -30,7 +30,7 @@ test.describe('kol-link', () => {
 				const targetIsAnchorPromise = kolLink.evaluate((element: HTMLKolLinkElement) => {
 					return new Promise<boolean>((resolve) => {
 						element._on = {
-							onClick: (event: Event, _: string) => {
+							onClick: (event: Event, _value: string) => {
 								resolve(event.target instanceof HTMLAnchorElement && event.target.classList.contains('kol-link__anchor'));
 							},
 						};
