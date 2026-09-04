@@ -29,6 +29,7 @@
 		"lint": "pnpm lint:eslint",
 		"lint:eslint": "eslint src",
 		"serve": "vite --config app/vite.config.ts",
+		"test:unit": "node --test test/*.test.mjs",
 		"unused": "knip"
 	},
 	"bin": {

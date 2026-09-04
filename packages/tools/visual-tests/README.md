@@ -63,6 +63,22 @@ In the following runs, new screenshots will be compared to this reference.
 
 To update the reference screenshots call `npm run test:update`.
 
+### Visual report (`visual-report/report.json`)
+
+Besides Playwright's own HTML report, every run writes a machine-readable summary of the screenshot comparison to `visual-report/` in the theme folder (`src/visual-reporter.js`). It is the input of the visual review in CI and lists every snapshot of the baseline with one of these states:
+
+| status      | meaning                                                                           | files copied to `visual-report/<package>/` |
+| ----------- | --------------------------------------------------------------------------------- | ------------------------------------------ |
+| `unchanged` | captured and identical to the baseline                                            | –                                          |
+| `changed`   | captured and different (`diffPixels`, `diffRatio` or `sizeMismatch` say how much) | `expected`, `actual`, `diff`               |
+| `added`     | captured, but the baseline has no file for it                                     | `actual`                                   |
+| `removed`   | the baseline has a file, but no test captured it any more                         | `expected`                                 |
+| `error`     | the baseline has a file, but its route failed before the block could be captured  | –                                          |
+
+Each item carries a `hash` of its content (`sha256:…`), and the report a `digest` over all hashes – approvals in the review are bound to those, not to commits. Routes that failed for other reasons than a screenshot difference (missing blocks, invisible blocks, timeouts) are listed under `errors`; `node scripts/visual-review/assert-no-errors.mjs <package>` turns them into a non-zero exit code.
+
+The spec captures every screenshot through `expect.soft`, so one differing block does not stop the remaining blocks of the route, and announces it with a `visual-snapshot` annotation – a passing comparison leaves no other trace, and the reporter needs that signal to tell `unchanged` from `removed`. With `--update-snapshots` the report is a manifest of the generated files instead (`mode: "update"`).
+
 ### Element screenshots (`data-visual-block`)
 
 Sample views in the [React Sample App](https://github.com/public-ui/kolibri/tree/develop/packages/samples/react) mark their variant blocks with the `SampleBlock` component, which renders the `data-visual-block` attribute. `SampleBlock` is the **only** place that sets the attribute — samples must not set it directly on their own elements. When a route contains such blocks, the visual tests capture **one element screenshot per block** (`<route-slug>--<block-id>.png`) instead of one full-page screenshot. This isolates diffs: a change to one variant no longer invalidates the entire page screenshot through layout shifts.
