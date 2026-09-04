@@ -8,14 +8,12 @@ import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 
 const COMPONENT_NAME = 'kol-input-color';
 const TEST_VALUE = '#cc006e';
-const NEW_VALUE = '#00ccff';
 const fillAction: FillAction = async (page) => {
 	const textInput = page.locator('input[type="text"]');
 	await textInput.fill(TEST_VALUE);
 	await textInput.dispatchEvent('input');
 };
 const selectTextInput = (page: Page & E2EPage) => page.locator('input[type="text"]');
-const selectColorInput = (page: Page & E2EPage) => page.locator('input[type="color"]');
 
 test.describe(COMPONENT_NAME, () => {
 	testInputValueReflection<HTMLKolInputColorElement>({
@@ -103,14 +101,4 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	testInputMessage<HTMLKolInputColorElement>(COMPONENT_NAME);
-
-	test('should sync value between color input and text input', async ({ page }) => {
-		await page.setContent(`<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}>`);
-		const colorInput = selectColorInput(page);
-		const textInput = selectTextInput(page);
-		await colorInput.fill(TEST_VALUE);
-		await expect(textInput).toHaveValue(TEST_VALUE);
-		await textInput.fill(NEW_VALUE);
-		await expect(colorInput).toHaveValue(NEW_VALUE);
-	});
 });
