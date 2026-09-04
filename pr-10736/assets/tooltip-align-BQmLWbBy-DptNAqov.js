@@ -1,0 +1,1 @@
+import"./index-D3_tna82.js";import{r as e}from"./align-C8fl12z_-ChiFOD4N.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};

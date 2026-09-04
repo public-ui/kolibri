@@ -1,1 +1,0 @@
-import{wt as e}from"./index-PZPMALUh.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};
