@@ -1,0 +1,1 @@
+import{wt as e}from"./index-Bq3O-Nwm.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};

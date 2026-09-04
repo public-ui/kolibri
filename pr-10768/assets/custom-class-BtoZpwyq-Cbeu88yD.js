@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-Bq3O-Nwm.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
