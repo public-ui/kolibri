@@ -49,11 +49,7 @@ import { InputColorController } from './controller';
 export class KolInputColor implements ClickableElement, FocusableElement, InputColorAPI {
 	@Element() protected readonly host?: HTMLKolInputColorElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
-	private refInputColor?: HTMLInputElement;
 
-	private readonly setColorRef = (ref?: HTMLInputElement) => {
-		this.refInputColor = ref;
-	};
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
 		this.inputHasFocus = false;
@@ -74,17 +70,6 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 		this.controller.onFacade.onInput(event);
 	};
 
-	private readonly onTextInput = (event: InputEvent) => {
-		let value = (event.target as HTMLInputElement).value;
-		if (!value.startsWith('#')) {
-			value = `#${value}`;
-		}
-		this._value = value;
-		if (this.refInputColor) {
-			this.refInputColor.value = value;
-		}
-		this.controller.onFacade.onInput(event);
-	};
 	/**
 	 * Returns the current value.
 	 */
@@ -120,31 +105,17 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 			class: 'kol-input-color',
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
-			infoPopover: this._infoPopover,
 		};
 	}
 
 	private getInputColorProps(): InputStateWrapperProps {
 		return {
 			...this.getGenericInputProps(),
-			ref: this.setColorRef,
+			ref: this.ctaRef,
 			type: 'color',
 			name: this.state._name ? `${this.state._name}-color` : undefined,
 			list: this.hasSuggestions ? createRelatedUniqueId(this.state._id, 'list') : undefined,
-			id: undefined,
-			'aria-hidden': 'true',
-			tabIndex: -1,
 			onInput: this.onColorInput,
-		};
-	}
-	private getInputTextProps(): InputStateWrapperProps {
-		return {
-			...this.getGenericInputProps(),
-			ref: this.ctaRef,
-			type: 'text',
-			name: this.state._name ? `${this.state._name}-text` : undefined,
-			list: this.hasSuggestions ? createRelatedUniqueId(this.state._id, 'list') : undefined,
-			onInput: this.onTextInput,
 		};
 	}
 
@@ -161,10 +132,7 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
 				<KolInputContainerFc state={this.state} class="kol-input-color__inputs-wrapper">
-					<div class="kol-input-color__inputs-wrapper">
-						<KolInputStateWrapperFc class="kol-input-color__input kol-input-color__input--color" {...this.getInputColorProps()} />
-						<KolInputStateWrapperFc class="kol-input-color__input kol-input-color__input--text" {...this.getInputTextProps()} />
-					</div>
+					<KolInputStateWrapperFc class="kol-input-color__input kol-input-color__input--color" {...this.getInputColorProps()} />
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
@@ -399,8 +367,8 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 	}
 
 	public componentDidLoad(): void {
-		if (!this._value && this.refInputColor) {
-			this._value = this.refInputColor.value;
+		if (!this._value && this.ctaRef) {
+			this._value = this.ctaRef.el?.value;
 		}
 	}
 

@@ -8,14 +8,12 @@ import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 
 const COMPONENT_NAME = 'kol-input-color';
 const TEST_VALUE = '#cc006e';
-const NEW_VALUE = '#00ccff';
 const fillAction: FillAction = async (page) => {
-	const textInput = page.locator('input[type="text"]');
-	await textInput.fill(TEST_VALUE);
-	await textInput.dispatchEvent('input');
+	const colorInput = page.locator('input[type="color"]');
+	await colorInput.fill(TEST_VALUE);
+	await colorInput.dispatchEvent('input');
 };
-const selectTextInput = (page: Page & E2EPage) => page.locator('input[type="text"]');
-const selectColorInput = (page: Page & E2EPage) => page.locator('input[type="color"]');
+const selectcolorInput = (page: Page & E2EPage) => page.locator('input[type="color"]');
 
 test.describe(COMPONENT_NAME, () => {
 	testInputValueReflection<HTMLKolInputColorElement>({
@@ -28,14 +26,14 @@ test.describe(COMPONENT_NAME, () => {
 		test('should call onFocus callback and emit focus event when input receives focus', async ({ page }) => {
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}>`);
 			const component = page.locator(COMPONENT_NAME);
-			const textInput = selectTextInput(page);
+			const colorInput = selectcolorInput(page);
 
 			await component.evaluate((element: HTMLKolInputColorElement) => {
 				element._on = { onFocus: () => ((window as unknown as Record<string, unknown>).focusCallback = true) };
 				element.addEventListener('focus', () => ((window as unknown as Record<string, unknown>).focusEvent = true));
 			});
 
-			await textInput.focus();
+			await colorInput.focus();
 			await page.waitForChanges();
 
 			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).focusCallback)).toBe(true);
@@ -45,7 +43,7 @@ test.describe(COMPONENT_NAME, () => {
 		test('should call onBlur callback and emit blur event when input loses focus', async ({ page }) => {
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}><button id="next">Next</button>`);
 			const component = page.locator(COMPONENT_NAME);
-			const textInput = selectTextInput(page);
+			const colorInput = selectcolorInput(page);
 			const nextButton = page.locator('#next');
 
 			await component.evaluate((element: HTMLKolInputColorElement) => {
@@ -53,7 +51,7 @@ test.describe(COMPONENT_NAME, () => {
 				element.addEventListener('blur', () => ((window as unknown as Record<string, unknown>).blurEvent = true));
 			});
 
-			await textInput.focus();
+			await colorInput.focus();
 			await page.waitForChanges();
 			await nextButton.focus();
 			await page.waitForChanges();
@@ -68,14 +66,14 @@ test.describe(COMPONENT_NAME, () => {
 
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}>`);
 			const component = page.locator(COMPONENT_NAME);
-			const textInput = selectTextInput(page);
+			const colorInput = selectcolorInput(page);
 
 			await component.evaluate((element: HTMLKolInputColorElement) => {
 				element._on = { onClick: () => ((window as unknown as Record<string, unknown>).clickCallback = true) };
 				element.addEventListener('click', () => ((window as unknown as Record<string, unknown>).clickEvent = true));
 			});
 
-			await textInput.click();
+			await colorInput.click();
 			await page.waitForChanges();
 
 			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).clickCallback)).toBe(true);
@@ -85,7 +83,7 @@ test.describe(COMPONENT_NAME, () => {
 		test('should call onChange callback and emit change event with value when the value is committed', async ({ page }) => {
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}>`);
 			const component = page.locator(COMPONENT_NAME);
-			const textInput = selectTextInput(page);
+			const colorInput = selectcolorInput(page);
 
 			await component.evaluate((element: HTMLKolInputColorElement) => {
 				element._on = { onChange: (_event: Event, value?: unknown) => ((window as unknown as Record<string, unknown>).changeValue = value) };
@@ -94,7 +92,7 @@ test.describe(COMPONENT_NAME, () => {
 
 			await fillAction(page);
 			await page.waitForChanges();
-			await textInput.dispatchEvent('change');
+			await colorInput.dispatchEvent('change');
 			await page.waitForChanges();
 
 			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).changeValue)).toBe(TEST_VALUE);
@@ -103,14 +101,4 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	testInputMessage<HTMLKolInputColorElement>(COMPONENT_NAME);
-
-	test('should sync value between color input and text input', async ({ page }) => {
-		await page.setContent(`<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}>`);
-		const colorInput = selectColorInput(page);
-		const textInput = selectTextInput(page);
-		await colorInput.fill(TEST_VALUE);
-		await expect(textInput).toHaveValue(TEST_VALUE);
-		await textInput.fill(NEW_VALUE);
-		await expect(colorInput).toHaveValue(NEW_VALUE);
-	});
 });

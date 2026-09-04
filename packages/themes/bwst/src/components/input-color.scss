@@ -5,17 +5,10 @@
 @layer kol-theme-component {
 	@include kol-icon-theme;
 	.kol-input-color {
-		&__inputs-wrapper {
-			height: 100%;
-		}
-
-		&__input {
-			&--text,
-			&--color {
-				background-color: var(--color-light);
-				min-height: calc(var(--a11y-min-size) - to-rem(8));
-				border: 1px solid var(--color-subtle);
-			}
+		&__input--color {
+			background-color: var(--color-light);
+			min-height: calc(var(--a11y-min-size) - to-rem(4));
+			border: 0;
 
 			&:focus {
 				outline: none;
