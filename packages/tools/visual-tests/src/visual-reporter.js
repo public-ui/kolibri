@@ -10,12 +10,17 @@
  * - `unchanged` – the block was captured and matched the baseline
  * - `error`     – the baseline has a file, but its route failed before the block could be captured
  *
+ * Classification relies on structured data only: the `-expected`/`-actual`/`-diff` attachments a failed
+ * comparison leaves behind and the baseline listing taken before the run. Playwright's free-text error
+ * messages merely add numbers (`diffPixels`, `diffRatio`, `sizeMismatch`) – a reworded message after a
+ * Playwright upgrade costs those numbers, not the classification.
+ *
  * Every item carries a content hash. Approvals are bound to those hashes, not to commits, so a new push
  * that leaves an approved screenshot untouched keeps its approval.
  *
  * The spec announces every captured screenshot through a `visual-snapshot` annotation, because a passing
  * `toHaveScreenshot` leaves no trace (no attachment, no error) – without that signal "unchanged" and
- * "removed" would be indistinguishable.
+ * "removed" would be indistinguishable. A test in test/visual-reporter.test.mjs guards that convention.
  *
  * With `--update-snapshots` (baseline generation) the reporter writes a manifest of the generated files
  * instead; its digest is what the baseline artifact carries as identity.
@@ -26,19 +31,23 @@ import * as path from 'node:path';
 
 const SCHEMA_VERSION = 1;
 export const SNAPSHOT_ANNOTATION = 'visual-snapshot';
+export const SPEC_FILE = 'theme-snapshots.spec.js';
 
 const ATTACHMENT_SUFFIX = /-(expected|actual|diff|previous)\.png$/;
+/* Wording of playwright-core's compareImages(); both sentences appear together when the size differs. */
 const PIXEL_MISMATCH = /(\d+) pixels \(ratio ([\d.]+) of all image pixels\) are different/;
 const SIZE_MISMATCH = /Expected an image (\d+)px by (\d+)px, received (\d+)px by (\d+)px/;
-const MISSING_SNAPSHOT = /A snapshot doesn't exist at (.+?\.png)/;
-const SNAPSHOT_NAME_LINE = /^\s*Snapshot: (.+\.png)\s*$/m;
 const TEST_TITLE = /^snapshot for (.+)$/;
 // eslint-disable-next-line no-control-regex -- Playwright colours its messages; the escape character is the point here
 const ANSI_SEQUENCE = /\u001b\[[0-9;]*m/g;
 
-/** Mirrors the spec: `button/variants?x=1` → `button-variants-x-1`. */
+/**
+ * File name of a route: `button/variants?x=1` → `button-variants-x-1`. Shared with the spec, which names
+ * the snapshot files, so both sides can never drift apart. Consecutive delimiters collapse into one dash:
+ * the route part of a name must never contain the `--` that separates route and block id.
+ */
 export function routeToSnapshotName(route) {
-	return route.replace(/(\/|\?|&|=)/g, '-');
+	return route.replace(/[/?&=]+/g, '-');
 }
 
 function sha256(buffer) {
@@ -84,11 +93,18 @@ export default class VisualReporter {
 		return false;
 	}
 
-	onBegin(config) {
+	onBegin(config, suite) {
 		this.updateMode = config.updateSnapshots === 'all' || config.updateSnapshots === 'changed';
 		this.platform = process.platform;
-		this.projects = config.projects.map((project) => project.name);
-		this.fileSuffix = new RegExp(`-(${this.projects.map(escapeRegExp).join('|')})-${escapeRegExp(this.platform)}\\.png$`);
+		const projects = runningProjects(config, suite);
+		if (projects.length !== 1) {
+			throw new Error(
+				`Visual reporter: snapshot names carry no project name, so exactly one Playwright project can run at a time (got: ${projects.join(', ') || 'none'}). Extend the item keys of the reporter before enabling another project.`,
+			);
+		}
+		this.projects = projects;
+		this.fileSuffixSource = `-${escapeRegExp(projects[0])}-${escapeRegExp(this.platform)}\\.png`;
+		this.fileSuffix = new RegExp(`${this.fileSuffixSource}$`);
 		// The baseline must be listed before any test runs: Playwright writes missing snapshots into the
 		// very same folder, and those must not masquerade as baseline files.
 		this.baseline = this.scanBaseline();
@@ -123,7 +139,7 @@ export default class VisualReporter {
 		return files;
 	}
 
-	baseReport(mode) {
+	baseReport(mode, baselineFiles) {
 		return {
 			schema: SCHEMA_VERSION,
 			mode,
@@ -134,15 +150,17 @@ export default class VisualReporter {
 			projects: this.projects,
 			baseline: {
 				dir: path.relative(this.packageDir, this.baselineDir).split(path.sep).join('/'),
-				files: this.baseline.size,
+				files: baselineFiles,
 				meta: this.baselineMeta,
 			},
 		};
 	}
 
+	/** Update mode: the folder after the run is the new baseline, so every count describes that state. */
 	buildManifest() {
-		const items = [...this.scanBaseline().entries()].map(([name, file]) => ({ name, status: 'baseline', hash: hashFile(file) })).sort(byName);
-		return { ...this.baseReport('update'), summary: { baseline: items.length }, digest: digestOf(items), items, errors: [] };
+		const generated = this.scanBaseline();
+		const items = [...generated.entries()].map(([name, file]) => ({ name, status: 'baseline', hash: hashFile(file) })).sort(byName);
+		return { ...this.baseReport('update', generated.size), summary: { baseline: items.length }, digest: digestOf(items), items, errors: [] };
 	}
 
 	buildReport() {
@@ -154,7 +172,6 @@ export default class VisualReporter {
 			if (result.status === 'skipped') continue;
 			const route = test.title.match(TEST_TITLE)?.[1] ?? test.title;
 			const snapshotName = routeToSnapshotName(route);
-			const attachments = groupAttachments(result.attachments);
 
 			for (const annotation of [...test.annotations, ...(result.annotations ?? [])]) {
 				if (annotation.type === SNAPSHOT_ANNOTATION && annotation.description) {
@@ -162,26 +179,35 @@ export default class VisualReporter {
 				}
 			}
 
-			let hardError = null;
+			// A failed comparison always attaches the actual image; the baseline listing tells changed from added.
+			const groups = groupAttachments(result.attachments);
+			for (const [name, files] of groups) {
+				if (!files.actual) continue;
+				seen.add(name);
+				items.set(name, this.baseline.has(name) ? this.changedItem(name, route, files) : this.addedItem(name, route, files));
+			}
+
+			const hardErrors = [];
 			for (const error of result.errors) {
 				const message = errorMessage(error);
-				const classified = this.classifyError(message, attachments, route);
-				if (classified) {
-					items.set(classified.name, classified);
-					seen.add(classified.name);
-				} else if (!hardError) {
-					hardError = message;
+				const name = this.snapshotNameIn(message, groups);
+				if (name && items.has(name)) {
+					Object.assign(items.get(name), comparisonDetails(message, groups.get(name)));
+				} else {
+					hardErrors.push(firstLine(message));
 				}
 			}
-			if (!hardError && (result.status === 'timedOut' || result.status === 'interrupted')) {
-				hardError = `Test ${result.status}`;
+			if (hardErrors.length === 0 && (result.status === 'timedOut' || result.status === 'interrupted')) {
+				hardErrors.push(`Test ${result.status}`);
 			}
-			if (hardError) {
-				errors.push({ test: test.title, route, message: firstLine(hardError) });
+			for (const message of hardErrors) {
+				errors.push({ test: test.title, route, message });
+			}
+			if (hardErrors.length > 0) {
 				// Every baseline file of this route that was not captured is unknown territory, not "removed".
 				for (const [name, file] of this.baseline) {
 					if (!seen.has(name) && belongsToRoute(name, snapshotName)) {
-						items.set(name, { name, route, status: 'error', hash: hashFile(file), message: firstLine(hardError) });
+						items.set(name, { name, route, status: 'error', hash: hashFile(file), message: hardErrors[0] });
 						seen.add(name);
 					}
 				}
@@ -201,44 +227,29 @@ export default class VisualReporter {
 		const summary = { unchanged: 0, changed: 0, added: 0, removed: 0, error: 0 };
 		for (const item of sorted) summary[item.status] += 1;
 
-		return { ...this.baseReport('compare'), summary, digest: digestOf(sorted), items: sorted, errors };
+		return { ...this.baseReport('compare', this.baseline.size), summary, digest: digestOf(sorted), items: sorted, errors };
 	}
 
-	/** Maps one soft-assertion error to a `changed` or `added` item; returns null for anything else. */
-	classifyError(message, attachments, route) {
-		const pixel = message.match(PIXEL_MISMATCH);
-		const size = message.match(SIZE_MISMATCH);
-		if (pixel || size) {
-			const name = message.match(SNAPSHOT_NAME_LINE)?.[1]?.replace(/\.png$/, '');
-			const files = name ? attachments.get(name) : undefined;
-			if (!name || !files?.actual) return null;
-			const item = {
-				name,
-				route,
-				status: 'changed',
-				hash: hashFile(files.actual),
-				expected: this.copyImage(files.expected ?? this.baseline.get(name), name, 'expected'),
-				actual: this.copyImage(files.actual, name, 'actual'),
-				diff: files.diff ? this.copyImage(files.diff, name, 'diff') : undefined,
-			};
-			if (pixel) {
-				item.diffPixels = Number(pixel[1]);
-				const total = pngPixelCount(files.actual);
-				item.diffRatio = total ? Number((item.diffPixels / total).toFixed(6)) : Number(pixel[2]);
-			} else {
-				item.sizeMismatch = { expected: [Number(size[1]), Number(size[2])], actual: [Number(size[3]), Number(size[4])] };
-			}
-			return item;
-		}
-		const missing = message.match(MISSING_SNAPSHOT);
-		if (missing) {
-			const name = path
-				.basename(missing[1])
-				.replace(this.fileSuffix, '')
-				.replace(/\.png$/, '');
-			const files = attachments.get(name);
-			if (!files?.actual) return null;
-			return { name, route, status: 'added', hash: hashFile(files.actual), actual: this.copyImage(files.actual, name, 'actual') };
+	changedItem(name, route, files) {
+		return {
+			name,
+			route,
+			status: 'changed',
+			hash: hashFile(files.actual),
+			expected: this.copyImage(files.expected ?? this.baseline.get(name), name, 'expected'),
+			actual: this.copyImage(files.actual, name, 'actual'),
+			diff: files.diff ? this.copyImage(files.diff, name, 'diff') : undefined,
+		};
+	}
+
+	addedItem(name, route, files) {
+		return { name, route, status: 'added', hash: hashFile(files.actual), actual: this.copyImage(files.actual, name, 'actual') };
+	}
+
+	/** The attachment group an error message talks about – by file name (`x.png`) or baseline path (`x-firefox-linux.png`). */
+	snapshotNameIn(message, groups) {
+		for (const name of groups.keys()) {
+			if (new RegExp(`${escapeRegExp(name)}(\\.png|${this.fileSuffixSource})`).test(message)) return name;
 		}
 		return null;
 	}
@@ -253,8 +264,36 @@ export default class VisualReporter {
 	}
 }
 
+/**
+ * Numbers from Playwright's message. Both sentences appear when the size differs; the pixels are then
+ * counted on a canvas padded to the larger of both sizes, which is what the ratio has to be based on.
+ */
+function comparisonDetails(message, files) {
+	const details = {};
+	const size = message.match(SIZE_MISMATCH);
+	const pixel = message.match(PIXEL_MISMATCH);
+	if (size) {
+		details.sizeMismatch = { expected: [Number(size[1]), Number(size[2])], actual: [Number(size[3]), Number(size[4])] };
+	}
+	if (pixel) {
+		details.diffPixels = Number(pixel[1]);
+		const total = size
+			? Math.max(details.sizeMismatch.expected[0], details.sizeMismatch.actual[0]) * Math.max(details.sizeMismatch.expected[1], details.sizeMismatch.actual[1])
+			: pngPixelCount(files.actual);
+		details.diffRatio = total ? Number((details.diffPixels / total).toFixed(6)) : Number(pixel[2]);
+	}
+	return details;
+}
+
+/** Projects that actually run (the root suite has one child per project); `--project` filters are respected. */
+function runningProjects(config, suite) {
+	const fromSuite = (suite?.suites ?? []).map((child) => child.project?.()?.name).filter(Boolean);
+	const names = fromSuite.length > 0 ? fromSuite : config.projects.map((project) => project.name);
+	return [...new Set(names)];
+}
+
 function isSnapshotTest(test) {
-	return test.location?.file?.endsWith('theme-snapshots.spec.js') || TEST_TITLE.test(test.title);
+	return path.basename(test.location?.file ?? '') === SPEC_FILE;
 }
 
 function groupAttachments(attachments) {

@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { SNAPSHOT_ANNOTATION } from '../src/visual-reporter.js';
+import { SNAPSHOT_ANNOTATION, routeToSnapshotName } from '../src/visual-reporter.js';
 import { ROUTES } from './sample-app.routes.js';
 
 // https://playwright.dev/docs/emulation
@@ -53,16 +53,15 @@ const NARROW_VIEWPORT = { width: 320, height: 256 };
 const BLOCK_VISIBLE_TIMEOUT = 10000;
 
 /**
- * A mismatch is a review case, not a reason to abort the route: soft expectations keep capturing the
- * remaining blocks, so the report lists every changed block of a route at once. Retries are disabled
- * because a deterministic diff re-renders identically – they would only triple the cost.
- */
-test.describe.configure({ retries: 0 });
-
-/**
- * Captures one screenshot and announces it to the visual reporter. A passing comparison leaves no
- * attachment behind, so the annotation is the only signal that the snapshot was compared at all –
- * without it the reporter could not tell an unchanged block from a removed one.
+ * Captures one screenshot and announces it to the visual reporter. Every screenshot of this spec must go
+ * through here (guarded by a test in test/visual-reporter.test.mjs):
+ *
+ * - `expect.soft`: a mismatch is a review case, not a reason to abort the route, so the remaining blocks
+ *   are still captured and the report lists every changed block of a route at once. Retries stay at the
+ *   global setting – a differing route re-renders on retry, but so does a block that was slow to appear.
+ * - the annotation: a passing comparison leaves no attachment behind, so it is the only signal that the
+ *   snapshot was compared at all – without it the reporter could not tell an unchanged block from a
+ *   removed one.
  */
 async function captureSnapshot(target, fileName, options) {
 	await expect.soft(target).toHaveScreenshot(fileName, options);
@@ -117,10 +116,9 @@ ROUTES.forEach((options, route) => {
 			await page.waitForTimeout(options?.snapshot?.waitForTimeout);
 		}
 
-		/**
-		 * We would like to use a readable name for the snapshot file, e.g. `button-basic` for `button/basic`.
-		 */
-		const snapshotName = route.replace(/(\/|\?|&|=)/g, '-');
+		/* A readable file name, e.g. `button-basic` for `button/basic` – the reporter derives the same name from
+		   the test title to match baseline files, so both sides share the one function. */
+		const snapshotName = routeToSnapshotName(route);
 
 		const SNAPSHOT_OPTIONS = {
 			...DEFAULT_SNAPSHOT_OPTIONS,

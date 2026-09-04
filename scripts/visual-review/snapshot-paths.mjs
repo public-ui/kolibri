@@ -1,23 +1,68 @@
 /**
- * Single source of truth for where the visual-test packages keep their snapshots and reports.
+ * Where the visual-test packages keep their snapshots and reports – discovered from the packages
+ * themselves, so a new theme package needs no registration here.
  *
- * The folder below `snapshots/` is derived from the theme's export name (THEME_EXPORT in the package's
- * `test` script, lower-cased by playwright.config.js), which cannot be guessed from the directory name
- * (`desy` → `theme-desyv11`, `kern` → `theme-kern_v2`). The test in
- * packages/tools/visual-tests/test/snapshot-paths.test.mjs keeps this table in sync with the scripts.
- *
- * `test-tag-name-transformer` has no baseline of its own: its `prepare:snapshots` script copies the
- * default theme's folder before every run.
+ * A package takes part when its `test` script runs `kolibri-visual-test` (directly, or via an
+ * `npm-run-all2` delegate as the ecl theme does). The folder below `snapshots/` is derived from the
+ * script's THEME_EXPORT the same way playwright.config.js does (`DesyV11` → `theme-desyv11`); it cannot
+ * be guessed from the directory name. A package whose `prepare:snapshots` copies another theme's
+ * folder (test-tag-name-transformer) has no baseline of its own – `baselineFrom` names the owner.
  */
-export const PACKAGES = [
-	{ name: 'theme-bwst', dir: 'packages/themes/bwst', themeDir: 'theme-bwst' },
-	{ name: 'theme-default', dir: 'packages/themes/default', themeDir: 'theme-default' },
-	{ name: 'theme-desy', dir: 'packages/themes/desy', themeDir: 'theme-desyv11' },
-	{ name: 'theme-ecl', dir: 'packages/themes/ecl', themeDir: 'theme-ecl_ec' },
-	{ name: 'theme-kern', dir: 'packages/themes/kern', themeDir: 'theme-kern_v2' },
-	{ name: 'unstyled', dir: 'packages/unstyled', themeDir: 'theme-unstyled' },
-	{ name: 'test-tag-name-transformer', dir: 'packages/test-tag-name-transformer', themeDir: 'theme-default', baselineFrom: 'theme-default' },
-];
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const REPO_ROOT = path.resolve(fileURLToPath(new URL('../..', import.meta.url)));
+const SCAN_DIRS = ['packages', 'packages/themes'];
+
+function readPackageJson(dir) {
+	try {
+		return JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8'));
+	} catch {
+		return null;
+	}
+}
+
+/** The script `test` ends up running, if it is a visual test. */
+function visualTestScript(scripts = {}) {
+	let script = scripts.test;
+	const delegate = script?.match(/^npm-run-all2 (\S+)$/);
+	if (delegate) script = scripts[delegate[1]];
+	return script?.includes('kolibri-visual-test') ? script : null;
+}
+
+export function discoverPackages(root = REPO_ROOT) {
+	const found = [];
+	for (const scanDir of SCAN_DIRS) {
+		const absolute = path.join(root, scanDir);
+		if (!fs.existsSync(absolute)) continue;
+		for (const entry of fs.readdirSync(absolute, { withFileTypes: true })) {
+			if (!entry.isDirectory()) continue;
+			const dir = `${scanDir}/${entry.name}`;
+			const pkg = readPackageJson(path.join(root, dir));
+			const script = pkg && visualTestScript(pkg.scripts);
+			if (!script) continue;
+			const themeExport = script.match(/THEME_EXPORT=(\S+)/)?.[1] ?? 'default';
+			const copiedFrom = pkg.scripts['prepare:snapshots']?.match(/\.\.\/themes\/([^/\s"']+)\/snapshots/)?.[1];
+			found.push({
+				name: pkg.name.replace(/^@public-ui\//, ''),
+				dir,
+				themeDir: `theme-${themeExport.toLocaleLowerCase()}`,
+				copiedFromDir: copiedFrom ? `packages/themes/${copiedFrom}` : undefined,
+			});
+		}
+	}
+	return found
+		.map(({ copiedFromDir, ...pkg }) => {
+			if (!copiedFromDir) return pkg;
+			const owner = found.find((candidate) => candidate.dir === copiedFromDir);
+			if (!owner) throw new Error(`${pkg.name} copies its snapshots from ${copiedFromDir}, which has no visual tests.`);
+			return { ...pkg, baselineFrom: owner.name };
+		})
+		.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export const PACKAGES = discoverPackages();
 
 /** Packages that publish a baseline artifact (everything that generates its own snapshots). */
 export const BASELINE_PACKAGES = PACKAGES.filter((pkg) => !pkg.baselineFrom);
