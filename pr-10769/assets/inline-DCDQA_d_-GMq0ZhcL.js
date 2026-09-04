@@ -1,0 +1,1 @@
+import{wt as e}from"./index-BLX9feps.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};
