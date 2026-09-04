@@ -117,19 +117,25 @@ jobs:
       - name: Determine report path
         id: report-path
         if: ${{ !cancelled() }}
+        # The container job runs its scripts with `sh`, not bash: no `[[ … ]]` here, it would silently
+        # fall through to the theme branch and look for unstyled under packages/themes/.
         run: |
           PACKAGE="${{ matrix.package }}"
-          if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
-            PKG_DIR="packages/test-tag-name-transformer"
-            SLUG="tag-name-transformer"
-          elif [[ "${PACKAGE}" == 'unstyled' ]]; then
-            PKG_DIR="packages/unstyled"
-            SLUG="unstyled"
-          else
-            THEME_DIR="${PACKAGE#theme-}"
-            PKG_DIR="packages/themes/${THEME_DIR}"
-            SLUG="${THEME_DIR}"
-          fi
+          case "${PACKAGE}" in
+            test-tag-name-transformer)
+              PKG_DIR="packages/test-tag-name-transformer"
+              SLUG="tag-name-transformer"
+              ;;
+            unstyled)
+              PKG_DIR="packages/unstyled"
+              SLUG="unstyled"
+              ;;
+            *)
+              THEME_DIR="${PACKAGE#theme-}"
+              PKG_DIR="packages/themes/${THEME_DIR}"
+              SLUG="${THEME_DIR}"
+              ;;
+          esac
           REPORT_DIR="${PKG_DIR}/playwright-report"
           echo "pkg=${PKG_DIR}" >> "$GITHUB_OUTPUT"
           echo "dir=${REPORT_DIR}" >> "$GITHUB_OUTPUT"
