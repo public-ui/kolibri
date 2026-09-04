@@ -21,7 +21,11 @@
 				display: inline;
 			}
 
-			.kol-button {
+			/* The size exemption has to cover both the BEM root div and the inner interactive element:
+			   the a11y layer pins every `button` to 44×44, so the inner `kol-button__button` needs the
+			   override as well — the root alone used to be the button before the skeleton migration. */
+			.kol-button,
+			.kol-button .kol-button__button {
 				min-width: 0;
 				min-height: 1em;
 			}

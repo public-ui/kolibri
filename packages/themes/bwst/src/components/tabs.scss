@@ -56,14 +56,28 @@
 			top: 1px;
 			min-width: var(--a11y-min-size);
 			min-height: var(--a11y-min-size);
-			padding: 0 to-rem(4);
 
 			font-size: to-rem(16);
 			font-weight: normal;
-			line-height: 1.2;
-			border: to-rem(1) solid transparent;
-			/*border: none;*/
 			font-style: normal;
+
+			/* In the legacy DOM the padding, the transparent 1px border, the border-radius and the
+			   line-height all applied to the button element itself. After the skeleton migration the
+			   class sits on the wrapper, so they move to the interactive element to keep the box
+			   width (padding + border must sit inside the same element so the coloured selected-tab
+			   border wraps the padded box like before) and the leading — Firefox also pins
+			   `line-height: normal` on the real `<button>`, beating any inherited value. The
+			   `position: relative; top: 1px` offset stays on the wrapper, which is the flex item in
+			   the tab group (as the button element was before). */
+			.kol-button__button {
+				border-radius: var(--border-radius);
+				min-width: var(--a11y-min-size);
+				min-height: var(--a11y-min-size);
+				padding: 0 to-rem(4);
+
+				line-height: 1.2;
+				border: to-rem(1) solid transparent;
+			}
 
 			&:hover {
 				color: var(--color-primary);
@@ -81,35 +95,42 @@
 			}
 
 			&.selected {
-				border-color: var(--color-primary);
-				border-radius: to-rem(4) to-rem(4) 0 0;
-				border-bottom-color: var(--color-light);
-				position: relative;
+				/* In the legacy DOM the selected-tab border, its radius and the `::before` / `::after`
+				   decorations all lived on the button element. They move to `__button` together so
+				   the pseudos anchor to the same padded, bordered box as before the migration. */
+				.kol-button__button {
+					border-color: var(--color-primary);
+					border-radius: to-rem(4) to-rem(4) 0 0;
+					border-bottom-color: var(--color-light);
+					position: relative;
+
+					&::before {
+						background-color: var(--color-primary);
+						position: absolute;
+						top: 0;
+						right: 0;
+						left: 0;
+						height: to-rem(4);
+
+						content: '';
+						border-top-left-radius: to-rem(4);
+						border-top-right-radius: to-rem(4);
+					}
+
+					&::after {
+						background-color: var(--color-light);
+						position: absolute;
+						bottom: to-rem(-7);
+						left: to-rem(-6);
+						width: calc(100% + to-rem(12));
+						height: to-rem(6);
+
+						content: ' ';
+					}
+				}
 
 				.kol-span__container {
 					//border-top: 0.25em solid;
-				}
-				&:before {
-					background-color: var(--color-primary);
-					position: absolute;
-					top: 0;
-					right: 0;
-					left: 0;
-					height: to-rem(4);
-
-					content: '';
-					border-top-left-radius: to-rem(4);
-					border-top-right-radius: to-rem(4);
-				}
-				&:after {
-					background-color: var(--color-light);
-					position: absolute;
-					bottom: to-rem(-7);
-					left: to-rem(-6);
-					width: calc(100% + to-rem(12));
-					height: to-rem(6);
-
-					content: ' ';
 				}
 			}
 

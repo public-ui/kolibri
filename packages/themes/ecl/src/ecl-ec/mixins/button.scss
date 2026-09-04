@@ -10,7 +10,12 @@
 		--button-focus-outline-offset: -3px;
 		--button-focus-outline-width: 1px;
 
+		/* The skeleton DOM moves the focusable element into the wrapper: `#{$block-classname}__button`
+		   for buttons, `#{$block-classname}__anchor` for links. The class carrier is never focused,
+		   so the theme focus ring has to be scoped to the inner element — there it also overrides
+		   the user-agent focus ring of the real control. */
 		&:focus,
+		&__button:focus,
 		&__anchor:focus {
 			outline: var(--button-focus-outline-color) solid var(--button-focus-outline-width);
 			outline-offset: var(--button-focus-outline-offset);

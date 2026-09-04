@@ -3,7 +3,7 @@
 
 @layer kol-theme-component {
 	@include button('kol-button');
-	@include button('kol-link');
+	@include button('kol-link', $interactive-element: 'anchor');
 
 	.kol-toolbar {
 		gap: var(--kern-metric-space-default);

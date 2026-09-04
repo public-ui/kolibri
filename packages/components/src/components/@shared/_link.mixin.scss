@@ -2,7 +2,14 @@
 @use '../tooltip/style' as *;
 @use 'icon.mixin' as *;
 
-@mixin kol-link-styles($block-classname) {
+/*
+ * Link styles for a skeleton block whose interactive element sits inside the BEM root:
+ * `kol-link` renders `<div class="kol-link"><a class="kol-link__anchor">`, `kol-button` renders
+ * `<div class="kol-button"><button class="kol-button__button">`. `$interactive-element` names that
+ * inner element; `null` attaches the styles to the class carrier itself, for blocks whose DOM has
+ * no inner interactive element.
+ */
+@mixin kol-link-styles($block-classname, $interactive-element: 'anchor') {
 	@include kol-icon-styles();
 	:host {
 		// Causing linebreak, when removed
@@ -19,10 +26,12 @@
 			min-height: var(--a11y-min-size);
 			align-items: stretch;
 
-			/* The anchor is the flex container positioning the text — it must stretch its
-			   content so the text pill keeps the full standalone height. */
-			.#{$block-classname}__anchor {
-				align-items: stretch;
+			@if $interactive-element {
+				/* The interactive element is the flex container positioning the text — it must
+				   stretch its content so the text pill keeps the full standalone height. */
+				.#{$block-classname}__#{$interactive-element} {
+					align-items: stretch;
+				}
 			}
 
 			.#{$block-classname}__text {
@@ -32,29 +41,31 @@
 			}
 		}
 
-		&__anchor {
-			display: inline-flex;
-			flex: 1;
+		@if $interactive-element {
+			&__#{$interactive-element} {
+				display: inline-flex;
+				flex: 1;
 
-			align-items: baseline;
-			place-items: center;
-			text-align: left;
-			text-decoration-line: none;
+				align-items: baseline;
+				place-items: center;
+				text-align: left;
+				text-decoration-line: none;
 
-			&:focus:not([aria-disabled], [disabled]),
-			&:hover:not([aria-disabled], [disabled]) {
-				.kol-span__label {
-					text-decoration-thickness: 0.2em;
+				&:focus:not([aria-disabled], [disabled]),
+				&:hover:not([aria-disabled], [disabled]) {
+					.kol-span__label {
+						text-decoration-thickness: 0.2em;
+					}
 				}
 			}
 		}
 
-		/* Root-level label decoration: the button DOM (button-link) has no `__anchor`, so the
-		   underline must be carried outside the anchor scope — as it was before the migration. */
 		.kol-span__label {
 			text-decoration-line: underline;
 		}
 
+		/* Root-level hover/focus decoration: kept for blocks rendered without an inner interactive
+		   element, and harmless where one exists (the wrapper is hovered together with it). */
 		&:focus:not([aria-disabled], [disabled]),
 		&:hover:not([aria-disabled], [disabled]) {
 			.kol-span__label {

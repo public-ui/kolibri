@@ -47,9 +47,13 @@
 			}
 
 			.kol-button {
-				padding: to-rem(12) to-rem(8);
+				/* Box values belong to the interactive element: on the wrapper the padding would stack
+				   on top of the inner button's a11y min-size instead of growing the old button box. */
+				.kol-button__button {
+					padding: to-rem(12) to-rem(8);
+				}
 
-				:focus {
+				.kol-button__button:focus {
 					outline: none;
 				}
 			}

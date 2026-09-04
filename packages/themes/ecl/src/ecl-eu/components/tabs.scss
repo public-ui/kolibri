@@ -21,7 +21,8 @@
 				}
 			}
 
-			&:focus .kol-span {
+			&:focus .kol-span,
+			.kol-button__button:focus .kol-span {
 				outline: var(--color-blue-130) solid to-rem(2);
 			}
 

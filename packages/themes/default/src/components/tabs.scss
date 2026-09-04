@@ -61,6 +61,15 @@
 			border: none;
 			font-style: normal;
 
+			/* In the legacy DOM `border: none` and the radius applied to the button itself:
+			   the border removal keeps the vertically centered labels at the baseline position,
+			   and the radius rounds the focus outline (Firefox draws the outline following the
+			   element's border-radius). */
+			.kol-button__button {
+				border-radius: var(--border-radius);
+				border: none;
+			}
+
 			&:hover {
 				color: var(--color-primary);
 			}

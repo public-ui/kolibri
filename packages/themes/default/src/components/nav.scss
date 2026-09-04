@@ -83,11 +83,14 @@
 
 				$root: &;
 
-				&:focus {
+				&:focus,
+				&__button:focus {
 					outline: none;
 				}
 
-				&:not([disabled]):hover {
+				/* State predicates live on the interactive element: on the wrapper `:not([disabled])`
+				   would always be true, re-enabling hover styling for disabled buttons. */
+				&__button:not([disabled]):hover {
 					--text-background-color: var(--color-primary-variant);
 					--text-border-color: var(--color-primary-variant);
 					--text-color: var(--color-light);
@@ -128,11 +131,11 @@
 						}
 					}
 
-					@at-root #{$root}:focus {
+					@at-root #{$root}__button:focus {
 						@include focus-outline;
 					}
 
-					@at-root #{$root}:disabled:hover & {
+					@at-root #{$root}__button:disabled:hover & {
 						color: var(--text-color);
 						background-color: var(--text-background-color);
 						box-shadow: none;

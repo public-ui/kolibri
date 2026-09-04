@@ -3,7 +3,7 @@
 
 @layer kol-theme-component {
 	@include kol-link('kol-link');
-	@include kol-link('kol-button', $anchor-scoped: false);
+	@include kol-link('kol-button', $anchor-scoped: false, $interactive-suffix: 'button');
 
 	.kol-nav {
 		--kol-nav-item-padding-left: -16;
@@ -39,17 +39,19 @@
 
 				&:hover,
 				&:focus,
-				.kol-link__anchor:focus {
+				.kol-link__anchor:focus,
+				.kol-button__button:focus {
 					.kol-span__label {
 						text-decoration: none;
 					}
 				}
 			}
 
-			// The kol-link wrapper carries the 49px row box; stretch the anchor inside so the
-			// whole row stays clickable and focusable (before the skeleton migration the
-			// anchor itself was the row element).
-			.kol-link__anchor {
+			// The kol-link / kol-button wrapper carries the 49px row box; stretch the interactive
+			// element inside so the whole row stays clickable and focusable (before the skeleton
+			// migration the anchor / button itself was the row element).
+			.kol-link__anchor,
+			.kol-button__button {
 				width: 100%;
 				height: 100%;
 			}

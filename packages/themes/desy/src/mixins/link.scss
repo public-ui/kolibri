@@ -3,22 +3,27 @@
 
 /*
  * Interactive link styles. With $anchor-scoped (default) they attach to the inner
- * `kol-link__anchor` of the skeleton DOM. Otherwise they attach to the class carrier
- * itself, whose element is the interactive one (e.g. `kol-button`, the details heading
- * button), matching the component DOM before the kol-link skeleton migration.
+ * kol-link__anchor of the skeleton DOM. Otherwise they attach to the class carrier — either
+ * the class carrier itself when it is still the interactive element ($interactive-suffix null,
+ * e.g. the details heading button, whose DOM did not change), or its inner
+ * BLOCK__SUFFIX element when the button skeleton migration moved the interactive element into a
+ * wrapper ($interactive-suffix 'button', e.g. kol-button in button-link / nav / split-button).
  */
-@mixin kol-link-interactive($block-classname, $anchor-scoped: true) {
+@mixin kol-link-interactive($block-classname, $anchor-scoped: true, $interactive-suffix: null) {
+	/* Selector for the interactive element relative to the current parent. */
+	$ie: if($anchor-scoped or not $interactive-suffix, '&', '&__#{$interactive-suffix}');
+
 	color: var(--color-blue-100);
 
 	text-decoration-line: none;
 	transition: color var(--transition);
 	transition: 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
-	&:visited {
+	#{$ie}:visited {
 		color: var(--color-blue-100);
 	}
 
-	&:focus {
+	#{$ie}:focus {
 		outline: none;
 	}
 
@@ -36,7 +41,7 @@
 		text-decoration: none;
 	}
 
-	&:not([aria-disabled='true']):is(:focus, :hover, :active) {
+	#{$ie}:not([aria-disabled='true']):is(:focus, :hover, :active) {
 		color: var(--color-dark-blue-100);
 
 		.kol-span__label {
@@ -82,15 +87,19 @@
 			line-height: 1.25;
 		}
 	} @else {
+		/* Interactive element under a variant modifier: `& .kol-button__button` after the button
+		   skeleton migration, or the modifier element itself when its DOM did not change. */
+		$hover-focus: if($interactive-suffix, '& .#{$block-classname}__#{$interactive-suffix}:is(:hover, :focus)', '&:is(:hover, :focus)');
+		$focus: if($interactive-suffix, '& .#{$block-classname}__#{$interactive-suffix}:focus', '&:focus');
+
 		&--secondary {
 			color: var(--color-dark-blue-100);
 
-			&:hover,
-			&:focus {
+			#{$hover-focus} {
 				text-decoration: underline;
 			}
 
-			&:focus {
+			#{$focus} {
 				outline: var(--outline-width) solid var(--color-dark-blue-100);
 				border-radius: var(--radius-s);
 				outline-offset: var(--outline-offset);
@@ -100,12 +109,11 @@
 		&--tertiary {
 			color: var(--color-black-70);
 
-			&:hover,
-			&:focus {
+			#{$hover-focus} {
 				text-decoration: underline;
 			}
 
-			&:focus {
+			#{$focus} {
 				outline: var(--outline-width) solid var(--color-black-70);
 				border-radius: var(--radius-s);
 				outline-offset: var(--outline-offset);
@@ -121,7 +129,7 @@
 	}
 }
 
-@mixin kol-link($block-classname, $anchor-scoped: true) {
+@mixin kol-link($block-classname, $anchor-scoped: true, $interactive-suffix: null) {
 	@include icon;
 
 	.#{$block-classname} {
@@ -143,9 +151,21 @@
 				}
 			}
 		} @else {
-			@include kol-link-interactive($block-classname, false);
+			@include kol-link-interactive($block-classname, false, $interactive-suffix);
 
-			&:focus .#{$block-classname}__text {
+			@if $interactive-suffix {
+				/* Firefox pins `line-height: normal` on the real button, beating the value inherited
+				   through the wrapper — restore it on the interactive element so the label box keeps
+				   its pre-migration height. */
+				&__#{$interactive-suffix} {
+					line-height: 1.25;
+				}
+			}
+
+			/* The focus ring on __text follows the interactive element: the class carrier itself
+			   when its DOM did not change, or its inner __button element when the button skeleton
+			   migration moved the focusable element into a wrapper. */
+			#{if($interactive-suffix, '&__' + $interactive-suffix, '&')}:focus .#{$block-classname}__text {
 				outline: 2px solid var(--color-dark-blue-100);
 				border-radius: var(--radius-s);
 				outline-offset: 4px;

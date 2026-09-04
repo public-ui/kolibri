@@ -2,7 +2,14 @@
 @use '../tooltip/style' as *;
 @use 'icon.mixin' as *;
 
-@mixin kol-button-styles($block-classname) {
+/*
+ * Button styles for a skeleton block whose interactive element sits inside the BEM root:
+ * `kol-button` renders `<div class="kol-button"><button class="kol-button__button">`, `kol-link`
+ * renders `<div class="kol-link"><a class="kol-link__anchor">`. `$interactive-element` names that
+ * inner element; `null` attaches the styles to the class carrier itself, for blocks whose DOM has
+ * no inner interactive element.
+ */
+@mixin kol-button-styles($block-classname, $interactive-element: 'button') {
 	@include kol-icon-styles();
 
 	:host {
@@ -17,36 +24,103 @@
 		font-style: to-rem(16);
 		text-decoration-line: none;
 
-		&::before {
-			/* Render zero-width character as first element to set the baseline correctly. */
-			content: '\200B';
+		@if $interactive-element {
+			/* The interactive element is the flex container positioning the text, so it carries the
+			   box the root element used to be. The UA default underline sits on that element too,
+			   so suppressing `text-decoration` on the wrapper alone is not enough. */
+			&__#{$interactive-element} {
+				display: flex;
+				flex: 1;
+
+				text-align: left;
+				text-decoration-line: none;
+
+				/* The zero-width baseline character has to sit on the flex container that positions
+				   the text — otherwise the text sits 1px off. */
+				&::before {
+					content: '\200B';
+				}
+			}
+		} @else {
+			&::before {
+				/* Render zero-width character as first element to set the baseline correctly. */
+				content: '\200B';
+			}
 		}
 
 		&__text {
 			flex: 1 0 100%;
 		}
 
-		/* The link skeleton renders the anchor as `.kol-link__anchor` inside the `.kol-link`
-		   wrapper. The UA default underline sits on the anchor itself, so suppressing
-		   `text-decoration` on the wrapper alone is not enough. The remaining declarations
-		   restore the box the root element was before the skeleton migration. */
-		&__anchor {
-			display: flex;
-
-			text-align: left;
-			text-decoration-line: none;
-
-			/* The zero-width baseline character used to live on the root element, which was the
-			   flex container positioning the text. In the link skeleton the anchor is that
-			   container, so the character has to move with it — otherwise the text sits 1px off. */
-			&::before {
-				content: '\200B';
-			}
+		/* The tooltip wrapper holds only the absolutely positioned floating tooltip. In the legacy
+		   DOM it sat in a block flow and collapsed to zero height; as a flex/grid item it would
+		   stretch to the container height instead, adding phantom rows to the layout. */
+		&__tooltip {
+			height: 0;
 		}
 
-		&--external-link > .kolicon-link-external::before,
-		&--external-link .#{$block-classname}__anchor > .kolicon-link-external::before {
+		&--external-link > .kolicon-link-external::before {
 			content: none;
+		}
+
+		@if $interactive-element {
+			&--external-link .#{$block-classname}__#{$interactive-element} > .kolicon-link-external::before {
+				content: none;
+			}
+		}
+	}
+}
+
+/*
+ * Minimal box replication for trees that do not include `kol-button-styles` but render
+ * `kol-button-wc` (transitional light-DOM output). Before the skeleton migration the button
+ * element itself carried the `kol-button` class, so the `kol-global` reset
+ * (`background`, `width`, `margin`, `padding`, `border`) and the a11y layer `min-height`/
+ * `min-width` applied to it, on top of the UA `inline-block`. The wrapper div now carries the
+ * class but receives none of that automatically, so this mixin replicates the exact outer box,
+ * while the inner `kol-button__button` degrades to a plain block container to avoid the
+ * inline-level baseline gap the UA `inline-block` would add below it.
+ */
+@mixin kol-button-wc-box-styles($block-classname) {
+	.#{$block-classname} {
+		background-color: transparent;
+
+		display: inline-block;
+		width: 100%;
+		min-width: var(--a11y-min-size);
+		min-height: var(--a11y-min-size);
+		margin: 0;
+		padding: 0;
+
+		/* User-agent stylesheets center button text; a `div` inherits instead, so the old
+		   inherited alignment (usually `left` from the a11y `:host` rule) has to be replicated
+		   explicitly for the inner content to sit at the same position as before. */
+		text-align: center;
+
+		/* Replicate the reset the real button received: width stays at the initial `medium`, only
+		   the style becomes `none`. Consumer rules that flip e.g. `border-bottom-style` back to
+		   `solid` (tabs) must therefore target the inner button (see the `__button` override
+		   below), because Firefox vertically centers button content inside the content box, which
+		   shrinks by the border — exactly as it did when the real button carried these rules. */
+		&__button {
+			border-style: none;
+			display: block;
+			border-width: medium;
+
+			font-weight: inherit;
+
+			/* The UA pins `text-align: center` and (in Firefox) `font-weight: 400` directly on every
+			   `button`, which would beat any alignment or font weight inherited through the wrapper
+			   (e.g. nav's `text-align: left`, or a bold active entry that used to apply to the button
+			   element itself). Inheriting restores the old flow. */
+			font-style: inherit;
+			text-align: inherit;
+		}
+
+		/* See kol-button-styles: the tooltip wrapper must stay zero-height, also when the wrapper
+		   div is a flex or grid item (e.g. nav entry rows). */
+		&__tooltip {
+			height: 0;
 		}
 	}
 }

@@ -21,12 +21,19 @@ export type LinkRoleProp = Prop<'role', AlternativeButtonLinkRolePropType | unde
 /**
  * Normalizes the role value.
  *
- * Graceful degradation: when the value is one of the allowed roles it is returned; otherwise
- * (including any non-member string) the sentinel `''` is returned so the component renders
- * without an explicit role. The factory's `apply` handles undefined/null before this is reached.
+ * One of the allowed roles is returned as is; the empty string means "no explicit role" and
+ * yields the sentinel. Any other value throws, so the factory logs a `devWarning` and keeps the
+ * previous value instead of degrading silently. The factory's `apply` handles undefined/null
+ * before this is reached.
  */
 function normalizeLinkRole(value: unknown): '' | AlternativeButtonLinkRolePropType {
-	return typeof value === 'string' && (LINK_ROLE_OPTIONS as readonly string[]).includes(value) ? (value as AlternativeButtonLinkRolePropType) : '';
+	if (value === '') {
+		return '';
+	}
+	if (typeof value === 'string' && (LINK_ROLE_OPTIONS as readonly string[]).includes(value)) {
+		return value as AlternativeButtonLinkRolePropType;
+	}
+	throw new Error(`Invalid role: expected one of ${LINK_ROLE_OPTIONS.join(', ')}, got ${JSON.stringify(value)}`);
 }
 
 export const linkRoleProp = createPropDefinition<LinkRoleProp>('role', '', normalizeLinkRole);

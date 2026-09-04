@@ -22,15 +22,19 @@
 		}
 
 		.kol-button {
-			padding: var(--kern-metric-space-default) var(--kern-metric-space-x-small);
+			/* Box values belong to the interactive element: on the wrapper the padding would stack
+			   on top of the inner button's a11y min-size instead of growing the old button box. */
+			.kol-button__button {
+				padding: var(--kern-metric-space-default) var(--kern-metric-space-x-small);
+			}
 
-			&:not(:disabled):hover,
-			&:not(:disabled):active {
+			&__button:not(:disabled):hover,
+			&__button:not(:disabled):active {
 				background: var(--kern-color-action-state-indicator-tint-hover-opacity);
 				cursor: pointer;
 			}
 
-			&:not(:disabled, [tabindex='-1']):focus-visible {
+			&__button:not(:disabled, [tabindex='-1']):focus-visible {
 				@include focus-outline($angularBorder: true);
 			}
 

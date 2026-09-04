@@ -1,10 +1,49 @@
 @use '../mixins/link.mixin' as *;
 
 @layer kol-theme-component {
-	@include kol-link('kol-button', $anchor-scoped: false);
+	@include kol-link('kol-button', $anchor-scoped: false, $interactive-suffix: 'button');
 
 	.kol-button {
 		--color-mute-variant: var(--kern-color-feedback-info-background);
 		--color-text: var(--kern-color-layout-text-default);
+
+		/* The body-default baseline padding belongs on the interactive element: on the carrier
+		   (the wrapper since the skeleton migration) it stacks on top of the inner button's
+		   a11y min-size instead of growing the old button box (+8px). */
+		padding: 0;
+
+		/* Firefox pins `line-height: normal` directly on every `button` — the inner element would
+		   drop the line-height themed on the wrapper via body-default (the button element itself
+		   carried it before the skeleton migration), shrinking the text line by 2px. The baseline
+		   padding and the `align-items` (which the shared `kol-link-styles` sets to `center` via
+		   `place-items` on the interactive element) move with it — the class carrier used to be the
+		   flex container and top-aligned its content. */
+		.kol-button__button {
+			padding: var(--kern-metric-baseline-body-default-padding-top, 6px) var(--kern-metric-space-none, 0)
+				var(--kern-metric-baseline-body-default-padding-bottom, 2px) var(--kern-metric-space-none, 0);
+			align-items: flex-start;
+
+			line-height: inherit;
+		}
+
+		/* The focus ring used to sit on the button itself (`:focus-visible` in the link mixin's
+		   unscoped branch). The wrapper never receives focus, so the ring has to come from
+		   `:focus-within` — it encloses the whole carrier box like before — while the UA ring of
+		   the real button is suppressed. */
+		&:not(&--stretched):focus-within {
+			box-shadow:
+				var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 2px var(--kern-color-action-on-default),
+				/* TODO: Variable mit Design überprüfen */ var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 4px
+					var(--kern-color-action-focus-border-inside),
+				var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 6px var(--kern-color-action-focus-border-outside);
+			outline-color: transparent;
+			border-radius: var(--kern-metric-border-radius-small, 0.125rem);
+			position: relative;
+			z-index: 1;
+		}
+
+		.kol-button__button:focus {
+			outline: none;
+		}
 	}
 }

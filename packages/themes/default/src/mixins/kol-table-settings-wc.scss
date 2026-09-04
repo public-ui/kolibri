@@ -30,7 +30,7 @@
 		}
 	}
 
-	.kol-button:focus {
+	.kol-button__button:focus {
 		@include focus-outline;
 	}
 }
