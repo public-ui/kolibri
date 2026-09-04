@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { SNAPSHOT_ANNOTATION, routeToSnapshotName } from '../src/visual-reporter.js';
 import { ROUTES } from './sample-app.routes.js';
 
 // https://playwright.dev/docs/emulation
@@ -51,6 +52,22 @@ const NARROW_SELECTOR = '[data-visual-block][data-visual-narrow]';
 const NARROW_VIEWPORT = { width: 320, height: 256 };
 const BLOCK_VISIBLE_TIMEOUT = 10000;
 
+/**
+ * Captures one screenshot and announces it to the visual reporter. Every screenshot of this spec must go
+ * through here (guarded by a test in test/visual-reporter.test.mjs):
+ *
+ * - `expect.soft`: a mismatch is a review case, not a reason to abort the route, so the remaining blocks
+ *   are still captured and the report lists every changed block of a route at once. Retries stay at the
+ *   global setting – a differing route re-renders on retry, but so does a block that was slow to appear.
+ * - the annotation: a passing comparison leaves no attachment behind, so it is the only signal that the
+ *   snapshot was compared at all – without it the reporter could not tell an unchanged block from a
+ *   removed one.
+ */
+async function captureSnapshot(target, fileName, options) {
+	await expect.soft(target).toHaveScreenshot(fileName, options);
+	test.info().annotations.push({ type: SNAPSHOT_ANNOTATION, description: fileName });
+}
+
 /** Reads the `data-visual-block` ids of all elements matching `selector`, in document order. */
 async function readBlockIds(page, selector) {
 	return page.$$eval(selector, (elements) => elements.map((element) => element.getAttribute('data-visual-block')));
@@ -70,7 +87,7 @@ async function captureBlocks(page, route, blockIds, snapshotName, suffix, option
 				`Route "${route}": data-visual-block "${blockId}" is not visible or has zero size${suffix ? ` at ${NARROW_VIEWPORT.width}px viewport width` : ''}`,
 			);
 		}
-		await expect(block).toHaveScreenshot(`${snapshotName}--${blockId}${suffix}.png`, options);
+		await captureSnapshot(block, `${snapshotName}--${blockId}${suffix}.png`, options);
 	}
 }
 
@@ -99,10 +116,9 @@ ROUTES.forEach((options, route) => {
 			await page.waitForTimeout(options?.snapshot?.waitForTimeout);
 		}
 
-		/**
-		 * We would like to use a readable name for the snapshot file, e.g. `button-basic` for `button/basic`.
-		 */
-		const snapshotName = route.replace(/(\/|\?|&|=)/g, '-');
+		/* A readable file name, e.g. `button-basic` for `button/basic` – the reporter derives the same name from
+		   the test title to match baseline files, so both sides share the one function. */
+		const snapshotName = routeToSnapshotName(route);
 
 		const SNAPSHOT_OPTIONS = {
 			...DEFAULT_SNAPSHOT_OPTIONS,
@@ -111,7 +127,7 @@ ROUTES.forEach((options, route) => {
 		const { fullPage: _fullPage, ...ELEMENT_SNAPSHOT_OPTIONS } = SNAPSHOT_OPTIONS; // fullPage is not allowed for element screenshots
 
 		if (options?.snapshot?.forceFullPage === true) {
-			await expect(page).toHaveScreenshot(`${snapshotName}.png`, SNAPSHOT_OPTIONS);
+			await captureSnapshot(page, `${snapshotName}.png`, SNAPSHOT_OPTIONS);
 			return; // Whole-page routes have no blocks, so there is nothing to capture at narrow width either.
 		}
 

@@ -18,7 +18,7 @@
 		}
 
 		&--required & {
-			&__label-text:has(.kol-span__slot[hidden])::after,
+			&__label-text:has(.kol-span__slot[hidden]) .kol-span__label::after,
 			.kol-tooltip__content .kol-span__label::after {
 				content: '*' / '';
 			}

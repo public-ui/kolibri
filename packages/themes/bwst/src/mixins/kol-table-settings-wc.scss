@@ -1,16 +1,13 @@
-@use '../mixins/to-rem' as *;
+@use './to-rem' as *;
 @use './button' as *;
 @use './focus-outline' as *;
+@use './dialog' as *;
 
 @mixin kol-table-settings-theme {
+	@include kol-dialog;
 	.kol-table-settings {
 		top: 0;
 		right: to-rem(5);
-
-		&__content {
-			padding: to-rem(24);
-			@include kol-button('kol-button'); // use buttons styles only in the content, not for the popover button
-		}
 
 		&__error-message {
 			display: block;

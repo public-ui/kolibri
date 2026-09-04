@@ -23,18 +23,8 @@
 			}
 		}
 
-		&--required & {
-			&__label-text {
-				&::after {
-					padding-left: 0.125em;
-				}
-			}
-
-			&__tooltip {
-				.span-label::after {
-					padding-left: 0.125em;
-				}
-			}
+		&--required .kol-span__label::after {
+			padding-left: 0.125em;
 		}
 
 		&--disabled & {
