@@ -108,22 +108,36 @@ jobs:
         if: failure()
         with:
           name: report-${{ matrix.package }}
+      # Summarises visual-report/report.json (written by packages/tools/visual-tests/src/visual-reporter.js)
+      # into the job summary. Fails only on routes that could not be compared at all – screenshot
+      # differences are a review case and already fail the "Visual Tests" step above.
+      - name: Visual review summary
+        if: ${{ !cancelled() }}
+        run: node scripts/visual-review/assert-no-errors.mjs ${{ matrix.package }}
       - name: Determine report path
         id: report-path
         if: ${{ !cancelled() }}
+        # The container job runs its scripts with `sh`, not bash: no `[[ … ]]` here, it would silently
+        # fall through to the theme branch and look for unstyled under packages/themes/.
         run: |
           PACKAGE="${{ matrix.package }}"
-          if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
-            REPORT_DIR="packages/test-tag-name-transformer/playwright-report"
-            SLUG="tag-name-transformer"
-          elif [[ "${PACKAGE}" == 'unstyled' ]]; then
-            REPORT_DIR="packages/unstyled/playwright-report"
-            SLUG="unstyled"
-          else
-            THEME_DIR="${PACKAGE#theme-}"
-            REPORT_DIR="packages/themes/${THEME_DIR}/playwright-report"
-            SLUG="${THEME_DIR}"
-          fi
+          case "${PACKAGE}" in
+            test-tag-name-transformer)
+              PKG_DIR="packages/test-tag-name-transformer"
+              SLUG="tag-name-transformer"
+              ;;
+            unstyled)
+              PKG_DIR="packages/unstyled"
+              SLUG="unstyled"
+              ;;
+            *)
+              THEME_DIR="${PACKAGE#theme-}"
+              PKG_DIR="packages/themes/${THEME_DIR}"
+              SLUG="${THEME_DIR}"
+              ;;
+          esac
+          REPORT_DIR="${PKG_DIR}/playwright-report"
+          echo "pkg=${PKG_DIR}" >> "$GITHUB_OUTPUT"
           echo "dir=${REPORT_DIR}" >> "$GITHUB_OUTPUT"
           echo "slug=${SLUG}" >> "$GITHUB_OUTPUT"
           if [ -d "${REPORT_DIR}" ]; then
@@ -139,6 +153,15 @@ jobs:
           path: ${{ steps.report-path.outputs.dir }}
           if-no-files-found: ignore
           retention-days: 5
+      # report.json plus the PNGs of changed/added/removed snapshots – the input of the visual review.
+      - name: Upload visual review report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: visual-review-${{ matrix.package }}
+          path: ${{ steps.report-path.outputs.pkg }}/visual-report
+          if-no-files-found: warn
+          retention-days: 14
 
   visual-tests-report:
     needs: visual-tests

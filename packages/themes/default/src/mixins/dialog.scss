@@ -1,0 +1,17 @@
+@use './to-rem' as *;
+@use './card' as *;
+@use './icon' as *;
+
+@mixin kol-dialog {
+	@include kol-icon-theme;
+	@include kol-card;
+
+	.kol-dialog,
+	.kol-modal {
+		border-radius: var(--border-radius);
+
+		&__card {
+			box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
+		}
+	}
+}
