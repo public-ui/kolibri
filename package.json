@@ -41,6 +41,7 @@
 		"pack": "pnpm -r exec pnpm pack",
 		"reinstall": "pnpm clean:pnpm && pnpm i",
 		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm unused",
+		"snapshots:pull": "node scripts/visual-review/pull-baseline.mjs",
 		"test": "pnpm -r test",
 		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test:update",
 		"test:e2e": "pnpm -r test:e2e",
