@@ -8,5 +8,7 @@
  * 3. kol-component - Component-specific styles
  * 4. kol-theme-global - Theme-specific global styles
  * 5. kol-theme-component - Theme-specific component styles
+ * 6. kol-high-contrast - Defaults for forced colors and high contrast modes
+ * 7. kol-theme-high-contrast - Theme-specific styles for forced colors and high contrast modes
  */
-@layer kol-a11y, kol-global, kol-component, kol-theme-global, kol-theme-component;
+@layer kol-a11y, kol-global, kol-component, kol-theme-global, kol-theme-component, kol-forced-colors, kol-theme-forced-colors;

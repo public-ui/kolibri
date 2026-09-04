@@ -115,6 +115,9 @@ ROUTES.forEach((options, route) => {
 		if (options?.snapshot?.waitForTimeout) {
 			await page.waitForTimeout(options?.snapshot?.waitForTimeout);
 		}
+		if (options?.snapshot?.emulateMedia) {
+			await page.emulateMedia(options.snapshot.emulateMedia);
+		}
 
 		/* A readable file name, e.g. `button-basic` for `button/basic` – the reporter derives the same name from
 		   the test title to match baseline files, so both sides share the one function. */

@@ -16,7 +16,22 @@
 		],
 		"property-disallowed-list": ["/gap/"],
 		"declaration-property-value-allowed-list": {
-			"/color/": ["black", "white", "inherit", "unset", "transparent", "/^var(.*)/", "selectedItem"],
+			"/color/": [
+				"black",
+				"white",
+				"inherit",
+				"unset",
+				"transparent",
+				"/^var(.*)/",
+				"selectedItem",
+				"CanvasText",
+				"Canvas",
+				"ButtonText",
+				"ButtonFace",
+				"GrayText",
+				"SelectedItemText",
+				"SelectedItem"
+			],
 			"fill": ["black", "white", "inherit", "unset", "transparent", "/^var(.*)/"],
 			"/margin/": ["0", "auto"],
 			"/padding/": ["0"],
