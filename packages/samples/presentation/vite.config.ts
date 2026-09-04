@@ -41,4 +41,10 @@ export default defineConfig({
 			],
 		},
 	},
+	test: {
+		// Basic test configuration for Vitest
+		globals: true,
+		environment: 'happy-dom',
+		css: true,
+	},
 });

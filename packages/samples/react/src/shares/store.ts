@@ -94,7 +94,3 @@ export const getThemeName = (theme: string) => {
 export const setCustomThemes = (themes: Theme[] | undefined) => {
 	STORE.customThemes = themes;
 };
-
-export const getCustomThemes = (): Theme[] | undefined => {
-	return STORE.customThemes;
-};

@@ -2,7 +2,7 @@ import type { KoliBriTableCell, KoliBriTableSelection, KoliBriTableSelectionKeys
 import { createReactRenderElement, KolButton, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
-import { useToasterService } from '../../hooks/useToasterService';
+import { useAlert } from '../../hooks/useAlert';
 import { getRoot } from '../../shares/react-roots';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
@@ -22,7 +22,7 @@ const DATA = [
 type Data = (typeof DATA)[0];
 
 function KolButtonWrapper({ label }: { label: string }) {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
