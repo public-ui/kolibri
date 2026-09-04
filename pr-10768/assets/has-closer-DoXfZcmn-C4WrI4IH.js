@@ -1,1 +1,0 @@
-import{wt as e}from"./index-Bq3O-Nwm.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
