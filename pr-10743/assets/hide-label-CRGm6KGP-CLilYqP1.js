@@ -1,0 +1,1 @@
+import{wt as e}from"./index-B3-nWZss.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};

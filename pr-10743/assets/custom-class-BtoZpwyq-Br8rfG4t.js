@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-B3-nWZss.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
