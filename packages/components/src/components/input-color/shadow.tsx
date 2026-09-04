@@ -49,10 +49,9 @@ import { InputColorController } from './controller';
 export class KolInputColor implements ClickableElement, FocusableElement, InputColorAPI {
 	@Element() protected readonly host?: HTMLKolInputColorElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
-	private refInputColor?: HTMLInputElement;
 
 	private readonly setColorRef = (ref?: HTMLInputElement) => {
-		this.refInputColor = ref;
+		this.ctaRef = ref;
 	};
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
