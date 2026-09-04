@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-DNNgV9ER.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
