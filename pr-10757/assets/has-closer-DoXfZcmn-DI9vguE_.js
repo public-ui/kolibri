@@ -1,0 +1,1 @@
+import{wt as e}from"./index-DniJW-Sc.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};

@@ -1,1 +1,0 @@
-import"./index-DezSpdc8.js";import{r as e}from"./align-C8fl12z_-Ckk87OmO.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};

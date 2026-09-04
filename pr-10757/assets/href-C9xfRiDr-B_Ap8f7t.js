@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-DniJW-Sc.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};
