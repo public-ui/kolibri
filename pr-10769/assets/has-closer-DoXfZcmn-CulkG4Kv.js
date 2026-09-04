@@ -1,0 +1,1 @@
+import{wt as e}from"./index-BktHOk5G.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
