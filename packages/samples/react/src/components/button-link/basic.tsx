@@ -1,14 +1,12 @@
-import React from 'react';
-
 import { KolButtonLink, KolHeading } from '@public-ui/react-v19';
-
 import type { FC } from 'react';
-import { useToasterService } from '../../hooks/useToasterService';
+import React from 'react';
+import { useAlert } from '../../hooks/useAlert';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonLinkBasic: FC = () => {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
