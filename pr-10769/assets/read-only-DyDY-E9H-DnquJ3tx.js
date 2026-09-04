@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-BIknNH9f.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
