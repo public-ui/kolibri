@@ -1,4 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
+import { createRequire } from 'module';
 import * as path from 'path';
 import * as process from 'process';
 
@@ -22,6 +23,12 @@ if (!VALID_COLOR_SCHEMES.includes(colorSchema)) {
 		`Environment variable KOLIBRI_VISUAL_TESTS_COLOR_SCHEME must be one of "${VALID_COLOR_SCHEMES.join('", "')}" (received "${colorSchemeInput}").`,
 	);
 }
+
+/* The web server runs with the build folder as cwd, which lies outside the workspace (RUNNER_TEMP). There
+   `npx http-server` finds no local binary and downloads the package from the registry at test time –
+   since 2026-09-04 that download times out in the CI container. Resolve the dependency of this package
+   instead and run it with the current node. */
+const HTTP_SERVER_BIN = createRequire(import.meta.url).resolve('http-server/bin/http-server');
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -74,7 +81,7 @@ export default defineConfig({
 
 	/* Run your local dev server before starting the tests */
 	webServer: {
-		command: `npx http-server -p ${PORT}`,
+		command: `node "${HTTP_SERVER_BIN}" -p ${PORT}`,
 		cwd: path.resolve(BUILD_PATH),
 		url: BASE_URL,
 		reuseExistingServer: false,
