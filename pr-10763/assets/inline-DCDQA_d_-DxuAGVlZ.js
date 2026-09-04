@@ -1,1 +1,0 @@
-import{wt as e}from"./index-DiPdr7ay.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};
