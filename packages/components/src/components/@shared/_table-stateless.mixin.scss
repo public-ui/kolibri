@@ -85,6 +85,10 @@
 					align-items: start;
 					text-align: start;
 				}
+
+				.kol-table__cell-actions {
+					justify-content: flex-start;
+				}
 			}
 
 			&--align-center {
@@ -101,6 +105,10 @@
 				.kol-table__sort-button .kol-button__text {
 					align-items: end;
 					text-align: end;
+				}
+
+				.kol-table__cell-actions {
+					justify-content: flex-end;
 				}
 			}
 

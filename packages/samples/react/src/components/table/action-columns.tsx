@@ -21,6 +21,7 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 				type: 'action',
 				key: 'actions',
 				label: 'Actions',
+				textAlign: 'left',
 				width: 250,
 				actions: (row) => {
 					const simpleRow = row as ProjectTask;
@@ -58,6 +59,7 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 				type: 'action',
 				key: 'externalActions',
 				label: 'External Actions',
+				textAlign: 'right',
 				width: 280,
 				actions: (row) => {
 					const simpleRow = row as ProjectTask;
