@@ -12,14 +12,9 @@
 		position: static;
 		justify-content: flex-end;
 
-		@include button('kol-button');
-
-		.kol-popover-button .kol-button {
-			@include ghost-button('kol-button');
-		}
-
-		&__content {
-			padding: to-rem(24);
+		& > .kol-button {
+			@include ghost-button;
+			flex: 0;
 		}
 
 		&__error-message {

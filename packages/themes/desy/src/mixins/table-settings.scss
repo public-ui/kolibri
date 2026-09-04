@@ -10,13 +10,8 @@
 		top: to-rem(8);
 		right: to-rem(8);
 
-		.kol-popover-button .kol-button {
-			@include ghostButton('kol-button');
-		}
-
-		&__content {
-			padding: to-rem(24);
-			@include button('kol-button');
+		& > .kol-button {
+			@include ghostButton;
 		}
 
 		&__error-message {
