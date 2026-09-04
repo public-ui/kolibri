@@ -1,0 +1,1 @@
+import{f as e,it as t,p as n}from"./index-DNNgV9ER.js";var r=(t,r)=>(e()??n(`de`)).translate(t,r);t()&&(r=e=>e);export{r as t};
