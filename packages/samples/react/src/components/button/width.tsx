@@ -1,12 +1,12 @@
 import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { useToasterService } from '../../hooks/useToasterService';
+import { useAlert } from '../../hooks/useAlert';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonWidth: FC = () => {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const ARGS = {
 		className: 'w-8rem',
