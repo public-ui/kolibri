@@ -47,9 +47,21 @@ Helpers around the visual report the Playwright runs write to `<package>/visual-
 - `assert-no-errors.mjs <package>` – prints the report summary (and appends it to the GitHub job
   summary), then fails only if routes could not be compared at all. Screenshot differences are a
   review case, not an error.
+- `pack-baseline.mjs <package>` – used by the "Visual Baseline" workflow after `test:update:e2e`:
+  copies the generated snapshots plus a `meta.json` (commit, Playwright image, digest) into
+  `<package>/visual-baseline/`, the layout of the `visual-baseline-<package>` artifact.
+- `baseline-artifacts.mjs` – the selection rules for those artifacts (branch, repository, nearest
+  candidate commit, newest run), shared by the local pull and the CI download.
+- `pull-baseline.mjs` – downloads the current baseline into the local `snapshots/` folders via the
+  GitHub CLI, so a local `pnpm --filter @public-ui/<package> test` compares against what the CI
+  compares against. Generating a baseline locally stays the job of `snapshots-docker.mjs`.
 
 ```bash
 node scripts/visual-review/assert-no-errors.mjs theme-default
+pnpm snapshots:pull                        # every package, newest baseline of develop
+pnpm snapshots:pull theme-default unstyled # selected packages
+pnpm snapshots:pull --branch release/3     # another base branch
+pnpm snapshots:pull --sha <commit>         # the baseline of one specific base commit
 ```
 
 ## license-reports.mjs
