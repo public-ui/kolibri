@@ -6,8 +6,10 @@
 @use '../@shared/mixins' as *;
 @use '../@shared/pagination.mixin' as *;
 @use '../@shared/spin.mixin' as *;
+@use '../@shared/dialog' as *;
 
 @layer kol-component {
+	@include kol-dialog;
 	@include kol-alert;
 	@include kol-button-styles('kol-button');
 	@include kol-popover-button-styles;

@@ -13,6 +13,8 @@ dist/
 node_modules/
 playwright-report/
 test-results/
+visual-report/
+visual-baseline/
 *.log
 *.tgz
 
