@@ -1,1 +1,0 @@
-import{wt as e}from"./index-dreTKvR_.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};

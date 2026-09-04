@@ -1,0 +1,1 @@
+import{wt as e}from"./index-G_kDSygX.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};
