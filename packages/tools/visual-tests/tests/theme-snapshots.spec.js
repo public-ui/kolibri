@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { SNAPSHOT_ANNOTATION } from '../src/visual-reporter.js';
 import { ROUTES } from './sample-app.routes.js';
 
 // https://playwright.dev/docs/emulation
@@ -51,6 +52,23 @@ const NARROW_SELECTOR = '[data-visual-block][data-visual-narrow]';
 const NARROW_VIEWPORT = { width: 320, height: 256 };
 const BLOCK_VISIBLE_TIMEOUT = 10000;
 
+/**
+ * A mismatch is a review case, not a reason to abort the route: soft expectations keep capturing the
+ * remaining blocks, so the report lists every changed block of a route at once. Retries are disabled
+ * because a deterministic diff re-renders identically – they would only triple the cost.
+ */
+test.describe.configure({ retries: 0 });
+
+/**
+ * Captures one screenshot and announces it to the visual reporter. A passing comparison leaves no
+ * attachment behind, so the annotation is the only signal that the snapshot was compared at all –
+ * without it the reporter could not tell an unchanged block from a removed one.
+ */
+async function captureSnapshot(target, fileName, options) {
+	await expect.soft(target).toHaveScreenshot(fileName, options);
+	test.info().annotations.push({ type: SNAPSHOT_ANNOTATION, description: fileName });
+}
+
 /** Reads the `data-visual-block` ids of all elements matching `selector`, in document order. */
 async function readBlockIds(page, selector) {
 	return page.$$eval(selector, (elements) => elements.map((element) => element.getAttribute('data-visual-block')));
@@ -70,7 +88,7 @@ async function captureBlocks(page, route, blockIds, snapshotName, suffix, option
 				`Route "${route}": data-visual-block "${blockId}" is not visible or has zero size${suffix ? ` at ${NARROW_VIEWPORT.width}px viewport width` : ''}`,
 			);
 		}
-		await expect(block).toHaveScreenshot(`${snapshotName}--${blockId}${suffix}.png`, options);
+		await captureSnapshot(block, `${snapshotName}--${blockId}${suffix}.png`, options);
 	}
 }
 
@@ -111,7 +129,7 @@ ROUTES.forEach((options, route) => {
 		const { fullPage: _fullPage, ...ELEMENT_SNAPSHOT_OPTIONS } = SNAPSHOT_OPTIONS; // fullPage is not allowed for element screenshots
 
 		if (options?.snapshot?.forceFullPage === true) {
-			await expect(page).toHaveScreenshot(`${snapshotName}.png`, SNAPSHOT_OPTIONS);
+			await captureSnapshot(page, `${snapshotName}.png`, SNAPSHOT_OPTIONS);
 			return; // Whole-page routes have no blocks, so there is nothing to capture at narrow width either.
 		}
 
