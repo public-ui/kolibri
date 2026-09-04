@@ -1,6 +1,17 @@
 @use '../../mixins/to-rem' as *;
 
 @mixin kol-button($block-classname) {
+	/*
+	 * The interactive element inside the BEM root — `__button` for `kol-button`, `__anchor` for
+	 * `kol-link`. This mixin serves both blocks, so both names are matched.
+	 *
+	 * It has to be a plain descendant: inside a modifier block (`&--primary { … }`) a nested
+	 * `&__button` would expand to `.kol-button--primary__button`, a class that exists nowhere.
+	 * And the state predicate belongs on the interactive element — on the wrapper `div`
+	 * `:not(:disabled)` is always true, so the rule would apply to disabled buttons.
+	 */
+	$interactive-element: ':is(.#{$block-classname}__button, .#{$block-classname}__anchor)';
+
 	.#{$block-classname} {
 		$root: &;
 		--kolibri-spacing: #{to-rem(4)};
@@ -16,7 +27,7 @@
 			--text-color: #fff;
 			--text-focus-outline-color: #fff;
 
-			&:not(:disabled):hover {
+			#{$interactive-element}:not(:disabled):hover {
 				--text-background-color: #3e6cd5;
 			}
 		}
@@ -27,7 +38,7 @@
 			--text-border-color: #0e47cb;
 			--text-focus-outline-color: #fff;
 
-			&:not(:disabled):hover {
+			#{$interactive-element}:not(:disabled):hover {
 				--text-color: #0e47cb;
 			}
 		}
@@ -38,7 +49,7 @@
 			--text-focus-outline-color: #000;
 			--text-border-color: #fc0;
 
-			&:not(:disabled):hover {
+			#{$interactive-element}:not(:disabled):hover {
 				--text-background-color: #fc0;
 			}
 		}
@@ -48,7 +59,7 @@
 			--text-border-color: var(--color-red);
 			--text-color: var(--color-white);
 
-			&:not(:disabled):hover {
+			#{$interactive-element}:not(:disabled):hover {
 				--text-background-color: var(--color-red);
 				--text-border-color: var(--color-red);
 			}
@@ -58,14 +69,13 @@
 			--text-color: #0e47cb;
 			--text-focus-outline-color: #0e47cb;
 
-			&:not(:disabled):hover {
+			#{$interactive-element}:not(:disabled):hover {
 				--text-color: #0e47cb;
 			}
 		}
 
 		/* The skeleton DOM moves the focusable element into the wrapper: `__button` for buttons,
 		   `__anchor` for links. The class carrier is never focused. */
-		&:focus,
 		&__button:focus,
 		&__anchor:focus {
 			outline: none;
@@ -102,12 +112,14 @@
 				border: 2px solid #0e47cb;
 			}
 
-			@at-root #{$root}--secondary.button:focus-visible & {
-				box-shadow: inset 0 0 0 to-rem(4) #0e47cb;
-			}
+			/* TODO: the predecessor of this rule was `#{$root}--secondary.button:focus-visible &`,
+			   which never matched anything — no element carries a plain `button` class, on this
+			   branch or on develop. Scoping it to `#{$root}__button` would be the evident intent,
+			   but that would switch a focus style on for the first time, which is a visual change
+			   and needs the pixel gate. Removed here rather than silently activated; the decision
+			   belongs to the theme owner. */
 
-			@at-root #{$root}:focus-visible &,
-				#{$root}__button:focus-visible & {
+			@at-root #{$root}__button:focus-visible & {
 				outline: var(--text-focus-outline-color) solid to-rem(2);
 				outline-offset: -4px;
 			}

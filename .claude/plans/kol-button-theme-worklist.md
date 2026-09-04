@@ -1,10 +1,29 @@
 # Worklist: Theme-Anpassung nach dem `kol-button`-DOM-Umbau
 
-> Gegenstück zu `.claude/plans/migrate-kol-button-skeleton.md`. Diese Arbeit ist **bewusst nicht**
-> im PR [#10734](https://github.com/public-ui/kolibri/pull/10734) enthalten: sie ist ohne den
-> Pixel-Gate (`node scripts/snapshots-docker.mjs <theme> --check`) nicht verifizierbar, und ein
-> plausibel aussehender, ungeprüfter Diff ist für Reviewer nicht von einem geprüften zu
-> unterscheiden. Vorgehen und Werkzeuge: `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
+> Gegenstück zu `.claude/plans/migrate-kol-button-skeleton.md`. Vorgehen und Werkzeuge:
+> `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
+>
+> **Stand:** Diese Arbeit ist inzwischen **in** PR
+> [#10734](https://github.com/public-ui/kolibri/pull/10734) enthalten — der ursprüngliche Vermerk
+> „bewusst nicht im PR" ist überholt. Die Themes wurden im Verlauf des Branches migriert; ein
+> Cross-Review hat danach zwei Fehlklassen gefunden, die der Pixel-Gate strukturell nicht sehen
+> kann, weil Snapshots Ruhezustände fotografieren:
+>
+> 1. `&__button` **innerhalb eines Modifier-Blocks** expandiert zu `.kol-button--primary__button` —
+>    eine Klasse, die es nicht gibt. Die Regel ist still tot.
+> 2. Zustandsprädikate auf dem Klassenträger: `:focus`/`:focus-visible`/`:disabled` treffen den
+>    Wrapper nie, und `:not(:disabled)` / `:not([disabled])` sind dort **immer wahr** — solche
+>    Regeln fallen nicht aus, sie kehren sich um.
+>
+> Beide sind jetzt mechanisch prüfbar:
+>
+> ```bash
+> node scripts/check-skeleton-selectors.mjs      # muss grün sein
+> ```
+>
+> Der Wächter löst Sass-`&`-Verschachtelung auf und expandiert `@include`s innerhalb einer Datei,
+> meldet Datei, Zeile und aufgelösten Selektor. Er ersetzt den Pixel-Gate nicht — er deckt die
+> Lücke, die der Pixel-Gate offenlässt.
 
 ## Was sich geändert hat
 
@@ -122,9 +141,16 @@ In default/bwst steht bei den `@at-root #{$root}:focus`-Regeln seit #10652 berei
 ## Abnahme
 
 ```bash
+node scripts/check-skeleton-selectors.mjs             # statisch, Sekunden — muss grün sein
 node scripts/snapshots-docker.mjs <theme> --check     # je Theme, ca. 6 min
 git diff origin/develop..HEAD -- '*.png'              # muss leer sein
 ```
+
+Der statische Check und der Pixel-Gate prüfen disjunkte Mengen: Snapshots sehen Ruhezustände,
+der Check sieht Hover-, Fokus- und Disabled-Selektoren. Beide sind nötig, keiner ersetzt den
+anderen. Offen bleibt ein dynamischer Interaktionstest je Theme (`hover()`/`focus()` auf einem
+aktivierten **und** einem deaktivierten Button, `getComputedStyle` vergleichen) — das ist die
+einzige Prüfung, die auch die *Wirkung* der jetzt lebenden Regeln belegt.
 
 „CI grün" zählt nicht — die Snapshot-Workflows committen neue Baselines und werden dadurch selbst
 grün. Vor jedem Urteil „Baseline ist stale" erst den Base-Code gegen die Baselines laufen lassen.

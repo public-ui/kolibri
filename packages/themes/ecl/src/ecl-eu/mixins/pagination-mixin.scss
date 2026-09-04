@@ -15,19 +15,20 @@
 			--kolibri-spacing: #{to-rem(4)};
 			border-radius: 4px;
 
-			&:focus,
+			/* Every state predicate hangs off the interactive element. On the wrapper `div`
+			   `:focus`/`:focus-visible`/`:disabled` never match at all, and `:not(:disabled)` is
+			   always true — which would apply the hover/active look to disabled buttons. */
 			&__button:focus {
 				outline: none;
 			}
 
-			&:focus-visible .kol-button__text,
 			&__button:focus-visible .kol-button__text {
 				outline: 2px solid var(--color-black);
 				outline-offset: -4px;
 			}
 
-			&:not(:disabled):active .kol-button__text,
-			&:not(:disabled):hover .kol-button__text {
+			&__button:not(:disabled):active .kol-button__text,
+			&__button:not(:disabled):hover .kol-button__text {
 				background-color: #fc0;
 				box-shadow:
 					0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
@@ -37,7 +38,7 @@
 				border-color: #fc0;
 			}
 
-			&:disabled .kol-button__text {
+			&__button:disabled .kol-button__text {
 				opacity: 0.5;
 				cursor: not-allowed;
 			}

@@ -50,11 +50,10 @@
 					text-decoration: none;
 				}
 
-				&:focus-visible {
-					@include focus-outline;
-				}
-
-				.kol-link__anchor:focus-visible {
+				/* The focusable element is the interactive element inside the wrapper — `__anchor`
+				   for links, `__button` for buttons. The carrier is a `div` and never focused. */
+				.kol-link__anchor:focus-visible,
+				.kol-button__button:focus-visible {
 					@include focus-outline;
 				}
 
@@ -83,7 +82,6 @@
 
 				$root: &;
 
-				&:focus,
 				&__button:focus {
 					outline: none;
 				}

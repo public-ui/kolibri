@@ -180,6 +180,29 @@ grep -rn "@include" packages/themes/*/src packages/components/src --include='*.s
 - **Shadow-Retargeting**: `document.activeElement` zeigt nur den Host; die Fokus-Kette über `shadowRoot.activeElement` abwärts verfolgen, wenn „fokussiert, aber keine Optik" verwirrt.
 - **unstyled-Theme-Spezifika**: kein Build-Schritt (`theme.ts` direkt, kein `THEME_CSS`); Route `icon/font` wird für `THEME_EXPORT=UNSTYLED` übersprungen; zeigt NUR den Basis-Layer — jede visuelle Änderung deutet auf DOM-Umbauten im Basis-Styling hin; Docker-Support ist über `discoverThemes()` (liest auch `packages/unstyled`) vorhanden.
 
+## 7b. Was der Pixel-Gate strukturell **nicht** sieht
+
+Snapshots fotografieren Ruhezustände. Hover, `:active`, `:focus`, `:focus-visible` und
+`[disabled]`-Kombinationen kommen darin nicht vor. Bei einem DOM-Umbau, der ein zustandstragendes
+Element in einen Wrapper verschiebt, liegt aber **genau dort** das Risiko:
+
+- `:focus` / `:focus-visible` / `:disabled` propagieren nicht auf Vorfahren → am Wrapper tot.
+- `:not(:disabled)` / `:not([disabled])` sind am Wrapper **immer wahr** → die Regel fällt nicht aus,
+  sie kehrt sich um und stylt deaktivierte Elemente.
+- `&__element` innerhalb eines Modifier-Blocks expandiert zu `--modifier__element` → tot.
+
+Ein grüner Pixel-Lauf sagt über all das nichts. „Alle Themes grün" ist deshalb kein Beleg für einen
+vollständigen Selektor-Umzug. Zwei Prüfungen decken die Lücke:
+
+```bash
+node scripts/check-skeleton-selectors.mjs   # statisch, vollständig, Sekunden
+```
+
+und ein dynamischer Interaktionstest je Theme: `hover()` / `focus()` auf einem aktivierten **und**
+einem deaktivierten Element, `getComputedStyle` vergleichen. Der statische Check beweist, dass
+Selektoren matchen können; der Interaktionstest beweist, dass sie das Richtige tun. Beide gehören
+neben den Pixel-Gate, keiner ersetzt ihn.
+
 ## 8. Allowlist — der einzige Ausweg
 
 - Ein Diff ist nur akzeptabel als **beabsichtigte** Änderung: explizit im Companion-Plan gelistet mit Begründung und Freigabe des Repo-Owners. Default: leer.

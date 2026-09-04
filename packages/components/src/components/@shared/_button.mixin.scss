@@ -8,6 +8,14 @@
  * renders `<div class="kol-link"><a class="kol-link__anchor">`. `$interactive-element` names that
  * inner element; `null` attaches the styles to the class carrier itself, for blocks whose DOM has
  * no inner interactive element.
+ *
+ * Relationship to `kol-button-wc-box-styles` below: both declare rules for `.#{$block-classname}`
+ * and overlap on `display` and `text-align`. This mixin is the full styling for trees that own the
+ * block; the box mixin is the minimal box replication for trees that merely *contain* a
+ * `kol-button-wc`. Include exactly one of them per block per stylesheet. Where both end up in one
+ * bundle (an input including `kol-alert`, which nests this mixin under `.kol-alert`), the nesting
+ * gives this one higher specificity — that is a consequence of the alert scope, not a rule to rely
+ * on, so do not add a second include and expect source order to sort it out.
  */
 @mixin kol-button-styles($block-classname, $interactive-element: 'button') {
 	@include kol-icon-styles();
@@ -21,6 +29,10 @@
 		display: flex;
 		height: 100%;
 		min-height: var(--a11y-min-size);
+		/* TODO: invalid — `font-style` takes no length, so this declaration is dropped by every
+		   browser. It predates the skeleton migration and most likely meant `font-size`. Correcting
+		   it would apply a font size for the first time, so it needs its own change with a visual
+		   run rather than a silent fix here. */
 		font-style: to-rem(16);
 		text-decoration-line: none;
 
@@ -59,6 +71,9 @@
 			height: 0;
 		}
 
+		/* `--external-link` is a `kol-link` modifier; `kol-button` never carries it (see the BEM
+		   registry). The rules are emitted for whichever block includes this mixin, so they are
+		   inert for the button block. */
 		&--external-link > .kolicon-link-external::before {
 			content: none;
 		}
@@ -80,6 +95,9 @@
  * class but receives none of that automatically, so this mixin replicates the exact outer box,
  * while the inner `kol-button__button` degrades to a plain block container to avoid the
  * inline-level baseline gap the UA `inline-block` would add below it.
+ *
+ * See the note on `kol-button-styles` above for how the two mixins relate — include exactly one of
+ * them per block per stylesheet.
  */
 @mixin kol-button-wc-box-styles($block-classname) {
 	.#{$block-classname} {
@@ -92,9 +110,10 @@
 		margin: 0;
 		padding: 0;
 
-		/* User-agent stylesheets center button text; a `div` inherits instead, so the old
-		   inherited alignment (usually `left` from the a11y `:host` rule) has to be replicated
-		   explicitly for the inner content to sit at the same position as before. */
+		/* User-agent stylesheets pin `text-align: center` on every `button`. The wrapper `div` gets
+		   no such rule and would inherit from its surroundings, so the user-agent value is
+		   replicated here and handed down to `&__button` via `text-align: inherit` below. That way
+		   the inner content sits exactly where it did when the button carried the class itself. */
 		text-align: center;
 
 		/* Replicate the reset the real button received: width stays at the initial `medium`, only
@@ -107,12 +126,11 @@
 			display: block;
 			border-width: medium;
 
+			/* The user agent pins `text-align`, and in Firefox also `font-weight` and `font-style`,
+			   directly on every `button`. Those declarations would beat anything inherited through
+			   the wrapper (nav's `text-align: left`, a bold active entry, an italic context), so all
+			   three are forced back to inheritance and the old flow is restored. */
 			font-weight: inherit;
-
-			/* The UA pins `text-align: center` and (in Firefox) `font-weight: 400` directly on every
-			   `button`, which would beat any alignment or font weight inherited through the wrapper
-			   (e.g. nav's `text-align: left`, or a bold active entry that used to apply to the button
-			   element itself). Inheriting restores the old flow. */
 			font-style: inherit;
 			text-align: inherit;
 		}

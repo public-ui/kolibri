@@ -26,6 +26,17 @@ if (!VALID_COLOR_SCHEMES.includes(colorSchema)) {
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+/**
+ * Resolves the worker count from `KOLIBRI_VISUAL_TESTS_WORKERS`, falling back to the per-environment
+ * default. `Number('')` is `0` and `Number('abc')` is `NaN`, either of which would silently break
+ * the run, so both fall back explicitly.
+ */
+function workerCount() {
+	const fallback = process.env.CI ? 1 : 4;
+	const configured = Number.parseInt(process.env.KOLIBRI_VISUAL_TESTS_WORKERS ?? '', 10);
+	return Number.isInteger(configured) && configured > 0 ? configured : fallback;
+}
+
 export default defineConfig({
 	testDir: './tests',
 	snapshotDir: path.join(CWD, 'snapshots'),
@@ -39,8 +50,10 @@ export default defineConfig({
 	retries: process.env.CI ? 2 : 0,
 	/* Parallel workers. Local runs default to 4 (fast iteration); CI defaults to 1 for maximum
 	   snapshot stability (parallel Firefox instances can produce sub-pixel-flaky renders).
-	   `KOLIBRI_VISUAL_TESTS_WORKERS` overrides both — e.g. set it to 1 for the pre-push full run. */
-	workers: Number(process.env.KOLIBRI_VISUAL_TESTS_WORKERS || (process.env.CI ? 1 : 4)),
+	   `KOLIBRI_VISUAL_TESTS_WORKERS` overrides both — `scripts/snapshots-docker.mjs` sets it to 1
+	   for every `--check` run, so an acceptance run is deterministic regardless of the flags used.
+	   An unset, empty or unparseable value falls back to the default rather than to `NaN`. */
+	workers: workerCount(),
 	/* Allow to override the expectation timeout for slow environments */
 	timeout: TIMEOUT,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */

@@ -67,6 +67,12 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	/**
+	 * `tooltip` is an element of this block by name, but `ButtonFC` renders it as a *sibling* of the
+	 * block root, not inside it (see `functional-components/button/component.tsx`). A descendant
+	 * selector such as `.kol-button .kol-button__tooltip` therefore matches nothing — address it as
+	 * a plain class.
+	 */
 	'kol-button': {
 		elements: {
 			button: {

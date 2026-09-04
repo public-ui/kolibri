@@ -33,6 +33,39 @@ Host `node_modules` are never touched; the install inside the volume is reused a
 | `--reset`    | Drop the volume, forcing a fresh install on the next run                  |
 | `-- <args>`  | Everything after `--` is passed on to Playwright, e.g. `-- --grep Button` |
 
+A `--check` run is an acceptance run: its result is evidence, so it is pinned to one worker
+(parallel Firefox instances render sub-pixel-flaky) no matter how many themes were selected.
+Baseline updates keep the parallel default, where throughput is what counts.
+`KOLIBRI_VISUAL_TESTS_WORKERS` overrides both.
+
+## check-skeleton-selectors.mjs
+
+Guards the two selector mistakes that the skeleton architecture makes easy to write and that a
+visual snapshot cannot catch, because snapshots photograph resting states:
+
+```bash
+pnpm check:skeleton-selectors
+```
+
+Since the skeleton migration the block class sits on a wrapper element and the interactive element
+is a child of it (`<div class="kol-button"><button class="kol-button__button">`). Two things follow:
+
+1. **Modifier-glued element** — inside a modifier block, `&__button` expands to
+   `.kol-button--primary__button`, a class that exists nowhere. The rule is silently dead. Use a
+   plain descendant instead.
+2. **State predicate on the carrier** — `:focus`, `:focus-visible` and `:disabled` never match the
+   wrapper, so those rules are dead; and `:not(:disabled)` / `:not([disabled])` are always *true* on
+   it, so a combined predicate such as `.kol-button:not([disabled]):hover` does not merely stop
+   matching, it **inverts** and starts styling disabled elements.
+
+`:hover`, `:active` and `:focus-within` are not flagged — they reach the wrapper through ancestor
+propagation and keep working where they are.
+
+The checker parses each stylesheet into a block tree, resolves Sass `&` nesting and expands
+same-file `@include`s, so a mixin body is checked in the selector context it is used in. It reports
+file, line and resolved selector, and exits non-zero on any finding. `--json` prints machine-readable
+output. It is a complement to the pixel gate, not a replacement: the two check disjoint sets.
+
 ## license-reports.mjs
 
 Generate and merge all package license reports into one Markdown file:
