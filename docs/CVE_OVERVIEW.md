@@ -151,8 +151,8 @@
 | fast-uri                | high     | CVE-2026-76172      | v4, v3, v2, v1    | fast-uri vulnerable to host confusion via percent-encoded scheme normalization   |
 | fast-uri                | high     | CVE-2026-16221      | v3, v2            | fast-uri vulnerable to host confusion via literal backslash authority delimiter  |
 | fast-uri                | high     | CVE-2026-6321       | v2                | fast-uri vulnerable to path traversal via percent-encoded dot segments           |
-| fast-uri                | high     | CVE-2026-13676      | v3, v2            | fast-uri vulnerable to host confusion via failed IDN canonicalization            |
 | fast-uri                | high     | CVE-2026-6322       | v2                | fast-uri vulnerable to host confusion via percent-encoded authority delimiters   |
+| fast-uri                | high     | CVE-2026-13676      | v3, v2            | fast-uri vulnerable to host confusion via failed IDN canonicalization            |
 | fast-xml-parser         | high     | CVE-2026-25128      | v3, v2            | fast-xml-parser has RangeError DoS Numeric Entities Bug                          |
 | fast-xml-parser         | high     | CVE-2026-26278      | v3, v2            | fast-xml-parser affected by DoS through entity expansion in DOCTYPE (no expansio |
 | fast-xml-parser         | high     | CVE-2026-33036      | v3, v2            | fast-xml-parser affected by numeric entity expansion bypassing all entity expans |
