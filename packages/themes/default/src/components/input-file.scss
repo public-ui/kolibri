@@ -23,7 +23,14 @@
 		}
 
 		&__button .kol-button {
+			/* The 40px override must shrink BOTH elements: the wrapper (pinned to the 44px a11y
+			   minimum by the shared wc-box mixin) and the interactive element (pinned directly
+			   by the a11y layer). In the legacy DOM this single rule shrank the real button. */
 			min-height: to-rem(40);
+
+			.kol-button__button {
+				min-height: to-rem(40);
+			}
 
 			.kol-button__text {
 				white-space: nowrap;

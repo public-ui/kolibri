@@ -29,11 +29,18 @@
 			min-width: to-rem(36);
 			min-height: to-rem(36);
 
+			/* The a11y min-size layer still pins the inner button (to `--a11y-min-size`, 40px on the
+			   surrounding input-container), and the wrapper never receives `:focus`. */
+			.kol-button__button {
+				min-width: to-rem(36);
+				min-height: to-rem(36);
+			}
+
 			&:hover {
 				background-color: var(--color-blue-100-06);
 			}
 
-			&:focus {
+			&__button:focus {
 				background: var(--color-dark-blue-100-06);
 				outline: var(--color-dark-blue-100) solid 2px;
 				outline-offset: 2px;

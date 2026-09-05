@@ -3,7 +3,7 @@
 
 @layer kol-theme-component {
 	@include kol-link('kol-link');
-	@include kol-link('kol-button', $anchor-scoped: false);
+	@include kol-link('kol-button', $anchor-scoped: false, $interactive-suffix: 'button');
 
 	.kol-nav {
 		padding: var(--kern-metric-space-small);

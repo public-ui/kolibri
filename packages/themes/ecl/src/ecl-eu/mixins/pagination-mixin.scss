@@ -15,11 +15,13 @@
 			--kolibri-spacing: #{to-rem(4)};
 			border-radius: 4px;
 
-			&:focus {
+			&:focus,
+			&__button:focus {
 				outline: none;
 			}
 
-			&:focus-visible .kol-button__text {
+			&:focus-visible .kol-button__text,
+			&__button:focus-visible .kol-button__text {
 				outline: 2px solid var(--color-black);
 				outline-offset: -4px;
 			}

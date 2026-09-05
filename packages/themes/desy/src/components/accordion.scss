@@ -31,14 +31,28 @@
 		.kol-button {
 			color: var(--color-dark-blue-100);
 			position: relative;
-			padding: to-rem(16) to-rem(20);
 
 			font-size: to-rem(16);
-			line-height: 1.5;
 			transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
-			@media (min-width: $breakpoint-sm) {
-				padding: to-rem(16) to-rem(32);
+			/* Box padding, line-height, focus ring, disabled colour and the open-state weight
+			   belong to the interactive element: on the wrapper the padding would stack on top of
+			   the inner button's a11y min-size (+20px per heading), Firefox pins `line-height:
+			   normal` and `font-weight: 400` on the real button (beating any inherited value), and
+			   the wrapper never receives `:focus` or the `disabled` attribute. */
+			.kol-button__button {
+				padding: to-rem(16) to-rem(20);
+
+				line-height: 1.5;
+
+				@media (min-width: $breakpoint-sm) {
+					padding: to-rem(16) to-rem(32);
+				}
+
+				&:focus-visible {
+					background: var(--color-blue-20);
+					@include focus-outline;
+				}
 			}
 
 			&:not(:disabled):hover,
@@ -64,12 +78,7 @@
 				background: var(--color-blue-30);
 			}
 
-			&:focus-visible {
-				background: var(--color-blue-20);
-				@include focus-outline;
-			}
-
-			&:disabled {
+			&:has(:disabled) {
 				opacity: 1;
 				color: var(--color-black-60);
 			}
@@ -77,10 +86,13 @@
 
 		&.collapsible--open .kol-button {
 			box-shadow: inset 3px 0 0 rgb(31, 51, 71, 0.16);
-			padding-top: to-rem(24);
-
-			font-weight: 700;
 			border-top-left-radius: 2px;
+
+			.kol-button__button {
+				padding-top: to-rem(24);
+
+				font-weight: 700;
+			}
 		}
 
 		.kol-span__container {

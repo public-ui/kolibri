@@ -7,15 +7,31 @@
  * itself, whose element is the interactive one (e.g. `kol-button`, the tree-item label
  * spans), matching the component DOM before the kol-link skeleton migration.
  */
-@mixin kol-link-interactive($block-classname, $anchor-scoped: true) {
+@mixin kol-link-interactive($block-classname, $anchor-scoped: true, $interactive-suffix: null) {
 	color: var(--kern-color-action-default);
 
-	text-decoration-line: underline;
-	text-decoration-skip-ink: auto;
-	text-decoration-style: solid;
-	text-decoration-thickness: var(--kern-1);
-	text-underline-offset: var(--kern-metric-space-2x-small);
-	text-underline-position: from-font;
+	/* The underline metrics have to sit on the interactive element so `text-underline-offset` and
+	   `from-font` resolve against its font box exactly as before the skeleton migration (the offset
+	   drifts ~1px otherwise). The class carrier is still interactive in the anchor branch and for
+	   blocks whose DOM did not change (tree-item spans); `$interactive-suffix` names the inner
+	   element when the button skeleton migration moved it into a wrapper (button-link, nav). */
+	@if not $anchor-scoped and $interactive-suffix {
+		&__#{$interactive-suffix} {
+			text-decoration-line: underline;
+			text-decoration-skip-ink: auto;
+			text-decoration-style: solid;
+			text-decoration-thickness: var(--kern-1);
+			text-underline-offset: var(--kern-metric-space-2x-small);
+			text-underline-position: from-font;
+		}
+	} @else {
+		text-decoration-line: underline;
+		text-decoration-skip-ink: auto;
+		text-decoration-style: solid;
+		text-decoration-thickness: var(--kern-1);
+		text-underline-offset: var(--kern-metric-space-2x-small);
+		text-underline-position: from-font;
+	}
 
 	.kol-span {
 		&__container {
@@ -31,6 +47,15 @@
 
 	&:has(.kol-icon) {
 		text-decoration: none;
+
+		@if not $anchor-scoped and $interactive-suffix {
+			// Suppress the underline on the interactive element too — the wrapper's
+			// `text-decoration: none` does not override the explicit `text-decoration-line` set
+			// above on the inner element.
+			.#{$block-classname}__#{$interactive-suffix} {
+				text-decoration-line: none;
+			}
+		}
 
 		&:active,
 		&:hover {
@@ -145,7 +170,7 @@
 	}
 }
 
-@mixin kol-link($block-classname: 'kol-link', $anchor-scoped: true) {
+@mixin kol-link($block-classname: 'kol-link', $anchor-scoped: true, $interactive-suffix: null) {
 	.#{$block-classname} {
 		@include normalize;
 		@include body-default;
@@ -202,7 +227,7 @@
 				z-index: 1;
 			}
 		} @else {
-			@include kol-link-interactive($block-classname, false);
+			@include kol-link-interactive($block-classname, false, $interactive-suffix);
 		}
 	}
 }

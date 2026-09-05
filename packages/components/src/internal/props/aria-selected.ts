@@ -3,21 +3,21 @@ import { createPropDefinition } from './helpers/factory';
 
 /**
  * The internal type uses the sentinel `''` for "not set" because the prop-definition factory
- * requires a non-undefined default value (same pattern as `linkRoleProp`). A plain link must
- * not render `aria-expanded="false"` — assistive technologies would announce a collapsed
- * state that the link does not actually manage.
+ * requires a non-undefined default value (same pattern as {@link ariaExpandedProp}). A button
+ * that is not part of a selectable set must not render `aria-selected="false"` — screen readers
+ * would announce a selection state the button does not have.
  */
-export type AriaExpandedProp = Prop<'ariaExpanded', boolean | undefined, 'true' | 'false' | ''>;
+export type AriaSelectedProp = Prop<'ariaSelected', boolean | undefined, 'true' | 'false' | ''>;
 
 /**
- * Normalizes the value to the aria-expanded tokens.
+ * Normalizes the value to the aria-selected tokens.
  *
  * Booleans and their string equivalents map to `'true'`/`'false'`; the empty string means "not
  * set" and yields the sentinel. Anything else throws, so the factory logs a `devWarning` and
  * keeps the previous value instead of degrading silently. undefined/null are handled by the
  * factory's `apply` before this is reached.
  */
-function normalizeAriaExpanded(value: unknown): 'true' | 'false' | '' {
+function normalizeAriaSelected(value: unknown): 'true' | 'false' | '' {
 	if (value === true || value === 'true') {
 		return 'true';
 	}
@@ -27,7 +27,7 @@ function normalizeAriaExpanded(value: unknown): 'true' | 'false' | '' {
 	if (value === '') {
 		return '';
 	}
-	throw new Error(`Invalid aria-expanded value: expected a boolean, got ${JSON.stringify(value)}`);
+	throw new Error(`Invalid aria-selected value: expected a boolean, got ${JSON.stringify(value)}`);
 }
 
-export const ariaExpandedProp = createPropDefinition<AriaExpandedProp>('ariaExpanded', '', normalizeAriaExpanded);
+export const ariaSelectedProp = createPropDefinition<AriaSelectedProp>('ariaSelected', '', normalizeAriaSelected);
