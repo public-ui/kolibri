@@ -1,0 +1,135 @@
+name: Visual Review
+
+# Publishes the visual report of a pull request to GitHub Pages (visual/pr-<n>/), evaluates the
+# reviewers' approvals and sets the commit status "Visual Review".
+#
+# Runs in the context of the base repository, so it works for forks. It never checks out or executes
+# pull-request code: the reports come from artifacts of the pull request's CI run and are validated
+# field by field before anything is published (scripts/visual-review/merge-reports.mjs).
+#
+#   workflow_run          CI-Pipeline finished for a pull request → publish report, compute status
+#   issue_comment         a reviewer comment changed → recompute the status from the published report
+#   pull_request_target   a pull request was pushed → status "pending" (or "success" for docs-only)
+#   workflow_dispatch     recompute the status of one pull request by hand
+on:
+  workflow_run:
+    workflows: ['CI-Pipeline']
+    types: [completed]
+  issue_comment:
+    types: [created, edited, deleted]
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: 'Pull request number whose status should be recomputed'
+        required: true
+        type: number
+
+permissions:
+  contents: write
+  statuses: write
+  pull-requests: write
+  actions: read
+
+env:
+  PAGE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/visual/
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    outputs:
+      mode: ${{ steps.context.outputs.mode }}
+      pr: ${{ steps.context.outputs.pr }}
+      head: ${{ steps.context.outputs.head }}
+      run_id: ${{ steps.context.outputs.run_id }}
+    steps:
+      # Always the base branch – never the pull request's code.
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Resolve pull request and mode
+        id: context
+        run: node scripts/visual-review/resolve-context.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  review:
+    needs: resolve
+    if: needs.resolve.outputs.mode != 'skip'
+    runs-on: ubuntu-latest
+    # One publish at a time per pull request, none dropped: a cancelled run would leave a stale status.
+    concurrency:
+      group: visual-review-${{ needs.resolve.outputs.pr }}
+      cancel-in-progress: false
+    env:
+      MODE: ${{ needs.resolve.outputs.mode }}
+      PR: ${{ needs.resolve.outputs.pr }}
+      HEAD: ${{ needs.resolve.outputs.head }}
+      RUN_ID: ${{ needs.resolve.outputs.run_id }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Download the reports of the CI run
+        if: env.MODE == 'publish'
+        uses: actions/download-artifact@v8
+        with:
+          run-id: ${{ env.RUN_ID }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pattern: visual-review-*
+          path: downloads
+
+      - name: Merge and validate the reports
+        if: env.MODE == 'publish'
+        run: node scripts/visual-review/merge-reports.mjs downloads "out/pr-$PR" --pr "$PR" --head "$HEAD" --repository "${{ github.repository }}" --run "$RUN_ID"
+
+      - name: Fetch the published report
+        if: env.MODE == 'status'
+        run: |
+          git fetch --depth=1 origin gh-pages
+          mkdir -p "out/pr-$PR"
+          if ! git show "origin/gh-pages:visual/pr-$PR/report.json" > "out/pr-$PR/report.json" 2>/dev/null; then
+            echo "No published report for #$PR yet – nothing to recompute."
+            echo "NO_REPORT=1" >> "$GITHUB_ENV"
+          fi
+
+      - name: Compute the status and update the comment
+        if: (env.MODE == 'publish' || env.MODE == 'status') && env.NO_REPORT != '1'
+        run: node scripts/visual-review/update-review.mjs --mode "$MODE" --pr "$PR" --head "$HEAD" --report "out/pr-$PR/report.json" --status-out "out/pr-$PR/status.json" --page-url "$PAGE_URL"
+
+      - name: Set the status
+        if: env.MODE == 'pending' || env.MODE == 'docs-only' || env.MODE == 'no-visual'
+        run: node scripts/visual-review/update-review.mjs --mode "$MODE" --pr "$PR" --head "$HEAD" --page-url "$PAGE_URL"
+
+      - name: Publish the report
+        if: env.MODE == 'publish'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: out/pr-${{ env.PR }}
+          target-folder: visual/pr-${{ env.PR }}
+          branch: gh-pages
+          clean: true
+          force: false
+          attempt-limit: 10
+          commit-message: 'visual review: PR #${{ env.PR }} @ ${{ env.HEAD }}'
+
+      - name: Publish the status
+        if: env.MODE == 'status' && env.NO_REPORT != '1'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: out/pr-${{ env.PR }}
+          target-folder: visual/pr-${{ env.PR }}
+          branch: gh-pages
+          clean: false
+          force: false
+          attempt-limit: 10
+          commit-message: 'visual review: status of PR #${{ env.PR }}'

@@ -56,6 +56,21 @@ Helpers around the visual report the Playwright runs write to `<package>/visual-
   GitHub CLI, so a local `pnpm --filter @public-ui/<package> test` compares against what the CI
   compares against. Generating a baseline locally stays the job of `snapshots-docker.mjs`.
 
+The "Visual Review" workflow (`.github/workflows/visual-review.yml`) runs these in the context of
+the base repository – see [docs/visual-review.md](../docs/visual-review.md) for the process:
+
+- `resolve-context.mjs` – decides what the workflow has to do for its trigger (publish a finished CI
+  run, recompute after a reviewer comment, mark a fresh push pending, …) and which pull request it
+  belongs to. Its ignore list mirrors `paths-ignore` of `ci.yml`.
+- `merge-reports.mjs` – merges the `visual-review-<package>` artifacts of a CI run into the folder
+  published as `visual/pr-<n>/`, validating every field and file name before copying anything.
+- `review-comment.mjs` – parses and formats the reviewer comment (`<!-- visual-review:v1 … -->`).
+- `review-status.mjs` – the pure rules that turn a report and the reviewers' decisions into the
+  commit status (`success`, `pending`, `failure`) and `status.json`.
+- `update-review.mjs` – applies them: reads the comments, checks the authors' permission, writes
+  `status.json`, sets the commit status `Visual Review` and upserts the summary comment.
+- `github-api.mjs` – the small REST client the scripts share.
+
 ```bash
 node scripts/visual-review/assert-no-errors.mjs theme-default
 pnpm snapshots:pull                        # every package, newest baseline of develop
