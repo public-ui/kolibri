@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-Boxc__23.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
