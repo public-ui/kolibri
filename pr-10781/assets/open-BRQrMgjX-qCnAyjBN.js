@@ -1,0 +1,1 @@
+import{wt as e}from"./index-Da4eLglR.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
