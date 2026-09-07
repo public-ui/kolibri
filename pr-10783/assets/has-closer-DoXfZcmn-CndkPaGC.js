@@ -1,0 +1,1 @@
+import{wt as e}from"./index-Cr6SS-XI.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
