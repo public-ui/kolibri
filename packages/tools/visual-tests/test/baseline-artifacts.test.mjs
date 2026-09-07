@@ -75,6 +75,14 @@ describe('baseline-artifacts', () => {
 		assert.deepEqual(chooseBaseline(ARTIFACTS, ['zzz'], { branch: 'release/9' }), { artifact: null, sha: null, distance: null, fallback: 'none' });
 	});
 
+	it('accepts an ancestor artifact from another branch of this repository, never from a fork', () => {
+		const stacked = chooseBaseline(ARTIFACTS, ['zzz', 'ddd'], { branch: 'feat/stacked', repositoryId: 1 });
+		assert.equal(stacked.artifact.id, 5, 'the develop/main commit below a feature branch is a valid baseline');
+		assert.equal(stacked.fallback, 'ancestor');
+		const fork = chooseBaseline(ARTIFACTS, ['eee'], { branch: 'feat/stacked', repositoryId: 1 });
+		assert.equal(fork.fallback, 'none');
+	});
+
 	it('falls back to the newest usable artifact', () => {
 		assert.equal(newestArtifact(ARTIFACTS, { branch: 'develop', repositoryId: 1 }).id, 1);
 		assert.equal(newestArtifact(ARTIFACTS, { branch: 'release/3' }), null);
