@@ -11,7 +11,7 @@
 		right: to-rem(8);
 
 		& > .kol-button {
-			@include ghostButton;
+			@include ghostButton('kol-button');
 		}
 
 		&__error-message {

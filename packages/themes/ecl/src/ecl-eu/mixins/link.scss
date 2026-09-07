@@ -10,7 +10,7 @@
 	line-height: 1.2;
 	appearance: none;
 
-	&:hover {
+	&:not([aria-disabled='true'], :disabled):hover {
 		color: var(--color-blue-130);
 	}
 }
