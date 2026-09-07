@@ -7,7 +7,7 @@
 	.kol-input-color {
 		&__input--color {
 			background-color: var(--color-light);
-			min-height: calc(var(--a11y-min-size) - to-rem(4));
+			min-height: 100%;
 			border: 0;
 
 			&:focus {
