@@ -1,0 +1,1 @@
+import{wt as e}from"./index-KfP7Bp8f.js";var t=(t,n,r={})=>{e(t,`_inline`,n,r)};export{t};
