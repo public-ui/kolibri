@@ -76,7 +76,7 @@ export const TableStatelessWithSelection: FC = () => {
 			<SampleBlock id="selection" className="w-full">
 				<KolTableStateless
 					_label="Table with selection checkboxes"
-					_headerCells={{
+					_headers={{
 						horizontal: [
 							[
 								{ key: 'id', label: '#ID', textAlign: 'left' },

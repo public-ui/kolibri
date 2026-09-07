@@ -76,7 +76,7 @@ export const TableStatelessWithSingleSelection: FC = () => {
 			<SampleBlock id="single-selection" className="w-full" fitContent>
 				<KolTableStateless
 					_label="Table with selection checkboxes"
-					_headerCells={{
+					_headers={{
 						horizontal: [
 							[
 								{ key: 'id', label: '#ID', textAlign: 'left' },

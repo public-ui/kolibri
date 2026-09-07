@@ -49,7 +49,7 @@ export const InteractiveChildElements: FC = () => (
 		<section className="w-full flex flex-col">
 			<KolTableStateless
 				_label="Button styles"
-				_headerCells={{
+				_headers={{
 					horizontal: [
 						[
 							getButtonHeaderCell('primary'),
@@ -87,7 +87,7 @@ export const InteractiveChildElements: FC = () => (
 
 			<KolTableStateless
 				_label="Link styles"
-				_headerCells={{
+				_headers={{
 					horizontal: [
 						[
 							{
