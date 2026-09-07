@@ -1,1 +1,0 @@
-import{Et as e}from"./index-D3_tna82.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
