@@ -43,7 +43,7 @@
 		"smoketest": "pnpm clean && pnpm i && pnpm build && pnpm format && pnpm lint && pnpm test:unit && pnpm test:e2e && pnpm unused",
 		"snapshots:pull": "node scripts/visual-review/pull-baseline.mjs",
 		"test": "pnpm -r test",
-		"test-reset-and-update": "rimraf packages/themes/**/snapshots/** && pnpm test:update",
+		"test-reset-and-update": "rimraf packages/themes/*/snapshots packages/unstyled/snapshots && pnpm test:update",
 		"test:e2e": "pnpm -r test:e2e",
 		"test:unit": "pnpm -r test:unit",
 		"test:update": "pnpm test:update:e2e && pnpm test:update:unit",

@@ -86,7 +86,8 @@ export default class VisualReporter {
 		this.themeDir = options.themeDir;
 		this.packageDir = options.packageDir ?? process.cwd();
 		this.packageName = options.packageName ?? readPackageName(this.packageDir);
-		this.results = new Map(); // test id → { test, result } of the last attempt
+		this.results = new Map(); // test id → { test, result } of the last attempt (snapshot spec)
+		this.others = new Map(); // same for every other spec file
 	}
 
 	printsToStdio() {
@@ -117,11 +118,23 @@ export default class VisualReporter {
 	}
 
 	onTestEnd(test, result) {
-		if (!isSnapshotTest(test)) return;
-		const previous = this.results.get(test.id);
+		// Other spec files (axe) are not classified, but their failures must not vanish behind the
+		// soft-failing screenshot step – the report lists them so the CI summary can fail on them.
+		const bucket = isSnapshotTest(test) ? this.results : this.others;
+		const previous = bucket.get(test.id);
 		if (!previous || previous.result.retry <= result.retry) {
-			this.results.set(test.id, { test, result });
+			bucket.set(test.id, { test, result });
 		}
+	}
+
+	otherFailures() {
+		return [...this.others.values()]
+			.filter(({ result }) => result.status === 'failed' || result.status === 'timedOut' || result.status === 'interrupted')
+			.map(({ test, result }) => ({
+				test: test.title,
+				file: path.basename(test.location?.file ?? ''),
+				message: firstLine(errorMessage(result.errors[0] ?? result.status)),
+			}));
 	}
 
 	onEnd() {
@@ -160,7 +173,14 @@ export default class VisualReporter {
 	buildManifest() {
 		const generated = this.scanBaseline();
 		const items = [...generated.entries()].map(([name, file]) => ({ name, status: 'baseline', hash: hashFile(file) })).sort(byName);
-		return { ...this.baseReport('update', generated.size), summary: { baseline: items.length }, digest: digestOf(items), items, errors: [] };
+		return {
+			...this.baseReport('update', generated.size),
+			summary: { baseline: items.length },
+			digest: digestOf(items),
+			items,
+			errors: [],
+			otherFailures: this.otherFailures(),
+		};
 	}
 
 	buildReport() {
@@ -227,7 +247,7 @@ export default class VisualReporter {
 		const summary = { unchanged: 0, changed: 0, added: 0, removed: 0, error: 0 };
 		for (const item of sorted) summary[item.status] += 1;
 
-		return { ...this.baseReport('compare', this.baseline.size), summary, digest: digestOf(sorted), items: sorted, errors };
+		return { ...this.baseReport('compare', this.baseline.size), summary, digest: digestOf(sorted), items: sorted, errors, otherFailures: this.otherFailures() };
 	}
 
 	changedItem(name, route, files) {

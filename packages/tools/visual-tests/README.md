@@ -58,10 +58,9 @@ Add the following npm scripts to the theme's `package.json`:
 - `KOLIBRI_VISUAL_TESTS_EXPECT_TIMEOUT`: Define the Playwright [expect timeout](https://playwright.dev/docs/test-timeouts).
 - `KOLIBRI_VISUAL_TESTS_COLOR_SCHEME`: Choose the [CSS color scheme](https://developer.mozilla.org/docs/Web/CSS/@media/prefers-color-scheme) for the browser context. Supported values are `light` (default) and `dark`.
 
-Run the tests with `npm test`. The first time, this will create a new folder `snapshots` which is supposed to be committed to the repository.
-In the following runs, new screenshots will be compared to this reference.
+Run the tests with `npm test`. Playwright compares the screenshots with the files in the folder `snapshots/theme-<export>/` of the theme package and fails on any difference; the first run writes missing files there.
 
-To update the reference screenshots call `npm run test:update`.
+In the KoliBri repository that folder is **not** committed: `pnpm snapshots:pull` downloads the baseline the CI compares against (artifact of the base branch, see [docs/visual-review.md](../../../docs/visual-review.md)), `npm run test:update:e2e` regenerates it locally – only inside the pinned Playwright container (`pnpm test:update:docker`) with results that match the CI, because the file names carry the platform.
 
 ### Visual report (`visual-report/report.json`)
 

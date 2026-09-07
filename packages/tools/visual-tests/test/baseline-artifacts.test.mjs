@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { artifactName, newestArtifact, selectArtifact, usableArtifacts } from '../../../../scripts/visual-review/baseline-artifacts.mjs';
+import { artifactName, chooseBaseline, newestArtifact, selectArtifact, usableArtifacts } from '../../../../scripts/visual-review/baseline-artifacts.mjs';
 
 function artifact(id, { sha, branch = 'develop', repo = 1, created = '2026-09-01T00:00:00Z', expired = false } = {}) {
 	return {
@@ -50,6 +50,29 @@ describe('baseline-artifacts', () => {
 	it('returns null when no candidate has an artifact', () => {
 		assert.equal(selectArtifact(ARTIFACTS, ['zzz', 'ccc'], { branch: 'develop' }), null);
 		assert.equal(selectArtifact(ARTIFACTS, [], { branch: 'develop' }), null);
+	});
+
+	it('chooses the base commit, an ancestor, the newest artifact or none – in that order', () => {
+		const options = { branch: 'develop', repositoryId: 1 };
+		assert.deepEqual((({ artifact, ...rest }) => ({ id: artifact.id, ...rest }))(chooseBaseline(ARTIFACTS, ['aaa', 'bbb'], options)), {
+			id: 1,
+			sha: 'aaa',
+			distance: 0,
+			fallback: null,
+		});
+		assert.deepEqual((({ artifact, ...rest }) => ({ id: artifact.id, ...rest }))(chooseBaseline(ARTIFACTS, ['zzz', 'bbb'], options)), {
+			id: 3,
+			sha: 'bbb',
+			distance: 1,
+			fallback: 'ancestor',
+		});
+		assert.deepEqual((({ artifact, ...rest }) => ({ id: artifact.id, ...rest }))(chooseBaseline(ARTIFACTS, ['zzz'], options)), {
+			id: 1,
+			sha: 'aaa',
+			distance: null,
+			fallback: 'latest',
+		});
+		assert.deepEqual(chooseBaseline(ARTIFACTS, ['zzz'], { branch: 'release/9' }), { artifact: null, sha: null, distance: null, fallback: 'none' });
 	});
 
 	it('falls back to the newest usable artifact', () => {

@@ -47,6 +47,22 @@ export function newestArtifact(artifacts, options = {}) {
 	return usable.length > 0 ? newest(usable) : null;
 }
 
+/**
+ * The full decision: nearest candidate commit with an artifact (fallback `null` for the base commit
+ * itself, `ancestor` for an older one), else the newest usable artifact (`latest`), else `none`.
+ */
+export function chooseBaseline(artifacts, candidates, options = {}) {
+	const selected = selectArtifact(artifacts, candidates, options);
+	if (selected) {
+		return { artifact: selected.artifact, sha: selected.sha, distance: selected.distance, fallback: selected.distance === 0 ? null : 'ancestor' };
+	}
+	const latest = newestArtifact(artifacts, options);
+	if (latest) {
+		return { artifact: latest, sha: latest.workflow_run?.head_sha ?? null, distance: null, fallback: 'latest' };
+	}
+	return { artifact: null, sha: null, distance: null, fallback: 'none' };
+}
+
 function newest(artifacts) {
 	return [...artifacts].sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))[0];
 }

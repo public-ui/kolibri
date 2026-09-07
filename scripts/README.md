@@ -71,6 +71,18 @@ the base repository – see [docs/visual-review.md](../docs/visual-review.md) fo
   `status.json`, sets the commit status `Visual Review` and upserts the summary comment.
 - `github-api.mjs` – the small REST client the scripts share.
 
+The `visual-tests` job of `ci.yml` fetches the baseline a pull request compares against:
+
+- `select-baseline.mjs <package>` – the baseline is the artifact of the base commit the pull request
+  was merged with (the first parent of the checked-out merge commit). Waits for a still running
+  "Visual Baseline" run of that commit, otherwise falls back to the nearest ancestor with an
+  artifact, then to the newest artifact of the base branch, then to "none". Writes the choice to
+  `<package>/visual-report/baseline-selection.json` and outputs the artifact id for
+  `actions/download-artifact`.
+- `install-baseline.mjs <package> [downloadDir]` – moves the downloaded snapshots into the baseline
+  package's `snapshots/theme-<export>/` folder and writes `<package>/visual-report/baseline.json`,
+  which the visual reporter embeds into its report (commit, image, fallback, image mismatch).
+
 ```bash
 node scripts/visual-review/assert-no-errors.mjs theme-default
 pnpm snapshots:pull                        # every package, newest baseline of develop

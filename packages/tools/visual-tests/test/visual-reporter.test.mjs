@@ -277,6 +277,26 @@ describe('VisualReporter', () => {
 		assert.equal(report.summary.removed, 5, 'no snapshot test ran, so every baseline file counts as removed');
 	});
 
+	it('lists failures of other spec files so the CI summary can fail on them', () => {
+		const reporter = createReporter();
+		reporter.onBegin(CONFIG, SUITE);
+		const axe = (retry, status, errors) =>
+			reporter.onTestEnd(
+				{ id: 'axe', title: 'axe for a/basic', location: { file: path.join('tests', 'axe-snapshots.spec.js') }, annotations: [] },
+				fakeResult({ retry, status, errors }),
+			);
+		axe(0, 'failed', [{ message: 'Error: 2 violations\n  detail' }]);
+		axe(1, 'failed', [{ message: 'Error: still 2 violations\n  detail' }]);
+		reporter.onEnd();
+		assert.deepEqual(readReport().otherFailures, [{ test: 'axe for a/basic', file: 'axe-snapshots.spec.js', message: 'Error: still 2 violations' }]);
+
+		const passing = createReporter();
+		passing.onBegin(CONFIG, SUITE);
+		passing.onTestEnd({ id: 'axe', title: 'axe for a/basic', location: { file: path.join('tests', 'axe-snapshots.spec.js') }, annotations: [] }, fakeResult());
+		passing.onEnd();
+		assert.deepEqual(readReport().otherFailures, []);
+	});
+
 	it('refuses to run for more than one Playwright project', () => {
 		const reporter = createReporter();
 		const twoProjects = { suites: [{ project: () => ({ name: 'firefox' }) }, { project: () => ({ name: 'chrome' }) }] };

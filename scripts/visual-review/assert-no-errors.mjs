@@ -69,6 +69,15 @@ if (errors.length > 0) {
 	}
 }
 
+const otherFailures = report.otherFailures ?? [];
+if (otherFailures.length > 0) {
+	lines.push('', `**${otherFailures.length} test(s) outside the screenshot comparison failed:**`, '');
+	for (const failure of otherFailures) {
+		lines.push(`- \`${failure.file}\` ${failure.test}: ${failure.message}`);
+		fail(`${report.package} – ${failure.file} "${failure.test}": ${failure.message}`);
+	}
+}
+
 const text = lines.join('\n');
 console.log(text);
 if (process.env.GITHUB_STEP_SUMMARY) {
@@ -76,7 +85,7 @@ if (process.env.GITHUB_STEP_SUMMARY) {
 }
 
 const errorItems = report.summary?.error ?? 0;
-if (errors.length > 0 || errorItems > 0) {
+if (errors.length > 0 || errorItems > 0 || otherFailures.length > 0) {
 	process.exit(1);
 }
 
