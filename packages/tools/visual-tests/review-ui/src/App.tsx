@@ -31,11 +31,24 @@ function draftKey(pr: number) {
 	return `visual-review.draft.${pr}`;
 }
 
+/* A folder path relative to the page: plain segments, no scheme, host, `..` or query. */
+const FOLDER = /^[A-Za-z0-9_-]+(\/[A-Za-z0-9_-]+)*$/;
+
+/**
+ * The folder that holds report.json, always resolved relative to the page. The deployed page reads
+ * `pr-<n>/`; `src` lets a local run point at any folder – but never at another origin or a
+ * `javascript:` URL, because the value ends up in `<img src>` and `fetch()`.
+ */
+function reportFolder(params: URLSearchParams, pr: number): string | null {
+	const src = params.get('src');
+	if (src !== null) return FOLDER.test(src) ? `./${src}` : null;
+	return Number.isInteger(pr) && pr > 0 ? `./pr-${pr}` : null;
+}
+
 export function App() {
 	const params = new URLSearchParams(window.location.search);
 	const pr = Number(params.get('pr'));
-	/* `src` lets a local run point at any folder that holds report.json; the deployed page reads pr-<n>/. */
-	const base = params.get('src') ?? `pr-${pr}`;
+	const base = reportFolder(params, pr);
 	const pageUrl = `${window.location.origin}${window.location.pathname}?pr=${pr}`;
 
 	const [report, setReport] = useState<Report | null>(null);
@@ -57,8 +70,8 @@ export function App() {
 	const [authError, setAuthError] = useState<string | null>(null);
 
 	useEffect(() => {
-		if (!pr && !params.get('src')) {
-			setLoadError('Add ?pr=<number> to the address to open the review of a pull request.');
+		if (base === null) {
+			setLoadError('Add ?pr=<number> to the address to open the review of a pull request (or ?src=<folder> for a local report).');
 			return;
 		}
 		fetch(`${base}/report.json?ts=${Date.now()}`)
@@ -288,7 +301,7 @@ export function App() {
 							</label>
 						</div>
 						<div className="viewer">
-							<Viewer entry={current} base={base} mode={mode} zoom={zoom} />
+							<Viewer entry={current} base={base ?? '.'} mode={mode} zoom={zoom} />
 						</div>
 						<ReviewPanel
 							entry={current}
