@@ -1,1 +1,0 @@
-import{wt as e}from"./index-Da4eLglR.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
