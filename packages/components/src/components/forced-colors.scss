@@ -20,17 +20,13 @@
 			}
 		}
 
-		.kol-card {
-			color: CanvasText;
-			background-color: Canvas;
-			border: 1px solid ButtonText;
-		}
-
+		.kol-card,
 		.kol-dialog,
-		.kol-modal {
+		.kol-modal,
+		.kol-drawer {
 			color: CanvasText;
 			background-color: Canvas;
-			border: 1px solid ButtonText;
+			border: 1px solid ButtonBorder;
 		}
 
 		.kol-pagination {
@@ -43,6 +39,15 @@
 						background-color: SelectedItem;
 					}
 				}
+			}
+		}
+
+		/* focus styles */
+		.kol-button,
+		.kol-link__anchor {
+			&:focus-visible {
+				outline: 2px solid Highlight;
+				outline-offset: 2px;
 			}
 		}
 	}

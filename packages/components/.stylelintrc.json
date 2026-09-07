@@ -28,6 +28,7 @@
 				"Canvas",
 				"ButtonText",
 				"ButtonFace",
+				"ButtonBorder",
 				"GrayText",
 				"SelectedItemText",
 				"SelectedItem"
