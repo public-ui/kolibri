@@ -58,6 +58,23 @@ export type ExtractPropKey<P extends Prop<string, unknown, unknown>> =
 		? K
 		: never;
 
+/**
+ * Options for prop definitions, including optional hint callbacks for developer guidance.
+ */
+export type PropDefinitionOptions<T = unknown> = {
+	/**
+	 * Whether the property is required. If true and no value is provided,
+	 * a warning will be emitted and the default value will be used.
+	 */
+	required?: boolean;
+	/**
+	 * Optional callback for emitting developer hints after successful validation.
+	 * Called with the property name and the normalized value.
+	 * Useful for accessibility and UX guidance (e.g., label length warnings).
+	 */
+	hints?: (propName: string, value: T) => void;
+};
+
 export type PropDefinition<TInternal, P extends Prop<string, unknown, unknown> = Prop<string, unknown, TInternal>> = {
 	readonly __phantomProp__?: P;
 	readonly propName: string;
@@ -72,7 +89,7 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 	defaultValue: InternalPropValue<P>,
 	normalize: (value: unknown) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>) => boolean = () => true,
-	options?: { required?: boolean },
+	options?: PropDefinitionOptions<InternalPropValue<P>>,
 ): PropDefinition<InternalPropValue<P>, P> {
 	return {
 		propName,
@@ -94,6 +111,8 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 			try {
 				const normalized = this.normalize(value);
 				if (this.validate(normalized)) {
+					// Call hints after successful validation
+					options?.hints?.(this.propName, normalized);
 					callback(normalized);
 				} else {
 					warnInvalidValue(propName, value);
@@ -119,6 +138,7 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 	defaultValue: InternalPropValue<P>,
 	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>, deps: TDeps) => boolean = () => true,
+	options?: PropDefinitionOptions<InternalPropValue<P>>,
 ): DependentPropDefinition<InternalPropValue<P>, TDeps, P> {
 	return {
 		propName,
@@ -139,6 +159,8 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 			try {
 				const normalized = this.normalize(value, deps);
 				if (this.validate(normalized, deps)) {
+					// Call hints after successful validation
+					options?.hints?.(this.propName, normalized);
 					callback(normalized);
 				} else {
 					warnInvalidValue(propName, value);

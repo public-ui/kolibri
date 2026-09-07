@@ -24,17 +24,30 @@
 			}
 
 			.container {
-				max-width: 900px;
+				max-width: 1160px;
 				width: 100%;
-				padding: 2rem;
+				padding: 2.5rem;
 				background: white;
-				border-radius: 12px;
-				box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+				border-radius: 16px;
+				box-shadow: 0 24px 48px rgba(23, 25, 60, 0.22);
 			}
 
 			.header {
 				text-align: center;
+				padding-bottom: 2rem;
 				margin-bottom: 2rem;
+				border-bottom: 1px solid #edf2f7;
+			}
+
+			.header-row {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 1rem;
+			}
+
+			.header-text {
+				min-width: 0;
 			}
 
 			.logo img {
@@ -48,7 +61,8 @@
 			h1 {
 				color: #2d3748;
 				margin-bottom: 0.5rem;
-				font-size: 2.5rem;
+				font-size: clamp(1.7rem, 1rem + 2.5vw, 2.5rem);
+				line-height: 1.2;
 			}
 
 			.subtitle {
@@ -80,6 +94,7 @@
 				padding: 1rem;
 				text-align: center;
 				border: 1px solid #e2e8f0;
+				box-shadow: 0 1px 2px rgba(23, 25, 60, 0.05);
 			}
 
 			.stat-label {
@@ -99,10 +114,18 @@
 
 			.api-info {
 				background: #f7fafc;
-				padding: 1.5rem;
-				border-radius: 8px;
-				margin-bottom: 2rem;
+				padding: 1.75rem;
+				border-radius: 10px;
+				margin-bottom: 0;
+				border: 1px solid #e2e8f0;
 				border-left: 4px solid #667eea;
+			}
+
+			.content-grid {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr);
+				gap: 1.5rem;
+				align-items: start;
 			}
 
 			.api-info h2 {
@@ -126,8 +149,8 @@
 			.endpoint {
 				background: #1a202c;
 				color: #90cdf4;
-				padding: 1rem;
-				border-radius: 6px;
+				padding: 1.25rem;
+				border-radius: 8px;
 				font-family: 'Courier New', monospace;
 				margin: 0.5rem 0;
 				overflow-x: auto;
@@ -178,10 +201,14 @@
 				transition: opacity 0.2s;
 			}
 
-			.copy-btn:hover,
-			.copy-btn:focus {
+			.copy-btn:hover {
+				opacity: 1;
+			}
+
+			.copy-btn:focus-visible {
 				opacity: 1;
 				outline: 2px solid #667eea;
+				outline-offset: 2px;
 			}
 
 			.relative .copy-btn {
@@ -224,17 +251,34 @@
 				border-left-color: #ffc107;
 			}
 
-			@media (max-width: 900px) {
-				body {
-					padding: 2rem;
+			@media (min-width: 960px) {
+				.container {
+					padding: 3rem;
 				}
 
-				h1 {
-					font-size: 2.2rem;
+				.header-row {
+					flex-direction: row;
+					text-align: left;
+					gap: 2.5rem;
 				}
 
-				.subtitle {
-					font-size: 1rem;
+				.header-text {
+					flex: 1;
+				}
+
+				.logo img {
+					max-width: 160px;
+					margin: 0;
+				}
+
+				.stats {
+					grid-template-columns: repeat(4, minmax(0, 1fr));
+					margin-top: 2.5rem;
+				}
+
+				.content-grid {
+					grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+					gap: 2rem;
 				}
 			}
 
@@ -246,10 +290,6 @@
 
 				.container {
 					padding: 1.75rem;
-				}
-
-				h1 {
-					font-size: 1.9rem;
 				}
 
 				.subtitle {
@@ -274,14 +314,6 @@
 					padding: 1.5rem;
 				}
 
-				h1 {
-					font-size: 1.7rem;
-				}
-
-				.subtitle {
-					font-size: 0.95rem;
-				}
-
 				.endpoint {
 					font-size: 0.9rem;
 				}
@@ -296,17 +328,21 @@
 	<body>
 		<div class="container">
 			<div class="header">
-				<div class="logo">
-					<img src="https://github.com/public-ui/kolibri/raw/refs/heads/develop/kolibri.logo.svg" alt="KoliBri Logo" />
+				<div class="header-row">
+					<div class="logo">
+						<img src="https://github.com/public-ui/kolibri/raw/refs/heads/develop/kolibri.logo.svg" alt="KoliBri Logo" />
+					</div>
+					<div class="header-text">
+						<h1>KoliBri MCP Server</h1>
+						<p class="subtitle">Access 200+ KoliBri component examples via Model Context Protocol – zero installation required</p>
+						<span class="status"
+							>📦 Prebuilt index (<!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ Samples,
+							<!--BUILD:SPEC_COUNT-->__BUILD_SPEC_COUNT__ Specs,
+							<!--BUILD:SCENARIO_COUNT-->__BUILD_SCENARIO_COUNT__ Scenarios,
+							<!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__ Docs)</span
+						>
+					</div>
 				</div>
-				<h1>KoliBri MCP Server</h1>
-				<p class="subtitle">Access 200+ KoliBri component examples via Model Context Protocol – zero installation required</p>
-				<span class="status"
-					>📦 Prebuilt index (<!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ Samples,
-					<!--BUILD:SPEC_COUNT-->__BUILD_SPEC_COUNT__ Specs,
-					<!--BUILD:SCENARIO_COUNT-->__BUILD_SCENARIO_COUNT__ Scenarios,
-					<!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__ Docs)</span
-				>
 				<div class="stats" aria-live="polite">
 					<div class="stat">
 						<span class="stat-label">Samples</span>
@@ -327,55 +363,59 @@
 				</div>
 			</div>
 
-			<div class="api-info">
-				<h2>📡 Streaming MCP Endpoint</h2>
-				<p class="description">
-					This server exposes the Model Context Protocol directly over HTTP and streams responses so that AI copilots see updates as soon as they are generated.
-				</p>
-				<div class="highlight-box info" style="margin-top: 1rem">
-					<strong style="color: #2d3748">🆕 Stream-first transport:</strong>
-					<span style="color: #2d3748">
-						Connect with <code class="endpoint-inline">POST /mcp</code> and keep the request open. The
-						<code class="endpoint-inline">StreamableHTTPServerTransport</code> sends newline-delimited JSON frames, allowing Claude Desktop, Copilot Chat, and
-						every MCP client to process tool output incrementally without polling.
-					</span>
-				</div>
-				<p class="description" style="margin-top: 1rem">
-					Each request follows the JSON-RPC messages defined by the MCP specification. Submit a <code class="endpoint-inline">tools/list</code> call to discover
-					all available tools, then issue <code class="endpoint-inline">tools/call</code> messages on the same HTTP stream to execute them.
-				</p>
-				<p class="description">
-					Use your preferred MCP client to explore the toolbox visually. Applications such as Claude Desktop or the VS Code MCP extension render the tool
-					catalog, argument schemas, and streaming responses automatically once they connect to <code class="endpoint-inline">/mcp</code>.
-				</p>
-				<p class="description">Want to try it from your own tooling? Point any MCP-aware client directly to the hosted endpoint below.</p>
-				<div class="relative">
-					<code class="endpoint" data-mcp-direct-url>https://example.com/mcp</code>
-					<button class="copy-btn" aria-label="Copy endpoint URL" tabindex="0">📋</button>
-				</div>
-				<p class="description" style="margin-top: 1rem">
-					Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
-				</p>
-			</div>
-
-			<div class="api-info">
-				<h2>🚀 Quick Start – Zero Installation</h2>
-				<p class="description">Use the hosted KoliBri MCP Server directly without any installation. Just add the configuration to your MCP client:</p>
-
-				<div style="margin-top: 1rem">
-					<h3>🔧 VS Code Copilot (Recommended)</h3>
-					<p class="description">Create an <code>mcp.json</code> in your workspace root or <code>~/.config/mcp/mcp.json</code>:</p>
-					<div class="relative">
-						<pre
-							style="margin: 0"
-						><code class="endpoint" style="font-size: 0.9rem" data-mcp-remote-config>{ "servers": { "kolibri": { "url": "&lt;origin&gt;/mcp", "type": "http" } }, "inputs": [] }</code></pre>
-						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+			<div class="content-grid">
+				<div class="api-info">
+					<h2>📡 Streaming MCP Endpoint</h2>
+					<p class="description">
+						This server exposes the Model Context Protocol directly over HTTP and streams responses so that AI copilots see updates as soon as they are
+						generated.
+					</p>
+					<div class="highlight-box info" style="margin-top: 1rem">
+						<strong style="color: #2d3748">🆕 Stream-first transport:</strong>
+						<span style="color: #2d3748">
+							Connect with <code class="endpoint-inline">POST /mcp</code> and keep the request open. The
+							<code class="endpoint-inline">StreamableHTTPServerTransport</code> sends newline-delimited JSON frames, allowing Claude Desktop, Copilot Chat, and
+							every MCP client to process tool output incrementally without polling.
+						</span>
 					</div>
-
-					<h3>🤖 Claude Desktop</h3>
-					<p class="description">Add to your Claude Desktop config (<code>~/Library/Application Support/Claude/claude_desktop_config.json</code> on macOS):</p>
+					<p class="description" style="margin-top: 1rem">
+						Each request follows the JSON-RPC messages defined by the MCP specification. Submit a <code class="endpoint-inline">tools/list</code> call to
+						discover all available tools, then issue <code class="endpoint-inline">tools/call</code> messages on the same HTTP stream to execute them.
+					</p>
+					<p class="description">
+						Use your preferred MCP client to explore the toolbox visually. Applications such as Claude Desktop or the VS Code MCP extension render the tool
+						catalog, argument schemas, and streaming responses automatically once they connect to <code class="endpoint-inline">/mcp</code>.
+					</p>
+					<p class="description">Want to try it from your own tooling? Point any MCP-aware client directly to the hosted endpoint below.</p>
 					<div class="relative">
-						<pre style="margin: 0"><code class="endpoint" style="font-size: 0.9rem" data-claude-remote-config>{
+						<code class="endpoint" data-mcp-direct-url>https://example.com/mcp</code>
+						<button class="copy-btn" aria-label="Copy endpoint URL" tabindex="0">📋</button>
+					</div>
+					<p class="description" style="margin-top: 1rem">
+						Note: The indices are generated during the build process. Manual <code>refresh</code> is not available in deployments.
+					</p>
+				</div>
+
+				<div class="api-info">
+					<h2>🚀 Quick Start – Zero Installation</h2>
+					<p class="description">Use the hosted KoliBri MCP Server directly without any installation. Just add the configuration to your MCP client:</p>
+
+					<div style="margin-top: 1rem">
+						<h3>🔧 VS Code Copilot (Recommended)</h3>
+						<p class="description">Create an <code>mcp.json</code> in your workspace root or <code>~/.config/mcp/mcp.json</code>:</p>
+						<div class="relative">
+							<pre
+								style="margin: 0"
+							><code class="endpoint" style="font-size: 0.9rem" data-mcp-remote-config>{ "servers": { "kolibri": { "url": "&lt;origin&gt;/mcp", "type": "http" } }, "inputs": [] }</code></pre>
+							<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+						</div>
+
+						<h3>🤖 Claude Desktop</h3>
+						<p class="description">
+							Add to your Claude Desktop config (<code>~/Library/Application Support/Claude/claude_desktop_config.json</code> on macOS):
+						</p>
+						<div class="relative">
+							<pre style="margin: 0"><code class="endpoint" style="font-size: 0.9rem" data-claude-remote-config>{
   "mcpServers": {
     "kolibri": {
       "url": "&lt;origin&gt;/mcp",
@@ -383,63 +423,64 @@
     }
   }
 }</code></pre>
-						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
-					</div>
+							<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+						</div>
 
-					<div class="highlight-box info" style="margin-top: 1rem">
-						<strong style="color: #2d3748">✅ Benefits of Remote Server:</strong>
-						<ul style="color: #2d3748; margin: 0.5rem 0 0 1.5rem; padding: 0">
-							<li>No installation required</li>
-							<li>Always up-to-date with latest samples</li>
-							<li>Works from any device</li>
-							<li>Zero maintenance</li>
-						</ul>
-					</div>
+						<div class="highlight-box info" style="margin-top: 1rem">
+							<strong style="color: #2d3748">✅ Benefits of Remote Server:</strong>
+							<ul style="color: #2d3748; margin: 0.5rem 0 0 1.5rem; padding: 0">
+								<li>No installation required</li>
+								<li>Always up-to-date with latest samples</li>
+								<li>Works from any device</li>
+								<li>Zero maintenance</li>
+							</ul>
+						</div>
 
-					<h3>💻 Alternative: Local Installation</h3>
-					<p class="description">For offline use or local development, install and run locally:</p>
-					<div class="relative">
-						<code class="endpoint">npm install -g @public-ui/mcp</code>
-						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
-					</div>
-					<p class="description" style="margin-top: 0.5rem">Then run with <code>kolibri-mcp</code> or configure with stdio transport:</p>
-					<div class="relative">
-						<pre
-							style="margin: 0"
-						><code class="endpoint" style="font-size: 0.9rem">{ "servers": { "kolibri": { "command": "kolibri-mcp" } }, "inputs": [] }</code></pre>
-						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
-					</div>
-					<h3>Detailed VS Code Setup Steps</h3>
-					<ol class="description" style="padding-left: 1.25rem; color: #4a5568">
-						<li>Update VS Code and the GitHub Copilot Chat extension to the latest version (MCP support currently ships in the Insider/Preview channels).</li>
-						<li>Open <strong>Settings</strong> and enable <code>GitHub &gt; Copilot Chat: Allow MCP</code> so Copilot may load external servers.</li>
-						<li>
-							Create or edit <code>mcp.json</code> (workspace root or <code>~/.config/mcp/mcp.json</code>) with the remote configuration shown above. Replace
-							<code>&lt;origin&gt;</code> with the deployed server URL.
-						</li>
-						<li>Reload VS Code. In the Copilot Chat panel choose <strong>Connections → kolibri</strong> to establish the streaming session.</li>
-						<li>
-							Ask Copilot things like <code class="endpoint-inline">@kolibri search button</code> or
-							<code class="endpoint-inline">@kolibri fetch sample/button/basic</code> to receive streamed answers.
-						</li>
-					</ol>
-					<p class="description">In GitHub Copilot Chat you can now write:</p>
-					<div class="relative">
-						<pre style="margin: 0"><code class="endpoint">@kolibri show me a button sample
+						<h3>💻 Alternative: Local Installation</h3>
+						<p class="description">For offline use or local development, install and run locally:</p>
+						<div class="relative">
+							<code class="endpoint">npm install -g @public-ui/mcp</code>
+							<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+						</div>
+						<p class="description" style="margin-top: 0.5rem">Then run with <code>kolibri-mcp</code> or configure with stdio transport:</p>
+						<div class="relative">
+							<pre
+								style="margin: 0"
+							><code class="endpoint" style="font-size: 0.9rem">{ "servers": { "kolibri": { "command": "kolibri-mcp" } }, "inputs": [] }</code></pre>
+							<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+						</div>
+						<h3>Detailed VS Code Setup Steps</h3>
+						<ol class="description" style="padding-left: 1.25rem; color: #4a5568">
+							<li>Update VS Code and the GitHub Copilot Chat extension to the latest version (MCP support currently ships in the Insider/Preview channels).</li>
+							<li>Open <strong>Settings</strong> and enable <code>GitHub &gt; Copilot Chat: Allow MCP</code> so Copilot may load external servers.</li>
+							<li>
+								Create or edit <code>mcp.json</code> (workspace root or <code>~/.config/mcp/mcp.json</code>) with the remote configuration shown above. Replace
+								<code>&lt;origin&gt;</code> with the deployed server URL.
+							</li>
+							<li>Reload VS Code. In the Copilot Chat panel choose <strong>Connections → kolibri</strong> to establish the streaming session.</li>
+							<li>
+								Ask Copilot things like <code class="endpoint-inline">@kolibri search button</code> or
+								<code class="endpoint-inline">@kolibri fetch sample/button/basic</code> to receive streamed answers.
+							</li>
+						</ol>
+						<p class="description">In GitHub Copilot Chat you can now write:</p>
+						<div class="relative">
+							<pre style="margin: 0"><code class="endpoint">@kolibri show me a button sample
 @kolibri how do I implement a KoliBri table?
 @kolibri create an accessible form
 </code></pre>
-						<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
-					</div>
-					<div class="highlight-box info">
-						<strong style="color: #2d3748">💡 Tip:</strong>
-						<span style="color: #2d3748" id="tip-text">
-							The MCP Server gives you access to all
-							<!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ KoliBri component samples,
-							<!--BUILD:SPEC_COUNT-->__BUILD_SPEC_COUNT__ component specifications,
-							<!--BUILD:SCENARIO_COUNT-->__BUILD_SCENARIO_COUNT__ guided scenarios, and
-							<!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__ documentation files directly in VS Code!
-						</span>
+							<button class="copy-btn" aria-label="Copy code" tabindex="0">📋</button>
+						</div>
+						<div class="highlight-box info">
+							<strong style="color: #2d3748">💡 Tip:</strong>
+							<span style="color: #2d3748" id="tip-text">
+								The MCP Server gives you access to all
+								<!--BUILD:SAMPLE_COUNT-->__BUILD_SAMPLE_COUNT__ KoliBri component samples,
+								<!--BUILD:SPEC_COUNT-->__BUILD_SPEC_COUNT__ component specifications,
+								<!--BUILD:SCENARIO_COUNT-->__BUILD_SCENARIO_COUNT__ guided scenarios, and
+								<!--BUILD:DOC_COUNT-->__BUILD_DOC_COUNT__ documentation files directly in VS Code!
+							</span>
+						</div>
 					</div>
 				</div>
 			</div>

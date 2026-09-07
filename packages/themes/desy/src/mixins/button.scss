@@ -22,12 +22,12 @@
 		}
 
 		&--primary {
-			@include primaryButton();
+			@include primaryButton($block-classname);
 		}
 
 		&--secondary,
 		&--normal {
-			@include secondaryButton();
+			@include secondaryButton($block-classname);
 		}
 
 		&--danger {
@@ -35,7 +35,7 @@
 			--text-border-width: var(--border-width-m);
 			--text-color: var(--color-red-100);
 
-			&:not([disabled]):hover,
+			&:not([disabled], .#{$block-classname}--disabled):hover,
 			&:focus,
 			&:focus-within {
 				.#{$block-classname}__text::before {
@@ -52,7 +52,7 @@
 
 		&--tertiary,
 		&--ghost {
-			@include ghostButton();
+			@include ghostButton($block-classname);
 		}
 
 		&:disabled {
@@ -138,7 +138,7 @@
 		--text-border-width: var(--border-width-none);
 		--text-color: var(--color-blue-100);
 
-		&:not([disabled]):hover,
+		&:not([disabled], .#{$block-classname}--disabled):hover,
 		&:focus,
 		&:focus-within {
 			.#{$block-classname}__text::before {
@@ -154,7 +154,7 @@
 	}
 }
 
-@mixin primaryButton() {
+@mixin primaryButton($block-classname) {
 	--text-background-color: var(--color-blue-100);
 	--text-border-color: var(--color-blue-100);
 	--text-border-width: var(--border-width-m);
@@ -165,7 +165,7 @@
 		--text-border-color: var(--color-black-60);
 	}
 
-	&:not([disabled]):hover .kol-span::before,
+	&:not([disabled], .#{$block-classname}--disabled):hover .kol-span::before,
 	&:focus .kol-span::before,
 	&:focus-within .kol-span::before {
 		background-color: var(--color-black-100-12);
@@ -176,7 +176,7 @@
 	}
 }
 
-@mixin secondaryButton() {
+@mixin secondaryButton($block-classname) {
 	--text-background-color: var(--color-white-100);
 	--text-border-color: var(--color-blue-100);
 	--text-border-width: var(--border-width-m);
@@ -188,14 +188,14 @@
 		--text-color: var(--color-black-60);
 	}
 
-	&:not([disabled]):hover .kol-span::before,
+	&:not([disabled], .#{$block-classname}--disabled):hover .kol-span::before,
 	&:focus .kol-span::before,
 	&:focus-within .kol-span::before {
 		background-color: var(--color-blue-100-06);
 	}
 }
 
-@mixin ghostButton() {
+@mixin ghostButton($block-classname) {
 	--text-background-color: transparent;
 	--text-border-width: var(--border-width-none);
 	--text-color: var(--color-blue-100);
@@ -204,7 +204,7 @@
 		--text-color: var(--color-black-60);
 	}
 
-	&:not([disabled]):hover .kol-span::before,
+	&:not([disabled], .#{$block-classname}--disabled):hover .kol-span::before,
 	&:focus .kol-span::before,
 	&:focus-within .kol-span::before {
 		background-color: var(--color-blue-100-06);
