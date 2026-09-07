@@ -1,1 +1,0 @@
-import{s as e}from"./index-G_kDSygX.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};
