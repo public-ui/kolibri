@@ -30,13 +30,18 @@ export function createApi({ token = process.env.GITHUB_TOKEN, baseUrl = process.
 		return response.status === 204 ? null : response.json();
 	}
 
+	/**
+	 * Collects every page. List endpoints either return a bare array (comments, files) or an object
+	 * with `total_count` and one array property (`artifacts`, `jobs`, `workflow_runs`).
+	 */
 	async function paginate(path) {
 		const items = [];
 		let next = path.includes('per_page=') ? path : `${path}${path.includes('?') ? '&' : '?'}per_page=100`;
 		while (next) {
 			const response = await request('GET', next);
 			const page = await response.json();
-			items.push(...(Array.isArray(page) ? page : []));
+			const list = Array.isArray(page) ? page : (Object.values(page ?? {}).find(Array.isArray) ?? []);
+			items.push(...list);
 			next = response.headers.get('link')?.match(/<([^>]+)>;\s*rel="next"/)?.[1] ?? null;
 		}
 		return items;
