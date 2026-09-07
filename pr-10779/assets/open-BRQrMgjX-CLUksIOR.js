@@ -1,1 +1,0 @@
-import{wt as e}from"./index-HK6T_XlO.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
