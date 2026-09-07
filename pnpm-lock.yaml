@@ -17,9 +17,6 @@ importers:
       license-report:
         specifier: 6.8.5
         version: 6.8.5
-      npm-check-updates:
-        specifier: 23.1.0
-        version: 23.1.0
       npm-run-all2:
         specifier: 9.0.3
         version: 9.0.3
@@ -10620,11 +10617,6 @@ packages:
   npm-bundled@5.0.0:
     resolution: {integrity: sha512-JLSpbzh6UUXIEoqPsYBvVNVmyrjVZ1fzEFbqxKkTJQkWBO3xFzFT+KDnSKQWwOQNbuWRwt5LSD6HOTLGIWzfrw==}
     engines: {node: ^20.17.0 || >=22.9.0}
-
-  npm-check-updates@23.1.0:
-    resolution: {integrity: sha512-u6Odx/JDpDXNqXp5pPsVN0RhuWkNrBe4Sz26J7yWJcEadopKhQgcB+bFq2PK35iJY6vc6h1PbnXmnwfiOFQl/w==}
-    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0, npm: '>=10.0.0'}
-    hasBin: true
 
   npm-install-checks@8.0.0:
     resolution: {integrity: sha512-ScAUdMpyzkbpxoNekQ3tNRdFI8SJ86wgKZSQZdUxT+bj0wVFpsEMWnkXP0twVe1gJyNF5apBWDJhhIbgrIViRA==}
@@ -24432,8 +24424,6 @@ snapshots:
   npm-bundled@5.0.0:
     dependencies:
       npm-normalize-package-bin: 5.0.0
-
-  npm-check-updates@23.1.0: {}
 
   npm-install-checks@8.0.0:
     dependencies:

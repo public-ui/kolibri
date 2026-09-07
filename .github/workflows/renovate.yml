@@ -3,8 +3,8 @@ name: Renovate
 # Self-hosted Renovate runner — see docs/RENOVATE.md.
 #
 # Triggers:
-#   - schedule:          Mondays 04:00 UTC. The repo's renovate.json additionally limits PR
-#                        creation to "before 6am on monday" (Europe/Berlin).
+#   - schedule:          every 4 hours. The repo's renovate.json itself allows PR creation
+#                        "at any time", so the workflow cadence governs when Renovate acts.
 #   - workflow_dispatch: manual "Run workflow" button; optionally tick "dry_run" to preview
 #                        what Renovate would do without creating branches/PRs.
 #
@@ -16,7 +16,7 @@ name: Renovate
 
 on:
   schedule:
-    - cron: '0 */12 * * *'
+    - cron: '0 */4 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
