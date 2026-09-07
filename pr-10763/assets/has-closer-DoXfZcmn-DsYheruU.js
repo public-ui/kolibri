@@ -1,1 +1,0 @@
-import{wt as e}from"./index-Boxc__23.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
