@@ -121,7 +121,10 @@ jobs:
         if: steps.baseline.outputs.artifact_id != ''
         uses: actions/download-artifact@v8
         with:
+          # Artifact ids are looked up within a run – the run of the "Visual Baseline" workflow
+          # that produced the artifact, not this one.
           artifact-ids: ${{ steps.baseline.outputs.artifact_id }}
+          run-id: ${{ steps.baseline.outputs.run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path: baseline-download
       - name: Install baseline
@@ -142,7 +145,7 @@ jobs:
         run: node scripts/visual-review/assert-no-errors.mjs ${{ matrix.package }}
       # report.json plus the PNGs of changed/added/removed snapshots – the input of the visual review.
       - name: Upload visual review report
-        if: ${{ !cancelled() }}
+        if: ${{ !cancelled() && steps.install.outputs.pkg_dir != '' }}
         uses: actions/upload-artifact@v7
         with:
           name: visual-review-${{ matrix.package }}
