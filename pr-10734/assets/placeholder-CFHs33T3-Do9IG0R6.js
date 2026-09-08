@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-CuL8grOd.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
