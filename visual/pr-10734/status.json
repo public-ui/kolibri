@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "117 changed – 0 of 117 approved, review pending",
-	"computedAt": "2026-09-08T21:28:05.552Z",
+	"description": "120 changed – 0 of 120 approved, review pending",
+	"computedAt": "2026-09-08T22:32:47.525Z",
 	"pr": 10734,
-	"head": "374b31979161175c072c07c936349523bb922295",
-	"digest": "sha256:edd059ac11726fa03d6555be2df604c1459ba5da021ce1a8ec41478e206f51bf",
+	"head": "94937405b1568dd4f3440b1384778104e68dd9f5",
+	"digest": "sha256:f26717dda97df04ab3ee2fdfc9c3c2baf050301456443838f08f1b909e4463b0",
 	"counts": {
-		"changes": 117,
-		"open": 117,
+		"changes": 120,
+		"open": 120,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -380,6 +380,14 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-kern/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/drawer-basic-align-left-closer-true": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-kern/input-file-basic-noColumns--hide-label-error": {
 			"state": "open",
 			"notes": []
@@ -417,6 +425,10 @@
 			"notes": []
 		},
 		"theme-kern/input-file-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/modal-basic-show-dialog-true": {
 			"state": "open",
 			"notes": []
 		},

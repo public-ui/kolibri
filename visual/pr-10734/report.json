@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 10734,
-	"head": "374b31979161175c072c07c936349523bb922295",
+	"head": "94937405b1568dd4f3440b1384778104e68dd9f5",
 	"repository": "public-ui/kolibri",
-	"runId": 34278922639,
-	"generatedAt": "2026-09-08T21:28:05.050Z",
-	"digest": "sha256:edd059ac11726fa03d6555be2df604c1459ba5da021ce1a8ec41478e206f51bf",
+	"runId": 34284724367,
+	"generatedAt": "2026-09-08T22:32:47.133Z",
+	"digest": "sha256:f26717dda97df04ab3ee2fdfc9c3c2baf050301456443838f08f1b909e4463b0",
 	"baseline": {
 		"sha": "2bf6b78695390375aa598a53e9f2fd5004bd6e3f",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2739,
-		"changed": 117,
+		"unchanged": 2736,
+		"changed": 120,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -13545,13 +13545,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 393,
-				"changed": 15,
+				"unchanged": 390,
+				"changed": 18,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:87f6f17c206ce29e4b778a8e9cca99085aea930b9d8b7f39a562f436a78693b6",
+			"digest": "sha256:34da24a2a5d01556a399532d95d891abfafa075f287d97502cba76dd55e86f39",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13855,9 +13855,14 @@
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
-					"route": "dialog-basic-show-dialog-true",
-					"status": "unchanged",
-					"hash": "sha256:97aa9fee2c1bcb12556b34a23949cf581aeec3fff091ed9a30ae296d37194383"
+					"route": "dialog/basic?show-dialog=true",
+					"status": "changed",
+					"hash": "sha256:f689b6dc17ffa2e8528fd4657b7cc4dedf4b812aff780d2da6a673d600da3a45",
+					"diffPixels": 38,
+					"diffRatio": 0.000033,
+					"expected": "theme-kern/dialog-basic-show-dialog-true.expected.png",
+					"actual": "theme-kern/dialog-basic-show-dialog-true.actual.png",
+					"diff": "theme-kern/dialog-basic-show-dialog-true.diff.png"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -13867,9 +13872,14 @@
 				},
 				{
 					"name": "drawer-basic-align-left-closer-true",
-					"route": "drawer-basic-align-left-closer-true",
-					"status": "unchanged",
-					"hash": "sha256:46545eb14c94836db9cb077a9188fe62f3dc976adcb4add0f144f1a356cabeea"
+					"route": "drawer/basic?align=left&closer=true",
+					"status": "changed",
+					"hash": "sha256:4bff6661d58a221bf9ba51d49e613d1a690af4c830eadda3aa374dbf260c878d",
+					"diffPixels": 38,
+					"diffRatio": 0.000158,
+					"expected": "theme-kern/drawer-basic-align-left-closer-true.expected.png",
+					"actual": "theme-kern/drawer-basic-align-left-closer-true.actual.png",
+					"diff": "theme-kern/drawer-basic-align-left-closer-true.diff.png"
 				},
 				{
 					"name": "drawer-basic-align-top",
@@ -15451,9 +15461,14 @@
 				},
 				{
 					"name": "modal-basic-show-dialog-true",
-					"route": "modal-basic-show-dialog-true",
-					"status": "unchanged",
-					"hash": "sha256:18f1eac9d1736caaf5a48adda2b44d8747686d1acc44b378328c4e780645b0c0"
+					"route": "modal/basic?show-dialog=true",
+					"status": "changed",
+					"hash": "sha256:666f44956165d849869061150caba90b797b4cc10b32476b5b931596fe3b9c35",
+					"diffPixels": 38,
+					"diffRatio": 0.000033,
+					"expected": "theme-kern/modal-basic-show-dialog-true.expected.png",
+					"actual": "theme-kern/modal-basic-show-dialog-true.actual.png",
+					"diff": "theme-kern/modal-basic-show-dialog-true.diff.png"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
