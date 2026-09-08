@@ -133,3 +133,9 @@ jobs:
           force: false
           attempt-limit: 10
           commit-message: 'visual review: status of PR #${{ env.PR }}'
+
+      # A broken publish must not leave the pull request on "pending" forever: report the failure as
+      # the status itself, with the run as target, so the reviewer sees what to fix.
+      - name: Report a failed publish
+        if: failure() && env.MODE == 'publish'
+        run: node scripts/visual-review/update-review.mjs --mode failed --pr "$PR" --head "$HEAD" --page-url "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
