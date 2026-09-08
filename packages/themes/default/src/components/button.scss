@@ -5,4 +5,7 @@
 @layer kol-theme-component {
 	@include kol-icon-theme;
 	@include kol-button('kol-button');
+	.kol-button__text {
+		color: pink;
+	}
 }
