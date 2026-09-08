@@ -1,1 +1,0 @@
-import{wt as e}from"./index-CdA2Rs2T.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};

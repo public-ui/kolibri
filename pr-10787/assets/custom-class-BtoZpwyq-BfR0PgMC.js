@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-CdA2Rs2T.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
