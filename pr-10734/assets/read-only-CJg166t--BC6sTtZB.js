@@ -1,0 +1,1 @@
+import{St as e}from"./index-CuL8grOd.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
