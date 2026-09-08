@@ -3,7 +3,8 @@ import type { ReviewDraft } from './types';
 
 const MARKER = 'visual-review:v1';
 const BLOCK = /<!--\s*visual-review:v1\s*([\s\S]*?)-->/;
-const ITEM_KEY = /^[a-z0-9-]+\/[a-z0-9-]+$/;
+// `<package>/<snapshot name>` – names keep the case of the sample route (`…-noColumns--label`).
+const ITEM_KEY = /^[a-z0-9-]+\/[A-Za-z0-9_-]+$/;
 const HASH = /^sha256:[0-9a-f]{64}$/;
 
 export function emptyDraft(): ReviewDraft {
