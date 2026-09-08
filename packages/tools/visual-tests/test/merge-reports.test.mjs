@@ -126,6 +126,19 @@ describe('mergeReports', () => {
 		}
 	});
 
+	it('accepts the names the spec produces: route segments in either case plus the block id', () => {
+		const names = ['combobox-basic-noColumns--hide-label-error', 'input-checkbox-basic-noColumns', 'button-basic--variants-320', 'abbr_basic--x'];
+		artifact(downloadDir, 'theme-default', {
+			summary: { unchanged: names.length, changed: 0, added: 0, removed: 0, error: 0 },
+			digest: H(1),
+			items: names.map((name) => ({ name, status: 'unchanged', hash: H(2) })),
+		});
+		assert.deepEqual(
+			mergeReports(downloadDir, outDir, { pr: 1, head: 'x' }).packages[0].items.map((item) => item.name),
+			names,
+		);
+	});
+
 	it('fails without artifacts', () => {
 		assert.throws(() => mergeReports(downloadDir, outDir, { pr: 1, head: 'x' }), /No visual-review-\* artifacts/);
 	});

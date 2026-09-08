@@ -2,7 +2,7 @@
  * Sets the `Visual Review` commit status of a pull request and keeps the bot comment current.
  *
  *   node scripts/visual-review/update-review.mjs --mode publish|status --pr <n> --head <sha> --report <report.json> --status-out <status.json> --page-url <url>
- *   node scripts/visual-review/update-review.mjs --mode pending|docs-only|no-visual --pr <n> --head <sha> --page-url <url>
+ *   node scripts/visual-review/update-review.mjs --mode pending|docs-only|no-visual|failed --pr <n> --head <sha> --page-url <url>
  *
  * publish/status: reads the reviewers' comments, checks their repository permission, computes the
  * status (review-status.mjs), writes status.json next to the report and upserts the summary comment.
@@ -21,10 +21,13 @@ const EARLY_STATES = {
 	pending: { state: 'pending', description: 'Waiting for the visual tests' },
 	'docs-only': { state: 'success', description: 'No visual-relevant changes' },
 	'no-visual': { state: 'success', description: 'Visual tests were skipped for this change' },
+	// The workflow itself broke (invalid report, download error, …) – say so instead of leaving "pending" forever.
+	failed: { state: 'error', description: 'The Visual Review workflow failed – see its run' },
 };
 
 export async function updateReview({ api, repository, mode, pr, head, reportFile, statusOut, pageUrl }) {
-	const targetUrl = `${pageUrl}?pr=${pr}`;
+	// A failed publish points at its workflow run instead of the review page.
+	const targetUrl = mode === 'failed' ? pageUrl : `${pageUrl}?pr=${pr}`;
 	if (EARLY_STATES[mode]) {
 		await setCommitStatus(api, repository, head, { ...EARLY_STATES[mode], targetUrl });
 		return EARLY_STATES[mode];
