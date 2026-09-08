@@ -44,7 +44,7 @@
 
 		/* focus styles */
 		.kol-button,
-		.kol-link__anchor {
+		.kol-link__interactive-element {
 			&:focus-visible {
 				outline: 2px solid Highlight;
 				outline-offset: 2px;

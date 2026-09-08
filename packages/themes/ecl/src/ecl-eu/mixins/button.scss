@@ -63,11 +63,10 @@
 			}
 		}
 
-		/* The skeleton DOM moves the focusable element into the wrapper: `__button` for buttons,
-		   `__anchor` for links. The class carrier is never focused. */
+		/* The skeleton DOM moves the focusable element into the wrapper. The class carrier is never
+		   focused. */
 		&:focus,
-		&__button:focus,
-		&__anchor:focus {
+		&__interactive-element:focus {
 			outline: none;
 		}
 
@@ -107,7 +106,7 @@
 			}
 
 			@at-root #{$root}:focus-visible &,
-				#{$root}__button:focus-visible & {
+				#{$root}__interactive-element:focus-visible & {
 				outline: var(--text-focus-outline-color) solid to-rem(2);
 				outline-offset: -4px;
 			}

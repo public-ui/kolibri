@@ -13,17 +13,17 @@
 		   migration), narrowing label and icon glyph advances. Box values likewise belong on the
 		   interactive element: on the wrapper the padding would stack on top of the inner
 		   button's a11y min-size instead of growing the old button box. */
-		.kol-button__button {
+		.kol-button__interactive-element {
 			padding: var(--kern-metric-space-small) 0;
 
 			font-weight: inherit;
 		}
 
-		&__button:not(&--disabled):hover {
+		&__interactive-element:not(&--disabled):hover {
 			background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 		}
 
-		&__button:focus {
+		&__interactive-element:focus {
 			@include focus-outline($angularBorder: true);
 		}
 

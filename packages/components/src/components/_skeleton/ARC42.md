@@ -270,13 +270,13 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 				standalone: inline === false,
 			}}
 		>
-			<a class="kol-link__anchor" /* … */>…</a>
+			<a class="kol-link__interactive-element" /* … */>…</a>
 		</BemRootNodeFC>
 	);
 };
 ```
 
-The `block` and `modifiers` keys are validated against `KoliBriComponentsBemSchema`, so `block="kol-link"` is type-checked and `modifiers={{ disabled: true }}` only accepts registered modifier keys. The output is `<div class="kol-link kol-link--disabled …">`; inner elements use plain BEM element classes (`kol-link__anchor`, `kol-link__text`).
+The `block` and `modifiers` keys are validated against `KoliBriComponentsBemSchema`, so `block="kol-link"` is type-checked and `modifiers={{ disabled: true }}` only accepts registered modifier keys. The output is `<div class="kol-link kol-link--disabled …">`; inner elements use plain BEM element classes (`kol-link__interactive-element`, `kol-link__text`).
 
 **Registration requirement:** before using `BemRootNodeFC block="kol-xxx"`, the block must be registered in `src/schema/bem-registry.ts` in **both** places — the exported `KoliBriComponentsBemSchema` type (required for compilation) and the runtime `BEM` const (consumed by the `kolibri-cli` SCSS generator). Type-only registration compiles and renders, but silently breaks theme SCSS generation.
 

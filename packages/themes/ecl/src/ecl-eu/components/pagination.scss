@@ -27,7 +27,7 @@
 			sans-serif;
 
 		.kol-button:focus-visible &,
-		.kol-button__button:focus-visible & {
+		.kol-button__interactive-element:focus-visible & {
 			outline: 2px solid var(--color-black);
 			outline-offset: -4px;
 		}

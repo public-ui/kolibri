@@ -56,7 +56,7 @@
 				/* The underline belongs to the interactive element — it carries the UA `medium`
 				   border-width from the shared wc-box styles, so the selected-tab underline keeps
 				   the exact box it had when the button element itself carried `kol-button`. */
-				.kol-button__button {
+				.kol-button__interactive-element {
 					border-bottom-color: transparent;
 					border-bottom-style: solid;
 				}

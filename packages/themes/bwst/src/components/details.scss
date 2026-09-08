@@ -46,7 +46,7 @@
 
 			/* The ring belongs on the interactive element: there it also overrides the
 			   UA focus ring of the real `button`, which nothing suppresses in this tree. */
-			.kol-button__button:focus {
+			.kol-button__interactive-element:focus {
 				@include focus-outline;
 				cursor: pointer;
 			}

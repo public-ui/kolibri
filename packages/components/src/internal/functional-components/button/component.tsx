@@ -11,7 +11,7 @@ import { TooltipFC } from '../tooltip/component';
 import type { ButtonApi } from './api';
 
 const buttonBem = bem.forBlock('kol-button');
-const BEM_CLASS_BUTTON__BUTTON = buttonBem('button');
+const BEM_CLASS_BUTTON__INTERACTIVE_ELEMENT = buttonBem('interactive-element');
 const BEM_CLASS_BUTTON__TEXT = buttonBem('text');
 const BEM_CLASS_BUTTON__TOOLTIP = buttonBem('tooltip');
 
@@ -85,7 +85,7 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 					aria-keyshortcuts={shortKey || undefined}
 					aria-label={hideLabel && hasLabelText ? label : undefined}
 					aria-selected={ariaSelected || undefined}
-					class={BEM_CLASS_BUTTON__BUTTON}
+					class={BEM_CLASS_BUTTON__INTERACTIVE_ELEMENT}
 					disabled={disabled}
 					id={id || undefined}
 					name={name || undefined}

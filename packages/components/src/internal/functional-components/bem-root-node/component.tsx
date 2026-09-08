@@ -55,7 +55,7 @@ type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema> = {
  *     modifiers={{ disabled, 'external-link': isExternal }}
  *     class={hostClass}
  *   >
- *     <a class="kol-link__anchor">…</a>
+ *     <a class={linkBem('interactive-element')}>…</a>
  *   </BemRootNodeFC>
  * );
  * ```

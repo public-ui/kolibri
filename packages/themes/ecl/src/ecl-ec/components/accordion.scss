@@ -25,7 +25,7 @@
 				/* Box padding and the aria-expanded state belong to the interactive element: on the
 				   wrapper the padding would stack on top of the inner button's a11y min-size instead
 				   of growing the old button box, and `aria-expanded` now sits on the real button. */
-				.kol-button__button {
+				.kol-button__interactive-element {
 					padding: var(--ecl-spacing-xl);
 
 					&:focus {

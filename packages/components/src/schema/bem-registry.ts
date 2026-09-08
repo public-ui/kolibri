@@ -69,7 +69,7 @@ export type KoliBriComponentsBemSchema = {
 	};
 	'kol-button': {
 		elements: {
-			button: {
+			'interactive-element': {
 				modifiers: null;
 			};
 			text: {
@@ -185,7 +185,7 @@ export type KoliBriComponentsBemSchema = {
 	};
 	'kol-link': {
 		elements: {
-			anchor: {
+			'interactive-element': {
 				modifiers: null;
 			};
 			icon: {
@@ -246,7 +246,7 @@ const BEM: KoliBriComponentsBemSchema = {
 	},
 	'kol-button': {
 		elements: {
-			button: { modifiers: null },
+			'interactive-element': { modifiers: null },
 			text: { modifiers: null },
 			tooltip: { modifiers: null },
 		},
@@ -308,7 +308,7 @@ const BEM: KoliBriComponentsBemSchema = {
 	},
 	'kol-link': {
 		elements: {
-			anchor: { modifiers: null },
+			'interactive-element': { modifiers: null },
 			icon: { modifiers: null },
 			text: { modifiers: null },
 		},

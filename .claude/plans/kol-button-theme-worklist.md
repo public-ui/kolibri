@@ -11,7 +11,7 @@
 ```diff
 - <button class="kol-button kol-button--standalone kol-button--normal">…</button>
 + <div class="kol-button kol-button--standalone kol-button--normal">
-+   <button class="kol-button__button">…</button>
++   <button class="kol-button__interactive-element">…</button>
 + </div>
 ```
 
@@ -22,7 +22,7 @@ table-settings.
 ## Die Regel
 
 Die Klasse `kol-button` sitzt jetzt auf einem Wrapper-`<div>`, das interaktive Element ist
-`kol-button__button`. Danach sortieren sich alle Selektoren in drei Gruppen:
+`kol-button__interactive-element`. Danach sortieren sich alle Selektoren in drei Gruppen:
 
 | Gruppe                    | Kriterium                                                                                                         | Handlung                                                     |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
@@ -132,7 +132,7 @@ grün. Vor jedem Urteil „Baseline ist stale" erst den Base-Code gegen die Base
 Nach jedem Theme-Build das Kompilat greppen, statt die Wirkung einer Regel vorauszusetzen:
 
 ```bash
-tr '}' '\n' < <gebautes-css> | grep kol-button__button
+tr '}' '\n' < <gebautes-css> | grep kol-button__interactive-element
 ```
 
 Sass-`X &`-Verschachtelung kompiliert innerhalb eines Blocks zu Descendant-Selektoren, die nie

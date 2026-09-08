@@ -15,13 +15,12 @@
 
 		font-family: var(--font-family);
 
-		/* The skeleton DOM moves the focusable element into the wrapper: `__button` for buttons,
-		   `__anchor` for links. Suppress the UA focus ring on the real control; the theme ring is
-		   drawn on `__text` via the `:focus-within` rule further down. */
+		/* The skeleton DOM moves the focusable element into the wrapper. Suppress the UA focus
+		   ring on the real control; the theme ring is drawn on `__text` via the `:focus-within` rule
+		   further down. */
 		&:focus,
 		&:focus-within,
-		&__button:focus,
-		&__anchor:focus {
+		&__interactive-element:focus {
 			outline: none;
 		}
 

@@ -3,6 +3,7 @@ import { h } from '@stencil/core';
 
 import { translate } from '../../../i18n';
 import { devHint } from '../../../schema';
+import { bem } from '../../../schema/bem-registry';
 import { classNameFromVariant } from '../../../schema/props/variant-class-name';
 import clsx from '../../../utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
@@ -11,6 +12,8 @@ import { IconFC } from '../icon/component';
 import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
 import type { LinkApi } from './api';
+
+const linkBem = bem.forBlock('kol-link');
 
 export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 	const {
@@ -88,7 +91,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 				aria-owns={ariaOwns || undefined}
 				aria-label={hideLabel && typeof label === 'string' ? `${label}${isExternal ? ` (${translateOpenLinkInTab})` : ''}` : undefined}
 				aria-keyshortcuts={shortKey || undefined}
-				class="kol-link__anchor"
+				class={linkBem('interactive-element')}
 				{...on}
 				onClick={handleAnchorClick}
 				role={roleValue}

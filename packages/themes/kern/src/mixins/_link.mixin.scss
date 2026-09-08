@@ -3,7 +3,7 @@
 
 /*
  * Interactive link styles. With $anchor-scoped (default) they attach to the inner
- * `kol-link__anchor` of the skeleton DOM. Otherwise they attach to the class carrier
+ * `kol-link__interactive-element` of the skeleton DOM. Otherwise they attach to the class carrier
  * itself, whose element is the interactive one (e.g. `kol-button`, the tree-item label
  * spans), matching the component DOM before the kol-link skeleton migration.
  */
@@ -194,11 +194,11 @@
 		}
 
 		@if $anchor-scoped {
-			&--external-link .#{$block-classname}__anchor {
+			&--external-link .#{$block-classname}__interactive-element {
 				flex-direction: row-reverse;
 			}
 
-			&__anchor {
+			&__interactive-element {
 				@include kol-link-interactive($block-classname);
 
 				/* The external-link icon aligns to the top edge, as it did inside the
