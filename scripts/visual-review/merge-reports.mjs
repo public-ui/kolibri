@@ -17,7 +17,9 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-export const NAME = /^[a-z0-9]+(-[a-z0-9]+)*(--[a-z0-9]+(-[a-z0-9]+)*)?$/;
+// Snapshot names are the route (`combobox/basic?noColumns` → `combobox-basic-noColumns`) plus `--<block>`:
+// letters of either case, digits, `_` and `-` – never `/`, `.` or whitespace, which keeps them safe as file names.
+export const NAME = /^[A-Za-z0-9_]+(-+[A-Za-z0-9_]+)*$/;
 export const PACKAGE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 export const STATUSES = new Set(['unchanged', 'changed', 'added', 'removed', 'error']);
 const KINDS = ['expected', 'actual', 'diff'];
