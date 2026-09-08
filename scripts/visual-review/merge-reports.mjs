@@ -108,6 +108,11 @@ function validateAndCopy(dir, report, outDir) {
 		route: String(error.route ?? '').slice(0, 200),
 		message: String(error.message ?? '').slice(0, 500),
 	}));
+	const otherFailures = (Array.isArray(report.otherFailures) ? report.otherFailures : []).map((failure) => ({
+		test: String(failure.test ?? '').slice(0, 200),
+		file: String(failure.file ?? '').slice(0, 100),
+		message: String(failure.message ?? '').slice(0, 500),
+	}));
 	return {
 		package: name,
 		themeDir: String(report.themeDir ?? '').slice(0, 100),
@@ -119,6 +124,7 @@ function validateAndCopy(dir, report, outDir) {
 		digest: HASH.test(report.digest ?? '') ? report.digest : null,
 		items,
 		errors,
+		otherFailures,
 	};
 }
 

@@ -47,6 +47,25 @@ export function newestArtifact(artifacts, options = {}) {
 	return usable.length > 0 ? newest(usable) : null;
 }
 
+/**
+ * The full decision: nearest candidate commit with an artifact (fallback `null` for the base commit
+ * itself, `ancestor` for an older one), else the newest usable artifact (`latest`), else `none`.
+ */
+export function chooseBaseline(artifacts, candidates, options = {}) {
+	// A candidate is an ancestor of the tree under test, so its artifact is the right baseline no matter
+	// which branch built it – a pull request against a feature branch still finds the develop commits
+	// below it. Only the "latest" fallback is bound to the base branch. Forks stay excluded.
+	const selected = selectArtifact(artifacts, candidates, { repositoryId: options.repositoryId });
+	if (selected) {
+		return { artifact: selected.artifact, sha: selected.sha, distance: selected.distance, fallback: selected.distance === 0 ? null : 'ancestor' };
+	}
+	const latest = newestArtifact(artifacts, options);
+	if (latest) {
+		return { artifact: latest, sha: latest.workflow_run?.head_sha ?? null, distance: null, fallback: 'latest' };
+	}
+	return { artifact: null, sha: null, distance: null, fallback: 'none' };
+}
+
 function newest(artifacts) {
 	return [...artifacts].sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at))[0];
 }

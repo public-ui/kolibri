@@ -118,37 +118,32 @@ If it is also necessary to edit dependent packages such as `@public-ui/component
 By default, development is carried out in the `development` branch for the following version. However, if it becomes necessary to provide an issue for an older major release, such as version 1.x.x, the code change must also be merged into the corresponding release branch. In this case, it would be the `release/1` branch. It is important that the branch that was created from the `develop` is not merged into the release branch, as otherwise the next patch version will receive all the changes from the current development status.
 The simplest procedure is therefore to create a new branch from the release branch (e.g. `release/1`) and transfer the individual commits of the feature branch from the `develop` to the new branch using cherry-picking. This branch can then be merged into the release branch as normal with a new pull request.
 
-### Snapshot Testing for Visual Changes
+### Visual Review for Visual Changes
 
-The Continuous Integration (CI) pipeline incorporates automated visual regression testing using the React sample app across all available themes.
+The Continuous Integration (CI) pipeline takes screenshots of the React sample app in every theme and compares them with the baseline of the base branch. The screenshots are **not** stored in git: every push to `develop`, `main` and `release/*` publishes them as the artifact `visual-baseline-<package>`, and a pull request compares against the artifact of the commit it is merged with.
 
-When introducing visual modifications to components, themes, or the React sample app, initial test failures are expected. To address this, the
-`update-snapshots.yml` action on GitHub should be executed, followed by a **careful review** of the changes.
+When you introduce visual modifications to components, themes or the React sample app:
 
-#### How to Update Snapshots
+1. The `visual-tests (<package>)` jobs report the differences. That is expected – there is nothing to regenerate or commit.
+2. The bot comment **📸 Visual Review** on the pull request links the review page (`https://public-ui.github.io/kolibri/visual/?pr=<number>`), where every changed, added and removed screenshot can be inspected side by side, with a slider, as onion skin or as diff.
+3. A reviewer with write access approves (or rejects) the screenshots there – directly with a fine-grained GitHub token, or by pasting the generated comment on the pull request. The commit status **Visual Review** turns green once everything is approved; approvals are bound to the screenshot content and survive later pushes that do not change the screenshot again.
 
-The following methods can be used to update the snapshots.
+The full process is described in [docs/visual-review.md](docs/visual-review.md).
 
-1. **GitHub website:** Update the snapshots directly on the GitHub website by following these steps.
+#### Running the visual tests locally
 
-- Navigate to the `Actions` tab in the `kolibri` repository.
-- Execute the `03 - Update Snapshots` action.
-- Select the desired branch in which you want to update the snapshots.
-- The workflow checks out the branch, updates all snapshot files, and commits the changes to that branch.
+```bash
+pnpm snapshots:pull                          # download the current develop baseline into the snapshot folders (needs `gh auth login`)
+pnpm --filter @public-ui/theme-default test  # compare; the result is written to packages/themes/default/visual-report/
+pnpm test:update:docker default              # regenerate a baseline locally in the pinned Playwright container
+```
 
-2. **Terminal Command:** Use the [GitHub CLI (gh)](https://cli.github.com/) to run the `update-snapshots.yml` action from the local terminal. This method is recommended for updating snapshots on the current branch without navigating to the GitHub website. For terminal convenience, the [GitHub CLI (gh)](https://cli.github.com/) needs to be installed.
+Screenshots are platform specific (font rendering), so only the Docker variant produces files that match the CI.
 
-- Run the following command within the project directory to update the snapshots in your checked-out branch:
-  ```bash
-  gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD`
-  ```
-- If your want to delete all snapshots before regenerating them add `-f purge_snapshots=true` to the command:
-  ```bash
-  gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD` -f purge_snapshots=true
-  ```
-- You can also run the action on a different branch by specifying the another target branch with the `-r <branch_name>` flag. For example, to update snapshots on the `main` branch:
-  ```bash
-  gh workflow run update-snapshots.yml -r main
-  ```
+#### Text snapshots of the unit tests
 
-These steps ensure that visual snapshots are updated systematically, maintaining the integrity of the testing process.
+The `__snapshots__` files of the unit tests (components, hydrate, hydrate-server) stay in git. Update them with `pnpm test:update:unit`, or run the `03 - Update Snapshots` action on your branch:
+
+```bash
+gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD`
+```

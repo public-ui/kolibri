@@ -104,6 +104,12 @@ export function buildComment(report, result, targetUrl) {
 	if (failed.length > 0) {
 		lines.push('Routes that could not be compared:', ...failed.slice(0, 20), '');
 	}
+	const other = report.packages.flatMap((pkg) =>
+		(pkg.otherFailures ?? []).map((failure) => `- \`${pkg.package}\` ${failure.file} – ${failure.test}: ${failure.message}`),
+	);
+	if (other.length > 0) {
+		lines.push('Other tests that failed in the same run (they fail the CI job, not this review):', ...other.slice(0, 20), '');
+	}
 	lines.push(`[Open the review page](${targetUrl}) to inspect the differences and approve them.`);
 	if (result.status?.counts?.changes > 0) {
 		lines.push('', `Approvals: ${result.status.counts.approved} approved, ${result.status.counts.open} open, ${result.status.counts.rejected} rejected.`);

@@ -479,14 +479,18 @@ pnpm --filter @public-ui/sample-react start   # Sample app dev server
 
 The repository uses GitHub Actions with these key workflows:
 
-- `ci.yml` – Main CI pipeline (build, lint, test)
-- `update-snapshots.yml` – Visual regression test updates
+- `ci.yml` – Main CI pipeline (build, lint, test, visual comparison per theme)
+- `visual-baseline.yml` – Publishes the visual baseline of every base-branch commit as an artifact
+- `visual-review.yml` – Publishes the visual differences of a pull request and sets the status "Visual Review"
+- `update-snapshots.yml` – Regenerates the text snapshots of the unit tests
 
-### Update Visual Snapshots
+### Visual Snapshots
+
+Screenshots are not stored in git. Differences in a pull request are reviewed and approved on the review page linked from the bot comment (see `docs/visual-review.md`); nothing has to be regenerated or committed.
 
 ```bash
-# Via GitHub CLI (if available)
-gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD`
+pnpm snapshots:pull                          # fetch the current develop baseline (needs gh auth)
+pnpm --filter @public-ui/theme-default test  # compare locally, result in visual-report/
 ```
 
 ## Migration and Versioning
@@ -535,9 +539,10 @@ pnpm start  # Runs migration on test data
 **Theme Visual Testing:**
 
 ```bash
+pnpm snapshots:pull                          # Fetch the develop baseline into the snapshot folders
 cd packages/themes/default
-pnpm test                    # Run visual regression tests
-pnpm test-update            # Update visual snapshots
+pnpm test                                    # Run visual regression tests (report in visual-report/)
+pnpm test:update:e2e                         # Regenerate the local snapshots (platform specific!)
 ```
 
 **Visual Test Tools (`packages/tools/visual-tests/`):**
@@ -553,10 +558,9 @@ THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots=ch
 
 **Visual Testing Process:**
 
-1. Build theme: `pnpm build`
-2. Run tests: `pnpm test`
-3. Review snapshot differences
-4. Update snapshots if changes are expected: `pnpm test-update`
+1. Run the tests (they build the theme implicitly): `pnpm test`
+2. Read `visual-report/report.json` – every snapshot is `unchanged`, `changed`, `added`, `removed` or `error`
+3. Expected changes are approved by a reviewer on the review page of the pull request, not committed (`docs/visual-review.md`)
 
 ## Performance Notes
 

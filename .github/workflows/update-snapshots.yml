@@ -1,5 +1,8 @@
 name: 03 - Update Snapshots
 
+# Regenerates the text snapshots of the unit tests (__snapshots__) on a branch and commits them.
+# The visual screenshots are no longer part of git: they come from the "Visual Baseline" workflow
+# and are reviewed per pull request – see docs/visual-review.md.
 on:
   workflow_dispatch:
 
@@ -16,55 +19,10 @@ jobs:
         include:
           - name: components
             path: packages/components
-            type: unit
           - name: hydrate-server
             path: packages/tools/hydrate-server
-            type: unit
           - name: hydrate
             path: packages/adapters/hydrate
-            type: unit
-          # container: pinned Playwright image – must match the @playwright/test version in
-          # packages/tools/visual-tests/package.json (enforced by the "Verify Playwright version" step).
-          # --user 1001 (pwuser, same uid as the runner user): Firefox refuses to launch as root,
-          # see https://playwright.dev/docs/ci#via-containers
-          - name: theme-bwst
-            path: packages/themes/bwst
-            type: e2e
-            container:
-              image: mcr.microsoft.com/playwright:v1.60.0-noble
-              options: --user 1001
-          - name: theme-default
-            path: packages/themes/default
-            type: e2e
-            container:
-              image: mcr.microsoft.com/playwright:v1.60.0-noble
-              options: --user 1001
-          - name: theme-desy
-            path: packages/themes/desy
-            type: e2e
-            container:
-              image: mcr.microsoft.com/playwright:v1.60.0-noble
-              options: --user 1001
-          - name: theme-kern
-            path: packages/themes/kern
-            type: e2e
-            container:
-              image: mcr.microsoft.com/playwright:v1.60.0-noble
-              options: --user 1001
-          - name: theme-ecl
-            path: packages/themes/ecl
-            type: e2e
-            container:
-              image: mcr.microsoft.com/playwright:v1.60.0-noble
-              options: --user 1001
-          - name: unstyled
-            path: packages/unstyled
-            type: e2e
-            container:
-              image: mcr.microsoft.com/playwright:v1.60.0-noble
-              options: --user 1001
-    # Empty value (unit entries) = no container, job runs directly on the runner.
-    container: ${{ matrix.container }}
     steps:
       - name: Checkout branch
         uses: actions/checkout@v7
@@ -74,34 +32,20 @@ jobs:
 
       - uses: ./.github/actions/pnpm-setup
 
-      - name: Verify Playwright version matches container image
-        if: matrix.type == 'e2e'
-        run: |
-          INSTALLED=$(pnpm --filter @public-ui/visual-tests exec node -p "require('@playwright/test/package.json').version")
-          [ "$INSTALLED" = "1.60.0" ] || { echo "::error::@playwright/test $INSTALLED does not match container image v1.60.0 – update the image tags in the workflows"; exit 1; }
-
       - name: Build
-        run: pnpm --filter @public-ui/visual-tests^... build
+        run: pnpm --filter @public-ui/${{ matrix.name }}^... build
 
       - name: Purge existing snapshots
-        run: |
-          if [ "${{ matrix.type }}" = "e2e" ]; then
-            find ${{ matrix.path }} -name '*.png' -path '*/snapshots/*' | grep -v 'node_modules' | xargs --no-run-if-empty rm -f
-          else
-            find ${{ matrix.path }} \( -path '*/node_modules' -prune \) -o -path '*/__snapshots__/*' -type f -print | xargs --no-run-if-empty rm -f
-          fi
+        run: find ${{ matrix.path }} \( -path '*/node_modules' -prune \) -o -path '*/__snapshots__/*' -type f -print | xargs --no-run-if-empty rm -f
 
       - name: Run snapshot update
-        run: pnpm --filter @public-ui/${{ matrix.name }} test:update:${{ matrix.type }}
-
-      - name: Git status after generating snapshots
-        run: git status
+        run: pnpm --filter @public-ui/${{ matrix.name }} test:update:unit
 
       - name: Package snapshot changes
         run: |
           # All snapshots were purged and regenerated from scratch – capture every file on disk,
           # including those whose content is identical to HEAD (git diff would miss those).
-          find ${{ matrix.path }} \( -path '*/node_modules' -prune \) -o \( -path '*/__snapshots__/*' -o -path '*/snapshots/*' \) -type f -print \
+          find ${{ matrix.path }} \( -path '*/node_modules' -prune \) -o -path '*/__snapshots__/*' -type f -print \
             | tar cf snapshots.tar -T - 2>/dev/null || tar cf snapshots.tar --files-from /dev/null
 
       - name: Upload snapshot artifacts
@@ -133,10 +77,9 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
           token: ${{ steps.app-token.outputs.token }}
+
       - name: Purge existing snapshots
-        run: |
-          find packages -name '*.png' -path '*/snapshots/*' | grep -v 'node_modules' | xargs --no-run-if-empty rm -f
-          find packages \( -path '*/node_modules' -prune \) -o -path '*/__snapshots__/*' -type f -print | xargs --no-run-if-empty rm -f
+        run: find packages \( -path '*/node_modules' -prune \) -o -path '*/__snapshots__/*' -type f -print | xargs --no-run-if-empty rm -f
 
       - name: Download snapshot artifacts
         uses: actions/download-artifact@v8
@@ -156,12 +99,12 @@ jobs:
       - name: Stage snapshot changes
         run: |
           # Stage updated/new snapshot files (skip gitignored paths)
-          find packages \( -path '*/node_modules' -prune \) -o \( -path '*/__snapshots__/*' -o -path '*/snapshots/*' \) -type f -print \
+          find packages \( -path '*/node_modules' -prune \) -o -path '*/__snapshots__/*' -type f -print \
             | (git check-ignore --stdin --non-matching --verbose || test $? = 1) \
             | { grep '^::' || true; } | cut -f2 \
             | xargs --no-run-if-empty git add --
           # Also stage deletions (e.g. snapshots for removed tests)
-          { git diff --name-only --diff-filter=D HEAD || true; } | grep -E '(__snapshots__|snapshots)/' | xargs --no-run-if-empty git add --
+          { git diff --name-only --diff-filter=D HEAD || true; } | grep -E '__snapshots__/' | xargs --no-run-if-empty git add --
 
       - name: Git status after staging
         run: git status
