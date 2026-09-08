@@ -75,7 +75,7 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 
 ## Offene Arbeit, nach Priorität
 
-### 1. GOAL: Zero Visual Delta — ✅ ERREICHT: unstyled 293/293, default/bwst/ecl/desy/**kern** je 294/294, alle Exit 0, `git diff origin/develop..HEAD -- '*.png'` = 0
+### 1. GOAL: Zero Visual Delta — 🟡 2026-09-09: kern hat 3 Allowlist-Szenarien (A1, Abschnitt 8) nach der Tooltip-in-Wrapper-Änderung; alle anderen Diffs über alle 6 Themes sind vorbestehende, unabhängig verifizierte Theme-Arbeit (`kol-button-theme-worklist.md`), keine neuen Regressionen dieser Session
 
 **Akzeptanzkriterium (Skill §1) erfüllt:** jede Snapshot-Datei ist bit-identisch zum Base-Branch.
 Die Allowlist (Abschnitt 8) ist wieder leer — die 3 kern-Tooltip-Diffs wurden per DOM-Fix
@@ -175,28 +175,32 @@ Nachweis** — die Snapshot-Workflows committen neue Baselines und werden dadurc
 
 #### 1a. DOM-/Migrations-Aufgabe (keine Theme-Arbeit): Tooltip-Platzierung nach dem Wrapper-Umbau
 
-**Owner-Entscheidung 2026-09-01: nicht theme-lokal lösbar, an die Migration weiterreichen.**
+**Re-geöffnet 2026-09-09 — bewusste Rücknahme des DOM-Fixes vom 2026-09-01, siehe Allowlist A1.**
+`ButtonFC` rendert Tooltip und Description jetzt wieder **innerhalb** des `BemRootNodeFC`-Wrappers
+(Struktur identisch zu `LinkFC`), auf ausdrücklichen Wunsch: Tooltips sollen grundsätzlich im
+BEM-Wrapper liegen, konsistent über `kol-button` und `kol-link`. Der damit reproduzierte
+Firefox-Kern-Bug ist diesmal per Allowlist quittiert, nicht per DOM-Auslagerung — Details unten.
 
-Die 3 verbleibenden kern-Diffs (`dialog`/`drawer`/`modal`, „Close"-Button-Tooltip) sind
-volldiagnostiziert (Shadow-durchdringende Probe, DEV vs. Branch): **jede Computed-Property und
-Bounding-Box ist bit-identisch** — `kol-tooltip__floating` y=271, `kol-tooltip__arrow` y=274.43 mit
-identischer Rotations-Matrix, `kol-tooltip__content` y=271; `font-family=Verdana`, `font-size=16px`,
-`line-height=normal`, `font-kerning=auto`, `text-rendering=auto`, `letter-spacing=normal`.
+**Ursprünglicher Befund (2026-09-01, weiterhin gültig):** Die 3 kern-Diffs (`dialog`/`drawer`/
+`modal`, „Close"-Button-Tooltip) sind volldiagnostiziert (Shadow-durchdringende Probe, DEV vs.
+Branch): **jede Computed-Property und Bounding-Box ist bit-identisch** — `kol-tooltip__floating`
+y=271, `kol-tooltip__arrow` y=274.43 mit identischer Rotations-Matrix, `kol-tooltip__content`
+y=271; `font-family=Verdana`, `font-size=16px`, `line-height=normal`, `font-kerning=auto`,
+`text-rendering=auto`, `letter-spacing=normal`. Einziger struktureller Unterschied: der
+`position: fixed`, animations-belegte Tooltip-Layer hängt bei „Tooltip im Wrapper" einen
+zusätzlichen `<div class="kol-button">`-Vorfahren höher im DOM als bei „Tooltip als Sibling" —
+das ändert die JS-Tooltip-Lage nicht, aber Firefox rastert den Verdana-Fallback-Text im tieferen
+DOM-Kontext ~2px anders. Andere Themes sind nicht betroffen — ihre Tooltips erben eine
+hinting-robustere Font statt des Verdana-a11y-Fallbacks.
 
-Einziger struktureller Unterschied: `ButtonFC` rendert `kol-button__tooltip` jetzt als Flex-
-**Geschwister** von `kol-button__button` im Wrapper-`<div>` (Breite 0), vorher war es ein
-**Block-Kind** des `<button>` (Breite 44px). Das ändert die JS-Tooltip-Lage NICHT (beide y=271),
-aber Firefox rendert den Verdana-Fallback-Text im tieferen DOM-Kontext ~2px versetzt — ein
-Sub-Pixel-Paint-Artefakt ohne CSS-Angriffspunkt (develop und Branch haben identisches Tooltip-CSS).
-`&__tooltip { width: 100% }` in kern probiert → brach 6 andere Szenarien, verworfen.
-
-**Was die Migration prüfen sollte:** ob `kol-button__tooltip` im Skeleton-DOM so platziert/
-dimensioniert werden kann, dass es die Box des `<button>` reproduziert (z. B. Tooltip innerhalb
-des `__button` rendern statt als Wrapper-Geschwister, oder `__tooltip` per CSS die
-Button-Box spiegeln lassen). Andere Themes sind nicht betroffen — ihre Tooltips erben eine
-hinting-robustere Font statt des Verdana-a11y-Fallbacks, weshalb der 2px-Versatz dort unsichtbar
-bleibt. Bis dahin: `visual-tests (theme-kern)` bleibt für diese 3 Szenarien rot bzw.
-Allowlist-Eintrag mit Owner-Freigabe.
+**Neu verworfene Fixversuche (2026-09-09, zusätzlich zu den bereits am 2026-09-01 verworfenen):**
+`.kol-tooltip__floating { transform: translateZ(0); backface-visibility: hidden }` (eigener
+Compositing-Layer per Transform) → kein Effekt; `.kol-tooltip__floating { will-change: transform }`
+(Layer-Promotion-Hint) → kein Effekt; `.kol-tooltip__floating { contain: layout style }` (Element
+selbst, nicht Vorfahre) → kein Effekt. Alle drei kern-scoped in `packages/themes/kern/src/
+global.scss` getestet und wieder entfernt (kein Diff im Repo). Bestätigt damit erneut: kein
+CSS-Angriffspunkt am Tooltip-Element selbst — der Effekt hängt an der DOM-Tiefe, nicht an
+fehlenden Compositing-Hints.
 
 ### 2. Konsumenten-Migration weg von `kol-button-wc` (der strategische Schritt)
 
@@ -268,14 +272,18 @@ inneren `<button>`, weil die Block-Modifier auf der BEM-Wurzel sitzen).
 
 ## 8. Allowlist (Skill §8) — bewusst akzeptierte Snapshot-Abweichungen
 
-Default: leer (Stand 2026-09-01: leer — A1 wurde per DOM-Fix gelöst statt allowlisted). Ein
-Eintrag ist nur mit Begründung **und** Owner-Freigabe zulässig.
+Stand 2026-09-09: **1 aktiver Eintrag (A1)** — siehe unten. Ein Eintrag ist nur mit Begründung
+**und** Owner-Freigabe zulässig.
 
-### A1 — kern: `dialog/basic`, `drawer/basic?align=left&closer=true`, `modal/basic` — ✅ GELÖST 2026-09-01
+### A1 — kern: `dialog/basic`, `drawer/basic?align=left&closer=true`, `modal/basic` — 🟡 Re-geöffnet 2026-09-09, per Allowlist quittiert
 
-**Kein Allowlist-Eintrag mehr nötig.** Per DOM-Fix in `ButtonFC` geschlossen (Tooltip als
-Geschwister von `BemRootNodeFC` statt im Wrapper-`<div>`, = develop-Struktur). Details: Abschnitt 1,
-Teil 3. Der ursprüngliche Befund bleibt als Doku stehen:
+**War vom 2026-09-01 bis 2026-09-09 per DOM-Fix gelöst** (Tooltip als Geschwister von
+`BemRootNodeFC` statt im Wrapper-`<div>`). Am 2026-09-09 bewusst zurückgenommen: Tooltip und
+Description liegen jetzt wieder innerhalb des Wrappers, damit `ButtonFC` strukturell zu `LinkFC`
+passt (Owner-Wunsch: Tooltips gehören grundsätzlich in den BEM-Wrapper). Drei neue CSS-Fixversuche
+(Compositing-Layer-Hints direkt am Tooltip-Element — `transform`, `will-change`, `contain`, siehe
+Abschnitt 1a) blieben wirkungslos; der Bug ist damit wieder offen und wird — anders als beim ersten
+Mal — bewusst per Allowlist statt per erneuter DOM-Auslagerung quittiert. Details zum Befund:
 
 - **Was**: Der „Close"-Button-Tooltip (`--hide-label`) rendert den Bubble-Text in Firefox mit
   ~2px anderer Antialiasing-Deckung (kein sauberer Versatz — Pixel-Zeilen-Analyse zeigt pro
@@ -292,14 +300,30 @@ Teil 3. Der ursprüngliche Befund bleibt als Doku stehen:
   ist fraktioniert (`1154.68px`) — wie Firefox diese Compositing-Layer aufs Pixelraster rundet,
   hängt am Render-Tree. develop und Branch haben **identisches Tooltip-CSS**, also keinen
   CSS-Angriffspunkt.
-- **Verworfene Fixversuche**: `&__tooltip { width: 100% }` → 6 Regressionen; `&__tooltip {
-position: absolute }` im Basis-Mixin → kein Effekt; Tooltip zurück in den `<button>` → per
+- **Verworfene Fixversuche 2026-09-01**: `&__tooltip { width: 100% }` → 6 Regressionen; `&__tooltip
+{ position: absolute }` im Basis-Mixin → kein Effekt; Tooltip zurück in den `<button>` → per
   a11y verboten (im FC dokumentiert: „a nested tooltip would become part of the accessible name").
+- **Verworfene Fixversuche 2026-09-09** (Tooltip diesmal bewusst im Wrapper, CSS statt DOM-Fix
+  gesucht): `.kol-tooltip__floating { transform: translateZ(0); backface-visibility: hidden }`,
+  `{ will-change: transform }`, `{ contain: layout style }` — alle drei kern-scoped in
+  `global.scss` getestet (Stufe-1-Stichprobe `--grep dialog`/`drawer`/`modal`), alle drei ohne
+  Effekt, alle drei wieder entfernt.
 - **Owner-Freigabe**: 2026-09-01 — „an die DOM/Components-Migration weiterreichen, keine
-  Theme-Arbeit". Eine echte Lösung braucht DOM-Arbeit im Skeleton (Tooltip-Platzierung, die die
-  `<button>`-Box reproduziert) → Migrations-Aufgabe **1a** oben.
-- **Evidenz**: `node scripts/snapshots-docker.mjs kern --check` → 291 passed, 3 failed, Exit 1;
-  die 3 Fails sind exakt diese 3 Szenarien, alle anderen 291 grün.
+  Theme-Arbeit" (führte zum DOM-Fix). 2026-09-09 — Owner entscheidet, den DOM-Fix zugunsten der
+  KolLink-Konsistenz zurückzunehmen und den Bug erneut per Allowlist zu akzeptieren, nachdem die
+  CSS-Iteration erfolglos blieb.
+- **Kontrollprobe 2026-09-09**: Der Bug ist exklusiv auf diese Code-Änderung zurückzuführen — mit
+  `git stash` auf den Vorzustand (Tooltip als Sibling) zurückgesetzt, sind exakt dieselben 3
+  Szenarien grün; alle anderen zum Prüfzeitpunkt roten Szenarien (in kern u. a. `input-file/basic`,
+  `popover-button/inline`, `table/column-alignment`, `table/stateless-with-*-selection`,
+  `scenarios/focus-elements?component=tabs`; ähnlich in bwst/default/desy/ecl/unstyled) bestehen
+  unverändert mit und ohne diese Änderung — das ist die bereits bekannte, bewusst zurückgestellte
+  Theme-Arbeit aus `.claude/plans/kol-button-theme-worklist.md` (BEM-Klassen-Umbenennung
+  `kol-button__button` → `kol-button__interactive-element`), keine neue Regression.
+- **Evidenz**: `node scripts/snapshots-docker.mjs kern --check` → 284 passed, 9 failed, Exit 1;
+  6 der 9 Fails sind die vorbestehende Theme-Arbeit (s. o.), die übrigen 3 sind exakt
+  `dialog/basic`, `drawer/basic?align=left&closer=true`, `modal/basic`. Mit `git stash` (Vorzustand)
+  sind es 6 Fails — exakt die vorbestehenden, ohne die 3 Allowlist-Szenarien.
 
 ## Pitfalls
 

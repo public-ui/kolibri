@@ -1,5 +1,5 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
-import { Fragment, h } from '@stencil/core';
+import { h } from '@stencil/core';
 
 import { bem } from '../../../schema/bem-registry';
 import { classNameFromVariant } from '../../../schema/props/variant-class-name';
@@ -16,15 +16,12 @@ const BEM_CLASS_BUTTON__TEXT = buttonBem('text');
 const BEM_CLASS_BUTTON__TOOLTIP = buttonBem('tooltip');
 
 /**
- * Renders the button, its floating tooltip and its visually-hidden description.
+ * Renders the button, its floating tooltip and its visually-hidden description inside a single
+ * BEM root, the same shape `LinkFC` uses.
  *
  * The tooltip and the description span cannot live inside the `<button>` — a nested tooltip would
- * become part of the accessible name, and the description is referenced by `aria-describedby` from
- * outside. They are rendered as siblings of the `BemRootNodeFC` wrapper (direct children of the
- * host), exactly where they sat before the skeleton migration: putting the `position: fixed`
- * `kol-button__tooltip` subtree inside the extra wrapper `<div>` makes Firefox rasterise its
- * compositing layer ~2px differently (visible on `kern`'s dialog/drawer/modal close-button
- * tooltip, invisible elsewhere only because those themes' tooltip fonts hint more robustly).
+ * become part of the accessible name, and the description is referenced by `aria-describedby`
+ * from outside. They are therefore siblings of the `<button>` within the `BemRootNodeFC` wrapper.
  */
 export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 	const {
@@ -61,47 +58,45 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 	const hasAriaDescription = ariaDescription.trim().length > 0;
 
 	return (
-		<Fragment>
-			<BemRootNodeFC
-				block="kol-button"
-				class={clsx({
-					[classNameFromVariant(variant, 'button')]: variant.length > 0,
-					[customClass]: customClass.length > 0,
-				})}
-				modifiers={{
-					disabled,
-					'hide-label': hideLabel,
-					inline: inline === true,
-					standalone: inline === false,
-				}}
+		<BemRootNodeFC
+			block="kol-button"
+			class={clsx({
+				[classNameFromVariant(variant, 'button')]: variant.length > 0,
+				[customClass]: customClass.length > 0,
+			})}
+			modifiers={{
+				disabled,
+				'hide-label': hideLabel,
+				inline: inline === true,
+				standalone: inline === false,
+			}}
+		>
+			<button
+				ref={refButton}
+				accessKey={accessKey || undefined}
+				aria-controls={ariaControls || undefined}
+				aria-describedby={hasAriaDescription ? ariaDescriptionId : undefined}
+				aria-expanded={ariaExpanded || undefined}
+				aria-haspopup={ariaHasPopup || undefined}
+				aria-keyshortcuts={shortKey || undefined}
+				aria-label={hideLabel && hasLabelText ? label : undefined}
+				aria-selected={ariaSelected || undefined}
+				class={BEM_CLASS_BUTTON__INTERACTIVE_ELEMENT}
+				disabled={disabled}
+				id={id || undefined}
+				name={name || undefined}
+				onBlur={handleBlur}
+				onClick={handleClick}
+				onFocus={handleFocus}
+				onMouseDown={handleMouseDown}
+				role={role || undefined}
+				tabIndex={tabIndex}
+				type={type}
 			>
-				<button
-					ref={refButton}
-					accessKey={accessKey || undefined}
-					aria-controls={ariaControls || undefined}
-					aria-describedby={hasAriaDescription ? ariaDescriptionId : undefined}
-					aria-expanded={ariaExpanded || undefined}
-					aria-haspopup={ariaHasPopup || undefined}
-					aria-keyshortcuts={shortKey || undefined}
-					aria-label={hideLabel && hasLabelText ? label : undefined}
-					aria-selected={ariaSelected || undefined}
-					class={BEM_CLASS_BUTTON__INTERACTIVE_ELEMENT}
-					disabled={disabled}
-					id={id || undefined}
-					name={name || undefined}
-					onBlur={handleBlur}
-					onClick={handleClick}
-					onFocus={handleFocus}
-					onMouseDown={handleMouseDown}
-					role={role || undefined}
-					tabIndex={tabIndex}
-					type={type}
-				>
-					<SpanFC class={BEM_CLASS_BUTTON__TEXT} badgeText={badgeText} icons={icons} hideLabel={hideLabel} label={label}>
-						<slot name="expert" slot="expert"></slot>
-					</SpanFC>
-				</button>
-			</BemRootNodeFC>
+				<SpanFC class={BEM_CLASS_BUTTON__TEXT} badgeText={badgeText} icons={icons} hideLabel={hideLabel} label={label}>
+					<slot name="expert" slot="expert"></slot>
+				</SpanFC>
+			</button>
 			{hideLabel && hasLabelText && (
 				<div class={BEM_CLASS_BUTTON__TOOLTIP}>
 					<TooltipFC badgeText={badgeText} label={label} refFloating={refTooltip} />
@@ -112,6 +107,6 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 					{ariaDescription}
 				</span>
 			)}
-		</Fragment>
+		</BemRootNodeFC>
 	);
 };
