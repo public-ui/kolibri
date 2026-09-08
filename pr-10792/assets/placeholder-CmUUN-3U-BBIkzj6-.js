@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-BRf8DOFj.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};

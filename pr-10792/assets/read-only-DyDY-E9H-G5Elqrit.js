@@ -1,1 +1,0 @@
-import{wt as e}from"./index-BRf8DOFj.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
