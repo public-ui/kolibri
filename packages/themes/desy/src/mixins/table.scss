@@ -71,7 +71,7 @@
 					padding: 0;
 
 					.kol-button {
-						@include ghostButton();
+						@include ghostButton('kol-button');
 
 						&__text {
 							padding: to-rem(16);

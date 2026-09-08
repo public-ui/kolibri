@@ -7,17 +7,20 @@
 	"semanticCommitType": "chore",
 	"semanticCommitScope": "deps",
 	"timezone": "Europe/Berlin",
-	"schedule": ["before 6am on monday"],
+	"schedule": ["at any time"],
 	"labels": ["dependencies", "renovate", "release:engineering"],
 	"rebaseWhen": "behind-base-branch",
-	"prConcurrentLimit": 15,
-	"prHourlyLimit": 6,
+	"prConcurrentLimit": 5,
+	"prHourlyLimit": 5,
 	"postUpdateOptions": ["pnpmDedupe"],
 	"platformAutomerge": true,
+	"minimumReleaseAge": "3 days",
+	"automergeStrategy": "squash",
+	"configMigration": true,
+	"dependencyDashboardOSVVulnerabilitySummary": "all",
 	"baseBranchPatterns": ["develop", "release/3", "release/2", "release/1"],
 	"lockFileMaintenance": {
-		"enabled": true,
-		"schedule": ["before 6am on monday"]
+		"enabled": true
 	},
 	"vulnerabilityAlerts": {
 		"enabled": true,
@@ -27,26 +30,22 @@
 	"osvVulnerabilityAlerts": true,
 	"packageRules": [
 		{
-			"description": "Maintenance branches (v1–v3) only receive security fixes and patch-level npm bumps — keep the released major lines stable.",
+			"description": "Automerge all non-major updates (patch/minor/digest/pin/lockfile) once the pipelines are green — majors keep manual dashboard approval. Later rules below override this where an update is known-risky.",
+			"matchUpdateTypes": ["patch", "minor", "digest", "pin", "lockFileMaintenance"],
+			"automerge": true
+		},
+		{
+			"description": "Maintenance branches (release/1–release/3): disable all regular npm and GitHub Actions updates (patch, minor, major, digest, pin, lockFileMaintenance). Only vulnerability alerts remain active.",
 			"matchBaseBranches": ["release/3", "release/2", "release/1"],
-			"matchManagers": ["npm"],
-			"matchUpdateTypes": ["minor", "major"],
+			"matchManagers": ["npm", "github-actions"],
+			"matchUpdateTypes": ["patch", "minor", "major", "digest", "pin", "lockFileMaintenance"],
 			"enabled": false
 		},
 		{
-			"description": "Patch updates: more frequent schedule (Mon–Fri) for safe, backwards-compatible fixes.",
-			"matchUpdateTypes": ["patch"],
-			"schedule": ["before 6am every weekday"]
-		},
-		{
-			"description": "Minor/major updates: weekly schedule (Monday) to reduce noise and allow manual review.",
-			"matchUpdateTypes": ["minor", "major"],
-			"schedule": ["before 6am on monday"]
-		},
-		{
-			"description": "GitHub Actions: separate schedule (Tuesday) to avoid Monday PR spikes.",
-			"matchManagers": ["github-actions"],
-			"schedule": ["before 6am on tuesday"]
+			"description": "Maintenance branches: re-enable vulnerability-alert updates on release/1–release/3 so security fixes still get PRs and automerge (non-major via the global rule, major via dashboard approval).",
+			"matchBaseBranches": ["release/3", "release/2", "release/1"],
+			"vulnerabilityAlert": true,
+			"enabled": true
 		},
 		{
 			"description": "Major updates require manual approval via the dependency dashboard — KoliBri pins its major lines deliberately (Angular v19/v20/v21, React 18/19, Stencil 4, ESLint 9, …).",

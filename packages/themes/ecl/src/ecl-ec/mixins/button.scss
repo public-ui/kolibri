@@ -26,7 +26,7 @@
 				--button-focus-outline-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
 			}
@@ -45,7 +45,7 @@
 				--button-text-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
 				--button-text-color: var(--ecl-color-white);
@@ -65,7 +65,7 @@
 				--button-focus-outline-width: 2px;
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-primary-20);
 				--button-border-color: var(--ecl-color-dark-80);
 			}
@@ -84,7 +84,7 @@
 				--button-focus-outline-width: 2px;
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-primary-20);
 				--button-border-color: var(--ecl-color-dark-80);
 			}
@@ -95,7 +95,7 @@
 			--button-border-color: var(--ecl-color-secondary);
 			--button-text-color: var(--ecl-color-dark);
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-secondary-120);
 				--button-border-color: var(--ecl-color-secondary-120);
 			}
@@ -111,14 +111,14 @@
 				--button-focus-outline-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-error);
 				--button-border-color: var(--ecl-color-dark);
 			}
 		}
 
 		&--ghost {
-			@include ghost-button();
+			@include ghost-button($block-classname);
 		}
 
 		&__text {
@@ -159,14 +159,14 @@
 		align-self: self-start;
 
 		.#{$block-classname}--normal {
-			@include ghost-button();
+			@include ghost-button($block-classname);
 
 			--kol-focus-outline-offset: -2px;
 		}
 	}
 }
 
-@mixin ghost-button() {
+@mixin ghost-button($block-classname) {
 	--button-background-color: transparent;
 	--button-border-color: transparent;
 	--button-border-width: 1px;
@@ -179,7 +179,7 @@
 		--button-focus-outline-width: 2px;
 	}
 
-	&:not(:disabled):hover {
+	&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 		--button-background-color: var(--ecl-color-primary-20);
 		--button-border-color: var(--ecl-color-dark-80);
 		--button-text-color: var(--ecl-color-dark);
