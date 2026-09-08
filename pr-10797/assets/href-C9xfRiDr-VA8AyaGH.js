@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-DL6X1zUB.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};
