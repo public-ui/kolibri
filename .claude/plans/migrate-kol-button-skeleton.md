@@ -77,11 +77,15 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 
 ### 1. GOAL: Zero Visual Delta — 🟡 2026-09-09: kern hat 3 Allowlist-Szenarien (A1, Abschnitt 8) nach der Tooltip-in-Wrapper-Änderung; alle anderen Diffs über alle 6 Themes sind vorbestehende, unabhängig verifizierte Theme-Arbeit (`kol-button-theme-worklist.md`), keine neuen Regressionen dieser Session
 
-**Akzeptanzkriterium (Skill §1) erfüllt:** jede Snapshot-Datei ist bit-identisch zum Base-Branch.
-Die Allowlist (Abschnitt 8) ist wieder leer — die 3 kern-Tooltip-Diffs wurden per DOM-Fix
-geschlossen (siehe unten).
+**Aktueller Stand 2026-09-09:** Die Allowlist (Abschnitt 8) ist **nicht** mehr leer — 3 kern-Diffs
+(A1) sind bewusst per Allowlist akzeptiert, nicht per DOM-Fix geschlossen. Der 2026-09-01-Abschnitt
+direkt darunter beschreibt den DOM-Fix, der dies zwischenzeitlich gelöst hatte; er wurde am
+2026-09-09 auf Owner-Wunsch zugunsten der `LinkFC`-Konsistenz zurückgenommen — Details in
+Abschnitt **1a** und Allowlist **A1** unten. Alle anderen Snapshot-Dateien sind weiterhin
+bit-identisch zum Base-Branch (die übrigen Diffs im vollen Check sind vorbestehende, unabhängig
+verifizierte Theme-Arbeit, s. u.).
 
-**Stand 2026-09-01 (diese Session, 3. Teil — kern 3→0):**
+**Stand 2026-09-01 (diese Session, 3. Teil — kern 3→0). Zurückgenommen 2026-09-09, siehe Abschnitt 1a:**
 
 - **DOM-Fix in `ButtonFC`** (`internal/functional-components/button/component.tsx`): `kol-button__tooltip`
   und die visually-hidden Beschreibung werden jetzt als **Geschwister** von `BemRootNodeFC`
@@ -96,10 +100,12 @@ geschlossen (siehe unten).
   `_skeleton/public-api.spec.ts` grün.
 - **Alle 6 Themes danach voll re-gecheckt**: 294/294 (bzw. 293/293 unstyled), Exit 0, keine
   Regression. Auch als 1-Worker-Pre-Push-Abnahme (`--all --check`): alle grün.
-- **Bewusste Divergenz zu `LinkFC`**: `LinkFC` hält Tooltip/Beschreibung weiterhin **innerhalb**
-  `BemRootNodeFC` (Link-Skeleton ist in develop gemergt, dort zero-delta; das 2px-Problem tritt bei
-  Links nicht auf). Ob `LinkFC` aus Symmetrie nachzieht → **Issue [#10745](https://github.com/public-ui/kolibri/issues/10745)**
-  (deleonio), separat mit eigener Pixel-Verifikation, nicht in diesem PR.
+- **Bewusste Divergenz zu `LinkFC`** (Stand 2026-09-01, seit 2026-09-09 aufgelöst): `LinkFC` hielt
+  Tooltip/Beschreibung weiterhin **innerhalb** `BemRootNodeFC`, während `ButtonFC` sie an dieser
+  Stelle nach außen verlagert hatte. Issue [#10745](https://github.com/public-ui/kolibri/issues/10745)
+  (deleonio) forderte Symmetrie ein — am 2026-09-09 umgesetzt: `ButtonFC` rendert Tooltip/
+  Beschreibung jetzt wieder innerhalb des Wrappers, identisch zu `LinkFC`. Der dadurch
+  zurückgekehrte kern-Firefox-Bug ist per Allowlist (A1) akzeptiert, nicht per erneutem DOM-Fix.
 
 **Stand 2026-09-01 (diese Session, 2. Teil):**
 
