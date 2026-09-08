@@ -463,7 +463,7 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 
 - Run `pnpm test` from the repository root to execute all unit and integration tests.
   - ⚠️ **Note**: Test runners (Vitest, Jest, Playwright, etc.) execute an implicit build automatically before running tests. **Do NOT run a separate `pnpm build` beforehand** — this wastes time. The test scripts handle compilation and type checking internally.
-- Visual and snapshot tests can be updated with `pnpm test:update` or via the `update-snapshots.yml` GitHub workflow (see `CONTRIBUTING.md`).
+- Text snapshots of the unit tests can be updated with `pnpm test:update:unit` or via the `update-snapshots.yml` GitHub workflow. Visual screenshots are **not** committed: differences are approved on the review page of the pull request (see `docs/visual-review.md`); `pnpm snapshots:pull` fetches the current baseline for local runs.
 - Individual packages provide their own test scripts (e.g. `pnpm --filter @public-ui/components test:unit`).
   - These also perform implicit builds, so explicit pre-build is unnecessary.
 

@@ -52,6 +52,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { setEventTarget } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { nonce } from '../../utils/dev.utils';
 import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
@@ -164,6 +165,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 		const href = this.getRenderProp('href');
 		const on = this.getRenderProp('on');
 		if (typeof on?.onClick === 'function') {
+			setEventTarget(event, this.ctaRef.el);
 			on.onClick(event, href);
 		}
 		if (this.host) {

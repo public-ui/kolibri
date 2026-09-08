@@ -121,7 +121,7 @@
 		&__toggle-button {
 			@include button('kol-button');
 			.kol-button {
-				@include ghost-button;
+				@include ghost-button('kol-button');
 			}
 		}
 	}

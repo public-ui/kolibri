@@ -6,6 +6,11 @@
 /packages/**/pnpm-lock.yaml
 /test-migration/
 
+# Visual screenshots are not versioned: the baseline comes from the "Visual Baseline" workflow
+# (artifact per base commit) and is reviewed per pull request – see docs/visual-review.md.
+/packages/themes/*/snapshots/
+/packages/unstyled/snapshots/
+
 # in all sub folders
 .playwright-mcp/
 .DS_Store/
@@ -13,6 +18,8 @@ dist/
 node_modules/
 playwright-report/
 test-results/
+visual-report/
+visual-baseline/
 *.log
 *.tgz
 

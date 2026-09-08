@@ -11,7 +11,7 @@ This document is the outcome of issue [#10270](https://github.com/public-ui/koli
 > **Status:** The `renovate.json` and a self-hosted runner workflow
 > ([`.github/workflows/renovate.yml`](../.github/workflows/renovate.yml)) are committed as an
 > **exemplary, ready-to-run setup**. Renovate stays **idle** until that workflow runs — either on its
-> weekly schedule or via the manual **Run workflow** button (see [Enabling Renovate](#enabling-renovate)).
+> every-4-hours schedule or via the manual **Run workflow** button (see [Enabling Renovate](#enabling-renovate)).
 > Until then the existing Dependabot + npm-check-updates automation stays in charge.
 
 ---
@@ -66,12 +66,30 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
 - **`labels: ["dependencies", "renovate", "release:engineering"]`** — the `release:*` label is
   **required** by `pr-release-label-validation.yml`; `release:engineering` files dependency PRs
   under _🔧 Engineering_ in the changelog (see `.github/release.yml`).
-- **Weekly schedule** (`before 6am on monday`, `Europe/Berlin`) with `prConcurrentLimit: 10` /
-  `prHourlyLimit: 4` so the first run does **not** flood the repo with PRs.
+- **Every-4-hours cadence** — the workflow cron runs Renovate every 4 hours; `renovate.json` itself
+  allows PR creation `at any time`, so the workflow schedule governs. `prConcurrentLimit: 5` /
+  `prHourlyLimit: 5` cap the number of open PRs **per base branch** (so `develop` and each
+  `release/*` branch have their own budget).
+- **`minimumReleaseAge: "3 days"`** — all updates (npm, Actions, …, including security fixes)
+  are held back for three days after release before a PR is opened or auto-merged. This protects
+  against compromised or quickly-revoked releases.
+- **Automerge all non-major updates (squash)** — the first package rule enables `automerge` for
+  `patch`/`minor`/`digest`/`pin`/lockfile updates; `automergeStrategy: squash` means each
+  dependency bump becomes a single commit. Known-risky rules below (Stencil, kern-ux, ESLint,
+  TypeScript, typescript-eslint) override it back to manual. Majors always keep dashboard approval.
+  Prerequisites: repo setting **Allow auto-merge** enabled, green pipelines enforced via required
+  status checks on `develop`, and the runner GitHub App listed in the branch-protection bypass
+  (see [Enabling Renovate](#enabling-renovate)).
 - **`baseBranchPatterns`** — runs on `develop` **and** `release/3|2|1`; the maintenance branches are
-  restricted to security + patch npm updates so released majors stay stable.
+  **security-only** (all regular npm and GitHub Actions updates are disabled) so released majors stay
+  stable. Security PRs still automerge when non-major; major security updates require dashboard
+  approval.
 - **`lockFileMaintenance`** — weekly `pnpm-lock.yaml` refresh (replaces the manual
   `04 - Update pnpm Lock` workflow runs).
+- **`configMigration: true`** — Renovate keeps `renovate.json` itself up to date when built-in
+  presets or options change.
+- **`dependencyDashboardOSVVulnerabilitySummary: "all"`** — adds an OSV vulnerability table
+  directly to the Dependency Dashboard issue.
 - **`postUpdateOptions: ["pnpmDedupe"]`** — keeps the pnpm lockfile tidy.
 
 ### Grouping & guard-rails (the important part for this monorepo)
@@ -80,12 +98,12 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
 | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **All majors**                                    | Require manual approval via the Dependency Dashboard — KoliBri pins majors deliberately.                                                                                                           |
 | **Angular `@angular/*`, `zone.js`, `ng-packagr`** | Major updates **disabled** entirely; within-major updates grouped per adapter folder (_Angular 19/20/21_). A new Angular major = a new adapter folder, never an auto-bump.                         |
-| **React `react`, `react-dom`, `@types/react*`**   | Major updates **disabled**; within-major React updates of the `react*` adapters grouped and reviewed (not automerged).                                                                             |
+| **React `react`, `react-dom`, `@types/react*`**   | Major updates **disabled**; within-major React updates of the `react*` adapters grouped and automerged once green.                                                                                 |
 | **Stencil `@stencil/*`, `@stencil-community/*`**  | **All** updates require dashboard approval — every 4.39+ release currently breaks the Popover API, tooltips and visual tests (see [`UPGRADEABLE_DEPENDENCIES.md`](./UPGRADEABLE_DEPENDENCIES.md)). |
 | **`@kern-ux/*`**                                  | Dashboard approval only — upgraded by hand together with theming work.                                                                                                                             |
 | **`@typescript-eslint/*`, ESLint core + plugins** | Minor/major require approval (9 → 10 is a breaking migration).                                                                                                                                     |
 | **`jest*`, `typescript`**                         | Majors/non-patch require approval.                                                                                                                                                                 |
-| **`github-actions`, `@types/*`**                  | Grouped **and automerged** for low-risk update types.                                                                                                                                              |
+| **`github-actions`, `@types/*`**                  | Grouped; automerged like every other non-major update.                                                                                                                                             |
 | **Stylelint, Playwright**                         | Grouped into single PRs.                                                                                                                                                                           |
 
 > The pins above mirror exactly what the current `ncu:*` scripts exclude
@@ -107,7 +125,7 @@ Two ways to run it; **this repo is wired for Option A**.
 ### Option A — Self-hosted via GitHub Actions (committed in this repo)
 
 This repo ships [`.github/workflows/renovate.yml`](../.github/workflows/renovate.yml). It runs Renovate
-on a weekly schedule (Mondays 04:00 UTC) **and** on demand via the **Run workflow** button
+**every 4 hours** (`0 */4 * * *` UTC) **and** on demand via the **Run workflow** button
 (`workflow_dispatch`, with an optional `dry_run` preview). It authenticates through the existing GitHub
 App (`APP_ID` / `PRIVATE_KEY` secrets, shared with _04 - Update pnpm Lock_).
 
@@ -117,8 +135,17 @@ To activate it:
    **issues: write** (for the Dependency Dashboard) and **workflows: write** (so the `github-actions`
    manager may update `.github/workflows/*`). _Alternative:_ replace the app-token step with a
    `RENOVATE_TOKEN` PAT/fine-grained token carrying the same scopes.
-2. Trigger the workflow once via **Run workflow** (optionally with `dry_run` enabled) to verify it, then
-   let the weekly schedule take over.
+2. For automerge to work end to end, check three repository settings:
+   - **Settings → General → Pull Requests → Allow auto-merge**: enabled (Renovate uses
+     `platformAutomerge`, i.e. GitHub's native auto-merge).
+   - **Branch protection for `develop` (and `release/2`, `release/1`, `release/3`) → required status
+     checks**: add the CI gate jobs (`check-results`, `validate-pr-title`) so a PR is only merged
+     when the pipelines are green.
+   - **Branch protection for `develop` (and `release/*`) → bypass pull request allowances**: the
+     runner App (`publicuibot`) must be listed there, so its PRs can merge without a human
+     code-owner review.
+3. Trigger the workflow once via **Run workflow** (optionally with `dry_run` enabled) to verify it, then
+   let the 4-hours schedule take over.
 
 > **Tip:** The `dry_run` input maps to `RENOVATE_DRY_RUN=full`, so the first manual run previews every PR
 > Renovate _would_ open without creating anything.
@@ -136,13 +163,14 @@ If you would rather not self-host, delete `.github/workflows/renovate.yml` and i
 
 ## 4. Migration checklist (do this only after Renovate is verified)
 
-Once Renovate runs green for a cycle, retire the overlapping automation to avoid **duplicate PRs**:
+Once Renovate runs green for a cycle, retire the overlapping automation to avoid **duplicate PRs**.
+Status as of the Renovate activation for `develop`:
 
-- [ ] Remove `.github/dependabot.yml` (Renovate now manages GitHub Actions — see the
+- [x] Removed `.github/dependabot.yml` (Renovate now manages GitHub Actions — see the
       `github-actions` group).
-- [ ] Remove `.github/workflows/auto-dependency-updater.yml` (the daily `ncu` PR job).
-- [ ] Drop the `ncu:*` / `update` scripts and the `npm-check-updates` devDependency from the root
-      `package.json`, plus `.ncurc.json` (optional — `ncu` is still handy for manual ad-hoc checks).
+- [x] Removed `.github/workflows/auto-dependency-updater.yml` (the daily `ncu` PR job).
+- [x] Dropped the `ncu:*` / `update` scripts and the `npm-check-updates` devDependency from the root
+      `package.json`, plus `.ncurc.json`.
 - [ ] Keep `04 - Update pnpm Lock` if you still want a manual lockfile-refresh button; otherwise
       Renovate's `lockFileMaintenance` covers it.
 
@@ -164,10 +192,16 @@ fixierten Major-Version halten (`angular/v19|v20|v21`, `react*`), sichere Update
 - **npm-check-updates** ist nur ein CLI ohne eigene Automatisierung (läuft heute im Workflow
   `auto-dependency-updater.yml`).
 
+Neu hinzugekommen: `minimumReleaseAge: "3 Tage"` schützt vor kompromittierten Releases
+(inklusive Security-Updates), `automergeStrategy: squash` sorgt für saubere Commit-Historie,
+und die `release/*`-Branches werden auf **Security-only** umgestellt — reguläre npm- und
+GitHub-Actions-Updates werden dort komplett deaktiviert, während Vulnerability-Alert-PRs
+weiterhin (bei Nicht-Major) automatisch mergen.
+
 Die fertige [`renovate.json`](../renovate.json) liegt im Repo-Root (geprüft mit dem offiziellen
 `renovate-config-validator`), und der self-hosted Runner-Workflow
 [`.github/workflows/renovate.yml`](../.github/workflows/renovate.yml) ist ebenfalls committet.
-**Renovate läuft**, sobald der Workflow startet — wöchentlich per Zeitplan oder manuell über den
+**Renovate läuft**, sobald der Workflow startet — alle 4 Stunden per Zeitplan oder manuell über den
 **Run workflow**-Button (Option A); alternativ kann ein Org-Admin die
 [Renovate-GitHub-App](https://github.com/apps/renovate) installieren (Option B). Bis dahin bleibt die
 bestehende Dependabot-/ncu-Automatisierung zuständig; danach greift die Migrations-Checkliste oben.

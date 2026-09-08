@@ -1,21 +1,17 @@
 @use '~@public-ui/components/index' as *;
 @use './button.mixin' as *;
 @use './focus-outline.mixin' as *;
+@use './dialog.mixin' as *;
 
 @mixin kol-table-settings-theme {
+	@include dialog;
+
 	.kol-table-settings {
 		background: var(--kern-color-layout-background-default);
 		@include button('kol-button');
 
-		.kol-popover-button__button .kol-button {
+		& > .kol-button {
 			@include ghostButton();
-		}
-
-		&__content {
-			border-radius: var(--kern-metric-border-radius-default);
-			padding: var(--kern-metric-space-default);
-
-			border: var(--kern-metric-border-width-light, 1px) solid var(--layout-border);
 		}
 
 		&__error-message {
