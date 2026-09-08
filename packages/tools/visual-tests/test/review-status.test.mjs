@@ -89,6 +89,24 @@ describe('computeStatus', () => {
 		assert.deepEqual(result.status.reviewers, ['alice', 'bob']);
 	});
 
+	it('counts only the newest comment of a reviewer', () => {
+		const reject = { ...review('bob', 'write', { rejects: [{ item: 'theme-default/a--y', hash: H(2) }] }), updatedAt: '2026-09-08T12:06:00Z' };
+		const approve = { ...review('bob', 'write', { approvals: [{ item: 'theme-default/a--y', hash: H(2) }] }), updatedAt: '2026-09-08T12:22:00Z' };
+		const alice = review('alice', 'write', { approveAll: { digest: H(9) } });
+
+		const later = computeStatus(report({ items: CHANGES }), [alice, reject, approve]);
+		assert.equal(later.state, 'success', 'the newer comment replaces the rejection');
+		assert.equal(later.status.items['theme-default/a--y'].state, 'approved');
+
+		const edited = computeStatus(report({ items: CHANGES }), [
+			alice,
+			{ ...approve, updatedAt: '2026-09-08T12:00:00Z' },
+			{ ...reject, updatedAt: '2026-09-08T12:30:00Z' },
+		]);
+		assert.equal(edited.state, 'failure', 'an edited older comment can be the newest one');
+		assert.deepEqual(later.status.reviewers, ['alice', 'bob']);
+	});
+
 	it('fails on routes that could not be compared', () => {
 		const result = computeStatus(
 			report({ items: [{ name: 'a--x', status: 'error', hash: H(1), message: 'boom' }], errors: [{ route: 'a', message: 'boom' }] }),
@@ -111,6 +129,12 @@ describe('review comment format', () => {
 		assert.match(body, /^<!-- visual-review:v1\n/);
 		assert.match(body, /\[review page\]\(https:\/\/example\.test\/\?pr=1\)/);
 		assert.deepEqual(parseReviewComment(body), data);
+	});
+
+	it('keeps item keys with upper-case snapshot names', () => {
+		const item = 'theme-default/input-color-basic-noColumns--label-hint';
+		const parsed = parseReviewComment(formatReviewComment({ approvals: [{ item, hash: H(1) }], rejects: [], notes: [] }, 'https://x', 'ok'));
+		assert.deepEqual(parsed.approvals, [{ item, hash: H(1) }]);
 	});
 
 	it('ignores comments without a block, broken JSON and malformed entries', () => {

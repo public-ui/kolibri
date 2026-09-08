@@ -48,7 +48,8 @@ Nothing has to be committed: the baseline is regenerated from `develop` after th
      for `public-ui/kolibri` at the bottom of the page. The page posts (and later edits) one comment
      in your name. The token stays in this browser session unless you tick "remember".
    - **without a token**: click _Copy comment for the pull request_ and paste it as a comment on the
-     pull request.
+     pull request. To change your verdict later, edit that comment or post a new one – only your
+     newest comment counts.
 
 The comment carries a machine-readable block, for example:
 

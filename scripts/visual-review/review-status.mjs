@@ -6,6 +6,8 @@
  * - any route error → failure (the comparison itself is broken, nothing to approve)
  * - an item is approved when a reviewer with write access approved its hash (or the whole report
  *   digest) and nobody rejected that hash; a rejection wins over an approval → failure
+ * - only the newest comment of each reviewer counts: a reviewer who pastes a fresh comment instead
+ *   of editing the old one replaces their earlier verdicts, they do not accumulate
  * - success once every changed/added/removed item is approved; pending otherwise
  */
 export const NEEDS_APPROVAL = new Set(['changed', 'added', 'removed']);
@@ -22,7 +24,7 @@ export function itemKey(pkg, item) {
  *   the author's repository permission (`admin`, `maintain`, `write`, `triage`, `read`, `none`)
  */
 export function computeStatus(report, reviews) {
-	const trusted = reviews.filter((review) => review.data && WRITE_ROLES.has(review.role));
+	const trusted = latestPerAuthor(reviews.filter((review) => review.data && WRITE_ROLES.has(review.role)));
 	const items = {};
 	let open = 0;
 	let approved = 0;
@@ -95,6 +97,16 @@ export function computeStatus(report, reviews) {
 			items,
 		},
 	};
+}
+
+/** One review per author – the most recently updated comment; on equal timestamps the later one. */
+function latestPerAuthor(reviews) {
+	const latest = new Map();
+	for (const review of reviews) {
+		const current = latest.get(review.author);
+		if (!current || Date.parse(review.updatedAt ?? 0) >= Date.parse(current.updatedAt ?? 0)) latest.set(review.author, review);
+	}
+	return [...latest.values()];
 }
 
 function describeChanges(report) {

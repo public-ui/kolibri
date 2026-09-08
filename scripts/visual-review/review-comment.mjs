@@ -15,12 +15,16 @@
  * `approveAll.digest` approves the whole report whose digest matches – the way to approve hundreds of
  * changes (browser bump) without exceeding GitHub's comment size.
  *
+ * A reviewer may edit the comment or post a new one – the status workflow counts only the newest
+ * comment per reviewer (review-status.mjs).
+ *
  * The review page (packages/tools/visual-tests/review-ui) writes this format; the status workflow
  * reads it. Keep both in sync.
  */
 export const MARKER = 'visual-review:v1';
 const BLOCK = /<!--\s*visual-review:v1\s*([\s\S]*?)-->/;
-const ITEM_KEY = /^[a-z0-9-]+\/[a-z0-9-]+$/;
+// `<package>/<snapshot name>` – names keep the case of the sample route (`…-noColumns--label`).
+const ITEM_KEY = /^[a-z0-9-]+\/[A-Za-z0-9_-]+$/;
 const HASH = /^sha256:[0-9a-f]{64}$/;
 
 /** Parses the block of a comment body; `null` when the comment carries none or an invalid one. */

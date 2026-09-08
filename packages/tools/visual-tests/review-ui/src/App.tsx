@@ -364,7 +364,7 @@ export function App() {
 						<button type="submit" disabled={!token || !repository}>
 							Connect
 						</button>
-						<span className="hint">Without a token, copy the generated comment and post it on the pull request yourself.</span>
+						<span className="hint">Without a token, copy the generated comment and post it on the pull request yourself. Only your newest comment counts.</span>
 					</form>
 				)}
 			</footer>
