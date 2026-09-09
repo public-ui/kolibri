@@ -14,8 +14,7 @@
 		font-weight: 400;
 		font-style: normal;
 
-		&:focus,
-		&__button:focus {
+		&__interactive-element:focus {
 			outline: none;
 
 			--text-border-radius: var(--border-radius);
@@ -27,13 +26,13 @@
 		}
 
 		&__text {
-			@at-root #{$root}__button:focus & {
+			@at-root #{$root}__interactive-element:focus & {
 				outline: var(--text-outline);
 				border-radius: var(--text-border-radius);
 			}
 
 			.kol-span__label {
-				@at-root #{$root}__button:is(:focus, :hover):not([aria-disabled], [disabled]) & {
+				@at-root #{$root}__interactive-element:is(:focus, :hover):not([aria-disabled], [disabled]) & {
 					text-decoration-thickness: 0.25em;
 				}
 			}

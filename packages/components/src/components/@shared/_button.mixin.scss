@@ -19,7 +19,6 @@
 		display: flex;
 		height: 100%;
 		min-height: var(--a11y-min-size);
-		font-style: to-rem(16);
 		text-decoration-line: none;
 
 		/* The interactive element is the flex container positioning the text, so it carries the
@@ -75,9 +74,9 @@
 		margin: 0;
 		padding: 0;
 
-		/* User-agent stylesheets center button text; a `div` inherits instead, so the old
-		   inherited alignment (usually `left` from the a11y `:host` rule) has to be replicated
-		   explicitly for the inner content to sit at the same position as before. */
+		/* The user-agent stylesheet centers text on `button`, but not on `div`. The wrapper now
+		   carries the class, so that UA default has to be restated here for the inner content to
+		   sit where it did when the button element itself was the class carrier. */
 		text-align: center;
 
 		/* Replicate the reset the real button received: width stays at the initial `medium`, only
@@ -90,12 +89,11 @@
 			display: block;
 			border-width: medium;
 
-			font-weight: inherit;
-
 			/* The UA pins `text-align: center` and (in Firefox) `font-weight: 400` directly on every
-			   `button`, which would beat any alignment or font weight inherited through the wrapper
+			   `button`, which would beat any alignment or font styling inherited through the wrapper
 			   (e.g. nav's `text-align: left`, or a bold active entry that used to apply to the button
-			   element itself). Inheriting restores the old flow. */
+			   element itself). Inheriting all three restores the old flow. */
+			font-weight: inherit;
 			font-style: inherit;
 			text-align: inherit;
 		}

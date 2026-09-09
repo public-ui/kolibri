@@ -26,7 +26,7 @@
 					}
 				}
 
-				&__button:focus-visible {
+				&__interactive-element:focus-visible {
 					@include focus-outline($angularBorder: true);
 				}
 

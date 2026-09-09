@@ -66,7 +66,10 @@
 						outline: 3px solid Highlight;
 						outline-offset: -3px;
 
-						&:focus-visible {
+						/* The outline sits on the wrapper, but only the inner button can receive focus.
+						   Matching `:focus-visible` on the wrapper itself would never fire, so the
+						   focused state has to be detected through the interactive element. */
+						&:has(.kol-button__interactive-element:focus-visible) {
 							outline-style: dashed;
 						}
 					}

@@ -70,11 +70,11 @@
 					display: none;
 				}
 
-				&:not(:disabled):hover {
+				&__interactive-element:not(:disabled):hover {
 					background: var(--color-dark-blue-100-06);
 				}
 
-				&__button:focus {
+				&__interactive-element:focus {
 					background: var(--color-dark-blue-100-06);
 					outline: var(--color-dark-blue-100) solid 2px;
 					border-radius: 3px;

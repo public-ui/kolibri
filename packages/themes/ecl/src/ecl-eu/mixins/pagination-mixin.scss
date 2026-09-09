@@ -15,19 +15,19 @@
 			--kolibri-spacing: #{to-rem(4)};
 			border-radius: 4px;
 
-			&:focus,
-			&__button:focus {
+			&__interactive-element:focus {
 				outline: none;
 			}
 
-			&:focus-visible .kol-button__text,
-			&__button:focus-visible .kol-button__text {
+			&__interactive-element:focus-visible .kol-button__text {
 				outline: 2px solid var(--color-black);
 				outline-offset: -4px;
 			}
 
-			&:not(:disabled):active .kol-button__text,
-			&:not(:disabled):hover .kol-button__text {
+			/* State predicates live on the interactive element: the wrapper never receives
+			   `:disabled`, so `:not(:disabled)` would always match and `:disabled` never would. */
+			&__interactive-element:not(:disabled):active .kol-button__text,
+			&__interactive-element:not(:disabled):hover .kol-button__text {
 				background-color: #fc0;
 				box-shadow:
 					0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
@@ -37,7 +37,7 @@
 				border-color: #fc0;
 			}
 
-			&:disabled .kol-button__text {
+			&__interactive-element:disabled .kol-button__text {
 				opacity: 0.5;
 				cursor: not-allowed;
 			}
