@@ -15,7 +15,7 @@
 	"postUpdateOptions": ["pnpmDedupe"],
 	"platformAutomerge": true,
 	"minimumReleaseAge": "3 days",
-	"automergeStrategy": "squash",
+	"automergeStrategy": "merge",
 	"configMigration": true,
 	"dependencyDashboardOSVVulnerabilitySummary": "all",
 	"baseBranchPatterns": ["develop"],
