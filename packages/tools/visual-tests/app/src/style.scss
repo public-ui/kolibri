@@ -3,6 +3,13 @@
 :root {
 	--kolibri-root-font-size: 100;
 	font-size: 625%;
+
+	/* Lets the page behind the components follow the emulated scheme, so the full page snapshots of
+	   a dark run do not frame dark components with a white canvas. The light branch is the browser
+	   default, so light baselines are unaffected. */
+	background-color: light-dark(#ffffff, #14181a);
+
+	color-scheme: light dark;
 }
 
 body {

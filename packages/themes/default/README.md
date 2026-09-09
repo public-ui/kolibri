@@ -94,24 +94,32 @@ Want to improve or customize the Default Theme? Here’s how:
 
 The following tokens are defined in `src/global.scss` and serve as the base for colors, fonts, and spacing across all components. You can override them via CSS:
 
-| Token                     | Default value                                                                | Meaning                      |
-| ------------------------- | ---------------------------------------------------------------------------- | ---------------------------- |
-| `--border-radius`         | `var(--kolibri-border-radius, 5px)`                                          | Default border radius        |
-| `--font-family`           | `var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif)` | Default font                 |
-| `--font-size`             | `var(--kolibri-font-size, #{to-rem(16)})`                                    | Base font size               |
-| `--spacing`               | `var(--kolibri-spacing, #{to-rem(4)})`                                       | Standard spacing             |
-| `--border-width`          | `var(--kolibri-border-width, 1px)`                                           | Border width                 |
-| `--color-primary`         | `var(--kolibri-color-primary, #004b76)`                                      | Primary accent color         |
-| `--color-primary-variant` | `var(--kolibri-color-primary-variant, #0077b6)`                              | Variant of the primary color |
-| `--color-secondary`       | `var(--kolibri-color-secondary, #ccebf7)`                                    | Secondary color              |
-| `--color-danger`          | `var(--kolibri-color-danger, #b4003c)`                                       | Error color                  |
-| `--color-warning`         | `var(--kolibri-color-warning, #c44931)`                                      | Warning color                |
-| `--color-success`         | `var(--kolibri-color-success, #005c45)`                                      | Success color                |
-| `--color-subtle`          | `var(--kolibri-color-subtle, #576164)`                                       | Subtle lines and borders     |
-| `--color-light`           | `var(--kolibri-color-light, #ffffff)`                                        | Light surface color          |
-| `--color-text`            | `var(--kolibri-color-text, #202020)`                                         | Standard text color          |
-| `--color-mute`            | `var(--kolibri-color-mute, #f2f3f4)`                                         | Muted color                  |
-| `--color-mute-variant`    | `var(--kolibri-color-mute-variant, #bec5c9)`                                 | Alternate muted color        |
+| Token                     | Overridable with                  | Light                                 | Dark                                  | Meaning                                      |
+| ------------------------- | --------------------------------- | ------------------------------------- | ------------------------------------- | -------------------------------------------- |
+| `--border-radius`         | `--kolibri-border-radius`         | `5px`                                 | `5px`                                 | Default border radius                        |
+| `--inner-border-radius`   | `--kolibri-border-radius`         | `4px`                                 | `4px`                                 | Border radius of nested elements             |
+| `--font-family`           | `--kolibri-font-family`           | `Verdana, …`                          | `Verdana, …`                          | Default font                                 |
+| `--font-size`             | `--kolibri-font-size`             | `1rem`                                | `1rem`                                | Base font size                               |
+| `--spacing`               | `--kolibri-spacing`               | `0.25rem`                             | `0.25rem`                             | Standard spacing                             |
+| `--border-width`          | `--kolibri-border-width`          | `1px`                                 | `1px`                                 | Border width                                 |
+| `--color-primary`         | `--kolibri-color-primary`         | `#003a5c`                             | `#86c5ea`                             | Primary accent color                         |
+| `--color-primary-variant` | `--kolibri-color-primary-variant` | `#005a8f`                             | `#b6dff6`                             | Hover and focus variant of the primary color |
+| `--color-secondary`       | `--kolibri-color-secondary`       | `#ccebf7`                             | `#193743`                             | Secondary color                              |
+| `--color-danger`          | `--kolibri-color-danger`          | `#ad003a`                             | `#f391b1`                             | Error color                                  |
+| `--color-warning`         | `--kolibri-color-warning`         | `#c44931`                             | `#f29988`                             | Warning color                                |
+| `--color-success`         | `--kolibri-color-success`         | `#005c45`                             | `#69d3b9`                             | Success color                                |
+| `--color-subtle`          | `--kolibri-color-subtle`          | `#576164`                             | `#a1acaf`                             | Subtle lines, borders and secondary text     |
+| `--color-light`           | `--kolibri-color-light`           | `#ffffff`                             | `#1c2021`                             | Surface, and the color used _on_ an accent   |
+| `--color-text`            | `--kolibri-color-text`            | `#202020`                             | `#e9ebec`                             | Standard text color                          |
+| `--color-mute`            | `--kolibri-color-mute`            | `#f2f3f4`                             | `#272c2f`                             | Muted surface                                |
+| `--color-mute-variant`    | `--kolibri-color-mute-variant`    | `#bec5c9`                             | `#41494e`                             | Dividers and alternate muted surface         |
+| `--color-visited`         | `--kolibri-color-visited`         | `#551a8b`                             | `#c39de7`                             | Visited link                                 |
+| `--color-ink`             | `--kolibri-color-ink`             | `#000000`                             | `#e9ebec`                             | Maximum contrast foreground                  |
+| `--color-shadow`          | `--kolibri-color-shadow`          | `rgb(8 35 48 / .24)`                  | `rgb(0 0 0 / .6)`                     | Ambient elevation shadow                     |
+| `--color-shadow-inverse`  | `--kolibri-color-shadow-inverse`  | `rgb(255 255 255 / .24)`              | `rgb(8 35 48 / .24)`                  | The same, cast on an accent surface          |
+| `--color-shadow-contrast` | `--kolibri-color-shadow-contrast` | `--color-subtle` mixed 80% with black | `--color-subtle` mixed 80% with white | Shadow used as a 3:1 border                  |
+
+`--color-light` is not "white". It is the surface _and_ the color placed on an accent: in dark mode the surface becomes dark and the accents become light tints, so both roles flip together and a light-blue primary automatically carries dark text.
 
 To adjust the design tokens, create a stylesheet that overrides the desired custom properties. Example:
 
@@ -124,6 +132,45 @@ To adjust the design tokens, create a stylesheet that overrides the desired cust
 	--kolibri-color-primary-variant: #ff64b9;
 }
 ```
+
+A single value like this applies in **both** color schemes. To give a token a different value per scheme, write the two-branch form yourself:
+
+```css
+:root {
+	--kolibri-color-primary: light-dark(#cc006e, #ff9ad4);
+}
+```
+
+## Dark mode
+
+The theme ships one palette per color scheme. Every color token resolves through the CSS `light-dark()` function against the `color-scheme` the components declare on their own host element:
+
+```css
+:host {
+	color-scheme: var(--kolibri-color-scheme, light dark);
+}
+```
+
+**Following the operating system** needs no configuration. With `--kolibri-color-scheme` unset, the fallback `light dark` lets `prefers-color-scheme` decide, and the components switch on their own.
+
+**Taking control from the application** means setting `--kolibri-color-scheme`. The bundled document stylesheet maps a data attribute and a class onto it:
+
+```html
+<link rel="stylesheet" href="node_modules/@public-ui/theme-default/color-scheme.css" />
+
+<html data-kol-color-scheme="dark">
+	<!-- or: <html class="kol-color-scheme-dark"> -->
+</html>
+```
+
+Both `color-scheme` and custom properties inherit along the flat tree, so the switch reaches every KoliBri component below the element that carries it — including nested shadow roots. Putting the attribute on an inner container therefore flips only that subtree.
+
+Two things worth knowing:
+
+- The components follow the operating system without `color-scheme.css`. The stylesheet exists for the surrounding page (background, scrollbars, native form controls) and for the explicit switch. An application that already declares `color-scheme` on `<html>` must set `--kolibri-color-scheme` next to it: a plain `color-scheme` on an ancestor is shadowed by the components' own declaration and does not reach their shadow roots.
+- `kol-spin`'s cycle variant animates its arc through `@keyframes` color stops in the base layer of `@public-ui/components`. A theme cannot override an animation's own color stops, so that arc stays dark in dark mode. Its static ring and the dot variant do follow the scheme.
+
+Browser support follows `light-dark()`: Chrome 123, Edge 123, Safari 17.5, Firefox 120.
 
 ## More Information
 

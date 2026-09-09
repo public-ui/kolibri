@@ -1,0 +1,31 @@
+/*
+ * Dark counterparts of the theme palette.
+ *
+ * These are SASS variables on purpose: only the `--color-*` tokens declared in `global.scss` are a
+ * documented customization point. The raw values are resolved at build time so they cannot leak
+ * into the global cascade and become an unintended part of the public API.
+ *
+ * Each value keeps the hue of its light counterpart and mirrors its lightness, with the saturation
+ * moderated for a dark canvas. `--color-light` is not "white" but "the surface, and the color used
+ * *on* an accent" — both roles flip together, so a light-blue primary automatically carries dark
+ * text in dark mode and no usage has to be split into a second token.
+ */
+$dark-color-primary: #86c5ea;
+$dark-color-primary-variant: #b6dff6;
+$dark-color-secondary: #193743;
+$dark-color-danger: #f391b1;
+$dark-color-warning: #f29988;
+$dark-color-success: #69d3b9;
+$dark-color-subtle: #a1acaf;
+$dark-color-light: #1c2021;
+$dark-color-text: #e9ebec;
+$dark-color-mute: #272c2f;
+$dark-color-mute-variant: #41494e;
+$dark-color-visited: #c39de7;
+
+/*
+ * Maximum contrast foreground. The light branch is pure black on purpose: the base layer of
+ * `@public-ui/components` hardcodes `black` in a handful of places, and the theme neutralizes those
+ * with this token without moving a single light-mode pixel.
+ */
+$dark-color-ink: $dark-color-text;

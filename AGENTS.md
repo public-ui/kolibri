@@ -222,6 +222,38 @@ In the theme component layer, you can set what ever you need to realize your own
 }
 ```
 
+### Color schemes
+
+A theme carries one palette per color scheme in a single declaration, resolved by the CSS
+`light-dark()` function against the `color-scheme` the theme declares on `:host`:
+
+```scss
+@layer kol-theme-global {
+	:host {
+		--color-text: var(--kolibri-color-text, light-dark(#202020, #{$dark-color-text}));
+
+		color-scheme: var(--kolibri-color-scheme, light dark);
+	}
+}
+```
+
+Rules that hold for every theme:
+
+- **Never** write `@media (prefers-color-scheme: …)` in a theme. The scheme travels through the
+  inherited `color-scheme` property, which crosses the shadow boundary along the flat tree.
+- Left unset, the fallback `light dark` hands the decision to the operating system. An application
+  takes it back by setting `--kolibri-color-scheme` to `light` or `dark` on any ancestor — a custom
+  property, because a plain `color-scheme` on an ancestor is shadowed by the rule above.
+- Sass does not evaluate variables inside `var()`. Interpolate them (`#{$dark-color-text}`).
+- The base layer hardcodes `black` and `white` in a few places. Where it routes them through a
+  token, override the token (`--kol-a11y-font-color` / `--kol-a11y-background-color` in `a11y.scss`
+  are the sanctioned hook for the host box of every component); elsewhere restate the declaration in
+  a theme layer, which sits above `kol-a11y`, `kol-global` and `kol-component`. Keep the light
+  branch byte identical to the base value so no light snapshot moves.
+- What a theme layer cannot reach are the color stops of a `@keyframes` rule declared in the base
+  layer: an animation's own values win over any normal declaration, whatever the layer. Such a case
+  needs a change in `packages/components`.
+
 ### CSS Custom Properties and SASS Variables
 
 CSS custom properties remain part of the global cascade and are not isolated by the Shadow DOM.

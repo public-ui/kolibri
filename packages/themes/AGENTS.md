@@ -23,6 +23,9 @@ This folder collects all official KoliBri themes. Each theme package under this 
 - Reuse mixins from the `mixins/` folder and use the `to-rem()` helper for sizing.
 - Place theme tokens (colors, fonts, spacing, etc.) in the global layer and reference them in component styles.
 - Avoid `!important` and only override properties that the theme actually customises.
+- Colour tokens are declared as `--color-X: var(--kolibri-color-X, light-dark(<light>, <dark>))` in the theme global layer, and `color-scheme` is declared once on `:host` as `var(--kolibri-color-scheme, light dark)`. Never write a `@media (prefers-color-scheme: …)` block in a theme — the scheme travels through the inherited `color-scheme` property and is resolved by `light-dark()`.
+- Sass does not evaluate variables inside `var()`. Interpolate them: `light-dark(#202020, #{$dark-color-text})`.
+- Never hardcode `white`, `black` or a raw hex in a theme. Use `--color-light` for surfaces and for text on an accent, `--color-ink` where the base layer needs a maximum contrast foreground, and the `--color-shadow*` tokens for shadows.
 
 ## Consistency
 

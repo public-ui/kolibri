@@ -5,6 +5,11 @@
 	@include kol-icon-theme;
 	.kol-skip-nav {
 		.kol-link {
+			// The base layer paints the focused anchor white.
+			&__anchor:focus {
+				background-color: var(--color-light);
+			}
+
 			&__text {
 				color: var(--color-light);
 				background-color: var(--color-primary-variant);
