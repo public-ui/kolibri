@@ -18,7 +18,7 @@
 	"automergeStrategy": "squash",
 	"configMigration": true,
 	"dependencyDashboardOSVVulnerabilitySummary": "all",
-	"baseBranchPatterns": ["develop", "release/3", "release/2", "release/1"],
+	"baseBranchPatterns": ["develop"],
 	"lockFileMaintenance": {
 		"enabled": true
 	},
