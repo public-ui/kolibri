@@ -76,5 +76,7 @@ $env:ENABLE_THEME_PATCHING="true"; pnpm start
 
 ## Notes
 
+- `pnpm start` builds the workspace dependencies first (`build:deps`), so it never serves a stale theme package. `pnpm serve` skips that step on purpose: it is what `serve.sh` of a theme package calls while that package's own `rollup --watch` already owns its `dist`.
+
 - Keep theme modules built before injecting them; use `pnpm --filter @public-ui/themes build` if you are working on a local theme.
 - Assets are copied into `public/assets` via `pnpm prepare:components` and `pnpm prepare:themes`.

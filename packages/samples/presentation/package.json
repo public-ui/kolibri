@@ -15,6 +15,7 @@
 		"lint:eslint": "eslint src",
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
+		"prestart": "pnpm build:deps",
 		"prebuild": "kolibri-copy-assets --dest public/assets @public-ui/components @public-ui/theme-bwst @public-ui/theme-default @public-ui/theme-desy @public-ui/theme-ecl @public-ui/theme-kern @public-ui/sample-react",
 		"prepare": "pnpm prebuild",
 		"serve": "vite",

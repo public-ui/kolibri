@@ -181,6 +181,8 @@ The presentation app (`packages/samples/presentation`) is a live example: its Si
 
 Browser support follows `light-dark()`: Chrome 123, Edge 123, Safari 17.5, Firefox 120.
 
+**One pitfall worth knowing** if you write `light-dark()` in your own stylesheets, `color-scheme.css` included: a bundler that minifies CSS against an older browser target rewrites the function into a `prefers-color-scheme` media query with space toggles. That replacement ignores the `color-scheme` property. The theme's own CSS is never affected — it is a string adopted into the shadow roots at runtime — so your page would follow the operating system while the components in it follow whatever you set. Pin your CSS target at or above the browsers listed above; in Vite that is `build.cssTarget`.
+
 ## More Information
 
 - [Documentation](https://public-ui.github.io)

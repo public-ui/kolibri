@@ -248,6 +248,12 @@ Rules that hold for every theme:
   application that declares nothing stays light, whatever the operating system says. Dark mode is
   opt-in; `color-scheme.css` in a theme package ships that one line plus the page colors.
 - Sass does not evaluate variables inside `var()`. Interpolate them (`#{$dark-color-text}`).
+- An application stylesheet that uses `light-dark()` must not be downlevelled. A CSS minifier
+  targeting older browsers rewrites it into a `prefers-color-scheme` media query with space
+  toggles, and that replacement ignores the `color-scheme` property. A theme's CSS is a string
+  adopted into the shadow roots at runtime and is never processed by the application's CSS
+  pipeline, so the page would follow the operating system while the components follow
+  `color-scheme`. Both sample host apps therefore pin `build.cssTarget` in their Vite config.
 - The base layer hardcodes `black` and `white` in a few places. Where it routes them through a
   token, override the token (`--kol-a11y-font-color` / `--kol-a11y-background-color` in `a11y.scss`
   are the sanctioned hook for the host box of every component); elsewhere restate the declaration in
