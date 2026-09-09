@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "120 changed – 0 of 120 approved, review pending",
-	"computedAt": "2026-09-08T22:32:47.525Z",
+	"description": "117 changed – 0 of 117 approved, review pending",
+	"computedAt": "2026-09-09T05:16:33.104Z",
 	"pr": 10734,
-	"head": "94937405b1568dd4f3440b1384778104e68dd9f5",
-	"digest": "sha256:f26717dda97df04ab3ee2fdfc9c3c2baf050301456443838f08f1b909e4463b0",
+	"head": "1f327f28d91db9f862d74c15bd620dc7eed47a48",
+	"digest": "sha256:e4c3235475f8bcd4f3e7155ffca758fa9fdf73ed2dbb101f3c4fcc513744526c",
 	"counts": {
-		"changes": 120,
-		"open": 120,
+		"changes": 117,
+		"open": 117,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -72,10 +72,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"test-tag-name-transformer/scenarios-focus-elements-component-buttonLink": {
-			"state": "open",
-			"notes": []
-		},
 		"test-tag-name-transformer/scenarios-focus-elements-component-details": {
 			"state": "open",
 			"notes": []
@@ -136,10 +132,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-bwst/scenarios-focus-elements-component-buttonLink": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-default/dialog-basic-show-dialog-true": {
 			"state": "open",
 			"notes": []
@@ -193,10 +185,6 @@
 			"notes": []
 		},
 		"theme-default/scenarios-focus-elements-component-button": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/scenarios-focus-elements-component-buttonLink": {
 			"state": "open",
 			"notes": []
 		},

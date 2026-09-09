@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 10734,
-	"head": "94937405b1568dd4f3440b1384778104e68dd9f5",
+	"head": "1f327f28d91db9f862d74c15bd620dc7eed47a48",
 	"repository": "public-ui/kolibri",
-	"runId": 34284724367,
-	"generatedAt": "2026-09-08T22:32:47.133Z",
-	"digest": "sha256:f26717dda97df04ab3ee2fdfc9c3c2baf050301456443838f08f1b909e4463b0",
+	"runId": 34312893192,
+	"generatedAt": "2026-09-09T05:16:32.599Z",
+	"digest": "sha256:e4c3235475f8bcd4f3e7155ffca758fa9fdf73ed2dbb101f3c4fcc513744526c",
 	"baseline": {
 		"sha": "2bf6b78695390375aa598a53e9f2fd5004bd6e3f",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2736,
-		"changed": 120,
+		"unchanged": 2739,
+		"changed": 117,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 389,
-				"changed": 19,
+				"unchanged": 390,
+				"changed": 18,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:9c73bfc5130d9761e6987178e45a7c19ab5b8fdbe6733fde884c5e8916b294d3",
+			"digest": "sha256:aee0978c0364b656c8f88f2a018d597dc226bd0e373dd76c3643f122119ad7e6",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2103,14 +2103,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-buttonLink",
-					"route": "scenarios/focus-elements?component=buttonLink",
-					"status": "changed",
-					"hash": "sha256:1c80b26ef26b39af210d7df2a2ed85032b5cb386f2cc1db4c1ff6a9630e46a27",
-					"diffPixels": 232,
-					"diffRatio": 0.014591,
-					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-buttonLink.expected.png",
-					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-buttonLink.actual.png",
-					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-buttonLink.diff.png"
+					"route": "scenarios-focus-elements-component-buttonLink",
+					"status": "unchanged",
+					"hash": "sha256:fa91c160506c46da5a8e3560bdfe8665e21c93990346e2e4c0682e45be39553a"
 				},
 				{
 					"name": "scenarios-focus-elements-component-card",
@@ -2777,13 +2772,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 396,
-				"changed": 12,
+				"unchanged": 397,
+				"changed": 11,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:b4dfa2d589bf10289d8d8e0c17b031b05b7628bbd7e09cde1f4b7d28fc25e9c1",
+			"digest": "sha256:98c52b543b7e547b373add78d34b3538da205986f6eb4393ffed49d6a538452a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4812,14 +4807,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-buttonLink",
-					"route": "scenarios/focus-elements?component=buttonLink",
-					"status": "changed",
-					"hash": "sha256:b3380ea582b72c5526b9189ca786066973988e6fdb4328a239748617d9073753",
-					"diffPixels": 263,
-					"diffRatio": 0.016235,
-					"expected": "theme-bwst/scenarios-focus-elements-component-buttonLink.expected.png",
-					"actual": "theme-bwst/scenarios-focus-elements-component-buttonLink.actual.png",
-					"diff": "theme-bwst/scenarios-focus-elements-component-buttonLink.diff.png"
+					"route": "scenarios-focus-elements-component-buttonLink",
+					"status": "unchanged",
+					"hash": "sha256:21304fe4354955bb78bea1a26b843167fdb68562e2e7886d224314e440a1928d"
 				},
 				{
 					"name": "scenarios-focus-elements-component-card",
@@ -5426,13 +5416,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 389,
-				"changed": 19,
+				"unchanged": 390,
+				"changed": 18,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:9c73bfc5130d9761e6987178e45a7c19ab5b8fdbe6733fde884c5e8916b294d3",
+			"digest": "sha256:aee0978c0364b656c8f88f2a018d597dc226bd0e373dd76c3643f122119ad7e6",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7486,14 +7476,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-buttonLink",
-					"route": "scenarios/focus-elements?component=buttonLink",
-					"status": "changed",
-					"hash": "sha256:1c80b26ef26b39af210d7df2a2ed85032b5cb386f2cc1db4c1ff6a9630e46a27",
-					"diffPixels": 232,
-					"diffRatio": 0.014591,
-					"expected": "theme-default/scenarios-focus-elements-component-buttonLink.expected.png",
-					"actual": "theme-default/scenarios-focus-elements-component-buttonLink.actual.png",
-					"diff": "theme-default/scenarios-focus-elements-component-buttonLink.diff.png"
+					"route": "scenarios-focus-elements-component-buttonLink",
+					"status": "unchanged",
+					"hash": "sha256:fa91c160506c46da5a8e3560bdfe8665e21c93990346e2e4c0682e45be39553a"
 				},
 				{
 					"name": "scenarios-focus-elements-component-card",
