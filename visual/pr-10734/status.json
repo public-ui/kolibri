@@ -1,16 +1,16 @@
 {
 	"schema": 1,
 	"state": "failure",
-	"description": "1 of 117 visual changes rejected",
-	"computedAt": "2026-09-09T05:48:01.001Z",
+	"description": "6 of 117 visual changes rejected",
+	"computedAt": "2026-09-09T06:03:12.874Z",
 	"pr": 10734,
 	"head": "f40419629178199cf680ed1e9f10e7b58084446b",
 	"digest": "sha256:e4c3235475f8bcd4f3e7155ffca758fa9fdf73ed2dbb101f3c4fcc513744526c",
 	"counts": {
 		"changes": 117,
-		"open": 116,
-		"approved": 0,
-		"rejected": 1,
+		"open": 88,
+		"approved": 23,
+		"rejected": 6,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
@@ -19,72 +19,89 @@
 	],
 	"items": {
 		"test-tag-name-transformer/dialog-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-file-basic-noColumns--hide-label-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-file-basic-noColumns--label-access-key": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-file-basic-noColumns--label-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-file-basic-noColumns--label-error": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-file-basic-noColumns--label-msg-default": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-file-basic-noColumns--label-msg-info": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-file-basic-noColumns--label-msg-success": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-file-basic-noColumns--label-msg-warning": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-file-basic-noColumns--label-multiple": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-file-basic-noColumns--label-short-key": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/modal-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/popover-button-inline--inline": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/scenarios-focus-elements-component-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/scenarios-focus-elements-component-details": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/scenarios-focus-elements-component-linkButton": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/scenarios-focus-elements-component-popoverButton": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/scenarios-focus-elements-component-toolbar": {
 			"state": "rejected",
@@ -444,48 +461,59 @@
 			"notes": []
 		},
 		"unstyled/input-file-basic-noColumns--hide-label-error": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/input-file-basic-noColumns--label-access-key": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/input-file-basic-noColumns--label-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/input-file-basic-noColumns--label-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/input-file-basic-noColumns--label-msg-default": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/input-file-basic-noColumns--label-msg-info": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/input-file-basic-noColumns--label-msg-success": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/input-file-basic-noColumns--label-msg-warning": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/input-file-basic-noColumns--label-multiple": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/input-file-basic-noColumns--label-short-key": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/popover-button-inline--inline": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [],
+			"by": "deleonio"
 		}
 	}
 }
