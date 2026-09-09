@@ -1,0 +1,1 @@
+import{St as e}from"./index-DN94C-9D.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
