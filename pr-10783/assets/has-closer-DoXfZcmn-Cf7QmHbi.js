@@ -1,1 +1,0 @@
-import{wt as e}from"./index-DIzetAgc.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
