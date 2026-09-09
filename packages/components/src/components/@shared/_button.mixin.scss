@@ -36,6 +36,15 @@
 
 			text-align: left;
 			text-decoration-line: none;
+
+			/* A flex container only exposes a baseline if it has an in-flow text box to derive one
+			   from; without it the surrounding inline formatting context falls back to the bottom
+			   margin edge and everything after the element shifts by 1px. The zero-width space
+			   supplies that box. Measured, not assumed: removing it turns `popover-button/inline`
+			   and `input-file/basic` red against the develop baseline (the box grows 179→180px). */
+			&::before {
+				content: '\200B';
+			}
 		}
 
 		&__text {
