@@ -132,9 +132,23 @@ App (`APP_ID` / `PRIVATE_KEY` secrets, shared with _04 - Update pnpm Lock_).
 To activate it:
 
 1. Ensure that GitHub App installation grants **contents: write**, **pull-requests: write**,
-   **issues: write** (for the Dependency Dashboard) and **workflows: write** (so the `github-actions`
-   manager may update `.github/workflows/*`). _Alternative:_ replace the app-token step with a
+   **issues: write** (for the Dependency Dashboard), **workflows: write** (so the `github-actions`
+   manager may update `.github/workflows/*`), **commit statuses: write** and
+   **Dependabot alerts: read**. _Alternative:_ replace the app-token step with a
    `RENOVATE_TOKEN` PAT/fine-grained token carrying the same scopes.
+
+   > **Commit statuses: write is not optional.** `minimumReleaseAge` makes Renovate post a
+   > `renovate/stability-days` commit status on every branch that still holds a pending release.
+   > Without the permission that `POST /repos/:owner/:repo/statuses/:sha` returns
+   > `403 integration-unauthorized`, which Renovate reports as `repository-changed` and which
+   > **aborts the whole run**. Because branches are processed sequentially, everything after the
+   > first affected branch is skipped: no automerge check for open PRs, and no PR creation for
+   > branches that already exist. The run still ends as a green workflow, so the failure is silent
+   > — look for `result: "repository-changed"` in the log.
+   >
+   > Without **Dependabot alerts: read** every run logs
+   > `Cannot access vulnerability alerts`, and `vulnerabilityAlerts` stays inactive; security PRs
+   > then only come from `osvVulnerabilityAlerts`.
 2. For automerge to work end to end, check three repository settings:
    - **Settings → General → Pull Requests → Allow auto-merge**: enabled (Renovate uses
      `platformAutomerge`, i.e. GitHub's native auto-merge).
