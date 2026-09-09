@@ -1,1 +1,0 @@
-import{wt as e}from"./index-DJATxL2S.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};
