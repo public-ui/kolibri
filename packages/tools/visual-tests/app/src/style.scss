@@ -79,9 +79,9 @@ hr {
 	}
 
 	.app-sidebar {
-		background-color: white;
+		background-color: light-dark(#ffffff, #1c2021);
 		max-height: calc(100vh - 32px);
-		border-right: 1px solid gray;
+		border-right: 1px solid light-dark(gray, #41494e);
 
 		& .scrollable-container-wrapper {
 			display: flex;

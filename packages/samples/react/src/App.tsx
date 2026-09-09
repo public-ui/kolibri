@@ -6,6 +6,7 @@ import PackageJson from '@public-ui/components/package.json';
 
 import { BackPage } from './components/BackPage';
 import { Sidebar } from './components/Sidebar';
+import { useColorScheme } from './hooks/useColorScheme';
 import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
 import { useVisualBlockOutline } from './hooks/useVisualBlockOutline';
 import { HideMenusContext } from './shares/HideMenusContext';
@@ -142,6 +143,7 @@ export const App: FC<Props> = ({ customThemes }) => {
 	setTheme(theme); // set for `getTheme` usages within the application
 	useSetCurrentLocation();
 	useVisualBlockOutline();
+	const [colorScheme, setColorScheme] = useColorScheme();
 
 	useEffect(() => {
 		document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
@@ -150,7 +152,12 @@ export const App: FC<Props> = ({ customThemes }) => {
 	}, [theme]);
 
 	const handleThemeChange = (theme: unknown) => {
-		setSearchParams({ theme: theme as string });
+		/* The updater form keeps the other parameters – replacing the object would drop `hideMenus`,
+		   `visualBlocks` and `colorScheme` on every theme change. */
+		setSearchParams((previous) => {
+			previous.set('theme', theme as string);
+			return previous;
+		});
 		window.location.reload();
 	};
 
@@ -177,7 +184,9 @@ export const App: FC<Props> = ({ customThemes }) => {
 						routeList={ROUTE_LIST}
 						buildDate={process.env.BUILD_DATE}
 						commitHash={process.env.COMMIT_HASH}
+						colorScheme={colorScheme}
 						onThemeChange={handleThemeChange}
+						onColorSchemeChange={setColorScheme}
 					/>
 				)}
 

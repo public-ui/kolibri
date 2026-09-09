@@ -170,6 +170,8 @@ Two things worth knowing:
 - The components follow the operating system without `color-scheme.css`. The stylesheet exists for the surrounding page (background, scrollbars, native form controls) and for the explicit switch. An application that already declares `color-scheme` on `<html>` must set `--kolibri-color-scheme` next to it: a plain `color-scheme` on an ancestor is shadowed by the components' own declaration and does not reach their shadow roots.
 - `kol-spin`'s cycle variant animates its arc through `@keyframes` color stops in the base layer of `@public-ui/components`. A theme cannot override an animation's own color stops, so that arc stays dark in dark mode. Its static ring and the dot variant do follow the scheme.
 
+The presentation app (`packages/samples/presentation`) is a live example: its Sidebar carries a Color scheme select with the states Auto, Light and Dark.
+
 Browser support follows `light-dark()`: Chrome 123, Edge 123, Safari 17.5, Firefox 120.
 
 ## More Information

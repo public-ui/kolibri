@@ -23,6 +23,12 @@ The sample is built with **Vite** for fast development and production builds.
 - `src/scenarios` – cross component scenarios
 - `src/shares` – shared utilities
 
+## Color scheme
+
+The Sidebar carries a **Color scheme** select with the states Auto, Light and Dark. Auto leaves `--kolibri-color-scheme` unset so the operating system decides; the other two win over it. The choice applies without a reload and is remembered in `localStorage`, and `?colorScheme=dark` on a route sets it from a link.
+
+The mechanics live in `src/shares/colorScheme.ts` and `src/hooks/useColorScheme.ts`, modelled on the visual block outline next to them. Because this package is mounted by both the presentation app and the visual-test host app, the select appears in both.
+
 ## Installation and usage
 
 ```bash
