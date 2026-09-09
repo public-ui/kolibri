@@ -1,15 +1,15 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "3 visual changes approved by deleonio",
-	"computedAt": "2026-09-09T10:02:34.114Z",
+	"state": "pending",
+	"description": "3 changed – 0 of 3 approved, review pending",
+	"computedAt": "2026-09-09T10:04:10.266Z",
 	"pr": 10734,
 	"head": "421ea1b8e980f2076b0e09f90189dfef3496c677",
 	"digest": "sha256:3f00e385152123ed60bb3b2a117e4f4409a5726f37e3ab5174609cd6080a0720",
 	"counts": {
 		"changes": 3,
-		"open": 0,
-		"approved": 3,
+		"open": 3,
+		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
@@ -19,19 +19,16 @@
 	],
 	"items": {
 		"theme-kern/dialog-basic-show-dialog-true": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-kern/drawer-basic-align-left-closer-true": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-kern/modal-basic-show-dialog-true": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		}
 	}
 }
