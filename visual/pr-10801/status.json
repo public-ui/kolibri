@@ -1,172 +1,212 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "38 changed – 0 of 38 approved, review pending",
-	"computedAt": "2026-09-09T06:15:56.269Z",
+	"state": "failure",
+	"description": "2 of 38 visual changes rejected",
+	"computedAt": "2026-09-09T06:49:55.678Z",
 	"pr": 10801,
 	"head": "75477860861a313846d9f5abf815ef43a5cde408",
 	"digest": "sha256:e5001baedb6d4aff551fea051592c4f73a6334f38f848d1a8caf19dad9bcb09c",
 	"counts": {
 		"changes": 38,
-		"open": 38,
-		"approved": 0,
-		"rejected": 0,
+		"open": 0,
+		"approved": 36,
+		"rejected": 2,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"laske185"
+	],
 	"items": {
 		"test-tag-name-transformer/button-icons--all-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/button-icons--basic-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/button-icons--icon-string": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/button-icons--large-icon": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/button-icons--multiple-positions": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/button-short-key--hide-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/button-short-key--inline-icons": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/button-short-key--short-keys": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/button-variants--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/dialog-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/drawer-basic-align-left": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/drawer-basic-align-left-closer-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/drawer-basic-align-top": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/modal-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/scenarios-focus-elements-component-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/scenarios-same-height-of-all-interactive-elements": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/table-stateless-with-selection--selection": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/table-stateless-with-single-selection--single-selection": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/toast-configurator": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/button-icons--all-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/button-icons--basic-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/button-icons--icon-string": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/button-icons--large-icon": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/button-icons--multiple-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/button-short-key--hide-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/button-short-key--inline-icons": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/button-short-key--short-keys": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/button-variants--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/dialog-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/drawer-basic-align-left": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/drawer-basic-align-left-closer-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/drawer-basic-align-top": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/modal-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/scenarios-focus-elements-component-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/scenarios-same-height-of-all-interactive-elements": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/table-stateless-with-selection--selection": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/table-stateless-with-single-selection--single-selection": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/toast-configurator": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		}
 	}
 }
