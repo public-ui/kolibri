@@ -26,7 +26,11 @@
 					}
 				}
 
-				&__interactive-element:focus-visible {
+				/* Written as a descendant, not `&__interactive-element`: the shared kern button mixin
+				   applies the rounded `focus-outline` to the same element at equal specificity, and
+				   the concatenated form does not outrank it — the tab focus ring would render with
+				   rounded corners instead of the angular ones the predecessor drew. */
+				.kol-button__interactive-element:focus-visible {
 					@include focus-outline($angularBorder: true);
 				}
 
