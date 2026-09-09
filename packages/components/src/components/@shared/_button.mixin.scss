@@ -6,6 +6,12 @@
  * Button styles for a skeleton block whose interactive element sits inside the BEM root:
  * `kol-button` renders `<div class="kol-button"><button class="kol-button__interactive-element">`,
  * `kol-link` renders `<div class="kol-link"><a class="kol-link__interactive-element">`.
+ *
+ * Overlaps with `kol-button-wc-box-styles` below: both target the block class itself and disagree
+ * on `display` and `text-align`. A stylesheet that includes both therefore depends on order or
+ * specificity — today that only happens where the caller nests one of them (e.g. `_alert.mixin`
+ * nests this one under `.kol-alert`, which wins). Include only one per block unless the nesting
+ * makes the winner explicit.
  */
 @mixin kol-button-styles($block-classname) {
 	@include kol-icon-styles();
@@ -62,6 +68,8 @@
  * class but receives none of that automatically, so this mixin replicates the exact outer box,
  * while the inner `kol-button__interactive-element` degrades to a plain block container to avoid
  * the inline-level baseline gap the UA `inline-block` would add below it.
+ *
+ * Mutually exclusive with `kol-button-styles` above — see the collision note there.
  */
 @mixin kol-button-wc-box-styles($block-classname) {
 	.#{$block-classname} {
