@@ -116,7 +116,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 		// then throws on `attachInternals(undefined)` and `watchName` hits an undefined controller —
 		// Stencil swallows that error and renders anyway. Without this line the props config default
 		// `0` would survive such an abort and emit a stray `tabindex="0"`.
-		this.setRenderProp('tabIndex', undefined as unknown as number);
+		this.unsetRenderProp('tabIndex');
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaControls(this._ariaControls);
@@ -414,6 +414,8 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 
 	/**
 	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 	@Watch('_role')
@@ -455,7 +457,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 		if (typeof value === 'number') {
 			tabIndexProp.apply(value, (v) => this.setRenderProp('tabIndex', v));
 		} else {
-			this.setRenderProp('tabIndex', undefined as unknown as number);
+			this.unsetRenderProp('tabIndex');
 		}
 	}
 
