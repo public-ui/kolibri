@@ -40,6 +40,31 @@ sie kehren sich um. Sie gehören vollständig auf `&__interactive-element`, wo `
 in Kombination mit einem `disabled`-Prädikat kippen sie. `:focus` propagiert **nicht**: ein
 `:focus` am Wrapper-`div` trifft nie, der Fokusring fällt ersatzlos aus.
 
+### Zweite Fehlerklasse: Descendant-Selektoren unter dem Block
+
+Die Tabelle oben betrifft Zustands-Prädikate. Es gibt eine zweite, unabhängige Klasse: **jeder
+Descendant-Selektor unter dem Block trifft jetzt zusätzlich den Tooltip**, weil dieser vom
+Geschwister des Buttons zum Kind des Wrappers geworden ist.
+
+```scss
+.kol-button {
+	.kol-span__label {
+		font-weight: 500;
+	} /* trifft jetzt AUCH den Tooltip-Text */
+}
+```
+
+Der Tooltip rendert intern einen `SpanFC` und setzt selbst keine Schrifteigenschaften — er erbt
+und matcht alles, was der Wrapper anbietet. Solche Regeln gehören auf
+`&__interactive-element` (oder ein BEM-Element wie `&__text`, das den Tooltip nicht erfasst).
+
+Das war die tatsächliche Ursache der drei kern-Diffs, die zwischenzeitlich als nicht behebbarer
+Firefox-Bug in der Allowlist standen. Betroffen sind alle Eigenschaften, die im Tooltip sichtbar
+werden können: `font-weight`, `font-size`, `gap`, `font-family`, Farben.
+
+**Diagnose-Merkmal:** identische Geometrie, aber abweichende Pixeldeckung an genau einer Textstelle
+→ Selektor-Reichweite prüfen, nicht Compositing.
+
 **Ein `&__button` gibt es nicht.** Eine frühere Fassung dieser Worklist nannte `&__button` als
 Ziel; dieser Klassenname wurde im Zuge des Reviews zu `__interactive-element` vereinheitlicht
 (Commit `35a74e0661`), damit `kol-button` und `kol-link` dieselbe Struktur haben. Selektoren auf

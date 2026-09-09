@@ -75,15 +75,17 @@ Nachbesserungen aus dem Link-Review-Abgleich:
 
 ## Offene Arbeit, nach Priorität
 
-### 1. GOAL: Zero Visual Delta — 🟡 2026-09-09: kern hat 3 Allowlist-Szenarien (A1, Abschnitt 8) nach der Tooltip-in-Wrapper-Änderung; alle anderen Diffs über alle 6 Themes sind vorbestehende, unabhängig verifizierte Theme-Arbeit (`kol-button-theme-worklist.md`), keine neuen Regressionen dieser Session
+### 1. GOAL: Zero Visual Delta — ✅ 2026-09-09 erreicht: alle 6 Pakete 293/293 gegen `develop@2bf6b78695`, Allowlist wieder leer
 
-**Aktueller Stand 2026-09-09:** Die Allowlist (Abschnitt 8) ist **nicht** mehr leer — 3 kern-Diffs
-(A1) sind bewusst per Allowlist akzeptiert, nicht per DOM-Fix geschlossen. Der 2026-09-01-Abschnitt
-direkt darunter beschreibt den DOM-Fix, der dies zwischenzeitlich gelöst hatte; er wurde am
-2026-09-09 auf Owner-Wunsch zugunsten der `LinkFC`-Konsistenz zurückgenommen — Details in
-Abschnitt **1a** und Allowlist **A1** unten. Alle anderen Snapshot-Dateien sind weiterhin
-bit-identisch zum Base-Branch (die übrigen Diffs im vollen Check sind vorbestehende, unabhängig
-verifizierte Theme-Arbeit, s. u.).
+**Aktueller Stand 2026-09-09 (Abend):** Die Allowlist ist **wieder leer**. A1 war **keine**
+akzeptierte Abweichung, sondern ein behebbarer CSS-Fehler — siehe Abschnitt 8. Kurzfassung: Der
+kern-Tooltip-Text rendert fett, weil `kern/src/mixins/_button.mixin.scss` `font-weight` über einen
+**Descendant**-Selektor (`.kol-button .kol-span__label`) setzt. Vor der Migration war der Tooltip
+Geschwister des Buttons und wurde davon nicht getroffen; seit er im Wrapper liegt, greift die Regel
+mit. Auf `__interactive-element` gescopet → kern 290/293 → **293/293**.
+
+Damit ist der DOM-Fix vom 2026-09-01 endgültig entbehrlich: `ButtonFC` behält die zu `LinkFC`
+symmetrische Struktur (Tooltip im Wrapper) **und** die Pixelparität.
 
 **Stand 2026-09-01 (diese Session, 3. Teil — kern 3→0). Zurückgenommen 2026-09-09, siehe Abschnitt 1a:**
 
@@ -104,8 +106,9 @@ verifizierte Theme-Arbeit, s. u.).
   Tooltip/Beschreibung weiterhin **innerhalb** `BemRootNodeFC`, während `ButtonFC` sie an dieser
   Stelle nach außen verlagert hatte. Issue [#10745](https://github.com/public-ui/kolibri/issues/10745)
   (deleonio) forderte Symmetrie ein — am 2026-09-09 umgesetzt: `ButtonFC` rendert Tooltip/
-  Beschreibung jetzt wieder innerhalb des Wrappers, identisch zu `LinkFC`. Der dadurch
-  zurückgekehrte kern-Firefox-Bug ist per Allowlist (A1) akzeptiert, nicht per erneutem DOM-Fix.
+  Beschreibung jetzt wieder innerhalb des Wrappers, identisch zu `LinkFC`. Der dabei
+  zurückgekehrte kern-Diff war **kein** Firefox-Bug, sondern der Descendant-Selektor aus
+  Abschnitt 8; seit dessen Fix ist die Struktur symmetrisch **und** pixelgleich.
 
 **Stand 2026-09-01 (diese Session, 2. Teil):**
 
@@ -278,58 +281,56 @@ inneren `<button>`, weil die Block-Modifier auf der BEM-Wurzel sitzen).
 
 ## 8. Allowlist (Skill §8) — bewusst akzeptierte Snapshot-Abweichungen
 
-Stand 2026-09-09: **1 aktiver Eintrag (A1)** — siehe unten. Ein Eintrag ist nur mit Begründung
-**und** Owner-Freigabe zulässig.
+Stand 2026-09-09 (Abend): **leer** — der einzige Eintrag (A1) ist aufgelöst, weil er auf einer
+Fehldiagnose beruhte. Ein Eintrag ist nur mit Begründung **und** Owner-Freigabe zulässig.
 
-### A1 — kern: `dialog/basic`, `drawer/basic?align=left&closer=true`, `modal/basic` — 🟡 Re-geöffnet 2026-09-09, per Allowlist quittiert
+### A1 — kern: `dialog/basic`, `drawer/basic?align=left&closer=true`, `modal/basic` — ✅ 2026-09-09 behoben, Eintrag entfällt
 
-**War vom 2026-09-01 bis 2026-09-09 per DOM-Fix gelöst** (Tooltip als Geschwister von
-`BemRootNodeFC` statt im Wrapper-`<div>`). Am 2026-09-09 bewusst zurückgenommen: Tooltip und
-Description liegen jetzt wieder innerhalb des Wrappers, damit `ButtonFC` strukturell zu `LinkFC`
-passt (Owner-Wunsch: Tooltips gehören grundsätzlich in den BEM-Wrapper). Drei neue CSS-Fixversuche
-(Compositing-Layer-Hints direkt am Tooltip-Element — `transform`, `will-change`, `contain`, siehe
-Abschnitt 1a) blieben wirkungslos; der Bug ist damit wieder offen und wird — anders als beim ersten
-Mal — bewusst per Allowlist statt per erneuter DOM-Auslagerung quittiert. Details zum Befund:
+**Es war kein Firefox-Compositing-Bug.** Der kern-Tooltip-Text rendert fett, weil
+`kern/src/mixins/_button.mixin.scss` `font-weight` über einen **Descendant**-Selektor setzt:
 
-- **Was**: Der „Close"-Button-Tooltip (`--hide-label`) rendert den Bubble-Text in Firefox mit
-  ~2px anderer Antialiasing-Deckung (kein sauberer Versatz — Pixel-Zeilen-Analyse zeigt pro
-  Zeile unterschiedliche Dunkelpixel-Zahlen, z. B. Zeile 264: exp 16 / act 24).
-- **Warum kein Fix**: Volldiagnostiziert per Shadow-durchdringender Probe (rekursiv alle
-  `shadowRoot` sammeln). Jede Computed-Property und Bounding-Box ist bit-identisch zu develop:
-  `kol-tooltip__floating` `top: 271px`, `kol-tooltip__arrow` y=274.43 mit identischer
-  Rotations-Matrix, `kol-tooltip__content` y=271 h=21, `font-family=Verdana`, `font-size=16px`,
-  `line-height=normal`, `font-kerning=auto`, `text-rendering=auto`, `letter-spacing=normal`.
-  `kol-button__tooltip` ist auf develop **und** Branch ein Geschwister des Buttons (nicht Kind;
-  develop-`component.tsx` `render()` rendert `<div class="kol-button__tooltip">` als Sibling im
-  `<Host>`). Einziger Unterschied: der `position: fixed`, animations-belegte `__floating`-Layer
-  hat auf dem Branch einen zusätzlichen `<div class="kol-button">`-Vorfahren, und der JS-`left`
-  ist fraktioniert (`1154.68px`) — wie Firefox diese Compositing-Layer aufs Pixelraster rundet,
-  hängt am Render-Tree. develop und Branch haben **identisches Tooltip-CSS**, also keinen
-  CSS-Angriffspunkt.
-- **Verworfene Fixversuche 2026-09-01**: `&__tooltip { width: 100% }` → 6 Regressionen; `&__tooltip
-{ position: absolute }` im Basis-Mixin → kein Effekt; Tooltip zurück in den `<button>` → per
-  a11y verboten (im FC dokumentiert: „a nested tooltip would become part of the accessible name").
-- **Verworfene Fixversuche 2026-09-09** (Tooltip diesmal bewusst im Wrapper, CSS statt DOM-Fix
-  gesucht): `.kol-tooltip__floating { transform: translateZ(0); backface-visibility: hidden }`,
-  `{ will-change: transform }`, `{ contain: layout style }` — alle drei kern-scoped in
-  `global.scss` getestet (Stufe-1-Stichprobe `--grep dialog`/`drawer`/`modal`), alle drei ohne
-  Effekt, alle drei wieder entfernt.
-- **Owner-Freigabe**: 2026-09-01 — „an die DOM/Components-Migration weiterreichen, keine
-  Theme-Arbeit" (führte zum DOM-Fix). 2026-09-09 — Owner entscheidet, den DOM-Fix zugunsten der
-  KolLink-Konsistenz zurückzunehmen und den Bug erneut per Allowlist zu akzeptieren, nachdem die
-  CSS-Iteration erfolglos blieb.
-- **Kontrollprobe 2026-09-09**: Der Bug ist exklusiv auf diese Code-Änderung zurückzuführen — mit
-  `git stash` auf den Vorzustand (Tooltip als Sibling) zurückgesetzt, sind exakt dieselben 3
-  Szenarien grün; alle anderen zum Prüfzeitpunkt roten Szenarien (in kern u. a. `input-file/basic`,
-  `popover-button/inline`, `table/column-alignment`, `table/stateless-with-*-selection`,
-  `scenarios/focus-elements?component=tabs`; ähnlich in bwst/default/desy/ecl/unstyled) bestehen
-  unverändert mit und ohne diese Änderung — das ist die bereits bekannte, bewusst zurückgestellte
-  Theme-Arbeit aus `.claude/plans/kol-button-theme-worklist.md` (BEM-Klassen-Umbenennung
-  `kol-button__button` → `kol-button__interactive-element`), keine neue Regression.
-- **Evidenz**: `node scripts/snapshots-docker.mjs kern --check` → 284 passed, 9 failed, Exit 1;
-  6 der 9 Fails sind die vorbestehende Theme-Arbeit (s. o.), die übrigen 3 sind exakt
-  `dialog/basic`, `drawer/basic?align=left&closer=true`, `modal/basic`. Mit `git stash` (Vorzustand)
-  sind es 6 Fails — exakt die vorbestehenden, ohne die 3 Allowlist-Szenarien.
+```scss
+.kol-button .kol-span__label {
+	font-weight: var(--kern-typography-font-weight-medium);
+}
+```
+
+`TooltipFC` rendert `<SpanFC class="kol-tooltip__content">`, das intern ein `.kol-span__label`
+enthält. Vor der Migration war der Tooltip **Geschwister** des Buttons und lag damit außerhalb von
+`.kol-button` — die Regel griff nicht. Seit der Tooltip im Wrapper liegt, greift sie mit. Der
+Tooltip selbst setzt keinerlei Schrifteigenschaften und erbt alles aus dem Kontext.
+
+Fix: Selektor auf `.#{$block-classname}__interactive-element .kol-span__label` gescopet.
+**Evidenz:** `snapshots-docker.mjs kern --check` 290/293 → **293/293**. Damit sind alle 6 Pakete
+pixelgleich; der DOM-Fix vom 2026-09-01 ist entbehrlich, `ButtonFC` bleibt symmetrisch zu `LinkFC`.
+
+Betroffen war nicht nur Dialog/Modal/Drawer, sondern **jeder `kol-button` mit `_hideLabel`** in
+kern (Mixin-Kette über `components/card.scss` und `components/button.scss`) — die drei Snapshots
+waren nur die Stellen mit sichtbarem Tooltip.
+
+#### Lehre: warum die erste Diagnose danebenlag
+
+Die frühere Analyse erklärte den Effekt für unfixbar („identisches Tooltip-CSS, also keinen
+CSS-Angriffspunkt") und stützte das auf eine Shadow-durchdringende Probe, die jede Computed-
+Property als bit-identisch auswies — geprüft wurden `font-family`, `font-size`, `line-height`,
+`font-kerning`, `text-rendering`, `letter-spacing`. **`font-weight` war nicht dabei.** Eine
+Aufzählung geprüfter Eigenschaften belegt nichts über die nicht geprüften.
+
+Der eigene Befund enthielt den Hinweis bereits: „pro Zeile unterschiedliche Dunkelpixel-Zahlen,
+z. B. Zeile 264: exp 16 / act 24". Mehr Dunkelpixel bei **identischer** Geometrie ist die Signatur
+fetterer Schrift, nicht die von Antialiasing-Rundung. Der Befund wurde als Beleg für Compositing
+gelesen, statt als Widerspruch dazu.
+
+Drei CSS-Fixversuche am Compositing-Layer (`transform: translateZ(0)`, `will-change`, `contain`)
+blieben folgerichtig wirkungslos — sie behandelten die falsche Ursache. Ebenso der DOM-Fix vom
+2026-09-01 (Tooltip aus dem Wrapper heraus): Er wirkte, aber nur weil er den Tooltip zufällig aus
+der Reichweite des Descendant-Selektors nahm — er kurierte das Symptom über die Baumstruktur statt
+die Regel.
+
+**Konsequenz für künftige Snapshot-Diagnosen:** Bei gleicher Geometrie und abweichender
+Pixeldeckung zuerst die _Selektor-Reichweite_ prüfen (welche Regeln treffen das Element jetzt
+zusätzlich?), nicht die Compositing-Ebene. Ein DOM-Umbau, der ein Element in einen neuen Vorfahren
+verschiebt, ändert die Trefferbedingung **jedes** Descendant-Selektors dieses Vorfahren.
 
 ## Pitfalls
 

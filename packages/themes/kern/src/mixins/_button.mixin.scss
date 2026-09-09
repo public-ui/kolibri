@@ -65,7 +65,10 @@
 			gap: var(--kern-metric-space-small);
 		}
 
-		.kol-span__label {
+		/* Scoped to the interactive element for the same reason as the font size above: as a plain
+		   descendant of the block this also matched the tooltip's label, which now lives inside the
+		   wrapper and was a sibling of the button before the skeleton migration. */
+		.#{$block-classname}__interactive-element .kol-span__label {
 			font-weight: var(--kern-typography-font-weight-medium);
 		}
 
