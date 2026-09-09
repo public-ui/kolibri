@@ -1,16 +1,17 @@
 /**
- * Lets the sample apps switch the KoliBri color scheme at runtime.
+ * Lets the sample apps switch the color scheme at runtime.
  *
- * `@public-ui/theme-default` reads `color-scheme: var(--kolibri-color-scheme, light dark)` on the
- * `:host` of every component. Left unset, the fallback hands the decision to the operating system;
- * setting the custom property takes it back, because custom properties inherit across the shadow
- * boundary. `auto` therefore means "remove the property again", not "some third value".
+ * There is nothing KoliBri specific about it: `color-scheme` is an inherited CSS property and
+ * inheritance follows the flat tree, so setting it on `documentElement` reaches the page and every
+ * component's shadow root alike. The themes declare no `color-scheme` of their own precisely so
+ * that the application stays the single source of truth.
  *
- * The `data-kol-color-scheme` attribute is the one the theme documents, and
- * `@public-ui/theme-default/color-scheme.css` maps it onto the two properties set inline below. That
- * stylesheet is deliberately not loaded here: the visual-test host app must stay theme agnostic, and
- * the presentation app offers six themes of which only one owns that file. Setting the properties
- * directly keeps the switch working in both hosts and for every theme.
+ * `auto` removes the inline property again and lets the host app's own `:root { color-scheme: light
+ * dark }` apply, which is what hands the decision to the operating system. The
+ * `data-kol-color-scheme` attribute is set alongside it: it makes the state visible in the DOM and
+ * matches the selectors in `@public-ui/theme-default/color-scheme.css`. That stylesheet is not
+ * loaded here — the visual-test host has to stay theme agnostic and the presentation app offers six
+ * themes — so the inline property is what actually does the work.
  *
  * See `hooks/useColorScheme` for the URL parameter and the persistence.
  */
@@ -19,7 +20,6 @@ const COLOR_SCHEME_PREFERENCES = ['auto', 'light', 'dark'] as const;
 export type ColorSchemePreference = (typeof COLOR_SCHEME_PREFERENCES)[number];
 
 const ROOT_ATTRIBUTE = 'data-kol-color-scheme';
-const CUSTOM_PROPERTY = '--kolibri-color-scheme';
 const STORAGE_KEY = 'public-ui.sample.color-scheme';
 
 export function isColorSchemePreference(value: unknown): value is ColorSchemePreference {
@@ -30,11 +30,9 @@ export function applyColorScheme(preference: ColorSchemePreference, persist = tr
 	const { documentElement } = document;
 	if (preference === 'auto') {
 		documentElement.removeAttribute(ROOT_ATTRIBUTE);
-		documentElement.style.removeProperty(CUSTOM_PROPERTY);
 		documentElement.style.removeProperty('color-scheme');
 	} else {
 		documentElement.setAttribute(ROOT_ATTRIBUTE, preference);
-		documentElement.style.setProperty(CUSTOM_PROPERTY, preference);
 		documentElement.style.setProperty('color-scheme', preference);
 	}
 	if (persist) {

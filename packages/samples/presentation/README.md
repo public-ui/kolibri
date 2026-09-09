@@ -53,10 +53,10 @@ You can also add static entries to the sample theme selector by editing the `cus
 
 The Sidebar carries a **Color scheme** select next to the theme select, with three states:
 
-- **Auto** leaves `--kolibri-color-scheme` unset, so the operating system decides. This is what an application gets without doing anything.
-- **Light** and **Dark** set the property and win over the operating system.
+- **Auto** removes the app's own `color-scheme` override again, so the `:root { color-scheme: light dark }` of this app applies and the operating system decides.
+- **Light** and **Dark** set `color-scheme` on `<html>` and win over the operating system.
 
-The choice takes effect without a reload and is remembered in `localStorage`. `#<route>?colorScheme=dark` opens a route in a given scheme right away and wins over the remembered value without overwriting it, which makes it easy to share a link. The parameter combines with `hideMenus` and `visualBlocks`.
+`color-scheme` is an inherited CSS property, so the choice reaches the page and every KoliBri component alike — the themes declare none of their own. The choice takes effect without a reload and is remembered in `localStorage`. `#<route>?colorScheme=dark` opens a route in a given scheme right away and wins over the remembered value without overwriting it, which makes it easy to share a link. The parameter combines with `hideMenus` and `visualBlocks`.
 
 Only `@public-ui/theme-default` ships a dark palette so far. With any other theme selected, the select shows a hint saying so.
 

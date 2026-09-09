@@ -3,6 +3,16 @@
 
 @layer kol-theme-global {
 	:host {
+		/*
+		 * Every `light-dark()` below resolves against `color-scheme`, which this theme deliberately
+		 * does not declare. `color-scheme` is an inherited property and inheritance follows the flat
+		 * tree, so each component picks up whatever the document sets around it. A declaration here
+		 * would replace that value instead, and the page and the components in it could disagree.
+		 *
+		 * The application therefore owns the scheme, in plain CSS: `:root { color-scheme: light dark }`
+		 * to follow the operating system, `color-scheme: dark` on any element to force a subtree.
+		 * `color-scheme.css` in this package ships exactly that.
+		 */
 		--border-radius: var(--kolibri-border-radius, 5px);
 		--inner-border-radius: var(--kolibri-border-radius, 4px);
 		--font-family: var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif);
@@ -54,15 +64,6 @@
 		 */
 		--kol-a11y-font-color: var(--color-ink);
 		--kol-a11y-background-color: var(--color-light);
-
-		/*
-		 * The single switch of the whole theme. Left unset, the fallback `light dark` hands the
-		 * decision to the operating system. An application that sets `--kolibri-color-scheme` to
-		 * `light` or `dark` anywhere above a component takes the decision back for that subtree:
-		 * custom properties inherit along the flat tree and therefore reach every nested shadow
-		 * root, whereas a plain `color-scheme` on an ancestor would be shadowed by this rule.
-		 */
-		color-scheme: var(--kolibri-color-scheme, light dark);
 	}
 
 	:host {

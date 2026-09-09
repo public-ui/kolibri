@@ -225,25 +225,28 @@ In the theme component layer, you can set what ever you need to realize your own
 ### Color schemes
 
 A theme carries one palette per color scheme in a single declaration, resolved by the CSS
-`light-dark()` function against the `color-scheme` the theme declares on `:host`:
+`light-dark()` function:
 
 ```scss
 @layer kol-theme-global {
 	:host {
 		--color-text: var(--kolibri-color-text, light-dark(#202020, #{$dark-color-text}));
-
-		color-scheme: var(--kolibri-color-scheme, light dark);
 	}
 }
 ```
 
 Rules that hold for every theme:
 
-- **Never** write `@media (prefers-color-scheme: …)` in a theme. The scheme travels through the
-  inherited `color-scheme` property, which crosses the shadow boundary along the flat tree.
-- Left unset, the fallback `light dark` hands the decision to the operating system. An application
-  takes it back by setting `--kolibri-color-scheme` to `light` or `dark` on any ancestor — a custom
-  property, because a plain `color-scheme` on an ancestor is shadowed by the rule above.
+- **Never declare `color-scheme` in a theme**, and never write `@media (prefers-color-scheme: …)`.
+  `color-scheme` is an inherited property and inheritance follows the flat tree, so it crosses the
+  shadow boundary on its own: each component resolves `light-dark()` against whatever the consuming
+  application has in effect where the component sits. A declaration on `:host` would replace that
+  inherited value, and the page and the components in it could then disagree — which is exactly the
+  bug this rule exists to prevent.
+- The application owns the scheme, in plain CSS: `:root { color-scheme: light dark }` to follow the
+  operating system, `color-scheme: dark` on any element to force a subtree. Consequently an
+  application that declares nothing stays light, whatever the operating system says. Dark mode is
+  opt-in; `color-scheme.css` in a theme package ships that one line plus the page colors.
 - Sass does not evaluate variables inside `var()`. Interpolate them (`#{$dark-color-text}`).
 - The base layer hardcodes `black` and `white` in a few places. Where it routes them through a
   token, override the token (`--kol-a11y-font-color` / `--kol-a11y-background-color` in `a11y.scss`

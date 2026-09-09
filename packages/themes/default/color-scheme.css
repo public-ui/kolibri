@@ -1,19 +1,23 @@
 /*
- * Optional document level stylesheet of @public-ui/theme-default.
+ * Document level stylesheet of @public-ui/theme-default.
  *
  *   <link rel="stylesheet" href="node_modules/@public-ui/theme-default/color-scheme.css" />
  *
- * The components follow the operating system on their own — this file is only needed to make the
- * surrounding page follow along, and to give the application an explicit switch.
+ * This is what turns the dark palette on. The theme declares no `color-scheme` of its own, so a
+ * component simply inherits whatever the document sets around it — an application that declares
+ * nothing keeps `color-scheme: normal` and stays light, whatever the operating system says.
+ *
+ * Everything here is plain CSS with no KoliBri specific API. An application that already manages
+ * `color-scheme` itself does not need this file at all; the components follow along either way,
+ * because `color-scheme` is an inherited property and inheritance crosses the shadow boundary.
  *
  * Switching: put `data-kol-color-scheme="dark"` or the class `kol-color-scheme-dark` on any
- * element. Both `color-scheme` and the custom property inherit along the flat tree, so the choice
- * reaches every KoliBri component below that element, including nested shadow roots. Without one of
- * them the operating system decides.
+ * element — or just write `color-scheme: dark` on it yourself. The choice applies to that element's
+ * whole subtree, KoliBri components included.
  *
  * The two page colors are stated literally because the theme's `--color-*` tokens live on the
  * `:host` of each component and cannot be read from the document. Keep them in sync with
- * `--color-text` and `$dark-color-page` in `src/global.scss` / `src/mixins/palette.scss`.
+ * `--color-text` in `src/global.scss` and the page counterpart in `src/mixins/palette.scss`.
  */
 :root {
 	color: light-dark(#202020, #e9ebec);
@@ -24,14 +28,10 @@
 
 [data-kol-color-scheme='light'],
 .kol-color-scheme-light {
-	--kolibri-color-scheme: light;
-
 	color-scheme: light;
 }
 
 [data-kol-color-scheme='dark'],
 .kol-color-scheme-dark {
-	--kolibri-color-scheme: dark;
-
 	color-scheme: dark;
 }

@@ -143,32 +143,39 @@ A single value like this applies in **both** color schemes. To give a token a di
 
 ## Dark mode
 
-The theme ships one palette per color scheme. Every color token resolves through the CSS `light-dark()` function against the `color-scheme` the components declare on their own host element:
+The theme ships one palette per color scheme. Every color token resolves through the CSS `light-dark()` function, which reads the `color-scheme` in effect at the element it is used on:
+
+```scss
+--color-text: var(--kolibri-color-text, light-dark(#202020, #e9ebec));
+```
+
+**The application owns `color-scheme`, the components consume it implicitly.** The theme declares no `color-scheme` of its own. Since `color-scheme` is an inherited CSS property and inheritance follows the flat tree, every component picks up whatever the document sets around it — the page and the components in it can never disagree, and there is no KoliBri specific API involved:
 
 ```css
-:host {
-	color-scheme: var(--kolibri-color-scheme, light dark);
+:root {
+	color-scheme: light dark; /* follow the operating system */
+}
+
+.night {
+	color-scheme: dark; /* force this subtree, KoliBri components included */
 }
 ```
 
-**Following the operating system** needs no configuration. With `--kolibri-color-scheme` unset, the fallback `light dark` lets `prefers-color-scheme` decide, and the components switch on their own.
+A declaration on any element applies to that element's whole subtree, nested shadow roots included, so an inner container flips only itself.
 
-**Taking control from the application** means setting `--kolibri-color-scheme`. The bundled document stylesheet maps a data attribute and a class onto it:
+**Dark mode is opt-in.** An application that declares nothing keeps `color-scheme: normal` and stays light, whatever the operating system says. That is the standard CSS default, and it means adding this theme version changes nothing for an existing application until it asks for it. One line switches it on, and the bundled document stylesheet is exactly that line plus the page colors and two convenience selectors:
 
 ```html
 <link rel="stylesheet" href="node_modules/@public-ui/theme-default/color-scheme.css" />
 
 <html data-kol-color-scheme="dark">
-	<!-- or: <html class="kol-color-scheme-dark"> -->
+	<!-- or: <html class="kol-color-scheme-dark">, or your own `color-scheme: dark` -->
 </html>
 ```
 
-Both `color-scheme` and custom properties inherit along the flat tree, so the switch reaches every KoliBri component below the element that carries it — including nested shadow roots. Putting the attribute on an inner container therefore flips only that subtree.
+An application that already manages `color-scheme` itself does not need the file at all.
 
-Two things worth knowing:
-
-- The components follow the operating system without `color-scheme.css`. The stylesheet exists for the surrounding page (background, scrollbars, native form controls) and for the explicit switch. An application that already declares `color-scheme` on `<html>` must set `--kolibri-color-scheme` next to it: a plain `color-scheme` on an ancestor is shadowed by the components' own declaration and does not reach their shadow roots.
-- `kol-spin`'s cycle variant animates its arc through `@keyframes` color stops in the base layer of `@public-ui/components`. A theme cannot override an animation's own color stops, so that arc stays dark in dark mode. Its static ring and the dot variant do follow the scheme.
+One limitation: `kol-spin`'s cycle variant animates its arc through `@keyframes` color stops in the base layer of `@public-ui/components`. A theme cannot override an animation's own color stops, so that arc stays dark in dark mode. Its static ring and the dot variant do follow the scheme.
 
 The presentation app (`packages/samples/presentation`) is a live example: its Sidebar carries a Color scheme select with the states Auto, Light and Dark.
 
