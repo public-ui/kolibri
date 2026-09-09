@@ -1,0 +1,1 @@
+import{wt as e}from"./index-BVT9M03-.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};

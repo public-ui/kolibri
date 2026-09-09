@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-BVT9M03-.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};
