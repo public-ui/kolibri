@@ -26,21 +26,27 @@ export function isColorSchemePreference(value: unknown): value is ColorSchemePre
 	return typeof value === 'string' && (COLOR_SCHEME_PREFERENCES as readonly string[]).includes(value);
 }
 
-export function applyColorScheme(preference: ColorSchemePreference, persist = true): void {
+export function applyColorScheme(scheme: ColorSchemePreference): void {
 	const { documentElement } = document;
-	if (preference === 'auto') {
+	if (scheme === 'auto') {
 		documentElement.removeAttribute(ROOT_ATTRIBUTE);
 		documentElement.style.removeProperty('color-scheme');
 	} else {
-		documentElement.setAttribute(ROOT_ATTRIBUTE, preference);
-		documentElement.style.setProperty('color-scheme', preference);
+		documentElement.setAttribute(ROOT_ATTRIBUTE, scheme);
+		documentElement.style.setProperty('color-scheme', scheme);
 	}
-	if (persist) {
-		try {
-			localStorage.setItem(STORAGE_KEY, preference);
-		} catch {
-			// Storage can be unavailable (private mode, blocked cookies) – the choice just won't be remembered.
-		}
+}
+
+/**
+ * Kept apart from `applyColorScheme`, because the scheme that ends up on the document is not always
+ * the one the user chose: a theme without a dark palette forces light, and that must not overwrite
+ * what they picked for the themes that do have one.
+ */
+export function persistColorScheme(preference: ColorSchemePreference): void {
+	try {
+		localStorage.setItem(STORAGE_KEY, preference);
+	} catch {
+		// Storage can be unavailable (private mode, blocked cookies) – the choice just won't be remembered.
 	}
 }
 

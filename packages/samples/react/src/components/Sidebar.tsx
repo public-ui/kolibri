@@ -8,7 +8,6 @@ import type { SelectOption } from '@public-ui/components';
 import { useLocation } from 'react-router';
 import type { ColorSchemePreference } from '../shares/colorScheme';
 import type { Theme } from '../shares/theme';
-import { DARK_CAPABLE_THEMES } from '../shares/theme';
 import type { Routes } from '../shares/types';
 import Navigation from './Navigation';
 
@@ -51,6 +50,7 @@ type Props = {
 	buildDate?: string;
 	commitHash?: string;
 	colorScheme: ColorSchemePreference;
+	supportsDark: boolean;
 	onThemeChange: (theme: unknown) => void;
 	onColorSchemeChange: (colorScheme: ColorSchemePreference) => void;
 };
@@ -58,7 +58,7 @@ type Props = {
 const COLOR_SCHEME_OPTIONS: SelectOption<ColorSchemePreference>[] = [
 	{ label: 'Auto (follow the OS)', value: 'auto' },
 	{ label: 'Light', value: 'light' },
-	{ label: 'Dark', value: 'dark' },
+	{ label: 'Dark (untested)', value: 'dark' },
 ];
 
 export const Sidebar: FC<Props> = ({
@@ -71,6 +71,7 @@ export const Sidebar: FC<Props> = ({
 	buildDate,
 	commitHash,
 	colorScheme,
+	supportsDark,
 	onThemeChange,
 	onColorSchemeChange,
 }) => {
@@ -87,11 +88,9 @@ export const Sidebar: FC<Props> = ({
 		onColorSchemeChange(value as ColorSchemePreference);
 	};
 
-	/* Only some themes ship a dark palette; for the others the switch has no visible effect beyond
-	   the page background, which would be confusing without a word of explanation. */
-	const colorSchemeHint = DARK_CAPABLE_THEMES.includes(theme)
-		? undefined
-		: `The ${getThemeLabel(themes, theme)} theme has no dark palette yet – only Default follows this setting.`;
+	/* A theme without a dark palette is pinned to light by `useColorScheme`. Disabling the select
+	   says so at a glance; the hint explains why, for anyone who wonders. */
+	const colorSchemeHint = supportsDark ? undefined : `The ${getThemeLabel(themes, theme)} theme has no dark palette yet, so the scheme stays light.`;
 
 	const handlePreviousClick = () => {
 		const currentIndex = getIndexOfSample();
@@ -137,6 +136,7 @@ export const Sidebar: FC<Props> = ({
 				{!isMobile ? (
 					<KolSelect
 						_label="Color scheme"
+						_disabled={!supportsDark}
 						_hint={colorSchemeHint}
 						_options={COLOR_SCHEME_OPTIONS}
 						_on={{ onChange: handleColorSchemeSelectChange }}
@@ -170,6 +170,7 @@ export const Sidebar: FC<Props> = ({
 						<KolSelect _label="Theme" _options={themeOption} _on={{ onChange: handleThemeSelectChange }} _value={theme} class="mt"></KolSelect>
 						<KolSelect
 							_label="Color scheme"
+							_disabled={!supportsDark}
 							_hint={colorSchemeHint}
 							_options={COLOR_SCHEME_OPTIONS}
 							_on={{ onChange: handleColorSchemeSelectChange }}

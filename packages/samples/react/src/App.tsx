@@ -13,7 +13,7 @@ import { HideMenusContext } from './shares/HideMenusContext';
 import { ROUTES } from './shares/routes';
 import { sampleAppDataService } from './shares/sampleAppDataService';
 import { getTheme, getThemeName, setRegisteredThemes, setStorage, setTheme } from './shares/store';
-import { PUBLIC_THEMES, UNSTYLED_THEME } from './shares/theme';
+import { DARK_CAPABLE_THEMES, PUBLIC_THEMES, UNSTYLED_THEME } from './shares/theme';
 
 import type { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
@@ -143,7 +143,8 @@ export const App: FC<Props> = ({ customThemes }) => {
 	setTheme(theme); // set for `getTheme` usages within the application
 	useSetCurrentLocation();
 	useVisualBlockOutline();
-	const [colorScheme, setColorScheme] = useColorScheme();
+	const supportsDark = DARK_CAPABLE_THEMES.includes(theme);
+	const [colorScheme, setColorScheme] = useColorScheme(supportsDark);
 
 	useEffect(() => {
 		document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
@@ -185,6 +186,7 @@ export const App: FC<Props> = ({ customThemes }) => {
 						buildDate={process.env.BUILD_DATE}
 						commitHash={process.env.COMMIT_HASH}
 						colorScheme={colorScheme}
+						supportsDark={supportsDark}
 						onThemeChange={handleThemeChange}
 						onColorSchemeChange={setColorScheme}
 					/>

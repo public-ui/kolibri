@@ -69,7 +69,10 @@ hr {
 
 .scrollable-container {
 	display: grid;
-	overflow: hidden;
+	/* Not `overflow: hidden`: as a grid item this box must be allowed to shrink below its content,
+	   which is what `min-height: 0` does. Clipping it instead also cuts the 5px focus ring of the
+	   search field, which fills the container's width to within 2px. */
+	min-height: 0;
 	gap: 16px;
 	grid-template-rows: min-content 1fr;
 }
