@@ -1,20 +1,22 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "117 changed – 0 of 117 approved, review pending",
-	"computedAt": "2026-09-09T05:16:33.104Z",
+	"state": "failure",
+	"description": "1 of 117 visual changes rejected",
+	"computedAt": "2026-09-09T05:35:08.611Z",
 	"pr": 10734,
 	"head": "1f327f28d91db9f862d74c15bd620dc7eed47a48",
 	"digest": "sha256:e4c3235475f8bcd4f3e7155ffca758fa9fdf73ed2dbb101f3c4fcc513744526c",
 	"counts": {
 		"changes": 117,
-		"open": 117,
+		"open": 116,
 		"approved": 0,
-		"rejected": 0,
+		"rejected": 1,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"deleonio"
+	],
 	"items": {
 		"test-tag-name-transformer/dialog-basic-show-dialog-true": {
 			"state": "open",
@@ -85,8 +87,9 @@
 			"notes": []
 		},
 		"test-tag-name-transformer/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/input-file-basic-noColumns--hide-label-error": {
 			"state": "open",
