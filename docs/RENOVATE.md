@@ -218,8 +218,13 @@ gh api repos/public-ui/kolibri/rules/branches/develop
 > `New changes require approval from someone other than the last pusher`.
 > The bot can never satisfy that one on its own branches, because it is always the last pusher. It
 > needs an approval, or an entry in that ruleset's bypass list that covers the `pull_request` rule
-> (**Settings → Rules → Rulesets → Production branches → Bypass list**). A bypass on another
-> ruleset, or one added for the wrong actor, does not show up anywhere except in this 405.
+> (**Settings → Rules → Rulesets → Production branches → Bypass list**). Mind that a bypass entry
+> for the App did **not** end this: with `publicuibot` listed, two consecutive runs were refused
+> with this same rule and no other violation. So check the entry itself — `actor_type` has to be
+> `Integration` and `bypass_mode` `always`, readable with admin rights via
+> `gh api repos/public-ui/kolibri/rulesets/22621638 --jq .bypass_actors`. If it is already both,
+> the rule named in the 405 is the only remaining lever: **Require approval of the most recent
+> reviewable push** in that ruleset.
 
 Two more silent failures show up as warnings rather than as a blocked PR:
 
