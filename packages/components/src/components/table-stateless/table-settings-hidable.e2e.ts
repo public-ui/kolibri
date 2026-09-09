@@ -21,7 +21,7 @@ test.describe('kol-table-settings hidable functionality', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.setContent(`<kol-table-stateless
       _label="Table with Non-Hidable Column"
-      _header-cells='${JSON.stringify(HEADERS_WITH_NON_HIDABLE)}'
+      _headers='${JSON.stringify(HEADERS_WITH_NON_HIDABLE)}'
       _data='${JSON.stringify(DATA)}'
       _has-settings-menu
     />`);

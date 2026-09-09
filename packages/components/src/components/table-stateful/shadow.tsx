@@ -727,7 +727,7 @@ export class KolTableStateful implements TableAPI {
 		const paginationTop = this._paginationPosition === 'top' || this._paginationPosition === 'both' ? this.renderPagination('top') : null;
 		const paginationBottom = this._paginationPosition === 'bottom' || this._paginationPosition === 'both' ? this.renderPagination('bottom') : null;
 
-		const headerCells: TableHeaderCells = this.buildHeaderCells();
+		const headers: TableHeaderCells = this.buildHeaderCells();
 		return (
 			<Host class="kol-table-stateful">
 				{this.pageEndSlice > 0 && this.showPagination && paginationTop}
@@ -736,7 +736,7 @@ export class KolTableStateful implements TableAPI {
 					ref={this.catchRef}
 					_data={displayedData}
 					_fixedCols={this._fixedCols}
-					_headerCells={headerCells}
+					_headers={headers}
 					_label={this.state._label}
 					_loading={this._loading}
 					_dataFoot={this.state._dataFoot}

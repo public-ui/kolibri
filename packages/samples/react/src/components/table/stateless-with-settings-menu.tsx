@@ -51,7 +51,7 @@ export const TableStatelessWithSettingsMenu: FC = () => (
 			_label="Users (stateless with settings menu)"
 			className="w-full"
 			_hasSettingsMenu={true}
-			_headerCells={{
+			_headers={{
 				horizontal: [
 					[
 						{

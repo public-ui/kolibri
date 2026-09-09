@@ -19,7 +19,6 @@ const HEADERS = {
 const PROPS = {
 	_data: DATA,
 	_headers: HEADERS,
-	_headerCells: HEADERS,
 	_label: 'Label should always be filled',
 	_minWidth: 'auto',
 };

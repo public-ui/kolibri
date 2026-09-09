@@ -1,22 +1,14 @@
 import type { Generic } from 'adopted-style-sheets';
-import type {
-	PropAriaLabelledby,
-	PropLabel,
-	PropTableCallbacks,
-	PropTableData,
-	PropTableDataFoot,
-	PropTableSelection,
-	PropVariantClassName,
-	TableHeaderCells,
-} from '../props';
+import type { PropAriaLabelledby, PropLabel, PropTableCallbacks, PropTableData, PropTableDataFoot, PropTableSelection, PropVariantClassName } from '../props';
 import type { PropHasSettingsMenu } from '../props/has-settings-menu';
-import type { PropTableHeaderCells } from '../props/table-header-cells';
-import type { KoliBriTableDataType, KoliBriTableSelection } from '../types';
+import type { KoliBriTableDataType, KoliBriTableSelection, Stringified } from '../types';
+import type { KoliBriTableHeaders } from './table';
 
-type RequiredProps = PropLabel & PropTableData & PropTableHeaderCells;
+type RequiredProps = PropLabel & PropTableData;
 
 type OptionalProps = {
 	loading: boolean;
+	headers: Stringified<KoliBriTableHeaders>; // required sobald headerCells entfernt
 } & PropAriaLabelledby &
 	PropTableCallbacks &
 	PropTableDataFoot &
@@ -24,13 +16,14 @@ type OptionalProps = {
 	PropHasSettingsMenu;
 
 type RequiredStates = {
-	headerCells: TableHeaderCells;
 	data: KoliBriTableDataType[];
+	headers: KoliBriTableHeaders;
 } & PropLabel;
 
 type OptionalStates = {
 	dataFoot: KoliBriTableDataType[];
 	fixedCols: [number, number];
+
 	loading: boolean;
 	selection: KoliBriTableSelection;
 } & PropHasSettingsMenu &
