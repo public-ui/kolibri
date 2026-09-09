@@ -149,6 +149,7 @@ To activate it:
    > Without **Dependabot alerts: read** every run logs
    > `Cannot access vulnerability alerts`, and `vulnerabilityAlerts` stays inactive; security PRs
    > then only come from `osvVulnerabilityAlerts`.
+
 2. For automerge to work end to end, check three repository settings:
    - **Settings → General → Pull Requests → Allow auto-merge**: enabled (Renovate uses
      `platformAutomerge`, i.e. GitHub's native auto-merge).
@@ -172,6 +173,51 @@ If you would rather not self-host, delete `.github/workflows/renovate.yml` and i
    `public-ui` (or just on `public-ui/kolibri`).
 2. Renovate detects `renovate.json` and opens a Dependency Dashboard issue.
 3. Review the dashboard, then let it run on the weekly schedule.
+
+### Troubleshooting: PRs stay open although CI is green
+
+Renovate never explains a refused merge in the PR itself. The runner log does, but only at
+`LOG_LEVEL=debug`: start the workflow via **Run workflow** with `log_level: debug` (and `dry_run`
+off — a dry run logs `DRY-RUN: Would merge PR` and never sends the request that carries the error).
+
+At `info` level the only trace is one line per PR:
+
+```
+INFO: All merge attempts failed (repository=public-ui/kolibri, baseBranch=develop, branch=…)
+       "pr": 10833
+```
+
+It means Renovate did try. Automerge is configured correctly and the branch is green — GitHub
+rejected the `PUT /repos/:owner/:repo/pulls/:number/merge` call. The cause is therefore always a
+repository setting or a ruleset, never `renovate.json`. Renovate walks three strategies in order
+(the configured `automergeStrategy` first, then merge commit, then rebase); the debug log holds one
+`Failed to … PR` block per attempt, each with the HTTP status and GitHub's own message:
+
+| Response                                                  | Meaning                                                                  |
+| --------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `405` `Squash merges are not allowed on this repository.` | **Settings → General → Pull Requests → Allow squash merging** is off.    |
+| `405` `Rebase merges are not allowed on this repository.` | **Allow rebase merging** is off.                                         |
+| `405` `Repository rule violations found: …`               | A ruleset or branch protection blocks the bot — the text names the rule. |
+| `403` `Resource not accessible by integration`            | The App lacks **contents: write**.                                       |
+
+> **The case of 2026-09-09.** Every green dependency PR sat blocked with `mergeable_state: blocked`
+> while the pipelines were green and no review existed. All three attempts failed with `405`: squash
+> and rebase merges are disabled for this repository, so only a merge commit is left, and that one
+> hit a ruleset violation —
+> `New changes require approval from someone other than the last pusher`.
+> The bot can never satisfy that rule: it pushed the branch itself, so its PRs need either a human
+> approval or a bypass entry for `publicuibot` in the ruleset that carries the rule
+> (**Settings → Rules → Rulesets → the ruleset for `develop` → Bypass list**). Note also that
+> `automergeStrategy: "squash"` in `renovate.json` names a method this repository does not allow;
+> Renovate only reaches the merge commit through its fallback, so either enable squash merging or
+> set the strategy to `"merge"`.
+
+Two more silent failures show up as warnings rather than as a blocked PR:
+
+- `Cannot access vulnerability alerts` — **Dependabot alerts: read** is missing, `vulnerabilityAlerts`
+  stays inactive and security PRs come from `osvVulnerabilityAlerts` only.
+- `Could not ensure issue … integration-unauthorized` — the Dependency Dashboard issue is not being
+  updated any more. Check **Issues: write** for the App, and whether the issue itself is locked.
 
 ---
 
