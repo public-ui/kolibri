@@ -2,9 +2,9 @@
 	"schema": 1,
 	"state": "failure",
 	"description": "1 of 117 visual changes rejected",
-	"computedAt": "2026-09-09T05:35:08.611Z",
+	"computedAt": "2026-09-09T05:48:01.001Z",
 	"pr": 10734,
-	"head": "1f327f28d91db9f862d74c15bd620dc7eed47a48",
+	"head": "f40419629178199cf680ed1e9f10e7b58084446b",
 	"digest": "sha256:e4c3235475f8bcd4f3e7155ffca758fa9fdf73ed2dbb101f3c4fcc513744526c",
 	"counts": {
 		"changes": 117,
