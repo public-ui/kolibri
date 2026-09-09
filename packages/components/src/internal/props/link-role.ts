@@ -1,5 +1,6 @@
 import type { Prop } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
+import { isEnumOption } from './helpers/normalizers';
 
 /**
  * The allowed role values for a link/button that takes the place of an ARIA role.
@@ -30,8 +31,8 @@ function normalizeLinkRole(value: unknown): '' | AlternativeButtonLinkRolePropTy
 	if (value === '') {
 		return '';
 	}
-	if (typeof value === 'string' && (LINK_ROLE_OPTIONS as readonly string[]).includes(value)) {
-		return value as AlternativeButtonLinkRolePropType;
+	if (isEnumOption(value, LINK_ROLE_OPTIONS)) {
+		return value;
 	}
 	throw new Error(`Invalid role: expected one of ${LINK_ROLE_OPTIONS.join(', ')}, got ${JSON.stringify(value)}`);
 }

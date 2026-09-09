@@ -39,6 +39,23 @@ type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema> = {
 };
 
 /**
+ * `bem.forBlock(block)` allocates a fresh generator closure on every call — cheap, but callers
+ * (e.g. `ButtonFC`, `LinkFC`) already hoist their own block-bound `bem.forBlock(...)` at module
+ * scope for element-class lookups. Caching by block name here means `BemRootNodeFC` reuses the
+ * same generator instead of allocating a second one on every render.
+ */
+const blockBemCache = new Map<keyof KoliBriComponentsBemSchema, (modifiers?: unknown) => string>();
+
+function getBlockBem<TBlock extends keyof KoliBriComponentsBemSchema>(block: TBlock): (modifiers?: BlockModifiers<TBlock>) => string {
+	let blockBem = blockBemCache.get(block);
+	if (!blockBem) {
+		blockBem = bem.forBlock(block) as (modifiers?: unknown) => string;
+		blockBemCache.set(block, blockBem);
+	}
+	return blockBem as (modifiers?: BlockModifiers<TBlock>) => string;
+}
+
+/**
  * Single-Root BEM wrapper for all Skeleton Functional Components.
  *
  * Responsibilities:
@@ -64,6 +81,6 @@ export const BemRootNodeFC = <TBlock extends keyof KoliBriComponentsBemSchema>(
 	{ block, modifiers, class: hostClass }: BemRootNodeFCProps<TBlock>,
 	children: FCChildren,
 ) => {
-	const blockBem = bem.forBlock(block);
+	const blockBem = getBlockBem(block);
 	return <div class={clsx(blockBem(modifiers as BlockModifiers<TBlock>), hostClass)}>{children}</div>;
 };

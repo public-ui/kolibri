@@ -4,6 +4,7 @@ import { h } from '@stencil/core';
 import { bem } from '../../../schema/bem-registry';
 import { classNameFromVariant } from '../../../schema/props/variant-class-name';
 import clsx from '../../../utils/clsx';
+import { AriaDescriptionSpanFC } from '../aria-description-span/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { SpanFC } from '../span/component';
@@ -102,11 +103,7 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 					<TooltipFC badgeText={badgeText} label={label} refFloating={refTooltip} />
 				</div>
 			)}
-			{hasAriaDescription && (
-				<span class="visually-hidden" id={ariaDescriptionId}>
-					{ariaDescription}
-				</span>
-			)}
+			<AriaDescriptionSpanFC description={hasAriaDescription ? ariaDescription : undefined} descriptionId={ariaDescriptionId} />
 		</BemRootNodeFC>
 	);
 };
