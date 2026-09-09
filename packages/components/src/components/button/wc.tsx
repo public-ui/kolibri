@@ -495,9 +495,13 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	 * Defines which variant should be used for presentation.
 	 * @internal
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal';
+	@Prop() public _variant?: VariantClassNamePropType;
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		// Resolved here rather than as a `@Prop` field initializer, which runs in the constructor —
+		// where `@Element()` is not yet populated for a `shadow: false` component under SSR.
+		// `getFeatureFlag` without a host skips the per-theme lookup silently, so the flag was
+		// simply ignored there. Mirrors the identical fallback in `kol-button`.
+		variantProp.apply(value ?? getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal', (v) => this.setRenderProp('variant', v));
 	}
 }
