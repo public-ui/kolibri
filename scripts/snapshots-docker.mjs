@@ -109,10 +109,12 @@ function buildScript({ themes, all, purge, check, playwrightArgs }) {
 	const excludes = SYNC_EXCLUDES.map((name) => `--exclude=${name}`).join(' ');
 	const extra = playwrightArgs.map((arg) => ` ${shellQuote(arg)}`).join('');
 	const task = check ? 'test' : 'test:update:e2e';
-	/* Der `--all`-Lauf ist die Pre-Push-Abnahme — dort auf 1 Worker gehen (maximale
-	   Snapshot-Stabilität), sofern der Aufrufer nichts anderes vorgibt. Einzel-/Cluster-Läufe
-	   für die Fix-Iteration bleiben bei den 4 Default-Workern der Playwright-Config. */
-	const workersEnv = all && !process.env.KOLIBRI_VISUAL_TESTS_WORKERS ? 'export KOLIBRI_VISUAL_TESTS_WORKERS=1' : '';
+	/* Jeder verifizierende Lauf geht auf 1 Worker (maximale Snapshot-Stabilität — parallele
+	   Firefox-Instanzen rendern sub-pixel-flaky), sofern der Aufrufer nichts anderes vorgibt.
+	   Das gilt für `--check` ebenso wie für die Pre-Push-Abnahme `--all`: ein Prüfergebnis darf
+	   nicht davon abhängen, mit welchem Flag es erhoben wurde. Nur die Fix-Iteration ohne beide
+	   Flags (Baselines neu schreiben) bleibt bei den 4 Default-Workern der Playwright-Config. */
+	const workersEnv = (all || check) && !process.env.KOLIBRI_VISUAL_TESTS_WORKERS ? 'export KOLIBRI_VISUAL_TESTS_WORKERS=1' : '';
 
 	const perTheme = themes
 		.map(
