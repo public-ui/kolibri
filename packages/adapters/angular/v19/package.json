@@ -65,7 +65,7 @@
 	},
 	"devDependencies": {
 		"@angular/common": "19.2.25",
-		"@angular/compiler": "19.2.25",
+		"@angular/compiler": "20.0.0",
 		"@angular/compiler-cli": "19.2.25",
 		"@angular/core": "19.2.21",
 		"@public-ui/components": "workspace:*",
