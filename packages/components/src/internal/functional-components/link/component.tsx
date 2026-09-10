@@ -6,6 +6,7 @@ import { devHint } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { classNameFromVariant } from '../../../schema/props/variant-class-name';
 import clsx from '../../../utils/clsx';
+import { AriaDescriptionSpanFC } from '../aria-description-span/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
@@ -113,11 +114,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 					/>
 				</div>
 			)}
-			{trimmedAriaDescription && (
-				<span class="visually-hidden" id={ariaDescriptionId}>
-					{trimmedAriaDescription}
-				</span>
-			)}
+			{trimmedAriaDescription && <AriaDescriptionSpanFC description={trimmedAriaDescription} descriptionId={ariaDescriptionId} />}
 		</BemRootNodeFC>
 	);
 };
