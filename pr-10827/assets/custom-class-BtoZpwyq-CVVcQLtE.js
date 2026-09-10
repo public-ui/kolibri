@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-Bvyy_3_6.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
