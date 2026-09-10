@@ -1,1 +1,0 @@
-import{Et as e}from"./index-C8e4rraf.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};

@@ -1,1 +1,0 @@
-import"./index-C8e4rraf.js";import{r as e}from"./align-DnuTHmUs-BiBNVVs1.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
