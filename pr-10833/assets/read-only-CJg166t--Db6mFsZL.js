@@ -1,0 +1,1 @@
+import{St as e}from"./index-IpssL1y8.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
