@@ -158,7 +158,10 @@ To activate it:
      when the pipelines are green. As of 2026-09-09 the `Production branches` ruleset requires
      `Visual Review`, `validate-pr-title`, `validate-release-label` and `CodeQL`, but **not**
      `check-results` — a red pipeline blocks Renovate (it refuses to merge a red branch) but not a
-     human.
+     human. Two of those four are required and therefore may never be skipped by a path filter:
+     `codeql.yml` runs on every pull request for exactly that reason, and `visual-review.yml`
+     answers a skipped CI run with the status `success` (mode `docs-only`, see
+     `scripts/visual-review/resolve-context.mjs`).
    - **Branch protection for `develop` (and `release/*`) → bypass pull request allowances**: the
      runner App (`publicuibot`) must be listed there, so its PRs can merge without a human
      code-owner review.

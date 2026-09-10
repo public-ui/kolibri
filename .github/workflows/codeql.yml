@@ -11,19 +11,16 @@
 #
 name: 'CodeQL'
 
+# Deliberately without paths-ignore: "CodeQL" is a required status check of the ruleset
+# "Production branches" and is bound to the code-scanning App, so a skipped run reports
+# nothing, GitHub keeps waiting for the status and no substitute job can deliver it. The
+# analysis costs about a minute and a half, which is the price for docs-only pull requests
+# staying mergeable. See docs/RENOVATE.md, section Troubleshooting.
 on:
   push:
     branches: ['develop', 'release/*']
-    paths-ignore:
-      - '*.md'
-      - 'docs/**'
-      - 'LICENSE'
   pull_request:
     branches: ['develop', 'release/*']
-    paths-ignore:
-      - '*.md'
-      - 'docs/**'
-      - 'LICENSE'
   schedule:
     - cron: '23 1 * * 6'
 
