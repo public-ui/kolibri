@@ -19,7 +19,7 @@ This document is the outcome of issue [#10270](https://github.com/public-ui/koli
 ## 1. Tool comparison
 
 KoliBri is a **pnpm-workspace monorepo** with 30+ packages, several intentionally pinned major
-lines (Angular `v19`/`v20`/`v21`, React 18/19, Stencil 4, ESLint 9) and four maintained branches
+lines (Angular `v20`/`v21`, React 18/19, Stencil 4, ESLint 9) and four maintained branches
 (`develop`, `release/3`, `release/2`, `release/1`). That shapes the comparison:
 
 | Capability                                   |       **Renovate**       |             Dependabot              |  npm-check-updates (ncu)  |
@@ -47,7 +47,7 @@ lines (Angular `v19`/`v20`/`v21`, React 18/19, Stencil 4, ESLint 9) and four mai
   (Dependabot for Actions + a daily `ncu` workflow for npm).
 - **Dependabot — viable fallback.** Now supports `groups:`, but every package directory needs its
   own `updates:` entry (≈30 for this monorepo × 4 branches) and it cannot hold a dependency on a
-  specific major _per folder_ — exactly what the `angular/v19|v20|v21` and `react*` adapters need.
+  specific major _per folder_ — exactly what the `angular/v20|v21` and `react*` adapters need.
 - **npm-check-updates — not an automation tool.** It is a CLI that rewrites version ranges; it has
   no PR/grouping/scheduling of its own. We only use it _inside_ a hand-written workflow
   (`.github/workflows/auto-dependency-updater.yml`). Renovate makes that workflow redundant.
@@ -97,7 +97,7 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
 | Rule                                              | Effect                                                                                                                                                                                             |
 | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **All majors**                                    | Require manual approval via the Dependency Dashboard — KoliBri pins majors deliberately.                                                                                                           |
-| **Angular `@angular/*`, `zone.js`, `ng-packagr`** | Major updates **disabled** entirely; within-major updates grouped per adapter folder (_Angular 19/20/21_). A new Angular major = a new adapter folder, never an auto-bump.                         |
+| **Angular `@angular/*`, `zone.js`, `ng-packagr`** | Major updates **disabled** entirely; within-major updates grouped per adapter folder (_Angular 20/21_). A new Angular major = a new adapter folder, never an auto-bump.                            |
 | **React `react`, `react-dom`, `@types/react*`**   | Major updates **disabled**; within-major React updates of the `react*` adapters grouped and automerged once green.                                                                                 |
 | **Stencil `@stencil/*`, `@stencil-community/*`**  | **All** updates require dashboard approval — every 4.39+ release currently breaks the Popover API, tooltips and visual tests (see [`UPGRADEABLE_DEPENDENCIES.md`](./UPGRADEABLE_DEPENDENCIES.md)). |
 | **`@kern-ux/*`**                                  | Dashboard approval only — upgraded by hand together with theming work.                                                                                                                             |
@@ -260,7 +260,7 @@ workflow (or app) from [§3](#3-enabling-renovate) actually runs, so there is no
 
 **Empfehlung: Renovate.** Es ist die einzige Lösung, die das KoliBri-Monorepo in _einer_ Konfiguration
 abbildet — verwandte Pakete gruppieren (z. B. alle `@angular/*`), jeden Adapter-Ordner auf seiner
-fixierten Major-Version halten (`angular/v19|v20|v21`, `react*`), sichere Updates automatisch mergen
+fixierten Major-Version halten (`angular/v20|v21`, `react*`), sichere Updates automatisch mergen
 (GitHub Actions, `@types/*`) und alles Riskante (Stencil, kern-ux, ESLint-/Angular-Majors) über das
 **Dependency Dashboard** zur manuellen Freigabe leiten.
 
