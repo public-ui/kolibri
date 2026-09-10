@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-CkCr658X.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};

@@ -1,1 +1,0 @@
-import{wt as e}from"./index-CkCr658X.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
