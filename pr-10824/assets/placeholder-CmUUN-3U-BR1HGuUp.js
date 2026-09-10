@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-B-TNb8n3.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
