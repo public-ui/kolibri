@@ -1,0 +1,42 @@
+name: Visual Review UI
+
+# Deploys the review page (packages/tools/visual-tests/review-ui) to GitHub Pages under visual/.
+# The per-pull-request data lives next to it in visual/pr-<n>/ and is left untouched.
+on:
+  push:
+    branches:
+      - 'develop'
+    paths:
+      - 'packages/tools/visual-tests/review-ui/**'
+      - '.github/workflows/visual-review-ui.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: visual-review-ui
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/pnpm-setup
+      - name: Build the review page
+        run: pnpm --filter @public-ui/visual-tests review-ui:build
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: packages/tools/visual-tests/review-ui/dist
+          target-folder: visual
+          branch: gh-pages
+          clean: true
+          clean-exclude: |
+            pr-*
+          force: false
+          attempt-limit: 10
+          commit-message: 'visual review: deploy the review page'

@@ -33,16 +33,27 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Remove preview for the closed PR
+      - name: Remove preview and visual review for the closed PR
         if: github.event_name == 'pull_request'
         run: |
-          PR_FOLDER="pr-${{ github.event.pull_request.number }}"
-          if [ -d "$PR_FOLDER" ]; then
-            git rm -rf "$PR_FOLDER"
-            git commit -m "chore: remove preview for PR #${{ github.event.pull_request.number }}"
-            git push
+          PR="${{ github.event.pull_request.number }}"
+          REMOVED=0
+          for FOLDER in "pr-$PR" "visual/pr-$PR"; do
+            if [ -d "$FOLDER" ]; then
+              git rm -rfq "$FOLDER"
+              REMOVED=1
+            fi
+          done
+          if [ "$REMOVED" = "1" ]; then
+            git commit -m "chore: remove preview and visual review for PR #$PR"
+            # Other workflows push to gh-pages concurrently – rebase and retry instead of failing.
+            for ATTEMPT in 1 2 3 4 5; do
+              git pull --rebase -q origin gh-pages && git push && break
+              echo "push attempt $ATTEMPT failed, retrying"
+              sleep 5
+            done
           else
-            echo "No preview folder found for PR #${{ github.event.pull_request.number }}, skipping."
+            echo "Nothing published for PR #$PR, skipping."
           fi
 
       - name: Remove all PR previews

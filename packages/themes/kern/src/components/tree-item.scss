@@ -32,8 +32,8 @@
 				padding-right: 0;
 				padding-left: max(calc(var(--indentation) * var(--level)));
 
-				// The focus ring lives on the anchor since the kol-link skeleton migration.
-				&__anchor:focus {
+				// The focus ring lives on the interactive element since the kol-link skeleton migration.
+				&__interactive-element:focus {
 					outline-color: var(--kern-color-action-focus-background);
 				}
 

@@ -56,7 +56,7 @@
 				/* The underline belongs to the interactive element — it carries the UA `medium`
 				   border-width from the shared wc-box styles, so the selected-tab underline keeps
 				   the exact box it had when the button element itself carried `kol-button`. */
-				.kol-button__button {
+				.kol-button__interactive-element {
 					border-bottom-color: transparent;
 					border-bottom-style: solid;
 				}
@@ -66,11 +66,10 @@
 						outline: 3px solid Highlight;
 						outline-offset: -3px;
 
-						/* The outline is declared on the class carrier, but the focusable element is
-						   now the inner `<button>` — `&:focus-visible` would never match. `:has()`
-						   keeps the override on the element that owns the outline, exactly as when
-						   the button element itself carried `kol-button`. */
-						&:has(.kol-button__button:focus-visible) {
+						/* The outline sits on the wrapper, but only the inner button can receive focus.
+						   Matching `:focus-visible` on the wrapper itself would never fire, so the
+						   focused state has to be detected through the interactive element. */
+						&:has(.kol-button__interactive-element:focus-visible) {
 							outline-style: dashed;
 						}
 					}

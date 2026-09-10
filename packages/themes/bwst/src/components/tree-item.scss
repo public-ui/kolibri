@@ -28,7 +28,7 @@
 
 				/* The focus outline sits on the anchor inside the skeleton wrapper — offset 0 makes
 				   it cover the row border exactly like the former anchor-as-root did. */
-				.kol-link__anchor {
+				.kol-link__interactive-element {
 					outline-offset: 0;
 				}
 			}

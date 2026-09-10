@@ -9,6 +9,7 @@ import { UpdateLoaderImportPathTask } from './loader';
 import { RenameTagNameKolModalToKolDialog } from './modal';
 import { RemoveMsgPropsTasks } from './msg';
 import { RenamePasswordVariantToVisibilityToggleTasks } from './password-variant';
+import { RenameTableStatelessHeaderCellsToHeaders } from './table-stateless-headers';
 import { RemoveToastVariantTask } from './toast';
 import { RemoveToasterGetInstanceOptionsTask } from './toaster';
 
@@ -26,3 +27,4 @@ v4Tasks.push(RemoveToasterGetInstanceOptionsTask.getInstance('^4'));
 v4Tasks.push(UpdateLoaderImportPathTask.getInstance('^4'));
 v4Tasks.push(...RenamePasswordVariantToVisibilityToggleTasks);
 v4Tasks.push(RemoveAbbrLabelPropTask);
+v4Tasks.push(...RenameTableStatelessHeaderCellsToHeaders);

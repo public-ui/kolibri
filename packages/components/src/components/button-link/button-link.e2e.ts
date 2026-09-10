@@ -10,7 +10,7 @@ test.describe('kol-button-link', () => {
 
 	/*
 	 * The block modifiers sit on the BEM root, which the skeleton renders as the wrapper around the
-	 * interactive element — `<div class="kol-button kol-button--inline"><button class="kol-button__button">`.
+	 * interactive element — `<div class="kol-button kol-button--inline"><button class="kol-button__interactive-element">`.
 	 * Assertions on modifiers therefore address `.kol-button`, not the inner `<button>`.
 	 */
 	test('it supports inline rendering via _inline', async ({ page }) => {

@@ -69,7 +69,7 @@
 			   `line-height: normal` on the real `<button>`, beating any inherited value. The
 			   `position: relative; top: 1px` offset stays on the wrapper, which is the flex item in
 			   the tab group (as the button element was before). */
-			.kol-button__button {
+			.kol-button__interactive-element {
 				border-radius: var(--border-radius);
 				min-width: var(--a11y-min-size);
 				min-height: var(--a11y-min-size);
@@ -98,7 +98,7 @@
 				/* In the legacy DOM the selected-tab border, its radius and the `::before` / `::after`
 				   decorations all lived on the button element. They move to `__button` together so
 				   the pseudos anchor to the same padded, bordered box as before the migration. */
-				.kol-button__button {
+				.kol-button__interactive-element {
 					border-color: var(--color-primary);
 					border-radius: to-rem(4) to-rem(4) 0 0;
 					border-bottom-color: var(--color-light);

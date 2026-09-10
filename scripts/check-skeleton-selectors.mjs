@@ -7,15 +7,16 @@
  * child of it:
  *
  *     <div class="kol-button kol-button--primary">
- *       <button class="kol-button__button">…</button>
+ *       <button class="kol-button__interactive-element">…</button>
  *     </div>
  *
  * Two failure modes follow, and neither shows up in a visual snapshot, because snapshots photograph
  * resting states:
  *
- * 1. **Modifier-glued element.** Inside a modifier block, `&__button` expands to
- *    `.kol-button--primary__button` — a class that exists nowhere, so the rule is silently dead.
- *    The fix is a plain descendant: `& #{$root}__button` / `.#{$block}__#{$element}`.
+ * 1. **Modifier-glued element.** Inside a modifier block, `&__interactive-element` expands to
+ *    `.kol-button--primary__interactive-element` — a class that exists nowhere, so the rule is
+ *    silently dead. The fix is a plain descendant: `& #{$root}__interactive-element` /
+ *    `.#{$block}__interactive-element`.
  *
  * 2. **State predicate on the carrier.** `:focus`, `:focus-visible` and `:disabled` never match the
  *    wrapper `div`, so those rules are dead. Worse, `:not(:disabled)` / `:not([disabled])` are
@@ -93,9 +94,7 @@ function collectScssFiles(dir, out = []) {
 
 function stripComments(source) {
 	// Both comment kinds are blanked rather than removed so line numbers survive.
-	return source
-		.replace(/\/\*[\s\S]*?\*\//g, (match) => match.replace(/[^\n]/g, ' '))
-		.replace(/\/\/[^\n]*/g, (match) => ' '.repeat(match.length));
+	return source.replace(/\/\*[\s\S]*?\*\//g, (match) => match.replace(/[^\n]/g, ' ')).replace(/\/\/[^\n]*/g, (match) => ' '.repeat(match.length));
 }
 
 function normaliseInterpolations(text) {
@@ -232,7 +231,7 @@ function carrierPattern(includeGeneric) {
 }
 
 function mentionsInteractiveElement(source) {
-	return /__button|__anchor|__#\{\$interactive-element\}|\$interactive-element/.test(source);
+	return /__interactive-element|__button|__anchor|__#\{\$interactive-(?:element|suffix)\}|\$interactive-(?:element|suffix)/.test(source);
 }
 
 function findModifierGluedElement(selector, includeGeneric) {
@@ -418,8 +417,7 @@ function checkFile(file) {
 				selector,
 				rule: 'modifier-glued-element',
 				message:
-					'A nested `&__element` inside a modifier block glues modifier and element into one ' +
-					'class that exists nowhere. Use a plain descendant instead.',
+					'A nested `&__element` inside a modifier block glues modifier and element into one ' + 'class that exists nowhere. Use a plain descendant instead.',
 			});
 			continue;
 		}
@@ -435,8 +433,7 @@ function checkFile(file) {
 					state.kind === 'inverting'
 						? `\`${state.pseudo}\` is always true on the wrapper \`${state.carrier}\`, so the rule inverts and ` +
 							'applies to disabled elements. Scope it to the interactive element.'
-						: `\`${state.pseudo}\` never matches the wrapper \`${state.carrier}\`, so the rule is dead. ` +
-							'Scope it to the interactive element.',
+						: `\`${state.pseudo}\` never matches the wrapper \`${state.carrier}\`, so the rule is dead. ` + 'Scope it to the interactive element.',
 			});
 		}
 	}

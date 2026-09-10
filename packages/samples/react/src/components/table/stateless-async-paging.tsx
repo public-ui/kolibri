@@ -50,7 +50,7 @@ export const TableStatelessAsync: FC = () => {
 				<KolTableStateless
 					_label="Table for demonstration purposes"
 					_loading={loading}
-					_headerCells={HEADERS_HORIZONTAL}
+					_headers={HEADERS_HORIZONTAL}
 					_data={complexData}
 					_on={{
 						onSort: () => loadData(),

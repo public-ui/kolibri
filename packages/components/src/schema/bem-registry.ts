@@ -67,15 +67,9 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
-	/**
-	 * `tooltip` is an element of this block by name, but `ButtonFC` renders it as a *sibling* of the
-	 * block root, not inside it (see `functional-components/button/component.tsx`). A descendant
-	 * selector such as `.kol-button .kol-button__tooltip` therefore matches nothing — address it as
-	 * a plain class.
-	 */
 	'kol-button': {
 		elements: {
-			button: {
+			'interactive-element': {
 				modifiers: null;
 			};
 			text: {
@@ -191,7 +185,7 @@ export type KoliBriComponentsBemSchema = {
 	};
 	'kol-link': {
 		elements: {
-			anchor: {
+			'interactive-element': {
 				modifiers: null;
 			};
 			icon: {
@@ -252,7 +246,7 @@ const BEM: KoliBriComponentsBemSchema = {
 	},
 	'kol-button': {
 		elements: {
-			button: { modifiers: null },
+			'interactive-element': { modifiers: null },
 			text: { modifiers: null },
 			tooltip: { modifiers: null },
 		},
@@ -314,7 +308,7 @@ const BEM: KoliBriComponentsBemSchema = {
 	},
 	'kol-link': {
 		elements: {
-			anchor: { modifiers: null },
+			'interactive-element': { modifiers: null },
 			icon: { modifiers: null },
 			text: { modifiers: null },
 		},

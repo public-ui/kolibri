@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/visual-tests",
-	"version": "4.3.1-rc.3",
+	"version": "4.4.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -23,12 +23,16 @@
 	"scripts": {
 		"build": "vite build --config app/vite.config.ts",
 		"build:deps": "pnpm --filter @public-ui/visual-tests^... build",
-		"prebuild": "npm-run-all2 prebuild:*",
-		"prebuild:components": "kolibri-copy-assets --dest app/public/assets @public-ui/components @public-ui/sample-react",
-		"format": "prettier --check src app/src",
+		"format": "prettier --check src app/src review-ui/src",
 		"lint": "pnpm lint:eslint",
 		"lint:eslint": "eslint src",
+		"lint:tsc": "tsc -p review-ui/tsconfig.json",
+		"prebuild": "npm-run-all2 prebuild:*",
+		"prebuild:components": "kolibri-copy-assets --dest app/public/assets @public-ui/components @public-ui/sample-react",
+		"review-ui:build": "vite build --config review-ui/vite.config.ts",
+		"review-ui:dev": "vite --config review-ui/vite.config.ts",
 		"serve": "vite --config app/vite.config.ts",
+		"test:unit": "node --test test/*.test.mjs",
 		"unused": "knip"
 	},
 	"bin": {

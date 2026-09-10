@@ -1,135 +1,106 @@
-import { describe, expect, it } from '@jest/globals';
-
+import { describe, expect, it, jest } from '@jest/globals';
 import { ariaExpandedProp } from './aria-expanded';
 import { ariaHasPopupProp } from './aria-has-popup';
 import { ariaSelectedProp } from './aria-selected';
+import { buttonTypeProp } from './button-type';
 import { linkRoleProp } from './link-role';
-import { optionalTabIndexProp } from './tab-index';
 
 /**
- * Records whether a prop definition applied a value at all, and which value it applied.
+ * Pins the enum semantics adopted from #10719. The predecessor degraded an unknown value silently
+ * to the `''` sentinel, which removed the attribute without telling anyone. The normalizers now
+ * throw instead; the factory catches that, logs a `devWarning` and skips the callback, so the
+ * render prop keeps the value it already had.
  *
- * That distinction is the whole contract under test: the factory only invokes the callback for a
- * value it accepted, so "not applied" means the render prop keeps whatever it had.
+ * The kept-value behavior is only observable on a *change* from a valid to an invalid value —
+ * on first assignment the previous value is the default, which equals the old degraded result.
+ * `kol-link` and `kol-link-wc` share these definitions, so this is their contract too.
  */
-function applyResult<T>(
-	definition: { apply: (value: unknown, callback: (normalized: T) => void) => void },
-	value: unknown,
-): { applied: boolean; normalized?: T } {
-	const applied: T[] = [];
-	definition.apply(value, (normalized) => applied.push(normalized));
-	return applied.length > 0 ? { applied: true, normalized: applied[0] } : { applied: false };
-}
+type EnumPropDefinition = {
+	readonly propName: string;
+	apply: (value: unknown, callback: (normalized: string) => void) => void;
+};
 
-/**
- * These props normalize to a small token set and use `''` as the "not set" sentinel.
- *
- * Their normalizers **throw** on an unknown value instead of degrading to that sentinel. The
- * factory catches, logs a `devWarning` and does not invoke the callback — so the render prop keeps
- * whatever it had. That is a deliberate behaviour change over the predecessor validators, which
- * silently reset the value: a typo becomes visible in the console while the rendered result stays
- * untouched.
- *
- * `linkRoleProp` and `ariaExpandedProp` are shared with `kol-link`, so the change reaches that
- * component as well.
- */
-describe('enum props with a "not set" sentinel', () => {
-	describe('ariaExpandedProp', () => {
-		it('normalizes booleans and their string equivalents to aria tokens', () => {
-			expect(applyResult(ariaExpandedProp, true)).toEqual({ applied: true, normalized: 'true' });
-			expect(applyResult(ariaExpandedProp, false)).toEqual({ applied: true, normalized: 'false' });
-			expect(applyResult(ariaExpandedProp, 'true')).toEqual({ applied: true, normalized: 'true' });
-			expect(applyResult(ariaExpandedProp, 'false')).toEqual({ applied: true, normalized: 'false' });
-		});
+const ENUM_PROPS: ReadonlyArray<{ name: string; definition: EnumPropDefinition; valid: unknown; normalized: string; invalid: unknown }> = [
+	{ name: 'linkRoleProp', definition: linkRoleProp, valid: 'tab', normalized: 'tab', invalid: 'nonsense' },
+	{ name: 'ariaExpandedProp', definition: ariaExpandedProp, valid: true, normalized: 'true', invalid: 'maybe' },
+	{ name: 'ariaSelectedProp', definition: ariaSelectedProp, valid: true, normalized: 'true', invalid: 'maybe' },
+	{ name: 'ariaHasPopupProp', definition: ariaHasPopupProp, valid: 'menu', normalized: 'menu', invalid: 'sidebar' },
+];
 
-		it('treats the empty string as "not set"', () => {
-			expect(applyResult(ariaExpandedProp, '')).toEqual({ applied: true, normalized: '' });
-		});
-
-		it('falls back to the default when no value is given', () => {
-			expect(applyResult(ariaExpandedProp, undefined)).toEqual({ applied: true, normalized: '' });
-		});
-
-		it('ignores invalid values instead of resetting the property', () => {
-			expect(applyResult(ariaExpandedProp, 'yes')).toEqual({ applied: false });
-			expect(applyResult(ariaExpandedProp, 'TRUE')).toEqual({ applied: false });
-			expect(applyResult(ariaExpandedProp, 0)).toEqual({ applied: false });
-		});
+describe.each(ENUM_PROPS)('$name', ({ definition, valid, normalized, invalid }) => {
+	it('normalizes a valid value', () => {
+		const callback = jest.fn();
+		definition.apply(valid, callback);
+		expect(callback).toHaveBeenCalledWith(normalized);
 	});
 
-	describe('ariaSelectedProp', () => {
-		it('normalizes booleans to aria tokens and keeps the empty string as "not set"', () => {
-			expect(applyResult(ariaSelectedProp, true)).toEqual({ applied: true, normalized: 'true' });
-			expect(applyResult(ariaSelectedProp, false)).toEqual({ applied: true, normalized: 'false' });
-			expect(applyResult(ariaSelectedProp, '')).toEqual({ applied: true, normalized: '' });
-		});
-
-		it('ignores invalid values', () => {
-			expect(applyResult(ariaSelectedProp, 'maybe')).toEqual({ applied: false });
-			expect(applyResult(ariaSelectedProp, 1)).toEqual({ applied: false });
-		});
+	it('treats the empty string as "not set" without warning', () => {
+		const callback = jest.fn();
+		definition.apply('', callback);
+		expect(callback).toHaveBeenCalledWith('');
 	});
 
-	describe('ariaHasPopupProp', () => {
-		it('accepts every aria-haspopup token and the empty string', () => {
-			for (const token of ['dialog', 'false', 'grid', 'listbox', 'menu', 'tree', 'true', '']) {
-				expect(applyResult(ariaHasPopupProp, token)).toEqual({ applied: true, normalized: token });
-			}
-		});
-
-		it('ignores values outside the token set', () => {
-			expect(applyResult(ariaHasPopupProp, 'popover')).toEqual({ applied: false });
-			expect(applyResult(ariaHasPopupProp, 'Dialog')).toEqual({ applied: false });
-			expect(applyResult(ariaHasPopupProp, 42)).toEqual({ applied: false });
-		});
+	it.each([undefined, null])('falls back to the unset default for %s', (value) => {
+		const callback = jest.fn();
+		definition.apply(value, callback);
+		expect(callback).toHaveBeenCalledWith('');
 	});
 
-	describe('linkRoleProp', () => {
-		it('accepts the alternative roles and the empty string', () => {
-			for (const role of ['tab', 'treeitem', '']) {
-				expect(applyResult(linkRoleProp, role)).toEqual({ applied: true, normalized: role });
-			}
-		});
+	it('ignores an invalid value instead of degrading it to the sentinel', () => {
+		const callback = jest.fn();
+		definition.apply(invalid, callback);
+		expect(callback).not.toHaveBeenCalled();
+	});
 
-		it('ignores roles outside the allowed set', () => {
-			expect(applyResult(linkRoleProp, 'button')).toEqual({ applied: false });
-			expect(applyResult(linkRoleProp, 'TAB')).toEqual({ applied: false });
-			expect(applyResult(linkRoleProp, 'link')).toEqual({ applied: false });
-		});
+	it('keeps the previous value when a valid value is replaced by an invalid one', () => {
+		let rendered: string | undefined;
+		const render = (value: string) => {
+			rendered = value;
+		};
 
-		/**
-		 * The regression this behaviour is about: an invalid value must not clear a valid one. A
-		 * component rendering `role="tab"` that is handed garbage keeps `tab` and warns, instead of
-		 * silently dropping the attribute — which is what a wrong ARIA role would deserve least.
-		 */
-		it('keeps the previous value when a valid value is replaced by an invalid one', () => {
-			let renderProp: string = linkRoleProp.getDefaultValue();
+		definition.apply(valid, render);
+		expect(rendered).toBe(normalized);
 
-			linkRoleProp.apply('tab', (value) => (renderProp = value));
-			expect(renderProp).toBe('tab');
-
-			linkRoleProp.apply('nonsense', (value) => (renderProp = value));
-			expect(renderProp).toBe('tab');
-
-			// Explicitly unsetting still works — the empty string is a valid "not set".
-			linkRoleProp.apply('', (value) => (renderProp = value));
-			expect(renderProp).toBe('');
-		});
+		definition.apply(invalid, render);
+		expect(rendered).toBe(normalized);
 	});
 });
 
-describe('optionalTabIndexProp', () => {
-	it('defaults to unset, so a natively focusable element renders no tabindex attribute', () => {
-		expect(optionalTabIndexProp.getDefaultValue()).toBeUndefined();
+/**
+ * `buttonTypeProp` is built on the same throw-on-invalid factory as `ENUM_PROPS` above, but its
+ * default is `'button'`, not the `''` "not set" sentinel the other four share — an empty string
+ * is itself an invalid `_type` value here, not a synonym for "unset". It therefore needs its own
+ * semantics instead of a row in `ENUM_PROPS`.
+ */
+describe('buttonTypeProp', () => {
+	it('normalizes a valid value', () => {
+		const callback = jest.fn();
+		buttonTypeProp.apply('submit', callback);
+		expect(callback).toHaveBeenCalledWith('submit');
 	});
 
-	it('restores the unset state when the property is cleared', () => {
-		let renderProp: number | undefined = optionalTabIndexProp.getDefaultValue();
+	it.each([undefined, null])("falls back to the default 'button' for %s", (value) => {
+		const callback = jest.fn();
+		buttonTypeProp.apply(value, callback);
+		expect(callback).toHaveBeenCalledWith('button');
+	});
 
-		optionalTabIndexProp.apply(-1, (value) => (renderProp = value));
-		expect(renderProp).toBe(-1);
+	it('ignores an invalid value instead of degrading it to a default', () => {
+		const callback = jest.fn();
+		buttonTypeProp.apply('nonsense', callback);
+		expect(callback).not.toHaveBeenCalled();
+	});
 
-		optionalTabIndexProp.apply(undefined, (value) => (renderProp = value));
-		expect(renderProp).toBeUndefined();
+	it('keeps the previous value when a valid value is replaced by an invalid one', () => {
+		let rendered: string | undefined;
+		const render = (value: string) => {
+			rendered = value;
+		};
+
+		buttonTypeProp.apply('reset', render);
+		expect(rendered).toBe('reset');
+
+		buttonTypeProp.apply('nonsense', render);
+		expect(rendered).toBe('reset');
 	});
 });

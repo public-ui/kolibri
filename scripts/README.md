@@ -33,10 +33,63 @@ Host `node_modules` are never touched; the install inside the volume is reused a
 | `--reset`    | Drop the volume, forcing a fresh install on the next run                  |
 | `-- <args>`  | Everything after `--` is passed on to Playwright, e.g. `-- --grep Button` |
 
-A `--check` run is an acceptance run: its result is evidence, so it is pinned to one worker
-(parallel Firefox instances render sub-pixel-flaky) no matter how many themes were selected.
-Baseline updates keep the parallel default, where throughput is what counts.
-`KOLIBRI_VISUAL_TESTS_WORKERS` overrides both.
+## visual-review/
+
+Helpers around the visual report the Playwright runs write to `<package>/visual-report/report.json`
+(see [packages/tools/visual-tests](../packages/tools/visual-tests/README.md#visual-report-visual-reportreportjson)).
+
+- `snapshot-paths.mjs` – discovers every package whose `test` script runs `kolibri-visual-test`
+  (`theme-default`, `unstyled`, …) and maps it to its folder, its `snapshots/theme-<export>` sub
+  folder and its report folder. The export-derived folder names (`theme-desyv11`, `theme-kern_v2`)
+  are not guessable from the directory, so every script resolves them here; a new theme package
+  takes part without registration. The CI matrices in `ci.yml` and `visual-baseline.yml` still list
+  the packages by hand – a unit test in `packages/tools/visual-tests` pins the discovered set.
+- `assert-no-errors.mjs <package>` – prints the report summary (and appends it to the GitHub job
+  summary), then fails only if routes could not be compared at all. Screenshot differences are a
+  review case, not an error.
+- `pack-baseline.mjs <package>` – used by the "Visual Baseline" workflow after `test:update:e2e`:
+  copies the generated snapshots plus a `meta.json` (commit, Playwright image, digest) into
+  `<package>/visual-baseline/`, the layout of the `visual-baseline-<package>` artifact.
+- `baseline-artifacts.mjs` – the selection rules for those artifacts (branch, repository, nearest
+  candidate commit, newest run), shared by the local pull and the CI download.
+- `pull-baseline.mjs` – downloads the current baseline into the local `snapshots/` folders via the
+  GitHub CLI, so a local `pnpm --filter @public-ui/<package> test` compares against what the CI
+  compares against. Generating a baseline locally stays the job of `snapshots-docker.mjs`.
+
+The "Visual Review" workflow (`.github/workflows/visual-review.yml`) runs these in the context of
+the base repository – see [docs/visual-review.md](../docs/visual-review.md) for the process:
+
+- `resolve-context.mjs` – decides what the workflow has to do for its trigger (publish a finished CI
+  run, recompute after a reviewer comment, mark a fresh push pending, …) and which pull request it
+  belongs to. Its ignore list mirrors `paths-ignore` of `ci.yml`.
+- `merge-reports.mjs` – merges the `visual-review-<package>` artifacts of a CI run into the folder
+  published as `visual/pr-<n>/`, validating every field and file name before copying anything.
+- `review-comment.mjs` – parses and formats the reviewer comment (`<!-- visual-review:v1 … -->`).
+- `review-status.mjs` – the pure rules that turn a report and the reviewers' decisions into the
+  commit status (`success`, `pending`, `failure`) and `status.json`.
+- `update-review.mjs` – applies them: reads the comments, checks the authors' permission, writes
+  `status.json`, sets the commit status `Visual Review` and upserts the summary comment.
+- `github-api.mjs` – the small REST client the scripts share.
+
+The `visual-tests` job of `ci.yml` fetches the baseline a pull request compares against:
+
+- `select-baseline.mjs <package>` – the baseline is the artifact of the base commit the pull request
+  was merged with (the first parent of the checked-out merge commit). Waits for a still running
+  "Visual Baseline" run of that commit, otherwise falls back to the nearest ancestor with an
+  artifact, then to the newest artifact of the base branch, then to "none". Writes the choice to
+  `<package>/visual-report/baseline-selection.json` and outputs the artifact id for
+  `actions/download-artifact`.
+- `install-baseline.mjs <package> [downloadDir]` – moves the downloaded snapshots into the baseline
+  package's `snapshots/theme-<export>/` folder and writes `<package>/visual-report/baseline.json`,
+  which the visual reporter embeds into its report (commit, image, fallback, image mismatch).
+
+```bash
+node scripts/visual-review/assert-no-errors.mjs theme-default
+pnpm snapshots:pull                        # every package, newest baseline of develop
+pnpm snapshots:pull theme-default unstyled # selected packages
+pnpm snapshots:pull --branch release/3     # another base branch
+pnpm snapshots:pull --sha <commit>         # the baseline of one specific base commit
+```
 
 ## check-skeleton-selectors.mjs
 
@@ -48,15 +101,18 @@ pnpm check:skeleton-selectors
 ```
 
 Since the skeleton migration the block class sits on a wrapper element and the interactive element
-is a child of it (`<div class="kol-button"><button class="kol-button__button">`). Two things follow:
+is a child of it (`<div class="kol-button"><button class="kol-button__interactive-element">`; the
+same shape applies to `kol-link` and its `kol-link__interactive-element`). Two things follow:
 
-1. **Modifier-glued element** — inside a modifier block, `&__button` expands to
-   `.kol-button--primary__button`, a class that exists nowhere. The rule is silently dead. Use a
-   plain descendant instead.
+1. **Modifier-glued element** — inside a modifier block, `&__interactive-element` expands to
+   `.kol-button--primary__interactive-element`, a class that exists nowhere. The rule is silently
+   dead. Use a plain descendant instead.
 2. **State predicate on the carrier** — `:focus`, `:focus-visible` and `:disabled` never match the
-   wrapper, so those rules are dead; and `:not(:disabled)` / `:not([disabled])` are always *true* on
+   wrapper, so those rules are dead; and `:not(:disabled)` / `:not([disabled])` are always _true_ on
    it, so a combined predicate such as `.kol-button:not([disabled]):hover` does not merely stop
-   matching, it **inverts** and starts styling disabled elements.
+   matching, it **inverts** and starts styling disabled elements. Either scope the rule to
+   `.kol-button__interactive-element`, or keep the wrapper as the subject and ask the element inside
+   it: `.kol-button:not(:has(:disabled)):hover`.
 
 `:hover`, `:active` and `:focus-within` are not flagged — they reach the wrapper through ancestor
 propagation and keep working where they are.

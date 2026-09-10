@@ -46,6 +46,34 @@ export function normalizeBoolean(value?: unknown): boolean | never {
 	throw new Error(`Invalid boolean: ${value as string}`);
 }
 
+/**
+ * Normalizes a value to the `'true' | 'false' | ''` tri-state token shared by the aria boolean
+ * props (`aria-expanded`, `aria-selected`, …): booleans and their string equivalents map to
+ * `'true'`/`'false'`, the empty string means "not set" and passes through, anything else throws
+ * with a message naming `propLabel` (e.g. `'aria-expanded'`).
+ */
+export function normalizeBooleanToken(value: unknown, propLabel: string): 'true' | 'false' | '' {
+	if (value === true || value === 'true') {
+		return 'true';
+	}
+	if (value === false || value === 'false') {
+		return 'false';
+	}
+	if (value === '') {
+		return '';
+	}
+	throw new Error(`Invalid ${propLabel} value: expected a boolean, got ${JSON.stringify(value)}`);
+}
+
+/**
+ * Type guard for "is this string one of the given enum options" — the membership check shared by
+ * every enum-style prop (aria-has-popup, link-role, button-type, …). Each caller still throws its
+ * own propName-specific error message around it.
+ */
+export function isEnumOption<T extends string>(value: unknown, options: readonly T[]): value is T {
+	return typeof value === 'string' && (options as readonly string[]).includes(value);
+}
+
 export function normalizeObject(value?: unknown): object | never {
 	if (isObject(value)) {
 		return value as object;

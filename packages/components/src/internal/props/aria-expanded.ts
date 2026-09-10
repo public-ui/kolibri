@@ -1,5 +1,6 @@
 import type { Prop } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
+import { normalizeBooleanToken } from './helpers/normalizers';
 
 /**
  * The internal type uses the sentinel `''` for "not set" because the prop-definition factory
@@ -18,16 +19,7 @@ export type AriaExpandedProp = Prop<'ariaExpanded', boolean | undefined, 'true' 
  * factory's `apply` before this is reached.
  */
 function normalizeAriaExpanded(value: unknown): 'true' | 'false' | '' {
-	if (value === true || value === 'true') {
-		return 'true';
-	}
-	if (value === false || value === 'false') {
-		return 'false';
-	}
-	if (value === '') {
-		return '';
-	}
-	throw new Error(`Invalid aria-expanded value: expected a boolean, got ${JSON.stringify(value)}`);
+	return normalizeBooleanToken(value, 'aria-expanded');
 }
 
 export const ariaExpandedProp = createPropDefinition<AriaExpandedProp>('ariaExpanded', '', normalizeAriaExpanded);

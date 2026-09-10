@@ -97,6 +97,10 @@ export class KolButton extends BaseWebComponent<ButtonApi> implements ButtonProp
 
 	public componentWillLoad(): void {
 		this.initRenderProps(buttonPropsConfig);
+		// `kol-button` exposes no `_tabIndex`, and an unset tabindex must not render as
+		// `tabindex="0"` — buttons are natively tabbable and the attribute would pin them into
+		// the document tab order.
+		this.unsetRenderProp('tabIndex');
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaControls(this._ariaControls);

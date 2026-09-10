@@ -43,7 +43,7 @@
 			   button's a11y min-size (+20px per tab), Firefox pins `line-height: normal` on the
 			   real button (beating any inherited value → +1px label box), and the wrapper never
 			   receives `:focus-visible`. */
-			.kol-button__button {
+			.kol-button__interactive-element {
 				display: flex;
 				min-width: to-rem(40);
 				min-height: to-rem(40);
@@ -62,14 +62,13 @@
 				border-bottom-color: var(--color-white-100);
 			}
 
-			/* `:not(:disabled)` is always true on the wrapper `div`; the disabled state lives on
-			   the interactive element inside. */
-			&:hover:not(:has(:disabled)) {
+			&:hover:not(:disabled) {
 				color: var(--color-dark-blue-100);
 				box-shadow: inset 0 -3px 0 var(--color-dark-blue-100);
 			}
 
-			.kol-button__button:focus-visible {
+			&:focus-visible,
+			.kol-button__interactive-element:focus-visible {
 				color: var(--color-dark-blue-100);
 				box-shadow: inset 0 -3px 0 var(--color-dark-blue-100);
 				outline-offset: 2px;

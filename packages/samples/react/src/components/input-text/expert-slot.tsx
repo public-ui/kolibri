@@ -8,6 +8,9 @@ export const InputTextExpertSlot = () => {
 		<div className="grid gap-4">
 			<SampleDescription>
 				<p>This sample shows KolInputText with expert slot. The expert slot allows for complex custom content beyond simple text inputs.</p>
+				<p>
+					For further information on the expert slot see its <a href="https://public-ui.github.io/docs/concepts/expert-slot">documentation</a>
+				</p>
 			</SampleDescription>
 
 			<SampleBlock id="text">

@@ -44,6 +44,7 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
+import { setEventTarget } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { nonce } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
@@ -75,10 +76,9 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 
 	public componentWillLoad(): void {
 		this.initRenderProps(linkPropsConfig);
-		// The props config seeds `tabIndex` with its default `0`. An unset tabindex must not
-		// render as `tabindex="0"` — links are natively tabbable and the attribute would trigger
-		// focus outlines that the predecessor did not draw.
-		this.setRenderProp('tabIndex', undefined as unknown as number);
+		// An unset tabindex must not render as `tabindex="0"` — links are natively tabbable and
+		// the attribute would trigger focus outlines that the predecessor did not draw.
+		this.unsetRenderProp('tabIndex');
 
 		accessKeyProp.apply(this._accessKey, (v) => this.setRenderProp('accessKey', v));
 		ariaControlsProp.apply(this._ariaControls, (v) => this.setRenderProp('ariaControls', v));
@@ -141,6 +141,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 		const href = this.getRenderProp('href');
 		const on = this.getRenderProp('on');
 		if (typeof on?.onClick === 'function') {
+			setEventTarget(event, this.ctaRef.el);
 			on.onClick(event, href);
 		}
 		if (this.host) {

@@ -37,8 +37,7 @@
 				color: var(--color-black);
 				text-align: left;
 
-				/* The focusable element is the inner `<a>`; the class carrier is a `div`. */
-				&__anchor:focus {
+				&:focus {
 					color: var(--color-black);
 				}
 			}

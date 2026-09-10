@@ -24,17 +24,17 @@
 		.kol-button {
 			/* Box values belong to the interactive element: on the wrapper the padding would stack
 			   on top of the inner button's a11y min-size instead of growing the old button box. */
-			.kol-button__button {
+			.kol-button__interactive-element {
 				padding: var(--kern-metric-space-default) var(--kern-metric-space-x-small);
 			}
 
-			&__button:not(:disabled):hover,
-			&__button:not(:disabled):active {
+			&__interactive-element:not(:disabled):hover,
+			&__interactive-element:not(:disabled):active {
 				background: var(--kern-color-action-state-indicator-tint-hover-opacity);
 				cursor: pointer;
 			}
 
-			&__button:not(:disabled, [tabindex='-1']):focus-visible {
+			&__interactive-element:not(:disabled, [tabindex='-1']):focus-visible {
 				@include focus-outline($angularBorder: true);
 			}
 

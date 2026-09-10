@@ -40,7 +40,7 @@
 			   the inner button's a11y min-size (+20px per heading), Firefox pins `line-height:
 			   normal` and `font-weight: 400` on the real button (beating any inherited value), and
 			   the wrapper never receives `:focus` or the `disabled` attribute. */
-			.kol-button__button {
+			.kol-button__interactive-element {
 				padding: to-rem(16) to-rem(20);
 
 				line-height: 1.5;
@@ -55,10 +55,8 @@
 				}
 			}
 
-			/* On the wrapper `div` `:not(:disabled)` is always true — it has to ask the interactive
-			   element inside, like the `:has(:disabled)` rules further down. */
-			&:not(:has(:disabled)):hover,
-			&:not(:has(:disabled)):active {
+			&:not(:disabled):hover,
+			&:not(:disabled):active {
 				&::before {
 					border-radius: 6px 0 0 6px;
 					display: block;
@@ -72,11 +70,11 @@
 				}
 			}
 
-			&:not(:has(:disabled)):hover {
+			&:not(:disabled):hover {
 				background: var(--color-blue-20);
 			}
 
-			&:not(:has(:disabled)):active {
+			&:not(:disabled):active {
 				background: var(--color-blue-30);
 			}
 
@@ -90,7 +88,7 @@
 			box-shadow: inset 3px 0 0 rgb(31, 51, 71, 0.16);
 			border-top-left-radius: 2px;
 
-			.kol-button__button {
+			.kol-button__interactive-element {
 				padding-top: to-rem(24);
 
 				font-weight: 700;

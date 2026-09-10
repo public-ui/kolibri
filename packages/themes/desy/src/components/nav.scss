@@ -3,7 +3,7 @@
 
 @layer kol-theme-component {
 	@include kol-link('kol-link');
-	@include kol-link('kol-button', $anchor-scoped: false, $interactive-suffix: 'button');
+	@include kol-link('kol-button', $anchor-scoped: false, $interactive-suffix: 'interactive-element');
 
 	.kol-nav {
 		--kol-nav-item-padding-left: -16;
@@ -37,11 +37,10 @@
 					border-bottom-color: var(--color-blue-100);
 				}
 
-				/* `:hover` propagates to the wrapper, `:focus` does not — it only matches on the
-				   interactive element inside. */
 				&:hover,
-				.kol-link__anchor:focus,
-				.kol-button__button:focus {
+				&:focus,
+				.kol-link__interactive-element:focus,
+				.kol-button__interactive-element:focus {
 					.kol-span__label {
 						text-decoration: none;
 					}
@@ -51,8 +50,8 @@
 			// The kol-link / kol-button wrapper carries the 49px row box; stretch the interactive
 			// element inside so the whole row stays clickable and focusable (before the skeleton
 			// migration the anchor / button itself was the row element).
-			.kol-link__anchor,
-			.kol-button__button {
+			.kol-link__interactive-element,
+			.kol-button__interactive-element {
 				width: 100%;
 				height: 100%;
 			}

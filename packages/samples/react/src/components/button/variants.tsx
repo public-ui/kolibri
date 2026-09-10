@@ -2,7 +2,7 @@ import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router';
-import { useToasterService } from '../../hooks/useToasterService';
+import { useAlert } from '../../hooks/useAlert';
 import { fetchVariantData } from '../../shares/fetchVariantData';
 import { getTheme } from '../../shares/store';
 import { SampleBlock } from '../SampleBlock';
@@ -13,7 +13,7 @@ export const ButtonVariants: FC = () => {
 	const theme = searchParams.get('theme') ?? getTheme();
 	const data = useMemo(() => (theme ? fetchVariantData(theme, 'buttonVariants') : []), [theme]);
 
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,

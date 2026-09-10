@@ -95,6 +95,7 @@ function parseArgs(argv) {
 
 	return {
 		themes: flags.has('--all') ? ALL_THEMES : ALL_THEMES.filter((theme) => themes.includes(theme.name)),
+		all: flags.has('--all'),
 		shell: flags.has('--shell'),
 		reset: flags.has('--reset'),
 		purge: !flags.has('--no-purge'),
@@ -104,19 +105,16 @@ function parseArgs(argv) {
 }
 
 /** Bash-Skript, das im Container ausgeführt wird. */
-function buildScript({ themes, purge, check, playwrightArgs }) {
+function buildScript({ themes, all, purge, check, playwrightArgs }) {
 	const excludes = SYNC_EXCLUDES.map((name) => `--exclude=${name}`).join(' ');
 	const extra = playwrightArgs.map((arg) => ` ${shellQuote(arg)}`).join('');
 	const task = check ? 'test' : 'test:update:e2e';
-	/*
-	 * `--check` ist der Abnahmelauf: sein Ergebnis ist Beweismittel, also läuft er mit 1 Worker
-	 * (maximale Snapshot-Stabilität — parallele Firefox-Instanzen rendern sub-pixel-flaky),
-	 * unabhängig davon, ob ein Theme, ein Cluster oder `--all` geprüft wird. Ein Prüflauf darf
-	 * nicht davon abhängen, welches Flag der Aufrufer gewählt hat. Baseline-Updates
-	 * (`test:update:e2e`) bleiben bei den 4 Default-Workern der Playwright-Config, dort zählt
-	 * Durchsatz. `KOLIBRI_VISUAL_TESTS_WORKERS` überschreibt beides.
-	 */
-	const workersEnv = check && !process.env.KOLIBRI_VISUAL_TESTS_WORKERS ? 'export KOLIBRI_VISUAL_TESTS_WORKERS=1' : '';
+	/* Jeder verifizierende Lauf geht auf 1 Worker (maximale Snapshot-Stabilität — parallele
+	   Firefox-Instanzen rendern sub-pixel-flaky), sofern der Aufrufer nichts anderes vorgibt.
+	   Das gilt für `--check` ebenso wie für die Pre-Push-Abnahme `--all`: ein Prüfergebnis darf
+	   nicht davon abhängen, mit welchem Flag es erhoben wurde. Nur die Fix-Iteration ohne beide
+	   Flags (Baselines neu schreiben) bleibt bei den 4 Default-Workern der Playwright-Config. */
+	const workersEnv = (all || check) && !process.env.KOLIBRI_VISUAL_TESTS_WORKERS ? 'export KOLIBRI_VISUAL_TESTS_WORKERS=1' : '';
 
 	const perTheme = themes
 		.map(
@@ -133,9 +131,7 @@ set -euo pipefail
 
 export HOME=/work/home
 export PATH="/work/npm-global/bin:$PATH"
-# CI=0: keine Retries. Ein grüner Lauf soll ein grüner Lauf sein, kein zweiter Versuch.
-# Die Worker-Zahl steuert KOLIBRI_VISUAL_TESTS_WORKERS (siehe buildScript) — bei --check 1.
-export CI=0
+export CI=0                       # keine Retries + parallele Workers — für schnelle lokale Entwicklung
 ${workersEnv}
 mkdir -p "$HOME" "${CONTAINER_WORKSPACE}"
 

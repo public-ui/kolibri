@@ -3,8 +3,10 @@ import { h } from '@stencil/core';
 
 import { translate } from '../../../i18n';
 import { devHint } from '../../../schema';
+import { bem } from '../../../schema/bem-registry';
 import { classNameFromVariant } from '../../../schema/props/variant-class-name';
 import clsx from '../../../utils/clsx';
+import { AriaDescriptionSpanFC } from '../aria-description-span/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
@@ -12,17 +14,8 @@ import { SpanFC } from '../span/component';
 import { TooltipFC } from '../tooltip/component';
 import type { LinkApi } from './api';
 
-/**
- * Renders the link, its floating tooltip and its visually-hidden description.
- *
- * Unlike {@link ButtonFC}, the tooltip and the description live *inside* the `BemRootNodeFC`
- * wrapper here. That is a deliberate divergence, not an oversight: for the button the extra
- * ancestor above the `position: fixed` tooltip subtree makes Firefox rasterise its compositing
- * layer ~2px differently (visible on `kern`'s dialog close-button tooltip), so `ButtonFC` keeps
- * them as siblings of the wrapper, which is also where the pre-skeleton DOM had them. The same
- * has not been measured for the link. Issue #10745 decides whether both converge — until then,
- * changing the placement in one file means checking the other.
- */
+const linkBem = bem.forBlock('kol-link');
+
 export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 	const {
 		accessKey,
@@ -60,7 +53,9 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 		href: typeof href === 'string' && href.length > 0 ? href : 'javascript:void(0);',
 		target: typeof target === 'string' && target.length > 0 ? target : undefined,
 		rel: isExternal ? 'noopener' : undefined,
-		download: typeof download === 'string' && download.length > 0 ? download : undefined,
+		// `download` is a presence attribute: an explicitly empty string means "download without a
+		// suggested filename" and must render as `download=""`, unlike an unset download.
+		download: typeof download === 'string' ? download : undefined,
 	};
 
 	if (hideLabel === true && !label) {
@@ -97,7 +92,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 				aria-owns={ariaOwns || undefined}
 				aria-label={hideLabel && typeof label === 'string' ? `${label}${isExternal ? ` (${translateOpenLinkInTab})` : ''}` : undefined}
 				aria-keyshortcuts={shortKey || undefined}
-				class="kol-link__anchor"
+				class={linkBem('interactive-element')}
 				{...on}
 				onClick={handleAnchorClick}
 				role={roleValue}
@@ -119,11 +114,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 					/>
 				</div>
 			)}
-			{trimmedAriaDescription && (
-				<span class="visually-hidden" id={ariaDescriptionId}>
-					{trimmedAriaDescription}
-				</span>
-			)}
+			{trimmedAriaDescription && <AriaDescriptionSpanFC description={trimmedAriaDescription} descriptionId={ariaDescriptionId} />}
 		</BemRootNodeFC>
 	);
 };

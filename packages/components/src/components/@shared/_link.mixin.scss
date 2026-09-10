@@ -4,12 +4,10 @@
 
 /*
  * Link styles for a skeleton block whose interactive element sits inside the BEM root:
- * `kol-link` renders `<div class="kol-link"><a class="kol-link__anchor">`, `kol-button` renders
- * `<div class="kol-button"><button class="kol-button__button">`. `$interactive-element` names that
- * inner element; `null` attaches the styles to the class carrier itself, for blocks whose DOM has
- * no inner interactive element.
+ * `kol-link` renders `<div class="kol-link"><a class="kol-link__interactive-element">`,
+ * `kol-button` renders `<div class="kol-button"><button class="kol-button__interactive-element">`.
  */
-@mixin kol-link-styles($block-classname, $interactive-element: 'anchor') {
+@mixin kol-link-styles($block-classname) {
 	@include kol-icon-styles();
 	:host {
 		// Causing linebreak, when removed
@@ -26,12 +24,10 @@
 			min-height: var(--a11y-min-size);
 			align-items: stretch;
 
-			@if $interactive-element {
-				/* The interactive element is the flex container positioning the text — it must
-				   stretch its content so the text pill keeps the full standalone height. */
-				.#{$block-classname}__#{$interactive-element} {
-					align-items: stretch;
-				}
+			/* The interactive element is the flex container positioning the text — it must
+			   stretch its content so the text pill keeps the full standalone height. */
+			.#{$block-classname}__interactive-element {
+				align-items: stretch;
 			}
 
 			.#{$block-classname}__text {
@@ -41,46 +37,25 @@
 			}
 		}
 
-		@if $interactive-element {
-			&__#{$interactive-element} {
-				display: inline-flex;
-				flex: 1;
+		&__interactive-element {
+			display: inline-flex;
+			flex: 1;
 
-				align-items: baseline;
-				place-items: center;
-				text-align: left;
-				text-decoration-line: none;
+			align-items: baseline;
+			place-items: center;
+			text-align: left;
+			text-decoration-line: none;
 
-				&:focus:not([aria-disabled], [disabled]),
-				&:hover:not([aria-disabled], [disabled]) {
-					.kol-span__label {
-						text-decoration-thickness: 0.2em;
-					}
+			&:focus:not([aria-disabled], [disabled]),
+			&:hover:not([aria-disabled], [disabled]) {
+				.kol-span__label {
+					text-decoration-thickness: 0.2em;
 				}
 			}
 		}
 
 		.kol-span__label {
 			text-decoration-line: underline;
-		}
-
-		/* Root-level hover decoration: `:hover` propagates to ancestors, so the carrier is hovered
-		   together with the interactive element and the rule stays here. `:focus` does not
-		   propagate — on a wrapper it would be dead — so it only belongs on the carrier for blocks
-		   rendered without an inner interactive element. Where one exists it carries its own
-		   `:focus` rule above. */
-		&:hover:not([aria-disabled], [disabled]) {
-			.kol-span__label {
-				text-decoration-thickness: 0.2em;
-			}
-		}
-
-		@if not $interactive-element {
-			&:focus:not([aria-disabled], [disabled]) {
-				.kol-span__label {
-					text-decoration-thickness: 0.2em;
-				}
-			}
 		}
 
 		&__icon {

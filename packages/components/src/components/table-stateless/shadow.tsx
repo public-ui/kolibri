@@ -64,7 +64,13 @@ export class KolTableStateless implements TableStatelessProps {
 	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headerCells!: TableHeaderCellsPropType;
+	@Prop() public _headers?: TableHeaderCellsPropType;
+
+	/**
+	 * @deprecated Will be removed in the future. Use _headers instead.
+	 * Defines the horizontal and vertical table headers.
+	 */
+	@Prop() public _headerCells?: TableHeaderCellsPropType;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -118,7 +124,7 @@ export class KolTableStateless implements TableStatelessProps {
 				_data={this._data}
 				_dataFoot={this._dataFoot}
 				_fixedCols={this._fixedCols}
-				_headerCells={this._headerCells}
+				_headers={this._headers ? this._headers : this._headerCells}
 				_label={this._label}
 				_loading={this._loading}
 				_on={this._on}

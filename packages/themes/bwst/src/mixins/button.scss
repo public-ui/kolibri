@@ -13,7 +13,7 @@
 		   the anchor case). A real `<button>` had the user-agent `text-align: center` before the
 		   migration, so a wrapping label (e.g. a narrow icon-only pill) would otherwise align left
 		   instead of centred. */
-		&__button {
+		&__interactive-element {
 			text-align: center;
 		}
 
@@ -25,10 +25,10 @@
 			font-weight: 200;
 		}
 
-		/* The focusable element lives inside the wrapper: `__button` for buttons, `__anchor` for
-		   links. The class carrier itself is never focused. */
-		&__button:focus,
-		&__anchor:focus {
+		/* The skeleton renders the focusable interactive element inside the wrapper — the wrapper
+		   itself is never focused. */
+		&:focus,
+		&__interactive-element:focus {
 			outline: none;
 		}
 
@@ -73,11 +73,11 @@
 		&--danger,
 		&--ghost {
 			/* State predicates live on the interactive element: on the wrapper `:not([disabled])`
-			   would always be true, re-enabling hover styling for disabled buttons.
-			   The interactive element has to be addressed as a plain descendant (`#{$root}__button`
-			   after a space) — a nested `&__button` would expand to `#{$root}--primary__button`,
-			   a class that exists nowhere. */
-			& #{$root}__button:not([disabled], [aria-disabled='true']):hover {
+			   would always be true, re-enabling hover styling for disabled buttons. Plain
+			   descendants, because `&__interactive-element` inside a modifier block would expand to
+			   the dead `.kol-button--primary__interactive-element`. The mixin is also included for
+			   `kol-link`: anchors carry no native `disabled`, their disabled state is `aria-disabled`. */
+			.#{$block-classname}__interactive-element:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-primary-variant);
 				--text-border-color: var(--color-primary-variant);
 				--text-color: var(--color-light);
@@ -88,8 +88,7 @@
 		}
 
 		&--danger {
-			/* Plain descendant, see the block above. */
-			& #{$root}__button:not([disabled], [aria-disabled='true']):hover {
+			.#{$block-classname}__interactive-element:not([disabled], [aria-disabled='true']):hover {
 				--text-background-color: var(--color-danger);
 				--text-border-color: var(--color-danger);
 				outline-color: var(--color-danger);
@@ -121,13 +120,13 @@
 				}
 			}
 
-			@at-root #{$root}__button:focus-visible,
-				#{$root}__anchor:focus-visible {
+			@at-root #{$root}:focus-visible,
+				#{$root}__interactive-element:focus-visible {
 				@include focus-outline;
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
 
-			@at-root #{$root}__button:is(:disabled, [aria-disabled='true']):hover & {
+			@at-root #{$root}__interactive-element:is(:disabled, [aria-disabled='true']):hover & {
 				color: var(--text-color);
 				background-color: var(--text-background-color);
 				box-shadow: none;

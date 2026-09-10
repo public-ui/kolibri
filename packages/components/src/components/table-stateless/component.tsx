@@ -39,7 +39,7 @@ import {
 	validateTableCallbacks,
 	validateTableData,
 	validateTableDataFoot,
-	validateTableHeaderCells,
+	validateTableHeaders,
 	validateTableSelection,
 	validateVariantClassName,
 	watchBoolean,
@@ -68,7 +68,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	@State() public state: TableStatelessStates = {
 		_data: [],
-		_headerCells: {
+		_headers: {
 			horizontal: [],
 			vertical: [],
 		},
@@ -165,7 +165,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	/**
 	 * Defines the horizontal and vertical table headers.
 	 */
-	@Prop() public _headerCells!: TableHeaderCellsPropType;
+	@Prop() public _headers?: TableHeaderCellsPropType;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -223,16 +223,16 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		this.checkAndUpdateStickyState();
 	}
 
-	@Watch('_headerCells')
-	public validateHeaderCells(value?: TableHeaderCellsPropType) {
-		validateTableHeaderCells(this, value);
+	@Watch('_headers')
+	public validateHeaders(value?: TableHeaderCellsPropType) {
+		validateTableHeaders(this, value);
 
 		/* The reference changes on every render. Only reinitialize settings when headers actually changed */
-		if (!isEqual(this.previousHeaderCells, this.state._headerCells)) {
+		if (!isEqual(this.previousHeaderCells, this.state._headers)) {
 			this.initializeHeaderCellSettings();
 		}
 
-		this.previousHeaderCells = this.state._headerCells;
+		this.previousHeaderCells = this.state._headers;
 	}
 
 	@Watch('_label')
@@ -298,13 +298,13 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	@Listen('changeheadercells')
 	public handleSettingsChange(event: CustomEvent<KoliBriTableHeaderCell[][]>) {
-		const updatedHeaderCells = { ...this.state._headerCells, horizontal: event.detail };
-		setState(this, '_headerCells', updatedHeaderCells);
+		const updatedHeaders = { ...this.state._headers, horizontal: event.detail };
+		setState(this, '_headers', updatedHeaders);
 		this.settingsChangedCounter++;
 
 		// Call the onChangeHeaderCells callback if provided
 		if (typeof this.state._on?.[Callback.onChangeHeaderCells] === 'function') {
-			this.state._on[Callback.onChangeHeaderCells](event, updatedHeaderCells);
+			this.state._on[Callback.onChangeHeaderCells](event, updatedHeaders);
 		}
 	}
 
@@ -329,7 +329,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private calculateFixedColsWidth(): number {
 		if (!this._fixedCols) return 0;
-		const primaryHeader = this.getPrimaryHeaders(this.state._headerCells);
+		const primaryHeader = this.getPrimaryHeaders(this.state._headers);
 		let totalWidth = 0;
 
 		// Sum widths of left-fixed columns
@@ -390,11 +390,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	 * Returns the action column header if found, otherwise undefined.
 	 */
 	private getActionColumnHeader(colIndex: number): ActionColumnHeaderCell | undefined {
-		const headers = this.horizontal ? this.state._headerCells.horizontal : this.state._headerCells.vertical;
+		const headers = this.horizontal ? this.state._headers.horizontal : this.state._headers.vertical;
 		if (!headers || headers.length === 0) return undefined;
 
 		// Get the primary headers (those with keys)
-		const primaryHeader = this.getPrimaryHeaders(this.state._headerCells);
+		const primaryHeader = this.getPrimaryHeaders(this.state._headers);
 		const header = primaryHeader[colIndex];
 
 		if (header && (header as ActionColumnHeaderCell).type === 'action') {
@@ -702,12 +702,12 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	private initializeHeaderCellSettings() {
 		// Update header cells using setState to trigger Stencil's change detection
-		if (this.state._headerCells && this.state._headerCells.horizontal && this.state._headerCells.horizontal.length > 0) {
+		if (this.state._headers && this.state._headers.horizontal && this.state._headers.horizontal.length > 0) {
 			// Preserve all original header cells (including colSpan, rowSpan, etc.)
 			// and only add/update visible and hidable properties
-			const updatedHeaderCells = {
-				...this.state._headerCells,
-				horizontal: this.state._headerCells.horizontal.map((row) =>
+			const updatedHeaders = {
+				...this.state._headers,
+				horizontal: this.state._headers.horizontal.map((row) =>
 					row.map((header) => ({
 						...header,
 						visible: typeof header.visible === 'boolean' ? header.visible : true,
@@ -715,14 +715,14 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 					})),
 				),
 			};
-			setState(this, '_headerCells', updatedHeaderCells);
+			setState(this, '_headers', updatedHeaders);
 		}
 	}
 
 	public componentWillLoad(): void {
 		this.validateData(this._data);
 		this.validateDataFoot(this._dataFoot);
-		this.validateHeaderCells(this._headerCells);
+		this.validateHeaders(this._headers);
 		this.validateLabel(this._label);
 		this.validateLoading(this._loading);
 		this.validateOn(this._on);
@@ -996,7 +996,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	 */
 	private getTableMinWidth(): string {
 		// Collect widths from ALL horizontal header rows (including parent/merged rows)
-		const horizontalHeaders = this.state._headerCells.horizontal ?? [];
+		const horizontalHeaders = this.state._headers.horizontal ?? [];
 		const horizontalHeaderWidths: number[] = [];
 		horizontalHeaders.forEach((row) => {
 			row.forEach((cell) => {
@@ -1007,7 +1007,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		});
 
 		// Calculate width from ALL vertical headers (all rows, not just first cell)
-		const verticalHeaders = this.state._headerCells.vertical ?? [];
+		const verticalHeaders = this.state._headers.vertical ?? [];
 		const verticalHeaderWidths: number[] = [];
 		verticalHeaders.forEach((column) => {
 			column.forEach((cell) => {
@@ -1105,8 +1105,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	 * proper column widths with table-layout: fixed.
 	 */
 	private renderHeaderTdCell(): JSX.Element {
-		const horizontalHeaders = this.state._headerCells.horizontal;
-		const verticalHeaders = this.state._headerCells.vertical;
+		const horizontalHeaders = this.state._headers.horizontal;
+		const verticalHeaders = this.state._headers.vertical;
 
 		if (!Array.isArray(horizontalHeaders) || horizontalHeaders.length === 0 || !Array.isArray(verticalHeaders) || verticalHeaders.length === 0) {
 			return <Fragment></Fragment>;
@@ -1239,7 +1239,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	}
 
 	private renderSpacer(variant: 'foot' | 'head', cellDefs: KoliBriTableHeaderCell[][] | KoliBriTableCell[][]): JSX.Element {
-		const verticalHeaderColpan = this.state._headerCells.vertical?.length || 0;
+		const verticalHeaderColpan = this.state._headers.vertical?.length || 0;
 		const colspan = this.getVisibleColSpan(cellDefs?.[0]);
 		const selectionCell = this.state._selection ? 1 : 0;
 
@@ -1255,7 +1255,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			return null;
 		}
 
-		const rows: KoliBriTableCell[][] = this.createDataField(this.state._dataFoot, this.state._headerCells, true);
+		const rows: KoliBriTableCell[][] = this.createDataField(this.state._dataFoot, this.state._headers, true);
 		return (
 			<tfoot class="kol-table__footer">
 				{[
@@ -1268,10 +1268,10 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 
 	public render(): JSX.Element {
 		this.updateSelectionKeySets();
-		const dataField = this.createDataField(this.state._data, this.state._headerCells);
+		const dataField = this.createDataField(this.state._data, this.state._headers);
 		this.checkboxRefs = [];
 
-		const horizontalHeaders = this.state._headerCells.horizontal;
+		const horizontalHeaders = this.state._headers.horizontal;
 
 		const showInternalCaption = !this.externalLabelElements?.length;
 
