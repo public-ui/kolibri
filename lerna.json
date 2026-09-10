@@ -1,6 +1,5 @@
 {
 	"packages": [
-		"packages/adapters/angular/v19",
 		"packages/adapters/angular/v20",
 		"packages/adapters/angular/v21",
 		"packages/adapters/hydrate",

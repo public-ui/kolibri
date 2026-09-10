@@ -1,5 +1,4 @@
 npx license-report --output=html --package=package.json >> license-reports/root.html
-npx license-report --output=html --package=packages/adapters/angular/v19/package.json >> license-reports/adapter-angular-v19.html
 npx license-report --output=html --package=packages/adapters/angular/v20/package.json >> license-reports/adapter-angular-v20.html
 npx license-report --output=html --package=packages/adapters/angular/v21/package.json >> license-reports/adapter-angular-v21.html
 npx license-report --output=html --package=packages/adapters/hydrate/package.json >> license-reports/adapter-hydrate.html

@@ -38,7 +38,6 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - '@public-ui/angular-v19'
           - '@public-ui/angular-v20'
           - '@public-ui/angular-v21'
           - '@public-ui/components'
