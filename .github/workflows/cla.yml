@@ -33,7 +33,12 @@ jobs:
           remote-repository-name: '.github-private'
           # branch should not be protected
           branch: 'main'
-          allowlist: actions-user,bot*,Copilot,claude,codex,copilot-swe-agent[bot],mistral-vibe
+          # `Claude*` statt nur `claude`: die Allowlist wird case-sensitiv gegen den Commit-Autor-Namen
+          # verglichen (contributor-assistant/github-action, checkAllowList). Commits aus Claude Code
+          # tragen den Namen `Claude` bzw. `Claude Opus 5`, und ihre Adresse `noreply@anthropic.com`
+          # gehört zu keinem GitHub-Konto — der Bot kann sie also keinem Benutzer zuordnen und sie
+          # können den CLA nicht signieren. Der Eintrag `claude` traf deshalb nie zu.
+          allowlist: actions-user,bot*,Copilot,claude,Claude*,codex,copilot-swe-agent[bot],mistral-vibe
 
           #below are the optional inputs - If the optional inputs are not given, then default values will be taken
           #remote-organization-name: enter the remote organization name where the signatures should be stored (Default is storing the signatures in the same repository)
