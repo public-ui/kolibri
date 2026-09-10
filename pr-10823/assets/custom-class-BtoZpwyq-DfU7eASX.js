@@ -1,0 +1,1 @@
+import{Dt as e}from"./index-BURnpA34.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
