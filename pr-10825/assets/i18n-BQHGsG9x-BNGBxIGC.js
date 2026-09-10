@@ -1,1 +1,0 @@
-import{f as e,it as t,p as n}from"./index-pt7EIn_z.js";var r=(t,r)=>(e()??n(`de`)).translate(t,r);t()&&(r=e=>e);export{r as t};
