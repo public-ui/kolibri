@@ -1,0 +1,1 @@
+import{St as e}from"./index--outT96K.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};

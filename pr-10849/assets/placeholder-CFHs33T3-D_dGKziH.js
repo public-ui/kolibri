@@ -1,0 +1,1 @@
+import{Tt as e}from"./index--outT96K.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
