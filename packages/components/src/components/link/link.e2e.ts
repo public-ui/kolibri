@@ -31,7 +31,7 @@ test.describe('kol-link', () => {
 					return new Promise<boolean>((resolve) => {
 						element._on = {
 							onClick: (event: Event, _value: string) => {
-								resolve(event.target instanceof HTMLAnchorElement && event.target.classList.contains('kol-link__anchor'));
+								resolve(event.target instanceof HTMLAnchorElement && event.target.classList.contains('kol-link__interactive-element'));
 							},
 						};
 					});

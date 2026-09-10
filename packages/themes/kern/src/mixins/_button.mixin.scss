@@ -11,13 +11,33 @@
 		min-width: var(--button-min-size);
 		min-height: var(--button-min-size);
 
-		font-size: var(--kern-typography-font-size-static-medium);
+		/* Size overrides (`--inline`, `--x-small`) must shrink the interactive element as well: the
+		   a11y layer pins every `button` to 44×44, and the wrapper alone used to be the button
+		   before the skeleton migration. */
+		.#{$block-classname}__interactive-element {
+			min-width: var(--button-min-size);
+			min-height: var(--button-min-size);
 
-		&:focus-visible {
+			/* The themed font size belongs on the interactive element — exactly where the rule sat
+			   before the skeleton migration (the button carried `kol-button` itself). On the carrier
+			   (now the wrapper) it would leak into the tooltip, which before was a sibling of the
+			   button and inherited the ambient size instead. */
+			font-size: var(--kern-typography-font-size-static-medium);
+
+			/* The shared skeleton mixin sets `text-align: left` on the interactive element
+			   (copied from the anchor case). A real `<button>` had the user-agent
+			   `text-align: center`, so a wrapping label (e.g. the narrow icon-only pill) would
+			   otherwise align left. */
+			text-align: center;
+		}
+
+		&:focus-visible,
+		.#{$block-classname}__interactive-element:focus-visible {
 			@include focus-outline;
 		}
 
-		&:disabled {
+		.#{$block-classname}__interactive-element:disabled,
+		.#{$block-classname}__interactive-element[disabled] {
 			opacity: 0.4;
 		}
 
@@ -45,7 +65,10 @@
 			gap: var(--kern-metric-space-small);
 		}
 
-		.kol-span__label {
+		/* Scoped to the interactive element for the same reason as the font size above: as a plain
+		   descendant of the block this also matched the tooltip's label, which now lives inside the
+		   wrapper and was a sibling of the button before the skeleton migration. */
+		.#{$block-classname}__interactive-element .kol-span__label {
 			font-weight: var(--kern-typography-font-weight-medium);
 		}
 
@@ -54,7 +77,7 @@
 		}
 
 		&--primary {
-			@include primaryButton();
+			@include primaryButton($block-classname);
 		}
 
 		/* Not specified in Kern! */
@@ -63,7 +86,7 @@
 			--button-text-background-color: var(--button-text-background-color-default);
 			--button-text-color: var(--kern-color-action-on-default);
 
-			&:not([disabled]):hover {
+			.#{$block-classname}__interactive-element:not([disabled]):hover {
 				@supports (color-mix: color) {
 					--button-text-background-color: color-mix(in srgb, var(--kern-color-feedback-danger) 85%, black);
 				}
@@ -72,7 +95,7 @@
 				}
 			}
 
-			&:not([disabled]):active {
+			.#{$block-classname}__interactive-element:not([disabled]):active {
 				@supports (color-mix: color) {
 					--button-text-background-color: color-mix(in srgb, var(--kern-color-feedback-danger) 80%, black);
 				}
@@ -85,76 +108,92 @@
 		/* Normal button variants */
 		&--secondary,
 		&--normal {
-			@include normalButton();
+			@include normalButton($block-classname);
 		}
 
 		/* Ghost button variants */
 		&--tertiary,
 		&--ghost {
-			@include ghostButton();
+			@include ghostButton($block-classname);
 		}
 
 		&--x-small {
 			--button-min-size: var(--kern-metric-dimension-large);
 			--button-padding: var(--kern-metric-space-none) var(--kern-metric-space-small);
 
-			font-size: var(--kern-typography-font-size-static-small);
+			/* Plain descendant — `&__interactive-element` here would expand to
+			   `.#{$block-classname}--x-small__interactive-element`, which matches nothing. */
+			.#{$block-classname}__interactive-element {
+				font-size: var(--kern-typography-font-size-static-small);
+			}
 		}
 	}
 }
 
-@mixin primaryButton() {
+@mixin primaryButton($block-classname: 'kol-button') {
 	--button-text-background-color-default: var(--kern-color-action-default);
 	--button-text-background-color: var(--button-text-background-color-default);
 	--button-text-border-color: var(--kern-color-action-default);
 	--button-text-color: var(--kern-color-action-on-default);
 
-	&:not([disabled]):hover {
+	.#{$block-classname}__interactive-element:not([disabled]):hover {
 		--button-text-background-color: var(--kern-color-action-state-indicator-shade-hover);
 		--button-text-border-color: var(--kern-color-action-state-indicator-shade-hover);
 	}
 
-	&:not([disabled]):active {
+	.#{$block-classname}__interactive-element:not([disabled]):active {
 		--button-text-background-color: var(--kern-color-action-state-indicator-shade-active);
 		--button-text-border-color: var(--kern-color-action-state-indicator-shade-active);
 	}
 }
 
-@mixin normalButton() {
+@mixin normalButton($block-classname: 'kol-button') {
 	--button-text-background-color-default: var(--kern-neutral-000);
 	--button-text-background-color: var(--button-text-background-color-default);
 	--button-text-border-color: var(--kern-color-action-default);
 	--button-text-color: var(--kern-color-action-default);
 
-	&:not([disabled]):hover {
+	.#{$block-classname}__interactive-element:not([disabled]):hover {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 	}
 
-	&:not([disabled]):active {
+	.#{$block-classname}__interactive-element:not([disabled]):active {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-active-opacity);
 	}
 }
 
-@mixin ghostButton() {
+@mixin ghostButton($block-classname: 'kol-button') {
 	--button-text-background-color: transparent;
 	--button-text-border-color: transparent;
 	--button-text-color: var(--kern-color-action-default);
 	--button-badge-color: var(--kern-neutral-000);
 	text-decoration-color: var(--kern-color-action-default);
 
-	&:not([disabled]):hover {
+	/* The real interactive element paints its own decoration — the wrapper's would not propagate
+	   into the atomic inline-level button box. */
+	.#{$block-classname}__interactive-element {
+		text-decoration-color: var(--kern-color-action-default);
+	}
+
+	.#{$block-classname}__interactive-element:not([disabled]):hover {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 	}
 
-	&:not([disabled]):active {
+	.#{$block-classname}__interactive-element:not([disabled]):active {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-active-opacity);
 	}
 
 	&:not(:has(.kol-icon)) {
 		text-decoration-line: underline;
 
-		&:not([disabled]):hover {
-			text-decoration-thickness: var(--kern-3, 3px);
+		/* A plain descendant keeps this correct in every include context — a second `&` would
+		   re-expand the full carrier selector and demand the block as its own descendant. */
+		.#{$block-classname}__interactive-element {
+			text-decoration-line: underline;
+
+			&:not([disabled]):hover {
+				text-decoration-thickness: var(--kern-3, 3px);
+			}
 		}
 	}
 }

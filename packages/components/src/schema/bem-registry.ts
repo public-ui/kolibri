@@ -67,6 +67,20 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-button': {
+		elements: {
+			'interactive-element': {
+				modifiers: null;
+			};
+			text: {
+				modifiers: null;
+			};
+			tooltip: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'disabled' | 'hide-label' | 'inline' | 'standalone'>;
+	};
 	'kol-icon': {
 		elements: {
 			icon: {
@@ -171,7 +185,7 @@ export type KoliBriComponentsBemSchema = {
 	};
 	'kol-link': {
 		elements: {
-			anchor: {
+			'interactive-element': {
 				modifiers: null;
 			};
 			icon: {
@@ -230,6 +244,14 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: null,
 	},
+	'kol-button': {
+		elements: {
+			'interactive-element': { modifiers: null },
+			text: { modifiers: null },
+			tooltip: { modifiers: null },
+		},
+		modifiers: new Set(['disabled', 'hide-label', 'inline', 'standalone']),
+	},
 	'kol-icon': {
 		elements: {
 			icon: { modifiers: null },
@@ -286,7 +308,7 @@ const BEM: KoliBriComponentsBemSchema = {
 	},
 	'kol-link': {
 		elements: {
-			anchor: { modifiers: null },
+			'interactive-element': { modifiers: null },
 			icon: { modifiers: null },
 			text: { modifiers: null },
 		},

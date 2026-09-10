@@ -1,11 +1,13 @@
 @use '../@shared/mixins' as *;
 @use '../@shared/global' as *;
 @use '../tooltip/style.scss' as *;
+@use '../@shared/button.mixin' as *;
 @use '../@shared/icon.mixin' as *;
 @use '../@shared/popover-button.mixin' as *;
 
 @layer kol-component {
 	@include kol-icon-styles();
+	@include kol-button-wc-box-styles('kol-button');
 	@include kol-popover-button-styles;
 
 	.kol-split-button {

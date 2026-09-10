@@ -270,17 +270,17 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 				standalone: inline === false,
 			}}
 		>
-			<a class="kol-link__anchor" /* … */>…</a>
+			<a class="kol-link__interactive-element" /* … */>…</a>
 		</BemRootNodeFC>
 	);
 };
 ```
 
-The `block` and `modifiers` keys are validated against `KoliBriComponentsBemSchema`, so `block="kol-link"` is type-checked and `modifiers={{ disabled: true }}` only accepts registered modifier keys. The output is `<div class="kol-link kol-link--disabled …">`; inner elements use plain BEM element classes (`kol-link__anchor`, `kol-link__text`).
+The `block` and `modifiers` keys are validated against `KoliBriComponentsBemSchema`, so `block="kol-link"` is type-checked and `modifiers={{ disabled: true }}` only accepts registered modifier keys. The output is `<div class="kol-link kol-link--disabled …">`; inner elements use plain BEM element classes (`kol-link__interactive-element`, `kol-link__text`).
 
 **Registration requirement:** before using `BemRootNodeFC block="kol-xxx"`, the block must be registered in `src/schema/bem-registry.ts` in **both** places — the exported `KoliBriComponentsBemSchema` type (required for compilation) and the runtime `BEM` const (consumed by the `kolibri-cli` SCSS generator). Type-only registration compiles and renders, but silently breaks theme SCSS generation.
 
-**When not to use it:** `BemRootNodeFC` always renders a `<div>` root. For FCs whose semantic root is another element (e.g. `ClickButtonFC` renders a `<button>`), build the root manually with `bem.forBlock('kol-xxx')(modifiers)` instead — the same typed schema applies. Currently only `LinkFC` uses `BemRootNodeFC`; `SkeletonFC` and `ClickButtonFC` use direct `bem.forBlock` calls for this reason.
+**When not to use it:** `BemRootNodeFC` always renders a `<div>` root. For FCs whose semantic root is another element (e.g. `ClickButtonFC` renders a `<button>`), build the root manually with `bem.forBlock('kol-xxx')(modifiers)` instead — the same typed schema applies. `LinkFC` and `ButtonFC` use `BemRootNodeFC` (both have extra siblings — tooltip, description — alongside their interactive element, so the wrapper is required, not just one non-div root); `SkeletonFC` and `ClickButtonFC` use direct `bem.forBlock` calls because their FC root _is_ the single non-div interactive element.
 
 ### Transitional Pattern (shadow:false)
 

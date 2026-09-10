@@ -22,15 +22,15 @@
 
 			line-height: 1;
 
-			/* The link skeleton renders the focusable anchor as `.kol-link__anchor` inside the
-			   `.kol-link` wrapper — the wrapper itself is never focused, so the wrapper must
-			   come back on-canvas via `:focus-within`. */
+			/* The link skeleton renders the focusable interactive element as
+			   `.kol-link__interactive-element` inside the `.kol-link` wrapper — the wrapper itself is
+			   never focused, so the wrapper must come back on-canvas via `:focus-within`. */
 			&:focus-within {
 				position: unset;
 				left: unset;
 			}
 
-			&__anchor:focus {
+			&__interactive-element:focus {
 				background-color: white;
 			}
 		}
