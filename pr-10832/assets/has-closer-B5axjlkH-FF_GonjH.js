@@ -1,1 +1,0 @@
-import{St as e}from"./index-Nhz5WP3Z.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
