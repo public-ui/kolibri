@@ -1,0 +1,1 @@
+import{Et as e,L as t}from"./index-B0wx5QNp.js";import{n}from"./aria-labelledby-6-ki3akM-C6lJ0lQF.js";var r=(r,i,a,o)=>{e(r,`_ariaDetails`,e=>typeof e==`string`||e===void 0,new Set([`string`]),o);let s=n(i,o);if(a){try{a.ariaDetailsElements=s}catch{}t.debug([`WebComponent internals`,a])}return s};export{r as t};
