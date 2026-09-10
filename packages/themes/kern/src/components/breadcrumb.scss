@@ -50,7 +50,7 @@
 
 	/* The colour, padding and hover state sat on the anchor-as-root before the skeleton
 	   migration — the interactive anchor has to carry them again. */
-	.kol-link__anchor {
+	.kol-link__interactive-element {
 		color: var(--kern-color-layout-text-default);
 		border-radius: var(--kern-metric-border-radius-large);
 		padding: $vertical-padding $horizontal-padding;

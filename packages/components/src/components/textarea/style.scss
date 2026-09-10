@@ -4,8 +4,10 @@
 @use '../@shared/input-container.mixin' as *;
 @use '../@shared/mixins' as *;
 @use '../host-display-block' as *;
+@use '../@shared/button.mixin' as *;
 
 @layer kol-component {
+	@include kol-button-wc-box-styles('kol-button');
 	@include kol-alert;
 	@include kol-form-field;
 	@include kol-input-container;
