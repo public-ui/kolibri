@@ -1,5 +1,8 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Method, Prop, State } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+
+import type { ButtonApi } from '../../internal/functional-components/button/api';
+import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -14,17 +17,18 @@ import type {
 	LabelWithExpertSlotPropType,
 	ShortKeyPropType,
 	SplitButtonProps,
-	SplitButtonStates,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
 
-import { KolButtonWcTag, KolPopoverButtonWcTag } from '../../core/component-names';
+import { KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
-import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { nonce } from '../../utils/dev.utils';
+import { delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { BaseButtonWebComponent } from '../button/base';
 
 /**
  * The **SplitButton** component can be used to display a two-part button. The primary button is typically used for
@@ -39,14 +43,59 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 	},
 	shadow: true,
 })
-export class KolSplitButton implements ClickableElement, FocusableElement, SplitButtonProps /*, SplitButtonAPI*/ {
+export class KolSplitButton extends BaseButtonWebComponent implements ClickableElement, FocusableElement, SplitButtonProps, WebComponentInterface<ButtonApi> {
 	@Element() protected readonly host?: HTMLKolSplitButtonElement;
-	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
+
+	public constructor() {
+		super();
+		this.initFormAssociation();
+	}
+
 	private popoverButtonRef?: HTMLKolPopoverButtonWcElement;
 
 	private readonly setPopoverButtonRef = (ref?: HTMLKolPopoverButtonWcElement) => {
 		this.popoverButtonRef = ref;
 	};
+
+	// --- Lifecycle ---
+
+	public componentWillLoad(): void {
+		this.initButtonRenderProps();
+
+		this.watchAccessKey(this._accessKey);
+		this.watchAriaControls(this._ariaControls);
+		this.watchAriaDescription(this._ariaDescription);
+		this.watchAriaExpanded(this._ariaExpanded);
+		this.watchAriaSelected(this._ariaSelected);
+		this.watchCustomClass(this._customClass);
+		this.watchDisabled(this._disabled);
+		this.watchHideLabel(this._hideLabel);
+		this.watchIcons(this._icons);
+		// No public `_inline`: the predecessor's inner `kol-button-wc` defaulted to `false`, so the
+		// primary button renders as `kol-button--standalone`.
+		this.applyInline(false);
+		this.watchLabel(this._label);
+		this.watchName(this._name);
+		this.watchOn(this._on);
+		this.watchShortKey(this._shortKey);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchType(this._type);
+		this.watchValue(this._value);
+		this.watchVariant(this._variant);
+
+		this.initTooltipBehavior();
+	}
+
+	public componentDidRender(): void {
+		this.syncTooltipListeners();
+	}
+
+	public disconnectedCallback(): void {
+		this.destroyTooltipBehavior();
+	}
+
+	// --- Public methods ---
 
 	/**
 	 * Returns the current value.
@@ -73,45 +122,31 @@ export class KolSplitButton implements ClickableElement, FocusableElement, Split
 	@delegateClick('ctaRef')
 	public async click(): Promise<void> {}
 
-	private readonly clickButtonHandler = {
-		onClick: (event: MouseEvent) => {
-			event.stopPropagation();
+	/**
+	 * Closes the dropdown.
+	 */
+	@Method()
+	public async closePopup() {
+		void this.popoverButtonRef?.hidePopover();
+		return Promise.resolve();
+	}
 
-			if (typeof this._on?.onClick === 'function') {
-				this._on?.onClick(event, this._value);
-			}
-		},
-	};
+	// --- Render ---
 
 	public render(): JSX.Element {
 		return (
 			<div class="kol-split-button">
 				<div class="kol-split-button__root">
-					<KolButtonWcTag
+					{/* The predecessor put this class on its inner `<kol-button-wc>` element; a `div` keeps the
+					    theme selectors (`.kol-split-button__button .kol-button…`) and, as a flex item, the box. */}
+					<div
 						class={clsx('kol-split-button__button', {
 							[this._variant as string]: this._variant !== 'custom',
 							[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
 						})}
-						ref={this.ctaRef}
-						_accessKey={this._accessKey}
-						_ariaControls={this._ariaControls}
-						_ariaDescription={this._ariaDescription}
-						_ariaExpanded={this._ariaExpanded}
-						_ariaSelected={this._ariaSelected}
-						_customClass={this._customClass}
-						_disabled={this._disabled}
-						_icons={this._icons}
-						_hideLabel={this._hideLabel}
-						_label={this._label}
-						_name={this._name}
-						_on={this.clickButtonHandler}
-						_shortKey={this._shortKey}
-						_syncValueBySelector={this._syncValueBySelector}
-						_tooltipAlign={this._tooltipAlign}
-						_type={this._type}
-						_value={this._value}
-						_variant={this._variant}
-					></KolButtonWcTag>
+					>
+						{this.renderButtonFC()}
+					</div>
 					<div class="kol-split-button__horizontal-line"></div>
 					<KolPopoverButtonWcTag
 						class="kol-split-button__secondary-button"
@@ -129,53 +164,74 @@ export class KolSplitButton implements ClickableElement, FocusableElement, Split
 		);
 	}
 
-	public connectedCallback(): void {
-		this.state = { ...this.state, _show: false };
-	}
+	// --- @State ---
 
-	/**
-	 * Closes the dropdown.
-	 */
-	@Method()
-	public async closePopup() {
-		void this.popoverButtonRef?.hidePopover();
-		return Promise.resolve();
-	}
+	@State() public ariaDescriptionId: string = nonce();
+
+	// --- Props + Watchers ---
 
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
+	@Watch('_accessKey')
+	public watchAccessKey(value?: AccessKeyPropType): void {
+		this.applyAccessKey(value, this._shortKey);
+	}
 
 	/**
 	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
 	 */
 	@Prop() public _ariaControls?: string;
+	@Watch('_ariaControls')
+	public watchAriaControls(value?: string): void {
+		this.applyAriaControls(value);
+	}
 
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
+	@Watch('_ariaDescription')
+	public watchAriaDescription(value?: AriaDescriptionPropType): void {
+		this.applyAriaDescription(value);
+	}
 
 	/**
 	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
 	 */
 	@Prop() public _ariaExpanded?: boolean;
+	@Watch('_ariaExpanded')
+	public watchAriaExpanded(value?: boolean): void {
+		this.applyAriaExpanded(value);
+	}
 
 	/**
 	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
 	 */
 	@Prop() public _ariaSelected?: boolean;
+	@Watch('_ariaSelected')
+	public watchAriaSelected(value?: boolean): void {
+		this.applyAriaSelected(value);
+	}
 
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
 	@Prop() public _customClass?: CustomClassPropType;
+	@Watch('_customClass')
+	public watchCustomClass(value?: CustomClassPropType): void {
+		this.applyCustomClass(value);
+	}
 
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
 	@Prop() public _disabled?: boolean = false;
+	@Watch('_disabled')
+	public watchDisabled(value?: boolean): void {
+		this.applyDisabled(value);
+	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -183,26 +239,48 @@ export class KolSplitButton implements ClickableElement, FocusableElement, Split
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: boolean): void {
+		this.applyHideLabel(value);
+	}
 
 	/**
 	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsPropType;
+	@Watch('_icons')
+	public watchIcons(value?: IconsPropType): void {
+		this.applyIcons(value);
+	}
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
 
 	/**
 	 * Defines the technical name of an input field.
 	 */
 	@Prop() public _name?: string;
+	@Watch('_name')
+	public watchName(value?: string): void {
+		this.applyName(value);
+	}
 
 	/**
 	 * Defines the callback functions for button events.
 	 */
 	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
+	@Watch('_on')
+	public watchOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
+		// The predecessor handed its inner button a callback object that carried `onClick` only, so
+		// `onMouseDown`/`onFocus`/`onBlur` never reached the consumer. Kept for public API parity.
+		this.applyOn({ onClick: value?.onClick });
+	}
 
 	/**
 	 * Defines the role of the components primary element.
@@ -210,39 +288,65 @@ export class KolSplitButton implements ClickableElement, FocusableElement, Split
 	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
 	 */
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
+	@Watch('_role')
+	public watchRole(): void {
+		// Deliberately not forwarded: the predecessor never handed `_role` to its inner element, so a
+		// consumer-set role was never rendered. Keeping that behaviour is public API parity; the link
+		// owner's decision to drop `_role` from the public surface has not been taken here yet.
+	}
 
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		this.applyShortKey(value, this._accessKey);
+	}
 
 	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
 
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type?: ButtonTypePropType = 'button';
+	@Watch('_type')
+	public watchType(value?: ButtonTypePropType): void {
+		this.applyType(value);
+	}
 
 	/**
 	 * Defines the value of the element.
 	 */
 	@Prop() public _value?: StencilUnknown;
+	@Watch('_value')
+	public watchValue(value?: StencilUnknown): void {
+		this.applyValue(value);
+	}
 
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: VariantClassNamePropType = 'normal';
-
-	@State() public state: SplitButtonStates = {
-		_show: false,
-	};
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		this.applyVariant(value);
+	}
 }
