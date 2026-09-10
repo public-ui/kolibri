@@ -21,7 +21,10 @@
  * 2. **State predicate on the carrier.** `:focus`, `:focus-visible` and `:disabled` never match the
  *    wrapper `div`, so those rules are dead. Worse, `:not(:disabled)` / `:not([disabled])` are
  *    always *true* on the wrapper, so a combined predicate like `.kol-button:not([disabled]):hover`
- *    does not merely stop matching — it inverts, and disabled buttons gain hover styling.
+ *    does not merely stop matching — it inverts, and disabled buttons gain hover styling. A
+ *    `:not(…)` is judged by its full argument list: it inverts only when *every* argument can match
+ *    the interactive element alone. One argument that can match the carrier (the block's
+ *    `--disabled` modifier, say) keeps the exclusion intact, so such a rule is not reported.
  *
  * `:hover`, `:active` and `:focus-within` are deliberately not flagged: they match the wrapper
  * through ancestor propagation, so they keep working where they are.
@@ -47,8 +50,12 @@ const WRAPPER_BLOCKS = ['kol-button', 'kol-link'];
 /** Pseudo-classes that never match the wrapper — they do not propagate to ancestors. */
 const DEAD_ON_WRAPPER = [':focus-visible', ':focus', ':disabled'];
 
-/** Negated predicates that are always true on the wrapper, so combined rules invert. */
-const INVERTING_ON_WRAPPER = [':not(:disabled)', ':not([disabled]'];
+/**
+ * Predicates that can only ever be true on the interactive element inside the wrapper, never on the
+ * class carrier itself: the disabled state lives on the `<button>` / `<a>`, not on the wrapper.
+ * Negating them on the carrier is therefore always true.
+ */
+const ELEMENT_ONLY_DISABLED = /^(?::disabled|\[(?:aria-)?disabled(?:\s*[~^$*|]?=\s*[^\]]*)?\])$/;
 
 /*
  * Interpolations are normalised to stable placeholders so the resolver can work on plain strings.
@@ -285,6 +292,52 @@ function compoundParts(compound) {
 	return parts;
 }
 
+/** Splits the argument list of a `:not(…)` / `:is(…)` at top level, ignoring nested brackets. */
+function selectorArguments(part) {
+	const open = part.indexOf('(');
+	if (open === -1 || !part.endsWith(')')) {
+		return [];
+	}
+	const inner = part.slice(open + 1, -1);
+	const args = [];
+	let current = '';
+	let depth = 0;
+	for (const char of inner) {
+		if (char === '(' || char === '[') {
+			depth++;
+		} else if (char === ')' || char === ']') {
+			depth = Math.max(0, depth - 1);
+		}
+		if (depth === 0 && char === ',') {
+			args.push(current.trim());
+			current = '';
+			continue;
+		}
+		current += char;
+	}
+	if (current.trim()) {
+		args.push(current.trim());
+	}
+	return args;
+}
+
+/**
+ * Whether a `:not(…)` attached to the carrier inverts the rule instead of switching it off.
+ *
+ * Every argument that can only match the interactive element is always false on the wrapper, so
+ * negating it is always true. When *all* arguments are of that kind, the rule never falls out for a
+ * disabled element — it starts applying to it. A single argument that can match the carrier (the
+ * block's `--disabled` modifier, or a `:has(:disabled)` asking the element inside) keeps the
+ * exclusion working, so those are left alone.
+ */
+function isInvertingNegation(part) {
+	if (!part.startsWith(':not(')) {
+		return false;
+	}
+	const args = selectorArguments(part);
+	return args.length > 0 && args.every((arg) => ELEMENT_ONLY_DISABLED.test(arg));
+}
+
 function findCarrierStatePredicate(selector, includeGeneric) {
 	const pattern = carrierPattern(includeGeneric);
 	let match;
@@ -294,10 +347,8 @@ function findCarrierStatePredicate(selector, includeGeneric) {
 			continue;
 		}
 		for (const part of compoundParts(compound)) {
-			for (const pseudo of INVERTING_ON_WRAPPER) {
-				if (part.startsWith(pseudo)) {
-					return { kind: 'inverting', pseudo, carrier: match[0] };
-				}
+			if (isInvertingNegation(part)) {
+				return { kind: 'inverting', pseudo: part, carrier: match[0] };
 			}
 			// `:focus-within` is legitimate on the wrapper and must not be caught by `:focus`.
 			if (part.startsWith(':focus-within')) {
