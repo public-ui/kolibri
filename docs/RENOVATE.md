@@ -73,9 +73,9 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
 - **`minimumReleaseAge: "3 days"`** — all updates (npm, Actions, …, including security fixes)
   are held back for three days after release before a PR is opened or auto-merged. This protects
   against compromised or quickly-revoked releases.
-- **Automerge all non-major updates (squash)** — the first package rule enables `automerge` for
-  `patch`/`minor`/`digest`/`pin`/lockfile updates; `automergeStrategy: squash` means each
-  dependency bump becomes a single commit. Known-risky rules below (Stencil, kern-ux, ESLint,
+- **Automerge all non-major updates (merge commit)** — the first package rule enables `automerge` for
+  `patch`/`minor`/`digest`/`pin`/lockfile updates; `automergeStrategy: merge` is the only method the
+  `Production branches` ruleset allows on `develop` (see [Troubleshooting](#troubleshooting-prs-stay-open-although-ci-is-green)). Known-risky rules below (Stencil, kern-ux, ESLint,
   TypeScript, typescript-eslint) override it back to manual. Majors always keep dashboard approval.
   Prerequisites: repo setting **Allow auto-merge** enabled, green pipelines enforced via required
   status checks on `develop`, and the runner GitHub App listed in the branch-protection bypass
@@ -149,12 +149,19 @@ To activate it:
    > Without **Dependabot alerts: read** every run logs
    > `Cannot access vulnerability alerts`, and `vulnerabilityAlerts` stays inactive; security PRs
    > then only come from `osvVulnerabilityAlerts`.
+
 2. For automerge to work end to end, check three repository settings:
    - **Settings → General → Pull Requests → Allow auto-merge**: enabled (Renovate uses
      `platformAutomerge`, i.e. GitHub's native auto-merge).
    - **Branch protection for `develop` (and `release/2`, `release/1`, `release/3`) → required status
      checks**: add the CI gate jobs (`check-results`, `validate-pr-title`) so a PR is only merged
-     when the pipelines are green.
+     when the pipelines are green. As of 2026-09-09 the `Production branches` ruleset requires
+     `Visual Review`, `validate-pr-title`, `validate-release-label` and `CodeQL`, but **not**
+     `check-results` — a red pipeline blocks Renovate (it refuses to merge a red branch) but not a
+     human. Two of those four are required and therefore may never be skipped by a path filter:
+     `codeql.yml` runs on every pull request for exactly that reason, and `visual-review.yml`
+     answers a skipped CI run with the status `success` (mode `docs-only`, see
+     `scripts/visual-review/resolve-context.mjs`).
    - **Branch protection for `develop` (and `release/*`) → bypass pull request allowances**: the
      runner App (`publicuibot`) must be listed there, so its PRs can merge without a human
      code-owner review.
@@ -172,6 +179,62 @@ If you would rather not self-host, delete `.github/workflows/renovate.yml` and i
    `public-ui` (or just on `public-ui/kolibri`).
 2. Renovate detects `renovate.json` and opens a Dependency Dashboard issue.
 3. Review the dashboard, then let it run on the weekly schedule.
+
+### Troubleshooting: PRs stay open although CI is green
+
+Renovate never explains a refused merge in the PR itself. The runner log does, but only at
+`LOG_LEVEL=debug`: start the workflow via **Run workflow** with `log_level: debug` (and `dry_run`
+off — a dry run logs `DRY-RUN: Would merge PR` and never sends the request that carries the error).
+
+At `info` level the only trace is one line per PR:
+
+```
+INFO: All merge attempts failed (repository=public-ui/kolibri, baseBranch=develop, branch=…)
+       "pr": 10833
+```
+
+It means Renovate did try. Automerge is configured correctly and the branch is green — GitHub
+rejected the `PUT /repos/:owner/:repo/pulls/:number/merge` call. The cause is therefore always a
+repository setting or a ruleset, never `renovate.json`. Renovate walks three strategies in order
+(the configured `automergeStrategy` first, then merge commit, then rebase); the debug log holds one
+`Failed to … PR` block per attempt, each with the HTTP status and GitHub's own message:
+
+| Response                                                  | Meaning                                                                   |
+| --------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `405` `Squash merges are not allowed on this repository.` | The merge method is not allowed here — see `allowed_merge_methods` below. |
+| `405` `Rebase merges are not allowed on this repository.` | Same, for rebase.                                                         |
+| `405` `Repository rule violations found: …`               | A ruleset blocks the bot; the text names the rule.                        |
+| `403` `Resource not accessible by integration`            | The App lacks **contents: write**.                                        |
+
+Which rules actually apply to a branch is readable without admin rights:
+
+```sh
+gh api repos/public-ui/kolibri/rules/branches/develop
+```
+
+> **The case of 2026-09-09.** Every green dependency PR sat blocked with `mergeable_state: blocked`
+> while the pipelines were green and no review existed. All three attempts failed with `405`. The
+> ruleset **Production branches** (it covers the default branch and `release/**`) carries a
+> `pull_request` rule whose `allowed_merge_methods` is `["merge"]`, which is what rejected squash
+> and rebase; `automergeStrategy` has been set to `merge` since. The merge commit itself was then
+> refused by the same rule:
+> `New changes require approval from someone other than the last pusher`.
+> The bot can never satisfy that one on its own branches, because it is always the last pusher. It
+> needs an approval, or an entry in that ruleset's bypass list that covers the `pull_request` rule
+> (**Settings → Rules → Rulesets → Production branches → Bypass list**). Mind that a bypass entry
+> for the App did **not** end this: with `publicuibot` listed, two consecutive runs were refused
+> with this same rule and no other violation. So check the entry itself — `actor_type` has to be
+> `Integration` and `bypass_mode` `always`, readable with admin rights via
+> `gh api repos/public-ui/kolibri/rulesets/22621638 --jq .bypass_actors`. If it is already both,
+> the rule named in the 405 is the only remaining lever: **Require approval of the most recent
+> reviewable push** in that ruleset.
+
+Two more silent failures show up as warnings rather than as a blocked PR:
+
+- `Cannot access vulnerability alerts` — **Dependabot alerts: read** is missing, `vulnerabilityAlerts`
+  stays inactive and security PRs come from `osvVulnerabilityAlerts` only.
+- `Could not ensure issue … integration-unauthorized` — the Dependency Dashboard issue is not being
+  updated any more. Check **Issues: write** for the App, and whether the issue itself is locked.
 
 ---
 
@@ -207,7 +270,7 @@ fixierten Major-Version halten (`angular/v19|v20|v21`, `react*`), sichere Update
   `auto-dependency-updater.yml`).
 
 Neu hinzugekommen: `minimumReleaseAge: "3 Tage"` schützt vor kompromittierten Releases
-(inklusive Security-Updates), `automergeStrategy: squash` sorgt für saubere Commit-Historie,
+(inklusive Security-Updates), `automergeStrategy: merge` folgt der Merge-Commit-Konvention des Repos,
 und die `release/*`-Branches werden auf **Security-only** umgestellt — reguläre npm- und
 GitHub-Actions-Updates werden dort komplett deaktiviert, während Vulnerability-Alert-PRs
 weiterhin (bei Nicht-Major) automatisch mergen.
