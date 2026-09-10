@@ -1,8 +1,7 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { ButtonApi } from '../../internal/functional-components/button/api';
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { SplitButtonWebComponentInterface } from '../../internal/functional-components/button/api';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -43,7 +42,7 @@ import { BaseButtonWebComponent } from '../button/base';
 	},
 	shadow: true,
 })
-export class KolSplitButton extends BaseButtonWebComponent implements ClickableElement, FocusableElement, SplitButtonProps, WebComponentInterface<ButtonApi> {
+export class KolSplitButton extends BaseButtonWebComponent implements ClickableElement, FocusableElement, SplitButtonProps, SplitButtonWebComponentInterface {
 	@Element() protected readonly host?: HTMLKolSplitButtonElement;
 
 	public constructor() {
