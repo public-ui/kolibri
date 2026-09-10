@@ -91,10 +91,9 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 
 	public componentWillLoad(): void {
 		this.initRenderProps(linkPropsConfig);
-		// The props config seeds `tabIndex` with its default `0`. An unset tabindex must not
-		// render as `tabindex="0"` — links are natively tabbable and the attribute would trigger
-		// focus outlines that the predecessor did not draw.
-		this.setRenderProp('tabIndex', undefined as unknown as number);
+		// An unset tabindex must not render as `tabindex="0"` — links are natively tabbable and
+		// the attribute would trigger focus outlines that the predecessor did not draw.
+		this.unsetRenderProp('tabIndex');
 
 		accessKeyProp.apply(this._accessKey, (v) => this.setRenderProp('accessKey', v));
 		ariaControlsProp.apply(this._ariaControls, (v) => this.setRenderProp('ariaControls', v));
@@ -431,7 +430,16 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _tabIndex?: number;
 	@Watch('_tabIndex')
 	public watchTabIndex(value?: number): void {
-		tabIndexProp.apply(value, (v) => this.setRenderProp('tabIndex', v));
+		// The props config seeds `tabIndex` with its default `0`, but an unset tabindex must not
+		// render as `tabindex="0"` — links are natively tabbable and the attribute would trigger
+		// focus outlines the predecessor did not draw. Unsetting the prop has to restore that
+		// state, so the else branch is not optional: without it a reset keeps the previous number.
+		// `componentWillLoad` already guards the initial pass the same way.
+		if (typeof value === 'number') {
+			tabIndexProp.apply(value, (v) => this.setRenderProp('tabIndex', v));
+		} else {
+			this.unsetRenderProp('tabIndex');
+		}
 	}
 
 	/**
