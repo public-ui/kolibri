@@ -68,7 +68,7 @@ const INTERPOLATION_PLACEHOLDERS = [
  * interactive element. The checker cannot evaluate `@if`, so it would walk both branches and report
  * the branch that does not apply. A branch conditioned on one of these is the author's explicit
  * handling of both shapes, and in the "no inner element" branch the class carrier legitimately *is*
- * the interactive element.
+ * the interactive element. The `@else` branches of such an `@if` are skipped as well.
  */
 const SHAPE_SWITCH_VARIABLES = ['$interactive-element', '$interactive-suffix', '$anchor-scoped'];
 
@@ -321,7 +321,13 @@ function findCarrierStatePredicate(selector, includeGeneric) {
  * an empty context, which is what catches parameterised mixins such as `button($block-classname)`.
  */
 function* walk(node, parents, mixins, expanding = new Set()) {
+	// Set while the `@if` of a shape switch was skipped, so that its `@else` branches are skipped too.
+	let skippingShapeSwitch = false;
 	for (const child of node.children ?? []) {
+		if (skippingShapeSwitch && child.header && /^@else\b/.test(child.header)) {
+			continue;
+		}
+		skippingShapeSwitch = false;
 		if (child.statement !== undefined) {
 			const include = /^@include\s+([\w-]+)/.exec(child.statement);
 			if (include && mixins.has(include[1]) && !expanding.has(include[1])) {
@@ -355,6 +361,7 @@ function* walk(node, parents, mixins, expanding = new Set()) {
 		if (AT_RULE_PASSTHROUGH.test(header)) {
 			// See SHAPE_SWITCH_VARIABLES.
 			if (/^@(if|else)\b/.test(header) && SHAPE_SWITCH_VARIABLES.some((name) => header.includes(name))) {
+				skippingShapeSwitch = true;
 				continue;
 			}
 			yield* walk(child, parents, mixins, expanding);
