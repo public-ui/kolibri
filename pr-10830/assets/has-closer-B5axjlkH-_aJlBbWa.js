@@ -1,0 +1,1 @@
+import{St as e}from"./index-B3v2sUIM.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
