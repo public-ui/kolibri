@@ -1,1 +1,0 @@
-import{V as e,wt as t}from"./index-D0xM0ck-.js";var n=(n,r)=>{t(n,`_disabled`,r,{hooks:{afterPatch:t=>{t===!0&&e()}}})};export{n as t};

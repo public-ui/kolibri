@@ -1,1 +1,0 @@
-import{wt as e}from"./index-D0xM0ck-.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};

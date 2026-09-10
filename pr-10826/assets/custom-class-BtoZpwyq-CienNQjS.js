@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-D0xM0ck-.js";var t=(t,n)=>{e(t,`_customClass`,n,{defaultValue:``})};export{t};
