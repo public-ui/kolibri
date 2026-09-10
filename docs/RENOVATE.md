@@ -179,6 +179,11 @@ To activate it:
      `scripts/visual-review/resolve-context.mjs`). Anything added to the list has to obey the same
      rule. `check-results` is deliberately absent: a red pipeline stops Renovate, which refuses to
      merge a red branch, but it does not stop a human.
+   - Every workflow behind a required check needs `synchronize` in its `pull_request` types.
+     GitHub wants the check on the **current head commit**, so a workflow that only reacts to
+     `opened`/`edited` leaves it unreported after any push and the merge is refused with
+     `Required status check "…" is expected`. Renovate runs into this on every rebase; that is what
+     `pr-title-validation.yml` was missing.
    - In the target patterns of a ruleset GitHub prefixes `refs/heads/` itself. Enter `release/**/*`,
      never `refs/heads/release/**/*`, otherwise the prefix doubles and the release branches silently
      lose their protection. `gh api repos/public-ui/kolibri/rules/branches/release/3` shows what is
@@ -226,6 +231,7 @@ repository setting or a ruleset, never `renovate.json`. Renovate walks three str
 | `405` `Squash merges are not allowed on this repository.` | The merge method is not allowed here — see `allowed_merge_methods` below. |
 | `405` `Rebase merges are not allowed on this repository.` | Same, for rebase.                                                         |
 | `405` `Repository rule violations found: …`               | A ruleset blocks the bot; the text names the rule.                        |
+| `405` `… Required status check "x" is expected.`          | Check `x` never ran on the head commit — see `synchronize` in §3.         |
 | `403` `Resource not accessible by integration`            | The App lacks **contents: write**.                                        |
 
 Which rules actually apply to a branch is readable without admin rights:
