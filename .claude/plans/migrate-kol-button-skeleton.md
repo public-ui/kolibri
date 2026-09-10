@@ -213,13 +213,17 @@ fehlenden Compositing-Hints.
 
 ### 2. Konsumenten-Migration weg von `kol-button-wc` (der strategische Schritt)
 
-Erst danach kann `wc.tsx` gelöscht und damit das ~350-Zeilen-Duplikat zwischen `component.tsx` und
-`wc.tsx` aufgelöst werden (Link-Finding #4, dort bewusst nicht in-PR gelöst).
+**Stand 2026-09-10:** Das ~350-Zeilen-Duplikat zwischen `component.tsx` und `wc.tsx` ist
+aufgelöst — beide erben von `BaseButtonWebComponent` (`button/base.tsx`, ARC42 §9 Entscheidung 16),
+die konkreten Klassen halten nur noch Dekoratoren, Einzeiler-Watcher und delegierende Lifecycle-
+Methoden. `button-link` und `split-button` sind auf dieselbe Basis migriert und rendern `ButtonFC`
+direkt (Public API byte-identisch, gepinnt in `_skeleton/public-api.spec.ts`). Der statische
+Selektor-Wächter `pnpm check:skeleton-selectors` läuft in CI und ist grün.
 
-Konsumenten heute: accordion, badge, button-link, details, input-file, pagination, popover-button,
-split-button, tabs, `mixins/kol-table-settings-wc`, `functional-components/Button` (→ IconButton).
-Das sind deutlich mehr als bei `kol-link-wc` — der Wrapper lebt entsprechend länger, das
-Duplikat-Argument „löst sich bald von selbst" trägt hier schwächer.
+`wc.tsx` kann gelöscht werden, sobald die übrigen Konsumenten `ButtonFC` selbst rendern (Muster:
+`extends BaseButtonWebComponent`): accordion, badge, card, details, input-file, nav, pagination,
+popover-button, single-select, table-stateless/table-settings, tabs, toolbar,
+`mixins/kol-table-settings-wc`, `functional-components/Button` (→ IconButton).
 
 ### 3. Entscheidungspunkte (brauchen Owner-Entscheidung, nicht eigenmächtig umsetzen)
 
