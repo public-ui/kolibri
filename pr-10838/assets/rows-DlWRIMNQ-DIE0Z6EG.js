@@ -1,1 +1,0 @@
-import{Et as e}from"./index-V__85vOV.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
