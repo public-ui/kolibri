@@ -2,7 +2,10 @@ name: PR Title Validation
 
 on:
   pull_request:
-    types: [opened, edited, reopened]
+    # `synchronize` is required: check runs are attached to a head SHA. Without it,
+    # every push creates a new SHA for which this required check never reports and the
+    # PR stays stuck on "Expected — Waiting for status to be reported".
+    types: [opened, edited, reopened, synchronize]
 
 jobs:
   validate-pr-title:
