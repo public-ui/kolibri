@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-C8e4rraf.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
