@@ -21,6 +21,9 @@ Kleine, einzelne Komponente (Button, Input, Icon), die zu größeren Komponenten
 
 ## B
 
+**Basis-Styling**
+Das Layout-only-Styling aus `@public-ui/components` (Schichten `kol-a11y`, `kol-global`, `kol-component`). Enthält Struktur, keine Farben (außer einem Schwarz/Weiß-Kontrast-Fallback) und kein Color Scheme. Siehe [Basis-Styling vs. Theming Konzept](../BASE_STYLING_VS_THEMING_CONCEPT.md).
+
 **BEM (Block Element Modifier)**
 CSS-Benennungskonvention, die im KoliBri-Styling verwendet wird. Beispiel: `.kol-button__icon--small`
 
@@ -34,6 +37,9 @@ Gesamtgröße von JavaScript- und CSS-Dateien. KoliBri optimiert Bundle-Größe 
 
 **Komponente**
 Wiederverwendbares UI-Element mit gekapselter Struktur, Styling und Verhalten. In KoliBri bezieht sich dies auf Web Components.
+
+**Color Scheme (Dark/Light)**
+Helles oder dunkles Erscheinungsbild der Oberfläche, meist gesteuert über `prefers-color-scheme`. In KoliBri wird ein Color Scheme ausschließlich vom Theme umgesetzt (Token-Umschaltung oder separater Dark-Export); das Basis-Styling ist scheme-neutral. Nicht zu verwechseln mit Forced Colors (Hochkontrast), einem Barrierefreiheitsmechanismus.
 
 **Komponenten-Bibliothek**
 Sammlung wiederverwendbarer Komponenten. KoliBri ist eine Komponenten-Bibliothek für barrierefreies HTML.

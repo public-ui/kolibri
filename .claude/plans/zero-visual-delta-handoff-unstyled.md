@@ -68,6 +68,11 @@ im CI-gleichen Container (playwright v1.60.0-noble, Firefox/Linux): **293 passed
   übersprungen (siehe `sample-app.routes.js`). Das Theme hat kein Icon-Font.
 - **Nur Basis-Layer:** Das unstyled Theme zeigt NUR das `kol-component` CSS-Layer.
   Jede visuelle Änderung deutet auf DOM-Umbauten im Basis-Layer hin.
+- **Scheme-neutral:** Die Basis kennt kein Dark/Light-Color-Scheme (siehe
+  `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`). Die `unstyled`-Snapshots dürfen unter
+  `KOLIBRI_VISUAL_TESTS_COLOR_SCHEME=light` und `=dark` nicht differieren. Ein Diff
+  zwischen beiden Läufen bedeutet, dass Scheme-Logik in `components` gelandet ist —
+  das ist ein Fehler in der Basis, nicht im Test.
 - **Plattform-spezifische Snapshots:** Die CI verwendet Linux (Firefox/Linux), lokale
   Tests erstellen macOS-Snapshots (Firefox/Darwin). Diese dürfen nicht committet werden.
 

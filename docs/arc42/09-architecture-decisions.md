@@ -214,6 +214,7 @@ Implement a five-layer styling architecture:
 - ✅ Accessibility can't be accidentally broken
 - ✅ Themes can customize appearance without breaking layout
 - ✅ Predictable style precedence
+- ✅ Color schemes (dark/light) are exclusively a theme concern; the base layers stay color-scheme neutral (see ADR-018)
 - ❌ More complex to understand initially
 - ❌ More files to maintain
 - ❌ Strict conventions required
@@ -479,6 +480,37 @@ This provides:
 - ❌ Migration effort for legacy components
 - ❌ More boilerplate than legacy patterns
 - ❌ Larger codebase footprint per component
+
+### ADR-018: Color Schemes (Dark/Light) Live in Themes, Not in Base Styling
+
+**Status:** Accepted
+
+**Context:**
+The five-layer styling architecture (ADR-008) separates layout (base layers in `@public-ui/components`) from visual design (theme layers in `@public-ui/theme-*`). Dark/light color schemes were never explicitly assigned to a layer. Without a rule, a color scheme could be introduced in the base styling, which would couple every theme to a base color decision, move contrast responsibility away from the theme, and make the `unstyled` baseline scheme-dependent.
+
+**Decision:**
+Color schemes are exclusively a theme concern:
+
+- The base layers `kol-a11y`, `kol-global` and `kol-component` focus on layout and structure. They never use `@media (prefers-color-scheme: …)`, the `color-scheme` property, `light-dark()`, scheme-dependent tokens or scheme modifiers. Black and white in the base layers remain a contrast fallback, not a color design.
+- Themes implement dark/light in `kol-theme-global` via tokens on `:host` (scheme switch at one place: `color-scheme` + `light-dark()`, `prefers-color-scheme`, or an opt-in attribute) or ship a separate dark export registered as an additional theme. `kol-theme-component` only references tokens.
+- `forced-colors` (high contrast) is an accessibility mechanism using system color keywords and stays in the base `kol-forced-colors` layer. It is not a dark mode.
+
+Details: [Base Styling vs. Theming Concept](../BASE_STYLING_VS_THEMING_CONCEPT.md).
+
+**Consequences:**
+
+- ✅ Base styling stays color-scheme neutral; `unstyled` renders identically under `light` and `dark`
+- ✅ Every theme decides independently whether and how it offers dark mode
+- ✅ Contrast verification (WCAG) per scheme stays with the theme that owns the colors
+- ✅ Clear decision rule for moving styles between theme and base: a value that changes between light and dark stays in the theme
+- ❌ Dark mode is not available "for free"; each theme has to implement it
+- ❌ Themes that offer both schemes need snapshots per scheme
+
+**Alternatives Considered:**
+
+- Color scheme in the base styling: Couples all themes to one base palette, breaks the layout-only rule
+- Color scheme as a component prop: Moves a design decision into the component API
+- Global CSS custom properties switched by the host page: Not encapsulated, conflicts with ADR-009
 
 **Related Practice: Dead Schema Detection**
 

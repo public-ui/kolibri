@@ -69,6 +69,7 @@ Diese Ursachen deckten >90 % der Diffs — in dieser Reihenfolge prüfen:
 - **„Baseline ist stale"-Verdacht**: Vor jedem solchen Urteil den Base-Code selbst gegen die Baselines laufen lassen. Ist der Base-Check grün, sind die Baselines reproduzierbar und der Branch schuldet jede Differenz. Erst wenn der Base-Check selbst rot ist, Baselines-Regenerierung MIT Begründung und Owner-Absprache (siehe Allowlist).
 - **Grenzwertige Umbrüche flaken**: Ein Label, das auf dem Base 1 px vor dem Umbruch liegt, bricht nach minimal breiterem Rendering zusätzlich um (Bildhöhe +eine Zeile). Solche Fälle wirken wie Flakes — Ursache ist fast immer Muster 4 (Doppel-Padding). Messen mit Route-Viewport, nicht raten.
 - **Shadow-Retargeting**: `document.activeElement` zeigt nur den Host; die Fokus-Kette über `shadowRoot.activeElement` abwärts verfolgen, wenn „fokussiert, aber keine Optik" verwirrt.
+- **Farbwechsel im Diff gehört nie in die Basis**: Zeigt die Farbprobe `exp=(r,g,b) ≠ act=(r,g,b)` bei unveränderter Geometrie, liegt die Ursache in der Theme-Schicht (Token, Mixin, Include-Kette) — niemals durch Farben oder gar Dark/Light-Regeln (`prefers-color-scheme`, `color-scheme`, `light-dark()`) in `components` „reparieren“. Die Basis ist layout-only und scheme-neutral (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
 
 ## 6. Allowlist — der einzige Ausweg
 
