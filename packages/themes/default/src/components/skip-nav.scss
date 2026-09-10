@@ -5,8 +5,8 @@
 	@include kol-icon-theme;
 	.kol-skip-nav {
 		.kol-link {
-			// The base layer paints the focused anchor white.
-			&__anchor:focus {
+			// The base layer paints the focused interactive element white.
+			&__interactive-element:focus {
 				background-color: var(--color-light);
 			}
 
