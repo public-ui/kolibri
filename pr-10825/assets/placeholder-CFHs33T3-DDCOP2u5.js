@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-pt7EIn_z.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
