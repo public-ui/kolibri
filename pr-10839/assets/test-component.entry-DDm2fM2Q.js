@@ -1,0 +1,1 @@
+import{s as e}from"./index-Dhh23Sha.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};

@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-Dhh23Sha.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
