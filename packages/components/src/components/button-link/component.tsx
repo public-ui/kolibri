@@ -46,7 +46,7 @@ import { BaseButtonWebComponent } from '../button/base';
 	},
 	shadow: true,
 })
-export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkProps, ClickableElement, FocusableElement, ButtonLinkWebComponentInterface {
+export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkProps, ButtonLinkWebComponentInterface, ClickableElement, FocusableElement {
 	@Element() protected readonly host?: HTMLKolButtonLinkElement;
 
 	public constructor() {
