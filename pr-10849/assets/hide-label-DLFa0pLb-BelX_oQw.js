@@ -1,1 +1,0 @@
-import{St as e}from"./index--outT96K.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};

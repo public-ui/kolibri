@@ -1,0 +1,1 @@
+import{St as e}from"./index-DukjLHRs.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};

@@ -1,1 +1,0 @@
-import{St as e}from"./index--outT96K.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
