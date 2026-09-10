@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 10832,
-	"head": "5383b70fbc061a7a168881ff1a924dcf8a92f9ad",
+	"head": "f4afca5c1df46550dc41d4c9b791465ce3978435",
 	"repository": "public-ui/kolibri",
-	"runId": 34422532199,
-	"generatedAt": "2026-09-10T01:45:15.193Z",
-	"digest": "sha256:777f748a854a9245b7e7ed58cdfc585d3fc3140a92d34469d88a20684cb0de83",
+	"runId": 34495868150,
+	"generatedAt": "2026-09-10T16:26:56.937Z",
+	"digest": "sha256:d05e4f55eb0444745916a648c62856d3b669e426f988d6e9b9d26fd3d035139c",
 	"baseline": {
-		"sha": "7e34272d86c5389f343e4865d174003342e4667b",
+		"sha": "86a76591e91fd32b2c742b611f22b54c878dd7e1",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -30,12 +30,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "7e34272d86c5389f343e4865d174003342e4667b",
+					"sha": "86a76591e91fd32b2c742b611f22b54c878dd7e1",
 					"ref": "develop",
-					"runId": 34422049075,
+					"runId": 34482139630,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-10T00:44:20.534Z",
+					"createdAt": "2026-09-10T13:28:49.337Z",
 					"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
 					"fallback": null,
 					"distance": 0,
@@ -2509,12 +2509,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "7e34272d86c5389f343e4865d174003342e4667b",
+					"sha": "86a76591e91fd32b2c742b611f22b54c878dd7e1",
 					"ref": "develop",
-					"runId": 34422049075,
+					"runId": 34482139630,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-10T00:44:04.438Z",
+					"createdAt": "2026-09-10T13:28:43.947Z",
 					"digest": "sha256:fc68cf665148adebbb05128ea9fc331784019547afbef67e54a4f06342a0a15f",
 					"fallback": null,
 					"distance": 0,
@@ -4988,12 +4988,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "7e34272d86c5389f343e4865d174003342e4667b",
+					"sha": "86a76591e91fd32b2c742b611f22b54c878dd7e1",
 					"ref": "develop",
-					"runId": 34422049075,
+					"runId": 34482139630,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-10T00:44:20.534Z",
+					"createdAt": "2026-09-10T13:28:49.337Z",
 					"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
 					"fallback": null,
 					"distance": 0,
@@ -7467,12 +7467,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "7e34272d86c5389f343e4865d174003342e4667b",
+					"sha": "86a76591e91fd32b2c742b611f22b54c878dd7e1",
 					"ref": "develop",
-					"runId": 34422049075,
+					"runId": 34482139630,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-10T00:43:32.510Z",
+					"createdAt": "2026-09-10T13:27:16.476Z",
 					"digest": "sha256:5c0a5b99732279589877caab16b44f567d5d2d3d1e487cbf90dd5fa9b3b6374e",
 					"fallback": null,
 					"distance": 0,
@@ -9946,12 +9946,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "7e34272d86c5389f343e4865d174003342e4667b",
+					"sha": "86a76591e91fd32b2c742b611f22b54c878dd7e1",
 					"ref": "develop",
-					"runId": 34422049075,
+					"runId": 34482139630,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-10T00:43:32.526Z",
+					"createdAt": "2026-09-10T13:28:22.863Z",
 					"digest": "sha256:d4dcbe406222e7b43ca517f01c1a971dc4b58ce482f7ba352dbbd17521983496",
 					"fallback": null,
 					"distance": 0,
@@ -12425,13 +12425,13 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "7e34272d86c5389f343e4865d174003342e4667b",
+					"sha": "86a76591e91fd32b2c742b611f22b54c878dd7e1",
 					"ref": "develop",
-					"runId": 34422049075,
+					"runId": 34482139630,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-10T00:43:10.744Z",
-					"digest": "sha256:b57a8506f8e620b8d02aaab0128aa3596089f15d780370922b33c9336982fcee",
+					"createdAt": "2026-09-10T13:27:39.353Z",
+					"digest": "sha256:6c7c79d591b3d1364b871ce98ccf568f09630e4eeb4ae4d664dad5db1a9f367b",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -12444,7 +12444,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:b57a8506f8e620b8d02aaab0128aa3596089f15d780370922b33c9336982fcee",
+			"digest": "sha256:6c7c79d591b3d1364b871ce98ccf568f09630e4eeb4ae4d664dad5db1a9f367b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14406,7 +14406,7 @@
 					"name": "scenarios-focus-elements-component-linkButton",
 					"route": "scenarios-focus-elements-component-linkButton",
 					"status": "unchanged",
-					"hash": "sha256:9c1ba73758caf540cf60013eea2afd9da97a0002700b479ca6e5144b67b4bc8d"
+					"hash": "sha256:91826e9a1b56a77bf6d6d17384840c909bfa92787fb60942d2f530c9365f4117"
 				},
 				{
 					"name": "scenarios-focus-elements-component-popoverButton",
@@ -14742,13 +14742,13 @@
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:08429e7c3853b1b16cc40ccd0833a5f26787f2c1a03c09cd29094930592121e9"
+					"hash": "sha256:deb2ce68d9ee38609ef9acbb8156004588e52e3148c082bf41b90ca0ba525ab7"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:de40264b6cde34a2341e4196eafc0a7f9aa34bb29edacdf3c5f11dbb460a9fe3"
+					"hash": "sha256:b19050a69769a8ce4b0393a4339e4e0b92b809ec39ca66d865a8209a07c8819e"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
@@ -14904,12 +14904,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "7e34272d86c5389f343e4865d174003342e4667b",
+					"sha": "86a76591e91fd32b2c742b611f22b54c878dd7e1",
 					"ref": "develop",
-					"runId": 34422049075,
+					"runId": 34482139630,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-10T00:43:02.790Z",
+					"createdAt": "2026-09-10T13:27:35.257Z",
 					"digest": "sha256:7ab3d41feafe675c93ded0fd377196a255c191ab7f67f3c587630250d28e87ed",
 					"fallback": null,
 					"distance": 0,
