@@ -73,8 +73,14 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 	public render(): JSX.Element {
 		const hasSmartButton = typeof this.state._smartButton === 'object' && this.state._smartButton !== null;
 
+		/**
+		 * span -> text content
+		 * button -> remove function
+		 * br -> Wrapping so that every badge is interpreted as a single element in read mode (NVDA)
+		 */
+
 		return (
-			<span
+			<div
 				class={clsx('kol-badge', {
 					'kol-badge--has-smart-button': typeof this.state._smartButton === 'object' && this.state._smartButton !== null,
 				})}
@@ -85,7 +91,9 @@ export class KolBadge implements BadgeAPI, FocusableElement {
 			>
 				<SpanFC class="kol-badge__label" id={hasSmartButton ? this.id : undefined} allowMarkdown icons={this.state._icons} label={this._label} />
 				{hasSmartButton && this.renderSmartButton(this.state._smartButton as InternalButtonProps)}
-			</span>
+
+				<br />
+			</div>
 		);
 	}
 

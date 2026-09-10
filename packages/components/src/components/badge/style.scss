@@ -13,6 +13,8 @@
 		justify-content: space-between;
 
 		.kol-badge__smart-button {
+			order: 3; // needed to push the button behind the br and at the end of the badge
+
 			.button {
 				color: inherit;
 			}
