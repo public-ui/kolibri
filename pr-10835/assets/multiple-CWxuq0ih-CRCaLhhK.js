@@ -1,1 +1,0 @@
-import{St as e}from"./index-BPAYj8PP.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};
