@@ -91,6 +91,37 @@ pnpm snapshots:pull --branch release/3     # another base branch
 pnpm snapshots:pull --sha <commit>         # the baseline of one specific base commit
 ```
 
+## check-skeleton-selectors.mjs
+
+Guards the two selector mistakes that the skeleton architecture makes easy to write and that a
+visual snapshot cannot catch, because snapshots photograph resting states:
+
+```bash
+pnpm check:skeleton-selectors
+```
+
+Since the skeleton migration the block class sits on a wrapper element and the interactive element
+is a child of it (`<div class="kol-button"><button class="kol-button__interactive-element">`; the
+same shape applies to `kol-link` and its `kol-link__interactive-element`). Two things follow:
+
+1. **Modifier-glued element** — inside a modifier block, `&__interactive-element` expands to
+   `.kol-button--primary__interactive-element`, a class that exists nowhere. The rule is silently
+   dead. Use a plain descendant instead.
+2. **State predicate on the carrier** — `:focus`, `:focus-visible` and `:disabled` never match the
+   wrapper, so those rules are dead; and `:not(:disabled)` / `:not([disabled])` are always _true_ on
+   it, so a combined predicate such as `.kol-button:not([disabled]):hover` does not merely stop
+   matching, it **inverts** and starts styling disabled elements. Either scope the rule to
+   `.kol-button__interactive-element`, or keep the wrapper as the subject and ask the element inside
+   it: `.kol-button:not(:has(:disabled)):hover`.
+
+`:hover`, `:active` and `:focus-within` are not flagged — they reach the wrapper through ancestor
+propagation and keep working where they are.
+
+The checker parses each stylesheet into a block tree, resolves Sass `&` nesting and expands
+same-file `@include`s, so a mixin body is checked in the selector context it is used in. It reports
+file, line and resolved selector, and exits non-zero on any finding. `--json` prints machine-readable
+output. It is a complement to the pixel gate, not a replacement: the two check disjoint sets.
+
 ## license-reports.mjs
 
 Generate and merge all package license reports into one Markdown file:

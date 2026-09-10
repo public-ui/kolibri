@@ -1,30 +1,8 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { LinkApi } from '../../internal/functional-components/link/api';
-import { linkPropsConfig } from '../../internal/functional-components/link/api';
-import { LinkFC } from '../../internal/functional-components/link/component';
-import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import {
-	accessKeyProp,
-	ariaControlsProp,
-	ariaCurrentValueProp,
-	ariaDescriptionProp,
-	ariaExpandedProp,
-	disabledProp,
-	downloadProp,
-	hideLabelProp,
-	hrefProp,
-	inlineProp,
-	labelWithExpertSlotProp,
-	linkCallbacksProp,
-	linkTargetProp,
-	shortKeyProp,
-	spanIconsProp,
-	tooltipAlignProp,
-	variantProp,
-} from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AriaCurrentValuePropType,
@@ -44,13 +22,10 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { setEventTarget } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { nonce } from '../../utils/dev.utils';
-import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import type { UnsubscribeFunction } from './ariaCurrentService';
-import { onLocationChange } from './ariaCurrentService';
+import { delegateFocus } from '../../utils/element-interaction';
+import { BaseLinkWebComponent } from './base';
 
 /**
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
@@ -62,117 +37,43 @@ import { onLocationChange } from './ariaCurrentService';
 	},
 	shadow: true,
 })
-export class KolLink extends BaseWebComponent<LinkApi> implements FocusableElement, LinkProps, WebComponentInterface<LinkApi> {
+export class KolLink extends BaseLinkWebComponent implements FocusableElement, LinkProps, WebComponentInterface<LinkApi> {
 	@Element() protected readonly host?: HTMLKolLinkElement;
-
-	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
-
-	// --- Composed behaviors ---
-
-	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
-	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
 	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
-		this.initRenderProps(linkPropsConfig);
-		// An unset tabindex must not render as `tabindex="0"` — links are natively tabbable and
-		// the attribute would trigger focus outlines that the predecessor did not draw.
-		this.unsetRenderProp('tabIndex');
+		this.initLinkRenderProps();
 
-		accessKeyProp.apply(this._accessKey, (v) => this.setRenderProp('accessKey', v));
-		ariaControlsProp.apply(this._ariaControls, (v) => this.setRenderProp('ariaControls', v));
-		ariaCurrentValueProp.apply(this._ariaCurrentValue, (v) => this.setRenderProp('ariaCurrentValue', v));
-		ariaDescriptionProp.apply(this._ariaDescription, (v) => this.setRenderProp('ariaDescription', v));
-		ariaExpandedProp.apply(this._ariaExpanded, (v) => this.setRenderProp('ariaExpanded', v));
-		disabledProp.apply(this._disabled, (v) => this.setRenderProp('disabled', v));
-		downloadProp.apply(this._download, (v) => this.setRenderProp('download', v));
-		hideLabelProp.apply(this._hideLabel, (v) => this.setRenderProp('hideLabel', v));
-		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v));
-		spanIconsProp.apply(this._icons, (v) => this.setRenderProp('icons', v));
-		inlineProp.apply(this._inline, (v) => this.setRenderProp('inline', v));
-		this.applyLabel(this._label);
-		linkCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
-		shortKeyProp.apply(this._shortKey, (v) => this.setRenderProp('shortKey', v));
-		linkTargetProp.apply(this._target, (v) => this.setRenderProp('target', v));
-		this.applyTooltipAlign(this._tooltipAlign);
-		variantProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
+		this.watchAccessKey(this._accessKey);
+		this.watchAriaControls(this._ariaControls);
+		this.watchAriaCurrentValue(this._ariaCurrentValue);
+		this.watchAriaDescription(this._ariaDescription);
+		this.watchAriaExpanded(this._ariaExpanded);
+		this.watchDisabled(this._disabled);
+		this.watchDownload(this._download);
+		this.watchHideLabel(this._hideLabel);
+		this.watchHref(this._href);
+		this.watchIcons(this._icons);
+		this.watchInline(this._inline);
+		this.watchLabel(this._label);
+		this.watchOn(this._on);
+		this.watchShortKey(this._shortKey);
+		this.watchTarget(this._target);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchVariant(this._variant);
 
 		validateAccessAndShortKey(this._accessKey, this._shortKey);
 
-		this.unsubscribeOnLocationChange = onLocationChange((location) => {
-			const href = this.getRenderProp('href');
-			const ariaCurrentValue = this.getRenderProp('ariaCurrentValue');
-			const newValue = location === href ? ariaCurrentValue : '';
-			if (this.getState('ariaCurrent') !== newValue) {
-				this.setState('ariaCurrent', newValue);
-			}
-		});
-
-		this.tooltipBehavior.componentWillLoad({
-			label: this.getTooltipLabel(),
-			align: this.getRenderProp('tooltipAlign'),
-		});
+		this.initLinkBehaviors();
 	}
 
 	public componentDidRender(): void {
-		if (this.ctaRef.el) {
-			this.tooltipBehavior.syncListeners(undefined, this.ctaRef.el, true);
-		}
+		this.syncTooltipListeners();
 	}
 
 	public disconnectedCallback(): void {
-		if (this.unsubscribeOnLocationChange) {
-			this.unsubscribeOnLocationChange();
-			this.unsubscribeOnLocationChange = undefined;
-		}
-		this.tooltipBehavior.destroy();
-	}
-
-	// --- Click handling ---
-
-	private readonly handleAnchorClick = (event: Event): void => {
-		this.tooltipBehavior.hideTooltip();
-		const disabled = this.getRenderProp('disabled');
-		if (disabled === true) {
-			event.preventDefault();
-			return;
-		}
-		const href = this.getRenderProp('href');
-		const on = this.getRenderProp('on');
-		if (typeof on?.onClick === 'function') {
-			setEventTarget(event, this.ctaRef.el);
-			on.onClick(event, href);
-		}
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.click, href);
-		}
-	};
-
-	// --- Tooltip helpers ---
-
-	private getTooltipLabel(): string {
-		const label = this.getRenderProp('label');
-		if (typeof label === 'string' && label.length > 0) {
-			return label;
-		}
-		const href = this.getRenderProp('href');
-		return typeof href === 'string' ? href : '';
-	}
-
-	private applyLabel(value?: string): void {
-		labelWithExpertSlotProp.apply(value, (v) => {
-			this.setRenderProp('label', v);
-			this.setState('expertSlot', value === '');
-			this.tooltipBehavior.watchLabel(this.getTooltipLabel());
-		});
-	}
-
-	private applyTooltipAlign(value?: string): void {
-		tooltipAlignProp.apply(value, (v) => {
-			this.setRenderProp('tooltipAlign', v);
-			this.tooltipBehavior.watchAlign(v);
-		});
+		this.destroyLinkBehaviors();
 	}
 
 	// --- Public methods ---
@@ -186,48 +87,10 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public async focus(options?: KolFocusOptions): Promise<void> {}
 
-	// --- Refs ---
-
-	private readonly setAnchorRef = (el?: HTMLAnchorElement): void => {
-		this.ctaRef(el);
-	};
-
 	// --- Render ---
 
 	public render(): JSX.Element {
-		return (
-			<Host>
-				<LinkFC
-					accessKey={this.getRenderProp('accessKey')}
-					ariaControls={this.getRenderProp('ariaControls')}
-					ariaCurrent={this.ariaCurrent}
-					ariaCurrentValue={this.getRenderProp('ariaCurrentValue')}
-					ariaDescription={this.getRenderProp('ariaDescription')}
-					ariaDescriptionId={this.ariaDescriptionId}
-					ariaExpanded={this.getRenderProp('ariaExpanded')}
-					ariaOwns={this.getRenderProp('ariaOwns')}
-					customClass={this.getRenderProp('customClass')}
-					disabled={this.getRenderProp('disabled')}
-					download={this.getRenderProp('download')}
-					handleAnchorClick={this.handleAnchorClick}
-					hideLabel={this.getRenderProp('hideLabel')}
-					href={this.getRenderProp('href')}
-					icons={this.getRenderProp('icons')}
-					inline={this.getRenderProp('inline')}
-					label={this.getRenderProp('label')}
-					on={this.getRenderProp('on')}
-					refAnchor={this.setAnchorRef}
-					refTooltip={this.tooltipBehavior.setTooltipElementRef}
-					role={this.getRenderProp('role')}
-					shortKey={this.getRenderProp('shortKey')}
-					tabIndex={this.getRenderProp('tabIndex')}
-					target={this.getRenderProp('target')}
-					tooltipAlign={this.getRenderProp('tooltipAlign')}
-					variant={this.getRenderProp('variant')}
-					expertSlot={this.expertSlot}
-				/>
-			</Host>
-		);
+		return <Host>{this.renderLinkFC()}</Host>;
 	}
 
 	// --- @State ---
@@ -246,7 +109,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _accessKey?: AccessKeyPropType;
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		this.applyAccessKey(value);
 	}
 
 	/**
@@ -255,7 +118,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
 	@Watch('_ariaCurrentValue')
 	public watchAriaCurrentValue(value?: AriaCurrentValuePropType): void {
-		ariaCurrentValueProp.apply(value, (v) => this.setRenderProp('ariaCurrentValue', v));
+		this.applyAriaCurrentValue(value);
 	}
 
 	/**
@@ -264,7 +127,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _ariaControls?: string;
 	@Watch('_ariaControls')
 	public watchAriaControls(value?: string): void {
-		ariaControlsProp.apply(value, (v) => this.setRenderProp('ariaControls', v));
+		this.applyAriaControls(value);
 	}
 
 	/**
@@ -273,7 +136,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 	@Watch('_ariaDescription')
 	public watchAriaDescription(value?: AriaDescriptionPropType): void {
-		ariaDescriptionProp.apply(value, (v) => this.setRenderProp('ariaDescription', v));
+		this.applyAriaDescription(value);
 	}
 
 	/**
@@ -283,7 +146,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _ariaExpanded?: boolean;
 	@Watch('_ariaExpanded')
 	public watchAriaExpanded(value?: boolean): void {
-		ariaExpandedProp.apply(value, (v) => this.setRenderProp('ariaExpanded', v));
+		this.applyAriaExpanded(value);
 	}
 
 	/**
@@ -292,7 +155,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _disabled?: boolean = false;
 	@Watch('_disabled')
 	public watchDisabled(value?: boolean): void {
-		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
+		this.applyDisabled(value);
 	}
 
 	/**
@@ -301,7 +164,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _download?: DownloadPropType;
 	@Watch('_download')
 	public watchDownload(value?: DownloadPropType): void {
-		downloadProp.apply(value, (v) => this.setRenderProp('download', v));
+		this.applyDownload(value);
 	}
 
 	/**
@@ -312,7 +175,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _hideLabel?: boolean = false;
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: boolean): void {
-		hideLabelProp.apply(value, (v) => this.setRenderProp('hideLabel', v));
+		this.applyHideLabel(value);
 	}
 
 	/**
@@ -321,7 +184,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _href!: HrefPropType;
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+		this.applyHref(value);
 	}
 
 	/**
@@ -330,7 +193,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 	@Watch('_icons')
 	public watchIcons(value?: Stringified<KoliBriIconsProp>): void {
-		spanIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyIcons(value);
 	}
 
 	/**
@@ -339,7 +202,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _inline?: InlinePropType = true;
 	@Watch('_inline')
 	public watchInline(value?: InlinePropType): void {
-		inlineProp.apply(value, (v) => this.setRenderProp('inline', v));
+		this.applyInline(value);
 	}
 
 	/**
@@ -357,7 +220,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _on?: LinkOnCallbacksPropType;
 	@Watch('_on')
 	public watchOn(value?: LinkOnCallbacksPropType): void {
-		linkCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyOn(value);
 	}
 
 	/**
@@ -366,7 +229,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _shortKey?: ShortKeyPropType;
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		this.applyShortKey(value);
 	}
 
 	/**
@@ -375,7 +238,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _target?: LinkTargetPropType;
 	@Watch('_target')
 	public watchTarget(value?: LinkTargetPropType): void {
-		linkTargetProp.apply(value, (v) => this.setRenderProp('target', v));
+		this.applyTarget(value);
 	}
 
 	/**
@@ -393,6 +256,6 @@ export class KolLink extends BaseWebComponent<LinkApi> implements FocusableEleme
 	@Prop() public _variant?: VariantClassNamePropType;
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyVariant(value);
 	}
 }

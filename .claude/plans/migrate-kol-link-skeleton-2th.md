@@ -130,11 +130,17 @@ adjust styles until they match.**
 ### 1. Migrate consumers off `kol-link-wc` (the strategic step)
 
 Consumers currently rendering `<kol-link-wc>` (grep `KolLinkWcTag`): form, skip-nav,
-toolbar, table-stateless, nav, breadcrumb, tree-item, link-button.
+toolbar, table-stateless, nav, breadcrumb, tree-item. (`link-button` migrated 2026-09-10.)
+
+**2026-09-10:** the orchestrator logic of `kol-link`/`kol-link-wc` now lives once in
+`BaseLinkWebComponent` (`link/base.tsx`, ARC42 §9 decision 16); the concrete classes keep only
+decorators, one-line watchers and delegating lifecycle methods. `kol-link-button` extends the same
+base and renders `LinkFC` directly (public API byte-identical, pinned in
+`_skeleton/public-api.spec.ts`).
 
 - Suggested pilot: `breadcrumb` (renders only, no callbacks). Then the others.
-- Pattern (see header comment in `wc.tsx`): the consumer imports `LinkFC` directly and
-  renders it inline — **not** another WC tag.
+- Pattern (see header comment in `wc.tsx` and `link-button/component.tsx`): the consumer extends
+  `BaseLinkWebComponent` and renders `LinkFC` via `renderLinkFC()` — **not** another WC tag.
 - Per consumer: check the consumer's theme SCSS still reaches the `.kol-link*` classes
   (shadow boundaries!), run the affected theme stylelint, and check theme snapshot impact.
 - When the last consumer is migrated: delete `wc.tsx`, remove the tag from
