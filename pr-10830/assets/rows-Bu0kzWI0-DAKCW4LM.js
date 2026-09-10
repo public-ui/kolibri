@@ -1,1 +1,0 @@
-import{wt as e}from"./index-B3v2sUIM.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
