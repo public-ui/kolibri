@@ -1,0 +1,1 @@
+import{St as e}from"./index-DkwVgvlc.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
