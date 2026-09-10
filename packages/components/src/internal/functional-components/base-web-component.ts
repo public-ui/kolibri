@@ -92,6 +92,22 @@ export abstract class BaseWebComponent<Api extends ComponentApi> {
 		}
 	}
 
+	/**
+	 * Clears a render prop back to "not set" so the functional component renders no attribute for
+	 * it.
+	 *
+	 * `initRenderProps` seeds every prop with its configured default, but a few props must be
+	 * absent rather than carry that default — `tabIndex` on a natively focusable element would
+	 * otherwise emit `tabindex="0"` and pin it into the document tab order. `StrictFields` types
+	 * the store as fully populated, which holds for every other prop, so the exception is asserted
+	 * here once instead of at each call site.
+	 */
+	protected unsetRenderProp<K extends keyof ResolvedProps<Api>>(key: K): void {
+		if (this.renderProps) {
+			this.renderProps[key] = undefined as unknown as StrictFields<ResolvedProps<Api>>[K];
+		}
+	}
+
 	/** Returns the current validated render value for a property. */
 	public getRenderProp<K extends keyof ResolvedProps<Api>>(key: K): StrictFields<ResolvedProps<Api>>[K] {
 		return this.renderProps![key];
