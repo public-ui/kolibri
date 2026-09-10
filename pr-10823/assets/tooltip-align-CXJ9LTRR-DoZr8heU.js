@@ -1,1 +1,0 @@
-import"./index-CKjrmrvs.js";import{r as e}from"./align-DnuTHmUs-DbKtgix3.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
