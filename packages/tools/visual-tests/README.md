@@ -58,10 +58,25 @@ Add the following npm scripts to the theme's `package.json`:
 - `KOLIBRI_VISUAL_TESTS_EXPECT_TIMEOUT`: Define the Playwright [expect timeout](https://playwright.dev/docs/test-timeouts).
 - `KOLIBRI_VISUAL_TESTS_COLOR_SCHEME`: Choose the [CSS color scheme](https://developer.mozilla.org/docs/Web/CSS/@media/prefers-color-scheme) for the browser context. Supported values are `light` (default) and `dark`.
 
-Run the tests with `npm test`. The first time, this will create a new folder `snapshots` which is supposed to be committed to the repository.
-In the following runs, new screenshots will be compared to this reference.
+Run the tests with `npm test`. Playwright compares the screenshots with the files in the folder `snapshots/theme-<export>/` of the theme package and fails on any difference; the first run writes missing files there.
 
-To update the reference screenshots call `npm run test:update`.
+In the KoliBri repository that folder is **not** committed: `pnpm snapshots:pull` downloads the baseline the CI compares against (artifact of the base branch, see [docs/visual-review.md](../../../docs/visual-review.md)), `npm run test:update:e2e` regenerates it locally – only inside the pinned Playwright container (`pnpm test:update:docker`) with results that match the CI, because the file names carry the platform.
+
+### Visual report (`visual-report/report.json`)
+
+Besides Playwright's own HTML report, every run writes a machine-readable summary of the screenshot comparison to `visual-report/` in the theme folder (`src/visual-reporter.js`). It is the input of the visual review in CI and lists every snapshot of the baseline with one of these states:
+
+| status      | meaning                                                                           | files copied to `visual-report/<package>/` |
+| ----------- | --------------------------------------------------------------------------------- | ------------------------------------------ |
+| `unchanged` | captured and identical to the baseline                                            | –                                          |
+| `changed`   | captured and different (`diffPixels`, `diffRatio` or `sizeMismatch` say how much) | `expected`, `actual`, `diff`               |
+| `added`     | captured, but the baseline has no file for it                                     | `actual`                                   |
+| `removed`   | the baseline has a file, but no test captured it any more                         | `expected`                                 |
+| `error`     | the baseline has a file, but its route failed before the block could be captured  | –                                          |
+
+Each item carries a `hash` of its content (`sha256:…`), and the report a `digest` over all hashes – approvals in the review are bound to those, not to commits. Routes that failed for other reasons than a screenshot difference (missing blocks, invisible blocks, timeouts) are listed under `errors`; `node scripts/visual-review/assert-no-errors.mjs <package>` turns them into a non-zero exit code.
+
+The spec captures every screenshot through `expect.soft`, so one differing block does not stop the remaining blocks of the route, and announces it with a `visual-snapshot` annotation – a passing comparison leaves no other trace, and the reporter needs that signal to tell `unchanged` from `removed`. With `--update-snapshots` the report is a manifest of the generated files instead (`mode: "update"`).
 
 ### Element screenshots (`data-visual-block`)
 

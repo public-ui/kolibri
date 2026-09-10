@@ -46,14 +46,11 @@
 				text-decoration: none;
 
 				/* The UA default underline sits on the anchor itself. */
-				.kol-link__anchor {
+				.kol-link__interactive-element {
 					text-decoration: none;
 				}
 
-				/* The focusable element is the interactive element inside the wrapper — `__anchor`
-				   for links, `__button` for buttons. The carrier is a `div` and never focused. */
-				.kol-link__anchor:focus-visible,
-				.kol-button__button:focus-visible {
+				.kol-link__interactive-element:focus-visible {
 					@include focus-outline;
 				}
 
@@ -82,13 +79,14 @@
 
 				$root: &;
 
-				&__button:focus {
+				/* The class carrier is a wrapper and never receives focus. */
+				&__interactive-element:focus {
 					outline: none;
 				}
 
 				/* State predicates live on the interactive element: on the wrapper `:not([disabled])`
 				   would always be true, re-enabling hover styling for disabled buttons. */
-				&__button:not([disabled]):hover {
+				&__interactive-element:not([disabled]):hover {
 					--text-background-color: var(--color-primary-variant);
 					--text-border-color: var(--color-primary-variant);
 					--text-color: var(--color-light);
@@ -129,11 +127,11 @@
 						}
 					}
 
-					@at-root #{$root}__button:focus {
+					@at-root #{$root}__interactive-element:focus {
 						@include focus-outline;
 					}
 
-					@at-root #{$root}__button:disabled:hover & {
+					@at-root #{$root}__interactive-element:disabled:hover & {
 						color: var(--text-color);
 						background-color: var(--text-background-color);
 						box-shadow: none;

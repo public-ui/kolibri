@@ -1,5 +1,0 @@
-{
-	"dep": ["prod", "dev", "optional", "peer"],
-	"peer": true,
-	"rejectVersion": "/^workspace:/"
-}

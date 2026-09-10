@@ -1,17 +1,6 @@
 @use '../../mixins/to-rem' as *;
 
 @mixin kol-button($block-classname) {
-	/*
-	 * The interactive element inside the BEM root — `__button` for `kol-button`, `__anchor` for
-	 * `kol-link`. This mixin serves both blocks, so both names are matched.
-	 *
-	 * It has to be a plain descendant: inside a modifier block (`&--primary { … }`) a nested
-	 * `&__button` would expand to `.kol-button--primary__button`, a class that exists nowhere.
-	 * And the state predicate belongs on the interactive element — on the wrapper `div`
-	 * `:not(:disabled)` is always true, so the rule would apply to disabled buttons.
-	 */
-	$interactive-element: ':is(.#{$block-classname}__button, .#{$block-classname}__anchor)';
-
 	.#{$block-classname} {
 		$root: &;
 		--kolibri-spacing: #{to-rem(4)};
@@ -27,7 +16,7 @@
 			--text-color: #fff;
 			--text-focus-outline-color: #fff;
 
-			#{$interactive-element}:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--text-background-color: #3e6cd5;
 			}
 		}
@@ -38,7 +27,7 @@
 			--text-border-color: #0e47cb;
 			--text-focus-outline-color: #fff;
 
-			#{$interactive-element}:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--text-color: #0e47cb;
 			}
 		}
@@ -49,7 +38,7 @@
 			--text-focus-outline-color: #000;
 			--text-border-color: #fc0;
 
-			#{$interactive-element}:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--text-background-color: #fc0;
 			}
 		}
@@ -59,7 +48,7 @@
 			--text-border-color: var(--color-red);
 			--text-color: var(--color-white);
 
-			#{$interactive-element}:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--text-background-color: var(--color-red);
 				--text-border-color: var(--color-red);
 			}
@@ -69,15 +58,14 @@
 			--text-color: #0e47cb;
 			--text-focus-outline-color: #0e47cb;
 
-			#{$interactive-element}:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--text-color: #0e47cb;
 			}
 		}
 
-		/* The skeleton DOM moves the focusable element into the wrapper: `__button` for buttons,
-		   `__anchor` for links. The class carrier is never focused. */
-		&__button:focus,
-		&__anchor:focus {
+		/* The skeleton DOM moves the focusable element into the wrapper. The class carrier is never
+		   focused. */
+		&__interactive-element:focus {
 			outline: none;
 		}
 
@@ -99,7 +87,7 @@
 			line-height: 1.2;
 
 			&:active,
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				box-shadow:
 					0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
 					0 0 to-rem(10) rgb(9 49 142 / 4%),
@@ -113,13 +101,12 @@
 			}
 
 			/* TODO: the predecessor of this rule was `#{$root}--secondary.button:focus-visible &`,
-			   which never matched anything — no element carries a plain `button` class, on this
-			   branch or on develop. Scoping it to `#{$root}__button` would be the evident intent,
-			   but that would switch a focus style on for the first time, which is a visual change
-			   and needs the pixel gate. Removed here rather than silently activated; the decision
-			   belongs to the theme owner. */
+			   which never matched anything — no element carries a plain `button` class, before or
+			   after the skeleton migration. Scoping it to `#{$root}__interactive-element` would be the
+			   evident intent, but that would switch the inset focus shadow on for the first time — a
+			   visual change that needs the pixel gate and the theme owner's decision. */
 
-			@at-root #{$root}__button:focus-visible & {
+			@at-root #{$root}__interactive-element:focus-visible & {
 				outline: var(--text-focus-outline-color) solid to-rem(2);
 				outline-offset: -4px;
 			}

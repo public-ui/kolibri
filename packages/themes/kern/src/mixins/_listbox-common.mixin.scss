@@ -25,9 +25,8 @@
 
 			font-size: var(--kern-metric-dimension-default);
 
-			/* `:not(:disabled)` is always true on the wrapper `div` — it belongs on the inner
-			   `<button>`. */
-			&__button:not(:disabled):hover {
+			/* `:not(:disabled)` would always be true on the wrapper — ask the button inside it. */
+			&:not(:has(:disabled)):hover {
 				background: var(--kern-color-action-state-indicator-tint-hover-opacity);
 			}
 		}

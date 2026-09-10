@@ -7,15 +7,16 @@
  * child of it:
  *
  *     <div class="kol-button kol-button--primary">
- *       <button class="kol-button__button">…</button>
+ *       <button class="kol-button__interactive-element">…</button>
  *     </div>
  *
  * Two failure modes follow, and neither shows up in a visual snapshot, because snapshots photograph
  * resting states:
  *
- * 1. **Modifier-glued element.** Inside a modifier block, `&__button` expands to
- *    `.kol-button--primary__button` — a class that exists nowhere, so the rule is silently dead.
- *    The fix is a plain descendant: `& #{$root}__button` / `.#{$block}__#{$element}`.
+ * 1. **Modifier-glued element.** Inside a modifier block, `&__interactive-element` expands to
+ *    `.kol-button--primary__interactive-element` — a class that exists nowhere, so the rule is
+ *    silently dead. The fix is a plain descendant: `& #{$root}__interactive-element` /
+ *    `.#{$block}__interactive-element`.
  *
  * 2. **State predicate on the carrier.** `:focus`, `:focus-visible` and `:disabled` never match the
  *    wrapper `div`, so those rules are dead. Worse, `:not(:disabled)` / `:not([disabled])` are
@@ -67,7 +68,7 @@ const INTERPOLATION_PLACEHOLDERS = [
  * interactive element. The checker cannot evaluate `@if`, so it would walk both branches and report
  * the branch that does not apply. A branch conditioned on one of these is the author's explicit
  * handling of both shapes, and in the "no inner element" branch the class carrier legitimately *is*
- * the interactive element.
+ * the interactive element. The `@else` branches of such an `@if` are skipped as well.
  */
 const SHAPE_SWITCH_VARIABLES = ['$interactive-element', '$interactive-suffix', '$anchor-scoped'];
 
@@ -93,9 +94,7 @@ function collectScssFiles(dir, out = []) {
 
 function stripComments(source) {
 	// Both comment kinds are blanked rather than removed so line numbers survive.
-	return source
-		.replace(/\/\*[\s\S]*?\*\//g, (match) => match.replace(/[^\n]/g, ' '))
-		.replace(/\/\/[^\n]*/g, (match) => ' '.repeat(match.length));
+	return source.replace(/\/\*[\s\S]*?\*\//g, (match) => match.replace(/[^\n]/g, ' ')).replace(/\/\/[^\n]*/g, (match) => ' '.repeat(match.length));
 }
 
 function normaliseInterpolations(text) {
@@ -232,7 +231,7 @@ function carrierPattern(includeGeneric) {
 }
 
 function mentionsInteractiveElement(source) {
-	return /__button|__anchor|__#\{\$interactive-element\}|\$interactive-element/.test(source);
+	return /__interactive-element|__button|__anchor|__#\{\$interactive-(?:element|suffix)\}|\$interactive-(?:element|suffix)/.test(source);
 }
 
 function findModifierGluedElement(selector, includeGeneric) {
@@ -322,7 +321,13 @@ function findCarrierStatePredicate(selector, includeGeneric) {
  * an empty context, which is what catches parameterised mixins such as `button($block-classname)`.
  */
 function* walk(node, parents, mixins, expanding = new Set()) {
+	// Set while the `@if` of a shape switch was skipped, so that its `@else` branches are skipped too.
+	let skippingShapeSwitch = false;
 	for (const child of node.children ?? []) {
+		if (skippingShapeSwitch && child.header && /^@else\b/.test(child.header)) {
+			continue;
+		}
+		skippingShapeSwitch = false;
 		if (child.statement !== undefined) {
 			const include = /^@include\s+([\w-]+)/.exec(child.statement);
 			if (include && mixins.has(include[1]) && !expanding.has(include[1])) {
@@ -356,6 +361,7 @@ function* walk(node, parents, mixins, expanding = new Set()) {
 		if (AT_RULE_PASSTHROUGH.test(header)) {
 			// See SHAPE_SWITCH_VARIABLES.
 			if (/^@(if|else)\b/.test(header) && SHAPE_SWITCH_VARIABLES.some((name) => header.includes(name))) {
+				skippingShapeSwitch = true;
 				continue;
 			}
 			yield* walk(child, parents, mixins, expanding);
@@ -418,8 +424,7 @@ function checkFile(file) {
 				selector,
 				rule: 'modifier-glued-element',
 				message:
-					'A nested `&__element` inside a modifier block glues modifier and element into one ' +
-					'class that exists nowhere. Use a plain descendant instead.',
+					'A nested `&__element` inside a modifier block glues modifier and element into one ' + 'class that exists nowhere. Use a plain descendant instead.',
 			});
 			continue;
 		}
@@ -435,8 +440,7 @@ function checkFile(file) {
 					state.kind === 'inverting'
 						? `\`${state.pseudo}\` is always true on the wrapper \`${state.carrier}\`, so the rule inverts and ` +
 							'applies to disabled elements. Scope it to the interactive element.'
-						: `\`${state.pseudo}\` never matches the wrapper \`${state.carrier}\`, so the rule is dead. ` +
-							'Scope it to the interactive element.',
+						: `\`${state.pseudo}\` never matches the wrapper \`${state.carrier}\`, so the rule is dead. ` + 'Scope it to the interactive element.',
 			});
 		}
 	}

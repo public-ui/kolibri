@@ -8,9 +8,7 @@
 		--kolibri-spacing: #{to-rem(4)};
 		border-radius: 4px;
 
-		/* The focusable element is the inner `<button>`; the class carrier is a `div` and never
-		   receives focus, so a `&:focus` rule here would be dead. */
-		&__button:focus {
+		&__interactive-element:focus {
 			outline: none;
 		}
 	}
@@ -27,15 +25,15 @@
 			normal normal 400 to-rem(16) / to-rem(20) Arial,
 			sans-serif;
 
-		.kol-button__button:focus-visible & {
+		.kol-button__interactive-element:focus-visible & {
 			outline: 2px solid var(--color-black);
 			outline-offset: -4px;
 		}
 
-		/* `:not(:disabled)` has to sit on the interactive element: on the wrapper `div` it is
-		   always true, which would apply the hover/active look to disabled buttons as well. */
-		.kol-button__button:not(:disabled):active &,
-		.kol-button__button:not(:disabled):hover & {
+		/* State predicates live on the interactive element: the wrapper never receives
+		   `:disabled`, so `:not(:disabled)` would always match and `:disabled` never would. */
+		.kol-button__interactive-element:not(:disabled):active &,
+		.kol-button__interactive-element:not(:disabled):hover & {
 			background-color: #fc0;
 			box-shadow:
 				0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
@@ -55,8 +53,7 @@
 			text-decoration: underline;
 		}
 
-		/* `:disabled` never matches the wrapper `div`. */
-		.kol-button__button:disabled & {
+		.kol-button__interactive-element:disabled & {
 			opacity: 0.5;
 			cursor: not-allowed;
 		}

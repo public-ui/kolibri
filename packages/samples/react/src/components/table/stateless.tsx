@@ -15,7 +15,7 @@ export const TableStateless: FC = () => (
 		<SampleBlock id="stateless" className="w-full" fitContent>
 			<KolTableStateless
 				_label="Table for demonstration purposes"
-				_headerCells={{
+				_headers={{
 					horizontal: [
 						[
 							{ key: 'left', label: 'left', textAlign: 'left', sortDirection: 'ASC' },

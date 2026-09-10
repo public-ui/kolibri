@@ -11,7 +11,7 @@ executeSnapshotTests<TableStatelessProps>(
 		{
 			_label: 'Table with horizontal and vertical headers',
 			_hasSettingsMenu: true,
-			_headerCells: {
+			_headers: {
 				horizontal: [
 					[
 						{ key: 'header1', label: 'Header1', textAlign: 'left', width: 140 },
@@ -35,7 +35,7 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with only horizontal headers',
-			_headerCells: {
+			_headers: {
 				horizontal: [
 					[
 						{ key: 'header1', label: 'Header 1', textAlign: 'left', width: 150 },
@@ -51,7 +51,7 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with two horizontal header rows',
-			_headerCells: {
+			_headers: {
 				horizontal: [
 					[
 						{ label: 'Header 1', textAlign: 'left' },
@@ -76,7 +76,7 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with two spanned horizontal and vertical headers',
-			_headerCells: {
+			_headers: {
 				horizontal: [
 					[{ label: 'H-Header', colSpan: 2 }],
 					[
@@ -99,7 +99,7 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table with merged parent column width only',
-			_headerCells: {
+			_headers: {
 				horizontal: [
 					[{ label: 'Personal Info', colSpan: 2, width: 300 }],
 					[
@@ -116,7 +116,7 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table without data shows empty hint',
-			_headerCells: {
+			_headers: {
 				horizontal: [[{ key: 'header1', label: 'Header 1', textAlign: 'left', width: 180 }]],
 				vertical: [],
 			},
@@ -124,7 +124,7 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table without data with hidden column shows correct colspan',
-			_headerCells: {
+			_headers: {
 				horizontal: [
 					[
 						{ key: 'header1', label: 'Header 1', textAlign: 'left', width: 180 },
@@ -137,7 +137,7 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table without data with merged header shows spacer colspan greater than 1',
-			_headerCells: {
+			_headers: {
 				horizontal: [[{ label: 'Merged Header', colSpan: 2 }]],
 				vertical: [],
 			},
@@ -151,7 +151,7 @@ executeSnapshotTests<TableStatelessProps>(
 				selectedKeys: [],
 				keyPropertyName: 'id',
 			},
-			_headerCells: {
+			_headers: {
 				horizontal: [[{ key: 'header1', label: 'Header 1', width: 180 }]],
 				vertical: [],
 			},
@@ -164,7 +164,7 @@ executeSnapshotTests<TableStatelessProps>(
 				selectedKeys: [],
 				keyPropertyName: 'id',
 			},
-			_headerCells: {
+			_headers: {
 				horizontal: [[{ key: 'header1', label: 'Header 1', width: 180 }]],
 				vertical: [],
 			},
@@ -172,7 +172,7 @@ executeSnapshotTests<TableStatelessProps>(
 		},
 		{
 			_label: 'Table shows loading spinner',
-			_headerCells: {
+			_headers: {
 				horizontal: [
 					[
 						{ key: 'header1', label: 'Header 1', textAlign: 'left', width: 150 },

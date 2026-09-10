@@ -47,7 +47,7 @@
 			}
 		}
 
-		&:has(&__adornment--start:not(:empty)) .kol-button .kol-button__button {
+		&:has(&__adornment--start:not(:empty)) .kol-button .kol-button__interactive-element {
 			padding-left: to-rem(48);
 		}
 
@@ -82,7 +82,7 @@
 			   button to 40px and grows the input-container row by 4px, Firefox pins
 			   `font-weight: 400` on the real button (beating the inherited 700 → thinner label), and
 			   the inner button — not the wrapper — is the flex context that centres the label. */
-			.kol-button__button {
+			.kol-button__interactive-element {
 				display: flex;
 				min-height: to-rem(36);
 				padding-right: to-rem(17);

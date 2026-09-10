@@ -16,9 +16,9 @@ import {
 	labelWithExpertSlotProp,
 	linkRoleProp,
 	nameProp,
-	optionalTabIndexProp,
 	shortKeyProp,
 	spanIconsProp,
+	tabIndexProp,
 	tooltipAlignProp,
 	variantProp,
 } from '../../props';
@@ -36,9 +36,6 @@ import type { ApiFromConfig, PropsConfigShape, WebComponentInterface } from '../
  *   object), not a plain icon class string.
  * - `linkRoleProp`: the button shares the `'tab' | 'treeitem'` role union with the link
  *   (`AlternativeButtonLinkRolePropType`), so it reuses the same definition.
- * - `optionalTabIndexProp` (not `tabIndexProp`): a `<button>` is in the tab order without the
- *   attribute, so the default is "unset" rather than `0` — otherwise every button would render a
- *   stray `tabindex="0"`, and unsetting `_tabIndex` could not restore the unset state.
  * - `_syncValueBySelector` and `_value` are deliberately absent: neither is rendered, and both are
  *   opaque pass-throughs to `AssociatedInputController` (a CSS selector resolved against the
  *   document, and an arbitrary `StencilUnknown` payload). They stay raw `@Prop`s on the web
@@ -62,9 +59,9 @@ export const buttonPropsConfig = {
 		inlineProp,
 		linkRoleProp,
 		nameProp,
-		optionalTabIndexProp,
 		shortKeyProp,
 		spanIconsProp,
+		tabIndexProp,
 		tooltipAlignProp,
 		variantProp,
 	],
@@ -124,3 +121,15 @@ export type ButtonApi = ApiFromConfig<
  * omitted here instead of being declared as no-ops.
  */
 export type ButtonWebComponentInterface = Omit<WebComponentInterface<ButtonApi>, 'watchAriaHasPopup' | 'watchId' | 'watchTabIndex'>;
+
+/**
+ * Web component interface for `kol-button-link`: like `kol-button` it has no `_ariaHasPopup`,
+ * `_id` and `_tabIndex`, and — a link having no variants to customise — no `_customClass` either.
+ */
+export type ButtonLinkWebComponentInterface = Omit<WebComponentInterface<ButtonApi>, 'watchAriaHasPopup' | 'watchCustomClass' | 'watchId' | 'watchTabIndex'>;
+
+/**
+ * Web component interface for `kol-split-button`: like `kol-button` it has no `_ariaHasPopup`,
+ * `_id` and `_tabIndex`; its primary button is always standalone, so there is no `_inline` either.
+ */
+export type SplitButtonWebComponentInterface = Omit<WebComponentInterface<ButtonApi>, 'watchAriaHasPopup' | 'watchId' | 'watchInline' | 'watchTabIndex'>;

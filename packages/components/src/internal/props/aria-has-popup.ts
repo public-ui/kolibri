@@ -1,6 +1,7 @@
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
 import type { Prop } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
+import { isEnumOption } from './helpers/normalizers';
 
 const ARIA_HAS_POPUP_OPTIONS: readonly AriaHasPopupPropType[] = ['dialog', 'false', 'grid', 'listbox', 'menu', 'tree', 'true'];
 
@@ -23,8 +24,8 @@ function normalizeAriaHasPopup(value: unknown): AriaHasPopupPropType | '' {
 	if (value === '') {
 		return '';
 	}
-	if (typeof value === 'string' && (ARIA_HAS_POPUP_OPTIONS as readonly string[]).includes(value)) {
-		return value as AriaHasPopupPropType;
+	if (isEnumOption(value, ARIA_HAS_POPUP_OPTIONS)) {
+		return value;
 	}
 	throw new Error(`Invalid aria-haspopup value: expected one of ${ARIA_HAS_POPUP_OPTIONS.join(', ')}, got ${JSON.stringify(value)}`);
 }

@@ -1,0 +1,54 @@
+@use './layer-order' as *;
+@use './@shared/mixins' as *;
+
+/*
+ * This file contains all rules for forced-colors and highcontrast modes
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/system-color to see all color keywords the browsers are providing
+ */
+@layer kol-forced-colors {
+	@media (forced-colors: active) {
+		.kol-button {
+			&__text {
+				color: ButtonText;
+				background-color: ButtonFace;
+				border: 2px solid ButtonBorder;
+			}
+
+			&--disabled &__text {
+				color: GrayText;
+				border-color: GrayText;
+			}
+		}
+
+		.kol-card,
+		.kol-dialog,
+		.kol-modal,
+		.kol-drawer {
+			color: CanvasText;
+			background-color: Canvas;
+			border: 1px solid ButtonBorder;
+		}
+
+		.kol-pagination {
+			&__button--selected {
+				.kol-button {
+					opacity: 1;
+
+					&__text {
+						color: SelectedItemText;
+						background-color: SelectedItem;
+					}
+				}
+			}
+		}
+
+		/* focus styles */
+		.kol-button__interactive-element,
+		.kol-link__interactive-element {
+			&:focus-visible {
+				outline: 2px solid Highlight;
+				outline-offset: 2px;
+			}
+		}
+	}
+}

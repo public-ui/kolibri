@@ -3,7 +3,7 @@
 
 /*
  * Interactive link styles. With $anchor-scoped (default) they attach to the inner
- * kol-link__anchor of the skeleton DOM. Otherwise they attach to the class carrier — either
+ * kol-link__interactive-element of the skeleton DOM. Otherwise they attach to the class carrier — either
  * the class carrier itself when it is still the interactive element ($interactive-suffix null,
  * e.g. the details heading button, whose DOM did not change), or its inner
  * BLOCK__SUFFIX element when the button skeleton migration moved the interactive element into a
@@ -87,7 +87,7 @@
 			line-height: 1.25;
 		}
 	} @else {
-		/* Interactive element under a variant modifier: `& .kol-button__button` after the button
+		/* Interactive element under a variant modifier: `& .kol-button__interactive-element` after the button
 		   skeleton migration, or the modifier element itself when its DOM did not change. */
 		$hover-focus: if($interactive-suffix, '& .#{$block-classname}__#{$interactive-suffix}:is(:hover, :focus)', '&:is(:hover, :focus)');
 		$focus: if($interactive-suffix, '& .#{$block-classname}__#{$interactive-suffix}:focus', '&:focus');
@@ -139,12 +139,12 @@
 		font-style: var(--font-family);
 
 		@if $anchor-scoped {
-			&__anchor {
+			&__interactive-element {
 				@include kol-link-interactive($block-classname);
 			}
 
 			&__text {
-				.#{$block-classname}__anchor:focus & {
+				.#{$block-classname}__interactive-element:focus & {
 					outline: 2px solid var(--color-dark-blue-100);
 					border-radius: var(--radius-s);
 					outline-offset: 4px;
@@ -163,7 +163,7 @@
 			}
 
 			/* The focus ring on __text follows the interactive element: the class carrier itself
-			   when its DOM did not change, or its inner __button element when the button skeleton
+			   when its DOM did not change, or its inner interactive element when the button skeleton
 			   migration moved the focusable element into a wrapper. */
 			#{if($interactive-suffix, '&__' + $interactive-suffix, '&')}:focus .#{$block-classname}__text {
 				outline: 2px solid var(--color-dark-blue-100);

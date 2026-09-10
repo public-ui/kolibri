@@ -1,34 +1,8 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { Component, Element, Method, Prop, State, Watch } from '@stencil/core';
+
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { LinkApi } from '../../internal/functional-components/link/api';
-import { linkPropsConfig } from '../../internal/functional-components/link/api';
-import { LinkFC } from '../../internal/functional-components/link/component';
-import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import {
-	accessKeyProp,
-	ariaControlsProp,
-	ariaCurrentValueProp,
-	ariaDescriptionProp,
-	ariaExpandedProp,
-	ariaOwnsProp,
-	customClassProp,
-	disabledProp,
-	downloadProp,
-	hideLabelProp,
-	hrefProp,
-	inlineProp,
-	labelWithExpertSlotProp,
-	linkCallbacksProp,
-	linkRoleProp,
-	linkTargetProp,
-	shortKeyProp,
-	spanIconsProp,
-	tabIndexProp,
-	tooltipAlignProp,
-	variantProp,
-} from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -54,21 +28,25 @@ import type {
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { nonce } from '../../utils/dev.utils';
-import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import type { UnsubscribeFunction } from './ariaCurrentService';
-import { onLocationChange } from './ariaCurrentService';
+import { directClick, directFocus } from '../../utils/element-interaction';
+import { BaseLinkWebComponent } from './base';
 
 /**
  * Transitional `kol-link-wc` — a `shadow:false` wrapper that renders `LinkFC` directly into the light DOM.
  *
- * This exists because Legacy consumers (link-button, skip-nav, tree-item, nav, etc.) render
+ * This exists because Legacy consumers (skip-nav, tree-item, nav, breadcrumb, etc.) render
  * `<kol-link-wc>` inside their own shadow DOM and rely on being able to reach the inner `.kol-link`
  * CSS classes from their stylesheets. A `shadow:true` element would encapsulate those classes
  * behind a shadow boundary, breaking consumer styling.
  *
- * When a consumer migrates to the Skeleton pattern, it should render `LinkFC` directly (inline JSX)
- * instead of instantiating this element. Once all consumers have migrated, this component can be deleted.
+ * When a consumer migrates to the Skeleton pattern, it renders `LinkFC` directly (see
+ * `BaseLinkWebComponent`, as `kol-link-button` does) instead of instantiating this element. Once
+ * all consumers have migrated, this component can be deleted.
+ *
+ * The orchestrator logic lives in `BaseLinkWebComponent`; the differences to `kol-link` are the
+ * direct focus/click delegation (no shadow root) and the four internal props `_ariaOwns`,
+ * `_customClass`, `_role` and `_tabIndex` plus `click()`, which legacy consumers set from inside
+ * their own shadow DOM.
  *
  * @internal
  */
@@ -76,125 +54,47 @@ import { onLocationChange } from './ariaCurrentService';
 	tag: 'kol-link-wc',
 	shadow: false,
 })
-export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableElement, FocusableElement, LinkProps, WebComponentInterface<LinkApi> {
+export class KolLinkWc extends BaseLinkWebComponent implements ClickableElement, FocusableElement, LinkProps, WebComponentInterface<LinkApi> {
 	@Element() protected readonly host?: HTMLKolLinkWcElement;
-
-	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
-
-	// --- Composed behaviors ---
-
-	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
-	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
 	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
-		this.initRenderProps(linkPropsConfig);
-		// The props config seeds `tabIndex` with its default `0`. An unset tabindex must not
-		// render as `tabindex="0"` — links are natively tabbable and the attribute would trigger
-		// focus outlines that the predecessor did not draw.
-		this.setRenderProp('tabIndex', undefined as unknown as number);
+		this.initLinkRenderProps();
 
-		accessKeyProp.apply(this._accessKey, (v) => this.setRenderProp('accessKey', v));
-		ariaControlsProp.apply(this._ariaControls, (v) => this.setRenderProp('ariaControls', v));
-		ariaCurrentValueProp.apply(this._ariaCurrentValue, (v) => this.setRenderProp('ariaCurrentValue', v));
-		ariaDescriptionProp.apply(this._ariaDescription, (v) => this.setRenderProp('ariaDescription', v));
-		ariaExpandedProp.apply(this._ariaExpanded, (v) => this.setRenderProp('ariaExpanded', v));
-		ariaOwnsProp.apply(this._ariaOwns, (v) => this.setRenderProp('ariaOwns', v));
-		customClassProp.apply(this._customClass, (v) => this.setRenderProp('customClass', v));
-		disabledProp.apply(this._disabled, (v) => this.setRenderProp('disabled', v));
-		downloadProp.apply(this._download, (v) => this.setRenderProp('download', v));
-		hideLabelProp.apply(this._hideLabel, (v) => this.setRenderProp('hideLabel', v));
-		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v));
-		spanIconsProp.apply(this._icons, (v) => this.setRenderProp('icons', v));
-		inlineProp.apply(this._inline, (v) => this.setRenderProp('inline', v));
-		this.applyLabel(this._label);
-		linkCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
-		linkRoleProp.apply(this._role, (v) => this.setRenderProp('role', v));
-		shortKeyProp.apply(this._shortKey, (v) => this.setRenderProp('shortKey', v));
-		// An unset tabindex must not render as `tabindex="0"` — links are natively tabbable and
-		// the attribute would trigger focus outlines that the predecessor did not draw.
-		if (typeof this._tabIndex === 'number') {
-			tabIndexProp.apply(this._tabIndex, (v) => this.setRenderProp('tabIndex', v));
-		}
-		linkTargetProp.apply(this._target, (v) => this.setRenderProp('target', v));
-		this.applyTooltipAlign(this._tooltipAlign);
-		variantProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
+		this.watchAccessKey(this._accessKey);
+		this.watchAriaControls(this._ariaControls);
+		this.watchAriaCurrentValue(this._ariaCurrentValue);
+		this.watchAriaDescription(this._ariaDescription);
+		this.watchAriaExpanded(this._ariaExpanded);
+		this.watchAriaOwns(this._ariaOwns);
+		this.watchCustomClass(this._customClass);
+		this.watchDisabled(this._disabled);
+		this.watchDownload(this._download);
+		this.watchHideLabel(this._hideLabel);
+		this.watchHref(this._href);
+		this.watchIcons(this._icons);
+		this.watchInline(this._inline);
+		this.watchLabel(this._label);
+		this.watchOn(this._on);
+		this.watchRole(this._role);
+		this.watchShortKey(this._shortKey);
+		this.watchTabIndex(this._tabIndex);
+		this.watchTarget(this._target);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchVariant(this._variant);
 
 		validateAccessAndShortKey(this._accessKey, this._shortKey);
 
-		this.unsubscribeOnLocationChange = onLocationChange((location) => {
-			const href = this.getRenderProp('href');
-			const ariaCurrentValue = this.getRenderProp('ariaCurrentValue');
-			const newValue = location === href ? ariaCurrentValue : '';
-			if (this.getState('ariaCurrent') !== newValue) {
-				this.setState('ariaCurrent', newValue);
-			}
-		});
-
-		this.tooltipBehavior.componentWillLoad({
-			label: this.getTooltipLabel(),
-			align: this.getRenderProp('tooltipAlign'),
-		});
+		this.initLinkBehaviors();
 	}
 
 	public componentDidRender(): void {
-		if (this.ctaRef.el) {
-			this.tooltipBehavior.syncListeners(undefined, this.ctaRef.el, true);
-		}
+		this.syncTooltipListeners();
 	}
 
 	public disconnectedCallback(): void {
-		if (this.unsubscribeOnLocationChange) {
-			this.unsubscribeOnLocationChange();
-			this.unsubscribeOnLocationChange = undefined;
-		}
-		this.tooltipBehavior.destroy();
-	}
-
-	// --- Click handling ---
-
-	private readonly handleAnchorClick = (event: Event): void => {
-		this.tooltipBehavior.hideTooltip();
-		const disabled = this.getRenderProp('disabled');
-		if (disabled === true) {
-			event.preventDefault();
-			return;
-		}
-		const href = this.getRenderProp('href');
-		const on = this.getRenderProp('on');
-		if (typeof on?.onClick === 'function') {
-			on.onClick(event, href);
-		}
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.click, href);
-		}
-	};
-
-	// --- Tooltip helpers ---
-
-	private getTooltipLabel(): string {
-		const label = this.getRenderProp('label');
-		if (typeof label === 'string' && label.length > 0) {
-			return label;
-		}
-		const href = this.getRenderProp('href');
-		return typeof href === 'string' ? href : '';
-	}
-
-	private applyLabel(value?: string): void {
-		labelWithExpertSlotProp.apply(value, (v) => {
-			this.setRenderProp('label', v);
-			this.setState('expertSlot', value === '');
-			this.tooltipBehavior.watchLabel(this.getTooltipLabel());
-		});
-	}
-
-	private applyTooltipAlign(value?: string): void {
-		tooltipAlignProp.apply(value, (v) => {
-			this.setRenderProp('tooltipAlign', v);
-			this.tooltipBehavior.watchAlign(v);
-		});
+		this.destroyLinkBehaviors();
 	}
 
 	// --- Public methods ---
@@ -215,46 +115,10 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@directClick('ctaRef')
 	public async click(): Promise<void> {}
 
-	// --- Refs ---
-
-	private readonly setAnchorRef = (el?: HTMLAnchorElement): void => {
-		this.ctaRef(el);
-	};
-
 	// --- Render ---
 
 	public render(): JSX.Element {
-		return (
-			<LinkFC
-				accessKey={this.getRenderProp('accessKey')}
-				ariaControls={this.getRenderProp('ariaControls')}
-				ariaCurrent={this.ariaCurrent}
-				ariaCurrentValue={this.getRenderProp('ariaCurrentValue')}
-				ariaDescription={this.getRenderProp('ariaDescription')}
-				ariaDescriptionId={this.ariaDescriptionId}
-				ariaExpanded={this.getRenderProp('ariaExpanded')}
-				ariaOwns={this.getRenderProp('ariaOwns')}
-				customClass={this.getRenderProp('customClass')}
-				disabled={this.getRenderProp('disabled')}
-				download={this.getRenderProp('download')}
-				handleAnchorClick={this.handleAnchorClick}
-				hideLabel={this.getRenderProp('hideLabel')}
-				href={this.getRenderProp('href')}
-				icons={this.getRenderProp('icons')}
-				inline={this.getRenderProp('inline')}
-				label={this.getRenderProp('label')}
-				on={this.getRenderProp('on')}
-				refAnchor={this.setAnchorRef}
-				refTooltip={this.tooltipBehavior.setTooltipElementRef}
-				role={this.getRenderProp('role')}
-				shortKey={this.getRenderProp('shortKey')}
-				tabIndex={this.getRenderProp('tabIndex')}
-				target={this.getRenderProp('target')}
-				tooltipAlign={this.getRenderProp('tooltipAlign')}
-				variant={this.getRenderProp('variant')}
-				expertSlot={this.expertSlot}
-			/>
-		);
+		return this.renderLinkFC();
 	}
 
 	// --- @State ---
@@ -273,7 +137,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _accessKey?: AccessKeyPropType;
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		this.applyAccessKey(value);
 	}
 
 	/**
@@ -282,7 +146,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _ariaCurrentValue?: AriaCurrentValuePropType;
 	@Watch('_ariaCurrentValue')
 	public watchAriaCurrentValue(value?: AriaCurrentValuePropType): void {
-		ariaCurrentValueProp.apply(value, (v) => this.setRenderProp('ariaCurrentValue', v));
+		this.applyAriaCurrentValue(value);
 	}
 
 	/**
@@ -291,7 +155,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _ariaControls?: string;
 	@Watch('_ariaControls')
 	public watchAriaControls(value?: string): void {
-		ariaControlsProp.apply(value, (v) => this.setRenderProp('ariaControls', v));
+		this.applyAriaControls(value);
 	}
 
 	/**
@@ -300,7 +164,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 	@Watch('_ariaDescription')
 	public watchAriaDescription(value?: AriaDescriptionPropType): void {
-		ariaDescriptionProp.apply(value, (v) => this.setRenderProp('ariaDescription', v));
+		this.applyAriaDescription(value);
 	}
 
 	/**
@@ -310,7 +174,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _ariaExpanded?: boolean;
 	@Watch('_ariaExpanded')
 	public watchAriaExpanded(value?: boolean): void {
-		ariaExpandedProp.apply(value, (v) => this.setRenderProp('ariaExpanded', v));
+		this.applyAriaExpanded(value);
 	}
 
 	/**
@@ -319,7 +183,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _ariaOwns?: AriaOwnsPropType;
 	@Watch('_ariaOwns')
 	public watchAriaOwns(value?: AriaOwnsPropType): void {
-		ariaOwnsProp.apply(value, (v) => this.setRenderProp('ariaOwns', v));
+		this.applyAriaOwns(value);
 	}
 
 	/**
@@ -328,7 +192,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _customClass?: CustomClassPropType;
 	@Watch('_customClass')
 	public watchCustomClass(value?: CustomClassPropType): void {
-		customClassProp.apply(value, (v) => this.setRenderProp('customClass', v));
+		this.applyCustomClass(value);
 	}
 
 	/**
@@ -337,7 +201,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _disabled?: boolean = false;
 	@Watch('_disabled')
 	public watchDisabled(value?: boolean): void {
-		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
+		this.applyDisabled(value);
 	}
 
 	/**
@@ -346,7 +210,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _download?: DownloadPropType;
 	@Watch('_download')
 	public watchDownload(value?: DownloadPropType): void {
-		downloadProp.apply(value, (v) => this.setRenderProp('download', v));
+		this.applyDownload(value);
 	}
 
 	/**
@@ -357,7 +221,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _hideLabel?: boolean = false;
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: boolean): void {
-		hideLabelProp.apply(value, (v) => this.setRenderProp('hideLabel', v));
+		this.applyHideLabel(value);
 	}
 
 	/**
@@ -366,7 +230,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _href!: HrefPropType;
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+		this.applyHref(value);
 	}
 
 	/**
@@ -375,7 +239,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
 	@Watch('_icons')
 	public watchIcons(value?: Stringified<KoliBriIconsProp>): void {
-		spanIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyIcons(value);
 	}
 
 	/**
@@ -384,7 +248,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _inline?: InlinePropType = true;
 	@Watch('_inline')
 	public watchInline(value?: InlinePropType): void {
-		inlineProp.apply(value, (v) => this.setRenderProp('inline', v));
+		this.applyInline(value);
 	}
 
 	/**
@@ -402,7 +266,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _on?: LinkOnCallbacksPropType;
 	@Watch('_on')
 	public watchOn(value?: LinkOnCallbacksPropType): void {
-		linkCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyOn(value);
 	}
 
 	/**
@@ -411,7 +275,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 	@Watch('_role')
 	public watchRole(value?: AlternativeButtonLinkRolePropType): void {
-		linkRoleProp.apply(value, (v) => this.setRenderProp('role', v));
+		this.applyRole(value);
 	}
 
 	/**
@@ -420,7 +284,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _shortKey?: ShortKeyPropType;
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		this.applyShortKey(value);
 	}
 
 	/**
@@ -429,7 +293,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _tabIndex?: number;
 	@Watch('_tabIndex')
 	public watchTabIndex(value?: number): void {
-		tabIndexProp.apply(value, (v) => this.setRenderProp('tabIndex', v));
+		this.applyTabIndex(value);
 	}
 
 	/**
@@ -438,7 +302,7 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _target?: LinkTargetPropType;
 	@Watch('_target')
 	public watchTarget(value?: LinkTargetPropType): void {
-		linkTargetProp.apply(value, (v) => this.setRenderProp('target', v));
+		this.applyTarget(value);
 	}
 
 	/**
@@ -457,6 +321,6 @@ export class KolLinkWc extends BaseWebComponent<LinkApi> implements ClickableEle
 	@Prop() public _variant?: VariantClassNamePropType;
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyVariant(value);
 	}
 }

@@ -4,6 +4,20 @@ on:
   workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened]
+    paths-ignore:
+      - '*.md'
+      - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '.github/PULL_REQUEST_TEMPLATE/**'
+      - 'renovate.json'
+      - 'publiccode.yml'
+      - '.vscode/**'
+      - 'license-reports/**'
+      - '*.jpg'
+      - '*.png'
+      - '*.svg'
 
 concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
@@ -59,12 +73,17 @@ jobs:
       - name: Ensure .nojekyll at gh-pages root
         run: mkdir -p /tmp/nojekyll-root && touch /tmp/nojekyll-root/.nojekyll
 
+      # force: false – several workflows push to gh-pages concurrently (previews, visual reviews,
+      # benchmarks); a forced push would silently drop another workflow's commit. The action
+      # rebases and retries instead.
       - name: Deploy .nojekyll to gh-pages root
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: /tmp/nojekyll-root
           branch: gh-pages
           clean: false
+          force: false
+          attempt-limit: 10
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
@@ -73,6 +92,8 @@ jobs:
           target-folder: pr-${{ github.event.pull_request.number }}
           branch: gh-pages
           clean: true
+          force: false
+          attempt-limit: 10
 
       - name: Post PR comment
         uses: actions/github-script@v9

@@ -1,37 +1,8 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
-import type { Generic } from 'adopted-style-sheets';
-import { getFeatureFlag } from 'adopted-style-sheets';
+import { Component, Element, Method, Prop, State, Watch } from '@stencil/core';
 
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { ButtonApi } from '../../internal/functional-components/button/api';
-import { buttonPropsConfig } from '../../internal/functional-components/button/api';
-import { ButtonFC } from '../../internal/functional-components/button/component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import {
-	accessKeyProp,
-	ariaControlsProp,
-	ariaDescriptionProp,
-	ariaExpandedProp,
-	ariaHasPopupProp,
-	ariaSelectedProp,
-	buttonCallbacksProp,
-	buttonTypeProp,
-	customClassProp,
-	disabledProp,
-	hideLabelProp,
-	idProp,
-	inlineProp,
-	labelWithExpertSlotProp,
-	linkRoleProp,
-	nameProp,
-	optionalTabIndexProp,
-	shortKeyProp,
-	spanIconsProp,
-	tooltipAlignProp,
-	variantProp,
-} from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -53,30 +24,25 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { setEventTarget } from '../../schema';
 import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import { nonce } from '../../utils/dev.utils';
-import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
-import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
+import { directClick, directFocus } from '../../utils/element-interaction';
+import { BaseButtonWebComponent } from './base';
 
 /**
- * Transitional `kol-button-wc` — a `shadow:false` wrapper that renders `ButtonFC` directly into the
- * light DOM.
+ * Transitional `kol-button-wc` — a `shadow:false` wrapper that renders `ButtonFC` directly into the light DOM.
  *
- * This exists because legacy consumers (badge, input-file, pagination, popover-button, …) render
- * `<kol-button-wc>` inside their own shadow DOM and rely on being able to reach the inner
- * `.kol-button` CSS classes from their stylesheets. A `shadow:true` element would encapsulate those
- * classes behind a shadow boundary, breaking consumer styling.
+ * This exists because legacy consumers (accordion, badge, details, input-file, pagination,
+ * popover-button, tabs, table-settings, etc.) render `<kol-button-wc>` inside their own shadow DOM
+ * and rely on being able to reach the inner `.kol-button` CSS classes from their stylesheets. A
+ * `shadow:true` element would encapsulate those classes behind a shadow boundary, breaking
+ * consumer styling.
  *
- * When a consumer migrates to the Skeleton pattern, it should render `ButtonFC` directly (inline
- * JSX) instead of instantiating this element. Once all consumers have migrated, this component can
- * be deleted.
+ * When a consumer migrates to the Skeleton pattern, it renders `ButtonFC` directly (see
+ * `BaseButtonWebComponent`, as `kol-button-link` and `kol-split-button` do) instead of
+ * instantiating this element. Once all consumers have migrated, this component can be deleted.
  *
- * Most of this class duplicates `components/button/component.tsx`. Until the shared parts are
- * lifted into a common base, the differences to that file are these — and only these:
+ * The orchestrator logic lives in `BaseButtonWebComponent`; the differences to `kol-button` are:
  *
  * - `@directFocus`/`@directClick` instead of `@delegateFocus`/`@delegateClick`: this element has no
  *   shadow root, so the interactive element is reached directly.
@@ -84,45 +50,24 @@ import { AssociatedInputController } from '../input-adapter-leanup/associated.co
  *   `_ariaHasPopup`, `_id` and `_tabIndex` (see `ButtonWebComponentInterface`).
  * - no `getValue()`: reading the value is part of the public `kol-button` surface only.
  *
- * Everything else — watchers, event handlers, the form-association adapter, the `_variant`
- * feature-flag fallback and the `_role` deprecation — is intentionally identical. A change to one
- * file belongs in the other.
- *
  * @internal
  */
 @Component({
 	tag: 'kol-button-wc',
 	shadow: false,
 })
-export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonProps, ClickableElement, FocusableElement, WebComponentInterface<ButtonApi> {
+export class KolButtonWc extends BaseButtonWebComponent implements ButtonProps, ClickableElement, FocusableElement, WebComponentInterface<ButtonApi> {
 	@Element() protected readonly host?: HTMLKolButtonWcElement;
-
-	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
-
-	// --- Composed behaviors ---
-
-	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
-
-	/**
-	 * `AssociatedInputController` predates the skeleton architecture: it expects a
-	 * `Generic.Element.Component`, i.e. a mutable `state` bag plus underscored props. A skeleton web
-	 * component has no such bag, so the controller receives this minimal adapter instead of the
-	 * component itself. It carries exactly what the controller reads and writes: `state` (patched
-	 * by `validateName`), `_name` and `_syncValueBySelector`.
-	 */
-	private readonly formAssociation: Generic.Element.Component & Pick<ButtonProps, '_name' | '_syncValueBySelector'> = { state: {} };
-
-	private readonly associatedController: AssociatedInputController;
 
 	public constructor() {
 		super();
-		this.associatedController = new AssociatedInputController(this.formAssociation, 'button', this.host);
+		this.initFormAssociation();
 	}
 
 	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
-		this.initRenderProps(buttonPropsConfig);
+		this.initButtonRenderProps();
 
 		this.watchAccessKey(this._accessKey);
 		this.watchAriaControls(this._ariaControls);
@@ -148,69 +93,16 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 		this.watchValue(this._value);
 		this.watchVariant(this._variant);
 
-		this.tooltipBehavior.componentWillLoad({
-			label: this.getRenderProp('label'),
-			align: this.getRenderProp('tooltipAlign'),
-		});
+		this.initTooltipBehavior();
 	}
 
 	public componentDidRender(): void {
-		if (this.ctaRef.el) {
-			this.tooltipBehavior.syncListeners(undefined, this.ctaRef.el, true);
-		}
+		this.syncTooltipListeners();
 	}
 
 	public disconnectedCallback(): void {
-		this.tooltipBehavior.destroy();
+		this.destroyTooltipBehavior();
 	}
-
-	// --- Event handling ---
-
-	private readonly handleClick = (event: MouseEvent): void => {
-		event.stopPropagation();
-		this.tooltipBehavior.hideTooltip();
-
-		const type = this.getRenderProp('type');
-		if (type === 'submit') {
-			propagateSubmitEventToForm({ form: this.host, ref: this.ctaRef.el });
-		} else if (type === 'reset') {
-			propagateResetEventToForm({ form: this.host, ref: this.ctaRef.el });
-		} else {
-			// TODO: Static form handling
-			this.associatedController.setFormAssociatedValue(this._value);
-
-			const onClick = this.getRenderProp('on').onClick;
-			if (typeof onClick === 'function') {
-				setEventTarget(event, this.ctaRef.el);
-				onClick(event, this._value);
-			}
-		}
-
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.click, this._value);
-		}
-	};
-
-	private readonly handleMouseDown = (event: MouseEvent): void => {
-		this.getRenderProp('on').onMouseDown?.(event);
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.mousedown);
-		}
-	};
-
-	private readonly handleFocus = (event: FocusEvent): void => {
-		this.getRenderProp('on').onFocus?.(event);
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.focus);
-		}
-	};
-
-	private readonly handleBlur = (event: FocusEvent): void => {
-		this.getRenderProp('on').onBlur?.(event);
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.blur);
-		}
-	};
 
 	// --- Public methods ---
 
@@ -233,38 +125,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	// --- Render ---
 
 	public render(): JSX.Element {
-		return (
-			<ButtonFC
-				accessKey={this.getRenderProp('accessKey')}
-				ariaControls={this.getRenderProp('ariaControls')}
-				ariaDescription={this.getRenderProp('ariaDescription')}
-				ariaDescriptionId={this.ariaDescriptionId}
-				ariaExpanded={this.getRenderProp('ariaExpanded')}
-				ariaHasPopup={this.getRenderProp('ariaHasPopup')}
-				ariaSelected={this.getRenderProp('ariaSelected')}
-				customClass={this.getRenderProp('customClass')}
-				disabled={this.getRenderProp('disabled')}
-				handleBlur={this.handleBlur}
-				handleClick={this.handleClick}
-				handleFocus={this.handleFocus}
-				handleMouseDown={this.handleMouseDown}
-				hideLabel={this.getRenderProp('hideLabel')}
-				icons={this.getRenderProp('icons')}
-				id={this.getRenderProp('id')}
-				inline={this.getRenderProp('inline')}
-				label={this.getRenderProp('label')}
-				name={this.getRenderProp('name')}
-				on={this.getRenderProp('on')}
-				refButton={this.ctaRef}
-				refTooltip={this.tooltipBehavior.setTooltipElementRef}
-				role={this.getRenderProp('role')}
-				shortKey={this.getRenderProp('shortKey')}
-				tabIndex={this.getRenderProp('tabIndex')}
-				tooltipAlign={this.getRenderProp('tooltipAlign')}
-				type={this.getRenderProp('type')}
-				variant={this.getRenderProp('variant')}
-			/>
-		);
+		return this.renderButtonFC();
 	}
 
 	// --- @State ---
@@ -279,8 +140,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _accessKey?: AccessKeyPropType;
 	@Watch('_accessKey')
 	public watchAccessKey(value?: AccessKeyPropType): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
-		validateAccessAndShortKey(value, this._shortKey);
+		this.applyAccessKey(value, this._shortKey);
 	}
 
 	/**
@@ -289,7 +149,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _ariaControls?: string;
 	@Watch('_ariaControls')
 	public watchAriaControls(value?: string): void {
-		ariaControlsProp.apply(value, (v) => this.setRenderProp('ariaControls', v));
+		this.applyAriaControls(value);
 	}
 
 	/**
@@ -298,7 +158,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
 	@Watch('_ariaDescription')
 	public watchAriaDescription(value?: AriaDescriptionPropType): void {
-		ariaDescriptionProp.apply(value, (v) => this.setRenderProp('ariaDescription', v));
+		this.applyAriaDescription(value);
 	}
 
 	/**
@@ -307,7 +167,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _ariaExpanded?: boolean;
 	@Watch('_ariaExpanded')
 	public watchAriaExpanded(value?: boolean): void {
-		ariaExpandedProp.apply(value, (v) => this.setRenderProp('ariaExpanded', v));
+		this.applyAriaExpanded(value);
 	}
 
 	/**
@@ -317,7 +177,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _ariaHasPopup?: AriaHasPopupPropType;
 	@Watch('_ariaHasPopup')
 	public watchAriaHasPopup(value?: AriaHasPopupPropType): void {
-		ariaHasPopupProp.apply(value, (v) => this.setRenderProp('ariaHasPopup', v));
+		this.applyAriaHasPopup(value);
 	}
 
 	/**
@@ -326,7 +186,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _ariaSelected?: boolean;
 	@Watch('_ariaSelected')
 	public watchAriaSelected(value?: boolean): void {
-		ariaSelectedProp.apply(value, (v) => this.setRenderProp('ariaSelected', v));
+		this.applyAriaSelected(value);
 	}
 
 	/**
@@ -335,7 +195,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _customClass?: CustomClassPropType;
 	@Watch('_customClass')
 	public watchCustomClass(value?: CustomClassPropType): void {
-		customClassProp.apply(value, (v) => this.setRenderProp('customClass', v));
+		this.applyCustomClass(value);
 	}
 
 	/**
@@ -344,7 +204,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _disabled?: boolean = false;
 	@Watch('_disabled')
 	public watchDisabled(value?: boolean): void {
-		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
+		this.applyDisabled(value);
 	}
 
 	/**
@@ -355,7 +215,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _hideLabel?: boolean = false;
 	@Watch('_hideLabel')
 	public watchHideLabel(value?: boolean): void {
-		hideLabelProp.apply(value, (v) => this.setRenderProp('hideLabel', v));
+		this.applyHideLabel(value);
 	}
 
 	/**
@@ -364,7 +224,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _icons?: IconsPropType;
 	@Watch('_icons')
 	public watchIcons(value?: IconsPropType): void {
-		spanIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyIcons(value);
 	}
 
 	/**
@@ -374,7 +234,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _id?: IdPropType;
 	@Watch('_id')
 	public watchId(value?: IdPropType): void {
-		idProp.apply(value, (v) => this.setRenderProp('id', v));
+		this.applyId(value);
 	}
 
 	/**
@@ -383,7 +243,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _inline?: InlinePropType = false;
 	@Watch('_inline')
 	public watchInline(value?: InlinePropType): void {
-		inlineProp.apply(value, (v) => this.setRenderProp('inline', v));
+		this.applyInline(value);
 	}
 
 	/**
@@ -392,10 +252,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => {
-			this.setRenderProp('label', v);
-			this.tooltipBehavior.watchLabel(v);
-		});
+		this.applyLabel(value);
 	}
 
 	/**
@@ -404,9 +261,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _name?: string;
 	@Watch('_name')
 	public watchName(value?: string): void {
-		nameProp.apply(value, (v) => this.setRenderProp('name', v));
-		this.formAssociation._name = value;
-		this.associatedController.validateName(value);
+		this.applyName(value);
 	}
 
 	/**
@@ -415,7 +270,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 	@Watch('_on')
 	public watchOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
-		buttonCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+		this.applyOn(value);
 	}
 
 	/**
@@ -426,7 +281,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _role?: AlternativeButtonLinkRolePropType;
 	@Watch('_role')
 	public watchRole(value?: AlternativeButtonLinkRolePropType): void {
-		linkRoleProp.apply(value, (v) => this.setRenderProp('role', v));
+		this.applyRole(value);
 	}
 
 	/**
@@ -435,8 +290,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _shortKey?: ShortKeyPropType;
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
-		validateAccessAndShortKey(this._accessKey, value);
+		this.applyShortKey(value, this._accessKey);
 	}
 
 	/**
@@ -446,8 +300,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
 	@Watch('_syncValueBySelector')
 	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		this.formAssociation._syncValueBySelector = value;
-		this.associatedController.validateSyncValueBySelector(value);
+		this.applySyncValueBySelector(value);
 	}
 
 	/**
@@ -456,9 +309,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _tabIndex?: number;
 	@Watch('_tabIndex')
 	public watchTabIndex(value?: number): void {
-		// `optionalTabIndexProp` defaults to unset, so clearing the prop restores the unset state
-		// instead of keeping the previous number — a plain `apply` is enough.
-		optionalTabIndexProp.apply(value, (v) => this.setRenderProp('tabIndex', v));
+		this.applyTabIndex(value);
 	}
 
 	/**
@@ -467,10 +318,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
-		tooltipAlignProp.apply(value, (v) => {
-			this.setRenderProp('tooltipAlign', v);
-			this.tooltipBehavior.watchAlign(v);
-		});
+		this.applyTooltipAlign(value);
 	}
 
 	/**
@@ -479,7 +327,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _type?: ButtonTypePropType = 'button';
 	@Watch('_type')
 	public watchType(value?: ButtonTypePropType): void {
-		buttonTypeProp.apply(value, (v) => this.setRenderProp('type', v));
+		this.applyType(value);
 	}
 
 	/**
@@ -488,7 +336,7 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _value?: StencilUnknown;
 	@Watch('_value')
 	public watchValue(value?: StencilUnknown): void {
-		this.associatedController.setFormAssociatedValue(value);
+		this.applyValue(value);
 	}
 
 	/**
@@ -498,10 +346,6 @@ export class KolButtonWc extends BaseWebComponent<ButtonApi> implements ButtonPr
 	@Prop() public _variant?: VariantClassNamePropType;
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		// Resolved here rather than as a `@Prop` default, mirroring `kol-button`. A field
-		// initializer runs in the constructor, where `@Element()` is not yet populated for a
-		// `shadow: false` component under SSR — the theme-scoped flag would silently be ignored
-		// there. The rendered default is `normal` either way.
-		variantProp.apply(value ?? getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal', (v) => this.setRenderProp('variant', v));
+		this.applyVariant(value);
 	}
 }

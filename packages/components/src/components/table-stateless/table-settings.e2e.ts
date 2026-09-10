@@ -22,7 +22,7 @@ test.describe('kol-table-settings', () => {
 	test.beforeEach(async ({ page }) => {
 		await page.setContent(`<kol-table-stateless
       _label="Table with Settings"
-      _header-cells='${JSON.stringify(HEADERS)}'
+      _headers='${JSON.stringify(HEADERS)}'
       _data='${JSON.stringify(DATA)}'
       _has-settings-menu
     />`);

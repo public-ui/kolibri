@@ -5,10 +5,18 @@ on:
     types: [opened, reopened, synchronize]
     paths-ignore:
       - '*.md'
+      - '**/*.md'
       - 'docs/**'
       - 'LICENSE'
       - '.github/ISSUE_TEMPLATE/**'
       - '.github/PULL_REQUEST_TEMPLATE/**'
+      - 'renovate.json'
+      - 'publiccode.yml'
+      - '.vscode/**'
+      - 'license-reports/**'
+      - '*.jpg'
+      - '*.png'
+      - '*.svg'
   push:
     branches:
       - 'develop'
@@ -16,8 +24,18 @@ on:
       - 'release/*'
     paths-ignore:
       - '*.md'
+      - '**/*.md'
       - 'docs/**'
       - 'LICENSE'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '.github/PULL_REQUEST_TEMPLATE/**'
+      - 'renovate.json'
+      - 'publiccode.yml'
+      - '.vscode/**'
+      - 'license-reports/**'
+      - '*.jpg'
+      - '*.png'
+      - '*.svg'
   workflow_dispatch:
 
 concurrency:
@@ -81,10 +99,18 @@ jobs:
         with:
           name: report-e2e
 
+  # Compares the screenshots of the pull request with the baseline artifact of its base commit
+  # (see docs/visual-review.md). Differences are not a failure of this job: they are published by
+  # the "Visual Review" workflow and gate the merge through the commit status "Visual Review". The
+  # job fails only when the comparison itself is broken (a route that throws, an invisible block,
+  # a timeout) or a non-screenshot test (axe) fails.
   visual-tests:
     if: github.event_name == 'pull_request'
-    continue-on-error: true
+    permissions:
+      contents: read
+      actions: read
     strategy:
+      fail-fast: false
       matrix:
         package: ['test-tag-name-transformer', 'unstyled', 'theme-bwst', 'theme-default', 'theme-desy', 'theme-kern', 'theme-ecl']
     runs-on: ubuntu-latest
@@ -95,6 +121,8 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.60.0-noble
       options: --user 1001
+    env:
+      PLAYWRIGHT_IMAGE: mcr.microsoft.com/playwright:v1.60.0-noble
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -107,158 +135,46 @@ jobs:
           [ "$INSTALLED" = "1.60.0" ] || { echo "::error::@playwright/test $INSTALLED does not match container image v1.60.0 – update the image tags in the workflows"; exit 1; }
       - name: Build
         run: pnpm --filter @public-ui/visual-tests^... build
+      - name: Select baseline
+        id: baseline
+        run: node scripts/visual-review/select-baseline.mjs ${{ matrix.package }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Download baseline
+        if: steps.baseline.outputs.artifact_id != ''
+        uses: actions/download-artifact@v8
+        with:
+          # Artifact ids are looked up within a run – the run of the "Visual Baseline" workflow
+          # that produced the artifact, not this one.
+          artifact-ids: ${{ steps.baseline.outputs.artifact_id }}
+          run-id: ${{ steps.baseline.outputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: baseline-download
+      - name: Install baseline
+        id: install
+        run: node scripts/visual-review/install-baseline.mjs ${{ matrix.package }} baseline-download
       - name: Visual Tests
+        id: test
+        # Screenshot differences fail this step by design; the summary step below decides the job.
+        continue-on-error: true
         run: pnpm --filter=@public-ui/${{ matrix.package }} test
       - uses: ./.github/actions/upload-reports
-        if: failure()
+        if: steps.test.outcome == 'failure'
         with:
           name: report-${{ matrix.package }}
-      - name: Determine report path
-        id: report-path
-        if: ${{ !cancelled() }}
-        run: |
-          PACKAGE="${{ matrix.package }}"
-          if [[ "${PACKAGE}" == 'test-tag-name-transformer' ]]; then
-            REPORT_DIR="packages/test-tag-name-transformer/playwright-report"
-            SLUG="tag-name-transformer"
-          elif [[ "${PACKAGE}" == 'unstyled' ]]; then
-            REPORT_DIR="packages/unstyled/playwright-report"
-            SLUG="unstyled"
-          else
-            THEME_DIR="${PACKAGE#theme-}"
-            REPORT_DIR="packages/themes/${THEME_DIR}/playwright-report"
-            SLUG="${THEME_DIR}"
-          fi
-          echo "dir=${REPORT_DIR}" >> "$GITHUB_OUTPUT"
-          echo "slug=${SLUG}" >> "$GITHUB_OUTPUT"
-          if [ -d "${REPORT_DIR}" ]; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Upload HTML report for consolidation
-        if: ${{ !cancelled() && steps.report-path.outputs.exists == 'true' }}
+      # Summarises visual-report/report.json (written by packages/tools/visual-tests/src/visual-reporter.js)
+      # into the job summary and fails on routes that could not be compared or on failed non-screenshot tests.
+      - name: Visual review summary
+        run: node scripts/visual-review/assert-no-errors.mjs ${{ matrix.package }}
+      # report.json plus the PNGs of changed/added/removed snapshots – the input of the visual review.
+      - name: Upload visual review report
+        if: ${{ !cancelled() && steps.install.outputs.pkg_dir != '' }}
         uses: actions/upload-artifact@v7
         with:
-          name: visual-report-${{ steps.report-path.outputs.slug }}
-          path: ${{ steps.report-path.outputs.dir }}
-          if-no-files-found: ignore
-          retention-days: 5
-
-  visual-tests-report:
-    needs: visual-tests
-    if: ${{ !cancelled() && github.event_name == 'pull_request' && github.event.pull_request.head.repo.fork == false }}
-    continue-on-error: true
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pull-requests: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-        with:
-          persist-credentials: false
-      - name: Download report artifacts
-        uses: actions/download-artifact@v8
-        continue-on-error: true
-        with:
-          pattern: visual-report-*
-          path: artifacts
-      - name: Stage reports under snaps-<theme>
-        id: stage
-        run: |
-          set -o pipefail
-          rm -rf public
-          mkdir -p public
-          shopt -s nullglob
-          count=0
-          for d in artifacts/visual-report-*/; do
-            slug="$(basename "$d")"
-            slug="${slug#visual-report-}"
-            index="$(find "$d" -name index.html -printf '%d %p\n' 2>/dev/null | sort -n | head -1 | cut -d' ' -f2- || true)"
-            if [ -n "$index" ]; then
-              src="$(dirname "$index")"
-              mkdir -p "public/snaps-${slug}"
-              cp -a "${src}/." "public/snaps-${slug}/"
-              count=$((count + 1))
-            fi
-          done
-          echo "count=${count}" >> "$GITHUB_OUTPUT"
-          echo "Staged ${count} report(s)."
-      - name: Ensure .nojekyll at gh-pages root
-        if: ${{ steps.stage.outputs.count != '0' }}
-        run: mkdir -p nojekyll-root && touch nojekyll-root/.nojekyll
-      - name: Deploy .nojekyll to gh-pages root
-        if: ${{ steps.stage.outputs.count != '0' }}
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: nojekyll-root
-          branch: gh-pages
-          clean: false
-      - name: Deploy reports to GitHub Pages
-        if: ${{ steps.stage.outputs.count != '0' }}
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: public
-          target-folder: pr-${{ github.event.pull_request.number }}
-          branch: gh-pages
-          clean: false
-      - name: Post consolidated PR comment with report links
-        if: ${{ !cancelled() }}
-        uses: actions/github-script@v9
-        with:
-          script: |
-            const fs = require('fs');
-            const path = require('path');
-            const pr = context.issue.number;
-            const marker = '<!-- visual-test-reports -->';
-            const base = `https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-${pr}`;
-            const run = `${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}`;
-            const dir = 'public';
-            const slugs = fs.existsSync(dir)
-              ? fs
-                  .readdirSync(dir)
-                  .filter((n) => n.startsWith('snaps-') && fs.existsSync(path.join(dir, n, 'index.html')))
-                  .map((n) => n.replace(/^snaps-/, ''))
-                  .sort()
-              : [];
-            const label = (slug) => (slug === 'tag-name-transformer' ? 'test-tag-name-transformer' : slug === 'unstyled' ? 'unstyled' : `theme-${slug}`);
-            const rows = slugs.map((slug) => `| \`${label(slug)}\` | [Open report](${base}/snaps-${slug}/) |`);
-            const body =
-              rows.length === 0
-                ? `${marker}\n## 📸 Visual Test Reports\n\nNo Playwright HTML reports were produced for this run.\n\nRun: ${run}`
-                : `${marker}\n## 📸 Visual Test Reports\n\n| Theme | Report |\n| --- | --- |\n${rows.join('\n')}\n\nRun: ${run}`;
-            const { owner, repo } = context.repo;
-            try {
-              const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number: pr });
-              const existing = comments.find((c) => c.body.includes(marker));
-              if (existing) {
-                await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
-              } else {
-                await github.rest.issues.createComment({ owner, repo, issue_number: pr, body });
-              }
-            } catch (error) {
-              core.warning(`Could not post visual test report comment to PR #${pr}: ${error.message}`);
-            }
-
-  # lighthouse:
-  #   continue-on-error: true
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v7
-  #       with:
-  #         persist-credentials: false
-  #     - uses: ./.github/actions/pnpm-setup
-  #     - name: Build dependencies
-  #       run: pnpm --filter @public-ui/sample-react^... build
-  #     - name: Lighthouse CI
-  #       run: pnpm --filter @public-ui/sample-react lighthouse
-  #     - uses: actions/upload-artifact@v7
-  #       if: always()
-  #       with:
-  #         name: lighthouse-report
-  #         path: packages/samples/react/.lighthouseci/
+          name: visual-review-${{ matrix.package }}
+          path: ${{ steps.install.outputs.pkg_dir }}/visual-report
+          if-no-files-found: warn
+          retention-days: 14
 
   check-results:
     runs-on: ubuntu-latest

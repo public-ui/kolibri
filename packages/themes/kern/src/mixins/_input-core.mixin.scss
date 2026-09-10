@@ -91,19 +91,19 @@
 				border-left: 1px solid var(--border-color);
 				transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
-				/* Every state predicate hangs off the interactive element: the class carrier is a
-				   wrapper `div`, where `:disabled`/`:focus` never match and `:not(:disabled)` is
-				   always true. */
-				&__button:disabled {
+				/* `.kol-button` is a wrapper since the skeleton migration: the `disabled` attribute and
+				   the focus sit on the button inside it. `:has(:disabled)` and `:focus-within` keep these
+				   rules on the wrapper, i.e. on the same box (border-left included) they styled before. */
+				&:has(:disabled) {
 					opacity: var(--kern-color-action-state-opacity-disabled);
 				}
 
-				&__button:not(:disabled):hover {
+				&:not(:has(:disabled)):hover {
 					background: var(--kern-color-action-state-indicator-tint-hover-opacity);
 					border-radius: var(--kern-metric-border-radius-default);
 				}
 
-				&__button:focus {
+				&:focus-within {
 					color: var(--kern-color-layout-background-default);
 					background-color: var(--kern-color-form-input-border);
 					outline: var(--kern-color-form-input-border) solid 2px;

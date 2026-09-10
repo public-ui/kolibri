@@ -81,15 +81,20 @@
 			&--align-left {
 				text-align: left;
 
-				.kol-button__text {
+				.kol-table__sort-button .kol-button__text {
 					align-items: start;
+					text-align: start;
+				}
+
+				.kol-table__cell-actions {
+					justify-content: flex-start;
 				}
 			}
 
 			&--align-center {
 				text-align: center;
 
-				& .kol-button__text {
+				.kol-table__sort-button .kol-button__text {
 					align-items: center;
 				}
 			}
@@ -97,8 +102,13 @@
 			&--align-right {
 				text-align: right;
 
-				.kol-button__text {
+				.kol-table__sort-button .kol-button__text {
 					align-items: end;
+					text-align: end;
+				}
+
+				.kol-table__cell-actions {
+					justify-content: flex-end;
 				}
 			}
 

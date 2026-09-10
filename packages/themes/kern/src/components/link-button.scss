@@ -2,7 +2,7 @@
 @use '../mixins/focus-outline.mixin' as *;
 
 @layer kol-theme-component {
-	@include button('kol-link', $interactive-element: 'anchor');
+	@include button('kol-link');
 
 	/* The link skeleton renders the focusable anchor inside the `.kol-link` wrapper, so the
 	   focus ring has to attach to the wrapper via :focus-within — it sat on the
@@ -11,7 +11,7 @@
 		@include focus-outline;
 	}
 
-	.kol-link__anchor:focus {
+	.kol-link__interactive-element:focus {
 		outline: none;
 	}
 }

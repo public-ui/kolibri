@@ -3,11 +3,11 @@
 @use '../@shared/link.mixin' as *;
 
 @layer kol-component {
-	/* The button DOM now has its own interactive element (`kol-button__button`), so the shared link
+	/* The button DOM now has its own interactive element (`kol-button__interactive-element`), so the shared link
 	   mixin scopes the alignment declarations there — the same element they applied to before, when
 	   the button itself carried the `kol-button` class. The former root-level compensation block is
 	   therefore gone. */
-	@include kol-link-styles('kol-button', $interactive-element: 'button');
+	@include kol-link-styles('kol-button');
 
 	// Inline may have the height and width of the flowing text and do not necessarily have to be 44px high or width.
 	// The inner interactive element needs the same exemption: the a11y layer pins every `button`
@@ -17,7 +17,7 @@
 		min-width: unset;
 		min-height: unset;
 
-		& .kol-button__button {
+		& .kol-button__interactive-element {
 			min-width: unset;
 			min-height: unset;
 		}

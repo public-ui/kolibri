@@ -93,8 +93,7 @@
 
 				font-weight: bold;
 
-				/* The focusable element is the inner `<button>`; the class carrier is a `div`. */
-				.kol-button__button:focus {
+				.kol-button__interactive-element:focus {
 					outline-color: var(--color-mute-variant);
 				}
 				.kol-button__text {

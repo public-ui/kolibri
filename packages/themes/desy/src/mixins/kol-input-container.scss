@@ -61,7 +61,7 @@
 				/* The wrapper never receives `:disabled` or `:focus`, and the a11y min-size layer
 				   still pins the inner button to `--a11y-min-size` (40px on the container) — replicate
 				   the smaller smart-button box and the state styling on the interactive element. */
-				.kol-button__button {
+				.kol-button__interactive-element {
 					min-width: to-rem(38);
 					min-height: to-rem(40);
 				}
@@ -70,13 +70,11 @@
 					display: none;
 				}
 
-				/* `:not(:disabled)` is always true on the wrapper — ask the interactive element
-				   inside, like the `:has(:disabled)` rule above. */
-				&:not(:has(:disabled)):hover {
+				&__interactive-element:not(:disabled):hover {
 					background: var(--color-dark-blue-100-06);
 				}
 
-				&__button:focus {
+				&__interactive-element:focus {
 					background: var(--color-dark-blue-100-06);
 					outline: var(--color-dark-blue-100) solid 2px;
 					border-radius: 3px;

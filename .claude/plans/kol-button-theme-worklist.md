@@ -1,165 +1,151 @@
 # Worklist: Theme-Anpassung nach dem `kol-button`-DOM-Umbau
 
-> Gegenstück zu `.claude/plans/migrate-kol-button-skeleton.md`. Vorgehen und Werkzeuge:
+> Gegenstück zu `.claude/plans/migrate-kol-button-skeleton.md`. Diese Arbeit **ist** inzwischen in
+> PR [#10734](https://github.com/public-ui/kolibri/pull/10734) enthalten — die frühere Aussage, sie
+> sei bewusst ausgeklammert, galt für den Stand vom 01.09. und ist überholt. Offen ist allein die
+> Abnahme über den Pixel-Gate (siehe _Abnahme_). Vorgehen und Werkzeuge:
 > `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
 >
-> **Stand:** Diese Arbeit ist inzwischen **in** PR
-> [#10734](https://github.com/public-ui/kolibri/pull/10734) enthalten — der ursprüngliche Vermerk
-> „bewusst nicht im PR" ist überholt. Die Themes wurden im Verlauf des Branches migriert; ein
-> Cross-Review hat danach zwei Fehlklassen gefunden, die der Pixel-Gate strukturell nicht sehen
-> kann, weil Snapshots Ruhezustände fotografieren:
->
-> 1. `&__button` **innerhalb eines Modifier-Blocks** expandiert zu `.kol-button--primary__button` —
->    eine Klasse, die es nicht gibt. Die Regel ist still tot.
-> 2. Zustandsprädikate auf dem Klassenträger: `:focus`/`:focus-visible`/`:disabled` treffen den
->    Wrapper nie, und `:not(:disabled)` / `:not([disabled])` sind dort **immer wahr** — solche
->    Regeln fallen nicht aus, sie kehren sich um.
->
-> Beide sind jetzt mechanisch prüfbar:
->
-> ```bash
-> node scripts/check-skeleton-selectors.mjs      # muss grün sein
-> ```
->
-> Der Wächter löst Sass-`&`-Verschachtelung auf und expandiert `@include`s innerhalb einer Datei,
-> meldet Datei, Zeile und aufgelösten Selektor. Er ersetzt den Pixel-Gate nicht — er deckt die
-> Lücke, die der Pixel-Gate offenlässt.
+> Die beiden Fehlklassen, die der Pixel-Gate strukturell nicht sieht (tote Zustandsprädikate am
+> Wrapper, `&__element` in Modifier-Blöcken), prüft seitdem `pnpm check:skeleton-selectors`
+> statisch — auch in CI (SKILL.md §7b).
 
 ## Was sich geändert hat
 
 ```diff
 - <button class="kol-button kol-button--standalone kol-button--normal">…</button>
 + <div class="kol-button kol-button--standalone kol-button--normal">
-+   <button class="kol-button__button">…</button>
++   <button class="kol-button__interactive-element">…</button>
 + </div>
 ```
 
 Gilt für `kol-button` **und** `kol-button-wc`, also auch innerhalb von accordion, badge,
 button-link, details, input-file, pagination, popover-button, split-button, tabs und
-table-settings.
+table-settings. `kol-link` hat dieselbe Form mit `kol-link__interactive-element`.
 
 ## Die Regel
 
-Die Klasse `kol-button` sitzt jetzt auf einem Wrapper-`<div>`, das interaktive Element ist
-`kol-button__button`. Danach sortieren sich alle Selektoren in drei Gruppen:
+Die Klasse `kol-button` sitzt auf einem Wrapper-`<div>`, das interaktive Element ist
+`kol-button__interactive-element`. Danach sortieren sich alle Selektoren in drei Gruppen:
 
 | Gruppe                    | Kriterium                                                                                                         | Handlung                                                     |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ |
-| **A — muss wandern**      | Prädikat hängt am `<button>`: `:focus`, `:focus-visible`, `:active`, `:disabled`, `[disabled]`, `[aria-disabled]` | auf `&__button` scopen                                       |
-| **B — bleibt**            | `:hover`, `:focus-within`, Modifier-Klassen, Descendant-Selektoren auf `__text` / `.kol-span`                     | unverändert                                                  |
+| **A — muss wandern**      | Prädikat hängt am `<button>`: `:focus`, `:focus-visible`, `:active`, `:disabled`, `[disabled]`, `[aria-disabled]` | auf `&__interactive-element` scopen                          |
+| **B — bleibt**            | `:focus-within` (propagiert), Modifier-Klassen, Descendant-Selektoren auf `__text` / `.kol-span`                  | unverändert                                                  |
 | **C — Custom Properties** | `--text-*` u. ä. auf der Block-Wurzel                                                                             | unverändert; sie vererben durch den Wrapper bis ins `__text` |
 
 **Die gefährlichste Untergruppe von A** sind kombinierte Prädikate wie
 `&:not([disabled], [aria-disabled='true']):hover`. Am Wrapper ist `:not([disabled])` **immer
 wahr** — deaktivierte Buttons bekämen also Hover-Styling. Solche Regeln fallen nicht einfach aus,
-sie kehren sich um. Sie gehören vollständig auf `&__button`, wo `:hover` und `[disabled]` wieder
-am selben Element hängen wie vor dem Umbau.
+sie kehren sich um. Sie gehören vollständig auf `&__interactive-element`, wo `:hover` und
+`[disabled]` wieder am selben Element hängen wie vor dem Umbau.
+
+`:hover` und `:active` allein propagieren auf Vorfahren und funktionieren am Wrapper weiter — nur
+in Kombination mit einem `disabled`-Prädikat kippen sie. `:focus` propagiert **nicht**: ein
+`:focus` am Wrapper-`div` trifft nie, der Fokusring fällt ersatzlos aus.
+
+### Zweite Fehlerklasse: Descendant-Selektoren unter dem Block
+
+Die Tabelle oben betrifft Zustands-Prädikate. Es gibt eine zweite, unabhängige Klasse: **jeder
+Descendant-Selektor unter dem Block trifft jetzt zusätzlich den Tooltip**, weil dieser vom
+Geschwister des Buttons zum Kind des Wrappers geworden ist.
+
+```scss
+.kol-button {
+	.kol-span__label {
+		font-weight: 500;
+	} /* trifft jetzt AUCH den Tooltip-Text */
+}
+```
+
+Der Tooltip rendert intern einen `SpanFC` und setzt selbst keine Schrifteigenschaften — er erbt
+und matcht alles, was der Wrapper anbietet. Solche Regeln gehören auf
+`&__interactive-element` (oder ein BEM-Element wie `&__text`, das den Tooltip nicht erfasst).
+
+Das war die tatsächliche Ursache der drei kern-Diffs, die zwischenzeitlich als nicht behebbarer
+Firefox-Bug in der Allowlist standen. Betroffen sind alle Eigenschaften, die im Tooltip sichtbar
+werden können: `font-weight`, `font-size`, `gap`, `font-family`, Farben.
+
+**Diagnose-Merkmal:** identische Geometrie, aber abweichende Pixeldeckung an genau einer Textstelle
+→ Selektor-Reichweite prüfen, nicht Compositing.
+
+**Ein `&__button` gibt es nicht.** Eine frühere Fassung dieser Worklist nannte `&__button` als
+Ziel; dieser Klassenname wurde im Zuge des Reviews zu `__interactive-element` vereinheitlicht
+(Commit `35a74e0661`), damit `kol-button` und `kol-link` dieselbe Struktur haben. Selektoren auf
+`.kol-button__button` matchen nichts.
 
 ## Mixin-Signaturen
 
-Im Components-Paket ist der Umbau bereits vollzogen: `kol-button-styles` und `kol-link-styles`
-(`packages/components/src/components/@shared/_{button,link}.mixin.scss`) nehmen statt des
-booleschen `$anchor-scoped` aus #10652 einen Namensparameter:
+Im Components-Paket nehmen `kol-button-styles` und `kol-link-styles`
+(`packages/components/src/components/@shared/_{button,link}.mixin.scss`) nur noch den
+Block-Namen — der `$interactive-element`-Parameter aus einer Zwischenfassung ist entfallen, weil
+beide Blöcke das interaktive Element jetzt gleich benennen:
 
 ```scss
-@mixin kol-button-styles($block-classname, $interactive-element: 'button') { … }
-@mixin kol-link-styles($block-classname, $interactive-element: 'anchor') { … }
+@mixin kol-button-styles($block-classname) { … }
+@mixin kol-link-styles($block-classname) { … }
 ```
 
-`null` bedeutet weiterhin „Stile auf dem Klassenträger selbst" — für Blöcke ohne inneres
-interaktives Element. Die Theme-Mixins sollten dieselbe Signatur bekommen.
+Beide werden auch kreuzweise aufgerufen (`kol-button-styles('kol-link')` in toolbar und
+link-button), deshalb ist der Block-Name weiterhin ein Parameter.
 
-### Include-Sites, die einen expliziten Wert brauchen
-
-| Site                                                                                                                  | Wert                   | Grund                                                                                                                                                                                                                  |
-| --------------------------------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `kol-button('kol-link')` — toolbar, link-button (default, bwst, ecl-eu)                                               | `'anchor'`             | Button-Mixin auf dem Link-Block                                                                                                                                                                                        |
-| `kol-link('kol-button', $anchor-scoped: false)` — button-link, nav, split-button (desy, ecl, kern)                    | `'button'`             | Die Stile liegen heute auf `.kol-button` = dem `<button>`; sie müssen am selben **Element** bleiben, nicht am Wrapper                                                                                                  |
-| `kol-link('kol-details__heading-button', …)` (desy), `kol-link('kol-tree-item__text' \| '__toggle-button', …)` (kern) | `null`                 | DOM dieser Blöcke ändert sich nicht                                                                                                                                                                                    |
-| `kol-link('kol-button')` **ohne** Flag — button-link (default, bwst)                                                  | **unverändert lassen** | Dort ist der `__anchor`-Block heute tot (Button hatte kein `__anchor`). Bei `'button'` würden Farbe, Fokus-Outline und `:visited` neu greifen — eine Verhaltensänderung, kein Zero-Delta. Bewusst separat entscheiden. |
-| alle übrigen `kol-button('kol-button')` / `kol-link('kol-link')` (~30)                                                | unverändert            | Default passt                                                                                                                                                                                                          |
-
-Vollständige Liste jederzeit reproduzierbar:
+Vollständige Liste der Include-Sites jederzeit reproduzierbar:
 
 ```bash
 grep -rn "@include kol-button(\|@include kol-link(\|@include link(\|-styles(" \
   packages/themes/*/src packages/components/src --include='*.scss'
 ```
 
-## Fundstellen (162 Selektoren im Button-Kontext)
+## Verifikation
 
-Erzeugt am aktuellen Stand des Branches; Zeilennummern verschieben sich beim Bearbeiten.
+Die Selektor-Migration ist mechanisch prüfbar — Snapshots leisten das **nicht**, weil sie
+Ruhezustände fotografieren und `:hover`/`:focus`/`:disabled` darin nicht vorkommen. Beide Greps
+müssen leer bleiben:
 
-### Theme-Button-Mixins — der Kern
+```bash
+# 1. Tote Selektoren auf dem alten Klassennamen
+rg -n '__button:(focus|hover|active|disabled|is|not)' packages/themes packages/components/src --glob '*.scss'
 
-| Datei                                | Zeilen                                                                                   |
-| ------------------------------------ | ---------------------------------------------------------------------------------------- |
-| `default/src/mixins/button.scss`     | 20, 64, 75, 107, 113                                                                     |
-| `bwst/src/mixins/button.scss`        | 22, 67, 78, 110, 116                                                                     |
-| `desy/src/mixins/button.scss`        | 18–19, 38–40, 46, 58, 98–99, 141–143, 149, 163, 168–170, 174, 185, 191–193, 203, 207–209 |
-| `ecl/src/ecl-ec/mixins/button.scss`  | 13, 24–25, 29, 40–41, 48, 61–62, 68, 80–81, 87, 98, 109–110, 114, 175–176, 182           |
-| `ecl/src/ecl-eu/mixins/button.scss`  | 19, 30, 41, 51, 61, 67, 89–90, 103, 107                                                  |
-| `kern/src/mixins/_button.mixin.scss` | 16, 20, 66, 75, 112, 117, 129, 133, 145, 149, 156                                        |
+# 2. Zustandsprädikate am Wrapper statt am interaktiven Element
+rg -n '\.kol-(button|link):(not\(|disabled|focus)' packages/themes packages/components/src --glob '*.scss'
+```
 
-In default/bwst steht bei den `@at-root #{$root}:focus`-Regeln seit #10652 bereits
-`#{$root}__anchor:focus` daneben — dort ist `#{$root}__button:focus` die direkte Ergänzung.
+Treffer in (2) sind einzeln zu beurteilen: `:focus-within` am Wrapper ist korrekt (propagiert),
+`:focus` und `:disabled` sind es nie.
 
-### Link-Mixins, soweit auf einen Button-Block angewandt
+Nach jedem Theme-Build zusätzlich das Kompilat greppen, statt die Wirkung einer Regel
+vorauszusetzen — auch auf Modifier-Expansion, die zu nichts passt:
 
-`desy/src/mixins/link.scss` 21, 39, 52, 56, 67, 71, 89, 93, 104, 108, 148 ·
-`kern/src/mixins/_link.mixin.scss` 35, 63, 71, 98, 106, 125, 189 ·
-`ecl/src/ecl-ec/mixins/link.scss` 19
+```bash
+tr '}' '\n' < <gebautes-css> | grep 'kol-button__interactive-element'
+tr '}' '\n' < <gebautes-css> | grep -E '\-\-[a-z-]+__'   # muss leer sein
+```
 
-### Komponenten-Dateien der Themes
-
-`{default,bwst}/src/components/nav.scss` 49/53, 86/87, 90/91, 131/132, 135/136 ·
-`desy/src/components/nav.scss` 41 · `ecl/src/ecl-eu/components/nav.scss` 77, 98, 107, 137, 141 ·
-`{default,bwst}/src/components/button-link.scss` 17, 29, 35 ·
-`bwst/src/components/details.scss` 47, 51 · `default/src/components/details.scss` 41 ·
-`kern/src/components/details.scss` 16 ·
-`{desy,kern}/src/components/accordion.scss` 44–45, 59, 63, 67, 72 / 27–28, 33 ·
-`{desy,ecl-ec,ecl-eu,kern}/src/components/tabs.scss` 51/56, 15/19, 18/24, 21 ·
-`ecl/src/ecl-eu/components/pagination.scss` 11, 28, 33–34, 54 ·
-`{default,bwst}/src/mixins/kol-table-settings-wc.scss` 35 ·
-`kern/src/mixins/_table-settings.mixin.scss` 41 ·
-`{default,bwst}/src/mixins/kol-table-stateless-wc.scss` 45, 96, 155/158, 160/163, 168/171 ·
-`{default,bwst}/src/mixins/input.scss` 58
-
-## Zusätzlich im Auge behalten
-
-- `packages/components/src/components/tabs/style.scss` ~51: `border-bottom-color/style` und
-  `display: block` liegen auf `.kol-button` — jetzt der Wrapper. Der Rahmen wird damit am Wrapper
-  statt am Button gezeichnet; optisch an derselben Stelle, aber ein Kandidat für den Pixel-Check.
-- `packages/components/src/components/@shared/_popover-button.mixin.scss` ~24
-  (`min-width`/`min-height`), `_table-stateless.mixin.scss` ~49 (`color: inherit`),
-  `nav/style.scss` ~50 (`text-align`) — alle wrapper-sicher (Vererbung bzw. Box-Rolle), aber
-  ungeprüft.
-- `packages/components/src/components/button-link/style.scss`: Der Kompensationsblock aus #10652
-  („button DOM has no `__anchor`") ist entfernt, weil das geteilte Link-Mixin die Deklarationen
-  jetzt über `$interactive-element: 'button'` auf dasselbe **Element** legt wie vorher.
+Der zweite Grep fängt den Fall, dass `&__interactive-element` innerhalb eines Modifier-Blocks
+(`&--primary`) steht und zu `.kol-button--primary__interactive-element` expandiert. Sass-`X &`-
+Verschachtelung kompiliert innerhalb eines Blocks zu Descendant-Selektoren, die nie matchen
+(Skill §4.6).
 
 ## Abnahme
 
 ```bash
-node scripts/check-skeleton-selectors.mjs             # statisch, Sekunden — muss grün sein
+pnpm check:skeleton-selectors                         # statisch, Sekunden — muss grün sein
 node scripts/snapshots-docker.mjs <theme> --check     # je Theme, ca. 6 min
 git diff origin/develop..HEAD -- '*.png'              # muss leer sein
 ```
 
-Der statische Check und der Pixel-Gate prüfen disjunkte Mengen: Snapshots sehen Ruhezustände,
-der Check sieht Hover-, Fokus- und Disabled-Selektoren. Beide sind nötig, keiner ersetzt den
-anderen. Offen bleibt ein dynamischer Interaktionstest je Theme (`hover()`/`focus()` auf einem
-aktivierten **und** einem deaktivierten Button, `getComputedStyle` vergleichen) — das ist die
-einzige Prüfung, die auch die *Wirkung* der jetzt lebenden Regeln belegt.
-
 „CI grün" zählt nicht — die Snapshot-Workflows committen neue Baselines und werden dadurch selbst
 grün. Vor jedem Urteil „Baseline ist stale" erst den Base-Code gegen die Baselines laufen lassen.
 
-Nach jedem Theme-Build das Kompilat greppen, statt die Wirkung einer Regel vorauszusetzen:
+## Zusätzlich im Auge behalten
 
-```bash
-tr '}' '\n' < <gebautes-css> | grep kol-button__button
-```
-
-Sass-`X &`-Verschachtelung kompiliert innerhalb eines Blocks zu Descendant-Selektoren, die nie
-matchen (Skill §4.6).
+- `packages/components/src/components/tabs/style.scss`: `border-bottom-color/style` liegt auf
+  `.kol-button__interactive-element`, `display: block` auf dem Wrapper. Der forced-colors-Block
+  erkennt den Fokus über `:has(.kol-button__interactive-element:focus-visible)`, weil der Outline
+  am Wrapper sitzt, den Fokus aber nur das innere Element bekommt.
+- `packages/components/src/components/@shared/_popover-button.mixin.scss`,
+  `_table-stateless.mixin.scss`, `nav/style.scss` — wrapper-sicher (Vererbung bzw. Box-Rolle),
+  aber ungeprüft.
+- Der `&--external-link`-Zweig in `_button.mixin.scss` wird auch für den Block `kol-button`
+  erzeugt, der diesen Modifier nicht kennt. Totes Bundle-Gewicht, kein Fehlverhalten — das Mixin
+  wird von `kol-link`-Aufrufern mitbenutzt, deshalb nicht ersatzlos entfernbar.

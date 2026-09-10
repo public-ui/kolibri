@@ -14,17 +14,17 @@
 			   top of the inner button's a11y min-size (+16px per tab). Both move to the interactive
 			   element to keep the button box, the label baseline and the selected-tab underline
 			   exactly where they were. */
-			.kol-button__button {
+			.kol-button__interactive-element {
 				padding: var(--ecl-spacing-xs) var(--ecl-spacing-m);
 				border: none;
 				border-bottom: solid 2px transparent;
 			}
 
-			.kol-button__button:hover:not(:disabled) {
+			.kol-button__interactive-element:hover:not(:disabled) {
 				border-bottom-color: var(--ecl-color-dark-80);
 			}
 
-			.kol-button__button:focus {
+			.kol-button__interactive-element:focus {
 				outline: 2px solid var(--ecl-color-primary);
 				border-radius: 1px;
 				outline-offset: -2px;
@@ -33,7 +33,7 @@
 			&.selected {
 				font-weight: var(--ecl-font-weight-bold);
 
-				.kol-button__button {
+				.kol-button__interactive-element {
 					border-bottom-color: var(--ecl-color-primary);
 				}
 			}

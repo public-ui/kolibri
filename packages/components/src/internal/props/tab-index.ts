@@ -1,23 +1,32 @@
-import type { Prop, SimpleProp } from './helpers/factory';
+import { a11yHint } from '../../schema/utils/a11y.tipps';
+import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeInteger } from './helpers/normalizers';
 
-export type TabIndexProp = SimpleProp<'tabIndex', number>;
-export const tabIndexProp = createPropDefinition<TabIndexProp>('tabIndex', 0, normalizeInteger);
-
-export type OptionalTabIndexProp = Prop<'tabIndex', number | undefined, number | undefined>;
-
 /**
- * `tabIndex` for components whose interactive element is focusable on its own — a `<button>` or an
- * `<a href>` is in the tab order without the attribute.
+ * TabIndex prop for controlling tab order
  *
- * Unlike {@link tabIndexProp} the default is *unset* rather than `0`: rendering `tabindex="0"` would
- * pin the element into the document tab order explicitly. That difference is invisible in the
- * browser but shows up in the server-rendered markup and in any consumer reading the attribute.
- * Unsetting the property has to restore the unset state, which a numeric default cannot express.
+ * Description:
+ * Specifies the tab order of interactive elements when using the keyboard.
  *
- * `createPropDefinition` types its default as the non-nullable internal type, so representing
- * "unset" needs one cast — here, in the single place that defines what unset means, instead of at
- * every web component that seeds or resets the property.
+ * Usage (according to WCAG 2.1 and WAI-ARIA):
+ * - Default: 0 (element follows the natural DOM order)
+ * - Positive values (1, 2, 3, etc.): element is moved to the front of the tab order
+ * - Negative values (typically -1): element is not reachable via sequential navigation
+ *
+ * Accessibility concerns:
+ * - Positive tabIndex values can disrupt the natural tab order and confuse users
+ * - Recommended to rely on DOM order (tabIndex={0}) or use -1 for non-tabbable elements
+ * - Screen reader users expect a logical tab order matching the visual order
+ *
+ * @see https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex
  */
-export const optionalTabIndexProp = createPropDefinition<OptionalTabIndexProp>('tabIndex', undefined as unknown as number, normalizeInteger);
+export type TabIndexProp = SimpleProp<'tabIndex', number>;
+export const tabIndexProp = createPropDefinition<TabIndexProp>('tabIndex', 0, normalizeInteger, undefined, {
+	hints: (_propName, value) => {
+		if (typeof value === 'number' && value > 0) {
+			a11yHint(`Positive tabIndex values ("${value}") can disrupt the natural tab order. Use 0 for tabbable elements or rely on DOM order.`);
+		}
+	},
+});

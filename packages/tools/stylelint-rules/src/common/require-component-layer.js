@@ -58,7 +58,7 @@ const ruleFunction = (primaryOption, secondaryOptions) => {
 		if (fileName.startsWith('_')) return;
 
 		// Skip basis preset files that use their own layers (a11y, preset, etc.)
-		if (fileName === 'a11y.scss' || fileName === 'preset.scss') return;
+		if (fileName === 'a11y.scss' || fileName === 'preset.scss' || fileName === 'forced-colors.scss') return;
 
 		if (!strict) {
 			// Legacy mode: just check that @layer <layerName> exists when there are CSS rules

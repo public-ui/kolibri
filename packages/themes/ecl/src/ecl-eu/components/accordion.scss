@@ -56,8 +56,8 @@
 					border-end-start-radius: to-rem(2);
 				}
 
-				/* The focusable element is the inner `<button>`; the class carrier is a `div`. */
-				&__button:focus {
+				/* The class carrier is a wrapper — the user-agent focus ring sits on the button inside. */
+				.kol-button__interactive-element:focus {
 					outline: none;
 				}
 			}

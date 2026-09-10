@@ -1,9 +1,8 @@
 import { KolAvatarTag } from '../../core/component-names';
-import type { AvatarProps } from '../../schema';
 import { executeSnapshotTests } from '../../utils/testing';
 import { KolAvatar } from './component';
 
-type AvatarSnapshotProps = AvatarProps & { style?: Record<string, string> };
+type AvatarSnapshotProps = Partial<Pick<KolAvatar, '_color' | '_label' | '_src'>> & { style?: Record<string, string> };
 
 executeSnapshotTests<AvatarSnapshotProps>(
 	KolAvatarTag,

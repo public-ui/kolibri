@@ -3,7 +3,7 @@
 
 /*
  * Interactive link styles. With $anchor-scoped (default) they attach to the inner
- * `kol-link__anchor` of the skeleton DOM. Otherwise they attach to the class carrier
+ * `kol-link__interactive-element` of the skeleton DOM. Otherwise they attach to the class carrier
  * itself, whose element is the interactive one (e.g. `kol-button`, the tree-item label
  * spans), matching the component DOM before the kol-link skeleton migration.
  */
@@ -119,17 +119,8 @@
 			gap: var(--kern-metric-space-2x-small);
 		}
 	} @else {
-		/*
-		 * `$ie` is the focusable element relative to the class carrier: the carrier itself for
-		 * blocks whose DOM did not change (tree-item spans), or its inner element when the button
-		 * skeleton migration moved the focusable element into a wrapper (button-link, nav).
-		 * `:focus`/`:focus-visible` do not propagate to ancestors, so they must sit on it;
-		 * `:hover`/`:active` do and stay on the carrier.
-		 */
-		$ie: if($interactive-suffix, '.#{$block-classname}__#{$interactive-suffix}', '&');
-
 		&:not(&--disabled) {
-			#{$ie}:focus {
+			&:focus {
 				outline: none;
 			}
 
@@ -156,7 +147,7 @@
 		}
 
 		&:not(&--stretched) {
-			#{$ie}:focus-visible {
+			&:focus-visible {
 				box-shadow:
 					var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) var(--kern-metric-space-none, 0) 2px var(--kern-color-action-on-default),
 					/* TODO: Variable mit Design überprüfen */
@@ -203,11 +194,11 @@
 		}
 
 		@if $anchor-scoped {
-			&--external-link .#{$block-classname}__anchor {
+			&--external-link .#{$block-classname}__interactive-element {
 				flex-direction: row-reverse;
 			}
 
-			&__anchor {
+			&__interactive-element {
 				@include kol-link-interactive($block-classname);
 
 				/* The external-link icon aligns to the top edge, as it did inside the

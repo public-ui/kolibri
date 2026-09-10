@@ -22,7 +22,7 @@ import {
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../components/SampleDescription';
-import { useToasterService } from '../hooks/useToasterService';
+import { useAlert } from '../hooks/useAlert';
 
 const OPTIONS = [
 	{
@@ -36,7 +36,7 @@ const OPTIONS = [
 ];
 
 export const DisabledInteractiveElements: FC = () => {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
