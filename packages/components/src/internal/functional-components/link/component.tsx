@@ -114,7 +114,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 					/>
 				</div>
 			)}
-			<AriaDescriptionSpanFC description={trimmedAriaDescription} descriptionId={ariaDescriptionId} />
+			{trimmedAriaDescription && <AriaDescriptionSpanFC description={trimmedAriaDescription} descriptionId={ariaDescriptionId} />}
 		</BemRootNodeFC>
 	);
 };

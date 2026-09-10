@@ -103,7 +103,7 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 					<TooltipFC badgeText={badgeText} label={label} refFloating={refTooltip} />
 				</div>
 			)}
-			<AriaDescriptionSpanFC description={hasAriaDescription ? ariaDescription : undefined} descriptionId={ariaDescriptionId} />
+			{hasAriaDescription && <AriaDescriptionSpanFC description={ariaDescription} descriptionId={ariaDescriptionId} />}
 		</BemRootNodeFC>
 	);
 };
