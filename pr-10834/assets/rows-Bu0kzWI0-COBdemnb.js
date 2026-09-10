@@ -1,0 +1,1 @@
+import{wt as e}from"./index-CosesE5K.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};

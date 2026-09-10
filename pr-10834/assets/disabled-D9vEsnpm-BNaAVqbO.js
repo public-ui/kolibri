@@ -1,0 +1,1 @@
+import{St as e,V as t}from"./index-CosesE5K.js";var n=(n,r)=>{e(n,`_disabled`,r,{hooks:{afterPatch:e=>{e===!0&&t()}}})};export{n as t};
