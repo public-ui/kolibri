@@ -15,7 +15,21 @@ import { pathToFileURL } from 'node:url';
 import { createApi, repositoryFromEnv, setOutputs } from './github-api.mjs';
 
 /** Mirrors `paths-ignore` of the pull_request trigger in .github/workflows/ci.yml – keep in sync. */
-export const CI_IGNORED_PATHS = ['*.md', 'docs/**', 'LICENSE', '.github/ISSUE_TEMPLATE/**', '.github/PULL_REQUEST_TEMPLATE/**'];
+export const CI_IGNORED_PATHS = [
+	'*.md',
+	'**/*.md',
+	'docs/**',
+	'LICENSE',
+	'.github/ISSUE_TEMPLATE/**',
+	'.github/PULL_REQUEST_TEMPLATE/**',
+	'renovate.json',
+	'publiccode.yml',
+	'.vscode/**',
+	'license-reports/**',
+	'*.jpg',
+	'*.png',
+	'*.svg',
+];
 const VISUAL_JOB = /^visual-tests \(/;
 
 function globToRegExp(glob) {

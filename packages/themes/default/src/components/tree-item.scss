@@ -20,7 +20,7 @@
 
 			/* The padding-right lives on the anchor: its focus outline has to reach the row edge
 			   so that it covers the list frame exactly like the former full-width anchor did. */
-			.kol-link__anchor {
+			.kol-link__interactive-element {
 				padding-right: to-rem(8);
 			}
 
@@ -34,7 +34,7 @@
 					outline-offset: 0;
 				}
 
-				.kol-link__anchor {
+				.kol-link__interactive-element {
 					color: var(--color-light);
 					outline-offset: 0;
 				}

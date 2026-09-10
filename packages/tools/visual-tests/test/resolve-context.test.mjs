@@ -17,14 +17,38 @@ const OPEN_PULL = { number: 42, state: 'open', head: { sha: 'head1' }, base: { r
 
 describe('isIgnoredByCi', () => {
 	it('mirrors the paths-ignore list of ci.yml', () => {
-		assert.deepEqual(CI_IGNORED_PATHS, ['*.md', 'docs/**', 'LICENSE', '.github/ISSUE_TEMPLATE/**', '.github/PULL_REQUEST_TEMPLATE/**']);
+		assert.deepEqual(CI_IGNORED_PATHS, [
+			'*.md',
+			'**/*.md',
+			'docs/**',
+			'LICENSE',
+			'.github/ISSUE_TEMPLATE/**',
+			'.github/PULL_REQUEST_TEMPLATE/**',
+			'renovate.json',
+			'publiccode.yml',
+			'.vscode/**',
+			'license-reports/**',
+			'*.jpg',
+			'*.png',
+			'*.svg',
+		]);
 		assert.ok(isIgnoredByCi('README.md'));
 		assert.ok(isIgnoredByCi('docs/arc42/01.md'));
 		assert.ok(isIgnoredByCi('LICENSE'));
 		assert.ok(isIgnoredByCi('.github/ISSUE_TEMPLATE/bug.yml'));
-		assert.equal(isIgnoredByCi('packages/components/README.md'), false, '*.md only matches the repository root');
+		// `*.md` stops at the root, `**/*.md` covers everything below it – both are needed because
+		// globToRegExp turns `**/*.md` into a pattern that always expects a slash.
+		assert.ok(isIgnoredByCi('packages/components/README.md'));
+		assert.ok(isIgnoredByCi('renovate.json'));
+		assert.ok(isIgnoredByCi('license-reports/components.csv'));
+		assert.ok(isIgnoredByCi('kolibri.logo.svg'));
 		assert.equal(isIgnoredByCi('packages/themes/default/src/x.ts'), false);
 		assert.equal(isIgnoredByCi('docs-site/index.ts'), false);
+		// Everything that can change what gets built has to keep triggering the pipeline.
+		assert.equal(isIgnoredByCi('package.json'), false);
+		assert.equal(isIgnoredByCi('pnpm-lock.yaml'), false);
+		assert.equal(isIgnoredByCi('packages/components/package.json'), false);
+		assert.equal(isIgnoredByCi('packages/components/src/icon.svg'), false);
 	});
 });
 

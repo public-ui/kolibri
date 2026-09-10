@@ -40,7 +40,7 @@
 		}
 	}
 
-	.kol-button:focus {
+	.kol-button__interactive-element:focus {
 		@include focus-outline;
 	}
 }

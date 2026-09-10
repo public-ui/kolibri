@@ -5,10 +5,18 @@ on:
     types: [opened, reopened, synchronize]
     paths-ignore:
       - '*.md'
+      - '**/*.md'
       - 'docs/**'
       - 'LICENSE'
       - '.github/ISSUE_TEMPLATE/**'
       - '.github/PULL_REQUEST_TEMPLATE/**'
+      - 'renovate.json'
+      - 'publiccode.yml'
+      - '.vscode/**'
+      - 'license-reports/**'
+      - '*.jpg'
+      - '*.png'
+      - '*.svg'
   push:
     branches:
       - 'develop'
@@ -16,8 +24,18 @@ on:
       - 'release/*'
     paths-ignore:
       - '*.md'
+      - '**/*.md'
       - 'docs/**'
       - 'LICENSE'
+      - '.github/ISSUE_TEMPLATE/**'
+      - '.github/PULL_REQUEST_TEMPLATE/**'
+      - 'renovate.json'
+      - 'publiccode.yml'
+      - '.vscode/**'
+      - 'license-reports/**'
+      - '*.jpg'
+      - '*.png'
+      - '*.svg'
   workflow_dispatch:
 
 concurrency:

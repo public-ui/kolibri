@@ -1,22 +1,44 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import type { Generic } from 'adopted-style-sheets';
+import { getFeatureFlag } from 'adopted-style-sheets';
+
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { ButtonApi, ButtonWebComponentInterface } from '../../internal/functional-components/button/api';
+import { buttonPropsConfig } from '../../internal/functional-components/button/api';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
+import {
+	accessKeyProp,
+	ariaControlsProp,
+	ariaDescriptionProp,
+	ariaExpandedProp,
+	ariaSelectedProp,
+	buttonCallbacksProp,
+	buttonTypeProp,
+	customClassProp,
+	disabledProp,
+	hideLabelProp,
+	inlineProp,
+	labelWithExpertSlotProp,
+	linkRoleProp,
+	nameProp,
+	shortKeyProp,
+	spanIconsProp,
+	tooltipAlignProp,
+	variantProp,
+} from '../../internal/props';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
 	AriaDescriptionPropType,
-	AriaExpandedPropType,
-	AriaSelectedPropType,
-	ButtonAPI,
 	ButtonCallbacksPropType,
-	ButtonStates,
+	ButtonProps,
 	ButtonTypePropType,
 	ClickableElement,
 	CustomClassPropType,
-	DisabledPropType,
 	FocusableElement,
-	HideLabelPropType,
 	IconsPropType,
-	IdPropType,
 	InlinePropType,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
@@ -26,469 +48,84 @@ import type {
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import {
-	classNameFromVariant,
-	mapBoolean2String,
-	mapStringOrBoolean2String,
-	setEventTarget,
-	setState,
-	showExpertSlot,
-	validateAccessKey,
-	validateAlternativeButtonLinkRole,
-	validateAriaControls,
-	validateAriaDescription,
-	validateAriaExpanded,
-	validateAriaSelected,
-	validateButtonCallbacks,
-	validateButtonType,
-	validateCustomClass,
-	validateDisabled,
-	validateHideLabel,
-	validateIcons,
-	validateInline,
-	validateLabelWithExpertSlot,
-	validateShortKey,
-	validateTooltipAlign,
-	validateVariantClassName,
-	watchString,
-} from '../../schema';
-import { validateTabIndex } from '../../schema/props/tab-index';
-
-import { getFeatureFlag } from 'adopted-style-sheets';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { SpanFC } from '../../internal/functional-components/span/component';
-import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { TooltipFC } from '../../internal/functional-components/tooltip/component';
-import type { AriaHasPopupPropType } from '../../schema/props/aria-has-popup';
+import { setEventTarget } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
-import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
-import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
+import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
 import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 
 /**
- * @internal
+ * The **Button** component is used to present users with action options and arrange them in a clear hierarchy. It helps users find the most important actions on a page or within a viewport and allows them to execute those actions. The button label clearly indicates which action will be triggered. Buttons allow users to confirm a change, complete steps in a task, or make decisions.
+ *
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
-	tag: 'kol-button-wc',
-	shadow: false,
+	tag: 'kol-button',
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: true,
 })
-export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElement {
-	@Element() protected readonly host?: HTMLKolButtonWcElement;
+export class KolButton extends BaseWebComponent<ButtonApi> implements ButtonProps, ButtonWebComponentInterface, ClickableElement, FocusableElement {
+	@Element() protected readonly host?: HTMLKolButtonElement;
+
 	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
-	private readonly tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
-	private readonly internalDescriptionById = nonce();
+
+	// --- Composed behaviors ---
+
+	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 
 	/**
-	 * Sets focus on the internal element.
+	 * `AssociatedInputController` predates the skeleton architecture: it expects a
+	 * `Generic.Element.Component`, i.e. a mutable `state` bag plus underscored props. A skeleton web
+	 * component has no such bag, so the controller receives this minimal adapter instead of the
+	 * component itself. It carries exactly what the controller reads and writes: `state` (patched
+	 * by `validateName`), `_name` and `_syncValueBySelector`.
 	 */
-	@Method()
-	@directFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	private readonly formAssociation: Generic.Element.Component & Pick<ButtonProps, '_name' | '_syncValueBySelector'> = { state: {} };
 
-	/**
-	 * Clicks the primary interactive element inside this component.
-	 */
-	@Method()
-	@directClick('ctaRef')
-	public async click(): Promise<void> {}
-
-	private readonly onClick = (event: MouseEvent) => {
-		event.stopPropagation();
-		this.tooltipBehavior.hideTooltip();
-
-		if (this.state._type === 'submit') {
-			propagateSubmitEventToForm({
-				form: this.host,
-				ref: this.ctaRef.el,
-			});
-		} else if (this.state._type === 'reset') {
-			propagateResetEventToForm({
-				form: this.host,
-				ref: this.ctaRef.el,
-			});
-		} else {
-			// TODO: Static form handling
-			this.controller.setFormAssociatedValue(this.state._value);
-
-			// Callback
-			if (typeof this.state._on?.onClick === 'function') {
-				setEventTarget(event, this.ctaRef.el);
-				this.state._on?.onClick(event, this.state._value);
-			}
-		}
-
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.click, this.state._value);
-		}
-	};
-
-	private readonly onMouseDown = (event: MouseEvent) => {
-		this.state?._on?.onMouseDown?.(event);
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.mousedown);
-		}
-	};
-
-	private readonly onFocus = (event: FocusEvent) => {
-		this.state?._on?.onFocus?.(event);
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.focus);
-		}
-	};
-
-	private readonly onBlur = (event: FocusEvent) => {
-		this.state?._on?.onBlur?.(event);
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.blur);
-		}
-	};
-
-	public render(): JSX.Element {
-		const hasExpertSlot = showExpertSlot(this.state._label);
-		const hasAriaDescription = Boolean(this.state._ariaDescription?.trim()?.length);
-		const badgeText = this.state._accessKey || this.state._shortKey;
-		const isDisabled = this.state._disabled === true;
-		const hideLabel = this.state._hideLabel === true;
-
-		return (
-			<Host>
-				<button
-					ref={this.ctaRef}
-					accessKey={this.state._accessKey}
-					aria-controls={this.state._ariaControls}
-					aria-describedby={hasAriaDescription ? this.internalDescriptionById : undefined}
-					aria-expanded={mapBoolean2String(this.state._ariaExpanded)}
-					aria-haspopup={this._ariaHasPopup}
-					aria-keyshortcuts={this.state._shortKey}
-					aria-label={hideLabel && typeof this.state._label === 'string' && this.state._label.length > 0 ? this.state._label : undefined}
-					aria-selected={mapStringOrBoolean2String(this.state._ariaSelected)}
-					class={clsx('kol-button', {
-						'kol-button--disabled': isDisabled,
-						[classNameFromVariant(this.state._variant, 'button')]: this.state._variant !== undefined,
-						'kol-button--inline': this.state._inline === true,
-						'kol-button--standalone': this.state._inline === false,
-						'kol-button--hide-label': hideLabel,
-						[this.state._customClass as string]: typeof this.state._customClass === 'string' && this.state._customClass.length > 0,
-					})}
-					disabled={isDisabled}
-					id={this.state._id}
-					name={this.state._name}
-					onClick={this.onClick}
-					onMouseDown={this.onMouseDown}
-					onFocus={this.onFocus}
-					onBlur={this.onBlur}
-					role={this.state._role}
-					tabIndex={this.state._tabIndex}
-					type={this.state._type}
-				>
-					<SpanFC class="kol-button__text" badgeText={badgeText} icons={this.state._icons} hideLabel={hideLabel} label={hasExpertSlot ? '' : this.state._label}>
-						<slot name="expert" slot="expert"></slot>
-					</SpanFC>
-				</button>
-				{hideLabel && typeof this.state._label === 'string' && this.state._label.length > 0 && (
-					<div class="kol-button__tooltip">
-						<TooltipFC
-							badgeText={badgeText || ''}
-							label={this.state._label}
-							id={this.tooltipBehavior.getRenderProp('id')}
-							refFloating={this.tooltipBehavior.setTooltipElementRef}
-						/>
-					</div>
-				)}
-				{hasAriaDescription && (
-					<span class="visually-hidden" id={this.internalDescriptionById}>
-						{this.state._ariaDescription}
-					</span>
-				)}
-			</Host>
-		);
-	}
-
-	private readonly controller: AssociatedInputController;
-
-	/**
-	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
-	 */
-	@Prop() public _accessKey?: AccessKeyPropType;
-
-	/**
-	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
-	 */
-	@Prop() public _ariaControls?: string;
-
-	/**
-	 * Defines the value for the aria-description attribute.
-	 */
-	@Prop() public _ariaDescription?: AriaDescriptionPropType;
-
-	/**
-	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
-	 */
-	@Prop() public _ariaExpanded?: boolean;
-
-	/**
-	 * Defines the aria-haspopup attribute. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-haspopup)
-	 * @internal
-	 */
-	@Prop() public _ariaHasPopup?: AriaHasPopupPropType;
-
-	/**
-	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
-	 */
-	@Prop() public _ariaSelected?: boolean;
-
-	/**
-	 * Defines the custom class attribute if _variant="custom" is set.
-	 */
-	@Prop() public _customClass?: CustomClassPropType;
-
-	/**
-	 * Makes the element not focusable and ignore all events.
-	 */
-	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Hides the caption by default and displays the caption text with a tooltip when the
-	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideLabel?: boolean = false;
-
-	/**
-	 * Defines the icon classnames.
-	 */
-	@Prop() public _icons?: IconsPropType;
-
-	/**
-	 * Defines the internal ID of the primary component element.
-	 * @internal
-	 */
-	@Prop() public _id?: IdPropType;
-
-	/**
-	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
-	 */
-	@Prop() public _inline?: InlinePropType = false;
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
-	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
-
-	/**
-	 * Defines the technical name of an input field.
-	 */
-	@Prop() public _name?: string;
-
-	/**
-	 * Defines the callback functions for button events.
-	 */
-	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
-
-	/**
-	 * Defines the role of the components primary element.
-	 */
-	@Prop() public _role?: AlternativeButtonLinkRolePropType;
-
-	/**
-	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
-	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
-
-	/**
-	 * Selector for synchronizing the value with another input element.
-	 * @internal
-	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
-
-	/**
-	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
-	 */
-	@Prop() public _tabIndex?: number;
-
-	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
-
-	/**
-	 * Defines either the type of the component or of the components interactive element.
-	 */
-	@Prop() public _type?: ButtonTypePropType = 'button';
-
-	/**
-	 * Defines the value of the element.
-	 */
-	@Prop() public _value?: StencilUnknown;
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 * @internal
-	 */
-	@Prop() public _variant?: VariantClassNamePropType = getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal';
-
-	@State() public state: ButtonStates = {
-		_icons: {},
-		_label: '', // ⚠ required
-		_on: {},
-		_type: 'button',
-	};
+	private readonly associatedController: AssociatedInputController;
 
 	public constructor() {
-		this.controller = new AssociatedInputController(this, 'button', this.host);
+		super();
+		this.associatedController = new AssociatedInputController(this.formAssociation, 'button', this.host);
 	}
 
-	@Watch('_accessKey')
-	public validateAccessKey(value?: AccessKeyPropType): void {
-		validateAccessKey(this, value);
-		validateAccessAndShortKey(value, this._shortKey);
-	}
-
-	@Watch('_ariaControls')
-	public validateAriaControls(value?: string): void {
-		validateAriaControls(this, value);
-	}
-
-	@Watch('_ariaDescription')
-	public validateAriaDescription(value?: AriaDescriptionPropType): void {
-		validateAriaDescription(this, value);
-	}
-
-	@Watch('_ariaExpanded')
-	public validateAriaExpanded(value?: AriaExpandedPropType): void {
-		validateAriaExpanded(this, value);
-	}
-
-	@Watch('_ariaSelected')
-	public validateAriaSelected(value?: AriaSelectedPropType): void {
-		validateAriaSelected(this, value);
-	}
-
-	@Watch('_customClass')
-	public validateCustomClass(value?: CustomClassPropType): void {
-		validateCustomClass(this, value);
-	}
-
-	@Watch('_disabled')
-	public validateDisabled(value?: DisabledPropType): void {
-		validateDisabled(this, value);
-	}
-
-	@Watch('_hideLabel')
-	public validateHideLabel(value?: HideLabelPropType): void {
-		validateHideLabel(this, value);
-	}
-
-	@Watch('_icons')
-	public validateIcons(value?: IconsPropType): void {
-		validateIcons(this, value);
-	}
-
-	@Watch('_id')
-	public validateId(value?: IdPropType): void {
-		watchString(this, '_id', value);
-	}
-
-	@Watch('_inline')
-	public validateInline(value?: InlinePropType): void {
-		validateInline(this, value, {
-			defaultValue: false,
-		});
-	}
-
-	@Watch('_label')
-	public validateLabel(value?: LabelWithExpertSlotPropType): void {
-		validateLabelWithExpertSlot(this, value, {
-			required: true,
-		});
-		this.tooltipBehavior.watchLabel(typeof value === 'string' ? value : undefined);
-	}
-
-	@Watch('_name')
-	public validateName(value?: string): void {
-		this.controller.validateName(value);
-	}
-
-	@Watch('_on')
-	public validateOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
-		validateButtonCallbacks(this, value);
-	}
-
-	@Watch('_role')
-	public validateRole(value?: AlternativeButtonLinkRolePropType): void {
-		validateAlternativeButtonLinkRole(this, value);
-	}
-
-	@Watch('_shortKey')
-	public validateShortKey(value?: ShortKeyPropType): void {
-		validateShortKey(this, value);
-		validateAccessAndShortKey(this._accessKey, value);
-	}
-
-	@Watch('_syncValueBySelector')
-	public validateSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		this.controller.validateSyncValueBySelector(value);
-	}
-
-	@Watch('_tabIndex')
-	public validateTabIndex(value?: number): void {
-		validateTabIndex(this, value);
-	}
-
-	@Watch('_tooltipAlign')
-	public validateTooltipAlign(value?: TooltipAlignPropType): void {
-		validateTooltipAlign(this, value);
-		this.tooltipBehavior.watchAlign(value);
-	}
-
-	@Watch('_type')
-	public validateType(value?: ButtonTypePropType): void {
-		validateButtonType(this, value);
-	}
-
-	@Watch('_value')
-	public validateValue(value?: StencilUnknown): void {
-		setState(this, '_value', value);
-		this.controller.setFormAssociatedValue(this.state._value);
-	}
-
-	@Watch('_variant')
-	public validateVariant(value?: VariantClassNamePropType): void {
-		validateVariantClassName(this, value);
-	}
+	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
-		this.validateAccessKey(this._accessKey);
-		this.validateAriaControls(this._ariaControls);
-		this.validateAriaDescription(this._ariaDescription);
-		this.validateAriaExpanded(this._ariaExpanded);
-		this.validateAriaSelected(this._ariaSelected);
-		this.validateCustomClass(this._customClass);
-		this.validateDisabled(this._disabled);
-		this.validateHideLabel(this._hideLabel);
-		this.validateIcons(this._icons);
-		this.validateId(this._id);
-		this.validateInline(this._inline);
-		this.validateLabel(this._label);
-		this.validateName(this._name);
-		this.validateOn(this._on);
-		this.validateRole(this._role);
-		this.validateShortKey(this._shortKey);
-		this.validateSyncValueBySelector(this._syncValueBySelector);
-		this.validateTabIndex(this._tabIndex);
-		this.validateTooltipAlign(this._tooltipAlign);
-		this.validateType(this._type);
-		this.validateValue(this._value);
-		this.validateVariant(this._variant);
-		validateAccessAndShortKey(this._accessKey, this._shortKey);
+		this.initRenderProps(buttonPropsConfig);
+		// `kol-button` exposes no `_tabIndex`, and an unset tabindex must not render as
+		// `tabindex="0"` — buttons are natively tabbable and the attribute would pin them into
+		// the document tab order.
+		this.unsetRenderProp('tabIndex');
+
+		this.watchAccessKey(this._accessKey);
+		this.watchAriaControls(this._ariaControls);
+		this.watchAriaDescription(this._ariaDescription);
+		this.watchAriaExpanded(this._ariaExpanded);
+		this.watchAriaSelected(this._ariaSelected);
+		this.watchCustomClass(this._customClass);
+		this.watchDisabled(this._disabled);
+		this.watchHideLabel(this._hideLabel);
+		this.watchIcons(this._icons);
+		this.watchInline(this._inline);
+		this.watchLabel(this._label);
+		this.watchName(this._name);
+		this.watchOn(this._on);
+		this.watchRole(this._role);
+		this.watchShortKey(this._shortKey);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchType(this._type);
+		this.watchValue(this._value);
+		this.watchVariant(this._variant);
+
 		this.tooltipBehavior.componentWillLoad({
-			label: typeof this.state._label === 'string' ? this.state._label : '',
-			align: this._tooltipAlign,
+			label: this.getRenderProp('label'),
+			align: this.getRenderProp('tooltipAlign'),
 		});
 	}
 
@@ -500,5 +137,325 @@ export class KolButtonWc implements ButtonAPI, ClickableElement, FocusableElemen
 
 	public disconnectedCallback(): void {
 		this.tooltipBehavior.destroy();
+	}
+
+	// --- Event handling ---
+
+	private readonly handleClick = (event: MouseEvent): void => {
+		event.stopPropagation();
+		this.tooltipBehavior.hideTooltip();
+
+		const type = this.getRenderProp('type');
+		if (type === 'submit') {
+			propagateSubmitEventToForm({ form: this.host, ref: this.ctaRef.el });
+		} else if (type === 'reset') {
+			propagateResetEventToForm({ form: this.host, ref: this.ctaRef.el });
+		} else {
+			// TODO: Static form handling
+			this.associatedController.setFormAssociatedValue(this._value);
+
+			const onClick = this.getRenderProp('on').onClick;
+			if (typeof onClick === 'function') {
+				setEventTarget(event, this.ctaRef.el);
+				onClick(event, this._value);
+			}
+		}
+
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.click, this._value);
+		}
+	};
+
+	private readonly handleMouseDown = (event: MouseEvent): void => {
+		this.getRenderProp('on').onMouseDown?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.mousedown);
+		}
+	};
+
+	private readonly handleFocus = (event: FocusEvent): void => {
+		this.getRenderProp('on').onFocus?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.focus);
+		}
+	};
+
+	private readonly handleBlur = (event: FocusEvent): void => {
+		this.getRenderProp('on').onBlur?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.blur);
+		}
+	};
+
+	// --- Public methods ---
+
+	/**
+	 * Returns the current value.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async getValue(): Promise<StencilUnknown> {
+		return this._value;
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
+
+	// --- Render ---
+
+	public render(): JSX.Element {
+		return (
+			<Host>
+				<ButtonFC
+					accessKey={this.getRenderProp('accessKey')}
+					ariaControls={this.getRenderProp('ariaControls')}
+					ariaDescription={this.getRenderProp('ariaDescription')}
+					ariaDescriptionId={this.ariaDescriptionId}
+					ariaExpanded={this.getRenderProp('ariaExpanded')}
+					ariaHasPopup={this.getRenderProp('ariaHasPopup')}
+					ariaSelected={this.getRenderProp('ariaSelected')}
+					customClass={this.getRenderProp('customClass')}
+					disabled={this.getRenderProp('disabled')}
+					handleBlur={this.handleBlur}
+					handleClick={this.handleClick}
+					handleFocus={this.handleFocus}
+					handleMouseDown={this.handleMouseDown}
+					hideLabel={this.getRenderProp('hideLabel')}
+					icons={this.getRenderProp('icons')}
+					id={this.getRenderProp('id')}
+					inline={this.getRenderProp('inline')}
+					label={this.getRenderProp('label')}
+					name={this.getRenderProp('name')}
+					on={this.getRenderProp('on')}
+					refButton={this.ctaRef}
+					refTooltip={this.tooltipBehavior.setTooltipElementRef}
+					role={this.getRenderProp('role')}
+					shortKey={this.getRenderProp('shortKey')}
+					tabIndex={this.getRenderProp('tabIndex')}
+					tooltipAlign={this.getRenderProp('tooltipAlign')}
+					type={this.getRenderProp('type')}
+					variant={this.getRenderProp('variant')}
+				/>
+			</Host>
+		);
+	}
+
+	// --- @State ---
+
+	@State() public ariaDescriptionId: string = nonce();
+
+	// --- Props + Watchers ---
+
+	/**
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
+	 */
+	@Prop() public _accessKey?: AccessKeyPropType;
+	@Watch('_accessKey')
+	public watchAccessKey(value?: AccessKeyPropType): void {
+		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		validateAccessAndShortKey(value, this._shortKey);
+	}
+
+	/**
+	 * Defines which elements are controlled by this component. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls)
+	 */
+	@Prop() public _ariaControls?: string;
+	@Watch('_ariaControls')
+	public watchAriaControls(value?: string): void {
+		ariaControlsProp.apply(value, (v) => this.setRenderProp('ariaControls', v));
+	}
+
+	/**
+	 * Defines the value for the aria-description attribute.
+	 */
+	@Prop() public _ariaDescription?: AriaDescriptionPropType;
+	@Watch('_ariaDescription')
+	public watchAriaDescription(value?: AriaDescriptionPropType): void {
+		ariaDescriptionProp.apply(value, (v) => this.setRenderProp('ariaDescription', v));
+	}
+
+	/**
+	 * Defines whether the interactive element of the component expanded something. (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded)
+	 */
+	@Prop() public _ariaExpanded?: boolean;
+	@Watch('_ariaExpanded')
+	public watchAriaExpanded(value?: boolean): void {
+		ariaExpandedProp.apply(value, (v) => this.setRenderProp('ariaExpanded', v));
+	}
+
+	/**
+	 * Defines whether the interactive element of the component is selected (e.g. role=tab). (https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-selected)
+	 */
+	@Prop() public _ariaSelected?: boolean;
+	@Watch('_ariaSelected')
+	public watchAriaSelected(value?: boolean): void {
+		ariaSelectedProp.apply(value, (v) => this.setRenderProp('ariaSelected', v));
+	}
+
+	/**
+	 * Defines the custom class attribute if _variant="custom" is set.
+	 */
+	@Prop() public _customClass?: CustomClassPropType;
+	@Watch('_customClass')
+	public watchCustomClass(value?: CustomClassPropType): void {
+		customClassProp.apply(value, (v) => this.setRenderProp('customClass', v));
+	}
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 */
+	@Prop() public _disabled?: boolean = false;
+	@Watch('_disabled')
+	public watchDisabled(value?: boolean): void {
+		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
+	}
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideLabel?: boolean = false;
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: boolean): void {
+		hideLabelProp.apply(value, (v) => this.setRenderProp('hideLabel', v));
+	}
+
+	/**
+	 * Defines the icon classnames.
+	 */
+	@Prop() public _icons?: IconsPropType;
+	@Watch('_icons')
+	public watchIcons(value?: IconsPropType): void {
+		spanIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+	}
+
+	/**
+	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
+	 */
+	@Prop() public _inline?: InlinePropType = false;
+	@Watch('_inline')
+	public watchInline(value?: InlinePropType): void {
+		inlineProp.apply(value, (v) => this.setRenderProp('inline', v));
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		labelWithExpertSlotProp.apply(value, (v) => {
+			this.setRenderProp('label', v);
+			this.tooltipBehavior.watchLabel(v);
+		});
+	}
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: string;
+	@Watch('_name')
+	public watchName(value?: string): void {
+		nameProp.apply(value, (v) => this.setRenderProp('name', v));
+		this.formAssociation._name = value;
+		this.associatedController.validateName(value);
+	}
+
+	/**
+	 * Defines the callback functions for button events.
+	 */
+	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
+	@Watch('_on')
+	public watchOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
+		buttonCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+	}
+
+	/**
+	 * Defines the role of the components primary element.
+	 *
+	 * @deprecated We prefer the semantic role of the HTML element and do not allow for customization. We will remove this prop in the future.
+	 */
+	@Prop() public _role?: AlternativeButtonLinkRolePropType;
+	@Watch('_role')
+	public watchRole(value?: AlternativeButtonLinkRolePropType): void {
+		linkRoleProp.apply(value, (v) => this.setRenderProp('role', v));
+	}
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		validateAccessAndShortKey(this._accessKey, value);
+	}
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.formAssociation._syncValueBySelector = value;
+		this.associatedController.validateSyncValueBySelector(value);
+	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		tooltipAlignProp.apply(value, (v) => {
+			this.setRenderProp('tooltipAlign', v);
+			this.tooltipBehavior.watchAlign(v);
+		});
+	}
+
+	/**
+	 * Defines either the type of the component or of the components interactive element.
+	 */
+	@Prop() public _type?: ButtonTypePropType = 'button';
+	@Watch('_type')
+	public watchType(value?: ButtonTypePropType): void {
+		buttonTypeProp.apply(value, (v) => this.setRenderProp('type', v));
+	}
+
+	/**
+	 * Defines the value of the element.
+	 */
+	@Prop() public _value?: StencilUnknown;
+	@Watch('_value')
+	public watchValue(value?: StencilUnknown): void {
+		this.associatedController.setFormAssociatedValue(value);
+	}
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		// The predecessor took the default from the inner `kol-button-wc`, whose `_variant` prop
+		// defaulted to the `buttonVariantDefault` feature flag (or `'normal'`). Now that
+		// `kol-button` renders the functional component itself, that fallback has to live here —
+		// as a fallback rather than a `@Prop` default, so the public API stays identical.
+		variantProp.apply(value ?? getFeatureFlag('buttonVariantDefault', this.host) ?? 'normal', (v) => this.setRenderProp('variant', v));
 	}
 }

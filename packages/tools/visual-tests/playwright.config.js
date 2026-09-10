@@ -4,6 +4,12 @@ import * as path from 'path';
 import * as process from 'process';
 import { fileURLToPath } from 'url';
 
+/** Reads a positive integer from an env var, falling back for missing, non-numeric or non-positive input. */
+const parsePositiveInt = (raw, fallback) => {
+	const parsed = parseInt(raw ?? '', 10);
+	return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
+};
+
 // Validate and set ENVs
 const PORT = parseInt(process.env.KOLIBRI_VISUAL_TEST_PORT || '', 10);
 const BASE_URL = `http://localhost:${PORT}`;
@@ -49,8 +55,12 @@ export default defineConfig({
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
 	retries: process.env.CI ? 2 : 0,
-	/* Opt out of parallel tests on CI. */
-	workers: process.env.CI ? 1 : undefined,
+	/* Parallel workers. Local runs default to 4 (fast iteration); CI defaults to 1 for maximum
+	   snapshot stability (parallel Firefox instances can produce sub-pixel-flaky renders).
+	   `KOLIBRI_VISUAL_TESTS_WORKERS` overrides both — `snapshots-docker.mjs` sets it to 1 for every
+	   verifying run, so an acceptance result never depends on the worker count.
+	   Parsed strictly: a non-numeric or non-positive value falls back instead of yielding NaN. */
+	workers: parsePositiveInt(process.env.KOLIBRI_VISUAL_TESTS_WORKERS, process.env.CI ? 1 : 4),
 	/* Allow to override the expectation timeout for slow environments */
 	timeout: TIMEOUT,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
