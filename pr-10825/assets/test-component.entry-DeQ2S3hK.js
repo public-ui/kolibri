@@ -1,0 +1,1 @@
+import{s as e}from"./index-wFSFk-r5.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};

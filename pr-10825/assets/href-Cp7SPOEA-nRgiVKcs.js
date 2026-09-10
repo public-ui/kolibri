@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-wFSFk-r5.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};
