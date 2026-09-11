@@ -1,0 +1,1 @@
+import"./index-rgBeKImn.js";import{r as e}from"./align-DnuTHmUs-DCAsmn_3.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
