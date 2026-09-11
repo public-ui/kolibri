@@ -1,1 +1,0 @@
-import{wt as e}from"./index-tO2XxOV5.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};

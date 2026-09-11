@@ -1,0 +1,1 @@
+import{St as e}from"./index-kTpW6BE5.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};

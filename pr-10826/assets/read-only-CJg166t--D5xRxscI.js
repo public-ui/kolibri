@@ -1,1 +1,0 @@
-import{St as e}from"./index-tO2XxOV5.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
