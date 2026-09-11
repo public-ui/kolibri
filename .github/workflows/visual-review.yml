@@ -15,6 +15,12 @@ on:
   workflow_run:
     workflows: ['CI-Pipeline']
     types: [completed]
+    # CI-Pipeline also runs on push to these branches; without this filter every such push would
+    # start this workflow too (it would end up skipped, but still show up as a run).
+    branches-ignore:
+      - develop
+      - main
+      - 'release/*'
   issue_comment:
     types: [created, edited, deleted]
   pull_request_target:
