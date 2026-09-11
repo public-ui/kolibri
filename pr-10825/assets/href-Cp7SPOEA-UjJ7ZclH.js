@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-DgALXFJ-.js";var t=(t,n,r={})=>{e(t,`_href`,n,r)};export{t};
