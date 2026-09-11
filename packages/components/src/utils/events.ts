@@ -39,4 +39,22 @@ function dispatchDomEvent<T>(target: EventTarget, event: KolEvent, detail?: T): 
 	return target.dispatchEvent(createKoliBriEvent<T>(event, detail));
 }
 
-export { KolEvent, dispatchDomEvent };
+/**
+ * Creates a synthetic event for value changes that are not triggered by a real DOM event, e.g. clicking a
+ * clear button. The event itself is never dispatched: it is only handed to the controller's onFacade methods,
+ * which dispatch the public CustomEvent on the host themselves. Consumers receive it as the `event` argument
+ * of `_on.onInput` / `_on.onChange`, so `target` and `currentTarget` are patched to the interactive element
+ * they would expect - an undispatched event would report `null` there.
+ */
+function createEventWithTarget<T>(event: KolEvent, detail: T | null = null, target?: EventTarget | null): CustomEvent<T | null> {
+	const customEvent = createKoliBriEvent<T>(event, detail);
+
+	if (target) {
+		Object.defineProperty(customEvent, 'target', { value: target });
+		Object.defineProperty(customEvent, 'currentTarget', { value: target });
+	}
+
+	return customEvent;
+}
+
+export { KolEvent, createEventWithTarget, dispatchDomEvent };

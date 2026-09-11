@@ -43,6 +43,7 @@ import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
+import { createEventWithTarget, KolEvent } from '../../utils/events';
 import { SingleSelectController } from './controller';
 
 /**
@@ -114,24 +115,6 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 		}
 	}
 
-	private createEventWithTarget(type: string, detail: EventDetail): CustomEvent<EventDetail> {
-		const event = new CustomEvent<EventDetail>(type, {
-			bubbles: true,
-			detail,
-		});
-
-		if (this.ctaRef.el) {
-			Object.defineProperty(event, 'target', {
-				value: this.ctaRef.el,
-			});
-
-			Object.defineProperty(event, 'currentTarget', {
-				value: this.ctaRef.el,
-			});
-		}
-		return event;
-	}
-
 	private clearSelection() {
 		if (this.state._disabled) {
 			return;
@@ -143,14 +126,22 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 		this._inputValue = '';
 		this._filteredOptions = [...this.state._options];
 
-		const inputEvent = this.createEventWithTarget('input', {
-			name: this.state._name as string,
-			value: emptyValue,
-		});
-		const changeEvent = this.createEventWithTarget('change', {
-			name: this.state._name as string,
-			value: emptyValue,
-		});
+		const inputEvent = createEventWithTarget<EventDetail>(
+			KolEvent.input,
+			{
+				name: this.state._name as string,
+				value: emptyValue,
+			},
+			this.ctaRef.el,
+		);
+		const changeEvent = createEventWithTarget<EventDetail>(
+			KolEvent.change,
+			{
+				name: this.state._name as string,
+				value: emptyValue,
+			},
+			this.ctaRef.el,
+		);
 
 		this.controller.onFacade.onInput(inputEvent, true, { value: emptyValue });
 		this.controller.onFacade.onChange(changeEvent, { value: emptyValue });
@@ -169,14 +160,22 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 		this._value = option.value;
 		this._inputValue = option.label as string;
 
-		const inputEvent = this.createEventWithTarget('input', {
-			name: this.state._name ?? '',
-			value: option.value,
-		});
-		const changeEvent = this.createEventWithTarget('change', {
-			name: this.state._name ?? '',
-			value: option.value,
-		});
+		const inputEvent = createEventWithTarget<EventDetail>(
+			KolEvent.input,
+			{
+				name: this.state._name ?? '',
+				value: option.value,
+			},
+			this.ctaRef.el,
+		);
+		const changeEvent = createEventWithTarget<EventDetail>(
+			KolEvent.change,
+			{
+				name: this.state._name ?? '',
+				value: option.value,
+			},
+			this.ctaRef.el,
+		);
 
 		this.controller.onFacade.onInput(inputEvent, false, option.value);
 		this.controller.onFacade.onChange(changeEvent, option.value);
