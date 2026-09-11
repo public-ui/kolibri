@@ -133,9 +133,11 @@ To activate it:
 
 1. Ensure that GitHub App installation grants **contents: write**, **pull-requests: write**,
    **issues: write** (for the Dependency Dashboard), **workflows: write** (so the `github-actions`
-   manager may update `.github/workflows/*`), **commit statuses: write** and
-   **Dependabot alerts: read**. _Alternative:_ replace the app-token step with a
-   `RENOVATE_TOKEN` PAT/fine-grained token carrying the same scopes.
+   manager may update `.github/workflows/*`), **commit statuses: write**, **Dependabot alerts: read**
+   and the mandatory **metadata: read**. Nothing beyond those seven is needed. Changing them at the
+   App is only half of it: the installation has to accept the new set, otherwise the runner keeps
+   working with the old one and the symptoms below stay. _Alternative:_ replace the app-token step
+   with a `RENOVATE_TOKEN` PAT/fine-grained token carrying the same scopes.
 
    > **Commit statuses: write is not optional.** `minimumReleaseAge` makes Renovate post a
    > `renovate/stability-days` commit status on every branch that still holds a pending release.
@@ -150,21 +152,46 @@ To activate it:
    > `Cannot access vulnerability alerts`, and `vulnerabilityAlerts` stays inactive; security PRs
    > then only come from `osvVulnerabilityAlerts`.
 
-2. For automerge to work end to end, check three repository settings:
-   - **Settings → General → Pull Requests → Allow auto-merge**: enabled (Renovate uses
-     `platformAutomerge`, i.e. GitHub's native auto-merge).
-   - **Branch protection for `develop` (and `release/2`, `release/1`, `release/3`) → required status
-     checks**: add the CI gate jobs (`check-results`, `validate-pr-title`) so a PR is only merged
-     when the pipelines are green. As of 2026-09-09 the `Production branches` ruleset requires
-     `Visual Review`, `validate-pr-title`, `validate-release-label` and `CodeQL`, but **not**
-     `check-results` — a red pipeline blocks Renovate (it refuses to merge a red branch) but not a
-     human. Two of those four are required and therefore may never be skipped by a path filter:
-     `codeql.yml` runs on every pull request for exactly that reason, and `visual-review.yml`
-     answers a skipped CI run with the status `success` (mode `docs-only`, see
-     `scripts/visual-review/resolve-context.mjs`).
-   - **Branch protection for `develop` (and `release/*`) → bypass pull request allowances**: the
-     runner App (`publicuibot`) must be listed there, so its PRs can merge without a human
-     code-owner review.
+2. Branch protection. What governs `develop` are **rulesets**, not a classic branch protection
+   rule. Keep it that way: a classic rule for the same branch is evaluated on top of the rulesets,
+   and its _bypass required pull requests_ list only waives the need to **open** a pull request. It
+   does not waive the approval a merge needs, so the bot stays blocked while the list suggests
+   otherwise.
+
+   A bypass entry always waives **every rule of its ruleset**, never a single one. Hence the split:
+
+   | Ruleset               | Rules                                                            | Bypass list   |
+   | --------------------- | ---------------------------------------------------------------- | ------------- |
+   | `Production branches` | `pull_request` (approvals, code-owner review, merge methods)     | `publicuibot` |
+   | `Required checks`     | `required_status_checks`, restrict deletions, block force pushes | empty         |
+
+   The runner merges without a human review, but never past a red check. For everyone else nothing
+   changes.
+
+   Three details that cost an evening on 2026-09-09:
+
+   - `allowed_merge_methods` of the `pull_request` rule is `["merge"]`, which is why
+     `automergeStrategy` is `merge`. On the repository itself both squash merges and merge commits
+     are enabled; the ruleset is what narrows it down.
+   - A required status check may never be skipped by a path filter, or the pull request waits
+     forever for a status that nothing will post. `codeql.yml` therefore has no `paths-ignore`, and
+     `visual-review.yml` answers a skipped CI run with `success` (mode `docs-only`, see
+     `scripts/visual-review/resolve-context.mjs`). Anything added to the list has to obey the same
+     rule. `check-results` is deliberately absent: a red pipeline stops Renovate, which refuses to
+     merge a red branch, but it does not stop a human.
+   - Every workflow behind a required check needs `synchronize` in its `pull_request` types.
+     GitHub wants the check on the **current head commit**, so a workflow that only reacts to
+     `opened`/`edited` leaves it unreported after any push and the merge is refused with
+     `Required status check "…" is expected`. Renovate runs into this on every rebase; that is what
+     `pr-title-validation.yml` was missing.
+   - In the target patterns of a ruleset GitHub prefixes `refs/heads/` itself. Enter `release/**/*`,
+     never `refs/heads/release/**/*`, otherwise the prefix doubles and the release branches silently
+     lose their protection. `gh api repos/public-ui/kolibri/rules/branches/release/3` shows what is
+     really in effect.
+
+   Repository level, **Settings → General → Pull Requests**: `Allow auto-merge` stays on, Renovate
+   uses `platformAutomerge`.
+
 3. Trigger the workflow once via **Run workflow** (optionally with `dry_run` enabled) to verify it, then
    let the 4-hours schedule take over.
 
@@ -204,6 +231,7 @@ repository setting or a ruleset, never `renovate.json`. Renovate walks three str
 | `405` `Squash merges are not allowed on this repository.` | The merge method is not allowed here — see `allowed_merge_methods` below. |
 | `405` `Rebase merges are not allowed on this repository.` | Same, for rebase.                                                         |
 | `405` `Repository rule violations found: …`               | A ruleset blocks the bot; the text names the rule.                        |
+| `405` `… Required status check "x" is expected.`          | Check `x` never ran on the head commit — see `synchronize` in §3.         |
 | `403` `Resource not accessible by integration`            | The App lacks **contents: write**.                                        |
 
 Which rules actually apply to a branch is readable without admin rights:
@@ -214,20 +242,19 @@ gh api repos/public-ui/kolibri/rules/branches/develop
 
 > **The case of 2026-09-09.** Every green dependency PR sat blocked with `mergeable_state: blocked`
 > while the pipelines were green and no review existed. All three attempts failed with `405`. The
-> ruleset **Production branches** (it covers the default branch and `release/**`) carries a
-> `pull_request` rule whose `allowed_merge_methods` is `["merge"]`, which is what rejected squash
-> and rebase; `automergeStrategy` has been set to `merge` since. The merge commit itself was then
-> refused by the same rule:
-> `New changes require approval from someone other than the last pusher`.
-> The bot can never satisfy that one on its own branches, because it is always the last pusher. It
-> needs an approval, or an entry in that ruleset's bypass list that covers the `pull_request` rule
-> (**Settings → Rules → Rulesets → Production branches → Bypass list**). Mind that a bypass entry
-> for the App did **not** end this: with `publicuibot` listed, two consecutive runs were refused
-> with this same rule and no other violation. So check the entry itself — `actor_type` has to be
-> `Integration` and `bypass_mode` `always`, readable with admin rights via
-> `gh api repos/public-ui/kolibri/rulesets/22621638 --jq .bypass_actors`. If it is already both,
-> the rule named in the 405 is the only remaining lever: **Require approval of the most recent
-> reviewable push** in that ruleset.
+> two rules behind it both lived in one ruleset that carried everything at once:
+> `allowed_merge_methods: ["merge"]` rejected squash and rebase, and `require_last_push_approval`
+> rejected the merge commit, a rule the bot can never satisfy on its own branches because it is
+> always the last pusher. The App was listed in the bypass list of the **classic** branch
+> protection rule, which looks like the fix and is not one: that list only waives the need to open
+> a pull request.
+>
+> What resolved it: the rules were split into the two rulesets described in
+> [§3](#option-a--self-hosted-via-github-actions-committed-in-this-repo), the App went into the
+> bypass list of the one holding the `pull_request` rule, the classic rule was deleted, and
+> `automergeStrategy` moved from `squash` to `merge`. A bypass entry is worth nothing until it sits
+> on the ruleset that actually carries the failing rule, and `bypass_actors` is only readable with
+> admin rights, so the runner log stays the honest source.
 
 Two more silent failures show up as warnings rather than as a blocked PR:
 

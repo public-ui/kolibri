@@ -1,6 +1,11 @@
 name: PR Title Validation
 
 on:
+  # `synchronize` is not optional: `validate-pr-title` is a required status check, and GitHub wants
+  # it on the pull request's *current head commit*. Without it every push leaves the check
+  # unreported on the new commit, GitHub answers a merge with
+  # `Required status check "validate-pr-title" is expected` and the pull request never becomes
+  # mergeable. Renovate hits this on every rebase. See docs/RENOVATE.md, section Troubleshooting.
   pull_request:
     # `synchronize` is required: check runs are attached to a head SHA. Without it,
     # every push creates a new SHA for which this required check never reports and the
