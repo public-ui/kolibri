@@ -11,6 +11,7 @@ import type {
 } from '../props';
 import type { PropPaginationPosition } from '../props/pagination-position';
 import type { KoliBriSortDirection, KoliBriTableDataType, KoliBriTableHeaderCell, KoliBriTableSelection, Stringified } from '../types';
+import type { BadgeProps } from './badge';
 import type { InternalButtonProps } from './button';
 import type { LinkProps } from './link';
 import type { KoliBriPaginationProps } from './pagination';
@@ -25,6 +26,13 @@ export type ActionColumnPropType =
 	| ({
 			type: 'link';
 	  } & LinkProps);
+
+/**
+ * State column item type that can be either a button or a link.
+ */
+export type StateColumnPropType = {
+	type: 'badge';
+} & BadgeProps;
 
 export type KoliBriTableSelectedHead = { key: string; label: string; sortDirection: KoliBriSortDirection };
 
@@ -45,6 +53,15 @@ export type KoliBriTableHeaderCellWithLogic = DefaultHeaderCell | ActionColumnHe
 export type ActionColumnHeaderCell = KoliBriTableHeaderCell & {
 	type: 'action';
 	actions: (row: KoliBriTableDataType) => ActionColumnPropType[];
+};
+
+/**
+ * State column header cell that defines states for each row.
+ * The states function receives the row data and returns an array of state items (badges).
+ */
+export type StateColumnHeaderCell = KoliBriTableHeaderCell & {
+	type: 'state';
+	states: (row: KoliBriTableDataType) => StateColumnPropType[];
 };
 
 export type KoliBriTableHeaders = {
