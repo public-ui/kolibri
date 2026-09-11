@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, Fragment, h, Listen, Prop, State, Watch } from '@stencil/core';
 
 import { isEqual } from 'lodash-es';
-import { KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag } from '../../core/component-names';
+import { KolBadgeTag, KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import { SpinFC } from '../../internal/functional-components/spin/component';
@@ -20,6 +20,7 @@ import type {
 	KoliBriTableRender,
 	LabelPropType,
 	SelectionChangeEventPayload,
+	StateColumnHeaderCell,
 	TableCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
@@ -389,7 +390,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	 * Finds the ActionColumnHeaderCell for a given column index.
 	 * Returns the action column header if found, otherwise undefined.
 	 */
-	private getActionColumnHeader(colIndex: number): ActionColumnHeaderCell | undefined {
+	private getColumnHeaderForType(colIndex: number, type: string): ActionColumnHeaderCell | StateColumnHeaderCell | undefined {
 		const headers = this.horizontal ? this.state._headers.horizontal : this.state._headers.vertical;
 		if (!headers || headers.length === 0) return undefined;
 
@@ -397,8 +398,10 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 		const primaryHeader = this.getPrimaryHeaders(this.state._headers);
 		const header = primaryHeader[colIndex];
 
-		if (header && (header as ActionColumnHeaderCell).type === 'action') {
+		if (type === 'action' && header && (header as ActionColumnHeaderCell).type === 'action') {
 			return header as ActionColumnHeaderCell;
+		} else if (type === 'state' && header && (header as StateColumnHeaderCell).type === 'state') {
+			return header as StateColumnHeaderCell;
 		}
 		return undefined;
 	}
@@ -870,8 +873,11 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 			const isNoEntriesHintCell = typeof cell.render !== 'function' && cell.label === this.translateNoEntries;
 
 			// Check if this column is an action column
-			const actionColumn = this.getActionColumnHeader(colIndex);
+			const actionColumn = this.getColumnHeaderForType(colIndex, 'action') as ActionColumnHeaderCell;
 			const isActionColumn = Boolean(actionColumn && cell.data);
+			// Check if this column is a state column
+			const stateColumn = this.getColumnHeaderForType(colIndex, 'state') as StateColumnHeaderCell;
+			const isStateColumn = Boolean(stateColumn && cell.data);
 			const fixed = this.isFixedCol(colIndex);
 			const offsetLeft = fixed === 'left' ? this.getOffsetString(cell.colIndex, true) : undefined;
 			const offsetRight = fixed === 'right' ? this.getOffsetString(cell.colIndex) : undefined;
@@ -885,6 +891,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 						'kol-table__cell kol-table__cell--body',
 						cell.textAlign && `kol-table__cell--align-${cell.textAlign}`,
 						isActionColumn && 'kol-table__cell--actions',
+						isStateColumn && 'kol-table__cell--states',
 						fixed && `kol-table__cell--sticky-${fixed}`,
 					)}
 					aria-atomic={isNoEntriesHintCell ? 'false' : undefined}
@@ -905,7 +912,13 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 							: undefined
 					}
 				>
-					{isActionColumn && actionColumn && cell.data ? this.renderActionItems(actionColumn, cell.data, key) : !hasCustomRender ? cell.label : ''}
+					{isActionColumn && actionColumn && cell.data
+						? this.renderActionItems(actionColumn, cell.data, key)
+						: isStateColumn && stateColumn && cell.data
+							? this.renderStateItems(stateColumn, cell.data, key)
+							: !hasCustomRender
+								? cell.label
+								: ''}
 				</td>
 			);
 		}
@@ -932,6 +945,31 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 					} else if (action.type === 'link') {
 						const { ...linkProps } = action;
 						return <KolLinkWcTag key={`action-${key}-${actionIndex}`} {...linkProps} />;
+					}
+					return null;
+				})}
+			</div>
+		);
+	};
+
+	/**
+	 * Renders state items (basged) for a table cell.
+	 * Uses the StateColumnHeaderCell factory function to generate states based on row data.
+	 *
+	 * @param {StateColumnHeaderCell} stateColumn The atate column header definition.
+	 * @param {KoliBriTableDataType} rowData The data for the current row.
+	 * @param {string} key Unique key for the cell.
+	 * @returns {JSX.Element} The rendered state items wrapped in a container.
+	 */
+	private readonly renderStateItems = (stateColumn: StateColumnHeaderCell, rowData: KoliBriTableDataType, key: string): JSX.Element => {
+		const state = stateColumn.states(rowData);
+
+		return (
+			<div class="kol-table__cell-states">
+				{state.map((state, stateIndex) => {
+					if (state.type === 'badge') {
+						const { ...badgeProps } = state;
+						return <KolBadgeTag key={`state-${key}-${stateIndex}`} {...badgeProps} />;
 					}
 					return null;
 				})}

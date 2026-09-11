@@ -18,6 +18,7 @@ import { PredefinedSettings } from './predefined-settings';
 import { TableRenderCell } from './render-cell';
 import { TableSettingsColumnOptions } from './settings-column-options';
 import { TableSortData } from './sort-data';
+import { TableStateColumns } from './state-columns';
 import { TableStatefulAsync } from './stateful-async';
 import { TableStatefulExport } from './stateful-export';
 import { TableStatefulResetSort } from './stateful-reset-sort';
@@ -49,6 +50,7 @@ export const TABLE_ROUTES: Routes = {
 		'predefined-settings': PredefinedSettings,
 		'action-columns': TableActionColumns,
 		'action-columns-performance': TableActionColumnPerformance,
+		'state-columns': TableStateColumns,
 		'render-cell': TableRenderCell,
 		'settings-column-options': TableSettingsColumnOptions,
 		'sort-data': TableSortData,
