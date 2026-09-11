@@ -1,0 +1,1 @@
+import{St as e}from"./index-CPMIY82X.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
