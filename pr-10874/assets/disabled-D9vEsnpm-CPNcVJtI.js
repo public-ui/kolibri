@@ -1,0 +1,1 @@
+import{Ct as e,H as t}from"./index-BO-z3-z0.js";var n=(n,r)=>{e(n,`_disabled`,r,{hooks:{afterPatch:e=>{e===!0&&t()}}})};export{n as t};

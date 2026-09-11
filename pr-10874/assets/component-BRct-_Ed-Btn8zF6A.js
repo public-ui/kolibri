@@ -1,0 +1,1 @@
+import{d as e,o as t}from"./index-BO-z3-z0.js";var n=e.forBlock(`kol-click-button`),r=n(),i=n(`label`),a=({label:e,handleClick:n,refButton:a})=>t(`button`,{class:r,ref:a,onClick:n,onKeyDown:e=>e.preventDefault()},t(`span`,{class:i},e));export{a as t};
