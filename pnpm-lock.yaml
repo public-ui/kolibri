@@ -45,8 +45,8 @@ importers:
   packages/adapters/angular/v19:
     devDependencies:
       '@angular/common':
-        specifier: 19.2.25
-        version: 19.2.25(@angular/core@19.2.21(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)
+        specifier: 20.0.0
+        version: 20.0.0(@angular/core@19.2.21(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)
       '@angular/compiler':
         specifier: 19.2.25
         version: 19.2.25
@@ -1837,11 +1837,11 @@ packages:
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     hasBin: true
 
-  '@angular/common@19.2.25':
-    resolution: {integrity: sha512-WteFLyfDPvilzpSGHk64bqowa4NnHdbjNl1xXeGr038fgTjp0l0NdiUPqeDtYT4pf5lWl6477pPoQN7o//NyyQ==}
-    engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
+  '@angular/common@20.0.0':
+    resolution: {integrity: sha512-tZTvxDjx+wH74/hIpip63u4tlaXNVXkq1iVf4gk7RPQGCAYLNPDWma8X+RpXMXWikn4/mA5NS1VBBtStTbS+gg==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
     peerDependencies:
-      '@angular/core': 19.2.25
+      '@angular/core': 20.0.0
       rxjs: ^6.5.3 || ^7.4.0
 
   '@angular/common@20.3.30':
@@ -14496,7 +14496,7 @@ snapshots:
       - chokidar
       - supports-color
 
-  '@angular/common@19.2.25(@angular/core@19.2.21(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)':
+  '@angular/common@20.0.0(@angular/core@19.2.21(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)':
     dependencies:
       '@angular/core': 19.2.21(rxjs@7.8.2)(zone.js@0.16.3)
       rxjs: 7.8.2
