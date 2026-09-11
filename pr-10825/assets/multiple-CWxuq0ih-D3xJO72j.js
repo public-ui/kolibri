@@ -1,1 +1,0 @@
-import{St as e}from"./index-DgALXFJ-.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};

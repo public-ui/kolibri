@@ -1,1 +1,0 @@
-import{St as e}from"./index-DgALXFJ-.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
