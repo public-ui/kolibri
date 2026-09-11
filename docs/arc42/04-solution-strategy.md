@@ -83,9 +83,9 @@ KoliBri is structured as a monorepo with clear separation of concerns:
 ### Pattern: Five-Layer Styling System
 
 1. **A11y Preset Layer**: Accessibility baseline from `adopted-style-sheets`
-2. **Basis Global Layer**: Global component layout (no colors/margins)
-3. **Basis Component Layer**: Component-specific layout (no colors/margins)
-4. **Theme Global Layer**: Global theme styles (colors, fonts)
+2. **Basis Global Layer**: Global component layout (no colors/margins, no color scheme)
+3. **Basis Component Layer**: Component-specific layout (no colors/margins, no color scheme)
+4. **Theme Global Layer**: Global theme styles (colors, fonts, color schemes)
 5. **Theme Component Layer**: Component-specific theme styles
 
 This layering ensures:
@@ -93,6 +93,7 @@ This layering ensures:
 - Accessibility by default
 - Themeable without breaking layout
 - Clear separation of structure and appearance
+- Dark/light color schemes are anchored exclusively in the theme layers; the base styling focuses on layout and is color-scheme neutral (see [Base Styling vs. Theming Concept](../BASE_STYLING_VS_THEMING_CONCEPT.md))
 
 ### Pattern: Zero Runtime Dependencies
 
@@ -178,6 +179,7 @@ register(DEFAULT, defineCustomElements);
 - Minimal CSS custom properties to prevent conflicts
 - SASS variables for internal calculations
 - Assets (fonts, icons) included in theme packages
+- Color schemes (light/dark) are provided by the theme via its tokens or a separate dark export, never by the components package
 
 ### Benefits
 

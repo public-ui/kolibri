@@ -108,6 +108,7 @@ export const MyComponentFC: FC<FunctionalComponentProps<MyComponentApi>> = ({ na
 - Stateless, keine Seiteneffekte
 - Genau ein Root-Node via `BemRootNodeFC`: Der `block` und die optionalen `modifiers` werden gegen `KoliBriComponentsBemSchema` in `src/schema/bem-registry.ts` typgeprüft — der Block muss dort **zweifach registriert** sein: im exportierten Typ `KoliBriComponentsBemSchema` (Kompilierung) und im Runtime-`BEM`-Const (konsumiert vom kolibri-cli SCSS-Generator). Nur-Typ-Registrierung kompiliert, bricht aber lautlos die Theme-SCSS-Generierung
 - `BemRootNodeFC` rendert immer ein `<div>` als Root. Für FCs mit anderem semantischem Root (z.B. `<button>`, siehe `ClickButtonFC`) stattdessen `bem.forBlock('kol-xxx')(modifiers)` direkt nutzen
+- Die zugehörige `style.scss` ist Basis-Styling: nur Layout und Struktur, keine Farben (außer dem Schwarz/Weiß-Kontrast-Fallback), keine Abstände und **kein Dark/Light-Color-Scheme** (`prefers-color-scheme`, `color-scheme`, `light-dark()`). Farben und Color Schemes werden ausschließlich im Theme umgesetzt — siehe [Basis-Styling vs. Theming Konzept](../BASE_STYLING_VS_THEMING_CONCEPT.md)
 - Details: [ARC42 §4 — Functional Component Layer](../../packages/components/src/components/_skeleton/ARC42.md#functional-component-layer)
 
 ## Schritt 5 — Web Component

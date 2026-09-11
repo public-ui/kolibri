@@ -36,6 +36,8 @@ docker compose run --rm snapshot-check
 
 **Status**: ⏳ Offen — Verschiebungen noch nicht begonnen
 
+**Zusatzkriterium (Basis-Styling vs. Theming)**: Es werden keine scheme-abhängigen Regeln in die Basis verschoben. Alles, was sich zwischen Light und Dark ändern würde (`prefers-color-scheme`, `color-scheme`, `light-dark()`, Farb-Tokens), bleibt im Theme — auch bei Redundanz über alle Themes. Die Basis fokussiert auf Layout (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
+
 **Validierung**:
 
 - [ ] Baselines auf `origin/develop` stellen

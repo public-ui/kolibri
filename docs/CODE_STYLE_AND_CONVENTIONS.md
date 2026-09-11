@@ -16,7 +16,9 @@
   - padding
   - gap
   - opacity
-  - color (with the exception of black & white)
+  - color (with the exception of black & white, which serve as a contrast fallback only, not as color design)
+  - color schemes (dark/light): `@media (prefers-color-scheme: …)`, the `color-scheme` property and the `light-dark()` function
+- the component package focuses on layout and structure only; dark/light theming is anchored exclusively in the themes (see [BASE_STYLING_VS_THEMING_CONCEPT.md](./BASE_STYLING_VS_THEMING_CONCEPT.md))
 - generally speaking use block display types on the top layer of components (e.g. kol-card uses grid not inline-grid) so it uses the whole given width of its wrapper and the teams can control the width of the components
 
 ### Themes
@@ -29,6 +31,7 @@
   - in these cases the component file (e.g. alert.scss) just includes the mixin (e.g. \_alert.scss)
   - every component has to include the styles of every component it contains (e.g. icon has to be included in buttons, paging, etc.)
 - all styles are allowed
+- dark/light color schemes live here: define scheme-dependent colors as tokens in `@layer kol-theme-global` on `:host` and switch the scheme at that single place; component theme styles only reference the tokens (see [BASE_STYLING_VS_THEMING_CONCEPT.md](./BASE_STYLING_VS_THEMING_CONCEPT.md))
 
 ## Units
 

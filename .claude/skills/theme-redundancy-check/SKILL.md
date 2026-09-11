@@ -21,10 +21,11 @@ Styles in Theme-Paketen sollen nur theme-spezifische Customisierung enthalten �
 ```
 packages/themes/
 ├── default/          # primäres Theme
-├── classic/
-├── swiss/
-├── austria/
-└── unstyled/         # AUSNEHMEN — minimalistisches Theme ohne Konsolidierung
+├── bwst/
+├── desy/
+├── ecl/
+└── kern/
+packages/unstyled/    # AUSNEHMEN — registriert kein Theme-CSS, zeigt nur den Basis-Layer
 ```
 
 ### 2.2 Basis-Styling kennen
@@ -79,11 +80,17 @@ Nur in Basis verschieben, wenn:
 - ✅ Keine Theme-spezifischen Variablen wie `--kolibri-color-...` involviert
 - ❌ Regel hängt von Theme-Variables ab → bleibt im Theme
 - ❌ Regel ist bewusst unterschiedlich je Theme → bleibt im Theme
+- ❌ Regel ist scheme-abhängig (Dark/Light: `prefers-color-scheme`, `color-scheme`, `light-dark()`, scheme-abhängige Tokens) → bleibt IMMER im Theme
 
 Frage: **Würde sich die Regel beim Wechsel eines Themes visuell ändern?**
 
 - Nein → Basis-Eignung hoch
 - Ja → bleibt im Theme
+
+Zweite Frage: **Würde sich der Wert beim Wechsel Light ↔ Dark ändern?**
+
+- Nein → Basis-Kandidat (Layout)
+- Ja → bleibt im Theme. Die Basis kennt kein Color Scheme (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
 
 ### Phase 4: Verschiebungs-Plan erstellen
 
@@ -193,6 +200,22 @@ In diesem Skill (Abschnitt 7) Einträge hinzufügen mit:
 ```
 
 **Basis-Eignung**: NIEDRIG — Farben sind immer theme-spezifisch
+
+### Muster F: Color Schemes (Dark/Light) → IMMER THEME
+
+```scss
+// Scheme-Umschaltung gehört in @layer kol-theme-global auf :host:
+:host {
+	color-scheme: light dark;
+	--color-text: var(--kolibri-color-text, light-dark(#202020, #f2f3f4));
+}
+
+@media (prefers-color-scheme: dark) {
+	// ...
+}
+```
+
+**Basis-Eignung**: NIE — Dark/Light wird ausschließlich im Theme verankert. Das Basis-Styling in `components` fokussiert auf Layout und darf weder `prefers-color-scheme`, `color-scheme` noch `light-dark()` enthalten (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`). Auch wenn mehrere Themes dieselbe Scheme-Regel enthalten, wird sie nicht in die Basis verschoben.
 
 ## 5. Werkzeuge und Hilfsskripte
 

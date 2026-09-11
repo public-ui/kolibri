@@ -21,6 +21,9 @@ Small, single-purpose component (button, input, icon) that can be composed into 
 
 ## B
 
+**Base Styling**  
+The layout-only styling shipped with `@public-ui/components` (layers `kol-a11y`, `kol-global`, `kol-component`). Contains structure, no colors (except a black/white contrast fallback) and no color scheme. See the [Base Styling vs. Theming Concept](../BASE_STYLING_VS_THEMING_CONCEPT.md).
+
 **BEM (Block Element Modifier)**  
 CSS naming convention used in KoliBri's styling. Example: `.kol-button__icon--small`
 
@@ -34,6 +37,9 @@ Total size of JavaScript and CSS files. KoliBri optimizes bundle size through la
 
 **Component**  
 Reusable UI element with encapsulated structure, styling, and behavior. In KoliBri, refers to Web Components.
+
+**Color Scheme (Dark/Light)**  
+Light or dark appearance of the UI, usually driven by `prefers-color-scheme`. In KoliBri a color scheme is implemented exclusively by a theme (token switch or separate dark export); the base styling is color-scheme neutral. Not to be confused with forced colors (high contrast), which is an accessibility mechanism.
 
 **Component Library**  
 Collection of reusable components. KoliBri is a component library for accessible HTML.

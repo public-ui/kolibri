@@ -104,7 +104,11 @@ If ARC42 text and implementation differ, follow implementation — ARC42 is the 
    - Compose optional Behaviors: `private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess)` (or `BaseWebComponent.stateLess` for stateless Behaviors).
    - **Behavior lifecycle (required when composing a Behavior):** `componentDidRender()` must sync the Behavior's listeners (`this.tooltipBehavior.syncListeners(undefined, this.anchorRef.el, true)`), and `disconnectedCallback()` must tear the Behavior down (`this.tooltipBehavior.destroy()`) plus unsubscribe any external stores — otherwise listeners leak (see `components/link/component.tsx` for the full pattern).
 
-5. **Tests** (co-located next to `component.tsx`)
+5. **CSS/SCSS** (`packages/components/src/components/$ARGUMENTS/style.scss`)
+   - Keep existing base styles, adjust selectors to the new BEM structure.
+   - `style.scss` stays base styling: layout only, no colors (except the black/white contrast fallback), **no dark/light color scheme** (`prefers-color-scheme`, `color-scheme`, `light-dark()`). Colors and color schemes belong to the theme packages (see `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
+
+6. **Tests** (co-located next to `component.tsx`)
    - `snapshot.spec.tsx` via `executeSnapshotTests`.
    - `interaction.e2e.ts` only when interaction behavior justifies it.
 

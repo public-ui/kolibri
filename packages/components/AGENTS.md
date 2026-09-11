@@ -28,6 +28,10 @@ Observe the following coding rules when making changes to this project.
 
 - Never use the title-Attribute to add tooltips. Always use the `KolTooltip` component.
 
+### Styling boundary
+
+The `style.scss` of a component is base styling: layout and structure only (display, flex/grid, position, dimensions). It contains no colors except the black/white contrast fallback, no spacing and **no dark/light color scheme** (`prefers-color-scheme`, `color-scheme`, `light-dark()` are prohibited). Colors, borders, shadows, spacing and color schemes are implemented in the theme packages. See [`docs/BASE_STYLING_VS_THEMING_CONCEPT.md`](../../docs/BASE_STYLING_VS_THEMING_CONCEPT.md).
+
 ### Conditional Rendering Rule
 
 Use the `condition && <Element />` pattern to render JSX elements only when a condition is true. This approach avoids unnecessary DOM nodes and keeps the code concise and readable.
