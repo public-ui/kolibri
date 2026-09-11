@@ -10,6 +10,19 @@
 			&-progress {
 				fill: var(--color-primary-variant);
 			}
+
+			/*
+			 * The base layer draws the bar's frame in black on a white body, both hardcoded, so the
+			 * theme has to restate them to make them follow the color scheme.
+			 */
+			&-border {
+				stroke: var(--color-ink);
+			}
+
+			&-background {
+				fill: var(--color-light);
+				stroke: var(--color-light);
+			}
 		}
 
 		&__cycle-background {
@@ -18,6 +31,19 @@
 
 		&__cycle-progress {
 			stroke: var(--color-primary-variant);
+		}
+
+		// Same for the cycle variant.
+		&__cycle-border {
+			stroke: var(--color-ink);
+		}
+
+		&__cycle-whitespace {
+			stroke: var(--color-light);
+		}
+
+		&__cycle-text * {
+			background-color: var(--color-light);
 		}
 	}
 }

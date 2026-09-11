@@ -10,6 +10,16 @@
 		top: 0;
 		right: to-rem(5);
 
+		/*
+		 * The popover of the settings button carries no `--styled` modifier, so the rule in
+		 * `popover-button.scss` does not reach it and the base layer's white surface and black
+		 * border would survive.
+		 */
+		.kol-popover-button__popover {
+			background: var(--color-light);
+			border-color: var(--color-ink);
+		}
+
 		&__error-message {
 			display: block;
 			margin-top: to-rem(16);

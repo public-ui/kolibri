@@ -49,6 +49,17 @@ On Windows the leading slash is required for the dynamic import; `main.ts` handl
 
 You can also add static entries to the sample theme selector by editing the `customThemes` list passed to `<App />` in `src/react.main.tsx`.
 
+## Color scheme
+
+The Sidebar carries a **Color scheme** select next to the theme select, with three states:
+
+- **Auto** removes the app's own `color-scheme` override again, so the `:root { color-scheme: light dark }` of this app applies and the operating system decides.
+- **Light** and **Dark** set `color-scheme` on `<html>` and win over the operating system.
+
+`color-scheme` is an inherited CSS property, so the choice reaches the page and every KoliBri component alike — the themes declare none of their own. The choice takes effect without a reload and is remembered in `localStorage`. `#<route>?colorScheme=dark` opens a route in a given scheme right away and wins over the remembered value without overwriting it, which makes it easy to share a link. The parameter combines with `hideMenus` and `visualBlocks`.
+
+Only `@public-ui/theme-default` ships a dark palette so far. With any other theme selected, the select shows a hint saying so.
+
 ## Runtime toggles
 
 You can enable the dev helpers via environment variables or hash query parameters (e.g., `#?enableThemePatching`).
@@ -64,6 +75,8 @@ $env:ENABLE_THEME_PATCHING="true"; pnpm start
 ```
 
 ## Notes
+
+- `pnpm start` builds the workspace dependencies first (`build:deps`), so it never serves a stale theme package. `pnpm serve` skips that step on purpose: it is what `serve.sh` of a theme package calls while that package's own `rollup --watch` already owns its `dist`.
 
 - Keep theme modules built before injecting them; use `pnpm --filter @public-ui/themes build` if you are working on a local theme.
 - Assets are copied into `public/assets` via `pnpm prepare:components` and `pnpm prepare:themes`.

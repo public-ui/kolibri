@@ -51,7 +51,6 @@ const logViolations = (route, violations) => {
 
 // https://playwright.dev/docs/emulation
 test.use({
-	colorScheme: 'light',
 	locale: 'de-DE',
 	isMobile: false,
 	timezoneId: 'Europe/Berlin',

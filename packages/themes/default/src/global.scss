@@ -1,28 +1,69 @@
+@use 'mixins/palette' as *;
 @use 'mixins/to-rem' as *;
 
 @layer kol-theme-global {
 	:host {
+		/*
+		 * Every `light-dark()` below resolves against `color-scheme`, which this theme deliberately
+		 * does not declare. `color-scheme` is an inherited property and inheritance follows the flat
+		 * tree, so each component picks up whatever the document sets around it. A declaration here
+		 * would replace that value instead, and the page and the components in it could disagree.
+		 *
+		 * The application therefore owns the scheme, in plain CSS: `:root { color-scheme: light dark }`
+		 * to follow the operating system, `color-scheme: dark` on any element to force a subtree.
+		 * `color-scheme.css` in this package ships exactly that.
+		 */
 		--border-radius: var(--kolibri-border-radius, 5px);
 		--inner-border-radius: var(--kolibri-border-radius, 4px);
 		--font-family: var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif);
 		--font-size: var(--kolibri-font-size, #{to-rem(16)});
 		--spacing: var(--kolibri-spacing, #{to-rem(4)});
 		--border-width: var(--kolibri-border-width, 1px);
-		--color-primary: var(--kolibri-color-primary, #003a5c);
-		--color-primary-variant: var(--kolibri-color-primary-variant, #005a8f);
-		--color-secondary: var(--kolibri-color-secondary, #ccebf7);
-		--color-danger: var(--kolibri-color-danger, #ad003a);
-		--color-warning: var(--kolibri-color-warning, #c44931);
-		--color-success: var(--kolibri-color-success, #005c45);
-		--color-subtle: var(--kolibri-color-subtle, #576164);
-		--color-light: var(--kolibri-color-light, #ffffff);
-		--color-text: var(--kolibri-color-text, #202020);
-		--color-mute: var(--kolibri-color-mute, #f2f3f4);
-		--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
+		--color-primary: var(--kolibri-color-primary, light-dark(#003a5c, #{$dark-color-primary}));
+		--color-primary-variant: var(--kolibri-color-primary-variant, light-dark(#005a8f, #{$dark-color-primary-variant}));
+		--color-secondary: var(--kolibri-color-secondary, light-dark(#ccebf7, #{$dark-color-secondary}));
+		--color-danger: var(--kolibri-color-danger, light-dark(#ad003a, #{$dark-color-danger}));
+		--color-warning: var(--kolibri-color-warning, light-dark(#c44931, #{$dark-color-warning}));
+		--color-success: var(--kolibri-color-success, light-dark(#005c45, #{$dark-color-success}));
+		--color-subtle: var(--kolibri-color-subtle, light-dark(#576164, #{$dark-color-subtle}));
+		--color-light: var(--kolibri-color-light, light-dark(#ffffff, #{$dark-color-light}));
+		--color-text: var(--kolibri-color-text, light-dark(#202020, #{$dark-color-text}));
+		--color-mute: var(--kolibri-color-mute, light-dark(#f2f3f4, #{$dark-color-mute}));
+		--color-mute-variant: var(--kolibri-color-mute-variant, light-dark(#bec5c9, #{$dark-color-mute-variant}));
 		--color-visited: var(
 			--kolibri-color-visited,
-			#551a8b
+			light-dark(#551a8b, #{$dark-color-visited})
 		); // Html defined standard value https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3
+		/*
+		 * Maximum contrast foreground, kept apart from `--color-text` because the base layer of
+		 * `@public-ui/components` hardcodes `black` in places the theme has to neutralize. The light
+		 * branch is pure black, so neutralizing them costs no light-mode pixel.
+		 */
+		--color-ink: var(--kolibri-color-ink, light-dark(#000000, #{$dark-color-ink}));
+		/*
+		 * Ambient elevation shadow cast on the page. A navy tinted shadow disappears on a dark canvas,
+		 * so the dark branch is a heavier pure black; depth still reads because an elevated surface
+		 * (`--color-light`) is lighter than the page behind it.
+		 */
+		--color-shadow: var(--kolibri-color-shadow, light-dark(rgb(8, 35, 48, 0.24), rgb(0, 0, 0, 0.6)));
+		/*
+		 * The same overlay for elements sitting *on* an accent surface, whose lightness inverts
+		 * opposite to the page.
+		 */
+		--color-shadow-inverse: var(--kolibri-color-shadow-inverse, light-dark(rgb(255, 255, 255, 0.24), rgb(8, 35, 48, 0.24)));
+		/*
+		 * Shadow used as a border: `--color-subtle` pushed 80% towards the far end of the scale to keep
+		 * the 3:1 contrast a card, dialog or accordion outline needs. The mix base flips with the
+		 * scheme, so the ring darkens on a light surface and lightens on a dark one.
+		 */
+		--color-shadow-contrast: var(--kolibri-color-shadow-contrast, color-mix(in srgb, light-dark(black, white) 80%, var(--color-subtle)));
+		/*
+		 * `kol-a11y` paints the host box of every component from these two tokens (see `a11y.scss` in
+		 * `@public-ui/components`). Overriding the tokens rather than `color` / `background-color`
+		 * leaves that layer's intent intact and keeps the light rendering byte identical.
+		 */
+		--kol-a11y-font-color: var(--color-ink);
+		--kol-a11y-background-color: var(--color-light);
 	}
 
 	:host {
@@ -62,16 +103,39 @@
 		}
 
 		&__arrow {
+			// The base layer hardcodes `color: black` here, which has to follow the color scheme.
+			color: var(--color-ink);
 			background-color: var(--color-light);
 			border: var(--border-width) solid var(--color-subtle);
 		}
 
 		&__content {
+			// The base layer hardcodes `color: black` here, which has to follow the color scheme.
+			color: var(--color-ink);
 			background-color: var(--color-light);
 			border-radius: var(--border-radius);
 			padding: to-rem(8) to-rem(12);
 
 			line-height: 1.5;
+		}
+	}
+
+	/*
+	 * `kol-spin` has no entry in the theme's tag map, so it only ever receives this global sheet.
+	 * The base layer paints the dot ring white and falls back to a different literal per rule in the
+	 * `--kol-spin-color` chain (#000 for the dot, #333 for the cycle ring); the rules below restate
+	 * exactly those literals in the light branch, so nothing moves, and give the dark branch a
+	 * visible spinner. The animated arc of the cycle variant is driven by `@keyframes` colour stops
+	 * in the base layer, which no theme rule can reach — see the theme README.
+	 */
+	.kol-spin {
+		&__spinner--dot__element {
+			background-color: var(--kol-spin-color, light-dark(#000000, #{$dark-color-ink}));
+			border-color: var(--color-light);
+		}
+
+		&__spinner--cycle__element::before {
+			border-color: var(--kol-spin-color, light-dark(#333333, #{$dark-color-ink}));
 		}
 	}
 

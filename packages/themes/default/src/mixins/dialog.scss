@@ -11,7 +11,7 @@
 		border-radius: var(--border-radius);
 
 		&__card {
-			box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
+			box-shadow: 0 0 4px var(--color-shadow-contrast); // subtle darkened (or, in dark mode, lightened) by 80% to maintain contrast of 3:1
 		}
 	}
 }

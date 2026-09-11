@@ -1,0 +1,37 @@
+/*
+ * Document level stylesheet of @public-ui/theme-default.
+ *
+ *   <link rel="stylesheet" href="node_modules/@public-ui/theme-default/color-scheme.css" />
+ *
+ * This is what turns the dark palette on. The theme declares no `color-scheme` of its own, so a
+ * component simply inherits whatever the document sets around it — an application that declares
+ * nothing keeps `color-scheme: normal` and stays light, whatever the operating system says.
+ *
+ * Everything here is plain CSS with no KoliBri specific API. An application that already manages
+ * `color-scheme` itself does not need this file at all; the components follow along either way,
+ * because `color-scheme` is an inherited property and inheritance crosses the shadow boundary.
+ *
+ * Switching: put `data-kol-color-scheme="dark"` or the class `kol-color-scheme-dark` on any
+ * element — or just write `color-scheme: dark` on it yourself. The choice applies to that element's
+ * whole subtree, KoliBri components included.
+ *
+ * The two page colors are stated literally because the theme's `--color-*` tokens live on the
+ * `:host` of each component and cannot be read from the document. Keep them in sync with
+ * `--color-text` in `src/global.scss` and the page counterpart in `src/mixins/palette.scss`.
+ */
+:root {
+	color: light-dark(#202020, #e9ebec);
+	background-color: light-dark(#ffffff, #14181a);
+
+	color-scheme: light dark;
+}
+
+[data-kol-color-scheme='light'],
+.kol-color-scheme-light {
+	color-scheme: light;
+}
+
+[data-kol-color-scheme='dark'],
+.kol-color-scheme-dark {
+	color-scheme: dark;
+}

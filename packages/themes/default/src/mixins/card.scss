@@ -7,7 +7,7 @@
 		@include kol-button('kol-button');
 
 		background-color: var(--color-light);
-		box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
+		box-shadow: 0 0 4px var(--color-shadow-contrast); // subtle darkened (or, in dark mode, lightened) by 80% to maintain contrast of 3:1
 		border-radius: $border-radius;
 		width: 100%;
 		height: 100%;
