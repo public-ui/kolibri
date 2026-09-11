@@ -1,0 +1,1 @@
+import{St as e}from"./index-lDPpEQvO.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};
