@@ -1,0 +1,1 @@
+import{St as e}from"./index-IMXaldXh.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
