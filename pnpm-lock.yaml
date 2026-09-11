@@ -42,39 +42,6 @@ importers:
         specifier: 7.2.0
         version: 7.2.0(stylelint@17.14.1(typescript@5.9.3))
 
-  packages/adapters/angular/v19:
-    devDependencies:
-      '@angular/common':
-        specifier: 19.2.25
-        version: 19.2.25(@angular/core@19.2.21(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)
-      '@angular/compiler':
-        specifier: 19.2.25
-        version: 19.2.25
-      '@angular/compiler-cli':
-        specifier: 19.2.25
-        version: 19.2.25(@angular/compiler@19.2.25)(typescript@5.8.3)
-      '@angular/core':
-        specifier: 19.2.21
-        version: 19.2.21(rxjs@7.8.2)(zone.js@0.16.3)
-      '@public-ui/components':
-        specifier: workspace:*
-        version: link:../../../components
-      minimatch:
-        specifier: 10.2.6
-        version: 10.2.6
-      rimraf:
-        specifier: 6.1.3
-        version: 6.1.3
-      rxjs:
-        specifier: 7.8.2
-        version: 7.8.2
-      typescript:
-        specifier: 5.8.3
-        version: 5.8.3
-      zone.js:
-        specifier: 0.16.3
-        version: 0.16.3
-
   packages/adapters/angular/v20:
     devDependencies:
       '@angular/common':
@@ -1837,13 +1804,6 @@ packages:
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     hasBin: true
 
-  '@angular/common@19.2.25':
-    resolution: {integrity: sha512-WteFLyfDPvilzpSGHk64bqowa4NnHdbjNl1xXeGr038fgTjp0l0NdiUPqeDtYT4pf5lWl6477pPoQN7o//NyyQ==}
-    engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
-    peerDependencies:
-      '@angular/core': 19.2.25
-      rxjs: ^6.5.3 || ^7.4.0
-
   '@angular/common@20.3.30':
     resolution: {integrity: sha512-XDeT5lshP2tpl9/6IAPmJ5M4zzOTJSUtRxfkOrxmNnNCH4+vbBv1RYs2bnUDdZNsFxRMrV/ZvpZfO7dZTAie+Q==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
@@ -1857,14 +1817,6 @@ packages:
     peerDependencies:
       '@angular/core': 21.2.22
       rxjs: ^6.5.3 || ^7.4.0
-
-  '@angular/compiler-cli@19.2.25':
-    resolution: {integrity: sha512-IBBKRz6ua+y6bdcaUIpOPq7G/S4biJfcT1TCMD7wi+48wiKKSXj4J/8BN5fSjt+UozlHwya3B8z0XqnwO2ywZw==}
-    engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
-    hasBin: true
-    peerDependencies:
-      '@angular/compiler': 19.2.25
-      typescript: '>=5.5 <5.9'
 
   '@angular/compiler-cli@20.3.30':
     resolution: {integrity: sha512-wWxScyHv3LvjEEJwOBiWSs+zRsCFBS90mGdogMmI7k2A8P6uT/zRDf9wDy1fn2kR6wteRJbGjb88eJecSc126g==}
@@ -1888,10 +1840,6 @@ packages:
       typescript:
         optional: true
 
-  '@angular/compiler@19.2.25':
-    resolution: {integrity: sha512-GGEeTTd/DV71E07K0u5753bxXozc6Z7iWaCZJDW7xiA7hdHCwrYBMz1PVUJAtXcxf4wTdiXQR48kw8/YHYnDAw==}
-    engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
-
   '@angular/compiler@20.3.20':
     resolution: {integrity: sha512-wLzXAtBdRH7LsgHSUmeGqFpkiGutr/Y8cpq4rhcX1J/OHQIWgFTW6+3LltMpKSfJn4wqHj8IIWc+TqrPHfkhKg==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
@@ -1903,13 +1851,6 @@ packages:
   '@angular/compiler@21.2.22':
     resolution: {integrity: sha512-3tdHaE30abvVzGSwtjpK/r4i8gqSZ6Q0Xc79XvLSTB3kuo4HYir9uvvc7L4YmhBLfSE64CkJPW+2tLiyz8U8jw==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
-
-  '@angular/core@19.2.21':
-    resolution: {integrity: sha512-jdOEwkvUyF7VdJMURXkSB1yQy595wt1lSfSgUux9tZftA7UwamCsMdidUsKqRbdaI9M3r+RdIM7qrDAWwqzz+A==}
-    engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0}
-    peerDependencies:
-      rxjs: ^6.5.3 || ^7.4.0
-      zone.js: ~0.15.0
 
   '@angular/core@20.3.20':
     resolution: {integrity: sha512-LwUFAGGlqFiu81Umf+oFmAS+swHR9xumNVradrFkDpmy4zkhveO2N2L4QUIm6ZcV0YBkNyoIa/IrJqyVAmwdWQ==}
@@ -1988,10 +1929,6 @@ packages:
 
   '@babel/compat-data@7.29.7':
     resolution: {integrity: sha512-locTkQyKvwIEgBzVrn8693ebc97F2U8ZHjbXwDXJ5Fn2TCpNwTlKcaKLkdHop5c/icOFE7qt7Q9JC5hnKNa6Gg==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/core@7.26.9':
-    resolution: {integrity: sha512-lWBYIrF7qK5+GjY5Uy+/hEgp8OJWOD/rpy74GplYRhEauvbHDeFB8t5hPOZxCZ0Oxf4Cc36tK51/l3ymJysrKw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/core@7.29.7':
@@ -13366,11 +13303,6 @@ packages:
   typed-bem@1.0.2:
     resolution: {integrity: sha512-8FZKZTDBLvJdGEHo3YVYY4A0fpxErwbHoS6d+2Vpe63QyDbuXMJwtnDcySd4cm32KMaEmv5WtFATrIBOsb48rg==}
 
-  typescript@5.8.3:
-    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
@@ -14496,12 +14428,6 @@ snapshots:
       - chokidar
       - supports-color
 
-  '@angular/common@19.2.25(@angular/core@19.2.21(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)':
-    dependencies:
-      '@angular/core': 19.2.21(rxjs@7.8.2)(zone.js@0.16.3)
-      rxjs: 7.8.2
-      tslib: 2.8.1
-
   '@angular/common@20.3.30(@angular/core@20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)':
     dependencies:
       '@angular/core': 20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3)
@@ -14519,21 +14445,6 @@ snapshots:
       '@angular/core': 21.2.22(@angular/compiler@21.2.22)(rxjs@7.8.2)(zone.js@0.16.2)
       rxjs: 7.8.2
       tslib: 2.8.1
-
-  '@angular/compiler-cli@19.2.25(@angular/compiler@19.2.25)(typescript@5.8.3)':
-    dependencies:
-      '@angular/compiler': 19.2.25
-      '@babel/core': 7.26.9
-      '@jridgewell/sourcemap-codec': 1.5.5
-      chokidar: 4.0.3
-      convert-source-map: 1.9.0
-      reflect-metadata: 0.2.2
-      semver: 7.8.5
-      tslib: 2.8.1
-      typescript: 5.8.3
-      yargs: 17.7.3
-    transitivePeerDependencies:
-      - supports-color
 
   '@angular/compiler-cli@20.3.30(@angular/compiler@20.3.20)(typescript@5.9.3)':
     dependencies:
@@ -14583,10 +14494,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@angular/compiler@19.2.25':
-    dependencies:
-      tslib: 2.8.1
-
   '@angular/compiler@20.3.20':
     dependencies:
       tslib: 2.8.1
@@ -14598,12 +14505,6 @@ snapshots:
   '@angular/compiler@21.2.22':
     dependencies:
       tslib: 2.8.1
-
-  '@angular/core@19.2.21(rxjs@7.8.2)(zone.js@0.16.3)':
-    dependencies:
-      rxjs: 7.8.2
-      tslib: 2.8.1
-      zone.js: 0.16.3
 
   '@angular/core@20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3)':
     dependencies:
@@ -14671,26 +14572,6 @@ snapshots:
     optional: true
 
   '@babel/compat-data@7.29.7': {}
-
-  '@babel/core@7.26.9':
-    dependencies:
-      '@ampproject/remapping': 2.3.0
-      '@babel/code-frame': 7.29.7
-      '@babel/generator': 7.29.8
-      '@babel/helper-compilation-targets': 7.29.7
-      '@babel/helper-module-transforms': 7.29.7(@babel/core@7.26.9)
-      '@babel/helpers': 7.29.7
-      '@babel/parser': 7.29.8
-      '@babel/template': 7.29.7
-      '@babel/traverse': 7.29.8
-      '@babel/types': 7.29.8
-      convert-source-map: 2.0.0
-      debug: 4.4.3(supports-color@5.5.0)
-      gensync: 1.0.0-beta.2
-      json5: 2.2.3
-      semver: 6.3.1
-    transitivePeerDependencies:
-      - supports-color
 
   '@babel/core@7.29.7':
     dependencies:
@@ -14788,15 +14669,6 @@ snapshots:
     dependencies:
       '@babel/traverse': 7.29.8
       '@babel/types': 7.29.8
-    transitivePeerDependencies:
-      - supports-color
-
-  '@babel/helper-module-transforms@7.29.7(@babel/core@7.26.9)':
-    dependencies:
-      '@babel/core': 7.26.9
-      '@babel/helper-module-imports': 7.29.7
-      '@babel/helper-validator-identifier': 7.29.7
-      '@babel/traverse': 7.29.8
     transitivePeerDependencies:
       - supports-color
 
@@ -27348,8 +27220,6 @@ snapshots:
   typed-bem@1.0.2:
     dependencies:
       easy-bem: 1.1.1
-
-  typescript@5.8.3: {}
 
   typescript@5.9.3: {}
 

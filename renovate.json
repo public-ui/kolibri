@@ -48,7 +48,7 @@
 			"enabled": true
 		},
 		{
-			"description": "Major updates require manual approval via the dependency dashboard — KoliBri pins its major lines deliberately (Angular v19/v20/v21, React 18/19, Stencil 4, ESLint 9, …).",
+			"description": "Major updates require manual approval via the dependency dashboard — KoliBri pins its major lines deliberately (Angular v20/v21, React 18/19, Stencil 4, ESLint 9, …).",
 			"matchUpdateTypes": ["major"],
 			"dependencyDashboardApproval": true
 		},
@@ -68,7 +68,7 @@
 			"automerge": true
 		},
 		{
-			"description": "Angular toolchain: never bump across majors within the same adapter folder (v19/v20/v21 are intentionally pinned).",
+			"description": "Angular toolchain: never bump across majors within the same adapter folder (v20/v21 are intentionally pinned).",
 			"matchPackageNames": ["@angular/*", "@angular-devkit/*", "ng-packagr", "zone.js"],
 			"matchUpdateTypes": ["major"],
 			"enabled": false

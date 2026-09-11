@@ -14,7 +14,6 @@ if (!outputPath) {
 }
 
 const reportTargets = [
-	{ name: 'adapter-angular-v19', packageJsonPath: 'packages/adapters/angular/v19/package.json' },
 	{ name: 'adapter-angular-v20', packageJsonPath: 'packages/adapters/angular/v20/package.json' },
 	{ name: 'adapter-angular-v21', packageJsonPath: 'packages/adapters/angular/v21/package.json' },
 	{ name: 'adapter-hydrate', packageJsonPath: 'packages/adapters/hydrate/package.json' },
