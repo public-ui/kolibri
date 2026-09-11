@@ -1,1 +1,0 @@
-import{l as e,n as t}from"./normalizers-Cjgf2IMC-CJt8Va66.js";var n=new Set([`eager`,`lazy`]),r=t(`loading`,`lazy`,t=>e(t),e=>n.has(e)),i=new Set([`block`,`inline`]),a=t(`variant`,`inline`,t=>e(t),e=>i.has(e));export{a as n,r as t};
