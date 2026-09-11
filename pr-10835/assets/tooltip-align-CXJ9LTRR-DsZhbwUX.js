@@ -1,1 +1,0 @@
-import"./index-DnsULb1h.js";import{r as e}from"./align-DnuTHmUs-B-_rXpaX.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
