@@ -1,1 +1,0 @@
-import{wt as e}from"./index-UY_t5Joy.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
