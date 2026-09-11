@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-DM8MdmaB.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
