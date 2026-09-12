@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-p20PU5XN.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
