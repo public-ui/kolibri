@@ -1,1 +1,0 @@
-import"./index-CFTgubbb.js";import{r as e}from"./align-DnuTHmUs-DPEfI0nE.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
