@@ -50,7 +50,7 @@
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
 		"minimatch": "10.2.6",
-		"solid-js": "1.9.12",
+		"solid-js": "1.9.15",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
