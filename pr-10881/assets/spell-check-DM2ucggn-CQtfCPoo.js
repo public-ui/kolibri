@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-8KSbBINM.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
