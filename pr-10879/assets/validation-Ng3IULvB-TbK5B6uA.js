@@ -1,1 +1,0 @@
-import{Dt as e}from"./index-D9c3WKH_.js";import{t}from"./level-CrczMYVn-DuXeLEjB.js";var n=(n,r)=>{e(n,`_level`,e=>typeof e==`number`&&t.includes(e),new Set(t.map(String)),r,{defaultValue:1,required:!0})};export{n as t};
