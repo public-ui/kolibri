@@ -1,1 +1,0 @@
-import{Et as e}from"./index-CudWWI5K.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};

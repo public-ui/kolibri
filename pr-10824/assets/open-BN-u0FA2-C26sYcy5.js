@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-CudWWI5K.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
