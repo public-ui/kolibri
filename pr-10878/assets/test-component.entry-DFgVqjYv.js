@@ -1,0 +1,1 @@
+import{s as e}from"./index-DV40wOEG.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};
