@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-CMu933Tz.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
