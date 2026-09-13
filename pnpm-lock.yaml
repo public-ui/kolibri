@@ -46,7 +46,7 @@ importers:
     devDependencies:
       '@angular/common':
         specifier: 20.3.31
-        version: 20.3.31(@angular/core@20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)
+        version: 20.3.31(@angular/core@21.2.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)
       '@angular/compiler':
         specifier: 20.3.20
         version: 20.3.20
@@ -54,8 +54,8 @@ importers:
         specifier: 20.3.31
         version: 20.3.31(@angular/compiler@20.3.20)(typescript@5.9.3)
       '@angular/core':
-        specifier: 20.3.20
-        version: 20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3)
+        specifier: 21.2.20
+        version: 21.2.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3)
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../../components
@@ -79,7 +79,7 @@ importers:
     devDependencies:
       '@angular/common':
         specifier: 21.2.23
-        version: 21.2.23(@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)
+        version: 21.2.23(@angular/core@21.2.20(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)
       '@angular/compiler':
         specifier: 21.2.12
         version: 21.2.12
@@ -87,8 +87,8 @@ importers:
         specifier: 21.2.23
         version: 21.2.23(@angular/compiler@21.2.12)(typescript@5.9.3)
       '@angular/core':
-        specifier: 21.2.12
-        version: 21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3)
+        specifier: 21.2.20
+        version: 21.2.20(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3)
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../../components
@@ -1870,24 +1870,11 @@ packages:
     resolution: {integrity: sha512-3tdHaE30abvVzGSwtjpK/r4i8gqSZ6Q0Xc79XvLSTB3kuo4HYir9uvvc7L4YmhBLfSE64CkJPW+2tLiyz8U8jw==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
 
-  '@angular/core@20.3.20':
-    resolution: {integrity: sha512-LwUFAGGlqFiu81Umf+oFmAS+swHR9xumNVradrFkDpmy4zkhveO2N2L4QUIm6ZcV0YBkNyoIa/IrJqyVAmwdWQ==}
+  '@angular/core@21.2.20':
+    resolution: {integrity: sha512-4yp6EKd1VJHUOiKmd3+s9UUXtBGsdO/IKewABuPXZ+UdrXPQSRMhgnMt49yqgz29XS7jSHyq6nZgt0CXOVEDZg==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
     peerDependencies:
-      '@angular/compiler': 20.3.20
-      rxjs: ^6.5.3 || ^7.4.0
-      zone.js: ~0.15.0
-    peerDependenciesMeta:
-      '@angular/compiler':
-        optional: true
-      zone.js:
-        optional: true
-
-  '@angular/core@21.2.12':
-    resolution: {integrity: sha512-wcD6tzE30nwg58KmAU19347Jf/1F/vFg2CEd9Qcu5cA1Z4s3umzvaqs/7988ne4HaS4iJEpvTbRvGss7EYZEfA==}
-    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
-    peerDependencies:
-      '@angular/compiler': 21.2.12
+      '@angular/compiler': 21.2.20
       rxjs: ^6.5.3 || ^7.4.0
       zone.js: ~0.15.0 || ~0.16.0
     peerDependenciesMeta:
@@ -14444,9 +14431,9 @@ snapshots:
       - chokidar
       - supports-color
 
-  '@angular/common@20.3.31(@angular/core@20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)':
+  '@angular/common@20.3.31(@angular/core@21.2.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)':
     dependencies:
-      '@angular/core': 20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3)
+      '@angular/core': 21.2.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3)
       rxjs: 7.8.2
       tslib: 2.8.1
 
@@ -14456,9 +14443,9 @@ snapshots:
       rxjs: 7.8.2
       tslib: 2.8.1
 
-  '@angular/common@21.2.23(@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)':
+  '@angular/common@21.2.23(@angular/core@21.2.20(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3))(rxjs@7.8.2)':
     dependencies:
-      '@angular/core': 21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3)
+      '@angular/core': 21.2.20(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3)
       rxjs: 7.8.2
       tslib: 2.8.1
 
@@ -14522,7 +14509,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@angular/core@20.3.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3)':
+  '@angular/core@21.2.20(@angular/compiler@20.3.20)(rxjs@7.8.2)(zone.js@0.16.3)':
     dependencies:
       rxjs: 7.8.2
       tslib: 2.8.1
@@ -14530,7 +14517,7 @@ snapshots:
       '@angular/compiler': 20.3.20
       zone.js: 0.16.3
 
-  '@angular/core@21.2.12(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3)':
+  '@angular/core@21.2.20(@angular/compiler@21.2.12)(rxjs@7.8.2)(zone.js@0.16.3)':
     dependencies:
       rxjs: 7.8.2
       tslib: 2.8.1
