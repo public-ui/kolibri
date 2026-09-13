@@ -1,0 +1,1 @@
+import"./index-BK50typm.js";import{r as e}from"./align-DnuTHmUs-DvEDtOeV.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
