@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-p20PU5XN.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};

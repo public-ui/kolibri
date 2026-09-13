@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-p20PU5XN.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
