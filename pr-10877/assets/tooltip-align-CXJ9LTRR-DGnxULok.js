@@ -1,1 +1,0 @@
-import"./index-DHkOOnTg.js";import{r as e}from"./align-DnuTHmUs-CAS-l_Gq.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
