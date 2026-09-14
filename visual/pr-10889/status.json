@@ -1,15 +1,15 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "1 changed – 0 of 1 approved, review pending",
-	"computedAt": "2026-09-14T10:02:55.051Z",
+	"state": "success",
+	"description": "1 visual changes approved by deleonio",
+	"computedAt": "2026-09-14T10:38:08.924Z",
 	"pr": 10889,
 	"head": "e69ab51bddc35fbc2ed5ea55002088ff4e269a3a",
 	"digest": "sha256:05d8eb4f1b5ac6a2cca0cf8df4c5ecf32ea028ce4152e6763a9ac3380a66fb67",
 	"counts": {
 		"changes": 1,
-		"open": 1,
-		"approved": 0,
+		"open": 0,
+		"approved": 1,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
@@ -19,8 +19,9 @@
 	],
 	"items": {
 		"theme-ecl/scenarios-focus-elements-component-badge": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		}
 	}
 }
