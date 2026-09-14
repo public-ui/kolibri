@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-Byj3V0BK.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
