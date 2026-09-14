@@ -36,6 +36,12 @@
 		&__heading {
 			margin: 0;
 			border-bottom: 1px solid var(--color-mute-variant);
+
+			/* See details.scss — the accordion label keeps its weight from
+			   `kol-typography-accordion` on `__container`, which sits deeper. */
+			.kol-headline {
+				font-weight: 400;
+			}
 		}
 
 		/* `<summary>` replaced the `kol-button-wc`, so the box that sat on the button's
