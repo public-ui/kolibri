@@ -63,7 +63,7 @@ Registrierung im Pagination-Snapshot-Spec bereinigt.
    Events mit korrekt unterschiedlichen Werten statt einem.
 4. **`kol-accordion`-Callbacks feuern nach 25 ms** statt ~0 ms.
 
-## Current state
+## Validierung
 
 - Unit: **952/952**, **774/774 Snapshots** — `git status -- '*.snap'` leer, also DOM byte-identisch.
 - Hydrate-SSR: **102 passing**, Mocha-Snapshot unverändert.
@@ -71,14 +71,26 @@ Registrierung im Pagination-Snapshot-Spec bereinigt.
   Stylelint grün, i18n grün, Prettier grün.
 - Generierte `components.d.ts` zeigt `CollapsibleCallbacksPropType<boolean>` für beide Komponenten.
 
+## Zero Visual Delta ✅
+
+**Alle sechs CI-Jobs `visual-tests (theme-{default,bwst,ecl,kern,desy} | unstyled)` sind grün.**
+Diese Jobs laden echte Baselines (`select-baseline` → `install-baseline`), laufen im Prüfmodus
+(`pnpm --filter <pkg> test`, **nicht** `test:update`) und schließen mit `assert-no-errors.mjs` ab —
+also echte Abnahme-Evidenz, keine selbst geschriebenen Baselines. `git diff -- '*.png'` = 0.
+
+Lokal zusätzlich gegengeprüft: PNGs auf Base-Stand und auf Branch im CI-identischen Container
+erzeugt und byteweise verglichen — **20/20 sha256-identisch** über default, bwst, desy, kern und
+unstyled (ECL deckt der CI-Job ab). Kein einziges Style-File liegt im Diff.
+
+CI sonst grün: `build-and-check`, `e2e-tests`, `deploy`, `validate-pr-title`, `cla`.
+`validate-release-label` verlangte ein `release:*`-Label — `release:engineering` gesetzt, wie
+bei #10886.
+
 ## Open work
 
-1. **GOAL Zero Visual Delta** — ausstehend: `node scripts/snapshots-docker.mjs default bwst ecl kern
-desy unstyled --check`, Baselines auf dem Base-Stand
-   (`refactor/migrate-kol-accordion-skeleton`), Ziel je Theme 0 failed und
-   `git diff --name-only <base>...HEAD -- '*.png' | wc -l` = 0. Da das DOM unverändert ist, ist
-   alles außer 0 ein Fehler und kein zu aktualisierendes Baseline.
-2. E2E (`accordion.e2e.ts`, `details.e2e.ts`) im CI bestätigen.
+Keine offene Arbeit. PR #10891 ist Draft; vor dem Merge die Stapel-Reihenfolge beachten
+(#10884 → #10886 → #10891). Offen ist allein die Review-Entscheidung zum synthetischen
+`click`-Event auf `kol-details` (Fallback oben dokumentiert).
 
 ## Sandbox-Notizen (nicht committen)
 
