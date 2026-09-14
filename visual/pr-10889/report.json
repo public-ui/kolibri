@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 10889,
-	"head": "f971400e3107abd85781ee4e27aa7e6c87dd6c75",
+	"head": "41d923f22d6e6d5aca2d6bbc382597638387c9dc",
 	"repository": "public-ui/kolibri",
-	"runId": 34820386909,
-	"generatedAt": "2026-09-14T08:19:58.868Z",
-	"digest": "sha256:28fde65d7e95b49013a2c2a6c068a33dd332fb154ad39b0c293d41375e675a91",
+	"runId": 34823399525,
+	"generatedAt": "2026-09-14T08:50:25.174Z",
+	"digest": "sha256:cf1669d232f9b9dd2a06695c7d6329af50d0cec479bf63650c5d2bfa3da11cdd",
 	"baseline": {
 		"sha": "001397bfb129145fb73dde65aea2cea320386e49",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2848,
-		"changed": 8,
+		"unchanged": 2854,
+		"changed": 2,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 1,
+				"unchanged": 408,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:e1079659443556cbf709b8b8d39457801464e93660d3a46e72c0943c9e4e175f",
+			"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -1901,14 +1901,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",
-					"route": "scenarios/focus-elements?component=badge",
-					"status": "changed",
-					"hash": "sha256:4e39221a0a26513f693859f46c55769bd7619c326c5e6893dbeb37acd1cb59b4",
-					"diffPixels": 3075,
-					"diffRatio": 0.134868,
-					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-badge.expected.png",
-					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-badge.actual.png",
-					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-badge.diff.png"
+					"route": "scenarios-focus-elements-component-badge",
+					"status": "unchanged",
+					"hash": "sha256:9c886444f28c388ce57827cb0b972b0e0252fbcbe2bbb4dde31052e1fe4115e7"
 				},
 				{
 					"name": "scenarios-focus-elements-component-button",
@@ -2527,13 +2522,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 1,
+				"unchanged": 408,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:59cf8a31c7c9d04c27e94179194991f259f2b870bae9b603ee5284d922f1bcac",
+			"digest": "sha256:fc68cf665148adebbb05128ea9fc331784019547afbef67e54a4f06342a0a15f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4385,14 +4380,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",
-					"route": "scenarios/focus-elements?component=badge",
-					"status": "changed",
-					"hash": "sha256:3d6d03ecca9727e28011b708b2634e53813e78d418e6ec9d5f6508da499fdca2",
-					"diffPixels": 3082,
-					"diffRatio": 0.135175,
-					"expected": "theme-bwst/scenarios-focus-elements-component-badge.expected.png",
-					"actual": "theme-bwst/scenarios-focus-elements-component-badge.actual.png",
-					"diff": "theme-bwst/scenarios-focus-elements-component-badge.diff.png"
+					"route": "scenarios-focus-elements-component-badge",
+					"status": "unchanged",
+					"hash": "sha256:9d49dabc391b464a97d8b2e0e774d57ba0bb514a907a7affc111745fc626f111"
 				},
 				{
 					"name": "scenarios-focus-elements-component-button",
@@ -5011,13 +5001,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 1,
+				"unchanged": 408,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:e1079659443556cbf709b8b8d39457801464e93660d3a46e72c0943c9e4e175f",
+			"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -6869,14 +6859,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",
-					"route": "scenarios/focus-elements?component=badge",
-					"status": "changed",
-					"hash": "sha256:4e39221a0a26513f693859f46c55769bd7619c326c5e6893dbeb37acd1cb59b4",
-					"diffPixels": 3075,
-					"diffRatio": 0.134868,
-					"expected": "theme-default/scenarios-focus-elements-component-badge.expected.png",
-					"actual": "theme-default/scenarios-focus-elements-component-badge.actual.png",
-					"diff": "theme-default/scenarios-focus-elements-component-badge.diff.png"
+					"route": "scenarios-focus-elements-component-badge",
+					"status": "unchanged",
+					"hash": "sha256:9c886444f28c388ce57827cb0b972b0e0252fbcbe2bbb4dde31052e1fe4115e7"
 				},
 				{
 					"name": "scenarios-focus-elements-component-button",
@@ -7495,13 +7480,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 1,
+				"unchanged": 408,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:cf222ea0f4a35a4bca4bd84a0f60f09b52cc2b549cfe9eb0e7322753f11c7dce",
+			"digest": "sha256:5c0a5b99732279589877caab16b44f567d5d2d3d1e487cbf90dd5fa9b3b6374e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9353,14 +9338,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",
-					"route": "scenarios/focus-elements?component=badge",
-					"status": "changed",
-					"hash": "sha256:506b72bfce4e063793d6cda977655b5c65bd9dd74ab39774fa57d78e895327f5",
-					"diffPixels": 3133,
-					"diffRatio": 0.133889,
-					"expected": "theme-desy/scenarios-focus-elements-component-badge.expected.png",
-					"actual": "theme-desy/scenarios-focus-elements-component-badge.actual.png",
-					"diff": "theme-desy/scenarios-focus-elements-component-badge.diff.png"
+					"route": "scenarios-focus-elements-component-badge",
+					"status": "unchanged",
+					"hash": "sha256:617535c035afc74a681b5ba098d278cb6efdda6eb37f8e4e72db96963f40fad6"
 				},
 				{
 					"name": "scenarios-focus-elements-component-button",
@@ -9985,7 +9965,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:bb509a1ac215d45fc06cbb73e249104d5a90ebe121c0732009cde849390e6a15",
+			"digest": "sha256:da84ab9fb6da58f37818d38e9cb17fecf8828f0597e6ad6253712932875bf903",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11844,9 +11824,9 @@
 					"name": "scenarios-focus-elements-component-badge",
 					"route": "scenarios/focus-elements?component=badge",
 					"status": "changed",
-					"hash": "sha256:2f8bde57da3bcbdc7baba57bcf350060908415de999196b3c405d87415548da5",
-					"diffPixels": 1379,
-					"diffRatio": 0.071823,
+					"hash": "sha256:cb7e2903889549032a54f93cbabb528dcad14cc9170e75159cacf359a151dc06",
+					"diffPixels": 4,
+					"diffRatio": 0.000208,
 					"expected": "theme-ecl/scenarios-focus-elements-component-badge.expected.png",
 					"actual": "theme-ecl/scenarios-focus-elements-component-badge.actual.png",
 					"diff": "theme-ecl/scenarios-focus-elements-component-badge.diff.png"
@@ -12468,13 +12448,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 1,
+				"unchanged": 408,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6e8c773c3676304f722ce63dd2dbd27283aa82c7135d0fcf437106a3df1defd5",
+			"digest": "sha256:6c7c79d591b3d1364b871ce98ccf568f09630e4eeb4ae4d664dad5db1a9f367b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14326,14 +14306,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",
-					"route": "scenarios/focus-elements?component=badge",
-					"status": "changed",
-					"hash": "sha256:3891d1af5428d24a03f0b34c395e16cfd8aa49997cfde8d25a7a462298ee6145",
-					"diffPixels": 4020,
-					"diffRatio": 0.171795,
-					"expected": "theme-kern/scenarios-focus-elements-component-badge.expected.png",
-					"actual": "theme-kern/scenarios-focus-elements-component-badge.actual.png",
-					"diff": "theme-kern/scenarios-focus-elements-component-badge.diff.png"
+					"route": "scenarios-focus-elements-component-badge",
+					"status": "unchanged",
+					"hash": "sha256:6e96ea8f8775d7a83cea2f5d77a98bb7ffebd8d64068d7fe458deeae09ef7b78"
 				},
 				{
 					"name": "scenarios-focus-elements-component-button",
@@ -14952,13 +14927,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 1,
+				"unchanged": 408,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:36d7895deaf13c63f9bba9de11944656aafda70fa8af44caeb52851690a19ab5",
+			"digest": "sha256:7ab3d41feafe675c93ded0fd377196a255c191ab7f67f3c587630250d28e87ed",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -16810,14 +16785,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",
-					"route": "scenarios/focus-elements?component=badge",
-					"status": "changed",
-					"hash": "sha256:a303781443a859f03c5bca54728f86c50a298564d18b2858ce850a3cf501583a",
-					"diffPixels": 667,
-					"diffRatio": 0.029254,
-					"expected": "unstyled/scenarios-focus-elements-component-badge.expected.png",
-					"actual": "unstyled/scenarios-focus-elements-component-badge.actual.png",
-					"diff": "unstyled/scenarios-focus-elements-component-badge.diff.png"
+					"route": "scenarios-focus-elements-component-badge",
+					"status": "unchanged",
+					"hash": "sha256:81f109a710050abf4630727ffcf0c7ec2e45613254e02fc0455bd674cccd8f7d"
 				},
 				{
 					"name": "scenarios-focus-elements-component-button",
