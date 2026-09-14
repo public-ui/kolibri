@@ -1,5 +1,4 @@
 export * from './access-key';
-export * from './accordion-callbacks';
 export * from './alert';
 export * from './alert-type';
 export * from './alert-variant';
@@ -18,9 +17,9 @@ export * from './breadcrumb-links';
 export * from './button-callbacks';
 export * from './button-type';
 export * from './card-callbacks';
+export * from './collapsible-callbacks';
 export * from './color';
 export * from './custom-class';
-export * from './details-callbacks';
 export * from './disabled';
 export * from './download';
 export * from './has-closer';
