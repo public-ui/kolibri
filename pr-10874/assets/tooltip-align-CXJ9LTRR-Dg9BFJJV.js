@@ -1,1 +1,0 @@
-import"./index-BANIwaka.js";import{r as e}from"./align-DnuTHmUs-CWdD6kJI.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
