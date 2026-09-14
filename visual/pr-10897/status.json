@@ -1,0 +1,44 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "6 changed – 0 of 6 approved, review pending",
+	"computedAt": "2026-09-14T13:21:37.884Z",
+	"pr": 10897,
+	"head": "7a91f2b70e05a77c70e36ca46d7ab1cf10c24cc9",
+	"digest": "sha256:48b869ff16cf420b8bf76a370adc55a26e79991af6f356a89e5eb9a41d09464d",
+	"counts": {
+		"changes": 6,
+		"open": 6,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"theme-kern/drawer-basic-align-left": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/drawer-basic-align-left-closer-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/drawer-basic-align-top": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/drawer-basic-align-left": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/drawer-basic-align-left-closer-true": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/drawer-basic-align-top": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
