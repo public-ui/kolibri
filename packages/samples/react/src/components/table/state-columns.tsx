@@ -1,8 +1,7 @@
-import type { KoliBriTableHeaderCellWithLogic } from '@public-ui/components';
+import type { KoliBriTableHeaderCellWithLogic, StateColumnPropType } from '@public-ui/components';
 import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import type { StateColumnPropType } from '../../../../../components/dist/types/schema';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
