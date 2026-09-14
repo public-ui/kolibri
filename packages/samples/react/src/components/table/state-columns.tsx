@@ -25,7 +25,6 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 				label: 'States',
 				textAlign: 'left',
 				width: 500,
-				states: (row) => (row as ProjectTask).state,
 			},
 		],
 	],
@@ -39,7 +38,7 @@ const DATA: ProjectTask[] = [
 		state: [
 			{
 				type: 'badge',
-				_label: 'Vacation',
+				_label: 'Logged out',
 				_color: '#aa0000',
 			},
 			{
@@ -56,8 +55,13 @@ const DATA: ProjectTask[] = [
 		state: [
 			{
 				type: 'badge',
-				_label: 'At Work',
+				_label: 'Logged in',
 				_color: '#00aa00',
+			},
+			{
+				type: 'badge',
+				_label: 'In Project',
+				_color: '#0000aa',
 			},
 		],
 	},

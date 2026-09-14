@@ -21,6 +21,7 @@ import type {
 	LabelPropType,
 	SelectionChangeEventPayload,
 	StateColumnHeaderCell,
+	StateColumnPropType,
 	TableCallbacksPropType,
 	TableDataFootPropType,
 	TableDataPropType,
@@ -914,8 +915,8 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 				>
 					{isActionColumn && actionColumn && cell.data
 						? this.renderActionItems(actionColumn, cell.data, key)
-						: isStateColumn && stateColumn && cell.data
-							? this.renderStateItems(stateColumn, cell.data, key)
+						: isStateColumn && cell.data
+							? this.renderStateItems(cell.data, key)
 							: !hasCustomRender
 								? cell.label
 								: ''}
@@ -953,16 +954,14 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	};
 
 	/**
-	 * Renders state items (basged) for a table cell.
-	 * Uses the StateColumnHeaderCell factory function to generate states based on row data.
+	 * Renders state items (badge) for a table cell.
 	 *
-	 * @param {StateColumnHeaderCell} stateColumn The atate column header definition.
 	 * @param {KoliBriTableDataType} rowData The data for the current row.
 	 * @param {string} key Unique key for the cell.
 	 * @returns {JSX.Element} The rendered state items wrapped in a container.
 	 */
-	private readonly renderStateItems = (stateColumn: StateColumnHeaderCell, rowData: KoliBriTableDataType, key: string): JSX.Element => {
-		const state = stateColumn.states(rowData);
+	private readonly renderStateItems = (rowData: KoliBriTableDataType, key: string): JSX.Element => {
+		const state = rowData.state as StateColumnPropType[];
 
 		return (
 			<div class="kol-table__cell-states">

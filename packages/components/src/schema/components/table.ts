@@ -44,7 +44,7 @@ export type DefaultHeaderCell = KoliBriTableHeaderCell & {
 	sortDirection?: KoliBriSortDirection;
 };
 
-export type KoliBriTableHeaderCellWithLogic = DefaultHeaderCell | ActionColumnHeaderCell;
+export type KoliBriTableHeaderCellWithLogic = DefaultHeaderCell | ActionColumnHeaderCell | StateColumnHeaderCell;
 
 /**
  * Action column header cell that defines actions for each row.
@@ -61,7 +61,6 @@ export type ActionColumnHeaderCell = KoliBriTableHeaderCell & {
  */
 export type StateColumnHeaderCell = KoliBriTableHeaderCell & {
 	type: 'state';
-	states: (row: KoliBriTableDataType) => StateColumnPropType[];
 };
 
 export type KoliBriTableHeaders = {
