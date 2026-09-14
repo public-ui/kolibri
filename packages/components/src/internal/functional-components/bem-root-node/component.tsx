@@ -3,21 +3,13 @@ import { h } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 
 import type { KoliBriComponentsBemSchema } from '../../../schema/bem-registry';
-import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
+import type { BlockModifiers } from './block-bem';
+import { getBlockBem } from './block-bem';
 
 type FCChildren = Parameters<FC>[1];
 
-type KeysOfSet<T> = T extends Set<infer U> ? U : never;
-
-/**
- * Extracts the valid block modifier keys for a given registered BEM block.
- * Mirrors the conditional type used by typed-bem so that the types align exactly.
- */
-export type BlockModifiers<TBlock extends keyof KoliBriComponentsBemSchema> =
-	KeysOfSet<KoliBriComponentsBemSchema[TBlock]['modifiers']> extends never
-		? undefined
-		: Partial<Record<KeysOfSet<KoliBriComponentsBemSchema[TBlock]['modifiers']>, boolean>>;
+export type { BlockModifiers };
 
 type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema> = {
 	/**
@@ -37,23 +29,6 @@ type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema> = {
 	 */
 	class?: JSXBase.HTMLAttributes<HTMLElement>['class'];
 };
-
-/**
- * `bem.forBlock(block)` allocates a fresh generator closure on every call — cheap, but callers
- * (e.g. `ButtonFC`, `LinkFC`) already hoist their own block-bound `bem.forBlock(...)` at module
- * scope for element-class lookups. Caching by block name here means `BemRootNodeFC` reuses the
- * same generator instead of allocating a second one on every render.
- */
-const blockBemCache = new Map<keyof KoliBriComponentsBemSchema, (modifiers?: unknown) => string>();
-
-function getBlockBem<TBlock extends keyof KoliBriComponentsBemSchema>(block: TBlock): (modifiers?: BlockModifiers<TBlock>) => string {
-	let blockBem = blockBemCache.get(block);
-	if (!blockBem) {
-		blockBem = bem.forBlock(block) as (modifiers?: unknown) => string;
-		blockBemCache.set(block, blockBem);
-	}
-	return blockBem as (modifiers?: BlockModifiers<TBlock>) => string;
-}
 
 /**
  * Single-Root BEM wrapper for all Skeleton Functional Components.
@@ -82,5 +57,5 @@ export const BemRootNodeFC = <TBlock extends keyof KoliBriComponentsBemSchema>(
 	children: FCChildren,
 ) => {
 	const blockBem = getBlockBem(block);
-	return <div class={clsx(blockBem(modifiers as BlockModifiers<TBlock>), hostClass)}>{children}</div>;
+	return <div class={clsx(blockBem(modifiers), hostClass)}>{children}</div>;
 };
