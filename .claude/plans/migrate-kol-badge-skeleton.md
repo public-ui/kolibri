@@ -16,14 +16,20 @@ git diff --name-only origin/develop...HEAD -- '*.png' | wc -l   # Tracking-Metri
 node scripts/snapshots-docker.mjs <theme> --check                # Evidenz (Exit-Code)
 ```
 
-| Theme      | Status       | Prüfbefehl                                           |
-| ---------- | ------------ | ---------------------------------------------------- |
-| `unstyled` | ⏳ ungeprüft | `node scripts/snapshots-docker.mjs unstyled --check` |
-| `default`  | ⏳ ungeprüft | `node scripts/snapshots-docker.mjs default --check`  |
-| `bwst`     | ⏳ ungeprüft | `node scripts/snapshots-docker.mjs bwst --check`     |
-| `ecl`      | ⏳ ungeprüft | `node scripts/snapshots-docker.mjs ecl --check`      |
-| `kern`     | ⏳ ungeprüft | `node scripts/snapshots-docker.mjs kern --check`     |
-| `desy`     | ⏳ ungeprüft | `node scripts/snapshots-docker.mjs desy --check`     |
+Alle Themes sind über die CI-Jobs `visual-tests (<paket>)` auf PR #10889 abgenommen (Commit
+`427bec23a9`, Baseline `001397bfb1` = develop). Das ist die in § 1 des Handoff-Skills vorgesehene
+unabhängige Evidenz — kein PNG wurde neu committet (`git diff --name-only origin/develop...HEAD --
+'*.png'` = 0), der Vergleich lief also echt gegen die Base-Baselines.
+
+| Paket                       | Status                      | Evidenz                                           |
+| --------------------------- | --------------------------- | ------------------------------------------------- |
+| `unstyled`                  | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (unstyled)`                  |
+| `theme-default`             | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (theme-default)`             |
+| `theme-bwst`                | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (theme-bwst)`                |
+| `theme-ecl`                 | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (theme-ecl)`                 |
+| `theme-kern`                | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (theme-kern)`                |
+| `theme-desy`                | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (theme-desy)`                |
+| `test-tag-name-transformer` | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (test-tag-name-transformer)` |
 
 ## Current state
 
@@ -58,23 +64,14 @@ Belege für Null-DOM-Delta (kein Ersatz für das Pixel-Gate, aber starke Indizie
 
 ## Open work
 
-### 0. Pixel-Gate — OFFEN (blockiert die Abnahme)
+### 0. Pixel-Gate — DONE (2026-09-14)
 
-**In dieser Session war kein Docker-Daemon verfügbar** (`docker info` → nicht erreichbar). Gemäß
-§ 0 des Skills `zero-visual-delta-handoff` wird die visuelle Prüfung **nicht** durch lokale
-Playwright-Läufe ersetzt, sondern hier als offene Arbeit übergeben.
-
-Zu tun in einer Session mit Docker:
-
-1. Baselines auf Base-Stand stellen: `git checkout origin/develop -- packages/themes/*/snapshots packages/unstyled/snapshots`
-2. Ergebnisordner im Volume räumen (siehe Skill § 2).
-3. Je Theme `node scripts/snapshots-docker.mjs <theme> --check`, Stichproben-Strategie Stufe 1
-   (`--grep badge`) zuerst, danach `version`, `heading`, `handout` (Badge-Konsumenten), dann der
-   volle Lauf als Abnahme-Evidenz.
-4. Statuszeilen in der Goal-Tabelle mit Exit-Code/„N passed" füllen.
-
-Erwartung: 0 Diffs ohne Theme-Arbeit, weil das DOM unverändert ist (siehe oben). Sollte doch etwas
-auffallen, zuerst Muster 1/2/4 aus § 6a des Skills prüfen.
+In der Migrations-Session war kein Docker-Daemon verfügbar (`docker info` → nicht erreichbar);
+gemäß § 0 des Skills `zero-visual-delta-handoff` wurde die visuelle Prüfung **nicht** durch lokale
+Playwright-Läufe ersetzt, sondern offen übergeben. Abgenommen hat sie dann die CI: die sieben
+`visual-tests`-Jobs auf PR #10889 sind grün, und der Visual-Review-Bot meldet „✅ No visual changes"
+mit 408 unchanged / 0 changed je Paket. Erwartung bestätigt: **keine Theme-Arbeit nötig**, weil das
+DOM byte-identisch portiert wurde.
 
 ### 1. `packages/themes/ecl/src/ecl-eu` bleibt ungeprüft
 
@@ -123,4 +120,4 @@ pnpm --filter @public-ui/hydrate build && pnpm --filter @public-ui/hydrate test:
 node scripts/snapshots-docker.mjs <theme> --check  # Pixel-Gate, braucht Docker
 ```
 
-Stand dieser Session: alle Befehle außer dem Pixel-Gate grün.
+Stand: alle Befehle grün; das Pixel-Gate ist über die CI-Jobs abgenommen (siehe Goal-Tabelle).

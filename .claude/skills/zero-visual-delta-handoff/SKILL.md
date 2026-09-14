@@ -256,7 +256,7 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 | 16d | Geteilte Mixins für Link- UND Button-Blöcke: Fokus-Regeln brauchen BEIDE Varianten (`__anchor` + `__button`) → Log default (link-button via kol-button('kol-link'))                                                                                                                                   | Migration default                                | Fehlender Fokus-Ring bei Cross-Blöcken verhindert                   |
 | 16e | Sample-Drift Branch↔Base ist eine Diff-Quelle: Variant-Auflösung (getTheme vs getCustomThemes) ändert Sample-Inhalt → Umbruch; Samples auf Base-Stand syncen → Log default (icon/font)                                                                                                                | Migration default                                | Phantom-Diffs in unverdächtigen Routen verhindert                   |
 
-| 29 | Migrierter FC darf den transitionalen `-wc`-Tag behalten: Theme-/Basis-Selektoren treffen dessen Host-Klasse als Vorfahren (ecl `.kol-details__heading-button .kol-button`, desy `kol-link('kol-details__heading-button')`) — vor jedem Ersetzen die Selektoren greppen; DOM-identischer FC-Port erspart die komplette Theme-Runde → Log 2026-09-14 | Details-Skeleton-Migration (PR #10884) | Theme-Fix-Runden (25–33 Diffs wie bei Button) von vornherein vermieden |
+| 29 | Migrierter FC darf den transitionalen `-wc`-Tag behalten: Theme-/Basis-Selektoren treffen dessen Host-Klasse als Vorfahren (ecl `.kol-details__heading-button .kol-button`, desy `kol-link('kol-details__heading-button')`, badge `.kol-badge__smart-button .kol-button`) — vor jedem Ersetzen die Selektoren greppen; DOM-identischer FC-Port erspart die komplette Theme-Runde → Log 2026-09-14 | Details-Skeleton-Migration (PR #10884), Badge-Skeleton-Migration (PR #10889) — 2× bestätigt | Theme-Fix-Runden (25–33 Diffs wie bei Button) von vornherein vermieden |
 
 **Block C — Betrieb**
 
@@ -460,6 +460,34 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 - **Theme-Spezifika**: keine. Das ist die eigentliche Lehre: Bevor ein DOM-Entscheid während der Migration fällt, die Theme-/Basis-SCSS-Selektoren auf die betroffenen Klassen prüfen — dann kann die Theme-Runde komplett entfallen (Gegenprobe: Button-Migration mit 25–33 Diffs je Theme, weil der Wrapper-Umbau erst nach dem Port sichtbar wurde).
 - **Fix-Commit(s)**: Migrations-Commit auf `refactor/migrate-kol-details-skeleton` (PR #10884).
 - **Evidenz**: je Theme `node scripts/snapshots-docker.mjs <theme> --check` → 293/293 passed, Exit 0 (default, bwst, ecl, kern, desy, unstyled); `git diff origin/develop...HEAD -- '*.png'` = 0. Diagnose-Falle unterwegs: Jest-Snapshot-Serializer sortiert `class`-Attribute alphabetisch (Erfahrung #28).
+
+### 2026-09-14 — Skeleton-Migration kol-badge (DOM-identischer FC-Port): alle Pakete, 0 Diffs ab Start
+
+- **Ausgangslage**: Zweite Migration in Folge, die das Pixel-Gate ohne eine einzige Theme-Fix-Runde
+  passiert (PR #10889). BadgeFC (`internal/functional-components/badge/`) ersetzt das `render()` des
+  Legacy-WC; WC-Orchestrator nach ARC42, kein Behavior nötig.
+- **Ursachen & Fix-Muster**: keine — der DOM wurde byte-identisch portiert. Zwei Entscheidungen
+  waren dafür ausschlaggebend, beide **vor** dem Schreiben des FC durch Greppen der Theme-/Basis-SCSS
+  getroffen: (a) der transitionale `kol-button-wc` blieb im FC, weil `.kol-badge__smart-button
+.kol-button` (default/bwst) bzw. `… button` (kern) und `.kol-badge__smart-button .kol-button`
+  (ecl-ec) die Host-Klasse als Vorfahren brauchen (Erfahrung #29, 2. Bestätigung); (b) die Wurzel
+  blieb ein `<span>` statt `BemRootNodeFC` — ein Badge ist Inline-Inhalt, und ARC42
+  § „BemRootNodeFC Pattern" erlaubt den direkten `bem.forBlock`-Weg für nicht-`div`-Wurzeln.
+- **Neu gelernt (Früher-gewusst-Test bestanden)**: Eine Render-Prop, die _fehlen_ darf, ist mit
+  `StrictFields` nicht ausdrückbar. Lösung: `unsetRenderProp(key)` direkt nach `initRenderProps`
+  **und** vor jedem `apply`, plus ein `Omit<…> & { key?: T }`-Override am FC-Prop-Typ (Muster, das
+  `SpanFC` schon nutzt). Ohne das Unset leckt der Config-Default ins DOM — dieselbe Klasse Fehler
+  wie der `tabindex="0"`-Leak aus Erfahrung #21, nur mit einem leeren Button als Symptom.
+- **Diagnose-Falle unterwegs**: Ein Pfad-Glob (`themes/*/src/…`) in einem JSDoc-Block **beendet den
+  Kommentar** am `*/`; `tsc` meldet dann `TS1443`/„Unterminated template literal" in Zeilen weit
+  hinter der Ursache. Pfad-Globs in Kommentaren ausschreiben.
+- **Theme-Spezifika**: keine.
+- **Fix-Commit(s)**: `427bec2` auf `claude/peaceful-babbage-qpr0bn` (PR #10889).
+- **Evidenz**: CI-Jobs `visual-tests (<paket>)` alle grün; Visual-Review-Bot „✅ No visual changes",
+  je 408 unchanged / 0 changed für `unstyled`, `theme-default`, `theme-bwst`, `theme-ecl`,
+  `theme-kern`, `theme-desy`, `test-tag-name-transformer`; Baseline `001397bfb1` (develop),
+  Commit `427bec23a9`; `git diff --name-only origin/develop...HEAD -- '*.png'` = 0. Docker stand in
+  der Session nicht zur Verfügung — die CI-Jobs sind laut § 1 gleichwertige Abnahme-Evidenz.
 
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 
