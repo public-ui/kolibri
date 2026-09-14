@@ -49,6 +49,10 @@ Use these in this order:
    - `packages/components/src/internal/functional-components/base-behavior.ts`
    - `packages/components/src/internal/functional-components/generic-types.ts`
 2. [`ARC42.md`](packages/components/src/components/_skeleton/ARC42.md) as architecture narrative.
+3. **Migrated reference implementations** (production shape, each pixel-verified against its legacy predecessor):
+   - `packages/components/src/components/button/component.tsx` with `internal/functional-components/button/`
+   - `packages/components/src/components/details/component.tsx` with `internal/functional-components/details/`
+   - `packages/components/src/components/link/component.tsx` with `internal/functional-components/link/`
 
 If ARC42 text and implementation differ, follow implementation — ARC42 is the specification, but the implementation is what tests and builds run against. A divergence is a bug in one of the two: fix the doc when the code is correct, or flag it when the code should conform.
 
@@ -144,6 +148,8 @@ grep -r "schema/components/image" packages/components/src
 # Falls keine Treffer → image.ts löschen
 rm packages/components/src/schema/components/image.ts
 ```
+
+**Published type surface is not dead code:** unreferenced schema types (`ButtonStates`, `ButtonAPI`, `DetailsStates`, `DetailsAPI`, …) and schema validators (e.g. `validateDetailsCallbacks`) that are still exported from `schema/index.ts` stay in place. They are part of the published API surface — removing them is a separate breaking change, not cleanup (see how the button migration kept `ButtonStates`/`ButtonAPI`).
 
 ### Phase 5: Validation
 
@@ -256,6 +262,22 @@ Use `BaseWebComponent.stateLess` — and only for stateless Behaviors.
 ### 7. JSDoc Type Noise in TS
 
 Do not add redundant `@param {}` / `@returns {}` JSDoc type annotations in TypeScript.
+
+### 8. Removing a Transitional `-wc` Tag Inside the Migrated FC
+
+A migrated `shadow: true` component may legitimately keep rendering a transitional element (e.g. `DetailsFC` renders `KolButtonWcTag`): theme and base SCSS may target the host's class as an ancestor (ecl `.kol-details__heading-button .kol-button`, desy `kol-link('kol-details__heading-button')`). Dropping the host node moves that class onto the same level as the inner block class and silently breaks those selectors — a visual regression. Before replacing a transitional tag with a direct FC render, grep `packages/themes/*/src` and the components SCSS for selectors that use the tag's class as ancestor. Zero visual delta outranks architectural purity; migrating the consumer off the transitional tag stays a separately tracked task.
+
+### 9. `FunctionalComponentProps` Is a StrictFields Contract
+
+The FC must receive **every** prop from the props config **and** every `States` field — even ones it does not destructure (e.g. consumer callbacks that stay in the WC). The type error only surfaces at the render call site, not in the FC.
+
+### 10. Derived Per-Instance ARIA IDs Belong in the `States` Bucket
+
+IDs referenced by `aria-labelledby`/`aria-controls` (e.g. `headingId`, `controlId`) are declared as `@State()` fields on the WC (seeded from `createUniqueId`/`createRelatedUniqueId`) and passed to the FC — precedent: the button's `ariaDescriptionId`. `BemRootNodeFC` renders classes only, so a root-level `id` cannot be rendered through it; dropping an inert root id is acceptable when nothing references it (document it in the PR).
+
+### 11. Jest Snapshot Class Order Is Normalized
+
+The Stencil Jest snapshot serializer sorts `class` attribute values alphabetically. Class order in a snapshot is therefore not a signal of the real DOM order — do not treat an order difference as a regression, and do not try to reproduce source order in snapshots.
 
 ---
 
