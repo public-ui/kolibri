@@ -122,14 +122,31 @@ Mitmigrierte Selektoren (Vorprüfung 2), weil `kol-badge__smart-button` jetzt **
 der Block das Flex-Item von `.kol-badge` und hätte die volle Badge-Breite beansprucht.
 `components/badge/style.scss` setzt deshalb `width: auto` auf `&__smart-button`.
 
-**Pixel-Gate, erste Runde: 8 geänderte Bilder** (`f971400`) — `scenarios-focus-elements-component-badge`
-in jedem Paket, in ecl zusätzlich `badge-basic--smart-button`. Ursache war **nicht** ein Selektor,
-sondern zwei Defaults: `kol-button-wc` deklariert sie als Stencil-`@Prop`-Feld
-(`_inline = false`, `_tooltipAlign = 'top'`), die geteilten Prop-Definitionen tragen dagegen die
-Link-Konvention (`inline: true`, `tooltipAlign: 'right'`). Der Button wurde damit `--inline` statt
-`--standalone` und sein Tooltip erschien rechts statt oben. `resolveButtonProps` setzt die
-Element-Defaults jetzt über `BUTTON_ELEMENT_DEFAULTS` neu; der Snapshot zeigt wieder
-`kol-button--standalone`. Zweite Runde läuft — abgenommen ist der Schritt erst bei 0 Diffs.
+**Pixel-Gate — Verlauf 8 → 2 → 1.**
+
+| Runde | Commit    | Diffs | Ursache                                                                                                                                                                                                                                                                                                                              |
+| ----- | --------- | ----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1     | `f971400` |     8 | Zwei Element-Defaults: `kol-button-wc` deklariert `_inline = false` / `_tooltipAlign = 'top'` als Stencil-`@Prop`, die geteilten Prop-Definitionen tragen die Link-Konvention (`true` / `'right'`). Button wurde `--inline` statt `--standalone`, Tooltip rechts statt oben. Fix: `BUTTON_ELEMENT_DEFAULTS` in `resolveButtonProps`. |
+| 2     | `41d923f` |     2 | Nur noch ecl. Die weggefallene Descendant-Stufe senkte `.kol-badge__smart-button .kol-button .kol-icon::before` von 0-3-0 auf 0-2-0 — das ecl-Icon-Mixin (`.kol-icon[class*=' kolicon-'].kolicon-…::before`, 0-3-0) gewann und rendert sein eigenes Glyph. Fix: Compound-Selektor `&__smart-button.kol-button`.                      |
+| 3     | `8abd56b` |     1 | s. u. — offen.                                                                                                                                                                                                                                                                                                                       |
+
+**Offen: `theme-ecl` / `scenarios-focus-elements-component-badge`, 1 px vertikaler Versatz.**
+
+Gemessen (Artefakt `visual-review-theme-ecl`, Vergleich expected/actual mit PIL): 116 Rohpixel,
+Bounding-Box `x=231..286`, `y=33..35` — ein 56 px breites Element liegt **exakt 1 px tiefer**
+(`actual` y=34 trägt den Farbwert von `expected` y=33, y=35 den von y=34).
+
+Mechanismus: Der Wrapper `kol-button-wc` war ein Block-Flex-Item, in dem `.kol-button` als
+`display: inline-block` (aus `kol-button-wc-box-styles`) eine **Line-Box** erzeugte. Deren
+Unterlänge saß als Leerraum **unter** dem Button, der Button selbst also oberhalb der Boxmitte —
+und das Ganze wurde von `align-items: center` mittig gesetzt. Ohne Wrapper ist `.kol-button` selbst
+das Flex-Item, wird blockifiziert, hat keine Line-Box mehr und sitzt exakt mittig, also ~1 px
+tiefer. Nur ecl zeigt es, weil dort `--a11y-min-size: 26px` plus die negativen Margins den Button
+klein genug halten, dass die Badge-Höhe davon abhängt.
+
+**Decision Point (siehe unten) — die Optionen sind nicht gleichwertig, deshalb keine
+Eigenentscheidung.** Ein Allowlist-Eintrag braucht nach § 8 des Handoff-Skills ohnehin
+Owner-Freigabe.
 
 ### 2. `packages/themes/ecl/src/ecl-eu` bleibt ungeprüft
 
