@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "2 changed – 0 of 2 approved, review pending",
-	"computedAt": "2026-09-14T08:50:25.755Z",
+	"description": "1 changed – 0 of 1 approved, review pending",
+	"computedAt": "2026-09-14T09:09:33.142Z",
 	"pr": 10889,
-	"head": "41d923f22d6e6d5aca2d6bbc382597638387c9dc",
-	"digest": "sha256:cf1669d232f9b9dd2a06695c7d6329af50d0cec479bf63650c5d2bfa3da11cdd",
+	"head": "8abd56b9ec8a7382c7a2ff9cfff3eb5f6be088c6",
+	"digest": "sha256:05d8eb4f1b5ac6a2cca0cf8df4c5ecf32ea028ce4152e6763a9ac3380a66fb67",
 	"counts": {
-		"changes": 2,
-		"open": 2,
+		"changes": 1,
+		"open": 1,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -18,10 +18,6 @@
 		"deleonio"
 	],
 	"items": {
-		"theme-ecl/badge-basic--smart-button": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-ecl/scenarios-focus-elements-component-badge": {
 			"state": "open",
 			"notes": []

@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 10889,
-	"head": "41d923f22d6e6d5aca2d6bbc382597638387c9dc",
+	"head": "8abd56b9ec8a7382c7a2ff9cfff3eb5f6be088c6",
 	"repository": "public-ui/kolibri",
-	"runId": 34823399525,
-	"generatedAt": "2026-09-14T08:50:25.174Z",
-	"digest": "sha256:cf1669d232f9b9dd2a06695c7d6329af50d0cec479bf63650c5d2bfa3da11cdd",
+	"runId": 34825251512,
+	"generatedAt": "2026-09-14T09:09:32.028Z",
+	"digest": "sha256:05d8eb4f1b5ac6a2cca0cf8df4c5ecf32ea028ce4152e6763a9ac3380a66fb67",
 	"baseline": {
 		"sha": "001397bfb129145fb73dde65aea2cea320386e49",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2854,
-		"changed": 2,
+		"unchanged": 2855,
+		"changed": 1,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -9959,13 +9959,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 406,
-				"changed": 2,
+				"unchanged": 407,
+				"changed": 1,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:da84ab9fb6da58f37818d38e9cb17fecf8828f0597e6ad6253712932875bf903",
+			"digest": "sha256:fdcf6f2320f889e58063024f83005cbef582d05973b32a68271f4759cb1fb2e4",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10065,14 +10065,9 @@
 				},
 				{
 					"name": "badge-basic--smart-button",
-					"route": "badge/basic",
-					"status": "changed",
-					"hash": "sha256:a49fd76b912a46415040a5b33b2ad3b8e42bb7d572c01c51ce9278e161b8f74c",
-					"diffPixels": 40,
-					"diffRatio": 0.003347,
-					"expected": "theme-ecl/badge-basic--smart-button.expected.png",
-					"actual": "theme-ecl/badge-basic--smart-button.actual.png",
-					"diff": "theme-ecl/badge-basic--smart-button.diff.png"
+					"route": "badge-basic",
+					"status": "unchanged",
+					"hash": "sha256:8e7d1aaa56fa30c980d4248d16770e1621cf8be30b5026b1126dd9dee77080d6"
 				},
 				{
 					"name": "breadcrumb-basic--basic",
