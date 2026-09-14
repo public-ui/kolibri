@@ -155,6 +155,13 @@
 			justify-content: center;
 		}
 
+		&__cell-states {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: flex-start;
+		}
+
 		&__spacer {
 			display: none;
 		}
