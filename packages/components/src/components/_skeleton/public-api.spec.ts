@@ -398,6 +398,7 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['link', 'wc.tsx'],
 		['button', 'component.tsx'],
 		['button', 'wc.tsx'],
+		['details', 'component.tsx'],
 	];
 
 	it.each(sources)('documents every public member of %s/%s', (component, file) => {
@@ -435,5 +436,72 @@ describe('kol-button-wc transitional wrapper (internal contract for legacy consu
 		const extracted = extractFrom('button', 'wc.tsx');
 		expect(extracted.filter((member) => member.kind === 'prop')).toHaveLength(23);
 		expect(extracted.filter((member) => member.kind === 'method').map((member) => member.name)).toEqual(['focus', 'click']);
+	});
+});
+
+/**
+ * Pinned public API of `kol-details` — byte-identical to the predecessor on the develop branch
+ * (5 props plus `focus()` and `click()`). `_open` keeps its `mutable`/`reflect` decorators so the
+ * reflected attribute is already updated when the delayed `onToggle` callback reads it.
+ */
+const KOL_DETAILS_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the internal element.',
+	},
+	click: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Triggers a click on the summary/toggle button.',
+	},
+	_disabled: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Makes the element not focusable and ignore all events.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_level: {
+		kind: 'prop',
+		type: 'HeadingLevel',
+		required: false,
+		default: '0',
+		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'DetailsCallbacksPropType<boolean>',
+		required: false,
+		doc: 'Defines the callback functions for details.',
+	},
+	_open: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Opens/expands the element when truthy, closes/collapses when falsy. @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.',
+	},
+};
+
+describe('kol-details public API contract (ARC42 § Public API Contract)', () => {
+	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
+		const extracted = extractFrom('details', 'component.tsx');
+		// Failing this test means the public contract changed — a breaking change (ARC42 §
+		// "Public API Contract (Migration Parity)"): get owner approval, then update the pinned
+		// contract consciously and note it in the PR description.
+		expect(toContract(extracted)).toEqual(KOL_DETAILS_PUBLIC_API);
+	});
+
+	it('implements the schema interface so prop-type drift fails the build', () => {
+		expect(readSource('details', 'component.tsx')).toMatch(/implements\s+[^{]*\bDetailsProps\b/);
 	});
 });

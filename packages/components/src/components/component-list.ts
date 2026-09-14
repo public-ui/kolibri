@@ -10,7 +10,7 @@ import { KolButton } from './button/component';
 import { KolButtonWc } from './button/wc';
 import { KolCard } from './card/shadow';
 import { KolCombobox } from './combobox/shadow';
-import { KolDetails } from './details/shadow';
+import { KolDetails } from './details/component';
 import { KolDialogWc } from './dialog/component';
 import { KolDialog } from './dialog/shadow';
 import { KolDrawer } from './drawer/shadow';
