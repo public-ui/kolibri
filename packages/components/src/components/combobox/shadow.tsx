@@ -235,6 +235,7 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 			state: this.state,
 			class: clsx('kol-combobox', {
 				'has-value': this.state._hasValue,
+				'kol-combobox--open': this._isOpen,
 			}),
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
