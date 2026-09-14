@@ -9,7 +9,7 @@ type ProjectTask = {
 	id: string;
 	project: string;
 	owner: string;
-	state: StateColumnPropType[];
+	userStates: StateColumnPropType[];
 };
 
 const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
@@ -20,7 +20,7 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 			{ key: 'owner', label: 'Owner', width: 140 },
 			{
 				type: 'state',
-				key: 'states',
+				key: 'userStates',
 				label: 'States',
 				textAlign: 'left',
 				width: 500,
@@ -34,7 +34,7 @@ const DATA: ProjectTask[] = [
 		id: 'T-01',
 		project: 'Onboarding checklist',
 		owner: 'Alex Rivera',
-		state: [
+		userStates: [
 			{
 				type: 'badge',
 				_label: 'Logged out',
@@ -51,7 +51,7 @@ const DATA: ProjectTask[] = [
 		id: 'T-02',
 		project: 'Accessibility audit',
 		owner: 'Jamie Chen',
-		state: [
+		userStates: [
 			{
 				type: 'badge',
 				_label: 'Logged in',

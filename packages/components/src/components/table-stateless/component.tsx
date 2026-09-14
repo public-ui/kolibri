@@ -916,7 +916,7 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 					{isActionColumn && actionColumn && cell.data
 						? this.renderActionItems(actionColumn, cell.data, key)
 						: isStateColumn && cell.data
-							? this.renderStateItems(cell.data, key)
+							? this.renderStateItems(stateColumn, cell.data, key)
 							: !hasCustomRender
 								? cell.label
 								: ''}
@@ -960,8 +960,16 @@ export class KolTableStatelessWc implements TableStatelessAPI {
 	 * @param {string} key Unique key for the cell.
 	 * @returns {JSX.Element} The rendered state items wrapped in a container.
 	 */
-	private readonly renderStateItems = (rowData: KoliBriTableDataType, key: string): JSX.Element => {
-		const state = rowData.state as StateColumnPropType[];
+	private readonly renderStateItems = (stateColumn: StateColumnHeaderCell, rowData: KoliBriTableDataType, key: string): JSX.Element => {
+		const colKey = stateColumn.key;
+		if (!colKey) {
+			return '';
+		}
+
+		const state = rowData[colKey] as StateColumnPropType[];
+		if (!state) {
+			return '';
+		}
 
 		return (
 			<div class="kol-table__cell-states">
