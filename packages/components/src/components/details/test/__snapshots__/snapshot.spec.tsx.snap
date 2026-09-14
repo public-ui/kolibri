@@ -3,7 +3,7 @@
 exports[`kol-details should render with _label="Zusammenfassung" _disabled=false _open=false 1`] = `
 <kol-details>
   <template shadowrootmode="open">
-    <div class="collapsible kol-details" id="details-nonce">
+    <div class="collapsible kol-details">
       <strong class="collapsible__heading kol-details__heading kol-headline kol-headline--single kol-headline--strong">
         <kol-button-wc _ariacontrols="details-control-nonce" _icons="kolicon-chevron-right" _label="Zusammenfassung" class="collapsible__heading-button kol-details__heading-button" id="details-heading-nonce" slot="expert"></kol-button-wc>
       </strong>
@@ -22,7 +22,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=false
 exports[`kol-details should render with _label="Zusammenfassung" _disabled=false _open=true 1`] = `
 <kol-details _open="">
   <template shadowrootmode="open">
-    <div class="collapsible collapsible--open kol-details" id="details-nonce">
+    <div class="collapsible collapsible--open kol-details">
       <strong class="collapsible__heading kol-details__heading kol-headline kol-headline--single kol-headline--strong">
         <kol-button-wc _ariacontrols="details-control-nonce" _ariaexpanded="" _icons="kolicon-chevron-right" _label="Zusammenfassung" class="collapsible__heading-button kol-details__heading-button" id="details-heading-nonce" slot="expert"></kol-button-wc>
       </strong>
@@ -41,7 +41,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=false
 exports[`kol-details should render with _label="Zusammenfassung" _disabled=true _open=false 1`] = `
 <kol-details>
   <template shadowrootmode="open">
-    <div class="collapsible collapsible--disabled kol-details" id="details-nonce">
+    <div class="collapsible collapsible--disabled kol-details">
       <strong class="collapsible__heading kol-details__heading kol-headline kol-headline--single kol-headline--strong">
         <kol-button-wc _ariacontrols="details-control-nonce" _disabled="" _icons="kolicon-chevron-right" _label="Zusammenfassung" class="collapsible__heading-button kol-details__heading-button" id="details-heading-nonce" slot="expert"></kol-button-wc>
       </strong>
@@ -60,7 +60,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=true 
 exports[`kol-details should render with _label="Zusammenfassung" _disabled=true _open=true 1`] = `
 <kol-details _open="">
   <template shadowrootmode="open">
-    <div class="collapsible collapsible--disabled collapsible--open kol-details" id="details-nonce">
+    <div class="collapsible collapsible--disabled collapsible--open kol-details">
       <strong class="collapsible__heading kol-details__heading kol-headline kol-headline--single kol-headline--strong">
         <kol-button-wc _ariacontrols="details-control-nonce" _ariaexpanded="" _disabled="" _icons="kolicon-chevron-right" _label="Zusammenfassung" class="collapsible__heading-button kol-details__heading-button" id="details-heading-nonce" slot="expert"></kol-button-wc>
       </strong>
@@ -79,7 +79,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=true 
 exports[`kol-details should render with _label="Zusammenfassung" _level=3 1`] = `
 <kol-details>
   <template shadowrootmode="open">
-    <div class="collapsible kol-details" id="details-nonce">
+    <div class="collapsible kol-details">
       <h3 class="collapsible__heading kol-details__heading kol-headline kol-headline--h3 kol-headline--single">
         <kol-button-wc _ariacontrols="details-control-nonce" _icons="kolicon-chevron-right" _label="Zusammenfassung" class="collapsible__heading-button kol-details__heading-button" id="details-heading-nonce" slot="expert"></kol-button-wc>
       </h3>
@@ -98,7 +98,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _level=3 1`] = 
 exports[`kol-details should render with _label="Zusammenfassung" 1`] = `
 <kol-details>
   <template shadowrootmode="open">
-    <div class="collapsible kol-details" id="details-nonce">
+    <div class="collapsible kol-details">
       <strong class="collapsible__heading kol-details__heading kol-headline kol-headline--single kol-headline--strong">
         <kol-button-wc _ariacontrols="details-control-nonce" _icons="kolicon-chevron-right" _label="Zusammenfassung" class="collapsible__heading-button kol-details__heading-button" id="details-heading-nonce" slot="expert"></kol-button-wc>
       </strong>
