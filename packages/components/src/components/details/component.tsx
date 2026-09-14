@@ -2,15 +2,23 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import type { DetailsApi } from '../../internal/functional-components/details/api';
-import { detailsPropsConfig } from '../../internal/functional-components/details/api';
-import { DetailsFC } from '../../internal/functional-components/details/component';
+import type { CollapsibleApi } from '../../internal/functional-components/collapsible/api';
+import { collapsiblePropsConfig } from '../../internal/functional-components/collapsible/api';
+import { CollapsibleFC } from '../../internal/functional-components/collapsible/component';
+import { createCollapsibleToggleHandler } from '../../internal/functional-components/collapsible/toggle';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { detailsCallbacksProp, disabledProp, labelProp, levelProp, openProp } from '../../internal/props';
-import type { ClickableElement, DetailsCallbacksPropType, DetailsProps, FocusableElement, HeadingLevel, KolFocusOptions, LabelPropType } from '../../schema';
+import { collapsibleCallbacksProp, disabledProp, labelProp, levelProp, openProp } from '../../internal/props';
+import type {
+	ClickableElement,
+	CollapsibleCallbacksPropType,
+	DetailsProps,
+	FocusableElement,
+	HeadingLevel,
+	KolFocusOptions,
+	LabelPropType,
+} from '../../schema';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * The **Details** component allows additional information to be initially shown with a short introductory text,
@@ -30,14 +38,15 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolDetails extends BaseWebComponent<DetailsApi> implements ClickableElement, DetailsProps, FocusableElement, WebComponentInterface<DetailsApi> {
+export class KolDetails
+	extends BaseWebComponent<CollapsibleApi>
+	implements ClickableElement, DetailsProps, FocusableElement, WebComponentInterface<CollapsibleApi>
+{
 	@Element() protected readonly host?: HTMLKolDetailsElement;
 
 	private readonly detailsId = createUniqueId('details');
 
 	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
-
-	private toggleTimeout?: ReturnType<typeof setTimeout>;
 
 	// --- @State ---
 
@@ -47,7 +56,7 @@ export class KolDetails extends BaseWebComponent<DetailsApi> implements Clickabl
 	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
-		this.initRenderProps(detailsPropsConfig);
+		this.initRenderProps(collapsiblePropsConfig);
 
 		this.watchDisabled(this._disabled);
 		this.watchLabel(this._label);
@@ -58,25 +67,14 @@ export class KolDetails extends BaseWebComponent<DetailsApi> implements Clickabl
 
 	// --- Event handling ---
 
-	private readonly handleToggle = (event: MouseEvent): void => {
-		this._open = !this._open;
-
-		/**
-		 * Der Timeout wird benötigt, damit das Event
-		 * vom Button- auf das Accordion-Event wechselt.
-		 * So ist es dem Anwendenden möglich das _open-
-		 * Attribute abzufragen.
-		 */
-
-		clearTimeout(this.toggleTimeout);
-
-		this.toggleTimeout = setTimeout(() => {
-			if (this.host) {
-				dispatchDomEvent(this.host, KolEvent.toggle, Boolean(this._open));
-			}
-			this.getRenderProp('on').onToggle?.(event, Boolean(this._open));
-		}, 25);
-	};
+	private readonly handleToggle = createCollapsibleToggleHandler({
+		getHost: () => this.host,
+		getOn: () => this.getRenderProp('on'),
+		toggleOpen: () => {
+			this._open = !this._open;
+			return Boolean(this._open);
+		},
+	});
 
 	// --- Public methods ---
 
@@ -90,7 +88,7 @@ export class KolDetails extends BaseWebComponent<DetailsApi> implements Clickabl
 	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
-	 * Triggers a click on the summary/toggle button.
+	 * Triggers a click on the heading toggle button.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
@@ -101,11 +99,14 @@ export class KolDetails extends BaseWebComponent<DetailsApi> implements Clickabl
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<DetailsFC
+				<CollapsibleFC
+					block="kol-details"
+					contentClass="indented-text"
 					controlId={this.controlId}
 					disabled={this.getRenderProp('disabled')}
 					handleToggle={this.handleToggle}
 					headingId={this.headingId}
+					icons="kolicon-chevron-right"
 					label={this.getRenderProp('label')}
 					level={this.getRenderProp('level')}
 					on={this.getRenderProp('on')}
@@ -113,7 +114,7 @@ export class KolDetails extends BaseWebComponent<DetailsApi> implements Clickabl
 					refHeadingButton={this.ctaRef}
 				>
 					<slot />
-				</DetailsFC>
+				</CollapsibleFC>
 			</Host>
 		);
 	}
@@ -148,12 +149,12 @@ export class KolDetails extends BaseWebComponent<DetailsApi> implements Clickabl
 	}
 
 	/**
-	 * Defines the callback functions for details.
+	 * Defines the callback functions for the collapsible.
 	 */
-	@Prop() public _on?: DetailsCallbacksPropType<boolean>;
+	@Prop() public _on?: CollapsibleCallbacksPropType<boolean>;
 	@Watch('_on')
-	public watchOn(value?: DetailsCallbacksPropType<boolean>): void {
-		detailsCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+	public watchOn(value?: CollapsibleCallbacksPropType<boolean>): void {
+		collapsibleCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
 	}
 
 	/**
