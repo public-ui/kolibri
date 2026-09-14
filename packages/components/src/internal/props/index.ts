@@ -1,4 +1,5 @@
 export * from './access-key';
+export * from './accordion-callbacks';
 export * from './align';
 export * from './allow-markdown';
 export * from './alt';
