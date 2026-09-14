@@ -1,0 +1,168 @@
+@font-face {
+  font-family: "desy-icons";
+  src: url('desy-icons.eot?t=1771420665219'); /* IE9*/
+  src: url('desy-icons.eot?t=1771420665219#iefix') format('embedded-opentype') /* IE6-IE8 */,
+  url('desy-icons.woff2?t=1771420665219') format('woff2'),
+  url('desy-icons.woff?t=1771420665219') format('woff'),
+  url('desy-icons.ttf?t=1771420665219') format('truetype'),
+  url('desy-icons.svg?t=1771420665219') format('svg');
+}
+
+[class^="desy-"], [class*=" desy-"] {
+  font-family: 'desy-icons' !important;font-size: undefined;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.desy-accessibility-a11y::before { content: "\ea01"; }
+.desy-add::before { content: "\ea02"; }
+.desy-alert-circle-filled::before { content: "\ea03"; }
+.desy-alert-circle::before { content: "\ea04"; }
+.desy-alert-triangle-filled::before { content: "\ea05"; }
+.desy-alert-triangle::before { content: "\ea06"; }
+.desy-alert::before { content: "\ea07"; }
+.desy-announcement::before { content: "\ea08"; }
+.desy-arrow-change::before { content: "\ea09"; }
+.desy-arrow-down::before { content: "\ea0a"; }
+.desy-arrow-left::before { content: "\ea0b"; }
+.desy-arrow-reset::before { content: "\ea0c"; }
+.desy-arrow-right::before { content: "\ea0d"; }
+.desy-arrow-small-down::before { content: "\ea0e"; }
+.desy-arrow-small-left::before { content: "\ea0f"; }
+.desy-arrow-small-right::before { content: "\ea10"; }
+.desy-arrow-small-up::before { content: "\ea11"; }
+.desy-arrow-up::before { content: "\ea12"; }
+.desy-backward::before { content: "\ea13"; }
+.desy-bell-circle::before { content: "\ea14"; }
+.desy-block::before { content: "\ea15"; }
+.desy-bookmark-filled::before { content: "\ea16"; }
+.desy-bookmark::before { content: "\ea17"; }
+.desy-calendar::before { content: "\ea18"; }
+.desy-check-circle-filled::before { content: "\ea19"; }
+.desy-check-circle::before { content: "\ea1a"; }
+.desy-check-small::before { content: "\ea1b"; }
+.desy-check::before { content: "\ea1c"; }
+.desy-chevron-down::before { content: "\ea1d"; }
+.desy-chevron-end::before { content: "\ea1e"; }
+.desy-chevron-left::before { content: "\ea1f"; }
+.desy-chevron-right-circle::before { content: "\ea20"; }
+.desy-chevron-right::before { content: "\ea21"; }
+.desy-chevron-small-down::before { content: "\ea22"; }
+.desy-chevron-small-left::before { content: "\ea23"; }
+.desy-chevron-small-right::before { content: "\ea24"; }
+.desy-chevron-small-up::before { content: "\ea25"; }
+.desy-chevron-start::before { content: "\ea26"; }
+.desy-chevron-up::before { content: "\ea27"; }
+.desy-circle-filled::before { content: "\ea28"; }
+.desy-circle::before { content: "\ea29"; }
+.desy-close::before { content: "\ea2a"; }
+.desy-context-menu-horizontal::before { content: "\ea2b"; }
+.desy-context-menu-vertical::before { content: "\ea2c"; }
+.desy-copy::before { content: "\ea2d"; }
+.desy-dark-mode::before { content: "\ea2e"; }
+.desy-delete::before { content: "\ea2f"; }
+.desy-device-desktop::before { content: "\ea30"; }
+.desy-device-phone::before { content: "\ea31"; }
+.desy-device-tablet::before { content: "\ea32"; }
+.desy-dgs::before { content: "\ea33"; }
+.desy-dot::before { content: "\ea34"; }
+.desy-download::before { content: "\ea35"; }
+.desy-easy-language::before { content: "\ea36"; }
+.desy-edit::before { content: "\ea37"; }
+.desy-email-stamp::before { content: "\ea38"; }
+.desy-email::before { content: "\ea39"; }
+.desy-error-circle-filled::before { content: "\ea3a"; }
+.desy-error-circle::before { content: "\ea3b"; }
+.desy-error-small::before { content: "\ea3c"; }
+.desy-file-add::before { content: "\ea3d"; }
+.desy-file-change::before { content: "\ea3e"; }
+.desy-file-filled::before { content: "\ea3f"; }
+.desy-file-submit::before { content: "\ea40"; }
+.desy-file::before { content: "\ea41"; }
+.desy-filter::before { content: "\ea42"; }
+.desy-folder-closed::before { content: "\ea43"; }
+.desy-folder-search::before { content: "\ea44"; }
+.desy-forward::before { content: "\ea45"; }
+.desy-globe-language::before { content: "\ea46"; }
+.desy-headset::before { content: "\ea47"; }
+.desy-help-circle-filled::before { content: "\ea48"; }
+.desy-help-circle::before { content: "\ea49"; }
+.desy-help::before { content: "\ea4a"; }
+.desy-hide::before { content: "\ea4b"; }
+.desy-history::before { content: "\ea4c"; }
+.desy-home-filled::before { content: "\ea4d"; }
+.desy-home::before { content: "\ea4e"; }
+.desy-identity-card::before { content: "\ea4f"; }
+.desy-image::before { content: "\ea50"; }
+.desy-info-circle-filled::before { content: "\ea51"; }
+.desy-info-circle::before { content: "\ea52"; }
+.desy-info::before { content: "\ea53"; }
+.desy-institution::before { content: "\ea54"; }
+.desy-key::before { content: "\ea55"; }
+.desy-label::before { content: "\ea56"; }
+.desy-layer-group::before { content: "\ea57"; }
+.desy-light-mode::before { content: "\ea58"; }
+.desy-link-out::before { content: "\ea59"; }
+.desy-loading-spinner::before { content: "\ea5a"; }
+.desy-lock-closed-circle::before { content: "\ea5b"; }
+.desy-lock-closed::before { content: "\ea5c"; }
+.desy-lock-open::before { content: "\ea5d"; }
+.desy-logout::before { content: "\ea5e"; }
+.desy-menu::before { content: "\ea5f"; }
+.desy-message-filled::before { content: "\ea60"; }
+.desy-message-new::before { content: "\ea61"; }
+.desy-message-open::before { content: "\ea62"; }
+.desy-message::before { content: "\ea63"; }
+.desy-no-connection::before { content: "\ea64"; }
+.desy-notification::before { content: "\ea65"; }
+.desy-office-authority::before { content: "\ea66"; }
+.desy-office::before { content: "\ea67"; }
+.desy-paper-plane::before { content: "\ea68"; }
+.desy-paperclip::before { content: "\ea69"; }
+.desy-paragraph::before { content: "\ea6a"; }
+.desy-password-field::before { content: "\ea6b"; }
+.desy-paste::before { content: "\ea6c"; }
+.desy-pause::before { content: "\ea6d"; }
+.desy-permalink::before { content: "\ea6e"; }
+.desy-picture::before { content: "\ea6f"; }
+.desy-print::before { content: "\ea70"; }
+.desy-reset::before { content: "\ea71"; }
+.desy-scan-document::before { content: "\ea72"; }
+.desy-scan-qr-code::before { content: "\ea73"; }
+.desy-search::before { content: "\ea74"; }
+.desy-settings::before { content: "\ea75"; }
+.desy-shield::before { content: "\ea76"; }
+.desy-show::before { content: "\ea77"; }
+.desy-smiley-cry::before { content: "\ea78"; }
+.desy-smiley-indifferent::before { content: "\ea79"; }
+.desy-smiley-laugh::before { content: "\ea7a"; }
+.desy-smiley-sad::before { content: "\ea7b"; }
+.desy-smiley-smile::before { content: "\ea7c"; }
+.desy-sparkle::before { content: "\ea7d"; }
+.desy-speech::before { content: "\ea7e"; }
+.desy-stamp-filled::before { content: "\ea7f"; }
+.desy-stamp-sparkle::before { content: "\ea80"; }
+.desy-stamp::before { content: "\ea81"; }
+.desy-star-filled::before { content: "\ea82"; }
+.desy-star::before { content: "\ea83"; }
+.desy-submenu::before { content: "\ea84"; }
+.desy-table-sort::before { content: "\ea85"; }
+.desy-telephone::before { content: "\ea86"; }
+.desy-timer::before { content: "\ea87"; }
+.desy-upload::before { content: "\ea88"; }
+.desy-user-add::before { content: "\ea89"; }
+.desy-user-block::before { content: "\ea8a"; }
+.desy-user-check-circle::before { content: "\ea8b"; }
+.desy-user-check::before { content: "\ea8c"; }
+.desy-user-circle-filled::before { content: "\ea8d"; }
+.desy-user-circle::before { content: "\ea8e"; }
+.desy-user-error::before { content: "\ea8f"; }
+.desy-user-remove::before { content: "\ea90"; }
+.desy-user-upgrade::before { content: "\ea91"; }
+.desy-user::before { content: "\ea92"; }
+.desy-users::before { content: "\ea93"; }
+.desy-videoplayer::before { content: "\ea94"; }
+
+
