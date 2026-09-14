@@ -1,1 +1,0 @@
-import"./index-DIFMcwzy.js";import{r as e}from"./align-DnuTHmUs-DPNuPlLY.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
