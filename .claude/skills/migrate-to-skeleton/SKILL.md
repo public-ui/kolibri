@@ -104,7 +104,17 @@ Zwei Vorprüfungen entscheiden, ob das ein Teil dieses PRs ist oder ein eigener:
      inline duplizieren. Dann braucht es zuerst eine wiederverwendbare Orchestrierungs-Einheit
      (Behavior oder geteilter Normalisierungs-Helfer); das ist ein eigener, architektonisch
      relevanter Schritt und gehört dem Owner vorgelegt, nicht nebenbei erledigt.
-2. **Selektor-Aufwand.** Der Wrapper trägt heute die Consumer-Klasse als **Vorfahr** des Blocks:
+2. **Default-Aufwand (die stille Falle).** Der `-wc`-Wrapper setzt Defaults als Stencil-`@Prop`-Feld
+   (`@Prop() public _inline?: InlinePropType = false;`). Die sind Teil dessen, was das Element
+   rendert, stehen aber **nicht** in der Prop-Definition — und mehrere Definitionen teilen sich
+   Button und Link, deren Konventionen auseinandergehen: `inlineProp` defaultet auf `true`,
+   `tooltipAlignProp` auf `'right'`, beide Button-Elemente deklarieren `false` und `'top'`. Wer nur
+   die Prop-Definitionen anwendet, bekommt still einen anderen Button (`--inline` statt
+   `--standalone`, Tooltip rechts statt oben). **Die `@Prop`-Defaults des Wrappers abgleichen und
+   im Resolver neu setzen** — für Button erledigt das `BUTTON_ELEMENT_DEFAULTS` in
+   `internal/functional-components/button/resolve-props.ts`. Kein Unit-Test fängt das; gefunden hat
+   es erst das Pixel-Gate.
+3. **Selektor-Aufwand.** Der Wrapper trägt heute die Consumer-Klasse als **Vorfahr** des Blocks:
    `<kol-button-wc class="kol-x__btn"><div class="kol-button">`. Nach dem Tausch merged
    `BemRootNodeFC` die Klasse auf denselben Knoten: `<div class="kol-button kol-x__btn">`. Jeder
    Selektor der Form `.kol-x__btn .kol-button` greift dann nicht mehr — still, ohne Fehler. Vorher
@@ -117,7 +127,7 @@ Zwei Vorprüfungen entscheiden, ob das ein Teil dieses PRs ist oder ein eigener:
    Die Regeln, nach denen die Treffer sortiert werden, stehen in
    `zero-visual-delta-handoff/SKILL.md` § 6b; Theme-Fixes bleiben theme-lokal.
 
-3. **Abnahme.** Der Tausch ist ein DOM-Umbau, also gilt das Pixel-Gate unverändert (Phase 5). Ohne
+4. **Abnahme.** Der Tausch ist ein DOM-Umbau, also gilt das Pixel-Gate unverändert (Phase 5). Ohne
    grünen Nachweis je Theme ist er nicht fertig.
 
 Fällt die Ablösung nach Vorprüfung 1 aus dem PR, wird sie **benannt**: im PR-Text und im

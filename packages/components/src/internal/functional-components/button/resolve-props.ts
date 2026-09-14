@@ -32,6 +32,24 @@ import { buttonPropsConfig } from './api';
 export type ResolvedButtonProps = StrictFields<ResolvedProps<ButtonApi>>;
 
 /**
+ * The defaults `kol-button` and `kol-button-wc` declare on their `@Prop` fields.
+ *
+ * These are **not** the prop definitions' own defaults. Several definitions are shared with the
+ * link, whose conventions differ: `inlineProp` defaults to `true` and `tooltipAlignProp` to
+ * `'right'`, while both button elements declare `false` and `'top'`. A consumer that renders
+ * `ButtonFC` without restating them gets a silently different button — `kol-button--inline`
+ * instead of `--standalone`, and a tooltip on the right instead of above. Both were caught by the
+ * pixel gate, not by any test.
+ */
+const BUTTON_ELEMENT_DEFAULTS = {
+	disabled: false,
+	hideLabel: false,
+	inline: false,
+	tooltipAlign: 'top',
+	type: 'button',
+} as const;
+
+/**
  * Normalizes an embedded button's props into the render props `ButtonFC` expects.
  *
  * A component that renders a button inside its own boundary — the badge's smart button, an input's
@@ -63,17 +81,17 @@ export function resolveButtonProps(props: InternalButtonProps, host?: HTMLElemen
 	ariaExpandedProp.apply(props._ariaExpanded, set('ariaExpanded'));
 	ariaSelectedProp.apply(props._ariaSelected, set('ariaSelected'));
 	buttonCallbacksProp.apply(props._on, set('on'));
-	buttonTypeProp.apply(props._type, set('type'));
+	buttonTypeProp.apply(props._type ?? BUTTON_ELEMENT_DEFAULTS.type, set('type'));
 	customClassProp.apply(props._customClass, set('customClass'));
-	disabledProp.apply(props._disabled, set('disabled'));
-	hideLabelProp.apply(props._hideLabel, set('hideLabel'));
+	disabledProp.apply(props._disabled ?? BUTTON_ELEMENT_DEFAULTS.disabled, set('disabled'));
+	hideLabelProp.apply(props._hideLabel ?? BUTTON_ELEMENT_DEFAULTS.hideLabel, set('hideLabel'));
 	idProp.apply(props._id, set('id'));
-	inlineProp.apply(props._inline, set('inline'));
+	inlineProp.apply(props._inline ?? BUTTON_ELEMENT_DEFAULTS.inline, set('inline'));
 	linkRoleProp.apply(props._role, set('role'));
 	nameProp.apply(props._name, set('name'));
 	shortKeyProp.apply(props._shortKey, set('shortKey'));
 	spanIconsProp.apply(props._icons, set('icons'));
-	tooltipAlignProp.apply(props._tooltipAlign, set('tooltipAlign'));
+	tooltipAlignProp.apply(props._tooltipAlign ?? BUTTON_ELEMENT_DEFAULTS.tooltipAlign, set('tooltipAlign'));
 
 	// An unset tabindex must not render as `tabindex="0"` — buttons are natively tabbable and the
 	// attribute would pin them into the document tab order. The props config seeds the default `0`,

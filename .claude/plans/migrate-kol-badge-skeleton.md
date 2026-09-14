@@ -16,8 +16,10 @@ git diff --name-only origin/develop...HEAD -- '*.png' | wc -l   # Tracking-Metri
 node scripts/snapshots-docker.mjs <theme> --check                # Evidenz (Exit-Code)
 ```
 
-Alle Themes sind über die CI-Jobs `visual-tests (<paket>)` auf PR #10889 abgenommen (Commit
-`427bec23a9`, Baseline `001397bfb1` = develop). Das ist die in § 1 des Handoff-Skills vorgesehene
+Der DOM-identische Port (Commit `427bec23a9`) war über die CI-Jobs `visual-tests (<paket>)` mit
+0 Diffs abgenommen. Der spätere `kol-button-wc`-Ausbau (`f971400`) ändert das DOM bewusst und hat
+zunächst 8 Bilder verändert; Stand und Evidenz dazu unter Open work, Abschnitt 1 (Baseline
+`001397bfb1` = develop). Das ist die in § 1 des Handoff-Skills vorgesehene
 unabhängige Evidenz — kein PNG wurde neu committet (`git diff --name-only origin/develop...HEAD --
 '*.png'` = 0), der Vergleich lief also echt gegen die Base-Baselines.
 
@@ -120,9 +122,14 @@ Mitmigrierte Selektoren (Vorprüfung 2), weil `kol-badge__smart-button` jetzt **
 der Block das Flex-Item von `.kol-badge` und hätte die volle Badge-Breite beansprucht.
 `components/badge/style.scss` setzt deshalb `width: auto` auf `&__smart-button`.
 
-**Pixel-Gate für diesen Umbau: noch offen.** Die vorherige Abnahme galt dem DOM-identischen Port;
-dieser Schritt ändert das DOM bewusst. Evidenz kommt aus den CI-`visual-tests`-Jobs auf PR #10889
-für den Commit, der diesen Umbau trägt — bis dahin ist der Schritt nicht abgenommen.
+**Pixel-Gate, erste Runde: 8 geänderte Bilder** (`f971400`) — `scenarios-focus-elements-component-badge`
+in jedem Paket, in ecl zusätzlich `badge-basic--smart-button`. Ursache war **nicht** ein Selektor,
+sondern zwei Defaults: `kol-button-wc` deklariert sie als Stencil-`@Prop`-Feld
+(`_inline = false`, `_tooltipAlign = 'top'`), die geteilten Prop-Definitionen tragen dagegen die
+Link-Konvention (`inline: true`, `tooltipAlign: 'right'`). Der Button wurde damit `--inline` statt
+`--standalone` und sein Tooltip erschien rechts statt oben. `resolveButtonProps` setzt die
+Element-Defaults jetzt über `BUTTON_ELEMENT_DEFAULTS` neu; der Snapshot zeigt wieder
+`kol-button--standalone`. Zweite Runde läuft — abgenommen ist der Schritt erst bei 0 Diffs.
 
 ### 2. `packages/themes/ecl/src/ecl-eu` bleibt ungeprüft
 
