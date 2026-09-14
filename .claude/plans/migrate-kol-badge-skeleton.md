@@ -73,7 +73,42 @@ Playwright-Läufe ersetzt, sondern offen übergeben. Abgenommen hat sie dann die
 mit 408 unchanged / 0 changed je Paket. Erwartung bestätigt: **keine Theme-Arbeit nötig**, weil das
 DOM byte-identisch portiert wurde.
 
-### 1. `packages/themes/ecl/src/ecl-eu` bleibt ungeprüft
+### 1. `kol-button-wc` im Smart Button ablösen — benannt, nicht erledigt
+
+Nach der Regel in `migrate-to-skeleton/SKILL.md` § 6 („Transitionale `-wc`-Tags beim Konsumenten
+ablösen") gehört der Umstieg von `KolButtonWcTag` auf `ButtonFC` grundsätzlich in die Migration.
+Für Badge scheitert er an **Vorprüfung 1 (Prop-Aufwand)**, nachgemessen am Code:
+
+- `ButtonFC` verlangt **26 normalisierte Render-Props, 4 `handle*`-Callbacks, 2 Refs und
+  `ariaDescriptionId`** als State. `KolBadge` hat nichts davon — `_smartButton` ist ein opaker
+  Pass-through von `InternalButtonProps`, der bewusst **nicht** aufgebrochen wird.
+- Badge rendert den Button hart mit `_hideLabel={true}`. In `ButtonFC` hängt der Tooltip genau an
+  `hideLabel && hasLabelText`, der Tooltip-Pfad ist hier also **immer** aktiv — `TooltipBehavior`
+  samt `componentDidRender`-Sync und `disconnectedCallback`-Teardown wäre Pflicht, nicht optional.
+- Dazu die DOM-Events, auf die `badge.e2e.ts` prüft (`click`, `mousedown` müssen am Host
+  ankommen): die liefert heute `dispatchDomEvent` im Wrapper.
+
+Zusammengerechnet wäre das ein Nachbau der ~500 Zeilen aus `components/button/wc.tsx` **innerhalb**
+von `KolBadge` — genau das, was die Regel verbietet. Der saubere Weg ist eine wiederverwendbare
+Orchestrierungs-Einheit (Behavior oder geteilter Normalisierungs-Helfer `InternalButtonProps` →
+`ButtonFC`-Props + Handler), von der alle 17 `kol-button-wc`-Konsumenten profitieren. Das ist ein
+architektonischer Schritt und gehört dem Owner vorgelegt, nicht nebenbei erledigt — er ist bereits
+als „§ 2 Konsumenten-Migration weg von `kol-button-wc` (der strategische Schritt)" in
+`.claude/plans/migrate-kol-button-skeleton.md` verzeichnet.
+
+**Vorprüfung 2 (Selektor-Aufwand) ist bereits erhoben**, damit der spätere Schritt sie nicht neu
+machen muss. Nach dem Tausch säße `kol-badge__smart-button` auf demselben Knoten wie `kol-button`;
+diese Selektoren müssten theme-lokal mitwandern:
+
+| Datei                                          | heute                              | nach dem Tausch                                                                                                                                                       |
+| ---------------------------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `components/badge/style.scss`                  | `.kol-badge__smart-button .button` | toter Selektor, schon vor der Migration: nichts rendert `class="button"` (verifiziert). Vorbestehend, deshalb hier bewusst nicht angefasst — gehört in den Ablöse-PR. |
+| `themes/default/…/badge.scss`, `themes/bwst/…` | `&__smart-button .kol-button`      | `&__smart-button` selbst                                                                                                                                              |
+| `themes/kern/…/badge.scss`                     | `&__smart-button button`           | `&__smart-button .kol-button__interactive-element`                                                                                                                    |
+| `themes/ecl/ecl-ec/…/badge.scss`               | `&__smart-button .kol-button`      | `&__smart-button` selbst                                                                                                                                              |
+| `themes/desy/…/badge.scss`                     | — (keine Smart-Button-Regeln)      | —                                                                                                                                                                     |
+
+### 2. `packages/themes/ecl/src/ecl-eu` bleibt ungeprüft
 
 Nur `ecl-ec` ist pixel-gated. `ecl-eu/components/badge.scss` stylt ausschließlich `.kol-badge`
 selbst (Padding, Font, `text-transform`) — kein Selektor hängt an einem Element, das der Umbau
