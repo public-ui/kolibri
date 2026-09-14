@@ -5,6 +5,7 @@
 > together with (or ahead of) the work they describe.
 
 Issue: [#9570](https://github.com/public-ui/kolibri/issues/9570) — Skeleton - Details
+PR: [#10884](https://github.com/public-ui/kolibri/pull/10884)
 Vorbild: [#10652](https://github.com/public-ui/kolibri/pull/10652) (`kol-link`, gemergt `7bcc611`)
 und [#10734](https://github.com/public-ui/kolibri/pull/10734) (`kol-button`).
 Disziplin: `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
