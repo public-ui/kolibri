@@ -1,0 +1,108 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "22 changed – 0 of 22 approved, review pending",
+	"computedAt": "2026-09-14T11:03:25.245Z",
+	"pr": 10894,
+	"head": "8aafad31dd21524d39283b6a1df90ff9feb53e83",
+	"digest": "sha256:503d239fe84bcb810d91f50483a0a679d389c74d4848f98444c4eb770f70d040",
+	"counts": {
+		"changes": 22,
+		"open": 22,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-accordion-components": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-accordion": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/details-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-accordion-components": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-accordion": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-details": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-accordion-components": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-accordion": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-accordion-components": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-details": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/details-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-accordion-components": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-accordion": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-details": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/details-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-details": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-details": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
