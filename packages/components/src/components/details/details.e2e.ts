@@ -18,7 +18,7 @@ test.describe('kol-details', () => {
 			});
 			await page.waitForChanges();
 
-			await page.locator('button').click();
+			await page.locator('summary').click();
 			await expect(callbackPromise).resolves.toBe(true);
 		});
 
@@ -37,7 +37,7 @@ test.describe('kol-details', () => {
 			});
 			await page.waitForChanges();
 
-			await page.locator('button').click();
+			await page.locator('summary').click();
 			await expect(callbackPromise).resolves.toBeUndefined();
 		});
 	});
@@ -64,7 +64,7 @@ test.describe('kol-details', () => {
 			});
 			await page.waitForChanges();
 
-			await page.locator('button').click();
+			await page.locator('summary').click();
 			await expect(eventPromise).resolves.toBe(true);
 		});
 
@@ -79,7 +79,7 @@ test.describe('kol-details', () => {
 			});
 			await page.waitForChanges();
 
-			await page.locator('button').click();
+			await page.locator('summary').click();
 			await expect(eventPromise).resolves.toBeTruthy();
 		});
 	});
@@ -87,18 +87,21 @@ test.describe('kol-details', () => {
 	test.describe('Aria attributes', () => {
 		test('should have proper aria attributes', async ({ page }) => {
 			await page.setContent('<kol-details _label="Details">Expandable content</kol-details>');
-			const button = page.getByRole('button');
+			const summary = page.locator('summary');
+			const details = page.locator('details');
 			const content = page.locator('.collapsible__content');
 
-			await expect(button).toHaveAttribute('aria-expanded', 'false');
-			await expect(button).toHaveAttribute('aria-controls', /-control-/);
+			/* The expanded state is the native `open` attribute on `<details>` — no hand-maintained
+			   aria-expanded to keep in sync. */
+			await expect(details).not.toHaveAttribute('open');
+			await expect(summary).toHaveAttribute('aria-controls', /-control-/);
 			await expect(content).toHaveAttribute('role', 'region');
 			await expect(content).toHaveAttribute('aria-labelledby', /-heading-/);
 			await expect(content).toHaveAttribute('aria-hidden', 'true');
 
-			await button.click();
+			await summary.click();
 
-			await expect(button).toHaveAttribute('aria-expanded', 'true');
+			await expect(details).toHaveAttribute('open', '');
 			await expect(content).not.toHaveAttribute('aria-hidden');
 		});
 	});

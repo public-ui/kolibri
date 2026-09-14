@@ -23,10 +23,11 @@ export type CollapsibleApi = ApiFromConfig<
 	{
 		Callbacks: {
 			/**
-			 * Click handler bound to the heading toggle button. Implemented by the web component,
-			 * which flips the mutable `_open` prop and — delayed so the reflected attribute is
-			 * already updated — dispatches the custom `KolEvent.click`/`KolEvent.toggle` events on
-			 * the host element and invokes the consumer's `onClick`/`onToggle` callbacks.
+			 * Click handler bound to the `<summary>` element. Implemented by the web component,
+			 * which suppresses the user agent's own toggle (so the collapse can be animated), flips
+			 * the mutable `_open` prop and — delayed so the reflected attribute is already updated —
+			 * dispatches the custom `KolEvent.click`/`KolEvent.toggle` events on the host element
+			 * and invokes the consumer's `onClick`/`onToggle` callbacks.
 			 */
 			toggle: (event: MouseEvent) => void;
 		};
@@ -35,14 +36,27 @@ export type CollapsibleApi = ApiFromConfig<
 			focus: (options?: KolFocusOptions) => void;
 		};
 		Refs: {
-			headingButton: HTMLKolButtonWcElement;
+			/** The `<summary>` element — the disclosure control `focus()` and `click()` delegate to. */
+			headingButton: HTMLElement;
 		};
 		States: {
 			/**
-			 * DOM id of the collapsible content region, referenced by the toggle button's
-			 * aria-controls attribute. Derived once per web component instance.
+			 * DOM id of the collapsible content region, referenced by the summary's aria-controls
+			 * attribute. Derived once per web component instance.
 			 */
 			controlId: string;
+			/**
+			 * Whether the `open` attribute is set on `<details>`. Tracks {@link expanded}, except
+			 * while collapsing: the attribute has to outlive the class so the user agent keeps the
+			 * content rendered until the grid transition has finished.
+			 */
+			detailsOpen: boolean;
+			/**
+			 * Whether the collapsible is visually expanded — drives the `collapsible--open` class
+			 * and therefore the transition. Set one frame after {@link detailsOpen} when opening,
+			 * so the transition has a from-state to start from.
+			 */
+			expanded: boolean;
 			/**
 			 * DOM id of the heading toggle button, referenced by the content region's
 			 * aria-labelledby attribute. Derived once per web component instance.
@@ -73,7 +87,7 @@ export type CollapsibleVariant = {
 	/** BEM block of the rendering component. */
 	block: CollapsibleBlock;
 	/**
-	 * Icon of the heading toggle button.
+	 * Icon rendered in the summary.
 	 *
 	 * `kol-accordion` swaps the chevron with the open state
 	 * (`kolicon-chevron-down`/`kolicon-chevron-right`), while `kol-details` keeps

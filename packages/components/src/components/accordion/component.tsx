@@ -5,7 +5,7 @@ import { BaseWebComponent } from '../../internal/functional-components/base-web-
 import type { CollapsibleApi } from '../../internal/functional-components/collapsible/api';
 import { collapsiblePropsConfig } from '../../internal/functional-components/collapsible/api';
 import { CollapsibleFC } from '../../internal/functional-components/collapsible/component';
-import { createCollapsibleToggleHandler } from '../../internal/functional-components/collapsible/toggle';
+import { createCollapsibleDisclosure, createCollapsibleToggleHandler } from '../../internal/functional-components/collapsible/disclosure';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { collapsibleCallbacksProp, disabledProp, labelProp, levelProp, openProp } from '../../internal/props';
 import type {
@@ -42,11 +42,20 @@ export class KolAccordion
 
 	private readonly accordionId = createUniqueId('accordion');
 
-	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
+	protected readonly ctaRef = createCtaRef<HTMLElement>();
+
+	private hasLoaded = false;
+
+	private readonly disclosure = createCollapsibleDisclosure({
+		setDetailsOpen: (value) => (this.detailsOpen = value),
+		setExpanded: (value) => (this.expanded = value),
+	});
 
 	// --- @State ---
 
 	@State() public controlId: string = createRelatedUniqueId(this.accordionId, 'control');
+	@State() public detailsOpen: boolean = false;
+	@State() public expanded: boolean = false;
 	@State() public headingId: string = createRelatedUniqueId(this.accordionId, 'heading');
 
 	// --- Lifecycle ---
@@ -61,15 +70,22 @@ export class KolAccordion
 		this.watchOpen(this._open);
 	}
 
+	public componentDidLoad(): void {
+		this.hasLoaded = true;
+	}
+
+	public disconnectedCallback(): void {
+		this.disclosure.dispose();
+	}
+
 	// --- Event handling ---
 
 	private readonly handleToggle = createCollapsibleToggleHandler({
 		getHost: () => this.host,
 		getOn: () => this.getRenderProp('on'),
-		toggleOpen: () => {
-			this._open = !this._open;
-			return Boolean(this._open);
-		},
+		isDisabled: () => this.getRenderProp('disabled') === true,
+		isOpen: () => this.getRenderProp('open') === true,
+		setOpen: (open) => (this._open = open),
 	});
 
 	// --- Public methods ---
@@ -98,7 +114,9 @@ export class KolAccordion
 				<CollapsibleFC
 					block="kol-accordion"
 					controlId={this.controlId}
+					detailsOpen={this.detailsOpen}
 					disabled={this.getRenderProp('disabled')}
+					expanded={this.expanded}
 					handleToggle={this.handleToggle}
 					headingId={this.headingId}
 					icons={this.getRenderProp('open') ? 'kolicon-chevron-down' : 'kolicon-chevron-right'}
@@ -159,6 +177,11 @@ export class KolAccordion
 	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
 	@Watch('_open')
 	public watchOpen(value?: boolean): void {
-		openProp.apply(value, (v) => this.setRenderProp('open', v));
+		openProp.apply(value, (v) => {
+			this.setRenderProp('open', v);
+			/* The very first pass runs during componentWillLoad: render the final state straight
+			   away instead of animating into it. */
+			this.disclosure.syncOpen(v, this.hasLoaded);
+		});
 	}
 }

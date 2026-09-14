@@ -8,37 +8,51 @@ test.describe('kol-accordion', () => {
 		});
 
 		test('should render the accordion title', async ({ page }) => {
-			const button = page.getByRole('button');
-			await expect(button).toHaveText('Accordion Label');
+			const summary = page.locator('summary');
+			await expect(summary).toHaveText('Accordion Label');
 		});
 
 		test('should show the accordion content after the title has been clicked', async ({ page }) => {
 			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
-			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await page.locator('summary').click();
 			await expect(page.locator('.collapsible__content')).not.toHaveAttribute('aria-hidden', 'true');
 		});
 
 		test('should have proper aria attributes', async ({ page }) => {
-			const button = page.getByRole('button');
+			const summary = page.locator('summary');
+			const details = page.locator('details');
 			const content = page.locator('.collapsible__content');
 
-			await expect(button).toHaveAttribute('aria-expanded', 'false');
-			await expect(button).toHaveAttribute('aria-controls', /-control-/);
+			/* The expanded state is the native `open` attribute on `<details>` — no hand-maintained
+			   aria-expanded to keep in sync. */
+			await expect(details).not.toHaveAttribute('open');
+			await expect(summary).toHaveAttribute('aria-controls', /-control-/);
 			await expect(content).toHaveAttribute('role', 'region');
 			await expect(content).toHaveAttribute('aria-labelledby', /-heading-/);
 			await expect(content).toHaveAttribute('aria-hidden', 'true');
 
-			await button.click();
+			await summary.click();
 
-			await expect(button).toHaveAttribute('aria-expanded', 'true');
+			await expect(details).toHaveAttribute('open', '');
 			await expect(content).not.toHaveAttribute('aria-hidden');
 		});
 
 		test('should hide the accordion content after the title has been clicked again', async ({ page }) => {
-			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await page.locator('summary').click();
 			await expect(page.locator('.collapsible__content')).not.toHaveAttribute('aria-hidden', 'true');
-			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await page.locator('summary').click();
 			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
+		});
+
+		test('should toggle with the keyboard, without any scripted key handling', async ({ page }) => {
+			const content = page.locator('.collapsible__content');
+
+			await page.locator('summary').focus();
+			await page.keyboard.press('Enter');
+			await expect(content).not.toHaveAttribute('aria-hidden', 'true');
+
+			await page.keyboard.press('Space');
+			await expect(content).toHaveAttribute('aria-hidden', 'true');
 		});
 
 		test('should emit "click" event when the title is clicked', async ({ page }) => {
@@ -48,7 +62,7 @@ test.describe('kol-accordion', () => {
 				});
 			});
 			await page.waitForChanges();
-			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await page.locator('summary').click();
 			await expect(eventPromise).resolves.toBeTruthy();
 		});
 
@@ -63,7 +77,7 @@ test.describe('kol-accordion', () => {
 				});
 			});
 			await page.waitForChanges();
-			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await page.locator('summary').click();
 			await expect(callbackPromise).resolves.toBe(true);
 		});
 
@@ -78,7 +92,7 @@ test.describe('kol-accordion', () => {
 				});
 			});
 			await page.waitForChanges();
-			await page.getByRole('button', { name: 'Accordion label' }).click();
+			await page.locator('summary').click();
 			await expect(callbackPromise).resolves.toBe(true);
 		});
 	});
@@ -89,7 +103,7 @@ test.describe('kol-accordion', () => {
 		});
 
 		test('should not show the accordion content after the title has been clicked', async ({ page }) => {
-			await page.getByRole('button', { name: 'Accordion label' }).click({ force: true });
+			await page.locator('summary').click({ force: true });
 			await expect(page.locator('.collapsible__content')).toHaveAttribute('aria-hidden', 'true');
 		});
 	});
