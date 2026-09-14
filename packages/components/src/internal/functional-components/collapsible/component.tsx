@@ -56,7 +56,7 @@ export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & Collap
 				ref={refHeadingButton}
 				tabIndex={disabled === true ? -1 : undefined}
 			>
-				<HeadlineTag class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, 'collapsible__heading', blockBem('heading'), 'kol-headline--single')}>
+				<HeadlineTag class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, 'kol-headline--single')}>
 					<SpanFC icons={icons} label={label} />
 				</HeadlineTag>
 			</summary>
