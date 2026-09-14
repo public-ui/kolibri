@@ -168,6 +168,20 @@ bewegt hätte. Risiko daher gering, aber formal ungeprüft.
    Sie sind keine `@Prop`/`@Method`-Member und damit nicht Teil des gepinnten öffentlichen
    Vertrags, aber technisch von außen erreichbar gewesen.
 
+3. **Der letzte Pixel-Diff: ecl, 1 px, `scenarios-focus-elements-component-badge`.** Belegt und
+   erklärt unter Open work, Abschnitt 1. Vier Wege, bewusst **nicht** eigenmächtig gewählt:
+
+   | Option                        | Wirkung                                                                                                                                                                  | Kosten                                                                              |
+   | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
+   | Wrapper-`<span>` im `BadgeFC` | `kol-button-wc` bleibt weg, aber Box-Modell und **alle** Theme-Selektoren bleiben exakt wie auf develop; die Theme-Änderungen werden zurückgenommen. Erwartung: 0 Diffs. | ein zusätzlicher, semantisch leerer DOM-Knoten; eine weitere CI-Runde               |
+   | Allowlist-Eintrag             | 1 px in 1 Bild in 1 Theme bewusst akzeptieren. Präzedenzfall: kern-Tooltip der Button-Migration (2026-09-09).                                                            | Null-Delta-Kriterium formal verletzt                                                |
+   | Theme-lokaler Nudge (ecl-ec)  | `margin-top: -3px; margin-bottom: -1px` statt `-2px/-2px`.                                                                                                               | Magic Number ohne Ableitung aus den Font-Metriken; driftet bei anderer Schriftgröße |
+   | Ausbau in eigenen PR          | Dieser PR fällt auf den DOM-identischen Stand mit 0 Diffs zurück.                                                                                                        | der `kol-button-wc`-Ausbau verschiebt sich                                          |
+
+   **Stand 2026-09-14: auf menschliche Entscheidung wartend** — es wird nichts weiter umgebaut.
+   Der Visual-Review-Bot führt den Diff als „1 open"; eine Freigabe dort ist selbst schon die
+   Allowlist-Variante.
+
 ## Pitfalls (in dieser Migration real passiert)
 
 - **`*/` in einem JSDoc-Block beendet den Kommentar.** Ein Verweis auf `themes/*/src/components/badge.scss`
