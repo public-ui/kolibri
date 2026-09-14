@@ -5,8 +5,9 @@ import { validateErrorList, watchBoolean, watchString } from '../../schema';
 import { translate } from '../../i18n';
 
 import { KolLinkWcTag } from '../../core/component-names';
-import KolAlertFc from '../../functional-components/Alert';
+import { AlertFC } from '../../internal/functional-components/alert/component';
 import type { ErrorListPropType, FormAPI, FormStates, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
+import { createUniqueId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -32,6 +33,7 @@ export class KolForm implements FormAPI {
 	private readonly translateErrorListMessage = translate('kol-error-list-message');
 	private readonly translateErrorList = translate('kol-error-list');
 	private readonly translateFormDescription = translate('kol-form-description');
+	private readonly alertHeadingId = createUniqueId('alert-heading');
 
 	/* Hint: This method may not be used at all while events are handled in form/controller#propagateSubmitEventToForm */
 	private readonly onSubmit = (event: Event) => {
@@ -68,7 +70,18 @@ export class KolForm implements FormAPI {
 
 	private renderErrorList(errorList?: ErrorListPropType[]): JSX.Element {
 		return (
-			<KolAlertFc class="kol-form__alert" ref={this.setBlockElement} type="error" variant="card" label={this.translateErrorListMessage}>
+			<AlertFC
+				alert={false}
+				class="kol-form__alert"
+				handleCloserClick={() => undefined}
+				hasCloser={false}
+				headingId={this.alertHeadingId}
+				label={this.translateErrorListMessage}
+				level={0}
+				ref={this.setBlockElement}
+				type="error"
+				variant="card"
+			>
 				<nav aria-label={this.translateErrorList}>
 					<ul>
 						{errorList?.map((error, index) => (
@@ -84,7 +97,7 @@ export class KolForm implements FormAPI {
 						))}
 					</ul>
 				</nav>
-			</KolAlertFc>
+			</AlertFC>
 		);
 	}
 

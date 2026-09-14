@@ -5,8 +5,8 @@ import { KolAlertTag } from '../../../core/component-names';
 import type { AlertProps, AlertType } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
-import { KolAlertWc } from '../component';
-import { KolAlert } from '../shadow';
+import { KolAlert } from '../component';
+import { KolAlertWc } from '../wc';
 
 const baseObject = { _label: 'Überschrift' };
 

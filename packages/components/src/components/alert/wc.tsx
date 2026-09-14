@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 
 import type { AlertApi } from '../../internal/functional-components/alert/api';
 import { alertPropsConfig } from '../../internal/functional-components/alert/api';
@@ -12,19 +12,26 @@ import { createUniqueId } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
- * The **Alert** component provides visual feedback to users. It consists of a color-coded container, a heading, content text, and an icon. The icon used and the color scheme depend on the `_type` of the alert.
+ * Transitional `kol-alert-wc` — a `shadow:false` wrapper that renders `AlertFC` directly into the
+ * light DOM.
  *
- * @slot - The content of the notification.
+ * This exists because legacy consumers (table-settings, …) render `<kol-alert-wc>` inside their
+ * own shadow DOM and rely on being able to reach the inner `.kol-alert` CSS classes from their
+ * stylesheets. A `shadow:true` element would encapsulate those classes behind a shadow boundary,
+ * breaking consumer styling.
+ *
+ * When a consumer migrates to the Skeleton pattern, it should render `AlertFC` directly (inline
+ * JSX) instead of instantiating this element. Once all consumers have migrated, this component
+ * can be deleted.
+ *
+ * @internal
  */
 @Component({
-	tag: 'kol-alert',
-	styleUrls: {
-		default: './style.scss',
-	},
-	shadow: true,
+	tag: 'kol-alert-wc',
+	shadow: false,
 })
-export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, WebComponentInterface<AlertApi> {
-	@Element() protected readonly host?: HTMLKolAlertElement;
+export class KolAlertWc extends BaseWebComponent<AlertApi> implements AlertProps, WebComponentInterface<AlertApi> {
+	@Element() protected readonly host?: HTMLKolAlertWcElement;
 
 	private alertTimeout?: ReturnType<typeof setTimeout>;
 
@@ -60,20 +67,18 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 
 	public render(): JSX.Element {
 		return (
-			<Host>
-				<AlertFC
-					alert={this.getRenderProp('alert')}
-					handleCloserClick={this.handleCloserClick}
-					hasCloser={this.getRenderProp('hasCloser')}
-					headingId={this.headingId}
-					label={this.getRenderProp('label')}
-					level={this.getRenderProp('level')}
-					type={this.getRenderProp('type')}
-					variant={this.getRenderProp('variant')}
-				>
-					<slot />
-				</AlertFC>
-			</Host>
+			<AlertFC
+				alert={this.getRenderProp('alert')}
+				handleCloserClick={this.handleCloserClick}
+				hasCloser={this.getRenderProp('hasCloser')}
+				headingId={this.headingId}
+				label={this.getRenderProp('label')}
+				level={this.getRenderProp('level')}
+				type={this.getRenderProp('type')}
+				variant={this.getRenderProp('variant')}
+			>
+				<slot />
+			</AlertFC>
 		);
 	}
 
@@ -152,8 +157,6 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	 * Keeps the live-region side effects in sync with the alert render prop: while `role="alert"`
 	 * is active, the device vibrates once (coarse pointers with a prior user gesture only) and a
 	 * timeout removes the role after 10 seconds so a recurring value change is announced again.
-	 * The predecessor ran both effects on every render of the functional component — the watcher
-	 * here runs them exactly once per value change.
 	 *
 	 * - https://developer.mozilla.org/de/docs/Web/API/Navigator/vibrate
 	 * - https://googlechrome.github.io/samples/vibration/

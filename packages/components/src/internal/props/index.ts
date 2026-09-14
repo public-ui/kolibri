@@ -1,4 +1,7 @@
 export * from './access-key';
+export * from './alert';
+export * from './alert-type';
+export * from './alert-variant';
 export * from './align';
 export * from './allow-markdown';
 export * from './alt';
@@ -17,6 +20,7 @@ export * from './color';
 export * from './custom-class';
 export * from './disabled';
 export * from './download';
+export * from './has-closer';
 export * from './helpers/factory';
 export * from './hide-label';
 export * from './high';
