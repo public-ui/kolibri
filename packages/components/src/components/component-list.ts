@@ -3,7 +3,7 @@ import { KolAccordion } from './accordion/shadow';
 import { KolAlertWc } from './alert/component';
 import { KolAlert } from './alert/shadow';
 import { KolAvatar } from './avatar/component';
-import { KolBadge } from './badge/shadow';
+import { KolBadge } from './badge/component';
 import { KolBreadcrumb } from './breadcrumb/shadow';
 import { KolButtonLink } from './button-link/shadow';
 import { KolButton } from './button/component';
