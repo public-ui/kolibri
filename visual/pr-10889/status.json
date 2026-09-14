@@ -1,19 +1,52 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "No visual changes",
-	"computedAt": "2026-09-14T07:42:42.255Z",
+	"state": "pending",
+	"description": "8 changed – 0 of 8 approved, review pending",
+	"computedAt": "2026-09-14T08:19:59.255Z",
 	"pr": 10889,
-	"head": "44b6ecf52f92d850468b862f0fbd7a58ced27cb4",
-	"digest": "sha256:d05e4f55eb0444745916a648c62856d3b669e426f988d6e9b9d26fd3d035139c",
+	"head": "f971400e3107abd85781ee4e27aa7e6c87dd6c75",
+	"digest": "sha256:28fde65d7e95b49013a2c2a6c068a33dd332fb154ad39b0c293d41375e675a91",
 	"counts": {
-		"changes": 0,
-		"open": 0,
+		"changes": 8,
+		"open": 8,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {}
+	"items": {
+		"test-tag-name-transformer/scenarios-focus-elements-component-badge": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-badge": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-badge": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-badge": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/badge-basic--smart-button": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-badge": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-badge": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-badge": {
+			"state": "open",
+			"notes": []
+		}
+	}
 }
