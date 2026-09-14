@@ -16,22 +16,23 @@ git diff --name-only origin/develop...HEAD -- '*.png' | wc -l   # Tracking-Metri
 node scripts/snapshots-docker.mjs <theme> --check                # Evidenz (Exit-Code)
 ```
 
-Der DOM-identische Port (Commit `427bec23a9`) war über die CI-Jobs `visual-tests (<paket>)` mit
-0 Diffs abgenommen. Der spätere `kol-button-wc`-Ausbau (`f971400`) ändert das DOM bewusst und hat
-zunächst 8 Bilder verändert; Stand und Evidenz dazu unter Open work, Abschnitt 1 (Baseline
-`001397bfb1` = develop). Das ist die in § 1 des Handoff-Skills vorgesehene
-unabhängige Evidenz — kein PNG wurde neu committet (`git diff --name-only origin/develop...HEAD --
-'*.png'` = 0), der Vergleich lief also echt gegen die Base-Baselines.
+**Abgenommen am 2026-09-14** (Commit `77f332a835`, Baseline `001397bfb1` = develop). Der
+DOM-identische Port (`427bec23a9`) lief mit 0 Diffs durch; der `kol-button-wc`-Ausbau (`f971400`)
+ändert das DOM bewusst und wurde über drei Runden von 8 auf 1 Diff gebracht (Verlauf unter Open
+work, Abschnitt 1). Das verbleibende Bild ist ein 1-px-Versatz in ecl und wurde von **deleonio auf
+der Visual-Review-Seite freigegeben** — Status `Visual Review: 1 visual changes approved by
+deleonio`. Kein PNG wurde committet (`git diff --name-only origin/develop...HEAD -- '*.png'` = 0),
+der Vergleich lief also echt gegen die Base-Baselines.
 
-| Paket                       | Status                      | Evidenz                                           |
-| --------------------------- | --------------------------- | ------------------------------------------------- |
-| `unstyled`                  | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (unstyled)`                  |
-| `theme-default`             | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (theme-default)`             |
-| `theme-bwst`                | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (theme-bwst)`                |
-| `theme-ecl`                 | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (theme-ecl)`                 |
-| `theme-kern`                | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (theme-kern)`                |
-| `theme-desy`                | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (theme-desy)`                |
-| `test-tag-name-transformer` | ✅ 408 unchanged, 0 changed | CI-Job `visual-tests (test-tag-name-transformer)` |
+| Paket                       | Status                              | Evidenz                                               |
+| --------------------------- | ----------------------------------- | ----------------------------------------------------- |
+| `unstyled`                  | ✅ 408 unchanged, 0 changed         | CI-Job `visual-tests (unstyled)`                      |
+| `theme-default`             | ✅ 408 unchanged, 0 changed         | CI-Job `visual-tests (theme-default)`                 |
+| `theme-bwst`                | ✅ 408 unchanged, 0 changed         | CI-Job `visual-tests (theme-bwst)`                    |
+| `theme-ecl`                 | ✅ 407 unchanged, 1 **freigegeben** | CI-Job `visual-tests (theme-ecl)` + Freigabe deleonio |
+| `theme-kern`                | ✅ 408 unchanged, 0 changed         | CI-Job `visual-tests (theme-kern)`                    |
+| `theme-desy`                | ✅ 408 unchanged, 0 changed         | CI-Job `visual-tests (theme-desy)`                    |
+| `test-tag-name-transformer` | ✅ 408 unchanged, 0 changed         | CI-Job `visual-tests (test-tag-name-transformer)`     |
 
 ## Current state
 
@@ -48,11 +49,9 @@ ohne eine einzige Theme-Fix-Runde passierte:
 - Wurzelknoten bleibt ein `<span>` (kein `BemRootNodeFC`, das immer ein `<div>` rendert). ARC42
   § "BemRootNodeFC Pattern" deckt das ab; der Block wird über `bem.forBlock('kol-badge')` aus
   demselben typisierten Schema gebaut.
-- Der Smart Button rendert weiterhin das transitionale `kol-button-wc`. Base- und Theme-SCSS greifen
-  über `.kol-badge__smart-button .kol-button` bzw. `… button` auf den inneren Button zu
-  (`themes/{default,bwst,kern,ecl-ec}/…/badge.scss`, `components/badge/style.scss`); ein direktes
-  `ButtonFC` würde die Klasse auf dieselbe Ebene wie `.kol-button` schieben und diese Selektoren
-  stillschweigend brechen (Fallstrick 8 der Migrationsanleitung).
+- Der Smart Button rendert `ButtonFC` direkt — das transitionale `kol-button-wc` ist raus. Für den
+  DOM-identischen Port (`427bec2`) blieb es zunächst stehen; abgelöst wurde es im Folgeschritt
+  (Abschnitt 1), samt der Selektoren, die die Wrapper-Klasse als Vorfahren nutzten.
 - Die instanz-eindeutige Label-ID (`createUniqueId('badge-label')`) liegt als `@State` am WC und
   wird nur gerendert, wenn ein Smart Button existiert — identisch zum Vorgänger.
 
@@ -75,7 +74,7 @@ Playwright-Läufe ersetzt, sondern offen übergeben. Abgenommen hat sie dann die
 mit 408 unchanged / 0 changed je Paket. Erwartung bestätigt: **keine Theme-Arbeit nötig**, weil das
 DOM byte-identisch portiert wurde.
 
-### 1. `kol-button-wc` im Smart Button abgelöst — DONE (2026-09-14)
+### 1. `kol-button-wc` im Smart Button abgelöst — DONE (2026-09-14, Pixel-Gate freigegeben)
 
 Auf Owner-Entscheidung umgesetzt: `BadgeFC` rendert `ButtonFC` direkt, das transitionale
 `kol-button-wc` ist aus dem Badge verschwunden.
@@ -99,7 +98,7 @@ DOM-Delta (bewusst, erstmals in dieser Migration):
 
 ```diff
 - <kol-button-wc class="kol-badge__smart-button"></kol-button-wc>
-+ <div class="kol-badge__smart-button kol-button kol-button--hide-label kol-button--inline kol-button--normal">
++ <div class="kol-badge__smart-button kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
 +   <button class="kol-button__interactive-element">…</button>
 +   <div class="kol-button__tooltip">…</div>
 +   <span class="visually-hidden" id="…">…</span>
@@ -128,7 +127,7 @@ der Block das Flex-Item von `.kol-badge` und hätte die volle Badge-Breite beans
 | ----- | --------- | ----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | 1     | `f971400` |     8 | Zwei Element-Defaults: `kol-button-wc` deklariert `_inline = false` / `_tooltipAlign = 'top'` als Stencil-`@Prop`, die geteilten Prop-Definitionen tragen die Link-Konvention (`true` / `'right'`). Button wurde `--inline` statt `--standalone`, Tooltip rechts statt oben. Fix: `BUTTON_ELEMENT_DEFAULTS` in `resolveButtonProps`. |
 | 2     | `41d923f` |     2 | Nur noch ecl. Die weggefallene Descendant-Stufe senkte `.kol-badge__smart-button .kol-button .kol-icon::before` von 0-3-0 auf 0-2-0 — das ecl-Icon-Mixin (`.kol-icon[class*=' kolicon-'].kolicon-…::before`, 0-3-0) gewann und rendert sein eigenes Glyph. Fix: Compound-Selektor `&__smart-button.kol-button`.                      |
-| 3     | `8abd56b` |     1 | s. u. — offen.                                                                                                                                                                                                                                                                                                                       |
+| 3     | `8abd56b` |     1 | Ein 1-px-Versatz in ecl, s. u. — **von deleonio freigegeben**.                                                                                                                                                                                                                                                                       |
 
 **Offen: `theme-ecl` / `scenarios-focus-elements-component-badge`, 1 px vertikaler Versatz.**
 
@@ -144,9 +143,11 @@ das Flex-Item, wird blockifiziert, hat keine Line-Box mehr und sitzt exakt mitti
 tiefer. Nur ecl zeigt es, weil dort `--a11y-min-size: 26px` plus die negativen Margins den Button
 klein genug halten, dass die Badge-Höhe davon abhängt.
 
-**Decision Point (siehe unten) — die Optionen sind nicht gleichwertig, deshalb keine
-Eigenentscheidung.** Ein Allowlist-Eintrag braucht nach § 8 des Handoff-Skills ohnehin
-Owner-Freigabe.
+**Entschieden am 2026-09-14: freigegeben.** deleonio hat das Bild auf der Visual-Review-Seite
+approved (`Visual Review: 1 visual changes approved by deleonio`, Commit `77f332a835`) — das ist die
+Allowlist-Variante nach § 8 des Handoff-Skills, getragen von der dort geforderten Owner-Freigabe.
+Der Wrapper-`<span>` wurde damit **nicht** eingeführt; das DOM bleibt so schlank, wie der Ausbau es
+gemacht hat. Das Pixel-Gate dieses PRs ist damit abgenommen.
 
 ### 2. `packages/themes/ecl/src/ecl-eu` bleibt ungeprüft
 
@@ -178,9 +179,10 @@ bewegt hätte. Risiko daher gering, aber formal ungeprüft.
    | Theme-lokaler Nudge (ecl-ec)  | `margin-top: -3px; margin-bottom: -1px` statt `-2px/-2px`.                                                                                                               | Magic Number ohne Ableitung aus den Font-Metriken; driftet bei anderer Schriftgröße |
    | Ausbau in eigenen PR          | Dieser PR fällt auf den DOM-identischen Stand mit 0 Diffs zurück.                                                                                                        | der `kol-button-wc`-Ausbau verschiebt sich                                          |
 
-   **Stand 2026-09-14: auf menschliche Entscheidung wartend** — es wird nichts weiter umgebaut.
-   Der Visual-Review-Bot führt den Diff als „1 open"; eine Freigabe dort ist selbst schon die
-   Allowlist-Variante.
+   **Entschieden 2026-09-14: Option 2 (Freigabe).** deleonio hat das Bild auf der
+   Visual-Review-Seite approved; der kombinierte Status steht auf `success`. Optionen 1, 3 und 4
+   entfallen — es wurde weder ein Wrapper-Knoten eingeführt noch eine Magic Number gesetzt noch der
+   Ausbau vertagt.
 
 ## Pitfalls (in dieser Migration real passiert)
 

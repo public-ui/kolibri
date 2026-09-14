@@ -500,6 +500,37 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
   Commit `427bec23a9`; `git diff --name-only origin/develop...HEAD -- '*.png'` = 0. Docker stand in
   der Session nicht zur Verfügung — die CI-Jobs sind laut § 1 gleichwertige Abnahme-Evidenz.
 
+### 2026-09-14 — Konsumenten-Ausbau `kol-button-wc` → `ButtonFC` (kol-badge): 8 → 2 → 1 → freigegeben
+
+- **Ausgangslage**: Erster Konsument, der den transitionalen Wrapper verlässt. Die Migration selbst
+  war DOM-identisch und mit 0 Diffs abgenommen; erst der Wrapper-Ausbau änderte das DOM bewusst und
+  erzeugte 8 geänderte Bilder über alle sieben Pakete.
+- **Ursachen & Fix-Muster** (in dieser Reihenfolge abgetragen):
+  1. **`@Prop`-Defaults des Wrappers sind unsichtbar für die Prop-Definitionen** (6 von 8 Diffs).
+     `kol-button-wc` deklariert `_inline = false` und `_tooltipAlign = 'top'` als Stencil-Feld; die
+     mit dem Link geteilten Definitionen tragen `true` und `'right'`. Ergebnis: `--inline` statt
+     `--standalone` und Tooltip rechts statt oben. Fix: `BUTTON_ELEMENT_DEFAULTS` im Resolver.
+     **Kein Unit-Test fängt das** — die Snapshots schreiben die neue Ausgabe fest.
+  2. **Wegfallende Descendant-Stufe senkt die Spezifität** (Muster 8, neu). `.kol-x__btn
+.kol-button …` → `.kol-x__btn …` ist 0-3-0 → 0-2-0; ecls Icon-Regel gewann vorher nur über die
+     Quellreihenfolge gegen das eigene Icon-Mixin und verlor danach. Fix: Compound-Selektor
+     `.kol-x__btn.kol-button …`.
+  3. **Rest: 1 px, Line-Box-Unterlänge.** Im Wrapper erzeugte das `inline-block`-`.kol-button` eine
+     Line-Box, deren Unterlänge unter dem Button lag; ohne Wrapper wird der Block als Flex-Item
+     blockifiziert, hat keine Line-Box und sitzt exakt mittig — ~1 px tiefer. Nur ecl zeigt es, weil
+     `--a11y-min-size: 26px` den Button dort klein genug hält.
+- **Diagnose ohne Docker**: Das CI-Artefakt `visual-review-<paket>` enthält `expected`/`actual`/`diff`
+  als PNG. Herunterladen (`download_workflow_run_artifact` → curl → unzip) und mit PIL Bounding-Box
+  plus Zeilenbänder ausgeben — das lieferte beide Male die entscheidende Antwort (verschobene Glyphe
+  = anderes Icon; 1-Zeilen-Versatz = Line-Box). **Werkzeug 1 des Skills funktioniert vollständig
+  ohne Docker**, wenn die CI das Artefakt liefert.
+- **Ausgang**: Die letzten 1 px wurden vom Owner auf der Visual-Review-Seite freigegeben
+  (Allowlist nach § 8) statt einen semantisch leeren Wrapper-`<span>` wieder einzuführen.
+- **Fix-Commit(s)**: `f971400` (Ausbau), `41d923f` (Defaults), `8abd56b` (Spezifität) auf PR #10889.
+- **Evidenz**: `Visual Review: 1 visual changes approved by deleonio`, kombinierter Status `success`,
+  Commit `77f332a835`; sechs Pakete 408/0, ecl 407/1 (freigegeben);
+  `git diff --name-only origin/develop...HEAD -- '*.png'` = 0.
+
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 
 - **Ausgangslage**:
