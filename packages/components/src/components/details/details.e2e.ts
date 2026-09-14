@@ -3,6 +3,25 @@ import { test } from '@stencil/playwright';
 
 test.describe('kol-details', () => {
 	test.describe('Callbacks', () => {
+		test(`should call 'onClick' callback when title is clicked`, async ({ page }) => {
+			await page.setContent('<kol-details _label="Details" />');
+			const kolDetails = page.locator('kol-details');
+
+			const callbackPromise = kolDetails.evaluate((element: HTMLKolDetailsElement) => {
+				return new Promise((resolve) => {
+					element._on = {
+						onClick: (_event: MouseEvent, value?: boolean) => {
+							resolve(value);
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+
+			await page.locator('button').click();
+			await expect(callbackPromise).resolves.toBe(true);
+		});
+
 		test(`should call 'onToggle' callback when title is clicked`, async ({ page }) => {
 			await page.setContent('<kol-details _label="Details" _has-closer />');
 			const kolDetails = page.locator('kol-details');
@@ -24,6 +43,31 @@ test.describe('kol-details', () => {
 	});
 
 	test.describe('DOM events', () => {
+		test(`should emit 'click' when title is clicked`, async ({ page }) => {
+			await page.setContent('<kol-details _label="Details" />');
+			const kolDetails = page.locator('kol-details');
+
+			const eventPromise = kolDetails.evaluate(async (element: HTMLKolDetailsElement) => {
+				return new Promise((resolve) => {
+					/**
+					 * The native button click bubbles through the host as a `click` event of its own and
+					 * arrives first, so the listener waits for the component's synthetic CustomEvent —
+					 * the one carrying the new open state as its boolean detail.
+					 */
+					element.addEventListener('click', (event: Event) => {
+						const detail: unknown = (event as CustomEvent<unknown>).detail;
+						if (typeof detail === 'boolean') {
+							resolve(detail);
+						}
+					});
+				});
+			});
+			await page.waitForChanges();
+
+			await page.locator('button').click();
+			await expect(eventPromise).resolves.toBe(true);
+		});
+
 		test(`should emit 'toggle' when title is clicked`, async ({ page }) => {
 			await page.setContent('<kol-details _label="Details" _has-closer />');
 			const kolDetails = page.locator('kol-details');
