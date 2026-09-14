@@ -17,14 +17,21 @@
 			margin-left: var(--ecl-spacing-2xs);
 
 			/* The class now sits on the `.kol-button` block itself — the badge renders `ButtonFC`
-			   directly, so the former `.kol-button` descendant step is gone. */
-			.kol-icon::before {
-				content: '\ea0e';
-			}
+			   directly, so the former `&__smart-button .kol-button` descendant step is gone.
+			   Written as a compound selector rather than dropping the step, because the specificity
+			   has to stay at 0-3-0: the icon rule ties with the theme's own
+			   `.kol-icon[class*=' kolicon-'].kolicon-…::before` and only wins on source order. At
+			   0-2-0 it loses, and the smart button silently renders the mixin's glyph instead of
+			   `\ea0e`. */
+			&.kol-button {
+				.kol-icon::before {
+					content: '\ea0e';
+				}
 
-			&:hover {
-				color: var(--ecl-color-white);
-				background-color: var(--ecl-color-primary);
+				&:hover {
+					color: var(--ecl-color-white);
+					background-color: var(--ecl-color-primary);
+				}
 			}
 		}
 	}

@@ -144,6 +144,17 @@ Diese Ursachen deckten in der Praxis >90 % der Diffs — in dieser Reihenfolge p
 6. **Sass-`X &`-Verschachtelung**: Innerhalb eines Blocks kompiliert `X &` zu einem Descendant-Selektor (`.a__element .a …`), der nie matcht. NIEMALS dem Kompilat vertrauen — das gebaute CSS greppen (Abschnitt 3, Werkzeug 5), bevor die Wirkung einer Regel vorausgesetzt wird.
 7. **Woher kam der Stil in der Basis wirklich?** Erst die Include-Kette prüfen (welche Datei inkludiert das Mixin in welchem Kontext — Consumer laden fremde Block-Stile oft nur über ein extra Include), bevor „das hatte die Basis nicht" angenommen wird.
 
+8. **Wegfallende Descendant-Stufe senkt die Spezifität — Compound-Selektor statt Weglassen.** Wird
+   ein Wrapper entfernt, sitzen Consumer-Klasse und Block-Klasse danach auf **demselben** Element:
+   aus `.kol-x__btn .kol-button` wird `.kol-x__btn`. Das ist ein Treffer weniger (0-3-0 → 0-2-0).
+   Regeln, die vorher nur über die Quellreihenfolge gegen eine gleich spezifische Theme-Regel
+   gewannen, verlieren jetzt still. Belegter Fall: ecl-ec schreibt dem Badge-Smart-Button per
+   `content: '\ea0e'` ein Icon vor und lag mit dem Mixin-Selektor
+   `.kol-icon[class*=' kolicon-'].kolicon-…::before` gleichauf — nach dem Wegfall der Stufe rendert
+   das Mixin-Glyph. Fix: die Stufe durch einen **Compound**-Selektor ersetzen
+   (`.kol-x__btn.kol-button …`), nicht ersatzlos streichen. Das Element trägt beide Klassen, die
+   Spezifität bleibt exakt erhalten.
+
 ### 6b. Selektoren-Regel, wenn ein Umbau das zustandstragende Element in einen Wrapper verschiebt
 
 Situation: `<element class="block">` wird zu `<div class="block"><element class="block__element">`. Danach sortieren sich alle Selektoren, die den alten Block betrafen, in drei Gruppen:
