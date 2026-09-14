@@ -1,1 +1,0 @@
-import{r as e,u as t}from"./normalizers-B13uuknd-CZrx6T9p.js";var n=new Set([`eager`,`lazy`]),r=e(`loading`,`lazy`,e=>t(e),e=>n.has(e)),i=new Set([`block`,`inline`]),a=e(`variant`,`inline`,e=>t(e),e=>i.has(e));export{a as n,r as t};
