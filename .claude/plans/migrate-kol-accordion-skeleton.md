@@ -54,33 +54,30 @@ unsichtbar** — null geänderte Snapshot-PNGs gegen develop.
 
 ## Current state
 
+**DONE (2026-09-14) — implementiert, validiert, pixelgleich, PR erstellt.**
+
 - Branch `refactor/migrate-kol-accordion-skeleton` angelegt (von origin/develop `f082d27f0b`).
-- Implementierung DONE (2026-09-14): `internal/props/{accordion-callbacks,open}.ts` (+ index-Exports),
+- Implementierung: `internal/props/{accordion-callbacks,open}.ts` (+ index-Exports),
   `internal/functional-components/accordion/{api,component}.tsx`, WC
   `components/accordion/component.tsx` (ersetzt `shadow.tsx`, gelöscht), BEM-Registrierung
   `kol-accordion` (Typ + Runtime), component-list-Import umgestellt, Public-API-Pin
   in `_skeleton/public-api.spec.ts`, Snapshot-Test-Import auf `../component` umgestellt.
-- Formatierung (prettier) grün, `lint:eslint` grün (13 vorbestehende Warnungen, 0 Fehler),
-  `pnpm --filter @public-ui/components lint` grün (inkl. TS + i18n-Checks).
-- Offen: `test:unit` läuft (Stencil-Suite), Hydrate-Snapshot (Root-id-Delta), Pixel-Check,
-  Public-API-Diff-Verifikation gegen develop, PR.
+- Validation: prettier grün, `lint:eslint` grün (13 vorbestehende Warnungen, 0 Fehler), `lint`
+  grün (inkl. TS + i18n-Checks), `test:unit` **948/948**, Hydrate-SSR-Snapshots aktualisiert
+  (Root-id-Delta), **Public-API-Diff gegen develop: byte-identisch (7 Member: focus, click,
+  \_disabled, \_label, \_level, \_on, \_open)**.
+- **GOAL Zero Visual Delta — ✅ DONE (2026-09-14):** Baselines auf develop `f082d27f0b`
+  generiert (6 Themes × 408 PNGs), dann `node scripts/snapshots-docker.mjs default bwst ecl
+kern desy unstyled --check` → je **293 passed, 0 failed, Exit 0**.
+  `git diff origin/develop...HEAD -- '*.png'` = 0.
 
 ## Open work, nach Priorität
 
-1. Phase 2: `internal/props/open.ts` + `internal/props/accordion-callbacks.ts` (+ index-Exports).
-   ⚠️ `open.ts` existiert nur im offenen Details-PR — gleiche Datei wird dort ebenfalls ergänzt
-   (Merge-Konflikt likely, trivial resolvable).
-2. Phase 3: `internal/functional-components/accordion/{api,component}.tsx`, WC
-   `components/accordion/component.tsx` (ersetzt `shadow.tsx`), BEM-Registrierung `kol-accordion`
-   (Typ + Runtime, Elemente content/heading/heading-button/wrapper/wrapper-animation, Modifier
-   null), component-list-Import, Public-API-Pin, Snapshot-Import.
-3. Phase 4: `shadow.tsx` löschen; Dead-Schema-Check `schema/components/accordion.ts` (vermutlich
-   behalten — published type surface: `AccordionProps` wird vom Test genutzt, `AccordionStates`/
-   `AccordionAPI` exports bleiben).
-4. Phase 5: `pnpm format`, `pnpm lint`, `pnpm --filter @public-ui/components test:unit`;
-   Hydrate-Snapshot-Update (Root-id-Delta); Zero-Visual-Delta-Check via
-   `node scripts/snapshots-docker.mjs <theme> --check` (+ `git diff origin/develop..HEAD -- '*.png'`).
-5. PR erstellen (release:refactoring-Label-Praxis wie Vorbild-PRs), Issue #9561 in Status Review.
+1. ~~Implementierung~~ — DONE.
+2. ~~GOAL Zero Visual Delta~~ — DONE (siehe oben).
+3. ~~Hydrate-SSR-Snapshot~~ — DONE (2 Einträge: renderToString/streamToString).
+4. ~~Public-API-Diff~~ — DONE (identisch).
+5. ~~PR + Issue #9561 in Review~~ — DONE.
 
 ## Pitfalls (aus Vorbild-PRs übernommen)
 
