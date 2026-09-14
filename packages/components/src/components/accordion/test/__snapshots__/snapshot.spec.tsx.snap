@@ -4,7 +4,7 @@ exports[`kol-accordion should render with _label="Überschrift" _level=3 1`] = `
 <kol-accordion>
   <template shadowrootmode="open">
     <details class="collapsible kol-accordion">
-      <summary aria-controls="accordion-control-nonce" class="collapsible__heading-button kol-accordion__heading-button" id="accordion-heading-nonce">
+      <summary aria-controls="accordion-control-nonce" class="collapsible__heading collapsible__heading-button kol-accordion__heading kol-accordion__heading-button" id="accordion-heading-nonce">
         <h3 class="collapsible__heading kol-accordion__heading kol-headline kol-headline--h3 kol-headline--single">
           <span class="kol-span">
             <span class="kol-span__container">
@@ -33,7 +33,7 @@ exports[`kol-accordion should render with _label="Überschrift" _open=false _dis
 <kol-accordion>
   <template shadowrootmode="open">
     <details class="collapsible kol-accordion">
-      <summary aria-controls="accordion-control-nonce" class="collapsible__heading-button kol-accordion__heading-button" id="accordion-heading-nonce">
+      <summary aria-controls="accordion-control-nonce" class="collapsible__heading collapsible__heading-button kol-accordion__heading kol-accordion__heading-button" id="accordion-heading-nonce">
         <strong class="collapsible__heading kol-accordion__heading kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
@@ -62,7 +62,7 @@ exports[`kol-accordion should render with _label="Überschrift" _open=false _dis
 <kol-accordion>
   <template shadowrootmode="open">
     <details class="collapsible collapsible--disabled kol-accordion">
-      <summary aria-controls="accordion-control-nonce" aria-disabled="true" class="collapsible__heading-button kol-accordion__heading-button" id="accordion-heading-nonce" tabindex="-1">
+      <summary aria-controls="accordion-control-nonce" aria-disabled="true" class="collapsible__heading collapsible__heading-button kol-accordion__heading kol-accordion__heading-button" id="accordion-heading-nonce" tabindex="-1">
         <strong class="collapsible__heading kol-accordion__heading kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
@@ -91,7 +91,7 @@ exports[`kol-accordion should render with _label="Überschrift" _open=true _disa
 <kol-accordion _open="">
   <template shadowrootmode="open">
     <details class="collapsible collapsible--open kol-accordion" open="">
-      <summary aria-controls="accordion-control-nonce" class="collapsible__heading-button kol-accordion__heading-button" id="accordion-heading-nonce">
+      <summary aria-controls="accordion-control-nonce" class="collapsible__heading collapsible__heading-button kol-accordion__heading kol-accordion__heading-button" id="accordion-heading-nonce">
         <strong class="collapsible__heading kol-accordion__heading kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
@@ -120,7 +120,7 @@ exports[`kol-accordion should render with _label="Überschrift" _open=true _disa
 <kol-accordion _open="">
   <template shadowrootmode="open">
     <details class="collapsible collapsible--disabled collapsible--open kol-accordion" open="">
-      <summary aria-controls="accordion-control-nonce" aria-disabled="true" class="collapsible__heading-button kol-accordion__heading-button" id="accordion-heading-nonce" tabindex="-1">
+      <summary aria-controls="accordion-control-nonce" aria-disabled="true" class="collapsible__heading collapsible__heading-button kol-accordion__heading kol-accordion__heading-button" id="accordion-heading-nonce" tabindex="-1">
         <strong class="collapsible__heading kol-accordion__heading kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
@@ -149,7 +149,7 @@ exports[`kol-accordion should render with _label="Überschrift" 1`] = `
 <kol-accordion>
   <template shadowrootmode="open">
     <details class="collapsible kol-accordion">
-      <summary aria-controls="accordion-control-nonce" class="collapsible__heading-button kol-accordion__heading-button" id="accordion-heading-nonce">
+      <summary aria-controls="accordion-control-nonce" class="collapsible__heading collapsible__heading-button kol-accordion__heading kol-accordion__heading-button" id="accordion-heading-nonce">
         <strong class="collapsible__heading kol-accordion__heading kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
