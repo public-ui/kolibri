@@ -112,8 +112,10 @@ node scripts/snapshots-docker.mjs <theme> --check && git diff origin/develop..HE
 
 ## Open work
 
-1. Zero-Visual-Delta Docker-Check je Theme (`node scripts/snapshots-docker.mjs <theme> --check`).
-2. Commit + PR + Issue #9562 auf Status Review.
+1. ~~Zero-Visual-Delta~~ — ✅ DONE (2026-09-14): `node scripts/snapshots-docker.mjs --all --check`
+   Exit 0, letztes Theme 293/293 passed; Stichprobe `default --check -- --grep Alert` 5/5 passed.
+   `git diff origin/develop..HEAD -- '*.png'` = 0.
+2. Commit defb6aae09 + PR + Issue #9562 auf Status Review.
 
 ## Pitfalls
 
