@@ -1,52 +1,61 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "8 changed – 0 of 8 approved, review pending",
-	"computedAt": "2026-09-14T08:19:59.255Z",
+	"description": "8 changed – 7 of 8 approved, review pending",
+	"computedAt": "2026-09-14T08:45:01.474Z",
 	"pr": 10889,
 	"head": "f971400e3107abd85781ee4e27aa7e6c87dd6c75",
 	"digest": "sha256:28fde65d7e95b49013a2c2a6c068a33dd332fb154ad39b0c293d41375e675a91",
 	"counts": {
 		"changes": 8,
-		"open": 8,
-		"approved": 0,
+		"open": 1,
+		"approved": 7,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"deleonio"
+	],
 	"items": {
 		"test-tag-name-transformer/scenarios-focus-elements-component-badge": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/scenarios-focus-elements-component-badge": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/scenarios-focus-elements-component-badge": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/scenarios-focus-elements-component-badge": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/badge-basic--smart-button": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-ecl/scenarios-focus-elements-component-badge": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-kern/scenarios-focus-elements-component-badge": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/scenarios-focus-elements-component-badge": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		}
 	}
 }
