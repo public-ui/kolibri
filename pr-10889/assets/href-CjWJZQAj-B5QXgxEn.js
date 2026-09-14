@@ -1,0 +1,1 @@
+import{l as e,n as t}from"./normalizers-DIgs35at-CszBj5IG.js";var n=t(`href`,``,e,e=>typeof e==`string`,{required:!0});export{n as t};
