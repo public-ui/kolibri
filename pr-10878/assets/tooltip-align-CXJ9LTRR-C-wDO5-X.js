@@ -1,1 +1,0 @@
-import"./index-Brsnsc-E.js";import{r as e}from"./align-DnuTHmUs-Cp5mcVCA.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
