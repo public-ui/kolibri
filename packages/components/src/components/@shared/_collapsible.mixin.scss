@@ -18,8 +18,6 @@
 		 */
 		&__heading-button {
 			display: flex;
-			/* The old button box centred its label in the a11y minimum height. */
-			align-items: center;
 			min-height: var(--a11y-min-size);
 			cursor: pointer;
 			list-style: none;
@@ -32,22 +30,34 @@
 			&::marker {
 				content: '';
 			}
-
-			/* A flex container only exposes a baseline if it has an in-flow text box to derive one
-			   from; without it the surrounding inline formatting context falls back to the bottom
-			   margin edge and everything after the element shifts by 1px. Same rationale as the
-			   zero-width space in `kol-button-styles`. */
-			&::before {
-				content: '\200B';
-			}
 		}
 
 		/* The heading moved inside the summary, so it is the flex item that has to fill the row —
 		   it used to be the block-level parent of the button and carried no margin of its own. */
 		&__heading-button > .kol-headline {
+			display: flex;
 			flex: 1;
 			margin: 0;
 			text-align: left;
+
+			/* A flex container only exposes a baseline if it has an in-flow text box to derive one
+			   from; without it the surrounding inline formatting context falls back to the bottom
+			   margin edge and everything after the element shifts by 1px. The predecessor put this
+			   zero-width space on `.kol-button__interactive-element`, which is the level the
+			   heading occupies now — not on the button wrapper, whose role `<summary>` took over.
+			   Keeping it here also leaves `<summary>::before` free for the decorative bars ecl and
+			   desy draw there. */
+			&::before {
+				content: '\200B';
+			}
+
+			/* `.kol-span` was a flex item of the button's interactive element
+			   (`.kol-button__text { flex: 1 0 100% }`). As a plain inline box inside the heading it
+			   would sit in the heading's line box instead and shift the label by a pixel, so the
+			   heading takes over as the flex container. */
+			> .kol-span {
+				flex: 1 0 100%;
+			}
 
 			/* `a11y.scss` makes form controls inherit font-family and font-size but deliberately
 			   not font-weight, so the label used to render at the user agent's `400` inside the

@@ -28,37 +28,29 @@
 			}
 		}
 
-		.kol-button {
+		/* `<summary>` replaced the `kol-button-wc`: the wrapper and its interactive element are one
+		   element now, and `disabled` is expressed as `aria-disabled`. The decorative bar keeps
+		   `::before`, which overrides the component layer's baseline pseudo on the same element. */
+		&__heading-button {
 			color: var(--color-dark-blue-100);
 			position: relative;
+			padding: to-rem(16) to-rem(20);
 
 			font-size: to-rem(16);
+			line-height: 1.5;
 			transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
-			/* Box padding, line-height, focus ring, disabled colour and the open-state weight
-			   belong to the interactive element: on the wrapper the padding would stack on top of
-			   the inner button's a11y min-size (+20px per heading), Firefox pins `line-height:
-			   normal` and `font-weight: 400` on the real button (beating any inherited value), and
-			   the wrapper never receives `:focus` or the `disabled` attribute. */
-			.kol-button__interactive-element {
-				padding: to-rem(16) to-rem(20);
-
-				line-height: 1.5;
-
-				@media (min-width: $breakpoint-sm) {
-					padding: to-rem(16) to-rem(32);
-				}
-
-				&:focus-visible {
-					background: var(--color-blue-20);
-					@include focus-outline;
-				}
+			@media (min-width: $breakpoint-sm) {
+				padding: to-rem(16) to-rem(32);
 			}
 
-			/* On the wrapper `:not(:disabled)` would always be true; `:has(:disabled)` asks the
-			   interactive element inside it, while `:hover`/`:active` still propagate to the wrapper. */
-			&:not(:has(:disabled)):hover,
-			&:not(:has(:disabled)):active {
+			&:focus-visible {
+				background: var(--color-blue-20);
+				@include focus-outline;
+			}
+
+			&:not([aria-disabled='true']):hover,
+			&:not([aria-disabled='true']):active {
 				&::before {
 					border-radius: 6px 0 0 6px;
 					display: block;
@@ -72,29 +64,26 @@
 				}
 			}
 
-			&:not(:has(:disabled)):hover {
+			&:not([aria-disabled='true']):hover {
 				background: var(--color-blue-20);
 			}
 
-			&:not(:has(:disabled)):active {
+			&:not([aria-disabled='true']):active {
 				background: var(--color-blue-30);
 			}
 
-			&:has(:disabled) {
+			&[aria-disabled='true'] {
 				opacity: 1;
 				color: var(--color-black-60);
 			}
 		}
 
-		&.collapsible--open .kol-button {
+		&.collapsible--open &__heading-button {
 			box-shadow: inset 3px 0 0 rgb(31, 51, 71, 0.16);
+			padding-top: to-rem(24);
+
+			font-weight: 700;
 			border-top-left-radius: 2px;
-
-			.kol-button__interactive-element {
-				padding-top: to-rem(24);
-
-				font-weight: 700;
-			}
 		}
 
 		.kol-span__container {
