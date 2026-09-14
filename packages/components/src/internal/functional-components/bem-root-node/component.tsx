@@ -9,8 +9,6 @@ import { getBlockBem } from './block-bem';
 
 type FCChildren = Parameters<FC>[1];
 
-export type { BlockModifiers };
-
 type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema> = {
 	/**
 	 * BEM block name — must be a key registered in `KoliBriComponentsBemSchema`.
