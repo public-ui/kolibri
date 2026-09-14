@@ -28,34 +28,24 @@
 			border-bottom: 1px solid var(--color-mute-variant);
 		}
 
+		/* `<summary>` replaced the `kol-button-wc`, so the box that sat on the button's
+		   interactive element now sits on the summary itself. */
 		&__heading-button {
 			border-radius: var(--border-radius);
 			display: flex;
 			min-height: to-rem(35.2);
+			padding: to-rem(12) to-rem(8);
 			cursor: pointer;
 
-			&:focus-within {
-				.kol-button {
-					outline: 0;
-				}
+			/* The ring is drawn by the block's own `:focus-within` rule above. */
+			&:focus {
+				outline: none;
 			}
 
 			.kol-span__container {
 				display: flex;
 				gap: 0.5em;
 				@include kol-typography-accordion;
-			}
-
-			.kol-button {
-				/* Box values belong to the interactive element: on the wrapper the padding would stack
-				   on top of the inner button's a11y min-size instead of growing the old button box. */
-				.kol-button__interactive-element {
-					padding: to-rem(12) to-rem(8);
-				}
-
-				.kol-button__interactive-element:focus {
-					outline: none;
-				}
 			}
 
 			.kol-icon {

@@ -45,6 +45,13 @@
 		&__heading-button > &__heading {
 			flex: 1;
 			text-align: left;
+
+			/* `a11y.scss` makes form controls inherit font-family and font-size but deliberately
+			   not font-weight, so the label used to render at the user agent's `400` inside the
+			   `<button>` even though an `<h1>`–`<h6>`/`<strong>` wrapped it. Reproduced here now
+			   that the heading contains the label directly. Themes that set a weight further in
+			   (on `__container` or `__label`) still win. */
+			font-weight: 400;
 		}
 
 		&--disabled &__heading-button {
