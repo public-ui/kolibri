@@ -24,13 +24,30 @@ export const badgePropsConfig = {
 export type BadgeApi = ApiFromConfig<
 	typeof badgePropsConfig,
 	{
+		/**
+		 * The smart button is rendered by `ButtonFC`, so the badge owns the button's event handling:
+		 * it forwards to the consumer's `_on` callbacks and dispatches the public DOM events on the
+		 * badge host, which is what `kol-button-wc` did before.
+		 */
+		Callbacks: {
+			blur: (event: FocusEvent) => void;
+			click: (event: MouseEvent) => void;
+			focus: (event: FocusEvent) => void;
+			mouseDown: (event: MouseEvent) => void;
+		};
 		Methods: {
 			focus: (options?: KolFocusOptions) => void;
 		};
 		Refs: {
-			smartButton: HTMLKolButtonWcElement;
+			smartButton: HTMLButtonElement;
+			tooltip: HTMLDivElement;
 		};
 		States: {
+			/**
+			 * DOM id of the visually-hidden span carrying the smart button's aria description.
+			 * Generated once per instance, referenced by the button's `aria-describedby`.
+			 */
+			ariaDescriptionId: string;
 			/**
 			 * DOM id of the label span. Generated once per web component instance and referenced by
 			 * the smart button's `aria-controls`, so it is only rendered when a smart button exists.

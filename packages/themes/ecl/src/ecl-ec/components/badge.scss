@@ -16,15 +16,15 @@
 			margin-bottom: -2px;
 			margin-left: var(--ecl-spacing-2xs);
 
-			.kol-button {
-				.kol-icon::before {
-					content: '\ea0e';
-				}
+			/* The class now sits on the `.kol-button` block itself — the badge renders `ButtonFC`
+			   directly, so the former `.kol-button` descendant step is gone. */
+			.kol-icon::before {
+				content: '\ea0e';
+			}
 
-				&:hover {
-					color: var(--ecl-color-white);
-					background-color: var(--ecl-color-primary);
-				}
+			&:hover {
+				color: var(--ecl-color-white);
+				background-color: var(--ecl-color-primary);
 			}
 		}
 	}

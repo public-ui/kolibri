@@ -73,40 +73,56 @@ Playwright-Läufe ersetzt, sondern offen übergeben. Abgenommen hat sie dann die
 mit 408 unchanged / 0 changed je Paket. Erwartung bestätigt: **keine Theme-Arbeit nötig**, weil das
 DOM byte-identisch portiert wurde.
 
-### 1. `kol-button-wc` im Smart Button ablösen — benannt, nicht erledigt
+### 1. `kol-button-wc` im Smart Button abgelöst — DONE (2026-09-14)
 
-Nach der Regel in `migrate-to-skeleton/SKILL.md` § 6 („Transitionale `-wc`-Tags beim Konsumenten
-ablösen") gehört der Umstieg von `KolButtonWcTag` auf `ButtonFC` grundsätzlich in die Migration.
-Für Badge scheitert er an **Vorprüfung 1 (Prop-Aufwand)**, nachgemessen am Code:
+Auf Owner-Entscheidung umgesetzt: `BadgeFC` rendert `ButtonFC` direkt, das transitionale
+`kol-button-wc` ist aus dem Badge verschwunden.
 
-- `ButtonFC` verlangt **26 normalisierte Render-Props, 4 `handle*`-Callbacks, 2 Refs und
-  `ariaDescriptionId`** als State. `KolBadge` hat nichts davon — `_smartButton` ist ein opaker
-  Pass-through von `InternalButtonProps`, der bewusst **nicht** aufgebrochen wird.
-- Badge rendert den Button hart mit `_hideLabel={true}`. In `ButtonFC` hängt der Tooltip genau an
-  `hideLabel && hasLabelText`, der Tooltip-Pfad ist hier also **immer** aktiv — `TooltipBehavior`
-  samt `componentDidRender`-Sync und `disconnectedCallback`-Teardown wäre Pflicht, nicht optional.
-- Dazu die DOM-Events, auf die `badge.e2e.ts` prüft (`click`, `mousedown` müssen am Host
-  ankommen): die liefert heute `dispatchDomEvent` im Wrapper.
+Damit das kein Nachbau der ~500 Zeilen aus `components/button/wc.tsx` in `KolBadge` wurde, ist die
+Orchestrierung aufgeteilt:
 
-Zusammengerechnet wäre das ein Nachbau der ~500 Zeilen aus `components/button/wc.tsx` **innerhalb**
-von `KolBadge` — genau das, was die Regel verbietet. Der saubere Weg ist eine wiederverwendbare
-Orchestrierungs-Einheit (Behavior oder geteilter Normalisierungs-Helfer `InternalButtonProps` →
-`ButtonFC`-Props + Handler), von der alle 17 `kol-button-wc`-Konsumenten profitieren. Das ist ein
-architektonischer Schritt und gehört dem Owner vorgelegt, nicht nebenbei erledigt — er ist bereits
-als „§ 2 Konsumenten-Migration weg von `kol-button-wc` (der strategische Schritt)" in
-`.claude/plans/migrate-kol-button-skeleton.md` verzeichnet.
+- **Neu, wiederverwendbar:** `internal/functional-components/button/resolve-props.ts` —
+  `resolveButtonProps(props, host)` normalisiert einen opaken `InternalButtonProps`-Satz in die
+  Render-Props, die `ButtonFC` erwartet (inkl. `tabIndex`-Unset-Regel und
+  `buttonVariantDefault`-Fallback). Davon profitieren die übrigen 16 `kol-button-wc`-Konsumenten.
+- **Im WC geblieben (was Lifecycle braucht):** `TooltipBehavior` — der Smart Button rendert immer
+  mit `hideLabel`, der Tooltip-Pfad ist also nie optional —, die vier Event-Handler samt
+  `dispatchDomEvent` auf dem Badge-Host, `ctaRef` und `ariaDescriptionId`.
+- **`ButtonFC` reicht jetzt seine `class`-Prop durch** an `BemRootNodeFC`. Vorher verwarf es sie
+  ersatzlos, sodass `kol-badge__smart-button` beim ersten Umbau komplett aus dem DOM fiel — für
+  jeden Konsumenten, der `ButtonFC` direkt rendert, war das ein Blocker. `LinkFC` hat dieselbe
+  Lücke (dort noch ungenutzt).
 
-**Vorprüfung 2 (Selektor-Aufwand) ist bereits erhoben**, damit der spätere Schritt sie nicht neu
-machen muss. Nach dem Tausch säße `kol-badge__smart-button` auf demselben Knoten wie `kol-button`;
-diese Selektoren müssten theme-lokal mitwandern:
+DOM-Delta (bewusst, erstmals in dieser Migration):
 
-| Datei                                          | heute                              | nach dem Tausch                                                                                                                                                       |
-| ---------------------------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `components/badge/style.scss`                  | `.kol-badge__smart-button .button` | toter Selektor, schon vor der Migration: nichts rendert `class="button"` (verifiziert). Vorbestehend, deshalb hier bewusst nicht angefasst — gehört in den Ablöse-PR. |
-| `themes/default/…/badge.scss`, `themes/bwst/…` | `&__smart-button .kol-button`      | `&__smart-button` selbst                                                                                                                                              |
-| `themes/kern/…/badge.scss`                     | `&__smart-button button`           | `&__smart-button .kol-button__interactive-element`                                                                                                                    |
-| `themes/ecl/ecl-ec/…/badge.scss`               | `&__smart-button .kol-button`      | `&__smart-button` selbst                                                                                                                                              |
-| `themes/desy/…/badge.scss`                     | — (keine Smart-Button-Regeln)      | —                                                                                                                                                                     |
+```diff
+- <kol-button-wc class="kol-badge__smart-button"></kol-button-wc>
++ <div class="kol-badge__smart-button kol-button kol-button--hide-label kol-button--inline kol-button--normal">
++   <button class="kol-button__interactive-element">…</button>
++   <div class="kol-button__tooltip">…</div>
++   <span class="visually-hidden" id="…">…</span>
++ </div>
+```
+
+Mitmigrierte Selektoren (Vorprüfung 2), weil `kol-badge__smart-button` jetzt **auf** dem
+`.kol-button`-Block sitzt statt darüber:
+
+| Datei                           | Änderung                                                                                                  |
+| ------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `themes/default`, `themes/bwst` | `&__smart-button .kol-button { … }` → `&__smart-button { … }`; Hover ins `__interactive-element` genestet |
+| `themes/ecl/ecl-ec`             | `&__smart-button .kol-button { … }` → direkt auf `&__smart-button`                                        |
+| `themes/kern`                   | unverändert — `&__smart-button button` ist ein Element-Selektor und greift weiter                         |
+| `themes/desy`                   | unverändert — keine Smart-Button-Regeln                                                                   |
+| `components/badge/style.scss`   | toter `.button`-Selektor entfernt; `width: auto` ergänzt (s. u.)                                          |
+
+**Der eine nicht-selektorbedingte Fix:** `kol-button-wc-box-styles` gibt `.kol-button` ein
+`width: 100%`. Das war harmlos, solange der Block im `kol-button-wc`-Element steckte; jetzt **ist**
+der Block das Flex-Item von `.kol-badge` und hätte die volle Badge-Breite beansprucht.
+`components/badge/style.scss` setzt deshalb `width: auto` auf `&__smart-button`.
+
+**Pixel-Gate für diesen Umbau: noch offen.** Die vorherige Abnahme galt dem DOM-identischen Port;
+dieser Schritt ändert das DOM bewusst. Evidenz kommt aus den CI-`visual-tests`-Jobs auf PR #10889
+für den Commit, der diesen Umbau trägt — bis dahin ist der Schritt nicht abgenommen.
 
 ### 2. `packages/themes/ecl/src/ecl-eu` bleibt ungeprüft
 

@@ -11,28 +11,29 @@
 			align-items: center;
 		}
 
+		/* `kol-badge__smart-button` now sits on the `.kol-button` block itself — the badge renders
+		   `ButtonFC` directly instead of wrapping it in a `kol-button-wc` element, so the former
+		   `&__smart-button .kol-button` descendant step is gone. */
 		&__smart-button {
-			.kol-button {
-				color: inherit;
+			color: inherit;
 
-				/* Box styles and hover belong to the interactive element: on the wrapper the padding
-				   would stack on top of the inner button's a11y min-size and grow the badge. */
-				.kol-button__interactive-element {
-					padding: to-rem(3.2);
-					border-bottom-right-radius: var(--border-radius);
-					border-top-right-radius: var(--border-radius);
-				}
+			/* Box styles and hover belong to the interactive element: on the block the padding
+			   would stack on top of the inner button's a11y min-size and grow the badge. */
+			.kol-button__interactive-element {
+				padding: to-rem(3.2);
+				border-bottom-right-radius: var(--border-radius);
+				border-top-right-radius: var(--border-radius);
 
-				&__interactive-element:hover {
+				&:hover {
 					color: var(--color-light);
 					background-color: var(--color-primary-variant);
 				}
+			}
 
-				&__text {
-					padding: to-rem(4) to-rem(12);
-					align-items: center;
-					font-style: normal;
-				}
+			.kol-button__text {
+				padding: to-rem(4) to-rem(12);
+				align-items: center;
+				font-style: normal;
 			}
 		}
 

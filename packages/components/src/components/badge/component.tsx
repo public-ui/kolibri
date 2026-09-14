@@ -5,12 +5,16 @@ import type { BadgeApi } from '../../internal/functional-components/badge/api';
 import { badgePropsConfig } from '../../internal/functional-components/badge/api';
 import { BadgeFC } from '../../internal/functional-components/badge/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { ResolvedButtonProps } from '../../internal/functional-components/button/resolve-props';
+import { resolveButtonProps } from '../../internal/functional-components/button/resolve-props';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { colorProp, labelWithExpertSlotProp, smartButtonProp, spanIconsProp } from '../../internal/props';
 import type { BadgeProps, FocusableElement, InternalButtonProps, KolFocusOptions, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
-import { featureHint, objectObjectHandler } from '../../schema';
-import { createUniqueId } from '../../utils/dev.utils';
+import { featureHint, objectObjectHandler, setEventTarget } from '../../schema';
+import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).`);
 
@@ -30,7 +34,15 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, FocusableElement, WebComponentInterface<BadgeApi> {
 	@Element() protected readonly host?: HTMLKolBadgeElement;
 
-	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
+	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
+
+	// --- Composed behaviors ---
+
+	/**
+	 * The smart button is always rendered with `hideLabel`, so `ButtonFC` always renders its
+	 * tooltip — the behavior is mandatory here, not optional.
+	 */
+	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 
 	// --- Lifecycle ---
 
@@ -46,6 +58,16 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 		this.watchSmartButton(this._smartButton);
 	}
 
+	public componentDidRender(): void {
+		if (this.ctaRef.el) {
+			this.tooltipBehavior.syncListeners(undefined, this.ctaRef.el, true);
+		}
+	}
+
+	public disconnectedCallback(): void {
+		this.tooltipBehavior.destroy();
+	}
+
 	/**
 	 * Applies `_smartButton`, which is the only prop that may end up unset rather than defaulted.
 	 * The predecessor stored an unparseable value verbatim and its `typeof value === 'object'`
@@ -55,11 +77,57 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	private applySmartButton(value?: Stringified<InternalButtonProps>): void {
 		objectObjectHandler(value, () => {
 			this.unsetRenderProp('smartButton');
+			this.smartButtonProps = undefined;
 			if (value !== undefined && value !== null) {
-				smartButtonProp.apply(value, (v) => this.setRenderProp('smartButton', v));
+				smartButtonProp.apply(value, (v) => {
+					this.setRenderProp('smartButton', v);
+					this.smartButtonProps = resolveButtonProps({ ...v, _hideLabel: true, _ariaControls: this.labelId }, this.host);
+					this.tooltipBehavior.componentWillLoad({
+						label: this.smartButtonProps.label,
+						align: this.smartButtonProps.tooltipAlign,
+					});
+				});
 			}
 		});
 	}
+
+	// --- Event handling ---
+
+	private readonly handleClick = (event: MouseEvent): void => {
+		event.stopPropagation();
+		this.tooltipBehavior.hideTooltip();
+
+		const onClick = this.smartButtonProps?.on.onClick;
+		if (typeof onClick === 'function') {
+			setEventTarget(event, this.ctaRef.el);
+			onClick(event, undefined);
+		}
+
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.click);
+		}
+	};
+
+	private readonly handleMouseDown = (event: MouseEvent): void => {
+		this.smartButtonProps?.on.onMouseDown?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.mousedown);
+		}
+	};
+
+	private readonly handleFocus = (event: FocusEvent): void => {
+		this.smartButtonProps?.on.onFocus?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.focus);
+		}
+	};
+
+	private readonly handleBlur = (event: FocusEvent): void => {
+		this.smartButtonProps?.on.onBlur?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.blur);
+		}
+	};
 
 	// --- Public methods ---
 
@@ -82,8 +150,15 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 					icons={this.getRenderProp('icons')}
 					label={this.getRenderProp('label')}
 					labelId={this.labelId}
-					refSmartButton={this.ctaRef}
 					smartButton={this.getRenderProp('smartButton')}
+					smartButtonProps={this.smartButtonProps}
+					ariaDescriptionId={this.ariaDescriptionId}
+					handleBlur={this.handleBlur}
+					handleClick={this.handleClick}
+					handleFocus={this.handleFocus}
+					handleMouseDown={this.handleMouseDown}
+					refSmartButton={this.ctaRef}
+					refTooltip={this.tooltipBehavior.setTooltipElementRef}
 				/>
 			</Host>
 		);
@@ -92,6 +167,15 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	// --- @State ---
 
 	@State() public labelId: string = createUniqueId('badge-label');
+
+	@State() public ariaDescriptionId: string = nonce();
+
+	/**
+	 * The smart button's normalized `ButtonFC` render props, or `undefined` while no smart button
+	 * is configured. Not a `@State`: it is recomputed inside `applySmartButton`, whose
+	 * `setRenderProp` call already drives the re-render.
+	 */
+	private smartButtonProps?: ResolvedButtonProps;
 
 	// --- Props + Watchers ---
 

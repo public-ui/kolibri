@@ -15,9 +15,11 @@
 		justify-content: space-between;
 
 		.kol-badge__smart-button {
-			.button {
-				color: inherit;
-			}
+			/* `kol-button-wc-box-styles` gives `.kol-button` `width: 100%`, which was harmless while
+			   the block sat inside a `kol-button-wc` wrapper element. The badge now renders
+			   `ButtonFC` directly, so the block IS the flex item — a 100% base size would claim the
+			   whole badge and squeeze the label. `auto` restores the wrapper's content sizing. */
+			width: auto;
 		}
 	}
 }
