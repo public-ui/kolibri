@@ -5,7 +5,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=false
   <template shadowrootmode="open">
     <details class="collapsible kol-details">
       <summary aria-controls="details-control-nonce" class="collapsible__heading collapsible__heading-button kol-details__heading kol-details__heading-button" id="details-heading-nonce">
-        <strong class="collapsible__heading kol-details__heading kol-headline kol-headline--single kol-headline--strong">
+        <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -34,7 +34,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=false
   <template shadowrootmode="open">
     <details class="collapsible collapsible--open kol-details" open="">
       <summary aria-controls="details-control-nonce" class="collapsible__heading collapsible__heading-button kol-details__heading kol-details__heading-button" id="details-heading-nonce">
-        <strong class="collapsible__heading kol-details__heading kol-headline kol-headline--single kol-headline--strong">
+        <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -63,7 +63,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=true 
   <template shadowrootmode="open">
     <details class="collapsible collapsible--disabled kol-details">
       <summary aria-controls="details-control-nonce" aria-disabled="true" class="collapsible__heading collapsible__heading-button kol-details__heading kol-details__heading-button" id="details-heading-nonce" tabindex="-1">
-        <strong class="collapsible__heading kol-details__heading kol-headline kol-headline--single kol-headline--strong">
+        <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -92,7 +92,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=true 
   <template shadowrootmode="open">
     <details class="collapsible collapsible--disabled collapsible--open kol-details" open="">
       <summary aria-controls="details-control-nonce" aria-disabled="true" class="collapsible__heading collapsible__heading-button kol-details__heading kol-details__heading-button" id="details-heading-nonce" tabindex="-1">
-        <strong class="collapsible__heading kol-details__heading kol-headline kol-headline--single kol-headline--strong">
+        <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -121,7 +121,7 @@ exports[`kol-details should render with _label="Zusammenfassung" _level=3 1`] = 
   <template shadowrootmode="open">
     <details class="collapsible kol-details">
       <summary aria-controls="details-control-nonce" class="collapsible__heading collapsible__heading-button kol-details__heading kol-details__heading-button" id="details-heading-nonce">
-        <h3 class="collapsible__heading kol-details__heading kol-headline kol-headline--h3 kol-headline--single">
+        <h3 class="kol-headline kol-headline--h3 kol-headline--single">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -150,7 +150,7 @@ exports[`kol-details should render with _label="Zusammenfassung" 1`] = `
   <template shadowrootmode="open">
     <details class="collapsible kol-details">
       <summary aria-controls="details-control-nonce" class="collapsible__heading collapsible__heading-button kol-details__heading kol-details__heading-button" id="details-heading-nonce">
-        <strong class="collapsible__heading kol-details__heading kol-headline kol-headline--single kol-headline--strong">
+        <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
