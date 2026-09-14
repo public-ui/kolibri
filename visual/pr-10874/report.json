@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 10874,
-	"head": "21f3303c1f052ed5930a9a7311f106fda74f7e1d",
+	"head": "ad12196497aa9b9874dc6648d903c90796fec475",
 	"repository": "public-ui/kolibri",
-	"runId": 34590115790,
-	"generatedAt": "2026-09-11T10:50:32.302Z",
-	"digest": "sha256:d05e4f55eb0444745916a648c62856d3b669e426f988d6e9b9d26fd3d035139c",
+	"runId": 34816426282,
+	"generatedAt": "2026-09-14T07:26:09.868Z",
+	"digest": "sha256:862ec28fa1a80d5b932f2a03f6193bf9251588203ed0f07eecf4d01b5399a5a8",
 	"baseline": {
-		"sha": "b9d2fb4bd87406a0a5a7ebde3e13f04bac1f799f",
+		"sha": "001397bfb129145fb73dde65aea2cea320386e49",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -19,7 +19,7 @@
 	"summary": {
 		"unchanged": 2856,
 		"changed": 0,
-		"added": 0,
+		"added": 7,
 		"removed": 0,
 		"error": 0
 	},
@@ -30,12 +30,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "b9d2fb4bd87406a0a5a7ebde3e13f04bac1f799f",
+					"sha": "001397bfb129145fb73dde65aea2cea320386e49",
 					"ref": "develop",
-					"runId": 34586095611,
+					"runId": 34812948221,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-11T09:56:07.592Z",
+					"createdAt": "2026-09-14T06:26:10.242Z",
 					"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
 					"fallback": null,
 					"distance": 0,
@@ -45,11 +45,11 @@
 			"summary": {
 				"unchanged": 408,
 				"changed": 0,
-				"added": 0,
+				"added": 1,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
+			"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2278,6 +2278,13 @@
 					"hash": "sha256:fc10b0f338637b23f62c6608cb7cd811ccbb3f597d31883d3240f401aa29bbd1"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table/state-columns",
+					"status": "added",
+					"hash": "sha256:c5a274e5b88395bb76727f50687c0cf3f6586f62a67b6554ac49a7df74d04a88",
+					"actual": "test-tag-name-transformer/table-state-columns--action-columns.actual.png"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -2509,12 +2516,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "b9d2fb4bd87406a0a5a7ebde3e13f04bac1f799f",
+					"sha": "001397bfb129145fb73dde65aea2cea320386e49",
 					"ref": "develop",
-					"runId": 34586095611,
+					"runId": 34812948221,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-11T09:55:55.880Z",
+					"createdAt": "2026-09-14T06:25:22.888Z",
 					"digest": "sha256:fc68cf665148adebbb05128ea9fc331784019547afbef67e54a4f06342a0a15f",
 					"fallback": null,
 					"distance": 0,
@@ -2524,11 +2531,11 @@
 			"summary": {
 				"unchanged": 408,
 				"changed": 0,
-				"added": 0,
+				"added": 1,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:fc68cf665148adebbb05128ea9fc331784019547afbef67e54a4f06342a0a15f",
+			"digest": "sha256:fd2ad1a7ece66d77e5a6a2319081ed15087fc48a67ecfe6c1050005784381570",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4757,6 +4764,13 @@
 					"hash": "sha256:b8e86a100f084d0a8b7497b0c78d07751a782a4939d833c4f791ec00e68b7051"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table/state-columns",
+					"status": "added",
+					"hash": "sha256:f595b1c9250387ca215c76d5a95bbb77554cac90efbe249302441f1d35318674",
+					"actual": "theme-bwst/table-state-columns--action-columns.actual.png"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -4988,12 +5002,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "b9d2fb4bd87406a0a5a7ebde3e13f04bac1f799f",
+					"sha": "001397bfb129145fb73dde65aea2cea320386e49",
 					"ref": "develop",
-					"runId": 34586095611,
+					"runId": 34812948221,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-11T09:56:07.592Z",
+					"createdAt": "2026-09-14T06:26:10.242Z",
 					"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
 					"fallback": null,
 					"distance": 0,
@@ -5003,11 +5017,11 @@
 			"summary": {
 				"unchanged": 408,
 				"changed": 0,
-				"added": 0,
+				"added": 1,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
+			"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7236,6 +7250,13 @@
 					"hash": "sha256:fc10b0f338637b23f62c6608cb7cd811ccbb3f597d31883d3240f401aa29bbd1"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table/state-columns",
+					"status": "added",
+					"hash": "sha256:c5a274e5b88395bb76727f50687c0cf3f6586f62a67b6554ac49a7df74d04a88",
+					"actual": "theme-default/table-state-columns--action-columns.actual.png"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -7467,12 +7488,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "b9d2fb4bd87406a0a5a7ebde3e13f04bac1f799f",
+					"sha": "001397bfb129145fb73dde65aea2cea320386e49",
 					"ref": "develop",
-					"runId": 34586095611,
+					"runId": 34812948221,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-11T09:54:50.346Z",
+					"createdAt": "2026-09-14T06:24:28.340Z",
 					"digest": "sha256:5c0a5b99732279589877caab16b44f567d5d2d3d1e487cbf90dd5fa9b3b6374e",
 					"fallback": null,
 					"distance": 0,
@@ -7482,11 +7503,11 @@
 			"summary": {
 				"unchanged": 408,
 				"changed": 0,
-				"added": 0,
+				"added": 1,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:5c0a5b99732279589877caab16b44f567d5d2d3d1e487cbf90dd5fa9b3b6374e",
+			"digest": "sha256:09475be628c62c2a5a2675a2b520b1930068ab529c1d39ba5eaa2d714e57a906",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9715,6 +9736,13 @@
 					"hash": "sha256:adb7cd4008f396c7d6ad283c918dd39c98bb57ef5b6aa928e41dae5f40c2edac"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table/state-columns",
+					"status": "added",
+					"hash": "sha256:940fb57699ea3ff827189577154b5049db9b84e1441221a6ebe96e714c3e04ae",
+					"actual": "theme-desy/table-state-columns--action-columns.actual.png"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -9946,12 +9974,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "b9d2fb4bd87406a0a5a7ebde3e13f04bac1f799f",
+					"sha": "001397bfb129145fb73dde65aea2cea320386e49",
 					"ref": "develop",
-					"runId": 34586095611,
+					"runId": 34812948221,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-11T09:54:46.929Z",
+					"createdAt": "2026-09-14T06:25:26.385Z",
 					"digest": "sha256:d4dcbe406222e7b43ca517f01c1a971dc4b58ce482f7ba352dbbd17521983496",
 					"fallback": null,
 					"distance": 0,
@@ -9961,11 +9989,11 @@
 			"summary": {
 				"unchanged": 408,
 				"changed": 0,
-				"added": 0,
+				"added": 1,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:d4dcbe406222e7b43ca517f01c1a971dc4b58ce482f7ba352dbbd17521983496",
+			"digest": "sha256:b65ff5021ad03982b5c241ea5b68cd2ee6b0450a906fb18c773b47a33bae4fd5",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12194,6 +12222,13 @@
 					"hash": "sha256:d377e35d35afced7ed97c45cc364c920e94cc581ed368595256d0ae01b2d3768"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table/state-columns",
+					"status": "added",
+					"hash": "sha256:8084c74e7d102fa9d90863b0f40f6a758e23cb906628a6f09ccb3d53dec29bbb",
+					"actual": "theme-ecl/table-state-columns--action-columns.actual.png"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -12425,12 +12460,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "b9d2fb4bd87406a0a5a7ebde3e13f04bac1f799f",
+					"sha": "001397bfb129145fb73dde65aea2cea320386e49",
 					"ref": "develop",
-					"runId": 34586095611,
+					"runId": 34812948221,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-11T09:54:59.360Z",
+					"createdAt": "2026-09-14T06:25:18.991Z",
 					"digest": "sha256:6c7c79d591b3d1364b871ce98ccf568f09630e4eeb4ae4d664dad5db1a9f367b",
 					"fallback": null,
 					"distance": 0,
@@ -12440,11 +12475,11 @@
 			"summary": {
 				"unchanged": 408,
 				"changed": 0,
-				"added": 0,
+				"added": 1,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6c7c79d591b3d1364b871ce98ccf568f09630e4eeb4ae4d664dad5db1a9f367b",
+			"digest": "sha256:89ee1de26c68142874dfc31c6de22a67bd507500e1591433ebd8872e061e23de",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14673,6 +14708,13 @@
 					"hash": "sha256:616ff883c4b297130c903b5668717ab009f25a76387caba853ef73e212f2347f"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table/state-columns",
+					"status": "added",
+					"hash": "sha256:729173e3a31528bab98e0b0a0bc51245f6a695f10e54f90c214804441b97182d",
+					"actual": "theme-kern/table-state-columns--action-columns.actual.png"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -14904,12 +14946,12 @@
 			"baseline": {
 				"files": 408,
 				"meta": {
-					"sha": "b9d2fb4bd87406a0a5a7ebde3e13f04bac1f799f",
+					"sha": "001397bfb129145fb73dde65aea2cea320386e49",
 					"ref": "develop",
-					"runId": 34586095611,
+					"runId": 34812948221,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-11T09:54:24.664Z",
+					"createdAt": "2026-09-14T06:25:08.153Z",
 					"digest": "sha256:7ab3d41feafe675c93ded0fd377196a255c191ab7f67f3c587630250d28e87ed",
 					"fallback": null,
 					"distance": 0,
@@ -14919,11 +14961,11 @@
 			"summary": {
 				"unchanged": 408,
 				"changed": 0,
-				"added": 0,
+				"added": 1,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:7ab3d41feafe675c93ded0fd377196a255c191ab7f67f3c587630250d28e87ed",
+			"digest": "sha256:bac0cb3a0f3c0a6cd5900a9367c677660b7e23fefa983b32d43defdfdacb0cc3",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17150,6 +17192,13 @@
 					"route": "table-non-hidable-columns",
 					"status": "unchanged",
 					"hash": "sha256:5c4b25c4d4b094a209422ff84b45b0bda40e98fe1724174cc21398691101e9e3"
+				},
+				{
+					"name": "table-state-columns--action-columns",
+					"route": "table/state-columns",
+					"status": "added",
+					"hash": "sha256:ca10ddb7e60a5ecf5525eee494981b29bb6d1ebb2f9a1684dc71a0a60d50c3ab",
+					"actual": "unstyled/table-state-columns--action-columns.actual.png"
 				},
 				{
 					"name": "table-stateful-async",
