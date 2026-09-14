@@ -5,6 +5,7 @@
 > together with (or ahead of) the work they describe.
 
 Issue: [#9561](https://github.com/public-ui/kolibri/issues/9561) — Skeleton - Accordion
+PR: [#10886](https://github.com/public-ui/kolibri/pull/10886) — **gestapelt auf** [#10884](https://github.com/public-ui/kolibri/pull/10884) (`kol-details`): Branch per `git rebase --onto` auf den Details-Branch gesetzt, PR-Base accordingly; `openProp`/`open.ts` wird aus #10884 wiederverwendet (kein doppelter Add). #10884 zuerst mergen — GitHub retargetet #10886 dann automatisch auf develop.
 Vorbild: [#10884](https://github.com/public-ui/kolibri/pull/10884) (`kol-details`, noch offen,
 Basis dieses Plans) und [#10652](https://github.com/public-ui/kolibri/pull/10652) (`kol-link`,
 gemergt). Disziplin: Skill `.claude/commands/migrate-to-skeleton.md`.
