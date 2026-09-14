@@ -17,10 +17,12 @@ import type { CollapsibleApi, CollapsibleVariant } from './api';
  * maintain by hand. The predecessor nested a `kol-button-wc` inside a heading and reimplemented all
  * of that.
  *
- * The BEM roles map 1:1 onto the predecessor even though the nesting inverted: `<summary>` takes
- * over from the `kol-button-wc` and carries `__heading-button`, while the heading it now contains
- * keeps `__heading`. The inversion is forced — `<summary>` has to be the first child of `<details>`
- * — but it means theme rules keep matching the element they were written for.
+ * The nesting inverts against the predecessor — `<summary>` has to be the first child of
+ * `<details>`, so the heading moved inside the control instead of wrapping it. `<summary>` therefore
+ * carries *both* header element classes: it is the outer box the `__heading` rules were written for
+ * (border, margin) and the control the `__heading-button` rules were written for (padding, focus,
+ * min-size) in one element. Splitting them across the two levels would put outer-edge styling like
+ * `border-bottom` inside the control's padding.
  *
  * The label and icon still render through `SpanFC`, so the `kol-span__container` / `kol-span__label`
  * / `kol-icon` subtree the themes style is unchanged as well.
@@ -48,7 +50,7 @@ export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & Collap
 			<summary
 				aria-controls={controlId}
 				aria-disabled={disabled === true ? 'true' : undefined}
-				class={clsx('collapsible__heading-button', blockBem('heading-button'))}
+				class={clsx('collapsible__heading', blockBem('heading'), 'collapsible__heading-button', blockBem('heading-button'))}
 				id={headingId}
 				onClick={handleToggle}
 				ref={refHeadingButton}
