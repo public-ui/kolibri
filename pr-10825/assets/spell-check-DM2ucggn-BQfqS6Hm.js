@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-BTKH1niD.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
