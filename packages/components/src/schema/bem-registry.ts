@@ -23,6 +23,26 @@ export type KoliBriComponentsBemSchema = {
 	'kol-abbr': {
 		modifiers: null;
 	};
+	'kol-accordion': {
+		elements: {
+			content: {
+				modifiers: null;
+			};
+			heading: {
+				modifiers: null;
+			};
+			'heading-button': {
+				modifiers: null;
+			};
+			wrapper: {
+				modifiers: null;
+			};
+			'wrapper-animation': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-alert': {
 		/**
 		 * Here we define the elements we needed
@@ -338,6 +358,16 @@ const BEM: KoliBriComponentsBemSchema = {
 		modifiers: new Set(['has-smart-button']),
 	},
 	'kol-version': {
+		modifiers: null,
+	},
+	'kol-accordion': {
+		elements: {
+			content: { modifiers: null },
+			heading: { modifiers: null },
+			'heading-button': { modifiers: null },
+			wrapper: { modifiers: null },
+			'wrapper-animation': { modifiers: null },
+		},
 		modifiers: null,
 	},
 	'kol-avatar': {
