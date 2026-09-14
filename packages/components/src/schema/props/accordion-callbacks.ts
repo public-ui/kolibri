@@ -1,28 +1,14 @@
-import type { Generic } from 'adopted-style-sheets';
-import type { Callback } from '../enums';
-import type { EventValueOrEventCallback } from '../types/callbacks';
-import { watchValidator } from '../utils';
+import type { CollapsibleCallbacksPropType, PropCollapsibleCallbacks } from './collapsible-callbacks';
 
 /* types */
-export type AccordionCallbacksPropType<T> = {
-	[Callback.onClick]?: EventValueOrEventCallback<MouseEvent, T>;
-	[Callback.onToggle]?: EventValueOrEventCallback<MouseEvent, T>;
-};
 
 /**
- * Defines the callback functions for accordion events.
+ * @deprecated Use `CollapsibleCallbacksPropType` instead. `kol-accordion` and `kol-details` share
+ * one callback contract; this alias is kept so existing imports keep compiling.
  */
-export type PropAccordionCallbacks<T> = {
-	on: AccordionCallbacksPropType<T>;
-};
+export type AccordionCallbacksPropType<T> = CollapsibleCallbacksPropType<T>;
 
-/* validator */
-export const validateAccordionCallbacks = (component: Generic.Element.Component, value?: AccordionCallbacksPropType<boolean>): void => {
-	watchValidator(
-		component,
-		`_on`,
-		(value) => typeof value === 'object' && value !== null,
-		new Set(['AccordionCallbacksPropType {Events.onClick, Events.onToggle}']),
-		value,
-	);
-};
+/**
+ * @deprecated Use `PropCollapsibleCallbacks` instead.
+ */
+export type PropAccordionCallbacks<T> = PropCollapsibleCallbacks<T>;
