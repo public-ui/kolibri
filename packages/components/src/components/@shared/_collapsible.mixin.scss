@@ -4,6 +4,53 @@
 
 @layer kol-component {
 	.collapsible {
+		/* `<details>` is a block box by default; the predecessor root was a plain div. */
+		display: block;
+
+		/*
+		 * `<summary>` replaces the `kol-button-wc` the predecessor nested inside the heading, so it
+		 * has to carry the box that `kol-button-styles` used to contribute: the flex container, the
+		 * accessible minimum size and the baseline box.
+		 *
+		 * The native disclosure marker is replaced by the component's own chevron icon. A flex
+		 * `<summary>` is no longer a `list-item` and drops the marker on its own in current
+		 * browsers; `list-style` and the two pseudo-elements cover the rest.
+		 */
+		&__heading-button {
+			display: flex;
+			min-height: var(--a11y-min-size);
+			cursor: pointer;
+			list-style: none;
+			text-decoration-line: none;
+
+			&::-webkit-details-marker {
+				display: none;
+			}
+
+			&::marker {
+				content: '';
+			}
+
+			/* A flex container only exposes a baseline if it has an in-flow text box to derive one
+			   from; without it the surrounding inline formatting context falls back to the bottom
+			   margin edge and everything after the element shifts by 1px. Same rationale as the
+			   zero-width space in `kol-button-styles`. */
+			&::before {
+				content: '\200B';
+			}
+		}
+
+		/* The heading moved inside the summary, so it is the flex item that has to fill the row —
+		   it used to be the block-level parent of the button. */
+		&__heading-button > &__heading {
+			flex: 1;
+			text-align: left;
+		}
+
+		&--disabled &__heading-button {
+			cursor: default;
+		}
+
 		@media (prefers-reduced-motion) {
 			&__wrapper-animation,
 			&__wrapper {
@@ -53,10 +100,11 @@
 		}
 
 		/*
-        * Inside a button, the caption text is always centered.
-        * So we have to align the text to the left.
+        * The label used to sit inside a button, where the caption text is centered.
+        * `<summary>` does not center it, but the alignment is kept so themes that relied
+        * on it are unaffected.
         */
-		&__heading-button button {
+		&__heading-button {
 			.kol-span {
 				align-items: flex-start;
 
