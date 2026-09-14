@@ -1,0 +1,1 @@
+import"./index-COpPJAXA.js";import{r as e}from"./align-DnuTHmUs-Ds31we6H.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
