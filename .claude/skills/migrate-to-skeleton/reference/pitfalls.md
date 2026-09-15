@@ -44,13 +44,17 @@ Keine redundanten `@param {string}` / `@returns {void}`-Annotationen. Die TypeSc
 Quelle der Wahrheit. JSDoc bleibt nur, wo Stencil-Werkzeuge es auslesen (`@Prop`, `@Event`,
 `@Method`) — dort ist der Text Teil der veröffentlichten Doku und wird unverändert übernommen.
 
-## 8. Transitionales `-wc`-Tag ohne Selektor-Migration ersetzen
+## 8. Transitionale `-wc`-Tags: Render-FCs sind der Standard, das Tag die begründete Ausnahme
 
-Der Fallstrick ist **nicht**, das Tag zu ersetzen — das ist das Ziel (SKILL.md § 6, „Transitionale
-`-wc`-Tags beim Konsumenten ablösen"). Der Fallstrick ist, es zu ersetzen, ohne die Selektoren
-mitzunehmen.
+Standard (Owner-Entscheid 2026-09-15): Eine migrierte Komponente rendert in ihrer Render-Funktion
+die neuen Render-FunctionalComponents — `ButtonFC` statt `KolButtonWcTag`, `LinkFC` statt
+`KolLinkWcTag`. Die Prop-Orchestrierung des ersetzten Tags (Prop-Factories, Tooltip-Behavior,
+Refs) wandert an den renderenden WC oder einen FC-eigenen Fabrik-Typ
+(Vorbild: `internal/functional-components/breadcrumb/link-item.ts`).
 
-Heute trägt der Wrapper die Consumer-Klasse als **Vorfahr** des Blocks:
+Der Fallstrick ist also **nicht**, das Tag zu ersetzen — das ist das Ziel (SKILL.md § 6,
+„Transitionale `-wc`-Tags beim Konsumenten ablösen"). Der Fallstrick ist, es zu ersetzen, ohne die
+Selektoren mitzunehmen. Heute trägt der Wrapper die Consumer-Klasse als **Vorfahr** des Blocks:
 
 ```html
 <kol-details-heading class="kol-details__heading-button"> <div class="kol-button">…</div></kol-details-heading>
@@ -64,11 +68,15 @@ stillschweigend nicht mehr, ohne Fehler, ohne roten Unit-Test. Nur der Pixel-Che
 
 Also: vor dem Ersetzen `packages/themes/*/src` und das Components-SCSS nach der Tag-Klasse greppen,
 die Treffer nach `zero-visual-delta-handoff/SKILL.md` § 6b sortieren und theme-lokal mitmigrieren,
-danach das Pixel-Gate je Theme.
+danach das Pixel-Gate je Theme. Lassen sich die Selektoren FC-gleich umschalten (Wrapper-Klasse am
+FC-Wurzelknoten, siehe Fallstrick zum `class`-Forwarding), wird das Tag ersetzt; nur wenn das nicht
+möglich ist — oder der FC eine Orchestrierung verlangt, die der migrierte WC nicht hat
+(Vorprüfung 1 in SKILL.md § 6) —, bleibt das `-wc`-Tag stehen. Dann ist das eine **im PR-Text
+benannte** Ausnahme, keine stille Auslassung.
 
-Bleibt das Tag stehen — weil der FC eine Orchestrierung verlangt, die der migrierte WC nicht hat
-(Vorprüfung 1 in SKILL.md § 6) —, ist das eine **benannte** offene Arbeit in PR-Text und
-Companion-Plan, keine stille Auslassung.
+Zusätzlich sicherstellen: Der FC reicht ein empfangenes `class`-Prop an seinen Wurzelknoten weiter
+(BemRootNodeFC-Contract), sonst gehen Consumer-Klassen stillschweigend verloren.
+**Null visuelle Abweichung schlägt weiterhin architektonische Reinheit.**
 
 ## 9. `FunctionalComponentProps` ist ein StrictFields-Vertrag
 

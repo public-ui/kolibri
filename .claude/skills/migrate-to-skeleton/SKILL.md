@@ -166,13 +166,14 @@ pnpm --filter @public-ui/components build
 
 **Pixel-Gate.** Eine Skeleton-Migration baut das DOM um — grüne Unit-Tests sind dafür kein Nachweis. Die visuelle Abnahme läuft über den Companion-Skill **`zero-visual-delta-handoff`**: null geänderte Snapshot-Bilder gegen den Base-Branch, geprüft im Docker-Lauf (`node scripts/snapshots-docker.mjs <theme> --check`). Ohne Docker wird die visuelle Prüfung nicht durch lokale Playwright-Läufe ersetzt, sondern als offene Arbeit dokumentiert und übergeben.
 
-Durchgeführte Beispiele mit Befunden und Stolperstellen: `.claude/plans/migrate-kol-button-skeleton.md`, `.claude/plans/migrate-kol-link-skeleton-2th.md`.
-
 ## 8. Konventionen
 
 - `shadow: true` für Web Components.
 - Kein `class`-Attribut am `<Host>`.
 - Externe Props mit Unterstrich (`_name`, `_label`).
+- **Render-Funktionen nutzen die Render-FunctionalComponents**: Rendert eine Komponente weitere Komponenten, geschieht das über die neuen FCs (`ButtonFC` statt `KolButtonWcTag`, `LinkFC` statt `KolLinkWcTag`) — wann immer möglich. Die Prop-Orchestrierung des ersetzten Tags (Prop-Factories, Behaviors, Refs) wandert an den renderenden WC oder einen FC-eigenen Fabrik-Typ (Vorbild: `internal/functional-components/breadcrumb/link-item.ts`). Nur wenn Theme-/Basis-Selektoren den Host-Knoten des `-wc`-Tags als Vorfahren brauchen und sich nicht FC-gleich schalten lassen, bleibt das Tag als begründete Ausnahme stehen (Fallstrick 8).
+- **Keine Arbeitspläne einchecken**: Pläne sind lokale Arbeitsdokumente (ungetrackt, z. B. `.claude/plans/` im Arbeitsverzeichnis) und gehören nicht in Branch oder PR. Dauerhaft relevantes Wissen wird stattdessen in `reference/pitfalls.md` und diesem Skill destilliert.
+- **Kommentare sind kurz, klar und zukunftsrelevant**: Ein Kommentar erklärt eine Einschränkung oder ein Warum, das der Code nicht selbst zeigt — niemals die Entstehungsgeschichte oder den Diff. Ein „der Vorgänger tat X“ steht nur zusammen mit dem Grund, warum das heute noch gilt.
 - Tests ko-lokalisiert bei den Komponentendateien; kein `data-testid` im Markup — stabile BEM-Selektoren verwenden (ARC42 DD13/DD14).
 - Keine neuen Barrel-Dateien.
 - ARIA-Referenz-IDs (`aria-controls`, `aria-labelledby`, `aria-describedby`, `aria-owns`) müssen pro Instanz eindeutig sein — `createUniqueId('prefix')` bzw. `createRelatedUniqueId(baseId, 'suffix')` aus `utils/dev.utils` (ARC42 DD12).
@@ -187,6 +188,8 @@ Durchgeführte Beispiele mit Befunden und Stolperstellen: `.claude/plans/migrate
 - [ ] Watcher wenden die Prop-Factory inline an: `xxxProp.apply(value, (v) => this.setRenderProp('xxx', v))`
 - [ ] Behavior (falls vorhanden) erbt `BaseBehavior<Api>`, implementiert `BehaviorInterface<Api>`, wird über `this.stateAccess` oder begründet über `BaseWebComponent.stateLess` komponiert — inkl. `componentDidRender`-Sync und `disconnectedCallback`-Teardown
 - [ ] FC ist zustandslos und kapselt seinen Wurzelknoten in `BemRootNodeFC`
+- [ ] Die Render-Funktion nutzt durchgängig die Render-FunctionalComponents (`ButtonFC` statt `KolButtonWcTag`, …); ein beibehaltenes `-wc`-Tag ist als Ausnahme begründet (Fallstrick 8)
+- [ ] Kein Arbeitsplan eingecheckt; Kommentare sind kurz, klar und zukunftsrelevant
 - [ ] `<Host>` ohne redundantes `class`-Attribut
 - [ ] Öffentliche `@Prop`/`@Method`-Oberfläche identisch zum Vorgänger, in `public-api.spec.ts` festgenagelt, Schema-`*Props`-Interface implementiert
 - [ ] Transitionale `kol-*-wc`-Tags im gerenderten Markup geprüft: abgelöst, oder mit Begründung als offene Arbeit benannt

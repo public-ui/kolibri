@@ -109,6 +109,29 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'disabled' | 'hide-label' | 'inline' | 'standalone'>;
 	};
+	'kol-breadcrumb': {
+		elements: {
+			icon: {
+				modifiers: null;
+			};
+			link: {
+				modifiers: null;
+			};
+			list: {
+				modifiers: null;
+			};
+			'list-element': {
+				modifiers: null;
+			};
+			'list-element-span': {
+				modifiers: null;
+			};
+			separator: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-icon': {
 		elements: {
 			icon: {
@@ -295,6 +318,17 @@ const BEM: KoliBriComponentsBemSchema = {
 			tooltip: { modifiers: null },
 		},
 		modifiers: new Set(['disabled', 'hide-label', 'inline', 'standalone']),
+	},
+	'kol-breadcrumb': {
+		elements: {
+			icon: { modifiers: null },
+			link: { modifiers: null },
+			list: { modifiers: null },
+			'list-element': { modifiers: null },
+			'list-element-span': { modifiers: null },
+			separator: { modifiers: null },
+		},
+		modifiers: null,
 	},
 	'kol-icon': {
 		elements: {
