@@ -1,11 +1,13 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { getFeatureFlag } from 'adopted-style-sheets';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { CollapsibleApi } from '../../internal/functional-components/collapsible/api';
 import { collapsiblePropsConfig } from '../../internal/functional-components/collapsible/api';
 import { CollapsibleFC } from '../../internal/functional-components/collapsible/component';
-import { createCollapsibleDisclosure, createCollapsibleToggleHandler } from '../../internal/functional-components/collapsible/disclosure';
+import { createCollapsibleOpenAnimation, DEFAULT_COLLAPSIBLE_TRANSITION_MS } from '../../internal/functional-components/collapsible/open-animation';
+import { createCollapsibleToggleHandler } from '../../internal/functional-components/collapsible/toggle-handler';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { collapsibleCallbacksProp, disabledProp, labelProp, levelProp, openProp } from '../../internal/props';
 import type {
@@ -46,7 +48,8 @@ export class KolAccordion
 
 	private hasLoaded = false;
 
-	private readonly disclosure = createCollapsibleDisclosure({
+	private readonly openAnimation = createCollapsibleOpenAnimation({
+		getTransitionMs: () => this.transitionMs,
 		setDetailsOpen: (value) => (this.detailsOpen = value),
 		setExpanded: (value) => (this.expanded = value),
 	});
@@ -57,11 +60,13 @@ export class KolAccordion
 	@State() public detailsOpen: boolean = false;
 	@State() public expanded: boolean = false;
 	@State() public headingId: string = createRelatedUniqueId(this.accordionId, 'heading');
+	@State() public transitionMs: number = DEFAULT_COLLAPSIBLE_TRANSITION_MS;
 
 	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
 		this.initRenderProps(collapsiblePropsConfig);
+		this.transitionMs = getFeatureFlag('collapsibleTransitionMs', this.host) ?? DEFAULT_COLLAPSIBLE_TRANSITION_MS;
 
 		this.watchDisabled(this._disabled);
 		this.watchLabel(this._label);
@@ -75,7 +80,7 @@ export class KolAccordion
 	}
 
 	public disconnectedCallback(): void {
-		this.disclosure.dispose();
+		this.openAnimation.dispose();
 	}
 
 	// --- Event handling ---
@@ -125,6 +130,7 @@ export class KolAccordion
 					on={this.getRenderProp('on')}
 					open={this.getRenderProp('open')}
 					refHeadingButton={this.ctaRef}
+					transitionMs={this.transitionMs}
 				>
 					<slot />
 				</CollapsibleFC>
@@ -181,7 +187,7 @@ export class KolAccordion
 			this.setRenderProp('open', v);
 			/* The very first pass runs during componentWillLoad: render the final state straight
 			   away instead of animating into it. */
-			this.disclosure.syncOpen(v, this.hasLoaded);
+			this.openAnimation.syncOpen(v, this.hasLoaded);
 		});
 	}
 }

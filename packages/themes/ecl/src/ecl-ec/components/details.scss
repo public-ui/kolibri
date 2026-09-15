@@ -6,10 +6,8 @@
 	.kol-details {
 		--detail-icon-rotate: rotate(180deg);
 
-		/* `<summary>` replaced the `kol-button-wc`: it plays the role of `.kol-button`, and the
-		   label span plays the role of `.kol-button__text`, so the box `button.scss` puts on
-		   `__text` is reproduced here. */
-		&__heading-button {
+		/* The summary is the ghost button; the label span carries the button's text box. */
+		&__heading {
 			width: max-content;
 
 			@include ghost-button('kol-button');
@@ -36,19 +34,16 @@
 				}
 			}
 
-			/* `@include button()` at the top of this file pulls the ecl icon mixin in with it, and that
-			   mixin rotates the chevron by 90 degrees from
-			   `.kol-icon[class*=' kolicon-'].kolicon-chevron-right` — same layer, same file, three
-			   weights. The predecessor drew its third weight from the `.kol-button` level it nested in;
-			   with the button gone this rule has to carry that weight itself, otherwise the state
-			   rotation never lands and every chevron keeps pointing right. */
+			/* Three class weights: the icon mixin included via `button()` above rotates the chevron by
+			   90 degrees at `.kol-icon[class*=' kolicon-'].kolicon-chevron-right`, and this rule has to
+			   outrank it. */
 			.kol-span__container .kol-span__icon--left {
 				transform: var(--detail-icon-rotate);
 				transition: transform 0.3s ease-in-out;
 			}
 		}
 
-		&.collapsible--open {
+		&--open {
 			--detail-icon-rotate: rotate(0);
 		}
 

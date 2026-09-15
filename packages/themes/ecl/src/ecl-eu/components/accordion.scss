@@ -2,6 +2,8 @@
 
 @layer kol-theme-component {
 	.kol-accordion {
+		$root: &;
+
 		box-shadow:
 			0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
 			0 0 to-rem(10) rgb(9 49 142 / 4%),
@@ -15,14 +17,8 @@
 			outline-offset: -1px;
 		}
 
+		/* The decorative bar uses `::before`, which overrides the component layer's baseline pseudo. */
 		&__heading {
-			font-size: 2em;
-		}
-
-		/* `<summary>` replaced the `kol-button-wc`, so the button box moves onto the summary and
-		   `.kol-button__text` becomes the plain label span. The decorative bar keeps `::before`;
-		   the component layer's baseline `::before` on the same element is overridden by it. */
-		&__heading-button {
 			color: #171a22;
 			border-radius: 8px;
 			border-bottom-color: #cfdaf5;
@@ -35,6 +31,7 @@
 			font:
 				normal normal 400 to-rem(18) / to-rem(28) arial,
 				sans-serif;
+			font-size: 2em;
 			line-height: 1.2;
 			border: 0;
 			border-bottom-style: solid;
@@ -88,7 +85,7 @@
 			-webkit-margin-start: 0;
 		}
 
-		.collapsible--open &__heading-button {
+		&--open &__heading {
 			border-start-end-radius: to-rem(8);
 			border-start-start-radius: to-rem(8);
 
@@ -97,7 +94,7 @@
 			}
 		}
 
-		:not(.collapsible--open) &__heading-button .kol-icon::before {
+		&:not(#{$root}--open) &__heading .kol-icon::before {
 			content: '\f078';
 		}
 	}
