@@ -53,7 +53,7 @@ import { KolTreeItemWc } from './tree-item/component';
 import { KolTreeItem } from './tree-item/shadow';
 import { KolTreeWc } from './tree/component';
 import { KolTree } from './tree/shadow';
-import { KolVersion } from './version/shadow';
+import { KolVersion } from './version/component';
 
 export const COMPONENTS = [
 	KolAbbr,
