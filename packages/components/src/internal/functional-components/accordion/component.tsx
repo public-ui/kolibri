@@ -3,24 +3,23 @@ import { h } from '@stencil/core';
 
 import { CollapsibleFC } from '../collapsible/component';
 import type { FunctionalComponentProps } from '../generic-types';
-import type { DetailsApi } from './api';
+import type { AccordionApi } from './api';
 
 /**
- * Renders the details component as a single BEM root via the shared collapsible shell
- * (block, fixed icon and `indented-text` content class are the details-specific parts).
+ * Renders the accordion component as a single BEM root via the shared collapsible shell
+ * (block and the open-dependent chevron icon are the accordion-specific parts).
  */
-export const DetailsFC: FC<FunctionalComponentProps<DetailsApi>> = (
+export const AccordionFC: FC<FunctionalComponentProps<AccordionApi>> = (
 	{ controlId, disabled, handleToggle, headingId, label, level, open, refHeadingButton },
 	children,
 ) => (
 	<CollapsibleFC
-		block="kol-details"
-		contentClass="indented-text"
+		block="kol-accordion"
 		controlId={controlId}
 		disabled={disabled}
 		handleToggle={handleToggle}
 		headingId={headingId}
-		icon="kolicon-chevron-right"
+		icon={open ? 'kolicon-chevron-down' : 'kolicon-chevron-right'}
 		label={label}
 		level={level}
 		open={open}

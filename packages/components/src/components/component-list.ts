@@ -1,5 +1,5 @@
 import { KolAbbr } from './abbr/component';
-import { KolAccordion } from './accordion/shadow';
+import { KolAccordion } from './accordion/component';
 import { KolAlertWc } from './alert/component';
 import { KolAlert } from './alert/shadow';
 import { KolAvatar } from './avatar/component';

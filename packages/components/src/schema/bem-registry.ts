@@ -23,6 +23,26 @@ export type KoliBriComponentsBemSchema = {
 	'kol-abbr': {
 		modifiers: null;
 	};
+	'kol-accordion': {
+		elements: {
+			content: {
+				modifiers: null;
+			};
+			heading: {
+				modifiers: null;
+			};
+			'heading-button': {
+				modifiers: null;
+			};
+			wrapper: {
+				modifiers: null;
+			};
+			'wrapper-animation': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-alert': {
 		/**
 		 * Here we define the elements we needed
@@ -256,6 +276,16 @@ const BEM: KoliBriComponentsBemSchema = {
 			container: { modifiers: null },
 		},
 		modifiers: new Set(['hasCloser', 'type-default', 'type-error', 'type-info', 'type-success', 'type-warning', 'variant-card', 'variant-msg']),
+	},
+	'kol-accordion': {
+		elements: {
+			content: { modifiers: null },
+			heading: { modifiers: null },
+			'heading-button': { modifiers: null },
+			wrapper: { modifiers: null },
+			'wrapper-animation': { modifiers: null },
+		},
+		modifiers: null,
 	},
 	'kol-avatar': {
 		elements: {
