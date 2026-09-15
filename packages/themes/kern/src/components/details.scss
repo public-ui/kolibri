@@ -6,10 +6,7 @@
 		border-bottom: 1px solid var(--kern-color-action-default);
 		border-top: 1px solid var(--kern-color-action-default);
 
-		/* `<summary>` replaced the `kol-button-wc`: the wrapper and its interactive element are one
-		   element now, and `disabled` is expressed as `aria-disabled`. Scoped to the block — the
-		   predecessor styled `.kol-button` globally from this file. */
-		&__heading-button {
+		&__heading {
 			color: var(--kern-color-action-default);
 			min-height: var(--a11y-min-size);
 			padding: var(--kern-metric-space-small) 0;
@@ -33,7 +30,7 @@
 			padding-left: var(--kern-metric-space-large);
 		}
 
-		&.collapsible--open &__wrapper {
+		&--open &__wrapper {
 			padding-top: var(--kern-metric-space-small);
 			padding-bottom: var(--kern-metric-space-small);
 		}

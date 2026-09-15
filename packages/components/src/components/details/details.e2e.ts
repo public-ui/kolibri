@@ -89,7 +89,7 @@ test.describe('kol-details', () => {
 			await page.setContent('<kol-details _label="Details">Expandable content</kol-details>');
 			const summary = page.locator('summary');
 			const details = page.locator('details');
-			const content = page.locator('.collapsible__content');
+			const content = page.locator('.kol-details__content');
 
 			/* The expanded state is the native `open` attribute on `<details>` — no hand-maintained
 			   aria-expanded to keep in sync. */

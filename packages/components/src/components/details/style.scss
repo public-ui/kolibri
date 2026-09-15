@@ -5,20 +5,15 @@
 @use '../@shared/icon.mixin' as *;
 
 @layer kol-component {
-	/* The button mixin is gone with the `kol-button-wc` the summary replaced; the box it used to
-	   contribute now lives in `collapsible.mixin`. It also emitted `:host { display: inline-block }`,
-	   which outweighed `host-display-block` for this component — kept explicitly so dropping the
-	   mixin stays a structural change and not a layout one. */
+	/* Outweighs `host-display-block`: the details host sizes to its content. */
 	:host {
 		display: inline-block;
 	}
 
+	@include kol-collapsible-styles('kol-details');
 	@include kol-icon-styles();
-	.kol-details {
-		.collapsible--open &__heading-button {
-			.kol-icon {
-				transform: rotate(90deg);
-			}
-		}
+
+	.kol-details--open .kol-details__heading .kol-icon {
+		transform: rotate(90deg);
 	}
 }

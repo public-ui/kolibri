@@ -21,15 +21,14 @@
 
 		&__heading {
 			margin: 0;
+			border-top: 1px solid var(--color-mute-variant);
+			padding-block: to-rem(4);
 
-			/* See accordion.scss — `global.scss` weights `.kol-headline` at 700 from this layer,
-			   which never reached the label while it rendered inside a `<button>`. */
+			/* `global.scss` weights every `.kol-headline` at 700; the details label stays regular. */
 			.kol-headline {
 				font-weight: 400;
 			}
-		}
 
-		&__heading-button {
 			.kol-icon {
 				font-size: to-rem(19.2);
 			}
@@ -50,32 +49,15 @@
 				}
 			}
 
-			/* The ring sits on the summary, which is the focusable control now. */
-			&:focus {
+			&:focus-visible {
 				@include focus-outline;
 				cursor: pointer;
 			}
 		}
-		&:has(:focus-visible) {
-			@include focus-outline;
-		}
 
-		.collapsible__heading {
-			border-top: 1px solid var(--color-mute-variant);
-			padding-block: to-rem(4);
-		}
-
-		.collapsible__wrapper {
+		&__wrapper {
 			border-bottom: 1px solid var(--color-mute-variant);
 			padding-block: to-rem(4);
-		}
-
-		/* A closed `<details>` drops its content subtree from layout, and the wrapper's own box
-		   goes with it. The predecessor kept that box — 4px padding above and below plus the rule,
-		   9px in total — below a collapsed summary, so it is restored on the block itself. */
-		&:not(.collapsible--open) {
-			padding-bottom: to-rem(8);
-			border-bottom: 1px solid var(--color-mute-variant);
 		}
 	}
 }

@@ -2,73 +2,43 @@
 
 /* For animation technique see https://css-tricks.com/css-grid-can-do-auto-height-transitions/ */
 
-@layer kol-component {
-	.collapsible {
-		/* `<details>` is a block box by default; the predecessor root was a plain div. */
-		display: block;
-
-		/*
-		 * `<summary>` replaces the `kol-button-wc` the predecessor nested inside the heading, so it
-		 * has to carry the box that `kol-button-styles` used to contribute: the flex container, the
-		 * accessible minimum size and the baseline box.
-		 *
-		 * The native disclosure marker is replaced by the component's own chevron icon. A flex
-		 * `<summary>` is no longer a `list-item` and drops the marker on its own in current
-		 * browsers; `list-style` and the two pseudo-elements cover the rest.
-		 */
-		&__heading-button {
+/*
+ * Base styles for a collapsible built on `<details>`/`<summary>`: `kol-accordion` and `kol-details`
+ * render the same DOM under their own block, so each includes this mixin with its block name.
+ *
+ * The transition duration comes from the theme's `collapsibleTransitionMs` feature flag, which the
+ * component writes to `--collapsible-transition-duration` on `<details>`.
+ */
+@mixin kol-collapsible-styles($block-classname) {
+	.#{$block-classname} {
+		/* `<summary>` is the toggle control and carries the box of the button it stands in for. */
+		&__heading {
 			display: flex;
 			min-height: var(--a11y-min-size);
 			cursor: pointer;
-			list-style: none;
-			text-decoration-line: none;
 
-			&::-webkit-details-marker {
-				display: none;
-			}
-
-			&::marker {
-				content: '';
-			}
-
-			/* A flex container only exposes a baseline if it has an in-flow text box to derive one
-			   from; without it the surrounding inline formatting context falls back to the bottom
-			   margin edge and everything after the element shifts by a pixel. Same zero-width space
-			   as in `kol-button-styles`.
-			   It sits on the summary, not on the heading: here it inherits the host's typography,
-			   exactly as the `<button>` did. On the heading it would inherit the heading's instead,
-			   and a theme that enlarges headings would grow the whole row with it. */
+			/* Baseline box for the flex container; without it the surrounding inline flow shifts by 1px. */
 			&::before {
 				content: '\200B';
 			}
-		}
 
-		/* The heading moved inside the summary, so it is the flex item that has to fill the row —
-		   it used to be the block-level parent of the button and carried no margin of its own. */
-		&__heading-button > .kol-headline {
-			display: flex;
-			flex: 1;
-			margin: 0;
-			text-align: left;
+			/* The heading fills the row; the label span is the flex container inside it. */
+			> .kol-headline {
+				display: flex;
+				flex: 1;
+				margin: 0;
+				text-align: left;
 
-			/* `.kol-span` was a flex item of the button's interactive element
-			   (`.kol-button__text { flex: 1 0 100% }`). As a plain inline box inside the heading it
-			   would sit in the heading's line box instead and shift the label by a pixel, so the
-			   heading takes over as the flex container. */
-			> .kol-span {
-				flex: 1 0 100%;
+				/* Form controls do not inherit font-weight (see `a11y.scss`); themes weight the label further in. */
+				font-weight: 400;
+
+				> .kol-span {
+					flex: 1 0 100%;
+
+					/* `.kol-span` centres its column (`_global.scss`); the summary label is start-aligned. */
+					align-items: flex-start;
+				}
 			}
-
-			/* `a11y.scss` makes form controls inherit font-family and font-size but deliberately
-			   not font-weight, so the label used to render at the user agent's `400` inside the
-			   `<button>` even though an `<h1>`–`<h6>`/`<strong>` wrapped it. Themes that set a
-			   weight further in (on `__container` or `__label`) still win — and a theme that
-			   weights `.kol-headline` from its own layer has to restore this itself. */
-			font-weight: 400;
-		}
-
-		&--disabled &__heading-button {
-			cursor: default;
 		}
 
 		@media (prefers-reduced-motion) {
@@ -80,17 +50,18 @@
 
 		/* @see https://github.com/public-ui/kolibri/issues/5952 */
 		@media print {
-			:not(.collapsible--open) &__wrapper-animation {
+			&:not(.#{$block-classname}--open) &__wrapper-animation {
 				display: none;
 			}
 		}
+
 		&__wrapper {
 			/* Forces the element into its own GPU compositing layer (via 3D transform). Helps prevent rendering/layout bugs (e.g. #7511) and may improve animation performance. */
 			transform: translateZ(0);
 			display: grid;
 			grid-template-columns: minmax(0, 1fr);
 			grid-template-rows: 0fr;
-			transition: grid-template-rows 0.3s;
+			transition: grid-template-rows var(--collapsible-transition-duration, 0.3s);
 		}
 
 		&__wrapper-animation {
@@ -103,9 +74,9 @@
 			visibility: hidden;
 
 			transition:
-				transform 0.3s,
-				opacity 0.3s,
-				visibility 0.3s;
+				transform var(--collapsible-transition-duration, 0.3s),
+				opacity var(--collapsible-transition-duration, 0.3s),
+				visibility var(--collapsible-transition-duration, 0.3s);
 		}
 
 		&--open &__wrapper {
@@ -119,24 +90,9 @@
 			visibility: visible;
 		}
 
-		/*
-        * The label used to sit inside a button, where the caption text is centered.
-        * `<summary>` does not center it, but the alignment is kept so themes that relied
-        * on it are unaffected.
-        */
-		&__heading-button {
-			.kol-span {
-				align-items: flex-start;
-
-				&__container {
-					text-align: left;
-				}
-			}
+		&--open:focus-within {
+			position: relative;
+			z-index: 100;
 		}
-	}
-
-	.collapsible--open:focus-within {
-		position: relative;
-		z-index: 100;
 	}
 }
