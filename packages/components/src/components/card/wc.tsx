@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 
 import type { CardApi } from '../../internal/functional-components/card/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
@@ -15,26 +15,29 @@ import type {
 	LinkTargetPropType,
 } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
-import { delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { directClick, directFocus } from '../../utils/element-interaction';
 import { BaseCardWebComponent } from './base';
 
 /**
- * The **Card** component is ideal for visually highlighting individual sections of your website. It allows you to structure your content very easily.
+ * Transitional `kol-card-wc` — a `shadow:false` element that renders `CardFC` into the light DOM.
  *
- * The **Card** component consists of a **_title area_** and a **_content area_**.
+ * `kol-dialog` and `kol-drawer` render it inside their own shadow DOM and style the inner
+ * `.kol-card` classes from their stylesheets, which a shadow root would hide. Once both consumers
+ * render `CardFC` directly, this element can be deleted.
  *
- * The **title area** is displayed in a larger font. The **content area** is visually separated from the title area by a horizontal dividing line and is rendered in the default font.
+ * Differences to `kol-card`:
  *
+ * - `@directFocus`/`@directClick`: without a shadow root the interactive element is reached directly.
+ * - `_headingId`, so a consumer can point its own `aria-labelledby` at the card's heading.
+ *
+ * @internal
  * @slot - Allows arbitrary HTML to be inserted into the content area of the card.
  */
 @Component({
-	tag: 'kol-card',
-	styleUrls: {
-		default: './style.scss',
-	},
-	shadow: true,
+	tag: 'kol-card-wc',
+	shadow: false,
 })
-export class KolCard extends BaseCardWebComponent implements CardProps, ClickableElement, FocusableElement, WebComponentInterface<CardApi> {
+export class KolCardWc extends BaseCardWebComponent implements CardProps, ClickableElement, FocusableElement, WebComponentInterface<CardApi> {
 	@Element() protected readonly host?: HTMLKolCardElement;
 
 	// --- Lifecycle ---
@@ -43,6 +46,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 		this.initCardRenderProps();
 
 		this.watchHasCloser(this._hasCloser);
+		this.watchHeadingId(this._headingId);
 		this.watchHref(this._href);
 		this.watchLabel(this._label);
 		this.watchLevel(this._level);
@@ -64,7 +68,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	@delegateFocus('ctaRef')
+	@directFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public async focus(options?: KolFocusOptions): Promise<void> {}
@@ -73,7 +77,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	@delegateClick('ctaRef')
+	@directClick('ctaRef')
 	public async click(): Promise<void> {}
 
 	// --- Render ---
@@ -83,7 +87,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	}
 
 	public render(): JSX.Element {
-		return <Host>{this.renderCardFC()}</Host>;
+		return this.renderCardFC();
 	}
 
 	// --- @State ---
@@ -102,6 +106,16 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	@Watch('_hasCloser')
 	public watchHasCloser(value?: boolean): void {
 		this.applyHasCloser(value);
+	}
+
+	/**
+	 * Defines the ID of the heading element. If not provided, an internal ID will be generated.
+	 * @internal
+	 */
+	@Prop() public _headingId?: string;
+	@Watch('_headingId')
+	public watchHeadingId(value?: string): void {
+		this.applyHeadingId(value);
 	}
 
 	/**

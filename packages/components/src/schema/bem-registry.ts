@@ -78,6 +78,23 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-card': {
+		elements: {
+			'close-button': {
+				modifiers: null;
+			};
+			content: {
+				modifiers: null;
+			};
+			header: {
+				modifiers: null;
+			};
+			link: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-button': {
 		elements: {
 			'interactive-element': {
@@ -259,6 +276,15 @@ const BEM: KoliBriComponentsBemSchema = {
 		elements: {
 			image: { modifiers: null },
 			initials: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-card': {
+		elements: {
+			'close-button': { modifiers: null },
+			content: { modifiers: null },
+			header: { modifiers: null },
+			link: { modifiers: null },
 		},
 		modifiers: null,
 	},

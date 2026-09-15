@@ -1,12 +1,12 @@
-import { KolCardTag } from '../../../core/component-names';
-import type { CardProps } from '../../../schema';
-import { executeSnapshotTests } from '../../../utils/testing';
-import { KolCardWc } from '../component';
-import { KolCard } from '../shadow';
+import { KolCardTag, KolCardWcTag } from '../../core/component-names';
+import type { CardProps } from '../../schema';
+import { executeSnapshotTests } from '../../utils/testing';
+import { KolCard } from './component';
+import { KolCardWc } from './wc';
 
 executeSnapshotTests<CardProps>(
 	KolCardTag,
-	[KolCard, KolCardWc],
+	[KolCard],
 	[
 		{ _label: 'Überschrift' },
 
@@ -38,4 +38,14 @@ executeSnapshotTests<CardProps>(
 		{ _label: 'Überschrift', _href: '#/blank_link', _target: '_blank' },
 		{ _label: 'Überschrift', _href: '#/blank_link', _target: '_blank', _level: 2 },
 	],
+);
+
+/**
+ * The transitional `kol-card-wc` renders the same `CardFC` into the light DOM. Dialog and drawer
+ * depend on that markup, so it is pinned here until both render `CardFC` directly.
+ */
+executeSnapshotTests<CardProps>(
+	KolCardWcTag,
+	[KolCardWc],
+	[{ _label: 'Überschrift' }, { _label: 'Überschrift', _level: 2, _hasCloser: true }, { _label: 'Überschrift', _href: '#/blank_link', _target: '_blank' }],
 );
