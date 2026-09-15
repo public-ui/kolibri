@@ -1,6 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`kol-version should render with _label="1.0.0" 1`] = `<kol-version>
+exports[`kol-version should render with _label="1.0.0" 1`] = `
+<kol-version>
   <template shadowrootmode="open">
     <div class="kol-version">
       <div class="kol-badge" style="background-color: #bec5c9; color: #323537;">
@@ -17,4 +18,5 @@ exports[`kol-version should render with _label="1.0.0" 1`] = `<kol-version>
       </div>
     </div>
   </template>
-</kol-version>`;
+</kol-version>
+`;
