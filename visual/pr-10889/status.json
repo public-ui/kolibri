@@ -1,8 +1,8 @@
 {
 	"schema": 1,
 	"state": "success",
-	"description": "1 visual changes approved by deleonio",
-	"computedAt": "2026-09-15T03:14:18.280Z",
+	"description": "1 visual changes approved by deleonio, BF150",
+	"computedAt": "2026-09-15T08:14:25.220Z",
 	"pr": 10889,
 	"head": "9e9a4d2bf4584fdfacf96f56e019e8555e0df484",
 	"digest": "sha256:05d8eb4f1b5ac6a2cca0cf8df4c5ecf32ea028ce4152e6763a9ac3380a66fb67",
@@ -15,13 +15,14 @@
 		"errorItems": 0
 	},
 	"reviewers": [
-		"deleonio"
+		"deleonio",
+		"BF150"
 	],
 	"items": {
 		"theme-ecl/scenarios-focus-elements-component-badge": {
 			"state": "approved",
 			"notes": [],
-			"by": "deleonio"
+			"by": "BF150"
 		}
 	}
 }
