@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-DiB1rt3M.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
