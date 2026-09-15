@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 10879,
-	"head": "cd283acab77f3a62e83765d2048122f751819044",
+	"head": "aa5f5bc614e33ddb15e1cd2d068178487aa33dd3",
 	"repository": "public-ui/kolibri",
-	"runId": 34920896895,
-	"generatedAt": "2026-09-15T03:24:54.607Z",
-	"digest": "sha256:d05e4f55eb0444745916a648c62856d3b669e426f988d6e9b9d26fd3d035139c",
+	"runId": 34950804907,
+	"generatedAt": "2026-09-15T09:54:40.244Z",
+	"digest": "sha256:51b816e389f3960007da2525cec7f41eb817c552a2e9d729faaa78395435a14d",
 	"baseline": {
-		"sha": "2bcdff1a6d1c858c7bf05441862146fd97935aae",
+		"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -17,7 +17,7 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2856,
+		"unchanged": 2863,
 		"changed": 0,
 		"added": 0,
 		"removed": 0,
@@ -28,28 +28,28 @@
 			"package": "test-tag-name-transformer",
 			"themeDir": "theme-default",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "2bcdff1a6d1c858c7bf05441862146fd97935aae",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34920562880,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T02:41:14.638Z",
-					"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
+					"createdAt": "2026-09-15T09:04:50.115Z",
+					"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
+				"unchanged": 409,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
+			"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2278,6 +2278,12 @@
 					"hash": "sha256:fc10b0f338637b23f62c6608cb7cd811ccbb3f597d31883d3240f401aa29bbd1"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:c5a274e5b88395bb76727f50687c0cf3f6586f62a67b6554ac49a7df74d04a88"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -2507,28 +2513,28 @@
 			"package": "theme-bwst",
 			"themeDir": "theme-bwst",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "2bcdff1a6d1c858c7bf05441862146fd97935aae",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34920562880,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T02:30:08.733Z",
-					"digest": "sha256:fc68cf665148adebbb05128ea9fc331784019547afbef67e54a4f06342a0a15f",
+					"createdAt": "2026-09-15T09:04:58.336Z",
+					"digest": "sha256:fd2ad1a7ece66d77e5a6a2319081ed15087fc48a67ecfe6c1050005784381570",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
+				"unchanged": 409,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:fc68cf665148adebbb05128ea9fc331784019547afbef67e54a4f06342a0a15f",
+			"digest": "sha256:fd2ad1a7ece66d77e5a6a2319081ed15087fc48a67ecfe6c1050005784381570",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4757,6 +4763,12 @@
 					"hash": "sha256:b8e86a100f084d0a8b7497b0c78d07751a782a4939d833c4f791ec00e68b7051"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:f595b1c9250387ca215c76d5a95bbb77554cac90efbe249302441f1d35318674"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -4986,28 +4998,28 @@
 			"package": "theme-default",
 			"themeDir": "theme-default",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "2bcdff1a6d1c858c7bf05441862146fd97935aae",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34920562880,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T02:41:14.638Z",
-					"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
+					"createdAt": "2026-09-15T09:04:50.115Z",
+					"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
+				"unchanged": 409,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
+			"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7236,6 +7248,12 @@
 					"hash": "sha256:fc10b0f338637b23f62c6608cb7cd811ccbb3f597d31883d3240f401aa29bbd1"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:c5a274e5b88395bb76727f50687c0cf3f6586f62a67b6554ac49a7df74d04a88"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -7465,28 +7483,28 @@
 			"package": "theme-desy",
 			"themeDir": "theme-desyv11",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "2bcdff1a6d1c858c7bf05441862146fd97935aae",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34920562880,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T02:39:01.067Z",
-					"digest": "sha256:5c0a5b99732279589877caab16b44f567d5d2d3d1e487cbf90dd5fa9b3b6374e",
+					"createdAt": "2026-09-15T09:05:05.880Z",
+					"digest": "sha256:09475be628c62c2a5a2675a2b520b1930068ab529c1d39ba5eaa2d714e57a906",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
+				"unchanged": 409,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:5c0a5b99732279589877caab16b44f567d5d2d3d1e487cbf90dd5fa9b3b6374e",
+			"digest": "sha256:09475be628c62c2a5a2675a2b520b1930068ab529c1d39ba5eaa2d714e57a906",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9715,6 +9733,12 @@
 					"hash": "sha256:adb7cd4008f396c7d6ad283c918dd39c98bb57ef5b6aa928e41dae5f40c2edac"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:940fb57699ea3ff827189577154b5049db9b84e1441221a6ebe96e714c3e04ae"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -9944,28 +9968,28 @@
 			"package": "theme-ecl",
 			"themeDir": "theme-ecl_ec",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "2bcdff1a6d1c858c7bf05441862146fd97935aae",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34920562880,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T02:35:26.533Z",
-					"digest": "sha256:d4dcbe406222e7b43ca517f01c1a971dc4b58ce482f7ba352dbbd17521983496",
+					"createdAt": "2026-09-15T09:05:01.853Z",
+					"digest": "sha256:b65ff5021ad03982b5c241ea5b68cd2ee6b0450a906fb18c773b47a33bae4fd5",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
+				"unchanged": 409,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:d4dcbe406222e7b43ca517f01c1a971dc4b58ce482f7ba352dbbd17521983496",
+			"digest": "sha256:b65ff5021ad03982b5c241ea5b68cd2ee6b0450a906fb18c773b47a33bae4fd5",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12194,6 +12218,12 @@
 					"hash": "sha256:d377e35d35afced7ed97c45cc364c920e94cc581ed368595256d0ae01b2d3768"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:8084c74e7d102fa9d90863b0f40f6a758e23cb906628a6f09ccb3d53dec29bbb"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -12423,28 +12453,28 @@
 			"package": "theme-kern",
 			"themeDir": "theme-kern_v2",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "2bcdff1a6d1c858c7bf05441862146fd97935aae",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34920562880,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T02:29:08.229Z",
-					"digest": "sha256:6c7c79d591b3d1364b871ce98ccf568f09630e4eeb4ae4d664dad5db1a9f367b",
+					"createdAt": "2026-09-15T09:04:45.032Z",
+					"digest": "sha256:bf3398ea8d2efe2bb84adf85ed0da062d5a843d701a35f5c673bb1f51dc8731a",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
+				"unchanged": 409,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6c7c79d591b3d1364b871ce98ccf568f09630e4eeb4ae4d664dad5db1a9f367b",
+			"digest": "sha256:bf3398ea8d2efe2bb84adf85ed0da062d5a843d701a35f5c673bb1f51dc8731a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13746,7 +13776,7 @@
 					"name": "input-password-show-password-noColumns--show-password",
 					"route": "input-password-show-password-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:286e419fe306ab60ec7af630beaea1e7efb59a1cfbf4490c3f2a1a13ff58dbee"
+					"hash": "sha256:ae25a905486d7b16ec6eb47a6a5e5b15bbdb1ee2096ea9a5922ba6df7d4e36a0"
 				},
 				{
 					"name": "input-radio-basic-noColumns--hide-label-error",
@@ -14106,7 +14136,7 @@
 					"name": "input-text-smart-button-noColumns--disabled",
 					"route": "input-text-smart-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:42214aab09f67a7b8abf56aab38abc8dbd6fe345457703a478ff1540551d5bd8"
+					"hash": "sha256:cb4a0346433eaedbbcf4ef176d3e4cfe9edca207572a2eaa340a7d3c6fc9a216"
 				},
 				{
 					"name": "input-text-smart-button-noColumns--enabled",
@@ -14673,6 +14703,12 @@
 					"hash": "sha256:616ff883c4b297130c903b5668717ab009f25a76387caba853ef73e212f2347f"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:729173e3a31528bab98e0b0a0bc51245f6a695f10e54f90c214804441b97182d"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -14902,28 +14938,28 @@
 			"package": "unstyled",
 			"themeDir": "theme-unstyled",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "2bcdff1a6d1c858c7bf05441862146fd97935aae",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34920562880,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T02:28:26.518Z",
-					"digest": "sha256:7ab3d41feafe675c93ded0fd377196a255c191ab7f67f3c587630250d28e87ed",
+					"createdAt": "2026-09-15T09:04:13.831Z",
+					"digest": "sha256:bac0cb3a0f3c0a6cd5900a9367c677660b7e23fefa983b32d43defdfdacb0cc3",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
+				"unchanged": 409,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:7ab3d41feafe675c93ded0fd377196a255c191ab7f67f3c587630250d28e87ed",
+			"digest": "sha256:bac0cb3a0f3c0a6cd5900a9367c677660b7e23fefa983b32d43defdfdacb0cc3",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17150,6 +17186,12 @@
 					"route": "table-non-hidable-columns",
 					"status": "unchanged",
 					"hash": "sha256:5c4b25c4d4b094a209422ff84b45b0bda40e98fe1724174cc21398691101e9e3"
+				},
+				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:ca10ddb7e60a5ecf5525eee494981b29bb6d1ebb2f9a1684dc71a0a60d50c3ab"
 				},
 				{
 					"name": "table-stateful-async",
