@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 10895,
-	"head": "d61a87814d3a1ab567b4a5f66920d59a0374f368",
+	"head": "a6dc87507e2fc5573bb64012e6114ee49216e907",
 	"repository": "public-ui/kolibri",
-	"runId": 34920182484,
-	"generatedAt": "2026-09-15T03:14:15.041Z",
-	"digest": "sha256:d05e4f55eb0444745916a648c62856d3b669e426f988d6e9b9d26fd3d035139c",
+	"runId": 35001669135,
+	"generatedAt": "2026-09-15T17:45:10.497Z",
+	"digest": "sha256:0e1a15fe8714dcf609fe087182bc6fc59dc60bbb5dde5965f41e3e0f20446bdc",
 	"baseline": {
-		"sha": "1bcd51acc76ab80eba43523b617821c1b3e8c739",
+		"sha": "5d733fe286ef5d2e7d4ef32ae46051102d225ce9",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -18,7 +18,7 @@
 	},
 	"summary": {
 		"unchanged": 2856,
-		"changed": 0,
+		"changed": 7,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -28,28 +28,28 @@
 			"package": "test-tag-name-transformer",
 			"themeDir": "theme-default",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "1bcd51acc76ab80eba43523b617821c1b3e8c739",
+					"sha": "5d733fe286ef5d2e7d4ef32ae46051102d225ce9",
 					"ref": "develop",
-					"runId": 34906184342,
+					"runId": 34975897883,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-14T22:59:11.174Z",
-					"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
+					"createdAt": "2026-09-15T13:41:42.321Z",
+					"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
+				"unchanged": 409,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
+			"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2278,6 +2278,12 @@
 					"hash": "sha256:fc10b0f338637b23f62c6608cb7cd811ccbb3f597d31883d3240f401aa29bbd1"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:c5a274e5b88395bb76727f50687c0cf3f6586f62a67b6554ac49a7df74d04a88"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -2507,28 +2513,28 @@
 			"package": "theme-bwst",
 			"themeDir": "theme-bwst",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "1bcd51acc76ab80eba43523b617821c1b3e8c739",
+					"sha": "5d733fe286ef5d2e7d4ef32ae46051102d225ce9",
 					"ref": "develop",
-					"runId": 34906184342,
+					"runId": 34975897883,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-14T22:59:14.369Z",
-					"digest": "sha256:fc68cf665148adebbb05128ea9fc331784019547afbef67e54a4f06342a0a15f",
+					"createdAt": "2026-09-15T13:42:11.209Z",
+					"digest": "sha256:fd2ad1a7ece66d77e5a6a2319081ed15087fc48a67ecfe6c1050005784381570",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
+				"unchanged": 409,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:fc68cf665148adebbb05128ea9fc331784019547afbef67e54a4f06342a0a15f",
+			"digest": "sha256:fd2ad1a7ece66d77e5a6a2319081ed15087fc48a67ecfe6c1050005784381570",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4757,6 +4763,12 @@
 					"hash": "sha256:b8e86a100f084d0a8b7497b0c78d07751a782a4939d833c4f791ec00e68b7051"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:f595b1c9250387ca215c76d5a95bbb77554cac90efbe249302441f1d35318674"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -4986,28 +4998,28 @@
 			"package": "theme-default",
 			"themeDir": "theme-default",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "1bcd51acc76ab80eba43523b617821c1b3e8c739",
+					"sha": "5d733fe286ef5d2e7d4ef32ae46051102d225ce9",
 					"ref": "develop",
-					"runId": 34906184342,
+					"runId": 34975897883,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-14T22:59:11.174Z",
-					"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
+					"createdAt": "2026-09-15T13:41:42.321Z",
+					"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
+				"unchanged": 409,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8aeae8f65080e331e90a1027bb8e97adc0905283e1b61b941e221d922ca464e8",
+			"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7236,6 +7248,12 @@
 					"hash": "sha256:fc10b0f338637b23f62c6608cb7cd811ccbb3f597d31883d3240f401aa29bbd1"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:c5a274e5b88395bb76727f50687c0cf3f6586f62a67b6554ac49a7df74d04a88"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -7465,28 +7483,28 @@
 			"package": "theme-desy",
 			"themeDir": "theme-desyv11",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "1bcd51acc76ab80eba43523b617821c1b3e8c739",
+					"sha": "5d733fe286ef5d2e7d4ef32ae46051102d225ce9",
 					"ref": "develop",
-					"runId": 34906184342,
+					"runId": 34975897883,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-14T22:58:39.416Z",
-					"digest": "sha256:5c0a5b99732279589877caab16b44f567d5d2d3d1e487cbf90dd5fa9b3b6374e",
+					"createdAt": "2026-09-15T13:41:22.339Z",
+					"digest": "sha256:09475be628c62c2a5a2675a2b520b1930068ab529c1d39ba5eaa2d714e57a906",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 0,
+				"unchanged": 403,
+				"changed": 6,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:5c0a5b99732279589877caab16b44f567d5d2d3d1e487cbf90dd5fa9b3b6374e",
+			"digest": "sha256:6aa2b5aa27339a743410315c0bc3136783c6290618a0265eaa0d6b25fd3e57da",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7502,33 +7520,58 @@
 				},
 				{
 					"name": "alert-basic--default",
-					"route": "alert-basic",
-					"status": "unchanged",
-					"hash": "sha256:f741b70f39b8b404b7ff4708a2f492e33a899758dcf6663cbf292e66fd43ce4c"
+					"route": "alert/basic",
+					"status": "changed",
+					"hash": "sha256:c603246e816bb49c0a31c4aa985c50f73d8c4d1da7f8b2de19a3d38148ccb13f",
+					"diffPixels": 21,
+					"diffRatio": 0.000263,
+					"expected": "theme-desy/alert-basic--default.expected.png",
+					"actual": "theme-desy/alert-basic--default.actual.png",
+					"diff": "theme-desy/alert-basic--default.diff.png"
 				},
 				{
 					"name": "alert-basic--error",
-					"route": "alert-basic",
-					"status": "unchanged",
-					"hash": "sha256:ac790cdac4bf98d621f0ac9bd96795211aaade33d1c3ab195de30f44af44802b"
+					"route": "alert/basic",
+					"status": "changed",
+					"hash": "sha256:04dd938806358ed4bb25fd75882725c37aa9b073146016bfdc85a68dd7872ed5",
+					"diffPixels": 21,
+					"diffRatio": 0.000263,
+					"expected": "theme-desy/alert-basic--error.expected.png",
+					"actual": "theme-desy/alert-basic--error.actual.png",
+					"diff": "theme-desy/alert-basic--error.diff.png"
 				},
 				{
 					"name": "alert-basic--info",
-					"route": "alert-basic",
-					"status": "unchanged",
-					"hash": "sha256:b25f7f99e2da7433d9a213342fa765f794ae657cccabb06b575b02bc2540258b"
+					"route": "alert/basic",
+					"status": "changed",
+					"hash": "sha256:ce5dfda09a26ae396d70ffeaa6e2e43152b66b061273da6dd5c78c22009b225e",
+					"diffPixels": 18,
+					"diffRatio": 0.000225,
+					"expected": "theme-desy/alert-basic--info.expected.png",
+					"actual": "theme-desy/alert-basic--info.actual.png",
+					"diff": "theme-desy/alert-basic--info.diff.png"
 				},
 				{
 					"name": "alert-basic--success",
-					"route": "alert-basic",
-					"status": "unchanged",
-					"hash": "sha256:d074a9fe201912b6c04a75f0b99e04b47e4623a2247a6408b43d2d67cad32a49"
+					"route": "alert/basic",
+					"status": "changed",
+					"hash": "sha256:7749a4f1473bd8c7de0b433b843c0e3ba5ae9de77f2369702e4e9d58c8a51765",
+					"diffPixels": 18,
+					"diffRatio": 0.000225,
+					"expected": "theme-desy/alert-basic--success.expected.png",
+					"actual": "theme-desy/alert-basic--success.actual.png",
+					"diff": "theme-desy/alert-basic--success.diff.png"
 				},
 				{
 					"name": "alert-basic--warning",
-					"route": "alert-basic",
-					"status": "unchanged",
-					"hash": "sha256:3ef3b671b2a0668667bd5c60861d357f8a1c164406bfb44a68f8d78c0251c529"
+					"route": "alert/basic",
+					"status": "changed",
+					"hash": "sha256:e77949f4053b1d3ac1f87861e70f298728bd8b149085170c870dc3f7b673b622",
+					"diffPixels": 18,
+					"diffRatio": 0.000225,
+					"expected": "theme-desy/alert-basic--warning.expected.png",
+					"actual": "theme-desy/alert-basic--warning.actual.png",
+					"diff": "theme-desy/alert-basic--warning.diff.png"
 				},
 				{
 					"name": "alert-card-msg--default",
@@ -7730,9 +7773,14 @@
 				},
 				{
 					"name": "card-basic--basic-320",
-					"route": "card-basic",
-					"status": "unchanged",
-					"hash": "sha256:b3500d4fe83cc104ef25fa7fbe911a1851759ae0185606eeb759b815443f51c1"
+					"route": "card/basic",
+					"status": "changed",
+					"hash": "sha256:04941ef9fffea63fe18212789c48af6701e42def720d11e9c574334f7a87b11e",
+					"diffPixels": 60,
+					"diffRatio": 0.000685,
+					"expected": "theme-desy/card-basic--basic-320.expected.png",
+					"actual": "theme-desy/card-basic--basic-320.actual.png",
+					"diff": "theme-desy/card-basic--basic-320.diff.png"
 				},
 				{
 					"name": "card-headlines--headlines",
@@ -9715,6 +9763,12 @@
 					"hash": "sha256:adb7cd4008f396c7d6ad283c918dd39c98bb57ef5b6aa928e41dae5f40c2edac"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:940fb57699ea3ff827189577154b5049db9b84e1441221a6ebe96e714c3e04ae"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -9944,28 +9998,28 @@
 			"package": "theme-ecl",
 			"themeDir": "theme-ecl_ec",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "1bcd51acc76ab80eba43523b617821c1b3e8c739",
+					"sha": "5d733fe286ef5d2e7d4ef32ae46051102d225ce9",
 					"ref": "develop",
-					"runId": 34906184342,
+					"runId": 34975897883,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-14T22:58:32.147Z",
-					"digest": "sha256:d4dcbe406222e7b43ca517f01c1a971dc4b58ce482f7ba352dbbd17521983496",
+					"createdAt": "2026-09-15T13:40:32.628Z",
+					"digest": "sha256:613c4f134318592964e2915b3338d302a2d42b5309489dbefe7a60b65064501d",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
+				"unchanged": 409,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:d4dcbe406222e7b43ca517f01c1a971dc4b58ce482f7ba352dbbd17521983496",
+			"digest": "sha256:613c4f134318592964e2915b3338d302a2d42b5309489dbefe7a60b65064501d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11819,7 +11873,7 @@
 					"name": "scenarios-focus-elements-component-badge",
 					"route": "scenarios-focus-elements-component-badge",
 					"status": "unchanged",
-					"hash": "sha256:f3b7f58f06599e367ab0a6fb7aa5a31f1ae37fb93c705a3c28b892779e8299b6"
+					"hash": "sha256:cb7e2903889549032a54f93cbabb528dcad14cc9170e75159cacf359a151dc06"
 				},
 				{
 					"name": "scenarios-focus-elements-component-button",
@@ -12194,6 +12248,12 @@
 					"hash": "sha256:d377e35d35afced7ed97c45cc364c920e94cc581ed368595256d0ae01b2d3768"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:8084c74e7d102fa9d90863b0f40f6a758e23cb906628a6f09ccb3d53dec29bbb"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -12423,15 +12483,15 @@
 			"package": "theme-kern",
 			"themeDir": "theme-kern_v2",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "1bcd51acc76ab80eba43523b617821c1b3e8c739",
+					"sha": "5d733fe286ef5d2e7d4ef32ae46051102d225ce9",
 					"ref": "develop",
-					"runId": 34906184342,
+					"runId": 34975897883,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-14T22:58:23.430Z",
-					"digest": "sha256:6c7c79d591b3d1364b871ce98ccf568f09630e4eeb4ae4d664dad5db1a9f367b",
+					"createdAt": "2026-09-15T13:40:48.878Z",
+					"digest": "sha256:bf3398ea8d2efe2bb84adf85ed0da062d5a843d701a35f5c673bb1f51dc8731a",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -12439,12 +12499,12 @@
 			},
 			"summary": {
 				"unchanged": 408,
-				"changed": 0,
+				"changed": 1,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6c7c79d591b3d1364b871ce98ccf568f09630e4eeb4ae4d664dad5db1a9f367b",
+			"digest": "sha256:8ee33a54eea137f40cbb9f037a3979c72457cd8f44ec665925e5946ff0ba1c4f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12688,9 +12748,14 @@
 				},
 				{
 					"name": "card-basic--basic-320",
-					"route": "card-basic",
-					"status": "unchanged",
-					"hash": "sha256:0fcffa277e228429b7b597b3ae351708913e7ddf9cf8e84542b5ad5005fe148c"
+					"route": "card/basic",
+					"status": "changed",
+					"hash": "sha256:73312d43e8aff5ebb14a73098406b91ee5d5284f8d50038d1dcc547538e998fc",
+					"diffPixels": 47,
+					"diffRatio": 0.000706,
+					"expected": "theme-kern/card-basic--basic-320.expected.png",
+					"actual": "theme-kern/card-basic--basic-320.actual.png",
+					"diff": "theme-kern/card-basic--basic-320.diff.png"
 				},
 				{
 					"name": "card-headlines--headlines",
@@ -13746,7 +13811,7 @@
 					"name": "input-password-show-password-noColumns--show-password",
 					"route": "input-password-show-password-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:286e419fe306ab60ec7af630beaea1e7efb59a1cfbf4490c3f2a1a13ff58dbee"
+					"hash": "sha256:ae25a905486d7b16ec6eb47a6a5e5b15bbdb1ee2096ea9a5922ba6df7d4e36a0"
 				},
 				{
 					"name": "input-radio-basic-noColumns--hide-label-error",
@@ -14106,7 +14171,7 @@
 					"name": "input-text-smart-button-noColumns--disabled",
 					"route": "input-text-smart-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:42214aab09f67a7b8abf56aab38abc8dbd6fe345457703a478ff1540551d5bd8"
+					"hash": "sha256:cb4a0346433eaedbbcf4ef176d3e4cfe9edca207572a2eaa340a7d3c6fc9a216"
 				},
 				{
 					"name": "input-text-smart-button-noColumns--enabled",
@@ -14673,6 +14738,12 @@
 					"hash": "sha256:616ff883c4b297130c903b5668717ab009f25a76387caba853ef73e212f2347f"
 				},
 				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:729173e3a31528bab98e0b0a0bc51245f6a695f10e54f90c214804441b97182d"
+				},
+				{
 					"name": "table-stateful-async",
 					"route": "table-stateful-async",
 					"status": "unchanged",
@@ -14902,28 +14973,28 @@
 			"package": "unstyled",
 			"themeDir": "theme-unstyled",
 			"baseline": {
-				"files": 408,
+				"files": 409,
 				"meta": {
-					"sha": "1bcd51acc76ab80eba43523b617821c1b3e8c739",
+					"sha": "5d733fe286ef5d2e7d4ef32ae46051102d225ce9",
 					"ref": "develop",
-					"runId": 34906184342,
+					"runId": 34975897883,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-14T22:58:00.357Z",
-					"digest": "sha256:7ab3d41feafe675c93ded0fd377196a255c191ab7f67f3c587630250d28e87ed",
+					"createdAt": "2026-09-15T13:40:51.751Z",
+					"digest": "sha256:bac0cb3a0f3c0a6cd5900a9367c677660b7e23fefa983b32d43defdfdacb0cc3",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 408,
+				"unchanged": 409,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:7ab3d41feafe675c93ded0fd377196a255c191ab7f67f3c587630250d28e87ed",
+			"digest": "sha256:bac0cb3a0f3c0a6cd5900a9367c677660b7e23fefa983b32d43defdfdacb0cc3",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17150,6 +17221,12 @@
 					"route": "table-non-hidable-columns",
 					"status": "unchanged",
 					"hash": "sha256:5c4b25c4d4b094a209422ff84b45b0bda40e98fe1724174cc21398691101e9e3"
+				},
+				{
+					"name": "table-state-columns--action-columns",
+					"route": "table-state-columns",
+					"status": "unchanged",
+					"hash": "sha256:ca10ddb7e60a5ecf5525eee494981b29bb6d1ebb2f9a1684dc71a0a60d50c3ab"
 				},
 				{
 					"name": "table-stateful-async",
