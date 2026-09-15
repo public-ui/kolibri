@@ -1,48 +1,19 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "7 changed – 0 of 7 approved, review pending",
-	"computedAt": "2026-09-15T17:45:10.982Z",
+	"state": "success",
+	"description": "No visual changes",
+	"computedAt": "2026-09-15T19:15:08.180Z",
 	"pr": 10895,
-	"head": "a6dc87507e2fc5573bb64012e6114ee49216e907",
-	"digest": "sha256:0e1a15fe8714dcf609fe087182bc6fc59dc60bbb5dde5965f41e3e0f20446bdc",
+	"head": "fbf2c145421220e5d0a42bd0150422844951ad99",
+	"digest": "sha256:a8f54aaee6b9ca09315032acca59cef6cf41b28a39402e68b3457223d0124ac7",
 	"counts": {
-		"changes": 7,
-		"open": 7,
+		"changes": 0,
+		"open": 0,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {
-		"theme-desy/alert-basic--default": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/alert-basic--error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/alert-basic--info": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/alert-basic--success": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/alert-basic--warning": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/card-basic--basic-320": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/card-basic--basic-320": {
-			"state": "open",
-			"notes": []
-		}
-	}
+	"items": {}
 }
