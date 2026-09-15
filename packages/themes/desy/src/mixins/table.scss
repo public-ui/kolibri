@@ -100,6 +100,10 @@
 			@include kol-link('kol-link');
 		}
 
+		&__cell-states {
+			gap: to-rem(4);
+		}
+
 		&__sort {
 			display: flex;
 			gap: 0;
