@@ -34,11 +34,17 @@
 				&__label {
 					word-break: keep-all;
 				}
+			}
 
-				&__icon--left {
-					transform: var(--detail-icon-rotate);
-					transition: transform 0.3s ease-in-out;
-				}
+			/* `@include button()` at the top of this file pulls the ecl icon mixin in with it, and that
+			   mixin rotates the chevron by 90 degrees from
+			   `.kol-icon[class*=' kolicon-'].kolicon-chevron-right` — same layer, same file, three
+			   weights. The predecessor drew its third weight from the `.kol-button` level it nested in;
+			   with the button gone this rule has to carry that weight itself, otherwise the state
+			   rotation never lands and every chevron keeps pointing right. */
+			.kol-span__container .kol-span__icon--left {
+				transform: var(--detail-icon-rotate);
+				transition: transform 0.3s ease-in-out;
 			}
 		}
 
