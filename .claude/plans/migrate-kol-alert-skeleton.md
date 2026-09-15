@@ -118,9 +118,15 @@ node scripts/snapshots-docker.mjs <theme> --check && git diff origin/develop..HE
    dabei gefundenen und behobenen Card-/Alert-Closer-Regressionen in Nachtrag 4.
 2. ~~Push~~ — ✅ DONE: Rebase auf develop-Tip 5d733fe286 + alle Fix-Commits auf
    `origin/refactor/migrate-kol-alert-skeleton` (PR #10895) gepusht.
-3. Issue #9562 Status Review: gh-Token ohne project-Scopes, OAuth-Geräte-Flow 2× ohne
+3. ~~CI~~ — ✅ DONE (2026-09-15): alle 20 Checks grün nach dem Fix-Push, inkl. `Visual Review:
+No visual changes` (unabhängige Bestätigung des Docker-Checks über alle 6 Themes),
+   `build-and-check`, `e2e-tests`. PR mergeable, keine Konflikte.
+4. Issue #9562 Status Review: gh-Token ohne project-Scopes, OAuth-Geräte-Flow 2× ohne
    Nutzer-Bestätigung abgelaufen — manueller Schritt beim Owner offen.
-4. PR #10895 ist noch **Draft** — Owner-Entscheidung, ob er auf Ready for Review gestellt wird.
+5. PR #10895 ist noch **Draft** — Undraften (`gh pr ready 10895`) wurde vom Auto-Mode-Classifier
+   als externer Schreibzugriff blockiert; Owner muss das manuell im PR oder mit `gh pr ready 10895`
+   ausführen, sobald er den finalen Stand für review-reif hält.
+6. PR #10895 ist noch **Draft** — Owner-Entscheidung, ob er auf Ready for Review gestellt wird.
 
 ## Nachtrag (2026-09-15): Closer auf ButtonFC direkt (Owner-Entscheidung)
 
