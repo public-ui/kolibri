@@ -28,10 +28,8 @@
 			}
 		}
 
-		/* `<summary>` replaced the `kol-button-wc`: the wrapper and its interactive element are one
-		   element now, and `disabled` is expressed as `aria-disabled`. The decorative bar keeps
-		   `::before`, which overrides the component layer's baseline pseudo on the same element. */
-		&__heading-button {
+		/* The decorative bar uses `::before`, which overrides the component layer's baseline pseudo. */
+		&__heading {
 			color: var(--color-dark-blue-100);
 			position: relative;
 			padding: to-rem(16) to-rem(20);
@@ -49,36 +47,37 @@
 				@include focus-outline;
 			}
 
-			&:not([aria-disabled='true']):hover,
-			&:not([aria-disabled='true']):active {
-				&::before {
-					border-radius: 6px 0 0 6px;
-					display: block;
-					position: absolute;
-					top: 0;
-					bottom: 0;
-					left: -1px;
+			&:not([aria-disabled='true']) {
+				&:hover,
+				&:active {
+					&::before {
+						border-radius: 6px 0 0 6px;
+						display: block;
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						left: -1px;
 
-					content: '';
-					border-left: 4px solid var(--color-blue-100);
+						content: '';
+						border-left: 4px solid var(--color-blue-100);
+					}
+				}
+
+				&:hover {
+					background: var(--color-blue-20);
+				}
+
+				&:active {
+					background: var(--color-blue-30);
 				}
 			}
 
-			&:not([aria-disabled='true']):hover {
-				background: var(--color-blue-20);
-			}
-
-			&:not([aria-disabled='true']):active {
-				background: var(--color-blue-30);
-			}
-
 			&[aria-disabled='true'] {
-				opacity: 1;
 				color: var(--color-black-60);
 			}
 		}
 
-		&.collapsible--open &__heading-button {
+		&--open &__heading {
 			box-shadow: inset 3px 0 0 rgb(31, 51, 71, 0.16);
 			padding-top: to-rem(24);
 
@@ -92,27 +91,27 @@
 			flex-direction: row-reverse;
 			justify-content: space-between;
 		}
-	}
 
-	.kol-icon {
-		transform: rotate(90deg);
-		color: var(--color-blue-100);
+		.kol-icon {
+			transform: rotate(90deg);
+			color: var(--color-blue-100);
 
-		font-size: to-rem(22);
-		transition: 200ms transform cubic-bezier(0.65, 0, 0.35, 1);
+			font-size: to-rem(22);
+			transition: 200ms transform cubic-bezier(0.65, 0, 0.35, 1);
+		}
 
-		.collapsible--open & {
+		&--open .kol-icon {
 			transform: rotate(180deg);
 		}
-	}
 
-	.collapsible--disabled {
-		.kol-icon {
-			color: var(--color-black-60);
-		}
+		&--disabled {
+			.kol-icon {
+				color: var(--color-black-60);
+			}
 
-		.collapsible__content {
-			color: var(--color-black-70);
+			#{$root}__content {
+				color: var(--color-black-70);
+			}
 		}
 	}
 

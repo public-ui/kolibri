@@ -4,5 +4,6 @@
 @use '../@shared/icon.mixin' as *;
 
 @layer kol-component {
+	@include kol-collapsible-styles('kol-accordion');
 	@include kol-icon-styles();
 }

@@ -13,17 +13,13 @@
 				var(--kern-metric-space-x-small);
 		}
 
-		&.collapsible {
-			.kol-icon {
-				&::before {
-					content: '\e925';
-				}
+		.kol-icon {
+			&::before {
+				content: '\e925';
 			}
 		}
 
-		/* `<summary>` replaced the `kol-button-wc`: the wrapper and its interactive element are one
-		   element now, and `disabled` is expressed as `aria-disabled`. */
-		&__heading-button {
+		&__heading {
 			padding: var(--kern-metric-space-default) var(--kern-metric-space-x-small);
 
 			&:not([aria-disabled='true']):hover,
@@ -80,13 +76,13 @@
 
 		font-size: to-rem(24);
 
-		.collapsible--disabled & {
+		.kol-accordion--disabled & {
 			color: var(--kern-color-action-default, #1a3da5);
 		}
 
 		transition: 200ms transform cubic-bezier(0.65, 0, 0.35, 1);
 
-		.collapsible--open & {
+		.kol-accordion--open & {
 			transform: rotate(180deg);
 		}
 	}

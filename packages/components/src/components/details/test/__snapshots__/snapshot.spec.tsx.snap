@@ -3,9 +3,9 @@
 exports[`kol-details should render with _label="Zusammenfassung" _disabled=false _open=false 1`] = `
 <kol-details>
   <template shadowrootmode="open">
-    <details class="collapsible kol-details">
-      <summary aria-controls="details-control-nonce" class="collapsible__heading collapsible__heading-button kol-details__heading kol-details__heading-button" id="details-heading-nonce">
-        <strong class="kol-headline kol-headline--single kol-headline--strong">
+    <details class="kol-details" style="--collapsible-transition-duration: 300ms;">
+      <summary aria-controls="details-control-nonce" class="kol-details__heading" id="details-heading-nonce">
+        <strong class="kol-headline kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -17,9 +17,9 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=false
           </span>
         </strong>
       </summary>
-      <div class="collapsible__wrapper kol-details__wrapper">
-        <div class="collapsible__wrapper-animation kol-details__wrapper-animation">
-          <div aria-hidden="true" aria-labelledby="details-heading-nonce" class="collapsible__content indented-text kol-details__content" id="details-control-nonce" role="region">
+      <div class="kol-details__wrapper">
+        <div class="kol-details__wrapper-animation">
+          <div aria-hidden="true" aria-labelledby="details-heading-nonce" class="indented-text kol-details__content" id="details-control-nonce" role="region">
             <slot></slot>
           </div>
         </div>
@@ -32,9 +32,9 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=false
 exports[`kol-details should render with _label="Zusammenfassung" _disabled=false _open=true 1`] = `
 <kol-details _open="">
   <template shadowrootmode="open">
-    <details class="collapsible collapsible--open kol-details" open="">
-      <summary aria-controls="details-control-nonce" class="collapsible__heading collapsible__heading-button kol-details__heading kol-details__heading-button" id="details-heading-nonce">
-        <strong class="kol-headline kol-headline--single kol-headline--strong">
+    <details class="kol-details kol-details--open" open="" style="--collapsible-transition-duration: 300ms;">
+      <summary aria-controls="details-control-nonce" class="kol-details__heading" id="details-heading-nonce">
+        <strong class="kol-headline kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -46,9 +46,9 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=false
           </span>
         </strong>
       </summary>
-      <div class="collapsible__wrapper kol-details__wrapper">
-        <div class="collapsible__wrapper-animation kol-details__wrapper-animation">
-          <div aria-labelledby="details-heading-nonce" class="collapsible__content indented-text kol-details__content" id="details-control-nonce" role="region">
+      <div class="kol-details__wrapper">
+        <div class="kol-details__wrapper-animation">
+          <div aria-labelledby="details-heading-nonce" class="indented-text kol-details__content" id="details-control-nonce" role="region">
             <slot></slot>
           </div>
         </div>
@@ -61,9 +61,9 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=false
 exports[`kol-details should render with _label="Zusammenfassung" _disabled=true _open=false 1`] = `
 <kol-details>
   <template shadowrootmode="open">
-    <details class="collapsible collapsible--disabled kol-details">
-      <summary aria-controls="details-control-nonce" aria-disabled="true" class="collapsible__heading collapsible__heading-button kol-details__heading kol-details__heading-button" id="details-heading-nonce" tabindex="-1">
-        <strong class="kol-headline kol-headline--single kol-headline--strong">
+    <details class="kol-details kol-details--disabled" style="--collapsible-transition-duration: 300ms;">
+      <summary aria-controls="details-control-nonce" aria-disabled="true" class="kol-details__heading" id="details-heading-nonce" tabindex="-1">
+        <strong class="kol-headline kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -75,9 +75,9 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=true 
           </span>
         </strong>
       </summary>
-      <div class="collapsible__wrapper kol-details__wrapper">
-        <div class="collapsible__wrapper-animation kol-details__wrapper-animation">
-          <div aria-hidden="true" aria-labelledby="details-heading-nonce" class="collapsible__content indented-text kol-details__content" id="details-control-nonce" role="region">
+      <div class="kol-details__wrapper">
+        <div class="kol-details__wrapper-animation">
+          <div aria-hidden="true" aria-labelledby="details-heading-nonce" class="indented-text kol-details__content" id="details-control-nonce" role="region">
             <slot></slot>
           </div>
         </div>
@@ -90,9 +90,9 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=true 
 exports[`kol-details should render with _label="Zusammenfassung" _disabled=true _open=true 1`] = `
 <kol-details _open="">
   <template shadowrootmode="open">
-    <details class="collapsible collapsible--disabled collapsible--open kol-details" open="">
-      <summary aria-controls="details-control-nonce" aria-disabled="true" class="collapsible__heading collapsible__heading-button kol-details__heading kol-details__heading-button" id="details-heading-nonce" tabindex="-1">
-        <strong class="kol-headline kol-headline--single kol-headline--strong">
+    <details class="kol-details kol-details--disabled kol-details--open" open="" style="--collapsible-transition-duration: 300ms;">
+      <summary aria-controls="details-control-nonce" aria-disabled="true" class="kol-details__heading" id="details-heading-nonce" tabindex="-1">
+        <strong class="kol-headline kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -104,9 +104,9 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=true 
           </span>
         </strong>
       </summary>
-      <div class="collapsible__wrapper kol-details__wrapper">
-        <div class="collapsible__wrapper-animation kol-details__wrapper-animation">
-          <div aria-labelledby="details-heading-nonce" class="collapsible__content indented-text kol-details__content" id="details-control-nonce" role="region">
+      <div class="kol-details__wrapper">
+        <div class="kol-details__wrapper-animation">
+          <div aria-labelledby="details-heading-nonce" class="indented-text kol-details__content" id="details-control-nonce" role="region">
             <slot></slot>
           </div>
         </div>
@@ -119,9 +119,9 @@ exports[`kol-details should render with _label="Zusammenfassung" _disabled=true 
 exports[`kol-details should render with _label="Zusammenfassung" _level=3 1`] = `
 <kol-details>
   <template shadowrootmode="open">
-    <details class="collapsible kol-details">
-      <summary aria-controls="details-control-nonce" class="collapsible__heading collapsible__heading-button kol-details__heading kol-details__heading-button" id="details-heading-nonce">
-        <h3 class="kol-headline kol-headline--h3 kol-headline--single">
+    <details class="kol-details" style="--collapsible-transition-duration: 300ms;">
+      <summary aria-controls="details-control-nonce" class="kol-details__heading" id="details-heading-nonce">
+        <h3 class="kol-headline kol-headline--h3">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -133,9 +133,9 @@ exports[`kol-details should render with _label="Zusammenfassung" _level=3 1`] = 
           </span>
         </h3>
       </summary>
-      <div class="collapsible__wrapper kol-details__wrapper">
-        <div class="collapsible__wrapper-animation kol-details__wrapper-animation">
-          <div aria-hidden="true" aria-labelledby="details-heading-nonce" class="collapsible__content indented-text kol-details__content" id="details-control-nonce" role="region">
+      <div class="kol-details__wrapper">
+        <div class="kol-details__wrapper-animation">
+          <div aria-hidden="true" aria-labelledby="details-heading-nonce" class="indented-text kol-details__content" id="details-control-nonce" role="region">
             <slot></slot>
           </div>
         </div>
@@ -148,9 +148,9 @@ exports[`kol-details should render with _label="Zusammenfassung" _level=3 1`] = 
 exports[`kol-details should render with _label="Zusammenfassung" 1`] = `
 <kol-details>
   <template shadowrootmode="open">
-    <details class="collapsible kol-details">
-      <summary aria-controls="details-control-nonce" class="collapsible__heading collapsible__heading-button kol-details__heading kol-details__heading-button" id="details-heading-nonce">
-        <strong class="kol-headline kol-headline--single kol-headline--strong">
+    <details class="kol-details" style="--collapsible-transition-duration: 300ms;">
+      <summary aria-controls="details-control-nonce" class="kol-details__heading" id="details-heading-nonce">
+        <strong class="kol-headline kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -162,9 +162,9 @@ exports[`kol-details should render with _label="Zusammenfassung" 1`] = `
           </span>
         </strong>
       </summary>
-      <div class="collapsible__wrapper kol-details__wrapper">
-        <div class="collapsible__wrapper-animation kol-details__wrapper-animation">
-          <div aria-hidden="true" aria-labelledby="details-heading-nonce" class="collapsible__content indented-text kol-details__content" id="details-control-nonce" role="region">
+      <div class="kol-details__wrapper">
+        <div class="kol-details__wrapper-animation">
+          <div aria-hidden="true" aria-labelledby="details-heading-nonce" class="indented-text kol-details__content" id="details-control-nonce" role="region">
             <slot></slot>
           </div>
         </div>
