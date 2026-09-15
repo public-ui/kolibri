@@ -44,7 +44,7 @@ Keine redundanten `@param {string}` / `@returns {void}`-Annotationen. Die TypeSc
 Quelle der Wahrheit. JSDoc bleibt nur, wo Stencil-Werkzeuge es auslesen (`@Prop`, `@Event`,
 `@Method`) — dort ist der Text Teil der veröffentlichten Doku und wird unverändert übernommen.
 
-## 8. Transionale `-wc`-Tags: Render-FCs sind der Standard, das Tag die begründete Ausnahme
+## 8. Transitionale `-wc`-Tags: Render-FCs sind der Standard, das Tag die begründete Ausnahme
 
 Standard (Owner-Entscheid 2026-09-15): Eine migrierte Komponente rendert in ihrer Render-Funktion
 die neuen Render-FunctionalComponents — `ButtonFC` statt `KolButtonWcTag`, `LinkFC` statt
@@ -52,13 +52,27 @@ die neuen Render-FunctionalComponents — `ButtonFC` statt `KolButtonWcTag`, `Li
 Refs) wandert an den renderenden WC oder einen FC-eigenen Fabrik-Typ
 (Vorbild: `internal/functional-components/breadcrumb/link-item.ts`).
 
-Vor dem Ersetzen `packages/themes/*/src` und das Components-SCSS nach Selektoren durchsuchen, die
-die Klasse des Tags als Vorfahren nutzen (ecl `.kol-details__heading-button .kol-button`, desy
-`kol-link('kol-details__heading-button')`). Fällt der Host-Knoten weg, rutscht diese Klasse auf
-dieselbe Ebene wie die innere Block-Klasse und die Selektoren greifen stillschweigend nicht mehr —
-eine visuelle Regression. Lassen sich die Selektoren FC-gleich umschalten (Wrapper-Klasse am
-FC-Wurzelknoten, siehe Fallstrick zum `class`-Forwarding), wird das Tag ersetzt; nur wenn das
-nicht möglich ist, bleibt das `-wc`-Tag als im PR begründete Ausnahme stehen.
+Der Fallstrick ist also **nicht**, das Tag zu ersetzen — das ist das Ziel (SKILL.md § 6,
+„Transitionale `-wc`-Tags beim Konsumenten ablösen"). Der Fallstrick ist, es zu ersetzen, ohne die
+Selektoren mitzunehmen. Heute trägt der Wrapper die Consumer-Klasse als **Vorfahr** des Blocks:
+
+```html
+<kol-details-heading class="kol-details__heading-button"> <div class="kol-button">…</div></kol-details-heading>
+```
+
+Theme- und Basis-SCSS greifen genau darauf zu (ecl `.kol-details__heading-button .kol-button`, desy
+`kol-link('kol-details__heading-button')`, default/bwst `.kol-badge__smart-button .kol-button`).
+Rendert der FC direkt, merged `BemRootNodeFC` die Klasse auf denselben Knoten
+(`<div class="kol-button kol-details__heading-button">`) — die Descendant-Selektoren greifen
+stillschweigend nicht mehr, ohne Fehler, ohne roten Unit-Test. Nur der Pixel-Check sieht es.
+
+Also: vor dem Ersetzen `packages/themes/*/src` und das Components-SCSS nach der Tag-Klasse greppen,
+die Treffer nach `zero-visual-delta-handoff/SKILL.md` § 6b sortieren und theme-lokal mitmigrieren,
+danach das Pixel-Gate je Theme. Lassen sich die Selektoren FC-gleich umschalten (Wrapper-Klasse am
+FC-Wurzelknoten, siehe Fallstrick zum `class`-Forwarding), wird das Tag ersetzt; nur wenn das nicht
+möglich ist — oder der FC eine Orchestrierung verlangt, die der migrierte WC nicht hat
+(Vorprüfung 1 in SKILL.md § 6) —, bleibt das `-wc`-Tag stehen. Dann ist das eine **im PR-Text
+benannte** Ausnahme, keine stille Auslassung.
 
 Zusätzlich sicherstellen: Der FC reicht ein empfangenes `class`-Prop an seinen Wurzelknoten weiter
 (BemRootNodeFC-Contract), sonst gehen Consumer-Klassen stillschweigend verloren.
