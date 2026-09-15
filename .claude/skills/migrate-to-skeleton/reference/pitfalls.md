@@ -106,3 +106,11 @@ Zeilenhöhen und Theme-Selektoren können brechen, während alle Unit-Tests grü
 Abnahme läuft über den Companion-Skill `zero-visual-delta-handoff` (Docker-Snapshot-Lauf gegen die
 Base-Baselines). Ist sie nicht durchführbar, wird sie als offene Arbeit dokumentiert und übergeben —
 nicht weggelassen.
+
+## 13. Ein „Styled-as"-Satellit kann schon migriert sein, ohne dass sein Issue geschlossen wurde
+
+`link-button` und `button-link` haben keine eigene Migrationsarbeit gebraucht, sobald ihr
+semantisches Vorbild (`link` bzw. `button`) migriert war — beide erben direkt dessen `Base*WebComponent`
+und rendern dessen FC. Vor dem Start einer Satelliten-Migration prüfen, ob `component.tsx` bereits
+`Base*WebComponent` erbt, `render*FC()` aufruft und in `_skeleton/public-api.spec.ts` gepinnt ist. Ist
+das der Fall, gibt es keinen Code zu ändern — das Tracking-Issue ist lediglich nicht nachgeführt.
