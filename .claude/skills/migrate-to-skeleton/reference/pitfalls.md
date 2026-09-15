@@ -44,19 +44,25 @@ Keine redundanten `@param {string}` / `@returns {void}`-Annotationen. Die TypeSc
 Quelle der Wahrheit. JSDoc bleibt nur, wo Stencil-Werkzeuge es auslesen (`@Prop`, `@Event`,
 `@Method`) — dort ist der Text Teil der veröffentlichten Doku und wird unverändert übernommen.
 
-## 8. Entfernen eines transitionalen `-wc`-Tags im migrierten FC
+## 8. Transionale `-wc`-Tags: Render-FCs sind der Standard, das Tag die begründete Ausnahme
 
-Eine migrierte `shadow: true`-Komponente darf legitim weiterhin ein transitionales Element rendern
-(z. B. rendert `DetailsFC` ein `KolButtonWcTag`): Theme- und Basis-SCSS greifen teilweise auf die
-Klasse des Host-Knotens als Vorfahren zu (ecl `.kol-details__heading-button .kol-button`, desy
+Standard (Owner-Entscheid 2026-09-15): Eine migrierte Komponente rendert in ihrer Render-Funktion
+die neuen Render-FunctionalComponents — `ButtonFC` statt `KolButtonWcTag`, `LinkFC` statt
+`KolLinkWcTag`. Die Prop-Orchestrierung des ersetzten Tags (Prop-Factories, Tooltip-Behavior,
+Refs) wandert an den renderenden WC oder einen FC-eigenen Fabrik-Typ
+(Vorbild: `internal/functional-components/breadcrumb/link-item.ts`).
+
+Vor dem Ersetzen `packages/themes/*/src` und das Components-SCSS nach Selektoren durchsuchen, die
+die Klasse des Tags als Vorfahren nutzen (ecl `.kol-details__heading-button .kol-button`, desy
 `kol-link('kol-details__heading-button')`). Fällt der Host-Knoten weg, rutscht diese Klasse auf
 dieselbe Ebene wie die innere Block-Klasse und die Selektoren greifen stillschweigend nicht mehr —
-eine visuelle Regression.
+eine visuelle Regression. Lassen sich die Selektoren FC-gleich umschalten (Wrapper-Klasse am
+FC-Wurzelknoten, siehe Fallstrick zum `class`-Forwarding), wird das Tag ersetzt; nur wenn das
+nicht möglich ist, bleibt das `-wc`-Tag als im PR begründete Ausnahme stehen.
 
-Vor dem Ersetzen eines transitionalen Tags durch direktes FC-Rendering `packages/themes/*/src` und
-das Components-SCSS nach Selektoren durchsuchen, die die Klasse des Tags als Vorfahren nutzen.
-**Null visuelle Abweichung schlägt architektonische Reinheit**; den Konsumenten vom transitionalen
-Tag zu lösen, bleibt eine separat verfolgte Aufgabe.
+Zusätzlich sicherstellen: Der FC reicht ein empfangenes `class`-Prop an seinen Wurzelknoten weiter
+(BemRootNodeFC-Contract), sonst gehen Consumer-Klassen stillschweigend verloren.
+**Null visuelle Abweichung schlägt weiterhin architektonische Reinheit.**
 
 ## 9. `FunctionalComponentProps` ist ein StrictFields-Vertrag
 
