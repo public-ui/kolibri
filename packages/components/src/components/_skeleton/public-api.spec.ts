@@ -441,9 +441,17 @@ describe('kol-button-wc transitional wrapper (internal contract for legacy consu
 });
 
 /**
- * Pinned public API of `kol-details` — byte-identical to the predecessor on the develop branch
- * (5 props plus `focus()` and `click()`). `_open` keeps its `mutable`/`reflect` decorators so the
- * reflected attribute is already updated when the delayed `onToggle` callback reads it.
+ * Pinned public API of `kol-details` — 5 props plus `focus()` and `click()`. `_open` keeps its
+ * `mutable`/`reflect` decorators so the reflected attribute is already updated when the delayed
+ * `onClick`/`onToggle` callbacks read it.
+ *
+ * Consciously changed against the predecessor when `kol-accordion` and `kol-details` were
+ * consolidated onto one collapsible layer (owner-approved, noted in the PR):
+ * - `_on` is typed `CollapsibleCallbacksPropType<boolean>`, the shared contract of both
+ *   collapsibles. Against `DetailsCallbacksPropType` it adds the optional `onClick` member —
+ *   additive, so objects that only set `onToggle` stay assignable. The old name survives as a
+ *   `@deprecated` alias in `schema/props/details-callbacks.ts`.
+ * - `_on` and `click()` carry the wording shared with `kol-accordion`.
  */
 const KOL_DETAILS_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	focus: {
@@ -456,7 +464,7 @@ const KOL_DETAILS_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 		kind: 'method',
 		type: '',
 		required: false,
-		doc: 'Triggers a click on the summary/toggle button.',
+		doc: 'Triggers a click on the heading toggle button.',
 	},
 	_disabled: {
 		kind: 'prop',
@@ -480,9 +488,9 @@ const KOL_DETAILS_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	},
 	_on: {
 		kind: 'prop',
-		type: 'DetailsCallbacksPropType<boolean>',
+		type: 'CollapsibleCallbacksPropType<boolean>',
 		required: false,
-		doc: 'Defines the callback functions for details.',
+		doc: 'Defines the callback functions for the collapsible.',
 	},
 	_open: {
 		kind: 'prop',
@@ -508,9 +516,18 @@ describe('kol-details public API contract (ARC42 § Public API Contract)', () =>
 });
 
 /**
- * Pinned public API of `kol-accordion` — byte-identical to the predecessor on the develop branch
- * (5 props plus `focus()` and `click()`). `_open` keeps its `mutable`/`reflect` decorators so the
- * reflected attribute is already updated when the delayed `onClick`/`onToggle` callbacks read it.
+ * Pinned public API of `kol-accordion` — 5 props plus `focus()` and `click()`. `_open` keeps its
+ * `mutable`/`reflect` decorators so the reflected attribute is already updated when the delayed
+ * `onClick`/`onToggle` callbacks read it.
+ *
+ * Consciously changed against the predecessor when `kol-accordion` and `kol-details` were
+ * consolidated onto one collapsible layer (owner-approved, noted in the PR):
+ * - `_on` is typed `CollapsibleCallbacksPropType<boolean>` — the same shape as the former
+ *   `AccordionCallbacksPropType`, which survives as a `@deprecated` alias.
+ * - `_label` is declared with the `LabelPropType` schema alias instead of the primitive `string`,
+ *   matching `kol-details` and every other migrated component. Same type, no runtime effect.
+ * - `click()` no longer mentions "the first section", a leftover of the pre-migration
+ *   multi-section accordion.
  */
 const KOL_ACCORDION_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	focus: {
@@ -523,7 +540,7 @@ const KOL_ACCORDION_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 		kind: 'method',
 		type: '',
 		required: false,
-		doc: 'Triggers a click on the trigger button of the first section.',
+		doc: 'Triggers a click on the heading toggle button.',
 	},
 	_disabled: {
 		kind: 'prop',
@@ -534,7 +551,7 @@ const KOL_ACCORDION_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	},
 	_label: {
 		kind: 'prop',
-		type: 'string',
+		type: 'LabelPropType',
 		required: true,
 		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
 	},
@@ -547,9 +564,9 @@ const KOL_ACCORDION_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	},
 	_on: {
 		kind: 'prop',
-		type: 'AccordionCallbacksPropType<boolean>',
+		type: 'CollapsibleCallbacksPropType<boolean>',
 		required: false,
-		doc: 'Gibt die EventCallback-Funktionen an.',
+		doc: 'Defines the callback functions for the collapsible.',
 	},
 	_open: {
 		kind: 'prop',

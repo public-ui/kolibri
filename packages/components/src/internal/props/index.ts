@@ -1,5 +1,4 @@
 export * from './access-key';
-export * from './accordion-callbacks';
 export * from './align';
 export * from './allow-markdown';
 export * from './alt';
@@ -13,9 +12,9 @@ export * from './aria-selected';
 export * from './badge-text';
 export * from './button-callbacks';
 export * from './button-type';
+export * from './collapsible-callbacks';
 export * from './color';
 export * from './custom-class';
-export * from './details-callbacks';
 export * from './disabled';
 export * from './download';
 export * from './helpers/factory';

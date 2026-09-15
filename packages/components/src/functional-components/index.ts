@@ -1,5 +1,4 @@
 export { default as KolAlertFc } from './Alert';
-export { default as KolCollapsibleFc } from './Collapsible';
 export { default as KolFormFieldFc } from './FormField';
 export { default as KolFormFieldMsgFc } from './FormFieldMsg';
 export { default as KolHeadingFc } from './Heading';
