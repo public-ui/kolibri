@@ -10,6 +10,7 @@ export type KoliBriTableSelectionKeys = KoliBriTableSelectionKey[];
 export type KoliBriTableCell = {
 	colIndex?: number;
 	colSpan?: number;
+	/** that's actually the row data! */
 	data?: KoliBriTableDataType;
 	label: string;
 	render?: KoliBriTableRender;

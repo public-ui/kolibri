@@ -37,7 +37,8 @@
 				color: var(--color-black);
 				text-align: left;
 
-				&:focus {
+				/* The class carrier is a wrapper — focus lands on the anchor inside it. */
+				&__interactive-element:focus {
 					color: var(--color-black);
 				}
 			}
