@@ -30,6 +30,17 @@
 			&::marker {
 				content: '';
 			}
+
+			/* A flex container only exposes a baseline if it has an in-flow text box to derive one
+			   from; without it the surrounding inline formatting context falls back to the bottom
+			   margin edge and everything after the element shifts by a pixel. Same zero-width space
+			   as in `kol-button-styles`.
+			   It sits on the summary, not on the heading: here it inherits the host's typography,
+			   exactly as the `<button>` did. On the heading it would inherit the heading's instead,
+			   and a theme that enlarges headings would grow the whole row with it. */
+			&::before {
+				content: '\200B';
+			}
 		}
 
 		/* The heading moved inside the summary, so it is the flex item that has to fill the row —
