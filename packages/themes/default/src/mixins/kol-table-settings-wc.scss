@@ -16,7 +16,8 @@
 		 * border would survive.
 		 */
 		.kol-popover-button__popover {
-			background: var(--color-light);
+			--kol-surface: var(--color-overlay);
+			background: var(--color-overlay);
 			border-color: var(--color-ink);
 		}
 

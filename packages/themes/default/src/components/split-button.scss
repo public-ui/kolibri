@@ -47,7 +47,8 @@
 		}
 
 		.kol-popover__content {
-			background-color: var(--color-light);
+			--kol-surface: var(--color-overlay);
+			background-color: var(--color-overlay);
 		}
 
 		@include kol-button('kol-button');

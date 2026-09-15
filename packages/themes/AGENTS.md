@@ -25,7 +25,7 @@ This folder collects all official KoliBri themes. Each theme package under this 
 - Avoid `!important` and only override properties that the theme actually customises.
 - Colour tokens are declared as `--color-X: var(--kolibri-color-X, light-dark(<light>, <dark>))` in the theme global layer. Never declare `color-scheme` in a theme and never write a `@media (prefers-color-scheme: …)` block: `color-scheme` is inherited and crosses the shadow boundary, so the consuming application owns it and the components resolve `light-dark()` against whatever is in effect where they sit. A declaration on `:host` would replace that value and let the page and its components disagree.
 - Sass does not evaluate variables inside `var()`. Interpolate them: `light-dark(#202020, #{$dark-color-text})`.
-- Never hardcode `white`, `black` or a raw hex in a theme. Use `--color-light` for surfaces and for text on an accent, `--color-ink` where the base layer needs a maximum contrast foreground, and the `--color-shadow*` tokens for shadows.
+- Never hardcode `white`, `black` or a raw hex in a theme. Pick the surface by elevation — `--color-surface` for the page canvas, `--color-light` for a raised surface and for text on an accent, `--color-overlay` for something floating above the page — use `--color-surface-current` where something has to be opaque against the component's own background, `--color-ink` where the base layer needs a maximum contrast foreground, and the `--color-shadow*` and `--color-edge` tokens for the boundary of an elevated surface.
 
 ## Consistency
 

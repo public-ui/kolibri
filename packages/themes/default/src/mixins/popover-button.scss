@@ -16,7 +16,9 @@
 		}
 
 		&__popover--styled {
-			background-color: var(--color-light);
+			// Floats above the page, so it takes the highest surface level.
+			--kol-surface: var(--color-overlay);
+			background-color: var(--color-overlay);
 			border-radius: var(--border-radius);
 			padding: to-rem(8) to-rem(12);
 

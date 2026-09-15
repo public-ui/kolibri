@@ -17,7 +17,9 @@
  *
  * The two page colors are stated literally because the theme's `--color-*` tokens live on the
  * `:host` of each component and cannot be read from the document. Keep them in sync with
- * `--color-text` in `src/global.scss` and the page counterpart in `src/mixins/palette.scss`.
+ * `--color-text` and `--color-surface` in `src/global.scss`, whose dark branches are
+ * `$dark-color-text` and `$dark-color-surface` in `src/mixins/palette.scss`. The page is elevation 0
+ * of the theme's surface scale, so a component placed straight on it blends into the canvas.
  */
 :root {
 	color: light-dark(#202020, #e9ebec);

@@ -262,6 +262,13 @@ Rules that hold for every theme:
 - What a theme layer cannot reach are the color stops of a `@keyframes` rule declared in the base
   layer: an animation's own values win over any normal declaration, whatever the layer. Such a case
   needs a change in `packages/components`.
+- Depth is a surface scale, not a shadow: a lighter surface sits higher. A light palette collapses
+  that scale onto white and draws depth with a shadow instead; a dark one carries it in the surfaces
+  and replaces the shadow with a hard edge. Since `light-dark()` is a color function and cannot
+  switch a `box-shadow` geometry, state both branches at once and switch them by their colors — the
+  shadow token transparent in dark mode, the edge token transparent in light mode. A container that
+  paints a surface of its own passes it down through `--kol-surface`, which reaches slotted
+  components too, so their host box matches the surface they were placed on.
 
 ### CSS Custom Properties and SASS Variables
 

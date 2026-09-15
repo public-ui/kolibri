@@ -94,32 +94,50 @@ Want to improve or customize the Default Theme? Here’s how:
 
 The following tokens are defined in `src/global.scss` and serve as the base for colors, fonts, and spacing across all components. You can override them via CSS:
 
-| Token                     | Overridable with                  | Light                                 | Dark                                  | Meaning                                      |
-| ------------------------- | --------------------------------- | ------------------------------------- | ------------------------------------- | -------------------------------------------- |
-| `--border-radius`         | `--kolibri-border-radius`         | `5px`                                 | `5px`                                 | Default border radius                        |
-| `--inner-border-radius`   | `--kolibri-border-radius`         | `4px`                                 | `4px`                                 | Border radius of nested elements             |
-| `--font-family`           | `--kolibri-font-family`           | `Verdana, …`                          | `Verdana, …`                          | Default font                                 |
-| `--font-size`             | `--kolibri-font-size`             | `1rem`                                | `1rem`                                | Base font size                               |
-| `--spacing`               | `--kolibri-spacing`               | `0.25rem`                             | `0.25rem`                             | Standard spacing                             |
-| `--border-width`          | `--kolibri-border-width`          | `1px`                                 | `1px`                                 | Border width                                 |
-| `--color-primary`         | `--kolibri-color-primary`         | `#003a5c`                             | `#86c5ea`                             | Primary accent color                         |
-| `--color-primary-variant` | `--kolibri-color-primary-variant` | `#005a8f`                             | `#b6dff6`                             | Hover and focus variant of the primary color |
-| `--color-secondary`       | `--kolibri-color-secondary`       | `#ccebf7`                             | `#193743`                             | Secondary color                              |
-| `--color-danger`          | `--kolibri-color-danger`          | `#ad003a`                             | `#f391b1`                             | Error color                                  |
-| `--color-warning`         | `--kolibri-color-warning`         | `#c44931`                             | `#f29988`                             | Warning color                                |
-| `--color-success`         | `--kolibri-color-success`         | `#005c45`                             | `#69d3b9`                             | Success color                                |
-| `--color-subtle`          | `--kolibri-color-subtle`          | `#576164`                             | `#a1acaf`                             | Subtle lines, borders and secondary text     |
-| `--color-light`           | `--kolibri-color-light`           | `#ffffff`                             | `#1c2021`                             | Surface, and the color used _on_ an accent   |
-| `--color-text`            | `--kolibri-color-text`            | `#202020`                             | `#e9ebec`                             | Standard text color                          |
-| `--color-mute`            | `--kolibri-color-mute`            | `#f2f3f4`                             | `#272c2f`                             | Muted surface                                |
-| `--color-mute-variant`    | `--kolibri-color-mute-variant`    | `#bec5c9`                             | `#41494e`                             | Dividers and alternate muted surface         |
-| `--color-visited`         | `--kolibri-color-visited`         | `#551a8b`                             | `#c39de7`                             | Visited link                                 |
-| `--color-ink`             | `--kolibri-color-ink`             | `#000000`                             | `#e9ebec`                             | Maximum contrast foreground                  |
-| `--color-shadow`          | `--kolibri-color-shadow`          | `rgb(8 35 48 / .24)`                  | `rgb(0 0 0 / .6)`                     | Ambient elevation shadow                     |
-| `--color-shadow-inverse`  | `--kolibri-color-shadow-inverse`  | `rgb(255 255 255 / .24)`              | `rgb(8 35 48 / .24)`                  | The same, cast on an accent surface          |
-| `--color-shadow-contrast` | `--kolibri-color-shadow-contrast` | `--color-subtle` mixed 80% with black | `--color-subtle` mixed 80% with white | Shadow used as a 3:1 border                  |
+| Token                     | Overridable with                  | Light                                 | Dark               | Meaning                                        |
+| ------------------------- | --------------------------------- | ------------------------------------- | ------------------ | ---------------------------------------------- |
+| `--border-radius`         | `--kolibri-border-radius`         | `5px`                                 | `5px`              | Default border radius                          |
+| `--inner-border-radius`   | `--kolibri-border-radius`         | `4px`                                 | `4px`              | Border radius of nested elements               |
+| `--font-family`           | `--kolibri-font-family`           | `Verdana, …`                          | `Verdana, …`       | Default font                                   |
+| `--font-size`             | `--kolibri-font-size`             | `1rem`                                | `1rem`             | Base font size                                 |
+| `--spacing`               | `--kolibri-spacing`               | `0.25rem`                             | `0.25rem`          | Standard spacing                               |
+| `--border-width`          | `--kolibri-border-width`          | `1px`                                 | `1px`              | Border width                                   |
+| `--color-primary`         | `--kolibri-color-primary`         | `#003a5c`                             | `#86c5ea`          | Primary accent color                           |
+| `--color-primary-variant` | `--kolibri-color-primary-variant` | `#005a8f`                             | `#b6dff6`          | Hover and focus variant of the primary color   |
+| `--color-secondary`       | `--kolibri-color-secondary`       | `#ccebf7`                             | `#193743`          | Secondary color                                |
+| `--color-danger`          | `--kolibri-color-danger`          | `#ad003a`                             | `#f391b1`          | Error color                                    |
+| `--color-warning`         | `--kolibri-color-warning`         | `#c44931`                             | `#f29988`          | Warning color                                  |
+| `--color-success`         | `--kolibri-color-success`         | `#005c45`                             | `#69d3b9`          | Success color                                  |
+| `--color-subtle`          | `--kolibri-color-subtle`          | `#576164`                             | `#a1acaf`          | Subtle lines, borders and secondary text       |
+| `--color-surface`         | `--kolibri-color-surface`         | `#ffffff`                             | `#14181a`          | Elevation 0: the page canvas                   |
+| `--color-light`           | `--kolibri-color-light`           | `#ffffff`                             | `#1c2021`          | Elevation 1, and the color used _on_ an accent |
+| `--color-overlay`         | `--kolibri-color-overlay`         | `#ffffff`                             | `#262c2e`          | Elevation 2: dialog, popover, tooltip          |
+| `--color-text`            | `--kolibri-color-text`            | `#202020`                             | `#e9ebec`          | Standard text color                            |
+| `--color-mute`            | `--kolibri-color-mute`            | `#f2f3f4`                             | `#272c2f`          | Muted surface                                  |
+| `--color-mute-variant`    | `--kolibri-color-mute-variant`    | `#bec5c9`                             | `#41494e`          | Dividers and alternate muted surface           |
+| `--color-visited`         | `--kolibri-color-visited`         | `#551a8b`                             | `#c39de7`          | Visited link                                   |
+| `--color-ink`             | `--kolibri-color-ink`             | `#000000`                             | `#e9ebec`          | Maximum contrast foreground                    |
+| `--color-shadow`          | `--kolibri-color-shadow`          | `rgb(8 35 48 / .24)`                  | `transparent`      | Ambient elevation shadow                       |
+| `--color-shadow-inverse`  | `--kolibri-color-shadow-inverse`  | `rgb(255 255 255 / .24)`              | `transparent`      | The same, cast on an accent surface            |
+| `--color-shadow-contrast` | `--kolibri-color-shadow-contrast` | `--color-subtle` mixed 80% with black | `transparent`      | Shadow used as a 3:1 border                    |
+| `--color-edge`            | `--kolibri-color-edge`            | `transparent`                         | `#6c767a`          | The hard edge that replaces those shadows      |
+| `--color-backdrop`        | `--kolibri-color-backdrop`        | `transparent`                         | `rgb(0 0 0 / .55)` | Laid over the browser's dialog backdrop        |
 
 `--color-light` is not "white". It is the surface _and_ the color placed on an accent: in dark mode the surface becomes dark and the accents become light tints, so both roles flip together and a light-blue primary automatically carries dark text.
+
+### Elevation
+
+**A lighter surface sits higher.** A light palette cannot express that — every surface there is white — so in light mode the three levels collapse onto `#ffffff` and depth is drawn with a shadow instead. In dark mode the surfaces carry it themselves, and the shadow, which would only soften the boundary it is meant to draw, gives way to a hard one pixel edge:
+
+| Level | Token             | What sits there                                     |
+| ----- | ----------------- | --------------------------------------------------- |
+| 0     | `--color-surface` | The page, and the host box every component paints   |
+| 1     | `--color-light`   | Card, accordion, input, table cell, drawer, toolbar |
+| 2     | `--color-overlay` | Dialog, popover, tooltip, suggestion list           |
+
+Both branches are expressed purely as colors, because `light-dark()` is a color function and cannot switch a `box-shadow` geometry: the shadow tokens are transparent in dark mode and `--color-edge` is transparent in light mode, so neither branch moves a pixel in the other.
+
+A container that paints a surface of its own tells the components placed inside it so, through the internal property `--kol-surface`. Inheritance follows the flat tree, so the declaration reaches slotted components as well — a button inside a card paints its host box in the card's color, not the page's. Nothing declares `--kol-surface` at document level, so a component sitting on the page falls back to level 0. Read it back with `--color-surface-current` wherever something has to be opaque against the component's own background.
 
 To adjust the design tokens, create a stylesheet that overrides the desired custom properties. Example:
 

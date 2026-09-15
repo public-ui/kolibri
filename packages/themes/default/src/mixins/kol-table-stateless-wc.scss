@@ -63,8 +63,9 @@
 			border-width: 0;
 			border-bottom-width: calc(var(--border-width) * 2);
 
+			// Two gutter fillers that erase the cell padding back to whatever the table stands on.
 			&::before {
-				background-color: var(--color-light);
+				background-color: var(--color-surface-current);
 				display: block;
 				position: absolute;
 				top: 0;
@@ -76,7 +77,7 @@
 			}
 
 			&::after {
-				background-color: var(--color-light);
+				background-color: var(--color-surface-current);
 				display: block;
 				position: absolute;
 				top: 0;
@@ -119,7 +120,7 @@
 			&--selection:not(.kol-table__cell--header),
 			&--sticky-left:not(.kol-table__cell--header),
 			&--sticky-right:not(.kol-table__cell--header) {
-				background-color: var(--color-light);
+				background-color: var(--color-surface-current);
 			}
 
 			&--sticky-left:nth-last-child(1 of .kol-table__cell--sticky-left) {
@@ -225,7 +226,7 @@
 
 		// The base layer paints the loading overlay white.
 		&__loader--shown {
-			background: var(--color-light);
+			background: var(--color-surface-current);
 		}
 
 		&__sort {

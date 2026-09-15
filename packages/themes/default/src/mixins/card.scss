@@ -1,19 +1,28 @@
 @use './to-rem' as *;
 @use './button' as *;
+@use './elevation' as *;
 @use './focus-outline' as *;
 
 @mixin kol-card($border-radius: var(--border-radius)) {
 	.kol-card {
 		@include kol-button('kol-button');
+		@include kol-elevation-outline;
 
-		background-color: var(--color-light);
-		box-shadow: 0 0 4px var(--color-shadow-contrast); // subtle darkened (or, in dark mode, lightened) by 80% to maintain contrast of 3:1
+		/*
+		 * A raised surface by default, and whatever surface the container around it establishes when
+		 * there is one — a dialog lifts its card to the overlay level this way. `--kol-card-surface`
+		 * exists so the two rules below can hand the resolved value down without a `var()` cycle.
+		 */
+		--kol-card-surface: var(--kol-surface, var(--color-light));
+		background-color: var(--kol-card-surface);
 		border-radius: $border-radius;
 		width: 100%;
 		height: 100%;
 		gap: to-rem(8);
 
 		&__header {
+			// Everything slotted into the card stands on the card, not on the page behind it.
+			--kol-surface: var(--kol-card-surface);
 			display: block;
 			padding: to-rem(16) to-rem(16) to-rem(8) to-rem(16);
 
@@ -21,6 +30,7 @@
 		}
 
 		&__content {
+			--kol-surface: var(--kol-card-surface);
 			padding: 0 to-rem(16) to-rem(16);
 
 			& ::slotted(p:first-child) {

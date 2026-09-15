@@ -24,6 +24,30 @@ $dark-color-mute-variant: #41494e;
 $dark-color-visited: #c39de7;
 
 /*
+ * Elevation.
+ *
+ * The rule is "a lighter surface sits higher". A light palette cannot express it — every surface
+ * there is white — so in light mode all three levels collapse onto `#ffffff` and depth is carried
+ * by the shadow below. In dark mode the surfaces themselves carry it and the shadow is switched
+ * off (see `--color-shadow` in `global.scss`):
+ *
+ *   0  page canvas, and the host box every component paints behind itself
+ *   1  a raised surface: card, input, table cell, drawer
+ *   2  a floating one: dialog, popover, tooltip, suggestion list
+ *
+ * Level 0 is the grey the sample applications paint their page with; keep the two in sync, the
+ * page background in `color-scheme.css` states the same value literally.
+ */
+$dark-color-surface: #14181a;
+$dark-color-overlay: #262c2e;
+
+/*
+ * The hard edge that replaces the blurred elevation shadow in dark mode. Chosen to clear 3:1
+ * against all three surface levels, the highest one included.
+ */
+$dark-color-edge: #6c767a;
+
+/*
  * Maximum contrast foreground. The light branch is pure black on purpose: the base layer of
  * `@public-ui/components` hardcodes `black` in a handful of places, and the theme neutralizes those
  * with this token without moving a single light-mode pixel.

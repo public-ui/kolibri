@@ -2,8 +2,8 @@
 
 @mixin kol-custom-suggestions-options-group-theme($option-height, $visible-options) {
 	.kol-custom-suggestions-options-group {
-		// The base layer paints the list white.
-		background-color: var(--color-light);
+		// The base layer paints the list white; it floats above the page, so it takes the highest level.
+		background-color: var(--color-overlay);
 		border-color: var(--color-subtle);
 		border-style: solid;
 		border-radius: var(--border-radius);
