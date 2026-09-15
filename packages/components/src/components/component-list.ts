@@ -4,7 +4,7 @@ import { KolAlertWc } from './alert/component';
 import { KolAlert } from './alert/shadow';
 import { KolAvatar } from './avatar/component';
 import { KolBadge } from './badge/component';
-import { KolBreadcrumb } from './breadcrumb/shadow';
+import { KolBreadcrumb } from './breadcrumb/component';
 import { KolButtonLink } from './button-link/component';
 import { KolButton } from './button/component';
 import { KolButtonWc } from './button/wc';
