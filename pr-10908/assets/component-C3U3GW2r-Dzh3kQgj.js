@@ -1,0 +1,1 @@
+import{d as e,o as t}from"./index-DH4lMl6T.js";import{t as n}from"./clsx-COFh-Vc8-DWAop4cA.js";var r=({description:e,descriptionId:n})=>e?t(`span`,{class:`visually-hidden`,id:n},e):null,i=new Map;function a(t){let n=i.get(t);return n||(n=e.forBlock(t),i.set(t,n)),n}var o=({block:e,modifiers:r,class:i},o)=>{let s=a(e);return t(`div`,{class:n(s(r),i)},o)};export{o as n,r as t};
