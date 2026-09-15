@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 10894,
-	"head": "039dfaa7d893e1025faf551fd456414d8796c9e3",
+	"head": "c269224b72007cbd993a8d302f05b47656a0c2a9",
 	"repository": "public-ui/kolibri",
-	"runId": 34919870978,
-	"generatedAt": "2026-09-15T03:14:07.758Z",
-	"digest": "sha256:a0cf18038353bab0c84c927c25140056b4821a81d2bd76b723d9affa881d1c4d",
+	"runId": 34924967095,
+	"generatedAt": "2026-09-15T03:42:55.530Z",
+	"digest": "sha256:5fdd64b62929641d2ec7a2fe61f35b85f4287a5c174b45ca5447815a4d1fb269",
 	"baseline": {
 		"sha": "1bcd51acc76ab80eba43523b617821c1b3e8c739",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2834,
-		"changed": 22,
+		"unchanged": 2835,
+		"changed": 21,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -10109,13 +10109,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 403,
-				"changed": 5,
+				"unchanged": 404,
+				"changed": 4,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:9b177d91564164cb7ff62e74e54c3316246bdae2c1f4562f4cc6df619a9e2068",
+			"digest": "sha256:3c40c16bc816aaab42a6734de7a3869893164e31f087b963f9d31c905825c27f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10428,14 +10428,9 @@
 				},
 				{
 					"name": "details-basic--basic",
-					"route": "details/basic",
-					"status": "changed",
-					"hash": "sha256:64c198e2270355484a5627c6b9b3b2d34c3c70f2ab97483617c839dbed822232",
-					"diffPixels": 23,
-					"diffRatio": 0.000071,
-					"expected": "theme-ecl/details-basic--basic.expected.png",
-					"actual": "theme-ecl/details-basic--basic.actual.png",
-					"diff": "theme-ecl/details-basic--basic.diff.png"
+					"route": "details-basic",
+					"status": "unchanged",
+					"hash": "sha256:f00e15ff67c6894f11692c0ce37d35909248222cf87836f05d1a0ad27afe52d4"
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
@@ -12049,9 +12044,7 @@
 					"name": "scenarios-focus-elements-component-details",
 					"route": "scenarios/focus-elements?component=details",
 					"status": "changed",
-					"hash": "sha256:8ac7c7c8107e5d524fbab47c36786f85c583b3464343faa7333a87918b98f424",
-					"diffPixels": 8,
-					"diffRatio": 0.00024,
+					"hash": "sha256:16e0e5259353eb20aa639053b36834f17c551f13db01d3360b44703525d72b92",
 					"sizeMismatch": {
 						"expected": [
 							300,

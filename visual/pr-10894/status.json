@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "22 changed – 0 of 22 approved, review pending",
-	"computedAt": "2026-09-15T03:14:08.184Z",
+	"description": "21 changed – 0 of 21 approved, review pending",
+	"computedAt": "2026-09-15T03:42:56.528Z",
 	"pr": 10894,
-	"head": "039dfaa7d893e1025faf551fd456414d8796c9e3",
-	"digest": "sha256:a0cf18038353bab0c84c927c25140056b4821a81d2bd76b723d9affa881d1c4d",
+	"head": "c269224b72007cbd993a8d302f05b47656a0c2a9",
+	"digest": "sha256:5fdd64b62929641d2ec7a2fe61f35b85f4287a5c174b45ca5447815a4d1fb269",
 	"counts": {
-		"changes": 22,
-		"open": 22,
+		"changes": 21,
+		"open": 21,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -73,10 +73,6 @@
 			"notes": []
 		},
 		"theme-ecl/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/details-basic--basic": {
 			"state": "open",
 			"notes": []
 		},
