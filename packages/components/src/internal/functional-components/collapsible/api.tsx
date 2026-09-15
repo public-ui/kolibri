@@ -52,7 +52,7 @@ export type CollapsibleApi = ApiFromConfig<
 			 */
 			detailsOpen: boolean;
 			/**
-			 * Whether the collapsible is visually expanded — drives the `collapsible--open` class
+			 * Whether the collapsible is visually expanded — drives the `--open` block modifier
 			 * and therefore the transition. Set one frame after {@link detailsOpen} when opening,
 			 * so the transition has a from-state to start from.
 			 */
@@ -62,6 +62,13 @@ export type CollapsibleApi = ApiFromConfig<
 			 * aria-labelledby attribute. Derived once per web component instance.
 			 */
 			headingId: string;
+			/**
+			 * Duration of the open/close transition in milliseconds, from the theme's
+			 * `collapsibleTransitionMs` feature flag. Rendered as the CSS custom property
+			 * `--collapsible-transition-duration` on `<details>` so the stylesheet and the timer
+			 * that keeps the `open` attribute alive share one value.
+			 */
+			transitionMs: number;
 		};
 	}
 >;
@@ -70,9 +77,9 @@ export type CollapsibleApi = ApiFromConfig<
  * The BEM blocks that render through `CollapsibleFC`.
  *
  * Both are registered in `schema/bem-registry.ts` with the identical element set
- * (`content`, `heading`, `heading-button`, `wrapper`, `wrapper-animation`, no modifiers), which is
- * what lets one functional component serve both: `keyof` over the union of their element maps is
- * still exactly those five names.
+ * (`content`, `heading`, `wrapper`, `wrapper-animation`) and modifier set (`disabled`, `open`),
+ * which is what lets one functional component serve both: `keyof` over the union of their maps is
+ * still exactly those names.
  */
 export type CollapsibleBlock = 'kol-accordion' | 'kol-details';
 
@@ -87,12 +94,8 @@ export type CollapsibleVariant = {
 	/** BEM block of the rendering component. */
 	block: CollapsibleBlock;
 	/**
-	 * Icon rendered in the summary.
-	 *
-	 * `kol-accordion` swaps the chevron with the open state
-	 * (`kolicon-chevron-down`/`kolicon-chevron-right`), while `kol-details` keeps
-	 * `kolicon-chevron-right` and rotates it via CSS. Both are load-bearing for pixel parity with
-	 * the themes, so the choice stays with the component.
+	 * Icon of the toggle control (`<summary>`). `kol-accordion` swaps it with the open state,
+	 * `kol-details` keeps one icon and rotates it via CSS.
 	 */
 	icons: IconsPropType;
 	/** Additional class on the content region — `kol-details` adds `indented-text`. */

@@ -31,9 +31,6 @@ export type KoliBriComponentsBemSchema = {
 			heading: {
 				modifiers: null;
 			};
-			'heading-button': {
-				modifiers: null;
-			};
 			wrapper: {
 				modifiers: null;
 			};
@@ -41,7 +38,7 @@ export type KoliBriComponentsBemSchema = {
 				modifiers: null;
 			};
 		};
-		modifiers: null;
+		modifiers: Set<'disabled' | 'open'>;
 	};
 	'kol-alert': {
 		/**
@@ -109,9 +106,6 @@ export type KoliBriComponentsBemSchema = {
 			heading: {
 				modifiers: null;
 			};
-			'heading-button': {
-				modifiers: null;
-			};
 			wrapper: {
 				modifiers: null;
 			};
@@ -119,7 +113,7 @@ export type KoliBriComponentsBemSchema = {
 				modifiers: null;
 			};
 		};
-		modifiers: null;
+		modifiers: Set<'disabled' | 'open'>;
 	};
 	'kol-icon': {
 		elements: {
@@ -281,11 +275,10 @@ const BEM: KoliBriComponentsBemSchema = {
 		elements: {
 			content: { modifiers: null },
 			heading: { modifiers: null },
-			'heading-button': { modifiers: null },
 			wrapper: { modifiers: null },
 			'wrapper-animation': { modifiers: null },
 		},
-		modifiers: null,
+		modifiers: new Set(['disabled', 'open']),
 	},
 	'kol-avatar': {
 		elements: {
@@ -306,11 +299,10 @@ const BEM: KoliBriComponentsBemSchema = {
 		elements: {
 			content: { modifiers: null },
 			heading: { modifiers: null },
-			'heading-button': { modifiers: null },
 			wrapper: { modifiers: null },
 			'wrapper-animation': { modifiers: null },
 		},
-		modifiers: null,
+		modifiers: new Set(['disabled', 'open']),
 	},
 	'kol-icon': {
 		elements: {

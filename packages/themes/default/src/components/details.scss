@@ -20,15 +20,11 @@
 		&__heading {
 			margin: 0;
 
-			/* `global.scss` weights `.kol-headline` at 700 from this layer, which outranks the
-			   component layer. The label used to render inside a `<button>`, which `a11y.scss`
-			   deliberately does not let inherit font-weight, so that 700 never reached it. */
+			/* `global.scss` weights every `.kol-headline` at 700; the details label stays regular. */
 			.kol-headline {
 				font-weight: 400;
 			}
-		}
 
-		&__heading-button {
 			.kol-icon {
 				font-size: to-rem(19.2);
 			}
@@ -45,7 +41,6 @@
 				}
 			}
 
-			/* The ring sits on the summary, which is the focusable control now. */
 			&:focus {
 				@include focus-outline;
 				cursor: pointer;

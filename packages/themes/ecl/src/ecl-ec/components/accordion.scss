@@ -9,10 +9,7 @@
 			outline-offset: -2px;
 		}
 
-		/* `<summary>` replaced the `kol-button-wc`: the wrapper and its interactive element are one
-		   element now, and the expanded state is the `collapsible--open` class rather than
-		   `aria-expanded`, which the native `open` attribute carries. */
-		&__heading-button {
+		&__heading {
 			padding: var(--ecl-spacing-xl);
 
 			&:hover {
@@ -41,7 +38,7 @@
 			padding: 0 var(--ecl-spacing-xl) var(--ecl-spacing-xl);
 		}
 
-		&.collapsible--open &__heading-button {
+		&--open &__heading {
 			padding-bottom: var(--ecl-spacing-l);
 
 			.kol-icon::before {
