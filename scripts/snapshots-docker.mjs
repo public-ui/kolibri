@@ -131,7 +131,10 @@ set -euo pipefail
 
 export HOME=/work/home
 export PATH="/work/npm-global/bin:$PATH"
-export CI=0                       # keine Retries + parallele Workers — für schnelle lokale Entwicklung
+# Leer, nicht 0: die Playwright-Config prüft process.env.CI auf Truthiness, und der String
+# "0" ist in JS wahr. Mit CI=0 lief der Container mit 2 Retries und 1 Worker — ein Lauf konnte
+# per Retry grün werden und wurde als grün gemeldet. Leer heißt: keine Retries, 4 Worker.
+export CI=""                      # keine Retries + parallele Workers — für schnelle lokale Entwicklung
 ${workersEnv}
 mkdir -p "$HOME" "${CONTAINER_WORKSPACE}"
 

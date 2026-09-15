@@ -3,9 +3,20 @@
 exports[`kol-button-link should render with _label="Beschreibung" 1`] = `
 <kol-button-link>
   <template shadowrootmode="open">
-    <kol-button-wc _inline="" _label="Beschreibung" _tooltipalign="top" _type="button">
-      <slot name="expert" slot="expert"></slot>
-    </kol-button-wc>
+    <div class="kol-button kol-button--inline kol-button--normal">
+      <button class="kol-button__interactive-element" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Beschreibung
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
   </template>
 </kol-button-link>
 `;
