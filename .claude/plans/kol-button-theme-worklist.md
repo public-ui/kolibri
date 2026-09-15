@@ -5,6 +5,10 @@
 > sei bewusst ausgeklammert, galt für den Stand vom 01.09. und ist überholt. Offen ist allein die
 > Abnahme über den Pixel-Gate (siehe _Abnahme_). Vorgehen und Werkzeuge:
 > `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
+>
+> Die beiden Fehlklassen, die der Pixel-Gate strukturell nicht sieht (tote Zustandsprädikate am
+> Wrapper, `&__element` in Modifier-Blöcken), prüft seitdem `pnpm check:skeleton-selectors`
+> statisch — auch in CI (SKILL.md §7b).
 
 ## Was sich geändert hat
 
@@ -125,6 +129,7 @@ Verschachtelung kompiliert innerhalb eines Blocks zu Descendant-Selektoren, die 
 ## Abnahme
 
 ```bash
+pnpm check:skeleton-selectors                         # statisch, Sekunden — muss grün sein
 node scripts/snapshots-docker.mjs <theme> --check     # je Theme, ca. 6 min
 git diff origin/develop..HEAD -- '*.png'              # muss leer sein
 ```

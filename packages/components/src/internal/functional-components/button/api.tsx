@@ -121,3 +121,15 @@ export type ButtonApi = ApiFromConfig<
  * omitted here instead of being declared as no-ops.
  */
 export type ButtonWebComponentInterface = Omit<WebComponentInterface<ButtonApi>, 'watchAriaHasPopup' | 'watchId' | 'watchTabIndex'>;
+
+/**
+ * Web component interface for `kol-button-link`: like `kol-button` it has no `_ariaHasPopup`,
+ * `_id` and `_tabIndex`, and — a link having no variants to customise — no `_customClass` either.
+ */
+export type ButtonLinkWebComponentInterface = Omit<WebComponentInterface<ButtonApi>, 'watchAriaHasPopup' | 'watchCustomClass' | 'watchId' | 'watchTabIndex'>;
+
+/**
+ * Web component interface for `kol-split-button`: like `kol-button` it has no `_ariaHasPopup`,
+ * `_id` and `_tabIndex`; its primary button is always standalone, so there is no `_inline` either.
+ */
+export type SplitButtonWebComponentInterface = Omit<WebComponentInterface<ButtonApi>, 'watchAriaHasPopup' | 'watchId' | 'watchInline' | 'watchTabIndex'>;
