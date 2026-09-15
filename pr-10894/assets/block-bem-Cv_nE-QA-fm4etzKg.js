@@ -1,1 +1,0 @@
-import{d as e}from"./index--KNFLdU9.js";import{a as t,r as n}from"./normalizers-B13uuknd-DrWyQazz.js";var r=n(`disabled`,!1,t),i=new Map;function a(t){let n=i.get(t);return n||(n=e.forBlock(t),i.set(t,n)),n}export{a as n,r as t};
