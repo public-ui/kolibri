@@ -43,10 +43,14 @@ type BadgeFCProps = Pick<
 };
 
 /**
- * The root node is a `<span>`, not `BemRootNodeFC`: a badge is inline content (it sits inside
- * headings, table cells and running text) and `BemRootNodeFC` always renders a `<div>`. ARC42
- * § "BemRootNodeFC Pattern" covers this case — the root is built from the same typed schema via
- * `bem.forBlock('kol-badge')` instead.
+ * The root node is built from `bem.forBlock('kol-badge')` rather than `BemRootNodeFC`: the badge
+ * paints its colours as an inline `style`, and `BemRootNodeFC` forwards only `class`. ARC42
+ * § "BemRootNodeFC Pattern" covers this case — the root uses the same typed schema either way.
+ *
+ * The children order is `span` (label), `button` (the smart button, pushed last by `order: 3`) and
+ * a trailing `<br />`, which makes NVDA's read mode treat each badge as one element. The `<br />`
+ * and the `<div>` root come from the badge read-mode fix on develop (#10842); the button's DOM
+ * position stays before it, so the tab order is unaffected.
  */
 export const BadgeFC: FC<BadgeFCProps> = (props) => {
 	const {
@@ -67,7 +71,7 @@ export const BadgeFC: FC<BadgeFCProps> = (props) => {
 	const hasSmartButton = typeof smartButton === 'object' && smartButton !== null && smartButtonProps !== undefined;
 
 	return (
-		<span
+		<div
 			class={badgeBem({ 'has-smart-button': hasSmartButton })}
 			style={{
 				backgroundColor: color.backgroundColor,
@@ -88,6 +92,8 @@ export const BadgeFC: FC<BadgeFCProps> = (props) => {
 					refTooltip={refTooltip}
 				/>
 			)}
-		</span>
+
+			<br />
+		</div>
 	);
 };

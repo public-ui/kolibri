@@ -20,6 +20,8 @@
 			   `ButtonFC` directly, so the block IS the flex item — a 100% base size would claim the
 			   whole badge and squeeze the label. `auto` restores the wrapper's content sizing. */
 			width: auto;
+
+			order: 3; // needed to push the button behind the br and at the end of the badge
 		}
 	}
 }
