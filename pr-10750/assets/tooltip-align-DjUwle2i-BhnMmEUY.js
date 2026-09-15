@@ -1,1 +1,0 @@
-import"./index-ycLdbSIc.js";import{r as e}from"./align-DBGYeCKM-aLejagzi.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
