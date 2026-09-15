@@ -1,5 +1,5 @@
 import type { ColorPair } from '../../schema';
-import { createContrastColorPair } from '../../schema';
+import { createContrastColorPair, parseJson } from '../../schema';
 import { createPropDefinition, type Prop } from './helpers/factory';
 
 /**
@@ -37,8 +37,12 @@ function normalizer(value: unknown): ColorPair {
 			backgroundColor: colors.background,
 			foregroundColor: colors.foreground,
 		};
-	} else if (typeof value === 'object' && value) {
-		const colorPair = value as ColorPair;
+	}
+	// The prop is declared `Stringified<PropColor>`, so a color pair also arrives as a JSON string
+	// whenever it is set through an HTML attribute rather than a JS property.
+	const candidate = typeof value === 'string' ? parseJson<ColorPair>(value) : value;
+	if (typeof candidate === 'object' && candidate) {
+		const colorPair = candidate as ColorPair;
 		if (
 			typeof colorPair.backgroundColor === 'string' &&
 			typeof colorPair.foregroundColor === 'string' &&

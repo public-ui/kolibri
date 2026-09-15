@@ -191,21 +191,26 @@ themes/
    - Globale Layout-Defaults
    - Box-sizing, Font-Size-Baseline
    - Keine Farben oder Abstände
+   - Kein Color Scheme (Light/Dark)
 
 3. **Schicht 3: Basis Komponente** (von `components`)
    - Komponenten-spezifisches Layout
    - Nur strukturelles CSS
    - Keine Farben oder Abstände
+   - Kein Color Scheme (Light/Dark)
 
 4. **Schicht 4: Theme Global** (von `themes`)
    - Farben, Schriften, Abstände
    - Design-Tokens
+   - Color Schemes (Light/Dark)
    - Marken-spezifische Globals
 
 5. **Schicht 5: Theme Komponente** (von `themes`)
    - Komponenten-spezifisches Theming
    - Farben, Rahmen, Schatten
    - Vollständiges visuelles Design
+
+> Dark/Light-Color-Schemes sind ausschließlich Theme-Sache. Die Basis-Schichten 1–3 fokussieren auf Layout und bleiben scheme-neutral; siehe [Basis-Styling vs. Theming Konzept](../BASE_STYLING_VS_THEMING_CONCEPT.md).
 
 ## 5.4 Adapters-Paket (Ebene 2)
 

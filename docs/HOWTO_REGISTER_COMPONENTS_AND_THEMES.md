@@ -66,6 +66,8 @@ await register([DEFAULT, ECL], defineCustomElements);
 
 Switching themes at runtime works through the `kol-theme` attribute—no additional registration call is required.
 
+> ℹ️ Dark mode is provided by a theme, never by `@public-ui/components`. The components package contains layout-only base styling without any color scheme. A theme either switches its color tokens — `@public-ui/theme-default` resolves each of them through `light-dark()` against the `color-scheme` the application declares — or ships a separate dark export that you register as an additional theme and select via `kol-theme`. See [BASE_STYLING_VS_THEMING_CONCEPT.md](./BASE_STYLING_VS_THEMING_CONCEPT.md).
+
 ## 4. Framework-specific notes
 
 - **React / Solid / Svelte / Vue**: Use the official adapters (`@public-ui/react`, `@public-ui/solid`, `@public-ui/svelte`, `@public-ui/vue`). They wrap `register` for you, but you still need to call it once in your app entry point before rendering.
@@ -78,8 +80,8 @@ Switching themes at runtime works through the `kol-theme` attribute—no additio
   Components were not registered. Call `register(...)` before rendering or ensure the promise resolved.
 - **Components use fallback styling** \
   No theme was registered. Pass a theme object (e.g. `DEFAULT`) to `register`.
-- **Everything stays light although the OS is dark** \
-  Dark mode is opt-in. Declare `:root { color-scheme: light dark; }` or load `color-scheme.css` (see step 2b).
+- **Components ignore the operating system's dark mode** \
+  Two things have to come together. The base styling is color-scheme neutral, so dark mode only appears if the registered theme implements it — and it is opt-in even then: declare `:root { color-scheme: light dark; }` or load the theme's `color-scheme.css` (see step 2b).
 - **The page is dark but the components are light, or the other way round** \
   Something declares `color-scheme` twice with different values. The components take the one in effect where they sit, so make the application the only place that sets it.
 - **Duplicate custom element definition error** \

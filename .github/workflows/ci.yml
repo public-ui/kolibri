@@ -3,20 +3,6 @@ name: CI-Pipeline
 on:
   pull_request:
     types: [opened, reopened, synchronize]
-    paths-ignore:
-      - '*.md'
-      - '**/*.md'
-      - 'docs/**'
-      - 'LICENSE'
-      - '.github/ISSUE_TEMPLATE/**'
-      - '.github/PULL_REQUEST_TEMPLATE/**'
-      - 'renovate.json'
-      - 'publiccode.yml'
-      - '.vscode/**'
-      - 'license-reports/**'
-      - '*.jpg'
-      - '*.png'
-      - '*.svg'
   push:
     branches:
       - 'develop'
@@ -54,6 +40,11 @@ jobs:
       - uses: ./.github/actions/pnpm-setup
       - name: Validate package scripts
         run: pnpm check:scripts
+      # Catches the two skeleton selector mistakes that visual snapshots cannot see, because
+      # snapshots photograph resting states: a `&__element` glued to a modifier, and a state
+      # predicate left on the class carrier (which is a wrapper element since the migration).
+      - name: Validate skeleton selectors
+        run: pnpm check:skeleton-selectors
       - name: Format
         run: pnpm -r format
       - name: Unused

@@ -31,7 +31,7 @@
 			text-align: center;
 		}
 
-		&:focus-visible,
+		/* The class carrier is a wrapper and never receives focus. */
 		.#{$block-classname}__interactive-element:focus-visible {
 			@include focus-outline;
 		}

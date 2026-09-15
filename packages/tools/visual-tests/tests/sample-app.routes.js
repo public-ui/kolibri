@@ -508,6 +508,14 @@ ROUTES.set('table/action-columns', {
 		},
 	},
 });
+ROUTES.set('table/state-columns', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 300,
+		},
+	},
+});
 ROUTES.set('table/with-footer', {
 	snapshot: {
 		viewportSize: {

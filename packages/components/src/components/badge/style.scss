@@ -15,9 +15,9 @@
 		justify-content: space-between;
 
 		.kol-badge__smart-button {
-			.button {
-				color: inherit;
-			}
+			width: auto; // overrides kol-button-wc-box-styles, which would claim the whole badge
+
+			order: 3; // needed to push the button behind the br and at the end of the badge
 		}
 	}
 }

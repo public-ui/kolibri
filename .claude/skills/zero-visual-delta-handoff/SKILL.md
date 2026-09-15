@@ -144,6 +144,17 @@ Diese Ursachen deckten in der Praxis >90 % der Diffs — in dieser Reihenfolge p
 6. **Sass-`X &`-Verschachtelung**: Innerhalb eines Blocks kompiliert `X &` zu einem Descendant-Selektor (`.a__element .a …`), der nie matcht. NIEMALS dem Kompilat vertrauen — das gebaute CSS greppen (Abschnitt 3, Werkzeug 5), bevor die Wirkung einer Regel vorausgesetzt wird.
 7. **Woher kam der Stil in der Basis wirklich?** Erst die Include-Kette prüfen (welche Datei inkludiert das Mixin in welchem Kontext — Consumer laden fremde Block-Stile oft nur über ein extra Include), bevor „das hatte die Basis nicht" angenommen wird.
 
+8. **Wegfallende Descendant-Stufe senkt die Spezifität — Compound-Selektor statt Weglassen.** Wird
+   ein Wrapper entfernt, sitzen Consumer-Klasse und Block-Klasse danach auf **demselben** Element:
+   aus `.kol-x__btn .kol-button` wird `.kol-x__btn`. Das ist ein Treffer weniger (0-3-0 → 0-2-0).
+   Regeln, die vorher nur über die Quellreihenfolge gegen eine gleich spezifische Theme-Regel
+   gewannen, verlieren jetzt still. Belegter Fall: ecl-ec schreibt dem Badge-Smart-Button per
+   `content: '\ea0e'` ein Icon vor und lag mit dem Mixin-Selektor
+   `.kol-icon[class*=' kolicon-'].kolicon-…::before` gleichauf — nach dem Wegfall der Stufe rendert
+   das Mixin-Glyph. Fix: die Stufe durch einen **Compound**-Selektor ersetzen
+   (`.kol-x__btn.kol-button …`), nicht ersatzlos streichen. Das Element trägt beide Klassen, die
+   Spezifität bleibt exakt erhalten.
+
 ### 6b. Selektoren-Regel, wenn ein Umbau das zustandstragende Element in einen Wrapper verschiebt
 
 Situation: `<element class="block">` wird zu `<div class="block"><element class="block__element">`. Danach sortieren sich alle Selektoren, die den alten Block betrafen, in drei Gruppen:
@@ -178,7 +189,34 @@ grep -rn "@include" packages/themes/*/src packages/components/src --include='*.s
 - **Prop-Factory verweigert `undefined`-Defaults**: Für „Attribut nur wenn gesetzt" das `''`-Sentinel-Muster nutzen (leerer Wert = Attribut entfällt), sonst leckt der Config-Default (z. B. `tabindex="0"`) ins gerenderte DOM — ein visuelles und semantisches Delta.
 - **Verschachtelte interne Transitional-Tags** (z. B. `-wc`-Wrapper) werden von Peer-Komponenten gerendert; vor Planung von Löschungen die Tag-Konstante im Components-Paket greppen.
 - **Shadow-Retargeting**: `document.activeElement` zeigt nur den Host; die Fokus-Kette über `shadowRoot.activeElement` abwärts verfolgen, wenn „fokussiert, aber keine Optik" verwirrt.
-- **unstyled-Theme-Spezifika**: kein Build-Schritt (`theme.ts` direkt, kein `THEME_CSS`); Route `icon/font` wird für `THEME_EXPORT=UNSTYLED` übersprungen; zeigt NUR den Basis-Layer — jede visuelle Änderung deutet auf DOM-Umbauten im Basis-Styling hin; Docker-Support ist über `discoverThemes()` (liest auch `packages/unstyled`) vorhanden.
+- **unstyled-Theme-Spezifika**: kein Build-Schritt (`theme.ts` direkt, kein `THEME_CSS`); Route `icon/font` wird für `THEME_EXPORT=UNSTYLED` übersprungen; zeigt NUR den Basis-Layer — jede visuelle Änderung deutet auf DOM-Umbauten im Basis-Styling hin; Docker-Support ist über `discoverThemes()` (liest auch `packages/unstyled`) vorhanden. Die Basis ist zudem scheme-neutral: `unstyled`-Snapshots dürfen unter `KOLIBRI_VISUAL_TESTS_COLOR_SCHEME=light` und `=dark` nicht differieren; ein Diff zwischen beiden Läufen ist ein Fehler in `components`, nicht im Test.
+- **Farbwechsel im Diff gehört nie in die Basis**: Zeigt die Farbprobe `exp=(r,g,b) ≠ act=(r,g,b)` bei unveränderter Geometrie, liegt die Ursache in der Theme-Schicht (Token, Mixin, Include-Kette) — niemals durch Farben oder gar Dark/Light-Regeln (`prefers-color-scheme`, `color-scheme`, `light-dark()`) in `components` „reparieren“. Die Basis ist layout-only und scheme-neutral (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
+
+## 7b. Was der Pixel-Gate strukturell **nicht** sieht
+
+Snapshots fotografieren Ruhezustände. Hover, `:active`, `:focus`, `:focus-visible` und
+`[disabled]`-Kombinationen kommen darin nicht vor. Bei einem DOM-Umbau, der ein zustandstragendes
+Element in einen Wrapper verschiebt, liegt aber **genau dort** das Risiko:
+
+- `:focus` / `:focus-visible` / `:disabled` propagieren nicht auf Vorfahren → am Wrapper tot.
+- `:not(:disabled)` / `:not([disabled])` sind am Wrapper **immer wahr** → die Regel fällt nicht aus,
+  sie kehrt sich um und stylt deaktivierte Elemente.
+- `&__element` innerhalb eines Modifier-Blocks expandiert zu `--modifier__element` → tot.
+
+Ein grüner Pixel-Lauf sagt über all das nichts. „Alle Themes grün" ist deshalb kein Beleg für einen
+vollständigen Selektor-Umzug. Zwei Prüfungen decken die Lücke:
+
+```bash
+pnpm check:skeleton-selectors   # statisch, vollständig, Sekunden — läuft auch in CI
+```
+
+und ein dynamischer Interaktionstest je Theme: `hover()` / `focus()` auf einem aktivierten **und**
+einem deaktivierten Element, `getComputedStyle` vergleichen. Der statische Check beweist, dass
+Selektoren matchen können; der Interaktionstest beweist, dass sie das Richtige tun. Beide gehören
+neben den Pixel-Gate, keiner ersetzt ihn.
+
+Fix-Muster für invertierende Regeln, wenn der Wrapper das Subjekt bleiben soll (Hover-Optik
+pixelgleich, deaktivierte Elemente fallen wieder heraus): `&:not(:has(:disabled)):hover`.
 
 ## 8. Allowlist — der einzige Ausweg
 
@@ -191,7 +229,7 @@ Baselines werden **nicht regeneriert**, sondern auf den Base-Stand gestellt (Abs
 
 ## 10. Companion-Plan als Handoff-Dokument
 
-Ein Plan-Dokument **im Repo** (z. B. `.claude/plans/<branch>.md`), das jede Session aktuell hält. Plan-Commits zusammen mit — oder vor — der Arbeit, die sie beschreiben. Pflichtabschnitte:
+Ein Plan-Dokument **lokal, ungetrackt** (z. B. `.claude/plans/<branch>.md`), das jede Session aktuell hält — Pläne werden nicht eingecheckt und sind nicht Teil eines PRs (Owner-Entscheid 2026-09-15, siehe migrate-to-skeleton § Konventionen). Dauerhaft relevantes Wissen wandert stattdessen in die Skills. Pflichtabschnitte:
 
 - **Goal**: Ziel + Kriterium + Messbefehl + je Theme/Scope eine Statuszeile mit Prüfbefehl.
 - **Current state**: Tabelle der Commits mit aussagekräftiger Zusammenfassung, mit Datum.
@@ -256,7 +294,7 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 | 16d | Geteilte Mixins für Link- UND Button-Blöcke: Fokus-Regeln brauchen BEIDE Varianten (`__anchor` + `__button`) → Log default (link-button via kol-button('kol-link'))                                                                                                                                   | Migration default                                | Fehlender Fokus-Ring bei Cross-Blöcken verhindert                   |
 | 16e | Sample-Drift Branch↔Base ist eine Diff-Quelle: Variant-Auflösung (getTheme vs getCustomThemes) ändert Sample-Inhalt → Umbruch; Samples auf Base-Stand syncen → Log default (icon/font)                                                                                                                | Migration default                                | Phantom-Diffs in unverdächtigen Routen verhindert                   |
 
-| 29 | Migrierter FC darf den transitionalen `-wc`-Tag behalten: Theme-/Basis-Selektoren treffen dessen Host-Klasse als Vorfahren (ecl `.kol-details__heading-button .kol-button`, desy `kol-link('kol-details__heading-button')`) — vor jedem Ersetzen die Selektoren greppen; DOM-identischer FC-Port erspart die komplette Theme-Runde → Log 2026-09-14 | Details-Skeleton-Migration (PR #10884) | Theme-Fix-Runden (25–33 Diffs wie bei Button) von vornherein vermieden |
+| 29 | Migrierter FC darf den transitionalen `-wc`-Tag behalten: Theme-/Basis-Selektoren treffen dessen Host-Klasse als Vorfahren (ecl `.kol-details__heading-button .kol-button`, desy `kol-link('kol-details__heading-button')`, badge `.kol-badge__smart-button .kol-button`) — vor jedem Ersetzen die Selektoren greppen; DOM-identischer FC-Port erspart die komplette Theme-Runde → Log 2026-09-14 | Details-Skeleton-Migration (PR #10884), Badge-Skeleton-Migration (PR #10889) — 2× bestätigt | Theme-Fix-Runden (25–33 Diffs wie bei Button) von vornherein vermieden |
 
 **Block C — Betrieb**
 
@@ -460,6 +498,65 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 - **Theme-Spezifika**: keine. Das ist die eigentliche Lehre: Bevor ein DOM-Entscheid während der Migration fällt, die Theme-/Basis-SCSS-Selektoren auf die betroffenen Klassen prüfen — dann kann die Theme-Runde komplett entfallen (Gegenprobe: Button-Migration mit 25–33 Diffs je Theme, weil der Wrapper-Umbau erst nach dem Port sichtbar wurde).
 - **Fix-Commit(s)**: Migrations-Commit auf `refactor/migrate-kol-details-skeleton` (PR #10884).
 - **Evidenz**: je Theme `node scripts/snapshots-docker.mjs <theme> --check` → 293/293 passed, Exit 0 (default, bwst, ecl, kern, desy, unstyled); `git diff origin/develop...HEAD -- '*.png'` = 0. Diagnose-Falle unterwegs: Jest-Snapshot-Serializer sortiert `class`-Attribute alphabetisch (Erfahrung #28).
+
+### 2026-09-14 — Skeleton-Migration kol-badge (DOM-identischer FC-Port): alle Pakete, 0 Diffs ab Start
+
+- **Ausgangslage**: Zweite Migration in Folge, die das Pixel-Gate ohne eine einzige Theme-Fix-Runde
+  passiert (PR #10889). BadgeFC (`internal/functional-components/badge/`) ersetzt das `render()` des
+  Legacy-WC; WC-Orchestrator nach ARC42, kein Behavior nötig.
+- **Ursachen & Fix-Muster**: keine — der DOM wurde byte-identisch portiert. Zwei Entscheidungen
+  waren dafür ausschlaggebend, beide **vor** dem Schreiben des FC durch Greppen der Theme-/Basis-SCSS
+  getroffen: (a) der transitionale `kol-button-wc` blieb im FC, weil `.kol-badge__smart-button
+.kol-button` (default/bwst) bzw. `… button` (kern) und `.kol-badge__smart-button .kol-button`
+  (ecl-ec) die Host-Klasse als Vorfahren brauchen (Erfahrung #29, 2. Bestätigung); (b) die Wurzel
+  blieb ein `<span>` statt `BemRootNodeFC` — ein Badge ist Inline-Inhalt, und ARC42
+  § „BemRootNodeFC Pattern" erlaubt den direkten `bem.forBlock`-Weg für nicht-`div`-Wurzeln.
+- **Neu gelernt (Früher-gewusst-Test bestanden)**: Eine Render-Prop, die _fehlen_ darf, ist mit
+  `StrictFields` nicht ausdrückbar. Lösung: `unsetRenderProp(key)` direkt nach `initRenderProps`
+  **und** vor jedem `apply`, plus ein `Omit<…> & { key?: T }`-Override am FC-Prop-Typ (Muster, das
+  `SpanFC` schon nutzt). Ohne das Unset leckt der Config-Default ins DOM — dieselbe Klasse Fehler
+  wie der `tabindex="0"`-Leak aus Erfahrung #21, nur mit einem leeren Button als Symptom.
+- **Diagnose-Falle unterwegs**: Ein Pfad-Glob (`themes/*/src/…`) in einem JSDoc-Block **beendet den
+  Kommentar** am `*/`; `tsc` meldet dann `TS1443`/„Unterminated template literal" in Zeilen weit
+  hinter der Ursache. Pfad-Globs in Kommentaren ausschreiben.
+- **Theme-Spezifika**: keine.
+- **Fix-Commit(s)**: `427bec2` auf `claude/peaceful-babbage-qpr0bn` (PR #10889).
+- **Evidenz**: CI-Jobs `visual-tests (<paket>)` alle grün; Visual-Review-Bot „✅ No visual changes",
+  je 408 unchanged / 0 changed für `unstyled`, `theme-default`, `theme-bwst`, `theme-ecl`,
+  `theme-kern`, `theme-desy`, `test-tag-name-transformer`; Baseline `001397bfb1` (develop),
+  Commit `427bec23a9`; `git diff --name-only origin/develop...HEAD -- '*.png'` = 0. Docker stand in
+  der Session nicht zur Verfügung — die CI-Jobs sind laut § 1 gleichwertige Abnahme-Evidenz.
+
+### 2026-09-14 — Konsumenten-Ausbau `kol-button-wc` → `ButtonFC` (kol-badge): 8 → 2 → 1 → freigegeben
+
+- **Ausgangslage**: Erster Konsument, der den transitionalen Wrapper verlässt. Die Migration selbst
+  war DOM-identisch und mit 0 Diffs abgenommen; erst der Wrapper-Ausbau änderte das DOM bewusst und
+  erzeugte 8 geänderte Bilder über alle sieben Pakete.
+- **Ursachen & Fix-Muster** (in dieser Reihenfolge abgetragen):
+  1. **`@Prop`-Defaults des Wrappers sind unsichtbar für die Prop-Definitionen** (6 von 8 Diffs).
+     `kol-button-wc` deklariert `_inline = false` und `_tooltipAlign = 'top'` als Stencil-Feld; die
+     mit dem Link geteilten Definitionen tragen `true` und `'right'`. Ergebnis: `--inline` statt
+     `--standalone` und Tooltip rechts statt oben. Fix: `BUTTON_ELEMENT_DEFAULTS` im Resolver.
+     **Kein Unit-Test fängt das** — die Snapshots schreiben die neue Ausgabe fest.
+  2. **Wegfallende Descendant-Stufe senkt die Spezifität** (Muster 8, neu). `.kol-x__btn
+.kol-button …` → `.kol-x__btn …` ist 0-3-0 → 0-2-0; ecls Icon-Regel gewann vorher nur über die
+     Quellreihenfolge gegen das eigene Icon-Mixin und verlor danach. Fix: Compound-Selektor
+     `.kol-x__btn.kol-button …`.
+  3. **Rest: 1 px, Line-Box-Unterlänge.** Im Wrapper erzeugte das `inline-block`-`.kol-button` eine
+     Line-Box, deren Unterlänge unter dem Button lag; ohne Wrapper wird der Block als Flex-Item
+     blockifiziert, hat keine Line-Box und sitzt exakt mittig — ~1 px tiefer. Nur ecl zeigt es, weil
+     `--a11y-min-size: 26px` den Button dort klein genug hält.
+- **Diagnose ohne Docker**: Das CI-Artefakt `visual-review-<paket>` enthält `expected`/`actual`/`diff`
+  als PNG. Herunterladen (`download_workflow_run_artifact` → curl → unzip) und mit PIL Bounding-Box
+  plus Zeilenbänder ausgeben — das lieferte beide Male die entscheidende Antwort (verschobene Glyphe
+  = anderes Icon; 1-Zeilen-Versatz = Line-Box). **Werkzeug 1 des Skills funktioniert vollständig
+  ohne Docker**, wenn die CI das Artefakt liefert.
+- **Ausgang**: Die letzten 1 px wurden vom Owner auf der Visual-Review-Seite freigegeben
+  (Allowlist nach § 8) statt einen semantisch leeren Wrapper-`<span>` wieder einzuführen.
+- **Fix-Commit(s)**: `f971400` (Ausbau), `41d923f` (Defaults), `8abd56b` (Spezifität) auf PR #10889.
+- **Evidenz**: `Visual Review: 1 visual changes approved by deleonio`, kombinierter Status `success`,
+  Commit `77f332a835`; sechs Pakete 408/0, ecl 407/1 (freigegeben);
+  `git diff --name-only origin/develop...HEAD -- '*.png'` = 0.
 
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 

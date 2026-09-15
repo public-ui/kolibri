@@ -283,7 +283,9 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
-			class: 'kol-single-select',
+			class: clsx('kol-single-select', {
+				'kol-single-select--open': this._isOpen,
+			}),
 			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
 			infoPopover: this._infoPopover,

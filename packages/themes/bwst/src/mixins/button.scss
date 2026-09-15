@@ -27,7 +27,6 @@
 
 		/* The skeleton renders the focusable interactive element inside the wrapper — the wrapper
 		   itself is never focused. */
-		&:focus,
 		&__interactive-element:focus {
 			outline: none;
 		}
@@ -120,8 +119,7 @@
 				}
 			}
 
-			@at-root #{$root}:focus-visible,
-				#{$root}__interactive-element:focus-visible {
+			@at-root #{$root}__interactive-element:focus-visible {
 				@include focus-outline;
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}

@@ -147,6 +147,10 @@
 			@include kol-link('kol-link');
 		}
 
+		&__cell-states {
+			gap: to-rem(4);
+		}
+
 		&__spacer {
 			display: none;
 		}

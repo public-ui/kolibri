@@ -186,5 +186,90 @@ executeSnapshotTests<TableStatelessProps>(
 			],
 			_loading: true,
 		},
+		{
+			_label: 'Table with action column',
+			_headers: {
+				horizontal: [
+					[
+						{ key: 'header1', label: 'Header 1', textAlign: 'left', width: 150 },
+						{
+							type: 'action',
+							key: 'header2',
+							label: 'Header 2',
+							textAlign: 'right',
+							width: 180,
+							actions: () => {
+								return [
+									{
+										type: 'button',
+										_label: 'Details',
+										_icons: 'kolicon-eye',
+										_hideLabel: true,
+									},
+									{
+										type: 'link',
+										_label: 'View',
+										_href: `#/`,
+										_target: '_blank',
+										_icons: 'kolicon-external-link',
+										_hideLabel: false,
+									},
+								];
+							},
+						},
+					],
+				],
+			},
+			_data: [
+				{ header1: 'Cell 1.1', header2: 'Cell 1.2' },
+				{ header1: 'Cell 2.1', header2: 'Cell 2.2' },
+			],
+			_loading: true,
+		},
+		{
+			_label: 'Table with state column',
+			_headers: {
+				horizontal: [
+					[
+						{ key: 'header1', label: 'Header 1', textAlign: 'left', width: 150 },
+						{
+							type: 'state',
+							key: 'header2',
+							label: 'Header 2',
+							textAlign: 'right',
+							width: 180,
+						},
+					],
+				],
+			},
+			_data: [
+				{
+					header1: 'Cell 1.1',
+					header2: [
+						{
+							type: 'badge',
+							_label: 'badge 1',
+							_color: '#aa0000',
+						},
+						{
+							type: 'badge',
+							_label: 'badge 2',
+							_color: '#0000aa',
+						},
+					],
+				},
+				{
+					header1: 'Cell 2.1',
+					header2: [
+						{
+							type: 'badge',
+							_label: 'badge 1',
+							_color: '#aa0000',
+						},
+					],
+				},
+			],
+			_loading: true,
+		},
 	],
 );
