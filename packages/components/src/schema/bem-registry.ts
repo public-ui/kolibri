@@ -56,6 +56,17 @@ export type KoliBriComponentsBemSchema = {
 		 */
 		modifiers: Set<'hasCloser' | 'type-default' | 'type-error' | 'type-info' | 'type-success' | 'type-warning' | 'variant-card' | 'variant-msg'>;
 	};
+	'kol-badge': {
+		elements: {
+			label: {
+				modifiers: null;
+			};
+			'smart-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'has-smart-button'>;
+	};
 	'kol-avatar': {
 		elements: {
 			image: {
@@ -259,6 +270,13 @@ const BEM: KoliBriComponentsBemSchema = {
 			container: { modifiers: null },
 		},
 		modifiers: new Set(['hasCloser', 'type-default', 'type-error', 'type-info', 'type-success', 'type-warning', 'variant-card', 'variant-msg']),
+	},
+	'kol-badge': {
+		elements: {
+			label: { modifiers: null },
+			'smart-button': { modifiers: null },
+		},
+		modifiers: new Set(['has-smart-button']),
 	},
 	'kol-avatar': {
 		elements: {

@@ -81,6 +81,59 @@ Hintergrund: `packages/components/src/components/_skeleton/ARC42.md#schema-helpe
 - Verwaiste Dateien, obsolete Wrapper und alte Controller-/Aspect-Module löschen (ihre Logik liegt jetzt im WC oder im Behavior).
 - Ungenutzte Imports, Typen und auskommentierten Code entfernen.
 
+**Transitionale `-wc`-Tags beim Konsumenten ablösen.** Rendert die migrierte Komponente ein
+`kol-*-wc`-Element, dessen Ziel **bereits** auf Skeleton umgestellt ist (heute `kol-button-wc` →
+`ButtonFC`, `kol-link-wc` → `LinkFC`), dann ist der Umstieg auf den FC Teil dieser Migration und
+nicht optional. Genau dafür existiert der Wrapper — er ist Gerüst, kein Ziel
+(`ARC42.md#transitional-pattern-shadowfalse`). Jede Migration, die ihn stehen lässt, verlängert das
+~350-Zeilen-Duplikat zwischen `component.tsx` und `wc.tsx` und hält 17 (`kol-button-wc`) bzw. 8
+(`kol-link-wc`) Konsumenten am Leben. **Diesen Punkt aktiv prüfen — er wird sonst übersehen, weil
+der Wrapper funktioniert und nichts fehlschlägt.**
+
+Zwei Vorprüfungen entscheiden, ob das ein Teil dieses PRs ist oder ein eigener:
+
+1. **Prop-Aufwand.** Der `-wc`-Wrapper ist ein Orchestrator: er normalisiert Props, komponiert
+   Behaviors und hält Event-Handler. Der FC bekommt davon nichts geschenkt — `ButtonFC` verlangt
+   26 normalisierte Render-Props, 4 `handle*`-Callbacks, 2 Refs und ein `ariaDescriptionId`-State.
+   Prüfen: **Hat der migrierte WC diese Werte schon, oder müsste er die Orchestrierung des Wrappers
+   nachbauen?**
+   - _Hat sie schon_ (feste, im WC bereits normalisierte Werte, keine Tooltip-/Form-Logik) → trivialer
+     Tausch, gehört in diesen PR.
+   - _Müsste nachbauen_ (die Props sind ein opaker Pass-through wie `InternalButtonProps`, oder der
+     Wrapper bringt `TooltipBehavior`, `AssociatedInputController`, `dispatchDomEvent` mit) → **nicht**
+     inline duplizieren. Dann braucht es zuerst eine wiederverwendbare Orchestrierungs-Einheit
+     (Behavior oder geteilter Normalisierungs-Helfer); das ist ein eigener, architektonisch
+     relevanter Schritt und gehört dem Owner vorgelegt, nicht nebenbei erledigt.
+2. **Default-Aufwand (die stille Falle).** Der `-wc`-Wrapper setzt Defaults als Stencil-`@Prop`-Feld
+   (`@Prop() public _inline?: InlinePropType = false;`). Die sind Teil dessen, was das Element
+   rendert, stehen aber **nicht** in der Prop-Definition — und mehrere Definitionen teilen sich
+   Button und Link, deren Konventionen auseinandergehen: `inlineProp` defaultet auf `true`,
+   `tooltipAlignProp` auf `'right'`, beide Button-Elemente deklarieren `false` und `'top'`. Wer nur
+   die Prop-Definitionen anwendet, bekommt still einen anderen Button (`--inline` statt
+   `--standalone`, Tooltip rechts statt oben). **Die `@Prop`-Defaults des Wrappers abgleichen und
+   im Resolver neu setzen** — für Button erledigt das `BUTTON_ELEMENT_DEFAULTS` in
+   `internal/functional-components/button/resolve-props.ts`. Kein Unit-Test fängt das; gefunden hat
+   es erst das Pixel-Gate.
+3. **Selektor-Aufwand.** Der Wrapper trägt heute die Consumer-Klasse als **Vorfahr** des Blocks:
+   `<kol-button-wc class="kol-x__btn"><div class="kol-button">`. Nach dem Tausch merged
+   `BemRootNodeFC` die Klasse auf denselben Knoten: `<div class="kol-button kol-x__btn">`. Jeder
+   Selektor der Form `.kol-x__btn .kol-button` greift dann nicht mehr — still, ohne Fehler. Vorher
+   greppen und mitmigrieren:
+
+   ```bash
+   grep -rn "<consumer-element-klasse>" packages/themes/*/src packages/components/src --include='*.scss'
+   ```
+
+   Die Regeln, nach denen die Treffer sortiert werden, stehen in
+   `zero-visual-delta-handoff/SKILL.md` § 6b; Theme-Fixes bleiben theme-lokal.
+
+4. **Abnahme.** Der Tausch ist ein DOM-Umbau, also gilt das Pixel-Gate unverändert (Phase 5). Ohne
+   grünen Nachweis je Theme ist er nicht fertig.
+
+Fällt die Ablösung nach Vorprüfung 1 aus dem PR, wird sie **benannt**: im PR-Text und im
+Companion-Plan unter „Open work", mit dem Grund. Stillschweigend stehen lassen ist der Fehler,
+den diese Regel verhindern soll.
+
 **Dead-Schema-Erkennung.** Alte Legacy-Schemas werden nach der Migration abgebaut:
 
 ```bash
@@ -134,6 +187,7 @@ Durchgeführte Beispiele mit Befunden und Stolperstellen: `.claude/plans/migrate
 - [ ] FC ist zustandslos und kapselt seinen Wurzelknoten in `BemRootNodeFC`
 - [ ] `<Host>` ohne redundantes `class`-Attribut
 - [ ] Öffentliche `@Prop`/`@Method`-Oberfläche identisch zum Vorgänger, in `public-api.spec.ts` festgenagelt, Schema-`*Props`-Interface implementiert
+- [ ] Transitionale `kol-*-wc`-Tags im gerenderten Markup geprüft: abgelöst, oder mit Begründung als offene Arbeit benannt
 - [ ] Kein toter Code, keine verwaisten Dateien; Dead-Schema-Abbau geprüft (inkl. Ausnahme für veröffentlichte Typen)
 - [ ] Tests ko-lokalisiert und aktualisiert
 - [ ] `pnpm format`, `pnpm lint`, `test:unit` erfolgreich

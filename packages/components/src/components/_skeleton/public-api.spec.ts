@@ -807,6 +807,44 @@ const KOL_SPLIT_BUTTON_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	},
 };
 
+/**
+ * Pinned public API of `kol-badge`: 4 props plus `focus()`. Changing any of them is a breaking
+ * change and has to be decided, not slipped in — see the contract test below.
+ */
+const KOL_BADGE_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the internal element.',
+	},
+	_color: {
+		kind: 'prop',
+		type: 'Stringified<PropColor>',
+		required: false,
+		default: "'#000'",
+		doc: 'Defines the backgroundColor and foregroundColor.',
+	},
+	_icons: {
+		kind: 'prop',
+		type: 'Stringified<KoliBriIconsProp>',
+		required: false,
+		doc: 'Defines the icon classnames.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_smartButton: {
+		kind: 'prop',
+		type: 'Stringified<InternalButtonProps>',
+		required: false,
+		doc: 'Allows to add a button with an arbitrary action within the element (_hide-label only).',
+	},
+};
+
 describe('kol-link public API contract (ARC42 § Public API Contract)', () => {
 	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
 		const extracted = extractFrom('link', 'component.tsx');
@@ -831,6 +869,7 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['button-link', 'component.tsx'],
 		['link-button', 'component.tsx'],
 		['split-button', 'component.tsx'],
+		['badge', 'component.tsx'],
 	];
 
 	it.each(sources)('documents every public member of %s/%s', (component, file) => {
@@ -875,6 +914,7 @@ describe.each([
 	['kol-button-link', 'button-link', 'ButtonLinkProps', KOL_BUTTON_LINK_PUBLIC_API],
 	['kol-link-button', 'link-button', 'LinkButtonProps', KOL_LINK_BUTTON_PUBLIC_API],
 	['kol-split-button', 'split-button', 'SplitButtonProps', KOL_SPLIT_BUTTON_PUBLIC_API],
+	['kol-badge', 'badge', 'BadgeProps', KOL_BADGE_PUBLIC_API],
 ] as const)('%s public API contract (ARC42 § Public API Contract)', (_tag, component, schemaInterface, pinnedApi) => {
 	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
 		// Failing this test means the public contract changed — a breaking change (ARC42 §

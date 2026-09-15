@@ -42,6 +42,7 @@ export * from './secondary-headline';
 export * from './short-key';
 export * from './show';
 export * from './sizes';
+export * from './smart-button';
 export * from './span-icons';
 export * from './src';
 export * from './srcset';
