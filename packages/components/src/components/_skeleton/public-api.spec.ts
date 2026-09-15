@@ -380,8 +380,9 @@ const KOL_BUTTON_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 
 /**
  * Pinned public API of `kol-button-link` — byte-identical to the predecessor `shadow.tsx` on the
- * develop branch (19 props + getValue/focus/click). `_role` stays declared but, as before, is not
- * forwarded to the inner element.
+ * develop branch (19 props + getValue/focus/click), except `_on`'s JSDoc, translated from German
+ * to English to match every other prop's documentation (doc-only, no behavior change). `_role`
+ * stays declared but, as before, is not forwarded to the inner element.
  */
 const KOL_BUTTON_LINK_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	getValue: {
@@ -475,7 +476,7 @@ const KOL_BUTTON_LINK_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 		kind: 'prop',
 		type: 'ButtonCallbacksPropType<StencilUnknown>',
 		required: false,
-		doc: 'Gibt die EventCallback-Funktionen für die Button-Events an.',
+		doc: 'Defines the callback functions for button events.',
 	},
 	_role: {
 		kind: 'prop',
