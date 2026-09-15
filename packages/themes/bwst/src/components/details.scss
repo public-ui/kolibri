@@ -69,5 +69,13 @@
 			border-bottom: 1px solid var(--color-mute-variant);
 			padding-block: to-rem(4);
 		}
+
+		/* A closed `<details>` drops its content subtree from layout, and the wrapper's own box
+		   goes with it. The predecessor kept that box — 4px padding above and below plus the rule,
+		   9px in total — below a collapsed summary, so it is restored on the block itself. */
+		&:not(.collapsible--open) {
+			padding-bottom: to-rem(8);
+			border-bottom: 1px solid var(--color-mute-variant);
+		}
 	}
 }
