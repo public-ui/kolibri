@@ -1,0 +1,1 @@
+import"./index-WgIDoa-y.js";import{r as e}from"./align-DUWI6s56-CNTAzmck.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
