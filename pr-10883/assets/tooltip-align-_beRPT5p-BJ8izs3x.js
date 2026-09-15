@@ -1,1 +1,0 @@
-import"./index-Db_ImglZ.js";import{r as e}from"./align-DglmQnOH-Dp7-cQs9.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
