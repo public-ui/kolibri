@@ -9,39 +9,24 @@
 			outline-offset: -2px;
 		}
 
+		/* `<summary>` replaced the `kol-button-wc`: the wrapper and its interactive element are one
+		   element now, and the expanded state is the `collapsible--open` class rather than
+		   `aria-expanded`, which the native `open` attribute carries. */
 		&__heading-button {
-			.kol-button {
-				&:hover {
-					background-color: var(--ecl-color-neutral-60);
-				}
+			padding: var(--ecl-spacing-xl);
 
-				.kol-icon {
-					font-family: ecl-icons;
-					&::before {
-						content: '\ea46';
-					}
-				}
+			&:hover {
+				background-color: var(--ecl-color-neutral-60);
+			}
 
-				/* Box padding and the aria-expanded state belong to the interactive element: on the
-				   wrapper the padding would stack on top of the inner button's a11y min-size instead
-				   of growing the old button box, and `aria-expanded` now sits on the real button. */
-				.kol-button__interactive-element {
-					padding: var(--ecl-spacing-xl);
+			&:focus {
+				outline: none;
+			}
 
-					&:focus {
-						outline: none;
-					}
-
-					&[aria-expanded='true'] {
-						padding-bottom: var(--ecl-spacing-l);
-
-						.kol-icon {
-							font-family: ecl-icons;
-							&::before {
-								content: '\ea38';
-							}
-						}
-					}
+			.kol-icon {
+				font-family: ecl-icons;
+				&::before {
+					content: '\ea46';
 				}
 			}
 
@@ -54,6 +39,15 @@
 
 		&__content {
 			padding: 0 var(--ecl-spacing-xl) var(--ecl-spacing-xl);
+		}
+
+		&.collapsible--open &__heading-button {
+			padding-bottom: var(--ecl-spacing-l);
+
+			.kol-icon::before {
+				content: '\ea38';
+				font-family: ecl-icons;
+			}
 		}
 	}
 }

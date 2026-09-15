@@ -19,46 +19,47 @@
 			font-size: 2em;
 		}
 
+		/* `<summary>` replaced the `kol-button-wc`, so the button box moves onto the summary and
+		   `.kol-button__text` becomes the plain label span. The decorative bar keeps `::before`;
+		   the component layer's baseline `::before` on the same element is overridden by it. */
 		&__heading-button {
-			.kol-button {
-				color: #171a22;
-				border-radius: 8px;
-				border-bottom-color: #cfdaf5;
-				display: block;
-				position: relative;
-				width: 100%;
-				padding: to-rem(24);
-				border-bottom-width: to-rem(2);
+			color: #171a22;
+			border-radius: 8px;
+			border-bottom-color: #cfdaf5;
+			display: block;
+			position: relative;
+			width: 100%;
+			padding: to-rem(24);
+			border-bottom-width: to-rem(2);
 
-				font:
-					normal normal 400 to-rem(18) / to-rem(28) arial,
-					sans-serif;
-				line-height: 1.2;
-				border: 0;
-				border-bottom-style: solid;
-				outline-offset: -1px;
-				text-align: start;
+			font:
+				normal normal 400 to-rem(18) / to-rem(28) arial,
+				sans-serif;
+			line-height: 1.2;
+			border: 0;
+			border-bottom-style: solid;
+			outline-offset: -1px;
+			text-align: start;
 
-				&__text {
-					align-items: baseline;
-				}
+			.kol-span {
+				align-items: baseline;
+			}
 
-				&::before {
-					background-color: #fc0;
-					position: absolute;
-					top: 0;
-					left: to-rem(24);
-					width: to-rem(6);
-					height: to-rem(4);
+			&::before {
+				background-color: #fc0;
+				position: absolute;
+				top: 0;
+				left: to-rem(24);
+				width: to-rem(6);
+				height: to-rem(4);
 
-					content: '';
-					border-end-end-radius: to-rem(2);
-					border-end-start-radius: to-rem(2);
-				}
+				content: '';
+				border-end-end-radius: to-rem(2);
+				border-end-start-radius: to-rem(2);
+			}
 
-				&:focus {
-					outline: none;
-				}
+			&:focus {
+				outline: none;
 			}
 
 			.kol-icon {
@@ -88,17 +89,15 @@
 		}
 
 		.collapsible--open &__heading-button {
-			.kol-button {
-				border-start-end-radius: to-rem(8);
-				border-start-start-radius: to-rem(8);
-			}
+			border-start-end-radius: to-rem(8);
+			border-start-start-radius: to-rem(8);
 
 			.kol-icon::before {
 				content: '\f077';
 			}
 		}
 
-		:not(.collapsible--open) &__heading-button .kol-button .kol-icon::before {
+		:not(.collapsible--open) &__heading-button .kol-icon::before {
 			content: '\f078';
 		}
 	}

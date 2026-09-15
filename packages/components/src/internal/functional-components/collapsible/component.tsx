@@ -1,62 +1,69 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { KolButtonWcTag } from '../../../core/component-names';
 import { getHeadlineTag } from '../../../functional-components/Heading/Heading';
 import clsx from '../../../utils/clsx';
 import { getBlockBem } from '../bem-root-node/block-bem';
-import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
+import { SpanFC } from '../span/component';
 import type { CollapsibleApi, CollapsibleVariant } from './api';
 
 /**
- * Renders a collapsible — `kol-accordion` and `kol-details` — as a single BEM root.
+ * Renders a collapsible — `kol-accordion` and `kol-details` — on the native `<details>`/`<summary>`
+ * elements.
  *
- * Both components render the exact same markup: a heading holding the toggle button, and a content
- * region wrapped in the two animation containers. They differ only in their BEM block, the chevron
- * icon and the extra content class, all of which arrive as {@link CollapsibleVariant}. Everything
- * else — including the legacy `collapsible*` classes that the shared
- * `components/@shared/_collapsible.mixin.scss` styles — is identical, which is why one functional
- * component serves both.
+ * `<summary>` is the disclosure control itself, which is what the native elements are for: one tab
+ * stop, keyboard handling and the expanded state come from the user agent instead of from ARIA we
+ * maintain by hand. The predecessor nested a `kol-button-wc` inside a heading and reimplemented all
+ * of that.
  *
- * The heading button is intentionally still rendered as the transitional `kol-button-wc` element:
- * dropping its host node would move the `kol-<block>__heading-button` class onto the same element
- * as `kol-button` and break theme selectors that target the host as an ancestor (e.g. default
- * `.kol-accordion__heading-button .kol-button`, ecl `.kol-details__heading-button .kol-button`).
+ * The nesting inverts against the predecessor — `<summary>` has to be the first child of
+ * `<details>`, so the heading moved inside the control instead of wrapping it. `<summary>` therefore
+ * carries *both* header element classes: it is the outer box the `__heading` rules were written for
+ * (border, margin) and the control the `__heading-button` rules were written for (padding, focus,
+ * min-size) in one element. Splitting them across the two levels would put outer-edge styling like
+ * `border-bottom` inside the control's padding.
+ *
+ * The label and icon still render through `SpanFC`, so the `kol-span__container` / `kol-span__label`
+ * / `kol-icon` subtree the themes style is unchanged as well.
+ *
+ * `open` on `<details>` and the `collapsible--open` class are driven separately: the attribute has
+ * to be set before the class flips so the grid transition has a from-state, and it has to outlive
+ * the class on close so the collapse is visible. The web component owns that sequencing; the FC
+ * only renders what it is told.
  */
 export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & CollapsibleVariant> = (
-	{ block, contentClass, controlId, disabled, handleToggle, headingId, icons, label, level, open, refHeadingButton },
+	{ block, contentClass, controlId, detailsOpen, disabled, expanded, handleToggle, headingId, icons, label, level, refHeadingButton },
 	children,
 ) => {
 	const HeadlineTag = getHeadlineTag(level);
 	const blockBem = getBlockBem(block);
 
 	return (
-		<BemRootNodeFC
-			block={block}
-			class={clsx('collapsible', {
+		<details
+			class={clsx(blockBem(), 'collapsible', {
 				'collapsible--disabled': disabled === true,
-				'collapsible--open': open === true,
+				'collapsible--open': expanded === true,
 			})}
+			open={detailsOpen === true}
 		>
-			<HeadlineTag class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, 'collapsible__heading', blockBem('heading'), 'kol-headline--single')}>
-				<KolButtonWcTag
-					class={clsx('collapsible__heading-button', blockBem('heading-button'))}
-					id={headingId}
-					ref={refHeadingButton}
-					slot="expert"
-					_ariaControls={controlId}
-					_ariaExpanded={open}
-					_disabled={disabled}
-					_icons={icons}
-					_label={label}
-					_on={{ onClick: handleToggle }}
-				></KolButtonWcTag>
-			</HeadlineTag>
+			<summary
+				aria-controls={controlId}
+				aria-disabled={disabled === true ? 'true' : undefined}
+				class={clsx('collapsible__heading', blockBem('heading'), 'collapsible__heading-button', blockBem('heading-button'))}
+				id={headingId}
+				onClick={handleToggle}
+				ref={refHeadingButton}
+				tabIndex={disabled === true ? -1 : undefined}
+			>
+				<HeadlineTag class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, 'kol-headline--single')}>
+					<SpanFC icons={icons} label={label} />
+				</HeadlineTag>
+			</summary>
 			<div class={clsx('collapsible__wrapper', blockBem('wrapper'))}>
 				<div class={clsx('collapsible__wrapper-animation', blockBem('wrapper-animation'))}>
 					<div
-						aria-hidden={open === false ? 'true' : undefined}
+						aria-hidden={expanded === false ? 'true' : undefined}
 						aria-labelledby={headingId}
 						class={clsx('collapsible__content', blockBem('content'), contentClass)}
 						id={controlId}
@@ -66,6 +73,6 @@ export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & Collap
 					</div>
 				</div>
 			</div>
-		</BemRootNodeFC>
+		</details>
 	);
 };

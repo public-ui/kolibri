@@ -19,6 +19,13 @@
 
 		&__heading {
 			margin: 0;
+
+			/* `global.scss` weights `.kol-headline` at 700 from this layer, which outranks the
+			   component layer. The label used to render inside a `<button>`, which `a11y.scss`
+			   deliberately does not let inherit font-weight, so that 700 never reached it. */
+			.kol-headline {
+				font-weight: 400;
+			}
 		}
 
 		&__heading-button {
@@ -38,9 +45,8 @@
 				}
 			}
 
-			/* The ring belongs on the interactive element: there it also overrides the
-			   UA focus ring of the real `button`, which nothing suppresses in this tree. */
-			.kol-button__interactive-element:focus {
+			/* The ring sits on the summary, which is the focusable control now. */
+			&:focus {
 				@include focus-outline;
 				cursor: pointer;
 			}
