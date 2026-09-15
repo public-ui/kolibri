@@ -41,6 +41,7 @@ import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { createEventWithTarget, KolEvent } from '../../utils/events';
 import { ComboboxController } from './controller';
 
 /**
@@ -107,12 +108,12 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 	};
 	private selectOption(option: string) {
 		this.controller.onFacade.onInput(
-			new CustomEvent<EventDetail>('input', { bubbles: true, detail: { name: this.state._name as string, value: option } }),
+			createEventWithTarget<EventDetail>(KolEvent.input, { name: this.state._name as string, value: option }, this.ctaRef.el),
 			true,
 			option,
 		);
 		this.controller.onFacade.onChange(
-			new CustomEvent<EventDetail>('change', { bubbles: true, detail: { name: this.state._name as string, value: option } }),
+			createEventWithTarget<EventDetail>(KolEvent.change, { name: this.state._name as string, value: option }, this.ctaRef.el),
 			option,
 		);
 		this.controller.setFormAssociatedValue(option);
@@ -135,8 +136,8 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 		this._isOpen = false;
 
 		const detail = { name: this.state._name as string, value: emptyValue };
-		this.controller.onFacade.onInput(new CustomEvent('input', { bubbles: true, detail }), true, emptyValue);
-		this.controller.onFacade.onChange(new CustomEvent('change', { bubbles: true, detail }), emptyValue);
+		this.controller.onFacade.onInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), true, emptyValue);
+		this.controller.onFacade.onChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), emptyValue);
 		this.controller.setFormAssociatedValue(emptyValue);
 
 		this.ctaRef.el?.focus();

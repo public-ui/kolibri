@@ -215,7 +215,6 @@ graph TB
         React[React Adapter]
         ReactV19[React v19 Adapter]
         ReactStandalone[React Standalone]
-        Angular19[Angular v19]
         Angular20[Angular v20]
         Angular21[Angular v21]
         Vue[Vue Adapter]
@@ -236,7 +235,6 @@ graph TB
     ReactOutput -->|generates| React
     ReactOutput -->|generates| ReactV19
     ReactOutput -->|generates| ReactStandalone
-    AngularOutput -->|generates| Angular19
     AngularOutput -->|generates| Angular20
     AngularOutput -->|generates| Angular21
     VueOutput -->|generates| Vue
@@ -258,15 +256,15 @@ All adapters are **automatically generated** by Stencil output targets. Manual e
 
 ### Framework Support
 
-| Framework   | Package(s)                                                                   | Purpose                             |
-| ----------- | ---------------------------------------------------------------------------- | ----------------------------------- |
-| **React**   | `@public-ui/react`, `@public-ui/react-v19`, `@public-ui/react-standalone`    | React 18, 19, and standalone builds |
-| **Angular** | `@public-ui/angular-v19`, `@public-ui/angular-v20`, `@public-ui/angular-v21` | Angular versions 19, 20, 21         |
-| **Vue**     | `@public-ui/vue`                                                             | Vue.js integration                  |
-| **Solid**   | `@public-ui/solid`                                                           | SolidJS integration                 |
-| **Svelte**  | `@public-ui/svelte`                                                          | Svelte integration                  |
-| **Preact**  | `@public-ui/preact`                                                          | Preact integration                  |
-| **Vaadin**  | `@public-ui/vaadin`                                                          | Vaadin Flow (Java) integration      |
+| Framework   | Package(s)                                                                | Purpose                             |
+| ----------- | ------------------------------------------------------------------------- | ----------------------------------- |
+| **React**   | `@public-ui/react`, `@public-ui/react-v19`, `@public-ui/react-standalone` | React 18, 19, and standalone builds |
+| **Angular** | `@public-ui/angular-v20`, `@public-ui/angular-v21`                        | Angular versions 20, 21             |
+| **Vue**     | `@public-ui/vue`                                                          | Vue.js integration                  |
+| **Solid**   | `@public-ui/solid`                                                        | SolidJS integration                 |
+| **Svelte**  | `@public-ui/svelte`                                                       | Svelte integration                  |
+| **Preact**  | `@public-ui/preact`                                                       | Preact integration                  |
+| **Vaadin**  | `@public-ui/vaadin`                                                       | Vaadin Flow (Java) integration      |
 
 ## 5.5 Tools Package (Level 2)
 
