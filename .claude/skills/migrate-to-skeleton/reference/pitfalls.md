@@ -44,19 +44,31 @@ Keine redundanten `@param {string}` / `@returns {void}`-Annotationen. Die TypeSc
 Quelle der Wahrheit. JSDoc bleibt nur, wo Stencil-Werkzeuge es auslesen (`@Prop`, `@Event`,
 `@Method`) — dort ist der Text Teil der veröffentlichten Doku und wird unverändert übernommen.
 
-## 8. Entfernen eines transitionalen `-wc`-Tags im migrierten FC
+## 8. Transitionales `-wc`-Tag ohne Selektor-Migration ersetzen
 
-Eine migrierte `shadow: true`-Komponente darf legitim weiterhin ein transitionales Element rendern
-(z. B. rendert `DetailsFC` ein `KolButtonWcTag`): Theme- und Basis-SCSS greifen teilweise auf die
-Klasse des Host-Knotens als Vorfahren zu (ecl `.kol-details__heading-button .kol-button`, desy
-`kol-link('kol-details__heading-button')`). Fällt der Host-Knoten weg, rutscht diese Klasse auf
-dieselbe Ebene wie die innere Block-Klasse und die Selektoren greifen stillschweigend nicht mehr —
-eine visuelle Regression.
+Der Fallstrick ist **nicht**, das Tag zu ersetzen — das ist das Ziel (SKILL.md § 6, „Transitionale
+`-wc`-Tags beim Konsumenten ablösen"). Der Fallstrick ist, es zu ersetzen, ohne die Selektoren
+mitzunehmen.
 
-Vor dem Ersetzen eines transitionalen Tags durch direktes FC-Rendering `packages/themes/*/src` und
-das Components-SCSS nach Selektoren durchsuchen, die die Klasse des Tags als Vorfahren nutzen.
-**Null visuelle Abweichung schlägt architektonische Reinheit**; den Konsumenten vom transitionalen
-Tag zu lösen, bleibt eine separat verfolgte Aufgabe.
+Heute trägt der Wrapper die Consumer-Klasse als **Vorfahr** des Blocks:
+
+```html
+<kol-details-heading class="kol-details__heading-button"> <div class="kol-button">…</div></kol-details-heading>
+```
+
+Theme- und Basis-SCSS greifen genau darauf zu (ecl `.kol-details__heading-button .kol-button`, desy
+`kol-link('kol-details__heading-button')`, default/bwst `.kol-badge__smart-button .kol-button`).
+Rendert der FC direkt, merged `BemRootNodeFC` die Klasse auf denselben Knoten
+(`<div class="kol-button kol-details__heading-button">`) — die Descendant-Selektoren greifen
+stillschweigend nicht mehr, ohne Fehler, ohne roten Unit-Test. Nur der Pixel-Check sieht es.
+
+Also: vor dem Ersetzen `packages/themes/*/src` und das Components-SCSS nach der Tag-Klasse greppen,
+die Treffer nach `zero-visual-delta-handoff/SKILL.md` § 6b sortieren und theme-lokal mitmigrieren,
+danach das Pixel-Gate je Theme.
+
+Bleibt das Tag stehen — weil der FC eine Orchestrierung verlangt, die der migrierte WC nicht hat
+(Vorprüfung 1 in SKILL.md § 6) —, ist das eine **benannte** offene Arbeit in PR-Text und
+Companion-Plan, keine stille Auslassung.
 
 ## 9. `FunctionalComponentProps` ist ein StrictFields-Vertrag
 
