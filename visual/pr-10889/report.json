@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 10889,
-	"head": "c275cb79844fb49aa2f7fcf3db59cee752938733",
+	"head": "892d3d4fc197daeb2f6381a5c31f57e84e527532",
 	"repository": "public-ui/kolibri",
-	"runId": 34946141720,
-	"generatedAt": "2026-09-15T08:31:28.940Z",
-	"digest": "sha256:5f7da328ce1a0891253295fc826df1ae64e8798f9f645db07bb14856fc5ef966",
+	"runId": 34953919720,
+	"generatedAt": "2026-09-15T09:59:13.110Z",
+	"digest": "sha256:a8f54aaee6b9ca09315032acca59cef6cf41b28a39402e68b3457223d0124ac7",
 	"baseline": {
-		"sha": "074269c7118959b57344ff3ef9e57b1cf65d7a71",
+		"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -30,12 +30,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "074269c7118959b57344ff3ef9e57b1cf65d7a71",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34944305595,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T08:03:33.570Z",
+					"createdAt": "2026-09-15T09:04:50.115Z",
 					"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 					"fallback": null,
 					"distance": 0,
@@ -2515,12 +2515,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "074269c7118959b57344ff3ef9e57b1cf65d7a71",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34944305595,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T08:03:43.676Z",
+					"createdAt": "2026-09-15T09:04:58.336Z",
 					"digest": "sha256:fd2ad1a7ece66d77e5a6a2319081ed15087fc48a67ecfe6c1050005784381570",
 					"fallback": null,
 					"distance": 0,
@@ -5000,12 +5000,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "074269c7118959b57344ff3ef9e57b1cf65d7a71",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34944305595,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T08:03:33.570Z",
+					"createdAt": "2026-09-15T09:04:50.115Z",
 					"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 					"fallback": null,
 					"distance": 0,
@@ -7485,12 +7485,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "074269c7118959b57344ff3ef9e57b1cf65d7a71",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34944305595,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T08:03:21.116Z",
+					"createdAt": "2026-09-15T09:05:05.880Z",
 					"digest": "sha256:09475be628c62c2a5a2675a2b520b1930068ab529c1d39ba5eaa2d714e57a906",
 					"fallback": null,
 					"distance": 0,
@@ -9970,12 +9970,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "074269c7118959b57344ff3ef9e57b1cf65d7a71",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34944305595,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T08:03:09.275Z",
+					"createdAt": "2026-09-15T09:05:01.853Z",
 					"digest": "sha256:b65ff5021ad03982b5c241ea5b68cd2ee6b0450a906fb18c773b47a33bae4fd5",
 					"fallback": null,
 					"distance": 0,
@@ -12460,13 +12460,13 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "074269c7118959b57344ff3ef9e57b1cf65d7a71",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34944305595,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T08:02:39.167Z",
-					"digest": "sha256:89ee1de26c68142874dfc31c6de22a67bd507500e1591433ebd8872e061e23de",
+					"createdAt": "2026-09-15T09:04:45.032Z",
+					"digest": "sha256:bf3398ea8d2efe2bb84adf85ed0da062d5a843d701a35f5c673bb1f51dc8731a",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -12479,7 +12479,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:89ee1de26c68142874dfc31c6de22a67bd507500e1591433ebd8872e061e23de",
+			"digest": "sha256:bf3398ea8d2efe2bb84adf85ed0da062d5a843d701a35f5c673bb1f51dc8731a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13781,7 +13781,7 @@
 					"name": "input-password-show-password-noColumns--show-password",
 					"route": "input-password-show-password-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:286e419fe306ab60ec7af630beaea1e7efb59a1cfbf4490c3f2a1a13ff58dbee"
+					"hash": "sha256:ae25a905486d7b16ec6eb47a6a5e5b15bbdb1ee2096ea9a5922ba6df7d4e36a0"
 				},
 				{
 					"name": "input-radio-basic-noColumns--hide-label-error",
@@ -14141,7 +14141,7 @@
 					"name": "input-text-smart-button-noColumns--disabled",
 					"route": "input-text-smart-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:42214aab09f67a7b8abf56aab38abc8dbd6fe345457703a478ff1540551d5bd8"
+					"hash": "sha256:cb4a0346433eaedbbcf4ef176d3e4cfe9edca207572a2eaa340a7d3c6fc9a216"
 				},
 				{
 					"name": "input-text-smart-button-noColumns--enabled",
@@ -14945,12 +14945,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "074269c7118959b57344ff3ef9e57b1cf65d7a71",
+					"sha": "c760252b1f2568748ec1bb3b15a9ca1b0988bc2b",
 					"ref": "develop",
-					"runId": 34944305595,
+					"runId": 34949919182,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T08:02:50.198Z",
+					"createdAt": "2026-09-15T09:04:13.831Z",
 					"digest": "sha256:bac0cb3a0f3c0a6cd5900a9367c677660b7e23fefa983b32d43defdfdacb0cc3",
 					"fallback": null,
 					"distance": 0,

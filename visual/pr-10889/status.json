@@ -2,10 +2,10 @@
 	"schema": 1,
 	"state": "success",
 	"description": "1 visual changes approved by deleonio, BF150",
-	"computedAt": "2026-09-15T08:31:29.667Z",
+	"computedAt": "2026-09-15T09:59:13.985Z",
 	"pr": 10889,
-	"head": "c275cb79844fb49aa2f7fcf3db59cee752938733",
-	"digest": "sha256:5f7da328ce1a0891253295fc826df1ae64e8798f9f645db07bb14856fc5ef966",
+	"head": "892d3d4fc197daeb2f6381a5c31f57e84e527532",
+	"digest": "sha256:a8f54aaee6b9ca09315032acca59cef6cf41b28a39402e68b3457223d0124ac7",
 	"counts": {
 		"changes": 1,
 		"open": 0,
