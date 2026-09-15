@@ -64,7 +64,17 @@
 			}
 
 			/* The closer renders ButtonFC directly: `#{$root}__closer` and `kol-button` sit on the
-			   same element, so the former `.kol-button` box rules now target the closer itself. */
+			   same element, so the former `.kol-button` box rules now target the closer itself. The
+			   closer used to inherit `color` from `.kol-alert--variant-msg` (line above); now that
+			   `kol-button` sits on the same element, `.kol-close-button:is(.kol-button--normal)` in
+			   button.scss sets `--text-color` directly on it, which wins over the inherited `color`
+			   at `.kol-button__text { color: var(--text-color) }` — both are 2-class selectors, so
+			   whichever comes later in the compiled stylesheet wins regardless of intent. Re-declare
+			   `--text-color` here (3-class, `&.kol-button`) so the accent color wins deterministically. */
+			#{$root}__closer.kol-button {
+				--text-color: var(--alert-msg-text-color);
+			}
+
 			#{$root}__closer {
 				position: absolute;
 				right: 0;

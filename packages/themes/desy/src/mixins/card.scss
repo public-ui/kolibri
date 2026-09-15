@@ -39,7 +39,13 @@
 			line-height: 1;
 		}
 
+		/* The closer renders ButtonFC directly, so `kol-card__close-button` and `kol-button` sit on
+		   the same element. Without an explicit height, this `display: flex` button stretches to
+		   the full height of its grid row (here: the header row, which grows with the heading text)
+		   instead of keeping its own natural a11y size, even with `align-self: self-start` on
+		   `.kol-close-button` in button.scss. */
 		&__close-button {
+			height: var(--a11y-min-size);
 			font-size: to-rem(24);
 			line-height: to-rem(16);
 		}

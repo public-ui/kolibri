@@ -22,9 +22,13 @@
 		}
 
 		/* The closer is a `ButtonFC` root, so `kol-card__close-button` and `kol-button` sit on
-		   the same element — `ghostButton` is applied directly to it. */
+		   the same element — `ghostButton` is applied directly to it. Without an explicit height,
+		   this `display: flex` button stretches to the full height of its grid row (the header row,
+		   which grows with the heading text) instead of keeping its own natural a11y size, even
+		   with `align-self: self-start` on `.kol-close-button` in button.scss. */
 		&__close-button {
 			@include ghostButton();
+			height: var(--a11y-min-size);
 			line-height: to-rem(16);
 
 			.kol-icon {
