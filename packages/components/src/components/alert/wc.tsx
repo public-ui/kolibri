@@ -1,14 +1,17 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
 
+import { translate } from '../../i18n';
 import type { AlertApi } from '../../internal/functional-components/alert/api';
 import { alertPropsConfig } from '../../internal/functional-components/alert/api';
 import { AlertFC } from '../../internal/functional-components/alert/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelProp, levelProp } from '../../internal/props';
 import type { AlertProps, AlertTypePropType, AlertVariantPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
-import { createUniqueId } from '../../utils/dev.utils';
+import { createUniqueId, nonce } from '../../utils/dev.utils';
+import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -35,11 +38,21 @@ export class KolAlertWc extends BaseWebComponent<AlertApi> implements AlertProps
 
 	private alertTimeout?: ReturnType<typeof setTimeout>;
 
+	// --- Closer (ButtonFC rendered directly, so the closer's tooltip behavior lives here) ---
+
+	private readonly translateCloseAlert = translate('kol-close-alert');
+	protected readonly closerRef = createCtaRef<HTMLButtonElement>();
+	private readonly closerTooltipBehavior = new TooltipBehavior(this.stateAccess);
+
 	private readonly handleAlertTimeout = (): void => {
 		this.watchAlert(false);
 	};
 
-	private readonly handleCloserClick = (): void => {
+	private readonly handleCloserClick = (event: MouseEvent): void => {
+		// The predecessor rendered the transitional kol-button-wc, whose click handler stopped
+		// the propagation — kept so closer clicks do not leak to listeners on the alert host.
+		event.stopPropagation();
+		this.closerTooltipBehavior.hideTooltip();
 		this._on?.onClose?.(new Event('Close'));
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
@@ -57,9 +70,18 @@ export class KolAlertWc extends BaseWebComponent<AlertApi> implements AlertProps
 		this.watchLevel(this._level);
 		this.watchType(this._type);
 		this.watchVariant(this._variant);
+
+		this.closerTooltipBehavior.componentWillLoad({ label: this.translateCloseAlert, align: 'left' });
+	}
+
+	public componentDidRender(): void {
+		if (this.closerRef.el) {
+			this.closerTooltipBehavior.syncListeners(undefined, this.closerRef.el, true);
+		}
 	}
 
 	public disconnectedCallback(): void {
+		this.closerTooltipBehavior.destroy();
 		this.syncAlertEffects(false);
 	}
 
@@ -69,11 +91,14 @@ export class KolAlertWc extends BaseWebComponent<AlertApi> implements AlertProps
 		return (
 			<AlertFC
 				alert={this.getRenderProp('alert')}
+				closerAriaDescriptionId={this.closerAriaDescriptionId}
 				handleCloserClick={this.handleCloserClick}
 				hasCloser={this.getRenderProp('hasCloser')}
 				headingId={this.headingId}
 				label={this.getRenderProp('label')}
 				level={this.getRenderProp('level')}
+				refCloserButton={this.closerRef}
+				refCloserTooltip={this.closerTooltipBehavior.setTooltipElementRef}
 				type={this.getRenderProp('type')}
 				variant={this.getRenderProp('variant')}
 			>
@@ -85,6 +110,8 @@ export class KolAlertWc extends BaseWebComponent<AlertApi> implements AlertProps
 	// --- @State ---
 
 	@State() public headingId: string = createUniqueId('alert-heading');
+
+	@State() public closerAriaDescriptionId: string = nonce();
 
 	// --- Props + Watchers ---
 

@@ -68,8 +68,10 @@
 		--alert-accent-color: var(--color-warning);
 	}
 
+	/* The closer renders ButtonFC directly: `kol-alert__closer` and `kol-button` sit on the same
+	   element, so the former descendant custom-property rules now target the closer itself. */
 	.kol-alert__closer {
-		.kol-alert--variant-msg & .kol-button {
+		.kol-alert--variant-msg & {
 			--text-color: var(--alert-accent-color);
 		}
 
@@ -77,9 +79,7 @@
 			padding-right: to-rem(16);
 			padding-block: to-rem(8);
 
-			.kol-button {
-				--text-color: var(--color-light);
-			}
+			--text-color: var(--color-light);
 		}
 	}
 

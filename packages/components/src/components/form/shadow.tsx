@@ -7,7 +7,7 @@ import { translate } from '../../i18n';
 import { KolLinkWcTag } from '../../core/component-names';
 import { AlertFC } from '../../internal/functional-components/alert/component';
 import type { ErrorListPropType, FormAPI, FormStates, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
-import { createUniqueId } from '../../utils/dev.utils';
+import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
@@ -34,6 +34,7 @@ export class KolForm implements FormAPI {
 	private readonly translateErrorList = translate('kol-error-list');
 	private readonly translateFormDescription = translate('kol-form-description');
 	private readonly alertHeadingId = createUniqueId('alert-heading');
+	private readonly closerAriaDescriptionId = nonce();
 
 	/* Hint: This method may not be used at all while events are handled in form/controller#propagateSubmitEventToForm */
 	private readonly onSubmit = (event: Event) => {
@@ -73,12 +74,15 @@ export class KolForm implements FormAPI {
 			<AlertFC
 				alert={false}
 				class="kol-form__alert"
+				closerAriaDescriptionId={this.closerAriaDescriptionId}
 				handleCloserClick={() => undefined}
 				hasCloser={false}
 				headingId={this.alertHeadingId}
 				label={this.translateErrorListMessage}
 				level={0}
 				ref={this.setBlockElement}
+				refCloserButton={() => undefined}
+				refCloserTooltip={() => undefined}
 				type="error"
 				variant="card"
 			>

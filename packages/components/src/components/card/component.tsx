@@ -18,11 +18,20 @@ import { setState, validateHasCloser, validateHref, validateLabel, validateLinkT
 import { translate } from '../../i18n';
 import { watchHeadingLevel } from '../heading/validation';
 
-import { KolButtonWcTag } from '../../core/component-names';
 import { KolHeadingFc } from '../../functional-components';
-import { createUniqueId } from '../../utils/dev.utils';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
+import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
+
+/**
+ * The closer is a plain button: no role override, and an unset tabindex must not render as
+ * `tabindex="0"` — buttons are natively tabbable. The unset render props mirror how the
+ * predecessor `kol-button-wc` reached its `undefined` render props.
+ */
+const UNSET_BUTTON_PROP = undefined as never;
 
 /**
  * @internal
@@ -51,6 +60,19 @@ export class KolCardWc implements CardAPI, ClickableElement, FocusableElement {
 	private readonly translateClose = translate('kol-close');
 	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
 
+	// --- Closer (ButtonFC rendered directly, so the closer's tooltip behavior lives here) ---
+
+	protected readonly closerRef = createCtaRef<HTMLButtonElement>();
+	private readonly closerTooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
+
+	private readonly handleCloserClick = (event: MouseEvent): void => {
+		// The predecessor rendered the transitional kol-button-wc, whose click handler stopped
+		// the propagation — kept so closer clicks do not leak to listeners on the card host.
+		event.stopPropagation();
+		this.closerTooltipBehavior.hideTooltip();
+		this.close();
+	};
+
 	/**
 	 * Sets focus on the internal element.
 	 */
@@ -74,10 +96,6 @@ export class KolCardWc implements CardAPI, ClickableElement, FocusableElement {
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
 		}
-	};
-
-	private readonly on = {
-		onClick: this.close,
 	};
 
 	private readonly onFocus = (event: FocusEvent) => {
@@ -119,18 +137,41 @@ export class KolCardWc implements CardAPI, ClickableElement, FocusableElement {
 						<slot />
 					</div>
 					{this.state._hasCloser && (
-						<KolButtonWcTag
+						<ButtonFC
+							accessKey=""
+							ariaControls=""
+							ariaDescription=""
+							ariaDescriptionId={this.closerAriaDescriptionId}
+							ariaExpanded={UNSET_BUTTON_PROP}
+							ariaHasPopup=""
+							ariaSelected={UNSET_BUTTON_PROP}
 							class="kol-card__close-button kol-close-button"
+							customClass=""
 							data-testid="card-close-button"
-							_hideLabel
-							_icons={{
+							disabled={false}
+							handleBlur={() => undefined}
+							handleClick={this.handleCloserClick}
+							handleFocus={() => undefined}
+							handleMouseDown={() => undefined}
+							hideLabel
+							icons={{
 								left: {
 									icon: 'kolicon-cross',
 								},
 							}}
-							_label={this.translateClose}
-							_on={this.on}
-							_tooltipAlign="left"
+							id=""
+							inline={false}
+							label={this.translateClose}
+							name=""
+							on={{}}
+							refButton={this.closerRef}
+							refTooltip={this.closerTooltipBehavior.setTooltipElementRef}
+							role={UNSET_BUTTON_PROP}
+							shortKey=""
+							tabIndex={UNSET_BUTTON_PROP}
+							tooltipAlign="left"
+							type="button"
+							variant={['normal']}
 						/>
 					)}
 				</article>
@@ -179,6 +220,8 @@ export class KolCardWc implements CardAPI, ClickableElement, FocusableElement {
 		_label: '', // ⚠ required
 	};
 
+	@State() public closerAriaDescriptionId: string = nonce();
+
 	private validateOnValue = (value: unknown): boolean =>
 		typeof value === 'object' && value !== null && typeof (value as KoliBriCardEventCallbacks).onClose === 'function';
 
@@ -225,5 +268,17 @@ export class KolCardWc implements CardAPI, ClickableElement, FocusableElement {
 		this.validateLevel(this._level);
 		this.validateOn(this._on);
 		this.validateTarget(this._target);
+
+		this.closerTooltipBehavior.componentWillLoad({ label: this.translateClose, align: 'left' });
+	}
+
+	public componentDidRender(): void {
+		if (this.closerRef.el) {
+			this.closerTooltipBehavior.syncListeners(undefined, this.closerRef.el, true);
+		}
+	}
+
+	public disconnectedCallback(): void {
+		this.closerTooltipBehavior.destroy();
 	}
 }

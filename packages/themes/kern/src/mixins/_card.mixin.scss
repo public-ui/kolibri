@@ -21,12 +21,11 @@
 			padding-right: var(--kern-metric-space-default);
 		}
 
+		/* The closer is a `ButtonFC` root, so `kol-card__close-button` and `kol-button` sit on
+		   the same element — `ghostButton` is applied directly to it. */
 		&__close-button {
+			@include ghostButton();
 			line-height: to-rem(16);
-
-			.kol-button {
-				@include ghostButton();
-			}
 
 			.kol-icon {
 				font-size: to-rem(24);

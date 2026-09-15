@@ -10,7 +10,32 @@ exports[`ToastItemFc should render with basic props and status 1`] = `
     <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
       Test Toast
     </strong>
-    <kol-button-wc _ariadescription="Test Toast" _hidelabel="" _label="kol-close-alert" _tooltipalign="left" class="kol-alert__closer kol-close-button"></kol-button-wc>
+    <div class="kol-alert__closer kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-close-button">
+      <button aria-describedby="nonce" aria-label="kol-close-alert" class="kol-button__interactive-element" type="button">
+        <span class="kol-button__text kol-span kol-span--hide-label">
+          <span class="kol-span__container">
+            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+            <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+          </span>
+        </span>
+      </button>
+      <div class="kol-button__tooltip">
+        <div class="kol-tooltip__floating">
+          <div class="kol-tooltip__arrow"></div>
+          <span class="kol-span kol-tooltip__content">
+            <span class="kol-span__container">
+              <span class="kol-span__label">
+                kol-close-alert
+              </span>
+              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+            </span>
+          </span>
+        </div>
+      </div>
+      <span class="visually-hidden" id="nonce">
+        Test Toast
+      </span>
+    </div>
     <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
       <div>
         Test Description

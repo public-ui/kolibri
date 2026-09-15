@@ -115,7 +115,30 @@ node scripts/snapshots-docker.mjs <theme> --check && git diff origin/develop..HE
 1. ~~Zero-Visual-Delta~~ — ✅ DONE (2026-09-14): `node scripts/snapshots-docker.mjs --all --check`
    Exit 0, letztes Theme 293/293 passed; Stichprobe `default --check -- --grep Alert` 5/5 passed.
    `git diff origin/develop..HEAD -- '*.png'` = 0.
-2. Commit defb6aae09 + PR + Issue #9562 auf Status Review.
+2. ~~Commit + PR~~ — DONE: defb6aae09, PR #10895, CI grün (Visual Review „No visual changes").
+   Issue #9562 Status Review: gh-Token ohne project-Scopes, OAuth-Geräte-Flow 2× ohne
+   Nutzer-Bestätigung abgelaufen — manueller Schritt beim Owner offen.
+
+## Nachtrag (2026-09-15): Closer auf ButtonFC direkt (Owner-Entscheidung)
+
+Der Owner hat die Entscheidung 1 („Closer bleibt kol-button-wc") übersteuert: **AlertFC rendert
+ButtonFC direkt**, `kol-button` + `kol-alert__closer` liegen auf demselben Element.
+
+- AlertApi: + Refs {closerButton, closerTooltip}, + State closerAriaDescriptionId; Callback
+  closerClick bekommt MouseEvent (stopPropagation wie der alte kol-button-wc-Handler).
+- KolAlert/KolAlertWc komponieren TooltipBehavior für den Closer (componentWillLoad /
+  componentDidRender syncListeners / disconnectedCallback destroy, hideTooltip beim Klick).
+- **ButtonFC forwardet jetzt das eingehende `class`** auf seinen BemRootNodeFC-Root (BemRootNodeFC-
+  Vertrag; ohne class-Übergabe unverändert) — ohne das würden dem Closer die Klassen verloren gehen.
+- Theme-Migration: default/bwst/desy/ecl-ec/ecl-eu-Alert-Mixins — frühere
+  `.kol-alert__closer .kol-button`-Nachfahre-Regeln zielen jetzt auf den Closer selbst;
+  Button-Mixins (default/bwst/ecl-ec/desy) nutzen `:is()`-Union (Compound + Nachfahre), weil
+  kol-card den Closer weiterhin als kol-button-wc rendert.
+- ToastItem: Closer-Tooltip-Verhalten entfällt (FC ohne Lifecycle; Toast deprecated, #8372);
+  refs/noop + nonce() ergänzt. form/FormFieldMsg: noop-refs (hasCloser=false).
+- Neu: Snapshot-Case „closer as a single ButtonFC root". 951 Unit-Tests grün, Stylelint grün.
+- Arbeitete im separaten Worktree `/Users/moppitz/Workspace/kolibri-alert`, weil eine parallele
+  Session den Hauptbaum auf dem Breadcrumb-Branch belegt hielt.
 
 ## Pitfalls
 

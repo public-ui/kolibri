@@ -24,11 +24,18 @@ export type AlertApi = ApiFromConfig<
 	{
 		Callbacks: {
 			/**
-			 * Click handler bound to the closer button. Implemented by the web component, which
-			 * invokes the consumer's `onClose` callback and dispatches the custom `KolEvent.close`
-			 * event on the host element.
+			 * Click handler bound to the closer button. Implemented by the web component, which stops
+			 * the event propagation (the predecessor button wrapper did the same), invokes the
+			 * consumer's `onClose` callback and dispatches the custom `KolEvent.close` event on the
+			 * host element.
 			 */
-			closerClick: () => void;
+			closerClick: (event: MouseEvent) => void;
+		};
+		Refs: {
+			/** Interactive closer button element; also the anchor for the closer tooltip. */
+			closerButton: HTMLButtonElement;
+			/** Floating tooltip container of the closer button, managed by the TooltipBehavior. */
+			closerTooltip: HTMLDivElement;
 		};
 		States: {
 			/**
@@ -37,6 +44,11 @@ export type AlertApi = ApiFromConfig<
 			 * into the same shadow root (toast container, form).
 			 */
 			headingId: string;
+			/**
+			 * DOM id of the visually-hidden span that carries the closer button's aria description
+			 * (the alert label), referenced by its aria-describedby attribute.
+			 */
+			closerAriaDescriptionId: string;
 		};
 	}
 >;

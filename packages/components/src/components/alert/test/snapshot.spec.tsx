@@ -44,4 +44,15 @@ describe('KolAlert slot', () => {
 
 		expect(page.root).toMatchSnapshot();
 	});
+
+	test('should render the closer as a single ButtonFC root', async () => {
+		const components = [KolAlert, KolAlertWc];
+		const page = await newSpecPage({
+			components,
+			template: () => <KolAlertTag _hasCloser _label="closable alert" />,
+		});
+		await page.waitForChanges();
+
+		expect(page.root).toMatchSnapshot();
+	});
 });

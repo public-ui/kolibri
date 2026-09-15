@@ -135,7 +135,9 @@
 		}
 	}
 
-	.kol-close-button .kol-button--normal {
+	/* Both close button renderers (alert, card) render `ButtonFC` directly, so
+	   `kol-close-button` and the variant class sit on the same element. */
+	.kol-close-button:is(.kol-button--normal) {
 		--text-background-color: transparent;
 		--text-border-width: var(--border-width-none);
 		--text-color: var(--color-blue-100);

@@ -22,6 +22,53 @@ exports[`KolAlert slot should render content passed into the slot 1`] = `
 </kol-alert>
 `;
 
+exports[`KolAlert slot should render the closer as a single ButtonFC root 1`] = `
+<kol-alert>
+  <template shadowrootmode="open">
+    <div class="kol-alert kol-alert--hasCloser kol-alert--type-default kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        closable alert
+      </strong>
+      <div class="kol-alert__closer kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-close-button">
+        <button aria-describedby="nonce" aria-label="kol-close-alert" class="kol-button__interactive-element" type="button">
+          <span class="kol-button__text kol-span kol-span--hide-label">
+            <span class="kol-span__container">
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                <slot name="expert" slot="expert"></slot>
+              </span>
+            </span>
+          </span>
+        </button>
+        <div class="kol-button__tooltip">
+          <div class="kol-tooltip__floating">
+            <div class="kol-tooltip__arrow"></div>
+            <span class="kol-span kol-tooltip__content">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  kol-close-alert
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <span class="visually-hidden" id="nonce">
+          closable alert
+        </span>
+      </div>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-alert>
+`;
+
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=0 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
