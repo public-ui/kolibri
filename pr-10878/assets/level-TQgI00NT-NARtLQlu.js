@@ -1,0 +1,1 @@
+import{n as e,o as t}from"./normalizers-CLh45UCk-L2t79acS.js";var n=[0,1,2,3,4,5,6],r=e(`level`,0,e=>t(e),e=>n.includes(e));export{r as n,n as t};

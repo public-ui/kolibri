@@ -1,1 +1,0 @@
-import{s as e}from"./index-BldbP_dl.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};

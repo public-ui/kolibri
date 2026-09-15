@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-BldbP_dl.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
