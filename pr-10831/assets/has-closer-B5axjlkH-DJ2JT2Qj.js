@@ -1,1 +1,0 @@
-import{St as e}from"./index-DCeuV1Si.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
