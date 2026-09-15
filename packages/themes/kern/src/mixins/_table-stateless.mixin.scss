@@ -118,6 +118,10 @@
 			@include kol-link('kol-link');
 		}
 
+		&__cell-states {
+			gap: to-rem(4);
+		}
+
 		&:has(.kol-table__selection-input--radio) {
 			--kol-input-radio-color: var(--kern-color-form-input-border);
 			--kol-input-radio-background-color: transparent;
