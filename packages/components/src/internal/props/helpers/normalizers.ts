@@ -99,3 +99,16 @@ export function normalizeArray(value?: unknown): unknown[] | never {
 	}
 	throw new Error(`Invalid array: ${value as string}`);
 }
+
+/**
+ * Normalizes a callbacks object (the `_on` props). The prop factory's `apply` handles undefined/null
+ * (falling back to the default `{}`) before this is reached, so we only need to verify a non-null
+ * value is an object. Generic over the component-specific callbacks type (ButtonCallbacksPropType,
+ * LinkOnCallbacksPropType, …).
+ */
+export function normalizeCallbacksObject<T>(value: unknown): T {
+	if (typeof value === 'object' && value !== null) {
+		return value as T;
+	}
+	throw new Error(`Invalid on callbacks: expected object, got ${typeof value}`);
+}
