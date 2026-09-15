@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-CEunrF87.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
