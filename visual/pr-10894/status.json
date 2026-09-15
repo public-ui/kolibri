@@ -1,20 +1,22 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "21 changed – 0 of 21 approved, review pending",
-	"computedAt": "2026-09-15T03:42:56.528Z",
+	"state": "failure",
+	"description": "2 of 21 visual changes rejected",
+	"computedAt": "2026-09-15T13:59:08.571Z",
 	"pr": 10894,
 	"head": "c269224b72007cbd993a8d302f05b47656a0c2a9",
 	"digest": "sha256:5fdd64b62929641d2ec7a2fe61f35b85f4287a5c174b45ca5447815a4d1fb269",
 	"counts": {
 		"changes": 21,
-		"open": 21,
+		"open": 19,
 		"approved": 0,
-		"rejected": 0,
+		"rejected": 2,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"BF150"
+	],
 	"items": {
 		"test-tag-name-transformer/accordion-basic--basic": {
 			"state": "open",
@@ -49,8 +51,14 @@
 			"notes": []
 		},
 		"theme-default/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [
+				{
+					"by": "BF150",
+					"text": "default hat focus rahmen in blau bei click auf disabled accordion\n\nwarum ist das disabled accordion jetzt ein px größer als das enabled?"
+				}
+			],
+			"by": "BF150"
 		},
 		"theme-default/scenarios-accordion-components": {
 			"state": "open",
@@ -73,8 +81,9 @@
 			"notes": []
 		},
 		"theme-ecl/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/scenarios-accordion-components": {
 			"state": "open",
