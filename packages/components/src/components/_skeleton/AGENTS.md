@@ -55,4 +55,5 @@ for how to distinguish between normalized props (`setRenderProp()`) and derived 
 - **State management**: [ARC42 § WC State Management](./ARC42.md#wc-state-management)
 - **BemRootNodeFC pattern**: [ARC42 §4 – Functional Component Layer](./ARC42.md#functional-component-layer)
 - **Transitional shadow:false**: [ARC42 §4 – Transitional Pattern](./ARC42.md#transitional-pattern-shadowfalse)
+- **Shared orchestrator base for tag variants of one FC**: [ARC42 §9, decision 16](./ARC42.md#9-design-decisions) — migrate a consumer of `kol-button-wc`/`kol-link-wc` by extending `BaseButtonWebComponent`/`BaseLinkWebComponent` (`components/button/base.tsx`, `components/link/base.tsx`), not by copying the orchestrator.
 - **Design decisions**: [ARC42 §9](./ARC42.md#9-design-decisions)

@@ -2,7 +2,7 @@ import { KolSplitButtonTag } from '../../../core/component-names';
 import type { SplitButtonProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
-import { KolSplitButton } from '../shadow';
+import { KolSplitButton } from '../component';
 
 executeSnapshotTests<SplitButtonProps>(
 	KolSplitButtonTag,
