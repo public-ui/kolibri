@@ -10,6 +10,7 @@ export * from './aria-has-popup';
 export * from './aria-owns';
 export * from './aria-selected';
 export * from './badge-text';
+export * from './breadcrumb-links';
 export * from './button-callbacks';
 export * from './button-type';
 export * from './color';

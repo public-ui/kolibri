@@ -865,6 +865,7 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['link', 'wc.tsx'],
 		['button', 'component.tsx'],
 		['button', 'wc.tsx'],
+		['breadcrumb', 'component.tsx'],
 		['button-link', 'component.tsx'],
 		['link-button', 'component.tsx'],
 		['split-button', 'component.tsx'],
@@ -924,5 +925,38 @@ describe.each([
 
 	it('implements the schema interface so prop-type drift fails the build', () => {
 		expect(readSource(component, 'component.tsx')).toMatch(new RegExp(`implements\\s+[^{]*\\b${schemaInterface}\\b`));
+	});
+});
+
+/**
+ * Pinned public API of `kol-breadcrumb` — byte-identical to the predecessor on the develop branch
+ * (2 required props, no methods).
+ */
+const KOL_BREADCRUMB_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_links: {
+		kind: 'prop',
+		type: 'Stringified<BreadcrumbLinkProps[]>',
+		required: true,
+		doc: 'Defines the list of links combined with their labels to render.',
+	},
+};
+
+describe('kol-breadcrumb public API contract (ARC42 § Public API Contract)', () => {
+	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
+		const extracted = extractFrom('breadcrumb', 'component.tsx');
+		// Failing this test means the public contract changed — a breaking change (ARC42 §
+		// "Public API Contract (Migration Parity)"): get owner approval, then update the pinned
+		// contract consciously and note it in the PR description.
+		expect(toContract(extracted)).toEqual(KOL_BREADCRUMB_PUBLIC_API);
+	});
+
+	it('implements the schema interface so prop-type drift fails the build', () => {
+		expect(readSource('breadcrumb', 'component.tsx')).toMatch(/implements\s+[^{]*\bBreadcrumbProps\b/);
 	});
 });
