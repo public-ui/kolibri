@@ -112,15 +112,15 @@ node scripts/snapshots-docker.mjs <theme> --check && git diff origin/develop..HE
 
 ## Open work
 
-1. ~~Zero-Visual-Delta~~ — ✅ DONE (2026-09-14) für Commit 1 (CI: Visual Review „No visual
-   changes"). Nachtrag-2-Commits (ButtonFC in alert+card): Validierung läuft — **Baselines aus
-   develop-Tip c760252b1f im Worktree `/Users/moppitz/Workspace/kolibri-baseline` erzeugen**
-   (`node scripts/snapshots-docker.mjs --all`), dann Baseline-PNGs von dort in diesen Worktree
-   kopieren (mirror-dir pruned sonst die Volumen-Baselines weg!) und hier
-   `node scripts/snapshots-docker.mjs --all --check` (Exit 0 erwartet).
-2. Push des Rebase-Ergebnisses + Commit 2 (5646b8c65e → d34236c442 nach Rebase) auf PR #10895.
+1. ~~Zero-Visual-Delta~~ — ✅ DONE (2026-09-15): alle 6 Themes einzeln gegen den Docker-Check
+   verifiziert, je Exit 0 — `default`/`bwst`/`kern`/`desy` (`--grep alert` 5/5, `--grep card`
+   11/11 je Theme), `ecl` (voller Lauf 297/297), `unstyled` (voller Lauf 297/297). Details der
+   dabei gefundenen und behobenen Card-/Alert-Closer-Regressionen in Nachtrag 4.
+2. ~~Push~~ — ✅ DONE: Rebase auf develop-Tip 5d733fe286 + alle Fix-Commits auf
+   `origin/refactor/migrate-kol-alert-skeleton` (PR #10895) gepusht.
 3. Issue #9562 Status Review: gh-Token ohne project-Scopes, OAuth-Geräte-Flow 2× ohne
    Nutzer-Bestätigung abgelaufen — manueller Schritt beim Owner offen.
+4. PR #10895 ist noch **Draft** — Owner-Entscheidung, ob er auf Ready for Review gestellt wird.
 
 ## Nachtrag (2026-09-15): Closer auf ButtonFC direkt (Owner-Entscheidung)
 
@@ -167,6 +167,74 @@ kol-card__close-button kol-close-button`. hydrate 102 grün (Badge-Fehler zuvor 
   grün, lint grün. Vor dem Rebase: develop fetchen und prüfen, ob Kopf gewandert ist (#10750
   änderte button/api + button/wc + Themes — glücklicherweise nur additive Typen).
 
+## Nachtrag 3 (2026-09-15, abends): Rebase auf develop 5d733fe286 + erster Fix-Commit
+
+Owner bat, den Branch auf den aktuellen develop-Stand zu rebasen und die PR-Konflikte
+(mergeStateStatus DIRTY) aufzulösen:
+
+- Rebase von c760252b1f auf 5d733fe286 (develop inkl. gemergtem Breadcrumb-PR #10902); neue SHAs
+  292d4db770 / e55e958f65 statt der alten 7a0c2f97d4 / d34236c442. Konflikte: `public-api.spec.ts`
+  (Sources-Liste + describe-Blöcke, Union aus Alert- und Breadcrumb-Anteil) und
+  `internal/functional-components/button/component.tsx` (nur ein zusätzlicher Kommentar
+  stromaufwärts, Code identisch — HEAD-Version behalten).
+- Docker-Zero-Delta-Check (Stichprobe `--grep alert`) deckte zwei echte, durch den ButtonFC-Closer-
+  Umbau (Nachtrag 2) verursachte Regressionen auf, die die vorherige CI-Validierung nicht erfasst
+  hatte (die lief nur gegen den älteren develop-Stand vor dem Rebase):
+  1. **Farb-Spezifitäts-Kollision**: `.kol-alert__closer .kol-alert--variant-msg & .kol-button`
+     (3 Klassen) wurde durch den DOM-Merge zu `.kol-alert--variant-msg .kol-alert__closer`
+     (2 Klassen) — Tie mit `.kol-close-button:is(.kol-button--normal)` in button.scss, gewinnt je
+     nach Quellreihenfolge. Fix: `&.kol-button` ergänzt, restauriert 3-Klassen-Spezifität
+     (default, bwst, desy als `--text-color`-Override).
+  2. **Grid-Row-Stretch**: Ein `display:flex`-Closer als mehrzeilig spannendes Grid-Item stretcht
+     in Firefox trotz `align-self: self-start` auf die volle Zeilenhöhe des Grid-Bereichs
+     (inkl. row-gap) statt auf seine eigene Content-Höhe — Legacy (`display:block`) tat das nicht.
+     Fix: explizite `height: var(--a11y-min-size)` auf den Closer, aber **nur** in den Themes, die
+     `align-self: self-start` für `.kol-close-button` deklarieren (default, bwst, ecl-ec); Details
+     und die Themes, die das NICHT brauchen, in Nachtrag 4.
+     Fix-Commit `be211d0b19`, Formatierungs-Nachzieh `a6dc87507e`. Diese Session hatte zwischenzeitlich
+     neu committet und force-gepusht (`git push --force-with-lease`), nachdem ein `git pull` der
+     Remote einen unnötigen Divergenz-Merge erzeugt hatte (`git merge --abort`, lokaler Zweig war
+     Superset).
+- Validierung nach diesen Commits: prettier ✓, `pnpm -r test:unit` ✓ (components 969
+  Tests/777 Snapshots), eslint+tsc ✓, Stylelint alle Themes ✓. Docker-Zero-Delta war zu diesem
+  Zeitpunkt noch nicht vollständig durchlaufen — siehe Nachtrag 4.
+
+## Nachtrag 4 (2026-09-15, spät): Card-Variant-Fix korrigiert, alle 6 Themes grün
+
+Der `height: var(--a11y-min-size)`-Fix aus Nachtrag 3 war zu pauschal: er wurde auf **alle** fünf
+von `kol-close-button` betroffenen Themes angewendet (default, bwst, ecl-ec, desy, kern), obwohl
+nur drei davon das Problem tatsächlich haben.
+
+- **Ursache präzisiert**: Nur Themes mit `align-self: self-start` auf `.kol-close-button`
+  (default, bwst, ecl-ec) leiden unter dem Grid-Row-Stretch-Bug — bei ihnen ignoriert Firefox
+  `self-start` für den `display:flex`-Closer und stretcht ihn auf die volle (inkl. row-gap)
+  Zeilenhöhe; `height` fest zu setzen repariert das (Legacy-Wert 44px in jedem Sample-Breakpoint
+  bestätigt, inkl. 320px-Reflow).
+- **desy und kern haben `align-self: self-start` nie deklariert** — ihr Closer stretcht schon
+  immer über `align-items: stretch` (Grid-Default) auf die reale Zeilenhöhe, exakt wie das Legacy-
+  `kol-button-wc` (baseline-verifiziert: 44px bei normaler Breite, 78px bei 320px-Reflow mit
+  3-zeilig umgebrochener Card-Headline — beides korrektes Stretch-Verhalten, kein Bug). Der in
+  Nachtrag 3 für diese beiden Themes gesetzte `height`-Fix (plus ein versehentlich für desy
+  ergänztes `align-self: start`) hat dieses gewollte Stretchen unterbunden und brach
+  `card-basic--basic-320` (Diff durch reproduzierbaren `--grep probe`-DOM-Vergleich gegen den
+  develop-Baseline-Worktree `/Users/moppitz/Workspace/kolibri-baseline` bzw. dessen Docker-Volume
+  `kolibri-vt-develop` gefunden) — beide Overrides für desy/kern wieder entfernt.
+- **desy-Alert zusätzlich**: `#{$root}__closer` (absolut positioniert) hatte kein `top` gesetzt und
+  verließ sich auf die statische Positionsberechnung — bei einem `display:flex`-Closer löst diese
+  in Firefox anders auf als bei `display:block` (20px Versatz, wenn eine Überschrift vorausgeht,
+  matching der Headline-Höhe). Legacy löste in beiden Fällen zu `top:0` auf; jetzt explizit
+  `top: 0` gesetzt statt sich auf `auto` zu verlassen.
+- **Diagnose-Methode**: `probe.spec.js` (temporär, nie committet) mit `getComputedStyle` +
+  `getBoundingClientRect` über alle Shadow-Roots hinweg, parallel gegen den Branch-Container
+  (`kolibri-visual-tests-work`) und einen zweiten, aus dem develop-Tip aufgebauten Baseline-
+  Container (`kolibri-vt-develop`) gefahren — Zahlen statt Vermutung, siehe
+  [[zero-visual-delta-handoff]] Diagnose-Goldweg.
+- **Evidenz**: je Theme einzeln (nicht kombiniert — parallele `snapshots-docker.mjs`-Aufrufe auf
+  demselben Volume erzeugen Build-Race-Conditions, siehe Pitfalls) `--grep alert` und
+  `--grep card` grün (default/bwst/kern/desy: 5/5 bzw. 11/11); `ecl` und `unstyled` unterstützen
+  kein `--grep` (eigener Test-Runner-Wrapper) → je ein voller Lauf, 297/297 passed, Exit 0.
+- Fix-Commit folgt in dieser Session (siehe Current state).
+
 ## Pitfalls
 
 - Jest-Snapshot serialisiert `class` alphabetisch — Klassenreihenfolge ist kein Regressions Signal.
@@ -178,8 +246,28 @@ kol-card__close-button kol-close-button`. hydrate 102 grün (Badge-Fehler zuvor 
 - snapshots-docker.mjs: Theme-Snapshot-Baselines sind git-ignored — ein lokales `--check` ohne
   vorher generierte Baselines failt mit „A snapshot doesn't exist … writing actual" (KEIN
   Pixel-Delta!). Lokale Zero-Delta-Prüfung nur gegen frisch aus develop generierte Baselines.
+  (Seit db58c1189f wählt das Skript die Baseline über die neue Artefakt-API automatisch nach
+  Commit-Abstammung — kein manuelles `git checkout origin/develop -- <snapshots>` mehr nötig.)
 - Docker-Volume `kolibri-visual-tests-work`: root-gehörige Reste (durch --user-0-Läufe) blockieren
   mirror-dir mit EACCES → `docker run --rm --user 0 -v kolibri-visual-tests-work:/work alpine
 sh -c 'find /work/repo -user 0 -exec chown 1001:1001 {} +'`.
 - Nach Component-Markup-Änderungen: components dist neu bauen, BEVOR hydrate-Tests laufen —
   sonst rendern die hydrate-Specs gegen stale dist (falscher „Snapshot didn't match").
+- **Nie zwei `snapshots-docker.mjs`-Aufrufe parallel gegen dasselbe Volume** (`kolibri-visual-
+tests-work`): Beide bauen `@public-ui/components` im selben `/work/repo`, ein zweiter Lauf
+  räumt/baut mitten in den Dateien des ersten → `ENOENT`/`mkdir: File exists`/fehlende Module.
+  Immer sequenziell fahren, auch über mehrere Themes hinweg (`default bwst kern desy` in einem
+  Aufruf ist ok, ein zweiter _gleichzeitiger_ Aufruf auf einem anderen Theme nicht) und vor dem
+  nächsten Lauf mit `pgrep -f snapshots-docker.mjs` prüfen, ob noch einer läuft (auch von einer
+  vorherigen, unterbrochenen Session — Prozesse überleben einen Session-Reset).
+- `align-self: self-start` verhindert bei einem `display:flex`-Element, das als Grid-Item über
+  mehrere Tracks (inkl. row-gap) spannt, in Firefox NICHT zuverlässig das Stretchen auf die volle
+  Track-Höhe — nur eine explizite `height` reproduziert die alte (`display:block`) Größe. Das gilt
+  nur für Themes, die dieses `align-self` überhaupt deklarieren; Themes ohne das Property
+  stretchen bereits vorher (Default-Verhalten) und brauchen keinen `height`-Fix — den trotzdem zu
+  setzen bricht das gewollte Stretchen bei größeren Zeilen (z. B. 320px-Reflow mit umgebrochener
+  Headline). Vor jedem `align-self`/`height`-Fix erst grep: hat das Theme die Regel überhaupt?
+- Absolut positionierte Elemente ohne explizites `top`/`left` verlassen sich auf die statische
+  Positionsberechnung — die unterscheidet sich in Firefox zwischen `display:flex`- und
+  `display:block`-Elementen, wenn vorausgehende Geschwister unterschiedliche Höhen haben (z. B.
+  Closer nach optionaler Überschrift). Explizit `top: 0` (o. ä.) setzen statt auf `auto` zu bauen.

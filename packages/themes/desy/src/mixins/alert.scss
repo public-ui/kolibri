@@ -77,6 +77,12 @@
 
 			#{$root}__closer {
 				position: absolute;
+				/* `top` used to resolve via the element's static position (no explicit `top`). With
+				   a block-display closer that always resolved to 0; the `display: flex` ButtonFC
+				   root resolves its static position differently when preceded by a heading (it
+				   lands 20px down, matching the heading's height) — pin it explicitly instead of
+				   relying on the static-position calculation. */
+				top: 0;
 				right: 0;
 				width: to-rem(20);
 				min-width: to-rem(20);

@@ -21,10 +21,11 @@
 		}
 
 		/* The closer renders ButtonFC directly, so `kol-card__close-button` and `kol-button` sit on
-		   the same element. Without an explicit height, this `display: flex` button stretches to
-		   the full height of its grid row (here: the header row, which grows with the heading text)
-		   instead of keeping its own natural a11y size, even with `align-self: self-start` on
-		   `.kol-close-button` in button.scss. */
+		   the same element. `align-self: self-start` on `.kol-close-button` (button.scss) does not
+		   reliably stop a `display: flex` grid item from stretching to the header row's full height
+		   in Firefox (confirmed at both the default and the 320px-reflow sample width — legacy's
+		   `display: block` closer stayed at 44px in both cases). An explicit `height` is the only
+		   thing that reproduces the pre-ButtonFC size reliably. */
 		&__close-button {
 			height: var(--a11y-min-size);
 		}

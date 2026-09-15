@@ -558,6 +558,67 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
   Commit `77f332a835`; sechs Pakete 408/0, ecl 407/1 (freigegeben);
   `git diff --name-only origin/develop...HEAD -- '*.png'` = 0.
 
+### 2026-09-15 — kol-alert-Skeleton-Migration, Nachtrag ButtonFC-Closer (alert + card): alle 6 Themes
+
+- **Ausgangslage**: Nach dem Owner-Wunsch, den Alert-/Card-Closer von `kol-button-wc` auf `ButtonFC`
+  direkt umzustellen (PR #10895, zweiter Fix-Commit oben auf der bereits migrierten Skeleton-PR),
+  zeigte der Docker-Zero-Delta-Check erstmals seit dem Rebase auf einen frischen develop-Stand
+  echte Regressionen, die die vorherige CI-Validierung (gegen einen älteren develop-Stand) nicht
+  erfasst hatte: `alert/basic` und `alert/card-msg` auf default/bwst/desy, `card/basic` (inkl.
+  320px-Reflow) auf default/bwst/kern/desy/ecl-ec.
+- **Ursachen & Fix-Muster** (zwei neue, komponenten-agnostische Muster, ergänzend zu Abschnitt 6):
+  1. **Spezifitäts-Kollision nach DOM-Merge (verwandt mit 6b)**: Ein Closer, der vorher als
+     eigenständiges Custom Element (`kol-button-wc`, eigene Klasse) im Light-DOM lag, bekommt nach
+     dem Umbau auf `ButtonFC` direkt `kol-button` UND die Block-eigene Closer-Klasse auf demselben
+     Element. Eine 3-Klassen-Ahnen-Selektor-Regel wie `.block--variant .block__closer .kol-button`
+     kollabiert dadurch auf 2 Klassen (`.block--variant .block__closer`) — Tie mit einer generischen
+     2-Klassen-Regel (z. B. `.kol-close-button:is(.kol-button--normal)` im Button-Mixin), gewinnt
+     dann nach Quellreihenfolge statt nach Absicht. **Fix**: `&.kol-button` an die eigene Klasse
+     anhängen, um die alte 3-Klassen-Spezifität wiederherzustellen (`.block--variant
+.block__closer.kol-button`) — deterministisch unabhängig von der Kompilat-Reihenfolge.
+  2. **Grid-Row-Stretch bei `display:flex`-Grid-Items in Firefox**: Ein `ButtonFC`-Closer
+     (`display:flex`) als Grid-Item, das über mehrere Tracks inkl. row-gap spannt (z. B. Icon+
+     Heading-Row und Content-Row eines Alerts), stretcht in Firefox auf die volle Track-Höhe +
+     row-gap, **obwohl** `align-self: self-start` gesetzt ist (z. B. 22+4+22=48px statt 44px
+     Closer-Eigenhöhe) — ein Legacy-`display:block`-Closer mit derselben `align-self`-Regel tat das
+     nicht. **Fix**: explizite `height` (nicht nur `min-height`) auf den Closer setzen — aber **nur**
+     in Themes, die `align-self: self-start` für die generische Closer-Klasse überhaupt deklarieren.
+     Themes ohne diese Regel verlassen sich schon auf den Grid-Default `align-items: stretch` und
+     STRETCHEN ABSICHTLICH auf die reale (Content-getriebene) Zeilenhöhe — das ist kein Bug, sondern
+     exakt das Legacy-Verhalten (baseline-verifiziert: 44px bei normaler Breite, 78px bei 320px-
+     Reflow mit 3-zeilig umgebrochener Card-Headline, beides korrekt gestretcht). Denselben
+     `height`-Fix dort trotzdem zu setzen bricht das gewollte Stretchen bei größeren Zeilen. **Vor
+     jedem Fix**: `grep -n "align-self" <theme>/button.scss` — Regel vorhanden? Nur dann fixen.
+  3. **Statische-Position-Divergenz bei `position:absolute` ohne `top`**: Ein absolut positioniertes
+     Element ohne explizites `top` löst seine Position über die "statische Position" auf (wo es in
+     normalem Fluss stünde). Diese Berechnung unterscheidet sich in Firefox zwischen
+     `display:flex`- und `display:block`-Elementen, wenn ein vorausgehendes Geschwister (z. B. eine
+     optionale Überschrift) unterschiedlich hoch ist — der `display:flex`-Closer landete 20px zu
+     tief, exakt versetzt um die Höhe der Überschrift. **Fix**: `top: 0` (oder den sonst intendierten
+     Wert) explizit setzen statt sich auf `auto`/die statische Position zu verlassen.
+- **Theme-Spezifika**: default/bwst/ecl-ec deklarieren `align-self: self-start` für den generischen
+  Closer (Muster 2 trifft zu, `height`-Fix nötig); desy und kern deklarieren es NICHT (Muster 2
+  trifft nicht zu, kein `height`-Fix — ein zuerst versehentlich für beide gesetzter Fix wurde
+  wieder entfernt, nachdem er `card-basic--basic-320` brach). desy hat zusätzlich Muster 3 (Alert-
+  Closer ist bei desy `position:absolute`, bei den anderen Themes ein normales Grid-Item).
+- **Diagnose-Goldweg (bestätigt Erfahrung #7)**: `probe.spec.js` mit rekursivem
+  Shadow-Root-Sammler + `getComputedStyle`/`getBoundingClientRect`, einmal gegen den Branch-
+  Container (`kolibri-visual-tests-work`) und einmal gegen einen zweiten, aus dem develop-Tip
+  aufgebauten Container (`kolibri-vt-develop`) gefahren — beide Zahlen nebeneinander (Höhe, `top`,
+  `align-self`, Grid-Row-Template, row-gap) haben beide Muster in Minuten statt Stunden belegt.
+- **Neue Sackgasse**: `align-self`/`height`-Fix pauschal auf alle Themes mit derselben Closer-Klasse
+  anwenden, ohne vorher zu prüfen, ob das Theme die zugrunde liegende `align-self`-Regel überhaupt
+  hat — bricht das (korrekte) Stretch-Verhalten in den Themes ohne diese Regel.
+- **Prozess-Erfahrung**: Nie zwei `snapshots-docker.mjs`-Läufe parallel gegen dasselbe Volume
+  starten (Build-Race-Condition, `ENOENT`/`mkdir: File exists`) — auch nicht versehentlich über
+  einen Session-Reset hinweg (ein Hintergrundprozess einer vorherigen, unterbrochenen Session kann
+  weiterlaufen; vor jedem Lauf `pgrep -f snapshots-docker.mjs` prüfen).
+- **Fix-Commit(s)**: `be211d0b19` (erster, zu pauschaler Fix), `a6dc87507e` (Stylelint-Nachzieh),
+  Korrektur-Commit dieser Session (desy/kern-Overrides entfernt, desy `top:0` ergänzt) auf PR #10895.
+- **Evidenz**: je Theme einzeln geprüft (kombinierte Läufe verursachen die Race-Condition oben) —
+  default/bwst/kern/desy: `--grep alert` 5/5 passed, `--grep card` 11/11 passed, je Exit 0; ecl und
+  unstyled unterstützen kein `--grep` → je ein voller Lauf, 297/297 passed, Exit 0.
+
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 
 - **Ausgangslage**:
