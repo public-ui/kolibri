@@ -229,7 +229,7 @@ Baselines werden **nicht regeneriert**, sondern auf den Base-Stand gestellt (Abs
 
 ## 10. Companion-Plan als Handoff-Dokument
 
-Ein Plan-Dokument **im Repo** (z. B. `.claude/plans/<branch>.md`), das jede Session aktuell hält. Plan-Commits zusammen mit — oder vor — der Arbeit, die sie beschreiben. Pflichtabschnitte:
+Ein Plan-Dokument **lokal, ungetrackt** (z. B. `.claude/plans/<branch>.md`), das jede Session aktuell hält — Pläne werden nicht eingecheckt und sind nicht Teil eines PRs (Owner-Entscheid 2026-09-15, siehe migrate-to-skeleton § Konventionen). Dauerhaft relevantes Wissen wandert stattdessen in die Skills. Pflichtabschnitte:
 
 - **Goal**: Ziel + Kriterium + Messbefehl + je Theme/Scope eine Statuszeile mit Prüfbefehl.
 - **Current state**: Tabelle der Commits mit aussagekräftiger Zusammenfassung, mit Datum.
