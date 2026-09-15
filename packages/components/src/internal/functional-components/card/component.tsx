@@ -43,10 +43,14 @@ type CardFCProps = FunctionalComponentProps<CardApi> & {
  * `.kol-close-button` is a theme hook shared with the alert, and every theme addresses it as an
  * ancestor of `.kol-button`. It therefore stays on a wrapper around `ButtonFC` rather than merging
  * into the button's own root — drop the wrapper once the hook itself moves onto the button root.
+ *
+ * A forwarded `class` lands on the root, so a consumer rendering `CardFC` in place of
+ * `kol-card-wc` keeps its own hook (the drawer marks the card `kol-drawer__wrapper`).
  */
 export const CardFC: FC<CardFCProps> = (props, children) => {
 	const {
 		ariaDescriptionId,
+		class: hostClass,
 		closeButtonProps,
 		handleBlur,
 		handleClose,
@@ -63,7 +67,7 @@ export const CardFC: FC<CardFCProps> = (props, children) => {
 	} = props;
 
 	return (
-		<article aria-labelledby={headingId} class={cardBem()}>
+		<article aria-labelledby={headingId} class={clsx(cardBem(), hostClass)}>
 			{href.length > 0 ? (
 				<a class={BEM_CLASS_CARD__LINK} href={href} target={target || undefined} onBlur={handleBlur} onFocus={handleFocus} ref={refCta}>
 					<CardHeadingFC headingId={headingId} label={label} level={level} />
