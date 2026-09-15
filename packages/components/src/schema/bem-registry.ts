@@ -81,6 +81,26 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'disabled' | 'hide-label' | 'inline' | 'standalone'>;
 	};
+	'kol-details': {
+		elements: {
+			content: {
+				modifiers: null;
+			};
+			heading: {
+				modifiers: null;
+			};
+			'heading-button': {
+				modifiers: null;
+			};
+			wrapper: {
+				modifiers: null;
+			};
+			'wrapper-animation': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-icon': {
 		elements: {
 			icon: {
@@ -251,6 +271,16 @@ const BEM: KoliBriComponentsBemSchema = {
 			tooltip: { modifiers: null },
 		},
 		modifiers: new Set(['disabled', 'hide-label', 'inline', 'standalone']),
+	},
+	'kol-details': {
+		elements: {
+			content: { modifiers: null },
+			heading: { modifiers: null },
+			'heading-button': { modifiers: null },
+			wrapper: { modifiers: null },
+			'wrapper-animation': { modifiers: null },
+		},
+		modifiers: null,
 	},
 	'kol-icon': {
 		elements: {
