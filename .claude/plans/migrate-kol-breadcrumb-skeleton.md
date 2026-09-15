@@ -29,7 +29,7 @@ Branch: `refactor/9565-breadcrumb-skeleton` (Basis: develop @ `001397bfb1`)
 - [x] Phase 3.5: Public-API-Pin + Tests ko-lokalisiert (Snapshot um Mehr-Link-Variante ergänzt)
 - [x] Phase 4: `shadow.tsx` + `test/`-Ordner gelöscht; Dead-Schema-Check: Breadcrumb-Schema bleibt (veröffentlichte Typen `BreadcrumbProps/States/API`, `BreadcrumbLinkProps` aktiv referenziert)
 - [x] Phase 5 (Unit-Ebene): `pnpm format` ✓, `pnpm lint` (ESLint+Stylelint+TSC) ✓, `test:unit` 950/950 ✓, `components build` ✓, `hydrate test` 102/102 ✓
-- [ ] Phase 5 (Pixel-Gate): Voll-Lauf `KOLIBRI_VISUAL_TESTS_WORKERS=1 node scripts/snapshots-docker.mjs --all --check` — Breadcrumb-Cluster default ✓ (2/2), Gesamtlauf läuft
+- [x] Phase 5 (Pixel-Gate): **6/6 Themes grün, Exit 0, null PNG-Deltas** (Docker, 1 Worker, Baselines auf develop-Stand): default 294 ✓ (Script-Volllauf), bwst 295 ✓, ecl 295 ✓, kern 295 ✓, desy 295 ✓, unstyled 294 ✓. Breadcrumb-Cluster zusätzlich einzeln geprüft (2/2 je Lauf). Hinweis: `table/state-columns` (neue Sample-Route aus dem Parallel-Feature #10874 im gespiegelten Arbeitsbaum) hat noch keine committeten Baselines — für die Theme-Läufe mit einer **volume-lokalen** Baseline versehen (nicht committet, `--update-snapshots --grep state-columns` im Container); keine Repo-Änderung.
 
 ## Befunde
 
@@ -37,3 +37,11 @@ Branch: `refactor/9565-breadcrumb-skeleton` (Basis: develop @ `001397bfb1`)
 - **JSX-Fragment**: `<></>` braucht explizites `Fragment`-Import im Stencil-Test-Transform (`ReferenceError: Fragment is not defined`).
 - **`import type` auf Basisklasse**: `extends BaseWebComponent` braucht Wert-Import (Runtime-ReferenceError in Jest).
 - **Pixel-Gate-Methodik**: 2px-Höhen-Delta nur über PNG-Bänder sichtbar; Ursache (Strut des blockifizierten Inline-Wrappers) per probe.spec.js-Geometrievergleich Branch-Volume vs. Develop-Volume belegt (65,5 vs. 64 px am 2-Zeilen-Link). Probe-Container laufen als root → hinterlassen root-owneds `visual-report/`/`test-results/` im Volume → vor dem nächsten Skript-Lauf als root räumen (EACCES im Mirror).
+- **Volume-Hygiene bei abgebrochenen Läufen**: Ein gekillter Script-Lauf hinterlässt das Volume inkonsistent (fehlende src-Verzeichnisse nach Re-Mirror, fehlende Theme-dists → `UNLOADABLE_DEPENDENCY …/theme/dist`, teils fehlende Baselines). Heilung: `node scripts/snapshots-docker.mjs --reset` + frischer Volllauf; fehlende Theme-dists einzeln nachbauen (`pnpm --filter @public-ui/theme-<x> build` im Container, pnpm liegt in `/work/npm-global`).
+- **Fremde Sample-Route ohne Baseline**: Neue Sample-Routen aus Parallel-Features im Hauptbaum gelangen in den Volume-Mirror und lassen jeden Theme-Check an „A snapshot doesn't exist" scheitern. Lösung ohne Repo-Pollution: Baseline volume-lokal generieren (`node packages/tools/visual-tests/src/index.js --update-snapshots --grep <route>` im Container) und den Check direkt im Container fahren (gleicher Runner, Exit-Code als Evidenz). Direkte Container-Läufe brauchen `THEME_CSS` (dist-Themes) und gebaute Theme-dists.
+- **Script-Exit-Codes durch Pipen maskiert**: `… | tail -30` meldet Exit 0 trotz Theme-Fehlern — Vollläufe immer mit `> file 2>&1; echo EXIT: $?` fahren.
+
+## Abschluss (DONE 2026-09-15)
+
+- Commit `55f7a0ae8b` auf `refactor/9565-breadcrumb-skeleton` (Basis origin/develop `001397bfb1`), gepusht, PR erstellt.
+- Ursprünglicher Commit `942fdef56e` landete fälschlich auf lokalem develop (Parallelsession hatte umgeschaltet) — per Worktree + Cherry-Pick geborgen, develop zurück auf den Parallelsession-Tip `074269c711` gesetzt.
