@@ -1,8 +1,8 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import type { ColorPair, KoliBriIconsProp } from '../../../schema';
-import { BemRootNodeFC } from '../bem-root-node/component';
 import { BadgeFC } from '../badge/component';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { VersionApi } from './api';
 
