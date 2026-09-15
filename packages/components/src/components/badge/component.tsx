@@ -39,8 +39,9 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	// --- Composed behaviors ---
 
 	/**
-	 * The smart button is always rendered with `hideLabel`, so `ButtonFC` always renders its
-	 * tooltip — the behavior is mandatory here, not optional.
+	 * Stays idle while no smart button is configured — it is only fed in `applySmartButton`, and
+	 * `syncListeners` needs the button ref. Once there *is* a smart button the tooltip is not
+	 * optional: the badge renders it with `hideLabel`, so its label lives in the tooltip.
 	 */
 	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 
@@ -79,9 +80,9 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 			this.unsetRenderProp('smartButton');
 			this.smartButtonProps = undefined;
 			if (value !== undefined && value !== null) {
-				smartButtonProp.apply(value, (v) => {
-					this.setRenderProp('smartButton', v);
-					this.smartButtonProps = resolveButtonProps({ ...v, _hideLabel: true, _ariaControls: this.labelId }, this.host);
+				smartButtonProp.apply(value, (smartButton) => {
+					this.setRenderProp('smartButton', smartButton);
+					this.smartButtonProps = resolveButtonProps({ ...smartButton, _hideLabel: true, _ariaControls: this.labelId }, this.host);
 					this.tooltipBehavior.componentWillLoad({
 						label: this.smartButtonProps.label,
 						align: this.smartButtonProps.tooltipAlign,

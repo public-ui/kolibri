@@ -14,15 +14,12 @@ const BEM_CLASS_BADGE__LABEL = badgeBem('label');
 const BEM_CLASS_BADGE__SMART_BUTTON = badgeBem('smart-button');
 
 /**
- * `smartButton` is the one render prop that may legitimately be absent: the web component clears
- * it when no button is configured, which `StrictFields` cannot express. `smartButtonProps` carries
- * the same configuration already normalized for `ButtonFC` and is absent for the same reason.
+ * `smartButton` and `smartButtonProps` may legitimately be absent — the web component clears them
+ * when no button is configured, which `StrictFields` cannot express.
  *
- * Listed with `Pick` rather than subtracted with `Omit`: `Omit` over `FunctionalComponentProps`
- * widens every remaining prop (`ariaDescriptionId` came out as `string | boolean | undefined`),
- * because subtracting from the intersection collapses the precise state and callback types into
- * the optional HTML attributes it is intersected with. Naming the keys keeps them exact, and
- * prop drift against `BadgeApi` still fails the build.
+ * `Pick`, not `Omit`: `Omit` over `FunctionalComponentProps` widens every remaining prop, because
+ * subtracting from the intersection collapses the precise types into the optional HTML attributes
+ * it is intersected with.
  */
 type BadgeFCProps = Pick<
 	FunctionalComponentProps<BadgeApi>,
@@ -43,14 +40,11 @@ type BadgeFCProps = Pick<
 };
 
 /**
- * The root node is built from `bem.forBlock('kol-badge')` rather than `BemRootNodeFC`: the badge
- * paints its colours as an inline `style`, and `BemRootNodeFC` forwards only `class`. ARC42
- * § "BemRootNodeFC Pattern" covers this case — the root uses the same typed schema either way.
+ * Root from `bem.forBlock('kol-badge')`, not `BemRootNodeFC`: the badge needs an inline `style`
+ * for its colours, and `BemRootNodeFC` forwards only `class` (ARC42 § "BemRootNodeFC Pattern").
  *
- * The children order is `span` (label), `button` (the smart button, pushed last by `order: 3`) and
- * a trailing `<br />`, which makes NVDA's read mode treat each badge as one element. The `<br />`
- * and the `<div>` root come from the badge read-mode fix on develop (#10842); the button's DOM
- * position stays before it, so the tab order is unaffected.
+ * The trailing `<br />` makes NVDA's read mode treat each badge as one element (#10842). The smart
+ * button stays before it in the DOM for tab order and is moved to the end visually by `order: 3`.
  */
 export const BadgeFC: FC<BadgeFCProps> = (props) => {
 	const {

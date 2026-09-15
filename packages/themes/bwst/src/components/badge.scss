@@ -11,9 +11,7 @@
 			align-items: center;
 		}
 
-		/* `kol-badge__smart-button` now sits on the `.kol-button` block itself — the badge renders
-		   `ButtonFC` directly instead of wrapping it in a `kol-button-wc` element, so the former
-		   `&__smart-button .kol-button` descendant step is gone. */
+		/* `kol-badge__smart-button` sits on the `.kol-button` block itself. */
 		&__smart-button {
 			color: inherit;
 
