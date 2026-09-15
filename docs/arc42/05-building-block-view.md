@@ -191,21 +191,26 @@ themes/
    - Global layout defaults
    - Box-sizing, font-size baseline
    - No colors or margins
+   - No color scheme (light/dark)
 
 3. **Layer 3: Basis Component** (from `components`)
    - Component-specific layout
    - Structural CSS only
    - No colors or margins
+   - No color scheme (light/dark)
 
 4. **Layer 4: Theme Global** (from `themes`)
    - Colors, fonts, spacing
    - Design tokens
+   - Color schemes (light/dark)
    - Brand-specific globals
 
 5. **Layer 5: Theme Component** (from `themes`)
    - Component-specific theming
    - Colors, borders, shadows
    - Complete visual design
+
+> Dark/light color schemes are a theme concern only. The base layers 1–3 focus on layout and stay color-scheme neutral; see the [Base Styling vs. Theming Concept](../BASE_STYLING_VS_THEMING_CONCEPT.md).
 
 ## 5.4 Adapters Package (Level 2)
 

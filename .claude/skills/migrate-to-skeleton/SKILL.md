@@ -73,7 +73,9 @@ Hintergrund: `packages/components/src/components/_skeleton/ARC42.md#schema-helpe
    `@Component({ tag: 'kol-<komponente>', shadow: true })`, erbt `BaseWebComponent<Api>`, implementiert `WebComponentInterface<Api>` **und** das Schema-`*Props`-Interface (z. B. `implements LinkProps`), damit API-Drift den Build bricht. Aufbau, Prop-Triangle, Behavior-Lebenszyklus und Zustandszugriff: `reference/patterns.md`.
 5. **Öffentliche API-Parität sichern**
    Der migrierte WC muss **exakt** dieselbe `@Prop`/`@Method`-Oberfläche bieten wie der Vorgänger — gleiche Member, gleiche Schema-Alias-Typen, gleiche Defaults, gleiche JSDoc (`custom-elements.json`, `docs-vscode` und die Adapter-IntelliSense werden daraus erzeugt). Oberfläche in `packages/components/src/components/_skeleton/public-api.spec.ts` festnageln und gegen den Vorgänger diffen. Details: `ARC42.md#public-api-contract-migration-parity`.
-6. **Tests** — ko-lokalisiert neben `component.tsx`
+6. **CSS/SCSS** — `packages/components/src/components/<komponente>/style.scss`
+   Bestehende Basis-Styles behalten, Selektoren an die neue BEM-Struktur anpassen. `style.scss` bleibt Basis-Styling: nur Layout und Struktur, keine Farben (außer dem Schwarz-/Weiß-Kontrast-Fallback), **kein Dark-/Light-Color-Scheme** (`prefers-color-scheme`, `color-scheme`, `light-dark()`). Farben und Color Schemes gehören in die Theme-Pakete (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
+7. **Tests** — ko-lokalisiert neben `component.tsx`
    `snapshot.spec.tsx` über `executeSnapshotTests`; `interaction.e2e.ts` nur, wenn Interaktionsverhalten es rechtfertigt.
 
 ## 6. Phase 4 — Legacy-Rückbau

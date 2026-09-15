@@ -3,20 +3,6 @@ name: CI-Pipeline
 on:
   pull_request:
     types: [opened, reopened, synchronize]
-    paths-ignore:
-      - '*.md'
-      - '**/*.md'
-      - 'docs/**'
-      - 'LICENSE'
-      - '.github/ISSUE_TEMPLATE/**'
-      - '.github/PULL_REQUEST_TEMPLATE/**'
-      - 'renovate.json'
-      - 'publiccode.yml'
-      - '.vscode/**'
-      - 'license-reports/**'
-      - '*.jpg'
-      - '*.png'
-      - '*.svg'
   push:
     branches:
       - 'develop'

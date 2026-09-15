@@ -58,10 +58,12 @@ The theming is realized with adopted style sheets on web components and will be 
 ### The 5 styling layers
 
 1. **A11y Preset layer**: This layer comes out of the `adopted-style-sheets` package and contains the basic styles for accessibility. It is applied to all components.
-2. **Basis Global layer**: This layer contains the basis global styles for all components and comes out of the `@public-ui/components` package. It is applied only component specific layout styles without margins and paddings. Generally, the styling works without colors, as the colors should only be set through the custom Theme Layer.
-3. **Basis Component layer**: This layer contains the basis styles for one component and comes out of the `@public-ui/components` package. It is applied only component specific layout styles without margins and paddings. Generally, the styling works without colors, as the colors should only be set through the custom Theme Layer.
-4. **Theme Global layer**: This layer contains the global styles for all components of a theme and comes out of a own theme package, like `@public-ui/theme-default`.
+2. **Basis Global layer**: This layer contains the basis global styles for all components and comes out of the `@public-ui/components` package. It is applied only component specific layout styles without margins and paddings. Generally, the styling works without colors, as the colors should only be set through the custom Theme Layer. It never contains a color scheme (dark/light).
+3. **Basis Component layer**: This layer contains the basis styles for one component and comes out of the `@public-ui/components` package. It is applied only component specific layout styles without margins and paddings. Generally, the styling works without colors, as the colors should only be set through the custom Theme Layer. It never contains a color scheme (dark/light).
+4. **Theme Global layer**: This layer contains the global styles for all components of a theme and comes out of a own theme package, like `@public-ui/theme-default`. Color schemes (dark/light) are defined here via theme tokens.
 5. **Theme Component layer**: This layer contains the component specific styles for one component of a theme and comes out of a own theme package, like `@public-ui/theme-default`.
+
+> **Base styling vs. theming — dark/light lives in the theme.** The base styling of the components package (layers 1–3) is responsible for layout and structure only. It knows no dark/light color scheme: no `prefers-color-scheme`, no `color-scheme`, no `light-dark()`, no scheme tokens. Black and white in the base layers are a contrast fallback, not a color design. Dark/light theming is anchored and implemented exclusively in the theme packages (layers 4–5). See [`docs/BASE_STYLING_VS_THEMING_CONCEPT.md`](docs/BASE_STYLING_VS_THEMING_CONCEPT.md).
 
 ### Global accessibility styles
 
@@ -192,6 +194,8 @@ The basis global layer set the default font-size and box-sizing for all componen
 ### Custom Theming rules
 
 The custom theme layer is used to set the colors and other theme specific styles. The custom theme layer should not contain any layout styles, as these are already set in the basis global and component layers.
+
+Dark/light color schemes are implemented in the theme layers only. Define all colors that differ between light and dark as tokens on `:host` in the theme global layer and switch the scheme there (`color-scheme` + `light-dark()`, `@media (prefers-color-scheme: dark)`, or an opt-in attribute). The theme component layer only references those tokens and never contains its own scheme media queries. Alternatively, a theme may ship a separate dark export that is registered as an additional theme and switched via the `kol-theme` attribute. The base styling of the components package must never be involved in this.
 
 For example, generally the font-family is set in the theme global layer, on the `:host` element, so that all components inherit the font-family from the theme. The font-size is set in the basis global layer, so that all components inherit the font-size from the basis global layer. But it is possible to set a other base font-size in the theme global layer, if needed.
 
@@ -420,6 +424,7 @@ This is clearer and doesn't require Sass variable gymnastics.
 - Do not `inherit` styles over the `:host` element, as this will override the styles of the basis global and component layers. This makes your component less robust from outside environment styles. Only the `kol-icon` inherits some specific styles, like `color`, `font-size`, `font-family` and `line-height`, as these are needed for the icon to be displayed correctly inline to this neighbored elements.
 - Do not set the default `font-family`, `font-size` or `box-sizing` in the basis or theme component layer (redundant), as these are already set in the basis global layers. If you need to set a different font-family or font-size, you can do this in the theme global layer.
 - Do not set `margin` or `padding` in the basis global and component layers. If you need to set a different margin or padding, you can do this in the theme global or component layers.
+- Do not use `@media (prefers-color-scheme: …)`, the `color-scheme` property or the `light-dark()` function in the basis global and component layers. Dark/light color schemes are a theme concern and belong exclusively in the theme global layer (see [`docs/BASE_STYLING_VS_THEMING_CONCEPT.md`](docs/BASE_STYLING_VS_THEMING_CONCEPT.md)). `forced-colors` (high contrast) is a separate accessibility mechanism and stays in the basis `kol-forced-colors` layer.
 - Do not use `overflow: hidden` in styling or theming, as it often causes issues for reuse and should be avoided.
 - **Do not use `@layer` declarations in utility files**: Helper files, mixin files, and partial files (starting with `_`) should not contain `@layer` declarations. These files are utilities and should be layer-agnostic. This is enforced by the custom Stylelint rule `kolibri/no-layer-in-utility-files`.
 - **Never use `$root` variables or `@at-root` in component mixins**: All selectors should be explicit. Use direct child/descendant nesting only when a modifier changes element behavior within a specific context.

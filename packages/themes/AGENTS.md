@@ -22,6 +22,7 @@ This folder collects all official KoliBri themes. Each theme package under this 
 - Follow BEM style class naming (`block__element--modifier`).
 - Reuse mixins from the `mixins/` folder and use the `to-rem()` helper for sizing.
 - Place theme tokens (colors, fonts, spacing, etc.) in the global layer and reference them in component styles.
+- Dark/light color schemes are a theme responsibility. Define scheme-dependent colors as tokens in `@layer kol-theme-global` on `:host` and switch the scheme at that single place (`color-scheme` + `light-dark()`, `@media (prefers-color-scheme: dark)`, or an opt-in attribute). Component styles only reference the tokens. Never expect a color scheme from the base styling of `@public-ui/components` — it is layout-only by design (see [`docs/BASE_STYLING_VS_THEMING_CONCEPT.md`](../../docs/BASE_STYLING_VS_THEMING_CONCEPT.md)).
 - Avoid `!important` and only override properties that the theme actually customises.
 
 ## Consistency
