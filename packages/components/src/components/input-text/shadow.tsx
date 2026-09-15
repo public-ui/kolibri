@@ -44,6 +44,7 @@ import type {
 import { CounterDomUpdater } from '../../utils/counter-dom-updater';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { createEventWithTarget, KolEvent } from '../../utils/events';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputTextController } from './controller';
 
@@ -106,6 +107,31 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 
 	private readonly translateClearSearch = translate('kol-clear-search');
 
+	private readonly onClearButtonClick = (): void => {
+		if (this._disabled === true || this.state._hasValue !== true) {
+			return;
+		}
+
+		const value = '';
+		const detail = { name: (this.state._name as string) ?? '', value };
+
+		/* Updates state, `_hasValue`, the counter and the form-associated value synchronously through the `_value` watcher. */
+		this._value = value;
+
+		/**
+		 * Stencil re-renders asynchronously, so the native input still holds the previous value here. Setting it
+		 * imperatively keeps `getValue()` and `event.target.value` in sync with the value the events carry.
+		 */
+		if (this.ctaRef.el) {
+			this.ctaRef.el.value = value;
+		}
+
+		this.controller.onFacade.onInput(createEventWithTarget(KolEvent.input, detail, this.ctaRef.el), true, value);
+		this.controller.onFacade.onChange(createEventWithTarget(KolEvent.change, detail, this.ctaRef.el), value);
+
+		this.ctaRef.el?.focus();
+	};
+
 	private getClearButton(): VNode | null {
 		if (this.state._type === 'search' && !this._disabled) {
 			const canClear = this.state._hasValue === true;
@@ -119,10 +145,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 					label={this.translateClearSearch}
 					buttonVariant="ghost"
 					disabled={!canClear}
-					onClick={(): void => {
-						this._value = '';
-						this.ctaRef.el?.focus();
-					}}
+					onClick={this.onClearButtonClick}
 					icon="kolicon-cross"
 				/>
 			);

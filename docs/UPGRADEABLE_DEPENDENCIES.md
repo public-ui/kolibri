@@ -81,10 +81,9 @@
 - **Effort:** LOW → MEDIUM – Config migration mostly automatic
 - **Roadmap:** [TypeScript 5.x to 6.0 Migration Guide](https://gist.github.com/privatenumber/3d2e80da28f84ee30b77d53e1693378f)
 
-### 5. **@angular/core** | 19.2.20 → 22.0.0-next.5 (Angular v19, v20, v21 adapters)
+### 5. **@angular/core** | 20.3.18 → 22.0.0-next.5 (Angular v20, v21 adapters)
 
 - **Packages Affected:**
-  - `/packages/adapters/angular/v19/`: 19.2.20 → 22.0.0-next.5
   - `/packages/adapters/angular/v20/`: 20.3.18 → 22.0.0-next.5
   - `/packages/adapters/angular/v21/`: 21.2.6 → 22.0.0-next.5
 - **Breaking Changes (v20+):**
@@ -187,7 +186,7 @@
 - **Effort:** LOW
 - **Upgrade Path:** Do together with eslint v10.0.0
 
-### 2. **minimatch** | 10.2.4 → 10.2.5 (React, Vue, Svelte, Angular v19/v20/v21)
+### 2. **minimatch** | 10.2.4 → 10.2.5 (React, Vue, Svelte, Angular v20/v21)
 
 - **Type:** Patch-level glob matching utility
 - **Risk:** VERY LOW
@@ -224,7 +223,7 @@
 - **Effort:** LOW
 - **Recommendation:** Wait for stable 8.0.0 release
 
-### 8. **zone.js** | 0.15.1 → 0.16.1 (Angular adapters v19-v21)
+### 8. **zone.js** | 0.15.1 → 0.16.1 (Angular adapters v20-v21)
 
 - **Type:** Angular zone management
 - **Dependency:** Follows Angular major versions
@@ -303,7 +302,7 @@
 
 - ❌ prettier@4.0.0-alpha → keep v3 until stable (blocked by prettier-plugin-organize-imports)
 - ❌ @stencil/core@5 → wait for output-target compatibility
-- ❌ Angular@22 → stay on v19/v20/v21 adapter versions (production-critical)
+- ❌ Angular@22 → stay on v20/v21 adapter versions (production-critical)
 - ❌ mocha@12, @babel/types@8 → wait for stable releases (beta only)
 
 ### Estimated Overall Effort

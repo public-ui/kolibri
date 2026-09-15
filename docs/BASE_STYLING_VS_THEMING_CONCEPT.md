@@ -117,7 +117,7 @@ Der Leitsatz aus [Abschnitt 1](#1-leitsatz) ist an folgenden Stellen eingearbeit
 - [`packages/themes/AGENTS.md`](../packages/themes/AGENTS.md): Dark/Light als Theme-Verantwortung.
 - arc42 (EN und DE): [Lösungsstrategie](./arc42/04-solution-strategy.md), [Bausteinsicht](./arc42/05-building-block-view.md), [Architekturentscheidungen](./arc42/09-architecture-decisions.md) (ADR-008, ADR-018), [Qualitätsanforderungen](./arc42/10-quality-requirements.md) (Szenario P3), [Glossar](./arc42/12-glossary.md).
 - [`docs/HOWTO_REGISTER_COMPONENTS_AND_THEMES.md`](./HOWTO_REGISTER_COMPONENTS_AND_THEMES.md) und [`docs/tutorials/NEW_COMPONENT.md`](./tutorials/NEW_COMPONENT.md).
-- Skeleton-Architektur: [`packages/components/src/components/_skeleton/ARC42.md`](../packages/components/src/components/_skeleton/ARC42.md), `.claude/commands/migrate-to-skeleton.md`, `.github/agents/migrate-to-skeleton.agent.md`.
+- Skeleton-Architektur: [`packages/components/src/components/_skeleton/ARC42.md`](../packages/components/src/components/_skeleton/ARC42.md), `.claude/skills/migrate-to-skeleton/SKILL.md`, `.github/agents/migrate-to-skeleton.agent.md`.
 - Skills und Companion-Pläne: `.claude/skills/theme-redundancy-check/SKILL.md`, `.claude/plans/theme-redundancy-check-plan.md`, `.claude/skills/zero-visual-delta-handoff/SKILL.md`.
 
 ## 9. Nicht-Ziele und Folgearbeiten

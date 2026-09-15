@@ -111,7 +111,6 @@ jobs:
         run: |
           PACKAGE_DIRS=(
             'packages/components'
-            'packages/adapters/angular/v19'
             'packages/adapters/angular/v20'
             'packages/adapters/angular/v21'
             'packages/adapters/react'
@@ -154,7 +153,6 @@ jobs:
 
           PACKAGE_DIRS=(
             'packages/components'
-            'packages/adapters/angular/v19'
             'packages/adapters/angular/v20'
             'packages/adapters/angular/v21'
             'packages/adapters/react'

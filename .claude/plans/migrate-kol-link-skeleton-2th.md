@@ -174,7 +174,7 @@ the regenerated baselines can be done via the commit diff on GitHub.
 
 Continue the skeleton migration for further legacy components (~80% pending); see
 `packages/components/src/components/_skeleton/TODO_PROP_ENFORCEMENT.md` and the
-`/migrate-to-skeleton` command.
+`migrate-to-skeleton` skill (`.claude/skills/migrate-to-skeleton/SKILL.md`).
 
 ## Pitfalls (learned the hard way on this branch)
 

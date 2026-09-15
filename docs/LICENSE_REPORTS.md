@@ -2,22 +2,6 @@
 
 > Overview of licenses for all packages in Kolibri.
 
-## adapter-angular-v19
-
-| Package               | License       | Version    | Author                                             |
-| --------------------- | ------------- | ---------- | -------------------------------------------------- |
-| rxjs                  | Apache-2.0    | 7.8.2      | Ben Lesh                                           |
-| typescript            | Apache-2.0    | 5.8.3      | Microsoft Corp.                                    |
-| minimatch             | BlueOak-1.0.0 | 10.2.6     | Isaac Z. Schlueter                                 |
-| rimraf                | BlueOak-1.0.0 | 6.1.3      | Isaac Z. Schlueter                                 |
-| @public-ui/components | EUPL-1.2      | 4.3.1-rc.1 | Informationstechnikzentrum Bund kolibri@itzbund.de |
-| @angular/common       | MIT           | 19.2.25    | angular                                            |
-| @angular/compiler     | MIT           | 19.2.25    | angular                                            |
-| @angular/compiler-cli | MIT           | 19.2.25    | n/a                                                |
-| @angular/core         | MIT           | 19.2.21    | angular                                            |
-| @angular/core         | MIT           | 19.2.21    | angular                                            |
-| zone.js               | MIT           | 0.15.1     | Brian Ford                                         |
-
 ## adapter-angular-v20
 
 | Package               | License       | Version    | Author                                             |

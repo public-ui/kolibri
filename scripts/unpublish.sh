@@ -1,4 +1,3 @@
-npm unpublish @public-ui/angular-v19@$1
 npm unpublish @public-ui/angular-v20@$1
 npm unpublish @public-ui/angular-v21@$1
 npm unpublish @public-ui/hydrate@$1
