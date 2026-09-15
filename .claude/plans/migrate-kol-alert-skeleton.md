@@ -112,11 +112,14 @@ node scripts/snapshots-docker.mjs <theme> --check && git diff origin/develop..HE
 
 ## Open work
 
-1. ~~Zero-Visual-Delta~~ — ✅ DONE (2026-09-14): `node scripts/snapshots-docker.mjs --all --check`
-   Exit 0, letztes Theme 293/293 passed; Stichprobe `default --check -- --grep Alert` 5/5 passed.
-   `git diff origin/develop..HEAD -- '*.png'` = 0.
-2. ~~Commit + PR~~ — DONE: defb6aae09, PR #10895, CI grün (Visual Review „No visual changes").
-   Issue #9562 Status Review: gh-Token ohne project-Scopes, OAuth-Geräte-Flow 2× ohne
+1. ~~Zero-Visual-Delta~~ — ✅ DONE (2026-09-14) für Commit 1 (CI: Visual Review „No visual
+   changes"). Nachtrag-2-Commits (ButtonFC in alert+card): Validierung läuft — **Baselines aus
+   develop-Tip c760252b1f im Worktree `/Users/moppitz/Workspace/kolibri-baseline` erzeugen**
+   (`node scripts/snapshots-docker.mjs --all`), dann Baseline-PNGs von dort in diesen Worktree
+   kopieren (mirror-dir pruned sonst die Volumen-Baselines weg!) und hier
+   `node scripts/snapshots-docker.mjs --all --check` (Exit 0 erwartet).
+2. Push des Rebase-Ergebnisses + Commit 2 (5646b8c65e → d34236c442 nach Rebase) auf PR #10895.
+3. Issue #9562 Status Review: gh-Token ohne project-Scopes, OAuth-Geräte-Flow 2× ohne
    Nutzer-Bestätigung abgelaufen — manueller Schritt beim Owner offen.
 
 ## Nachtrag (2026-09-15): Closer auf ButtonFC direkt (Owner-Entscheidung)
@@ -140,9 +143,43 @@ ButtonFC direkt**, `kol-button` + `kol-alert__closer` liegen auf demselben Eleme
 - Arbeitete im separaten Worktree `/Users/moppitz/Workspace/kolibri-alert`, weil eine parallele
   Session den Hauptbaum auf dem Breadcrumb-Branch belegt hielt.
 
+## Nachtrag 2 (2026-09-15): kol-card ebenfalls auf ButtonFC (Owner-Anweisung)
+
+„Ersetze hier bitte auch kol-button-wc mit ButtonFC" bezog sich auf den zweiten
+`kol-close-button`-Renderer: `components/card/component.tsx` (KolCardWc, shadow:false, legacy).
+
+- KolCardWc komponiert TooltipBehavior wie die Alert-WCs (stateLess-StateAccess — die Card hat
+  kein eigenes Render-Props-System); `handleCloserClick` stopPropagation + hideTooltip +
+  bestehendes `close()` (onClose + KolEvent.close). `on`-Bag für KolButtonWcTag entfällt.
+- **ButtonFC forwardet jetzt generisch Rest-HTML-Attribute** (analog BemRootNodeFC) — braucht
+  für `data-testid="card-close-button"`. `on`/`tooltipAlign` werden destrukturiert und per
+  `void` konsumiert, damit sie nicht als DOM-Attribute durchs Rest-Spreading lecken.
+- Theme-Selektoren auf Compound-only zurückgebaut (kein kol-button-wc-Closer mehr):
+  default/bwst/ecl-ec `&:is(.#{$block-classname}--normal)`, desy
+  `.kol-close-button:is(.kol-button--normal)`; desy drawer `&__close-button:is(.kol-button)`;
+  kern card wendet `ghostButton()` direkt auf `&__close-button` an.
+- Card-Snapshots (7) regeneriert: Ziel-DOM
+  `kol-button kol-button--hide-label kol-button--normal kol-button--standalone
+kol-card__close-button kol-close-button`. hydrate 102 grün (Badge-Fehler zuvor war stale
+  Components-dist, nicht real).
+- Rebase auf develop-Tip c760252b1f (#10750 Button-Refactor) — Konflikt nur in
+  public-api.spec.ts (Sources-Liste + describe-Blöcke, union aufgelöst). Danach 962 Unit-Tests
+  grün, lint grün. Vor dem Rebase: develop fetchen und prüfen, ob Kopf gewandert ist (#10750
+  änderte button/api + button/wc + Themes — glücklicherweise nur additive Typen).
+
 ## Pitfalls
 
 - Jest-Snapshot serialisiert `class` alphabetisch — Klassenreihenfolge ist kein Regressions Signal.
 - `newSpecPage` braucht Registrierung beider WCs (`KolAlert`, `KolAlertWc`) wie bisher.
 - Nonce unter Jest literal `nonce`, im Browser hex.
 - ToastItem/FormFieldMsg müssen JEDE FC-Prop übergeben (StrictFields-Vertrag, pitfall #9).
+- snapshots-docker.mjs: `-- --grep "a|b"` bricht — das `|` überlebt die verschachtelte Shell-
+  Quoting-Kette nicht (`/bin/sh: a: not found`). Specs einzeln greppen.
+- snapshots-docker.mjs: Theme-Snapshot-Baselines sind git-ignored — ein lokales `--check` ohne
+  vorher generierte Baselines failt mit „A snapshot doesn't exist … writing actual" (KEIN
+  Pixel-Delta!). Lokale Zero-Delta-Prüfung nur gegen frisch aus develop generierte Baselines.
+- Docker-Volume `kolibri-visual-tests-work`: root-gehörige Reste (durch --user-0-Läufe) blockieren
+  mirror-dir mit EACCES → `docker run --rm --user 0 -v kolibri-visual-tests-work:/work alpine
+sh -c 'find /work/repo -user 0 -exec chown 1001:1001 {} +'`.
+- Nach Component-Markup-Änderungen: components dist neu bauen, BEVOR hydrate-Tests laufen —
+  sonst rendern die hydrate-Specs gegen stale dist (falscher „Snapshot didn't match").
