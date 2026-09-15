@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`kol-version should render with _label="2.0.0" 1`] = `
+exports[`kol-version should render with _label="1.0.0" 1`] = `
 <kol-version>
   <template shadowrootmode="open">
     <div class="kol-version">
@@ -9,7 +9,7 @@ exports[`kol-version should render with _label="2.0.0" 1`] = `
           <span class="kol-span__container">
             <i aria-label="kol-version" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-version" role="img"></i>
             <span class="kol-span__label md">
-              2.0.0
+              1.0.0
             </span>
             <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
           </span>
