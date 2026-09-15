@@ -12,6 +12,26 @@
 	color-scheme: light dark;
 }
 
+/*
+ * In dark mode no KoliBri component paints a surface behind itself — every `kol-*` tag is
+ * transparent and the page shows through.
+ *
+ * `a11y.scss` in `@public-ui/components` paints the host box of every component with
+ * `background-color: var(--kol-a11y-background-color)`, so overriding that token is the same thing
+ * as setting `background-color` on the tag. It has to be declared *on* the host elements, because a
+ * `:host` rule of the shadow tree would beat a value merely inherited from `:root` — and the
+ * universal selector is what reaches all of them: a tag name cannot be matched by prefix in CSS, so
+ * naming them individually would mean a list that silently goes stale with every new component.
+ * Between two declarations on a shadow host the outer tree wins whatever their specificity, so this
+ * one beats both `kol-a11y` and the theme.
+ *
+ * The light branch is the `white` that `a11y.scss` declares itself, so nothing changes there — for
+ * every theme, not just the default one.
+ */
+* {
+	--kol-a11y-background-color: light-dark(#ffffff, transparent);
+}
+
 body {
 	margin: 0;
 
