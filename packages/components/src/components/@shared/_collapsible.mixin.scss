@@ -40,17 +40,6 @@
 			margin: 0;
 			text-align: left;
 
-			/* A flex container only exposes a baseline if it has an in-flow text box to derive one
-			   from; without it the surrounding inline formatting context falls back to the bottom
-			   margin edge and everything after the element shifts by 1px. The predecessor put this
-			   zero-width space on `.kol-button__interactive-element`, which is the level the
-			   heading occupies now — not on the button wrapper, whose role `<summary>` took over.
-			   Keeping it here also leaves `<summary>::before` free for the decorative bars ecl and
-			   desy draw there. */
-			&::before {
-				content: '\200B';
-			}
-
 			/* `.kol-span` was a flex item of the button's interactive element
 			   (`.kol-button__text { flex: 1 0 100% }`). As a plain inline box inside the heading it
 			   would sit in the heading's line box instead and shift the label by a pixel, so the
