@@ -64,9 +64,7 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 			block="kol-button"
 			class={clsx(
 				// Forwarded 1:1 from the FC tag, so a component embedding a button inside its own
-				// boundary can mark it (e.g. the badge's `kol-badge__smart-button`). Consumers that
-				// render the transitional `kol-button-wc` element put that class on the element; a
-				// consumer rendering `ButtonFC` directly passes it here instead.
+				// boundary can mark it — e.g. the badge's `kol-badge__smart-button`.
 				hostClass,
 				{
 					[classNameFromVariant(variant, 'button')]: variant.length > 0,

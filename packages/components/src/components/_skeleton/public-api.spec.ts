@@ -808,11 +808,8 @@ const KOL_SPLIT_BUTTON_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 };
 
 /**
- * Pinned public API of `kol-badge` — identical to the predecessor on the develop branch
- * (4 props plus `focus()`). The skeleton migration changed no public member: `_color` keeps its
- * `'#000'` default, `_label` stays required and untyped beyond `LabelPropType`, and the watchers
- * were renamed from `validateXxx` to `watchXxx`, which is not part of the `@Prop`/`@Method`
- * surface.
+ * Pinned public API of `kol-badge`: 4 props plus `focus()`. Changing any of them is a breaking
+ * change and has to be decided, not slipped in — see the contract test below.
  */
 const KOL_BADGE_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	focus: {

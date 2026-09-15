@@ -32,14 +32,12 @@ import { buttonPropsConfig } from './api';
 export type ResolvedButtonProps = StrictFields<ResolvedProps<ButtonApi>>;
 
 /**
- * The defaults `kol-button` and `kol-button-wc` declare on their `@Prop` fields.
+ * The defaults the button elements declare on their `@Prop` fields.
  *
- * These are **not** the prop definitions' own defaults. Several definitions are shared with the
- * link, whose conventions differ: `inlineProp` defaults to `true` and `tooltipAlignProp` to
- * `'right'`, while both button elements declare `false` and `'top'`. A consumer that renders
- * `ButtonFC` without restating them gets a silently different button — `kol-button--inline`
- * instead of `--standalone`, and a tooltip on the right instead of above. Both were caught by the
- * pixel gate, not by any test.
+ * These are **not** the prop definitions' own defaults: `inlineProp` and `tooltipAlignProp` are
+ * shared with the link, which wants `true` and `'right'` where a button wants `false` and
+ * `'top'`. Restate them here, or the button renders `--inline` with a tooltip on the right and
+ * nothing fails.
  */
 const BUTTON_ELEMENT_DEFAULTS = {
 	disabled: false,
@@ -52,16 +50,14 @@ const BUTTON_ELEMENT_DEFAULTS = {
 /**
  * Normalizes an embedded button's props into the render props `ButtonFC` expects.
  *
- * A component that renders a button inside its own boundary — the badge's smart button, an input's
- * clear button — receives that button's configuration as one opaque `InternalButtonProps` object.
- * Rendering `ButtonFC` for it means running the same prop definitions `kol-button` and
- * `kol-button-wc` run in their watchers. This function is that step, so a consumer switching from
- * the transitional `kol-button-wc` element to `ButtonFC` does not have to restate 20 watchers.
+ * A component rendering a button inside its own boundary — the badge's smart button, an input's
+ * clear button — gets that button's configuration as one opaque `InternalButtonProps` object and
+ * has to run every button prop definition over it. This is that step, in one call.
  *
- * It covers **props only**. Everything stateful stays with the composing web component: the
- * `TooltipBehavior`, the event handlers that dispatch the public DOM events, the button ref, and
- * the `ariaDescriptionId` state. Behaviors must not instantiate other behaviors, and a plain
- * function must not own a lifecycle — so the split is deliberate.
+ * Props only. Everything stateful belongs to the composing web component: the `TooltipBehavior`,
+ * the event handlers dispatching the public DOM events, the button ref and the
+ * `ariaDescriptionId` state — a behavior must not own another behavior, and a plain function must
+ * not own a lifecycle.
  *
  * @param props - The embedded button's configuration, as handed to the host component.
  * @param host - The host element, used for the per-theme `buttonVariantDefault` feature flag.
@@ -94,8 +90,8 @@ export function resolveButtonProps(props: InternalButtonProps, host?: HTMLElemen
 	tooltipAlignProp.apply(props._tooltipAlign ?? BUTTON_ELEMENT_DEFAULTS.tooltipAlign, set('tooltipAlign'));
 
 	// An unset tabindex must not render as `tabindex="0"` — buttons are natively tabbable and the
-	// attribute would pin them into the document tab order. The props config seeds the default `0`,
-	// so anything but an explicit number clears it again (same rule as `kol-button-wc`).
+	// attribute would pin them into the document tab order. The props config seeds `0`, so
+	// anything but an explicit number clears it again.
 	if (typeof props._tabIndex === 'number') {
 		tabIndexProp.apply(props._tabIndex, set('tabIndex'));
 	} else {
@@ -103,7 +99,7 @@ export function resolveButtonProps(props: InternalButtonProps, host?: HTMLElemen
 	}
 
 	// The variant default comes from the `buttonVariantDefault` feature flag, resolved per theme
-	// against the host — identical to the fallback in `kol-button` and `kol-button-wc`.
+	// against the host.
 	variantProp.apply(props._variant ?? getFeatureFlag('buttonVariantDefault', host) ?? 'normal', set('variant'));
 
 	return resolved;

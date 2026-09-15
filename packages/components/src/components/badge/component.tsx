@@ -70,10 +70,8 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	}
 
 	/**
-	 * Applies `_smartButton`, which is the only prop that may end up unset rather than defaulted.
-	 * The predecessor stored an unparseable value verbatim and its `typeof value === 'object'`
-	 * check then rendered no button; clearing the render prop first reproduces that without a
-	 * second code path.
+	 * `_smartButton` is the only prop that may end up unset rather than defaulted. Clearing the
+	 * render prop first means an unusable value renders no button, same as no value at all.
 	 */
 	private applySmartButton(value?: Stringified<InternalButtonProps>): void {
 		objectObjectHandler(value, () => {

@@ -43,8 +43,8 @@ type BadgeFCProps = Pick<
  * Root from `bem.forBlock('kol-badge')`, not `BemRootNodeFC`: the badge needs an inline `style`
  * for its colours, and `BemRootNodeFC` forwards only `class` (ARC42 § "BemRootNodeFC Pattern").
  *
- * The trailing `<br />` makes NVDA's read mode treat each badge as one element (#10842). The smart
- * button stays before it in the DOM for tab order and is moved to the end visually by `order: 3`.
+ * The trailing `<br />` makes NVDA's read mode treat each badge as one element. The smart button
+ * stays before it in the DOM for tab order and is moved to the end visually by `order: 3`.
  */
 export const BadgeFC: FC<BadgeFCProps> = (props) => {
 	const {
