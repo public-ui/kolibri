@@ -46,6 +46,7 @@
 		   `.kol-close-button` in button.scss. */
 		&__close-button {
 			height: var(--a11y-min-size);
+
 			font-size: to-rem(24);
 			line-height: to-rem(16);
 		}
