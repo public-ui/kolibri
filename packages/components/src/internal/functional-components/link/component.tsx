@@ -25,6 +25,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 		ariaDescriptionId,
 		ariaExpanded,
 		ariaOwns,
+		class: hostClass,
 		customClass,
 		disabled,
 		download,
@@ -67,7 +68,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 	return (
 		<BemRootNodeFC
 			block="kol-link"
-			class={clsx({
+			class={clsx(hostClass, {
 				[customClass]: variant.includes('custom') && customClass.length > 0,
 				[classNameFromVariant(variant, 'link')]: variant.length > 0,
 			})}

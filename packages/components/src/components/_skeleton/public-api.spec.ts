@@ -398,6 +398,7 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['link', 'wc.tsx'],
 		['button', 'component.tsx'],
 		['button', 'wc.tsx'],
+		['breadcrumb', 'component.tsx'],
 	];
 
 	it.each(sources)('documents every public member of %s/%s', (component, file) => {
@@ -435,5 +436,38 @@ describe('kol-button-wc transitional wrapper (internal contract for legacy consu
 		const extracted = extractFrom('button', 'wc.tsx');
 		expect(extracted.filter((member) => member.kind === 'prop')).toHaveLength(23);
 		expect(extracted.filter((member) => member.kind === 'method').map((member) => member.name)).toEqual(['focus', 'click']);
+	});
+});
+
+/**
+ * Pinned public API of `kol-breadcrumb` — byte-identical to the predecessor on the develop branch
+ * (2 required props, no methods).
+ */
+const KOL_BREADCRUMB_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_links: {
+		kind: 'prop',
+		type: 'Stringified<BreadcrumbLinkProps[]>',
+		required: true,
+		doc: 'Defines the list of links combined with their labels to render.',
+	},
+};
+
+describe('kol-breadcrumb public API contract (ARC42 § Public API Contract)', () => {
+	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
+		const extracted = extractFrom('breadcrumb', 'component.tsx');
+		// Failing this test means the public contract changed — a breaking change (ARC42 §
+		// "Public API Contract (Migration Parity)"): get owner approval, then update the pinned
+		// contract consciously and note it in the PR description.
+		expect(toContract(extracted)).toEqual(KOL_BREADCRUMB_PUBLIC_API);
+	});
+
+	it('implements the schema interface so prop-type drift fails the build', () => {
+		expect(readSource('breadcrumb', 'component.tsx')).toMatch(/implements\s+[^{]*\bBreadcrumbProps\b/);
 	});
 });
