@@ -1,0 +1,68 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "12 changed – 0 of 12 approved, review pending",
+	"computedAt": "2026-09-16T01:54:10.111Z",
+	"pr": 10911,
+	"head": "8870fd9fcb21df803cdbbff614e01fcf95d4db1f",
+	"digest": "sha256:f30bfb9dc476bd759f9047a6cb229ad164158bb38bb163e3d3b26aaa0afc9109",
+	"counts": {
+		"changes": 12,
+		"open": 12,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/scenarios-focus-elements-component-skipNav": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/skip-nav-basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-skipNav": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/skip-nav-basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-skipNav": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/skip-nav-basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-skipNav": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/skip-nav-basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-skipNav": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/skip-nav-basic": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-skipNav": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/skip-nav-basic": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
