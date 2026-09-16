@@ -17,9 +17,4 @@ type OptionalProps = {
 	PropHref &
 	PropLinkTarget;
 
-type RequiredStates = RequiredProps;
-type OptionalStates = OptionalProps;
-
 export type CardProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type CardStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type CardAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;

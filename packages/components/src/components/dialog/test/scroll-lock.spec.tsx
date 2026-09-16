@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolCardWc } from '../../card/component';
+import { KolCardWc } from '../../card/wc';
 import { KolDialogWc } from '../component';
 
 describe('kol-dialog-wc scroll lock', () => {

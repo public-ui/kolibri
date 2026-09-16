@@ -25,3 +25,12 @@ import { normalizeString } from './helpers/normalizers';
  */
 export type HrefProp = SimpleProp<'href', string>;
 export const hrefProp = createPropDefinition<HrefProp>('href', '', normalizeString, (v) => typeof v === 'string', { required: true });
+
+/**
+ * Href for components where a link target is one shape among several — a card renders a heading
+ * link when a target is set and plain heading text when it is not.
+ *
+ * Same normalization as `hrefProp`, without its `required` flag: here an unset value is the
+ * documented "no link" case, so warning about it would be noise.
+ */
+export const optionalHrefProp = createPropDefinition<HrefProp>('href', '', normalizeString, (v) => typeof v === 'string');
