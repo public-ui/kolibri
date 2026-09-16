@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 10894,
-	"head": "7de1ec671010efb22a22de0ebee0b88b67486305",
+	"head": "b10b208973fb61f06431e3f5a276cefc69f19d88",
 	"repository": "public-ui/kolibri",
-	"runId": 35057126875,
-	"generatedAt": "2026-09-16T05:08:56.695Z",
-	"digest": "sha256:d3eeb40ba90db69dc37954ab53480e11f434a345f0c18ddf7bfc9b48c3fdd7c6",
+	"runId": 35060332201,
+	"generatedAt": "2026-09-16T05:54:50.930Z",
+	"digest": "sha256:21043b7db3f0294200572071824164c86648d6f93cd650a5dcb9e31c6e8d3286",
 	"baseline": {
 		"sha": "f86866e9724777aa0e1448a77b2939775e103f0b",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2842,
-		"changed": 21,
+		"unchanged": 2854,
+		"changed": 9,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 406,
-				"changed": 3,
+				"unchanged": 409,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:5e3b4dcf0ff5cc7fa05f1e94484736f2e11d2678730e243d3a8e938d86d2d749",
+			"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -59,14 +59,9 @@
 				},
 				{
 					"name": "accordion-basic--basic",
-					"route": "accordion/basic",
-					"status": "changed",
-					"hash": "sha256:0b88b2a770478838d64758379948c7279324a9cb0b908c6bf57b9398f636bc1b",
-					"diffPixels": 2878,
-					"diffRatio": 0.009914,
-					"expected": "test-tag-name-transformer/accordion-basic--basic.expected.png",
-					"actual": "test-tag-name-transformer/accordion-basic--basic.actual.png",
-					"diff": "test-tag-name-transformer/accordion-basic--basic.diff.png"
+					"route": "accordion-basic",
+					"status": "unchanged",
+					"hash": "sha256:cd6713c5bacdc3d9ffad04acfba903f371dc629d1ab807ae4170b1204805b729"
 				},
 				{
 					"name": "alert-basic--default",
@@ -1894,35 +1889,15 @@
 				},
 				{
 					"name": "scenarios-accordion-components",
-					"route": "scenarios/accordion-components",
-					"status": "changed",
-					"hash": "sha256:2c14d399c787f1df4fc847b6f7e9ff5d01f202f68866824d50836d0a288346ed",
-					"diffPixels": 486,
-					"diffRatio": 0.008265,
-					"sizeMismatch": {
-						"expected": [
-							200,
-							294
-						],
-						"actual": [
-							200,
-							293
-						]
-					},
-					"expected": "test-tag-name-transformer/scenarios-accordion-components.expected.png",
-					"actual": "test-tag-name-transformer/scenarios-accordion-components.actual.png",
-					"diff": "test-tag-name-transformer/scenarios-accordion-components.diff.png"
+					"route": "scenarios-accordion-components",
+					"status": "unchanged",
+					"hash": "sha256:3a2eddbbfb169dee67b04f51f3e20a0b9df5a130e65f27e88f960364422fdf82"
 				},
 				{
 					"name": "scenarios-focus-elements-component-accordion",
-					"route": "scenarios/focus-elements?component=accordion",
-					"status": "changed",
-					"hash": "sha256:fb734a4923ab5a6c2a308e577c8f24c0fcbed5a9a2ce5d0994d33b63f97e1f3f",
-					"diffPixels": 186,
-					"diffRatio": 0.008052,
-					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-accordion.expected.png",
-					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-accordion.actual.png",
-					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-accordion.diff.png"
+					"route": "scenarios-focus-elements-component-accordion",
+					"status": "unchanged",
+					"hash": "sha256:bc378368e07b8a219717a14a0213dc644873a0c022a93ec34a9307dd952828c5"
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",
@@ -2553,13 +2528,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 404,
-				"changed": 5,
+				"unchanged": 407,
+				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:27779c50cd1370d38b1ff807e3875033f1beb237851d384cb60bdf0e07d21102",
+			"digest": "sha256:ac807634b17d99088b64140128eea6a93f42787e43b058b4a1bddd041fb5612f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2569,24 +2544,9 @@
 				},
 				{
 					"name": "accordion-basic--basic",
-					"route": "accordion/basic",
-					"status": "changed",
-					"hash": "sha256:cd33327f186fff58870c3ae51ea3fa16255890d4fb72f294ad95f7d823bcb722",
-					"diffPixels": 10658,
-					"diffRatio": 0.035222,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							386
-						],
-						"actual": [
-							768,
-							394
-						]
-					},
-					"expected": "theme-bwst/accordion-basic--basic.expected.png",
-					"actual": "theme-bwst/accordion-basic--basic.actual.png",
-					"diff": "theme-bwst/accordion-basic--basic.diff.png"
+					"route": "accordion-basic",
+					"status": "unchanged",
+					"hash": "sha256:f31433c274eaeb093d1a8e1c2c0699deda3d7ad5fce9e27a711cd73a2c51a667"
 				},
 				{
 					"name": "alert-basic--default",
@@ -4429,45 +4389,15 @@
 				},
 				{
 					"name": "scenarios-accordion-components",
-					"route": "scenarios/accordion-components",
-					"status": "changed",
-					"hash": "sha256:6df688444d61b2698038198db7227d3f004a5c76ab57d79c1d44927302d80a12",
-					"diffPixels": 469,
-					"diffRatio": 0.007869,
-					"sizeMismatch": {
-						"expected": [
-							200,
-							296
-						],
-						"actual": [
-							200,
-							298
-						]
-					},
-					"expected": "theme-bwst/scenarios-accordion-components.expected.png",
-					"actual": "theme-bwst/scenarios-accordion-components.actual.png",
-					"diff": "theme-bwst/scenarios-accordion-components.diff.png"
+					"route": "scenarios-accordion-components",
+					"status": "unchanged",
+					"hash": "sha256:42b5c7505899f830c1e398a66b6e948017902eda978f50f00b57742224edfaa2"
 				},
 				{
 					"name": "scenarios-focus-elements-component-accordion",
-					"route": "scenarios/focus-elements?component=accordion",
-					"status": "changed",
-					"hash": "sha256:e3fcb1cc0f792d4b82fb66b2976fd3aa47dd541ba5704e63a972e0d27bbc490f",
-					"diffPixels": 1241,
-					"diffRatio": 0.052363,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							77
-						],
-						"actual": [
-							300,
-							79
-						]
-					},
-					"expected": "theme-bwst/scenarios-focus-elements-component-accordion.expected.png",
-					"actual": "theme-bwst/scenarios-focus-elements-component-accordion.actual.png",
-					"diff": "theme-bwst/scenarios-focus-elements-component-accordion.diff.png"
+					"route": "scenarios-focus-elements-component-accordion",
+					"status": "unchanged",
+					"hash": "sha256:0726d77ec3d8bc150d873bf4a617a4a9b867f934a1d7180ecff61ffc6afdb31b"
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",
@@ -5113,13 +5043,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 406,
-				"changed": 3,
+				"unchanged": 409,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:5e3b4dcf0ff5cc7fa05f1e94484736f2e11d2678730e243d3a8e938d86d2d749",
+			"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5129,14 +5059,9 @@
 				},
 				{
 					"name": "accordion-basic--basic",
-					"route": "accordion/basic",
-					"status": "changed",
-					"hash": "sha256:0b88b2a770478838d64758379948c7279324a9cb0b908c6bf57b9398f636bc1b",
-					"diffPixels": 2878,
-					"diffRatio": 0.009914,
-					"expected": "theme-default/accordion-basic--basic.expected.png",
-					"actual": "theme-default/accordion-basic--basic.actual.png",
-					"diff": "theme-default/accordion-basic--basic.diff.png"
+					"route": "accordion-basic",
+					"status": "unchanged",
+					"hash": "sha256:cd6713c5bacdc3d9ffad04acfba903f371dc629d1ab807ae4170b1204805b729"
 				},
 				{
 					"name": "alert-basic--default",
@@ -6964,35 +6889,15 @@
 				},
 				{
 					"name": "scenarios-accordion-components",
-					"route": "scenarios/accordion-components",
-					"status": "changed",
-					"hash": "sha256:2c14d399c787f1df4fc847b6f7e9ff5d01f202f68866824d50836d0a288346ed",
-					"diffPixels": 486,
-					"diffRatio": 0.008265,
-					"sizeMismatch": {
-						"expected": [
-							200,
-							294
-						],
-						"actual": [
-							200,
-							293
-						]
-					},
-					"expected": "theme-default/scenarios-accordion-components.expected.png",
-					"actual": "theme-default/scenarios-accordion-components.actual.png",
-					"diff": "theme-default/scenarios-accordion-components.diff.png"
+					"route": "scenarios-accordion-components",
+					"status": "unchanged",
+					"hash": "sha256:3a2eddbbfb169dee67b04f51f3e20a0b9df5a130e65f27e88f960364422fdf82"
 				},
 				{
 					"name": "scenarios-focus-elements-component-accordion",
-					"route": "scenarios/focus-elements?component=accordion",
-					"status": "changed",
-					"hash": "sha256:fb734a4923ab5a6c2a308e577c8f24c0fcbed5a9a2ce5d0994d33b63f97e1f3f",
-					"diffPixels": 186,
-					"diffRatio": 0.008052,
-					"expected": "theme-default/scenarios-focus-elements-component-accordion.expected.png",
-					"actual": "theme-default/scenarios-focus-elements-component-accordion.actual.png",
-					"diff": "theme-default/scenarios-focus-elements-component-accordion.diff.png"
+					"route": "scenarios-focus-elements-component-accordion",
+					"status": "unchanged",
+					"hash": "sha256:bc378368e07b8a219717a14a0213dc644873a0c022a93ec34a9307dd952828c5"
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",
@@ -10133,13 +10038,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 405,
-				"changed": 4,
+				"unchanged": 408,
+				"changed": 1,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:d04f88354944936d63c0c485714de8b21ec7573c497ae550cbe20930de1b7f1a",
+			"digest": "sha256:92193952e1be7f78efa9a775c49286b29a8d29e2ede5306f334bf3a31295b2b9",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10149,24 +10054,9 @@
 				},
 				{
 					"name": "accordion-basic--basic",
-					"route": "accordion/basic",
-					"status": "changed",
-					"hash": "sha256:da9697e4b0f65019ebb2252ee103789e38d5ce19f7063ea71a24914c43aacf66",
-					"diffPixels": 9427,
-					"diffRatio": 0.024949,
-					"sizeMismatch": {
-						"expected": [
-							768,
-							472
-						],
-						"actual": [
-							768,
-							492
-						]
-					},
-					"expected": "theme-ecl/accordion-basic--basic.expected.png",
-					"actual": "theme-ecl/accordion-basic--basic.actual.png",
-					"diff": "theme-ecl/accordion-basic--basic.diff.png"
+					"route": "accordion-basic",
+					"status": "unchanged",
+					"hash": "sha256:c55a92e86e0dbdbbfdf49e5148527386096914af3e2bfee649cc8f4341e93811"
 				},
 				{
 					"name": "alert-basic--default",
@@ -11994,45 +11884,15 @@
 				},
 				{
 					"name": "scenarios-accordion-components",
-					"route": "scenarios/accordion-components",
-					"status": "changed",
-					"hash": "sha256:1b61c80e1b550cbbc37a711938c4da1a2fc9c8f349a52c93fe609786da42ce28",
-					"diffPixels": 6485,
-					"diffRatio": 0.064081,
-					"sizeMismatch": {
-						"expected": [
-							200,
-							491
-						],
-						"actual": [
-							200,
-							506
-						]
-					},
-					"expected": "theme-ecl/scenarios-accordion-components.expected.png",
-					"actual": "theme-ecl/scenarios-accordion-components.actual.png",
-					"diff": "theme-ecl/scenarios-accordion-components.diff.png"
+					"route": "scenarios-accordion-components",
+					"status": "unchanged",
+					"hash": "sha256:44d5a2fb9eee20ab83bea15fae621f38ae43f699958f52120dd14b6a5e64a79f"
 				},
 				{
 					"name": "scenarios-focus-elements-component-accordion",
-					"route": "scenarios/focus-elements?component=accordion",
-					"status": "changed",
-					"hash": "sha256:c9eba0c43a6aa5e52a50cfe847bf7c72503770e41be0ec1e5f76dbbb04fb0200",
-					"diffPixels": 325,
-					"diffRatio": 0.010317,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							100
-						],
-						"actual": [
-							300,
-							105
-						]
-					},
-					"expected": "theme-ecl/scenarios-focus-elements-component-accordion.expected.png",
-					"actual": "theme-ecl/scenarios-focus-elements-component-accordion.actual.png",
-					"diff": "theme-ecl/scenarios-focus-elements-component-accordion.diff.png"
+					"route": "scenarios-focus-elements-component-accordion",
+					"status": "unchanged",
+					"hash": "sha256:9d0868657ca3ca61676f6c6e57285461361716c18d87a21c96d6b972ab4e155d"
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",

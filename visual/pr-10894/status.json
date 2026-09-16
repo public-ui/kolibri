@@ -1,16 +1,16 @@
 {
 	"schema": 1,
-	"state": "failure",
-	"description": "1 of 21 visual changes rejected",
-	"computedAt": "2026-09-16T05:37:14.048Z",
+	"state": "pending",
+	"description": "9 changed – 0 of 9 approved, review pending",
+	"computedAt": "2026-09-16T05:54:51.692Z",
 	"pr": 10894,
-	"head": "7de1ec671010efb22a22de0ebee0b88b67486305",
-	"digest": "sha256:d3eeb40ba90db69dc37954ab53480e11f434a345f0c18ddf7bfc9b48c3fdd7c6",
+	"head": "b10b208973fb61f06431e3f5a276cefc69f19d88",
+	"digest": "sha256:21043b7db3f0294200572071824164c86648d6f93cd650a5dcb9e31c6e8d3286",
 	"counts": {
-		"changes": 21,
-		"open": 20,
+		"changes": 9,
+		"open": 9,
 		"approved": 0,
-		"rejected": 1,
+		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
@@ -18,52 +18,11 @@
 		"BF150"
 	],
 	"items": {
-		"test-tag-name-transformer/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/scenarios-accordion-components": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/scenarios-focus-elements-component-accordion": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-bwst/details-basic--basic": {
 			"state": "open",
 			"notes": []
 		},
-		"theme-bwst/scenarios-accordion-components": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/scenarios-focus-elements-component-accordion": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-bwst/scenarios-focus-elements-component-details": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/accordion-basic--basic": {
-			"state": "open",
-			"notes": [
-				{
-					"by": "BF150",
-					"text": "default hat focus rahmen in blau bei click auf disabled accordion\n\nwarum ist das disabled accordion jetzt ein px größer als das enabled?"
-				}
-			]
-		},
-		"theme-default/scenarios-accordion-components": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/scenarios-focus-elements-component-accordion": {
 			"state": "open",
 			"notes": []
 		},
@@ -76,19 +35,6 @@
 			"notes": []
 		},
 		"theme-desy/scenarios-focus-elements-component-details": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/accordion-basic--basic": {
-			"state": "rejected",
-			"notes": [],
-			"by": "BF150"
-		},
-		"theme-ecl/scenarios-accordion-components": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/scenarios-focus-elements-component-accordion": {
 			"state": "open",
 			"notes": []
 		},
