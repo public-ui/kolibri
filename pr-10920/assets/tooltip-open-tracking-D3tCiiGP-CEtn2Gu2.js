@@ -1,0 +1,1 @@
+var e=0,t=()=>{e++},n=()=>{e=Math.max(0,e-1)},r=t=>{e>0&&t.preventDefault()};export{n,t as r,r as t};
