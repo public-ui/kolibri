@@ -1,1 +1,0 @@
-import"./index-CZpodeIM.js";import{r as e}from"./align-DglmQnOH-CrwAgpy-.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
