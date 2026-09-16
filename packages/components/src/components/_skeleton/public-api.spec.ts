@@ -866,6 +866,7 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['button', 'component.tsx'],
 		['button', 'wc.tsx'],
 		['breadcrumb', 'component.tsx'],
+		['skip-nav', 'component.tsx'],
 		['button-link', 'component.tsx'],
 		['link-button', 'component.tsx'],
 		['split-button', 'component.tsx'],
@@ -958,5 +959,44 @@ describe('kol-breadcrumb public API contract (ARC42 § Public API Contract)', ()
 
 	it('implements the schema interface so prop-type drift fails the build', () => {
 		expect(readSource('breadcrumb', 'component.tsx')).toMatch(/implements\s+[^{]*\bBreadcrumbProps\b/);
+	});
+});
+
+/**
+ * Pinned public API of `kol-skip-nav` — byte-identical to the predecessor on the develop branch
+ * (2 required props plus `focus()`).
+ */
+const KOL_SKIP_NAV_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_links: {
+		kind: 'prop',
+		type: 'Stringified<LinkProps[]>',
+		required: true,
+		doc: 'Defines the list of links combined with their labels to render.',
+	},
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the internal element.',
+	},
+};
+
+describe('kol-skip-nav public API contract (ARC42 § Public API Contract)', () => {
+	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
+		const extracted = extractFrom('skip-nav', 'component.tsx');
+		// Failing this test means the public contract changed — a breaking change (ARC42 §
+		// "Public API Contract (Migration Parity)"): get owner approval, then update the pinned
+		// contract consciously and note it in the PR description.
+		expect(toContract(extracted)).toEqual(KOL_SKIP_NAV_PUBLIC_API);
+	});
+
+	it('implements the schema interface so prop-type drift fails the build', () => {
+		expect(readSource('skip-nav', 'component.tsx')).toMatch(/implements\s+[^{]*\bSkipNavProps\b/);
 	});
 });
