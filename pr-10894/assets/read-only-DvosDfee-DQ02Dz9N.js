@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-DUXJv3N1.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};

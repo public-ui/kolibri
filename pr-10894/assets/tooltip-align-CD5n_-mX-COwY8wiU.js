@@ -1,0 +1,1 @@
+import"./index-VhSrNnyc.js";import{r as e}from"./align-lbYx-vvu-TEB0FaZV.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
