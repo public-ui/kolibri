@@ -25,14 +25,21 @@
 			display: block;
 			position: relative;
 			width: 100%;
+			/* The a11y floor applied to the inner button, which sat inside this padding; the summary
+			   carries both in one border-box, so the padding is added back. */
+			min-height: calc(var(--a11y-min-size) + #{to-rem(24)} * 2);
 			padding: to-rem(24);
 			border-bottom-width: to-rem(2);
 
 			font:
 				normal normal 400 to-rem(18) / to-rem(28) arial,
 				sans-serif;
-			font-size: 2em;
-			line-height: 1.2;
+			/* `font-size: 2em` and `line-height: 1.2` used to sit on the heading element and on the
+			   button wrapper respectively, while the real button reset both for the label (a11y.scss
+			   makes form controls inherit `font-size`, and the user-agent `font` shorthand pins
+			   `line-height: normal`). Merged onto the summary they would render the label at 32px
+			   instead of 18px. */
+			line-height: normal;
 			border: 0;
 			border-bottom-style: solid;
 			outline-offset: -1px;
