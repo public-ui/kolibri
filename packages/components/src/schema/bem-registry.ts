@@ -175,6 +175,17 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'block' | 'inline'>;
 	};
+	'kol-skip-nav': {
+		elements: {
+			list: {
+				modifiers: null;
+			};
+			'list-item': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-skeleton': {
 		elements: {
 			container: {
@@ -333,6 +344,13 @@ const BEM: KoliBriComponentsBemSchema = {
 			quote: { modifiers: null },
 		},
 		modifiers: new Set(['block', 'inline']),
+	},
+	'kol-skip-nav': {
+		elements: {
+			list: { modifiers: null },
+			'list-item': { modifiers: null },
+		},
+		modifiers: null,
 	},
 	'kol-skeleton': {
 		elements: {
