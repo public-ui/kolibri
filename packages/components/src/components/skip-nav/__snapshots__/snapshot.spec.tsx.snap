@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-skip-nav should render with _label="Label" _links=[{"_href":"https://example.com","_label":"Zum Anfang"},{"_href":"https://example.com","_label":"Zum Formular"},{"_href":"https://example.com","_label":"Zum Ende"}] 1`] = `
+<kol-skip-nav>
+  <template shadowrootmode="open">
+    <nav aria-label="Label" class="kol-skip-nav">
+      <ul class="kol-skip-nav__list">
+        <li class="kol-skip-nav__list-item">
+          <div class="kol-link kol-link--standalone">
+            <a class="kol-link__interactive-element" href="https://example.com">
+              <span class="kol-link__text kol-span">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Zum Anfang
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
+                    <slot name="expert" slot="expert"></slot>
+                  </span>
+                </span>
+              </span>
+            </a>
+          </div>
+        </li>
+        <li class="kol-skip-nav__list-item">
+          <div class="kol-link kol-link--standalone">
+            <a class="kol-link__interactive-element" href="https://example.com">
+              <span class="kol-link__text kol-span">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Zum Formular
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
+                    <slot name="expert" slot="expert"></slot>
+                  </span>
+                </span>
+              </span>
+            </a>
+          </div>
+        </li>
+        <li class="kol-skip-nav__list-item">
+          <div class="kol-link kol-link--standalone">
+            <a class="kol-link__interactive-element" href="https://example.com">
+              <span class="kol-link__text kol-span">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Zum Ende
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
+                    <slot name="expert" slot="expert"></slot>
+                  </span>
+                </span>
+              </span>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </template>
+</kol-skip-nav>
+`;
