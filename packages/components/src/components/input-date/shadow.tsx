@@ -124,12 +124,10 @@ export class KolInputDate implements ClickableElement, FocusableElement, InputDa
 
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
-		this.inputHasFocus = false;
 	};
 
 	private readonly onFocus = (event: FocusEvent) => {
 		this.controller.onFacade.onFocus(event);
-		this.inputHasFocus = true;
 	};
 
 	private readonly onChange = (event: Event) => {
@@ -174,7 +172,6 @@ export class KolInputDate implements ClickableElement, FocusableElement, InputDa
 				'has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 			infoPopover: this._infoPopover,
 		};
 	}
@@ -359,14 +356,8 @@ export class KolInputDate implements ClickableElement, FocusableElement, InputDa
 		_type: 'datetime-local',
 	};
 
-	@State() private inputHasFocus = false;
-
 	public constructor() {
 		this.controller = new InputDateController(this, 'date', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')

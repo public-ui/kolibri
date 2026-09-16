@@ -157,7 +157,6 @@ export class KolInputRange implements ClickableElement, FocusableElement, InputR
 			state: this.state,
 			class: clsx('kol-input-range', 'range'),
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 			infoPopover: this._infoPopover,
 		};
 	}
@@ -170,11 +169,9 @@ export class KolInputRange implements ClickableElement, FocusableElement, InputR
 			onInput: this.onInput,
 			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
 			},
 			onBlur: (event: FocusEvent) => {
 				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
 			},
 		};
 	}
@@ -369,14 +366,9 @@ export class KolInputRange implements ClickableElement, FocusableElement, InputR
 		_max: 100,
 	};
 	@State() private _initialValueType: 'number' | 'NumberString' = 'number';
-	@State() private inputHasFocus = false;
 
 	public constructor() {
 		this.controller = new InputRangeController(this, 'range', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')

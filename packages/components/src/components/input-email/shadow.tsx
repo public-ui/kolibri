@@ -112,7 +112,6 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 			counterRefs: {
 				visualRef: this.counterUpdater.setVisualRef,
 				ariaRef: this.counterUpdater.setAriaRef,
@@ -135,12 +134,10 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 			onKeyDown: this.onKeyDown,
 			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
 				this.counterUpdater.retriggerAria(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 			},
 			onBlur: (event: FocusEvent) => {
 				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
 			},
 		};
 	}
@@ -321,14 +318,8 @@ export class KolInputEmail implements ClickableElement, FocusableElement, InputE
 		_suggestions: [],
 	};
 
-	@State() private inputHasFocus = false;
-
 	public constructor() {
 		this.controller = new InputEmailController(this, 'email', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')
