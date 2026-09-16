@@ -13,6 +13,13 @@
 
 			font-weight: var(--kern-typography-font-weight-medium);
 
+			/* The component layer pins `font-weight: 400` on the heading's `.kol-headline`, replicating
+			   the reset the real button used to apply. On the summary alone the weight above therefore
+			   never reaches the label, so it is restated below that reset. */
+			.kol-headline {
+				font-weight: var(--kern-typography-font-weight-medium);
+			}
+
 			&:not([aria-disabled='true']):hover {
 				background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 			}
