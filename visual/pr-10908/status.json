@@ -1,48 +1,19 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "7 changed – 0 of 7 approved, review pending",
-	"computedAt": "2026-09-15T22:35:13.202Z",
+	"state": "success",
+	"description": "No visual changes",
+	"computedAt": "2026-09-16T10:41:41.864Z",
 	"pr": 10908,
-	"head": "4009adfc8cc302b219e63e76f7f25346dcc6653e",
-	"digest": "sha256:32eb0b254edd161e4d992f142e5d87ad9f084d71fff50a5f04abae9aea245577",
+	"head": "d4e756e79d17be14f332366cfbff45b2feaec9c4",
+	"digest": "sha256:a8f54aaee6b9ca09315032acca59cef6cf41b28a39402e68b3457223d0124ac7",
 	"counts": {
-		"changes": 7,
-		"open": 7,
+		"changes": 0,
+		"open": 0,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {
-		"test-tag-name-transformer/version-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/version-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/version-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/version-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/version-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/version-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/version-basic--basic": {
-			"state": "open",
-			"notes": []
-		}
-	}
+	"items": {}
 }
