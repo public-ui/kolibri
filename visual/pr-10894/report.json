@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 10894,
-	"head": "b10b208973fb61f06431e3f5a276cefc69f19d88",
+	"head": "364ddc6a4376e30e0aaa913a2976c4e39a0477e0",
 	"repository": "public-ui/kolibri",
-	"runId": 35060332201,
-	"generatedAt": "2026-09-16T05:54:50.930Z",
-	"digest": "sha256:21043b7db3f0294200572071824164c86648d6f93cd650a5dcb9e31c6e8d3286",
+	"runId": 35063875900,
+	"generatedAt": "2026-09-16T06:45:09.437Z",
+	"digest": "sha256:2593b96dbf95b8cb341fdf0583690812f25f2d97add334d8a4153d51f3ddf496",
 	"baseline": {
 		"sha": "f86866e9724777aa0e1448a77b2939775e103f0b",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2854,
-		"changed": 9,
+		"unchanged": 2857,
+		"changed": 6,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -7528,13 +7528,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 406,
-				"changed": 3,
+				"unchanged": 408,
+				"changed": 1,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:95beecdf6e554b6f40b0f3aa0b6ba9a34edf4281b099cf4d0ecda1d594d64841",
+			"digest": "sha256:bf7835197f2727cff22f7c63572b66b628e7285dafbfb98509cc49673076eecc",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7544,14 +7544,9 @@
 				},
 				{
 					"name": "accordion-basic--basic",
-					"route": "accordion/basic",
-					"status": "changed",
-					"hash": "sha256:2dd33ecae09898ec7994bf7e99227b9893fc8596e68a8160eb322618bc0e4622",
-					"diffPixels": 1355,
-					"diffRatio": 0.003738,
-					"expected": "theme-desy/accordion-basic--basic.expected.png",
-					"actual": "theme-desy/accordion-basic--basic.actual.png",
-					"diff": "theme-desy/accordion-basic--basic.diff.png"
+					"route": "accordion-basic",
+					"status": "unchanged",
+					"hash": "sha256:aa36fd4f6dfc1a4408f2af86b2aa592072b86d963e308617ba3517fe35302e25"
 				},
 				{
 					"name": "alert-basic--default",
@@ -9379,14 +9374,9 @@
 				},
 				{
 					"name": "scenarios-accordion-components",
-					"route": "scenarios/accordion-components",
-					"status": "changed",
-					"hash": "sha256:69e16e6b9ac7139948b0dfcffd546de6e1f6dc814648a37221b2f61efb5094f5",
-					"diffPixels": 571,
-					"diffRatio": 0.005417,
-					"expected": "theme-desy/scenarios-accordion-components.expected.png",
-					"actual": "theme-desy/scenarios-accordion-components.actual.png",
-					"diff": "theme-desy/scenarios-accordion-components.diff.png"
+					"route": "scenarios-accordion-components",
+					"status": "unchanged",
+					"hash": "sha256:796c555c640a2ac8fdafaff0fa1a610bb6bc648bac1e492f489da88a8bee01cb"
 				},
 				{
 					"name": "scenarios-focus-elements-component-accordion",
@@ -12536,13 +12526,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 2,
+				"unchanged": 408,
+				"changed": 1,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:9f3ab0a5f09a83aaf2e0f829023e6318c9c0b7837b71c42e8dad6426b49ae350",
+			"digest": "sha256:ed5d559d2358a0a992d10bdcca0ee8901fd9bef18b35e8c414182c420d40bfbf",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12840,14 +12830,9 @@
 				},
 				{
 					"name": "details-basic--basic",
-					"route": "details/basic",
-					"status": "changed",
-					"hash": "sha256:44f0f0ea8c7f343cfa5d5ac1219dd1fa422949c92647204b02acf297c010195a",
-					"diffPixels": 159,
-					"diffRatio": 0.000495,
-					"expected": "theme-kern/details-basic--basic.expected.png",
-					"actual": "theme-kern/details-basic--basic.actual.png",
-					"diff": "theme-kern/details-basic--basic.diff.png"
+					"route": "details-basic",
+					"status": "unchanged",
+					"hash": "sha256:7a958157aa75fd1b4c5065b78123b6590299edaa05eb51eb837a564cb9abd2ff"
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
@@ -14431,9 +14416,7 @@
 					"name": "scenarios-focus-elements-component-details",
 					"route": "scenarios/focus-elements?component=details",
 					"status": "changed",
-					"hash": "sha256:e6a781ffb27ae76dcf63e96e0e6f8837f1034046ab868906373f15b0d80c4d46",
-					"diffPixels": 83,
-					"diffRatio": 0.002882,
+					"hash": "sha256:2352b8cde2c6ba725db0ee65d36b4b4d7c3f9ccffb9b6b1ce86ce380d8df479e",
 					"sizeMismatch": {
 						"expected": [
 							300,
