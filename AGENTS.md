@@ -226,6 +226,54 @@ In the theme component layer, you can set what ever you need to realize your own
 }
 ```
 
+### Color schemes
+
+A theme carries one palette per color scheme in a single declaration, resolved by the CSS
+`light-dark()` function:
+
+```scss
+@layer kol-theme-global {
+	:host {
+		--color-text: var(--kolibri-color-text, light-dark(#202020, #{$dark-color-text}));
+	}
+}
+```
+
+Rules that hold for every theme:
+
+- **Never declare `color-scheme` in a theme**, and never write `@media (prefers-color-scheme: …)`.
+  `color-scheme` is an inherited property and inheritance follows the flat tree, so it crosses the
+  shadow boundary on its own: each component resolves `light-dark()` against whatever the consuming
+  application has in effect where the component sits. A declaration on `:host` would replace that
+  inherited value, and the page and the components in it could then disagree — which is exactly the
+  bug this rule exists to prevent.
+- The application owns the scheme, in plain CSS: `:root { color-scheme: light dark }` to follow the
+  operating system, `color-scheme: dark` on any element to force a subtree. Consequently an
+  application that declares nothing stays light, whatever the operating system says. Dark mode is
+  opt-in; `color-scheme.css` in a theme package ships that one line plus the page colors.
+- Sass does not evaluate variables inside `var()`. Interpolate them (`#{$dark-color-text}`).
+- An application stylesheet that uses `light-dark()` must not be downlevelled. A CSS minifier
+  targeting older browsers rewrites it into a `prefers-color-scheme` media query with space
+  toggles, and that replacement ignores the `color-scheme` property. A theme's CSS is a string
+  adopted into the shadow roots at runtime and is never processed by the application's CSS
+  pipeline, so the page would follow the operating system while the components follow
+  `color-scheme`. Both sample host apps therefore pin `build.cssTarget` in their Vite config.
+- The base layer hardcodes `black` and `white` in a few places. Where it routes them through a
+  token, override the token (`--kol-a11y-font-color` / `--kol-a11y-background-color` in `a11y.scss`
+  are the sanctioned hook for the host box of every component); elsewhere restate the declaration in
+  a theme layer, which sits above `kol-a11y`, `kol-global` and `kol-component`. Keep the light
+  branch byte identical to the base value so no light snapshot moves.
+- What a theme layer cannot reach are the color stops of a `@keyframes` rule declared in the base
+  layer: an animation's own values win over any normal declaration, whatever the layer. Such a case
+  needs a change in `packages/components`.
+- Depth is a surface scale, not a shadow: a lighter surface sits higher. A light palette collapses
+  that scale onto white and draws depth with a shadow instead; a dark one carries it in the surfaces
+  and replaces the shadow with a hard edge. Since `light-dark()` is a color function and cannot
+  switch a `box-shadow` geometry, state both branches at once and switch them by their colors — the
+  shadow token transparent in dark mode, the edge token transparent in light mode. A container that
+  paints a surface of its own passes it down through `--kol-surface`, which reaches slotted
+  components too, so their host box matches the surface they were placed on.
+
 ### CSS Custom Properties and SASS Variables
 
 CSS custom properties remain part of the global cascade and are not isolated by the Shadow DOM.

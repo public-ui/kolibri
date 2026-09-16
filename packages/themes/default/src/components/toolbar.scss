@@ -8,6 +8,8 @@
 	@include kol-button('kol-link');
 
 	.kol-toolbar {
+		// A raised bar; the buttons and links on it stand on the bar, not on the page.
+		--kol-surface: var(--color-light);
 		background-color: var(--color-light);
 		border-radius: var(--border-radius);
 	}

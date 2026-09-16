@@ -78,6 +78,11 @@ export default defineConfig({
 		/* Base URL to use in actions like `await page.goto('/')`. */
 		baseURL: BASE_URL,
 
+		/* Drives `prefers-color-scheme` in the browser context. The specs must not set this
+		   themselves – a spec level `colorScheme` overrides the project config and would pin every
+		   run to one scheme, no matter what KOLIBRI_VISUAL_TESTS_COLOR_SCHEME says. */
+		colorScheme: colorSchema,
+
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
 		trace: 'on-first-retry',
 	},

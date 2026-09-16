@@ -45,18 +45,22 @@
 	"scripts": {
 		"build": "rollup -c",
 		"dev": "rollup -c --watch",
-		"format": "prettier --check src",
+		"format": "prettier --check src color-scheme.css",
 		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc",
 		"lint:eslint": "eslint src",
-		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
+		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\" color-scheme.css",
 		"lint:tsc": "tsc --noemit",
 		"prepare": "kolibri-copy-assets --dest assets @public-ui/components",
 		"start": "npm-run-all2 --parallel dev serve",
 		"serve": "sh serve.sh DEFAULT",
 		"test": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test",
+		"test:dark": "cross-env KOLIBRI_VISUAL_TESTS_COLOR_SCHEME=dark THEME_MODULE=dist THEME_EXPORT=DEFAULT THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test",
 		"test:update:e2e": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
+		"test:update:e2e:dark": "cross-env KOLIBRI_VISUAL_TESTS_COLOR_SCHEME=dark THEME_MODULE=dist THEME_EXPORT=DEFAULT THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
 		"pretest": "pnpm build",
-		"pretest:update:e2e": "pnpm build"
+		"pretest:dark": "pnpm build",
+		"pretest:update:e2e": "pnpm build",
+		"pretest:update:e2e:dark": "pnpm build"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
@@ -89,13 +93,15 @@
 			"types": "./dist/index.d.ts",
 			"import": "./dist/index.mjs",
 			"require": "./dist/index.cjs"
-		}
+		},
+		"./color-scheme.css": "./color-scheme.css"
 	},
 	"main": "./dist/index.cjs",
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
 	"files": [
 		"assets",
+		"color-scheme.css",
 		"dist"
 	]
 }

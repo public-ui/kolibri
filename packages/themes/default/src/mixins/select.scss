@@ -2,7 +2,17 @@
 @use '../mixins/to-rem' as *;
 
 @mixin kol-select {
+	/*
+	 * The option list of a native `<select>` is painted by the browser from the select's own
+	 * `background-color`. The base layer leaves that `transparent`, and a transparent popup composites
+	 * against white whatever `color-scheme` says — which is why the dropdown stayed white in dark mode
+	 * while the closed control around it was dark.
+	 *
+	 * Naming the surface explicitly fixes the popup. The light branch stays the `transparent` of the
+	 * base layer, so nothing moves there, and the dark branch matches the field the popup belongs to.
+	 */
 	.kol-select {
+		background-color: light-dark(transparent, var(--color-light));
 		border: none;
 
 		&:focus {
@@ -14,6 +24,8 @@
 		}
 
 		&__option {
+			// Same again for the options themselves, which Firefox paints independently of the popup.
+			background-color: light-dark(transparent, var(--color-light));
 			border-radius: var(--border-radius);
 			margin: to-rem(1) 0;
 
@@ -40,6 +52,12 @@
 			// space for the native arrow down icon
 			padding-right: to-rem(16);
 		}
+	}
+
+	// The surface above would otherwise sit as a lighter patch inside the muted box of a disabled field.
+	.kol-input-container--disabled .kol-select,
+	.kol-input-container--disabled .kol-select__option {
+		background-color: light-dark(transparent, var(--color-mute));
 	}
 
 	.kol-input-container:has(.kol-select[multiple][size='1']),
