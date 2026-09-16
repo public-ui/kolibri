@@ -999,7 +999,7 @@ const KOL_ALERT_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 		kind: 'prop',
 		type: 'KoliBriAlertEventCallbacks',
 		required: false,
-		doc: 'Gibt die EventCallback-Function für das Schließen des Alerts an.',
+		doc: 'Defines the event callback functions for closing the alert.',
 	},
 	_type: {
 		kind: 'prop',

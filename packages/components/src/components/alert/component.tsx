@@ -151,7 +151,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	}
 
 	/**
-	 * Gibt die EventCallback-Function für das Schließen des Alerts an.
+	 * Defines the event callback functions for closing the alert.
 	 */
 	@Prop() public _on?: KoliBriAlertEventCallbacks;
 
