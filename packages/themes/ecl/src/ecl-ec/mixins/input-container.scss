@@ -30,7 +30,8 @@
 			position: relative;
 			z-index: 2;
 
-			.kol-button {
+			/* The class carrier is a wrapper — focus lands on the button inside it. */
+			.kol-button__interactive-element {
 				&:focus {
 					outline: 2px solid var(--ecl-color-primary);
 					outline-offset: 0;

@@ -46,10 +46,6 @@
 
 				text-decoration: none;
 
-				&:focus-visible {
-					@include focus-outline;
-				}
-
 				.kol-link__interactive-element:focus-visible {
 					@include focus-outline;
 				}
@@ -84,7 +80,7 @@
 
 				$root: &;
 
-				&:focus,
+				/* The class carrier is a wrapper and never receives focus. */
 				&__interactive-element:focus {
 					outline: none;
 				}

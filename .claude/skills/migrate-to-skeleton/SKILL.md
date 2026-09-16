@@ -73,13 +73,68 @@ Hintergrund: `packages/components/src/components/_skeleton/ARC42.md#schema-helpe
    `@Component({ tag: 'kol-<komponente>', shadow: true })`, erbt `BaseWebComponent<Api>`, implementiert `WebComponentInterface<Api>` **und** das Schema-`*Props`-Interface (z. B. `implements LinkProps`), damit API-Drift den Build bricht. Aufbau, Prop-Triangle, Behavior-Lebenszyklus und Zustandszugriff: `reference/patterns.md`.
 5. **Öffentliche API-Parität sichern**
    Der migrierte WC muss **exakt** dieselbe `@Prop`/`@Method`-Oberfläche bieten wie der Vorgänger — gleiche Member, gleiche Schema-Alias-Typen, gleiche Defaults, gleiche JSDoc (`custom-elements.json`, `docs-vscode` und die Adapter-IntelliSense werden daraus erzeugt). Oberfläche in `packages/components/src/components/_skeleton/public-api.spec.ts` festnageln und gegen den Vorgänger diffen. Details: `ARC42.md#public-api-contract-migration-parity`.
-6. **Tests** — ko-lokalisiert neben `component.tsx`
+6. **CSS/SCSS** — `packages/components/src/components/<komponente>/style.scss`
+   Bestehende Basis-Styles behalten, Selektoren an die neue BEM-Struktur anpassen. `style.scss` bleibt Basis-Styling: nur Layout und Struktur, keine Farben (außer dem Schwarz-/Weiß-Kontrast-Fallback), **kein Dark-/Light-Color-Scheme** (`prefers-color-scheme`, `color-scheme`, `light-dark()`). Farben und Color Schemes gehören in die Theme-Pakete (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
+7. **Tests** — ko-lokalisiert neben `component.tsx`
    `snapshot.spec.tsx` über `executeSnapshotTests`; `interaction.e2e.ts` nur, wenn Interaktionsverhalten es rechtfertigt.
 
 ## 6. Phase 4 — Legacy-Rückbau
 
 - Verwaiste Dateien, obsolete Wrapper und alte Controller-/Aspect-Module löschen (ihre Logik liegt jetzt im WC oder im Behavior).
 - Ungenutzte Imports, Typen und auskommentierten Code entfernen.
+
+**Transitionale `-wc`-Tags beim Konsumenten ablösen.** Rendert die migrierte Komponente ein
+`kol-*-wc`-Element, dessen Ziel **bereits** auf Skeleton umgestellt ist (heute `kol-button-wc` →
+`ButtonFC`, `kol-link-wc` → `LinkFC`), dann ist der Umstieg auf den FC Teil dieser Migration und
+nicht optional. Genau dafür existiert der Wrapper — er ist Gerüst, kein Ziel
+(`ARC42.md#transitional-pattern-shadowfalse`). Jede Migration, die ihn stehen lässt, verlängert das
+~350-Zeilen-Duplikat zwischen `component.tsx` und `wc.tsx` und hält 17 (`kol-button-wc`) bzw. 8
+(`kol-link-wc`) Konsumenten am Leben. **Diesen Punkt aktiv prüfen — er wird sonst übersehen, weil
+der Wrapper funktioniert und nichts fehlschlägt.**
+
+Zwei Vorprüfungen entscheiden, ob das ein Teil dieses PRs ist oder ein eigener:
+
+1. **Prop-Aufwand.** Der `-wc`-Wrapper ist ein Orchestrator: er normalisiert Props, komponiert
+   Behaviors und hält Event-Handler. Der FC bekommt davon nichts geschenkt — `ButtonFC` verlangt
+   26 normalisierte Render-Props, 4 `handle*`-Callbacks, 2 Refs und ein `ariaDescriptionId`-State.
+   Prüfen: **Hat der migrierte WC diese Werte schon, oder müsste er die Orchestrierung des Wrappers
+   nachbauen?**
+   - _Hat sie schon_ (feste, im WC bereits normalisierte Werte, keine Tooltip-/Form-Logik) → trivialer
+     Tausch, gehört in diesen PR.
+   - _Müsste nachbauen_ (die Props sind ein opaker Pass-through wie `InternalButtonProps`, oder der
+     Wrapper bringt `TooltipBehavior`, `AssociatedInputController`, `dispatchDomEvent` mit) → **nicht**
+     inline duplizieren. Dann braucht es zuerst eine wiederverwendbare Orchestrierungs-Einheit
+     (Behavior oder geteilter Normalisierungs-Helfer); das ist ein eigener, architektonisch
+     relevanter Schritt und gehört dem Owner vorgelegt, nicht nebenbei erledigt.
+2. **Default-Aufwand (die stille Falle).** Der `-wc`-Wrapper setzt Defaults als Stencil-`@Prop`-Feld
+   (`@Prop() public _inline?: InlinePropType = false;`). Die sind Teil dessen, was das Element
+   rendert, stehen aber **nicht** in der Prop-Definition — und mehrere Definitionen teilen sich
+   Button und Link, deren Konventionen auseinandergehen: `inlineProp` defaultet auf `true`,
+   `tooltipAlignProp` auf `'right'`, beide Button-Elemente deklarieren `false` und `'top'`. Wer nur
+   die Prop-Definitionen anwendet, bekommt still einen anderen Button (`--inline` statt
+   `--standalone`, Tooltip rechts statt oben). **Die `@Prop`-Defaults des Wrappers abgleichen und
+   im Resolver neu setzen** — für Button erledigt das `BUTTON_ELEMENT_DEFAULTS` in
+   `internal/functional-components/button/resolve-props.ts`. Kein Unit-Test fängt das; gefunden hat
+   es erst das Pixel-Gate.
+3. **Selektor-Aufwand.** Der Wrapper trägt heute die Consumer-Klasse als **Vorfahr** des Blocks:
+   `<kol-button-wc class="kol-x__btn"><div class="kol-button">`. Nach dem Tausch merged
+   `BemRootNodeFC` die Klasse auf denselben Knoten: `<div class="kol-button kol-x__btn">`. Jeder
+   Selektor der Form `.kol-x__btn .kol-button` greift dann nicht mehr — still, ohne Fehler. Vorher
+   greppen und mitmigrieren:
+
+   ```bash
+   grep -rn "<consumer-element-klasse>" packages/themes/*/src packages/components/src --include='*.scss'
+   ```
+
+   Die Regeln, nach denen die Treffer sortiert werden, stehen in
+   `zero-visual-delta-handoff/SKILL.md` § 6b; Theme-Fixes bleiben theme-lokal.
+
+4. **Abnahme.** Der Tausch ist ein DOM-Umbau, also gilt das Pixel-Gate unverändert (Phase 5). Ohne
+   grünen Nachweis je Theme ist er nicht fertig.
+
+Fällt die Ablösung nach Vorprüfung 1 aus dem PR, wird sie **benannt**: im PR-Text und im
+Companion-Plan unter „Open work", mit dem Grund. Stillschweigend stehen lassen ist der Fehler,
+den diese Regel verhindern soll.
 
 **Dead-Schema-Erkennung.** Alte Legacy-Schemas werden nach der Migration abgebaut:
 
@@ -111,13 +166,14 @@ pnpm --filter @public-ui/components build
 
 **Pixel-Gate.** Eine Skeleton-Migration baut das DOM um — grüne Unit-Tests sind dafür kein Nachweis. Die visuelle Abnahme läuft über den Companion-Skill **`zero-visual-delta-handoff`**: null geänderte Snapshot-Bilder gegen den Base-Branch, geprüft im Docker-Lauf (`node scripts/snapshots-docker.mjs <theme> --check`). Ohne Docker wird die visuelle Prüfung nicht durch lokale Playwright-Läufe ersetzt, sondern als offene Arbeit dokumentiert und übergeben.
 
-Durchgeführte Beispiele mit Befunden und Stolperstellen: `.claude/plans/migrate-kol-button-skeleton.md`, `.claude/plans/migrate-kol-link-skeleton-2th.md`.
-
 ## 8. Konventionen
 
 - `shadow: true` für Web Components.
 - Kein `class`-Attribut am `<Host>`.
 - Externe Props mit Unterstrich (`_name`, `_label`).
+- **Render-Funktionen nutzen die Render-FunctionalComponents**: Rendert eine Komponente weitere Komponenten, geschieht das über die neuen FCs (`ButtonFC` statt `KolButtonWcTag`, `LinkFC` statt `KolLinkWcTag`) — wann immer möglich. Die Prop-Orchestrierung des ersetzten Tags (Prop-Factories, Behaviors, Refs) wandert an den renderenden WC oder einen FC-eigenen Fabrik-Typ (Vorbild: `internal/functional-components/breadcrumb/link-item.ts`). Nur wenn Theme-/Basis-Selektoren den Host-Knoten des `-wc`-Tags als Vorfahren brauchen und sich nicht FC-gleich schalten lassen, bleibt das Tag als begründete Ausnahme stehen (Fallstrick 8).
+- **Keine Arbeitspläne einchecken**: Pläne sind lokale Arbeitsdokumente (ungetrackt, z. B. `.claude/plans/` im Arbeitsverzeichnis) und gehören nicht in Branch oder PR. Dauerhaft relevantes Wissen wird stattdessen in `reference/pitfalls.md` und diesem Skill destilliert.
+- **Kommentare sind kurz, klar und zukunftsrelevant**: Ein Kommentar erklärt eine Einschränkung oder ein Warum, das der Code nicht selbst zeigt — niemals die Entstehungsgeschichte oder den Diff. Ein „der Vorgänger tat X“ steht nur zusammen mit dem Grund, warum das heute noch gilt.
 - Tests ko-lokalisiert bei den Komponentendateien; kein `data-testid` im Markup — stabile BEM-Selektoren verwenden (ARC42 DD13/DD14).
 - Keine neuen Barrel-Dateien.
 - ARIA-Referenz-IDs (`aria-controls`, `aria-labelledby`, `aria-describedby`, `aria-owns`) müssen pro Instanz eindeutig sein — `createUniqueId('prefix')` bzw. `createRelatedUniqueId(baseId, 'suffix')` aus `utils/dev.utils` (ARC42 DD12).
@@ -132,8 +188,11 @@ Durchgeführte Beispiele mit Befunden und Stolperstellen: `.claude/plans/migrate
 - [ ] Watcher wenden die Prop-Factory inline an: `xxxProp.apply(value, (v) => this.setRenderProp('xxx', v))`
 - [ ] Behavior (falls vorhanden) erbt `BaseBehavior<Api>`, implementiert `BehaviorInterface<Api>`, wird über `this.stateAccess` oder begründet über `BaseWebComponent.stateLess` komponiert — inkl. `componentDidRender`-Sync und `disconnectedCallback`-Teardown
 - [ ] FC ist zustandslos und kapselt seinen Wurzelknoten in `BemRootNodeFC`
+- [ ] Die Render-Funktion nutzt durchgängig die Render-FunctionalComponents (`ButtonFC` statt `KolButtonWcTag`, …); ein beibehaltenes `-wc`-Tag ist als Ausnahme begründet (Fallstrick 8)
+- [ ] Kein Arbeitsplan eingecheckt; Kommentare sind kurz, klar und zukunftsrelevant
 - [ ] `<Host>` ohne redundantes `class`-Attribut
 - [ ] Öffentliche `@Prop`/`@Method`-Oberfläche identisch zum Vorgänger, in `public-api.spec.ts` festgenagelt, Schema-`*Props`-Interface implementiert
+- [ ] Transitionale `kol-*-wc`-Tags im gerenderten Markup geprüft: abgelöst, oder mit Begründung als offene Arbeit benannt
 - [ ] Kein toter Code, keine verwaisten Dateien; Dead-Schema-Abbau geprüft (inkl. Ausnahme für veröffentlichte Typen)
 - [ ] Tests ko-lokalisiert und aktualisiert
 - [ ] `pnpm format`, `pnpm lint`, `test:unit` erfolgreich

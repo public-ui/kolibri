@@ -42,6 +42,8 @@ await register([DEFAULT, ECL], defineCustomElements);
 
 Switching themes at runtime works through the `kol-theme` attribute—no additional registration call is required.
 
+> ℹ️ Dark mode is provided by a theme, never by `@public-ui/components`. The components package contains layout-only base styling without any color scheme. A theme either switches its color tokens (e.g. via `prefers-color-scheme`) or ships a separate dark export that you register as an additional theme and select via `kol-theme`. See [BASE_STYLING_VS_THEMING_CONCEPT.md](./BASE_STYLING_VS_THEMING_CONCEPT.md).
+
 ## 4. Framework-specific notes
 
 - **React / Solid / Svelte / Vue**: Use the official adapters (`@public-ui/react`, `@public-ui/solid`, `@public-ui/svelte`, `@public-ui/vue`). They wrap `register` for you, but you still need to call it once in your app entry point before rendering.
@@ -54,6 +56,8 @@ Switching themes at runtime works through the `kol-theme` attribute—no additio
   Components were not registered. Call `register(...)` before rendering or ensure the promise resolved.
 - **Components use fallback styling** \
   No theme was registered. Pass a theme object (e.g. `DEFAULT`) to `register`.
+- **Components ignore the operating system's dark mode** \
+  Expected: the base styling is color-scheme neutral. Dark mode only appears if the registered theme implements it.
 - **Duplicate custom element definition error** \
   `defineCustomElements` executed twice. Call `register` only once per page load or pass `[]` when an adapter already defines the elements.
 

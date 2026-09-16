@@ -31,5 +31,9 @@
 			flex: 0;
 			align-self: stretch;
 		}
+
+		&--open &-toggle {
+			transform: rotate(180deg);
+		}
 	}
 }

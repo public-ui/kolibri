@@ -141,12 +141,12 @@ graph TB
 
 **Qualitätsziel:** Sofortige Theme-Änderungen
 
-| Aspekt       | Details                                           |
-| ------------ | ------------------------------------------------- |
-| **Stimulus** | Nutzer wechselt Theme (Dark Mode, hoher Kontrast) |
-| **Umgebung** | Anwendung mit mehreren gerenderten Komponenten    |
-| **Reaktion** | Theme ändert sich sofort über alle Komponenten    |
-| **Messung**  | Visuelle Änderung innerhalb von 16ms (ein Frame)  |
+| Aspekt       | Details                                                                                                                |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| **Stimulus** | Nutzer wechselt Theme oder das Color Scheme des Themes (Dark/Light, vom Theme bereitgestellt, nicht vom Basis-Styling) |
+| **Umgebung** | Anwendung mit mehreren gerenderten Komponenten                                                                         |
+| **Reaktion** | Theme ändert sich sofort über alle Komponenten                                                                         |
+| **Messung**  | Visuelle Änderung innerhalb von 16ms (ein Frame)                                                                       |
 
 **Akzeptanzkriterien:**
 

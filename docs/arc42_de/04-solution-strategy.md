@@ -83,9 +83,9 @@ KoliBri ist als Monorepo mit klarer Trennung der Verantwortlichkeiten strukturie
 ### Muster: Fünf-Schichten-Styling-System
 
 1. **A11y-Preset-Schicht**: Barrierefreiheits-Baseline von `adopted-style-sheets`
-2. **Basis Global-Schicht**: Globales Komponenten-Layout (keine Farben/Abstände)
-3. **Basis Komponenten-Schicht**: Komponenten-spezifisches Layout (keine Farben/Abstände)
-4. **Theme Global-Schicht**: Globale Theme-Styles (Farben, Schriften)
+2. **Basis Global-Schicht**: Globales Komponenten-Layout (keine Farben/Abstände, kein Color Scheme)
+3. **Basis Komponenten-Schicht**: Komponenten-spezifisches Layout (keine Farben/Abstände, kein Color Scheme)
+4. **Theme Global-Schicht**: Globale Theme-Styles (Farben, Schriften, Color Schemes)
 5. **Theme Komponenten-Schicht**: Komponenten-spezifische Theme-Styles
 
 Diese Schichtung gewährleistet:
@@ -93,6 +93,7 @@ Diese Schichtung gewährleistet:
 - Barrierefreiheit standardmäßig
 - Themebar ohne Layout-Bruch
 - Klare Trennung von Struktur und Erscheinung
+- Dark/Light-Color-Schemes sind ausschließlich in den Theme-Schichten verankert; das Basis-Styling fokussiert auf Layout und ist scheme-neutral (siehe [Basis-Styling vs. Theming Konzept](../BASE_STYLING_VS_THEMING_CONCEPT.md))
 
 ### Muster: Keine Runtime-Abhängigkeiten
 
@@ -178,6 +179,7 @@ register(DEFAULT, defineCustomElements);
 - Minimale CSS Custom Properties zur Vermeidung von Konflikten
 - SASS-Variablen für interne Berechnungen
 - Assets (Schriften, Icons) in Theme-Paketen enthalten
+- Color Schemes (Light/Dark) werden vom Theme über seine Tokens oder einen separaten Dark-Export bereitgestellt, niemals vom Komponenten-Paket
 
 ### Vorteile
 

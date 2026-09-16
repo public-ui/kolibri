@@ -1,0 +1,79 @@
+import type { KoliBriTableHeaderCellWithLogic, StateColumnPropType } from '@public-ui/components';
+import { KolTableStateful } from '@public-ui/react-v19';
+import type { FC } from 'react';
+import React from 'react';
+import { SampleBlock } from '../SampleBlock';
+import { SampleDescription } from '../SampleDescription';
+
+type ProjectTask = {
+	id: string;
+	project: string;
+	owner: string;
+	userStates: StateColumnPropType[];
+};
+
+const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
+	horizontal: [
+		[
+			{ key: 'id', label: 'ID', width: 80 },
+			{ key: 'project', label: 'Project' },
+			{ key: 'owner', label: 'Owner', width: 140 },
+			{
+				type: 'state',
+				key: 'userStates',
+				label: 'States',
+				textAlign: 'left',
+				width: 500,
+			},
+		],
+	],
+};
+
+const DATA: ProjectTask[] = [
+	{
+		id: 'T-01',
+		project: 'Onboarding checklist',
+		owner: 'Alex Rivera',
+		userStates: [
+			{
+				type: 'badge',
+				_label: 'Logged out',
+				_color: '#aa0000',
+			},
+			{
+				type: 'badge',
+				_label: 'In Project',
+				_color: '#0000aa',
+			},
+		],
+	},
+	{
+		id: 'T-02',
+		project: 'Accessibility audit',
+		owner: 'Jamie Chen',
+		userStates: [
+			{
+				type: 'badge',
+				_label: 'Logged in',
+				_color: '#00aa00',
+			},
+			{
+				type: 'badge',
+				_label: 'In Project',
+				_color: '#0000aa',
+			},
+		],
+	},
+];
+
+export const TableStateColumns: FC = () => (
+	<>
+		<SampleDescription>
+			<p>Simple example using the state column: States are defined once in the column header definition using a factory function.</p>
+		</SampleDescription>
+
+		<SampleBlock id="action-columns" className="w-full">
+			<KolTableStateful _label="Tasks with action buttons" _headers={HEADERS} _data={DATA} className="block" />
+		</SampleBlock>
+	</>
+);

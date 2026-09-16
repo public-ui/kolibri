@@ -16,7 +16,9 @@
 			margin-bottom: -2px;
 			margin-left: var(--ecl-spacing-2xs);
 
-			.kol-button {
+			/* Compound selector, not a plain nesting: specificity has to stay at 0-3-0 to beat the
+			   icon mixin. */
+			&.kol-button {
 				.kol-icon::before {
 					content: '\ea0e';
 				}
