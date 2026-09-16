@@ -10,7 +10,7 @@ import path from 'node:path';
  * `method.docs`, so a member without JSDoc silently loses its documentation.
  *
  * Every skeleton-migrated component pins its public API below. A failing test here means the
- * public contract changed — that is a breaking change, not a refactor. It requires owner
+ * public contract changed — a breaking change, not a refactor. It requires owner
  * approval, a conscious update of the pinned contract and a note in the PR description.
  * The FC's props are internal by definition and must NOT appear in the pinned contracts.
  */
@@ -870,6 +870,8 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['link-button', 'component.tsx'],
 		['split-button', 'component.tsx'],
 		['badge', 'component.tsx'],
+		['popover-button', 'shadow.tsx'],
+		['popover-button', 'component.tsx'],
 	];
 
 	it.each(sources)('documents every public member of %s/%s', (component, file) => {
@@ -958,5 +960,338 @@ describe('kol-breadcrumb public API contract (ARC42 § Public API Contract)', ()
 
 	it('implements the schema interface so prop-type drift fails the build', () => {
 		expect(readSource('breadcrumb', 'component.tsx')).toMatch(/implements\s+[^{]*\bBreadcrumbProps\b/);
+	});
+});
+
+/**
+ * Pinned public API of `kol-popover-button` (shadow wrapper) — byte-identical to the predecessor
+ * `shadow.tsx` on the develop branch (18 props + hidePopover/showPopover/click/focus).
+ */
+const KOL_POPOVER_BUTTON_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	hidePopover: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Hides the popover programmatically by forwarding the call to the web component.',
+	},
+	showPopover: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Shows the popover programmatically by forwarding the call to the web component.',
+	},
+	click: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Clicks the primary interactive element inside this component.',
+	},
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the internal element.',
+	},
+	_accessKey: {
+		kind: 'prop',
+		type: 'AccessKeyPropType',
+		required: false,
+		default: undefined,
+		doc: "Defines the key combination that can be used to trigger or focus the component's interactive element.",
+	},
+	_ariaDescription: {
+		kind: 'prop',
+		type: 'AriaDescriptionPropType',
+		required: false,
+		default: undefined,
+		doc: 'Defines the value for the aria-description attribute.',
+	},
+	_customClass: {
+		kind: 'prop',
+		type: 'CustomClassPropType',
+		required: false,
+		default: undefined,
+		doc: 'Defines the custom class attribute if _variant="custom" is set.',
+	},
+	_disabled: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Makes the element not focusable and ignore all events.',
+	},
+	_hideLabel: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it. @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.',
+	},
+	_icons: {
+		kind: 'prop',
+		type: 'IconsPropType',
+		required: false,
+		default: undefined,
+		doc: 'Defines the icon classnames.',
+	},
+	_inline: {
+		kind: 'prop',
+		type: 'InlinePropType',
+		required: false,
+		default: 'false',
+		doc: 'Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelWithExpertSlotPropType',
+		required: true,
+		default: undefined,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.',
+	},
+	_name: {
+		kind: 'prop',
+		type: 'string',
+		required: false,
+		default: undefined,
+		doc: 'Defines the technical name of an input field.',
+	},
+	_popoverAlign: {
+		kind: 'prop',
+		type: 'PopoverAlignPropType',
+		required: false,
+		default: "'bottom'",
+		doc: 'Defines where to show the Popover preferably: top, right, bottom or left.',
+	},
+	_shortKey: {
+		kind: 'prop',
+		type: 'ShortKeyPropType',
+		required: false,
+		default: undefined,
+		doc: 'Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.',
+	},
+	_syncValueBySelector: {
+		kind: 'prop',
+		type: 'SyncValueBySelectorPropType',
+		required: false,
+		default: undefined,
+		doc: 'Selector for synchronizing the value with another input element. @internal',
+	},
+	_tabIndex: {
+		kind: 'prop',
+		type: 'number',
+		required: false,
+		default: undefined,
+		doc: 'Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)',
+	},
+	_tooltipAlign: {
+		kind: 'prop',
+		type: 'TooltipAlignPropType',
+		required: false,
+		default: "'top'",
+		doc: 'Defines where to show the Tooltip preferably: top, right, bottom or left.',
+	},
+	_type: {
+		kind: 'prop',
+		type: 'ButtonTypePropType',
+		required: false,
+		default: "'button'",
+		doc: 'Defines either the type of the component or of the components interactive element.',
+	},
+	_value: {
+		kind: 'prop',
+		type: 'StencilUnknown',
+		required: false,
+		default: undefined,
+		doc: 'Defines the value of the element.',
+	},
+	_variant: {
+		kind: 'prop',
+		type: 'VariantClassNamePropType',
+		required: false,
+		default: "'normal'",
+		doc: 'Defines which variant should be used for presentation.',
+	},
+};
+
+describe('kol-popover-button public API contract (ARC42 § Public API Contract)', () => {
+	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
+		const extracted = extractFrom('popover-button', 'shadow.tsx');
+		expect(toContract(extracted)).toEqual(KOL_POPOVER_BUTTON_PUBLIC_API);
+	});
+});
+
+/**
+ * Pinned public API of `kol-popover-button-wc` — the transitional `shadow:false` element. It
+ * matches the predecessor `component.tsx` on the develop branch (19 props including `_id` +
+ * hidePopover/showPopover/focus/click). The `_on` prop is accepted for API parity but its
+ * `onClick` is reserved by the popover toggle; the predecessor behaved the same way.
+ */
+const KOL_POPOVER_BUTTON_WC_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	hidePopover: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Hides the popover programmatically by calling the PopoverController.',
+	},
+	showPopover: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Show the popover programmatically by calling the PopoverController.',
+	},
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the internal element.',
+	},
+	click: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Clicks the primary interactive element inside this component.',
+	},
+	_accessKey: {
+		kind: 'prop',
+		type: 'AccessKeyPropType',
+		required: false,
+		default: undefined,
+		doc: "Defines the key combination that can be used to trigger or focus the component's interactive element.",
+	},
+	_ariaDescription: {
+		kind: 'prop',
+		type: 'AriaDescriptionPropType',
+		required: false,
+		default: undefined,
+		doc: 'Defines the value for the aria-description attribute.',
+	},
+	_customClass: {
+		kind: 'prop',
+		type: 'CustomClassPropType',
+		required: false,
+		default: undefined,
+		doc: 'Defines the custom class attribute if _variant="custom" is set.',
+	},
+	_disabled: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Makes the element not focusable and ignore all events.',
+	},
+	_hideLabel: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Hides the caption by default and displays the caption text with a tooltip when the interactive element is focused or the mouse is over it. @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.',
+	},
+	_icons: {
+		kind: 'prop',
+		type: 'IconsPropType',
+		required: false,
+		default: undefined,
+		doc: 'Defines the icon classnames.',
+	},
+	_id: {
+		kind: 'prop',
+		type: 'IdPropType',
+		required: false,
+		default: undefined,
+		doc: 'Defines the internal ID of the primary component element. @internal',
+	},
+	_inline: {
+		kind: 'prop',
+		type: 'InlinePropType',
+		required: false,
+		default: 'false',
+		doc: 'Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelWithExpertSlotPropType',
+		required: true,
+		default: undefined,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.',
+	},
+	_name: {
+		kind: 'prop',
+		type: 'string',
+		required: false,
+		default: undefined,
+		doc: 'Defines the technical name of an input field.',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'ButtonCallbacksPropType<StencilUnknown>',
+		required: false,
+		default: undefined,
+		doc: 'Defines the callback functions for button events.',
+	},
+	_popoverAlign: {
+		kind: 'prop',
+		type: 'PopoverAlignPropType',
+		required: false,
+		default: "'bottom'",
+		doc: 'Defines where to show the Popover preferably: top, right, bottom or left.',
+	},
+	_shortKey: {
+		kind: 'prop',
+		type: 'ShortKeyPropType',
+		required: false,
+		default: undefined,
+		doc: 'Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.',
+	},
+	_syncValueBySelector: {
+		kind: 'prop',
+		type: 'SyncValueBySelectorPropType',
+		required: false,
+		default: undefined,
+		doc: 'Selector for synchronizing the value with another input element. @internal',
+	},
+	_tabIndex: {
+		kind: 'prop',
+		type: 'number',
+		required: false,
+		default: undefined,
+		doc: 'Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)',
+	},
+	_tooltipAlign: {
+		kind: 'prop',
+		type: 'TooltipAlignPropType',
+		required: false,
+		default: "'top'",
+		doc: 'Defines where to show the Tooltip preferably: top, right, bottom or left.',
+	},
+	_type: {
+		kind: 'prop',
+		type: 'ButtonTypePropType',
+		required: false,
+		default: "'button'",
+		doc: 'Defines either the type of the component or of the components interactive element.',
+	},
+	_value: {
+		kind: 'prop',
+		type: 'StencilUnknown',
+		required: false,
+		default: undefined,
+		doc: 'Defines the value of the element.',
+	},
+	_variant: {
+		kind: 'prop',
+		type: 'VariantClassNamePropType',
+		required: false,
+		default: "'normal'",
+		doc: 'Defines which variant should be used for presentation.',
+	},
+};
+
+describe('kol-popover-button-wc transitional wrapper (internal contract for legacy consumers)', () => {
+	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
+		const extracted = extractFrom('popover-button', 'component.tsx');
+		expect(toContract(extracted)).toEqual(KOL_POPOVER_BUTTON_WC_PUBLIC_API);
+	});
+	it('implements the schema interface so prop-type drift fails the build', () => {
+		expect(readSource('popover-button', 'component.tsx')).toMatch(/implements\s+[^{]*\bPopoverButtonProps\b/);
 	});
 });
