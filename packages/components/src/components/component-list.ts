@@ -41,7 +41,7 @@ import { KolProgress } from './progress/component';
 import { KolQuote } from './quote/component';
 import { KolSelect } from './select/shadow';
 import { KolSingleSelect } from './single-select/shadow';
-import { KolSkipNav } from './skip-nav/shadow';
+import { KolSkipNav } from './skip-nav/component';
 import { KolSpin } from './spin/component';
 import { KolSplitButton } from './split-button/component';
 import { KolTabs } from './tabs/shadow';
