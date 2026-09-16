@@ -1,0 +1,1 @@
+import{d as e,o as t}from"./index-DpvBhAI-.js";import{a as n,n as r}from"./normalizers-BKn5MMMa-CxCgP2TC.js";import{t as i}from"./clsx-COFh-Vc8-DWAop4cA.js";var a=r(`disabled`,!1,n),o=new Map;function s(t){let n=o.get(t);return n||(n=e.forBlock(t),o.set(t,n)),n}var c=({block:e,modifiers:n,class:r},a)=>{let o=s(e);return t(`div`,{class:i(o(n),r)},a)};export{a as n,c as t};
