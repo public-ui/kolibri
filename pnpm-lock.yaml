@@ -12,8 +12,8 @@ importers:
         specifier: 2.1.12
         version: 2.1.12
       js-yaml:
-        specifier: 5.4.1
-        version: 5.4.1
+        specifier: 5.4.2
+        version: 5.4.2
       license-report:
         specifier: 6.8.5
         version: 6.8.5
@@ -255,7 +255,7 @@ importers:
         version: 5.110.3(postcss@8.5.28)(webpack-cli@7.2.3)
       webpack-cli:
         specifier: 7.2.3
-        version: 7.2.3(js-yaml@5.4.1)(json5@2.2.3)(webpack-dev-server@5.2.6)(webpack@5.110.3)
+        version: 7.2.3(js-yaml@5.4.2)(json5@2.2.3)(webpack-dev-server@5.2.6)(webpack@5.110.3)
 
   packages/adapters/react-v19:
     devDependencies:
@@ -9396,8 +9396,8 @@ packages:
     resolution: {integrity: sha512-CY6crGq313MX8GkwvB7tzgp99vjQxY1++5y10/BKN/GUfHqWaOGQMNZkBvqSzsZKWk/ijwHlWzzkLulsGHhjWQ==}
     hasBin: true
 
-  js-yaml@5.4.1:
-    resolution: {integrity: sha512-28R/k+NAjeuf7+CKlTxWZVExJGwVVLwY06DgEnOMz2gEpfNkDcD7QvyiVPT0xy0XXhU8vHsd4Ot42OOPdJG7dQ==}
+  js-yaml@5.4.2:
+    resolution: {integrity: sha512-m+aqu+LwO1O6sIopafj8HUVl5aawITwZQe/yHpMCKjaWBaA/d07B/QdMb3529REftiU+RMMHL3Vlsw3hON7vWg==}
     hasBin: true
 
   jsdom@25.0.1:
@@ -22771,7 +22771,7 @@ snapshots:
     dependencies:
       argparse: 2.0.1
 
-  js-yaml@5.4.1:
+  js-yaml@5.4.2:
     dependencies:
       argparse: 2.0.1
 
@@ -27612,7 +27612,7 @@ snapshots:
 
   webidl-conversions@7.0.0: {}
 
-  webpack-cli@7.2.3(js-yaml@5.4.1)(json5@2.2.3)(webpack-dev-server@5.2.6)(webpack@5.110.3):
+  webpack-cli@7.2.3(js-yaml@5.4.2)(json5@2.2.3)(webpack-dev-server@5.2.6)(webpack@5.110.3):
     dependencies:
       '@discoveryjs/json-ext': 1.1.0
       commander: 14.0.3
@@ -27624,7 +27624,7 @@ snapshots:
       webpack: 5.110.3(postcss@8.5.28)(webpack-cli@7.2.3)
       webpack-merge: 6.0.1
     optionalDependencies:
-      js-yaml: 5.4.1
+      js-yaml: 5.4.2
       json5: 2.2.3
       webpack-dev-server: 5.2.6(webpack-cli@7.2.3)(webpack@5.110.3)
 
@@ -27683,7 +27683,7 @@ snapshots:
       ws: 8.21.3
     optionalDependencies:
       webpack: 5.110.3(postcss@8.5.28)(webpack-cli@7.2.3)
-      webpack-cli: 7.2.3(js-yaml@5.4.1)(json5@2.2.3)(webpack-dev-server@5.2.6)(webpack@5.110.3)
+      webpack-cli: 7.2.3(js-yaml@5.4.2)(json5@2.2.3)(webpack-dev-server@5.2.6)(webpack@5.110.3)
     transitivePeerDependencies:
       - bufferutil
       - debug
@@ -27805,7 +27805,7 @@ snapshots:
       watchpack: 2.5.2
       webpack-sources: 3.5.1
     optionalDependencies:
-      webpack-cli: 7.2.3(js-yaml@5.4.1)(json5@2.2.3)(webpack-dev-server@5.2.6)(webpack@5.110.3)
+      webpack-cli: 7.2.3(js-yaml@5.4.2)(json5@2.2.3)(webpack-dev-server@5.2.6)(webpack@5.110.3)
     transitivePeerDependencies:
       - '@minify-html/node'
       - '@swc/core'
