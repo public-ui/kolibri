@@ -38,7 +38,10 @@
 
 		&__heading {
 			display: flex;
-			min-height: to-rem(35.2);
+			/* The row floor used to come from the a11y min-height of the inner button, which sat inside
+			   this border; the summary carries border and floor in one box, so the border is added
+			   back. The former `to-rem(35.2)` sat on the button wrapper and never bound. */
+			min-height: calc(var(--a11y-min-size) + 1px);
 			margin: 0;
 			padding: to-rem(12) to-rem(8);
 			border-bottom: 1px solid var(--color-mute-variant);
