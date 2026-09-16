@@ -1,0 +1,1 @@
+import{d as e,r as t}from"./factory-CA4gfImU-CN8Xf-XO.js";var n=t(`href`,``,e,e=>typeof e==`string`,{required:!0});export{n as t};
