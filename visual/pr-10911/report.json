@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 10911,
-	"head": "8870fd9fcb21df803cdbbff614e01fcf95d4db1f",
+	"head": "20264490ea34a0635b86e85c738396fb656afbad",
 	"repository": "public-ui/kolibri",
-	"runId": 35044681443,
-	"generatedAt": "2026-09-16T01:54:09.550Z",
-	"digest": "sha256:f30bfb9dc476bd759f9047a6cb229ad164158bb38bb163e3d3b26aaa0afc9109",
+	"runId": 35117307344,
+	"generatedAt": "2026-09-16T16:34:14.685Z",
+	"digest": "sha256:a8f54aaee6b9ca09315032acca59cef6cf41b28a39402e68b3457223d0124ac7",
 	"baseline": {
-		"sha": "a59d6c40f1c88ad5694502ff3fad4b9eb7a7aaee",
+		"sha": "fd45aca51fcf063e0a19d2d57203b8de9c7138a3",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2851,
-		"changed": 12,
+		"unchanged": 2863,
+		"changed": 0,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -30,12 +30,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "a59d6c40f1c88ad5694502ff3fad4b9eb7a7aaee",
+					"sha": "fd45aca51fcf063e0a19d2d57203b8de9c7138a3",
 					"ref": "develop",
-					"runId": 35031532165,
+					"runId": 35117304127,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T22:40:14.668Z",
+					"createdAt": "2026-09-16T15:49:55.319Z",
 					"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 					"fallback": null,
 					"distance": 0,
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 2,
+				"unchanged": 409,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:040613dc2da19fd38fc0fdb550a5ac0112740cb3826a9e4960fd54e99f3ed439",
+			"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2039,24 +2039,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-skipNav",
-					"route": "scenarios/focus-elements?component=skipNav",
-					"status": "changed",
-					"hash": "sha256:d77f61336320f30c37049feab266a64bf7701af2987312ca4bcfc8d73352bbe5",
-					"diffPixels": 2797,
-					"diffRatio": 0.115103,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							76
-						],
-						"actual": [
-							300,
-							81
-						]
-					},
-					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-skipNav.expected.png",
-					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-skipNav.actual.png",
-					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-skipNav.diff.png"
+					"route": "scenarios-focus-elements-component-skipNav",
+					"status": "unchanged",
+					"hash": "sha256:9523746eff26ca2dcaddc3da5ffb62bc9e04b4381a4d3e2b66ecf41449fbf8e1"
 				},
 				{
 					"name": "scenarios-focus-elements-component-splitButton",
@@ -2222,24 +2207,9 @@
 				},
 				{
 					"name": "skip-nav-basic",
-					"route": "skip-nav/basic",
-					"status": "changed",
-					"hash": "sha256:a925659077c0503ec19540e786e833d722e556363f2ecfe0fc6156a1f2c5d583",
-					"diffPixels": 1471,
-					"diffRatio": 0.024194,
-					"sizeMismatch": {
-						"expected": [
-							800,
-							66
-						],
-						"actual": [
-							800,
-							76
-						]
-					},
-					"expected": "test-tag-name-transformer/skip-nav-basic.expected.png",
-					"actual": "test-tag-name-transformer/skip-nav-basic.actual.png",
-					"diff": "test-tag-name-transformer/skip-nav-basic.diff.png"
+					"route": "skip-nav-basic",
+					"status": "unchanged",
+					"hash": "sha256:2eee89429e38f65e4e29e62a47bc1dda37c2363835f71c795a9bf0c07833b800"
 				},
 				{
 					"name": "spin-basic--basic",
@@ -2545,12 +2515,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "a59d6c40f1c88ad5694502ff3fad4b9eb7a7aaee",
+					"sha": "fd45aca51fcf063e0a19d2d57203b8de9c7138a3",
 					"ref": "develop",
-					"runId": 35031532165,
+					"runId": 35117304127,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T22:40:32.333Z",
+					"createdAt": "2026-09-16T15:51:25.989Z",
 					"digest": "sha256:fd2ad1a7ece66d77e5a6a2319081ed15087fc48a67ecfe6c1050005784381570",
 					"fallback": null,
 					"distance": 0,
@@ -2558,13 +2528,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 2,
+				"unchanged": 409,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:1638ff6a93cf115af67141837b38e4edcf258f2302717b70f73516aac13ca11d",
+			"digest": "sha256:fd2ad1a7ece66d77e5a6a2319081ed15087fc48a67ecfe6c1050005784381570",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4554,24 +4524,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-skipNav",
-					"route": "scenarios/focus-elements?component=skipNav",
-					"status": "changed",
-					"hash": "sha256:73659dc3af0a2dd5e67d7d01cfce374e8a65a9ac62ce64686e8bcfce954b7b3b",
-					"diffPixels": 2793,
-					"diffRatio": 0.114938,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							76
-						],
-						"actual": [
-							300,
-							81
-						]
-					},
-					"expected": "theme-bwst/scenarios-focus-elements-component-skipNav.expected.png",
-					"actual": "theme-bwst/scenarios-focus-elements-component-skipNav.actual.png",
-					"diff": "theme-bwst/scenarios-focus-elements-component-skipNav.diff.png"
+					"route": "scenarios-focus-elements-component-skipNav",
+					"status": "unchanged",
+					"hash": "sha256:638fab9ccf83bb61365c24d20e2ab7b93063781119ec8f9e14af823ed94ad6da"
 				},
 				{
 					"name": "scenarios-focus-elements-component-splitButton",
@@ -4737,24 +4692,9 @@
 				},
 				{
 					"name": "skip-nav-basic",
-					"route": "skip-nav/basic",
-					"status": "changed",
-					"hash": "sha256:d284e6b90ea775dcd8adcf28ce7c0be34d2387c29be9320b24c2221c3d93993f",
-					"diffPixels": 1477,
-					"diffRatio": 0.024293,
-					"sizeMismatch": {
-						"expected": [
-							800,
-							66
-						],
-						"actual": [
-							800,
-							76
-						]
-					},
-					"expected": "theme-bwst/skip-nav-basic.expected.png",
-					"actual": "theme-bwst/skip-nav-basic.actual.png",
-					"diff": "theme-bwst/skip-nav-basic.diff.png"
+					"route": "skip-nav-basic",
+					"status": "unchanged",
+					"hash": "sha256:45d33f5ac131d5a9a33a850c62a3a1b309f51aab3d3bd26d4cb6fe8a01a0cd9d"
 				},
 				{
 					"name": "spin-basic--basic",
@@ -5060,12 +5000,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "a59d6c40f1c88ad5694502ff3fad4b9eb7a7aaee",
+					"sha": "fd45aca51fcf063e0a19d2d57203b8de9c7138a3",
 					"ref": "develop",
-					"runId": 35031532165,
+					"runId": 35117304127,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T22:40:14.668Z",
+					"createdAt": "2026-09-16T15:49:55.319Z",
 					"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 					"fallback": null,
 					"distance": 0,
@@ -5073,13 +5013,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 2,
+				"unchanged": 409,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:040613dc2da19fd38fc0fdb550a5ac0112740cb3826a9e4960fd54e99f3ed439",
+			"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7069,24 +7009,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-skipNav",
-					"route": "scenarios/focus-elements?component=skipNav",
-					"status": "changed",
-					"hash": "sha256:d77f61336320f30c37049feab266a64bf7701af2987312ca4bcfc8d73352bbe5",
-					"diffPixels": 2797,
-					"diffRatio": 0.115103,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							76
-						],
-						"actual": [
-							300,
-							81
-						]
-					},
-					"expected": "theme-default/scenarios-focus-elements-component-skipNav.expected.png",
-					"actual": "theme-default/scenarios-focus-elements-component-skipNav.actual.png",
-					"diff": "theme-default/scenarios-focus-elements-component-skipNav.diff.png"
+					"route": "scenarios-focus-elements-component-skipNav",
+					"status": "unchanged",
+					"hash": "sha256:9523746eff26ca2dcaddc3da5ffb62bc9e04b4381a4d3e2b66ecf41449fbf8e1"
 				},
 				{
 					"name": "scenarios-focus-elements-component-splitButton",
@@ -7252,24 +7177,9 @@
 				},
 				{
 					"name": "skip-nav-basic",
-					"route": "skip-nav/basic",
-					"status": "changed",
-					"hash": "sha256:a925659077c0503ec19540e786e833d722e556363f2ecfe0fc6156a1f2c5d583",
-					"diffPixels": 1471,
-					"diffRatio": 0.024194,
-					"sizeMismatch": {
-						"expected": [
-							800,
-							66
-						],
-						"actual": [
-							800,
-							76
-						]
-					},
-					"expected": "theme-default/skip-nav-basic.expected.png",
-					"actual": "theme-default/skip-nav-basic.actual.png",
-					"diff": "theme-default/skip-nav-basic.diff.png"
+					"route": "skip-nav-basic",
+					"status": "unchanged",
+					"hash": "sha256:2eee89429e38f65e4e29e62a47bc1dda37c2363835f71c795a9bf0c07833b800"
 				},
 				{
 					"name": "spin-basic--basic",
@@ -7575,12 +7485,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "a59d6c40f1c88ad5694502ff3fad4b9eb7a7aaee",
+					"sha": "fd45aca51fcf063e0a19d2d57203b8de9c7138a3",
 					"ref": "develop",
-					"runId": 35031532165,
+					"runId": 35117304127,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T22:39:43.080Z",
+					"createdAt": "2026-09-16T15:49:44.260Z",
 					"digest": "sha256:09475be628c62c2a5a2675a2b520b1930068ab529c1d39ba5eaa2d714e57a906",
 					"fallback": null,
 					"distance": 0,
@@ -7588,13 +7498,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 2,
+				"unchanged": 409,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:b1daf5037e641b7270c03a8fc16a2c452317f15b2c913860e8b1d018a1cbd111",
+			"digest": "sha256:09475be628c62c2a5a2675a2b520b1930068ab529c1d39ba5eaa2d714e57a906",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9584,24 +9494,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-skipNav",
-					"route": "scenarios/focus-elements?component=skipNav",
-					"status": "changed",
-					"hash": "sha256:737b10c14ce09beda37e93a05f1e0f6984f9bd0d33375123be61d5e20d34e43d",
-					"diffPixels": 1099,
-					"diffRatio": 0.048202,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							65
-						],
-						"actual": [
-							300,
-							76
-						]
-					},
-					"expected": "theme-desy/scenarios-focus-elements-component-skipNav.expected.png",
-					"actual": "theme-desy/scenarios-focus-elements-component-skipNav.actual.png",
-					"diff": "theme-desy/scenarios-focus-elements-component-skipNav.diff.png"
+					"route": "scenarios-focus-elements-component-skipNav",
+					"status": "unchanged",
+					"hash": "sha256:28410bcae98a0332037bfbf29a5e344101b6d20754f22051eaef3af0d6bde7c8"
 				},
 				{
 					"name": "scenarios-focus-elements-component-splitButton",
@@ -9767,24 +9662,9 @@
 				},
 				{
 					"name": "skip-nav-basic",
-					"route": "skip-nav/basic",
-					"status": "changed",
-					"hash": "sha256:33bbfa84c6a3a9d3295bb3b5c904e1f46b6369bd0573159c0e61661f30161c9c",
-					"diffPixels": 570,
-					"diffRatio": 0.009375,
-					"sizeMismatch": {
-						"expected": [
-							800,
-							64
-						],
-						"actual": [
-							800,
-							76
-						]
-					},
-					"expected": "theme-desy/skip-nav-basic.expected.png",
-					"actual": "theme-desy/skip-nav-basic.actual.png",
-					"diff": "theme-desy/skip-nav-basic.diff.png"
+					"route": "skip-nav-basic",
+					"status": "unchanged",
+					"hash": "sha256:931c97750c50bae6c54ec8565fabb5eb8a626f6504a425132fb768fc783e7e83"
 				},
 				{
 					"name": "spin-basic--basic",
@@ -10090,12 +9970,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "a59d6c40f1c88ad5694502ff3fad4b9eb7a7aaee",
+					"sha": "fd45aca51fcf063e0a19d2d57203b8de9c7138a3",
 					"ref": "develop",
-					"runId": 35031532165,
+					"runId": 35117304127,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T22:38:31.588Z",
+					"createdAt": "2026-09-16T15:49:21.109Z",
 					"digest": "sha256:613c4f134318592964e2915b3338d302a2d42b5309489dbefe7a60b65064501d",
 					"fallback": null,
 					"distance": 0,
@@ -10103,13 +9983,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 2,
+				"unchanged": 409,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:cbcd9abc8ed5b212e9dfd05946cf10730b4fc50b6c2aeec734b23c2b8b78e202",
+			"digest": "sha256:613c4f134318592964e2915b3338d302a2d42b5309489dbefe7a60b65064501d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12099,24 +11979,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-skipNav",
-					"route": "scenarios/focus-elements?component=skipNav",
-					"status": "changed",
-					"hash": "sha256:91efbe8f4981d1f2aa95f36e7efb658878c5ddfab70d98440deab3c5ef06720a",
-					"diffPixels": 3033,
-					"diffRatio": 0.124815,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							73
-						],
-						"actual": [
-							300,
-							81
-						]
-					},
-					"expected": "theme-ecl/scenarios-focus-elements-component-skipNav.expected.png",
-					"actual": "theme-ecl/scenarios-focus-elements-component-skipNav.actual.png",
-					"diff": "theme-ecl/scenarios-focus-elements-component-skipNav.diff.png"
+					"route": "scenarios-focus-elements-component-skipNav",
+					"status": "unchanged",
+					"hash": "sha256:8fedeb85c5944afd853a2eaeb9e2e2b2319e2bb3f9daa7f3414a62f1eaa54463"
 				},
 				{
 					"name": "scenarios-focus-elements-component-splitButton",
@@ -12282,24 +12147,9 @@
 				},
 				{
 					"name": "skip-nav-basic",
-					"route": "skip-nav/basic",
-					"status": "changed",
-					"hash": "sha256:79920f48c4b4a81151e2c91cbab8d0cb507c72a5902a42dc8cbdb88fb9a479ab",
-					"diffPixels": 1665,
-					"diffRatio": 0.027385,
-					"sizeMismatch": {
-						"expected": [
-							800,
-							64
-						],
-						"actual": [
-							800,
-							76
-						]
-					},
-					"expected": "theme-ecl/skip-nav-basic.expected.png",
-					"actual": "theme-ecl/skip-nav-basic.actual.png",
-					"diff": "theme-ecl/skip-nav-basic.diff.png"
+					"route": "skip-nav-basic",
+					"status": "unchanged",
+					"hash": "sha256:078cf46600e495d50e708a925ec6a10b4a43a72e35e2cb370373754653b826d3"
 				},
 				{
 					"name": "spin-basic--basic",
@@ -12605,12 +12455,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "a59d6c40f1c88ad5694502ff3fad4b9eb7a7aaee",
+					"sha": "fd45aca51fcf063e0a19d2d57203b8de9c7138a3",
 					"ref": "develop",
-					"runId": 35031532165,
+					"runId": 35117304127,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T22:39:24.952Z",
+					"createdAt": "2026-09-16T15:50:12.474Z",
 					"digest": "sha256:bf3398ea8d2efe2bb84adf85ed0da062d5a843d701a35f5c673bb1f51dc8731a",
 					"fallback": null,
 					"distance": 0,
@@ -15090,12 +14940,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "a59d6c40f1c88ad5694502ff3fad4b9eb7a7aaee",
+					"sha": "fd45aca51fcf063e0a19d2d57203b8de9c7138a3",
 					"ref": "develop",
-					"runId": 35031532165,
+					"runId": 35117304127,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-15T22:39:07.704Z",
+					"createdAt": "2026-09-16T15:49:53.915Z",
 					"digest": "sha256:bac0cb3a0f3c0a6cd5900a9367c677660b7e23fefa983b32d43defdfdacb0cc3",
 					"fallback": null,
 					"distance": 0,
@@ -15103,13 +14953,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 407,
-				"changed": 2,
+				"unchanged": 409,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:cd2d754dcec7ae255a514388c4dbbb0cdafb3f4450e7851a2eef37cc28443b13",
+			"digest": "sha256:bac0cb3a0f3c0a6cd5900a9367c677660b7e23fefa983b32d43defdfdacb0cc3",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17099,24 +16949,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-skipNav",
-					"route": "scenarios/focus-elements?component=skipNav",
-					"status": "changed",
-					"hash": "sha256:f9bf456446bb77f514aeabccb35b51a0766c74ede06d5b53fc0e5229b2e7ba70",
-					"diffPixels": 2125,
-					"diffRatio": 0.087449,
-					"sizeMismatch": {
-						"expected": [
-							300,
-							69
-						],
-						"actual": [
-							300,
-							81
-						]
-					},
-					"expected": "unstyled/scenarios-focus-elements-component-skipNav.expected.png",
-					"actual": "unstyled/scenarios-focus-elements-component-skipNav.actual.png",
-					"diff": "unstyled/scenarios-focus-elements-component-skipNav.diff.png"
+					"route": "scenarios-focus-elements-component-skipNav",
+					"status": "unchanged",
+					"hash": "sha256:898208facd91853456c263a0e4824c06bd9b3505bd9f89e4dc9b8b05a8f7a6de"
 				},
 				{
 					"name": "scenarios-focus-elements-component-splitButton",
@@ -17282,24 +17117,9 @@
 				},
 				{
 					"name": "skip-nav-basic",
-					"route": "skip-nav/basic",
-					"status": "changed",
-					"hash": "sha256:3e37257190075dfccb4be72e0868671a30478848e278951c8b4250d9b0da1e2a",
-					"diffPixels": 938,
-					"diffRatio": 0.015428,
-					"sizeMismatch": {
-						"expected": [
-							800,
-							64
-						],
-						"actual": [
-							800,
-							76
-						]
-					},
-					"expected": "unstyled/skip-nav-basic.expected.png",
-					"actual": "unstyled/skip-nav-basic.actual.png",
-					"diff": "unstyled/skip-nav-basic.diff.png"
+					"route": "skip-nav-basic",
+					"status": "unchanged",
+					"hash": "sha256:0b63c312bbcd2998fb5c218e41d2c9fcb65638ec82fe30848d58434399b3b622"
 				},
 				{
 					"name": "spin-basic--basic",
