@@ -30,10 +30,20 @@
 
 		&__heading {
 			display: flex;
-			min-height: to-rem(35.2);
+			/* The row floor used to come from the a11y min-height of the inner button, which sat inside
+			   this border; the summary carries border and floor in one box, so the border is added
+			   back. The former `to-rem(35.2)` sat on the button wrapper and never bound. */
+			min-height: calc(var(--a11y-min-size) + 1px);
+
 			margin: 0;
 			padding: to-rem(12) to-rem(8);
+
+			/* The component layer gives the summary a baseline `::before`; as a flex item its line box
+			   sets the row height. With this theme's font the inherited `normal` resolves to 22px and
+			   would overrule the 19.8px label box, growing every row by 2px. */
+			line-height: 1.1;
 			border-top: 1px solid var(--color-mute-variant);
+
 			cursor: pointer;
 
 			&:hover {
