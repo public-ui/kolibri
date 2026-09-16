@@ -13,7 +13,6 @@ import {
 	downloadProp,
 	hideLabelProp,
 	hrefProp,
-	// SkipNav links render as standalone block links so each entry can be tabbed to in turn.
 	inlineProp,
 	labelWithExpertSlotProp,
 	linkCallbacksProp,
@@ -73,8 +72,9 @@ export const createSkipNavLinkItem = (link: LinkProps, getHost: () => HTMLElemen
 	apply(hideLabelProp, link._hideLabel);
 	apply(hrefProp, link._href);
 	apply(spanIconsProp, link._icons);
-	// SkipNav links are standalone block links (one per row), matching the predecessor.
-	apply(inlineProp, link._inline ?? false);
+	// The predecessor rendered `<kol-link-wc>`, whose `_inline` @Prop defaults to `true` — keep that
+	// default explicit so the links stay inline (no standalone a11y min-size).
+	apply(inlineProp, link._inline ?? true);
 	apply(labelWithExpertSlotProp, link._label);
 	apply(linkCallbacksProp, link._on);
 	apply(shortKeyProp, link._shortKey);

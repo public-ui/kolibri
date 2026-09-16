@@ -6,7 +6,7 @@ exports[`kol-skip-nav should render with _label="Label" _links=[{"_href":"https:
     <nav aria-label="Label" class="kol-skip-nav">
       <ul class="kol-skip-nav__list">
         <li class="kol-skip-nav__list-item">
-          <div class="kol-link kol-link--standalone">
+          <div class="kol-link kol-link--inline">
             <a class="kol-link__interactive-element" href="https://example.com">
               <span class="kol-link__text kol-span">
                 <span class="kol-span__container">
@@ -22,7 +22,7 @@ exports[`kol-skip-nav should render with _label="Label" _links=[{"_href":"https:
           </div>
         </li>
         <li class="kol-skip-nav__list-item">
-          <div class="kol-link kol-link--standalone">
+          <div class="kol-link kol-link--inline">
             <a class="kol-link__interactive-element" href="https://example.com">
               <span class="kol-link__text kol-span">
                 <span class="kol-span__container">
@@ -38,7 +38,7 @@ exports[`kol-skip-nav should render with _label="Label" _links=[{"_href":"https:
           </div>
         </li>
         <li class="kol-skip-nav__list-item">
-          <div class="kol-link kol-link--standalone">
+          <div class="kol-link kol-link--inline">
             <a class="kol-link__interactive-element" href="https://example.com">
               <span class="kol-link__text kol-span">
                 <span class="kol-span__container">
