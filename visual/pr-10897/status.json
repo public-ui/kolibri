@@ -1,16 +1,16 @@
 {
 	"schema": 1,
 	"state": "failure",
-	"description": "6 of 6 visual changes rejected",
-	"computedAt": "2026-09-16T06:43:39.986Z",
+	"description": "3 of 4 visual changes rejected",
+	"computedAt": "2026-09-16T07:45:17.680Z",
 	"pr": 10897,
-	"head": "7a91f2b70e05a77c70e36ca46d7ab1cf10c24cc9",
-	"digest": "sha256:48b869ff16cf420b8bf76a370adc55a26e79991af6f356a89e5eb9a41d09464d",
+	"head": "cd67e7929a70b813a847505c1524f49304eb650b",
+	"digest": "sha256:7a539a47fb73fce083fc826a136bb931ec96a8e3d0bb696da2a7480e3421f2f3",
 	"counts": {
-		"changes": 6,
-		"open": 0,
+		"changes": 4,
+		"open": 1,
 		"approved": 0,
-		"rejected": 6,
+		"rejected": 3,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
@@ -19,20 +19,9 @@
 		"laske185"
 	],
 	"items": {
-		"theme-kern/drawer-basic-align-left": {
-			"state": "rejected",
-			"notes": [],
-			"by": "deleonio"
-		},
-		"theme-kern/drawer-basic-align-left-closer-true": {
-			"state": "rejected",
-			"notes": [],
-			"by": "deleonio"
-		},
-		"theme-kern/drawer-basic-align-top": {
-			"state": "rejected",
-			"notes": [],
-			"by": "deleonio"
+		"theme-kern/card-headlines--headlines": {
+			"state": "open",
+			"notes": []
 		},
 		"unstyled/drawer-basic-align-left": {
 			"state": "rejected",
