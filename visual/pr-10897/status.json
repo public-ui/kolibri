@@ -2,7 +2,7 @@
 	"schema": 1,
 	"state": "failure",
 	"description": "6 of 6 visual changes rejected",
-	"computedAt": "2026-09-15T07:50:39.628Z",
+	"computedAt": "2026-09-16T06:43:39.986Z",
 	"pr": 10897,
 	"head": "7a91f2b70e05a77c70e36ca46d7ab1cf10c24cc9",
 	"digest": "sha256:48b869ff16cf420b8bf76a370adc55a26e79991af6f356a89e5eb9a41d09464d",
@@ -15,7 +15,8 @@
 		"errorItems": 0
 	},
 	"reviewers": [
-		"deleonio"
+		"deleonio",
+		"laske185"
 	],
 	"items": {
 		"theme-kern/drawer-basic-align-left": {
