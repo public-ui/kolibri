@@ -12,6 +12,13 @@
 		&__heading {
 			padding: var(--ecl-spacing-xl);
 
+			/* `<summary>` stands in for the former `<button>`, whose user-agent `font` shorthand reset
+			   `line-height` to `normal` – `a11y.scss` forces only `font-family` and `font-size` to
+			   inherit. Without the reset the inherited line-height grows the row by 5px. It belongs on
+			   the summary itself, not on the label: the baseline `::before` is a flex item and would
+			   keep the old height on its own. */
+			line-height: normal;
+
 			&:hover {
 				background-color: var(--ecl-color-neutral-60);
 			}
