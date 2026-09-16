@@ -2,26 +2,28 @@
 	"schema": 1,
 	"state": "failure",
 	"description": "3 of 4 visual changes rejected",
-	"computedAt": "2026-09-16T07:45:17.680Z",
+	"computedAt": "2026-09-16T07:51:36.696Z",
 	"pr": 10897,
 	"head": "cd67e7929a70b813a847505c1524f49304eb650b",
 	"digest": "sha256:7a539a47fb73fce083fc826a136bb931ec96a8e3d0bb696da2a7480e3421f2f3",
 	"counts": {
 		"changes": 4,
-		"open": 1,
-		"approved": 0,
+		"open": 0,
+		"approved": 1,
 		"rejected": 3,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [
 		"deleonio",
-		"laske185"
+		"laske185",
+		"BF150"
 	],
 	"items": {
 		"theme-kern/card-headlines--headlines": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"unstyled/drawer-basic-align-left": {
 			"state": "rejected",
