@@ -6,14 +6,14 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { VersionApi } from '../../internal/functional-components/version/api';
 import { versionPropsConfig } from '../../internal/functional-components/version/api';
 import { VersionFC } from '../../internal/functional-components/version/component';
-import { colorProp, labelProp } from '../../internal/props';
+import { labelProp } from '../../internal/props';
 import type { KoliBriIconsProp, LabelPropType, VersionProps } from '../../schema';
 
 /**
- * Fixed background color of the version badge. Normalized once at module load so the render
- * path stays allocation-free; matches the value the legacy component hard-coded on `kol-badge`.
+ * Fixed background color of the version badge; matches the value the legacy component
+ * hard-coded on `kol-badge`. The badge web component normalizes it itself.
  */
-const VERSION_COLOR = colorProp.normalize('#bec5c9');
+const VERSION_COLOR = '#bec5c9';
 
 /**
  * The version icon carries a translated accessible label ("Versionsnummer" / "Version number")
