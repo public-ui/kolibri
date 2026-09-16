@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-BaadB4MM.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
