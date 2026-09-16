@@ -1,7 +1,7 @@
 import { KolAbbr } from './abbr/component';
 import { KolAccordion } from './accordion/shadow';
-import { KolAlertWc } from './alert/component';
-import { KolAlert } from './alert/shadow';
+import { KolAlert } from './alert/component';
+import { KolAlertWc } from './alert/wc';
 import { KolAvatar } from './avatar/component';
 import { KolBadge } from './badge/component';
 import { KolBreadcrumb } from './breadcrumb/component';

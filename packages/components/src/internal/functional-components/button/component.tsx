@@ -53,7 +53,17 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 		tabIndex,
 		type,
 		variant,
+		/* Not rendered as attributes: `on` is kept for the StrictFields contract, `tooltipAlign`
+		   is consumed by the tooltip behavior of the web component. */
+		on,
+		tooltipAlign,
+		...rest
 	} = props;
+
+	// Marking both as intentionally read keeps them out of the forwarded rest attributes without
+	// tripping `no-unused-vars`.
+	void on;
+	void tooltipAlign;
 
 	const badgeText = accessKey || shortKey;
 	const hasLabelText = label.length > 0;
@@ -77,6 +87,7 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 				inline: inline === true,
 				standalone: inline === false,
 			}}
+			{...rest}
 		>
 			<button
 				ref={refButton}

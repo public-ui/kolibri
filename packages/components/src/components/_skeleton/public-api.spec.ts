@@ -870,6 +870,8 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['link-button', 'component.tsx'],
 		['split-button', 'component.tsx'],
 		['badge', 'component.tsx'],
+		['alert', 'component.tsx'],
+		['alert', 'wc.tsx'],
 	];
 
 	it.each(sources)('documents every public member of %s/%s', (component, file) => {
@@ -958,5 +960,82 @@ describe('kol-breadcrumb public API contract (ARC42 § Public API Contract)', ()
 
 	it('implements the schema interface so prop-type drift fails the build', () => {
 		expect(readSource('breadcrumb', 'component.tsx')).toMatch(/implements\s+[^{]*\bBreadcrumbProps\b/);
+	});
+});
+
+/**
+ * Pinned public API of `kol-alert` — byte-identical to the predecessor on the develop branch
+ * (7 props, no methods).
+ */
+const KOL_ALERT_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	_alert: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Defines whether the screen-readers should read out the notification.',
+	},
+	_hasCloser: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Defines whether the element can be closed. @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: false,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_level: {
+		kind: 'prop',
+		type: 'HeadingLevel',
+		required: false,
+		default: '0',
+		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'KoliBriAlertEventCallbacks',
+		required: false,
+		doc: 'Gibt die EventCallback-Function für das Schließen des Alerts an.',
+	},
+	_type: {
+		kind: 'prop',
+		type: 'AlertTypePropType',
+		required: false,
+		default: "'default'",
+		doc: 'Defines either the type of the component or of the components interactive element.',
+	},
+	_variant: {
+		kind: 'prop',
+		type: 'AlertVariantPropType',
+		required: false,
+		default: "'msg'",
+		doc: 'Defines which variant should be used for presentation.',
+	},
+};
+
+describe('kol-alert public API contract (ARC42 § Public API Contract)', () => {
+	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
+		const extracted = extractFrom('alert', 'component.tsx');
+		// Failing this test means the public contract changed — a breaking change (ARC42 §
+		// "Public API Contract (Migration Parity)"): get owner approval, then update the pinned
+		// contract consciously and note it in the PR description.
+		expect(toContract(extracted)).toEqual(KOL_ALERT_PUBLIC_API);
+	});
+
+	it('implements the schema interface so prop-type drift fails the build', () => {
+		expect(readSource('alert', 'component.tsx')).toMatch(/implements\s+[^{]*\bAlertProps\b/);
+	});
+});
+
+describe('kol-alert-wc transitional wrapper (internal contract for legacy consumers)', () => {
+	it('keeps the full predecessor surface: 7 props and no methods', () => {
+		const extracted = extractFrom('alert', 'wc.tsx');
+		expect(extracted.filter((member) => member.kind === 'prop')).toHaveLength(7);
+		expect(extracted.filter((member) => member.kind === 'method')).toEqual([]);
+		expect(toContract(extracted)).toEqual(KOL_ALERT_PUBLIC_API);
 	});
 });

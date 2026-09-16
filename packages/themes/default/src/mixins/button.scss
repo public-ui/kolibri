@@ -135,7 +135,9 @@
 	.kol-close-button {
 		align-self: self-start;
 
-		.#{$block-classname}--normal {
+		/* Both close button renderers (alert, card) render `ButtonFC` directly, so
+		   `kol-close-button` and the variant class sit on the same element. */
+		&:is(.#{$block-classname}--normal) {
 			@include kol-button-ghost();
 
 			--kol-focus-outline-offset: -2px;

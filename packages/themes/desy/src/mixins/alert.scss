@@ -63,24 +63,39 @@
 				padding-left: to-rem(20);
 			}
 
+			/* The closer renders ButtonFC directly: `#{$root}__closer` and `kol-button` sit on the
+			   same element, so the former `.kol-button` box rules now target the closer itself. The
+			   closer used to inherit `color` from `.kol-alert--variant-msg` (line above); now that
+			   `kol-button` sits on the same element, `.kol-close-button:is(.kol-button--normal)` in
+			   button.scss sets `--text-color` directly on it, which wins over the inherited `color`
+			   at `.kol-button__text { color: var(--text-color) }` — both are 2-class selectors, so
+			   whichever comes later in the compiled stylesheet wins regardless of intent. Re-declare
+			   `--text-color` here (3-class, `&.kol-button`) so the accent color wins deterministically. */
+			#{$root}__closer.kol-button {
+				--text-color: var(--alert-msg-text-color);
+			}
+
 			#{$root}__closer {
 				position: absolute;
+				/* `top` used to resolve via the element's static position (no explicit `top`). With
+				   a block-display closer that always resolved to 0; the `display: flex` ButtonFC
+				   root resolves its static position differently when preceded by a heading (it
+				   lands 20px down, matching the heading's height) — pin it explicitly instead of
+				   relying on the static-position calculation. */
+				top: 0;
 				right: 0;
 				width: to-rem(20);
+				min-width: to-rem(20);
 				height: to-rem(20);
+				min-height: to-rem(20);
 
 				font-size: to-rem(16);
 
-				.kol-button {
+				/* The a11y min-size layer still pins the inner button — the 20px closer box has
+				   to be replicated on the interactive element too. */
+				.kol-button__interactive-element {
 					min-width: to-rem(20);
 					min-height: to-rem(20);
-
-					/* The a11y min-size layer still pins the inner button — the 20px closer box has
-					   to be replicated on the interactive element too. */
-					.kol-button__interactive-element {
-						min-width: to-rem(20);
-						min-height: to-rem(20);
-					}
 				}
 			}
 
