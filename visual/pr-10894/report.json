@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 10894,
-	"head": "12ef9ff6b35195dfb23fa2cebab02877da725bd3",
+	"head": "7de1ec671010efb22a22de0ebee0b88b67486305",
 	"repository": "public-ui/kolibri",
-	"runId": 35051371063,
-	"generatedAt": "2026-09-16T03:48:10.045Z",
-	"digest": "sha256:cf64421d953aafbb28553e3156c046fcb89de4a12edc0ac7221c3b48752a73d7",
+	"runId": 35057126875,
+	"generatedAt": "2026-09-16T05:08:56.695Z",
+	"digest": "sha256:d3eeb40ba90db69dc37954ab53480e11f434a345f0c18ddf7bfc9b48c3fdd7c6",
 	"baseline": {
 		"sha": "f86866e9724777aa0e1448a77b2939775e103f0b",
 		"ref": "develop",
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:5541e6fbf72411a6c0aa4491de66d0162e8747fa7ae874ad3bca12df9dd8bd2e",
+			"digest": "sha256:5e3b4dcf0ff5cc7fa05f1e94484736f2e11d2678730e243d3a8e938d86d2d749",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -61,9 +61,9 @@
 					"name": "accordion-basic--basic",
 					"route": "accordion/basic",
 					"status": "changed",
-					"hash": "sha256:9055f3fd083074efa72710bec534b8bd45ae4e6732bbcf57f87f0c125eafcd55",
-					"diffPixels": 2886,
-					"diffRatio": 0.009941,
+					"hash": "sha256:0b88b2a770478838d64758379948c7279324a9cb0b908c6bf57b9398f636bc1b",
+					"diffPixels": 2878,
+					"diffRatio": 0.009914,
 					"expected": "test-tag-name-transformer/accordion-basic--basic.expected.png",
 					"actual": "test-tag-name-transformer/accordion-basic--basic.actual.png",
 					"diff": "test-tag-name-transformer/accordion-basic--basic.diff.png"
@@ -1896,9 +1896,9 @@
 					"name": "scenarios-accordion-components",
 					"route": "scenarios/accordion-components",
 					"status": "changed",
-					"hash": "sha256:a8ac676f88d6a63c049c47e8ce91ea5846db0f307b85ea0e00c048e7d631655f",
-					"diffPixels": 482,
-					"diffRatio": 0.008197,
+					"hash": "sha256:2c14d399c787f1df4fc847b6f7e9ff5d01f202f68866824d50836d0a288346ed",
+					"diffPixels": 486,
+					"diffRatio": 0.008265,
 					"sizeMismatch": {
 						"expected": [
 							200,
@@ -1917,7 +1917,7 @@
 					"name": "scenarios-focus-elements-component-accordion",
 					"route": "scenarios/focus-elements?component=accordion",
 					"status": "changed",
-					"hash": "sha256:deb0a90e10bef5b534c8501e4d384f182e75f6037f01ff23428976130f94e77d",
+					"hash": "sha256:fb734a4923ab5a6c2a308e577c8f24c0fcbed5a9a2ce5d0994d33b63f97e1f3f",
 					"diffPixels": 186,
 					"diffRatio": 0.008052,
 					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-accordion.expected.png",
@@ -2559,7 +2559,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:14bf0670bf335fe41eb1fbcfbe9966531680146db73d1334a3e31cbf08d8ff0c",
+			"digest": "sha256:27779c50cd1370d38b1ff807e3875033f1beb237851d384cb60bdf0e07d21102",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2571,9 +2571,9 @@
 					"name": "accordion-basic--basic",
 					"route": "accordion/basic",
 					"status": "changed",
-					"hash": "sha256:158c70377af2240b69940aec3b56476f28c64e9936ff7d3fc34942c4e50cb1c4",
-					"diffPixels": 10654,
-					"diffRatio": 0.035209,
+					"hash": "sha256:cd33327f186fff58870c3ae51ea3fa16255890d4fb72f294ad95f7d823bcb722",
+					"diffPixels": 10658,
+					"diffRatio": 0.035222,
 					"sizeMismatch": {
 						"expected": [
 							768,
@@ -4431,9 +4431,9 @@
 					"name": "scenarios-accordion-components",
 					"route": "scenarios/accordion-components",
 					"status": "changed",
-					"hash": "sha256:a46a980f964926d8c630305f2416b383d7bd7438332f5a9e2b154a871ea86da8",
-					"diffPixels": 473,
-					"diffRatio": 0.007936,
+					"hash": "sha256:6df688444d61b2698038198db7227d3f004a5c76ab57d79c1d44927302d80a12",
+					"diffPixels": 469,
+					"diffRatio": 0.007869,
 					"sizeMismatch": {
 						"expected": [
 							200,
@@ -4452,9 +4452,9 @@
 					"name": "scenarios-focus-elements-component-accordion",
 					"route": "scenarios/focus-elements?component=accordion",
 					"status": "changed",
-					"hash": "sha256:76aa5b31ce2af4439d09041df43b215fc98771bca4b2c4ccee4c3f170f0ae999",
-					"diffPixels": 1244,
-					"diffRatio": 0.052489,
+					"hash": "sha256:e3fcb1cc0f792d4b82fb66b2976fd3aa47dd541ba5704e63a972e0d27bbc490f",
+					"diffPixels": 1241,
+					"diffRatio": 0.052363,
 					"sizeMismatch": {
 						"expected": [
 							300,
@@ -5119,7 +5119,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:5541e6fbf72411a6c0aa4491de66d0162e8747fa7ae874ad3bca12df9dd8bd2e",
+			"digest": "sha256:5e3b4dcf0ff5cc7fa05f1e94484736f2e11d2678730e243d3a8e938d86d2d749",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5131,9 +5131,9 @@
 					"name": "accordion-basic--basic",
 					"route": "accordion/basic",
 					"status": "changed",
-					"hash": "sha256:9055f3fd083074efa72710bec534b8bd45ae4e6732bbcf57f87f0c125eafcd55",
-					"diffPixels": 2886,
-					"diffRatio": 0.009941,
+					"hash": "sha256:0b88b2a770478838d64758379948c7279324a9cb0b908c6bf57b9398f636bc1b",
+					"diffPixels": 2878,
+					"diffRatio": 0.009914,
 					"expected": "theme-default/accordion-basic--basic.expected.png",
 					"actual": "theme-default/accordion-basic--basic.actual.png",
 					"diff": "theme-default/accordion-basic--basic.diff.png"
@@ -6966,9 +6966,9 @@
 					"name": "scenarios-accordion-components",
 					"route": "scenarios/accordion-components",
 					"status": "changed",
-					"hash": "sha256:a8ac676f88d6a63c049c47e8ce91ea5846db0f307b85ea0e00c048e7d631655f",
-					"diffPixels": 482,
-					"diffRatio": 0.008197,
+					"hash": "sha256:2c14d399c787f1df4fc847b6f7e9ff5d01f202f68866824d50836d0a288346ed",
+					"diffPixels": 486,
+					"diffRatio": 0.008265,
 					"sizeMismatch": {
 						"expected": [
 							200,
@@ -6987,7 +6987,7 @@
 					"name": "scenarios-focus-elements-component-accordion",
 					"route": "scenarios/focus-elements?component=accordion",
 					"status": "changed",
-					"hash": "sha256:deb0a90e10bef5b534c8501e4d384f182e75f6037f01ff23428976130f94e77d",
+					"hash": "sha256:fb734a4923ab5a6c2a308e577c8f24c0fcbed5a9a2ce5d0994d33b63f97e1f3f",
 					"diffPixels": 186,
 					"diffRatio": 0.008052,
 					"expected": "theme-default/scenarios-focus-elements-component-accordion.expected.png",
