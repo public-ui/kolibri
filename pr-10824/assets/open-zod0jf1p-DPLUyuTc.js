@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-BaadB4MM.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
