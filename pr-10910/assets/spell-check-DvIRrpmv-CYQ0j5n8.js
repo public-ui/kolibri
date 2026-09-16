@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-TKPsBd2m.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
