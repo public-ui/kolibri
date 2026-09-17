@@ -2,9 +2,9 @@
 	"schema": 1,
 	"state": "pending",
 	"description": "6 changed – 0 of 6 approved, review pending",
-	"computedAt": "2026-09-16T07:17:33.706Z",
+	"computedAt": "2026-09-17T18:37:10.655Z",
 	"pr": 10894,
-	"head": "7772d858cf60f5270ebeff4182b3730fe92864be",
+	"head": "5188fa7266c3c1136364eb375dbd0e2a95378143",
 	"digest": "sha256:2593b96dbf95b8cb341fdf0583690812f25f2d97add334d8a4153d51f3ddf496",
 	"counts": {
 		"changes": 6,
