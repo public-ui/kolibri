@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-DP_uuL1l.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
