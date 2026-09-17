@@ -5,18 +5,35 @@ und die Belegstellen im Code für Nachfragen aus dem Publikum.
 
 **Zielgruppe:** Entwicklerinnen und Entwickler ohne KoliBri-Vorkenntnisse.
 **Format:** Live-Demo im Browser, Vanilla HTML/JS, mit kurzem React-Ausblick am Ende.
-**Kernbotschaft:** *KoliBri nimmt dir die Barrierefreiheit ab, die du sonst von Hand
-und fehleranfällig selbst verdrahten müsstest.*
+**Kernbotschaft:** _KoliBri nimmt dir die Barrierefreiheit ab, die du sonst von Hand
+und fehleranfällig selbst verdrahten müsstest._
 
 ---
 
-## 1. Zwei Wege
+## 1. Drei Wege
 
 **Zum schnellen Anschauen – ein Klick, kein Setup:**
 <https://claude.ai/artifact/1tb5sQHC2xphAbrD9f9QZH>
 Alle fünf Schritte als Live-Seite, KoliBri direkt von jsDelivr. Ohne Icons (die Icon-Schrift
 ist ein Stylesheet, und die Seite darf Stylesheets nur von Google Fonts laden) – inhaltlich
 ändert das nichts.
+
+**Für den Vortrag als Folien-Deck – Slidev:**
+
+```bash
+cd docs/trainings/kolibri-intro-15min/slides
+npm install          # Slidev + KoliBri 4.4.0 aus der npm-Registry (einmalig)
+npm run dev          # → http://localhost:3030
+```
+
+Die komplette Schulung als Deck: Schritt 1 und 3 laufen als **echte KoliBri-Live-Demos
+direkt in der Folie** (Validierung, leeres Abschicken, Fehlerliste, Röntgenblick,
+Token-Override), Schritt 2 und 4 betten die Original-Demo-Seiten als Vollbild-iframes ein –
+der Theme-Reload passiert dadurch im Frame, das Deck bleibt stehen. Der Sprechzettel aus
+diesem README steckt als **Notizen hinter jeder Folie**: Presenter-Modus mit Taste `p`.
+`npm run build` erzeugt einen statischen Export nach `dist/` (offline teilbar).
+Vor jedem Start spiegelt `sync-demo.mjs` die Demo-Seiten nach `public/demo/` – dafür muss
+`demo/vendor/` wie unten beschrieben vorhanden sein.
 
 **Für den Vortrag – lokal und offline:**
 
@@ -51,18 +68,18 @@ Danach läuft die Demo **vollständig offline** – kein WLAN auf der Bühne nö
 
 ## 2. Der Bogen auf einen Blick
 
-Der Vortrag trägt einen Konflikt: *Barrierefreiheit von Hand ist mühsam und geht still schief.*
+Der Vortrag trägt einen Konflikt: _Barrierefreiheit von Hand ist mühsam und geht still schief._
 Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, nicht die Einleitung.
 
-| Zeit | Schritt | Beat | Gefühl im Publikum |
-|---|---|---|---|
-| 0:00–1:30 | 0 | Ein Feld, von Hand. Wo ist der Fehler? | Unbehagen, Wiedererkennung |
-| 1:30–4:00 | 1 | Dasselbe in einem Tag – und es prüft wirklich | Erleichterung |
-| 4:00–6:30 | 2 | „Wir haben aber Bestand" → Insel im nativen Formular | Einwand entkräftet |
-| 6:30–10:00 | 3 | Leer abschicken → Fehlerliste, Fokussprung, Röntgenblick | **Höhepunkt** |
-| 10:00–12:30 | 4 | Gleiches Markup, anderes Haus | Weite, Perspektive |
-| 12:30–14:00 | 5 | Dasselbe in React | Anschlussfähigkeit |
-| 14:00–15:00 | – | Rückblende auf Schritt 0 | Schluss |
+| Zeit        | Schritt | Beat                                                     | Gefühl im Publikum         |
+| ----------- | ------- | -------------------------------------------------------- | -------------------------- |
+| 0:00–1:30   | 0       | Ein Feld, von Hand. Wo ist der Fehler?                   | Unbehagen, Wiedererkennung |
+| 1:30–4:00   | 1       | Dasselbe in einem Tag – und es prüft wirklich            | Erleichterung              |
+| 4:00–6:30   | 2       | „Wir haben aber Bestand" → Insel im nativen Formular     | Einwand entkräftet         |
+| 6:30–10:00  | 3       | Leer abschicken → Fehlerliste, Fokussprung, Röntgenblick | **Höhepunkt**              |
+| 10:00–12:30 | 4       | Gleiches Markup, anderes Haus                            | Weite, Perspektive         |
+| 12:30–14:00 | 5       | Dasselbe in React                                        | Anschlussfähigkeit         |
+| 14:00–15:00 | –       | Rückblende auf Schritt 0                                 | Schluss                    |
 
 ---
 
@@ -70,7 +87,7 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 
 > **Legende:** ▶ = was du tust · „…" = was du sagst (Vorschlag, nicht auswendig lernen)
 
-### 0:00 – Der Haken *(Schritt 0)*
+### 0:00 – Der Haken _(Schritt 0)_
 
 ▶ `step-0-handmade.html` steht offen. Nichts anderes auf dem Schirm.
 
@@ -95,11 +112,11 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 > Und das ist der Punkt: Barrierefreiheit geht nicht mit einem Knall kaputt.
 > Sie geht **leise** kaputt. Niemand merkt es – außer den Menschen, die darauf angewiesen sind."
 
-*(Zeitmarke: 1:30)*
+_(Zeitmarke: 1:30)_
 
 ---
 
-### 1:30 – Die Erleichterung *(Schritt 1)*
+### 1:30 – Die Erleichterung _(Schritt 1)_
 
 ▶ Weiter zu `step-1-first.html`.
 
@@ -129,7 +146,7 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 > Im Code sind das zwei Zeilen: `_msg` setzen, `_msg` wieder leeren.
 >
 > Kleiner, aber wichtiger Punkt für später: `_msg`, `_touched` und `_on` sind
-> *Properties*, keine Attribute. Die setzt ihr per JavaScript, nicht im HTML.
+> _Properties_, keine Attribute. Die setzt ihr per JavaScript, nicht im HTML.
 > Deshalb steht im Markup oben kein Fehlerzustand."
 
 ▶ Auf die Button-Reihe zeigen, einen anklicken – die Zeile darunter reagiert.
@@ -138,11 +155,11 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 > Die stehen nämlich gar nicht im Komponenten-Code. Die kommen aus dem Theme.
 > Dazu kommen wir gleich."
 
-*(Zeitmarke: 4:00)*
+_(Zeitmarke: 4:00)_
 
 ---
 
-### 4:00 – Der Einwand *(Schritt 2)*
+### 4:00 – Der Einwand _(Schritt 2)_
 
 > „Jetzt der Satz, der in jedem zweiten Projekt kommt:
 > ‚Schön, aber wir haben eine Anwendung von 2015, die können wir nicht neu schreiben.'
@@ -173,11 +190,11 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 > Für ein einzelnes Feld im Altbestand ist das genau richtig. Wer ein ganzes Formular
 > migriert, nimmt `kol-form` – und das ist der nächste Schritt."
 
-*(Zeitmarke: 6:30)*
+_(Zeitmarke: 6:30)_
 
 ---
 
-### 6:30 – Der Höhepunkt *(Schritt 3)*
+### 6:30 – Der Höhepunkt _(Schritt 3)_
 
 ▶ Weiter zu `step-3-form.html`.
 
@@ -235,11 +252,11 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 > `form._errorList` füllen. Die ARIA-Verdrahtung, die Fehlerliste, der Fokussprung,
 > die Live-Region – das macht KoliBri daraus von allein."
 
-*(Zeitmarke: 10:00)*
+_(Zeitmarke: 10:00)_
 
 ---
 
-### 10:00 – Die Weite *(Schritt 4)*
+### 10:00 – Die Weite _(Schritt 4)_
 
 ▶ Weiter zu `step-4-theme.html`.
 
@@ -264,11 +281,11 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 > Die Kapselung, die euer Legacy-CSS in Schritt 2 draußen gehalten hat,
 > hat genau diese eine Tür – und die ist Absicht. Das ist die vorgesehene Stellschraube."
 
-*(Zeitmarke: 12:30)*
+_(Zeitmarke: 12:30)_
 
 ---
 
-### 12:30 – Der Anschluss *(Schritt 5)*
+### 12:30 – Der Anschluss _(Schritt 5)_
 
 ▶ Weiter zu `step-5-react.html`.
 
@@ -286,7 +303,7 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 > KoliBri macht das selbst vor: der react-hook-form-Adapter verheiratet jedes Feld
 > mit der Formularbibliothek und reicht Validierungsfehler automatisch weiter."
 
-*(Zeitmarke: 14:00)*
+_(Zeitmarke: 14:00)_
 
 ---
 
@@ -308,7 +325,7 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 >
 > Fragen?"
 
-*(Zeitmarke: 15:00)*
+_(Zeitmarke: 15:00)_
 
 ---
 
@@ -316,25 +333,25 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 
 Wenn jemand nachhakt – hier stehen die Dinge im Code:
 
-| Behauptung im Vortrag | Fundstelle |
-|---|---|
-| `aria-describedby` wird automatisch verkettet, `aria-invalid` bei touched+error | `packages/components/src/functional-component-wrappers/_helpers/getRenderStates.ts` |
-| Sternchen sichtbar, für Screenreader stumm | `packages/components/src/components/@shared/_form-field.mixin.scss` (`content: '*' / ''`) |
-| Der Pflichtfeld-Satz kommt von `kol-form` | `packages/components/src/components/form/shadow.tsx`, Text in `src/locales/de.ts` |
-| Mindest-Zielgröße 44 px | `packages/components/src/components/a11y.scss` (`--a11y-min-size`) |
-| Zeichenzähler doppelspurig (sichtbar + `aria-live`) | `packages/components/src/functional-components/FormField/FormField.tsx` |
-| Fehlerliste mit Fokussprung | `packages/components/src/components/form/shadow.tsx`; Beispiel: `packages/samples/react/src/components/form/error-list.tsx` |
-| Fünf CSS-Layer, Basis vs. Theme getrennt | `packages/components/src/components/_layer-order.scss`, `docs/BASE_STYLING_VS_THEMING_CONCEPT.md` |
-| Design-Tokens `--kolibri-*` | `packages/themes/default/src/global.scss`, Tabelle in `packages/themes/default/README.md` |
-| KoliBri warnt zur Laufzeit bei unbrauchbaren Labels | `packages/components/src/schema/props/label.ts` |
-| Automatisierte A11y-Tests (axe, WCAG 2.1 AA) | `packages/tools/visual-tests/tests/axe-snapshots.spec.js` |
-| BITV/WCAG-Bezug | `publiccode.yml`, `docs/arc42_de/08-cross-cutting-concepts.md` §8.1 |
+| Behauptung im Vortrag                                                           | Fundstelle                                                                                                                  |
+| ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `aria-describedby` wird automatisch verkettet, `aria-invalid` bei touched+error | `packages/components/src/functional-component-wrappers/_helpers/getRenderStates.ts`                                         |
+| Sternchen sichtbar, für Screenreader stumm                                      | `packages/components/src/components/@shared/_form-field.mixin.scss` (`content: '*' / ''`)                                   |
+| Der Pflichtfeld-Satz kommt von `kol-form`                                       | `packages/components/src/components/form/shadow.tsx`, Text in `src/locales/de.ts`                                           |
+| Mindest-Zielgröße 44 px                                                         | `packages/components/src/components/a11y.scss` (`--a11y-min-size`)                                                          |
+| Zeichenzähler doppelspurig (sichtbar + `aria-live`)                             | `packages/components/src/functional-components/FormField/FormField.tsx`                                                     |
+| Fehlerliste mit Fokussprung                                                     | `packages/components/src/components/form/shadow.tsx`; Beispiel: `packages/samples/react/src/components/form/error-list.tsx` |
+| Fünf CSS-Layer, Basis vs. Theme getrennt                                        | `packages/components/src/components/_layer-order.scss`, `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`                           |
+| Design-Tokens `--kolibri-*`                                                     | `packages/themes/default/src/global.scss`, Tabelle in `packages/themes/default/README.md`                                   |
+| KoliBri warnt zur Laufzeit bei unbrauchbaren Labels                             | `packages/components/src/schema/props/label.ts`                                                                             |
+| Automatisierte A11y-Tests (axe, WCAG 2.1 AA)                                    | `packages/tools/visual-tests/tests/axe-snapshots.spec.js`                                                                   |
+| BITV/WCAG-Bezug                                                                 | `publiccode.yml`, `docs/arc42_de/08-cross-cutting-concepts.md` §8.1                                                         |
 
 **Vorsicht bei zwei Formulierungen:**
 
 - Nicht „AAA-zertifiziert" sagen. Die Doku ist uneinheitlich (arc42 nennt mal WCAG 2.2 AAA,
   mal 2.1 AA), die automatisierten Tests laufen gegen `wcag21aa`.
-  Sichere Formulierung: *„gebaut gegen WCAG und BITV, automatisiert gegen WCAG 2.1 AA getestet"*.
+  Sichere Formulierung: _„gebaut gegen WCAG und BITV, automatisiert gegen WCAG 2.1 AA getestet"_.
 - **Dark Mode nicht versprechen.** Er ist konzeptionell vorgesehen, aber in keinem
   Theme implementiert (`docs/BASE_STYLING_VS_THEMING_CONCEPT.md`, Abschnitt „Status").
 
@@ -342,17 +359,17 @@ Wenn jemand nachhakt – hier stehen die Dinge im Code:
 
 ## 5. Notfallplan
 
-| Problem | Reaktion |
-|---|---|
-| Seite zeigt „Diese Seite braucht einen Webserver" | Sie wurde per `file://` geöffnet. Server starten: `npx http-server -p 8080 demo` |
-| Banner „KoliBri wurde nicht geladen" | `demo/vendor/` fehlt. Einmal `node fetch-vendor.mjs` ausführen |
-| Keine Buttons, kein Röntgenblick zu sehen | Vermutlich `index.html`, Schritt 0 oder 5 – dort gibt es keine. Röntgenblick sitzt auf Schritt 3 |
-| Seite bleibt weiß, Komponenten rendern nicht | `register(...)` lief nicht durch. Neu laden. Wenn es bleibt: `demo/vendor/` fehlt → `node fetch-vendor.mjs` |
-| Komponenten da, aber ungestylt | Theme wurde nicht registriert – fast immer ein Tippfehler im Import. Auf Schritt 1 zurückfallen |
-| Theme-Wechsel lädt nicht neu | Vorbereiteten zweiten Tab mit `?theme=kern` nehmen |
-| Demo hängt komplett | Screenshots liegen nicht bei – erzähl Schritt 3 an der Code-Tabelle in Abschnitt 4 weiter. Der Röntgenblick-Text steht unten in Abschnitt 6 |
-| Zu wenig Zeit | Erst Schritt 5 streichen (React), dann in Schritt 1 das Tippen ins Feld. **Niemals** das leere Abschicken in Schritt 3 streichen – das ist die Pointe |
-| Zu viel Zeit | In Schritt 3 zusätzlich: KoliBri warnt in der Konsole bei Labels unter drei lesbaren Zeichen |
+| Problem                                           | Reaktion                                                                                                                                              |
+| ------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Seite zeigt „Diese Seite braucht einen Webserver" | Sie wurde per `file://` geöffnet. Server starten: `npx http-server -p 8080 demo`                                                                      |
+| Banner „KoliBri wurde nicht geladen"              | `demo/vendor/` fehlt. Einmal `node fetch-vendor.mjs` ausführen                                                                                        |
+| Keine Buttons, kein Röntgenblick zu sehen         | Vermutlich `index.html`, Schritt 0 oder 5 – dort gibt es keine. Röntgenblick sitzt auf Schritt 3                                                      |
+| Seite bleibt weiß, Komponenten rendern nicht      | `register(...)` lief nicht durch. Neu laden. Wenn es bleibt: `demo/vendor/` fehlt → `node fetch-vendor.mjs`                                           |
+| Komponenten da, aber ungestylt                    | Theme wurde nicht registriert – fast immer ein Tippfehler im Import. Auf Schritt 1 zurückfallen                                                       |
+| Theme-Wechsel lädt nicht neu                      | Vorbereiteten zweiten Tab mit `?theme=kern` nehmen                                                                                                    |
+| Demo hängt komplett                               | Screenshots liegen nicht bei – erzähl Schritt 3 an der Code-Tabelle in Abschnitt 4 weiter. Der Röntgenblick-Text steht unten in Abschnitt 6           |
+| Zu wenig Zeit                                     | Erst Schritt 5 streichen (React), dann in Schritt 1 das Tippen ins Feld. **Niemals** das leere Abschicken in Schritt 3 streichen – das ist die Pointe |
+| Zu viel Zeit                                      | In Schritt 3 zusätzlich: KoliBri warnt in der Konsole bei Labels unter drei lesbaren Zeichen                                                          |
 
 ---
 
@@ -442,14 +459,20 @@ liefert `(event, wert)`, und `_msg`/`_touched` lassen sich zur Laufzeit setzen *
 kolibri-intro-15min/
 ├── README.md              dieser Sprechzettel
 ├── fetch-vendor.mjs       holt KoliBri nach demo/vendor/ (Node 18+, keine Abhängigkeiten)
-└── demo/
-    ├── index.html         Schrittwähler – hier starten
-    ├── step-0-handmade.html
-    ├── step-1-first.html
-    ├── step-2-island.html
-    ├── step-3-form.html
-    ├── step-4-theme.html
-    ├── step-5-react.html
-    ├── _demo.css          Rahmen der Demo (bewusst natives CSS)
-    └── vendor/            nicht eingecheckt, per fetch-vendor.mjs erzeugt
+├── demo/
+│   ├── index.html         Schrittwähler – hier starten
+│   ├── step-0-handmade.html
+│   ├── step-1-first.html
+│   ├── step-2-island.html
+│   ├── step-3-form.html
+│   ├── step-4-theme.html
+│   ├── step-5-react.html
+│   ├── _demo.css          Rahmen der Demo (bewusst natives CSS)
+│   └── vendor/            nicht eingecheckt, per fetch-vendor.mjs erzeugt
+└── slides/                dasselbe als Slidev-Folien-Deck
+    ├── slides.md          die 15 Folien; hinter jeder der Sprechzettel als Notiz
+    ├── components/        die Live-Demos (Schritt 1, 3, Token-Override, Cover)
+    ├── sync-demo.mjs      spiegelt demo/ nach public/demo/ (läuft bei predev/prebuild)
+    ├── style.css          Rahmen-Styles der Demo-Folien
+    └── package.json       dev: npm run dev → http://localhost:3030
 ```

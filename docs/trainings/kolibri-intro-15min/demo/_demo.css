@@ -1,122 +1,334 @@
 /* Rahmen der Schulungsdemo. Bewusst neutral und in nativem CSS gehalten,
    damit auf der Buehne klar bleibt: alles Bunte kommt von KoliBri. */
 :root {
-  --chrome-bg: #1f2430;
-  --chrome-fg: #f4f6fb;
-  --chrome-accent: #7fd1ff;
-  --page-bg: #ffffff;
-  --page-fg: #1a1a1a;
-  --muted: #5b6472;
-  --rule: #d8dde6;
+	--chrome-bg: #1f2430;
+	--chrome-fg: #f4f6fb;
+	--chrome-accent: #7fd1ff;
+	--page-bg: #ffffff;
+	--page-fg: #1a1a1a;
+	--muted: #5b6472;
+	--rule: #d8dde6;
 }
-* { box-sizing: border-box; }
+* {
+	box-sizing: border-box;
+}
 body {
-  margin: 0;
-  background: var(--page-bg);
-  color: var(--page-fg);
-  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	margin: 0;
+	background: var(--page-bg);
+	color: var(--page-fg);
+	font:
+		16px/1.55 system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		sans-serif;
 }
 .chrome {
-  display: flex; flex-wrap: wrap; align-items: center; gap: .75rem;
-  padding: .7rem 1.1rem;
-  background: var(--chrome-bg); color: var(--chrome-fg);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.7rem 1.1rem;
+	background: var(--chrome-bg);
+	color: var(--chrome-fg);
 }
 .chrome__step {
-  font-variant-numeric: tabular-nums; font-weight: 700;
-  background: var(--chrome-accent); color: #10233a;
-  border-radius: 999px; padding: .15rem .7rem; font-size: .85rem;
+	font-variant-numeric: tabular-nums;
+	font-weight: 700;
+	background: var(--chrome-accent);
+	color: #10233a;
+	border-radius: 999px;
+	padding: 0.15rem 0.7rem;
+	font-size: 0.85rem;
 }
-.chrome__title { font-weight: 600; margin-right: auto; }
-.chrome a, .chrome button {
-  color: var(--chrome-fg); background: transparent;
-  border: 1px solid rgba(255,255,255,.35); border-radius: 6px;
-  padding: .35rem .7rem; font: inherit; font-size: .85rem;
-  text-decoration: none; cursor: pointer;
+.chrome__title {
+	font-weight: 600;
+	margin-right: auto;
 }
-.chrome a:hover, .chrome button:hover { background: rgba(255,255,255,.12); }
-.chrome button[aria-pressed="true"] { background: var(--chrome-accent); color: #10233a; border-color: transparent; }
-main { max-width: 52rem; margin: 0 auto; padding: 2rem 1.1rem 4rem; }
-h1 { font-size: 1.5rem; margin: 0 0 .3rem; }
-.lead { color: var(--muted); margin: 0 0 2rem; }
+.chrome a,
+.chrome button {
+	color: var(--chrome-fg);
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.35);
+	border-radius: 6px;
+	padding: 0.35rem 0.7rem;
+	font: inherit;
+	font-size: 0.85rem;
+	text-decoration: none;
+	cursor: pointer;
+}
+.chrome a:hover,
+.chrome button:hover {
+	background: rgba(255, 255, 255, 0.12);
+}
+.chrome button[aria-pressed='true'] {
+	background: var(--chrome-accent);
+	color: #10233a;
+	border-color: transparent;
+}
+main {
+	max-width: 52rem;
+	margin: 0 auto;
+	padding: 2rem 1.1rem 4rem;
+}
+h1 {
+	font-size: 1.5rem;
+	margin: 0 0 0.3rem;
+}
+.lead {
+	color: var(--muted);
+	margin: 0 0 2rem;
+}
 .note {
-  border-left: 3px solid var(--chrome-accent); background: #f2f8fd;
-  padding: .8rem 1rem; margin: 1.5rem 0; font-size: .92rem;
+	border-left: 3px solid var(--chrome-accent);
+	background: #f2f8fd;
+	padding: 0.8rem 1rem;
+	margin: 1.5rem 0;
+	font-size: 0.92rem;
 }
-.note code { background: #e3eef8; padding: .1rem .3rem; border-radius: 3px; }
-.stack > * + * { margin-top: 1rem; }
-.row { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
-.legacy-page { border: 1px dashed var(--rule); padding: 1.2rem; background: #fcfcfd; }
-.legacy-page h2 { font-family: Georgia, "Times New Roman", serif; font-size: 1.15rem; margin-top: 0; }
-.legacy-field { margin-bottom: 1rem; }
-.legacy-field label { display: block; font-weight: 600; margin-bottom: .25rem; }
+.note code {
+	background: #e3eef8;
+	padding: 0.1rem 0.3rem;
+	border-radius: 3px;
+}
+.stack > * + * {
+	margin-top: 1rem;
+}
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	align-items: center;
+}
+.legacy-page {
+	border: 1px dashed var(--rule);
+	padding: 1.2rem;
+	background: #fcfcfd;
+}
+.legacy-page h2 {
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: 1.15rem;
+	margin-top: 0;
+}
+.legacy-field {
+	margin-bottom: 1rem;
+}
+.legacy-field label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 0.25rem;
+}
 .legacy-field input {
-  font: inherit; padding: .45rem .55rem; border: 1px solid #7a8394; border-radius: 3px; width: 100%; max-width: 22rem;
+	font: inherit;
+	padding: 0.45rem 0.55rem;
+	border: 1px solid #7a8394;
+	border-radius: 3px;
+	width: 100%;
+	max-width: 22rem;
 }
-.legacy-hint { display: block; color: var(--muted); font-size: .85rem; }
-.legacy-error { display: block; color: #b3003c; font-size: .85rem; font-weight: 600; }
-.legacy-submit { font: inherit; padding: .5rem 1rem; background: #33475b; color: #fff; border: 0; border-radius: 3px; cursor: pointer; }
-.codecols { display: grid; gap: 1.2rem; grid-template-columns: 1fr; }
-@media (min-width: 46rem) { .codecols { grid-template-columns: 1fr 1fr; } }
+.legacy-hint {
+	display: block;
+	color: var(--muted);
+	font-size: 0.85rem;
+}
+.legacy-error {
+	display: block;
+	color: #b3003c;
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+.legacy-submit {
+	font: inherit;
+	padding: 0.5rem 1rem;
+	background: #33475b;
+	color: #fff;
+	border: 0;
+	border-radius: 3px;
+	cursor: pointer;
+}
+.codecols {
+	display: grid;
+	gap: 1.2rem;
+	grid-template-columns: 1fr;
+}
+@media (min-width: 46rem) {
+	.codecols {
+		grid-template-columns: 1fr 1fr;
+	}
+}
 pre {
-  background: #14181f; color: #e6edf3; padding: 1rem; border-radius: 8px;
-  overflow-x: auto; font-size: .82rem; line-height: 1.5; margin: 0;
+	background: #14181f;
+	color: #e6edf3;
+	padding: 1rem;
+	border-radius: 8px;
+	overflow-x: auto;
+	font-size: 0.82rem;
+	line-height: 1.5;
+	margin: 0;
 }
-pre b { color: #7fd1ff; font-weight: 600; }
-pre i { color: #9aa6b5; font-style: normal; }
-.codecols h3 { margin: 0 0 .5rem; font-size: .95rem; }
-.steplist { list-style: none; padding: 0; margin: 0; }
-.steplist li + li { margin-top: .6rem; }
-.steplist a { display: block; border: 1px solid var(--rule); border-radius: 8px; padding: .85rem 1rem; text-decoration: none; color: inherit; }
-.steplist a:hover { border-color: #2b6cb0; background: #f6faff; }
-.steplist strong { display: block; }
-.steplist span { color: var(--muted); font-size: .9rem; }
+pre b {
+	color: #7fd1ff;
+	font-weight: 600;
+}
+pre i {
+	color: #9aa6b5;
+	font-style: normal;
+}
+.codecols h3 {
+	margin: 0 0 0.5rem;
+	font-size: 0.95rem;
+}
+.steplist {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.steplist li + li {
+	margin-top: 0.6rem;
+}
+.steplist a {
+	display: block;
+	border: 1px solid var(--rule);
+	border-radius: 8px;
+	padding: 0.85rem 1rem;
+	text-decoration: none;
+	color: inherit;
+}
+.steplist a:hover {
+	border-color: #2b6cb0;
+	background: #f6faff;
+}
+.steplist strong {
+	display: block;
+}
+.steplist span {
+	color: var(--muted);
+	font-size: 0.9rem;
+}
 
 /* --- Hinweis, wenn die Seite per file:// geoeffnet wurde --- */
 .fileguard {
-  max-width: 40rem; margin: 3rem auto; padding: 1.6rem 1.8rem;
-  border: 2px solid #b3003c; border-radius: 10px; background: #fff5f8;
-  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #1a1a1a;
+	max-width: 40rem;
+	margin: 3rem auto;
+	padding: 1.6rem 1.8rem;
+	border: 2px solid #b3003c;
+	border-radius: 10px;
+	background: #fff5f8;
+	font:
+		16px/1.6 system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		sans-serif;
+	color: #1a1a1a;
 }
-.fileguard h1 { font-size: 1.25rem; margin: 0 0 .6rem; color: #b3003c; }
-.fileguard p { margin: 0 0 .8rem; }
+.fileguard h1 {
+	font-size: 1.25rem;
+	margin: 0 0 0.6rem;
+	color: #b3003c;
+}
+.fileguard p {
+	margin: 0 0 0.8rem;
+}
 .fileguard pre {
-  background: #14181f; color: #e6edf3; padding: .9rem 1rem;
-  border-radius: 8px; font-size: .85rem; overflow-x: auto; margin: 0 0 .8rem;
+	background: #14181f;
+	color: #e6edf3;
+	padding: 0.9rem 1rem;
+	border-radius: 8px;
+	font-size: 0.85rem;
+	overflow-x: auto;
+	margin: 0 0 0.8rem;
 }
-.fileguard small { color: #5b6472; }
+.fileguard small {
+	color: #5b6472;
+}
 
 /* --- Sichtbare Rueckmeldung der Demo ("was ist gerade passiert?") --- */
 .readout {
-  margin-top: 1.2rem; padding: .75rem 1rem;
-  border: 1px solid var(--rule); border-left: 3px solid #2b6cb0;
-  border-radius: 0 8px 8px 0; background: #f6faff;
-  font-size: .9rem; min-height: 2.9rem;
+	margin-top: 1.2rem;
+	padding: 0.75rem 1rem;
+	border: 1px solid var(--rule);
+	border-left: 3px solid #2b6cb0;
+	border-radius: 0 8px 8px 0;
+	background: #f6faff;
+	font-size: 0.9rem;
+	min-height: 2.9rem;
 }
-.readout b { font-weight: 700; }
+.readout b {
+	font-weight: 700;
+}
 .readout code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: .88em; background: #e3eef8; padding: .1em .35em; border-radius: 3px;
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	font-size: 0.88em;
+	background: #e3eef8;
+	padding: 0.1em 0.35em;
+	border-radius: 3px;
 }
-.readout--empty { color: var(--muted); font-style: italic; }
+.readout--empty {
+	color: var(--muted);
+	font-style: italic;
+}
 
 /* kol-alert setzt display auf :host und ueberstimmt damit das hidden-Attribut
    der UA-Styles. Ohne diese Regel waere ein verstecktes Alert trotzdem sichtbar. */
-kol-alert[hidden] { display: none !important; }
+kol-alert[hidden] {
+	display: none !important;
+}
+
+/* Transparente Komponentenflaechen (u.a. damit das Deck die Seiten einbetten
+   kann, ohne weisse Kaesten zu zeigen). --kolibri-color-light ist auf farbigen
+   Buttons auch die Textfarbe - deshalb bekommen Buttons ihr Weiss zurueck. */
+kol-card,
+kol-form,
+kol-input-text,
+kol-input-email,
+kol-textarea {
+	--kolibri-color-light: transparent;
+}
+kol-button {
+	--kolibri-color-light: #fff;
+}
 
 /* --- Banner, wenn KoliBri nicht geladen werden konnte --- */
 .bootguard {
-  margin: 0; padding: 1.1rem 1.3rem;
-  border-bottom: 3px solid #b3003c; background: #fff5f8; color: #1a1a1a;
-  font: 15px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	margin: 0;
+	padding: 1.1rem 1.3rem;
+	border-bottom: 3px solid #b3003c;
+	background: #fff5f8;
+	color: #1a1a1a;
+	font:
+		15px/1.6 system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		sans-serif;
 }
-.bootguard strong { color: #b3003c; display: block; margin-bottom: .3rem; font-size: 1.05rem; }
+.bootguard strong {
+	color: #b3003c;
+	display: block;
+	margin-bottom: 0.3rem;
+	font-size: 1.05rem;
+}
 .bootguard code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  background: #ffe3ec; padding: .1em .4em; border-radius: 3px;
+	font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+	background: #ffe3ec;
+	padding: 0.1em 0.4em;
+	border-radius: 3px;
 }
-.bootguard details { margin-top: .6rem; }
-.bootguard summary { cursor: pointer; color: #5b6472; font-size: .88rem; }
+.bootguard details {
+	margin-top: 0.6rem;
+}
+.bootguard summary {
+	cursor: pointer;
+	color: #5b6472;
+	font-size: 0.88rem;
+}
 .bootguard pre {
-  margin: .5rem 0 0; background: #14181f; color: #e6edf3;
-  padding: .7rem .9rem; border-radius: 6px; font-size: .78rem; overflow-x: auto;
+	margin: 0.5rem 0 0;
+	background: #14181f;
+	color: #e6edf3;
+	padding: 0.7rem 0.9rem;
+	border-radius: 6px;
+	font-size: 0.78rem;
+	overflow-x: auto;
 }

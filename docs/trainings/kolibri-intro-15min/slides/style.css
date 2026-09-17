@@ -1,0 +1,230 @@
+/* Deck-weite Styles für die KoliBri-Live-Demos in den Folien.
+   Die kol-* Elemente selbst kommen aus dem Theme – hier steht nur der Rahmen. */
+
+/* KoliBri-Komponenten setzen display auf :host und überstimmen damit die
+   UA-Regel [hidden] { display: none } – ohne diese Zeile wäre der
+   Erfolgs-Alert von Anfang an sichtbar (gemessen an 4.4.0). */
+kol-alert[hidden] {
+	display: none !important;
+}
+
+/*Transparente Komponenten-Flächen: Die Hintergründe von Karten, Formularen
+  und Feldern kommen aus dem Theme-Token --kolibri-color-light und werden im
+  Shadow DOM gesetzt – nur das Token erreicht durch die Kapselung.
+  NICHT pauschal setzen: --kolibri-color-light ist auf farbigen Buttons auch
+  die Textfarbe. Deshalb bekommen Buttons ihr Weiß hier zurück. */
+kol-card,
+kol-form,
+kol-input-text,
+kol-input-email,
+kol-textarea {
+	--kolibri-color-light: transparent;
+}
+
+kol-button {
+	--kolibri-color-light: #fff;
+}
+
+/* ---------- Rahmen ---------- */
+
+.cover-sub {
+	margin-bottom: 1rem;
+}
+
+.cover-sub blockquote,
+.cover-sub em {
+	margin: 0.4rem 0 0;
+	opacity: 0.85;
+}
+
+.hint {
+	margin-top: 0.8rem;
+	font-size: 0.78em;
+	opacity: 0.72;
+}
+
+.question-box {
+	border-left: 4px solid var(--slidev-theme-primary, #00476c);
+	padding: 0.6rem 1rem;
+	background: rgba(0, 71, 108, 0.06);
+	border-radius: 0 8px 8px 0;
+	font-size: 1.15em;
+}
+
+.reveal-box {
+	border-left: 4px solid #b36924;
+	padding: 0.6rem 1rem;
+	background: rgba(179, 105, 36, 0.08);
+	border-radius: 0 8px 8px 0;
+}
+
+.point-box {
+	font-size: 1.25em;
+	padding: 0.8rem 1.2rem;
+	border: 1px solid rgba(0, 71, 108, 0.25);
+	border-radius: 12px;
+	background: rgba(0, 71, 108, 0.05);
+}
+
+/* Folien-Code etwas kleiner: längere Import-Zeilen laufen sonst rechts
+   aus dem Feld, besonders in den Zweispalten-Folien. */
+.slidev-page pre {
+	font-size: 0.78em;
+	line-height: 1.55;
+}
+
+/* Folie 4 („Dasselbe in einem Tag"): schmalste Spalte, längste Zeilen –
+   10px, damit die Import-Zeile in die 434px-Spalte passt (gemessen).
+   !important nötig, weil das Shiki-CSS die Größe selbst mit !important setzt. */
+.slidev-page-4 pre {
+	font-size: 10px !important;
+}
+
+.s3demo pre,
+.tokendemo pre {
+	font-size: inherit;
+}
+
+.demo-panel {
+	border: 1px solid rgba(125, 125, 125, 0.25);
+	border-radius: 12px;
+	padding: 0.7rem 1rem;
+	background: rgba(127, 127, 127, 0.04);
+}
+
+.demo-panel--flush {
+	border: none;
+	background: none;
+	padding: 0;
+}
+
+kbd {
+	border: 1px solid rgba(127, 127, 127, 0.4);
+	border-bottom-width: 2px;
+	border-radius: 5px;
+	padding: 0 0.4em;
+	font-size: 0.85em;
+	background: rgba(127, 127, 127, 0.08);
+}
+
+/* ---------- Schritt 1: Feld + Buttons + Ausgabe ---------- */
+
+.s1demo {
+	display: grid;
+	gap: 0.6rem;
+	font-size: 0.86em;
+}
+
+.s1demo__row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
+
+.s1demo__out,
+.readout-line {
+	margin: 0;
+	padding: 0.45rem 0.7rem;
+	border-radius: 8px;
+	background: rgba(127, 127, 127, 0.1);
+	font-size: 0.85em;
+	min-height: 2.2em;
+}
+
+.s1demo__out.is-empty {
+	opacity: 0.6;
+}
+
+/* ---------- Schritt 3: Formular links, Röntgenblick rechts ---------- */
+
+/* Die Folie muss auch im Worst-Case (Fehlerliste offen) in die
+   16:9-Leinwand passen – gemessen waren es 858px statt 721px. */
+.step3demo-host {
+	zoom: 0.8;
+}
+
+.s3demo {
+	display: grid;
+	grid-template-columns: 11fr 9fr;
+	gap: 0.7rem 1.2rem;
+	align-items: start;
+	font-size: 0.8em;
+}
+
+.s3demo kol-alert {
+	grid-column: 1 / -1;
+}
+
+.s3demo__stack {
+	display: grid;
+	gap: 0.55rem;
+}
+
+.s3demo__xray-btn,
+.tokendemo-toggle {
+	border: 1px solid rgba(127, 127, 127, 0.4);
+	background: rgba(127, 127, 127, 0.08);
+	color: inherit;
+	border-radius: 8px;
+	padding: 0.4rem 0.9rem;
+	cursor: pointer;
+	font: inherit;
+	font-size: 0.95em;
+}
+
+.s3demo__xray-btn:hover,
+.tokendemo-toggle:hover {
+	background: rgba(0, 71, 108, 0.12);
+}
+
+.s3demo__xray {
+	grid-column: 2;
+	grid-row: 2 / span 2;
+	margin: 0;
+	max-height: 400px;
+	overflow: auto;
+	padding: 0.7rem 0.9rem;
+	border-radius: 10px;
+	background: #10162b;
+	color: #dce4f5;
+	font-size: 0.78em;
+	line-height: 1.5;
+}
+
+/* ---------- Schritt 4: Token-Panel ---------- */
+
+.tokendemo-panel {
+	display: grid;
+	gap: 0.7rem;
+}
+
+.tokendemo {
+	display: grid;
+	gap: 0.6rem;
+	font-size: 0.86em;
+}
+
+.tokendemo__row {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.tokendemo-toggle {
+	justify-self: start;
+}
+
+/* ---------- Cover / Ende ---------- */
+
+.cover-badges {
+	display: flex;
+	gap: 0.6rem;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 1.2rem;
+}
+
+.next-steps {
+	text-align: left;
+	display: inline-block;
+	margin: 0 auto 1.5rem;
+}
