@@ -1,0 +1,1 @@
+import{d as e,r as t}from"./factory-B7al9c0P-DhP7-pNF.js";var n=t(`href`,``,e,e=>typeof e==`string`,{required:!0});export{n as t};
