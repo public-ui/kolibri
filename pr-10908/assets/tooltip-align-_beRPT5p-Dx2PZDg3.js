@@ -1,0 +1,1 @@
+import"./index-pvtv-KaX.js";import{r as e}from"./align-DglmQnOH-CoZmuJ6M.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
