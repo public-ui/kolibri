@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Schritt 1 – Die erste Komponente</title>
+<link rel="icon" href="data:," />
+<link rel="stylesheet" href="./_demo.css" />
+<link rel="stylesheet" href="./vendor/components/assets/kolicons/style.css" />
+
+<!-- Die Import-Map ist die einzige Stelle, an der Pfade stehen.
+     Dadurch sehen die import-Zeilen unten exakt so aus wie in einem npm-Projekt. -->
+<script type="importmap">
+{
+  "imports": {
+    "@public-ui/components": "./vendor/components/dist/esm/index.js",
+    "@public-ui/components/loader": "./vendor/components/loader/index.mjs",
+    "@public-ui/theme-default": "./vendor/theme-default/dist/index.mjs"
+  }
+}
+</script>
+
+<script type="module">
+  import { register } from '@public-ui/components';
+  import { defineCustomElements } from '@public-ui/components/loader';
+  import { DEFAULT } from '@public-ui/theme-default';
+
+  await register(DEFAULT, defineCustomElements);
+  document.documentElement.dataset.kolibriReady = 'true';
+</script>
+</head>
+<body>
+<nav class="chrome">
+  <span class="chrome__step">1 / 5</span>
+  <span class="chrome__title">Die erste Komponente</span>
+  <a href="./index.html">Übersicht</a>
+  <a href="./step-0-handmade.html">← Zurück</a>
+  <a href="./step-2-island.html">Weiter →</a>
+</nav>
+
+<main>
+  <h1>Drei Zeilen Setup. Ein Tag.</h1>
+  <p class="lead">Das war das ganze Feld aus Schritt 0 – und noch etwas mehr.</p>
+
+  <div class="stack">
+    <kol-input-email
+      _label="E-Mail"
+      _required
+      _hint="Wir nutzen die Adresse nur für die Terminbestätigung."
+      _msg='{"_type":"error","_description":"Bitte geben Sie eine gültige E-Mail-Adresse an."}'
+      _touched
+    ></kol-input-email>
+
+    <div class="row">
+      <kol-button _label="Absenden" _variant="primary" _icons="kolicon-house"></kol-button>
+      <kol-button _label="Abbrechen" _variant="secondary"></kol-button>
+      <kol-button _label="Löschen" _variant="danger"></kol-button>
+      <kol-button _label="Mehr" _variant="ghost"></kol-button>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Zwei Konventionen, die sofort auffallen:</strong>
+    <br />1. Alle Props beginnen mit einem <code>_</code> – so kollidieren sie nie mit nativen HTML-Attributen.
+    <br />2. <code>_label</code> ist <em>Pflicht</em>. Eine KoliBri-Komponente ohne Beschriftung gibt es nicht –
+    Barrierefreiheit ist hier kein Schalter, den man vergessen kann.
+    <br /><br />
+    Die Varianten (<code>primary</code>, <code>secondary</code>, <code>danger</code>, <code>ghost</code>)
+    sind übrigens keine feste Liste im Code, sondern kommen aus dem <em>Theme</em>. Merken – das wird Schritt 4.
+  </div>
+</main>
+</body>
+</html>

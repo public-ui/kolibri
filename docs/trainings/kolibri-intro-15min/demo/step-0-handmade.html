@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Schritt 0 – Von Hand gebaut</title>
+<link rel="icon" href="data:," />
+<link rel="stylesheet" href="./_demo.css" />
+</head>
+<body>
+<nav class="chrome">
+  <span class="chrome__step">0 / 5</span>
+  <span class="chrome__title">Ein barrierefreies Feld – von Hand</span>
+  <a href="./index.html">Übersicht</a>
+  <a href="./step-1-first.html">Weiter →</a>
+</nav>
+
+<main>
+  <h1>Ein einziges Formularfeld. Barrierefrei.</h1>
+  <p class="lead">Kein Framework, keine Bibliothek. Nur das, was die Spezifikation verlangt.</p>
+
+  <div class="legacy-page">
+    <h2>Terminanfrage</h2>
+    <form class="legacy-form" novalidate>
+      <div class="legacy-field">
+        <label for="mail">E-Mail <span aria-hidden="true">*</span></label>
+        <input
+          id="mail"
+          type="email"
+          required
+          aria-required="true"
+          aria-describedby="mail-hint mail-err"
+        />
+        <span id="mail-hint" class="legacy-hint">Wir nutzen die Adresse nur für die Terminbestätigung.</span>
+        <span id="mail-err" class="legacy-error" role="alert">Bitte geben Sie eine gültige E-Mail-Adresse an.</span>
+      </div>
+      <button type="submit" class="legacy-submit">Absenden</button>
+    </form>
+  </div>
+
+  <div class="note">
+    <strong>Frage ans Publikum:</strong> Das Feld ist im Fehlerzustand. Was fehlt?
+    <br />Antwort: <code>aria-invalid="true"</code>. Ohne das Attribut sagt kein Screenreader,
+    dass dieses Feld fehlerhaft ist – der Fehlertext wird zwar vorgelesen, aber das Feld gilt als in Ordnung.
+    <br /><br />
+    Und das ist erst <em>ein</em> Feld. Vier IDs, drei ARIA-Attribute, ein <code>role="alert"</code>,
+    ein <code>aria-hidden</code> am Sternchen – alles von Hand, alles still brechbar.
+  </div>
+</main>
+</body>
+</html>

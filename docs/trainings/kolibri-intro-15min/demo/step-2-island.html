@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Schritt 2 – Insel im Bestand</title>
+<link rel="icon" href="data:," />
+<link rel="stylesheet" href="./_demo.css" />
+<link rel="stylesheet" href="./vendor/components/assets/kolicons/style.css" />
+<script type="importmap">
+{
+  "imports": {
+    "@public-ui/components": "./vendor/components/dist/esm/index.js",
+    "@public-ui/components/loader": "./vendor/components/loader/index.mjs",
+    "@public-ui/theme-default": "./vendor/theme-default/dist/index.mjs"
+  }
+}
+</script>
+<script type="module">
+  import { register } from '@public-ui/components';
+  import { defineCustomElements } from '@public-ui/components/loader';
+  import { DEFAULT } from '@public-ui/theme-default';
+  await register(DEFAULT, defineCustomElements);
+  document.documentElement.dataset.kolibriReady = 'true';
+</script>
+<style>
+  /* Absichtlich aggressives "Altbestand"-CSS. Es wuerde jede normale
+     Komponente zerlegen - die KoliBri-Insel laesst es kalt. */
+  .legacy-page input,
+  .legacy-page button,
+  .legacy-page label {
+    font-family: Georgia, serif !important;
+    color: #7a0000 !important;
+    letter-spacing: .06em !important;
+  }
+  .legacy-page * { line-height: 2.4 !important; }
+</style>
+</head>
+<body>
+<nav class="chrome">
+  <span class="chrome__step">2 / 5</span>
+  <span class="chrome__title">Insel im Bestand</span>
+  <a href="./index.html">Übersicht</a>
+  <a href="./step-1-first.html">← Zurück</a>
+  <a href="./step-3-form.html">Weiter →</a>
+</nav>
+
+<main>
+  <h1>Kein Big Bang.</h1>
+  <p class="lead">
+    Eine bestehende Seite mit eigenem CSS und nativem <code>&lt;form method="get"&gt;</code>.
+    Ein einziges Feld ist ausgetauscht.
+  </p>
+
+  <div class="legacy-page">
+    <h2>Terminanfrage (Bestandsanwendung)</h2>
+    <form method="get" action="./step-2-island.html" novalidate>
+      <div class="legacy-field">
+        <label for="alt-name">Name (Altbestand)</label>
+        <input id="alt-name" name="alt-name" type="text" />
+        <span class="legacy-hint">Natives Feld, eigenes CSS der Anwendung.</span>
+      </div>
+
+      <!-- Ab hier KoliBri. Gleiches Formular, gleicher Submit. -->
+      <div class="legacy-field">
+        <kol-input-email _label="E-Mail (KoliBri)" _name="mail" _required
+                         _hint="Dieselbe Seite, dasselbe native Formular."></kol-input-email>
+      </div>
+
+      <button type="submit" class="legacy-submit">Absenden (nativ)</button>
+    </form>
+  </div>
+
+  <div class="note">
+    <strong>Was hier passiert – und was nicht:</strong>
+    <br />Das Legacy-CSS oben setzt <code>font-family</code>, <code>color</code> und
+    <code>line-height</code> mit <code>!important</code> auf <em>alle</em> Felder und Buttons.
+    Das native Feld ist davon verbogen. Die KoliBri-Komponente daneben nicht –
+    ihr Shadow DOM hält das CSS der Anwendung draußen.
+    <br /><br />
+    Umgekehrt gilt dasselbe: KoliBri färbt eure Seite nicht ein.
+    Und der Submit läuft weiter nativ über <code>method="get"</code> –
+    abschicken und in die Adresszeile schauen.
+  </div>
+</main>
+</body>
+</html>

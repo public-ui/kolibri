@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Schritt 3 – Komposition und der Röntgenblick</title>
+<link rel="icon" href="data:," />
+<link rel="stylesheet" href="./_demo.css" />
+<link rel="stylesheet" href="./vendor/components/assets/kolicons/style.css" />
+<script type="importmap">
+{
+  "imports": {
+    "@public-ui/components": "./vendor/components/dist/esm/index.js",
+    "@public-ui/components/loader": "./vendor/components/loader/index.mjs",
+    "@public-ui/theme-default": "./vendor/theme-default/dist/index.mjs"
+  }
+}
+</script>
+<script type="module">
+  import { register } from '@public-ui/components';
+  import { defineCustomElements } from '@public-ui/components/loader';
+  import { DEFAULT } from '@public-ui/theme-default';
+  await register(DEFAULT, defineCustomElements);
+  document.documentElement.dataset.kolibriReady = 'true';
+
+  // --- Buehnen-Werkzeug: liest aus dem Shadow DOM, was KoliBri erzeugt hat ---
+  const xray = () => {
+    const host = document.querySelector('#mail');
+    const input = host?.shadowRoot?.querySelector('input');
+    if (!input) return 'Komponente noch nicht bereit.';
+    const ids = (input.getAttribute('aria-describedby') || '').split(' ').filter(Boolean);
+    const lines = [
+      `<input  type="${input.type}"`,
+      `        required=${input.hasAttribute('required')}`,
+      `        aria-invalid="${input.getAttribute('aria-invalid')}"`,
+      `        aria-describedby="${ids.join(' ')}" />`,
+      '',
+      'Was der Screenreader daraus vorliest:',
+    ];
+    for (const id of ids) {
+      const el = host.shadowRoot.getElementById(id);
+      lines.push(`  ${id}`);
+      lines.push(el
+        ? `     → "${el.textContent.trim()}"`
+        : '     → (noch kein Element – die ID ist reserviert, Screenreader überspringen sie)');
+    }
+    const btn = document.querySelector('#send')?.shadowRoot?.querySelector('button');
+    if (btn) {
+      lines.push('', `Zielgröße des Buttons: min-height = ${getComputedStyle(btn).minHeight}  (WCAG 2.5.5 verlangt 44px)`);
+    }
+    return lines.join('\n');
+  };
+
+  document.querySelector('#xray').addEventListener('click', () => {
+    document.querySelector('#xray-out').textContent = xray();
+  });
+
+  // --- Fehlerliste mit Fokussprung ---
+  document.querySelector('#fail').addEventListener('click', () => {
+    const form = document.querySelector('#f');
+    form._errorList = [
+      { message: 'Bitte geben Sie eine gültige E-Mail-Adresse an.', selector: '#mail' },
+    ];
+    // Ein Tick warten, damit die Komponente die Liste gerendert hat.
+    setTimeout(() => form.focusErrorList?.(), 50);
+  });
+</script>
+</head>
+<body>
+<nav class="chrome">
+  <span class="chrome__step">3 / 5</span>
+  <span class="chrome__title">Komposition &amp; Barrierefreiheit</span>
+  <a href="./index.html">Übersicht</a>
+  <a href="./step-2-island.html">← Zurück</a>
+  <a href="./step-4-theme.html">Weiter →</a>
+  <button id="fail" type="button">Fehler auslösen</button>
+  <button id="xray" type="button">Röntgenblick</button>
+</nav>
+
+<main>
+  <h1>Bausteine, zusammengesetzt.</h1>
+  <p class="lead">Karte, Formular, Felder, Button – nichts davon weiß voneinander, und trotzdem passt es.</p>
+
+  <kol-card _label="Terminanfrage" _level="2">
+    <kol-form id="f">
+      <div class="stack">
+        <kol-input-text _label="Name" _required></kol-input-text>
+        <kol-input-email id="mail" _label="E-Mail" _required
+          _hint="Wir nutzen die Adresse nur für die Terminbestätigung."
+          _msg='{"_type":"error","_description":"Bitte geben Sie eine gültige E-Mail-Adresse an."}'
+          _touched></kol-input-email>
+        <kol-input-text _label="Anliegen" _hint="Optional. Maximal 120 Zeichen."
+          _max-length="120" _has-counter></kol-input-text>
+        <kol-button id="send" _label="Absenden" _variant="primary" _type="submit"></kol-button>
+      </div>
+    </kol-form>
+  </kol-card>
+
+  <div class="note">
+    <strong>Nichts davon steht im Markup oben:</strong>
+    <br />• Die Zeile „Formular-Felder, die mit einem Sternchen (*) gekennzeichnet sind, sind Pflichtangaben."
+    setzt <code>kol-form</code> von sich aus – in der Sprache der Anwendung.
+    <br />• Das Sternchen am Label ist CSS <code>content: '*' / ''</code>: sichtbar ein Stern,
+    für den Screenreader <em>nichts</em>. Kein „Stern Stern Stern" beim Durchhören.
+    <br />• Der Zeichenzähler läuft doppelt: sichtbar <code>aria-hidden</code>,
+    daneben eine <code>aria-live</code>-Region mit ausformuliertem Text.
+    <br />• Jeder Button ist mindestens 44 × 44 px groß – nachmessen mit dem Röntgenblick.
+  </div>
+
+  <div class="note">
+    <strong>Eine Stolperfalle für den Vanilla-Einstieg:</strong> In HTML gibt es kein camelCase.
+    Aus der Prop <code>_maxLength</code> wird das Attribut <code>_max-length</code>,
+    aus <code>_hasCounter</code> wird <code>_has-counter</code>.
+    Wer <code>_maxLength="120"</code> ins HTML schreibt, bekommt keinen Fehler – nur keinen Zähler.
+    In React/JSX schreibt man dagegen wieder <code>_maxLength</code>.
+  </div>
+
+  <pre id="xray-out">Auf „Röntgenblick" klicken …</pre>
+</main>
+</body>
+</html>
