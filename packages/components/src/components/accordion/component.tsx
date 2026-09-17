@@ -1,16 +1,24 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { AccordionApi } from '../../internal/functional-components/accordion/api';
-import { accordionPropsConfig } from '../../internal/functional-components/accordion/api';
-import { AccordionFC } from '../../internal/functional-components/accordion/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { CollapsibleApi } from '../../internal/functional-components/collapsible/api';
+import { collapsiblePropsConfig } from '../../internal/functional-components/collapsible/api';
+import { CollapsibleFC } from '../../internal/functional-components/collapsible/component';
+import { createCollapsibleToggleHandler } from '../../internal/functional-components/collapsible/toggle';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { accordionCallbacksProp, disabledProp, labelProp, levelProp, openProp } from '../../internal/props';
-import type { AccordionCallbacksPropType, AccordionProps, ClickableElement, FocusableElement, HeadingLevel, KolFocusOptions } from '../../schema';
+import { collapsibleCallbacksProp, disabledProp, labelProp, levelProp, openProp } from '../../internal/props';
+import type {
+	AccordionProps,
+	ClickableElement,
+	CollapsibleCallbacksPropType,
+	FocusableElement,
+	HeadingLevel,
+	KolFocusOptions,
+	LabelPropType,
+} from '../../schema';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
  * The **Accordion** component is a collapsible menu. Clicking the header area — consisting of an icon and a heading — expands the content to reveal additional information. It is an interactive navigation element designed to present extensive content in a space-saving manner.
@@ -27,8 +35,8 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	shadow: true,
 })
 export class KolAccordion
-	extends BaseWebComponent<AccordionApi>
-	implements AccordionProps, ClickableElement, FocusableElement, WebComponentInterface<AccordionApi>
+	extends BaseWebComponent<CollapsibleApi>
+	implements AccordionProps, ClickableElement, FocusableElement, WebComponentInterface<CollapsibleApi>
 {
 	@Element() protected readonly host?: HTMLKolAccordionElement;
 
@@ -44,7 +52,7 @@ export class KolAccordion
 	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
-		this.initRenderProps(accordionPropsConfig);
+		this.initRenderProps(collapsiblePropsConfig);
 
 		this.watchDisabled(this._disabled);
 		this.watchLabel(this._label);
@@ -55,27 +63,14 @@ export class KolAccordion
 
 	// --- Event handling ---
 
-	private readonly handleToggle = (event: MouseEvent): void => {
-		this._open = !this._open;
-
-		/**
-		 * Der Timeout wird benötigt, damit das Event
-		 * vom Button- auf das Accordion-Event wechselt.
-		 * So ist es dem Anwendenden möglich das _open-
-		 * Attribute abzufragen.
-		 */
-
-		setTimeout(() => {
-			const on = this.getRenderProp('on');
-			on.onClick?.(event, Boolean(this._open));
-			on.onToggle?.(event, Boolean(this._open));
-
-			if (this.host) {
-				dispatchDomEvent(this.host, KolEvent.click, Boolean(this._open));
-				dispatchDomEvent(this.host, KolEvent.toggle, Boolean(this._open));
-			}
-		});
-	};
+	private readonly handleToggle = createCollapsibleToggleHandler({
+		getHost: () => this.host,
+		getOn: () => this.getRenderProp('on'),
+		toggleOpen: () => {
+			this._open = !this._open;
+			return Boolean(this._open);
+		},
+	});
 
 	// --- Public methods ---
 
@@ -89,7 +84,7 @@ export class KolAccordion
 	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
-	 * Triggers a click on the trigger button of the first section.
+	 * Triggers a click on the heading toggle button.
 	 */
 	@Method()
 	@delegateClick('ctaRef')
@@ -100,11 +95,13 @@ export class KolAccordion
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<AccordionFC
+				<CollapsibleFC
+					block="kol-accordion"
 					controlId={this.controlId}
 					disabled={this.getRenderProp('disabled')}
 					handleToggle={this.handleToggle}
 					headingId={this.headingId}
+					icons={this.getRenderProp('open') ? 'kolicon-chevron-down' : 'kolicon-chevron-right'}
 					label={this.getRenderProp('label')}
 					level={this.getRenderProp('level')}
 					on={this.getRenderProp('on')}
@@ -112,7 +109,7 @@ export class KolAccordion
 					refHeadingButton={this.ctaRef}
 				>
 					<slot />
-				</AccordionFC>
+				</CollapsibleFC>
 			</Host>
 		);
 	}
@@ -131,9 +128,9 @@ export class KolAccordion
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: string;
+	@Prop() public _label!: LabelPropType;
 	@Watch('_label')
-	public watchLabel(value?: string): void {
+	public watchLabel(value?: LabelPropType): void {
 		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
@@ -147,12 +144,12 @@ export class KolAccordion
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen an.
+	 * Defines the callback functions for the collapsible.
 	 */
-	@Prop() public _on?: AccordionCallbacksPropType<boolean>;
+	@Prop() public _on?: CollapsibleCallbacksPropType<boolean>;
 	@Watch('_on')
-	public watchOn(value?: AccordionCallbacksPropType<boolean>): void {
-		accordionCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+	public watchOn(value?: CollapsibleCallbacksPropType<boolean>): void {
+		collapsibleCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
 	}
 
 	/**
