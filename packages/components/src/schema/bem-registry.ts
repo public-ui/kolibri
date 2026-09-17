@@ -115,6 +115,14 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-popover-button': {
+		elements: {
+			popover: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'inline' | 'open' | 'standalone'>;
+	};
 	'kol-icon': {
 		elements: {
 			icon: {
@@ -303,6 +311,12 @@ const BEM: KoliBriComponentsBemSchema = {
 			separator: { modifiers: null },
 		},
 		modifiers: null,
+	},
+	'kol-popover-button': {
+		elements: {
+			popover: { modifiers: null },
+		},
+		modifiers: new Set(['inline', 'open', 'standalone']),
 	},
 	'kol-icon': {
 		elements: {

@@ -1,7 +1,7 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { PopoverButtonWebComponentInterface } from '../../internal/functional-components/popover-button/api';
+import type { PopoverButtonWcWebComponentInterface } from '../../internal/functional-components/popover-button/api';
 import type {
 	AccessKeyPropType,
 	AriaDescriptionPropType,
@@ -10,6 +10,7 @@ import type {
 	CustomClassPropType,
 	FocusableElement,
 	IconsPropType,
+	IdPropType,
 	InlinePropType,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
@@ -22,28 +23,37 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 import { nonce } from '../../utils/dev.utils';
-import { delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { directClick, directFocus } from '../../utils/element-interaction';
 import { BasePopoverButtonWebComponent } from './base';
 
 /**
- * A button that toggles the visibility of a popover overlay containing arbitrary content.
- * The popover uses the native HTML Popover API for lightweight, non-modal overlays.
+ * Transitional `kol-popover-button-wc` — a `shadow:false` wrapper that renders `PopoverButtonFC`
+ * directly into the light DOM.
  *
- * @slot - The popover content (displayed when the button is clicked).
- * @slot expert - Custom label content for the button (when `_label` is `false`).
+ * This exists because legacy consumers (`FormFieldLabel`, `SplitButton`) render this element
+ * inside their own shadow DOM. `FormFieldLabel` is a stateless functional component and cannot
+ * own the popover orchestration (controller, open state, toggle listeners), so it cannot switch
+ * to `PopoverButtonFC` yet; a reusable orchestration unit for functional consumers is up to the
+ * owner. Once all consumers have migrated, this component can be deleted.
+ *
+ * The orchestrator logic lives in `BasePopoverButtonWebComponent`; the differences to the public
+ * `kol-popover-button` are:
+ *
+ * - `@directFocus`/`@directClick` instead of `@delegateFocus`/`@delegateClick`: this element has
+ *   no shadow root, so the interactive element is reached directly.
+ * - one extra prop that only legacy consumers set from inside their own shadow DOM: `_id`.
+ *
+ * @internal
  */
 @Component({
-	tag: 'kol-popover-button',
-	styleUrls: {
-		default: './style.scss',
-	},
-	shadow: true,
+	tag: 'kol-popover-button-wc',
+	shadow: false,
 })
-export class KolPopoverButton
+export class KolPopoverButtonWc
 	extends BasePopoverButtonWebComponent
-	implements ClickableElement, FocusableElement, PopoverButtonProps, PopoverButtonWebComponentInterface
+	implements ClickableElement, FocusableElement, PopoverButtonProps, PopoverButtonWcWebComponentInterface
 {
-	@Element() protected readonly host?: HTMLKolPopoverButtonElement;
+	@Element() protected readonly host?: HTMLKolPopoverButtonWcElement;
 
 	public constructor() {
 		super();
@@ -61,6 +71,7 @@ export class KolPopoverButton
 		this.watchDisabled(this._disabled);
 		this.watchHideLabel(this._hideLabel);
 		this.watchIcons(this._icons);
+		this.watchId(this._id);
 		this.watchInline(this._inline);
 		this.watchLabel(this._label);
 		this.watchName(this._name);
@@ -107,25 +118,25 @@ export class KolPopoverButton
 	}
 
 	/**
-	 * Clicks the primary interactive element inside this component.
-	 */
-	@Method()
-	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
-
-	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	@delegateFocus('ctaRef')
+	@directFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public async focus(options?: KolFocusOptions): Promise<void> {}
 
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	@directClick('ctaRef')
+	public async click(): Promise<void> {}
+
 	// --- Render ---
 
 	public render(): JSX.Element {
-		return <Host>{this.renderPopoverButtonFC()}</Host>;
+		return this.renderPopoverButtonFC();
 	}
 
 	// --- @State ---
@@ -190,6 +201,16 @@ export class KolPopoverButton
 	@Watch('_icons')
 	public watchIcons(value?: IconsPropType): void {
 		this.applyIcons(value);
+	}
+
+	/**
+	 * Defines the internal ID of the primary component element.
+	 * @internal
+	 */
+	@Prop() public _id?: IdPropType;
+	@Watch('_id')
+	public watchId(value?: IdPropType): void {
+		this.applyId(value);
 	}
 
 	/**

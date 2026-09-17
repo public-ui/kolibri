@@ -1,12 +1,147 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`kol-popover-button should render with _label="Click to toggle" _disabled=true 1`] = `
+<kol-popover-button>
+  <template shadowrootmode="open">
+    <div class="kol-popover-button kol-popover-button--standalone">
+      <div class="kol-button kol-button--disabled kol-button--normal kol-button--standalone">
+        <button aria-controls="popover-nonce" aria-expanded="false" class="kol-button__interactive-element" disabled="" type="button">
+          <span class="kol-button__text kol-span">
+            <span class="kol-span__container">
+              <span class="kol-span__label">
+                Click to toggle
+              </span>
+              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                <slot name="expert" slot="expert"></slot>
+              </span>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+        <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-popover-button>
+`;
+
+exports[`kol-popover-button should render with _label="Click to toggle" _icons="kolicon-alert-info" _hideLabel=true 1`] = `
+<kol-popover-button>
+  <template shadowrootmode="open">
+    <div class="kol-popover-button kol-popover-button--standalone">
+      <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+        <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Click to toggle" class="kol-button__interactive-element" type="button">
+          <span class="kol-button__text kol-span kol-span--hide-label">
+            <span class="kol-span__container">
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                <slot name="expert" slot="expert"></slot>
+              </span>
+            </span>
+          </span>
+        </button>
+        <div class="kol-button__tooltip">
+          <div class="kol-tooltip__floating">
+            <div class="kol-tooltip__arrow"></div>
+            <span class="kol-span kol-tooltip__content">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Click to toggle
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+        <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-popover-button>
+`;
+
+exports[`kol-popover-button should render with _label="Click to toggle" _inline=true 1`] = `
+<kol-popover-button>
+  <template shadowrootmode="open">
+    <div class="kol-popover-button kol-popover-button--inline">
+      <div class="kol-button kol-button--inline kol-button--normal">
+        <button aria-controls="popover-nonce" aria-expanded="false" class="kol-button__interactive-element" type="button">
+          <span class="kol-button__text kol-span">
+            <span class="kol-span__container">
+              <span class="kol-span__label">
+                Click to toggle
+              </span>
+              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                <slot name="expert" slot="expert"></slot>
+              </span>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+        <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-popover-button>
+`;
+
+exports[`kol-popover-button should render with _label="Click to toggle" _popoverAlign="top" 1`] = `
+<kol-popover-button>
+  <template shadowrootmode="open">
+    <div class="kol-popover-button kol-popover-button--standalone">
+      <div class="kol-button kol-button--normal kol-button--standalone">
+        <button aria-controls="popover-nonce" aria-expanded="false" class="kol-button__interactive-element" type="button">
+          <span class="kol-button__text kol-span">
+            <span class="kol-span__container">
+              <span class="kol-span__label">
+                Click to toggle
+              </span>
+              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                <slot name="expert" slot="expert"></slot>
+              </span>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+        <div class="kol-popover__arrow kol-popover__arrow--top"></div>
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-popover-button>
+`;
+
 exports[`kol-popover-button should render with _label="Click to toggle" 1`] = `
 <kol-popover-button>
   <template shadowrootmode="open">
-    <kol-popover-button-wc _label="Click to toggle" _popoveralign="bottom" _tooltipalign="top" _type="button" _variant="normal">
-      <slot name="expert" slot="expert"></slot>
-      <slot></slot>
-    </kol-popover-button-wc>
+    <div class="kol-popover-button kol-popover-button--standalone">
+      <div class="kol-button kol-button--normal kol-button--standalone">
+        <button aria-controls="popover-nonce" aria-expanded="false" class="kol-button__interactive-element" type="button">
+          <span class="kol-button__text kol-span">
+            <span class="kol-span__container">
+              <span class="kol-span__label">
+                Click to toggle
+              </span>
+              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                <slot name="expert" slot="expert"></slot>
+              </span>
+            </span>
+          </span>
+        </button>
+      </div>
+      <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+        <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+        <slot></slot>
+      </div>
+    </div>
   </template>
 </kol-popover-button>
 `;

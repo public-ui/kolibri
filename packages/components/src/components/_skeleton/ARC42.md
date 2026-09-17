@@ -430,7 +430,7 @@ Because callbacks are already arrow properties, both render patterns are valid:
 
 #### ⚠️ Never use `.bind(this)` with `addEventListener`/`removeEventListener`
 
-Arrow function properties automatically bind `this` at definition time. **Never** create new bound instances with `.bind(this)` in DOM event registration, as this causes listener accumulation and memory leaks — `addEventListener` and `removeEventListener` must receive the **exact same function reference** to match. Use an arrow property, or a ref callback that removes the old listener before adding the new one (see `src/components/popover-button/component.tsx`, `handleToggle` + `componentDidRender`/`disconnectedCallback`).
+Arrow function properties automatically bind `this` at definition time. **Never** create new bound instances with `.bind(this)` in DOM event registration, as this causes listener accumulation and memory leaks — `addEventListener` and `removeEventListener` must receive the **exact same function reference** to match. Use an arrow property, or a ref callback that removes the old listener before adding the new one (see `src/components/popover-button/base.tsx`, `handleToggle` + `componentDidRender`/`disconnectedCallback`).
 
 ### Implementation Flow
 
