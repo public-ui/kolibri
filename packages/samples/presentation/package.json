@@ -36,7 +36,7 @@
 		"@public-ui/theme-kern": "workspace:*",
 		"react": "19.2.8",
 		"react-dom": "19.2.8",
-		"react-router": "8.3.0"
+		"react-router": "8.3.1"
 	},
 	"devDependencies": {
 		"@playwright/test": "1.60.0",
