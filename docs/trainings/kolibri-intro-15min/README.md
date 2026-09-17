@@ -10,18 +10,33 @@ und fehleranfällig selbst verdrahten müsstest.*
 
 ---
 
-## 1. Vor dem Vortrag (einmalig, ~2 Minuten)
+## 1. Zwei Wege
+
+**Zum schnellen Anschauen – ein Klick, kein Setup:**
+<https://claude.ai/artifact/1tb5sQHC2xphAbrD9f9QZH>
+Alle fünf Schritte als Live-Seite, KoliBri direkt von jsDelivr. Ohne Icons (die Icon-Schrift
+ist ein Stylesheet, und die Seite darf Stylesheets nur von Google Fonts laden) – inhaltlich
+ändert das nichts.
+
+**Für den Vortrag – lokal und offline:**
 
 ```bash
 cd docs/trainings/kolibri-intro-15min
-node fetch-vendor.mjs          # holt KoliBri 4.4.0 nach demo/vendor/ (~26 MB)
+node fetch-vendor.mjs          # ZWINGEND nach jedem frischen Checkout
 npx http-server -p 8080 demo   # ES-Module brauchen HTTP, file:// reicht nicht
 ```
 
 Dann `http://127.0.0.1:8080/index.html` öffnen.
 
-Die Demo läuft danach **vollständig offline** – kein WLAN auf der Bühne nötig.
-Der Ordner `demo/vendor/` ist bewusst nicht eingecheckt (siehe `.gitignore`).
+> **Der häufigste Stolperstein:** `demo/vendor/` liegt **nicht im Repository** – 26 MB Bundles
+> gehören nicht in ein Git-Repo. Ohne `node fetch-vendor.mjs` rendert keine einzige Komponente.
+> Seit dem Boot-Wächter sagt die Seite das auch selbst, statt leer zu bleiben.
+
+Danach läuft die Demo **vollständig offline** – kein WLAN auf der Bühne nötig.
+
+> **Und noch eine Orientierung:** `index.html` ist nur die Übersicht, dort gibt es keine
+> Komponenten. Die Buttons stehen auf Schritt 1, der **Röntgenblick-Knopf allein auf Schritt 3**,
+> der Theme-Umschalter auf Schritt 4. Schritt 0 und 5 kommen absichtlich ohne KoliBri aus.
 
 **Bühnen-Checkliste:**
 
@@ -330,6 +345,8 @@ Wenn jemand nachhakt – hier stehen die Dinge im Code:
 | Problem | Reaktion |
 |---|---|
 | Seite zeigt „Diese Seite braucht einen Webserver" | Sie wurde per `file://` geöffnet. Server starten: `npx http-server -p 8080 demo` |
+| Banner „KoliBri wurde nicht geladen" | `demo/vendor/` fehlt. Einmal `node fetch-vendor.mjs` ausführen |
+| Keine Buttons, kein Röntgenblick zu sehen | Vermutlich `index.html`, Schritt 0 oder 5 – dort gibt es keine. Röntgenblick sitzt auf Schritt 3 |
 | Seite bleibt weiß, Komponenten rendern nicht | `register(...)` lief nicht durch. Neu laden. Wenn es bleibt: `demo/vendor/` fehlt → `node fetch-vendor.mjs` |
 | Komponenten da, aber ungestylt | Theme wurde nicht registriert – fast immer ein Tippfehler im Import. Auf Schritt 1 zurückfallen |
 | Theme-Wechsel lädt nicht neu | Vorbereiteten zweiten Tab mit `?theme=kern` nehmen |

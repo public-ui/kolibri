@@ -102,3 +102,21 @@ pre i { color: #9aa6b5; font-style: normal; }
 /* kol-alert setzt display auf :host und ueberstimmt damit das hidden-Attribut
    der UA-Styles. Ohne diese Regel waere ein verstecktes Alert trotzdem sichtbar. */
 kol-alert[hidden] { display: none !important; }
+
+/* --- Banner, wenn KoliBri nicht geladen werden konnte --- */
+.bootguard {
+  margin: 0; padding: 1.1rem 1.3rem;
+  border-bottom: 3px solid #b3003c; background: #fff5f8; color: #1a1a1a;
+  font: 15px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.bootguard strong { color: #b3003c; display: block; margin-bottom: .3rem; font-size: 1.05rem; }
+.bootguard code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: #ffe3ec; padding: .1em .4em; border-radius: 3px;
+}
+.bootguard details { margin-top: .6rem; }
+.bootguard summary { cursor: pointer; color: #5b6472; font-size: .88rem; }
+.bootguard pre {
+  margin: .5rem 0 0; background: #14181f; color: #e6edf3;
+  padding: .7rem .9rem; border-radius: 6px; font-size: .78rem; overflow-x: auto;
+}

@@ -58,9 +58,21 @@
   </ul>
 
   <div class="note">
+    <strong>Was wo lebt:</strong> Diese Seite ist nur die Übersicht – hier gibt es bewusst
+    keine Komponenten. Die interaktiven Teile liegen auf den Schritten:
+    <br />• <strong>Schritt 1</strong> – Buttons und ein Feld, das beim Verlassen prüft
+    <br />• <strong>Schritt 3</strong> – das Formular und der <strong>Röntgenblick</strong>-Knopf
+    (nur dort, oben rechts in der Leiste)
+    <br />• <strong>Schritt 4</strong> – Theme-Umschalter und Token-Override
+    <br />Schritt 0 und 5 kommen absichtlich ohne KoliBri aus: Schritt 0 ist von Hand gebaut,
+    Schritt 5 ist ein Code-Vergleich.
+  </div>
+
+  <div class="note">
     <strong>Vor dem Vortrag:</strong> Diese Demo läuft vollständig offline aus dem Ordner
-    <code>vendor/</code>. Fehlt er, einmal <code>node fetch-vendor.mjs</code> im Ordner
-    <code>kolibri-intro-15min</code> ausführen. Starten mit einem beliebigen statischen Server,
+    <code>vendor/</code>. Der Ordner <code>vendor/</code> ist <strong>nicht im Repository</strong> (26 MB) – nach einem
+    frischen Checkout also zwingend einmal <code>node fetch-vendor.mjs</code> im Ordner
+    <code>kolibri-intro-15min</code> ausführen, sonst rendert keine einzige Komponente. Starten mit einem beliebigen statischen Server,
     zum Beispiel <code>npx http-server -p 8080 demo</code> – <code>file://</code> reicht nicht,
     weil ES-Module über HTTP geladen werden müssen.
   </div>

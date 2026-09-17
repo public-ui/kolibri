@@ -25,6 +25,43 @@
   }
 </script>
 
+<script>
+  /* Boot-Waechter: Wenn KoliBri nicht laedt, bleibt die Seite sonst stumm leer.
+     Haeufigste Ursache ist ein fehlender Ordner demo/vendor/ - der ist absichtlich
+     nicht im Repo und wird mit "node fetch-vendor.mjs" geholt. */
+  (function () {
+    if (location.protocol === 'file:') return; // dafuer gibt es den Guard oben
+    var fehler = [];
+    var merken = function (text) { if (text && fehler.indexOf(text) === -1) fehler.push(text); };
+    window.addEventListener('error', function (e) {
+      if (e.target && e.target !== window && (e.target.src || e.target.href)) {
+        merken('Nicht ladbar: ' + (e.target.src || e.target.href));
+      } else if (e.message) {
+        merken(e.message);
+      }
+    }, true);
+    window.addEventListener('unhandledrejection', function (e) {
+      merken(String((e.reason && e.reason.message) || e.reason || ''));
+    });
+
+    setTimeout(function () {
+      if (document.documentElement.dataset.kolibriReady === 'true') return;
+      if (document.querySelector('.kol-button, [class*="hydrated"]')) return;
+      var box = document.createElement('div');
+      box.className = 'bootguard';
+      box.innerHTML =
+        '<strong>KoliBri wurde nicht geladen.</strong>' +
+        'Am wahrscheinlichsten fehlt der Ordner <code>demo/vendor/</code> \u2013 er ist absichtlich ' +
+        'nicht im Repository (26 MB). Einmal im Ordner <code>kolibri-intro-15min</code> ausf\u00fchren:' +
+        '<pre>node fetch-vendor.mjs</pre>' +
+        (fehler.length
+          ? '<details><summary>Technische Details (' + fehler.length + ')</summary><pre>' +
+            fehler.slice(0, 5).join('\n').replace(/</g, '&lt;') + '</pre></details>'
+          : '');
+      document.body.insertBefore(box, document.body.firstChild);
+    }, 8000);
+  })();
+</script>
 <link rel="stylesheet" href="./vendor/components/assets/kolicons/style.css" />
 
 <!-- Die Import-Map ist die einzige Stelle, an der Pfade stehen.
