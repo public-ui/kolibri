@@ -1438,8 +1438,8 @@ importers:
         version: 4.4.3
     devDependencies:
       '@modelcontextprotocol/inspector':
-        specifier: 2.4.0
-        version: 2.4.0(@modelcontextprotocol/sdk@1.30.0(zod@4.4.3))(@types/node@26.4.0)(@types/react@19.2.18)(esbuild@0.28.2)(express@5.2.1)(jiti@2.7.0)(less@4.9.0)(react-dom@19.2.8(react@19.2.8))(sass-embedded@1.103.1)(sass@1.103.1)(terser@5.51.2)(tsx@4.23.13)
+        specifier: 2.6.0
+        version: 2.6.0(@modelcontextprotocol/sdk@1.30.0(zod@4.4.3))(@types/node@26.4.0)(@types/react@19.2.18)(esbuild@0.28.2)(express@5.2.1)(jiti@2.7.0)(less@4.9.0)(react-dom@19.2.8(react@19.2.8))(sass-embedded@1.103.1)(sass@1.103.1)(terser@5.51.2)(tsx@4.23.13)
       '@public-ui/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
@@ -3957,8 +3957,8 @@ packages:
       react-dom:
         optional: true
 
-  '@modelcontextprotocol/inspector@2.4.0':
-    resolution: {integrity: sha512-DlBEtTGpXnlaHtFQwzZi7vE2rjartTCMRnRiuv7YsYIlTlVBLZlNbTIYX3B4mYefL/+e8QS1u9GzcwXWM+FwFA==}
+  '@modelcontextprotocol/inspector@2.6.0':
+    resolution: {integrity: sha512-e/kC3Xx+iqsYg17nxZtp9H6ZfpK8gVlGklsT/4LcpbSgMVaAQZCa5jihRvcrmnksNl+h5dcwm7WgH/ao2gI1ew==}
     engines: {node: '>=22.19.0'}
     hasBin: true
 
@@ -16567,7 +16567,7 @@ snapshots:
       react: 19.2.8
       react-dom: 19.2.8(react@19.2.8)
 
-  '@modelcontextprotocol/inspector@2.4.0(@modelcontextprotocol/sdk@1.30.0(zod@4.4.3))(@types/node@26.4.0)(@types/react@19.2.18)(esbuild@0.28.2)(express@5.2.1)(jiti@2.7.0)(less@4.9.0)(react-dom@19.2.8(react@19.2.8))(sass-embedded@1.103.1)(sass@1.103.1)(terser@5.51.2)(tsx@4.23.13)':
+  '@modelcontextprotocol/inspector@2.6.0(@modelcontextprotocol/sdk@1.30.0(zod@4.4.3))(@types/node@26.4.0)(@types/react@19.2.18)(esbuild@0.28.2)(express@5.2.1)(jiti@2.7.0)(less@4.9.0)(react-dom@19.2.8(react@19.2.8))(sass-embedded@1.103.1)(sass@1.103.1)(terser@5.51.2)(tsx@4.23.13)':
     dependencies:
       '@hono/node-server': 2.1.0(hono@4.13.7)
       '@modelcontextprotocol/client': 2.0.0
