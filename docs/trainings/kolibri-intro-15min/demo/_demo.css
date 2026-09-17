@@ -70,3 +70,35 @@ pre i { color: #9aa6b5; font-style: normal; }
 .steplist a:hover { border-color: #2b6cb0; background: #f6faff; }
 .steplist strong { display: block; }
 .steplist span { color: var(--muted); font-size: .9rem; }
+
+/* --- Hinweis, wenn die Seite per file:// geoeffnet wurde --- */
+.fileguard {
+  max-width: 40rem; margin: 3rem auto; padding: 1.6rem 1.8rem;
+  border: 2px solid #b3003c; border-radius: 10px; background: #fff5f8;
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: #1a1a1a;
+}
+.fileguard h1 { font-size: 1.25rem; margin: 0 0 .6rem; color: #b3003c; }
+.fileguard p { margin: 0 0 .8rem; }
+.fileguard pre {
+  background: #14181f; color: #e6edf3; padding: .9rem 1rem;
+  border-radius: 8px; font-size: .85rem; overflow-x: auto; margin: 0 0 .8rem;
+}
+.fileguard small { color: #5b6472; }
+
+/* --- Sichtbare Rueckmeldung der Demo ("was ist gerade passiert?") --- */
+.readout {
+  margin-top: 1.2rem; padding: .75rem 1rem;
+  border: 1px solid var(--rule); border-left: 3px solid #2b6cb0;
+  border-radius: 0 8px 8px 0; background: #f6faff;
+  font-size: .9rem; min-height: 2.9rem;
+}
+.readout b { font-weight: 700; }
+.readout code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: .88em; background: #e3eef8; padding: .1em .35em; border-radius: 3px;
+}
+.readout--empty { color: var(--muted); font-style: italic; }
+
+/* kol-alert setzt display auf :host und ueberstimmt damit das hidden-Attribut
+   der UA-Styles. Ohne diese Regel waere ein verstecktes Alert trotzdem sichtbar. */
+kol-alert[hidden] { display: none !important; }

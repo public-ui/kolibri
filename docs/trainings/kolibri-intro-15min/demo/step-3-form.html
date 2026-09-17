@@ -6,6 +6,24 @@
 <title>Schritt 3 – Komposition und der Röntgenblick</title>
 <link rel="icon" href="data:," />
 <link rel="stylesheet" href="./_demo.css" />
+<script>
+  /* ES-Module laedt der Browser nur ueber HTTP. Per file:// bliebe die Seite
+     kommentarlos leer - deshalb hier die Startanleitung statt einer weissen Flaeche. */
+  if (location.protocol === 'file:') {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.body.innerHTML = [
+        '<div class="fileguard">',
+        '<h1>Diese Seite braucht einen Webserver</h1>',
+        '<p>Sie wurde per <b>file://</b> geöffnet. Browser laden ES-Module nur über HTTP – ',
+        'ohne Server bleiben die KoliBri-Komponenten unsichtbar.</p>',
+        '<pre>cd docs/trainings/kolibri-intro-15min\nnpx http-server -p 8080 demo</pre>',
+        '<p>Dann <b>http://127.0.0.1:8080/index.html</b> öffnen.</p>',
+        '<small>Fehlt der Ordner demo/vendor/, vorher einmal: node fetch-vendor.mjs</small>',
+        '</div>'
+      ].join('');
+    });
+  }
+</script>
 <link rel="stylesheet" href="./vendor/components/assets/kolicons/style.css" />
 <script type="importmap">
 {
@@ -23,6 +41,78 @@
   await register(DEFAULT, defineCustomElements);
   document.documentElement.dataset.kolibriReady = 'true';
 
+  const form = document.querySelector('#f');
+  const alert = document.querySelector('#erfolg');
+  const wert = (el) => String(el._value ?? '').trim();
+
+  // --- Die Regeln. Pro Feld eine Pruefung, mehr ist es nicht. ---
+  const felder = [
+    {
+      el: document.querySelector('#name'),
+      pruefen: (v) => (v === '' ? 'Bitte geben Sie Ihren Namen an.' : null),
+    },
+    {
+      el: document.querySelector('#mail'),
+      pruefen: (v) => {
+        if (v === '') return 'Bitte geben Sie eine E-Mail-Adresse an.';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return 'Bitte geben Sie eine gültige E-Mail-Adresse an.';
+        return null;
+      },
+    },
+  ];
+
+  // _msg und _touched sind Properties, keine Attribute - deshalb per JavaScript.
+  const fehlerSetzen = (el, text) => {
+    el._msg = { _type: 'error', _description: text };
+    el._touched = true;
+  };
+  const fehlerLoeschen = (el) => {
+    el._msg = undefined;
+    el._touched = false;
+  };
+
+  // Sobald ein Feld korrigiert ist, verschwindet seine Meldung wieder.
+  felder.forEach(({ el, pruefen }) => {
+    el._on = {
+      onInput: (_event, value) => {
+        if (pruefen(String(value ?? '').trim()) === null) fehlerLoeschen(el);
+      },
+    };
+  });
+
+  // --- Das eigentliche Abschicken ---
+  form._on = {
+    onSubmit: () => {
+      alert.hidden = true;
+      const offen = [];
+
+      for (const { el, pruefen } of felder) {
+        const text = pruefen(wert(el));
+        if (text) {
+          fehlerSetzen(el, text);
+          offen.push({ message: text, selector: '#' + el.id });
+        } else {
+          fehlerLoeschen(el);
+        }
+      }
+
+      form._errorList = offen;
+
+      if (offen.length > 0) {
+        // Fokus in die Fehlerliste: wer mit der Tastatur arbeitet, landet dort,
+        // wo steht, was zu tun ist - nicht irgendwo im Formular.
+        setTimeout(() => form.focusErrorList?.(), 50);
+        return;
+      }
+
+      // Alles sauber: bestätigen und das Formular leeren.
+      alert.hidden = false;
+      felder.forEach(({ el }) => { el._value = ''; });
+      document.querySelector('#anliegen')._value = '';
+      setTimeout(() => alert.scrollIntoView({ block: 'nearest' }), 50);
+    },
+  };
+
   // --- Buehnen-Werkzeug: liest aus dem Shadow DOM, was KoliBri erzeugt hat ---
   const xray = () => {
     const host = document.querySelector('#mail');
@@ -32,7 +122,7 @@
     const lines = [
       `<input  type="${input.type}"`,
       `        required=${input.hasAttribute('required')}`,
-      `        aria-invalid="${input.getAttribute('aria-invalid')}"`,
+      `        aria-invalid=${input.hasAttribute('aria-invalid') ? '"' + input.getAttribute('aria-invalid') + '"' : '(nicht gesetzt – Feld ist in Ordnung)'}`,
       `        aria-describedby="${ids.join(' ')}" />`,
       '',
       'Was der Screenreader daraus vorliest:',
@@ -44,6 +134,9 @@
         ? `     → "${el.textContent.trim()}"`
         : '     → (noch kein Element – die ID ist reserviert, Screenreader überspringen sie)');
     }
+    if (ids.length === 0) {
+      lines.push('  (noch keine – erst das Formular abschicken, dann wird es interessant)');
+    }
     const btn = document.querySelector('#send')?.shadowRoot?.querySelector('button');
     if (btn) {
       lines.push('', `Zielgröße des Buttons: min-height = ${getComputedStyle(btn).minHeight}  (WCAG 2.5.5 verlangt 44px)`);
@@ -54,16 +147,6 @@
   document.querySelector('#xray').addEventListener('click', () => {
     document.querySelector('#xray-out').textContent = xray();
   });
-
-  // --- Fehlerliste mit Fokussprung ---
-  document.querySelector('#fail').addEventListener('click', () => {
-    const form = document.querySelector('#f');
-    form._errorList = [
-      { message: 'Bitte geben Sie eine gültige E-Mail-Adresse an.', selector: '#mail' },
-    ];
-    // Ein Tick warten, damit die Komponente die Liste gerendert hat.
-    setTimeout(() => form.focusErrorList?.(), 50);
-  });
 </script>
 </head>
 <body>
@@ -73,7 +156,6 @@
   <a href="./index.html">Übersicht</a>
   <a href="./step-2-island.html">← Zurück</a>
   <a href="./step-4-theme.html">Weiter →</a>
-  <button id="fail" type="button">Fehler auslösen</button>
   <button id="xray" type="button">Röntgenblick</button>
 </nav>
 
@@ -81,20 +163,34 @@
   <h1>Bausteine, zusammengesetzt.</h1>
   <p class="lead">Karte, Formular, Felder, Button – nichts davon weiß voneinander, und trotzdem passt es.</p>
 
+  <kol-alert id="erfolg" hidden _type="success" _label="Anfrage eingegangen" _level="2" _has-closer>
+    Wir melden uns innerhalb von zwei Werktagen.
+  </kol-alert>
+
   <kol-card _label="Terminanfrage" _level="2">
     <kol-form id="f">
       <div class="stack">
-        <kol-input-text _label="Name" _required></kol-input-text>
+        <kol-input-text id="name" _label="Name" _required></kol-input-text>
         <kol-input-email id="mail" _label="E-Mail" _required
-          _hint="Wir nutzen die Adresse nur für die Terminbestätigung."
-          _msg='{"_type":"error","_description":"Bitte geben Sie eine gültige E-Mail-Adresse an."}'
-          _touched></kol-input-email>
-        <kol-input-text _label="Anliegen" _hint="Optional. Maximal 120 Zeichen."
+          _hint="Wir nutzen die Adresse nur für die Terminbestätigung."></kol-input-email>
+        <kol-input-text id="anliegen" _label="Anliegen" _hint="Optional. Maximal 120 Zeichen."
           _max-length="120" _has-counter></kol-input-text>
         <kol-button id="send" _label="Absenden" _variant="primary" _type="submit"></kol-button>
       </div>
     </kol-form>
   </kol-card>
+
+  <div class="note">
+    <strong>Einmal leer abschicken – und zusehen, was passiert:</strong>
+    <br />• Am Formularkopf erscheint eine Fehlerliste, und der <em>Fokus springt hinein</em>.
+    Wer mit der Tastatur arbeitet, landet nicht irgendwo, sondern dort, wo steht, was zu tun ist.
+    <br />• Die betroffenen Felder tragen ab jetzt <code>aria-invalid="true"</code>.
+    <br />• Korrigiert man ein Feld, verschwindet seine Meldung von selbst wieder.
+    <br /><br />
+    Der Code dahinter ist kurz: pro Feld eine Prüffunktion, dann <code>_msg</code> und
+    <code>_touched</code> setzen und <code>form._errorList</code> füllen.
+    Die gesamte ARIA-Verdrahtung macht KoliBri daraus von allein.
+  </div>
 
   <div class="note">
     <strong>Nichts davon steht im Markup oben:</strong>
@@ -115,7 +211,7 @@
     In React/JSX schreibt man dagegen wieder <code>_maxLength</code>.
   </div>
 
-  <pre id="xray-out">Auf „Röntgenblick" klicken …</pre>
+  <pre id="xray-out">Erst abschicken, dann auf „Röntgenblick" klicken …</pre>
 </main>
 </body>
 </html>

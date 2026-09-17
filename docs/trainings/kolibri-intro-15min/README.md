@@ -25,6 +25,8 @@ Der Ordner `demo/vendor/` ist bewusst nicht eingecheckt (siehe `.gitignore`).
 
 **Bühnen-Checkliste:**
 
+- [ ] **Über den Server öffnen, nicht per Doppelklick.** Per `file://` bleiben die Seiten leer –
+      sie zeigen dann eine Anleitung statt der Demo
 - [ ] Alle sechs Seiten einmal durchklicken, damit der Browser-Cache warm ist
 - [ ] Browser-Zoom auf ~125 % – die Demo ist dafür ausgelegt
 - [ ] DevTools brauchst du **nicht**: Schritt 3 hat einen eigenen „Röntgenblick"-Knopf
@@ -40,9 +42,9 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 | Zeit | Schritt | Beat | Gefühl im Publikum |
 |---|---|---|---|
 | 0:00–1:30 | 0 | Ein Feld, von Hand. Wo ist der Fehler? | Unbehagen, Wiedererkennung |
-| 1:30–4:00 | 1 | Dasselbe in einem Tag | Erleichterung |
-| 4:00–6:30 | 2 | „Wir haben aber Bestand" → Insel | Einwand entkräftet |
-| 6:30–10:00 | 3 | Röntgenblick: was KoliBri still tut | **Höhepunkt** |
+| 1:30–4:00 | 1 | Dasselbe in einem Tag – und es prüft wirklich | Erleichterung |
+| 4:00–6:30 | 2 | „Wir haben aber Bestand" → Insel im nativen Formular | Einwand entkräftet |
+| 6:30–10:00 | 3 | Leer abschicken → Fehlerliste, Fokussprung, Röntgenblick | **Höhepunkt** |
 | 10:00–12:30 | 4 | Gleiches Markup, anderes Haus | Weite, Perspektive |
 | 12:30–14:00 | 5 | Dasselbe in React | Anschlussfähigkeit |
 | 14:00–15:00 | – | Rückblende auf Schritt 0 | Schluss |
@@ -101,7 +103,21 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 > Es gibt keine KoliBri-Komponente ohne Beschriftung. Man kann sie nicht vergessen.
 > Barrierefreiheit ist hier kein Schalter, den man anknipst – sie ist die einzige Betriebsart."
 
-▶ Auf die Button-Reihe zeigen.
+▶ **Ins Feld `abc` tippen und wegklicken.** Der Fehler erscheint.
+
+> „Und das ist keine Dekoration – das Feld prüft wirklich.
+> Beschriftung, Hinweis, Fehlermeldung, und gleich sehen wir, was darunter passiert."
+
+▶ **Eine gültige Adresse eintippen.** Der Fehler verschwindet.
+
+> „Fehler weg, ohne dass ich etwas aufräumen muss.
+> Im Code sind das zwei Zeilen: `_msg` setzen, `_msg` wieder leeren.
+>
+> Kleiner, aber wichtiger Punkt für später: `_msg`, `_touched` und `_on` sind
+> *Properties*, keine Attribute. Die setzt ihr per JavaScript, nicht im HTML.
+> Deshalb steht im Markup oben kein Fehlerzustand."
+
+▶ Auf die Button-Reihe zeigen, einen anklicken – die Zeile darunter reagiert.
 
 > „Die Varianten hier – primary, secondary, danger, ghost – merkt euch die kurz.
 > Die stehen nämlich gar nicht im Komponenten-Code. Die kommen aus dem Theme.
@@ -126,14 +142,21 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 > Seht ihr den Unterschied? Oben das native Feld – rot, Serifenschrift, verbogen.
 > Unten das KoliBri-Feld – unberührt. Der Shadow DOM hält euer CSS draußen."
 
-▶ Auf den Submit-Button zeigen, einmal klicken.
+▶ **Beide Felder ausfüllen und absenden.** Unten erscheinen die GET-Parameter.
 
 > „Und umgekehrt: KoliBri färbt eure Seite nicht ein. Kein globales Stylesheet, das
 > plötzlich alles überschreibt.
 >
-> Der Submit läuft übrigens ganz normal nativ – schaut in die Adresszeile.
-> Das Feld verhält sich wie ein Formularfeld, weil es eins ist.
-> Ihr könnt also Feld für Feld migrieren. Kein Big Bang."
+> Jetzt eine Ehrlichkeit, die euch sonst eine halbe Stunde kostet:
+> Die Kapselung betrifft nicht nur CSS, sondern auch das Formular.
+> Ein Feld im Shadow DOM steht **nicht** in `form.elements` und wird beim nativen
+> Absenden **nicht** mitgeschickt – auch nicht mit `name`-Attribut.
+>
+> Die Brücke ist eine Zeile: beim Absenden den Wert der Komponente in ein verstecktes
+> natives Feld schreiben. Deshalb steht unten jetzt `mail=…` in der Ausgabe.
+>
+> Für ein einzelnes Feld im Altbestand ist das genau richtig. Wer ein ganzes Formular
+> migriert, nimmt `kol-form` – und das ist der nächste Schritt."
 
 *(Zeitmarke: 6:30)*
 
@@ -160,6 +183,21 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 > Wer schon mal ein Formular durchgehört hat, in dem bei jedem Feld ‚Stern' gesagt wird,
 > weiß, warum das ein Geschenk ist."
 
+▶ **Das Formular leer abschicken.**
+
+> „Jetzt schaut, was ein leeres Pflichtfeld auslöst.
+>
+> Oben erscheint eine Fehlerliste – und der Fokus springt hinein.
+> Wer mit der Tastatur arbeitet, landet nach dem Absenden nicht irgendwo,
+> sondern genau dort, wo steht, was zu tun ist. Von da ein Klick ins Feld.
+>
+> Im Behördenkontext ist das der Unterschied zwischen einem Formular,
+> das man ausfüllen kann, und einem, das man aufgibt."
+
+▶ **Ein Feld korrigieren.** Die Meldung verschwindet.
+
+> „Und es räumt hinter sich auf."
+
 ▶ **Auf „Röntgenblick" klicken.**
 
 > „Und das hier ist das, worum es mir eigentlich geht."
@@ -176,12 +214,11 @@ Er wird bewusst erst in Minute 7 aufgelöst – der A11y-Payoff ist die Pointe, 
 > Und ganz unten: Der Button ist 44 Pixel hoch. Das ist kein Zufall,
 > das ist die Mindest-Zielgröße aus WCAG 2.5.5 – für Menschen, die nicht zielsicher tippen."
 
-▶ **Auf „Fehler auslösen" klicken.**
+▶ **Formular ausfüllen und absenden.** Der Erfolgs-Alert erscheint, die Felder sind leer.
 
-> „Letzter Punkt, und der ist im Behördenkontext Gold wert:
-> Fehlerliste am Formularkopf, und der Fokus springt hinein.
-> Wer mit der Tastatur arbeitet, landet nach dem Absenden nicht irgendwo –
-> sondern in der Liste dessen, was zu tun ist. Von dort aus ein Klick ins Feld."
+> „Und der ganze Code dahinter? Pro Feld eine Prüffunktion, dann `_msg` setzen und
+> `form._errorList` füllen. Die ARIA-Verdrahtung, die Fehlerliste, der Fokussprung,
+> die Live-Region – das macht KoliBri daraus von allein."
 
 *(Zeitmarke: 10:00)*
 
@@ -292,18 +329,20 @@ Wenn jemand nachhakt – hier stehen die Dinge im Code:
 
 | Problem | Reaktion |
 |---|---|
+| Seite zeigt „Diese Seite braucht einen Webserver" | Sie wurde per `file://` geöffnet. Server starten: `npx http-server -p 8080 demo` |
 | Seite bleibt weiß, Komponenten rendern nicht | `register(...)` lief nicht durch. Neu laden. Wenn es bleibt: `demo/vendor/` fehlt → `node fetch-vendor.mjs` |
 | Komponenten da, aber ungestylt | Theme wurde nicht registriert – fast immer ein Tippfehler im Import. Auf Schritt 1 zurückfallen |
 | Theme-Wechsel lädt nicht neu | Vorbereiteten zweiten Tab mit `?theme=kern` nehmen |
 | Demo hängt komplett | Screenshots liegen nicht bei – erzähl Schritt 3 an der Code-Tabelle in Abschnitt 4 weiter. Der Röntgenblick-Text steht unten in Abschnitt 6 |
-| Zu wenig Zeit | Erst Schritt 5 streichen (React), dann die Fehlerliste in Schritt 3. **Niemals** Schritt 3 ganz streichen – das ist die Pointe |
+| Zu wenig Zeit | Erst Schritt 5 streichen (React), dann in Schritt 1 das Tippen ins Feld. **Niemals** das leere Abschicken in Schritt 3 streichen – das ist die Pointe |
 | Zu viel Zeit | In Schritt 3 zusätzlich: KoliBri warnt in der Konsole bei Labels unter drei lesbaren Zeichen |
 
 ---
 
 ## 6. Der Röntgenblick-Text (falls die Demo ausfällt)
 
-So sieht die Ausgabe auf einem funktionierenden Lauf aus – verifiziert mit KoliBri 4.4.0:
+So sieht die Ausgabe aus, **nachdem das Formular leer abgeschickt wurde** –
+verifiziert mit KoliBri 4.4.0:
 
 ```
 <input  type="email"
@@ -313,7 +352,7 @@ So sieht die Ausgabe auf einem funktionierenden Lauf aus – verifiziert mit Kol
 
 Was der Screenreader daraus vorliest:
   input-email-msg-26f495
-     → "FehlerBitte geben Sie eine gültige E-Mail-Adresse an."
+     → "FehlerBitte geben Sie eine E-Mail-Adresse an."
   input-email-hint-26f495
      → "Wir nutzen die Adresse nur für die Terminbestätigung."
   input-email-error-26f495
@@ -321,6 +360,10 @@ Was der Screenreader daraus vorliest:
 
 Zielgröße des Buttons: min-height = 44px  (WCAG 2.5.5 verlangt 44px)
 ```
+
+> **Reihenfolge auf der Bühne:** erst abschicken, dann Röntgenblick. Vorher ist das Feld
+> fehlerfrei, dann steht dort nur der Hinweistext und `aria-invalid` ist gar nicht gesetzt –
+> korrekt, aber als Beleg langweilig.
 
 > **Zur dritten ID:** KoliBri reserviert sie für den Fehlerfall, rendert das Element aber nicht
 > immer mit. Eine ID ohne Ziel ist harmlos – assistive Technik überspringt sie stillschweigend.
@@ -351,10 +394,28 @@ nicht aus der Doku übernommen. Dabei sind drei Abweichungen von der Repo-Doku a
    `_maxLength="120"` im HTML wird kommentarlos ignoriert; richtig ist `_max-length="120"`.
    Kein Fehler, keine Warnung – nur kein Zähler. In JSX bleibt es `_maxLength`.
 
+4. **Komponenten nehmen am nativen Formular nicht teil.**
+   Ein `kol-input-email` mitten in einem `<form method="get">` steht **nicht** in
+   `form.elements` und wird beim Absenden **nicht** mitgeschickt – auch dann nicht, wenn das
+   innere `input` ein `name`-Attribut trägt (gemessen: abgeschickt wurde nur das native Feld).
+   Shadow-DOM-Felder treten dem äußeren Formular nicht bei. Schritt 2 zeigt deshalb die
+   Brücke über ein verstecktes natives Feld – und benennt die Einschränkung offen.
+
+5. **Das `hidden`-Attribut allein versteckt kein `kol-alert`.**
+   Die Komponente setzt `display` auf `:host` und überstimmt damit die UA-Regel
+   `[hidden] { display: none }`. In `_demo.css` steht deshalb eine Zeile
+   `kol-alert[hidden] { display: none !important; }`. Ohne sie ist der Erfolgs-Alert
+   von Anfang an sichtbar.
+
 Ebenfalls geprüft und bestätigt: `aria-describedby`-Verkettung, `aria-invalid` bei
 touched + error, 44-px-Zielgröße, der automatische Pflichtfeld-Satz von `kol-form`,
 der Fokussprung in die Fehlerliste, der Zeichenzähler mit `aria-live="polite"`,
 die Shadow-DOM-Isolation gegen `!important`-CSS und der Token-Override quer durch den Shadow DOM.
+
+Für das Verhalten der Demo zusätzlich verifiziert: `form._on = { onSubmit }` feuert bei
+Button-Klick **und** bei Enter im Feld, `btn._on = { onClick }` feuert, `field._on = { onInput, onBlur }`
+liefert `(event, wert)`, und `_msg`/`_touched` lassen sich zur Laufzeit setzen **und** wieder löschen
+(`aria-invalid` verschwindet dabei korrekt).
 
 ---
 

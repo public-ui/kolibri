@@ -6,6 +6,25 @@
 <title>Schritt 4 – Das Theme wechseln</title>
 <link rel="icon" href="data:," />
 <link rel="stylesheet" href="./_demo.css" />
+<script>
+  /* ES-Module laedt der Browser nur ueber HTTP. Per file:// bliebe die Seite
+     kommentarlos leer - deshalb hier die Startanleitung statt einer weissen Flaeche. */
+  if (location.protocol === 'file:') {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.body.innerHTML = [
+        '<div class="fileguard">',
+        '<h1>Diese Seite braucht einen Webserver</h1>',
+        '<p>Sie wurde per <b>file://</b> ge\u00f6ffnet. Browser laden ES-Module nur \u00fcber HTTP \u2013 ',
+        'ohne Server bleiben die KoliBri-Komponenten unsichtbar.</p>',
+        '<pre>cd docs/trainings/kolibri-intro-15min\nnpx http-server -p 8080 demo</pre>',
+        '<p>Dann <b>http://127.0.0.1:8080/index.html</b> \u00f6ffnen.</p>',
+        '<small>Fehlt der Ordner demo/vendor/, vorher einmal: node fetch-vendor.mjs</small>',
+        '</div>'
+      ].join('');
+    });
+  }
+</script>
+
 <link rel="stylesheet" href="./vendor/components/assets/kolicons/style.css" />
 <script type="importmap">
 {
@@ -52,6 +71,17 @@
     });
   });
 
+  // Auch hier sind es echte, lebendige Komponenten - nicht nur Bilder.
+  const echo = document.querySelector('#echo');
+  document.querySelectorAll('kol-card kol-button').forEach((button) => {
+    button._on = {
+      onClick: () => {
+        echo.textContent = 'Geklickt: ' + button._label + ' – im Theme „' + wanted + '".';
+        echo.classList.remove('readout--empty');
+      },
+    };
+  });
+
   // Design-Tokens live ueberschreiben - ohne Neuladen, quer durch den Shadow DOM
   const tokens = document.createElement('style');
   tokens.textContent = `:root {
@@ -93,6 +123,8 @@
       </div>
     </div>
   </kol-card>
+
+  <p class="readout readout--empty" id="echo">Die Buttons sind echt – einmal draufklicken.</p>
 
   <div class="note">
     <strong>Zwei Ebenen, zwei Geschwindigkeiten:</strong>

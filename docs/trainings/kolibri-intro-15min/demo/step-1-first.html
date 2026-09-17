@@ -6,6 +6,25 @@
 <title>Schritt 1 – Die erste Komponente</title>
 <link rel="icon" href="data:," />
 <link rel="stylesheet" href="./_demo.css" />
+<script>
+  /* ES-Module laedt der Browser nur ueber HTTP. Per file:// bliebe die Seite
+     kommentarlos leer - deshalb hier die Startanleitung statt einer weissen Flaeche. */
+  if (location.protocol === 'file:') {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.body.innerHTML = [
+        '<div class="fileguard">',
+        '<h1>Diese Seite braucht einen Webserver</h1>',
+        '<p>Sie wurde per <b>file://</b> ge\u00f6ffnet. Browser laden ES-Module nur \u00fcber HTTP \u2013 ',
+        'ohne Server bleiben die KoliBri-Komponenten unsichtbar.</p>',
+        '<pre>cd docs/trainings/kolibri-intro-15min\nnpx http-server -p 8080 demo</pre>',
+        '<p>Dann <b>http://127.0.0.1:8080/index.html</b> \u00f6ffnen.</p>',
+        '<small>Fehlt der Ordner demo/vendor/, vorher einmal: node fetch-vendor.mjs</small>',
+        '</div>'
+      ].join('');
+    });
+  }
+</script>
+
 <link rel="stylesheet" href="./vendor/components/assets/kolicons/style.css" />
 
 <!-- Die Import-Map ist die einzige Stelle, an der Pfade stehen.
@@ -27,6 +46,48 @@
 
   await register(DEFAULT, defineCustomElements);
   document.documentElement.dataset.kolibriReady = 'true';
+
+  const out = document.querySelector('#out');
+  const sagen = (html) => {
+    out.innerHTML = html;
+    out.classList.remove('readout--empty');
+  };
+
+  // --- Validierung: _msg und _touched sind Properties, keine Attribute ---
+  const mail = document.querySelector('#mail');
+  const istGueltig = (wert) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(wert.trim());
+
+  const pruefen = (wert, beimTippen) => {
+    if (wert.trim() === '') {
+      // Leeres Pflichtfeld erst nach dem Verlassen bemaengeln, nicht beim Tippen.
+      if (beimTippen) return;
+      mail._msg = { _type: 'error', _description: 'Bitte geben Sie eine E-Mail-Adresse an.' };
+      mail._touched = true;
+      sagen('Pflichtfeld leer → <code>aria-invalid="true"</code>');
+      return;
+    }
+    if (istGueltig(wert)) {
+      mail._msg = undefined;
+      mail._touched = false;
+      sagen('Gültig → Fehler entfernt, <code>aria-invalid</code> ist weg.');
+    } else if (!beimTippen) {
+      mail._msg = { _type: 'error', _description: 'Bitte geben Sie eine gültige E-Mail-Adresse an.' };
+      mail._touched = true;
+      sagen('Ungültig → <code>aria-invalid="true"</code>, Meldung per <code>aria-describedby</code> verknüpft.');
+    }
+  };
+
+  mail._on = {
+    onBlur: (_event, wert) => pruefen(String(wert ?? mail._value ?? ''), false),
+    onInput: (_event, wert) => pruefen(String(wert ?? ''), true),
+  };
+
+  // --- Buttons: _on ist ein Objekt mit Callbacks ---
+  document.querySelectorAll('#buttons kol-button').forEach((button) => {
+    button._on = {
+      onClick: () => sagen('Geklickt: <b>' + button._label + '</b> (Variante <code>' + (button._variant ?? 'ohne') + '</code>)'),
+    };
+  });
 </script>
 </head>
 <body>
@@ -44,19 +105,20 @@
 
   <div class="stack">
     <kol-input-email
+      id="mail"
       _label="E-Mail"
       _required
       _hint="Wir nutzen die Adresse nur für die Terminbestätigung."
-      _msg='{"_type":"error","_description":"Bitte geben Sie eine gültige E-Mail-Adresse an."}'
-      _touched
     ></kol-input-email>
 
-    <div class="row">
+    <div class="row" id="buttons">
       <kol-button _label="Absenden" _variant="primary" _icons="kolicon-house"></kol-button>
       <kol-button _label="Abbrechen" _variant="secondary"></kol-button>
       <kol-button _label="Löschen" _variant="danger"></kol-button>
       <kol-button _label="Mehr" _variant="ghost"></kol-button>
     </div>
+
+    <p class="readout readout--empty" id="out">Noch nichts passiert – tippt ins Feld oder klickt einen Button.</p>
   </div>
 
   <div class="note">
@@ -67,6 +129,12 @@
     <br /><br />
     Die Varianten (<code>primary</code>, <code>secondary</code>, <code>danger</code>, <code>ghost</code>)
     sind übrigens keine feste Liste im Code, sondern kommen aus dem <em>Theme</em>. Merken – das wird Schritt 4.
+    <br /><br />
+    <strong>Und noch eine Konvention:</strong> Verhalten hängt an <code>_on</code> –
+    einem Objekt mit Callbacks, das per JavaScript gesetzt wird:
+    <code>feld._on = { onBlur: … }</code>. Dasselbe gilt für <code>_msg</code> und
+    <code>_touched</code>: Das sind Properties, keine Attribute. Deshalb steht im Markup oben
+    kein Fehler – der entsteht erst, wenn ihr einen macht.
   </div>
 </main>
 </body>

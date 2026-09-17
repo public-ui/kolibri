@@ -6,6 +6,25 @@
 <title>Schritt 2 – Insel im Bestand</title>
 <link rel="icon" href="data:," />
 <link rel="stylesheet" href="./_demo.css" />
+<script>
+  /* ES-Module laedt der Browser nur ueber HTTP. Per file:// bliebe die Seite
+     kommentarlos leer - deshalb hier die Startanleitung statt einer weissen Flaeche. */
+  if (location.protocol === 'file:') {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.body.innerHTML = [
+        '<div class="fileguard">',
+        '<h1>Diese Seite braucht einen Webserver</h1>',
+        '<p>Sie wurde per <b>file://</b> ge\u00f6ffnet. Browser laden ES-Module nur \u00fcber HTTP \u2013 ',
+        'ohne Server bleiben die KoliBri-Komponenten unsichtbar.</p>',
+        '<pre>cd docs/trainings/kolibri-intro-15min\nnpx http-server -p 8080 demo</pre>',
+        '<p>Dann <b>http://127.0.0.1:8080/index.html</b> \u00f6ffnen.</p>',
+        '<small>Fehlt der Ordner demo/vendor/, vorher einmal: node fetch-vendor.mjs</small>',
+        '</div>'
+      ].join('');
+    });
+  }
+</script>
+
 <link rel="stylesheet" href="./vendor/components/assets/kolicons/style.css" />
 <script type="importmap">
 {
@@ -22,6 +41,26 @@
   import { DEFAULT } from '@public-ui/theme-default';
   await register(DEFAULT, defineCustomElements);
   document.documentElement.dataset.kolibriReady = 'true';
+
+  // Shadow DOM kapselt nicht nur Styles, sondern auch die Formular-Teilnahme:
+  // die Komponente taucht NICHT in form.elements auf. Eine Zeile beim Absenden genuegt.
+  const form = document.querySelector('form');
+  const mail = document.querySelector('#mail');
+  const bridge = document.querySelector('#mail-bridge');
+  form.addEventListener('submit', () => {
+    bridge.value = String(mail._value ?? '');
+  });
+
+  // Beweis statt Behauptung: zeigen, was das native Formular abgeschickt hat.
+  const out = document.querySelector('#out');
+  const params = new URLSearchParams(location.search);
+  if ([...params.keys()].length > 0) {
+    const zeilen = [...params.entries()]
+      .map(([name, wert]) => '<code>' + name + '</code> = ' + (wert === '' ? '<i>(leer)</i>' : wert))
+      .join('<br />');
+    out.innerHTML = 'Das native Formular hat per <code>method="get"</code> abgeschickt:<br />' + zeilen;
+    out.classList.remove('readout--empty');
+  }
 </script>
 <style>
   /* Absichtlich aggressives "Altbestand"-CSS. Es wuerde jede normale
@@ -61,15 +100,22 @@
         <span class="legacy-hint">Natives Feld, eigenes CSS der Anwendung.</span>
       </div>
 
-      <!-- Ab hier KoliBri. Gleiches Formular, gleicher Submit. -->
+      <!-- Ab hier KoliBri. Gleiche Seite, gleiches Formular. -->
       <div class="legacy-field">
-        <kol-input-email _label="E-Mail (KoliBri)" _name="mail" _required
-                         _hint="Dieselbe Seite, dasselbe native Formular."></kol-input-email>
+        <kol-input-email id="mail" _label="E-Mail (KoliBri)" _required
+                         _hint="Gleiche Seite, gleiches Formular – nur gekapselt."></kol-input-email>
+        <!-- Die Bruecke: Felder im Shadow DOM treten dem nativen Formular nicht bei.
+             Dieses versteckte Feld traegt den Wert beim Absenden hinaus. -->
+        <input type="hidden" name="mail" id="mail-bridge" />
       </div>
 
       <button type="submit" class="legacy-submit">Absenden (nativ)</button>
     </form>
   </div>
+
+  <p class="readout readout--empty" id="out">
+    Noch nichts abgeschickt. Felder ausfüllen und „Absenden (nativ)" drücken.
+  </p>
 
   <div class="note">
     <strong>Was hier passiert – und was nicht:</strong>
@@ -79,8 +125,21 @@
     ihr Shadow DOM hält das CSS der Anwendung draußen.
     <br /><br />
     Umgekehrt gilt dasselbe: KoliBri färbt eure Seite nicht ein.
-    Und der Submit läuft weiter nativ über <code>method="get"</code> –
-    abschicken und in die Adresszeile schauen.
+  </div>
+
+  <div class="note">
+    <strong>Eine Ehrlichkeit, die im Migrationsalltag zählt:</strong>
+    Die Kapselung betrifft nicht nur CSS, sondern auch die Formular-Teilnahme.
+    Ein Feld im Shadow DOM steht <em>nicht</em> in <code>form.elements</code> und wird beim
+    nativen Absenden <em>nicht</em> mitgeschickt – auch dann nicht, wenn es innen ein
+    <code>name</code>-Attribut trägt.
+    <br /><br />
+    Die Brücke ist eine Zeile: beim Absenden den Wert aus der Komponente in ein verstecktes
+    natives Feld schreiben – <code>bridge.value = mail._value;</code>
+    Deshalb steht unten jetzt <code>mail=…</code> in der Ausgabe.
+    <br /><br />
+    Wer ein ganzes Formular migriert, nimmt statt dieser Brücke <code>kol-form</code> –
+    das kommt in Schritt 3.
   </div>
 </main>
 </body>
