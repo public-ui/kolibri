@@ -704,8 +704,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0(prettier@3.9.6)(typescript@5.9.3)
       shadow-dom-testing-library:
-        specifier: 1.14.1
-        version: 1.14.1(@testing-library/dom@10.4.1)
+        specifier: 1.14.2
+        version: 1.14.2(@testing-library/dom@10.4.1)
       stylelint:
         specifier: 17.14.1
         version: 17.14.1(typescript@5.9.3)
@@ -12430,8 +12430,8 @@ packages:
   setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
 
-  shadow-dom-testing-library@1.14.1:
-    resolution: {integrity: sha512-r/u9LP5EqxIL/TUEX1t2rNO0iWtivJRtvYn7lUZH2DzotUtmhs/EFpo1araB4PJMnFIAPf6JLE8X059Ng58ZhQ==}
+  shadow-dom-testing-library@1.14.2:
+    resolution: {integrity: sha512-h/eQPIaET73knn2NQ1TpxqVgABfGVMYIuWosr4pbNDNf8LFke9IOkD3jp3KJdVAN4zj2viY/sPKvyXHqHxsicw==}
     engines: {node: '>= 14', npm: '>= 7'}
     peerDependencies:
       '@testing-library/dom': '>= 8'
@@ -26071,7 +26071,7 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  shadow-dom-testing-library@1.14.1(@testing-library/dom@10.4.1):
+  shadow-dom-testing-library@1.14.2(@testing-library/dom@10.4.1):
     dependencies:
       '@testing-library/dom': 10.4.1
 
