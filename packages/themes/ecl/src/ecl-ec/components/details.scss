@@ -6,24 +6,44 @@
 	.kol-details {
 		--detail-icon-rotate: rotate(180deg);
 
-		&__heading-button {
-			.kol-button {
-				width: max-content;
+		/* The summary is the ghost button; the label span carries the button's text box. */
+		&__heading {
+			width: max-content;
 
-				@include ghost-button('kol-button');
+			@include ghost-button('kol-button');
 
-				.kol-span__container {
+			.kol-span {
+				color: var(--button-text-color);
+				background-color: var(--button-background-color);
+				border-radius: 2px;
+
+				min-width: var(--a11y-min-size);
+				min-height: var(--a11y-min-size);
+				padding: var(--ecl-spacing-xs) var(--ecl-spacing-m);
+
+				line-height: 1.2;
+				border: var(--button-border-color) solid var(--button-border-width);
+
+				&__container {
+					gap: to-rem(8);
 					flex-direction: row-reverse;
 				}
 
-				.kol-span__icon--left {
-					transform: var(--detail-icon-rotate);
-					transition: transform 0.3s ease-in-out;
+				&__label {
+					word-break: keep-all;
 				}
+			}
+
+			/* Three class weights: the icon mixin included via `button()` above rotates the chevron by
+			   90 degrees at `.kol-icon[class*=' kolicon-'].kolicon-chevron-right`, and this rule has to
+			   outrank it. */
+			.kol-span__container .kol-span__icon--left {
+				transform: var(--detail-icon-rotate);
+				transition: transform 0.3s ease-in-out;
 			}
 		}
 
-		&.collapsible--open {
+		&--open {
 			--detail-icon-rotate: rotate(0);
 		}
 
