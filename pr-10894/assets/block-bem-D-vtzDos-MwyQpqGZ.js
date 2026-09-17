@@ -1,0 +1,1 @@
+import{d as e}from"./index-0e2C-qJw.js";import{o as t,r as n}from"./factory-CA4gfImU-CnF9P1LC.js";var r=n(`disabled`,!1,t),i=new Map;function a(t){let n=i.get(t);return n||(n=e.forBlock(t),i.set(t,n)),n}export{a as n,r as t};
