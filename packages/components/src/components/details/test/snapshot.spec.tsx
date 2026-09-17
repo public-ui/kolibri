@@ -2,7 +2,7 @@ import { KolDetailsTag } from '../../../core/component-names';
 import type { DetailsProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
-import { KolDetails } from '../shadow';
+import { KolDetails } from '../component';
 
 executeSnapshotTests<DetailsProps>(
 	KolDetailsTag,
