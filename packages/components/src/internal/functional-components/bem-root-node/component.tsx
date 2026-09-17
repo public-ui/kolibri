@@ -36,7 +36,7 @@ type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema> = {
 	 * (i.e. the `class` attribute set by a parent component).
 	 */
 	class?: JSXBase.HTMLAttributes<HTMLElement>['class'];
-};
+} & Partial<Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'class'>>;
 
 /**
  * `bem.forBlock(block)` allocates a fresh generator closure on every call — cheap, but callers
@@ -63,6 +63,9 @@ function getBlockBem<TBlock extends keyof KoliBriComponentsBemSchema>(block: TBl
  * - Accepts a `block` name and typed `modifiers` from `KoliBriComponentsBemSchema`.
  * - Calls `bem.forBlock(block)(modifiers)` internally to generate the class string.
  * - Merges the result with the optional `class` prop.
+ * - Forwards all remaining HTML attributes (`id`, `role`, `aria-*`, `ref`, …) onto the root
+ *   `<div>` — legacy functional components spread these onto their root, and internal
+ *   consumers (form, form-field-msg, toast-item) rely on that passthrough.
  *
  * Usage:
  * ```tsx
@@ -78,9 +81,13 @@ function getBlockBem<TBlock extends keyof KoliBriComponentsBemSchema>(block: TBl
  * ```
  */
 export const BemRootNodeFC = <TBlock extends keyof KoliBriComponentsBemSchema>(
-	{ block, modifiers, class: hostClass }: BemRootNodeFCProps<TBlock>,
+	{ block, modifiers, class: hostClass, ...rest }: BemRootNodeFCProps<TBlock>,
 	children: FCChildren,
 ) => {
 	const blockBem = getBlockBem(block);
-	return <div class={clsx(blockBem(modifiers as BlockModifiers<TBlock>), hostClass)}>{children}</div>;
+	return (
+		<div class={clsx(blockBem(modifiers as BlockModifiers<TBlock>), hostClass)} {...rest}>
+			{children}
+		</div>
+	);
 };
