@@ -41,7 +41,7 @@
 	.kol-checkbox {
 		.kol-input {
 			@include kol-typography-body;
-			background-color: white;
+			background-color: var(--color-light);
 			border-color: var(--color-subtle);
 			border-style: solid;
 			border-radius: var(--border-radius);
@@ -71,7 +71,7 @@
 			}
 
 			&:not(:disabled):hover {
-				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				box-shadow: 0 2px 8px 2px var(--color-shadow);
 				border-color: var(--color-primary);
 			}
 		}
@@ -99,6 +99,8 @@
 
 	.kol-checkbox--variant-switch {
 		.kol-icon {
+			// The base layer paints the switch icon black; it sits on the `--color-light` knob.
+			color: var(--color-ink);
 			left: to-rem(2);
 			width: 1.25em;
 			height: 1.25em;
@@ -122,7 +124,7 @@
 			}
 
 			&:before {
-				background-color: white;
+				background-color: var(--color-light);
 				border-radius: 1.25em;
 				position: absolute;
 				top: calc(0.25em - to-rem(2));
@@ -221,7 +223,7 @@
 					&__label {
 						color: var(--color-light);
 						background-color: var(--color-primary-variant);
-						box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+						box-shadow: 0 2px 8px 2px var(--color-shadow);
 						border-color: var(--color-primary-variant);
 					}
 				}

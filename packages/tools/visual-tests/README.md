@@ -56,7 +56,7 @@ Add the following npm scripts to the theme's `package.json`:
 - `THEME_EXPERT`: Define the name of the export within the module. (e.g., `export const THEME_NAME = {/**/};`) Defaults to `default`.
 - `KOLIBRI_VISUAL_TESTS_TIMEOUT`: Define the Playwright [test timeout](https://playwright.dev/docs/test-timeouts).
 - `KOLIBRI_VISUAL_TESTS_EXPECT_TIMEOUT`: Define the Playwright [expect timeout](https://playwright.dev/docs/test-timeouts).
-- `KOLIBRI_VISUAL_TESTS_COLOR_SCHEME`: Choose the [CSS color scheme](https://developer.mozilla.org/docs/Web/CSS/@media/prefers-color-scheme) for the browser context. Supported values are `light` (default) and `dark`.
+- `KOLIBRI_VISUAL_TESTS_COLOR_SCHEME`: Choose the [CSS color scheme](https://developer.mozilla.org/docs/Web/CSS/@media/prefers-color-scheme) for the browser context. Supported values are `light` (default) and `dark`. A value other than `light` puts the baselines in `snapshots/theme-<export>-<scheme>/`, so a dark run never touches the light baseline. Specs must not set `colorScheme` themselves — a spec level value overrides this one.
 
 Run the tests with `npm test`. Playwright compares the screenshots with the files in the folder `snapshots/theme-<export>/` of the theme package and fails on any difference; the first run writes missing files there.
 

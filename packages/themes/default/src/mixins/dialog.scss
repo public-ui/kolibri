@@ -1,5 +1,6 @@
 @use './to-rem' as *;
 @use './card' as *;
+@use './elevation' as *;
 @use './icon' as *;
 
 @mixin kol-dialog {
@@ -8,10 +9,28 @@
 
 	.kol-dialog,
 	.kol-modal {
+		/*
+		 * A dialog floats above everything else, so it takes the highest surface level and hands it to
+		 * the card it wraps and to everything slotted into it. In light mode the level resolves to
+		 * white, which is what the user agent paints a `<dialog>` with anyway.
+		 */
+		--kol-surface: var(--color-overlay);
+		background-color: var(--color-overlay);
 		border-radius: var(--border-radius);
 
 		&__card {
-			box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
+			@include kol-elevation-outline;
+		}
+
+		/*
+		 * The user agent's own backdrop is a barely visible wash — too little separation once the page
+		 * behind it is dark. This adds a second, translucent layer *over* it rather than replacing it:
+		 * the user agent sets `background`, so overriding only `background-image` leaves its
+		 * `background-color` in place, and `--color-backdrop` is transparent in light mode. Nothing
+		 * moves there, in any browser, whatever its default backdrop happens to be.
+		 */
+		&::backdrop {
+			background-image: linear-gradient(var(--color-backdrop), var(--color-backdrop));
 		}
 	}
 }

@@ -10,8 +10,14 @@
 			row-gap: to-rem(8);
 		}
 
+		/*
+		 * The base layer paints the meter's trough white with a black border, both hardcoded, so the
+		 * theme has to restate them to make them follow the color scheme.
+		 */
 		/* Chrome, Safari, Edge (WebKit/Blink) */
 		meter::-webkit-meter-bar {
+			background: var(--color-light);
+			border-color: var(--color-ink);
 			border-radius: 6px;
 			padding: to-rem(2);
 		}
@@ -24,6 +30,8 @@
 		/* Firefox */
 		@supports (selector(::-moz-meter-bar)) {
 			meter {
+				background: var(--color-light);
+				border-color: var(--color-ink);
 				border-radius: 6px;
 				padding: to-rem(2);
 			}

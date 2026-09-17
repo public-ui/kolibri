@@ -1,0 +1,17 @@
+/*
+ * Elevation.
+ *
+ * "A lighter surface sits higher" is the rule the palette follows, and in dark mode the surface
+ * scale (`--color-surface` < `--color-light` < `--color-overlay`) carries the depth on its own. A
+ * blurred shadow on top of it only softens the boundary it is supposed to draw, so dark mode gets a
+ * hard edge instead.
+ *
+ * `light-dark()` is a color function and cannot switch a `box-shadow` geometry, so both branches are
+ * stated at once and switched by their colors: `--color-shadow-contrast` is transparent in dark
+ * mode, `--color-edge` is transparent in light mode. Neither branch moves a pixel in the other.
+ */
+@mixin kol-elevation-outline {
+	box-shadow:
+		0 0 4px var(--color-shadow-contrast),
+		0 0 0 var(--border-width) var(--color-edge);
+}
