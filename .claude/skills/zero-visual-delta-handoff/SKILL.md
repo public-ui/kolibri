@@ -296,6 +296,8 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 
 | 29 | Migrierter FC darf den transitionalen `-wc`-Tag behalten: Theme-/Basis-Selektoren treffen dessen Host-Klasse als Vorfahren (ecl `.kol-details__heading-button .kol-button`, desy `kol-link('kol-details__heading-button')`, badge `.kol-badge__smart-button .kol-button`) — vor jedem Ersetzen die Selektoren greppen; DOM-identischer FC-Port erspart die komplette Theme-Runde → Log 2026-09-14 | Details-Skeleton-Migration (PR #10884), Badge-Skeleton-Migration (PR #10889) — 2× bestätigt | Theme-Fix-Runden (25–33 Diffs wie bei Button) von vornherein vermieden |
 
+| 30 | Inlining eines Child-FCs verliert Base- UND Theme-Styles des Child-WC an der Shadow-Root-Grenze: Das Child-WC trägt sein eigenes `style.scss` (Basis: Layout, Icon-Glyph-Fonts!) **und** die Theme-Styles über sein `KOL-<TAG>`-Mapping in seinem eigenen Shadow-Root. Rendert der Parent-FC den Child-FC direkt, hängen die Elemente im Parent-Shadow-Root — dort gibt es beides nicht, außer der Parent-Stylesheet inkludiert die Basis und **jedes Theme** ein Parent-Stylesheet mit Child-Mapping liefert. Vor dem Inlining prüfen: Woher bekommt das Child heute Basis-/Theme-Styles, und liefert der Parent beide? Sonst WC-Blatt behalten → Log 2026-09-16 | Version-Skeleton-Migration (PR #10908): BadgeFC-in-Version kollabierte die Badge-Box in allen 7 Paketen (80×27 → 44×38) | 7-Changed-Image-Runde + Fehldiagnose vermieden |
+
 **Block C — Betrieb**
 
 | #   | Erfahrung (Detail)                                                                                             | Bestätigt              | Zeitersparnis bei früherer Kenntnis           |
@@ -557,6 +559,30 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 - **Evidenz**: `Visual Review: 1 visual changes approved by deleonio`, kombinierter Status `success`,
   Commit `77f332a835`; sechs Pakete 408/0, ecl 407/1 (freigegeben);
   `git diff --name-only origin/develop...HEAD -- '*.png'` = 0.
+
+### 2026-09-16 — Skeleton-Migration kol-version (PR #10908): 7 Changed-Images → 0, ohne Theme-Runde
+
+- **Ausgangslage**: Der PR inlined `BadgeFC` direkt in den `kol-version`-Shadow-Root. Ergebnis: je
+  1 Changed-Image pro Paket (Visual Review „7 changed"), Docker default 294/1 (`version/basic`),
+  Screenshot-Größe 80×27 → 44×38 — die Badge-Box kollabierte, Icon und Label stapelten vertikal.
+  Zusätzlich war `build-and-check` rot: Hydrate-SSR-Snapshot nicht nachgezogen.
+- **Ursachen & Fix-Muster**: Erfahrung #30 — das Badge-WC brachte Basis-Styles (`display: flex`,
+  `kol-icon-styles()` mit Icon-Glyph-Font) und Theme-Styles (`border-radius` usw. über
+  `KOL-BADGE`-Mapping) in seinem eigenen Shadow-Root mit; kein Theme hat ein `version.scss`/
+  `KOL-VERSION`-Mapping, also kam in `kol-version` beides nie an. Fix: der transitionale
+  `kol-badge`-WC bleibt als Blatt in `VersionFC` (Erfahrung #29-Muster), Props
+  `_color`/`_icons`/`_label` wie im Legacy-WC, `VERSION_COLOR` wieder Raw-String. Keine einzige
+  Theme-Änderung nötig.
+- **Diagnose-Weg**: Diff-Klassifikation per PIL auf den aus dem Volume kopierten
+  expected/actual-PNGs (Größensprung = Layout-Kollaps, nicht Verschiebung) → Styles im
+  Ziel-Shadow-Root geprüft (`version/style.scss` = nur `@shared/global`; kein
+  `.kol-version`-Selektor irgendwo; kein `KOL-VERSION`-Theme-Mapping) → WC-Blatt statt FC.
+- **Theme-Spezifika**: keine — der WC-Blatt-Fix ist theme-unabhängig, alle 6 Themes in einem Lauf.
+- **Fix-Commit(s)**: `d440124106` auf `vibe/version-skeleton-migration-b4ddb6`.
+- **Evidenz**: `KOLIBRI_VISUAL_TESTS_WORKERS=1 node scripts/snapshots-docker.mjs --all --check` →
+  bwst/default/desy/ecl/kern/unstyled je 295 passed, Exit 0; Components 965/965;
+  Hydrate-SSR 102 passing; `git diff origin/develop...HEAD -- '*.png'` = 0.
+  Stufe-1 vorab: `default --check -- --grep version` → 3 passed, Exit 0.
 
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 

@@ -67,6 +67,9 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'has-smart-button'>;
 	};
+	'kol-version': {
+		modifiers: null;
+	};
 	'kol-avatar': {
 		elements: {
 			image: {
@@ -305,6 +308,9 @@ const BEM: KoliBriComponentsBemSchema = {
 			'smart-button': { modifiers: null },
 		},
 		modifiers: new Set(['has-smart-button']),
+	},
+	'kol-version': {
+		modifiers: null,
 	},
 	'kol-avatar': {
 		elements: {
