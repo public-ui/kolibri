@@ -35,9 +35,5 @@ export const getRenderStates = (state: {
 	if (hasHint === true) {
 		ariaDescribedBy.push(createRelatedUniqueId(state._id, 'hint'));
 	}
-
-	if (hasError === true) {
-		ariaDescribedBy.push(createRelatedUniqueId(state._id, 'error'));
-	}
 	return { hasError, hasHint, ariaDescribedBy };
 };
