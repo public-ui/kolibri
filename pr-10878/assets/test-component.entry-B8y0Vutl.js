@@ -1,0 +1,1 @@
+import{s as e}from"./index-CODdn4hg.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};
