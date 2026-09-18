@@ -1,1 +1,0 @@
-import"./index-CTGpaElK.js";import{r as e}from"./align-DglmQnOH-BU_K-wiz.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
