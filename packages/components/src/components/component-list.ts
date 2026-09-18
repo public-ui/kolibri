@@ -8,7 +8,7 @@ import { KolBreadcrumb } from './breadcrumb/component';
 import { KolButtonLink } from './button-link/component';
 import { KolButton } from './button/component';
 import { KolButtonWc } from './button/wc';
-import { KolCard } from './card/shadow';
+import { KolCard } from './card/component';
 import { KolCombobox } from './combobox/shadow';
 import { KolDetails } from './details/shadow';
 import { KolDialogWc } from './dialog/component';

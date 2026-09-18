@@ -187,7 +187,7 @@ dialogTags.forEach((tag) => {
 				await expect(dialog).toBeHidden();
 				await dialogElement.evaluate((element) => (element as HTMLKolDialogElement).openModal());
 				await expect(dialog).toBeVisible();
-				const closeButton = page.getByTestId('card-close-button').locator('button');
+				const closeButton = page.locator('.kol-card__close-button button');
 				await expect(closeButton).toBeVisible();
 				await closeButton.evaluate((button) => (button as HTMLButtonElement).click());
 				await expect(dialog).toBeHidden();
@@ -198,7 +198,7 @@ dialogTags.forEach((tag) => {
 				const dialog = page.locator('dialog');
 				await dialogElement.evaluate((element) => (element as HTMLKolDialogElement).openModal());
 				await expect(dialog).toBeVisible();
-				await expect(page.getByTestId('card-close-button')).toHaveCount(0);
+				await expect(page.locator('.kol-card__close-button')).toHaveCount(0);
 				await dialogElement.evaluate((element) => (element as HTMLKolDialogElement).closeModal());
 				await expect(dialog).toBeHidden();
 			});
