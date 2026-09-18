@@ -83,7 +83,12 @@ kol-textarea {
 	font-size: 12px;
 }
 
-.slidev-layout * {
+/* KEINE pauschale Regel wie ".slidev-layout * { opacity: 1 !important }" -
+   die schlaegt auch Slidevs .slidev-vclick-hidden und zeigt alle Folien-
+   Inhalte sofort (Schritt-Animation komplett weg). Stattdessen gezielt nur
+   die Ausgrauung bereits aufgedeckter Schritte aufheben: Slidev dimmt
+   zuvor gezeigte Elemente auf 50%, halbtransparenter Text verliert Kontrast. */
+.slidev-layout h1 + p {
 	opacity: 1 !important;
 }
 
@@ -113,14 +118,15 @@ kol-textarea {
 
 .cover-sub blockquote,
 .cover-sub em {
-	opacity: 0.85;
+	/* Volle Deckkraft statt opacity: Der Untertitel traegt die Kernbotschaft -
+	   ausgeduenkelter Text waere geschenkter Kontrastverlust. */
 	margin: 0.4rem 0 0;
 }
 
 .hint {
-	/* Frueher opacity 0.72 - das senkt den Kontrast auf ~3.4:1 und unterschreitet
-	   WCAG 1.4.3 (4.5:1). Feste Farbe mit ausreichendem Kontrast stattdessen. */
-	color: #5b6472;
+	/* Dunkles Grau statt Transparenz: ca. 7.5:1 auf Weiss (WCAG 1.4.3 verlangt
+	   4.5:1 - Hinweise sollen auch in der letzten Reihe lesbar sein). */
+	color: #47505a;
 	margin-top: 0.8rem;
 
 	font-size: 0.78em;
@@ -194,10 +200,10 @@ kol-textarea {
    dunklere, unterscheidbare Ersatzfarben je Token-Farbe (Hex-Selektor
    auf das style-Attribut, da das der einzige stabile Anker ist). */
 .slidev-page pre span[style*='#A0ADA0'] {
-	color: #57646c !important; /* Kommentare */
+	color: #46505a !important; /* Kommentare */
 }
 .slidev-page pre span[style*='#999999'] {
-	color: #5a6472 !important; /* Interpunktion */
+	color: #4a525c !important; /* Interpunktion */
 }
 .slidev-page pre span[style*='#B07D48'] {
 	color: #7a4a10 !important; /* Orange/Schluesselwoerter */
@@ -270,8 +276,8 @@ kbd {
 }
 
 .s1demo__out.is-empty {
-	/* Frueher opacity 0.6 – Kontrast 3.16:1, unter WCAG 1.4.3. Farbe statt Transparenz. */
-	color: #5b6472;
+	/* Frueher opacity 0.6 – jetzt feste, dunkle Farbe (ca. 7.5:1 auf Weiss). */
+	color: #47505a;
 }
 
 /* ---------- Schritt 3: Formular links, Röntgenblick rechts ---------- */
@@ -338,6 +344,15 @@ kbd {
 	overflow: auto;
 
 	font-size: 0.78em;
+	line-height: 1.5;
+}
+
+/* Schritt-4-Folie: Code plus Live-Demo drueckten den Theme-Toggle bis auf
+   die Folienunterkante - dort liegt Slidevs Ecken-Overlay (opacity:0, aber
+   pointer-events:active) und schluckt die Klicks. Kompakterer Code haelt
+   die Demo ueber der kritischen Zone. */
+.slidev-page-10 pre {
+	font-size: 0.62em;
 	line-height: 1.5;
 }
 
