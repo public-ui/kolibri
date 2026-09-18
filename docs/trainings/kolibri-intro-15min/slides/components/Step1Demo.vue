@@ -7,15 +7,27 @@
 import { onMounted, ref } from 'vue';
 import { whenKoliBri } from './kolibri-ready.mjs';
 
+/**
+ * nurFeld: nur das E-Mail-Feld (Folie "Dasselbe in einem Tag" - ihr Markup
+ * steht links auf der Folie, mehr gehoert dort nicht hin). Ohne Prop dazu:
+ * die vier Button-Varianten mit Ausgabe - die erklaert erst die Folie
+ * "Es prueft wirklich".
+ */
+const props = defineProps({ nurFeld: Boolean });
+
 const host = ref(null);
 
-const MARKUP = `
-<div class="s1demo">
+const FELD = `
   <kol-input-email id="mail"
     _label="E-Mail" _required
-    _hint="Wir nutzen die Adresse nur für die Terminbestätigung."></kol-input-email>
+    _hint="Wir nutzen die Adresse nur für die Terminbestätigung."></kol-input-email>`;
+
+const MARKUP = props.nurFeld
+	? `<div class="s1demo">${FELD}</div>`
+	: `<div class="s1demo">
+  ${FELD}
   <div class="s1demo__row">
-    <kol-button _label="Absenden" _variant="primary"></kol-button>
+    <kol-button _label="Absenden" _variant="primary" _icons="kolicon-house"></kol-button>
     <kol-button _label="Abbrechen" _variant="secondary"></kol-button>
     <kol-button _label="Löschen" _variant="danger"></kol-button>
     <kol-button _label="Mehr" _variant="ghost"></kol-button>
@@ -28,14 +40,18 @@ onMounted(async () => {
 	const root = host.value;
 	root.innerHTML = MARKUP;
 
-	const out = root.querySelector('#out');
+	const out = root.querySelector('#out'); // fehlt im nurFeld-Modus
 	const sagen = (html) => {
+		if (!out) return;
 		out.innerHTML = html;
 		out.classList.remove('is-empty');
 	};
 
 	// --- Validierung: _msg und _touched sind Properties, keine Attribute ---
 	const mail = root.querySelector('#mail');
+	// Beispielwert vorbelegen: Die Demo startet gefuellt – fuer die Fehler-
+	// Show einfach alles markieren und "abc" tippen.
+	mail._value = 'max.muster@beispiel.de';
 	const istGueltig = (wert) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(wert.trim());
 
 	const pruefen = (wert, beimTippen) => {

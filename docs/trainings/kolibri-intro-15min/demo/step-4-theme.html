@@ -1,178 +1,185 @@
 <!doctype html>
 <html lang="de">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Schritt 4 – Das Theme wechseln</title>
-<link rel="icon" href="data:," />
-<link rel="stylesheet" href="./_demo.css" />
-<script>
-  /* ES-Module laedt der Browser nur ueber HTTP. Per file:// bliebe die Seite
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Schritt 4 – Das Theme wechseln</title>
+		<link rel="icon" href="data:," />
+		<link rel="stylesheet" href="./_demo.css" />
+		<script>
+			/* ES-Module laedt der Browser nur ueber HTTP. Per file:// bliebe die Seite
      kommentarlos leer - deshalb hier die Startanleitung statt einer weissen Flaeche. */
-  if (location.protocol === 'file:') {
-    document.addEventListener('DOMContentLoaded', function () {
-      document.body.innerHTML = [
-        '<div class="fileguard">',
-        '<h1>Diese Seite braucht einen Webserver</h1>',
-        '<p>Sie wurde per <b>file://</b> ge\u00f6ffnet. Browser laden ES-Module nur \u00fcber HTTP \u2013 ',
-        'ohne Server bleiben die KoliBri-Komponenten unsichtbar.</p>',
-        '<pre>cd docs/trainings/kolibri-intro-15min\nnpx http-server -p 8080 demo</pre>',
-        '<p>Dann <b>http://127.0.0.1:8080/index.html</b> \u00f6ffnen.</p>',
-        '<small>Fehlt der Ordner demo/vendor/, vorher einmal: node fetch-vendor.mjs</small>',
-        '</div>'
-      ].join('');
-    });
-  }
-</script>
+			if (location.protocol === 'file:') {
+				document.addEventListener('DOMContentLoaded', function () {
+					document.body.innerHTML = [
+						'<div class="fileguard">',
+						'<h1>Diese Seite braucht einen Webserver</h1>',
+						'<p>Sie wurde per <b>file://</b> ge\u00f6ffnet. Browser laden ES-Module nur \u00fcber HTTP \u2013 ',
+						'ohne Server bleiben die KoliBri-Komponenten unsichtbar.</p>',
+						'<pre>cd docs/trainings/kolibri-intro-15min\nnpx http-server -p 8080 demo</pre>',
+						'<p>Dann <b>http://127.0.0.1:8080/index.html</b> \u00f6ffnen.</p>',
+						'<small>Fehlt der Ordner demo/vendor/, vorher einmal: node fetch-vendor.mjs</small>',
+						'</div>',
+					].join('');
+				});
+			}
+		</script>
 
-<script>
-  /* Boot-Waechter: Wenn KoliBri nicht laedt, bleibt die Seite sonst stumm leer.
+		<script>
+			/* Boot-Waechter: Wenn KoliBri nicht laedt, bleibt die Seite sonst stumm leer.
      Haeufigste Ursache ist ein fehlender Ordner demo/vendor/ - der ist absichtlich
      nicht im Repo und wird mit "node fetch-vendor.mjs" geholt. */
-  (function () {
-    if (location.protocol === 'file:') return; // dafuer gibt es den Guard oben
-    var fehler = [];
-    var merken = function (text) { if (text && fehler.indexOf(text) === -1) fehler.push(text); };
-    window.addEventListener('error', function (e) {
-      if (e.target && e.target !== window && (e.target.src || e.target.href)) {
-        merken('Nicht ladbar: ' + (e.target.src || e.target.href));
-      } else if (e.message) {
-        merken(e.message);
-      }
-    }, true);
-    window.addEventListener('unhandledrejection', function (e) {
-      merken(String((e.reason && e.reason.message) || e.reason || ''));
-    });
+			(function () {
+				if (location.protocol === 'file:') return; // dafuer gibt es den Guard oben
+				var fehler = [];
+				var merken = function (text) {
+					if (text && fehler.indexOf(text) === -1) fehler.push(text);
+				};
+				window.addEventListener(
+					'error',
+					function (e) {
+						if (e.target && e.target !== window && (e.target.src || e.target.href)) {
+							merken('Nicht ladbar: ' + (e.target.src || e.target.href));
+						} else if (e.message) {
+							merken(e.message);
+						}
+					},
+					true,
+				);
+				window.addEventListener('unhandledrejection', function (e) {
+					merken(String((e.reason && e.reason.message) || e.reason || ''));
+				});
 
-    setTimeout(function () {
-      if (document.documentElement.dataset.kolibriReady === 'true') return;
-      if (document.querySelector('.kol-button, [class*="hydrated"]')) return;
-      var box = document.createElement('div');
-      box.className = 'bootguard';
-      box.innerHTML =
-        '<strong>KoliBri wurde nicht geladen.</strong>' +
-        'Am wahrscheinlichsten fehlt der Ordner <code>demo/vendor/</code> \u2013 er ist absichtlich ' +
-        'nicht im Repository (26 MB). Einmal im Ordner <code>kolibri-intro-15min</code> ausf\u00fchren:' +
-        '<pre>node fetch-vendor.mjs</pre>' +
-        (fehler.length
-          ? '<details><summary>Technische Details (' + fehler.length + ')</summary><pre>' +
-            fehler.slice(0, 5).join('\n').replace(/</g, '&lt;') + '</pre></details>'
-          : '');
-      document.body.insertBefore(box, document.body.firstChild);
-    }, 8000);
-  })();
-</script>
-<link rel="stylesheet" href="./vendor/components/assets/kolicons/style.css" />
-<script type="importmap">
-{
-  "imports": {
-    "@public-ui/components": "./vendor/components/dist/esm/index.js",
-    "@public-ui/components/loader": "./vendor/components/loader/index.mjs",
-    "@public-ui/theme-default": "./vendor/theme-default/dist/index.mjs",
-    "@public-ui/theme-kern": "./vendor/theme-kern/dist/index.mjs"
-  }
-}
-</script>
-<script type="module">
-  import { register } from '@public-ui/components';
-  import { defineCustomElements } from '@public-ui/components/loader';
+				setTimeout(function () {
+					if (document.documentElement.dataset.kolibriReady === 'true') return;
+					if (document.querySelector('.kol-button, [class*="hydrated"]')) return;
+					var box = document.createElement('div');
+					box.className = 'bootguard';
+					box.innerHTML =
+						'<strong>KoliBri wurde nicht geladen.</strong>' +
+						'Am wahrscheinlichsten fehlt der Ordner <code>demo/vendor/</code> \u2013 er ist absichtlich ' +
+						'nicht im Repository (26 MB). Einmal im Ordner <code>kolibri-intro-15min</code> ausf\u00fchren:' +
+						'<pre>node fetch-vendor.mjs</pre>' +
+						(fehler.length
+							? '<details><summary>Technische Details (' +
+								fehler.length +
+								')</summary><pre>' +
+								fehler.slice(0, 5).join('\n').replace(/</g, '&lt;') +
+								'</pre></details>'
+							: '');
+					document.body.insertBefore(box, document.body.firstChild);
+				}, 8000);
+			})();
+		</script>
+		<link rel="stylesheet" href="./vendor/components/assets/kolicons/style.css" />
+		<script type="importmap">
+			{
+				"imports": {
+					"@public-ui/components": "./vendor/components/dist/esm/index.js",
+					"@public-ui/components/loader": "./vendor/components/loader/index.mjs",
+					"@public-ui/theme-default": "./vendor/theme-default/dist/index.mjs",
+					"@public-ui/theme-kern": "./vendor/theme-kern/dist/index.mjs"
+				}
+			}
+		</script>
+		<script type="module">
+			import { register } from '@public-ui/components';
+			import { defineCustomElements } from '@public-ui/components/loader';
 
-  // Das Theme wird EINMAL beim Start gewaehlt - genau wie in der offiziellen
-  // Beispielanwendung von KoliBri. Nur das gewaehlte Bundle wird geladen.
-  const wanted = new URLSearchParams(location.search).get('theme') ?? 'default';
-  const theme = wanted === 'kern'
-    ? (await import('@public-ui/theme-kern')).KERN_V2
-    : (await import('@public-ui/theme-default')).DEFAULT;
+			// Das Theme wird EINMAL beim Start gewaehlt - genau wie in der offiziellen
+			// Beispielanwendung von KoliBri. Nur das gewaehlte Bundle wird geladen.
+			const wanted = new URLSearchParams(location.search).get('theme') ?? 'default';
+			const theme = wanted === 'kern' ? (await import('@public-ui/theme-kern')).KERN_V2 : (await import('@public-ui/theme-default')).DEFAULT;
 
-  // KERN bringt eigene Schriften mit - ohne sie waere der Wechsel nur halb zu sehen.
-  if (wanted === 'kern') {
-    for (const href of [
-      './vendor/theme-kern/assets/fira-sans-v17-latin/style.css',
-      './vendor/theme-kern/assets/material-symbols-subset/style.css',
-    ]) {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = href;
-      document.head.appendChild(link);
-    }
-  }
+			// KERN bringt eigene Schriften mit - ohne sie waere der Wechsel nur halb zu sehen.
+			if (wanted === 'kern') {
+				for (const href of ['./vendor/theme-kern/assets/fira-sans-v17-latin/style.css', './vendor/theme-kern/assets/material-symbols-subset/style.css']) {
+					const link = document.createElement('link');
+					link.rel = 'stylesheet';
+					link.href = href;
+					document.head.appendChild(link);
+				}
+			}
 
-  await register(theme, defineCustomElements);
-  document.documentElement.dataset.kolibriReady = 'true';
+			await register(theme, defineCustomElements);
+			document.documentElement.dataset.kolibriReady = 'true';
 
-  // Schalter im Seitenkopf
-  document.querySelectorAll('[data-theme-btn]').forEach((btn) => {
-    btn.setAttribute('aria-pressed', String(btn.dataset.themeBtn === wanted));
-    btn.addEventListener('click', () => {
-      location.search = `?theme=${btn.dataset.themeBtn}`;
-    });
-  });
+			// Schalter im Seitenkopf
+			document.querySelectorAll('[data-theme-btn]').forEach((btn) => {
+				btn.setAttribute('aria-pressed', String(btn.dataset.themeBtn === wanted));
+				btn.addEventListener('click', () => {
+					location.search = `?theme=${btn.dataset.themeBtn}`;
+				});
+			});
 
-  // Auch hier sind es echte, lebendige Komponenten - nicht nur Bilder.
-  const echo = document.querySelector('#echo');
-  document.querySelectorAll('kol-card kol-button').forEach((button) => {
-    button._on = {
-      onClick: () => {
-        echo.textContent = 'Geklickt: ' + button._label + ' – im Theme „' + wanted + '".';
-        echo.classList.remove('readout--empty');
-      },
-    };
-  });
+			// Auch hier sind es echte, lebendige Komponenten - nicht nur Bilder.
+			// Beispielwerte vorbelegen: gefuellte Felder machen den Theme-Unterschied
+			// auf einen Blick sichtbar.
+			document.querySelectorAll('kol-card kol-input-text').forEach((el) => (el._value = 'Max Muster'));
+			document.querySelectorAll('kol-card kol-input-email').forEach((el) => (el._value = 'max.muster@beispiel.de'));
+			const echo = document.querySelector('#echo');
+			document.querySelectorAll('kol-card kol-button').forEach((button) => {
+				button._on = {
+					onClick: () => {
+						echo.textContent = 'Geklickt: ' + button._label + ' – im Theme „' + wanted + '".';
+						echo.classList.remove('readout--empty');
+					},
+				};
+			});
 
-  // Design-Tokens live ueberschreiben - ohne Neuladen, quer durch den Shadow DOM
-  const tokens = document.createElement('style');
-  tokens.textContent = `:root {
+			// Design-Tokens live ueberschreiben - ohne Neuladen, quer durch den Shadow DOM
+			const tokens = document.createElement('style');
+			tokens.textContent = `:root {
     --kolibri-color-primary: #cc006e;
     --kolibri-border-radius: 14px;
     --kolibri-font-size: 18px;
   }`;
-  const tokenBtn = document.querySelector('#tokens');
-  tokenBtn.addEventListener('click', () => {
-    const on = tokens.isConnected;
-    if (on) tokens.remove(); else document.head.appendChild(tokens);
-    tokenBtn.setAttribute('aria-pressed', String(!on));
-  });
-</script>
-</head>
-<body>
-<nav class="chrome">
-  <span class="chrome__step">4 / 5</span>
-  <span class="chrome__title">Dasselbe Markup, anderes Haus</span>
-  <a href="./index.html">Übersicht</a>
-  <a href="./step-3-form.html">← Zurück</a>
-  <a href="./step-5-react.html">Weiter →</a>
-  <button type="button" data-theme-btn="default">Theme: Default</button>
-  <button type="button" data-theme-btn="kern">Theme: KERN</button>
-  <button type="button" id="tokens" aria-pressed="false">Eigene Tokens</button>
-</nav>
+			const tokenBtn = document.querySelector('#tokens');
+			tokenBtn.addEventListener('click', () => {
+				const on = tokens.isConnected;
+				if (on) tokens.remove();
+				else document.head.appendChild(tokens);
+				tokenBtn.setAttribute('aria-pressed', String(!on));
+			});
+		</script>
+	</head>
+	<body>
+		<nav class="chrome">
+			<span class="chrome__step">4 / 5</span>
+			<span class="chrome__title">Dasselbe Markup, anderes Haus</span>
+			<a href="./index.html">Übersicht</a>
+			<a href="./step-3-form.html">← Zurück</a>
+			<a href="./step-5-react.html">Weiter →</a>
+			<button type="button" data-theme-btn="default">Theme: Default</button>
+			<button type="button" data-theme-btn="kern">Theme: KERN</button>
+			<button type="button" id="tokens" aria-pressed="false">Eigene Tokens</button>
+		</nav>
 
-<main>
-  <h1>Das Markup unten ändert sich nie.</h1>
-  <p class="lead">Nur die Zeile, in der das Theme registriert wird.</p>
+		<main>
+			<h1>Das Markup unten ändert sich nie.</h1>
+			<p class="lead">Nur die Zeile, in der das Theme registriert wird.</p>
 
-  <kol-card _label="Terminanfrage" _level="2">
-    <div class="stack">
-      <kol-input-text _label="Name" _required></kol-input-text>
-      <kol-input-email _label="E-Mail" _required></kol-input-email>
-      <div class="row">
-        <kol-button _label="Absenden" _variant="primary"></kol-button>
-        <kol-button _label="Abbrechen" _variant="secondary"></kol-button>
-      </div>
-    </div>
-  </kol-card>
+			<kol-card _label="Terminanfrage" _level="2">
+				<div class="stack">
+					<kol-input-text _label="Name" _required></kol-input-text>
+					<kol-input-email _label="E-Mail" _required></kol-input-email>
+					<div class="row">
+						<kol-button _label="Absenden" _variant="primary"></kol-button>
+						<kol-button _label="Abbrechen" _variant="secondary"></kol-button>
+					</div>
+				</div>
+			</kol-card>
 
-  <p class="readout readout--empty" id="echo">Die Buttons sind echt – einmal draufklicken.</p>
+			<p class="readout readout--empty" id="echo">Die Buttons sind echt – einmal draufklicken.</p>
 
-  <div class="note">
-    <strong>Zwei Ebenen, zwei Geschwindigkeiten:</strong>
-    <br />• <em>Theme wechseln</em> heißt: ein anderes Paket registrieren. Das passiert einmal beim Start
-    der Anwendung – Farben, Schriften, Abstände, Radien, alles kommt aus dem Theme.
-    Genau so macht es auch die offizielle KoliBri-Beispielanwendung.
-    <br />• <em>Tokens überschreiben</em> geht sofort und ohne Neuladen. Drei CSS-Zeilen,
-    und sie wirken quer durch den Shadow DOM – dafür sind CSS-Custom-Properties da.
-  </div>
+			<div class="note">
+				<strong>Zwei Ebenen, zwei Geschwindigkeiten:</strong>
+				<br />• <em>Theme wechseln</em> heißt: ein anderes Paket registrieren. Das passiert einmal beim Start der Anwendung – Farben, Schriften, Abstände,
+				Radien, alles kommt aus dem Theme. Genau so macht es auch die offizielle KoliBri-Beispielanwendung. <br />• <em>Tokens überschreiben</em> geht sofort
+				und ohne Neuladen. Drei CSS-Zeilen, und sie wirken quer durch den Shadow DOM – dafür sind CSS-Custom-Properties da.
+			</div>
 
-  <pre>
+			<pre>
 <i>// Theme registrieren – eine Zeile entscheidet über das ganze Erscheinungsbild</i>
 import { DEFAULT } from '<b>@public-ui/theme-default</b>';
 await register(DEFAULT, defineCustomElements);
@@ -187,6 +194,6 @@ await register(KERN_V2, defineCustomElements);
   <b>--kolibri-border-radius</b>: 14px;
   <b>--kolibri-font-size</b>: 18px;
 }</pre>
-</main>
-</body>
+		</main>
+	</body>
 </html>

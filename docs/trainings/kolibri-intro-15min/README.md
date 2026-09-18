@@ -26,10 +26,12 @@ npm install          # Slidev + KoliBri 4.4.0 aus der npm-Registry (einmalig)
 npm run dev          # → http://localhost:3030
 ```
 
-Die komplette Schulung als Deck: Schritt 1 und 3 laufen als **echte KoliBri-Live-Demos
-direkt in der Folie** (Validierung, leeres Abschicken, Fehlerliste, Röntgenblick,
-Token-Override), Schritt 2 und 4 betten die Original-Demo-Seiten als Vollbild-iframes ein –
-der Theme-Reload passiert dadurch im Frame, das Deck bleibt stehen. Der Sprechzettel aus
+Die komplette Schulung als Deck: Schritt 1, 2, 3 und 4 laufen als **echte KoliBri-Live-Demos
+direkt in der Folie** – Validierung, Alt/Neu-Feld unter feindlichem CSS, leeres Abschicken
+mit Fehlerliste und Röntgenblick, Theme-Umschaltung ohne Reload (globaler Theme-Name,
+beide Themes registriert) und Token-Override. Alle Demo-Felder starten mit
+Beispielwerten gefüllt. Die Demo-Seiten bleiben als **Hands-on-Verweise** auf den Folien verlinkt.
+Der Sprechzettel aus
 diesem README steckt als **Notizen hinter jeder Folie**: Presenter-Modus mit Taste `p`.
 `npm run build` erzeugt einen statischen Export nach `dist/` (offline teilbar).
 Vor jedem Start spiegelt `sync-demo.mjs` die Demo-Seiten nach `public/demo/` – dafür muss
@@ -135,7 +137,8 @@ _(Zeitmarke: 1:30)_
 > Es gibt keine KoliBri-Komponente ohne Beschriftung. Man kann sie nicht vergessen.
 > Barrierefreiheit ist hier kein Schalter, den man anknipst – sie ist die einzige Betriebsart."
 
-▶ **Ins Feld `abc` tippen und wegklicken.** Der Fehler erscheint.
+▶ **Feldinhalt markieren, `abc` tippen und wegklicken.** Der Fehler erscheint
+(das Feld startet mit `max.muster@beispiel.de` vorbelegt).
 
 > „Und das ist keine Dekoration – das Feld prüft wirklich.
 > Beschriftung, Hinweis, Fehlermeldung, und gleich sehen wir, was darunter passiert."

@@ -4,3 +4,7 @@ dist/
 snapshots/
 test-results/
 pnpm-lock.yaml
+# Prettier zerlegt das Per-Folie-Frontmatter des Slidev-Decks (die eingefügte
+# Leerzeile nach dem Trenner macht aus dem YAML Rohtext - iframe-Folien werden
+# dann leer).
+docs/trainings/kolibri-intro-15min/slides/slides.md

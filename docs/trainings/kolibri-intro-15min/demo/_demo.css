@@ -276,17 +276,38 @@ kol-alert[hidden] {
 }
 
 /* Transparente Komponentenflaechen (u.a. damit das Deck die Seiten einbetten
-   kann, ohne weisse Kaesten zu zeigen). --kolibri-color-light ist auf farbigen
-   Buttons auch die Textfarbe - deshalb bekommen Buttons ihr Weiss zurueck. */
+   kann, ohne weisse Kaesten zu zeigen). Form und Buttons bekommen das Weiss
+   zurueck: Das Token ist dort Lesefarbe (Fehlerliste im Formular, Labels auf
+   farbigen Buttons). Der Karten-Override erbt sonst bis in den
+   Formular-Shadow-DOM und macht die Fehlerliste unlesbar. */
 kol-card,
-kol-form,
 kol-input-text,
 kol-input-email,
 kol-textarea {
 	--kolibri-color-light: transparent;
 }
+kol-form,
 kol-button {
 	--kolibri-color-light: #fff;
+}
+
+/* Und die weisse Grundplatte der Tags selbst aus: Das A11y-Preset setzt
+   background-color: white auf jedem :host. Eine Regel von aussen auf das
+   Element schlaegt dabei :host - deshalb reicht dieser Block. CSS kennt
+   keinen Praefix-Selektor fuer Tagnamen, daher die Aufzaehlung aller
+   in den Demos vorkommenden kol-* Tags. */
+kol-alert,
+kol-badge,
+kol-button,
+kol-card,
+kol-card-wc,
+kol-form,
+kol-input-email,
+kol-input-text,
+kol-link-wc,
+kol-tabs,
+kol-textarea {
+	background: transparent;
 }
 
 /* --- Banner, wenn KoliBri nicht geladen werden konnte --- */

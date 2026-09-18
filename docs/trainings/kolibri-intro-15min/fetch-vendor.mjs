@@ -9,10 +9,10 @@
  * Braucht Node 18+ (global fetch) und das Kommando `tar`. Keine npm-Abhaengigkeiten.
  */
 import { execFile } from 'node:child_process';
-import { mkdir, rm, cp, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
+import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join, dirname } from 'node:path';
+import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
@@ -28,7 +28,10 @@ const PLAN = [
 		copy: [
 			['dist/esm', 'components/dist/esm'],
 			['dist/kolibri', 'components/dist/kolibri'],
-			['loader', 'components/loader'],
+			// Datei-Ebene statt Ordner: eine leere loader/-Quelle wuerde still
+			// durchlaufen und die Demo mit "KoliBri wurde nicht geladen" brechen.
+			['loader/index.mjs', 'components/loader/index.mjs'],
+			['loader/index.d.ts', 'components/loader/index.d.ts'],
 			['assets/kolicons', 'components/assets/kolicons'],
 		],
 	},

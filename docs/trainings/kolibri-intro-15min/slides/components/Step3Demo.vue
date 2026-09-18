@@ -24,14 +24,21 @@ const MARKUP = `
       </div>
     </kol-form>
   </kol-card>
-  <button class="s3demo__xray-btn" id="xray" type="button">Röntgenblick</button>
-  <pre class="s3demo__xray" id="xray-out">Erst abschicken, dann auf „Röntgenblick" klicken …</pre>
+  <div class="s3demo__tools">
+    <button class="s3demo__xray-btn" id="xray" type="button">Röntgenblick</button>
+    <pre class="s3demo__xray" id="xray-out">Erst abschicken, dann auf „Röntgenblick" klicken …</pre>
+  </div>
 </div>`;
 
 onMounted(async () => {
 	if (!(await whenKoliBri())) return; // Register fehlgeschlagen – Ursache steht in der Konsole
 	const root = host.value;
 	root.innerHTML = MARKUP;
+
+	// Beispielwerte vorbelegen: Die Demo startet ausgefuellt – Absenden zeigt
+	// sofort den Erfolgsfall. Fuer die Fehlerliste einfach Werte loeschen.
+	root.querySelector('#name')._value = 'Max Muster';
+	root.querySelector('#mail')._value = 'max.muster@beispiel.de';
 
 	const form = root.querySelector('#f');
 	const alert = root.querySelector('#erfolg');

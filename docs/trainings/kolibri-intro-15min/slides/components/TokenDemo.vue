@@ -13,7 +13,6 @@ const an = ref(false);
 const MARKUP = `
 <div class="tokendemo">
   <kol-input-text _label="Name" _required></kol-input-text>
-  <kol-input-email _label="E-Mail" _required></kol-input-email>
   <div class="tokendemo__row">
     <kol-button _label="Absenden" _variant="primary"></kol-button>
     <kol-button _label="Abbrechen" _variant="secondary"></kol-button>
@@ -22,6 +21,9 @@ const MARKUP = `
 
 onMounted(() => {
 	host.value.innerHTML = MARKUP;
+	// Beispielwert vorbelegen, damit die Token-Aenderung auf einem gefuellten
+	// Feld sichtbar wird (Padding, Radius, Schriftgroesse).
+	host.value.querySelector('kol-input-text')._value = 'Max Muster';
 });
 </script>
 

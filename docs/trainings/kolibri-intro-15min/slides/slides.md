@@ -1,5 +1,6 @@
 ---
 theme: default
+colorSchema: light
 title: KoliBri in 15 Minuten
 info: Einsteigerschulung zu KoliBri Web Components – Barrierefreiheit, die man nicht vergessen kann.
 transition: slide-left
@@ -14,8 +15,7 @@ hash: true
 
 **Barrierefreiheit, die man nicht mehr vergessen kann.**
 
-_KoliBri nimmt dir die A11y-Verdrahtung ab, die du sonst von Hand –
-und still fehleranfällig – selbst bauen müsstest._
+_Web Components wie HTML-Tags: feste, validierte API, robustes Markup – kleinteilig genug für universelle Nachnutzung und Standardisierung. KoliBri macht HTML barrierefrei und themebar für die Wiederverwendung._
 
 </div>
 
@@ -29,13 +29,13 @@ BÜHNEN-CHECKLISTE:
 - Deck starten: cd slides && npm install && npm run dev → http://localhost:3030
 - Vorab einmal alle Folien durchklicken, damit die Live-Demos kompiliert sind
 - Presenter-Modus: Taste p – hier stehen auf JEDER Folie die Sprechzettel-Zeilen
-- Der Röntgenblick sitzt auf der Folie „Schritt 3 – Live"; Theme-Wechsel auf „Schritt 4 – Live"
+- Der Röntgenblick sitzt auf der Folie „Schritt 3 – Live"; Theme-Wechsel als Hands-on unter demo/step-4-theme.html
 - Falls eine Live-Demo hängt: Die Notfallfolie ganz am Ende (in der Übersicht mit o erreichbar)
 -->
 
 ---
 
-# Der Bogen
+# Agenda
 
 | Schritt                       | Beat                                                     |
 | ----------------------------- | -------------------------------------------------------- |
@@ -45,6 +45,7 @@ BÜHNEN-CHECKLISTE:
 | **3** · Komposition           | Leer abschicken → Fehlerliste, Fokussprung, Röntgenblick |
 | **4** · Theme & Tokens        | Gleiches Markup, anderes Haus                            |
 | **5** · React                 | Dasselbe in JSX                                          |
+| **Fundament**                 | Warum man darauf bauen kann                              |
 | Rückblende                    | Der Punkt                                                |
 
 <div class="hint">Die Pointe kommt beim Schritt-3-Gipfel – der A11y-Payoff ist die Auflösung, nicht die Einleitung.<br/>Presenter-Modus: <kbd>p</kbd> · Folienübersicht: <kbd>o</kbd></div>
@@ -111,7 +112,6 @@ Und das ist der Punkt: Barrierefreiheit geht nicht mit einem Knall kaputt. Sie g
 -->
 
 ---
-
 layout: two-cols
 ---
 
@@ -131,13 +131,15 @@ await register(DEFAULT, defineCustomElements);
 <kol-input-email _label="E-Mail" _required _hint="Wir nutzen die Adresse nur für die Terminbestätigung."> </kol-input-email>
 ```
 
+**Eine Komponente pro Feldtyp** – `kol-input-email`, `kol-input-date`, `kol-select` … Jede bietet nur die Eigenschaften an, die für ihren Typ wirklich funktionieren. Kein `type`-Attribut-Wildwuchs wie beim nativen `<input>`.
+
 ::right::
 
 <div class="demo-panel">
 
-**…und es lebt. Rechts, direkt in der Folie:**
+**Genau dieses Markup, live:**
 
-<Step1Demo />
+<Step1Demo nur-feld />
 
 </div>
 
@@ -162,6 +164,7 @@ Zweitens, und das ist mir wichtiger: _label ist PFLICHT. Es gibt keine KoliBri-K
 **Ins Feld `abc` tippen, wegklicken** → der Fehler erscheint. Keine Dekoration – das Feld prüft selbst.
 **Gültige Adresse eintippen** → Fehler weg, ohne Aufräumen. Im Code: `_msg` setzen, `_msg` wieder leeren.
 `_msg`, `_touched`, `_on` sind **Properties, keine Attribute** – per JavaScript gesetzt. Deshalb steht im Markup kein Fehlerzustand.
+Die Properties sind über **alle** Komponenten vereinheitlicht – ein Vokabular aus knapp 100 dokumentierten Eigenschaften: `_label`, `_variant`, `_hint` bedeuten überall dasselbe. Einmal lernen, überall anwenden.
 Die Button-Varianten (`primary`, `secondary`, `danger`, `ghost`) stehen **nicht** im Komponenten-Code. Die kommen aus dem **Theme**. Merken – das ist Schritt 4.
 
 </v-clicks>
@@ -173,7 +176,7 @@ Die Button-Varianten (`primary`, `secondary`, `danger`, `ghost`) stehen **nicht*
 </v-click>
 
 <!--
-▶ LIVE: In der Demo unten „abc" eintippen und wegklicken → Fehler erscheint. Dann eine gültige Adresse → Fehler verschwindet.
+▶ LIVE: In der Demo unten (Feld ist mit `max.muster@beispiel.de` vorbelegt) Inhalt markieren, „abc" eintippen und wegklicken → Fehler erscheint. Dann eine gültige Adresse → Fehler verschwindet.
 
 „Und das ist keine Dekoration – das Feld prüft wirklich. Beschriftung, Hinweis, Fehlermeldung, und gleich sehen wir, was darunter passiert.
 
@@ -194,35 +197,24 @@ Kleiner, aber wichtiger Punkt für später: _msg, _touched und _on sind PROPERTI
 > Schön, aber wir haben eine Anwendung von 2015, die können wir nicht neu schreiben.
 > **Müsst ihr auch nicht.**
 
-Eine bewusst altmodische Seite: eigenes CSS, natives `form method="get"` – und ein CSS, das mit `!important` Schriftart, Farbe und Zeilenhöhe auf **alle** Felder und Buttons jagt.
+Eine bewusst altmodische Seite: eigenes CSS, natives `form method="get"` – und ein CSS, das mit `!important` Schriftart, Farbe und Zeilenhöhe auf **alle Felder und Buttons des Blocks** jagt.
 
-Oben das native Feld – rot, Serifenschrift, verbogen. Unten das KoliBri-Feld – unberührt. **Der Shadow DOM hält euer CSS draußen.** Und umgekehrt: KoliBri färbt eure Seite nicht ein.
+<div class="demo-panel demo-panel--flush">
 
-<v-click>
+<IslandDemo />
 
-**Live in voller Größe – nächste Folie.** Beide Felder ausfüllen, absenden, unten die GET-Parameter ansehen.
+</div>
 
-</v-click>
+<div class="hint">Das native Feld kippt auf Georgia/Rot um, die KoliBri-Insel bleibt unberührt – <strong>der Shadow DOM hält euer CSS draußen.</strong> Und umgekehrt: KoliBri färbt eure Seite nicht ein. Absende-Verhalten (GET-Parameter, Brücke) live unter <code>demo/step-2-island.html</code>.</div>
 
 <!--
 „Jetzt der Satz, der in jedem zweiten Projekt kommt: ‚Schön, aber wir haben eine Anwendung von 2015, die können wir nicht neu schreiben.' Müsst ihr auch nicht."
-▶ WEITER zur nächsten Folie (die echte Bestandsseite im Vollbild).
--->
 
----
+▶ LIVE auf der Folie: Links der Altbestands-Block unter feindlichem CSS – rot, Serifenschrift, Zeilenhöhe 2.4, verbogen. Rechts dasselbe Feld als KoliBri-Komponente – unberührt. Das Legacy-CSS regiert seinen Block, aber die Insel bleibt draussen: Selektoren erreichen das Feld im Shadow DOM nicht, und KoliBri färbt umgekehrt eure Seite nicht ein.
 
-layout: iframe
-url: /demo/step-2-island.html
----
+Und umgekehrt: KoliBri färbt eure Seite nicht ein. Kein globales Stylesheet, das plötzlich alles überschreibt.
 
-<!--
-▶ LIVE-Demo als eigene Seite im Vollbild – genau die verifizierte step-2-island.html.
-▶ Beide Felder ausfüllen und absenden. Unten erscheinen die GET-Parameter.
-
-„Seht ihr den Unterschied? Oben das native Feld – rot, Serifenschrift, verbogen. Unten das KoliBri-Feld – unberührt. Der Shadow DOM hält euer CSS draußen.
-
-Und umgekehrt: KoliBri färbt eure Seite nicht ein. Kein globales Stylesheet, das plötzlich alles überschreibt."
-▶ ZURÜCK zur nächsten Folie für die Brücke-Codezeile.
+▶ HANDS-ON danach: demo/step-2-island.html – beide Felder ausfüllen und absenden, unten erscheinen die GET-Parameter."
 -->
 
 ---
@@ -257,6 +249,12 @@ Deshalb steht nach dem Absenden `mail=…` in der Ausgabe. Für ein einzelnes Fe
 
 </v-click>
 
+<v-click>
+
+Weitere Grenzen – Browser- und Screenreader-Randfälle – werden offen in der `KNOWN_ISSUES.md` im Repo dokumentiert und an die Browserhersteller gemeldet, statt mit Workarounds überdeckt.
+
+</v-click>
+
 <!--
 „Jetzt eine Ehrlichkeit, die euch sonst eine halbe Stunde kostet: Die Kapselung betrifft nicht nur CSS, sondern auch das Formular. Ein Feld im Shadow DOM steht NICHT in form.elements und wird beim nativen Absenden NICHT mitgeschickt – auch nicht mit name-Attribut.
 
@@ -276,17 +274,16 @@ Für ein einzelnes Feld im Altbestand ist das genau richtig. Wer ein ganzes Form
 
 </div>
 
-<div class="hint">Einmal **leer abschicken** – dann „Röntgenblick". Der Fokus springt in die Fehlerliste; der Röntgenblick liest das echte `input` aus dem Shadow DOM vor.</div>
+<div class="hint">Die Felder sind mit Beispielwerten gefüllt – <strong>direkt abschicken</strong> zeigt den Erfolgs-Alert. Werte löschen und abschicken → Fehlerliste mit Fokussprung; dann der „Röntgenblick".</div>
 
 <!--
-▶ DIE HOCHPUNKT-FOLIE. Erst leer abschicken, dann Röntgenblick – in dieser Reihenfolge.
+▶ DIE HOCHPUNKT-FOLIE. Felder sind vorbelegt: Erst Absenden (Erfolg), dann Werte löschen + Absenden (Fehlerliste + Fokussprung), dann Röntgenblick.
 
 „Jetzt setzen wir zusammen. Eine Karte, ein Formular, drei Felder, ein Button. Bausteine, die nichts voneinander wissen – und trotzdem passt es."
 
-▶ Kurz das Markup erwähnen (stehet in der Demo-Seite des Repos), dann:
-„Aber schaut mal, was auf der Seite steht, das NICHT im Markup steht." → nächste Folie vorbereiten.
+▶ KURZ ABSCHICKEN (Felder sind gefüllt): „Absenden – Erfolgsmeldung, Felder leer. Der normale Fall geht von allein."
 
-▶ DAS LEERE ABSCHICKEN:
+▶ DANN WERTE LÖSCHEN UND LEER ABSCHICKEN:
 „Jetzt schaut, was ein leeres Pflichtfeld auslöst. Oben erscheint eine Fehlerliste – und der Fokus springt hinein. Wer mit der Tastatur arbeitet, landet nach dem Absenden nicht irgendwo, sondern genau dort, wo steht, was zu tun ist. Von da ein Klick ins Feld. Im Behördenkontext ist das der Unterschied zwischen einem Formular, das man ausfüllen kann, und einem, das man aufgibt."
 
 ▶ Ein Feld korrigieren → Meldung verschwindet. „Und es räumt hinter sich auf."
@@ -337,28 +334,6 @@ Stolperfalle camelCase: Beleg in demo/step-3-form.html, Hinweisbox unten. Gemess
 -->
 
 ---
-
-layout: iframe
-url: /demo/step-4-theme.html
----
-
-<!--
-▶ LIVE: Theme-Wechsel als eigene Seite im Vollbild. Der Reload passiert IM Frame – das Deck bleibt stehen.
-
-„Kommen wir zum Aussehen. Das hier ist das Default-Theme."
-
-▶ AUF „Theme: KERN" KLICKEN. Die Seite (im Frame) lädt neu.
-
-„Gleiches Markup. Kein Zeichen geändert. Anderes Haus. Andere Farben, andere Schrift, andere Abstände – schaut euch die Felder an, die sind jetzt unterstrichen statt umrandet.
-
-Geändert hat sich genau eine Zeile: welches Theme-Paket beim Start registriert wird. Das passiert einmal beim Hochfahren der Anwendung – so macht es auch die offizielle KoliBri-Beispielanwendung."
-
-▶ ZURÜCK, nächste Folie zeigt den Code dahinter + die Tokens.
-NOTFALL: Wenn der Frame zickt – vorbereitete URL /demo/step-4-theme.html?theme=kern direkt im Browser öffnen.
--->
-
----
-
 layout: two-cols
 ---
 
@@ -374,6 +349,10 @@ await register(DEFAULT, defineCustomElements);
 import { KERN_V2 } from '@public-ui/theme-kern';
 await register(KERN_V2, defineCustomElements);
 ```
+
+**Live umschalten – gleiches Markup, anderes Haus:**
+
+<ThemeToggleDemo />
 
 ::right::
 
@@ -391,10 +370,17 @@ await register(KERN_V2, defineCustomElements);
 
 <TokenDemo />
 
+<div class="hint">Das Schema typisiert sicher, dass jedes registrierte Theme zu jeder Komponente passt – Themes sind dadurch austauschbar ohne Markup-Änderung.</div>
+
 </div>
 
 <!--
-▶ Links: der Theme-Wechsel-Code – exakt das, was die vorherige Folie live gezeigt hat.
+„Kommen wir zum Aussehen. Gleiches Markup, anderes Haus: Oben das Default-Theme registriert, darunter das Corporate Design des Bundes – geändert hat sich genau eine Zeile, welches Theme-Paket beim Start registriert wird. Das passiert einmal beim Hochfahren – so macht es auch die offizielle Beispielanwendung.
+
+▶ HANDS-ON: Auf „Theme: KERN" klicken – die Felder auf der Folie schalten live um (unterstrichen statt umrandet, andere Schrift, andere Abstände), ohne Reload. Zurückschalten geht genauso.
+
+▶ HANDS-ON danach: demo/step-4-theme.html – komplette Seite mit Theme-Umschalter oben.
+
 ▶ Rechts: LIVE auf „Eigene Tokens" klicken – sofort, ohne Neuladen.
 
 „Und wenn es kein ganzes Theme sein muss, sondern nur eure Hausfarbe – das hier sind drei CSS-Zeilen. Custom Properties. Sofort, ohne Neuladen.
@@ -405,7 +391,6 @@ Hinweis: In dieser Folie sind die Tokens sogar auf einen Container skopiert stat
 -->
 
 ---
-
 layout: two-cols
 ---
 
@@ -450,6 +435,55 @@ Und weil das normale Bausteine sind, baut ihr daraus eure eigenen. KoliBri macht
 
 ---
 
+# Warum man darauf bauen kann.
+
+<div class="manifest-grid">
+
+<div class="manifest-card">
+
+**Feste, validierte API – wie HTML-Tags**
+
+Web Components mit klar definierten Schnittstellen und restriktivem Zugriff nach innen. Jede Basiskomponente wird **einmal** semantisch implementiert, erprobt und abgenommen – kleinteilig genug für universelle Nachnutzung und Standardisierung.
+
+</div>
+
+<div class="manifest-card">
+
+**Barrierefreiheit ist die Betriebsart**
+
+Semantisch standardisierte Komponenten, getrieben durch WCAG- und BITV-Prüfschritte, automatisiert gegen WCAG 2.1 AA getestet. Kein Schalter, kein Add-on. Browser-Randfälle werden offen dokumentiert statt mit Workarounds überdeckt.
+
+</div>
+
+<div class="manifest-card">
+
+**Keine Datenübertragung, keine Datenhaltung**
+
+Reine Präsentationsschicht ohne Fachlogik: Die Bibliothek sendet und speichert nichts – Datenschutz und minimale Angriffsfläche ergeben sich aus der Architektur, nicht aus Zusatzversprechen. Code kommt nur per Pull Request mit Vier-Augen-Prinzip hinein.
+
+</div>
+
+<div class="manifest-card">
+
+**EUPL v1.2**
+
+Nutzung der npm-Pakete ist unproblematisch, auch in Closed-Source-Projekten. Copyleft greift erst beim Fork des Quellcodes. Verbessern statt forken ist der empfohlene Weg.
+
+</div>
+
+</div>
+
+<div class="hint">Festes Versprechen seit Tag eins: <em>„We make the HTML accessible and themeable for reuse."</em> – das Manifest, die Konzepte (Architektur, Properties, Form-Inputs, Known Issues, Datenschutz, Sicherheit) und die Lizenz stehen unter public-ui.github.io/docs.</div>
+
+<!--
+„Bevor ich euch loslasse, ein Satz dazu, WARUM man auf so eine Bibliothek bauen kann.
+
+Erstens: Das sind Web Components mit einer festen, validierten API – wie HTML-Tags. Jede Basiskomponente wird einmal semantisch implementiert, erprobt und abgenommen – und dann überall nachgenutzt. Zweitens: Barrierefreiheit ist hier nicht optional, sie ist die Betriebsart – getrieben durch WCAG- und BITV-Prüfschritte, automatisiert gegen WCAG 2.1 AA getestet. Drittens, und das hört man selten: Die Bibliothek überträgt und speichert überhaupt keine Daten. Reine Präsentationsschicht ohne Fachlogik – Datenschutz und minimale Angriffsfläche durch Architektur, nicht durch Versprechen. Code kommt überhaupt nur per Pull Request mit Vier-Augen-Prinzip hinein. Und viertens: EUPL-Lizenz – die npm-Pakete dürft ihr frei nutzen, auch in geschlossenen Projekten.
+
+Das Manifest dazu hat einen Satz: We make the HTML accessible and themeable for reuse."
+-->
+
+---
 layout: center
 ---
 
@@ -490,11 +524,12 @@ Letzte Folie: Adressen, dann Fragen.
 -->
 
 ---
-
 layout: end
 ---
 
 # Weitermachen.
+
+<KolibriLogo />
 
 <div class="next-steps">
 
@@ -515,7 +550,6 @@ Fragen?"
 -->
 
 ---
-
 hide: true
 ---
 
@@ -526,7 +560,7 @@ hide: true
 | Problem                         | Reaktion                                                                                                                                     |
 | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | Folie mit Live-Demo bleibt leer | Neue Folie ansteuern und zurück – oder Seite neu laden. Läuft `register()` nicht, steht der Grund in der Browser-Konsole                     |
-| Theme-Frame lädt nicht neu      | URL `/demo/step-4-theme.html?theme=kern` direkt im Browser öffnen                                                                            |
+| Theme-Wechsel fehlt live        | URL `/demo/step-4-theme.html?theme=kern` direkt im Browser öffnen                                                                            |
 | Röntgenblick fehlt              | Er sitzt allein auf der Folie „Schritt 3 – Live"                                                                                             |
 | Zu wenig Zeit                   | Erst Schritt 5 streichen (React), dann das Tippen in Schritt 1. **Niemals** das leere Abschicken in Schritt 3 streichen – das ist die Pointe |
 | Zu viel Zeit                    | In Schritt 3 zusätzlich: KoliBri warnt in der Konsole bei Labels unter drei lesbaren Zeichen                                                 |

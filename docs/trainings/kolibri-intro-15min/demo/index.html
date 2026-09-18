@@ -1,81 +1,92 @@
 <!doctype html>
 <html lang="de">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>KoliBri in 15 Minuten – Demo</title>
-<link rel="icon" href="data:," />
-<link rel="stylesheet" href="./_demo.css" />
-<script>
-  /* ES-Module laedt der Browser nur ueber HTTP. Per file:// bliebe die Seite
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>KoliBri in 15 Minuten – Demo</title>
+		<link rel="icon" href="data:," />
+		<link rel="stylesheet" href="./_demo.css" />
+		<script>
+			/* ES-Module laedt der Browser nur ueber HTTP. Per file:// bliebe die Seite
      kommentarlos leer - deshalb hier die Startanleitung statt einer weissen Flaeche. */
-  if (location.protocol === 'file:') {
-    document.addEventListener('DOMContentLoaded', function () {
-      document.body.innerHTML = [
-        '<div class="fileguard">',
-        '<h1>Diese Seite braucht einen Webserver</h1>',
-        '<p>Sie wurde per <b>file://</b> ge\u00f6ffnet. Browser laden ES-Module nur \u00fcber HTTP \u2013 ',
-        'ohne Server bleiben die KoliBri-Komponenten unsichtbar.</p>',
-        '<pre>cd docs/trainings/kolibri-intro-15min\nnpx http-server -p 8080 demo</pre>',
-        '<p>Dann <b>http://127.0.0.1:8080/index.html</b> \u00f6ffnen.</p>',
-        '<small>Fehlt der Ordner demo/vendor/, vorher einmal: node fetch-vendor.mjs</small>',
-        '</div>'
-      ].join('');
-    });
-  }
-</script>
+			if (location.protocol === 'file:') {
+				document.addEventListener('DOMContentLoaded', function () {
+					document.body.innerHTML = [
+						'<div class="fileguard">',
+						'<h1>Diese Seite braucht einen Webserver</h1>',
+						'<p>Sie wurde per <b>file://</b> ge\u00f6ffnet. Browser laden ES-Module nur \u00fcber HTTP \u2013 ',
+						'ohne Server bleiben die KoliBri-Komponenten unsichtbar.</p>',
+						'<pre>cd docs/trainings/kolibri-intro-15min\nnpx http-server -p 8080 demo</pre>',
+						'<p>Dann <b>http://127.0.0.1:8080/index.html</b> \u00f6ffnen.</p>',
+						'<small>Fehlt der Ordner demo/vendor/, vorher einmal: node fetch-vendor.mjs</small>',
+						'</div>',
+					].join('');
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<nav class="chrome">
+			<span class="chrome__step">15′</span>
+			<span class="chrome__title">KoliBri Web Components – Einsteigerschulung</span>
+		</nav>
 
-</head>
-<body>
-<nav class="chrome">
-  <span class="chrome__step">15′</span>
-  <span class="chrome__title">KoliBri Web Components – Einsteigerschulung</span>
-</nav>
+		<main>
+			<h1>Die Demo in fünf Schritten</h1>
+			<p class="lead">Jeder Schritt ist eine eigene Seite. Vor und zurück über die Leiste oben.</p>
 
-<main>
-  <h1>Die Demo in fünf Schritten</h1>
-  <p class="lead">Jeder Schritt ist eine eigene Seite. Vor und zurück über die Leiste oben.</p>
+			<ul class="steplist">
+				<li>
+					<a href="./step-0-handmade.html">
+						<strong>0 · Ein barrierefreies Feld – von Hand</strong>
+						<span>Der Schmerz. Vier IDs, drei ARIA-Attribute, ein stiller Fehler.</span></a
+					>
+				</li>
+				<li>
+					<a href="./step-1-first.html">
+						<strong>1 · Die erste Komponente</strong>
+						<span>Drei Zeilen Setup, ein Tag – und das Feld ist fertig.</span></a
+					>
+				</li>
+				<li>
+					<a href="./step-2-island.html">
+						<strong>2 · Insel im Bestand</strong>
+						<span>KoliBri in einer alten Seite mit aggressivem CSS und nativem Formular.</span></a
+					>
+				</li>
+				<li>
+					<a href="./step-3-form.html">
+						<strong>3 · Komposition &amp; Röntgenblick</strong>
+						<span>Karte, Formular, Felder – und was KoliBri ungefragt richtig macht.</span></a
+					>
+				</li>
+				<li>
+					<a href="./step-4-theme.html">
+						<strong>4 · Das Theme wechseln</strong>
+						<span>Gleiches Markup, anderes Haus. Und Tokens live überschreiben.</span></a
+					>
+				</li>
+				<li>
+					<a href="./step-5-react.html">
+						<strong>5 · Dasselbe in React</strong>
+						<span>Gleiche Props, andere Klammern.</span></a
+					>
+				</li>
+			</ul>
 
-  <ul class="steplist">
-    <li><a href="./step-0-handmade.html">
-      <strong>0 · Ein barrierefreies Feld – von Hand</strong>
-      <span>Der Schmerz. Vier IDs, drei ARIA-Attribute, ein stiller Fehler.</span></a></li>
-    <li><a href="./step-1-first.html">
-      <strong>1 · Die erste Komponente</strong>
-      <span>Drei Zeilen Setup, ein Tag – und das Feld ist fertig.</span></a></li>
-    <li><a href="./step-2-island.html">
-      <strong>2 · Insel im Bestand</strong>
-      <span>KoliBri in einer alten Seite mit aggressivem CSS und nativem Formular.</span></a></li>
-    <li><a href="./step-3-form.html">
-      <strong>3 · Komposition &amp; Röntgenblick</strong>
-      <span>Karte, Formular, Felder – und was KoliBri ungefragt richtig macht.</span></a></li>
-    <li><a href="./step-4-theme.html">
-      <strong>4 · Das Theme wechseln</strong>
-      <span>Gleiches Markup, anderes Haus. Und Tokens live überschreiben.</span></a></li>
-    <li><a href="./step-5-react.html">
-      <strong>5 · Dasselbe in React</strong>
-      <span>Gleiche Props, andere Klammern.</span></a></li>
-  </ul>
+			<div class="note">
+				<strong>Was wo lebt:</strong> Diese Seite ist nur die Übersicht – hier gibt es bewusst keine Komponenten. Die interaktiven Teile liegen auf den
+				Schritten: <br />• <strong>Schritt 1</strong> – Buttons und ein Feld, das beim Verlassen prüft <br />• <strong>Schritt 3</strong> – das Formular und der
+				<strong>Röntgenblick</strong>-Knopf (nur dort, oben rechts in der Leiste) <br />• <strong>Schritt 4</strong> – Theme-Umschalter und Token-Override
+				<br />Schritt 0 und 5 kommen absichtlich ohne KoliBri aus: Schritt 0 ist von Hand gebaut, Schritt 5 ist ein Code-Vergleich.
+			</div>
 
-  <div class="note">
-    <strong>Was wo lebt:</strong> Diese Seite ist nur die Übersicht – hier gibt es bewusst
-    keine Komponenten. Die interaktiven Teile liegen auf den Schritten:
-    <br />• <strong>Schritt 1</strong> – Buttons und ein Feld, das beim Verlassen prüft
-    <br />• <strong>Schritt 3</strong> – das Formular und der <strong>Röntgenblick</strong>-Knopf
-    (nur dort, oben rechts in der Leiste)
-    <br />• <strong>Schritt 4</strong> – Theme-Umschalter und Token-Override
-    <br />Schritt 0 und 5 kommen absichtlich ohne KoliBri aus: Schritt 0 ist von Hand gebaut,
-    Schritt 5 ist ein Code-Vergleich.
-  </div>
-
-  <div class="note">
-    <strong>Vor dem Vortrag:</strong> Diese Demo läuft vollständig offline aus dem Ordner
-    <code>vendor/</code>. Der Ordner <code>vendor/</code> ist <strong>nicht im Repository</strong> (26 MB) – nach einem
-    frischen Checkout also zwingend einmal <code>node fetch-vendor.mjs</code> im Ordner
-    <code>kolibri-intro-15min</code> ausführen, sonst rendert keine einzige Komponente. Starten mit einem beliebigen statischen Server,
-    zum Beispiel <code>npx http-server -p 8080 demo</code> – <code>file://</code> reicht nicht,
-    weil ES-Module über HTTP geladen werden müssen.
-  </div>
-</main>
-</body>
+			<div class="note">
+				<strong>Vor dem Vortrag:</strong> Diese Demo läuft vollständig offline aus dem Ordner <code>vendor/</code>. Der Ordner <code>vendor/</code> ist
+				<strong>nicht im Repository</strong> (26 MB) – nach einem frischen Checkout also zwingend einmal <code>node fetch-vendor.mjs</code> im Ordner
+				<code>kolibri-intro-15min</code> ausführen, sonst rendert keine einzige Komponente. Starten mit einem beliebigen statischen Server, zum Beispiel
+				<code>npx http-server -p 8080 demo</code> – <code>file://</code> reicht nicht, weil ES-Module über HTTP geladen werden müssen.
+			</div>
+		</main>
+	</body>
 </html>

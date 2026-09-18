@@ -5,10 +5,14 @@ import { whenKoliBri } from './kolibri-ready.mjs';
 const host = ref(null);
 
 const MARKUP = `
+<div class="cover-logo">
+  <kol-kolibri _labeled></kol-kolibri>
+</div>
 <div class="cover-badges">
-  <kol-badge _label="Web Components"></kol-badge>
-  <kol-badge _label="automatisiert gegen WCAG 2.1 AA getestet"></kol-badge>
-  <kol-badge _label="läuft offline"></kol-badge>
+  <kol-badge _label="Wie HTML-Tags: validierte API"></kol-badge>
+  <kol-badge _label="Barrierefrei ab Werk"></kol-badge>
+  <kol-badge _label="React, Angular, Vue & mehr"></kol-badge>
+  <kol-badge _label="Keine Datenübertragung · EUPL"></kol-badge>
 </div>`;
 
 onMounted(async () => {
