@@ -83,6 +83,10 @@ kol-textarea {
 	font-size: 12px;
 }
 
+.slidev-layout * {
+	opacity: 1 !important;
+}
+
 /* ---------- Rahmen ---------- */
 
 /* Agenda-Folie: acht Tabellenzeilen plus Hinweis reichen bis an den unteren
