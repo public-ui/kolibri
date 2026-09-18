@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Schritt 5 – Dasselbe in React</title>
+		<link rel="icon" href="data:," />
+		<link rel="stylesheet" href="./_demo.css" />
+	</head>
+	<body>
+		<nav class="chrome">
+			<span class="chrome__step">5 / 5</span>
+			<span class="chrome__title">Dasselbe in React</span>
+			<a href="./index.html">Übersicht</a>
+			<a href="./step-4-theme.html">← Zurück</a>
+		</nav>
+
+		<main>
+			<h1>Nur die Klammern sehen anders aus.</h1>
+			<p class="lead">Gleiche Props, gleiche Barrierefreiheit, gleiches Theme.</p>
+
+			<div class="note">
+				<em>Diese Seite ist ein Code-Vergleich</em> – hier läuft absichtlich kein KoliBri und kein React. Die lebendigen Komponenten stehen auf den Schritten 1
+				bis 4.
+			</div>
+
+			<div class="codecols">
+				<div>
+					<h3>Vanilla – was wir gerade gebaut haben</h3>
+					<pre>
+<i>&lt;!-- einmal beim Start --&gt;</i>
+import { register } from '<b>@public-ui/components</b>';
+import { defineCustomElements }
+  from '<b>@public-ui/components/loader</b>';
+import { DEFAULT } from '<b>@public-ui/theme-default</b>';
+
+await register(DEFAULT, defineCustomElements);
+
+<i>&lt;!-- im Markup --&gt;</i>
+&lt;<b>kol-form</b>&gt;
+  &lt;<b>kol-input-email</b>
+     _label="E-Mail"
+     _required
+     <i>_max-length="120"</i>&gt;&lt;/kol-input-email&gt;
+  &lt;<b>kol-button</b>
+     _label="Absenden"
+     _variant="primary"
+     _type="submit"&gt;&lt;/kol-button&gt;
+&lt;/<b>kol-form</b>&gt;</pre>
+				</div>
+
+				<div>
+					<h3>React – derselbe Baukasten</h3>
+					<pre>
+<i>// einmal beim Start</i>
+import { register } from '<b>@public-ui/components</b>';
+import { defineCustomElements }
+  from '<b>@public-ui/components/loader</b>';
+import { DEFAULT } from '<b>@public-ui/theme-default</b>';
+
+await register(DEFAULT, defineCustomElements);
+
+<i>// in der Komponente</i>
+import { KolForm, KolInputEmail, KolButton }
+  from '<b>@public-ui/react-v19</b>';
+
+&lt;<b>KolForm</b> _on={{ onSubmit }}&gt;
+  &lt;<b>KolInputEmail</b>
+     _label="E-Mail"
+     _required
+     <i>_maxLength={120}</i> /&gt;
+  &lt;<b>KolButton</b>
+     _label="Absenden"
+     _variant="primary"
+     _type="submit" /&gt;
+&lt;/<b>KolForm</b>&gt;</pre>
+				</div>
+			</div>
+
+			<div class="note">
+				<strong>Der einzige echte Unterschied</strong> steht kursiv: In HTML gibt es kein camelCase, dort heißt die Prop <code>_max-length</code>. In JSX
+				schreibt man <code>_maxLength</code>. Alles andere – Props, Verhalten, ARIA-Verdrahtung, Theme – ist identisch, denn darunter läuft in beiden Fällen
+				dieselbe Web Component. <br /><br />
+				Adapter gibt es für React, Angular, Vue, Svelte, Solid und Preact. Sie sind dünne Hüllen um genau die Elemente, die wir hier in reinem HTML benutzt
+				haben.
+			</div>
+
+			<div class="note">
+				<strong>Wiederverwendung eine Ebene höher:</strong> Weil die Komponenten normale Bausteine sind, baut man daraus eigene. Der
+				<code>react-hook-form</code>-Adapter von KoliBri macht genau das – er verheiratet jedes Eingabefeld mit der Formular-Bibliothek und reicht
+				Validierungsfehler automatisch als <code>_msg</code> und <code>_touched</code> weiter. Aus Bausteinen werden eure Bausteine.
+			</div>
+		</main>
+	</body>
+</html>

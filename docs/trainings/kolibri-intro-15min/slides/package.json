@@ -1,0 +1,22 @@
+{
+	"name": "kolibri-intro-15min-slides",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"predev": "node sync-demo.mjs",
+		"dev": "slidev --open false",
+		"prebuild": "node sync-demo.mjs",
+		"build": "slidev build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@public-ui/components": "4.4.0",
+		"@public-ui/theme-default": "4.4.0",
+		"@public-ui/theme-kern": "4.4.0",
+		"vue": "^3.5.13"
+	},
+	"devDependencies": {
+		"@slidev/cli": "latest",
+		"@slidev/theme-default": "latest"
+	}
+}
