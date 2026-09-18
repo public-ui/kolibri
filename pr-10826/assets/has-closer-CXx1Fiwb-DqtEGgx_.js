@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-BmWaIP7K.js";var t=(t,n)=>{e(t,`_hasCloser`,n)};export{t};
