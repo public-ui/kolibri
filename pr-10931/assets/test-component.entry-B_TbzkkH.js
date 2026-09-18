@@ -1,1 +1,0 @@
-import{s as e}from"./index-BoAs21_x.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};
