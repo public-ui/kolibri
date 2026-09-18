@@ -14,6 +14,7 @@
 		border: var(--kern-metric-border-width-light, 1px) solid var(--layout-border);
 
 		&__header {
+			margin: 0; // so h-tags have no margin
 			padding: var(--kern-metric-space-default) 0 0;
 		}
 

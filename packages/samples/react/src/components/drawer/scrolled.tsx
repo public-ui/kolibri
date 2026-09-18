@@ -31,7 +31,7 @@ export const DrawerScrolled: FC = () => {
 				/>
 			</div>
 			<div className="flex flex-wrap gap-4">
-				<KolDrawer ref={drawerElement} _label="Scrollable Drawer" _align={align}>
+				<KolDrawer ref={drawerElement} _label="Scrollable Drawer" _level={2} _align={align}>
 					{useOverflowHandling ? (
 						// ✅ Correct approach: Outer container with fixed dimensions and overflow handling
 						<div
