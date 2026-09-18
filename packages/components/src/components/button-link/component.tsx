@@ -233,7 +233,7 @@ export class KolButtonLink extends BaseButtonWebComponent implements ButtonLinkP
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für die Button-Events an.
+	 * Defines the callback functions for button events.
 	 */
 	@Prop() public _on?: ButtonCallbacksPropType<StencilUnknown>;
 	@Watch('_on')
