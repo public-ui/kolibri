@@ -37,7 +37,7 @@
 		"karma-jasmine-html-reporter": "2.3.0",
 		"karma-coverage": "2.2.1",
 		"jasmine-core": "6.3.0",
-		"knip": "6.32.3",
+		"knip": "6.35.1",
 		"postcss": "8.5.28",
 		"prettier": "3.9.6",
 		"prettier-plugin-organize-imports": "4.3.0",
