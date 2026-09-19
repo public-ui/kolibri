@@ -1,1 +1,0 @@
-import"./index-haByPyE9.js";import{r as e}from"./align-DglmQnOH-BC1X40gp.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
