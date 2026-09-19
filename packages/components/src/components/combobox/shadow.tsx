@@ -238,7 +238,6 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 				'kol-combobox--open': this._isOpen,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 			infoPopover: this._infoPopover,
 		};
 	}
@@ -609,10 +608,6 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 	public constructor() {
 		this.controller = new ComboboxController(this, 'combobox', this.host);
 		this.onInput = this.onInput.bind(this);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_placeholder')

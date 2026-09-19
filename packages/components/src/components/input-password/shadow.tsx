@@ -117,7 +117,6 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 			counterRefs: {
 				visualRef: this.counterUpdater.setVisualRef,
 				ariaRef: this.counterUpdater.setAriaRef,
@@ -141,12 +140,10 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 			onKeyDown: this.onKeyDown,
 			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
 				this.counterUpdater.retriggerAria(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 			},
 			onBlur: (event: FocusEvent) => {
 				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
 			},
 		};
 	}
@@ -345,14 +342,9 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 		_visibilityToggle: false,
 	};
 	@State() private _passwordVisible: boolean = false;
-	@State() private inputHasFocus = false;
 
 	public constructor() {
 		this.controller = new InputPasswordController(this, 'password', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')

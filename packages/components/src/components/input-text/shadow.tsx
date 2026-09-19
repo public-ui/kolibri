@@ -69,7 +69,6 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
-		this.inputHasFocus = false;
 	};
 
 	private readonly onChange = (event: Event) => {
@@ -84,7 +83,6 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 
 	private readonly onFocus = (event: FocusEvent) => {
 		this.controller.onFacade.onFocus(event);
-		this.inputHasFocus = true;
 		this.counterUpdater.retriggerAria(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 	};
 
@@ -234,7 +232,6 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 			counterRefs: {
 				visualRef: this.counterUpdater.setVisualRef,
 				ariaRef: this.counterUpdater.setAriaRef,
@@ -444,14 +441,8 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 		_type: 'text',
 	};
 
-	@State() private inputHasFocus = false;
-
 	public constructor() {
 		this.controller = new InputTextController(this, 'text', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')

@@ -287,7 +287,6 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 				'kol-single-select--open': this._isOpen,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 			infoPopover: this._infoPopover,
 		};
 	}
@@ -678,10 +677,6 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 
 	public constructor() {
 		this.controller = new SingleSelectController(this, 'single-select', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_placeholder')

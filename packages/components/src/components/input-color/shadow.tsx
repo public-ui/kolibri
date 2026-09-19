@@ -52,12 +52,10 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 
 	private readonly onBlur = (event: FocusEvent) => {
 		this.controller.onFacade.onBlur(event);
-		this.inputHasFocus = false;
 	};
 
 	private readonly onFocus = (event: FocusEvent) => {
 		this.controller.onFacade.onFocus(event);
-		this.inputHasFocus = true;
 	};
 
 	private readonly onColorInput = (event: InputEvent) => {
@@ -104,7 +102,6 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 			state: this.state,
 			class: 'kol-input-color',
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 		};
 	}
 
@@ -261,14 +258,8 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 		_suggestions: [],
 	};
 
-	@State() private inputHasFocus = false;
-
 	public constructor() {
 		this.controller = new InputColorController(this, 'color', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')

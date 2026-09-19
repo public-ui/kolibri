@@ -139,7 +139,6 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 				'has-value': this.state._hasValue,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 			infoPopover: this._infoPopover,
 		};
 	}
@@ -158,7 +157,6 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 				const isStepButton = prevFocusElem?.classList.contains('kol-input-number__step-button');
 				if (!isStepButton) {
 					this.controller.onFacade.onFocus(event);
-					this.inputHasFocus = true;
 				}
 			},
 			onBlur: (event: FocusEvent) => {
@@ -166,7 +164,6 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 				const isStepButton = nextFocusElem?.classList.contains('kol-input-number__step-button');
 				if (!isStepButton) {
 					this.controller.onFacade.onBlur(event);
-					this.inputHasFocus = false;
 				}
 			},
 		};
@@ -398,14 +395,9 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 		_suggestions: [],
 	};
 	@State() private _initialValueType: 'number' | 'NumberString' | 'null' = 'null';
-	@State() private inputHasFocus = false;
 
 	public constructor() {
 		this.controller = new InputNumberController(this, 'number', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')

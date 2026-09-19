@@ -98,7 +98,6 @@ export class KolInputCheckbox implements ClickableElement, FocusableElement, Inp
 				[`kol-input-checkbox--label-align-${this.state._labelAlign || 'right'}`]: true,
 			}),
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 			renderNoTooltip: true,
 		};
 	}
@@ -320,10 +319,6 @@ export class KolInputCheckbox implements ClickableElement, FocusableElement, Inp
 
 	public constructor() {
 		this.controller = new InputCheckboxController(this, 'checkbox', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')
