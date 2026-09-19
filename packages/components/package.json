@@ -136,7 +136,7 @@
 		"mustache": "4.2.0",
 		"postcss": "8.5.28",
 		"postcss-sorting": "10.0.0",
-		"prettier": "3.9.6",
+		"prettier": "3.9.7",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"pug": "3.0.4",
 		"rimraf": "6.1.3",
