@@ -1,11 +1,11 @@
   @font-face {
     font-family: "kolicons";
-    src: url('kolicons.eot?t=1789769743083'); /* IE9*/
-    src: url('kolicons.eot?t=1789769743083#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url("kolicons.woff2?t=1789769743083") format("woff2"),
-    url("kolicons.woff?t=1789769743083") format("woff"),
-    url('kolicons.ttf?t=1789769743083') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-    url('kolicons.svg?t=1789769743083#kolicons') format('svg'); /* iOS 4.1- */
+    src: url('kolicons.eot?t=1789783545821'); /* IE9*/
+    src: url('kolicons.eot?t=1789783545821#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url("kolicons.woff2?t=1789783545821") format("woff2"),
+    url("kolicons.woff?t=1789783545821") format("woff"),
+    url('kolicons.ttf?t=1789783545821') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('kolicons.svg?t=1789783545821#kolicons') format('svg'); /* iOS 4.1- */
   }
 
 @layer kol-component {
