@@ -1,1 +1,0 @@
-var e=(e,t)=>{if(e&&t)throw Error(`AccessKey and ShortKey are used. Only one is allowed.`)};export{e as t};
