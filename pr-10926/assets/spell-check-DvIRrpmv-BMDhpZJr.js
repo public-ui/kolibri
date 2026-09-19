@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-AV8GgmoR.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
