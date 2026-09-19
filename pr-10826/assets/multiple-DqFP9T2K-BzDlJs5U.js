@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-CqC_uILU.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};
