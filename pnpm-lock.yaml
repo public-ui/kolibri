@@ -456,8 +456,8 @@ importers:
         specifier: 29.7.0
         version: 29.7.0(@types/node@26.4.0)(ts-node@10.9.2(@swc/core@1.15.47)(@types/node@26.4.0)(typescript@5.9.3))
       knip:
-        specifier: 6.35.1
-        version: 6.35.1
+        specifier: 6.36.0
+        version: 6.36.0
       mustache:
         specifier: 4.2.0
         version: 4.2.0
@@ -601,8 +601,8 @@ importers:
         specifier: 2.3.0
         version: 2.3.0(jasmine-core@6.3.0)(karma-jasmine@5.1.0(karma@6.4.4))(karma@6.4.4)
       knip:
-        specifier: 6.35.1
-        version: 6.35.1
+        specifier: 6.36.0
+        version: 6.36.0
       postcss:
         specifier: 8.5.28
         version: 8.5.28
@@ -695,8 +695,8 @@ importers:
         specifier: 17.6.3
         version: 17.6.3
       knip:
-        specifier: 6.35.1
-        version: 6.35.1
+        specifier: 6.36.0
+        version: 6.36.0
       prettier:
         specifier: 3.9.7
         version: 3.9.7
@@ -789,8 +789,8 @@ importers:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)
       knip:
-        specifier: 6.35.1
-        version: 6.35.1
+        specifier: 6.36.0
+        version: 6.36.0
       prettier:
         specifier: 3.9.7
         version: 3.9.7
@@ -1245,8 +1245,8 @@ importers:
         specifier: 14.1.1
         version: 14.1.1
       knip:
-        specifier: 6.35.1
-        version: 6.35.1
+        specifier: 6.36.0
+        version: 6.36.0
       prettier:
         specifier: 3.9.7
         version: 3.9.7
@@ -1398,8 +1398,8 @@ importers:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)
       knip:
-        specifier: 6.35.1
-        version: 6.35.1
+        specifier: 6.36.0
+        version: 6.36.0
       mocha:
         specifier: 11.8.0
         version: 11.8.0
@@ -1453,8 +1453,8 @@ importers:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)
       knip:
-        specifier: 6.35.1
-        version: 6.35.1
+        specifier: 6.36.0
+        version: 6.36.0
       nodemon:
         specifier: 3.1.14
         version: 3.1.14
@@ -1483,8 +1483,8 @@ importers:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)
       knip:
-        specifier: 6.35.1
-        version: 6.35.1
+        specifier: 6.36.0
+        version: 6.36.0
       mocha:
         specifier: 11.8.0
         version: 11.8.0
@@ -1571,8 +1571,8 @@ importers:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)
       knip:
-        specifier: 6.35.1
-        version: 6.35.1
+        specifier: 6.36.0
+        version: 6.36.0
       prettier:
         specifier: 3.9.7
         version: 3.9.7
@@ -9512,8 +9512,8 @@ packages:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
 
-  knip@6.35.1:
-    resolution: {integrity: sha512-22wnEnv4do2fvoeJsxpFCG/MBxReNxoCVBccaCl7suUJsG+F0UvxI9ycxZ9YgtLHSSjrZl5tOas0JZ/R1vJ93g==}
+  knip@6.36.0:
+    resolution: {integrity: sha512-DWETufDYX4UdaLeCK9gI5rfROanxVxbrsyEPzHFIrrn1H+W04f3XdQ6HPWMnA7O2u2VOKOLWt+EV23K/kb5jlA==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
@@ -22924,7 +22924,7 @@ snapshots:
 
   kleur@3.0.3: {}
 
-  knip@6.35.1:
+  knip@6.36.0:
     dependencies:
       fdir: 6.5.0(picomatch@4.0.7)
       formatly: 0.7.0
