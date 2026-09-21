@@ -106,6 +106,23 @@ test.describe('kol-accordion', () => {
 			await page.locator('summary').click({ force: true });
 			await expect(page.locator('.kol-accordion__content')).toHaveAttribute('aria-hidden', 'true');
 		});
+
+		test('should not take focus when the title is clicked', async ({ page }) => {
+			await page.locator('summary').click({ force: true });
+
+			await expect
+				.poll(() => page.locator('kol-accordion').evaluate((element: HTMLKolAccordionElement) => element.shadowRoot?.activeElement?.localName ?? null))
+				.toBeNull();
+		});
+
+		test('should not take focus when the focus() method is called', async ({ page }) => {
+			const kolAccordion = page.locator('kol-accordion');
+
+			await kolAccordion.evaluate(async (element: HTMLKolAccordionElement) => await element.focus());
+			await page.waitForChanges();
+
+			await expect.poll(() => kolAccordion.evaluate((element: HTMLKolAccordionElement) => element.shadowRoot?.activeElement?.localName ?? null)).toBeNull();
+		});
 	});
 
 	test.describe('click() method', () => {
@@ -130,6 +147,30 @@ test.describe('kol-accordion', () => {
 			await kolAccordion.evaluate(async (element: HTMLKolAccordionElement) => await element.click());
 			await page.waitForChanges();
 			await expect(page.locator('.kol-accordion__content')).toHaveAttribute('aria-hidden', 'true');
+		});
+	});
+
+	test.describe('tab order', () => {
+		/* Own `setContent` call: the stencil fixture serves the page from a single route and a second
+		   call inside a test would not reload it. */
+		test('should skip a disabled accordion', async ({ page }) => {
+			await page.setContent(
+				'<button id="before">before</button><kol-accordion _label="Accordion Label" _disabled>Accordion contents</kol-accordion><button id="after">after</button>',
+			);
+			await page.locator('#before').focus();
+
+			await page.keyboard.press('Tab');
+
+			await expect(page.locator('#after')).toBeFocused();
+		});
+
+		test('should include an enabled accordion', async ({ page }) => {
+			await page.setContent('<button id="before">before</button><kol-accordion _label="Accordion Label">Accordion contents</kol-accordion>');
+			await page.locator('#before').focus();
+
+			await page.keyboard.press('Tab');
+
+			await expect(page.locator('summary')).toBeFocused();
 		});
 	});
 });

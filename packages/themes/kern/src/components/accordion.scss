@@ -28,6 +28,8 @@
 				cursor: pointer;
 			}
 
+			/* The component keeps a disabled summary out of every focus path; the guard is kept as a
+			   safety net so a disabled control can never draw a ring. */
 			&:not([aria-disabled='true'], [tabindex='-1']):focus-visible {
 				@include focus-outline($angularBorder: true);
 			}

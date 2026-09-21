@@ -48,7 +48,9 @@ export class KolDetails
 
 	private readonly detailsId = createUniqueId('details');
 
-	protected readonly ctaRef = createCtaRef<HTMLElement>();
+	/* A disabled `<summary>` stays technically focusable, unlike the `<button disabled>` it replaced.
+	   Emptying the ref keeps the public `focus()` and `click()` methods from reaching it. */
+	protected readonly ctaRef = createCtaRef<HTMLElement>(() => this.getRenderProp('disabled') === true);
 
 	private hasLoaded = false;
 

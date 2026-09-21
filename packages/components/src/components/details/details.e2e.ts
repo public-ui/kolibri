@@ -106,6 +106,36 @@ test.describe('kol-details', () => {
 		});
 	});
 
+	test.describe('when details is disabled', () => {
+		test.beforeEach(async ({ page }) => {
+			await page.setContent('<kol-details _label="Details" _disabled>Expandable content</kol-details>');
+		});
+
+		test('should not open after the title has been clicked', async ({ page }) => {
+			await page.locator('summary').click({ force: true });
+
+			await expect(page.locator('details')).not.toHaveAttribute('open');
+			await expect(page.locator('.kol-details__content')).toHaveAttribute('aria-hidden', 'true');
+		});
+
+		test('should not take focus when the title is clicked', async ({ page }) => {
+			await page.locator('summary').click({ force: true });
+
+			await expect
+				.poll(() => page.locator('kol-details').evaluate((element: HTMLKolDetailsElement) => element.shadowRoot?.activeElement?.localName ?? null))
+				.toBeNull();
+		});
+
+		test('should not take focus when the focus() method is called', async ({ page }) => {
+			const kolDetails = page.locator('kol-details');
+
+			await kolDetails.evaluate(async (element: HTMLKolDetailsElement) => await element.focus());
+			await page.waitForChanges();
+
+			await expect.poll(() => kolDetails.evaluate((element: HTMLKolDetailsElement) => element.shadowRoot?.activeElement?.localName ?? null)).toBeNull();
+		});
+	});
+
 	test.describe('click() method', () => {
 		test('should open details when click() method is called', async ({ page }) => {
 			await page.setContent('<kol-details _label="Details">Expandable content</kol-details>');
@@ -153,6 +183,30 @@ test.describe('kol-details', () => {
 				return detailsElement._open;
 			});
 			expect(isClosed).toBe(false);
+		});
+	});
+
+	test.describe('tab order', () => {
+		/* Own `setContent` call: the stencil fixture serves the page from a single route and a second
+		   call inside a test would not reload it. */
+		test('should skip a disabled details', async ({ page }) => {
+			await page.setContent(
+				'<button id="before">before</button><kol-details _label="Details" _disabled>Expandable content</kol-details><button id="after">after</button>',
+			);
+			await page.locator('#before').focus();
+
+			await page.keyboard.press('Tab');
+
+			await expect(page.locator('#after')).toBeFocused();
+		});
+
+		test('should include an enabled details', async ({ page }) => {
+			await page.setContent('<button id="before">before</button><kol-details _label="Details">Expandable content</kol-details>');
+			await page.locator('#before').focus();
+
+			await page.keyboard.press('Tab');
+
+			await expect(page.locator('summary')).toBeFocused();
 		});
 	});
 });
