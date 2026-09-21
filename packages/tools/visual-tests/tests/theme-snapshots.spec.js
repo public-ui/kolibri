@@ -4,7 +4,6 @@ import { ROUTES } from './sample-app.routes.js';
 
 // https://playwright.dev/docs/emulation
 test.use({
-	colorScheme: 'light',
 	locale: 'de-DE',
 	isMobile: false,
 	timezoneId: 'Europe/Berlin',

@@ -94,24 +94,50 @@ Want to improve or customize the Default Theme? Here’s how:
 
 The following tokens are defined in `src/global.scss` and serve as the base for colors, fonts, and spacing across all components. You can override them via CSS:
 
-| Token                     | Default value                                                                | Meaning                      |
-| ------------------------- | ---------------------------------------------------------------------------- | ---------------------------- |
-| `--border-radius`         | `var(--kolibri-border-radius, 5px)`                                          | Default border radius        |
-| `--font-family`           | `var(--kolibri-font-family, Verdana, Arial, Calibri, Helvetica, sans-serif)` | Default font                 |
-| `--font-size`             | `var(--kolibri-font-size, #{to-rem(16)})`                                    | Base font size               |
-| `--spacing`               | `var(--kolibri-spacing, #{to-rem(4)})`                                       | Standard spacing             |
-| `--border-width`          | `var(--kolibri-border-width, 1px)`                                           | Border width                 |
-| `--color-primary`         | `var(--kolibri-color-primary, #004b76)`                                      | Primary accent color         |
-| `--color-primary-variant` | `var(--kolibri-color-primary-variant, #0077b6)`                              | Variant of the primary color |
-| `--color-secondary`       | `var(--kolibri-color-secondary, #ccebf7)`                                    | Secondary color              |
-| `--color-danger`          | `var(--kolibri-color-danger, #b4003c)`                                       | Error color                  |
-| `--color-warning`         | `var(--kolibri-color-warning, #c44931)`                                      | Warning color                |
-| `--color-success`         | `var(--kolibri-color-success, #005c45)`                                      | Success color                |
-| `--color-subtle`          | `var(--kolibri-color-subtle, #576164)`                                       | Subtle lines and borders     |
-| `--color-light`           | `var(--kolibri-color-light, #ffffff)`                                        | Light surface color          |
-| `--color-text`            | `var(--kolibri-color-text, #202020)`                                         | Standard text color          |
-| `--color-mute`            | `var(--kolibri-color-mute, #f2f3f4)`                                         | Muted color                  |
-| `--color-mute-variant`    | `var(--kolibri-color-mute-variant, #bec5c9)`                                 | Alternate muted color        |
+| Token                     | Overridable with                  | Light                                 | Dark               | Meaning                                        |
+| ------------------------- | --------------------------------- | ------------------------------------- | ------------------ | ---------------------------------------------- |
+| `--border-radius`         | `--kolibri-border-radius`         | `5px`                                 | `5px`              | Default border radius                          |
+| `--inner-border-radius`   | `--kolibri-border-radius`         | `4px`                                 | `4px`              | Border radius of nested elements               |
+| `--font-family`           | `--kolibri-font-family`           | `Verdana, …`                          | `Verdana, …`       | Default font                                   |
+| `--font-size`             | `--kolibri-font-size`             | `1rem`                                | `1rem`             | Base font size                                 |
+| `--spacing`               | `--kolibri-spacing`               | `0.25rem`                             | `0.25rem`          | Standard spacing                               |
+| `--border-width`          | `--kolibri-border-width`          | `1px`                                 | `1px`              | Border width                                   |
+| `--color-primary`         | `--kolibri-color-primary`         | `#003a5c`                             | `#86c5ea`          | Primary accent color                           |
+| `--color-primary-variant` | `--kolibri-color-primary-variant` | `#005a8f`                             | `#b6dff6`          | Hover and focus variant of the primary color   |
+| `--color-secondary`       | `--kolibri-color-secondary`       | `#ccebf7`                             | `#193743`          | Secondary color                                |
+| `--color-danger`          | `--kolibri-color-danger`          | `#ad003a`                             | `#f391b1`          | Error color                                    |
+| `--color-warning`         | `--kolibri-color-warning`         | `#c44931`                             | `#f29988`          | Warning color                                  |
+| `--color-success`         | `--kolibri-color-success`         | `#005c45`                             | `#69d3b9`          | Success color                                  |
+| `--color-subtle`          | `--kolibri-color-subtle`          | `#576164`                             | `#a1acaf`          | Subtle lines, borders and secondary text       |
+| `--color-surface`         | `--kolibri-color-surface`         | `#ffffff`                             | `#14181a`          | Elevation 0: the page canvas                   |
+| `--color-light`           | `--kolibri-color-light`           | `#ffffff`                             | `#1c2021`          | Elevation 1, and the color used _on_ an accent |
+| `--color-overlay`         | `--kolibri-color-overlay`         | `#ffffff`                             | `#262c2e`          | Elevation 2: dialog, popover, tooltip          |
+| `--color-text`            | `--kolibri-color-text`            | `#202020`                             | `#e9ebec`          | Standard text color                            |
+| `--color-mute`            | `--kolibri-color-mute`            | `#f2f3f4`                             | `#272c2f`          | Muted surface                                  |
+| `--color-mute-variant`    | `--kolibri-color-mute-variant`    | `#bec5c9`                             | `#41494e`          | Dividers and alternate muted surface           |
+| `--color-visited`         | `--kolibri-color-visited`         | `#551a8b`                             | `#c39de7`          | Visited link                                   |
+| `--color-ink`             | `--kolibri-color-ink`             | `#000000`                             | `#e9ebec`          | Maximum contrast foreground                    |
+| `--color-shadow`          | `--kolibri-color-shadow`          | `rgb(8 35 48 / .24)`                  | `transparent`      | Ambient elevation shadow                       |
+| `--color-shadow-inverse`  | `--kolibri-color-shadow-inverse`  | `rgb(255 255 255 / .24)`              | `transparent`      | The same, cast on an accent surface            |
+| `--color-shadow-contrast` | `--kolibri-color-shadow-contrast` | `--color-subtle` mixed 80% with black | `transparent`      | Shadow used as a 3:1 border                    |
+| `--color-edge`            | `--kolibri-color-edge`            | `transparent`                         | `#6c767a`          | The hard edge that replaces those shadows      |
+| `--color-backdrop`        | `--kolibri-color-backdrop`        | `transparent`                         | `rgb(0 0 0 / .55)` | Laid over the browser's dialog backdrop        |
+
+`--color-light` is not "white". It is the surface _and_ the color placed on an accent: in dark mode the surface becomes dark and the accents become light tints, so both roles flip together and a light-blue primary automatically carries dark text.
+
+### Elevation
+
+**A lighter surface sits higher.** A light palette cannot express that — every surface there is white — so in light mode the three levels collapse onto `#ffffff` and depth is drawn with a shadow instead. In dark mode the surfaces carry it themselves, and the shadow, which would only soften the boundary it is meant to draw, gives way to a hard one pixel edge:
+
+| Level | Token             | What sits there                                     |
+| ----- | ----------------- | --------------------------------------------------- |
+| 0     | `--color-surface` | The page, and the host box every component paints   |
+| 1     | `--color-light`   | Card, accordion, input, table cell, drawer, toolbar |
+| 2     | `--color-overlay` | Dialog, popover, tooltip, suggestion list           |
+
+Both branches are expressed purely as colors, because `light-dark()` is a color function and cannot switch a `box-shadow` geometry: the shadow tokens are transparent in dark mode and `--color-edge` is transparent in light mode, so neither branch moves a pixel in the other.
+
+A container that paints a surface of its own tells the components placed inside it so, through the internal property `--kol-surface`. Inheritance follows the flat tree, so the declaration reaches slotted components as well — a button inside a card paints its host box in the card's color, not the page's. Nothing declares `--kol-surface` at document level, so a component sitting on the page falls back to level 0. Read it back with `--color-surface-current` wherever something has to be opaque against the component's own background.
 
 To adjust the design tokens, create a stylesheet that overrides the desired custom properties. Example:
 
@@ -124,6 +150,56 @@ To adjust the design tokens, create a stylesheet that overrides the desired cust
 	--kolibri-color-primary-variant: #ff64b9;
 }
 ```
+
+A single value like this applies in **both** color schemes. To give a token a different value per scheme, write the two-branch form yourself:
+
+```css
+:root {
+	--kolibri-color-primary: light-dark(#cc006e, #ff9ad4);
+}
+```
+
+## Dark mode
+
+The theme ships one palette per color scheme. Every color token resolves through the CSS `light-dark()` function, which reads the `color-scheme` in effect at the element it is used on:
+
+```scss
+--color-text: var(--kolibri-color-text, light-dark(#202020, #e9ebec));
+```
+
+**The application owns `color-scheme`, the components consume it implicitly.** The theme declares no `color-scheme` of its own. Since `color-scheme` is an inherited CSS property and inheritance follows the flat tree, every component picks up whatever the document sets around it — the page and the components in it can never disagree, and there is no KoliBri specific API involved:
+
+```css
+:root {
+	color-scheme: light dark; /* follow the operating system */
+}
+
+.night {
+	color-scheme: dark; /* force this subtree, KoliBri components included */
+}
+```
+
+A declaration on any element applies to that element's whole subtree, nested shadow roots included, so an inner container flips only itself.
+
+**Dark mode is opt-in.** An application that declares nothing keeps `color-scheme: normal` and stays light, whatever the operating system says. That is the standard CSS default, and it means adding this theme version changes nothing for an existing application until it asks for it. One line switches it on, and the bundled document stylesheet is exactly that line plus the page colors and two convenience selectors:
+
+```html
+<link rel="stylesheet" href="node_modules/@public-ui/theme-default/color-scheme.css" />
+
+<html data-kol-color-scheme="dark">
+	<!-- or: <html class="kol-color-scheme-dark">, or your own `color-scheme: dark` -->
+</html>
+```
+
+An application that already manages `color-scheme` itself does not need the file at all.
+
+One limitation: `kol-spin`'s cycle variant animates its arc through `@keyframes` color stops in the base layer of `@public-ui/components`. A theme cannot override an animation's own color stops, so that arc stays dark in dark mode. Its static ring and the dot variant do follow the scheme.
+
+The presentation app (`packages/samples/presentation`) is a live example: its Sidebar carries a Color scheme select with the states Auto, Light and Dark.
+
+Browser support follows `light-dark()`: Chrome 123, Edge 123, Safari 17.5, Firefox 120.
+
+**One pitfall worth knowing** if you write `light-dark()` in your own stylesheets, `color-scheme.css` included: a bundler that minifies CSS against an older browser target rewrites the function into a `prefers-color-scheme` media query with space toggles. That replacement ignores the `color-scheme` property. The theme's own CSS is never affected — it is a string adopted into the shadow roots at runtime — so your page would follow the operating system while the components in it follow whatever you set. Pin your CSS target at or above the browsers listed above; in Vite that is `build.cssTarget`.
 
 ## More Information
 
