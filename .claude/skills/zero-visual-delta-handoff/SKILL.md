@@ -712,6 +712,11 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
   (`split-button/basic` + `scenarios/focus-elements?component=splitButton` fuer unstyled, default,
   bwst, desy, kern, ecl-ec). Components 992/992, Hydrate-SSR 102/102,
   `pnpm check:skeleton-selectors` sauber.
+- **Abnahme-Evidenz (CI, maßgeblich)**: PR #10958, Visual-Review-Bot „No visual changes", je
+  409 unchanged / 0 changed fuer alle sieben Pakete, Baseline `e659945cf8` (develop), Commit
+  `73dc4859bd`; `visual-tests (<paket>)`, `build-and-check` und `e2e-tests` gruen. Der lokale
+  chromium-A/B hat das Ergebnis vorweggenommen — er ersetzt den firefox-Lauf der CI aber nicht,
+  sondern verkuerzt nur die Schleife bis dorthin.
 - **Falle beim A/B-Lauf**: Der `--grep`-Passthrough darf keine Alternation enthalten (`|` wird als
   Shell-Pipe interpretiert, siehe Log 2026-09-09). Ein gemeinsames Teilwort nehmen — hier `plit`,
   das `split-button/basic` und `…component=splitButton` zugleich trifft.
