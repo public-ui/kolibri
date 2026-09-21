@@ -8,6 +8,14 @@ import type { FunctionalComponentProps } from '../generic-types';
 import { SpanFC } from '../span/component';
 import type { CollapsibleApi, CollapsibleVariant } from './api';
 
+/*
+ * `<summary>` has no `disabled`, and focus is the default action of `mousedown`. `tabindex="-1"`
+ * only takes the element out of the tab order, not out of the click focus — without this a
+ * disabled collapsible takes focus on click or tap although it refuses every interaction. The
+ * native `<button disabled>` this element stands in for did the same implicitly.
+ */
+const preventFocus = (event: MouseEvent): void => event.preventDefault();
+
 /**
  * Renders a collapsible — `kol-accordion` and `kol-details` — on the native `<details>`/`<summary>`
  * elements.
@@ -43,6 +51,7 @@ export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & Collap
 				class={blockBem('heading')}
 				id={headingId}
 				onClick={handleToggle}
+				onMouseDown={disabled === true ? preventFocus : undefined}
 				ref={refHeadingButton}
 				tabIndex={disabled === true ? -1 : undefined}
 			>
