@@ -133,18 +133,22 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	};
 
 	private getClearButton(): VNode | null {
-		if (this._disabled || this.state._readOnly || this.state._hasValue !== true) {
+		if (this._disabled || this.state._readOnly) {
 			return null;
 		}
 
 		if (this.state._type === 'search') {
+			const canClear = this.state._hasValue === true;
 			return (
 				<KolIconButtonFc
 					componentName="button"
-					class={clsx('kol-input-text__clear-button', 'kol-input-container__smart-button')}
+					class={clsx('kol-input-text__clear-button', 'kol-input-container__smart-button', {
+						'kol-input-text__clear-button--hidden': !canClear,
+					})}
 					data-testid="kol-input-text-clear-button"
 					label={this.translateClearSearch}
 					buttonVariant="ghost"
+					disabled={!canClear}
 					onClick={this.onClearButtonClick}
 					icon="kolicon-cross"
 				/>
