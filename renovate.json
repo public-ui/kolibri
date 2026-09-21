@@ -117,11 +117,11 @@
 			"automerge": false
 		},
 		{
-			"description": "ESLint: group all ESLint-related packages and require manual approval for non-patch updates (mid-migration 9 → 10).",
+			"description": "ESLint: group all ESLint-related packages and automerge minor/patch updates once pipelines are green — majors keep manual dashboard approval (mid-migration 9 → 10).",
 			"matchPackageNames": ["eslint", "@eslint/*", "eslint-plugin-*", "eslint-config-*"],
 			"groupName": "ESLint",
-			"matchUpdateTypes": ["minor", "major", "patch"],
-			"automerge": false
+			"matchUpdateTypes": ["minor", "patch"],
+			"automerge": true
 		},
 		{
 			"description": "Jest: group all Jest packages and automerge safe patch updates (majors are breaking).",

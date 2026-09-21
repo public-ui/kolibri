@@ -53,7 +53,7 @@
 		"portfinder": "1.0.38",
 		"react": "19.2.8",
 		"react-dom": "19.2.8",
-		"react-router": "8.3.0",
+		"react-router": "8.3.1",
 		"vite": "8.2.2"
 	},
 	"devDependencies": {
@@ -62,8 +62,8 @@
 		"@types/react": "19.2.18",
 		"@types/react-dom": "19.2.5",
 		"eslint": "9.39.5",
-		"knip": "6.32.3",
-		"prettier": "3.9.6",
+		"knip": "6.36.0",
+		"prettier": "3.9.8",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"tslib": "2.8.1",
 		"typescript": "5.9.3"

@@ -60,11 +60,11 @@
 		"test:update:unit": "cross-env SNAPSHOT_UPDATE=1 pnpm run test:mocha"
 	},
 	"dependencies": {
-		"@grpc/grpc-js": "1.14.4",
+		"@grpc/grpc-js": "1.14.5",
 		"@grpc/proto-loader": "0.8.1",
 		"@public-ui/hydrate": "workspace:*",
 		"commander": "15.0.0",
-		"fastify": "5.12.1"
+		"fastify": "5.12.5"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
@@ -72,7 +72,7 @@
 		"cross-env": "10.1.0",
 		"eslint": "9.39.5",
 		"mocha": "11.8.0",
-		"prettier": "3.9.6",
+		"prettier": "3.9.8",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
