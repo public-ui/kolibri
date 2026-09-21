@@ -42,6 +42,7 @@ export * from './min';
 export * from './name';
 export * from './optimum';
 export * from './orientation';
+export * from './popover-align';
 export * from './quote';
 export * from './secondary-headline';
 export * from './short-key';

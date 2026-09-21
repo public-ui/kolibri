@@ -2,6 +2,12 @@
 
 @mixin kol-popover-button-styles {
 	.kol-popover-button {
+		/*
+		 * The predecessor rendered this box as an unstyled (inline) custom element host; keep the
+		 * inline display so the flow layout around the embedded button stays unchanged.
+		 */
+		display: inline;
+
 		&__popover {
 			margin: 0;
 			padding: 0;
@@ -16,10 +22,6 @@
 
 		&--inline {
 			display: inline-block;
-
-			&__button {
-				display: inline;
-			}
 
 			/* The size exemption has to cover both the BEM root div and the inner interactive element:
 			   the a11y layer pins every `button` to 44×44, so the inner `kol-button__interactive-element`
@@ -37,7 +39,7 @@
 		transition: 0.2s ease-out opacity;
 	}
 
-	.kol-popover-button--open + .kol-popover {
+	.kol-popover-button--open .kol-popover-button__popover {
 		opacity: 1;
 	}
 }

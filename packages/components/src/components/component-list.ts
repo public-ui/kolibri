@@ -36,7 +36,7 @@ import { KolMeter } from './meter/component';
 import { KolModal } from './modal/shadow';
 import { KolNav } from './nav/shadow';
 import { KolPagination } from './pagination/shadow';
-import { KolPopoverButton } from './popover-button/shadow';
+import { KolPopoverButton } from './popover-button/component';
 import { KolProgress } from './progress/component';
 import { KolQuote } from './quote/component';
 import { KolSelect } from './select/shadow';
