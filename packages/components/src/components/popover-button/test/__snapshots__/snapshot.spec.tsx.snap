@@ -3,7 +3,7 @@
 exports[`kol-popover-button should render with _label="Click to toggle" _disabled=true 1`] = `
 <kol-popover-button>
   <template shadowrootmode="open">
-    <div class="kol-popover-button kol-popover-button--standalone">
+    <div class="kol-popover-button">
       <div class="kol-button kol-button--disabled kol-button--normal kol-button--standalone">
         <button aria-controls="popover-nonce" aria-expanded="false" class="kol-button__interactive-element" disabled="" type="button">
           <span class="kol-button__text kol-span">
@@ -30,7 +30,7 @@ exports[`kol-popover-button should render with _label="Click to toggle" _disable
 exports[`kol-popover-button should render with _label="Click to toggle" _icons="kolicon-alert-info" _hideLabel=true 1`] = `
 <kol-popover-button>
   <template shadowrootmode="open">
-    <div class="kol-popover-button kol-popover-button--standalone">
+    <div class="kol-popover-button">
       <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
         <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Click to toggle" class="kol-button__interactive-element" type="button">
           <span class="kol-button__text kol-span kol-span--hide-label">
@@ -95,7 +95,7 @@ exports[`kol-popover-button should render with _label="Click to toggle" _inline=
 exports[`kol-popover-button should render with _label="Click to toggle" _popoverAlign="top" 1`] = `
 <kol-popover-button>
   <template shadowrootmode="open">
-    <div class="kol-popover-button kol-popover-button--standalone">
+    <div class="kol-popover-button">
       <div class="kol-button kol-button--normal kol-button--standalone">
         <button aria-controls="popover-nonce" aria-expanded="false" class="kol-button__interactive-element" type="button">
           <span class="kol-button__text kol-span">
@@ -122,7 +122,7 @@ exports[`kol-popover-button should render with _label="Click to toggle" _popover
 exports[`kol-popover-button should render with _label="Click to toggle" 1`] = `
 <kol-popover-button>
   <template shadowrootmode="open">
-    <div class="kol-popover-button kol-popover-button--standalone">
+    <div class="kol-popover-button">
       <div class="kol-button kol-button--normal kol-button--standalone">
         <button aria-controls="popover-nonce" aria-expanded="false" class="kol-button__interactive-element" type="button">
           <span class="kol-button__text kol-span">

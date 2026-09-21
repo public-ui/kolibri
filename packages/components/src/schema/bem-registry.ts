@@ -138,7 +138,7 @@ export type KoliBriComponentsBemSchema = {
 				modifiers: null;
 			};
 		};
-		modifiers: Set<'inline' | 'open' | 'standalone'>;
+		modifiers: Set<'inline' | 'open'>;
 	};
 	'kol-icon': {
 		elements: {
@@ -353,7 +353,7 @@ const BEM: KoliBriComponentsBemSchema = {
 		elements: {
 			popover: { modifiers: null },
 		},
-		modifiers: new Set(['inline', 'open', 'standalone']),
+		modifiers: new Set(['inline', 'open']),
 	},
 	'kol-icon': {
 		elements: {

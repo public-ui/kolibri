@@ -58,7 +58,6 @@ export const PopoverButtonFC: FC<FunctionalComponentProps<PopoverButtonApi>> = (
 			modifiers={{
 				open: popoverOpen,
 				inline: inline === true,
-				standalone: inline === false,
 			}}
 		>
 			<ButtonFC
