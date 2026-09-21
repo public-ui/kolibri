@@ -27,6 +27,9 @@
 		}
 
 		&__input--range {
+			// The base layer paints the track white with a black border.
+			background-color: var(--color-light);
+			border-color: var(--color-ink);
 			border-radius: var(--border-radius);
 			height: to-rem(8);
 

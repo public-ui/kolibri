@@ -24,6 +24,9 @@ This folder collects all official KoliBri themes. Each theme package under this 
 - Place theme tokens (colors, fonts, spacing, etc.) in the global layer and reference them in component styles.
 - Dark/light color schemes are a theme responsibility. Define scheme-dependent colors as tokens in `@layer kol-theme-global` on `:host` and switch the scheme at that single place (`color-scheme` + `light-dark()`, `@media (prefers-color-scheme: dark)`, or an opt-in attribute). Component styles only reference the tokens. Never expect a color scheme from the base styling of `@public-ui/components` — it is layout-only by design (see [`docs/BASE_STYLING_VS_THEMING_CONCEPT.md`](../../docs/BASE_STYLING_VS_THEMING_CONCEPT.md)).
 - Avoid `!important` and only override properties that the theme actually customises.
+- Colour tokens are declared as `--color-X: var(--kolibri-color-X, light-dark(<light>, <dark>))` in the theme global layer. Never declare `color-scheme` in a theme and never write a `@media (prefers-color-scheme: …)` block: `color-scheme` is inherited and crosses the shadow boundary, so the consuming application owns it and the components resolve `light-dark()` against whatever is in effect where they sit. A declaration on `:host` would replace that value and let the page and its components disagree.
+- Sass does not evaluate variables inside `var()`. Interpolate them: `light-dark(#202020, #{$dark-color-text})`.
+- Never hardcode `white`, `black` or a raw hex in a theme. Pick the surface by elevation — `--color-surface` for the page canvas, `--color-light` for a raised surface and for text on an accent, `--color-overlay` for something floating above the page — use `--color-surface-current` where something has to be opaque against the component's own background, `--color-ink` where the base layer needs a maximum contrast foreground, and the `--color-shadow*` and `--color-edge` tokens for the boundary of an elevated surface.
 
 ## Consistency
 

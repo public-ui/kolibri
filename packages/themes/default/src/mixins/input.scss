@@ -5,6 +5,8 @@
 	.kol-input-container {
 		$root: &;
 
+		// A raised surface; the buttons and icons inside it stand on the field, not on the page.
+		--kol-surface: var(--color-light);
 		background-color: var(--color-light);
 		border-color: var(--color-subtle);
 		border-style: solid;
@@ -27,6 +29,7 @@
 		}
 
 		&--disabled {
+			--kol-surface: var(--color-mute);
 			color: var(--color-text);
 			background-color: var(--color-mute);
 			cursor: not-allowed;
