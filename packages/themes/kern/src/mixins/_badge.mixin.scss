@@ -1,0 +1,43 @@
+@use '~@public-ui/components/index' as *;
+
+/*
+ * Badge theme styles for every shadow root that renders `BadgeFC` - `kol-badge` and `kol-version`.
+ * Theme sheets are adopted per tag name, so a second consumer needs its own entry that includes
+ * these rules (same pattern as `kol-link`).
+ */
+@mixin kol-badge($block-classname: 'kol-badge') {
+	.#{$block-classname} {
+		border-radius: 4px;
+		min-height: to-rem(32);
+		border: 1px solid currentColor;
+
+		&--has-smart-button {
+			align-items: center;
+		}
+
+		&__label {
+			align-items: center;
+
+			font-size: to-rem(16);
+			font-weight: 500;
+			line-height: to-rem(24);
+			letter-spacing: 0;
+			font-style: normal;
+
+			.kol-span__container {
+				display: flex;
+				display: inline-flex;
+				padding: to-rem(2) to-rem(16) to-rem(2) to-rem(12);
+				gap: to-rem(4);
+				align-items: center;
+			}
+		}
+
+		/* should be included in the basis styling of the component package */
+		&__smart-button {
+			button {
+				color: inherit;
+			}
+		}
+	}
+}

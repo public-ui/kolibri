@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-version should render with _label="1.0.0" 1`] = `
+<kol-version>
+  <template shadowrootmode="open">
+    <div class="kol-version">
+      <div class="kol-badge" style="background-color: #bec5c9; color: #323537;">
+        <span class="kol-badge__label kol-span">
+          <span class="kol-span__container">
+            <i aria-label="kol-version" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-version" role="img"></i>
+            <span class="kol-span__label md">
+              1.0.0
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+          </span>
+        </span>
+        <br>
+      </div>
+    </div>
+  </template>
+</kol-version>
+`;

@@ -43,6 +43,7 @@ import toastContainerCss from './components/toast-container.scss';
 import toolbarCss from './components/toolbar.scss';
 import treeItemCss from './components/tree-item.scss';
 import treeCss from './components/tree.scss';
+import versionCss from './components/version.scss';
 import globalCss from './global.scss';
 
 // Europa Component Library - European Commission | https://ec.europa.eu/component-library/ec/
@@ -92,4 +93,5 @@ export const ECL_EC = KoliBri.createTheme('ecl-ec', {
 	'KOL-TOOLBAR': toolbarCss,
 	'KOL-TREE': treeCss,
 	'KOL-TREE-ITEM': treeItemCss,
+	'KOL-VERSION': versionCss,
 });

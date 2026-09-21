@@ -1,0 +1,28 @@
+@use 'mixins' as *;
+@use 'icon.mixin' as *;
+
+/*
+ * Badge box for every shadow root that renders `BadgeFC` - the badge itself and `kol-version`.
+ * Stencil scopes `badge/style.scss` to the `kol-badge` shadow root, so a second consumer has to
+ * bring these rules along (same pattern as `kol-link-styles` for `LinkFC`).
+ *
+ * The smart-button rules stay in `badge/style.scss`: only the badge web component orchestrates one.
+ */
+@mixin kol-badge-styles($block-classname: 'kol-badge') {
+	@include kol-icon-styles();
+
+	.#{$block-classname} {
+		/* Visible with forced colors  */
+		outline: transparent solid to-rem(1);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		// The wrapping <br /> (see BadgeFC) is serialized into copied text as a blank line. Excluding
+		// it from selection keeps it in the box and accessibility trees, so NVDA read mode is unaffected.
+		// Child combinator: a markdown label may render its own <br />, which must stay copyable.
+		> br {
+			user-select: none;
+		}
+	}
+}

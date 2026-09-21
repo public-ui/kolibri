@@ -296,6 +296,8 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 
 | 29 | Migrierter FC darf den transitionalen `-wc`-Tag behalten: Theme-/Basis-Selektoren treffen dessen Host-Klasse als Vorfahren (ecl `.kol-details__heading-button .kol-button`, desy `kol-link('kol-details__heading-button')`, badge `.kol-badge__smart-button .kol-button`) — vor jedem Ersetzen die Selektoren greppen; DOM-identischer FC-Port erspart die komplette Theme-Runde → Log 2026-09-14 | Details-Skeleton-Migration (PR #10884), Badge-Skeleton-Migration (PR #10889) — 2× bestätigt | Theme-Fix-Runden (25–33 Diffs wie bei Button) von vornherein vermieden |
 
+| 30 | Inlining eines Child-FCs verliert Base- UND Theme-Styles des Child-WC an der Shadow-Root-Grenze: Das Child-WC trägt sein eigenes `style.scss` (Basis: Layout, Icon-Glyph-Fonts!) **und** die Theme-Styles über sein `KOL-<TAG>`-Mapping in seinem eigenen Shadow-Root. Rendert der Parent-FC den Child-FC direkt, hängen die Elemente im Parent-Shadow-Root — dort gibt es beides nicht, außer der Parent-Stylesheet inkludiert die Basis und **jedes Theme** ein Parent-Stylesheet mit Child-Mapping liefert. Vor dem Inlining prüfen: Woher bekommt das Child heute Basis-/Theme-Styles, und liefert der Parent beide? Sonst WC-Blatt behalten → Log 2026-09-16 | Version-Skeleton-Migration (PR #10908): BadgeFC-in-Version kollabierte die Badge-Box in allen 7 Paketen (80×27 → 44×38) | 7-Changed-Image-Runde + Fehldiagnose vermieden |
+
 **Block C — Betrieb**
 
 | #   | Erfahrung (Detail)                                                                                             | Bestätigt              | Zeitersparnis bei früherer Kenntnis           |
@@ -618,6 +620,66 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 - **Evidenz**: je Theme einzeln geprüft (kombinierte Läufe verursachen die Race-Condition oben) —
   default/bwst/kern/desy: `--grep alert` 5/5 passed, `--grep card` 11/11 passed, je Exit 0; ecl und
   unstyled unterstützen kein `--grep` → je ein voller Lauf, 297/297 passed, Exit 0.
+
+### 2026-09-16 — Skeleton-Migration kol-version (PR #10908): 7 Changed-Images → 0, ohne Theme-Runde
+
+> Ueberholt: der WC-Blatt-Fix wurde am 2026-09-21 zurueckgenommen (Eintrag darunter). Der
+> Eintrag bleibt fuer die Diagnose (Groessensprung = Layout-Kollaps) und die Ursachenanalyse.
+
+- **Ausgangslage**: Der PR inlined `BadgeFC` direkt in den `kol-version`-Shadow-Root. Ergebnis: je
+  1 Changed-Image pro Paket (Visual Review „7 changed"), Docker default 294/1 (`version/basic`),
+  Screenshot-Größe 80×27 → 44×38 — die Badge-Box kollabierte, Icon und Label stapelten vertikal.
+  Zusätzlich war `build-and-check` rot: Hydrate-SSR-Snapshot nicht nachgezogen.
+- **Ursachen & Fix-Muster**: Erfahrung #30 — das Badge-WC brachte Basis-Styles (`display: flex`,
+  `kol-icon-styles()` mit Icon-Glyph-Font) und Theme-Styles (`border-radius` usw. über
+  `KOL-BADGE`-Mapping) in seinem eigenen Shadow-Root mit; kein Theme hat ein `version.scss`/
+  `KOL-VERSION`-Mapping, also kam in `kol-version` beides nie an. Fix: der transitionale
+  `kol-badge`-WC bleibt als Blatt in `VersionFC` (Erfahrung #29-Muster), Props
+  `_color`/`_icons`/`_label` wie im Legacy-WC, `VERSION_COLOR` wieder Raw-String. Keine einzige
+  Theme-Änderung nötig.
+- **Diagnose-Weg**: Diff-Klassifikation per PIL auf den aus dem Volume kopierten
+  expected/actual-PNGs (Größensprung = Layout-Kollaps, nicht Verschiebung) → Styles im
+  Ziel-Shadow-Root geprüft (`version/style.scss` = nur `@shared/global`; kein
+  `.kol-version`-Selektor irgendwo; kein `KOL-VERSION`-Theme-Mapping) → WC-Blatt statt FC.
+- **Theme-Spezifika**: keine — der WC-Blatt-Fix ist theme-unabhängig, alle 6 Themes in einem Lauf.
+- **Fix-Commit(s)**: `d440124106` auf `vibe/version-skeleton-migration-b4ddb6`.
+- **Evidenz**: `KOLIBRI_VISUAL_TESTS_WORKERS=1 node scripts/snapshots-docker.mjs --all --check` →
+  bwst/default/desy/ecl/kern/unstyled je 295 passed, Exit 0; Components 965/965;
+  Hydrate-SSR 102 passing; `git diff origin/develop...HEAD -- '*.png'` = 0.
+  Stufe-1 vorab: `default --check -- --grep version` → 3 passed, Exit 0.
+
+### 2026-09-21 — kol-version rendert BadgeFC (PR #10908): Styles mitnehmen statt WC-Blatt, 0 Diffs
+
+- **Ausgangslage**: Der Owner verlangte, dass die FC ausschliesslich `BadgeFC` rendert — der
+  WC-Blatt-Fix vom 2026-09-16 (Eintrag darueber) war damit keine Option mehr. Die dort
+  beschriebene Ursache blieb: Basis-Styles haengen per Stencil `styleUrls` am `kol-badge`-Tag,
+  Theme-Styles per `KOL-BADGE`-Mapping; `version` fehlte sogar im `TagEnum`.
+- **Ursachen & Fix-Muster**: Nicht das Tag zurueckholen, sondern **beide Style-Schichten teilbar
+  machen** (Muster `kol-link-styles`/`mixins/link.scss`, das Breadcrumb fuer `LinkFC` nutzt):
+  `@shared/_badge.mixin.scss` (`kol-badge-styles()`, inkl. `kol-icon-styles()`) fuer die Basis,
+  pro Theme `mixins/badge.scss` (kern: `_badge.mixin.scss`) plus ein eigenes
+  `components/version.scss` und ein `KOL-VERSION`-Mapping im Theme-Index. `version` muss dafuer in
+  `schema/tag-names.ts` ergaenzt werden — ohne `TagEnum`-Eintrag ist der Theme-Key nicht typisiert.
+- **Theme-Spezifika**: keine. Das Mixin ist eine wortgleiche Verschiebung der Regeln, deshalb
+  brauchte kein Theme eine eigene Korrekturrunde — desy (`inline-flex`, `border-radius: 60rem`),
+  kern (`min-height`, `border`) und ecl-ec (Spezifitaet 0-3-0 bei `&__smart-button.kol-button`)
+  kamen unveraendert mit.
+- **Diagnose-Weg ohne Docker**: Kein Docker-Daemon und kein Firefox im Container, also
+  A/B statt Baseline-Vergleich — im `visual-tests`-Playwright-Config temporaer ein
+  `chromium`-Projekt mit `launchOptions.executablePath: '/opt/pw-browsers/chromium'` ergaenzen,
+  `--update-snapshots=all --project=chromium --grep=badge` bzw. `--grep=version` einmal auf dem
+  alten und einmal auf dem neuen Stand laufen lassen und die PNGs mit `cmp` vergleichen. Zusaetzlich
+  die kompilierten Sheets beider Staende diffen (`dist/collection/components/badge/style.css` und
+  die `KOL-BADGE`/`KOL-VERSION`-Strings aus `packages/themes/*/dist/index.mjs`).
+- **Fallstrick**: Ein einzelnes Nicht-ASCII-Zeichen im neuen Mixin-Kommentar laesst Sass ein
+  fuehrendes `@charset "UTF-8";` emittieren — das aendert jedes kompilierte Theme-Sheet, obwohl
+  keine Regel anders ist. Kommentare in geteilten SCSS-Partials ASCII halten.
+- **Ausserdem**: `packages/adapters/hydrate` haelt einen SSR-Snapshot pro Komponente
+  (`test/__snapshots__/components.spec.js.mocha-snapshot`); nach einem DOM-Umbau mit
+  `pnpm --filter @public-ui/hydrate test:update:unit` nachziehen, sonst ist `build-and-check` rot.
+- **Evidenz**: 36 PNGs (badge + version, alle sechs Pakete) byte-identisch zwischen altem und
+  neuem Stand; Components 964/964, Hydrate-SSR 102/102, badge-e2e 5/5;
+  `KOL-BADGE`-CSS je Theme regelgleich, `KOL-VERSION`-CSS je Theme regelgleich zum Badge-Sheet.
 
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 
