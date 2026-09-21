@@ -308,14 +308,7 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 								}}
 							/>
 						)}
-						<button
-							type="button"
-							tabIndex={-1}
-							class="kol-combobox-toggle"
-							onClick={this.toggleListbox.bind(this)}
-							disabled={this._disabled}
-							hidden={isDisabled}
-						>
+						<button type="button" tabIndex={-1} class="kol-combobox-toggle" onClick={this.toggleListbox.bind(this)} disabled={isDisabled} hidden={isDisabled}>
 							<IconFC icons="kolicon-chevron-down" label="" />
 						</button>
 					</div>
