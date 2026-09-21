@@ -314,8 +314,8 @@ importers:
         specifier: 10.2.6
         version: 10.2.6
       svelte:
-        specifier: 5.55.7
-        version: 5.55.7(@typescript-eslint/types@8.67.0)
+        specifier: 5.57.0
+        version: 5.57.0(@typescript-eslint/types@8.67.0)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -5802,9 +5802,6 @@ packages:
 
   '@types/tinycolor2@1.4.6':
     resolution: {integrity: sha512-iEN8J0BoMnsWBqjVbWH/c0G0Hh7O21lpR2/+PrvAVgWdzL7eexIFm4JN/Wn10PTcmNdtS6U67r499mlWMXOxNw==}
-
-  '@types/trusted-types@2.0.7':
-    resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
 
   '@types/twig@1.12.17':
     resolution: {integrity: sha512-Lxcjgzt4mlDrv1xp1EdoBLPTxpjLAt9vtN3/qoblC5D6hMCYgZJOQHfaT/0gwCcAZENnKQ7Sga28DSsckPWa0g==}
@@ -12870,8 +12867,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  svelte@5.55.7:
-    resolution: {integrity: sha512-ymI5ykLPwIHW839E053FQbI1G+jnRFJEw3Kv5Y4njixVWywQBx+NUFpkkKyk5LIb36Fg9DVXSYpqiGekLD0hyw==}
+  svelte@5.57.0:
+    resolution: {integrity: sha512-NdbDn7fl4be1ViUG0oq/lvG6OZy3oENolV2ONjiqqsfVoeAfzaQAKUcEX3MrQod/Bebv1PgwET9rfXhgn9s4Kg==}
     engines: {node: '>=18'}
 
   svg-pathdata@7.2.0:
@@ -18134,8 +18131,6 @@ snapshots:
   '@types/stack-utils@2.0.3': {}
 
   '@types/tinycolor2@1.4.6': {}
-
-  '@types/trusted-types@2.0.7': {}
 
   '@types/twig@1.12.17': {}
 
@@ -26662,13 +26657,12 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte@5.55.7(@typescript-eslint/types@8.67.0):
+  svelte@5.57.0(@typescript-eslint/types@8.67.0):
     dependencies:
       '@jridgewell/remapping': 2.3.5
       '@jridgewell/sourcemap-codec': 1.5.5
       '@sveltejs/acorn-typescript': 1.0.12(acorn@8.18.0)
       '@types/estree': 1.0.9
-      '@types/trusted-types': 2.0.7
       acorn: 8.18.0
       aria-query: 5.3.1
       axobject-query: 4.1.0
