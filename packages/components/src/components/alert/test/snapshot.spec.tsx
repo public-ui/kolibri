@@ -5,8 +5,8 @@ import { KolAlertTag } from '../../../core/component-names';
 import type { AlertProps, AlertType } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
-import { KolAlertWc } from '../component';
-import { KolAlert } from '../shadow';
+import { KolAlert } from '../component';
+import { KolAlertWc } from '../wc';
 
 const baseObject = { _label: 'Überschrift' };
 
@@ -39,6 +39,17 @@ describe('KolAlert slot', () => {
 					<div>content of slot</div>
 				</KolAlertTag>
 			),
+		});
+		await page.waitForChanges();
+
+		expect(page.root).toMatchSnapshot();
+	});
+
+	test('should render the closer as a single ButtonFC root', async () => {
+		const components = [KolAlert, KolAlertWc];
+		const page = await newSpecPage({
+			components,
+			template: () => <KolAlertTag _hasCloser _label="closable alert" />,
 		});
 		await page.waitForChanges();
 

@@ -1,9 +1,10 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
+import { AlertFC } from '../../internal/functional-components/alert/component';
 import { type Toast } from '../../schema';
 
 import clsx from '../../utils/clsx';
-import KolAlertFc from '../Alert';
+import { createUniqueId, nonce } from '../../utils/dev.utils';
 
 type ToastItemProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
 	status: 'adding' | 'settled' | 'removing';
@@ -20,18 +21,22 @@ const ToastItemFc: FC<ToastItemProps> = ({ status, toast, onClose, ...other }) =
 
 	return (
 		<div class={clsx('kol-toast-item', `kol-toast-item--${status}`)}>
-			<KolAlertFc
-				class="kol-toast-item__alert"
+			<AlertFC
 				alert={true}
+				class="kol-toast-item__alert"
+				closerAriaDescriptionId={nonce()}
+				handleCloserClick={onClose}
+				hasCloser={true}
+				headingId={createUniqueId('alert-heading')}
 				label={label}
 				level={0}
-				hasCloser={true}
+				refCloserButton={() => undefined}
+				refCloserTooltip={() => undefined}
 				type={type}
 				variant={variant || 'card'}
-				onCloserClick={onClose}
 			>
 				<div {...other}>{description}</div>
-			</KolAlertFc>
+			</AlertFC>
 		</div>
 	);
 };

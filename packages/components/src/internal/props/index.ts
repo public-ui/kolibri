@@ -1,4 +1,7 @@
 export * from './access-key';
+export * from './alert';
+export * from './alert-type';
+export * from './alert-variant';
 export * from './align';
 export * from './allow-markdown';
 export * from './alt';

@@ -88,7 +88,7 @@ export type FormFieldProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	formFieldLabelProps?: JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & { component?: 'label' | 'legend' };
 	formFieldHintProps?: JSXBase.HTMLAttributes<HTMLElement>;
 	formFieldTooltipProps?: Pick<JSXBase.HTMLAttributes<HTMLElement>, 'class'>;
-	formFieldMsgProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
+	formFieldMsgProps?: JSXBase.HTMLAttributes<HTMLElement>;
 	formFieldInputProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
 };
 

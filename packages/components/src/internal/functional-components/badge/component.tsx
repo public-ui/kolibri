@@ -45,6 +45,7 @@ type BadgeFCProps = Pick<
  *
  * The trailing `<br />` makes NVDA's read mode treat each badge as one element. The smart button
  * stays before it in the DOM for tab order and is moved to the end visually by `order: 3`.
+ * `style.scss` excludes it from text selection so it does not add a blank line to copied text.
  */
 export const BadgeFC: FC<BadgeFCProps> = (props) => {
 	const {
