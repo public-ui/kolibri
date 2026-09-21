@@ -1,7 +1,7 @@
 @use './to-rem' as *;
 
 /*
- * Badge theme styles for every shadow root that renders `BadgeFC` — `kol-badge` and `kol-version`.
+ * Badge theme styles for every shadow root that renders `BadgeFC` - `kol-badge` and `kol-version`.
  * Theme sheets are adopted per tag name, so a second consumer needs its own entry that includes
  * these rules (same pattern as `kol-link`).
  */

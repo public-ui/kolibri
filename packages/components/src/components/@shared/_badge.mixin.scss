@@ -2,7 +2,7 @@
 @use 'icon.mixin' as *;
 
 /*
- * Badge box for every shadow root that renders `BadgeFC` — the badge itself and `kol-version`.
+ * Badge box for every shadow root that renders `BadgeFC` - the badge itself and `kol-version`.
  * Stencil scopes `badge/style.scss` to the `kol-badge` shadow root, so a second consumer has to
  * bring these rules along (same pattern as `kol-link-styles` for `LinkFC`).
  *
