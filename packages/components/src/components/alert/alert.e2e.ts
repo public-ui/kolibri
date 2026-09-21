@@ -15,7 +15,7 @@ test.describe('kol-alert', () => {
 				});
 			});
 			await page.waitForChanges();
-			await page.getByTestId('alert-close-button').click();
+			await page.locator('.kol-alert__closer button').click();
 			await expect(callbackPromise).resolves.toBeUndefined();
 		});
 	});
@@ -29,7 +29,7 @@ test.describe('kol-alert', () => {
 				});
 			});
 			await page.waitForChanges();
-			await page.getByTestId('alert-close-button').click();
+			await page.locator('.kol-alert__closer button').click();
 			await expect(eventPromise).resolves.toBeTruthy();
 		});
 	});

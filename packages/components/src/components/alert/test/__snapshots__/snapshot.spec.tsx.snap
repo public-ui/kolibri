@@ -3,21 +3,18 @@
 exports[`KolAlert slot should render content passed into the slot 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
-          alert with slot
-        </strong>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        alert with slot
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
   <div>
     content of slot
@@ -25,24 +22,68 @@ exports[`KolAlert slot should render content passed into the slot 1`] = `
 </kol-alert>
 `;
 
+exports[`KolAlert slot should render the closer as a single ButtonFC root 1`] = `
+<kol-alert>
+  <template shadowrootmode="open">
+    <div class="kol-alert kol-alert--hasCloser kol-alert--type-default kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        closable alert
+      </strong>
+      <div class="kol-alert__closer kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-close-button">
+        <button aria-describedby="nonce" aria-label="kol-close-alert" class="kol-button__interactive-element" type="button">
+          <span class="kol-button__text kol-span kol-span--hide-label">
+            <span class="kol-span__container">
+              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                <slot name="expert" slot="expert"></slot>
+              </span>
+            </span>
+          </span>
+        </button>
+        <div class="kol-button__tooltip">
+          <div class="kol-tooltip__floating">
+            <div class="kol-tooltip__arrow"></div>
+            <span class="kol-span kol-tooltip__content">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  kol-close-alert
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <span class="visually-hidden" id="nonce">
+          closable alert
+        </span>
+      </div>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+</kol-alert>
+`;
+
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=0 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
-          Überschrift
-        </strong>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        Überschrift
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -50,21 +91,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=0 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
-          Überschrift
-        </strong>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        Überschrift
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -72,21 +110,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=0 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
-          Überschrift
-        </strong>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        Überschrift
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -94,21 +129,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=0 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
-          Überschrift
-        </strong>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        Überschrift
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -116,21 +148,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=0 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
-          Überschrift
-        </strong>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        Überschrift
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -138,21 +167,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=1 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="heading">
-          Überschrift
-        </h1>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h1>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -160,21 +186,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=1 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="heading">
-          Überschrift
-        </h1>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h1>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -182,21 +205,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=1 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="heading">
-          Überschrift
-        </h1>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h1>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -204,21 +224,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=1 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="heading">
-          Überschrift
-        </h1>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h1>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -226,21 +243,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=1 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="heading">
-          Überschrift
-        </h1>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h1>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -248,21 +262,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=2 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="heading">
-          Überschrift
-        </h2>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h2>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -270,21 +281,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=2 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="heading">
-          Überschrift
-        </h2>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h2>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -292,21 +300,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=2 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="heading">
-          Überschrift
-        </h2>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h2>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -314,21 +319,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=2 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="heading">
-          Überschrift
-        </h2>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h2>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -336,21 +338,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=2 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="heading">
-          Überschrift
-        </h2>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h2>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -358,21 +357,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=3 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="heading">
-          Überschrift
-        </h3>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h3>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -380,21 +376,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=3 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="heading">
-          Überschrift
-        </h3>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h3>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -402,21 +395,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=3 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="heading">
-          Überschrift
-        </h3>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h3>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -424,21 +414,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=3 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="heading">
-          Überschrift
-        </h3>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h3>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -446,21 +433,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=3 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="heading">
-          Überschrift
-        </h3>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h3>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -468,21 +452,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=4 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="heading">
-          Überschrift
-        </h4>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h4>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -490,21 +471,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=4 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="heading">
-          Überschrift
-        </h4>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h4>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -512,21 +490,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=4 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="heading">
-          Überschrift
-        </h4>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h4>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -534,21 +509,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=4 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="heading">
-          Überschrift
-        </h4>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h4>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -556,21 +528,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=4 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="heading">
-          Überschrift
-        </h4>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h4>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -578,21 +547,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=5 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="heading">
-          Überschrift
-        </h5>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h5>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -600,21 +566,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=5 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="heading">
-          Überschrift
-        </h5>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h5>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -622,21 +585,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=5 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="heading">
-          Überschrift
-        </h5>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h5>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -644,21 +604,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=5 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="heading">
-          Überschrift
-        </h5>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h5>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -666,21 +623,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=5 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="heading">
-          Überschrift
-        </h5>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h5>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -688,21 +642,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=6 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="heading">
-          Überschrift
-        </h6>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h6>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -710,21 +661,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=6 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="heading">
-          Überschrift
-        </h6>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h6>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -732,21 +680,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=6 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="heading">
-          Überschrift
-        </h6>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h6>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -754,21 +699,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=6 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="heading">
-          Überschrift
-        </h6>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h6>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -776,21 +718,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=false _level=6 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="heading">
-          Überschrift
-        </h6>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h6>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -798,21 +737,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=false _level=
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=0 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
-          Überschrift
-        </strong>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        Überschrift
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -820,21 +756,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=0
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=0 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
-          Überschrift
-        </strong>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        Überschrift
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -842,21 +775,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=0
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=0 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
-          Überschrift
-        </strong>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        Überschrift
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -864,21 +794,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=0
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=0 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
-          Überschrift
-        </strong>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        Überschrift
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -886,21 +813,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=0
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=0 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="heading">
-          Überschrift
-        </strong>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        Überschrift
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -908,21 +832,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=0
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="heading">
-          Überschrift
-        </h1>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h1>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -930,21 +851,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="heading">
-          Überschrift
-        </h1>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h1>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -952,21 +870,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="heading">
-          Überschrift
-        </h1>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h1>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -974,21 +889,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="heading">
-          Überschrift
-        </h1>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h1>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -996,21 +908,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="heading">
-          Überschrift
-        </h1>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <h1 class="kol-alert__heading kol-alert__heading--h1 kol-headline kol-headline--h1 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h1>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1018,21 +927,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=1
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="heading">
-          Überschrift
-        </h2>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h2>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1040,21 +946,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="heading">
-          Überschrift
-        </h2>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h2>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1062,21 +965,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="heading">
-          Überschrift
-        </h2>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h2>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1084,21 +984,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="heading">
-          Überschrift
-        </h2>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h2>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1106,21 +1003,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="heading">
-          Überschrift
-        </h2>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <h2 class="kol-alert__heading kol-alert__heading--h2 kol-headline kol-headline--h2 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h2>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1128,21 +1022,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=2
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="heading">
-          Überschrift
-        </h3>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h3>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1150,21 +1041,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="heading">
-          Überschrift
-        </h3>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h3>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1172,21 +1060,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="heading">
-          Überschrift
-        </h3>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h3>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1194,21 +1079,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="heading">
-          Überschrift
-        </h3>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h3>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1216,21 +1098,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="heading">
-          Überschrift
-        </h3>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <h3 class="kol-alert__heading kol-alert__heading--h3 kol-headline kol-headline--h3 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h3>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1238,21 +1117,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=3
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="heading">
-          Überschrift
-        </h4>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h4>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1260,21 +1136,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="heading">
-          Überschrift
-        </h4>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h4>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1282,21 +1155,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="heading">
-          Überschrift
-        </h4>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h4>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1304,21 +1174,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="heading">
-          Überschrift
-        </h4>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h4>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1326,21 +1193,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="heading">
-          Überschrift
-        </h4>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <h4 class="kol-alert__heading kol-alert__heading--h4 kol-headline kol-headline--h4 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h4>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1348,21 +1212,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=4
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="heading">
-          Überschrift
-        </h5>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h5>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1370,21 +1231,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="heading">
-          Überschrift
-        </h5>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h5>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1392,21 +1250,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="heading">
-          Überschrift
-        </h5>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h5>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1414,21 +1269,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="heading">
-          Überschrift
-        </h5>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h5>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1436,21 +1288,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="heading">
-          Überschrift
-        </h5>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <h5 class="kol-alert__heading kol-alert__heading--h5 kol-headline kol-headline--h5 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h5>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1458,21 +1307,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=5
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6 _type="default" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-message
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="heading">
-          Überschrift
-        </h6>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-default kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-message
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h6>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1480,21 +1326,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6 _type="error" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-error
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
-        <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="heading">
-          Überschrift
-        </h6>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h6>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1502,21 +1345,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6 _type="info" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-info
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
-        <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="heading">
-          Überschrift
-        </h6>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-info kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-info
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-info" role="presentation"></i>
+      <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h6>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1524,21 +1364,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6 _type="success" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-success
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
-        <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="heading">
-          Überschrift
-        </h6>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-success kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-success
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-success" role="presentation"></i>
+      <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h6>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;
@@ -1546,21 +1383,18 @@ exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6
 exports[`kol-alert should render with _label="Überschrift" _alert=true _level=6 _type="warning" 1`] = `
 <kol-alert>
   <template shadowrootmode="open">
-    <kol-alert-wc>
-      <!---->
-      <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" data-testid="alert" role="alert">
-        <span class="visually-hidden">
-          kol-warning
-        </span>
-        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
-        <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="heading">
-          Überschrift
-        </h6>
-        <div aria-describedby="heading" class="kol-alert__content">
-          <slot></slot>
-        </div>
+    <div class="kol-alert kol-alert--type-warning kol-alert--variant-msg" role="alert">
+      <span class="visually-hidden">
+        kol-warning
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-warning" role="presentation"></i>
+      <h6 class="kol-alert__heading kol-alert__heading--h6 kol-headline kol-headline--h6 kol-headline--single" id="alert-heading-nonce">
+        Überschrift
+      </h6>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <slot></slot>
       </div>
-    </kol-alert-wc>
+    </div>
   </template>
 </kol-alert>
 `;

@@ -7,7 +7,7 @@ const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType>;
 	test.describe('Input messages', () => {
 		test(`should render a message when provided as object`, async ({ page }) => {
 			await page.setContent(`<${componentName} _label="Input" _msg="{'_description': 'This is a info message', '_type': 'info'}"></${componentName}>`);
-			const alert = page.getByTestId('alert');
+			const alert = page.locator('.kol-form-field__msg');
 
 			await expect(alert).toHaveCount(0);
 
@@ -21,7 +21,7 @@ const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType>;
 
 		test(`should render a error message when provided as string`, async ({ page }) => {
 			await page.setContent(`<${componentName} _label="Input" _msg="This is a string error message" _touched></${componentName}>`);
-			const alert = page.getByTestId('alert');
+			const alert = page.locator('.kol-form-field__msg');
 
 			await expect(alert).toContainText('This is a string error message');
 		});
@@ -31,7 +31,7 @@ const testInputMessage = <ElementType extends { _msg?: Stringified<MsgPropType>;
 				page,
 				`<${componentName} _label="Input" _msg="{'_description': 'An error message', '_type': 'error'}" _touched></${componentName}>`,
 			);
-			const alert = page.getByTestId('alert');
+			const alert = page.locator('.kol-form-field__msg');
 
 			await expect(alert).toBeVisible();
 
