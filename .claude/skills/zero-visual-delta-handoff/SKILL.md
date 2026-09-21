@@ -681,6 +681,41 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
   neuem Stand; Components 964/964, Hydrate-SSR 102/102, badge-e2e 5/5;
   `KOL-BADGE`-CSS je Theme regelgleich, `KOL-VERSION`-CSS je Theme regelgleich zum Badge-Sheet.
 
+### 2026-09-21 — Skeleton-Migration kol-split-button (PR zu #9598): alle 6 Pakete, 0 Diffs ab Start
+
+- **Ausgangslage**: `kol-split-button` sollte auf die Skeleton-Architektur und dabei den
+  transitionalen `kol-popover-button-wc` gegen `PopoverButtonFC` tauschen. Der Wrapper lag als
+  Flex-Item in `.kol-split-button__root` und trug die Consumer-Klasse
+  `.kol-split-button__secondary-button`.
+- **Ursachen & Fix-Muster**: keine Theme-Runde noetig — der Ausbau wurde als **Wrapper-Tausch statt
+  Klassen-Merge** gefahren. Vor dem Schreiben des FC gegreppt: jede Theme-Regel auf
+  `&__secondary-button` ist ein Descendant-Selektor (`.kol-span`, `.kol-button`,
+  `.kol-button__text`; bwst/default zusaetzlich `height: 100%` direkt auf der Klasse). Haette
+  `BemRootNodeFC` die Klasse auf `.kol-popover-button` gemerged, waeren alle eine Stufe zu tief
+  gelandet (Muster 6a-8). Stattdessen rendert der FC ein `<div class="kol-split-button__secondary-button">`
+  genau dort, wo das Custom Element stand, und `PopoverButtonFC` darin — Box-Baum identisch, weil
+  ein unbekanntes Element und ein `div` als Flex-Item beide blockifiziert werden. Dasselbe Muster
+  hatte die Vorgaenger-Session schon fuer die primaere Haelfte benutzt.
+- **Neu gelernt (Frueher-gewusst-Test bestanden)**: Ein `shadow:false`-Element, das unter SSR
+  mitten in `componentWillLoad` abbricht (`attachInternals` auf unbefuelltem `@Element()`, von
+  Stencil geschluckt), rendert dort **andere** Klassen als im Browser — hier fehlte
+  `kol-button--normal` am Dropdown-Button, weil der Abbruch vor `watchVariant` passierte. Wer den
+  Hydrate-SSR-Snapshot als Soll-DOM liest, jagt ein Phantom: Der Pixel-Gate misst CSR. Also beim
+  Ausbau eines `-wc`-Tags immer pruefen, ob der SSR-Snapshot den Abbruch zeigt (Props hinter dem
+  ersten `associatedController`-Zugriff fehlen), bevor eine SSR-Differenz als Regression gewertet
+  wird.
+- **Theme-Spezifika**: keine.
+- **Evidenz (ohne Docker)**: `docker info` nicht verfuegbar → A/B-Rezept vom 2026-09-21 (temporaeres
+  `chromium`-Projekt mit `executablePath: '/opt/pw-browsers/chromium'`,
+  `--grep plit --update-snapshots=all` je Paket, einmal auf HEAD und einmal auf HEAD~1, dazwischen
+  `pnpm --filter @public-ui/visual-tests build:deps`). 12/12 PNGs byte-identisch
+  (`split-button/basic` + `scenarios/focus-elements?component=splitButton` fuer unstyled, default,
+  bwst, desy, kern, ecl-ec). Components 992/992, Hydrate-SSR 102/102,
+  `pnpm check:skeleton-selectors` sauber.
+- **Falle beim A/B-Lauf**: Der `--grep`-Passthrough darf keine Alternation enthalten (`|` wird als
+  Shell-Pipe interpretiert, siehe Log 2026-09-09). Ein gemeinsames Teilwort nehmen — hier `plit`,
+  das `split-button/basic` und `…component=splitButton` zugleich trifft.
+
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 
 - **Ausgangslage**:
