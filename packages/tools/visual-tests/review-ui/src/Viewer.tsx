@@ -15,13 +15,14 @@ interface Props {
 	base: string;
 	mode: Mode;
 	zoom: number;
+	resolved: boolean;
 }
 
 function Image({ src, alt, zoom }: { src: string; alt: string; zoom: number }) {
 	return <img src={src} alt={alt} style={{ width: `${zoom * 100}%` }} className={zoom > 1 ? 'pixelated' : undefined} draggable={false} />;
 }
 
-export function Viewer({ entry, base, mode, zoom }: Props) {
+export function Viewer({ entry, base, mode, zoom, resolved }: Props) {
 	const { item } = entry;
 	const expected = item.expected ? `${base}/${item.expected}` : null;
 	const actual = item.actual ? `${base}/${item.actual}` : null;
@@ -37,7 +38,13 @@ export function Viewer({ entry, base, mode, zoom }: Props) {
 	}, [mode]);
 
 	if (item.status === 'unchanged') {
-		return <p className="viewer-note">This snapshot is identical to the baseline – nothing to review.</p>;
+		return (
+			<p className="viewer-note">
+				{resolved
+					? 'This snapshot matches the baseline again – it was reviewed while it still differed. Nothing to look at anymore; clear the stale verdict below.'
+					: 'This snapshot is identical to the baseline – nothing to review.'}
+			</p>
+		);
 	}
 	if (item.status === 'error') {
 		return (
