@@ -46,7 +46,10 @@
 			margin: 0;
 			padding: to-rem(12) to-rem(8);
 			border-bottom: 1px solid var(--color-mute-variant);
-			cursor: pointer;
+
+			&:not([aria-disabled='true']) {
+				cursor: pointer;
+			}
 
 			/* The ring is drawn by the block's `:focus-within` rule. */
 			&:focus {

@@ -49,7 +49,7 @@
 				}
 			}
 
-			&:focus-visible {
+			&:not([aria-disabled='true']):focus-visible {
 				@include focus-outline;
 				cursor: pointer;
 			}

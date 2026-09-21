@@ -12,6 +12,16 @@ test.describe('kol-accordion', () => {
 			await expect(summary).toHaveText('Accordion Label');
 		});
 
+		test('should offer a pointer cursor', async ({ page }) => {
+			await expect
+				.poll(() =>
+					page
+						.locator('kol-accordion')
+						.evaluate((element: HTMLKolAccordionElement) => getComputedStyle(element.shadowRoot?.querySelector('summary') as HTMLElement).cursor),
+				)
+				.toBe('pointer');
+		});
+
 		test('should show the accordion content after the title has been clicked', async ({ page }) => {
 			await expect(page.locator('.kol-accordion__content')).toHaveAttribute('aria-hidden', 'true');
 			await page.locator('summary').click();
@@ -122,6 +132,16 @@ test.describe('kol-accordion', () => {
 			await page.waitForChanges();
 
 			await expect.poll(() => kolAccordion.evaluate((element: HTMLKolAccordionElement) => element.shadowRoot?.activeElement?.localName ?? null)).toBeNull();
+		});
+
+		test('should not offer a pointer cursor', async ({ page }) => {
+			await expect
+				.poll(() =>
+					page
+						.locator('kol-accordion')
+						.evaluate((element: HTMLKolAccordionElement) => getComputedStyle(element.shadowRoot?.querySelector('summary') as HTMLElement).cursor),
+				)
+				.toBe('not-allowed');
 		});
 	});
 

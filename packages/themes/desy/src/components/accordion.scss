@@ -42,7 +42,7 @@
 				padding: to-rem(16) to-rem(32);
 			}
 
-			&:focus-visible {
+			&:not([aria-disabled='true']):focus-visible {
 				background: var(--color-blue-20);
 				@include focus-outline;
 			}
