@@ -108,7 +108,7 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	private readonly translateClearSearch = translate('kol-clear-search');
 
 	private readonly onClearButtonClick = (): void => {
-		if (this._disabled === true || this.state._hasValue !== true) {
+		if (this._disabled || this._readOnly || this.state._hasValue !== true) {
 			return;
 		}
 
@@ -133,18 +133,18 @@ export class KolInputText implements ClickableElement, FocusableElement, InputTe
 	};
 
 	private getClearButton(): VNode | null {
-		if (this.state._type === 'search' && !this._disabled) {
-			const canClear = this.state._hasValue === true;
+		if (this._disabled || this.state._readOnly || this.state._hasValue !== true) {
+			return null;
+		}
+
+		if (this.state._type === 'search') {
 			return (
 				<KolIconButtonFc
 					componentName="button"
-					class={clsx('kol-input-text__clear-button', 'kol-input-container__smart-button', {
-						'kol-input-text__clear-button--hidden': !canClear,
-					})}
+					class={clsx('kol-input-text__clear-button', 'kol-input-container__smart-button')}
 					data-testid="kol-input-text-clear-button"
 					label={this.translateClearSearch}
 					buttonVariant="ghost"
-					disabled={!canClear}
 					onClick={this.onClearButtonClick}
 					icon="kolicon-cross"
 				/>
