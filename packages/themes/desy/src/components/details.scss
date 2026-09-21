@@ -10,6 +10,18 @@
 	.kol-details {
 		$root: &;
 
+		/* The host is an inline-block, so the line box around it is sized from the block's baseline.
+		   The predecessor took that baseline from the collapsed wrapper: its content was clipped to
+		   zero height but still laid out a line box, which overflowed and pushed the surrounding line
+		   box 16px further down. A native closed `<details>` renders no content at all, so the baseline
+		   falls back to the bottom edge. A zero-height line box restores it. */
+		&:not(#{&}--open)::after {
+			display: block;
+			height: 0;
+
+			content: '\200B';
+		}
+
 		@include kol-link('kol-details__heading', $anchor-scoped: false);
 		&__heading {
 			.kol-span {
@@ -19,6 +31,21 @@
 
 				&__label {
 					border-bottom: 0;
+				}
+			}
+
+			/* The predecessor's focus signal was the user agent ring of the real `<button>`: the link
+			   mixin's `outline: none` and its `:focus` colour and underline all sat on the
+			   non-focusable custom element and never reached it. `<summary>` is that same box and
+			   matches them now, so the ring is handed back and the two text effects are returned to
+			   their resting state. The mixin is included inside the block, so its rules carry a
+			   `.kol-details` ancestor step; the overrides need the same step to win on specificity. */
+			#{$root} &:not([aria-disabled='true']):focus {
+				color: var(--color-blue-100);
+				outline: revert;
+
+				.kol-span__label {
+					text-decoration: none;
 				}
 			}
 		}
