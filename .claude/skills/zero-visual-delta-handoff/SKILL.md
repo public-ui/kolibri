@@ -155,6 +155,20 @@ Diese Ursachen deckten in der Praxis >90 % der Diffs — in dieser Reihenfolge p
    (`.kol-x__btn.kol-button …`), nicht ersatzlos streichen. Das Element trägt beide Klassen, die
    Spezifität bleibt exakt erhalten.
 
+9. **Zwei Boxen werden zu einer — Größen-Floor neu rechnen.** Trug vorher ein äußeres Element
+   Padding/Border und ein inneres den `min-height`-Floor, fallen beide nach dem Umbau in dieselbe
+   border-box: der Floor schluckt Padding und Border, statt sie zu addieren. Fix:
+   `min-height: calc(<floor> + <padding> + <border>)`.
+
+10. **Nativ semantische Container blenden Inhalt aus, den der Nachbau im Layout hielt.** Ein
+    geschlossenes `<details>` nimmt seinen Content-Teilbaum komplett aus dem Layout — damit fällt
+    nicht nur dessen Höhe weg, sondern auch jede Dekoration auf dem Wrapper (Padding, Rahmen) und
+    jede Baseline, die der Vorgänger daraus bezog. Ein `inline-block`-Host bemisst seine Line-Box
+    aus dieser Baseline, sodass ein einziger Wegfall zwei voneinander unabhängig aussehende Deltas
+    erzeugt. Fix theme-lokal je nach Bedarf: Dekoration auf dem Block im Zustand `:not(--open)`
+    rekonstruieren, Baseline über ein `::after` mit `display: block`, `height: 0` und einem
+    Zero-Width-Space als `content` zurückholen.
+
 ### 6b. Selektoren-Regel, wenn ein Umbau das zustandstragende Element in einen Wrapper verschiebt
 
 Situation: `<element class="block">` wird zu `<div class="block"><element class="block__element">`. Danach sortieren sich alle Selektoren, die den alten Block betrafen, in drei Gruppen:
@@ -276,7 +290,8 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 | 8b  | „Falscher Stand getestet"-Verdacht per Volume-Verifikation ausräumen: Branch-only-Marker im gebauten dist (0× auf Base), dist-mtime = Laufzeit, Log-Build-Schritte — Pipeline baut automatisch (Mirror ohne `.git`/`dist`, App-Build pro Testlauf) → Fallstricke | Re-Verifikation unstyled (Button-Migration)                | Sinnlose Re-Runs + falsche Schlüsse „grün sei trivial" verhindert |
 
 | 31 | `docker info` schlaegt fehl heisst **Daemon laeuft nicht**, nicht **kein Docker**: im Container-Setup dieser Sessions ist die Engine installiert und laesst sich als root mit `dockerd &` starten (danach `docker info` erneut pruefen). Erst wenn auch das scheitert, gilt Abschnitt 0 | Dialog-Skeleton-Migration | Eine komplette, wertlose Ersatz-Abnahme vermieden — der selbstgebaute Chromium-A/B-Lauf sah die echte Regression nicht |
-
+| 36 | Wirkt ein Teil eines Fix-Blocks und der andere nicht, ist es fast immer eine fehlende Ahnenstufe: ein Mixin, das INNERHALB des Blocks inkludiert wird, trägt eine Klasse mehr als ein `&__element`-Override daneben. `outline: revert` täuscht dabei, weil es über den Kaskaden-Ursprung gewinnt und nicht über die Spezifität → `#{$root} &` | Collapsible-Migration desy (2026-09-21) | Stunden Spezifitäts-Suche |
+| 37 | Ein geschlossenes natives `<details>` nimmt den ganzen Content-Teilbaum aus dem Layout — mit ihm die dekorierte Box des Wrappers UND die Baseline, aus der ein `inline-block`-Host seine Line-Box bemisst. Zwei getrennte Deltas aus einer Ursache | Collapsible-Migration bwst + desy (2026-09-21) | 16px-Phantomhöhe sofort erklärt |
 | 28 | Jest-/Stencil-Snapshot-Serializer sortiert `class`-Attribute alphabetisch — Class-Order im Snapshot ist kein Signal für die echte DOM-Reihenfolge und kein Regressions-Signal | Details-Skeleton-Migration (PR #10884) | Phantom-Class-Order-Bug beim FC-Port sofort erkannt |
 
 **Block B — Wrapper-Umbauten / Button-Migration**
@@ -762,6 +777,50 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 - **Falle beim A/B-Lauf**: Der `--grep`-Passthrough darf keine Alternation enthalten (`|` wird als
   Shell-Pipe interpretiert, siehe Log 2026-09-09). Ein gemeinsames Teilwort nehmen — hier `plit`,
   das `split-button/basic` und `…component=splitButton` zugleich trifft.
+
+### 2026-09-21 — Collapsible auf natives `<details>`/`<summary>`: Themes bwst + desy (2 Rejects → 0)
+
+- **Ausgangslage**: Visual Review von PR #10949 hatte 4 Snapshots freigegeben und 2 abgelehnt —
+  `theme-bwst/details-basic--basic` (502 → 466px) und
+  `theme-desy/scenarios-focus-elements-component-details` (93 → 77px, Fokus-Ring weg).
+- **Ursachen & Fix-Muster** (beide neu, komponenten-agnostisch — siehe die drei Ergänzungen unten):
+  1. **Die min-height des ersetzten Elements steckte in einer anderen Box** (Variante von Muster 4):
+     Auf develop trug das äußere `.collapsible__heading` Padding und Border, der innere Button die
+     `--a11y-min-size`; beim `<summary>` fallen beide in EINE border-box, und die min-height
+     schluckt Padding und Border, statt sie zu addieren. Fix: den Floor als `calc()` aus
+     a11y-min-size, Padding und Border neu rechnen — dasselbe Rezept, das der accordion-Fix
+     `45e7138f67` schon nutzte.
+  2. **Ein geschlossenes natives `<details>` nimmt den gesamten Content-Teilbaum aus dem Layout** —
+     samt der dekorierten Box des Wrappers. bwst zeichnete dort `padding-block` + `border-bottom`
+     (9px unter jeder eingeklappten Zeile). Theme-lokal auf dem Block rekonstruiert
+     (`&:not(.kol-details--open) { padding-bottom; border-bottom }`).
+  3. **Derselbe Wegfall kostet auch die Baseline** (neu, Diagnose dauerte am längsten): Der Host ist
+     `inline-block`, die umgebende Line-Box wird also aus seiner Baseline bemessen. Der alte,
+     geschlossene Wrapper hatte Höhe 0, legte aber weiterhin eine Line-Box an, die überlief und die
+     äußere Line-Box 16px tiefer zog. Nativ geschlossen gibt es keinen Inhalt → Baseline fällt auf
+     die Unterkante → 16px fehlen. Ein `::after` im Zustand `:not(--open)` mit `display: block`,
+     `height: 0` und einem Zero-Width-Space als `content` stellt sie exakt wieder her
+     (probe-verifiziert: 60.50px Line-Box wie develop).
+     Trifft nur Themes, deren Block ein Block-Container ist — bwst setzt `display: grid` und nimmt
+     die Baseline vom ersten Item, deshalb war dort nichts zu tun.
+  4. **Tote Fokus-Regeln werden beim Umzug lebendig und verdrängen den UA-Ring** (Muster 2 in der
+     Umkehrung): desys `kol-link`-Mixin war mit dem Klassennamen des nicht fokussierbaren
+     `kol-button-wc`-Hosts inkludiert — `outline: none`, Fokus-Farbe und Label-Underline liefen alle
+     ins Leere, sichtbar war der UA-Ring des echten `<button>`. `<summary>` matcht alle drei: Ring
+     weg, Farbe und Underline neu. Zero-Delta = alle drei zurückdrehen (`outline: revert`, Ruhefarbe,
+     `text-decoration: none`).
+- **Theme-Spezifika**: desys Mixin-Include steht INNERHALB des Blocks, seine Regeln tragen deshalb
+  eine `.kol-details`-Ahnenstufe. Ein Override, der als `&__heading { &:focus }` geschrieben wird,
+  landet bei `.kol-details__heading:focus` (eine Klasse weniger) und verliert still — der Ring aus
+  `outline: revert` griff trotzdem, weil `revert` über den Kaskaden-Ursprung wirkt, nicht über die
+  Spezifität. Genau diese Mischung (ein Teil des Fix-Blocks wirkt, der andere nicht) ist das
+  Erkennungszeichen; `#{$root} &` stellt die Stufe wieder her.
+- **Fix-Commit(s)**: `26b53f2b9e`.
+- **Evidenz**: `node scripts/snapshots-docker.mjs desy --check` → 295 passed, 0 failed, Exit 0;
+  `bwst --check` → 294 passed, 1 failed (`scenarios/focus-elements?component=details`, vom Owner
+  freigegeben; der Größenunterschied ist durch Fix 1 weg, die Freigabe ist zu erneuern). Baseline-
+  Selbstcheck auf `origin/develop` (Worktree `kolibri-baseline`, Volume `kolibri-vt-develop`):
+  desy `--grep focus-elements` 60/60 passed — die Baselines sind reproduzierbar.
 
 ### 2026-09-22 — Skeleton-Migration kol-form (PR #10962): alle 7 Pakete, 0 Diffs ab Start
 
