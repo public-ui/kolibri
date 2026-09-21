@@ -35,7 +35,6 @@ import type {
 } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
-import { propagateSubmitEventToForm } from '../form/controller';
 import { SelectController } from './controller';
 
 /**
@@ -114,18 +113,7 @@ export class KolSelectWc implements ClickableElement, FocusableElement, SelectAP
 		return (
 			<KolFormFieldStateWrapperFc {...this.getFormFieldProps()}>
 				<KolInputContainerFc state={this.state}>
-					<form
-						onSubmit={(event) => {
-							event.preventDefault();
-							propagateSubmitEventToForm({
-								form: this.host,
-								ref: this.ctaRef.el,
-							});
-						}}
-					>
-						<input type="submit" hidden />
-						<KolSelectStateWrapperFc {...this.getSelectProps()} />
-					</form>
+					<KolSelectStateWrapperFc {...this.getSelectProps()} />
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
