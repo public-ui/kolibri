@@ -40,6 +40,8 @@ type BadgeFCProps = Pick<FunctionalComponentProps<BadgeApi>, 'color' | 'icons' |
  *
  * The trailing `<br />` makes NVDA's read mode treat each badge as one element. The smart button
  * stays before it in the DOM for tab order and is moved to the end visually by `order: 3`.
+ * `kol-badge-styles()` excludes it from text selection so it does not add a blank line to copied
+ * text - in every shadow root that renders this component, not just the badge's own.
  */
 export const BadgeFC: FC<BadgeFCProps> = ({ color, icons, label, smartButton }) => {
 	return (

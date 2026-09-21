@@ -1,4 +1,5 @@
 @use '../mixins/to-rem' as *;
+@use '../mixins/elevation' as *;
 @use '../mixins/focus-outline' as *;
 @use '../mixins/typography' as *;
 @use '../mixins/icon' as *;
@@ -6,7 +7,14 @@
 @layer kol-theme-component {
 	@include kol-icon-theme;
 	.kol-accordion {
-		box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
+		@include kol-elevation-outline;
+
+		/*
+		 * A raised panel, like a card. Only the dark branch names a surface: painting the (identical)
+		 * white on the element in light mode changes what the blurred shadow above composites against,
+		 * which moves a handful of anti-aliased pixels along its edge.
+		 */
+		background-color: light-dark(transparent, var(--color-light));
 		border-radius: var(--border-radius);
 		display: grid;
 		width: 100%;
@@ -17,6 +25,8 @@
 		}
 
 		&__content {
+			// Everything slotted into the accordion stands on the accordion, not on the page behind it.
+			--kol-surface: var(--color-light);
 			padding-top: to-rem(12);
 			padding-right: to-rem(8);
 			padding-bottom: to-rem(12);

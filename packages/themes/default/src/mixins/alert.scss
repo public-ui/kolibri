@@ -16,7 +16,11 @@
 	.kol-alert {
 		@include kol-button('kol-button');
 
-		background-color: var(--color-light);
+		/*
+		 * Flat on whatever it was placed on: an error message below an input is not a panel floating
+		 * above the page. The card variant below lifts itself out of this with its accent frame.
+		 */
+		background-color: var(--color-surface-current);
 
 		width: 100%;
 		overflow: unset;
@@ -36,8 +40,10 @@
 	}
 
 	.kol-alert--variant-card {
+		// The heading row stands on the accent band, the content box below on its own surface.
+		--kol-surface: var(--alert-accent-color);
 		background-color: var(--alert-accent-color);
-		filter: drop-shadow(0 to-rem(2) to-rem(4) rgb(8, 35, 48, 0.24));
+		filter: drop-shadow(0 to-rem(2) to-rem(4) var(--color-shadow));
 		border-radius: var(--border-radius);
 		gap: 0 to-rem(8);
 		flex-direction: column;
@@ -69,18 +75,29 @@
 		--alert-accent-color: var(--color-warning);
 	}
 
+	/* The closer renders ButtonFC directly: `kol-alert__closer` and `kol-button` sit on the same
+	   element, so the former descendant custom-property rules now target the closer itself. The
+	   extra `.kol-button` compound keeps 3-class specificity (matching the pre-merge descendant
+	   selector) so these rules still win over `.kol-close-button:is(.kol-button--normal)` in
+	   `button.scss`, which is tied at 2 classes otherwise and wins by source order alone. */
 	.kol-alert__closer {
-		.kol-alert--variant-msg & .kol-button {
+		.kol-alert--variant-msg &.kol-button {
 			--text-color: var(--alert-accent-color);
+
+			/* The closer's grid area spans the icon/heading row and the content row (see
+			   @shared/_alert.mixin.scss). Without an explicit height, the `display: flex` button
+			   stretches to the combined height of both rows plus the row-gap between them even with
+			   `align-self: self-start` on `.kol-close-button` — min-height alone isn't enough once
+			   row-gap + row heights exceed it. The `variant-card` closer must NOT get this: its grid
+			   area is the header row only, and it is meant to stretch to that row's real height. */
+			height: var(--a11y-min-size);
 		}
 
-		.kol-alert--variant-card & {
+		.kol-alert--variant-card &.kol-button {
 			padding-right: to-rem(16);
 			padding-block: to-rem(8);
 
-			.kol-button {
-				--text-color: var(--color-light);
-			}
+			--text-color: var(--color-light);
 		}
 	}
 
@@ -121,6 +138,7 @@
 
 	.kol-alert__content {
 		.kol-alert--variant-card & {
+			--kol-surface: var(--color-light);
 			background-color: var(--color-light);
 			border-radius: 0 0 var(--inner-border-radius) var(--inner-border-radius);
 			padding: to-rem(16);

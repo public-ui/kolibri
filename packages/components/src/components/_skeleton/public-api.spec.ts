@@ -380,8 +380,9 @@ const KOL_BUTTON_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 
 /**
  * Pinned public API of `kol-button-link` — byte-identical to the predecessor `shadow.tsx` on the
- * develop branch (19 props + getValue/focus/click). `_role` stays declared but, as before, is not
- * forwarded to the inner element.
+ * develop branch (19 props + getValue/focus/click), except `_on`'s JSDoc, translated from German
+ * to English to match every other prop's documentation (doc-only, no behavior change). `_role`
+ * stays declared but, as before, is not forwarded to the inner element.
  */
 const KOL_BUTTON_LINK_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	getValue: {
@@ -475,7 +476,7 @@ const KOL_BUTTON_LINK_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 		kind: 'prop',
 		type: 'ButtonCallbacksPropType<StencilUnknown>',
 		required: false,
-		doc: 'Gibt die EventCallback-Funktionen für die Button-Events an.',
+		doc: 'Defines the callback functions for button events.',
 	},
 	_role: {
 		kind: 'prop',
@@ -845,6 +846,64 @@ const KOL_BADGE_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	},
 };
 
+/**
+ * Pinned public API of `kol-card`: 6 props plus `focus()` and `click()` — identical to the
+ * predecessor `shadow.tsx` on the develop branch. `_headingId` stays internal to the transitional
+ * `kol-card-wc`, where dialog and drawer set it.
+ */
+const KOL_CARD_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the internal element.',
+	},
+	click: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Clicks the primary interactive element inside this component.',
+	},
+	_hasCloser: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Defines whether the element can be closed. @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.',
+	},
+	_href: {
+		kind: 'prop',
+		type: 'HrefPropType',
+		required: false,
+		doc: 'Sets the target URI of the link or citation source.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_level: {
+		kind: 'prop',
+		type: 'HeadingLevel',
+		required: false,
+		default: '0',
+		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'KoliBriCardEventCallbacks',
+		required: false,
+		doc: 'Defines the event callback functions for the component.',
+	},
+	_target: {
+		kind: 'prop',
+		type: 'LinkTargetPropType',
+		required: false,
+		doc: 'Defines where to open the link.',
+	},
+};
+
 describe('kol-link public API contract (ARC42 § Public API Contract)', () => {
 	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
 		const extracted = extractFrom('link', 'component.tsx');
@@ -866,10 +925,15 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['button', 'component.tsx'],
 		['button', 'wc.tsx'],
 		['breadcrumb', 'component.tsx'],
+		['skip-nav', 'component.tsx'],
 		['button-link', 'component.tsx'],
 		['link-button', 'component.tsx'],
 		['split-button', 'component.tsx'],
 		['badge', 'component.tsx'],
+		['card', 'component.tsx'],
+		['card', 'wc.tsx'],
+		['alert', 'component.tsx'],
+		['alert', 'wc.tsx'],
 	];
 
 	it.each(sources)('documents every public member of %s/%s', (component, file) => {
@@ -910,11 +974,20 @@ describe('kol-button-wc transitional wrapper (internal contract for legacy consu
 	});
 });
 
+describe('kol-card-wc transitional wrapper (internal contract for legacy consumers)', () => {
+	it('keeps the full predecessor surface: 7 props plus focus() and click()', () => {
+		const extracted = extractFrom('card', 'wc.tsx');
+		expect(extracted.filter((member) => member.kind === 'prop')).toHaveLength(7);
+		expect(extracted.filter((member) => member.kind === 'method').map((member) => member.name)).toEqual(['focus', 'click']);
+	});
+});
+
 describe.each([
 	['kol-button-link', 'button-link', 'ButtonLinkProps', KOL_BUTTON_LINK_PUBLIC_API],
 	['kol-link-button', 'link-button', 'LinkButtonProps', KOL_LINK_BUTTON_PUBLIC_API],
 	['kol-split-button', 'split-button', 'SplitButtonProps', KOL_SPLIT_BUTTON_PUBLIC_API],
 	['kol-badge', 'badge', 'BadgeProps', KOL_BADGE_PUBLIC_API],
+	['kol-card', 'card', 'CardProps', KOL_CARD_PUBLIC_API],
 ] as const)('%s public API contract (ARC42 § Public API Contract)', (_tag, component, schemaInterface, pinnedApi) => {
 	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
 		// Failing this test means the public contract changed — a breaking change (ARC42 §
@@ -958,5 +1031,121 @@ describe('kol-breadcrumb public API contract (ARC42 § Public API Contract)', ()
 
 	it('implements the schema interface so prop-type drift fails the build', () => {
 		expect(readSource('breadcrumb', 'component.tsx')).toMatch(/implements\s+[^{]*\bBreadcrumbProps\b/);
+	});
+});
+
+/**
+ * Pinned public API of `kol-skip-nav` — byte-identical to the predecessor on the develop branch
+ * (2 required props plus `focus()`).
+ */
+const KOL_SKIP_NAV_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_links: {
+		kind: 'prop',
+		type: 'Stringified<LinkProps[]>',
+		required: true,
+		doc: 'Defines the list of links combined with their labels to render.',
+	},
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the internal element.',
+	},
+};
+
+describe('kol-skip-nav public API contract (ARC42 § Public API Contract)', () => {
+	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
+		const extracted = extractFrom('skip-nav', 'component.tsx');
+		// Failing this test means the public contract changed — a breaking change (ARC42 §
+		// "Public API Contract (Migration Parity)"): get owner approval, then update the pinned
+		// contract consciously and note it in the PR description.
+		expect(toContract(extracted)).toEqual(KOL_SKIP_NAV_PUBLIC_API);
+	});
+
+	it('implements the schema interface so prop-type drift fails the build', () => {
+		expect(readSource('skip-nav', 'component.tsx')).toMatch(/implements\s+[^{]*\bSkipNavProps\b/);
+	});
+});
+
+/**
+ * Pinned public API of `kol-alert` — byte-identical to the predecessor on the develop branch
+ * (7 props, no methods).
+ */
+const KOL_ALERT_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	_alert: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Defines whether the screen-readers should read out the notification.',
+	},
+	_hasCloser: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Defines whether the element can be closed. @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: false,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_level: {
+		kind: 'prop',
+		type: 'HeadingLevel',
+		required: false,
+		default: '0',
+		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'KoliBriAlertEventCallbacks',
+		required: false,
+		doc: 'Defines the event callback functions for closing the alert.',
+	},
+	_type: {
+		kind: 'prop',
+		type: 'AlertTypePropType',
+		required: false,
+		default: "'default'",
+		doc: 'Defines either the type of the component or of the components interactive element.',
+	},
+	_variant: {
+		kind: 'prop',
+		type: 'AlertVariantPropType',
+		required: false,
+		default: "'msg'",
+		doc: 'Defines which variant should be used for presentation.',
+	},
+};
+
+describe('kol-alert public API contract (ARC42 § Public API Contract)', () => {
+	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
+		const extracted = extractFrom('alert', 'component.tsx');
+		// Failing this test means the public contract changed — a breaking change (ARC42 §
+		// "Public API Contract (Migration Parity)"): get owner approval, then update the pinned
+		// contract consciously and note it in the PR description.
+		expect(toContract(extracted)).toEqual(KOL_ALERT_PUBLIC_API);
+	});
+
+	it('implements the schema interface so prop-type drift fails the build', () => {
+		expect(readSource('alert', 'component.tsx')).toMatch(/implements\s+[^{]*\bAlertProps\b/);
+	});
+});
+
+describe('kol-alert-wc transitional wrapper (internal contract for legacy consumers)', () => {
+	it('keeps the full predecessor surface: 7 props and no methods', () => {
+		const extracted = extractFrom('alert', 'wc.tsx');
+		expect(extracted.filter((member) => member.kind === 'prop')).toHaveLength(7);
+		expect(extracted.filter((member) => member.kind === 'method')).toEqual([]);
+		expect(toContract(extracted)).toEqual(KOL_ALERT_PUBLIC_API);
 	});
 });
