@@ -106,7 +106,7 @@
 			&:hover {
 				color: var(--text-color);
 				background-color: var(--text-background-color);
-				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				box-shadow: 0 2px 8px 2px var(--color-shadow);
 				border-color: var(--text-border-color);
 			}
 
@@ -135,9 +135,12 @@
 	.kol-close-button {
 		align-self: self-start;
 
-		/* Both close button renderers (alert, card) render `ButtonFC` directly, so
-		   `kol-close-button` and the variant class sit on the same element. */
-		&:is(.#{$block-classname}--normal) {
+		/* The alert renders its closer as `ButtonFC` directly, so `kol-close-button` and the
+		   variant class sit on the same element there; the card still keeps the hook on a wrapper
+		   around the button. Both shapes stay addressed until the hook moves onto the button root
+		   everywhere. Specificity is 2 classes either way, as before the alert migration. */
+		&:is(.#{$block-classname}--normal),
+		.#{$block-classname}--normal {
 			@include kol-button-ghost();
 
 			--kol-focus-outline-offset: -2px;

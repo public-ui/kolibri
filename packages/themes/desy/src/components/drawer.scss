@@ -44,9 +44,7 @@ $duration: 0.4s;
 				background-color: var(--color-white-100);
 				display: grid;
 
-				/* The closer is a `ButtonFC` root, so `kol-card__close-button` and `kol-button`
-				   sit on the same element. */
-				&__close-button:is(.kol-button) {
+				&__close-button .kol-button {
 					outline-offset: to-rem(-2);
 				}
 			}

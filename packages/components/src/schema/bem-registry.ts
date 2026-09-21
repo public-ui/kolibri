@@ -78,6 +78,23 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-card': {
+		elements: {
+			'close-button': {
+				modifiers: null;
+			};
+			content: {
+				modifiers: null;
+			};
+			header: {
+				modifiers: null;
+			};
+			link: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-button': {
 		elements: {
 			'interactive-element': {
@@ -174,6 +191,17 @@ export type KoliBriComponentsBemSchema = {
 			};
 		};
 		modifiers: Set<'block' | 'inline'>;
+	};
+	'kol-skip-nav': {
+		elements: {
+			list: {
+				modifiers: null;
+			};
+			'list-item': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
 	};
 	'kol-skeleton': {
 		elements: {
@@ -285,6 +313,15 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: null,
 	},
+	'kol-card': {
+		elements: {
+			'close-button': { modifiers: null },
+			content: { modifiers: null },
+			header: { modifiers: null },
+			link: { modifiers: null },
+		},
+		modifiers: null,
+	},
 	'kol-button': {
 		elements: {
 			'interactive-element': { modifiers: null },
@@ -333,6 +370,13 @@ const BEM: KoliBriComponentsBemSchema = {
 			quote: { modifiers: null },
 		},
 		modifiers: new Set(['block', 'inline']),
+	},
+	'kol-skip-nav': {
+		elements: {
+			list: { modifiers: null },
+			'list-item': { modifiers: null },
+		},
+		modifiers: null,
 	},
 	'kol-skeleton': {
 		elements: {

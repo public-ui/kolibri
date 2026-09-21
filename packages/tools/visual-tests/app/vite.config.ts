@@ -40,6 +40,15 @@ export default defineConfig({
 		'process.env.PLATFORM': JSON.stringify(process.platform),
 	},
 	build: {
+		/*
+		 * `light-dark()` must survive the build. Against an older CSS target the minifier rewrites it
+		 * into a `prefers-color-scheme` media query with space toggles, and that replacement ignores
+		 * the `color-scheme` property entirely. The KoliBri themes ship their CSS as a string that is
+		 * adopted into the shadow roots at runtime, so it is never processed here and keeps honouring
+		 * `color-scheme` — the page would then follow the operating system while the components in it
+		 * follow the application's own setting. The target is the browser floor `light-dark()` needs.
+		 */
+		cssTarget: ['chrome123', 'edge123', 'firefox120', 'safari17.5'],
 		emptyOutDir: true,
 		sourcemap: true,
 	},

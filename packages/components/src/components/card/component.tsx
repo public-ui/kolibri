@@ -1,83 +1,70 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import type { CardApi } from '../../internal/functional-components/card/api';
+import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type {
-	CardAPI,
-	CardStates,
+	CardProps,
 	ClickableElement,
 	FocusableElement,
-	HasCloserPropType,
 	HeadingLevel,
 	HrefPropType,
-	KoliBriAlertEventCallbacks,
+	KolFocusOptions,
 	KoliBriCardEventCallbacks,
 	LabelPropType,
 	LinkTargetPropType,
 } from '../../schema';
-import { setState, validateHasCloser, validateHref, validateLabel, validateLinkTarget } from '../../schema';
-
-import { translate } from '../../i18n';
-import { watchHeadingLevel } from '../heading/validation';
-
-import { KolHeadingFc } from '../../functional-components';
-import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
-import { ButtonFC } from '../../internal/functional-components/button/component';
-import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
-import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
-import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import { delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { BaseCardWebComponent } from './base';
 
 /**
- * The closer is a plain button: no role override, and an unset tabindex must not render as
- * `tabindex="0"` — buttons are natively tabbable. The unset render props mirror how the
- * predecessor `kol-button-wc` reached its `undefined` render props.
- */
-const UNSET_BUTTON_PROP = undefined as never;
-
-/**
- * @internal
+ * The **Card** component is ideal for visually highlighting individual sections of your website. It allows you to structure your content very easily.
+ *
+ * The **Card** component consists of a **_title area_** and a **_content area_**.
+ *
+ * The **title area** is displayed in a larger font. The **content area** is visually separated from the title area by a horizontal dividing line and is rendered in the default font.
+ *
  * @slot - Allows arbitrary HTML to be inserted into the content area of the card.
- *
- * ## Accessibility
- * The card uses semantic `<article>` markup with `aria-labelledby` to properly label the content region.
- * When displaying multiple cards, wrap them in a `<ul>` or `<ol>` to group them semantically.
- *
- * @example
- * // Single card
- * <kol-card-wc _label="Card Title">Content here</kol-card-wc>
- *
- * // Multiple cards (recommended)
- * <ul>
- *   <li><kol-card-wc _label="Card 1">Content 1</kol-card-wc></li>
- *   <li><kol-card-wc _label="Card 2">Content 2</kol-card-wc></li>
- * </ul>
  */
 @Component({
-	tag: 'kol-card-wc',
-	shadow: false,
+	tag: 'kol-card',
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: true,
 })
-export class KolCardWc implements CardAPI, ClickableElement, FocusableElement {
-	@Element() private readonly host?: HTMLKolCardElement;
-	private readonly translateClose = translate('kol-close');
-	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
+export class KolCard extends BaseCardWebComponent implements CardProps, ClickableElement, FocusableElement, WebComponentInterface<CardApi> {
+	@Element() protected readonly host?: HTMLKolCardElement;
 
-	// --- Closer (ButtonFC rendered directly, so the closer's tooltip behavior lives here) ---
+	// --- Lifecycle ---
 
-	protected readonly closerRef = createCtaRef<HTMLButtonElement>();
-	private readonly closerTooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
+	public componentWillLoad(): void {
+		this.initCardRenderProps();
 
-	private readonly handleCloserClick = (event: MouseEvent): void => {
-		// The predecessor rendered the transitional kol-button-wc, whose click handler stopped
-		// the propagation — kept so closer clicks do not leak to listeners on the card host.
-		event.stopPropagation();
-		this.closerTooltipBehavior.hideTooltip();
-		this.close();
-	};
+		this.watchHasCloser(this._hasCloser);
+		this.watchHref(this._href);
+		this.watchLabel(this._label);
+		this.watchLevel(this._level);
+		this.watchOn(this._on);
+		this.watchTarget(this._target);
+	}
+
+	public componentDidRender(): void {
+		this.syncTooltipListeners();
+	}
+
+	public disconnectedCallback(): void {
+		this.destroyTooltipBehavior();
+	}
+
+	// --- Public methods ---
 
 	/**
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	@directFocus('ctaRef')
+	@delegateFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public async focus(options?: KolFocusOptions): Promise<void> {}
@@ -86,199 +73,79 @@ export class KolCardWc implements CardAPI, ClickableElement, FocusableElement {
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	@directClick('ctaRef')
+	@delegateClick('ctaRef')
 	public async click(): Promise<void> {}
 
-	private readonly close = () => {
-		if (this._on?.onClose !== undefined) {
-			this._on.onClose(new Event('Close'));
-		}
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.close);
-		}
-	};
+	// --- Render ---
 
-	private readonly onFocus = (event: FocusEvent) => {
-		this.state?._on?.onFocus?.(event);
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.focus);
-		}
-	};
-
-	private readonly onBlur = (event: FocusEvent) => {
-		this.state?._on?.onBlur?.(event);
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.blur);
-		}
-	};
+	protected renderSlot(): JSX.Element {
+		return <slot />;
+	}
 
 	public render(): JSX.Element {
-		return (
-			<Host>
-				{/*
-					Using a semantic <article> container with aria-labelledby provides proper
-					accessibility for a self-contained card. When many cards appear together,
-					wrap them in a list (<ul> / <ol>) to preserve clean page navigation.
-				*/}
-				<article aria-labelledby={this._headingId} class="kol-card">
-					{this._href && (
-						<a href={this._href} target={this._target} class="kol-card__link" onFocus={this.onFocus} onBlur={this.onBlur} ref={this.ctaRef}>
-							<KolHeadingFc class="kol-card__header" id={this._headingId} level={this.state._level}>
-								{this.state._label}
-							</KolHeadingFc>
-						</a>
-					)}
-					{!this._href && (
-						<KolHeadingFc class="kol-card__header" id={this._headingId} level={this.state._level}>
-							{this.state._label}
-						</KolHeadingFc>
-					)}
-					<div class="kol-card__content">
-						<slot />
-					</div>
-					{this.state._hasCloser && (
-						<ButtonFC
-							accessKey=""
-							ariaControls=""
-							ariaDescription=""
-							ariaDescriptionId={this.closerAriaDescriptionId}
-							ariaExpanded={UNSET_BUTTON_PROP}
-							ariaHasPopup=""
-							ariaSelected={UNSET_BUTTON_PROP}
-							class="kol-card__close-button kol-close-button"
-							customClass=""
-							data-testid="card-close-button"
-							disabled={false}
-							handleBlur={() => undefined}
-							handleClick={this.handleCloserClick}
-							handleFocus={() => undefined}
-							handleMouseDown={() => undefined}
-							hideLabel
-							icons={{
-								left: {
-									icon: 'kolicon-cross',
-								},
-							}}
-							id=""
-							inline={false}
-							label={this.translateClose}
-							name=""
-							on={{}}
-							refButton={this.closerRef}
-							refTooltip={this.closerTooltipBehavior.setTooltipElementRef}
-							role={UNSET_BUTTON_PROP}
-							shortKey=""
-							tabIndex={UNSET_BUTTON_PROP}
-							tooltipAlign="left"
-							type="button"
-							variant={['normal']}
-						/>
-					)}
-				</article>
-			</Host>
-		);
+		return <Host>{this.renderCardFC()}</Host>;
 	}
+
+	// --- @State ---
+
+	@State() public ariaDescriptionId: string = nonce();
+
+	@State() public headingId: string = createUniqueId('card-heading');
+
+	// --- Props + Watchers ---
 
 	/**
 	 * Defines whether the element can be closed.
 	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hasCloser?: boolean = false;
-
-	/**
-	 * Defines the ID of the heading element. If not provided, an internal ID will be generated.
-	 * @internal
-	 */
-	@Prop() public _headingId?: string = createUniqueId('card-heading');
+	@Watch('_hasCloser')
+	public watchHasCloser(value?: boolean): void {
+		this.applyHasCloser(value);
+	}
 
 	/**
 	 * Sets the target URI of the link or citation source.
 	 */
 	@Prop() public _href?: HrefPropType;
+	@Watch('_href')
+	public watchHref(value?: HrefPropType): void {
+		this.applyHref(value);
+	}
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop() public _label!: LabelPropType;
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		this.applyLabel(value);
+	}
 
 	/**
 	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
 	 */
 	@Prop() public _level?: HeadingLevel = 0;
+	@Watch('_level')
+	public watchLevel(value?: HeadingLevel): void {
+		this.applyLevel(value);
+	}
 
 	/**
 	 * Defines the event callback functions for the component.
 	 */
 	@Prop() public _on?: KoliBriCardEventCallbacks;
+	@Watch('_on')
+	public watchOn(value?: KoliBriCardEventCallbacks): void {
+		this.applyOn(value);
+	}
 
 	/**
 	 * Defines where to open the link.
 	 */
 	@Prop() public _target?: LinkTargetPropType;
-
-	@State() public state: CardStates = {
-		_label: '', // ⚠ required
-	};
-
-	@State() public closerAriaDescriptionId: string = nonce();
-
-	private validateOnValue = (value: unknown): boolean =>
-		typeof value === 'object' && value !== null && typeof (value as KoliBriCardEventCallbacks).onClose === 'function';
-
-	@Watch('_hasCloser')
-	public validateHasCloser(value?: HasCloserPropType): void {
-		validateHasCloser(this, value);
-	}
-
-	@Watch('_href')
-	public validateHref(value?: string): void {
-		validateHref(this, value);
-	}
-
-	@Watch('_label')
-	public validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value, {
-			required: true,
-		});
-	}
-
-	@Watch('_level')
-	public validateLevel(value?: HeadingLevel): void {
-		watchHeadingLevel(this, value);
-	}
-
-	@Watch('_on')
-	public validateOn(value?: KoliBriCardEventCallbacks): void {
-		if (this.validateOnValue(value)) {
-			setState<KoliBriCardEventCallbacks>(this, '_on', {
-				onClose: (value as KoliBriAlertEventCallbacks).onClose,
-			});
-		}
-	}
-
 	@Watch('_target')
-	public validateTarget(value?: LinkTargetPropType): void {
-		validateLinkTarget(this, value);
-	}
-
-	public componentWillLoad(): void {
-		this.validateHasCloser(this._hasCloser);
-		this.validateHref(this._href);
-		this.validateLabel(this._label);
-		this.validateLevel(this._level);
-		this.validateOn(this._on);
-		this.validateTarget(this._target);
-
-		this.closerTooltipBehavior.componentWillLoad({ label: this.translateClose, align: 'left' });
-	}
-
-	public componentDidRender(): void {
-		if (this.closerRef.el) {
-			this.closerTooltipBehavior.syncListeners(undefined, this.closerRef.el, true);
-		}
-	}
-
-	public disconnectedCallback(): void {
-		this.closerTooltipBehavior.destroy();
+	public watchTarget(value?: LinkTargetPropType): void {
+		this.applyTarget(value);
 	}
 }

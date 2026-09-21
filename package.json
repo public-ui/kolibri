@@ -1,11 +1,11 @@
 {
 	"version": "4.4.0",
 	"devDependencies": {
-		"@evilmartians/lefthook": "2.1.12",
+		"@evilmartians/lefthook": "2.1.14",
 		"js-yaml": "5.4.2",
 		"license-report": "6.8.5",
 		"npm-run-all2": "9.0.3",
-		"prettier": "3.9.6",
+		"prettier": "3.9.8",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "17.14.1",
 		"stylelint-config-recommended-scss": "17.0.1",

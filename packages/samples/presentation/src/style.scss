@@ -2,7 +2,34 @@
 
 :root {
 	--kolibri-root-font-size: 100;
+
+	/* Lets the page behind the components follow the color scheme. The components decide on their
+	   own; only the canvas around them needs this. The light branch is the browser default. */
+	background-color: light-dark(#ffffff, #14181a);
+
 	font-size: 625%;
+
+	color-scheme: light dark;
+}
+
+/*
+ * In dark mode no KoliBri component paints a surface behind itself — every `kol-*` tag is
+ * transparent and the page shows through.
+ *
+ * `a11y.scss` in `@public-ui/components` paints the host box of every component with
+ * `background-color: var(--kol-a11y-background-color)`, so overriding that token is the same thing
+ * as setting `background-color` on the tag. It has to be declared *on* the host elements, because a
+ * `:host` rule of the shadow tree would beat a value merely inherited from `:root` — and the
+ * universal selector is what reaches all of them: a tag name cannot be matched by prefix in CSS, so
+ * naming them individually would mean a list that silently goes stale with every new component.
+ * Between two declarations on a shadow host the outer tree wins whatever their specificity, so this
+ * one beats both `kol-a11y` and the theme.
+ *
+ * The light branch is the `white` that `a11y.scss` declares itself, so nothing changes there — for
+ * every theme, not just the default one.
+ */
+* {
+	--kol-a11y-background-color: light-dark(#ffffff, transparent);
 }
 
 body {
@@ -62,7 +89,10 @@ hr {
 
 .scrollable-container {
 	display: grid;
-	overflow: hidden;
+	/* Not `overflow: hidden`: as a grid item this box must be allowed to shrink below its content,
+	   which is what `min-height: 0` does. Clipping it instead also cuts the 5px focus ring of the
+	   search field, which fills the container's width to within 2px. */
+	min-height: 0;
 	gap: 16px;
 	grid-template-rows: min-content 1fr;
 }
@@ -79,14 +109,16 @@ hr {
 	}
 
 	.app-sidebar {
-		background-color: white;
+		background-color: light-dark(#ffffff, #1c2021);
 		max-height: calc(100vh - 32px);
-		border-right: 1px solid gray;
+		border-right: 1px solid light-dark(gray, #41494e);
 
 		& .scrollable-container-wrapper {
 			display: grid;
 			max-height: calc(100vh - 32px);
-			grid-template-rows: repeat(5, min-content) 1fr;
+			/* One row per chrome element above the navigation: heading, build info, theme select,
+			   color scheme select, "Components" heading, previous/next row. */
+			grid-template-rows: repeat(6, min-content) 1fr;
 		}
 	}
 
