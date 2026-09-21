@@ -36,7 +36,7 @@
 		"@types/react-dom": "19.2.5",
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"eslint": "9.39.5",
-		"knip": "6.36.0",
+		"knip": "6.37.0",
 		"prettier": "3.9.8",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "17.14.1"
