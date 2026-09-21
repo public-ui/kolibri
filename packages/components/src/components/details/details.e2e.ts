@@ -134,6 +134,16 @@ test.describe('kol-details', () => {
 
 			await expect.poll(() => kolDetails.evaluate((element: HTMLKolDetailsElement) => element.shadowRoot?.activeElement?.localName ?? null)).toBeNull();
 		});
+
+		test('should not offer a pointer cursor', async ({ page }) => {
+			await expect
+				.poll(() =>
+					page
+						.locator('kol-details')
+						.evaluate((element: HTMLKolDetailsElement) => getComputedStyle(element.shadowRoot?.querySelector('summary') as HTMLElement).cursor),
+				)
+				.toBe('not-allowed');
+		});
 	});
 
 	test.describe('click() method', () => {

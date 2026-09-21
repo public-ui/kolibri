@@ -4,7 +4,7 @@
 @layer kol-theme-component {
 	.kol-details {
 		&__heading {
-			&:focus-within {
+			&:not([aria-disabled='true']):focus-within {
 				cursor: pointer;
 			}
 

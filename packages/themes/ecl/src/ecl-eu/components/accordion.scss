@@ -12,7 +12,7 @@
 		border-radius: 8px;
 		margin: 0;
 
-		&:focus-within {
+		&:not(.kol-accordion--disabled):focus-within {
 			outline: 2px solid var(--color-blue);
 			outline-offset: -1px;
 		}

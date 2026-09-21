@@ -12,7 +12,7 @@
 		width: 100%;
 		height: 100%;
 
-		&:has(:focus-visible) {
+		&:not(.kol-accordion--disabled):has(:focus-visible) {
 			@include focus-outline;
 		}
 
@@ -44,10 +44,14 @@
 			line-height: 1.1;
 			border-top: 1px solid var(--color-mute-variant);
 
-			cursor: pointer;
+			/* `:hover` matches disabled elements too, so an unguarded rule flashes the disabled
+			   summary light blue on tap. `aria-disabled` is the summary's disabled marker. */
+			&:not([aria-disabled='true']) {
+				cursor: pointer;
 
-			&:hover {
-				background-color: var(--color-secondary);
+				&:hover {
+					background-color: var(--color-secondary);
+				}
 			}
 
 			/* The ring is drawn by the block's focus rule. */

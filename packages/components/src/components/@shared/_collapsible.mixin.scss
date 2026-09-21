@@ -15,7 +15,13 @@
 		&__heading {
 			display: flex;
 			min-height: var(--a11y-min-size);
-			cursor: pointer;
+
+			/* The `not-allowed` reset for disabled controls lives in `kol-global`, which loses to
+			   `kol-component` whatever the specificity (see `_layer-order.scss`). The pointer has to
+			   exclude the disabled summary itself, or it wins and a dead control looks clickable. */
+			&:not([aria-disabled='true']) {
+				cursor: pointer;
+			}
 
 			/* Baseline box for the flex container; without it the surrounding inline flow shifts by 1px. */
 			&::before {

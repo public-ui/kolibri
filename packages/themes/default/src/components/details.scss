@@ -41,7 +41,7 @@
 				}
 			}
 
-			&:focus {
+			&:not([aria-disabled='true']):focus {
 				@include focus-outline;
 				cursor: pointer;
 			}
