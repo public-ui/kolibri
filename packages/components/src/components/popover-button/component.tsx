@@ -1,174 +1,176 @@
 import type { JSX } from '@stencil/core';
-import { Component, Fragment, h, Method, Prop, State, Watch } from '@stencil/core';
-import { KolButtonWcTag } from '../../core/component-names';
-import { PopoverFC } from '../../internal/functional-components/popover/component';
-import { PopoverController } from '../../internal/functional-components/popover/controller';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+
+import type { PopoverButtonWebComponentInterface } from '../../internal/functional-components/popover-button/api';
 import type {
 	AccessKeyPropType,
 	AriaDescriptionPropType,
-	ButtonCallbacksPropType,
 	ButtonTypePropType,
 	ClickableElement,
 	CustomClassPropType,
 	FocusableElement,
 	IconsPropType,
-	IdPropType,
 	InlinePropType,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
 	PopoverAlignPropType,
+	PopoverButtonProps,
 	ShortKeyPropType,
 	StencilUnknown,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { validateInline, validatePopoverAlign } from '../../schema';
-import type { PopoverButtonProps, PopoverButtonStates } from '../../schema/components/popover-button';
-import clsx from '../../utils/clsx';
-import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
+import { nonce } from '../../utils/dev.utils';
+import { delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { BasePopoverButtonWebComponent } from './base';
 
 /**
- * @internal
- * @slot - The popover content.
+ * A button that toggles the visibility of a popover overlay containing arbitrary content.
+ * The popover uses the native HTML Popover API for lightweight, non-modal overlays.
  *
- * **Note:** The `_on` button callback prop is not supported. The button's `onClick` is reserved for toggling the popover.
- * Manage the popover visibility state and coordinate with the internal popover element.
+ * @slot - The popover content (displayed when the button is clicked).
+ * @slot expert - Custom label content for the button (when `_label` is `false`).
  */
 @Component({
-	tag: 'kol-popover-button-wc',
-	shadow: false,
+	tag: 'kol-popover-button',
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: true,
 })
-// class implementing PopoverButtonProps and not API because we don't want to repeat the entire state and validation for button props
-export class KolPopoverButtonWc implements ClickableElement, FocusableElement, PopoverButtonProps {
-	protected readonly ctaRef = createCtaRef<HTMLKolButtonWcElement>();
-	private readonly popoverCtrl = new PopoverController();
-	private popoverElement?: HTMLDivElement;
-	private readonly popoverId = createUniqueId('popover');
+export class KolPopoverButton
+	extends BasePopoverButtonWebComponent
+	implements ClickableElement, FocusableElement, PopoverButtonProps, PopoverButtonWebComponentInterface
+{
+	@Element() protected readonly host?: HTMLKolPopoverButtonElement;
 
-	private readonly setPopoverElementRef = (element?: HTMLDivElement) => {
-		this.popoverElement = element;
-		this.popoverCtrl.setPopoverElementRef(element);
-	};
+	public constructor() {
+		super();
+		this.initFormAssociation();
+	}
 
-	private readonly setButtonElementRef = (element?: HTMLKolButtonWcElement) => {
-		this.ctaRef(element);
-		if (element) {
-			this.popoverCtrl.setTriggerElement(element as HTMLElement);
-		}
-	};
+	// --- Lifecycle ---
 
-	private on: ButtonCallbacksPropType<StencilUnknown> = {
-		onClick: () => {
-			this.popoverCtrl.setShow(!this.popoverOpen);
-		},
-	};
+	public componentWillLoad(): void {
+		this.initPopoverButtonRenderProps();
 
-	@State() public state: PopoverButtonStates = {
-		_label: '',
-		_popoverAlign: 'bottom',
-		_inline: false,
-	};
-	@State() private popoverOpen = false;
+		this.watchAccessKey(this._accessKey);
+		this.watchAriaDescription(this._ariaDescription);
+		this.watchCustomClass(this._customClass);
+		this.watchDisabled(this._disabled);
+		this.watchHideLabel(this._hideLabel);
+		this.watchIcons(this._icons);
+		this.watchInline(this._inline);
+		this.watchLabel(this._label);
+		this.watchName(this._name);
+		this.watchPopoverAlign(this._popoverAlign);
+		this.watchShortKey(this._shortKey);
+		this.watchSyncValueBySelector(this._syncValueBySelector);
+		this.watchTabIndex(this._tabIndex);
+		this.watchTooltipAlign(this._tooltipAlign);
+		this.watchType(this._type);
+		this.watchValue(this._value);
+		this.watchVariant(this._variant);
+
+		this.initTooltipBehavior();
+	}
+
+	public componentDidRender(): void {
+		this.syncTooltipListeners();
+		this.syncPopoverToggleListener();
+	}
+
+	public disconnectedCallback(): void {
+		this.destroyTooltipBehavior();
+		this.destroyPopover();
+	}
+
+	// --- Public methods ---
 
 	/**
-	 * Hides the popover programmatically by calling the PopoverController.
+	 * Hides the popover programmatically.
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async hidePopover() {
-		this.popoverCtrl.setShow(false);
+		this.closePopover();
 	}
 
 	/**
-	 * Show the popover programmatically by calling the PopoverController.
+	 * Shows the popover programmatically.
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async showPopover() {
-		this.popoverCtrl.setShow(true);
+		this.openPopover();
 	}
-
-	/**
-	 * Sets focus on the internal element.
-	 */
-	@Method()
-	@directFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Clicks the primary interactive element inside this component.
 	 */
 	@Method()
-	@directClick('ctaRef')
+	@delegateClick('ctaRef')
 	public async click(): Promise<void> {}
 
-	private handleToggle = (event: Event): void => {
-		this.popoverOpen = (event as ToggleEvent).newState === 'open';
-	};
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
+
+	// --- Render ---
 
 	public render(): JSX.Element {
-		return (
-			<>
-				<KolButtonWcTag
-					class={clsx('kol-popover-button', {
-						'kol-popover-button--open': this.popoverOpen,
-						'kol-popover-button--inline': this.state._inline === true,
-						'kol-popover-button--standalone': this.state._inline === false,
-					})}
-					_accessKey={this._accessKey}
-					_ariaControls={this.popoverId}
-					_ariaDescription={this._ariaDescription}
-					_ariaExpanded={this.popoverOpen}
-					_customClass={this._customClass}
-					_disabled={this._disabled}
-					_hideLabel={this._hideLabel}
-					_icons={this._icons}
-					_id={this._id}
-					_inline={this._inline}
-					_label={this._label}
-					_name={this._name}
-					_on={this.on}
-					_shortKey={this._shortKey}
-					_syncValueBySelector={this._syncValueBySelector}
-					_tabIndex={this._tabIndex}
-					_tooltipAlign={this._tooltipAlign}
-					_type={this._type}
-					_value={this._value}
-					_variant={this._variant}
-					ref={this.setButtonElementRef}
-				>
-					<slot name="expert" slot="expert"></slot>
-				</KolButtonWcTag>
-				<PopoverFC align={this.state._popoverAlign || 'bottom'} popoverRef={this.setPopoverElementRef} class="kol-popover-button__popover" id={this.popoverId}>
-					<slot />
-				</PopoverFC>
-			</>
-		);
+		return <Host>{this.renderPopoverButtonFC()}</Host>;
 	}
+
+	// --- @State ---
+
+	@State() public ariaDescriptionId: string = nonce();
+
+	@State() public popoverOpen = false;
+
+	// --- Props + Watchers ---
 
 	/**
 	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
 	@Prop() public _accessKey?: AccessKeyPropType;
+	@Watch('_accessKey')
+	public watchAccessKey(value?: AccessKeyPropType): void {
+		this.applyAccessKey(value, this._shortKey);
+	}
 
 	/**
 	 * Defines the value for the aria-description attribute.
 	 */
 	@Prop() public _ariaDescription?: AriaDescriptionPropType;
+	@Watch('_ariaDescription')
+	public watchAriaDescription(value?: AriaDescriptionPropType): void {
+		this.applyAriaDescription(value);
+	}
 
 	/**
 	 * Defines the custom class attribute if _variant="custom" is set.
 	 */
 	@Prop() public _customClass?: CustomClassPropType;
+	@Watch('_customClass')
+	public watchCustomClass(value?: CustomClassPropType): void {
+		this.applyCustomClass(value);
+	}
 
 	/**
 	 * Makes the element not focusable and ignore all events.
 	 */
 	@Prop() public _disabled?: boolean = false;
+	@Watch('_disabled')
+	public watchDisabled(value?: boolean): void {
+		this.applyDisabled(value);
+	}
 
 	/**
 	 * Hides the caption by default and displays the caption text with a tooltip when the
@@ -176,111 +178,117 @@ export class KolPopoverButtonWc implements ClickableElement, FocusableElement, P
 	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _hideLabel?: boolean = false;
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: boolean): void {
+		this.applyHideLabel(value);
+	}
 
 	/**
 	 * Defines the icon classnames.
 	 */
 	@Prop() public _icons?: IconsPropType;
-
-	/**
-	 * Defines the internal ID of the primary component element.
-	 * @internal
-	 */
-	@Prop() public _id?: IdPropType;
+	@Watch('_icons')
+	public watchIcons(value?: IconsPropType): void {
+		this.applyIcons(value);
+	}
 
 	/**
 	 * Defines whether the component is displayed as a standalone block or inline without enforcing a minimum size of 44px.
 	 */
 	@Prop() public _inline?: InlinePropType = false;
+	@Watch('_inline')
+	public watchInline(value?: InlinePropType): void {
+		this.applyInline(value);
+	}
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */
 	@Prop() public _label!: LabelWithExpertSlotPropType;
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
 
 	/**
 	 * Defines the technical name of an input field.
 	 */
 	@Prop() public _name?: string;
+	@Watch('_name')
+	public watchName(value?: string): void {
+		this.applyName(value);
+	}
 
 	/**
 	 * Defines where to show the Popover preferably: top, right, bottom or left.
 	 */
 	@Prop() public _popoverAlign?: PopoverAlignPropType = 'bottom';
+	@Watch('_popoverAlign')
+	public watchPopoverAlign(value?: PopoverAlignPropType): void {
+		this.applyPopoverAlign(value);
+	}
 
 	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		this.applyShortKey(value, this._accessKey);
+	}
 
 	/**
 	 * Selector for synchronizing the value with another input element.
 	 * @internal
 	 */
 	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
 
 	/**
 	 * Defines which tab-index the primary element of the component has. (https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex)
 	 */
 	@Prop() public _tabIndex?: number;
+	@Watch('_tabIndex')
+	public watchTabIndex(value?: number): void {
+		this.applyTabIndex(value);
+	}
 
 	/**
 	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
 	 */
 	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
 
 	/**
 	 * Defines either the type of the component or of the components interactive element.
 	 */
 	@Prop() public _type?: ButtonTypePropType = 'button';
+	@Watch('_type')
+	public watchType(value?: ButtonTypePropType): void {
+		this.applyType(value);
+	}
 
 	/**
 	 * Defines the value of the element.
 	 */
 	@Prop() public _value?: StencilUnknown;
+	@Watch('_value')
+	public watchValue(value?: StencilUnknown): void {
+		this.applyValue(value);
+	}
 
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: VariantClassNamePropType = 'normal';
-
-	@Watch('_inline')
-	public validateInline(value?: InlinePropType): void {
-		validateInline(this, value, {
-			defaultValue: false,
-		});
-	}
-
-	@Watch('_popoverAlign')
-	public validatePopoverAlign(value?: PopoverAlignPropType): void {
-		validatePopoverAlign(this, value);
-		if (value) {
-			this.popoverCtrl.setAlign(value);
-		}
-	}
-
-	public componentWillLoad() {
-		this.validateInline(this._inline);
-		this.validatePopoverAlign(this._popoverAlign);
-	}
-
-	public componentDidRender() {
-		// The popoverElement is already set via popoverRef callback from PopoverFC.
-		// Register the toggle listener once the popover element is available.
-		if (this.popoverElement) {
-			this.popoverElement.addEventListener('toggle', this.handleToggle);
-		}
-		// Ensure align value is synced with controller
-		if (this.state._popoverAlign) {
-			this.popoverCtrl.setAlign(this.state._popoverAlign);
-		}
-	}
-
-	public disconnectedCallback() {
-		if (this.popoverElement) {
-			this.popoverElement.removeEventListener('toggle', this.handleToggle);
-		}
-		this.popoverCtrl.destroy();
-		this.popoverElement = undefined;
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		this.applyVariant(value);
 	}
 }

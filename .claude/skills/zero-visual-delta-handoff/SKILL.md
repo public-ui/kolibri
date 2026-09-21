@@ -184,7 +184,7 @@ grep -rn "@include" packages/themes/*/src packages/components/src --include='*.s
 - **App-Probe ≠ Check-Kontext**: Bei Widerspruch eine temporäre `probe.spec.js` direkt in den Tests-Ordner der Prüfpipeline legen und im echten Runner mit `--grep=probe` ausführen. Die Datei NACH dem Workspace-Spiegeln ins Volume schreiben (Sync-Tools löschen Fremddateien) und NIE committen.
 - **„Baseline ist stale"-Verdacht**: Vor jedem solchen Urteil den Base-Code selbst gegen die Baselines laufen lassen.
 - **„Hat der Docker-Lauf überhaupt den Branch gebaut?" — verifizieren statt Bauchgefühl**: Die Pipeline baut den Branch-Stand selbstständig — der Mirror transportiert ohnehin kein `.git` und kein `dist`, im Volume laufen `pnpm install` + Dependencies-Build (`@public-ui/visual-tests^...`), und die Test-App wird bei jedem Testlauf frisch in ein Temp-Verzeichnis gebaut (`packages/tools/visual-tests/src/index.js`). Ein manueller Host-Build ist für den Check nicht nötig; Host-`dist` würde nicht gespiegelt. Drei Prüfungen bei Zweifel: (1) Branch-only-Marker im Volume-dist greppen (`docker run --rm -v kolibri-visual-tests-work:/work <image> grep -rl <nur-im-Branch-existierende-Klasse> /work/repo/packages/components/dist`) — ein Base-DOM wäre trivial grün gegen Base-Baselines, nur ein Marker-Befund macht das Ergebnis aussagekräftig; (2) dist-mtime gegen die Laufzeit des Checks vergleichen; (3) Lauf-Log auf „Abhängigkeiten der Visual-Tests bauen" und „Building Visual-Tests App" prüfen. Develop-Vergleiche laufen über einen separaten develop-Worktree mit derselben Pipeline. Ist der Base-Check grün, sind die Baselines reproduzierbar und der Branch schuldet jede Differenz. Erst wenn der Base-Check selbst rot ist: Baselines-Regenerierung MIT Begründung und Owner-Absprache (siehe Allowlist).
-- **Hydrate-SSR-Snapshot pinnt das gerenderte Shadow-DOM** (`packages/adapters/hydrate/test/__snapshots__/…`): Jede DOM-Änderung trifft ihn. Deshalb: `pnpm --filter @public-ui/components build` VOR `pnpm --filter @public-ui/hydrate test:update:unit` laufen lassen, und `pnpm -r test:unit` statt nur `--filter components` — „nur das Components-Paket testen reicht nicht".
+- **Hydrate-SSR-Snapshot pinnt das gerenderte Shadow-DOM** (`packages/adapters/hydrate/test/__snapshots__/…`): Jede DOM-Änderung trifft ihn. Deshalb: `pnpm --filter @public-ui/components build` VOR `pnpm --filter @public-ui/hydrate test:update:unit` laufen lassen, und `pnpm -r test:unit` statt nur `--filter components` — „nur das Components-Paket testen reicht nicht". **2026-09-17 bestätigt (PR #10914): PR war finalisiert mit allen visual-tests grün („No visual changes"), aber build-and-check rot — die Visual-Pipeline deckt den Hydrate-Snapshot NICHT, „No visual changes" ist kein Test-Ersatz. Der Snapshot gehört auf die finale Prüfliste vor dem Push, nicht in eine CI-Nachreicherunde.**
 - **Stale generierte Typen**: `tsc`-Fehler über fehlende `HTMLKol*Element`-Typen bedeuten meist veraltete `components.d.ts` — einmal das Components-Paket bauen.
 - **Prop-Factory verweigert `undefined`-Defaults**: Für „Attribut nur wenn gesetzt" das `''`-Sentinel-Muster nutzen (leerer Wert = Attribut entfällt), sonst leckt der Config-Default (z. B. `tabindex="0"`) ins gerenderte DOM — ein visuelles und semantisches Delta.
 - **Verschachtelte interne Transitional-Tags** (z. B. `-wc`-Wrapper) werden von Peer-Komponenten gerendert; vor Planung von Löschungen die Tag-Konstante im Components-Paket greppen.
@@ -295,6 +295,8 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 | 16e | Sample-Drift Branch↔Base ist eine Diff-Quelle: Variant-Auflösung (getTheme vs getCustomThemes) ändert Sample-Inhalt → Umbruch; Samples auf Base-Stand syncen → Log default (icon/font)                                                                                                                | Migration default                                | Phantom-Diffs in unverdächtigen Routen verhindert                   |
 
 | 29 | Migrierter FC darf den transitionalen `-wc`-Tag behalten: Theme-/Basis-Selektoren treffen dessen Host-Klasse als Vorfahren (ecl `.kol-details__heading-button .kol-button`, desy `kol-link('kol-details__heading-button')`, badge `.kol-badge__smart-button .kol-button`) — vor jedem Ersetzen die Selektoren greppen; DOM-identischer FC-Port erspart die komplette Theme-Runde → Log 2026-09-14 | Details-Skeleton-Migration (PR #10884), Badge-Skeleton-Migration (PR #10889) — 2× bestätigt | Theme-Fix-Runden (25–33 Diffs wie bei Button) von vornherein vermieden |
+
+| 30 | Inlining eines Child-FCs verliert Base- UND Theme-Styles des Child-WC an der Shadow-Root-Grenze: Das Child-WC trägt sein eigenes `style.scss` (Basis: Layout, Icon-Glyph-Fonts!) **und** die Theme-Styles über sein `KOL-<TAG>`-Mapping in seinem eigenen Shadow-Root. Rendert der Parent-FC den Child-FC direkt, hängen die Elemente im Parent-Shadow-Root — dort gibt es beides nicht, außer der Parent-Stylesheet inkludiert die Basis und **jedes Theme** ein Parent-Stylesheet mit Child-Mapping liefert. Vor dem Inlining prüfen: Woher bekommt das Child heute Basis-/Theme-Styles, und liefert der Parent beide? Sonst WC-Blatt behalten → Log 2026-09-16 | Version-Skeleton-Migration (PR #10908): BadgeFC-in-Version kollabierte die Badge-Box in allen 7 Paketen (80×27 → 44×38) | 7-Changed-Image-Runde + Fehldiagnose vermieden |
 
 **Block C — Betrieb**
 
@@ -557,6 +559,127 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 - **Evidenz**: `Visual Review: 1 visual changes approved by deleonio`, kombinierter Status `success`,
   Commit `77f332a835`; sechs Pakete 408/0, ecl 407/1 (freigegeben);
   `git diff --name-only origin/develop...HEAD -- '*.png'` = 0.
+
+### 2026-09-15 — kol-alert-Skeleton-Migration, Nachtrag ButtonFC-Closer (alert + card): alle 6 Themes
+
+- **Ausgangslage**: Nach dem Owner-Wunsch, den Alert-/Card-Closer von `kol-button-wc` auf `ButtonFC`
+  direkt umzustellen (PR #10895, zweiter Fix-Commit oben auf der bereits migrierten Skeleton-PR),
+  zeigte der Docker-Zero-Delta-Check erstmals seit dem Rebase auf einen frischen develop-Stand
+  echte Regressionen, die die vorherige CI-Validierung (gegen einen älteren develop-Stand) nicht
+  erfasst hatte: `alert/basic` und `alert/card-msg` auf default/bwst/desy, `card/basic` (inkl.
+  320px-Reflow) auf default/bwst/kern/desy/ecl-ec.
+- **Ursachen & Fix-Muster** (zwei neue, komponenten-agnostische Muster, ergänzend zu Abschnitt 6):
+  1. **Spezifitäts-Kollision nach DOM-Merge (verwandt mit 6b)**: Ein Closer, der vorher als
+     eigenständiges Custom Element (`kol-button-wc`, eigene Klasse) im Light-DOM lag, bekommt nach
+     dem Umbau auf `ButtonFC` direkt `kol-button` UND die Block-eigene Closer-Klasse auf demselben
+     Element. Eine 3-Klassen-Ahnen-Selektor-Regel wie `.block--variant .block__closer .kol-button`
+     kollabiert dadurch auf 2 Klassen (`.block--variant .block__closer`) — Tie mit einer generischen
+     2-Klassen-Regel (z. B. `.kol-close-button:is(.kol-button--normal)` im Button-Mixin), gewinnt
+     dann nach Quellreihenfolge statt nach Absicht. **Fix**: `&.kol-button` an die eigene Klasse
+     anhängen, um die alte 3-Klassen-Spezifität wiederherzustellen (`.block--variant
+.block__closer.kol-button`) — deterministisch unabhängig von der Kompilat-Reihenfolge.
+  2. **Grid-Row-Stretch bei `display:flex`-Grid-Items in Firefox**: Ein `ButtonFC`-Closer
+     (`display:flex`) als Grid-Item, das über mehrere Tracks inkl. row-gap spannt (z. B. Icon+
+     Heading-Row und Content-Row eines Alerts), stretcht in Firefox auf die volle Track-Höhe +
+     row-gap, **obwohl** `align-self: self-start` gesetzt ist (z. B. 22+4+22=48px statt 44px
+     Closer-Eigenhöhe) — ein Legacy-`display:block`-Closer mit derselben `align-self`-Regel tat das
+     nicht. **Fix**: explizite `height` (nicht nur `min-height`) auf den Closer setzen — aber **nur**
+     in Themes, die `align-self: self-start` für die generische Closer-Klasse überhaupt deklarieren.
+     Themes ohne diese Regel verlassen sich schon auf den Grid-Default `align-items: stretch` und
+     STRETCHEN ABSICHTLICH auf die reale (Content-getriebene) Zeilenhöhe — das ist kein Bug, sondern
+     exakt das Legacy-Verhalten (baseline-verifiziert: 44px bei normaler Breite, 78px bei 320px-
+     Reflow mit 3-zeilig umgebrochener Card-Headline, beides korrekt gestretcht). Denselben
+     `height`-Fix dort trotzdem zu setzen bricht das gewollte Stretchen bei größeren Zeilen. **Vor
+     jedem Fix**: `grep -n "align-self" <theme>/button.scss` — Regel vorhanden? Nur dann fixen.
+  3. **Statische-Position-Divergenz bei `position:absolute` ohne `top`**: Ein absolut positioniertes
+     Element ohne explizites `top` löst seine Position über die "statische Position" auf (wo es in
+     normalem Fluss stünde). Diese Berechnung unterscheidet sich in Firefox zwischen
+     `display:flex`- und `display:block`-Elementen, wenn ein vorausgehendes Geschwister (z. B. eine
+     optionale Überschrift) unterschiedlich hoch ist — der `display:flex`-Closer landete 20px zu
+     tief, exakt versetzt um die Höhe der Überschrift. **Fix**: `top: 0` (oder den sonst intendierten
+     Wert) explizit setzen statt sich auf `auto`/die statische Position zu verlassen.
+- **Theme-Spezifika**: default/bwst/ecl-ec deklarieren `align-self: self-start` für den generischen
+  Closer (Muster 2 trifft zu, `height`-Fix nötig); desy und kern deklarieren es NICHT (Muster 2
+  trifft nicht zu, kein `height`-Fix — ein zuerst versehentlich für beide gesetzter Fix wurde
+  wieder entfernt, nachdem er `card-basic--basic-320` brach). desy hat zusätzlich Muster 3 (Alert-
+  Closer ist bei desy `position:absolute`, bei den anderen Themes ein normales Grid-Item).
+- **Diagnose-Goldweg (bestätigt Erfahrung #7)**: `probe.spec.js` mit rekursivem
+  Shadow-Root-Sammler + `getComputedStyle`/`getBoundingClientRect`, einmal gegen den Branch-
+  Container (`kolibri-visual-tests-work`) und einmal gegen einen zweiten, aus dem develop-Tip
+  aufgebauten Container (`kolibri-vt-develop`) gefahren — beide Zahlen nebeneinander (Höhe, `top`,
+  `align-self`, Grid-Row-Template, row-gap) haben beide Muster in Minuten statt Stunden belegt.
+- **Neue Sackgasse**: `align-self`/`height`-Fix pauschal auf alle Themes mit derselben Closer-Klasse
+  anwenden, ohne vorher zu prüfen, ob das Theme die zugrunde liegende `align-self`-Regel überhaupt
+  hat — bricht das (korrekte) Stretch-Verhalten in den Themes ohne diese Regel.
+- **Prozess-Erfahrung**: Nie zwei `snapshots-docker.mjs`-Läufe parallel gegen dasselbe Volume
+  starten (Build-Race-Condition, `ENOENT`/`mkdir: File exists`) — auch nicht versehentlich über
+  einen Session-Reset hinweg (ein Hintergrundprozess einer vorherigen, unterbrochenen Session kann
+  weiterlaufen; vor jedem Lauf `pgrep -f snapshots-docker.mjs` prüfen).
+- **Fix-Commit(s)**: `be211d0b19` (erster, zu pauschaler Fix), `a6dc87507e` (Stylelint-Nachzieh),
+  Korrektur-Commit dieser Session (desy/kern-Overrides entfernt, desy `top:0` ergänzt) auf PR #10895.
+- **Evidenz**: je Theme einzeln geprüft (kombinierte Läufe verursachen die Race-Condition oben) —
+  default/bwst/kern/desy: `--grep alert` 5/5 passed, `--grep card` 11/11 passed, je Exit 0; ecl und
+  unstyled unterstützen kein `--grep` → je ein voller Lauf, 297/297 passed, Exit 0.
+
+### 2026-09-16 — Skeleton-Migration kol-version (PR #10908): 7 Changed-Images → 0, ohne Theme-Runde
+
+> Ueberholt: der WC-Blatt-Fix wurde am 2026-09-21 zurueckgenommen (Eintrag darunter). Der
+> Eintrag bleibt fuer die Diagnose (Groessensprung = Layout-Kollaps) und die Ursachenanalyse.
+
+- **Ausgangslage**: Der PR inlined `BadgeFC` direkt in den `kol-version`-Shadow-Root. Ergebnis: je
+  1 Changed-Image pro Paket (Visual Review „7 changed"), Docker default 294/1 (`version/basic`),
+  Screenshot-Größe 80×27 → 44×38 — die Badge-Box kollabierte, Icon und Label stapelten vertikal.
+  Zusätzlich war `build-and-check` rot: Hydrate-SSR-Snapshot nicht nachgezogen.
+- **Ursachen & Fix-Muster**: Erfahrung #30 — das Badge-WC brachte Basis-Styles (`display: flex`,
+  `kol-icon-styles()` mit Icon-Glyph-Font) und Theme-Styles (`border-radius` usw. über
+  `KOL-BADGE`-Mapping) in seinem eigenen Shadow-Root mit; kein Theme hat ein `version.scss`/
+  `KOL-VERSION`-Mapping, also kam in `kol-version` beides nie an. Fix: der transitionale
+  `kol-badge`-WC bleibt als Blatt in `VersionFC` (Erfahrung #29-Muster), Props
+  `_color`/`_icons`/`_label` wie im Legacy-WC, `VERSION_COLOR` wieder Raw-String. Keine einzige
+  Theme-Änderung nötig.
+- **Diagnose-Weg**: Diff-Klassifikation per PIL auf den aus dem Volume kopierten
+  expected/actual-PNGs (Größensprung = Layout-Kollaps, nicht Verschiebung) → Styles im
+  Ziel-Shadow-Root geprüft (`version/style.scss` = nur `@shared/global`; kein
+  `.kol-version`-Selektor irgendwo; kein `KOL-VERSION`-Theme-Mapping) → WC-Blatt statt FC.
+- **Theme-Spezifika**: keine — der WC-Blatt-Fix ist theme-unabhängig, alle 6 Themes in einem Lauf.
+- **Fix-Commit(s)**: `d440124106` auf `vibe/version-skeleton-migration-b4ddb6`.
+- **Evidenz**: `KOLIBRI_VISUAL_TESTS_WORKERS=1 node scripts/snapshots-docker.mjs --all --check` →
+  bwst/default/desy/ecl/kern/unstyled je 295 passed, Exit 0; Components 965/965;
+  Hydrate-SSR 102 passing; `git diff origin/develop...HEAD -- '*.png'` = 0.
+  Stufe-1 vorab: `default --check -- --grep version` → 3 passed, Exit 0.
+
+### 2026-09-21 — kol-version rendert BadgeFC (PR #10908): Styles mitnehmen statt WC-Blatt, 0 Diffs
+
+- **Ausgangslage**: Der Owner verlangte, dass die FC ausschliesslich `BadgeFC` rendert — der
+  WC-Blatt-Fix vom 2026-09-16 (Eintrag darueber) war damit keine Option mehr. Die dort
+  beschriebene Ursache blieb: Basis-Styles haengen per Stencil `styleUrls` am `kol-badge`-Tag,
+  Theme-Styles per `KOL-BADGE`-Mapping; `version` fehlte sogar im `TagEnum`.
+- **Ursachen & Fix-Muster**: Nicht das Tag zurueckholen, sondern **beide Style-Schichten teilbar
+  machen** (Muster `kol-link-styles`/`mixins/link.scss`, das Breadcrumb fuer `LinkFC` nutzt):
+  `@shared/_badge.mixin.scss` (`kol-badge-styles()`, inkl. `kol-icon-styles()`) fuer die Basis,
+  pro Theme `mixins/badge.scss` (kern: `_badge.mixin.scss`) plus ein eigenes
+  `components/version.scss` und ein `KOL-VERSION`-Mapping im Theme-Index. `version` muss dafuer in
+  `schema/tag-names.ts` ergaenzt werden — ohne `TagEnum`-Eintrag ist der Theme-Key nicht typisiert.
+- **Theme-Spezifika**: keine. Das Mixin ist eine wortgleiche Verschiebung der Regeln, deshalb
+  brauchte kein Theme eine eigene Korrekturrunde — desy (`inline-flex`, `border-radius: 60rem`),
+  kern (`min-height`, `border`) und ecl-ec (Spezifitaet 0-3-0 bei `&__smart-button.kol-button`)
+  kamen unveraendert mit.
+- **Diagnose-Weg ohne Docker**: Kein Docker-Daemon und kein Firefox im Container, also
+  A/B statt Baseline-Vergleich — im `visual-tests`-Playwright-Config temporaer ein
+  `chromium`-Projekt mit `launchOptions.executablePath: '/opt/pw-browsers/chromium'` ergaenzen,
+  `--update-snapshots=all --project=chromium --grep=badge` bzw. `--grep=version` einmal auf dem
+  alten und einmal auf dem neuen Stand laufen lassen und die PNGs mit `cmp` vergleichen. Zusaetzlich
+  die kompilierten Sheets beider Staende diffen (`dist/collection/components/badge/style.css` und
+  die `KOL-BADGE`/`KOL-VERSION`-Strings aus `packages/themes/*/dist/index.mjs`).
+- **Fallstrick**: Ein einzelnes Nicht-ASCII-Zeichen im neuen Mixin-Kommentar laesst Sass ein
+  fuehrendes `@charset "UTF-8";` emittieren — das aendert jedes kompilierte Theme-Sheet, obwohl
+  keine Regel anders ist. Kommentare in geteilten SCSS-Partials ASCII halten.
+- **Ausserdem**: `packages/adapters/hydrate` haelt einen SSR-Snapshot pro Komponente
+  (`test/__snapshots__/components.spec.js.mocha-snapshot`); nach einem DOM-Umbau mit
+  `pnpm --filter @public-ui/hydrate test:update:unit` nachziehen, sonst ist `build-and-check` rot.
+- **Evidenz**: 36 PNGs (badge + version, alle sechs Pakete) byte-identisch zwischen altem und
+  neuem Stand; Components 964/964, Hydrate-SSR 102/102, badge-e2e 5/5;
+  `KOL-BADGE`-CSS je Theme regelgleich, `KOL-VERSION`-CSS je Theme regelgleich zum Badge-Sheet.
 
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 

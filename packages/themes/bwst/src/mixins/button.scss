@@ -136,6 +136,11 @@
 	.kol-close-button {
 		align-self: self-start;
 
+		/* The alert renders its closer as `ButtonFC` directly, so `kol-close-button` and the
+		   variant class sit on the same element there; the card still keeps the hook on a wrapper
+		   around the button. Both shapes stay addressed until the hook moves onto the button root
+		   everywhere. Specificity is 2 classes either way, as before the alert migration. */
+		&:is(.#{$block-classname}--normal),
 		.#{$block-classname}--normal {
 			@include kol-button-ghost();
 

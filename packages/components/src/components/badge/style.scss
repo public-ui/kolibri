@@ -1,19 +1,14 @@
 @use '../@shared/mixins' as *;
 @use '../@shared/global' as *;
 @use '../tooltip/style.scss' as *;
+@use '../@shared/badge.mixin' as *;
 @use '../@shared/button.mixin' as *;
-@use '../@shared/icon.mixin' as *;
 
 @layer kol-component {
-	@include kol-icon-styles();
+	@include kol-badge-styles();
 	@include kol-button-wc-box-styles('kol-button');
-	.kol-badge {
-		/* Visible with forced colors  */
-		outline: transparent solid to-rem(1);
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
 
+	.kol-badge {
 		.kol-badge__smart-button {
 			width: auto; // overrides kol-button-wc-box-styles, which would claim the whole badge
 

@@ -1,8 +1,9 @@
 import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
-import { translate } from '../../i18n';
-import { IconFC } from '../../internal/functional-components/icon/component';
-import type { AlertType } from '../../schema';
-import { bem } from '../../schema/bem-registry';
+
+import { translate } from '../../../i18n';
+import type { AlertType } from '../../../schema';
+import { bem } from '../../../schema/bem-registry';
+import { IconFC } from '../icon/component';
 
 const alertBem = bem.forBlock('kol-alert');
 const BEM_CLASS_ALERT__ICON = alertBem('icon');
@@ -35,7 +36,7 @@ const ALERT_ICON_CONFIG: Record<AlertType | 'default', { label: string; icon: st
 	},
 };
 
-const AlertIcon: FC<{ label?: string; type?: AlertType }> = ({ type = 'default' }) => {
+export const AlertIconFC: FC<{ type?: AlertType }> = ({ type = 'default' }) => {
 	const config = ALERT_ICON_CONFIG[type || 'default'];
 	return (
 		<>
@@ -44,5 +45,3 @@ const AlertIcon: FC<{ label?: string; type?: AlertType }> = ({ type = 'default' 
 		</>
 	);
 };
-
-export default AlertIcon;

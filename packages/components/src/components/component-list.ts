@@ -1,7 +1,7 @@
 import { KolAbbr } from './abbr/component';
 import { KolAccordion } from './accordion/shadow';
-import { KolAlertWc } from './alert/component';
-import { KolAlert } from './alert/shadow';
+import { KolAlert } from './alert/component';
+import { KolAlertWc } from './alert/wc';
 import { KolAvatar } from './avatar/component';
 import { KolBadge } from './badge/component';
 import { KolBreadcrumb } from './breadcrumb/component';
@@ -36,7 +36,7 @@ import { KolMeter } from './meter/component';
 import { KolModal } from './modal/shadow';
 import { KolNav } from './nav/shadow';
 import { KolPagination } from './pagination/shadow';
-import { KolPopoverButton } from './popover-button/shadow';
+import { KolPopoverButton } from './popover-button/component';
 import { KolProgress } from './progress/component';
 import { KolQuote } from './quote/component';
 import { KolSelect } from './select/shadow';
@@ -53,7 +53,7 @@ import { KolTreeItemWc } from './tree-item/component';
 import { KolTreeItem } from './tree-item/shadow';
 import { KolTreeWc } from './tree/component';
 import { KolTree } from './tree/shadow';
-import { KolVersion } from './version/shadow';
+import { KolVersion } from './version/component';
 
 export const COMPONENTS = [
 	KolAbbr,

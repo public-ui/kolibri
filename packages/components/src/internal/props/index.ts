@@ -1,4 +1,7 @@
 export * from './access-key';
+export * from './alert';
+export * from './alert-type';
+export * from './alert-variant';
 export * from './align';
 export * from './allow-markdown';
 export * from './alt';
@@ -39,6 +42,7 @@ export * from './min';
 export * from './name';
 export * from './optimum';
 export * from './orientation';
+export * from './popover-align';
 export * from './quote';
 export * from './secondary-headline';
 export * from './short-key';
