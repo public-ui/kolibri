@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
@@ -9,17 +9,23 @@ import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { BaseDialogWebComponent } from './base';
 
 /**
+ * Transitional `kol-dialog-wc` — a `shadow:false` element that renders `DialogFC` into the light DOM.
+ *
+ * `kol-table-stateless` renders it inside its own shadow DOM and styles the inner `.kol-dialog`
+ * classes from its stylesheet, which a shadow root would hide. Once that consumer renders
+ * `DialogFC` directly, this element can be deleted.
+ *
+ * https://en.wikipedia.org/wiki/Modal_window
+ *
+ * @internal
  * @slot - The dialog's contents.
  */
 @Component({
-	tag: 'kol-dialog',
-	styleUrls: {
-		default: './style.scss',
-	},
-	shadow: true,
+	tag: 'kol-dialog-wc',
+	shadow: false,
 })
-export class KolDialog extends BaseDialogWebComponent implements DialogProps, WebComponentInterface<DialogApi> {
-	@Element() protected readonly host?: HTMLKolDialogElement;
+export class KolDialogWc extends BaseDialogWebComponent implements DialogProps, WebComponentInterface<DialogApi> {
+	@Element() protected readonly host?: HTMLKolDialogWcElement;
 
 	// --- Lifecycle ---
 
@@ -44,12 +50,12 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	// --- Public methods ---
 
 	/**
-	 * Opens the dialog.
-	 * @deprecated Use showModal() instead.
+	 * Opens the dialog. Pass true to open as a modal dialog.
 	 */
 	@Method()
-	public async openModal(): Promise<void> {
-		await this.showModal();
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async show(modal: boolean = false): Promise<void> {
+		this.showDialog(modal);
 	}
 
 	/**
@@ -61,12 +67,12 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	}
 
 	/**
-	 * Opens the dialog. Pass true to open as a modal dialog.
+	 * Opens the dialog as a modal.
+	 * @deprecated Use showModal() instead.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async show(modal: boolean = false): Promise<void> {
-		this.showDialog(modal);
+	public async openModal(): Promise<void> {
+		await this.showModal();
 	}
 
 	/**
@@ -94,7 +100,7 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	}
 
 	public render(): JSX.Element {
-		return <Host>{this.renderDialogFC()}</Host>;
+		return this.renderDialogFC();
 	}
 
 	// --- @State ---

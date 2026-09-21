@@ -1,12 +1,11 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { ResolvedButtonProps } from '../../internal/functional-components/button/resolve-props';
-import { resolveButtonProps } from '../../internal/functional-components/button/resolve-props';
 import type { CardApi } from '../../internal/functional-components/card/api';
 import { cardPropsConfig } from '../../internal/functional-components/card/api';
+import { resolveCardCloseButtonProps } from '../../internal/functional-components/card/close-button';
 import { CardFC } from '../../internal/functional-components/card/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { cardCallbacksProp, hasCloserProp, idProp, labelProp, levelProp, linkTargetProp, optionalHrefProp } from '../../internal/props';
@@ -36,15 +35,7 @@ export abstract class BaseCardWebComponent extends BaseWebComponent<CardApi> {
 	protected initCardRenderProps(): void {
 		this.initRenderProps(cardPropsConfig);
 
-		this.closeButtonProps = resolveButtonProps(
-			{
-				_hideLabel: true,
-				_icons: { left: { icon: 'kolicon-cross' } },
-				_label: translate('kol-close'),
-				_tooltipAlign: 'left',
-			},
-			this.host,
-		);
+		this.closeButtonProps = resolveCardCloseButtonProps(this.host);
 		this.tooltipBehavior.componentWillLoad({
 			label: this.closeButtonProps.label,
 			align: this.closeButtonProps.tooltipAlign,

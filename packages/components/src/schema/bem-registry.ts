@@ -98,6 +98,33 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	/**
+	 * The dialog carries both its own block class and the deprecated `kol-modal` one, and marks
+	 * its variant with an element-style suffix (`kol-dialog__blank`, `kol-dialog__card`) rather
+	 * than a modifier. Both are part of the published theming surface and are kept verbatim.
+	 */
+	'kol-dialog': {
+		elements: {
+			blank: {
+				modifiers: null;
+			};
+			card: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-modal': {
+		elements: {
+			blank: {
+				modifiers: null;
+			};
+			card: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-button': {
 		elements: {
 			'interactive-element': {
@@ -333,6 +360,20 @@ const BEM: KoliBriComponentsBemSchema = {
 			content: { modifiers: null },
 			header: { modifiers: null },
 			link: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-dialog': {
+		elements: {
+			blank: { modifiers: null },
+			card: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-modal': {
+		elements: {
+			blank: { modifiers: null },
+			card: { modifiers: null },
 		},
 		modifiers: null,
 	},

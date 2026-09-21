@@ -28,7 +28,7 @@ const CardHeadingFC: FC<Pick<FunctionalComponentProps<CardApi>, 'headingId' | 'l
 	</KolHeadingFc>
 );
 
-type CardFCProps = FunctionalComponentProps<CardApi> & {
+export type CardFCProps = FunctionalComponentProps<CardApi> & {
 	/** The close button's normalized `ButtonFC` render props, resolved once by the web component. */
 	closeButtonProps: ResolvedButtonProps;
 };
