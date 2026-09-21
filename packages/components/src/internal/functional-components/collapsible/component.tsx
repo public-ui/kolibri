@@ -3,18 +3,11 @@ import { h } from '@stencil/core';
 
 import { getHeadlineTag } from '../../../functional-components/Heading/Heading';
 import clsx from '../../../utils/clsx';
+import { preventFocus } from '../../../utils/element-interaction';
 import { getBlockBem } from '../bem-root-node/block-bem';
 import type { FunctionalComponentProps } from '../generic-types';
 import { SpanFC } from '../span/component';
 import type { CollapsibleApi, CollapsibleVariant } from './api';
-
-/*
- * `<summary>` has no `disabled`, and focus is the default action of `mousedown`. `tabindex="-1"`
- * only takes the element out of the tab order, not out of the click focus — without this a
- * disabled collapsible takes focus on click or tap although it refuses every interaction. The
- * native `<button disabled>` this element stands in for did the same implicitly.
- */
-const preventFocus = (event: MouseEvent): void => event.preventDefault();
 
 /**
  * Renders a collapsible — `kol-accordion` and `kol-details` — on the native `<details>`/`<summary>`

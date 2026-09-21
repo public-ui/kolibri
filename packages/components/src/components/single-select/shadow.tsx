@@ -261,7 +261,13 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 
 	private selectFocusedOption(): boolean {
 		if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 && this._focusedOptionIndex >= 0) {
-			this.selectOption(this._filteredOptions[this._focusedOptionIndex]);
+			const option = this._filteredOptions[this._focusedOptionIndex];
+			/* The index can point at a disabled option — the keyboard handlers refuse to select one,
+			   so this path must refuse it too. */
+			if (option?.disabled) {
+				return false;
+			}
+			this.selectOption(option);
 			return true;
 		}
 		return false;
@@ -399,7 +405,9 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 											this._isOpen = false;
 										}}
 										onMouseOver={() => {
-											if (!this.blockSuggestionMouseOver) {
+											/* `onClick`, `onFocus` and `onKeyDown` all refuse a disabled option; without the same
+											   guard here the hover moves the focused index onto it and Enter selects it. */
+											if (!this.blockSuggestionMouseOver && !option.disabled) {
 												this._focusedOptionIndex = index;
 												this.focusOption(index);
 											}

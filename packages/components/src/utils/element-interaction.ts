@@ -29,6 +29,16 @@ export function createCtaRef<T extends HTMLElement = HTMLElement>(isInactive?: (
 	return ref;
 }
 
+/**
+ * `mousedown` handler that keeps a control from taking focus on click or tap.
+ *
+ * Elements whose disabled state is only `aria-disabled` — an `<a>`, a `<summary>` — stay focusable:
+ * `tabindex="-1"` takes them out of the tab order but not out of the click focus, and focus is the
+ * default action of `mousedown`. A native `disabled` control refuses focus implicitly; these have
+ * to refuse it here.
+ */
+export const preventFocus = (event: MouseEvent): void => event.preventDefault();
+
 type MethodDecorator_ = (_target: object, _key: string, descriptor: PropertyDescriptor) => PropertyDescriptor;
 
 function makeMethodDecorator(fn: (this_: Record<string, unknown>) => Promise<void>): MethodDecorator_ {

@@ -100,4 +100,49 @@ test.describe('kol-link', () => {
 			)
 			.toBe(true);
 	});
+
+	test.describe('when the link is disabled', () => {
+		test.beforeEach(async ({ page }) => {
+			await page.setContent('<kol-link _label="Link" _href="#target" _disabled></kol-link>');
+		});
+
+		test('should not take focus when clicked', async ({ page }) => {
+			await page.locator('kol-link a').click({ force: true });
+
+			await expect
+				.poll(() => page.locator('kol-link').evaluate((element: HTMLKolLinkElement) => element.shadowRoot?.activeElement?.localName ?? null))
+				.toBeNull();
+		});
+
+		test('should not take focus when the focus() method is called', async ({ page }) => {
+			const kolLink = page.locator('kol-link');
+
+			await kolLink.evaluate(async (element: HTMLKolLinkElement) => await element.focus());
+			await page.waitForChanges();
+
+			await expect.poll(() => kolLink.evaluate((element: HTMLKolLinkElement) => element.shadowRoot?.activeElement?.localName ?? null)).toBeNull();
+		});
+	});
+
+	test.describe('tab order', () => {
+		test('should skip a disabled link', async ({ page }) => {
+			await page.setContent(
+				'<button id="before">before</button><kol-link _label="Link" _href="#target" _disabled></kol-link><button id="after">after</button>',
+			);
+			await page.locator('#before').focus();
+
+			await page.keyboard.press('Tab');
+
+			await expect(page.locator('#after')).toBeFocused();
+		});
+
+		test('should include an enabled link', async ({ page }) => {
+			await page.setContent('<button id="before">before</button><kol-link _label="Link" _href="#target"></kol-link>');
+			await page.locator('#before').focus();
+
+			await page.keyboard.press('Tab');
+
+			await expect(page.locator('kol-link a')).toBeFocused();
+		});
+	});
 });
