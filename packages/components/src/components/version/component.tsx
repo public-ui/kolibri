@@ -7,13 +7,15 @@ import type { VersionApi } from '../../internal/functional-components/version/ap
 import { versionPropsConfig } from '../../internal/functional-components/version/api';
 import { VersionFC } from '../../internal/functional-components/version/component';
 import { labelProp } from '../../internal/props';
-import type { KoliBriIconsProp, LabelPropType, VersionProps } from '../../schema';
+import type { ColorPair, KoliBriIconsProp, LabelPropType, VersionProps } from '../../schema';
+import { createContrastColorPair } from '../../schema';
 
 /**
- * Fixed background color of the version badge; matches the value the legacy component
- * hard-coded on `kol-badge`. The badge web component normalizes it itself.
+ * Fixed background color of the version badge, paired with the contrast-safe foreground the badge
+ * web component would derive from the same hex value.
  */
-const VERSION_COLOR = '#bec5c9';
+const VERSION_COLORS = createContrastColorPair('#bec5c9');
+const VERSION_COLOR = { backgroundColor: VERSION_COLORS.background, foregroundColor: VERSION_COLORS.foreground } as const satisfies ColorPair;
 
 /**
  * The version icon carries a translated accessible label ("Versionsnummer" / "Version number")

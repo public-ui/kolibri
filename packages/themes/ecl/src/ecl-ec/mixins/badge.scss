@@ -1,0 +1,35 @@
+@use '../../mixins/to-rem' as *;
+
+/*
+ * Badge theme styles for every shadow root that renders `BadgeFC` — `kol-badge` and `kol-version`.
+ * Theme sheets are adopted per tag name, so a second consumer needs its own entry that includes
+ * these rules (same pattern as `kol-link`).
+ */
+@mixin kol-badge($block-classname: 'kol-badge') {
+	.#{$block-classname} {
+		border-radius: 12px;
+		padding: var(--ecl-spacing-2xs) var(--ecl-spacing-s);
+
+		font-size: var(--ecl-font-size-s);
+
+		&__smart-button {
+			--a11y-min-size: 26px;
+			margin-top: -2px;
+			margin-bottom: -2px;
+			margin-left: var(--ecl-spacing-2xs);
+
+			/* Compound selector, not a plain nesting: specificity has to stay at 0-3-0 to beat the
+			   icon mixin. */
+			&.kol-button {
+				.kol-icon::before {
+					content: '\ea0e';
+				}
+
+				&:hover {
+					color: var(--ecl-color-white);
+					background-color: var(--ecl-color-primary);
+				}
+			}
+		}
+	}
+}

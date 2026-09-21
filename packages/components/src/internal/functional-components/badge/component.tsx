@@ -1,7 +1,6 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import type { InternalButtonProps } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { ButtonFC } from '../button/component';
 import type { ResolvedButtonProps } from '../button/resolve-props';
@@ -14,29 +13,25 @@ const BEM_CLASS_BADGE__LABEL = badgeBem('label');
 const BEM_CLASS_BADGE__SMART_BUTTON = badgeBem('smart-button');
 
 /**
- * `smartButton` and `smartButtonProps` may legitimately be absent — the web component clears them
- * when no button is configured, which `StrictFields` cannot express.
- *
+ * Everything `BadgeFC` needs for the smart button, as one optional unit: its ids, refs and handlers
+ * exist only when a button is configured. A consumer that renders a plain badge — `kol-version` —
+ * passes nothing and has no orchestration to invent.
+ */
+export type BadgeSmartButtonFCProps = Pick<
+	FunctionalComponentProps<BadgeApi>,
+	'ariaDescriptionId' | 'handleBlur' | 'handleClick' | 'handleFocus' | 'handleMouseDown' | 'labelId' | 'refSmartButton' | 'refTooltip'
+> & {
+	/** The button props resolved by the web component, spread onto `ButtonFC`. */
+	resolvedButton: ResolvedButtonProps;
+};
+
+/**
  * `Pick`, not `Omit`: `Omit` over `FunctionalComponentProps` widens every remaining prop, because
  * subtracting from the intersection collapses the precise types into the optional HTML attributes
  * it is intersected with.
  */
-type BadgeFCProps = Pick<
-	FunctionalComponentProps<BadgeApi>,
-	| 'ariaDescriptionId'
-	| 'color'
-	| 'handleBlur'
-	| 'handleClick'
-	| 'handleFocus'
-	| 'handleMouseDown'
-	| 'icons'
-	| 'label'
-	| 'labelId'
-	| 'refSmartButton'
-	| 'refTooltip'
-> & {
-	smartButton?: InternalButtonProps;
-	smartButtonProps?: ResolvedButtonProps;
+type BadgeFCProps = Pick<FunctionalComponentProps<BadgeApi>, 'color' | 'icons' | 'label'> & {
+	smartButton?: BadgeSmartButtonFCProps;
 };
 
 /**
@@ -46,44 +41,27 @@ type BadgeFCProps = Pick<
  * The trailing `<br />` makes NVDA's read mode treat each badge as one element. The smart button
  * stays before it in the DOM for tab order and is moved to the end visually by `order: 3`.
  */
-export const BadgeFC: FC<BadgeFCProps> = (props) => {
-	const {
-		ariaDescriptionId,
-		color,
-		handleBlur,
-		handleClick,
-		handleFocus,
-		handleMouseDown,
-		icons,
-		label,
-		labelId,
-		refSmartButton,
-		refTooltip,
-		smartButton,
-		smartButtonProps,
-	} = props;
-	const hasSmartButton = typeof smartButton === 'object' && smartButton !== null && smartButtonProps !== undefined;
-
+export const BadgeFC: FC<BadgeFCProps> = ({ color, icons, label, smartButton }) => {
 	return (
 		<div
-			class={badgeBem({ 'has-smart-button': hasSmartButton })}
+			class={badgeBem({ 'has-smart-button': smartButton !== undefined })}
 			style={{
 				backgroundColor: color.backgroundColor,
 				color: color.foregroundColor,
 			}}
 		>
-			<SpanFC class={BEM_CLASS_BADGE__LABEL} id={hasSmartButton ? labelId : undefined} allowMarkdown icons={icons} label={label} />
-			{hasSmartButton && (
+			<SpanFC class={BEM_CLASS_BADGE__LABEL} id={smartButton?.labelId} allowMarkdown icons={icons} label={label} />
+			{smartButton && (
 				<ButtonFC
-					{...smartButtonProps}
+					{...smartButton.resolvedButton}
 					class={BEM_CLASS_BADGE__SMART_BUTTON}
-					ariaDescriptionId={ariaDescriptionId}
-					handleBlur={handleBlur}
-					handleClick={handleClick}
-					handleFocus={handleFocus}
-					handleMouseDown={handleMouseDown}
-					refButton={refSmartButton}
-					refTooltip={refTooltip}
+					ariaDescriptionId={smartButton.ariaDescriptionId}
+					handleBlur={smartButton.handleBlur}
+					handleClick={smartButton.handleClick}
+					handleFocus={smartButton.handleFocus}
+					handleMouseDown={smartButton.handleMouseDown}
+					refButton={smartButton.refSmartButton}
+					refTooltip={smartButton.refTooltip}
 				/>
 			)}
 

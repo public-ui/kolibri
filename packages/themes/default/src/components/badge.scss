@@ -1,50 +1,7 @@
-@use '../mixins/to-rem' as *;
+@use '../mixins/badge' as *;
 @use '../mixins/icon' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
-	.kol-badge {
-		border-radius: var(--border-radius);
-		font-style: normal;
-
-		&--has-smart-button {
-			align-items: center;
-		}
-
-		/* `kol-badge__smart-button` sits on the `.kol-button` block itself. */
-		&__smart-button {
-			color: inherit;
-
-			/* Box styles and hover belong to the interactive element: on the block the padding
-			   would stack on top of the inner button's a11y min-size and grow the badge. */
-			.kol-button__interactive-element {
-				padding: to-rem(3.2);
-				border-bottom-right-radius: var(--border-radius);
-				border-top-right-radius: var(--border-radius);
-
-				&:hover {
-					color: var(--color-light);
-					background-color: var(--color-primary-variant);
-				}
-			}
-
-			.kol-button__text {
-				padding: to-rem(4) to-rem(12);
-				align-items: center;
-				font-style: normal;
-			}
-		}
-
-		&__label {
-			padding: to-rem(4) to-rem(12);
-			gap: to-rem(8);
-			align-items: center;
-			font-style: normal;
-
-			.kol-span__container {
-				display: flex;
-				gap: to-rem(4);
-			}
-		}
-	}
+	@include kol-badge;
 }

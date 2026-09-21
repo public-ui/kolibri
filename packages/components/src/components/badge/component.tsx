@@ -142,22 +142,29 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	// --- Render ---
 
 	public render(): JSX.Element {
+		const smartButton = this.getRenderProp('smartButton');
+		const resolvedButton = this.smartButtonProps;
 		return (
 			<Host>
 				<BadgeFC
 					color={this.getRenderProp('color')}
 					icons={this.getRenderProp('icons')}
 					label={this.getRenderProp('label')}
-					labelId={this.labelId}
-					smartButton={this.getRenderProp('smartButton')}
-					smartButtonProps={this.smartButtonProps}
-					ariaDescriptionId={this.ariaDescriptionId}
-					handleBlur={this.handleBlur}
-					handleClick={this.handleClick}
-					handleFocus={this.handleFocus}
-					handleMouseDown={this.handleMouseDown}
-					refSmartButton={this.ctaRef}
-					refTooltip={this.tooltipBehavior.setTooltipElementRef}
+					smartButton={
+						typeof smartButton === 'object' && smartButton !== null && resolvedButton !== undefined
+							? {
+									ariaDescriptionId: this.ariaDescriptionId,
+									handleBlur: this.handleBlur,
+									handleClick: this.handleClick,
+									handleFocus: this.handleFocus,
+									handleMouseDown: this.handleMouseDown,
+									labelId: this.labelId,
+									refSmartButton: this.ctaRef,
+									refTooltip: this.tooltipBehavior.setTooltipElementRef,
+									resolvedButton,
+								}
+							: undefined
+					}
 				/>
 			</Host>
 		);
