@@ -78,6 +78,27 @@ Zusätzlich sicherstellen: Der FC reicht ein empfangenes `class`-Prop an seinen 
 (BemRootNodeFC-Contract), sonst gehen Consumer-Klassen stillschweigend verloren.
 **Null visuelle Abweichung schlägt weiterhin architektonische Reinheit.**
 
+**Ein voll gekapseltes WC als Blatt ist derselbe Fall — plus seine Styles.** Rendert die
+Komponente kein `-wc`-Tag, sondern ein fertiges Web Component (`kol-version` rendert `kol-badge`),
+dann bringt dieses Element **seinen eigenen Shadow-Root** mit: die Stencil-`styleUrls` des Ziels und
+dessen Theme-Sheet, das `adopted-style-sheets` **per Tag-Namen** zuordnet. Wird das Tag durch den FC
+ersetzt, faellt beides ersatzlos weg — kein Fehler, kein roter Test, nur eine kollabierte Box. Der
+Umstieg ist trotzdem moeglich, er kostet nur beide Style-Schichten:
+
+1. **Basis**: die Block-Regeln des Ziels in ein `components/@shared/_<block>.mixin.scss` heben
+   (Vorbild `kol-link-styles`, das `breadcrumb/style.scss` fuer `LinkFC` einbindet) und im
+   `style.scss` der rendernden Komponente einbinden. Das Mixin nimmt die Icon-/Sub-Block-Mixins
+   gleich mit, damit der Aufrufer sie nicht vergessen kann.
+2. **Theme**: pro Theme die Regeln in ein `mixins/<block>.scss` heben, ein eigenes
+   `components/<komponente>.scss` anlegen und es im Theme-Index als `'KOL-<KOMPONENTE>'` eintragen.
+   Fehlt die Komponente im `TagEnum` (`schema/tag-names.ts`), ist dieser Key nicht typisiert —
+   zuerst dort ergaenzen.
+
+Nachweis fuehrt man nicht ueber die Unit-Tests, sondern ueber die **kompilierten** Sheets: die CSS
+des Ziels muss regelgleich bleiben und die neue CSS regelgleich zu ihr sein. Ein Nicht-ASCII-Zeichen
+im neuen Mixin-Kommentar laesst Sass ein `@charset` emittieren und aendert jedes Sheet — Kommentare
+in geteilten Partials ASCII halten.
+
 ## 9. `FunctionalComponentProps` ist ein StrictFields-Vertrag
 
 Der FC muss **jede** Prop aus der Props-Konfiguration **und** jedes `States`-Feld erhalten — auch

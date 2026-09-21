@@ -562,6 +562,9 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 
 ### 2026-09-16 — Skeleton-Migration kol-version (PR #10908): 7 Changed-Images → 0, ohne Theme-Runde
 
+> Ueberholt: der WC-Blatt-Fix wurde am 2026-09-21 zurueckgenommen (Eintrag darueber). Der
+> Eintrag bleibt fuer die Diagnose (Groessensprung = Layout-Kollaps) und die Ursachenanalyse.
+
 - **Ausgangslage**: Der PR inlined `BadgeFC` direkt in den `kol-version`-Shadow-Root. Ergebnis: je
   1 Changed-Image pro Paket (Visual Review „7 changed"), Docker default 294/1 (`version/basic`),
   Screenshot-Größe 80×27 → 44×38 — die Badge-Box kollabierte, Icon und Label stapelten vertikal.
@@ -583,6 +586,39 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
   bwst/default/desy/ecl/kern/unstyled je 295 passed, Exit 0; Components 965/965;
   Hydrate-SSR 102 passing; `git diff origin/develop...HEAD -- '*.png'` = 0.
   Stufe-1 vorab: `default --check -- --grep version` → 3 passed, Exit 0.
+
+### 2026-09-21 — kol-version rendert BadgeFC (PR #10908): Styles mitnehmen statt WC-Blatt, 0 Diffs
+
+- **Ausgangslage**: Der Owner verlangte, dass die FC ausschliesslich `BadgeFC` rendert — der
+  WC-Blatt-Fix vom 2026-09-16 (Eintrag darunter) war damit keine Option mehr. Die dort
+  beschriebene Ursache blieb: Basis-Styles haengen per Stencil `styleUrls` am `kol-badge`-Tag,
+  Theme-Styles per `KOL-BADGE`-Mapping; `version` fehlte sogar im `TagEnum`.
+- **Ursachen & Fix-Muster**: Nicht das Tag zurueckholen, sondern **beide Style-Schichten teilbar
+  machen** (Muster `kol-link-styles`/`mixins/link.scss`, das Breadcrumb fuer `LinkFC` nutzt):
+  `@shared/_badge.mixin.scss` (`kol-badge-styles()`, inkl. `kol-icon-styles()`) fuer die Basis,
+  pro Theme `mixins/badge.scss` (kern: `_badge.mixin.scss`) plus ein eigenes
+  `components/version.scss` und ein `KOL-VERSION`-Mapping im Theme-Index. `version` muss dafuer in
+  `schema/tag-names.ts` ergaenzt werden — ohne `TagEnum`-Eintrag ist der Theme-Key nicht typisiert.
+- **Theme-Spezifika**: keine. Das Mixin ist eine wortgleiche Verschiebung der Regeln, deshalb
+  brauchte kein Theme eine eigene Korrekturrunde — desy (`inline-flex`, `border-radius: 60rem`),
+  kern (`min-height`, `border`) und ecl-ec (Spezifitaet 0-3-0 bei `&__smart-button.kol-button`)
+  kamen unveraendert mit.
+- **Diagnose-Weg ohne Docker**: Kein Docker-Daemon und kein Firefox im Container, also
+  A/B statt Baseline-Vergleich — im `visual-tests`-Playwright-Config temporaer ein
+  `chromium`-Projekt mit `launchOptions.executablePath: '/opt/pw-browsers/chromium'` ergaenzen,
+  `--update-snapshots=all --project=chromium --grep=badge` bzw. `--grep=version` einmal auf dem
+  alten und einmal auf dem neuen Stand laufen lassen und die PNGs mit `cmp` vergleichen. Zusaetzlich
+  die kompilierten Sheets beider Staende diffen (`dist/collection/components/badge/style.css` und
+  die `KOL-BADGE`/`KOL-VERSION`-Strings aus `packages/themes/*/dist/index.mjs`).
+- **Fallstrick**: Ein einzelnes Nicht-ASCII-Zeichen im neuen Mixin-Kommentar laesst Sass ein
+  fuehrendes `@charset "UTF-8";` emittieren — das aendert jedes kompilierte Theme-Sheet, obwohl
+  keine Regel anders ist. Kommentare in geteilten SCSS-Partials ASCII halten.
+- **Ausserdem**: `packages/adapters/hydrate` haelt einen SSR-Snapshot pro Komponente
+  (`test/__snapshots__/components.spec.js.mocha-snapshot`); nach einem DOM-Umbau mit
+  `pnpm --filter @public-ui/hydrate test:update:unit` nachziehen, sonst ist `build-and-check` rot.
+- **Evidenz**: 36 PNGs (badge + version, alle sechs Pakete) byte-identisch zwischen altem und
+  neuem Stand; Components 964/964, Hydrate-SSR 102/102, badge-e2e 5/5;
+  `KOL-BADGE`-CSS je Theme regelgleich, `KOL-VERSION`-CSS je Theme regelgleich zum Badge-Sheet.
 
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 
