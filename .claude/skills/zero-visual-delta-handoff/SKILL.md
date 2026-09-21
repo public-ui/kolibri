@@ -620,9 +620,10 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 - **Evidenz**: je Theme einzeln geprüft (kombinierte Läufe verursachen die Race-Condition oben) —
   default/bwst/kern/desy: `--grep alert` 5/5 passed, `--grep card` 11/11 passed, je Exit 0; ecl und
   unstyled unterstützen kein `--grep` → je ein voller Lauf, 297/297 passed, Exit 0.
+
 ### 2026-09-16 — Skeleton-Migration kol-version (PR #10908): 7 Changed-Images → 0, ohne Theme-Runde
 
-> Ueberholt: der WC-Blatt-Fix wurde am 2026-09-21 zurueckgenommen (Eintrag darueber). Der
+> Ueberholt: der WC-Blatt-Fix wurde am 2026-09-21 zurueckgenommen (Eintrag darunter). Der
 > Eintrag bleibt fuer die Diagnose (Groessensprung = Layout-Kollaps) und die Ursachenanalyse.
 
 - **Ausgangslage**: Der PR inlined `BadgeFC` direkt in den `kol-version`-Shadow-Root. Ergebnis: je
@@ -650,7 +651,7 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 ### 2026-09-21 — kol-version rendert BadgeFC (PR #10908): Styles mitnehmen statt WC-Blatt, 0 Diffs
 
 - **Ausgangslage**: Der Owner verlangte, dass die FC ausschliesslich `BadgeFC` rendert — der
-  WC-Blatt-Fix vom 2026-09-16 (Eintrag darunter) war damit keine Option mehr. Die dort
+  WC-Blatt-Fix vom 2026-09-16 (Eintrag darueber) war damit keine Option mehr. Die dort
   beschriebene Ursache blieb: Basis-Styles haengen per Stencil `styleUrls` am `kol-badge`-Tag,
   Theme-Styles per `KOL-BADGE`-Mapping; `version` fehlte sogar im `TagEnum`.
 - **Ursachen & Fix-Muster**: Nicht das Tag zurueckholen, sondern **beide Style-Schichten teilbar
