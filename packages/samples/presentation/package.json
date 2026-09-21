@@ -52,7 +52,7 @@
 		"@vitejs/plugin-react-swc": "4.3.3",
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"eslint": "9.39.5",
-		"happy-dom": "17.6.3",
+		"happy-dom": "20.8.9",
 		"knip": "6.36.0",
 		"prettier": "3.9.8",
 		"prettier-plugin-organize-imports": "4.3.0",
