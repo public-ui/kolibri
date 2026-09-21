@@ -21,11 +21,11 @@ importers:
         specifier: 9.0.3
         version: 9.0.3
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       stylelint:
         specifier: 17.14.1
         version: 17.14.1(typescript@5.9.3)
@@ -126,11 +126,11 @@ importers:
         specifier: 4.2.0
         version: 4.2.0(chai@6.2.2)(enzyme-adapter-react-16@1.15.8(enzyme@3.11.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(enzyme@3.11.0)(mocha@11.8.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
@@ -208,11 +208,11 @@ importers:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       react:
         specifier: 19.3.0
         version: 19.3.0
@@ -468,11 +468,11 @@ importers:
         specifier: 10.0.0
         version: 10.0.0(postcss@8.5.28)
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       pug:
         specifier: 3.0.4
         version: 3.0.4
@@ -607,11 +607,11 @@ importers:
         specifier: 8.5.28
         version: 8.5.28
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       tailwindcss:
         specifier: 3.4.19
         version: 3.4.19(tsx@4.23.13)(yaml@2.9.0)
@@ -698,11 +698,11 @@ importers:
         specifier: 6.36.0
         version: 6.36.0
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       shadow-dom-testing-library:
         specifier: 1.14.2
         version: 1.14.2(@testing-library/dom@10.4.1)
@@ -792,11 +792,11 @@ importers:
         specifier: 6.36.0
         version: 6.36.0
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       stylelint:
         specifier: 17.14.1
         version: 17.14.1(typescript@5.9.3)
@@ -855,11 +855,11 @@ importers:
         specifier: 8.5.28
         version: 8.5.28
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       rollup:
         specifier: 4.63.3
         version: 4.63.3
@@ -915,11 +915,11 @@ importers:
         specifier: 8.5.28
         version: 8.5.28
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       rollup:
         specifier: 4.63.3
         version: 4.63.3
@@ -981,11 +981,11 @@ importers:
         specifier: 8.5.28
         version: 8.5.28
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       rollup:
         specifier: 4.63.3
         version: 4.63.3
@@ -1047,11 +1047,11 @@ importers:
         specifier: 8.5.28
         version: 8.5.28
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       rollup:
         specifier: 4.63.3
         version: 4.63.3
@@ -1113,11 +1113,11 @@ importers:
         specifier: 8.5.28
         version: 8.5.28
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       rollup:
         specifier: 4.63.3
         version: 4.63.3
@@ -1182,11 +1182,11 @@ importers:
         specifier: 8.5.28
         version: 8.5.28
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       rollup:
         specifier: 4.63.3
         version: 4.63.3
@@ -1248,11 +1248,11 @@ importers:
         specifier: 6.36.0
         version: 6.36.0
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       rimraf:
         specifier: 6.1.3
         version: 6.1.3
@@ -1297,11 +1297,11 @@ importers:
         version: 17.11.0
     devDependencies:
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
 
   packages/tools/hydrate-server:
     dependencies:
@@ -1337,11 +1337,11 @@ importers:
         specifier: 11.8.0
         version: 11.8.0
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -1370,11 +1370,11 @@ importers:
         specifier: 1.9.2
         version: 1.9.2
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       semver:
         specifier: 7.8.5
         version: 7.8.5
@@ -1459,11 +1459,11 @@ importers:
         specifier: 3.1.14
         version: 3.1.14
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       tsx:
         specifier: 4.23.13
         version: 4.23.13
@@ -1492,11 +1492,11 @@ importers:
         specifier: 4.0.9
         version: 4.0.9(postcss@8.5.28)
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       stylelint:
         specifier: 17.4.0
         version: 17.4.0(typescript@5.9.3)
@@ -1574,11 +1574,11 @@ importers:
         specifier: 6.36.0
         version: 6.36.0
       prettier:
-        specifier: 3.9.7
-        version: 3.9.7
+        specifier: 3.9.8
+        version: 3.9.8
       prettier-plugin-organize-imports:
         specifier: 4.3.0
-        version: 4.3.0(prettier@3.9.7)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
       tslib:
         specifier: 2.8.1
         version: 2.8.1
@@ -11533,8 +11533,8 @@ packages:
       vue-tsc:
         optional: true
 
-  prettier@3.9.7:
-    resolution: {integrity: sha512-T3mF5P7HFzZVLDQuCUNtJj6WK1pcpLMweMNUVwGb01bLNkH9AkKxtZvmInw8K6bnn2O3d6/5RHl6zSHiBAD0Og==}
+  prettier@3.9.8:
+    resolution: {integrity: sha512-WRFq3Wn3WId7LLROfMLdH7xaFr2jR62wU8nLO6rQUOLOxNZUviyJQs1M0iIhLexSFy+L+w0ch66wtoO2jRjG0A==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -25004,12 +25004,12 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-organize-imports@4.3.0(prettier@3.9.7)(typescript@5.9.3):
+  prettier-plugin-organize-imports@4.3.0(prettier@3.9.8)(typescript@5.9.3):
     dependencies:
-      prettier: 3.9.7
+      prettier: 3.9.8
       typescript: 5.9.3
 
-  prettier@3.9.7: {}
+  prettier@3.9.8: {}
 
   pretty-bytes@7.1.1: {}
 
