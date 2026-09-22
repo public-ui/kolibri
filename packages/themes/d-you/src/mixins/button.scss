@@ -22,8 +22,6 @@
 	}
 
 	.#{$block-classname} {
-		$root: &;
-
 		/* The shared skeleton mixin sets `text-align: left` on the interactive element (copied from
 		   the anchor case). A real `<button>` had the user-agent `text-align: center` before the
 		   migration, so a wrapping label (e.g. a narrow icon-only pill) would otherwise align left
@@ -134,28 +132,38 @@
 				@include kol-shadow-low;
 				border-color: var(--text-border-color);
 			}
-
-			/* Icon-only: a 44px circle, the smaller of the two touch targets the design system allows. */
-			@at-root #{$root}--hide-label & {
-				padding: to-rem(12);
-
-				.kol-span__label {
-					display: none;
-				}
-			}
-
-			@at-root #{$root}__interactive-element:focus {
-				@include focus-outline(var(--border-radius-pill));
-				position: relative; // make sure focus outline is visible and not covered by adjacent element
-			}
-
-			@at-root #{$root}__interactive-element:is(:disabled, [aria-disabled='true']):hover & {
-				color: var(--text-color);
-				background-color: var(--text-background-color);
-				box-shadow: none;
-				border-color: var(--text-border-color);
-			}
 		}
+	}
+
+	/*
+	 * The rules below combine two elements of the block, so they name both classes explicitly
+	 * instead of reaching back for the block with `$root` and `@at-root`. That pattern broke as
+	 * soon as the mixin was included inside another selector — `kol-alert`, the split button's
+	 * popover, the table's cell actions — where `$root` already carried the outer selector and the
+	 * rule came out as `.kol-alert .kol-button--hide-label .kol-alert .kol-button__text`, asking
+	 * for a second alert inside the first. Nothing matched it, so every icon-only button in those
+	 * places kept the 24px side padding of a labelled one and rendered as a wide pill.
+	 */
+
+	/* Icon-only: the same padding on every side, so the pill hugs its icon. */
+	.#{$block-classname}--hide-label .#{$block-classname}__text {
+		padding: to-rem(12);
+
+		.kol-span__label {
+			display: none;
+		}
+	}
+
+	.#{$block-classname}__interactive-element:focus {
+		@include focus-outline(var(--border-radius-pill));
+		position: relative; // make sure focus outline is visible and not covered by adjacent element
+	}
+
+	.#{$block-classname}__interactive-element:is(:disabled, [aria-disabled='true']):hover .#{$block-classname}__text {
+		color: var(--text-color);
+		background-color: var(--text-background-color);
+		box-shadow: none;
+		border-color: var(--text-border-color);
 	}
 
 	.kol-close-button {
