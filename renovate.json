@@ -7,7 +7,7 @@
 	"semanticCommitType": "chore",
 	"semanticCommitScope": "deps",
 	"timezone": "Europe/Berlin",
-	"schedule": ["at any time"],
+	"schedule": ["after 6pm", "before 6am"],
 	"labels": ["dependencies", "renovate", "release:engineering"],
 	"rebaseWhen": "behind-base-branch",
 	"prConcurrentLimit": 5,

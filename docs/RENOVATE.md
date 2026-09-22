@@ -11,7 +11,8 @@ This document is the outcome of issue [#10270](https://github.com/public-ui/koli
 > **Status:** The `renovate.json` and a self-hosted runner workflow
 > ([`.github/workflows/renovate.yml`](../.github/workflows/renovate.yml)) are committed as an
 > **exemplary, ready-to-run setup**. Renovate stays **idle** until that workflow runs — either on its
-> every-4-hours schedule or via the manual **Run workflow** button (see [Enabling Renovate](#enabling-renovate)).
+> nightly schedule (every 3 hours between 18:00 and 06:00 Europe/Berlin) or via the manual
+> **Run workflow** button (see [Enabling Renovate](#enabling-renovate)).
 > Until then the existing Dependabot + npm-check-updates automation stays in charge.
 
 ---
@@ -66,10 +67,22 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
 - **`labels: ["dependencies", "renovate", "release:engineering"]`** — the `release:*` label is
   **required** by `pr-release-label-validation.yml`; `release:engineering` files dependency PRs
   under _🔧 Engineering_ in the changelog (see `.github/release.yml`).
-- **Every-4-hours cadence** — the workflow cron runs Renovate every 4 hours; `renovate.json` itself
-  allows PR creation `at any time`, so the workflow schedule governs. `prConcurrentLimit: 5` /
-  `prHourlyLimit: 5` cap the number of open PRs **per base branch** (so `develop` and each
-  `release/*` branch have their own budget).
+- **Night-only cadence (18:00–06:00, every 3 hours)** — Renovate must not open PRs or automerge
+  during working hours. Two settings enforce this together:
+  - `renovate.json` → `"schedule": ["after 6pm", "before 6am"]` with `timezone: "Europe/Berlin"`.
+    The window crosses midnight, so it is written as **two** entries (Renovate ORs them); a single
+    `"after 6pm before 6am"` string would never match.
+  - the workflow cron `0 16,19,22,1,4 * * *`. GitHub cron only understands UTC, so these hours are
+    chosen to stay inside the local window all year: in CEST (UTC+2) they fire at 18/21/00/03/06
+    Berlin time, in CET (UTC+1) at 17/20/23/02/05. The one run that falls outside the window
+    (17:00 in winter, 06:00 in summer) starts Renovate but produces no PRs, because the
+    `renovate.json` schedule is the authoritative gate.
+
+  **Exception:** `vulnerabilityAlerts` keeps `"schedule": ["at any time"]`, so a manual
+  **Run workflow** during the day still ships security fixes.
+
+  `prConcurrentLimit: 5` / `prHourlyLimit: 5` cap the number of open PRs **per base branch** (so
+  `develop` and each `release/*` branch have their own budget).
 - **`minimumReleaseAge: "3 days"`** — all updates (npm, Actions, …, including security fixes)
   are held back for three days after release before a PR is opened or auto-merged. This protects
   against compromised or quickly-revoked releases.
@@ -125,7 +138,8 @@ Two ways to run it; **this repo is wired for Option A**.
 ### Option A — Self-hosted via GitHub Actions (committed in this repo)
 
 This repo ships [`.github/workflows/renovate.yml`](../.github/workflows/renovate.yml). It runs Renovate
-**every 4 hours** (`0 */4 * * *` UTC) **and** on demand via the **Run workflow** button
+**every 3 hours during the night window 18:00–06:00 Europe/Berlin**
+(`0 16,19,22,1,4 * * *` UTC, see [Global behaviour](#global-behaviour)) **and** on demand via the **Run workflow** button
 (`workflow_dispatch`, with an optional `dry_run` preview). It authenticates through the existing GitHub
 App (`APP_ID` / `PRIVATE_KEY` secrets, shared with _04 - Update pnpm Lock_).
 
@@ -193,7 +207,7 @@ To activate it:
    uses `platformAutomerge`.
 
 3. Trigger the workflow once via **Run workflow** (optionally with `dry_run` enabled) to verify it, then
-   let the 4-hours schedule take over.
+   let the nightly schedule take over.
 
 > **Tip:** The `dry_run` input maps to `RENOVATE_DRY_RUN=full`, so the first manual run previews every PR
 > Renovate _would_ open without creating anything.
@@ -305,7 +319,7 @@ weiterhin (bei Nicht-Major) automatisch mergen.
 Die fertige [`renovate.json`](../renovate.json) liegt im Repo-Root (geprüft mit dem offiziellen
 `renovate-config-validator`), und der self-hosted Runner-Workflow
 [`.github/workflows/renovate.yml`](../.github/workflows/renovate.yml) ist ebenfalls committet.
-**Renovate läuft**, sobald der Workflow startet — alle 4 Stunden per Zeitplan oder manuell über den
-**Run workflow**-Button (Option A); alternativ kann ein Org-Admin die
+**Renovate läuft**, sobald der Workflow startet — nachts alle 3 Stunden zwischen 18:00 und 06:00 Uhr
+(Europe/Berlin) per Zeitplan oder jederzeit manuell über den **Run workflow**-Button (Option A); alternativ kann ein Org-Admin die
 [Renovate-GitHub-App](https://github.com/apps/renovate) installieren (Option B). Bis dahin bleibt die
 bestehende Dependabot-/ncu-Automatisierung zuständig; danach greift die Migrations-Checkliste oben.
