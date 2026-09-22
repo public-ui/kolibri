@@ -8,17 +8,17 @@
 		"ghost"
 	],
 	"iconVariants": [
-		"fa-solid fa-house",
-        "fa-solid fa-heart",
-        "fa-solid fa-thumbs-up",
-        "fa-brands fa-github"
+		"kolicon-house",
+		"kolicon-check",
+		"kolicon-eye",
+		"kolicon-link-external"
 	],
 	"iconVariantsButton": [
-		"fa-solid fa-circle-user"
+		"kolicon-cogwheel"
 	],
 	"iconVariantsInput": [
-		"fa-solid fa-city"
-	], 
+		"kolicon-chevron-right"
+	],
 	"inputVariants": [
 		"left"
 	]
