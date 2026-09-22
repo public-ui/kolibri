@@ -23,6 +23,23 @@ export type KoliBriComponentsBemSchema = {
 	'kol-abbr': {
 		modifiers: null;
 	};
+	'kol-accordion': {
+		elements: {
+			content: {
+				modifiers: null;
+			};
+			heading: {
+				modifiers: null;
+			};
+			wrapper: {
+				modifiers: null;
+			};
+			'wrapper-animation': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'disabled' | 'open'>;
+	};
 	'kol-alert': {
 		/**
 		 * Here we define the elements we needed
@@ -169,6 +186,23 @@ export type KoliBriComponentsBemSchema = {
 			};
 		};
 		modifiers: Set<'inline' | 'open'>;
+	};
+	'kol-details': {
+		elements: {
+			content: {
+				modifiers: null;
+			};
+			heading: {
+				modifiers: null;
+			};
+			wrapper: {
+				modifiers: null;
+			};
+			'wrapper-animation': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'disabled' | 'open'>;
 	};
 	'kol-icon': {
 		elements: {
@@ -378,6 +412,15 @@ const BEM: KoliBriComponentsBemSchema = {
 	'kol-version': {
 		modifiers: null,
 	},
+	'kol-accordion': {
+		elements: {
+			content: { modifiers: null },
+			heading: { modifiers: null },
+			wrapper: { modifiers: null },
+			'wrapper-animation': { modifiers: null },
+		},
+		modifiers: new Set(['disabled', 'open']),
+	},
 	'kol-avatar': {
 		elements: {
 			image: { modifiers: null },
@@ -432,6 +475,15 @@ const BEM: KoliBriComponentsBemSchema = {
 			popover: { modifiers: null },
 		},
 		modifiers: new Set(['inline', 'open']),
+	},
+	'kol-details': {
+		elements: {
+			content: { modifiers: null },
+			heading: { modifiers: null },
+			wrapper: { modifiers: null },
+			'wrapper-animation': { modifiers: null },
+		},
+		modifiers: new Set(['disabled', 'open']),
 	},
 	'kol-icon': {
 		elements: {

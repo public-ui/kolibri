@@ -143,6 +143,7 @@ export class KolNav implements NavAPI {
 							'kol-nav__entry--collapsible': collapsible,
 						})}
 						_label={entry._label}
+						_disabled={entryIsButton(entry) ? entry._disabled : undefined}
 						_hideLabel={this.state._hideLabel}
 						_icons={icons}
 						_ariaControls={collapsible && hasChildren && expanded ? ariaID : undefined}

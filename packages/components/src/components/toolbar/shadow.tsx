@@ -44,6 +44,9 @@ export class KolToolbar implements ClickableElement, FocusableElement, ToolbarAP
 	 */
 	@Method()
 	public async focus(options?: KolFocusOptions): Promise<void> {
+		if (this.isCurrentItemDisabled()) {
+			return;
+		}
 		const firstEnabledItem = this.indexToElement.get(this.currentIndex);
 		if (firstEnabledItem) {
 			return delegateFocus(this.host!, () => setFocus(firstEnabledItem, options));
@@ -55,10 +58,21 @@ export class KolToolbar implements ClickableElement, FocusableElement, ToolbarAP
 	 */
 	@Method()
 	public async click(): Promise<void> {
+		if (this.isCurrentItemDisabled()) {
+			return;
+		}
 		const currentItem = this.indexToElement.get(this.currentIndex);
 		if (currentItem) {
 			return delegateClick(this.host!, async () => setClick(currentItem));
 		}
+	}
+
+	/**
+	 * Whether the item the roving tabindex currently points at refuses interaction. The index is
+	 * seeded with the first enabled item, but an item can be disabled again while it is current.
+	 */
+	private isCurrentItemDisabled(): boolean {
+		return this.state._items?.[this.currentIndex]?._disabled === true;
 	}
 
 	private normalizeItem(item: ToolbarItemPropType): ToolbarItemPropType {
@@ -142,6 +156,27 @@ export class KolToolbar implements ClickableElement, FocusableElement, ToolbarAP
 		this.currentIndex = this.state._items?.findIndex((item) => !item._disabled);
 	}
 
+	/**
+	 * Walks the items from `fromIndex` in `step` direction, wrapping around, and returns the first
+	 * enabled one.
+	 *
+	 * Disabled items are skipped rather than blocking the walk: stopping at the first disabled
+	 * neighbour makes every item behind it unreachable by keyboard, which is how the toolbar
+	 * behaved before.
+	 *
+	 * @returns the index to move to, or `undefined` when no other item is enabled.
+	 */
+	private findNextEnabledItemIndex(fromIndex: number, step: -1 | 1, lastItemIndex: number): number | undefined {
+		const itemCount = lastItemIndex + 1;
+		for (let offset = 1; offset <= itemCount; offset++) {
+			const candidate = (((fromIndex + step * offset) % itemCount) + itemCount) % itemCount;
+			if (!this.state._items?.[candidate]?._disabled) {
+				return candidate;
+			}
+		}
+		return undefined;
+	}
+
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
 		const pressedKey = event.code as KeyboardKey;
@@ -152,24 +187,10 @@ export class KolToolbar implements ClickableElement, FocusableElement, ToolbarAP
 		const lastItemIndex = (this._items?.length ?? 0) - 1;
 		if (lastItemIndex < 0) return;
 		const currentIndex = this.currentIndex;
-		let nextIndex = currentIndex;
+		const step = pressedKey === KeyboardKey.ArrowUp || pressedKey === KeyboardKey.ArrowLeft ? -1 : 1;
+		const nextIndex = this.findNextEnabledItemIndex(currentIndex, step, lastItemIndex);
 
-		switch (pressedKey) {
-			case KeyboardKey.ArrowUp:
-			case KeyboardKey.ArrowLeft:
-				nextIndex = currentIndex > 0 ? currentIndex - 1 : lastItemIndex;
-				break;
-			case KeyboardKey.ArrowDown:
-			case KeyboardKey.ArrowRight:
-				nextIndex = currentIndex < lastItemIndex ? currentIndex + 1 : 0;
-				break;
-		}
-
-		if (currentIndex === nextIndex) {
-			return;
-		}
-
-		if (this.state._items?.[nextIndex]?._disabled) {
+		if (nextIndex === undefined || currentIndex === nextIndex) {
 			return;
 		}
 

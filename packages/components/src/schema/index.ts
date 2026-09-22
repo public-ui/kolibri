@@ -34,6 +34,14 @@ declare module 'adopted-style-sheets' {
 		 */
 		buttonVariantDefault: VariantClassNamePropType;
 		/**
+		 * Duration in milliseconds of the open/close transition of KolAccordion and KolDetails.
+		 * The components expose it as the CSS custom property `--collapsible-transition-duration`
+		 * on their `<details>` element and keep the native `open` attribute until it has elapsed,
+		 * so a theme declares the duration here once instead of in its stylesheet.
+		 * When unset, the components use 300 ms.
+		 */
+		collapsibleTransitionMs: number;
+		/**
 		 * Controls visibility of step-up/step-down buttons in KolInputNumber.
 		 * When unset, the component treats the flag as `'show'` (buttons visible),
 		 * so themes that do not declare it keep the existing behaviour.

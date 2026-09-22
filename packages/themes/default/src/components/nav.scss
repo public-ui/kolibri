@@ -1,3 +1,4 @@
+@use '~@public-ui/components/index' as *;
 @use '../mixins/to-rem' as *;
 @use '../mixins/focus-outline' as *;
 @use '../mixins/icon' as *;
@@ -67,8 +68,10 @@
 					font-weight: bold;
 				}
 
-				&:hover .kol-span__label {
-					text-decoration: underline;
+				@include kol-enabled-wrapper {
+					&:hover .kol-span__label {
+						text-decoration: underline;
+					}
 				}
 			}
 		}
