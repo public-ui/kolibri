@@ -159,6 +159,22 @@
 		position: relative; // make sure focus outline is visible and not covered by adjacent element
 	}
 
+	/*
+	 * A disabled primary keeps its shape, drops its fill to the palest step of the ramp and keeps a
+	 * green outline that is stronger than that fill (STYLEGUIDE.md §6.1, screen `13.06.26`), so the
+	 * control still reads as the primary action it would be. The global 50% opacity for disabled
+	 * controls is lifted here: it would fade the outline back into the fill it has to stand out
+	 * from — fill and border were the same color at half strength, so no border showed at all.
+	 * The dark branch mirrors the ramp: a deep green fill under a clearly lighter outline.
+	 */
+	.#{$block-classname}--primary .#{$block-classname}__interactive-element:is(:disabled, [aria-disabled='true']) {
+		--text-background-color: light-dark(#{$primary-95}, #{$primary-20});
+		--text-border-color: light-dark(#{$primary-80}, #{$primary-50});
+		--text-color: var(--color-subtle);
+
+		opacity: 1;
+	}
+
 	.#{$block-classname}__interactive-element:is(:disabled, [aria-disabled='true']):hover .#{$block-classname}__text {
 		color: var(--text-color);
 		background-color: var(--text-background-color);
