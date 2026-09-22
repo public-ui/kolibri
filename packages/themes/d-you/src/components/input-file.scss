@@ -32,12 +32,18 @@
 				min-height: to-rem(40);
 			}
 
+			/* The row height comes from the field, not from the button: every other input is a
+			   40px row inside its 2px border, and the 12px block padding a free-standing button
+			   carries made this one 48.4px instead, so the file field stood 8.4px taller than its
+			   neighbours. Without it the text box stretches to the 40px minimum above and centres
+			   its label there. */
 			.kol-button__text {
 				white-space: nowrap;
 				border-bottom-left-radius: 0;
 				border-bottom-right-radius: calc(var(--border-radius) - 2px);
 				border-top-left-radius: 0;
 				border-top-right-radius: calc(var(--border-radius) - 2px);
+				padding-block: 0;
 			}
 		}
 	}
