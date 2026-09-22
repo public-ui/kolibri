@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-l37Msmat.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};

@@ -1,0 +1,1 @@
+import{n as e,u as t}from"./normalizers-bmigMYOh-DgOByr_C.js";var n=new Set([`eager`,`lazy`]),r=e(`loading`,`lazy`,e=>t(e),e=>n.has(e)),i=new Set([`blank`,`card`]),a=e(`variant`,`blank`,e=>t(e),e=>i.has(e)),o=new Set([`block`,`inline`]),s=e(`variant`,`inline`,e=>t(e),e=>o.has(e));export{a as n,s as r,r as t};

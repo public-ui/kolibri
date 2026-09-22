@@ -1,0 +1,1 @@
+import{d as e,r as t}from"./factory-FIQX-j9Q-BCAFOh7w.js";var n=new Set([`eager`,`lazy`]),r=t(`loading`,`lazy`,t=>e(t),e=>n.has(e)),i=new Set([`block`,`inline`]),a=t(`variant`,`inline`,t=>e(t),e=>i.has(e));export{a as n,r as t};

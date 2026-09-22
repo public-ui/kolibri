@@ -1,0 +1,105 @@
+import{o as e,r as t,s as n}from"./index-TMM2XLjh.js";import{t as r}from"./base-web-component--IgFgz37-CZuvR3uB.js";import"./label-C0rxk5dd-BU5Zi5Qc.js";import"./_Uint8Array-CuELS0_2-BYXN1zbF.js";import{n as i,u as a}from"./normalizers-bmigMYOh-DssbsEKL.js";import{t as o}from"./label-0amhC2jU-C-sxFqsC.js";import"./variant-quote-Ch1VGFiN-DMlpM1am.js";import{t as s}from"./component-ASKmbxEX-C-PnMlEK.js";var c=i(`icons`,`kolicon-logo`,a),l={required:[c,o]},u=`@font-face {
+  font-family: "kolicons";
+  src: url("kolicons.eot?t=1790067705510"); /* IE9*/
+  src: url("kolicons.eot?t=1790067705510#iefix") format("embedded-opentype"), url("kolicons.woff2?t=1790067705510") format("woff2"), url("kolicons.woff?t=1790067705510") format("woff"), url("kolicons.ttf?t=1790067705510") format("truetype"), url("kolicons.svg?t=1790067705510#kolicons") format("svg"); /* iOS 4.1- */
+}
+@layer kol-component {
+  [class^=kolicon-], [class*=" kolicon-"] {
+    font-family: "kolicons";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .kolicon-alert-error::before {
+    content: "\\ea01";
+  }
+  .kolicon-alert-info::before {
+    content: "\\ea02";
+  }
+  .kolicon-alert-success::before {
+    content: "\\ea03";
+  }
+  .kolicon-alert-warning::before {
+    content: "\\ea04";
+  }
+  .kolicon-check::before {
+    content: "\\ea05";
+  }
+  .kolicon-chevron-double-left::before {
+    content: "\\ea06";
+  }
+  .kolicon-chevron-double-right::before {
+    content: "\\ea07";
+  }
+  .kolicon-chevron-down::before {
+    content: "\\ea08";
+  }
+  .kolicon-chevron-left::before {
+    content: "\\ea09";
+  }
+  .kolicon-chevron-right::before {
+    content: "\\ea0a";
+  }
+  .kolicon-chevron-up::before {
+    content: "\\ea0b";
+  }
+  .kolicon-cogwheel::before {
+    content: "\\ea0c";
+  }
+  .kolicon-cross::before {
+    content: "\\ea0d";
+  }
+  .kolicon-eye-closed::before {
+    content: "\\ea0e";
+  }
+  .kolicon-eye::before {
+    content: "\\ea0f";
+  }
+  .kolicon-house::before {
+    content: "\\ea10";
+  }
+  .kolicon-kolibri::before {
+    content: "\\ea11";
+  }
+  .kolicon-link-external::before {
+    content: "\\ea12";
+  }
+  .kolicon-link::before {
+    content: "\\ea13";
+  }
+  .kolicon-minus::before {
+    content: "\\ea14";
+  }
+  .kolicon-plus::before {
+    content: "\\ea15";
+  }
+  .kolicon-settings::before {
+    content: "\\ea16";
+  }
+  .kolicon-sort-asc::before {
+    content: "\\ea17";
+  }
+  .kolicon-sort-desc::before {
+    content: "\\ea18";
+  }
+  .kolicon-sort-neutral::before {
+    content: "\\ea19";
+  }
+  .kolicon-up::before {
+    content: "\\ea1a";
+  }
+  .kolicon-version::before {
+    content: "\\ea1b";
+  }
+}
+@layer kol-component {
+  .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+}`,d=class extends r{constructor(e){super(),n(this,e)}watchIcons(e){c.apply(e,e=>this.setRenderProp(`icons`,e))}watchLabel(e){o.apply(e,e=>this.setRenderProp(`label`,e))}componentWillLoad(){this.initRenderProps(l),c.apply(this._icons,e=>this.setRenderProp(`icons`,e)),o.apply(this._label,e=>this.setRenderProp(`label`,e))}render(){return e(t,{key:`f597d0645c7e786696428114ec00c6aa84edad8e`},e(s,{key:`c99ff0a1f11499fa1dab04474ee4292ef866e23c`,icons:this.getRenderProp(`icons`),label:this.getRenderProp(`label`)}))}static get watchers(){return{_icons:[`watchIcons`],_label:[`watchLabel`]}}};d.style={default:u};export{d as kol_icon};

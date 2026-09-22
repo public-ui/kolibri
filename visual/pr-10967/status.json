@@ -1,0 +1,48 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "7 added – 0 of 7 approved, review pending",
+	"computedAt": "2026-09-22T10:13:31.901Z",
+	"pr": 10967,
+	"head": "f60ce4c2c46a7b0cd5733557f91b873b6c8cd3cb",
+	"digest": "sha256:1c4f3cbdadad059fe32ca60b9fcd251410f2d3963804b6026a9be5b7508fbe5a",
+	"counts": {
+		"changes": 7,
+		"open": 7,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/input-color-basic-noColumns--label-suggestions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-color-basic-noColumns--label-suggestions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-color-basic-noColumns--label-suggestions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-color-basic-noColumns--label-suggestions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-color-basic-noColumns--label-suggestions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-color-basic-noColumns--label-suggestions": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-color-basic-noColumns--label-suggestions": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}

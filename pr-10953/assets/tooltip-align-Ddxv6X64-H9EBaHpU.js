@@ -1,0 +1,1 @@
+import"./index-l37Msmat.js";import{r as e}from"./align-66zR6LwD-CFDQlJIR.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};

@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-TMM2XLjh.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};
