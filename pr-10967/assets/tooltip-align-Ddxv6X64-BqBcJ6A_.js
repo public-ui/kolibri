@@ -1,0 +1,1 @@
+import"./index-Ceq4n4oP.js";import{r as e}from"./align-66zR6LwD-sxu_ARQr.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
