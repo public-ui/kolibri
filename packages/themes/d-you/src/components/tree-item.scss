@@ -1,0 +1,60 @@
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+
+	.kol-tree-item {
+		$root: &;
+		--indentation: #{to-rem(16)};
+
+		&__link {
+			display: block;
+			border: 1px solid transparent;
+
+			.kol-link {
+				color: var(--color-text);
+				padding-left: max(calc(var(--indentation) * var(--level)));
+				text-align: left;
+			}
+
+			/* The padding-right lives on the anchor: its focus outline has to reach the row edge
+			   so that it covers the list frame exactly like the former full-width anchor did. */
+			.kol-link__interactive-element {
+				padding-right: to-rem(8);
+			}
+
+			&:hover,
+			&:focus-within {
+				background-color: var(--color-primary-variant);
+				border: 1px solid var(--color-primary);
+
+				.kol-link {
+					color: var(--color-light);
+					outline-offset: 0;
+				}
+
+				.kol-link__interactive-element {
+					color: var(--color-light);
+					outline-offset: 0;
+				}
+			}
+
+			&--active {
+				background-color: var(--color-primary);
+
+				.kol-link {
+					color: var(--color-light);
+				}
+			}
+		}
+
+		&__toggle-button:hover &__toggle-button-icon {
+			transform: scale(1.6);
+		}
+
+		&__text {
+			text-decoration: none;
+		}
+	}
+}

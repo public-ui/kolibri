@@ -1,0 +1,17 @@
+@use '../@shared/input-core' as *;
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	.kol-input-color {
+		&__input--color {
+			min-height: 100%;
+			border: 0;
+
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+}

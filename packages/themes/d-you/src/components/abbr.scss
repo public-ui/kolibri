@@ -1,0 +1,8 @@
+@use '../mixins/to-rem' as *;
+
+@layer kol-theme-component {
+	abbr {
+		text-decoration: none;
+		border-bottom: dashed var(--color-text) to-rem(1);
+	}
+}

@@ -1,0 +1,300 @@
+@use 'mixins/palette' as *;
+@use 'mixins/to-rem' as *;
+
+@layer kol-theme-global {
+	:host {
+		/*
+		 * Every `light-dark()` below resolves against `color-scheme`, which this theme deliberately
+		 * does not declare. `color-scheme` is an inherited property and inheritance follows the flat
+		 * tree, so each component picks up whatever the document sets around it. A declaration here
+		 * would replace that value instead, and the page and the components in it could disagree.
+		 *
+		 * The application therefore owns the scheme, in plain CSS: `:root { color-scheme: light dark }`
+		 * to follow the operating system, `color-scheme: dark` on any element to force a subtree.
+		 * `color-scheme.css` in this package ships exactly that.
+		 */
+
+		/*
+		 * Shape.
+		 *
+		 * The design system knows three radii: controls are gently rounded, panels more so, and
+		 * every action is a full pill — a 48px button is a 24px-radius capsule. `--border-radius` is
+		 * the control radius because that is what the shared component layers reach for; the two
+		 * larger ones are addressed explicitly where a card, dialog or drawer needs them.
+		 */
+		--border-radius: var(--kolibri-border-radius, #{to-rem(8)});
+		--inner-border-radius: var(--kolibri-border-radius, #{to-rem(8)});
+		--border-radius-card: var(--kolibri-border-radius-card, #{to-rem(16)});
+		--border-radius-surface: var(--kolibri-border-radius-surface, #{to-rem(24)});
+		--border-radius-pill: var(--kolibri-border-radius-pill, 9999px);
+
+		/*
+		 * Typography.
+		 *
+		 * `EUDI Diatype` is a licensed customization of ABC Diatype and is not redistributed with
+		 * this package. The families are declared with a system fallback stack, so an application
+		 * that holds the license only has to load the webfonts under these names.
+		 */
+		--font-family: var(--kolibri-font-family, 'EUDI Diatype', 'ABC Diatype', 'Helvetica Neue', Arial, Helvetica, sans-serif);
+		--font-family-headline: var(
+			--kolibri-font-family-headline,
+			'EUDI Diatype Semi Extended',
+			'EUDI Diatype',
+			'ABC Diatype',
+			'Helvetica Neue',
+			Arial,
+			Helvetica,
+			sans-serif
+		);
+		--font-size: var(--kolibri-font-size, #{to-rem(16)});
+
+		/*
+		 * Spacing.
+		 *
+		 * 4px is the canonical base unit, 8px the primary vertical rhythm. `--spacing` stays the 4px
+		 * base the shared component layers multiply up from.
+		 */
+		--spacing: var(--kolibri-spacing, #{to-rem(4)});
+		--border-width: var(--kolibri-border-width, 1px);
+
+		/*
+		 * The accent as a *foreground*: links, focus rings, checked controls, the icon and heading of
+		 * a message. The brand green itself (`--color-primary-container` below) is a surface and
+		 * reaches only 1.31:1 on white, so it can never carry text; `primary-40` is the lightest step
+		 * of the same ramp that clears 4.5:1 (4.96:1).
+		 */
+		--color-primary: var(--kolibri-color-primary, light-dark(#{$primary-40}, #{$dark-color-primary}));
+		--color-primary-variant: var(--kolibri-color-primary-variant, light-dark(#{$primary-30}, #{$dark-color-primary-variant}));
+		/*
+		 * The accent as a *surface*: the fill of a primary action, with `--color-on-primary` as its
+		 * label. This pair is the one place the design system's brand green appears literally.
+		 */
+		--color-primary-container: var(--kolibri-color-primary-container, light-dark(#{$primary-80}, #{$primary-80}));
+		--color-on-primary: var(--kolibri-color-on-primary, light-dark(#{$secondary-10}, #{$secondary-10}));
+		/*
+		 * The neutral filled action — the "tertiary" button of the design system — and the neutral
+		 * section surface behind grouped content.
+		 */
+		--color-secondary: var(--kolibri-color-secondary, light-dark(#{$secondary-90}, #{$dark-color-secondary}));
+		--color-danger: var(--kolibri-color-danger, light-dark(#{$error}, #{$dark-color-danger}));
+		/*
+		 * `warning` in the design system is a yellow fill (`#fedf43`) that cannot carry text at all;
+		 * `warning-outline` is the value that draws the border, the icon and the message text, so it
+		 * is what this token resolves to. The fill is available as `--color-warning-container-strong`.
+		 */
+		--color-warning: var(--kolibri-color-warning, light-dark(#{$warning-outline}, #{$dark-color-warning}));
+		/*
+		 * Success shares the primary ramp: in the design system the brand green *is* the success
+		 * color. The documented `success-outline` (#329d77) reaches only 3.37:1 on white, which is
+		 * enough for a border or an icon but not for the message text this token also paints, so the
+		 * text-safe step of the same ramp is used here and `--color-success-outline` keeps the
+		 * documented value for borders and icons.
+		 */
+		--color-success: var(--kolibri-color-success, light-dark(#{$primary-40}, #{$dark-color-success}));
+		--color-subtle: var(--kolibri-color-subtle, light-dark(#{$secondary-40}, #{$dark-color-subtle}));
+		/*
+		 * Elevation level 0: the page canvas. This is what the host box of every component paints
+		 * behind itself, so a component placed straight on the page disappears into it instead of
+		 * reading as a panel floating on top of it.
+		 */
+		--color-surface: var(--kolibri-color-surface, light-dark(#ffffff, #{$dark-color-surface}));
+		/*
+		 * Elevation level 1: a raised surface — card, input, table cell, drawer — and, unchanged, the
+		 * color used *on* an accent. Both roles flip together, so a light accent automatically
+		 * carries dark text in dark mode.
+		 */
+		--color-light: var(--kolibri-color-light, light-dark(#ffffff, #{$dark-color-light}));
+		/*
+		 * Elevation level 2: a surface floating above the rest of the page — dialog, popover, tooltip,
+		 * suggestion list.
+		 */
+		--color-overlay: var(--kolibri-color-overlay, light-dark(#ffffff, #{$dark-color-overlay}));
+		--color-text: var(--kolibri-color-text, light-dark(#{$secondary-10}, #{$dark-color-text}));
+		--color-mute: var(--kolibri-color-mute, light-dark(#{$secondary-95}, #{$dark-color-mute}));
+		--color-mute-variant: var(--kolibri-color-mute-variant, light-dark(#{$secondary-70}, #{$dark-color-mute-variant}));
+		--color-visited: var(
+			--kolibri-color-visited,
+			light-dark(#551a8b, #{$dark-color-visited})
+		); // Html defined standard value https://html.spec.whatwg.org/multipage/rendering.html#phrasing-content-3
+
+		/*
+		 * The feedback triples of the design system. `--color-danger` / `--color-warning` /
+		 * `--color-success` above are the outline halves that carry text; these are the soft
+		 * container surfaces a message is filled with and the strong fills of the "bold" message
+		 * weight. In dark mode the containers drop to the raised surface and the outline carries the
+		 * meaning, because the light tints have no dark counterpart in the design system.
+		 */
+		--color-success-outline: var(--kolibri-color-success-outline, light-dark(#{$success-outline}, #{$dark-color-success}));
+		--color-success-container: var(--kolibri-color-success-container, light-dark(#{$success-container}, #{$dark-color-light}));
+		--color-warning-container: var(--kolibri-color-warning-container, light-dark(#{$warning-container}, #{$dark-color-light}));
+		--color-danger-container: var(--kolibri-color-danger-container, light-dark(#{$error-container}, #{$dark-color-light}));
+
+		/*
+		 * Maximum contrast foreground, kept apart from `--color-text` because the base layer of
+		 * `@public-ui/components` hardcodes `black` in places the theme has to neutralize. The light
+		 * branch is pure black, so neutralizing them costs no light-mode pixel.
+		 */
+		--color-ink: var(--kolibri-color-ink, light-dark(#000000, #{$dark-color-ink}));
+		/*
+		 * Depth in dark mode is carried by the surface scale alone: a blurred shadow on a dark canvas
+		 * only muddies the boundary it is meant to draw, so every shadow token below resolves to
+		 * `transparent` there and `--color-edge` takes over with a hard one pixel edge. Both branches
+		 * are expressed purely as colors — `light-dark()` is a color function and cannot switch a
+		 * `box-shadow` geometry — so neither branch moves a pixel in the other.
+		 *
+		 * The design system casts both of its elevation shadows with `#1d1d1e` at 20%.
+		 */
+		--color-shadow: var(--kolibri-color-shadow, light-dark(rgb(29 29 30 / 0.2), transparent));
+		/*
+		 * The same shadow for elements sitting *on* an accent surface, whose lightness inverts opposite
+		 * to the page.
+		 */
+		--color-shadow-inverse: var(--kolibri-color-shadow-inverse, light-dark(rgb(255 255 255 / 0.24), transparent));
+		/*
+		 * Shadow used as a border: `--color-subtle` pushed 80% towards black to keep the 3:1 contrast a
+		 * card, dialog or accordion outline needs.
+		 */
+		--color-shadow-contrast: var(--kolibri-color-shadow-contrast, light-dark(color-mix(in srgb, black 80%, var(--color-subtle)), transparent));
+		/*
+		 * The hard edge that replaces those shadows in dark mode, drawn as a spread-only ring by the
+		 * `kol-elevation-outline` mixin. Transparent in light mode, where the shadows above draw the
+		 * boundary instead.
+		 */
+		--color-edge: var(--kolibri-color-edge, light-dark(transparent, #{$dark-color-edge}));
+		/*
+		 * Laid *over* the user agent's own `::backdrop`, never replacing it — see `mixins/dialog.scss`.
+		 * Transparent in light mode, so the browser default is all that is painted there.
+		 */
+		--color-backdrop: var(--kolibri-color-backdrop, light-dark(transparent, rgb(0 0 0 / 0.55)));
+		/*
+		 * `kol-a11y` paints the host box of every component from these two tokens (see `a11y.scss` in
+		 * `@public-ui/components`). Overriding the tokens rather than `color` / `background-color`
+		 * leaves that layer's intent intact and keeps the light rendering byte identical.
+		 *
+		 * `--kol-surface` is how a container tells the components placed inside it which surface they
+		 * are standing on. It is an inherited property and inheritance follows the flat tree, so a
+		 * declaration on a card's content box reaches the host box of every component slotted into it —
+		 * a button inside a card matches the card, not the page behind it. Nothing declares it at
+		 * document level, so a component on the page falls back to level 0.
+		 *
+		 * `--color-surface-current` reads that same answer back: whichever level the component is
+		 * standing on, and therefore the color its own host box is painted with. It is what the base
+		 * layer means wherever it hardcodes `white` to make something opaque against the component's
+		 * own background, such as a sticky table cell.
+		 */
+		--color-surface-current: var(--kol-surface, var(--color-surface));
+		--kol-a11y-font-color: var(--color-ink);
+		--kol-a11y-background-color: var(--color-surface-current);
+	}
+
+	:host {
+		font-family: var(--font-family);
+		font-size: var(--font-size);
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 0;
+		padding: 0;
+
+		/*
+		 * Headlines are set in the wide cut of the family; body copy is not. The two are separate
+		 * fonts, not two weights of one, so the switch has to happen on the element.
+		 */
+		font-family: var(--font-family-headline);
+	}
+
+	*[tabindex]:focus,
+	.kol-input:not(.checkbox, .radio) .input:focus-within,
+	.kol-input:is(.checkbox, .radio) input:focus,
+	summary:focus {
+		outline-color: var(--color-primary);
+		outline-style: solid;
+		outline-width: 3px;
+		outline-offset: 2px;
+		transition: outline-offset 0.2s linear;
+	}
+
+	.kol-headline {
+		font-weight: 700;
+	}
+
+	.kol-tooltip {
+		&__floating {
+			border-radius: var(--border-radius);
+			border: var(--border-width) solid var(--color-subtle);
+		}
+
+		&__arrow {
+			// The base layer hardcodes `color: black` here, which has to follow the color scheme.
+			color: var(--color-ink);
+			background-color: var(--color-overlay);
+			border: var(--border-width) solid var(--color-subtle);
+		}
+
+		&__content {
+			// The base layer hardcodes `color: black` here, which has to follow the color scheme.
+			color: var(--color-ink);
+			background-color: var(--color-overlay);
+			border-radius: var(--border-radius);
+			padding: to-rem(8) to-rem(12);
+
+			line-height: 1.4;
+		}
+	}
+
+	/*
+	 * `kol-spin` has no entry in the theme's tag map, so it only ever receives this global sheet.
+	 * The base layer paints the dot ring white and falls back to a different literal per rule in the
+	 * `--kol-spin-color` chain (#000 for the dot, #333 for the cycle ring); the rules below restate
+	 * exactly those literals in the light branch, so nothing moves, and give the dark branch a
+	 * visible spinner. The animated arc of the cycle variant is driven by `@keyframes` colour stops
+	 * in the base layer, which no theme rule can reach — see the theme README.
+	 */
+	.kol-spin {
+		&__spinner--dot__element {
+			background-color: var(--kol-spin-color, light-dark(#000000, #{$dark-color-ink}));
+			border-color: var(--color-light);
+		}
+
+		&__spinner--cycle__element::before {
+			border-color: var(--kol-spin-color, light-dark(#333333, #{$dark-color-ink}));
+		}
+	}
+
+	/* 16px text pairs with a 20px icon and a fixed 8px gap. */
+	.kol-span,
+	.kol-span__container {
+		gap: to-rem(8);
+	}
+
+	.badge-text-hint {
+		color: var(--color-text);
+		background-color: var(--color-mute-variant);
+		border-radius: var(--border-radius-pill);
+		padding: 0 0.5em;
+	}
+
+	@keyframes spin {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	.disabled label,
+	.disabled:focus-within label,
+	[aria-disabled='true'],
+	[aria-disabled='true']:focus,
+	[disabled],
+	[disabled]:focus {
+		opacity: 0.5;
+	}
+}

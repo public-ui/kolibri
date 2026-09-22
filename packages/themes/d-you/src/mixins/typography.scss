@@ -1,0 +1,68 @@
+@use '../mixins/to-rem' as *;
+
+/*
+ * The d-you type scale.
+ *
+ * Headlines are set in `EUDI Diatype Semi Extended` Bold, everything else in `EUDI Diatype`. The
+ * family switch happens in `global.scss` on the heading elements themselves, because the two cuts
+ * are separate fonts rather than two weights of one. Sizes are stated through `to-rem()` so a user's
+ * browser font size scales the whole interface, which is what the design system's "content scaling"
+ * rule asks for.
+ *
+ * Every value below is from `STYLEGUIDE.md` §2.
+ */
+
+@mixin kol-typography-body {
+	font-size: to-rem(16);
+	line-height: 1.4;
+}
+
+@mixin kol-typography-h1 {
+	font-size: to-rem(32);
+	line-height: 1.15;
+}
+
+@mixin kol-typography-h2 {
+	font-size: to-rem(28);
+	line-height: 1.15;
+}
+
+@mixin kol-typography-h3 {
+	font-size: to-rem(24);
+	line-height: 1.2;
+}
+
+@mixin kol-typography-h4 {
+	font-size: to-rem(20);
+	line-height: 1.2;
+}
+
+@mixin kol-typography-h5 {
+	font-size: to-rem(16);
+	line-height: 1.25;
+}
+
+/* Title large — the summary line of a collapsible section. */
+@mixin kol-typography-accordion {
+	font-size: to-rem(18);
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+/*
+ * Copy/small. The design system marks this size "exceptional use cases only" and pairs it with 1%
+ * letter spacing to keep it legible; it carries no italic.
+ */
+@mixin kol-typography-hint {
+	font-size: to-rem(14);
+	line-height: 1.4;
+	letter-spacing: 0.01em;
+}
+
+/* CTA/default — the label of every button and button-shaped link. */
+@mixin kol-typography-cta {
+	font-size: to-rem(16);
+	font-weight: 500;
+	line-height: 1.4;
+	letter-spacing: 0.01em;
+}

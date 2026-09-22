@@ -23,7 +23,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        package: ['unstyled', 'theme-bwst', 'theme-default', 'theme-desy', 'theme-kern', 'theme-ecl']
+        package: ['unstyled', 'theme-bwst', 'theme-d-you', 'theme-default', 'theme-desy', 'theme-kern', 'theme-ecl']
     runs-on: ubuntu-latest
     # Pinned Playwright image – must match the @playwright/test version in
     # packages/tools/visual-tests/package.json (enforced by the "Verify Playwright version" step).

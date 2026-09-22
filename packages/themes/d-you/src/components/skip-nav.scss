@@ -1,0 +1,28 @@
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	.kol-skip-nav {
+		.kol-link {
+			// The base layer paints the focused interactive element white.
+			&__interactive-element:focus {
+				background-color: var(--color-light);
+			}
+
+			&__text {
+				color: var(--color-light);
+				background-color: var(--color-primary-variant);
+				border-color: var(--color-primary-variant);
+				border-style: solid;
+				border-radius: var(--a11y-min-size);
+				padding: to-rem(8) to-rem(14);
+				border-width: var(--border-width);
+				gap: calc(var(--spacing) * 2);
+
+				line-height: 1;
+				cursor: pointer;
+			}
+		}
+	}
+}

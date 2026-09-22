@@ -1,0 +1,15 @@
+@use '../mixins/to-rem' as *;
+
+@mixin focus-outline {
+	outline: var(--color-primary-variant) solid to-rem(3);
+	border-radius: var(--border-radius);
+	outline-offset: var(--kol-focus-outline-offset, 2px);
+	transition: 200ms outline-offset linear;
+}
+
+@mixin switch-outline {
+	outline-color: var(--color-primary);
+	outline-style: solid;
+	outline-width: 2px;
+	outline-offset: var(--kol-focus-outline-offset, 2px);
+}

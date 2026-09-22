@@ -1,0 +1,179 @@
+@use './button' as *;
+@use './to-rem' as *;
+
+@mixin kol-alert {
+	display: block;
+	width: 100%;
+}
+
+@mixin kol-input-error-with-kol-alert-error($color: null) {
+	color: var($color);
+
+	font-weight: 700;
+}
+
+/*
+ * Messages in d-you.
+ *
+ * The design system ships each feedback type in two weights so a message stays readable on light and
+ * dark surfaces: a soft one — the type's container surface with its outline as a hairline border —
+ * and a strong one that fills with the type's own color. The soft weight is what a message inside a
+ * page uses, so it is what `variant-msg` renders; `variant-card` keeps the accent band of the
+ * component contract and fills the band with the strong weight.
+ *
+ * In every weight the message text is the neutral `on-container` color and the meaning is carried by
+ * the icon and the border, never by the text color alone — the design system requires feedback color
+ * to always be paired with a matching icon.
+ */
+@mixin kol-alert-theme {
+	.kol-alert {
+		@include kol-button('kol-button');
+
+		--alert-accent-color: var(--color-subtle);
+		--alert-container-color: var(--color-mute);
+
+		background-color: var(--color-surface-current);
+
+		width: 100%;
+		overflow: unset;
+	}
+
+	.kol-alert--variant-msg {
+		--kol-surface: var(--alert-container-color);
+		background-color: var(--alert-container-color);
+		border-radius: var(--border-radius);
+		padding: to-rem(12) to-rem(16);
+		gap: to-rem(4) to-rem(8);
+		align-items: center;
+		border: var(--border-width) solid var(--alert-accent-color);
+
+		&:not(:has(.kol-alert__heading)) {
+			display: flex;
+
+			.kol-alert__closer {
+				order: 10; /* damit er immer ganz rechts ist */
+			}
+		}
+	}
+
+	.kol-alert--variant-card {
+		// The heading row stands on the accent band, the content box below on its own surface.
+		--kol-surface: var(--alert-accent-color);
+		background-color: var(--alert-accent-color);
+		filter: drop-shadow(0 to-rem(2) to-rem(8) var(--color-shadow));
+		border-radius: var(--border-radius-card);
+		gap: 0 to-rem(8);
+		flex-direction: column;
+		grid-template-areas:
+			'icon heading close'
+			'content content content';
+		grid-template-columns: min-content 1fr min-content;
+		grid-template-rows: min-content min-content;
+		border: var(--border-width) solid var(--alert-accent-color);
+	}
+
+	/* No neutral feedback color exists in the design system: the neutral note is a grey box. */
+	.kol-alert--type-default {
+		--alert-accent-color: var(--color-subtle);
+		--alert-container-color: var(--color-mute);
+	}
+
+	.kol-alert--type-error {
+		--alert-accent-color: var(--color-danger);
+		--alert-container-color: var(--color-danger-container);
+	}
+
+	/* Informational notes are neutral in the screens; the accent only marks them as a message. */
+	.kol-alert--type-info {
+		--alert-accent-color: var(--color-primary);
+		--alert-container-color: var(--color-mute);
+	}
+
+	.kol-alert--type-success {
+		--alert-accent-color: var(--color-success-outline);
+		--alert-container-color: var(--color-success-container);
+	}
+
+	.kol-alert--type-warning {
+		--alert-accent-color: var(--color-warning);
+		--alert-container-color: var(--color-warning-container);
+	}
+
+	/* The closer renders ButtonFC directly: `kol-alert__closer` and `kol-button` sit on the same
+	   element, so the former descendant custom-property rules now target the closer itself. The
+	   extra `.kol-button` compound keeps 3-class specificity (matching the pre-merge descendant
+	   selector) so these rules still win over `.kol-close-button:is(.kol-button--normal)` in
+	   `button.scss`, which is tied at 2 classes otherwise and wins by source order alone. */
+	.kol-alert__closer {
+		.kol-alert--variant-msg &.kol-button {
+			--text-color: var(--color-text);
+
+			/* The closer's grid area spans the icon/heading row and the content row (see
+			   @shared/_alert.mixin.scss). Without an explicit height, the `display: flex` button
+			   stretches to the combined height of both rows plus the row-gap between them even with
+			   `align-self: self-start` on `.kol-close-button` — min-height alone isn't enough once
+			   row-gap + row heights exceed it. The `variant-card` closer must NOT get this: its grid
+			   area is the header row only, and it is meant to stretch to that row's real height. */
+			height: var(--a11y-min-size);
+		}
+
+		.kol-alert--variant-card &.kol-button {
+			padding-right: to-rem(16);
+			padding-block: to-rem(8);
+
+			--text-color: var(--color-light);
+		}
+	}
+
+	.kol-alert__heading {
+		.kol-alert--variant-msg & {
+			color: var(--color-text);
+			padding-top: calc(--var-spacing / 2);
+
+			font-weight: 700;
+		}
+
+		.kol-alert--variant-card & {
+			color: var(--color-light);
+			display: flex;
+			align-items: center;
+
+			font-size: to-rem(20);
+			line-height: 1.2;
+		}
+	}
+
+	/*
+	 * The status icon always carries the type's color, and always sits before the heading — the
+	 * design system calls out moving it as a don't.
+	 */
+	.kol-alert__icon {
+		color: var(--color-light);
+		padding: 0;
+
+		.kol-alert--variant-msg & {
+			color: var(--alert-accent-color);
+			align-self: center;
+
+			font-size: to-rem(20);
+		}
+
+		.kol-alert--variant-card & {
+			display: flex;
+			padding-left: to-rem(16);
+			align-items: center;
+
+			font-size: to-rem(20);
+			padding-block: to-rem(8);
+		}
+	}
+
+	.kol-alert__content {
+		.kol-alert--variant-card & {
+			--kol-surface: var(--color-light);
+			background-color: var(--color-light);
+			border-radius: 0 0 var(--border-radius-card) var(--border-radius-card);
+			padding: to-rem(16);
+		}
+	}
+}

@@ -1,0 +1,79 @@
+@use '../mixins/to-rem' as *;
+@use './focus-outline' as *;
+@use './select' as *;
+
+@mixin kol-pagination-styles {
+	.kol-table-stateful {
+		&__pagination,
+		&__pagination-wrapper {
+			@media (min-width: 1024px) {
+				gap: to-rem(16);
+			}
+		}
+	}
+
+	.kol-pagination {
+		@include kol-select();
+
+		gap: to-rem(16);
+
+		&__navigation-list {
+			gap: to-rem(8);
+		}
+
+		.kol-button {
+			&__interactive-element:focus .kol-button__text {
+				@include focus-outline;
+			}
+
+			/* State predicates live on the interactive element: on the wrapper `:not(:disabled)`
+			   would always be true. */
+			&__interactive-element:is(:active, :hover):not(:disabled) .kol-button__text {
+				color: var(--color-light);
+				background-color: var(--color-primary-variant);
+				box-shadow: 0 2px 8px 2px var(--color-shadow);
+				border-color: var(--color-primary-variant);
+			}
+
+			&:active .kol-button__text {
+				color: var(--color-light);
+				outline: none;
+			}
+
+			&__text {
+				color: var(--color-primary);
+				background-color: var(--color-light);
+				border-radius: var(--border-radius);
+				min-width: var(--a11y-min-size);
+				min-height: var(--a11y-min-size);
+				padding: to-rem(8);
+
+				font-weight: 700;
+				border: 1px solid var(--color-primary);
+				text-align: center;
+				transition-duration: 0.5s;
+				transition-property: background-color, color, border-color;
+			}
+		}
+
+		&__button--selected .kol-button {
+			opacity: 1;
+
+			&__text {
+				color: var(--color-light);
+				background-color: var(--color-primary);
+				border: 0;
+			}
+		}
+
+		&__page-size-select {
+			.kol-form-field {
+				--form-field-grid-column-2: 2;
+			}
+
+			.kol-form-field-select {
+				gap: to-rem(8);
+			}
+		}
+	}
+}

@@ -14,6 +14,7 @@ packages:
   - packages/samples/react
   - packages/test-tag-name-transformer
   - packages/themes/bwst
+  - packages/themes/d-you
   - packages/themes/default
   - packages/themes/desy
   - packages/themes/ecl

@@ -1,0 +1,14 @@
+# Everything in `assets/` is produced by the `prepare` script (`kolibri-copy-assets`):
+# the KoliBri icons and favicon from `@public-ui/components`, the Font Awesome and Codicon
+# sets from `@public-ui/theme-default`. Only the theme's own variant sample data is authored
+# by hand and therefore tracked.
+assets/*
+!assets/variants/
+assets/variants/*
+!assets/variants/inject-variants_dyou.json
+
+# Design source of the theme, see STYLEGUIDE.md. Kept out of the repository because the
+# screens are several megabytes of PNG; they live in the design hand-off, not in git.
+figma/
+
+test-results/
