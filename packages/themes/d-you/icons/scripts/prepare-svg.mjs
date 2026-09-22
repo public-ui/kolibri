@@ -1,5 +1,7 @@
 /**
- * Collects the Carbon SVGs the d-you theme needs and names them after KoliBri's own icons.
+ * Collects the Carbon SVGs the d-you theme needs, names them after KoliBri's own icons, and runs
+ * them through the fixer that turns strokes into fills — an outline that is still a stroke survives
+ * the font conversion as an empty shape.
  *
  * `icons.json` is the whole mapping: KoliBri icon name → Carbon icon name. Copying under the
  * KoliBri name is what makes the rest of the pipeline trivial — svgtofont derives its class names
@@ -15,6 +17,10 @@ import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const resolveFrom = createRequire(import.meta.url);
+/* CommonJS, and called through Node rather than through its CLI: a script reaching into
+   `node_modules/<pkg>/...` by path only resolves in the workspace layout, which
+   `scripts/check-no-relative-node-modules.mjs` rejects for anything new. */
+const svgFixer = resolveFrom('oslllo-svg-fixer');
 const PACKAGE_ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
 
 /* The 32px grid is the only complete set in the package; the 16/20/24px folders hold a handful of
@@ -24,8 +30,8 @@ const CARBON_SVG_DIR = path.join(path.dirname(resolveFrom.resolve('@carbon/icons
 
 const mapping = JSON.parse(fs.readFileSync(path.join(PACKAGE_ROOT, 'icons.json'), 'utf8'));
 const svgDir = path.join(PACKAGE_ROOT, 'svg');
-/* oslllo-svg-fixer refuses to run when its destination does not exist, so both folders are created
-   here rather than by a shell `mkdir` the build would have to repeat per platform. */
+/* The fixer refuses to run when its destination does not exist, so both folders are created here
+   rather than by a shell `mkdir` the build would have to repeat per platform. */
 const fixedDir = path.join(PACKAGE_ROOT, 'svg-fixed');
 
 for (const dir of [svgDir, fixedDir]) {
@@ -48,4 +54,6 @@ if (missing.length > 0) {
 	process.exit(1);
 }
 
-console.log(`Collected ${Object.keys(mapping).length} Carbon icons into ${path.relative(PACKAGE_ROOT, svgDir)}.`);
+await svgFixer(svgDir, fixedDir).fix();
+
+console.log(`Prepared ${Object.keys(mapping).length} Carbon icons in ${path.relative(PACKAGE_ROOT, fixedDir)}.`);

@@ -11,11 +11,10 @@
 		"svgtofont": "6.5.3"
 	},
 	"scripts": {
-		"collect": "node scripts/collect-svg.mjs",
-		"svg-fixer": "node node_modules/oslllo-svg-fixer/src/cli.js --source ./svg --destination ./svg-fixed",
+		"prepare-svg": "node scripts/prepare-svg.mjs",
 		"font": "svgtofont --sources ./svg-fixed --output ../assets/d-you-icons",
 		"emit-mixin": "node scripts/emit-mixin.mjs",
-		"build": "pnpm collect && pnpm svg-fixer && pnpm font && pnpm emit-mixin",
+		"build": "pnpm prepare-svg && pnpm font && pnpm emit-mixin",
 		"format": "prettier --check icons.json scripts"
 	},
 	"svgtofont": {
