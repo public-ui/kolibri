@@ -17,6 +17,7 @@ describe('snapshot-paths', () => {
 			[
 				'test-tag-name-transformer packages/test-tag-name-transformer theme-default (baseline of theme-default)',
 				'theme-bwst packages/themes/bwst theme-bwst',
+				'theme-d-you packages/themes/d-you theme-d_you',
 				'theme-default packages/themes/default theme-default',
 				'theme-desy packages/themes/desy theme-desyv11',
 				'theme-ecl packages/themes/ecl theme-ecl_ec',

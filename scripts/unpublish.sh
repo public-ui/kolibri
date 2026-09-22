@@ -14,6 +14,7 @@ npm unpublish @public-ui/vue@$1
 npm unpublish @public-ui/components@$1
 npm unpublish @public-ui/sample-react@$1
 npm unpublish @public-ui/theme-bwst@$1
+npm unpublish @public-ui/theme-d-you@$1
 npm unpublish @public-ui/theme-default@$1
 npm unpublish @public-ui/theme-desy@$1
 npm unpublish @public-ui/theme-ecl@$1
