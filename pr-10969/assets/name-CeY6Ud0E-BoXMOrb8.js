@@ -1,1 +1,0 @@
-import{d as e,r as t}from"./factory-DVePsLAQ-DACREE-C.js";var n=t(`name`,``,e);export{n as t};
