@@ -1,1 +1,0 @@
-import{Tt as e}from"./index-Ceq4n4oP.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};

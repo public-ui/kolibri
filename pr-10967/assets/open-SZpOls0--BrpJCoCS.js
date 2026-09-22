@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-Ceq4n4oP.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
