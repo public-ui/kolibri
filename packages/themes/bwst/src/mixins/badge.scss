@@ -25,7 +25,7 @@
 				border-bottom-right-radius: var(--border-radius);
 				border-top-right-radius: var(--border-radius);
 
-				&:hover {
+				&:not([disabled], [aria-disabled='true']):hover {
 					color: var(--color-light);
 					background-color: var(--color-primary-variant);
 				}

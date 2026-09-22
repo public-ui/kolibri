@@ -387,7 +387,17 @@ export class KolInputFile implements ClickableElement, FocusableElement, InputFi
 		container?.addEventListener('drop', this.onDrop);
 	}
 
+	/*
+	 * The drag listeners sit on the input container, not on the `<input disabled>` inside it, so the
+	 * native disabled state does not stop them: without this guard a disabled file input still
+	 * highlights as a drop zone and still accepts dropped files.
+	 */
+	private isDisabled = (): boolean => this._disabled === true;
+
 	private onDragOver = (event: DragEvent): void => {
+		if (this.isDisabled()) {
+			return;
+		}
 		event.preventDefault();
 		this.ctaRef.el?.parentElement?.parentElement?.classList.add('kol-input-container--is-dragover');
 	};
@@ -397,6 +407,9 @@ export class KolInputFile implements ClickableElement, FocusableElement, InputFi
 	};
 
 	private onDrop = (event: DragEvent): void => {
+		if (this.isDisabled()) {
+			return;
+		}
 		event.preventDefault();
 		if (!this.ctaRef.el) {
 			return;

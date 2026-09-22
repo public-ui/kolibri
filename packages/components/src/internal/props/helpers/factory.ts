@@ -1,5 +1,6 @@
 import { cloneDeep, isObject } from 'lodash-es';
 import { devWarning } from '../../../schema';
+import { normalizeCallbacksObject } from './normalizers';
 
 function safeStringify(value: unknown): string {
 	try {
@@ -170,4 +171,17 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 			}
 		},
 	};
+}
+
+/**
+ * Creates the prop definition for an `_on` callbacks object.
+ *
+ * Every component that exposes callbacks normalizes them identically: `apply` already handles
+ * `undefined`/`null` by falling back to the default `{}`, so the normalizer only has to verify
+ * that a non-null value is an object (`normalizeCallbacksObject`). This factory holds that one
+ * implementation; callers bind it to their own callback type (`collapsibleCallbacksProp`,
+ * `buttonCallbacksProp`, …).
+ */
+export function createCallbacksPropDefinition<T extends object>(): PropDefinition<T, SimpleProp<'on', T>> {
+	return createPropDefinition<SimpleProp<'on', T>>('on', {} as T, (value) => normalizeCallbacksObject<T>(value));
 }

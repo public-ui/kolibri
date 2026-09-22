@@ -1,9 +1,9 @@
 import type { Generic } from 'adopted-style-sheets';
-import type { PropAccordionCallbacks } from '../props';
+import type { PropCollapsibleCallbacks } from '../props';
 import type * as CollapsibleTypes from './collapsible';
 
 type RequiredProps = CollapsibleTypes.RequiredProps;
-type OptionalProps = CollapsibleTypes.OptionalProps & PropAccordionCallbacks<boolean>;
+type OptionalProps = CollapsibleTypes.OptionalProps & PropCollapsibleCallbacks<boolean>;
 
 type RequiredStates = RequiredProps;
 type OptionalStates = OptionalProps;
