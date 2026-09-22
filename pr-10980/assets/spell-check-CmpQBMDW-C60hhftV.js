@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-5PLcqu0w.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
