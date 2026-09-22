@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-DEVIV0un.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
