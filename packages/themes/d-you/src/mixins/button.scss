@@ -135,9 +135,22 @@
 				border-color: var(--text-border-color);
 			}
 
-			/* Icon-only: a 44px circle, the smaller of the two touch targets the design system allows. */
+			/*
+			 * Icon-only: a real circle of `--a11y-min-size`, the smaller of the two touch targets the
+			 * design system allows (STYLEGUIDE.md §6.1).
+			 *
+			 * Both dimensions have to be stated, because each followed its content before: the height
+			 * came from the label's line box (48px, the height of a labelled pill) and the width from
+			 * the icon glyph's advance, which differs from icon to icon — so no two icon-only actions
+			 * came out the same size, let alone round (measured: 26×48 for a narrow glyph, 46×48 for a
+			 * wide one). `min-width` rather than `width` keeps the one icon-only action that carries
+			 * more than its icon intact: with a short-key badge beside it the box grows sideways into
+			 * a pill of the same height instead of squeezing the badge out of the circle.
+			 */
 			@at-root #{$root}--hide-label & {
-				padding: to-rem(12);
+				min-width: var(--a11y-min-size);
+				height: var(--a11y-min-size);
+				padding: 0 to-rem(8);
 
 				.kol-span__label {
 					display: none;
