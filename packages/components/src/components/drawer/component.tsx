@@ -249,6 +249,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 					align={this.getRenderProp('align')}
 					ariaDescriptionId={this.getState('ariaDescriptionId')}
 					cardProps={this.buildCardProps()}
+					expanded={this.getState('expanded')}
 					handleAnimationEnd={this.handleAnimationEnd}
 					handleCancel={this.handleCancel}
 					handleClose={this.handleClose}
@@ -258,7 +259,6 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 					level={this.getRenderProp('level')}
 					modal={this.getState('modal')}
 					on={this.getRenderProp('on')}
-					expanded={this.getState('expanded')}
 					refDialog={this.dialogRef}
 					refWrapper={this.wrapperRef}
 				>
@@ -272,12 +272,12 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 
 	@State() public ariaDescriptionId: string = nonce();
 
+	/** Named `expanded` because the deprecated `open()` method occupies the member name `open`. */
+	@State() public expanded: boolean = false;
+
 	@State() public headingId: string = createUniqueId('drawer-heading');
 
 	@State() public modal: boolean = true;
-
-	/** Named `expanded` because the deprecated `open()` method occupies the member name `open`. */
-	@State() public expanded: boolean = false;
 
 	// --- Props + Watchers ---
 
