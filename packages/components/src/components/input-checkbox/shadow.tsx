@@ -33,12 +33,12 @@ import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputCheckboxController } from './controller';
 
-import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import KolCheckboxStateWrapperFc, { type CheckboxStateWrapperProps } from '../../functional-component-wrappers/CheckboxStateWrapper/CheckboxStateWrapper';
 import KolFieldControlStateWrapperFc, {
 	type FieldControlStateWrapperProps,
 } from '../../functional-component-wrappers/FieldControlStateWrapper/FieldControlStateWrapper';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
+import type { FormFieldLabelInfoPopoverProps } from '../../functional-components';
 import type { InputCheckboxVariantPropType } from '../../schema/props/variant-input-checkbox';
 import { propagateSubmitEventToForm } from '../form/controller';
 
