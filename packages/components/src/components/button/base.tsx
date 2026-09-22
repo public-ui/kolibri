@@ -7,6 +7,7 @@ import { BaseWebComponent } from '../../internal/functional-components/base-web-
 import type { ButtonApi } from '../../internal/functional-components/button/api';
 import { buttonPropsConfig } from '../../internal/functional-components/button/api';
 import { ButtonFC } from '../../internal/functional-components/button/component';
+import type { FunctionalComponentProps } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import {
 	accessKeyProp,
@@ -317,39 +318,47 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 
 	// --- Render ---
 
+	/**
+	 * Collects the current render props and state into the prop set `ButtonFC` expects. Separate
+	 * from `renderButtonFC` because a component that embeds the button inside its own markup
+	 * (`kol-split-button`) hands the set to its own functional component instead of rendering the
+	 * button here.
+	 */
+	protected getButtonFCProps(): FunctionalComponentProps<ButtonApi> {
+		return {
+			accessKey: this.getRenderProp('accessKey'),
+			ariaControls: this.getRenderProp('ariaControls'),
+			ariaDescription: this.getRenderProp('ariaDescription'),
+			ariaDescriptionId: this.getState('ariaDescriptionId'),
+			ariaExpanded: this.getRenderProp('ariaExpanded'),
+			ariaHasPopup: this.getRenderProp('ariaHasPopup'),
+			ariaSelected: this.getRenderProp('ariaSelected'),
+			customClass: this.getRenderProp('customClass'),
+			disabled: this.getRenderProp('disabled'),
+			handleBlur: this.handleBlur,
+			handleClick: this.handleClick,
+			handleFocus: this.handleFocus,
+			handleMouseDown: this.handleMouseDown,
+			hideLabel: this.getRenderProp('hideLabel'),
+			icons: this.getRenderProp('icons'),
+			id: this.getRenderProp('id'),
+			inline: this.getRenderProp('inline'),
+			label: this.getRenderProp('label'),
+			name: this.getRenderProp('name'),
+			on: this.getRenderProp('on'),
+			refButton: this.ctaRef,
+			refTooltip: this.tooltipBehavior.setTooltipElementRef,
+			role: this.getRenderProp('role'),
+			shortKey: this.getRenderProp('shortKey'),
+			tabIndex: this.getRenderProp('tabIndex'),
+			tooltipAlign: this.getRenderProp('tooltipAlign'),
+			type: this.getRenderProp('type'),
+			variant: this.getRenderProp('variant'),
+		};
+	}
+
 	/** Renders `ButtonFC` from the current render props and state. */
 	protected renderButtonFC(): JSX.Element {
-		return (
-			<ButtonFC
-				accessKey={this.getRenderProp('accessKey')}
-				ariaControls={this.getRenderProp('ariaControls')}
-				ariaDescription={this.getRenderProp('ariaDescription')}
-				ariaDescriptionId={this.getState('ariaDescriptionId')}
-				ariaExpanded={this.getRenderProp('ariaExpanded')}
-				ariaHasPopup={this.getRenderProp('ariaHasPopup')}
-				ariaSelected={this.getRenderProp('ariaSelected')}
-				customClass={this.getRenderProp('customClass')}
-				disabled={this.getRenderProp('disabled')}
-				handleBlur={this.handleBlur}
-				handleClick={this.handleClick}
-				handleFocus={this.handleFocus}
-				handleMouseDown={this.handleMouseDown}
-				hideLabel={this.getRenderProp('hideLabel')}
-				icons={this.getRenderProp('icons')}
-				id={this.getRenderProp('id')}
-				inline={this.getRenderProp('inline')}
-				label={this.getRenderProp('label')}
-				name={this.getRenderProp('name')}
-				on={this.getRenderProp('on')}
-				refButton={this.ctaRef}
-				refTooltip={this.tooltipBehavior.setTooltipElementRef}
-				role={this.getRenderProp('role')}
-				shortKey={this.getRenderProp('shortKey')}
-				tabIndex={this.getRenderProp('tabIndex')}
-				tooltipAlign={this.getRenderProp('tooltipAlign')}
-				type={this.getRenderProp('type')}
-				variant={this.getRenderProp('variant')}
-			/>
-		);
+		return <ButtonFC {...this.getButtonFCProps()} />;
 	}
 }

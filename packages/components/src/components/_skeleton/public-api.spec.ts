@@ -984,9 +984,10 @@ describe('kol-card-wc transitional wrapper (internal contract for legacy consume
 });
 
 /**
- * Pinned public API of `kol-form` — byte-identical to the predecessor `shadow.tsx` on the develop
- * branch (3 props + focusErrorList). The German `_on` JSDoc is part of the published contract and
- * is kept verbatim; rewording it would change `custom-elements.json`.
+ * Pinned public API of `kol-form` — same props, types and defaults as the predecessor
+ * `shadow.tsx` on the develop branch (3 props + focusErrorList). The one deviation is the `_on`
+ * JSDoc, which the predecessor carried in German; it was translated on reviewer request, which
+ * changes only the generated documentation, not the API surface.
  */
 const KOL_FORM_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	focusErrorList: {
@@ -1005,7 +1006,7 @@ const KOL_FORM_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 		kind: 'prop',
 		type: 'KoliBriFormCallbacks',
 		required: false,
-		doc: 'Gibt die EventCallback-Funktionen für die Form-Events an.',
+		doc: 'Defines the callback functions for form events.',
 	},
 	_requiredText: {
 		kind: 'prop',

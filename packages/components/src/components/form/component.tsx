@@ -152,7 +152,7 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	}
 
 	/**
-	 * Gibt die EventCallback-Funktionen für die Form-Events an.
+	 * Defines the callback functions for form events.
 	 */
 	@Prop() public _on?: KoliBriFormCallbacks;
 	@Watch('_on')

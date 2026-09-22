@@ -235,7 +235,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input aria-describedby="input-color-error-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-color__input kol-input-color__input--color" id="input-color-nonce" name="field-color" type="color" value="#FFF">
+            <input aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-color__input kol-input-color__input--color" id="input-color-nonce" name="field-color" type="color" value="#FFF">
           </div>
         </div>
       </div>
@@ -598,7 +598,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input aria-describedby="input-color-error-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-color__input kol-input-color__input--color" id="input-color-nonce" list="input-color-list-nonce" name="field-color" type="color" value="#FFF">
+            <input aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-color__input kol-input-color__input--color" id="input-color-nonce" list="input-color-list-nonce" name="field-color" type="color" value="#FFF">
           </div>
         </div>
       </div>

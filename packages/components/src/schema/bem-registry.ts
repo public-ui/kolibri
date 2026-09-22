@@ -284,6 +284,23 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-split-button': {
+		elements: {
+			button: {
+				modifiers: null;
+			};
+			'horizontal-line': {
+				modifiers: null;
+			};
+			root: {
+				modifiers: null;
+			};
+			'secondary-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-spin': {
 		elements: {
 			spinner: {
@@ -449,6 +466,15 @@ const BEM: KoliBriComponentsBemSchema = {
 			alert: { modifiers: null },
 			link: { modifiers: null },
 			'mandatory-fields-hint': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-split-button': {
+		elements: {
+			button: { modifiers: null },
+			'horizontal-line': { modifiers: null },
+			root: { modifiers: null },
+			'secondary-button': { modifiers: null },
 		},
 		modifiers: null,
 	},

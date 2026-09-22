@@ -118,8 +118,8 @@ export type PopoverButtonApi = ApiFromConfig<
 /**
  * Web component interface for the public `kol-popover-button`.
  *
- * `_id` is an internal prop that only the transitional `kol-popover-button-wc` exposes — legacy
- * consumers (`FormFieldLabel`, `SplitButton`) render that element inside their own shadow DOM.
+ * `_id` is an internal prop that only the transitional `kol-popover-button-wc` exposes — the
+ * legacy consumer `FormFieldLabel` renders that element inside its own shadow DOM.
  * `on` is never a consumer prop: its click callback is reserved for toggling the popover. Both
  * are part of `PopoverButtonApi` because both elements share one functional component, but their
  * watchers are omitted here instead of being declared as no-ops.
