@@ -154,16 +154,12 @@
 		.kol-alert--variant-msg & {
 			color: var(--alert-accent-color);
 			align-self: center;
-
-			font-size: to-rem(20);
 		}
 
 		.kol-alert--variant-card & {
 			display: flex;
 			padding-left: to-rem(16);
 			align-items: center;
-
-			font-size: to-rem(20);
 			padding-block: to-rem(8);
 		}
 	}

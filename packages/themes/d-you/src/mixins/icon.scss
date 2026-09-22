@@ -1,3 +1,4 @@
+@use './to-rem' as *;
 @use '../../icons/generated/mixin' as generated;
 
 /*
@@ -11,4 +12,21 @@
  */
 @mixin kol-icon-theme {
 	@include generated.kol-icon-theme;
+
+	/*
+	 * One size for every icon of the theme, wherever it sits.
+	 *
+	 * STYLEGUIDE.md §5: 16px text pairs with a 20px icon, and icon sizes are token-based — they do
+	 * not scale proportionally with the text. Without this an icon inherited whatever font size it
+	 * happened to sit in: 16px in body copy, 18px in an accordion heading, 20px in an alert, 19.2px
+	 * in a details summary. The same icon came out a different size in each place, and next to a
+	 * bold heading it read as too small for the text it belongs to.
+	 *
+	 * `line-height: 1` keeps the box square, so the flex rows the icons sit in (`.kol-span__container`
+	 * and friends) centre the glyph instead of a box with leading above and below it.
+	 */
+	.kol-icon {
+		font-size: to-rem(20);
+		line-height: 1;
+	}
 }
