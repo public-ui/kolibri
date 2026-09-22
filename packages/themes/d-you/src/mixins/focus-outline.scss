@@ -10,7 +10,15 @@
  */
 @mixin focus-outline($radius: var(--border-radius)) {
 	outline: var(--color-primary-variant) solid to-rem(3);
-	border-radius: $radius;
+
+	/*
+	 * `null` means the carrier already states the shape the ring has to take — a toolbar segment
+	 * rounded on one side only, for instance, which no single radius value can reproduce.
+	 */
+	@if $radius {
+		border-radius: $radius;
+	}
+
 	outline-offset: var(--kol-focus-outline-offset, 2px);
 	transition: 200ms outline-offset linear;
 }

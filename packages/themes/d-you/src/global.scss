@@ -216,6 +216,22 @@
 		font-family: var(--font-family-headline);
 	}
 
+	/*
+	 * No focus ring is ever square.
+	 *
+	 * `outline` follows the element's own `border-radius`, and a focus ring is regularly carried by a
+	 * wrapper that paints nothing and therefore declares no radius — the ring then boxes a rounded
+	 * control in a rectangle. This gives every interactive carrier the control radius as a floor.
+	 *
+	 * `:where()` has zero specificity, so it only ever fills a gap: a pill button, a card, a circular
+	 * icon button and anything else that states its own radius keeps it, and an element deliberately
+	 * squared off by the base layer stays squared off. On a wrapper that paints nothing, the radius
+	 * is invisible until the ring appears.
+	 */
+	:where(a, button, summary, [role='button'], [tabindex], input, select, textarea) {
+		border-radius: var(--border-radius);
+	}
+
 	*[tabindex]:focus,
 	.kol-input:not(.checkbox, .radio) .input:focus-within,
 	.kol-input:is(.checkbox, .radio) input:focus,

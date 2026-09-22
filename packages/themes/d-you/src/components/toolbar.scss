@@ -1,4 +1,5 @@
 @use '../mixins/button' as *;
+@use '../mixins/focus-outline' as *;
 @use '../mixins/to-rem' as *;
 @use '../mixins/icon' as *;
 
@@ -12,6 +13,22 @@
 		--kol-surface: var(--color-light);
 		background-color: var(--color-light);
 		border-radius: var(--border-radius);
+	}
+
+	/*
+	 * A toolbar flattens its buttons into one segmented bar, so the capsule ring `mixins/button.scss`
+	 * gives them would box a square segment. The ring moves to the element that carries the segment's
+	 * own shape — including the one-sided rounding of the first and last item, which no single radius
+	 * value could reproduce.
+	 */
+	.kol-button__interactive-element:focus,
+	.kol-link__interactive-element:focus {
+		outline: none;
+	}
+
+	.kol-button__interactive-element:focus .kol-button__text,
+	.kol-link__interactive-element:focus .kol-link__text {
+		@include focus-outline(null);
 	}
 
 	.kol-link__text,
