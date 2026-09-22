@@ -49,13 +49,14 @@ instead:
 pnpm --filter @public-ui/components dev
 
 # Terminal B
-pnpm --filter @public-ui/presentation dev
+pnpm --filter @public-ui/presentation serve
 ```
 
-`pnpm dev` is plain Vite with the browser opened — no dependency build, so it never touches another
-package's output. `pnpm start` recognises a running components watcher by
-`packages/components/.watch.pid` and skips the dependency build too, with a note on the console.
-`KOLIBRI_SKIP_DEPS_BUILD=1` forces that skip for any other watcher.
+`pnpm serve` is plain Vite without the `prestart` hook, so it never touches another package's
+output — it is the same script a theme package's `serve.sh` calls while its own `rollup --watch`
+owns its `dist`. Do not reach for `pnpm start` in this situation: its `prestart` runs the
+dependency build unconditionally and nothing stops it from clearing the watcher's `dist`. Once the
+watcher is stopped, `pnpm build:deps` brings the workspace packages back up to date.
 
 ## Injecting a different theme
 
@@ -99,7 +100,7 @@ $env:ENABLE_THEME_PATCHING="true"; pnpm start
 
 ## Notes
 
-- `pnpm start` builds the workspace dependencies first (`build:deps`), so it never serves a stale theme package. `pnpm serve` and `pnpm dev` skip that step on purpose: `serve` is what `serve.sh` of a theme package calls while that package's own `rollup --watch` already owns its `dist`, and `dev` is the same thing with the browser opened. See [Next to a running watcher](#next-to-a-running-watcher).
+- `pnpm start` builds the workspace dependencies first (`build:deps`), so it never serves a stale theme package. `pnpm serve` skips that step on purpose: it is what `serve.sh` of a theme package calls while that package's own `rollup --watch` already owns its `dist`. See [Next to a running watcher](#next-to-a-running-watcher).
 
 - Keep theme modules built before injecting them; use `pnpm --filter @public-ui/themes build` if you are working on a local theme.
 - Assets are copied into `public/assets` by `pnpm prebuild`, which runs `kolibri-copy-assets` for the components package and every bundled theme. It runs automatically on `pnpm install` (via `prepare`) and before `pnpm build`.

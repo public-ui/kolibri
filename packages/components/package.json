@@ -82,7 +82,7 @@
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:stylelint:components": "stylelint src/components/**/*.{css,scss}",
 		"lint:tsc": "tsc --noemit",
-		"dev": "node dev.mjs",
+		"dev": "cross-env NODE_ENV=development stencil build --prod --watch",
 		"prod": "stencil build --prod",
 		"test": "pnpm test:unit && pnpm test:e2e",
 		"test:e2e": "playwright test",

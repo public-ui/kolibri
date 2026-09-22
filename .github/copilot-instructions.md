@@ -61,7 +61,7 @@ pnpm start
 # Next to a running watcher (pnpm dev in packages/components) use this instead:
 # it starts Vite without the dependency build, which would delete the
 # build output the watcher currently owns.
-pnpm dev
+pnpm serve
 ```
 
 ### Code Quality Commands
