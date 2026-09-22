@@ -196,6 +196,40 @@ describe('VisualReporter', () => {
 		assert.notEqual(changed.hash, byName['a-basic--one'].hash);
 	});
 
+	it('classifies a block whose snapshot name Playwright trims in the attachment name', () => {
+		// Playwright's `trimLongString` shortens an attachment name to 60 characters – the values below
+		// are what it produces for this route of the sample app.
+		const route = 'input-text/access-short-key?noColumns';
+		const name = 'input-text-access-short-key-noColumns--short-key-placeholder';
+		const trimmed = 'input-text-access-short-ke-29de3---short-key-placeholder';
+		assert.equal(routeToSnapshotName(route), 'input-text-access-short-key-noColumns');
+		assert.ok(`${name}.png`.length > 60 && `${trimmed}.png`.length === 60);
+
+		const reporter = createReporter();
+		reporter.onBegin(CONFIG, SUITE);
+
+		const expected = write(path.join(baselineDir, `${name}${SUFFIX}`), png(4, 3, 'long-expected'));
+		const actual = write(path.join(testResults, `${trimmed}-actual.png`), png(4, 3, 'long-actual'));
+
+		reporter.onTestEnd(
+			fakeTest(route, { annotations: [annotation(`${name}.png`)] }),
+			fakeResult({
+				status: 'failed',
+				errors: [{ message: `A snapshot doesn't exist at ${expected}, writing actual.` }],
+				attachments: [attachment(`${trimmed}-expected.png`, expected), attachment(`${trimmed}-actual.png`, actual)],
+			}),
+		);
+		reporter.onEnd();
+
+		const report = readReport();
+		assert.deepEqual(report.errors, [], 'a missing snapshot is an added item, not a route that failed to compare');
+		const added = report.items.find((item) => item.name === name);
+		assert.equal(added.status, 'added');
+		assert.equal(added.route, route);
+		assert.equal(added.actual, `theme-default/${name}.actual.png`);
+		assert.ok(fs.readFileSync(path.join(outputDir, added.actual)).equals(fs.readFileSync(actual)));
+	});
+
 	it('computes the ratio from the actual image when the sizes match', () => {
 		const reporter = createReporter();
 		reporter.onBegin(CONFIG, SUITE);
