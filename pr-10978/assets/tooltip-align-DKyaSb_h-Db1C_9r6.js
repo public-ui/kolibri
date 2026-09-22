@@ -1,1 +1,0 @@
-import"./index-DFQFor06.js";import{r as e}from"./align-Dm5aJHmk-C2DZLSb4.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
