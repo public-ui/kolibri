@@ -23,6 +23,10 @@ const PACKAGE_ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)))
 const FONT_NAME = 'd-you-icons';
 const OUTPUT_DIR = path.join(PACKAGE_ROOT, '..', 'assets', FONT_NAME);
 const CARBON_ROOT = path.dirname(resolveFrom.resolve('@carbon/icons/package.json'));
+/* The mixin is a build input of the theme, not an asset an application serves, so it stays in this
+   package (which the theme does not publish) instead of travelling into every consumer's asset
+   folder alongside the font files. */
+const MIXIN_DIR = path.join(PACKAGE_ROOT, 'generated');
 
 /** `.kolicon-house::before { content: "\ea10"; }` → `['house', 'ea10']` */
 const ICON_RULE = /\.kolicon-([a-z0-9-]+)::before\s*\{\s*content:\s*"\\([0-9a-f]+)";/g;
@@ -78,7 +82,8 @@ ${rules}
 }
 `;
 
-fs.writeFileSync(path.join(OUTPUT_DIR, '_mixin.scss'), mixin);
+fs.mkdirSync(MIXIN_DIR, { recursive: true });
+fs.writeFileSync(path.join(MIXIN_DIR, '_mixin.scss'), mixin);
 
 for (const entry of UNUSED) {
 	fs.rmSync(path.join(OUTPUT_DIR, entry), { recursive: true, force: true });
@@ -90,4 +95,4 @@ for (const entry of UNUSED) {
    only into the theme's NOTICE.md. */
 fs.copyFileSync(path.join(CARBON_ROOT, 'LICENSE'), path.join(OUTPUT_DIR, 'LICENSE'));
 
-console.log(`Wrote _mixin.scss with ${icons.length} icons to ${path.relative(PACKAGE_ROOT, OUTPUT_DIR)}.`);
+console.log(`Wrote _mixin.scss with ${icons.length} icons to ${path.relative(PACKAGE_ROOT, MIXIN_DIR)}.`);

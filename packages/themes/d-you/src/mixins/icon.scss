@@ -1,11 +1,14 @@
+@use '../../icons/generated/mixin' as generated;
+
 /*
  * The icon set of this theme.
  *
- * `kol-icon-theme` is generated, not written here: `@public-ui/d-you-icons` (in `icons/`) builds a
- * font from the IBM Carbon icons the design system specifies and emits the matching mixin next to
- * it. The theme's `prebuild` runs that package, so the file exists before this one is compiled.
- *
- * The mapping from a KoliBri icon name to a Carbon icon lives in `icons/icons.json`; a KoliBri icon
- * the mapping does not name keeps the glyph of the `kolicons` font from `@public-ui/components`.
+ * The glyph mapping is generated, not written here: `@public-ui/d-you-icons` (in `icons/`) builds a
+ * font from the IBM Carbon icons the design system specifies and emits the matching mixin into its
+ * own `generated/` folder. The theme's `prebuild` runs that package, so the file exists before this
+ * one is compiled. `icons/icons.json` decides which Carbon icon a KoliBri icon name resolves to; a
+ * name the mapping does not carry keeps the glyph of the `kolicons` font from `@public-ui/components`.
  */
-@forward '../../assets/d-you-icons/mixin';
+@mixin kol-icon-theme {
+	@include generated.kol-icon-theme;
+}
