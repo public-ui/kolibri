@@ -107,6 +107,11 @@ Zwei Vorprüfungen entscheiden, ob das ein Teil dieses PRs ist oder ein eigener:
      inline duplizieren. Dann braucht es zuerst eine wiederverwendbare Orchestrierungs-Einheit
      (Behavior oder geteilter Normalisierungs-Helfer); das ist ein eigener, architektonisch
      relevanter Schritt und gehört dem Owner vorgelegt, nicht nebenbei erledigt.
+     Vorbilder für eine solche Einheit: `internal/functional-components/breadcrumb/link-item.ts`
+     (eine Fabrik je Listeneintrag) und `internal/functional-components/popover-button/item.ts`
+     (`createPopoverButtonItem` — Popover-Controller, Tooltip-Behavior, Refs und die fertigen
+     FC-Props; der offene Zustand bleibt als `@State()` beim einbettenden WC und wird über
+     `getOpen`/`setOpen` gereicht, damit ein Toggle neu rendert).
 2. **Default-Aufwand (die stille Falle).** Der `-wc`-Wrapper setzt Defaults als Stencil-`@Prop`-Feld
    (`@Prop() public _inline?: InlinePropType = false;`). Die sind Teil dessen, was das Element
    rendert, stehen aber **nicht** in der Prop-Definition — und mehrere Definitionen teilen sich

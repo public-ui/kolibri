@@ -1,5 +1,6 @@
 @use '../mixins/to-rem' as *;
 @use '../mixins/icon' as *;
+@use '~@public-ui/components/index' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
@@ -70,8 +71,10 @@
 				border: none;
 			}
 
-			&:hover {
-				color: var(--color-primary);
+			@include kol-enabled-wrapper {
+				&:hover {
+					color: var(--color-primary);
+				}
 			}
 
 			&.primary,

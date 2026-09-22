@@ -1,7 +1,7 @@
 import { Buffer } from 'buffer';
 
-import { expect } from '@playwright/test';
-import { test } from '@stencil/playwright';
+import { expect, type Page } from '@playwright/test';
+import { type E2EPage, test } from '@stencil/playwright';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
@@ -143,6 +143,46 @@ test.describe(COMPONENT_NAME, () => {
 			expect(fileList).toEqual({});
 			await expect(page.locator('input')).toHaveValue('');
 			await expect(page.locator('.kol-input-container__filename')).toHaveText(translate('kol-filename-text'));
+		});
+	});
+
+	test.describe('drag and drop', () => {
+		const dropFile = async (page: Page & E2EPage): Promise<void> => {
+			const dataTransfer = await page.evaluateHandle(() => {
+				const transfer = new DataTransfer();
+				transfer.items.add(new File(['content'], 'dropped.txt', { type: 'text/plain' }));
+				return transfer;
+			});
+			await page.locator('.kol-input-container').dispatchEvent('drop', { dataTransfer });
+			await page.waitForChanges();
+		};
+
+		test('accepts a dropped file when enabled', async ({ page }) => {
+			await page.setContent('<kol-input-file _label="File"></kol-input-file>');
+
+			await dropFile(page);
+
+			await expect(page.locator('.kol-input-container__filename')).toHaveText('dropped.txt');
+		});
+
+		test('ignores a dropped file when disabled', async ({ page }) => {
+			await page.setContent('<kol-input-file _label="File" _disabled></kol-input-file>');
+			const filenameBefore = await page.locator('.kol-input-container__filename').textContent();
+
+			await dropFile(page);
+
+			/* The drag listeners sit on the container, not on the `<input disabled>`, so the native
+			   disabled state does not stop them on its own. */
+			await expect(page.locator('.kol-input-container__filename')).toHaveText(filenameBefore ?? '');
+		});
+
+		test('does not mark a disabled container as a drop target on dragover', async ({ page }) => {
+			await page.setContent('<kol-input-file _label="File" _disabled></kol-input-file>');
+
+			await page.locator('.kol-input-container').dispatchEvent('dragover');
+			await page.waitForChanges();
+
+			await expect(page.locator('.kol-input-container')).not.toHaveClass(/kol-input-container--is-dragover/);
 		});
 	});
 });

@@ -1,8 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolCardWc } from '../../card/wc';
-import { KolDialogWc } from '../component';
+import { KolDialogWc } from '../wc';
 
 describe('kol-dialog-wc scroll lock', () => {
 	const getOverflow = () => document.documentElement.style.getPropertyValue('overflow');
@@ -10,7 +9,7 @@ describe('kol-dialog-wc scroll lock', () => {
 
 	const setUpPage = async () => {
 		const page = await newSpecPage({
-			components: [KolDialogWc, KolCardWc],
+			components: [KolDialogWc],
 			template: () => <kol-dialog-wc _label="Test" _variant="blank" />,
 		});
 		await page.waitForChanges();

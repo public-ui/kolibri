@@ -6,6 +6,7 @@ import { devHint } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { classNameFromVariant } from '../../../schema/props/variant-class-name';
 import clsx from '../../../utils/clsx';
+import { preventFocus } from '../../../utils/element-interaction';
 import { AriaDescriptionSpanFC } from '../aria-description-span/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
@@ -96,6 +97,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 				class={linkBem('interactive-element')}
 				{...on}
 				onClick={handleAnchorClick}
+				onMouseDown={disabled ? preventFocus : undefined}
 				role={roleValue}
 				tabIndex={disabled ? -1 : tabIndex}
 			>

@@ -28,71 +28,66 @@
 			}
 		}
 
-		.kol-button {
+		/* The decorative bar uses `::before`, which overrides the component layer's baseline pseudo. */
+		&__heading {
 			color: var(--color-dark-blue-100);
 			position: relative;
+			padding: to-rem(16) to-rem(20);
 
 			font-size: to-rem(16);
+			line-height: 1.5;
 			transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
-			/* Box padding, line-height, focus ring, disabled colour and the open-state weight
-			   belong to the interactive element: on the wrapper the padding would stack on top of
-			   the inner button's a11y min-size (+20px per heading), Firefox pins `line-height:
-			   normal` and `font-weight: 400` on the real button (beating any inherited value), and
-			   the wrapper never receives `:focus` or the `disabled` attribute. */
-			.kol-button__interactive-element {
-				padding: to-rem(16) to-rem(20);
-
-				line-height: 1.5;
-
-				@media (min-width: $breakpoint-sm) {
-					padding: to-rem(16) to-rem(32);
-				}
-
-				&:focus-visible {
-					background: var(--color-blue-20);
-					@include focus-outline;
-				}
+			@media (min-width: $breakpoint-sm) {
+				padding: to-rem(16) to-rem(32);
 			}
 
-			/* On the wrapper `:not(:disabled)` would always be true; `:has(:disabled)` asks the
-			   interactive element inside it, while `:hover`/`:active` still propagate to the wrapper. */
-			&:not(:has(:disabled)):hover,
-			&:not(:has(:disabled)):active {
-				&::before {
-					border-radius: 6px 0 0 6px;
-					display: block;
-					position: absolute;
-					top: 0;
-					bottom: 0;
-					left: -1px;
-
-					content: '';
-					border-left: 4px solid var(--color-blue-100);
-				}
-			}
-
-			&:not(:has(:disabled)):hover {
+			&:not([aria-disabled='true']):focus-visible {
 				background: var(--color-blue-20);
+				@include focus-outline;
 			}
 
-			&:not(:has(:disabled)):active {
-				background: var(--color-blue-30);
+			&:not([aria-disabled='true']) {
+				&:hover,
+				&:active {
+					&::before {
+						border-radius: 6px 0 0 6px;
+						display: block;
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						left: -1px;
+
+						content: '';
+						border-left: 4px solid var(--color-blue-100);
+					}
+				}
+
+				&:hover {
+					background: var(--color-blue-20);
+				}
+
+				&:active {
+					background: var(--color-blue-30);
+				}
 			}
 
-			&:has(:disabled) {
-				opacity: 1;
+			&[aria-disabled='true'] {
 				color: var(--color-black-60);
 			}
 		}
 
-		&.collapsible--open .kol-button {
+		&--open &__heading {
 			box-shadow: inset 3px 0 0 rgb(31, 51, 71, 0.16);
+			padding-top: to-rem(24);
+
+			font-weight: 700;
 			border-top-left-radius: 2px;
 
-			.kol-button__interactive-element {
-				padding-top: to-rem(24);
-
+			/* The component layer pins `font-weight: 400` on the heading's `.kol-headline`, replicating
+			   the reset the real button used to apply. On the summary alone the open-state weight
+			   therefore never reaches the label, so it is restated below that reset. */
+			.kol-headline {
 				font-weight: 700;
 			}
 		}
@@ -103,27 +98,27 @@
 			flex-direction: row-reverse;
 			justify-content: space-between;
 		}
-	}
 
-	.kol-icon {
-		transform: rotate(90deg);
-		color: var(--color-blue-100);
+		.kol-icon {
+			transform: rotate(90deg);
+			color: var(--color-blue-100);
 
-		font-size: to-rem(22);
-		transition: 200ms transform cubic-bezier(0.65, 0, 0.35, 1);
+			font-size: to-rem(22);
+			transition: 200ms transform cubic-bezier(0.65, 0, 0.35, 1);
+		}
 
-		.collapsible--open & {
+		&--open .kol-icon {
 			transform: rotate(180deg);
 		}
-	}
 
-	.collapsible--disabled {
-		.kol-icon {
-			color: var(--color-black-60);
-		}
+		&--disabled {
+			.kol-icon {
+				color: var(--color-black-60);
+			}
 
-		.collapsible__content {
-			color: var(--color-black-70);
+			#{$root}__content {
+				color: var(--color-black-70);
+			}
 		}
 	}
 

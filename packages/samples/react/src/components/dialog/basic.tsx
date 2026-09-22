@@ -24,10 +24,18 @@ export const DialogBasic: FC = () => {
 	};
 
 	useEffect(() => {
-		if (showDialog === 'true') {
-			blankRef.current?.openModal();
-			cardRef.current?.openModal();
+		if (showDialog !== 'true') {
+			return;
 		}
+		/*
+		 * `openModal` is asynchronous, so firing both calls without awaiting leaves the order in
+		 * which the two dialogs enter the top layer to whichever component finishes loading first.
+		 * The visual tests photograph that race. Awaiting keeps the card dialog on top.
+		 */
+		void (async () => {
+			await blankRef.current?.openModal();
+			await cardRef.current?.openModal();
+		})();
 	}, [showDialog]);
 
 	return (
