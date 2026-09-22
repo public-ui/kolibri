@@ -176,11 +176,17 @@
 				min-height: var(--a11y-min-size);
 				align-items: center;
 				justify-content: center;
-				cursor: pointer;
-			}
 
-			&--disabled {
-				cursor: not-allowed;
+				/* The disabled modifier sits on the label, not on the selection wrapper: the former
+				   `&--disabled` one level up compiled to `.kol-table__selection--disabled`, which the
+				   component never renders, so the reset never applied. */
+				&:not(.kol-table__selection-label--disabled) {
+					cursor: pointer;
+				}
+
+				&--disabled {
+					cursor: not-allowed;
+				}
 			}
 
 			&-icon {

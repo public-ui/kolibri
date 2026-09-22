@@ -13,28 +13,24 @@
 				var(--kern-metric-space-x-small);
 		}
 
-		&.collapsible {
-			.kol-icon {
-				&::before {
-					content: '\e925';
-				}
+		.kol-icon {
+			&::before {
+				content: '\e925';
 			}
 		}
 
-		.kol-button {
-			/* Box values belong to the interactive element: on the wrapper the padding would stack
-			   on top of the inner button's a11y min-size instead of growing the old button box. */
-			.kol-button__interactive-element {
-				padding: var(--kern-metric-space-default) var(--kern-metric-space-x-small);
-			}
+		&__heading {
+			padding: var(--kern-metric-space-default) var(--kern-metric-space-x-small);
 
-			&__interactive-element:not(:disabled):hover,
-			&__interactive-element:not(:disabled):active {
+			&:not([aria-disabled='true']):hover,
+			&:not([aria-disabled='true']):active {
 				background: var(--kern-color-action-state-indicator-tint-hover-opacity);
 				cursor: pointer;
 			}
 
-			&__interactive-element:not(:disabled, [tabindex='-1']):focus-visible {
+			/* The component keeps a disabled summary out of every focus path; the guard is kept as a
+			   safety net so a disabled control can never draw a ring. */
+			&:not([aria-disabled='true'], [tabindex='-1']):focus-visible {
 				@include focus-outline($angularBorder: true);
 			}
 
@@ -82,13 +78,13 @@
 
 		font-size: to-rem(24);
 
-		.kol-button--disabled & {
+		.kol-accordion--disabled & {
 			color: var(--kern-color-action-default, #1a3da5);
 		}
 
 		transition: 200ms transform cubic-bezier(0.65, 0, 0.35, 1);
 
-		.collapsible--open & {
+		.kol-accordion--open & {
 			transform: rotate(180deg);
 		}
 	}
