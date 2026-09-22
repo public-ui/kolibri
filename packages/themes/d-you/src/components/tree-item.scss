@@ -8,20 +8,28 @@
 		$root: &;
 		--indentation: #{to-rem(16)};
 
+		/*
+		 * `flex`, not `block`: the link inside is `inline-flex`, and on a line box it sat on the text
+		 * baseline. A leaf starts with the empty toggle placeholder, and an inline-flex box without
+		 * text takes its baseline from its bottom edge, so the line's descender space hung below
+		 * every leaf row — 52.4px against the 46px of a row with a chevron.
+		 */
 		&__link {
-			display: block;
+			display: flex;
 			border: 1px solid transparent;
 
 			.kol-link {
 				color: var(--color-text);
-				padding-left: max(calc(var(--indentation) * var(--level)));
 				text-align: left;
 			}
 
-			/* The padding-right lives on the anchor: its focus outline has to reach the row edge
-			   so that it covers the list frame exactly like the former full-width anchor did. */
+			/* Both paddings live on the anchor, the indentation included: the anchor carries the
+			   focus outline, and it has to span the row exactly like the hover and active
+			   backgrounds do. With the indentation on the wrapper outside it, the outline started
+			   one indentation step in and drew a second, inset box inside the highlighted row. */
 			.kol-link__interactive-element {
 				padding-right: to-rem(8);
+				padding-left: calc(var(--indentation) * var(--level));
 			}
 
 			&:hover,
