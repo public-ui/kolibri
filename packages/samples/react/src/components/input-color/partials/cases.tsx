@@ -76,6 +76,9 @@ export const InputColorCases = forwardRef<HTMLKolInputColorElement, InputColorCa
 					_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 				></KolInputColor>
 			</SampleBlock>
+			<SampleBlock {...block('suggestions')}>
+				<KolInputColor {...props} _label="With suggestions" _suggestions={['#000000', '#ffffff', '#ff0000', '#00ff00', '#0000ff']}></KolInputColor>
+			</SampleBlock>
 		</div>
 	);
 });
