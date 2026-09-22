@@ -1,10 +1,10 @@
-@use '../mixins/to-rem' as *;
 @use '../mixins/alert' as *;
 
+/*
+ * The error state of a field group. The marker is the message container and the field's own
+ * boundary, not an accent rail beside them — see `mixins/form-field.scss`.
+ */
 @mixin input-error {
-	padding-left: to-rem(16);
-	border-left: 3px solid var(--color-danger);
-
 	.input:focus-within {
 		outline-color: var(--color-danger);
 	}

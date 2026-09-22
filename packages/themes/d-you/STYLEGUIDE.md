@@ -2,13 +2,20 @@
 
 Design specification for the `@public-ui/theme-d-you` KoliBri theme.
 
-All values in this document were extracted from the Figma screens of the design hand-off. The screens
-are named chronologically (`Bildschirmfoto 2026-09-22 um <HH.MM.SS>.png`) and every section below
-names the timestamps it was taken from, so a value can always be traced back to its source.
+## Sources
 
-The screens themselves are not part of this repository — they are several megabytes of PNG and live
-in the design hand-off. Place them in `figma/` next to this file to follow the references; the folder
-is git-ignored.
+| Source                       | Link                                                                                                                                                                                                               | What it is                                                              |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| Figma file                   | [2026_09 Design System d-you and flows](https://www.figma.com/design/vGhn8VyJ987JzmJenIuvI1/2026_09-Design-System-d-you-and-flows)                                                                                 | The design system itself. Every value in this document comes from here. |
+| Architecture concept, §UI/UX | [Wallet development documentation v0.16.0 — 04 Design System](https://bmi.usercontent.opencode.de/eudi-wallet/wallet-development-documentation-public/v0.16.0/architecture-concept/09-ui-ux/04-design-system.html) | The published specification the Figma file belongs to.                  |
+
+Both are the authority; this document is a transcription. Where the two disagree with what the theme
+ships, the deviation is stated in place, with the reason.
+
+Values were read from a set of Figma screens exported on 2026-09-22 and named chronologically
+(`Bildschirmfoto 2026-09-22 um <HH.MM.SS>.png`); every section below names the timestamps it was
+taken from. The screens are not part of this repository — they are several megabytes of PNG. Place
+them in `figma/` next to this file to follow the references; the folder is git-ignored.
 
 The underlying design system is the **EUDI Wallet DE** design system (the German EUDI Wallet app,
 product name “d-you”). It is a mobile-first Material-3-flavoured system: a green “Mint Beam” brand

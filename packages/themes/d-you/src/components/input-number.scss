@@ -1,6 +1,7 @@
 @use '../@shared/input-core' as *;
 @use '../mixins/input-text.scss' as *;
 @use '../mixins/icon' as *;
+@use '../mixins/motion' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
@@ -10,8 +11,7 @@
 		.kol-input-number__step-button {
 			color: var(--color-primary);
 			border-radius: var(--border-radius);
-			transition-duration: 0.3s;
-			transition-property: background-color, color;
+			@include kol-transition-state(background-color, color);
 
 			&:focus {
 				outline: 0;

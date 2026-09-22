@@ -2,8 +2,9 @@
 @use '../mixins/card' as *;
 @use '../mixins/icon' as *;
 @use '../mixins/elevation' as *;
+@use '../mixins/motion' as *;
 
-$duration: 0.4s;
+$duration: $kol-duration-surface;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
@@ -46,6 +47,25 @@ $duration: 0.4s;
 
 				&.kol-drawer__wrapper--is-closing {
 					animation: slideOutBottom $duration forwards;
+				}
+			}
+
+			/*
+			 * The travel is what triggers vestibular discomfort, not the appearance. The drawer
+			 * therefore arrives in place: same end state, same focus behaviour, no journey across
+			 * the viewport. `animation-name: none` also cancels the closing animation, so the
+			 * element is simply removed as before.
+			 */
+			@include kol-reduced-motion {
+				&--left,
+				&--right,
+				&--top,
+				&--bottom {
+					animation-name: none;
+
+					&.kol-drawer__wrapper--is-closing {
+						animation-name: none;
+					}
 				}
 			}
 		}

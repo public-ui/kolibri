@@ -11,9 +11,15 @@ grey scale, a 4 px base grid with an 8 px vertical rhythm, pill-shaped actions a
 icon language.
 
 The full design specification, including the source of every value, is in
-[`STYLEGUIDE.md`](./STYLEGUIDE.md). It is derived from the Figma screens of the design hand-off,
-which are named chronologically, so any value can be traced back to the screen it came from. The
-screens are not committed; drop them into a local `figma/` folder to follow the references.
+[`STYLEGUIDE.md`](./STYLEGUIDE.md). It transcribes two sources:
+
+- the Figma file [2026_09 Design System d-you and flows](https://www.figma.com/design/vGhn8VyJ987JzmJenIuvI1/2026_09-Design-System-d-you-and-flows)
+- the published [architecture concept, §UI/UX — Design System](https://bmi.usercontent.opencode.de/eudi-wallet/wallet-development-documentation-public/v0.16.0/architecture-concept/09-ui-ux/04-design-system.html)
+  (wallet development documentation v0.16.0)
+
+Values were read from Figma screens exported on 2026-09-22 and named chronologically, so any value
+can be traced back to the screen it came from. The screens are not committed; drop them into a local
+`figma/` folder to follow the references.
 
 ## Installation & Integration
 

@@ -227,6 +227,38 @@
 		transition: outline-offset 0.2s linear;
 	}
 
+	/*
+	 * The surfaces the theme does not draw itself still belong to it. Each of these ships a browser
+	 * default that comes from no design system: the selection wash is the OS accent, the caret is
+	 * pure black, an underline sits on the baseline and clips descenders, and proportional digits
+	 * make a column of numbers ragged.
+	 */
+	::selection {
+		color: var(--color-on-primary);
+		background-color: var(--color-primary-container);
+	}
+
+	:host {
+		caret-color: var(--color-primary);
+	}
+
+	a,
+	u,
+	ins {
+		text-decoration-thickness: from-font;
+		text-underline-offset: 0.2em;
+	}
+
+	/*
+	 * Figures that are read as a column — a table cell, a page number, a counter — line up only with
+	 * tabular figures. Prose keeps the proportional default, where they read better.
+	 */
+	td,
+	.kol-pagination,
+	.kol-form-field__counter {
+		font-variant-numeric: tabular-nums;
+	}
+
 	.kol-headline {
 		font-weight: 700;
 	}

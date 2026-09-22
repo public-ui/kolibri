@@ -59,10 +59,12 @@
 			@include kol-typography-hint;
 		}
 
+		/*
+		 * No accent rail down the side of the field: the design system marks an error with the
+		 * message's own bordered container plus its icon, and repeats the colour on the field's
+		 * boundary (see `mixins/input.scss`). A third marker would only add width.
+		 */
 		&--error:not(&--hide-msg) {
-			padding-left: to-rem(16);
-			border-left: 3px solid var(--color-danger);
-
 			.kol-form-field__msg {
 				&.kol-alert--type-error {
 					@include kol-input-error-with-kol-alert-error(--color-danger);

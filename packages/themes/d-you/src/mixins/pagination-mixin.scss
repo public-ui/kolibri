@@ -2,6 +2,7 @@
 @use './focus-outline' as *;
 @use './select' as *;
 @use './elevation' as *;
+@use './motion' as *;
 
 @mixin kol-pagination-styles {
 	.kol-table-stateful {
@@ -52,8 +53,9 @@
 				font-weight: 700;
 				border: 1px solid var(--color-primary);
 				text-align: center;
-				transition-duration: 0.5s;
+				transition-duration: $kol-duration-state;
 				transition-property: background-color, color, border-color;
+				transition-timing-function: $kol-ease-out;
 			}
 		}
 

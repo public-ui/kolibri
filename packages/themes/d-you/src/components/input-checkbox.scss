@@ -7,6 +7,7 @@
 @use '../mixins/icon' as *;
 @use '../mixins/form-field' as *;
 @use '../mixins/elevation' as *;
+@use '../mixins/motion' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
@@ -51,7 +52,7 @@
 			border-width: 2px;
 			order: 1;
 			appearance: none;
-			transition: 0.5s;
+			@include kol-transition-state(background-color, color, border-color);
 
 			&:checked,
 			&:indeterminate {

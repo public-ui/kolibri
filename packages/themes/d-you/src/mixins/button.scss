@@ -3,6 +3,7 @@
 @use './to-rem' as *;
 @use './typography' as *;
 @use './elevation' as *;
+@use './motion' as *;
 
 /*
  * Buttons in d-you are pills.
@@ -125,8 +126,7 @@
 			/* 12px block padding on a 1.4 line height plus the border makes the 48px touch target. */
 			padding: to-rem(12) to-rem(24);
 
-			transition-duration: 0.5s;
-			transition-property: background-color, color, border-color;
+			@include kol-transition-state(background-color, color, border-color);
 
 			&:hover {
 				color: var(--text-color);

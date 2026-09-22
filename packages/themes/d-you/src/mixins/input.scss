@@ -63,7 +63,14 @@
 			}
 		}
 
+		/*
+		 * The invalid field carries the error colour on its own boundary. The message above it says
+		 * what is wrong and the icon repeats it without colour, so the state survives both a
+		 * monochrome rendering and a viewer who cannot separate red from grey.
+		 */
 		&--error {
+			border-color: var(--color-danger);
+
 			&:has(.kol-input:focus, .kol-select:focus, .kol-textarea:focus) {
 				outline-color: var(--color-danger);
 			}
