@@ -108,7 +108,7 @@
 				--text-color: var(--text-hover-color);
 
 				position: relative;
-				@include focus-outline;
+				@include focus-outline(var(--border-radius-pill));
 			}
 		}
 
@@ -145,7 +145,7 @@
 			}
 
 			@at-root #{$root}__interactive-element:focus {
-				@include focus-outline;
+				@include focus-outline(var(--border-radius-pill));
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
 

@@ -1,8 +1,16 @@
 @use '../mixins/to-rem' as *;
 
-@mixin focus-outline {
+/*
+ * The focus ring.
+ *
+ * `outline` follows the element's own `border-radius`, so the ring is only ever as round as the
+ * element it sits on. The radius therefore has to be passed in wherever the carrier is shaped
+ * differently from the theme's default control radius — a pill-shaped button being the obvious case,
+ * where the 8px default would draw a rounded rectangle around a capsule.
+ */
+@mixin focus-outline($radius: var(--border-radius)) {
 	outline: var(--color-primary-variant) solid to-rem(3);
-	border-radius: var(--border-radius);
+	border-radius: $radius;
 	outline-offset: var(--kol-focus-outline-offset, 2px);
 	transition: 200ms outline-offset linear;
 }

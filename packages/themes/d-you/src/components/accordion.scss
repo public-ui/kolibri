@@ -20,10 +20,6 @@
 		width: 100%;
 		height: 100%;
 
-		&:focus-within {
-			@include focus-outline;
-		}
-
 		&__content {
 			// Everything slotted into the accordion stands on the accordion, not on the page behind it.
 			--kol-surface: var(--color-light);
@@ -44,12 +40,6 @@
 			min-height: to-rem(35.2);
 			cursor: pointer;
 
-			&:focus-within {
-				.kol-button {
-					outline: 0;
-				}
-			}
-
 			.kol-span__container {
 				display: flex;
 				gap: 0.5em;
@@ -63,8 +53,14 @@
 					padding: to-rem(12) to-rem(8);
 				}
 
+				/*
+				 * The ring belongs on the control that actually has focus. Drawing it on the panel
+				 * via `:focus-within` wrapped the opened content as well, so it read as "this whole
+				 * section is focused" and its shape no longer matched anything the user had tabbed
+				 * to.
+				 */
 				.kol-button__interactive-element:focus {
-					outline: none;
+					@include focus-outline;
 				}
 			}
 

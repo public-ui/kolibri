@@ -47,8 +47,9 @@
 			&:hover {
 				outline: 0;
 
+				/* The overlay covers the whole card, so the ring takes the card's own radius. */
 				&::after {
-					@include focus-outline;
+					@include focus-outline($border-radius);
 				}
 			}
 		}
