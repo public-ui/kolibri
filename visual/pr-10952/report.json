@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 10952,
-	"head": "9edc1537329e9a9f66e87995934ad1b2c0472019",
+	"head": "e53dd0be4769bfb8c3fdf578adad37520f1bec2b",
 	"repository": "public-ui/kolibri",
-	"runId": 35707486231,
-	"generatedAt": "2026-09-22T09:45:25.548Z",
-	"digest": "sha256:7a539a47fb73fce083fc826a136bb931ec96a8e3d0bb696da2a7480e3421f2f3",
+	"runId": 35750714193,
+	"generatedAt": "2026-09-22T16:38:12.374Z",
+	"digest": "sha256:da53f8be2b5341303684a33210391163b701fbaa43292afd2ec060085cb9dd5a",
 	"baseline": {
-		"sha": "7a2e7eb05c1e47066798d116424f9c0a45cb2aea",
+		"sha": "4cab714e7544545a3298a49ea86ea8f70a212c20",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -30,13 +30,13 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "7a2e7eb05c1e47066798d116424f9c0a45cb2aea",
+					"sha": "4cab714e7544545a3298a49ea86ea8f70a212c20",
 					"ref": "develop",
-					"runId": 35705188112,
+					"runId": 35734294435,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-22T08:39:16.055Z",
-					"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
+					"createdAt": "2026-09-22T13:40:03.707Z",
+					"digest": "sha256:01183dfd73fdf3a2f4d5bc5a290e6e0cf767dc186e97abfce80727f1de1fc33b",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
+			"digest": "sha256:01183dfd73fdf3a2f4d5bc5a290e6e0cf767dc186e97abfce80727f1de1fc33b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -61,7 +61,7 @@
 					"name": "accordion-basic--basic",
 					"route": "accordion-basic",
 					"status": "unchanged",
-					"hash": "sha256:cd6713c5bacdc3d9ffad04acfba903f371dc629d1ab807ae4170b1204805b729"
+					"hash": "sha256:5c275c03d375dea9789a182da311da865b18f0fd82b27edb70cae3fea6a0ddc8"
 				},
 				{
 					"name": "alert-basic--default",
@@ -2515,13 +2515,13 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "7a2e7eb05c1e47066798d116424f9c0a45cb2aea",
+					"sha": "4cab714e7544545a3298a49ea86ea8f70a212c20",
 					"ref": "develop",
-					"runId": 35705188112,
+					"runId": 35734294435,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-22T08:40:05.856Z",
-					"digest": "sha256:fd2ad1a7ece66d77e5a6a2319081ed15087fc48a67ecfe6c1050005784381570",
+					"createdAt": "2026-09-22T13:40:30.192Z",
+					"digest": "sha256:40ecef28a789cfe0be6f6523a33d86bea98da99b8c41ac85af1e53bd5500b1a1",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -2534,7 +2534,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:fd2ad1a7ece66d77e5a6a2319081ed15087fc48a67ecfe6c1050005784381570",
+			"digest": "sha256:40ecef28a789cfe0be6f6523a33d86bea98da99b8c41ac85af1e53bd5500b1a1",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2546,7 +2546,7 @@
 					"name": "accordion-basic--basic",
 					"route": "accordion-basic",
 					"status": "unchanged",
-					"hash": "sha256:f31433c274eaeb093d1a8e1c2c0699deda3d7ad5fce9e27a711cd73a2c51a667"
+					"hash": "sha256:3034a022714feb3eaa8921ad0bc3dba29bfe370bd297ba1e6ea1e0e26cba4d8b"
 				},
 				{
 					"name": "alert-basic--default",
@@ -2834,7 +2834,7 @@
 					"name": "details-basic--basic",
 					"route": "details-basic",
 					"status": "unchanged",
-					"hash": "sha256:ad261c03bb35165f0976815b7b4a57f6d7f0a3c6b3695df1a90369c1c8c64320"
+					"hash": "sha256:091ae76adf9f60c339adab707d223234f092c1439105f196b93841b5cbdb6836"
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
@@ -4418,7 +4418,7 @@
 					"name": "scenarios-focus-elements-component-details",
 					"route": "scenarios-focus-elements-component-details",
 					"status": "unchanged",
-					"hash": "sha256:df2c682ad7c192c3417f1cf1eb717748128f133dac239f45f51cb3b9d666c940"
+					"hash": "sha256:f536b0607891fd2ddabc363fdf6f976b5519af3da293cd6d08ed3c01c42a8fc1"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputCheckbox",
@@ -5000,13 +5000,13 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "7a2e7eb05c1e47066798d116424f9c0a45cb2aea",
+					"sha": "4cab714e7544545a3298a49ea86ea8f70a212c20",
 					"ref": "develop",
-					"runId": 35705188112,
+					"runId": 35734294435,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-22T08:39:16.055Z",
-					"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
+					"createdAt": "2026-09-22T13:40:03.707Z",
+					"digest": "sha256:01183dfd73fdf3a2f4d5bc5a290e6e0cf767dc186e97abfce80727f1de1fc33b",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -5019,7 +5019,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:224699870ed031b929dc7b88a0e348f9a1732376a392223c7c4c49468b2c0d90",
+			"digest": "sha256:01183dfd73fdf3a2f4d5bc5a290e6e0cf767dc186e97abfce80727f1de1fc33b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5031,7 +5031,7 @@
 					"name": "accordion-basic--basic",
 					"route": "accordion-basic",
 					"status": "unchanged",
-					"hash": "sha256:cd6713c5bacdc3d9ffad04acfba903f371dc629d1ab807ae4170b1204805b729"
+					"hash": "sha256:5c275c03d375dea9789a182da311da865b18f0fd82b27edb70cae3fea6a0ddc8"
 				},
 				{
 					"name": "alert-basic--default",
@@ -7485,12 +7485,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "7a2e7eb05c1e47066798d116424f9c0a45cb2aea",
+					"sha": "4cab714e7544545a3298a49ea86ea8f70a212c20",
 					"ref": "develop",
-					"runId": 35705188112,
+					"runId": 35734294435,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-22T08:39:10.082Z",
+					"createdAt": "2026-09-22T13:40:28.804Z",
 					"digest": "sha256:09475be628c62c2a5a2675a2b520b1930068ab529c1d39ba5eaa2d714e57a906",
 					"fallback": null,
 					"distance": 0,
@@ -9970,13 +9970,13 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "7a2e7eb05c1e47066798d116424f9c0a45cb2aea",
+					"sha": "4cab714e7544545a3298a49ea86ea8f70a212c20",
 					"ref": "develop",
-					"runId": 35705188112,
+					"runId": 35734294435,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-22T08:36:56.509Z",
-					"digest": "sha256:613c4f134318592964e2915b3338d302a2d42b5309489dbefe7a60b65064501d",
+					"createdAt": "2026-09-22T13:41:09.065Z",
+					"digest": "sha256:92193952e1be7f78efa9a775c49286b29a8d29e2ede5306f334bf3a31295b2b9",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -9989,7 +9989,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:613c4f134318592964e2915b3338d302a2d42b5309489dbefe7a60b65064501d",
+			"digest": "sha256:92193952e1be7f78efa9a775c49286b29a8d29e2ede5306f334bf3a31295b2b9",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11873,7 +11873,7 @@
 					"name": "scenarios-focus-elements-component-details",
 					"route": "scenarios-focus-elements-component-details",
 					"status": "unchanged",
-					"hash": "sha256:dd5977485aac8995581b27239eb4d06086741880bf95f5c7ad2d64a23824be77"
+					"hash": "sha256:16e0e5259353eb20aa639053b36834f17c551f13db01d3360b44703525d72b92"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputCheckbox",
@@ -12455,13 +12455,13 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "7a2e7eb05c1e47066798d116424f9c0a45cb2aea",
+					"sha": "4cab714e7544545a3298a49ea86ea8f70a212c20",
 					"ref": "develop",
-					"runId": 35705188112,
+					"runId": 35734294435,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-22T08:36:55.868Z",
-					"digest": "sha256:bd1e26a199a0666493ca4f47ea0de688738bdd00a6e160a65791303d4c48602c",
+					"createdAt": "2026-09-22T13:40:18.789Z",
+					"digest": "sha256:bbeceddc416db74402abbece034e13eacf2fe3b1738df13d9cd31a2faf59c31b",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -12474,7 +12474,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:bd1e26a199a0666493ca4f47ea0de688738bdd00a6e160a65791303d4c48602c",
+			"digest": "sha256:bbeceddc416db74402abbece034e13eacf2fe3b1738df13d9cd31a2faf59c31b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14358,7 +14358,7 @@
 					"name": "scenarios-focus-elements-component-details",
 					"route": "scenarios-focus-elements-component-details",
 					"status": "unchanged",
-					"hash": "sha256:5574d8f2c0d9be352db666653a32863ae23ba42d611dea9317e9b83691f9231c"
+					"hash": "sha256:2352b8cde2c6ba725db0ee65d36b4b4d7c3f9ccffb9b6b1ce86ce380d8df479e"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputCheckbox",
@@ -14940,13 +14940,13 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "7a2e7eb05c1e47066798d116424f9c0a45cb2aea",
+					"sha": "4cab714e7544545a3298a49ea86ea8f70a212c20",
 					"ref": "develop",
-					"runId": 35705188112,
+					"runId": 35734294435,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-22T08:37:58.899Z",
-					"digest": "sha256:cf44922226e59e4758bd7ad7f2e8be0dfa49d38870038e30eadb4cda103bf465",
+					"createdAt": "2026-09-22T13:39:33.874Z",
+					"digest": "sha256:1edf7748f43327e3ea4d204ce11680d50955b325ce526433a4eebb24792e389a",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -14959,7 +14959,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:cf44922226e59e4758bd7ad7f2e8be0dfa49d38870038e30eadb4cda103bf465",
+			"digest": "sha256:1edf7748f43327e3ea4d204ce11680d50955b325ce526433a4eebb24792e389a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -16843,7 +16843,7 @@
 					"name": "scenarios-focus-elements-component-details",
 					"route": "scenarios-focus-elements-component-details",
 					"status": "unchanged",
-					"hash": "sha256:43f16137f8d62b07a3375da9580ac7b776e3b8e19fee95f4cca606cfb8b4f964"
+					"hash": "sha256:0de87cbb71e68e66c74d8e151d3adf15cb818e33b4c0a31d975660df239161b4"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputCheckbox",
