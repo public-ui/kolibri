@@ -107,7 +107,6 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 				'kol-form-field--has-counter': this.controller.hasSoftCharacterLimit() || this.controller.hasCounter(),
 			}),
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 			counterRefs: {
 				visualRef: this.counterUpdater.setVisualRef,
 				ariaRef: this.counterUpdater.setAriaRef,
@@ -132,12 +131,10 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 			onKeyDown: this.onKeyDown,
 			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
 				this.counterUpdater.retriggerAria(this._value?.length ?? 0, this.state._maxLength, this.state._maxLengthBehavior ?? 'hard');
 			},
 			onBlur: (event: FocusEvent) => {
 				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
 			},
 		};
 	}
@@ -318,14 +315,8 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 		_resize: 'vertical',
 	};
 
-	@State() private inputHasFocus = false;
-
 	public constructor() {
 		this.controller = new TextareaController(this, 'textarea', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')

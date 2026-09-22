@@ -86,7 +86,6 @@ export class KolSelectWc implements ClickableElement, FocusableElement, SelectAP
 			}),
 			tooltipAlign: this._tooltipAlign,
 			onClick: () => this.ctaRef.el?.focus(),
-			alert: this.showAsAlert(),
 			infoPopover: this._infoPopover,
 		};
 	}
@@ -100,11 +99,9 @@ export class KolSelectWc implements ClickableElement, FocusableElement, SelectAP
 			onChange: this.onChange.bind(this),
 			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
 			},
 			onBlur: (event: FocusEvent) => {
 				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
 			},
 		};
 	}
@@ -259,14 +256,8 @@ export class KolSelectWc implements ClickableElement, FocusableElement, SelectAP
 		_value: [],
 	};
 
-	@State() private inputHasFocus = false;
-
 	public constructor() {
 		this.controller = new SelectController(this, 'select', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accessKey')

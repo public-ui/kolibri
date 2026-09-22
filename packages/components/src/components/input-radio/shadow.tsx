@@ -135,7 +135,6 @@ export class KolInputRadio implements ClickableElement, FocusableElement, InputR
 				class: `kol-form-field__input--orientation-${this.state._orientation}`,
 			},
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 			hideLabel: false,
 			infoPopover: this._infoPopover,
 		};
@@ -192,11 +191,9 @@ export class KolInputRadio implements ClickableElement, FocusableElement, InputR
 				onKeyDown: this.onKeyDown.bind(this),
 				onFocus: (event: FocusEvent) => {
 					this.controller.onFacade.onFocus(event);
-					this.inputHasFocus = true;
 				},
 				onBlur: (event: FocusEvent) => {
 					this.controller.onFacade.onBlur(event);
-					this.inputHasFocus = false;
 				},
 			},
 		};
@@ -324,14 +321,8 @@ export class KolInputRadio implements ClickableElement, FocusableElement, InputR
 		_orientation: 'vertical',
 	};
 
-	@State() private inputHasFocus = false;
-
 	public constructor() {
 		this.controller = new InputRadioController(this, 'radio', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_tooltipAlign')

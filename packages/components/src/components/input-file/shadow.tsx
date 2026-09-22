@@ -103,7 +103,6 @@ export class KolInputFile implements ClickableElement, FocusableElement, InputFi
 			state: this.state,
 			class: clsx('kol-input-file', 'file'),
 			tooltipAlign: this._tooltipAlign,
-			alert: this.showAsAlert(),
 
 			infoPopover: this._infoPopover,
 		};
@@ -121,11 +120,9 @@ export class KolInputFile implements ClickableElement, FocusableElement, InputFi
 			onInput: this.onInput,
 			onFocus: (event: FocusEvent) => {
 				this.controller.onFacade.onFocus(event);
-				this.inputHasFocus = true;
 			},
 			onBlur: (event: FocusEvent) => {
 				this.controller.onFacade.onBlur(event);
-				this.inputHasFocus = false;
 			},
 		};
 	}
@@ -269,14 +266,8 @@ export class KolInputFile implements ClickableElement, FocusableElement, InputFi
 		_label: '', // ⚠ required
 	};
 
-	@State() private inputHasFocus = false;
-
 	public constructor() {
 		this.controller = new InputFileController(this, 'file', this.host);
-	}
-
-	private showAsAlert(): boolean {
-		return Boolean(this.state._touched) && !this.inputHasFocus;
 	}
 
 	@Watch('_accept')
