@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-DbQ-AGDj.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
