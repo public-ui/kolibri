@@ -7,8 +7,6 @@
 @layer kol-theme-component {
 	@include kol-icon-theme;
 	.kol-accordion {
-		$root: &;
-
 		@include kol-elevation-outline;
 
 		/*
@@ -24,7 +22,7 @@
 
 		/* Belt and braces: the component already keeps a disabled summary from taking focus at all.
 		   The guard stays so no future focus path can draw a ring on a control that refuses input. */
-		&:not(#{$root}--disabled):focus-within {
+		&:not(.kol-accordion--disabled):focus-within {
 			@include focus-outline;
 		}
 
