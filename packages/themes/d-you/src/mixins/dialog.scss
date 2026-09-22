@@ -19,7 +19,7 @@
 		border-radius: var(--border-radius-surface);
 
 		&__card {
-			@include kol-elevation-outline;
+			@include kol-elevation-outline-floating;
 		}
 
 		/*

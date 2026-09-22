@@ -2,6 +2,7 @@
 @use './palette' as *;
 @use './to-rem' as *;
 @use './typography' as *;
+@use './elevation' as *;
 
 /*
  * Buttons in d-you are pills.
@@ -130,7 +131,7 @@
 			&:hover {
 				color: var(--text-color);
 				background-color: var(--text-background-color);
-				box-shadow: 0 to-rem(2) to-rem(8) var(--color-shadow);
+				@include kol-shadow-low;
 				border-color: var(--text-border-color);
 			}
 

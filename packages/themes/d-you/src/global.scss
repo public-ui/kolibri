@@ -190,6 +190,14 @@
 	:host {
 		font-family: var(--font-family);
 		font-size: var(--font-size);
+
+		/*
+		 * Copy/default is 16px on a 140% line height, and it is the text every component renders
+		 * unless it says otherwise. Declaring it here rather than per component means a label, a
+		 * table cell and a hint all sit on the same rhythm; the headline and CTA mixins state their
+		 * own tighter values and override it where they apply.
+		 */
+		line-height: 1.4;
 	}
 
 	h1,

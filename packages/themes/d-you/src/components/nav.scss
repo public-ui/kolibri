@@ -1,6 +1,7 @@
 @use '../mixins/to-rem' as *;
 @use '../mixins/focus-outline' as *;
 @use '../mixins/icon' as *;
+@use '../mixins/elevation' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
@@ -114,7 +115,7 @@
 					&:hover {
 						color: var(--text-color);
 						background-color: var(--text-background-color);
-						box-shadow: 0 2px 8px 2px var(--color-shadow);
+						@include kol-shadow-low;
 						border-color: var(--text-border-color);
 					}
 

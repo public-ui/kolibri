@@ -1,6 +1,7 @@
 @use '../mixins/to-rem' as *;
 @use '../mixins/card' as *;
 @use '../mixins/icon' as *;
+@use '../mixins/elevation' as *;
 
 $duration: 0.4s;
 
@@ -11,12 +12,10 @@ $duration: 0.4s;
 	.kol-drawer {
 		&__wrapper {
 			/*
-			 * A drawer slides over the page, so in dark mode its boundary is a hard edge rather than the
-			 * blurred shadow — see `mixins/elevation.scss`. The light branch is unchanged.
+			 * A drawer slides over the page, so it carries shadow/high; in dark mode that shadow is
+			 * transparent and the boundary becomes a hard edge — see `mixins/elevation.scss`.
 			 */
-			box-shadow:
-				0 0 4px light-dark(var(--color-subtle), transparent),
-				0 0 0 var(--border-width) var(--color-edge);
+			@include kol-elevation-outline-floating;
 
 			&--left {
 				animation: slideInLeft $duration forwards;

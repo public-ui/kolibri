@@ -415,10 +415,15 @@ multi-step flows such as onboarding.
 The theme package implements the tokens above under the `--kol-*` namespace and follows the layering
 rules in the repository [`AGENTS.md`](../../../AGENTS.md):
 
-- The **theme global layer** (`src/global.scss`) declares every color, typography, spacing, radius
-  and shadow token on `:host` and resolves the light/dark branch with `light-dark()`.
+- The **theme global layer** (`src/global.scss`) declares the color, font, radius and shadow-color
+  tokens on `:host`, resolves the light/dark branch with `light-dark()`, and sets the base font size
+  and the 140 % line height of Copy/default, which every component inherits.
 - The **theme component layers** (`src/components/*.scss`) only reference those tokens; they contain
   no `color-scheme`, no `prefers-color-scheme` media query and no `light-dark()` of their own.
+- The **two elevation shadows** are mixins, not tokens (`kol-shadow-low`, `kol-shadow-high` in
+  `src/mixins/elevation.scss`), because a `box-shadow` is a geometry rather than a value a consumer
+  swaps; the color behind them stays overridable through `--color-shadow`. `--spacing` is the 4 px
+  base unit the component layers multiply up from, so the scale in §3.1 needs no token of its own.
 - Internal, non-public values (ramp steps, ratios, unit math) are SASS variables in
   `src/mixins/palette.scss` and `src/mixins/to-rem.scss`, never CSS custom properties.
 - `color-scheme.css` ships the single `:root` declaration an application needs to opt into dark mode.

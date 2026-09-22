@@ -5,6 +5,7 @@
 @use '../mixins/field-control' as *;
 @use '../mixins/focus-outline' as *;
 @use '../mixins/icon' as *;
+@use '../mixins/elevation' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
@@ -54,7 +55,7 @@
 			line-height: 1.5;
 
 			&:not(:disabled):hover {
-				box-shadow: 0 2px 8px 2px var(--color-shadow);
+				@include kol-shadow-low;
 				border-color: var(--color-primary);
 			}
 

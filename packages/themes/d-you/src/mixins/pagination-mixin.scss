@@ -1,6 +1,7 @@
 @use '../mixins/to-rem' as *;
 @use './focus-outline' as *;
 @use './select' as *;
+@use './elevation' as *;
 
 @mixin kol-pagination-styles {
 	.kol-table-stateful {
@@ -31,7 +32,7 @@
 			&__interactive-element:is(:active, :hover):not(:disabled) .kol-button__text {
 				color: var(--color-light);
 				background-color: var(--color-primary-variant);
-				box-shadow: 0 2px 8px 2px var(--color-shadow);
+				@include kol-shadow-low;
 				border-color: var(--color-primary-variant);
 			}
 

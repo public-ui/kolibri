@@ -6,6 +6,7 @@
 @use '../mixins/field-control' as *;
 @use '../mixins/icon' as *;
 @use '../mixins/form-field' as *;
+@use '../mixins/elevation' as *;
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
@@ -71,7 +72,7 @@
 			}
 
 			&:not(:disabled):hover {
-				box-shadow: 0 2px 8px 2px var(--color-shadow);
+				@include kol-shadow-low;
 				border-color: var(--color-primary);
 			}
 		}
@@ -223,7 +224,7 @@
 					&__label {
 						color: var(--color-light);
 						background-color: var(--color-primary-variant);
-						box-shadow: 0 2px 8px 2px var(--color-shadow);
+						@include kol-shadow-low;
 						border-color: var(--color-primary-variant);
 					}
 				}
