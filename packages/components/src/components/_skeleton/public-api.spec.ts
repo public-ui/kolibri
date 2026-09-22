@@ -904,6 +904,139 @@ const KOL_CARD_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	},
 };
 
+/**
+ * Pinned public API of `kol-dialog`: 5 props plus the five open/close methods — identical to the
+ * predecessor `shadow.tsx` on the develop branch.
+ */
+const KOL_DIALOG_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	openModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the dialog. @deprecated Use showModal() instead.',
+	},
+	showModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the dialog as a modal.',
+	},
+	show: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the dialog. Pass true to open as a modal dialog.',
+	},
+	close: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Closes the dialog.',
+	},
+	closeModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Closes the dialog. @deprecated Use close() instead.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_level: {
+		kind: 'prop',
+		type: 'HeadingLevel',
+		required: false,
+		default: '0',
+		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'KoliBriDialogEventCallbacks',
+		required: false,
+		doc: 'Defines the modal callback functions.',
+	},
+	_variant: {
+		kind: 'prop',
+		type: 'ModalVariantPropType',
+		required: false,
+		default: "'blank'",
+		doc: 'Defines the variant of the modal.',
+	},
+	_width: {
+		kind: 'prop',
+		type: 'string',
+		required: false,
+		default: "'100%'",
+		doc: 'Defines the width of the modal. (max-width: 100%)',
+	},
+};
+
+/**
+ * Pinned public API of the deprecated `kol-modal`: the same surface as `kol-dialog` minus
+ * `_level`, which it never exposed, and with its own "modal dialog" wording.
+ */
+const KOL_MODAL_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	openModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the modal dialog. @deprecated Use showModal() instead.',
+	},
+	showModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the dialog as a modal.',
+	},
+	show: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the dialog. Pass true to open as a modal dialog.',
+	},
+	close: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Closes the modal dialog.',
+	},
+	closeModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Closes the modal dialog. @deprecated Use close() instead.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'KoliBriDialogEventCallbacks',
+		required: false,
+		doc: 'Defines the modal callback functions.',
+	},
+	_variant: {
+		kind: 'prop',
+		type: 'ModalVariantPropType',
+		required: false,
+		default: "'blank'",
+		doc: 'Defines the variant of the modal.',
+	},
+	_width: {
+		kind: 'prop',
+		type: 'string',
+		required: false,
+		default: "'100%'",
+		doc: 'Defines the width of the modal. (max-width: 100%)',
+	},
+};
+
 describe('kol-link public API contract (ARC42 § Public API Contract)', () => {
 	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
 		const extracted = extractFrom('link', 'component.tsx');
@@ -935,6 +1068,9 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['card', 'wc.tsx'],
 		['alert', 'component.tsx'],
 		['alert', 'wc.tsx'],
+		['dialog', 'component.tsx'],
+		['dialog', 'wc.tsx'],
+		['modal', 'component.tsx'],
 	];
 
 	it.each(sources)('documents every public member of %s/%s', (component, file) => {
@@ -983,6 +1119,20 @@ describe('kol-card-wc transitional wrapper (internal contract for legacy consume
 	});
 });
 
+describe('kol-dialog-wc transitional wrapper (internal contract for legacy consumers)', () => {
+	it('keeps the full predecessor surface: 5 props plus the five open/close methods', () => {
+		const extracted = extractFrom('dialog', 'wc.tsx');
+		expect(extracted.filter((member) => member.kind === 'prop').map((member) => member.name)).toEqual(['_label', '_level', '_on', '_variant', '_width']);
+		expect(extracted.filter((member) => member.kind === 'method').map((member) => member.name)).toEqual([
+			'show',
+			'showModal',
+			'openModal',
+			'close',
+			'closeModal',
+		]);
+	});
+});
+
 /**
  * Pinned public API of `kol-form` — same props, types and defaults as the predecessor
  * `shadow.tsx` on the develop branch (3 props + focusErrorList). The one deviation is the `_on`
@@ -1024,6 +1174,8 @@ describe.each([
 	['kol-split-button', 'split-button', 'SplitButtonProps', KOL_SPLIT_BUTTON_PUBLIC_API],
 	['kol-badge', 'badge', 'BadgeProps', KOL_BADGE_PUBLIC_API],
 	['kol-card', 'card', 'CardProps', KOL_CARD_PUBLIC_API],
+	['kol-dialog', 'dialog', 'DialogProps', KOL_DIALOG_PUBLIC_API],
+	['kol-modal', 'modal', 'DialogProps', KOL_MODAL_PUBLIC_API],
 ] as const)('%s public API contract (ARC42 § Public API Contract)', (_tag, component, schemaInterface, pinnedApi) => {
 	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
 		// Failing this test means the public contract changed — a breaking change (ARC42 §

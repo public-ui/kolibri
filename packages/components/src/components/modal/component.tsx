@@ -3,23 +3,31 @@ import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stenci
 
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { DialogProps, HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
+import type { DialogProps, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
-import { BaseDialogWebComponent } from './base';
+import { BaseDialogWebComponent } from '../dialog/base';
 
 /**
- * @slot - The dialog's contents.
+ * The **Modal** component has been superseded by `kol-dialog`, which provides improved accessibility and conforms to the HTML dialog specification. It is still available in version 2 for backwards compatibility.
+ *
+ * @deprecated Use `kol-dialog` instead.
+ * @slot - The modal's contents.
  */
 @Component({
-	tag: 'kol-dialog',
+	tag: 'kol-modal',
 	styleUrls: {
 		default: './style.scss',
 	},
 	shadow: true,
 })
-export class KolDialog extends BaseDialogWebComponent implements DialogProps, WebComponentInterface<DialogApi> {
-	@Element() protected readonly host?: HTMLKolDialogElement;
+/*
+ * `_level` and its watcher are deliberately absent: the predecessor never exposed them here, and
+ * adding them would widen the public API of a deprecated component. The card variant therefore
+ * always renders its heading at the default level.
+ */
+export class KolModal extends BaseDialogWebComponent implements DialogProps, Omit<WebComponentInterface<DialogApi>, '_level' | 'watchLevel'> {
+	@Element() protected readonly host?: HTMLKolModalElement;
 
 	// --- Lifecycle ---
 
@@ -27,7 +35,6 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 		this.initDialogRenderProps();
 
 		this.watchLabel(this._label);
-		this.watchLevel(this._level);
 		this.watchOn(this._on);
 		this.watchVariant(this._variant);
 		this.watchWidth(this._width);
@@ -44,7 +51,7 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	// --- Public methods ---
 
 	/**
-	 * Opens the dialog.
+	 * Opens the modal dialog.
 	 * @deprecated Use showModal() instead.
 	 */
 	@Method()
@@ -70,7 +77,7 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	}
 
 	/**
-	 * Closes the dialog.
+	 * Closes the modal dialog.
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
@@ -79,7 +86,7 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	}
 
 	/**
-	 * Closes the dialog.
+	 * Closes the modal dialog.
 	 * @deprecated Use close() instead.
 	 */
 	@Method()
@@ -114,15 +121,6 @@ export class KolDialog extends BaseDialogWebComponent implements DialogProps, We
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
 		this.applyLabel(value);
-	}
-
-	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
-	 */
-	@Prop() public _level?: HeadingLevel = 0;
-	@Watch('_level')
-	public watchLevel(value?: HeadingLevel): void {
-		this.applyLevel(value);
 	}
 
 	/**

@@ -1,15 +1,14 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolCardWc } from '../../card/wc';
-import { KolDialogWc } from '../component';
+import { KolDialogWc } from '../wc';
 
 describe('kol-dialog-wc onClose event propagation', () => {
 	it('does not call onClose when a child dispatches a bubbling close event', async () => {
 		const onClose = jest.fn();
 
 		const page = await newSpecPage({
-			components: [KolDialogWc, KolCardWc],
+			components: [KolDialogWc],
 			template: () => <kol-dialog-wc _label="Test" _variant="blank" _on={{ onClose }} />,
 		});
 		await page.waitForChanges();
@@ -29,7 +28,7 @@ describe('kol-dialog-wc onClose event propagation', () => {
 		const onClose = jest.fn();
 
 		const page = await newSpecPage({
-			components: [KolDialogWc, KolCardWc],
+			components: [KolDialogWc],
 			template: () => <kol-dialog-wc _label="Test" _variant="blank" _on={{ onClose }} />,
 		});
 		await page.waitForChanges();

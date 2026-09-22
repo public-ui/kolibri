@@ -3,12 +3,9 @@
 exports[`kol-dialog should render with _label="Blank Dialog" _variant="blank" _width="80%" 1`] = `
 <kol-dialog>
   <template shadowrootmode="open">
-    <kol-dialog-wc>
-      <!---->
-      <dialog aria-label="Blank Dialog" aria-modal="true" class="kol-dialog kol-dialog__blank kol-modal kol-modal__blank" style="width: 80%;">
-        <slot></slot>
-      </dialog>
-    </kol-dialog-wc>
+    <dialog aria-label="Blank Dialog" aria-modal="true" class="kol-dialog kol-dialog__blank kol-modal kol-modal__blank" style="width: 80%;">
+      <slot></slot>
+    </dialog>
   </template>
 </kol-dialog>
 `;
@@ -16,27 +13,99 @@ exports[`kol-dialog should render with _label="Blank Dialog" _variant="blank" _w
 exports[`kol-dialog should render with _label="Dialog as Card" _variant="card" _width="80%" 1`] = `
 <kol-dialog>
   <template shadowrootmode="open">
-    <kol-dialog-wc>
-      <!---->
-      <dialog aria-labelledby="dialog-heading-nonce" aria-modal="true" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
-        <kol-card-wc _hascloser="" _headingid="dialog-heading-nonce" _label="Dialog as Card" _level="0">
+    <dialog aria-labelledby="dialog-heading-nonce" aria-modal="true" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
+      <article aria-labelledby="dialog-heading-nonce" class="kol-card">
+        <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="dialog-heading-nonce">
+          Dialog as Card
+        </strong>
+        <div class="kol-card__content">
           <slot></slot>
-        </kol-card-wc>
-      </dialog>
-    </kol-dialog-wc>
+        </div>
+        <div class="kol-card__close-button kol-close-button">
+          <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+            <button aria-label="kol-close" class="kol-button__interactive-element" type="button">
+              <span class="kol-button__text kol-span kol-span--hide-label">
+                <span class="kol-span__container">
+                  <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
+                    <slot name="expert" slot="expert"></slot>
+                  </span>
+                </span>
+              </span>
+            </button>
+            <div class="kol-button__tooltip">
+              <div class="kol-tooltip__floating">
+                <div class="kol-tooltip__arrow"></div>
+                <span class="kol-span kol-tooltip__content">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-close
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </dialog>
   </template>
 </kol-dialog>
+`;
+
+exports[`kol-dialog-wc should render with _label="Blank Dialog" _variant="blank" _width="80%" 1`] = `
+<kol-dialog-wc>
+  <!---->
+  <dialog aria-label="Blank Dialog" aria-modal="true" class="kol-dialog kol-dialog__blank kol-modal kol-modal__blank" style="width: 80%;"></dialog>
+</kol-dialog-wc>
+`;
+
+exports[`kol-dialog-wc should render with _label="Dialog as Card" _variant="card" _width="80%" 1`] = `
+<kol-dialog-wc>
+  <!---->
+  <dialog aria-labelledby="dialog-heading-nonce" aria-modal="true" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
+    <article aria-labelledby="dialog-heading-nonce" class="kol-card">
+      <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="dialog-heading-nonce">
+        Dialog as Card
+      </strong>
+      <div class="kol-card__content"></div>
+      <div class="kol-card__close-button kol-close-button">
+        <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+          <button aria-label="kol-close" class="kol-button__interactive-element" type="button">
+            <span class="kol-button__text kol-span kol-span--hide-label">
+              <span class="kol-span__container">
+                <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </button>
+          <div class="kol-button__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    kol-close
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </dialog>
+</kol-dialog-wc>
 `;
 
 exports[`kol-modal should render with _label="Blank Dialog" _variant="blank" _width="80%" 1`] = `
 <kol-modal>
   <template shadowrootmode="open">
-    <kol-dialog-wc>
-      <!---->
-      <dialog aria-label="Blank Dialog" aria-modal="true" class="kol-dialog kol-dialog__blank kol-modal kol-modal__blank" style="width: 80%;">
-        <slot></slot>
-      </dialog>
-    </kol-dialog-wc>
+    <dialog aria-label="Blank Dialog" aria-modal="true" class="kol-dialog kol-dialog__blank kol-modal kol-modal__blank" style="width: 80%;">
+      <slot></slot>
+    </dialog>
   </template>
 </kol-modal>
 `;
@@ -44,14 +113,43 @@ exports[`kol-modal should render with _label="Blank Dialog" _variant="blank" _wi
 exports[`kol-modal should render with _label="Dialog as Card" _variant="card" _width="80%" 1`] = `
 <kol-modal>
   <template shadowrootmode="open">
-    <kol-dialog-wc>
-      <!---->
-      <dialog aria-labelledby="dialog-heading-nonce" aria-modal="true" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
-        <kol-card-wc _hascloser="" _headingid="dialog-heading-nonce" _label="Dialog as Card" _level="0">
+    <dialog aria-labelledby="dialog-heading-nonce" aria-modal="true" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: 80%;">
+      <article aria-labelledby="dialog-heading-nonce" class="kol-card">
+        <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="dialog-heading-nonce">
+          Dialog as Card
+        </strong>
+        <div class="kol-card__content">
           <slot></slot>
-        </kol-card-wc>
-      </dialog>
-    </kol-dialog-wc>
+        </div>
+        <div class="kol-card__close-button kol-close-button">
+          <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+            <button aria-label="kol-close" class="kol-button__interactive-element" type="button">
+              <span class="kol-button__text kol-span kol-span--hide-label">
+                <span class="kol-span__container">
+                  <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
+                    <slot name="expert" slot="expert"></slot>
+                  </span>
+                </span>
+              </span>
+            </button>
+            <div class="kol-button__tooltip">
+              <div class="kol-tooltip__floating">
+                <div class="kol-tooltip__arrow"></div>
+                <span class="kol-span kol-tooltip__content">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-close
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </dialog>
   </template>
 </kol-modal>
 `;
