@@ -105,21 +105,40 @@
 	   selector) so these rules still win over `.kol-close-button:is(.kol-button--normal)` in
 	   `button.scss`, which is tied at 2 classes otherwise and wins by source order alone. */
 	.kol-alert__closer {
-		.kol-alert--variant-msg &.kol-button {
-			--text-color: var(--color-text);
-
-			/* The closer's grid area spans the icon/heading row and the content row (see
-			   @shared/_alert.mixin.scss). Without an explicit height, the `display: flex` button
-			   stretches to the combined height of both rows plus the row-gap between them even with
-			   `align-self: self-start` on `.kol-close-button` — min-height alone isn't enough once
-			   row-gap + row heights exceed it. The `variant-card` closer must NOT get this: its grid
-			   area is the header row only, and it is meant to stretch to that row's real height. */
+		/*
+		 * A circle of the touch target's size, at the end of its row, in both variants.
+		 *
+		 * Both dimensions are fixed because neither may follow the layout here: the msg closer's grid
+		 * area spans the heading row and the content row (see @shared/_alert.mixin.scss) and the
+		 * card closer's spans the whole accent band, so a closer that stretched to its area came out
+		 * as a tall or wide pill. `margin-left: auto` puts it at the end of the row in the flex layout
+		 * a msg without a heading uses, where `grid-area` does not apply and the closer otherwise
+		 * followed the message text wherever it ended; in the grid layouts it is a no-op.
+		 */
+		.kol-alert &.kol-button {
+			width: var(--a11y-min-size);
 			height: var(--a11y-min-size);
+			margin-left: auto;
+			flex: none;
+			align-self: center;
+
+			/* The padding the icon-only rule gives a free-standing button would squeeze the icon
+			   out of a box whose size is already fixed. */
+			.kol-button__text {
+				padding: 0;
+			}
 		}
 
+		.kol-alert--variant-msg &.kol-button {
+			--text-color: var(--color-text);
+		}
+
+		/* The same inset from the band's edge as the status icon keeps on the other side, and room
+		   above and below so the band never ends at the circle's edge — the hover ring would
+		   otherwise spill across it into the content box. */
 		.kol-alert--variant-card &.kol-button {
-			padding-right: to-rem(16);
-			padding-block: to-rem(8);
+			margin-right: to-rem(16);
+			margin-block: to-rem(8);
 
 			--text-color: var(--color-light);
 		}
