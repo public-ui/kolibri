@@ -261,7 +261,11 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 
 	private selectFocusedOption(): boolean {
 		if (Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 && this._focusedOptionIndex >= 0) {
-			this.selectOption(this._filteredOptions[this._focusedOptionIndex]);
+			const option = this._filteredOptions[this._focusedOptionIndex] as Option<StencilUnknown> | undefined;
+			if (!option || option.disabled) {
+				return false;
+			}
+			this.selectOption(option);
 			return true;
 		}
 		return false;
@@ -393,10 +397,10 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 											if (option.disabled) {
 												return;
 											}
+											event.preventDefault();
 											this.selectOption(option);
-											this.ctaRef.el?.focus();
-											this.toggleListbox(event);
 											this._isOpen = false;
+											this.ctaRef.el?.focus();
 										}}
 										onMouseOver={() => {
 											if (!this.blockSuggestionMouseOver) {
@@ -408,17 +412,6 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 											if (!option.disabled) {
 												this._focusedOptionIndex = index;
 												this.focusOption(index);
-											}
-										}}
-										onKeyDown={(e) => {
-											if (option.disabled) {
-												return;
-											}
-											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-												this.selectOption(option);
-												this.ctaRef.el?.focus();
-												this.toggleListbox(e);
-												e.preventDefault();
 											}
 										}}
 									/>

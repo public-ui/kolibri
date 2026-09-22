@@ -44,7 +44,7 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(page.getByRole('listbox')).toHaveCount(0);
 		});
 
-		test('should move focus with arrow keys and select with Enter', async ({ page }) => {
+		test('should move focus with arrow keys and select with Enter & close list', async ({ page }) => {
 			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(OPTIONS)}'></kol-single-select>`);
 
 			const input = page.locator('input.kol-single-select__input');
@@ -56,6 +56,8 @@ test.describe(COMPONENT_NAME, () => {
 
 			const value = await page.locator('kol-single-select').evaluate((element) => (element as HTMLKolSingleSelectElement)._value);
 			expect(value).toBe('S');
+
+			await expect(page.getByRole('listbox')).toHaveCount(0);
 		});
 
 		test('should filter options when typing and select the filtered one', async ({ page }) => {
