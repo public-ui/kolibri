@@ -101,6 +101,8 @@
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
 	"files": [
+		"LICENSE",
+		"NOTICE.md",
 		"assets",
 		"color-scheme.css",
 		"dist"

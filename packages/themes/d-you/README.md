@@ -84,6 +84,19 @@ The token list lives in [`src/global.scss`](./src/global.scss); the values behin
 reasoning where the theme deviates from the Figma file, are documented in
 [`STYLEGUIDE.md`](./STYLEGUIDE.md).
 
+## Licensing
+
+The code in this package is **EUPL-1.2**, like the rest of KoliBri. The design system it implements
+is not: the **d-you Design System** is © Common Codes GmbH under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), which means an application shipping this
+theme carries an attribution obligation:
+
+> Adapted from "Common Codes d-you DE Design System" by Common Codes GmbH, licensed under CC BY 4.0.
+
+Government insignia are excluded from that license, the icon fonts in `assets/` come with their own
+terms, and the EUDI Diatype fonts are commercial and not redistributed here.
+[`NOTICE.md`](./NOTICE.md) spells all of it out, including whom to ask when something is unclear.
+
 ## Known limitations
 
 - **Icons:** the design system specifies [IBM Carbon](https://carbondesignsystem.com/elements/icons/library/),
