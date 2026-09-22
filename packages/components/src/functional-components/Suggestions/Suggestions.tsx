@@ -16,7 +16,7 @@ const SuggestionsFc: FC<SuggestionsProps> = ({ id, suggestions, ...other }) => {
 	return (
 		<datalist id={createRelatedUniqueId(id, 'list')} {...other}>
 			{suggestions.map((option: W3CInputValue) => (
-				<option>{option}</option>
+				<option value={option} />
 			))}
 		</datalist>
 	);
