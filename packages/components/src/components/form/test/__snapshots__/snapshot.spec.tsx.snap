@@ -1,11 +1,98 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`kol-form should render with _errorList=[{"message":"Das Feld Name ist ein Pflichtfeld.","selector":"#name"},{"message":"Die E-Mail-Adresse ist ungültig.","selector":"#email"}] 1`] = `
+<kol-form>
+  <template shadowrootmode="open">
+    <div class="kol-alert kol-alert--type-error kol-alert--variant-card kol-form__alert">
+      <span class="visually-hidden">
+        kol-error
+      </span>
+      <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+      <strong class="kol-alert__heading kol-alert__heading--h0 kol-headline kol-headline--single kol-headline--strong" id="alert-heading-nonce">
+        kol-error-list-message
+      </strong>
+      <div aria-describedby="alert-heading-nonce" class="kol-alert__content">
+        <nav aria-label="kol-error-list">
+          <ul>
+            <li>
+              <span class="kol-form__link">
+                <div class="kol-link kol-link--inline">
+                  <a class="kol-link__interactive-element" href="javascript:void(0);">
+                    <span class="kol-link__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          Das Feld Name ist ein Pflichtfeld.
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+              </span>
+            </li>
+            <li>
+              <span class="kol-form__link">
+                <div class="kol-link kol-link--inline">
+                  <a class="kol-link__interactive-element" href="javascript:void(0);">
+                    <span class="kol-link__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          Die E-Mail-Adresse ist ungültig.
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </a>
+                </div>
+              </span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <form class="kol-form" method="post" novalidate="">
+      <p class="kol-form__mandatory-fields-hint">
+        kol-form-description
+      </p>
+      <slot></slot>
+    </form>
+  </template>
+</kol-form>
+`;
+
 exports[`kol-form should render with _requiredText="Pflichtfeld" 1`] = `
 <kol-form>
   <template shadowrootmode="open">
     <form class="kol-form" method="post" novalidate="">
       <p class="kol-form__mandatory-fields-hint">
         Pflichtfeld
+      </p>
+      <slot></slot>
+    </form>
+  </template>
+</kol-form>
+`;
+
+exports[`kol-form should render with _requiredText=false 1`] = `
+<kol-form>
+  <template shadowrootmode="open">
+    <form class="kol-form" method="post" novalidate="">
+      <slot></slot>
+    </form>
+  </template>
+</kol-form>
+`;
+
+exports[`kol-form should render with _requiredText=true 1`] = `
+<kol-form>
+  <template shadowrootmode="open">
+    <form class="kol-form" method="post" novalidate="">
+      <p class="kol-form__mandatory-fields-hint">
+        kol-form-description
       </p>
       <slot></slot>
     </form>

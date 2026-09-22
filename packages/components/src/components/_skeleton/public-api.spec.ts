@@ -925,6 +925,7 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['button', 'component.tsx'],
 		['button', 'wc.tsx'],
 		['breadcrumb', 'component.tsx'],
+		['form', 'component.tsx'],
 		['skip-nav', 'component.tsx'],
 		['button-link', 'component.tsx'],
 		['link-button', 'component.tsx'],
@@ -982,9 +983,43 @@ describe('kol-card-wc transitional wrapper (internal contract for legacy consume
 	});
 });
 
+/**
+ * Pinned public API of `kol-form` — byte-identical to the predecessor `shadow.tsx` on the develop
+ * branch (3 props + focusErrorList). The German `_on` JSDoc is part of the published contract and
+ * is kept verbatim; rewording it would change `custom-elements.json`.
+ */
+const KOL_FORM_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focusErrorList: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Scrolls to the error list and focuses the first link.',
+	},
+	_errorList: {
+		kind: 'prop',
+		type: 'ErrorListPropType[]',
+		required: false,
+		doc: 'A list of error objects that each describe an issue encountered in the form. Each error object contains a message and a selector for identifying the form element related to the error.',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'KoliBriFormCallbacks',
+		required: false,
+		doc: 'Gibt die EventCallback-Funktionen für die Form-Events an.',
+	},
+	_requiredText: {
+		kind: 'prop',
+		type: 'Stringified<boolean>',
+		required: false,
+		default: 'true',
+		doc: 'Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.',
+	},
+};
+
 describe.each([
 	['kol-button-link', 'button-link', 'ButtonLinkProps', KOL_BUTTON_LINK_PUBLIC_API],
 	['kol-link-button', 'link-button', 'LinkButtonProps', KOL_LINK_BUTTON_PUBLIC_API],
+	['kol-form', 'form', 'FormProps', KOL_FORM_PUBLIC_API],
 	['kol-split-button', 'split-button', 'SplitButtonProps', KOL_SPLIT_BUTTON_PUBLIC_API],
 	['kol-badge', 'badge', 'BadgeProps', KOL_BADGE_PUBLIC_API],
 	['kol-card', 'card', 'CardProps', KOL_CARD_PUBLIC_API],
