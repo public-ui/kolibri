@@ -7,7 +7,7 @@ import { resolveCardCloseButtonProps } from '../../internal/functional-component
 import type { CardFCProps } from '../../internal/functional-components/card/component';
 import type { DrawerApi } from '../../internal/functional-components/drawer/api';
 import { drawerPropsConfig } from '../../internal/functional-components/drawer/api';
-import { DrawerFC } from '../../internal/functional-components/drawer/component';
+import { BEM_CLASS_DRAWER, DrawerFC } from '../../internal/functional-components/drawer/component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alignProp, drawerCallbacksProp, hasCloserProp, labelProp, levelProp, openProp } from '../../internal/props';
@@ -241,14 +241,10 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 		};
 	}
 
-	/**
-	 * The block class stays on the host: everything the drawer renders is an element of it
-	 * (`kol-drawer__dialog`, `kol-drawer__wrapper`, `kol-drawer__content`), so no node inside the
-	 * shadow root carries the bare block name.
-	 */
+	/** The host carries the block class — see {@link BEM_CLASS_DRAWER}. */
 	public render(): JSX.Element {
 		return (
-			<Host class="kol-drawer">
+			<Host class={BEM_CLASS_DRAWER}>
 				<DrawerFC
 					align={this.getRenderProp('align')}
 					ariaDescriptionId={this.getState('ariaDescriptionId')}

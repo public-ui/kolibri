@@ -12,6 +12,12 @@ const drawerBem = bem.forBlock('kol-drawer');
 const BEM_CLASS_DRAWER__CONTENT = drawerBem('content');
 const BEM_CLASS_DRAWER__DIALOG = drawerBem('dialog');
 
+/**
+ * The block class, which the web component puts on its host element: every node the drawer renders
+ * is an element of the block, so nothing inside the shadow root carries the bare block name.
+ */
+export const BEM_CLASS_DRAWER = drawerBem();
+
 export type DrawerFCProps = FunctionalComponentProps<DrawerApi> & {
 	/** The card's fully resolved `CardFC` props, assembled by the web component. */
 	cardProps: CardFCProps;
