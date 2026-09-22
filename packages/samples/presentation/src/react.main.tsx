@@ -5,6 +5,7 @@ import { HashRouter as Router } from 'react-router';
 import { bootstrap } from '@public-ui/components';
 import { defineCustomElements } from '@public-ui/components/loader';
 import { BWSt } from '@public-ui/theme-bwst';
+import { D_YOU } from '@public-ui/theme-d-you';
 import { DEFAULT } from '@public-ui/theme-default';
 import { DesyV11 } from '@public-ui/theme-desy';
 import { ECL_EC, ECL_EU } from '@public-ui/theme-ecl';
@@ -29,7 +30,7 @@ const getThemes = async () => {
 	}
 
 	/* List of regular sample app themes */
-	return [DEFAULT, BWSt, ECL_EC, ECL_EU, KERN_V2, DesyV11] as Theme[];
+	return [DEFAULT, BWSt, D_YOU, ECL_EC, ECL_EU, KERN_V2, DesyV11] as Theme[];
 };
 
 void (async () => {
@@ -86,6 +87,10 @@ void (async () => {
 							{
 								name: 'BWSt (v4)',
 								key: 'bwst',
+							},
+							{
+								name: 'd-you (Demo)',
+								key: 'dyou',
 							},
 							{
 								name: 'European Commission (v4)',

@@ -18,6 +18,10 @@ export const PUBLIC_THEMES: Theme[] = [
 		key: 'bwst',
 	},
 	{
+		name: 'd-you (Demo)',
+		key: 'dyou',
+	},
+	{
 		name: 'European Commission (v4)',
 		key: 'ecl-ec',
 	},
@@ -39,4 +43,4 @@ export const PUBLIC_THEMES: Theme[] = [
  * Themes that ship a dark palette. Every other theme keeps its light colors whatever the color
  * scheme says, which is what the Sidebar's hint tells the user.
  */
-export const DARK_CAPABLE_THEMES: string[] = ['default'];
+export const DARK_CAPABLE_THEMES: string[] = ['default', 'dyou'];

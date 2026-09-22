@@ -633,6 +633,9 @@ importers:
       '@public-ui/theme-bwst':
         specifier: workspace:*
         version: link:../../themes/bwst
+      '@public-ui/theme-d-you':
+        specifier: workspace:*
+        version: link:../../themes/d-you
       '@public-ui/theme-default':
         specifier: workspace:*
         version: link:../../themes/default
