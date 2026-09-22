@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-Cz3H_bBa.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
