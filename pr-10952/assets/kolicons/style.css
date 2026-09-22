@@ -1,11 +1,11 @@
   @font-face {
     font-family: "kolicons";
-    src: url('kolicons.eot?t=1790067705510'); /* IE9*/
-    src: url('kolicons.eot?t=1790067705510#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url("kolicons.woff2?t=1790067705510") format("woff2"),
-    url("kolicons.woff?t=1790067705510") format("woff"),
-    url('kolicons.ttf?t=1790067705510') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-    url('kolicons.svg?t=1790067705510#kolicons') format('svg'); /* iOS 4.1- */
+    src: url('kolicons.eot?t=1790092866486'); /* IE9*/
+    src: url('kolicons.eot?t=1790092866486#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url("kolicons.woff2?t=1790092866486") format("woff2"),
+    url("kolicons.woff?t=1790092866486") format("woff"),
+    url('kolicons.ttf?t=1790092866486') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+    url('kolicons.svg?t=1790092866486#kolicons') format('svg'); /* iOS 4.1- */
   }
 
 @layer kol-component {
@@ -38,12 +38,14 @@
 .kolicon-link-external::before { content: "\ea12"; }
 .kolicon-link::before { content: "\ea13"; }
 .kolicon-minus::before { content: "\ea14"; }
-.kolicon-plus::before { content: "\ea15"; }
-.kolicon-settings::before { content: "\ea16"; }
-.kolicon-sort-asc::before { content: "\ea17"; }
-.kolicon-sort-desc::before { content: "\ea18"; }
-.kolicon-sort-neutral::before { content: "\ea19"; }
-.kolicon-up::before { content: "\ea1a"; }
-.kolicon-version::before { content: "\ea1b"; }
+.kolicon-pin-pinned::before { content: "\ea15"; }
+.kolicon-pin-unpinned::before { content: "\ea16"; }
+.kolicon-plus::before { content: "\ea17"; }
+.kolicon-settings::before { content: "\ea18"; }
+.kolicon-sort-asc::before { content: "\ea19"; }
+.kolicon-sort-desc::before { content: "\ea1a"; }
+.kolicon-sort-neutral::before { content: "\ea1b"; }
+.kolicon-up::before { content: "\ea1c"; }
+.kolicon-version::before { content: "\ea1d"; }
 
 }
