@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-CVP6xKG5.js";var t=(t,n,r)=>{e(t,`_open`,n,r)};export{t};
