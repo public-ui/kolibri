@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-h2kE_xJ4.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
