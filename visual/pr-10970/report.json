@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 10970,
-	"head": "d1c0a822c715aa6dd84ed37f4cd994bb6c3a7bab",
+	"head": "6ef965578fd80da687ee95ea56fc60b8b24270f1",
 	"repository": "public-ui/kolibri",
-	"runId": 35738213500,
-	"generatedAt": "2026-09-22T14:40:15.056Z",
-	"digest": "sha256:44c4b02ba32fc82a89103230b1e2bb4f1cb5b675cb54ccdbe2397d11ce213c05",
+	"runId": 35746829423,
+	"generatedAt": "2026-09-22T15:39:19.898Z",
+	"digest": "sha256:0078e9482437239031281457205aefade684eea05e1f2753cb8bc90d5f0308ea",
 	"baseline": {
 		"sha": "4cab714e7544545a3298a49ea86ea8f70a212c20",
 		"ref": "develop",
@@ -5019,7 +5019,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6ea56357378c98a3c231b8f8a87f0249d5df8a9f122841c7cb25054517ac52d8",
+			"digest": "sha256:594bb9e73eb26467cc3083e9a2c9e40edd0938747c07ca94ecf4a25571f2eaf5",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5270,14 +5270,14 @@
 					"name": "button-short-key--hide-label",
 					"route": "button/short-key",
 					"status": "added",
-					"hash": "sha256:1ccdd06ec50008c1d138a4e1673322a4b71471e6160b3a71999af6c97f1ea995",
+					"hash": "sha256:90dc9cfebdb9b79330813cf2105bba7d2934a6a67391baa2541c8f13f22eb033",
 					"actual": "theme-d-you/button-short-key--hide-label.actual.png"
 				},
 				{
 					"name": "button-short-key--inline-icons",
 					"route": "button/short-key",
 					"status": "added",
-					"hash": "sha256:1557f803a74ee038b65dedd881762bc806929d289d2cc7a6d8710078f30f50b9",
+					"hash": "sha256:d45f2750233a80751df0da30052f8898a533ac1721b70c665ebcaae74a99a7d9",
 					"actual": "theme-d-you/button-short-key--inline-icons.actual.png"
 				},
 				{
@@ -5291,7 +5291,7 @@
 					"name": "button-variants--variants",
 					"route": "button/variants",
 					"status": "added",
-					"hash": "sha256:30bb4d21da85d9e3b2cf557c1dcbb8a5f8709e85d96ecf6b125dcc378ea59dc3",
+					"hash": "sha256:f1198d4a4bbb4acdd4d576ef5f4ab50e60fa2120e271d0c36236a1274204fc18",
 					"actual": "theme-d-you/button-variants--variants.actual.png"
 				},
 				{
@@ -5326,42 +5326,42 @@
 					"name": "combobox-basic-noColumns--hide-label-error",
 					"route": "combobox/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:2bc82a32029304dfaca6422c8855194c3f0152fe3cabd11c66404baa94341711",
+					"hash": "sha256:758a6f6be86d7a932cb5af57a2de3ec0d15021404936409961496ba193f5b742",
 					"actual": "theme-d-you/combobox-basic-noColumns--hide-label-error.actual.png"
 				},
 				{
 					"name": "combobox-basic-noColumns--label-access-key",
 					"route": "combobox/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:edd1654470c3b914174b5fc8722a0a1756952a562b1191367f10ab2b1082263c",
+					"hash": "sha256:74674cedfbd9a8288e6d6c1cc5d49c717b55d4d42876940c02b6f2e176128809",
 					"actual": "theme-d-you/combobox-basic-noColumns--label-access-key.actual.png"
 				},
 				{
 					"name": "combobox-basic-noColumns--label-disabled",
 					"route": "combobox/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:2c3dd6380cf25c310804c0d2cd4fb33679f58b11d865a895e779037680bc374c",
+					"hash": "sha256:559097d8a0ba8e0cf9f3ad50244c0521584888277a76d9e25bfe86481cd3c24e",
 					"actual": "theme-d-you/combobox-basic-noColumns--label-disabled.actual.png"
 				},
 				{
 					"name": "combobox-basic-noColumns--label-error",
 					"route": "combobox/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:394f91e04f482d9ef8cf8d78164b9b54c3411788e752c86e59da1329267509a0",
+					"hash": "sha256:586fb3ff9911c8a0aebee7cef1d41f8003b67a9a4a0276a94eec26af2af66164",
 					"actual": "theme-d-you/combobox-basic-noColumns--label-error.actual.png"
 				},
 				{
 					"name": "combobox-basic-noColumns--label-hint",
 					"route": "combobox/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:1b7d0a098dcf4c245c08389932193a6974d3faa8b4ce6756a76fa281e81d15cd",
+					"hash": "sha256:8c36bd5e986391612e5d8626d5a5c3476b251ac124be6bb8b9870a96f0cef55c",
 					"actual": "theme-d-you/combobox-basic-noColumns--label-hint.actual.png"
 				},
 				{
 					"name": "combobox-basic-noColumns--label-short-key",
 					"route": "combobox/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:f156eab163bf8e9117b55b6ea0b4da9b31fae2afeec1687d88e41af0f48052cb",
+					"hash": "sha256:5ee176c428e018d95e4e5931e77e677899b00921c6420699fd1da194a0f205f3",
 					"actual": "theme-d-you/combobox-basic-noColumns--label-short-key.actual.png"
 				},
 				{
@@ -6285,14 +6285,14 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:bfba967e820fecfe68c01f7f7429a78dd16a238e2365f2a06e0eee19776ce09b",
+					"hash": "sha256:24f59e4c3703997535800e96d5dee11f29a9a11b0e82027239ce385903f044f4",
 					"actual": "theme-d-you/input-file-basic-noColumns--hide-label-error.actual.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:60df02a8ad7f38be079da6d41ef067cc3521b92e5f1ca1eae09dc0b9f0f72590",
+					"hash": "sha256:1f04c0b04e0c4c24c84f4c127b0ede8ff0e09b7f4383fa09148ed4f35d7e7882",
 					"actual": "theme-d-you/input-file-basic-noColumns--label-access-key.actual.png"
 				},
 				{
@@ -6306,56 +6306,56 @@
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:58c48125e59225a432e0a3f61337b9cc1deb1255c024dfdab1f99fde4e9085e8",
+					"hash": "sha256:5021ee870726f4859223ff1e6302a3ed0fd7abe174e27d848d1276adcaa86e23",
 					"actual": "theme-d-you/input-file-basic-noColumns--label-disabled.actual.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:fa95b19b31639ab00fa9f722a89f4074bdc671039af3959fa042cf0015437ca0",
+					"hash": "sha256:9b02fa391657ccea6ec56be9dab32d1cf2a8c9d17689d575abdda902cb09beba",
 					"actual": "theme-d-you/input-file-basic-noColumns--label-error.actual.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:8a60a2e2acca322c25da8a2a2abb998870177ab2ce779e129165b7d40b5e43f6",
+					"hash": "sha256:c843c36333d2f1b7f508ad5a3c6eb38815e7094e15239b42f1845cacc6d33e6d",
 					"actual": "theme-d-you/input-file-basic-noColumns--label-msg-default.actual.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:c0d348342ee8f0901a49e2d0526f9a5e5a871db34e4e30ad03f48f9ec30b6749",
+					"hash": "sha256:0129bd17480ecb8be64287b32097f461a2aea9917c250836fd77182ec1bde263",
 					"actual": "theme-d-you/input-file-basic-noColumns--label-msg-info.actual.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:a00658f77055027da6edd93e3894e7f484ee2afd6b96fa3d42dbfab3e62a5124",
+					"hash": "sha256:1a86b64cf957056bfc523def3b32c7025566463a5e6dc07ad06fdfcf855bff6f",
 					"actual": "theme-d-you/input-file-basic-noColumns--label-msg-success.actual.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:e97d05ef4936c433880a0ce922d217e1d886bdb9dd5e4d7f9e66b997a505f246",
+					"hash": "sha256:279fdbcd24272d0bdea4522178ffe03bc5d6a06521becf20ca6301cc003c5b34",
 					"actual": "theme-d-you/input-file-basic-noColumns--label-msg-warning.actual.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:5f2e669cda9f6c67acb9393d9a00e8ca5af11d7531e2adba26136cfd35c0661b",
+					"hash": "sha256:d1e79ab33736b26ea4eae84af526fb7613644e32f25fe39c666eb6b3e6e80a2d",
 					"actual": "theme-d-you/input-file-basic-noColumns--label-multiple.actual.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:da12c6a06e16cb10049ac5c76b28ae00545e654f7e92cadceedeb1984647b089",
+					"hash": "sha256:49f6a658bc926a8fbfea4344785504da6d4eb36b120fdea5d8517b52e3a1a446",
 					"actual": "theme-d-you/input-file-basic-noColumns--label-short-key.actual.png"
 				},
 				{
@@ -6985,7 +6985,7 @@
 					"name": "link-button-basic--variants",
 					"route": "link-button/basic",
 					"status": "added",
-					"hash": "sha256:1bee66c2c83a25c053e44bd230c72fa14195b0c4a645378a78fd0361a30d9cb5",
+					"hash": "sha256:5cbefc3ab986eaeed66df342e781ee7a6571ae38c7e384641394510740671ce5",
 					"actual": "theme-d-you/link-button-basic--variants.actual.png"
 				},
 				{
@@ -7125,7 +7125,7 @@
 					"name": "popover-button-inline--inline",
 					"route": "popover-button/inline",
 					"status": "added",
-					"hash": "sha256:60e91d054312f4abebcfe3f8555cb1d7c7429870f5eed341df3c6ebe1276fcdb",
+					"hash": "sha256:0d7709f8eb8b28fa03cfb6751e0bc8091d66769644516e225b42e9d85c3fd556",
 					"actual": "theme-d-you/popover-button-inline--inline.actual.png"
 				},
 				{
@@ -7391,7 +7391,7 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "added",
-					"hash": "sha256:86689646108d7687583a8fab55c0bef6b03679d9bbe6d2024ffad8615c2ceba3",
+					"hash": "sha256:2fc5f7dd226250c5812fbea44eec1dbf01c2cc4ce6af5d6428cbde4cd8e1b5e4",
 					"actual": "theme-d-you/scenarios-same-height-of-all-interactive-elements.actual.png"
 				},
 				{
@@ -7468,56 +7468,56 @@
 					"name": "single-select-basic-noColumns--hide-label-error",
 					"route": "single-select/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:f8bc374846abaec7d7e1c0b206dab4815e3b81842c5fd59f1ed5469c240ca0eb",
+					"hash": "sha256:3428f09d9b0d7466bb8d5682ac46d0377c5e9cd8dbd9de2561aeb978cb6e7f9d",
 					"actual": "theme-d-you/single-select-basic-noColumns--hide-label-error.actual.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-access-key",
 					"route": "single-select/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:43bd41376b3dda9e2d2cef2de8b3ff1ae264f5532f91d66804bddc32805b37b0",
+					"hash": "sha256:84cd2edc5aa73862d46a8f3957a84ea723ad704984bd0c5bb87d9c475beab4b6",
 					"actual": "theme-d-you/single-select-basic-noColumns--label-access-key.actual.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-boolean-values",
 					"route": "single-select/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:1e93859ade9d2177c4b4ffd6aa646c263cc2db17ecd0ff9c971d405aad8e7cee",
+					"hash": "sha256:d86bccab822cf11d65ca7d498f3484c94ab3308293765d96998a6219814415e5",
 					"actual": "theme-d-you/single-select-basic-noColumns--label-boolean-values.actual.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled",
 					"route": "single-select/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:670f8cfe8ffd5e559641bb733ee191cb4ff9660383f17774a3f3ce8bf03f5e83",
+					"hash": "sha256:b24aed5b5cee71184575898006a37cf03eb90bb570af94a9d858ccfbb922364b",
 					"actual": "theme-d-you/single-select-basic-noColumns--label-disabled.actual.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-disabled-options",
 					"route": "single-select/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:993a80e447988cada98ddd62e2635ca2b7a05ce9dfd4393c2d6d14f22b8b9678",
+					"hash": "sha256:2487617c4fb412684f835a65e7212130d424d25e67b7392b22e78de49de77938",
 					"actual": "theme-d-you/single-select-basic-noColumns--label-disabled-options.actual.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-error",
 					"route": "single-select/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:30b41664a5701647682250d22cec6f17fd3bbeee8e4f3706c202e35cab358fe8",
+					"hash": "sha256:764701bdb809feee25da6a063fcfd77693f2eead5f85344bfad4e098d393260f",
 					"actual": "theme-d-you/single-select-basic-noColumns--label-error.actual.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-hint",
 					"route": "single-select/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:a5c15dc58276769941ebb602edf586cb5ec1c9e3fa5d94c2eaddf6d45d665257",
+					"hash": "sha256:d9adb9cef8527f434d2d0de54fdb10ea8c1d92ba4fada3adc45be0ae37adc8fb",
 					"actual": "theme-d-you/single-select-basic-noColumns--label-hint.actual.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-long-labels",
 					"route": "single-select/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:7bd7a02b259d75eed7a6eb635c69f18cd4d3f6eac0cf085602d9d6b10514ed9b",
+					"hash": "sha256:615cb09123245d12be6b5d28178c6e9ad54e399256cbe6d99a53a99df52cf095",
 					"actual": "theme-d-you/single-select-basic-noColumns--label-long-labels.actual.png"
 				},
 				{
@@ -7531,7 +7531,7 @@
 					"name": "single-select-basic-noColumns--label-short-key",
 					"route": "single-select/basic?noColumns",
 					"status": "added",
-					"hash": "sha256:700c6e6b739d03b1d229de07e71f6d02b2d7406b51657084f449e59b1fbcb3f4",
+					"hash": "sha256:356d0a0b5c04701dfbf4425ce0af05bfc281d4753f9bfdf27cc10c34c326fccc",
 					"actual": "theme-d-you/single-select-basic-noColumns--label-short-key.actual.png"
 				},
 				{
@@ -7846,28 +7846,28 @@
 					"name": "toolbar-basic--horizontal",
 					"route": "toolbar/basic",
 					"status": "added",
-					"hash": "sha256:e2a8a0a9bbcc0965cf38f19415d1d331092c1ac50a4f2fe1f52dc7585ea7ef31",
+					"hash": "sha256:d1bdeb05b263aaf205e9b6050223b550c49792a5c59b1edc69224c99a82e41cb",
 					"actual": "theme-d-you/toolbar-basic--horizontal.actual.png"
 				},
 				{
 					"name": "toolbar-basic--horizontal-320",
 					"route": "toolbar/basic",
 					"status": "added",
-					"hash": "sha256:ce5182598a6516d7d2a676c5bbd5d0c70d4ab7c4b3be11b9437683f2829db05d",
+					"hash": "sha256:690b20e7ad674f52c2752d7d1543ecc35839cb3c162e4c7b1c6f924e472610c4",
 					"actual": "theme-d-you/toolbar-basic--horizontal-320.actual.png"
 				},
 				{
 					"name": "toolbar-basic--vertical",
 					"route": "toolbar/basic",
 					"status": "added",
-					"hash": "sha256:302d2155f3a0d57b9269af339c5026013cc7772bf0e1d2e95174371cad516c57",
+					"hash": "sha256:f983448b5d1d306a6fceb493da0e4be3892257df7c9b5adcfcbdb5394d60d1fd",
 					"actual": "theme-d-you/toolbar-basic--vertical.actual.png"
 				},
 				{
 					"name": "toolbar-disabled--disabled",
 					"route": "toolbar/disabled",
 					"status": "added",
-					"hash": "sha256:44743a6015236f733692ac933082ee87534dbda135d20dbaf39446cc4cf2c353",
+					"hash": "sha256:0cf7d6fe87d3a1b1b0fe193f366f4dd92e6fec126b2d18ad9634c320ce761e1b",
 					"actual": "theme-d-you/toolbar-disabled--disabled.actual.png"
 				},
 				{
