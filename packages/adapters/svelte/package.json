@@ -51,7 +51,7 @@
 		"@babel/types": "8.0.6",
 		"@public-ui/components": "workspace:*",
 		"minimatch": "10.2.6",
-		"svelte": "5.57.0",
+		"svelte": "5.57.1",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
