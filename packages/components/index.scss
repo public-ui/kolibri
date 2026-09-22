@@ -1,3 +1,23 @@
 @function to-rem($size) {
 	@return calc(#{$size} * 1rem / var(--kolibri-root-font-size, 16));
 }
+
+/*
+ * Guards an interaction rule (`:hover`, `:active`, `:focus…`) against the disabled state.
+ *
+ * Two shapes are needed because the disabled marker sits on different elements: a native control
+ * carries `disabled`, an anchor or summary carries `aria-disabled`, and a BEM wrapper carries a
+ * `--disabled` modifier while its inner control carries the attribute.
+ */
+@mixin kol-enabled {
+	&:not([disabled], [aria-disabled='true'], [class*='--disabled']) {
+		@content;
+	}
+}
+
+/* Wrapper variant: asks the interactive element inside, which is where the attribute lives. */
+@mixin kol-enabled-wrapper {
+	&:not([class*='--disabled']):not(:has(:disabled, [aria-disabled='true'])) {
+		@content;
+	}
+}

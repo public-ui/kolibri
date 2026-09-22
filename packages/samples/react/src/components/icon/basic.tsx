@@ -16,6 +16,8 @@ export const IconBasic: FC = () => (
 			<KolIcon className="block" _label="Kolibri Icon" _icons="kolicon-kolibri" />
 			<KolIcon className="block" _label="House Icon" _icons="kolicon-house" />
 			<KolIcon className="block" _label="Settings Icon" _icons="kolicon-settings" />
+			<KolIcon className="block" _label="Pin Icon (pinned)" _icons="kolicon-pin-pinned" />
+			<KolIcon className="block" _label="Pin Icon (unpinned)" _icons="kolicon-pin-unpinned" />
 
 			<KolIcon
 				className="block w-[1em] h-[1em]"

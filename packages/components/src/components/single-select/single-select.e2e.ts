@@ -138,6 +138,26 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(listbox).toHaveCount(0);
 		});
 
+		test('should not select a disabled option via hover and Enter', async ({ page }) => {
+			const options = [
+				{ label: 'North', value: 'N' },
+				{ label: 'South', value: 'S', disabled: true },
+			];
+			await setContentWithRetry(page, `<kol-single-select _label="Input" _options='${JSON.stringify(options)}'></kol-single-select>`);
+
+			const input = page.locator('input.kol-single-select__input');
+			await input.click();
+			await expect(page.getByRole('listbox')).toBeVisible();
+
+			/* Hovering moved the focused index onto the disabled option, and Enter then selected it —
+			   the click, focus and keydown handlers all refuse it, this path has to as well. */
+			await page.getByRole('listbox').getByText('South').hover({ force: true });
+			await input.press('Enter');
+			await page.waitForChanges();
+
+			await expect(page.locator('kol-single-select')).not.toHaveJSProperty('_value', 'S');
+		});
+
 		test('should display no results message when input does not match', async ({ page }) => {
 			await setContentWithRetry(page, `<kol-single-select _label="Test" _options='[{"label":"North","value":"N"}]'></kol-single-select>`);
 			const input = page.locator('input.kol-single-select__input');

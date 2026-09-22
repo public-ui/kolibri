@@ -95,8 +95,15 @@ export abstract class BasePopoverButtonWebComponent extends BaseButtonWebCompone
 
 	/**
 	 * Shows the popover programmatically by calling the PopoverController.
+	 *
+	 * Refused while the button is disabled: the trigger is a `<button disabled>`, so no user
+	 * interaction can open the popover, and the programmatic path must not be the one way around
+	 * that. `closePopover()` stays unguarded — closing is always safe.
 	 */
 	protected openPopover(): void {
+		if (this.getRenderProp('disabled') === true) {
+			return;
+		}
 		this.popoverCtrl.setShow(true);
 	}
 
