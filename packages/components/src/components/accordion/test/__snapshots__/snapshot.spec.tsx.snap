@@ -5,7 +5,7 @@ exports[`kol-accordion should render with _label="Überschrift" _level=3 1`] = `
   <template shadowrootmode="open">
     <details class="kol-accordion" style="--collapsible-transition-duration: 300ms;">
       <summary aria-controls="accordion-control-nonce" class="kol-accordion__heading" id="accordion-heading-nonce">
-        <h3 class="kol-headline kol-headline--h3">
+        <h3 class="kol-headline kol-headline--h3 kol-headline--single">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -34,7 +34,7 @@ exports[`kol-accordion should render with _label="Überschrift" _open=false _dis
   <template shadowrootmode="open">
     <details class="kol-accordion" style="--collapsible-transition-duration: 300ms;">
       <summary aria-controls="accordion-control-nonce" class="kol-accordion__heading" id="accordion-heading-nonce">
-        <strong class="kol-headline kol-headline--strong">
+        <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -63,7 +63,7 @@ exports[`kol-accordion should render with _label="Überschrift" _open=false _dis
   <template shadowrootmode="open">
     <details class="kol-accordion kol-accordion--disabled" style="--collapsible-transition-duration: 300ms;">
       <summary aria-controls="accordion-control-nonce" aria-disabled="true" class="kol-accordion__heading" id="accordion-heading-nonce" tabindex="-1">
-        <strong class="kol-headline kol-headline--strong">
+        <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>
@@ -92,7 +92,7 @@ exports[`kol-accordion should render with _label="Überschrift" _open=true _disa
   <template shadowrootmode="open">
     <details class="kol-accordion kol-accordion--open" open="" style="--collapsible-transition-duration: 300ms;">
       <summary aria-controls="accordion-control-nonce" class="kol-accordion__heading" id="accordion-heading-nonce">
-        <strong class="kol-headline kol-headline--strong">
+        <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
@@ -121,7 +121,7 @@ exports[`kol-accordion should render with _label="Überschrift" _open=true _disa
   <template shadowrootmode="open">
     <details class="kol-accordion kol-accordion--disabled kol-accordion--open" open="" style="--collapsible-transition-duration: 300ms;">
       <summary aria-controls="accordion-control-nonce" aria-disabled="true" class="kol-accordion__heading" id="accordion-heading-nonce" tabindex="-1">
-        <strong class="kol-headline kol-headline--strong">
+        <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
@@ -150,7 +150,7 @@ exports[`kol-accordion should render with _label="Überschrift" 1`] = `
   <template shadowrootmode="open">
     <details class="kol-accordion" style="--collapsible-transition-duration: 300ms;">
       <summary aria-controls="accordion-control-nonce" class="kol-accordion__heading" id="accordion-heading-nonce">
-        <strong class="kol-headline kol-headline--strong">
+        <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-right" role="presentation"></i>

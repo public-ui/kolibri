@@ -1,7 +1,7 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { getHeadlineTag } from '../../../functional-components/Heading/Heading';
+import KolHeadingFc from '../../../functional-components/Heading/Heading';
 import clsx from '../../../utils/clsx';
 import { preventFocus } from '../../../utils/element-interaction';
 import { getBlockBem } from '../bem-root-node/block-bem';
@@ -17,6 +17,9 @@ import type { CollapsibleApi, CollapsibleVariant } from './api';
  * come from the user agent. It has to be the first child of `<details>`, so the heading sits inside
  * the control; label and icon render through `SpanFC`.
  *
+ * `level` is forwarded as `level ?? 0` because `KolHeadingFc` falls back to level 1 on `undefined`,
+ * while the collapsible's own `_level` default is 0 — the bold `<strong>` rendering.
+ *
  * `open` on `<details>` and the `--open` modifier are driven separately: the attribute has to be set
  * before the modifier flips so the grid transition has a from-state, and it has to outlive the
  * modifier on close so the collapse is visible. The web component owns that sequencing; the FC only
@@ -26,7 +29,6 @@ export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & Collap
 	{ block, contentClass, controlId, detailsOpen, disabled, expanded, handleToggle, headingId, icons, label, level, refHeadingButton, transitionMs },
 	children,
 ) => {
-	const HeadlineTag = getHeadlineTag(level);
 	const blockBem = getBlockBem(block);
 
 	return (
@@ -48,9 +50,9 @@ export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & Collap
 				ref={refHeadingButton}
 				tabIndex={disabled === true ? -1 : undefined}
 			>
-				<HeadlineTag class={clsx('kol-headline', `kol-headline--${HeadlineTag}`)}>
+				<KolHeadingFc level={level ?? 0}>
 					<SpanFC icons={icons} label={label} />
-				</HeadlineTag>
+				</KolHeadingFc>
 			</summary>
 			<div class={blockBem('wrapper')}>
 				<div class={blockBem('wrapper-animation')}>
