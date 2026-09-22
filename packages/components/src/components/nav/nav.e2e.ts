@@ -86,4 +86,25 @@ test.describe('kol-nav component', () => {
 			await expect(nestedAfter.locator('li')).toHaveCount(1);
 		});
 	});
+
+	test.describe('disabled entries', () => {
+		test('passes _disabled of a button entry through to the rendered button', async ({ page }) => {
+			await page.setContent('<kol-nav _label="Nav"></kol-nav>');
+			const nav = page.locator('kol-nav');
+			await expect(nav).toHaveClass(/hydrated/);
+
+			await nav.evaluate((element: HTMLKolNavElement) => {
+				element._links = [
+					{ _label: 'Enabled', _on: { onClick: () => undefined } },
+					{ _label: 'Disabled', _disabled: true, _on: { onClick: () => undefined } },
+				];
+			});
+			await page.waitForChanges();
+
+			const buttons = nav.locator('kol-button-wc button');
+			await expect(buttons).toHaveCount(2);
+			await expect(buttons.first()).not.toBeDisabled();
+			await expect(buttons.nth(1)).toBeDisabled();
+		});
+	});
 });

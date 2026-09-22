@@ -1,4 +1,5 @@
 @use '../../mixins/to-rem' as *;
+@use '~@public-ui/components/index' as *;
 
 /*
  * Badge theme styles for every shadow root that renders `BadgeFC` - `kol-badge` and `kol-version`.
@@ -25,9 +26,11 @@
 					content: '\ea0e';
 				}
 
-				&:hover {
-					color: var(--ecl-color-white);
-					background-color: var(--ecl-color-primary);
+				@include kol-enabled-wrapper {
+					&:hover {
+						color: var(--ecl-color-white);
+						background-color: var(--ecl-color-primary);
+					}
 				}
 			}
 		}
