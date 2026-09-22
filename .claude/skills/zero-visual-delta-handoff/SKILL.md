@@ -851,6 +851,40 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
   `0ec6873ec1`. Lokal ohne Docker: Components 998/998, Hydrate-SSR 102/102 (unveraendert),
   `pnpm check:skeleton-selectors` sauber.
 
+### 2026-09-22 — Skeleton-Migration kol-drawer (DialogFC als Huelle, CardFC direkt): 5 Pakete, 0 Diffs ab Start
+
+- **Ausgangslage**: `kol-drawer` war der letzte Konsument des transitionalen `kol-card-wc`. Der
+  Ausbau aendert DOM (`<kol-card-wc class=…>` faellt weg), der Rest der Migration nicht.
+- **Ursachen & Fix-Muster**: keine Theme-Runde noetig, wieder ueber **Wrapper-Tausch statt
+  Klassen-Merge** (wie kol-split-button und kol-form). Vor dem Schreiben des FC gegreppt: desy
+  (`.kol-drawer__wrapper .kol-card { background-color; display: grid }`) und kern
+  (`.kol-drawer__wrapper .kol-card { border: 0 }`) greifen auf die Card **ueber** den Wrapper zu.
+  `CardFC` nimmt zwar ein `class` entgegen und der Doc-Kommentar lud sogar dazu ein, den Drawer-Hook
+  dort hineinzureichen — genau das haette beide Regeln getoetet (Muster 6a-8). Stattdessen rendert
+  der FC ein `<div class="kol-drawer__wrapper …">` genau dort, wo das Custom Element stand.
+  Box-Baum identisch, weil `position: fixed` unbekanntes Element und `div` gleichermassen
+  blockifiziert.
+- **Neu gelernt (Frueher-gewusst-Test bestanden)**: **Ein Doc-Kommentar, der eine Klasse auf den
+  FC-Root einlaedt, ist keine Freigabe — die Selektoren entscheiden.** Der `CardFC`-Kommentar
+  beschrieb den Klassen-Merge als vorgesehenen Weg fuer den Drawer; der Grep zeigte das Gegenteil.
+  Erst greppen, dann dem Kommentar glauben (und ihn danach korrigieren).
+- **Neu gelernt #2**: Ein `@State()`-Feld darf nicht heissen wie eine `@Method()` derselben
+  Komponente — `@State() open` ueberschreibt `open()` still, und der Fehler zeigt sich erst als
+  „drawer.open is not a function" im Test, nicht im Build. Hier: State `expanded`.
+- **Theme-Spezifika**: keine.
+- **Evidenz (lokal, Docker)**: A/B ueber einen develop-Worktree, weil Baselines nicht im Git liegen
+  (Erfahrung #32): Baselines aus `origin/develop` erzeugen, in den Branch-Checkout kopieren, dann
+  `--check`. Je Paket `--grep drawer` → 8 passed, 0 failed, Exit 0 fuer bwst, default, desy, kern,
+  unstyled (`PHASE_A_EXIT=0`, `PHASE_C_EXIT=0`). ecl liess sich nicht greppen (sein `test` ist
+  `npm-run-all2`) → CI. Der Scope ist vollstaendig, weil der Jest-Snapshot des Drawers vor dem Umbau
+  MIT registriertem `KolCardWc` eingefroren wurde (Form-Lehre 2026-09-22) und den Diff exakt auf
+  `<kol-card-wc>` → `<div>` festnagelte; Dialog/Modal/Card-Snapshots blieben byte-gleich.
+- **Falle, die den Voll-Lauf kostete**: Route `input-text/hide-msg?noColumns` faellt auf **develop**
+  selbst aus („no data-visual-block containers found"). `snapshots-docker.mjs` schreibt bei einem
+  fehlgeschlagenen Lauf nichts zurueck, und `--all` faehrt die Themes unter `set -e` — ein einziger
+  kaputter Base-Route-Fehler bricht damit die Baseline-Erzeugung aller folgenden Themes ab. Wer
+  lokal einen Voll-Lauf braucht, muss die Route vorher fixen oder ausschliessen.
+
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 
 - **Ausgangslage**:
