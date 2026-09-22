@@ -2,6 +2,8 @@
 
 @layer kol-theme-component {
 	.kol-accordion {
+		$root: &;
+
 		box-shadow:
 			0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
 			0 0 to-rem(10) rgb(9 49 142 / 4%),
@@ -10,56 +12,58 @@
 		border-radius: 8px;
 		margin: 0;
 
-		&:focus-within {
+		&:not(.kol-accordion--disabled):focus-within {
 			outline: 2px solid var(--color-blue);
 			outline-offset: -1px;
 		}
 
+		/* The decorative bar uses `::before`, which overrides the component layer's baseline pseudo. */
 		&__heading {
-			font-size: 2em;
-		}
+			color: #171a22;
+			border-radius: 8px;
+			border-bottom-color: #cfdaf5;
+			display: block;
+			position: relative;
+			width: 100%;
+			/* The a11y floor applied to the inner button, which sat inside this padding; the summary
+			   carries both in one border-box, so the padding is added back. */
+			min-height: calc(var(--a11y-min-size) + #{to-rem(24)} * 2);
+			padding: to-rem(24);
+			border-bottom-width: to-rem(2);
 
-		&__heading-button {
-			.kol-button {
-				color: #171a22;
-				border-radius: 8px;
-				border-bottom-color: #cfdaf5;
-				display: block;
-				position: relative;
-				width: 100%;
-				padding: to-rem(24);
-				border-bottom-width: to-rem(2);
+			font:
+				normal normal 400 to-rem(18) / to-rem(28) arial,
+				sans-serif;
+			/* `font-size: 2em` and `line-height: 1.2` used to sit on the heading element and on the
+			   button wrapper respectively, while the real button reset both for the label (a11y.scss
+			   makes form controls inherit `font-size`, and the user-agent `font` shorthand pins
+			   `line-height: normal`). Merged onto the summary they would render the label at 32px
+			   instead of 18px. */
+			line-height: normal;
+			border: 0;
+			border-bottom-style: solid;
+			outline-offset: -1px;
+			text-align: start;
 
-				font:
-					normal normal 400 to-rem(18) / to-rem(28) arial,
-					sans-serif;
-				line-height: 1.2;
-				border: 0;
-				border-bottom-style: solid;
-				outline-offset: -1px;
-				text-align: start;
+			.kol-span {
+				align-items: baseline;
+			}
 
-				&__text {
-					align-items: baseline;
-				}
+			&::before {
+				background-color: #fc0;
+				position: absolute;
+				top: 0;
+				left: to-rem(24);
+				width: to-rem(6);
+				height: to-rem(4);
 
-				&::before {
-					background-color: #fc0;
-					position: absolute;
-					top: 0;
-					left: to-rem(24);
-					width: to-rem(6);
-					height: to-rem(4);
+				content: '';
+				border-end-end-radius: to-rem(2);
+				border-end-start-radius: to-rem(2);
+			}
 
-					content: '';
-					border-end-end-radius: to-rem(2);
-					border-end-start-radius: to-rem(2);
-				}
-
-				/* The class carrier is a wrapper — the user-agent focus ring sits on the button inside. */
-				.kol-button__interactive-element:focus {
-					outline: none;
-				}
+			&:focus {
+				outline: none;
 			}
 
 			.kol-icon {
@@ -88,18 +92,16 @@
 			-webkit-margin-start: 0;
 		}
 
-		.collapsible--open &__heading-button {
-			.kol-button {
-				border-start-end-radius: to-rem(8);
-				border-start-start-radius: to-rem(8);
-			}
+		&--open &__heading {
+			border-start-end-radius: to-rem(8);
+			border-start-start-radius: to-rem(8);
 
 			.kol-icon::before {
 				content: '\f077';
 			}
 		}
 
-		:not(.collapsible--open) &__heading-button .kol-button .kol-icon::before {
+		&:not(#{$root}--open) &__heading .kol-icon::before {
 			content: '\f078';
 		}
 	}
