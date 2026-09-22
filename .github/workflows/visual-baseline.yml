@@ -30,10 +30,10 @@ jobs:
     # --user 1001 (pwuser, same uid as the runner user): Firefox refuses to launch as root,
     # see https://playwright.dev/docs/ci#via-containers
     container:
-      image: mcr.microsoft.com/playwright:v1.60.0-noble
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
       options: --user 1001
     env:
-      PLAYWRIGHT_IMAGE: mcr.microsoft.com/playwright:v1.60.0-noble
+      PLAYWRIGHT_IMAGE: mcr.microsoft.com/playwright:v1.63.0-noble
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -43,7 +43,7 @@ jobs:
       - name: Verify Playwright version matches container image
         run: |
           INSTALLED=$(pnpm --filter @public-ui/visual-tests exec node -p "require('@playwright/test/package.json').version")
-          [ "$INSTALLED" = "1.60.0" ] || { echo "::error::@playwright/test $INSTALLED does not match container image v1.60.0 – update the image tags in the workflows"; exit 1; }
+          [ "$INSTALLED" = "1.63.0" ] || { echo "::error::@playwright/test $INSTALLED does not match container image v1.63.0 – update the image tags in the workflows"; exit 1; }
       - name: Build
         run: pnpm --filter @public-ui/visual-tests^... build
       - name: Purge existing snapshots
