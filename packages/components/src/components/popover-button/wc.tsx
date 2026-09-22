@@ -30,11 +30,11 @@ import { BasePopoverButtonWebComponent } from './base';
  * Transitional `kol-popover-button-wc` — a `shadow:false` wrapper that renders `PopoverButtonFC`
  * directly into the light DOM.
  *
- * This exists because legacy consumers (`FormFieldLabel`, `SplitButton`) render this element
- * inside their own shadow DOM. `FormFieldLabel` is a stateless functional component and cannot
- * own the popover orchestration (controller, open state, toggle listeners), so it cannot switch
- * to `PopoverButtonFC` yet; a reusable orchestration unit for functional consumers is up to the
- * owner. Once all consumers have migrated, this component can be deleted.
+ * This exists because `FormFieldLabel` renders this element inside its own shadow DOM. As a
+ * stateless functional component it has no lifecycle to drive the popover orchestration
+ * (`createPopoverButtonItem` needs a `componentDidRender` and a `disconnectedCallback`), so it
+ * cannot switch to `PopoverButtonFC` yet — that step needs a web component around it and is up to
+ * the owner. Once that consumer has migrated, this component can be deleted.
  *
  * The orchestrator logic lives in `BasePopoverButtonWebComponent`; the differences to the public
  * `kol-popover-button` are:
