@@ -22,17 +22,40 @@ Presentation shell for the KoliBri React sample app. It ships the sample experie
 
 ## Run locally
 
-```powershell
-# From repo root
-pnpm i --ignore-scripts
+```bash
+# From the repo root, once after cloning or after `pnpm clean`
+pnpm i
 pnpm -r build
 
 cd packages/samples/presentation
-pnpm prepare:components; pnpm prepare:themes
 pnpm start
 ```
 
 `pnpm start` opens the Vite dev server with the default theme set bundled in `@public-ui/themes`.
+It rebuilds the workspace dependencies first (`build:deps`), so it never serves a stale theme or
+component package.
+
+### Next to a running watcher
+
+While another package watches its own build output — `pnpm dev` in `packages/components`, or a
+theme package's `rollup -c --watch` — that dependency build must not run. It would delete the
+`dist` the watcher currently owns (`pnpm clear`) and write readme files back into the sources the
+watcher is watching. Every following rebuild then fails, because the deleted `assets/kolicons`
+breaks the sass import of every component. Start the dev server on its own
+instead:
+
+```bash
+# Terminal A
+pnpm --filter @public-ui/components dev
+
+# Terminal B
+pnpm --filter @public-ui/presentation dev
+```
+
+`pnpm dev` is plain Vite with the browser opened — no dependency build, so it never touches another
+package's output. `pnpm start` recognises a running components watcher by
+`packages/components/.watch.pid` and skips the dependency build too, with a note on the console.
+`KOLIBRI_SKIP_DEPS_BUILD=1` forces that skip for any other watcher.
 
 ## Injecting a different theme
 
@@ -76,7 +99,7 @@ $env:ENABLE_THEME_PATCHING="true"; pnpm start
 
 ## Notes
 
-- `pnpm start` builds the workspace dependencies first (`build:deps`), so it never serves a stale theme package. `pnpm serve` skips that step on purpose: it is what `serve.sh` of a theme package calls while that package's own `rollup --watch` already owns its `dist`.
+- `pnpm start` builds the workspace dependencies first (`build:deps`), so it never serves a stale theme package. `pnpm serve` and `pnpm dev` skip that step on purpose: `serve` is what `serve.sh` of a theme package calls while that package's own `rollup --watch` already owns its `dist`, and `dev` is the same thing with the browser opened. See [Next to a running watcher](#next-to-a-running-watcher).
 
 - Keep theme modules built before injecting them; use `pnpm --filter @public-ui/themes build` if you are working on a local theme.
-- Assets are copied into `public/assets` via `pnpm prepare:components` and `pnpm prepare:themes`.
+- Assets are copied into `public/assets` by `pnpm prebuild`, which runs `kolibri-copy-assets` for the components package and every bundled theme. It runs automatically on `pnpm install` (via `prepare`) and before `pnpm build`.

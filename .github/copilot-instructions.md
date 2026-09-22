@@ -51,15 +51,17 @@ pnpm -r build
 ### Start Development Environment
 
 ```bash
-# Navigate to React sample app for component development
-cd packages/samples/react
-
-# Copy assets manually (Playwright prepare may fail)
-pnpm prepare:components
-pnpm prepare:themes
+# The presentation app hosts the React samples and is the dev server
+cd packages/samples/presentation
 
 # Start development server (opens http://localhost:9191)
+# It builds the workspace dependencies first.
 pnpm start
+
+# Next to a running watcher (pnpm dev in packages/components) use this instead:
+# it starts Vite without the dependency build, which would delete the
+# build output the watcher currently owns.
+pnpm dev
 ```
 
 ### Code Quality Commands
@@ -244,9 +246,9 @@ node --version  # Must show v22.x.x
 # Error: Playwright download failures
 # Solution: Use --ignore-scripts during installation
 pnpm i --ignore-scripts
-# Then manually copy assets for development:
-cd packages/samples/react
-pnpm prepare:components && pnpm prepare:themes
+# Then copy the assets for development:
+cd packages/samples/presentation
+pnpm prebuild
 ```
 
 ### Build Dependencies
