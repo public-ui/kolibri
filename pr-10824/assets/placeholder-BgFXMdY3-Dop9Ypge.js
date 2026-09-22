@@ -1,1 +1,0 @@
-import{Et as e}from"./index-xRBSs3Z8.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
