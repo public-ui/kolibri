@@ -1,7 +1,6 @@
-# Everything in `assets/` is produced by the `prepare` script (`kolibri-copy-assets`):
-# the KoliBri icons and favicon from `@public-ui/components`, the Font Awesome and Codicon
-# sets from `@public-ui/theme-default`. Only the theme's own variant sample data is authored
-# by hand and therefore tracked.
+# Everything in `assets/` is produced by the `prebuild` script: the KoliBri icons and favicon
+# copied from `@public-ui/components`, and the Carbon icon font built by `@public-ui/d-you-icons`
+# in `icons/`. Only the theme's own variant sample data is authored by hand and therefore tracked.
 assets/*
 !assets/variants/
 assets/variants/*

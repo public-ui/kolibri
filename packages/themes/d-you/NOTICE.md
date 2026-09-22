@@ -57,27 +57,31 @@ Questions about the design system and its licensing: <wallet-development@eudi.sp
 
 ## 3. Third-party assets in `assets/`
 
-`assets/` is not in version control: the `prepare` script fills it from the packages listed below,
+`assets/` is not in version control: the `prebuild` script fills it from the sources listed below,
 and each asset keeps its own license file next to it after installation.
 
-| Asset                      | Comes from                 | License                                                                                                     |
-| -------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `assets/kolicons/`         | `@public-ui/components`    | EUPL-1.2, © Informationstechnikzentrum Bund                                                                 |
-| `assets/kolibri.ico`       | `@public-ui/components`    | EUPL-1.2, © Informationstechnikzentrum Bund                                                                 |
-| `assets/fontawesome-free/` | `@public-ui/theme-default` | Icons CC BY 4.0, fonts SIL OFL 1.1, code MIT — © Fonticons, Inc.; see `assets/fontawesome-free/LICENSE.txt` |
-| `assets/codicons/`         | `@public-ui/theme-default` | Icons CC BY 4.0, code MIT — © Microsoft Corporation; see `assets/codicons/LICENSE` and `LICENSE-CODE`       |
+| Asset                 | Comes from                                    | License                                     |
+| --------------------- | --------------------------------------------- | ------------------------------------------- |
+| `assets/kolicons/`    | `@public-ui/components`                       | EUPL-1.2, © Informationstechnikzentrum Bund |
+| `assets/kolibri.ico`  | `@public-ui/components`                       | EUPL-1.2, © Informationstechnikzentrum Bund |
+| `assets/d-you-icons/` | `@carbon/icons`, via `@public-ui/d-you-icons` | Apache-2.0, © IBM Corp.                     |
 
 ### A note on the icon set
 
 The d-you design system specifies the [IBM Carbon Design System](https://carbondesignsystem.com/elements/icons/library/)
 icons, licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0),
-© IBM Corp. **Carbon is not packaged in this repository and this theme does not ship it.** Until it
-is, the theme borrows the Font Awesome and Codicon sets from `@public-ui/theme-default`, under the
-terms in the table above.
+© IBM Corp. This theme ships them: `@public-ui/d-you-icons` (in `icons/`) builds a font from the
+`@carbon/icons` package at build time, covering the icons KoliBri itself uses.
 
-An application that wants the specified iconography has to add Carbon itself and carry its
-Apache-2.0 notice. This substitution is recorded as an open point in
-[`STYLEGUIDE.md`](./STYLEGUIDE.md) and [`README.md`](./README.md).
+Apache-2.0 is a permissive license, but it is not attribution-free. An application distributing this
+theme distributes the Carbon outlines with it and therefore passes on the license text and the
+copyright notice — the generated font in `assets/d-you-icons/` is a derivative work of the Carbon
+SVGs, not an independent asset. The icons are reshaped into font glyphs and renamed to KoliBri's icon
+names during the build; that renaming is the "change" Apache-2.0 §4(b) asks to be stated, and
+`icons/icons.json` is the record of it.
+
+Everything this theme draws itself — the CSS, the token values, the type scale — stays under the
+terms in sections 1 and 2; Apache-2.0 reaches only the icon outlines.
 
 ## 4. Fonts
 

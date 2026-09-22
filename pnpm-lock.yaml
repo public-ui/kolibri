@@ -953,9 +953,6 @@ importers:
       '@public-ui/stylelint-rules':
         specifier: workspace:*
         version: link:../../tools/stylelint-rules
-      '@public-ui/theme-default':
-        specifier: workspace:*
-        version: link:../default
       '@public-ui/visual-tests':
         specifier: workspace:*
         version: link:../../tools/visual-tests
@@ -1010,6 +1007,24 @@ importers:
       unbuild:
         specifier: 3.6.1
         version: 3.6.1(sass@1.104.1)(typescript@5.9.3)(vue@3.5.43(typescript@5.9.3))
+
+  packages/themes/d-you/icons:
+    devDependencies:
+      '@carbon/icons':
+        specifier: 11.88.0
+        version: 11.88.0
+      oslllo-svg-fixer:
+        specifier: 6.0.1
+        version: 6.0.1(encoding@0.1.13)
+      prettier:
+        specifier: 3.9.8
+        version: 3.9.8
+      prettier-plugin-organize-imports:
+        specifier: 4.3.0
+        version: 4.3.0(prettier@3.9.8)(typescript@5.9.3)
+      svgtofont:
+        specifier: 6.5.3
+        version: 6.5.3(chokidar@3.6.0)
 
   packages/themes/default:
     devDependencies:
@@ -2625,6 +2640,9 @@ packages:
   '@cacheable/utils@2.5.0':
     resolution: {integrity: sha512-buipgOVDkkPXNR5+xBpDw7Zk2n1EvU7qBJCNUcL7rhQ//kfpOXPAvQ511Os0vpLYJ1pZnvudNytkQt2hst3wqA==}
 
+  '@carbon/icons@11.88.0':
+    resolution: {integrity: sha512-roUCNGQ4ts6dLibTbsbXdT9VZP92kz9b8vHr1waJ9tE4XwCpJNM8NfS5221/Ad05qwavKVMsN8dKDyi7yICMwQ==}
+
   '@colordx/core@5.6.0':
     resolution: {integrity: sha512-EDlcg/Hmlj1WuFh/Os9YhA+A2aasB2XlgwFfGePUDuW7fVHC07HBi5AFIMx0Ct1eM8kHM9NRyOtZ0MuVYa8xvg==}
 
@@ -3386,6 +3404,10 @@ packages:
   '@humanwhocodes/retry@0.4.3':
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
+
+  '@ibm/telemetry-js@1.11.0':
+    resolution: {integrity: sha512-RO/9j+URJnSfseWg9ZkEX9p+a3Ousd33DBU7rOafoZB08RqdzxFVYJ2/iM50dkBuD0o7WX7GYt1sLbNgCoE+pA==}
+    hasBin: true
 
   '@inquirer/ansi@1.0.2':
     resolution: {integrity: sha512-S8qNSZiYzFd0wAcyG5AXCvUHC5Sr7xpZ9wZ2py9XR88jUz8wooStVx5M6dRzczbBWjic9NP7+rY0Xi7qqK/aMQ==}
@@ -15421,6 +15443,10 @@ snapshots:
       hashery: 1.5.1
       keyv: 5.6.0
 
+  '@carbon/icons@11.88.0':
+    dependencies:
+      '@ibm/telemetry-js': 1.11.0
+
   '@colordx/core@5.6.0': {}
 
   '@colors/colors@1.5.0': {}
@@ -15862,6 +15888,8 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/retry@0.4.3': {}
+
+  '@ibm/telemetry-js@1.11.0': {}
 
   '@inquirer/ansi@1.0.2': {}
 

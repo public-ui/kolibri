@@ -482,10 +482,11 @@ applying the token set consistently rather than by a direct design reference.
 
 Still outstanding:
 
-- **Icons.** The design system specifies IBM Carbon. The theme currently ships the Font Awesome and
-  Codicon sets inherited from the default theme, because Carbon is not packaged in this repository.
-  Adding it means a new icon-asset package plus the `kol-icon` name mapping, and is a task of its
-  own.
+- **Icons.** Resolved: the theme ships IBM Carbon, built into a font from `@carbon/icons` by
+  `@public-ui/d-you-icons` (in `icons/`). What remains is a mapping question rather than a packaging
+  one — `icons/icons.json` pairs each KoliBri icon name with a Carbon icon, and a few of those pairs
+  are a judgement call (`cogwheel` → `settings` against `settings` → `settings--adjust`,
+  `sort-neutral` → `sort--remove`) that the design team should confirm.
 - **Dark mode.** Derived, not designed — see §1.6.
 - **Corner radii.** Measured from the mockups rather than read from a token table (§4.1).
 - **The two Figma inconsistencies in §1.3** and the stale `warning-outline` swatch in §1.4 should be
