@@ -84,7 +84,13 @@ Only comments of users with write access count. Bots are ignored. A rejection wi
 | Workflow scripts                 | `scripts/visual-review/` (see `scripts/README.md`)                                    |
 | Workflows                        | `visual-baseline.yml`, `visual-review.yml`, `visual-review-ui.yml`, job in `ci.yml`   |
 
-The folder `visual/pr-<n>/` is removed when the pull request closes (`pr-preview-cleanup.yml`).
+The folder `visual/pr-<n>/` is removed when the pull request closes (`pr-preview-cleanup.yml`). The same
+workflow can be started manually to clean up leftovers: `delete_closed` removes the deployments of all
+pull requests that are already closed (together with folders that belong to no pull request at all),
+`stale_days` those without activity for a given number of days – open pull requests included, so their
+published report is gone until the next CI run republishes it –, `delete_all` every deployment regardless
+of state, and `purge_history` squashes the whole `gh-pages` history into a single commit to reclaim clone
+size. The review page in `visual/` and the `.nojekyll` marker are never touched.
 
 ## Trust boundary
 
