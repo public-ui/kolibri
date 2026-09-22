@@ -1,0 +1,1 @@
+import{Tt as e}from"./index-RsfAd05y.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};
