@@ -4,7 +4,7 @@ import type { Entry, ItemStatus, ReviewState } from './types';
 interface Props {
 	entries: Entry[];
 	selected: string | null;
-	reviewStates: Record<string, { state: ReviewState; unsaved: boolean }>;
+	reviewStates: Record<string, { state: ReviewState; unsaved: boolean; resolved: boolean }>;
 	onSelect: (key: string) => void;
 }
 
@@ -39,13 +39,20 @@ export function ItemList({ entries, selected, reviewStates, onSelect }: Props) {
 						{STATUS_LABEL[entry.item.status]}
 					</span>
 					<span className="list-name">{entry.item.name}</span>
-					{review && review.state !== 'open' && (
-						<span
-							className={`list-review review-${review.state}${review.unsaved ? ' is-unsaved' : ''}`}
-							title={review.unsaved ? `${review.state} (not saved yet)` : review.state}
-						>
-							{REVIEW_ICON[review.state]}
+					{review?.resolved ? (
+						<span className="list-review review-resolved" title="Previously reviewed – now matches the baseline again, clear the stale verdict">
+							↺
 						</span>
+					) : (
+						review &&
+						review.state !== 'open' && (
+							<span
+								className={`list-review review-${review.state}${review.unsaved ? ' is-unsaved' : ''}`}
+								title={review.unsaved ? `${review.state} (not saved yet)` : review.state}
+							>
+								{REVIEW_ICON[review.state]}
+							</span>
+						)
 					)}
 				</button>
 			</li>,

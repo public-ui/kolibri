@@ -14,7 +14,7 @@ import { KolDetails } from './details/shadow';
 import { KolDialog } from './dialog/component';
 import { KolDialogWc } from './dialog/wc';
 import { KolDrawer } from './drawer/shadow';
-import { KolForm } from './form/shadow';
+import { KolForm } from './form/component';
 import { KolHeading } from './heading/component';
 import { KolIcon } from './icon/component';
 import { KolImage } from './image/component';

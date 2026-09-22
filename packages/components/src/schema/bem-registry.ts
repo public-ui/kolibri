@@ -297,6 +297,20 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'disabled' | 'external-link' | 'hide-label' | 'inline' | 'standalone'>;
 	};
+	'kol-form': {
+		elements: {
+			alert: {
+				modifiers: null;
+			};
+			link: {
+				modifiers: null;
+			};
+			'mandatory-fields-hint': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-split-button': {
 		elements: {
 			button: {
@@ -487,6 +501,14 @@ const BEM: KoliBriComponentsBemSchema = {
 			text: { modifiers: null },
 		},
 		modifiers: new Set(['disabled', 'external-link', 'hide-label', 'inline', 'standalone']),
+	},
+	'kol-form': {
+		elements: {
+			alert: { modifiers: null },
+			link: { modifiers: null },
+			'mandatory-fields-hint': { modifiers: null },
+		},
+		modifiers: null,
 	},
 	'kol-split-button': {
 		elements: {

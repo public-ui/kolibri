@@ -21,7 +21,7 @@ export const DrawerBigContent: FC = () => {
 				<DrawerRadioAlign value={align} onChange={(_, value) => setAlign(value as AlignPropType)} />
 			</div>
 			<div className="flex flex-wrap gap-4">
-				<KolDrawer ref={drawerElement} _label="Scrollable Drawer" _align={align}>
+				<KolDrawer ref={drawerElement} _label="Scrollable Drawer" _align={align} _level={2}>
 					<div
 						style={{
 							width: align === 'left' || align === 'right' ? '20vw' : undefined,

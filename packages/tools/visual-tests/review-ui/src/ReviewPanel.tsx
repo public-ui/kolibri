@@ -29,6 +29,8 @@ export function ReviewPanel({ entry, draft, status, onChange, pageUrl, prUrl, au
 	const serverState = status?.items[key];
 	const note = draft.notes.find((candidate) => candidate.item === key);
 	const needsDecision = item.status !== 'unchanged' && item.status !== 'error';
+	const staleReject = item.status === 'unchanged' && draft.rejects.some((entry) => entry.item === key);
+	const staleApproval = item.status === 'unchanged' && draft.approvals.some((entry) => entry.item === key);
 
 	const approve = () =>
 		onChange({ ...draft, approvals: [...without(draft.approvals, key), { item: key, hash: item.hash }], rejects: without(draft.rejects, key) });
@@ -94,6 +96,15 @@ export function ReviewPanel({ entry, draft, status, onChange, pageUrl, prUrl, au
 					</button>
 					<button type="button" onClick={clear}>
 						Clear
+					</button>
+				</div>
+			)}
+
+			{(staleReject || staleApproval) && (
+				<div className="review-actions" role="group" aria-label="Decision">
+					<p className="viewer-note">You {staleReject ? 'rejected' : 'approved'} an earlier version of this snapshot; it now matches the baseline again.</p>
+					<button type="button" onClick={clear}>
+						Clear stale {staleReject ? 'rejection' : 'approval'}
 					</button>
 				</div>
 			)}

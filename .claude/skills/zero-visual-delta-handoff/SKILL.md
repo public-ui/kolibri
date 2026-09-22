@@ -763,6 +763,35 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
   Shell-Pipe interpretiert, siehe Log 2026-09-09). Ein gemeinsames Teilwort nehmen — hier `plit`,
   das `split-button/basic` und `…component=splitButton` zugleich trifft.
 
+### 2026-09-22 — Skeleton-Migration kol-form (PR #10962): alle 7 Pakete, 0 Diffs ab Start
+
+- **Ausgangslage**: `kol-form` war Legacy (`shadow.tsx`, `@State() state`-Bag) und rendert seine
+  Fehlerlisten-Eintraege ueber den transitionalen `kol-link-wc`. Zusaetzliche Falle: der Block
+  `kol-form` liegt auf dem `<form>`, die Fehlerliste ist dessen **Geschwister** — `.kol-form__alert`
+  und `.kol-form__link` sind BEM-Elemente ausserhalb ihres Blocks.
+- **Neu gelernt (Frueher-gewusst-Test bestanden)**: **Ist-DOM vor dem Umbau als Jest-Snapshot
+  einfrieren — und dabei das Wrapper-WC mitregistrieren.** `executeSnapshotTests(tag, [KolForm], …)`
+  laesst `<kol-link-wc>` unexpandiert; erst `[KolForm, KolLinkWc]` zeigt den echten Ziel-DOM. Danach
+  ist der Vergleich nach dem Umbau ein exakter Diff statt einer Schaetzung: hier blieben genau zwei
+  Zeilen uebrig (Wrapper-Tag und der Expert-`<slot>`), alles andere byte-gleich. Das ersetzt das
+  Pixel-Gate nicht, entscheidet aber vorab, ob ueberhaupt eine Theme-Runde droht.
+- **Ursachen & Fix-Muster**: keine Theme-Runde noetig, wieder ueber **Wrapper-Tausch statt
+  Klassen-Merge** (wie kol-split-button). `.kol-form__link { display: inline-block }` (bwst,
+  default, ecl-ec, ecl-eu) haette nach einem Merge auf der Block-Wurzel `.kol-link` deren
+  `display: inline-flex` ueberschrieben — der Theme-Layer gewinnt gegen `kol-component`. Der FC
+  rendert stattdessen ein `<span class="kol-form__link">` genau dort, wo das Custom Element stand.
+  **Merke**: beim Klassen-Merge zaehlt nicht nur die verlorene Descendant-Stufe (Muster 6a-8),
+  sondern auch, ob die Consumer-Regel jetzt gegen eine Block-Regel desselben Elements antritt und
+  sie per Layer-Reihenfolge gewinnt.
+- **Kein Wurzel-Wrapper**: Ein gemeinsamer `BemRootNodeFC` haette ein Wurzel-`<div>` eingezogen und
+  `.kol-form { width: 100% }` (ecl) von der Form weggeschoben. Loesung: zwei einwurzelige FCs
+  (`FormFC` auf dem `<form>` wie `BreadcrumbFC` auf seinem `<nav>`, `FormErrorListFC` daneben).
+- **Theme-Spezifika**: keine.
+- **Abnahme-Evidenz (CI, massgeblich)**: PR #10962, Visual-Review-Bot „No visual changes", je
+  409 unchanged / 0 changed fuer alle sieben Pakete, Baseline `b08fab9f7c` (develop), Commit
+  `0ec6873ec1`. Lokal ohne Docker: Components 998/998, Hydrate-SSR 102/102 (unveraendert),
+  `pnpm check:skeleton-selectors` sauber.
+
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 
 - **Ausgangslage**:
