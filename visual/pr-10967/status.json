@@ -1,48 +1,57 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "7 added – 0 of 7 approved, review pending",
-	"computedAt": "2026-09-22T10:13:31.901Z",
+	"state": "success",
+	"description": "7 visual changes approved by BF150",
+	"computedAt": "2026-09-22T11:17:17.942Z",
 	"pr": 10967,
 	"head": "f60ce4c2c46a7b0cd5733557f91b873b6c8cd3cb",
 	"digest": "sha256:1c4f3cbdadad059fe32ca60b9fcd251410f2d3963804b6026a9be5b7508fbe5a",
 	"counts": {
 		"changes": 7,
-		"open": 7,
-		"approved": 0,
+		"open": 0,
+		"approved": 7,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"BF150"
+	],
 	"items": {
 		"test-tag-name-transformer/input-color-basic-noColumns--label-suggestions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-bwst/input-color-basic-noColumns--label-suggestions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/input-color-basic-noColumns--label-suggestions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/input-color-basic-noColumns--label-suggestions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/input-color-basic-noColumns--label-suggestions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-kern/input-color-basic-noColumns--label-suggestions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"unstyled/input-color-basic-noColumns--label-suggestions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		}
 	}
 }
