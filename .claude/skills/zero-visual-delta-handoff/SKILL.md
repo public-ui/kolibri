@@ -872,6 +872,9 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
   Komponente — `@State() open` ueberschreibt `open()` still, und der Fehler zeigt sich erst als
   „drawer.open is not a function" im Test, nicht im Build. Hier: State `expanded`.
 - **Theme-Spezifika**: keine.
+- **Abnahme-Evidenz (CI, massgeblich)**: PR #10976, Visual-Review-Bot „No visual changes", je
+  409 unchanged / 0 changed fuer alle sieben Pakete, Baseline `4cab714e75` (develop), Commit
+  `ad49dc66c1`; `build-and-check` und `e2e-tests` gruen.
 - **Evidenz (lokal, Docker)**: A/B ueber einen develop-Worktree, weil Baselines nicht im Git liegen
   (Erfahrung #32): Baselines aus `origin/develop` erzeugen, in den Branch-Checkout kopieren, dann
   `--check`. Je Paket `--grep drawer` → 8 passed, 0 failed, Exit 0 fuer bwst, default, desy, kern,
