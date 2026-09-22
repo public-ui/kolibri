@@ -1,15 +1,15 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "35 visual changes approved by BF150",
-	"computedAt": "2026-09-22T09:57:46.988Z",
+	"state": "pending",
+	"description": "35 added – 0 of 35 approved, review pending",
+	"computedAt": "2026-09-22T14:49:55.418Z",
 	"pr": 10956,
-	"head": "98440fa6f09581b89cff1a9e4de53000e8c3a4d4",
-	"digest": "sha256:6d24922015b26b2b1d820d5da81fd55c4c345b43cc5fee7640030de1f61a0328",
+	"head": "1765eccf7f37f846f64e2bff162ac2e47e977b84",
+	"digest": "sha256:4f766aed9c61838469523ddae7fa93a672cbc381e522a3b18a2ec5c5959b3ee6",
 	"counts": {
 		"changes": 35,
-		"open": 0,
-		"approved": 35,
+		"open": 35,
+		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
@@ -19,179 +19,144 @@
 	],
 	"items": {
 		"test-tag-name-transformer/input-text-clear-button-noColumns--search-disabled": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"test-tag-name-transformer/input-text-clear-button-noColumns--search-empty": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"test-tag-name-transformer/input-text-clear-button-noColumns--search-read-only": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"test-tag-name-transformer/input-text-clear-button-noColumns--search-value": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"test-tag-name-transformer/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-bwst/input-text-clear-button-noColumns--search-disabled": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-bwst/input-text-clear-button-noColumns--search-empty": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-bwst/input-text-clear-button-noColumns--search-read-only": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-bwst/input-text-clear-button-noColumns--search-value": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-bwst/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-default/input-text-clear-button-noColumns--search-disabled": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-default/input-text-clear-button-noColumns--search-empty": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-default/input-text-clear-button-noColumns--search-read-only": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-default/input-text-clear-button-noColumns--search-value": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-default/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-desy/input-text-clear-button-noColumns--search-disabled": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-desy/input-text-clear-button-noColumns--search-empty": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-desy/input-text-clear-button-noColumns--search-read-only": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-desy/input-text-clear-button-noColumns--search-value": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-desy/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/input-text-clear-button-noColumns--search-disabled": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/input-text-clear-button-noColumns--search-empty": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/input-text-clear-button-noColumns--search-read-only": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/input-text-clear-button-noColumns--search-value": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-kern/input-text-clear-button-noColumns--search-disabled": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-kern/input-text-clear-button-noColumns--search-empty": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-kern/input-text-clear-button-noColumns--search-read-only": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-kern/input-text-clear-button-noColumns--search-value": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"theme-kern/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"unstyled/input-text-clear-button-noColumns--search-disabled": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"unstyled/input-text-clear-button-noColumns--search-empty": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"unstyled/input-text-clear-button-noColumns--search-read-only": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"unstyled/input-text-clear-button-noColumns--search-value": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
 		"unstyled/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		}
 	}
 }
