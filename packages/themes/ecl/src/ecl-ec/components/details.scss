@@ -12,6 +12,16 @@
 
 			@include ghost-button('kol-button');
 
+			/* `button('kol-button')` draws the focus ring on `.kol-button__interactive-element`, which
+			   this DOM no longer has — the summary is the control itself. The ring's tokens come from
+			   `ghost-button` above (`:focus-within` matches the focused summary), and drawing it here
+			   also replaces the user-agent ring: the global `a, button { outline: none }` never covered
+			   a `<summary>`. */
+			&:focus {
+				outline: var(--button-focus-outline-color) solid var(--button-focus-outline-width);
+				outline-offset: var(--button-focus-outline-offset);
+			}
+
 			.kol-span {
 				color: var(--button-text-color);
 				background-color: var(--button-background-color);
