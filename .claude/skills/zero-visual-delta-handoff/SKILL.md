@@ -11,7 +11,7 @@ Bewährt in: Strukturumbau-Kampagnen über 5 Themes + unstyled (je ~294 Szenarie
 
 ## 0. Voraussetzung: Docker — ohne Docker kein Start
 
-**Diese Disziplin funktioniert ausschließlich mit einem laufenden Docker-Daemon. Vor dem ersten Schritt prüfen (`docker info`); ohne Docker wird die Arbeit NICHT mit lokalen Playwright-Läufen ersetzt, sondern im Companion-Plan als offene Arbeit dokumentiert und an eine Session mit Docker übergeben.**
+**Diese Disziplin funktioniert ausschließlich mit einem laufenden Docker-Daemon. Vor dem ersten Schritt prüfen (`docker info`).** Schlägt das fehl, heißt das zunächst nur, dass der **Daemon nicht läuft** — nicht, dass Docker fehlt: in den Container-Umgebungen dieser Sessions ist die Engine installiert, und `dockerd &` als root startet sie (danach `docker info` erneut prüfen; der Playwright-Container braucht zusätzlich den Agent-Proxy-CA, siehe Erfahrung #34). Erst wenn auch das scheitert, wird die Arbeit NICHT mit lokalen Playwright-Läufen in einem anderen Browser ersetzt, sondern im Companion-Plan als offene Arbeit dokumentiert und an eine Session mit Docker übergeben. Ein Ersatz-Browser hat in einer realen Session eine echte Regression durchgelassen (Log 2026-09-21).
 
 Warum Docker zwingend ist:
 
@@ -155,6 +155,20 @@ Diese Ursachen deckten in der Praxis >90 % der Diffs — in dieser Reihenfolge p
    (`.kol-x__btn.kol-button …`), nicht ersatzlos streichen. Das Element trägt beide Klassen, die
    Spezifität bleibt exakt erhalten.
 
+9. **Zwei Boxen werden zu einer — Größen-Floor neu rechnen.** Trug vorher ein äußeres Element
+   Padding/Border und ein inneres den `min-height`-Floor, fallen beide nach dem Umbau in dieselbe
+   border-box: der Floor schluckt Padding und Border, statt sie zu addieren. Fix:
+   `min-height: calc(<floor> + <padding> + <border>)`.
+
+10. **Nativ semantische Container blenden Inhalt aus, den der Nachbau im Layout hielt.** Ein
+    geschlossenes `<details>` nimmt seinen Content-Teilbaum komplett aus dem Layout — damit fällt
+    nicht nur dessen Höhe weg, sondern auch jede Dekoration auf dem Wrapper (Padding, Rahmen) und
+    jede Baseline, die der Vorgänger daraus bezog. Ein `inline-block`-Host bemisst seine Line-Box
+    aus dieser Baseline, sodass ein einziger Wegfall zwei voneinander unabhängig aussehende Deltas
+    erzeugt. Fix theme-lokal je nach Bedarf: Dekoration auf dem Block im Zustand `:not(--open)`
+    rekonstruieren, Baseline über ein `::after` mit `display: block`, `height: 0` und einem
+    Zero-Width-Space als `content` zurückholen.
+
 ### 6b. Selektoren-Regel, wenn ein Umbau das zustandstragende Element in einen Wrapper verschiebt
 
 Situation: `<element class="block">` wird zu `<div class="block"><element class="block__element">`. Danach sortieren sich alle Selektoren, die den alten Block betrafen, in drei Gruppen:
@@ -275,6 +289,9 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 | 8   | Bei „Baseline stale"-Verdacht: Base-Code selbst laufen lassen → Fallstricke                                                                                                                                                                                      | Migration default                                          | Unnötige Baseline-Regenerierung verhindert                        |
 | 8b  | „Falscher Stand getestet"-Verdacht per Volume-Verifikation ausräumen: Branch-only-Marker im gebauten dist (0× auf Base), dist-mtime = Laufzeit, Log-Build-Schritte — Pipeline baut automatisch (Mirror ohne `.git`/`dist`, App-Build pro Testlauf) → Fallstricke | Re-Verifikation unstyled (Button-Migration)                | Sinnlose Re-Runs + falsche Schlüsse „grün sei trivial" verhindert |
 
+| 31 | `docker info` schlaegt fehl heisst **Daemon laeuft nicht**, nicht **kein Docker**: im Container-Setup dieser Sessions ist die Engine installiert und laesst sich als root mit `dockerd &` starten (danach `docker info` erneut pruefen). Erst wenn auch das scheitert, gilt Abschnitt 0 | Dialog-Skeleton-Migration | Eine komplette, wertlose Ersatz-Abnahme vermieden — der selbstgebaute Chromium-A/B-Lauf sah die echte Regression nicht |
+| 36 | Wirkt ein Teil eines Fix-Blocks und der andere nicht, ist es fast immer eine fehlende Ahnenstufe: ein Mixin, das INNERHALB des Blocks inkludiert wird, trägt eine Klasse mehr als ein `&__element`-Override daneben. `outline: revert` täuscht dabei, weil es über den Kaskaden-Ursprung gewinnt und nicht über die Spezifität → `#{$root} &` | Collapsible-Migration desy (2026-09-21) | Stunden Spezifitäts-Suche |
+| 37 | Ein geschlossenes natives `<details>` nimmt den ganzen Content-Teilbaum aus dem Layout — mit ihm die dekorierte Box des Wrappers UND die Baseline, aus der ein `inline-block`-Host seine Line-Box bemisst. Zwei getrennte Deltas aus einer Ursache | Collapsible-Migration bwst + desy (2026-09-21) | 16px-Phantomhöhe sofort erklärt |
 | 28 | Jest-/Stencil-Snapshot-Serializer sortiert `class`-Attribute alphabetisch — Class-Order im Snapshot ist kein Signal für die echte DOM-Reihenfolge und kein Regressions-Signal | Details-Skeleton-Migration (PR #10884) | Phantom-Class-Order-Bug beim FC-Port sofort erkannt |
 
 **Block B — Wrapper-Umbauten / Button-Migration**
@@ -300,16 +317,20 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 
 **Block C — Betrieb**
 
-| #   | Erfahrung (Detail)                                                                                             | Bestätigt              | Zeitersparnis bei früherer Kenntnis           |
-| --- | -------------------------------------------------------------------------------------------------------------- | ---------------------- | --------------------------------------------- |
-| 17  | grep-Passthrough flaky (webServer-Exit 127/spawn ENOENT) → http-server@14.1.1 einmalig im Volume → Fallstricke | mehrfach               | Statt Abbruch + voller 8-min-Lauf             |
-| 18  | probe.spec.js NACH Workspace-Spiegeln schreiben, NIE committen → Fallstricke                                   | Migration default      | Sync löscht Datei, Repo bleibt sauber         |
-| 19  | Hydrate-SSR-Snapshot pinnt Shadow-DOM: Components-Build davor, `pnpm -r test:unit` → Fallstricke               | Kampagne               | Rote Unit-Tests nach DOM-Änderung verhindert  |
-| 20  | `tsc`-Fehler über fehlende `HTMLKol*Element`-Typen = stale `components.d.ts` → bauen → Fallstricke             | mehrfach               | Scheinbare Typfehler sofort erkannt           |
-| 21  | `''`-Sentinel für „Attribut nur wenn gesetzt" statt `undefined` → Fallstricke                                  | Migration default      | `tabindex`-Leak-Diffs verhindert              |
-| 22  | Fokus-Kette über `shadowRoot.activeElement` abwärts → Fallstricke                                              | Kampagne               | „Fokussiert, aber keine Optik" sofort erklärt |
-| 23  | Transitional-Tags (z. B. `-wc`) vor Löschung im Components-Paket greppen → Fallstricke                         | Kampagne               | Brechende Peer-Komponenten verhindert         |
-| 24  | unstyled zeigt nur Basis-Layer, kein Build-Schritt, `icon/font` übersprungen → Fallstricke                     | Strukturumbau-Kampagne | Fehlinterpretation der Diffs verhindert       |
+| #   | Erfahrung (Detail)                                                                                                                                                                                                                                                                                                                                                      | Bestätigt                 | Zeitersparnis bei früherer Kenntnis                               |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ----------------------------------------------------------------- |
+| 17  | grep-Passthrough flaky (webServer-Exit 127/spawn ENOENT) → http-server@14.1.1 einmalig im Volume → Fallstricke                                                                                                                                                                                                                                                          | mehrfach                  | Statt Abbruch + voller 8-min-Lauf                                 |
+| 18  | probe.spec.js NACH Workspace-Spiegeln schreiben, NIE committen → Fallstricke                                                                                                                                                                                                                                                                                            | Migration default         | Sync löscht Datei, Repo bleibt sauber                             |
+| 19  | Hydrate-SSR-Snapshot pinnt Shadow-DOM: Components-Build davor, `pnpm -r test:unit` → Fallstricke                                                                                                                                                                                                                                                                        | Kampagne                  | Rote Unit-Tests nach DOM-Änderung verhindert                      |
+| 20  | `tsc`-Fehler über fehlende `HTMLKol*Element`-Typen = stale `components.d.ts` → bauen → Fallstricke                                                                                                                                                                                                                                                                      | mehrfach                  | Scheinbare Typfehler sofort erkannt                               |
+| 21  | `''`-Sentinel für „Attribut nur wenn gesetzt" statt `undefined` → Fallstricke                                                                                                                                                                                                                                                                                           | Migration default         | `tabindex`-Leak-Diffs verhindert                                  |
+| 22  | Fokus-Kette über `shadowRoot.activeElement` abwärts → Fallstricke                                                                                                                                                                                                                                                                                                       | Kampagne                  | „Fokussiert, aber keine Optik" sofort erklärt                     |
+| 23  | Transitional-Tags (z. B. `-wc`) vor Löschung im Components-Paket greppen → Fallstricke                                                                                                                                                                                                                                                                                  | Kampagne                  | Brechende Peer-Komponenten verhindert                             |
+| 24  | unstyled zeigt nur Basis-Layer, kein Build-Schritt, `icon/font` übersprungen → Fallstricke                                                                                                                                                                                                                                                                              | Strukturumbau-Kampagne    | Fehlinterpretation der Diffs verhindert                           |
+| 32  | Die Liste der geaenderten Bilder eines PRs gibt es ohne `gh` und ohne lokalen Lauf: `curl https://public-ui.github.io/kolibri/visual/pr-<n>/report.json` — je Paket jedes Snapshot mit `status`, `diffPixels` und URLs zu expected/actual/diff-PNG. Baselines selbst liegen NICHT im Git (`.gitignore`), `git diff -- '*.png'` ist darum immer 0 und als Metrik wertlos | Dialog-Skeleton-Migration | Direkt zur Ursache statt 40 Minuten Volllauf                      |
+| 33  | Erfahrung #30 vor dem Inlining gezielt pruefen statt anzunehmen: liefert der rendernde Konsument die Basis- und Theme-Styles des Kindes bereits selbst (hier `@shared/_card.mixin.scss` im `kol-dialog`-Mixin), faellt der Style-Verlust an der Shadow-Grenze aus und der FC-Port ist Null-Delta                                                                        | Dialog-Skeleton-Migration | Unnoetiges Festhalten am WC-Blatt verhindert                      |
+| 34  | Der Playwright-Container erreicht die Registry nur mit dem Agent-Proxy-CA: `/root/.ccr/ca-bundle.crt` in den `docker run` mounten und `NODE_EXTRA_CA_CERTS` + `npm_config_cafile` darauf zeigen lassen, sonst bricht `npm install -g pnpm` mit `SELF_SIGNED_CERT_IN_CHAIN` ab                                                                                           | Dialog-Skeleton-Migration | Der einzige Blocker zwischen "kein Docker" und laufender Pipeline |
+| 35  | Eine nichtdeterministische Route macht jedes Pixel-Ergebnis wertlos: springt ein Bild zwischen zwei plausiblen Zustaenden, erst die Ursache der Nichtdeterminiertheit messen (z. B. `addInitScript`, das die fragliche DOM-API protokolliert, ueber mehrere Laeufe) und beheben, dann vergleichen                                                                       | Dialog-Skeleton-Migration | Lokal bit-identisch, CI 14 Diffs — ohne die Messung unerklaerlich |
 
 **Block D — Sackgassen (nach Schadenshöhe; nie „bestätigen", nur entfernen, wenn Kontext entfällt)**
 
@@ -680,6 +701,155 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 - **Evidenz**: 36 PNGs (badge + version, alle sechs Pakete) byte-identisch zwischen altem und
   neuem Stand; Components 964/964, Hydrate-SSR 102/102, badge-e2e 5/5;
   `KOL-BADGE`-CSS je Theme regelgleich, `KOL-VERSION`-CSS je Theme regelgleich zum Badge-Sheet.
+
+### 2026-09-21 — Skeleton-Migration kol-dialog/kol-modal (CardFC statt kol-card-wc): 14 Changed Images, Ursache war eine flakige Sample-Route
+
+- **Ausgangslage**: `kol-dialog`, `kol-modal` und `kol-dialog-wc` auf Skeleton umgebaut. Zwei
+  ungestylte Custom Elements fallen dabei aus dem DOM: `kol-dialog-wc` im Shadow-Root von
+  `kol-dialog`/`kol-modal` und `kol-card-wc` in der Card-Variante (jetzt `CardFC`).
+- **Vorpruefung (hielt)**: weder `kol-card-wc` noch `kol-dialog-wc` tauchen als Selektor auf
+  (`grep -rn "kol-card-wc\|kol-dialog-wc" packages/themes/*/src packages/components/src
+--include='*.scss'` = 0 Treffer), und die Card-Styles kommen ueber `@shared/_card.mixin.scss`,
+  das das `kol-dialog`-Mixin bereits einbindet — Erfahrung #30 trifft also NICHT zu, weil der
+  Konsument die Basis- und Theme-Styles des Kindes selbst mitbringt. Genau diese Pruefung
+  unterscheidet den Fall von der Version/Badge-Runde.
+- **Der eigentliche Befund**: Die Visual Review meldete trotzdem **14 Changed Images** — exakt
+  `dialog/basic?show-dialog=true` und `modal/basic?show-dialog=true` in allen 7 Paketen, alles
+  andere 407/409 unveraendert. Ursache war NICHT die Migration, sondern die Sample-Route: der
+  `DialogBasic`-Effekt rief `blankRef.current?.openModal()` und `cardRef.current?.openModal()`
+  ohne `await`. Beide Methoden sind asynchron, also entschied die Ladereihenfolge der beiden
+  Lazy-Komponenten, welcher Dialog zuletzt in den Top Layer geht und damit sichtbar ist.
+  Messung ueber ein `addInitScript`, das `HTMLDialogElement.prototype.showModal` protokolliert:
+  6 Laeufe -> 3x blank/card, 3x card/blank. Ein Muenzwurf. Fix im Sample: beide Aufrufe
+  sequenziell awaiten; danach 6/6 in derselben Reihenfolge.
+- **Lehre (teuer bezahlt)**: Ein gruener lokaler Lauf beweist bei einer nichtdeterministischen
+  Route gar nichts — er zeigt nur, welche Seite der Muenze gefallen ist. Lokal waren
+  Base- und Branch-Baseline sogar bit-identisch, waehrend die CI 14 Diffs meldete. Wenn eine
+  Route zwischen zwei plausiblen Bildern springt, zuerst die Determiniertheit messen
+  (Reihenfolge/Timing protokollieren), dann ueber Pixel reden.
+- **Und die teuerste Fehlannahme dieser Session**: `docker info` schlug fehl, woraufhin die
+  ganze Abnahme auf einen selbstgebauten Chromium-A/B-Lauf umgestellt wurde — der die echte
+  Regression nicht sah. Docker war die ganze Zeit installiert, nur der Daemon lief nicht
+  (siehe Abschnitt 0 und Erfahrung #31).
+- **Theme-Spezifika**: keine. Die Diff-Groesse pro Theme (unstyled 5203 px bis ecl 39009 px)
+  skaliert mit der Card-Optik des Themes — ein Hinweis darauf, dass der Unterschied die
+  Card-Variante betrifft, nicht den Wrapper-Wegfall.
+- **Evidenz**: Visual Review PR #10959 vor dem Fix: `14 changed – 0 of 14 approved`
+  (`curl https://public-ui.github.io/kolibri/visual/pr-10959/report.json`); danach der lokale
+  Docker-Lauf je Paket, siehe PR-Text.
+
+### 2026-09-21 — Skeleton-Migration kol-split-button (PR zu #9598): alle 6 Pakete, 0 Diffs ab Start
+
+- **Ausgangslage**: `kol-split-button` sollte auf die Skeleton-Architektur und dabei den
+  transitionalen `kol-popover-button-wc` gegen `PopoverButtonFC` tauschen. Der Wrapper lag als
+  Flex-Item in `.kol-split-button__root` und trug die Consumer-Klasse
+  `.kol-split-button__secondary-button`.
+- **Ursachen & Fix-Muster**: keine Theme-Runde noetig — der Ausbau wurde als **Wrapper-Tausch statt
+  Klassen-Merge** gefahren. Vor dem Schreiben des FC gegreppt: jede Theme-Regel auf
+  `&__secondary-button` ist ein Descendant-Selektor (`.kol-span`, `.kol-button`,
+  `.kol-button__text`; bwst/default zusaetzlich `height: 100%` direkt auf der Klasse). Haette
+  `BemRootNodeFC` die Klasse auf `.kol-popover-button` gemerged, waeren alle eine Stufe zu tief
+  gelandet (Muster 6a-8). Stattdessen rendert der FC ein `<div class="kol-split-button__secondary-button">`
+  genau dort, wo das Custom Element stand, und `PopoverButtonFC` darin — Box-Baum identisch, weil
+  ein unbekanntes Element und ein `div` als Flex-Item beide blockifiziert werden. Dasselbe Muster
+  hatte die Vorgaenger-Session schon fuer die primaere Haelfte benutzt.
+- **Neu gelernt (Frueher-gewusst-Test bestanden)**: Ein `shadow:false`-Element, das unter SSR
+  mitten in `componentWillLoad` abbricht (`attachInternals` auf unbefuelltem `@Element()`, von
+  Stencil geschluckt), rendert dort **andere** Klassen als im Browser — hier fehlte
+  `kol-button--normal` am Dropdown-Button, weil der Abbruch vor `watchVariant` passierte. Wer den
+  Hydrate-SSR-Snapshot als Soll-DOM liest, jagt ein Phantom: Der Pixel-Gate misst CSR. Also beim
+  Ausbau eines `-wc`-Tags immer pruefen, ob der SSR-Snapshot den Abbruch zeigt (Props hinter dem
+  ersten `associatedController`-Zugriff fehlen), bevor eine SSR-Differenz als Regression gewertet
+  wird.
+- **Theme-Spezifika**: keine.
+- **Evidenz (ohne Docker)**: `docker info` nicht verfuegbar → A/B-Rezept vom 2026-09-21 (temporaeres
+  `chromium`-Projekt mit `executablePath: '/opt/pw-browsers/chromium'`,
+  `--grep plit --update-snapshots=all` je Paket, einmal auf HEAD und einmal auf HEAD~1, dazwischen
+  `pnpm --filter @public-ui/visual-tests build:deps`). 12/12 PNGs byte-identisch
+  (`split-button/basic` + `scenarios/focus-elements?component=splitButton` fuer unstyled, default,
+  bwst, desy, kern, ecl-ec). Components 992/992, Hydrate-SSR 102/102,
+  `pnpm check:skeleton-selectors` sauber.
+- **Abnahme-Evidenz (CI, maßgeblich)**: PR #10958, Visual-Review-Bot „No visual changes", je
+  409 unchanged / 0 changed fuer alle sieben Pakete, Baseline `e659945cf8` (develop), Commit
+  `73dc4859bd`; `visual-tests (<paket>)`, `build-and-check` und `e2e-tests` gruen. Der lokale
+  chromium-A/B hat das Ergebnis vorweggenommen — er ersetzt den firefox-Lauf der CI aber nicht,
+  sondern verkuerzt nur die Schleife bis dorthin.
+- **Falle beim A/B-Lauf**: Der `--grep`-Passthrough darf keine Alternation enthalten (`|` wird als
+  Shell-Pipe interpretiert, siehe Log 2026-09-09). Ein gemeinsames Teilwort nehmen — hier `plit`,
+  das `split-button/basic` und `…component=splitButton` zugleich trifft.
+
+### 2026-09-21 — Collapsible auf natives `<details>`/`<summary>`: Themes bwst + desy (2 Rejects → 0)
+
+- **Ausgangslage**: Visual Review von PR #10949 hatte 4 Snapshots freigegeben und 2 abgelehnt —
+  `theme-bwst/details-basic--basic` (502 → 466px) und
+  `theme-desy/scenarios-focus-elements-component-details` (93 → 77px, Fokus-Ring weg).
+- **Ursachen & Fix-Muster** (beide neu, komponenten-agnostisch — siehe die drei Ergänzungen unten):
+  1. **Die min-height des ersetzten Elements steckte in einer anderen Box** (Variante von Muster 4):
+     Auf develop trug das äußere `.collapsible__heading` Padding und Border, der innere Button die
+     `--a11y-min-size`; beim `<summary>` fallen beide in EINE border-box, und die min-height
+     schluckt Padding und Border, statt sie zu addieren. Fix: den Floor als `calc()` aus
+     a11y-min-size, Padding und Border neu rechnen — dasselbe Rezept, das der accordion-Fix
+     `45e7138f67` schon nutzte.
+  2. **Ein geschlossenes natives `<details>` nimmt den gesamten Content-Teilbaum aus dem Layout** —
+     samt der dekorierten Box des Wrappers. bwst zeichnete dort `padding-block` + `border-bottom`
+     (9px unter jeder eingeklappten Zeile). Theme-lokal auf dem Block rekonstruiert
+     (`&:not(.kol-details--open) { padding-bottom; border-bottom }`).
+  3. **Derselbe Wegfall kostet auch die Baseline** (neu, Diagnose dauerte am längsten): Der Host ist
+     `inline-block`, die umgebende Line-Box wird also aus seiner Baseline bemessen. Der alte,
+     geschlossene Wrapper hatte Höhe 0, legte aber weiterhin eine Line-Box an, die überlief und die
+     äußere Line-Box 16px tiefer zog. Nativ geschlossen gibt es keinen Inhalt → Baseline fällt auf
+     die Unterkante → 16px fehlen. Ein `::after` im Zustand `:not(--open)` mit `display: block`,
+     `height: 0` und einem Zero-Width-Space als `content` stellt sie exakt wieder her
+     (probe-verifiziert: 60.50px Line-Box wie develop).
+     Trifft nur Themes, deren Block ein Block-Container ist — bwst setzt `display: grid` und nimmt
+     die Baseline vom ersten Item, deshalb war dort nichts zu tun.
+  4. **Tote Fokus-Regeln werden beim Umzug lebendig und verdrängen den UA-Ring** (Muster 2 in der
+     Umkehrung): desys `kol-link`-Mixin war mit dem Klassennamen des nicht fokussierbaren
+     `kol-button-wc`-Hosts inkludiert — `outline: none`, Fokus-Farbe und Label-Underline liefen alle
+     ins Leere, sichtbar war der UA-Ring des echten `<button>`. `<summary>` matcht alle drei: Ring
+     weg, Farbe und Underline neu. Zero-Delta = alle drei zurückdrehen (`outline: revert`, Ruhefarbe,
+     `text-decoration: none`).
+- **Theme-Spezifika**: desys Mixin-Include steht INNERHALB des Blocks, seine Regeln tragen deshalb
+  eine `.kol-details`-Ahnenstufe. Ein Override, der als `&__heading { &:focus }` geschrieben wird,
+  landet bei `.kol-details__heading:focus` (eine Klasse weniger) und verliert still — der Ring aus
+  `outline: revert` griff trotzdem, weil `revert` über den Kaskaden-Ursprung wirkt, nicht über die
+  Spezifität. Genau diese Mischung (ein Teil des Fix-Blocks wirkt, der andere nicht) ist das
+  Erkennungszeichen; `#{$root} &` stellt die Stufe wieder her.
+- **Fix-Commit(s)**: `26b53f2b9e`.
+- **Evidenz**: `node scripts/snapshots-docker.mjs desy --check` → 295 passed, 0 failed, Exit 0;
+  `bwst --check` → 294 passed, 1 failed (`scenarios/focus-elements?component=details`, vom Owner
+  freigegeben; der Größenunterschied ist durch Fix 1 weg, die Freigabe ist zu erneuern). Baseline-
+  Selbstcheck auf `origin/develop` (Worktree `kolibri-baseline`, Volume `kolibri-vt-develop`):
+  desy `--grep focus-elements` 60/60 passed — die Baselines sind reproduzierbar.
+
+### 2026-09-22 — Skeleton-Migration kol-form (PR #10962): alle 7 Pakete, 0 Diffs ab Start
+
+- **Ausgangslage**: `kol-form` war Legacy (`shadow.tsx`, `@State() state`-Bag) und rendert seine
+  Fehlerlisten-Eintraege ueber den transitionalen `kol-link-wc`. Zusaetzliche Falle: der Block
+  `kol-form` liegt auf dem `<form>`, die Fehlerliste ist dessen **Geschwister** — `.kol-form__alert`
+  und `.kol-form__link` sind BEM-Elemente ausserhalb ihres Blocks.
+- **Neu gelernt (Frueher-gewusst-Test bestanden)**: **Ist-DOM vor dem Umbau als Jest-Snapshot
+  einfrieren — und dabei das Wrapper-WC mitregistrieren.** `executeSnapshotTests(tag, [KolForm], …)`
+  laesst `<kol-link-wc>` unexpandiert; erst `[KolForm, KolLinkWc]` zeigt den echten Ziel-DOM. Danach
+  ist der Vergleich nach dem Umbau ein exakter Diff statt einer Schaetzung: hier blieben genau zwei
+  Zeilen uebrig (Wrapper-Tag und der Expert-`<slot>`), alles andere byte-gleich. Das ersetzt das
+  Pixel-Gate nicht, entscheidet aber vorab, ob ueberhaupt eine Theme-Runde droht.
+- **Ursachen & Fix-Muster**: keine Theme-Runde noetig, wieder ueber **Wrapper-Tausch statt
+  Klassen-Merge** (wie kol-split-button). `.kol-form__link { display: inline-block }` (bwst,
+  default, ecl-ec, ecl-eu) haette nach einem Merge auf der Block-Wurzel `.kol-link` deren
+  `display: inline-flex` ueberschrieben — der Theme-Layer gewinnt gegen `kol-component`. Der FC
+  rendert stattdessen ein `<span class="kol-form__link">` genau dort, wo das Custom Element stand.
+  **Merke**: beim Klassen-Merge zaehlt nicht nur die verlorene Descendant-Stufe (Muster 6a-8),
+  sondern auch, ob die Consumer-Regel jetzt gegen eine Block-Regel desselben Elements antritt und
+  sie per Layer-Reihenfolge gewinnt.
+- **Kein Wurzel-Wrapper**: Ein gemeinsamer `BemRootNodeFC` haette ein Wurzel-`<div>` eingezogen und
+  `.kol-form { width: 100% }` (ecl) von der Form weggeschoben. Loesung: zwei einwurzelige FCs
+  (`FormFC` auf dem `<form>` wie `BreadcrumbFC` auf seinem `<nav>`, `FormErrorListFC` daneben).
+- **Theme-Spezifika**: keine.
+- **Abnahme-Evidenz (CI, massgeblich)**: PR #10962, Visual-Review-Bot „No visual changes", je
+  409 unchanged / 0 changed fuer alle sieben Pakete, Baseline `b08fab9f7c` (develop), Commit
+  `0ec6873ec1`. Lokal ohne Docker: Components 998/998, Hydrate-SSR 102/102 (unveraendert),
+  `pnpm check:skeleton-selectors` sauber.
 
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 

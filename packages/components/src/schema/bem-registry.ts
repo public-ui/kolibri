@@ -23,6 +23,23 @@ export type KoliBriComponentsBemSchema = {
 	'kol-abbr': {
 		modifiers: null;
 	};
+	'kol-accordion': {
+		elements: {
+			content: {
+				modifiers: null;
+			};
+			heading: {
+				modifiers: null;
+			};
+			wrapper: {
+				modifiers: null;
+			};
+			'wrapper-animation': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'disabled' | 'open'>;
+	};
 	'kol-alert': {
 		/**
 		 * Here we define the elements we needed
@@ -98,6 +115,33 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	/**
+	 * The dialog carries both its own block class and the deprecated `kol-modal` one, and marks
+	 * its variant with an element-style suffix (`kol-dialog__blank`, `kol-dialog__card`) rather
+	 * than a modifier. Both are part of the published theming surface and are kept verbatim.
+	 */
+	'kol-dialog': {
+		elements: {
+			blank: {
+				modifiers: null;
+			};
+			card: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-modal': {
+		elements: {
+			blank: {
+				modifiers: null;
+			};
+			card: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-button': {
 		elements: {
 			'interactive-element': {
@@ -142,6 +186,23 @@ export type KoliBriComponentsBemSchema = {
 			};
 		};
 		modifiers: Set<'inline' | 'open'>;
+	};
+	'kol-details': {
+		elements: {
+			content: {
+				modifiers: null;
+			};
+			heading: {
+				modifiers: null;
+			};
+			wrapper: {
+				modifiers: null;
+			};
+			'wrapper-animation': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'disabled' | 'open'>;
 	};
 	'kol-icon': {
 		elements: {
@@ -270,6 +331,37 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'disabled' | 'external-link' | 'hide-label' | 'inline' | 'standalone'>;
 	};
+	'kol-form': {
+		elements: {
+			alert: {
+				modifiers: null;
+			};
+			link: {
+				modifiers: null;
+			};
+			'mandatory-fields-hint': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-split-button': {
+		elements: {
+			button: {
+				modifiers: null;
+			};
+			'horizontal-line': {
+				modifiers: null;
+			};
+			root: {
+				modifiers: null;
+			};
+			'secondary-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-spin': {
 		elements: {
 			spinner: {
@@ -320,6 +412,15 @@ const BEM: KoliBriComponentsBemSchema = {
 	'kol-version': {
 		modifiers: null,
 	},
+	'kol-accordion': {
+		elements: {
+			content: { modifiers: null },
+			heading: { modifiers: null },
+			wrapper: { modifiers: null },
+			'wrapper-animation': { modifiers: null },
+		},
+		modifiers: new Set(['disabled', 'open']),
+	},
 	'kol-avatar': {
 		elements: {
 			image: { modifiers: null },
@@ -333,6 +434,20 @@ const BEM: KoliBriComponentsBemSchema = {
 			content: { modifiers: null },
 			header: { modifiers: null },
 			link: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-dialog': {
+		elements: {
+			blank: { modifiers: null },
+			card: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-modal': {
+		elements: {
+			blank: { modifiers: null },
+			card: { modifiers: null },
 		},
 		modifiers: null,
 	},
@@ -360,6 +475,15 @@ const BEM: KoliBriComponentsBemSchema = {
 			popover: { modifiers: null },
 		},
 		modifiers: new Set(['inline', 'open']),
+	},
+	'kol-details': {
+		elements: {
+			content: { modifiers: null },
+			heading: { modifiers: null },
+			wrapper: { modifiers: null },
+			'wrapper-animation': { modifiers: null },
+		},
+		modifiers: new Set(['disabled', 'open']),
 	},
 	'kol-icon': {
 		elements: {
@@ -429,6 +553,23 @@ const BEM: KoliBriComponentsBemSchema = {
 			text: { modifiers: null },
 		},
 		modifiers: new Set(['disabled', 'external-link', 'hide-label', 'inline', 'standalone']),
+	},
+	'kol-form': {
+		elements: {
+			alert: { modifiers: null },
+			link: { modifiers: null },
+			'mandatory-fields-hint': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-split-button': {
+		elements: {
+			button: { modifiers: null },
+			'horizontal-line': { modifiers: null },
+			root: { modifiers: null },
+			'secondary-button': { modifiers: null },
+		},
+		modifiers: null,
 	},
 	'kol-spin': {
 		elements: {

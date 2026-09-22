@@ -150,13 +150,17 @@ export function App() {
 	}, [report]);
 
 	const reviewStates = useMemo(() => {
-		const states: Record<string, { state: ReviewState; unsaved: boolean }> = {};
+		const states: Record<string, { state: ReviewState; unsaved: boolean; resolved: boolean }> = {};
 		const saved = JSON.parse(savedDraft) as ReviewDraft;
 		for (const entry of entries) {
 			const local = draftState(draft, entry.key, entry.item.hash, report?.digest ?? '');
 			const persisted = draftState(saved, entry.key, entry.item.hash, report?.digest ?? '');
 			const server = status?.items[entry.key]?.state ?? 'open';
-			states[entry.key] = local !== 'open' ? { state: local, unsaved: local !== persisted } : { state: server, unsaved: false };
+			/* Rejected or approved for an earlier hash, but the snapshot now matches the baseline again – nothing left to decide, but the reviewer still has a stale verdict to clear. */
+			const resolved =
+				entry.item.status === 'unchanged' &&
+				(draft.approvals.some((approval) => approval.item === entry.key) || draft.rejects.some((reject) => reject.item === entry.key));
+			states[entry.key] = local !== 'open' ? { state: local, unsaved: local !== persisted, resolved } : { state: server, unsaved: false, resolved };
 		}
 		return states;
 	}, [entries, draft, savedDraft, status, report]);
@@ -164,7 +168,7 @@ export function App() {
 	const visible = useMemo(() => {
 		const needle = search.trim().toLowerCase();
 		return entries.filter((entry) => {
-			if (!filter[entry.item.status]) return false;
+			if (!filter[entry.item.status] && !reviewStates[entry.key]?.resolved) return false;
 			if (onlyOpen && reviewStates[entry.key]?.state !== 'open') return false;
 			if (needle && !entry.key.toLowerCase().includes(needle)) return false;
 			return true;
@@ -204,6 +208,7 @@ export function App() {
 	const openCount = entries.filter(
 		(entry) => reviewStates[entry.key]?.state === 'open' && entry.item.status !== 'unchanged' && entry.item.status !== 'error',
 	).length;
+	const resolvedCount = entries.filter((entry) => reviewStates[entry.key]?.resolved).length;
 
 	if (loadError) {
 		return (
@@ -281,6 +286,12 @@ export function App() {
 					>
 						Approve all open changes
 					</button>
+					{resolvedCount > 0 && (
+						<p className="hint">
+							{resolvedCount} previously reviewed snapshot{resolvedCount === 1 ? '' : 's'} now match{resolvedCount === 1 ? 'es' : ''} the baseline again – shown
+							below (↺) regardless of the filter, clear the stale verdict once you've confirmed it.
+						</p>
+					)}
 				</div>
 				<ItemList entries={visible} selected={selected} reviewStates={reviewStates} onSelect={select} />
 				<p className="hint">Keys: j / k next and previous, a approve.</p>
@@ -301,7 +312,7 @@ export function App() {
 							</label>
 						</div>
 						<div className="viewer">
-							<Viewer entry={current} base={base ?? '.'} mode={mode} zoom={zoom} />
+							<Viewer entry={current} base={base ?? '.'} mode={mode} zoom={zoom} resolved={reviewStates[current.key]?.resolved ?? false} />
 						</div>
 						<ReviewPanel
 							entry={current}

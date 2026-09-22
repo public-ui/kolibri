@@ -1,26 +1,50 @@
 name: PR-Preview - Cleanup
 
+# Keeps the gh-pages branch small. Besides the review page in `visual/` and the `.nojekyll`
+# marker at the root, the branch hosts generated per-pull-request deployments only:
+#   pr-<n>/         – presentation preview (pr-preview-deploy.yml)
+#   visual/pr-<n>/  – visual review data  (visual-review.yml)
+# Both are removed automatically when the pull request closes. The manual run additionally
+# cleans up leftovers and can squash the branch history.
 on:
-  pull_request:
+  # pull_request_target, not pull_request: the cleanup has to push to gh-pages, and a
+  # pull_request run of a fork only receives a read-only token – the deployments of fork
+  # pull requests would accumulate forever. Nothing of the pull request is checked out or
+  # executed here; the job only ever touches the gh-pages branch of this repository.
+  pull_request_target:
     types: [closed]
   workflow_dispatch:
     inputs:
+      delete_closed:
+        description: 'Delete previews and visual reviews of pull requests that are already closed'
+        type: boolean
+        default: true
+      stale_days:
+        description: 'Also delete deployments of pull requests without activity for this many days (empty = off, applies to open pull requests too)'
+        type: string
+        default: ''
       delete_all:
-        description: 'Delete ALL pr-* preview deployments from gh-pages (leave unchecked to do nothing)'
+        description: 'Delete ALL deployments, including those of open pull requests (overrides the two options above)'
         type: boolean
         default: false
       purge_history:
-        description: 'Squash the whole gh-pages history into a single commit to reclaim repository/clone size (destructive force-push; runs after delete_all)'
+        description: 'Squash the whole gh-pages history into a single commit to reclaim repository/clone size (destructive force-push; runs after the deletions)'
         type: boolean
         default: false
 
 permissions:
   contents: write
+  pull-requests: read
+
+concurrency:
+  # Manual runs must not overlap (the purge force-pushes). Runs triggered by a closing pull
+  # request are serialised per pull request only – GitHub keeps a single pending run per group,
+  # so a shared group would silently drop the cleanup of a pull request closed in between.
+  group: gh-pages-cleanup-${{ github.event.pull_request.number || 'manual' }}
+  cancel-in-progress: false
 
 jobs:
   cleanup:
-    # On PR close, skip forks (their token cannot push). Manual runs are always allowed.
-    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -33,49 +57,198 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Remove preview and visual review for the closed PR
-        if: github.event_name == 'pull_request'
+      - name: Select the deployments of the closed pull request
+        if: github.event_name == 'pull_request_target'
+        env:
+          PR: ${{ github.event.pull_request.number }}
         run: |
-          PR="${{ github.event.pull_request.number }}"
-          REMOVED=0
+          SELECTION_FILE="$RUNNER_TEMP/folders-to-remove.txt"
+          : > "$SELECTION_FILE"
           for FOLDER in "pr-$PR" "visual/pr-$PR"; do
             if [ -d "$FOLDER" ]; then
-              git rm -rfq "$FOLDER"
-              REMOVED=1
+              echo "$FOLDER" >> "$SELECTION_FILE"
             fi
           done
-          if [ "$REMOVED" = "1" ]; then
-            git commit -m "chore: remove preview and visual review for PR #$PR"
-            # Other workflows push to gh-pages concurrently – rebase and retry instead of failing.
-            for ATTEMPT in 1 2 3 4 5; do
-              git pull --rebase -q origin gh-pages && git push && break
-              echo "push attempt $ATTEMPT failed, retrying"
-              sleep 5
-            done
+          if [ -s "$SELECTION_FILE" ]; then
+            echo "CLEANUP_MESSAGE=chore: remove preview and visual review for PR #$PR" >> "$GITHUB_ENV"
           else
             echo "Nothing published for PR #$PR, skipping."
           fi
 
-      - name: Remove all PR previews
-        if: github.event_name == 'workflow_dispatch' && inputs.delete_all
+      # Inputs are passed through env instead of being interpolated into the script body,
+      # so a malformed value cannot break out of the surrounding JavaScript.
+      - name: Select obsolete deployments
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/github-script@v9
+        env:
+          DELETE_ALL: ${{ inputs.delete_all }}
+          DELETE_CLOSED: ${{ inputs.delete_closed }}
+          STALE_DAYS: ${{ inputs.stale_days }}
+        with:
+          script: |
+            const fs = require('fs');
+
+            const deleteAll = process.env.DELETE_ALL === 'true';
+            const deleteClosed = process.env.DELETE_CLOSED === 'true';
+            const staleDaysRaw = (process.env.STALE_DAYS || '').trim();
+            const staleDays = staleDaysRaw === '' ? null : Number(staleDaysRaw);
+            if (staleDays !== null && (!Number.isFinite(staleDays) || staleDays < 0)) {
+              core.setFailed(`stale_days must be a non-negative number, got "${staleDaysRaw}".`);
+              return;
+            }
+
+            // Collect pr-<n>/ and visual/pr-<n>/ folders, grouped by pull request number.
+            const deployments = new Map();
+            const leftovers = [];
+            const collect = (parent) => {
+              if (!fs.existsSync(parent)) return;
+              for (const entry of fs.readdirSync(parent, { withFileTypes: true })) {
+                if (!entry.isDirectory() || !entry.name.startsWith('pr-')) continue;
+                const folder = parent === '.' ? entry.name : `${parent}/${entry.name}`;
+                // Only an unpadded pr-<n> maps onto a pull request. Anything else – pr-007,
+                // pr-123-old, pr-merge – is garbage from an aborted deployment; it belongs to
+                // no pull request and is handled like one that no longer exists.
+                if (/^pr-(0|[1-9]\d*)$/.test(entry.name)) {
+                  const number = Number(entry.name.slice(3));
+                  deployments.set(number, [...(deployments.get(number) ?? []), folder]);
+                } else {
+                  leftovers.push(folder);
+                }
+              }
+            };
+            collect('.');
+            collect('visual');
+
+            const numbers = [...deployments.keys()].sort((a, b) => a - b);
+            if (numbers.length === 0 && leftovers.length === 0) {
+              core.info('No pr-* deployments found on gh-pages, nothing to do.');
+            }
+
+            // One request per pull request, but not one after another: a branch carrying a few
+            // hundred leftovers would otherwise spend minutes waiting on round trips.
+            const pullRequests = new Map();
+            if (!deleteAll) {
+              const concurrency = 8;
+              for (let index = 0; index < numbers.length; index += concurrency) {
+                const chunk = numbers.slice(index, index + concurrency);
+                const results = await Promise.all(
+                  chunk.map(async (number) => {
+                    try {
+                      return (await github.rest.pulls.get({ ...context.repo, pull_number: number })).data;
+                    } catch (error) {
+                      if (error.status === 404) return null;
+                      throw error;
+                    }
+                  }),
+                );
+                chunk.forEach((number, position) => pullRequests.set(number, results[position]));
+              }
+            }
+
+            const cutoff = staleDays === null ? null : Date.now() - staleDays * 24 * 60 * 60 * 1000;
+            const selected = [];
+            const kept = [];
+
+            for (const number of numbers) {
+              const folders = deployments.get(number);
+              let reason = null;
+
+              if (deleteAll) {
+                reason = 'delete_all requested';
+              } else {
+                const pullRequest = pullRequests.get(number) ?? null;
+                if (pullRequest === null) {
+                  // A folder without a pull request is leftover garbage, but it is only
+                  // removed when closed deployments are meant to go anyway.
+                  reason = deleteClosed ? 'no such pull request' : null;
+                } else if (deleteClosed && pullRequest.state === 'closed') {
+                  reason = `closed on ${pullRequest.closed_at}`;
+                } else if (cutoff !== null && new Date(pullRequest.updated_at).getTime() < cutoff) {
+                  reason = `no activity since ${pullRequest.updated_at}`;
+                }
+              }
+
+              if (reason === null) {
+                kept.push(number);
+              } else {
+                selected.push(...folders);
+                core.info(`PR #${number}: remove ${folders.join(', ')} (${reason})`);
+              }
+            }
+
+            if (leftovers.length > 0 && (deleteAll || deleteClosed)) {
+              selected.push(...leftovers);
+              core.info(`Remove ${leftovers.length} folder(s) that belong to no pull request: ${leftovers.join(', ')}`);
+            }
+
+            core.info(`Keeping the deployments of ${kept.length} pull request(s): ${kept.join(', ') || 'none'}`);
+            core.summary.addRaw(`Removing ${selected.length} folder(s), keeping ${kept.length} pull request(s).`);
+            await core.summary.write();
+            core.exportVariable('CLEANUP_MESSAGE', `chore: remove ${selected.length} obsolete preview deployment(s)`);
+            fs.writeFileSync(`${process.env.RUNNER_TEMP}/folders-to-remove.txt`, selected.join('\n'));
+
+      - name: Remove the selected deployments
         run: |
-          mapfile -t folders < <(find . -maxdepth 1 -type d -name 'pr-*' -printf '%P\n')
-          if [ ${#folders[@]} -eq 0 ]; then
-            echo "No pr-* preview folders found on gh-pages, nothing to delete."
+          mapfile -t FOLDERS < <(grep -v '^$' "$RUNNER_TEMP/folders-to-remove.txt" || true)
+          if [ ${#FOLDERS[@]} -eq 0 ]; then
+            echo "Nothing selected for removal."
             exit 0
           fi
-          echo "Removing ${#folders[@]} preview folder(s): ${folders[*]}"
-          git rm -rf "${folders[@]}"
-          git commit -m "chore: remove all PR preview deployments"
-          git push
+          MESSAGE="${CLEANUP_MESSAGE:-chore: remove obsolete preview deployments}"
+          echo "Removing ${#FOLDERS[@]} folder(s): ${FOLDERS[*]}"
+          git rm -rfq "${FOLDERS[@]}"
+          git commit -q -m "$MESSAGE"
+          PUSHED=0
+          for ATTEMPT in 1 2 3 4 5; do
+            if git push; then
+              PUSHED=1
+              break
+            fi
+            echo "push attempt $ATTEMPT failed, retrying"
+            sleep 5
+            # Other workflows push to gh-pages concurrently. Start over from the current remote
+            # state and re-apply the removal instead of rebasing: a rebase stops on a
+            # delete/modify conflict – another workflow writing into a folder we remove – and
+            # leaves the repository mid-rebase, so every further attempt would fail too.
+            git rebase --abort 2> /dev/null || true
+            git fetch -q origin gh-pages
+            git reset -q --hard FETCH_HEAD
+            git rm -rfq --ignore-unmatch "${FOLDERS[@]}"
+            if git diff --cached --quiet; then
+              echo "The selected folder(s) are already gone on gh-pages."
+              PUSHED=1
+              break
+            fi
+            git commit -q -m "$MESSAGE"
+          done
+          if [ "$PUSHED" != "1" ]; then
+            echo "::error::Could not push the removals to gh-pages after 5 attempts."
+            exit 1
+          fi
 
       - name: Squash gh-pages history
         if: github.event_name == 'workflow_dispatch' && inputs.purge_history
         run: |
           # Collapse the entire gh-pages history into one commit so the accumulated
           # build blobs become unreachable and can be garbage-collected by GitHub.
-          # Operates on the current tree, i.e. after the delete_all step (if any).
-          git checkout --orphan _gh_pages_squashed
+          # Operates on the current tree, i.e. after the removals above (if any).
+          # Pick up deployments published in the meantime – the force-push below
+          # would drop them silently.
+          git fetch -q origin gh-pages
+          git reset -q --hard FETCH_HEAD
+          SOURCE="$(git rev-parse HEAD)"
+          # GitHub Pages must not run Jekyll on the squashed tree.
+          [ -f .nojekyll ] || touch .nojekyll
+          git checkout -q --orphan _gh_pages_squashed
           git add -A
-          git commit -m "chore: reset gh-pages history to reclaim space"
+          git commit -q -m "chore: reset gh-pages history to reclaim space"
+          # The squash rewrites the history, never the content. Anything the squashed tree is
+          # missing would be deleted for good by the force-push below, so check that invariant
+          # instead of trusting it – a file count cannot tell a wiped site from an emptied one.
+          LOST="$(git diff --diff-filter=A --name-only _gh_pages_squashed "$SOURCE")"
+          if [ -n "$LOST" ]; then
+            echo "::error::The squashed tree is missing files of gh-pages, refusing to force-push:"
+            echo "$LOST"
+            exit 1
+          fi
           git push -f origin _gh_pages_squashed:gh-pages

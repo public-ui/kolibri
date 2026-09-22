@@ -904,6 +904,139 @@ const KOL_CARD_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	},
 };
 
+/**
+ * Pinned public API of `kol-dialog`: 5 props plus the five open/close methods — identical to the
+ * predecessor `shadow.tsx` on the develop branch.
+ */
+const KOL_DIALOG_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	openModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the dialog. @deprecated Use showModal() instead.',
+	},
+	showModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the dialog as a modal.',
+	},
+	show: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the dialog. Pass true to open as a modal dialog.',
+	},
+	close: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Closes the dialog.',
+	},
+	closeModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Closes the dialog. @deprecated Use close() instead.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_level: {
+		kind: 'prop',
+		type: 'HeadingLevel',
+		required: false,
+		default: '0',
+		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'KoliBriDialogEventCallbacks',
+		required: false,
+		doc: 'Defines the modal callback functions.',
+	},
+	_variant: {
+		kind: 'prop',
+		type: 'ModalVariantPropType',
+		required: false,
+		default: "'blank'",
+		doc: 'Defines the variant of the modal.',
+	},
+	_width: {
+		kind: 'prop',
+		type: 'string',
+		required: false,
+		default: "'100%'",
+		doc: 'Defines the width of the modal. (max-width: 100%)',
+	},
+};
+
+/**
+ * Pinned public API of the deprecated `kol-modal`: the same surface as `kol-dialog` minus
+ * `_level`, which it never exposed, and with its own "modal dialog" wording.
+ */
+const KOL_MODAL_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	openModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the modal dialog. @deprecated Use showModal() instead.',
+	},
+	showModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the dialog as a modal.',
+	},
+	show: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the dialog. Pass true to open as a modal dialog.',
+	},
+	close: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Closes the modal dialog.',
+	},
+	closeModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Closes the modal dialog. @deprecated Use close() instead.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'KoliBriDialogEventCallbacks',
+		required: false,
+		doc: 'Defines the modal callback functions.',
+	},
+	_variant: {
+		kind: 'prop',
+		type: 'ModalVariantPropType',
+		required: false,
+		default: "'blank'",
+		doc: 'Defines the variant of the modal.',
+	},
+	_width: {
+		kind: 'prop',
+		type: 'string',
+		required: false,
+		default: "'100%'",
+		doc: 'Defines the width of the modal. (max-width: 100%)',
+	},
+};
+
 describe('kol-link public API contract (ARC42 § Public API Contract)', () => {
 	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
 		const extracted = extractFrom('link', 'component.tsx');
@@ -925,6 +1058,7 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['button', 'component.tsx'],
 		['button', 'wc.tsx'],
 		['breadcrumb', 'component.tsx'],
+		['form', 'component.tsx'],
 		['skip-nav', 'component.tsx'],
 		['button-link', 'component.tsx'],
 		['link-button', 'component.tsx'],
@@ -934,6 +1068,11 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['card', 'wc.tsx'],
 		['alert', 'component.tsx'],
 		['alert', 'wc.tsx'],
+		['details', 'component.tsx'],
+		['accordion', 'component.tsx'],
+		['dialog', 'component.tsx'],
+		['dialog', 'wc.tsx'],
+		['modal', 'component.tsx'],
 	];
 
 	it.each(sources)('documents every public member of %s/%s', (component, file) => {
@@ -982,12 +1121,63 @@ describe('kol-card-wc transitional wrapper (internal contract for legacy consume
 	});
 });
 
+describe('kol-dialog-wc transitional wrapper (internal contract for legacy consumers)', () => {
+	it('keeps the full predecessor surface: 5 props plus the five open/close methods', () => {
+		const extracted = extractFrom('dialog', 'wc.tsx');
+		expect(extracted.filter((member) => member.kind === 'prop').map((member) => member.name)).toEqual(['_label', '_level', '_on', '_variant', '_width']);
+		expect(extracted.filter((member) => member.kind === 'method').map((member) => member.name)).toEqual([
+			'show',
+			'showModal',
+			'openModal',
+			'close',
+			'closeModal',
+		]);
+	});
+});
+
+/**
+ * Pinned public API of `kol-form` — same props, types and defaults as the predecessor
+ * `shadow.tsx` on the develop branch (3 props + focusErrorList). The one deviation is the `_on`
+ * JSDoc, which the predecessor carried in German; it was translated on reviewer request, which
+ * changes only the generated documentation, not the API surface.
+ */
+const KOL_FORM_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focusErrorList: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Scrolls to the error list and focuses the first link.',
+	},
+	_errorList: {
+		kind: 'prop',
+		type: 'ErrorListPropType[]',
+		required: false,
+		doc: 'A list of error objects that each describe an issue encountered in the form. Each error object contains a message and a selector for identifying the form element related to the error.',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'KoliBriFormCallbacks',
+		required: false,
+		doc: 'Defines the callback functions for form events.',
+	},
+	_requiredText: {
+		kind: 'prop',
+		type: 'Stringified<boolean>',
+		required: false,
+		default: 'true',
+		doc: 'Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.',
+	},
+};
+
 describe.each([
 	['kol-button-link', 'button-link', 'ButtonLinkProps', KOL_BUTTON_LINK_PUBLIC_API],
 	['kol-link-button', 'link-button', 'LinkButtonProps', KOL_LINK_BUTTON_PUBLIC_API],
+	['kol-form', 'form', 'FormProps', KOL_FORM_PUBLIC_API],
 	['kol-split-button', 'split-button', 'SplitButtonProps', KOL_SPLIT_BUTTON_PUBLIC_API],
 	['kol-badge', 'badge', 'BadgeProps', KOL_BADGE_PUBLIC_API],
 	['kol-card', 'card', 'CardProps', KOL_CARD_PUBLIC_API],
+	['kol-dialog', 'dialog', 'DialogProps', KOL_DIALOG_PUBLIC_API],
+	['kol-modal', 'modal', 'DialogProps', KOL_MODAL_PUBLIC_API],
 ] as const)('%s public API contract (ARC42 § Public API Contract)', (_tag, component, schemaInterface, pinnedApi) => {
 	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
 		// Failing this test means the public contract changed — a breaking change (ARC42 §
@@ -1031,6 +1221,157 @@ describe('kol-breadcrumb public API contract (ARC42 § Public API Contract)', ()
 
 	it('implements the schema interface so prop-type drift fails the build', () => {
 		expect(readSource('breadcrumb', 'component.tsx')).toMatch(/implements\s+[^{]*\bBreadcrumbProps\b/);
+	});
+});
+
+/**
+ * Pinned public API of `kol-details` — 5 props plus `focus()` and `click()`. `_open` keeps its
+ * `mutable`/`reflect` decorators so the reflected attribute is already updated when the delayed
+ * `onClick`/`onToggle` callbacks read it.
+ *
+ * Consciously changed against the predecessor when `kol-accordion` and `kol-details` were
+ * consolidated onto one collapsible layer (owner-approved, noted in the PR):
+ * - `_on` is typed `CollapsibleCallbacksPropType<boolean>`, the shared contract of both
+ *   collapsibles. Against `DetailsCallbacksPropType` it adds the optional `onClick` member —
+ *   additive, so objects that only set `onToggle` stay assignable. The old name survives as a
+ *   `@deprecated` alias in `schema/props/details-callbacks.ts`.
+ * - `_on` and `click()` carry the wording shared with `kol-accordion`.
+ */
+const KOL_DETAILS_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the internal element.',
+	},
+	click: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Triggers a click on the heading toggle button.',
+	},
+	_disabled: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Makes the element not focusable and ignore all events.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_level: {
+		kind: 'prop',
+		type: 'HeadingLevel',
+		required: false,
+		default: '0',
+		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'CollapsibleCallbacksPropType<boolean>',
+		required: false,
+		doc: 'Defines the callback functions for the collapsible.',
+	},
+	_open: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Opens/expands the element when truthy, closes/collapses when falsy. @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.',
+	},
+};
+
+describe('kol-details public API contract (ARC42 § Public API Contract)', () => {
+	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
+		const extracted = extractFrom('details', 'component.tsx');
+		// Failing this test means the public contract changed — a breaking change (ARC42 §
+		// "Public API Contract (Migration Parity)"): get owner approval, then update the pinned
+		// contract consciously and note it in the PR description.
+		expect(toContract(extracted)).toEqual(KOL_DETAILS_PUBLIC_API);
+	});
+
+	it('implements the schema interface so prop-type drift fails the build', () => {
+		expect(readSource('details', 'component.tsx')).toMatch(/implements\s+[^{]*\bDetailsProps\b/);
+	});
+});
+
+/**
+ * Pinned public API of `kol-accordion` — 5 props plus `focus()` and `click()`. `_open` keeps its
+ * `mutable`/`reflect` decorators so the reflected attribute is already updated when the delayed
+ * `onClick`/`onToggle` callbacks read it.
+ *
+ * Consciously changed against the predecessor when `kol-accordion` and `kol-details` were
+ * consolidated onto one collapsible layer (owner-approved, noted in the PR):
+ * - `_on` is typed `CollapsibleCallbacksPropType<boolean>` — the same shape as the former
+ *   `AccordionCallbacksPropType`, which survives as a `@deprecated` alias.
+ * - `_label` is declared with the `LabelPropType` schema alias instead of the primitive `string`,
+ *   matching `kol-details` and every other migrated component. Same type, no runtime effect.
+ * - `click()` no longer mentions "the first section", a leftover of the pre-migration
+ *   multi-section accordion.
+ */
+const KOL_ACCORDION_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the internal element.',
+	},
+	click: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Triggers a click on the heading toggle button.',
+	},
+	_disabled: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Makes the element not focusable and ignore all events.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_level: {
+		kind: 'prop',
+		type: 'HeadingLevel',
+		required: false,
+		default: '0',
+		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'CollapsibleCallbacksPropType<boolean>',
+		required: false,
+		doc: 'Defines the callback functions for the collapsible.',
+	},
+	_open: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Opens/expands the element when truthy, closes/collapses when falsy. @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.',
+	},
+};
+
+describe('kol-accordion public API contract (ARC42 § Public API Contract)', () => {
+	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
+		const extracted = extractFrom('accordion', 'component.tsx');
+		// Failing this test means the public contract changed — a breaking change (ARC42 §
+		// "Public API Contract (Migration Parity)"): get owner approval, then update the pinned
+		// contract consciously and note it in the PR description.
+		expect(toContract(extracted)).toEqual(KOL_ACCORDION_PUBLIC_API);
+	});
+
+	it('implements the schema interface so prop-type drift fails the build', () => {
+		expect(readSource('accordion', 'component.tsx')).toMatch(/implements\s+[^{]*\bAccordionProps\b/);
 	});
 });
 

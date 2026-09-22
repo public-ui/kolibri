@@ -2,6 +2,9 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 
 import type { SplitButtonWebComponentInterface } from '../../internal/functional-components/button/api';
+import type { PopoverButtonItem } from '../../internal/functional-components/popover-button/item';
+import { createPopoverButtonItem } from '../../internal/functional-components/popover-button/item';
+import { SplitButtonFC } from '../../internal/functional-components/split-button/component';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,
@@ -22,7 +25,6 @@ import type {
 	VariantClassNamePropType,
 } from '../../schema';
 
-import { KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import clsx from '../../utils/clsx';
 import { nonce } from '../../utils/dev.utils';
@@ -50,10 +52,17 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 		this.initFormAssociation();
 	}
 
-	private popoverButtonRef?: HTMLKolPopoverButtonWcElement;
+	/**
+	 * Orchestration of the dropdown half: the popover controller, its tooltip behavior, the element
+	 * refs and the fully resolved `PopoverButtonFC` props. The primary half is orchestrated by the
+	 * inherited button implementation, so the two halves never share a render-prop store.
+	 */
+	private dropdownItem!: PopoverButtonItem;
 
-	private readonly setPopoverButtonRef = (ref?: HTMLKolPopoverButtonWcElement) => {
-		this.popoverButtonRef = ref;
+	private dropdownElement?: HTMLDivElement;
+
+	private readonly setDropdownRef = (element?: HTMLDivElement) => {
+		this.dropdownElement = element;
 	};
 
 	// --- Lifecycle ---
@@ -84,14 +93,30 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 		this.watchVariant(this._variant);
 
 		this.initTooltipBehavior();
+
+		this.dropdownItem = createPopoverButtonItem({
+			disabled: this._disabled,
+			getEventTarget: () => this.dropdownElement,
+			getFlagHost: () => this.host,
+			getOpen: () => this.dropdownOpen,
+			hideLabel: true,
+			icons: 'kolicon-chevron-down',
+			label: translate('kol-split-button-dropdown-label-open'),
+			popoverAlign: 'bottom',
+			setOpen: (open) => {
+				this.dropdownOpen = open;
+			},
+		});
 	}
 
 	public componentDidRender(): void {
 		this.syncTooltipListeners();
+		this.dropdownItem.syncListeners();
 	}
 
 	public disconnectedCallback(): void {
 		this.destroyTooltipBehavior();
+		this.dropdownItem.destroy();
 	}
 
 	// --- Public methods ---
@@ -125,47 +150,42 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	 * Closes the dropdown.
 	 */
 	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
 	public async closePopup() {
-		void this.popoverButtonRef?.hidePopover();
-		return Promise.resolve();
+		this.dropdownItem.hide();
 	}
 
 	// --- Render ---
 
+	/**
+	 * The box around the primary button carries the raw variant name — not the normalized
+	 * `kol-button--<variant>` class `ButtonFC` renders — so themes can address the half by the
+	 * variant the consumer asked for.
+	 */
+	private getButtonWrapperClass(): string {
+		return clsx({
+			[this._variant as string]: this._variant !== 'custom',
+			[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
+		});
+	}
+
 	public render(): JSX.Element {
 		return (
-			<div class="kol-split-button">
-				<div class="kol-split-button__root">
-					{/* The predecessor put this class on its inner `<kol-button-wc>` element; a `div` keeps the
-					    theme selectors (`.kol-split-button__button .kol-button…`) and, as a flex item, the box. */}
-					<div
-						class={clsx('kol-split-button__button', {
-							[this._variant as string]: this._variant !== 'custom',
-							[this._customClass as string]: this._variant === 'custom' && typeof this._customClass === 'string' && this._customClass.length > 0,
-						})}
-					>
-						{this.renderButtonFC()}
-					</div>
-					<div class="kol-split-button__horizontal-line"></div>
-					<KolPopoverButtonWcTag
-						class="kol-split-button__secondary-button"
-						ref={this.setPopoverButtonRef}
-						_disabled={this._disabled}
-						_hideLabel
-						_icons="kolicon-chevron-down"
-						_label={translate('kol-split-button-dropdown-label-open')}
-						_popoverAlign="bottom"
-					>
-						<slot />
-					</KolPopoverButtonWcTag>
-				</div>
-			</div>
+			<SplitButtonFC
+				buttonProps={this.getButtonFCProps()}
+				buttonWrapperClass={this.getButtonWrapperClass()}
+				dropdownProps={this.dropdownItem.getFcProps()}
+				refDropdown={this.setDropdownRef}
+			/>
 		);
 	}
 
 	// --- @State ---
 
 	@State() public ariaDescriptionId: string = nonce();
+
+	/** Whether the dropdown popover is open. Derived from the popover's native `toggle` event. */
+	@State() public dropdownOpen = false;
 
 	// --- Props + Watchers ---
 
@@ -230,6 +250,7 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	@Watch('_disabled')
 	public watchDisabled(value?: boolean): void {
 		this.applyDisabled(value);
+		this.dropdownItem?.setDisabled(value);
 	}
 
 	/**

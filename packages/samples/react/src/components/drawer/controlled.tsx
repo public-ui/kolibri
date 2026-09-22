@@ -23,7 +23,7 @@ export const DrawerControlled: FC = () => {
 
 			<DrawerRadioAlign value={align} onChange={(_, value) => setAlign(value as AlignPropType)} />
 			<div className="flex flex-wrap gap-4">
-				<KolDrawer _open={open} _align={align} _label="I'm a controlled drawer" _on={{ onClose: () => setOpen(false) }}>
+				<KolDrawer _open={open} _align={align} _label="I'm a controlled drawer" _level={2} _on={{ onClose: () => setOpen(false) }}>
 					<div>
 						<p>Lorem ipsum dolor sit amet,</p>
 						<KolButton _label="Close drawer" _on={{ onClick: () => setOpen(false) }} />

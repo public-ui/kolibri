@@ -57,4 +57,24 @@ test.describe('kol-form', () => {
 			});
 		});
 	});
+
+	test.describe('Error list', () => {
+		test('should focus the form control an error entry points at', async ({ page }) => {
+			await page.setContent(`
+				<kol-form>
+					<input id="first-field" />
+					<input id="second-field" />
+				</kol-form>
+			`);
+			const kolForm = page.locator('kol-form');
+			await kolForm.evaluate((element: HTMLKolFormElement) => {
+				element._errorList = [{ message: 'Das zweite Feld ist ein Pflichtfeld.', selector: '#second-field' }];
+			});
+			await page.waitForChanges();
+
+			await kolForm.locator('.kol-form__link a').first().click();
+
+			await expect(page.locator('#second-field')).toBeFocused();
+		});
+	});
 });

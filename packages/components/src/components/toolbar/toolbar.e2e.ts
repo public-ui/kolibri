@@ -99,6 +99,59 @@ test.describe(COMPONENT_NAME, () => {
 		await expect(secondBtn).not.toBeFocused();
 	});
 
+	test('skips a disabled item with arrow keys instead of stopping at it', async ({ page }) => {
+		await page.setContent(`<kol-toolbar _label="Toolbar Skip"></kol-toolbar>`);
+		const tb = page.locator('kol-toolbar');
+		await expect(tb).toHaveClass(/hydrated/);
+
+		await tb.evaluate((el: HTMLKolToolbarElement) => {
+			el._items = [
+				{ type: 'button', _label: 'One', _disabled: false },
+				{ type: 'button', _label: 'Two', _disabled: true },
+				{ type: 'button', _label: 'Three', _disabled: false },
+			];
+		});
+		await page.waitForChanges();
+
+		const btnWcs = tb.locator('kol-button-wc');
+		await expect(btnWcs).toHaveCount(3);
+
+		const firstBtn = btnWcs.first().locator('button');
+		const thirdBtn = btnWcs.nth(2).locator('button');
+
+		await firstBtn.focus();
+		await page.keyboard.press('ArrowRight');
+
+		/* Stopping at the disabled neighbour would leave the third item unreachable by keyboard. */
+		await expect(thirdBtn).toBeFocused();
+	});
+
+	test('skips a disabled item backwards as well', async ({ page }) => {
+		await page.setContent(`<kol-toolbar _label="Toolbar Skip Back"></kol-toolbar>`);
+		const tb = page.locator('kol-toolbar');
+		await expect(tb).toHaveClass(/hydrated/);
+
+		await tb.evaluate((el: HTMLKolToolbarElement) => {
+			el._items = [
+				{ type: 'button', _label: 'One', _disabled: false },
+				{ type: 'button', _label: 'Two', _disabled: true },
+				{ type: 'button', _label: 'Three', _disabled: false },
+			];
+		});
+		await page.waitForChanges();
+
+		const btnWcs = tb.locator('kol-button-wc');
+		const firstBtn = btnWcs.first().locator('button');
+		const thirdBtn = btnWcs.nth(2).locator('button');
+
+		await firstBtn.focus();
+		await page.keyboard.press('ArrowLeft');
+		await expect(thirdBtn).toBeFocused();
+
+		await page.keyboard.press('ArrowLeft');
+		await expect(firstBtn).toBeFocused();
+	});
+
 	test('focus() method sets focus on the currently active toolbar item', async ({ page }) => {
 		await page.setContent(`<kol-toolbar _label="Toolbar Focus Method"></kol-toolbar>`);
 		const tb = page.locator('kol-toolbar');

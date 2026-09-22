@@ -65,6 +65,11 @@ Approvals bind to the **content hash** of a screenshot, not to a commit: a later
 approved screenshot untouched keeps its approval, a push that changes it again reopens exactly that
 one. `approveAll` binds to the digest of the whole report and therefore expires with the next change.
 
+A rejected (or approved) screenshot that a later push fixes back to the baseline turns `unchanged` and
+drops out of what the commit status checks – nothing is left to approve. The review page still lists it
+(marked `↺`, even with the `unchanged` filter off) so you can confirm it is fixed and clear the now-stale
+verdict from your draft; it otherwise keeps piling up unseen in your local review comment.
+
 Only comments of users with write access count. Bots are ignored. A rejection wins over an approval.
 
 ## Where things live
@@ -79,7 +84,13 @@ Only comments of users with write access count. Bots are ignored. A rejection wi
 | Workflow scripts                 | `scripts/visual-review/` (see `scripts/README.md`)                                    |
 | Workflows                        | `visual-baseline.yml`, `visual-review.yml`, `visual-review-ui.yml`, job in `ci.yml`   |
 
-The folder `visual/pr-<n>/` is removed when the pull request closes (`pr-preview-cleanup.yml`).
+The folder `visual/pr-<n>/` is removed when the pull request closes (`pr-preview-cleanup.yml`). The same
+workflow can be started manually to clean up leftovers: `delete_closed` removes the deployments of all
+pull requests that are already closed (together with folders that belong to no pull request at all),
+`stale_days` those without activity for a given number of days – open pull requests included, so their
+published report is gone until the next CI run republishes it –, `delete_all` every deployment regardless
+of state, and `purge_history` squashes the whole `gh-pages` history into a single commit to reclaim clone
+size. The review page in `visual/` and the `.nojekyll` marker are never touched.
 
 ## Trust boundary
 

@@ -22,9 +22,39 @@ exports[`kol-split-button should render with _label="Label" _disabled=true 1`] =
           </div>
         </div>
         <div class="kol-split-button__horizontal-line"></div>
-        <kol-popover-button-wc _disabled="" _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
-          <slot></slot>
-        </kol-popover-button-wc>
+        <div class="kol-split-button__secondary-button">
+          <div class="kol-popover-button">
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="kol-split-button-dropdown-label-open" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-split-button-dropdown-label-open
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <slot></slot>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -63,9 +93,39 @@ exports[`kol-split-button should render with _label="Label" _hideLabel=true 1`] 
           </div>
         </div>
         <div class="kol-split-button__horizontal-line"></div>
-        <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
-          <slot></slot>
-        </kol-popover-button-wc>
+        <div class="kol-split-button__secondary-button">
+          <div class="kol-popover-button">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="kol-split-button-dropdown-label-open" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-split-button-dropdown-label-open
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <slot></slot>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -95,9 +155,39 @@ exports[`kol-split-button should render with _label="Label" _icons="codicon codi
           </div>
         </div>
         <div class="kol-split-button__horizontal-line"></div>
-        <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
-          <slot></slot>
-        </kol-popover-button-wc>
+        <div class="kol-split-button__secondary-button">
+          <div class="kol-popover-button">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="kol-split-button-dropdown-label-open" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-split-button-dropdown-label-open
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <slot></slot>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -126,9 +216,39 @@ exports[`kol-split-button should render with _label="Label" _name="Name" 1`] = `
           </div>
         </div>
         <div class="kol-split-button__horizontal-line"></div>
-        <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
-          <slot></slot>
-        </kol-popover-button-wc>
+        <div class="kol-split-button__secondary-button">
+          <div class="kol-popover-button">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="kol-split-button-dropdown-label-open" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-split-button-dropdown-label-open
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <slot></slot>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -157,9 +277,39 @@ exports[`kol-split-button should render with _label="Label" _variant="danger" 1`
           </div>
         </div>
         <div class="kol-split-button__horizontal-line"></div>
-        <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
-          <slot></slot>
-        </kol-popover-button-wc>
+        <div class="kol-split-button__secondary-button">
+          <div class="kol-popover-button">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="kol-split-button-dropdown-label-open" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-split-button-dropdown-label-open
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <slot></slot>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -188,9 +338,39 @@ exports[`kol-split-button should render with _label="Label" _variant="ghost" 1`]
           </div>
         </div>
         <div class="kol-split-button__horizontal-line"></div>
-        <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
-          <slot></slot>
-        </kol-popover-button-wc>
+        <div class="kol-split-button__secondary-button">
+          <div class="kol-popover-button">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="kol-split-button-dropdown-label-open" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-split-button-dropdown-label-open
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <slot></slot>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -219,9 +399,39 @@ exports[`kol-split-button should render with _label="Label" _variant="normal" 1`
           </div>
         </div>
         <div class="kol-split-button__horizontal-line"></div>
-        <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
-          <slot></slot>
-        </kol-popover-button-wc>
+        <div class="kol-split-button__secondary-button">
+          <div class="kol-popover-button">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="kol-split-button-dropdown-label-open" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-split-button-dropdown-label-open
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <slot></slot>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -250,9 +460,39 @@ exports[`kol-split-button should render with _label="Label" _variant="primary" 1
           </div>
         </div>
         <div class="kol-split-button__horizontal-line"></div>
-        <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
-          <slot></slot>
-        </kol-popover-button-wc>
+        <div class="kol-split-button__secondary-button">
+          <div class="kol-popover-button">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="kol-split-button-dropdown-label-open" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-split-button-dropdown-label-open
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <slot></slot>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -281,9 +521,39 @@ exports[`kol-split-button should render with _label="Label" _variant="secondary"
           </div>
         </div>
         <div class="kol-split-button__horizontal-line"></div>
-        <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
-          <slot></slot>
-        </kol-popover-button-wc>
+        <div class="kol-split-button__secondary-button">
+          <div class="kol-popover-button">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="kol-split-button-dropdown-label-open" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-split-button-dropdown-label-open
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <slot></slot>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -312,9 +582,39 @@ exports[`kol-split-button should render with _label="Label" 1`] = `
           </div>
         </div>
         <div class="kol-split-button__horizontal-line"></div>
-        <kol-popover-button-wc _hidelabel="" _icons="kolicon-chevron-down" _label="kol-split-button-dropdown-label-open" _popoveralign="bottom" class="kol-split-button__secondary-button">
-          <slot></slot>
-        </kol-popover-button-wc>
+        <div class="kol-split-button__secondary-button">
+          <div class="kol-popover-button">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="kol-split-button-dropdown-label-open" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-split-button-dropdown-label-open
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <slot></slot>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </template>

@@ -257,6 +257,10 @@ textarea {
 	color: var(--failure);
 }
 
+.list-review.review-resolved {
+	color: var(--pending);
+}
+
 .list-review.is-unsaved {
 	opacity: 0.6;
 }
