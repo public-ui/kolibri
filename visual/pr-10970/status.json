@@ -1,17 +1,17 @@
 {
 	"schema": 1,
-	"state": "failure",
-	"description": "3 route(s) failed before the screenshots could be compared",
-	"computedAt": "2026-09-22T13:57:33.988Z",
+	"state": "pending",
+	"description": "409 added – 0 of 409 approved, review pending",
+	"computedAt": "2026-09-22T14:40:15.475Z",
 	"pr": 10970,
-	"head": "5ca9e21e2c091002fe078274c3ba5c19beb83f01",
-	"digest": "sha256:e616f77f7666087ba75490f24f9a9b04596e1e2b0392e983993de2f7f216fa52",
+	"head": "d1c0a822c715aa6dd84ed37f4cd994bb6c3a7bab",
+	"digest": "sha256:44c4b02ba32fc82a89103230b1e2bb4f1cb5b675cb54ccdbe2397d11ce213c05",
 	"counts": {
 		"changes": 409,
 		"open": 409,
 		"approved": 0,
 		"rejected": 0,
-		"routeErrors": 3,
+		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
@@ -536,7 +536,7 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-d-you/input-color-basic-noColumn-fd9e7-label-suggestions-error": {
+		"theme-d-you/input-color-basic-noColumns--hide-label-suggestions-error": {
 			"state": "open",
 			"notes": []
 		},
@@ -968,15 +968,15 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-d-you/input-text-access-short-ke-29de3---short-key-placeholder": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-d-you/input-text-access-short-ke-d89b4--access-key-placeholder": {
+		"theme-d-you/input-text-access-short-key-noColumns--access-key-placeholder": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-d-you/input-text-access-short-key-noColumns--access-key-value": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-d-you/input-text-access-short-key-noColumns--short-key-placeholder": {
 			"state": "open",
 			"notes": []
 		},
