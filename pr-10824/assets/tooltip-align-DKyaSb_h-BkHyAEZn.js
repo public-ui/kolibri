@@ -1,0 +1,1 @@
+import"./index-D_COPH_3.js";import{r as e}from"./align-Dm5aJHmk-Df-SK5eO.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
