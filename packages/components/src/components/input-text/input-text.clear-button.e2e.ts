@@ -60,6 +60,12 @@ test.describe('kol-input-text clear button', () => {
 		await expect(clearButton).not.toBeVisible();
 	});
 
+	test('should not render clear button when read only', async ({ page }) => {
+		await page.setContent('<kol-input-text _label="Search" _type="search" _read-only _value="test"></kol-input-text>');
+		const clearButton = page.getByTestId('kol-input-text-clear-button');
+		await expect(clearButton).not.toBeVisible();
+	});
+
 	test('should have correct accessible name', async ({ page }) => {
 		await page.setContent('<kol-input-text _label="Search" _type="search" _value="test"></kol-input-text>');
 		const clearButton = page.getByTestId('kol-input-text-clear-button').locator('button');
