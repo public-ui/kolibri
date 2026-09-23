@@ -376,6 +376,14 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-toolbar': {
+		elements: {
+			item: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'orientation-horizontal' | 'orientation-vertical'>;
+	};
 };
 
 /**
@@ -578,6 +586,12 @@ const BEM: KoliBriComponentsBemSchema = {
 			'spinner-element': { modifiers: new Set(['1', '2', '3', 'neutral']) },
 		},
 		modifiers: null,
+	},
+	'kol-toolbar': {
+		elements: {
+			item: { modifiers: null },
+		},
+		modifiers: new Set(['orientation-horizontal', 'orientation-vertical']),
 	},
 };
 
