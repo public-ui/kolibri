@@ -3,8 +3,12 @@ name: Renovate
 # Self-hosted Renovate runner — see docs/RENOVATE.md.
 #
 # Triggers:
-#   - schedule:          every 4 hours. The repo's renovate.json itself allows PR creation
-#                        "at any time", so the workflow cadence governs when Renovate acts.
+#   - schedule:          night window only — every 3 hours between 18:00 and 06:00 (Europe/Berlin).
+#                        GitHub cron is UTC-only, so the hours below cover the window in both CET
+#                        (UTC+1) and CEST (UTC+2): 16/19/22/01/04 UTC == 18/21/00/03/06 Berlin in
+#                        summer and 17/20/23/02/05 Berlin in winter. The exact local window is
+#                        enforced by renovate.json ("after 6pm" / "before 6am", timezone
+#                        Europe/Berlin), so a run that falls outside it opens no PRs.
 #   - workflow_dispatch: manual "Run workflow" button; optionally tick "dry_run" to preview
 #                        what Renovate would do without creating branches/PRs.
 #
@@ -20,7 +24,8 @@ name: Renovate
 
 on:
   schedule:
-    - cron: '0 */4 * * *'
+    # 18:00-06:00 Europe/Berlin, every 3 hours (UTC hours, see note above).
+    - cron: '0 16,19,22,1,4 * * *'
   workflow_dispatch:
     inputs:
       dry_run:
