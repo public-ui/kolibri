@@ -1,1 +1,0 @@
-import{d as e,r as t}from"./factory-DVePsLAQ-fgFAt_11.js";var n=new Set([`eager`,`lazy`]),r=t(`loading`,`lazy`,t=>e(t),e=>n.has(e)),i=new Set([`blank`,`card`]),a=t(`variant`,`blank`,t=>e(t),e=>i.has(e)),o=new Set([`block`,`inline`]),s=t(`variant`,`inline`,t=>e(t),e=>o.has(e));export{a as n,s as r,r as t};

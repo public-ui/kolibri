@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-CYA7MV3D.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
