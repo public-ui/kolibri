@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "7 added – 0 of 7 approved, review pending",
-	"computedAt": "2026-09-22T14:52:59.903Z",
+	"description": "7 changed – 0 of 7 approved, review pending",
+	"computedAt": "2026-09-23T06:31:50.894Z",
 	"pr": 10967,
-	"head": "9db55e9c127958323110627e1d4a2a1a090038ce",
-	"digest": "sha256:814de300881d222f9abd516e64c1db71b308e49df747fa090430ed1c6e3edc2f",
+	"head": "1dbea4c6d8440acca5416477c94157a034814928",
+	"digest": "sha256:a1980783a176842a3c3b909acff4212e18ccb371fc3ff6162ed0f21a7fec4c24",
 	"counts": {
 		"changes": 7,
 		"open": 7,
@@ -18,31 +18,31 @@
 		"BF150"
 	],
 	"items": {
-		"test-tag-name-transformer/input-color-basic-noColumns--label-suggestions": {
+		"test-tag-name-transformer/input-color-basic-noColumns--label-suggestions-error": {
 			"state": "open",
 			"notes": []
 		},
-		"theme-bwst/input-color-basic-noColumns--label-suggestions": {
+		"theme-bwst/input-color-basic-noColumns--label-suggestions-error": {
 			"state": "open",
 			"notes": []
 		},
-		"theme-default/input-color-basic-noColumns--label-suggestions": {
+		"theme-default/input-color-basic-noColumns--label-suggestions-error": {
 			"state": "open",
 			"notes": []
 		},
-		"theme-desy/input-color-basic-noColumns--label-suggestions": {
+		"theme-desy/input-color-basic-noColumns--label-suggestions-error": {
 			"state": "open",
 			"notes": []
 		},
-		"theme-ecl/input-color-basic-noColumns--label-suggestions": {
+		"theme-ecl/input-color-basic-noColumns--label-suggestions-error": {
 			"state": "open",
 			"notes": []
 		},
-		"theme-kern/input-color-basic-noColumns--label-suggestions": {
+		"theme-kern/input-color-basic-noColumns--label-suggestions-error": {
 			"state": "open",
 			"notes": []
 		},
-		"unstyled/input-color-basic-noColumns--label-suggestions": {
+		"unstyled/input-color-basic-noColumns--label-suggestions-error": {
 			"state": "open",
 			"notes": []
 		}
