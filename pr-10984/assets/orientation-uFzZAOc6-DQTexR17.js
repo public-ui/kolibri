@@ -1,1 +1,0 @@
-import{d as e,r as t}from"./factory-DVePsLAQ-D6i81khj.js";var n=[`horizontal`,`vertical`],r=t(`orientation`,`horizontal`,t=>{let r=e(t);if(n.includes(r))return r;throw Error(`Invalid orientation: ${r}`)});export{r as t};
