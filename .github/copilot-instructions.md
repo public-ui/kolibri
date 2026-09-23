@@ -50,17 +50,22 @@ pnpm -r build
 
 ### Start Development Environment
 
+Always the same sequence (see `CONTRIBUTING.md#daily-workflow`):
+
 ```bash
-# The presentation app hosts the React samples and is the dev server
-cd packages/samples/presentation
+git pull
+pnpm i
+pnpm -r build
 
-# Start development server (opens http://localhost:9191)
-# It only starts Vite and builds nothing – run `pnpm -r build` once beforehand.
-pnpm start
-
-# Watch the packages you change in their own terminal, e.g.:
+# Watch only the packages you change, one terminal each
 pnpm --filter @public-ui/components dev
+pnpm --filter @public-ui/theme-default dev
+
+# Start development server (http://localhost:9191). It only starts Vite and builds nothing.
+pnpm --filter @public-ui/presentation dev
 ```
+
+Never run a build (`pnpm -r build`, `build:deps`, components `build`) while a watcher is active: the components build starts with `pnpm clear` and deletes the watcher's output. Stop the watchers first.
 
 ### Code Quality Commands
 
@@ -189,8 +194,8 @@ After making changes to components or themes:
 1. **Component Development Testing:**
 
    ```bash
-   cd packages/samples/react
-   pnpm start
+   cd packages/samples/presentation
+   pnpm dev
    # Navigate to http://localhost:9191
    # Test your component changes in the samples
    ```
@@ -200,7 +205,7 @@ After making changes to components or themes:
    # Build themes first
    pnpm --filter @public-ui/themes build
    # Start React sample and verify styling changes
-   cd packages/samples/react && pnpm start
+   pnpm --filter @public-ui/presentation dev
    ```
 
 ### CLI Tool Testing
@@ -223,7 +228,7 @@ node dist/index.js info
 - **All tests:** `pnpm test` – 2-3 minutes (timeout: 300s)
 - **Linting:** `pnpm lint` – 1 minute (timeout: 120s)
 - **Formatting:** `pnpm format` – 10-30 seconds (timeout: 60s)
-- **Dev server startup:** `pnpm start` – 15 seconds (timeout: 60s)
+- **Dev server startup:** `pnpm dev` in packages/samples/presentation – 15 seconds (timeout: 60s)
 - **Component dev watcher:** `pnpm dev` in packages/components – 15 seconds initial (timeout: 60s)
 
 **NEVER CANCEL** any build or test command before the specified timeout.
@@ -337,8 +342,8 @@ cd packages/themes/default
 # Watch mode for theme changes (with Rollup watcher)
 pnpm dev
 
-# Or use start command for development with live preview
-pnpm start
+# Or watch and preview the theme in the presentation app
+pnpm preview
 ```
 
 **Theme Development Workflow:**
@@ -393,9 +398,9 @@ pnpm test-update
 ### React Sample Development
 
 ```bash
-cd packages/samples/react
+cd packages/samples/presentation
 # Start development server with hot reload
-pnpm start
+pnpm dev
 # Navigate to http://localhost:9191
 ```
 
@@ -591,7 +596,7 @@ THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots=ch
 **Component Development Rules:**
 
 - ✅ Use `pnpm dev` in components package for watch mode
-- ✅ Test changes in React sample app: `cd packages/samples/react && pnpm start`
+- ✅ Test changes in React sample app: `pnpm --filter @public-ui/presentation dev`
 - ✅ Build components after changes to regenerate adapters
 - ✅ Run full test suite before committing: `pnpm test`
 
@@ -606,7 +611,7 @@ THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots=ch
 cd packages/components && pnpm build
 
 # 4. Test in React sample
-cd packages/samples/react && pnpm start
+pnpm --filter @public-ui/presentation dev
 
 # 5. Build all adapters
 pnpm --filter "@public-ui/*" build
@@ -620,7 +625,7 @@ cd packages/themes/default
 pnpm dev  # Watch mode for immediate feedback
 
 # 2. Test changes in sample app
-cd packages/samples/react && pnpm start
+pnpm --filter @public-ui/presentation dev
 
 # 3. Run visual tests
 cd packages/themes/default && pnpm test
@@ -630,10 +635,10 @@ cd packages/themes/default && pnpm test
 
 ```bash
 # React testing
-cd packages/samples/react && pnpm start
+pnpm --filter @public-ui/presentation dev
 
 # Angular testing
-cd packages/samples/angular && pnpm start
+pnpm --filter @public-ui/sample-angular dev
 
 # Direct adapter testing
 pnpm --filter @public-ui/react build
@@ -691,7 +696,7 @@ cd packages/components && pnpm dev
 cd packages/themes/default && pnpm dev
 
 # Sample app for testing components
-cd packages/samples/react && pnpm start
+pnpm --filter @public-ui/presentation dev
 ```
 
 Always prioritize these validated workflows over attempting alternative approaches.

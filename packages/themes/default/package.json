@@ -51,7 +51,7 @@
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\" color-scheme.css",
 		"lint:tsc": "tsc --noemit",
 		"prepare": "kolibri-copy-assets --dest assets @public-ui/components",
-		"start": "npm-run-all2 --parallel dev serve",
+		"preview": "npm-run-all2 --parallel dev serve",
 		"serve": "sh serve.sh DEFAULT",
 		"test": "cross-env THEME_MODULE=dist THEME_EXPORT=DEFAULT THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test",
 		"test:dark": "cross-env KOLIBRI_VISUAL_TESTS_COLOR_SCHEME=dark THEME_MODULE=dist THEME_EXPORT=DEFAULT THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test",

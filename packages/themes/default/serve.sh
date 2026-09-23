@@ -9,6 +9,6 @@ export THEME_CSS="$THEME_DIR/inject-assets.css"
 
 # The presentation app is the host: it reads THEME_MODULE / THEME_EXPORT / THEME_CSS and mounts the
 # sample app with only that one theme registered. `serve` is plain Vite without opening a browser;
-# `pnpm start` of this package runs it next to `rollup -c --watch`, which owns the theme's dist.
+# `pnpm preview` of this package runs it next to `rollup -c --watch`, which owns the theme's dist.
 cd "$THEME_DIR/../../samples/presentation"
 pnpm serve

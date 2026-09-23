@@ -18,7 +18,7 @@
 		"prebuild": "kolibri-copy-assets --dest public/assets @public-ui/components @public-ui/theme-bwst @public-ui/theme-default @public-ui/theme-desy @public-ui/theme-ecl @public-ui/theme-kern @public-ui/sample-react",
 		"prepare": "pnpm prebuild",
 		"serve": "vite",
-		"start": "vite --open",
+		"dev": "vite --open",
 		"test": "vitest run",
 		"test:e2e": "playwright test",
 		"test:unit": "vitest run",

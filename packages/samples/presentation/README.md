@@ -28,25 +28,25 @@ pnpm i
 pnpm -r build
 
 cd packages/samples/presentation
-pnpm start
+pnpm dev
 ```
 
-`pnpm start` opens the Vite dev server with the default theme set bundled in `@public-ui/themes`.
+`pnpm dev` opens the Vite dev server with the default theme set bundled in `@public-ui/themes`.
 It builds nothing: every workspace package is responsible for its own build output, and the
 presentation app only serves what is already there.
 
 ### Developing with watchers
 
-The chain is kolicons → components → adapters → themes → sample → presentation. After the one-off
-full build above, start `dev` only in the packages you are working on, and the presentation app
-next to them:
+After the one-off full build above, start `dev` only in the packages you are working on, and the
+presentation app next to them. The full sequence is the
+[daily workflow](../../../CONTRIBUTING.md#daily-workflow) of the repository.
 
 ```bash
 # Terminal A – watch whatever you change, e.g. the components or a theme
 pnpm --filter @public-ui/components dev
 
 # Terminal B
-pnpm --filter @public-ui/presentation start
+pnpm --filter @public-ui/presentation dev
 ```
 
 After a pull or a branch switch, rebuild the packages that changed – `pnpm build:deps` in this
@@ -62,7 +62,7 @@ Set `THEME_MODULE` to the ESM bundle you want to use and optionally `THEME_EXPOR
 $env:THEME_MODULE="/public/assets/custom-theme/dist/index.es.js"
 $env:THEME_EXPORT="DEFAULT"  # optional
 $env:THEME_CSS="/public/assets/custom-theme/fonts.css"  # optional
-pnpm start
+pnpm dev
 ```
 
 On Windows the leading slash is required for the dynamic import; `main.ts` handles this automatically.
@@ -91,11 +91,11 @@ You can enable the dev helpers via environment variables or hash query parameter
 Example (PowerShell):
 
 ```powershell
-$env:ENABLE_THEME_PATCHING="true"; pnpm start
+$env:ENABLE_THEME_PATCHING="true"; pnpm dev
 ```
 
 ## Notes
 
-- `pnpm serve` is `pnpm start` without opening a browser. `serve.sh` of a theme package calls it next to that package's own `rollup --watch`.
+- `pnpm serve` is `pnpm dev` without opening a browser. `serve.sh` of a theme package calls it next to that package's own `rollup --watch` (`pnpm preview` there).
 - Keep theme modules built before injecting them; use `pnpm --filter @public-ui/themes build` if you are working on a local theme.
 - Assets are copied into `public/assets` by `pnpm prebuild`, which runs `kolibri-copy-assets` for the components package and every bundled theme. It runs automatically on `pnpm install` (via `prepare`) and before `pnpm build`.

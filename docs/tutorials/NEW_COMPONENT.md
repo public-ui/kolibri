@@ -216,8 +216,8 @@ Anschließend die Route in `packages/samples/react/src/scenarios/routes.ts` regi
 Zum Testen:
 
 ```bash
-cd packages/samples/react
-pnpm start
+cd packages/samples/presentation
+pnpm dev
 # Navigiere zu http://localhost:9191
 ```
 

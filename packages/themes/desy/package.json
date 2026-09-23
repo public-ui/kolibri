@@ -51,7 +51,7 @@
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
 		"prepare": "kolibri-copy-assets --dest assets @public-ui/components",
-		"start": "npm-run-all2 --parallel dev serve",
+		"preview": "npm-run-all2 --parallel dev serve",
 		"serve": "sh serve.sh DesyV11",
 		"test": "cross-env THEME_MODULE=dist THEME_EXPORT=DesyV11 THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test",
 		"test:update:e2e": "cross-env THEME_MODULE=dist THEME_EXPORT=DesyV11 THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
