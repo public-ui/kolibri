@@ -141,7 +141,7 @@
 		"pug": "3.0.4",
 		"rimraf": "6.1.3",
 		"stencil-awesome-test": "1.0.6",
-		"stylelint": "17.14.1",
+		"stylelint": "17.15.0",
 		"terser": "5.51.2",
 		"twig": "3.0.0",
 		"typescript": "5.9.3"

@@ -7,11 +7,11 @@
 		"npm-run-all2": "9.0.3",
 		"prettier": "3.9.8",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.14.1",
+		"stylelint": "17.15.0",
 		"stylelint-config-recommended-scss": "17.0.1",
 		"stylelint-config-standard": "40.0.0",
 		"stylelint-order": "8.1.1",
-		"stylelint-scss": "7.2.0"
+		"stylelint-scss": "7.3.0"
 	},
 	"engines": {
 		"pnpm": "^10"

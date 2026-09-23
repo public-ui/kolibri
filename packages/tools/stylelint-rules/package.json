@@ -23,7 +23,7 @@
 		"postcss-scss": "4.0.9",
 		"prettier": "3.9.8",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.4.0"
+		"stylelint": "17.15.0"
 	},
 	"peerDependencies": {
 		"stylelint": ">=17"
