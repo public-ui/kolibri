@@ -221,7 +221,7 @@ Zum Abschluss liefern:
 **Im Skill:**
 
 - `reference/patterns.md` — Prop-Triangle, WC-Orchestrator, `StateAccess`/`stateLess`, Behavior-Lebenszyklus, Prop-Definition, Ziel-Dateistruktur
-- `reference/pitfalls.md` — 12 Fallstricke, jeder schon einmal als Regression aufgetreten
+- `reference/pitfalls.md` — 14 Fallstricke, jeder schon einmal als Regression aufgetreten
 
 **Im Repo** (Anker in `packages/components/src/components/_skeleton/ARC42.md`):
 
