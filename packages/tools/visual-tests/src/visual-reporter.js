@@ -38,6 +38,8 @@ const ATTACHMENT_SUFFIX = /-(expected|actual|diff|previous)\.png$/;
 const PIXEL_MISMATCH = /(\d+) pixels \(ratio ([\d.]+) of all image pixels\) are different/;
 const SIZE_MISMATCH = /Expected an image (\d+)px by (\d+)px, received (\d+)px by (\d+)px/;
 const TEST_TITLE = /^snapshot for (.+)$/;
+/* Playwright trims output file names (attachments included) to this length – `windowsFilesystemFriendlyLength`. */
+const OUTPUT_NAME_LENGTH = 60;
 // eslint-disable-next-line no-control-regex -- Playwright colours its messages; the escape character is the point here
 const ANSI_SEQUENCE = /\u001b\[[0-9;]*m/g;
 
@@ -48,6 +50,20 @@ const ANSI_SEQUENCE = /\u001b\[[0-9;]*m/g;
  */
 export function routeToSnapshotName(route) {
 	return route.replace(/[/?&=]+/g, '-');
+}
+
+/**
+ * Attachment name Playwright derives from a snapshot name. Beyond 60 characters (`.png` included) it
+ * replaces the middle with a hash – mirrors `trimLongString` in playwright/lib/util.js:
+ * `input-color-basic-noColumns--hide-label-suggestions-error` → `input-color-basic-noColumn-fd9e7-label-suggestions-error`.
+ */
+export function playwrightOutputName(name) {
+	const file = `${name}.png`;
+	if (file.length <= OUTPUT_NAME_LENGTH) return name;
+	const middle = `-${crypto.createHash('sha1').update(file).digest('hex').substring(0, 5)}-`;
+	const start = Math.floor((OUTPUT_NAME_LENGTH - middle.length) / 2);
+	const end = OUTPUT_NAME_LENGTH - middle.length - start;
+	return `${file.substring(0, start)}${middle}${file.slice(-end)}`.replace(/\.png$/, '');
 }
 
 function sha256(buffer) {
@@ -193,14 +209,16 @@ export default class VisualReporter {
 			const route = test.title.match(TEST_TITLE)?.[1] ?? test.title;
 			const snapshotName = routeToSnapshotName(route);
 
+			const announced = [];
 			for (const annotation of [...test.annotations, ...(result.annotations ?? [])]) {
 				if (annotation.type === SNAPSHOT_ANNOTATION && annotation.description) {
-					seen.add(annotation.description.replace(/\.png$/, ''));
+					announced.push(annotation.description.replace(/\.png$/, ''));
 				}
 			}
+			for (const name of announced) seen.add(name);
 
 			// A failed comparison always attaches the actual image; the baseline listing tells changed from added.
-			const groups = groupAttachments(result.attachments);
+			const groups = restoreTrimmedNames(groupAttachments(result.attachments), [...announced, ...this.baseline.keys()]);
 			for (const [name, files] of groups) {
 				if (!files.actual) continue;
 				seen.add(name);
@@ -326,6 +344,17 @@ function groupAttachments(attachments) {
 		groups.get(name)[match[1]] = attachment.path;
 	}
 	return groups;
+}
+
+/** Maps attachment groups whose name Playwright trimmed back to the snapshot name they stand for. */
+function restoreTrimmedNames(groups, snapshotNames) {
+	const byOutputName = new Map();
+	for (const name of snapshotNames) {
+		const outputName = playwrightOutputName(name);
+		if (outputName !== name) byOutputName.set(outputName, name);
+	}
+	if (byOutputName.size === 0) return groups;
+	return new Map([...groups].map(([name, files]) => [byOutputName.get(name) ?? name, files]));
 }
 
 /** `button-basic--variants` and `button-basic--variants-320` belong to route name `button-basic`; so does the full-page `button-basic`. */
