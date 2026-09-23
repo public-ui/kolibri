@@ -376,6 +376,40 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-tree': {
+		elements: {
+			'treeview-navigation': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-tree-item': {
+		elements: {
+			children: {
+				modifiers: null;
+			};
+			link: {
+				modifiers: Set<'active' | 'first-level'>;
+			};
+			'link-inner': {
+				modifiers: null;
+			};
+			text: {
+				modifiers: null;
+			};
+			'toggle-button': {
+				modifiers: null;
+			};
+			'toggle-button-icon': {
+				modifiers: null;
+			};
+			'toggle-button-placeholder': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 };
 
 /**
@@ -576,6 +610,24 @@ const BEM: KoliBriComponentsBemSchema = {
 			loader: { modifiers: null },
 			spinner: { modifiers: new Set(['cycle', 'dot', 'none']) },
 			'spinner-element': { modifiers: new Set(['1', '2', '3', 'neutral']) },
+		},
+		modifiers: null,
+	},
+	'kol-tree': {
+		elements: {
+			'treeview-navigation': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-tree-item': {
+		elements: {
+			children: { modifiers: null },
+			link: { modifiers: new Set(['active', 'first-level']) },
+			'link-inner': { modifiers: null },
+			text: { modifiers: null },
+			'toggle-button': { modifiers: null },
+			'toggle-button-icon': { modifiers: null },
+			'toggle-button-placeholder': { modifiers: null },
 		},
 		modifiers: null,
 	},

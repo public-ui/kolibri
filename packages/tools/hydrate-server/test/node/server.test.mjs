@@ -167,7 +167,6 @@ const PROBLEMATIC_COMPONENTS = new Set([
 	'kol-toolbar', // Server crashes
 	'kol-tree', // Server crashes
 	'kol-tree-item', // Server crashes
-	'kol-tree-item-wc', // Server crashes
 	'kol-link', // Memory explosion (51MB heap, 65MB RSS)
 	'kol-link-button', // CRITICAL: 137MB heap, 254MB RSS - causes complete server OOM after 20 components
 ]);
