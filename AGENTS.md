@@ -12,6 +12,7 @@ We have a monorepo structure with multiple packages, each with its own `package.
   - You need to run `pnpm i` at the root level. This updates the lockfile and ensures all packages are using the correct versions.
 - Never add a `packageManager` field to any `package.json` file.
 - Avoid that branch name may contain hidden characters.
+- Development workflow: `git pull` → `pnpm i` → `pnpm -r build` → `pnpm dev` only in the packages being changed → work on the code. No `dev` or `preview` script builds dependencies. Never run a build while a watcher is active, the components build clears the watcher's output. See [CONTRIBUTING.md](CONTRIBUTING.md#daily-workflow).
 - If something does not work, check in the event of an error whether all dependent submodules have been built.
 - To build a single package faster, run commands with downstream dependents using `pnpm --filter ...<package>` (e.g., `pnpm --filter ...@public-ui/sample-react build`).
 

@@ -385,6 +385,9 @@ ROUTES.set('input-text/variant?noColumns', {
 		},
 	},
 });
+ROUTES.set('input-text/clear-button?noColumns', {
+	snapshot: {},
+});
 ROUTES.set('kolibri/basic', {
 	snapshot: {
 		skip: true,

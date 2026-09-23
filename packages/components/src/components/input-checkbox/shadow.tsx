@@ -97,7 +97,6 @@ export class KolInputCheckbox implements ClickableElement, FocusableElement, Inp
 				[`kol-input-checkbox--variant-${this.state._variant || 'default'}`]: true,
 				[`kol-input-checkbox--label-align-${this.state._labelAlign || 'right'}`]: true,
 			}),
-			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
 			renderNoTooltip: true,
 		};
@@ -121,6 +120,7 @@ export class KolInputCheckbox implements ClickableElement, FocusableElement, Inp
 				},
 			},
 			infoPopover: this._infoPopover,
+			tooltipAlign: this._tooltipAlign,
 		};
 	}
 

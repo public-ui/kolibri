@@ -7,7 +7,7 @@
 		"format": "prettier --check src",
 		"prebuild": "kolibri-copy-assets --dest src/assets @public-ui/components @public-ui/theme-default",
 		"prepare": "pnpm prebuild",
-		"start": "ng serve",
+		"dev": "ng serve",
 		"unused": "knip"
 	},
 	"dependencies": {

@@ -68,7 +68,7 @@ Want to improve or customize the Default Theme? Here’s how:
 
      ```bash
      cd kolibri/lib/packages/themes/default
-     pnpm start
+     pnpm preview
      ```
 
    - Edit the files in `src/` as needed.

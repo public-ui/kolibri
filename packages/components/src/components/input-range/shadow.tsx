@@ -191,6 +191,7 @@ export class KolInputRange implements ClickableElement, FocusableElement, InputR
 			type: 'range',
 			tabIndex: -1,
 			id: undefined,
+			accessKey: undefined,
 			'aria-hidden': 'true',
 			ref: this.setInputRangeRef,
 		};

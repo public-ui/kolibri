@@ -81,8 +81,8 @@ pnpm i --ignore-scripts
 pnpm -r build
 
 # Start development server
-cd packages/samples/react
-pnpm start
+cd packages/samples/presentation
+pnpm dev
 ```
 
 ### Development Ports
