@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 10973,
-	"head": "1c1fe1374808522cdf8fb18b2960fcada74282a6",
+	"head": "590b9ad6ce1c917f46638e714c040dd4634aaeb7",
 	"repository": "public-ui/kolibri",
-	"runId": 35839296570,
-	"generatedAt": "2026-09-23T09:09:18.715Z",
-	"digest": "sha256:c481a7302cdcee08adcf3f9cc1412a28d5651a280f8d16f078c095db0ac68bc1",
+	"runId": 35864647450,
+	"generatedAt": "2026-09-23T13:28:15.402Z",
+	"digest": "sha256:194b13748d1805f6f5e6cb58c8d114f119b2226173e2d9f9009907184f0273a5",
 	"baseline": {
-		"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
+		"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -17,7 +17,7 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2849,
+		"unchanged": 2884,
 		"changed": 14,
 		"added": 0,
 		"removed": 0,
@@ -28,28 +28,28 @@
 			"package": "test-tag-name-transformer",
 			"themeDir": "theme-default",
 			"baseline": {
-				"files": 409,
+				"files": 414,
 				"meta": {
-					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
+					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
 					"ref": "develop",
-					"runId": 35837526669,
+					"runId": 35862624239,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T08:38:05.497Z",
-					"digest": "sha256:01183dfd73fdf3a2f4d5bc5a290e6e0cf767dc186e97abfce80727f1de1fc33b",
+					"createdAt": "2026-09-23T12:54:07.148Z",
+					"digest": "sha256:195c6f91028eec81cc58070eecc8845c00c959356669ccdeca481ab735459e55",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 407,
+				"unchanged": 412,
 				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:425f92650d4aded97049195b229fe8ae38421d05930ee7a466729b8eeabc75eb",
+			"digest": "sha256:fc8c015176d45a5d0e7446544d2f3b11a7299eab7470808e6d250d2d0ff8380a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -1594,6 +1594,36 @@
 					"hash": "sha256:f09920e60efabeec28c2a120e02a8fa02fb853350a57312d3984fa50de3c67b3"
 				},
 				{
+					"name": "input-text-clear-button-noColumns--search-disabled",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:6a76f8c20da0e48433236c9e7d0b8b374023b91c8ae09b2ba209bfcaa6cbb0fe"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-empty",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:aa87263688dd0342c0b3df05d68a6a9c74fffb7a7913c5898f7d949e2f9690df"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-read-only",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:f489d342da310941682145b73b4c0071b6c1993c2ab99e40a4b9cbc1a224e55a"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-value",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:2301a2c4dbf4a945833ba0ba604278e819da7163dff0069b2a0a0a3b6548da35"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--text-no-clear-button",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:f1dd6735ca9571f7eadcf37ba08b0c64b77363982c72bea4bfd8ce0004f5d043"
+				},
+				{
 					"name": "input-text-counter-noColumns--counter",
 					"route": "input-text-counter-noColumns",
 					"status": "unchanged",
@@ -2543,28 +2573,28 @@
 			"package": "theme-bwst",
 			"themeDir": "theme-bwst",
 			"baseline": {
-				"files": 409,
+				"files": 414,
 				"meta": {
-					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
+					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
 					"ref": "develop",
-					"runId": 35837526669,
+					"runId": 35862624239,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T08:37:50.909Z",
-					"digest": "sha256:40ecef28a789cfe0be6f6523a33d86bea98da99b8c41ac85af1e53bd5500b1a1",
+					"createdAt": "2026-09-23T12:52:21.787Z",
+					"digest": "sha256:d9a4d63dbb9fccaeb0793cd7ec17141467957d181646d2b457a58792e7e62a93",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 407,
+				"unchanged": 412,
 				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:d64202c8f835bcff192a75fdd2d94d41430f70500d1a0a4038a92ce2e7123467",
+			"digest": "sha256:585dda685626ad9a55c094909e32572fc1fec50964ab8d76e63e14c3445ebca8",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4109,6 +4139,36 @@
 					"hash": "sha256:8f605305e4f8df7d43429b3e35b1399e1c2451f6885e56ad20bf66992374bfa6"
 				},
 				{
+					"name": "input-text-clear-button-noColumns--search-disabled",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:504050fbdafca875292df9432f0c17cec247a3792323541543662200f5863556"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-empty",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:3c788ed52954e1fd00bba843e3c3d85f71804afb642f4826c1169e8483867e11"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-read-only",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b33175fe8f5cf64b6cd09c633f4ab3b0a2f309ea383e85441b28de44c65b09f5"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-value",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:0029ac3772fcce56b441a11763dbb154c9fc8df59b11001c74b8a61bb73a032f"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--text-no-clear-button",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:98669c61b70333b953753e464ec4948bae480ff115db4cb9ae6e69d3bf5f0039"
+				},
+				{
 					"name": "input-text-counter-noColumns--counter",
 					"route": "input-text-counter-noColumns",
 					"status": "unchanged",
@@ -5058,28 +5118,28 @@
 			"package": "theme-default",
 			"themeDir": "theme-default",
 			"baseline": {
-				"files": 409,
+				"files": 414,
 				"meta": {
-					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
+					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
 					"ref": "develop",
-					"runId": 35837526669,
+					"runId": 35862624239,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T08:38:05.497Z",
-					"digest": "sha256:01183dfd73fdf3a2f4d5bc5a290e6e0cf767dc186e97abfce80727f1de1fc33b",
+					"createdAt": "2026-09-23T12:54:07.148Z",
+					"digest": "sha256:195c6f91028eec81cc58070eecc8845c00c959356669ccdeca481ab735459e55",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 407,
+				"unchanged": 412,
 				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:425f92650d4aded97049195b229fe8ae38421d05930ee7a466729b8eeabc75eb",
+			"digest": "sha256:fc8c015176d45a5d0e7446544d2f3b11a7299eab7470808e6d250d2d0ff8380a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -6624,6 +6684,36 @@
 					"hash": "sha256:f09920e60efabeec28c2a120e02a8fa02fb853350a57312d3984fa50de3c67b3"
 				},
 				{
+					"name": "input-text-clear-button-noColumns--search-disabled",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:6a76f8c20da0e48433236c9e7d0b8b374023b91c8ae09b2ba209bfcaa6cbb0fe"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-empty",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:aa87263688dd0342c0b3df05d68a6a9c74fffb7a7913c5898f7d949e2f9690df"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-read-only",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:f489d342da310941682145b73b4c0071b6c1993c2ab99e40a4b9cbc1a224e55a"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-value",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:2301a2c4dbf4a945833ba0ba604278e819da7163dff0069b2a0a0a3b6548da35"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--text-no-clear-button",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:f1dd6735ca9571f7eadcf37ba08b0c64b77363982c72bea4bfd8ce0004f5d043"
+				},
+				{
 					"name": "input-text-counter-noColumns--counter",
 					"route": "input-text-counter-noColumns",
 					"status": "unchanged",
@@ -7573,28 +7663,28 @@
 			"package": "theme-desy",
 			"themeDir": "theme-desyv11",
 			"baseline": {
-				"files": 409,
+				"files": 414,
 				"meta": {
-					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
+					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
 					"ref": "develop",
-					"runId": 35837526669,
+					"runId": 35862624239,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T08:37:01.159Z",
-					"digest": "sha256:09475be628c62c2a5a2675a2b520b1930068ab529c1d39ba5eaa2d714e57a906",
+					"createdAt": "2026-09-23T12:53:02.849Z",
+					"digest": "sha256:0b2464dfca178b3bddd1fbd858f23f09c22966bb3644e1c24035c6a8bd04a132",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 407,
+				"unchanged": 412,
 				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:87f1a4f8215591aaec066c48f6c9ec258b46f998cbda86e9448f7d60f1783d66",
+			"digest": "sha256:8e64449721088cd3e9f2063a03941f59999c732a566db8dedbebef4ae089d66c",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9119,6 +9209,36 @@
 					"hash": "sha256:e8292e650aca71f5a89cf171321ccefbb9a644909ae61379b86c3ed5b77e281f"
 				},
 				{
+					"name": "input-text-clear-button-noColumns--search-disabled",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:4fddcd0ab674fc34806657c1495583927de9721e5028aa18829a0fc8e7900727"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-empty",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:3cf38ff2bdf09a26a6995cc75f2cca5ca1040a2ae8b8d578f6c583fe4a6cadbe"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-read-only",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:75edcd882e4a6912c9dafaeef815d8ca8c8039674fc56f27403e9bc1fcf3f490"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-value",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:e7608eb52bf99e543eab45694eaeadfb3aaa15f66488e08264bc85ee2276a2d2"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--text-no-clear-button",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:129ec423a63ee9c384a77ce88e46b7b951cc0a3bb0a17d5ebc6099d293ff6824"
+				},
+				{
 					"name": "input-text-counter-noColumns--counter",
 					"route": "input-text-counter-noColumns",
 					"status": "unchanged",
@@ -10068,28 +10188,28 @@
 			"package": "theme-ecl",
 			"themeDir": "theme-ecl_ec",
 			"baseline": {
-				"files": 409,
+				"files": 414,
 				"meta": {
-					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
+					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
 					"ref": "develop",
-					"runId": 35837526669,
+					"runId": 35862624239,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T08:36:34.545Z",
-					"digest": "sha256:92193952e1be7f78efa9a775c49286b29a8d29e2ede5306f334bf3a31295b2b9",
+					"createdAt": "2026-09-23T12:52:35.254Z",
+					"digest": "sha256:b7c82df581b03283251b14c6724092cd135f7e61d17c9ad5c14aebb54530da20",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 407,
+				"unchanged": 412,
 				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:864e86e90b0e17d51cf0c9dd2539ce241121b2cfe596c0a600106034e0d1fbf0",
+			"digest": "sha256:6fc9943c5703f73711583549523f45747f15abdaa61335c406cda0687a5f4029",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11632,6 +11752,36 @@
 					"hash": "sha256:71472a7f20c5b9de3aa8b6092469db8fbb41e2656f839afb68010391432ed2d7"
 				},
 				{
+					"name": "input-text-clear-button-noColumns--search-disabled",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:217be47e94852a136ee64904872d00c339c01f9d2af1632cb193c3381f32367a"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-empty",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:0b547fd4971fe60abbd47d456f0c768f579129cbfe26688d4b3ca99d520bcf5f"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-read-only",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:135faba82a3aca187132e688d10c8432f86ed068b6c34639a3f49bbca07177e6"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-value",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:aa99be3b2535cb7b0a5563361613dea9453b57c9f63b12d0c5a6ae112811bdd3"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--text-no-clear-button",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:ce1a78294898817200645d9f5292d8a74de8e0d8b5991ddc91118d3568da23c9"
+				},
+				{
 					"name": "input-text-counter-noColumns--counter",
 					"route": "input-text-counter-noColumns",
 					"status": "unchanged",
@@ -12581,28 +12731,28 @@
 			"package": "theme-kern",
 			"themeDir": "theme-kern_v2",
 			"baseline": {
-				"files": 409,
+				"files": 414,
 				"meta": {
-					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
+					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
 					"ref": "develop",
-					"runId": 35837526669,
+					"runId": 35862624239,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T08:35:58.306Z",
-					"digest": "sha256:bbeceddc416db74402abbece034e13eacf2fe3b1738df13d9cd31a2faf59c31b",
+					"createdAt": "2026-09-23T12:52:21.237Z",
+					"digest": "sha256:a14a476c69b237011203ec7806eda57e1359c95a123fe3765ac492f382dd9292",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 407,
+				"unchanged": 412,
 				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8009709382cd4a8adc0c26ec65b21acd66a342725066b67a05cec842cd8a3edc",
+			"digest": "sha256:bef3d685659fce8869dd5329e3463ff2d36ac45893bfc5dfc223f8929d4d0c53",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14147,6 +14297,36 @@
 					"hash": "sha256:e9d7695dd38169d26f7e9e438240eabbc8ffc70e011a20635bf71614318d66e1"
 				},
 				{
+					"name": "input-text-clear-button-noColumns--search-disabled",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b5de73db15a346675bea39dd50504d88ec46954ddbeae7d2215be75993bed015"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-empty",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:cf309e912526f44e55c66560b95e7f20340a069e99c3060726d866f18a447180"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-read-only",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:bb44d51d2e1451ede0e2efb60084001c861a09ca59658e12d669e9610755b6c5"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-value",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:d0dcc2204c5d2134c7284974c3575a7fe6991a8964115062b0694704fe8a5951"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--text-no-clear-button",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:112ca7b322b6da8fccf4a1d7093f6a93ffce242d976379eb5e245e40d52cc60f"
+				},
+				{
 					"name": "input-text-counter-noColumns--counter",
 					"route": "input-text-counter-noColumns",
 					"status": "unchanged",
@@ -15096,28 +15276,28 @@
 			"package": "unstyled",
 			"themeDir": "theme-unstyled",
 			"baseline": {
-				"files": 409,
+				"files": 414,
 				"meta": {
-					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
+					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
 					"ref": "develop",
-					"runId": 35837526669,
+					"runId": 35862624239,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T08:36:15.638Z",
-					"digest": "sha256:1edf7748f43327e3ea4d204ce11680d50955b325ce526433a4eebb24792e389a",
+					"createdAt": "2026-09-23T12:52:02.105Z",
+					"digest": "sha256:b1657c8d36439c178afe3298a238abf263084fbe8cd2c535d912174b2682953b",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 407,
+				"unchanged": 412,
 				"changed": 2,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a610b23a607873d3dac06760f656eb4a5cd0156de236ee1ea25786393e7b89e9",
+			"digest": "sha256:eb19de03ffd3beea563df316da79a72bd08ed00c614397a571b72a77bb96a062",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -16650,6 +16830,36 @@
 					"route": "input-text-basic-noColumns",
 					"status": "unchanged",
 					"hash": "sha256:41de5dbc59afe7126e28b0a594ed488505c0790d24544f48978ec33d2bf8c3ad"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-disabled",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:f35777eee9f8522edb0b786c073e29930e44c94082d964f138edd0f3b0a28aee"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-empty",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:4eb32ee49997b71c2b2ee268f3069f8358bb7d72a9399f9f3eb91977bc2ca4bb"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-read-only",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:50f685856cad761a0f98a0acbd95d6b0e03de99965e7be826808199590daeb9c"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--search-value",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:a97103476c9c651ef9642cae60b2de00c5872e68249d5690153d21056a198331"
+				},
+				{
+					"name": "input-text-clear-button-noColumns--text-no-clear-button",
+					"route": "input-text-clear-button-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:64a7b01696daf5482272806573f1e509b284fb44924eec04b94c32173f67f39a"
 				},
 				{
 					"name": "input-text-counter-noColumns--counter",
