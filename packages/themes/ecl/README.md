@@ -69,7 +69,7 @@ Want to improve or customize the ECL Theme? Here’s how:
 
      ```bash
      cd kolibri/lib/packages/themes/ecl
-     pnpm start
+     pnpm dev
      ```
 
    - Edit the files in `src/` as needed.

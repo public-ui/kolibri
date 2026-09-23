@@ -4,7 +4,7 @@ Beschreibt die Abgrenzung zwischen dem Basis-Styling der Komponenten (`@public-u
 
 ## Status
 
-- Ist: Das Basis-Styling in `packages/components/src` ist faktisch scheme-frei. Weder dort noch in `packages/themes/*` gibt es `prefers-color-scheme`, `color-scheme` oder `light-dark()`. Ein Dark Mode ist in keinem Theme implementiert.
+- Ist: Das Basis-Styling in `packages/components/src` ist scheme-frei – dort gibt es weder `prefers-color-scheme` noch `color-scheme` oder `light-dark()`. `@public-ui/theme-default` implementiert seit [#10831](https://github.com/public-ui/kolibri/pull/10831) ein Dark Color Scheme über `light-dark()` und `color-scheme.css`; alle übrigen Themes liefern bisher nur eine helle Palette.
 - Soll: Die Abgrenzung ist verbindlich festgeschrieben und in allen Konzepten, Agenten-Anweisungen und Skills verankert (siehe [Abschnitt 8](#8-verankerung-in-den-bestehenden-konzepten)). Zukünftige Dark/Light-Umsetzungen entstehen ausschließlich in den Theme-Paketen.
 
 ## 1. Leitsatz

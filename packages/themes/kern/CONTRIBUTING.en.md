@@ -39,10 +39,10 @@ npm install
 npx playwright install
 
 # Start development (theme watch & sample app)
-npm start
+pnpm preview
 ```
 
-The start command combines `rollup --watch` with a local example based on `@public-ui/sample-react`. This lets you inspect the styles in the context of an application while the theme is rebuilt continuously.
+The preview command combines `rollup --watch` with the presentation app (`packages/samples/presentation`), with only this theme registered. This lets you inspect the styles in the context of an application while the theme is rebuilt continuously.
 
 When you are done, validate the result with the snapshot tests and check in updated reference snapshots if required:
 
@@ -222,8 +222,8 @@ Add utilities in `src/mixins/` **without** layers:
 ### Development build
 
 ```bash
-npm run dev    # Watch mode with hot reload
-npm start      # Development server
+pnpm dev       # Watch mode
+pnpm preview   # Watch mode + presentation app with this theme
 ```
 
 ### Production build
