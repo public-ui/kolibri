@@ -1,162 +1,198 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "35 added – 0 of 35 approved, review pending",
-	"computedAt": "2026-09-22T14:49:55.418Z",
+	"state": "success",
+	"description": "35 visual changes approved by BF150, laske185",
+	"computedAt": "2026-09-23T08:51:55.538Z",
 	"pr": 10956,
 	"head": "1765eccf7f37f846f64e2bff162ac2e47e977b84",
 	"digest": "sha256:4f766aed9c61838469523ddae7fa93a672cbc381e522a3b18a2ec5c5959b3ee6",
 	"counts": {
 		"changes": 35,
-		"open": 35,
-		"approved": 0,
+		"open": 0,
+		"approved": 35,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [
-		"BF150"
+		"BF150",
+		"laske185"
 	],
 	"items": {
 		"test-tag-name-transformer/input-text-clear-button-noColumns--search-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/input-text-clear-button-noColumns--search-empty": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/input-text-clear-button-noColumns--search-read-only": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/input-text-clear-button-noColumns--search-value": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-bwst/input-text-clear-button-noColumns--search-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-bwst/input-text-clear-button-noColumns--search-empty": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-bwst/input-text-clear-button-noColumns--search-read-only": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-bwst/input-text-clear-button-noColumns--search-value": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-bwst/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/input-text-clear-button-noColumns--search-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/input-text-clear-button-noColumns--search-empty": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/input-text-clear-button-noColumns--search-read-only": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/input-text-clear-button-noColumns--search-value": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-desy/input-text-clear-button-noColumns--search-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-desy/input-text-clear-button-noColumns--search-empty": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-desy/input-text-clear-button-noColumns--search-read-only": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-desy/input-text-clear-button-noColumns--search-value": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-desy/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/input-text-clear-button-noColumns--search-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/input-text-clear-button-noColumns--search-empty": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/input-text-clear-button-noColumns--search-read-only": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/input-text-clear-button-noColumns--search-value": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-kern/input-text-clear-button-noColumns--search-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-kern/input-text-clear-button-noColumns--search-empty": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-kern/input-text-clear-button-noColumns--search-read-only": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-kern/input-text-clear-button-noColumns--search-value": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-kern/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"unstyled/input-text-clear-button-noColumns--search-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"unstyled/input-text-clear-button-noColumns--search-empty": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"unstyled/input-text-clear-button-noColumns--search-read-only": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"unstyled/input-text-clear-button-noColumns--search-value": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"unstyled/input-text-clear-button-noColumns--text-no-clear-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		}
 	}
 }
