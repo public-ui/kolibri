@@ -1,9 +1,9 @@
 @layer kol-theme-component {
   @font-face {
     font-family: "d-you-icons";
-    src: url("d-you-icons.woff2?t=1790131508154") format("woff2"),
-    url("d-you-icons.woff?t=1790131508154") format("woff"),
-    url('d-you-icons.ttf?t=1790131508154') format('truetype');
+    src: url("d-you-icons.woff2?t=1790141011980") format("woff2"),
+    url("d-you-icons.woff?t=1790141011980") format("woff"),
+    url('d-you-icons.ttf?t=1790141011980') format('truetype');
   }
 
   [class^="kolicon-"], [class*=" kolicon-"] {

@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-DX2ZK3Km.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
