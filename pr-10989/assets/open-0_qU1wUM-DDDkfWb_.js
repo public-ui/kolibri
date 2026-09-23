@@ -1,0 +1,1 @@
+import{o as e,r as t}from"./factory-CKsVyhxp--ZveyAAo.js";var n=t(`open`,!1,e);export{n as t};
