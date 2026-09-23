@@ -1,0 +1,1 @@
+import{Et as e}from"./index-CM3ug58-.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
