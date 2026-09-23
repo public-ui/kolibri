@@ -1,1 +1,0 @@
-import{xt as e}from"./index-KSMp7b7C.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};

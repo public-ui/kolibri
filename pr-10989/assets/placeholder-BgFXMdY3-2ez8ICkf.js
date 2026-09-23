@@ -1,0 +1,1 @@
+import{wt as e}from"./index-CBow2j3g.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
