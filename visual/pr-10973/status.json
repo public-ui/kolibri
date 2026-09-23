@@ -2,9 +2,9 @@
 	"schema": 1,
 	"state": "failure",
 	"description": "7 route(s) failed before the screenshots could be compared",
-	"computedAt": "2026-09-22T14:42:39.313Z",
+	"computedAt": "2026-09-23T05:45:01.186Z",
 	"pr": 10973,
-	"head": "c4b1c97a4035f01087862ee5088e381e16f9f033",
+	"head": "c1afdb0691569c63d7ce13a38c9db35f7ca8ec57",
 	"digest": "sha256:d25fd481f0cf6a737788db3bbc60004e250e4604206a10ee50eb7240b24521f9",
 	"counts": {
 		"changes": 14,
