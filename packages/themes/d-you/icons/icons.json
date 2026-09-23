@@ -1,8 +1,11 @@
 {
-	"alert-error": "misuse",
+	"alert-error": "warning--alt--filled",
+	"alert-error-outline": "warning--alt",
 	"alert-info": "information--filled",
 	"alert-success": "checkmark--filled",
+	"alert-success-outline": "checkmark--outline",
 	"alert-warning": "warning--filled",
+	"alert-warning-outline": "warning",
 	"check": "checkmark",
 	"chevron-double-left": "double-chevron--left",
 	"chevron-double-right": "double-chevron--right",

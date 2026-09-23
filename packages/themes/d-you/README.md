@@ -101,8 +101,8 @@ terms, and the EUDI Diatype fonts are commercial and not redistributed here.
 
 - **Icons:** the theme ships the [IBM Carbon](https://carbondesignsystem.com/elements/icons/library/)
   set the design system specifies, built into a font by `@public-ui/d-you-icons` (in `icons/`) from
-  the `@carbon/icons` package. Only the icons KoliBri itself uses are mapped — `icons/icons.json`
-  holds that table. A KoliBri icon with no Carbon counterpart, such as the KoliBri logo, keeps the
+  the `@carbon/icons` package. Only the icons KoliBri itself uses are mapped, plus the outlined
+  twins the messages show on a dark page — `icons/icons.json` holds that table. A KoliBri icon with no Carbon counterpart, such as the KoliBri logo, keeps the
   `kolicons` glyph of `@public-ui/components`, and an application that reaches for a Font Awesome
   class directly (as some samples do) gets nothing, because this theme no longer ships that set.
 - The animated arc of `kol-spin`’s cycle variant is driven by `@keyframes` color stops in the base

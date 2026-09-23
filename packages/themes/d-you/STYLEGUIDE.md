@@ -151,7 +151,12 @@ Each feedback type ships in two weights, so a message stays readable on light an
 | Error, strong   | `error` `#B3261E`   | –                 | `#FFFFFF`                      |
 
 The subtle variants use a filled status icon in the outline color; the strong variants use the
-outlined icon shape.
+outlined icon shape. The error icon is a triangle (Carbon `warning--alt--filled` /
+`warning--alt`), success and warning are circles.
+
+The theme renders the subtle weight on a light page and the strong weight on a dark page, which is
+the use the design system gives the two weights. Info and the neutral note have no strong weight in
+the screens and keep the subtle one in both schemes.
 
 ### 1.6 Dark mode
 

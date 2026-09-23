@@ -1,4 +1,7 @@
+@use 'sass:map';
+@use '../../icons/generated/mixin' as icons;
 @use './button' as *;
+@use './palette' as *;
 @use './to-rem' as *;
 
 @mixin kol-alert {
@@ -7,7 +10,9 @@
 }
 
 @mixin kol-input-error-with-kol-alert-error($color: null) {
-	color: var($color);
+	/* On a dark page the error message is filled with the strong error color (see
+	   `kol-alert-theme`), where only white clears 4.5:1. */
+	color: light-dark(var($color), #ffffff);
 
 	font-weight: 700;
 }
@@ -17,13 +22,13 @@
  *
  * The design system ships each feedback type in two weights so a message stays readable on light and
  * dark surfaces: a soft one — the type's container surface with its outline as a hairline border —
- * and a strong one that fills with the type's own color. The soft weight is what a message inside a
- * page uses, so it is what `variant-msg` renders; `variant-card` keeps the accent band of the
- * component contract and fills the band with the strong weight.
+ * and a strong one that fills with the type's own color. `variant-msg` renders the soft weight on a
+ * light page and the strong one on a dark page (see below); `variant-card` keeps the accent band of
+ * the component contract and fills the band with the strong weight.
  *
- * In every weight the message text is the neutral `on-container` color and the meaning is carried by
- * the icon and the border, never by the text color alone — the design system requires feedback color
- * to always be paired with a matching icon.
+ * In every weight the message text is a neutral color and the meaning is carried by the icon and the
+ * border, never by the text color alone — the design system requires feedback color to always be
+ * paired with a matching icon.
  */
 @mixin kol-alert-theme {
 	.kol-alert {
@@ -97,6 +102,56 @@
 	.kol-alert--type-warning {
 		--alert-accent-color: var(--color-warning);
 		--alert-container-color: var(--color-warning-container);
+	}
+
+	/*
+	 * On a dark page a message takes the strong weight (STYLEGUIDE.md §1.5): the type's own color as
+	 * the fill, the border in the same color, text and icon in the matching on-color — and the
+	 * outlined icon shape instead of the filled one. Info and the neutral note have no strong weight
+	 * in the design system and keep the soft one.
+	 *
+	 * `light-dark()` switches colors only, not a glyph. So the icon carries both shapes at once, the
+	 * filled one in `::before` (from the `kolicon-*` class) and the outlined twin in `::after`,
+	 * stacked in one grid cell, and each scheme makes the other one transparent.
+	 */
+	@each $type, $token, $strong, $on-strong in (error danger $error #ffffff, success success $success $secondary-10, warning warning $warning $secondary-10) {
+		.kol-alert--variant-msg.kol-alert--type-#{$type} {
+			--alert-container-color: light-dark(var(--color-#{$token}-container), #{$strong});
+
+			color: light-dark(var(--color-text), #{$on-strong});
+			border-color: light-dark(var(--alert-accent-color), #{$strong});
+
+			.kol-alert__heading {
+				color: light-dark(var(--color-text), #{$on-strong});
+			}
+
+			.kol-alert__closer.kol-button {
+				--text-color: light-dark(var(--color-text), #{$on-strong});
+			}
+
+			.kol-alert__icon {
+				color: light-dark(var(--alert-accent-color), transparent);
+				display: grid;
+
+				&::before,
+				&::after {
+					grid-area: 1 / 1;
+				}
+
+				&::after {
+					color: light-dark(transparent, #{$on-strong});
+
+					content: map.get(icons.$code-points, 'alert-#{$type}-outline');
+				}
+
+				/* Forced colors paint both glyphs in the same system color; keep only the filled one. */
+				@media (forced-colors: active) {
+					&::after {
+						content: none;
+					}
+				}
+			}
+		}
 	}
 
 	/* The closer renders ButtonFC directly: `kol-alert__closer` and `kol-button` sit on the same
