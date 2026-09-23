@@ -376,6 +376,23 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-tabs': {
+		elements: {
+			'button-create': {
+				modifiers: null;
+			};
+			'button-group': {
+				modifiers: null;
+			};
+			content: {
+				modifiers: null;
+			};
+			tab: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'align-bottom' | 'align-left' | 'align-right' | 'align-top'>;
+	};
 };
 
 /**
@@ -578,6 +595,15 @@ const BEM: KoliBriComponentsBemSchema = {
 			'spinner-element': { modifiers: new Set(['1', '2', '3', 'neutral']) },
 		},
 		modifiers: null,
+	},
+	'kol-tabs': {
+		elements: {
+			'button-create': { modifiers: null },
+			'button-group': { modifiers: null },
+			content: { modifiers: null },
+			tab: { modifiers: null },
+		},
+		modifiers: new Set(['align-bottom', 'align-left', 'align-right', 'align-top']),
 	},
 };
 

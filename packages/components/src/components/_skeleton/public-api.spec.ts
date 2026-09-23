@@ -1063,6 +1063,7 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['button-link', 'component.tsx'],
 		['link-button', 'component.tsx'],
 		['split-button', 'component.tsx'],
+		['tabs', 'component.tsx'],
 		['badge', 'component.tsx'],
 		['card', 'component.tsx'],
 		['card', 'wc.tsx'],
@@ -1169,11 +1170,76 @@ const KOL_FORM_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	},
 };
 
+/**
+ * Pinned public API of `kol-tabs` — byte-identical to the predecessor `shadow.tsx` on the develop
+ * branch (7 props + focus and click), including the German `_on` JSDoc.
+ */
+const KOL_TABS_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the current tab button.',
+	},
+	click: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Triggers a click on the currently selected tab.',
+	},
+	_align: {
+		kind: 'prop',
+		type: 'AlignPropType',
+		required: false,
+		default: "'top'",
+		doc: 'Defines the visual orientation of the component.',
+	},
+	_behavior: {
+		kind: 'prop',
+		type: 'TabBehaviorPropType',
+		required: false,
+		doc: 'Defines which behavior is active.',
+	},
+	_hasCreateButton: {
+		kind: 'prop',
+		type: 'HasCreateButtonPropType',
+		required: false,
+		default: 'false',
+		doc: 'Defines whether the element has a create button.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'KoliBriTabsCallbacks',
+		required: false,
+		doc: 'Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.',
+	},
+	_selected: {
+		kind: 'prop',
+		type: 'number',
+		required: false,
+		default: '0',
+		doc: 'Defines which tab is active.',
+	},
+	_tabs: {
+		kind: 'prop',
+		type: 'Stringified<TabButtonProps[]>',
+		required: true,
+		doc: 'Defines the tab captions.',
+	},
+};
+
 describe.each([
 	['kol-button-link', 'button-link', 'ButtonLinkProps', KOL_BUTTON_LINK_PUBLIC_API],
 	['kol-link-button', 'link-button', 'LinkButtonProps', KOL_LINK_BUTTON_PUBLIC_API],
 	['kol-form', 'form', 'FormProps', KOL_FORM_PUBLIC_API],
 	['kol-split-button', 'split-button', 'SplitButtonProps', KOL_SPLIT_BUTTON_PUBLIC_API],
+	['kol-tabs', 'tabs', 'TabsProps', KOL_TABS_PUBLIC_API],
 	['kol-badge', 'badge', 'BadgeProps', KOL_BADGE_PUBLIC_API],
 	['kol-card', 'card', 'CardProps', KOL_CARD_PUBLIC_API],
 	['kol-dialog', 'dialog', 'DialogProps', KOL_DIALOG_PUBLIC_API],
