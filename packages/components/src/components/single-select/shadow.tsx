@@ -41,7 +41,7 @@ import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
-import { createUniqueId } from '../../utils/dev.utils';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
 import { SingleSelectController } from './controller';
@@ -305,11 +305,11 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 		return {
 			'aria-activedescendant': this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined,
 			'aria-autocomplete': 'both',
-			'aria-controls': this.state._id + '-listbox',
+			'aria-controls': createRelatedUniqueId(this.state._id, 'listbox'),
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
 			'aria-expanded': this._isOpen ? 'true' : 'false',
 			'aria-label': this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined,
-			'aria-labelledby': this.state._id + '-label',
+			'aria-labelledby': createRelatedUniqueId(this.state._id, 'label'),
 			'aria-keyshortcuts': this.state._shortKey,
 			accessKey: this.state._accessKey,
 			autocapitalize: 'off',
@@ -382,7 +382,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 							onKeyDown={this.handleKeyDownDropdown.bind(this)}
 							style={{ '--visible-options': `${this._rows ?? 5}` }}
 							hidden={!this._isOpen || isDisabled}
-							id={this.state._id + '-listbox'}
+							id={createRelatedUniqueId(this.state._id, 'listbox')}
 						>
 							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 								this._filteredOptions.map((option, index) => (
