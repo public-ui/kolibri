@@ -2,11 +2,13 @@
 
 23. September 2026
 
-Aus Screenshots der Figma-Datei des d-you Design Systems haben wir mit Claude Opus 5 ein vollständiges KoliBri-Theme gebaut. Vom ersten Screenshot bis zum heutigen Stand – ein grüner Pull Request mit 409 Referenz-Screenshots – hat das rund drei Stunden reine Arbeitszeit gedauert.
+Aus Screenshots der Figma-Datei des d-you Design Systems haben wir mit Claude Opus 5 ein vollständiges KoliBri-Theme gebaut. Vom ersten Screenshot bis zum heutigen Stand, einem grünen [Pull Request](https://github.com/public-ui/kolibri/pull/10970) mit 409 Referenz-Screenshots, hat das rund drei Stunden reine Arbeitszeit gedauert.
 
-Von Hand entstanden nur die Screenshots. Styleguide, Theme-Code, Icon-Paket, Messungen an echten Komponenten und die Fehlersuche in der CI hat Claude übernommen. Der Mensch hat gezeigt, was er sehen will, und markiert, was noch nicht passte.
+Von Hand entstanden nur die Screenshots. Styleguide, Theme-Code, Icon-Paket, Messungen an echten Komponenten und die Fehlersuche in der CI hat Claude übernommen. Wir haben gezeigt, was wir sehen wollen, und markiert, was noch nicht passte.
 
-Dass das in drei Stunden ging, liegt vor allem an KoliBri selbst. Am Ende jedes Abschnitts steht, welche Eigenschaft der Bibliothek uns an dieser Stelle Arbeit abgenommen hat.
+Wie das Theme aussieht, zeigt die Vorschau des Pull Requests, zum Beispiel am [Button im Theme d-you](https://public-ui.github.io/kolibri/pr-10970/#/button/basic?theme=dyou). Über die Navigation der Vorschau lassen sich alle anderen Komponenten aufrufen.
+
+Dass das in drei Stunden ging, liegt vor allem an KoliBri selbst.
 
 ## Der Weg im Überblick
 
@@ -20,7 +22,7 @@ flowchart LR
   F -.-> C
 ```
 
-Jede Station setzt auf einen Vertrag auf, den KoliBri schon mitbringt. Deshalb musste keine davon neu erfunden werden, nur ausgefüllt.
+Für jede Station gibt KoliBri die Struktur schon vor. Das Theme musste sie nur ausfüllen.
 
 ## Die Ausgangslage: nur Screenshots
 
@@ -36,7 +38,7 @@ Für ein KoliBri-Theme reichen Design-Entscheidungen: Farben, Schrift, Abstände
 
 ## Ein Theme ist bei KoliBri nur Design
 
-KoliBri trennt Struktur und Aussehen in CSS-Kaskadenschichten mit fest vorgegebener Reihenfolge. Die Basis – Barrierefreiheit, globale Regeln, Komponenten-Layout – kennt keine Farben und kein Farbschema. Ein Theme füllt nur die zwei Schichten darüber.
+KoliBri trennt Struktur und Aussehen in CSS-Kaskadenschichten mit fest vorgegebener Reihenfolge. Die Basis (Barrierefreiheit, globale Regeln, Komponenten-Layout) kennt keine Farben und kein Farbschema. Ein Theme füllt nur die zwei Schichten darüber.
 
 ```css
 @layer kol-a11y, kol-global, kol-component,
@@ -57,7 +59,7 @@ export const D_YOU = KoliBri.createTheme('dyou', {
 
 Die einzige Überraschung war der Name: KoliBri prüft Theme-Namen gegen ein Muster, das zwei Zeichen vor einem Bindestrich verlangt. Aus `d-you` wurde deshalb `dyou`, Paketname und Export behalten die Produktschreibweise.
 
-Die festen Schichten beantworten die Frage, wo eine Regel hingehört, schon vorab, und das Theme gewinnt immer. Weil die Basis keine Farben setzt, überschreibt das Theme keine Designentscheidungen der Bibliothek, es trifft die ersten.
+Die feste Reihenfolge legt vorab fest, wo eine Regel hingehört. Weil die Basis keine Farben setzt, muss das Theme auch keine Designentscheidungen der Bibliothek überschreiben.
 
 Die Komponenten sind Web Components mit Shadow DOM. Das Theme wird in jeden Shadow Root adoptiert und läuft unverändert in React, Angular, Vue, Solid, Svelte und Preact. Klassen wie `kol-button__text` oder `kol-button--hide-label` sind dokumentiert und brechen nicht beim nächsten Release. Als Vorlage diente `theme-default`: Build-Stack, Stylelint-Regeln und Skripte sind in allen Themes gleich.
 
@@ -109,7 +111,7 @@ Die dunkle Palette haben wir aus den Farbreihen der hellen abgeleitet. Tiefe ent
 
 _Dasselbe Formular mit echten KoliBri-Komponenten, ohne und mit Fehlermeldungen, hell und dunkel. Umgeschaltet hat allein die Seite, mit `color-scheme: dark`. Ein Fehler steckt nie nur in der Farbe: Icon, Text und roter Feldrahmen tragen ihn gemeinsam._
 
-Dass Farbschemata nur ins Theme gehören, ist im Repository als Regel festgeschrieben. Die Basis-Styles kennen kein Farbschema, das man überschreiben müsste. Ein Token-Layer reicht für beide Modi.
+Dass Farbschemata nur ins Theme gehören, ist im Repository als Regel festgeschrieben. Deshalb reicht ein Token-Layer für beide Modi.
 
 ## Eigene Icons per npm
 
@@ -117,7 +119,7 @@ d-you nutzt die IBM-Carbon-Icons. KoliBri bringt eigene Icons mit, aber keine au
 
 Den Austausch übernimmt ein kleines privates Paket unter dem Theme, `@public-ui/d-you-icons`. Es installiert `@carbon/icons` (Apache-2.0) per npm, wählt 31 der 2.620 SVGs aus und baut daraus eine Icon-Schrift von rund 7 KB.
 
-### Warum keine Übersetzungstabelle nötig ist
+### Feste Icon-Namen
 
 KoliBri-Komponenten fragen ihre Icons über feste Namen an, etwa `kolicon-alert-error` oder `kolicon-chevron-down`. Eine Zuordnungsdatei legt fest, welches Carbon-Icon unter welchem Namen landet.
 
@@ -139,7 +141,7 @@ Browser ignorieren `@font-face` innerhalb eines Shadow Roots. Die Schrift muss d
 
 Nebenbei flogen 12.214 Zeilen übernommener Font-Awesome- und Codicon-Styles aus dem Theme. Die Alert-Icons sehen jetzt in allen Varianten gleich aus.
 
-Die Komponenten fordern Icons über feste Namen an. Wer diese Namen bedient, kann jede Icon-Bibliothek einsetzen. Dank der pnpm-Workspaces im Monorepo war das Hilfspaket in wenigen Minuten angelegt.
+Weil die Komponenten ihre Icons nur über die `kolicon-*`-Namen anfordern, lässt sich jede Icon-Bibliothek einsetzen, die diese Namen bedient. Dank der pnpm-Workspaces im Monorepo war das Hilfspaket in wenigen Minuten angelegt.
 
 ## 409 Screenshots pro Theme
 
@@ -149,7 +151,7 @@ Das neue Theme musste dafür kaum angemeldet werden. Die Review-Skripte finden T
 
 ### Review im Pull Request
 
-Jede Änderung landet auf einer Review-Seite im Pull Request. Dort steht jedes Bild neben seinem Vorgänger. Ein Mensch gibt die Unterschiede frei, bevor sie zur neuen Basis werden.
+Jede Änderung landet auf einer Review-Seite im [Pull Request](https://github.com/public-ui/kolibri/pull/10970). Dort steht jedes Bild neben seinem Vorgänger. Ein Mensch gibt die Unterschiede frei, bevor sie zur neuen Basis werden.
 
 Der wichtigste Befund war ein negativer: In allen sieben anderen Theme-Paketen hat sich kein einziges Bild verändert. Das neue Theme hat nichts außerhalb seines eigenen Ordners berührt.
 
@@ -176,7 +178,7 @@ Beim Alert fiel auf, dass Icon-Schalter dort zu breit waren. Ursache war ein ver
 
 Nach dem Umbau auf flache BEM-Selektoren griff die Regel wieder, und zwar im Alert, im Split-Button und in Tabellen.
 
-Die Komponenten tragen stabile BEM-Klassen wie `kol-button__text`. Ein Theme kann damit jeden Teil gezielt ansprechen, ohne in fremden Code zu greifen, und dank Cascade Layers braucht es dafür kein `!important`.
+Das ging, weil die Komponenten stabile BEM-Klassen wie `kol-button__text` tragen. Über sie spricht ein Theme jeden Teil gezielt an, ohne in fremden Code zu greifen.
 
 ## Die Bilanz in Zahlen
 
@@ -195,8 +197,6 @@ Die Komponenten tragen stabile BEM-Klassen wie `kol-button__text`. Ein Theme kan
 | Veränderte Bilder in anderen Themes               | 0                             |
 
 Die letzten beiden Zeilen sind die wichtigsten. Ein komplettes neues Erscheinungsbild entstand, ohne die Komponenten-Bibliothek oder ein anderes Theme zu berühren.
-
-Weil Struktur und Design getrennt sind, ist ein Theme ein abgeschlossenes Paket, das sich unabhängig bauen und prüfen lässt.
 
 ## Was noch offen ist
 
@@ -222,4 +222,6 @@ Der Weg von d-you lässt sich auf jedes Design-System übertragen. Screenshots r
 6. Die eigene Icon-Bibliothek per npm einbinden und auf die `kolicon-*`-Namen abbilden.
 7. Das Theme mit einer Zeile in die Workflow-Matrix der visuellen Tests aufnehmen und die Screenshots auf der Review-Seite freigeben.
 
-Mit einem KI-Agenten bleibt als Handarbeit vor allem das Zeigen: Screenshots liefern, Abweichungen markieren, Ergebnisse freigeben. Die Regeln gibt das Repository vor. Die `AGENTS.md` von KoliBri beschreibt Schichtenmodell, Farbschemata und BEM-Konventionen so genau, dass Claude sie ohne Rückfragen einhalten konnte.
+Mit einem KI-Agenten bleibt als Handarbeit vor allem das Zeigen: Screenshots liefern, Abweichungen markieren, Ergebnisse freigeben. Die Regeln gibt das Repository vor. Schichtenmodell, Farbschemata und BEM-Konventionen sind dort so genau beschrieben, dass Claude sie ohne Rückfragen einhalten konnte.
+
+Der Quellcode von KoliBri und dem Theme d-you liegt auf GitHub unter [public-ui/kolibri](https://github.com/public-ui/kolibri). Wenn euch das Projekt gefällt, gebt ihm dort gern einen Stern.
