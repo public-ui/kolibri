@@ -1,1 +1,0 @@
-import{l as e,r as t}from"./factory-CkUKGUPZ-CQ_zR56z.js";var n=[0,1,2,3,4,5,6],r=t(`level`,0,t=>e(t),e=>n.includes(e));export{r as n,n as t};

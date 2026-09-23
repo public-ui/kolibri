@@ -1,1 +1,0 @@
-import{f as e,r as t}from"./factory-CkUKGUPZ-CQ_zR56z.js";var n=t(`href`,``,e,e=>typeof e==`string`,{required:!0}),r=t(`href`,``,e,e=>typeof e==`string`);export{r as n,n as t};
