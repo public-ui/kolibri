@@ -399,10 +399,10 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 											if (option.disabled) {
 												return;
 											}
+											event.preventDefault();
 											this.selectOption(option);
-											this.ctaRef.el?.focus();
-											this.toggleListbox(event);
 											this._isOpen = false;
+											this.ctaRef.el?.focus();
 										}}
 										onMouseOver={() => {
 											/* `onClick`, `onFocus` and `onKeyDown` all refuse a disabled option; without the same
@@ -416,17 +416,6 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 											if (!option.disabled) {
 												this._focusedOptionIndex = index;
 												this.focusOption(index);
-											}
-										}}
-										onKeyDown={(e) => {
-											if (option.disabled) {
-												return;
-											}
-											if (e.key === 'Enter' || e.key === 'NumpadEnter') {
-												this.selectOption(option);
-												this.ctaRef.el?.focus();
-												this.toggleListbox(e);
-												e.preventDefault();
 											}
 										}}
 									/>
