@@ -36,8 +36,8 @@ git clone git@github.com:public-ui/kolibri.git
 cd kolibri
 pnpm install
 pnpm -r build
-cd packages/samples/react
-pnpm start
+cd packages/samples/presentation
+pnpm dev
 ```
 
-Run `pnpm start` from this directory to launch the development server.
+This package has no dev server of its own. It is mounted by the presentation app: run `pnpm dev` in `packages/samples/presentation`.

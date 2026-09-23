@@ -15,6 +15,6 @@ This package contains the React based sample application showcasing the KoliBri 
 - `public` – static assets served by webpack.
 - `e2e` – end to end tests for the sample app.
 
-Run `pnpm start` in this directory to launch the development server.
+This package has no dev server of its own. It is mounted by the presentation app: run `pnpm dev` in `packages/samples/presentation`.
 
 > 🧹 **Formatting**: Follow the repo-wide “Format-first rule” in `/AGENTS.md`. Use `pnpm format` or `pnpm --filter @public-ui/sample-react format` before committing—no additional `--write` flags are required.

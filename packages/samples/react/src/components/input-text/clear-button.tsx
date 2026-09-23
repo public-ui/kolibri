@@ -19,6 +19,9 @@ export const InputTextClearButton: FC = () => (
 		<SampleBlock id="search-disabled">
 			<KolInputText _label="Search (disabled)" _type="search" _disabled _value="test" _placeholder="Disabled search" />
 		</SampleBlock>
+		<SampleBlock id="search-read-only">
+			<KolInputText _label="Search (read only)" _type="search" _readOnly _value="test" />
+		</SampleBlock>
 		<SampleBlock id="text-no-clear-button">
 			<KolInputText _label="Text (no clear button)" _type="text" _value="test" _placeholder="Regular text input" />
 		</SampleBlock>

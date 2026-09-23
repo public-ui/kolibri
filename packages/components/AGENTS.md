@@ -2,7 +2,7 @@
 
 This package contains the Stencil based web component library for KoliBri.
 
-Use `pnpm --filter @public-ui/components build` to build the library or `pnpm start` for development.
+Use `pnpm --filter @public-ui/components build` to build the library or `pnpm dev` for development.
 Always run a build before linting so the generated component typings exist for the check.
 
 > **E2E Testing**: You do not need to build before running `pnpm test:e2e`. The test command automatically handles the build in a prestep.
