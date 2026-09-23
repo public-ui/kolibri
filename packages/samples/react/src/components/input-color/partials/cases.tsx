@@ -40,7 +40,7 @@ export const InputColorCases = forwardRef<HTMLKolInputColorElement, InputColorCa
 				<KolInputColor
 					{...props}
 					_msg={{ _type: 'error', _description: ERROR_MSG }}
-					_label="Color with error"
+					_label="Color with error and suggestions"
 					_suggestions="['#000000','#f08080', '#0000ff','#00ff00']"
 					_touched
 				/>
@@ -75,9 +75,6 @@ export const InputColorCases = forwardRef<HTMLKolInputColorElement, InputColorCa
 					_label="With short popover"
 					_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
 				></KolInputColor>
-			</SampleBlock>
-			<SampleBlock {...block('suggestions')}>
-				<KolInputColor {...props} _label="With suggestions" _suggestions={['#000000', '#ffffff', '#ff0000', '#00ff00', '#0000ff']}></KolInputColor>
 			</SampleBlock>
 		</div>
 	);
