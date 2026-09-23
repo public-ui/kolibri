@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import type {
@@ -217,7 +218,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 
 	private _focusedOptionIndex: number = -1;
 
-	private moveFocus(delta: number) {
+	private moveFocus(delta: number, searchStep: number = 1) {
 		if (!this._filteredOptions) {
 			return;
 		}
@@ -242,7 +243,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 				break;
 			}
 
-			newIndex += delta;
+			newIndex += searchStep;
 			iterations++;
 		}
 
@@ -457,7 +458,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 			case 'Up':
 			case 'ArrowUp': {
 				this.blockSuggestionMouseOver = true;
-				handleEvent(true, () => this.moveFocus(-1));
+				handleEvent(true, () => this.moveFocus(-1, -1));
 				break;
 			}
 			case 'Tab':
@@ -495,8 +496,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
-						this._focusedOptionIndex = 0;
-						this.focusOption(this._focusedOptionIndex);
+						this.moveFocus(this._focusedOptionIndex * -1);
 					}
 				});
 				break;
@@ -505,8 +505,8 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
-						this._focusedOptionIndex = this._filteredOptions ? this._filteredOptions.length - 1 : 0;
-						this.focusOption(this._focusedOptionIndex);
+						const stepToEnd = this._filteredOptions ? this._filteredOptions.length - 1 - this._focusedOptionIndex : 0;
+						this.moveFocus(stepToEnd, -1);
 					}
 				});
 				break;
@@ -518,7 +518,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 			}
 			case 'PageDown': {
 				this.blockSuggestionMouseOver = true;
-				handleEvent(undefined, () => this._isOpen && this.moveFocus(10));
+				handleEvent(undefined, () => this._isOpen && this.moveFocus(10, -1));
 				break;
 			}
 		}
