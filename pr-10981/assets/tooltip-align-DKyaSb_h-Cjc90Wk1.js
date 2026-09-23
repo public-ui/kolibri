@@ -1,1 +1,0 @@
-import"./index-DsvpnSC6.js";import{r as e}from"./align-Dm5aJHmk-6VaBzUSf.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
