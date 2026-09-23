@@ -1,0 +1,1 @@
+import{Ct as e}from"./index-ajH_xVPg.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
