@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "14 changed – 0 of 14 approved, review pending",
-	"computedAt": "2026-09-23T13:28:16.064Z",
+	"description": "35 changed – 0 of 35 approved, review pending",
+	"computedAt": "2026-09-23T13:49:34.323Z",
 	"pr": 10973,
-	"head": "590b9ad6ce1c917f46638e714c040dd4634aaeb7",
-	"digest": "sha256:194b13748d1805f6f5e6cb58c8d114f119b2226173e2d9f9009907184f0273a5",
+	"head": "967ded8737cc62068f517c2b80190b1e19701b45",
+	"digest": "sha256:61aa25f4a2be3a6c06c1ee4afe4079d25cc813f8c8efd6b2bb7b7f1fc239897b",
 	"counts": {
-		"changes": 14,
-		"open": 14,
+		"changes": 35,
+		"open": 35,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -66,11 +66,95 @@
 			"state": "open",
 			"notes": []
 		},
+		"unstyled/combobox-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
 		"unstyled/input-color-basic-noColumns--hide-label-suggestions-error": {
 			"state": "open",
 			"notes": []
 		},
 		"unstyled/input-color-basic-noColumns--label-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-date-basic-noColumns--label-datetime-seconds": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-date-basic-noColumns--label-readonly": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-email-basic-noColumns--label-info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-email-basic-noColumns--label-readonly": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-file-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-number-basic-noColumns--label-icons-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-number-basic-noColumns--label-readonly": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-password-basic-noColumns--label-icons-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-password-basic-noColumns--label-readonly": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-range-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-basic-noColumns--info-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-basic-noColumns--readonly-popover": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-clear-button-noColumns--search-read-only": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-readonly-noColumns--info": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-readonly-noColumns--placeholder": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-readonly-noColumns--value": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/select-basic-noColumns--label-multiple-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/single-select-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/textarea-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/textarea-basic-noColumns--label-readonly": {
 			"state": "open",
 			"notes": []
 		}

@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 10973,
-	"head": "590b9ad6ce1c917f46638e714c040dd4634aaeb7",
+	"head": "967ded8737cc62068f517c2b80190b1e19701b45",
 	"repository": "public-ui/kolibri",
-	"runId": 35864647450,
-	"generatedAt": "2026-09-23T13:28:15.402Z",
-	"digest": "sha256:194b13748d1805f6f5e6cb58c8d114f119b2226173e2d9f9009907184f0273a5",
+	"runId": 35867623729,
+	"generatedAt": "2026-09-23T13:49:33.110Z",
+	"digest": "sha256:61aa25f4a2be3a6c06c1ee4afe4079d25cc813f8c8efd6b2bb7b7f1fc239897b",
 	"baseline": {
 		"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2884,
-		"changed": 14,
+		"unchanged": 2863,
+		"changed": 35,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -15291,13 +15291,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 412,
-				"changed": 2,
+				"unchanged": 391,
+				"changed": 23,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:eb19de03ffd3beea563df316da79a72bd08ed00c614397a571b72a77bb96a062",
+			"digest": "sha256:bdb8912b3939b0d3c547ca32869be768540f2d5014e0272120064c36ce65a89d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15577,9 +15577,24 @@
 				},
 				{
 					"name": "combobox-basic-noColumns--label-error",
-					"route": "combobox-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:b40abe78bbf62f5e1bcb79ad5123fdc5c5cacb56a085be46a125af36f56fe909"
+					"route": "combobox/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:b4e440f6dbdc38748d783064d238afe43f26b820570966607229502ac497d044",
+					"diffPixels": 7321,
+					"diffRatio": 0.084359,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							113
+						],
+						"actual": [
+							768,
+							92
+						]
+					},
+					"expected": "unstyled/combobox-basic-noColumns--label-error.expected.png",
+					"actual": "unstyled/combobox-basic-noColumns--label-error.actual.png",
+					"diff": "unstyled/combobox-basic-noColumns--label-error.diff.png"
 				},
 				{
 					"name": "combobox-basic-noColumns--label-hint",
@@ -16118,9 +16133,9 @@
 					"name": "input-color-basic-noColumns--label-info-popover",
 					"route": "input-color/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:2d5bf7107d7f4bd545a149c3c52c6ad9a89213a040e28b666333de24a0acb334",
-					"diffPixels": 18410,
-					"diffRatio": 0.447018,
+					"hash": "sha256:2af7f3ebba83724f5ea2b8f6d8b67e96d785755bbae57912d8fc9d0f84d5316d",
+					"diffPixels": 26,
+					"diffRatio": 0.000829,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -16128,7 +16143,7 @@
 						],
 						"actual": [
 							468,
-							88
+							67
 						]
 					},
 					"expected": "unstyled/input-color-basic-noColumns--label-info-popover.expected.png",
@@ -16197,9 +16212,24 @@
 				},
 				{
 					"name": "input-date-basic-noColumns--label-datetime-seconds",
-					"route": "input-date-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:42ab8b5f5f9163722a44cb2b64f4ab258eb98581506e487f1b2451d1cac11aaa"
+					"route": "input-date/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:b164aaaf7124c2e67412c5bdbf68fd18bf654716e584d20d18e2f309c05c20b8",
+					"diffPixels": 5203,
+					"diffRatio": 0.085519,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							130
+						],
+						"actual": [
+							468,
+							109
+						]
+					},
+					"expected": "unstyled/input-date-basic-noColumns--label-datetime-seconds.expected.png",
+					"actual": "unstyled/input-date-basic-noColumns--label-datetime-seconds.actual.png",
+					"diff": "unstyled/input-date-basic-noColumns--label-datetime-seconds.diff.png"
 				},
 				{
 					"name": "input-date-basic-noColumns--label-disabled",
@@ -16239,9 +16269,24 @@
 				},
 				{
 					"name": "input-date-basic-noColumns--label-readonly",
-					"route": "input-date-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:37823c66c267d890cd60034a1019cafd24c46bfbacdd63f933e1c930f37f3a50"
+					"route": "input-date/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:12809d5bbf727bdc833488c2d5f31aa9c35cc90f55296b4bc547e83f716a0e7c",
+					"diffPixels": 4345,
+					"diffRatio": 0.106715,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							87
+						],
+						"actual": [
+							468,
+							66
+						]
+					},
+					"expected": "unstyled/input-date-basic-noColumns--label-readonly.expected.png",
+					"actual": "unstyled/input-date-basic-noColumns--label-readonly.actual.png",
+					"diff": "unstyled/input-date-basic-noColumns--label-readonly.diff.png"
 				},
 				{
 					"name": "input-date-basic-noColumns--label-short-key",
@@ -16353,9 +16398,24 @@
 				},
 				{
 					"name": "input-email-basic-noColumns--label-info-popover",
-					"route": "input-email-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:a38a32c138ee2e2822249b2169fd9290a8914a462c361d8c5c9192b4711265d8"
+					"route": "input-email/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:1726b9c4b0c233f61b0e92697788f31220881122b42fcec7b5fb5f8d58ff57a7",
+					"diffPixels": 3918,
+					"diffRatio": 0.095134,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							88
+						],
+						"actual": [
+							468,
+							67
+						]
+					},
+					"expected": "unstyled/input-email-basic-noColumns--label-info-popover.expected.png",
+					"actual": "unstyled/input-email-basic-noColumns--label-info-popover.actual.png",
+					"diff": "unstyled/input-email-basic-noColumns--label-info-popover.diff.png"
 				},
 				{
 					"name": "input-email-basic-noColumns--label-msg-default",
@@ -16383,9 +16443,24 @@
 				},
 				{
 					"name": "input-email-basic-noColumns--label-readonly",
-					"route": "input-email-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:7ff15366cd071e7ef187d57aceb4b35d9afa115ab2f0e00644ed0bf76e5bd526"
+					"route": "input-email/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:9646449c6f9ee6b575449c08fb442a9d167a160ee46c54dca44b932f63e9b9aa",
+					"diffPixels": 4445,
+					"diffRatio": 0.109171,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							87
+						],
+						"actual": [
+							468,
+							66
+						]
+					},
+					"expected": "unstyled/input-email-basic-noColumns--label-readonly.expected.png",
+					"actual": "unstyled/input-email-basic-noColumns--label-readonly.actual.png",
+					"diff": "unstyled/input-email-basic-noColumns--label-readonly.diff.png"
 				},
 				{
 					"name": "input-email-basic-noColumns--label-short-key",
@@ -16425,9 +16500,24 @@
 				},
 				{
 					"name": "input-file-basic-noColumns--label-error",
-					"route": "input-file-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:ec7961ab737247627631e3a500fb2b661613333ffb29cd7a7dc668e5a792ace0"
+					"route": "input-file/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:fe2dc8f49fbfbfbf4eef7e6bb35044527898cf6e9a2f1a9ee38f2fca20ea9070",
+					"diffPixels": 1987,
+					"diffRatio": 0.032913,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							129
+						],
+						"actual": [
+							468,
+							108
+						]
+					},
+					"expected": "unstyled/input-file-basic-noColumns--label-error.expected.png",
+					"actual": "unstyled/input-file-basic-noColumns--label-error.actual.png",
+					"diff": "unstyled/input-file-basic-noColumns--label-error.diff.png"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-default",
@@ -16491,9 +16581,24 @@
 				},
 				{
 					"name": "input-number-basic-noColumns--label-icons-error",
-					"route": "input-number-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:93da44d5499c0190d1754b872b1d033c332905badf72becbf8cc762252456017"
+					"route": "input-number/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:c1ebdfeb64422d8710c8c9933ffa4386963e632be9657f8eec37a3f06a74408d",
+					"diffPixels": 3921,
+					"diffRatio": 0.076864,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							109
+						],
+						"actual": [
+							468,
+							88
+						]
+					},
+					"expected": "unstyled/input-number-basic-noColumns--label-icons-error.expected.png",
+					"actual": "unstyled/input-number-basic-noColumns--label-icons-error.actual.png",
+					"diff": "unstyled/input-number-basic-noColumns--label-icons-error.diff.png"
 				},
 				{
 					"name": "input-number-basic-noColumns--label-min-max-step",
@@ -16527,9 +16632,24 @@
 				},
 				{
 					"name": "input-number-basic-noColumns--label-readonly",
-					"route": "input-number-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:d02ac378a7a14f7a673a99870da076c548db6bb0329a831d244aeca61907da9e"
+					"route": "input-number/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:e580243ba2a8e7f96da66da402dc00aef2615165b25d50eb5697e64100adf940",
+					"diffPixels": 4140,
+					"diffRatio": 0.10168,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							87
+						],
+						"actual": [
+							468,
+							66
+						]
+					},
+					"expected": "unstyled/input-number-basic-noColumns--label-readonly.expected.png",
+					"actual": "unstyled/input-number-basic-noColumns--label-readonly.actual.png",
+					"diff": "unstyled/input-number-basic-noColumns--label-readonly.diff.png"
 				},
 				{
 					"name": "input-number-basic-noColumns--label-short-key",
@@ -16575,9 +16695,24 @@
 				},
 				{
 					"name": "input-password-basic-noColumns--label-icons-error",
-					"route": "input-password-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:634c049108caa29e993914a71ec20d252b73ecd1f49e01defe7b34a973a9e0db"
+					"route": "input-password/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:e77b708d7bcf79c872f19fd87ded71aa86aac217a3cf8bde7026432e904a342d",
+					"diffPixels": 4745,
+					"diffRatio": 0.077991,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							130
+						],
+						"actual": [
+							468,
+							109
+						]
+					},
+					"expected": "unstyled/input-password-basic-noColumns--label-icons-error.expected.png",
+					"actual": "unstyled/input-password-basic-noColumns--label-icons-error.actual.png",
+					"diff": "unstyled/input-password-basic-noColumns--label-icons-error.diff.png"
 				},
 				{
 					"name": "input-password-basic-noColumns--label-msg-default",
@@ -16605,9 +16740,24 @@
 				},
 				{
 					"name": "input-password-basic-noColumns--label-readonly",
-					"route": "input-password-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:79809b07868f13d9e2ef4416ca652ec9c640c78b9a44cdbd7cec510d31fbf107"
+					"route": "input-password/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:eb73442223a7bc4889a5fe44a7dea16e61b140ee4a3a4ad024577c71114926aa",
+					"diffPixels": 4034,
+					"diffRatio": 0.099077,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							87
+						],
+						"actual": [
+							468,
+							66
+						]
+					},
+					"expected": "unstyled/input-password-basic-noColumns--label-readonly.expected.png",
+					"actual": "unstyled/input-password-basic-noColumns--label-readonly.actual.png",
+					"diff": "unstyled/input-password-basic-noColumns--label-readonly.diff.png"
 				},
 				{
 					"name": "input-password-basic-noColumns--label-short-key",
@@ -16707,9 +16857,24 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--label-error",
-					"route": "input-range-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:104e62d3a337da4ddbc7acdf4c8c29ca0f8124ee20b5892ebf0a2200a03821ae"
+					"route": "input-range/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:f0756ca01c774b5716c080fef7c1be5f8894a2191e19d531d2c2e0d5919a29f8",
+					"diffPixels": 3891,
+					"diffRatio": 0.063955,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							130
+						],
+						"actual": [
+							468,
+							109
+						]
+					},
+					"expected": "unstyled/input-range-basic-noColumns--label-error.expected.png",
+					"actual": "unstyled/input-range-basic-noColumns--label-error.actual.png",
+					"diff": "unstyled/input-range-basic-noColumns--label-error.diff.png"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-msg-default",
@@ -16815,15 +16980,45 @@
 				},
 				{
 					"name": "input-text-basic-noColumns--info-popover",
-					"route": "input-text-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:a2e790a2153950a8ebaf3a377ade4e26684ff75d7815445817515669e62a3049"
+					"route": "input-text/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:6f2494b4236a7777c7a68f7d0b7024fa5dbe077266818a6ed7038d124105b27f",
+					"diffPixels": 6716,
+					"diffRatio": 0.100515,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							87
+						],
+						"actual": [
+							768,
+							66
+						]
+					},
+					"expected": "unstyled/input-text-basic-noColumns--info-popover.expected.png",
+					"actual": "unstyled/input-text-basic-noColumns--info-popover.actual.png",
+					"diff": "unstyled/input-text-basic-noColumns--info-popover.diff.png"
 				},
 				{
 					"name": "input-text-basic-noColumns--readonly-popover",
-					"route": "input-text-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:5eae363d3f4f34163d42829467c9e109129e9f6e06c0ab92edd67ae76bba61b9"
+					"route": "input-text/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:0e87b456a1ef485818c8e6f80024823940ba1f9e6f955934bd7ac80b8c74af84",
+					"diffPixels": 6883,
+					"diffRatio": 0.103014,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							87
+						],
+						"actual": [
+							768,
+							66
+						]
+					},
+					"expected": "unstyled/input-text-basic-noColumns--readonly-popover.expected.png",
+					"actual": "unstyled/input-text-basic-noColumns--readonly-popover.actual.png",
+					"diff": "unstyled/input-text-basic-noColumns--readonly-popover.diff.png"
 				},
 				{
 					"name": "input-text-basic-noColumns--search",
@@ -16845,9 +17040,24 @@
 				},
 				{
 					"name": "input-text-clear-button-noColumns--search-read-only",
-					"route": "input-text-clear-button-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:50f685856cad761a0f98a0acbd95d6b0e03de99965e7be826808199590daeb9c"
+					"route": "input-text/clear-button?noColumns",
+					"status": "changed",
+					"hash": "sha256:36d83b645bf2d7fb7e9e469e9f8d97788d560dfbf8ef761510801ffa490e693a",
+					"diffPixels": 6531,
+					"diffRatio": 0.098883,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							86
+						],
+						"actual": [
+							768,
+							65
+						]
+					},
+					"expected": "unstyled/input-text-clear-button-noColumns--search-read-only.expected.png",
+					"actual": "unstyled/input-text-clear-button-noColumns--search-read-only.actual.png",
+					"diff": "unstyled/input-text-clear-button-noColumns--search-read-only.diff.png"
 				},
 				{
 					"name": "input-text-clear-button-noColumns--search-value",
@@ -16989,21 +17199,66 @@
 				},
 				{
 					"name": "input-text-readonly-noColumns--info",
-					"route": "input-text-readonly-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:294537c2e96f8fd0c8ad25907f16419f4fe78ea76d1394f3485ad350cce7bc89"
+					"route": "input-text/readonly?noColumns",
+					"status": "changed",
+					"hash": "sha256:962e154eaea9aad3a0a67618214249437a759c9034f31efc9ba656333d5a6fda",
+					"diffPixels": 4969,
+					"diffRatio": 0.099229,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							107
+						],
+						"actual": [
+							468,
+							86
+						]
+					},
+					"expected": "unstyled/input-text-readonly-noColumns--info.expected.png",
+					"actual": "unstyled/input-text-readonly-noColumns--info.actual.png",
+					"diff": "unstyled/input-text-readonly-noColumns--info.diff.png"
 				},
 				{
 					"name": "input-text-readonly-noColumns--placeholder",
-					"route": "input-text-readonly-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:7ad684d1f7547ce551ad50897dc94408c682303e5bbd7f6fe45ce5a1b15ca283"
+					"route": "input-text/readonly?noColumns",
+					"status": "changed",
+					"hash": "sha256:610b84a09c3a3debe6c6576e7b8c5406b4827942e48cf31c7b66d044796cfe32",
+					"diffPixels": 4436,
+					"diffRatio": 0.110217,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							86
+						],
+						"actual": [
+							468,
+							65
+						]
+					},
+					"expected": "unstyled/input-text-readonly-noColumns--placeholder.expected.png",
+					"actual": "unstyled/input-text-readonly-noColumns--placeholder.actual.png",
+					"diff": "unstyled/input-text-readonly-noColumns--placeholder.diff.png"
 				},
 				{
 					"name": "input-text-readonly-noColumns--value",
-					"route": "input-text-readonly-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:ec7929d0a41287d8f5ada67f2dd9a4b1d1c59d1d358aae65cccbf3befd40479d"
+					"route": "input-text/readonly?noColumns",
+					"status": "changed",
+					"hash": "sha256:3866fa343c274db9fa4f0469b347efdcfbf5914c3fd7fe2d4f68b605a6408a4a",
+					"diffPixels": 4627,
+					"diffRatio": 0.114962,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							86
+						],
+						"actual": [
+							468,
+							65
+						]
+					},
+					"expected": "unstyled/input-text-readonly-noColumns--value.expected.png",
+					"actual": "unstyled/input-text-readonly-noColumns--value.actual.png",
+					"diff": "unstyled/input-text-readonly-noColumns--value.diff.png"
 				},
 				{
 					"name": "input-text-smart-button-noColumns--disabled",
@@ -17427,9 +17682,24 @@
 				},
 				{
 					"name": "select-basic-noColumns--label-multiple-error",
-					"route": "select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:304136369516dcb3de90de6b3d4351c1cb573bafa05d703a1345582692e382fb"
+					"route": "select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:1189d6c610c81c45bbf98ea1f44b7b490d7ea675f483cc057915e8b00bcc1628",
+					"diffPixels": 5878,
+					"diffRatio": 0.047217,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							266
+						],
+						"actual": [
+							468,
+							245
+						]
+					},
+					"expected": "unstyled/select-basic-noColumns--label-multiple-error.expected.png",
+					"actual": "unstyled/select-basic-noColumns--label-multiple-error.actual.png",
+					"diff": "unstyled/select-basic-noColumns--label-multiple-error.diff.png"
 				},
 				{
 					"name": "select-basic-noColumns--label-salutation-icons",
@@ -17475,9 +17745,24 @@
 				},
 				{
 					"name": "single-select-basic-noColumns--label-error",
-					"route": "single-select-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:31d4c4e379513b786b65299454d044c5cc90b359116ab48eb0636998b5191d9f"
+					"route": "single-select/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:5cff2506f8b20b7d99b7c3ad9c0f932072b23138864cce8b2cdc8e322f9b5e2e",
+					"diffPixels": 4921,
+					"diffRatio": 0.077316,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							136
+						],
+						"actual": [
+							468,
+							115
+						]
+					},
+					"expected": "unstyled/single-select-basic-noColumns--label-error.expected.png",
+					"actual": "unstyled/single-select-basic-noColumns--label-error.actual.png",
+					"diff": "unstyled/single-select-basic-noColumns--label-error.diff.png"
 				},
 				{
 					"name": "single-select-basic-noColumns--label-hint",
@@ -17703,9 +17988,24 @@
 				},
 				{
 					"name": "textarea-basic-noColumns--label-error",
-					"route": "textarea-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:8aaaa0bb93e9dc702dd367c4a1246511212e72e3e738a810ef6b46fc47938714"
+					"route": "textarea/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:638ac618429345d1f0ad3a51c81554bc5f5b4fc5d0629f25f08e1843a334badd",
+					"diffPixels": 3242,
+					"diffRatio": 0.053287,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							130
+						],
+						"actual": [
+							468,
+							109
+						]
+					},
+					"expected": "unstyled/textarea-basic-noColumns--label-error.expected.png",
+					"actual": "unstyled/textarea-basic-noColumns--label-error.actual.png",
+					"diff": "unstyled/textarea-basic-noColumns--label-error.diff.png"
 				},
 				{
 					"name": "textarea-basic-noColumns--label-msg-default",
@@ -17739,9 +18039,24 @@
 				},
 				{
 					"name": "textarea-basic-noColumns--label-readonly",
-					"route": "textarea-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:ef78e2b1e291d0bdef895653ff80c62d1e8b8f64e23d21181f7c2a7dd5e1abcb"
+					"route": "textarea/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:36767c224884af8a91adfeb2a78b304678efe5133f32ffd53884e574f47586ea",
+					"diffPixels": 2530,
+					"diffRatio": 0.047421,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							114
+						],
+						"actual": [
+							468,
+							93
+						]
+					},
+					"expected": "unstyled/textarea-basic-noColumns--label-readonly.expected.png",
+					"actual": "unstyled/textarea-basic-noColumns--label-readonly.actual.png",
+					"diff": "unstyled/textarea-basic-noColumns--label-readonly.diff.png"
 				},
 				{
 					"name": "textarea-basic-noColumns--label-rows",
