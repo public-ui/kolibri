@@ -292,6 +292,8 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 | 31 | `docker info` schlaegt fehl heisst **Daemon laeuft nicht**, nicht **kein Docker**: im Container-Setup dieser Sessions ist die Engine installiert und laesst sich als root mit `dockerd &` starten (danach `docker info` erneut pruefen). Erst wenn auch das scheitert, gilt Abschnitt 0 | Dialog-Skeleton-Migration | Eine komplette, wertlose Ersatz-Abnahme vermieden — der selbstgebaute Chromium-A/B-Lauf sah die echte Regression nicht |
 | 36 | Wirkt ein Teil eines Fix-Blocks und der andere nicht, ist es fast immer eine fehlende Ahnenstufe: ein Mixin, das INNERHALB des Blocks inkludiert wird, trägt eine Klasse mehr als ein `&__element`-Override daneben. `outline: revert` täuscht dabei, weil es über den Kaskaden-Ursprung gewinnt und nicht über die Spezifität → `#{$root} &` | Collapsible-Migration desy (2026-09-21) | Stunden Spezifitäts-Suche |
 | 37 | Ein geschlossenes natives `<details>` nimmt den ganzen Content-Teilbaum aus dem Layout — mit ihm die dekorierte Box des Wrappers UND die Baseline, aus der ein `inline-block`-Host seine Line-Box bemisst. Zwei getrennte Deltas aus einer Ursache | Collapsible-Migration bwst + desy (2026-09-21) | 16px-Phantomhöhe sofort erklärt |
+| 38 | Baselines liegen nicht im Git: vor dem `--check` einen Base-Worktree (`git worktree add ../kolibri-base origin/develop`) mit derselben Pipeline OHNE `--check` laufen lassen (schreibt die Baselines in den Worktree), dessen `packages/themes/*/snapshots` + `packages/unstyled/snapshots` in den Branch kopieren, dann `--all --check`. Beide Läufe nacheinander im selben Volume, nie parallel | Tree-Skeleton-Migration (2026-09-23) | Ohne Baselines ist `--check` kein Vergleich, sondern ein Neuschreiben |
+| 39 | Proxy-CA ohne Skript-Änderung: das Volume einmal als root vorbereiten (`/work/ca.crt` + `/work/home/.npmrc` mit `cafile=/work/ca.crt`, `chown -R 1001 /work`) — `HOME=/work/home` im Container liest die `.npmrc`, `npm install -g pnpm` und `pnpm install` laufen durch (Variante zu #34) | Tree-Skeleton-Migration (2026-09-23) | Kein ungetrackter Patch am Docker-Skript, der versehentlich mitcommittet wird |
 | 28 | Jest-/Stencil-Snapshot-Serializer sortiert `class`-Attribute alphabetisch — Class-Order im Snapshot ist kein Signal für die echte DOM-Reihenfolge und kein Regressions-Signal | Details-Skeleton-Migration (PR #10884) | Phantom-Class-Order-Bug beim FC-Port sofort erkannt |
 
 **Block B — Wrapper-Umbauten / Button-Migration**
@@ -850,6 +852,31 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
   409 unchanged / 0 changed fuer alle sieben Pakete, Baseline `b08fab9f7c` (develop), Commit
   `0ec6873ec1`. Lokal ohne Docker: Components 998/998, Hydrate-SSR 102/102 (unveraendert),
   `pnpm check:skeleton-selectors` sauber.
+
+### 2026-09-23 — Skeleton-Migration kol-tree + kol-tree-item (zwei `-wc`-Wrapper und `kol-link-wc` abgelöst): alle 6 Pakete, 0 Diffs ab Start
+
+- **Ausgangslage**: `kol-tree`/`kol-tree-item` waren Shadow-Hüllen um die `shadow:false`-Elemente
+  `kol-tree-wc`/`kol-tree-item-wc`; jeder Eintrag renderte seinen Link über `kol-link-wc` mit dem
+  Label im relocierten Expert-Slot. Drei Wrapper fallen weg, `LinkFC` rendert direkt.
+- **Ursachen & Fix-Muster**: keine Theme-Runde nötig. Wieder **Wrapper-Tausch statt Klassen-Merge**
+  (wie kol-form, kol-split-button): jedes Theme greift `.kol-tree-item__link .kol-link` als
+  Descendant und gibt dem Wrapper eine eigene Box (`display: block`, Border, Hover-Hintergrund) —
+  `kol-link-wc` wurde deshalb zu `<span class="kol-tree-item__link">` (unbekanntes Element und `span`
+  sind beide inline, ohne UA-Stile). Die beiden äußeren Wrapper waren inline ohne eigene Regeln und
+  fallen ersatzlos.
+- **Neu gelernt (Früher-gewusst-Test bestanden)**: Den Ist-DOM gegen den **Hydrate-SSR-Snapshot**
+  lesen, nicht gegen den Jest-Snapshot — der Jest-Mock relociert keine Slots von
+  `shadow:false`-Elementen und zeigt den Expert-Inhalt als Geschwister vor dem Link statt darin
+  (siehe migrate-to-skeleton, Fallstrick 14). Mit dem SSR-Stand als Soll war der neue DOM bis auf die
+  Wrapper byte-gleich, und das Pixel-Gate bestätigte es ohne eine einzige Iteration.
+- **Theme-Spezifika**: keine.
+- **Fix-Commit(s)**: `ebacfe90` (Migration, keine Fixes nötig).
+- **Evidenz**: Baselines per Base-Worktree `46c2d093` (develop) erzeugt (je 414 PNGs), dann
+  `node scripts/snapshots-docker.mjs --all --check` (1 Worker) → bwst, default, desy, ecl, kern,
+  unstyled je 297 passed, 0 failed, Exit 0. Branch-Stand im Volume verifiziert (`kol-tree-item-wc`
+  0× im gebauten `dist`, Branch-only-Modul `open-items-cache` in `kol-tree.js`, `dist` während des
+  Laufs gebaut). Components 1024/1024, Hydrate-SSR 102/102, Tree-e2e 11/11 (neue Interaktionstests
+  auch gegen den Vorgänger grün), `pnpm check:skeleton-selectors` sauber.
 
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 
