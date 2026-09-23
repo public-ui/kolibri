@@ -33,7 +33,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolSuggestionsFc from '../../functional-components/Suggestions';
-import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputRangeController } from './controller';
@@ -187,11 +187,11 @@ export class KolInputRange implements ClickableElement, FocusableElement, InputR
 		return {
 			...this.getGenericInputProps(),
 			name: this.state._name ? `${this.state._name}-range` : undefined,
-			list: this.hasSuggestions ? createRelatedUniqueId(this.state._id, 'list') : undefined,
 			type: 'range',
 			tabIndex: -1,
 			id: undefined,
 			'aria-hidden': 'true',
+			accessKey: undefined,
 			ref: this.setInputRangeRef,
 		};
 	}
