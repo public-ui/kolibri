@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 10973,
-	"head": "c1afdb0691569c63d7ce13a38c9db35f7ca8ec57",
+	"head": "1c1fe1374808522cdf8fb18b2960fcada74282a6",
 	"repository": "public-ui/kolibri",
-	"runId": 35822156145,
-	"generatedAt": "2026-09-23T05:45:00.453Z",
-	"digest": "sha256:d25fd481f0cf6a737788db3bbc60004e250e4604206a10ee50eb7240b24521f9",
+	"runId": 35839296570,
+	"generatedAt": "2026-09-23T09:09:18.715Z",
+	"digest": "sha256:c481a7302cdcee08adcf3f9cc1412a28d5651a280f8d16f078c095db0ac68bc1",
 	"baseline": {
-		"sha": "8ea1a169d1678ab63e063522eda8e3baede28f76",
+		"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -17,9 +17,9 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2856,
-		"changed": 7,
-		"added": 7,
+		"unchanged": 2849,
+		"changed": 14,
+		"added": 0,
 		"removed": 0,
 		"error": 0
 	},
@@ -30,12 +30,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "8ea1a169d1678ab63e063522eda8e3baede28f76",
+					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
 					"ref": "develop",
-					"runId": 35809457796,
+					"runId": 35837526669,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T02:18:55.192Z",
+					"createdAt": "2026-09-23T08:38:05.497Z",
 					"digest": "sha256:01183dfd73fdf3a2f4d5bc5a290e6e0cf767dc186e97abfce80727f1de1fc33b",
 					"fallback": null,
 					"distance": 0,
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 1,
-				"added": 1,
+				"unchanged": 407,
+				"changed": 2,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:58c537ff2be52c51de0e04809ea640f957f3fd985e6c183149d7c0ff905182e7",
+			"digest": "sha256:425f92650d4aded97049195b229fe8ae38421d05930ee7a466729b8eeabc75eb",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -832,17 +832,25 @@
 					"hash": "sha256:8eb24a31155229eec1bc2ada9bea03e16ff3e2087612a3a4762a2c3e2861e10a"
 				},
 				{
-					"name": "input-color-basic-noColumn-fd9e7-label-suggestions-error",
-					"route": "input-color/basic?noColumns",
-					"status": "added",
-					"hash": "sha256:f1b188bae789a3409ebd33dfabc7cdef5f6d2c14ae5d09001d68d25f6bbfba2f",
-					"actual": "test-tag-name-transformer/input-color-basic-noColumn-fd9e7-label-suggestions-error.actual.png"
-				},
-				{
 					"name": "input-color-basic-noColumns--hide-label-suggestions-error",
-					"route": "input-color-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:9c4deffb44126acb0fbe11d1e5e2383fa556ab9a761be304a7b3b3a650a4c8c3"
+					"route": "input-color/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:f1b188bae789a3409ebd33dfabc7cdef5f6d2c14ae5d09001d68d25f6bbfba2f",
+					"diffPixels": 1171,
+					"diffRatio": 0.035745,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							69
+						],
+						"actual": [
+							468,
+							70
+						]
+					},
+					"expected": "test-tag-name-transformer/input-color-basic-noColumns--hide-label-suggestions-error.expected.png",
+					"actual": "test-tag-name-transformer/input-color-basic-noColumns--hide-label-suggestions-error.actual.png",
+					"diff": "test-tag-name-transformer/input-color-basic-noColumns--hide-label-suggestions-error.diff.png"
 				},
 				{
 					"name": "input-color-basic-noColumns--label-access-key",
@@ -2528,13 +2536,7 @@
 					"hash": "sha256:172f9ad75f210a1388bff2d544c91d785d381a8753e4cb35567e7ef7ec0478e9"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for input-color/basic?noColumns",
-					"route": "input-color/basic?noColumns",
-					"message": "Error: expect(locator).toHaveScreenshot(expected) failed"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -2543,12 +2545,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "8ea1a169d1678ab63e063522eda8e3baede28f76",
+					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
 					"ref": "develop",
-					"runId": 35809457796,
+					"runId": 35837526669,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T02:19:55.284Z",
+					"createdAt": "2026-09-23T08:37:50.909Z",
 					"digest": "sha256:40ecef28a789cfe0be6f6523a33d86bea98da99b8c41ac85af1e53bd5500b1a1",
 					"fallback": null,
 					"distance": 0,
@@ -2556,13 +2558,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 1,
-				"added": 1,
+				"unchanged": 407,
+				"changed": 2,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:787d4538b572e5ae2dab527736695f6376303fc0ebf553ef524d11ab22c79495",
+			"digest": "sha256:d64202c8f835bcff192a75fdd2d94d41430f70500d1a0a4038a92ce2e7123467",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -3345,17 +3347,25 @@
 					"hash": "sha256:d76cd6a6b1d6e8b83c2d6d910950864560c46176d8e9704cab70ea0666e215e3"
 				},
 				{
-					"name": "input-color-basic-noColumn-fd9e7-label-suggestions-error",
-					"route": "input-color/basic?noColumns",
-					"status": "added",
-					"hash": "sha256:02d7d53b5fe16834b6bc7c2cb8dcb877f7091ce5f6306c6bf85928e152efc55f",
-					"actual": "theme-bwst/input-color-basic-noColumn-fd9e7-label-suggestions-error.actual.png"
-				},
-				{
 					"name": "input-color-basic-noColumns--hide-label-suggestions-error",
-					"route": "input-color-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:0c1150498e999e550d27445616b8b649a4a7df3e7d098c71412039e8ed06c2e1"
+					"route": "input-color/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:02d7d53b5fe16834b6bc7c2cb8dcb877f7091ce5f6306c6bf85928e152efc55f",
+					"diffPixels": 1153,
+					"diffRatio": 0.035195,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							69
+						],
+						"actual": [
+							468,
+							70
+						]
+					},
+					"expected": "theme-bwst/input-color-basic-noColumns--hide-label-suggestions-error.expected.png",
+					"actual": "theme-bwst/input-color-basic-noColumns--hide-label-suggestions-error.actual.png",
+					"diff": "theme-bwst/input-color-basic-noColumns--hide-label-suggestions-error.diff.png"
 				},
 				{
 					"name": "input-color-basic-noColumns--label-access-key",
@@ -5041,13 +5051,7 @@
 					"hash": "sha256:79f3d21b2ff48017667486044906ad51b05922d76b314c0e22190bb28bd03caf"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for input-color/basic?noColumns",
-					"route": "input-color/basic?noColumns",
-					"message": "Error: expect(locator).toHaveScreenshot(expected) failed"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -5056,12 +5060,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "8ea1a169d1678ab63e063522eda8e3baede28f76",
+					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
 					"ref": "develop",
-					"runId": 35809457796,
+					"runId": 35837526669,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T02:18:55.192Z",
+					"createdAt": "2026-09-23T08:38:05.497Z",
 					"digest": "sha256:01183dfd73fdf3a2f4d5bc5a290e6e0cf767dc186e97abfce80727f1de1fc33b",
 					"fallback": null,
 					"distance": 0,
@@ -5069,13 +5073,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 1,
-				"added": 1,
+				"unchanged": 407,
+				"changed": 2,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:58c537ff2be52c51de0e04809ea640f957f3fd985e6c183149d7c0ff905182e7",
+			"digest": "sha256:425f92650d4aded97049195b229fe8ae38421d05930ee7a466729b8eeabc75eb",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5858,17 +5862,25 @@
 					"hash": "sha256:8eb24a31155229eec1bc2ada9bea03e16ff3e2087612a3a4762a2c3e2861e10a"
 				},
 				{
-					"name": "input-color-basic-noColumn-fd9e7-label-suggestions-error",
-					"route": "input-color/basic?noColumns",
-					"status": "added",
-					"hash": "sha256:f1b188bae789a3409ebd33dfabc7cdef5f6d2c14ae5d09001d68d25f6bbfba2f",
-					"actual": "theme-default/input-color-basic-noColumn-fd9e7-label-suggestions-error.actual.png"
-				},
-				{
 					"name": "input-color-basic-noColumns--hide-label-suggestions-error",
-					"route": "input-color-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:9c4deffb44126acb0fbe11d1e5e2383fa556ab9a761be304a7b3b3a650a4c8c3"
+					"route": "input-color/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:f1b188bae789a3409ebd33dfabc7cdef5f6d2c14ae5d09001d68d25f6bbfba2f",
+					"diffPixels": 1171,
+					"diffRatio": 0.035745,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							69
+						],
+						"actual": [
+							468,
+							70
+						]
+					},
+					"expected": "theme-default/input-color-basic-noColumns--hide-label-suggestions-error.expected.png",
+					"actual": "theme-default/input-color-basic-noColumns--hide-label-suggestions-error.actual.png",
+					"diff": "theme-default/input-color-basic-noColumns--hide-label-suggestions-error.diff.png"
 				},
 				{
 					"name": "input-color-basic-noColumns--label-access-key",
@@ -7554,13 +7566,7 @@
 					"hash": "sha256:172f9ad75f210a1388bff2d544c91d785d381a8753e4cb35567e7ef7ec0478e9"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for input-color/basic?noColumns",
-					"route": "input-color/basic?noColumns",
-					"message": "Error: expect(locator).toHaveScreenshot(expected) failed"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -7569,12 +7575,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "8ea1a169d1678ab63e063522eda8e3baede28f76",
+					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
 					"ref": "develop",
-					"runId": 35809457796,
+					"runId": 35837526669,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T02:19:38.264Z",
+					"createdAt": "2026-09-23T08:37:01.159Z",
 					"digest": "sha256:09475be628c62c2a5a2675a2b520b1930068ab529c1d39ba5eaa2d714e57a906",
 					"fallback": null,
 					"distance": 0,
@@ -7582,13 +7588,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 1,
-				"added": 1,
+				"unchanged": 407,
+				"changed": 2,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:b2d71fbef0dfe74908e51afd55954baf68386336b2f26614278b1ca73bc7a2a8",
+			"digest": "sha256:87f1a4f8215591aaec066c48f6c9ec258b46f998cbda86e9448f7d60f1783d66",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -8371,17 +8377,15 @@
 					"hash": "sha256:3ecb60dc747ca86ac37cd4bf60f2d0e741c893e9e65dc84fd047f60bd8017f23"
 				},
 				{
-					"name": "input-color-basic-noColumn-fd9e7-label-suggestions-error",
-					"route": "input-color/basic?noColumns",
-					"status": "added",
-					"hash": "sha256:553b935e3060e983daeda4aa256e4e06de27e1f71adf8abee4a4085ed6b268a3",
-					"actual": "theme-desy/input-color-basic-noColumn-fd9e7-label-suggestions-error.actual.png"
-				},
-				{
 					"name": "input-color-basic-noColumns--hide-label-suggestions-error",
-					"route": "input-color-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:7340e76b0e54e73aaab20551aa214750700cbf7d237e33260790810addac5e25"
+					"route": "input-color/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:553b935e3060e983daeda4aa256e4e06de27e1f71adf8abee4a4085ed6b268a3",
+					"diffPixels": 451,
+					"diffRatio": 0.015057,
+					"expected": "theme-desy/input-color-basic-noColumns--hide-label-suggestions-error.expected.png",
+					"actual": "theme-desy/input-color-basic-noColumns--hide-label-suggestions-error.actual.png",
+					"diff": "theme-desy/input-color-basic-noColumns--hide-label-suggestions-error.diff.png"
 				},
 				{
 					"name": "input-color-basic-noColumns--label-access-key",
@@ -10057,13 +10061,7 @@
 					"hash": "sha256:fba6d304fea25d4db8a726c33fdc69bf9c743319f6c6d07246770cc19f255ed2"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for input-color/basic?noColumns",
-					"route": "input-color/basic?noColumns",
-					"message": "Error: expect(locator).toHaveScreenshot(expected) failed"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -10072,12 +10070,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "8ea1a169d1678ab63e063522eda8e3baede28f76",
+					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
 					"ref": "develop",
-					"runId": 35809457796,
+					"runId": 35837526669,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T02:19:21.683Z",
+					"createdAt": "2026-09-23T08:36:34.545Z",
 					"digest": "sha256:92193952e1be7f78efa9a775c49286b29a8d29e2ede5306f334bf3a31295b2b9",
 					"fallback": null,
 					"distance": 0,
@@ -10085,13 +10083,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 1,
-				"added": 1,
+				"unchanged": 407,
+				"changed": 2,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:99113f3560640df44d6f21b50f14dd5fa3082aa00c38c6a2cf493879ddf3ca61",
+			"digest": "sha256:864e86e90b0e17d51cf0c9dd2539ce241121b2cfe596c0a600106034e0d1fbf0",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10874,17 +10872,23 @@
 					"hash": "sha256:fd23375ccf84a0323e6f6c47fd00500c59ec7c7f50946528f694cffa4438f90b"
 				},
 				{
-					"name": "input-color-basic-noColumn-fd9e7-label-suggestions-error",
-					"route": "input-color/basic?noColumns",
-					"status": "added",
-					"hash": "sha256:1cb68637fbb71a4618394275ca06aef8e11f78d6da05787ddf24281173a41d6d",
-					"actual": "theme-ecl/input-color-basic-noColumn-fd9e7-label-suggestions-error.actual.png"
-				},
-				{
 					"name": "input-color-basic-noColumns--hide-label-suggestions-error",
-					"route": "input-color-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:322bd5392bca695b4125541767c88ba67c343b7ebf60c8d1c1d122a5b3f776a6"
+					"route": "input-color/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:1cb68637fbb71a4618394275ca06aef8e11f78d6da05787ddf24281173a41d6d",
+					"sizeMismatch": {
+						"expected": [
+							468,
+							72
+						],
+						"actual": [
+							468,
+							73
+						]
+					},
+					"expected": "theme-ecl/input-color-basic-noColumns--hide-label-suggestions-error.expected.png",
+					"actual": "theme-ecl/input-color-basic-noColumns--hide-label-suggestions-error.actual.png",
+					"diff": "theme-ecl/input-color-basic-noColumns--hide-label-suggestions-error.diff.png"
 				},
 				{
 					"name": "input-color-basic-noColumns--label-access-key",
@@ -12570,13 +12574,7 @@
 					"hash": "sha256:139fd89a7de8876b67ee55b888516e5d0827f5864675e53fac57228d450fc4b1"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for input-color/basic?noColumns",
-					"route": "input-color/basic?noColumns",
-					"message": "Error: expect(locator).toHaveScreenshot(expected) failed"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -12585,12 +12583,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "8ea1a169d1678ab63e063522eda8e3baede28f76",
+					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
 					"ref": "develop",
-					"runId": 35809457796,
+					"runId": 35837526669,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T02:18:39.589Z",
+					"createdAt": "2026-09-23T08:35:58.306Z",
 					"digest": "sha256:bbeceddc416db74402abbece034e13eacf2fe3b1738df13d9cd31a2faf59c31b",
 					"fallback": null,
 					"distance": 0,
@@ -12598,13 +12596,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 1,
-				"added": 1,
+				"unchanged": 407,
+				"changed": 2,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a6c3ea52fba0fa170d0ca02b81a7ea400a0c0e8886baa87bc9e40fd19e074d9d",
+			"digest": "sha256:8009709382cd4a8adc0c26ec65b21acd66a342725066b67a05cec842cd8a3edc",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13387,17 +13385,25 @@
 					"hash": "sha256:98fc63e1605bc8517c4fa3fa225553c91b4db2db35d6fd80bd79c6948b821643"
 				},
 				{
-					"name": "input-color-basic-noColumn-fd9e7-label-suggestions-error",
-					"route": "input-color/basic?noColumns",
-					"status": "added",
-					"hash": "sha256:4d162592244d56c1d2f85b097f7ff06cdc277f86a960eef54cca5e4c1c740603",
-					"actual": "theme-kern/input-color-basic-noColumn-fd9e7-label-suggestions-error.actual.png"
-				},
-				{
 					"name": "input-color-basic-noColumns--hide-label-suggestions-error",
-					"route": "input-color-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:a03cc4315ad9f6543974f47b2e16ea0befaec19331496d75d5931da317c82110"
+					"route": "input-color/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:4d162592244d56c1d2f85b097f7ff06cdc277f86a960eef54cca5e4c1c740603",
+					"diffPixels": 912,
+					"diffRatio": 0.022926,
+					"sizeMismatch": {
+						"expected": [
+							468,
+							84
+						],
+						"actual": [
+							468,
+							85
+						]
+					},
+					"expected": "theme-kern/input-color-basic-noColumns--hide-label-suggestions-error.expected.png",
+					"actual": "theme-kern/input-color-basic-noColumns--hide-label-suggestions-error.actual.png",
+					"diff": "theme-kern/input-color-basic-noColumns--hide-label-suggestions-error.diff.png"
 				},
 				{
 					"name": "input-color-basic-noColumns--label-access-key",
@@ -15083,13 +15089,7 @@
 					"hash": "sha256:d9945a845d56ae3c13b8bd7e9805c581e56573a31c65f8fc1656e40f60366206"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for input-color/basic?noColumns",
-					"route": "input-color/basic?noColumns",
-					"message": "Error: expect(locator).toHaveScreenshot(expected) failed"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -15098,12 +15098,12 @@
 			"baseline": {
 				"files": 409,
 				"meta": {
-					"sha": "8ea1a169d1678ab63e063522eda8e3baede28f76",
+					"sha": "22dc971b9c09d23f5daaa5bc8fe47ac8a8e23f19",
 					"ref": "develop",
-					"runId": 35809457796,
+					"runId": 35837526669,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T02:19:15.343Z",
+					"createdAt": "2026-09-23T08:36:15.638Z",
 					"digest": "sha256:1edf7748f43327e3ea4d204ce11680d50955b325ce526433a4eebb24792e389a",
 					"fallback": null,
 					"distance": 0,
@@ -15111,13 +15111,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 408,
-				"changed": 1,
-				"added": 1,
+				"unchanged": 407,
+				"changed": 2,
+				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:e29a07b303d7c89b2e61398bb6b11c11ec6c08cd10a46126d7151d1338b08ba2",
+			"digest": "sha256:a610b23a607873d3dac06760f656eb4a5cd0156de236ee1ea25786393e7b89e9",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15900,17 +15900,15 @@
 					"hash": "sha256:c871f6f2fdc7c867d2ea7ea9a4c12ac16f9bbb9bc807068989e5694c6a2f37c6"
 				},
 				{
-					"name": "input-color-basic-noColumn-fd9e7-label-suggestions-error",
-					"route": "input-color/basic?noColumns",
-					"status": "added",
-					"hash": "sha256:6f0afa48a338fe3d0876e3b51e38f32247b44dec3157774e0e0a3282383583b1",
-					"actual": "unstyled/input-color-basic-noColumn-fd9e7-label-suggestions-error.actual.png"
-				},
-				{
 					"name": "input-color-basic-noColumns--hide-label-suggestions-error",
-					"route": "input-color-basic-noColumns",
-					"status": "unchanged",
-					"hash": "sha256:3a409f2c63a58eefd3351404513533d9e3a97440b7e0a01e36dd22e9a37ef636"
+					"route": "input-color/basic?noColumns",
+					"status": "changed",
+					"hash": "sha256:6f0afa48a338fe3d0876e3b51e38f32247b44dec3157774e0e0a3282383583b1",
+					"diffPixels": 787,
+					"diffRatio": 0.025479,
+					"expected": "unstyled/input-color-basic-noColumns--hide-label-suggestions-error.expected.png",
+					"actual": "unstyled/input-color-basic-noColumns--hide-label-suggestions-error.actual.png",
+					"diff": "unstyled/input-color-basic-noColumns--hide-label-suggestions-error.diff.png"
 				},
 				{
 					"name": "input-color-basic-noColumns--label-access-key",
@@ -17596,13 +17594,7 @@
 					"hash": "sha256:f5461b699caccf4fed8ec816929b6932a3df770dedcb2515f5069ca73fdbfc9a"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for input-color/basic?noColumns",
-					"route": "input-color/basic?noColumns",
-					"message": "Error: expect(locator).toHaveScreenshot(expected) failed"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		}
 	]

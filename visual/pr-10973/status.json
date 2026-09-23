@@ -1,92 +1,78 @@
 {
 	"schema": 1,
-	"state": "failure",
-	"description": "7 route(s) failed before the screenshots could be compared",
-	"computedAt": "2026-09-23T06:09:41.793Z",
+	"state": "pending",
+	"description": "14 changed – 0 of 14 approved, review pending",
+	"computedAt": "2026-09-23T09:09:19.287Z",
 	"pr": 10973,
-	"head": "c1afdb0691569c63d7ce13a38c9db35f7ca8ec57",
-	"digest": "sha256:d25fd481f0cf6a737788db3bbc60004e250e4604206a10ee50eb7240b24521f9",
+	"head": "1c1fe1374808522cdf8fb18b2960fcada74282a6",
+	"digest": "sha256:c481a7302cdcee08adcf3f9cc1412a28d5651a280f8d16f078c095db0ac68bc1",
 	"counts": {
 		"changes": 14,
-		"open": 0,
-		"approved": 14,
+		"open": 14,
+		"approved": 0,
 		"rejected": 0,
-		"routeErrors": 7,
+		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [
 		"BF150"
 	],
 	"items": {
-		"test-tag-name-transformer/input-color-basic-noColumn-fd9e7-label-suggestions-error": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+		"test-tag-name-transformer/input-color-basic-noColumns--hide-label-suggestions-error": {
+			"state": "open",
+			"notes": []
 		},
 		"test-tag-name-transformer/input-color-basic-noColumns--label-info-popover": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
-		"theme-bwst/input-color-basic-noColumn-fd9e7-label-suggestions-error": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+		"theme-bwst/input-color-basic-noColumns--hide-label-suggestions-error": {
+			"state": "open",
+			"notes": []
 		},
 		"theme-bwst/input-color-basic-noColumns--label-info-popover": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
-		"theme-default/input-color-basic-noColumn-fd9e7-label-suggestions-error": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+		"theme-default/input-color-basic-noColumns--hide-label-suggestions-error": {
+			"state": "open",
+			"notes": []
 		},
 		"theme-default/input-color-basic-noColumns--label-info-popover": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
-		"theme-desy/input-color-basic-noColumn-fd9e7-label-suggestions-error": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+		"theme-desy/input-color-basic-noColumns--hide-label-suggestions-error": {
+			"state": "open",
+			"notes": []
 		},
 		"theme-desy/input-color-basic-noColumns--label-info-popover": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
-		"theme-ecl/input-color-basic-noColumn-fd9e7-label-suggestions-error": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+		"theme-ecl/input-color-basic-noColumns--hide-label-suggestions-error": {
+			"state": "open",
+			"notes": []
 		},
 		"theme-ecl/input-color-basic-noColumns--label-info-popover": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
-		"theme-kern/input-color-basic-noColumn-fd9e7-label-suggestions-error": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+		"theme-kern/input-color-basic-noColumns--hide-label-suggestions-error": {
+			"state": "open",
+			"notes": []
 		},
 		"theme-kern/input-color-basic-noColumns--label-info-popover": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		},
-		"unstyled/input-color-basic-noColumn-fd9e7-label-suggestions-error": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+		"unstyled/input-color-basic-noColumns--hide-label-suggestions-error": {
+			"state": "open",
+			"notes": []
 		},
 		"unstyled/input-color-basic-noColumns--label-info-popover": {
-			"state": "approved",
-			"notes": [],
-			"by": "BF150"
+			"state": "open",
+			"notes": []
 		}
 	}
 }
