@@ -58,6 +58,12 @@ $error: #b3261e;
 $error-container: #f9dedc;
 $error-outline: #852221;
 
+/* Text and icon on the strong fills (STYLEGUIDE.md §1.5): dark on the green and yellow, white on
+   the red. */
+$on-success: $secondary-10;
+$on-warning: $secondary-10;
+$on-error: #ffffff;
+
 /*
  * Dark palette — DERIVED, not designed.
  *

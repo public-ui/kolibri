@@ -144,11 +144,11 @@ Each feedback type ships in two weights, so a message stays readable on light an
 | Variant         | Background          | Border            | Text / icon                    |
 | --------------- | ------------------- | ----------------- | ------------------------------ |
 | Success, subtle | `success-container` | `success-outline` | `on-error-container` `#1D1D1F` |
-| Success, strong | `success` `#96F5AF` | –                 | `#1D1D1F`                      |
+| Success, strong | `success` `#96F5AF` | `success-outline` | `#1D1D1F`                      |
 | Warning, subtle | `warning-container` | `warning-outline` | `#1D1D1F`                      |
-| Warning, strong | `warning` `#FEDF43` | –                 | `#1D1D1F`                      |
+| Warning, strong | `warning` `#FEDF43` | `warning-outline` | `#1D1D1F`                      |
 | Error, subtle   | `error-container`   | `error-outline`   | `#1D1D1F`                      |
-| Error, strong   | `error` `#B3261E`   | –                 | `#FFFFFF`                      |
+| Error, strong   | `error` `#B3261E`   | `error-outline`   | `#FFFFFF`                      |
 
 The subtle variants use a filled status icon in the outline color; the strong variants use the
 outlined icon shape. The error icon is a triangle (Carbon `warning--alt--filled` /

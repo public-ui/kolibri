@@ -4,6 +4,13 @@
 @use './palette' as *;
 @use './to-rem' as *;
 
+/* The strong weight of each feedback type: color token, fill, border, and text / icon color. */
+$kol-alert-strong-weights: (
+	error danger $error $error-outline $on-error,
+	success success $success $success-outline $on-success,
+	warning warning $warning $warning-outline $on-warning
+);
+
 @mixin kol-alert {
 	display: block;
 	width: 100%;
@@ -12,7 +19,7 @@
 @mixin kol-input-error-with-kol-alert-error($color: null) {
 	/* On a dark page the error message is filled with the strong error color (see
 	   `kol-alert-theme`), where only white clears 4.5:1. */
-	color: light-dark(var($color), #ffffff);
+	color: light-dark(var($color), #{$on-error});
 
 	font-weight: 700;
 }
@@ -106,7 +113,7 @@
 
 	/*
 	 * On a dark page a message takes the strong weight (STYLEGUIDE.md §1.5): the type's own color as
-	 * the fill, the border in the same color, text and icon in the matching on-color — and the
+	 * the fill, its outline color as the border, text and icon in the matching on-color — and the
 	 * outlined icon shape instead of the filled one. Info and the neutral note have no strong weight
 	 * in the design system and keep the soft one.
 	 *
@@ -114,12 +121,12 @@
 	 * filled one in `::before` (from the `kolicon-*` class) and the outlined twin in `::after`,
 	 * stacked in one grid cell, and each scheme makes the other one transparent.
 	 */
-	@each $type, $token, $strong, $on-strong in (error danger $error #ffffff, success success $success $secondary-10, warning warning $warning $secondary-10) {
+	@each $type, $token, $strong, $outline, $on-strong in $kol-alert-strong-weights {
 		.kol-alert--variant-msg.kol-alert--type-#{$type} {
 			--alert-container-color: light-dark(var(--color-#{$token}-container), #{$strong});
 
 			color: light-dark(var(--color-text), #{$on-strong});
-			border-color: light-dark(var(--alert-accent-color), #{$strong});
+			border-color: light-dark(var(--alert-accent-color), #{$outline});
 
 			.kol-alert__heading {
 				color: light-dark(var(--color-text), #{$on-strong});
