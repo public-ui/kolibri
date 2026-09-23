@@ -1,0 +1,28 @@
+@use '../mixins/alert' as *;
+@use '../mixins/typography' as *;
+@use '../mixins/link' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-link('kol-link');
+	@include kol-alert-theme;
+
+	.kol-form {
+		&__link {
+			display: inline-block;
+		}
+
+		/*
+		 * The mandatory-fields line is instructional microcopy, not quoted or disclosed content, so
+		 * it carries no accent rail: a coloured bar beside it adds emphasis the sentence does not
+		 * need and marks nothing the reader can act on. `indented-text` stays for `kol-details`,
+		 * where the rail does mark a block of content as subordinate.
+		 */
+		&__mandatory-fields-hint {
+			@include kol-typography-hint;
+
+			color: var(--color-subtle);
+		}
+	}
+}

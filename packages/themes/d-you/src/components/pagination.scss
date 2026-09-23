@@ -1,0 +1,7 @@
+@use '../mixins/pagination-mixin' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-pagination-styles;
+}

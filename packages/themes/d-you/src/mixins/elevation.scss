@@ -1,0 +1,51 @@
+@use './to-rem' as *;
+
+/*
+ * Elevation.
+ *
+ * The design system knows exactly two elevation shadows, both cast with `#1d1d1e` at 20 %
+ * (`--color-shadow`), and they differ only in blur (STYLEGUIDE.md §4.2):
+ *
+ *   shadow/low   0 2 8   compact interactive elements, subtle cues, scroll hints
+ *   shadow/high  0 2 16  dialogs, modals, navigation menus above the content
+ *
+ * They are mixins rather than custom properties because a `box-shadow` is a geometry, not a value
+ * the consumer is meant to swap: the colour is already overridable through `--color-shadow`.
+ *
+ * In dark mode `--color-shadow` resolves to `transparent`. "A lighter surface sits higher" is the
+ * rule the palette follows there, and the surface scale (`--color-surface` < `--color-light` <
+ * `--color-overlay`) carries the depth on its own; a blurred shadow on top of it only softens the
+ * boundary it is supposed to draw. `kol-elevation-outline` below replaces it with a hard edge.
+ */
+@mixin kol-shadow-low {
+	box-shadow: 0 to-rem(2) to-rem(8) var(--color-shadow);
+}
+
+@mixin kol-shadow-high {
+	box-shadow: 0 to-rem(2) to-rem(16) var(--color-shadow);
+}
+
+/*
+ * The boundary of a panel — card, dialog, accordion — rather than an elevation shadow.
+ *
+ * `light-dark()` is a color function and cannot switch a `box-shadow` geometry, so both branches are
+ * stated at once and switched by their colors: `--color-shadow-contrast` is transparent in dark
+ * mode, `--color-edge` is transparent in light mode. Neither branch moves a pixel in the other.
+ */
+@mixin kol-elevation-outline {
+	box-shadow:
+		0 0 4px var(--color-shadow-contrast),
+		0 0 0 var(--border-width) var(--color-edge);
+}
+
+/*
+ * The same boundary for a surface that floats above the page — a dialog or a drawer. It carries
+ * shadow/high instead of the panel outline, because that is the level the design system assigns to
+ * "elevated surfaces such as dialogs, modals and navigation menus". The edge still has to ride in
+ * the same declaration: a second `box-shadow` rule would replace this one rather than add to it.
+ */
+@mixin kol-elevation-outline-floating {
+	box-shadow:
+		0 to-rem(2) to-rem(16) var(--color-shadow),
+		0 0 0 var(--border-width) var(--color-edge);
+}

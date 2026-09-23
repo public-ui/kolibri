@@ -1,0 +1,59 @@
+@use '../@shared/input-core' as *;
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	.kol-input-container {
+		padding: 0;
+	}
+
+	.kol-input-range {
+		&__inputs-wrapper {
+			height: 100%;
+			padding: 0 to-rem(2);
+			gap: to-rem(16);
+		}
+
+		&__input--number {
+			border-radius: var(--border-radius);
+			height: to-rem(36);
+			border: 1px solid var(--color-subtle);
+			text-align: right;
+
+			&:focus {
+				outline: none;
+			}
+		}
+
+		&__input--range {
+			// The base layer paints the track white with a black border.
+			background-color: var(--color-light);
+			border-color: var(--color-ink);
+			border-radius: var(--border-radius);
+			height: to-rem(8);
+
+			&::-webkit-slider-thumb {
+				background: var(--color-primary-variant);
+				outline: solid var(--thumb-outline-width) var(--color-primary-variant);
+				-webkit-appearance: none;
+				outline-offset: 2px;
+			}
+
+			&::-moz-range-thumb {
+				background: var(--color-primary-variant);
+				outline: solid var(--thumb-outline-width) var(--color-primary-variant);
+				outline-offset: 2px;
+			}
+
+			&:focus {
+				outline: none;
+				--thumb-outline-width: 2px;
+			}
+
+			&:hover {
+				--thumb-outline-width: 2px;
+			}
+		}
+	}
+}

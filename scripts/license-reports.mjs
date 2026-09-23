@@ -28,6 +28,7 @@ const reportTargets = [
 	{ name: 'root', packageJsonPath: 'package.json' },
 	{ name: 'sample-react', packageJsonPath: 'packages/samples/react/package.json' },
 	{ name: 'theme-bwst', packageJsonPath: 'packages/themes/bwst/package.json' },
+	{ name: 'theme-d-you', packageJsonPath: 'packages/themes/d-you/package.json' },
 	{ name: 'theme-default', packageJsonPath: 'packages/themes/default/package.json' },
 	{ name: 'theme-desy', packageJsonPath: 'packages/themes/desy/package.json' },
 	{ name: 'theme-ecl', packageJsonPath: 'packages/themes/ecl/package.json' },

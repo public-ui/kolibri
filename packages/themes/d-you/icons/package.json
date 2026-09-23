@@ -1,0 +1,31 @@
+{
+	"name": "@public-ui/d-you-icons",
+	"private": true,
+	"type": "module",
+	"description": "Builds the d-you icon font from the IBM Carbon icon set.",
+	"devDependencies": {
+		"@carbon/icons": "11.88.0",
+		"oslllo-svg-fixer": "6.0.1",
+		"prettier": "3.9.8",
+		"prettier-plugin-organize-imports": "4.3.0",
+		"svgtofont": "6.5.3"
+	},
+	"scripts": {
+		"prepare-svg": "node scripts/prepare-svg.mjs",
+		"font": "svgtofont --sources ./svg-fixed --output ../assets/d-you-icons",
+		"emit-mixin": "node scripts/emit-mixin.mjs",
+		"build": "pnpm prepare-svg && pnpm font && pnpm emit-mixin",
+		"format": "prettier --check icons.json scripts"
+	},
+	"svgtofont": {
+		"classNamePrefix": "kolicon",
+		"css": {
+			"fileName": "style"
+		},
+		"styleTemplates": "./styles",
+		"fontName": "d-you-icons",
+		"svgicons2svgfont": {
+			"fontHeight": 10000
+		}
+	}
+}

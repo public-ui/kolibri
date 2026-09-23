@@ -1,0 +1,47 @@
+@use '../mixins/to-rem' as *;
+@use './button' as *;
+@use './focus-outline' as *;
+@use '../mixins/dialog' as *;
+
+@mixin kol-table-settings-theme {
+	@include kol-dialog;
+
+	.kol-table-settings {
+		top: 0;
+		right: to-rem(5);
+
+		/*
+		 * The popover of the settings button carries no `--styled` modifier, so the rule in
+		 * `popover-button.scss` does not reach it and the base layer's white surface and black
+		 * border would survive.
+		 */
+		.kol-popover-button__popover {
+			--kol-surface: var(--color-overlay);
+			background: var(--color-overlay);
+			border-color: var(--color-ink);
+		}
+
+		&__error-message {
+			display: block;
+			margin-top: to-rem(16);
+		}
+
+		&__columns {
+			padding: to-rem(8); // some space for hover and focus styles
+			gap: to-rem(8);
+		}
+
+		&__actions {
+			display: flex;
+			margin-top: to-rem(16);
+			padding-top: to-rem(16);
+			gap: to-rem(8);
+			justify-content: flex-end;
+			border-top: var(--border-width) solid var(--color-mute-variant);
+		}
+	}
+
+	.kol-button__interactive-element:focus {
+		@include focus-outline;
+	}
+}

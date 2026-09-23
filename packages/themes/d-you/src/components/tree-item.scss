@@ -1,0 +1,68 @@
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+
+	.kol-tree-item {
+		$root: &;
+		--indentation: #{to-rem(16)};
+
+		/*
+		 * `flex`, not `block`: the link inside is `inline-flex`, and on a line box it sat on the text
+		 * baseline. A leaf starts with the empty toggle placeholder, and an inline-flex box without
+		 * text takes its baseline from its bottom edge, so the line's descender space hung below
+		 * every leaf row — 52.4px against the 46px of a row with a chevron.
+		 */
+		&__link {
+			display: flex;
+			border: 1px solid transparent;
+
+			.kol-link {
+				color: var(--color-text);
+				text-align: left;
+			}
+
+			/* Both paddings live on the anchor, the indentation included: the anchor carries the
+			   focus outline, and it has to span the row exactly like the hover and active
+			   backgrounds do. With the indentation on the wrapper outside it, the outline started
+			   one indentation step in and drew a second, inset box inside the highlighted row. */
+			.kol-link__interactive-element {
+				padding-right: to-rem(8);
+				padding-left: calc(var(--indentation) * var(--level));
+			}
+
+			&:hover,
+			&:focus-within {
+				background-color: var(--color-primary-variant);
+				border: 1px solid var(--color-primary);
+
+				.kol-link {
+					color: var(--color-light);
+					outline-offset: 0;
+				}
+
+				.kol-link__interactive-element {
+					color: var(--color-light);
+					outline-offset: 0;
+				}
+			}
+
+			&--active {
+				background-color: var(--color-primary);
+
+				.kol-link {
+					color: var(--color-light);
+				}
+			}
+		}
+
+		&__toggle-button:hover &__toggle-button-icon {
+			transform: scale(1.6);
+		}
+
+		&__text {
+			text-decoration: none;
+		}
+	}
+}

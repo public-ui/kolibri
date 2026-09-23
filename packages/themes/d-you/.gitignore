@@ -1,0 +1,13 @@
+# Everything in `assets/` is produced by the `prebuild` script: the KoliBri icons and favicon
+# copied from `@public-ui/components`, and the Carbon icon font built by `@public-ui/d-you-icons`
+# in `icons/`. Only the theme's own variant sample data is authored by hand and therefore tracked.
+assets/*
+!assets/variants/
+assets/variants/*
+!assets/variants/inject-variants_dyou.json
+
+# Design source of the theme, see STYLEGUIDE.md. Kept out of the repository because the
+# screens are several megabytes of PNG; they live in the design hand-off, not in git.
+figma/
+
+test-results/

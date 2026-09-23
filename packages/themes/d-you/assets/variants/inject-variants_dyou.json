@@ -1,0 +1,25 @@
+{
+	"buttonVariants": [
+		"primary",
+		"secondary",
+		"tertiary",
+		"normal",
+		"danger",
+		"ghost"
+	],
+	"iconVariants": [
+		"kolicon-house",
+		"kolicon-check",
+		"kolicon-eye",
+		"kolicon-link-external"
+	],
+	"iconVariantsButton": [
+		"kolicon-cogwheel"
+	],
+	"iconVariantsInput": [
+		"kolicon-chevron-right"
+	],
+	"inputVariants": [
+		"left"
+	]
+}

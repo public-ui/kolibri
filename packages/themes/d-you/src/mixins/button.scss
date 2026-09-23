@@ -1,0 +1,209 @@
+@use './focus-outline' as *;
+@use './palette' as *;
+@use './to-rem' as *;
+@use './typography' as *;
+@use './elevation' as *;
+@use './motion' as *;
+
+/*
+ * Buttons in d-you are pills.
+ *
+ * Every action is fully rounded and 48px tall — the design system's touch target — with the label in
+ * CTA/default. The variants come straight from the screens: a filled brand-green primary with a dark
+ * label, an outlined secondary on the page surface, a grey-filled tertiary, and a soft-red danger
+ * that reads as a warning rather than as a solid block of red.
+ *
+ * Hover is the one state the design system does not specify — it is a mobile system. The hover
+ * values below are derived by moving one step along the ramp the variant's fill comes from.
+ */
+@mixin kol-button($block-classname) {
+	:host {
+		--theme-visibility-delay: 0.5s;
+	}
+
+	.#{$block-classname} {
+		/* The shared skeleton mixin sets `text-align: left` on the interactive element (copied from
+		   the anchor case). A real `<button>` had the user-agent `text-align: center` before the
+		   migration, so a wrapping label (e.g. a narrow icon-only pill) would otherwise align left
+		   instead of centred. */
+		&__interactive-element {
+			text-align: center;
+		}
+
+		&__text {
+			@include kol-typography-cta;
+
+			border-style: solid;
+			border-radius: var(--border-radius-pill);
+			border-width: var(--border-width);
+		}
+
+		/* The class carrier is a wrapper and never receives focus. */
+		&__interactive-element:focus {
+			outline: none;
+		}
+
+		&--primary {
+			--text-background-color: var(--color-primary-container);
+			--text-border-color: var(--color-primary-container);
+			--text-color: var(--color-on-primary);
+			--text-hover-background-color: #{$primary-70};
+			--text-hover-border-color: #{$primary-70};
+			--text-hover-color: var(--color-on-primary);
+		}
+
+		/*
+		 * The outlined action. The screens draw its border in a light grey; the theme uses
+		 * `--color-subtle` instead, because a control boundary has to clear 3:1 and the light grey
+		 * reaches 1.96:1 on white.
+		 */
+		&--secondary,
+		&--normal {
+			--text-background-color: var(--color-light);
+			--text-border-color: var(--color-subtle);
+			--text-color: var(--color-text);
+			--text-hover-background-color: var(--color-mute);
+			--text-hover-border-color: var(--color-text);
+			--text-hover-color: var(--color-text);
+		}
+
+		&--tertiary {
+			--text-background-color: var(--color-secondary);
+			--text-border-color: var(--color-secondary);
+			--text-color: var(--color-text);
+			--text-hover-background-color: #{$secondary-80};
+			--text-hover-border-color: #{$secondary-80};
+			--text-hover-color: var(--color-text);
+		}
+
+		&--danger {
+			--text-background-color: var(--color-danger-container);
+			--text-border-color: var(--color-danger);
+			--text-color: var(--color-danger);
+			--text-hover-background-color: var(--color-danger);
+			--text-hover-border-color: var(--color-danger);
+			--text-hover-color: var(--color-light);
+		}
+
+		&--ghost {
+			@include kol-button-ghost();
+		}
+
+		&--primary,
+		&--secondary,
+		&--tertiary,
+		&--normal,
+		&--danger,
+		&--ghost {
+			/* State predicates live on the interactive element: on the wrapper `:not([disabled])`
+			   would always be true, re-enabling hover styling for disabled buttons. Plain
+			   descendants, because `&__interactive-element` inside a modifier block would expand to
+			   the dead `.kol-button--primary__interactive-element`. The mixin is also included for
+			   `kol-link`: anchors carry no native `disabled`, their disabled state is `aria-disabled`. */
+			.#{$block-classname}__interactive-element:not([disabled], [aria-disabled='true']):hover {
+				--text-background-color: var(--text-hover-background-color);
+				--text-border-color: var(--text-hover-border-color);
+				--text-color: var(--text-hover-color);
+
+				position: relative;
+				@include focus-outline(var(--border-radius-pill));
+			}
+		}
+
+		&--danger {
+			.#{$block-classname}__interactive-element:not([disabled], [aria-disabled='true']):hover {
+				outline-color: var(--color-danger);
+			}
+		}
+
+		&__text {
+			color: var(--text-color);
+			background-color: var(--text-background-color);
+			border-color: var(--text-border-color);
+
+			/* 12px block padding on a 1.4 line height plus the border makes the 48px touch target. */
+			padding: to-rem(12) to-rem(24);
+
+			@include kol-transition-state(background-color, color, border-color);
+
+			&:hover {
+				color: var(--text-color);
+				background-color: var(--text-background-color);
+				@include kol-shadow-low;
+				border-color: var(--text-border-color);
+			}
+		}
+	}
+
+	/*
+	 * The rules below combine two elements of the block, so they name both classes explicitly
+	 * instead of reaching back for the block with `$root` and `@at-root`. That pattern broke as
+	 * soon as the mixin was included inside another selector — `kol-alert`, the split button's
+	 * popover, the table's cell actions — where `$root` already carried the outer selector and the
+	 * rule came out as `.kol-alert .kol-button--hide-label .kol-alert .kol-button__text`, asking
+	 * for a second alert inside the first. Nothing matched it, so every icon-only button in those
+	 * places kept the 24px side padding of a labelled one and rendered as a wide pill.
+	 */
+
+	/* Icon-only: the same padding on every side, so the pill hugs its icon. */
+	.#{$block-classname}--hide-label .#{$block-classname}__text {
+		padding: to-rem(12);
+
+		.kol-span__label {
+			display: none;
+		}
+	}
+
+	.#{$block-classname}__interactive-element:focus {
+		@include focus-outline(var(--border-radius-pill));
+		position: relative; // make sure focus outline is visible and not covered by adjacent element
+	}
+
+	/*
+	 * A disabled primary keeps its shape, drops its fill to the palest step of the ramp and keeps a
+	 * green outline that is stronger than that fill (STYLEGUIDE.md §6.1, screen `13.06.26`), so the
+	 * control still reads as the primary action it would be. The global 50% opacity for disabled
+	 * controls is lifted here: it would fade the outline back into the fill it has to stand out
+	 * from — fill and border were the same color at half strength, so no border showed at all.
+	 * The dark branch mirrors the ramp: a deep green fill under a clearly lighter outline.
+	 */
+	.#{$block-classname}--primary .#{$block-classname}__interactive-element:is(:disabled, [aria-disabled='true']) {
+		--text-background-color: light-dark(#{$primary-95}, #{$primary-20});
+		--text-border-color: light-dark(#{$primary-80}, #{$primary-50});
+		--text-color: var(--color-subtle);
+
+		opacity: 1;
+	}
+
+	.#{$block-classname}__interactive-element:is(:disabled, [aria-disabled='true']):hover .#{$block-classname}__text {
+		color: var(--text-color);
+		background-color: var(--text-background-color);
+		box-shadow: none;
+		border-color: var(--text-border-color);
+	}
+
+	.kol-close-button {
+		align-self: self-start;
+
+		/* The alert renders its closer as `ButtonFC` directly, so `kol-close-button` and the
+		   variant class sit on the same element there; the card still keeps the hook on a wrapper
+		   around the button. Both shapes stay addressed until the hook moves onto the button root
+		   everywhere. Specificity is 2 classes either way, as before the alert migration. */
+		&:is(.#{$block-classname}--normal),
+		.#{$block-classname}--normal {
+			@include kol-button-ghost();
+
+			--kol-focus-outline-offset: -2px;
+		}
+	}
+}
+
+@mixin kol-button-ghost {
+	--text-background-color: transparent;
+	--text-border-color: transparent;
+	--text-color: var(--color-text);
+	--text-box-shadow: none;
+	--text-hover-background-color: var(--color-mute);
+	--text-hover-border-color: transparent;
+	--text-hover-color: var(--color-text);
+}

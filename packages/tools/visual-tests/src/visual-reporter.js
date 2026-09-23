@@ -200,7 +200,7 @@ export default class VisualReporter {
 			}
 
 			// A failed comparison always attaches the actual image; the baseline listing tells changed from added.
-			const groups = groupAttachments(result.attachments);
+			const groups = groupAttachments(result.attachments, this.fileSuffix);
 			for (const [name, files] of groups) {
 				if (!files.actual) continue;
 				seen.add(name);
@@ -316,7 +316,18 @@ function isSnapshotTest(test) {
 	return path.basename(test.location?.file ?? '') === SPEC_FILE;
 }
 
-function groupAttachments(attachments) {
+/**
+ * The `-expected`/`-actual`/`-diff`/`-previous` images of one screenshot, keyed by its snapshot name.
+ *
+ * The attachment name cannot serve as that key: Playwright derives it from the snapshot file name but
+ * trims it to a Windows-friendly 60 characters, so `input-text-access-short-key-noColumns--short-key-
+ * placeholder.png` arrives as `input-text-access-short-ke-29de3---short-key-placeholder.png`. Keying on
+ * that name left every long-named block unclassifiable – its comparison counted as a route error rather
+ * than as `added`/`changed`. The `-expected` attachment points at the snapshot file itself, which always
+ * carries the untrimmed name, so it is the key the reporter goes by; the trimmed attachment name only
+ * groups the images of one screenshot together and is the fallback when no expected image was attached.
+ */
+function groupAttachments(attachments, fileSuffix) {
 	const groups = new Map();
 	for (const attachment of attachments) {
 		const match = attachment.name.match(ATTACHMENT_SUFFIX);
@@ -325,7 +336,18 @@ function groupAttachments(attachments) {
 		if (!groups.has(name)) groups.set(name, {});
 		groups.get(name)[match[1]] = attachment.path;
 	}
-	return groups;
+	const named = new Map();
+	for (const [name, files] of groups) {
+		named.set(snapshotNameOf(files.expected, fileSuffix) ?? name, files);
+	}
+	return named;
+}
+
+/** Snapshot name of a baseline file, e.g. `…/a-basic--two-firefox-linux.png` → `a-basic--two`. */
+function snapshotNameOf(file, fileSuffix) {
+	if (!file) return null;
+	const base = path.basename(file);
+	return fileSuffix.test(base) ? base.replace(fileSuffix, '') : null;
 }
 
 /** `button-basic--variants` and `button-basic--variants-320` belong to route name `button-basic`; so does the full-page `button-basic`. */

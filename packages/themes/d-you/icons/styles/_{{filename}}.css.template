@@ -1,0 +1,17 @@
+@layer kol-theme-component {
+  @font-face {
+    font-family: "{{fontname}}";
+    src: url("{{cssPath}}{{fontname}}.woff2?t={{timestamp}}") format("woff2"),
+    url("{{cssPath}}{{fontname}}.woff?t={{timestamp}}") format("woff"),
+    url('{{cssPath}}{{fontname}}.ttf?t={{timestamp}}') format('truetype');
+  }
+
+  [class^="{{prefix}}-"], [class*=" {{prefix}}-"] {
+    font-family: '{{fontname}}';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1em;
+  }
+
+  {{cssString}}
+}

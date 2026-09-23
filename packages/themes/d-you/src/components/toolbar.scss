@@ -1,0 +1,64 @@
+@use '../mixins/button' as *;
+@use '../mixins/focus-outline' as *;
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	@include kol-button('kol-button');
+	@include kol-button('kol-link');
+
+	.kol-toolbar {
+		// A raised bar; the buttons and links on it stand on the bar, not on the page.
+		--kol-surface: var(--color-light);
+		background-color: var(--color-light);
+		border-radius: var(--border-radius);
+	}
+
+	/*
+	 * A toolbar flattens its buttons into one segmented bar, so the capsule ring `mixins/button.scss`
+	 * gives them would box a square segment. The ring moves to the element that carries the segment's
+	 * own shape — including the one-sided rounding of the first and last item, which no single radius
+	 * value could reproduce.
+	 */
+	.kol-button__interactive-element:focus,
+	.kol-link__interactive-element:focus {
+		outline: none;
+	}
+
+	.kol-button__interactive-element:focus .kol-button__text,
+	.kol-link__interactive-element:focus .kol-link__text {
+		@include focus-outline(null);
+	}
+
+	.kol-link__text,
+	.kol-button__text {
+		border-radius: 0;
+
+		.kol-toolbar--orientation-horizontal & {
+			border-right: 0;
+		}
+
+		.kol-toolbar--orientation-vertical & {
+			border-bottom: 0;
+		}
+
+		.kol-toolbar--orientation-vertical .kol-toolbar__item:first-child & {
+			border-radius: var(--border-radius) var(--border-radius) 0 0;
+		}
+
+		.kol-toolbar--orientation-horizontal .kol-toolbar__item:first-child & {
+			border-radius: var(--border-radius) 0 0 var(--border-radius);
+		}
+
+		.kol-toolbar--orientation-vertical .kol-toolbar__item:last-child & {
+			border-radius: 0 0 var(--border-radius) var(--border-radius);
+			border-bottom: var(--border-width) solid var(--text-border-color);
+		}
+
+		.kol-toolbar--orientation-horizontal .kol-toolbar__item:last-child & {
+			border-radius: 0 var(--border-radius) var(--border-radius) 0;
+			border-right: var(--border-width) solid var(--text-border-color);
+		}
+	}
+}

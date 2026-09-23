@@ -1,0 +1,111 @@
+@use '../mixins/to-rem' as *;
+@use '../mixins/icon' as *;
+
+@layer kol-theme-component {
+	@include kol-icon-theme;
+	.kol-tabs {
+		display: grid;
+		grid-template-columns: var(--grid-template-columns);
+		grid-template-rows: var(--grid-template-rows);
+
+		&--align-right {
+			--display: grid;
+			--grid-template-columns: 1fr auto;
+
+			--button-group-display: grid;
+			--button-group-order: 1;
+		}
+
+		&--align-left {
+			--display: grid;
+			--grid-template-columns: auto 1fr;
+
+			--button-group-order: 0;
+		}
+
+		&--align-bottom {
+			--display: flex;
+			--grid-template-rows: 1fr auto;
+
+			--button-group-gap: #{to-rem(32)};
+			--button-group-order: 1;
+		}
+
+		&--align-top {
+			--display: flex;
+			--grid-template-rows: auto 1fr;
+
+			--button-group-gap: #{to-rem(32)};
+			--button-group-order: 0;
+		}
+
+		&__button-group {
+			display: var(--display);
+
+			gap: var(--button-group-gap);
+			order: var(--button-group-order);
+			flex-wrap: wrap;
+		}
+
+		.kol-button {
+			color: var(--color-subtle);
+			background-color: transparent;
+			border-radius: var(--border-radius);
+			min-width: var(--a11y-min-size);
+			min-height: var(--a11y-min-size);
+			padding: 0;
+
+			font-size: to-rem(18);
+			font-weight: 700;
+			line-height: 1.2;
+			border: none;
+			font-style: normal;
+
+			/* In the legacy DOM `border: none` and the radius applied to the button itself:
+			   the border removal keeps the vertically centered labels at the baseline position,
+			   and the radius rounds the focus outline (Firefox draws the outline following the
+			   element's border-radius). */
+			.kol-button__interactive-element {
+				border-radius: var(--border-radius);
+				border: none;
+			}
+
+			&:hover {
+				color: var(--color-primary);
+			}
+
+			&.primary,
+			&.selected {
+				color: var(--color-primary);
+			}
+
+			&:not(&.selected) {
+				.kol-span__container {
+					padding-bottom: 0.25em;
+				}
+			}
+
+			&.selected {
+				.kol-span__container {
+					border-bottom: 0.25em solid;
+				}
+			}
+
+			.kol-span__container {
+				gap: to-rem(8);
+			}
+		}
+
+		&__content {
+			padding: 0.25em 0;
+		}
+
+		&__panel {
+			height: 100%;
+		}
+
+		.kol-button-wc {
+			width: 100%;
+		}
+	}
+}

@@ -1,0 +1,36 @@
+/*
+ * Motion.
+ *
+ * One timing, one curve, used everywhere the theme changes a colour on interaction. 160ms on an
+ * exponential ease-out: the change has to register as feedback to a pointer that is already moving
+ * on, which a half-second linear fade does not — by the time it finishes the pointer has left.
+ *
+ * These are SASS variables rather than custom properties: they are the theme's own timing, not a
+ * documented customization point, and resolving them at build time keeps them out of the cascade.
+ */
+$kol-duration-state: 0.16s;
+$kol-duration-surface: 0.4s;
+$kol-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+/*
+ * The state change of an interactive element: a button filling in, a row tinting under the pointer.
+ */
+@mixin kol-transition-state($properties...) {
+	transition-duration: $kol-duration-state;
+	transition-property: $properties;
+	transition-timing-function: $kol-ease-out;
+}
+
+/*
+ * `prefers-reduced-motion` asks for less movement, not for less feedback. A blanket `0.01ms` would
+ * take the colour change with it and leave the user guessing whether a control reacted at all, so
+ * the state transitions above stay: they move nothing across the screen.
+ *
+ * What goes is travel. A drawer that slides the width of the viewport is the vestibular trigger, so
+ * under the query it appears in place instead — same end state, same focus behaviour, no journey.
+ */
+@mixin kol-reduced-motion {
+	@media (prefers-reduced-motion: reduce) {
+		@content;
+	}
+}

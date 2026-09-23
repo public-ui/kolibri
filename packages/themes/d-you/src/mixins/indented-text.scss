@@ -1,0 +1,8 @@
+@use '../mixins/to-rem' as *;
+
+@mixin indented-text {
+	width: 100%;
+	margin-left: to-rem(-2);
+	padding: 0 to-rem(18) 0 to-rem(8);
+	border-left: 2px solid var(--color-primary-variant);
+}

@@ -1,0 +1,120 @@
+/*
+ * The d-you palette.
+ *
+ * These are SASS variables on purpose: only the `--color-*` tokens declared in `global.scss` are a
+ * documented customization point. The raw ramp steps are resolved at build time so they cannot leak
+ * into the global cascade and become an unintended part of the public API.
+ *
+ * The two ramps and every semantic value below are taken from the Figma screens in `figma/`; see
+ * `STYLEGUIDE.md` for the full table and the source screen of each value.
+ */
+
+/*
+ * Primary ramp — the EUDI Wallet "Mint Beam" green.
+ *
+ * `-80` is the brand surface: it is what a primary button is filled with, and it is far too light to
+ * carry text. Where the accent has to *be* the text — a link, an icon, a focus ring — the theme uses
+ * `-40`, the lightest step that still clears 4.5:1 on white (4.96:1).
+ */
+$primary-10: #0f2415;
+$primary-20: #1e3e26;
+$primary-30: #1f572d;
+$primary-40: #068227;
+$primary-50: #10b13b;
+$primary-60: #3be26a;
+$primary-70: #72e992;
+$primary-80: #96f5af;
+$primary-90: #d2f9dc;
+$primary-95: #e9fcee;
+$primary-99: #f6fdf8;
+
+/* Secondary ramp — the neutral greys that carry structure, typography and surfaces. */
+$secondary-10: #1d1d1e;
+$secondary-20: #333333;
+$secondary-30: #494949;
+$secondary-40: #5a5959;
+$secondary-50: #7a7a7a;
+$secondary-60: #949494;
+$secondary-70: #b9b9bd;
+$secondary-80: #dedede;
+$secondary-90: #ededed;
+$secondary-95: #f4f4f4;
+$secondary-99: #fafafa;
+
+/*
+ * Functional colors.
+ *
+ * Each feedback type comes as a triple: the strong fill, the soft container and the outline that
+ * draws the border and the status icon. Success shares the primary green — in the design system the
+ * brand color *is* the success color.
+ */
+$success: $primary-80;
+$success-container: $primary-95;
+$success-outline: #329d77;
+$warning: #fedf43;
+$warning-container: #fffbe5;
+$warning-outline: #a16a00;
+$error: #b3261e;
+$error-container: #f9dedc;
+$error-outline: #852221;
+
+/* Text and icon on the strong fills (STYLEGUIDE.md §1.5): dark on the green and yellow, white on
+   the red. */
+$on-success: $secondary-10;
+$on-warning: $secondary-10;
+$on-error: #ffffff;
+
+/*
+ * Dark palette — DERIVED, not designed.
+ *
+ * The Figma file heads its dark section "Dark Mode (TBD)" and only shows one comparison strip: the
+ * page flips to `$secondary-10`, the primary action keeps its green unchanged, and the grey-filled
+ * tertiary action moves to a dark fill. Everything below follows that by mirroring the neutral ramp
+ * and keeping the primary ramp fixed. Replace it once the design team ships the dark specification.
+ */
+$dark-color-primary: $primary-80;
+$dark-color-primary-variant: $primary-90;
+$dark-color-secondary: $secondary-20;
+$dark-color-success: $primary-80;
+$dark-color-warning: $warning;
+/*
+ * The light red clears only 2.3:1 on the dark canvas, and the ramp has no dark counterpart, so this
+ * one value is derived: the error hue lifted to the lightness of `$error-container` (9.86:1).
+ */
+$dark-color-danger: #f2b8b5;
+$dark-color-subtle: $secondary-70;
+$dark-color-text: $secondary-95;
+$dark-color-mute: $secondary-20;
+$dark-color-mute-variant: $secondary-30;
+$dark-color-visited: #c39de7;
+
+/*
+ * Elevation.
+ *
+ * The rule is "a lighter surface sits higher". A light palette cannot express it — the design system
+ * puts cards and dialogs on white — so in light mode all three levels collapse onto `#ffffff` and
+ * depth is carried by the shadow. In dark mode the surfaces carry it and the shadow is switched off
+ * (see `--color-shadow` in `global.scss`):
+ *
+ *   0  page canvas, and the host box every component paints behind itself
+ *   1  a raised surface: card, input, table cell, drawer
+ *   2  a floating one: dialog, popover, tooltip, suggestion list
+ *
+ * Level 0 is the value `color-scheme.css` states literally for the page; keep the two in sync.
+ */
+$dark-color-surface: $secondary-10;
+$dark-color-light: #282829;
+$dark-color-overlay: $secondary-20;
+
+/*
+ * The hard edge that replaces the blurred elevation shadow in dark mode. Chosen to clear 3:1
+ * against all three surface levels, the highest one included.
+ */
+$dark-color-edge: $secondary-60;
+
+/*
+ * Maximum contrast foreground. The light branch is pure black on purpose: the base layer of
+ * `@public-ui/components` hardcodes `black` in a handful of places, and the theme neutralizes those
+ * with this token without moving a single light-mode pixel.
+ */
+$dark-color-ink: $dark-color-text;
