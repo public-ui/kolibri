@@ -32,31 +32,27 @@ pnpm start
 ```
 
 `pnpm start` opens the Vite dev server with the default theme set bundled in `@public-ui/themes`.
-It rebuilds the workspace dependencies first (`build:deps`), so it never serves a stale theme or
-component package.
+It builds nothing: every workspace package is responsible for its own build output, and the
+presentation app only serves what is already there.
 
-### Next to a running watcher
+### Developing with watchers
 
-While another package watches its own build output — `pnpm dev` in `packages/components`, or a
-theme package's `rollup -c --watch` — that dependency build must not run. It would delete the
-`dist` the watcher currently owns (`pnpm clear`) and write readme files back into the sources the
-watcher is watching. Every following rebuild then fails, because the deleted `assets/kolicons`
-breaks the sass import of every component. Start the dev server on its own
-instead:
+The chain is kolicons → components → adapters → themes → sample → presentation. After the one-off
+full build above, start `dev` only in the packages you are working on, and the presentation app
+next to them:
 
 ```bash
-# Terminal A
+# Terminal A – watch whatever you change, e.g. the components or a theme
 pnpm --filter @public-ui/components dev
 
 # Terminal B
-pnpm --filter @public-ui/presentation serve
+pnpm --filter @public-ui/presentation start
 ```
 
-`pnpm serve` is plain Vite without the `prestart` hook, so it never touches another package's
-output — it is the same script a theme package's `serve.sh` calls while its own `rollup --watch`
-owns its `dist`. Do not reach for `pnpm start` in this situation: its `prestart` runs the
-dependency build unconditionally and nothing stops it from clearing the watcher's `dist`. Once the
-watcher is stopped, `pnpm build:deps` brings the workspace packages back up to date.
+After a pull or a branch switch, rebuild the packages that changed – `pnpm build:deps` in this
+directory rebuilds all of them, `pnpm -r build` in the repo root does the same for the whole
+workspace. Neither must run while a watcher is active: the components build starts with
+`pnpm clear` and deletes the output the watcher owns.
 
 ## Injecting a different theme
 
@@ -100,7 +96,6 @@ $env:ENABLE_THEME_PATCHING="true"; pnpm start
 
 ## Notes
 
-- `pnpm start` builds the workspace dependencies first (`build:deps`), so it never serves a stale theme package. `pnpm serve` skips that step on purpose: it is what `serve.sh` of a theme package calls while that package's own `rollup --watch` already owns its `dist`. See [Next to a running watcher](#next-to-a-running-watcher).
-
+- `pnpm serve` is `pnpm start` without opening a browser. `serve.sh` of a theme package calls it next to that package's own `rollup --watch`.
 - Keep theme modules built before injecting them; use `pnpm --filter @public-ui/themes build` if you are working on a local theme.
 - Assets are copied into `public/assets` by `pnpm prebuild`, which runs `kolibri-copy-assets` for the components package and every bundled theme. It runs automatically on `pnpm install` (via `prepare`) and before `pnpm build`.

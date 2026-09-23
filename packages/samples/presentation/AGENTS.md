@@ -15,6 +15,6 @@ This package contains the React based sample application showcasing the KoliBri 
 - `public` – static assets served by webpack.
 - `e2e` – end to end tests for the sample app.
 
-Run `pnpm start` in this directory to launch the development server. It builds the workspace dependencies first. If a watcher of another package is running — `pnpm dev` in `packages/components`, for instance — use `pnpm serve` here instead, which starts Vite without that build; see the [README](./README.md#next-to-a-running-watcher).
+Run `pnpm start` in this directory to launch the development server. It only starts Vite and builds nothing, so all workspace packages must have been built once (`pnpm -r build` in the repo root). Watch the packages you change with their own `pnpm dev`; see the [README](./README.md#developing-with-watchers).
 
 > 🧹 **Formatting**: Follow the repo-wide “Format-first rule” in `/AGENTS.md`. Use `pnpm format` or `pnpm --filter @public-ui/sample-react format` before committing—no additional `--write` flags are required.

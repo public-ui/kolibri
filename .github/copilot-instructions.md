@@ -55,13 +55,11 @@ pnpm -r build
 cd packages/samples/presentation
 
 # Start development server (opens http://localhost:9191)
-# It builds the workspace dependencies first.
+# It only starts Vite and builds nothing – run `pnpm -r build` once beforehand.
 pnpm start
 
-# Next to a running watcher (pnpm dev in packages/components) use this instead:
-# it starts Vite without the dependency build, which would delete the
-# build output the watcher currently owns.
-pnpm serve
+# Watch the packages you change in their own terminal, e.g.:
+pnpm --filter @public-ui/components dev
 ```
 
 ### Code Quality Commands
