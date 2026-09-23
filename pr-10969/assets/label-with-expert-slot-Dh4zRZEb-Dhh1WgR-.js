@@ -1,0 +1,1 @@
+import{d as e,r as t}from"./factory-DVePsLAQ-DzSY6A0l.js";var n=t(`label`,``,e);export{n as t};
