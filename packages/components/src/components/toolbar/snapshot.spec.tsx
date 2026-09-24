@@ -1,8 +1,8 @@
-import { KolToolbarTag } from '../../../core/component-names';
-import type { ToolbarItemsPropType, ToolbarProps } from '../../../schema';
-import { executeSnapshotTests } from '../../../utils/testing';
+import { KolToolbarTag } from '../../core/component-names';
+import type { ToolbarItemsPropType, ToolbarProps } from '../../schema';
+import { executeSnapshotTests } from '../../utils/testing';
 
-import { KolToolbar } from '../shadow';
+import { KolToolbar } from './component';
 
 const ITEMS: ToolbarItemsPropType = [
 	{
@@ -28,6 +28,10 @@ executeSnapshotTests<ToolbarProps>(
 			_label: 'Label vertical',
 			_items: ITEMS,
 			_orientation: 'vertical',
+		},
+		{
+			_label: 'Label first item disabled',
+			_items: [{ type: 'button', _label: 'Disabled', _disabled: true }, ...ITEMS],
 		},
 	],
 );
