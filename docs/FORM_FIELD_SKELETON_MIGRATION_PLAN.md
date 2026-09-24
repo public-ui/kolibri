@@ -75,8 +75,10 @@ Kein Produktivcode, Voraussetzung für alles. Die Gates greifen nur, wenn vorher
 
 - ✅ Public-API-Pins für alle 14 Tags und `kol-select-wc` (als interner Vertrag), zunächst gegen `shadow.tsx`. Jede Komponente hat eine eigene Datei unter `_skeleton/public-api/`, damit parallele Spuren keine Merge-Konflikte bekommen.
 - Verhaltensverträge pro Feld: Reihenfolge und Payload von `kolChange`/`kolInput`/`kolFocus`/`kolBlur`/`kolKeydown`/`kolClick` und der `_on`-Callbacks; `FormData` eines nativen `<form>` für Checkbox, `select` multiple, File und Radio mit Objektwerten; `_syncValueBySelector`; `_touched` nach Blur. Die Verträge sind Playwright-Tests (`*.e2e.ts`), weil versteckte Light-DOM-Elemente, `attachInternals`, `FormData` sowie Fokus und Tastatur nur im echten Browser verlässlich prüfbar sind. Sie nutzen die Helfer aus `src/e2e/`. Reine Umrechnungen ohne Browserverhalten (z. B. Date↔ISO in G3) werden als Jest-Tests der Hilfsfunktionen geprüft.
+  - Der gemeinsame Helfer `testInputBehaviorContract` in `src/e2e/input-behavior-contract.ts` zeichnet Events und Callbacks auf; jedes Feld pinnt darin sein heutiges Verhalten. ✅ `kol-input-color`; offen sind die übrigen 13 Felder.
+  - Formular-Anbindung heute: Das versteckte Element im Light DOM entsteht nur mit `register(…, { reflectInputValues: true })`, seinen `name` setzt der Controller nur im Experimental-Mode. Nur mit beidem steht das Feld in `FormData`. Der Vertrag pinnt alle drei Fälle, der Test ruft `register` dafür aus dem Build unter Test auf.
 - Visual-Samples ergänzen für msg, hint, disabled, hideLabel, infoPopover, Counter, Icons, `inputNumberButtons` an/aus und die Checkbox-Varianten. Neue Samples erzeugen neue Baselines und gehören in ein eigenes PR vor der ersten Migration.
-- Toten Code löschen: `functional-components/inputs/Combobox/Combobox.tsx`.
+- ✅ Toten Code löschen: `functional-components/inputs/Combobox/Combobox.tsx`.
 
 ### G1 – Fundament + Pilot `kol-input-color` (#9673, #9577)
 

@@ -2,6 +2,7 @@ import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { type E2EPage, test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
+import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
@@ -101,4 +102,32 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	testInputMessage<HTMLKolInputColorElement>(COMPONENT_NAME);
+
+	testInputBehaviorContract<HTMLKolInputColorElement>({
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.fill(TEST_VALUE);
+		},
+		inputSelector: 'input.kol-input[type="color"]',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', TEST_VALUE),
+				callback('input', TEST_VALUE),
+				kolEvent('change', TEST_VALUE),
+				callback('change', TEST_VALUE),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			initialValue: '#000000',
+			formData: [],
+			experimentalFormData: [['field', TEST_VALUE]],
+		},
+		testValue: TEST_VALUE,
+	});
 });
