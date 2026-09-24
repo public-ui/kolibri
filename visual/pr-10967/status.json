@@ -1,50 +1,58 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "7 changed – 0 of 7 approved, review pending",
-	"computedAt": "2026-09-23T13:23:03.574Z",
+	"state": "success",
+	"description": "7 visual changes approved by BF150, laske185",
+	"computedAt": "2026-09-24T11:22:06.381Z",
 	"pr": 10967,
 	"head": "924c3e58cf7d27d151bd9561d65443caf2d2ba23",
 	"digest": "sha256:e7eb72f8f96d0691b562b93d55ce2f6599d2aeea0aeee240d83d8a1e1eb804b6",
 	"counts": {
 		"changes": 7,
-		"open": 7,
-		"approved": 0,
+		"open": 0,
+		"approved": 7,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [
-		"BF150"
+		"BF150",
+		"laske185"
 	],
 	"items": {
 		"test-tag-name-transformer/input-color-basic-noColumns--label-suggestions-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-bwst/input-color-basic-noColumns--label-suggestions-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/input-color-basic-noColumns--label-suggestions-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-desy/input-color-basic-noColumns--label-suggestions-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/input-color-basic-noColumns--label-suggestions-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-kern/input-color-basic-noColumns--label-suggestions-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"unstyled/input-color-basic-noColumns--label-suggestions-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		}
 	}
 }
