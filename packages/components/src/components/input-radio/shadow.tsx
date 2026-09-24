@@ -134,7 +134,6 @@ export class KolInputRadio implements ClickableElement, FocusableElement, InputR
 			formFieldInputProps: {
 				class: `kol-form-field__input--orientation-${this.state._orientation}`,
 			},
-			tooltipAlign: this._tooltipAlign,
 			alert: this.showAsAlert(),
 			hideLabel: false,
 			infoPopover: this._infoPopover,
@@ -164,6 +163,7 @@ export class KolInputRadio implements ClickableElement, FocusableElement, InputR
 				showBadge: false,
 			},
 			disabled: this.calculateDisabled(option),
+			tooltipAlign: this._tooltipAlign,
 		};
 	}
 

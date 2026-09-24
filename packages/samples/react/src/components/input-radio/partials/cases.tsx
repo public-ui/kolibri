@@ -55,6 +55,7 @@ export const InputRadioCases = forwardRef<HTMLKolInputRadioElement, InputRadioCa
 					_options="[{'label':'Mrs.','value':'Mrs.'},{'disabled':true,'label':'Mr. (disabled)'},{'label':'Company','value':'Company'}]"
 					_label="Salutation (horizontal)"
 					_infoPopover={{ _label: 'hint', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' }}
+					_tooltipAlign="right"
 				/>
 			</SampleBlock>
 			<SampleBlock {...block('horizontal-disabled')}>
