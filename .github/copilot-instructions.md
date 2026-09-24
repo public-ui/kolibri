@@ -593,6 +593,10 @@ THEME_MODULE=dist THEME_EXPORT=DEFAULT kolibri-visual-test --update-snapshots=ch
   and rely on SASS variables for internal calculations to avoid collisions with
   host-page styles.
 
+**Inline Code Documentation:**
+
+- ✅ Follow [Inline code documentation](../AGENTS.md#inline-code-documentation): as much JSDoc as necessary, as little as possible; describe the present and the future, never the past; keep it clear and free of contradictions.
+
 **Component Development Rules:**
 
 - ✅ Use `pnpm dev` in components package for watch mode

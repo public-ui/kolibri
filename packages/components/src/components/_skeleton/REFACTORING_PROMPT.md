@@ -79,6 +79,7 @@ Erstelle bzw. ersetze die Dateien im Komponentenverzeichnis gemäß der ARC42-Sc
 6. **Tests** — Testdateien **neben** `component.tsx` erstellen bzw. aktualisieren (kein `test/`-Unterordner, siehe ARC42 Design Decision 11):
    - `snapshot.spec.tsx` — Jest DOM-Snapshot-Tests (`executeSnapshotTests`)
    - `interaction.e2e.ts` — Playwright Interaction-Tests (Klick, Tastatur, Events)
+7. **JSDoc und Kommentare** — nach [Inline code documentation](../../../../../AGENTS.md#inline-code-documentation): so viel wie nötig, so wenig wie möglich, nur Ist-Zustand und Zukunft. Die JSDoc öffentlicher `@Prop`/`@Method`/`@Event`-Member wird unverändert übernommen.
 
 ### 4. Dead Code eliminieren
 
