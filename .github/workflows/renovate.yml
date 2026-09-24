@@ -24,8 +24,10 @@ name: Renovate
 
 on:
   schedule:
-    # 18:00-06:00 Europe/Berlin, every 3 hours (UTC hours, see note above).
-    - cron: '0 16,19,22,1,4 * * *'
+    - cron: '0 18,21,0,3 * * 1-5'
+      timezone: 'Europe/Berlin'
+    - cron: '0 */3 * * 0,6'
+      timezone: 'Europe/Berlin'
   workflow_dispatch:
     inputs:
       dry_run:
