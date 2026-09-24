@@ -206,6 +206,8 @@ grep -rn "@include" packages/themes/*/src packages/components/src --include='*.s
 - **unstyled-Theme-Spezifika**: kein Build-Schritt (`theme.ts` direkt, kein `THEME_CSS`); Route `icon/font` wird für `THEME_EXPORT=UNSTYLED` übersprungen; zeigt NUR den Basis-Layer — jede visuelle Änderung deutet auf DOM-Umbauten im Basis-Styling hin; Docker-Support ist über `discoverThemes()` (liest auch `packages/unstyled`) vorhanden. Die Basis ist zudem scheme-neutral: `unstyled`-Snapshots dürfen unter `KOLIBRI_VISUAL_TESTS_COLOR_SCHEME=light` und `=dark` nicht differieren; ein Diff zwischen beiden Läufen ist ein Fehler in `components`, nicht im Test.
 - **Farbwechsel im Diff gehört nie in die Basis**: Zeigt die Farbprobe `exp=(r,g,b) ≠ act=(r,g,b)` bei unveränderter Geometrie, liegt die Ursache in der Theme-Schicht (Token, Mixin, Include-Kette) — niemals durch Farben oder gar Dark/Light-Regeln (`prefers-color-scheme`, `color-scheme`, `light-dark()`) in `components` „reparieren“. Die Basis ist layout-only und scheme-neutral (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
 
+- **Kommentare beim Umbau**: Verschobene oder angepasste Kommentare folgen [Inline code documentation](../../../AGENTS.md#inline-code-documentation) — sie beschreiben den neuen Ist-Zustand, nicht den Umbau.
+
 ## 7b. Was der Pixel-Gate strukturell **nicht** sieht
 
 Snapshots fotografieren Ruhezustände. Hover, `:active`, `:focus`, `:focus-visible` und
