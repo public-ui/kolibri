@@ -1,134 +1,79 @@
-import { Component, Element, h, Host, type JSX, Method, Prop, State, Watch } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import { KolLinkWcTag, KolTreeTag } from '../../core/component-names';
-import { IconFC } from '../../internal/functional-components/icon/component';
-import type { ActivePropType, HrefPropType, KolFocusOptions, LabelPropType, OpenPropType, TreeItemAPI, TreeItemStates } from '../../schema';
-import { validateActive, validateHref, validateLabel, validateOpen } from '../../schema';
-import clsx from '../../utils/clsx';
+import { KolTreeTag } from '../../core/component-names';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { TreeItemApi } from '../../internal/functional-components/tree-item/api';
+import { treeItemPropsConfig } from '../../internal/functional-components/tree-item/api';
+import { TreeItemFC } from '../../internal/functional-components/tree-item/component';
+import { activeProp, ariaCurrentValueProp, hrefProp, labelWithExpertSlotProp, openProp } from '../../internal/props';
+import type { HrefPropType, KolFocusOptions, LabelPropType, OpenPropType, TreeItemProps } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
+import { createCtaRef, directFocus } from '../../utils/element-interaction';
+import { dispatchDomEvent, KolEvent } from '../../utils/events';
+import type { UnsubscribeFunction } from '../link/ariaCurrentService';
+import { onLocationChange } from '../link/ariaCurrentService';
+import { invalidateOpenItemsCache } from '../tree/open-items-cache';
 
 /**
- * @internal
+ * @slot - Further Children as TreeItem Components
  */
 @Component({
-	tag: `kol-tree-item-wc`,
-	shadow: false,
+	tag: 'kol-tree-item', // keep in sync with `const TREE_ITEM_TAG_NAME`
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: true,
 })
-export class KolTreeItemWc implements TreeItemAPI {
-	@Element() private readonly host?: HTMLKolTreeItemWcElement;
+export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeItemProps, WebComponentInterface<TreeItemApi> {
+	@Element() protected readonly host?: HTMLKolTreeItemElement;
 
-	private linkElement?: HTMLKolLinkWcElement;
-	private groupId = createUniqueId('tree-group');
+	protected readonly anchorRef = createCtaRef<HTMLAnchorElement>();
 
-	@State() private level?: number;
+	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
-	public render(): JSX.Element {
-		const { _href, _active, _hasChildren, _open, _label } = this.state;
-		return (
-			<Host onSlotchange={this.handleSlotchange.bind(this)}>
-				<li
-					class="kol-tree-item"
-					style={{
-						'--level': `${this.level}`,
-					}}
-				>
-					<KolLinkWcTag
-						class={clsx('kol-tree-item__link', {
-							'kol-tree-item__link--first-level': this.level === 0,
-							'kol-tree-item__link--active': _active,
-						})}
-						_href={_href}
-						_label=""
-						_role="treeitem"
-						_tabIndex={_active ? 0 : -1}
-						_ariaExpanded={_hasChildren ? _open : undefined}
-						_ariaOwns={_hasChildren ? this.groupId : undefined}
-						ref={(element?: HTMLKolLinkWcElement) => (this.linkElement = element!)}
-					>
-						<span class="kol-tree-item__link-inner" slot="expert">
-							{_hasChildren ? (
-								// eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
-								<span
-									class="kol-tree-item__toggle-button"
-									onClick={(event) => (_open ? void this.handleCollapseClick(event) : void this.handleExpandClick(event))}
-								>
-									<IconFC
-										class="kol-tree-item__toggle-button-icon"
-										icons={`kolicon kolicon-${_open ? 'chevron-down' : 'chevron-right'}`}
-										label={'' /* Label deliberately left empty */}
-									/>
-								</span>
-							) : (
-								<span class="kol-tree-item__toggle-button-placeholder"></span>
-							)}
-							<span class="kol-tree-item__text">{_label}</span>
-						</span>
-					</KolLinkWcTag>
-					<ul class="kol-tree-item__children" hidden={!_hasChildren || !_open} role="group" id={this.groupId}>
-						<slot />
-					</ul>
-				</li>
-			</Host>
-		);
-	}
+	// --- @State ---
 
-	@State() public state: TreeItemStates = {
-		_active: false,
-		_hasChildren: false,
-		_href: '',
-		_label: '',
-		_open: false,
-	};
+	@State() public ariaCurrent: string = '';
+	@State() public groupId: string = createUniqueId('tree-group');
+	@State() public hasChildren: boolean = false;
+	@State() public level: number = 0;
+	@State() public open: boolean = false;
 
-	/**
-	 * If set (to true) the tree item is the active one.
-	 */
-	@Prop() _active?: OpenPropType;
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() _label!: LabelPropType;
-
-	/**
-	 * Opens/expands the element when truthy, closes/collapses when falsy.
-	 */
-	@Prop() _open?: OpenPropType;
-
-	/**
-	 * Defines the target URI of the link.
-	 */
-	@Prop() _href!: HrefPropType;
-
-	@Watch('_active') validateActive(value?: ActivePropType): void {
-		validateActive(this, value || false);
-	}
-
-	@Watch('_label') validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
-	}
-
-	@Watch('_open') validateOpen(value?: OpenPropType): void {
-		validateOpen(this, value);
-	}
-
-	@Watch('_href') validateHref(value?: HrefPropType): void {
-		validateHref(this, value);
-	}
+	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
-		this.validateActive(this._active);
-		this.validateLabel(this._label);
-		this.validateOpen(this._open);
-		this.validateHref(this._href);
+		this.initRenderProps(treeItemPropsConfig);
+		this.watchActive(this._active);
+		this.watchHref(this._href);
+		this.watchLabel(this._label);
+		this.watchOpen(this._open);
 
 		this.checkForChildren();
 		this.determineTreeItemDepth();
+
+		// The link marks itself as the current page, as `kol-link` does.
+		this.unsubscribeOnLocationChange = onLocationChange((location) => {
+			const ariaCurrent = location === this.getRenderProp('href') ? ariaCurrentValueProp.getDefaultValue() : '';
+			if (this.ariaCurrent !== ariaCurrent) {
+				this.ariaCurrent = ariaCurrent;
+			}
+		});
 	}
 
-	private determineTreeItemDepth() {
+	public disconnectedCallback(): void {
+		if (this.unsubscribeOnLocationChange) {
+			this.unsubscribeOnLocationChange();
+			this.unsubscribeOnLocationChange = undefined;
+		}
+	}
+
+	// --- Tree structure ---
+
+	private determineTreeItemDepth(): void {
 		let level = 0;
-		let traverseItem: HTMLElement | null = (this.host?.parentNode as unknown as ShadowRoot)?.host.parentNode as HTMLElement;
+		let traverseItem: HTMLElement | null = this.host?.parentElement ?? null;
 		while (traverseItem !== null && traverseItem.tagName.toLowerCase() !== KolTreeTag && traverseItem !== document.body) {
 			traverseItem = traverseItem.parentElement;
 			level += 1;
@@ -136,80 +81,75 @@ export class KolTreeItemWc implements TreeItemAPI {
 		this.level = level;
 	}
 
-	private handleSlotchange() {
-		this.checkForChildren();
+	/**
+	 * Nested tree items are the elements assigned to the default slot. Read from the host's
+	 * children rather than from the slot, because the slot is not rendered yet on the first check.
+	 */
+	private checkForChildren(): void {
+		this.hasChildren = Array.from(this.host?.children ?? []).some((element) => !element.slot);
 	}
 
-	private checkForChildren() {
-		this.state = {
-			...this.state,
-			_hasChildren: Boolean(this.host?.querySelector('slot')?.assignedElements?.().length),
-		};
-	}
-
-	private getTreeParent(): (HTMLKolTreeWcElement & { invalidateOpenItemsCache(): void }) | undefined {
-		// Traverse up through shadow boundaries manually
+	/** The `kol-tree` this item belongs to, looked up across shadow boundaries. */
+	private getTree(): Element | undefined {
 		let element: Element | null | undefined = this.host;
 		while (element) {
-			// Try closest in current DOM tree
-			const parent = element.closest(KolTreeTag);
-			if (parent) {
-				// Found kol-tree (shadow wrapper), now find kol-tree-wc in its shadow DOM
-				const treeWc = parent.shadowRoot?.querySelector('kol-tree-wc');
-				if (treeWc) {
-					return treeWc as HTMLKolTreeWcElement & { invalidateOpenItemsCache(): void };
-				}
-				return undefined;
+			const tree = element.closest(KolTreeTag);
+			if (tree) {
+				return tree;
 			}
-			// Cross shadow boundary: go to shadow host, then to its parent
 			const shadowHost: Element | undefined = (element.getRootNode() as ShadowRoot)?.host;
 			if (!shadowHost || shadowHost === document.body) {
 				break;
 			}
-			element = shadowHost.parentElement;
+			element = shadowHost;
 		}
 		return undefined;
 	}
 
-	/**
-	 * Focuses the link element.
-	 */
-	@Method() async focus(options?: KolFocusOptions) {
-		if (this.host && this.linkElement) {
-			return this.linkElement.focus(options);
+	private setOpen(open: boolean): void {
+		if (this.hasChildren) {
+			this.open = open;
+			invalidateOpenItemsCache(this.getTree());
 		}
 	}
 
-	private async handleExpandClick(event: MouseEvent) {
-		event.preventDefault();
-		if (this.host && this.linkElement) {
-			await this.linkElement.focus();
+	// --- Event handling ---
+
+	private readonly handleAnchorClick = (): void => {
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.click, this.getRenderProp('href'));
 		}
-		await this.expand();
-	}
+	};
+
+	private readonly handleSlotchange = (): void => {
+		this.checkForChildren();
+	};
+
+	/* The chevron sits inside the anchor: prevent the navigation, keep the focus on the item. */
+	private readonly handleToggleClick = (event: MouseEvent): void => {
+		event.preventDefault();
+		const open = this.open;
+		void this.focus().then(() => this.setOpen(!open));
+	};
+
+	// --- Public methods ---
+
+	/**
+	 * Focuses the link element.
+	 */
+	@Method()
+	@directFocus('anchorRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	/**
 	 * Expands the tree item.
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async expand() {
-		if (this.state._hasChildren) {
-			this.state = {
-				...this.state,
-				_open: true,
-			};
-			// Invalidate the tree's cache of open items
-			void this.getTreeParent()?.invalidateOpenItemsCache?.();
-		}
-	}
-
-	private async handleCollapseClick(event: MouseEvent) {
-		event.preventDefault();
-		if (this.host && this.linkElement) {
-			await this.linkElement.focus();
-		}
-		await this.collapse();
+	public async expand(): Promise<void> {
+		this.setOpen(true);
 	}
 
 	/**
@@ -217,15 +157,8 @@ export class KolTreeItemWc implements TreeItemAPI {
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async collapse() {
-		if (this.state._hasChildren) {
-			this.state = {
-				...this.state,
-				_open: false,
-			};
-			// Invalidate the tree's cache of open items
-			void this.getTreeParent()?.invalidateOpenItemsCache?.();
-		}
+	public async collapse(): Promise<void> {
+		this.setOpen(false);
 	}
 
 	/**
@@ -233,7 +166,68 @@ export class KolTreeItemWc implements TreeItemAPI {
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async isOpen() {
-		return this.state._open ?? false;
+	public async isOpen(): Promise<boolean> {
+		return this.open;
+	}
+
+	// --- Render ---
+
+	public render(): JSX.Element {
+		return (
+			<Host>
+				<TreeItemFC
+					active={this.getRenderProp('active')}
+					ariaCurrent={this.ariaCurrent}
+					groupId={this.groupId}
+					handleAnchorClick={this.handleAnchorClick}
+					handleSlotchange={this.handleSlotchange}
+					handleToggleClick={this.handleToggleClick}
+					hasChildren={this.hasChildren}
+					href={this.getRenderProp('href')}
+					label={this.getRenderProp('label')}
+					level={this.level}
+					open={this.open}
+					refAnchor={this.anchorRef}
+				/>
+			</Host>
+		);
+	}
+
+	// --- Props + Watchers ---
+
+	/**
+	 * If set (to true) the tree item is the active one.
+	 */
+	@Prop() public _active?: OpenPropType;
+	@Watch('_active')
+	public watchActive(value?: OpenPropType): void {
+		activeProp.apply(value, (v) => this.setRenderProp('active', v));
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+	}
+
+	/**
+	 * Opens/expands the element when truthy, closes/collapses when falsy.
+	 */
+	@Prop() public _open?: OpenPropType;
+	@Watch('_open')
+	public watchOpen(value?: OpenPropType): void {
+		openProp.apply(value, (v) => (this.open = v));
+	}
+
+	/**
+	 * Defines the target URI of the link.
+	 */
+	@Prop() public _href!: HrefPropType;
+	@Watch('_href')
+	public watchHref(value?: HrefPropType): void {
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
 	}
 }

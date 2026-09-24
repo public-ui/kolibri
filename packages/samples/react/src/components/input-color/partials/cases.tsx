@@ -40,7 +40,7 @@ export const InputColorCases = forwardRef<HTMLKolInputColorElement, InputColorCa
 				<KolInputColor
 					{...props}
 					_msg={{ _type: 'error', _description: ERROR_MSG }}
-					_label="Color with error"
+					_label="Color with error and suggestions"
 					_suggestions="['#000000','#f08080', '#0000ff','#00ff00']"
 					_touched
 				/>

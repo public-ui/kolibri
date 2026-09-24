@@ -489,6 +489,23 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-tabs': {
+		elements: {
+			'button-create': {
+				modifiers: null;
+			};
+			'button-group': {
+				modifiers: null;
+			};
+			content: {
+				modifiers: null;
+			};
+			tab: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'align-bottom' | 'align-left' | 'align-right' | 'align-top'>;
+	};
 	'kol-toolbar': {
 		elements: {
 			item: {
@@ -496,6 +513,40 @@ export type KoliBriComponentsBemSchema = {
 			};
 		};
 		modifiers: Set<'orientation-horizontal' | 'orientation-vertical'>;
+	};
+	'kol-tree': {
+		elements: {
+			'treeview-navigation': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-tree-item': {
+		elements: {
+			children: {
+				modifiers: null;
+			};
+			link: {
+				modifiers: Set<'active' | 'first-level'>;
+			};
+			'link-inner': {
+				modifiers: null;
+			};
+			text: {
+				modifiers: null;
+			};
+			'toggle-button': {
+				modifiers: null;
+			};
+			'toggle-button-icon': {
+				modifiers: null;
+			};
+			'toggle-button-placeholder': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
 	};
 };
 
@@ -754,11 +805,38 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: null,
 	},
+	'kol-tabs': {
+		elements: {
+			'button-create': { modifiers: null },
+			'button-group': { modifiers: null },
+			content: { modifiers: null },
+			tab: { modifiers: null },
+		},
+		modifiers: new Set(['align-bottom', 'align-left', 'align-right', 'align-top']),
+	},
 	'kol-toolbar': {
 		elements: {
 			item: { modifiers: null },
 		},
 		modifiers: new Set(['orientation-horizontal', 'orientation-vertical']),
+	},
+	'kol-tree': {
+		elements: {
+			'treeview-navigation': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-tree-item': {
+		elements: {
+			children: { modifiers: null },
+			link: { modifiers: new Set(['active', 'first-level']) },
+			'link-inner': { modifiers: null },
+			text: { modifiers: null },
+			'toggle-button': { modifiers: null },
+			'toggle-button-icon': { modifiers: null },
+			'toggle-button-placeholder': { modifiers: null },
+		},
+		modifiers: null,
 	},
 };
 

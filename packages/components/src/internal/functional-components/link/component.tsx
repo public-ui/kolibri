@@ -17,7 +17,12 @@ import type { LinkApi } from './api';
 
 const linkBem = bem.forBlock('kol-link');
 
-export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
+/**
+ * Children replace the expert `<slot>`: a consumer that renders `LinkFC` inside its own shadow
+ * root passes the expert content directly (e.g. the tree item's chevron and label), since a slot
+ * there would only project that consumer's light DOM.
+ */
+export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) => {
 	const {
 		accessKey,
 		ariaControls,
@@ -102,7 +107,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props) => {
 				tabIndex={disabled ? -1 : tabIndex}
 			>
 				<SpanFC class="kol-link__text" badgeText={accessKey || shortKey} icons={icons} hideLabel={hideLabel} label={expertSlot ? '' : label || href}>
-					<slot name="expert" slot="expert"></slot>
+					{children.length > 0 ? children : <slot name="expert" slot="expert"></slot>}
 				</SpanFC>
 				{isExternal && (
 					<IconFC class="kol-link__icon" label={hideLabel ? '' : translateOpenLinkInTab} icons={'kolicon-link-external'} aria-hidden={hideLabel} />

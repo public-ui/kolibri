@@ -88,11 +88,11 @@ export function ReviewPanel({ entry, draft, status, onChange, pageUrl, prUrl, au
 
 			{needsDecision && (
 				<div className="review-actions" role="group" aria-label="Decision">
-					<button type="button" onClick={approve} aria-pressed={draftState(draft, key, item.hash, '') === 'approved'}>
-						Approve
+					<button type="button" onClick={approve} aria-pressed={draftState(draft, key, item.hash, '') === 'approved'} aria-keyshortcuts="a">
+						Approve <kbd>a</kbd>
 					</button>
-					<button type="button" onClick={reject} aria-pressed={draftState(draft, key, item.hash, '') === 'rejected'}>
-						Reject
+					<button type="button" onClick={reject} aria-pressed={draftState(draft, key, item.hash, '') === 'rejected'} aria-keyshortcuts="r">
+						Reject <kbd>r</kbd>
 					</button>
 					<button type="button" onClick={clear}>
 						Clear
