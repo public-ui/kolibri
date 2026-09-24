@@ -9,15 +9,13 @@ const { createHtmlReport } = axeHtmlReporter;
 const AXE_TAGS = ['best-practices', 'wcag2a', 'wcag2aa', 'wcag21aa'];
 
 const themeName = (process.env.THEME_EXPORT || 'default').toLocaleLowerCase();
-const colorScheme = (process.env.KOLIBRI_VISUAL_TESTS_COLOR_SCHEME || 'light').toLocaleLowerCase();
 
 /**
  * Contrast is a property of the theme, not of the component semantics. Only the light scheme of the
  * default theme is kept free of contrast violations; in every other theme and scheme the rule is
  * reported but does not fail the test.
  */
-const gatesColorContrast = themeName === 'default' && colorScheme === 'light';
-const isGating = (violation) => gatesColorContrast || violation.id !== 'color-contrast';
+const gatesColorContrast = (colorScheme) => themeName === 'default' && colorScheme === 'light';
 
 const rename = (snapshotName) => {
 	const result = snapshotName
@@ -72,10 +70,11 @@ test.use({
 
 ROUTES.forEach((options, route) => {
 	// Skip unnecessary axe tests
-	if (options?.axe?.skip === true || process.argv.includes('--update-snapshots')) {
+	if (options?.axe?.skip === true) {
 		return;
 	}
-	test(`snapshot for ${route}`, async ({ page }, testInfo) => {
+	test(`snapshot for ${route}`, async ({ colorScheme, page }, testInfo) => {
+		test.skip(['all', 'changed'].includes(testInfo.config.updateSnapshots), 'axe does not take part in the baseline generation');
 		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
 		await page.goto(`/#${route}${hideMenusParam}`);
 		await page.waitForLoadState('networkidle');
@@ -106,10 +105,12 @@ ROUTES.forEach((options, route) => {
 		});
 		logViolations(route, results.violations);
 
-		// Routes with known violations (sub-issues of #7452) stay reported but do not fail until they are fixed.
 		if (options?.axe?.skipFailures !== true) {
-			const failures = results.violations.filter(isGating).map((violation) => `${violation.id}: ${violation.help} (${violation.nodes.length} nodes)`);
-			expect(failures, `axe violations on ${route}`).toEqual([]);
+			const failures = results.violations
+				.filter((violation) => violation.id !== 'color-contrast' || gatesColorContrast(colorScheme))
+				.map((violation) => violation.id);
+			// The first line of the message is what the CI summary shows (see scripts/visual-review/assert-no-errors.mjs).
+			expect(failures, `axe violations on ${route}: ${failures.join(', ')}`).toEqual([]);
 		}
 	});
 });
