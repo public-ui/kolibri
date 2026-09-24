@@ -74,7 +74,6 @@ const EXCLUDE_TAGS = [
 	'kol-table-settings-wc',
 	'kol-table-stateless-wc',
 	'kol-tooltip-wc',
-	'kol-tree-wc',
 ];
 const BUNDLES: {
 	components: string[];

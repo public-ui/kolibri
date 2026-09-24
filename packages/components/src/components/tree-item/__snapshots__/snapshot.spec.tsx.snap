@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _active=false 1`] = `
+<kol-tree-item>
+  <template shadowrootmode="open">
+    <li class="kol-tree-item" style="--level: 0;">
+      <span class="kol-tree-item__link kol-tree-item__link--first-level">
+        <div class="kol-link kol-link--inline">
+          <a class="kol-link__interactive-element" href="https://example.com" role="treeitem" tabindex="-1">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__slot">
+                  <span class="kol-tree-item__link-inner">
+                    <span class="kol-tree-item__toggle-button-placeholder"></span>
+                    <span class="kol-tree-item__text">
+                      Label
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </span>
+      <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+        <slot></slot>
+      </ul>
+    </li>
+  </template>
+</kol-tree-item>
+`;
+
+exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _active=true 1`] = `
+<kol-tree-item>
+  <template shadowrootmode="open">
+    <li class="kol-tree-item" style="--level: 0;">
+      <span class="kol-tree-item__link kol-tree-item__link--active kol-tree-item__link--first-level">
+        <div class="kol-link kol-link--inline">
+          <a class="kol-link__interactive-element" href="https://example.com" role="treeitem" tabindex="0">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__slot">
+                  <span class="kol-tree-item__link-inner">
+                    <span class="kol-tree-item__toggle-button-placeholder"></span>
+                    <span class="kol-tree-item__text">
+                      Label
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </span>
+      <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+        <slot></slot>
+      </ul>
+    </li>
+  </template>
+</kol-tree-item>
+`;
+
+exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _open=false 1`] = `
+<kol-tree-item>
+  <template shadowrootmode="open">
+    <li class="kol-tree-item" style="--level: 0;">
+      <span class="kol-tree-item__link kol-tree-item__link--first-level">
+        <div class="kol-link kol-link--inline">
+          <a class="kol-link__interactive-element" href="https://example.com" role="treeitem" tabindex="-1">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__slot">
+                  <span class="kol-tree-item__link-inner">
+                    <span class="kol-tree-item__toggle-button-placeholder"></span>
+                    <span class="kol-tree-item__text">
+                      Label
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </span>
+      <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+        <slot></slot>
+      </ul>
+    </li>
+  </template>
+</kol-tree-item>
+`;
+
+exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _open=true 1`] = `
+<kol-tree-item>
+  <template shadowrootmode="open">
+    <li class="kol-tree-item" style="--level: 0;">
+      <span class="kol-tree-item__link kol-tree-item__link--first-level">
+        <div class="kol-link kol-link--inline">
+          <a class="kol-link__interactive-element" href="https://example.com" role="treeitem" tabindex="-1">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__slot">
+                  <span class="kol-tree-item__link-inner">
+                    <span class="kol-tree-item__toggle-button-placeholder"></span>
+                    <span class="kol-tree-item__text">
+                      Label
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </span>
+      <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+        <slot></slot>
+      </ul>
+    </li>
+  </template>
+</kol-tree-item>
+`;
+
+exports[`kol-tree-item should render with _label="Label" _href="https://example.com" 1`] = `
+<kol-tree-item>
+  <template shadowrootmode="open">
+    <li class="kol-tree-item" style="--level: 0;">
+      <span class="kol-tree-item__link kol-tree-item__link--first-level">
+        <div class="kol-link kol-link--inline">
+          <a class="kol-link__interactive-element" href="https://example.com" role="treeitem" tabindex="-1">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__slot">
+                  <span class="kol-tree-item__link-inner">
+                    <span class="kol-tree-item__toggle-button-placeholder"></span>
+                    <span class="kol-tree-item__text">
+                      Label
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </span>
+      <ul class="kol-tree-item__children" hidden="" id="tree-group-nonce" role="group">
+        <slot></slot>
+      </ul>
+    </li>
+  </template>
+</kol-tree-item>
+`;

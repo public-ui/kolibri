@@ -1,13 +1,12 @@
-import { KolTreeItemTag } from '../../../core/component-names';
-import type { TreeItemProps } from '../../../schema';
-import { executeSnapshotTests } from '../../../utils/testing';
+import { KolTreeItemTag } from '../../core/component-names';
+import type { TreeItemProps } from '../../schema';
+import { executeSnapshotTests } from '../../utils/testing';
 
-import { KolTreeItemWc } from '../component';
-import { KolTreeItem } from '../shadow';
+import { KolTreeItem } from './component';
 
 executeSnapshotTests<TreeItemProps>(
 	KolTreeItemTag,
-	[KolTreeItem, KolTreeItemWc],
+	[KolTreeItem],
 	[
 		{ _label: 'Label', _href: 'https://example.com' },
 		{ _label: 'Label', _href: 'https://example.com', _open: false },

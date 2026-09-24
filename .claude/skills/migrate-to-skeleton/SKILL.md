@@ -178,6 +178,7 @@ pnpm --filter @public-ui/components build
 - Kein `class`-Attribut am `<Host>`.
 - Externe Props mit Unterstrich (`_name`, `_label`).
 - **Render-Funktionen nutzen die Render-FunctionalComponents**: Rendert eine Komponente weitere Komponenten, geschieht das über die neuen FCs (`ButtonFC` statt `KolButtonWcTag`, `LinkFC` statt `KolLinkWcTag`) — wann immer möglich. Die Prop-Orchestrierung des ersetzten Tags (Prop-Factories, Behaviors, Refs) wandert an den renderenden WC oder einen FC-eigenen Fabrik-Typ (Vorbild: `internal/functional-components/breadcrumb/link-item.ts`). Nur wenn Theme-/Basis-Selektoren den Host-Knoten des `-wc`-Tags als Vorfahren brauchen und sich nicht FC-gleich schalten lassen, bleibt das Tag als begründete Ausnahme stehen (Fallstrick 8).
+- **PR-Label `release:engineering`**: Jeder Migrations-PR bekommt beim Anlegen das Label `release:engineering` — eine Skeleton-Migration ist eine interne/technische Änderung ohne API-Änderung und wird im Release-Changelog unter „Engineering“ gelistet. Fehlt das Label, landet der PR in der falschen Changelog-Rubrik.
 - **Keine Arbeitspläne einchecken**: Pläne sind lokale Arbeitsdokumente (ungetrackt, z. B. `.claude/plans/` im Arbeitsverzeichnis) und gehören nicht in Branch oder PR. Dauerhaft relevantes Wissen wird stattdessen in `reference/pitfalls.md` und diesem Skill destilliert.
 - **Kommentare folgen der Regel [Inline code documentation](../../../AGENTS.md#inline-code-documentation)**: so viel wie nötig, so wenig wie möglich; nur Ist-Zustand und Zukunft, nie die Entstehungsgeschichte oder den Diff; klar und widerspruchsfrei. Ein „der Vorgänger tat X“ wird zur Einschränkung umformuliert, die daraus heute folgt. Die öffentliche `@Prop`/`@Method`/`@Event`-JSDoc bleibt unverändert (Abschnitt 5).
 - Tests ko-lokalisiert bei den Komponentendateien; kein `data-testid` im Markup — stabile BEM-Selektoren verwenden (ARC42 DD13/DD14).
@@ -203,6 +204,7 @@ pnpm --filter @public-ui/components build
 - [ ] Tests ko-lokalisiert und aktualisiert
 - [ ] `pnpm format`, `pnpm lint`, `test:unit` erfolgreich
 - [ ] Pixel-Gate erfüllt oder als offene Arbeit dokumentiert (`zero-visual-delta-handoff`)
+- [ ] PR trägt das Label `release:engineering`
 
 ## 10. Ergebnisbericht
 
@@ -219,7 +221,7 @@ Zum Abschluss liefern:
 **Im Skill:**
 
 - `reference/patterns.md` — Prop-Triangle, WC-Orchestrator, `StateAccess`/`stateLess`, Behavior-Lebenszyklus, Prop-Definition, Ziel-Dateistruktur
-- `reference/pitfalls.md` — 14 Fallstricke, jeder schon einmal als Regression aufgetreten
+- `reference/pitfalls.md` — 15 Fallstricke, jeder schon einmal als Regression aufgetreten
 
 **Im Repo** (Anker in `packages/components/src/components/_skeleton/ARC42.md`):
 

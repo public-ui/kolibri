@@ -145,3 +145,26 @@ aus — Endlosschleife. Der Wrapper dispatchte auf seinem Host, einem **Vorfahre
 auf dem Knoten dispatchen, der den Wrapper ersetzt (Vorbild: die Box um jeden Tab-Button in
 `internal/functional-components/tabs/button-item.ts`). Die Events sind `bubbles` + `composed`, für
 Konsumenten außerhalb des Shadow-Roots ändert sich damit nichts.
+
+## 15. Beim Ablösen eines `shadow:false`-Wrappers wandert Slot-Inhalt, Slot-Lesen und `slotchange`
+
+Drei Stellen, die beim Tausch `kol-*-wc` → FC still brechen (belegt durch die Tree-Migration):
+
+- **Expert-Slot-Inhalt.** Ein Konsument, der `<span slot="expert">…</span>` in einen
+  `shadow:false`-Wrapper legt (`kol-tree-item` in `kol-link-wc`), verlässt sich auf Stencils
+  Scoped-Slot-Relocation. Im eigenen Shadow-Root des Konsumenten projiziert ein `<slot name="expert">`
+  nur dessen Light-DOM — der Inhalt käme nie an. `LinkFC` nimmt dafür Kinder an und rendert sie an
+  der Stelle seines Expert-Slots; ohne Kinder bleibt der Slot.
+- **Soll-DOM richtig lesen.** Der Stencil-Jest-Mock relociert keine Slots: im Jest-Snapshot des
+  Vorgängers steht der Expert-Inhalt als Geschwister **vor** dem Link-Markup. Das echte Browser-DOM
+  (Inhalt **in** `kol-span__slot`) zeigt der Hydrate-SSR-Snapshot. Gegen den vergleichen, nicht gegen
+  den Jest-Snapshot.
+- **Slot-Zugriffe aus dem Lebenszyklus.** Der `-wc`-Wrapper fand den Slot des äußeren Elements schon
+  in `componentWillLoad` (er war sein Light-DOM-Kind). Im migrierten WC ist der eigene Slot dann
+  noch nicht gerendert — Zuordnungen (`assignedElements`) aus `host.children` lesen. `slotchange` ist
+  nicht `composed` und erreicht den `<Host>` nicht mehr: den Handler an den `<slot>` im FC hängen.
+
+Und: Eine `@Method`, die nur ein internes `-wc`-Element trug (`invalidateOpenItemsCache()`), wird beim
+Rückbau **nicht** auf das öffentliche Element verschoben — das wäre neue öffentliche API. Ein
+Modul-Register (Vorbild `tree/open-items-cache.ts`, Muster wie `link/ariaCurrentService.ts`) hält
+den Aufruf intern.

@@ -1060,6 +1060,8 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['breadcrumb', 'component.tsx'],
 		['form', 'component.tsx'],
 		['skip-nav', 'component.tsx'],
+		['tree', 'component.tsx'],
+		['tree-item', 'component.tsx'],
 		['button-link', 'component.tsx'],
 		['link-button', 'component.tsx'],
 		['split-button', 'component.tsx'],
@@ -1343,12 +1345,91 @@ const KOL_TABS_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	},
 };
 
+/**
+ * Pinned public API of `kol-tree` — byte-identical to the predecessor `shadow.tsx` on the develop
+ * branch (1 required prop + focus). The cache reset the tree items call lives in
+ * `tree/open-items-cache.ts`, not on the element: the predecessor's `invalidateOpenItemsCache()`
+ * method sat on the internal `kol-tree-wc`, which is gone.
+ */
+const KOL_TREE_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the first focusable tree item.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+};
+
+/**
+ * Pinned public API of `kol-tree-item` — byte-identical to the predecessor `shadow.tsx` on the
+ * develop branch (4 props + focus, expand, collapse, isOpen), including the `OpenPropType`
+ * alias on `_active`.
+ */
+const KOL_TREE_ITEM_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Focuses the link element.',
+	},
+	expand: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Expands the tree item.',
+	},
+	collapse: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Collapses the tree item.',
+	},
+	isOpen: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Returns whether the tree item is expanded.',
+	},
+	_active: {
+		kind: 'prop',
+		type: 'OpenPropType',
+		required: false,
+		doc: 'If set (to true) the tree item is the active one.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_open: {
+		kind: 'prop',
+		type: 'OpenPropType',
+		required: false,
+		doc: 'Opens/expands the element when truthy, closes/collapses when falsy.',
+	},
+	_href: {
+		kind: 'prop',
+		type: 'HrefPropType',
+		required: true,
+		doc: 'Defines the target URI of the link.',
+	},
+};
+
 describe.each([
 	['kol-button-link', 'button-link', 'ButtonLinkProps', KOL_BUTTON_LINK_PUBLIC_API],
 	['kol-link-button', 'link-button', 'LinkButtonProps', KOL_LINK_BUTTON_PUBLIC_API],
 	['kol-form', 'form', 'FormProps', KOL_FORM_PUBLIC_API],
 	['kol-split-button', 'split-button', 'SplitButtonProps', KOL_SPLIT_BUTTON_PUBLIC_API],
 	['kol-tabs', 'tabs', 'TabsProps', KOL_TABS_PUBLIC_API],
+	['kol-tree', 'tree', 'TreeProps', KOL_TREE_PUBLIC_API],
+	['kol-tree-item', 'tree-item', 'TreeItemProps', KOL_TREE_ITEM_PUBLIC_API],
 	['kol-badge', 'badge', 'BadgeProps', KOL_BADGE_PUBLIC_API],
 	['kol-card', 'card', 'CardProps', KOL_CARD_PUBLIC_API],
 	['kol-dialog', 'dialog', 'DialogProps', KOL_DIALOG_PUBLIC_API],
