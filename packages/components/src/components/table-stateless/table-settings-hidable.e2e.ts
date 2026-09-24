@@ -74,7 +74,7 @@ test.describe('kol-table-settings hidable functionality', () => {
 		await expect(errorMessage).not.toBeVisible();
 
 		// Verify that only ID column is visible in the table
-		const tableColumns = page.locator('kol-table-stateless-wc th');
+		const tableColumns = page.locator('kol-table-stateless th');
 		await expect(tableColumns).toHaveCount(1);
 		await expect(tableColumns.first()).toHaveText('ID');
 	});

@@ -4,7 +4,14 @@ import { KolAlertWcTag, KolButtonWcTag, KolDialogWcTag, KolInputCheckboxTag, Kol
 import { translate } from '../../i18n';
 import type { KoliBriTableHeaderCell } from '../../schema';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
-import { parseColumnWidth } from './controller';
+
+/**
+ * Parses a column width and returns its numeric value.
+ * Returns undefined if the width is not finite or not positive.
+ */
+const parseColumnWidth = (width: number | undefined): number | undefined => {
+	return Number.isFinite(width) && width !== undefined && width > 0 ? width : undefined;
+};
 
 /**
  * @internal

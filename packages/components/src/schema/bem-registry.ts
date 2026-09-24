@@ -376,6 +376,100 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-table': {
+		/**
+		 * Variant classes (`kol-table--<variant>`) are consumer-defined and therefore not part of the
+		 * schema; the functional component merges them onto the root as plain classes.
+		 */
+		elements: {
+			body: {
+				modifiers: null;
+			};
+			caption: {
+				modifiers: null;
+			};
+			cell: {
+				modifiers: Set<
+					| 'actions'
+					| 'align-center'
+					| 'align-justify'
+					| 'align-left'
+					| 'align-right'
+					| 'ascending'
+					| 'body'
+					| 'descending'
+					| 'header'
+					| 'none'
+					| 'other'
+					| 'selection'
+					| 'states'
+					| 'sticky-left'
+					| 'sticky-right'
+				>;
+			};
+			'cell-actions': {
+				modifiers: null;
+			};
+			'cell-states': {
+				modifiers: null;
+			};
+			'focus-element': {
+				modifiers: null;
+			};
+			footer: {
+				modifiers: null;
+			};
+			head: {
+				modifiers: null;
+			};
+			'head-row': {
+				modifiers: null;
+			};
+			loader: {
+				modifiers: Set<'shown'>;
+			};
+			row: {
+				modifiers: Set<'body' | 'footer'>;
+			};
+			'scroll-container': {
+				modifiers: null;
+			};
+			selection: {
+				modifiers: Set<'checked' | 'indeterminate'>;
+			};
+			'selection-icon': {
+				modifiers: null;
+			};
+			'selection-input': {
+				modifiers: Set<'checkbox' | 'radio'>;
+			};
+			'selection-input-tooltip': {
+				modifiers: null;
+			};
+			'selection-label': {
+				modifiers: Set<'disabled'>;
+			};
+			sort: {
+				modifiers: null;
+			};
+			'sort-button': {
+				modifiers: null;
+			};
+			'sort-order': {
+				modifiers: null;
+			};
+			spacer: {
+				modifiers: Set<'foot' | 'head'>;
+			};
+			'spacer-line': {
+				modifiers: Set<'foot' | 'head'>;
+			};
+			table: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 };
 
 /**
@@ -576,6 +670,50 @@ const BEM: KoliBriComponentsBemSchema = {
 			loader: { modifiers: null },
 			spinner: { modifiers: new Set(['cycle', 'dot', 'none']) },
 			'spinner-element': { modifiers: new Set(['1', '2', '3', 'neutral']) },
+		},
+		modifiers: null,
+	},
+	'kol-table': {
+		elements: {
+			body: { modifiers: null },
+			caption: { modifiers: null },
+			cell: {
+				modifiers: new Set([
+					'actions',
+					'align-center',
+					'align-left',
+					'align-right',
+					'ascending',
+					'body',
+					'descending',
+					'header',
+					'none',
+					'selection',
+					'states',
+					'sticky-left',
+					'sticky-right',
+				]),
+			},
+			'cell-actions': { modifiers: null },
+			'cell-states': { modifiers: null },
+			'focus-element': { modifiers: null },
+			footer: { modifiers: null },
+			head: { modifiers: null },
+			'head-row': { modifiers: null },
+			loader: { modifiers: new Set(['shown']) },
+			row: { modifiers: new Set(['body', 'footer']) },
+			'scroll-container': { modifiers: null },
+			selection: { modifiers: new Set(['checked', 'indeterminate']) },
+			'selection-icon': { modifiers: null },
+			'selection-input': { modifiers: new Set(['checkbox', 'radio']) },
+			'selection-input-tooltip': { modifiers: null },
+			'selection-label': { modifiers: new Set(['disabled']) },
+			sort: { modifiers: null },
+			'sort-button': { modifiers: null },
+			'sort-order': { modifiers: null },
+			spacer: { modifiers: new Set(['foot', 'head']) },
+			'spacer-line': { modifiers: new Set(['foot', 'head']) },
+			table: { modifiers: null },
 		},
 		modifiers: null,
 	},

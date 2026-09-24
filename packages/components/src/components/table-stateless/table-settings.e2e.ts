@@ -112,7 +112,7 @@ test.describe('kol-table-settings', () => {
 			await applyButton.click();
 
 			// Verify name column is hidden in the table
-			const nameColumn = page.locator('kol-table-stateless-wc th').filter({ hasText: 'Name' });
+			const nameColumn = page.locator('kol-table-stateless th').filter({ hasText: 'Name' });
 			await expect(nameColumn).not.toBeVisible();
 		});
 
@@ -167,7 +167,7 @@ test.describe('kol-table-settings', () => {
 			await applyButton.click();
 
 			// Verify width is applied
-			const idColumn = page.locator('kol-table-stateless-wc th').filter({ hasText: 'ID' });
+			const idColumn = page.locator('kol-table-stateless th').filter({ hasText: 'ID' });
 			await expect(idColumn).toHaveCSS('width', '50px');
 		});
 
@@ -183,7 +183,7 @@ test.describe('kol-table-settings', () => {
 			await applyButton.click();
 
 			// The column should fall back to auto width instead of collapsing.
-			const nameColumn = page.locator('kol-table-stateless-wc th').filter({ hasText: 'Name' });
+			const nameColumn = page.locator('kol-table-stateless th').filter({ hasText: 'Name' });
 			const box = await nameColumn.boundingBox();
 			expect(box?.width ?? 0).toBeGreaterThan(10);
 		});
@@ -219,7 +219,7 @@ test.describe('kol-table-settings', () => {
 			await applyButton.click();
 
 			// Verify column order in table
-			const columns = page.locator('kol-table-stateless-wc th');
+			const columns = page.locator('kol-table-stateless th');
 			await expect(columns.nth(0)).toHaveText('Name');
 			await expect(columns.nth(1)).toHaveText('ID');
 		});
@@ -237,7 +237,7 @@ test.describe('kol-table-settings', () => {
 			await applyButton.click();
 
 			// Verify column order in table
-			const columns = page.locator('kol-table-stateless-wc th');
+			const columns = page.locator('kol-table-stateless th');
 			await expect(columns.nth(0)).toHaveText('Name');
 			await expect(columns.nth(1)).toHaveText('ID');
 		});
