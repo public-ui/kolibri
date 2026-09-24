@@ -206,6 +206,8 @@ grep -rn "@include" packages/themes/*/src packages/components/src --include='*.s
 - **unstyled-Theme-Spezifika**: kein Build-Schritt (`theme.ts` direkt, kein `THEME_CSS`); Route `icon/font` wird für `THEME_EXPORT=UNSTYLED` übersprungen; zeigt NUR den Basis-Layer — jede visuelle Änderung deutet auf DOM-Umbauten im Basis-Styling hin; Docker-Support ist über `discoverThemes()` (liest auch `packages/unstyled`) vorhanden. Die Basis ist zudem scheme-neutral: `unstyled`-Snapshots dürfen unter `KOLIBRI_VISUAL_TESTS_COLOR_SCHEME=light` und `=dark` nicht differieren; ein Diff zwischen beiden Läufen ist ein Fehler in `components`, nicht im Test.
 - **Farbwechsel im Diff gehört nie in die Basis**: Zeigt die Farbprobe `exp=(r,g,b) ≠ act=(r,g,b)` bei unveränderter Geometrie, liegt die Ursache in der Theme-Schicht (Token, Mixin, Include-Kette) — niemals durch Farben oder gar Dark/Light-Regeln (`prefers-color-scheme`, `color-scheme`, `light-dark()`) in `components` „reparieren“. Die Basis ist layout-only und scheme-neutral (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
 
+- **Kommentare beim Umbau**: Verschobene oder angepasste Kommentare folgen [Inline code documentation](../../../AGENTS.md#inline-code-documentation) — sie beschreiben den neuen Ist-Zustand, nicht den Umbau.
+
 ## 7b. Was der Pixel-Gate strukturell **nicht** sieht
 
 Snapshots fotografieren Ruhezustände. Hover, `:active`, `:focus`, `:focus-visible` und
@@ -853,6 +855,43 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
   409 unchanged / 0 changed fuer alle sieben Pakete, Baseline `b08fab9f7c` (develop), Commit
   `0ec6873ec1`. Lokal ohne Docker: Components 998/998, Hydrate-SSR 102/102 (unveraendert),
   `pnpm check:skeleton-selectors` sauber.
+
+### 2026-09-22 — Skeleton-Migration kol-drawer (DialogFC als Huelle, CardFC direkt): 5 Pakete, 0 Diffs ab Start
+
+- **Ausgangslage**: `kol-drawer` war der letzte Konsument des transitionalen `kol-card-wc`. Der
+  Ausbau aendert DOM (`<kol-card-wc class=…>` faellt weg), der Rest der Migration nicht.
+- **Ursachen & Fix-Muster**: keine Theme-Runde noetig, wieder ueber **Wrapper-Tausch statt
+  Klassen-Merge** (wie kol-split-button und kol-form). Vor dem Schreiben des FC gegreppt: desy
+  (`.kol-drawer__wrapper .kol-card { background-color; display: grid }`) und kern
+  (`.kol-drawer__wrapper .kol-card { border: 0 }`) greifen auf die Card **ueber** den Wrapper zu.
+  `CardFC` nimmt zwar ein `class` entgegen und der Doc-Kommentar lud sogar dazu ein, den Drawer-Hook
+  dort hineinzureichen — genau das haette beide Regeln getoetet (Muster 6a-8). Stattdessen rendert
+  der FC ein `<div class="kol-drawer__wrapper …">` genau dort, wo das Custom Element stand.
+  Box-Baum identisch, weil `position: fixed` unbekanntes Element und `div` gleichermassen
+  blockifiziert.
+- **Neu gelernt (Frueher-gewusst-Test bestanden)**: **Ein Doc-Kommentar, der eine Klasse auf den
+  FC-Root einlaedt, ist keine Freigabe — die Selektoren entscheiden.** Der `CardFC`-Kommentar
+  beschrieb den Klassen-Merge als vorgesehenen Weg fuer den Drawer; der Grep zeigte das Gegenteil.
+  Erst greppen, dann dem Kommentar glauben (und ihn danach korrigieren).
+- **Neu gelernt #2**: Ein `@State()`-Feld darf nicht heissen wie eine `@Method()` derselben
+  Komponente — `@State() open` ueberschreibt `open()` still, und der Fehler zeigt sich erst als
+  „drawer.open is not a function" im Test, nicht im Build. Hier: State `expanded`.
+- **Theme-Spezifika**: keine.
+- **Abnahme-Evidenz (CI, massgeblich)**: PR #10976, Visual-Review-Bot „No visual changes", je
+  409 unchanged / 0 changed fuer alle sieben Pakete, Baseline `4cab714e75` (develop), Commit
+  `ad49dc66c1`; `build-and-check` und `e2e-tests` gruen.
+- **Evidenz (lokal, Docker)**: A/B ueber einen develop-Worktree, weil Baselines nicht im Git liegen
+  (Erfahrung #32): Baselines aus `origin/develop` erzeugen, in den Branch-Checkout kopieren, dann
+  `--check`. Je Paket `--grep drawer` → 8 passed, 0 failed, Exit 0 fuer bwst, default, desy, kern,
+  unstyled (`PHASE_A_EXIT=0`, `PHASE_C_EXIT=0`). ecl liess sich nicht greppen (sein `test` ist
+  `npm-run-all2`) → CI. Der Scope ist vollstaendig, weil der Jest-Snapshot des Drawers vor dem Umbau
+  MIT registriertem `KolCardWc` eingefroren wurde (Form-Lehre 2026-09-22) und den Diff exakt auf
+  `<kol-card-wc>` → `<div>` festnagelte; Dialog/Modal/Card-Snapshots blieben byte-gleich.
+- **Falle, die den Voll-Lauf kostete**: Route `input-text/hide-msg?noColumns` faellt auf **develop**
+  selbst aus („no data-visual-block containers found"). `snapshots-docker.mjs` schreibt bei einem
+  fehlgeschlagenen Lauf nichts zurueck, und `--all` faehrt die Themes unter `set -e` — ein einziger
+  kaputter Base-Route-Fehler bricht damit die Baseline-Erzeugung aller folgenden Themes ab. Wer
+  lokal einen Voll-Lauf braucht, muss die Route vorher fixen oder ausschliessen.
 
 ### 2026-09-23 — Skeleton-Migration kol-tabs (kol-button-wc → ButtonFC, PR #10991): alle 6 Pakete, 0 Pixel-Diffs ab Start
 

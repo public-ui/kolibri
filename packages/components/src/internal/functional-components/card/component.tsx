@@ -44,8 +44,9 @@ export type CardFCProps = FunctionalComponentProps<CardApi> & {
  * ancestor of `.kol-button`. It therefore stays on a wrapper around `ButtonFC` rather than merging
  * into the button's own root — drop the wrapper once the hook itself moves onto the button root.
  *
- * A forwarded `class` lands on the root, so a consumer rendering `CardFC` in place of
- * `kol-card-wc` keeps its own hook (the drawer marks the card `kol-drawer__wrapper`).
+ * A forwarded `class` lands on the root, so a consumer that wants its own hook on the card itself
+ * can add one. A hook that themes address as an *ancestor* of `.kol-card` must not go here — it
+ * belongs on a wrapper around `CardFC`, the way the drawer keeps `.kol-drawer__wrapper`.
  */
 export const CardFC: FC<CardFCProps> = (props, children) => {
 	const {

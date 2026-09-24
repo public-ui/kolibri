@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Listen, Method, Prop, State, Watch } from '@stencil/core';
 import type {
@@ -41,7 +42,7 @@ import { translate } from '../../i18n';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import clsx from '../../utils/clsx';
-import { createUniqueId } from '../../utils/dev.utils';
+import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
 import { SingleSelectController } from './controller';
@@ -217,7 +218,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 
 	private _focusedOptionIndex: number = -1;
 
-	private moveFocus(delta: number) {
+	private moveFocus(delta: number, searchStep: number = 1) {
 		if (!this._filteredOptions) {
 			return;
 		}
@@ -242,7 +243,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 				break;
 			}
 
-			newIndex += delta;
+			newIndex += searchStep;
 			iterations++;
 		}
 
@@ -305,11 +306,11 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 		return {
 			'aria-activedescendant': this._isOpen && this._focusedOptionIndex >= 0 ? `option-${this._focusedOptionIndex}` : undefined,
 			'aria-autocomplete': 'both',
-			'aria-controls': this.state._id + '-listbox',
+			'aria-controls': createRelatedUniqueId(this.state._id, 'listbox'),
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
 			'aria-expanded': this._isOpen ? 'true' : 'false',
 			'aria-label': this.state._hideLabel && typeof this.state._label === 'string' ? this.state._label : undefined,
-			'aria-labelledby': this.state._id + '-label',
+			'aria-labelledby': createRelatedUniqueId(this.state._id, 'label'),
 			'aria-keyshortcuts': this.state._shortKey,
 			accessKey: this.state._accessKey,
 			autocapitalize: 'off',
@@ -382,7 +383,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 							onKeyDown={this.handleKeyDownDropdown.bind(this)}
 							style={{ '--visible-options': `${this._rows ?? 5}` }}
 							hidden={!this._isOpen || isDisabled}
-							id={this.state._id + '-listbox'}
+							id={createRelatedUniqueId(this.state._id, 'listbox')}
 						>
 							{Array.isArray(this._filteredOptions) && this._filteredOptions.length > 0 ? (
 								this._filteredOptions.map((option, index) => (
@@ -457,7 +458,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 			case 'Up':
 			case 'ArrowUp': {
 				this.blockSuggestionMouseOver = true;
-				handleEvent(true, () => this.moveFocus(-1));
+				handleEvent(true, () => this.moveFocus(-1, -1));
 				break;
 			}
 			case 'Tab':
@@ -495,8 +496,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
-						this._focusedOptionIndex = 0;
-						this.focusOption(this._focusedOptionIndex);
+						this.moveFocus(this._focusedOptionIndex * -1);
 					}
 				});
 				break;
@@ -505,8 +505,8 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 				this.blockSuggestionMouseOver = true;
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
-						this._focusedOptionIndex = this._filteredOptions ? this._filteredOptions.length - 1 : 0;
-						this.focusOption(this._focusedOptionIndex);
+						const stepToEnd = this._filteredOptions ? this._filteredOptions.length - 1 - this._focusedOptionIndex : 0;
+						this.moveFocus(stepToEnd, -1);
 					}
 				});
 				break;
@@ -518,7 +518,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 			}
 			case 'PageDown': {
 				this.blockSuggestionMouseOver = true;
-				handleEvent(undefined, () => this._isOpen && this.moveFocus(10));
+				handleEvent(undefined, () => this._isOpen && this.moveFocus(10, -1));
 				break;
 			}
 		}
