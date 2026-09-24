@@ -1,0 +1,254 @@
+@use "variables" as *;
+
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  src:
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?2xhh9z') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?2xhh9z') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?2xhh9z##{$icomoon-font-family}') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-palette {
+  &:before {
+    content: $icon-palette; 
+  }
+}
+.icon-remove {
+  &:before {
+    content: $icon-remove; 
+  }
+}
+.icon-save {
+  &:before {
+    content: $icon-save; 
+  }
+}
+.icon-settings {
+  &:before {
+    content: $icon-settings; 
+  }
+}
+.icon-unfold-less {
+  &:before {
+    content: $icon-unfold-less; 
+  }
+}
+.icon-view-timeline {
+  &:before {
+    content: $icon-view-timeline; 
+  }
+}
+.icon-dark-mode {
+  &:before {
+    content: $icon-dark-mode; 
+  }
+}
+.icon-light-mode {
+  &:before {
+    content: $icon-light-mode; 
+  }
+}
+.icon-brightness-medium {
+  &:before {
+    content: $icon-brightness-medium; 
+  }
+}
+.icon-warning {
+  &:before {
+    content: $icon-warning; 
+  }
+}
+.icon-visibility-off {
+  &:before {
+    content: $icon-visibility-off; 
+  }
+}
+.icon-visibility {
+  &:before {
+    content: $icon-visibility; 
+  }
+}
+.icon-success {
+  &:before {
+    content: $icon-success; 
+  }
+}
+.icon-sign-language {
+  &:before {
+    content: $icon-sign-language; 
+  }
+}
+.icon-search {
+  &:before {
+    content: $icon-search; 
+  }
+}
+.icon-question-mark {
+  &:before {
+    content: $icon-question-mark; 
+  }
+}
+.icon-open-in-new {
+  &:before {
+    content: $icon-open-in-new; 
+  }
+}
+.icon-more-vert {
+  &:before {
+    content: $icon-more-vert; 
+  }
+}
+.icon-mail {
+  &:before {
+    content: $icon-mail; 
+  }
+}
+.icon-logout {
+  &:before {
+    content: $icon-logout; 
+  }
+}
+.icon-keyboard-double-arrow-right {
+  &:before {
+    content: $icon-keyboard-double-arrow-right; 
+  }
+}
+.icon-keyboard-double-arrow-left {
+  &:before {
+    content: $icon-keyboard-double-arrow-left; 
+  }
+}
+.icon-info {
+  &:before {
+    content: $icon-info; 
+  }
+}
+.icon-help {
+  &:before {
+    content: $icon-help; 
+  }
+}
+.icon-home {
+  &:before {
+    content: $icon-home; 
+  }
+}
+.icon-edit {
+  &:before {
+    content: $icon-edit; 
+  }
+}
+.icon-easy-language {
+  &:before {
+    content: $icon-easy-language; 
+  }
+}
+.icon-drive-folder-upload {
+  &:before {
+    content: $icon-drive-folder-upload; 
+  }
+}
+.icon-draft {
+  &:before {
+    content: $icon-draft; 
+  }
+}
+.icon-download {
+  &:before {
+    content: $icon-download; 
+  }
+}
+.icon-delete {
+  &:before {
+    content: $icon-delete; 
+  }
+}
+.icon-danger {
+  &:before {
+    content: $icon-danger; 
+  }
+}
+.icon-content-copy {
+  &:before {
+    content: $icon-content-copy; 
+  }
+}
+.icon-close {
+  &:before {
+    content: $icon-close; 
+  }
+}
+.icon-chevron-right {
+  &:before {
+    content: $icon-chevron-right; 
+  }
+}
+.icon-chevron-left {
+  &:before {
+    content: $icon-chevron-left; 
+  }
+}
+.icon-checklist {
+  &:before {
+    content: $icon-checklist; 
+  }
+}
+.icon-check {
+  &:before {
+    content: $icon-check; 
+  }
+}
+.icon-calendar-today {
+  &:before {
+    content: $icon-calendar-today; 
+  }
+}
+.icon-autorenew {
+  &:before {
+    content: $icon-autorenew; 
+  }
+}
+.icon-arrow-back {
+  &:before {
+    content: $icon-arrow-back; 
+  }
+}
+.icon-arrow-forward {
+  &:before {
+    content: $icon-arrow-forward; 
+  }
+}
+.icon-arrow-up {
+  &:before {
+    content: $icon-arrow-up; 
+  }
+}
+.icon-arrow-down {
+  &:before {
+    content: $icon-arrow-down; 
+  }
+}
+.icon-add {
+  &:before {
+    content: $icon-add; 
+  }
+}
+
