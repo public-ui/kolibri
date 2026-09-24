@@ -1,0 +1,1 @@
+import{g as e,i as t}from"./variant-quote-3AOFTicc-CeTiK0pw.js";var n=t(`href`,``,e,e=>typeof e==`string`,{required:!0}),r=t(`href`,``,e,e=>typeof e==`string`);export{r as n,n as t};
