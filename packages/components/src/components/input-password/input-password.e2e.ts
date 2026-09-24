@@ -148,10 +148,11 @@ test.describe('kol-input-password', () => {
 			],
 			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
 			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
 			initialValue: undefined,
 			formData: [],
 			experimentalFormData: [['field', TEST_VALUE]],
+			syncedValue: TEST_VALUE,
 		},
-		testValue: TEST_VALUE,
 	});
 });

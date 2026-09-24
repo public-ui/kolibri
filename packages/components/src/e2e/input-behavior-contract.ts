@@ -27,19 +27,24 @@ type BehaviorContract = {
 	formData: [string, string][];
 	/** `FormData` entries as in `formData`, additionally in experimental mode. */
 	experimentalFormData: [string, string][];
+	/** `_touched` of the host once the focus has left the field. */
+	touchedAfterBlur: boolean;
 	/** `_value` of the host after the first render without a preset `_value`. */
 	initialValue: unknown;
+	/** `value` of the `_syncValueBySelector` target after entering the test value in experimental mode. */
+	syncedValue: string;
 };
 
 type TestInputBehaviorContractOptions = {
+	/** Attributes every rendered field needs besides `_label`, e.g. `_options`. */
+	additionalProperties?: string;
 	componentName: string;
-	/** Enters `testValue` into the interactive element. */
+	/** Enters the test value into the interactive element. */
 	fillAction: (input: Locator, page: Page & E2EPage) => Promise<void>;
 	/** Selects the interactive element inside the shadow root. */
 	inputSelector: string;
 	/** Behavior of the legacy implementation, which every migration must keep unchanged. */
 	pinned: BehaviorContract;
-	testValue: string;
 };
 
 /** KoliBri `CustomEvent` dispatched on the host. */
@@ -58,19 +63,21 @@ const startRecording = async (host: Locator) => {
 	await host.evaluate((element: HTMLElement & { _on?: unknown }, eventTypes: string[]) => {
 		const entries: ContractEntry[] = [];
 		(window as RecordedWindow).__contract = entries;
+		/* Playwright serializes a `FileList` as an empty object, so files are recorded by name. */
+		const serializable = (value: unknown): unknown => (value instanceof FileList ? Array.from(value, (file) => file.name) : value);
 		eventTypes.forEach((type) => {
 			element.addEventListener(type, (event: Event) => {
 				entries.push(
-					event instanceof CustomEvent ? { source: 'event', type, custom: true, detail: event.detail as unknown } : { source: 'event', type, custom: false },
+					event instanceof CustomEvent ? { source: 'event', type, custom: true, detail: serializable(event.detail) } : { source: 'event', type, custom: false },
 				);
 			});
 		});
 		element._on = {
 			onBlur: () => entries.push({ source: 'callback', type: 'blur' }),
-			onChange: (_event: Event, value?: unknown) => entries.push({ source: 'callback', type: 'change', value }),
+			onChange: (_event: Event, value?: unknown) => entries.push({ source: 'callback', type: 'change', value: serializable(value) }),
 			onClick: () => entries.push({ source: 'callback', type: 'click' }),
 			onFocus: () => entries.push({ source: 'callback', type: 'focus' }),
-			onInput: (_event: Event, value?: unknown) => entries.push({ source: 'callback', type: 'input', value }),
+			onInput: (_event: Event, value?: unknown) => entries.push({ source: 'callback', type: 'input', value: serializable(value) }),
 			onKeyDown: () => entries.push({ source: 'callback', type: 'keydown' }),
 		};
 	}, RECORDED_EVENTS);
@@ -111,15 +118,17 @@ const readFormData = (page: Page) =>
  * migration (G0 of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`) and must stay green unchanged through the migration.
  */
 const testInputBehaviorContract = <ElementType extends { _touched?: boolean; _value?: unknown } & HTMLElement>({
+	additionalProperties = '',
 	componentName,
 	fillAction,
 	inputSelector,
 	pinned,
-	testValue,
 }: TestInputBehaviorContractOptions) => {
+	const field = (attributes = '') => `<${componentName} _label="Input" ${additionalProperties} ${attributes}></${componentName}>`;
+
 	test.describe('Behavior contract', () => {
 		test('emits the pinned events and callbacks while editing', async ({ page }) => {
-			await setContentWithRetry(page, `<${componentName} _label="Input"></${componentName}><button id="outside">Outside</button>`);
+			await setContentWithRetry(page, `${field()}<button id="outside">Outside</button>`);
 			const host = page.locator(componentName);
 			const input = page.locator(inputSelector);
 			await startRecording(host);
@@ -136,7 +145,7 @@ const testInputBehaviorContract = <ElementType extends { _touched?: boolean; _va
 			/* See https://github.com/microsoft/playwright/issues/33864 */
 			test.skip(browserName === 'firefox', 'Clicking on some native inputs, e.g. input[type=color], in Firefox currently makes the page close itself.');
 
-			await setContentWithRetry(page, `<${componentName} _label="Input"></${componentName}>`);
+			await setContentWithRetry(page, field());
 			await startRecording(page.locator(componentName));
 
 			await page.locator(inputSelector).click();
@@ -146,7 +155,7 @@ const testInputBehaviorContract = <ElementType extends { _touched?: boolean; _va
 		});
 
 		test('emits the pinned events and callbacks on keydown', async ({ page }) => {
-			await setContentWithRetry(page, `<${componentName} _label="Input"></${componentName}>`);
+			await setContentWithRetry(page, field());
 			await startRecording(page.locator(componentName));
 
 			await page.locator(inputSelector).press('Shift');
@@ -155,8 +164,8 @@ const testInputBehaviorContract = <ElementType extends { _touched?: boolean; _va
 			expect(await readRecording(page)).toEqual(pinned.keydown);
 		});
 
-		test('sets _touched once the focus leaves the field', async ({ page }) => {
-			await setContentWithRetry(page, `<${componentName} _label="Input"></${componentName}><button id="outside">Outside</button>`);
+		test('sets _touched as pinned once the focus leaves the field', async ({ page }) => {
+			await setContentWithRetry(page, `${field()}<button id="outside">Outside</button>`);
 			const host = page.locator(componentName);
 
 			expect(await host.evaluate((element: ElementType) => element._touched)).toBe(false);
@@ -168,19 +177,23 @@ const testInputBehaviorContract = <ElementType extends { _touched?: boolean; _va
 
 			await page.locator('#outside').focus();
 			await page.waitForChanges();
-			expect(await host.evaluate((element: ElementType) => element._touched)).toBe(true);
-			await expect(host).toHaveAttribute('_touched');
+			expect(await host.evaluate((element: ElementType) => element._touched)).toBe(pinned.touchedAfterBlur);
+			if (pinned.touchedAfterBlur) {
+				await expect(host).toHaveAttribute('_touched');
+			} else {
+				await expect(host).not.toHaveAttribute('_touched');
+			}
 		});
 
 		test('initializes _value as pinned', async ({ page }) => {
-			await setContentWithRetry(page, `<${componentName} _label="Input"></${componentName}>`);
+			await setContentWithRetry(page, field());
 			await page.waitForChanges();
 
 			expect(await page.locator(componentName).evaluate((element: ElementType) => element._value)).toEqual(pinned.initialValue);
 		});
 
 		test('does not take part in a native form without reflectInputValues', async ({ page }) => {
-			await setContentWithRetry(page, `<form><${componentName} _label="Input" _name="field"></${componentName}></form>`);
+			await setContentWithRetry(page, `<form>${field('_name="field"')}</form>`);
 			await fillAction(page.locator(inputSelector), page);
 			await page.waitForChanges();
 
@@ -191,7 +204,7 @@ const testInputBehaviorContract = <ElementType extends { _touched?: boolean; _va
 		test('reflects its value into a hidden form element with reflectInputValues', async ({ page }) => {
 			await setContentWithRetry(page, `<form></form>`);
 			await registerWithReflectInputValues(page);
-			await insertAfterStartup(page, `<${componentName} _label="Input" _name="field"></${componentName}>`, 'form');
+			await insertAfterStartup(page, field('_name="field"'), 'form');
 			await fillAction(page.locator(inputSelector), page);
 			await page.waitForChanges();
 
@@ -202,7 +215,7 @@ const testInputBehaviorContract = <ElementType extends { _touched?: boolean; _va
 		test('submits its value in a native form with reflectInputValues in experimental mode', async ({ page }) => {
 			await setContentWithRetry(page, `${EXPERIMENTAL_MODE_HEAD}<body><form></form></body>`);
 			await registerWithReflectInputValues(page);
-			await insertAfterStartup(page, `<${componentName} _label="Input" _name="field"></${componentName}>`, 'form');
+			await insertAfterStartup(page, field('_name="field"'), 'form');
 			await fillAction(page.locator(inputSelector), page);
 			await page.waitForChanges();
 
@@ -211,17 +224,17 @@ const testInputBehaviorContract = <ElementType extends { _touched?: boolean; _va
 
 		test('synchronizes the value into _syncValueBySelector in experimental mode', async ({ page }) => {
 			await setContentWithRetry(page, `${EXPERIMENTAL_MODE_HEAD}<body><input id="target" /></body>`);
-			await insertAfterStartup(page, `<${componentName} _label="Input" _sync-value-by-selector="#target"></${componentName}>`);
+			await insertAfterStartup(page, field('_sync-value-by-selector="#target"'));
 
 			await fillAction(page.locator(inputSelector), page);
 			await page.waitForChanges();
 
-			await expect(page.locator('#target')).toHaveValue(testValue);
+			await expect(page.locator('#target')).toHaveValue(pinned.syncedValue);
 		});
 
 		test('ignores _syncValueBySelector outside experimental mode', async ({ page }) => {
 			await setContentWithRetry(page, `<input id="target" />`);
-			await insertAfterStartup(page, `<${componentName} _label="Input" _sync-value-by-selector="#target"></${componentName}>`);
+			await insertAfterStartup(page, field('_sync-value-by-selector="#target"'));
 
 			await fillAction(page.locator(inputSelector), page);
 			await page.waitForChanges();
