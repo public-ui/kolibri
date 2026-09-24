@@ -1,1 +1,0 @@
-import{d as e,r as t}from"./factory-DVePsLAQ-t_LnBCj9.js";var n=t(`name`,``,e);export{n as t};
