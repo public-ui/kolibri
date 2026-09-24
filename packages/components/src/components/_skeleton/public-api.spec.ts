@@ -1725,8 +1725,8 @@ describe('kol-popover-button-wc transitional wrapper (internal contract for lega
 });
 
 /**
- * Pinned public API of `kol-table-stateless` — identical to the predecessor `shadow.tsx` on the
- * develop branch: 12 props, including the deprecated `_headerCells`, and no methods.
+ * Pinned public API of `kol-table-stateless`: 12 props, including the deprecated `_headerCells`,
+ * and no methods.
  */
 const KOL_TABLE_STATELESS_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	_ariaLabelledby: {

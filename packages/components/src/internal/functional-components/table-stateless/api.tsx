@@ -17,9 +17,9 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * Props configuration for the stateless table.
  *
  * Notes on prop choices:
- * - `labelWithExpertSlotProp`, not `labelProp`: the label is the table caption, which the
- *   predecessor accepted at any length. `labelProp` rejects labels longer than 80 characters and
- *   would drop such a caption; the table renders no expert slot either way.
+ * - `labelWithExpertSlotProp`, not `labelProp`: the label is the table caption, which has no
+ *   length limit. `labelProp` rejects labels longer than 80 characters and would drop such a
+ *   caption; the table renders no expert slot either way.
  * - `tableLoadingProp`, not `loadingProp`: both use the key `loading`, but `loadingProp` is the
  *   lazy-loading hint of embedded content.
  */

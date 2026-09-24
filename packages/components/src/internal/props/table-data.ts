@@ -7,8 +7,7 @@ import { createPropDefinition } from './helpers/factory';
  * Rows of a table body or footer.
  *
  * Declared `Stringified<…>`, so the rows also arrive as a JSON string whenever they are set through
- * an HTML attribute. `parseJson` accepts single-quoted JSON as well, like the predecessor's
- * validator did.
+ * an HTML attribute. `parseJson` also accepts single-quoted JSON.
  */
 export type TableDataProp = Prop<'data', Stringified<KoliBriTableDataType[]>, KoliBriTableDataType[]>;
 
