@@ -4,67 +4,171 @@ exports[`kol-drawer should render with _label="Label" _open=false 1`] = `
 <kol-drawer class="kol-drawer">
   <template shadowrootmode="open">
     <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
-      <kol-card-wc _headingid="drawer-heading-nonce" _label="Label" _level="0" class="kol-drawer__wrapper kol-drawer__wrapper--is-closing kol-drawer__wrapper--top">
-        <div class="kol-drawer__content">
-          <slot></slot>
-        </div>
-      </kol-card-wc>
+      <div class="kol-drawer__wrapper kol-drawer__wrapper--is-closing kol-drawer__wrapper--top">
+        <article aria-labelledby="drawer-heading-nonce" class="kol-card">
+          <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="drawer-heading-nonce">
+            Label
+          </strong>
+          <div class="kol-card__content">
+            <div class="kol-drawer__content">
+              <slot></slot>
+            </div>
+          </div>
+        </article>
+      </div>
     </dialog>
   </template>
 </kol-drawer>
 `;
 
-exports[`kol-drawer should render with _label="Label" _open=true _variant="bottom" 1`] = `
-<kol-drawer _variant="bottom" class="kol-drawer">
+exports[`kol-drawer should render with _label="Label" _open=true _align="bottom" 1`] = `
+<kol-drawer class="kol-drawer">
   <template shadowrootmode="open">
     <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
-      <kol-card-wc _headingid="drawer-heading-nonce" _label="Label" _level="0" class="kol-drawer__wrapper kol-drawer__wrapper--open kol-drawer__wrapper--top">
-        <div class="kol-drawer__content">
-          <slot></slot>
-        </div>
-      </kol-card-wc>
+      <div class="kol-drawer__wrapper kol-drawer__wrapper--bottom kol-drawer__wrapper--open">
+        <article aria-labelledby="drawer-heading-nonce" class="kol-card">
+          <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="drawer-heading-nonce">
+            Label
+          </strong>
+          <div class="kol-card__content">
+            <div class="kol-drawer__content">
+              <slot></slot>
+            </div>
+          </div>
+        </article>
+      </div>
     </dialog>
   </template>
 </kol-drawer>
 `;
 
-exports[`kol-drawer should render with _label="Label" _open=true _variant="left" 1`] = `
-<kol-drawer _variant="left" class="kol-drawer">
+exports[`kol-drawer should render with _label="Label" _open=true _align="left" 1`] = `
+<kol-drawer class="kol-drawer">
   <template shadowrootmode="open">
     <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
-      <kol-card-wc _headingid="drawer-heading-nonce" _label="Label" _level="0" class="kol-drawer__wrapper kol-drawer__wrapper--open kol-drawer__wrapper--top">
-        <div class="kol-drawer__content">
-          <slot></slot>
-        </div>
-      </kol-card-wc>
+      <div class="kol-drawer__wrapper kol-drawer__wrapper--left kol-drawer__wrapper--open">
+        <article aria-labelledby="drawer-heading-nonce" class="kol-card">
+          <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="drawer-heading-nonce">
+            Label
+          </strong>
+          <div class="kol-card__content">
+            <div class="kol-drawer__content">
+              <slot></slot>
+            </div>
+          </div>
+        </article>
+      </div>
     </dialog>
   </template>
 </kol-drawer>
 `;
 
-exports[`kol-drawer should render with _label="Label" _open=true _variant="right" 1`] = `
-<kol-drawer _variant="right" class="kol-drawer">
+exports[`kol-drawer should render with _label="Label" _open=true _align="right" 1`] = `
+<kol-drawer class="kol-drawer">
   <template shadowrootmode="open">
     <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
-      <kol-card-wc _headingid="drawer-heading-nonce" _label="Label" _level="0" class="kol-drawer__wrapper kol-drawer__wrapper--open kol-drawer__wrapper--top">
-        <div class="kol-drawer__content">
-          <slot></slot>
-        </div>
-      </kol-card-wc>
+      <div class="kol-drawer__wrapper kol-drawer__wrapper--open kol-drawer__wrapper--right">
+        <article aria-labelledby="drawer-heading-nonce" class="kol-card">
+          <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="drawer-heading-nonce">
+            Label
+          </strong>
+          <div class="kol-card__content">
+            <div class="kol-drawer__content">
+              <slot></slot>
+            </div>
+          </div>
+        </article>
+      </div>
     </dialog>
   </template>
 </kol-drawer>
 `;
 
-exports[`kol-drawer should render with _label="Label" _open=true _variant="top" 1`] = `
-<kol-drawer _variant="top" class="kol-drawer">
+exports[`kol-drawer should render with _label="Label" _open=true _align="top" 1`] = `
+<kol-drawer class="kol-drawer">
   <template shadowrootmode="open">
     <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
-      <kol-card-wc _headingid="drawer-heading-nonce" _label="Label" _level="0" class="kol-drawer__wrapper kol-drawer__wrapper--open kol-drawer__wrapper--top">
-        <div class="kol-drawer__content">
-          <slot></slot>
-        </div>
-      </kol-card-wc>
+      <div class="kol-drawer__wrapper kol-drawer__wrapper--open kol-drawer__wrapper--top">
+        <article aria-labelledby="drawer-heading-nonce" class="kol-card">
+          <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="drawer-heading-nonce">
+            Label
+          </strong>
+          <div class="kol-card__content">
+            <div class="kol-drawer__content">
+              <slot></slot>
+            </div>
+          </div>
+        </article>
+      </div>
+    </dialog>
+  </template>
+</kol-drawer>
+`;
+
+exports[`kol-drawer should render with _label="Label" _open=true _hasCloser=true 1`] = `
+<kol-drawer class="kol-drawer">
+  <template shadowrootmode="open">
+    <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
+      <div class="kol-drawer__wrapper kol-drawer__wrapper--open kol-drawer__wrapper--top">
+        <article aria-labelledby="drawer-heading-nonce" class="kol-card">
+          <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="drawer-heading-nonce">
+            Label
+          </strong>
+          <div class="kol-card__content">
+            <div class="kol-drawer__content">
+              <slot></slot>
+            </div>
+          </div>
+          <div class="kol-card__close-button kol-close-button">
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+              <button aria-label="kol-close" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-close
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </dialog>
+  </template>
+</kol-drawer>
+`;
+
+exports[`kol-drawer should render with _label="Label" _open=true _level=2 1`] = `
+<kol-drawer class="kol-drawer">
+  <template shadowrootmode="open">
+    <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
+      <div class="kol-drawer__wrapper kol-drawer__wrapper--open kol-drawer__wrapper--top">
+        <article aria-labelledby="drawer-heading-nonce" class="kol-card">
+          <h2 class="kol-card__header kol-headline kol-headline--h2 kol-headline--single" id="drawer-heading-nonce">
+            Label
+          </h2>
+          <div class="kol-card__content">
+            <div class="kol-drawer__content">
+              <slot></slot>
+            </div>
+          </div>
+        </article>
+      </div>
     </dialog>
   </template>
 </kol-drawer>
@@ -74,11 +178,18 @@ exports[`kol-drawer should render with _label="Label" 1`] = `
 <kol-drawer class="kol-drawer">
   <template shadowrootmode="open">
     <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
-      <kol-card-wc _headingid="drawer-heading-nonce" _label="Label" _level="0" class="kol-drawer__wrapper kol-drawer__wrapper--is-closing kol-drawer__wrapper--top">
-        <div class="kol-drawer__content">
-          <slot></slot>
-        </div>
-      </kol-card-wc>
+      <div class="kol-drawer__wrapper kol-drawer__wrapper--is-closing kol-drawer__wrapper--top">
+        <article aria-labelledby="drawer-heading-nonce" class="kol-card">
+          <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="drawer-heading-nonce">
+            Label
+          </strong>
+          <div class="kol-card__content">
+            <div class="kol-drawer__content">
+              <slot></slot>
+            </div>
+          </div>
+        </article>
+      </div>
     </dialog>
   </template>
 </kol-drawer>
