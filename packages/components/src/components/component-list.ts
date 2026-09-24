@@ -47,7 +47,7 @@ import { KolSplitButton } from './split-button/component';
 import { KolTabs } from './tabs/shadow';
 import { KolTextarea } from './textarea/shadow';
 import { KolToastContainer } from './toaster/shadow';
-import { KolToolbar } from './toolbar/shadow';
+import { KolToolbar } from './toolbar/component';
 import { KolTooltipWc } from './tooltip/component';
 import { KolTreeItem } from './tree-item/component';
 import { KolTree } from './tree/component';

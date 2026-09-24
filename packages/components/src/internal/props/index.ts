@@ -62,6 +62,7 @@ export * from './span-icons';
 export * from './src';
 export * from './srcset';
 export * from './tab-index';
+export * from './toolbar-items';
 export * from './tooltip-align';
 export * from './unit';
 export * from './value-number';

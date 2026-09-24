@@ -1075,6 +1075,7 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['dialog', 'component.tsx'],
 		['dialog', 'wc.tsx'],
 		['modal', 'component.tsx'],
+		['toolbar', 'component.tsx'],
 	];
 
 	it.each(sources)('documents every public member of %s/%s', (component, file) => {
@@ -1168,6 +1169,43 @@ const KOL_FORM_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 		required: false,
 		default: 'true',
 		doc: 'Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.',
+	},
+};
+
+/**
+ * Pinned public API of `kol-toolbar`: 3 props plus `focus()` and `click()` — identical to the
+ * predecessor `shadow.tsx` on the develop branch.
+ */
+const KOL_TOOLBAR_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the currently active toolbar item.',
+	},
+	click: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Triggers a click on the currently active toolbar item.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'string',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_items: {
+		kind: 'prop',
+		type: 'ToolbarItemsPropType',
+		required: true,
+		doc: 'Defines the functional elements of toolbar to render (e.g. kol-link, kol-button).',
+	},
+	_orientation: {
+		kind: 'prop',
+		type: 'OrientationPropType',
+		required: false,
+		doc: 'Defines whether the orientation of the component is horizontal or vertical.',
 	},
 };
 
@@ -1327,6 +1365,7 @@ describe.each([
 	['kol-dialog', 'dialog', 'DialogProps', KOL_DIALOG_PUBLIC_API],
 	['kol-modal', 'modal', 'DialogProps', KOL_MODAL_PUBLIC_API],
 	['kol-drawer', 'drawer', 'DrawerProps', KOL_DRAWER_PUBLIC_API],
+	['kol-toolbar', 'toolbar', 'ToolbarProps', KOL_TOOLBAR_PUBLIC_API],
 	['kol-tree', 'tree', 'TreeProps', KOL_TREE_PUBLIC_API],
 	['kol-tree-item', 'tree-item', 'TreeItemProps', KOL_TREE_ITEM_PUBLIC_API],
 ] as const)('%s public API contract (ARC42 § Public API Contract)', (_tag, component, schemaInterface, pinnedApi) => {
