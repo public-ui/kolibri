@@ -1240,8 +1240,10 @@ const KOL_DRAWER_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 };
 
 /**
- * Pinned public API of `kol-tabs` — byte-identical to the predecessor `shadow.tsx` on the develop
- * branch (7 props + focus and click), including the German `_on` JSDoc.
+ * Pinned public API of `kol-tabs` — same props, types and defaults as the predecessor `shadow.tsx`
+ * on the develop branch (7 props + focus and click). The one deviation is the `_on` JSDoc, which
+ * the predecessor carried in German; it was translated on reviewer request, which changes only the
+ * generated documentation, not the API surface.
  */
 const KOL_TABS_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	focus: {
@@ -1286,7 +1288,7 @@ const KOL_TABS_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 		kind: 'prop',
 		type: 'KoliBriTabsCallbacks',
 		required: false,
-		doc: 'Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.',
+		doc: 'Defines the callback functions for tabs events.',
 	},
 	_selected: {
 		kind: 'prop',

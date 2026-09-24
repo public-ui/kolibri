@@ -455,7 +455,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	}
 
 	/**
-	 * Gibt die Liste der Callback-Funktionen an, die auf Events aufgerufen werden sollen.
+	 * Defines the callback functions for tabs events.
 	 */
 	@Prop() public _on?: KoliBriTabsCallbacks;
 	@Watch('_on')
