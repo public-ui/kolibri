@@ -5,9 +5,8 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 /**
  * Props configuration for the tree component.
  *
- * `labelWithExpertSlotProp` (not `labelProp`): the predecessor's `validateLabel` accepted any
- * string; `labelProp` would reject one-character labels, a validation regression. The same choice
- * was made for the breadcrumb migration.
+ * `labelWithExpertSlotProp` (not `labelProp`): the label accepts any string; `labelProp` would
+ * reject one-character labels.
  */
 export const treePropsConfig = {
 	required: [labelWithExpertSlotProp],

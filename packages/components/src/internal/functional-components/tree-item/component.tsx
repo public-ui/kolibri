@@ -30,10 +30,10 @@ const noop = (): void => undefined;
 /**
  * Renders one tree entry: the link carrying the `treeitem` role, and the group holding the nested items.
  *
- * `__link` stays a wrapper around the link instead of merging onto its BEM root: every theme
+ * `__link` is a wrapper around the link instead of a class on its BEM root: every theme
  * addresses the link as a descendant (`.kol-tree-item__link .kol-link`) and gives the wrapper
- * its own box (`display: block`, border, hover background). The `<span>` keeps both on the same
- * inline box the transitional `kol-link-wc` element used to be.
+ * its own box (`display: block`, border, hover background). The wrapper is an inline `<span>`,
+ * so without theme rules it adds no box of its own.
  *
  * The label is rendered into the link's expert slot, next to the chevron that expands the item.
  */

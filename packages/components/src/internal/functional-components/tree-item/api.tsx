@@ -6,8 +6,8 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * Props configuration for the tree item component.
  *
  * Notes on prop choices:
- * - `labelWithExpertSlotProp` (not `labelProp`): the predecessor's `validateLabel` accepted any
- *   string; `labelProp` would reject one-character labels.
+ * - `labelWithExpertSlotProp` (not `labelProp`): the label accepts any string; `labelProp` would
+ *   reject one-character labels.
  * - `_open` is not a render prop: `expand()` and `collapse()` switch it from the inside, so the
  *   normalized value lives in the reactive `open` state (see `States`). The `_open` watcher still
  *   routes every external value through `openProp`.
@@ -23,7 +23,7 @@ export type TreeItemApi = ApiFromConfig<
 		Callbacks: {
 			/**
 			 * Click handler of the link's anchor. Implemented by the web component, which dispatches
-			 * the `KolEvent.click` DOM event the transitional `kol-link-wc` used to dispatch.
+			 * the `KolEvent.click` DOM event with the href on the tree item host.
 			 */
 			anchorClick: (event: Event) => void;
 			/** Bound to the default slot, which holds the nested tree items. */
