@@ -24,6 +24,7 @@ export * from './custom-class';
 export * from './dialog-callbacks';
 export * from './disabled';
 export * from './download';
+export * from './drawer-callbacks';
 export * from './error-list';
 export * from './form-callbacks';
 export * from './has-closer';

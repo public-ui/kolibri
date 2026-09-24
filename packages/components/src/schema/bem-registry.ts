@@ -204,6 +204,25 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'disabled' | 'open'>;
 	};
+	/**
+	 * The block class sits on the host element: everything the drawer renders is an element of it
+	 * (`kol-drawer__dialog`, `kol-drawer__wrapper`, `kol-drawer__content`), so no node inside the
+	 * shadow root carries the bare block name.
+	 */
+	'kol-drawer': {
+		elements: {
+			content: {
+				modifiers: null;
+			};
+			dialog: {
+				modifiers: null;
+			};
+			wrapper: {
+				modifiers: Set<'bottom' | 'is-closing' | 'left' | 'open' | 'right' | 'top'>;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-icon': {
 		elements: {
 			icon: {
@@ -518,6 +537,14 @@ const BEM: KoliBriComponentsBemSchema = {
 			'wrapper-animation': { modifiers: null },
 		},
 		modifiers: new Set(['disabled', 'open']),
+	},
+	'kol-drawer': {
+		elements: {
+			content: { modifiers: null },
+			dialog: { modifiers: null },
+			wrapper: { modifiers: new Set(['bottom', 'is-closing', 'left', 'open', 'right', 'top']) },
+		},
+		modifiers: null,
 	},
 	'kol-icon': {
 		elements: {

@@ -42,7 +42,7 @@ API.
 
 Keine redundanten `@param {string}` / `@returns {void}`-Annotationen. Die TypeScript-Signatur ist die
 Quelle der Wahrheit. JSDoc bleibt nur, wo Stencil-Werkzeuge es auslesen (`@Prop`, `@Event`,
-`@Method`) — dort ist der Text Teil der veröffentlichten Doku und wird unverändert übernommen.
+`@Method`) — dort ist der Text Teil der veröffentlichten Doku und wird unverändert übernommen. Allgemeine Regel: [Inline code documentation](../../../../AGENTS.md#inline-code-documentation).
 
 ## 8. Transitionale `-wc`-Tags: Render-FCs sind der Standard, das Tag die begründete Ausnahme
 

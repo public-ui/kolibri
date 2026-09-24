@@ -13,7 +13,7 @@ import { KolCombobox } from './combobox/shadow';
 import { KolDetails } from './details/component';
 import { KolDialog } from './dialog/component';
 import { KolDialogWc } from './dialog/wc';
-import { KolDrawer } from './drawer/shadow';
+import { KolDrawer } from './drawer/component';
 import { KolForm } from './form/component';
 import { KolHeading } from './heading/component';
 import { KolIcon } from './icon/component';
