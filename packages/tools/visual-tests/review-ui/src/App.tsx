@@ -186,18 +186,28 @@ export function App() {
 		const handler = (event: KeyboardEvent) => {
 			if ((event.target as HTMLElement | null)?.closest('input, textarea, select')) return;
 			const index = visible.findIndex((entry) => entry.key === selected);
+			const selectNext = () => select(visible[Math.min(index + 1, visible.length - 1)]?.key ?? null);
+			const needsDecision = current !== null && current.item.status !== 'unchanged' && current.item.status !== 'error';
 			if (event.key === 'j' || event.key === 'ArrowDown') {
 				event.preventDefault();
-				select(visible[Math.min(index + 1, visible.length - 1)]?.key ?? null);
+				selectNext();
 			} else if (event.key === 'k' || event.key === 'ArrowUp') {
 				event.preventDefault();
 				select(visible[Math.max(index - 1, 0)]?.key ?? null);
-			} else if (event.key === 'a' && current && current.item.status !== 'unchanged' && current.item.status !== 'error') {
+			} else if (event.key === 'a' && needsDecision) {
 				setDraft((value) => ({
 					...value,
 					approvals: [...value.approvals.filter((entry) => entry.item !== current.key), { item: current.key, hash: current.item.hash }],
 					rejects: value.rejects.filter((entry) => entry.item !== current.key),
 				}));
+				selectNext();
+			} else if (event.key === 'r' && needsDecision) {
+				setDraft((value) => ({
+					...value,
+					approvals: value.approvals.filter((entry) => entry.item !== current.key),
+					rejects: [...value.rejects.filter((entry) => entry.item !== current.key), { item: current.key, hash: current.item.hash }],
+				}));
+				selectNext();
 			}
 		};
 		window.addEventListener('keydown', handler);
@@ -294,7 +304,10 @@ export function App() {
 					)}
 				</div>
 				<ItemList entries={visible} selected={selected} reviewStates={reviewStates} onSelect={select} />
-				<p className="hint">Keys: j / k next and previous, a approve.</p>
+				<p className="hint">
+					Keys: <kbd>j</kbd> / <kbd>↓</kbd> next, <kbd>k</kbd> / <kbd>↑</kbd> previous, <kbd>a</kbd> approve, <kbd>r</kbd> reject – approve and reject move on
+					to the next snapshot.
+				</p>
 			</aside>
 
 			<main className="main">
