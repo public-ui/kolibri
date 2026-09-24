@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 10973,
-	"head": "967ded8737cc62068f517c2b80190b1e19701b45",
+	"head": "97742351c97955022ecb4047c910cfe91a6f7472",
 	"repository": "public-ui/kolibri",
-	"runId": 35867623729,
-	"generatedAt": "2026-09-23T13:49:33.110Z",
-	"digest": "sha256:61aa25f4a2be3a6c06c1ee4afe4079d25cc813f8c8efd6b2bb7b7f1fc239897b",
+	"runId": 36011127645,
+	"generatedAt": "2026-09-24T14:31:07.834Z",
+	"digest": "sha256:d08c988f30d6ca816630f3b2d839c0fcfa08d1fab8bed7247c0d6cc981b66b5d",
 	"baseline": {
-		"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
+		"sha": "3d8277ecda3b7d93ec9a67c1db2fcec31dd5c037",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -30,13 +30,13 @@
 			"baseline": {
 				"files": 414,
 				"meta": {
-					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
+					"sha": "3d8277ecda3b7d93ec9a67c1db2fcec31dd5c037",
 					"ref": "develop",
-					"runId": 35862624239,
+					"runId": 35999094690,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T12:54:07.148Z",
-					"digest": "sha256:195c6f91028eec81cc58070eecc8845c00c959356669ccdeca481ab735459e55",
+					"createdAt": "2026-09-24T12:34:10.528Z",
+					"digest": "sha256:50538ca990367ef5191069411b6499224225a8bb0cb19aae8b99decb4454349c",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:fc8c015176d45a5d0e7446544d2f3b11a7299eab7470808e6d250d2d0ff8380a",
+			"digest": "sha256:05bf09c6005da95de07651eaaa3e885e1eadb0e95df625f550650cec6fbc9af6",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -931,7 +931,7 @@
 					"name": "input-color-basic-noColumns--label-suggestions-error",
 					"route": "input-color-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:4e7d4820dbd98f59bf1a6d8f517d1e224e3d6ccd29a8d4a52851d0a0610239ee"
+					"hash": "sha256:691ebdf49972c0a1f42119c92f1e4f3a23f86daa7414f2c53eb5090b3331ee12"
 				},
 				{
 					"name": "input-date-basic-noColumns--hide-label-datetime-seconds",
@@ -2575,13 +2575,13 @@
 			"baseline": {
 				"files": 414,
 				"meta": {
-					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
+					"sha": "3d8277ecda3b7d93ec9a67c1db2fcec31dd5c037",
 					"ref": "develop",
-					"runId": 35862624239,
+					"runId": 35999094690,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T12:52:21.787Z",
-					"digest": "sha256:d9a4d63dbb9fccaeb0793cd7ec17141467957d181646d2b457a58792e7e62a93",
+					"createdAt": "2026-09-24T12:33:58.627Z",
+					"digest": "sha256:8ed4a41b01ee988c98754a96c07bd3b0332aa33abcb0eaf182419dd7995eb3a0",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -2594,7 +2594,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:585dda685626ad9a55c094909e32572fc1fec50964ab8d76e63e14c3445ebca8",
+			"digest": "sha256:fcef6de64ffda5645f83fcb6c0e8bbc35a3a0fe6728f1fbb740f4757fd290019",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -3476,7 +3476,7 @@
 					"name": "input-color-basic-noColumns--label-suggestions-error",
 					"route": "input-color-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:6745cc886b2fe2448bc5198cf349da4bb73dabebb4e769dc9a9c8a88b63fa25a"
+					"hash": "sha256:7f91438a223812226b92fc0f70c78ac6bd34c3c9f5086a5fa76181d9eb45cc7b"
 				},
 				{
 					"name": "input-date-basic-noColumns--hide-label-datetime-seconds",
@@ -5120,13 +5120,13 @@
 			"baseline": {
 				"files": 414,
 				"meta": {
-					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
+					"sha": "3d8277ecda3b7d93ec9a67c1db2fcec31dd5c037",
 					"ref": "develop",
-					"runId": 35862624239,
+					"runId": 35999094690,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T12:54:07.148Z",
-					"digest": "sha256:195c6f91028eec81cc58070eecc8845c00c959356669ccdeca481ab735459e55",
+					"createdAt": "2026-09-24T12:34:10.528Z",
+					"digest": "sha256:50538ca990367ef5191069411b6499224225a8bb0cb19aae8b99decb4454349c",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -5139,7 +5139,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:fc8c015176d45a5d0e7446544d2f3b11a7299eab7470808e6d250d2d0ff8380a",
+			"digest": "sha256:05bf09c6005da95de07651eaaa3e885e1eadb0e95df625f550650cec6fbc9af6",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -6021,7 +6021,7 @@
 					"name": "input-color-basic-noColumns--label-suggestions-error",
 					"route": "input-color-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:4e7d4820dbd98f59bf1a6d8f517d1e224e3d6ccd29a8d4a52851d0a0610239ee"
+					"hash": "sha256:691ebdf49972c0a1f42119c92f1e4f3a23f86daa7414f2c53eb5090b3331ee12"
 				},
 				{
 					"name": "input-date-basic-noColumns--hide-label-datetime-seconds",
@@ -7665,13 +7665,13 @@
 			"baseline": {
 				"files": 414,
 				"meta": {
-					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
+					"sha": "3d8277ecda3b7d93ec9a67c1db2fcec31dd5c037",
 					"ref": "develop",
-					"runId": 35862624239,
+					"runId": 35999094690,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T12:53:02.849Z",
-					"digest": "sha256:0b2464dfca178b3bddd1fbd858f23f09c22966bb3644e1c24035c6a8bd04a132",
+					"createdAt": "2026-09-24T12:32:08.542Z",
+					"digest": "sha256:337e5a54239a0516e8d66ac5ef6ae840f4cc4a57c3c563070df5455b52c9727d",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -7684,7 +7684,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8e64449721088cd3e9f2063a03941f59999c732a566db8dedbebef4ae089d66c",
+			"digest": "sha256:b1e86eb32eec1f0f4cb0e1a44af05cef3d7e631b55cb738f19c4471f11a8dde6",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -8546,7 +8546,7 @@
 					"name": "input-color-basic-noColumns--label-suggestions-error",
 					"route": "input-color-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:ef7897934213e4999f4a86a6625b6a49d9eeffc5655237634d5fc4c8ae1958dd"
+					"hash": "sha256:577c816de672a5afdca2d244bbba427d80cb9a2a6c595421ec4f65d0a75791e7"
 				},
 				{
 					"name": "input-date-basic-noColumns--hide-label-datetime-seconds",
@@ -10190,13 +10190,13 @@
 			"baseline": {
 				"files": 414,
 				"meta": {
-					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
+					"sha": "3d8277ecda3b7d93ec9a67c1db2fcec31dd5c037",
 					"ref": "develop",
-					"runId": 35862624239,
+					"runId": 35999094690,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T12:52:35.254Z",
-					"digest": "sha256:b7c82df581b03283251b14c6724092cd135f7e61d17c9ad5c14aebb54530da20",
+					"createdAt": "2026-09-24T12:32:31.068Z",
+					"digest": "sha256:c93b03f5c8bfaabe1df46895dec9c583f580b28ffea1dc84e107c791c8ccc1c5",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -10209,7 +10209,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6fc9943c5703f73711583549523f45747f15abdaa61335c406cda0687a5f4029",
+			"digest": "sha256:c217b5f9916d50f6403f3761291ee3bc1e6defeeefc8f080018c08e86a2c7c61",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11089,7 +11089,7 @@
 					"name": "input-color-basic-noColumns--label-suggestions-error",
 					"route": "input-color-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:b956b230d87955960d7576cc8ec9c1e43433c11604d998e9e724765640dd8b55"
+					"hash": "sha256:ede4e8d57465ec67e4cef9afd7318a00f80a430729335074497187d0c64c3e5e"
 				},
 				{
 					"name": "input-date-basic-noColumns--hide-label-datetime-seconds",
@@ -12733,13 +12733,13 @@
 			"baseline": {
 				"files": 414,
 				"meta": {
-					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
+					"sha": "3d8277ecda3b7d93ec9a67c1db2fcec31dd5c037",
 					"ref": "develop",
-					"runId": 35862624239,
+					"runId": 35999094690,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T12:52:21.237Z",
-					"digest": "sha256:a14a476c69b237011203ec7806eda57e1359c95a123fe3765ac492f382dd9292",
+					"createdAt": "2026-09-24T12:33:03.858Z",
+					"digest": "sha256:6b737356faae2131eebd464b936fdce8e536360a1ffe1f90ae92788c9b9fbd13",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -12752,7 +12752,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:bef3d685659fce8869dd5329e3463ff2d36ac45893bfc5dfc223f8929d4d0c53",
+			"digest": "sha256:6936ad27306f538570733750d7a68582385ce392e5dc3d59f5ce91e657175bde",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13634,7 +13634,7 @@
 					"name": "input-color-basic-noColumns--label-suggestions-error",
 					"route": "input-color-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:b22e0c1c24627f3ae5abfdcd4a74640a072459263583c9e6825b9c33dca7e340"
+					"hash": "sha256:0ef3dbc459f0a46ce0f1ca7e4062c8cff20609680e4c4594d0fdaef7faa0e68c"
 				},
 				{
 					"name": "input-date-basic-noColumns--hide-label-datetime-seconds",
@@ -15278,13 +15278,13 @@
 			"baseline": {
 				"files": 414,
 				"meta": {
-					"sha": "2fabe08cb3541b58b318f98a348cd7c31a319a23",
+					"sha": "3d8277ecda3b7d93ec9a67c1db2fcec31dd5c037",
 					"ref": "develop",
-					"runId": 35862624239,
+					"runId": 35999094690,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-23T12:52:02.105Z",
-					"digest": "sha256:b1657c8d36439c178afe3298a238abf263084fbe8cd2c535d912174b2682953b",
+					"createdAt": "2026-09-24T12:32:17.129Z",
+					"digest": "sha256:2528f4e9b3debdf7cab4d7799309f4ace8e87ca2aa05701a2241068a19612655",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -15297,7 +15297,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:bdb8912b3939b0d3c547ca32869be768540f2d5014e0272120064c36ce65a89d",
+			"digest": "sha256:e89dfcf47085d8de537641bd0d2d2c977009451aacf180c1be1cbce2bb38cf58",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -16184,7 +16184,7 @@
 					"name": "input-color-basic-noColumns--label-suggestions-error",
 					"route": "input-color-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:07e277bc2e23022765b6c43986075398854910882ac3d31e10feb944275002d8"
+					"hash": "sha256:ac180f294565e6dfe35ee1a24f77244da21edbc29b5302662b2debc7390cb7be"
 				},
 				{
 					"name": "input-date-basic-noColumns--hide-label-datetime-seconds",
