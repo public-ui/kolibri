@@ -135,3 +135,14 @@ semantisches Vorbild (`link` bzw. `button`) migriert war — beide erben direkt 
 und rendern dessen FC. Vor dem Start einer Satelliten-Migration prüfen, ob `component.tsx` bereits
 `Base*WebComponent` erbt, `render*FC()` aufruft und in `_skeleton/public-api.spec.ts` gepinnt ist. Ist
 das der Fall, gibt es keinen Code zu ändern — das Tracking-Issue ist lediglich nicht nachgeführt.
+
+## 14. Ein „neutraler" Prop-Default ersetzt kein `undefined`, ohne dass es belegt ist
+
+Die Prop-Factory verlangt fuer jede Render-Prop einen Default. Wo der Vorgaenger „nicht gesetzt" mit
+`undefined` ausdrueckte, liegt ein scheinbar neutraler Wert nahe (`fixedCols = [0, 0]`, `[]`, `0`) —
+er ist es aber nur, wenn jeder Leser des Werts ihn wie „nicht gesetzt" behandelt. Beim Table kippte
+`[0, 0]` die letzte Zelle jeder Zeile auf `sticky-right`, weil der Vergleich `index >= maxCols - 0`
+fuer Zeilen mit vertikalen Kopfzellen wahr wird. Der Vorgaenger war davor nur durch sein
+`!this._fixedCols` geschuetzt. Absicherung: den Ist-DOM vor dem Umbau als Jest-Snapshot einfrieren
+(dabei das `-wc`-Element mitregistrieren) und den Diff nach dem Umbau leerraeumen. Laesst sich kein
+neutraler Wert finden, einen expliziten Sentinel im internen Typ fuehren (`selection: … | false`).
