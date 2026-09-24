@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputCharacterLimit, testInputValueReflection } from '../../e2e';
+import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 
@@ -108,4 +109,32 @@ test.describe(COMPONENT_NAME, () => {
 
 	testInputCharacterLimit(COMPONENT_NAME);
 	testInputMessage<HTMLKolInputEmailElement>(COMPONENT_NAME);
+
+	testInputBehaviorContract<HTMLKolInputEmailElement>({
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.fill(TEST_VALUE);
+		},
+		inputSelector: 'input.kol-input[type="email"]',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', TEST_VALUE),
+				callback('input', TEST_VALUE),
+				kolEvent('change', TEST_VALUE),
+				callback('change', TEST_VALUE),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			initialValue: undefined,
+			formData: [],
+			experimentalFormData: [['field', TEST_VALUE]],
+		},
+		testValue: TEST_VALUE,
+	});
 });
