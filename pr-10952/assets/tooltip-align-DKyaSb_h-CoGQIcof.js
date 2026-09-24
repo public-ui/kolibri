@@ -1,1 +1,0 @@
-import"./index-D3_TIpS7.js";import{r as e}from"./align-Dm5aJHmk-BoTail_T.js";var t=(t,n)=>{e(t,`_tooltipAlign`,n)};export{t};
