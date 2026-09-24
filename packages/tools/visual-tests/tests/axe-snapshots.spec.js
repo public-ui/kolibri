@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import axeHtmlReporter from 'axe-html-reporter';
 import process from 'process';
 import { ROUTES } from './sample-app.routes.js';
@@ -9,6 +9,14 @@ const { createHtmlReport } = axeHtmlReporter;
 const AXE_TAGS = ['best-practices', 'wcag2a', 'wcag2aa', 'wcag21aa'];
 
 const themeName = (process.env.THEME_EXPORT || 'default').toLocaleLowerCase();
+
+/**
+ * Contrast is a property of the theme, not of the component semantics. Only the light scheme of the
+ * default theme is kept free of contrast violations; in every other theme and scheme the rule is
+ * reported but does not fail the test.
+ */
+const gatesColorContrast = (colorScheme) => themeName === 'default' && colorScheme === 'light';
+
 const rename = (snapshotName) => {
 	const result = snapshotName
 
@@ -62,10 +70,11 @@ test.use({
 
 ROUTES.forEach((options, route) => {
 	// Skip unnecessary axe tests
-	if (options?.axe?.skip === true || process.argv.includes('--update-snapshots')) {
+	if (options?.axe?.skip === true) {
 		return;
 	}
-	test(`snapshot for ${route}`, async ({ page }, testInfo) => {
+	test(`snapshot for ${route}`, async ({ colorScheme, page }, testInfo) => {
+		test.skip(['all', 'changed'].includes(testInfo.config.updateSnapshots), 'axe does not take part in the baseline generation');
 		const hideMenusParam = `${route.includes('?') ? '&' : '?'}hideMenus`;
 		await page.goto(`/#${route}${hideMenusParam}`);
 		await page.waitForLoadState('networkidle');
@@ -95,5 +104,13 @@ ROUTES.forEach((options, route) => {
 			options: buildReportOptions(testInfo, route),
 		});
 		logViolations(route, results.violations);
+
+		if (options?.axe?.skipFailures !== true) {
+			const failures = results.violations
+				.filter((violation) => violation.id !== 'color-contrast' || gatesColorContrast(colorScheme))
+				.map((violation) => violation.id);
+			// The first line of the message is what the CI summary shows (see scripts/visual-review/assert-no-errors.mjs).
+			expect(failures, `axe violations on ${route}: ${failures.join(', ')}`).toEqual([]);
+		}
 	});
 });

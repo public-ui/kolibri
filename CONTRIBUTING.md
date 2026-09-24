@@ -54,7 +54,7 @@ When creating a pull request, please follow these guidelines:
 - **PR Title:** The pull request title must follow the [Conventional Commits](https://www.conventionalcommits.org/) specification. This is enforced by automated validation in our CI pipeline.
 - **PR Title Format:** `<type>: <description>` or `<type>(<scope>): <description>`
 - **Allowed Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
-- **Description:** The description should start with a lowercase letter and clearly explain the change.
+- **Description:** The description must start with a letter (lowercase or uppercase) and clearly explain the change.
 
 **Examples of valid PR titles:**
 
@@ -62,11 +62,12 @@ When creating a pull request, please follow these guidelines:
 - `fix: resolve navigation issue on mobile devices`
 - `docs: update installation instructions`
 - `refactor(components): simplify input validation logic`
+- `test(visual-tests): Axe-Verstöße wieder als Build-Breaker auswerten`
 
 **Examples of invalid PR titles:**
 
 - `Add new feature` (missing type prefix)
-- `feat: Add feature` (description should start with lowercase)
+- `feat: 1st feature` (description must start with a letter)
 - `feature: add new button` (invalid type, should be `feat`)
 
 ### Developing

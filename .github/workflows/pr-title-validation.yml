@@ -39,9 +39,9 @@ jobs:
             revert
           # Require a scope (optional - can be removed if not needed)
           requireScope: false
-          # Subject must start with lowercase
-          subjectPattern: ^[a-z].+$
+          # Subject must start with a letter, lowercase or uppercase (umlauts included)
+          subjectPattern: ^[A-Za-zÄÖÜäöü].+$
           subjectPatternError: |
             The subject "{subject}" found in the pull request title "{title}"
             didn't match the configured pattern. Please ensure that the subject
-            starts with a lowercase letter.
+            starts with a letter.
