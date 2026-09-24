@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
+import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
@@ -256,5 +257,40 @@ test.describe(COMPONENT_NAME, () => {
 			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolSingleSelectElement) => el._ariaDetails);
 			expect(value).toBe('id1 id2');
 		});
+	});
+
+	testInputBehaviorContract<HTMLKolSingleSelectElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		fillAction: async (input, page) => {
+			await input.click();
+			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
+		},
+		inputSelector: 'input.kol-single-select__input',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('click'),
+				callback('click'),
+				nativeEvent('click'),
+				kolEvent('input', TEST_VALUE),
+				callback('input', TEST_VALUE),
+				kolEvent('change', TEST_VALUE),
+				callback('change', TEST_VALUE),
+				nativeEvent('click'),
+				nativeEvent('blur'),
+				kolEvent('blur'),
+				callback('blur'),
+			],
+			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
+			initialValue: null,
+			formData: [],
+			experimentalFormData: [['field', TEST_VALUE]],
+			syncedValue: TEST_VALUE,
+		},
 	});
 });
