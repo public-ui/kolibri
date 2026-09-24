@@ -204,6 +204,8 @@ Schnell heißt nicht fertig. Diese Punkte sind bekannt und im Styleguide vermerk
 
 Jeder dieser Punkte ist eine Änderung im Theme. Keiner erfordert einen Eingriff in KoliBri selbst.
 
+Ein Punkt betrifft allerdings den ganzen Ansatz. In der Nachbesprechung im Team haben wir festgestellt, dass ein eigenes Theme wahrscheinlich nicht der beste Weg war. Ich hätte besser das Default-Theme oder das Theme für das KERN-UX Design System über seine Parameter auf d-you einstellen sollen. Dann wäre die Konsistenz über alle Komponenten von Anfang an gesichert, und der d-you-Stil würde automatisch auch bei Elementen greifen, die ich noch gar nicht gestaltet habe.
+
 ## So kommt ihr zu eurem eigenen KoliBri-Theme
 
 Der Weg von d-you lässt sich auf jedes Design-System übertragen. Screenshots reichen für den Anfang.
