@@ -66,6 +66,7 @@ export * from './tab-behavior';
 export * from './tab-index';
 export * from './tabs';
 export * from './tabs-callbacks';
+export * from './toolbar-items';
 export * from './tooltip-align';
 export * from './unit';
 export * from './value-number';
