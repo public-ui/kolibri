@@ -83,6 +83,7 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
 
   `prConcurrentLimit: 5` / `prHourlyLimit: 5` cap the number of open PRs **per base branch** (so
   `develop` and each `release/*` branch have their own budget).
+
 - **`minimumReleaseAge: "3 days"`** — all updates (npm, Actions, …, including security fixes)
   are held back for three days after release before a PR is opened or auto-merged. This protects
   against compromised or quickly-revoked releases.

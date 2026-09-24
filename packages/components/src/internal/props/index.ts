@@ -69,6 +69,7 @@ export * from './table-data-foot';
 export * from './table-headers';
 export * from './table-loading';
 export * from './table-selection';
+export * from './toolbar-items';
 export * from './tooltip-align';
 export * from './unit';
 export * from './value-number';

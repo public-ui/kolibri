@@ -20,8 +20,8 @@ async function setItems(tb: Locator, items: ToolbarItemsPropType): Promise<void>
 	}, items);
 }
 
-function innerButtonOf(nthButtonWc: Locator): Locator {
-	return nthButtonWc.locator('button');
+function innerButtonOf(nthItem: Locator): Locator {
+	return nthItem.locator('button');
 }
 
 test.describe(COMPONENT_NAME, () => {
@@ -33,8 +33,8 @@ test.describe(COMPONENT_NAME, () => {
 		await setItems(tb, ITEMS_ICONS_FIRST);
 		await page.waitForChanges();
 
-		const btnWcs = tb.locator('kol-button-wc');
-		await expect(btnWcs).toHaveCount(2);
+		const items = tb.locator('.kol-toolbar__item');
+		await expect(items).toHaveCount(2);
 
 		await tb.evaluate((el) => {
 			const host = el as unknown as { _items: ToolbarItemsPropType };
@@ -44,7 +44,7 @@ test.describe(COMPONENT_NAME, () => {
 			}, 1200);
 		});
 
-		const firstInnerBtn = innerButtonOf(btnWcs.first());
+		const firstInnerBtn = innerButtonOf(items.first());
 		await expect(firstInnerBtn).toBeDisabled();
 		await expect(firstInnerBtn).not.toBeDisabled({ timeout: 3000 });
 	});
@@ -57,8 +57,8 @@ test.describe(COMPONENT_NAME, () => {
 		await setItems(tb, ITEMS_DISABLED_FIRST);
 		await page.waitForChanges();
 
-		const btnWcs = tb.locator('kol-button-wc');
-		await expect(btnWcs).toHaveCount(2);
+		const items = tb.locator('.kol-toolbar__item');
+		await expect(items).toHaveCount(2);
 
 		await tb.evaluate((el) => {
 			const host = el as unknown as { _items: ToolbarItemsPropType };
@@ -68,7 +68,7 @@ test.describe(COMPONENT_NAME, () => {
 			}, 1200);
 		});
 
-		const firstInnerBtn = innerButtonOf(btnWcs.first());
+		const firstInnerBtn = innerButtonOf(items.first());
 		await expect(firstInnerBtn).toBeDisabled();
 		await expect(firstInnerBtn).not.toBeDisabled({ timeout: 3000 });
 	});
@@ -86,11 +86,11 @@ test.describe(COMPONENT_NAME, () => {
 		});
 		await page.waitForChanges();
 
-		const btnWcs = tb.locator('kol-button-wc');
-		await expect(btnWcs).toHaveCount(2);
+		const items = tb.locator('.kol-toolbar__item');
+		await expect(items).toHaveCount(2);
 
-		const firstBtn = btnWcs.first().locator('button');
-		const secondBtn = btnWcs.nth(1).locator('button');
+		const firstBtn = items.first().locator('button');
+		const secondBtn = items.nth(1).locator('button');
 
 		await firstBtn.focus();
 		await page.keyboard.press('ArrowRight');
@@ -113,11 +113,11 @@ test.describe(COMPONENT_NAME, () => {
 		});
 		await page.waitForChanges();
 
-		const btnWcs = tb.locator('kol-button-wc');
-		await expect(btnWcs).toHaveCount(3);
+		const items = tb.locator('.kol-toolbar__item');
+		await expect(items).toHaveCount(3);
 
-		const firstBtn = btnWcs.first().locator('button');
-		const thirdBtn = btnWcs.nth(2).locator('button');
+		const firstBtn = items.first().locator('button');
+		const thirdBtn = items.nth(2).locator('button');
 
 		await firstBtn.focus();
 		await page.keyboard.press('ArrowRight');
@@ -140,9 +140,9 @@ test.describe(COMPONENT_NAME, () => {
 		});
 		await page.waitForChanges();
 
-		const btnWcs = tb.locator('kol-button-wc');
-		const firstBtn = btnWcs.first().locator('button');
-		const thirdBtn = btnWcs.nth(2).locator('button');
+		const items = tb.locator('.kol-toolbar__item');
+		const firstBtn = items.first().locator('button');
+		const thirdBtn = items.nth(2).locator('button');
 
 		await firstBtn.focus();
 		await page.keyboard.press('ArrowLeft');
@@ -166,11 +166,11 @@ test.describe(COMPONENT_NAME, () => {
 		});
 		await page.waitForChanges();
 
-		const btnWcs = tb.locator('kol-button-wc');
-		await expect(btnWcs).toHaveCount(3);
+		const items = tb.locator('.kol-toolbar__item');
+		await expect(items).toHaveCount(3);
 
-		const firstInnerBtn = innerButtonOf(btnWcs.first());
-		const secondInnerBtn = innerButtonOf(btnWcs.nth(1));
+		const firstInnerBtn = innerButtonOf(items.first());
+		const secondInnerBtn = innerButtonOf(items.nth(1));
 
 		await tb.evaluate((el: HTMLKolToolbarElement) => {
 			void el.focus();
@@ -184,5 +184,52 @@ test.describe(COMPONENT_NAME, () => {
 		});
 
 		await expect(secondInnerBtn).toBeFocused();
+	});
+	test("calls the item's onClick callback with its value", async ({ page }) => {
+		await page.setContent(`<kol-toolbar _label="Toolbar Click"></kol-toolbar>`);
+		const tb = page.locator('kol-toolbar');
+		await expect(tb).toHaveClass(/hydrated/);
+
+		await tb.evaluate((el: HTMLKolToolbarElement) => {
+			el._items = [
+				{
+					type: 'button',
+					_label: 'One',
+					_value: 'one',
+					_on: {
+						onClick: (_event: Event, value: unknown) => {
+							(window as unknown as { clickedValue: unknown }).clickedValue = value;
+						},
+					},
+				},
+			];
+		});
+		await page.waitForChanges();
+
+		await innerButtonOf(tb.locator('.kol-toolbar__item').first()).click();
+		expect(await page.evaluate(() => (window as unknown as { clickedValue: unknown }).clickedValue)).toBe('one');
+	});
+
+	test('moves the roving focus onto a link item', async ({ page }) => {
+		await page.setContent(`<kol-toolbar _label="Toolbar Link"></kol-toolbar>`);
+		const tb = page.locator('kol-toolbar');
+		await expect(tb).toHaveClass(/hydrated/);
+
+		await setItems(tb, [
+			{ type: 'button', _label: 'One' },
+			{ type: 'link', _label: 'Two', _href: '#two' },
+		]);
+		await page.waitForChanges();
+
+		const firstBtn = innerButtonOf(tb.locator('.kol-toolbar__item').first());
+		const anchor = tb.locator('.kol-toolbar__item').nth(1).locator('a');
+		await expect(anchor).toHaveAttribute('tabindex', '-1');
+
+		await firstBtn.focus();
+		await page.keyboard.press('ArrowRight');
+
+		await expect(anchor).toBeFocused();
+		await expect(anchor).toHaveAttribute('tabindex', '0');
+		await expect(firstBtn).toHaveAttribute('tabindex', '-1');
 	});
 });

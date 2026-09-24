@@ -489,6 +489,14 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-toolbar': {
+		elements: {
+			item: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'orientation-horizontal' | 'orientation-vertical'>;
+	};
 };
 
 /**
@@ -708,6 +716,7 @@ const BEM: KoliBriComponentsBemSchema = {
 				modifiers: new Set([
 					'actions',
 					'align-center',
+					'align-justify',
 					'align-left',
 					'align-right',
 					'ascending',
@@ -715,6 +724,7 @@ const BEM: KoliBriComponentsBemSchema = {
 					'descending',
 					'header',
 					'none',
+					'other',
 					'selection',
 					'states',
 					'sticky-left',
@@ -743,6 +753,12 @@ const BEM: KoliBriComponentsBemSchema = {
 			table: { modifiers: null },
 		},
 		modifiers: null,
+	},
+	'kol-toolbar': {
+		elements: {
+			item: { modifiers: null },
+		},
+		modifiers: new Set(['orientation-horizontal', 'orientation-vertical']),
 	},
 };
 
