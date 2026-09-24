@@ -74,7 +74,7 @@ Rückbau-Inkremente am Ende jeder Gruppe; finaler Rückbau (G6) nach G2–G5
 Kein Produktivcode, Voraussetzung für alles. Die Gates greifen nur, wenn vorher festgehalten ist, was „unverändert" heißt: API, Verhalten und Pixel.
 
 - ✅ Public-API-Pins für alle 14 Tags und `kol-select-wc` (als interner Vertrag), zunächst gegen `shadow.tsx`. Jede Komponente hat eine eigene Datei unter `_skeleton/public-api/`, damit parallele Spuren keine Merge-Konflikte bekommen.
-- Verhaltensverträge pro Feld: Reihenfolge und Payload von `kolChange`/`kolInput`/`kolFocus`/`kolBlur`/`kolKeydown`/`kolClick` und der `_on`-Callbacks; `FormData` eines nativen `<form>` für Checkbox, `select` multiple, File und Radio mit Objektwerten; `_syncValueBySelector`; `_touched` nach Blur.
+- Verhaltensverträge pro Feld: Reihenfolge und Payload von `kolChange`/`kolInput`/`kolFocus`/`kolBlur`/`kolKeydown`/`kolClick` und der `_on`-Callbacks; `FormData` eines nativen `<form>` für Checkbox, `select` multiple, File und Radio mit Objektwerten; `_syncValueBySelector`; `_touched` nach Blur. Die Verträge sind Playwright-Tests (`*.e2e.ts`), weil versteckte Light-DOM-Elemente, `attachInternals`, `FormData` sowie Fokus und Tastatur nur im echten Browser verlässlich prüfbar sind. Sie nutzen die Helfer aus `src/e2e/`. Reine Umrechnungen ohne Browserverhalten (z. B. Date↔ISO in G3) werden als Jest-Tests der Hilfsfunktionen geprüft.
 - Visual-Samples ergänzen für msg, hint, disabled, hideLabel, infoPopover, Counter, Icons, `inputNumberButtons` an/aus und die Checkbox-Varianten. Neue Samples erzeugen neue Baselines und gehören in ein eigenes PR vor der ersten Migration.
 - Toten Code löschen: `functional-components/inputs/Combobox/Combobox.tsx`.
 
@@ -149,7 +149,7 @@ Gelöscht wird, sobald der letzte Import weg ist. Veröffentlichte Schema-Typen 
 3. `_touched` als `@State` oder als Render-Prop? (G1.4)
 4. `_on`: eine gemeinsame Callback-Prop oder typisiert pro Feld? (G1.1)
 5. SSR-Absturz von `attachInternals(undefined)` 1:1 übernehmen oder mit eigenem PR über einen Guard absichern? (G1.2)
-6. Verhaltensverträge in Jest oder in Playwright? (G0)
+6. ~~Verhaltensverträge in Jest oder in Playwright? (G0)~~ Entschieden: Playwright, siehe G0.
 7. Namen der Input-Props für min/max/step und für das Icons-Objekt. (G3)
 8. `kol-select-wc` als Übergangs-Tag behalten oder `pagination` direkt auf das FC umstellen? (G5)
 9. combobox und single-select: gemeinsame DD16-Basis oder `ListboxBehavior`? (G5)
