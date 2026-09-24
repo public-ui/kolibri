@@ -51,7 +51,7 @@
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
 		"prepare": "kolibri-copy-assets --dest assets @public-ui/components",
-		"start": "npm-run-all2 --parallel dev serve",
+		"preview": "npm-run-all2 --parallel dev serve",
 		"serve": "sh serve.sh KERN_V2",
 		"test": "cross-env THEME_MODULE=dist THEME_EXPORT=KERN_V2 THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test",
 		"test:update:e2e": "cross-env THEME_MODULE=dist THEME_EXPORT=KERN_V2 THEME_CSS=$(pwd)/inject-assets.css kolibri-visual-test --update-snapshots=changed theme-snapshots.spec.js",
@@ -78,7 +78,7 @@
 		"rollup": "4.63.4",
 		"rollup-plugin-postcss": "4.0.2",
 		"sass-embedded": "1.104.1",
-		"stylelint": "17.14.1",
+		"stylelint": "17.15.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},

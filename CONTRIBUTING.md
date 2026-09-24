@@ -79,13 +79,37 @@ When creating a pull request, please follow these guidelines:
 6. Create a new branch for your changes
 7. Install Node.js version 22
 8. [Install PNPM](https://pnpm.io/installation) on you local machine
-9. Install all packages with `pnpm i`
-10. Build all packages within the mono repository `pnpm -r build`
-11. Navigate to the desired package in our monorepo
-12. When you want to start the project navigate to `packages/components/` and run `pnpm dev`
-13. To watch for changes navigate to `packages/samples/react/` and execute `pnpm start`. `http://localhost:8080/` will open automatically
+9. Follow the [daily workflow](#daily-workflow) below
 
 Run ESLint across the repository with `pnpm lint` (or `pnpm lint:eslint` to invoke ESLint directly); the configuration lives in `packages/*/eslint.config.cjs`. Formatting is handled by Prettier via `pnpm format`, so run format first to keep ESLint focused on code-quality rules rather than style drift.
+
+### Daily workflow
+
+Every package in the monorepo builds itself, and dependents always consume the built output of the
+packages they reference. The chain is kolicons → components → adapters → themes → sample →
+presentation. No `dev` or `preview` script builds anything for you, so the workflow is always the same:
+
+```bash
+git pull
+pnpm i
+pnpm -r build
+
+# One terminal per package you are changing
+pnpm --filter @public-ui/components dev
+pnpm --filter @public-ui/theme-default dev
+
+# The app to look at, http://localhost:9191
+pnpm --filter @public-ui/presentation dev
+```
+
+Then work on the code: each watcher rebuilds its own package and the presentation app reloads.
+
+- A `dev` script exists in `@public-ui/components`, every theme package (`@public-ui/theme-bwst`,
+  `-default`, `-desy`, `-ecl`, `-kern`) and `@public-ui/mcp`. Packages without one, such as the
+  adapters or the icons, are rebuilt with `pnpm --filter <package> build` after a change.
+- Never run a build while a watcher is active. `pnpm -r build`, `pnpm build:deps` and the
+  components `build` start with `pnpm clear` and delete the output the watcher owns. Stop the
+  watchers, build, then start `dev` again.
 
 ### VS Code Setup
 
@@ -104,14 +128,9 @@ Refer to [new component](docs/tutorials/NEW_COMPONENT.md) tutorial.
 
 ### Switching between branches
 
-When changing the current working branch, it is important to reinstall all dependencies, as these may have changed. It is very important that all packages are built when working on dependents. This is because the packages always use the built state of the referenced packages in the mono repo.
-To avoid unexpected problems, it is therefore always advisable to build all packages once. This can be done with these steps:
-
-- Reinstall all dependencies: `pnpm i`
-- Build all packages: `pnpm -r build`
-- You can then switch to the package to be processed and start it with `pnpm start`.
-
-If it is also necessary to edit dependent packages such as `@public-ui/components`, these must be rebuilt for each change. Such packages offer the `dev` script for this purpose. This automatically rebuilds the package after each change.
+After a branch switch, dependencies and build output may no longer match the code. Stop all
+watchers and repeat the [daily workflow](#daily-workflow) from `pnpm i` on: reinstall, build
+everything, then start `dev` in the packages you are working on.
 
 ### Back porting to older Major-Versions
 

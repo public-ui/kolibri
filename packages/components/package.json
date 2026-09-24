@@ -73,7 +73,7 @@
 	"scripts": {
 		"assets:kolicons": "pnpm --filter @public-ui/icons build",
 		"build": "pnpm build:light",
-		"build:light": "mkdir doc && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/autogen.doc.js && node scripts/vaadin.js && pnpm format -w",
+		"build:light": "node -e \"require('node:fs').mkdirSync('doc', { recursive: true })\" && cross-env NODE_ENV=production stencil build --docs --prod && node scripts/autogen.doc.js && node scripts/vaadin.js && pnpm format -w",
 		"clear": "rimraf -g dist doc www ../adapters/angular/v20/src ../adapters/angular/v21/src ../adapters/hydrate/dist ../adapters/react/src ../adapters/react-v19/src ../adapters/solid/src ../adapters/vaadin/*.java ../adapters/vue/src assets/kolicons",
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint && pnpm lint:stylelint && pnpm lint:tsc && pnpm lint:i18n",
@@ -141,7 +141,7 @@
 		"pug": "3.0.4",
 		"rimraf": "6.1.3",
 		"stencil-awesome-test": "1.0.6",
-		"stylelint": "17.14.1",
+		"stylelint": "17.15.0",
 		"terser": "5.51.2",
 		"twig": "3.0.0",
 		"typescript": "5.9.3"

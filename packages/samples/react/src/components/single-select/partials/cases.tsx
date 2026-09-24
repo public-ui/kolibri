@@ -86,6 +86,7 @@ export const SingleSelectCases = ({ blockIdPrefix, snapshotOnly, ...props }: Sin
 							{
 								value: 'bw',
 								label: 'Baden-Württemberg',
+								disabled: true,
 							},
 							{
 								value: 'by',
@@ -115,7 +116,6 @@ export const SingleSelectCases = ({ blockIdPrefix, snapshotOnly, ...props }: Sin
 							{
 								value: 'mv',
 								label: 'Mecklenburg-Vorpommern',
-								disabled: true,
 							},
 							{
 								value: 'ni',
@@ -129,7 +129,6 @@ export const SingleSelectCases = ({ blockIdPrefix, snapshotOnly, ...props }: Sin
 							{
 								value: 'rp',
 								label: 'Rheinland-Pfalz',
-								disabled: true,
 							},
 							{
 								value: 'sl',
@@ -147,11 +146,11 @@ export const SingleSelectCases = ({ blockIdPrefix, snapshotOnly, ...props }: Sin
 							{
 								value: 'sh',
 								label: 'Schleswig-Holstein',
-								disabled: true,
 							},
 							{
 								value: 'th',
 								label: 'Thüringen',
+								disabled: true,
 							},
 						] as Option<StencilUnknown>[]
 					}

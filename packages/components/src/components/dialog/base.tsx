@@ -5,9 +5,10 @@ import { BaseWebComponent } from '../../internal/functional-components/base-web-
 import type { ResolvedButtonProps } from '../../internal/functional-components/button/resolve-props';
 import { resolveCardCloseButtonProps } from '../../internal/functional-components/card/close-button';
 import type { CardFCProps } from '../../internal/functional-components/card/component';
+import { CardFC } from '../../internal/functional-components/card/component';
 import type { DialogApi } from '../../internal/functional-components/dialog/api';
 import { dialogPropsConfig } from '../../internal/functional-components/dialog/api';
-import { DialogFC } from '../../internal/functional-components/dialog/component';
+import { dialogBlockClass, DialogFC } from '../../internal/functional-components/dialog/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { dialogCallbacksProp, labelProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
 import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
@@ -184,22 +185,21 @@ export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi>
 	}
 
 	protected renderDialogFC(): JSX.Element {
+		const variant = this.getRenderProp('variant');
+		const isCard = variant === 'card';
+
 		return (
 			<DialogFC
-				ariaDescriptionId={this.getState('ariaDescriptionId')}
-				cardProps={this.buildCardProps()}
+				blockClass={dialogBlockClass(variant)}
 				handleCancel={this.handleCancel}
 				handleClose={this.handleClose}
-				headingId={this.getState('headingId')}
 				label={this.getRenderProp('label')}
-				level={this.getRenderProp('level')}
+				labelledBy={isCard ? this.getState('headingId') : undefined}
 				modal={this.getState('modal')}
-				on={this.getRenderProp('on')}
 				refDialog={this.dialogRef}
-				variant={this.getRenderProp('variant')}
 				width={this.getRenderProp('width')}
 			>
-				{this.renderSlot()}
+				{isCard ? <CardFC {...this.buildCardProps()}>{this.renderSlot()}</CardFC> : this.renderSlot()}
 			</DialogFC>
 		);
 	}

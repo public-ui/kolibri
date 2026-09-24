@@ -41,8 +41,8 @@ executeSnapshotTests<CardProps>(
 );
 
 /**
- * The transitional `kol-card-wc` renders the same `CardFC` into the light DOM. Dialog and drawer
- * depend on that markup, so it is pinned here until both render `CardFC` directly.
+ * The transitional `kol-card-wc` renders the same `CardFC` into the light DOM. No component in
+ * the library uses it any more; its markup stays pinned while the element itself does.
  */
 executeSnapshotTests<CardProps>(
 	KolCardWcTag,

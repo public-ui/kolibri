@@ -21,9 +21,10 @@ import { BaseCardWebComponent } from './base';
 /**
  * Transitional `kol-card-wc` — a `shadow:false` element that renders `CardFC` into the light DOM.
  *
- * `kol-dialog` and `kol-drawer` render it inside their own shadow DOM and style the inner
- * `.kol-card` classes from their stylesheets, which a shadow root would hide. Once both consumers
- * render `CardFC` directly, this element can be deleted.
+ * It exists for consumers that render a card inside their own shadow DOM and style the inner
+ * `.kol-card` classes from their stylesheets, which a shadow root would hide. `kol-dialog` and
+ * `kol-drawer` were those consumers; both render `CardFC` directly now, so nothing inside the
+ * library uses this element any more and it can be deleted.
  *
  * Differences to `kol-card`:
  *
