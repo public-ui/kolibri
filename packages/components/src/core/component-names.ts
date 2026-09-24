@@ -60,9 +60,7 @@ export let KolToastContainerTag = 'kol-toast-container' as const;
 export let KolToolbarTag = 'kol-toolbar' as const;
 export let KolTooltipWcTag = 'kol-tooltip-wc' as const;
 export let KolTreeItemTag = 'kol-tree-item' as const;
-export let KolTreeItemWcTag = 'kol-tree-item-wc' as const;
 export let KolTreeTag = 'kol-tree' as const;
-export let KolTreeWcTag = 'kol-tree-wc' as const;
 export let KolVersionTag = 'kol-version' as const;
 
 export const setCustomTagNames = (transformTagName: (tagName: string) => string) => {
@@ -128,8 +126,6 @@ export const setCustomTagNames = (transformTagName: (tagName: string) => string)
 	KolToolbarTag = transformTagName(KolTooltipWcTag as string) as 'kol-toolbar';
 	KolTooltipWcTag = transformTagName(KolTooltipWcTag as string) as 'kol-tooltip-wc';
 	KolTreeItemTag = transformTagName(KolTreeItemTag as string) as 'kol-tree-item';
-	KolTreeItemWcTag = transformTagName(KolTreeItemWcTag as string) as 'kol-tree-item-wc';
 	KolTreeTag = transformTagName(KolTreeTag as string) as 'kol-tree';
-	KolTreeWcTag = transformTagName(KolTreeWcTag as string) as 'kol-tree-wc';
 	KolVersionTag = transformTagName(KolVersionTag as string) as 'kol-version';
 };

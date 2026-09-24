@@ -30,7 +30,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import type { FormFieldLabelInfoPopoverProps } from '../../functional-components';
-import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
+import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputColorController } from './controller';
 
@@ -95,10 +95,6 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 	@delegateClick('ctaRef')
 	public async click(): Promise<void> {}
 
-	private get hasSuggestions(): boolean {
-		return Array.isArray(this.state._suggestions) && this.state._suggestions.length > 0;
-	}
-
 	private getFormFieldProps(): FormFieldStateWrapperProps {
 		return {
 			state: this.state,
@@ -115,14 +111,13 @@ export class KolInputColor implements ClickableElement, FocusableElement, InputC
 			ref: this.ctaRef,
 			type: 'color',
 			name: this.state._name ? `${this.state._name}-color` : undefined,
-			list: this.hasSuggestions ? createRelatedUniqueId(this.state._id, 'list') : undefined,
 			onInput: this.onColorInput,
 		};
 	}
 
 	private getGenericInputProps() {
 		return {
-			state: { ...this.state, _suggestions: [] },
+			state: { ...this.state },
 			...this.controller.onFacade,
 			onBlur: this.onBlur,
 			onFocus: this.onFocus,

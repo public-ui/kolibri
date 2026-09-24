@@ -27,6 +27,7 @@ Observe the following coding rules when making changes to this project.
 ### General Rules
 
 - Never use the title-Attribute to add tooltips. Always use the `KolTooltip` component.
+- JSDoc and comments follow the repo-wide rule [Inline code documentation](../../AGENTS.md#inline-code-documentation). The JSDoc of public `@Prop`, `@Method` and `@Event` members is published API documentation.
 
 ### Styling boundary
 

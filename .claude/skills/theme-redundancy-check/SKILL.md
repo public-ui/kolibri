@@ -246,6 +246,7 @@ node scripts/theme-redundancy-check.js
 - [ ] Vorher-Check mit Docker (Diffs dokumentiert)
 - [ ] Verschiebung durchgeführt (Basis hinzufügen, Themes entfernen)
 - [ ] Nachher-Check mit Docker (0 Diffs erwartet)
+- [ ] Mitgewanderte Kommentare folgen [Inline code documentation](../../../AGENTS.md#inline-code-documentation) (Ist-Zustand, keine Verschiebungshistorie)
 - [ ] Lint und Format ausgeführt
 - [ ] Erfahrungswerte dokumentiert (Abschnitt 7)
 

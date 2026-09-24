@@ -13,7 +13,7 @@ import { KolCombobox } from './combobox/shadow';
 import { KolDetails } from './details/component';
 import { KolDialog } from './dialog/component';
 import { KolDialogWc } from './dialog/wc';
-import { KolDrawer } from './drawer/shadow';
+import { KolDrawer } from './drawer/component';
 import { KolForm } from './form/component';
 import { KolHeading } from './heading/component';
 import { KolIcon } from './icon/component';
@@ -44,15 +44,13 @@ import { KolSingleSelect } from './single-select/shadow';
 import { KolSkipNav } from './skip-nav/component';
 import { KolSpin } from './spin/component';
 import { KolSplitButton } from './split-button/component';
-import { KolTabs } from './tabs/shadow';
+import { KolTabs } from './tabs/component';
 import { KolTextarea } from './textarea/shadow';
 import { KolToastContainer } from './toaster/shadow';
-import { KolToolbar } from './toolbar/shadow';
+import { KolToolbar } from './toolbar/component';
 import { KolTooltipWc } from './tooltip/component';
-import { KolTreeItemWc } from './tree-item/component';
-import { KolTreeItem } from './tree-item/shadow';
-import { KolTreeWc } from './tree/component';
-import { KolTree } from './tree/shadow';
+import { KolTreeItem } from './tree-item/component';
+import { KolTree } from './tree/component';
 import { KolVersion } from './version/component';
 
 export const COMPONENTS = [
@@ -109,7 +107,5 @@ export const COMPONENTS = [
 	KolTooltipWc,
 	KolTree,
 	KolTreeItem,
-	KolTreeItemWc,
-	KolTreeWc,
 	KolVersion,
 ];

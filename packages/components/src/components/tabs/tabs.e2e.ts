@@ -77,20 +77,20 @@ test.describe('kol-tabs', () => {
 	test.describe('Tabs create button', () => {
 		test('should not show create button by default', async ({ page }) => {
 			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs"></kol-tabs>`);
-			const createButton = page.getByTestId('tabs-create-button');
+			const createButton = page.locator('kol-tabs .kol-tabs__button-create button');
 			await expect(createButton).toHaveCount(0);
 		});
 
 		test('should show create button when _has-create-button is true', async ({ page }) => {
 			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button></kol-tabs>`);
-			const createButton = page.getByTestId('tabs-create-button');
+			const createButton = page.locator('kol-tabs .kol-tabs__button-create button');
 			await expect(createButton).toBeVisible();
 		});
 
 		test('it calls the onCreate callback when create button is clicked', async ({ page }) => {
 			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button></kol-tabs>`);
 			const kolTabs = page.locator('kol-tabs');
-			const createButton = page.getByTestId('tabs-create-button');
+			const createButton = page.locator('kol-tabs .kol-tabs__button-create button');
 			const callbackPromise = kolTabs.evaluate((element: HTMLKolTabsElement) => {
 				return new Promise<void>((resolve) => {
 					element._on = {
@@ -107,7 +107,7 @@ test.describe('kol-tabs', () => {
 		test('it emits create event when create button is clicked', async ({ page }) => {
 			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button></kol-tabs>`);
 			const kolTabs = page.locator('kol-tabs');
-			const createButton = page.getByTestId('tabs-create-button');
+			const createButton = page.locator('kol-tabs .kol-tabs__button-create button');
 			const eventPromise = kolTabs.evaluate((element: HTMLKolTabsElement) => {
 				return new Promise<void>((resolve) => {
 					element.addEventListener('create', () => {

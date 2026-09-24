@@ -206,6 +206,8 @@ grep -rn "@include" packages/themes/*/src packages/components/src --include='*.s
 - **unstyled-Theme-Spezifika**: kein Build-Schritt (`theme.ts` direkt, kein `THEME_CSS`); Route `icon/font` wird für `THEME_EXPORT=UNSTYLED` übersprungen; zeigt NUR den Basis-Layer — jede visuelle Änderung deutet auf DOM-Umbauten im Basis-Styling hin; Docker-Support ist über `discoverThemes()` (liest auch `packages/unstyled`) vorhanden. Die Basis ist zudem scheme-neutral: `unstyled`-Snapshots dürfen unter `KOLIBRI_VISUAL_TESTS_COLOR_SCHEME=light` und `=dark` nicht differieren; ein Diff zwischen beiden Läufen ist ein Fehler in `components`, nicht im Test.
 - **Farbwechsel im Diff gehört nie in die Basis**: Zeigt die Farbprobe `exp=(r,g,b) ≠ act=(r,g,b)` bei unveränderter Geometrie, liegt die Ursache in der Theme-Schicht (Token, Mixin, Include-Kette) — niemals durch Farben oder gar Dark/Light-Regeln (`prefers-color-scheme`, `color-scheme`, `light-dark()`) in `components` „reparieren“. Die Basis ist layout-only und scheme-neutral (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
 
+- **Kommentare beim Umbau**: Verschobene oder angepasste Kommentare folgen [Inline code documentation](../../../AGENTS.md#inline-code-documentation) — sie beschreiben den neuen Ist-Zustand, nicht den Umbau.
+
 ## 7b. Was der Pixel-Gate strukturell **nicht** sieht
 
 Snapshots fotografieren Ruhezustände. Hover, `:active`, `:focus`, `:focus-visible` und
@@ -289,9 +291,10 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 | 8   | Bei „Baseline stale"-Verdacht: Base-Code selbst laufen lassen → Fallstricke                                                                                                                                                                                      | Migration default                                          | Unnötige Baseline-Regenerierung verhindert                        |
 | 8b  | „Falscher Stand getestet"-Verdacht per Volume-Verifikation ausräumen: Branch-only-Marker im gebauten dist (0× auf Base), dist-mtime = Laufzeit, Log-Build-Schritte — Pipeline baut automatisch (Mirror ohne `.git`/`dist`, App-Build pro Testlauf) → Fallstricke | Re-Verifikation unstyled (Button-Migration)                | Sinnlose Re-Runs + falsche Schlüsse „grün sei trivial" verhindert |
 
-| 31 | `docker info` schlaegt fehl heisst **Daemon laeuft nicht**, nicht **kein Docker**: im Container-Setup dieser Sessions ist die Engine installiert und laesst sich als root mit `dockerd &` starten (danach `docker info` erneut pruefen). Erst wenn auch das scheitert, gilt Abschnitt 0 | Dialog-Skeleton-Migration | Eine komplette, wertlose Ersatz-Abnahme vermieden — der selbstgebaute Chromium-A/B-Lauf sah die echte Regression nicht |
+| 31 | `docker info` schlaegt fehl heisst **Daemon laeuft nicht**, nicht **kein Docker**: im Container-Setup dieser Sessions ist die Engine installiert und laesst sich als root mit `dockerd &` starten (danach `docker info` erneut pruefen). Erst wenn auch das scheitert, gilt Abschnitt 0 | Dialog-Skeleton-Migration, Tabs-Skeleton-Migration | Eine komplette, wertlose Ersatz-Abnahme vermieden — der selbstgebaute Chromium-A/B-Lauf sah die echte Regression nicht |
 | 36 | Wirkt ein Teil eines Fix-Blocks und der andere nicht, ist es fast immer eine fehlende Ahnenstufe: ein Mixin, das INNERHALB des Blocks inkludiert wird, trägt eine Klasse mehr als ein `&__element`-Override daneben. `outline: revert` täuscht dabei, weil es über den Kaskaden-Ursprung gewinnt und nicht über die Spezifität → `#{$root} &` | Collapsible-Migration desy (2026-09-21) | Stunden Spezifitäts-Suche |
 | 37 | Ein geschlossenes natives `<details>` nimmt den ganzen Content-Teilbaum aus dem Layout — mit ihm die dekorierte Box des Wrappers UND die Baseline, aus der ein `inline-block`-Host seine Line-Box bemisst. Zwei getrennte Deltas aus einer Ursache | Collapsible-Migration bwst + desy (2026-09-21) | 16px-Phantomhöhe sofort erklärt |
+| 39 | Proxy-CA ohne Skript-Änderung: das Volume einmal als root vorbereiten (`/work/ca.crt` + `/work/home/.npmrc` mit `cafile=/work/ca.crt`, `chown -R 1001 /work`) — `HOME=/work/home` im Container liest die `.npmrc`, `npm install -g pnpm` und `pnpm install` laufen durch (Variante zu #34) | Tree-Skeleton-Migration (2026-09-23) | Kein ungetrackter Patch am Docker-Skript, der versehentlich mitcommittet wird |
 | 28 | Jest-/Stencil-Snapshot-Serializer sortiert `class`-Attribute alphabetisch — Class-Order im Snapshot ist kein Signal für die echte DOM-Reihenfolge und kein Regressions-Signal | Details-Skeleton-Migration (PR #10884) | Phantom-Class-Order-Bug beim FC-Port sofort erkannt |
 
 **Block B — Wrapper-Umbauten / Button-Migration**
@@ -317,20 +320,24 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
 
 **Block C — Betrieb**
 
-| #   | Erfahrung (Detail)                                                                                                                                                                                                                                                                                                                                                      | Bestätigt                 | Zeitersparnis bei früherer Kenntnis                               |
-| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- | ----------------------------------------------------------------- |
-| 17  | grep-Passthrough flaky (webServer-Exit 127/spawn ENOENT) → http-server@14.1.1 einmalig im Volume → Fallstricke                                                                                                                                                                                                                                                          | mehrfach                  | Statt Abbruch + voller 8-min-Lauf                                 |
-| 18  | probe.spec.js NACH Workspace-Spiegeln schreiben, NIE committen → Fallstricke                                                                                                                                                                                                                                                                                            | Migration default         | Sync löscht Datei, Repo bleibt sauber                             |
-| 19  | Hydrate-SSR-Snapshot pinnt Shadow-DOM: Components-Build davor, `pnpm -r test:unit` → Fallstricke                                                                                                                                                                                                                                                                        | Kampagne                  | Rote Unit-Tests nach DOM-Änderung verhindert                      |
-| 20  | `tsc`-Fehler über fehlende `HTMLKol*Element`-Typen = stale `components.d.ts` → bauen → Fallstricke                                                                                                                                                                                                                                                                      | mehrfach                  | Scheinbare Typfehler sofort erkannt                               |
-| 21  | `''`-Sentinel für „Attribut nur wenn gesetzt" statt `undefined` → Fallstricke                                                                                                                                                                                                                                                                                           | Migration default         | `tabindex`-Leak-Diffs verhindert                                  |
-| 22  | Fokus-Kette über `shadowRoot.activeElement` abwärts → Fallstricke                                                                                                                                                                                                                                                                                                       | Kampagne                  | „Fokussiert, aber keine Optik" sofort erklärt                     |
-| 23  | Transitional-Tags (z. B. `-wc`) vor Löschung im Components-Paket greppen → Fallstricke                                                                                                                                                                                                                                                                                  | Kampagne                  | Brechende Peer-Komponenten verhindert                             |
-| 24  | unstyled zeigt nur Basis-Layer, kein Build-Schritt, `icon/font` übersprungen → Fallstricke                                                                                                                                                                                                                                                                              | Strukturumbau-Kampagne    | Fehlinterpretation der Diffs verhindert                           |
-| 32  | Die Liste der geaenderten Bilder eines PRs gibt es ohne `gh` und ohne lokalen Lauf: `curl https://public-ui.github.io/kolibri/visual/pr-<n>/report.json` — je Paket jedes Snapshot mit `status`, `diffPixels` und URLs zu expected/actual/diff-PNG. Baselines selbst liegen NICHT im Git (`.gitignore`), `git diff -- '*.png'` ist darum immer 0 und als Metrik wertlos | Dialog-Skeleton-Migration | Direkt zur Ursache statt 40 Minuten Volllauf                      |
-| 33  | Erfahrung #30 vor dem Inlining gezielt pruefen statt anzunehmen: liefert der rendernde Konsument die Basis- und Theme-Styles des Kindes bereits selbst (hier `@shared/_card.mixin.scss` im `kol-dialog`-Mixin), faellt der Style-Verlust an der Shadow-Grenze aus und der FC-Port ist Null-Delta                                                                        | Dialog-Skeleton-Migration | Unnoetiges Festhalten am WC-Blatt verhindert                      |
-| 34  | Der Playwright-Container erreicht die Registry nur mit dem Agent-Proxy-CA: `/root/.ccr/ca-bundle.crt` in den `docker run` mounten und `NODE_EXTRA_CA_CERTS` + `npm_config_cafile` darauf zeigen lassen, sonst bricht `npm install -g pnpm` mit `SELF_SIGNED_CERT_IN_CHAIN` ab                                                                                           | Dialog-Skeleton-Migration | Der einzige Blocker zwischen "kein Docker" und laufender Pipeline |
-| 35  | Eine nichtdeterministische Route macht jedes Pixel-Ergebnis wertlos: springt ein Bild zwischen zwei plausiblen Zustaenden, erst die Ursache der Nichtdeterminiertheit messen (z. B. `addInitScript`, das die fragliche DOM-API protokolliert, ueber mehrere Laeufe) und beheben, dann vergleichen                                                                       | Dialog-Skeleton-Migration | Lokal bit-identisch, CI 14 Diffs — ohne die Messung unerklaerlich |
+| #   | Erfahrung (Detail)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | Bestätigt                                                                                                     | Zeitersparnis bei früherer Kenntnis                                   |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| 17  | grep-Passthrough flaky (webServer-Exit 127/spawn ENOENT) → http-server@14.1.1 einmalig im Volume → Fallstricke                                                                                                                                                                                                                                                                                                                                                                                      | mehrfach                                                                                                      | Statt Abbruch + voller 8-min-Lauf                                     |
+| 18  | probe.spec.js NACH Workspace-Spiegeln schreiben, NIE committen → Fallstricke                                                                                                                                                                                                                                                                                                                                                                                                                        | Migration default                                                                                             | Sync löscht Datei, Repo bleibt sauber                                 |
+| 19  | Hydrate-SSR-Snapshot pinnt Shadow-DOM: Components-Build davor, `pnpm -r test:unit` → Fallstricke                                                                                                                                                                                                                                                                                                                                                                                                    | Kampagne                                                                                                      | Rote Unit-Tests nach DOM-Änderung verhindert                          |
+| 20  | `tsc`-Fehler über fehlende `HTMLKol*Element`-Typen = stale `components.d.ts` → bauen → Fallstricke                                                                                                                                                                                                                                                                                                                                                                                                  | mehrfach                                                                                                      | Scheinbare Typfehler sofort erkannt                                   |
+| 21  | `''`-Sentinel für „Attribut nur wenn gesetzt" statt `undefined` → Fallstricke                                                                                                                                                                                                                                                                                                                                                                                                                       | Migration default                                                                                             | `tabindex`-Leak-Diffs verhindert                                      |
+| 22  | Fokus-Kette über `shadowRoot.activeElement` abwärts → Fallstricke                                                                                                                                                                                                                                                                                                                                                                                                                                   | Kampagne                                                                                                      | „Fokussiert, aber keine Optik" sofort erklärt                         |
+| 23  | Transitional-Tags (z. B. `-wc`) vor Löschung im Components-Paket greppen → Fallstricke                                                                                                                                                                                                                                                                                                                                                                                                              | Kampagne                                                                                                      | Brechende Peer-Komponenten verhindert                                 |
+| 24  | unstyled zeigt nur Basis-Layer, kein Build-Schritt, `icon/font` übersprungen → Fallstricke                                                                                                                                                                                                                                                                                                                                                                                                          | Strukturumbau-Kampagne                                                                                        | Fehlinterpretation der Diffs verhindert                               |
+| 32  | Die Liste der geaenderten Bilder eines PRs gibt es ohne `gh` und ohne lokalen Lauf: `curl https://public-ui.github.io/kolibri/visual/pr-<n>/report.json` — je Paket jedes Snapshot mit `status`, `diffPixels` und URLs zu expected/actual/diff-PNG. Baselines selbst liegen NICHT im Git (`.gitignore`), `git diff -- '*.png'` ist darum immer 0 und als Metrik wertlos                                                                                                                             | Dialog-Skeleton-Migration                                                                                     | Direkt zur Ursache statt 40 Minuten Volllauf                          |
+| 33  | Erfahrung #30 vor dem Inlining gezielt pruefen statt anzunehmen: liefert der rendernde Konsument die Basis- und Theme-Styles des Kindes bereits selbst (hier `@shared/_card.mixin.scss` im `kol-dialog`-Mixin), faellt der Style-Verlust an der Shadow-Grenze aus und der FC-Port ist Null-Delta                                                                                                                                                                                                    | Dialog-Skeleton-Migration                                                                                     | Unnoetiges Festhalten am WC-Blatt verhindert                          |
+| 34  | Der Playwright-Container erreicht die Registry nur mit dem Agent-Proxy-CA: `/root/.ccr/ca-bundle.crt` in den `docker run` mounten und `NODE_EXTRA_CA_CERTS` + `npm_config_cafile` darauf zeigen lassen, sonst bricht `npm install -g pnpm` mit `SELF_SIGNED_CERT_IN_CHAIN` ab. Zusaetzlich `--network host` und die `HTTPS_PROXY`/`NO_PROXY`-Variablen durchreichen (`-e HTTPS_PROXY -e NO_PROXY …`) — der Proxy lauscht auf dem Host-Loopback. Alles nur lokal in `runArgs` patchen, nie committen | Dialog- + Toolbar-Skeleton-Migration                                                                          | Der einzige Blocker zwischen "kein Docker" und laufender Pipeline     |
+| 38  | Lokale Baselines gibt es nicht (`.gitignore`), `--check` braucht sie aber: `git worktree add ../kolibri-base origin/develop`, dort `VOLUME` in `scripts/snapshots-docker.mjs` lokal auf ein zweites Volume (`kolibri-vt-develop`) umstellen, `node scripts/snapshots-docker.mjs <themes>` (Update-Modus) schreibt die Base-PNGs in den Worktree, dann `packages/*/snapshots` in den Branch kopieren und dort `--check` fahren. Das zweite Volume erlaubt Base- und Branch-Laeufe ohne Build-Race    | Toolbar- + Tree-Skeleton-Migration (2×; Tree: beide Läufe nacheinander im selben Volume statt zweitem Volume) | Ohne das Rezept ist `--check` lokal gar nicht ausfuehrbar             |
+| 35  | Eine nichtdeterministische Route macht jedes Pixel-Ergebnis wertlos: springt ein Bild zwischen zwei plausiblen Zustaenden, erst die Ursache der Nichtdeterminiertheit messen (z. B. `addInitScript`, das die fragliche DOM-API protokolliert, ueber mehrere Laeufe) und beheben, dann vergleichen                                                                                                                                                                                                   | Dialog-Skeleton-Migration                                                                                     | Lokal bit-identisch, CI 14 Diffs — ohne die Messung unerklaerlich     |
+| 41  | Baselines liegen nicht im Git (Erfahrung #32) — lokal erzeugt man sie **vor der ersten Code-Aenderung** im Docker auf dem unveraenderten Base-Stand (`snapshots-docker.mjs <themes…>` ohne `--check`), dann `--check` auf dem Branch. Der Workspace wird zu Beginn **jedes** Laufs gespiegelt: bis `==> pnpm install` im Log steht, keine Datei anfassen, und waehrend einer Theme-Schleife gar nicht                                                                                               | Tabs-Skeleton-Migration (2026-09-23)                                                                          | Kein Base-Worktree-Build und keine CI-Runde fuer den Vergleich noetig |
+| 42  | `snapshots-docker.mjs a b c --check` bricht nach dem ersten roten Theme ab (`set -euo pipefail`) — fuer die Abnahme je Theme einen eigenen Aufruf in einer Schleife fahren, sonst bleiben die restlichen Themes ungeprueft                                                                                                                                                                                                                                                                          | Tabs-Skeleton-Migration (2026-09-23)                                                                          | Ein halber Abnahmelauf, der wie ein ganzer aussieht                   |
+| 43  | `axe-snapshots` `table/sticky-*` (bwst) laufen gelegentlich in den 15-s-Timeout — lastabhaengig, auch mit 1 Worker. Kein Pixel-Signal: einmal gezielt wiederholen (`-- --grep sticky`), gruen = Rauschen                                                                                                                                                                                                                                                                                            | Tabs-Skeleton-Migration (2026-09-23)                                                                          | Phantom-Regressionssuche in einer nicht beruehrten Komponente         |
 
 **Block D — Sackgassen (nach Schadenshöhe; nie „bestätigen", nur entfernen, wenn Kontext entfällt)**
 
@@ -850,6 +857,116 @@ Aufnahme nur nach dem Früher-gewusst-Test (Abschnitt 5): Erkenntnis aus realer 
   409 unchanged / 0 changed fuer alle sieben Pakete, Baseline `b08fab9f7c` (develop), Commit
   `0ec6873ec1`. Lokal ohne Docker: Components 998/998, Hydrate-SSR 102/102 (unveraendert),
   `pnpm check:skeleton-selectors` sauber.
+
+### 2026-09-22 — Skeleton-Migration kol-drawer (DialogFC als Huelle, CardFC direkt): 5 Pakete, 0 Diffs ab Start
+
+- **Ausgangslage**: `kol-drawer` war der letzte Konsument des transitionalen `kol-card-wc`. Der
+  Ausbau aendert DOM (`<kol-card-wc class=…>` faellt weg), der Rest der Migration nicht.
+- **Ursachen & Fix-Muster**: keine Theme-Runde noetig, wieder ueber **Wrapper-Tausch statt
+  Klassen-Merge** (wie kol-split-button und kol-form). Vor dem Schreiben des FC gegreppt: desy
+  (`.kol-drawer__wrapper .kol-card { background-color; display: grid }`) und kern
+  (`.kol-drawer__wrapper .kol-card { border: 0 }`) greifen auf die Card **ueber** den Wrapper zu.
+  `CardFC` nimmt zwar ein `class` entgegen und der Doc-Kommentar lud sogar dazu ein, den Drawer-Hook
+  dort hineinzureichen — genau das haette beide Regeln getoetet (Muster 6a-8). Stattdessen rendert
+  der FC ein `<div class="kol-drawer__wrapper …">` genau dort, wo das Custom Element stand.
+  Box-Baum identisch, weil `position: fixed` unbekanntes Element und `div` gleichermassen
+  blockifiziert.
+- **Neu gelernt (Frueher-gewusst-Test bestanden)**: **Ein Doc-Kommentar, der eine Klasse auf den
+  FC-Root einlaedt, ist keine Freigabe — die Selektoren entscheiden.** Der `CardFC`-Kommentar
+  beschrieb den Klassen-Merge als vorgesehenen Weg fuer den Drawer; der Grep zeigte das Gegenteil.
+  Erst greppen, dann dem Kommentar glauben (und ihn danach korrigieren).
+- **Neu gelernt #2**: Ein `@State()`-Feld darf nicht heissen wie eine `@Method()` derselben
+  Komponente — `@State() open` ueberschreibt `open()` still, und der Fehler zeigt sich erst als
+  „drawer.open is not a function" im Test, nicht im Build. Hier: State `expanded`.
+- **Theme-Spezifika**: keine.
+- **Abnahme-Evidenz (CI, massgeblich)**: PR #10976, Visual-Review-Bot „No visual changes", je
+  409 unchanged / 0 changed fuer alle sieben Pakete, Baseline `4cab714e75` (develop), Commit
+  `ad49dc66c1`; `build-and-check` und `e2e-tests` gruen.
+- **Evidenz (lokal, Docker)**: A/B ueber einen develop-Worktree, weil Baselines nicht im Git liegen
+  (Erfahrung #32): Baselines aus `origin/develop` erzeugen, in den Branch-Checkout kopieren, dann
+  `--check`. Je Paket `--grep drawer` → 8 passed, 0 failed, Exit 0 fuer bwst, default, desy, kern,
+  unstyled (`PHASE_A_EXIT=0`, `PHASE_C_EXIT=0`). ecl liess sich nicht greppen (sein `test` ist
+  `npm-run-all2`) → CI. Der Scope ist vollstaendig, weil der Jest-Snapshot des Drawers vor dem Umbau
+  MIT registriertem `KolCardWc` eingefroren wurde (Form-Lehre 2026-09-22) und den Diff exakt auf
+  `<kol-card-wc>` → `<div>` festnagelte; Dialog/Modal/Card-Snapshots blieben byte-gleich.
+- **Falle, die den Voll-Lauf kostete**: Route `input-text/hide-msg?noColumns` faellt auf **develop**
+  selbst aus („no data-visual-block containers found"). `snapshots-docker.mjs` schreibt bei einem
+  fehlgeschlagenen Lauf nichts zurueck, und `--all` faehrt die Themes unter `set -e` — ein einziger
+  kaputter Base-Route-Fehler bricht damit die Baseline-Erzeugung aller folgenden Themes ab. Wer
+  lokal einen Voll-Lauf braucht, muss die Route vorher fixen oder ausschliessen.
+
+### 2026-09-23 — Skeleton-Migration kol-toolbar (ButtonFC/LinkFC statt `-wc`-Tags): alle 6 Pakete, 0 Diffs ab Start
+
+- **Ausgangslage**: `kol-toolbar` rendert seine Items jetzt ueber `ButtonFC`/`LinkFC` (Fabrik
+  `internal/functional-components/toolbar/item.ts`) statt ueber `kol-button-wc`/`kol-link-wc`.
+  Die Consumer-Klasse `.kol-toolbar__item` sitzt in default/bwst als **Vorfahr** von
+  `.kol-button__text` (`.kol-toolbar__item:first-child .kol-button__text`).
+- **Ursachen & Fix-Muster**: keine Theme-Runde noetig — dritte Bestaetigung fuer **Wrapper-Tausch
+  statt Klassen-Merge** (nach split-button und form): ein `<div class="kol-toolbar__item">` an der
+  Stelle des Custom Elements, der FC darin. Ein unbekanntes Element und ein `div` werden als
+  Flex-Item gleich blockifiziert, `:first-child` trifft weiterhin denselben Knoten.
+- **Neu gelernt**: Das Ist-DOM mit registriertem `KolButtonWc` als Jest-Snapshot einzufrieren
+  (Rezept aus dem kol-form-Eintrag) scheitert — `KolButtonWc` wirft in der Spec-Umgebung schon im
+  Konstruktor (`initFormAssociation` → `attachInternals`). Fuer Button-Konsumenten bleibt nur der
+  Hydrate-SSR-Snapshot (hier ohne Items, also ohne Aussage) und das Pixel-Gate. Die Baselines
+  lokal zu erzeugen ist dafuer Voraussetzung (Erfahrung #38).
+- **Theme-Spezifika**: keine.
+- **Evidenz**: `KOLIBRI_VISUAL_TESTS_WORKERS=1 node scripts/snapshots-docker.mjs --all --check`
+  gegen lokal erzeugte develop-Baselines (`8ea1a169`) → bwst/default/desy/ecl/kern/unstyled je
+  295 passed, Exit 0; Branch-Marker `link/resolve-props.d.ts` im Volume-dist verifiziert.
+  Components 1018/1018, Hydrate-SSR 102/102 (unveraendert), toolbar-e2e 8/8,
+  `pnpm check:skeleton-selectors` sauber.
+
+### 2026-09-23 — Skeleton-Migration kol-tabs (kol-button-wc → ButtonFC, PR #10991): alle 6 Pakete, 0 Pixel-Diffs ab Start
+
+- **Ausgangslage**: `kol-tabs` war Legacy und renderte je Tab (plus Create-Button) einen transitionalen
+  `kol-button-wc`. Migration mit direktem Ausbau des Wrappers: `ButtonFC` je Tab, orchestriert von
+  `createTabsButtonItem` (Tooltip-Behavior, Handler, Refs).
+- **Ursachen & Fix-Muster**: keine Theme-Runde noetig, wieder **Wrapper-Tausch statt Klassen-Merge**.
+  Die Tab-Buttons hatten gar keine Consumer-Klasse; alle Theme-Regeln greifen als Descendant von
+  `__button-group` bzw. `.kol-tabs` auf `.kol-button` zu. Der Wrapper musste trotzdem bleiben:
+  `kol-button-wc-box-styles` gibt `.kol-button` `width: 100%` — ohne Box wird der Block selbst
+  Flex-Item und jeder Tab nimmt eine ganze Zeile. `<div class="kol-tabs__tab">` an der Stelle des
+  Custom Elements ist als Flex-/Grid-Item box-identisch (beide werden blockifiziert).
+- **Vorab-Nachweis ohne Pixel**: Browser-DOM-Dump (Stencil-Playwright, Chromium mit
+  `launchOptions.executablePath: '/opt/pw-browsers/chromium'`) von Base-Worktree und Branch fuer 4
+  Szenarien, normalisiert (Nonces, Wrapper-Tag) → identisch bis auf Stencil-`<!---->`-Marker, den
+  leeren Expert-`<slot>` und die Host-Attributreihenfolge. Zwei Fallen: `page.setContent` greift nur
+  einmal pro Test (Szenarien auf eigene Tests verteilen), und der Jest-Freeze-Trick aus der
+  Form-Migration funktioniert fuer `kol-button-wc`-Konsumenten nicht — der Wrapper bricht in
+  `newSpecPage` am `attachInternals` im Konstruktor ab.
+- **Theme-Spezifika**: keine.
+- **Fix-Commit(s)**: `d84ffee0` (Migration, kein Theme-Fix).
+- **Evidenz**: Base-Baselines im Docker aus `46c2d093` erzeugt, dann je Theme
+  `KOLIBRI_VISUAL_TESTS_WORKERS=1 node scripts/snapshots-docker.mjs <theme> --check`: unstyled,
+  default, desy, ecl, kern je 297 passed, Exit 0; bwst 296/1 — einziger Fehler ein Axe-Timeout auf
+  `table/sticky-cols` (Erfahrung #43), Wiederholung `bwst --check -- --grep sticky` → 4 passed,
+  Exit 0. Branch-Marker `kol-tabs__tab` im Volume-dist (`kol-tabs.entry.js`) verifiziert.
+
+### 2026-09-23 — Skeleton-Migration kol-tree + kol-tree-item (zwei `-wc`-Wrapper und `kol-link-wc` abgelöst): alle 6 Pakete, 0 Diffs ab Start
+
+- **Ausgangslage**: `kol-tree`/`kol-tree-item` waren Shadow-Hüllen um die `shadow:false`-Elemente
+  `kol-tree-wc`/`kol-tree-item-wc`; jeder Eintrag renderte seinen Link über `kol-link-wc` mit dem
+  Label im relocierten Expert-Slot. Drei Wrapper fallen weg, `LinkFC` rendert direkt.
+- **Ursachen & Fix-Muster**: keine Theme-Runde nötig. Wieder **Wrapper-Tausch statt Klassen-Merge**
+  (wie kol-form, kol-split-button): jedes Theme greift `.kol-tree-item__link .kol-link` als
+  Descendant und gibt dem Wrapper eine eigene Box (`display: block`, Border, Hover-Hintergrund) —
+  `kol-link-wc` wurde deshalb zu `<span class="kol-tree-item__link">` (unbekanntes Element und `span`
+  sind beide inline, ohne UA-Stile). Die beiden äußeren Wrapper waren inline ohne eigene Regeln und
+  fallen ersatzlos.
+- **Neu gelernt (Früher-gewusst-Test bestanden)**: Den Ist-DOM gegen den **Hydrate-SSR-Snapshot**
+  lesen, nicht gegen den Jest-Snapshot — der Jest-Mock relociert keine Slots von
+  `shadow:false`-Elementen und zeigt den Expert-Inhalt als Geschwister vor dem Link statt darin
+  (siehe migrate-to-skeleton, Fallstrick 15). Mit dem SSR-Stand als Soll war der neue DOM bis auf die
+  Wrapper byte-gleich, und das Pixel-Gate bestätigte es ohne eine einzige Iteration.
+- **Theme-Spezifika**: keine.
+- **Fix-Commit(s)**: `ebacfe90` (Migration, keine Fixes nötig).
+- **Evidenz**: Baselines per Base-Worktree `46c2d093` (develop) erzeugt (je 414 PNGs), dann
+  `node scripts/snapshots-docker.mjs --all --check` (1 Worker) → bwst, default, desy, ecl, kern,
+  unstyled je 297 passed, 0 failed, Exit 0. Branch-Stand im Volume verifiziert (`kol-tree-item-wc`
+  0× im gebauten `dist`, Branch-only-Modul `open-items-cache` in `kol-tree.js`, `dist` während des
+  Laufs gebaut). Components 1024/1024, Hydrate-SSR 102/102, Tree-e2e 11/11 (neue Interaktionstests
+  auch gegen den Vorgänger grün), `pnpm check:skeleton-selectors` sauber.
 
 ### [Datum] — [Aufgabe/Strukturumbau]: Theme [name]
 

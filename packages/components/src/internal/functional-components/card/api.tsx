@@ -45,8 +45,8 @@ export type CardApi = ApiFromConfig<
 			ariaDescriptionId: string;
 			/**
 			 * DOM id of the heading, referenced by the `<article>`'s `aria-labelledby`. Generated
-			 * per instance; `kol-card-wc` lets its consumers override it so a dialog can point its
-			 * own `aria-labelledby` at the same heading.
+			 * per instance, or supplied by a component that composes `CardFC` and points its own
+			 * `aria-labelledby` at the same heading — as dialog and drawer do.
 			 */
 			headingId: string;
 		};

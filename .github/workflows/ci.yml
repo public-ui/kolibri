@@ -88,8 +88,10 @@ jobs:
   # Compares the screenshots of the pull request with the baseline artifact of its base commit
   # (see docs/visual-review.md). Differences are not a failure of this job: they are published by
   # the "Visual Review" workflow and gate the merge through the commit status "Visual Review". The
-  # job fails only when the comparison itself is broken (a route that throws, an invisible block,
-  # a timeout) or a non-screenshot test (axe) fails.
+  # job fails when the comparison itself is broken (a route that throws, an invisible block, a
+  # timeout) or when axe reports a violation on a route without `axe.skipFailures` (see
+  # packages/tools/visual-tests/tests/sample-app.routes.js). `color-contrast` counts only for the
+  # default theme; the other themes report it without failing.
   visual-tests:
     if: github.event_name == 'pull_request'
     permissions:

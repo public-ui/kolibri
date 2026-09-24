@@ -204,6 +204,25 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'disabled' | 'open'>;
 	};
+	/**
+	 * The block class sits on the host element: everything the drawer renders is an element of it
+	 * (`kol-drawer__dialog`, `kol-drawer__wrapper`, `kol-drawer__content`), so no node inside the
+	 * shadow root carries the bare block name.
+	 */
+	'kol-drawer': {
+		elements: {
+			content: {
+				modifiers: null;
+			};
+			dialog: {
+				modifiers: null;
+			};
+			wrapper: {
+				modifiers: Set<'bottom' | 'is-closing' | 'left' | 'open' | 'right' | 'top'>;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-icon': {
 		elements: {
 			icon: {
@@ -376,6 +395,65 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-tabs': {
+		elements: {
+			'button-create': {
+				modifiers: null;
+			};
+			'button-group': {
+				modifiers: null;
+			};
+			content: {
+				modifiers: null;
+			};
+			tab: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'align-bottom' | 'align-left' | 'align-right' | 'align-top'>;
+	};
+	'kol-toolbar': {
+		elements: {
+			item: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'orientation-horizontal' | 'orientation-vertical'>;
+	};
+	'kol-tree': {
+		elements: {
+			'treeview-navigation': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-tree-item': {
+		elements: {
+			children: {
+				modifiers: null;
+			};
+			link: {
+				modifiers: Set<'active' | 'first-level'>;
+			};
+			'link-inner': {
+				modifiers: null;
+			};
+			text: {
+				modifiers: null;
+			};
+			'toggle-button': {
+				modifiers: null;
+			};
+			'toggle-button-icon': {
+				modifiers: null;
+			};
+			'toggle-button-placeholder': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 };
 
 /**
@@ -485,6 +563,14 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: new Set(['disabled', 'open']),
 	},
+	'kol-drawer': {
+		elements: {
+			content: { modifiers: null },
+			dialog: { modifiers: null },
+			wrapper: { modifiers: new Set(['bottom', 'is-closing', 'left', 'open', 'right', 'top']) },
+		},
+		modifiers: null,
+	},
 	'kol-icon': {
 		elements: {
 			icon: { modifiers: null },
@@ -576,6 +662,39 @@ const BEM: KoliBriComponentsBemSchema = {
 			loader: { modifiers: null },
 			spinner: { modifiers: new Set(['cycle', 'dot', 'none']) },
 			'spinner-element': { modifiers: new Set(['1', '2', '3', 'neutral']) },
+		},
+		modifiers: null,
+	},
+	'kol-tabs': {
+		elements: {
+			'button-create': { modifiers: null },
+			'button-group': { modifiers: null },
+			content: { modifiers: null },
+			tab: { modifiers: null },
+		},
+		modifiers: new Set(['align-bottom', 'align-left', 'align-right', 'align-top']),
+	},
+	'kol-toolbar': {
+		elements: {
+			item: { modifiers: null },
+		},
+		modifiers: new Set(['orientation-horizontal', 'orientation-vertical']),
+	},
+	'kol-tree': {
+		elements: {
+			'treeview-navigation': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-tree-item': {
+		elements: {
+			children: { modifiers: null },
+			link: { modifiers: new Set(['active', 'first-level']) },
+			'link-inner': { modifiers: null },
+			text: { modifiers: null },
+			'toggle-button': { modifiers: null },
+			'toggle-button-icon': { modifiers: null },
+			'toggle-button-placeholder': { modifiers: null },
 		},
 		modifiers: null,
 	},

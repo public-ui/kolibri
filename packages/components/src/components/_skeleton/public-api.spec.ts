@@ -1060,9 +1060,12 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['breadcrumb', 'component.tsx'],
 		['form', 'component.tsx'],
 		['skip-nav', 'component.tsx'],
+		['tree', 'component.tsx'],
+		['tree-item', 'component.tsx'],
 		['button-link', 'component.tsx'],
 		['link-button', 'component.tsx'],
 		['split-button', 'component.tsx'],
+		['tabs', 'component.tsx'],
 		['badge', 'component.tsx'],
 		['card', 'component.tsx'],
 		['card', 'wc.tsx'],
@@ -1073,6 +1076,7 @@ describe('documentation requirement (custom-elements.json and docs-vscode are ge
 		['dialog', 'component.tsx'],
 		['dialog', 'wc.tsx'],
 		['modal', 'component.tsx'],
+		['toolbar', 'component.tsx'],
 	];
 
 	it.each(sources)('documents every public member of %s/%s', (component, file) => {
@@ -1169,15 +1173,269 @@ const KOL_FORM_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
 	},
 };
 
+/**
+ * Pinned public API of `kol-toolbar`: 3 props plus `focus()` and `click()` — identical to the
+ * predecessor `shadow.tsx` on the develop branch.
+ */
+const KOL_TOOLBAR_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the currently active toolbar item.',
+	},
+	click: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Triggers a click on the currently active toolbar item.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'string',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_items: {
+		kind: 'prop',
+		type: 'ToolbarItemsPropType',
+		required: true,
+		doc: 'Defines the functional elements of toolbar to render (e.g. kol-link, kol-button).',
+	},
+	_orientation: {
+		kind: 'prop',
+		type: 'OrientationPropType',
+		required: false,
+		doc: 'Defines whether the orientation of the component is horizontal or vertical.',
+	},
+};
+
+/**
+ * Pinned public API of `kol-drawer`: 6 props plus the four open/close methods — identical to the
+ * predecessor `shadow.tsx` on the develop branch.
+ */
+const KOL_DRAWER_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	show: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the drawer. Pass true to open as a modal drawer.',
+	},
+	showModal: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the drawer as a modal.',
+	},
+	open: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Opens the drawer. @deprecated Use show() or showModal() instead.',
+	},
+	close: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Closes the drawer.',
+	},
+	_align: {
+		kind: 'prop',
+		type: 'AlignPropType',
+		required: false,
+		doc: 'Defines the visual orientation of the component.',
+	},
+	_hasCloser: {
+		kind: 'prop',
+		type: 'boolean',
+		required: false,
+		default: 'false',
+		doc: 'Defines whether the element can be closed. @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_level: {
+		kind: 'prop',
+		type: 'HeadingLevel',
+		required: false,
+		default: '0',
+		doc: 'Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'KoliBriModalEventCallbacks',
+		required: false,
+		doc: 'Specifies the EventCallback function to be called when the drawer is closing.',
+	},
+	_open: {
+		kind: 'prop',
+		type: 'OpenPropType',
+		required: false,
+		doc: 'Opens/expands the element when truthy, closes/collapses when falsy.',
+	},
+};
+
+/**
+ * Pinned public API of `kol-tabs` — same props, types and defaults as the predecessor `shadow.tsx`
+ * on the develop branch (7 props + focus and click). The one deviation is the `_on` JSDoc, which
+ * the predecessor carried in German; it was translated on reviewer request, which changes only the
+ * generated documentation, not the API surface.
+ */
+const KOL_TABS_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the current tab button.',
+	},
+	click: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Triggers a click on the currently selected tab.',
+	},
+	_align: {
+		kind: 'prop',
+		type: 'AlignPropType',
+		required: false,
+		default: "'top'",
+		doc: 'Defines the visual orientation of the component.',
+	},
+	_behavior: {
+		kind: 'prop',
+		type: 'TabBehaviorPropType',
+		required: false,
+		doc: 'Defines which behavior is active.',
+	},
+	_hasCreateButton: {
+		kind: 'prop',
+		type: 'HasCreateButtonPropType',
+		required: false,
+		default: 'false',
+		doc: 'Defines whether the element has a create button.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_on: {
+		kind: 'prop',
+		type: 'KoliBriTabsCallbacks',
+		required: false,
+		doc: 'Defines the callback functions for tabs events.',
+	},
+	_selected: {
+		kind: 'prop',
+		type: 'number',
+		required: false,
+		default: '0',
+		doc: 'Defines which tab is active.',
+	},
+	_tabs: {
+		kind: 'prop',
+		type: 'Stringified<TabButtonProps[]>',
+		required: true,
+		doc: 'Defines the tab captions.',
+	},
+};
+
+/**
+ * Pinned public API of `kol-tree` — byte-identical to the predecessor `shadow.tsx` on the develop
+ * branch (1 required prop + focus). The cache reset the tree items call lives in
+ * `tree/open-items-cache.ts`, not on the element: the predecessor's `invalidateOpenItemsCache()`
+ * method sat on the internal `kol-tree-wc`, which is gone.
+ */
+const KOL_TREE_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Sets focus on the first focusable tree item.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+};
+
+/**
+ * Pinned public API of `kol-tree-item` — byte-identical to the predecessor `shadow.tsx` on the
+ * develop branch (4 props + focus, expand, collapse, isOpen), including the `OpenPropType`
+ * alias on `_active`.
+ */
+const KOL_TREE_ITEM_PUBLIC_API: Record<string, Omit<ApiMember, 'name'>> = {
+	focus: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Focuses the link element.',
+	},
+	expand: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Expands the tree item.',
+	},
+	collapse: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Collapses the tree item.',
+	},
+	isOpen: {
+		kind: 'method',
+		type: '',
+		required: false,
+		doc: 'Returns whether the tree item is expanded.',
+	},
+	_active: {
+		kind: 'prop',
+		type: 'OpenPropType',
+		required: false,
+		doc: 'If set (to true) the tree item is the active one.',
+	},
+	_label: {
+		kind: 'prop',
+		type: 'LabelPropType',
+		required: true,
+		doc: 'Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).',
+	},
+	_open: {
+		kind: 'prop',
+		type: 'OpenPropType',
+		required: false,
+		doc: 'Opens/expands the element when truthy, closes/collapses when falsy.',
+	},
+	_href: {
+		kind: 'prop',
+		type: 'HrefPropType',
+		required: true,
+		doc: 'Defines the target URI of the link.',
+	},
+};
+
 describe.each([
 	['kol-button-link', 'button-link', 'ButtonLinkProps', KOL_BUTTON_LINK_PUBLIC_API],
 	['kol-link-button', 'link-button', 'LinkButtonProps', KOL_LINK_BUTTON_PUBLIC_API],
 	['kol-form', 'form', 'FormProps', KOL_FORM_PUBLIC_API],
 	['kol-split-button', 'split-button', 'SplitButtonProps', KOL_SPLIT_BUTTON_PUBLIC_API],
+	['kol-tabs', 'tabs', 'TabsProps', KOL_TABS_PUBLIC_API],
+	['kol-tree', 'tree', 'TreeProps', KOL_TREE_PUBLIC_API],
+	['kol-tree-item', 'tree-item', 'TreeItemProps', KOL_TREE_ITEM_PUBLIC_API],
 	['kol-badge', 'badge', 'BadgeProps', KOL_BADGE_PUBLIC_API],
 	['kol-card', 'card', 'CardProps', KOL_CARD_PUBLIC_API],
 	['kol-dialog', 'dialog', 'DialogProps', KOL_DIALOG_PUBLIC_API],
 	['kol-modal', 'modal', 'DialogProps', KOL_MODAL_PUBLIC_API],
+	['kol-drawer', 'drawer', 'DrawerProps', KOL_DRAWER_PUBLIC_API],
+	['kol-toolbar', 'toolbar', 'ToolbarProps', KOL_TOOLBAR_PUBLIC_API],
 ] as const)('%s public API contract (ARC42 § Public API Contract)', (_tag, component, schemaInterface, pinnedApi) => {
 	it('exposes exactly the pinned props and methods with pinned types, defaults and JSDoc', () => {
 		// Failing this test means the public contract changed — a breaking change (ARC42 §

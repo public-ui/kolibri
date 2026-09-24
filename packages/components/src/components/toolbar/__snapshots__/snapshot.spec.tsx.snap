@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-toolbar should render with _label="Label first item disabled" _items=[{"type":"button","_label":"Disabled","_disabled":true},{"type":"button","_label":"Button"},{"type":"link","_href":"#","_label":"Link"}] 1`] = `
+<kol-toolbar>
+  <template shadowrootmode="open">
+    <div aria-label="Label first item disabled" class="kol-toolbar kol-toolbar--orientation-horizontal" role="toolbar">
+      <div class="kol-toolbar__item">
+        <div class="kol-button kol-button--disabled kol-button--normal kol-button--standalone">
+          <button class="kol-button__interactive-element" disabled="" tabindex="-1" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Disabled
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="kol-toolbar__item">
+        <div class="kol-button kol-button--normal kol-button--standalone">
+          <button class="kol-button__interactive-element" tabindex="0" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Button
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="kol-toolbar__item">
+        <div class="kol-link kol-link--normal kol-link--standalone">
+          <a class="kol-link__interactive-element" href="#" tabindex="-1">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Link
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-toolbar>
+`;
+
+exports[`kol-toolbar should render with _label="Label horizontal" _items=[{"type":"button","_label":"Button"},{"type":"link","_href":"#","_label":"Link"}] 1`] = `
+<kol-toolbar>
+  <template shadowrootmode="open">
+    <div aria-label="Label horizontal" class="kol-toolbar kol-toolbar--orientation-horizontal" role="toolbar">
+      <div class="kol-toolbar__item">
+        <div class="kol-button kol-button--normal kol-button--standalone">
+          <button class="kol-button__interactive-element" tabindex="0" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Button
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="kol-toolbar__item">
+        <div class="kol-link kol-link--normal kol-link--standalone">
+          <a class="kol-link__interactive-element" href="#" tabindex="-1">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Link
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-toolbar>
+`;
+
+exports[`kol-toolbar should render with _label="Label vertical" _items=[{"type":"button","_label":"Button"},{"type":"link","_href":"#","_label":"Link"}] _orientation="vertical" 1`] = `
+<kol-toolbar>
+  <template shadowrootmode="open">
+    <div aria-label="Label vertical" class="kol-toolbar kol-toolbar--orientation-vertical" role="toolbar">
+      <div class="kol-toolbar__item">
+        <div class="kol-button kol-button--normal kol-button--standalone">
+          <button class="kol-button__interactive-element" tabindex="0" type="button">
+            <span class="kol-button__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Button
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="kol-toolbar__item">
+        <div class="kol-link kol-link--normal kol-link--standalone">
+          <a class="kol-link__interactive-element" href="#" tabindex="-1">
+            <span class="kol-link__text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Link
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert" slot="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-toolbar>
+`;
