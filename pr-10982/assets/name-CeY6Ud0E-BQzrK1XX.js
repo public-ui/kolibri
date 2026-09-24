@@ -1,0 +1,1 @@
+import{d as e,r as t}from"./factory-DVePsLAQ-D60mKgpy.js";var n=t(`name`,``,e);export{n as t};
