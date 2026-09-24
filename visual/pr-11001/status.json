@@ -1,0 +1,48 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "7 changed – 0 of 7 approved, review pending",
+	"computedAt": "2026-09-24T09:12:58.406Z",
+	"pr": 11001,
+	"head": "2c8172c47feb5882329c7042a2840c5f0730c392",
+	"digest": "sha256:dbb23e3c50388667c6fc9229148197d7b5e4d87658f2728ea04f1cc2a55d57c9",
+	"counts": {
+		"changes": 7,
+		"open": 7,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/textarea-adjust-height--adjust-height": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/textarea-adjust-height--adjust-height": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/textarea-adjust-height--adjust-height": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/textarea-adjust-height--adjust-height": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/textarea-adjust-height--adjust-height": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/textarea-adjust-height--adjust-height": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/textarea-adjust-height--adjust-height": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
