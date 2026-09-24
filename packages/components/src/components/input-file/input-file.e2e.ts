@@ -2,6 +2,7 @@ import { Buffer } from 'buffer';
 
 import { expect, type Page } from '@playwright/test';
 import { type E2EPage, test } from '@stencil/playwright';
+import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
@@ -184,5 +185,34 @@ test.describe(COMPONENT_NAME, () => {
 
 			await expect(page.locator('.kol-input-container')).not.toHaveClass(/kol-input-container--is-dragover/);
 		});
+	});
+
+	testInputBehaviorContract<HTMLKolInputFileElement>({
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.setInputFiles({ name: 'file.txt', mimeType: 'text/plain', buffer: Buffer.from('this is test', 'utf8') });
+		},
+		inputSelector: 'input.kol-input[type="file"]',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', ['file.txt']),
+				callback('input', ['file.txt']),
+				kolEvent('change', ['file.txt']),
+				callback('change', ['file.txt']),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
+			initialValue: undefined,
+			formData: [],
+			experimentalFormData: [['field', 'file.txt']],
+			syncedValue: '',
+		},
 	});
 });
