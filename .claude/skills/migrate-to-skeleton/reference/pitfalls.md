@@ -135,3 +135,13 @@ semantisches Vorbild (`link` bzw. `button`) migriert war — beide erben direkt 
 und rendern dessen FC. Vor dem Start einer Satelliten-Migration prüfen, ob `component.tsx` bereits
 `Base*WebComponent` erbt, `render*FC()` aufruft und in `_skeleton/public-api.spec.ts` gepinnt ist. Ist
 das der Fall, gibt es keinen Code zu ändern — das Tracking-Issue ist lediglich nicht nachgeführt.
+
+## 14. `KolEvent`-Typen heißen wie die nativen Events — nie auf dem Element dispatchen, das den Handler trägt
+
+`KolEvent.click`, `.focus`, `.blur` und `.mousedown` sind die Strings `'click'`, `'focus'`, `'blur'` und
+`'mousedown'` (`utils/events.ts`). Wer beim Ablösen eines `-wc`-Wrappers die Events des Wrappers
+nachbaut und sie auf dem `<button>` selbst dispatcht, löst dessen eigenen `onClick`/`onFocus` erneut
+aus — Endlosschleife. Der Wrapper dispatchte auf seinem Host, einem **Vorfahren** des Buttons. Also
+auf dem Knoten dispatchen, der den Wrapper ersetzt (Vorbild: die Box um jeden Tab-Button in
+`internal/functional-components/tabs/button-item.ts`). Die Events sind `bubbles` + `composed`, für
+Konsumenten außerhalb des Shadow-Roots ändert sich damit nichts.
