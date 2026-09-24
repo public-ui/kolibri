@@ -35,7 +35,7 @@ Aus dem Formularumfeld ist bisher nur `kol-form` auf Skeleton umgestellt.
 
 - **Zero visual delta, BEM bleibt.** DOM und Klassen (`.kol-form-field`, `.kol-input-container`, `.kol-field-control` …) bleiben byte-identisch. Themes werden nicht angefasst, es gibt keinen CLI-/SCSS-Migrations-Task. Das Pixel-Gate verlangt 0 Diffs pro Theme.
 - **Formular-Anbindung 1:1 als Behavior.** Die heutige Semantik (versteckte native Elemente im Light DOM, `_syncValueBySelector`, `ariaDetails` über `attachInternals`) wandert aus der Controller-Kette in ein wiederverwendbares `FormAssociationBehavior`, das auch `kol-button` nutzt. Einen Umstieg auf natives `formAssociated` gibt es in dieser Migration nicht.
-- **Identische öffentliche API.** Gleiche `@Prop`/`@Method`-Member, Alias-Typen, Defaults und JSDoc. Die Oberfläche wird vor der Migration in `public-api.spec.ts` festgenagelt.
+- **Identische öffentliche API.** Gleiche `@Prop`/`@Method`-Member, Alias-Typen, Defaults und JSDoc. Die Oberfläche ist vor der Migration in `_skeleton/public-api/<komponente>.spec.ts` festgenagelt.
 
 ## Leitplanken
 
@@ -73,7 +73,7 @@ Rückbau-Inkremente am Ende jeder Gruppe; finaler Rückbau (G6) nach G2–G5
 
 Kein Produktivcode, Voraussetzung für alles. Die Gates greifen nur, wenn vorher festgehalten ist, was „unverändert" heißt: API, Verhalten und Pixel.
 
-- Public-API-Pins für alle 14 Tags und `kol-select-wc` (als interner Vertrag), zunächst gegen `shadow.tsx`. `_skeleton/public-api.spec.ts` wird dafür in Dateien pro Komponente aufgeteilt, damit parallele Spuren keine Merge-Konflikte bekommen.
+- ✅ Public-API-Pins für alle 14 Tags und `kol-select-wc` (als interner Vertrag), zunächst gegen `shadow.tsx`. Jede Komponente hat eine eigene Datei unter `_skeleton/public-api/`, damit parallele Spuren keine Merge-Konflikte bekommen.
 - Verhaltensverträge pro Feld: Reihenfolge und Payload von `kolChange`/`kolInput`/`kolFocus`/`kolBlur`/`kolKeydown`/`kolClick` und der `_on`-Callbacks; `FormData` eines nativen `<form>` für Checkbox, `select` multiple, File und Radio mit Objektwerten; `_syncValueBySelector`; `_touched` nach Blur.
 - Visual-Samples ergänzen für msg, hint, disabled, hideLabel, infoPopover, Counter, Icons, `inputNumberButtons` an/aus und die Checkbox-Varianten. Neue Samples erzeugen neue Baselines und gehören in ein eigenes PR vor der ersten Migration.
 - Toten Code löschen: `functional-components/inputs/Combobox/Combobox.tsx`.

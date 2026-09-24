@@ -26,7 +26,7 @@ Supporting material referenced from there:
 
 1. **Gap analysis** — read every file of the component, compare against the skeleton blueprint, and write the inheritance / logic-layer / props / rendering table that becomes the migration plan.
 2. **Props first** — inventory every `@Prop()` (it _is_ the public API contract), reuse definitions from `src/internal/props/`, add one file per new prop, export it from the props index.
-3. **Refactor by layer** — `api.tsx` (`PropsConfigShape` + `ApiFromConfig`) → stateless FC with `BemRootNodeFC` → Behavior only when genuinely reusable → WC orchestrator extending `BaseWebComponent<Api>` → co-located tests. Keep the public `@Prop`/`@Method` surface identical to the predecessor and pin it in `_skeleton/public-api.spec.ts`.
+3. **Refactor by layer** — `api.tsx` (`PropsConfigShape` + `ApiFromConfig`) → stateless FC with `BemRootNodeFC` → Behavior only when genuinely reusable → WC orchestrator extending `BaseWebComponent<Api>` → co-located tests. Keep the public `@Prop`/`@Method` surface identical to the predecessor and pin it in `_skeleton/public-api/<component>.spec.ts`.
 4. **Remove legacy residue** — delete orphaned files and obsolete controller/aspect modules, run the dead-schema check; exported schema types stay (removing them is a separate breaking change).
 5. **Validate** — `pnpm format`, `pnpm lint`, `pnpm --filter @public-ui/components test:unit`, plus the visual zero-delta gate described in the skill.
 

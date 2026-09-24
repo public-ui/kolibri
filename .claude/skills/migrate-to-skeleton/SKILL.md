@@ -73,7 +73,7 @@ Hintergrund: `packages/components/src/components/_skeleton/ARC42.md#schema-helpe
 4. **Web Component** — `components/<komponente>/component.tsx`, der Orchestrator
    `@Component({ tag: 'kol-<komponente>', shadow: true })`, erbt `BaseWebComponent<Api>`, implementiert `WebComponentInterface<Api>` **und** das Schema-`*Props`-Interface (z. B. `implements LinkProps`), damit API-Drift den Build bricht. Aufbau, Prop-Triangle, Behavior-Lebenszyklus und Zustandszugriff: `reference/patterns.md`.
 5. **Öffentliche API-Parität sichern**
-   Der migrierte WC muss **exakt** dieselbe `@Prop`/`@Method`-Oberfläche bieten wie der Vorgänger — gleiche Member, gleiche Schema-Alias-Typen, gleiche Defaults, gleiche JSDoc (`custom-elements.json`, `docs-vscode` und die Adapter-IntelliSense werden daraus erzeugt). Oberfläche in `packages/components/src/components/_skeleton/public-api.spec.ts` festnageln und gegen den Vorgänger diffen. Details: `ARC42.md#public-api-contract-migration-parity`.
+   Der migrierte WC muss **exakt** dieselbe `@Prop`/`@Method`-Oberfläche bieten wie der Vorgänger — gleiche Member, gleiche Schema-Alias-Typen, gleiche Defaults, gleiche JSDoc (`custom-elements.json`, `docs-vscode` und die Adapter-IntelliSense werden daraus erzeugt). Oberfläche in `packages/components/src/components/_skeleton/public-api/<komponente>.spec.ts` festnageln (Helfer in `contract.ts`) und gegen den Vorgänger diffen. Existiert der Pin schon gegen `shadow.tsx`, zeigt die Migration ihn auf `component.tsx` und ergänzt `schemaInterface`; der Inhalt bleibt unverändert. Details: `ARC42.md#public-api-contract-migration-parity`.
 6. **CSS/SCSS** — `packages/components/src/components/<komponente>/style.scss`
    Bestehende Basis-Styles behalten, Selektoren an die neue BEM-Struktur anpassen. `style.scss` bleibt Basis-Styling: nur Layout und Struktur, keine Farben (außer dem Schwarz-/Weiß-Kontrast-Fallback), **kein Dark-/Light-Color-Scheme** (`prefers-color-scheme`, `color-scheme`, `light-dark()`). Farben und Color Schemes gehören in die Theme-Pakete (siehe `docs/BASE_STYLING_VS_THEMING_CONCEPT.md`).
 7. **Tests** — ko-lokalisiert neben `component.tsx`
@@ -198,7 +198,7 @@ pnpm --filter @public-ui/components build
 - [ ] Die Render-Funktion nutzt durchgängig die Render-FunctionalComponents (`ButtonFC` statt `KolButtonWcTag`, …); ein beibehaltenes `-wc`-Tag ist als Ausnahme begründet (Fallstrick 8)
 - [ ] Kein Arbeitsplan eingecheckt; Kommentare folgen [Inline code documentation](../../../AGENTS.md#inline-code-documentation)
 - [ ] `<Host>` ohne redundantes `class`-Attribut
-- [ ] Öffentliche `@Prop`/`@Method`-Oberfläche identisch zum Vorgänger, in `public-api.spec.ts` festgenagelt, Schema-`*Props`-Interface implementiert
+- [ ] Öffentliche `@Prop`/`@Method`-Oberfläche identisch zum Vorgänger, in `_skeleton/public-api/<komponente>.spec.ts` festgenagelt, Schema-`*Props`-Interface implementiert
 - [ ] Transitionale `kol-*-wc`-Tags im gerenderten Markup geprüft: abgelöst, oder mit Begründung als offene Arbeit benannt
 - [ ] Kein toter Code, keine verwaisten Dateien; Dead-Schema-Abbau geprüft (inkl. Ausnahme für veröffentlichte Typen)
 - [ ] Tests ko-lokalisiert und aktualisiert

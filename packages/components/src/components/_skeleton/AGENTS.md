@@ -37,8 +37,8 @@ IntelliSense are built from `prop.docs`/`method.docs`). The FC's props are an **
 renderer contract — a prop existing on the FC must not automatically become a public `@Prop`,
 and a predecessor prop without an FC counterpart must not silently disappear. Implement the
 schema `*Props` interface (e.g. `implements LinkProps`) alongside `WebComponentInterface<Api>`
-so drift fails the build. Pin the public API in the skeleton contract test
-[`public-api.spec.ts`](./public-api.spec.ts) and diff against the predecessor during review.
+so drift fails the build. Pin the public API in the component's contract test
+[`public-api/<component>.spec.ts`](./public-api/contract.ts) and diff against the predecessor during review.
 Details and the mandatory diff verification: see
 [ARC42 § Public API Contract](./ARC42.md#public-api-contract-migration-parity).
 
