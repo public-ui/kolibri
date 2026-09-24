@@ -6,7 +6,9 @@ export const ROUTES = new Map();
  * Axe options:
  * - axe:
  *   - skip: boolean (Default: false)
- *   - skipFailures: boolean (Default: false)
+ *   - skipFailures: boolean (Default: false) – report the violations of the route without failing the test.
+ *     Reserved for routes with a known violation that is tracked as a sub-issue of #7452; remove the flag
+ *     together with the fix. `color-contrast` fails the test only for the light scheme of the default theme.
  *
  * Snapshot options:
  * - snapshot:
@@ -38,9 +40,6 @@ ROUTES.set('alert/html', {
 ROUTES.set('avatar/size');
 ROUTES.set('badge/basic');
 ROUTES.set('breadcrumb/basic', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 600,
@@ -56,7 +55,11 @@ ROUTES.set('button/short-key');
 ROUTES.set('card/basic');
 ROUTES.set('card/linked');
 ROUTES.set('card/headlines');
-ROUTES.set('combobox/basic?noColumns');
+ROUTES.set('combobox/basic?noColumns', {
+	axe: {
+		skipFailures: true,
+	},
+});
 ROUTES.set('details/basic');
 ROUTES.set('dialog/basic?show-dialog=true', {
 	snapshot: {
@@ -123,9 +126,6 @@ ROUTES.set('form/error-list', {
 	},
 });
 ROUTES.set('heading/basic', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 250,
@@ -378,6 +378,9 @@ ROUTES.set('input-text/background?noColumns', {
 	},
 });
 ROUTES.set('input-text/variant?noColumns', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		viewportSize: {
 			width: 1000,
@@ -460,9 +463,6 @@ ROUTES.set('skip-nav/basic', {
 });
 ROUTES.set('spin/basic');
 ROUTES.set('single-select/basic?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -520,6 +520,9 @@ ROUTES.set('table/state-columns', {
 	},
 });
 ROUTES.set('table/with-footer', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		viewportSize: {
 			width: 800,
@@ -536,6 +539,9 @@ ROUTES.set('table/with-pagination', {
 	},
 });
 ROUTES.set('table/pagination-position', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		viewportSize: {
 			width: 800,
@@ -602,9 +608,6 @@ ROUTES.set('table/stateless', {
 	},
 });
 ROUTES.set('table/sticky-header', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 1300,
@@ -746,6 +749,9 @@ ROUTES.set('version/context', {
 	},
 });
 ROUTES.set('scenarios/accordion-components', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		forceFullPage: true,
 		viewportSize: {
@@ -846,6 +852,9 @@ ROUTES.set('scenarios/focus-elements?component=card', {
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=combobox', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		forceFullPage: true,
 		viewportSize: {
@@ -999,9 +1008,6 @@ ROUTES.set('scenarios/focus-elements?component=selectMultiple', {
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=singleSelect', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		viewportSize: {
@@ -1065,6 +1071,9 @@ ROUTES.set('scenarios/focus-elements?component=toolbar', {
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=tree', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		forceFullPage: true,
 		viewportSize: {

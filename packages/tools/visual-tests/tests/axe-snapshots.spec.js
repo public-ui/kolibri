@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { test } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 import axeHtmlReporter from 'axe-html-reporter';
 import process from 'process';
 import { ROUTES } from './sample-app.routes.js';
@@ -9,6 +9,16 @@ const { createHtmlReport } = axeHtmlReporter;
 const AXE_TAGS = ['best-practices', 'wcag2a', 'wcag2aa', 'wcag21aa'];
 
 const themeName = (process.env.THEME_EXPORT || 'default').toLocaleLowerCase();
+const colorScheme = (process.env.KOLIBRI_VISUAL_TESTS_COLOR_SCHEME || 'light').toLocaleLowerCase();
+
+/**
+ * Contrast is a property of the theme, not of the component semantics. Only the light scheme of the
+ * default theme is kept free of contrast violations; in every other theme and scheme the rule is
+ * reported but does not fail the test.
+ */
+const gatesColorContrast = themeName === 'default' && colorScheme === 'light';
+const isGating = (violation) => gatesColorContrast || violation.id !== 'color-contrast';
+
 const rename = (snapshotName) => {
 	const result = snapshotName
 
@@ -95,5 +105,11 @@ ROUTES.forEach((options, route) => {
 			options: buildReportOptions(testInfo, route),
 		});
 		logViolations(route, results.violations);
+
+		// Routes with known violations (sub-issues of #7452) stay reported but do not fail until they are fixed.
+		if (options?.axe?.skipFailures !== true) {
+			const failures = results.violations.filter(isGating).map((violation) => `${violation.id}: ${violation.help} (${violation.nodes.length} nodes)`);
+			expect(failures, `axe violations on ${route}`).toEqual([]);
+		}
 	});
 });
