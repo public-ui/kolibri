@@ -106,6 +106,15 @@ textarea {
 	font-size: 0.9em;
 }
 
+.hint kbd,
+.review-actions kbd {
+	padding: 0 0.3em;
+	border: 1px solid var(--line);
+	border-radius: 3px;
+	font-family: inherit;
+	font-size: 0.85em;
+}
+
 .is-unsaved {
 	color: var(--pending);
 }

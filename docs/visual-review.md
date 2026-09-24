@@ -41,8 +41,8 @@ Nothing has to be committed: the baseline is regenerated from `develop` after th
 1. Open the review page from the bot comment (or the status link).
 2. Walk through the changed, added and removed snapshots (`j`/`k` or the list). Compare with
    _side by side_, _slider_, _onion skin_, _diff_ or _blink_; zoom in for subpixel changes.
-3. Approve (`a`), reject or annotate each one – or **Approve all open changes** for an intentional
-   sweep such as a browser upgrade.
+3. Approve (`a`), reject (`r`) or annotate each one – or **Approve all open changes** for an intentional
+   sweep such as a browser upgrade. `a` and `r` move on to the next snapshot.
 4. Save the review:
    - **with a token**: enter a fine-grained personal access token with _Pull requests: read and write_
      for `public-ui/kolibri` at the bottom of the page. The page posts (and later edits) one comment
