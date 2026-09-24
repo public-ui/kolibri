@@ -8,7 +8,7 @@ executeInputSnapshotTests<InputColorProps>(
 	KolInputColorTag,
 	[KolInputColor],
 	{
-		_value: '#FFF',
+		_value: '#FFFFFF',
 	},
 	{ hasSmartButton: true },
 );
@@ -17,8 +17,8 @@ executeInputSnapshotTests<InputColorProps>(
 	KolInputColorTag,
 	[KolInputColor],
 	{
-		_value: '#FFF',
-		_suggestions: ['#F00', '#0F0', '#00F'],
+		_value: '#FFFFFF',
+		_suggestions: ['#FF0000', '#00FF00', '#0000FF'],
 	},
 	{ hasSmartButton: true },
 );
