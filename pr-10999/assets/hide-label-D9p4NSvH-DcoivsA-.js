@@ -1,1 +1,0 @@
-import{Ct as e}from"./index-YYWiZ2PA.js";var t=(t,n,r={})=>{e(t,`_hideLabel`,n,r)};export{t};
