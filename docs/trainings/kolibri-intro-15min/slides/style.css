@@ -1,0 +1,422 @@
+/* Deck-weite Styles für die KoliBri-Live-Demos in den Folien.
+   Die kol-* Elemente selbst kommen aus dem Theme – hier steht nur der Rahmen. */
+
+/* KoliBri-Komponenten setzen display auf :host und überstimmen damit die
+   UA-Regel [hidden] { display: none } – ohne diese Zeile wäre der
+   Erfolgs-Alert von Anfang an sichtbar (gemessen an 4.4.0). */
+kol-alert[hidden] {
+	display: none !important;
+}
+
+/*Transparente Komponenten-Flächen: Die Hintergründe von Karten und Feldern
+  kommen aus dem Theme-Token --kolibri-color-light und werden im
+  Shadow DOM gesetzt – nur das Token erreicht durch die Kapselung.
+  Form und Buttons bekommen das Weiß zurück: Das Token ist dort Lesefarbe
+  (Fehlerliste im Formular, Labels auf farbigen Buttons). Der Karten-Override
+  erbt sonst bis in den Formular-Shadow-DOM und macht die Fehlerliste
+  unlesbar. */
+kol-card,
+kol-input-text,
+kol-input-email,
+kol-textarea {
+	--kolibri-color-light: transparent;
+}
+
+kol-form,
+kol-button {
+	--kolibri-color-light: #fff;
+}
+
+/* Und die weiße Grundplatte der Tags selbst aus: Das A11y-Preset setzt
+   background-color: white auf jedem :host. Eine Regel von außen auf das
+   Element schlägt dabei :host – deshalb reicht dieser Block. CSS kennt
+   keinen Präfix-Selektor für Tag-Namen, daher die Aufzählung aller im
+   Deck vorkommenden kol-* Tags. */
+kol-alert,
+kol-badge,
+kol-button,
+kol-card,
+kol-card-wc,
+kol-form,
+kol-input-email,
+kol-input-text,
+kol-link-wc,
+kol-tabs,
+kol-textarea {
+	/* background: transparent; */
+}
+
+/* Zwei-Spalten-Folien: Slidevs two-cols-Layout bringt weder Spaltenabstand
+   mit noch begrenzte Tracks – breite Codeblöcke laufen aus den Spalten
+   (grid min-width: auto) und beide Spalten klebten aneinander (gemessen:
+   0px Gap). minmax(0,1fr) kappt den Überlauf, column-gap setzt den Abstand. */
+.slidev-layout.two-columns {
+	column-gap: 2.5rem;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+/* Banner, wenn die KoliBri-Registrierung gescheitert ist (setup/main.ts
+   Watchdog) - leere Folien sind auf der Buehne unerklaerbar, das hier nicht. */
+.deck-bootguard {
+	color: #1a1a1a;
+	background: #fff5f8;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 9999;
+	padding: 0.8rem 1.2rem;
+
+	font-size: 15px;
+	border-bottom: 3px solid #b3003c;
+}
+
+.deck-bootguard pre {
+	color: #e6edf3;
+	background: #14181f;
+	border-radius: 6px;
+	max-width: 60rem;
+	margin: 0.5rem 0 0;
+	padding: 0.5rem 0.7rem;
+	overflow: auto;
+
+	font-size: 12px;
+}
+
+/* KEINE pauschale Regel wie ".slidev-layout * { opacity: 1 !important }" -
+   die schlaegt auch Slidevs .slidev-vclick-hidden und zeigt alle Folien-
+   Inhalte sofort (Schritt-Animation komplett weg). Stattdessen gezielt nur
+   die Ausgrauung bereits aufgedeckter Schritte aufheben: Slidev dimmt
+   zuvor gezeigte Elemente auf 50%, halbtransparenter Text verliert Kontrast. */
+.slidev-layout h1 + p {
+	opacity: 1 !important;
+}
+
+/* ---------- Rahmen ---------- */
+
+/* Agenda-Folie: acht Tabellenzeilen plus Hinweis reichen bis an den unteren
+   Rand der 16:9-Leinwand – Tabelle und Hinweis kompakt gesetzt, damit unten
+   nichts abgeschnitten wird. Strukturklasse wie bei .slidev-page-4, weil
+   Prettier Per-Folie-Frontmatter (class: agenda) zerlegt. */
+.slidev-page-2 table {
+	font-size: 0.9em;
+}
+
+.slidev-page-2 th,
+.slidev-page-2 td {
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
+}
+
+.slidev-page-2 .hint {
+	margin-top: 0.4rem;
+}
+
+.cover-sub {
+	margin-bottom: 1rem;
+}
+
+.cover-sub blockquote,
+.cover-sub em {
+	/* Volle Deckkraft statt opacity: Der Untertitel traegt die Kernbotschaft -
+	   ausgeduenkelter Text waere geschenkter Kontrastverlust. */
+	margin: 0.4rem 0 0;
+}
+
+.hint {
+	/* Dunkles Grau statt Transparenz: ca. 7.5:1 auf Weiss (WCAG 1.4.3 verlangt
+	   4.5:1 - Hinweise sollen auch in der letzten Reihe lesbar sein). */
+	color: #47505a;
+	margin-top: 0.8rem;
+
+	font-size: 0.78em;
+}
+
+.question-box {
+	background: rgb(0, 71, 108, 0.06);
+	border-radius: 0 8px 8px 0;
+	padding: 0.6rem 1rem;
+
+	font-size: 1.15em;
+	border-left: 4px solid var(--slidev-theme-primary, #00476c);
+}
+
+.reveal-box {
+	background: rgb(179, 105, 36, 0.08);
+	border-radius: 0 8px 8px 0;
+	padding: 0.6rem 1rem;
+	border-left: 4px solid #b36924;
+}
+
+.point-box {
+	background: rgb(0, 71, 108, 0.05);
+	border-radius: 12px;
+	padding: 0.8rem 1.2rem;
+
+	font-size: 1.25em;
+	border: 1px solid rgb(0, 71, 108, 0.25);
+}
+
+/* Manifest-Folie: vier Karten im selben Stil wie point-box/demo-panel –
+   gleiche Border, Radius und Flaeche wie alle anderen Folien-Panels. */
+.manifest-grid {
+	display: grid;
+	margin-top: 1rem;
+	gap: 0.8rem 1rem;
+	grid-template-columns: 1fr 1fr;
+}
+
+.manifest-card {
+	background: rgb(0, 71, 108, 0.05);
+	border-radius: 12px;
+	padding: 0.7rem 0.9rem;
+
+	font-size: 0.85em;
+	border: 1px solid rgb(0, 71, 108, 0.25);
+
+	& strong {
+		display: block;
+		margin-bottom: 0.3rem;
+	}
+}
+
+/* Folien-Code einheitlich: eine Groesse fuer alle Folien. Laengere Import-Zeilen
+   laufen sonst rechts aus dem Feld, besonders in den Zweispalten-Folien.
+   pre-wrap muss auch aufs innere code-Element (Shiki setzt dort eigenes
+   white-space: pre) – sonst bleibt der Block trotz Wrap-Regel abgeschnitten. */
+.slidev-page pre {
+	font-size: 0.72em;
+	line-height: 1.55;
+}
+
+.slidev-page pre code {
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+/* Shiki setzt Token-Farben als Inline-Variablen (--shiki-light: #…). Die
+   hellen Standardwerte unterschreiten teils deutlich 4.5:1 (gemessen:
+   2.15-4.47 auf #f5f5f5). WCAG 1.4.3 gilt auch fuer Code – deshalb hier
+   dunklere, unterscheidbare Ersatzfarben je Token-Farbe (Hex-Selektor
+   auf das style-Attribut, da das der einzige stabile Anker ist). */
+.slidev-page pre span[style*='#A0ADA0'] {
+	color: #46505a !important; /* Kommentare */
+}
+.slidev-page pre span[style*='#999999'] {
+	color: #4a525c !important; /* Interpunktion */
+}
+.slidev-page pre span[style*='#B07D48'] {
+	color: #7a4a10 !important; /* Orange/Schluesselwoerter */
+}
+.slidev-page pre span[style*='#998418'] {
+	color: #665a0d !important; /* Oliv */
+}
+.slidev-page pre span[style*='#B56959'] {
+	color: #8a4238 !important; /* Rot/Strings (fasst auch #B5695977 mit) */
+}
+.slidev-page pre span[style*='#59873A'] {
+	color: #3f6212 !important; /* Gruen/Funktionen */
+}
+.slidev-page pre span[style*='#AB5959'] {
+	color: #8a4238 !important; /* Rot, knapp unter 4.5 */
+}
+
+.s3demo pre,
+.tokendemo pre {
+	font-size: inherit;
+}
+
+.demo-panel {
+	background: rgb(127, 127, 127, 0.04);
+	border-radius: 12px;
+	padding: 0.7rem 1rem;
+	border: 1px solid rgb(125, 125, 125, 0.25);
+}
+
+.demo-panel--flush {
+	background: none;
+	padding: 0;
+	border: none;
+}
+
+kbd {
+	background: rgb(127, 127, 127, 0.08);
+	border-radius: 5px;
+	padding: 0 0.4em;
+	border-bottom-width: 2px;
+
+	font-size: 0.85em;
+	border: 1px solid rgb(127, 127, 127, 0.4);
+}
+
+/* ---------- Schritt 1: Feld + Buttons + Ausgabe ---------- */
+
+.s1demo {
+	display: grid;
+	gap: 0.6rem;
+
+	font-size: 0.86em;
+}
+
+.s1demo__row {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+
+.s1demo__out,
+.readout-line {
+	background: rgb(127, 127, 127, 0.1);
+	border-radius: 8px;
+	min-height: 2.2em;
+	margin: 0;
+	padding: 0.45rem 0.7rem;
+
+	font-size: 0.85em;
+}
+
+.s1demo__out.is-empty {
+	/* Frueher opacity 0.6 – jetzt feste, dunkle Farbe (ca. 7.5:1 auf Weiss). */
+	color: #47505a;
+}
+
+/* ---------- Schritt 3: Formular links, Röntgenblick rechts ---------- */
+
+/* Die Folie muss auch im Worst-Case (Fehlerliste offen, Röntgenblick gefüllt)
+   in die 16:9-Leinwand passen. Karte und Werkzeuge stehen NEBENEINANDER
+   (früher lag die Ausgabe in einer eigenen Grid-Zeile UNTER der Kartenzeile
+   und drückte den Host 310px über den Folienrand). */
+.step3demo-host {
+	zoom: 0.7;
+}
+
+.s3demo {
+	display: grid;
+	gap: 0.7rem 1.2rem;
+	align-items: start;
+	grid-template-columns: 11fr 9fr;
+
+	font-size: 0.78em;
+}
+
+.s3demo kol-alert {
+	grid-column: 1 / -1;
+}
+
+.s3demo__stack {
+	display: grid;
+	gap: 0.55rem;
+}
+
+.s3demo__tools {
+	display: grid;
+	gap: 0.55rem;
+	align-content: start;
+	justify-items: start;
+}
+
+.s3demo__xray-btn,
+.tokendemo-toggle {
+	color: inherit;
+	background: rgb(127, 127, 127, 0.08);
+	border-radius: 8px;
+	padding: 0.4rem 0.9rem;
+
+	font: inherit;
+	font-size: 0.95em;
+	border: 1px solid rgb(127, 127, 127, 0.4);
+	cursor: pointer;
+}
+
+.s3demo__xray-btn:hover,
+.tokendemo-toggle:hover {
+	background: rgb(0, 71, 108, 0.12);
+}
+
+.s3demo__xray {
+	color: #dce4f5;
+	background: #10162b;
+	border-radius: 10px;
+	width: 100%;
+	max-height: 340px;
+	margin: 0;
+	padding: 0.7rem 0.9rem;
+	overflow: auto;
+
+	font-size: 0.78em;
+	line-height: 1.5;
+}
+
+/* Schritt-4-Folie: Code plus Live-Demo drueckten den Theme-Toggle bis auf
+   die Folienunterkante - dort liegt Slidevs Ecken-Overlay (opacity:0, aber
+   pointer-events:active) und schluckt die Klicks. Kompakterer Code haelt
+   die Demo ueber der kritischen Zone. */
+.slidev-page-10 pre {
+	font-size: 0.62em;
+	line-height: 1.5;
+}
+
+/* ---------- Schritt 4: Token-Panel ---------- */
+
+.tokendemo-panel {
+	display: grid;
+	gap: 0.5rem;
+}
+
+.tokendemo-panel .hint {
+	margin-top: 0.3rem;
+}
+
+.tokendemo {
+	display: grid;
+	gap: 0.45rem;
+
+	font-size: 0.78em;
+}
+
+.tokendemo__row {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.tokendemo-toggle {
+	justify-self: start;
+}
+
+/* ---------- Cover / Ende ---------- */
+
+.cover-logo {
+	display: flex;
+	width: 8.5rem;
+	margin: 0 auto 0.8rem;
+	justify-content: center;
+}
+
+.cover-logo kol-kolibri {
+	width: 100%;
+}
+
+.ende-logo {
+	display: flex;
+	width: 5.5rem;
+	margin: 0 auto 1rem;
+	justify-content: center;
+}
+
+.ende-logo kol-kolibri {
+	width: 100%;
+}
+
+.cover-badges {
+	display: flex;
+	margin-top: 1.2rem;
+	gap: 0.6rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.next-steps {
+	display: inline-block;
+	margin: 0 auto 1.5rem;
+	text-align: left;
+}

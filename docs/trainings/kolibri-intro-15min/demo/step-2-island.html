@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Schritt 2 – Insel im Bestand</title>
+		<link rel="icon" href="data:," />
+		<link rel="stylesheet" href="./_demo.css" />
+		<script>
+			/* ES-Module laedt der Browser nur ueber HTTP. Per file:// bliebe die Seite
+     kommentarlos leer - deshalb hier die Startanleitung statt einer weissen Flaeche. */
+			if (location.protocol === 'file:') {
+				document.addEventListener('DOMContentLoaded', function () {
+					document.body.innerHTML = [
+						'<div class="fileguard">',
+						'<h1>Diese Seite braucht einen Webserver</h1>',
+						'<p>Sie wurde per <b>file://</b> ge\u00f6ffnet. Browser laden ES-Module nur \u00fcber HTTP \u2013 ',
+						'ohne Server bleiben die KoliBri-Komponenten unsichtbar.</p>',
+						'<pre>cd docs/trainings/kolibri-intro-15min\nnpx http-server -p 8080 demo</pre>',
+						'<p>Dann <b>http://127.0.0.1:8080/index.html</b> \u00f6ffnen.</p>',
+						'<small>Fehlt der Ordner demo/vendor/, vorher einmal: node fetch-vendor.mjs</small>',
+						'</div>',
+					].join('');
+				});
+			}
+		</script>
+
+		<script>
+			/* Boot-Waechter: Wenn KoliBri nicht laedt, bleibt die Seite sonst stumm leer.
+     Haeufigste Ursache ist ein fehlender Ordner demo/vendor/ - der ist absichtlich
+     nicht im Repo und wird mit "node fetch-vendor.mjs" geholt. */
+			(function () {
+				if (location.protocol === 'file:') return; // dafuer gibt es den Guard oben
+				var fehler = [];
+				var merken = function (text) {
+					if (text && fehler.indexOf(text) === -1) fehler.push(text);
+				};
+				window.addEventListener(
+					'error',
+					function (e) {
+						if (e.target && e.target !== window && (e.target.src || e.target.href)) {
+							merken('Nicht ladbar: ' + (e.target.src || e.target.href));
+						} else if (e.message) {
+							merken(e.message);
+						}
+					},
+					true,
+				);
+				window.addEventListener('unhandledrejection', function (e) {
+					merken(String((e.reason && e.reason.message) || e.reason || ''));
+				});
+
+				setTimeout(function () {
+					if (document.documentElement.dataset.kolibriReady === 'true') return;
+					if (document.querySelector('.kol-button, [class*="hydrated"]')) return;
+					var box = document.createElement('div');
+					box.className = 'bootguard';
+					box.innerHTML =
+						'<strong>KoliBri wurde nicht geladen.</strong>' +
+						'Am wahrscheinlichsten fehlt der Ordner <code>demo/vendor/</code> \u2013 er ist absichtlich ' +
+						'nicht im Repository (26 MB). Einmal im Ordner <code>kolibri-intro-15min</code> ausf\u00fchren:' +
+						'<pre>node fetch-vendor.mjs</pre>' +
+						(fehler.length
+							? '<details><summary>Technische Details (' +
+								fehler.length +
+								')</summary><pre>' +
+								fehler.slice(0, 5).join('\n').replace(/</g, '&lt;') +
+								'</pre></details>'
+							: '');
+					document.body.insertBefore(box, document.body.firstChild);
+				}, 8000);
+			})();
+		</script>
+		<link rel="stylesheet" href="./vendor/components/assets/kolicons/style.css" />
+		<script type="importmap">
+			{
+				"imports": {
+					"@public-ui/components": "./vendor/components/dist/esm/index.js",
+					"@public-ui/components/loader": "./vendor/components/loader/index.mjs",
+					"@public-ui/theme-default": "./vendor/theme-default/dist/index.mjs"
+				}
+			}
+		</script>
+		<script type="module">
+			import { register } from '@public-ui/components';
+			import { defineCustomElements } from '@public-ui/components/loader';
+			import { DEFAULT } from '@public-ui/theme-default';
+			await register(DEFAULT, defineCustomElements);
+			document.documentElement.dataset.kolibriReady = 'true';
+
+			// Beispielwerte vorbelegen: Absenden kann sofort gezeigt werden.
+			document.querySelector('#alt-name').value = 'Max Muster';
+			document.querySelector('#mail')._value = 'max.muster@beispiel.de';
+
+			// Shadow DOM kapselt nicht nur Styles, sondern auch die Formular-Teilnahme:
+			// die Komponente taucht NICHT in form.elements auf. Eine Zeile beim Absenden genuegt.
+			const form = document.querySelector('form');
+			const mail = document.querySelector('#mail');
+			const bridge = document.querySelector('#mail-bridge');
+			form.addEventListener('submit', () => {
+				bridge.value = String(mail._value ?? '');
+			});
+
+			// Beweis statt Behauptung: zeigen, was das native Formular abgeschickt hat.
+			const out = document.querySelector('#out');
+			const params = new URLSearchParams(location.search);
+			if ([...params.keys()].length > 0) {
+				const zeilen = [...params.entries()].map(([name, wert]) => '<code>' + name + '</code> = ' + (wert === '' ? '<i>(leer)</i>' : wert)).join('<br />');
+				out.innerHTML = 'Das native Formular hat per <code>method="get"</code> abgeschickt:<br />' + zeilen;
+				out.classList.remove('readout--empty');
+			}
+		</script>
+		<style>
+			/* Absichtlich aggressives "Altbestand"-CSS. Es wuerde jede normale
+     Komponente zerlegen - die KoliBri-Insel laesst es kalt. */
+			.legacy-page input,
+			.legacy-page button,
+			.legacy-page label {
+				font-family: Georgia, serif !important;
+				color: #7a0000 !important;
+				letter-spacing: 0.06em !important;
+			}
+			.legacy-page * {
+				line-height: 2.4 !important;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="chrome">
+			<span class="chrome__step">2 / 5</span>
+			<span class="chrome__title">Insel im Bestand</span>
+			<a href="./index.html">Übersicht</a>
+			<a href="./step-1-first.html">← Zurück</a>
+			<a href="./step-3-form.html">Weiter →</a>
+		</nav>
+
+		<main>
+			<h1>Kein Big Bang.</h1>
+			<p class="lead">Eine bestehende Seite mit eigenem CSS und nativem <code>&lt;form method="get"&gt;</code>. Ein einziges Feld ist ausgetauscht.</p>
+
+			<div class="legacy-page">
+				<h2>Terminanfrage (Bestandsanwendung)</h2>
+				<form method="get" action="./step-2-island.html" novalidate>
+					<div class="legacy-field">
+						<label for="alt-name">Name (Altbestand)</label>
+						<input id="alt-name" name="alt-name" type="text" value="Max Muster" />
+						<span class="legacy-hint">Natives Feld, eigenes CSS der Anwendung.</span>
+					</div>
+
+					<!-- Ab hier KoliBri. Gleiche Seite, gleiches Formular. -->
+					<div class="legacy-field">
+						<kol-input-email id="mail" _label="E-Mail (KoliBri)" _required _hint="Gleiche Seite, gleiches Formular – nur gekapselt."></kol-input-email>
+						<!-- Die Bruecke: Felder im Shadow DOM treten dem nativen Formular nicht bei.
+             Dieses versteckte Feld traegt den Wert beim Absenden hinaus. -->
+						<input type="hidden" name="mail" id="mail-bridge" />
+					</div>
+
+					<button type="submit" class="legacy-submit">Absenden (nativ)</button>
+				</form>
+			</div>
+
+			<p class="readout readout--empty" id="out">Noch nichts abgeschickt. Felder ausfüllen und „Absenden (nativ)" drücken.</p>
+
+			<div class="note">
+				<strong>Was hier passiert – und was nicht:</strong>
+				<br />Das Legacy-CSS oben setzt <code>font-family</code>, <code>color</code> und <code>line-height</code> mit <code>!important</code> auf
+				<em>alle</em> Felder und Buttons. Das native Feld ist davon verbogen. Die KoliBri-Komponente daneben nicht – ihr Shadow DOM hält das CSS der Anwendung
+				draußen. <br /><br />
+				Umgekehrt gilt dasselbe: KoliBri färbt eure Seite nicht ein.
+			</div>
+
+			<div class="note">
+				<strong>Eine Ehrlichkeit, die im Migrationsalltag zählt:</strong>
+				Die Kapselung betrifft nicht nur CSS, sondern auch die Formular-Teilnahme. Ein Feld im Shadow DOM steht <em>nicht</em> in <code>form.elements</code> und
+				wird beim nativen Absenden <em>nicht</em> mitgeschickt – auch dann nicht, wenn es innen ein <code>name</code>-Attribut trägt. <br /><br />
+				Die Brücke ist eine Zeile: beim Absenden den Wert aus der Komponente in ein verstecktes natives Feld schreiben –
+				<code>bridge.value = mail._value;</code> Deshalb steht unten jetzt <code>mail=…</code> in der Ausgabe. <br /><br />
+				Wer ein ganzes Formular migriert, nimmt statt dieser Brücke <code>kol-form</code> – das kommt in Schritt 3.
+			</div>
+		</main>
+	</body>
+</html>

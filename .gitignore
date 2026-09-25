@@ -38,3 +38,6 @@ visual-baseline/
 
 node-compile-cache/
 .claude/settings.local.json
+
+# Schulungsdemo: lokal geholte KoliBri-Bundles (siehe fetch-vendor.mjs)
+docs/trainings/kolibri-intro-15min/demo/vendor/

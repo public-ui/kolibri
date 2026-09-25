@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Schritt 1 – Die erste Komponente</title>
+		<link rel="icon" href="data:," />
+		<link rel="stylesheet" href="./_demo.css" />
+		<script>
+			/* ES-Module laedt der Browser nur ueber HTTP. Per file:// bliebe die Seite
+     kommentarlos leer - deshalb hier die Startanleitung statt einer weissen Flaeche. */
+			if (location.protocol === 'file:') {
+				document.addEventListener('DOMContentLoaded', function () {
+					document.body.innerHTML = [
+						'<div class="fileguard">',
+						'<h1>Diese Seite braucht einen Webserver</h1>',
+						'<p>Sie wurde per <b>file://</b> ge\u00f6ffnet. Browser laden ES-Module nur \u00fcber HTTP \u2013 ',
+						'ohne Server bleiben die KoliBri-Komponenten unsichtbar.</p>',
+						'<pre>cd docs/trainings/kolibri-intro-15min\nnpx http-server -p 8080 demo</pre>',
+						'<p>Dann <b>http://127.0.0.1:8080/index.html</b> \u00f6ffnen.</p>',
+						'<small>Fehlt der Ordner demo/vendor/, vorher einmal: node fetch-vendor.mjs</small>',
+						'</div>',
+					].join('');
+				});
+			}
+		</script>
+
+		<script>
+			/* Boot-Waechter: Wenn KoliBri nicht laedt, bleibt die Seite sonst stumm leer.
+     Haeufigste Ursache ist ein fehlender Ordner demo/vendor/ - der ist absichtlich
+     nicht im Repo und wird mit "node fetch-vendor.mjs" geholt. */
+			(function () {
+				if (location.protocol === 'file:') return; // dafuer gibt es den Guard oben
+				var fehler = [];
+				var merken = function (text) {
+					if (text && fehler.indexOf(text) === -1) fehler.push(text);
+				};
+				window.addEventListener(
+					'error',
+					function (e) {
+						if (e.target && e.target !== window && (e.target.src || e.target.href)) {
+							merken('Nicht ladbar: ' + (e.target.src || e.target.href));
+						} else if (e.message) {
+							merken(e.message);
+						}
+					},
+					true,
+				);
+				window.addEventListener('unhandledrejection', function (e) {
+					merken(String((e.reason && e.reason.message) || e.reason || ''));
+				});
+
+				setTimeout(function () {
+					if (document.documentElement.dataset.kolibriReady === 'true') return;
+					if (document.querySelector('.kol-button, [class*="hydrated"]')) return;
+					var box = document.createElement('div');
+					box.className = 'bootguard';
+					box.innerHTML =
+						'<strong>KoliBri wurde nicht geladen.</strong>' +
+						'Am wahrscheinlichsten fehlt der Ordner <code>demo/vendor/</code> \u2013 er ist absichtlich ' +
+						'nicht im Repository (26 MB). Einmal im Ordner <code>kolibri-intro-15min</code> ausf\u00fchren:' +
+						'<pre>node fetch-vendor.mjs</pre>' +
+						(fehler.length
+							? '<details><summary>Technische Details (' +
+								fehler.length +
+								')</summary><pre>' +
+								fehler.slice(0, 5).join('\n').replace(/</g, '&lt;') +
+								'</pre></details>'
+							: '');
+					document.body.insertBefore(box, document.body.firstChild);
+				}, 8000);
+			})();
+		</script>
+		<link rel="stylesheet" href="./vendor/components/assets/kolicons/style.css" />
+
+		<!-- Die Import-Map ist die einzige Stelle, an der Pfade stehen.
+     Dadurch sehen die import-Zeilen unten exakt so aus wie in einem npm-Projekt. -->
+		<script type="importmap">
+			{
+				"imports": {
+					"@public-ui/components": "./vendor/components/dist/esm/index.js",
+					"@public-ui/components/loader": "./vendor/components/loader/index.mjs",
+					"@public-ui/theme-default": "./vendor/theme-default/dist/index.mjs"
+				}
+			}
+		</script>
+
+		<script type="module">
+			import { register } from '@public-ui/components';
+			import { defineCustomElements } from '@public-ui/components/loader';
+			import { DEFAULT } from '@public-ui/theme-default';
+
+			await register(DEFAULT, defineCustomElements);
+			document.documentElement.dataset.kolibriReady = 'true';
+
+			const out = document.querySelector('#out');
+			const sagen = (html) => {
+				out.innerHTML = html;
+				out.classList.remove('readout--empty');
+			};
+
+			// --- Validierung: _msg und _touched sind Properties, keine Attribute ---
+			const mail = document.querySelector('#mail');
+			// Beispielwert vorbelegen: fuer die Fehler-Show alles markieren und "abc" tippen.
+			mail._value = 'max.muster@beispiel.de';
+			const istGueltig = (wert) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(wert.trim());
+
+			const pruefen = (wert, beimTippen) => {
+				if (wert.trim() === '') {
+					// Leeres Pflichtfeld erst nach dem Verlassen bemaengeln, nicht beim Tippen.
+					if (beimTippen) return;
+					mail._msg = { _type: 'error', _description: 'Bitte geben Sie eine E-Mail-Adresse an.' };
+					mail._touched = true;
+					sagen('Pflichtfeld leer → <code>aria-invalid="true"</code>');
+					return;
+				}
+				if (istGueltig(wert)) {
+					mail._msg = undefined;
+					mail._touched = false;
+					sagen('Gültig → Fehler entfernt, <code>aria-invalid</code> ist weg.');
+				} else if (!beimTippen) {
+					mail._msg = { _type: 'error', _description: 'Bitte geben Sie eine gültige E-Mail-Adresse an.' };
+					mail._touched = true;
+					sagen('Ungültig → <code>aria-invalid="true"</code>, Meldung per <code>aria-describedby</code> verknüpft.');
+				}
+			};
+
+			mail._on = {
+				onBlur: (_event, wert) => pruefen(String(wert ?? mail._value ?? ''), false),
+				onInput: (_event, wert) => pruefen(String(wert ?? ''), true),
+			};
+
+			// --- Buttons: _on ist ein Objekt mit Callbacks ---
+			document.querySelectorAll('#buttons kol-button').forEach((button) => {
+				button._on = {
+					onClick: () => sagen('Geklickt: <b>' + button._label + '</b> (Variante <code>' + (button._variant ?? 'ohne') + '</code>)'),
+				};
+			});
+		</script>
+	</head>
+	<body>
+		<nav class="chrome">
+			<span class="chrome__step">1 / 5</span>
+			<span class="chrome__title">Die erste Komponente</span>
+			<a href="./index.html">Übersicht</a>
+			<a href="./step-0-handmade.html">← Zurück</a>
+			<a href="./step-2-island.html">Weiter →</a>
+		</nav>
+
+		<main>
+			<h1>Drei Zeilen Setup. Ein Tag.</h1>
+			<p class="lead">Das war das ganze Feld aus Schritt 0 – und noch etwas mehr.</p>
+
+			<div class="stack">
+				<kol-input-email id="mail" _label="E-Mail" _required _hint="Wir nutzen die Adresse nur für die Terminbestätigung."></kol-input-email>
+
+				<div class="row" id="buttons">
+					<kol-button _label="Absenden" _variant="primary" _icons="kolicon-house"></kol-button>
+					<kol-button _label="Abbrechen" _variant="secondary"></kol-button>
+					<kol-button _label="Löschen" _variant="danger"></kol-button>
+					<kol-button _label="Mehr" _variant="ghost"></kol-button>
+				</div>
+
+				<p class="readout readout--empty" id="out">Noch nichts passiert – tippt ins Feld oder klickt einen Button.</p>
+			</div>
+
+			<div class="note">
+				<strong>Zwei Konventionen, die sofort auffallen:</strong>
+				<br />1. Alle Props beginnen mit einem <code>_</code> – so kollidieren sie nie mit nativen HTML-Attributen. <br />2. <code>_label</code> ist
+				<em>Pflicht</em>. Eine KoliBri-Komponente ohne Beschriftung gibt es nicht – Barrierefreiheit ist hier kein Schalter, den man vergessen kann.
+				<br /><br />
+				Die Varianten (<code>primary</code>, <code>secondary</code>, <code>danger</code>, <code>ghost</code>) sind übrigens keine feste Liste im Code, sondern
+				kommen aus dem <em>Theme</em>. Merken – das wird Schritt 4. <br /><br />
+				<strong>Und noch eine Konvention:</strong> Verhalten hängt an <code>_on</code> – einem Objekt mit Callbacks, das per JavaScript gesetzt wird:
+				<code>feld._on = { onBlur: … }</code>. Dasselbe gilt für <code>_msg</code> und <code>_touched</code>: Das sind Properties, keine Attribute. Deshalb
+				steht im Markup oben kein Fehler – der entsteht erst, wenn ihr einen macht.
+			</div>
+		</main>
+	</body>
+</html>
