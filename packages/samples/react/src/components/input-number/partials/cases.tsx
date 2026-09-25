@@ -64,6 +64,9 @@ export const InputNumberCases = forwardRef<HTMLKolInputNumberElement, InputNumbe
 			<SampleBlock {...block('min-max-step')}>
 				<KolInputNumber {...props} ref={ref} _accessKey="Z" _max={10} _min={-10} _step={2} _label="Number input (-10 to 10 in steps of 2)" />
 			</SampleBlock>
+			<SampleBlock {...block('hint')}>
+				<KolInputNumber {...props} _hint="Hint text" _value={123} _label="Number input with hint" />
+			</SampleBlock>
 			<SampleBlock {...block('readonly')}>
 				<KolInputNumber {...props} _readOnly _value={123} _label="Number input (Readonly)" />
 			</SampleBlock>
