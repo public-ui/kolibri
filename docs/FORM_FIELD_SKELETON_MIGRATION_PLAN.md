@@ -84,7 +84,10 @@ Kein Produktivcode, Voraussetzung für alles. Die Gates greifen nur, wenn vorher
     - G5: `kol-single-select` sendet beim Blur zuerst das native Event, dann das KoliBri-Event und den Callback. `kol-select` setzt `_touched` am eigenen Host nicht, das innere `kol-select-wc` hält den Zustand. Außerdem überträgt `kol-select` einen Einzelwert weder in `FormData` noch in das `_syncValueBySelector`-Ziel, weil das versteckte `<select multiple>` nur Array-Werte übernimmt. Mit `_multiple` stehen alle gewählten Werte in `FormData`. Issues: #11014 (`_touched`), #11015 (Einzelwert).
     - Radio mit Objektwerten liefert das Objekt als Payload und überträgt es als JSON-String in `FormData` und an `_syncValueBySelector`.
   - Formular-Anbindung heute: Das versteckte Element im Light DOM entsteht nur mit `register(…, { reflectInputValues: true })`, seinen `name` setzt der Controller nur im Experimental-Mode. Nur mit beidem steht das Feld in `FormData`. Der Vertrag pinnt alle drei Fälle, der Test ruft `register` dafür aus dem Build unter Test auf.
-- Visual-Samples ergänzen für msg, hint, disabled, hideLabel, infoPopover, Counter, Icons, `inputNumberButtons` an/aus und die Checkbox-Varianten. Neue Samples erzeugen neue Baselines und gehören in ein eigenes PR vor der ersten Migration.
+- ✅ Visual-Samples ergänzen für msg, hint, disabled, hideLabel, infoPopover, Counter, Icons, `inputNumberButtons` an/aus und die Checkbox-Varianten. Neue Samples erzeugen neue Baselines und gehören in ein eigenes PR vor der ersten Migration.
+  - Vorhanden: msg, hint, disabled, hideLabel, infoPopover und Icons für alle 14 Felder über `partials/cases.tsx`/`variants.tsx`, Counter bei `input-text` und `textarea`, Checkbox-Varianten `basic`/`button`/`switch`.
+  - `inputNumberButtons` setzt das Theme (`theme-default` `'show'`, `theme-kern` `'hide'`); die bestehenden `input-number`-Baselines decken damit beide Zustände ab.
+  - Ergänzt in #11017: Counter-Routen für `kol-input-email` und `kol-input-password`, Hint-Block für `kol-input-number`.
 - ✅ Toten Code löschen: `functional-components/inputs/Combobox/Combobox.tsx`.
 
 ### G1 – Fundament + Pilot `kol-input-color` (#9673, #9577)
