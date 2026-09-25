@@ -147,7 +147,7 @@ test.describe('kol-table-stateless', () => {
 					};
 				});
 			});
-			await kolTableStateless.getByTestId('selection-checkbox-all').check();
+			await kolTableStateless.locator('.kol-table__head .kol-table__selection-input--checkbox').check();
 
 			await expect(callbackPromise).resolves.toEqual([DATA[2].id, DATA[0].id, DATA[3].id]);
 		});
@@ -172,7 +172,7 @@ test.describe('kol-table-stateless', () => {
 					};
 				});
 			});
-			await kolTableStateless.getByTestId('selection-checkbox-all').uncheck({ force: true }); // need to use force because kol-icon is intercepting the click
+			await kolTableStateless.locator('.kol-table__head .kol-table__selection-input--checkbox').uncheck({ force: true }); // need to use force because kol-icon is intercepting the click
 
 			await expect(callbackPromise).resolves.toEqual(['1003']); // Should only keep the disabled key
 		});
@@ -188,7 +188,7 @@ test.describe('kol-table-stateless', () => {
 			});
 			await page.waitForChanges();
 
-			const selectAllCheckbox = kolTableStateless.getByTestId('selection-checkbox-all');
+			const selectAllCheckbox = kolTableStateless.locator('.kol-table__head .kol-table__selection-input--checkbox');
 			await expect(selectAllCheckbox).toHaveJSProperty('indeterminate', true);
 		});
 
