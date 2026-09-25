@@ -14,7 +14,7 @@ We have a monorepo structure with multiple packages, each with its own `package.
 - Avoid that branch name may contain hidden characters.
 - Development workflow: `git pull` → `pnpm i` → `pnpm -r build` → `pnpm dev` only in the packages being changed → work on the code. No `dev` or `preview` script builds dependencies. Never run a build while a watcher is active, the components build clears the watcher's output. See [CONTRIBUTING.md](CONTRIBUTING.md#daily-workflow).
 - If something does not work, check in the event of an error whether all dependent submodules have been built.
-- To build a single package faster, run commands with downstream dependents using `pnpm --filter ...<package>` (e.g., `pnpm --filter ...@public-ui/sample-react build`).
+- To build a single package faster, run commands with downstream dependents using `pnpm --filter ...<package>` (e.g., `pnpm --filter ...@public-ui/sample-react build`). A package's build never builds another package: `pnpm -r build` builds each package exactly once in topological order. Build a package together with its dependencies using `pnpm --filter <package>... build` (e.g. components, which needs the kolicons font from `@public-ui/icons`).
 
 ## 🚨 Format-first rule
 

@@ -380,6 +380,9 @@ importers:
       '@public-ui/eslint-config':
         specifier: workspace:*
         version: link:../tools/eslint-config
+      '@public-ui/icons':
+        specifier: workspace:*
+        version: link:../icons
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
         version: 0.9.0(@stencil/core@4.38.3)
@@ -1082,6 +1085,9 @@ importers:
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
+      '@public-ui/ecl-icons':
+        specifier: workspace:*
+        version: link:../../ecl-icons
       '@public-ui/eslint-config':
         specifier: workspace:*
         version: link:../../tools/eslint-config
