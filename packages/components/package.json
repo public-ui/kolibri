@@ -144,6 +144,7 @@
 		"stencil-awesome-test": "1.0.6",
 		"stylelint": "17.15.0",
 		"terser": "5.51.2",
+		"tslib": "2.8.1",
 		"twig": "3.0.0",
 		"typescript": "5.9.3"
 	},
