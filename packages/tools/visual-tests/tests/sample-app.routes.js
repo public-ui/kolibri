@@ -206,6 +206,14 @@ ROUTES.set('input-email/basic?noColumns', {
 		},
 	},
 });
+ROUTES.set('input-email/counter?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+	},
+});
 ROUTES.set('input-file/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
@@ -231,6 +239,14 @@ ROUTES.set('input-number/number-formatter', {
 	},
 });
 ROUTES.set('input-password/basic?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
+		},
+	},
+});
+ROUTES.set('input-password/counter?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
