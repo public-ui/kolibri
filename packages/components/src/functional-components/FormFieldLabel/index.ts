@@ -1,1 +1,1 @@
-export { default } from './FormFieldLabel';
+export { FormFieldLabelInfoPopoverProps, default } from './FormFieldLabel';

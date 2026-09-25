@@ -4,7 +4,7 @@ import * as os from 'node:os';
 import * as path from 'node:path';
 import { afterEach, beforeEach, describe, it } from 'node:test';
 import { fileURLToPath } from 'node:url';
-import VisualReporter, { SNAPSHOT_ANNOTATION, SPEC_FILE, routeToSnapshotName } from '../src/visual-reporter.js';
+import VisualReporter, { SNAPSHOT_ANNOTATION, SPEC_FILE, playwrightOutputName, routeToSnapshotName } from '../src/visual-reporter.js';
 
 const PLATFORM = process.platform;
 const SUFFIX = `-firefox-${PLATFORM}.png`;
@@ -50,6 +50,16 @@ describe('routeToSnapshotName', () => {
 		assert.equal(routeToSnapshotName('button/variants?x=1&y=2'), 'button-variants-x-1-y-2');
 		assert.equal(routeToSnapshotName('table/basic/?sort='), 'table-basic-sort-');
 		assert.doesNotMatch(routeToSnapshotName('a//b?=c'), /--/);
+	});
+});
+
+describe('playwrightOutputName', () => {
+	it('trims long names like Playwright does and leaves short ones alone', () => {
+		// Taken from a CI run with Playwright 1.60.
+		assert.equal(playwrightOutputName('input-color-basic-noColumns--hide-label-suggestions-error'), 'input-color-basic-noColumn-fd9e7-label-suggestions-error');
+		assert.equal(playwrightOutputName('input-color-basic-noColumns--label-info-popover'), 'input-color-basic-noColumns--label-info-popover');
+		const longest = 'x'.repeat(56);
+		assert.equal(playwrightOutputName(longest), longest, '56 characters plus .png still fit');
 	});
 });
 
@@ -216,6 +226,49 @@ describe('VisualReporter', () => {
 		assert.equal(changed.diffPixels, 3);
 		assert.equal(changed.diffRatio, 0.25);
 		assert.equal(changed.sizeMismatch, undefined);
+	});
+
+	it('restores snapshot names that Playwright trimmed in the attachment names', () => {
+		const changedName = 'e-long-route-name-noColumns--hide-label-suggestions-error';
+		const addedName = 'e-long-route-name-noColumns--another-very-long-block-id';
+		write(path.join(baselineDir, `${changedName}${SUFFIX}`), png(4, 3, 'long'));
+		const reporter = createReporter();
+		reporter.onBegin(CONFIG, SUITE);
+		const changedActual = write(path.join(testResults, `${playwrightOutputName(changedName)}-actual.png`), png(4, 4, 'long-actual'));
+		const addedActual = write(path.join(testResults, `${playwrightOutputName(addedName)}-actual.png`), png(4, 3, 'added-actual'));
+		assert.notEqual(playwrightOutputName(changedName), changedName, 'precondition: the name is long enough to be trimmed');
+
+		reporter.onTestEnd(
+			fakeTest('e/long', { annotations: [annotation(`${changedName}.png`), annotation(`${addedName}.png`)] }),
+			fakeResult({
+				status: 'failed',
+				errors: [
+					{
+						message: `Screenshot comparison failed:
+
+  Expected an image 4px by 3px, received 4px by 4px. 4 pixels (ratio 0.25 of all image pixels) are different.
+
+  Snapshot: ${changedName}.png
+`,
+					},
+					{ message: `A snapshot doesn't exist at ${path.join(baselineDir, `${addedName}${SUFFIX}`)}, writing actual.` },
+				],
+				attachments: [
+					attachment(`${playwrightOutputName(changedName)}-expected.png`, path.join(baselineDir, `${changedName}${SUFFIX}`)),
+					attachment(`${playwrightOutputName(changedName)}-actual.png`, changedActual),
+					attachment(`${playwrightOutputName(addedName)}-actual.png`, addedActual),
+				],
+			}),
+		);
+		reporter.onEnd();
+
+		const report = readReport();
+		assert.deepEqual(report.errors, []);
+		const byName = Object.fromEntries(report.items.map((item) => [item.name, item]));
+		assert.equal(byName[changedName].status, 'changed');
+		assert.equal(byName[changedName].diffPixels, 4);
+		assert.equal(byName[changedName].actual, `theme-default/${changedName}.actual.png`);
+		assert.equal(byName[addedName].status, 'added');
 	});
 
 	it('marks the baseline of a failed route as error instead of removed and keeps every hard error', () => {
