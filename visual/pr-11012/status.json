@@ -2,10 +2,10 @@
 	"schema": 1,
 	"state": "success",
 	"description": "No visual changes",
-	"computedAt": "2026-09-25T04:17:54.170Z",
+	"computedAt": "2026-09-25T08:02:47.014Z",
 	"pr": 11012,
-	"head": "b9575ffb14fd4ba0a09eefce6456d75ff4e9d7d6",
-	"digest": "sha256:e7eb72f8f96d0691b562b93d55ce2f6599d2aeea0aeee240d83d8a1e1eb804b6",
+	"head": "74f7a4d3a6dc4bc12a4ec070edd6a428df480321",
+	"digest": "sha256:523a5c29e18e9f796ad8fd085657b922bd1396c9d45c1161e3c53bbf6039bc91",
 	"counts": {
 		"changes": 0,
 		"open": 0,
