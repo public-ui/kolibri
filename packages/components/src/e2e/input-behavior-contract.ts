@@ -45,6 +45,8 @@ type TestInputBehaviorContractOptions = {
 	inputSelector: string;
 	/** Behavior of the legacy implementation, which every migration must keep unchanged. */
 	pinned: BehaviorContract;
+	/** Names a further configuration of the same field, e.g. `_multiple`, so its contract gets its own test titles. */
+	variant?: string;
 };
 
 /** KoliBri `CustomEvent` dispatched on the host. */
@@ -123,10 +125,11 @@ const testInputBehaviorContract = <ElementType extends { _touched?: boolean; _va
 	fillAction,
 	inputSelector,
 	pinned,
+	variant,
 }: TestInputBehaviorContractOptions) => {
 	const field = (attributes = '') => `<${componentName} _label="Input" ${additionalProperties} ${attributes}></${componentName}>`;
 
-	test.describe('Behavior contract', () => {
+	test.describe(variant === undefined ? 'Behavior contract' : `Behavior contract (${variant})`, () => {
 		test('emits the pinned events and callbacks while editing', async ({ page }) => {
 			await setContentWithRetry(page, `${field()}<button id="outside">Outside</button>`);
 			const host = page.locator(componentName);

@@ -13,6 +13,11 @@ const OPTIONS = [
 	{ label: 'Option 2', value: 'option-2' },
 ];
 const OPTIONS_ATTRIBUTE = `_options='${JSON.stringify(OPTIONS)}'`;
+const OBJECT_OPTIONS = [
+	{ label: 'Option 1', value: { id: 1 } },
+	{ label: 'Option 2', value: { id: 2 } },
+];
+const OBJECT_OPTIONS_ATTRIBUTE = `_options='${JSON.stringify(OBJECT_OPTIONS)}'`;
 const fillAction: FillAction = async (page) => {
 	await page.locator('input').first().check();
 };
@@ -188,5 +193,46 @@ test.describe(COMPONENT_NAME, () => {
 			experimentalFormData: [['field', TEST_VALUE]],
 			syncedValue: TEST_VALUE,
 		},
+	});
+
+	testInputBehaviorContract<HTMLKolInputRadioElement>({
+		additionalProperties: OBJECT_OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.check();
+		},
+		inputSelector: 'input.kol-input-radio__input >> nth=0',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				nativeEvent('click'),
+				kolEvent('input', OBJECT_OPTIONS[0].value),
+				callback('input', OBJECT_OPTIONS[0].value),
+				kolEvent('change', OBJECT_OPTIONS[0].value),
+				callback('change', OBJECT_OPTIONS[0].value),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				nativeEvent('click'),
+				kolEvent('input', OBJECT_OPTIONS[0].value),
+				callback('input', OBJECT_OPTIONS[0].value),
+				kolEvent('change', OBJECT_OPTIONS[0].value),
+				callback('change', OBJECT_OPTIONS[0].value),
+			],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
+			initialValue: null,
+			formData: [],
+			experimentalFormData: [['field', '{"id":1}']],
+			syncedValue: '{"id":1}',
+		},
+		variant: 'object values',
 	});
 });

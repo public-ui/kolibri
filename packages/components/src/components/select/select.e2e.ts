@@ -150,4 +150,49 @@ test.describe(COMPONENT_NAME, () => {
 			syncedValue: '',
 		},
 	});
+
+	testInputBehaviorContract<HTMLKolSelectElement>({
+		additionalProperties: `${OPTIONS_ATTRIBUTE} _multiple`,
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.selectOption([{ label: 'East' }, { label: 'West' }]);
+		},
+		inputSelector: 'select.kol-select',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', ['W', 'E']),
+				callback('input', ['W', 'E']),
+				kolEvent('change', ['W', 'E']),
+				callback('change', ['W', 'E']),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', ['W']),
+				callback('input', ['W']),
+				kolEvent('change', ['W']),
+				callback('change', ['W']),
+				kolEvent('click'),
+				callback('click'),
+				nativeEvent('click'),
+			],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: false,
+			initialValue: undefined,
+			formData: [],
+			experimentalFormData: [
+				['field', 'W'],
+				['field', 'E'],
+			],
+			syncedValue: '',
+		},
+		variant: '_multiple',
+	});
 });
