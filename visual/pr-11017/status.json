@@ -1,0 +1,104 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "21 added – 0 of 21 approved, review pending",
+	"computedAt": "2026-09-25T08:05:15.999Z",
+	"pr": 11017,
+	"head": "27747f668d4ed441a8711265f47eb840f524d66c",
+	"digest": "sha256:97eb7df79010253c71c01901bf03522f511edf6b0171261c8243439f87e1592b",
+	"counts": {
+		"changes": 21,
+		"open": 21,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/input-email-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-number-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-password-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-email-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-number-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-password-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-email-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-number-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-password-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-email-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-number-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-password-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-email-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-number-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-password-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-email-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-number-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-password-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-email-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-number-basic-noColumns--label-hint": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-password-counter-noColumns--counter": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
