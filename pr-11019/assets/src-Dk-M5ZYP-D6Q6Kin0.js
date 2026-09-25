@@ -1,0 +1,1 @@
+import{_ as e,i as t}from"./variant-quote-CPA_pFWU-DE3NQ4hF.js";var n=t(`src`,``,e);export{n as t};
