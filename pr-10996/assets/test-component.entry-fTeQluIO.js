@@ -1,1 +1,0 @@
-import{c as e}from"./index-DcDxiC7I-D8eY13p1.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};
