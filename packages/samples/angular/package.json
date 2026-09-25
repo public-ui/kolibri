@@ -2,12 +2,12 @@
 	"name": "@public-ui/sample-angular",
 	"private": true,
 	"scripts": {
-		"build": "ng build",
+		"build": "cross-env NG_FORCE_AUTOCOMPLETE=false ng build",
 		"build:deps": "pnpm --filter @public-ui/sample-angular^... build",
 		"format": "prettier --check src",
 		"prebuild": "kolibri-copy-assets --dest src/assets @public-ui/components @public-ui/theme-default",
 		"prepare": "pnpm prebuild",
-		"dev": "ng serve",
+		"dev": "cross-env NG_FORCE_AUTOCOMPLETE=false ng serve",
 		"unused": "knip"
 	},
 	"dependencies": {
@@ -31,6 +31,7 @@
 		"@types/jasmine": "6.0.0",
 		"@tailwindcss/postcss": "4.3.3",
 		"adopted-style-sheets": "1.1.9-rc.25",
+		"cross-env": "10.1.0",
 		"hono": "4.13.8",
 		"karma-jasmine": "5.1.0",
 		"karma-chrome-launcher": "3.2.0",

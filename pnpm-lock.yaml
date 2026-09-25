@@ -588,6 +588,9 @@ importers:
       adopted-style-sheets:
         specifier: 1.1.9-rc.25
         version: 1.1.9-rc.25
+      cross-env:
+        specifier: 10.1.0
+        version: 10.1.0
       hono:
         specifier: 4.13.8
         version: 4.13.8
