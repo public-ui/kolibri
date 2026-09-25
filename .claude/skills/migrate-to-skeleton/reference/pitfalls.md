@@ -168,3 +168,14 @@ Und: Eine `@Method`, die nur ein internes `-wc`-Element trug (`invalidateOpenIte
 Rückbau **nicht** auf das öffentliche Element verschoben — das wäre neue öffentliche API. Ein
 Modul-Register (Vorbild `tree/open-items-cache.ts`, Muster wie `link/ariaCurrentService.ts`) hält
 den Aufruf intern.
+
+## 16. Ein „neutraler" Prop-Default ersetzt kein `undefined`, ohne dass es belegt ist
+
+Die Prop-Factory verlangt fuer jede Render-Prop einen Default. Wo der Vorgaenger „nicht gesetzt" mit
+`undefined` ausdrueckte, liegt ein scheinbar neutraler Wert nahe (`fixedCols = [0, 0]`, `[]`, `0`) —
+er ist es aber nur, wenn jeder Leser des Werts ihn wie „nicht gesetzt" behandelt. Beim Table kippte
+`[0, 0]` die letzte Zelle jeder Zeile auf `sticky-right`, weil der Vergleich `index >= maxCols - 0`
+fuer Zeilen mit vertikalen Kopfzellen wahr wird. Der Vorgaenger war davor nur durch sein
+`!this._fixedCols` geschuetzt. Absicherung: den Ist-DOM vor dem Umbau als Jest-Snapshot einfrieren
+(dabei das `-wc`-Element mitregistrieren) und den Diff nach dem Umbau leerraeumen. Laesst sich kein
+neutraler Wert finden, einen expliziten Sentinel im internen Typ fuehren (`selection: … | false`).

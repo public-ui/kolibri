@@ -1,11 +1,12 @@
+/* eslint-disable no-console */
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import clsx from '../../utils/clsx';
 
-import type { FormFieldLabelInfoPopoverProps } from '../../components';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper/TextAreaStateWrapper';
+import type { FormFieldLabelInfoPopoverProps } from '../../functional-components';
 import type {
 	AdjustHeightPropType,
 	AriaDetailsPropType,
@@ -43,24 +44,9 @@ import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-
 import { TextareaController } from './controller';
 
 /**
- * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
- *
- * https://stackoverflow.com/questions/17772260/textarea-auto-height
- */
-const increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
-	el.style.overflow = 'hidden'; // verhindert, dass ein Scrollbalken kurz angezeigt wird
-	const currentRows = el.rows;
-	const rowHeight = el.clientHeight / currentRows;
-	el.rows = 1;
-	const nextRows = Math.round(el.scrollHeight / rowHeight);
-	el.rows = currentRows;
-	return nextRows;
-};
-
-/**
  * The **Textarea** component provides a larger input field for content. Unlike InputText, it also allows extensive content to be entered, including line breaks.
  *
- * @slot - The label of the input field.
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
 	tag: 'kol-textarea',
@@ -151,6 +137,22 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 			</KolFormFieldStateWrapperFc>
 		);
 	}
+
+	/**
+	 * https://stackoverflow.com/questions/17772260/textarea-auto-height
+	 */
+	private increaseTextareaHeight = (el: HTMLTextAreaElement): number => {
+		el.style.overflow = 'hidden'; // verhindert, dass ein Scrollbalken kurz angezeigt wird
+		el.style.padding = '0'; // padding muss für korrekte Berechnung vorrübergehend überschrieben werden
+		const currentRows = el.rows;
+		const rowHeight = el.clientHeight / currentRows;
+		el.rows = 1;
+		const nextRows = Math.round(el.scrollHeight / rowHeight);
+		el.rows = currentRows;
+		el.style.padding = ''; // padding wieder vom theme
+
+		return this.state?._rows && this.state._rows > nextRows ? this.state._rows : nextRows;
+	};
 
 	private readonly controller: TextareaController;
 
@@ -461,7 +463,7 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 		}
 		setTimeout(() => {
 			if (this._adjustHeight === true && this.ctaRef.el /* SSR instanceof HTMLTextAreaElement */) {
-				this._rows = this.state?._rows && this.state._rows > increaseTextareaHeight(this.ctaRef.el) ? this.state._rows : increaseTextareaHeight(this.ctaRef.el);
+				this._rows = this.increaseTextareaHeight(this.ctaRef.el);
 			} else if (!this._rows) {
 				this._rows = 1;
 			}
@@ -490,7 +492,7 @@ export class KolTextarea implements ClickableElement, FocusableElement, Textarea
 		if (this.ctaRef.el instanceof HTMLTextAreaElement) {
 			this._value = this.ctaRef.el.value;
 			if (this.state._adjustHeight) {
-				this._rows = increaseTextareaHeight(this.ctaRef.el);
+				this._rows = this.increaseTextareaHeight(this.ctaRef.el);
 			}
 			this.controller.onFacade.onInput(event);
 		}

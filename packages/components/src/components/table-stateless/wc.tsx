@@ -1,5 +1,5 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Listen, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Listen, Prop, State, Watch } from '@stencil/core';
 
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TableStatelessApi } from '../../internal/functional-components/table-stateless/api';
@@ -13,24 +13,26 @@ import type {
 	TableDataPropType,
 	TableHeaderCellsPropType,
 	TableSelectionPropType,
-	TableStatelessProps,
 	VariantClassNamePropType,
 } from '../../schema';
-import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
-import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
 import { BaseTableStatelessWebComponent } from './base';
 
+/**
+ * Transitional `kol-table-stateless-wc` — a `shadow:false` element that renders `TableStatelessFC`
+ * into the light DOM.
+ *
+ * `kol-table-stateful` renders it inside its own shadow DOM and styles the table classes from its
+ * stylesheet, which a shadow root would hide. Once that consumer renders `TableStatelessFC`
+ * directly, this element can be deleted.
+ *
+ * @internal
+ */
 @Component({
-	tag: 'kol-table-stateless',
-	styleUrls: {
-		default: './style.scss',
-	},
-	shadow: true,
+	tag: 'kol-table-stateless-wc',
+	shadow: false,
 })
-export class KolTableStateless extends BaseTableStatelessWebComponent implements TableStatelessProps, WebComponentInterface<TableStatelessApi> {
-	@Element() protected readonly host?: HTMLKolTableStatelessElement;
-
-	private internals?: HostInternals;
+export class KolTableStatelessWc extends BaseTableStatelessWebComponent implements WebComponentInterface<TableStatelessApi> {
+	@Element() protected readonly host?: HTMLKolTableStatelessWcElement;
 
 	// --- Lifecycle ---
 
@@ -47,19 +49,9 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 		this.watchOn(this._on);
 		this.watchSelection(this._selection);
 		this.watchVariant(this._variant);
-
-		this.internals = attachInternals(this.host);
-		// Early resolution: if the external element is already in the DOM (common when the
-		// label element is rendered before this component), the first render already uses
-		// it, so the AT sees the correct name from the start.
-		this.resolveExternalLabel(this._ariaLabelledby);
 	}
 
 	public componentDidLoad(): void {
-		// Re-resolve after mount to avoid depending on timer-based retries.
-		if (!this.externalLabelElements.length) {
-			this.resolveExternalLabel(this._ariaLabelledby);
-		}
 		this.observeScrollContainer();
 	}
 
@@ -69,11 +61,6 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 
 	public disconnectedCallback(): void {
 		this.teardownTable();
-	}
-
-	private resolveExternalLabel(value?: AriaLabelledbyPropType): void {
-		this.externalLabelElements = validateAriaLabelledby(this, this.host, this.internals, value);
-		this.syncTableLabel(this.externalLabelElements);
 	}
 
 	// --- Listeners ---
@@ -91,12 +78,10 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	// --- Render ---
 
 	public render(): JSX.Element {
-		return <Host>{this.renderTableStatelessFC()}</Host>;
+		return this.renderTableStatelessFC();
 	}
 
 	// --- @State ---
-
-	@State() public externalLabelElements: HTMLElement[] = [];
 
 	@State() public hasScrollbar: boolean = false;
 
@@ -109,15 +94,13 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	// --- Props + Watchers ---
 
 	/**
-	 * References an external element by ID that serves as the accessible label for this table.
-	 * Uses ElementInternals.ariaLabelledByElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS) — use `_label` instead.
+	 * External label elements forwarded by the embedding component, which resolves them in its own
+	 * tree scope.
 	 */
-	@Prop() public _ariaLabelledby?: AriaLabelledbyPropType;
-	@Watch('_ariaLabelledby')
-	public watchAriaLabelledby(value?: AriaLabelledbyPropType): void {
-		this.resolveExternalLabel(value);
+	@Prop() public externalLabelElements: HTMLElement[] = [];
+	@Watch('externalLabelElements')
+	public watchExternalLabelElements(value?: HTMLElement[]): void {
+		this.syncTableLabel(value);
 	}
 
 	/**
@@ -153,17 +136,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	@Prop() public _headers?: TableHeaderCellsPropType;
 	@Watch('_headers')
 	public watchHeaders(value?: TableHeaderCellsPropType): void {
-		this.applyHeaders(value ? value : this._headerCells);
-	}
-
-	/**
-	 * @deprecated Will be removed in the future. Use _headers instead.
-	 * Defines the horizontal and vertical table headers.
-	 */
-	@Prop() public _headerCells?: TableHeaderCellsPropType;
-	@Watch('_headerCells')
-	public watchHeaderCells(value?: TableHeaderCellsPropType): void {
-		this.applyHeaders(this._headers ? this._headers : value);
+		this.applyHeaders(value);
 	}
 
 	/**
@@ -203,20 +176,21 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 	}
 
 	/**
+	 * Defines which variant should be used for presentation.
+	 * @internal
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		this.applyVariant(value);
+	}
+
+	/**
 	 * Enables the settings menu if true (default: false).
 	 */
 	@Prop() public _hasSettingsMenu?: HasSettingsMenuPropType;
 	@Watch('_hasSettingsMenu')
 	public watchHasSettingsMenu(value?: HasSettingsMenuPropType): void {
 		this.applyHasSettingsMenu(value);
-	}
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: VariantClassNamePropType;
-	@Watch('_variant')
-	public watchVariant(value?: VariantClassNamePropType): void {
-		this.applyVariant(value);
 	}
 }

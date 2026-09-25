@@ -84,9 +84,6 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
   `prConcurrentLimit: 5` / `prHourlyLimit: 5` cap the number of open PRs **per base branch** (so
   `develop` and each `release/*` branch have their own budget).
 
-- **`minimumReleaseAge: "3 days"`** — all updates (npm, Actions, …, including security fixes)
-  are held back for three days after release before a PR is opened or auto-merged. This protects
-  against compromised or quickly-revoked releases.
 - **Automerge all non-major updates (merge commit)** — the first package rule enables `automerge` for
   `patch`/`minor`/`digest`/`pin`/lockfile updates; `automergeStrategy: merge` is the only method the
   `Production branches` ruleset allows on `develop` (see [Troubleshooting](#troubleshooting-prs-stay-open-although-ci-is-green)). Known-risky rules below (Stencil, kern-ux, ESLint,
@@ -154,15 +151,6 @@ To activate it:
    working with the old one and the symptoms below stay. _Alternative:_ replace the app-token step
    with a `RENOVATE_TOKEN` PAT/fine-grained token carrying the same scopes.
 
-   > **Commit statuses: write is not optional.** `minimumReleaseAge` makes Renovate post a
-   > `renovate/stability-days` commit status on every branch that still holds a pending release.
-   > Without the permission that `POST /repos/:owner/:repo/statuses/:sha` returns
-   > `403 integration-unauthorized`, which Renovate reports as `repository-changed` and which
-   > **aborts the whole run**. Because branches are processed sequentially, everything after the
-   > first affected branch is skipped: no automerge check for open PRs, and no PR creation for
-   > branches that already exist. The run still ends as a green workflow, so the failure is silent
-   > — look for `result: "repository-changed"` in the log.
-   >
    > Without **Dependabot alerts: read** every run logs
    > `Cannot access vulnerability alerts`, and `vulnerabilityAlerts` stays inactive; security PRs
    > then only come from `osvVulnerabilityAlerts`.
@@ -311,8 +299,7 @@ fixierten Major-Version halten (`angular/v20|v21`, `react*`), sichere Updates au
 - **npm-check-updates** ist nur ein CLI ohne eigene Automatisierung (läuft heute im Workflow
   `auto-dependency-updater.yml`).
 
-Neu hinzugekommen: `minimumReleaseAge: "3 Tage"` schützt vor kompromittierten Releases
-(inklusive Security-Updates), `automergeStrategy: merge` folgt der Merge-Commit-Konvention des Repos,
+Neu hinzugekommen: `automergeStrategy: merge` folgt der Merge-Commit-Konvention des Repos,
 und die `release/*`-Branches werden auf **Security-only** umgestellt — reguläre npm- und
 GitHub-Actions-Updates werden dort komplett deaktiviert, während Vulnerability-Alert-PRs
 weiterhin (bei Nicht-Major) automatisch mergen.

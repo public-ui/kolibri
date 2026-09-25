@@ -14,7 +14,6 @@
 	"prHourlyLimit": 5,
 	"postUpdateOptions": ["pnpmDedupe"],
 	"platformAutomerge": true,
-	"minimumReleaseAge": "3 days",
 	"automergeStrategy": "merge",
 	"configMigration": true,
 	"dependencyDashboardOSVVulnerabilitySummary": "all",

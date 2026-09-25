@@ -11,10 +11,14 @@
 			cursor: pointer;
 		}
 
-		&__label-text {
-			flex-flow: row;
-			align-items: flex-start;
-			justify-content: flex-start;
+		&__label {
+			display: flex;
+
+			&-text {
+				flex-flow: row;
+				align-items: flex-start;
+				justify-content: flex-start;
+			}
 		}
 
 		&--required & {
