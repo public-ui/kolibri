@@ -16,9 +16,6 @@ name: Renovate
 #       "04 - Update pnpm Lock"). The app installation must grant:
 #         contents: write, pull-requests: write, issues: write (Dependency Dashboard),
 #         workflows: write (so the github-actions manager can update .github/workflows/*),
-#         statuses: write (minimumReleaseAge posts a renovate/stability-days commit status —
-#         without it POST /statuses returns 403 and Renovate aborts the whole run with
-#         result: "repository-changed" while the workflow still reports success)
 #         and Dependabot alerts: read (otherwise vulnerabilityAlerts stays inactive).
 # Alternative: drop the app-token step and pass a PAT via `token: ${{ secrets.RENOVATE_TOKEN }}`.
 
