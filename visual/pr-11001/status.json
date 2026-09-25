@@ -1,116 +1,142 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "24 changed – 0 of 24 approved, review pending",
-	"computedAt": "2026-09-24T12:03:33.116Z",
+	"state": "success",
+	"description": "24 visual changes approved by deleonio",
+	"computedAt": "2026-09-25T06:16:00.540Z",
 	"pr": 11001,
 	"head": "0fe2277880c00d889231ee4c5a71df8505bb9564",
 	"digest": "sha256:44163bd638262c8e9df4340f7b33972beb06fe098fb34f2b95bd5a9ac876e84a",
 	"counts": {
 		"changes": 24,
-		"open": 24,
-		"approved": 0,
+		"open": 0,
+		"approved": 24,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"deleonio"
+	],
 	"items": {
 		"test-tag-name-transformer/textarea-adjust-height--adjust-height": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/textarea-adjust-height--adjust-height": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/textarea-adjust-height--adjust-height": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/scenarios-same-height-of-all-form-elements-with-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/scenarios-same-height-of-all-interactive-elements": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-adjust-height--adjust-height": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--hide-label-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-access-key": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-black-bg": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-disabled-empty": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-disabled-value": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-msg-default": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-msg-info": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-msg-success": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-msg-warning": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-placeholder": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-readonly": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-rows": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-basic-noColumns--label-short-key": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/textarea-with-counter--with-counter": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/textarea-adjust-height--adjust-height": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-kern/textarea-adjust-height--adjust-height": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/textarea-adjust-height--adjust-height": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		}
 	}
 }
