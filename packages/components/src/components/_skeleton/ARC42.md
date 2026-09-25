@@ -207,12 +207,14 @@ declaration with its preceding JSDoc block from the predecessor file (`git show 
 and from the migrated file, and diff the two member lists. Any difference is a finding that needs
 an explicit justification in the PR description.
 
-This is enforced continuously by the skeleton contract test
-[`_skeleton/public-api.spec.ts`](./public-api.spec.ts): it extracts the `@Prop`/`@Method` members
-(including JSDoc, types, defaults and requiredness) from the component sources and compares them
-against a hand-written pinned contract. **Extend the spec with a pinned contract for every newly
-migrated component** — the pin makes any future public API change fail the build, which is exactly
-the point: such a change is a breaking change and must be an explicit, reviewable edit.
+This is enforced continuously by the contract tests in
+[`_skeleton/public-api/`](./public-api/contract.ts): one `<component>.spec.ts` per component folder
+extracts the `@Prop`/`@Method` members (including JSDoc, types, defaults and requiredness) from the
+component sources and compares them against a pinned contract, using the helpers in `contract.ts`.
+**Pin every component before its migration** (against the legacy `shadow.tsx`) and point the pin to
+`component.tsx` in the migration PR — the pin makes any public API change fail the build, which is
+exactly the point: such a change is a breaking change and must be an explicit, reviewable edit. One
+file per component keeps parallel migrations free of merge conflicts.
 
 ### Behavior Layer
 

@@ -35,7 +35,7 @@ Aus dem Formularumfeld ist bisher nur `kol-form` auf Skeleton umgestellt.
 
 - **Zero visual delta, BEM bleibt.** DOM und Klassen (`.kol-form-field`, `.kol-input-container`, `.kol-field-control` …) bleiben byte-identisch. Themes werden nicht angefasst, es gibt keinen CLI-/SCSS-Migrations-Task. Das Pixel-Gate verlangt 0 Diffs pro Theme.
 - **Formular-Anbindung 1:1 als Behavior.** Die heutige Semantik (versteckte native Elemente im Light DOM, `_syncValueBySelector`, `ariaDetails` über `attachInternals`) wandert aus der Controller-Kette in ein wiederverwendbares `FormAssociationBehavior`, das auch `kol-button` nutzt. Einen Umstieg auf natives `formAssociated` gibt es in dieser Migration nicht.
-- **Identische öffentliche API.** Gleiche `@Prop`/`@Method`-Member, Alias-Typen, Defaults und JSDoc. Die Oberfläche wird vor der Migration in `public-api.spec.ts` festgenagelt.
+- **Identische öffentliche API.** Gleiche `@Prop`/`@Method`-Member, Alias-Typen, Defaults und JSDoc. Die Oberfläche ist vor der Migration in `_skeleton/public-api/<komponente>.spec.ts` festgenagelt.
 
 ## Leitplanken
 
@@ -73,10 +73,22 @@ Rückbau-Inkremente am Ende jeder Gruppe; finaler Rückbau (G6) nach G2–G5
 
 Kein Produktivcode, Voraussetzung für alles. Die Gates greifen nur, wenn vorher festgehalten ist, was „unverändert" heißt: API, Verhalten und Pixel.
 
-- Public-API-Pins für alle 14 Tags und `kol-select-wc` (als interner Vertrag), zunächst gegen `shadow.tsx`. `_skeleton/public-api.spec.ts` wird dafür in Dateien pro Komponente aufgeteilt, damit parallele Spuren keine Merge-Konflikte bekommen.
-- Verhaltensverträge pro Feld: Reihenfolge und Payload von `kolChange`/`kolInput`/`kolFocus`/`kolBlur`/`kolKeydown`/`kolClick` und der `_on`-Callbacks; `FormData` eines nativen `<form>` für Checkbox, `select` multiple, File und Radio mit Objektwerten; `_syncValueBySelector`; `_touched` nach Blur.
-- Visual-Samples ergänzen für msg, hint, disabled, hideLabel, infoPopover, Counter, Icons, `inputNumberButtons` an/aus und die Checkbox-Varianten. Neue Samples erzeugen neue Baselines und gehören in ein eigenes PR vor der ersten Migration.
-- Toten Code löschen: `functional-components/inputs/Combobox/Combobox.tsx`.
+- ✅ Public-API-Pins für alle 14 Tags und `kol-select-wc` (als interner Vertrag), zunächst gegen `shadow.tsx`. Jede Komponente hat eine eigene Datei unter `_skeleton/public-api/`, damit parallele Spuren keine Merge-Konflikte bekommen.
+- ✅ Verhaltensverträge pro Feld: Reihenfolge und Payload von `kolChange`/`kolInput`/`kolFocus`/`kolBlur`/`kolKeydown`/`kolClick` und der `_on`-Callbacks; `FormData` eines nativen `<form>` für Checkbox, `select` multiple, File und Radio mit Objektwerten; `_syncValueBySelector`; `_touched` nach Blur. Die Verträge sind Playwright-Tests (`*.e2e.ts`), weil versteckte Light-DOM-Elemente, `attachInternals`, `FormData` sowie Fokus und Tastatur nur im echten Browser verlässlich prüfbar sind. Sie nutzen die Helfer aus `src/e2e/`. Reine Umrechnungen ohne Browserverhalten (z. B. Date↔ISO in G3) werden als Jest-Tests der Hilfsfunktionen geprüft.
+  - Der gemeinsame Helfer `testInputBehaviorContract` in `src/e2e/input-behavior-contract.ts` zeichnet Events und Callbacks auf; jedes Feld pinnt darin sein heutiges Verhalten. Alle 14 Felder sind gepinnt, dazu die Varianten Radio mit Objektwerten und `kol-select` mit `_multiple` (Option `variant`).
+  - Befunde aus den Verträgen: Die gepinnten Abläufe beschreiben den heutigen Stand, auch wo er inkonsistent ist. Korrekturen kommen als eigene PRs nach der jeweiligen Migration.
+    - Standard (G1.4, alle Felder außer den unten genannten Abweichungen): Je Aktion kommt zuerst das KoliBri-Event am Host, dann der `_on`-Callback, dann das native Event. Natives `input`/`change` endet an der Shadow-Grenze.
+    - Startwert ohne Vorgabe: `kol-input-color` `#000000` (aus dem inneren Input in `componentDidLoad`), `kol-input-range` `50`, `kol-input-checkbox` `true`, `kol-input-radio` und `kol-single-select` `null`, alle anderen `undefined`.
+    - G3: Payloads sind typisiert – number und range liefern Zahlen, date den ISO-String, file eine `FileList`. Für file bleibt ein Text-Input als `_syncValueBySelector`-Ziel leer.
+    - G4: checkbox und radio senden kein KoliBri-`click` und keinen `onClick` (`onClick: undefined` in `shadow.tsx`). Stattdessen erreicht das native `click` den Host vor `input`/`change`.
+    - G5: `kol-single-select` sendet beim Blur zuerst das native Event, dann das KoliBri-Event und den Callback. `kol-select` setzt `_touched` am eigenen Host nicht, das innere `kol-select-wc` hält den Zustand. Außerdem überträgt `kol-select` einen Einzelwert weder in `FormData` noch in das `_syncValueBySelector`-Ziel, weil das versteckte `<select multiple>` nur Array-Werte übernimmt. Mit `_multiple` stehen alle gewählten Werte in `FormData`. Issues: #11014 (`_touched`), #11015 (Einzelwert).
+    - Radio mit Objektwerten liefert das Objekt als Payload und überträgt es als JSON-String in `FormData` und an `_syncValueBySelector`.
+  - Formular-Anbindung heute: Das versteckte Element im Light DOM entsteht nur mit `register(…, { reflectInputValues: true })`, seinen `name` setzt der Controller nur im Experimental-Mode. Nur mit beidem steht das Feld in `FormData`. Der Vertrag pinnt alle drei Fälle, der Test ruft `register` dafür aus dem Build unter Test auf.
+- ✅ Visual-Samples ergänzen für msg, hint, disabled, hideLabel, infoPopover, Counter, Icons, `inputNumberButtons` an/aus und die Checkbox-Varianten. Neue Samples erzeugen neue Baselines und gehören in ein eigenes PR vor der ersten Migration.
+  - Vorhanden: msg, hint, disabled, hideLabel, infoPopover und Icons für alle 14 Felder über `partials/cases.tsx`/`variants.tsx`, Counter bei `input-text` und `textarea`, Checkbox-Varianten `basic`/`button`/`switch`.
+  - `inputNumberButtons` setzt das Theme (`theme-default` `'show'`, `theme-kern` `'hide'`); die bestehenden `input-number`-Baselines decken damit beide Zustände ab.
+  - Ergänzt in #11017: Counter-Routen für `kol-input-email` und `kol-input-password`, Hint-Block für `kol-input-number`.
+- ✅ Toten Code löschen: `functional-components/inputs/Combobox/Combobox.tsx`.
 
 ### G1 – Fundament + Pilot `kol-input-color` (#9673, #9577)
 
@@ -149,7 +161,7 @@ Gelöscht wird, sobald der letzte Import weg ist. Veröffentlichte Schema-Typen 
 3. `_touched` als `@State` oder als Render-Prop? (G1.4)
 4. `_on`: eine gemeinsame Callback-Prop oder typisiert pro Feld? (G1.1)
 5. SSR-Absturz von `attachInternals(undefined)` 1:1 übernehmen oder mit eigenem PR über einen Guard absichern? (G1.2)
-6. Verhaltensverträge in Jest oder in Playwright? (G0)
+6. ~~Verhaltensverträge in Jest oder in Playwright? (G0)~~ Entschieden: Playwright, siehe G0.
 7. Namen der Input-Props für min/max/step und für das Icons-Objekt. (G3)
 8. `kol-select-wc` als Übergangs-Tag behalten oder `pagination` direkt auf das FC umstellen? (G5)
 9. combobox und single-select: gemeinsame DD16-Basis oder `ListboxBehavior`? (G5)

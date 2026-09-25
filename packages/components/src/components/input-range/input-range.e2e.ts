@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
+import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
@@ -95,4 +96,33 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	testInputMessage<HTMLKolInputRangeElement>(COMPONENT_NAME);
+
+	testInputBehaviorContract<HTMLKolInputRangeElement>({
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.fill(TEST_VALUE);
+		},
+		inputSelector: 'input.kol-input-range__input--number',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', 10),
+				callback('input', 10),
+				kolEvent('change', 10),
+				callback('change', 10),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
+			initialValue: 50,
+			formData: [],
+			experimentalFormData: [['field', TEST_VALUE]],
+			syncedValue: TEST_VALUE,
+		},
+	});
 });

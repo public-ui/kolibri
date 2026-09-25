@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
+import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
@@ -119,4 +120,79 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	testInputMessage<HTMLKolSelectElement>(COMPONENT_NAME);
+
+	testInputBehaviorContract<HTMLKolSelectElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.selectOption({ label: TEST_LABEL });
+		},
+		inputSelector: 'select.kol-select',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', TEST_VALUE),
+				callback('input', TEST_VALUE),
+				kolEvent('change', TEST_VALUE),
+				callback('change', TEST_VALUE),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: false,
+			initialValue: undefined,
+			formData: [],
+			experimentalFormData: [],
+			syncedValue: '',
+		},
+	});
+
+	testInputBehaviorContract<HTMLKolSelectElement>({
+		additionalProperties: `${OPTIONS_ATTRIBUTE} _multiple`,
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.selectOption([{ label: 'East' }, { label: 'West' }]);
+		},
+		inputSelector: 'select.kol-select',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', ['W', 'E']),
+				callback('input', ['W', 'E']),
+				kolEvent('change', ['W', 'E']),
+				callback('change', ['W', 'E']),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', ['W']),
+				callback('input', ['W']),
+				kolEvent('change', ['W']),
+				callback('change', ['W']),
+				kolEvent('click'),
+				callback('click'),
+				nativeEvent('click'),
+			],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: false,
+			initialValue: undefined,
+			formData: [],
+			experimentalFormData: [
+				['field', 'W'],
+				['field', 'E'],
+			],
+			syncedValue: '',
+		},
+		variant: '_multiple',
+	});
 });

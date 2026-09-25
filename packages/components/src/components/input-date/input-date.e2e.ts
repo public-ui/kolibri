@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 import type { Iso8601 } from '../../schema';
@@ -329,4 +330,33 @@ test.describe('kol-input-date', () => {
 	});
 
 	testInputMessage<HTMLKolInputDateElement>('kol-input-date');
+
+	testInputBehaviorContract<HTMLKolInputDateElement>({
+		componentName: 'kol-input-date',
+		fillAction: async (input) => {
+			await input.fill('2024-05-10');
+		},
+		inputSelector: 'input.kol-input[type="date"]',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', '2024-05-10'),
+				callback('input', '2024-05-10'),
+				kolEvent('change', '2024-05-10'),
+				callback('change', '2024-05-10'),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
+			initialValue: undefined,
+			formData: [],
+			experimentalFormData: [['field', '2024-05-10']],
+			syncedValue: '2024-05-10',
+		},
+	});
 });
