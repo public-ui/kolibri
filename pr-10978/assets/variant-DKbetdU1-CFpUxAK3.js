@@ -1,0 +1,1 @@
+import{i as e}from"./variant-quote-CPA_pFWU-G18cFZqJ.js";var t=/^[a-zA-Z][a-zA-Z0-9_-]{0,60}$/,n=e=>typeof e==`string`&&t.test(e);function r(e){return Array.isArray(e)?e:typeof e==`string`?e.split(` `):[]}function i(e){return e.length===0||e.every(n)}var a=e(`variant`,[],r,i);export{a as n,n as t};
