@@ -63,7 +63,7 @@
 		"prettier-plugin-organize-imports": "4.3.0",
 		"react": "19.3.0",
 		"react-dom": "19.3.0",
-		"react-hook-form": "7.63.0",
+		"react-hook-form": "7.89.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
 	},
