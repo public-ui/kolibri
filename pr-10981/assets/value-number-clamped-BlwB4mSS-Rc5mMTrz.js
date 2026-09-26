@@ -1,1 +1,0 @@
-import{_ as e,h as t,i as n,r}from"./variant-quote-CPA_pFWU-C4ITWHAV.js";var i=n(`max`,100,t,e=>e>0),a=n(`unit`,`%`,e,e=>e.length>0),o=r(`value`,0,(e,n)=>{let r=t(e);return r<n.min?n.min:r>n.max?n.max:r},e=>e!=null);export{i as n,a as r,o as t};
