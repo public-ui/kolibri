@@ -5,7 +5,7 @@
 		"js-yaml": "5.4.2",
 		"license-report": "6.8.5",
 		"npm-run-all2": "9.0.3",
-		"prettier": "3.9.8",
+		"prettier": "3.9.9",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "17.15.0",
 		"stylelint-config-recommended-scss": "17.0.1",
