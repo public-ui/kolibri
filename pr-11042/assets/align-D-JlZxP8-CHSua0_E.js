@@ -1,0 +1,1 @@
+import"./index-CzVsFXc1-kv4-UKan.js";var e=[`left`,`right`],t=[`top`,`bottom`],n=[...e,...t];export{n as t};

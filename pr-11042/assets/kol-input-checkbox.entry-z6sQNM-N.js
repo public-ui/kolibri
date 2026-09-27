@@ -1,0 +1,777 @@
+import{P as e,Q as t,c as n,o as r,rt as i,s as a,st as o}from"./index-CzVsFXc1-kv4-UKan.js";import"./behavior-BIBP85hv-uaAB9x4S.js";import"./index-CEwixA_x.js";import{n as s}from"./dev.utils-DapS9xiO-D11Jp4rN.js";import"./base-web-component--IgFgz37-CZuvR3uB.js";import{n as c,t as l}from"./tslib.es6-QNbPBOk5-DpzS01Oy.js";import"./variant-quote-BYhPDZZ--MVqPRfZ8.js";import"./label-CKjWaCEz-Bg9EWkpR.js";import"./label-Bumwduqd-BXvs-LjM.js";import{t as u}from"./clsx-COFh-Vc8-DWAop4cA.js";import"./Heading-B-EcJKJy-CitcBmw_.js";import"./block-bem-FrzRvC-q-3LYNfDDO.js";import{t as d}from"./component-C92XI4Wj-DLB444G1.js";import"./component-CeOf5BrF-B40iqqzr.js";import{a as f,n as p,r as m}from"./element-interaction-Oouk2klE-5LJsGCBQ.js";import"./i18n-CV4Oxp86-CDO-muEX.js";import"./component-Bmf89rX6-DfBlMqFh.js";import"./component-gd4fteY--rjeDQlW5.js";import"./component-BQ1CdAEN-DnInIUZd.js";import"./component-DWs2njJT-ChuQ2ako.js";import"./component-CYDBtCmh-D-6EF3Sv.js";import"./align-D-JlZxP8-CHSua0_E.js";import{n as h}from"./controller-CITaWamb-L_tOM14l.js";import"./aria-details-qh4p56wi-Qy9HfGyQ.js";import"./associated.controller-D0EisLYw-Vp1rPcx1.js";import"./hide-label-Cww1vjY--DGMEIh8a.js";import"./tooltip-align-Cp3RBDSN-D3FrKlVL.js";import{c as g,o as _,s as v,t as y}from"./FormFieldStateWrapper-51gDanIH-CvnSkEKA.js";import{t as b}from"./Input-CgN8DnYj-Bkog1NzM.js";import"./required-GHIijqDe-Cpvgxe1x.js";import{t as x}from"./controller-DxIh6goR-B8y1BWtg.js";import{t as S}from"./FieldControlStateWrapper-BPFhM305-D3BA5YYm.js";var C=(e,t)=>{i(e,`_checked`,t)},w=(e,t)=>{i(e,`_indeterminate`,t)},T=[`left`,`right`],E=(e,t)=>{o(e,`_labelAlign`,e=>typeof e==`string`&&T.includes(e),new Set([`KoliBriLabelAlign {${T.join(`, `)}`]),t)},D=[`button`,`default`,`switch`],O=e=>typeof e==`string`&&D.includes(e),k=(e,t)=>{o(e,`_variant`,O,new Set(D),t)},A=class extends x{constructor(e,t,n){super(e,t,n),this.setFormAssociatedCheckboxValue=e=>{this.component._checked?this.setFormAssociatedValue(e):this.setFormAssociatedValue(null)},this.component=e}validateChecked(e){C(this.component,e),this.setFormAssociatedCheckboxValue(this.component.state._value)}validateIcons(t){o(this.component,`_icons`,t=>{let n=t;return typeof n==`object`&&!!n&&(e(n.checked,1)||e(n.indeterminate,1)||e(n.unchecked,1))},new Set([`InputCheckboxIcons`]),t,{hooks:{beforePatch:(e,t,n)=>{t.set(`_icons`,Object.assign(Object.assign({},n.state._icons),e))}}})}validateIndeterminate(e){w(this.component,e)}validateLabelAlign(e){E(this.component,e)}validateValue(e){t(this.component,`_value`,e),this.setFormAssociatedCheckboxValue(this.component.state._value)}validateVariant(e){k(this.component,e)}componentWillLoad(){super.componentWillLoad(),this.validateChecked(this.component._checked),this.validateIcons(this.component._icons),this.validateIndeterminate(this.component._indeterminate),this.validateValue(this.component._value),this.validateVariant(this.component._variant),this.validateLabelAlign(this.component._labelAlign)}},j=e=>{var{class:t,variant:n=`default`,icon:r,inputProps:i}=e,o=c(e,[`class`,`variant`,`icon`,`inputProps`]);let{class:s}=i,l=c(i,[`class`]),f={[`kol-checkbox--variant-${n}`]:!0,"kol-checkbox--checked":i?.checked,"kol-checkbox--indeterminate":i?.indeterminate,"kol-checkbox--disabled":!!i?.disabled,"kol-checkbox--required":!!i?.required,"kol-checkbox--touched":!!i?.touched,[`kol-checkbox--${_(i?.msg)}`]:!!g(i?.msg,i?.touched)};return a(`label`,Object.assign({class:u(`kol-checkbox`,f,t)},o),a(d,{label:``,icons:r,class:u(`kol-checkbox__icon`)}),a(b,Object.assign({class:u(`kol-checkbox__input`,s)},l,{type:`checkbox`})))};function M(e,t={}){let{ariaDescribedBy:n,hasError:r}=v(e),i={id:e._id,hideLabel:e._hideLabel,label:e._label,value:e._value,accessKey:e._accessKey,disabled:e._disabled,name:e._name,ariaDescribedBy:n};return`_required`in e&&(i.required=e._required),`_checked`in e&&(i.checked=e._checked),`_indeterminate`in e&&(i.indeterminate=e._indeterminate),`_touched`in e&&(i.touched=e._touched),`_msg`in e&&(i.msg=e._msg),`_shortKey`in e&&(i[`aria-keyshortcuts`]=e._shortKey),Object.assign(Object.assign(Object.assign({},i),t),{"aria-invalid":r?`true`:void 0})}var N=e=>{var{state:t,inputProps:n}=e,r=c(e,[`state`,`inputProps`]);let i=t?._variant||`default`;return a(j,Object.assign({variant:i,inputProps:M(t,n)},r))},P=`@charset "UTF-8";
+/*
+* This file defines the layer order for all CSS layers used in KoliBri.
+* The order is important as it determines the cascade priority.
+*
+* Layer order (lowest to highest priority):
+* 1. kol-a11y - Accessibility defaults and requirements
+* 2. kol-global - Global component styles and resets
+* 3. kol-component - Component-specific styles
+* 4. kol-theme-global - Theme-specific global styles
+* 5. kol-theme-component - Theme-specific component styles
+* 6. kol-forced-colors - Defaults for forced colors and high contrast modes
+* 7. kol-theme-forced-colors - Theme-specific styles for forced colors and high contrast modes
+*/
+@layer kol-a11y, kol-global, kol-component, kol-theme-global, kol-theme-component, kol-forced-colors, kol-theme-forced-colors;
+/* forward the rem function */
+/*
+ * Guards an interaction rule (\`:hover\`, \`:active\`, \`:focus…\`) against the disabled state. Every block
+ * marks that state with its BEM \`--disabled\` modifier; \`aria-disabled\` is semantics only and the
+ * native \`disabled\` attribute is never rendered.
+ */
+/* Wrapper variant: also asks the blocks inside the wrapper, e.g. the button a nav entry wraps. */
+/*
+ * This file contains all rules for accessibility.
+ */
+@layer kol-a11y {
+  :host {
+    /*
+     * Minimum size of interactive elements.
+     *
+     * The \`max(…, 44px)\` floor guarantees the WCAG 2.5.5 (AAA) target size of 44px:
+     * \`to-rem(44)\` runs the value through a \`calc()\` rem round-trip which can lose
+     * sub-pixel precision and resolve to e.g. 43.99px depending on the browser's
+     * rounding, dropping just below the required minimum.
+     */
+    --a11y-min-size: max(calc(44 * 1rem / var(--kolibri-root-font-size, 16)), 44px);
+    /*
+     * No element should be used without verifying the contrast ratio of its background and font colors.
+     * By initially setting the background color to white and the font color to black,
+     * the contrast ratio is ensured and explicit adjustment is forced.
+     */
+    --kol-a11y-font-color: black;
+    --kol-a11y-background-color: white;
+    color: var(--kol-a11y-font-color);
+    background-color: var(--kol-a11y-background-color);
+    /*
+     * Verdana is an accessible font that can be used without requiring additional loading time.
+     */
+    --kol-a11y-font-family: Verdana;
+    font-family: var(--kol-a11y-font-family);
+    /*
+     * Letter spacing is required for all texts.
+     */
+    letter-spacing: inherit;
+    /*
+     * Word spacing is required for all texts.
+     */
+    word-spacing: inherit;
+    /*
+     * Text should be aligned left by default to provide a predictable starting point.
+     */
+    text-align: left;
+  }
+  * {
+    /*
+     * This rule enables the word dividing for all texts. That is important for high zoom levels.
+     */
+    hyphens: auto;
+    /*
+     * This rule enables the word dividing for all texts. That is important for high zoom levels.
+     */
+    word-break: break-word;
+  }
+  /*
+   * All interactive elements should have a minimum size of to-rem(44).
+   */
+  /* input:not([type='checkbox'], [type='radio'], [type='range']), */
+  /* option, */
+  /* select, */
+  /* textarea, */
+  button,
+  .kol-input .input {
+    min-width: var(--a11y-min-size);
+    min-height: var(--a11y-min-size);
+  }
+  /*
+   * Some interactive elements should not inherit the font-family and font-size.
+   */
+  a,
+  button,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  input,
+  option,
+  select,
+  textarea {
+    /*
+     * All elements should inherit the text color from his parent element.
+     */
+    color: inherit;
+    /*
+     * All elements should inherit the font family from his parent element.
+     */
+    font-family: inherit;
+    /*
+     * All elements should inherit the font size from his parent element.
+     */
+    font-size: inherit;
+    /*
+     * Letter spacing is required for all texts.
+     */
+    letter-spacing: inherit;
+    /*
+     * Word spacing is required for all texts.
+     */
+    word-spacing: inherit;
+  }
+  /**
+  * Sometimes we need the semantic element for accessibility reasons,
+  * but we don't want to show it.
+  *
+  * - https://www.a11yproject.com/posts/how-to-hide-content/
+  */
+  .visually-hidden {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+}
+/*
+ * This file contains all rules for forced-colors and highcontrast modes
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/system-color to see all color keywords the browsers are providing
+ */
+@layer kol-forced-colors {
+  @media (forced-colors: active) {
+    .kol-button__text {
+      color: ButtonText;
+      background-color: ButtonFace;
+      border: 2px solid ButtonBorder;
+    }
+    .kol-button--disabled .kol-button__text {
+      color: GrayText;
+      border-color: GrayText;
+    }
+    /*
+     * Forced colors drop author colors, so the only way a disabled control still reads as
+     * disabled is the \`GrayText\` system color.
+     */
+    .kol-link--disabled .kol-link__interactive-element,
+    .kol-accordion--disabled .kol-accordion__heading,
+    .kol-details--disabled .kol-details__heading {
+      color: GrayText;
+    }
+    .kol-link--disabled .kol-link__interactive-element .kol-icon,
+    .kol-link--disabled .kol-link__interactive-element .kol-span__label,
+    .kol-accordion--disabled .kol-accordion__heading .kol-icon,
+    .kol-accordion--disabled .kol-accordion__heading .kol-span__label,
+    .kol-details--disabled .kol-details__heading .kol-icon,
+    .kol-details--disabled .kol-details__heading .kol-span__label {
+      color: GrayText;
+    }
+    .kol-input--disabled,
+    .kol-select--disabled,
+    .kol-textarea--disabled {
+      color: GrayText;
+      border-color: GrayText;
+    }
+    .kol-card,
+    .kol-dialog,
+    .kol-modal,
+    .kol-drawer {
+      color: CanvasText;
+      background-color: Canvas;
+      border: 1px solid ButtonBorder;
+    }
+    .kol-pagination__button--selected .kol-button {
+      opacity: 1;
+    }
+    .kol-pagination__button--selected .kol-button__text {
+      color: SelectedItemText;
+      background-color: SelectedItem;
+    }
+    /* focus styles */
+    .kol-button__interactive-element:focus-visible,
+    .kol-link__interactive-element:focus-visible {
+      outline: 2px solid Highlight;
+      outline-offset: 2px;
+    }
+  }
+}
+@layer kol-global {
+  /*
+   * Dieses CSS stellt sicher, dass der Standard-Style
+   * von A und Button resettet werden.
+   */
+  :is(a, button) {
+    background-color: transparent;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    /* 100% needed for custom width from outside */
+  }
+  /*
+   * Ensure elements with hidden attribute to be actually not visible
+   * @see https://meowni.ca/hidden.is.a.lie.html
+   */
+  [hidden] {
+    display: none !important;
+  }
+  .badge-text-hint {
+    color: black;
+    background-color: white;
+  }
+}
+@layer kol-global {
+  :host {
+    /*
+     * The max-width is needed to prevent the table from overflowing the
+     * parent node, if the table is wider than the parent node.
+     */
+    max-width: 100%;
+    font-size: calc(16 * 1rem / var(--kolibri-root-font-size, 16));
+  }
+  * {
+    /*
+     * We prefer to box-sizing: border-box for all elements.
+     */
+    box-sizing: border-box;
+  }
+  .kol-span {
+    /* KolSpan is a layout component with icons in all directions and a label text in the middle. */
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    /* The sub span in KolSpan is the horizontal span with icon left and right and the label text in the middle. */
+  }
+  .kol-span__container {
+    display: flex;
+    align-items: center;
+  }
+  a,
+  button {
+    cursor: pointer;
+  }
+  .kol-span .kol-span__label--hide-label .kol-span__label {
+    display: none;
+  }
+  /*
+   * A disabled element stays focusable (\`aria-disabled\`, never the native \`disabled\`), so it keeps
+   * its focus indicator; only the cursor tells that it cannot be activated. The disabled state is
+   * addressed through the BEM \`--disabled\` modifier of each block.
+   */
+  .disabled label,
+  .kol-accordion--disabled .kol-accordion__heading,
+  .kol-button--disabled .kol-button__interactive-element,
+  .kol-custom-suggestions-option--disabled,
+  .kol-details--disabled .kol-details__heading,
+  .kol-input--disabled,
+  .kol-link--disabled .kol-link__interactive-element,
+  .kol-select--disabled,
+  .kol-textarea--disabled {
+    cursor: not-allowed;
+  }
+  .hastooltip {
+    z-index: 900 !important;
+  }
+}
+@layer kol-component {
+  :host {
+    display: block;
+  }
+}
+@font-face {
+  font-family: "kolicons";
+  src: url("kolicons.eot?t=1790532358077"); /* IE9*/
+  src: url("kolicons.eot?t=1790532358077#iefix") format("embedded-opentype"), url("kolicons.woff2?t=1790532358077") format("woff2"), url("kolicons.woff?t=1790532358077") format("woff"), url("kolicons.ttf?t=1790532358077") format("truetype"), url("kolicons.svg?t=1790532358077#kolicons") format("svg"); /* iOS 4.1- */
+}
+@layer kol-component {
+  [class^=kolicon-], [class*=" kolicon-"] {
+    font-family: "kolicons";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .kolicon-alert-error::before {
+    content: "\\ea01";
+  }
+  .kolicon-alert-info::before {
+    content: "\\ea02";
+  }
+  .kolicon-alert-success::before {
+    content: "\\ea03";
+  }
+  .kolicon-alert-warning::before {
+    content: "\\ea04";
+  }
+  .kolicon-check::before {
+    content: "\\ea05";
+  }
+  .kolicon-chevron-double-left::before {
+    content: "\\ea06";
+  }
+  .kolicon-chevron-double-right::before {
+    content: "\\ea07";
+  }
+  .kolicon-chevron-down::before {
+    content: "\\ea08";
+  }
+  .kolicon-chevron-left::before {
+    content: "\\ea09";
+  }
+  .kolicon-chevron-right::before {
+    content: "\\ea0a";
+  }
+  .kolicon-chevron-up::before {
+    content: "\\ea0b";
+  }
+  .kolicon-cogwheel::before {
+    content: "\\ea0c";
+  }
+  .kolicon-cross::before {
+    content: "\\ea0d";
+  }
+  .kolicon-eye-closed::before {
+    content: "\\ea0e";
+  }
+  .kolicon-eye::before {
+    content: "\\ea0f";
+  }
+  .kolicon-house::before {
+    content: "\\ea10";
+  }
+  .kolicon-kolibri::before {
+    content: "\\ea11";
+  }
+  .kolicon-link-external::before {
+    content: "\\ea12";
+  }
+  .kolicon-link::before {
+    content: "\\ea13";
+  }
+  .kolicon-minus::before {
+    content: "\\ea14";
+  }
+  .kolicon-pin-pinned::before {
+    content: "\\ea15";
+  }
+  .kolicon-pin-unpinned::before {
+    content: "\\ea16";
+  }
+  .kolicon-plus::before {
+    content: "\\ea17";
+  }
+  .kolicon-settings::before {
+    content: "\\ea18";
+  }
+  .kolicon-sort-asc::before {
+    content: "\\ea19";
+  }
+  .kolicon-sort-desc::before {
+    content: "\\ea1a";
+  }
+  .kolicon-sort-neutral::before {
+    content: "\\ea1b";
+  }
+  .kolicon-up::before {
+    content: "\\ea1c";
+  }
+  .kolicon-version::before {
+    content: "\\ea1d";
+  }
+}
+@layer kol-component {
+  .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  .kol-tooltip {
+    display: contents;
+  }
+  .kol-tooltip__floating {
+    opacity: 0;
+    display: none;
+    position: fixed;
+    /* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
+    top: 0;
+    left: 0;
+    /* Can be used to specify the tooltip-width from the outside. Unset by default.  */
+    width: var(--kol-tooltip-width, max-content);
+    min-width: calc(8 * 1rem / var(--kolibri-root-font-size, 16));
+    max-width: 90vw;
+    max-height: 90vh;
+    animation-direction: normal;
+    /* Can be used to specify the animation duration from the outside. 250ms by default. */
+    animation-duration: var(--kolibri-tooltip-animation-duration, 250ms);
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+  .kol-tooltip__floating.hide {
+    animation-name: hideTooltip;
+  }
+  .kol-tooltip__floating.show {
+    animation-name: showTooltip;
+  }
+  .kol-tooltip__arrow {
+    transform: rotate(45deg);
+    color: black;
+    background-color: white;
+    position: absolute;
+    z-index: 999;
+    width: calc(10 * 1rem / var(--kolibri-root-font-size, 16));
+    height: calc(10 * 1rem / var(--kolibri-root-font-size, 16));
+  }
+  .kol-tooltip__content {
+    color: black;
+    background-color: white;
+    position: relative;
+    z-index: 1000;
+  }
+  @keyframes hideTooltip {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
+  @keyframes showTooltip {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+/*
+ * Button styles for a skeleton block whose interactive element sits inside the BEM root:
+ * \`kol-button\` renders \`<div class="kol-button"><button class="kol-button__interactive-element">\`,
+ * \`kol-link\` renders \`<div class="kol-link"><a class="kol-link__interactive-element">\`.
+ *
+ * Overlaps with \`kol-button-wc-box-styles\` below: both target the block class itself and disagree
+ * on \`display\` and \`text-align\`. A stylesheet that includes both therefore depends on order or
+ * specificity — today that only happens where the caller nests one of them (e.g. \`_alert.mixin\`
+ * nests this one under \`.kol-alert\`, which wins). Include only one per block unless the nesting
+ * makes the winner explicit.
+ */
+/*
+ * Minimal box replication for trees that do not include \`kol-button-styles\` but render
+ * \`kol-button-wc\` (transitional light-DOM output). Before the skeleton migration the button
+ * element itself carried the \`kol-button\` class, so the \`kol-global\` reset
+ * (\`background\`, \`width\`, \`margin\`, \`padding\`, \`border\`) and the a11y layer \`min-height\`/
+ * \`min-width\` applied to it, on top of the UA \`inline-block\`. The wrapper div now carries the
+ * class but receives none of that automatically, so this mixin replicates the exact outer box,
+ * while the inner \`kol-button__interactive-element\` degrades to a plain block container to avoid
+ * the inline-level baseline gap the UA \`inline-block\` would add below it.
+ *
+ * Mutually exclusive with \`kol-button-styles\` above — see the collision note there.
+ */
+@layer kol-component {
+  .kol-alert .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  .kol-alert :host {
+    display: inline-block;
+  }
+  .kol-alert .kol-button {
+    display: flex;
+    height: 100%;
+    min-height: var(--a11y-min-size);
+    text-decoration-line: none;
+    /* The interactive element is the flex container positioning the text, so it carries the
+       box the root element used to be. The UA default underline sits on that element too,
+       so suppressing \`text-decoration\` on the wrapper alone is not enough. */
+  }
+  .kol-alert .kol-button__interactive-element {
+    display: flex;
+    flex: 1;
+    text-align: left;
+    text-decoration-line: none;
+    /* A flex container only exposes a baseline if it has an in-flow text box to derive one
+       from; without it the surrounding inline formatting context falls back to the bottom
+       margin edge and everything after the element shifts by 1px. The zero-width space
+       supplies that box. Measured, not assumed: removing it turns \`popover-button/inline\`
+       and \`input-file/basic\` red against the develop baseline (the box grows 179→180px). */
+  }
+  .kol-alert .kol-button__interactive-element::before {
+    content: "​";
+  }
+  .kol-alert .kol-button__text {
+    flex: 1 0 100%;
+  }
+  .kol-alert .kol-button {
+    /* The tooltip wrapper holds only the absolutely positioned floating tooltip. In the legacy
+       DOM it sat in a block flow and collapsed to zero height; as a flex/grid item it would
+       stretch to the container height instead, adding phantom rows to the layout. */
+  }
+  .kol-alert .kol-button__tooltip {
+    height: 0;
+  }
+  .kol-alert .kol-button--external-link > .kolicon-link-external::before {
+    content: none;
+  }
+  .kol-alert .kol-button--external-link .kol-button__interactive-element > .kolicon-link-external::before {
+    content: none;
+  }
+  .kol-alert {
+    display: grid;
+    grid-template-areas: "icon heading close" "icon content close";
+    grid-template-columns: min-content 1fr min-content;
+    grid-template-rows: min-content min-content;
+  }
+  .kol-alert__icon {
+    grid-area: icon;
+  }
+  .kol-alert__heading {
+    grid-area: heading;
+  }
+  .kol-alert__closer {
+    /* Visible with forced colors */
+    outline: transparent solid calc(1 * 1rem / var(--kolibri-root-font-size, 16));
+    grid-area: close;
+  }
+  .kol-alert__content {
+    grid-area: content;
+  }
+  .kol-form-field .kol-popover-button {
+    /*
+     * The predecessor rendered this box as an unstyled (inline) custom element host; keep the
+     * inline display so the flow layout around the embedded button stays unchanged.
+     */
+    display: inline;
+  }
+  .kol-form-field .kol-popover-button__popover {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  .kol-form-field .kol-popover-button--open .kol-button__tooltip {
+    display: none;
+  }
+  .kol-form-field .kol-popover-button--inline {
+    display: inline-block;
+    /* The size exemption has to cover both the BEM root div and the inner interactive element:
+       the a11y layer pins every \`button\` to 44×44, so the inner \`kol-button__interactive-element\`
+       needs the override as well — the root alone used to be the button before the skeleton migration. */
+  }
+  .kol-form-field .kol-popover-button--inline .kol-button,
+  .kol-form-field .kol-popover-button--inline .kol-button .kol-button__interactive-element {
+    min-width: 0;
+    min-height: 1em;
+  }
+  .kol-form-field .kol-popover {
+    opacity: 0;
+    transition: 0.2s ease-out opacity;
+  }
+  .kol-form-field .kol-popover-button--open .kol-popover-button__popover {
+    opacity: 1;
+  }
+  .kol-form-field {
+    display: grid;
+  }
+  .kol-form-field:not(.kol-form-field--disabled) .kol-form-field__label {
+    cursor: pointer;
+  }
+  .kol-form-field__label {
+    display: flex;
+  }
+  .kol-form-field__label-text {
+    flex-flow: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .kol-form-field--required .kol-form-field__label-text:has(.kol-span__slot[hidden]) .kol-span__label::after,
+  .kol-form-field--required .kol-form-field .kol-tooltip__content .kol-span__label::after {
+    content: "*"/"";
+  }
+  .kol-field-control {
+    display: grid;
+    min-height: var(--a11y-min-size);
+    align-items: center;
+    justify-content: left;
+    grid-template-areas: "input label";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+  }
+  .kol-field-control:has(.kol-field-control__hint) {
+    grid-template-areas: "input label" "hint hint";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+  }
+  .kol-field-control--label-align-left:not(.kol-field-control--hide-label) {
+    grid-template-areas: "label input";
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto;
+  }
+  .kol-field-control--label-align-left:not(.kol-field-control--hide-label):has(.kol-field-control__hint) {
+    grid-template-areas: "label input" "hint hint";
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+  }
+  .kol-field-control__input {
+    display: flex;
+    min-height: var(--a11y-min-size);
+    align-items: center;
+    grid-area: input;
+  }
+  .kol-field-control__label {
+    display: flex;
+    min-height: var(--a11y-min-size);
+    flex-grow: 1;
+    align-items: center;
+    cursor: pointer;
+    grid-area: label;
+  }
+  .kol-field-control__label--visually-hidden {
+    display: none;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    visibility: hidden;
+  }
+  .kol-field-control__label-text {
+    flex-flow: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .kol-field-control__hint {
+    grid-area: hint;
+  }
+  .kol-field-control--disabled .kol-field-control__label {
+    cursor: not-allowed;
+  }
+  .kol-field-control--required .kol-field-control__label-text:has(.kol-span__slot[hidden])::after,
+  .kol-field-control--required .kol-field-control .kol-tooltip__content .kol-span__label::after {
+    content: "*"/"";
+  }
+  .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  .kol-form-field {
+    display: grid;
+  }
+  .kol-form-field__label-text {
+    display: ruby;
+  }
+  .kol-checkbox {
+    display: flex;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+  }
+  .kol-checkbox--disabled {
+    cursor: not-allowed;
+  }
+  .kol-checkbox .kol-input {
+    background-color: white;
+    border-style: solid;
+    margin: 0;
+    border-width: 2px;
+    appearance: none;
+    cursor: inherit;
+  }
+  .kol-checkbox .kol-input:before {
+    content: "";
+  }
+  /**
+   * Variant: Checkbox
+   */
+  .kol-checkbox--variant-default {
+    position: relative;
+    min-width: var(--a11y-min-size);
+    min-height: var(--a11y-min-size);
+    justify-content: center;
+  }
+  .kol-checkbox--variant-default .kol-icon {
+    display: none;
+    position: absolute;
+    inset: auto;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .kol-checkbox--variant-default .kol-input {
+    width: calc(22 * 1rem / var(--kolibri-root-font-size, 16));
+    height: calc(22 * 1rem / var(--kolibri-root-font-size, 16));
+  }
+  .kol-checkbox--variant-default.kol-checkbox--checked .kol-icon, .kol-checkbox--variant-default.kol-checkbox--indeterminate .kol-icon {
+    display: block;
+  }
+  /**
+   * Variant: Switch
+   */
+  .kol-checkbox--variant-switch {
+    position: relative;
+  }
+  .kol-checkbox--variant-switch .kol-input {
+    display: inline-block;
+    position: relative;
+    width: 3.2em;
+    min-width: 3.2em;
+    height: 1.7em;
+  }
+  .kol-checkbox--variant-switch .kol-input::before {
+    background-color: black;
+    position: absolute;
+    top: calc(0.25em - 2 * 1rem / var(--kolibri-root-font-size, 16));
+    left: calc(0.25em - 2 * 1rem / var(--kolibri-root-font-size, 16));
+    width: 1.2em;
+    height: 1.2em;
+    transition: 0.5s;
+  }
+  .kol-checkbox--variant-switch .kol-input:checked::before {
+    transform: translateX(1.5em);
+  }
+  .kol-checkbox--variant-switch .kol-input:indeterminate::before {
+    transform: translateX(0.75em);
+  }
+  .kol-checkbox--variant-switch .kol-icon {
+    transform: translate(0, -50%);
+    color: black;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: calc(4 * 1rem / var(--kolibri-root-font-size, 16));
+    z-index: 1;
+    width: 1.2em;
+    height: 1.2em;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+  }
+  .kol-checkbox--variant-switch.kol-checkbox--checked .kol-icon {
+    transform: translate(1.5em, -50%);
+  }
+  .kol-checkbox--variant-switch.kol-checkbox--indeterminate .kol-icon {
+    transform: translate(0.75em, -50%);
+  }
+  /**
+   * Variant: Button
+   */
+  .kol-checkbox--variant-button {
+    min-width: var(--a11y-min-size);
+  }
+  .kol-checkbox--variant-button .kol-icon {
+    display: flex;
+    min-width: var(--a11y-min-size);
+    min-height: var(--a11y-min-size);
+    align-items: center;
+    justify-content: center;
+  }
+}`,F=class{getModelValue(){return this._checked?this.state._value:null}async getValue(){return this.getModelValue()}async focus(e){}async click(){}getFormFieldProps(){return{state:this.state,class:u(`kol-input-checkbox`,{"kol-input-checkbox--checked":this.state._checked,"kol-input-checkbox--indeterminate":this.state._indeterminate,[`kol-input-checkbox--variant-${this.state._variant||`default`}`]:!0,[`kol-input-checkbox--label-align-${this.state._labelAlign||`right`}`]:!0}),alert:this.showAsAlert(),renderNoTooltip:!0}}getFieldControlProps(){return{class:u(`kol-input-checkbox__field-control`,{"kol-input-checkbox__field-control--checked":this.state._checked,"kol-input-checkbox__field-control--indeterminate":this.state._indeterminate,[`kol-input-checkbox__field-control--variant-${this.state._variant||`default`}`]:!0}),state:this.state,fieldControlLabelProps:{onMouseDown:e=>{this.inputHasFocus&&e.preventDefault()}},infoPopover:this._infoPopover,tooltipAlign:this._tooltipAlign}}getInputProps(){return{state:this.state,icon:this.getIcon(),onMouseDown:e=>{this.inputHasFocus&&!(e.target instanceof HTMLInputElement)&&e.preventDefault()},inputProps:Object.assign(Object.assign({class:u({"visually-hidden":this.state._variant===`button`}),ref:this.ctaRef},this.controller.onFacade),{onInput:this.onInput,onChange:this.onChange,onKeyDown:this.onKeyDown,onFocus:e=>{this.controller.onFacade.onFocus(e),this.inputHasFocus=!0},onBlur:e=>{this.controller.onFacade.onBlur(e),this.inputHasFocus=!1},onClick:void 0})}}getIcon(){return this.state._indeterminate?this.state._icons.indeterminate:this.state._checked?this.state._icons.checked:this.state._icons.unchecked}render(){return a(y,Object.assign({key:`7edb8d466308f778f9d390258c1cdaf6d5074869`},this.getFormFieldProps(),{renderNoLabel:!0}),a(S,Object.assign({key:`2c627eed643c231999a9c8c03ea8cc9db0da31aa`},this.getFieldControlProps(),{renderNoHint:!0}),a(N,Object.assign({key:`7413b88568da9cb90211976ea1c79b663d25e7c7`},this.getInputProps()))))}constructor(e){n(this,e),this.ctaRef=p(),this._checked=!1,this._hideMsg=!1,this._disabled=!1,this._hideLabel=!1,this._hint=``,this._labelAlign=`right`,this._required=!1,this._tooltipAlign=`top`,this._touched=!1,this._value=!0,this._variant=`default`,this.state={_checked:!1,_hideMsg:!1,_icons:{checked:`kolicon-check`,indeterminate:`kolicon-minus`,unchecked:`kolicon-cross`},_id:s(`input-checkbox`),_indeterminate:!1,_label:``,_value:!0,_variant:`default`,_labelAlign:`right`},this.inputHasFocus=!1,this.onInput=e=>{this._checked=!this._checked,this._indeterminate=!1;let t=this.getModelValue();this.controller.onFacade.onInput(e,!1,t),this.controller.setFormAssociatedCheckboxValue(t)},this.onChange=e=>{this.controller.onFacade.onChange(e,this.getModelValue())},this.onKeyDown=e=>{this.controller.onFacade.onKeyDown(e),(e.code===`Enter`||e.code===`NumpadEnter`)&&h({form:this.host})},this.controller=new A(this,`checkbox`,this.host)}showAsAlert(){return!!this.state._touched&&!this.inputHasFocus}validateAccessKey(e){this.controller.validateAccessKey(e)}validateAriaDetails(e){this.controller.validateAriaDetails(e)}validateChecked(e){this.controller.validateChecked(e)}validateDisabled(e){this.controller.validateDisabled(e)}validateHideMsg(e){this.controller.validateHideMsg(e)}validateHideLabel(e){this.controller.validateHideLabel(e)}validateHint(e){this.controller.validateHint(e)}validateIcons(e){this.controller.validateIcons(e)}validateIndeterminate(e){this.controller.validateIndeterminate(e)}validateLabel(e){this.controller.validateLabel(e)}validateLabelAlign(e){this.controller.validateLabelAlign(e)}validateMsg(e){this.controller.validateMsg(e)}validateName(e){this.controller.validateName(e)}validateOn(e){this.controller.validateOn(e)}validateRequired(e){this.controller.validateRequired(e)}validateShortKey(e){this.controller.validateShortKey(e)}validateSyncValueBySelector(e){this.controller.validateSyncValueBySelector(e)}validateTouched(e){this.controller.validateTouched(e)}validateValue(e){this.controller.validateValue(e)}validateVariant(e){this.controller.validateVariant(e)}componentWillLoad(){this._touched=this._touched===!0,this.validateAriaDetails(this._ariaDetails),this.controller.componentWillLoad()}get host(){return r(this)}static get watchers(){return{_accessKey:[`validateAccessKey`],_ariaDetails:[`validateAriaDetails`],_checked:[`validateChecked`],_disabled:[`validateDisabled`],_hideMsg:[`validateHideMsg`],_hideLabel:[`validateHideLabel`],_hint:[`validateHint`],_icons:[`validateIcons`],_indeterminate:[`validateIndeterminate`],_label:[`validateLabel`],_labelAlign:[`validateLabelAlign`],_msg:[`validateMsg`],_name:[`validateName`],_on:[`validateOn`],_required:[`validateRequired`],_shortKey:[`validateShortKey`],_syncValueBySelector:[`validateSyncValueBySelector`],_touched:[`validateTouched`],_value:[`validateValue`],_variant:[`validateVariant`]}}};l([f(`ctaRef`)],F.prototype,`focus`,null),l([m(`ctaRef`)],F.prototype,`click`,null),F.style={default:P};export{F as kol_input_checkbox};

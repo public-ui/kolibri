@@ -1,0 +1,1 @@
+import{s as e}from"./index-CzVsFXc1-kv4-UKan.js";import{i as t}from"./index-CEwixA_x.js";var n=t.forBlock(`kol-click-button`),r=n(),i=n(`label`),a=({label:t,handleClick:n,refButton:a})=>e(`button`,{"aria-disabled":void 0,class:r,ref:a,onClick:n,onKeyDown:e=>e.preventDefault()},e(`span`,{class:i},t));export{a as t};
