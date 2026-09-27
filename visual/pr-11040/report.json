@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11040,
-	"head": "69714af4f2e108fa3aeedf8cff2b4823d28d74b1",
+	"head": "c99d9495f46a4ce38177c92e828d5b7afab7269b",
 	"repository": "public-ui/kolibri",
-	"runId": 36336852334,
-	"generatedAt": "2026-09-27T18:06:17.203Z",
+	"runId": 36352842906,
+	"generatedAt": "2026-09-27T22:21:31.345Z",
 	"digest": "sha256:97eb7df79010253c71c01901bf03522f511edf6b0171261c8243439f87e1592b",
 	"baseline": {
-		"sha": "d8acf707c1fe90661bc413efcaecb2d4cdeecce8",
+		"sha": "9f0223f30707c7d1fa2152b0b10311f7acf7f220",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2919,
-		"changed": 0,
+		"unchanged": 2917,
+		"changed": 2,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -30,21 +30,21 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "d8acf707c1fe90661bc413efcaecb2d4cdeecce8",
+					"sha": "9f0223f30707c7d1fa2152b0b10311f7acf7f220",
 					"ref": "develop",
-					"runId": 36336679595,
+					"runId": 36352710792,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-27T17:28:16.796Z",
-					"digest": "sha256:6e76b7ba4b837c0ca0abe191bf74448f69e9b22d6c0203b1aa26f3bedd23700b",
+					"createdAt": "2026-09-27T21:50:21.535Z",
+					"digest": "sha256:39af2318edcd0aed775e01eb21c1a7c5d0a52266f6ccad5bd8de8623e2e3f9f5",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 417,
-				"changed": 0,
+				"unchanged": 416,
+				"changed": 1,
 				"added": 0,
 				"removed": 0,
 				"error": 0
@@ -1949,9 +1949,14 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",
-					"route": "scenarios-focus-elements-component-badge",
-					"status": "unchanged",
-					"hash": "sha256:9c886444f28c388ce57827cb0b972b0e0252fbcbe2bbb4dde31052e1fe4115e7"
+					"route": "scenarios/focus-elements?component=badge",
+					"status": "changed",
+					"hash": "sha256:9c886444f28c388ce57827cb0b972b0e0252fbcbe2bbb4dde31052e1fe4115e7",
+					"diffPixels": 1533,
+					"diffRatio": 0.067237,
+					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-badge.expected.png",
+					"actual": "test-tag-name-transformer/scenarios-focus-elements-component-badge.actual.png",
+					"diff": "test-tag-name-transformer/scenarios-focus-elements-component-badge.diff.png"
 				},
 				{
 					"name": "scenarios-focus-elements-component-button",
@@ -2563,12 +2568,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "d8acf707c1fe90661bc413efcaecb2d4cdeecce8",
+					"sha": "9f0223f30707c7d1fa2152b0b10311f7acf7f220",
 					"ref": "develop",
-					"runId": 36336679595,
+					"runId": 36352710792,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-27T17:29:58.981Z",
+					"createdAt": "2026-09-27T21:49:46.891Z",
 					"digest": "sha256:808f8e7f37aa88a43f4bf15a4a6531c79c44a413c5210abdb16fde713e809048",
 					"fallback": null,
 					"distance": 0,
@@ -5096,21 +5101,21 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "d8acf707c1fe90661bc413efcaecb2d4cdeecce8",
+					"sha": "9f0223f30707c7d1fa2152b0b10311f7acf7f220",
 					"ref": "develop",
-					"runId": 36336679595,
+					"runId": 36352710792,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-27T17:28:16.796Z",
-					"digest": "sha256:6e76b7ba4b837c0ca0abe191bf74448f69e9b22d6c0203b1aa26f3bedd23700b",
+					"createdAt": "2026-09-27T21:50:21.535Z",
+					"digest": "sha256:39af2318edcd0aed775e01eb21c1a7c5d0a52266f6ccad5bd8de8623e2e3f9f5",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 417,
-				"changed": 0,
+				"unchanged": 416,
+				"changed": 1,
 				"added": 0,
 				"removed": 0,
 				"error": 0
@@ -7015,9 +7020,14 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-badge",
-					"route": "scenarios-focus-elements-component-badge",
-					"status": "unchanged",
-					"hash": "sha256:9c886444f28c388ce57827cb0b972b0e0252fbcbe2bbb4dde31052e1fe4115e7"
+					"route": "scenarios/focus-elements?component=badge",
+					"status": "changed",
+					"hash": "sha256:9c886444f28c388ce57827cb0b972b0e0252fbcbe2bbb4dde31052e1fe4115e7",
+					"diffPixels": 1533,
+					"diffRatio": 0.067237,
+					"expected": "theme-default/scenarios-focus-elements-component-badge.expected.png",
+					"actual": "theme-default/scenarios-focus-elements-component-badge.actual.png",
+					"diff": "theme-default/scenarios-focus-elements-component-badge.diff.png"
 				},
 				{
 					"name": "scenarios-focus-elements-component-button",
@@ -7629,12 +7639,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "d8acf707c1fe90661bc413efcaecb2d4cdeecce8",
+					"sha": "9f0223f30707c7d1fa2152b0b10311f7acf7f220",
 					"ref": "develop",
-					"runId": 36336679595,
+					"runId": 36352710792,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-27T17:29:17.880Z",
+					"createdAt": "2026-09-27T21:49:02.783Z",
 					"digest": "sha256:00bfec0ab6dc16554e3ac7814aa76c7c7862a173e94468a00442b42677d1219b",
 					"fallback": null,
 					"distance": 0,
@@ -10162,12 +10172,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "d8acf707c1fe90661bc413efcaecb2d4cdeecce8",
+					"sha": "9f0223f30707c7d1fa2152b0b10311f7acf7f220",
 					"ref": "develop",
-					"runId": 36336679595,
+					"runId": 36352710792,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-27T17:30:41.040Z",
+					"createdAt": "2026-09-27T21:48:10.727Z",
 					"digest": "sha256:d2eff8e0e030c23b024f5a90ef0b4b9448e814c0a94a2a66ae39397c7464d432",
 					"fallback": null,
 					"distance": 0,
@@ -12695,12 +12705,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "d8acf707c1fe90661bc413efcaecb2d4cdeecce8",
+					"sha": "9f0223f30707c7d1fa2152b0b10311f7acf7f220",
 					"ref": "develop",
-					"runId": 36336679595,
+					"runId": 36352710792,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-27T17:32:24.888Z",
+					"createdAt": "2026-09-27T21:48:50.611Z",
 					"digest": "sha256:da36d913f0670c647203dd92520b240edc60843b578744dfd99c85d8e5d43760",
 					"fallback": null,
 					"distance": 0,
@@ -15228,12 +15238,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "d8acf707c1fe90661bc413efcaecb2d4cdeecce8",
+					"sha": "9f0223f30707c7d1fa2152b0b10311f7acf7f220",
 					"ref": "develop",
-					"runId": 36336679595,
+					"runId": 36352710792,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-27T17:28:27.319Z",
+					"createdAt": "2026-09-27T21:48:02.569Z",
 					"digest": "sha256:29231f464f8e7cc6537b23242e4143ee79584d55dc8b9429e86f38a3f35257b5",
 					"fallback": null,
 					"distance": 0,
