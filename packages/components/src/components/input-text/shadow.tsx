@@ -5,7 +5,6 @@ import clsx from '../../utils/clsx';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import type { FormFieldLabelInfoPopoverProps } from '../../functional-components';
 import KolIconButtonFc from '../../functional-components/IconButton';
 import { translate } from '../../i18n';
 import type {
@@ -15,6 +14,7 @@ import type {
 	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
+	FormFieldLabelInfoPopoverProps,
 	HasCounterPropType,
 	HideLabelPropType,
 	HideMsgPropType,

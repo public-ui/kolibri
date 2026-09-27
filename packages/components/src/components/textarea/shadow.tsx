@@ -6,13 +6,13 @@ import clsx from '../../utils/clsx';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerStateWrapperFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolTextAreaStateWrapperFc, { type TextAreaStateWrapperProps } from '../../functional-component-wrappers/TextAreaStateWrapper/TextAreaStateWrapper';
-import type { FormFieldLabelInfoPopoverProps } from '../../functional-components';
 import type {
 	AdjustHeightPropType,
 	AriaDetailsPropType,
 	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
+	FormFieldLabelInfoPopoverProps,
 	HasCounterPropType,
 	HideLabelPropType,
 	HideMsgPropType,
