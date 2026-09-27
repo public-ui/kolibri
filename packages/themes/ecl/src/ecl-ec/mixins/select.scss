@@ -20,10 +20,10 @@
 		&__option {
 			margin: to-rem(1) 0;
 
-			&:active:not(:disabled),
-			&:checked:not(:disabled),
-			&:focus:not(:disabled),
-			&:hover:not(:disabled) {
+			&:active:not(#{&}--disabled),
+			&:checked:not(#{&}--disabled),
+			&:focus:not(#{&}--disabled),
+			&:hover:not(#{&}--disabled) {
 				color: var(--ecl-color-white);
 				background-color: var(--ecl-color-dark);
 			}

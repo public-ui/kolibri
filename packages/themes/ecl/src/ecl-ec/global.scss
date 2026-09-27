@@ -72,6 +72,9 @@
 		--ecl-color-accent-80: #bfb2ff;
 		--ecl-color-accent-60: #d1ccff;
 		--ecl-color-accent-40: #fafaff;
+		--ecl-color-disabled-background: var(--ecl-color-neutral-40);
+		--ecl-color-disabled-border: var(--ecl-color-neutral-100);
+		--ecl-color-disabled-text: var(--ecl-color-dark-80);
 
 		--ecl-font-family-default: arial, sans-serif;
 		--ecl-font-size: #{to-rem(16)};
@@ -152,12 +155,12 @@
 		padding: 0 0.3em;
 	}
 
-	.disabled label,
-	.disabled:focus-within label,
-	[aria-disabled='true'],
-	[aria-disabled='true']:focus,
-	[disabled],
-	[disabled]:focus {
-		opacity: 0.5;
+	/* Disabled elements stay focusable. They are marked by color, never by opacity, which would
+	   also dim their focus ring. */
+	.kol-button--disabled .kol-button__interactive-element,
+	.kol-input--disabled,
+	.kol-select--disabled,
+	.kol-textarea--disabled {
+		color: var(--ecl-color-disabled-text);
 	}
 }

@@ -4,16 +4,16 @@
  * is the interactive one (e.g. `kol-button` in button-link), matching the component DOM
  * before the kol-link skeleton migration.
  */
+@mixin link-carrier-hover {
+	color: var(--ecl-color-primary-140);
+}
+
 @mixin link-carrier {
 	color: var(--ecl-color-primary);
 
 	.kol-span__label {
 		text-decoration-thickness: from-font;
 		text-underline-offset: clamp(3px, 0.245em, 10px);
-	}
-
-	&:not([aria-disabled='true'], :disabled):hover {
-		color: var(--ecl-color-primary-140);
 	}
 }
 
@@ -29,12 +29,28 @@
 			&__interactive-element {
 				@include link-carrier;
 
+				.#{$block-classname}:not(.#{$block-classname}--disabled) &:hover {
+					@include link-carrier-hover;
+				}
+
+				.#{$block-classname}--disabled & {
+					color: var(--ecl-color-disabled-text);
+				}
+
 				&:focus {
 					@include link-focus;
 				}
 			}
 		} @else {
 			@include link-carrier;
+
+			&:not(.#{$block-classname}--disabled):hover {
+				@include link-carrier-hover;
+			}
+
+			&--disabled {
+				color: var(--ecl-color-disabled-text);
+			}
 
 			/* The skeleton DOM makes the inner interactive element focusable; the class carrier is a
 			   wrapper that never receives focus, so the focus ring has to be scoped to the inner

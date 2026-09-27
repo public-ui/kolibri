@@ -18,5 +18,17 @@
 			background-color: var(--color-blue);
 			outline: 0;
 		}
+
+		/* Same weight as the selected and focus states above, so the disabled colors win. A focused
+		   disabled option keeps the disabled background; an outline marks its focus instead. */
+		&#{&}--disabled {
+			color: var(--color-disabled-text);
+			background-color: var(--color-disabled-background);
+
+			&:focus {
+				outline: 2px solid var(--color-blue);
+				outline-offset: -2px;
+			}
+		}
 	}
 }

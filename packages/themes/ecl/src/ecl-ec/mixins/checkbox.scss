@@ -8,7 +8,7 @@
 		justify-content: center;
 
 		&:focus-within::before,
-		&:hover:not(:has(input:disabled))::before {
+		&:not(.#{$block-classname}--disabled):hover::before {
 			background-color: var(--ecl-color-primary-20);
 			border-radius: 100%;
 			position: absolute;
@@ -28,6 +28,10 @@
 			border-color: var(--kol-checkbox-color);
 			border-radius: 2px;
 			position: relative;
+
+			&.kol-input--disabled {
+				background-color: var(--ecl-color-disabled-background);
+			}
 
 			&:checked,
 			&:indeterminate {

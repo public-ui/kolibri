@@ -63,12 +63,12 @@
 				border-color: var(--color-blue);
 			}
 
-			&:not(:disabled):hover {
+			&:not(.kol-input--disabled):hover {
 				border-color: var(--color-blue);
 			}
 
 			&:checked {
-				&:not(:disabled):hover {
+				&:not(.kol-input--disabled):hover {
 					background-color: var(--color-blue-130);
 					border-color: var(--color-blue-130);
 				}
@@ -82,15 +82,25 @@
 					border-color: var(--color-red);
 				}
 
-				&:not(:disabled):hover {
+				&:not(.kol-input--disabled):hover {
 					border-color: var(--color-red);
 				}
 
 				&:checked {
-					&:not(:disabled):hover {
+					&:not(.kol-input--disabled):hover {
 						background-color: var(--color-red-120);
 						border-color: var(--color-red-120);
 					}
+				}
+			}
+
+			&.kol-input--disabled {
+				background-color: var(--color-disabled-background);
+				border-color: var(--color-disabled-border);
+
+				&:checked {
+					background-color: var(--color-disabled-text);
+					border-color: var(--color-disabled-text);
 				}
 			}
 		}
@@ -119,7 +129,7 @@
 		}
 
 		&:hover {
-			.kol-input:not(:disabled)::before {
+			.kol-input:not(.kol-input--disabled)::before {
 				background-color: var(--color-blue);
 			}
 		}
@@ -140,7 +150,7 @@
 			}
 
 			&:hover {
-				.kol-input:not(:disabled)::before {
+				.kol-input:not(.kol-input--disabled)::before {
 					background-color: var(--color-red);
 				}
 			}

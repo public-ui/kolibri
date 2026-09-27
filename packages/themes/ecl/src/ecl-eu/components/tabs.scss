@@ -15,8 +15,7 @@
 			margin-bottom: to-rem(-1);
 			border: none;
 
-			/* `:not(:disabled)` would always be true on the wrapper — ask the button inside it. */
-			&:hover:not(:has(:disabled)) {
+			&:not(.kol-button--disabled):hover {
 				.kol-span {
 					color: var(--color-blue-130);
 				}
