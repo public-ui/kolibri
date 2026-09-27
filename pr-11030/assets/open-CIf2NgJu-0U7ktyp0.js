@@ -1,0 +1,1 @@
+import{d as e,i as t}from"./variant-quote-CPA_pFWU-39M-P9n_.js";var n=t(`open`,!1,e);export{n as t};
