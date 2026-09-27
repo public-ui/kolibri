@@ -12,7 +12,7 @@
 		width: 100%;
 		height: 100%;
 
-		&:not(.kol-accordion--disabled):has(:focus-visible) {
+		&:has(:focus-visible) {
 			@include focus-outline;
 		}
 
@@ -45,8 +45,8 @@
 			border-top: 1px solid var(--color-mute-variant);
 
 			/* `:hover` matches disabled elements too, so an unguarded rule flashes the disabled
-			   summary light blue on tap. `aria-disabled` is the summary's disabled marker. */
-			&:not([aria-disabled='true']) {
+			   summary light blue on tap. The block modifier marks the disabled state. */
+			.kol-accordion:not(.kol-accordion--disabled) & {
 				cursor: pointer;
 
 				&:hover {
@@ -69,6 +69,14 @@
 
 			.kol-icon {
 				color: var(--color-primary);
+			}
+
+			.kol-accordion--disabled & {
+				color: var(--color-disabled-text);
+
+				.kol-icon {
+					color: var(--color-disabled-text);
+				}
 			}
 		}
 	}

@@ -65,18 +65,28 @@
 			@include kol-button-ghost();
 		}
 
+		/* Follows the variants, so it overrides them at equal specificity. The ghost variant keeps its
+		   transparent surface and only takes the disabled text color. */
+		&--disabled {
+			--text-color: var(--color-disabled-text);
+		}
+
+		&--disabled:not(.#{$block-classname}--ghost) {
+			--text-background-color: var(--color-disabled-background);
+			--text-border-color: var(--color-disabled-border);
+		}
+
 		&--primary,
 		&--secondary,
 		&--tertiary,
 		&--normal,
 		&--danger,
 		&--ghost {
-			/* State predicates live on the interactive element: on the wrapper `:not([disabled])`
-			   would always be true, re-enabling hover styling for disabled buttons. Plain
-			   descendants, because `&__interactive-element` inside a modifier block would expand to
-			   the dead `.kol-button--primary__interactive-element`. The mixin is also included for
-			   `kol-link`: anchors carry no native `disabled`, their disabled state is `aria-disabled`. */
-			.#{$block-classname}__interactive-element:not([disabled], [aria-disabled='true']):hover {
+			/* `:hover` is read off the interactive element, the disabled state off the wrapper's
+			   `--disabled` modifier. Plain descendants, because `&__interactive-element` inside a
+			   modifier block would expand to the dead `.kol-button--primary__interactive-element`.
+			   The mixin is also included for `kol-link`, whose wrapper carries `kol-link--disabled`. */
+			&:not(.#{$block-classname}--disabled) .#{$block-classname}__interactive-element:hover {
 				--text-background-color: var(--color-primary-variant);
 				--text-border-color: var(--color-primary-variant);
 				--text-color: var(--color-light);
@@ -87,7 +97,7 @@
 		}
 
 		&--danger {
-			.#{$block-classname}__interactive-element:not([disabled], [aria-disabled='true']):hover {
+			&:not(.#{$block-classname}--disabled) .#{$block-classname}__interactive-element:hover {
 				--text-background-color: var(--color-danger);
 				--text-border-color: var(--color-danger);
 				outline-color: var(--color-danger);
@@ -124,7 +134,7 @@
 				position: relative; // make sure focus outline is visible and not covered by adjacent element
 			}
 
-			@at-root #{$root}__interactive-element:is(:disabled, [aria-disabled='true']):hover & {
+			@at-root #{$root}--disabled #{$root}__interactive-element:hover & {
 				color: var(--text-color);
 				background-color: var(--text-background-color);
 				box-shadow: none;

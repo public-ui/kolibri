@@ -16,7 +16,7 @@
 
 		&--disabled & {
 			&__label {
-				opacity: 0.5;
+				color: var(--color-disabled-text);
 			}
 		}
 	}

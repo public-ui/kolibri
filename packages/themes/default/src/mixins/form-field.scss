@@ -77,7 +77,7 @@
 		&--disabled & {
 			&__label,
 			&__hint {
-				opacity: 0.5;
+				color: var(--color-disabled-text);
 			}
 		}
 

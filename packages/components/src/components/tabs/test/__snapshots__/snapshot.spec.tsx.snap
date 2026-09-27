@@ -41,7 +41,7 @@ exports[`kol-tabs should render with _label="Text" _selected=1 _tabs=[{"_icons":
         </div>
         <div class="kol-tabs__tab">
           <div class="kol-button kol-button--disabled kol-button--normal kol-button--standalone">
-            <button aria-controls="tabs-nonce-panel-2" aria-selected="false" class="kol-button__interactive-element" disabled="" id="tabs-nonce-tab-2" role="tab" tabindex="-1" type="button">
+            <button aria-controls="tabs-nonce-panel-2" aria-disabled="true" aria-selected="false" class="kol-button__interactive-element" id="tabs-nonce-tab-2" role="tab" tabindex="-1" type="button">
               <span class="kol-button__text kol-span">
                 <span class="kol-span__container">
                   <i aria-hidden="true" class="codicon codicon-briefcase kol-icon kol-icon__icon kol-span__icon kol-span__icon--left" role="presentation"></i>

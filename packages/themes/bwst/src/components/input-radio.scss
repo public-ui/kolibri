@@ -54,7 +54,7 @@
 
 			line-height: 1.5;
 
-			&:not(:disabled):hover {
+			&:not(.kol-input--disabled):hover {
 				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 				border-color: var(--color-primary);
 			}
@@ -75,9 +75,13 @@
 				}
 			}
 
-			&:disabled {
-				opacity: 0.5;
-				background-color: var(--color-mute-variant);
+			&.kol-input--disabled {
+				background-color: var(--color-disabled-background);
+				border-color: var(--color-disabled-border);
+
+				&:checked::before {
+					background-color: var(--color-disabled-text);
+				}
 			}
 		}
 	}

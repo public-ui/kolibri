@@ -68,14 +68,10 @@
 				box-shadow: none;
 			}
 
-			&:not(:disabled):hover {
+			&:not(.kol-input--disabled):hover {
 				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 				border-color: var(--color-primary);
 			}
-		}
-
-		&.kol-checkbox--disabled {
-			opacity: 0.5;
 		}
 	}
 
@@ -148,6 +144,25 @@
 
 		&.kol-checkbox--indeterminate .kol-icon {
 			transform: translate(1em, -50%);
+		}
+
+		/* The white knob needs a darker track than the disabled background. */
+		&.kol-checkbox--disabled .kol-input {
+			background-color: var(--color-disabled-border);
+		}
+	}
+
+	/* Follows the variants, so the checked state overrides them at equal specificity. */
+	.kol-checkbox--disabled {
+		.kol-input {
+			background-color: var(--color-disabled-background);
+			border-color: var(--color-disabled-border);
+
+			&:checked,
+			&:indeterminate {
+				background-color: var(--color-disabled-text);
+				border-color: var(--color-disabled-text);
+			}
 		}
 	}
 
@@ -284,9 +299,24 @@
 
 				&--disabled {
 					.kol-field-control {
+						&__input,
+						&__label {
+							color: var(--color-disabled-text);
+							background-color: var(--color-disabled-background);
+							border-color: var(--color-disabled-border);
+						}
+
 						&__input {
-							opacity: 0.5;
 							outline: none;
+						}
+					}
+
+					&.kol-input-checkbox__field-control--checked .kol-field-control {
+						&__input,
+						&__label {
+							color: var(--color-light);
+							background-color: var(--color-disabled-text);
+							border-color: var(--color-disabled-text);
 						}
 					}
 				}

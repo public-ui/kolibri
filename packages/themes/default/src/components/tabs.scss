@@ -82,6 +82,12 @@
 				color: var(--color-primary);
 			}
 
+			// Enabled tabs already use `--color-subtle` for their text, so the background sets a disabled tab apart.
+			&.kol-button--disabled {
+				color: var(--color-disabled-text);
+				background-color: var(--color-disabled-background);
+			}
+
 			&:not(&.selected) {
 				.kol-span__container {
 					padding-bottom: 0.25em;

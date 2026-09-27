@@ -27,8 +27,9 @@
 		}
 
 		&--disabled {
-			color: var(--color-text);
-			background-color: var(--color-mute);
+			color: var(--color-disabled-text);
+			background-color: var(--color-disabled-background);
+			border-color: var(--color-disabled-border);
 			cursor: not-allowed;
 		}
 
@@ -41,8 +42,7 @@
 		}
 
 		&:has(.kol-input--readonly),
-		&:has(.kol-textarea--readonly),
-		&--disabled {
+		&:has(.kol-textarea--readonly) {
 			border-color: var(--color-mute-variant);
 			border-width: 1px;
 			border-bottom: 2px solid var(--color-subtle);

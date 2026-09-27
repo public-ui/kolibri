@@ -158,8 +158,17 @@
 			--kol-selection-input-hover-color: rgb(8, 35, 48, 0.24);
 			--kol-selection-input-icon-color: var(--color-light);
 
+			&-label--disabled {
+				--kol-selection-input-main-color: var(--color-disabled-text);
+				--kol-selection-input-off-color: var(--color-disabled-border);
+			}
+
 			&-input {
-				&:not(:disabled):hover {
+				&--disabled {
+					background-color: var(--color-disabled-background);
+				}
+
+				&:not(&--disabled):hover {
 					box-shadow: 0 2px 8px 2px var(--kol-selection-input-hover-color);
 					border-color: var(--kol-selection-input-main-color);
 				}

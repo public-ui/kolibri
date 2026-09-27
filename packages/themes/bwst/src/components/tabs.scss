@@ -91,6 +91,15 @@
 				color: var(--color-primary);
 			}
 
+			/* Enabled tabs already use the subtle text color, so the disabled tab is marked by its fill. */
+			&.kol-button--disabled {
+				color: var(--color-disabled-text);
+
+				.kol-button__interactive-element {
+					background-color: var(--color-disabled-background);
+				}
+			}
+
 			&:not(&.selected) {
 				.kol-span__container {
 					padding-bottom: 0.25em;

@@ -75,7 +75,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
-          <div class="kol-input-container__container"><textarea autocapitalize="off" autocorrect="off" class="kol-textarea kol-textarea--disabled" disabled="" id="textarea-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
+          <div class="kol-input-container__container"><textarea aria-disabled="true" autocapitalize="off" autocorrect="off" class="kol-textarea kol-textarea--disabled" id="textarea-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" rows="5" value="Value" style="resize: vertical;"></textarea>
           </div>
         </div>
       </div>

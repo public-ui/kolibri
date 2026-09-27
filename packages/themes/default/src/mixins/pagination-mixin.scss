@@ -26,16 +26,14 @@
 				@include focus-outline;
 			}
 
-			/* State predicates live on the interactive element: on the wrapper `:not(:disabled)`
-			   would always be true. */
-			&__interactive-element:is(:active, :hover):not(:disabled) .kol-button__text {
+			&:not(.kol-button--disabled) .kol-button__interactive-element:is(:active, :hover) .kol-button__text {
 				color: var(--color-light);
 				background-color: var(--color-primary-variant);
 				box-shadow: 0 2px 8px 2px var(--color-shadow);
 				border-color: var(--color-primary-variant);
 			}
 
-			&:active .kol-button__text {
+			&:active:not(.kol-button--disabled) .kol-button__text {
 				color: var(--color-light);
 				outline: none;
 			}
@@ -54,11 +52,15 @@
 				transition-duration: 0.5s;
 				transition-property: background-color, color, border-color;
 			}
+
+			&--disabled .kol-button__text {
+				color: var(--color-disabled-text);
+				background-color: var(--color-disabled-background);
+				border-color: var(--color-disabled-border);
+			}
 		}
 
 		&__button--selected .kol-button {
-			opacity: 1;
-
 			&__text {
 				color: var(--color-light);
 				background-color: var(--color-primary);

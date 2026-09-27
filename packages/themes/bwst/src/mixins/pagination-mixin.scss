@@ -23,20 +23,19 @@
 
 		.kol-button {
 			/* The class carrier is a wrapper: `:focus` has to be read off the interactive element inside
-			   it, and `:not(:disabled)` would always be true on the wrapper, so the element inside is
-			   asked instead. */
+			   it, while the disabled state is read off the wrapper's modifier. */
 			&__interactive-element:focus .kol-button__text {
 				@include focus-outline;
 			}
 
-			&:is(:active, :hover):not(:has(:disabled)) .kol-button__text {
+			&:is(:active, :hover):not(.kol-button--disabled) .kol-button__text {
 				color: var(--color-light);
 				background-color: var(--color-primary-variant);
 				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
 				border-color: var(--color-primary-variant);
 			}
 
-			&:active .kol-button__text {
+			&:active:not(.kol-button--disabled) .kol-button__text {
 				color: var(--color-light);
 				outline: none;
 			}
@@ -54,6 +53,12 @@
 				text-align: center;
 				transition-duration: 0.5s;
 				transition-property: background-color, color, border-color;
+			}
+
+			&--disabled .kol-button__text {
+				color: var(--color-disabled-text);
+				background-color: var(--color-disabled-background);
+				border-color: var(--color-disabled-border);
 			}
 		}
 

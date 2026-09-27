@@ -19,6 +19,18 @@ Comprehensive documentation of all CSS custom properties (design tokens) defined
 | `--color-mute-variant`    | `#bec5c9` | Color    | Input field borders (readonly/disabled), badge hint background                                                           | Medium gray for inactive elements                |
 | `--color-visited`         | `#551a8b` | Color    | Visited link color                                                                                                       | Purple (HTML standard)                           |
 
+### Disabled State Tokens
+
+Disabled elements stay focusable (`aria-disabled="true"`), so they are marked by color instead of `opacity`: opacity would also dim the mandatory focus ring. Each token aliases an existing color token and can be overridden via its `--kolibri-*` counterpart.
+
+| Token                         | Default                     | Resolved  | Usage                                                                                   | Contrast                                                 |
+| ----------------------------- | --------------------------- | --------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| `--color-disabled-text`       | `var(--color-subtle)`       | `#576164` | Text and icons of disabled buttons, links, inputs, labels, hints, summaries, options    | 5.73:1 on `--color-disabled-background`, 6.37:1 on white |
+| `--color-disabled-background` | `var(--color-mute)`         | `#f2f3f4` | Surface of disabled buttons, input containers, checkboxes, radios, pagination buttons   | Focus ring (`--color-primary-variant`) on it: 4.48:1     |
+| `--color-disabled-border`     | `var(--color-mute-variant)` | `#bec5c9` | Border of disabled buttons, input containers, checkboxes, radios; disabled switch track | Inactive components are exempt from WCAG 1.4.11          |
+
+Checked disabled checkboxes, radios and switches fill with `--color-disabled-text`; a white check icon on it reaches 6.37:1. The focus ring keeps `--color-primary-variant` for disabled elements too.
+
 ## Spacing Tokens
 
 | Token             | Value          | Category | Usage                                                                        | Notes                                     |
@@ -165,7 +177,7 @@ Focus mixin (`focus-outline`):
 ### Input Components
 
 - **Containers**: Use `--color-light` (bg), `--color-subtle` (border), `--border-radius`
-- **Disabled**: Use `--color-mute` (bg), `--color-mute-variant` (border)
+- **Disabled**: Use `--color-disabled-background` (bg), `--color-disabled-border` (border), `--color-disabled-text` (text)
 - **Focus**: Use focus-outline mixin with `--color-primary-variant`
 - **Error**: Use `--color-danger` for border and text
 
@@ -251,7 +263,7 @@ Several tokens depend on others:
 
 ## Summary Statistics
 
-- **Color Tokens**: 12
+- **Color Tokens**: 15
 - **Spacing/Border Tokens**: 3
 - **Typography Tokens**: 6 (mixins only)
 - **State Tokens**: 8+ (button variants, selections, alerts)

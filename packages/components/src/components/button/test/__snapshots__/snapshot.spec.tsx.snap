@@ -49,7 +49,7 @@ exports[`kol-button should render with _label="Label" _disabled=true 1`] = `
 <kol-button>
   <template shadowrootmode="open">
     <div class="kol-button kol-button--disabled kol-button--normal kol-button--standalone">
-      <button class="kol-button__interactive-element" disabled="" type="button">
+      <button aria-disabled="true" class="kol-button__interactive-element" type="button">
         <span class="kol-button__text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
