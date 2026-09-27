@@ -1,19 +1,28 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "No visual changes",
-	"computedAt": "2026-09-27T18:05:27.066Z",
+	"state": "pending",
+	"description": "2 changed – 0 of 2 approved, review pending",
+	"computedAt": "2026-09-27T22:21:07.681Z",
 	"pr": 10824,
-	"head": "06bc83e976cacf06254bb2e4e0fb82fdae93d960",
+	"head": "78514c6a3a81d3d273cbf6a24141f87015648030",
 	"digest": "sha256:97eb7df79010253c71c01901bf03522f511edf6b0171261c8243439f87e1592b",
 	"counts": {
-		"changes": 0,
-		"open": 0,
+		"changes": 2,
+		"open": 2,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {}
+	"items": {
+		"test-tag-name-transformer/scenarios-focus-elements-component-badge": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-badge": {
+			"state": "open",
+			"notes": []
+		}
+	}
 }
