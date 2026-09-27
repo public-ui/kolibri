@@ -460,7 +460,7 @@ export type KoliBriComponentsBemSchema = {
 				modifiers: null;
 			};
 			'selection-input': {
-				modifiers: Set<'checkbox' | 'radio'>;
+				modifiers: Set<'checkbox' | 'disabled' | 'radio'>;
 			};
 			'selection-input-tooltip': {
 				modifiers: null;
@@ -793,7 +793,7 @@ const BEM: KoliBriComponentsBemSchema = {
 			'scroll-container': { modifiers: null },
 			selection: { modifiers: new Set(['checked', 'indeterminate']) },
 			'selection-icon': { modifiers: null },
-			'selection-input': { modifiers: new Set(['checkbox', 'radio']) },
+			'selection-input': { modifiers: new Set(['checkbox', 'disabled', 'radio']) },
 			'selection-input-tooltip': { modifiers: null },
 			'selection-label': { modifiers: new Set(['disabled']) },
 			sort: { modifiers: null },

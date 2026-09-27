@@ -2,6 +2,7 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { getMsgType, isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../../schema';
 import clsx from '../../../utils/clsx';
+import { blockInactive } from '../../../utils/element-interaction';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
 import NativeOptionListFc, { type NativeOptionListProps } from '../NativeOptionList';
@@ -16,6 +17,18 @@ export type SelectProps = DefaultInputProps<SelectAttributes> &
 		[key: `aria-${string}`]: unknown;
 		[key: `data-${string}`]: unknown;
 	};
+
+const PASS_THROUGH_KEYS = new Set(['Alt', 'Control', 'Escape', 'Meta', 'Shift', 'Tab']);
+
+/**
+ * Keeps a disabled select from opening its picker by keyboard. Its options are natively disabled,
+ * so no key can change the value; Tab and modifiers still move the focus.
+ */
+const blockPickerKeys = (event: KeyboardEvent): void => {
+	if (!PASS_THROUGH_KEYS.has(event.key)) {
+		event.preventDefault();
+	}
+};
 
 const NativeSelectFc: FC<SelectProps> = (props) => {
 	const {
@@ -41,17 +54,27 @@ const NativeSelectFc: FC<SelectProps> = (props) => {
 		[`kol-select--${getMsgType(msg)}`]: isMsgDefinedAndInputTouched(msg, touched),
 	};
 
-	const inputProps: SelectAttributes = {
+	const inputProps: SelectAttributes & { 'aria-disabled'?: 'true' } = {
 		class: clsx('kol-select', stateCssClasses, classNames),
 		required: required,
-		disabled: disabled,
 		...getDefaultProps({ ariaDescribedBy, hideLabel, label }),
 		...other,
+		'aria-disabled': disabled ? 'true' : undefined,
+		onClick: disabled ? blockInactive : other.onClick,
+		onKeyDown: disabled ? blockPickerKeys : other.onKeyDown,
+		onMouseDown: disabled ? blockInactive : other.onMouseDown,
 	};
 
 	return (
 		<select {...inputProps}>
-			<NativeOptionListFc baseClassName="kol-select" options={options} value={value} OptionGroupProps={OptionGroupProps} OptionProps={OptionProps} />
+			<NativeOptionListFc
+				baseClassName="kol-select"
+				options={options}
+				value={value}
+				selectDisabled={disabled}
+				OptionGroupProps={OptionGroupProps}
+				OptionProps={OptionProps}
+			/>
 		</select>
 	);
 };

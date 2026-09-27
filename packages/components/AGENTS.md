@@ -27,6 +27,7 @@ Observe the following coding rules when making changes to this project.
 ### General Rules
 
 - Never use the title-Attribute to add tooltips. Always use the `KolTooltip` component.
+- Never render the native `disabled` attribute on an interactive element (only `<option>`/`<optgroup>` inside a `<select>` may keep it). A disabled element stays focusable: render `aria-disabled="true"` and block activation in its handlers (`blockInactive` in `src/utils/element-interaction.ts`); text-like inputs are also rendered `readonly`. Style the disabled state only through the BEM `--disabled` modifier of the block (e.g. `kol-button--disabled`, `kol-input--disabled`); `aria-disabled` is semantics, and neither `[aria-disabled]` nor `:disabled` is a styling hook. Enforced by the ESLint rule `kolibri/no-native-disabled` and the Stylelint rule `kolibri/common-disabled-bem-modifier`.
 - JSDoc and comments follow the repo-wide rule [Inline code documentation](../../AGENTS.md#inline-code-documentation). The JSDoc of public `@Prop`, `@Method` and `@Event` members is published API documentation.
 
 ### Styling boundary

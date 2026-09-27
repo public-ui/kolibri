@@ -32,7 +32,7 @@ const KOL_DETAILS_PUBLIC_API: PublicApiContract = {
 		type: 'boolean',
 		required: false,
 		default: 'false',
-		doc: 'Makes the element not focusable and ignore all events.',
+		doc: 'Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.',
 	},
 	_label: {
 		kind: 'prop',

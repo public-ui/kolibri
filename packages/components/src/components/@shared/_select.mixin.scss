@@ -15,7 +15,7 @@
 		width: 100%;
 		padding: 0; // for firefox
 
-		&:not(:disabled) {
+		&:not(.kol-select--disabled) {
 			cursor: pointer;
 		}
 

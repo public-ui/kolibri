@@ -77,12 +77,6 @@ export const uiUxHint = (msg: string, options?: HintOptions): void => {
 	}
 };
 
-export const a11yHintDisabled = (): void => {
-	a11yHint(
-		`"Disabled" limits accessibility and visibility. From an accessibility perspective, we recommend using the readonly attribute instead of disabled.\n- https://uxdesign.cc/is-it-ok-to-grey-out-disabled-buttons-8afa74a0fae`,
-	);
-};
-
 export const a11yHintLabelingLandmarks = (value: unknown): void => {
 	if (typeof value !== 'string' || value === '') {
 		a11yHint(

@@ -117,21 +117,32 @@ test.describe('kol-accordion', () => {
 			await expect(page.locator('.kol-accordion__content')).toHaveAttribute('aria-hidden', 'true');
 		});
 
-		test('should not take focus when the title is clicked', async ({ page }) => {
+		test('should take focus when the title is clicked', async ({ page }) => {
 			await page.locator('summary').click({ force: true });
 
 			await expect
 				.poll(() => page.locator('kol-accordion').evaluate((element: HTMLKolAccordionElement) => element.shadowRoot?.activeElement?.localName ?? null))
-				.toBeNull();
+				.toBe('summary');
 		});
 
-		test('should not take focus when the focus() method is called', async ({ page }) => {
+		test('should not open when Enter or Space is pressed', async ({ page }) => {
+			await page.locator('summary').focus();
+			await page.keyboard.press('Enter');
+			await page.keyboard.press('Space');
+			await page.waitForChanges();
+
+			await expect(page.locator('.kol-accordion__content')).toHaveAttribute('aria-hidden', 'true');
+		});
+
+		test('should take focus when the focus() method is called', async ({ page }) => {
 			const kolAccordion = page.locator('kol-accordion');
 
 			await kolAccordion.evaluate(async (element: HTMLKolAccordionElement) => await element.focus());
 			await page.waitForChanges();
 
-			await expect.poll(() => kolAccordion.evaluate((element: HTMLKolAccordionElement) => element.shadowRoot?.activeElement?.localName ?? null)).toBeNull();
+			await expect
+				.poll(() => kolAccordion.evaluate((element: HTMLKolAccordionElement) => element.shadowRoot?.activeElement?.localName ?? null))
+				.toBe('summary');
 		});
 
 		test('should not offer a pointer cursor', async ({ page }) => {
@@ -173,7 +184,7 @@ test.describe('kol-accordion', () => {
 	test.describe('tab order', () => {
 		/* Own `setContent` call: the stencil fixture serves the page from a single route and a second
 		   call inside a test would not reload it. */
-		test('should skip a disabled accordion', async ({ page }) => {
+		test('should include a disabled accordion', async ({ page }) => {
 			await page.setContent(
 				'<button id="before">before</button><kol-accordion _label="Accordion Label" _disabled>Accordion contents</kol-accordion><button id="after">after</button>',
 			);
@@ -181,7 +192,7 @@ test.describe('kol-accordion', () => {
 
 			await page.keyboard.press('Tab');
 
-			await expect(page.locator('#after')).toBeFocused();
+			await expect(page.locator('summary')).toBeFocused();
 		});
 
 		test('should include an enabled accordion', async ({ page }) => {

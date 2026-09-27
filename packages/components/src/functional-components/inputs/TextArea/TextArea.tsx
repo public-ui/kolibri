@@ -2,6 +2,7 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { getMsgType, isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../../schema';
 import clsx from '../../../utils/clsx';
+import { blockInactive } from '../../../utils/element-interaction';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
 
@@ -25,13 +26,15 @@ const TextAreaFc: FC<TextAreaProps> = (props) => {
 		[`kol-textarea--${getMsgType(msg)}`]: isMsgDefinedAndInputTouched(msg, touched),
 	};
 
-	const inputProps: JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement> = {
+	// `aria-disabled` alone does not stop typing, so a disabled textarea is also `readonly`.
+	const inputProps: JSXBase.TextareaHTMLAttributes<HTMLTextAreaElement> & { 'aria-disabled'?: 'true' } = {
 		class: clsx('kol-textarea', stateCssClasses, classNames),
 		required: required,
-		disabled: disabled,
-		readonly: readonly,
+		readonly: Boolean(readonly) || Boolean(disabled),
 		...getDefaultProps({ ariaDescribedBy, hideLabel, label }),
 		...other,
+		'aria-disabled': disabled ? 'true' : undefined,
+		onClick: disabled ? blockInactive : other.onClick,
 	};
 
 	return <textarea {...inputProps} />;

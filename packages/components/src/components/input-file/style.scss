@@ -26,11 +26,10 @@
 			cursor: pointer;
 		}
 
-		&:disabled,
-		&:disabled::-webkit-file-upload-button,
-		&:disabled::file-selector-button {
+		&--disabled,
+		&--disabled::-webkit-file-upload-button,
+		&--disabled::file-selector-button {
 			cursor: not-allowed;
-			pointer-events: none;
 		}
 	}
 

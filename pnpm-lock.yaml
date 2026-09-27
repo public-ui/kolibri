@@ -1283,9 +1283,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: 8.58.2
         version: 8.58.2(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
-      eslint:
-        specifier: '>=9'
-        version: 9.39.5(jiti@2.7.0)
       eslint-plugin-boundaries:
         specifier: 7.2.0
         version: 7.2.0(@typescript-eslint/parser@8.58.2(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.5(jiti@2.7.0))
@@ -1305,6 +1302,12 @@ importers:
         specifier: 17.11.0
         version: 17.11.0
     devDependencies:
+      eslint:
+        specifier: 9.39.5
+        version: 9.39.5(jiti@2.7.0)
+      mocha:
+        specifier: 11.8.0
+        version: 11.8.0
       prettier:
         specifier: 3.9.8
         version: 3.9.8

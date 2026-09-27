@@ -3,6 +3,7 @@ import type { JSXBase, VNode } from '@stencil/core/internal';
 import { getMsgType, isMsgDefinedAndInputTouched, type MsgPropType, type Stringified } from '../../../schema';
 import clsx from '../../../utils/clsx';
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
+import { blockInactive } from '../../../utils/element-interaction';
 import { getDefaultProps } from '../_helpers/getDefaultProps';
 import type { DefaultInputProps } from '../_types';
 
@@ -17,8 +18,48 @@ export type InputProps = DefaultInputProps<JSXBase.InputHTMLAttributes<HTMLInput
 	[key: `data-${string}`]: unknown;
 };
 
+/**
+ * Input types whose value is edited as text. A disabled input of these types is rendered `readonly`,
+ * because `aria-disabled` alone does not stop typing, pasting, dropping or spinning the value.
+ */
+const TEXT_LIKE_TYPES = new Set(['date', 'datetime-local', 'email', 'month', 'number', 'password', 'search', 'tel', 'text', 'time', 'url', 'week']);
+
+type KeyDownHandler = JSXBase.InputHTMLAttributes<HTMLInputElement>['onKeyDown'];
+
+/**
+ * Enter submits the surrounding form from most inputs, so a disabled input swallows it. All other
+ * keys still reach the component, e.g. the arrow keys that move through a radio group.
+ */
+const guardKeyDown =
+	(onKeyDown: KeyDownHandler): KeyDownHandler =>
+	(event: KeyboardEvent) => {
+		if (event.key === 'Enter') {
+			blockInactive(event);
+			return;
+		}
+		onKeyDown?.(event);
+	};
+
 const InputFc: FC<InputProps> = (props) => {
-	const { class: classNames, msg, required, disabled, touched, readonly, ariaDescribedBy, hideLabel, label, suggestions, value, ...other } = props;
+	const {
+		class: classNames,
+		msg,
+		required,
+		disabled,
+		touched,
+		readonly,
+		ariaDescribedBy,
+		hideLabel,
+		label,
+		suggestions,
+		value,
+		onClick,
+		onKeyDown,
+		...other
+	} = props;
+	const isDisabled = Boolean(disabled);
+	const type = other.type ?? 'text';
+	const isRange = type === 'range';
 
 	const stateCssClasses = {
 		['kol-input--disabled']: Boolean(disabled),
@@ -28,15 +69,21 @@ const InputFc: FC<InputProps> = (props) => {
 		[`kol-input--${getMsgType(msg)}`]: isMsgDefinedAndInputTouched(msg, touched),
 	};
 
-	const inputProps: JSXBase.InputHTMLAttributes<HTMLInputElement> = {
+	const inputProps: JSXBase.InputHTMLAttributes<HTMLInputElement> & { 'aria-disabled'?: 'true' } = {
 		class: clsx('kol-input', stateCssClasses, classNames),
 		required: required,
-		disabled: disabled,
-		readonly: readonly,
+		readonly: Boolean(readonly) || (isDisabled && TEXT_LIKE_TYPES.has(type)),
 		type: 'text',
 		list: suggestions && typeof other.id === 'string' ? createRelatedUniqueId(other.id, 'list') : undefined,
 		...getDefaultProps({ ariaDescribedBy, hideLabel, label }),
 		...other,
+		'aria-disabled': isDisabled ? 'true' : undefined,
+		onClick: isDisabled ? blockInactive : onClick,
+		onKeyDown: isDisabled ? guardKeyDown(onKeyDown) : onKeyDown,
+		// A range slider is operated by dragging, which no click handler sees.
+		onMouseDown: isDisabled && isRange ? blockInactive : other.onMouseDown,
+		onPointerDown: isDisabled && isRange ? blockInactive : other.onPointerDown,
+		onTouchStart: isDisabled && isRange ? blockInactive : other.onTouchStart,
 	};
 
 	return (

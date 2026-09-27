@@ -46,8 +46,8 @@
 			text-align: left;
 			text-decoration-line: none;
 
-			&:focus:not([aria-disabled], [disabled]),
-			&:hover:not([aria-disabled], [disabled]) {
+			.#{$block-classname}:not(.#{$block-classname}--disabled) &:focus,
+			.#{$block-classname}:not(.#{$block-classname}--disabled) &:hover {
 				.kol-span__label {
 					text-decoration-thickness: 0.2em;
 				}

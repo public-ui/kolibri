@@ -30,6 +30,7 @@ import type {
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
+import { handleRadioGroupArrowKey } from '../../utils/radio-group-keyboard';
 import { propagateSubmitEventToForm } from '../form/controller';
 import { InputRadioController } from './controller';
 
@@ -97,28 +98,19 @@ export class KolInputRadio implements ClickableElement, FocusableElement, InputR
 		return delegateClick(this.host!, async () => setClick(this.inputRef!));
 	}
 
+	/**
+	 * The option that receives the focus: the selected one, even while disabled, otherwise the first
+	 * enabled option, otherwise the first option, so a fully disabled group keeps a tab stop.
+	 */
 	private getFocusableInput(): HTMLInputElement | undefined {
 		const options = this.state._options;
 		const isComponentDisabled = Boolean(this.state._disabled);
 
-		// Find the index of the selected option if it's not disabled
-		const selectedIndex = options.findIndex((option) => option.value === this.state._value && !isComponentDisabled && !option.disabled);
-
-		if (selectedIndex !== -1) {
-			const input = this.inputRefs.get(selectedIndex);
-			if (input) {
-				return input;
-			}
-		}
-
-		// Otherwise find the first non-disabled option
+		const selectedIndex = options.findIndex((option) => option.value === this.state._value);
 		const firstEnabledIndex = options.findIndex((option) => !isComponentDisabled && !option.disabled);
+		const index = [selectedIndex, firstEnabledIndex, 0].find((candidate) => candidate !== -1 && this.inputRefs.has(candidate));
 
-		if (firstEnabledIndex !== -1) {
-			return this.inputRefs.get(firstEnabledIndex);
-		}
-
-		return undefined;
+		return index === undefined ? undefined : this.inputRefs.get(index);
 	}
 
 	private getFormFieldProps(): FormFieldStateWrapperProps {
@@ -224,7 +216,7 @@ export class KolInputRadio implements ClickableElement, FocusableElement, InputR
 	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
@@ -447,6 +439,13 @@ export class KolInputRadio implements ClickableElement, FocusableElement, InputR
 
 	private readonly onKeyDown = (event: KeyboardEvent) => {
 		this.controller.onFacade.onKeyDown(event);
+
+		const radios = Array.from(this.inputRefs.entries())
+			.sort(([a], [b]) => a - b)
+			.map(([, radio]) => radio);
+		if (handleRadioGroupArrowKey(event, radios)) {
+			return;
+		}
 
 		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
 			propagateSubmitEventToForm({

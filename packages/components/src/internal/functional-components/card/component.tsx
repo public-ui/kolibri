@@ -70,7 +70,15 @@ export const CardFC: FC<CardFCProps> = (props, children) => {
 	return (
 		<article aria-labelledby={headingId} class={clsx(cardBem(), hostClass)}>
 			{href.length > 0 ? (
-				<a class={BEM_CLASS_CARD__LINK} href={href} target={target || undefined} onBlur={handleBlur} onFocus={handleFocus} ref={refCta}>
+				<a
+					aria-disabled={undefined}
+					class={BEM_CLASS_CARD__LINK}
+					href={href}
+					target={target || undefined}
+					onBlur={handleBlur}
+					onFocus={handleFocus}
+					ref={refCta}
+				>
 					<CardHeadingFC headingId={headingId} label={label} level={level} />
 				</a>
 			) : (

@@ -73,7 +73,7 @@ test.describe(COMPONENT_NAME, () => {
 		await expect(firstInnerBtn).not.toBeDisabled({ timeout: 3000 });
 	});
 
-	test('does not move focus to a disabled item with arrow keys', async ({ page }) => {
+	test('moves focus to a disabled item with arrow keys but does not activate it', async ({ page }) => {
 		await page.setContent(`<kol-toolbar _label="Toolbar Focus"></kol-toolbar>`);
 		const tb = page.locator('kol-toolbar');
 		await expect(tb).toHaveClass(/hydrated/);
@@ -95,11 +95,12 @@ test.describe(COMPONENT_NAME, () => {
 		await firstBtn.focus();
 		await page.keyboard.press('ArrowRight');
 
-		await expect(firstBtn).toBeFocused();
-		await expect(secondBtn).not.toBeFocused();
+		await expect(secondBtn).toBeFocused();
+		await expect(secondBtn).toHaveAttribute('aria-disabled', 'true');
+		await expect(secondBtn).not.toHaveAttribute('disabled');
 	});
 
-	test('skips a disabled item with arrow keys instead of stopping at it', async ({ page }) => {
+	test('reaches a disabled item with arrow keys and continues past it', async ({ page }) => {
 		await page.setContent(`<kol-toolbar _label="Toolbar Skip"></kol-toolbar>`);
 		const tb = page.locator('kol-toolbar');
 		await expect(tb).toHaveClass(/hydrated/);
@@ -117,16 +118,18 @@ test.describe(COMPONENT_NAME, () => {
 		await expect(items).toHaveCount(3);
 
 		const firstBtn = items.first().locator('button');
+		const secondBtn = items.nth(1).locator('button');
 		const thirdBtn = items.nth(2).locator('button');
 
 		await firstBtn.focus();
 		await page.keyboard.press('ArrowRight');
+		await expect(secondBtn).toBeFocused();
 
-		/* Stopping at the disabled neighbour would leave the third item unreachable by keyboard. */
+		await page.keyboard.press('ArrowRight');
 		await expect(thirdBtn).toBeFocused();
 	});
 
-	test('skips a disabled item backwards as well', async ({ page }) => {
+	test('reaches a disabled item backwards as well', async ({ page }) => {
 		await page.setContent(`<kol-toolbar _label="Toolbar Skip Back"></kol-toolbar>`);
 		const tb = page.locator('kol-toolbar');
 		await expect(tb).toHaveClass(/hydrated/);
@@ -142,11 +145,15 @@ test.describe(COMPONENT_NAME, () => {
 
 		const items = tb.locator('.kol-toolbar__item');
 		const firstBtn = items.first().locator('button');
+		const secondBtn = items.nth(1).locator('button');
 		const thirdBtn = items.nth(2).locator('button');
 
 		await firstBtn.focus();
 		await page.keyboard.press('ArrowLeft');
 		await expect(thirdBtn).toBeFocused();
+
+		await page.keyboard.press('ArrowLeft');
+		await expect(secondBtn).toBeFocused();
 
 		await page.keyboard.press('ArrowLeft');
 		await expect(firstBtn).toBeFocused();

@@ -57,7 +57,7 @@ describe('KolFormFieldFc', () => {
 	it('should render with custom children', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<KolFormFieldFc id="test-id" label="Test Label">
-				<input type="text" />
+				<input aria-disabled={undefined} type="text" />
 			</KolFormFieldFc>
 		));
 		expect(page.root).toMatchSnapshot();

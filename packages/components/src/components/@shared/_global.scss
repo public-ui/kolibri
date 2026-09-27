@@ -50,24 +50,21 @@
 		}
 	}
 
-	/* Reset browser agent style. */
-	button:disabled {
-		color: unset;
-	}
-
+	/*
+	 * A disabled element stays focusable (`aria-disabled`, never the native `disabled`), so it keeps
+	 * its focus indicator; only the cursor tells that it cannot be activated. The disabled state is
+	 * addressed through the BEM `--disabled` modifier of each block.
+	 */
 	.disabled label,
-	.disabled:focus-within label,
-	[aria-disabled='true'],
-	[aria-disabled='true']:focus,
-	[disabled],
-	[disabled]:focus {
-		outline: none;
+	.kol-accordion--disabled .kol-accordion__heading,
+	.kol-button--disabled .kol-button__interactive-element,
+	.kol-custom-suggestions-option--disabled,
+	.kol-details--disabled .kol-details__heading,
+	.kol-input--disabled,
+	.kol-link--disabled .kol-link__interactive-element,
+	.kol-select--disabled,
+	.kol-textarea--disabled {
 		cursor: not-allowed;
-	}
-
-	[aria-disabled='true']:focus .kol-span,
-	[disabled]:focus .kol-span {
-		outline: none !important;
 	}
 
 	.hastooltip {

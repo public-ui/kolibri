@@ -41,7 +41,7 @@ describe('KolInputContainerFc', () => {
 	it('should render with children', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<KolInputContainerFc>
-				<input type="text" />
+				<input aria-disabled={undefined} type="text" />
 			</KolInputContainerFc>
 		));
 		expect(page.root).toMatchSnapshot();

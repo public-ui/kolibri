@@ -46,7 +46,7 @@
 				border: 1px solid black;
 
 				&::-webkit-slider-thumb {
-					@at-root #{$input}:not(:disabled)#{&} {
+					@at-root #{$input}:not(.kol-input--disabled)#{&} {
 						cursor: pointer;
 					}
 					background-color: black;
@@ -61,7 +61,7 @@
 				}
 
 				&::-moz-range-thumb {
-					@at-root #{$input}:not(:disabled)#{&} {
+					@at-root #{$input}:not(.kol-input--disabled)#{&} {
 						cursor: pointer;
 					}
 					background-color: black;

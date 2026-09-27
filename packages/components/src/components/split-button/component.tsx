@@ -244,7 +244,7 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 	}
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 */
 	@Prop() public _disabled?: boolean = false;
 	@Watch('_disabled')
