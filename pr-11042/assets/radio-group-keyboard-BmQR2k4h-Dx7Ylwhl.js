@@ -1,0 +1,1 @@
+var e=new Set([`ArrowLeft`,`ArrowUp`]),t=new Set([`ArrowDown`,`ArrowRight`]),n=e=>e.getAttribute(`aria-disabled`)===`true`;function r(r,i){let a=e.has(r.key)?-1:+!!t.has(r.key);if(a===0)return!1;r.preventDefault();let o=i.indexOf(r.target);if(i.length===0||o===-1)return!0;let s=i[(o+a+i.length)%i.length];return s.focus(),n(s)||s.click(),!0}export{r as t};
