@@ -34,7 +34,7 @@
 	"type": "commonjs",
 	"dependencies": {
 		"@public-ui/components": "workspace:*",
-		"chalk": "6.0.0",
+		"chalk": "6.0.1",
 		"commander": "15.0.0",
 		"deepmerge": "4.3.1",
 		"gradient-string": "3.0.0",
