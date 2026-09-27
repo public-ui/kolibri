@@ -1,6 +1,15 @@
 @use '../functions/to-rem' as *;
 @use '../mixins/icon' as *;
 
+/* Hover, focus and active emphasis of an enabled link. */
+@mixin kol-link-emphasis {
+	color: var(--color-dark-blue-100);
+
+	.kol-span__label {
+		text-decoration: underline;
+	}
+}
+
 /*
  * Interactive link styles. With $anchor-scoped (default) they attach to the inner
  * kol-link__interactive-element of the skeleton DOM. Otherwise they attach to the class carrier — either
@@ -41,11 +50,11 @@
 		text-decoration: none;
 	}
 
-	#{$ie}:not([aria-disabled='true']):is(:focus, :hover, :active) {
-		color: var(--color-dark-blue-100);
-
-		.kol-span__label {
-			text-decoration: underline;
+	/* A class carrier that is itself the interactive element has no `--disabled` modifier of its own: the
+	   including component resets the emphasis for its disabled state. Otherwise `kol-link` gates it. */
+	@if not $anchor-scoped and not $interactive-suffix {
+		&:is(:focus, :hover, :active) {
+			@include kol-link-emphasis;
 		}
 	}
 
@@ -169,6 +178,20 @@
 				outline: 2px solid var(--color-dark-blue-100);
 				border-radius: var(--radius-s);
 				outline-offset: 4px;
+			}
+		}
+
+		/* The `--disabled` modifier sits on the wrapper, the interactive element inside it. Declared after
+		   the variants, so the disabled color wins over theirs. */
+		@if $anchor-scoped or $interactive-suffix {
+			$interactive-element: '.#{$block-classname}__#{if($anchor-scoped, "interactive-element", $interactive-suffix)}';
+
+			&:not(.#{$block-classname}--disabled) #{$interactive-element}:is(:focus, :hover, :active) {
+				@include kol-link-emphasis;
+			}
+
+			&--disabled #{$interactive-element} {
+				color: var(--color-disabled-text);
 			}
 		}
 	}

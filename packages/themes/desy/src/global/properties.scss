@@ -67,6 +67,12 @@
 		--color-text: var(--kolibri-color-text, #202020);
 		--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
 
+		/* Disabled controls stay focusable and keep the regular focus ring; only these colors mark them.
+		   `--color-disabled-text` reaches 4.85:1 on `--color-disabled-background` and 5.25:1 on white. */
+		--color-disabled-background: var(--color-dark-blue-20);
+		--color-disabled-border: var(--color-black-60);
+		--color-disabled-text: var(--color-black-70);
+
 		--small-chevron-down: '\ea22';
 		--small-chevron-right: '\ea24';
 		--small-chevron-left: '\ea23';

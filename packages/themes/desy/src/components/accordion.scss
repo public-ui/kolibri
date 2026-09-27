@@ -42,12 +42,16 @@
 				padding: to-rem(16) to-rem(32);
 			}
 
-			&:not([aria-disabled='true']):focus-visible {
-				background: var(--color-blue-20);
+			&:focus-visible {
 				@include focus-outline;
 			}
 
-			&:not([aria-disabled='true']) {
+			.kol-accordion:not(.kol-accordion--disabled) & {
+				&:focus-visible,
+				&:hover {
+					background: var(--color-blue-20);
+				}
+
 				&:hover,
 				&:active {
 					&::before {
@@ -63,17 +67,9 @@
 					}
 				}
 
-				&:hover {
-					background: var(--color-blue-20);
-				}
-
 				&:active {
 					background: var(--color-blue-30);
 				}
-			}
-
-			&[aria-disabled='true'] {
-				color: var(--color-black-60);
 			}
 		}
 
@@ -112,8 +108,9 @@
 		}
 
 		&--disabled {
+			#{$root}__heading,
 			.kol-icon {
-				color: var(--color-black-60);
+				color: var(--color-disabled-text);
 			}
 
 			#{$root}__content {

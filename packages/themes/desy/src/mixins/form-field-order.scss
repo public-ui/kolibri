@@ -9,12 +9,6 @@
 		font-size: to-rem(16);
 		line-height: 1.25;
 
-		&--disabled {
-			.kol-form-field__input {
-				outline: none;
-			}
-		}
-
 		&__label {
 			@include popover-button;
 
