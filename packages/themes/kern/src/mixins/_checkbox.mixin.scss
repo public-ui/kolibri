@@ -13,13 +13,13 @@
 			appearance: none;
 			border: var(--kern-metric-border-width-default) solid var(--kern-color-form-input-border);
 
-			&:not(:disabled):hover {
+			&:not(.kol-input--disabled, .#{$block-classname}-input--disabled):hover {
 				border: var(--kern-metric-border-width-bold) solid var(--kern-color-form-input-border);
 				transition: none;
 			}
 
-			&:not(:disabled):focus,
-			&:not(:disabled):focus-visible {
+			&:focus,
+			&:focus-visible {
 				box-shadow: 0 0 0 var(--kern-metric-border-width-bold) var(--kern-color-form-input-border);
 				outline: 0;
 				border: 0;
@@ -29,7 +29,7 @@
 				}
 			}
 
-			&:not(:disabled):checked {
+			&:checked {
 				&:focus,
 				&:focus-visible {
 					box-shadow: 0 0 0 var(--kern-metric-border-width-bold) var(--kern-color-form-input-border);
@@ -42,9 +42,11 @@
 				}
 			}
 
-			&[disabled] {
-				opacity: var(--kern-color-action-state-opacity-disabled);
+			&.kol-input--disabled,
+			&--disabled {
+				background: var(--kern-color-action-disabled-background);
 				outline: 0;
+				border-color: var(--kern-color-action-disabled-border);
 
 				&:checked {
 					outline: 0;
@@ -55,7 +57,7 @@
 				}
 
 				~ .kern-label {
-					opacity: var(--kern-color-action-state-opacity-disabled);
+					color: var(--kern-color-action-disabled-text);
 					cursor: default;
 				}
 			}
@@ -74,7 +76,7 @@
 		&--disabled,
 		&-label--disabled {
 			.kol-icon {
-				opacity: var(--kern-color-action-state-opacity-disabled);
+				color: var(--kern-color-action-disabled-text);
 			}
 		}
 	}

@@ -8,6 +8,15 @@
 	/* Properties */
 	:host {
 		--font-family: var(--kern-typography-font-family-default, sans-serif);
+
+		/*
+		 * Disabled elements stay focusable, so they are marked by color instead of opacity: opacity would
+		 * also fade the focus ring. The text keeps a contrast of at least 4.5:1 against the disabled
+		 * background, the input background and the layout background.
+		 */
+		--kern-color-action-disabled-background: var(--kern-neutral-100);
+		--kern-color-action-disabled-border: var(--kern-neutral-500);
+		--kern-color-action-disabled-text: var(--kern-neutral-600);
 	}
 
 	/* Font */
@@ -45,14 +54,5 @@
 	// Quote
 	blockquote {
 		margin: var(--kern-metric-space-small) var(--kern-metric-space-large);
-	}
-
-	.disabled label,
-	.disabled:focus-within label,
-	[aria-disabled='true'],
-	[aria-disabled='true']:focus,
-	[disabled],
-	[disabled]:focus {
-		opacity: var(--action-state-opacity-disabled, 0.4);
 	}
 }

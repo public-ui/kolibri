@@ -84,11 +84,12 @@
 	}
 
 	@if $anchor-scoped {
-		.#{$block-classname}:not(.#{$block-classname}--disabled) & {
-			&:focus {
-				outline: none;
-			}
+		/* The focus ring is drawn on the carrier, for disabled links as well. */
+		&:focus {
+			outline: none;
+		}
 
+		.#{$block-classname}:not(.#{$block-classname}--disabled) & {
 			&:hover {
 				text-decoration-thickness: var(--kern-3);
 			}
@@ -118,12 +119,20 @@
 
 			gap: var(--kern-metric-space-2x-small);
 		}
-	} @else {
-		&:not(&--disabled) {
-			&:focus {
-				outline: none;
-			}
 
+		.#{$block-classname}--disabled & {
+			color: var(--kern-color-action-disabled-text);
+
+			.kol-icon {
+				color: var(--kern-color-action-disabled-text);
+			}
+		}
+	} @else {
+		&:focus {
+			outline: none;
+		}
+
+		&:not(&--disabled) {
 			&:hover {
 				text-decoration-thickness: var(--kern-3);
 			}
@@ -166,6 +175,14 @@
 
 		&--small {
 			gap: var(--kern-metric-space-2x-small);
+		}
+
+		&--disabled {
+			color: var(--kern-color-action-disabled-text);
+
+			.kol-icon {
+				color: var(--kern-color-action-disabled-text);
+			}
 		}
 	}
 }

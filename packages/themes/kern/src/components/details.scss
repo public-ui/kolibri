@@ -20,12 +20,16 @@
 				font-weight: var(--kern-typography-font-weight-medium);
 			}
 
-			&:not([aria-disabled='true']):hover {
+			.kol-details:not(.kol-details--disabled) &:hover {
 				background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 			}
 
-			&:not([aria-disabled='true']):focus {
+			&:focus {
 				@include focus-outline($angularBorder: true);
+			}
+
+			.kol-details--disabled & {
+				color: var(--kern-color-action-disabled-text);
 			}
 
 			.kol-icon {
