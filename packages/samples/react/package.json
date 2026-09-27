@@ -24,7 +24,7 @@
 		"@types/node": "26.4.0",
 		"@types/papaparse": "5.5.2",
 		"papaparse": "5.7.0",
-		"react-hook-form": "7.86.0",
+		"react-hook-form": "7.89.0",
 		"react-number-format": "5.4.5",
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
@@ -37,7 +37,7 @@
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"eslint": "9.39.5",
 		"knip": "6.37.0",
-		"prettier": "3.9.8",
+		"prettier": "3.9.9",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "17.15.0"
 	},
