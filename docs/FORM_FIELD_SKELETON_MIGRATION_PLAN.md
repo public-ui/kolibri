@@ -2,7 +2,7 @@
 
 Übergreifender Plan für die Skeleton-Migration der 14 Formularfelder von `kol-combobox` bis `kol-textarea` (Epic #9559). Er schneidet die Felder in Gruppen, legt das gemeinsame Fundament fest und ordnet die Arbeit in parallele Spuren. Jede Gruppe erhält vor der Umsetzung einen eigenen Detailplan.
 
-Stand: 24.09.2026, `@public-ui/components` 4.5.0-rc.0.
+Stand: 27.09.2026, `@public-ui/components` 4.5.0-rc.0.
 
 ## Ausgangslage
 
@@ -92,14 +92,33 @@ Kein Produktivcode, Voraussetzung für alles. Die Gates greifen nur, wenn vorher
 
 ### G1 – Fundament + Pilot `kol-input-color` (#9673, #9577)
 
-Alle 14 Felder teilen Basis-Props, die Label/Hint/Msg-Hülle, die Formular-Anbindung und die Event-Logik. Das wird einmal gebaut und am dünnsten Feld geprüft, damit die Basisklasse an einem echten Fall entsteht.
+Alle 14 Felder teilen Basis-Props, die Label/Hint/Msg-Hülle, die Formular-Anbindung und die Event-Logik. Das wird einmal gebaut und am dünnsten Feld geprüft, damit die Basisklasse an einem echten Fall entsteht. G1 besteht aus sechs PRs:
 
-1. **Basis-Props** in `internal/props/`: msg, hint, hideMsg, touched, infoPopover, syncValueBySelector, ariaDetails, required, readOnly, `on` (Input-Callbacks) und das Icons-Objekt für Inputs (`icons.ts` bleibt unverändert). Dazu `formFieldBasePropsConfig` für alle `api.tsx`.
-2. **`FormAssociationBehavior`**: übernimmt `input-adapter-leanup/associated.controller.ts` 1:1, einschließlich der späten Host-Zuweisung im Konstruktor. `button/base.tsx` wird im selben PR umgestellt; der Button-Pin bleibt unverändert.
-3. **Shell-FCs** unter `internal/functional-components/form-field/`: FormField (Label/Hint/Msg/Counter/Tooltip-Slot), InputContainer, InputAdornment, IconButton, FieldControl sowie Input, TextArea, Checkbox, Radio, NativeSelect/Option(List) und Suggestions. Neue Blöcke in `schema/bem-registry.ts`. Empfehlung: Die alten FCs leiten vorübergehend auf die neuen weiter, damit das Pixel-Gate die Hülle sofort über alle 14 Felder prüft.
-4. **`BaseFormFieldWebComponent`** (DD16): `apply*` der Basis-Props, ein eigenes `TooltipBehavior` pro Instanz statt der modulglobalen Map in `FormField.tsx`, Formular-Anbindung, Event-Behandlung als Ersatz für `InputController`, Helfer für focus/getValue und die ID-Strategie. Damit wird `kol-input-color` migriert.
+```
+G1.0 Testlücken ───────────────┬──────────────────────────────────────────────┐
+G1.1 Props ─┬─► G1.2 FormAssociationBehavior (+ kol-button) ─► SSR-Fix (eigener PR)
+            │        (braucht G1.0 und G1.1)                                    │
+            └─► G1.3a FormField ─► G1.3b Container/Input ──────────────────────┴─► G1.4 Basis + kol-input-color
+```
 
-Risiken: Zusammenbau von `aria-describedby` (hint, msg, Counter, Hinweis zur Zeichengrenze); ID-Strategie (DD12 gegen Snapshot-Parität); `attachInternals(undefined)` bei SSR/Hydrate; Generics von `ApiFromConfig` beim Einspreizen der Basis-Config.
+0. **Testlücken** (nur Tests):
+   - Formular-Anbindung von `kol-button` gepinnt. Es entsteht kein verstecktes Formularelement, weil der Adapter in `button/base.tsx` `_name` bei der Konstruktion nicht kennt (#11036); `_syncValueBySelector` wirkt im Experimental-Mode.
+   - Gate 7 mit einem `kol-input-color` als Ziel der Fehlerliste.
+   - Tooltip bei `_hideLabel` für `kol-input-color`. Befund: Hat das Feld den Fokus, schließt Escape den Tooltip nicht. Das Feld sendet sein eigenes `keydown`-CustomEvent am Host, das vor der nativen Taste am Dokument ankommt und den einmaligen Escape-Listener des Tooltips verbraucht (#11032, verwandt #11033).
+   - Jest-Snapshots aller Felder zusätzlich mit `_hideLabel`, `_infoPopover`, sichtbarer Msg und `_variant`.
+1. **Basis-Props** in `internal/props/`: ariaDetails, autoComplete, hideMsg, hint, `horizontalIconsProp` (Icons-Objekt der Inputs, `icons.ts` bleibt unverändert), infoPopover, `inputCallbacksProp` (`_on`), msg, readOnly, required, suggestions, syncValueBySelector (nur für das Behavior), touched und der String-Wert. `tooltipAlignProp` wird wiederverwendet, der Feld-Default `'top'` im `apply` neu gesetzt. Der veröffentlichte Typ `FormFieldLabelInfoPopoverProps` zieht in einem Schritt für alle Felder nach `schema/props/`; ein teilweiser Umzug würde in `components.d.ts` einen Alias `…1` erzeugen.
+2. **`FormAssociationBehavior`**: übernimmt `input-adapter-leanup/associated.controller.ts` 1:1, einschließlich der späten Host-Zuweisung im Konstruktor. `AssociatedInputController` wird zur Fassade über das Behavior, damit die G0-Verträge es sofort für alle Felder prüfen. `button/base.tsx` wird im selben PR umgestellt; der Button-Pin bleibt unverändert.
+3. **Shell-FCs** unter `internal/functional-components/form-field/`, nur für die Hülle von `kol-input-color`: G1.3a FormField (Label, Hint, Msg, Counter, Tooltip, Zeichengrenzen-Hinweis) mit dem ARIA-Helfer aus `getRenderStates`, G1.3b InputContainer mit Adornments, IconButton, Input und Suggestions. Neue Blöcke in `schema/bem-registry.ts`. Die alten FCs werden Adapter auf die neuen, damit Hydrate-Snapshot und Pixel-Gate die Hülle sofort über alle Felder prüfen. TextArea kommt in G2, FieldControl/Checkbox/Radio in G4, NativeSelect/Option(List)/CustomSuggestions in G5. Die `fieldset`-Wurzel von radio bleibt bis G4 auf dem alten Pfad, weil `BemRootNodeFC` nur `div` rendert.
+4. **`BaseFormFieldWebComponent`** (DD16): `apply*` der Basis-Props, ein eigenes `TooltipBehavior` pro Instanz statt der modulglobalen Map in `FormField.tsx`, Formular-Anbindung, Event-Behandlung als Ersatz für `InputController` (Reihenfolge: KoliBri-Event, dann Callback) und Render-Helfer. Damit wird `kol-input-color` migriert.
+
+Entscheidungen:
+
+- Die Basis-Config enthält nur Props, die alle 14 Felder identisch haben: ariaDetails, disabled, hideLabel, hideMsg, hint, infoPopover, label, msg, name, on, tooltipAlign, touched. `WebComponentInterface` verlangt für jede Config-Prop einen Watcher.
+- Die Basisklasse ist generisch über die Feld-API. TypeScript löst `ResolvedProps<Api>` für ein generisches `Api` nicht auf, deshalb greift sie über einen einzigen, dokumentierten Self-Cast auf die Basis-Props zu.
+- Bewusste Abweichungen der Prop-Factory, wie in allen bisherigen Skeleton-Migrationen: `undefined` führt zum Default statt den alten Wert zu behalten, `normalizeBoolean` akzeptiert `'true'`/`'false'`, ungültige Werte werden verworfen.
+- `data-testid="input-counter"`/`"input-counter-aria"` bleiben bis G2, weil `e2e/input-character-limit.ts` sie braucht und der DOM byte-gleich bleiben muss.
+
+Risiken: Zusammenbau von `aria-describedby` (hint, msg, Counter, Hinweis zur Zeichengrenze; heutige Eigenheiten in #11035); Attribut- und Klassenreihenfolge im Hydrate-Snapshot; die beiden Fokus-Flags aus Controller und Komponente; `attachInternals(undefined)` bei SSR/Hydrate.
 
 ### G2 – Textfelder: email → password → text, danach textarea (#9579, #9582, #9585, #9602)
 
@@ -156,13 +175,13 @@ Gelöscht wird, sobald der letzte Import weg ist. Veröffentlichte Schema-Typen 
 
 ## Offene Fragen für die Detailpläne
 
-1. Sind die Shell-Adapter (alte FC → neue FC) als Zwischenschicht akzeptabel? (G1.3)
-2. ID-Strategie: bisherige Erzeugung für Snapshot-Parität oder DD12 `createUniqueId`? (G1.4)
-3. `_touched` als `@State` oder als Render-Prop? (G1.4)
-4. `_on`: eine gemeinsame Callback-Prop oder typisiert pro Feld? (G1.1)
-5. SSR-Absturz von `attachInternals(undefined)` 1:1 übernehmen oder mit eigenem PR über einen Guard absichern? (G1.2)
+1. ~~Sind die Shell-Adapter (alte FC → neue FC) als Zwischenschicht akzeptabel? (G1.3)~~ Entschieden: ja, siehe G1.3.
+2. ~~ID-Strategie: bisherige Erzeugung für Snapshot-Parität oder DD12 `createUniqueId`? (G1.4)~~ Kein Konflikt: Legacy nutzt bereits `createUniqueId` und `createRelatedUniqueId`. Die Basis-ID wird einmal pro Instanz als `@State()` erzeugt.
+3. ~~`_touched` als `@State` oder als Render-Prop? (G1.4)~~ Entschieden: Render-Prop. `_touched` bleibt `@Prop({ mutable: true, reflect: true })`, der Blur-Handler schreibt die Prop (Vorbild `_open` in `kol-details`).
+4. ~~`_on`: eine gemeinsame Callback-Prop oder typisiert pro Feld? (G1.1)~~ Entschieden: gemeinsam, alle Felder deklarieren `InputTypeOnDefault`.
+5. ~~SSR-Absturz von `attachInternals(undefined)` 1:1 übernehmen oder mit eigenem PR über einen Guard absichern? (G1.2)~~ Entschieden: 1:1 übernehmen, Fix als eigener PR nach G1.2 (#11034). Ursache ist nicht ein leeres `@Element()`: In mock-doc greift `instanceof Element` in `findHostWithShadowRoot` nicht. Betroffen sind im SSR die inneren `kol-button-wc`/`kol-popover-button-wc` und mit `serializeShadowRoot: 'scoped'` alle Legacy-Felder.
 6. ~~Verhaltensverträge in Jest oder in Playwright? (G0)~~ Entschieden: Playwright, siehe G0.
-7. Namen der Input-Props für min/max/step und für das Icons-Objekt. (G3)
+7. Namen der Input-Props für min/max/step. (G3) Das Icons-Objekt heißt `horizontalIconsProp` (G1.1).
 8. `kol-select-wc` als Übergangs-Tag behalten oder `pagination` direkt auf das FC umstellen? (G5)
 9. combobox und single-select: gemeinsame DD16-Basis oder `ListboxBehavior`? (G5)
 10. #10501 und #10617 vor oder nach der Migration fixen? (G5)

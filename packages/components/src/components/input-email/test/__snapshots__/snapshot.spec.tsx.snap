@@ -87,6 +87,47 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 </kol-input-email>
 `;
 
+exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _hideLabel=true 1`] = `
+<kol-input-email _value="email@example.com">
+  <template shadowrootmode="open">
+    <div class="email has-value kol-form-field kol-form-field--hide-label kol-input-email">
+      <label class="kol-form-field__label" hidden="" htmlfor="input-email-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input aria-label="Label" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-email-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
+          </div>
+        </div>
+        <div class="kol-form-field__tooltip">
+          <div class="kol-tooltip__floating">
+            <div class="kol-tooltip__arrow"></div>
+            <span class="kol-span kol-tooltip__content" id="input-email-label-nonce">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-email>
+`;
+
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _hint="Hint" 1`] = `
 <kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
@@ -216,6 +257,39 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 </kol-input-email>
 `;
 
+exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _infoPopover={"_label":"Info","_content":"Ich bin ein Hinweis.","_icons":"kolicon-alert-info"} 1`] = `
+<kol-input-email _value="email@example.com">
+  <template shadowrootmode="open">
+    <div class="email has-value kol-form-field kol-input-email">
+      <label class="kol-form-field__label" htmlfor="input-email-nonce" id="input-email-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
+          <div class="kol-popover-button__popover--styled">
+            Ich bin ein Hinweis.
+          </div>
+        </kol-popover-button-wc>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-email-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-email>
+`;
+
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
 <kol-input-email _touched="" _value="email@example.com">
   <template shadowrootmode="open">
@@ -237,6 +311,43 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
           <div class="kol-input-container__container">
             <input aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-email-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
           </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-email>
+`;
+
+exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _touched=true 1`] = `
+<kol-input-email _touched="" _value="email@example.com">
+  <template shadowrootmode="open">
+    <div class="email has-value kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-email">
+      <label class="kol-form-field__label" htmlfor="input-email-nonce" id="input-email-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container kol-input-container--error">
+          <div class="kol-input-container__container">
+            <input aria-describedby="input-email-msg-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-email-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
+          </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" id="input-email-msg-nonce" role="alert">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </div>
@@ -468,6 +579,52 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 </kol-input-email>
 `;
 
+exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _hideLabel=true 1`] = `
+<kol-input-email _value="email@example.com">
+  <template shadowrootmode="open">
+    <div class="email has-value kol-form-field kol-form-field--hide-label kol-input-email">
+      <label class="kol-form-field__label" hidden="" htmlfor="input-email-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input aria-label="Label" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-email-nonce" list="input-email-list-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
+            <datalist id="input-email-list-nonce">
+              <option value="email1@example.com"></option>
+              <option value="email2@example.com"></option>
+              <option value="email3@example.com"></option>
+            </datalist>
+          </div>
+        </div>
+        <div class="kol-form-field__tooltip">
+          <div class="kol-tooltip__floating">
+            <div class="kol-tooltip__arrow"></div>
+            <span class="kol-span kol-tooltip__content" id="input-email-label-nonce">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-email>
+`;
+
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _hint="Hint" 1`] = `
 <kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
@@ -617,6 +774,44 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 </kol-input-email>
 `;
 
+exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _infoPopover={"_label":"Info","_content":"Ich bin ein Hinweis.","_icons":"kolicon-alert-info"} 1`] = `
+<kol-input-email _value="email@example.com">
+  <template shadowrootmode="open">
+    <div class="email has-value kol-form-field kol-input-email">
+      <label class="kol-form-field__label" htmlfor="input-email-nonce" id="input-email-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
+          <div class="kol-popover-button__popover--styled">
+            Ich bin ein Hinweis.
+          </div>
+        </kol-popover-button-wc>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-email-nonce" list="input-email-list-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
+            <datalist id="input-email-list-nonce">
+              <option value="email1@example.com"></option>
+              <option value="email2@example.com"></option>
+              <option value="email3@example.com"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-email>
+`;
+
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
 <kol-input-email _touched="" _value="email@example.com">
   <template shadowrootmode="open">
@@ -643,6 +838,48 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
               <option value="email3@example.com"></option>
             </datalist>
           </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-email>
+`;
+
+exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _touched=true 1`] = `
+<kol-input-email _touched="" _value="email@example.com">
+  <template shadowrootmode="open">
+    <div class="email has-value kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-email">
+      <label class="kol-form-field__label" htmlfor="input-email-nonce" id="input-email-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container kol-input-container--error">
+          <div class="kol-input-container__container">
+            <input aria-describedby="input-email-msg-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-email-nonce" list="input-email-list-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
+            <datalist id="input-email-list-nonce">
+              <option value="email1@example.com"></option>
+              <option value="email2@example.com"></option>
+              <option value="email3@example.com"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" id="input-email-msg-nonce" role="alert">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </div>
@@ -825,6 +1062,39 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
 </kol-input-email>
 `;
 
+exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] _variant="custom" 1`] = `
+<kol-input-email _value="email@example.com">
+  <template shadowrootmode="open">
+    <div class="email has-value kol-form-field kol-form-field--custom kol-input-email">
+      <label class="kol-form-field__label" htmlfor="input-email-nonce" id="input-email-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-email-nonce" list="input-email-list-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
+            <datalist id="input-email-list-nonce">
+              <option value="email1@example.com"></option>
+              <option value="email2@example.com"></option>
+              <option value="email3@example.com"></option>
+            </datalist>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-email>
+`;
+
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _suggestions=["email1@example.com","email2@example.com","email3@example.com"] 1`] = `
 <kol-input-email _value="email@example.com">
   <template shadowrootmode="open">
@@ -878,6 +1148,34 @@ exports[`kol-input-email should render with _label="Label" _name="field" _placeh
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--touched" id="input-email-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-email>
+`;
+
+exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _variant="custom" 1`] = `
+<kol-input-email _value="email@example.com">
+  <template shadowrootmode="open">
+    <div class="email has-value kol-form-field kol-form-field--custom kol-input-email">
+      <label class="kol-form-field__label" htmlfor="input-email-nonce" id="input-email-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-email-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="email" value="email@example.com">
           </div>
         </div>
       </div>

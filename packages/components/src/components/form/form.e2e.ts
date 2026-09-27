@@ -76,5 +76,22 @@ test.describe('kol-form', () => {
 
 			await expect(page.locator('#second-field')).toBeFocused();
 		});
+
+		test('should focus the inner input of a KoliBri form field an error entry points at', async ({ page }) => {
+			await page.setContent(`
+				<kol-form>
+					<kol-input-color id="color-field" _label="Farbe"></kol-input-color>
+				</kol-form>
+			`);
+			const kolForm = page.locator('kol-form');
+			await kolForm.evaluate((element: HTMLKolFormElement) => {
+				element._errorList = [{ message: 'Die Farbe ist ein Pflichtfeld.', selector: '#color-field' }];
+			});
+			await page.waitForChanges();
+
+			await kolForm.locator('.kol-form__link a').first().click();
+
+			await expect(page.locator('#color-field input.kol-input')).toBeFocused();
+		});
 	});
 });

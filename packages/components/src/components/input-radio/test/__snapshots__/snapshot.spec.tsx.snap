@@ -240,6 +240,125 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 </kol-input-radio>
 `;
 
+exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _hideLabel=true 1`] = `
+<kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
+  <template shadowrootmode="open">
+    <fieldset class="kol-form-field kol-form-field--radio">
+      <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="input-radio-nonce" id="input-radio-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </legend>
+      <div class="kol-form-field__input kol-form-field__input--orientation-vertical">
+        <div class="kol-field-control kol-field-control--disabled kol-field-control--hide-label">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--disabled">
+              <input aria-label="Frau" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
+            </label>
+          </div>
+          <div class="kol-form-field__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content" id="input-radio-0-label-nonce">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Frau
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Frau
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control kol-field-control--hide-label">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input aria-label="Herr" autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
+            </label>
+          </div>
+          <div class="kol-form-field__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content" id="input-radio-1-label-nonce">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Herr
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Herr
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control kol-field-control--hide-label">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input aria-label="Divers" autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
+            </label>
+          </div>
+          <div class="kol-form-field__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content" id="input-radio-2-label-nonce">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Divers
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Divers
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </template>
+</kol-input-radio>
+`;
+
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _hint="Hint" 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
@@ -563,6 +682,91 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 </kol-input-radio>
 `;
 
+exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _infoPopover={"_label":"Info","_content":"Ich bin ein Hinweis.","_icons":"kolicon-alert-info"} 1`] = `
+<kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
+  <template shadowrootmode="open">
+    <fieldset class="kol-form-field kol-form-field--radio">
+      <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="input-radio-nonce" id="input-radio-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
+          <div class="kol-popover-button__popover--styled">
+            Ich bin ein Hinweis.
+          </div>
+        </kol-popover-button-wc>
+      </legend>
+      <div class="kol-form-field__input kol-form-field__input--orientation-vertical">
+        <div class="kol-field-control kol-field-control--disabled">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--disabled">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Frau
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Herr
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Divers
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </template>
+</kol-input-radio>
+`;
+
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Value">
   <template shadowrootmode="open">
@@ -636,6 +840,95 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               </span>
             </span>
           </label>
+        </div>
+      </div>
+    </fieldset>
+  </template>
+</kol-input-radio>
+`;
+
+exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _touched=true 1`] = `
+<kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Value">
+  <template shadowrootmode="open">
+    <fieldset aria-describedby="input-radio-msg-nonce" class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--radio kol-form-field--touched">
+      <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="input-radio-nonce" id="input-radio-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </legend>
+      <div class="kol-form-field__input kol-form-field__input--orientation-vertical">
+        <div class="kol-field-control kol-field-control--disabled kol-field-control--error kol-field-control--touched">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--disabled kol-input-radio--error kol-input-radio--touched">
+              <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--touched kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Frau
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control kol-field-control--error kol-field-control--touched">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--error kol-input-radio--touched">
+              <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Herr
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control kol-field-control--error kol-field-control--touched">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--error kol-input-radio--touched">
+              <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Divers
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" id="input-radio-msg-nonce" role="alert">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </fieldset>
@@ -945,6 +1238,125 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Divers
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </template>
+</kol-input-radio>
+`;
+
+exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _hideLabel=true 1`] = `
+<kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
+  <template shadowrootmode="open">
+    <fieldset class="kol-form-field kol-form-field--radio">
+      <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="input-radio-nonce" id="input-radio-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </legend>
+      <div class="kol-form-field__input kol-form-field__input--orientation-horizontal">
+        <div class="kol-field-control kol-field-control--disabled kol-field-control--hide-label">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--disabled">
+              <input aria-label="Frau" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
+            </label>
+          </div>
+          <div class="kol-form-field__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content" id="input-radio-0-label-nonce">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Frau
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Frau
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control kol-field-control--hide-label">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input aria-label="Herr" autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
+            </label>
+          </div>
+          <div class="kol-form-field__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content" id="input-radio-1-label-nonce">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Herr
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Herr
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control kol-field-control--hide-label">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input aria-label="Divers" autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
+            </label>
+          </div>
+          <div class="kol-form-field__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content" id="input-radio-2-label-nonce">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Divers
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1286,6 +1698,91 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 </kol-input-radio>
 `;
 
+exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _infoPopover={"_label":"Info","_content":"Ich bin ein Hinweis.","_icons":"kolicon-alert-info"} 1`] = `
+<kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
+  <template shadowrootmode="open">
+    <fieldset class="kol-form-field kol-form-field--radio">
+      <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="input-radio-nonce" id="input-radio-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
+          <div class="kol-popover-button__popover--styled">
+            Ich bin ein Hinweis.
+          </div>
+        </kol-popover-button-wc>
+      </legend>
+      <div class="kol-form-field__input kol-form-field__input--orientation-horizontal">
+        <div class="kol-field-control kol-field-control--disabled">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--disabled">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Frau
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Herr
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Divers
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </template>
+</kol-input-radio>
+`;
+
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Value">
   <template shadowrootmode="open">
@@ -1359,6 +1856,95 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
               </span>
             </span>
           </label>
+        </div>
+      </div>
+    </fieldset>
+  </template>
+</kol-input-radio>
+`;
+
+exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _touched=true 1`] = `
+<kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Value">
+  <template shadowrootmode="open">
+    <fieldset aria-describedby="input-radio-msg-nonce" class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--radio kol-form-field--touched">
+      <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="input-radio-nonce" id="input-radio-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </legend>
+      <div class="kol-form-field__input kol-form-field__input--orientation-horizontal">
+        <div class="kol-field-control kol-field-control--disabled kol-field-control--error kol-field-control--touched">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--disabled kol-input-radio--error kol-input-radio--touched">
+              <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--touched kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Frau
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control kol-field-control--error kol-field-control--touched">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--error kol-input-radio--touched">
+              <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Herr
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control kol-field-control--error kol-field-control--touched">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--error kol-input-radio--touched">
+              <input aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Divers
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" id="input-radio-msg-nonce" role="alert">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </fieldset>
@@ -1686,6 +2272,86 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
 </kol-input-radio>
 `;
 
+exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" _variant="custom" 1`] = `
+<kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
+  <template shadowrootmode="open">
+    <fieldset class="kol-form-field kol-form-field--custom kol-form-field--radio">
+      <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="input-radio-nonce" id="input-radio-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </legend>
+      <div class="kol-form-field__input kol-form-field__input--orientation-horizontal">
+        <div class="kol-field-control kol-field-control--disabled">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--disabled">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Frau
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Herr
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Divers
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </template>
+</kol-input-radio>
+`;
+
 exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _orientation="horizontal" 1`] = `
 <kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
   <template shadowrootmode="open">
@@ -1985,6 +2651,86 @@ exports[`kol-input-radio should render with _label="Label" _name="field" _placeh
           <div class="kol-field-control__input">
             <label class="kol-input-radio kol-input-radio--touched">
               <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--touched kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Divers
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </template>
+</kol-input-radio>
+`;
+
+exports[`kol-input-radio should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] _variant="custom" 1`] = `
+<kol-input-radio _placeholder="Hier steht ein Platzhaltertext" _value="Value">
+  <template shadowrootmode="open">
+    <fieldset class="kol-form-field kol-form-field--custom kol-form-field--radio">
+      <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="input-radio-nonce" id="input-radio-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </legend>
+      <div class="kol-form-field__input kol-form-field__input--orientation-vertical">
+        <div class="kol-field-control kol-field-control--disabled">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio kol-input-radio--disabled">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-radio__input" disabled="" id="input-radio-0-nonce" name="field" type="radio" value="-0">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-0-nonce" id="input-radio-0-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Frau
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-1-nonce" name="field" type="radio" value="-1">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-radio-1-nonce" id="input-radio-1-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Herr
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+        <div class="kol-field-control">
+          <div class="kol-field-control__input">
+            <label class="kol-input-radio">
+              <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="input-radio-2-nonce" name="field" type="radio" value="-2">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="input-radio-2-nonce" id="input-radio-2-label-nonce">
