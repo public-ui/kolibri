@@ -1,0 +1,1812 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "266 changed, 182 added – 0 of 448 approved, review pending",
+	"computedAt": "2026-09-27T18:33:08.511Z",
+	"pr": 11042,
+	"head": "485b97aef2ec0fa79c444d465a4abc09ddf630ea",
+	"digest": "sha256:eb630b8134ca795675bdbd1e7e7098752f4e5f3c980df650cc33cb7f1e3da654",
+	"counts": {
+		"changes": 448,
+		"open": 448,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/button-link-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-button-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-button-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-button-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-button-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-button-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-button-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-switch-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-switch-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-switch-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-switch-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-switch-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-checkbox-switch-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-color-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-file-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-password-show-password-noColumns--show-password": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-radio-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-radio-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-radio-basic-noColumns--label-horizontal-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-radio-basic-noColumns--label-horizontal-hints": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-range-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-text-disabled-noColumns--placeholder": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-text-smart-button-noColumns--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/link-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/pagination-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/pagination-basic--basic-320": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-accordion-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-badge-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-buttonLink-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-combobox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-details-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputCheckbox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputColor-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputDate-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputEmail-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputFile-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputFileMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputNumber-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputPassword-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputRadio-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputRange-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-inputText-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-link-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-linkButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-popoverButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-select-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-selectMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-singleSelect-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-splitButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-textarea-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/scenarios-focus-elements-component-toolbar-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/table-stateful-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/table-stateless-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/tabs-icons-only--icons-only": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/textarea-basic-noColumns--label-disabled-empty": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/toolbar-disabled--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/button-link-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/combobox-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/details-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-basic-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-basic-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-basic-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-button-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-button-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-button-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-button-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-button-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-button-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-switch-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-switch-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-switch-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-switch-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-switch-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-checkbox-switch-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-color-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-date-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-email-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-file-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-number-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-password-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-password-show-password-noColumns--show-password": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-radio-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-radio-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-radio-basic-noColumns--label-horizontal-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-radio-basic-noColumns--label-horizontal-hints": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-range-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-basic-noColumns--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-clear-button-noColumns--search-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-disabled-noColumns--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-disabled-noColumns--placeholder": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-disabled-noColumns--value": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-smart-button-noColumns--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/link-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/pagination-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/pagination-basic--basic-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-accordion-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-badge-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-buttonLink-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-combobox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-details-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputCheckbox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputColor-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputDate-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputEmail-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputFile-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputFileMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputNumber-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputPassword-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputRadio-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputRange-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-inputText-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-link-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-linkButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-popoverButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-select-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-selectMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-singleSelect-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-splitButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-textarea-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-toolbar-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/select-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/single-select-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/tabs-icons-only--icons-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/textarea-basic-noColumns--label-disabled-empty": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/textarea-basic-noColumns--label-disabled-value": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/toolbar-disabled--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/button-link-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-basic-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-button-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-button-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-button-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-button-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-button-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-button-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-switch-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-switch-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-switch-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-switch-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-switch-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-checkbox-switch-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-color-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-file-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-password-show-password-noColumns--show-password": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-radio-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-radio-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-radio-basic-noColumns--label-horizontal-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-radio-basic-noColumns--label-horizontal-hints": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-range-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-text-disabled-noColumns--placeholder": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-text-smart-button-noColumns--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/link-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/pagination-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/pagination-basic--basic-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-accordion-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-badge-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-buttonLink-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-combobox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-details-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputCheckbox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputColor-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputDate-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputEmail-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputFile-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputFileMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputNumber-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputPassword-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputRadio-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputRange-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-inputText-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-link-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-linkButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-popoverButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-select-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-selectMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-singleSelect-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-splitButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-textarea-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-toolbar-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/table-stateful-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/table-stateless-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/tabs-icons-only--icons-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/textarea-basic-noColumns--label-disabled-empty": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/toolbar-disabled--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/combobox-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/details-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-checkbox-basic-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-checkbox-basic-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-checkbox-basic-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-checkbox-basic-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-checkbox-basic-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-checkbox-switch-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-checkbox-switch-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-checkbox-switch-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-checkbox-switch-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-checkbox-switch-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-checkbox-switch-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-color-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-date-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-email-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-file-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-number-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-password-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-password-show-password-noColumns--show-password": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-radio-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-radio-basic-noColumns--label-horizontal-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-range-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-basic-noColumns--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-clear-button-noColumns--search-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-disabled-noColumns--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-disabled-noColumns--placeholder": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-disabled-noColumns--value": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-smart-button-noColumns--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/pagination-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/pagination-basic--basic-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-accordion-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-badge-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-buttonLink-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-combobox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-details-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputCheckbox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputColor-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputDate-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputEmail-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputFile-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputFileMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputNumber-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputPassword-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputRadio-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputRange-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-inputText-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-link-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-linkButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-popoverButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-select-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-selectMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-singleSelect-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-splitButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-textarea-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-toolbar-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/select-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/single-select-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateful-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/textarea-basic-noColumns--label-disabled-empty": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/textarea-basic-noColumns--label-disabled-value": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/toolbar-disabled--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/button-link-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/details-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-basic-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-switch-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-switch-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-switch-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-switch-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-switch-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-checkbox-switch-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-color-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-file-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-password-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-radio-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-radio-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-radio-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-radio-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-radio-basic-noColumns--label-horizontal": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-radio-basic-noColumns--label-horizontal-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-radio-basic-noColumns--label-horizontal-hints": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-range-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-text-disabled-noColumns--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-text-smart-button-noColumns--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/link-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/pagination-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/pagination-basic--basic-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-accordion-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-badge-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-buttonLink-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-combobox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-details-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputCheckbox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputColor-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputDate-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputEmail-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputFile-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputFileMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputNumber-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputPassword-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputRadio-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputRange-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-inputText-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-link-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-linkButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-popoverButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-select-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-selectMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-singleSelect-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-splitButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-textarea-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-toolbar-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/select-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/single-select-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/table-stateful-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/table-stateful-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/table-stateless-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/textarea-basic-noColumns--label-disabled-empty": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/textarea-basic-noColumns--label-disabled-value": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/toolbar-disabled--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/accordion-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/button-link-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/combobox-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/details-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-basic-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-basic-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-basic-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-basic-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-basic-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-basic-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-button-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-button-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-button-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-button-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-button-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-button-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-switch-noColumns--left-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-switch-noColumns--left-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-switch-noColumns--left-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-switch-noColumns--right-checked-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-switch-noColumns--right-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-checkbox-switch-noColumns--right-indet-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-color-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-date-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-email-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-file-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-number-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-password-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-password-show-password-noColumns--show-password": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-radio-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-radio-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-radio-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-radio-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-radio-basic-noColumns--label-horizontal": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-radio-basic-noColumns--label-horizontal-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-radio-basic-noColumns--label-horizontal-hints": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-range-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-basic-noColumns--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-clear-button-noColumns--search-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-disabled-noColumns--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-disabled-noColumns--placeholder": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-disabled-noColumns--value": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-smart-button-noColumns--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/link-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/pagination-basic--basic": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/pagination-basic--basic-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-accordion-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-badge-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-buttonLink-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-combobox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-details-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputCheckbox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputColor-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputDate-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputEmail-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputFile-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputFileMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputNumber-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputPassword-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputRadio-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputRange-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-inputText-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-link-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-linkButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-popoverButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-select-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-selectMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-singleSelect-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-splitButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-textarea-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-toolbar-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/select-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/single-select-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-variant--variants": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/tabs-icons-only--icons-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/textarea-basic-noColumns--label-disabled-empty": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/textarea-basic-noColumns--label-disabled-value": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/toolbar-disabled--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-password-show-password-noColumns--show-password": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-accordion-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-badge-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-button-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-buttonLink-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-combobox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-details-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-inputCheckbox-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-inputColor-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-inputDate-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-inputEmail-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-inputFile-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-inputFileMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-inputNumber-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-inputPassword-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-inputRadio-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-inputRange-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-inputText-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-link-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-linkButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-popoverButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-select-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-selectMultiple-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-singleSelect-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-splitButton-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-textarea-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-toolbar-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/textarea-basic-noColumns--label-disabled-empty": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/textarea-basic-noColumns--label-disabled-value": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
