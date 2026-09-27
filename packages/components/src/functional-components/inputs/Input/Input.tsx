@@ -27,13 +27,19 @@ const TEXT_LIKE_TYPES = new Set(['date', 'datetime-local', 'email', 'month', 'nu
 type KeyDownHandler = JSXBase.InputHTMLAttributes<HTMLInputElement>['onKeyDown'];
 
 /**
- * Enter submits the surrounding form from most inputs, so a disabled input swallows it. All other
- * keys still reach the component, e.g. the arrow keys that move through a radio group.
+ * Keys a disabled text-like input cancels: Enter submits the surrounding form, Space opens the
+ * picker of date and time inputs and the step keys change their value, even when they are
+ * `readonly` (Chrome).
+ */
+const BLOCKED_TEXT_KEYS = new Set([' ', 'ArrowDown', 'ArrowUp', 'Enter', 'PageDown', 'PageUp']);
+
+/**
+ * All other keys still reach the component, e.g. the arrow keys that move through a radio group.
  */
 const guardKeyDown =
-	(onKeyDown: KeyDownHandler): KeyDownHandler =>
+	(onKeyDown: KeyDownHandler, isTextLike: boolean): KeyDownHandler =>
 	(event: KeyboardEvent) => {
-		if (event.key === 'Enter') {
+		if (event.key === 'Enter' || (isTextLike && BLOCKED_TEXT_KEYS.has(event.key))) {
 			blockInactive(event);
 			return;
 		}
@@ -60,6 +66,7 @@ const InputFc: FC<InputProps> = (props) => {
 	const isDisabled = Boolean(disabled);
 	const type = other.type ?? 'text';
 	const isRange = type === 'range';
+	const isTextLike = TEXT_LIKE_TYPES.has(type);
 
 	const stateCssClasses = {
 		['kol-input--disabled']: Boolean(disabled),
@@ -72,14 +79,14 @@ const InputFc: FC<InputProps> = (props) => {
 	const inputProps: JSXBase.InputHTMLAttributes<HTMLInputElement> & { 'aria-disabled'?: 'true' } = {
 		class: clsx('kol-input', stateCssClasses, classNames),
 		required: required,
-		readonly: Boolean(readonly) || (isDisabled && TEXT_LIKE_TYPES.has(type)),
+		readonly: Boolean(readonly) || (isDisabled && isTextLike),
 		type: 'text',
 		list: suggestions && typeof other.id === 'string' ? createRelatedUniqueId(other.id, 'list') : undefined,
 		...getDefaultProps({ ariaDescribedBy, hideLabel, label }),
 		...other,
 		'aria-disabled': isDisabled ? 'true' : undefined,
 		onClick: isDisabled ? blockInactive : onClick,
-		onKeyDown: isDisabled ? guardKeyDown(onKeyDown) : onKeyDown,
+		onKeyDown: isDisabled ? guardKeyDown(onKeyDown, isTextLike) : onKeyDown,
 		// A range slider is operated by dragging, which no click handler sees.
 		onMouseDown: isDisabled && isRange ? blockInactive : other.onMouseDown,
 		onPointerDown: isDisabled && isRange ? blockInactive : other.onPointerDown,

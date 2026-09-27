@@ -57,7 +57,15 @@ for (const { tag, attributes, selector } of CASES) {
 			await page.locator(tag).evaluate((element: HTMLElement & { _on?: unknown }, eventTypes: string[]) => {
 				const activations: string[] = [];
 				(window as RecordedWindow).__activations = activations;
-				eventTypes.forEach((type) => element.addEventListener(type, () => activations.push(`event:${type}`)));
+				eventTypes.forEach((type) =>
+					element.addEventListener(type, (event: Event) => {
+						/* `host.click()` on a component without its own `click()` method dispatches a native click on
+						   the host itself; that is no activation of the element inside. */
+						if (event.composedPath()[0] !== element || event instanceof CustomEvent) {
+							activations.push(`event:${type}`);
+						}
+					}),
+				);
 				element._on = {
 					onChange: () => activations.push('callback:change'),
 					onClick: () => activations.push('callback:click'),
