@@ -142,6 +142,7 @@ G1.4 ─► G2.1 Props + CounterBehavior + TextAreaFC ─► G2.2 Basis + email 
   - `has-value` ist wie im Legacy-Code ein einfaches Feld ohne Re-Render (#11053).
   - Beim Laden werden Wert und Maximum ohne Zähler-Update übernommen, der Zähler wird in `componentDidLoad` gefüllt.
   - Icons und Smart-Button der Input-Container bildet `getInputAdornments()` (`form-field/adornments.tsx`) für alle migrierten Felder, auch für `kol-input-color`.
+- G2.3: `kol-input-password` auf `BaseTextInputWebComponent`, mit `visibilityToggle` und dem State `passwordVisible`. Der Kompatibilitätszweig `_variant === 'visibility-toggle'` (#10247) entfällt: Legacy verglich den bereits zu einem Array normalisierten `_variant` mit einem String, der Zweig griff also nie. Der G2.0-Snapshot pinnt das. `input-password/controller.ts` bleibt bis G2.4, weil `InputTextController` davon erbt.
 - `CounterBehavior` ersetzt `utils/counter-dom-updater.ts`; das direkte DOM-Update ohne Re-Render bleibt erhalten.
 - textarea erbt direkt von `BaseFormFieldWebComponent` und nutzt das CounterBehavior.
 - Risiken: Selection-API und `_type` search/url/tel von input-text; Clear-Button und Visibility-Toggle; Datalist-IDs; `_adjustHeight`/`_resize` bei textarea.
