@@ -27,7 +27,7 @@ import { KolInputNumber } from './input-number/shadow';
 import { KolInputPassword } from './input-password/component';
 import { KolInputRadio } from './input-radio/shadow';
 import { KolInputRange } from './input-range/shadow';
-import { KolInputText } from './input-text/shadow';
+import { KolInputText } from './input-text/component';
 import { KolKolibri } from './kolibri/shadow';
 import { KolLinkButton } from './link-button/component';
 import { KolLink } from './link/component';
