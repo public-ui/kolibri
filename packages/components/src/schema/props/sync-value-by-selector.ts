@@ -5,4 +5,4 @@ export type PropSyncValueBySelector = {
 	syncValueBySelector: SyncValueBySelectorPropType;
 };
 
-/* No validator, see AssociatedInputController#validateSyncValueBySelector */
+/* No validator, see FormAssociationBehavior#watchSyncValueBySelector */

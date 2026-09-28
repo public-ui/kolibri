@@ -37,9 +37,9 @@ import type { ApiFromConfig, PropsConfigShape, WebComponentInterface } from '../
  * - `linkRoleProp`: the button shares the `'tab' | 'treeitem'` role union with the link
  *   (`AlternativeButtonLinkRolePropType`), so it reuses the same definition.
  * - `_syncValueBySelector` and `_value` are deliberately absent: neither is rendered, and both are
- *   opaque pass-throughs to `AssociatedInputController` (a CSS selector resolved against the
+ *   opaque pass-throughs to `FormAssociationBehavior` (a CSS selector resolved against the
  *   document, and an arbitrary `StencilUnknown` payload). They stay raw `@Prop`s on the web
- *   component, which forwards them to the controller from their watchers.
+ *   component, which forwards them to the behavior from their watchers.
  */
 export const buttonPropsConfig = {
 	required: [labelWithExpertSlotProp],
