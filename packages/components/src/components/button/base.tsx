@@ -1,12 +1,12 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
-import type { Generic } from 'adopted-style-sheets';
 import { getFeatureFlag } from 'adopted-style-sheets';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { ButtonApi } from '../../internal/functional-components/button/api';
 import { buttonPropsConfig } from '../../internal/functional-components/button/api';
 import { ButtonFC } from '../../internal/functional-components/button/component';
+import { FormAssociationBehavior } from '../../internal/functional-components/form-association/behavior';
 import type { FunctionalComponentProps } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import {
@@ -37,7 +37,6 @@ import type {
 	AlternativeButtonLinkRolePropType,
 	AriaDescriptionPropType,
 	ButtonCallbacksPropType,
-	ButtonProps,
 	ButtonTypePropType,
 	CustomClassPropType,
 	IconsPropType,
@@ -56,7 +55,6 @@ import { validateAccessAndShortKey } from '../../schema/validators/access-and-sh
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/controller';
-import { AssociatedInputController } from '../input-adapter-leanup/associated.controller';
 
 /**
  * Shared orchestrator implementation for every custom element that renders `ButtonFC`:
@@ -82,16 +80,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 
 	protected readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 
-	/**
-	 * `AssociatedInputController` predates the skeleton architecture: it expects a
-	 * `Generic.Element.Component`, i.e. a mutable `state` bag plus underscored props. A skeleton web
-	 * component has no such bag, so the controller receives this minimal adapter instead of the
-	 * component itself. It carries exactly what the controller reads and writes: `state` (patched
-	 * by `validateName`), `_name` and `_syncValueBySelector`.
-	 */
-	private readonly formAssociation: Generic.Element.Component & Pick<ButtonProps, '_name' | '_syncValueBySelector'> = { state: {} };
-
-	private associatedController!: AssociatedInputController;
+	private formAssociation!: FormAssociationBehavior;
 
 	/**
 	 * The raw `_value`. It is neither rendered nor normalized (see `buttonPropsConfig`), but the
@@ -101,13 +90,16 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	private formValue?: StencilUnknown;
 
 	/**
-	 * Creates the form-association controller. Must be called from the concrete element's
-	 * constructor (after `super()`), not from this base class's constructor: Stencil registers the
-	 * host element at the start of the *component* class's constructor, so `this.host` is only
-	 * populated once the base constructor has returned.
+	 * Creates the form association. Must be called from the concrete element's constructor (after
+	 * `super()`), not from this base class's constructor: Stencil registers the host element at the
+	 * start of the *component* class's constructor, so `this.host` is only populated once the base
+	 * constructor has returned.
+	 *
+	 * No name is passed, because the name is only applied in `componentWillLoad`. The button therefore
+	 * never creates a hidden form element (#11036).
 	 */
 	protected initFormAssociation(): void {
-		this.associatedController = new AssociatedInputController(this.formAssociation, 'button', this.host);
+		this.formAssociation = new FormAssociationBehavior(BaseWebComponent.stateLess, { host: this.host, type: 'button' });
 	}
 
 	// --- Lifecycle helpers (called from the concrete element's lifecycle methods) ---
@@ -120,10 +112,10 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 		// Seed `tabIndex` as unset before any watcher runs: an unset tabindex must not render as
 		// `tabindex="0"` — buttons are natively tabbable and the attribute would pin them into the
 		// document tab order. `applyTabIndex` does the same for elements that expose `_tabIndex`,
-		// but a `shadow: false` element can abort mid-initialization under SSR (`@Element()` is not
-		// populated in its constructor, `AssociatedInputController` then throws on
-		// `attachInternals(undefined)` and Stencil swallows the error but renders anyway). Without
-		// this line the props config default `0` would survive such an abort.
+		// but a `shadow: false` element can abort mid-initialization under SSR (the form association
+		// finds no host with a shadow root, because `instanceof Element` fails in Stencil's mock DOM,
+		// then throws on `attachInternals(undefined)`, and Stencil swallows the error but renders
+		// anyway, #11034). Without this line the props config default `0` would survive such an abort.
 		this.unsetRenderProp('tabIndex');
 	}
 
@@ -163,7 +155,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 			propagateResetEventToForm({ form: this.host, ref: this.ctaRef.el });
 		} else {
 			// TODO: Static form handling
-			this.associatedController.setFormAssociatedValue(this.formValue);
+			this.formAssociation.setFormAssociatedValue(this.formValue);
 
 			const onClick = this.getRenderProp('on').onClick;
 			if (typeof onClick === 'function') {
@@ -258,8 +250,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 
 	protected applyName(value?: string): void {
 		nameProp.apply(value, (v) => this.setRenderProp('name', v));
-		this.formAssociation._name = value;
-		this.associatedController.validateName(value);
+		this.formAssociation.watchName(value);
 	}
 
 	protected applyOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
@@ -276,8 +267,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	}
 
 	protected applySyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		this.formAssociation._syncValueBySelector = value;
-		this.associatedController.validateSyncValueBySelector(value);
+		this.formAssociation.watchSyncValueBySelector(value);
 	}
 
 	protected applyTabIndex(value?: number): void {
@@ -305,7 +295,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 
 	protected applyValue(value?: StencilUnknown): void {
 		this.formValue = value;
-		this.associatedController.setFormAssociatedValue(value);
+		this.formAssociation.setFormAssociatedValue(value);
 	}
 
 	protected applyVariant(value?: VariantClassNamePropType): void {
