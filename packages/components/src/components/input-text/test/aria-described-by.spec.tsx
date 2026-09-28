@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolInputText } from '../shadow';
+import { KolInputText } from '../component';
 
 describe('kol-input-text aria-describedby', () => {
 	it('keeps aria-describedby on the input element', async () => {
