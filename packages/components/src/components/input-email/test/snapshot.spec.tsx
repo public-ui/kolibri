@@ -23,7 +23,8 @@ executeInputSnapshotTests<InputEmailProps>(
 	{ hasSmartButton: true },
 );
 
-executeSnapshotTests<InputEmailProps>(
+// `_hasCounter` is a prop of the element, but `InputEmailProps` does not declare it.
+executeSnapshotTests<InputEmailProps & { _hasCounter?: boolean }>(
 	KolInputEmailTag,
 	[KolInputEmail],
 	[
