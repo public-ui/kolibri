@@ -32,7 +32,7 @@ import type { FormFieldBaseApi } from './api';
 import { getFormFieldAria } from './aria';
 import { type FormFieldFCProps, isLabelShownAsTooltip } from './component';
 
-type FormFieldExtras = {
+type FormFieldExtras = Pick<FormFieldFCProps, 'counter' | 'maxLength' | 'readOnly' | 'required'> & {
 	/** Class of the field, e.g. `kol-input-color`, added to the `kol-form-field` root. */
 	class: string;
 	accessKey?: string;
@@ -257,7 +257,7 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	 * Props of the form field shell around the native control. Call once per render: it also hands
 	 * label, alignment and badge to the label tooltip, or tears it down while the label is visible.
 	 */
-	protected getFormFieldProps({ class: classNames, accessKey, shortKey, variant }: FormFieldExtras): FormFieldFCProps {
+	protected getFormFieldProps({ class: classNames, accessKey, shortKey, variant, counter, maxLength, readOnly, required }: FormFieldExtras): FormFieldFCProps {
 		const shared = this.shared;
 		const id = shared.getState('id');
 		const label = shared.getRenderProp('label');
@@ -282,8 +282,12 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 			hideMsg: shared.getRenderProp('hideMsg'),
 			touched: shared.getRenderProp('touched'),
 			showBadge: Boolean(accessKey) || Boolean(shortKey),
+			required,
+			readOnly,
 			accessKey,
 			shortKey,
+			maxLength,
+			counter,
 			variant,
 			class: classNames,
 			tooltipAlign,

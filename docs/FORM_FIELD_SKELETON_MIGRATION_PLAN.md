@@ -135,6 +135,7 @@ G1.4 ─► G2.1 Props + CounterBehavior + TextAreaFC ─► G2.2 Basis + email 
 ```
 
 - G2.0: Jest-Snapshots für Zähler, Zeichengrenze, Clear-Button, Visibility-Toggle, `_multiple`, `_pattern`, `_required` und `_resize`. Bisher pinnt kein Snapshot diese Fälle. Befunde, die die Migration 1:1 übernimmt: #10863 (spellCheck), #11051 (`_adjustHeight` schrumpft nicht), #11052 (Zähler bei `_hasCounter`/`_maxLengthBehavior` zur Laufzeit), #11053 (`has-value` uneinheitlich), #11054 (devHint zu `_autoComplete`).
+- G2.1: Props der Textfelder in `internal/props/`; `CounterBehavior` unter `internal/functional-components/counter/` (besitzt `hasCounter`, `maxLength` und `maxLengthBehavior`, `CounterDomUpdater` ist bis G2.5 Fassade darüber); `TextAreaFC` mit dem neuen Block `kol-textarea` und das alte `inputs/TextArea` als Adapter; `getFormFieldProps()` der Basis reicht zusätzlich `required`, `readOnly`, `maxLength` und `counter` durch.
 - `BaseTextInputWebComponent` für email, password und text.
 - `CounterBehavior` ersetzt `utils/counter-dom-updater.ts`; das direkte DOM-Update ohne Re-Render bleibt erhalten.
 - textarea erbt direkt von `BaseFormFieldWebComponent` und nutzt das CounterBehavior.
