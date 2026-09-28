@@ -84,6 +84,46 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 </kol-textarea>
 `;
 
+exports[`kol-textarea should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _rows=5 _spellCheck=true _value="Value" _hideLabel=true 1`] = `
+<kol-textarea _value="Value">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--has-value kol-form-field--hide-label kol-form-field-textarea">
+      <label class="kol-form-field__label" hidden="" htmlfor="textarea-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container"><textarea aria-label="Label" autocapitalize="off" autocorrect="off" class="kol-textarea" id="textarea-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
+          </div>
+        </div>
+        <div class="kol-form-field__tooltip">
+          <div class="kol-tooltip__floating">
+            <div class="kol-tooltip__arrow"></div>
+            <span class="kol-span kol-tooltip__content" id="textarea-label-nonce">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-textarea>
+`;
+
 exports[`kol-textarea should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _rows=5 _spellCheck=true _value="Value" _hint="Hint" 1`] = `
 <kol-textarea _value="Value">
   <template shadowrootmode="open">
@@ -209,6 +249,38 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
 </kol-textarea>
 `;
 
+exports[`kol-textarea should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _rows=5 _spellCheck=true _value="Value" _infoPopover={"_label":"Info","_content":"Ich bin ein Hinweis.","_icons":"kolicon-alert-info"} 1`] = `
+<kol-textarea _value="Value">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--has-value kol-form-field-textarea">
+      <label class="kol-form-field__label" htmlfor="textarea-nonce" id="textarea-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
+          <div class="kol-popover-button__popover--styled">
+            Ich bin ein Hinweis.
+          </div>
+        </kol-popover-button-wc>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container"><textarea autocapitalize="off" autocorrect="off" class="kol-textarea" id="textarea-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-textarea>
+`;
+
 exports[`kol-textarea should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _rows=5 _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _hideMsg=true _touched=true 1`] = `
 <kol-textarea _touched="" _value="Value">
   <template shadowrootmode="open">
@@ -229,6 +301,42 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container"><textarea aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-textarea kol-textarea--error kol-textarea--touched" id="textarea-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
           </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-textarea>
+`;
+
+exports[`kol-textarea should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _rows=5 _spellCheck=true _value="Value" _msg={"_type":"error","_description":"Es ist ein Fehler aufgetreten"} _touched=true 1`] = `
+<kol-textarea _touched="" _value="Value">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--msg-type-error kol-form-field--touched kol-form-field-textarea">
+      <label class="kol-form-field__label" htmlfor="textarea-nonce" id="textarea-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container kol-input-container--error">
+          <div class="kol-input-container__container"><textarea aria-describedby="textarea-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-textarea kol-textarea--error kol-textarea--touched" id="textarea-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" id="textarea-msg-nonce" role="alert">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </div>
@@ -342,6 +450,33 @@ exports[`kol-textarea should render with _label="Label" _name="field" _placehold
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container"><textarea autocapitalize="off" autocorrect="off" class="kol-textarea kol-textarea--touched" id="textarea-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-textarea>
+`;
+
+exports[`kol-textarea should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _rows=5 _spellCheck=true _value="Value" _variant="custom" 1`] = `
+<kol-textarea _value="Value">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--custom kol-form-field--has-value kol-form-field-textarea">
+      <label class="kol-form-field__label" htmlfor="textarea-nonce" id="textarea-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container"><textarea autocapitalize="off" autocorrect="off" class="kol-textarea" id="textarea-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" rows="5" value="Value" style="resize: vertical;"></textarea>
           </div>
         </div>
       </div>

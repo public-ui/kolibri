@@ -247,5 +247,5 @@ const testInputBehaviorContract = <ElementType extends { _touched?: boolean; _va
 	});
 };
 
-export { callback, kolEvent, nativeEvent, testInputBehaviorContract };
+export { callback, EXPERIMENTAL_MODE_HEAD, insertAfterStartup, kolEvent, nativeEvent, readFormData, registerWithReflectInputValues, testInputBehaviorContract };
 export type { BehaviorContract, ContractEntry };

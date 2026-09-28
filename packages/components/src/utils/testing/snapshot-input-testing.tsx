@@ -70,5 +70,12 @@ export function executeInputSnapshotTests<Props extends Record<string, unknown>>
 		});
 	}
 
+	propVariants.push(
+		{ ...(baseObj as Props), _hideLabel: true },
+		{ ...(baseObj as Props), _infoPopover: { _label: 'Info', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' } },
+		{ ...(baseObj as Props), _msg: { _type: 'error', _description: 'Es ist ein Fehler aufgetreten' }, _touched: true },
+		{ ...(baseObj as Props), _variant: 'custom' },
+	);
+
 	executeSnapshotTests<Props>(ComponentName, components, propVariants);
 }
