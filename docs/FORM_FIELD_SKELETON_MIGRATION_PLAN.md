@@ -125,8 +125,16 @@ Risiken: Zusammenbau von `aria-describedby` (hint, msg, Counter, Hinweis zur Zei
 
 ### G2 – Textfelder: email → password → text, danach textarea (#9579, #9582, #9585, #9602)
 
-Die vier Felder hängen heute in der Kette `InputPasswordController → InputTextEmailController → InputText/InputEmail` und teilen placeholder, autoComplete, pattern, maxLength/hasCounter/maxLengthBehavior, spellCheck und den Counter.
+Die vier Felder hängen heute in der Kette `InputPasswordController → InputTextEmailController → InputText/InputEmail` und teilen placeholder, autoComplete, maxLength/hasCounter/maxLengthBehavior und den Counter. pattern haben nur die drei Inputs. `spellCheck` rendert nur input-text; textarea validiert die Prop, gibt sie aber nicht an das `<textarea>` weiter (#10863).
 
+G2 besteht aus sechs PRs:
+
+```
+G2.0 Testlücken (nur Tests) ────────────────────────────────────────────────────────┐
+G1.4 ─► G2.1 Props + CounterBehavior + TextAreaFC ─► G2.2 Basis + email ─► G2.3 password ─► G2.4 text ─► G2.5 textarea
+```
+
+- G2.0: Jest-Snapshots für Zähler, Zeichengrenze, Clear-Button, Visibility-Toggle, `_multiple`, `_pattern`, `_required` und `_resize`. Bisher pinnt kein Snapshot diese Fälle. Befunde, die die Migration 1:1 übernimmt: #10863 (spellCheck), #11051 (`_adjustHeight` schrumpft nicht), #11052 (Zähler bei `_hasCounter`/`_maxLengthBehavior` zur Laufzeit), #11053 (`has-value` uneinheitlich), #11054 (devHint zu `_autoComplete`).
 - `BaseTextInputWebComponent` für email, password und text.
 - `CounterBehavior` ersetzt `utils/counter-dom-updater.ts`; das direkte DOM-Update ohne Re-Render bleibt erhalten.
 - textarea erbt direkt von `BaseFormFieldWebComponent` und nutzt das CounterBehavior.
