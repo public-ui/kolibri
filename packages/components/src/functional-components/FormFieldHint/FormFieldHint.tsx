@@ -1,23 +1,6 @@
-import { h, type FunctionalComponent as FC } from '@stencil/core';
-import type { JSXBase } from '@stencil/core/internal';
-import clsx from '../../utils/clsx';
-import { createRelatedUniqueId } from '../../utils/dev.utils';
+import { FormFieldHintFC } from '../../internal/functional-components/form-field/hint';
 
-type FormFieldHintProps = JSXBase.HTMLAttributes<HTMLSpanElement> & {
-	hint?: string;
-	baseClassName?: string;
-};
-
-const KolFormFieldHintFc: FC<FormFieldHintProps> = ({ id, class: classNames, hint, baseClassName = 'kol-form-field', ...other }) => {
-	if (!hint) {
-		return null;
-	}
-
-	return (
-		<span class={clsx(`${baseClassName}__hint`, classNames)} id={createRelatedUniqueId(id || '', 'hint')} {...other}>
-			{hint}
-		</span>
-	);
-};
+/** Adapter of the legacy form fields to `FormFieldHintFC`, removed once no legacy field is left. */
+const KolFormFieldHintFc = FormFieldHintFC;
 
 export default KolFormFieldHintFc;
