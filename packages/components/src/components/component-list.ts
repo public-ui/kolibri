@@ -19,7 +19,7 @@ import { KolHeading } from './heading/component';
 import { KolIcon } from './icon/component';
 import { KolImage } from './image/component';
 import { KolInputCheckbox } from './input-checkbox/shadow';
-import { KolInputColor } from './input-color/shadow';
+import { KolInputColor } from './input-color/component';
 import { KolInputDate } from './input-date/shadow';
 import { KolInputEmail } from './input-email/shadow';
 import { KolInputFile } from './input-file/shadow';
