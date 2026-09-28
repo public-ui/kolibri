@@ -10,8 +10,8 @@ const error = { _type: 'error' as const, _description: 'Error' };
 describe('InputContainerFC', () => {
 	it.each([
 		['the default', {}],
-		['a start adornment', { startAdornment: h('i', { class: 'start' }) }],
-		['an end adornment', { endAdornment: [h('i', { class: 'end' })] }],
+		['a start adornment', { startAdornment: h('i', { class: { start: true } }) }],
+		['an end adornment', { endAdornment: [h('i', { class: { end: true } })] }],
 		['disabled with a touched error', { disabled: true, msg: error, touched: true }],
 	])('renders %s', async (_, props) => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
