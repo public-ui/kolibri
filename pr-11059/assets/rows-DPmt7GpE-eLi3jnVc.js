@@ -1,0 +1,1 @@
+import{ot as e}from"./index-CXGXC9O7-CecNSAUC.js";var t=(t,n)=>{e(t,`_rows`,n,{min:1})};export{t};

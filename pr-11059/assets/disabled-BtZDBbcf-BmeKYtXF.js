@@ -1,0 +1,1 @@
+import{d as e,i as t}from"./variant-quote-Cx59htcB-B679USit.js";var n=t(`disabled`,!1,e);export{n as t};
