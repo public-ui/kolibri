@@ -1,0 +1,1 @@
+import{it as e}from"./index-Mn2CIec2-tc49mhNM.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
