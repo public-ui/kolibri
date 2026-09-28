@@ -208,4 +208,9 @@ const KOL_INPUT_PASSWORD_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-input-password', component: 'input-password', file: 'shadow.tsx', pinnedApi: KOL_INPUT_PASSWORD_PUBLIC_API });
+describePublicApiContract({
+	tag: 'kol-input-password',
+	component: 'input-password',
+	pinnedApi: KOL_INPUT_PASSWORD_PUBLIC_API,
+	schemaInterface: 'InputPasswordProps',
+});
