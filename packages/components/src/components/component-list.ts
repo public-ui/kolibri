@@ -45,7 +45,7 @@ import { KolSkipNav } from './skip-nav/component';
 import { KolSpin } from './spin/component';
 import { KolSplitButton } from './split-button/component';
 import { KolTabs } from './tabs/component';
-import { KolTextarea } from './textarea/shadow';
+import { KolTextarea } from './textarea/component';
 import { KolToastContainer } from './toaster/shadow';
 import { KolToolbar } from './toolbar/component';
 import { KolTooltipWc } from './tooltip/component';
