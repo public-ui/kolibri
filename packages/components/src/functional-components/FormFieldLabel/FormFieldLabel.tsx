@@ -3,15 +3,10 @@ import type { JSXBase } from '@stencil/core/internal';
 import { KolPopoverButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import { SpanFC } from '../../internal/functional-components/span/component';
-import type { IconsPropType, PopoverButtonProps } from '../../schema';
+import type { FormFieldLabelInfoPopoverProps } from '../../schema';
 import { buildBadgeTextString } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
-
-export type FormFieldLabelInfoPopoverProps = Omit<PopoverButtonProps, '_icons' | '_hideLabel' | '_inline'> & {
-	_content: string;
-	_icons: IconsPropType;
-};
 
 type FormFieldLabelProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & {
 	component?: 'label' | 'legend';

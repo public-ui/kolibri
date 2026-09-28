@@ -6,7 +6,6 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import type { InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolInputStateWrapperFc from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
-import type { FormFieldLabelInfoPopoverProps } from '../../functional-components';
 import CustomSuggestionsOptionFc from '../../functional-components/CustomSuggestionsOption/CustomSuggestionsOption';
 import CustomSuggestionsOptionsGroupFc from '../../functional-components/CustomSuggestionsOptionsGroup';
 import { translate } from '../../i18n';
@@ -18,6 +17,7 @@ import type {
 	ComboboxStates,
 	DisabledPropType,
 	FocusableElement,
+	FormFieldLabelInfoPopoverProps,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,

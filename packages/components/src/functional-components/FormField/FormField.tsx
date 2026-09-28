@@ -5,13 +5,19 @@ import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
-import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType, VariantClassNamePropType } from '../../schema';
+import type {
+	FormFieldLabelInfoPopoverProps,
+	MaxLengthBehaviorPropType,
+	MsgPropType,
+	Stringified,
+	TooltipAlignPropType,
+	VariantClassNamePropType,
+} from '../../schema';
 import { buildBadgeTextString, classNameFromVariant, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
 import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
 import KolFormFieldLabelFc from '../FormFieldLabel';
-import type { FormFieldLabelInfoPopoverProps } from '../FormFieldLabel/FormFieldLabel';
 import KolFormFieldMsgFc from '../FormFieldMsg';
 
 const formFieldTooltipBehaviorPool = new Map<string, TooltipBehavior>();
