@@ -407,6 +407,26 @@ export type KoliBriComponentsBemSchema = {
 			| 'warning'
 		>;
 	};
+	'kol-input': {
+		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'readonly' | 'required' | 'success' | 'touched' | 'warning'>;
+	};
+	'kol-input-container': {
+		elements: {
+			adornment: {
+				modifiers: Set<'end' | 'start'>;
+			};
+			container: {
+				modifiers: null;
+			};
+			icon: {
+				modifiers: null;
+			};
+			'smart-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'success' | 'warning'>;
+	};
 	'kol-split-button': {
 		elements: {
 			button: {
@@ -813,6 +833,18 @@ const BEM: KoliBriComponentsBemSchema = {
 			'touched',
 			'warning',
 		]),
+	},
+	'kol-input': {
+		modifiers: new Set(['default', 'disabled', 'error', 'info', 'readonly', 'required', 'success', 'touched', 'warning']),
+	},
+	'kol-input-container': {
+		elements: {
+			adornment: { modifiers: new Set(['end', 'start']) },
+			container: { modifiers: null },
+			icon: { modifiers: null },
+			'smart-button': { modifiers: null },
+		},
+		modifiers: new Set(['default', 'disabled', 'error', 'info', 'success', 'warning']),
 	},
 	'kol-split-button': {
 		elements: {
