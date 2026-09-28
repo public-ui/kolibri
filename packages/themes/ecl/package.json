@@ -43,9 +43,6 @@
 	"type": "module",
 	"sideEffects": false,
 	"scripts": {
-		"assets:all": "npm-run-all2 assets:components assets:ecl-icons",
-		"assets:components": "kolibri-copy-assets --dest assets @public-ui/components",
-		"assets:ecl-icons": "pnpm --filter @public-ui/ecl-icons build",
 		"build": "rollup -c",
 		"dev": "rollup -c --watch",
 		"format": "prettier --check src",
@@ -53,7 +50,7 @@
 		"lint:eslint": "eslint src",
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
-		"prebuild": "pnpm assets:all",
+		"prebuild": "kolibri-copy-assets --dest assets @public-ui/components",
 		"start:ec": "npm-run-all2 --parallel dev serve:ec",
 		"start:eu": "npm-run-all2 --parallel dev serve:eu",
 		"serve:ec": "sh serve.sh ECL_EC",
@@ -69,6 +66,7 @@
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
+		"@public-ui/ecl-icons": "workspace:*",
 		"@public-ui/eslint-config": "workspace:*",
 		"@public-ui/stylelint-rules": "workspace:*",
 		"@public-ui/visual-tests": "workspace:*",

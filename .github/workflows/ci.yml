@@ -122,7 +122,9 @@ jobs:
           INSTALLED=$(pnpm --filter @public-ui/visual-tests exec node -p "require('@playwright/test/package.json').version")
           [ "$INSTALLED" = "1.60.0" ] || { echo "::error::@playwright/test $INSTALLED does not match container image v1.60.0 – update the image tags in the workflows"; exit 1; }
       - name: Build
-        run: pnpm --filter @public-ui/visual-tests^... build
+        # The ecl theme no longer builds the ecl-icons font itself: the visual
+        # tests load it from packages/themes/ecl/assets, so build it here.
+        run: pnpm --filter @public-ui/visual-tests^... --filter @public-ui/ecl-icons build
       - name: Select baseline
         id: baseline
         run: node scripts/visual-review/select-baseline.mjs ${{ matrix.package }}
