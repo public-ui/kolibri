@@ -4,3 +4,4 @@ dist/
 snapshots/
 test-results/
 pnpm-lock.yaml
+.template-cache/
