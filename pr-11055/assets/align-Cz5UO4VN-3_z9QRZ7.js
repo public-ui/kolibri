@@ -1,0 +1,1 @@
+import"./index-gOqi0Da2-IP9yIY5J.js";var e=[`left`,`right`],t=[`top`,`bottom`],n=[...e,...t];export{n as t};
