@@ -92,7 +92,7 @@ Kein Produktivcode, Voraussetzung für alles. Die Gates greifen nur, wenn vorher
 
 ### G1 – Fundament + Pilot `kol-input-color` (#9673, #9577)
 
-Alle 14 Felder teilen Basis-Props, die Label/Hint/Msg-Hülle, die Formular-Anbindung und die Event-Logik. Das wird einmal gebaut und am dünnsten Feld geprüft, damit die Basisklasse an einem echten Fall entsteht. G1 besteht aus sechs PRs:
+Alle 14 Felder teilen Basis-Props, die Label/Hint/Msg-Hülle, die Formular-Anbindung und die Event-Logik. Das wird einmal gebaut und am dünnsten Feld geprüft, damit die Basisklasse an einem echten Fall entsteht. G1 besteht aus sechs PRs: G1.0 #11037, G1.1 #11038, G1.2 #11044, G1.3a #11045, G1.3b #11046 und G1.4.
 
 ```
 G1.0 Testlücken ───────────────┬──────────────────────────────────────────────┐
@@ -110,6 +110,9 @@ G1.1 Props ─┬─► G1.2 FormAssociationBehavior (+ kol-button) ─► SSR-F
 2. **`FormAssociationBehavior`**: übernimmt `input-adapter-leanup/associated.controller.ts` 1:1, einschließlich der späten Host-Zuweisung im Konstruktor. `AssociatedInputController` wird zur Fassade über das Behavior, damit die G0-Verträge es sofort für alle Felder prüfen. `button/base.tsx` wird im selben PR umgestellt; der Button-Pin bleibt unverändert.
 3. **Shell-FCs** unter `internal/functional-components/form-field/`, nur für die Hülle von `kol-input-color`: G1.3a FormField (Label, Hint, Msg, Counter, Tooltip, Zeichengrenzen-Hinweis) mit dem ARIA-Helfer aus `getRenderStates`, G1.3b InputContainer mit Adornments, IconButton, Input und Suggestions. Neue Blöcke in `schema/bem-registry.ts`. Die alten FCs werden Adapter auf die neuen, damit Hydrate-Snapshot und Pixel-Gate die Hülle sofort über alle Felder prüfen. TextArea kommt in G2, FieldControl/Checkbox/Radio in G4, NativeSelect/Option(List)/CustomSuggestions in G5. Die `fieldset`-Wurzel von radio bleibt bis G4 auf dem alten Pfad, weil `BemRootNodeFC` nur `div` rendert.
 4. **`BaseFormFieldWebComponent`** (DD16): `apply*` der Basis-Props, ein eigenes `TooltipBehavior` pro Instanz statt der modulglobalen Map in `FormField.tsx`, Formular-Anbindung, Event-Behandlung als Ersatz für `InputController` (Reihenfolge: KoliBri-Event, dann Callback) und Render-Helfer. Damit wird `kol-input-color` migriert.
+   - Die Basis ist generisch über die Feld-API. Sie greift über einen dokumentierten Self-Cast (`shared`) auf die Basis-Props zu und liefert die FormField-Props mit `getFormFieldProps()`. Gerendert wird in der konkreten Klasse, wie bei `BaseButtonWebComponent`.
+   - Die Props an `InputFC` bildet die konkrete Klasse in der Schlüsselreihenfolge der alten State-Wrapper. Props, die der Legacy-State nur bei gesetztem Wert enthielt, zum Beispiel `accessKey` und `aria-keyshortcuts`, übergibt sie nur, wenn ein Wert gesetzt ist. Nur so bleiben die Attributreihenfolge im Hydrate-Snapshot und das DOM unverändert.
+   - `_label={false}` bleibt wie bisher der Expert-Slot (`''`). `labelWithExpertSlotProp` allein würde daraus den String `'false'` machen.
 
 Entscheidungen:
 

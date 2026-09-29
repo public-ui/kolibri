@@ -25,6 +25,7 @@ Bei Widersprüchen gilt diese Reihenfolge:
 3. **Migrierte Vorbilder** (Produktionsform, jeweils pixelgeprüft gegen ihren Vorgänger):
    - `packages/components/src/components/button/component.tsx` + `internal/functional-components/button/` (inkl. transitionalem `button/wc.tsx`)
    - `packages/components/src/components/link/component.tsx` + `internal/functional-components/link/` (inkl. `link/wc.tsx`) — enthält das vollständige Behavior-Lebenszyklus-Muster
+   - `packages/components/src/components/input-color/component.tsx` + `internal/functional-components/form-field/` (`BaseFormFieldWebComponent`, `FormFieldFC`, `InputContainerFC`, `InputFC`, `FormAssociationBehavior`): Vorbild für Formularfelder. Plan und Fallstricke stehen in `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`.
    - Weitere bereits migrierte Komponenten als Kurzvorbilder: `abbr`, `avatar`, `heading`, `icon`, `image`, `meter`, `progress`, `quote`, `spin`
    - **„Styled-as"-Satelliten** (eine Komponente, die semantisch ihrem Vorbild entspricht und nur dessen Erscheinungsbild variiert): `link-button` (Link, als Button gestylt — erbt `BaseLinkWebComponent`, rendert `LinkFC`) und `button-link` (Button, als Link gestylt — erbt `BaseButtonWebComponent`, rendert `ButtonFC`). Beide brauchen keine eigene FC-Schicht — nur eigene Props/Defaults und ein Theme-Mixin, das den geteilten Block umstylt. Vor jeder Migration eines Satelliten prüfen, ob sein semantisches Vorbild das schon mitgebracht hat.
 
