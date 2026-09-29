@@ -741,9 +741,6 @@ ROUTES.set('toolbar/disabled', {
 	},
 });
 ROUTES.set('tree/basic/home', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 300,
@@ -1087,9 +1084,6 @@ ROUTES.set('scenarios/focus-elements?component=toolbar', {
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=tree', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		viewportSize: {
