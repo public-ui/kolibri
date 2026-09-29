@@ -12,7 +12,6 @@
 				'LABEL LABEL LABEL'
 				'BAR VALUE UNIT';
 			grid-template-columns: 1fr auto;
-			column-gap: var(--kol-progress-column-gap, to-rem(4));
 
 			&-label {
 				grid-column-end: 2;
