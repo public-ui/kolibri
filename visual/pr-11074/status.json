@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "21 changed – 0 of 21 approved, review pending",
-	"computedAt": "2026-09-29T22:18:34.184Z",
+	"description": "18 changed – 0 of 18 approved, review pending",
+	"computedAt": "2026-09-29T22:39:35.173Z",
 	"pr": 11074,
-	"head": "115c9ff7f9dd1b9727994ac4a967ab7ea433d19d",
-	"digest": "sha256:66cc5ff0386c284a42ef11743325eddbc27bb85768f88772bf16c8d6fb480fda",
+	"head": "8d9f5c7ad6af874d8e873fe519224020cb73471c",
+	"digest": "sha256:d598fc8e40edf8857e261a725841ac059e2edeae9bea4b76d7e018952b765b54",
 	"counts": {
-		"changes": 21,
-		"open": 21,
+		"changes": 18,
+		"open": 18,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -85,18 +85,6 @@
 			"notes": []
 		},
 		"theme-kern/progress-basic--percentages": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/progress-basic--custom-units": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/progress-basic--min-max": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/progress-basic--percentages": {
 			"state": "open",
 			"notes": []
 		}

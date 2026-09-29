@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11074,
-	"head": "115c9ff7f9dd1b9727994ac4a967ab7ea433d19d",
+	"head": "8d9f5c7ad6af874d8e873fe519224020cb73471c",
 	"repository": "public-ui/kolibri",
-	"runId": 36594689254,
-	"generatedAt": "2026-09-29T17:50:32.011Z",
-	"digest": "sha256:66cc5ff0386c284a42ef11743325eddbc27bb85768f88772bf16c8d6fb480fda",
+	"runId": 36638393043,
+	"generatedAt": "2026-09-29T22:39:34.667Z",
+	"digest": "sha256:d598fc8e40edf8857e261a725841ac059e2edeae9bea4b76d7e018952b765b54",
 	"baseline": {
-		"sha": "62fb992037119e56415441b34488eee0479eda2e",
+		"sha": "17e22295752e6bfccc6dc74fc835943a5e024288",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2898,
-		"changed": 21,
+		"unchanged": 2901,
+		"changed": 18,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -30,12 +30,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62fb992037119e56415441b34488eee0479eda2e",
+					"sha": "17e22295752e6bfccc6dc74fc835943a5e024288",
 					"ref": "develop",
-					"runId": 36576374718,
+					"runId": 36605807242,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T13:43:16.195Z",
+					"createdAt": "2026-09-29T17:44:07.468Z",
 					"digest": "sha256:246d9ca8e0e3afc5a98a0d196b19f347e6cf5e4d96d3eb200790d3c76bc144b2",
 					"fallback": null,
 					"distance": 0,
@@ -2578,12 +2578,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62fb992037119e56415441b34488eee0479eda2e",
+					"sha": "17e22295752e6bfccc6dc74fc835943a5e024288",
 					"ref": "develop",
-					"runId": 36576374718,
+					"runId": 36605807242,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T13:43:32.578Z",
+					"createdAt": "2026-09-29T17:46:13.073Z",
 					"digest": "sha256:4a422f171bec796111a6350c714dde030587b4515fbe0c01644108d0368d155e",
 					"fallback": null,
 					"distance": 0,
@@ -5126,12 +5126,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62fb992037119e56415441b34488eee0479eda2e",
+					"sha": "17e22295752e6bfccc6dc74fc835943a5e024288",
 					"ref": "develop",
-					"runId": 36576374718,
+					"runId": 36605807242,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T13:43:16.195Z",
+					"createdAt": "2026-09-29T17:44:07.468Z",
 					"digest": "sha256:246d9ca8e0e3afc5a98a0d196b19f347e6cf5e4d96d3eb200790d3c76bc144b2",
 					"fallback": null,
 					"distance": 0,
@@ -7674,12 +7674,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62fb992037119e56415441b34488eee0479eda2e",
+					"sha": "17e22295752e6bfccc6dc74fc835943a5e024288",
 					"ref": "develop",
-					"runId": 36576374718,
+					"runId": 36605807242,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T13:44:08.391Z",
+					"createdAt": "2026-09-29T17:41:10.902Z",
 					"digest": "sha256:3994935a53674496ad89e5b25c47d5809573bf1f771248e893670c7a49714d5a",
 					"fallback": null,
 					"distance": 0,
@@ -10222,12 +10222,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62fb992037119e56415441b34488eee0479eda2e",
+					"sha": "17e22295752e6bfccc6dc74fc835943a5e024288",
 					"ref": "develop",
-					"runId": 36576374718,
+					"runId": 36605807242,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T13:42:35.642Z",
+					"createdAt": "2026-09-29T17:48:27.091Z",
 					"digest": "sha256:6bb52a608adb38c0a82f2ec772ac532308f4233d9b65b349c72af29f57848586",
 					"fallback": null,
 					"distance": 0,
@@ -12770,12 +12770,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62fb992037119e56415441b34488eee0479eda2e",
+					"sha": "17e22295752e6bfccc6dc74fc835943a5e024288",
 					"ref": "develop",
-					"runId": 36576374718,
+					"runId": 36605807242,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T13:42:02.597Z",
+					"createdAt": "2026-09-29T17:43:11.452Z",
 					"digest": "sha256:0d7f08fb736c35ded155898e7c5c1932f7f185297f04f5fce7ecd7d712f47da4",
 					"fallback": null,
 					"distance": 0,
@@ -15318,12 +15318,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62fb992037119e56415441b34488eee0479eda2e",
+					"sha": "17e22295752e6bfccc6dc74fc835943a5e024288",
 					"ref": "develop",
-					"runId": 36576374718,
+					"runId": 36605807242,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T13:42:53.485Z",
+					"createdAt": "2026-09-29T17:47:20.042Z",
 					"digest": "sha256:a49f9eb25f8f401ab7370360077634e0a78dbfafabd80b98cdff9aeeff8f2c8d",
 					"fallback": null,
 					"distance": 0,
@@ -15331,13 +15331,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 414,
-				"changed": 3,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:3559efe09040ead00b5a0e37058351aab4e03399429f511e1fee048a7448754d",
+			"digest": "sha256:a49f9eb25f8f401ab7370360077634e0a78dbfafabd80b98cdff9aeeff8f2c8d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17195,36 +17195,21 @@
 				},
 				{
 					"name": "progress-basic--custom-units",
-					"route": "progress/basic",
-					"status": "changed",
-					"hash": "sha256:825c638db7ba453e2239e9123747cc6aa7f0ed282920591704d3e374366fe4bd",
-					"diffPixels": 249,
-					"diffRatio": 0.003052,
-					"expected": "unstyled/progress-basic--custom-units.expected.png",
-					"actual": "unstyled/progress-basic--custom-units.actual.png",
-					"diff": "unstyled/progress-basic--custom-units.diff.png"
+					"route": "progress-basic",
+					"status": "unchanged",
+					"hash": "sha256:5a79aca2d013375bcc3ada86f8b75aa39d538064111fa351fae79c9d6d77ae32"
 				},
 				{
 					"name": "progress-basic--min-max",
-					"route": "progress/basic",
-					"status": "changed",
-					"hash": "sha256:3b026d579d9a603a2c5484290406adb18a6ec1f1c2b6fe0c0a4d22cb8540d584",
-					"diffPixels": 253,
-					"diffRatio": 0.006662,
-					"expected": "unstyled/progress-basic--min-max.expected.png",
-					"actual": "unstyled/progress-basic--min-max.actual.png",
-					"diff": "unstyled/progress-basic--min-max.diff.png"
+					"route": "progress-basic",
+					"status": "unchanged",
+					"hash": "sha256:9906fc750b9ca9ee7d3d093265d58acf63f22a15f099471772d635b4741c0898"
 				},
 				{
 					"name": "progress-basic--percentages",
-					"route": "progress/basic",
-					"status": "changed",
-					"hash": "sha256:ee1cec145392e1e43a7aec011d3cc9de4c2bbdd32eeaa99cbda34e764e532093",
-					"diffPixels": 370,
-					"diffRatio": 0.004642,
-					"expected": "unstyled/progress-basic--percentages.expected.png",
-					"actual": "unstyled/progress-basic--percentages.actual.png",
-					"diff": "unstyled/progress-basic--percentages.diff.png"
+					"route": "progress-basic",
+					"status": "unchanged",
+					"hash": "sha256:aadd864ddd9444a56cc6bbe0fab3d8f43b098d25104dd4a2632e08bf4a4a3322"
 				},
 				{
 					"name": "quote-basic--basic",
