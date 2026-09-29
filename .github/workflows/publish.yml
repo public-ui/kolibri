@@ -6,33 +6,23 @@ env:
 on:
   workflow_dispatch:
     inputs:
-      increment:
+      release:
+        type: choice
+        description: What do you want to publish?
+        options:
+          - 'rc-next: next RC of the current pre-release (4.5.0-rc.0 -> 4.5.0-rc.1), tag next'
+          - 'rc-new-minor: first RC of the next minor (4.5.x -> 4.6.0-rc.0), tag next'
+          - 'rc-new-patch: first RC of the next patch (4.5.0 -> 4.5.1-rc.0), tag next'
+          - 'stable-from-rc: finalize the current RC (4.5.0-rc.3 -> 4.5.0), tag latest'
+          - 'stable-patch: next patch (4.5.0 -> 4.5.1), tag latest'
+          - 'stable-minor: next minor (4.5.x -> 4.6.0), tag latest'
+          - 'dev: snapshot of the current commit without git push, tag dev'
+          - 'republish-next: publish the current version as is, tag next'
+          - 'republish-latest: publish the current version as is, tag latest'
+      dry-run:
         type: boolean
-        description: 'Would you like to set the version before publishing? (Else: The current version from the code repository will be used.)'
-        default: true
-      tag:
-        type: choice
-        description: Which NPM tag should be assigned?
-        options:
-          - dev
-          - next
-          - latest
-      version: # semver bump keyword passed to scripts/version.mjs
-        type: choice
-        description: SemVer keyword for version bump
-        options:
-          - prerelease
-          - prepatch
-          - patch
-          - preminor
-          - minor
-      label: # pre-release identifier passed as --preid to scripts/version.mjs
-        type: choice
-        description: SemVer pre release label (optional)
-        options:
-          - rc
-          - beta
-          - alpha
+        description: 'Dry run: resolve and validate the release, build and simulate the publish (nothing is pushed or published).'
+        default: false
 
 permissions:
   contents: read
@@ -42,6 +32,30 @@ jobs:
   publish:
     if: github.repository == 'public-ui/kolibri'
     runs-on: ubuntu-latest
+    env:
+      PACKAGE_DIRS: |
+        packages/components
+        packages/adapters/angular/v20
+        packages/adapters/angular/v21
+        packages/adapters/react
+        packages/adapters/react-v19
+        packages/adapters/react-standalone
+        packages/adapters/solid
+        packages/adapters/svelte
+        packages/adapters/vue
+        packages/adapters/preact
+        packages/adapters/hydrate
+        packages/adapters/react-hook-form-adapter
+        packages/tools/kolibri-cli
+        packages/tools/mcp
+        packages/themes/bwst
+        packages/themes/default
+        packages/themes/desy
+        packages/themes/ecl
+        packages/themes/kern
+        packages/themes
+        packages/samples/react
+        packages/tools/visual-tests
     permissions:
       contents: read
       id-token: write
@@ -96,87 +110,131 @@ jobs:
           git config --local user.email "${{ steps.get-user-id.outputs.user-id }}+${{ steps.app-token.outputs.app-slug }}[bot]@users.noreply.github.com"
           git config --local user.name "${{ steps.app-token.outputs.app-slug }}[bot]"
 
-      - name: Bump versions without dev-tag and with git push
-        if: github.event.inputs.increment == 'true' && github.event.inputs.tag != 'dev'
-        run: 'HUSKY=0 node scripts/version.mjs ${{github.event.inputs.version}} --preid=${{github.event.inputs.label}}'
+      - name: Resolve release
+        id: release
+        env:
+          RELEASE_INPUT: ${{ github.event.inputs.release }}
+        run: |
+          RELEASE="${RELEASE_INPUT%%:*}"
+          CURRENT=$(node -p "require('./package.json').version")
+          BUMP=""
+          PREID=""
+          TAG=""
+          NO_PUSH="false"
 
-      - name: Bump versions with dev-tag and without git push
-        if: github.event.inputs.increment == 'true' && github.event.inputs.tag == 'dev'
-        run: 'HUSKY=0 node scripts/version.mjs prerelease --preid=$GITHUB_SHA --no-push'
+          case "$RELEASE" in
+            rc-next)        BUMP=prerelease; PREID=rc; TAG=next ;;
+            rc-new-minor)   BUMP=preminor;   PREID=rc; TAG=next ;;
+            rc-new-patch)   BUMP=prepatch;   PREID=rc; TAG=next ;;
+            stable-from-rc) BUMP=patch;      TAG=latest ;;
+            stable-patch)   BUMP=patch;      TAG=latest ;;
+            stable-minor)   BUMP=minor;      TAG=latest ;;
+            dev)            BUMP=prerelease; PREID="$GITHUB_SHA"; TAG=dev; NO_PUSH="true" ;;
+            republish-next)   TAG=next ;;
+            republish-latest) TAG=latest ;;
+            *) echo "::error::Unknown release option '$RELEASE'"; exit 1 ;;
+          esac
+
+          case "$RELEASE" in
+            rc-next)
+              [[ "$CURRENT" == *-rc.* ]] || { echo "::error::rc-next requires a current RC version, but the repository is at $CURRENT. Use rc-new-minor or rc-new-patch to start a new RC line."; exit 1; }
+              ;;
+            stable-from-rc)
+              [[ "$CURRENT" == *-* ]] || { echo "::error::stable-from-rc requires a current pre-release version, but the repository is at $CURRENT. Use stable-patch or stable-minor."; exit 1; }
+              ;;
+            stable-patch|stable-minor)
+              [[ "$CURRENT" != *-* ]] || { echo "::error::$RELEASE would only finalize the current pre-release $CURRENT. Use stable-from-rc."; exit 1; }
+              ;;
+          esac
+
+          if [ "$TAG" = "latest" ] && [ -z "$BUMP" ] && [[ "$CURRENT" == *-* ]]; then
+            echo "::error::Refusing to publish the pre-release $CURRENT with tag latest."
+            exit 1
+          fi
+
+          {
+            echo "bump=$BUMP"
+            echo "preid=$PREID"
+            echo "tag=$TAG"
+            echo "no-push=$NO_PUSH"
+            echo "current=$CURRENT"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Bump versions
+        if: steps.release.outputs.bump != ''
+        env:
+          BUMP: ${{ steps.release.outputs.bump }}
+          PREID: ${{ steps.release.outputs.preid }}
+          NO_PUSH: ${{ steps.release.outputs.no-push == 'true' || github.event.inputs.dry-run == 'true' }}
+        run: |
+          ARGS=("$BUMP")
+          [ -n "$PREID" ] && ARGS+=("--preid=$PREID")
+          [ "$NO_PUSH" = "true" ] && ARGS+=("--no-push")
+          HUSKY=0 node scripts/version.mjs "${ARGS[@]}"
+
+      - name: Validate resolved version
+        id: version
+        env:
+          TAG: ${{ steps.release.outputs.tag }}
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [ "$TAG" = "latest" ] && [[ "$VERSION" == *-* ]]; then
+            echo "::error::Refusing to publish the pre-release $VERSION with tag latest."
+            exit 1
+          fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Summary
+        env:
+          RELEASE: ${{ github.event.inputs.release }}
+          CURRENT: ${{ steps.release.outputs.current }}
+          VERSION: ${{ steps.version.outputs.version }}
+          TAG: ${{ steps.release.outputs.tag }}
+          DRY_RUN: ${{ github.event.inputs.dry-run }}
+        run: |
+          {
+            echo "### Publish"
+            echo "- **Release:** ${RELEASE%%:*}"
+            echo "- **Version:** \`$CURRENT\` → \`$VERSION\`"
+            echo "- **npm tag:** \`${{ env.prefix }}$TAG\`"
+            echo "- **Dry run:** $DRY_RUN"
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Build all packages
         run: pnpm -r build
 
       - name: Publish all packages
-        run: |
-          PACKAGE_DIRS=(
-            'packages/components'
-            'packages/adapters/angular/v20'
-            'packages/adapters/angular/v21'
-            'packages/adapters/react'
-            'packages/adapters/react-v19'
-            'packages/adapters/react-standalone'
-            'packages/adapters/solid'
-            'packages/adapters/svelte'
-            'packages/adapters/vue'
-            'packages/adapters/preact'
-            'packages/adapters/hydrate'
-            'packages/adapters/react-hook-form-adapter'
-            'packages/tools/kolibri-cli'
-            'packages/tools/mcp'
-            'packages/themes/bwst'
-            'packages/themes/default'
-            'packages/themes/desy'
-            'packages/themes/ecl'
-            'packages/themes/kern'
-            'packages/themes'
-            'packages/samples/react'
-            'packages/tools/visual-tests'
-          )
-
-          for DIR in "${PACKAGE_DIRS[@]}"; do
-            echo "Publishing package from ${DIR}"
-            (
-              cd "$DIR"
-              bash "${GITHUB_WORKSPACE}/scripts/safe-publish.sh" --access public --provenance --no-git-checks --tag "${{env.prefix}}${{github.event.inputs.tag}}"
-            )
-          done
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
           NPM_CONFIG_PROVENANCE: true
+          TAG: ${{ steps.release.outputs.tag }}
+          DRY_RUN: ${{ github.event.inputs.dry-run }}
+        run: |
+          EXTRA=()
+          [ "$DRY_RUN" = "true" ] && EXTRA+=("--dry-run")
+
+          while read -r DIR; do
+            [ -z "$DIR" ] && continue
+            echo "Publishing package from ${DIR}"
+            (
+              cd "$DIR"
+              bash "${GITHUB_WORKSPACE}/scripts/safe-publish.sh" --access public --provenance --no-git-checks --tag "${{env.prefix}}${TAG}" "${EXTRA[@]}"
+            )
+          done <<< "$PACKAGE_DIRS"
 
       - name: Verify all packages published to npmjs
+        if: github.event.inputs.dry-run != 'true'
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "Verifying version: $VERSION"
           FAILED=()
+          COUNT=0
 
-          PACKAGE_DIRS=(
-            'packages/components'
-            'packages/adapters/angular/v20'
-            'packages/adapters/angular/v21'
-            'packages/adapters/react'
-            'packages/adapters/react-v19'
-            'packages/adapters/react-standalone'
-            'packages/adapters/solid'
-            'packages/adapters/svelte'
-            'packages/adapters/vue'
-            'packages/adapters/preact'
-            'packages/adapters/hydrate'
-            'packages/adapters/react-hook-form-adapter'
-            'packages/tools/kolibri-cli'
-            'packages/tools/mcp'
-            'packages/themes/bwst'
-            'packages/themes/default'
-            'packages/themes/desy'
-            'packages/themes/ecl'
-            'packages/themes/kern'
-            'packages/themes'
-            'packages/samples/react'
-            'packages/tools/visual-tests'
-          )
-
-          for DIR in "${PACKAGE_DIRS[@]}"; do
+          while read -r DIR; do
+            [ -z "$DIR" ] && continue
+            COUNT=$((COUNT + 1))
             PKG=$(node -p "require('./${DIR}/package.json').name")
             PUBLISHED=$(npm view "${PKG}@${VERSION}" version --registry https://registry.npmjs.org 2>/dev/null || true)
             if [ "$PUBLISHED" = "$VERSION" ]; then
@@ -185,7 +243,7 @@ jobs:
               echo "❌ ${PKG}@${VERSION} – NOT found on npm (got: '$PUBLISHED')"
               FAILED+=("$PKG")
             fi
-          done
+          done <<< "$PACKAGE_DIRS"
 
           if [ ${#FAILED[@]} -ne 0 ]; then
             echo ""
@@ -194,14 +252,12 @@ jobs:
             exit 1
           fi
 
-          echo "✅ All ${#PACKAGE_DIRS[@]} packages verified on npmjs registry."
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMJS_GRANULAR_TOKEN}}
+          echo "✅ All ${COUNT} packages verified on npmjs registry."
 
       - name: Update version tag for stable deployments
-        if: github.event.inputs.tag == 'latest'
+        if: steps.release.outputs.tag == 'latest' && github.event.inputs.dry-run != 'true'
         run: |
-          VERSION_TAG="${{env.prefix}}${{github.event.inputs.tag}}"
+          VERSION_TAG="${{env.prefix}}latest"
           echo "Updating version tag: $VERSION_TAG"
           git tag -d "$VERSION_TAG" 2>/dev/null || true
           git push origin ":refs/tags/$VERSION_TAG" 2>/dev/null || true
