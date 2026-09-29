@@ -1,1 +1,0 @@
-import{ot as e}from"./index-CzVsFXc1-kv4-UKan.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};

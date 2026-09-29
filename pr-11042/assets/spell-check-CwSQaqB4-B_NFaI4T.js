@@ -1,1 +1,0 @@
-import{rt as e}from"./index-CzVsFXc1-kv4-UKan.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
