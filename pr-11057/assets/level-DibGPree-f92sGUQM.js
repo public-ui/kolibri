@@ -1,0 +1,1 @@
+import{i as e,m as t}from"./variant-quote-Cqq5Ue0j-C3JgJNro.js";var n=[0,1,2,3,4,5,6],r=e(`level`,0,e=>t(e),e=>n.includes(e));export{r as t};
