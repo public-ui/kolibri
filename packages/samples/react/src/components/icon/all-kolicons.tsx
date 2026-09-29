@@ -9,10 +9,13 @@ export const IconAllKolicons: FC = () => {
 	const [icons, setIcons] = useState<object>({});
 
 	useEffect(() => {
-		fetch('/assets/kolicons/kolicons.json')
+		fetch(`${(import.meta as any).env?.BASE_URL ?? '/'}assets/kolicons/kolicons.json`.replace('//', '/'))
 			.then((response) => response.json())
 			.then((data) => {
 				setIcons(data);
+			})
+			.catch((err) => {
+				console.error('Failed to load kolicons:', err);
 			});
 	}, []);
 
