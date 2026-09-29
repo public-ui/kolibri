@@ -115,31 +115,13 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	// --- Selection ---
 
-	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
-		const nextOffset = offset + step;
+	/**
+	 * Arrow keys move through all tabs, disabled ones included, so a disabled tab stays reachable and
+	 * its tooltip readable. Selecting it is refused in `selectNextTabEvent`.
+	 */
+	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number): number => Math.min(offset + 1, tabs.length - 1);
 
-		if (nextOffset < tabs.length) {
-			if (tabs[nextOffset]._disabled) {
-				return this.nextPossibleTabIndex(tabs, offset, step + 1);
-			}
-			return nextOffset;
-		}
-
-		return offset;
-	};
-
-	private prevPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
-		const nextOffset = offset - step;
-
-		if (nextOffset >= 0) {
-			if (tabs[nextOffset]._disabled) {
-				return this.prevPossibleTabIndex(tabs, offset, step + 1);
-			}
-			return nextOffset;
-		}
-
-		return offset;
-	};
+	private prevPossibleTabIndex = (_tabs: TabButtonProps[], offset: number): number => Math.max(offset - 1, 0);
 
 	private selectNextNotDisabledTab = (selected: number, tabs: TabButtonProps[], upOrDown = true, initialSelected?: number): number => {
 		if (selected > tabs.length - 1) {
@@ -229,7 +211,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	}
 
 	private activateFocusedTab(event: KeyboardEvent) {
-		if (typeof this.currentFocusIndex === 'number') {
+		if (typeof this.currentFocusIndex === 'number' && this.getRenderProp('tabs')[this.currentFocusIndex]?._disabled !== true) {
 			this.onSelect(event, this.currentFocusIndex);
 		}
 	}
@@ -247,7 +229,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 		this.focusTabById(nextTabIndex);
 
-		if (changeMode === 'activateCompletely') {
+		if (changeMode === 'activateCompletely' && this.getRenderProp('tabs')[nextTabIndex]?._disabled !== true) {
 			this._selected = nextTabIndex;
 
 			const tab = this.getRenderProp('tabs')[nextTabIndex];

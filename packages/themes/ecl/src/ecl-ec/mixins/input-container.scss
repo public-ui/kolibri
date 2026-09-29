@@ -23,7 +23,8 @@
 		}
 
 		&--disabled {
-			opacity: 0.5;
+			background-color: var(--ecl-color-disabled-background);
+			border-color: var(--ecl-color-disabled-border);
 		}
 
 		&__smart-button {

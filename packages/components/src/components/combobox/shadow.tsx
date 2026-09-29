@@ -144,6 +144,9 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 	}
 
 	private onInput(event: Event) {
+		if (this.state._disabled === true) {
+			return;
+		}
 		const target = event.target as HTMLInputElement;
 		const value = target.value;
 		this.state._value = value;
@@ -285,16 +288,14 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 				<KolInputContainerFc state={this.state}>
 					<div class="kol-combobox__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
-						{this.state._value && this.state._hasClearButton && (
+						{this.state._value && this.state._hasClearButton && !isDisabled && (
 							<KolButtonWcTag
 								_icons="kolicon-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
 								_variant="ghost"
-								_disabled={isDisabled}
 								data-testid="combobox-delete"
 								class="kol-combobox__delete"
-								hidden={isDisabled}
 								_on={{
 									onClick: () => {
 										this.clearSelection();
@@ -308,9 +309,11 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 								}}
 							/>
 						)}
-						<button type="button" tabIndex={-1} class="kol-combobox-toggle" onClick={this.toggleListbox.bind(this)} disabled={isDisabled} hidden={isDisabled}>
-							<IconFC icons="kolicon-chevron-down" label="" />
-						</button>
+						{!isDisabled && (
+							<button aria-disabled={undefined} type="button" tabIndex={-1} class="kol-combobox-toggle" onClick={this.toggleListbox.bind(this)}>
+								<IconFC icons="kolicon-chevron-down" label="" />
+							</button>
+						)}
 					</div>
 					{
 						<CustomSuggestionsOptionsGroupFc
@@ -355,6 +358,10 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
+		// A disabled field stays focusable, but no key opens or changes it.
+		if (this.state._disabled === true) {
+			return;
+		}
 		const handleEvent = (isOpen?: boolean, callback?: () => void): void => {
 			event.preventDefault();
 			if (isOpen !== undefined) {
@@ -487,7 +494,7 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 	@Prop() public _placeholder?: string;
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 */
 	@Prop() public _disabled?: boolean = false;
 

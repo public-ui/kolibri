@@ -39,10 +39,14 @@
 			   non-focusable custom element and never reached it. `<summary>` is that same box and
 			   matches them now, so the ring is handed back and the two text effects are returned to
 			   their resting state. The mixin is included inside the block, so its rules carry a
-			   `.kol-details` ancestor step; the overrides need the same step to win on specificity. */
-			#{$root} &:not([aria-disabled='true']):focus {
-				color: var(--color-blue-100);
+			   `.kol-details` ancestor step; the overrides need the same step to win on specificity.
+			   The ring applies to a disabled summary as well; the text effects only exist on an enabled one. */
+			#{$root} &:focus {
 				outline: revert;
+			}
+
+			.kol-details:not(.kol-details--disabled) &:focus {
+				color: var(--color-blue-100);
 
 				.kol-span__label {
 					text-decoration: none;
@@ -60,8 +64,20 @@
 		}
 
 		&--disabled {
+			/* The link mixin's emphasis is not gated for the summary, which carries no modifier of its own. */
+			#{$root}__heading {
+				&,
+				&:is(:focus, :hover, :active) {
+					color: var(--color-disabled-text);
+
+					.kol-span__label {
+						text-decoration: none;
+					}
+				}
+			}
+
 			.kol-icon {
-				color: var(--color-black-60);
+				color: var(--color-disabled-text);
 			}
 
 			#{$root}__content {

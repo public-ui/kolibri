@@ -22,7 +22,7 @@ type ToolbarFCProps = Pick<FunctionalComponentProps<ToolbarApi>, 'currentIndex' 
  * the place of the former custom element keeps the flex-item box tree unchanged.
  */
 const renderItem = (record: ToolbarButtonItem | ToolbarLinkItem, index: number, currentIndex: number, location: string) => {
-	const tabIndex = index === currentIndex && !record.disabled ? 0 : -1;
+	const tabIndex = index === currentIndex ? 0 : -1;
 
 	return (
 		<div class={BEM_CLASS_TOOLBAR__ITEM} key={index} ref={record.refWrapper}>

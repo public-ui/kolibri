@@ -72,8 +72,8 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 	/** The custom element; declared with `@Element()` by the concrete class. */
 	protected abstract readonly host?: HTMLElement;
 
-	/* An `<a>` carries no native `disabled`, so a disabled link stays focusable. Emptying the ref
-	   keeps the public `focus()` and `click()` methods from reaching it. */
+	/* A disabled element stays focusable, so the public `focus()` reaches it; the predicate keeps the
+	   public `click()` from activating it. */
 	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>(() => this.getRenderProp('disabled') === true);
 
 	// --- Composed behaviors ---

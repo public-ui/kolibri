@@ -120,3 +120,35 @@ The `*Props` types of components that still have consumers (`ButtonProps`, `Inte
 `LinkProps`, `ButtonLinkProps`, `LinkButtonProps`, `SplitButtonProps`, …) stay. Type the public
 props of a migrated element through the element itself, e.g. `Pick<HTMLKolAbbrElement, '_label'>`,
 or through the internal prop definitions in `src/internal/props`.
+
+## Disabled interactive elements stay focusable (`aria-disabled`)
+
+KoliBri no longer renders the native `disabled` attribute on interactive elements. A component with
+`_disabled` renders `aria-disabled="true"` on its interactive element instead. The element stays
+focusable and in the tab order, screen readers announce it as unavailable, its tooltip is reachable by
+keyboard, and the component blocks every activation: click, Enter, Space, typing, arrow keys, drag and
+drop and the public `click()` method. Text-like inputs and textareas are additionally rendered
+`readonly`.
+
+What changes for applications:
+
+- **Tab order.** Disabled buttons, links, form fields, accordion and details headings, tabs and
+  toolbar items are tab stops now. Arrow key navigation in tabs, toolbars, radio groups and listboxes
+  also reaches disabled entries without selecting them.
+- **Focus.** `focus()` reaches a disabled element, and every theme draws the same focus indicator on it
+  as on an enabled one. Themes no longer dim disabled elements with `opacity`; they use disabled color
+  tokens instead.
+- **Links.** A disabled `kol-link` renders no `href` (so middle click and "open in new tab" cannot
+  navigate) and `role="link"` instead.
+- **Auxiliary controls.** A disabled field does not render its password toggle or its clear buttons,
+  so the field itself stays the only tab stop.
+- **Selectors.** Custom themes style the disabled state through the BEM `--disabled` modifier of
+  the block (e.g. `.kol-button--disabled`, `.kol-input--disabled`, `.kol-select--disabled`), not
+  through `:disabled`, `:enabled`, `[disabled]` or `[aria-disabled]`. Only `<option>` and
+  `<optgroup>` inside a native `<select>` keep the native attribute.
+- **Tests** that check the `disabled` attribute or `:disabled` check `aria-disabled="true"` instead.
+- **Form submission** is unchanged.
+
+The model is enforced by the ESLint rule `kolibri/no-native-disabled` and the Stylelint rule
+`kolibri/common-disabled-bem-modifier`. No API changes, so there is no migration task in the
+KoliBri CLI.

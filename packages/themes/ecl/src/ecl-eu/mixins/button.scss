@@ -16,7 +16,7 @@
 			--text-color: #fff;
 			--text-focus-outline-color: #fff;
 
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			&:not(.#{$block-classname}--disabled):hover {
 				--text-background-color: #3e6cd5;
 			}
 		}
@@ -27,7 +27,7 @@
 			--text-border-color: #0e47cb;
 			--text-focus-outline-color: #fff;
 
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			&:not(.#{$block-classname}--disabled):hover {
 				--text-color: #0e47cb;
 			}
 		}
@@ -38,7 +38,7 @@
 			--text-focus-outline-color: #000;
 			--text-border-color: #fc0;
 
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			&:not(.#{$block-classname}--disabled):hover {
 				--text-background-color: #fc0;
 			}
 		}
@@ -48,7 +48,7 @@
 			--text-border-color: var(--color-red);
 			--text-color: var(--color-white);
 
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			&:not(.#{$block-classname}--disabled):hover {
 				--text-background-color: var(--color-red);
 				--text-border-color: var(--color-red);
 			}
@@ -58,9 +58,18 @@
 			--text-color: #0e47cb;
 			--text-focus-outline-color: #0e47cb;
 
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			&:not(.#{$block-classname}--disabled):hover {
 				--text-color: #0e47cb;
 			}
+		}
+
+		/* After all variants, so it overrides their colors. The focus ring stays, in a color that
+		   contrasts with the disabled background. */
+		&--disabled {
+			--text-background-color: var(--color-disabled-background);
+			--text-border-color: var(--color-disabled-border);
+			--text-color: var(--color-disabled-text);
+			--text-focus-outline-color: var(--color-blue);
 		}
 
 		/* The skeleton DOM moves the focusable element into the wrapper. The class carrier is never
@@ -87,7 +96,7 @@
 			line-height: 1.2;
 
 			&:active,
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			.#{$block-classname}:not(.#{$block-classname}--disabled) &:hover {
 				box-shadow:
 					0 to-rem(2) to-rem(4) rgb(9 49 142 / 8%),
 					0 0 to-rem(10) rgb(9 49 142 / 4%),
@@ -97,7 +106,7 @@
 
 			@at-root #{$root}--secondary & {
 				padding: calc(to-rem(12) - to-rem(2)) calc(to-rem(16) - to-rem(2));
-				border: 2px solid #0e47cb;
+				border: 2px solid var(--text-border-color);
 			}
 
 			/* TODO: the predecessor of this rule was `#{$root}--secondary.button:focus-visible &`,

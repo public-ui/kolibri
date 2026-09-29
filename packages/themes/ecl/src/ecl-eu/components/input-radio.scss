@@ -92,7 +92,7 @@
 			outline-color: var(--color-blue);
 		}
 
-		&:not(:disabled) {
+		&:not(.kol-input--disabled) {
 			&:hover {
 				border-color: var(--color-blue);
 			}
@@ -110,11 +110,16 @@
 				border-width: 7px;
 			}
 
-			&:not(:disabled) {
+			&:not(.kol-input--disabled) {
 				&:hover {
 					border-color: var(--color-red-1xx);
 				}
 			}
+		}
+
+		&#{&}--disabled {
+			background-color: var(--color-disabled-background);
+			border-color: var(--color-disabled-text);
 		}
 	}
 
@@ -177,7 +182,7 @@
 	// 	outline-color: var(--color-blue);
 	// }
 
-	// input[type='radio']:not(:disabled):hover {
+	// input[type='radio']:not(.kol-input--disabled):hover {
 	// 	border-color: var(--color-blue);
 	// }
 
@@ -203,7 +208,7 @@
 	// 	border-width: 7px;
 	// }
 
-	// .error input[type='radio']:not(:disabled):hover {
+	// .error input[type='radio']:not(.kol-input--disabled):hover {
 	// 	border-color: var(--color-red-1xx);
 	// }
 

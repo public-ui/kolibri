@@ -11,12 +11,16 @@
 			outline: 0;
 		}
 
-		.kol-input-container--error &:not(:disabled) {
+		.kol-input-container--error &:not(.kol-custom-suggestions-toggle--disabled) {
 			color: var(--kern-color-feedback-danger);
 		}
 
-		&:not(:disabled):hover {
+		&:not(&--disabled):hover {
 			background: var(--kern-color-action-state-indicator-tint-hover-opacity);
+		}
+
+		&--disabled {
+			color: var(--kern-color-action-disabled-text);
 		}
 
 		.kol-icon {

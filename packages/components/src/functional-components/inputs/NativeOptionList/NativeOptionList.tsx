@@ -7,6 +7,11 @@ import NativeOptionFc from '../NativeOption/NativeOption';
 export type NativeOptionListProps = {
 	preKey?: string;
 	disabled?: boolean;
+	/**
+	 * Disables every option natively while the `<select>` itself is disabled: the select only carries
+	 * `aria-disabled`, which does not stop the browser from changing its value.
+	 */
+	selectDisabled?: boolean;
 	value?: StencilUnknown | StencilUnknown[];
 	options?: SelectOption<StencilUnknown>[];
 
@@ -21,6 +26,7 @@ const NativeOptionListFc: FC<NativeOptionListProps> = ({
 	preKey,
 	options,
 	disabled,
+	selectDisabled,
 	value: selectedValue,
 	OptionProps = {},
 	OptionGroupProps = {},
@@ -47,10 +53,11 @@ const NativeOptionListFc: FC<NativeOptionListProps> = ({
 							key={key}
 							{...OptionGroupProps}
 							label={label?.toString()}
-							disabled={disabled}
+							disabled={disabled || selectDisabled}
 						>
 							<NativeOptionListFc
 								baseClassName={baseClassName}
+								selectDisabled={selectDisabled}
 								OptionGroupProps={OptionGroupProps}
 								OptionProps={OptionProps}
 								value={selectedValue}
@@ -62,7 +69,17 @@ const NativeOptionListFc: FC<NativeOptionListProps> = ({
 				}
 
 				if ('value' in option) {
-					return <NativeOptionFc key={key} baseClassName={baseClassName} {...OptionProps} index={key} selectedValue={selectedValue} {...option} />;
+					return (
+						<NativeOptionFc
+							key={key}
+							baseClassName={baseClassName}
+							{...OptionProps}
+							index={key}
+							selectedValue={selectedValue}
+							{...option}
+							disabled={selectDisabled || option.disabled}
+						/>
+					);
 				}
 
 				return null;

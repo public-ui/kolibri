@@ -36,11 +36,6 @@
 			@include focus-outline;
 		}
 
-		.#{$block-classname}__interactive-element:disabled,
-		.#{$block-classname}__interactive-element[disabled] {
-			opacity: 0.4;
-		}
-
 		&--hide-label {
 			--button-padding: var(--kern-metric-space-small);
 		}
@@ -86,7 +81,7 @@
 			--button-text-background-color: var(--button-text-background-color-default);
 			--button-text-color: var(--kern-color-action-on-default);
 
-			.#{$block-classname}__interactive-element:not([disabled]):hover {
+			&:not(.#{$block-classname}--disabled) .#{$block-classname}__interactive-element:hover {
 				@supports (color-mix: color) {
 					--button-text-background-color: color-mix(in srgb, var(--kern-color-feedback-danger) 85%, black);
 				}
@@ -95,7 +90,7 @@
 				}
 			}
 
-			.#{$block-classname}__interactive-element:not([disabled]):active {
+			&:not(.#{$block-classname}--disabled) .#{$block-classname}__interactive-element:active {
 				@supports (color-mix: color) {
 					--button-text-background-color: color-mix(in srgb, var(--kern-color-feedback-danger) 80%, black);
 				}
@@ -127,6 +122,13 @@
 				font-size: var(--kern-typography-font-size-static-small);
 			}
 		}
+
+		/* Placed after the variants, which set the same custom properties at equal specificity. */
+		&--disabled {
+			--button-text-background-color: var(--kern-color-action-disabled-background);
+			--button-text-border-color: var(--kern-color-action-disabled-border);
+			--button-text-color: var(--kern-color-action-disabled-text);
+		}
 	}
 }
 
@@ -136,12 +138,12 @@
 	--button-text-border-color: var(--kern-color-action-default);
 	--button-text-color: var(--kern-color-action-on-default);
 
-	.#{$block-classname}__interactive-element:not([disabled]):hover {
+	&:not(.#{$block-classname}--disabled) .#{$block-classname}__interactive-element:hover {
 		--button-text-background-color: var(--kern-color-action-state-indicator-shade-hover);
 		--button-text-border-color: var(--kern-color-action-state-indicator-shade-hover);
 	}
 
-	.#{$block-classname}__interactive-element:not([disabled]):active {
+	&:not(.#{$block-classname}--disabled) .#{$block-classname}__interactive-element:active {
 		--button-text-background-color: var(--kern-color-action-state-indicator-shade-active);
 		--button-text-border-color: var(--kern-color-action-state-indicator-shade-active);
 	}
@@ -153,11 +155,11 @@
 	--button-text-border-color: var(--kern-color-action-default);
 	--button-text-color: var(--kern-color-action-default);
 
-	.#{$block-classname}__interactive-element:not([disabled]):hover {
+	&:not(.#{$block-classname}--disabled) .#{$block-classname}__interactive-element:hover {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 	}
 
-	.#{$block-classname}__interactive-element:not([disabled]):active {
+	&:not(.#{$block-classname}--disabled) .#{$block-classname}__interactive-element:active {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-active-opacity);
 	}
 }
@@ -175,12 +177,23 @@
 		text-decoration-color: var(--kern-color-action-default);
 	}
 
-	.#{$block-classname}__interactive-element:not([disabled]):hover {
+	&:not(.#{$block-classname}--disabled) .#{$block-classname}__interactive-element:hover {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
 	}
 
-	.#{$block-classname}__interactive-element:not([disabled]):active {
+	&:not(.#{$block-classname}--disabled) .#{$block-classname}__interactive-element:active {
 		--button-text-background-color: var(--kern-color-action-state-indicator-tint-active-opacity);
+	}
+
+	/* Without a surface of its own, a disabled ghost button is marked by its text color only. */
+	&.#{$block-classname}--disabled {
+		--button-text-background-color: transparent;
+		--button-text-border-color: transparent;
+		--button-text-color: var(--kern-color-action-disabled-text);
+
+		.#{$block-classname}__interactive-element {
+			text-decoration-color: var(--kern-color-action-disabled-text);
+		}
 	}
 
 	&:not(:has(.kol-icon)) {
@@ -190,10 +203,10 @@
 		   re-expand the full carrier selector and demand the block as its own descendant. */
 		.#{$block-classname}__interactive-element {
 			text-decoration-line: underline;
+		}
 
-			&:not([disabled]):hover {
-				text-decoration-thickness: var(--kern-3, 3px);
-			}
+		&:not(.#{$block-classname}--disabled) .#{$block-classname}__interactive-element:hover {
+			text-decoration-thickness: var(--kern-3, 3px);
 		}
 	}
 }

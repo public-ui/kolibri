@@ -36,7 +36,7 @@ import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../funct
 import { translate } from '../../i18n';
 import type { FormFieldLabelInfoPopoverProps } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { blockInactive, createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { InputFileController } from './controller';
 
 /**
@@ -136,7 +136,15 @@ export class KolInputFile implements ClickableElement, FocusableElement, InputFi
 				<KolInputContainerFc state={this.state}>
 					<span class={clsx('kol-input-container__filename', { 'kol-input-container__filename--has-file': this.hasFileSelected })}>{this.filename}</span>
 					<KolInputStateWrapperFc {...this.getInputProps()} />
-					<KolButtonWcTag class="kol-input-container__button" _label={this.translateDataBrowseText} _variant="primary" _disabled={this._disabled} />
+					{/* Only a visual affordance: the invisible file input on top of it takes clicks and focus. */}
+					<KolButtonWcTag
+						aria-hidden="true"
+						class="kol-input-container__button"
+						_label={this.translateDataBrowseText}
+						_tabIndex={-1}
+						_variant="primary"
+						_disabled={this._disabled}
+					/>
 				</KolInputContainerFc>
 			</KolFormFieldStateWrapperFc>
 		);
@@ -163,7 +171,7 @@ export class KolInputFile implements ClickableElement, FocusableElement, InputFi
 	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;
@@ -388,17 +396,20 @@ export class KolInputFile implements ClickableElement, FocusableElement, InputFi
 	}
 
 	/*
-	 * The drag listeners sit on the input container, not on the `<input disabled>` inside it, so the
-	 * native disabled state does not stop them: without this guard a disabled file input still
-	 * highlights as a drop zone and still accepts dropped files.
+	 * The drag listeners sit on the input container, so they also see drops on the invisible file
+	 * input. A disabled field cancels them: it neither highlights as a drop zone nor lets the
+	 * browser assign the dropped files to the input.
 	 */
 	private isDisabled = (): boolean => this._disabled === true;
 
 	private onDragOver = (event: DragEvent): void => {
+		event.preventDefault();
 		if (this.isDisabled()) {
+			if (event.dataTransfer) {
+				event.dataTransfer.dropEffect = 'none';
+			}
 			return;
 		}
-		event.preventDefault();
 		this.ctaRef.el?.parentElement?.parentElement?.classList.add('kol-input-container--is-dragover');
 	};
 
@@ -408,6 +419,7 @@ export class KolInputFile implements ClickableElement, FocusableElement, InputFi
 
 	private onDrop = (event: DragEvent): void => {
 		if (this.isDisabled()) {
+			blockInactive(event);
 			return;
 		}
 		event.preventDefault();

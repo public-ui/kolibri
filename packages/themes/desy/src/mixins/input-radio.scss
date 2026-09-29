@@ -1,7 +1,8 @@
 @use './focus-outline' as *;
 @use '../functions/to-rem' as *;
 
-@mixin kol-input-radio {
+/* `$disabled-classname` is the modifier the component renders on the disabled input itself. */
+@mixin kol-input-radio($disabled-classname: 'kol-input--disabled') {
 	background-color: var(--color-white-100);
 	width: to-rem(16);
 	min-width: 0;
@@ -18,12 +19,12 @@
 		outline-offset: var(--radius-s);
 	}
 
-	&:not(:disabled, :checked):hover {
+	&:not(.#{$disabled-classname}, :checked):hover {
 		background-color: var(--color-blue-30);
 		box-shadow: inset 0 0 0 1px var(--kol-radio-main-color);
 	}
 
-	&:not(:disabled):checked:hover {
+	&:not(.#{$disabled-classname}):checked:hover {
 		box-shadow: inset 0 0 0 4px var(--kol-radio-main-color);
 	}
 

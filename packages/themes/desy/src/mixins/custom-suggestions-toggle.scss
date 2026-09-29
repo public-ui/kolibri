@@ -16,11 +16,11 @@
 			outline: 0;
 		}
 
-		.kol-input-container--error &:not(:disabled) {
+		.kol-input-container--error &:not(.kol-custom-suggestions-toggle--disabled) {
 			color: var(--color-blue-100);
 		}
 
-		&:not(:disabled):hover {
+		&:not(.kol-custom-suggestions-toggle--disabled):hover {
 			background: var(--color-blue-100-06);
 		}
 	}

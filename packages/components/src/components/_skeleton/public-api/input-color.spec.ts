@@ -50,7 +50,7 @@ const KOL_INPUT_COLOR_PUBLIC_API: PublicApiContract = {
 		type: 'boolean',
 		required: false,
 		default: 'false',
-		doc: 'Makes the element not focusable and ignore all events. @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.',
+		doc: 'Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input. @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.',
 	},
 	_hideLabel: {
 		kind: 'prop',

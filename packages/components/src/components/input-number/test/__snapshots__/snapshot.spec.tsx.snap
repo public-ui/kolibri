@@ -98,7 +98,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="input-number-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
+            <input aria-disabled="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" id="input-number-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" type="number">
           </div>
         </div>
       </div>
@@ -702,7 +702,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" disabled="" id="input-number-nonce" list="input-number-list-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
+            <input aria-disabled="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled" id="input-number-nonce" list="input-number-list-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" type="number">
             <datalist id="input-number-list-nonce">
               <option value="1"></option>
               <option value="2"></option>

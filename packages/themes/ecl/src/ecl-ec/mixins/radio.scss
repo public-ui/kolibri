@@ -18,9 +18,13 @@
 				background-color: var(--kol-radio-color);
 				inset: to-rem(4);
 			}
+
+			&.kol-input--disabled {
+				background-color: var(--ecl-color-disabled-background);
+			}
 		}
 
-		&:not(:has(input:disabled)):hover {
+		&:not(.#{$block-classname}--disabled):hover {
 			input {
 				outline: var(--ecl-color-primary-20) 8px solid;
 			}

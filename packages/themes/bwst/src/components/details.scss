@@ -53,9 +53,20 @@
 				}
 			}
 
-			&:not([aria-disabled='true']):focus-visible {
+			&:focus-visible {
 				@include focus-outline;
+			}
+
+			.kol-details:not(.kol-details--disabled) &:focus-visible {
 				cursor: pointer;
+			}
+
+			.kol-details--disabled & {
+				color: var(--color-disabled-text);
+
+				.kol-icon {
+					color: var(--color-disabled-text);
+				}
 			}
 		}
 

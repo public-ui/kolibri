@@ -12,7 +12,7 @@
 		border-radius: 8px;
 		margin: 0;
 
-		&:not(.kol-accordion--disabled):focus-within {
+		&:focus-within {
 			outline: 2px solid var(--color-blue);
 			outline-offset: -1px;
 		}
@@ -74,7 +74,16 @@
 
 					font-family: 'Font Awesome 6 Free';
 					font-weight: 900;
+
+					.kol-accordion--disabled & {
+						color: var(--color-disabled-text);
+					}
 				}
+			}
+
+			.kol-accordion--disabled & {
+				color: var(--color-disabled-text);
+				background-color: var(--color-disabled-background);
 			}
 		}
 

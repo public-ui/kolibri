@@ -19,7 +19,7 @@ describe('FormFieldFC', () => {
 	])('renders %s', async (_, props) => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<FormFieldFC id="field-nonce" label="Label" refTooltip={noop} {...props}>
-				<input type="text" />
+				<input aria-disabled={undefined} type="text" />
 			</FormFieldFC>
 		));
 		expect(page.root).toMatchSnapshot();

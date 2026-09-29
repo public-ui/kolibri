@@ -78,7 +78,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-color__input kol-input-color__input--color" disabled="" id="input-color-nonce" name="field-color" type="color" value="#FFFFFF">
+            <input aria-disabled="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-color__input kol-input-color__input--color" id="input-color-nonce" name="field-color" type="color" value="#FFFFFF">
           </div>
         </div>
       </div>
@@ -562,7 +562,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
-            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-color__input kol-input-color__input--color" disabled="" id="input-color-nonce" list="input-color-list-nonce" name="field-color" type="color" value="#FFFFFF">
+            <input aria-disabled="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-input-color__input kol-input-color__input--color" id="input-color-nonce" list="input-color-list-nonce" name="field-color" type="color" value="#FFFFFF">
             <datalist id="input-color-list-nonce">
               <option value="#FF0000"></option>
               <option value="#00FF00"></option>

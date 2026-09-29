@@ -10,7 +10,7 @@
 		&__heading {
 			width: max-content;
 
-			@include ghost-button('kol-button');
+			@include ghost-button('kol-button', $disabled-block: 'kol-details');
 
 			.kol-span {
 				color: var(--button-text-color);

@@ -149,9 +149,6 @@ export class KolInputCheckbox implements ClickableElement, FocusableElement, Inp
 					this.inputHasFocus = true;
 				},
 				onBlur: (event: FocusEvent) => {
-					if (this._disabled) {
-						return;
-					}
 					this.controller.onFacade.onBlur(event);
 					this.inputHasFocus = false;
 				},
@@ -196,7 +193,7 @@ export class KolInputCheckbox implements ClickableElement, FocusableElement, Inp
 	@Prop() public _hideMsg?: boolean = false;
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;

@@ -46,6 +46,14 @@
 		--color-text: var(--kolibri-color-text, light-dark(#202020, #{$dark-color-text}));
 		--color-mute: var(--kolibri-color-mute, light-dark(#f2f3f4, #{$dark-color-mute}));
 		--color-mute-variant: var(--kolibri-color-mute-variant, light-dark(#bec5c9, #{$dark-color-mute-variant}));
+		/*
+		 * Disabled state. Disabled controls stay focusable, so they are marked by color instead of
+		 * opacity, which would also fade the focus ring. The aliases follow the color scheme of the
+		 * tokens they point to; the text clears 4.5:1 on the disabled background in both schemes.
+		 */
+		--color-disabled-text: var(--kolibri-color-disabled-text, var(--color-subtle));
+		--color-disabled-background: var(--kolibri-color-disabled-background, var(--color-mute));
+		--color-disabled-border: var(--kolibri-color-disabled-border, var(--color-mute-variant));
 		--color-visited: var(
 			--kolibri-color-visited,
 			light-dark(#551a8b, #{$dark-color-visited})
@@ -201,14 +209,5 @@
 		100% {
 			transform: rotate(360deg);
 		}
-	}
-
-	.disabled label,
-	.disabled:focus-within label,
-	[aria-disabled='true'],
-	[aria-disabled='true']:focus,
-	[disabled],
-	[disabled]:focus {
-		opacity: 0.5;
 	}
 }

@@ -16,8 +16,8 @@
 				}
 			}
 
-			&:focus:not([aria-disabled], [disabled]),
-			&:hover:not([aria-disabled], [disabled]) {
+			.#{$block-classname}:not(.#{$block-classname}--disabled) &:focus,
+			.#{$block-classname}:not(.#{$block-classname}--disabled) &:hover {
 				.kol-span__label {
 					text-decoration-thickness: 0.25em;
 				}
@@ -25,6 +25,10 @@
 
 			&:visited {
 				color: var(--color-visited);
+			}
+
+			.#{$block-classname}--disabled & {
+				color: var(--color-disabled-text);
 			}
 		}
 	}

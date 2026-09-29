@@ -44,8 +44,8 @@ export class KolAccordion
 
 	private readonly accordionId = createUniqueId('accordion');
 
-	/* A disabled `<summary>` stays technically focusable, unlike the `<button disabled>` it replaced.
-	   Emptying the ref keeps the public `focus()` and `click()` methods from reaching it. */
+	/* A disabled element stays focusable, so the public `focus()` reaches it; the predicate keeps the
+	   public `click()` from activating it. */
 	protected readonly ctaRef = createCtaRef<HTMLElement>(() => this.getRenderProp('disabled') === true);
 
 	private hasLoaded = false;
@@ -143,7 +143,7 @@ export class KolAccordion
 	// --- Props + Watchers ---
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 */
 	@Prop() public _disabled?: boolean = false;
 	@Watch('_disabled')

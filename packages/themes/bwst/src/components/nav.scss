@@ -56,6 +56,11 @@
 					text-decoration: none;
 				}
 
+				&.kol-link--disabled,
+				&.kol-button--disabled {
+					color: var(--color-disabled-text);
+				}
+
 				#{$root}__list & {
 					padding-left: to-rem(var(--kol-nav-item-padding-left));
 					border-left: 2px solid transparent;
@@ -88,9 +93,8 @@
 					outline: none;
 				}
 
-				/* State predicates live on the interactive element: on the wrapper `:not([disabled])`
-				   would always be true, re-enabling hover styling for disabled buttons. */
-				&__interactive-element:not([disabled]):hover {
+				/* `:hover` is read off the interactive element, the disabled state off the wrapper's modifier. */
+				&:not(.kol-button--disabled) .kol-button__interactive-element:hover {
 					--text-background-color: var(--color-primary-variant);
 					--text-border-color: var(--color-primary-variant);
 					--text-color: var(--color-light);
@@ -134,13 +138,10 @@
 					@at-root #{$root}__interactive-element:focus {
 						@include focus-outline;
 					}
+				}
 
-					@at-root #{$root}__interactive-element:disabled:hover & {
-						color: var(--text-color);
-						background-color: var(--text-background-color);
-						box-shadow: none;
-						border-color: var(--text-border-color);
-					}
+				&--disabled .kol-button__interactive-element:hover .kol-button__text {
+					box-shadow: none;
 				}
 			}
 		}

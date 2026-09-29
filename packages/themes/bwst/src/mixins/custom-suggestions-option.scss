@@ -1,4 +1,5 @@
 @use '../mixins/to-rem' as *;
+@use './focus-outline' as *;
 
 @mixin kol-custom-suggestions-option-theme($option-height) {
 	.kol-custom-suggestions-option {
@@ -19,10 +20,16 @@
 			outline: 0;
 		}
 
-		&--disabled:focus,
-		&--disabled:focus * {
-			outline: 0;
+		&--disabled {
+			color: var(--color-disabled-text);
 			cursor: not-allowed;
+
+			/* Disabled options stay focusable; the ring marks focus without the selection fill. The
+			   negative offset keeps it inside the scrolling listbox. */
+			&:focus {
+				@include focus-outline;
+				outline-offset: to-rem(-3);
+			}
 		}
 	}
 }

@@ -5,39 +5,35 @@ import { delegateFocus as delegateFocusImpl, setFocus } from './element-focus';
 export type CtaRef<T extends HTMLElement = HTMLElement> = {
 	(ref?: T): void;
 	el?: T;
+	isInactive?: () => boolean;
 };
 
 /**
  * Creates the ref that `focus()` and `click()` delegate to.
  *
- * @param isInactive - Optional predicate; while it returns `true`, `el` reads as `undefined` and
- *   the delegating decorators below resolve to a no-op. Components whose inner control cannot
- *   carry a native `disabled` attribute use this to keep a disabled element out of reach of the
- *   public `focus()`/`click()` methods, just as a native `disabled` control would be.
+ * @param isInactive - Optional predicate; while it returns `true`, the click decorators below
+ *   resolve to a no-op. Focus delegation ignores it: a disabled element stays focusable and is
+ *   only marked with `aria-disabled`.
  */
 export function createCtaRef<T extends HTMLElement = HTMLElement>(isInactive?: () => boolean): CtaRef<T> {
-	let element: T | undefined;
 	const ref = ((el?: T) => {
-		element = el;
+		ref.el = el;
 	}) as CtaRef<T>;
-	Object.defineProperty(ref, 'el', {
-		get: () => (isInactive?.() === true ? undefined : element),
-		set: (el?: T) => {
-			element = el;
-		},
-	});
+	ref.isInactive = isInactive;
 	return ref;
 }
 
 /**
- * `mousedown` handler that keeps a control from taking focus on click or tap.
- *
- * Elements whose disabled state is only `aria-disabled` — an `<a>`, a `<summary>` — stay focusable:
- * `tabindex="-1"` takes them out of the tab order but not out of the click focus, and focus is the
- * default action of `mousedown`. A native `disabled` control refuses focus implicitly; these have
- * to refuse it here.
+ * Event handler for a disabled element. `aria-disabled` does not stop the browser from activating
+ * an element, so the handlers of a disabled element cancel the default action (navigation, form
+ * submission, checking, opening a picker) and keep the event from reaching the host's listeners.
  */
-export const preventFocus = (event: MouseEvent): void => event.preventDefault();
+export const blockInactive = (event: Event): void => {
+	event.preventDefault();
+	event.stopPropagation();
+};
+
+const getClickTarget = (ref?: CtaRef): HTMLElement | undefined => (ref?.isInactive?.() === true ? undefined : ref?.el);
 
 type MethodDecorator_ = (_target: object, _key: string, descriptor: PropertyDescriptor) => PropertyDescriptor;
 
@@ -76,7 +72,7 @@ export function directFocus(refPropName: string): MethodDecorator_ {
  */
 export function directClick(refPropName: string): MethodDecorator_ {
 	return makeMethodDecorator((self) => {
-		const element = (self[refPropName] as CtaRef).el;
+		const element = getClickTarget(self[refPropName] as CtaRef);
 		return element ? setClick(element) : Promise.resolve();
 	});
 }
@@ -117,7 +113,7 @@ export function ctrlFocus(ctrlPropName: string): MethodDecorator_ {
 export function delegateClick(refPropName: string): MethodDecorator_ {
 	return makeMethodDecorator((self) =>
 		delegateClickImpl(self['host'] as HTMLElement, () => {
-			const element = (self[refPropName] as CtaRef).el;
+			const element = getClickTarget(self[refPropName] as CtaRef);
 			return element ? setClick(element) : Promise.resolve();
 		}),
 	);

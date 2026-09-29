@@ -7,7 +7,7 @@ exports[`kol-split-button should render with _label="Label" _disabled=true 1`] =
       <div class="kol-split-button__root">
         <div class="kol-split-button__button normal">
           <div class="kol-button kol-button--disabled kol-button--normal kol-button--standalone">
-            <button class="kol-button__interactive-element" disabled="" type="button">
+            <button aria-disabled="true" class="kol-button__interactive-element" type="button">
               <span class="kol-button__text kol-span">
                 <span class="kol-span__container">
                   <span class="kol-span__label">
@@ -25,7 +25,7 @@ exports[`kol-split-button should render with _label="Label" _disabled=true 1`] =
         <div class="kol-split-button__secondary-button">
           <div class="kol-popover-button">
             <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone">
-              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="kol-split-button-dropdown-label-open" class="kol-button__interactive-element" disabled="" type="button">
+              <button aria-controls="popover-nonce" aria-disabled="true" aria-expanded="false" aria-label="kol-split-button-dropdown-label-open" class="kol-button__interactive-element" type="button">
                 <span class="kol-button__text kol-span kol-span--hide-label">
                   <span class="kol-span__container">
                     <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>

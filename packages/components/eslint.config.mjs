@@ -70,6 +70,12 @@ export default [
 			 */
 			'kolibri/no-translate-cast-or-concat': 'error',
 
+			/**
+			 * Disabled interactive elements stay focusable: `aria-disabled` instead of the native
+			 * `disabled` attribute, see `packages/tools/eslint-config/rules/no-native-disabled.js`.
+			 */
+			'kolibri/no-native-disabled': 'error',
+
 			// Disable rules that TypeScript already handles
 			'no-undef': 'off',
 

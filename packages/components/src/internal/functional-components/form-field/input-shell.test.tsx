@@ -16,7 +16,7 @@ describe('InputContainerFC', () => {
 	])('renders %s', async (_, props) => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<InputContainerFC {...props}>
-				<input />
+				<input aria-disabled={undefined} />
 			</InputContainerFC>
 		));
 		expect(page.root).toMatchSnapshot();

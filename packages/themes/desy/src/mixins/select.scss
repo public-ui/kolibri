@@ -21,9 +21,9 @@
 			height: to-rem(34);
 		}
 
-		&:disabled {
-			opacity: 1;
-			color: var(--color-black-60);
+		&--disabled {
+			color: var(--color-disabled-text);
+			background-color: var(--color-disabled-background);
 		}
 
 		&:focus {
@@ -31,10 +31,7 @@
 		}
 
 		&__option {
-			&:active:not(:disabled),
-			&:checked:not(:disabled),
-			&:focus:not(:disabled),
-			&:hover:not(:disabled) {
+			&:not(.kol-select__option--disabled):is(:active, :checked, :focus, :hover) {
 				color: var(--color-white-100);
 				background-color: var(--color-blue-100);
 			}
@@ -88,7 +85,7 @@
 				}
 
 				@at-root #{$root}--disabled & {
-					color: var(--color-black-60);
+					color: var(--color-disabled-text);
 				}
 			}
 		}

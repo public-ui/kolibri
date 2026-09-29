@@ -37,29 +37,23 @@
 			--text-border-width: var(--border-width-m);
 			--text-color: var(--color-red-100);
 
-			/* On the wrapper `[disabled]` is never present and `:focus` never matches: `:has(:disabled)`
-			   asks the interactive element inside, `:focus-within` covers its focus. */
-			&:not(:has(:disabled), .#{$block-classname}--disabled):hover,
-			&:focus-within {
+			/* `:focus` never matches the wrapper; `:focus-within` covers the focus of the interactive element inside. */
+			&:not(.#{$block-classname}--disabled):is(:focus-within, :hover) {
 				.#{$block-classname}__text::before {
 					background-color: var(--color-red-100-06);
 				}
 			}
 
-			&:has(:disabled) {
-				--text-background-color: var(--color-white-100);
-				--text-border-color: var(--color-black-60);
-				--text-color: var(--color-black-60);
+			&.#{$block-classname}--disabled {
+				--text-background-color: var(--color-disabled-background);
+				--text-border-color: var(--color-disabled-border);
+				--text-color: var(--color-disabled-text);
 			}
 		}
 
 		&--tertiary,
 		&--ghost {
 			@include ghostButton($block-classname);
-		}
-
-		&:has(:disabled) {
-			opacity: 1;
 		}
 
 		&__text {
@@ -145,15 +139,14 @@
 		--text-border-width: var(--border-width-none);
 		--text-color: var(--color-blue-100);
 
-		/* See `--danger` above: the state predicates belong to the element inside the wrapper. */
-		&:not(:has(:disabled), .#{$block-classname}--disabled):hover,
-		&:focus-within {
+		/* See `--danger` above. */
+		&:not(.#{$block-classname}--disabled):is(:focus-within, :hover) {
 			.#{$block-classname}__text::before {
 				background-color: var(--color-dark-blue-100-06);
 			}
 		}
 
-		&:active {
+		&:not(.#{$block-classname}--disabled):active {
 			.#{$block-classname}__text::before {
 				background-color: var(--color-dark-blue-100-09);
 			}
@@ -167,19 +160,21 @@
 	--text-border-width: var(--border-width-m);
 	--text-color: var(--color-white-100);
 
-	&:has(:disabled) {
-		--text-background-color: var(--color-black-60);
-		--text-border-color: var(--color-black-60);
+	&.#{$block-classname}--disabled {
+		--text-background-color: var(--color-disabled-background);
+		--text-border-color: var(--color-disabled-border);
+		--text-color: var(--color-disabled-text);
 	}
 
-	/* The mixin is included on the wrapper: `[disabled]` sits on the element inside it and `:focus`
-	   never matches the wrapper, so `:has(:disabled)` and `:focus-within` are used instead. */
-	&:not(:has(:disabled), .#{$block-classname}--disabled):hover .kol-span::before,
-	&:focus-within .kol-span::before {
+	/* The mixin is included on the wrapper, which carries the `--disabled` modifier; `:focus` never matches
+	   the wrapper, so `:focus-within` is used instead.
+	   A focused disabled button keeps the focus ring on `__text` but gets no state overlay, which would
+	   push `--color-disabled-text` below 4.5:1. */
+	&:not(.#{$block-classname}--disabled):is(:focus-within, :hover) .kol-span::before {
 		background-color: var(--color-black-100-12);
 	}
 
-	&:active .kol-span::before {
+	&:not(.#{$block-classname}--disabled):active .kol-span::before {
 		background-color: var(--color-black-100-24);
 	}
 }
@@ -190,15 +185,14 @@
 	--text-border-width: var(--border-width-m);
 	--text-color: var(--color-blue-100);
 
-	&:has(:disabled) {
-		--text-background-color: var(--color-white-100);
-		--text-border-color: var(--color-black-60);
-		--text-color: var(--color-black-60);
+	&.#{$block-classname}--disabled {
+		--text-background-color: var(--color-disabled-background);
+		--text-border-color: var(--color-disabled-border);
+		--text-color: var(--color-disabled-text);
 	}
 
 	/* See `primaryButton`. */
-	&:not(:has(:disabled), .#{$block-classname}--disabled):hover .kol-span::before,
-	&:focus-within .kol-span::before {
+	&:not(.#{$block-classname}--disabled):is(:focus-within, :hover) .kol-span::before {
 		background-color: var(--color-blue-100-06);
 	}
 }
@@ -208,13 +202,12 @@
 	--text-border-width: var(--border-width-none);
 	--text-color: var(--color-blue-100);
 
-	&:has(:disabled) {
-		--text-color: var(--color-black-60);
+	&.#{$block-classname}--disabled {
+		--text-color: var(--color-disabled-text);
 	}
 
 	/* See `primaryButton`. */
-	&:not(:has(:disabled), .#{$block-classname}--disabled):hover .kol-span::before,
-	&:focus-within .kol-span::before {
+	&:not(.#{$block-classname}--disabled):is(:focus-within, :hover) .kol-span::before {
 		background-color: var(--color-blue-100-06);
 	}
 }

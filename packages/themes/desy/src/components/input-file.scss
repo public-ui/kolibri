@@ -125,12 +125,11 @@
 		}
 
 		&--disabled &__filename {
-			color: var(--color-black-60);
+			color: var(--color-disabled-text);
 		}
 
 		&--disabled .kol-button {
-			opacity: 1;
-			color: var(--color-black-60);
+			color: var(--color-disabled-text);
 		}
 	}
 }

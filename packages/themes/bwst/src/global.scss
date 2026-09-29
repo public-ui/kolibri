@@ -19,6 +19,13 @@
 		--color-text: var(--kolibri-color-text, #202020);
 		--color-mute: var(--kolibri-color-mute, #f2f3f4);
 		--color-mute-variant: var(--kolibri-color-mute-variant, #bec5c9);
+		/*
+		 * Disabled elements stay focusable, so they are marked by color instead of opacity: opacity
+		 * would also dim the focus ring. The text keeps at least 4.5:1 against the disabled background.
+		 */
+		--color-disabled-background: var(--kolibri-color-disabled-background, var(--color-mute));
+		--color-disabled-border: var(--kolibri-color-disabled-border, var(--color-mute-variant));
+		--color-disabled-text: var(--kolibri-color-disabled-text, var(--color-subtle));
 		--color-visited: var(
 			--kolibri-color-visited,
 			#551a8b
@@ -107,14 +114,5 @@
 		100% {
 			transform: rotate(360deg);
 		}
-	}
-
-	.disabled label,
-	.disabled:focus-within label,
-	[aria-disabled='true'],
-	[aria-disabled='true']:focus,
-	[disabled],
-	[disabled]:focus {
-		opacity: 0.5;
 	}
 }

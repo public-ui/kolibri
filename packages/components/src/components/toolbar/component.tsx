@@ -64,7 +64,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	 */
 	@Method()
 	public async focus(options?: KolFocusOptions): Promise<void> {
-		const element = this.getCurrentItemElement();
+		const element = this.itemRecords[this.currentIndex]?.getElement();
 		if (element) {
 			return delegateFocus(this.host!, () => setFocus(element, options));
 		}
@@ -75,7 +75,8 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		const element = this.getCurrentItemElement();
+		const record = this.itemRecords[this.currentIndex];
+		const element = record && !record.disabled ? record.getElement() : undefined;
 		if (element) {
 			return delegateClick(this.host!, async () => setClick(element));
 		}
@@ -84,37 +85,14 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	// --- Roving tabindex ---
 
 	/**
-	 * The interactive element the roving tabindex points at, or `undefined` while that item is
-	 * disabled: the index is seeded with the first enabled item, but an item can be disabled again
-	 * while it is current.
+	 * Seeds the roving tabindex with the first enabled item. A toolbar whose items are all disabled
+	 * starts at the first item, so it keeps a tab stop.
 	 */
-	private getCurrentItemElement(): HTMLAnchorElement | HTMLButtonElement | undefined {
-		const record = this.itemRecords[this.currentIndex];
-		return record && !record.disabled ? record.getElement() : undefined;
-	}
-
-	private setFirstEnabledItemIndex(): void {
-		this.currentIndex = this.itemRecords.findIndex((record) => !record.disabled);
-	}
-
-	/**
-	 * Walks the items from `fromIndex` in `step` direction, wrapping around, and returns the first
-	 * enabled one.
-	 *
-	 * Disabled items are skipped rather than blocking the walk: stopping at the first disabled
-	 * neighbour would make every item behind it unreachable by keyboard.
-	 *
-	 * @returns the index to move to, or `undefined` when no other item is enabled.
-	 */
-	private findNextEnabledItemIndex(fromIndex: number, step: -1 | 1): number | undefined {
-		const itemCount = this.itemRecords.length;
-		for (let offset = 1; offset <= itemCount; offset++) {
-			const candidate = (((fromIndex + step * offset) % itemCount) + itemCount) % itemCount;
-			if (!this.itemRecords[candidate].disabled) {
-				return candidate;
-			}
-		}
-		return undefined;
+	private setFirstItemIndex(): void {
+		this.currentIndex = Math.max(
+			0,
+			this.itemRecords.findIndex((record) => !record.disabled),
+		);
 	}
 
 	// --- Listeners ---
@@ -127,9 +105,10 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 
 		if (this.itemRecords.length === 0) return;
 		const step = pressedKey === KeyboardKey.ArrowUp || pressedKey === KeyboardKey.ArrowLeft ? -1 : 1;
-		const nextIndex = this.findNextEnabledItemIndex(this.currentIndex, step);
+		const itemCount = this.itemRecords.length;
+		const nextIndex = (((this.currentIndex + step) % itemCount) + itemCount) % itemCount;
 
-		if (nextIndex === undefined || nextIndex === this.currentIndex) {
+		if (nextIndex === this.currentIndex) {
 			return;
 		}
 
@@ -142,7 +121,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	 */
 	@Listen('focusout', { capture: true })
 	public handleFocusout(event: FocusEvent): void {
-		if (event.target === this.host) this.setFirstEnabledItemIndex();
+		if (event.target === this.host) this.setFirstItemIndex();
 	}
 
 	// --- Render ---
@@ -190,7 +169,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 			this.setRenderProp('items', items);
 			this.itemRecords.forEach((record) => record.destroy());
 			this.itemRecords = items.map((item) => createToolbarItem(item, () => this.host));
-			this.setFirstEnabledItemIndex();
+			this.setFirstItemIndex();
 		});
 	}
 

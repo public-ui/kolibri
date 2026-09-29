@@ -1,8 +1,9 @@
 @use './focus-outline' as *;
 @use '../functions/to-rem' as *;
 
-@mixin checkbox-states {
-	&:not(:disabled, :checked, :indeterminate):hover {
+/* `$disabled-classname` is the modifier the component renders on the disabled input itself. */
+@mixin checkbox-states($disabled-classname: 'kol-input--disabled') {
+	&:not(.#{$disabled-classname}, :checked, :indeterminate):hover {
 		box-shadow: inset 0 0 0 1px var(--kol-checkbox-main-color);
 
 		&::before {
@@ -10,8 +11,8 @@
 		}
 	}
 
-	&:not(:disabled):checked:hover,
-	&:not(:disabled):indeterminate:hover,
+	&:not(.#{$disabled-classname}):checked:hover,
+	&:not(.#{$disabled-classname}):indeterminate:hover,
 	&:checked:focus,
 	&:indeterminate:focus {
 		border-color: var(--color-dark-blue-100);
@@ -25,8 +26,7 @@
 		@include focus-outline;
 	}
 
-	&:disabled {
-		opacity: 1;
-		--kol-checkbox-main-color: var(--color-black-60);
+	&.#{$disabled-classname} {
+		--kol-checkbox-main-color: var(--color-disabled-text);
 	}
 }

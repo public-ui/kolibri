@@ -195,7 +195,6 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 					this.controller.onFacade.onChange(event, this._value);
 					this.ctaRef.el?.focus();
 				}}
-				disabled={this._disabled || this._readOnly}
 			>
 				<IconFC icons="kolicon-plus" label="" />
 			</button>
@@ -225,7 +224,6 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 					this.controller.onFacade.onChange(event, this._value);
 					this.ctaRef.el?.focus();
 				}}
-				disabled={this._disabled || this._readOnly}
 			>
 				<IconFC icons="kolicon-minus" label="" />
 			</button>
@@ -263,7 +261,7 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;

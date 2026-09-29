@@ -22,11 +22,20 @@
 		}
 
 		&--disabled {
+			color: var(--color-disabled-text);
+			background-color: var(--color-disabled-background);
+			border-color: var(--color-disabled-border);
 			cursor: not-allowed;
 		}
 
 		&#{&}--error {
 			border-color: var(--color-red);
 		}
+	}
+
+	.kol-input--disabled,
+	.kol-select--disabled,
+	.kol-textarea--disabled {
+		color: var(--color-disabled-text);
 	}
 }

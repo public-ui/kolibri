@@ -32,7 +32,7 @@
 			}
 
 			.kol-span__label {
-				@at-root #{$root}__interactive-element:is(:focus, :hover):not([aria-disabled], [disabled]) & {
+				@at-root #{$root}:not(#{$root}--disabled) #{$root}__interactive-element:is(:focus, :hover) & {
 					text-decoration-thickness: 0.25em;
 				}
 			}

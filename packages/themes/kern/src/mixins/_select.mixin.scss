@@ -27,6 +27,11 @@
 			background: var(--kern-color-feedback-danger-background);
 		}
 
+		&--disabled {
+			color: var(--kern-color-action-disabled-text);
+			background: var(--kern-color-action-disabled-background);
+		}
+
 		&:focus {
 			outline: none;
 		}
@@ -44,22 +49,22 @@
 		&__option {
 			background: var(--kern-color-form-input-background);
 
-			&:checked:not(:disabled) {
+			&:checked:not(.kol-select__option--disabled) {
 				color: var(--kern-color-layout-text-default);
 				background-color: rgb(from var(--kern-color-action-default) r g b / var(--kern-color-action-state-opacity-selected));
 			}
 
-			&:hover:not(:disabled) {
+			&:hover:not(.kol-select__option--disabled) {
 				background-color: rgb(from var(--kern-color-action-default) r g b / var(--kern-color-action-state-opacity-hover));
 			}
 
-			&:focus:not(:disabled),
-			&:focus-visible:not(:disabled) {
+			&:focus,
+			&:focus-visible {
 				background-color: rgb(from var(--kern-color-action-default) r g b / var(--kern-color-action-state-opacity-focus));
 				outline: 0;
 			}
 
-			&:active:not(:disabled) {
+			&:active:not(.kol-select__option--disabled) {
 				background-color: rgb(from var(--kern-color-action-default) r g b / var(--kern-color-action-state-opacity-active));
 			}
 		}
@@ -70,12 +75,6 @@
 			&::before {
 				margin-right: to-rem(8);
 			}
-		}
-	}
-
-	.kol-form-field {
-		&--disabled {
-			opacity: var(--kern-color-action-state-opacity-disabled);
 		}
 	}
 
@@ -110,6 +109,10 @@
 				font-family: material-symbols-subset;
 				font-size: var(--kern-metric-dimension-default);
 				pointer-events: none;
+
+				.kol-input-container--disabled & {
+					color: var(--kern-color-action-disabled-text);
+				}
 			}
 		}
 	}

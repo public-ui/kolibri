@@ -168,7 +168,7 @@
 			--kol-selection-input-icon-color: var(--color-light);
 
 			&-input {
-				&:not(:disabled):hover {
+				&:not(.kol-table__selection-input--disabled):hover {
 					box-shadow: 0 2px 8px 2px var(--kol-selection-input-hover-color);
 					border-color: var(--kol-selection-input-main-color);
 				}

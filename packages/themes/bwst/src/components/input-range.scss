@@ -52,8 +52,17 @@
 				--thumb-outline-width: 2px;
 			}
 
-			&:hover {
+			&:not(.kol-input--disabled):hover {
 				--thumb-outline-width: 2px;
+			}
+
+			/* Only the thumb fill takes the disabled color; its outline is the focus indicator. */
+			&.kol-input--disabled::-webkit-slider-thumb {
+				background: var(--color-disabled-text);
+			}
+
+			&.kol-input--disabled::-moz-range-thumb {
+				background: var(--color-disabled-text);
 			}
 		}
 	}

@@ -62,7 +62,7 @@ exports[`kol-accordion should render with _label="Überschrift" _open=false _dis
 <kol-accordion>
   <template shadowrootmode="open">
     <details class="kol-accordion kol-accordion--disabled" style="--collapsible-transition-duration: 300ms;">
-      <summary aria-controls="accordion-control-nonce" aria-disabled="true" class="kol-accordion__heading" id="accordion-heading-nonce" tabindex="-1">
+      <summary aria-controls="accordion-control-nonce" aria-disabled="true" class="kol-accordion__heading" id="accordion-heading-nonce">
         <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">
@@ -120,7 +120,7 @@ exports[`kol-accordion should render with _label="Überschrift" _open=true _disa
 <kol-accordion _open="">
   <template shadowrootmode="open">
     <details class="kol-accordion kol-accordion--disabled kol-accordion--open" open="" style="--collapsible-transition-duration: 300ms;">
-      <summary aria-controls="accordion-control-nonce" aria-disabled="true" class="kol-accordion__heading" id="accordion-heading-nonce" tabindex="-1">
+      <summary aria-controls="accordion-control-nonce" aria-disabled="true" class="kol-accordion__heading" id="accordion-heading-nonce">
         <strong class="kol-headline kol-headline--single kol-headline--strong">
           <span class="kol-span">
             <span class="kol-span__container">

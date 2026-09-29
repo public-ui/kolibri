@@ -1092,3 +1092,39 @@ ROUTES.set('scenarios/focus-elements?component=tree', {
 		},
 	},
 });
+
+/*
+ * Focus tests of disabled elements: a disabled element stays focusable, so each element is captured
+ * disabled and focused to review the focus indicator together with the disabled look. The options
+ * are the ones of the enabled focus test.
+ */
+[
+	'accordion',
+	'badge',
+	'button',
+	'buttonLink',
+	'combobox',
+	'details',
+	'inputCheckbox',
+	'inputColor',
+	'inputDate',
+	'inputEmail',
+	'inputFile',
+	'inputFileMultiple',
+	'inputNumber',
+	'inputPassword',
+	'inputRadio',
+	'inputRange',
+	'inputText',
+	'link',
+	'linkButton',
+	'popoverButton',
+	'select',
+	'selectMultiple',
+	'singleSelect',
+	'splitButton',
+	'textarea',
+	'toolbar',
+].forEach((component) => {
+	ROUTES.set(`scenarios/focus-elements?component=${component}&disabled`, ROUTES.get(`scenarios/focus-elements?component=${component}`));
+});

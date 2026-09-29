@@ -106,26 +106,35 @@ test.describe('kol-link', () => {
 			await page.setContent('<kol-link _label="Link" _href="#target" _disabled></kol-link>');
 		});
 
-		test('should not take focus when clicked', async ({ page }) => {
+		test('should take focus but not navigate when clicked', async ({ page }) => {
 			await page.locator('kol-link a').click({ force: true });
 
 			await expect
 				.poll(() => page.locator('kol-link').evaluate((element: HTMLKolLinkElement) => element.shadowRoot?.activeElement?.localName ?? null))
-				.toBeNull();
+				.toBe('a');
+			expect(new URL(page.url()).hash).not.toBe('#target');
 		});
 
-		test('should not take focus when the focus() method is called', async ({ page }) => {
+		test('should render no href, so no browser shortcut can navigate', async ({ page }) => {
+			const anchor = page.locator('kol-link a');
+
+			await expect(anchor).not.toHaveAttribute('href');
+			await expect(anchor).toHaveAttribute('role', 'link');
+			await expect(anchor).toHaveAttribute('aria-disabled', 'true');
+		});
+
+		test('should take focus when the focus() method is called', async ({ page }) => {
 			const kolLink = page.locator('kol-link');
 
 			await kolLink.evaluate(async (element: HTMLKolLinkElement) => await element.focus());
 			await page.waitForChanges();
 
-			await expect.poll(() => kolLink.evaluate((element: HTMLKolLinkElement) => element.shadowRoot?.activeElement?.localName ?? null)).toBeNull();
+			await expect.poll(() => kolLink.evaluate((element: HTMLKolLinkElement) => element.shadowRoot?.activeElement?.localName ?? null)).toBe('a');
 		});
 	});
 
 	test.describe('tab order', () => {
-		test('should skip a disabled link', async ({ page }) => {
+		test('should include a disabled link', async ({ page }) => {
 			await page.setContent(
 				'<button id="before">before</button><kol-link _label="Link" _href="#target" _disabled></kol-link><button id="after">after</button>',
 			);
@@ -133,7 +142,7 @@ test.describe('kol-link', () => {
 
 			await page.keyboard.press('Tab');
 
-			await expect(page.locator('#after')).toBeFocused();
+			await expect(page.locator('kol-link a')).toBeFocused();
 		});
 
 		test('should include an enabled link', async ({ page }) => {

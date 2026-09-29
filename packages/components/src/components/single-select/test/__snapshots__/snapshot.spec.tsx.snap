@@ -119,7 +119,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
         <div class="kol-input-container kol-input-container--disabled">
           <div class="kol-input-container__container">
             <div class="kol-single-select__group">
-              <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-single-select__input" disabled="" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
+              <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-disabled="true" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--disabled kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" readonly="" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-custom-suggestions-toggle--disabled kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">

@@ -29,10 +29,16 @@
 		}
 
 		&--disabled {
-			--kol-surface: var(--color-mute);
-			color: var(--color-text);
-			background-color: var(--color-mute);
+			--kol-surface: var(--color-disabled-background);
+			color: var(--color-disabled-text);
+			background-color: var(--color-disabled-background);
 			cursor: not-allowed;
+
+			.kol-input,
+			.kol-select,
+			.kol-textarea {
+				color: var(--color-disabled-text);
+			}
 		}
 
 		&:not(&--disabled, &:has(.kol-input--readonly)):hover {

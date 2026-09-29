@@ -245,15 +245,14 @@ export class InputController extends ControlledInputController implements Watche
 	}
 
 	protected onBlur(event: FocusEvent): void {
-		if (this.component._disabled) {
-			return;
-		}
-
 		const root = this.host?.shadowRoot || this.host;
 		const isFocusInside = root?.contains(event.relatedTarget as Node) || this.host === event.relatedTarget;
 
 		if (this.inputHasFocus && !isFocusInside) {
-			this.component._touched = true;
+			// A disabled field is focusable but cannot be edited, so leaving it does not touch it.
+			if (this.component._disabled !== true) {
+				this.component._touched = true;
+			}
 
 			// Event handling
 			this.emitEvent(KolEvent.blur);

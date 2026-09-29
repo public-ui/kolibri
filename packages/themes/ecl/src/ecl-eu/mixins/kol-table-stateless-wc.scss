@@ -117,7 +117,7 @@
 				display: block;
 				outline-offset: 2px;
 
-				&:not(:disabled):hover {
+				&:not(.kol-table__selection-input--disabled):hover {
 					border-color: var(--color-blue);
 				}
 
@@ -145,8 +145,8 @@
 			}
 		}
 
-		.kol-icon:hover ~ &__selection-input--checkbox:not(:disabled),
-		&__selection-input--checkbox:not(:disabled):hover {
+		.kol-icon:hover ~ &__selection-input--checkbox:not(.kol-table__selection-input--disabled),
+		&__selection-input--checkbox:not(.kol-table__selection-input--disabled):hover {
 			border-color: var(--color-blue);
 		}
 	}

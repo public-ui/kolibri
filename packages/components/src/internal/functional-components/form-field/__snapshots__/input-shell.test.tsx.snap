@@ -60,7 +60,7 @@ exports[`InputFC renders a hidden label and descriptions 1`] = `
 
 exports[`InputFC renders states and a touched error 1`] = `
 <div>
-  <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--readonly kol-input--required kol-input--touched" disabled="" id="field-nonce" readonly="" required="" type="text">
+  <input aria-disabled="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--readonly kol-input--required kol-input--touched" id="field-nonce" readonly="" required="" type="text">
 </div>
 `;
 

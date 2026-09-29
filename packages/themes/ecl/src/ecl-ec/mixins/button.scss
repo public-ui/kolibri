@@ -27,7 +27,7 @@
 				--button-focus-outline-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			&:not(.#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
 			}
@@ -45,7 +45,7 @@
 				--button-text-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			&:not(.#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
 				--button-text-color: var(--ecl-color-white);
@@ -64,7 +64,7 @@
 				--button-focus-outline-width: 2px;
 			}
 
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			&:not(.#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-primary-20);
 				--button-border-color: var(--ecl-color-dark-80);
 			}
@@ -82,7 +82,7 @@
 				--button-focus-outline-width: 2px;
 			}
 
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			&:not(.#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-primary-20);
 				--button-border-color: var(--ecl-color-dark-80);
 			}
@@ -93,7 +93,7 @@
 			--button-border-color: var(--ecl-color-secondary);
 			--button-text-color: var(--ecl-color-dark);
 
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			&:not(.#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-secondary-120);
 				--button-border-color: var(--ecl-color-secondary-120);
 			}
@@ -108,7 +108,7 @@
 				--button-focus-outline-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			&:not(.#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-error);
 				--button-border-color: var(--ecl-color-dark);
 			}
@@ -116,6 +116,14 @@
 
 		&--ghost {
 			@include ghost-button($block-classname);
+		}
+
+		/* After all variants: overrides their colors, including those they set on focus. The focus
+		   ring stays, in a color that contrasts with the disabled background. */
+		&--disabled,
+		&--disabled:focus-within {
+			@include disabled-button-colors;
+			--button-focus-outline-color: var(--ecl-color-dark);
 		}
 
 		&__text {
@@ -168,7 +176,23 @@
 	}
 }
 
-@mixin ghost-button($block-classname) {
+@mixin disabled-button-colors {
+	--button-background-color: var(--ecl-color-disabled-background);
+	--button-border-color: var(--ecl-color-disabled-border);
+	--button-text-color: var(--ecl-color-disabled-text);
+}
+
+@mixin ghost-button-hover {
+	--button-background-color: var(--ecl-color-primary-20);
+	--button-border-color: var(--ecl-color-dark-80);
+	--button-text-color: var(--ecl-color-dark);
+}
+
+/*
+ * $disabled-block names the ancestor block that carries the `--disabled` modifier when the ghost
+ * element is not the block itself (e.g. the `<summary>` of `kol-details`).
+ */
+@mixin ghost-button($block-classname, $disabled-block: null) {
 	--button-background-color: transparent;
 	--button-border-color: transparent;
 	--button-border-width: 1px;
@@ -181,9 +205,22 @@
 		--button-focus-outline-width: 2px;
 	}
 
-	&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
-		--button-background-color: var(--ecl-color-primary-20);
-		--button-border-color: var(--ecl-color-dark-80);
-		--button-text-color: var(--ecl-color-dark);
+	/* The ghost colors are usually applied after the `button()` mixin, so they repeat its disabled colors. */
+	@if $disabled-block {
+		.#{$disabled-block}:not(.#{$disabled-block}--disabled) &:hover {
+			@include ghost-button-hover;
+		}
+
+		.#{$disabled-block}--disabled & {
+			@include disabled-button-colors;
+		}
+	} @else {
+		&:not(.#{$block-classname}--disabled):hover {
+			@include ghost-button-hover;
+		}
+
+		&.#{$block-classname}--disabled {
+			@include disabled-button-colors;
+		}
 	}
 }

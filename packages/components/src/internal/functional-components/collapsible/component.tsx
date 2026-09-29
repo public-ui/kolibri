@@ -3,7 +3,6 @@ import { h } from '@stencil/core';
 
 import KolHeadingFc from '../../../functional-components/Heading/Heading';
 import clsx from '../../../utils/clsx';
-import { preventFocus } from '../../../utils/element-interaction';
 import { getBlockBem } from '../bem-root-node/block-bem';
 import type { FunctionalComponentProps } from '../generic-types';
 import { SpanFC } from '../span/component';
@@ -46,9 +45,7 @@ export const CollapsibleFC: FC<FunctionalComponentProps<CollapsibleApi> & Collap
 				class={blockBem('heading')}
 				id={headingId}
 				onClick={handleToggle}
-				onMouseDown={disabled === true ? preventFocus : undefined}
 				ref={refHeadingButton}
-				tabIndex={disabled === true ? -1 : undefined}
 			>
 				<KolHeadingFc level={level ?? 0}>
 					<SpanFC icons={icons} label={label} />

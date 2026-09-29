@@ -107,6 +107,9 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 	};
 
 	private onBlur() {
+		if (this.state._disabled === true) {
+			return;
+		}
 		const matchingOption = this.state._options?.find((option) => (option.label as string)?.toLowerCase() === this._inputValue?.toLowerCase());
 
 		if (matchingOption) {
@@ -187,6 +190,9 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 	}
 
 	private onInput(event: Event) {
+		if (this.state._disabled === true) {
+			return;
+		}
 		const target = event.target as HTMLInputElement;
 		this._inputValue = target.value;
 		this._isOpen = true;
@@ -218,39 +224,23 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 
 	private _focusedOptionIndex: number = -1;
 
-	private moveFocus(delta: number, searchStep: number = 1) {
-		if (!this._filteredOptions) {
+	/**
+	 * Moves the focus through the options with wrap-around. Disabled options are included, so they
+	 * stay reachable and are announced; `selectFocusedOption` refuses to select them.
+	 */
+	private moveFocus(delta: number) {
+		const optionCount = this._filteredOptions?.length ?? 0;
+		if (optionCount === 0) {
 			return;
 		}
 		let newIndex = this._focusedOptionIndex + delta;
-
-		let iterations = 0;
-		let foundEnabledOption = false;
-
-		const maxIterations = this._filteredOptions.length;
-
-		while (iterations < maxIterations) {
-			if (newIndex >= this._filteredOptions.length) {
-				newIndex = 0;
-			}
-			if (newIndex < 0) {
-				newIndex = this._filteredOptions.length - 1;
-			}
-
-			const option = this._filteredOptions[newIndex] as Option<StencilUnknown>;
-			if (!option.disabled) {
-				foundEnabledOption = true;
-				break;
-			}
-
-			newIndex += searchStep;
-			iterations++;
+		if (newIndex >= optionCount) {
+			newIndex = 0;
+		} else if (newIndex < 0) {
+			newIndex = optionCount - 1;
 		}
-
-		if (foundEnabledOption) {
-			this._focusedOptionIndex = newIndex;
-			this.focusOption(this._focusedOptionIndex);
-		}
+		this._focusedOptionIndex = newIndex;
+		this.focusOption(newIndex);
 	}
 
 	private focusOption(index: number) {
@@ -341,16 +331,14 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 					<div class="kol-single-select__group">
 						<KolInputStateWrapperFc {...this.getInputProps()} />
 
-						{this._inputValue && this.state._hasClearButton && (
+						{this._inputValue && this.state._hasClearButton && !isDisabled && (
 							<KolButtonWcTag
 								_icons="kolicon-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
 								_variant="ghost"
-								_disabled={isDisabled}
 								data-testid="single-select-delete"
 								class="kol-single-select__delete"
-								hidden={isDisabled}
 								_on={{
 									onClick: () => {
 										this.clearSelection();
@@ -414,10 +402,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 											}
 										}}
 										onFocus={() => {
-											if (!option.disabled) {
-												this._focusedOptionIndex = index;
-												this.focusOption(index);
-											}
+											this._focusedOptionIndex = index;
 										}}
 									/>
 								))
@@ -436,6 +421,10 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
+		// A disabled field stays focusable, but no key opens or changes it.
+		if (this.state._disabled === true) {
+			return;
+		}
 		const handleEvent = (isOpen?: boolean, callback?: () => void): void => {
 			event.preventDefault();
 
@@ -458,7 +447,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 			case 'Up':
 			case 'ArrowUp': {
 				this.blockSuggestionMouseOver = true;
-				handleEvent(true, () => this.moveFocus(-1, -1));
+				handleEvent(true, () => this.moveFocus(-1));
 				break;
 			}
 			case 'Tab':
@@ -506,7 +495,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 				handleEvent(undefined, () => {
 					if (this._isOpen) {
 						const stepToEnd = this._filteredOptions ? this._filteredOptions.length - 1 - this._focusedOptionIndex : 0;
-						this.moveFocus(stepToEnd, -1);
+						this.moveFocus(stepToEnd);
 					}
 				});
 				break;
@@ -518,7 +507,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 			}
 			case 'PageDown': {
 				this.blockSuggestionMouseOver = true;
-				handleEvent(undefined, () => this._isOpen && this.moveFocus(10, -1));
+				handleEvent(undefined, () => this._isOpen && this.moveFocus(10));
 				break;
 			}
 		}
@@ -558,7 +547,7 @@ export class KolSingleSelect implements FocusableElement, SingleSelectAPI {
 	@Prop() public _placeholder?: string;
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 */
 	@Prop() public _disabled?: boolean = false;
 

@@ -40,12 +40,20 @@ export default typescriptConfig({
 | `typescriptConfig(options)`                | Preset for type-aware TypeScript linting (optionally with the type-checked rule sets). |
 | `themeConfig(options)`                     | Preset for the theme packages.                                                         |
 | `reactConfig(options)`                     | Preset for the React sample applications.                                              |
-| `kolibriPlugin`                            | Custom KoliBri rules (currently `kolibri/require-barrel-import`).                      |
+| `kolibriPlugin`                            | Custom KoliBri rules (see [Custom rules](#custom-rules)).                              |
 | `defaultIgnores`, `baseRules`              | Shared ignore patterns and the common rule set.                                        |
 | `tsRecommendedRules`, `tsTypeCheckedRules` | Recommended rule sets of `@typescript-eslint` for spreading into flat config objects.  |
 | `js`, `tsPlugin`, `tsParser`, `globals`, … | Re-exports of the centrally managed plugins for package configs with special needs.    |
 
 ## Custom rules
+
+### `kolibri/no-native-disabled`
+
+Enforces KoliBri's disabled model: a disabled interactive element stays focusable and is marked with `aria-disabled`. The rule reports the native `disabled` attribute on intrinsic elements (also as a key of a spread object literal) and requires `aria-disabled` on `a`, `button`, `input`, `select`, `summary` and `textarea`. `option`/`optgroup`, `<input type="hidden">` and decorative controls (`aria-hidden="true"` with `tabIndex={-1}`) are exempt. See `rules/no-native-disabled.js` for details.
+
+### `kolibri/no-translate-cast-or-concat`
+
+Requires `translate()` to be called with a plain string literal and forbids `as TranslationKey` casts. See `rules/no-translate-cast-or-concat.js` for details.
 
 ### `kolibri/require-barrel-import`
 

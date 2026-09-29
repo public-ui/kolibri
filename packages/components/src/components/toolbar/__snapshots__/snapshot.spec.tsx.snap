@@ -6,7 +6,7 @@ exports[`kol-toolbar should render with _label="Label first item disabled" _item
     <div aria-label="Label first item disabled" class="kol-toolbar kol-toolbar--orientation-horizontal" role="toolbar">
       <div class="kol-toolbar__item">
         <div class="kol-button kol-button--disabled kol-button--normal kol-button--standalone">
-          <button class="kol-button__interactive-element" disabled="" tabindex="-1" type="button">
+          <button aria-disabled="true" class="kol-button__interactive-element" tabindex="-1" type="button">
             <span class="kol-button__text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">

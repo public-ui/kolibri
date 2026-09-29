@@ -4,6 +4,7 @@ import { h } from '@stencil/core';
 import { bem } from '../../../schema/bem-registry';
 import { classNameFromVariant } from '../../../schema/props/variant-class-name';
 import clsx from '../../../utils/clsx';
+import { blockInactive } from '../../../utils/element-interaction';
 import { AriaDescriptionSpanFC } from '../aria-description-span/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
@@ -94,19 +95,19 @@ export const ButtonFC: FC<FunctionalComponentProps<ButtonApi>> = (props) => {
 				accessKey={accessKey || undefined}
 				aria-controls={ariaControls || undefined}
 				aria-describedby={hasAriaDescription ? ariaDescriptionId : undefined}
+				aria-disabled={disabled ? 'true' : undefined}
 				aria-expanded={ariaExpanded || undefined}
 				aria-haspopup={ariaHasPopup || undefined}
 				aria-keyshortcuts={shortKey || undefined}
 				aria-label={hideLabel && hasLabelText ? label : undefined}
 				aria-selected={ariaSelected || undefined}
 				class={BEM_CLASS_BUTTON__INTERACTIVE_ELEMENT}
-				disabled={disabled}
 				id={id || undefined}
 				name={name || undefined}
 				onBlur={handleBlur}
-				onClick={handleClick}
+				onClick={disabled ? blockInactive : handleClick}
 				onFocus={handleFocus}
-				onMouseDown={handleMouseDown}
+				onMouseDown={disabled ? undefined : handleMouseDown}
 				role={role || undefined}
 				tabIndex={tabIndex}
 				type={type}

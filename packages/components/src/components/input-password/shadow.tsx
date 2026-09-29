@@ -153,7 +153,8 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 
 	private getShowPasswordButton(): VNode | null {
 		// TODO v5: remove `_variant === 'visibility-toggle'` backwards-compat fallback
-		if (this.state._visibilityToggle || this.state._variant === 'visibility-toggle') {
+		// A disabled field is a single tab stop, so its toggle is not rendered.
+		if ((this.state._visibilityToggle || this.state._variant === 'visibility-toggle') && this.state._disabled !== true) {
 			return (
 				<KolIconButtonFc
 					componentName="button"
@@ -166,7 +167,6 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 						this.ctaRef.el?.focus();
 					}}
 					icon={`${this._passwordVisible ? 'kolicon-eye-closed' : 'kolicon-eye'}`}
-					disabled={this._disabled}
 				/>
 			);
 		}
@@ -215,7 +215,7 @@ export class KolInputPassword implements ClickableElement, FocusableElement, Inp
 	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
 
 	/**
-	 * Makes the element not focusable and ignore all events.
+	 * Makes the element non-interactive: it stays focusable and is announced as disabled (aria-disabled), but ignores activation and input.
 	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
 	 */
 	@Prop() public _disabled?: boolean = false;

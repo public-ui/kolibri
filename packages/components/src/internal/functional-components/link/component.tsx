@@ -6,7 +6,7 @@ import { devHint } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { classNameFromVariant } from '../../../schema/props/variant-class-name';
 import clsx from '../../../utils/clsx';
-import { preventFocus } from '../../../utils/element-interaction';
+import { blockInactive } from '../../../utils/element-interaction';
 import { AriaDescriptionSpanFC } from '../aria-description-span/component';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
@@ -56,8 +56,10 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) =
 
 	const isExternal = typeof target === 'string' && target.length > 0 && target !== '_self';
 
+	// A disabled link renders no `href`: middle click and "open in new tab" would still navigate,
+	// because they bypass the click handler. `role="link"` and the tab index keep it focusable.
 	const tagAttrs = {
-		href: typeof href === 'string' && href.length > 0 ? href : 'javascript:void(0);',
+		href: disabled ? undefined : typeof href === 'string' && href.length > 0 ? href : 'javascript:void(0);',
 		target: typeof target === 'string' && target.length > 0 ? target : undefined,
 		rel: isExternal ? 'noopener' : undefined,
 		// `download` is a presence attribute: an explicitly empty string means "download without a
@@ -70,7 +72,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) =
 	}
 
 	const trimmedAriaDescription = ariaDescription?.trim();
-	const roleValue = role || undefined;
+	const roleValue = role || (disabled ? 'link' : undefined);
 	return (
 		<BemRootNodeFC
 			block="kol-link"
@@ -101,10 +103,9 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) =
 				aria-keyshortcuts={shortKey || undefined}
 				class={linkBem('interactive-element')}
 				{...on}
-				onClick={handleAnchorClick}
-				onMouseDown={disabled ? preventFocus : undefined}
+				onClick={disabled ? blockInactive : handleAnchorClick}
 				role={roleValue}
-				tabIndex={disabled ? -1 : tabIndex}
+				tabIndex={disabled ? (tabIndex ?? 0) : tabIndex}
 			>
 				<SpanFC class="kol-link__text" badgeText={accessKey || shortKey} icons={icons} hideLabel={hideLabel} label={expertSlot ? '' : label || href}>
 					{children.length > 0 ? children : <slot name="expert" slot="expert"></slot>}

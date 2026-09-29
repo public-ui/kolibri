@@ -16,16 +16,6 @@
 		--theme-visibility-delay: 0.5s;
 	}
 
-	.kol-form-field {
-		$root: &;
-
-		&--disabled {
-			#{$root}__input {
-				outline: none;
-			}
-		}
-	}
-
 	.kol-field-control {
 		$root: &;
 
@@ -70,14 +60,21 @@
 				box-shadow: none;
 			}
 
-			&:not(:disabled):hover {
+			&:not(.kol-input--disabled):hover {
 				box-shadow: 0 2px 8px 2px var(--color-shadow);
 				border-color: var(--color-primary);
 			}
 		}
 
-		&.kol-checkbox--disabled {
-			opacity: 0.5;
+		&.kol-checkbox--disabled .kol-input {
+			background-color: var(--color-disabled-background);
+			border-color: var(--color-disabled-border);
+
+			&:checked,
+			&:indeterminate {
+				background-color: var(--color-disabled-text);
+				border-color: var(--color-disabled-text);
+			}
 		}
 	}
 
@@ -152,6 +149,15 @@
 
 		&.kol-checkbox--indeterminate .kol-icon {
 			transform: translate(1em, -50%);
+		}
+
+		// The track stays muted in every state; the knob position carries the checked state.
+		&.kol-checkbox--disabled .kol-input {
+			&,
+			&:checked,
+			&:indeterminate {
+				background-color: var(--color-disabled-border);
+			}
 		}
 	}
 
@@ -288,9 +294,11 @@
 
 				&--disabled {
 					.kol-field-control {
-						&__input {
-							opacity: 0.5;
-							outline: none;
+						&__input,
+						&__label {
+							color: var(--color-disabled-text);
+							background-color: var(--color-disabled-background);
+							border-color: var(--color-disabled-border);
 						}
 					}
 				}

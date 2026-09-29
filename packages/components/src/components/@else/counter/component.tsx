@@ -30,9 +30,13 @@ export class KolCounter {
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<button onClick={this.dec}>-</button>
+				<button aria-disabled={undefined} onClick={this.dec}>
+					-
+				</button>
 				<span>{this.state._count}</span>
-				<button onClick={this.inc}>+</button>
+				<button aria-disabled={undefined} onClick={this.inc}>
+					+
+				</button>
 			</Host>
 		);
 	}

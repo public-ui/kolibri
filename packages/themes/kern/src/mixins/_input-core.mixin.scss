@@ -25,11 +25,11 @@
 			color: var(--color-black-70);
 		}
 
-		&:disabled {
-			color: var(--color-black-60);
+		&--disabled {
+			color: var(--kern-color-action-disabled-text);
 
 			&::placeholder {
-				color: var(--color-black-60);
+				color: var(--kern-color-action-disabled-text);
 			}
 		}
 
@@ -73,14 +73,21 @@
 			}
 		}
 
-		&--disabled {
-			opacity: var(--kern-color-action-state-opacity-disabled);
-			cursor: not-allowed;
-		}
-
 		&--error {
 			--kol-input-border-color: var(--kern-color-feedback-danger);
 			background: var(--kern-color-feedback-danger-background);
+		}
+
+		/* Placed after `--error`, so a disabled field shows the disabled colors in every state. */
+		&--disabled {
+			--kol-input-border-color: var(--kern-color-action-disabled-border);
+			background: var(--kern-color-action-disabled-background);
+			cursor: not-allowed;
+
+			/* The focus ring keeps the color of an enabled field. */
+			&:focus-within {
+				outline-color: var(--kern-color-form-input-border);
+			}
 		}
 
 		&__smart-button {
@@ -91,14 +98,13 @@
 				border-left: 1px solid var(--border-color);
 				transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
-				/* `.kol-button` is a wrapper since the skeleton migration: the `disabled` attribute and
-				   the focus sit on the button inside it. `:has(:disabled)` and `:focus-within` keep these
-				   rules on the wrapper, i.e. on the same box (border-left included) they styled before. */
-				&:has(:disabled) {
-					opacity: var(--kern-color-action-state-opacity-disabled);
+				/* `.kol-button` is a wrapper; the focus sits on the button inside it. `:focus-within` keeps
+				   the focus rule on the wrapper, i.e. on the box that carries the border-left. */
+				&--disabled {
+					color: var(--kern-color-action-disabled-text);
 				}
 
-				&:not(:has(:disabled)):hover {
+				&:not(.kol-button--disabled):hover {
 					background: var(--kern-color-action-state-indicator-tint-hover-opacity);
 					border-radius: var(--kern-metric-border-radius-default);
 				}
