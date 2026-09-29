@@ -11,8 +11,7 @@ for arg in "$@"; do
   PREV="$arg"
 done
 
-OUTPUT=$(pnpm publish "$@" 2>&1)
-EXIT_CODE=$?
+OUTPUT=$(pnpm publish "$@" 2>&1) && EXIT_CODE=0 || EXIT_CODE=$?
 echo "$OUTPUT"
 
 if [ $EXIT_CODE -ne 0 ]; then
@@ -21,7 +20,7 @@ if [ $EXIT_CODE -ne 0 ]; then
     || exit 1
 fi
 
-if [ "$TAG_VALUE" = "dev" ] && [ "$EXIT_CODE" = "0" ]; then
+if [ "$TAG_VALUE" = "dev" ] && [ "$EXIT_CODE" = "0" ] && [[ " $* " != *" --dry-run "* ]]; then
   PKG=$(node -p "require('./package.json').name")
   npm dist-tag rm "$PKG" dev 2>/dev/null && echo "🗑️ Removed 'dev' dist-tag from $PKG" || true
 fi
