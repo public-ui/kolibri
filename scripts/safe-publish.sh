@@ -11,8 +11,7 @@ for arg in "$@"; do
   PREV="$arg"
 done
 
-OUTPUT=$(pnpm publish "$@" 2>&1)
-EXIT_CODE=$?
+OUTPUT=$(pnpm publish "$@" 2>&1) && EXIT_CODE=0 || EXIT_CODE=$?
 echo "$OUTPUT"
 
 if [ $EXIT_CODE -ne 0 ]; then
