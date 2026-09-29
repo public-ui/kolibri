@@ -1,15 +1,15 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "25 visual changes approved by laske185",
-	"computedAt": "2026-09-29T08:24:39.018Z",
+	"state": "pending",
+	"description": "25 changed – 15 of 25 approved, review pending",
+	"computedAt": "2026-09-29T08:29:53.860Z",
 	"pr": 11064,
-	"head": "7150abe575376aeccf6ff9484ac8e7b04e0c5835",
-	"digest": "sha256:1a78af9935e45470a278abe3b170a6755c13135e529ad27a464bf7b8c9c4636d",
+	"head": "1665d784f959bcfd75d8dd65a9b3d0ef236043c8",
+	"digest": "sha256:25a61f335f9c241952c515dfdcee71fbf1b313f982d9979817ea1868954c67c4",
 	"counts": {
 		"changes": 25,
-		"open": 0,
-		"approved": 25,
+		"open": 10,
+		"approved": 15,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
@@ -19,29 +19,24 @@
 	],
 	"items": {
 		"test-tag-name-transformer/scenarios-focus-elements-component-tabs": {
-			"state": "approved",
-			"notes": [],
-			"by": "laske185"
+			"state": "open",
+			"notes": []
 		},
 		"test-tag-name-transformer/tabs-basic--icons": {
-			"state": "approved",
-			"notes": [],
-			"by": "laske185"
+			"state": "open",
+			"notes": []
 		},
 		"test-tag-name-transformer/tabs-basic--regular": {
-			"state": "approved",
-			"notes": [],
-			"by": "laske185"
+			"state": "open",
+			"notes": []
 		},
 		"test-tag-name-transformer/tabs-create-button--create-button": {
-			"state": "approved",
-			"notes": [],
-			"by": "laske185"
+			"state": "open",
+			"notes": []
 		},
 		"test-tag-name-transformer/tabs-icons-only--icons-only": {
-			"state": "approved",
-			"notes": [],
-			"by": "laske185"
+			"state": "open",
+			"notes": []
 		},
 		"theme-bwst/tabs-basic--icons": {
 			"state": "approved",
@@ -59,29 +54,24 @@
 			"by": "laske185"
 		},
 		"theme-default/scenarios-focus-elements-component-tabs": {
-			"state": "approved",
-			"notes": [],
-			"by": "laske185"
+			"state": "open",
+			"notes": []
 		},
 		"theme-default/tabs-basic--icons": {
-			"state": "approved",
-			"notes": [],
-			"by": "laske185"
+			"state": "open",
+			"notes": []
 		},
 		"theme-default/tabs-basic--regular": {
-			"state": "approved",
-			"notes": [],
-			"by": "laske185"
+			"state": "open",
+			"notes": []
 		},
 		"theme-default/tabs-create-button--create-button": {
-			"state": "approved",
-			"notes": [],
-			"by": "laske185"
+			"state": "open",
+			"notes": []
 		},
 		"theme-default/tabs-icons-only--icons-only": {
-			"state": "approved",
-			"notes": [],
-			"by": "laske185"
+			"state": "open",
+			"notes": []
 		},
 		"theme-desy/tabs-basic--icons": {
 			"state": "approved",

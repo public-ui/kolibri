@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11064,
-	"head": "7150abe575376aeccf6ff9484ac8e7b04e0c5835",
+	"head": "1665d784f959bcfd75d8dd65a9b3d0ef236043c8",
 	"repository": "public-ui/kolibri",
-	"runId": 36535321047,
-	"generatedAt": "2026-09-29T07:32:59.866Z",
-	"digest": "sha256:1a78af9935e45470a278abe3b170a6755c13135e529ad27a464bf7b8c9c4636d",
+	"runId": 36538280734,
+	"generatedAt": "2026-09-29T08:29:53.127Z",
+	"digest": "sha256:25a61f335f9c241952c515dfdcee71fbf1b313f982d9979817ea1868954c67c4",
 	"baseline": {
 		"sha": "7e8b4238e31213c08df188beebf623b8405d406e",
 		"ref": "develop",
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:0faa8319a28e7dc97f1e08b09bce92160786367015330f4f79d1e613fc0a52cc",
+			"digest": "sha256:c7a94649f9ab08c0f2b3e41f0f492243c8f71f078139b96dc15ffa94fc7838c9",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2101,9 +2101,9 @@
 					"name": "scenarios-focus-elements-component-tabs",
 					"route": "scenarios/focus-elements?component=tabs",
 					"status": "changed",
-					"hash": "sha256:312a18587a58fdee0be8b330e9ca15a7a5f786c5524eb37d742720ce8612f0dc",
+					"hash": "sha256:7005797c6f1cd858cb57eece7ecb121a2d39707a0220e9b8504f90e3aa07d104",
 					"diffPixels": 2777,
-					"diffRatio": 0.039223,
+					"diffRatio": 0.053818,
 					"sizeMismatch": {
 						"expected": [
 							300,
@@ -2111,7 +2111,7 @@
 						],
 						"actual": [
 							300,
-							236
+							172
 						]
 					},
 					"expected": "test-tag-name-transformer/scenarios-focus-elements-component-tabs.expected.png",
@@ -2410,7 +2410,9 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs/basic",
 					"status": "changed",
-					"hash": "sha256:a8d3530c9ef9ceb8d58e7e4bf3e9304e3adb724537519ae22b5f7bcf0b550807",
+					"hash": "sha256:5b82b83902a46897f4f7bad7b7a9cf7c85ddc11b029991d5a6af3150346d18bb",
+					"diffPixels": 3972,
+					"diffRatio": 0.023616,
 					"sizeMismatch": {
 						"expected": [
 							554,
@@ -2418,7 +2420,7 @@
 						],
 						"actual": [
 							768,
-							87
+							219
 						]
 					},
 					"expected": "test-tag-name-transformer/tabs-basic--icons.expected.png",
@@ -2429,7 +2431,9 @@
 					"name": "tabs-basic--regular",
 					"route": "tabs/basic",
 					"status": "changed",
-					"hash": "sha256:d4e68880891cceef4ee3018509181916dbf67cc76958f5b995501bf1fa9f0f2a",
+					"hash": "sha256:9dc0cf34a103fe04fe1972c073b6525c010eb5e1d371f145c3e8b44c09df9257",
+					"diffPixels": 3185,
+					"diffRatio": 0.020429,
 					"sizeMismatch": {
 						"expected": [
 							448,
@@ -2437,7 +2441,7 @@
 						],
 						"actual": [
 							768,
-							71
+							203
 						]
 					},
 					"expected": "test-tag-name-transformer/tabs-basic--regular.expected.png",
@@ -2448,7 +2452,9 @@
 					"name": "tabs-create-button--create-button",
 					"route": "tabs/create-button",
 					"status": "changed",
-					"hash": "sha256:d40634df1c3b4d2de8efd17ce53171ace7160cf9c37d82646d180510cd1afe89",
+					"hash": "sha256:b8a3737c15c62ab31cf57bf172a573375e94cc8b475697f3fc0ca680bcfb74f2",
+					"diffPixels": 2603,
+					"diffRatio": 0.019368,
 					"sizeMismatch": {
 						"expected": [
 							323,
@@ -2456,7 +2462,7 @@
 						],
 						"actual": [
 							768,
-							87
+							175
 						]
 					},
 					"expected": "test-tag-name-transformer/tabs-create-button--create-button.expected.png",
@@ -2467,9 +2473,9 @@
 					"name": "tabs-icons-only--icons-only",
 					"route": "tabs/icons-only",
 					"status": "changed",
-					"hash": "sha256:226dd501e8d6c87b9dd1e7e3c4e305b37e23065ec723f1addaebaf5d4c5788b0",
-					"diffPixels": 1292,
-					"diffRatio": 0.025721,
+					"hash": "sha256:791d06691abe71d79230e753bd4b60fadd0b3d70c2ea3339694bb44a476b426e",
+					"diffPixels": 1290,
+					"diffRatio": 0.037825,
 					"sizeMismatch": {
 						"expected": [
 							168,
@@ -2477,7 +2483,7 @@
 						],
 						"actual": [
 							168,
-							299
+							203
 						]
 					},
 					"expected": "test-tag-name-transformer/tabs-icons-only--icons-only.expected.png",
@@ -5229,7 +5235,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:0faa8319a28e7dc97f1e08b09bce92160786367015330f4f79d1e613fc0a52cc",
+			"digest": "sha256:c7a94649f9ab08c0f2b3e41f0f492243c8f71f078139b96dc15ffa94fc7838c9",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7281,9 +7287,9 @@
 					"name": "scenarios-focus-elements-component-tabs",
 					"route": "scenarios/focus-elements?component=tabs",
 					"status": "changed",
-					"hash": "sha256:312a18587a58fdee0be8b330e9ca15a7a5f786c5524eb37d742720ce8612f0dc",
+					"hash": "sha256:7005797c6f1cd858cb57eece7ecb121a2d39707a0220e9b8504f90e3aa07d104",
 					"diffPixels": 2777,
-					"diffRatio": 0.039223,
+					"diffRatio": 0.053818,
 					"sizeMismatch": {
 						"expected": [
 							300,
@@ -7291,7 +7297,7 @@
 						],
 						"actual": [
 							300,
-							236
+							172
 						]
 					},
 					"expected": "theme-default/scenarios-focus-elements-component-tabs.expected.png",
@@ -7590,7 +7596,9 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs/basic",
 					"status": "changed",
-					"hash": "sha256:a8d3530c9ef9ceb8d58e7e4bf3e9304e3adb724537519ae22b5f7bcf0b550807",
+					"hash": "sha256:5b82b83902a46897f4f7bad7b7a9cf7c85ddc11b029991d5a6af3150346d18bb",
+					"diffPixels": 3972,
+					"diffRatio": 0.023616,
 					"sizeMismatch": {
 						"expected": [
 							554,
@@ -7598,7 +7606,7 @@
 						],
 						"actual": [
 							768,
-							87
+							219
 						]
 					},
 					"expected": "theme-default/tabs-basic--icons.expected.png",
@@ -7609,7 +7617,9 @@
 					"name": "tabs-basic--regular",
 					"route": "tabs/basic",
 					"status": "changed",
-					"hash": "sha256:d4e68880891cceef4ee3018509181916dbf67cc76958f5b995501bf1fa9f0f2a",
+					"hash": "sha256:9dc0cf34a103fe04fe1972c073b6525c010eb5e1d371f145c3e8b44c09df9257",
+					"diffPixels": 3185,
+					"diffRatio": 0.020429,
 					"sizeMismatch": {
 						"expected": [
 							448,
@@ -7617,7 +7627,7 @@
 						],
 						"actual": [
 							768,
-							71
+							203
 						]
 					},
 					"expected": "theme-default/tabs-basic--regular.expected.png",
@@ -7628,7 +7638,9 @@
 					"name": "tabs-create-button--create-button",
 					"route": "tabs/create-button",
 					"status": "changed",
-					"hash": "sha256:d40634df1c3b4d2de8efd17ce53171ace7160cf9c37d82646d180510cd1afe89",
+					"hash": "sha256:b8a3737c15c62ab31cf57bf172a573375e94cc8b475697f3fc0ca680bcfb74f2",
+					"diffPixels": 2603,
+					"diffRatio": 0.019368,
 					"sizeMismatch": {
 						"expected": [
 							323,
@@ -7636,7 +7648,7 @@
 						],
 						"actual": [
 							768,
-							87
+							175
 						]
 					},
 					"expected": "theme-default/tabs-create-button--create-button.expected.png",
@@ -7647,9 +7659,9 @@
 					"name": "tabs-icons-only--icons-only",
 					"route": "tabs/icons-only",
 					"status": "changed",
-					"hash": "sha256:226dd501e8d6c87b9dd1e7e3c4e305b37e23065ec723f1addaebaf5d4c5788b0",
-					"diffPixels": 1292,
-					"diffRatio": 0.025721,
+					"hash": "sha256:791d06691abe71d79230e753bd4b60fadd0b3d70c2ea3339694bb44a476b426e",
+					"diffPixels": 1290,
+					"diffRatio": 0.037825,
 					"sizeMismatch": {
 						"expected": [
 							168,
@@ -7657,7 +7669,7 @@
 						],
 						"actual": [
 							168,
-							299
+							203
 						]
 					},
 					"expected": "theme-default/tabs-icons-only--icons-only.expected.png",
