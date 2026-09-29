@@ -1,137 +1,148 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "25 changed – 15 of 25 approved, review pending",
-	"computedAt": "2026-09-29T08:31:12.373Z",
+	"state": "success",
+	"description": "25 visual changes approved by laske185, BF150",
+	"computedAt": "2026-09-29T08:33:02.087Z",
 	"pr": 11064,
 	"head": "1665d784f959bcfd75d8dd65a9b3d0ef236043c8",
 	"digest": "sha256:25a61f335f9c241952c515dfdcee71fbf1b313f982d9979817ea1868954c67c4",
 	"counts": {
 		"changes": 25,
-		"open": 10,
-		"approved": 15,
+		"open": 0,
+		"approved": 25,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [
-		"laske185"
+		"laske185",
+		"BF150"
 	],
 	"items": {
 		"test-tag-name-transformer/scenarios-focus-elements-component-tabs": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"test-tag-name-transformer/tabs-basic--icons": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"test-tag-name-transformer/tabs-basic--regular": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"test-tag-name-transformer/tabs-create-button--create-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"test-tag-name-transformer/tabs-icons-only--icons-only": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-bwst/tabs-basic--icons": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"theme-bwst/tabs-basic--regular": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"theme-bwst/tabs-create-button--create-button": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"theme-default/scenarios-focus-elements-component-tabs": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/tabs-basic--icons": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/tabs-basic--regular": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/tabs-create-button--create-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/tabs-icons-only--icons-only": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/tabs-basic--icons": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"theme-desy/tabs-basic--regular": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"theme-desy/tabs-create-button--create-button": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"theme-ecl/tabs-basic--icons": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"theme-ecl/tabs-basic--regular": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"theme-ecl/tabs-create-button--create-button": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"theme-kern/tabs-basic--icons": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"theme-kern/tabs-basic--regular": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"theme-kern/tabs-create-button--create-button": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"unstyled/tabs-basic--icons": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"unstyled/tabs-basic--regular": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		},
 		"unstyled/tabs-create-button--create-button": {
 			"state": "approved",
 			"notes": [],
-			"by": "laske185"
+			"by": "BF150"
 		}
 	}
 }
