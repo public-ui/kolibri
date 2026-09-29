@@ -1,0 +1,1 @@
+import{ot as e}from"./index-gOqi0Da2-hwrGrjVF.js";import{t}from"./aria-B7HFuHtc-Cfz4VBty.js";var n=(t,n)=>{e(t,`_rows`,n,{min:1})},r=t;export{n,r as t};
