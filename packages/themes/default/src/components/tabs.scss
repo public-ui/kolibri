@@ -5,6 +5,12 @@
 @layer kol-theme-component {
 	@include kol-icon-theme;
 
+	@property --kol-tabs-small-width {
+		inherits: true;
+		initial-value: '400px';
+		syntax: '<length>';
+	}
+
 	:host {
 		container: tabs / inline-size;
 	}
@@ -114,11 +120,12 @@
 		}
 	}
 
-	@container tabs (width < 400px) {
+	@container tabs (width < 1000px) {
 		.kol-tabs {
 			--grid-template-columns: 1fr;
 			--grid-template-rows: max-content 1fr;
 			--button-group-order: 0;
+			--button-group-gap: 0;
 			--button-group-flex-direction: column;
 		}
 	}
