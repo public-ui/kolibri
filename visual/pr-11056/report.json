@@ -1,18 +1,18 @@
 {
 	"schema": 1,
 	"pr": 11056,
-	"head": "13dd521408a17da89538eded0b0e4d3720077870",
+	"head": "dc59c3923f8d3c43539704c35e58ec6bcf835ed1",
 	"repository": "public-ui/kolibri",
-	"runId": 36538578402,
-	"generatedAt": "2026-09-29T08:26:33.505Z",
-	"digest": "sha256:97eb7df79010253c71c01901bf03522f511edf6b0171261c8243439f87e1592b",
+	"runId": 36572297418,
+	"generatedAt": "2026-09-29T13:32:50.374Z",
+	"digest": "sha256:0687590b206e18ccf73275e834123865e5c8dcae42b67be5543cc8d1300cc794",
 	"baseline": {
-		"sha": "705d38e6060748c406f2aa6562087adaf7d59e85",
+		"sha": "bce96017045d3a966aaf09c326fc5b4d141ed4a1",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
-		"fallback": "ancestor",
-		"distance": 3,
+		"fallback": null,
+		"distance": 0,
 		"imageMismatch": false,
 		"consistent": true
 	},
@@ -30,15 +30,15 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "705d38e6060748c406f2aa6562087adaf7d59e85",
+					"sha": "bce96017045d3a966aaf09c326fc5b4d141ed4a1",
 					"ref": "develop",
-					"runId": 36538343319,
+					"runId": 36572286699,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T07:52:54.273Z",
-					"digest": "sha256:6e76b7ba4b837c0ca0abe191bf74448f69e9b22d6c0203b1aa26f3bedd23700b",
-					"fallback": "ancestor",
-					"distance": 3,
+					"createdAt": "2026-09-29T13:10:38.019Z",
+					"digest": "sha256:246d9ca8e0e3afc5a98a0d196b19f347e6cf5e4d96d3eb200790d3c76bc144b2",
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6e76b7ba4b837c0ca0abe191bf74448f69e9b22d6c0203b1aa26f3bedd23700b",
+			"digest": "sha256:246d9ca8e0e3afc5a98a0d196b19f347e6cf5e4d96d3eb200790d3c76bc144b2",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -1801,7 +1801,7 @@
 					"name": "link-link-variant--variants",
 					"route": "link-link-variant",
 					"status": "unchanged",
-					"hash": "sha256:cc58843aefc6ba675add3a5a706ca84b784aeebd17cf9eddb2214ffc01879649"
+					"hash": "sha256:fde7140416cb988acdce68f5897f45a3eb53fe4a6973f8569e62d6e18cef06b3"
 				},
 				{
 					"name": "link-target--target",
@@ -2101,7 +2101,7 @@
 					"name": "scenarios-focus-elements-component-tabs",
 					"route": "scenarios-focus-elements-component-tabs",
 					"status": "unchanged",
-					"hash": "sha256:dd9c3b171952331186ca1e89233f8a1c8312721c04b462e6013adc85f9661899"
+					"hash": "sha256:7005797c6f1cd858cb57eece7ecb121a2d39707a0220e9b8504f90e3aa07d104"
 				},
 				{
 					"name": "scenarios-focus-elements-component-textarea",
@@ -2395,25 +2395,25 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:d08bf5bc96cc92284e4cc880033bf2a7bd3850d0f4c806d5ba094884851b28e7"
+					"hash": "sha256:5b82b83902a46897f4f7bad7b7a9cf7c85ddc11b029991d5a6af3150346d18bb"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:9d30ba38d1ce62e6463fbc4e9b70a0206c78bd388c68d8621c269840e43a320f"
+					"hash": "sha256:9dc0cf34a103fe04fe1972c073b6525c010eb5e1d371f145c3e8b44c09df9257"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:85d4c8e4e5cc2c5f240568b949fcd66dcc1a7b4935ca7b219be3b4b761ce00fd"
+					"hash": "sha256:b8a3737c15c62ab31cf57bf172a573375e94cc8b475697f3fc0ca680bcfb74f2"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
 					"route": "tabs-icons-only",
 					"status": "unchanged",
-					"hash": "sha256:a1473207596bfaf2289b544d456ea92b0bda67bbabcf6f06e26a2354314c02ae"
+					"hash": "sha256:791d06691abe71d79230e753bd4b60fadd0b3d70c2ea3339694bb44a476b426e"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -2563,15 +2563,15 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "705d38e6060748c406f2aa6562087adaf7d59e85",
+					"sha": "bce96017045d3a966aaf09c326fc5b4d141ed4a1",
 					"ref": "develop",
-					"runId": 36538343319,
+					"runId": 36572286699,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T07:50:51.750Z",
-					"digest": "sha256:808f8e7f37aa88a43f4bf15a4a6531c79c44a413c5210abdb16fde713e809048",
-					"fallback": "ancestor",
-					"distance": 3,
+					"createdAt": "2026-09-29T13:10:30.828Z",
+					"digest": "sha256:4a422f171bec796111a6350c714dde030587b4515fbe0c01644108d0368d155e",
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -2582,7 +2582,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:808f8e7f37aa88a43f4bf15a4a6531c79c44a413c5210abdb16fde713e809048",
+			"digest": "sha256:4a422f171bec796111a6350c714dde030587b4515fbe0c01644108d0368d155e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4928,19 +4928,19 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:8b49d071765a0fa08c415dcf4fa97b8285d3c06c076722ed55ddbb50d8ced56f"
+					"hash": "sha256:aa2b03aeb39495bb7de4c7a7cfdd443690578279fddb542ad5be9f94bf73fd85"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:e30ed490ef7f8376ddb92afcbb502036706022775b8ea87c79b89828cd28c4da"
+					"hash": "sha256:5a586add6b81b364d079201d7497f3c8ed379990c922387d2ca62ca9bc0b5185"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:ba5cf663240ef203a9322ee643693ef6aeaaf30d62278695951407b72d23f9fd"
+					"hash": "sha256:5ea9cdc45c8f2a840ad343d3f4fe1f441a098b57d5505857bed88c8cc875f576"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
@@ -5096,15 +5096,15 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "705d38e6060748c406f2aa6562087adaf7d59e85",
+					"sha": "bce96017045d3a966aaf09c326fc5b4d141ed4a1",
 					"ref": "develop",
-					"runId": 36538343319,
+					"runId": 36572286699,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T07:52:54.273Z",
-					"digest": "sha256:6e76b7ba4b837c0ca0abe191bf74448f69e9b22d6c0203b1aa26f3bedd23700b",
-					"fallback": "ancestor",
-					"distance": 3,
+					"createdAt": "2026-09-29T13:10:38.019Z",
+					"digest": "sha256:246d9ca8e0e3afc5a98a0d196b19f347e6cf5e4d96d3eb200790d3c76bc144b2",
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -5115,7 +5115,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6e76b7ba4b837c0ca0abe191bf74448f69e9b22d6c0203b1aa26f3bedd23700b",
+			"digest": "sha256:246d9ca8e0e3afc5a98a0d196b19f347e6cf5e4d96d3eb200790d3c76bc144b2",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -6867,7 +6867,7 @@
 					"name": "link-link-variant--variants",
 					"route": "link-link-variant",
 					"status": "unchanged",
-					"hash": "sha256:cc58843aefc6ba675add3a5a706ca84b784aeebd17cf9eddb2214ffc01879649"
+					"hash": "sha256:fde7140416cb988acdce68f5897f45a3eb53fe4a6973f8569e62d6e18cef06b3"
 				},
 				{
 					"name": "link-target--target",
@@ -7167,7 +7167,7 @@
 					"name": "scenarios-focus-elements-component-tabs",
 					"route": "scenarios-focus-elements-component-tabs",
 					"status": "unchanged",
-					"hash": "sha256:dd9c3b171952331186ca1e89233f8a1c8312721c04b462e6013adc85f9661899"
+					"hash": "sha256:7005797c6f1cd858cb57eece7ecb121a2d39707a0220e9b8504f90e3aa07d104"
 				},
 				{
 					"name": "scenarios-focus-elements-component-textarea",
@@ -7461,25 +7461,25 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:d08bf5bc96cc92284e4cc880033bf2a7bd3850d0f4c806d5ba094884851b28e7"
+					"hash": "sha256:5b82b83902a46897f4f7bad7b7a9cf7c85ddc11b029991d5a6af3150346d18bb"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:9d30ba38d1ce62e6463fbc4e9b70a0206c78bd388c68d8621c269840e43a320f"
+					"hash": "sha256:9dc0cf34a103fe04fe1972c073b6525c010eb5e1d371f145c3e8b44c09df9257"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:85d4c8e4e5cc2c5f240568b949fcd66dcc1a7b4935ca7b219be3b4b761ce00fd"
+					"hash": "sha256:b8a3737c15c62ab31cf57bf172a573375e94cc8b475697f3fc0ca680bcfb74f2"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
 					"route": "tabs-icons-only",
 					"status": "unchanged",
-					"hash": "sha256:a1473207596bfaf2289b544d456ea92b0bda67bbabcf6f06e26a2354314c02ae"
+					"hash": "sha256:791d06691abe71d79230e753bd4b60fadd0b3d70c2ea3339694bb44a476b426e"
 				},
 				{
 					"name": "textarea-adjust-height--adjust-height",
@@ -7629,15 +7629,15 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "705d38e6060748c406f2aa6562087adaf7d59e85",
+					"sha": "bce96017045d3a966aaf09c326fc5b4d141ed4a1",
 					"ref": "develop",
-					"runId": 36538343319,
+					"runId": 36572286699,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T07:50:19.718Z",
-					"digest": "sha256:00bfec0ab6dc16554e3ac7814aa76c7c7862a173e94468a00442b42677d1219b",
-					"fallback": "ancestor",
-					"distance": 3,
+					"createdAt": "2026-09-29T13:09:34.062Z",
+					"digest": "sha256:3994935a53674496ad89e5b25c47d5809573bf1f771248e893670c7a49714d5a",
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -7648,7 +7648,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:00bfec0ab6dc16554e3ac7814aa76c7c7862a173e94468a00442b42677d1219b",
+			"digest": "sha256:3994935a53674496ad89e5b25c47d5809573bf1f771248e893670c7a49714d5a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9994,19 +9994,19 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:cf0893acc9c161741cc475862a3b87e8a12db4cad04831b3276469ea3db49912"
+					"hash": "sha256:bea4c98bac922c3f760ca39d92cbe68a4e37a4b38ee719e44392c00694a8904c"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:0aa1bf4da3ce2613844da2a0f6c7d4de325f48474921025decfc9f022a5893ec"
+					"hash": "sha256:028dd900b261c924aac720992df77bf0dbf5ccdbaa20fc7254fce6284c03f916"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:7cb8b9ad4b152e7584b10651575548cab2608e0d62142d63b48e76bf9e464ff7"
+					"hash": "sha256:46b8758e0b198ee7673256f248c97dc658b62e00cc53eb15758966085ff81bc5"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
@@ -10162,15 +10162,15 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "705d38e6060748c406f2aa6562087adaf7d59e85",
+					"sha": "bce96017045d3a966aaf09c326fc5b4d141ed4a1",
 					"ref": "develop",
-					"runId": 36538343319,
+					"runId": 36572286699,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T07:50:05.574Z",
-					"digest": "sha256:d2eff8e0e030c23b024f5a90ef0b4b9448e814c0a94a2a66ae39397c7464d432",
-					"fallback": "ancestor",
-					"distance": 3,
+					"createdAt": "2026-09-29T13:09:24.672Z",
+					"digest": "sha256:6bb52a608adb38c0a82f2ec772ac532308f4233d9b65b349c72af29f57848586",
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -10181,7 +10181,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:d2eff8e0e030c23b024f5a90ef0b4b9448e814c0a94a2a66ae39397c7464d432",
+			"digest": "sha256:6bb52a608adb38c0a82f2ec772ac532308f4233d9b65b349c72af29f57848586",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12527,19 +12527,19 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:f73ddca42c4bbd8da9fdbd5d5f36db5ca117f618922f959bddda53aa149837aa"
+					"hash": "sha256:f68670e13c7fd4aabd830787b646b594864cc42f831319e8e022bdc08e591d2c"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:d2cddcfc15364a7ec61a8c2dd2223d722f9000a4d5f3e3d25904b6ea8b6ac781"
+					"hash": "sha256:9200c14b58089ee14b72a968cc32c7f3f078675ed192ba69711c1076ff610b26"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:b4c658acc7dff355e4c6d612cd24e0e4cbb5c064c7c990e6ad8b79ff18f755ab"
+					"hash": "sha256:05df1d707aafe9038f57482588c1b5614b7482c669121dc9d32e9841f26cedab"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
@@ -12695,15 +12695,15 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "705d38e6060748c406f2aa6562087adaf7d59e85",
+					"sha": "bce96017045d3a966aaf09c326fc5b4d141ed4a1",
 					"ref": "develop",
-					"runId": 36538343319,
+					"runId": 36572286699,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T07:50:09.904Z",
-					"digest": "sha256:da36d913f0670c647203dd92520b240edc60843b578744dfd99c85d8e5d43760",
-					"fallback": "ancestor",
-					"distance": 3,
+					"createdAt": "2026-09-29T13:09:26.293Z",
+					"digest": "sha256:0d7f08fb736c35ded155898e7c5c1932f7f185297f04f5fce7ecd7d712f47da4",
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -12714,7 +12714,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:da36d913f0670c647203dd92520b240edc60843b578744dfd99c85d8e5d43760",
+			"digest": "sha256:0d7f08fb736c35ded155898e7c5c1932f7f185297f04f5fce7ecd7d712f47da4",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15060,19 +15060,19 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:c9b3687c527a2bc34f0aa84a8c18c01e8dea12433cc8b5bd83dfea3e02858e5c"
+					"hash": "sha256:8ab50ff8f0707b9e7b6465f8ec47bbcdef7b41e5a773ac6ccf56597b1b24c7e5"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:deb2ce68d9ee38609ef9acbb8156004588e52e3148c082bf41b90ca0ba525ab7"
+					"hash": "sha256:a4f3d9ef0797c946ee32556c6cbfc72a3ea4b1d591b02f93435d443cd5653643"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:b19050a69769a8ce4b0393a4339e4e0b92b809ec39ca66d865a8209a07c8819e"
+					"hash": "sha256:07c84546ebc959fc75bc71689f592b0a3e536195ef04518594f04b51a8b07f16"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
@@ -15228,15 +15228,15 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "705d38e6060748c406f2aa6562087adaf7d59e85",
+					"sha": "bce96017045d3a966aaf09c326fc5b4d141ed4a1",
 					"ref": "develop",
-					"runId": 36538343319,
+					"runId": 36572286699,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-09-29T07:49:48.345Z",
-					"digest": "sha256:29231f464f8e7cc6537b23242e4143ee79584d55dc8b9429e86f38a3f35257b5",
-					"fallback": "ancestor",
-					"distance": 3,
+					"createdAt": "2026-09-29T13:08:20.514Z",
+					"digest": "sha256:a49f9eb25f8f401ab7370360077634e0a78dbfafabd80b98cdff9aeeff8f2c8d",
+					"fallback": null,
+					"distance": 0,
 					"imageMismatch": false
 				}
 			},
@@ -15247,7 +15247,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:29231f464f8e7cc6537b23242e4143ee79584d55dc8b9429e86f38a3f35257b5",
+			"digest": "sha256:a49f9eb25f8f401ab7370360077634e0a78dbfafabd80b98cdff9aeeff8f2c8d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17593,19 +17593,19 @@
 					"name": "tabs-basic--icons",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:c04b2bbe544c333fef18f87d8db55939750933b3f8b86af927071f72c8baa916"
+					"hash": "sha256:531c6449051e233a747d080ca4776c28ef7f48312a510d26eec536a3b4fb23fa"
 				},
 				{
 					"name": "tabs-basic--regular",
 					"route": "tabs-basic",
 					"status": "unchanged",
-					"hash": "sha256:909e6ded29044bcb2340888a92450ff0f25b5427aab52f456b12b2cb8f927fbb"
+					"hash": "sha256:9414c475c832e8484b53d6dbad676631c6144db41faec340641156b2e997b5f3"
 				},
 				{
 					"name": "tabs-create-button--create-button",
 					"route": "tabs-create-button",
 					"status": "unchanged",
-					"hash": "sha256:31a24ce9fb7702350d41762c75e5979ade7025b3d545919a4b6b8a35e934428a"
+					"hash": "sha256:ddfa64c6d27ffb7399326c3b3490b80c99227099a80dcf1cbf2b7cb5e408c80e"
 				},
 				{
 					"name": "tabs-icons-only--icons-only",
