@@ -24,6 +24,10 @@ export const LinkBasic: FC = () => (
 				default as a <strong>inline element</strong>.
 			</p>
 			<p>
+				In this paragraph, a disabled link is inserted. <KolLink _disabled _href="#/back-page" _label="Simple Link (disabled)" /> It is rendered by
+				default as an <strong>inline element</strong>.
+			</p>
+			<p>
 				In this paragraph, a link is inserted that is rendered as an inline-block element.{' '}
 				<KolLink class="d-inline-block" _accessKey="S" _href="#/back-page" _label="Simple Link" />. This allows you to assign width, height, and other
 				properties to it using CSS styles.
