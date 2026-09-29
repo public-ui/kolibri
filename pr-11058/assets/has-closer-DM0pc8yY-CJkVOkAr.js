@@ -1,1 +1,0 @@
-import{d as e,i as t}from"./variant-quote-DNGrG8FF-ColB-s3H.js";var n=t(`hasCloser`,!1,e);export{n as t};
