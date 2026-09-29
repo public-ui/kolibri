@@ -161,4 +161,4 @@ const KOL_INPUT_COLOR_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-input-color', component: 'input-color', file: 'shadow.tsx', pinnedApi: KOL_INPUT_COLOR_PUBLIC_API });
+describePublicApiContract({ tag: 'kol-input-color', component: 'input-color', pinnedApi: KOL_INPUT_COLOR_PUBLIC_API, schemaInterface: 'InputColorProps' });

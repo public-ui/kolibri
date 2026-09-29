@@ -88,7 +88,9 @@ Run ESLint across the repository with `pnpm lint` (or `pnpm lint:eslint` to invo
 
 Every package in the monorepo builds itself, and dependents always consume the built output of the
 packages they reference. The chain is kolicons → components → adapters → themes → sample →
-presentation. No `dev` or `preview` script builds anything for you, so the workflow is always the same:
+presentation. The order comes from the workspace dependencies: `pnpm -r build` builds every package
+exactly once, topologically sorted, and no package's build builds another package. No `dev` or
+`preview` script builds anything for you, so the workflow is always the same:
 
 ```bash
 git pull

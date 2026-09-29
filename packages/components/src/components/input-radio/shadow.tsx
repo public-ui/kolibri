@@ -39,7 +39,7 @@ import KolFieldControlStateWrapperFc, {
 } from '../../functional-component-wrappers/FieldControlStateWrapper/FieldControlStateWrapper';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolRadioStateWrapperFc, { type RadioStateWrapperProps } from '../../functional-component-wrappers/RadioStateWrapper/RadioStateWrapper';
-import type { FormFieldLabelInfoPopoverProps } from '../../functional-components';
+import type { FormFieldLabelInfoPopoverProps } from '../../schema';
 import type { OrientationPropType } from '../../schema/props/orientation';
 
 /**

@@ -30,6 +30,9 @@ const noop = (): void => undefined;
 /**
  * Renders one tree entry: the link carrying the `treeitem` role, and the group holding the nested items.
  *
+ * The `<li>` has `role="none"`: it sits between the `tree`/`group` list and the `treeitem` link,
+ * and an implicit `listitem` role there would break the required ARIA tree structure.
+ *
  * `__link` is a wrapper around the link instead of a class on its BEM root: every theme
  * addresses the link as a descendant (`.kol-tree-item__link .kol-link`) and gives the wrapper
  * its own box (`display: block`, border, hover background). The wrapper is an inline `<span>`,
@@ -51,7 +54,7 @@ export const TreeItemFC: FC<FunctionalComponentProps<TreeItemApi>> = ({
 	open,
 	refAnchor,
 }) => (
-	<li class={BEM_CLASS_TREE_ITEM} style={{ '--level': `${level}` }}>
+	<li class={BEM_CLASS_TREE_ITEM} role="none" style={{ '--level': `${level}` }}>
 		<span class={treeItemBem('link', { active, 'first-level': level === 0 })}>
 			<LinkFC
 				{...LINK_DEFAULTS}

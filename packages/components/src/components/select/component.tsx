@@ -5,12 +5,12 @@ import clsx from '../../utils/clsx';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolSelectStateWrapperFc, { type SelectStateWrapperProps } from '../../functional-component-wrappers/SelectStateWrapper/SelectStateWrapper';
-import type { FormFieldLabelInfoPopoverProps } from '../../functional-components';
 import type {
 	AriaDetailsPropType,
 	ClickableElement,
 	DisabledPropType,
 	FocusableElement,
+	FormFieldLabelInfoPopoverProps,
 	HideLabelPropType,
 	HideMsgPropType,
 	HintPropType,

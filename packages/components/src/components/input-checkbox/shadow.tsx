@@ -38,7 +38,7 @@ import KolFieldControlStateWrapperFc, {
 	type FieldControlStateWrapperProps,
 } from '../../functional-component-wrappers/FieldControlStateWrapper/FieldControlStateWrapper';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
-import type { FormFieldLabelInfoPopoverProps } from '../../functional-components';
+import type { FormFieldLabelInfoPopoverProps } from '../../schema';
 import type { InputCheckboxVariantPropType } from '../../schema/props/variant-input-checkbox';
 import { propagateSubmitEventToForm } from '../form/controller';
 

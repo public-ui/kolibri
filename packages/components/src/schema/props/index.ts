@@ -50,6 +50,7 @@ export * from './image-sizes';
 export * from './image-source';
 export * from './image-srcset';
 export * from './indeterminate';
+export * from './info-popover';
 export * from './inline';
 export * from './label';
 export * from './label-align';

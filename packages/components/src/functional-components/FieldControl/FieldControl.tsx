@@ -3,6 +3,7 @@ import type { JSXBase } from '@stencil/core/internal';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
+import type { FormFieldLabelInfoPopoverProps } from '../../schema';
 import {
 	buildBadgeTextString,
 	getMsgType,
@@ -17,7 +18,6 @@ import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
 import KolFieldControlHintFc from '../FormFieldHint';
 import KolFieldControlLabelFc from '../FormFieldLabel';
-import type { FormFieldLabelInfoPopoverProps } from '../FormFieldLabel/FormFieldLabel';
 
 const fieldControlTooltipBehaviorPool = new Map<string, TooltipBehavior>();
 

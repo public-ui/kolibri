@@ -3,15 +3,22 @@ import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { translate } from '../../i18n';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { FormFieldFC, isLabelShownAsTooltip } from '../../internal/functional-components/form-field/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
-import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType, VariantClassNamePropType } from '../../schema';
+import type {
+	FormFieldLabelInfoPopoverProps,
+	MaxLengthBehaviorPropType,
+	MsgPropType,
+	Stringified,
+	TooltipAlignPropType,
+	VariantClassNamePropType,
+} from '../../schema';
 import { buildBadgeTextString, classNameFromVariant, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
 import KolFormFieldHintFc from '../FormFieldHint/FormFieldHint';
 import KolFormFieldLabelFc from '../FormFieldLabel';
-import type { FormFieldLabelInfoPopoverProps } from '../FormFieldLabel/FormFieldLabel';
 import KolFormFieldMsgFc from '../FormFieldMsg';
 
 const formFieldTooltipBehaviorPool = new Map<string, TooltipBehavior>();
@@ -100,7 +107,11 @@ const InputContainer: FC<JSXBase.HTMLAttributes<HTMLDivElement>> = ({ class: cla
 	);
 };
 
-const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
+/**
+ * Renders the `fieldset` root of `kol-input-radio`, which `FormFieldFC` does not cover: its root is
+ * rendered by `BemRootNodeFC`, which only renders a `div`.
+ */
+const FieldsetFormFieldFc: FC<FormFieldProps> = (props, children) => {
 	const {
 		component: Component = 'div',
 		renderNoLabel,
@@ -244,6 +255,54 @@ const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
 				</span>
 			)}
 		</Component>
+	);
+};
+
+/**
+ * Adapter of the legacy form fields to `FormFieldFC`, removed once no legacy field is left. It keeps
+ * the tooltip behavior of each field in the pool above, because a functional component has no
+ * lifecycle; a migrated field owns its tooltip behavior itself.
+ */
+const KolFormFieldFc: FC<FormFieldProps> = (props, children) => {
+	const { component, ...fieldProps } = props;
+	if (component === 'fieldset') {
+		return <FieldsetFormFieldFc {...props}>{children}</FieldsetFormFieldFc>;
+	}
+
+	const { id, label, hideLabel, renderNoTooltip, accessKey, shortKey, tooltipAlign, ...other } = fieldProps;
+	const tooltipBehavior = isLabelShownAsTooltip({ hideLabel, label, renderNoTooltip }) ? getFormFieldTooltipBehavior(id) : undefined;
+
+	if (tooltipBehavior) {
+		tooltipBehavior.watchAlign(tooltipAlign);
+		tooltipBehavior.watchBadgeText(buildBadgeTextString(accessKey, shortKey) || '');
+		tooltipBehavior.watchId(createRelatedUniqueId(id, 'label'));
+		tooltipBehavior.watchLabel(label);
+	} else {
+		destroyFormFieldTooltipBehavior(id);
+	}
+
+	return (
+		<FormFieldFC
+			{...other}
+			id={id}
+			label={label}
+			hideLabel={hideLabel}
+			renderNoTooltip={renderNoTooltip}
+			accessKey={accessKey}
+			shortKey={shortKey}
+			tooltipAlign={tooltipAlign}
+			refInput={(el?: HTMLDivElement): void => {
+				if (tooltipBehavior && el) {
+					tooltipBehavior.initContext(el);
+					tooltipBehavior.syncListeners(undefined, el, true);
+				}
+			}}
+			refTooltip={(el?: HTMLDivElement): void => {
+				tooltipBehavior?.setTooltipElementRef(el);
+			}}
+		>
+			{children}
+		</FormFieldFC>
 	);
 };
 

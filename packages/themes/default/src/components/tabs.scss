@@ -4,6 +4,17 @@
 
 @layer kol-theme-component {
 	@include kol-icon-theme;
+
+	@property --kol-tabs-small-width {
+		inherits: true;
+		initial-value: '400px';
+		syntax: '<length>';
+	}
+
+	:host {
+		container: tabs / inline-size;
+	}
+
 	.kol-tabs {
 		display: grid;
 		grid-template-columns: var(--grid-template-columns);
@@ -62,10 +73,7 @@
 			border: none;
 			font-style: normal;
 
-			/* In the legacy DOM `border: none` and the radius applied to the button itself:
-			   the border removal keeps the vertically centered labels at the baseline position,
-			   and the radius rounds the focus outline (Firefox draws the outline following the
-			   element's border-radius). */
+			/* border-radius for outline*/
 			.kol-button__interactive-element {
 				border-radius: var(--border-radius);
 				border: none;
@@ -115,6 +123,16 @@
 
 		.kol-button-wc {
 			width: 100%;
+		}
+	}
+
+	@container tabs (width < 1000px) {
+		.kol-tabs {
+			--grid-template-columns: 1fr;
+			--grid-template-rows: max-content 1fr;
+			--button-group-order: 0;
+			--button-group-gap: 0;
+			--button-group-flex-direction: column;
 		}
 	}
 }

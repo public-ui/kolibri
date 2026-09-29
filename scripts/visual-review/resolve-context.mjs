@@ -54,8 +54,7 @@ export async function resolveContext({ eventName, event, api, repository }) {
 			const run = event.workflow_run;
 			if (run.event !== 'pull_request') return skip(`run of a ${run.event} event`);
 			if (run.conclusion === 'cancelled') return skip('run was cancelled');
-			const pulls = await api.get(`repos/${repository}/commits/${run.head_sha}/pulls`);
-			const pull = pulls.find((candidate) => candidate.state === 'open' && candidate.base.repo.full_name === repository && candidate.head.sha === run.head_sha);
+			const pull = await findOpenPull({ api, repository, run });
 			if (!pull) return skip(`no open pull request for ${run.head_sha}`);
 			const jobs = await api.paginate(`repos/${repository}/actions/runs/${run.id}/jobs`);
 			const visual = jobs.filter((job) => VISUAL_JOB.test(job.name));
@@ -87,6 +86,23 @@ export async function resolveContext({ eventName, event, api, repository }) {
 		default:
 			return skip(`unsupported event ${eventName}`);
 	}
+}
+
+/**
+ * `commits/{sha}/pulls` does not list pull requests whose head commit only exists in a fork, and
+ * `workflow_run.pull_requests` is empty for them. The head branch of the fork is the reliable key.
+ */
+async function findOpenPull({ api, repository, run }) {
+	const matches = (candidate) => candidate.state === 'open' && candidate.base.repo.full_name === repository && candidate.head.sha === run.head_sha;
+
+	const byCommit = await api.get(`repos/${repository}/commits/${run.head_sha}/pulls`);
+	const pull = byCommit.find(matches);
+	if (pull) return pull;
+
+	const owner = run.head_repository?.owner?.login;
+	if (!owner || !run.head_branch) return undefined;
+	const byBranch = await api.get(`repos/${repository}/pulls?state=open&head=${encodeURIComponent(`${owner}:${run.head_branch}`)}`);
+	return byBranch.find(matches);
 }
 
 function escapeRegExp(text) {

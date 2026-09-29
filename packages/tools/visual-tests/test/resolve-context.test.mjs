@@ -88,6 +88,30 @@ describe('resolveContext', () => {
 		assert.equal((await resolveContext({ eventName: 'workflow_run', event: cancelled, api: noPull, repository: REPO })).mode, 'skip');
 	});
 
+	it('finds the pull request of a fork by its head branch when the commit lookup is empty', async () => {
+		const api = fakeApi({
+			'repos/public-ui/kolibri/commits/head1/pulls': [],
+			'repos/public-ui/kolibri/pulls?state=open&head=alice%3Afix%2Fx': [OPEN_PULL],
+			'repos/public-ui/kolibri/actions/runs/7/jobs': [{ name: 'visual-tests (theme-default)', conclusion: 'success' }],
+		});
+		const run = {
+			id: 7,
+			event: 'pull_request',
+			conclusion: 'success',
+			head_sha: 'head1',
+			head_branch: 'fix/x',
+			head_repository: { owner: { login: 'alice' } },
+		};
+		const context = await resolveContext({ eventName: 'workflow_run', event: { workflow_run: run }, api, repository: REPO });
+		assert.deepEqual(context, { mode: 'publish', pr: 42, head: 'head1', runId: 7, reason: 'CI run 7 completed' });
+
+		const stale = fakeApi({
+			'repos/public-ui/kolibri/commits/head1/pulls': [],
+			'repos/public-ui/kolibri/pulls?state=open&head=alice%3Afix%2Fx': [{ ...OPEN_PULL, head: { sha: 'other' } }],
+		});
+		assert.equal((await resolveContext({ eventName: 'workflow_run', event: { workflow_run: run }, api: stale, repository: REPO })).mode, 'skip');
+	});
+
 	it('recomputes the status for human comments on open pull requests only', async () => {
 		const api = fakeApi({ 'repos/public-ui/kolibri/pulls/42': OPEN_PULL });
 		const human = { action: 'created', issue: { number: 42, pull_request: {} }, comment: { user: { login: 'alice', type: 'User' } } };

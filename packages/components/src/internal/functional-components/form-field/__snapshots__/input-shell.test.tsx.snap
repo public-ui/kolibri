@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconButtonFC renders a button 1`] = `
+<div>
+  <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="Clear" class="kol-input-container__smart-button"></kol-button-wc>
+</div>
+`;
+
+exports[`IconButtonFC renders an icon 1`] = `
+<div>
+  <i aria-label="Info" class="kol-icon kol-icon__icon kolicon-info" hidelabel="" role="img"></i>
+</div>
+`;
+
+exports[`InputContainerFC renders a start adornment 1`] = `
+<div class="kol-input-container">
+  <div class="kol-input-container__adornment kol-input-container__adornment--start">
+    <i class="start"></i>
+  </div>
+  <div class="kol-input-container__container">
+    <input>
+  </div>
+  <div class="kol-input-container__adornment kol-input-container__adornment--end"></div>
+</div>
+`;
+
+exports[`InputContainerFC renders an end adornment 1`] = `
+<div class="kol-input-container">
+  <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
+  <div class="kol-input-container__container">
+    <input>
+  </div>
+  <div class="kol-input-container__adornment kol-input-container__adornment--end">
+    <i class="end"></i>
+  </div>
+</div>
+`;
+
+exports[`InputContainerFC renders disabled with a touched error 1`] = `
+<div class="kol-input-container kol-input-container--disabled kol-input-container--error">
+  <div class="kol-input-container__container">
+    <input>
+  </div>
+</div>
+`;
+
+exports[`InputContainerFC renders the default 1`] = `
+<div class="kol-input-container">
+  <div class="kol-input-container__container">
+    <input>
+  </div>
+</div>
+`;
+
+exports[`InputFC renders a hidden label and descriptions 1`] = `
+<div>
+  <input aria-describedby="field-hint-nonce" aria-label="Label" autocapitalize="off" autocorrect="off" class="kol-input" id="field-nonce" type="text">
+</div>
+`;
+
+exports[`InputFC renders states and a touched error 1`] = `
+<div>
+  <input aria-disabled="true" autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--readonly kol-input--required kol-input--touched" id="field-nonce" readonly="" required="" type="text">
+</div>
+`;
+
+exports[`InputFC renders suggestions 1`] = `
+<div>
+  <input autocapitalize="off" autocorrect="off" class="kol-input" id="field-nonce" list="field-list-nonce" type="text">
+  <datalist id="field-list-nonce">
+    <option value="a"></option>
+    <option value="1"></option>
+  </datalist>
+</div>
+`;
+
+exports[`InputFC renders the default 1`] = `
+<div>
+  <input autocapitalize="off" autocorrect="off" class="kol-input" id="field-nonce" type="text">
+</div>
+`;

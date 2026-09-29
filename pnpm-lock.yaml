@@ -380,6 +380,9 @@ importers:
       '@public-ui/eslint-config':
         specifier: workspace:*
         version: link:../tools/eslint-config
+      '@public-ui/icons':
+        specifier: workspace:*
+        version: link:../icons
       '@public-ui/stencil-angular-output-target':
         specifier: 0.9.0
         version: 0.9.0(@stencil/core@4.38.3)
@@ -450,8 +453,8 @@ importers:
         specifier: 9.39.5
         version: 9.39.5(jiti@2.7.0)
       eslint-plugin-perfectionist:
-        specifier: 5.11.1
-        version: 5.11.1(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
+        specifier: 5.12.1
+        version: 5.12.1(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
       jest:
         specifier: 29.7.0
         version: 29.7.0(@types/node@26.4.0)(ts-node@10.9.2(@swc/core@1.15.47)(@types/node@26.4.0)(typescript@5.9.3))
@@ -1085,6 +1088,9 @@ importers:
       '@public-ui/components':
         specifier: workspace:*
         version: link:../../components
+      '@public-ui/ecl-icons':
+        specifier: workspace:*
+        version: link:../../ecl-icons
       '@public-ui/eslint-config':
         specifier: workspace:*
         version: link:../../tools/eslint-config
@@ -1367,8 +1373,8 @@ importers:
         specifier: workspace:*
         version: link:../../components
       chalk:
-        specifier: 6.0.0
-        version: 6.0.0
+        specifier: 6.0.1
+        version: 6.0.1
       commander:
         specifier: 15.0.0
         version: 15.0.0
@@ -6842,8 +6848,8 @@ packages:
     resolution: {integrity: sha512-7NzBL0rN6fMUW+f7A6Io4h40qQlG+xGmtMxfbnH/K7TAtt8JQWVQK+6g0UXKMeVJoyV5EkkNsErQ8pVD3bLHbA==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
-  chalk@6.0.0:
-    resolution: {integrity: sha512-2uNTXIuTTxk7ciZgAU1BQcgnchcG0xXnrs6jzkQfj9SsRa9M2s5zE8WT96hS6KmG4MzWHSrvH43DF1m4XRkrFg==}
+  chalk@6.0.1:
+    resolution: {integrity: sha512-/Ce6KNm3vIbWdMlNna6RVIZ/ICQxnJxCicet5LBKK9ZffBkqzDw0xh9EiKSljdRtiIQ1S1z4YgcscUUGzNCWrA==}
     engines: {node: '>=22'}
 
   change-case@5.4.4:
@@ -7934,11 +7940,14 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
 
-  eslint-plugin-perfectionist@5.11.1:
-    resolution: {integrity: sha512-xloHScnOpin9Jy3CegfzoBeY33ASk0spLyM2sJs0LyNHQjv9m0osUD2PYNT7NrJieZbUR2Ebn4A5Q0+0dOcv+A==}
+  eslint-plugin-perfectionist@5.12.1:
+    resolution: {integrity: sha512-krdSE7Dz+TCtcVr2+rfNhlOIFFBJcUdoRvjaN7JQnsaVnxJw+BZh9wMkY3MSLCJat+yW+UPTQLKS82Epc7MGZA==}
     engines: {node: ^20.0.0 || >=22.0.0}
     peerDependencies:
       eslint: ^8.45.0 || ^9.0.0 || ^10.0.0
+    peerDependenciesMeta:
+      eslint:
+        optional: true
 
   eslint-plugin-react-hooks@7.1.1:
     resolution: {integrity: sha512-f2I7Gw6JbvCexzIInuSbZpfdQ44D7iqdWX01FKLvrPgqxoE7oMj8clOfto8U6vYiz4yd5oKu39rRSVOe1zRu0g==}
@@ -19536,7 +19545,7 @@ snapshots:
 
   chalk@5.6.2: {}
 
-  chalk@6.0.0: {}
+  chalk@6.0.1: {}
 
   change-case@5.4.4: {}
 
@@ -20871,11 +20880,13 @@ snapshots:
       safe-regex-test: 1.1.0
       string.prototype.includes: 2.0.1
 
-  eslint-plugin-perfectionist@5.11.1(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3):
+  eslint-plugin-perfectionist@5.12.1(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3):
     dependencies:
+      '@typescript-eslint/types': 8.70.1
       '@typescript-eslint/utils': 8.70.1(eslint@9.39.5(jiti@2.7.0))(typescript@5.9.3)
-      eslint: 9.39.5(jiti@2.7.0)
       natural-orderby: 5.0.0
+    optionalDependencies:
+      eslint: 9.39.5(jiti@2.7.0)
     transitivePeerDependencies:
       - supports-color
       - typescript

@@ -1,5 +1,4 @@
 export { default as KolFormFieldFc } from './FormField';
-export { FormFieldLabelInfoPopoverProps } from './FormFieldLabel';
 export { default as KolFormFieldMsgFc } from './FormFieldMsg';
 export { default as KolHeadingFc } from './Heading';
 export { default as KolInputContainerFc } from './InputContainer';

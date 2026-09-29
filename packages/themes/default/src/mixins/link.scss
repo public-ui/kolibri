@@ -31,5 +31,9 @@
 		&--disabled .#{$block-classname}__interactive-element {
 			color: var(--color-disabled-text);
 		}
+
+		&--small {
+			font-size: to-rem(12);
+		}
 	}
 }

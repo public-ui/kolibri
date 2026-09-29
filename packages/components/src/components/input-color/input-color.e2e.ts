@@ -101,6 +101,59 @@ test.describe(COMPONENT_NAME, () => {
 		});
 	});
 
+	/*
+	 * Pins the tooltip that replaces the visible label with _hideLabel, ahead of the form field skeleton migration,
+	 * which moves the tooltip from a pool shared by all form fields to one behavior per field.
+	 */
+	test.describe('Tooltip with _hideLabel', () => {
+		const tooltip = '.kol-form-field__tooltip .kol-tooltip__floating';
+
+		test.beforeEach(async ({ page }) => {
+			await page.setContent(`<${COMPONENT_NAME} _label="Farbe" _hide-label></${COMPONENT_NAME}><button id="outside">Outside</button>`);
+		});
+
+		test('shows the label as tooltip while the input has the focus', async ({ page }) => {
+			await expect(page.locator(tooltip)).not.toBeVisible();
+
+			await page.locator('input.kol-input').focus();
+			await expect(page.locator(tooltip)).toBeVisible();
+			await expect(page.locator(tooltip)).toContainText('Farbe');
+
+			await page.locator('#outside').focus();
+			await expect(page.locator(tooltip)).not.toBeVisible();
+		});
+
+		test('shows the label as tooltip while the input is hovered', async ({ page }) => {
+			await page.locator('input.kol-input').hover();
+			await expect(page.locator(tooltip)).toBeVisible();
+
+			await page.locator('#outside').hover();
+			await expect(page.locator(tooltip)).not.toBeVisible();
+		});
+
+		test('hides the tooltip on Escape while the input is hovered', async ({ page }) => {
+			await page.locator('input.kol-input').hover();
+			await expect(page.locator(tooltip)).toBeVisible();
+
+			await page.keyboard.press('Escape');
+			await expect(page.locator(tooltip)).not.toBeVisible();
+		});
+
+		/*
+		 * Today's behavior, pinned unchanged: the field dispatches its own `keydown` CustomEvent on the host, which reaches
+		 * the document before the native Escape key and consumes the tooltip's one-time Escape listener (#11032).
+		 */
+		test('keeps the tooltip on Escape while the input has the focus', async ({ page }) => {
+			await page.locator('input.kol-input').focus();
+			await expect(page.locator(tooltip)).toBeVisible();
+
+			await page.keyboard.press('Escape');
+			await page.waitForTimeout(500);
+
+			await expect(page.locator(tooltip)).toBeVisible();
+		});
+	});
+
 	testInputMessage<HTMLKolInputColorElement>(COMPONENT_NAME);
 
 	testInputBehaviorContract<HTMLKolInputColorElement>({

@@ -22,7 +22,7 @@ import type {
 } from '../../schema';
 
 import { KolSelectWcTag } from '../../core/component-names';
-import type { FormFieldLabelInfoPopoverProps } from '../../functional-components';
+import type { FormFieldLabelInfoPopoverProps } from '../../schema';
 import { validateAriaDetails } from '../../schema/props/aria-details';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
