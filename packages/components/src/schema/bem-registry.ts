@@ -364,6 +364,49 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-form-field': {
+		elements: {
+			counter: {
+				modifiers: null;
+			};
+			hint: {
+				modifiers: null;
+			};
+			input: {
+				modifiers: null;
+			};
+			label: {
+				modifiers: null;
+			};
+			'label-text': {
+				modifiers: null;
+			};
+			msg: {
+				modifiers: null;
+			};
+			tooltip: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<
+			| 'default'
+			| 'disabled'
+			| 'error'
+			| 'hidden-msg'
+			| 'hide-label'
+			| 'info'
+			| 'msg-type-default'
+			| 'msg-type-error'
+			| 'msg-type-info'
+			| 'msg-type-success'
+			| 'msg-type-warning'
+			| 'read-only'
+			| 'required'
+			| 'success'
+			| 'touched'
+			| 'warning'
+		>;
+	};
 	'kol-split-button': {
 		elements: {
 			button: {
@@ -741,6 +784,35 @@ const BEM: KoliBriComponentsBemSchema = {
 			'mandatory-fields-hint': { modifiers: null },
 		},
 		modifiers: null,
+	},
+	'kol-form-field': {
+		elements: {
+			counter: { modifiers: null },
+			hint: { modifiers: null },
+			input: { modifiers: null },
+			label: { modifiers: null },
+			'label-text': { modifiers: null },
+			msg: { modifiers: null },
+			tooltip: { modifiers: null },
+		},
+		modifiers: new Set([
+			'default',
+			'disabled',
+			'error',
+			'hidden-msg',
+			'hide-label',
+			'info',
+			'msg-type-default',
+			'msg-type-error',
+			'msg-type-info',
+			'msg-type-success',
+			'msg-type-warning',
+			'read-only',
+			'required',
+			'success',
+			'touched',
+			'warning',
+		]),
 	},
 	'kol-split-button': {
 		elements: {
