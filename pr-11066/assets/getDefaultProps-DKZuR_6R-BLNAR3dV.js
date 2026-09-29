@@ -1,0 +1,1 @@
+import{ot as e}from"./index-BjQnrvxj-FaFz9L1K.js";import{a as t}from"./FormFieldStateWrapper-BShYKlPa-BL9fxzuQ.js";var n=(t,n)=>{e(t,`_rows`,n,{min:1})},r=t;export{n,r as t};
