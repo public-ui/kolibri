@@ -1,1 +1,0 @@
-import{it as e}from"./index-BW8y6r-K-C8DOodIt.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};

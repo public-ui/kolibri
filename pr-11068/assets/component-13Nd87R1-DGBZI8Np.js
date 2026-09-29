@@ -1,1 +1,0 @@
-import{s as e}from"./index-BW8y6r-K-C8DOodIt.js";var t=({description:t,descriptionId:n})=>t?e(`span`,{class:`visually-hidden`,id:n},t):null;export{t};
