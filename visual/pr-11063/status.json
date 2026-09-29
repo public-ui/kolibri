@@ -1,28 +1,32 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "2 changed – 0 of 2 approved, review pending",
-	"computedAt": "2026-09-29T06:22:56.602Z",
+	"state": "success",
+	"description": "2 visual changes approved by BF150",
+	"computedAt": "2026-09-29T06:25:47.027Z",
 	"pr": 11063,
 	"head": "d66cfc233be3c61cc7e6c32cac0ebee104959be8",
 	"digest": "sha256:608bdb4d92fbc7743a82f75f16cf10342008d6e4ae822d7a217eb1625fa6eb91",
 	"counts": {
 		"changes": 2,
-		"open": 2,
-		"approved": 0,
+		"open": 0,
+		"approved": 2,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"BF150"
+	],
 	"items": {
 		"test-tag-name-transformer/link-link-variant--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/link-link-variant--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		}
 	}
 }
