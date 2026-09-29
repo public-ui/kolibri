@@ -3,7 +3,7 @@
 exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _active=false 1`] = `
 <kol-tree-item>
   <template shadowrootmode="open">
-    <li class="kol-tree-item" style="--level: 0;">
+    <li class="kol-tree-item" role="none" style="--level: 0;">
       <span class="kol-tree-item__link kol-tree-item__link--first-level">
         <div class="kol-link kol-link--inline">
           <a class="kol-link__interactive-element" href="https://example.com" role="treeitem" tabindex="-1">
@@ -33,7 +33,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
 exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _active=true 1`] = `
 <kol-tree-item>
   <template shadowrootmode="open">
-    <li class="kol-tree-item" style="--level: 0;">
+    <li class="kol-tree-item" role="none" style="--level: 0;">
       <span class="kol-tree-item__link kol-tree-item__link--active kol-tree-item__link--first-level">
         <div class="kol-link kol-link--inline">
           <a class="kol-link__interactive-element" href="https://example.com" role="treeitem" tabindex="0">
@@ -63,7 +63,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
 exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _open=false 1`] = `
 <kol-tree-item>
   <template shadowrootmode="open">
-    <li class="kol-tree-item" style="--level: 0;">
+    <li class="kol-tree-item" role="none" style="--level: 0;">
       <span class="kol-tree-item__link kol-tree-item__link--first-level">
         <div class="kol-link kol-link--inline">
           <a class="kol-link__interactive-element" href="https://example.com" role="treeitem" tabindex="-1">
@@ -93,7 +93,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
 exports[`kol-tree-item should render with _label="Label" _href="https://example.com" _open=true 1`] = `
 <kol-tree-item>
   <template shadowrootmode="open">
-    <li class="kol-tree-item" style="--level: 0;">
+    <li class="kol-tree-item" role="none" style="--level: 0;">
       <span class="kol-tree-item__link kol-tree-item__link--first-level">
         <div class="kol-link kol-link--inline">
           <a class="kol-link__interactive-element" href="https://example.com" role="treeitem" tabindex="-1">
@@ -123,7 +123,7 @@ exports[`kol-tree-item should render with _label="Label" _href="https://example.
 exports[`kol-tree-item should render with _label="Label" _href="https://example.com" 1`] = `
 <kol-tree-item>
   <template shadowrootmode="open">
-    <li class="kol-tree-item" style="--level: 0;">
+    <li class="kol-tree-item" role="none" style="--level: 0;">
       <span class="kol-tree-item__link kol-tree-item__link--first-level">
         <div class="kol-link kol-link--inline">
           <a class="kol-link__interactive-element" href="https://example.com" role="treeitem" tabindex="-1">
