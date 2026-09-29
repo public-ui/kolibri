@@ -36,7 +36,7 @@ import type { ApiFromConfig, PropsConfigShape, WebComponentInterface } from '../
  * - `ariaControls` and `ariaExpanded` are deliberately absent: the component renders them itself,
  *   pointing at the popover element and reflecting its open state.
  * - `_syncValueBySelector` and `_value` are deliberately absent: neither is rendered, and both are
- *   opaque pass-throughs to `AssociatedInputController` (inherited from `BaseButtonWebComponent`).
+ *   opaque pass-throughs to `FormAssociationBehavior` (inherited from `BaseButtonWebComponent`).
  *   They stay raw `@Prop`s on the web component, which forwards them from their watchers.
  */
 export const popoverButtonPropsConfig = {
