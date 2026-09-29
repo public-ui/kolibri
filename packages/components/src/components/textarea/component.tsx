@@ -219,8 +219,7 @@ export class KolTextarea
 	// --- Render ---
 
 	/**
-	 * Props of the native `<textarea>` in the key order of the legacy state wrapper. `spellCheck` is
-	 * accepted but not rendered (#10863).
+	 * Props of the native `<textarea>` in the key order of the legacy state wrapper.
 	 */
 	private getTextareaProps(): TextAreaFCProps {
 		const id = this.id;
@@ -242,6 +241,7 @@ export class KolTextarea
 			readonly: this.getRenderProp('readOnly'),
 			required: this.getRenderProp('required'),
 			placeholder: this.getRenderProp('placeholder'),
+			spellcheck: this.getRenderProp('spellCheck'),
 			touched: this.getRenderProp('touched'),
 			msg: this.getRenderProp('msg'),
 			ref: this.ctaRef,
