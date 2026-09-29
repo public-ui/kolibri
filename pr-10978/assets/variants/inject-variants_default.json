@@ -18,8 +18,11 @@
 	],
 	"iconVariantsInput": [
 		"fa-solid fa-city"
-	], 
+	],
 	"inputVariants": [
 		"left"
+	],
+	"linkVariants": [
+		"small"
 	]
 }
