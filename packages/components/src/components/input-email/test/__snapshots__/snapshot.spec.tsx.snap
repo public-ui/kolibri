@@ -1,5 +1,128 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`kol-input-email should render with _label="Label" _name="field" _hasCounter=true _maxLength=30 _value="email@example.com" 1`] = `
+<kol-input-email _value="email@example.com">
+  <template shadowrootmode="open">
+    <div class="email has-value kol-form-field kol-form-field--has-counter kol-input-email">
+      <label class="kol-form-field__label" htmlfor="input-email-nonce" id="input-email-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-email-nonce" maxlength="30" name="field" type="email" value="email@example.com">
+          </div>
+        </div>
+      </div>
+      <div class="kol-form-field__counter">
+        <span aria-hidden="true" class="kol-form-field__counter kol-form-field__counter--exceeded" data-testid="input-counter">
+          kol-character-counter-current-of-max
+        </span>
+        <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="input-email-counter-nonce">
+          kol-character-counter-current-of-max-aria
+        </span>
+      </div>
+    </div>
+  </template>
+</kol-input-email>
+`;
+
+exports[`kol-input-email should render with _label="Label" _name="field" _maxLength=30 _value="email@example.com" 1`] = `
+<kol-input-email _value="email@example.com">
+  <template shadowrootmode="open">
+    <div class="email has-value kol-form-field kol-input-email">
+      <label class="kol-form-field__label" htmlfor="input-email-nonce" id="input-email-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input aria-describedby="input-email-character-limit-hint-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-email-nonce" maxlength="30" name="field" type="email" value="email@example.com">
+          </div>
+        </div>
+      </div>
+      <span class="visually-hidden" id="input-email-character-limit-hint-nonce">
+        kol-character-limit-hint
+      </span>
+    </div>
+  </template>
+</kol-input-email>
+`;
+
+exports[`kol-input-email should render with _label="Label" _name="field" _multiple=true _value="email@example.com" 1`] = `
+<kol-input-email _value="email@example.com">
+  <template shadowrootmode="open">
+    <div class="email has-value kol-form-field kol-input-email">
+      <label class="kol-form-field__label" htmlfor="input-email-nonce" id="input-email-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-email-nonce" multiple="" name="field" type="email" value="email@example.com">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-email>
+`;
+
+exports[`kol-input-email should render with _label="Label" _name="field" _pattern=".+@example\\\\.com" _required=true 1`] = `
+<kol-input-email>
+  <template shadowrootmode="open">
+    <div class="email kol-form-field kol-form-field--required kol-input-email">
+      <label class="kol-form-field__label" htmlfor="input-email-nonce" id="input-email-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--required" id="input-email-nonce" name="field" pattern=".+@example\\.com" required="" type="email">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-email>
+`;
+
 exports[`kol-input-email should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="email@example.com" _accessKey="V" 1`] = `
 <kol-input-email _value="email@example.com">
   <template shadowrootmode="open">

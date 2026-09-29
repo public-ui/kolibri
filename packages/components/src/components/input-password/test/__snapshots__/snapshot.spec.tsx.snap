@@ -1,5 +1,100 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`kol-input-password should render with _label="Label" _name="field" _hasCounter=true _maxLength=10 _value="Value" 1`] = `
+<kol-input-password _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--has-counter kol-input-password password">
+      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-password-nonce" maxlength="10" name="field" type="password" value="Value">
+          </div>
+        </div>
+      </div>
+      <div class="kol-form-field__counter">
+        <span aria-hidden="true" class="kol-form-field__counter kol-form-field__counter--exceeded" data-testid="input-counter">
+          kol-character-counter-current-of-max
+        </span>
+        <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="input-password-counter-nonce">
+          kol-character-counter-current-of-max-aria
+        </span>
+      </div>
+    </div>
+  </template>
+</kol-input-password>
+`;
+
+exports[`kol-input-password should render with _label="Label" _name="field" _maxLength=10 _value="Value" 1`] = `
+<kol-input-password _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-password password">
+      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input aria-describedby="input-password-character-limit-hint-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-password-nonce" maxlength="10" name="field" type="password" value="Value">
+          </div>
+        </div>
+      </div>
+      <span class="visually-hidden" id="input-password-character-limit-hint-nonce">
+        kol-character-limit-hint
+      </span>
+    </div>
+  </template>
+</kol-input-password>
+`;
+
+exports[`kol-input-password should render with _label="Label" _name="field" _pattern="[a-z]+" _required=true 1`] = `
+<kol-input-password>
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--required kol-input-password password">
+      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--required" id="input-password-nonce" name="field" pattern="[a-z]+" required="" type="password">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-password>
+`;
+
 exports[`kol-input-password should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="Value" _accessKey="V" 1`] = `
 <kol-input-password _value="Value">
   <template shadowrootmode="open">
@@ -553,6 +648,66 @@ exports[`kol-input-password should render with _label="Label" _name="field" _pla
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-password-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="password" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-password>
+`;
+
+exports[`kol-input-password should render with _label="Label" _name="field" _variant="visibility-toggle" _value="Value" 1`] = `
+<kol-input-password _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-form-field--visibility-toggle kol-input-password password">
+      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-password-nonce" name="field" type="password" value="Value">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-password>
+`;
+
+exports[`kol-input-password should render with _label="Label" _name="field" _visibilityToggle=true _value="Value" 1`] = `
+<kol-input-password _value="Value">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-password password">
+      <label class="kol-form-field__label" htmlfor="input-password-nonce" id="input-password-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__adornment kol-input-container__adornment--start"></div>
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-password-nonce" name="field" type="password" value="Value">
+          </div>
+          <div class="kol-input-container__adornment kol-input-container__adornment--end">
+            <kol-button-wc _hidelabel="" _icons="kolicon-eye" _label="kol-show-password" buttonvariant="ghost" class="kol-input-container__smart-button kol-input-password__password-toggle-button" data-testid="kol-input-password-toggle-button"></kol-button-wc>
           </div>
         </div>
       </div>
