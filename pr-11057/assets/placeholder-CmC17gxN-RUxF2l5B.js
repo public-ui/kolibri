@@ -1,1 +1,0 @@
-import{st as e}from"./index-Mn2CIec2-DeqlElMb.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
