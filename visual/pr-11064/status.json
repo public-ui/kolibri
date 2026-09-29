@@ -1,120 +1,147 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "25 changed – 0 of 25 approved, review pending",
-	"computedAt": "2026-09-29T07:44:25.024Z",
+	"state": "success",
+	"description": "25 visual changes approved by laske185",
+	"computedAt": "2026-09-29T08:24:02.092Z",
 	"pr": 11064,
 	"head": "7150abe575376aeccf6ff9484ac8e7b04e0c5835",
 	"digest": "sha256:1a78af9935e45470a278abe3b170a6755c13135e529ad27a464bf7b8c9c4636d",
 	"counts": {
 		"changes": 25,
-		"open": 25,
-		"approved": 0,
+		"open": 0,
+		"approved": 25,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"laske185"
+	],
 	"items": {
 		"test-tag-name-transformer/scenarios-focus-elements-component-tabs": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/tabs-basic--icons": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/tabs-basic--regular": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/tabs-create-button--create-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/tabs-icons-only--icons-only": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-bwst/tabs-basic--icons": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-bwst/tabs-basic--regular": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-bwst/tabs-create-button--create-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/scenarios-focus-elements-component-tabs": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/tabs-basic--icons": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/tabs-basic--regular": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/tabs-create-button--create-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/tabs-icons-only--icons-only": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-desy/tabs-basic--icons": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-desy/tabs-basic--regular": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-desy/tabs-create-button--create-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/tabs-basic--icons": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/tabs-basic--regular": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/tabs-create-button--create-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-kern/tabs-basic--icons": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-kern/tabs-basic--regular": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-kern/tabs-create-button--create-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"unstyled/tabs-basic--icons": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"unstyled/tabs-basic--regular": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"unstyled/tabs-create-button--create-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		}
 	}
 }
