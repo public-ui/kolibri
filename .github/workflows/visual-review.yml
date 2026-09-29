@@ -68,9 +68,12 @@ jobs:
     if: needs.resolve.outputs.mode != 'skip'
     runs-on: ubuntu-latest
     # One publish at a time per pull request, none dropped: a cancelled run would leave a stale status.
+    # Without `queue: max` GitHub keeps only one waiting run per group and cancels older pending ones,
+    # e.g. a publish run that waits behind reviewer comments.
     concurrency:
       group: visual-review-${{ needs.resolve.outputs.pr }}
       cancel-in-progress: false
+      queue: max
     env:
       MODE: ${{ needs.resolve.outputs.mode }}
       PR: ${{ needs.resolve.outputs.pr }}
