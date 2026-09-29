@@ -21,8 +21,8 @@ export const LinkBasic: FC = () => (
 			<KolLink _disabled _hideLabel _icons="kolicon-house" _href="#/back-page" _inline={false} _label="Icon Link (disabled)" />
 			<p>
 				In this paragraph, a standard link <KolLink _href="#/back-page" _label="Simple Link" /> and a disabled link{' '}
-				<KolLink _disabled _href="#/back-page" _label="Simple Link (disabled)" /> are inserted. They are rendered by default as{' '}
-				<strong>inline elements</strong>.
+				<KolLink _disabled _href="#/back-page" _label="Simple Link (disabled)" /> are inserted. They are rendered by default as <strong>inline elements</strong>
+				.
 			</p>
 			<p>
 				In this paragraph, a link is inserted that is rendered as an inline-block element.{' '}
