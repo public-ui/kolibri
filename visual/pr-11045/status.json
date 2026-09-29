@@ -2,9 +2,9 @@
 	"schema": 1,
 	"state": "success",
 	"description": "No visual changes",
-	"computedAt": "2026-09-28T10:28:12.895Z",
+	"computedAt": "2026-09-29T04:14:12.014Z",
 	"pr": 11045,
-	"head": "f3d5c808a75f627edd313780679b0155f848c228",
+	"head": "581d7b7425b9455b59557a615b690a0a1405e0ed",
 	"digest": "sha256:97eb7df79010253c71c01901bf03522f511edf6b0171261c8243439f87e1592b",
 	"counts": {
 		"changes": 0,
