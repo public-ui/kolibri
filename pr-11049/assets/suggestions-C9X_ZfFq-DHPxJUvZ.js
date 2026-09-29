@@ -1,1 +1,0 @@
-import{s as e}from"./index-DdkJud7u-DPn77-Sp.js";import{t}from"./dev.utils-CR1M7dPm-BzWPlfrp.js";import{n}from"./tslib.es6-QNbPBOk5-DpzS01Oy.js";var r=r=>{var{id:i,suggestions:a}=r,o=n(r,[`id`,`suggestions`]);return a?e(`datalist`,Object.assign({id:t(i,`list`)},o),a.map(t=>e(`option`,{value:t}))):null};export{r as t};
