@@ -2,7 +2,7 @@ import { KolTextareaTag } from '../../../core/component-names';
 import type { TextareaProps } from '../../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
-import { KolTextarea } from '../shadow';
+import { KolTextarea } from '../component';
 
 executeInputSnapshotTests<TextareaProps>(KolTextareaTag, [KolTextarea], {
 	_rows: 5,
