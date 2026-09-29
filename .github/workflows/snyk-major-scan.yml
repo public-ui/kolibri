@@ -63,9 +63,9 @@ jobs:
           node-version: 24
 
       - name: Install Snyk CLI
-        run: |
-          pnpm i
-          npm install -g snyk
+        # The scan resolves @public-ui/components from the npm registry into a
+        # synthetic package, so the CLI is the only thing that needs installing.
+        run: npm install -g snyk
 
       - name: Run Snyk scan
         env:
