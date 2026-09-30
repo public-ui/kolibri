@@ -1,0 +1,36 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "4 changed – 0 of 4 approved, review pending",
+	"computedAt": "2026-09-30T00:52:34.554Z",
+	"pr": 11086,
+	"head": "d19ec34d596004165ad3ec3639207e01cfdff325",
+	"digest": "sha256:4bfb294176a9290ac442ced251234bc03948da8d847e72b0f7713987694daf3f",
+	"counts": {
+		"changes": 4,
+		"open": 4,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"theme-desy/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
