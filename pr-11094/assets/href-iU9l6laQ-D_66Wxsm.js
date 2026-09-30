@@ -1,0 +1,1 @@
+import{i as e,y as t}from"./variant-quote-DDN19Dxj-CeoTwbs-.js";var n=e(`href`,``,t,e=>typeof e==`string`,{required:!0}),r=e(`href`,``,t,e=>typeof e==`string`);export{r as n,n as t};
