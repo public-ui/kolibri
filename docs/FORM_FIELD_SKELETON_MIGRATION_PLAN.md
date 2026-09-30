@@ -194,6 +194,7 @@ Gelöscht wird, sobald der letzte Import weg ist. Veröffentlichte Schema-Typen 
 | Zeitpunkt | Was gelöscht wird                                                                                                                                                               |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | nach G2   | erledigt in G2: `utils/counter-dom-updater.ts`, `InputPasswordController`, `InputTextEmailController`, `InputTextController`, `TextAreaStateWrapper`, alte `inputs/TextArea`    |
+| nach G3a  | erledigt in G3a: `InputNumberController`, `InputRangeController`, `InputIconController.isNumberString`                                                                          |
 | nach G4   | Checkbox-/Radio-Controller inkl. `InputCheckboxRadioController`, `Checkbox`-/`RadioStateWrapper`, altes `FieldControl`, alte `inputs/Checkbox`/`inputs/Radio`, alte Radio-Utils |
 | nach G5   | `SelectStateWrapper`, `NativeSelect`/`NativeOption(List)`, `CustomSuggestions*`, `Suggestions`; `kol-select-wc` erst, wenn `pagination` das FC rendert                          |
 | final     | `@deprecated/input/*`, `input-adapter-leanup/`, `functional-component-wrappers/` inkl. `getRenderStates`, Adapter aus G1.3, alte FormField-/Input-FCs, `*Watches`-Interfaces    |

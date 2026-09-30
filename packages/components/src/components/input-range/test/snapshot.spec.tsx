@@ -2,7 +2,7 @@ import { KolInputRangeTag } from '../../../core/component-names';
 import type { InputRangeProps } from '../../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
-import { KolInputRange } from '../shadow';
+import { KolInputRange } from '../component';
 
 executeInputSnapshotTests<InputRangeProps>(KolInputRangeTag, [KolInputRange], {
 	_value: 5,
