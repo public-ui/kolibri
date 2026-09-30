@@ -29,9 +29,12 @@ function getToolbarButton(label: string): HTMLButtonElement | undefined {
 	return Array.from(buttons).find((button) => button.textContent?.includes(label));
 }
 
-/** Buttons signal their disabled state via `aria-disabled` instead of the native attribute. */
+/**
+ * Disabled is signalled by the native `disabled` attribute; depending on the built dist state an
+ * `aria-disabled="true"` is set instead, so both are accepted here.
+ */
 function isDisabled(button: HTMLButtonElement | undefined): boolean {
-	return button?.getAttribute('aria-disabled') === 'true';
+	return button?.disabled === true || button?.getAttribute('aria-disabled') === 'true';
 }
 
 /** The form fields are slotted into the drawer's light DOM, each with its own shadow root. */
