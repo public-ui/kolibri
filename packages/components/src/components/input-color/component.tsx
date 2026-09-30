@@ -6,7 +6,6 @@ import type {
 	ClickableElement,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
-	IconOrIconClass,
 	IconsHorizontalPropType,
 	InputColorProps,
 	InputTypeOnDefault,
@@ -24,14 +23,13 @@ import type {
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
+import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
 import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { IconButtonFC } from '../../internal/functional-components/form-field/icon-button';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { IconFC } from '../../internal/functional-components/icon/component';
 import type { InputColorApi } from '../../internal/functional-components/input-color/api';
 import { inputColorPropsConfig } from '../../internal/functional-components/input-color/api';
 import {
@@ -46,17 +44,6 @@ import {
 } from '../../internal/props';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
-
-const renderIcon = (icon?: IconOrIconClass): JSX.Element | null => {
-	if (!icon) {
-		return null;
-	}
-	return typeof icon === 'string' ? (
-		<IconFC class="kol-input-container__icon" icons={icon} label="" />
-	) : (
-		<IconFC class="kol-input-container__icon" icons={icon.icon} label={icon.label ?? ''} style={icon.style} />
-	);
-};
 
 /**
  * The **Color** input type creates a selection field for defining any color. The color can be entered in hexadecimal, RGB, or HSL notation. It is possible to select a color via a picker or by entering exact color values.
@@ -203,16 +190,12 @@ export class KolInputColor
 	}
 
 	public render(): JSX.Element {
-		const icons = this.getRenderProp('icons');
-		const smartButton = this.getRenderProp('smartButton') as InternalButtonProps | undefined;
 		const disabled = this.getRenderProp('disabled');
-		const startAdornment = [renderIcon(icons.left)].filter(Boolean) as VNode[];
-		const endAdornment = [
-			typeof smartButton === 'object' && smartButton !== null ? (
-				<IconButtonFC componentName="button" class="kol-input-container__smart-button" {...smartButton} hideLabel={true} disabled={disabled} />
-			) : null,
-			renderIcon(icons.right),
-		].filter(Boolean) as VNode[];
+		const { startAdornment, endAdornment } = getInputAdornments({
+			icons: this.getRenderProp('icons'),
+			smartButton: this.getRenderProp('smartButton') as InternalButtonProps | undefined,
+			disabled,
+		});
 
 		return (
 			<Host>

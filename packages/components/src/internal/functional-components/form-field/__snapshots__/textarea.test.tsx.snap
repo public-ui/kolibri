@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TextAreaFC renders a hidden label and descriptions 1`] = `
+<div><textarea aria-describedby="field-hint-nonce field-character-limit-hint-nonce" aria-label="Label" autocapitalize="off" autocorrect="off" class="kol-textarea" id="field-nonce"></textarea>
+</div>
+`;
+
+exports[`TextAreaFC renders native attributes 1`] = `
+<div><textarea autocapitalize="off" autocorrect="off" class="kol-textarea" id="field-nonce" maxlength="10" placeholder="Placeholder" rows="5" value="Value" style="resize: none;"></textarea>
+</div>
+`;
+
+exports[`TextAreaFC renders states and a touched error 1`] = `
+<div><textarea autocapitalize="off" autocorrect="off" class="kol-textarea kol-textarea--disabled kol-textarea--error kol-textarea--readonly kol-textarea--required kol-textarea--touched" disabled="" id="field-nonce" readonly="" required=""></textarea>
+</div>
+`;
+
+exports[`TextAreaFC renders the default 1`] = `
+<div><textarea autocapitalize="off" autocorrect="off" class="kol-textarea" id="field-nonce"></textarea>
+</div>
+`;

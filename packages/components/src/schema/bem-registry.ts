@@ -569,6 +569,9 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'align-bottom' | 'align-left' | 'align-right' | 'align-top'>;
 	};
+	'kol-textarea': {
+		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'readonly' | 'required' | 'success' | 'touched' | 'warning'>;
+	};
 	'kol-toolbar': {
 		elements: {
 			item: {
@@ -917,6 +920,9 @@ const BEM: KoliBriComponentsBemSchema = {
 			tab: { modifiers: null },
 		},
 		modifiers: new Set(['align-bottom', 'align-left', 'align-right', 'align-top']),
+	},
+	'kol-textarea': {
+		modifiers: new Set(['default', 'disabled', 'error', 'info', 'readonly', 'required', 'success', 'touched', 'warning']),
 	},
 	'kol-toolbar': {
 		elements: {
