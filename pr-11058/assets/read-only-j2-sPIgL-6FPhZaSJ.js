@@ -1,0 +1,1 @@
+import{it as e}from"./index-BPzngayv-Txq9MDHQ.js";var t=(t,n)=>{e(t,`_readOnly`,n)};export{t};
