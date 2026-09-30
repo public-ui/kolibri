@@ -1,5 +1,5 @@
-import { translate } from '../../i18n';
-import type { MaxLengthBehaviorPropType } from '../../schema';
+import { translate } from '../../../i18n';
+import type { MaxLengthBehaviorPropType } from '../../../schema';
 
 export const getCounterVisualText = (maxLengthBehavior: MaxLengthBehaviorPropType, maxLength: number | undefined, currentLength: number): string => {
 	if (typeof maxLength !== 'number') {

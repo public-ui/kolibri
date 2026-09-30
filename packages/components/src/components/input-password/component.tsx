@@ -7,70 +7,67 @@ import type {
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
 	IconsHorizontalPropType,
-	InputColorProps,
+	InputPasswordProps,
 	InputTypeOnDefault,
 	InternalButtonProps,
 	KolFocusOptions,
 	LabelWithExpertSlotPropType,
+	MaxLengthBehaviorPropType,
 	MsgPropType,
 	NamePropType,
 	ShortKeyPropType,
 	Stringified,
-	SuggestionsPropType,
 	SyncValueBySelectorPropType,
 	TooltipAlignPropType,
 	VariantClassNamePropType,
+	VisibilityTogglePropType,
 } from '../../schema';
-import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
+import { devHint } from '../../schema';
 
-import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
-import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { translate } from '../../i18n';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
+import { IconButtonFC } from '../../internal/functional-components/form-field/icon-button';
+import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
-import { SuggestionsFC } from '../../internal/functional-components/form-field/suggestions';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { InputColorApi } from '../../internal/functional-components/input-color/api';
-import { inputColorPropsConfig } from '../../internal/functional-components/input-color/api';
-import {
-	accessKeyProp,
-	autoCompleteProp,
-	horizontalIconsProp,
-	shortKeyProp,
-	smartButtonProp,
-	stringValueProp,
-	suggestionsProp,
-	variantProp,
-} from '../../internal/props';
+import type { InputPasswordApi } from '../../internal/functional-components/input-password/api';
+import { inputPasswordPropsConfig } from '../../internal/functional-components/input-password/api';
+import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
+import { visibilityToggleProp } from '../../internal/props';
 import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
+import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 
 /**
- * The **Color** input type creates a selection field for defining any color. The color can be entered in hexadecimal, RGB, or HSL notation. It is possible to select a color via a picker or by entering exact color values.
+ * The **Password** input type creates an input field for passwords. The input is masked with dot symbols.
  *
  * @slot - The label of the input field.
+ * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
-	tag: 'kol-input-color',
+	tag: 'kol-input-password',
 	styleUrls: {
 		default: './style.scss',
 	},
 	shadow: true,
 })
-export class KolInputColor
-	extends BaseFormFieldWebComponent<InputColorApi>
-	implements ClickableElement, FocusableElement, InputColorProps, WebComponentInterface<InputColorApi>
+export class KolInputPassword
+	extends BaseTextInputWebComponent<InputPasswordApi>
+	implements ClickableElement, FocusableElement, InputPasswordProps, WebComponentInterface<InputPasswordApi>
 {
-	@Element() protected readonly host?: HTMLKolInputColorElement;
-	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+	@Element() protected readonly host?: HTMLKolInputPasswordElement;
 
-	@State() public id = createUniqueId('input-color');
+	private readonly translateHidePassword = translate('kol-hide-password');
+	private readonly translateShowPassword = translate('kol-show-password');
+
+	@State() public id = createUniqueId('input-password');
 
 	@State() public inputHasFocus = false;
 
+	@State() public passwordVisible = false;
+
 	public constructor() {
 		super();
-		this.initFormAssociation('color', this._name);
+		this.initFormAssociation('password', this._name);
 	}
 
 	/**
@@ -101,10 +98,8 @@ export class KolInputColor
 	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
-		this.initRenderProps(inputColorPropsConfig);
-		// Without `_smartButton` no button is rendered, so the seeded default must not survive.
+		this.initRenderProps(inputPasswordPropsConfig);
 		this.unsetRenderProp('smartButton');
-
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
 		this.watchName(this._name);
@@ -124,97 +119,69 @@ export class KolInputColor
 		this.watchTooltipAlign(this._tooltipAlign);
 		this.watchVariant(this._variant);
 		this.watchIcons(this._icons);
-		this.watchAutoComplete(this._autoComplete);
-		this.watchSuggestions(this._suggestions);
-		this.watchValue(this._value);
+		// Unlike the watcher, loading gives no hint for `'on'` (#11054).
+		this.applyAutoComplete(this._autoComplete);
+		this.watchHasCounter(this._hasCounter);
+		this.watchMaxLengthBehavior(this._maxLengthBehavior);
+		this.initMaxLength(this._maxLength);
+		this.watchPattern(this._pattern);
+		this.watchPlaceholder(this._placeholder);
+		this.watchReadOnly(this._readOnly);
+		this.watchRequired(this._required);
+		this.watchVisibilityToggle(this._visibilityToggle);
+		this.initValue(this._value);
+		this.initHasValue();
 	}
 
 	public componentDidLoad(): void {
-		// Without a preset value the field takes the initial value of the native control (`#000000`).
-		if (!this._value && this.ctaRef) {
-			this._value = this.ctaRef.el?.value;
-		}
+		this.didLoadTextInput();
 	}
 
 	public disconnectedCallback(): void {
-		this.destroyFormField();
+		this.destroyTextInput();
 	}
 
 	// --- Event handling ---
 
-	/** The value is kept without a re-render: the native control already shows it. */
-	private readonly handleColorInput = (event: Event): void => {
-		const value = (event.target as HTMLInputElement).value;
-		this.setRenderProp('value', value);
-		if (this.ctaRef.el) {
-			this.ctaRef.el.value = value;
-		}
-		this.handleInput(event);
+	private readonly handleVisibilityToggle = (): void => {
+		this.passwordVisible = !this.passwordVisible;
+		this.ctaRef.el?.focus();
 	};
 
 	// --- Render ---
 
-	private getInputProps(): InputFCProps {
-		const id = this.id;
-		const name = this.getRenderProp('name');
-		const accessKey = this.getRenderProp('accessKey');
-		const shortKey = this.getRenderProp('shortKey');
-		const suggestions = this.getRenderProp('suggestions');
-		const { ariaDescribedBy, hasError } = this.getAria();
-
-		return {
-			id,
-			hideLabel: this.getRenderProp('hideLabel'),
-			label: this.getRenderProp('label'),
-			disabled: this.getRenderProp('disabled'),
-			name: name ? `${name}-color` : undefined,
-			...(accessKey ? { accessKey } : {}),
-			value: this.getRenderProp('value'),
-			autoComplete: this.getRenderProp('autoComplete'),
-			touched: this.getRenderProp('touched'),
-			msg: this.getRenderProp('msg'),
-			...(shortKey ? { 'aria-keyshortcuts': shortKey } : {}),
-			suggestions: suggestions.length > 0 ? ((<SuggestionsFC id={id} suggestions={suggestions} />) as VNode) : undefined,
-			class: 'kol-input-color__input kol-input-color__input--color',
-			onBlur: this.handleBlur,
-			onChange: this.handleChange,
-			onClick: this.handleClick,
-			onFocus: this.handleFocus,
-			onInput: this.handleColorInput,
-			onKeyDown: this.handleKeyDown,
-			ref: this.ctaRef,
-			type: 'color',
-			ariaDescribedBy,
-			'aria-invalid': hasError ? 'true' : undefined,
-		};
+	private getVisibilityToggle(): JSX.Element | null {
+		if (!this.getRenderProp('visibilityToggle')) {
+			return null;
+		}
+		return (
+			<IconButtonFC
+				componentName="button"
+				class="kol-input-password__password-toggle-button kol-input-container__smart-button"
+				data-testid="kol-input-password-toggle-button"
+				label={this.passwordVisible ? this.translateHidePassword : this.translateShowPassword}
+				buttonVariant="ghost"
+				onClick={this.handleVisibilityToggle}
+				icon={this.passwordVisible ? 'kolicon-eye-closed' : 'kolicon-eye'}
+				disabled={this._disabled}
+			/>
+		);
 	}
 
 	public render(): JSX.Element {
-		const disabled = this.getRenderProp('disabled');
-		const { startAdornment, endAdornment } = getInputAdornments({
-			icons: this.getRenderProp('icons'),
-			smartButton: this.getRenderProp('smartButton') as InternalButtonProps | undefined,
-			disabled,
-		});
+		const { startAdornment, endAdornment } = this.getTextInputAdornments(this.getVisibilityToggle() as VNode | null);
 
 		return (
 			<Host>
-				<FormFieldFC
-					{...this.getFormFieldProps({
-						class: 'kol-input-color',
-						accessKey: this.getRenderProp('accessKey') || undefined,
-						shortKey: this.getRenderProp('shortKey') || undefined,
-						variant: this.getRenderProp('variant'),
-					})}
-				>
+				<FormFieldFC {...this.getTextFormFieldProps('kol-input-password password')}>
 					<InputContainerFC
-						disabled={disabled}
+						disabled={this.getRenderProp('disabled')}
 						msg={this.getRenderProp('msg')}
 						touched={this.getRenderProp('touched')}
 						startAdornment={startAdornment}
 						endAdornment={endAdornment}
 					>
-						<InputFC {...this.getInputProps()} />
+						<InputFC {...this.getTextInputProps({}, { type: this.getRenderProp('visibilityToggle') && this.passwordVisible ? 'text' : 'password' })} />
 					</InputContainerFC>
 				</FormFieldFC>
 			</Host>
@@ -240,6 +207,16 @@ export class KolInputColor
 	 * Defines whether the input can be auto-completed.
 	 */
 	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+
+	/**
+	 * Shows a character counter for the input element.
+	 */
+	@Prop() public _hasCounter?: boolean = false;
+
+	/**
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
+	 */
+	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -281,6 +258,11 @@ export class KolInputColor
 	@Prop() public _label!: LabelWithExpertSlotPropType;
 
 	/**
+	 * Defines the maximum number of input characters.
+	 */
+	@Prop() public _maxLength?: number;
+
+	/**
 	 * Defines the properties for a message rendered as Alert component.
 	 */
 	@Prop() public _msg?: Stringified<MsgPropType>;
@@ -296,6 +278,28 @@ export class KolInputColor
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
+	 * Defines a validation pattern for the input field.
+	 */
+	@Prop() public _pattern?: string;
+
+	/**
+	 * Defines the placeholder for input field. To be shown when there's no value.
+	 */
+	@Prop() public _placeholder?: string;
+
+	/**
+	 * Makes the input element read only.
+	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _readOnly?: boolean = false;
+
+	/**
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _required?: boolean = false;
+
+	/**
 	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
 	 */
 	@Prop() public _shortKey?: ShortKeyPropType;
@@ -304,11 +308,6 @@ export class KolInputColor
 	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
 	 */
 	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
-
-	/**
-	 * Suggestions to provide for the input.
-	 */
-	@Prop() public _suggestions?: SuggestionsPropType;
 
 	/**
 	 * Selector for synchronizing the value with another input element.
@@ -330,19 +329,23 @@ export class KolInputColor
 	/**
 	 * Defines the value of the element.
 	 */
-	@Prop() public _value?: string;
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
 	@Prop() public _variant?: VariantClassNamePropType;
 
+	/**
+	 * Activates the show password button
+	 */
+	@Prop() public _visibilityToggle?: VisibilityTogglePropType = false;
+
 	// --- Watchers ---
 
 	@Watch('_accessKey')
 	public watchAccessKey(value?: string): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
-		validateAccessAndShortKey(value, this._shortKey);
+		this.applyAccessKey(value);
 	}
 
 	@Watch('_ariaDetails')
@@ -352,12 +355,20 @@ export class KolInputColor
 
 	@Watch('_autoComplete')
 	public watchAutoComplete(value?: AutoCompletePropType): void {
-		autoCompleteProp.apply(value, (v) => this.setRenderProp('autoComplete', v));
+		this.applyAutoComplete(value);
+		if (value === 'on') {
+			devHint(`[KolInputPassword] The 'autocomplete' option should not be set to "on" for a password input field`);
+		}
 	}
 
 	@Watch('_disabled')
 	public watchDisabled(value?: boolean): void {
 		this.applyDisabled(value);
+	}
+
+	@Watch('_hasCounter')
+	public watchHasCounter(value?: boolean): void {
+		this.applyHasCounter(value);
 	}
 
 	@Watch('_hideMsg')
@@ -377,7 +388,7 @@ export class KolInputColor
 
 	@Watch('_icons')
 	public watchIcons(value?: IconsHorizontalPropType): void {
-		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+		this.applyIcons(value);
 	}
 
 	@Watch('_infoPopover')
@@ -388,6 +399,16 @@ export class KolInputColor
 	@Watch('_label')
 	public watchLabel(value?: LabelWithExpertSlotPropType): void {
 		this.applyLabel(value);
+	}
+
+	@Watch('_maxLength')
+	public watchMaxLength(value?: number): void {
+		this.applyMaxLength(value);
+	}
+
+	@Watch('_maxLengthBehavior')
+	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.applyMaxLengthBehavior(value);
 	}
 
 	@Watch('_msg')
@@ -405,24 +426,34 @@ export class KolInputColor
 		this.applyOn(value);
 	}
 
+	@Watch('_pattern')
+	public watchPattern(value?: string): void {
+		this.applyPattern(value);
+	}
+
+	@Watch('_placeholder')
+	public watchPlaceholder(value?: string): void {
+		this.applyPlaceholder(value);
+	}
+
+	@Watch('_readOnly')
+	public watchReadOnly(value?: boolean): void {
+		this.applyReadOnly(value);
+	}
+
+	@Watch('_required')
+	public watchRequired(value?: boolean): void {
+		this.applyRequired(value);
+	}
+
 	@Watch('_shortKey')
 	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
-		validateAccessAndShortKey(this._accessKey, value);
+		this.applyShortKey(value);
 	}
 
 	@Watch('_smartButton')
 	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
-		if (value === undefined || value === null) {
-			this.unsetRenderProp('smartButton');
-		} else {
-			smartButtonProp.apply(value, (v) => this.setRenderProp('smartButton', v));
-		}
-	}
-
-	@Watch('_suggestions')
-	public watchSuggestions(value?: SuggestionsPropType): void {
-		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
+		this.applySmartButton(value);
 	}
 
 	@Watch('_syncValueBySelector')
@@ -442,12 +473,16 @@ export class KolInputColor
 
 	@Watch('_value')
 	public watchValue(value?: string): void {
-		stringValueProp.apply(value, (v) => this.setRenderProp('value', v));
-		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value'));
+		this.applyValue(value);
 	}
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+		this.applyVariant(value);
+	}
+
+	@Watch('_visibilityToggle')
+	public watchVisibilityToggle(value?: VisibilityTogglePropType): void {
+		visibilityToggleProp.apply(value, (v) => this.setRenderProp('visibilityToggle', v));
 	}
 }

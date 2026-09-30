@@ -250,4 +250,4 @@ const KOL_INPUT_TEXT_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-input-text', component: 'input-text', file: 'shadow.tsx', pinnedApi: KOL_INPUT_TEXT_PUBLIC_API });
+describePublicApiContract({ tag: 'kol-input-text', component: 'input-text', pinnedApi: KOL_INPUT_TEXT_PUBLIC_API, schemaInterface: 'InputTextProps' });
