@@ -1,0 +1,1 @@
+import{f as e,i as t}from"./variant-quote-Cuubd2oS-hODdDOzc.js";var n=t(`spellCheck`,void 0,e);export{n as t};
