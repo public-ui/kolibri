@@ -36,6 +36,7 @@ import { getFeatureFlag } from 'adopted-style-sheets';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import { getNumberValueType, parseInputNumberValue, remapNumberValue } from '../../internal/functional-components/form-field/number-value';
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { FormFieldLabelInfoPopoverProps } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
@@ -86,13 +87,7 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 	public async click(): Promise<void> {}
 
 	private setInitialValueType(value?: number | NumberString | null) {
-		if (this.controller.isNumberString(value)) {
-			this._initialValueType = 'NumberString';
-		} else if (typeof value === 'number' && !isNaN(value)) {
-			this._initialValueType = 'number';
-		} else {
-			this._initialValueType = 'null';
-		}
+		this._initialValueType = getNumberValueType(value);
 	}
 
 	/**
@@ -101,23 +96,18 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 	 * @private
 	 */
 	private remapValue(value?: number | null): number | NumberString | null {
-		if (value === undefined || value === null) {
-			return null;
-		} else if (this._initialValueType === 'NumberString') {
-			return String(value) as NumberString;
-		}
-		return value;
+		return remapNumberValue(value, this._initialValueType);
 	}
 
 	private readonly onInput = (event: InputEvent) => {
 		const newValue = this.ctaRef.el?.value;
-		this._value = this.remapValue(newValue === '' ? null : Number(newValue));
+		this._value = this.remapValue(parseInputNumberValue(newValue));
 		this.controller.onFacade.onInput(event, true, this._value);
 	};
 
 	private readonly onChange = (event: Event) => {
 		const newValue = this.ctaRef.el?.value;
-		const mappedValue = this.remapValue(newValue === '' ? null : Number(newValue));
+		const mappedValue = this.remapValue(parseInputNumberValue(newValue));
 		this.controller.onFacade.onChange(event, mappedValue);
 	};
 
@@ -188,7 +178,7 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 					this.ctaRef.el?.stepUp();
 					// Manually trigger onInput since stepUp() doesn't fire input events
 					const newValue = this.ctaRef.el?.value;
-					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
+					this._value = this.remapValue(parseInputNumberValue(newValue));
 					// Pass MouseEvent as Event - onInput handler accepts generic Event type
 					this.controller.onFacade.onInput(event, true, this._value);
 					// native number buttons also throw the change event on every click
@@ -218,7 +208,7 @@ export class KolInputNumber implements ClickableElement, FocusableElement, Input
 					this.ctaRef.el?.stepDown();
 					// Manually trigger onInput since stepDown() doesn't fire input events
 					const newValue = this.ctaRef.el?.value;
-					this._value = this.remapValue(newValue === '' ? null : Number(newValue));
+					this._value = this.remapValue(parseInputNumberValue(newValue));
 					// Pass MouseEvent as Event - onInput handler accepts generic Event type
 					this.controller.onFacade.onInput(event, true, this._value);
 					// native number buttons also throw the change event on every click

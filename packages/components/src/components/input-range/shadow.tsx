@@ -32,6 +32,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import KolSuggestionsFc from '../../functional-components/Suggestions';
+import { clampRangeValue, getNumberValueType } from '../../internal/functional-components/form-field/number-value';
 import type { FormFieldLabelInfoPopoverProps } from '../../schema';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -88,14 +89,7 @@ export class KolInputRange implements ClickableElement, FocusableElement, InputR
 	};
 
 	private getSanitizedFloatValue(value: string): number {
-		const floatValue = parseFloat(value);
-		if (this.state._max && floatValue > this.state._max) {
-			return this.state._max;
-		}
-		if (this.state._min && floatValue < this.state._min) {
-			return this.state._min;
-		}
-		return floatValue;
+		return clampRangeValue(value, this.state._min, this.state._max);
 	}
 
 	/**
@@ -209,11 +203,7 @@ export class KolInputRange implements ClickableElement, FocusableElement, InputR
 	}
 
 	private setInitialValueType(value?: number | NumberString) {
-		if (this.controller.isNumberString(value)) {
-			this._initialValueType = 'NumberString';
-		} else {
-			this._initialValueType = 'number';
-		}
+		this._initialValueType = getNumberValueType(value) === 'NumberString' ? 'NumberString' : 'number';
 	}
 
 	public render(): JSX.Element {
