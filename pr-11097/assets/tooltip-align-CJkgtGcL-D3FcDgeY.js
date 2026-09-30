@@ -1,0 +1,1 @@
+import"./index-DoSJ-Gvj-CLQvQWDu.js";import{f as e,i as t,y as n}from"./variant-quote-Cuubd2oS-CUzsj5Nu.js";import{t as r}from"./align-Coi3MuR6-DzNZp3ae.js";var i=t(`accessKey`,``,n),a=t(`hideLabel`,!1,e),o=t(`shortKey`,``,n);function s(e){let t=n(e);return r.includes(t)?t:`right`}var c=t(`tooltipAlign`,`right`,s,e=>r.includes(e));export{c as i,a as n,o as r,i as t};
