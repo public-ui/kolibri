@@ -1,1 +1,0 @@
-import{it as e}from"./index-gOqi0Da2-DDLTS-GP.js";var t=(t,n)=>{e(t,`_spellCheck`,n,{defaultValue:void 0})};export{t};
