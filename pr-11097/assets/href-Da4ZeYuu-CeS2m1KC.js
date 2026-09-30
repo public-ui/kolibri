@@ -1,1 +1,0 @@
-import{i as e,y as t}from"./variant-quote-Cuubd2oS-Dc-Kep9M.js";var n=e(`href`,``,t,e=>typeof e==`string`,{required:!0}),r=e(`href`,``,t,e=>typeof e==`string`);export{r as n,n as t};
