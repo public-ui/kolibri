@@ -1,5 +1,5 @@
 import type { KoliBriTableDataType, KoliBriTableHeaderCellWithLogic, KoliBriTableSelection, ToolbarItemsPropType } from '@public-ui/components';
-import { KolButton, KolDrawer, KolInputText, KolTableStateful, KolToolbar } from '@public-ui/react-v19';
+import { KolButton, KolDrawer, KolInputCheckbox, KolInputText, KolTableStateful, KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -75,44 +75,61 @@ function createDummyRow(id: number): DataRow {
 
 export const TableWithToolbar: FC = () => {
 	const [dataRows, setDataRows] = useState<DataRow[]>(DATA);
-	/** Schlüssel (`DataRow.id`) der ausgewählten Zeile, ohne Auswahl `null`. */
-	const [selectedKey, setSelectedKey] = useState<number | null>(null);
-	/** Solange ein Datensatz vorliegt, ist das Anlege-Formular geöffnet. */
+	/** Schlüssel (`DataRow.id`) aller ausgewählten Zeilen. */
+	const [selectedKeys, setSelectedKeys] = useState<number[]>([]);
+	const [isMultiple, setIsMultiple] = useState(false);
+	/** Solange ein Datensatz vorliegt, ist das Formular geöffnet; existiert seine ID bereits, wird bearbeitet. */
 	const [draft, setDraft] = useState<DataRow | null>(null);
+
+	const isEditing = draft !== null && dataRows.some((row) => row.id === draft.id);
 
 	const selection: KoliBriTableSelection = {
 		keyPropertyName: 'id',
 		label: (row) => `Zeile ${(row as DataRow).name} auswählen`,
-		multiple: false,
-		selectedKeys: selectedKey === null ? [] : [selectedKey],
+		multiple: isMultiple,
+		selectedKeys,
 	};
 
 	const handleSelectionChange = (_event: Event, selectedRows: KoliBriTableDataType[] | null) => {
-		const selectedRow = selectedRows?.[0] as DataRow | undefined;
-		setSelectedKey(selectedRow === undefined ? null : selectedRow.id);
+		setSelectedKeys((selectedRows ?? []).map((row) => (row as DataRow).id));
+	};
+
+	const handleSelectionModeSwitch = (_event: Event, value: unknown) => {
+		setIsMultiple(value === true);
+		/* Eine Mehrfachauswahl passt nicht in den Einzelauswahl-Modus. */
+		if (value !== true && selectedKeys.length > 1) {
+			setSelectedKeys([]);
+		}
 	};
 
 	const openAddDrawer = () => {
 		setDraft(createDummyRow(nextId(dataRows)));
 	};
 
-	const closeAddDrawer = () => {
+	const editSelectedRow = () => {
+		const selectedRow = dataRows.find((row) => row.id === selectedKeys[0]);
+		if (selectedRow !== undefined) {
+			setDraft({ ...selectedRow });
+		}
+	};
+
+	const closeDrawer = () => {
 		setDraft(null);
 	};
 
-	const addDraft = () => {
+	const saveDraft = () => {
 		if (draft !== null) {
-			setDataRows([...dataRows, draft]);
+			setDataRows((rows) => (isEditing ? rows.map((row) => (row.id === draft.id ? draft : row)) : [...rows, draft]));
 		}
 		setDraft(null);
 	};
 
-	const deleteSelectedRow = () => {
-		if (selectedKey === null) {
+	const deleteSelectedRows = () => {
+		if (selectedKeys.length === 0) {
 			return;
 		}
-		setDataRows(dataRows.filter((row) => row.id !== selectedKey));
-		setSelectedKey(null);
+		setDataRows(dataRows.filter((row) => !selectedKeys.includes(row.id)));
+		setSelectedKeys([]);
 	};
 
 	const toolbarItems: ToolbarItemsPropType = [
@@ -125,11 +142,18 @@ export const TableWithToolbar: FC = () => {
 		},
 		{
 			type: 'button',
+			_label: 'Bearbeiten',
+			_variant: 'secondary',
+			_disabled: selectedKeys.length !== 1,
+			_on: { onClick: editSelectedRow },
+		},
+		{
+			type: 'button',
 			_label: 'Löschen',
 			_icons: { left: { icon: 'kolicon-cross' } },
 			_variant: 'danger',
-			_disabled: selectedKey === null,
-			_on: { onClick: deleteSelectedRow },
+			_disabled: selectedKeys.length === 0,
+			_on: { onClick: deleteSelectedRows },
 		},
 	];
 
@@ -137,22 +161,39 @@ export const TableWithToolbar: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					Dieses Beispiel kombiniert eine Toolbar mit einer Tabelle: Über „Hinzufügen“ wird ein neuer Dummy-Datensatz in einem Formular erzeugt und über
-					„Anlegen“ in die Tabelle eingefügt. „Löschen“ entfernt die ausgewählte Zeile und ist erst aktiv, wenn eine Zeile ausgewählt ist.
+					Dieses Beispiel kombiniert eine Toolbar mit einer Tabelle: Ein Schalter wechselt zwischen Einzel- und Mehrfachauswahl. „Hinzufügen“ erzeugt einen
+					neuen Dummy-Datensatz in einem Formular und fügt ihn über „Anlegen“ ein. „Bearbeiten“ öffnet die ausgewählte Zeile im selben Formular, wenn genau eine
+					Zeile gewählt ist. „Löschen“ entfernt alle ausgewählten Zeilen und ist erst mit Auswahl aktiv.
 				</p>
 			</SampleDescription>
 
 			<section className="w-full">
 				<KolToolbar _label="Aktionen für die Tabelle" _items={toolbarItems} />
 
-				<KolDrawer _label="Eintrag hinzufügen" _align="right" _level={2} _open={draft !== null} _hasCloser _on={{ onClose: closeAddDrawer }}>
+				<KolInputCheckbox
+					className="block w-fit py-2"
+					_label="Mehrfachauswahl"
+					_variant="switch"
+					_checked={isMultiple}
+					_value={true}
+					_on={{ onInput: handleSelectionModeSwitch }}
+				/>
+
+				<KolDrawer
+					_label={isEditing ? 'Eintrag bearbeiten' : 'Eintrag hinzufügen'}
+					_align="right"
+					_level={2}
+					_open={draft !== null}
+					_hasCloser
+					_on={{ onClose: closeDrawer }}
+				>
 					{draft !== null && (
 						<div className="flex flex-col gap-4 py-4">
 							<KolInputText _label="Name" _value={draft.name} _on={{ onInput: (_event, value) => setDraft({ ...draft, name: String(value) }) }} />
 							<KolInputText _label="E-Mail" _value={draft.email} _on={{ onInput: (_event, value) => setDraft({ ...draft, email: String(value) }) }} />
 							<div className="flex flex-wrap gap-2">
-								<KolButton _label="Anlegen" _variant="primary" _on={{ onClick: addDraft }} />
-								<KolButton _label="Abbrechen" _variant="secondary" _on={{ onClick: closeAddDrawer }} />
+								<KolButton _label={isEditing ? 'Speichern' : 'Anlegen'} _variant="primary" _on={{ onClick: saveDraft }} />
+								<KolButton _label="Abbrechen" _variant="secondary" _on={{ onClick: closeDrawer }} />
 							</div>
 						</div>
 					)}

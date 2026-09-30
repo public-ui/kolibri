@@ -26,6 +26,7 @@ beforeAll(async () => {
 		import('@public-ui/components/dist/esm/kol-card.entry.js'),
 		import('@public-ui/components/dist/esm/kol-card-wc.entry.js'),
 		import('@public-ui/components/dist/esm/kol-drawer.entry.js'),
+		import('@public-ui/components/dist/esm/kol-input-checkbox.entry.js'),
 		import('@public-ui/components/dist/esm/kol-input-text.entry.js'),
 		import('@public-ui/components/dist/esm/kol-table-stateful.entry.js'),
 		import('@public-ui/components/dist/esm/kol-table-stateless.entry.js'),
