@@ -1,0 +1,212 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "48 changed – 0 of 48 approved, review pending",
+	"computedAt": "2026-09-30T12:38:31.770Z",
+	"pr": 11095,
+	"head": "8c5285a80747e616cc804ad94ca6e1681f3cc2a0",
+	"digest": "sha256:caf67458e117eb02fbe2f5cf5ed4603d5dd0dd0e212217eadb333a3a920df882",
+	"counts": {
+		"changes": 48,
+		"open": 48,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/input-range-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-range-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-range-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-range-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-range-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-range-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-range-basic-noColumns--label-small-range": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-range-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-range-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-range-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-range-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-range-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-range-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-range-basic-noColumns--label-small-range": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-range-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-range-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-range-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-range-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-range-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-range-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-range-basic-noColumns--label-small-range": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-range-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-range-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-range-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-range-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-range-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-range-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-range-basic-noColumns--label-small-range": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-range-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-range-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-range-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-range-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-range-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-range-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-range-basic-noColumns--label-small-range": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-range-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-range-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-range-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-range-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-range-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-range-basic-noColumns--label-small-range": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-range-basic-noColumns--hide-label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-range-basic-noColumns--label-access-key": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-range-basic-noColumns--label-black-bg": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-range-basic-noColumns--label-disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-range-basic-noColumns--label-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-range-basic-noColumns--label-short-key": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-range-basic-noColumns--label-small-range": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
