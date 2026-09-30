@@ -1,4 +1,5 @@
-import type { SimpleProp } from './helpers/factory';
+import type { NumberString } from '../../schema';
+import type { Prop } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeInputNumber } from './helpers/normalizers';
 
@@ -11,6 +12,6 @@ import { normalizeInputNumber } from './helpers/normalizers';
  *
  * @see https://html.spec.whatwg.org/multipage/input.html#attr-input-step
  */
-export type StepProp = SimpleProp<'step', number>;
+export type StepProp = Prop<'step', number | NumberString, number>;
 // The default is `undefined`: without a step the attribute is not rendered and the browser uses 1.
 export const stepProp = createPropDefinition<StepProp>('step', undefined as unknown as number, normalizeInputNumber);
