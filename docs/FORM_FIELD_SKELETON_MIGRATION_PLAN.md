@@ -142,6 +142,9 @@ G1.4 ─► G2.1 Props + CounterBehavior + TextAreaFC ─► G2.2 Basis + email 
   - `has-value` ist wie im Legacy-Code ein einfaches Feld ohne Re-Render (#11053).
   - Beim Laden werden Wert und Maximum ohne Zähler-Update übernommen, der Zähler wird in `componentDidLoad` gefüllt.
   - Icons und Smart-Button der Input-Container bildet `getInputAdornments()` (`form-field/adornments.tsx`) für alle migrierten Felder, auch für `kol-input-color`.
+- G2.3: `kol-input-password` auf `BaseTextInputWebComponent`, mit `visibilityToggle` und dem State `passwordVisible`. Der Kompatibilitätszweig `_variant === 'visibility-toggle'` (#10247) entfällt: Legacy verglich den bereits zu einem Array normalisierten `_variant` mit einem String, der Zweig griff also nie. Der G2.0-Snapshot pinnt das. `input-password/controller.ts` bleibt bis G2.4, weil `InputTextController` davon erbt.
+- G2.4: `kol-input-text` auf `BaseTextInputWebComponent`, mit `type` (auch als Root-Klasse), `spellCheck`, `suggestions`, Clear-Button bei `type="search"` und den fünf Selection-Methoden. `has-value` folgt hier wie bisher jeder Wertänderung. Mit dem Feld fällt die Controller-Kette `InputPasswordController → InputTextEmailController → InputTextController` weg.
+- G2.5: `kol-textarea` erbt direkt von `BaseFormFieldWebComponent` und komponiert das `CounterBehavior`; die drei Zähler-Watcher wiederholen die Einzeiler der Textbasis, eine dritte Basisebene ist nicht erlaubt. Übernommen werden die Zeilenberechnung von `_adjustHeight` (wächst nur, #11051), das `setTimeout` in `componentDidLoad` für `_rows` und `style.resize`; `spellCheck` wird wie bisher nicht gerendert (#10863). Mit dem Feld fallen `CounterDomUpdater`, `TextAreaStateWrapper` und das alte `inputs/TextArea` samt Adapter-Test weg.
 - `CounterBehavior` ersetzt `utils/counter-dom-updater.ts`; das direkte DOM-Update ohne Re-Render bleibt erhalten.
 - textarea erbt direkt von `BaseFormFieldWebComponent` und nutzt das CounterBehavior.
 - Risiken: Selection-API und `_type` search/url/tel von input-text; Clear-Button und Visibility-Toggle; Datalist-IDs; `_adjustHeight`/`_resize` bei textarea.
@@ -179,7 +182,7 @@ Gelöscht wird, sobald der letzte Import weg ist. Veröffentlichte Schema-Typen 
 
 | Zeitpunkt | Was gelöscht wird                                                                                                                                                               |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| nach G2   | `utils/counter-dom-updater.ts`, `InputPasswordController`, `InputTextEmailController`, `TextAreaStateWrapper`, alte `inputs/TextArea`                                           |
+| nach G2   | erledigt in G2: `utils/counter-dom-updater.ts`, `InputPasswordController`, `InputTextEmailController`, `InputTextController`, `TextAreaStateWrapper`, alte `inputs/TextArea`    |
 | nach G4   | Checkbox-/Radio-Controller inkl. `InputCheckboxRadioController`, `Checkbox`-/`RadioStateWrapper`, altes `FieldControl`, alte `inputs/Checkbox`/`inputs/Radio`, alte Radio-Utils |
 | nach G5   | `SelectStateWrapper`, `NativeSelect`/`NativeOption(List)`, `CustomSuggestions*`, `Suggestions`; `kol-select-wc` erst, wenn `pagination` das FC rendert                          |
 | final     | `@deprecated/input/*`, `input-adapter-leanup/`, `functional-component-wrappers/` inkl. `getRenderStates`, Adapter aus G1.3, alte FormField-/Input-FCs, `*Watches`-Interfaces    |
