@@ -29,8 +29,10 @@ permissions:
 
 jobs:
   deploy:
-    # Skip this job when the base clone URL may be different from the head clone URL.
-    # if: github.event.pull_request.head.repo.fork == false
+    # The GITHUB_TOKEN is read-only on fork pull requests, so pushing to gh-pages would fail with
+    # a 403. Secrets are unavailable on fork pull requests as well, so previews cannot be made
+    # to work from there.
+    if: github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
