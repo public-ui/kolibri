@@ -6,7 +6,7 @@ Stand: 27.09.2026, `@public-ui/components` 4.5.0-rc.0.
 
 ## Ausgangslage
 
-Keines der 14 Felder ist bisher migriert. Alle laufen noch auf dem Legacy-Stack:
+Vor der Migration lief keines der 14 Felder auf Skeleton. Der Legacy-Stack besteht aus:
 
 - Controller-Kette `AssociatedInputController → ControlledInputController → InputController → InputIconController → Feld-Controller`
 - State-Wrapper in `functional-component-wrappers/`, die die alten FCs in `functional-components/` rendern
@@ -92,7 +92,7 @@ Kein Produktivcode, Voraussetzung für alles. Die Gates greifen nur, wenn vorher
 
 ### G1 – Fundament + Pilot `kol-input-color` (#9673, #9577)
 
-Alle 14 Felder teilen Basis-Props, die Label/Hint/Msg-Hülle, die Formular-Anbindung und die Event-Logik. Das wird einmal gebaut und am dünnsten Feld geprüft, damit die Basisklasse an einem echten Fall entsteht. G1 besteht aus sechs PRs: G1.0 #11037, G1.1 #11038, G1.2 #11044, G1.3a #11045, G1.3b #11046 und G1.4.
+Alle 14 Felder teilen Basis-Props, die Label/Hint/Msg-Hülle, die Formular-Anbindung und die Event-Logik. Das wird einmal gebaut und am dünnsten Feld geprüft, damit die Basisklasse an einem echten Fall entsteht. G1 besteht aus sechs PRs: G1.0 #11037, G1.1 #11038, G1.2 #11044, G1.3a #11045, G1.3b #11046 und G1.4 #11049. Alle sind gemergt.
 
 ```
 G1.0 Testlücken ───────────────┬──────────────────────────────────────────────┐
@@ -155,7 +155,18 @@ G1.4 ─► G2.1 Props + CounterBehavior + TextAreaFC ─► G2.2 Basis + email 
 Drei parallele Spuren: a) number → range, b) date, c) file. Die Felder nutzen die Standard-Hülle, müssen aber ihren Wert umwandeln.
 
 - Eigene Input-Props für min/max/step; die vorhandenen Meter-Props (Defaults 0/100) passen nicht.
-- a) Step-Buttons und Feature-Flag `inputNumberButtons`; range mit zwei synchronen Inputs und Suggestions.
+- a) Step-Buttons und Feature-Flag `inputNumberButtons`; range mit zwei synchronen Inputs und Suggestions. G3a besteht aus vier PRs:
+
+  ```
+  G2.5 ─► G3a.0 Testlücken ─► G3a.1 Props + Zahlen-Helfer ─► G3a.2 number ─► G3a.3 range
+  ```
+
+  - G3a.0: Jest-Snapshots für min/max/step, `_value` als Zahl, `NumberString`, `null` und `0`, die Namen und die Breitenformel von range. Befunde, die die Migration 1:1 übernimmt: #10861 (range klemmt nicht bei einer Grenze 0), #11075 (range synchronisiert beim Ziehen nicht), #11076 (range übernimmt ohne `_value` den Browser-Mittelwert), #11077 (negative und Exponent-Strings werden verworfen), #11053 (`has-value` fehlt bei number für `0`).
+  - G3a.1: `inputMinProp`, `inputMaxProp`, `stepProp` und der Zahlenwert in `internal/props/` mit einer Normalisierung, die `validateNumber` 1:1 nachbildet; reine Hilfsfunktionen für den gemerkten Werttyp, das Parsen und die Klemmung von range; `getInputAdornments()` bekommt ein `startAdornment` vor dem linken Icon.
+  - G3a.2: `kol-input-number` erbt direkt von `BaseFormFieldWebComponent`. Die Step-Buttons bleiben native `<button>` und folgen bei jedem Render dem Flag `inputNumberButtons`.
+  - G3a.3: `kol-input-range` erbt direkt von `BaseFormFieldWebComponent`, mit zwei `InputFC` und dem Datalist neben dem Wrapper.
+  - Eine gemeinsame Basis für number und range gibt es nicht: number schreibt `_value` bei jedem `input`, range erst bei `change` und klemmt dabei.
+
 - b) Date↔ISO-Logik aus `input-date/controller.ts` in Hilfsfunktionen, alle 5 `_type`s, Zeitzonen.
 - c) FileList, Drag-&-Drop-Modifier, Browse-Button, übertragener Formularwert.
 - Zusätzliche Abnahme: `table-settings` pixelgleich; `reset()` bei date und file; Flag an und aus im Pixel-Gate.
@@ -201,7 +212,7 @@ Gelöscht wird, sobald der letzte Import weg ist. Veröffentlichte Schema-Typen 
 4. ~~`_on`: eine gemeinsame Callback-Prop oder typisiert pro Feld? (G1.1)~~ Entschieden: gemeinsam, alle Felder deklarieren `InputTypeOnDefault`.
 5. ~~SSR-Absturz von `attachInternals(undefined)` 1:1 übernehmen oder mit eigenem PR über einen Guard absichern? (G1.2)~~ Entschieden: 1:1 übernehmen, Fix als eigener PR nach G1.2 (#11034). Ursache ist nicht ein leeres `@Element()`: In mock-doc greift `instanceof Element` in `findHostWithShadowRoot` nicht. Betroffen sind im SSR die inneren `kol-button-wc`/`kol-popover-button-wc` und mit `serializeShadowRoot: 'scoped'` alle Legacy-Felder.
 6. ~~Verhaltensverträge in Jest oder in Playwright? (G0)~~ Entschieden: Playwright, siehe G0.
-7. Namen der Input-Props für min/max/step. (G3) Das Icons-Objekt heißt `horizontalIconsProp` (G1.1).
+7. ~~Namen der Input-Props für min/max/step. (G3)~~ Entschieden: `inputMinProp`, `inputMaxProp` und `stepProp`, analog zu `horizontalIconsProp` (G1.1).
 8. `kol-select-wc` als Übergangs-Tag behalten oder `pagination` direkt auf das FC umstellen? (G5)
 9. combobox und single-select: gemeinsame DD16-Basis oder `ListboxBehavior`? (G5)
 10. #10501 und #10617 vor oder nach der Migration fixen? (G5)
