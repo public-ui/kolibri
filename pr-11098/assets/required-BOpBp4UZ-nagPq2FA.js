@@ -1,1 +1,0 @@
-import{f as e,i as t}from"./variant-quote-Bi5NwsIp-BjsMwplG.js";var n=t(`readOnly`,!1,e),r=t(`required`,!1,e);export{r as n,n as t};
