@@ -14,6 +14,9 @@
 		"lint:eslint": "eslint src",
 		"lint:stylelint": "stylelint \"src/**/*.{css,scss}\"",
 		"lint:tsc": "tsc --noemit",
+		"test": "vitest run",
+		"test:unit": "vitest run",
+		"test:watch": "vitest",
 		"unused": "knip"
 	},
 	"dependencies": {
@@ -32,14 +35,19 @@
 		"zod": "4.4.3"
 	},
 	"devDependencies": {
+		"@testing-library/jest-dom": "7.0.1",
+		"@testing-library/react": "16.3.3",
 		"@types/react": "19.2.18",
 		"@types/react-dom": "19.2.5",
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"eslint": "9.39.5",
+		"happy-dom": "20.14.5",
 		"knip": "6.37.0",
 		"prettier": "3.9.9",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.15.0"
+		"shadow-dom-testing-library": "1.14.2",
+		"stylelint": "17.15.0",
+		"vitest": "4.1.11"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",
