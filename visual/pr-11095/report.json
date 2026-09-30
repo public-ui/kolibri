@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11095,
-	"head": "8c5285a80747e616cc804ad94ca6e1681f3cc2a0",
+	"head": "bd30276f4a303360260ee359ffb551479baeaed0",
 	"repository": "public-ui/kolibri",
-	"runId": 36713849232,
-	"generatedAt": "2026-09-30T12:38:31.289Z",
-	"digest": "sha256:caf67458e117eb02fbe2f5cf5ed4603d5dd0dd0e212217eadb333a3a920df882",
+	"runId": 36720659225,
+	"generatedAt": "2026-09-30T13:34:23.449Z",
+	"digest": "sha256:0687590b206e18ccf73275e834123865e5c8dcae42b67be5543cc8d1300cc794",
 	"baseline": {
 		"sha": "2a507eb573c8d9112018bda65c523f116269376b",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2871,
-		"changed": 48,
+		"unchanged": 2919,
+		"changed": 0,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 410,
-				"changed": 7,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:72c03c71a3c8ee4531fdb8aa069228b9e4c8da14c19be19fb7f6daea7c8309d5",
+			"digest": "sha256:246d9ca8e0e3afc5a98a0d196b19f347e6cf5e4d96d3eb200790d3c76bc144b2",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -1433,58 +1433,33 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--hide-label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:fb65ee4f02e27a154ad7da3eb1885fae8b767c429cf93f851be39661d75545e2",
-					"diffPixels": 560,
-					"diffRatio": 0.013006,
-					"expected": "test-tag-name-transformer/input-range-basic-noColumns--hide-label-error.expected.png",
-					"actual": "test-tag-name-transformer/input-range-basic-noColumns--hide-label-error.actual.png",
-					"diff": "test-tag-name-transformer/input-range-basic-noColumns--hide-label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b1121e0430ef244452ee6e8b5cab37143475d0ecf3891c48337acccb05cbf832"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-access-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:a5c18f2c1e67c355881679d3db5f176365befa742b397054c9a198745c79eb0f",
-					"diffPixels": 593,
-					"diffRatio": 0.017599,
-					"expected": "test-tag-name-transformer/input-range-basic-noColumns--label-access-key.expected.png",
-					"actual": "test-tag-name-transformer/input-range-basic-noColumns--label-access-key.actual.png",
-					"diff": "test-tag-name-transformer/input-range-basic-noColumns--label-access-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:85dda74e1dced561381109e60906d8bd8051295e0e4f3a238c77649b161d6791"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-black-bg",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:e5309d0f5bbc4992b4f3c97d1b89741ec2e2d7727cb6e9bd55a44293b420230d",
-					"diffPixels": 593,
-					"diffRatio": 0.011732,
-					"expected": "test-tag-name-transformer/input-range-basic-noColumns--label-black-bg.expected.png",
-					"actual": "test-tag-name-transformer/input-range-basic-noColumns--label-black-bg.actual.png",
-					"diff": "test-tag-name-transformer/input-range-basic-noColumns--label-black-bg.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:6374eedf16a9a736a0b04a5a8c6add74ad482dca49abbeaa6feaabb7d51a2bb8"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-disabled",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:eb555b0f0307503ed672bf24f008970f97be5d6a36aecce96b6e4b4ef527e697",
-					"diffPixels": 513,
-					"diffRatio": 0.015659,
-					"expected": "test-tag-name-transformer/input-range-basic-noColumns--label-disabled.expected.png",
-					"actual": "test-tag-name-transformer/input-range-basic-noColumns--label-disabled.actual.png",
-					"diff": "test-tag-name-transformer/input-range-basic-noColumns--label-disabled.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:285e920fd601ec3c78bbd098b4d81098c703b9138a0050c461b9cb7d34ed6034"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:042c043ca168342b8e8f9675b6bdca26b291a43b91f3ec57b8199d00048f5e08",
-					"diffPixels": 600,
-					"diffRatio": 0.010958,
-					"expected": "test-tag-name-transformer/input-range-basic-noColumns--label-error.expected.png",
-					"actual": "test-tag-name-transformer/input-range-basic-noColumns--label-error.actual.png",
-					"diff": "test-tag-name-transformer/input-range-basic-noColumns--label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:6bed99094e831cc22fc9a0e01f09fedbe4d8284a95ed8d2b4224e987024d5c3f"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-msg-default",
@@ -1512,25 +1487,15 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--label-short-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:48979036c558ecb3aaf3647e98196a9be3bc5aa3f3156d09d2c4b8805aa9dbc2",
-					"diffPixels": 593,
-					"diffRatio": 0.017599,
-					"expected": "test-tag-name-transformer/input-range-basic-noColumns--label-short-key.expected.png",
-					"actual": "test-tag-name-transformer/input-range-basic-noColumns--label-short-key.actual.png",
-					"diff": "test-tag-name-transformer/input-range-basic-noColumns--label-short-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:d30c12510cbcf5a44db7475b39a1e90026a1de343eb15e12e7485d812918be52"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-small-range",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:ea272b5201c3236a90c4da280f17b0c77828a5db5d02c461ef1f57f19233c609",
-					"diffPixels": 563,
-					"diffRatio": 0.013517,
-					"expected": "test-tag-name-transformer/input-range-basic-noColumns--label-small-range.expected.png",
-					"actual": "test-tag-name-transformer/input-range-basic-noColumns--label-small-range.actual.png",
-					"diff": "test-tag-name-transformer/input-range-basic-noColumns--label-small-range.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b3e5a03e91bfc3655181a0882e16c039da8220524b47b4e0588b8ab25cab8005"
 				},
 				{
 					"name": "input-text-access-short-key-noColumns--access-key-placeholder",
@@ -2611,13 +2576,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 410,
-				"changed": 7,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:ce30142eda3cf04cdcb06550de65218050b65a628a0f315c34e9db861a0bb467",
+			"digest": "sha256:4a422f171bec796111a6350c714dde030587b4515fbe0c01644108d0368d155e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4001,58 +3966,33 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--hide-label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:7c09df78826e4aa4827015fddc3826e40fc79fcadfb9185ee7e76435889886d5",
-					"diffPixels": 556,
-					"diffRatio": 0.012639,
-					"expected": "theme-bwst/input-range-basic-noColumns--hide-label-error.expected.png",
-					"actual": "theme-bwst/input-range-basic-noColumns--hide-label-error.actual.png",
-					"diff": "theme-bwst/input-range-basic-noColumns--hide-label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:9254e2cef27434d8484566ca9a33a7a2f95a09a6684c26cac8e0620f12c933ec"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-access-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:94eed7ee414674e10fec9a93719952d4cd86578d47fbacdb04d13797d120671d",
-					"diffPixels": 587,
-					"diffRatio": 0.017918,
-					"expected": "theme-bwst/input-range-basic-noColumns--label-access-key.expected.png",
-					"actual": "theme-bwst/input-range-basic-noColumns--label-access-key.actual.png",
-					"diff": "theme-bwst/input-range-basic-noColumns--label-access-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:16098317b095c40b4c95ad22dbe8eafd7194c282e2db5607f448cd75bd7778b1"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-black-bg",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:0c5f52d82342472da8de947ca01e68adb2965f6c3899daebc1b8e79385717dd7",
-					"diffPixels": 587,
-					"diffRatio": 0.011614,
-					"expected": "theme-bwst/input-range-basic-noColumns--label-black-bg.expected.png",
-					"actual": "theme-bwst/input-range-basic-noColumns--label-black-bg.actual.png",
-					"diff": "theme-bwst/input-range-basic-noColumns--label-black-bg.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:6e17e3bff2bd4eca10c9462fc598dc276b93786dfa5afbc0830c4a7b1892c59b"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-disabled",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:4718618a1d26657fd37c251c1d457aee40ec1d60eeb84b8c71d42950f6ff4ea8",
-					"diffPixels": 576,
-					"diffRatio": 0.017582,
-					"expected": "theme-bwst/input-range-basic-noColumns--label-disabled.expected.png",
-					"actual": "theme-bwst/input-range-basic-noColumns--label-disabled.actual.png",
-					"diff": "theme-bwst/input-range-basic-noColumns--label-disabled.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:29313bf7e94cdb7bc7e92bf66682a44afa0d62a35efc3b8fe69526391bf7c870"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:be66802128f4bb6828bfc84374c3d5121704d22b5487bc162af84233955508e3",
-					"diffPixels": 593,
-					"diffRatio": 0.01083,
-					"expected": "theme-bwst/input-range-basic-noColumns--label-error.expected.png",
-					"actual": "theme-bwst/input-range-basic-noColumns--label-error.actual.png",
-					"diff": "theme-bwst/input-range-basic-noColumns--label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:91f6cc736d7f50f00415872c7ad2d70872525f49ec30aa562740fa019eb8b040"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-msg-default",
@@ -4080,25 +4020,15 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--label-short-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:bf99b514e9c6d4033c21917f36b963397f9aeb0741c1ec4a596b455de0dede41",
-					"diffPixels": 587,
-					"diffRatio": 0.017918,
-					"expected": "theme-bwst/input-range-basic-noColumns--label-short-key.expected.png",
-					"actual": "theme-bwst/input-range-basic-noColumns--label-short-key.actual.png",
-					"diff": "theme-bwst/input-range-basic-noColumns--label-short-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:4581e81cdea392903b3c77c2d8339687ce2df7cf67ce7521173ce6e92b5e2655"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-small-range",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:7cd30d128b9ff657ce07ec1c3034d333dab0424b26265f1e2241e400b8219a3f",
-					"diffPixels": 557,
-					"diffRatio": 0.013373,
-					"expected": "theme-bwst/input-range-basic-noColumns--label-small-range.expected.png",
-					"actual": "theme-bwst/input-range-basic-noColumns--label-small-range.actual.png",
-					"diff": "theme-bwst/input-range-basic-noColumns--label-small-range.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:d451ed6fb86b4adc9a3e9af5cf905d92bb2252886e6779e98075b0b71596015e"
 				},
 				{
 					"name": "input-text-access-short-key-noColumns--access-key-placeholder",
@@ -5179,13 +5109,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 410,
-				"changed": 7,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:72c03c71a3c8ee4531fdb8aa069228b9e4c8da14c19be19fb7f6daea7c8309d5",
+			"digest": "sha256:246d9ca8e0e3afc5a98a0d196b19f347e6cf5e4d96d3eb200790d3c76bc144b2",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -6569,58 +6499,33 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--hide-label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:fb65ee4f02e27a154ad7da3eb1885fae8b767c429cf93f851be39661d75545e2",
-					"diffPixels": 560,
-					"diffRatio": 0.013006,
-					"expected": "theme-default/input-range-basic-noColumns--hide-label-error.expected.png",
-					"actual": "theme-default/input-range-basic-noColumns--hide-label-error.actual.png",
-					"diff": "theme-default/input-range-basic-noColumns--hide-label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b1121e0430ef244452ee6e8b5cab37143475d0ecf3891c48337acccb05cbf832"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-access-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:a5c18f2c1e67c355881679d3db5f176365befa742b397054c9a198745c79eb0f",
-					"diffPixels": 593,
-					"diffRatio": 0.017599,
-					"expected": "theme-default/input-range-basic-noColumns--label-access-key.expected.png",
-					"actual": "theme-default/input-range-basic-noColumns--label-access-key.actual.png",
-					"diff": "theme-default/input-range-basic-noColumns--label-access-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:85dda74e1dced561381109e60906d8bd8051295e0e4f3a238c77649b161d6791"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-black-bg",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:e5309d0f5bbc4992b4f3c97d1b89741ec2e2d7727cb6e9bd55a44293b420230d",
-					"diffPixels": 593,
-					"diffRatio": 0.011732,
-					"expected": "theme-default/input-range-basic-noColumns--label-black-bg.expected.png",
-					"actual": "theme-default/input-range-basic-noColumns--label-black-bg.actual.png",
-					"diff": "theme-default/input-range-basic-noColumns--label-black-bg.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:6374eedf16a9a736a0b04a5a8c6add74ad482dca49abbeaa6feaabb7d51a2bb8"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-disabled",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:eb555b0f0307503ed672bf24f008970f97be5d6a36aecce96b6e4b4ef527e697",
-					"diffPixels": 513,
-					"diffRatio": 0.015659,
-					"expected": "theme-default/input-range-basic-noColumns--label-disabled.expected.png",
-					"actual": "theme-default/input-range-basic-noColumns--label-disabled.actual.png",
-					"diff": "theme-default/input-range-basic-noColumns--label-disabled.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:285e920fd601ec3c78bbd098b4d81098c703b9138a0050c461b9cb7d34ed6034"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:042c043ca168342b8e8f9675b6bdca26b291a43b91f3ec57b8199d00048f5e08",
-					"diffPixels": 600,
-					"diffRatio": 0.010958,
-					"expected": "theme-default/input-range-basic-noColumns--label-error.expected.png",
-					"actual": "theme-default/input-range-basic-noColumns--label-error.actual.png",
-					"diff": "theme-default/input-range-basic-noColumns--label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:6bed99094e831cc22fc9a0e01f09fedbe4d8284a95ed8d2b4224e987024d5c3f"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-msg-default",
@@ -6648,25 +6553,15 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--label-short-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:48979036c558ecb3aaf3647e98196a9be3bc5aa3f3156d09d2c4b8805aa9dbc2",
-					"diffPixels": 593,
-					"diffRatio": 0.017599,
-					"expected": "theme-default/input-range-basic-noColumns--label-short-key.expected.png",
-					"actual": "theme-default/input-range-basic-noColumns--label-short-key.actual.png",
-					"diff": "theme-default/input-range-basic-noColumns--label-short-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:d30c12510cbcf5a44db7475b39a1e90026a1de343eb15e12e7485d812918be52"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-small-range",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:ea272b5201c3236a90c4da280f17b0c77828a5db5d02c461ef1f57f19233c609",
-					"diffPixels": 563,
-					"diffRatio": 0.013517,
-					"expected": "theme-default/input-range-basic-noColumns--label-small-range.expected.png",
-					"actual": "theme-default/input-range-basic-noColumns--label-small-range.actual.png",
-					"diff": "theme-default/input-range-basic-noColumns--label-small-range.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b3e5a03e91bfc3655181a0882e16c039da8220524b47b4e0588b8ab25cab8005"
 				},
 				{
 					"name": "input-text-access-short-key-noColumns--access-key-placeholder",
@@ -7747,13 +7642,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 410,
-				"changed": 7,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:82c51e1baf063ffdd6c2b02eddd2ef0d5e53048a81ec8db905cde839e3c55e3b",
+			"digest": "sha256:3994935a53674496ad89e5b25c47d5809573bf1f771248e893670c7a49714d5a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9137,58 +9032,33 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--hide-label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:5ba6feb2775fd3f24aad00cd65cc403054b8e6f9e95cef9e47f6a672a4415c26",
-					"diffPixels": 570,
-					"diffRatio": 0.017399,
-					"expected": "theme-desy/input-range-basic-noColumns--hide-label-error.expected.png",
-					"actual": "theme-desy/input-range-basic-noColumns--hide-label-error.actual.png",
-					"diff": "theme-desy/input-range-basic-noColumns--hide-label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:29c5b475a31d9c12d3ef4a5805783c0b06c46ed24b2e68fc917758d02fabeac8"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-access-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:8ead0e5b1e19e09e834785e31b610a2bde61efc58ba36032b19fc21b2e2c0ec5",
-					"diffPixels": 602,
-					"diffRatio": 0.026798,
-					"expected": "theme-desy/input-range-basic-noColumns--label-access-key.expected.png",
-					"actual": "theme-desy/input-range-basic-noColumns--label-access-key.actual.png",
-					"diff": "theme-desy/input-range-basic-noColumns--label-access-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:aa0ec8a4582465c6f342f9bf2092f8e2d1c522fb9fe211b40503fb69498d9ad0"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-black-bg",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:4d60724dedaa69c73819c08850d23d20635b4149a742a4e8ed6fbe32430f94a9",
-					"diffPixels": 602,
-					"diffRatio": 0.014453,
-					"expected": "theme-desy/input-range-basic-noColumns--label-black-bg.expected.png",
-					"actual": "theme-desy/input-range-basic-noColumns--label-black-bg.actual.png",
-					"diff": "theme-desy/input-range-basic-noColumns--label-black-bg.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:3b1419420d4d8a93b7f467e490f00252e85687bb5b6ca59ae2ffff64cbf31415"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-disabled",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:3af31bdfaeb34f7b16521c6688a230a763426eb5e2901920a7736e78f7bd4bfb",
-					"diffPixels": 576,
-					"diffRatio": 0.025641,
-					"expected": "theme-desy/input-range-basic-noColumns--label-disabled.expected.png",
-					"actual": "theme-desy/input-range-basic-noColumns--label-disabled.actual.png",
-					"diff": "theme-desy/input-range-basic-noColumns--label-disabled.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:254af559da43249ff7eaa08e8326129c6f7bb9a52c49fa22fe76cad518ba21eb"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:af0248f1422e6281e0e34cb48c33f1f0b86e1495290fc69c155857cb9dd4647a",
-					"diffPixels": 570,
-					"diffRatio": 0.012957,
-					"expected": "theme-desy/input-range-basic-noColumns--label-error.expected.png",
-					"actual": "theme-desy/input-range-basic-noColumns--label-error.actual.png",
-					"diff": "theme-desy/input-range-basic-noColumns--label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:90c3d4ca74af3071430438d386bb30d31686bef8635fd10f39c0c71ec5d81134"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-msg-default",
@@ -9216,25 +9086,15 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--label-short-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:c04508d1ecbfc2abf0a88546a8189e59140d797ccb55e1b599372120cb9c084e",
-					"diffPixels": 602,
-					"diffRatio": 0.026798,
-					"expected": "theme-desy/input-range-basic-noColumns--label-short-key.expected.png",
-					"actual": "theme-desy/input-range-basic-noColumns--label-short-key.actual.png",
-					"diff": "theme-desy/input-range-basic-noColumns--label-short-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:0c167ad4a2f8d9f422c5cbb209010f3ad2c10f2aa31f796d62d8315c6dbcea33"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-small-range",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:c06da8d4bf43bbcfd8aff0f60b2d4229929f21fbd3a42e17ef22aba866ee0331",
-					"diffPixels": 576,
-					"diffRatio": 0.0181,
-					"expected": "theme-desy/input-range-basic-noColumns--label-small-range.expected.png",
-					"actual": "theme-desy/input-range-basic-noColumns--label-small-range.actual.png",
-					"diff": "theme-desy/input-range-basic-noColumns--label-small-range.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:f59f8c616c5905e846d31fede944bdbf4bbf9a56f144708cfb528b81b89ed496"
 				},
 				{
 					"name": "input-text-access-short-key-noColumns--access-key-placeholder",
@@ -10315,13 +10175,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 410,
-				"changed": 7,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:7fbe070933f3c7f5904e41f83fdbeb41b737eeb55abe2e4db6c147a7a8724902",
+			"digest": "sha256:6bb52a608adb38c0a82f2ec772ac532308f4233d9b65b349c72af29f57848586",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11705,58 +11565,33 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--hide-label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:5e626d264a7c34f95cc6cdac8d0df1b0a78a3cd25d5890090ce3e1f3a6088954",
-					"diffPixels": 603,
-					"diffRatio": 0.012632,
-					"expected": "theme-ecl/input-range-basic-noColumns--hide-label-error.expected.png",
-					"actual": "theme-ecl/input-range-basic-noColumns--hide-label-error.actual.png",
-					"diff": "theme-ecl/input-range-basic-noColumns--hide-label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:ae00dd3b3136bfd758644c03cab1a5f61464066960b08cd45d781354616b2449"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-access-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:c2a593fe3ff1aacb570b4189bdced92eb60b18f8559415eaca04c5869f210e50",
-					"diffPixels": 631,
-					"diffRatio": 0.015321,
-					"expected": "theme-ecl/input-range-basic-noColumns--label-access-key.expected.png",
-					"actual": "theme-ecl/input-range-basic-noColumns--label-access-key.actual.png",
-					"diff": "theme-ecl/input-range-basic-noColumns--label-access-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:541f80bf04a021b1115240dda42c3973de46138fdb5473336c3645a42df9129b"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-black-bg",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:3714fe3f512d5ed5d8637880f340a04c41b24fdb6c6df414c3e198e18cfc25c9",
-					"diffPixels": 621,
-					"diffRatio": 0.010129,
-					"expected": "theme-ecl/input-range-basic-noColumns--label-black-bg.expected.png",
-					"actual": "theme-ecl/input-range-basic-noColumns--label-black-bg.actual.png",
-					"diff": "theme-ecl/input-range-basic-noColumns--label-black-bg.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:025e2f8d59f1d4783ee770ae9285a229aa024f4bc92e7966a863820f992b4d9f"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-disabled",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:a9984b6b38a636308f9a17ad9d6cb96a023dacd849ad250519a7ba30877d751c",
-					"diffPixels": 431,
-					"diffRatio": 0.010465,
-					"expected": "theme-ecl/input-range-basic-noColumns--label-disabled.expected.png",
-					"actual": "theme-ecl/input-range-basic-noColumns--label-disabled.actual.png",
-					"diff": "theme-ecl/input-range-basic-noColumns--label-disabled.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:f77a8a04f0e57017d71ef1efad923624007a3c1fcf99ef24464a55d086f5ce37"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:30898110c6393774279df34885b61c2a4ec0eb2fd369368623392309e5801cd2",
-					"diffPixels": 566,
-					"diffRatio": 0.008959,
-					"expected": "theme-ecl/input-range-basic-noColumns--label-error.expected.png",
-					"actual": "theme-ecl/input-range-basic-noColumns--label-error.actual.png",
-					"diff": "theme-ecl/input-range-basic-noColumns--label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:8f8b67b64d04ac8d5aa0d298a35d7432c3b78720ee5d17b4878199e6781f705f"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-msg-default",
@@ -11784,25 +11619,15 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--label-short-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:1c9ab7f3374157f46d94555df25ad83a64dcd250ac0dee17d9430d9f8a92c1a7",
-					"diffPixels": 631,
-					"diffRatio": 0.015321,
-					"expected": "theme-ecl/input-range-basic-noColumns--label-short-key.expected.png",
-					"actual": "theme-ecl/input-range-basic-noColumns--label-short-key.actual.png",
-					"diff": "theme-ecl/input-range-basic-noColumns--label-short-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:553f65ed2364c64c93461721509b431ad9374463de450979c8698c05eff9f324"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-small-range",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:8b729acb245be92c1aa9b177deb4e2853607af92c214e52ca7bd72491f5375dc",
-					"diffPixels": 600,
-					"diffRatio": 0.011447,
-					"expected": "theme-ecl/input-range-basic-noColumns--label-small-range.expected.png",
-					"actual": "theme-ecl/input-range-basic-noColumns--label-small-range.actual.png",
-					"diff": "theme-ecl/input-range-basic-noColumns--label-small-range.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:7f983488403072c66ed803f3a8cec4fb47e734af416d099a0e03c1ec5c0e11ec"
 				},
 				{
 					"name": "input-text-access-short-key-noColumns--access-key-placeholder",
@@ -12883,13 +12708,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 411,
-				"changed": 6,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6751f48b5420d44ce0817f49df2d622ac99fb936f7025e65d9f8543793b3b28f",
+			"digest": "sha256:0d7f08fb736c35ded155898e7c5c1932f7f185297f04f5fce7ecd7d712f47da4",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14273,36 +14098,21 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--hide-label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:65480682df4fc861910f6eead68ede2267820ed5c1f21b2b855f66a2979b4cfb",
-					"diffPixels": 548,
-					"diffRatio": 0.00952,
-					"expected": "theme-kern/input-range-basic-noColumns--hide-label-error.expected.png",
-					"actual": "theme-kern/input-range-basic-noColumns--hide-label-error.actual.png",
-					"diff": "theme-kern/input-range-basic-noColumns--hide-label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b82fddb6e9dba978ba639abfebe90bbc1feb803aff3cb11e05cef36bab2ba2ce"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-access-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:3d2fa683df9ccefb983e44c1412c8da8083668a5083260b1bd809958616bb090",
-					"diffPixels": 507,
-					"diffRatio": 0.012172,
-					"expected": "theme-kern/input-range-basic-noColumns--label-access-key.expected.png",
-					"actual": "theme-kern/input-range-basic-noColumns--label-access-key.actual.png",
-					"diff": "theme-kern/input-range-basic-noColumns--label-access-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:0dcf49c64d36e3f87819d3df766ba87a8cbcc85b2836b7289a8479cbf15cda96"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-black-bg",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:a4d33d441eed75d85c44ea96d663b44cff80cd72133f6a9e59a32175d1518b26",
-					"diffPixels": 579,
-					"diffRatio": 0.008965,
-					"expected": "theme-kern/input-range-basic-noColumns--label-black-bg.expected.png",
-					"actual": "theme-kern/input-range-basic-noColumns--label-black-bg.actual.png",
-					"diff": "theme-kern/input-range-basic-noColumns--label-black-bg.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:7b3744d1d427777aa91d48f209e42ff73f52cc74f0b39b9edfc0c5d5a8cb2f7d"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-disabled",
@@ -14312,14 +14122,9 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:aab95352afebe802579884fa5dcc0933a1dd5246af8273cbf588798c2e354290",
-					"diffPixels": 590,
-					"diffRatio": 0.00746,
-					"expected": "theme-kern/input-range-basic-noColumns--label-error.expected.png",
-					"actual": "theme-kern/input-range-basic-noColumns--label-error.actual.png",
-					"diff": "theme-kern/input-range-basic-noColumns--label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:d891a10bbb00f7f1a347de3c072404dd649ac5127ff291968dc008943ddf5a29"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-msg-default",
@@ -14347,25 +14152,15 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--label-short-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:0db666bf356fe491d2e7fced40f63e975ba017d6525601bc16b9711c4488da98",
-					"diffPixels": 507,
-					"diffRatio": 0.012172,
-					"expected": "theme-kern/input-range-basic-noColumns--label-short-key.expected.png",
-					"actual": "theme-kern/input-range-basic-noColumns--label-short-key.actual.png",
-					"diff": "theme-kern/input-range-basic-noColumns--label-short-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:aa110de5294064b8e1d971aeb968cb32aebd36302dc7728d36dd62c97eb82cf5"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-small-range",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:95c1e171ecd71998d2395f6a3259e6a6b6b767f86b28604a844e90ba2b3a14e2",
-					"diffPixels": 477,
-					"diffRatio": 0.00902,
-					"expected": "theme-kern/input-range-basic-noColumns--label-small-range.expected.png",
-					"actual": "theme-kern/input-range-basic-noColumns--label-small-range.actual.png",
-					"diff": "theme-kern/input-range-basic-noColumns--label-small-range.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:80c378e92afe29e7f08923c12f53fb9b645958c70b42f82c52775b519ad1b6e8"
 				},
 				{
 					"name": "input-text-access-short-key-noColumns--access-key-placeholder",
@@ -15446,13 +15241,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 410,
-				"changed": 7,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:18ea5ce695f1d62a6dc132ba05a5c66109664e81df0a99fff36dbbbeac9d9379",
+			"digest": "sha256:a49f9eb25f8f401ab7370360077634e0a78dbfafabd80b98cdff9aeeff8f2c8d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -16836,58 +16631,33 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--hide-label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:f8dc314e3652107386b1d4bd54f48af4ea94499e6fdf6ca57722a55389a5b150",
-					"diffPixels": 506,
-					"diffRatio": 0.012428,
-					"expected": "unstyled/input-range-basic-noColumns--hide-label-error.expected.png",
-					"actual": "unstyled/input-range-basic-noColumns--hide-label-error.actual.png",
-					"diff": "unstyled/input-range-basic-noColumns--hide-label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:30cdf88161be965eefeead31dbd32baa6a2a326ac763d988e2defcfd85958afe"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-access-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:4b4423866a5abe9fb4a21daf4027783028630961cb1a34b6725dd89f97d6aaf9",
-					"diffPixels": 579,
-					"diffRatio": 0.018745,
-					"expected": "unstyled/input-range-basic-noColumns--label-access-key.expected.png",
-					"actual": "unstyled/input-range-basic-noColumns--label-access-key.actual.png",
-					"diff": "unstyled/input-range-basic-noColumns--label-access-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:447f4aa63640c192c82961c3291bab3ec1f58349de01f44856676481c86dd186"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-black-bg",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:2230f49791632064e86aa1be5fc90ac69f323188f29eaa12a9584ccdcf7209b4",
-					"diffPixels": 539,
-					"diffRatio": 0.011182,
-					"expected": "unstyled/input-range-basic-noColumns--label-black-bg.expected.png",
-					"actual": "unstyled/input-range-basic-noColumns--label-black-bg.actual.png",
-					"diff": "unstyled/input-range-basic-noColumns--label-black-bg.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:b6704a9aa06beb746918e05a2ab4772bd690c6887ca5e9e1f67cc24f485e36ea"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-disabled",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:1a77681a602fdf138d23c4e9fb1d75f93d3bb315bc0fb630cd0ad214b1376be0",
-					"diffPixels": 579,
-					"diffRatio": 0.018745,
-					"expected": "unstyled/input-range-basic-noColumns--label-disabled.expected.png",
-					"actual": "unstyled/input-range-basic-noColumns--label-disabled.actual.png",
-					"diff": "unstyled/input-range-basic-noColumns--label-disabled.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:641223cee7b9e699580d456f06b44a631ae56adf7ac9096a3d1853bb4a6301a1"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-error",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:00831f9233c7e7b0da47ab94d91146a5701d73df5571ece6dc0294e41daffc1c",
-					"diffPixels": 506,
-					"diffRatio": 0.009919,
-					"expected": "unstyled/input-range-basic-noColumns--label-error.expected.png",
-					"actual": "unstyled/input-range-basic-noColumns--label-error.actual.png",
-					"diff": "unstyled/input-range-basic-noColumns--label-error.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:f0756ca01c774b5716c080fef7c1be5f8894a2191e19d531d2c2e0d5919a29f8"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-msg-default",
@@ -16915,25 +16685,15 @@
 				},
 				{
 					"name": "input-range-basic-noColumns--label-short-key",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:fa5806dd734499456b58e75fa2ea228b39d48822fde5da4a699254a873865a5c",
-					"diffPixels": 579,
-					"diffRatio": 0.018745,
-					"expected": "unstyled/input-range-basic-noColumns--label-short-key.expected.png",
-					"actual": "unstyled/input-range-basic-noColumns--label-short-key.actual.png",
-					"diff": "unstyled/input-range-basic-noColumns--label-short-key.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:4becdaa42f4af959176185c824dc13183a2d564aa65a50c95aafff5e50a5ef53"
 				},
 				{
 					"name": "input-range-basic-noColumns--label-small-range",
-					"route": "input-range/basic?noColumns",
-					"status": "changed",
-					"hash": "sha256:541a0b5fbf686794ebbfcac9d7157e0e9556c21e0be0e2a9f86777b4506df9ef",
-					"diffPixels": 512,
-					"diffRatio": 0.012575,
-					"expected": "unstyled/input-range-basic-noColumns--label-small-range.expected.png",
-					"actual": "unstyled/input-range-basic-noColumns--label-small-range.actual.png",
-					"diff": "unstyled/input-range-basic-noColumns--label-small-range.diff.png"
+					"route": "input-range-basic-noColumns",
+					"status": "unchanged",
+					"hash": "sha256:2c6aed8fb5d315ed1c50aabf7835acc89f84e765d851b17895f8409b7ddd1e12"
 				},
 				{
 					"name": "input-text-access-short-key-noColumns--access-key-placeholder",
