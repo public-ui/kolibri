@@ -77,6 +77,13 @@
 			}
 		}
 
+		&__tablist {
+			display: flex;
+
+			flex-direction: var(--button-group-flex-direction);
+			flex-wrap: wrap;
+		}
+
 		&__panel {
 			height: 100%;
 		}

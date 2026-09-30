@@ -25,6 +25,11 @@
 			}
 		}
 
+		&__tablist {
+			display: flex;
+			gap: to-rem(20);
+		}
+
 		.kol-button {
 			color: var(--color-blue-100);
 			background: transparent;

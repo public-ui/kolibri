@@ -47,6 +47,11 @@
 			}
 		}
 
+		&__tablist {
+			display: flex;
+			gap: var(--kern-metric-space-small);
+		}
+
 		&__content {
 			padding-top: var(--kern-metric-space-large);
 		}

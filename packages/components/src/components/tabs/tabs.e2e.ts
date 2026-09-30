@@ -118,6 +118,30 @@ test.describe('kol-tabs', () => {
 			await createButton.click();
 			await expect(eventPromise).resolves.toBeUndefined();
 		});
+
+		test('should render the create button next to the tablist, not inside it', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button></kol-tabs>`);
+			const tablist = page.locator('kol-tabs [role="tablist"]');
+			await expect(tablist.locator('.kol-tabs__button-create')).toHaveCount(0);
+			await expect(tablist.getByRole('tab')).toHaveCount(TABS.length);
+			await expect(tablist.locator('button')).toHaveCount(TABS.length);
+			await expect(page.locator('kol-tabs .kol-tabs__button-group > .kol-tabs__button-create')).toHaveCount(1);
+		});
+
+		test('should reach the create button with the Tab key and not change the selection with arrow keys', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button>
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			await kolTabs.getByRole('tab', { name: 'First tab' }).focus();
+			await page.keyboard.press('Tab');
+			const createButton = page.locator('kol-tabs .kol-tabs__button-create button');
+			await expect(createButton).toBeFocused();
+			await page.keyboard.press('ArrowRight');
+			await expect(kolTabs.getByRole('tab', { name: 'First tab' })).toHaveAttribute('aria-selected', 'true');
+			await expect(createButton).toBeFocused();
+		});
 	});
 
 	test('after click only 1 tab has selected class', async ({ page }) => {

@@ -101,7 +101,7 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 				this.cleanupAutoPositioning = undefined;
 			}
 		}
-		getDocument().removeEventListener('keyup', this.hideTooltipByEscape);
+		getDocument().removeEventListener('keydown', this.hideTooltipByEscape);
 	}
 
 	public setTooltipElementRef = (el?: HTMLElement): void => {
@@ -125,7 +125,7 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 			this.cleanupAutoPositioning();
 			this.cleanupAutoPositioning = undefined;
 		}
-		getDocument().removeEventListener('keyup', this.hideTooltipByEscape);
+		getDocument().removeEventListener('keydown', this.hideTooltipByEscape);
 	}
 
 	private isNewVisit(): boolean {

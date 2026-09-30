@@ -22,6 +22,8 @@ jobs:
                 'This PR needs a "release:*" label (e.g. release:feature, release:fix, ' +
                   'release:improvement, release:engineering, or release:ignore) so it is ' +
                   'categorized correctly in the changelog. ' +
+                  'A label matching the PR title is set automatically and can be adjusted by ' +
+                  'maintainers. ' +
                   'See .github/release.yml for the available categories.',
               );
             }
