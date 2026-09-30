@@ -566,6 +566,9 @@ export type KoliBriComponentsBemSchema = {
 			tab: {
 				modifiers: null;
 			};
+			tablist: {
+				modifiers: null;
+			};
 		};
 		modifiers: Set<'align-bottom' | 'align-left' | 'align-right' | 'align-top'>;
 	};
@@ -918,6 +921,7 @@ const BEM: KoliBriComponentsBemSchema = {
 			'button-group': { modifiers: null },
 			content: { modifiers: null },
 			tab: { modifiers: null },
+			tablist: { modifiers: null },
 		},
 		modifiers: new Set(['align-bottom', 'align-left', 'align-right', 'align-top']),
 	},
