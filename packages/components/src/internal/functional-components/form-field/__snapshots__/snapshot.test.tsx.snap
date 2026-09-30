@@ -103,6 +103,15 @@ exports[`FormFieldFC renders a hidden message 1`] = `
   <div class="kol-form-field__input">
     <input type="text">
   </div>
+  <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="field-msg-nonce">
+    <span class="visually-hidden">
+      kol-error
+    </span>
+    <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+    <div class="kol-alert__content">
+      Error
+    </div>
+  </div>
 </div>
 `;
 

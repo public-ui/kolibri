@@ -507,8 +507,17 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <input aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+            <input aria-describedby="input-text-msg-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
           </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="input-text-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </div>
@@ -572,7 +581,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <input aria-describedby="input-text-msg-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-text-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" spellcheck="" type="text" value="Value">
           </div>
         </div>
       </div>

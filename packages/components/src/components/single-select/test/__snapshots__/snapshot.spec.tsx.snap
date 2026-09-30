@@ -490,7 +490,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
             <div class="kol-single-select__group">
-              <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-invalid="true" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
+              <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-describedby="single-select-msg-nonce" aria-expanded="false" aria-invalid="true" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
@@ -511,6 +511,15 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="single-select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </div>
@@ -595,7 +604,7 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <div class="kol-single-select__group">
-              <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-describedby="single-select-msg-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
+              <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
