@@ -30,6 +30,9 @@ permissions:
 
 jobs:
   build-and-deploy:
+    # Fork pull requests never receive id-token, OIDC or secrets, so attestation and the Vercel
+    # deploy cannot succeed there; the workspace build is already covered by `build-and-check`.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork == false
     runs-on: ubuntu-latest
     env:
       PNPM_CACHE_FOLDER: .pnpm
