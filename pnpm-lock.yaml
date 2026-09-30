@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@evilmartians/lefthook':
-        specifier: 2.1.14
-        version: 2.1.14
+        specifier: 2.1.15
+        version: 2.1.15
       js-yaml:
         specifier: 5.4.2
         version: 5.4.2
@@ -3177,8 +3177,8 @@ packages:
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@evilmartians/lefthook@2.1.14':
-    resolution: {integrity: sha512-kaj3I6cl5jNxjD1T1ewpjjLaeqQdFwROdx5pWpiQzOEUI3ra/Kj6nS6x1wPucesGbXwAIx2vshCQbkC9OjJVLw==}
+  '@evilmartians/lefthook@2.1.15':
+    resolution: {integrity: sha512-kQ48la0HnBVS1i8+YPvFip+irAfAMER5vOtMYvg8Ez42EfbfS6E67I85iD1lLp3YzRA3DzFqzh/8KS/5ZCy+hA==}
     cpu: [x64, arm64, ia32]
     os: [darwin, linux, win32]
     hasBin: true
@@ -15729,7 +15729,7 @@ snapshots:
       '@eslint/core': 0.17.0
       levn: 0.4.1
 
-  '@evilmartians/lefthook@2.1.14': {}
+  '@evilmartians/lefthook@2.1.15': {}
 
   '@fastify/ajv-compiler@4.0.6':
     dependencies:
