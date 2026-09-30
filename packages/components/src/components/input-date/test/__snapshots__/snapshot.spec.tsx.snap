@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`kol-input-date should render with _label="Label" _max="2025-12-31" _min="2025-01-01" _name="field" _value="2025-06-15" 1`] = `
+<kol-input-date _value="2025-06-15">
+  <template shadowrootmode="open">
+    <div class="date has-value kol-form-field kol-input-date">
+      <label class="kol-form-field__label" htmlfor="input-date-nonce" id="input-date-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-date-nonce" max="2025-12-31" min="2025-01-01" name="field" type="date" value="2025-06-15">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-date>
+`;
+
 exports[`kol-input-date should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01" _accessKey="V" 1`] = `
 <kol-input-date _placeholder="Hier steht ein Platzhaltertext" _value="2025-01-01">
   <template shadowrootmode="open">
@@ -521,6 +549,261 @@ exports[`kol-input-date should render with _label="Label" _name="field" _placeho
         <div class="kol-input-container">
           <div class="kol-input-container__container">
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-date-nonce" name="field" type="date" value="2025-01-01">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-date>
+`;
+
+exports[`kol-input-date should render with _label="Label" _name="field" _readOnly=true _required=true _value="2025-01-02" 1`] = `
+<kol-input-date _value="2025-01-02">
+  <template shadowrootmode="open">
+    <div class="date has-value kol-form-field kol-form-field--read-only kol-form-field--required kol-input-date">
+      <label class="kol-form-field__label" htmlfor="input-date-nonce" id="input-date-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+        <span aria-hidden="true" class="kol-form-field__label__read-only">
+          (kol-readonly)
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--readonly kol-input--required" id="input-date-nonce" name="field" readonly="" required="" type="date" value="2025-01-02">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-date>
+`;
+
+exports[`kol-input-date should render with _label="Label" _name="field" _step=1 _type="time" _value="03:04:05" 1`] = `
+<kol-input-date _value="03:04:05">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-date time">
+      <label class="kol-form-field__label" htmlfor="input-date-nonce" id="input-date-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-date-nonce" name="field" step="1" type="time" value="03:04:05">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-date>
+`;
+
+exports[`kol-input-date should render with _label="Label" _name="field" _type="date" _value="03:04" 1`] = `
+<kol-input-date _value="03:04">
+  <template shadowrootmode="open">
+    <div class="date kol-form-field kol-input-date">
+      <label class="kol-form-field__label" htmlfor="input-date-nonce" id="input-date-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-date-nonce" name="field" type="date">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-date>
+`;
+
+exports[`kol-input-date should render with _label="Label" _name="field" _type="date" _value="2025-01-02" 1`] = `
+<kol-input-date _value="2025-01-02">
+  <template shadowrootmode="open">
+    <div class="date has-value kol-form-field kol-input-date">
+      <label class="kol-form-field__label" htmlfor="input-date-nonce" id="input-date-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-date-nonce" name="field" type="date" value="2025-01-02">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-date>
+`;
+
+exports[`kol-input-date should render with _label="Label" _name="field" _type="datetime-local" _value="2025-01-02T03:04" 1`] = `
+<kol-input-date _value="2025-01-02T03:04">
+  <template shadowrootmode="open">
+    <div class="datetime-local has-value kol-form-field kol-input-date">
+      <label class="kol-form-field__label" htmlfor="input-date-nonce" id="input-date-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-date-nonce" name="field" type="datetime-local" value="2025-01-02T03:04">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-date>
+`;
+
+exports[`kol-input-date should render with _label="Label" _name="field" _type="month" _value="2025-01" 1`] = `
+<kol-input-date _value="2025-01">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-date month">
+      <label class="kol-form-field__label" htmlfor="input-date-nonce" id="input-date-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-date-nonce" name="field" type="month" value="2025-01">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-date>
+`;
+
+exports[`kol-input-date should render with _label="Label" _name="field" _type="time" _value="03:04" 1`] = `
+<kol-input-date _value="03:04">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-date time">
+      <label class="kol-form-field__label" htmlfor="input-date-nonce" id="input-date-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-date-nonce" name="field" type="time" value="03:04">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-date>
+`;
+
+exports[`kol-input-date should render with _label="Label" _name="field" _type="week" _value="2025-W01" 1`] = `
+<kol-input-date _value="2025-W01">
+  <template shadowrootmode="open">
+    <div class="has-value kol-form-field kol-input-date week">
+      <label class="kol-form-field__label" htmlfor="input-date-nonce" id="input-date-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-date-nonce" name="field" type="week" value="2025-W01">
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-date>
+`;
+
+exports[`kol-input-date should render with _label="Label" _name="field" _value=null 1`] = `
+<kol-input-date>
+  <template shadowrootmode="open">
+    <div class="date kol-form-field kol-input-date">
+      <label class="kol-form-field__label" htmlfor="input-date-nonce" id="input-date-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              Label
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-date-nonce" name="field" type="date">
           </div>
         </div>
       </div>
