@@ -2,7 +2,7 @@ import { KolInputEmailTag } from '../../../core/component-names';
 import type { InputEmailProps } from '../../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
-import { KolInputEmail } from '../shadow';
+import { KolInputEmail } from '../component';
 
 executeInputSnapshotTests<InputEmailProps>(
 	KolInputEmailTag,
