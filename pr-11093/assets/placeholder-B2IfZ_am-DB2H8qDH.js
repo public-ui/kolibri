@@ -1,0 +1,1 @@
+import{st as e}from"./index-BPzngayv-CGZX1d1w.js";var t=(t,n,r={})=>{e(t,`_placeholder`,n,r)};export{t};
