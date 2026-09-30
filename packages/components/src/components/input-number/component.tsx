@@ -266,7 +266,8 @@ export class KolInputNumber
 	/**
 	 * Props of the native `<input>`. The keys follow the order of the legacy state wrapper, and props
 	 * the legacy state only held once set are only passed when set: the rendered attributes keep their
-	 * order in the hydrate snapshot.
+	 * order in the hydrate snapshot. Unset numbers are `null`, like in the legacy state, so the first
+	 * render writes their empty value.
 	 */
 	private getInputProps(): InputFCProps {
 		const id = this.id;
@@ -284,14 +285,14 @@ export class KolInputNumber
 			// The name prop defaults to `''`; an unnamed field renders no `name` attribute.
 			name: this.getRenderProp('name') || undefined,
 			...(accessKey ? { accessKey } : {}),
-			value: this.getRenderProp('value'),
+			value: this.getRenderProp('value') ?? null,
 			required: this.getRenderProp('required'),
 			...(placeholder !== undefined ? { placeholder } : {}),
 			autoComplete: this.getRenderProp('autoComplete'),
 			readonly: this.getRenderProp('readOnly'),
-			min: this.getRenderProp('min'),
-			max: this.getRenderProp('max'),
-			step: this.getRenderProp('step'),
+			min: this.getRenderProp('min') ?? null,
+			max: this.getRenderProp('max') ?? null,
+			step: this.getRenderProp('step') ?? null,
 			touched: this.getRenderProp('touched'),
 			msg: this.getRenderProp('msg'),
 			...(shortKey ? { 'aria-keyshortcuts': shortKey } : {}),
