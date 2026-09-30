@@ -1,1 +1,0 @@
-import"./index-DoSJ-Gvj-C1Ud-o20.js";var e=[`left`,`right`],t=[`top`,`bottom`],n=[...e,...t];export{n as t};
