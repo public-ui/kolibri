@@ -114,6 +114,9 @@ export class KolInputRange
 
 	public componentWillLoad(): void {
 		this.initRenderProps(inputRangePropsConfig);
+		// The bounds start at the defaults of `_min` and `_max`, so an ignored invalid value keeps them (#11077).
+		this.setRenderProp('min', 0);
+		this.setRenderProp('max', 100);
 
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
@@ -209,11 +212,13 @@ export class KolInputRange
 			disabled: this.getRenderProp('disabled'),
 			name: undefined,
 			...(accessKey ? { accessKey } : {}),
-			value: this.getRenderProp('value'),
+			// Unset numbers are `null`, like in the legacy state: the first render then writes the empty value, and the
+			// range input takes the middle of its range, which `componentDidLoad` reads as the initial value.
+			value: this.getRenderProp('value') ?? null,
 			autoComplete: this.getRenderProp('autoComplete'),
-			min: this.getRenderProp('min'),
-			max: this.getRenderProp('max'),
-			step: this.getRenderProp('step'),
+			min: this.getRenderProp('min') ?? null,
+			max: this.getRenderProp('max') ?? null,
+			step: this.getRenderProp('step') ?? null,
 			touched: this.getRenderProp('touched'),
 			msg: this.getRenderProp('msg'),
 			...(shortKey ? { 'aria-keyshortcuts': shortKey } : {}),
