@@ -249,7 +249,8 @@ export class KolInputDate
 	/**
 	 * Props of the native `<input>`. The keys follow the order of the legacy state wrapper, and props
 	 * the legacy state only held once set are only passed when set: the rendered attributes keep their
-	 * order in the hydrate snapshot.
+	 * order in the hydrate snapshot. Like in the legacy state, an unset step is `null`, and a value or
+	 * bound is `null` only when it is set to `null`: the first render then writes the empty value.
 	 */
 	private getInputProps(): InputFCProps {
 		const id = this.id;
@@ -267,13 +268,13 @@ export class KolInputDate
 			name: this.getRenderProp('name') || undefined,
 			...(accessKey ? { accessKey } : {}),
 			type: this.getRenderProp('type'),
-			value: this.getRenderProp('value'),
+			value: this.getRenderProp('value') ?? (this._value === null ? null : undefined),
 			required: this.getRenderProp('required'),
 			autoComplete: this.getRenderProp('autoComplete'),
 			readonly: this.getRenderProp('readOnly'),
-			min: this.getRenderProp('min'),
-			max: this.getRenderProp('max'),
-			step: this.getRenderProp('step'),
+			min: this.getRenderProp('min') ?? (this._min === null ? null : undefined),
+			max: this.getRenderProp('max') ?? (this._max === null ? null : undefined),
+			step: this.getRenderProp('step') ?? null,
 			touched: this.getRenderProp('touched'),
 			msg: this.getRenderProp('msg'),
 			...(shortKey ? { 'aria-keyshortcuts': shortKey } : {}),
