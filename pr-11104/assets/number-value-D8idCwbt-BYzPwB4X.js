@@ -1,0 +1,1 @@
+import{s as e}from"./variant-quote-B21Wgc49-BUuIegSM.js";function t(t){return e(t)?`NumberString`:typeof t==`number`&&!isNaN(t)?`number`:`null`}function n(e,t){return e==null?null:t===`NumberString`?String(e):e}function r(e){return e===``?null:Number(e)}function i(e,t,n){let r=parseFloat(e);return n&&r>n?n:t&&r<t?t:r}export{n as i,t as n,r,i as t};
