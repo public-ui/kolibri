@@ -185,8 +185,17 @@ Drei parallele Spuren: a) number → range, b) date, c) file. Die Felder nutzen 
 
 Nur diese beiden nutzen den FieldControl-Stack statt InputContainer und teilen `InputCheckboxRadioController`.
 
-- Vorbereitungs-PR: `options`-Prop und `fillKeyOptionMap` ziehen aus `input-radio/controller.ts` nach `form-field/options.ts`; G5 braucht beides ebenfalls.
-- FieldControlFC einführen, `InputCheckboxRadioController` auflösen.
+- G4 besteht aus fünf PRs:
+
+  ```
+  G3 ─► G4.0 Testlücken ─► G4.1 options ─► G4.2 FieldControl-/Checkbox-/Radio-FCs + fieldset ─► G4.3 checkbox ─► G4.4 radio
+  ```
+
+  - G4.0: Snapshots für checkbox (ohne Namen, `_required`, `_value` als String und Objekt, eigene `_icons`, `_labelAlign: 'left'` mit `_hideLabel`, indeterminate als Switch) und radio (ausgewählte Option, ohne Namen, Gruppe `_disabled`, `_required`, `_hideLabel`, Option mit `hint`, Objektwert, Label als Zahl). e2e für die Pfeiltasten-Navigation von radio, `focus()`/`click()` sowie `getValue()`, den `onInput`-Wert `null` beim Abwählen (für `table-settings`) und das Löschen von `_indeterminate` bei checkbox. Befunde, die die Migration 1:1 übernimmt: #11114.
+  - G4.1: `options`-Prop und `fillKeyOptionMap` ziehen aus `input-radio/controller.ts` nach `form-field/options.ts`; G5 braucht beides ebenfalls.
+  - G4.2: FieldControlFC, CheckboxFC und RadioFC, dazu der `fieldset`-Wurzelknoten: `BemRootNodeFC` und `FormFieldFC` bekommen `component: 'div' | 'fieldset'`, das Label eine `legend`-Variante. Die alten FCs werden Adapter, damit Hydrate-Snapshot und Pixel-Gate die neuen sofort prüfen.
+  - G4.3 und G4.4: die beiden Felder erben direkt von `BaseFormFieldWebComponent`; `InputCheckboxRadioController` wird aufgelöst.
+
 - Risiken: Theme-SCSS der Checkbox (300 LOC, verschachtelte Varianten); `indeterminate` nur als Property; Formularwert bei checked/unchecked; Objektwerte, Tastatur- und Fokus-Navigation bei Radio.
 - Zusätzliche Abnahme: alle drei Checkbox-Varianten je Theme; Tastatur-E2E für Radio; `table-settings` pixelgleich.
 

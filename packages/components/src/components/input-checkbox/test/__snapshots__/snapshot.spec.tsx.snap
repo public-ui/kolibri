@@ -1,5 +1,173 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`kol-input-checkbox should render with _checked=true _icons={"checked":"codicon codicon-check"} _label="Label" _name="field" 1`] = `
+<kol-input-checkbox _checked="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-default">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
+              <i aria-hidden="true" class="codicon codicon-check kol-checkbox__icon kol-icon kol-icon__icon" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-checkbox>
+`;
+
+exports[`kol-input-checkbox should render with _checked=true _label="Label" _name="field" _value="yes" 1`] = `
+<kol-input-checkbox _checked="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-default">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="yes">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-checkbox>
+`;
+
+exports[`kol-input-checkbox should render with _checked=true _label="Label" _name="field" _value={"id":1} 1`] = `
+<kol-input-checkbox _checked="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-right kol-input-checkbox--variant-default">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="[object Object]">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-checkbox>
+`;
+
+exports[`kol-input-checkbox should render with _hideLabel=true _label="Label" _labelAlign="left" _name="field" 1`] = `
+<kol-input-checkbox>
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--hide-label kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--hide-label kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-default">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input aria-label="Label" autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <div class="kol-form-field__tooltip">
+            <div class="kol-tooltip__floating">
+              <div class="kol-tooltip__arrow"></div>
+              <span class="kol-span kol-tooltip__content" id="input-checkbox-label-nonce">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    Label
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-checkbox>
+`;
+
+exports[`kol-input-checkbox should render with _indeterminate=true _label="Label" _name="field" _variant="switch" 1`] = `
+<kol-input-checkbox _indeterminate="">
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--indeterminate kol-input-checkbox--label-align-right kol-input-checkbox--variant-switch">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--indeterminate kol-input-checkbox__field-control--variant-switch">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-switch">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-checkbox>
+`;
+
 exports[`kol-input-checkbox should render with _label="Label" _name="field" _placeholder="Hier steht ein Platzhaltertext" _checked=false _labelAlign="left" _accessKey="V" 1`] = `
 <kol-input-checkbox _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
@@ -4483,6 +4651,68 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
             <label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-default">
               <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-minus" role="presentation"></i>
               <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" indeterminate="" name="field" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-checkbox>
+`;
+
+exports[`kol-input-checkbox should render with _label="Label" _name="field" _required=true 1`] = `
+<kol-input-checkbox>
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-form-field--required kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-default">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-field-control--required kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--required kol-checkbox--variant-default">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--required" id="input-checkbox-nonce" name="field" required="" type="checkbox" value="true">
+            </label>
+          </div>
+          <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+            <span class="kol-field-control__label-text kol-span">
+              <span class="kol-span__container">
+                <span class="kol-span__label">
+                  Label
+                </span>
+                <span aria-hidden="true" class="kol-span__slot" hidden="">
+                  <slot name="expert"></slot>
+                </span>
+              </span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-input-checkbox>
+`;
+
+exports[`kol-input-checkbox should render with _label="Label" 1`] = `
+<kol-input-checkbox>
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-input-checkbox kol-input-checkbox--label-align-right kol-input-checkbox--variant-default">
+      <div class="kol-form-field__input">
+        <div class="kol-field-control kol-field-control--label-align-right kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
+          <div class="kol-field-control__input">
+            <label class="kol-checkbox kol-checkbox--variant-default">
+              <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-cross" role="presentation"></i>
+              <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="input-checkbox-nonce" type="checkbox" value="true">
             </label>
           </div>
           <label class="kol-field-control__label" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
