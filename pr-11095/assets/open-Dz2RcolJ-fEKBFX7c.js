@@ -1,0 +1,1 @@
+import{f as e,i as t}from"./variant-quote-Cuubd2oS-DmHFK6_S.js";var n=t(`open`,!1,e);export{n as t};
