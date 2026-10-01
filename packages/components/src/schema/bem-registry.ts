@@ -373,10 +373,10 @@ export type KoliBriComponentsBemSchema = {
 				modifiers: null;
 			};
 			input: {
-				modifiers: null;
+				modifiers: Set<'orientation-horizontal' | 'orientation-vertical'>;
 			};
 			label: {
-				modifiers: null;
+				modifiers: Set<'legend'>;
 			};
 			'label-text': {
 				modifiers: null;
@@ -400,6 +400,7 @@ export type KoliBriComponentsBemSchema = {
 			| 'msg-type-info'
 			| 'msg-type-success'
 			| 'msg-type-warning'
+			| 'radio'
 			| 'read-only'
 			| 'required'
 			| 'success'
@@ -426,6 +427,69 @@ export type KoliBriComponentsBemSchema = {
 			};
 		};
 		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'success' | 'warning'>;
+	};
+	'kol-field-control': {
+		elements: {
+			hint: {
+				modifiers: null;
+			};
+			input: {
+				modifiers: null;
+			};
+			label: {
+				modifiers: Set<'visually-hidden'>;
+			};
+			'label-text': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<
+			| 'default'
+			| 'disabled'
+			| 'error'
+			| 'hide-label'
+			| 'info'
+			| 'label-align-left'
+			| 'label-align-right'
+			| 'read-only'
+			| 'required'
+			| 'success'
+			| 'touched'
+			| 'warning'
+		>;
+	};
+	'kol-checkbox': {
+		elements: {
+			icon: {
+				modifiers: null;
+			};
+			input: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<
+			| 'checked'
+			| 'default'
+			| 'disabled'
+			| 'error'
+			| 'indeterminate'
+			| 'info'
+			| 'required'
+			| 'success'
+			| 'touched'
+			| 'variant-button'
+			| 'variant-default'
+			| 'variant-switch'
+			| 'warning'
+		>;
+	};
+	'kol-input-radio': {
+		elements: {
+			input: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'checked' | 'default' | 'disabled' | 'error' | 'info' | 'required' | 'success' | 'touched' | 'warning'>;
 	};
 	'kol-split-button': {
 		elements: {
@@ -815,8 +879,8 @@ const BEM: KoliBriComponentsBemSchema = {
 		elements: {
 			counter: { modifiers: null },
 			hint: { modifiers: null },
-			input: { modifiers: null },
-			label: { modifiers: null },
+			input: { modifiers: new Set(['orientation-horizontal', 'orientation-vertical']) },
+			label: { modifiers: new Set(['legend']) },
 			'label-text': { modifiers: null },
 			msg: { modifiers: null },
 			tooltip: { modifiers: null },
@@ -833,6 +897,7 @@ const BEM: KoliBriComponentsBemSchema = {
 			'msg-type-info',
 			'msg-type-success',
 			'msg-type-warning',
+			'radio',
 			'read-only',
 			'required',
 			'success',
@@ -851,6 +916,55 @@ const BEM: KoliBriComponentsBemSchema = {
 			'smart-button': { modifiers: null },
 		},
 		modifiers: new Set(['default', 'disabled', 'error', 'info', 'success', 'warning']),
+	},
+	'kol-field-control': {
+		elements: {
+			hint: { modifiers: null },
+			input: { modifiers: null },
+			label: { modifiers: new Set(['visually-hidden']) },
+			'label-text': { modifiers: null },
+		},
+		modifiers: new Set([
+			'default',
+			'disabled',
+			'error',
+			'hide-label',
+			'info',
+			'label-align-left',
+			'label-align-right',
+			'read-only',
+			'required',
+			'success',
+			'touched',
+			'warning',
+		]),
+	},
+	'kol-checkbox': {
+		elements: {
+			icon: { modifiers: null },
+			input: { modifiers: null },
+		},
+		modifiers: new Set([
+			'checked',
+			'default',
+			'disabled',
+			'error',
+			'indeterminate',
+			'info',
+			'required',
+			'success',
+			'touched',
+			'variant-button',
+			'variant-default',
+			'variant-switch',
+			'warning',
+		]),
+	},
+	'kol-input-radio': {
+		elements: {
+			input: { modifiers: null },
+		},
+		modifiers: new Set(['checked', 'default', 'disabled', 'error', 'info', 'required', 'success', 'touched', 'warning']),
 	},
 	'kol-split-button': {
 		elements: {
