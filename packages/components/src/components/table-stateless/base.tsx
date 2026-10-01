@@ -193,9 +193,18 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 
 	// --- Measurements ---
 
+	/**
+	 * Covers both axes: a theme may limit the height of the scroll container, so a table can overflow
+	 * vertically without overflowing horizontally. The base styling clips the vertical overflow, so
+	 * that axis only counts once a theme makes it scrollable.
+	 */
 	protected updateScrollbarState(): void {
 		if (this.scrollContainerElement) {
-			this.setState('hasScrollbar', this.scrollContainerElement.scrollWidth > this.scrollContainerElement.clientWidth);
+			const { clientHeight, clientWidth, scrollHeight, scrollWidth } = this.scrollContainerElement;
+			this.setState(
+				'hasScrollbar',
+				scrollWidth > clientWidth || (scrollHeight > clientHeight && ['auto', 'scroll'].includes(getComputedStyle(this.scrollContainerElement).overflowY)),
+			);
 		}
 	}
 
