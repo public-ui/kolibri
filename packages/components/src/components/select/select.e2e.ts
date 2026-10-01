@@ -195,4 +195,48 @@ test.describe(COMPONENT_NAME, () => {
 		},
 		variant: '_multiple',
 	});
+
+	test.describe('Value', () => {
+		test('getValue() returns the first option without _value and the given value otherwise', async ({ page }) => {
+			await setContentWithRetry(
+				page,
+				`<kol-select _label="Input" ${OPTIONS_ATTRIBUTE}></kol-select><kol-select _label="Input" _value="W" ${OPTIONS_ATTRIBUTE}></kol-select>`,
+			);
+			const values = await page.evaluate(async () => {
+				const [first, preset] = Array.from(document.querySelectorAll('kol-select'));
+				return [await first.getValue(), await preset.getValue()];
+			});
+			expect(values).toEqual(['N', 'W']);
+		});
+
+		test('getValue() returns an array with _multiple', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-select _label="Input" _multiple ${OPTIONS_ATTRIBUTE}></kol-select>`);
+			const component = page.locator(COMPONENT_NAME);
+			await component.evaluate((element: HTMLKolSelectElement) => {
+				element._value = ['S', 'E'];
+			});
+			await page.waitForChanges();
+			expect(await component.evaluate((element: HTMLKolSelectElement) => element.getValue())).toEqual(['S', 'E']);
+		});
+
+		test('selects the next option with ArrowDown and reports its value', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-select _label="Input" ${OPTIONS_ATTRIBUTE}></kol-select>`);
+			const component = page.locator(COMPONENT_NAME);
+			await component.evaluate((element: HTMLKolSelectElement) => {
+				element._on = {
+					onChange: (_event: Event, value?: unknown) => {
+						(window as unknown as { changed: unknown[] }).changed.push(value);
+					},
+				};
+				(window as unknown as { changed: unknown[] }).changed = [];
+			});
+
+			await page.locator('select').focus();
+			await page.keyboard.press('ArrowDown');
+			await page.waitForChanges();
+
+			expect(await page.evaluate(() => (window as unknown as { changed: unknown[] }).changed)).toEqual(['S']);
+			expect(await component.evaluate((element: HTMLKolSelectElement) => element.getValue())).toBe('S');
+		});
+	});
 });
