@@ -502,6 +502,12 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'required' | 'success' | 'touched' | 'warning'>;
 	};
+	'kol-custom-suggestions-option': {
+		modifiers: Set<'disabled'>;
+	};
+	'kol-custom-suggestions-options-group': {
+		modifiers: Set<'cursor-hidden' | 'open'>;
+	};
 	'kol-split-button': {
 		elements: {
 			button: {
@@ -983,6 +989,12 @@ const BEM: KoliBriComponentsBemSchema = {
 			option: { modifiers: new Set(['disabled', 'selected']) },
 		},
 		modifiers: new Set(['default', 'disabled', 'error', 'info', 'required', 'success', 'touched', 'warning']),
+	},
+	'kol-custom-suggestions-option': {
+		modifiers: new Set(['disabled']),
+	},
+	'kol-custom-suggestions-options-group': {
+		modifiers: new Set(['cursor-hidden', 'open']),
 	},
 	'kol-split-button': {
 		elements: {
