@@ -1,1 +1,0 @@
-import{ct as e}from"./index-DoSJ-Gvj-CKBEScDX.js";import{t}from"./align-Coi3MuR6-BL9fHRqC.js";var n=(n,r,i)=>{e(n,r,e=>typeof e==`string`&&t.includes(e),new Set(t),i,{defaultValue:`top`})},r=(e,t)=>{n(e,`_tooltipAlign`,t)};export{r as t};
