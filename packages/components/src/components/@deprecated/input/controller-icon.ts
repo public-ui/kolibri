@@ -20,15 +20,11 @@ export class InputIconController extends InputController implements Watches {
 		validateIcons(this.component, value);
 	}
 
-	public isNumberString(value: unknown): value is NumberString {
-		return isNumberString(value);
-	}
-
 	protected readonly parseToNumber = (value?: number | NumberString | null): number | null => {
 		if (typeof value === 'number') {
 			return isNaN(value) ? null : value;
 		}
-		if (this.isNumberString(value)) {
+		if (isNumberString(value)) {
 			return parseFloat(value);
 		}
 		return null;
