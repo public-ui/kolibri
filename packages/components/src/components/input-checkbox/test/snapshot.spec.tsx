@@ -2,7 +2,7 @@ import { KolInputCheckboxTag } from '../../../core/component-names';
 import type { InputCheckboxProps } from '../../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
-import { KolInputCheckbox } from '../shadow';
+import { KolInputCheckbox } from '../component';
 
 executeInputSnapshotTests<InputCheckboxProps>(KolInputCheckboxTag, [KolInputCheckbox], {
 	_checked: false,

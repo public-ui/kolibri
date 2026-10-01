@@ -171,4 +171,9 @@ const KOL_INPUT_CHECKBOX_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-input-checkbox', component: 'input-checkbox', file: 'shadow.tsx', pinnedApi: KOL_INPUT_CHECKBOX_PUBLIC_API });
+describePublicApiContract({
+	tag: 'kol-input-checkbox',
+	component: 'input-checkbox',
+	pinnedApi: KOL_INPUT_CHECKBOX_PUBLIC_API,
+	schemaInterface: 'InputCheckboxProps',
+});

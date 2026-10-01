@@ -32,7 +32,7 @@ import type { FormFieldBaseApi } from './api';
 import { getFormFieldAria } from './aria';
 import { type FormFieldFCProps, isLabelShownAsTooltip } from './component';
 
-type FormFieldExtras = Pick<FormFieldFCProps, 'counter' | 'maxLength' | 'readOnly' | 'required'> & {
+type FormFieldExtras = Pick<FormFieldFCProps, 'counter' | 'maxLength' | 'readOnly' | 'renderNoLabel' | 'renderNoTooltip' | 'required'> & {
 	/** Class of the field, e.g. `kol-input-color`, added to the `kol-form-field` root. */
 	class: string;
 	accessKey?: string;
@@ -254,10 +254,30 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	}
 
 	/**
+	 * Refs of the label tooltip for a field that renders it in its `FieldControlFC` instead of the
+	 * form field shell, together with `renderNoTooltip` for `getFormFieldProps`.
+	 */
+	protected getLabelTooltipRefs(): { refInput: (el?: HTMLDivElement) => void; refTooltip: (el?: HTMLDivElement) => void } {
+		return { refInput: this.setInputRef, refTooltip: this.setTooltipRef };
+	}
+
+	/**
 	 * Props of the form field shell around the native control. Call once per render: it also hands
 	 * label, alignment and badge to the label tooltip, or tears it down while the label is visible.
+	 * With `renderNoTooltip` the shell does not connect the tooltip; see `getLabelTooltipRefs`.
 	 */
-	protected getFormFieldProps({ class: classNames, accessKey, shortKey, variant, counter, maxLength, readOnly, required }: FormFieldExtras): FormFieldFCProps {
+	protected getFormFieldProps({
+		class: classNames,
+		accessKey,
+		shortKey,
+		variant,
+		counter,
+		maxLength,
+		readOnly,
+		renderNoLabel,
+		renderNoTooltip,
+		required,
+	}: FormFieldExtras): FormFieldFCProps {
 		const shared = this.shared;
 		const id = shared.getState('id');
 		const label = shared.getRenderProp('label');
@@ -293,7 +313,9 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 			tooltipAlign,
 			alert: this.showAsAlert(),
 			infoPopover: shared.getRenderProp('infoPopover'),
-			refInput: this.setInputRef,
+			renderNoLabel,
+			renderNoTooltip,
+			refInput: renderNoTooltip ? undefined : this.setInputRef,
 			refTooltip: this.setTooltipRef,
 		};
 	}

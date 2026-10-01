@@ -4,7 +4,6 @@ import KolInputFc, { type InputProps } from '../../functional-components/inputs/
 
 import SuggestionsFc from '../../functional-components/Suggestions';
 import {
-	type InputCheckboxStates,
 	type InputColorStates,
 	type InputEmailStates,
 	type InputFileStates,
@@ -18,15 +17,7 @@ import {
 import { getRenderStates } from '../_helpers/getRenderStates';
 
 type InputState =
-	| InputTextStates
-	| InputEmailStates
-	| InputPasswordStates
-	| InputNumberStates
-	| InputColorStates
-	| InputFileStates
-	| InputRangeStates
-	| InputCheckboxStates
-	| InputRadioStates;
+	InputTextStates | InputEmailStates | InputPasswordStates | InputNumberStates | InputColorStates | InputFileStates | InputRangeStates | InputRadioStates;
 
 export type InputStateWrapperProps = Partial<InputProps> & {
 	state: InputState;
@@ -64,8 +55,6 @@ function getInputProps(state: InputState, other: Partial<InputProps>, customSugg
 	if ('_max' in state) props.max = state._max;
 	if ('_step' in state) props.step = state._step;
 	if ('_multiple' in state) props.multiple = state._multiple;
-	if ('_checked' in state) props.checked = state._checked;
-	if ('_indeterminate' in state) props.indeterminate = state._indeterminate;
 	if ('_touched' in state) props.touched = state._touched;
 	if ('_msg' in state) props.msg = state._msg as MsgPropType;
 	if ('_shortKey' in state) props['aria-keyshortcuts'] = state._shortKey;
