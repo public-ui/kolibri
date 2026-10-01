@@ -1,0 +1,1 @@
+import"./index-qtnCHs4S-JmknAMPl.js";var e=[`left`,`right`],t=[`top`,`bottom`],n=[...e,...t];export{n as t};
