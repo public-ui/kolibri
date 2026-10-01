@@ -91,6 +91,12 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
   Prerequisites: repo setting **Allow auto-merge** enabled, green pipelines enforced via required
   status checks on `develop`, and the runner GitHub App listed in the branch-protection bypass
   (see [Enabling Renovate](#enabling-renovate)).
+- **`rebaseWhen: conflicted`** — Renovate rebases a branch only when it conflicts with `develop`, not
+  whenever `develop` has moved on. The `Required checks` rules do not demand an up-to-date branch
+  (`strict_required_status_checks_policy: false`), and a rebase restarts the CI for about 40 minutes.
+  With `behind-base-branch`, every merge into `develop` (by people or by the runner itself, which
+  merges one pull request per run) pushed all other green dependency pull requests behind and into a new
+  rebase, so they rarely met a run in which they were both green and up to date.
 - **`baseBranchPatterns`** — runs on `develop` **and** `release/3|2|1`; the maintenance branches are
   **security-only** (all regular npm and GitHub Actions updates are disabled) so released majors stay
   stable. Security PRs still automerge when non-major; major security updates require dashboard
