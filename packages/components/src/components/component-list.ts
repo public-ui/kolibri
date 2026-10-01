@@ -23,7 +23,7 @@ import { KolInputColor } from './input-color/component';
 import { KolInputDate } from './input-date/shadow';
 import { KolInputEmail } from './input-email/component';
 import { KolInputFile } from './input-file/shadow';
-import { KolInputNumber } from './input-number/shadow';
+import { KolInputNumber } from './input-number/component';
 import { KolInputPassword } from './input-password/component';
 import { KolInputRadio } from './input-radio/shadow';
 import { KolInputRange } from './input-range/shadow';

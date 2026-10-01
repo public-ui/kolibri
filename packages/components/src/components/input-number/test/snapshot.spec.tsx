@@ -2,7 +2,7 @@ import { KolInputNumberTag } from '../../../core/component-names';
 import type { InputNumberProps } from '../../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
-import { KolInputNumber } from '../shadow';
+import { KolInputNumber } from '../component';
 
 executeInputSnapshotTests<InputNumberProps>(
 	KolInputNumberTag,

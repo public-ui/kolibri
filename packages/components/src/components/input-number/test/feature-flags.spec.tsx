@@ -9,7 +9,7 @@ jest.mock('adopted-style-sheets', () => {
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { getFeatureFlag } from 'adopted-style-sheets';
-import { KolInputNumber } from '../shadow';
+import { KolInputNumber } from '../component';
 
 const getFeatureFlagMock = getFeatureFlag as jest.Mock;
 
