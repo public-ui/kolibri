@@ -11,7 +11,7 @@ This document is the outcome of issue [#10270](https://github.com/public-ui/koli
 > **Status:** The `renovate.json` and a self-hosted runner workflow
 > ([`.github/workflows/renovate.yml`](../.github/workflows/renovate.yml)) are committed as an
 > **exemplary, ready-to-run setup**. Renovate stays **idle** until that workflow runs — either on its
-> nightly schedule (every 3 hours between 18:00 and 06:00 Europe/Berlin) or via the manual
+> schedule (weekday nights, every 3 hours on weekends, Europe/Berlin) or via the manual
 > **Run workflow** button (see [Enabling Renovate](#enabling-renovate)).
 > Until then the existing Dependabot + npm-check-updates automation stays in charge.
 
@@ -61,28 +61,35 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
 
 ### Global behaviour
 
-- **`extends: ["config:recommended", "security:openssf-scorecard"]`** — sensible defaults plus
-  OpenSSF Scorecard badges on PRs.
+- **`extends: ["config:recommended", "security:minimumReleaseAgeNpm", "security:openssf-scorecard"]`** —
+  sensible defaults, a 3-day minimum release age for npm updates (see _Security first, everything else
+  weekly_ below) and OpenSSF Scorecard badges on PRs.
 - **Conventional Commits** — `chore(deps): …` titles so PRs pass `pr-title-validation.yml`.
 - **`labels: ["dependencies", "renovate", "release:engineering"]`** — the `release:*` label is
   **required** by `pr-release-label-validation.yml`; `release:engineering` files dependency PRs
   under _🔧 Engineering_ in the changelog (see `.github/release.yml`).
-- **Night-only cadence (18:00–06:00, every 3 hours)** — Renovate must not open PRs or automerge
-  during working hours. Two settings enforce this together:
-  - `renovate.json` → `"schedule": ["after 6pm", "before 6am"]` with `timezone: "Europe/Berlin"`.
-    The window crosses midnight, so it is written as **two** entries (Renovate ORs them); a single
-    `"after 6pm before 6am"` string would never match.
-  - the workflow cron `0 16,19,22,1,4 * * *`. GitHub cron only understands UTC, so these hours are
-    chosen to stay inside the local window all year: in CEST (UTC+2) they fire at 18/21/00/03/06
-    Berlin time, in CET (UTC+1) at 17/20/23/02/05. The one run that falls outside the window
-    (17:00 in winter, 06:00 in summer) starts Renovate but produces no PRs, because the
-    `renovate.json` schedule is the authoritative gate.
+- **Runner cadence** — the workflow runs on weekday nights (18:00, 21:00, 00:00, 03:00) and every
+  3 hours on weekends, Europe/Berlin (`timezone` of the cron entries), so scheduled runs never open or
+  merge PRs during working hours. What a run does depends on the update type, see the next item.
+- **Security first, everything else weekly** — there are more dependencies than CI and review
+  capacity, and most patch releases fix nothing that matters to KoliBri. Renovate therefore works
+  in two speeds:
+  - **Vulnerability fixes** (GitHub alerts and OSV) skip the line on **every** run: Renovate sorts
+    them before all other branches, ignores `schedule`, `prHourlyLimit` and `minimumReleaseAge` for
+    them and counts them against a budget of their own. `vulnerabilityAlerts.prConcurrentLimit: 0`
+    states that this budget is unlimited, so open regular PRs never hold a security fix back.
+  - **Regular updates** are only **created** on weekends (`"schedule": ["every weekend"]`, timezone
+    Europe/Berlin). Already open PRs keep being rebased and automerged on every run
+    (`updateNotScheduled` defaults to `true`), so the weekday nights finish what the weekend
+    started.
+  - `security:minimumReleaseAgeNpm` holds every regular npm update until the release is 3 days old.
+    Releases that are unpublished or fixed again within days never reach a PR, and freshly
+    published malware has time to be detected.
+  - Non-major updates are batched (see the first rows of the table below), so one weekly PR replaces
+    dozens of single-package PRs.
 
-  **Exception:** `vulnerabilityAlerts` keeps `"schedule": ["at any time"]`, so a manual
-  **Run workflow** during the day still ships security fixes.
-
-  `prConcurrentLimit: 5` / `prHourlyLimit: 5` cap the number of open PRs **per base branch** (so
-  `develop` and each `release/*` branch have their own budget).
+  `prConcurrentLimit: 5` / `prHourlyLimit: 5` cap the number of open regular PRs **per base branch**
+  (so `develop` and each `release/*` branch have their own budget).
 
 - **Automerge all non-major updates (merge commit)** — the first package rule enables `automerge` for
   `patch`/`minor`/`digest`/`pin`/lockfile updates; `automergeStrategy: merge` is the only method the
@@ -113,6 +120,8 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
 
 | Rule                                              | Effect                                                                                                                                                                                             |
 | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **devDependencies, minor + patch**                | One weekly PR _devDependencies (non-major)_ — they never reach consumers, CI is the safety net.                                                                                                    |
+| **dependencies, patch**                           | One weekly PR _dependencies (patch)_. Runtime minor updates keep one PR per package, because they ship to consumers.                                                                               |
 | **All majors**                                    | Require manual approval via the Dependency Dashboard — KoliBri pins majors deliberately.                                                                                                           |
 | **Angular `@angular/*`, `zone.js`, `ng-packagr`** | Major updates **disabled** entirely; within-major updates grouped per adapter folder (_Angular 20/21_). A new Angular major = a new adapter folder, never an auto-bump.                            |
 | **React `react`, `react-dom`, `@types/react*`**   | Major updates **disabled**; within-major React updates of the `react*` adapters grouped and automerged once green.                                                                                 |
@@ -122,6 +131,12 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
 | **`jest*`, `typescript`**                         | Majors/non-patch require approval.                                                                                                                                                                 |
 | **`github-actions`, `@types/*`**                  | Grouped; automerged like every other non-major update.                                                                                                                                             |
 | **Stylelint, Playwright**                         | Grouped into single PRs.                                                                                                                                                                           |
+
+Rules further down override the group name of the two batch rules, so the families listed below
+(Angular, React, Stencil, ESLint, Jest, Stylelint, Playwright, Vite, …) keep their own PRs. If a
+batch PR fails because of a single package, move that package out of the batch with a temporary
+`packageRules` entry carrying its own `groupName` (or `enabled: false`), so the rest of the batch
+can merge.
 
 > The pins above mirror exactly what the current `ncu:*` scripts exclude
 > (`@kern-ux/*`, `@stencil/*`, `@typescript-eslint/*`) and what `UPGRADEABLE_DEPENDENCIES.md`
@@ -142,8 +157,8 @@ Two ways to run it; **this repo is wired for Option A**.
 ### Option A — Self-hosted via GitHub Actions (committed in this repo)
 
 This repo ships [`.github/workflows/renovate.yml`](../.github/workflows/renovate.yml). It runs Renovate
-**every 3 hours during the night window 18:00–06:00 Europe/Berlin**
-(`0 16,19,22,1,4 * * *` UTC, see [Global behaviour](#global-behaviour)) **and** on demand via the **Run workflow** button
+**on weekday nights and every 3 hours on weekends, Europe/Berlin**
+(see [Global behaviour](#global-behaviour)) **and** on demand via the **Run workflow** button
 (`workflow_dispatch`, with an optional `dry_run` preview). It authenticates through the existing GitHub
 App (`APP_ID` / `PRIVATE_KEY` secrets, shared with _04 - Update pnpm Lock_).
 
@@ -311,6 +326,12 @@ fixierten Major-Version halten (`angular/v20|v21`, `react*`), sichere Updates au
 - **npm-check-updates** ist nur ein CLI ohne eigene Automatisierung (läuft heute im Workflow
   `auto-dependency-updater.yml`).
 
+**Security zuerst, alles andere wöchentlich:** Sicherheitsupdates (GitHub-Alerts und OSV) laufen bei
+jedem Lauf sofort und ohne Limit durch. Reguläre Updates entstehen nur noch am Wochenende, warten
+3 Tage nach dem Release (`security:minimumReleaseAgeNpm`) und werden gebündelt: alle Minor- und
+Patch-Updates der devDependencies in einem PR, alle Patch-Updates der Runtime-dependencies in einem
+weiteren. Offene PRs werden auch unter der Woche nachts weiter rebased und automatisch gemergt.
+
 Neu hinzugekommen: `automergeStrategy: merge` folgt der Merge-Commit-Konvention des Repos,
 und die `release/*`-Branches werden auf **Security-only** umgestellt — reguläre npm- und
 GitHub-Actions-Updates werden dort komplett deaktiviert, während Vulnerability-Alert-PRs
@@ -319,7 +340,7 @@ weiterhin (bei Nicht-Major) automatisch mergen.
 Die fertige [`renovate.json`](../renovate.json) liegt im Repo-Root (geprüft mit dem offiziellen
 `renovate-config-validator`), und der self-hosted Runner-Workflow
 [`.github/workflows/renovate.yml`](../.github/workflows/renovate.yml) ist ebenfalls committet.
-**Renovate läuft**, sobald der Workflow startet — nachts alle 3 Stunden zwischen 18:00 und 06:00 Uhr
+**Renovate läuft**, sobald der Workflow startet — werktags nachts und am Wochenende alle 3 Stunden
 (Europe/Berlin) per Zeitplan oder jederzeit manuell über den **Run workflow**-Button (Option A); alternativ kann ein Org-Admin die
 [Renovate-GitHub-App](https://github.com/apps/renovate) installieren (Option B). Bis dahin bleibt die
 bestehende Dependabot-/ncu-Automatisierung zuständig; danach greift die Migrations-Checkliste oben.
