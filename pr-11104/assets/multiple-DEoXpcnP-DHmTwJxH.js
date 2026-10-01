@@ -1,1 +1,0 @@
-import{it as e}from"./index-BPzngayv-BXBhw6m-.js";var t=(t,n,r)=>{e(t,`_multiple`,n,r)};export{t};
