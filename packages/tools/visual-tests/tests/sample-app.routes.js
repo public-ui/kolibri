@@ -21,7 +21,7 @@ export const ROUTES = new Map();
  *     content (skip-nav) and deliberate composition tests (scenarios/*, form/basic).
  *   - viewportSize:
  *     - width (Default: 800)
- *     - height (Default: 100)
+ *     - height (Default: 400)
  *   - waitForTimeout: number (Default: 15000)
  *
  * There is no per-route option for the reflow pass: blocks that should additionally be captured at
