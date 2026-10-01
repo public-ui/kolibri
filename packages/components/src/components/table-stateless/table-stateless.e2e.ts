@@ -248,6 +248,73 @@ test.describe('kol-table-stateless', () => {
 		await expect(table).toHaveAttribute('aria-labelledby', 'caption');
 		await expect(table.locator('caption')).toHaveText('Internal');
 	});
+
+	test.describe('Keyboard access to the scroll container', () => {
+		test('it keeps the caption out of the tab order when nothing overflows', async ({ page }) => {
+			await expect(page.locator('kol-table-stateless').locator('caption')).not.toHaveAttribute('tabindex');
+		});
+
+		const limitScrollContainerHeight = (element: HTMLKolTableStatelessElement) => {
+			const styleSheet = new CSSStyleSheet();
+			styleSheet.replaceSync('.kol-table__scroll-container { max-height: 60px; overflow: auto; }');
+			element.shadowRoot?.adoptedStyleSheets.push(styleSheet);
+		};
+
+		test('it makes the caption focusable when the table overflows only vertically', async ({ page }) => {
+			const kolTableStateless = page.locator('kol-table-stateless');
+			await kolTableStateless.evaluate(limitScrollContainerHeight);
+
+			const scrollContainer = kolTableStateless.locator('.kol-table__scroll-container');
+			await expect(kolTableStateless.locator('caption')).toHaveAttribute('tabindex', '0');
+			await expect(scrollContainer).toHaveAttribute('tabindex', '-1');
+			expect(await scrollContainer.evaluate((element) => element.scrollWidth <= element.clientWidth)).toBe(true);
+		});
+
+		test('it makes the scroll container focusable when the table overflows only vertically and is labelled externally', async ({ page }) => {
+			await page.locator('body').evaluate((body: HTMLBodyElement) => {
+				const external = document.createElement('span');
+				external.id = 'external-caption';
+				external.textContent = 'External Caption';
+				body.prepend(external);
+			});
+			const kolTableStateless = page.locator('kol-table-stateless');
+			await kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
+				(element as unknown as { _ariaLabelledby: string })._ariaLabelledby = 'external-caption';
+			});
+			await kolTableStateless.evaluate(limitScrollContainerHeight);
+
+			await expect(kolTableStateless.locator('.kol-table__scroll-container')).toHaveAttribute('tabindex', '0');
+		});
+
+		test('it makes the caption focusable when the table overflows only horizontally', async ({ page }) => {
+			const kolTableStateless = page.locator('kol-table-stateless');
+			await kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
+				element.style.width = '100px';
+			});
+
+			const scrollContainer = kolTableStateless.locator('.kol-table__scroll-container');
+			await expect(kolTableStateless.locator('caption')).toHaveAttribute('tabindex', '0');
+			expect(await scrollContainer.evaluate((element) => element.scrollHeight <= element.clientHeight)).toBe(true);
+		});
+
+		test('it keeps the caption out of the tab order when the vertical overflow is clipped', async ({ page }) => {
+			const kolTableStateless = page.locator('kol-table-stateless');
+			const scrollContainer = kolTableStateless.locator('.kol-table__scroll-container');
+			await kolTableStateless.evaluate((element: HTMLKolTableStatelessElement) => {
+				const styleSheet = new CSSStyleSheet();
+				styleSheet.replaceSync('.kol-table__scroll-container { max-height: 60px; }');
+				element.shadowRoot?.adoptedStyleSheets.push(styleSheet);
+			});
+
+			// The measurement runs in a ResizeObserver callback; two frames let it and the re-render settle.
+			await expect.poll(() => scrollContainer.evaluate((element) => element.scrollHeight > element.clientHeight)).toBe(true);
+			await page.evaluate(() => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+			await page.waitForChanges();
+
+			expect(await scrollContainer.evaluate((element) => getComputedStyle(element).overflowY)).toBe('hidden');
+			await expect(kolTableStateless.locator('caption')).not.toHaveAttribute('tabindex');
+		});
+	});
 });
 
 test.describe('kol-table-stateless with deprecated _header-cells prop', () => {

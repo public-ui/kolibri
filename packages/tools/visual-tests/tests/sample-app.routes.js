@@ -536,9 +536,6 @@ ROUTES.set('table/state-columns', {
 	},
 });
 ROUTES.set('table/with-footer', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 800,
@@ -555,9 +552,6 @@ ROUTES.set('table/with-pagination', {
 	},
 });
 ROUTES.set('table/pagination-position', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 800,
