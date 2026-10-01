@@ -3,7 +3,8 @@ name: Renovate
 # Self-hosted Renovate runner — see docs/RENOVATE.md.
 #
 # Triggers:
-#   - schedule:          weekday nights (18/21/00/03) and every 3 hours on weekends, Europe/Berlin.
+#   - schedule:          weekdays at 16:13/20:13/00:13/04:13 and every 4 hours on weekends,
+#                        Europe/Berlin.
 #                        Every run ships vulnerability fixes and rebases/automerges open PRs;
 #                        renovate.json ("every weekend") only lets the weekend runs create
 #                        regular update PRs.
