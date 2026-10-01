@@ -14,8 +14,8 @@ import type {
 } from '../../schema';
 import { validateMultiple, validateOptionsWithOptgroup, validateRequired, validateRows, watchJsonArrayString } from '../../schema';
 
+import { fillKeyOptionMap } from '../../internal/functional-components/form-field/options';
 import { InputIconController } from '../@deprecated/input/controller-icon';
-import { fillKeyOptionMap } from '../input-radio/controller';
 
 import type { Generic } from 'adopted-style-sheets';
 export class SelectController extends InputIconController implements SelectWatches {

@@ -11,8 +11,8 @@ import type {
 } from '../../schema';
 import { validateOptions, validatePlaceholder, validateRequired, watchBoolean, watchNumber, watchValidator } from '../../schema';
 
+import { fillKeyOptionMap } from '../../internal/functional-components/form-field/options';
 import { InputIconController } from '../@deprecated/input/controller-icon';
-import { fillKeyOptionMap } from '../input-radio/controller';
 
 import type { Generic } from 'adopted-style-sheets';
 
