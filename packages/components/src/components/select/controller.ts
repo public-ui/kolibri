@@ -15,6 +15,7 @@ import type {
 import { validateMultiple, validateOptionsWithOptgroup, validateRequired, validateRows, watchJsonArrayString } from '../../schema';
 
 import { fillKeyOptionMap } from '../../internal/functional-components/form-field/options';
+import { assertSelectValueMatchesMultiplicity, normalizeSelectValue } from '../../internal/functional-components/form-field/select-value';
 import { InputIconController } from '../@deprecated/input/controller-icon';
 
 import type { Generic } from 'adopted-style-sheets';
@@ -66,14 +67,9 @@ export class SelectController extends InputIconController implements SelectWatch
 				Array.isArray(value) && value.length > 0 ? (value as string[]) : [],
 				options as SelectOption<W3CInputValue>[],
 			);
-			if (this.component._multiple === false && selected.length === 0) {
-				nextState.set('_value', [
-					(
-						options[0] as {
-							value: string;
-						}
-					).value,
-				]);
+			const normalized = normalizeSelectValue(selected, options as SelectOption<StencilUnknown>[], this.component._multiple);
+			if (normalized !== selected) {
+				nextState.set('_value', normalized);
 			} else if (Array.isArray(value) && selected.length < value.length) {
 				nextState.set('_value', selected);
 			}
@@ -90,7 +86,7 @@ export class SelectController extends InputIconController implements SelectWatch
 	}
 
 	public validateMultiple(value?: MultiplePropType): void {
-		this.assertComponentValueMatchesMultiplicity(value === true);
+		assertSelectValueMatchesMultiplicity(this.component._value, value === true, 'current');
 		validateMultiple(this.component, value, {
 			hooks: {
 				afterPatch: this.afterPatchOptions,
@@ -114,7 +110,7 @@ export class SelectController extends InputIconController implements SelectWatch
 	}
 
 	public validateValue(value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>): void {
-		this.assertValueMatchesMultiplicity(value);
+		assertSelectValueMatchesMultiplicity(value, this.component._multiple === true, 'received');
 		watchJsonArrayString(this.component, '_value', () => true, value === undefined ? [] : Array.isArray(value) ? value : [value], undefined, {
 			hooks: {
 				afterPatch: this.afterPatchOptions,
@@ -130,42 +126,5 @@ export class SelectController extends InputIconController implements SelectWatch
 		this.validateRequired(this.component._required);
 		this.validateRows(this.component._rows);
 		this.validateValue(this.component._value);
-	}
-
-	private assertValueMatchesMultiplicity(value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>): void {
-		const isArray = Array.isArray(value);
-		const isMultiple = this.component._multiple === true;
-
-		if (isMultiple) {
-			if (value !== undefined && !isArray) {
-				throw new Error(
-					`↑ The schema for the property (_value) is not valid for multiple mode. Expected an array. The value will not be changed. (received = ${JSON.stringify(value)})`,
-				);
-			}
-		} else {
-			if (isArray) {
-				throw new Error(
-					`↑ The schema for the property (_value) is not valid for single mode. Expected a single value. The value will not be changed. (received = ${JSON.stringify(value)})`,
-				);
-			}
-		}
-	}
-
-	private assertComponentValueMatchesMultiplicity(isMultiple: boolean): void {
-		const rawValue = this.component._value;
-
-		if (isMultiple) {
-			if (rawValue !== undefined && !Array.isArray(rawValue)) {
-				throw new Error(
-					`↑ The schema for the property (_value) is not valid for multiple mode. Expected an array. The value will not be changed. (current = ${JSON.stringify(rawValue)})`,
-				);
-			}
-		} else {
-			if (Array.isArray(rawValue)) {
-				throw new Error(
-					`↑ The schema for the property (_value) is not valid for single mode. Expected a single value. The value will not be changed. (current = ${JSON.stringify(rawValue)})`,
-				);
-			}
-		}
 	}
 }

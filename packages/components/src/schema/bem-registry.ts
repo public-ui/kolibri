@@ -491,6 +491,17 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'checked' | 'default' | 'disabled' | 'error' | 'info' | 'required' | 'success' | 'touched' | 'warning'>;
 	};
+	'kol-select': {
+		elements: {
+			optgroup: {
+				modifiers: Set<'disabled'>;
+			};
+			option: {
+				modifiers: Set<'disabled' | 'selected'>;
+			};
+		};
+		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'required' | 'success' | 'touched' | 'warning'>;
+	};
 	'kol-split-button': {
 		elements: {
 			button: {
@@ -965,6 +976,13 @@ const BEM: KoliBriComponentsBemSchema = {
 			input: { modifiers: null },
 		},
 		modifiers: new Set(['checked', 'default', 'disabled', 'error', 'info', 'required', 'success', 'touched', 'warning']),
+	},
+	'kol-select': {
+		elements: {
+			optgroup: { modifiers: new Set(['disabled']) },
+			option: { modifiers: new Set(['disabled', 'selected']) },
+		},
+		modifiers: new Set(['default', 'disabled', 'error', 'info', 'required', 'success', 'touched', 'warning']),
 	},
 	'kol-split-button': {
 		elements: {
