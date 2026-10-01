@@ -153,9 +153,18 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 
 	// --- Event handling of the native control ---
 
+	/**
+	 * The element that receives the KoliBri events and frames the focus of the field: the nearest host
+	 * with a shadow root, as resolved by the form association. It is the field itself, unless the field
+	 * renders without a shadow root inside another component (`kol-select-wc` in `kol-pagination`).
+	 */
+	private get eventHost(): Element | undefined {
+		return this.formAssociation?.host ?? this.host;
+	}
+
 	private emit(type: KolEvent, value?: unknown): void {
-		if (this.host) {
-			dispatchDomEvent(this.host, type, value);
+		if (this.eventHost) {
+			dispatchDomEvent(this.eventHost as HTMLElement, type, value);
 		}
 	}
 
@@ -203,8 +212,9 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 		if (this._disabled) {
 			return;
 		}
-		const root = this.host?.shadowRoot || this.host;
-		const isFocusInside = root?.contains(event.relatedTarget as Node) || this.host === event.relatedTarget;
+		const host = this.eventHost;
+		const root = host?.shadowRoot || host;
+		const isFocusInside = root?.contains(event.relatedTarget as Node) || host === event.relatedTarget;
 		if (this.focusEventSent && !isFocusInside) {
 			this._touched = true;
 			this.emit(KolEvent.blur);

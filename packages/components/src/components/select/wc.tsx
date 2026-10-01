@@ -1,7 +1,8 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	AriaDetailsPropType,
+	ClickableElement,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
 	IconsHorizontalPropType,
@@ -26,20 +27,18 @@ import type { SelectApi } from '../../internal/functional-components/select/api'
 import { selectPropsConfig } from '../../internal/functional-components/select/api';
 import { BaseSelectWebComponent } from '../../internal/functional-components/select/base-web-component';
 import { createUniqueId } from '../../utils/dev.utils';
-import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
+import { createCtaRef, directClick, directFocus } from '../../utils/element-interaction';
 
 /**
+ * @internal
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
 @Component({
-	tag: 'kol-select',
-	styleUrls: {
-		default: './style.scss',
-	},
-	shadow: true,
+	tag: 'kol-select-wc',
+	shadow: false,
 })
-export class KolSelect extends BaseSelectWebComponent implements FocusableElement, SelectProps, WebComponentInterface<SelectApi> {
-	@Element() protected readonly host?: HTMLKolSelectElement;
+export class KolSelectWc extends BaseSelectWebComponent implements ClickableElement, FocusableElement, SelectProps, WebComponentInterface<SelectApi> {
+	@Element() protected readonly host?: HTMLKolSelectWcElement;
 	protected readonly ctaRef = createCtaRef<HTMLSelectElement>();
 
 	@State() public id = createUniqueId('select');
@@ -52,11 +51,11 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	}
 
 	/**
-	 * Returns the selected values.
+	 * Returns the current value.
 	 */
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown[] | StencilUnknown | undefined> {
+	public async getValue(): Promise<StencilUnknown[] | StencilUnknown> {
 		return this.getModelValue();
 	}
 
@@ -64,10 +63,17 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	 * Sets focus on the internal element.
 	 */
 	@Method()
-	@delegateFocus('ctaRef')
+	@directFocus('ctaRef')
 	// @ts-expect-error: options parameter will be implemented by the decorator.
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	public async focus(options?: KolFocusOptions): Promise<void> {}
+
+	/**
+	 * Clicks the primary interactive element inside this component.
+	 */
+	@Method()
+	@directClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	// --- Lifecycle ---
 
@@ -114,15 +120,15 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 
 	// --- Render ---
 
-	/** The host keeps the class `kol-select`, which consumers of the element can select. */
+	/** Renders without a shadow root into the host component (`kol-pagination`); its styles apply. */
 	public render(): JSX.Element {
-		return <Host class="kol-select">{this.renderSelectField()}</Host>;
+		return this.renderSelectField();
 	}
 
 	// --- Props ---
 
 	/**
-	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
+	 * Defines the key combination that can be used to trigger or focus the component’s interactive element.
 	 */
 	@Prop() public _accessKey?: string;
 
@@ -192,7 +198,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	@Prop() public _on?: InputTypeOnDefault;
 
 	/**
-	 * Options the user can choose from.
+	 * Options the user can choose from, also supporting Optgroup.
 	 */
 	@Prop() public _options!: OptionsWithOptgroupPropType;
 
@@ -208,7 +214,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	@Prop() public _shortKey?: ShortKeyPropType;
 
 	/**
-	 * Maximum number of visible rows of the element.
+	 * Defines how many rows of options should be visible at the same time.
 	 */
 	@Prop() public _rows?: RowsPropType;
 
@@ -235,7 +241,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
 
 	/**
-	 * Defines the value of the element.
+	 * Defines the value of the input.
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: Stringified<StencilUnknown[]> | Stringified<StencilUnknown>;
 

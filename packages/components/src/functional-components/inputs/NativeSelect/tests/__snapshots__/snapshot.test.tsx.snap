@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`NativeSelectFc should render and match snapshot 1`] = `<select autocapitalize="off" autocorrect="off" class="kol-select" id="test"></select>`;

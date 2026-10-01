@@ -10,19 +10,10 @@ import {
 	type InputRangeStates,
 	type InputTextStates,
 	type MsgPropType,
-	type SelectStates,
 } from '../../schema';
 
 type InputState =
-	| InputTextStates
-	| InputEmailStates
-	| InputPasswordStates
-	| InputNumberStates
-	| InputColorStates
-	| InputFileStates
-	| InputRangeStates
-	| SelectStates
-	| TextareaStates;
+	InputTextStates | InputEmailStates | InputPasswordStates | InputNumberStates | InputColorStates | InputFileStates | InputRangeStates | TextareaStates;
 
 export type FormFieldStateWrapperProps = Partial<FormFieldProps> & {
 	state: InputState;
