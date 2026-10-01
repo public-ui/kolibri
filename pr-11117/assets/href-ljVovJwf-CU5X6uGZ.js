@@ -1,0 +1,1 @@
+import{i as e,y as t}from"./variant-quote-Bi5NwsIp-D7-_DlIu.js";var n=e(`href`,``,t,e=>typeof e==`string`,{required:!0}),r=e(`href`,``,t,e=>typeof e==`string`);export{r as n,n as t};
