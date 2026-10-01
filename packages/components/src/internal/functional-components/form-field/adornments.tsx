@@ -8,6 +8,8 @@ type InputAdornmentsOptions = {
 	icons?: KoliBriHorizontalIcons;
 	smartButton?: InternalButtonProps;
 	disabled?: boolean;
+	/** Field-specific content before the left icon, e.g. the step-down button of `kol-input-number`. */
+	startAdornment?: VNode | null;
 	/** Field-specific content after the smart button and the right icon, e.g. the clear button. */
 	endAdornment?: VNode | null;
 };
@@ -24,16 +26,17 @@ const renderIcon = (icon?: IconOrIconClass): VNode | null => {
 };
 
 /**
- * Adornments of `InputContainerFC`: the left icon at the start; the smart button, the right icon and
- * the field-specific content at the end.
+ * Adornments of `InputContainerFC`: the field-specific start content and the left icon at the start;
+ * the smart button, the right icon and the field-specific end content at the end.
  */
 export const getInputAdornments = ({
 	icons,
 	smartButton,
 	disabled,
+	startAdornment,
 	endAdornment,
 }: InputAdornmentsOptions): { startAdornment: VNode[]; endAdornment: VNode[] } => ({
-	startAdornment: [renderIcon(icons?.left)].filter(Boolean) as VNode[],
+	startAdornment: [startAdornment ?? null, renderIcon(icons?.left)].filter(Boolean) as VNode[],
 	endAdornment: [
 		typeof smartButton === 'object' && smartButton !== null ? (
 			<IconButtonFC componentName="button" class="kol-input-container__smart-button" {...smartButton} hideLabel={true} disabled={disabled} />
