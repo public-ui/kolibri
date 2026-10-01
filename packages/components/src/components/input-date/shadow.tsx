@@ -37,6 +37,7 @@ import { deprecatedHint } from '../../schema';
 import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../../functional-component-wrappers/FormFieldStateWrapper/FormFieldStateWrapper';
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
+import { getDateValueType, remapDateValue } from '../../internal/functional-components/form-field/date-value';
 import type { FormFieldLabelInfoPopoverProps } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -107,19 +108,10 @@ export class KolInputDate implements ClickableElement, FocusableElement, InputDa
 	}
 
 	private setInitialValueType(value: Iso8601 | Date | null) {
-		if (value instanceof Date) {
-			this._initialValueType = 'Date';
-		} else if (typeof value === 'string') {
-			this._initialValueType = 'String';
-		} else {
-			this._initialValueType = null;
-		}
+		this._initialValueType = getDateValueType(value);
 	}
 	private remapValue(newValue: string): Date | Iso8601 | null {
-		if (newValue === '') {
-			return null;
-		}
-		return this._initialValueType === 'Date' ? new Date(newValue) : (newValue as Iso8601);
+		return remapDateValue(newValue, this._initialValueType);
 	}
 
 	private readonly onBlur = (event: FocusEvent) => {

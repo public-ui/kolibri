@@ -167,7 +167,17 @@ Drei parallele Spuren: a) number → range, b) date, c) file. Die Felder nutzen 
   - G3a.3: `kol-input-range` erbt direkt von `BaseFormFieldWebComponent`, mit zwei `InputFC` und dem Datalist neben dem Wrapper.
   - Eine gemeinsame Basis für number und range gibt es nicht: number schreibt `_value` bei jedem `input`, range erst bei `change` und klemmt dabei.
 
-- b) Date↔ISO-Logik aus `input-date/controller.ts` in Hilfsfunktionen, alle 5 `_type`s, Zeitzonen.
+- b) Date↔ISO-Logik aus `input-date/controller.ts` in Hilfsfunktionen, alle 5 `_type`s, Zeitzonen. G3b besteht aus drei PRs:
+
+  ```
+  G3a.3 ─► G3b.0 Testlücken ─► G3b.1 Props + Datums-Helfer ─► G3b.2 date
+  ```
+
+  - G3b.0: Jest-Snapshots für alle fünf `_type`s mit Wert, `_min`/`_max`, `_step` bei `time`, einen zum Typ unpassenden Wert, `null` sowie `_readOnly` und `_required`. Werte als `Date` pinnen weiter die e2e-Tests und `controller.spec.ts`, weil ein `Date` im Namen eines Snapshots von der Zeitzone abhängt.
+  - G3b.1: der Typ und die Datums-Props (`_min`, `_max`, `_value`, abhängig von `_type` und `_step`) in `internal/props/`; die Umwandlung `Date` → ISO-String, die Kalenderwoche und die Formatprüfung je Typ als reine Hilfsfunktionen, die der Legacy-Controller sofort nutzt.
+  - G3b.2: `kol-input-date` erbt direkt von `BaseFormFieldWebComponent`, mit `reset()`, dem Rückschreiben von `_value` beim Blur, wenn der Wert zwischen leer und gesetzt wechselt, Enter-Submit außer bei fokussiertem Kalender-Icon und dem unterdrückten Leerzeichen bei `_readOnly`.
+  - Befund: `InputDateController.validateOn` legt einen Wrapper um `_on.onChange` in den State, den nichts liest; die Events rufen das `_on` der Prop. Die Migration übernimmt den Wrapper nicht, das Verhalten bleibt gleich.
+
 - c) FileList, Drag-&-Drop-Modifier, Browse-Button, übertragener Formularwert.
 - Zusätzliche Abnahme: `table-settings` pixelgleich; `reset()` bei date und file; Flag an und aus im Pixel-Gate.
 
