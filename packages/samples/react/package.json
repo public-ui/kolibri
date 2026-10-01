@@ -45,7 +45,7 @@
 		"@public-ui/components": "workspace:*",
 		"react": "19.2.8",
 		"react-dom": "19.2.8",
-		"react-router": "8.3.1"
+		"react-router": "8.4.0"
 	},
 	"files": [
 		"assets",
