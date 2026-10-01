@@ -83,6 +83,7 @@ export * from './popover-align';
 export * from './quote';
 export * from './radio-options';
 export * from './radio-orientation';
+export * from './radio-value';
 export * from './read-only';
 export * from './required';
 export * from './required-text';

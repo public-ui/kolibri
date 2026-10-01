@@ -219,16 +219,15 @@ Nur diese beiden nutzen den FieldControl-Stack statt InputContainer und teilen `
 
 Gelöscht wird, sobald der letzte Import weg ist. Veröffentlichte Schema-Typen bleiben stehen.
 
-| Zeitpunkt | Was gelöscht wird                                                                                                                                                            |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| nach G2   | erledigt in G2: `utils/counter-dom-updater.ts`, `InputPasswordController`, `InputTextEmailController`, `InputTextController`, `TextAreaStateWrapper`, alte `inputs/TextArea` |
-| nach G3a  | erledigt in G3a: `InputNumberController`, `InputRangeController`, `InputIconController.isNumberString`                                                                       |
-| nach G3b  | erledigt in G3b: `InputDateController`, `InputIconController.validateNumber`/`parseToNumber`                                                                                 |
-| nach G3c  | erledigt in G3c: `InputFileController`; `InputIconController` bleibt für select, single-select und combobox (G5)                                                             |
-| nach G4.3 | erledigt in G4.3: `InputCheckboxController`, `CheckboxStateWrapper`, alte `inputs/Checkbox`                                                                                  |
-| nach G4   | Radio-Controller inkl. `InputCheckboxRadioController`, `RadioStateWrapper`, altes `FieldControl`, alte `inputs/Radio`, alte Radio-Utils                                      |
-| nach G5   | `SelectStateWrapper`, `NativeSelect`/`NativeOption(List)`, `CustomSuggestions*`, `Suggestions`; `kol-select-wc` erst, wenn `pagination` das FC rendert                       |
-| final     | `@deprecated/input/*`, `input-adapter-leanup/`, `functional-component-wrappers/` inkl. `getRenderStates`, Adapter aus G1.3, alte FormField-/Input-FCs, `*Watches`-Interfaces |
+| Zeitpunkt | Was gelöscht wird                                                                                                                                                                                              |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| nach G2   | erledigt in G2: `utils/counter-dom-updater.ts`, `InputPasswordController`, `InputTextEmailController`, `InputTextController`, `TextAreaStateWrapper`, alte `inputs/TextArea`                                   |
+| nach G3a  | erledigt in G3a: `InputNumberController`, `InputRangeController`, `InputIconController.isNumberString`                                                                                                         |
+| nach G3b  | erledigt in G3b: `InputDateController`, `InputIconController.validateNumber`/`parseToNumber`                                                                                                                   |
+| nach G3c  | erledigt in G3c: `InputFileController`; `InputIconController` bleibt für select, single-select und combobox (G5)                                                                                               |
+| nach G4   | erledigt in G4: `InputCheckboxController`, `InputRadioController`/`InputCheckboxRadioController`, `Checkbox`-/`Radio`-/`FieldControlStateWrapper`, altes `FieldControl`, alte `inputs/Checkbox`/`inputs/Radio` |
+| nach G5   | `SelectStateWrapper`, `NativeSelect`/`NativeOption(List)`, `CustomSuggestions*`, `Suggestions`; `kol-select-wc` erst, wenn `pagination` das FC rendert                                                         |
+| final     | `@deprecated/input/*`, `input-adapter-leanup/`, `functional-component-wrappers/` inkl. `getRenderStates`, Adapter aus G1.3, alte FormField-/Input-FCs, `*Watches`-Interfaces                                   |
 
 ### G7 – Folge-Epics (außerhalb dieser Migration)
 

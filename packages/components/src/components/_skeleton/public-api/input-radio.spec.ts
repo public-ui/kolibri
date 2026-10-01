@@ -145,4 +145,4 @@ const KOL_INPUT_RADIO_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-input-radio', component: 'input-radio', file: 'shadow.tsx', pinnedApi: KOL_INPUT_RADIO_PUBLIC_API });
+describePublicApiContract({ tag: 'kol-input-radio', component: 'input-radio', pinnedApi: KOL_INPUT_RADIO_PUBLIC_API, schemaInterface: 'InputRadioProps' });

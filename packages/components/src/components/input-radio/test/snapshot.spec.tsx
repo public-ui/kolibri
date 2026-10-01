@@ -2,7 +2,7 @@ import { KolInputRadioTag } from '../../../core/component-names';
 import type { InputRadioProps } from '../../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
-import { KolInputRadio } from '../shadow';
+import { KolInputRadio } from '../component';
 
 const options = [
 	{
