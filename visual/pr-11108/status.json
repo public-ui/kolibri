@@ -1,18 +1,18 @@
 {
 	"schema": 1,
 	"state": "failure",
-	"description": "175 route(s) failed before the screenshots could be compared",
-	"computedAt": "2026-10-01T10:36:21.297Z",
+	"description": "147 route(s) failed before the screenshots could be compared",
+	"computedAt": "2026-10-01T11:17:43.301Z",
 	"pr": 11108,
-	"head": "ef8739ef930bfe720f37737ac36941a9c02b42cc",
-	"digest": "sha256:9d5cd7ec1b20c7aa7930db4849daa9e11c1aceb662b3ec521b9469a1c2e03dac",
+	"head": "e5dbd54d42224a33689523bf4c1282dc0561d0d4",
+	"digest": "sha256:b9cc8a96834404ede46457aecde21b14fec93785558686b0a81c58d67fc214f6",
 	"counts": {
-		"changes": 607,
-		"open": 607,
+		"changes": 642,
+		"open": 642,
 		"approved": 0,
 		"rejected": 0,
-		"routeErrors": 175,
-		"errorItems": 273
+		"routeErrors": 147,
+		"errorItems": 238
 	},
 	"reviewers": [],
 	"items": {
@@ -221,6 +221,26 @@
 			"notes": []
 		},
 		"test-tag-name-transformer/input-text-clear-button-noColumns--text-no-clear-button": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-text-hide-label-noColumns--error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-text-hide-label-noColumns--search": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/input-text-hide-msg-noColumns--single-error": {
 			"state": "open",
 			"notes": []
 		},
@@ -588,6 +608,26 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-bwst/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-hide-label-noColumns--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-hide-label-noColumns--search": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/input-text-hide-msg-noColumns--single-error": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-bwst/link-button-basic--variants": {
 			"state": "open",
 			"notes": []
@@ -929,6 +969,26 @@
 			"notes": []
 		},
 		"theme-default/input-text-clear-button-noColumns--text-no-clear-button": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-text-hide-label-noColumns--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-text-hide-label-noColumns--search": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/input-text-hide-msg-noColumns--single-error": {
 			"state": "open",
 			"notes": []
 		},
@@ -1300,6 +1360,26 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-desy/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-hide-label-noColumns--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-hide-label-noColumns--search": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/input-text-hide-msg-noColumns--single-error": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-desy/link-button-basic--variants": {
 			"state": "open",
 			"notes": []
@@ -1648,6 +1728,26 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-ecl/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-text-hide-label-noColumns--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-text-hide-label-noColumns--search": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/input-text-hide-msg-noColumns--single-error": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-ecl/link-button-basic--variants": {
 			"state": "open",
 			"notes": []
@@ -1988,6 +2088,26 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-kern/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-hide-label-noColumns--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-hide-label-noColumns--search": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/input-text-hide-msg-noColumns--single-error": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-kern/link-button-basic--variants": {
 			"state": "open",
 			"notes": []
@@ -2309,6 +2429,26 @@
 			"notes": []
 		},
 		"unstyled/input-text-clear-button-noColumns--text-no-clear-button": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-hide-label-noColumns--address-group": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-hide-label-noColumns--error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-hide-label-noColumns--search": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-hide-msg-noColumns--combined-error": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/input-text-hide-msg-noColumns--single-error": {
 			"state": "open",
 			"notes": []
 		},

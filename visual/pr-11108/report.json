@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11108,
-	"head": "ef8739ef930bfe720f37737ac36941a9c02b42cc",
+	"head": "e5dbd54d42224a33689523bf4c1282dc0561d0d4",
 	"repository": "public-ui/kolibri",
-	"runId": 36845614293,
-	"generatedAt": "2026-10-01T10:36:20.839Z",
-	"digest": "sha256:9d5cd7ec1b20c7aa7930db4849daa9e11c1aceb662b3ec521b9469a1c2e03dac",
+	"runId": 36850317973,
+	"generatedAt": "2026-10-01T11:17:42.666Z",
+	"digest": "sha256:b9cc8a96834404ede46457aecde21b14fec93785558686b0a81c58d67fc214f6",
 	"baseline": {
 		"sha": "645eb1be1d7330f457682d79d6d249511859dccf",
 		"ref": "develop",
@@ -18,10 +18,10 @@
 	},
 	"summary": {
 		"unchanged": 2039,
-		"changed": 607,
+		"changed": 642,
 		"added": 0,
 		"removed": 0,
-		"error": 273
+		"error": 238
 	},
 	"packages": [
 		{
@@ -44,12 +44,12 @@
 			},
 			"summary": {
 				"unchanged": 292,
-				"changed": 86,
+				"changed": 91,
 				"added": 0,
 				"removed": 0,
-				"error": 39
+				"error": 34
 			},
-			"digest": "sha256:4f5afd7a6d7aa2000fb909358a7ce9f1b1b6be3c63b731290aaa3f3e5d7b3b32",
+			"digest": "sha256:2561847f9374ef4673bafd743c990160035f7c63391b58797f3bd1dcfad8632e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2351,37 +2351,107 @@
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:e3e0ef85ab91e187d21319ded78df9b8178a08e477b2a1f2734ea4dd3be490fe",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:7de8e37ee816bb8fdccce880d86894847cf438b0a1930aa6a1c48877cc251f2e",
+					"diffPixels": 6410,
+					"diffRatio": 0.060922,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							118
+						],
+						"actual": [
+							182,
+							137
+						]
+					},
+					"expected": "test-tag-name-transformer/input-text-hide-label-noColumns--address-group.expected.png",
+					"actual": "test-tag-name-transformer/input-text-hide-label-noColumns--address-group.actual.png",
+					"diff": "test-tag-name-transformer/input-text-hide-label-noColumns--address-group.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:8a73c3464a0e378ef3ca9d84415629b80a36d2f61b051779a17d9fc262712c00",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:1f14b0a8413226981ac94e0a3824115c1e65c688914c94369967a62f77d7d6f9",
+					"diffPixels": 3484,
+					"diffRatio": 0.051551,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							69
+						],
+						"actual": [
+							182,
+							88
+						]
+					},
+					"expected": "test-tag-name-transformer/input-text-hide-label-noColumns--error.expected.png",
+					"actual": "test-tag-name-transformer/input-text-hide-label-noColumns--error.actual.png",
+					"diff": "test-tag-name-transformer/input-text-hide-label-noColumns--error.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--search",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:4baf596286db04001dde462b90d21b1077eda779c2c58bb9edb5e667663aee7a",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:8377e30e3a7c6e68e19ce4c93a63b3c5f000e13b2e5e35b9c56fad43c19cc29d",
+					"diffPixels": 2490,
+					"diffRatio": 0.073686,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							44
+						],
+						"actual": [
+							182,
+							44
+						]
+					},
+					"expected": "test-tag-name-transformer/input-text-hide-label-noColumns--search.expected.png",
+					"actual": "test-tag-name-transformer/input-text-hide-label-noColumns--search.actual.png",
+					"diff": "test-tag-name-transformer/input-text-hide-label-noColumns--search.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:d64e1bfa93291bbe2fc719b11f3105cda1b1c8d0773fecd83326391bd3b85b03",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:4c0b841daefcb0829fa4df0a1c78e9f16b1d4fbd6b5d63fabef5dc5a66c088db",
+					"diffPixels": 8088,
+					"diffRatio": 0.040978,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							143
+						],
+						"actual": [
+							182,
+							257
+						]
+					},
+					"expected": "test-tag-name-transformer/input-text-hide-msg-noColumns--combined-error.expected.png",
+					"actual": "test-tag-name-transformer/input-text-hide-msg-noColumns--combined-error.actual.png",
+					"diff": "test-tag-name-transformer/input-text-hide-msg-noColumns--combined-error.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:e7afd7175d00d8f71b92513c90bcff82f65fcd512cd41a619ee46f9b1471a707",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:2b5783595b6e5463aa3946b4606677abad4286714e5965309536252607477ae3",
+					"diffPixels": 2490,
+					"diffRatio": 0.035241,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							92
+						],
+						"actual": [
+							182,
+							92
+						]
+					},
+					"expected": "test-tag-name-transformer/input-text-hide-msg-noColumns--single-error.expected.png",
+					"actual": "test-tag-name-transformer/input-text-hide-msg-noColumns--single-error.actual.png",
+					"diff": "test-tag-name-transformer/input-text-hide-msg-noColumns--single-error.diff.png"
 				},
 				{
 					"name": "input-text-message-types-noColumns--msg-default",
@@ -3635,26 +3705,6 @@
 					"message": "Error: Route \"heading/secondary\": data-visual-block \"secondary\" is not visible or has zero size"
 				},
 				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
 					"test": "snapshot for link-button/target",
 					"route": "link-button/target",
 					"message": "Error: Route \"link-button/target\": data-visual-block \"target\" is not visible or has zero size"
@@ -3720,18 +3770,7 @@
 					"message": "Error: Route \"tabs/create-button\": data-visual-block \"create-button\" is not visible or has zero size"
 				}
 			],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				}
-			]
+			"otherFailures": []
 		},
 		{
 			"package": "theme-bwst",
@@ -3753,12 +3792,12 @@
 			},
 			"summary": {
 				"unchanged": 287,
-				"changed": 91,
+				"changed": 96,
 				"added": 0,
 				"removed": 0,
-				"error": 39
+				"error": 34
 			},
-			"digest": "sha256:5e65736bd2aa9f0712d85a70a2a395d92e33698864ef1debd5919eda687ed390",
+			"digest": "sha256:2579ace7b82592e3639eeb8eea506513218e26e48332f4b36f12e51bb72014d3",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -6075,37 +6114,107 @@
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:7faff8e71ba658e82981f4370b840a4c6baaee93a8a7ab99377fd088184f511f",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:3b0c2f4adf9f62451c4284900c0de7f0a4df4fdf950098a88fbefbf6dbd604cf",
+					"diffPixels": 4933,
+					"diffRatio": 0.038928,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							121
+						],
+						"actual": [
+							178,
+							165
+						]
+					},
+					"expected": "theme-bwst/input-text-hide-label-noColumns--address-group.expected.png",
+					"actual": "theme-bwst/input-text-hide-label-noColumns--address-group.actual.png",
+					"diff": "theme-bwst/input-text-hide-label-noColumns--address-group.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:fbae39dd51cb596136c9f2e98f70e1c3cefefc872389075ff207704df7a0645c",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:907c2abfd8928fc050321595b597c76f4b944f66bb2833dd6015778e6d13790d",
+					"diffPixels": 1615,
+					"diffRatio": 0.023896,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							69
+						],
+						"actual": [
+							178,
+							88
+						]
+					},
+					"expected": "theme-bwst/input-text-hide-label-noColumns--error.expected.png",
+					"actual": "theme-bwst/input-text-hide-label-noColumns--error.actual.png",
+					"diff": "theme-bwst/input-text-hide-label-noColumns--error.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--search",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:b3ca48baacce96fc7e861f2671db78a18030a22caa1921a5836c7fdd13d73f62",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:33a8aa25810e1a081615f547bc9b73050730922b49f8a0bab538a4863fe3cdc8",
+					"diffPixels": 1256,
+					"diffRatio": 0.037169,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							44
+						],
+						"actual": [
+							178,
+							44
+						]
+					},
+					"expected": "theme-bwst/input-text-hide-label-noColumns--search.expected.png",
+					"actual": "theme-bwst/input-text-hide-label-noColumns--search.actual.png",
+					"diff": "theme-bwst/input-text-hide-label-noColumns--search.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:60c0519923d48d90574836dd7ec7840087fca9a007b2cddc3ea14e8a742b4d11",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:6e3254f0b8659e77a7d5cf1b75f4ac2bb8cf33f984fb639158b021eeb36a1849",
+					"diffPixels": 6896,
+					"diffRatio": 0.031286,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							146
+						],
+						"actual": [
+							178,
+							287
+						]
+					},
+					"expected": "theme-bwst/input-text-hide-msg-noColumns--combined-error.expected.png",
+					"actual": "theme-bwst/input-text-hide-msg-noColumns--combined-error.actual.png",
+					"diff": "theme-bwst/input-text-hide-msg-noColumns--combined-error.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:3fad114531bf4515faf2c8aa71c0267d19b858a46f8636fda3d880af1f435cd9",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:0abc5ba23c44017d87df564f18dfb48c102d2b1ea89175d400eda5192c824290",
+					"diffPixels": 1254,
+					"diffRatio": 0.017748,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							92
+						],
+						"actual": [
+							178,
+							92
+						]
+					},
+					"expected": "theme-bwst/input-text-hide-msg-noColumns--single-error.expected.png",
+					"actual": "theme-bwst/input-text-hide-msg-noColumns--single-error.actual.png",
+					"diff": "theme-bwst/input-text-hide-msg-noColumns--single-error.diff.png"
 				},
 				{
 					"name": "input-text-message-types-noColumns--msg-default",
@@ -7359,26 +7468,6 @@
 					"message": "Error: Route \"heading/secondary\": data-visual-block \"secondary\" is not visible or has zero size"
 				},
 				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
 					"test": "snapshot for link-button/target",
 					"route": "link-button/target",
 					"message": "Error: Route \"link-button/target\": data-visual-block \"target\" is not visible or has zero size"
@@ -7444,18 +7533,7 @@
 					"message": "Error: Route \"tabs/create-button\": data-visual-block \"create-button\" is not visible or has zero size"
 				}
 			],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				}
-			]
+			"otherFailures": []
 		},
 		{
 			"package": "theme-default",
@@ -7477,12 +7555,12 @@
 			},
 			"summary": {
 				"unchanged": 292,
-				"changed": 86,
+				"changed": 91,
 				"added": 0,
 				"removed": 0,
-				"error": 39
+				"error": 34
 			},
-			"digest": "sha256:4f5afd7a6d7aa2000fb909358a7ce9f1b1b6be3c63b731290aaa3f3e5d7b3b32",
+			"digest": "sha256:2561847f9374ef4673bafd743c990160035f7c63391b58797f3bd1dcfad8632e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9784,37 +9862,107 @@
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:e3e0ef85ab91e187d21319ded78df9b8178a08e477b2a1f2734ea4dd3be490fe",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:7de8e37ee816bb8fdccce880d86894847cf438b0a1930aa6a1c48877cc251f2e",
+					"diffPixels": 6410,
+					"diffRatio": 0.060922,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							118
+						],
+						"actual": [
+							182,
+							137
+						]
+					},
+					"expected": "theme-default/input-text-hide-label-noColumns--address-group.expected.png",
+					"actual": "theme-default/input-text-hide-label-noColumns--address-group.actual.png",
+					"diff": "theme-default/input-text-hide-label-noColumns--address-group.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:8a73c3464a0e378ef3ca9d84415629b80a36d2f61b051779a17d9fc262712c00",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:1f14b0a8413226981ac94e0a3824115c1e65c688914c94369967a62f77d7d6f9",
+					"diffPixels": 3484,
+					"diffRatio": 0.051551,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							69
+						],
+						"actual": [
+							182,
+							88
+						]
+					},
+					"expected": "theme-default/input-text-hide-label-noColumns--error.expected.png",
+					"actual": "theme-default/input-text-hide-label-noColumns--error.actual.png",
+					"diff": "theme-default/input-text-hide-label-noColumns--error.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--search",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:4baf596286db04001dde462b90d21b1077eda779c2c58bb9edb5e667663aee7a",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:8377e30e3a7c6e68e19ce4c93a63b3c5f000e13b2e5e35b9c56fad43c19cc29d",
+					"diffPixels": 2490,
+					"diffRatio": 0.073686,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							44
+						],
+						"actual": [
+							182,
+							44
+						]
+					},
+					"expected": "theme-default/input-text-hide-label-noColumns--search.expected.png",
+					"actual": "theme-default/input-text-hide-label-noColumns--search.actual.png",
+					"diff": "theme-default/input-text-hide-label-noColumns--search.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:d64e1bfa93291bbe2fc719b11f3105cda1b1c8d0773fecd83326391bd3b85b03",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:4c0b841daefcb0829fa4df0a1c78e9f16b1d4fbd6b5d63fabef5dc5a66c088db",
+					"diffPixels": 8088,
+					"diffRatio": 0.040978,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							143
+						],
+						"actual": [
+							182,
+							257
+						]
+					},
+					"expected": "theme-default/input-text-hide-msg-noColumns--combined-error.expected.png",
+					"actual": "theme-default/input-text-hide-msg-noColumns--combined-error.actual.png",
+					"diff": "theme-default/input-text-hide-msg-noColumns--combined-error.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:e7afd7175d00d8f71b92513c90bcff82f65fcd512cd41a619ee46f9b1471a707",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:2b5783595b6e5463aa3946b4606677abad4286714e5965309536252607477ae3",
+					"diffPixels": 2490,
+					"diffRatio": 0.035241,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							92
+						],
+						"actual": [
+							182,
+							92
+						]
+					},
+					"expected": "theme-default/input-text-hide-msg-noColumns--single-error.expected.png",
+					"actual": "theme-default/input-text-hide-msg-noColumns--single-error.actual.png",
+					"diff": "theme-default/input-text-hide-msg-noColumns--single-error.diff.png"
 				},
 				{
 					"name": "input-text-message-types-noColumns--msg-default",
@@ -11068,26 +11216,6 @@
 					"message": "Error: Route \"heading/secondary\": data-visual-block \"secondary\" is not visible or has zero size"
 				},
 				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
 					"test": "snapshot for link-button/target",
 					"route": "link-button/target",
 					"message": "Error: Route \"link-button/target\": data-visual-block \"target\" is not visible or has zero size"
@@ -11153,18 +11281,7 @@
 					"message": "Error: Route \"tabs/create-button\": data-visual-block \"create-button\" is not visible or has zero size"
 				}
 			],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				}
-			]
+			"otherFailures": []
 		},
 		{
 			"package": "theme-desy",
@@ -11186,12 +11303,12 @@
 			},
 			"summary": {
 				"unchanged": 286,
-				"changed": 92,
+				"changed": 97,
 				"added": 0,
 				"removed": 0,
-				"error": 39
+				"error": 34
 			},
-			"digest": "sha256:4824a3cea71c8b23f6c28298b498cfcc276bb3e02c0ffeb5b94941ee87f3e2f0",
+			"digest": "sha256:1bb415f89e763fb53e954221714713fb258949c48b075a88d75d72c43a5c5428",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13523,37 +13640,107 @@
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:8e485b98e237feeaafe6be16041f71ac3b26b0119caeaf1ba20e0f5a8ceb5dd7",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:846b2a116e70108a71346ace89f88d977055110d1abd0b7e64899b3a0d411a73",
+					"diffPixels": 5230,
+					"diffRatio": 0.034923,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							114
+						],
+						"actual": [
+							132,
+							195
+						]
+					},
+					"expected": "theme-desy/input-text-hide-label-noColumns--address-group.expected.png",
+					"actual": "theme-desy/input-text-hide-label-noColumns--address-group.actual.png",
+					"diff": "theme-desy/input-text-hide-label-noColumns--address-group.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:d98af0ee164f868df127a93d0a3fb9beb00b92012f61216539a9e3e3ce1a0ec6",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:8caf70a25226e7db3e80e786742cb6655b0c4ae8464f494a609c57911beb813c",
+					"diffPixels": 1650,
+					"diffRatio": 0.0262,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							62
+						],
+						"actual": [
+							132,
+							82
+						]
+					},
+					"expected": "theme-desy/input-text-hide-label-noColumns--error.expected.png",
+					"actual": "theme-desy/input-text-hide-label-noColumns--error.actual.png",
+					"diff": "theme-desy/input-text-hide-label-noColumns--error.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--search",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:f056c7542eac3b24dcfa19e3b655f587ecc17009a56a3604789d3073653689be",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:01ead7f27b6f6dd4551f608b24eafcc628e74d7374142fe8df66a612541bdc45",
+					"diffPixels": 1340,
+					"diffRatio": 0.045916,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							38
+						],
+						"actual": [
+							132,
+							38
+						]
+					},
+					"expected": "theme-desy/input-text-hide-label-noColumns--search.expected.png",
+					"actual": "theme-desy/input-text-hide-label-noColumns--search.actual.png",
+					"diff": "theme-desy/input-text-hide-label-noColumns--search.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:b43f89e77d779324a75d80ae7626743c58f398a31c99cec618002e006abc2d2d",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:19674dcd217de4bdf4221e6dfa9ece91f829ced29cc9457c1d42e59ce6afd60c",
+					"diffPixels": 6201,
+					"diffRatio": 0.027004,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							138
+						],
+						"actual": [
+							132,
+							299
+						]
+					},
+					"expected": "theme-desy/input-text-hide-msg-noColumns--combined-error.expected.png",
+					"actual": "theme-desy/input-text-hide-msg-noColumns--combined-error.actual.png",
+					"diff": "theme-desy/input-text-hide-msg-noColumns--combined-error.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:e739bd6fe766e93e6395a96ff38aa1df37fcbea50cdf68322e15e95936d9aa46",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:364fa8189fa6fab59237b51cd92996125d0277364db41ba3345a0a36fb0de4ef",
+					"diffPixels": 1334,
+					"diffRatio": 0.020197,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							86
+						],
+						"actual": [
+							132,
+							86
+						]
+					},
+					"expected": "theme-desy/input-text-hide-msg-noColumns--single-error.expected.png",
+					"actual": "theme-desy/input-text-hide-msg-noColumns--single-error.actual.png",
+					"diff": "theme-desy/input-text-hide-msg-noColumns--single-error.diff.png"
 				},
 				{
 					"name": "input-text-message-types-noColumns--msg-default",
@@ -14817,26 +15004,6 @@
 					"message": "Error: Route \"heading/secondary\": data-visual-block \"secondary\" is not visible or has zero size"
 				},
 				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
 					"test": "snapshot for link-button/target",
 					"route": "link-button/target",
 					"message": "Error: Route \"link-button/target\": data-visual-block \"target\" is not visible or has zero size"
@@ -14902,18 +15069,7 @@
 					"message": "Error: Route \"tabs/create-button\": data-visual-block \"create-button\" is not visible or has zero size"
 				}
 			],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				}
-			]
+			"otherFailures": []
 		},
 		{
 			"package": "theme-ecl",
@@ -14935,12 +15091,12 @@
 			},
 			"summary": {
 				"unchanged": 294,
-				"changed": 84,
+				"changed": 89,
 				"added": 0,
 				"removed": 0,
-				"error": 39
+				"error": 34
 			},
-			"digest": "sha256:0f6f8bd790eff6f5896466123674ccefa9b737a101aa76b737ccab30623793c9",
+			"digest": "sha256:1dc0fc544fbe7d516b7ddc2d9792e1e484efe5b2c75e5a36c05210896565ae45",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17255,37 +17411,107 @@
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:f5c2e004bc34aa9a4e023f81c35b8415b906c9fe87c51349cdea4be5492de96b",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:692d6f11bf27a5dc669b229795e0ad890cd333b77dcb920cb5fc936975cc2d0e",
+					"diffPixels": 4897,
+					"diffRatio": 0.041675,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							119
+						],
+						"actual": [
+							140,
+							153
+						]
+					},
+					"expected": "theme-ecl/input-text-hide-label-noColumns--address-group.expected.png",
+					"actual": "theme-ecl/input-text-hide-label-noColumns--address-group.actual.png",
+					"diff": "theme-ecl/input-text-hide-label-noColumns--address-group.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:d3ba6da37b8068006ab347d69340b3a2230e81b0442199a7dc913e1d9cb114e1",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:92fb5cb21eac151b433f26d21981684ac9d350b4bff3ef751190f22bcaad4407",
+					"diffPixels": 1783,
+					"diffRatio": 0.026382,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							72
+						],
+						"actual": [
+							140,
+							88
+						]
+					},
+					"expected": "theme-ecl/input-text-hide-label-noColumns--error.expected.png",
+					"actual": "theme-ecl/input-text-hide-label-noColumns--error.actual.png",
+					"diff": "theme-ecl/input-text-hide-label-noColumns--error.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--search",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:69766d40e804cf3b1ee0ef82d47552cb934d563c2ffcaf9bdea60cbb951bf46d",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:e9034ab9601b42d7053f1d4572ecc46283fc8fdd8fb1787516e00525b40741f6",
+					"diffPixels": 1340,
+					"diffRatio": 0.039654,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							44
+						],
+						"actual": [
+							140,
+							44
+						]
+					},
+					"expected": "theme-ecl/input-text-hide-label-noColumns--search.expected.png",
+					"actual": "theme-ecl/input-text-hide-label-noColumns--search.actual.png",
+					"diff": "theme-ecl/input-text-hide-label-noColumns--search.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:e62e1f36934cbf402695e86fd1f096314c78024cf1e94a50a75954004538e132",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:3882b7627d2fb080d4993e66dd16fae70d8cc905a835c76c984d233037d37734",
+					"diffPixels": 6326,
+					"diffRatio": 0.027275,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							151
+						],
+						"actual": [
+							140,
+							302
+						]
+					},
+					"expected": "theme-ecl/input-text-hide-msg-noColumns--combined-error.expected.png",
+					"actual": "theme-ecl/input-text-hide-msg-noColumns--combined-error.actual.png",
+					"diff": "theme-ecl/input-text-hide-msg-noColumns--combined-error.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:ea965e60189a0f38440136850ee1c350a57169c1740eb52535551dd432fbd4b7",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:7bc108db5e1dbaaacb5234b16f3f15dfc99f9d611637a96fc15412b07078d8b6",
+					"diffPixels": 1340,
+					"diffRatio": 0.016777,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							104
+						],
+						"actual": [
+							140,
+							104
+						]
+					},
+					"expected": "theme-ecl/input-text-hide-msg-noColumns--single-error.expected.png",
+					"actual": "theme-ecl/input-text-hide-msg-noColumns--single-error.actual.png",
+					"diff": "theme-ecl/input-text-hide-msg-noColumns--single-error.diff.png"
 				},
 				{
 					"name": "input-text-message-types-noColumns--msg-default",
@@ -18524,26 +18750,6 @@
 					"message": "Error: Route \"heading/secondary\": data-visual-block \"secondary\" is not visible or has zero size"
 				},
 				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
 					"test": "snapshot for link-button/target",
 					"route": "link-button/target",
 					"message": "Error: Route \"link-button/target\": data-visual-block \"target\" is not visible or has zero size"
@@ -18609,18 +18815,7 @@
 					"message": "Error: Route \"tabs/create-button\": data-visual-block \"create-button\" is not visible or has zero size"
 				}
 			],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				}
-			]
+			"otherFailures": []
 		},
 		{
 			"package": "theme-kern",
@@ -18642,12 +18837,12 @@
 			},
 			"summary": {
 				"unchanged": 294,
-				"changed": 84,
+				"changed": 89,
 				"added": 0,
 				"removed": 0,
-				"error": 39
+				"error": 34
 			},
-			"digest": "sha256:8e65f79d3943d042ae552861cf9ca4d51899adddfe58a7cfc3823b48acbabf61",
+			"digest": "sha256:9187a00dade54ba55924284cec99cfdec892ecb23c3de801f948661fb49405a8",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -20959,37 +21154,107 @@
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:4680384e9b665779d1ec4674d6b01383570d2364fa432a1e82e411e2c314498b",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:6dbea6f6f43f7fd8c5f45bf0acb92184f332e18c003360e637f1ee6ff4f308f3",
+					"diffPixels": 5157,
+					"diffRatio": 0.041968,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							124
+						],
+						"actual": [
+							176,
+							160
+						]
+					},
+					"expected": "theme-kern/input-text-hide-label-noColumns--address-group.expected.png",
+					"actual": "theme-kern/input-text-hide-label-noColumns--address-group.actual.png",
+					"diff": "theme-kern/input-text-hide-label-noColumns--address-group.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:d365cc1de8d5c1535d66ba266572f8f20eefefd519809a36e4a736951f027951",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:e4012f749eb5b5eb2af828ce44ae27727871e8a1befcb0320b7d58b9accce339",
+					"diffPixels": 1799,
+					"diffRatio": 0.0244,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							84
+						],
+						"actual": [
+							176,
+							96
+						]
+					},
+					"expected": "theme-kern/input-text-hide-label-noColumns--error.expected.png",
+					"actual": "theme-kern/input-text-hide-label-noColumns--error.actual.png",
+					"diff": "theme-kern/input-text-hide-label-noColumns--error.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--search",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:f0c291d1cd8e3b2b842414d8040b27bc1abc3600c4070db2fecf9cf6be8c2b69",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:51cdd3974ab31481b678f3e26bbefe8c5b531465f39bf0c9d69a34c9b60e7be5",
+					"diffPixels": 1184,
+					"diffRatio": 0.030833,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							50
+						],
+						"actual": [
+							176,
+							50
+						]
+					},
+					"expected": "theme-kern/input-text-hide-label-noColumns--search.expected.png",
+					"actual": "theme-kern/input-text-hide-label-noColumns--search.actual.png",
+					"diff": "theme-kern/input-text-hide-label-noColumns--search.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:4a5f7da9f7babbe279d59aa5f36beeb897599082ec483b54ed4ddc46ab09675a",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:e43037b048e5514eb67e46e5626672a71cf798636bec676f86132280f6f8c95d",
+					"diffPixels": 7909,
+					"diffRatio": 0.032693,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							164
+						],
+						"actual": [
+							176,
+							315
+						]
+					},
+					"expected": "theme-kern/input-text-hide-msg-noColumns--combined-error.expected.png",
+					"actual": "theme-kern/input-text-hide-msg-noColumns--combined-error.actual.png",
+					"diff": "theme-kern/input-text-hide-msg-noColumns--combined-error.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:24bd9d9554d5defbb23afb6ffe06178834e904c736e48e3217f541820dfecde0",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:b7e772c0b38ba535560063662083f46f070d04c70b80a8eaed513f659d323afa",
+					"diffPixels": 1184,
+					"diffRatio": 0.012433,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							124
+						],
+						"actual": [
+							176,
+							124
+						]
+					},
+					"expected": "theme-kern/input-text-hide-msg-noColumns--single-error.expected.png",
+					"actual": "theme-kern/input-text-hide-msg-noColumns--single-error.actual.png",
+					"diff": "theme-kern/input-text-hide-msg-noColumns--single-error.diff.png"
 				},
 				{
 					"name": "input-text-message-types-noColumns--msg-default",
@@ -22223,26 +22488,6 @@
 					"message": "Error: Route \"heading/secondary\": data-visual-block \"secondary\" is not visible or has zero size"
 				},
 				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
 					"test": "snapshot for link-button/target",
 					"route": "link-button/target",
 					"message": "Error: Route \"link-button/target\": data-visual-block \"target\" is not visible or has zero size"
@@ -22308,18 +22553,7 @@
 					"message": "Error: Route \"tabs/create-button\": data-visual-block \"create-button\" is not visible or has zero size"
 				}
 			],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				}
-			]
+			"otherFailures": []
 		},
 		{
 			"package": "unstyled",
@@ -22341,12 +22575,12 @@
 			},
 			"summary": {
 				"unchanged": 294,
-				"changed": 84,
+				"changed": 89,
 				"added": 0,
 				"removed": 0,
-				"error": 39
+				"error": 34
 			},
-			"digest": "sha256:fc3145b051a9441734340e94cfd1d3f80564edaa3d6bebe4509fe16c4b4cb55c",
+			"digest": "sha256:6df9fffcfc4e83b7731514a592d6359f7b11ae0fdca0f4c14c6d6e9544cf8954",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -24633,37 +24867,107 @@
 				{
 					"name": "input-text-hide-label-noColumns--address-group",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:91b8a2418f485c86df95d267158495f51827fa878c7282962bcb2a0f562bf0b2",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:27340d1167724593d09f45f4695cfa6c9965b9b765da63e34a7ee6ec9751349b",
+					"diffPixels": 6939,
+					"diffRatio": 0.049372,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							120
+						],
+						"actual": [
+							136,
+							183
+						]
+					},
+					"expected": "unstyled/input-text-hide-label-noColumns--address-group.expected.png",
+					"actual": "unstyled/input-text-hide-label-noColumns--address-group.actual.png",
+					"diff": "unstyled/input-text-hide-label-noColumns--address-group.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--error",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:83a06e01a0c027d6e48de24aafba60ab3649342d4ec6b3ac27a3e1f217173dd3",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:c6aef077bed8f0034cf8006076e56236e47fa2cd2ebdef4950f8828da4703a32",
+					"diffPixels": 2721,
+					"diffRatio": 0.041197,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							65
+						],
+						"actual": [
+							136,
+							86
+						]
+					},
+					"expected": "unstyled/input-text-hide-label-noColumns--error.expected.png",
+					"actual": "unstyled/input-text-hide-label-noColumns--error.actual.png",
+					"diff": "unstyled/input-text-hide-label-noColumns--error.diff.png"
 				},
 				{
 					"name": "input-text-hide-label-noColumns--search",
 					"route": "input-text/hide-label?noColumns",
-					"status": "error",
-					"hash": "sha256:8102ee5663dc2ac786f58422c6319e27c2d11513211ee2d4c43815b7cddfe8f9",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:df343e478cbf1358f55b9bee8c2560ab5d12489d89b0fef9d447abb0b49ebca7",
+					"diffPixels": 2618,
+					"diffRatio": 0.077474,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							44
+						],
+						"actual": [
+							136,
+							44
+						]
+					},
+					"expected": "unstyled/input-text-hide-label-noColumns--search.expected.png",
+					"actual": "unstyled/input-text-hide-label-noColumns--search.actual.png",
+					"diff": "unstyled/input-text-hide-label-noColumns--search.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--combined-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:63b6d6d2b91830480493aa6b190d7cbb5f7604340ee3fc3d1f857a24ffddf14a",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:ac6b348a49d71d45e59c3a6bcc797b9e89f3f0fcb49a2e80a0d1d0712a1351d4",
+					"diffPixels": 7844,
+					"diffRatio": 0.033054,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							141
+						],
+						"actual": [
+							136,
+							309
+						]
+					},
+					"expected": "unstyled/input-text-hide-msg-noColumns--combined-error.expected.png",
+					"actual": "unstyled/input-text-hide-msg-noColumns--combined-error.actual.png",
+					"diff": "unstyled/input-text-hide-msg-noColumns--combined-error.diff.png"
 				},
 				{
 					"name": "input-text-hide-msg-noColumns--single-error",
 					"route": "input-text/hide-msg?noColumns",
-					"status": "error",
-					"hash": "sha256:212745fd8727d355c20d12b074ca766447a0a9a8caf180eb3c4707053378c214",
-					"message": "Test timeout of 15000ms exceeded."
+					"status": "changed",
+					"hash": "sha256:91eb213767c08417572f77ab09580af24e2094802f4adfeb9fa22316c59f1c94",
+					"diffPixels": 2618,
+					"diffRatio": 0.039638,
+					"sizeMismatch": {
+						"expected": [
+							768,
+							86
+						],
+						"actual": [
+							136,
+							86
+						]
+					},
+					"expected": "unstyled/input-text-hide-msg-noColumns--single-error.expected.png",
+					"actual": "unstyled/input-text-hide-msg-noColumns--single-error.actual.png",
+					"diff": "unstyled/input-text-hide-msg-noColumns--single-error.diff.png"
 				},
 				{
 					"name": "input-text-message-types-noColumns--msg-default",
@@ -25912,26 +26216,6 @@
 					"message": "Error: Route \"heading/secondary\": data-visual-block \"secondary\" is not visible or has zero size"
 				},
 				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"route": "input-text/hide-label?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"route": "input-text/hide-msg?noColumns",
-					"message": "Error: page.setViewportSize: Test timeout of 15000ms exceeded."
-				},
-				{
 					"test": "snapshot for link-button/target",
 					"route": "link-button/target",
 					"message": "Error: Route \"link-button/target\": data-visual-block \"target\" is not visible or has zero size"
@@ -25997,18 +26281,7 @@
 					"message": "Error: Route \"tabs/create-button\": data-visual-block \"create-button\" is not visible or has zero size"
 				}
 			],
-			"otherFailures": [
-				{
-					"test": "snapshot for input-text/hide-label?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				},
-				{
-					"test": "snapshot for input-text/hide-msg?noColumns",
-					"file": "axe-snapshots.spec.js",
-					"message": "Test timeout of 15000ms exceeded."
-				}
-			]
+			"otherFailures": []
 		}
 	]
 }
