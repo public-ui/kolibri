@@ -1,7 +1,7 @@
 {
 	"version": "4.5.0-rc.3",
 	"devDependencies": {
-		"@evilmartians/lefthook": "2.1.15",
+		"@evilmartians/lefthook": "2.1.16",
 		"js-yaml": "5.4.2",
 		"license-report": "6.8.5",
 		"npm-run-all2": "9.0.3",
