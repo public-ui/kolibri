@@ -1,1 +1,0 @@
-import{i as e,v as t}from"./variant-quote-B21Wgc49-DX6fhT9a.js";var n=e(`autoComplete`,`off`,t,e=>e.length>0);export{n as t};
