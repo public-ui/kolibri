@@ -1,0 +1,1 @@
+import{s as e}from"./index-DoSJ-Gvj-CYOaFPK4.js";var t=({description:t,descriptionId:n})=>t?e(`span`,{class:`visually-hidden`,id:n},t):null;export{t};
