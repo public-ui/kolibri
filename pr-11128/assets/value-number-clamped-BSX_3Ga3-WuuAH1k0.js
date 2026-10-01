@@ -1,0 +1,1 @@
+import{_ as e,i as t,r as n,y as r}from"./variant-quote-B-bZJ9Yt-hGSFFwT7.js";var i=t(`max`,100,e,e=>e>0),a=t(`unit`,`%`,r,e=>e.length>0),o=n(`value`,0,(t,n)=>{let r=e(t);return r<n.min?n.min:r>n.max?n.max:r},e=>e!=null);export{i as n,a as r,o as t};
