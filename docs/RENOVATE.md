@@ -187,6 +187,12 @@ To activate it:
      `opened`/`edited` leaves it unreported after any push and the merge is refused with
      `Required status check "…" is expected`. Renovate runs into this on every rebase; that is what
      `pr-title-validation.yml` was missing.
+   - A workflow behind a required check that filters `pull_request` by base branch also needs
+     `edited`. A stacked pull request opened against a feature branch never matches the filter, and
+     when GitHub retargets it to `develop` after the pull request below it is merged, it sends only
+     `edited`. Without it the check stays at `Expected — Waiting for status to be reported` until the
+     next push. `codeql.yml` therefore reacts to `edited` and runs only when the base changed; a
+     title or body edit gets a concurrency group of its own, so it cannot cancel a running analysis.
    - In the target patterns of a ruleset GitHub prefixes `refs/heads/` itself. Enter `release/**/*`,
      never `refs/heads/release/**/*`, otherwise the prefix doubles and the release branches silently
      lose their protection. `gh api repos/public-ui/kolibri/rules/branches/release/3` shows what is
