@@ -416,8 +416,16 @@ export type KoliBriComponentsBemSchema = {
 			adornment: {
 				modifiers: Set<'end' | 'start'>;
 			};
+			/** Browse button of `kol-input-file`. */
+			button: {
+				modifiers: null;
+			};
 			container: {
 				modifiers: null;
+			};
+			/** Name of the selected files of `kol-input-file`. */
+			filename: {
+				modifiers: Set<'has-file'>;
 			};
 			icon: {
 				modifiers: null;
@@ -426,7 +434,7 @@ export type KoliBriComponentsBemSchema = {
 				modifiers: null;
 			};
 		};
-		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'success' | 'warning'>;
+		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'is-dragover' | 'success' | 'warning'>;
 	};
 	'kol-field-control': {
 		elements: {
@@ -507,6 +515,50 @@ export type KoliBriComponentsBemSchema = {
 	};
 	'kol-custom-suggestions-options-group': {
 		modifiers: Set<'cursor-hidden' | 'open'>;
+	};
+	/** Toggle icon of `kol-single-select`, opening and closing the option list. */
+	'kol-custom-suggestions-toggle': {
+		modifiers: Set<'disabled'>;
+	};
+	'kol-combobox': {
+		elements: {
+			delete: {
+				modifiers: null;
+			};
+			group: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'open'>;
+	};
+	/** Toggle button of `kol-combobox`, opening and closing the suggestion list. */
+	'kol-combobox-toggle': {
+		modifiers: null;
+	};
+	'kol-single-select': {
+		elements: {
+			delete: {
+				modifiers: null;
+			};
+			group: {
+				modifiers: null;
+			};
+			'no-results-message': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'open'>;
+	};
+	'kol-input-range': {
+		elements: {
+			input: {
+				modifiers: Set<'number' | 'range'>;
+			};
+			'inputs-wrapper': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
 	};
 	'kol-split-button': {
 		elements: {
@@ -928,11 +980,13 @@ const BEM: KoliBriComponentsBemSchema = {
 	'kol-input-container': {
 		elements: {
 			adornment: { modifiers: new Set(['end', 'start']) },
+			button: { modifiers: null },
 			container: { modifiers: null },
+			filename: { modifiers: new Set(['has-file']) },
 			icon: { modifiers: null },
 			'smart-button': { modifiers: null },
 		},
-		modifiers: new Set(['default', 'disabled', 'error', 'info', 'success', 'warning']),
+		modifiers: new Set(['default', 'disabled', 'error', 'info', 'is-dragover', 'success', 'warning']),
 	},
 	'kol-field-control': {
 		elements: {
@@ -995,6 +1049,34 @@ const BEM: KoliBriComponentsBemSchema = {
 	},
 	'kol-custom-suggestions-options-group': {
 		modifiers: new Set(['cursor-hidden', 'open']),
+	},
+	'kol-custom-suggestions-toggle': {
+		modifiers: new Set(['disabled']),
+	},
+	'kol-combobox': {
+		elements: {
+			delete: { modifiers: null },
+			group: { modifiers: null },
+		},
+		modifiers: new Set(['open']),
+	},
+	'kol-combobox-toggle': {
+		modifiers: null,
+	},
+	'kol-single-select': {
+		elements: {
+			delete: { modifiers: null },
+			group: { modifiers: null },
+			'no-results-message': { modifiers: null },
+		},
+		modifiers: new Set(['open']),
+	},
+	'kol-input-range': {
+		elements: {
+			input: { modifiers: new Set(['number', 'range']) },
+			'inputs-wrapper': { modifiers: null },
+		},
+		modifiers: null,
 	},
 	'kol-split-button': {
 		elements: {

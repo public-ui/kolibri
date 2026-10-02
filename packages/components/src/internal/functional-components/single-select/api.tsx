@@ -4,6 +4,7 @@ import {
 	horizontalIconsProp,
 	placeholderProp,
 	requiredProp,
+	rowsProp,
 	shortKeyProp,
 	singleSelectOptionsProp,
 	variantProp,
@@ -13,8 +14,8 @@ import { formFieldBasePropsConfig } from '../form-field/api';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**
- * `_value` and `_rows` are no render props: the field reads them as they are, any value of `_value`
- * (`undefined` too) is the selection and `_rows` is the CSS value `--visible-options`.
+ * `_value` is no render prop: the field reads it as it is, any value (`undefined` too) is the
+ * selection.
  */
 export const singleSelectPropsConfig = {
 	required: [...formFieldBasePropsConfig.required, singleSelectOptionsProp],
@@ -25,6 +26,7 @@ export const singleSelectPropsConfig = {
 		horizontalIconsProp,
 		placeholderProp,
 		requiredProp,
+		rowsProp,
 		shortKeyProp,
 		variantProp,
 	],
