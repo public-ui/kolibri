@@ -1,0 +1,1 @@
+import{W as e}from"./index-DV_vNR-B-D7bi8rzX.js";import{i as t}from"./variant-quote-DmzRsnzD-DmDlM8rq.js";function n(t){let n=typeof t==`string`?e(t):t;if(typeof n==`object`&&n)return n;throw Error(`Invalid smart button: ${typeof t}`)}var r=t(`smartButton`,{_label:``},n);export{r as t};
