@@ -67,9 +67,9 @@ export class KolCombobox
 {
 	@Element() protected readonly host?: HTMLKolComboboxElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+	private clearButtonRef?: HTMLKolButtonWcElement;
 
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
-	private clearButtonRef?: HTMLKolButtonWcElement;
 
 	@State() public id = createUniqueId('combobox');
 
@@ -194,10 +194,8 @@ export class KolCombobox
 			return;
 		}
 
-		if (this.isOpen) {
-			if (this.selectFocusedOption()) {
-				this.isOpen = false;
-			}
+		if (this.isOpen && this.selectFocusedOption()) {
+			this.isOpen = false;
 		} else {
 			this.toggleListbox();
 		}
@@ -282,8 +280,8 @@ export class KolCombobox
 			return;
 		}
 
-		// The focus moves before the empty value removes the clear button: Chromium sends a `focusout`
-		// without `relatedTarget` for a removed focused element, which would read as leaving the field.
+		// empty value removes the clear button (Chromium would send a `focusout`, which would read as leaving the field)
+		// so focus on input before clearing the input
 		this.ctaRef.el?.focus();
 
 		const emptyValue = '';
