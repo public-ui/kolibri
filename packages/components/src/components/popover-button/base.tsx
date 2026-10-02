@@ -1,8 +1,9 @@
 import type { JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { PopoverButtonFC } from '../../internal/functional-components/popover-button/component';
-import { PopoverController } from '../../internal/functional-components/popover/controller';
+import { PopoverBehavior } from '../../internal/functional-components/popover/behavior';
 import { popoverAlignProp } from '../../internal/props';
 import type { PopoverAlignPropType } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
@@ -17,14 +18,12 @@ import { BaseButtonWebComponent } from '../button/base';
  * popover `toggle` event so modifier and `aria-expanded` always match the real popover state.
  */
 export abstract class BasePopoverButtonWebComponent extends BaseButtonWebComponent {
-	private readonly popoverCtrl = new PopoverController();
-	private popoverElement?: HTMLDivElement;
-
 	/**
-	 * The popover alignment lives outside the button render-prop store: the shared button base is
-	 * typed over `ButtonApi`, which does not know this key. Seeded with the `_popoverAlign` default.
+	 * Stateless: the shared button base is typed over `ButtonApi`, so its state access does not fit
+	 * the popover API, and the open state comes from the popover's own `toggle` event.
 	 */
-	private popoverAlign: PopoverAlignPropType = 'bottom';
+	private readonly popoverBehavior = new PopoverBehavior(BaseWebComponent.stateLess);
+	private popoverElement?: HTMLDivElement;
 
 	/**
 	 * DOM id of the popover element, referenced by the button's aria-controls attribute. Public
@@ -46,7 +45,7 @@ export abstract class BasePopoverButtonWebComponent extends BaseButtonWebCompone
 	}
 
 	private readonly togglePopover = (): void => {
-		this.popoverCtrl.setShow(!this.getPopoverOpen());
+		this.popoverBehavior.setShow(!this.getPopoverOpen());
 	};
 
 	private readonly handleToggle = (event: Event): void => {
@@ -55,12 +54,12 @@ export abstract class BasePopoverButtonWebComponent extends BaseButtonWebCompone
 
 	protected readonly setButtonElementRef = (element?: HTMLButtonElement): void => {
 		this.ctaRef(element);
-		this.popoverCtrl.setTriggerElement(element);
+		this.popoverBehavior.setTriggerElement(element);
 	};
 
 	protected readonly setPopoverElementRef = (element?: HTMLDivElement): void => {
 		this.popoverElement = element;
-		this.popoverCtrl.setPopoverElementRef(element);
+		this.popoverBehavior.setPopoverElementRef(element);
 	};
 
 	// --- Lifecycle helpers (called from the concrete element's lifecycle methods) ---
@@ -74,6 +73,7 @@ export abstract class BasePopoverButtonWebComponent extends BaseButtonWebCompone
 	protected initPopoverButtonRenderProps(): void {
 		this.initButtonRenderProps();
 		this.applyOn({ onClick: this.togglePopover });
+		this.popoverBehavior.componentWillLoad({ align: popoverAlignProp.getDefaultValue() });
 	}
 
 	/** Call from `componentDidRender`. */
@@ -90,11 +90,11 @@ export abstract class BasePopoverButtonWebComponent extends BaseButtonWebCompone
 			this.popoverElement.removeEventListener('toggle', this.handleToggle);
 			this.popoverElement = undefined;
 		}
-		this.popoverCtrl.destroy();
+		this.popoverBehavior.destroy();
 	}
 
 	/**
-	 * Shows the popover programmatically by calling the PopoverController.
+	 * Shows the popover programmatically through the popover behavior.
 	 *
 	 * Refused while the button is disabled: the trigger is a `<button disabled>`, so no user
 	 * interaction can open the popover, and the programmatic path must not be the one way around
@@ -104,23 +104,20 @@ export abstract class BasePopoverButtonWebComponent extends BaseButtonWebCompone
 		if (this.getRenderProp('disabled') === true) {
 			return;
 		}
-		this.popoverCtrl.setShow(true);
+		this.popoverBehavior.setShow(true);
 	}
 
 	/**
-	 * Hides the popover programmatically by calling the PopoverController.
+	 * Hides the popover programmatically through the popover behavior.
 	 */
 	protected closePopover(): void {
-		this.popoverCtrl.setShow(false);
+		this.popoverBehavior.setShow(false);
 	}
 
 	// --- Prop application ---
 
 	protected applyPopoverAlign(value?: PopoverAlignPropType): void {
-		popoverAlignProp.apply(value, (v) => {
-			this.popoverAlign = v;
-			this.popoverCtrl.setAlign(v);
-		});
+		popoverAlignProp.apply(value, (v) => this.popoverBehavior.watchAlign(v));
 	}
 
 	// --- Render ---
@@ -147,7 +144,7 @@ export abstract class BasePopoverButtonWebComponent extends BaseButtonWebCompone
 				label={this.getRenderProp('label')}
 				name={this.getRenderProp('name')}
 				on={this.getRenderProp('on')}
-				popoverAlign={this.popoverAlign}
+				popoverAlign={this.popoverBehavior.getRenderProp('align')}
 				popoverOpen={this.getPopoverOpen()}
 				popoverId={this.popoverId}
 				refButton={this.setButtonElementRef}

@@ -17,7 +17,7 @@ import {
 } from '../../props';
 import { BaseWebComponent } from '../base-web-component';
 import type { FunctionalComponentProps } from '../generic-types';
-import { PopoverController } from '../popover/controller';
+import { PopoverBehavior } from '../popover/behavior';
 import { buildDefaultPropsFromConfig } from '../props-from-config';
 import { TooltipBehavior } from '../tooltip/behavior';
 import type { PopoverButtonApi } from './api';
@@ -29,7 +29,7 @@ import { popoverButtonPropsConfig } from './api';
  * drive.
  *
  * It exists because `PopoverButtonFC` is stateless while the popover is not — the toggle
- * controller, the open state, the tooltip behavior and three element refs have to live somewhere.
+ * behavior, the open state, the tooltip behavior and three element refs have to live somewhere.
  * `BasePopoverButtonWebComponent` owns exactly that for the `kol-popover-button` elements, but a
  * component that embeds the popover button *next to* its own button (`kol-split-button`) needs a
  * second, independent set of them and cannot inherit it. The item is a plain object with closures,
@@ -47,7 +47,7 @@ export type PopoverButtonItem = {
 	setDisabled(value?: boolean): void;
 	/** Re-registers tooltip and toggle listeners. Call from `componentDidRender`. */
 	syncListeners(): void;
-	/** Tears down listeners, the popover controller and the tooltip behavior. */
+	/** Tears down listeners, the popover behavior and the tooltip behavior. */
 	destroy(): void;
 };
 
@@ -77,7 +77,7 @@ export type PopoverButtonItemOptions = {
 };
 
 export const createPopoverButtonItem = (options: PopoverButtonItemOptions): PopoverButtonItem => {
-	const popoverCtrl = new PopoverController();
+	const popoverBehavior = new PopoverBehavior(BaseWebComponent.stateLess);
 	const tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
 	const ctaRef = createCtaRef<HTMLButtonElement>();
 	let popoverElement: HTMLDivElement | undefined;
@@ -118,7 +118,7 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 	});
 	popoverAlignProp.apply(options.popoverAlign, (v) => {
 		props.popoverAlign = v;
-		popoverCtrl.setAlign(v);
+		popoverBehavior.componentWillLoad({ align: v });
 	});
 	variantProp.apply(getFeatureFlag('buttonVariantDefault', options.getFlagHost()) ?? 'normal', (v) => {
 		props.variant = v;
@@ -141,7 +141,7 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 	props.handleClick = (event: MouseEvent): void => {
 		event.stopPropagation();
 		tooltipBehavior.hideTooltip();
-		popoverCtrl.setShow(!options.getOpen());
+		popoverBehavior.setShow(!options.getOpen());
 		dispatch(KolEvent.click);
 	};
 	props.handleMouseDown = (): void => dispatch(KolEvent.mousedown);
@@ -150,11 +150,11 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 
 	props.refButton = (element?: HTMLButtonElement): void => {
 		ctaRef(element);
-		popoverCtrl.setTriggerElement(element);
+		popoverBehavior.setTriggerElement(element);
 	};
 	props.refPopover = (element?: HTMLDivElement): void => {
 		popoverElement = element;
-		popoverCtrl.setPopoverElementRef(element);
+		popoverBehavior.setPopoverElementRef(element);
 	};
 	props.refTooltip = tooltipBehavior.setTooltipElementRef;
 
@@ -165,7 +165,7 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 
 	return {
 		getFcProps: (): FunctionalComponentProps<PopoverButtonApi> => ({ ...props, popoverOpen: options.getOpen() }) as FunctionalComponentProps<PopoverButtonApi>,
-		hide: (): void => popoverCtrl.setShow(false),
+		hide: (): void => popoverBehavior.setShow(false),
 		setDisabled: applyDisabled,
 		syncListeners: (): void => {
 			if (ctaRef.el) {
@@ -180,7 +180,7 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 				popoverElement.removeEventListener('toggle', handleToggle);
 				popoverElement = undefined;
 			}
-			popoverCtrl.destroy();
+			popoverBehavior.destroy();
 		},
 	};
 };
