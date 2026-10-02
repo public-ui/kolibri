@@ -3,7 +3,7 @@
 exports[`kol-form should render with _errorList=[{"message":"Das Feld Name ist ein Pflichtfeld.","selector":"#name"},{"message":"Die E-Mail-Adresse ist ungültig.","selector":"#email"}] 1`] = `
 <kol-form>
   <template shadowrootmode="open">
-    <form class="kol-form" method="post" novalidate="">
+    <div class="kol-form">
       <div class="kol-alert kol-alert--type-error kol-alert--variant-card kol-form__alert">
         <span class="visually-hidden">
           kol-error
@@ -55,11 +55,13 @@ exports[`kol-form should render with _errorList=[{"message":"Das Feld Name ist e
           </nav>
         </div>
       </div>
-      <p class="kol-form__mandatory-fields-hint">
-        kol-form-description
-      </p>
-      <slot></slot>
-    </form>
+      <form class="kol-form__form" method="post" novalidate="">
+        <p class="kol-form__mandatory-fields-hint">
+          kol-form-description
+        </p>
+        <slot></slot>
+      </form>
+    </div>
   </template>
 </kol-form>
 `;
@@ -67,12 +69,14 @@ exports[`kol-form should render with _errorList=[{"message":"Das Feld Name ist e
 exports[`kol-form should render with _requiredText="Pflichtfeld" 1`] = `
 <kol-form>
   <template shadowrootmode="open">
-    <form class="kol-form" method="post" novalidate="">
-      <p class="kol-form__mandatory-fields-hint">
-        Pflichtfeld
-      </p>
-      <slot></slot>
-    </form>
+    <div class="kol-form">
+      <form class="kol-form__form" method="post" novalidate="">
+        <p class="kol-form__mandatory-fields-hint">
+          Pflichtfeld
+        </p>
+        <slot></slot>
+      </form>
+    </div>
   </template>
 </kol-form>
 `;
@@ -80,9 +84,11 @@ exports[`kol-form should render with _requiredText="Pflichtfeld" 1`] = `
 exports[`kol-form should render with _requiredText=false 1`] = `
 <kol-form>
   <template shadowrootmode="open">
-    <form class="kol-form" method="post" novalidate="">
-      <slot></slot>
-    </form>
+    <div class="kol-form">
+      <form class="kol-form__form" method="post" novalidate="">
+        <slot></slot>
+      </form>
+    </div>
   </template>
 </kol-form>
 `;
@@ -90,12 +96,14 @@ exports[`kol-form should render with _requiredText=false 1`] = `
 exports[`kol-form should render with _requiredText=true 1`] = `
 <kol-form>
   <template shadowrootmode="open">
-    <form class="kol-form" method="post" novalidate="">
-      <p class="kol-form__mandatory-fields-hint">
-        kol-form-description
-      </p>
-      <slot></slot>
-    </form>
+    <div class="kol-form">
+      <form class="kol-form__form" method="post" novalidate="">
+        <p class="kol-form__mandatory-fields-hint">
+          kol-form-description
+        </p>
+        <slot></slot>
+      </form>
+    </div>
   </template>
 </kol-form>
 `;

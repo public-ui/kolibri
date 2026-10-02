@@ -30,7 +30,7 @@ export const HeadingFC: FC<FunctionalComponentProps<HeadingApi>> = (props) => {
 	}
 
 	return (
-		<hgroup class={clsx(headingBem({ group: true }), 'kol-heading-group')}>
+		<hgroup class={headingBem({ group: true })}>
 			<HeadlineTag class={headlineBem({ [HeadlineTag]: true, group: true, primary: true })}>
 				{label}
 				<slot name="expert" slot="expert" />

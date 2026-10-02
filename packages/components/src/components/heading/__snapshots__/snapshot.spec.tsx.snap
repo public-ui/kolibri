@@ -80,7 +80,7 @@ exports[`kol-heading should render with _label="Headline" _level=6 1`] = `
 exports[`kol-heading should render with _label="Headline" _secondaryHeadline="Subheadline" 1`] = `
 <kol-heading>
   <template shadowrootmode="open">
-    <hgroup class="kol-heading kol-heading--group kol-heading-group">
+    <hgroup class="kol-heading kol-heading--group">
       <strong class="kol-headline kol-headline--group kol-headline--primary kol-headline--strong">
         Headline
         <slot name="expert" slot="expert"></slot>

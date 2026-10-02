@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`kol-drawer should render with _label="Label" _open=false 1`] = `
-<kol-drawer class="kol-drawer">
+<kol-drawer>
   <template shadowrootmode="open">
     <div class="kol-drawer">
       <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
@@ -24,7 +24,7 @@ exports[`kol-drawer should render with _label="Label" _open=false 1`] = `
 `;
 
 exports[`kol-drawer should render with _label="Label" _open=true _align="bottom" 1`] = `
-<kol-drawer class="kol-drawer">
+<kol-drawer>
   <template shadowrootmode="open">
     <div class="kol-drawer">
       <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
@@ -47,7 +47,7 @@ exports[`kol-drawer should render with _label="Label" _open=true _align="bottom"
 `;
 
 exports[`kol-drawer should render with _label="Label" _open=true _align="left" 1`] = `
-<kol-drawer class="kol-drawer">
+<kol-drawer>
   <template shadowrootmode="open">
     <div class="kol-drawer">
       <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
@@ -70,7 +70,7 @@ exports[`kol-drawer should render with _label="Label" _open=true _align="left" 1
 `;
 
 exports[`kol-drawer should render with _label="Label" _open=true _align="right" 1`] = `
-<kol-drawer class="kol-drawer">
+<kol-drawer>
   <template shadowrootmode="open">
     <div class="kol-drawer">
       <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
@@ -93,7 +93,7 @@ exports[`kol-drawer should render with _label="Label" _open=true _align="right" 
 `;
 
 exports[`kol-drawer should render with _label="Label" _open=true _align="top" 1`] = `
-<kol-drawer class="kol-drawer">
+<kol-drawer>
   <template shadowrootmode="open">
     <div class="kol-drawer">
       <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
@@ -116,7 +116,7 @@ exports[`kol-drawer should render with _label="Label" _open=true _align="top" 1`
 `;
 
 exports[`kol-drawer should render with _label="Label" _open=true _hasCloser=true 1`] = `
-<kol-drawer class="kol-drawer">
+<kol-drawer>
   <template shadowrootmode="open">
     <div class="kol-drawer">
       <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
@@ -166,7 +166,7 @@ exports[`kol-drawer should render with _label="Label" _open=true _hasCloser=true
 `;
 
 exports[`kol-drawer should render with _label="Label" _open=true _level=2 1`] = `
-<kol-drawer class="kol-drawer">
+<kol-drawer>
   <template shadowrootmode="open">
     <div class="kol-drawer">
       <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">
@@ -189,7 +189,7 @@ exports[`kol-drawer should render with _label="Label" _open=true _level=2 1`] = 
 `;
 
 exports[`kol-drawer should render with _label="Label" 1`] = `
-<kol-drawer class="kol-drawer">
+<kol-drawer>
   <template shadowrootmode="open">
     <div class="kol-drawer">
       <dialog aria-labelledby="drawer-heading-nonce" aria-modal="true" class="kol-drawer__dialog">

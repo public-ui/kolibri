@@ -26,7 +26,7 @@ exports[`kol-table-stateless should render with _label="Table shows loading spin
             <div class="kol-table__loader kol-table__loader--shown">
               <div class="kol-spin">
                 <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                  <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
+                  <span class="kol-spin__loader"></span>
                 </span>
                 <span aria-busy="true" class="visually-hidden" role="alert">
                   kol-table-data-loading
@@ -83,7 +83,7 @@ exports[`kol-table-stateless should render with _label="Table with action column
             <div class="kol-table__loader kol-table__loader--shown">
               <div class="kol-spin">
                 <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                  <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
+                  <span class="kol-spin__loader"></span>
                 </span>
                 <span aria-busy="true" class="visually-hidden" role="alert">
                   kol-table-data-loading
@@ -494,7 +494,7 @@ exports[`kol-table-stateless should render with _label="Table with state column"
             <div class="kol-table__loader kol-table__loader--shown">
               <div class="kol-spin">
                 <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                  <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
+                  <span class="kol-spin__loader"></span>
                 </span>
                 <span aria-busy="true" class="visually-hidden" role="alert">
                   kol-table-data-loading
@@ -813,7 +813,7 @@ exports[`kol-table-stateless-wc should render with _label="Table shows loading s
           <div class="kol-table__loader kol-table__loader--shown">
             <div class="kol-spin">
               <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
+                <span class="kol-spin__loader"></span>
               </span>
               <span aria-busy="true" class="visually-hidden" role="alert">
                 kol-table-data-loading
@@ -868,7 +868,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with action col
           <div class="kol-table__loader kol-table__loader--shown">
             <div class="kol-spin">
               <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
+                <span class="kol-spin__loader"></span>
               </span>
               <span aria-busy="true" class="visually-hidden" role="alert">
                 kol-table-data-loading
@@ -1267,7 +1267,7 @@ exports[`kol-table-stateless-wc should render with _label="Table with state colu
           <div class="kol-table__loader kol-table__loader--shown">
             <div class="kol-spin">
               <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
+                <span class="kol-spin__loader"></span>
               </span>
               <span aria-busy="true" class="visually-hidden" role="alert">
                 kol-table-data-loading

@@ -7,7 +7,7 @@ import { resolveCardCloseButtonProps } from '../../internal/functional-component
 import type { CardFCProps } from '../../internal/functional-components/card/component';
 import type { DrawerApi } from '../../internal/functional-components/drawer/api';
 import { drawerPropsConfig } from '../../internal/functional-components/drawer/api';
-import { BEM_CLASS_DRAWER, DrawerFC } from '../../internal/functional-components/drawer/component';
+import { DrawerFC } from '../../internal/functional-components/drawer/component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { alignProp, drawerCallbacksProp, hasCloserProp, labelProp, levelProp, openProp } from '../../internal/props';
@@ -241,10 +241,9 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 		};
 	}
 
-	/** The host keeps the block class — see {@link BEM_CLASS_DRAWER}. */
 	public render(): JSX.Element {
 		return (
-			<Host class={BEM_CLASS_DRAWER}>
+			<Host>
 				<DrawerFC
 					align={this.getRenderProp('align')}
 					ariaDescriptionId={this.getState('ariaDescriptionId')}
