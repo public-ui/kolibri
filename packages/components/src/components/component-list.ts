@@ -25,7 +25,7 @@ import { KolInputEmail } from './input-email/component';
 import { KolInputFile } from './input-file/component';
 import { KolInputNumber } from './input-number/component';
 import { KolInputPassword } from './input-password/component';
-import { KolInputRadio } from './input-radio/shadow';
+import { KolInputRadio } from './input-radio/component';
 import { KolInputRange } from './input-range/component';
 import { KolInputText } from './input-text/component';
 import { KolKolibri } from './kolibri/shadow';

@@ -7,13 +7,11 @@ import {
 	type InputFileStates,
 	type InputNumberStates,
 	type InputPasswordStates,
-	type InputRadioStates,
 	type InputRangeStates,
 	type InputTextStates,
 	type MsgPropType,
 	type SelectStates,
 } from '../../schema';
-import { getRenderStates } from '../_helpers/getRenderStates';
 
 type InputState =
 	| InputTextStates
@@ -23,7 +21,6 @@ type InputState =
 	| InputColorStates
 	| InputFileStates
 	| InputRangeStates
-	| InputRadioStates
 	| SelectStates
 	| TextareaStates;
 
@@ -86,13 +83,10 @@ function getFormFieldProps(
 }
 
 const FormFieldStateWrapper: FC<FormFieldStateWrapperProps> = ({ state, counterRefs, ...other }, children) => {
-	const { ariaDescribedBy: ariaDescribedByArray } = getRenderStates(state);
-	const isRadioVariant = other.component === 'fieldset' || ('_options' in state && '_orientation' in state);
-	const ariaDescribedBy = isRadioVariant && ariaDescribedByArray.length > 0 ? ariaDescribedByArray.join(' ') : undefined;
 	const baseProps = getFormFieldProps(state, counterRefs);
 
 	return (
-		<KolFormFieldFc {...baseProps} {...other} ariaDescribedBy={ariaDescribedBy}>
+		<KolFormFieldFc {...baseProps} {...other}>
 			{children}
 		</KolFormFieldFc>
 	);

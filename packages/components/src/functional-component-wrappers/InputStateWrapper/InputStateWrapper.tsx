@@ -9,15 +9,13 @@ import {
 	type InputFileStates,
 	type InputNumberStates,
 	type InputPasswordStates,
-	type InputRadioStates,
 	type InputRangeStates,
 	type InputTextStates,
 	type MsgPropType,
 } from '../../schema';
 import { getRenderStates } from '../_helpers/getRenderStates';
 
-type InputState =
-	InputTextStates | InputEmailStates | InputPasswordStates | InputNumberStates | InputColorStates | InputFileStates | InputRangeStates | InputRadioStates;
+type InputState = InputTextStates | InputEmailStates | InputPasswordStates | InputNumberStates | InputColorStates | InputFileStates | InputRangeStates;
 
 export type InputStateWrapperProps = Partial<InputProps> & {
 	state: InputState;
