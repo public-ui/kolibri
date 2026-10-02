@@ -1,5 +1,5 @@
-import type { KoliBriTableDataType, KoliBriTableHeaderCellWithLogic } from '@public-ui/components';
-import { KolButton, KolDrawer, KolInputText, KolTableStateful, KolToolbar } from '@public-ui/react-v19';
+import type { KoliBriTableDataType, KoliBriTableHeaderCellWithLogic, KoliBriTableSelection, ToolbarItemsPropType } from '@public-ui/components';
+import { KolButton, KolDrawer, KolInputCheckbox, KolInputText, KolTableStateful, KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useState } from 'react';
 import { SampleDescription } from '../SampleDescription';
@@ -30,129 +30,175 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 				key: 'id',
 				label: 'ID',
 				textAlign: 'left',
-				width: 60,
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as unknown as DataRow).id - (data1 as unknown as DataRow).id,
+				width: 80,
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as DataRow).id - (data1 as DataRow).id,
 				sortDirection: 'ASC',
 			},
 			{
 				key: 'name',
 				label: 'Name',
 				textAlign: 'left',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
-					(data0 as unknown as DataRow).name.localeCompare((data1 as unknown as DataRow).name, 'de'),
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as DataRow).name.localeCompare((data1 as DataRow).name, 'en'),
 				sortDirection: 'ASC',
 			},
 			{
 				key: 'email',
-				label: 'E-Mail',
+				label: 'Email',
 				textAlign: 'left',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
-					(data0 as unknown as DataRow).email.localeCompare((data1 as unknown as DataRow).email, 'de'),
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as DataRow).email.localeCompare((data1 as DataRow).email, 'en'),
 				sortDirection: 'ASC',
 			},
 		],
 	],
 };
 
-function deleteSelected() {
-	console.log('Test');
-}
-type SetNameValueFn = (value: string) => void;
-type SetEmailValueFn = (value: string) => void;
+export const FIRST_NAMES = ['Ada', 'Bruno', 'Clara', 'Finn', 'Ida', 'Jonas', 'Lena', 'Nele', 'Otto', 'Sina'];
+export const LAST_NAMES = ['Bauer', 'Fuchs', 'Hirsch', 'Kraft', 'Lindner', 'Moor', 'Reuter', 'Schubert', 'Wagner', 'Winter'];
 
-const AddEntryEditor: React.FC<{ nameValue: string; setNameValue: SetNameValueFn; emailValue: string; setEmailValue: SetEmailValueFn }> = ({
-	nameValue,
-	setNameValue,
-	emailValue,
-	setEmailValue,
-}) => {
-	return (
-		<>
-			<KolInputText
-				_label="Vorname, Name"
-				_value={nameValue}
-				_on={{
-					onInput: (e: Event) => {
-						setNameValue((e.target as HTMLInputElement).value);
-					},
-				}}
-			/>
-			<KolInputText
-				_label="Email"
-				_value={emailValue}
-				_on={{
-					onInput: (e: Event) => {
-						setEmailValue((e.target as HTMLInputElement).value);
-					},
-				}}
-			/>
-		</>
-	);
-};
+function pick<T>(values: T[]): T {
+	return values[Math.floor(Math.random() * values.length)];
+}
+
+function nextId(rows: DataRow[]): number {
+	return rows.reduce((max, row) => Math.max(max, row.id), 1000) + 1;
+}
+
+function createDummyRow(id: number): DataRow {
+	const firstName = pick(FIRST_NAMES);
+	const lastName = pick(LAST_NAMES);
+	return {
+		id,
+		name: `${firstName} ${lastName}`,
+		email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@example.com`,
+	};
+}
 
 export const TableWithToolbar: FC = () => {
-	const [isAdding, setIsAdding] = useState(false);
 	const [dataRows, setDataRows] = useState<DataRow[]>(DATA);
-	const [nameValue, setNameValue] = useState('Vorname, Name');
-	const [emailValue, setEmailValue] = useState('Vorname.Nachname@example.com');
-	const [nextID, setNextID] = useState(dataRows.length + 1001);
+	/** Keys (`DataRow.id`) of all selected rows. */
+	const [selectedKeys, setSelectedKeys] = useState<number[]>([]);
+	const [isMultiple, setIsMultiple] = useState(false);
+	/** The form is open while a draft exists; a draft whose ID already exists edits that row. */
+	const [draft, setDraft] = useState<DataRow | null>(null);
 
-	function addEntry() {
-		const newRow: DataRow = { id: nextID, name: nameValue, email: emailValue };
-		setNextID(1 + nextID);
-		setDataRows([...dataRows, newRow]);
-		setIsAdding(false);
-	}
+	const isEditing = draft !== null && dataRows.some((row) => row.id === draft.id);
+
+	const selection: KoliBriTableSelection = {
+		keyPropertyName: 'id',
+		label: (row) => `Select row ${(row as DataRow).name}`,
+		multiple: isMultiple,
+		selectedKeys,
+	};
+
+	const handleSelectionChange = (_event: Event, selectedRows: KoliBriTableDataType[] | null) => {
+		setSelectedKeys((selectedRows ?? []).map((row) => (row as DataRow).id));
+	};
+
+	const handleSelectionModeSwitch = (_event: Event, value: unknown) => {
+		setIsMultiple(value === true);
+		/* A multiple selection does not fit the single selection mode. */
+		if (value !== true && selectedKeys.length > 1) {
+			setSelectedKeys([]);
+		}
+	};
+
+	const openAddDrawer = () => {
+		setDraft(createDummyRow(nextId(dataRows)));
+	};
+
+	const editSelectedRow = () => {
+		const selectedRow = dataRows.find((row) => row.id === selectedKeys[0]);
+		if (selectedRow !== undefined) {
+			setDraft({ ...selectedRow });
+		}
+	};
+
+	const closeDrawer = () => {
+		setDraft(null);
+	};
+
+	const saveDraft = () => {
+		if (draft !== null) {
+			setDataRows((rows) => (isEditing ? rows.map((row) => (row.id === draft.id ? draft : row)) : [...rows, draft]));
+		}
+		setDraft(null);
+	};
+
+	const deleteSelectedRows = () => {
+		if (selectedKeys.length === 0) {
+			return;
+		}
+		setDataRows(dataRows.filter((row) => !selectedKeys.includes(row.id)));
+		setSelectedKeys([]);
+	};
+
+	const toolbarItems: ToolbarItemsPropType = [
+		{
+			type: 'button',
+			_label: 'Add',
+			_icons: { left: { icon: 'kolicon-plus' } },
+			_variant: 'primary',
+			_on: { onClick: openAddDrawer },
+		},
+		{
+			type: 'button',
+			_label: 'Edit',
+			_variant: 'secondary',
+			_disabled: selectedKeys.length !== 1,
+			_on: { onClick: editSelectedRow },
+		},
+		{
+			type: 'button',
+			_label: 'Delete',
+			_icons: { left: { icon: 'kolicon-cross' } },
+			_variant: 'danger',
+			_disabled: selectedKeys.length === 0,
+			_on: { onClick: deleteSelectedRows },
+		},
+	];
 
 	return (
 		<>
 			<SampleDescription>
-				<p>TEXT</p>
+				<p>
+					This sample combines a toolbar with a table: a switch toggles between single and multiple selection. "Add" generates a new dummy record in a form and
+					inserts it via "Create". "Edit" opens the selected row in the same form when exactly one row is selected. "Delete" removes all selected rows and is
+					only enabled with a selection.
+				</p>
 			</SampleDescription>
 
 			<section className="w-full">
-				<KolToolbar
-					_items={[
-						{
-							type: 'button',
-							_label: 'Auswahl löschen',
-							_on: {
-								onClick: () => {
-									deleteSelected();
-								},
-							},
-						},
-						{
-							type: 'button',
-							_label: 'Neuer Eintrag',
-							_on: {
-								onClick: () => {
-									setIsAdding(!isAdding);
-								},
-							},
-						},
-					]}
-					_label="Toolbar"
+				<KolToolbar _label="Table actions" _items={toolbarItems} />
+
+				<KolInputCheckbox
+					className="block w-fit py-2"
+					_label="Multiple selection"
+					_variant="switch"
+					_checked={isMultiple}
+					_value={true}
+					_on={{ onInput: handleSelectionModeSwitch }}
 				/>
 
-				<KolDrawer _label="Eintag hinzufügen" _open={isAdding} _align="right" _hasCloser _on={{ onClose: () => setIsAdding(false) }}>
-					<div className="flex flex-col gap-4 py-4">
-						<AddEntryEditor nameValue={nameValue} setNameValue={setNameValue} emailValue={emailValue} setEmailValue={setEmailValue} />
-						<KolButton _label="Hinzufügen" _variant="primary" _on={{ onClick: () => addEntry() }} />
-					</div>
+				<KolDrawer _label={isEditing ? 'Edit entry' : 'Add entry'} _align="right" _level={2} _open={draft !== null} _hasCloser _on={{ onClose: closeDrawer }}>
+					{draft !== null && (
+						<div className="flex flex-col gap-4 py-4">
+							<KolInputText _label="Name" _value={draft.name} _on={{ onInput: (_event, value) => setDraft({ ...draft, name: String(value) }) }} />
+							<KolInputText _label="Email" _value={draft.email} _on={{ onInput: (_event, value) => setDraft({ ...draft, email: String(value) }) }} />
+							<div className="flex flex-wrap gap-2">
+								<KolButton _label={isEditing ? 'Save' : 'Create'} _variant="primary" _on={{ onClick: saveDraft }} />
+								<KolButton _label="Cancel" _variant="secondary" _on={{ onClick: closeDrawer }} />
+							</div>
+						</div>
+					)}
 				</KolDrawer>
 
 				<KolTableStateful
-					_label="Benutzerverwaltung mit Action-Spalte"
+					_label="User management"
 					_headers={HEADERS}
 					_data={dataRows}
 					className="block"
-					_selection={{
-						multiple: true,
-						label: (row) => `Select ${(row as DataRow).name}`,
-						keyPropertyName: 'id',
-						selectedKeys: [],
-					}}
+					_selection={selection}
+					_on={{ onSelectionChange: handleSelectionChange }}
 				/>
 			</section>
 		</>
