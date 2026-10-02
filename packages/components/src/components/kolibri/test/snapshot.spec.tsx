@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolKolibri } from '../shadow';
+import { KolKolibri } from '../component';
 
 const DEFAULT_HTML_SVG_PROPS = `class="kol-kolibri" role="img" aria-label="kol-kolibri-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"`;
 const DEFAULT_PATH_TAGS = `<path d="M353 322L213 304V434L353 322Z"></path>
