@@ -146,8 +146,8 @@ test.describe(COMPONENT_NAME, () => {
 			touchedAfterBlur: true,
 			initialValue: undefined,
 			formData: [],
-			experimentalFormData: [],
-			syncedValue: '',
+			experimentalFormData: [['field', TEST_VALUE]],
+			syncedValue: TEST_VALUE,
 		},
 	});
 
@@ -191,7 +191,7 @@ test.describe(COMPONENT_NAME, () => {
 				['field', 'W'],
 				['field', 'E'],
 			],
-			syncedValue: '',
+			syncedValue: '["W","E"]',
 		},
 		variant: '_multiple',
 	});
@@ -217,6 +217,23 @@ test.describe(COMPONENT_NAME, () => {
 			});
 			await page.waitForChanges();
 			expect(await component.evaluate((element: HTMLKolSelectElement) => element.getValue())).toEqual(['S', 'E']);
+		});
+
+		test('synchronizes the single value into an <input> target from the start and on _value changes (#11015)', async ({ page }) => {
+			await setContentWithRetry(page, '<head><meta name="kolibri" content="experimental-mode=true" /></head><body><input id="target" /></body>');
+			// The experimental mode is read at startup, so the field is inserted afterwards.
+			await page.evaluate(
+				(markup) => document.body.insertAdjacentHTML('beforeend', markup),
+				`<kol-select _label="Input" _sync-value-by-selector="#target" ${OPTIONS_ATTRIBUTE}></kol-select>`,
+			);
+			await page.waitForChanges();
+			await expect(page.locator('#target')).toHaveValue('N');
+
+			await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolSelectElement) => {
+				element._value = 'W';
+			});
+			await page.waitForChanges();
+			await expect(page.locator('#target')).toHaveValue('W');
 		});
 
 		test('selects the next option with ArrowDown and reports its value', async ({ page }) => {
