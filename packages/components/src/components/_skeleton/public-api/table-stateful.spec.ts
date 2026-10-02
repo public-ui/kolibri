@@ -105,4 +105,4 @@ const KOL_TABLE_STATEFUL_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-table-stateful', component: 'table-stateful', file: 'shadow.tsx', pinnedApi: KOL_TABLE_STATEFUL_PUBLIC_API });
+describePublicApiContract({ tag: 'kol-table-stateful', component: 'table-stateful', pinnedApi: KOL_TABLE_STATEFUL_PUBLIC_API });

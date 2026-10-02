@@ -8,9 +8,9 @@ jest.mock('../../../schema', () => {
 import type { KoliBriTableHeaders } from '../../../schema';
 import * as Schema from '../../../schema';
 import { setRuntimeMode } from '../../../schema/utils/dev.utils';
-import { KolTableStateful } from '../shadow';
+import { KolTableStateful } from '../component';
 
-describe('KolTableStateful.validateHeaders', () => {
+describe('KolTableStateful.watchHeaders', () => {
 	it('warns when compareFn is set without key', () => {
 		setRuntimeMode('development');
 		const table = new KolTableStateful();
@@ -25,7 +25,7 @@ describe('KolTableStateful.validateHeaders', () => {
 				],
 			],
 		};
-		table.validateHeaders(headers);
+		table.watchHeaders(headers);
 		expect(Schema.devHint).toHaveBeenCalledWith("[KolTableStateful] A sortable column requires the 'key' property.");
 	});
 });

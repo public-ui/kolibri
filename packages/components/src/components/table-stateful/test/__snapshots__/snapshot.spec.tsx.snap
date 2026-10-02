@@ -3,196 +3,194 @@
 exports[`kol-table-stateful should render with a multiple selection 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th class="kol-table__cell kol-table__cell--header kol-table__cell--selection" scope="col">
-                  <span class="visually-hidden">
-                    kol-table-selection
-                  </span>
-                  <div class="kol-table__selection kol-table__selection--indeterminate">
-                    <label class="kol-table__selection-label">
-                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-table__selection-icon kolicon kolicon-minus" role="presentation"></i>
-                      <input aria-label="kol-table-selection-indeterminate" class="kol-table__selection-input kol-table__selection-input--checkbox" indeterminate="" name="selection" type="checkbox">
-                    </label>
-                    <div class="kol-table__selection-input-tooltip">
-                      <div class="kol-tooltip__floating">
-                        <div class="kol-tooltip__arrow"></div>
-                        <span class="kol-span kol-tooltip__content">
-                          <span class="kol-span__container">
-                            <span class="kol-span__label">
-                              kol-table-selection-indeterminate
-                            </span>
-                            <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
-                          </span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="4"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th class="kol-table__cell kol-table__cell--header kol-table__cell--selection" scope="col">
+                <span class="visually-hidden">
+                  kol-table-selection
                 </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--selection">
-                  <div class="kol-table__selection">
-                    <label class="kol-table__selection-label">
-                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-table__selection-icon kolicon" role="presentation"></i>
-                      <input aria-label="Select Name 0" class="kol-table__selection-input kol-table__selection-input--checkbox" id="23" name="selection" type="checkbox">
-                    </label>
-                    <div class="kol-table__selection-input-tooltip">
-                      <div class="kol-tooltip__floating">
-                        <div class="kol-tooltip__arrow"></div>
-                        <span class="kol-span kol-tooltip__content" id="23-label">
-                          <span class="kol-span__container">
-                            <span class="kol-span__label">
-                              Select Name 0
-                            </span>
-                            <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                <div class="kol-table__selection kol-table__selection--indeterminate">
+                  <label class="kol-table__selection-label">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-table__selection-icon kolicon kolicon-minus" role="presentation"></i>
+                    <input aria-label="kol-table-selection-indeterminate" class="kol-table__selection-input kol-table__selection-input--checkbox" indeterminate="" name="selection" type="checkbox">
+                  </label>
+                  <div class="kol-table__selection-input-tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-table-selection-indeterminate
                           </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
                         </span>
-                      </div>
+                      </span>
                     </div>
                   </div>
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  23
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 0
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--selection">
-                  <div class="kol-table__selection kol-table__selection--checked">
-                    <label class="kol-table__selection-label">
-                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-table__selection-icon kolicon kolicon-check" role="presentation"></i>
-                      <input aria-label="Select Name 7" checked="" class="kol-table__selection-input kol-table__selection-input--checkbox" id="22" name="selection" type="checkbox">
-                    </label>
-                    <div class="kol-table__selection-input-tooltip">
-                      <div class="kol-tooltip__floating">
-                        <div class="kol-tooltip__arrow"></div>
-                        <span class="kol-span kol-tooltip__content" id="22-label">
-                          <span class="kol-span__container">
-                            <span class="kol-span__label">
-                              Select Name 7
-                            </span>
-                            <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </div>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="4"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--selection">
+                <div class="kol-table__selection">
+                  <label class="kol-table__selection-label">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-table__selection-icon kolicon" role="presentation"></i>
+                    <input aria-label="Select Name 0" class="kol-table__selection-input kol-table__selection-input--checkbox" id="23" name="selection" type="checkbox">
+                  </label>
+                  <div class="kol-table__selection-input-tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content" id="23-label">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Select Name 0
                           </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
                         </span>
-                      </div>
+                      </span>
                     </div>
                   </div>
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  22
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 7
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--selection">
-                  <div class="kol-table__selection">
-                    <label class="kol-table__selection-label">
-                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-table__selection-icon kolicon" role="presentation"></i>
-                      <input aria-label="Select Name 14" class="kol-table__selection-input kol-table__selection-input--checkbox" id="21" name="selection" type="checkbox">
-                    </label>
-                    <div class="kol-table__selection-input-tooltip">
-                      <div class="kol-tooltip__floating">
-                        <div class="kol-tooltip__arrow"></div>
-                        <span class="kol-span kol-tooltip__content" id="21-label">
-                          <span class="kol-span__container">
-                            <span class="kol-span__label">
-                              Select Name 14
-                            </span>
-                            <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </div>
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                23
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--selection">
+                <div class="kol-table__selection kol-table__selection--checked">
+                  <label class="kol-table__selection-label">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-table__selection-icon kolicon kolicon-check" role="presentation"></i>
+                    <input aria-label="Select Name 7" checked="" class="kol-table__selection-input kol-table__selection-input--checkbox" id="22" name="selection" type="checkbox">
+                  </label>
+                  <div class="kol-table__selection-input-tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content" id="22-label">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Select Name 7
                           </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
                         </span>
-                      </div>
+                      </span>
                     </div>
                   </div>
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--selection">
-                  <div class="kol-table__selection">
-                    <label class="kol-table__selection-label">
-                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-table__selection-icon kolicon" role="presentation"></i>
-                      <input aria-label="Select Name 21" class="kol-table__selection-input kol-table__selection-input--checkbox" id="20" name="selection" type="checkbox">
-                    </label>
-                    <div class="kol-table__selection-input-tooltip">
-                      <div class="kol-tooltip__floating">
-                        <div class="kol-tooltip__arrow"></div>
-                        <span class="kol-span kol-tooltip__content" id="20-label">
-                          <span class="kol-span__container">
-                            <span class="kol-span__label">
-                              Select Name 21
-                            </span>
-                            <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                </div>
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                22
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 7
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--selection">
+                <div class="kol-table__selection">
+                  <label class="kol-table__selection-label">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-table__selection-icon kolicon" role="presentation"></i>
+                    <input aria-label="Select Name 14" class="kol-table__selection-input kol-table__selection-input--checkbox" id="21" name="selection" type="checkbox">
+                  </label>
+                  <div class="kol-table__selection-input-tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content" id="21-label">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Select Name 14
                           </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
                         </span>
-                      </div>
+                      </span>
                     </div>
                   </div>
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  20
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                </div>
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--selection">
+                <div class="kol-table__selection">
+                  <label class="kol-table__selection-label">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-table__selection-icon kolicon" role="presentation"></i>
+                    <input aria-label="Select Name 21" class="kol-table__selection-input kol-table__selection-input--checkbox" id="20" name="selection" type="checkbox">
+                  </label>
+                  <div class="kol-table__selection-input-tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content" id="20-label">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Select Name 21
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                20
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
   </template>
 </kol-table-stateful>
 `;
@@ -200,88 +198,86 @@ exports[`kol-table-stateful should render with a multiple selection 1`] = `
 exports[`kol-table-stateful should render with an initial ascending sort 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="ascending" class="kol-table__cell kol-table__cell--ascending kol-table__cell--header" data-sort="sort-ASC" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="ascending" class="kol-table__cell kol-table__cell--ascending kol-table__cell--header" data-sort="sort-ASC" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
                 </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  20
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  22
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 7
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  23
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 0
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                20
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                22
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 7
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                23
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
   </template>
 </kol-table-stateful>
 `;
@@ -289,88 +285,86 @@ exports[`kol-table-stateful should render with an initial ascending sort 1`] = `
 exports[`kol-table-stateful should render with an initial descending sort 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="descending" class="kol-table__cell kol-table__cell--descending kol-table__cell--header" data-sort="sort-DESC" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
                 </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  22
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 7
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  23
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 0
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  20
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="descending" class="kol-table__cell kol-table__cell--descending kol-table__cell--header" data-sort="sort-DESC" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                22
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 7
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                23
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                20
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
   </template>
 </kol-table-stateful>
 `;
@@ -378,54 +372,52 @@ exports[`kol-table-stateful should render with an initial descending sort 1`] = 
 exports[`kol-table-stateful should render with data and headers as JSON strings 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  ID
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="1"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
-                </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  23
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  22
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  21
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  20
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                ID
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="1"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                23
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                22
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                21
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                20
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
   </template>
 </kol-table-stateful>
 `;
@@ -433,88 +425,86 @@ exports[`kol-table-stateful should render with data and headers as JSON strings 
 exports[`kol-table-stateful should render with data without sorting 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
                 </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  23
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 0
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  22
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 7
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  20
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                23
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                22
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 7
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                20
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
   </template>
 </kol-table-stateful>
 `;
@@ -522,55 +512,53 @@ exports[`kol-table-stateful should render with data without sorting 1`] = `
 exports[`kol-table-stateful should render with horizontal and vertical headers, which disable sorting 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <td aria-hidden="true" colspan="1" rowspan="1"></td>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  ID
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  City
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="4"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
-                </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="row">
-                  Row
-                </th>
-                <td class="kol-table__cell kol-table__cell--body">
-                  23
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 0
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <td aria-hidden="true" colspan="1" rowspan="1"></td>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                ID
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                City
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="4"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="row">
+                Row
+              </th>
+              <td class="kol-table__cell kol-table__cell--body">
+                23
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
   </template>
 </kol-table-stateful>
 `;
@@ -580,7 +568,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
   <template shadowrootmode="open">
     <div class="kol-table-stateful__pagination kol-table-stateful__pagination--both">
       <div class="kol-table-stateful__pagination-wrapper">
-        <kol-pagination-wc class="kol-pagination">
+        <div class="kol-pagination">
           <span aria-live="polite" class="kol-pagination__entries" role="status">
             kol-table-visible-range
           </span>
@@ -612,83 +600,81 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
           <div class="page-size">
             <kol-select-wc _label="kol-entries-per-site" _value="10" class="kol-pagination__page-size-select"></kol-select-wc>
           </div>
-        </kol-pagination-wc>
-      </div>
-    </div>
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
-                </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  3
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 2
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  2
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 9
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  1
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 16
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
-    </kol-table-stateless-wc>
+    </div>
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                3
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 2
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                2
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 9
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                1
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 16
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
     <div class="kol-table-stateful__pagination kol-table-stateful__pagination--both">
       <div class="kol-table-stateful__pagination-wrapper">
-        <kol-pagination-wc class="kol-pagination">
+        <div class="kol-pagination">
           <span aria-live="polite" class="kol-pagination__entries" role="status">
             kol-table-visible-range
           </span>
@@ -720,7 +706,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
           <div class="page-size">
             <kol-select-wc _label="kol-entries-per-site" _value="10" class="kol-pagination__page-size-select"></kol-select-wc>
           </div>
-        </kol-pagination-wc>
+        </div>
       </div>
     </div>
   </template>
@@ -730,157 +716,155 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
 exports[`kol-table-stateful should render with pagination as empty string 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
                 </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  23
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 0
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  22
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 7
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  20
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  19
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 5
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  18
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 12
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  17
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 19
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  16
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 3
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  15
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 10
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 17
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                23
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                22
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 7
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                20
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                19
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 5
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                18
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 12
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                17
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 19
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                16
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 3
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                15
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 10
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 17
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
     <div class="kol-table-stateful__pagination kol-table-stateful__pagination--bottom">
       <div class="kol-table-stateful__pagination-wrapper">
-        <kol-pagination-wc class="kol-pagination">
+        <div class="kol-pagination">
           <span aria-live="polite" class="kol-pagination__entries" role="status">
             kol-table-visible-range
           </span>
@@ -912,7 +896,7 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
           <div class="page-size">
             <kol-select-wc _label="kol-entries-per-site" _value="10" class="kol-pagination__page-size-select"></kol-select-wc>
           </div>
-        </kol-pagination-wc>
+        </div>
       </div>
     </div>
   </template>
@@ -922,297 +906,295 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
 exports[`kol-table-stateful should render with pagination false 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
                 </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  23
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 0
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  22
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 7
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  20
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  19
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 5
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  18
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 12
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  17
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 19
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  16
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 3
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  15
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 10
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 17
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  13
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 1
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  12
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 8
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  11
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 15
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  10
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 22
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  9
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 6
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  8
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 13
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  7
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 20
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  6
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 4
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  5
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 11
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  4
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 18
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  3
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 2
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  2
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 9
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  1
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 16
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                23
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                22
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 7
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                20
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                19
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 5
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                18
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 12
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                17
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 19
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                16
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 3
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                15
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 10
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 17
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                13
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 1
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                12
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 8
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                11
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 15
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                10
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 22
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                9
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 6
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                8
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 13
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                7
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 20
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                6
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 4
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                5
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 11
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                4
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 18
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                3
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 2
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                2
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 9
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                1
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 16
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
   </template>
 </kol-table-stateful>
 `;
@@ -1222,7 +1204,7 @@ exports[`kol-table-stateful should render with pagination object on the second p
   <template shadowrootmode="open">
     <div class="kol-table-stateful__pagination kol-table-stateful__pagination--top">
       <div class="kol-table-stateful__pagination-wrapper">
-        <kol-pagination-wc class="kol-pagination">
+        <div class="kol-pagination">
           <span aria-live="polite" class="kol-pagination__entries" role="status">
             kol-table-visible-range
           </span>
@@ -1260,102 +1242,100 @@ exports[`kol-table-stateful should render with pagination object on the second p
           <div class="page-size">
             <kol-select-wc _label="kol-entries-per-site" _value="5" class="kol-pagination__page-size-select"></kol-select-wc>
           </div>
-        </kol-pagination-wc>
-      </div>
-    </div>
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
-                </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  18
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 12
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  17
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 19
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  16
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 3
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  15
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 10
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 17
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
-    </kol-table-stateless-wc>
+    </div>
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                18
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 12
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                17
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 19
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                16
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 3
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                15
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 10
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 17
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </template>
 </kol-table-stateful>
 `;
@@ -1363,157 +1343,155 @@ exports[`kol-table-stateful should render with pagination object on the second p
 exports[`kol-table-stateful should render with pagination true 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
                 </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  23
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 0
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  22
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 7
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  20
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  19
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 5
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  18
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 12
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  17
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 19
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  16
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 3
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  15
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 10
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 17
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                23
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                22
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 7
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                20
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                19
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 5
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                18
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 12
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                17
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 19
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                16
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 3
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                15
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 10
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 17
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
     <div class="kol-table-stateful__pagination kol-table-stateful__pagination--bottom">
       <div class="kol-table-stateful__pagination-wrapper">
-        <kol-pagination-wc class="kol-pagination">
+        <div class="kol-pagination">
           <span aria-live="polite" class="kol-pagination__entries" role="status">
             kol-table-visible-range
           </span>
@@ -1545,7 +1523,7 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
           <div class="page-size">
             <kol-select-wc _label="kol-entries-per-site" _value="10" class="kol-pagination__page-size-select"></kol-select-wc>
           </div>
-        </kol-pagination-wc>
+        </div>
       </div>
     </div>
   </template>
@@ -1555,69 +1533,67 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
 exports[`kol-table-stateful should render with pagination with boundary and sibling count and its own max 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
                 </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  17
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 19
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  16
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 3
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                17
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 19
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                16
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 3
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
     <div class="kol-table-stateful__pagination kol-table-stateful__pagination--bottom">
       <div class="kol-table-stateful__pagination-wrapper">
-        <kol-pagination-wc class="kol-pagination">
+        <div class="kol-pagination">
           <span aria-live="polite" class="kol-pagination__entries" role="status">
             kol-table-visible-range
           </span>
@@ -1640,7 +1616,7 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
           <div class="page-size">
             <kol-select-wc _label="kol-entries-per-site" _value="10" class="kol-pagination__page-size-select"></kol-select-wc>
           </div>
-        </kol-pagination-wc>
+        </div>
       </div>
     </div>
   </template>
@@ -1650,49 +1626,47 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
 exports[`kol-table-stateful should render with pagination without data 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
                 </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="3" rowspan="1">
-                  kol-no-entries
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="3" rowspan="1">
+                kol-no-entries
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
   </template>
 </kol-table-stateful>
 `;
@@ -1700,106 +1674,104 @@ exports[`kol-table-stateful should render with pagination without data 1`] = `
 exports[`kol-table-stateful should render with the props passed to the stateless table 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table kol-table--custom">
-        <kol-table-settings-wc></kol-table-settings-wc>
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none kol-table__cell--sticky-left" data-sort="sort-NOS" scope="col" style="left: 0px;">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader kol-table__loader--shown">
-                <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                  <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
+    <div class="kol-table kol-table--custom">
+      <kol-table-settings-wc></kol-table-settings-wc>
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none kol-table__cell--sticky-left" data-sort="sort-NOS" scope="col" style="left: 0px;">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
                 </span>
-                <span aria-busy="true" class="visually-hidden" role="alert">
-                  kol-table-data-loading
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
                 </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body kol-table__cell--sticky-left" style="left: 0px;">
-                  23
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 0
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body kol-table__cell--sticky-left" style="left: 0px;">
-                  22
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 7
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body kol-table__cell--sticky-left" style="left: 0px;">
-                  21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body kol-table__cell--sticky-left" style="left: 0px;">
-                  20
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-            </tbody>
-            <tfoot class="kol-table__footer">
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--foot">
-                <td class="kol-table__spacer-line kol-table__spacer-line--foot" colspan="3"></td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--footer">
-                <td class="kol-table__cell kol-table__cell--body kol-table__cell--sticky-left" style="left: 0px;">
-                  0
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Sum
-                </td>
-                <td class="kol-table__cell kol-table__cell--body"></td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader kol-table__loader--shown">
+              <span class="kol-spin__spinner kol-spin__spinner--cycle">
+                <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
+              </span>
+              <span aria-busy="true" class="visually-hidden" role="alert">
+                kol-table-data-loading
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body kol-table__cell--sticky-left" style="left: 0px;">
+                23
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body kol-table__cell--sticky-left" style="left: 0px;">
+                22
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 7
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body kol-table__cell--sticky-left" style="left: 0px;">
+                21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body kol-table__cell--sticky-left" style="left: 0px;">
+                20
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+          </tbody>
+          <tfoot class="kol-table__footer">
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--foot">
+              <td class="kol-table__spacer-line kol-table__spacer-line--foot" colspan="3"></td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--footer">
+              <td class="kol-table__cell kol-table__cell--body kol-table__cell--sticky-left" style="left: 0px;">
+                0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Sum
+              </td>
+              <td class="kol-table__cell kol-table__cell--body"></td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
   </template>
 </kol-table-stateful>
 `;
@@ -1807,94 +1779,92 @@ exports[`kol-table-stateful should render with the props passed to the stateless
 exports[`kol-table-stateful should render with two initial sorts with multi sort 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="descending" class="kol-table__cell kol-table__cell--descending kol-table__cell--header" data-sort="sort-DESC" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort – kol-table-sort-order" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                    <span aria-hidden="true" class="kol-table__sort-order">
-                      1
-                    </span>
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="descending" class="kol-table__cell kol-table__cell--descending kol-table__cell--header" data-sort="sort-DESC" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort – kol-table-sort-order" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <span aria-hidden="true" class="kol-table__sort-order">
+                    1
                   </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="ascending" class="kol-table__cell kol-table__cell--ascending kol-table__cell--header" data-sort="sort-ASC" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort – kol-table-sort-order" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                    <span aria-hidden="true" class="kol-table__sort-order">
-                      2
-                    </span>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
                 </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  23
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 0
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  22
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 7
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  20
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="ascending" class="kol-table__cell kol-table__cell--ascending kol-table__cell--header" data-sort="sort-ASC" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort – kol-table-sort-order" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <span aria-hidden="true" class="kol-table__sort-order">
+                    2
+                  </span>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                23
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                22
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 7
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                20
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
   </template>
 </kol-table-stateful>
 `;
@@ -1902,88 +1872,86 @@ exports[`kol-table-stateful should render with two initial sorts with multi sort
 exports[`kol-table-stateful should render with two initial sorts without multi sort 1`] = `
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
-    <kol-table-stateless-wc>
-      <div class="kol-table">
-        <div class="kol-table__scroll-container">
-          <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
-            <caption class="kol-table__caption kol-table__focus-element" id="caption">
-              Table
-            </caption>
-            <thead class="kol-table__head">
-              <tr class="kol-table__head-row">
-                <th aria-sort="descending" class="kol-table__cell kol-table__cell--descending kol-table__cell--header" data-sort="sort-DESC" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
-                  Name
-                </th>
-                <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
-                  <span class="kol-table__sort">
-                    <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
-                  </span>
-                </th>
-              </tr>
-              <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
-                <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
-              </tr>
-            </thead>
-            <tbody class="kol-table__body">
-              <div class="kol-table__loader">
-                <span aria-busy="false" class="visually-hidden" role="alert">
-                  kol-table-data-loaded
+    <div class="kol-table">
+      <div class="kol-table__scroll-container">
+        <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
+          <caption class="kol-table__caption kol-table__focus-element" id="caption">
+            Table
+          </caption>
+          <thead class="kol-table__head">
+            <tr class="kol-table__head-row">
+              <th aria-sort="descending" class="kol-table__cell kol-table__cell--descending kol-table__cell--header" data-sort="sort-DESC" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
                 </span>
-              </div>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  23
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 0
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  22
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 7
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Hamburg
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 14
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Bonn
-                </td>
-              </tr>
-              <tr class="kol-table__row kol-table__row--body">
-                <td class="kol-table__cell kol-table__cell--body">
-                  20
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Name 21
-                </td>
-                <td class="kol-table__cell kol-table__cell--body">
-                  Berlin
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
+                Name
+              </th>
+              <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
+                <span class="kol-table__sort">
+                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                </span>
+              </th>
+            </tr>
+            <tr aria-hidden="true" class="kol-table__spacer kol-table__spacer--head">
+              <td class="kol-table__spacer-line kol-table__spacer-line--head" colspan="3"></td>
+            </tr>
+          </thead>
+          <tbody class="kol-table__body">
+            <div class="kol-table__loader">
+              <span aria-busy="false" class="visually-hidden" role="alert">
+                kol-table-data-loaded
+              </span>
+            </div>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                23
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 0
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                22
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 7
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Hamburg
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 14
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Bonn
+              </td>
+            </tr>
+            <tr class="kol-table__row kol-table__row--body">
+              <td class="kol-table__cell kol-table__cell--body">
+                20
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Name 21
+              </td>
+              <td class="kol-table__cell kol-table__cell--body">
+                Berlin
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </kol-table-stateless-wc>
+    </div>
   </template>
 </kol-table-stateful>
 `;

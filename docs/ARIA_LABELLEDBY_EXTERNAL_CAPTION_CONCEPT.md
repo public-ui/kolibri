@@ -54,7 +54,7 @@ Die `<caption>` wird immer gerendert — sie ist das Fokus-Element der Tabelle (
 - **Zugänglicher Name des Wrappers selbst**: `internals.ariaLabelledByElements` gibt dem Custom-Element-Host (`<kol-table-stateless>`) einen eigenen zugänglichen Namen — nützlich für AT, die den Host inspizieren, und für Accessibility-Tree-Debugging.
 - **Vorbereitung für weitere ARIA-Properties**: `ElementInternals` ist der richtige Ort, um role, ariaRequired, ariaInvalid etc. auf einem Shadow-Host zu setzen, sobald KoliBri weitere solcher Props bekommt (→ nächster Abschnitt).
 
-Auf `kol-table-stateless-wc` (shadow: false) wurde `attachInternals` entfernt, da das Element selbst kein Shadow-Host ist — die ARIAMixin-Zuweisung direkt auf `<table>` reicht.
+Beide Tabellen rendern das `<table>` direkt in ihrem eigenen Shadow-Root; `attachInternals` gehört deshalb nur an ihren Host, die ARIAMixin-Zuweisung liegt direkt auf `<table>`.
 
 ### Wichtige Warnung zu Host-Rollen
 

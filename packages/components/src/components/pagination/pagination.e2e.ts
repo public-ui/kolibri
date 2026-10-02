@@ -213,7 +213,7 @@ test.describe('kol-pagination behavior', () => {
 		await page.waitForChanges();
 		await page.waitForTimeout(100);
 		expect(await readLog(page)).toEqual(['cb:onChangePage:2:StateChange', 'ev:changepage:2', 'cb:onChangePageSize:20:change', 'ev:changepagesize:20']);
-		// The inner `kol-pagination-wc` writes its own `_pageSize`; the prop of `kol-pagination` keeps its value.
+		// A page size chosen in the select applies inside the element; the `_pageSize` prop keeps its value.
 		expect(await page.locator('kol-pagination').evaluate((element: HTMLKolPaginationElement) => element._pageSize)).toBe(10);
 		expect(await selectedPage(page)).toBe('2');
 	});
