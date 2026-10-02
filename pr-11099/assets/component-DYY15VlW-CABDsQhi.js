@@ -1,1 +1,0 @@
-import{s as e}from"./index-BPzngayv-C10pO0WS.js";var t=({description:t,descriptionId:n})=>t?e(`span`,{class:`visually-hidden`,id:n},t):null;export{t};
