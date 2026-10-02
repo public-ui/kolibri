@@ -171,12 +171,12 @@
 	 * in the base layer, which no theme rule can reach — see the theme README.
 	 */
 	.kol-spin {
-		&__spinner--dot__element {
+		&__spinner--dot .kol-spin__spinner-element {
 			background-color: var(--kol-spin-color, light-dark(#000000, #{$dark-color-ink}));
 			border-color: var(--color-light);
 		}
 
-		&__spinner--cycle__element::before {
+		&__spinner--cycle .kol-spin__loader::before {
 			border-color: var(--kol-spin-color, light-dark(#333333, #{$dark-color-ink}));
 		}
 	}
