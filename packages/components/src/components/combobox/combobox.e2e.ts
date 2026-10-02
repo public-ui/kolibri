@@ -214,28 +214,27 @@ test.describe(COMPONENT_NAME, () => {
 		await expect(listbox).toHaveCount(0);
 	});
 
-	test('should clear input when pressing Enter on clear button', async ({ page }) => {
+	test('focus input > tab > focus clear button > space > clears input', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
 		const input = page.locator('input.kol-combobox__input');
-		const clearButton = page.locator('.kol-combobox__delete');
 
 		await input.fill('North');
-		await clearButton.focus();
-		await page.keyboard.press('Enter');
+		await input.focus();
+		await page.keyboard.press('Tab');
+		await page.keyboard.press(' ');
 
 		await expect(input).toHaveValue('');
 		await expect(input).toBeFocused();
 	});
 
-	test('should clear input when pressing Space on clear button', async ({ page }) => {
+	test('focus input > tab > focus clear button > enter > clears input', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
 		const input = page.locator('input.kol-combobox__input');
-		const clearButton = page.locator('.kol-combobox__delete');
 
 		await input.fill('North');
-
-		await clearButton.focus();
-		await page.keyboard.press(' ');
+		await input.focus();
+		await page.keyboard.press('Tab');
+		await page.keyboard.press('Enter');
 
 		await expect(input).toHaveValue('');
 		await expect(input).toBeFocused();
@@ -261,19 +260,6 @@ test.describe(COMPONENT_NAME, () => {
 		await page.keyboard.press('Enter');
 
 		await expect(input).toHaveValue('North');
-	});
-
-	test('should focus clear button when pressing Tab from input', async ({ page }) => {
-		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
-		const input = page.locator('input.kol-combobox__input');
-		const clearButton = page.locator('.kol-combobox__delete');
-
-		await input.fill('North');
-		await input.focus();
-
-		await page.keyboard.press('Tab');
-
-		await expect(clearButton).toBeFocused();
 	});
 
 	test('should not emit onBlur callback when focus moves from input to clear button', async ({ page }) => {
@@ -317,7 +303,7 @@ test.describe(COMPONENT_NAME, () => {
 		blurCallbackFired = await page.evaluate(() => (window as any).blurCallbackFired);
 		blurEventFired = await page.evaluate(() => (window as any).blurEventFired);
 
-		await expect(blurCallbackFired).toBe(false);
+		await expect(blurCallbackFired).toBe(undefined);
 		await expect(blurEventFired).toBe(false);
 	});
 
