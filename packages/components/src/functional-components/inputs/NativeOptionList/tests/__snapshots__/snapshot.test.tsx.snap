@@ -40,7 +40,7 @@ exports[`NativeOptionListFc should render with multiple options with selected va
 
 exports[`NativeOptionListFc should render with nested option groups 1`] = `
 <div id="jest-test">
-  <optgroup class="undefined__optgroup" label="Group 1">
+  <optgroup class="kol-select__optgroup" label="Group 1">
     <option class="kol-select__option" value="-0-0">
       Option 1
     </option>
@@ -53,7 +53,7 @@ exports[`NativeOptionListFc should render with nested option groups 1`] = `
 
 exports[`NativeOptionListFc should render with nested option groups with selected value 1`] = `
 <div id="jest-test">
-  <optgroup class="undefined__optgroup" label="Group 1">
+  <optgroup class="kol-select__optgroup" label="Group 1">
     <option class="kol-select__option" value="-0-0">
       Option 1
     </option>
