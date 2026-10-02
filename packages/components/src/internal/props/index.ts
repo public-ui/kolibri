@@ -34,6 +34,7 @@ export * from './drawer-callbacks';
 export * from './error-list';
 export * from './fixed-cols';
 export * from './form-callbacks';
+export * from './has-clear-button';
 export * from './has-closer';
 export * from './has-counter';
 export * from './has-create-button';

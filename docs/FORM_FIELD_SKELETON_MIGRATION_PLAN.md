@@ -229,7 +229,7 @@ Gelöscht wird, sobald der letzte Import weg ist. Veröffentlichte Schema-Typen 
 | nach G3b  | erledigt in G3b: `InputDateController`, `InputIconController.validateNumber`/`parseToNumber`                                                                                                                   |
 | nach G3c  | erledigt in G3c: `InputFileController`; `InputIconController` bleibt für select, single-select und combobox (G5)                                                                                               |
 | nach G4   | erledigt in G4: `InputCheckboxController`, `InputRadioController`/`InputCheckboxRadioController`, `Checkbox`-/`Radio`-/`FieldControlStateWrapper`, altes `FieldControl`, alte `inputs/Checkbox`/`inputs/Radio` |
-| nach G5   | erledigt in G5.2: `SelectController`, `SelectStateWrapper`, `NativeSelect`/`NativeOption(List)`; offen: `CustomSuggestions*`, `Suggestions`, `kol-select-wc` (wenn `pagination` das FC rendert)                |
+| nach G5   | erledigt in G5.2/G5.3: `SelectController`, `ComboboxController`, `SelectStateWrapper`, `NativeSelect`/`NativeOption(List)`; offen: `CustomSuggestions*`, `Suggestions`, `kol-select-wc`                        |
 | final     | `@deprecated/input/*`, `input-adapter-leanup/`, `functional-component-wrappers/` inkl. `getRenderStates`, Adapter aus G1.3, alte FormField-/Input-FCs, `*Watches`-Interfaces                                   |
 
 ### G7 – Folge-Epics (außerhalb dieser Migration)

@@ -207,8 +207,11 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 		this.shared.setState('inputHasFocus', false);
 	};
 
-	/** Focus moving to another element inside the field, e.g. the smart button, is no blur of the field. */
-	private handleFocusLeave(event: FocusEvent): void {
+	/**
+	 * Sends the blur when the focus leaves the field; focus moving to another element inside the field,
+	 * e.g. the smart button, is no blur of the field. `handleBlur` also resets `inputHasFocus`.
+	 */
+	protected handleFocusLeave(event: FocusEvent): void {
 		if (this._disabled) {
 			return;
 		}
