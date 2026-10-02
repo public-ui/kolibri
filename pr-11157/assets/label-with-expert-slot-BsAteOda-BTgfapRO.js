@@ -1,0 +1,1 @@
+import{i as e,y as t}from"./variant-quote-Gc0A8qsV-BSPF_t3D.js";var n=e(`label`,``,t);export{n as t};

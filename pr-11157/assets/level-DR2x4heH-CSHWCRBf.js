@@ -1,0 +1,1 @@
+import{g as e,i as t}from"./variant-quote-Gc0A8qsV-BSPF_t3D.js";var n=[0,1,2,3,4,5,6],r=t(`level`,0,t=>e(t),e=>n.includes(e));export{r as t};
