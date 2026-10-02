@@ -2,8 +2,8 @@ import { KolPaginationTag } from '../../../core/component-names';
 import type { PaginationProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
-import { KolPaginationWc } from '../component';
-import { KolPagination } from '../shadow';
+import { KolPagination } from '../component';
+import { KolPaginationWc } from '../wc';
 
 executeSnapshotTests<PaginationProps>(
 	KolPaginationTag,

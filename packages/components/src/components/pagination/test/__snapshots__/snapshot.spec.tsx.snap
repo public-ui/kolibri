@@ -3,14 +3,14 @@
 exports[`kol-pagination should render with _label="Label" _on={} _max=0 _page=4 _hasButtons=false _siblingCount=0 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list"></ul>
       </nav>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -18,7 +18,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=0 _page=4 
 exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
@@ -44,7 +44,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 
           </li>
         </ul>
       </nav>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -52,7 +52,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 
 exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=0 _boundaryCount=-1 _siblingCount=-1 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
@@ -78,7 +78,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=0
           </li>
         </ul>
       </nav>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -86,7 +86,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=0
 exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=10 _boundaryCount=2 _siblingCount=2 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
@@ -124,7 +124,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
           </li>
         </ul>
       </nav>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -132,7 +132,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
 exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=20 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
@@ -164,7 +164,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=2
           </li>
         </ul>
       </nav>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -172,7 +172,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=2
 exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=2 _hasButtons="{\\"first\\":false,\\"next\\":false}" 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
@@ -201,7 +201,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=2
           </li>
         </ul>
       </nav>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -209,7 +209,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=2
 exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=6 _hasButtons={"first":false,"last":false,"next":true,"previous":true} _boundaryCount=0 _siblingCount=1 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
@@ -235,7 +235,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=6
           </li>
         </ul>
       </nav>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -243,7 +243,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=6
 exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3 _pageSizeOptions=[5,10,20] _pageSize=5 _siblingCount=3 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
@@ -281,7 +281,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3
       <div class="page-size">
         <kol-select-wc _label="kol-entries-per-site" _value="5" class="kol-pagination__page-size-select"></kol-select-wc>
       </div>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -289,7 +289,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3
 exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1 _pageSize=10 _pageSizeOptions="[10, 20, 50]" 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
@@ -324,7 +324,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
       <div class="page-size">
         <kol-select-wc _label="kol-entries-per-site" _value="10" class="kol-pagination__page-size-select"></kol-select-wc>
       </div>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -332,7 +332,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
 exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1 _pageSize=15 _pageSizeOptions=[10,20] 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
@@ -367,7 +367,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
       <div class="page-size">
         <kol-select-wc _label="kol-entries-per-site" _value="10" class="kol-pagination__page-size-select"></kol-select-wc>
       </div>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -375,7 +375,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
 exports[`kol-pagination should render with _label="Label" _on={} _max=100 _page=50 _customClass="custom" _tooltipAlign="bottom" 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
@@ -416,7 +416,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=100 _page=
           </li>
         </ul>
       </nav>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;

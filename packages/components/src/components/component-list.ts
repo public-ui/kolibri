@@ -35,7 +35,7 @@ import { KolLinkWc } from './link/wc';
 import { KolMeter } from './meter/component';
 import { KolModal } from './modal/component';
 import { KolNav } from './nav/shadow';
-import { KolPagination } from './pagination/shadow';
+import { KolPagination } from './pagination/component';
 import { KolPopoverButton } from './popover-button/component';
 import { KolProgress } from './progress/component';
 import { KolQuote } from './quote/component';
