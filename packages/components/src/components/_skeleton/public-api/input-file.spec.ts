@@ -168,4 +168,4 @@ const KOL_INPUT_FILE_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-input-file', component: 'input-file', file: 'shadow.tsx', pinnedApi: KOL_INPUT_FILE_PUBLIC_API });
+describePublicApiContract({ tag: 'kol-input-file', component: 'input-file', pinnedApi: KOL_INPUT_FILE_PUBLIC_API, schemaInterface: 'InputFileProps' });

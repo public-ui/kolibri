@@ -2,7 +2,7 @@ import { KolInputFileTag } from '../../../core/component-names';
 import type { InputFileProps } from '../../../schema';
 import { executeInputSnapshotTests, executeSnapshotTests } from '../../../utils/testing';
 
-import { KolInputFile } from '../shadow';
+import { KolInputFile } from '../component';
 
 executeInputSnapshotTests<InputFileProps>(KolInputFileTag, [KolInputFile], undefined, { hasSmartButton: true });
 
