@@ -1,0 +1,1 @@
+import{i as e}from"./variant-quote-DhmCQpOs-CNsU-00A.js";import{t}from"./validators-BHvQVnPT-ctkp2RaX.js";function n(e){return Array.isArray(e)?e:typeof e==`string`?e.split(` `):[]}function r(e){return e.length===0||e.every(t)}var i=e(`variant`,[],n,r);export{i as t};
