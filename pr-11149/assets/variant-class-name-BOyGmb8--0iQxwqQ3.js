@@ -1,0 +1,1 @@
+import"./index-Bpe4Lm3L-DdjA0d64.js";var e=(e,t)=>{let n=``;return Array.isArray(e)&&e.forEach(e=>{n+=`kol-`+t+`--`+e+` `}),n};export{e as t};
