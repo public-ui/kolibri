@@ -1,13 +1,13 @@
 {
 	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["config:recommended", "security:openssf-scorecard"],
+	"extends": ["config:recommended", "security:minimumReleaseAgeNpm", "security:openssf-scorecard"],
 	"dependencyDashboard": true,
 	"dependencyDashboardTitle": "🤖 Renovate Dependency Dashboard",
 	"semanticCommits": "enabled",
 	"semanticCommitType": "chore",
 	"semanticCommitScope": "deps",
 	"timezone": "Europe/Berlin",
-	"schedule": ["after 6pm", "before 6am"],
+	"schedule": ["every weekend"],
 	"labels": ["dependencies", "renovate", "release:engineering"],
 	"rebaseWhen": "conflicted",
 	"prConcurrentLimit": 5,
@@ -24,6 +24,7 @@
 	"vulnerabilityAlerts": {
 		"enabled": true,
 		"labels": ["dependencies", "renovate", "release:engineering", "security"],
+		"prConcurrentLimit": 0,
 		"schedule": ["at any time"]
 	},
 	"osvVulnerabilityAlerts": true,
@@ -32,6 +33,18 @@
 			"description": "Automerge all non-major updates (patch/minor/digest/pin/lockfile) once the pipelines are green — majors keep manual dashboard approval. Later rules below override this where an update is known-risky.",
 			"matchUpdateTypes": ["patch", "minor", "digest", "pin", "lockFileMaintenance"],
 			"automerge": true
+		},
+		{
+			"description": "Batch all non-security minor and patch updates of devDependencies into one weekly PR — they never reach consumers, CI is the safety net. Family groups further below (Angular, ESLint, Playwright, …) override the group name and keep their own PRs.",
+			"matchDepTypes": ["devDependencies"],
+			"matchUpdateTypes": ["minor", "patch"],
+			"groupName": "devDependencies (non-major)"
+		},
+		{
+			"description": "Batch all non-security patch updates of runtime dependencies into one weekly PR. Runtime minor updates keep one PR per package because they ship to consumers.",
+			"matchDepTypes": ["dependencies"],
+			"matchUpdateTypes": ["patch"],
+			"groupName": "dependencies (patch)"
 		},
 		{
 			"description": "Maintenance branches (release/1–release/3): disable all regular npm and GitHub Actions updates (patch, minor, major, digest, pin, lockFileMaintenance). Only vulnerability alerts remain active.",
