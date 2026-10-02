@@ -38,14 +38,14 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 				key: 'name',
 				label: 'Name',
 				textAlign: 'left',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as DataRow).name.localeCompare((data1 as DataRow).name, 'de'),
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as DataRow).name.localeCompare((data1 as DataRow).name, 'en'),
 				sortDirection: 'ASC',
 			},
 			{
 				key: 'email',
-				label: 'E-Mail',
+				label: 'Email',
 				textAlign: 'left',
-				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as DataRow).email.localeCompare((data1 as DataRow).email, 'de'),
+				compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as DataRow).email.localeCompare((data1 as DataRow).email, 'en'),
 				sortDirection: 'ASC',
 			},
 		],
@@ -75,17 +75,17 @@ function createDummyRow(id: number): DataRow {
 
 export const TableWithToolbar: FC = () => {
 	const [dataRows, setDataRows] = useState<DataRow[]>(DATA);
-	/** Schlüssel (`DataRow.id`) aller ausgewählten Zeilen. */
+	/** Keys (`DataRow.id`) of all selected rows. */
 	const [selectedKeys, setSelectedKeys] = useState<number[]>([]);
 	const [isMultiple, setIsMultiple] = useState(false);
-	/** Solange ein Datensatz vorliegt, ist das Formular geöffnet; existiert seine ID bereits, wird bearbeitet. */
+	/** The form is open while a draft exists; a draft whose ID already exists edits that row. */
 	const [draft, setDraft] = useState<DataRow | null>(null);
 
 	const isEditing = draft !== null && dataRows.some((row) => row.id === draft.id);
 
 	const selection: KoliBriTableSelection = {
 		keyPropertyName: 'id',
-		label: (row) => `Zeile ${(row as DataRow).name} auswählen`,
+		label: (row) => `Select row ${(row as DataRow).name}`,
 		multiple: isMultiple,
 		selectedKeys,
 	};
@@ -96,7 +96,7 @@ export const TableWithToolbar: FC = () => {
 
 	const handleSelectionModeSwitch = (_event: Event, value: unknown) => {
 		setIsMultiple(value === true);
-		/* Eine Mehrfachauswahl passt nicht in den Einzelauswahl-Modus. */
+		/* A multiple selection does not fit the single selection mode. */
 		if (value !== true && selectedKeys.length > 1) {
 			setSelectedKeys([]);
 		}
@@ -135,21 +135,21 @@ export const TableWithToolbar: FC = () => {
 	const toolbarItems: ToolbarItemsPropType = [
 		{
 			type: 'button',
-			_label: 'Hinzufügen',
+			_label: 'Add',
 			_icons: { left: { icon: 'kolicon-plus' } },
 			_variant: 'primary',
 			_on: { onClick: openAddDrawer },
 		},
 		{
 			type: 'button',
-			_label: 'Bearbeiten',
+			_label: 'Edit',
 			_variant: 'secondary',
 			_disabled: selectedKeys.length !== 1,
 			_on: { onClick: editSelectedRow },
 		},
 		{
 			type: 'button',
-			_label: 'Löschen',
+			_label: 'Delete',
 			_icons: { left: { icon: 'kolicon-cross' } },
 			_variant: 'danger',
 			_disabled: selectedKeys.length === 0,
@@ -161,46 +161,39 @@ export const TableWithToolbar: FC = () => {
 		<>
 			<SampleDescription>
 				<p>
-					Dieses Beispiel kombiniert eine Toolbar mit einer Tabelle: Ein Schalter wechselt zwischen Einzel- und Mehrfachauswahl. „Hinzufügen“ erzeugt einen
-					neuen Dummy-Datensatz in einem Formular und fügt ihn über „Anlegen“ ein. „Bearbeiten“ öffnet die ausgewählte Zeile im selben Formular, wenn genau eine
-					Zeile gewählt ist. „Löschen“ entfernt alle ausgewählten Zeilen und ist erst mit Auswahl aktiv.
+					This sample combines a toolbar with a table: a switch toggles between single and multiple selection. "Add" generates a new dummy record in a form and
+					inserts it via "Create". "Edit" opens the selected row in the same form when exactly one row is selected. "Delete" removes all selected rows and is
+					only enabled with a selection.
 				</p>
 			</SampleDescription>
 
 			<section className="w-full">
-				<KolToolbar _label="Aktionen für die Tabelle" _items={toolbarItems} />
+				<KolToolbar _label="Table actions" _items={toolbarItems} />
 
 				<KolInputCheckbox
 					className="block w-fit py-2"
-					_label="Mehrfachauswahl"
+					_label="Multiple selection"
 					_variant="switch"
 					_checked={isMultiple}
 					_value={true}
 					_on={{ onInput: handleSelectionModeSwitch }}
 				/>
 
-				<KolDrawer
-					_label={isEditing ? 'Eintrag bearbeiten' : 'Eintrag hinzufügen'}
-					_align="right"
-					_level={2}
-					_open={draft !== null}
-					_hasCloser
-					_on={{ onClose: closeDrawer }}
-				>
+				<KolDrawer _label={isEditing ? 'Edit entry' : 'Add entry'} _align="right" _level={2} _open={draft !== null} _hasCloser _on={{ onClose: closeDrawer }}>
 					{draft !== null && (
 						<div className="flex flex-col gap-4 py-4">
 							<KolInputText _label="Name" _value={draft.name} _on={{ onInput: (_event, value) => setDraft({ ...draft, name: String(value) }) }} />
-							<KolInputText _label="E-Mail" _value={draft.email} _on={{ onInput: (_event, value) => setDraft({ ...draft, email: String(value) }) }} />
+							<KolInputText _label="Email" _value={draft.email} _on={{ onInput: (_event, value) => setDraft({ ...draft, email: String(value) }) }} />
 							<div className="flex flex-wrap gap-2">
-								<KolButton _label={isEditing ? 'Speichern' : 'Anlegen'} _variant="primary" _on={{ onClick: saveDraft }} />
-								<KolButton _label="Abbrechen" _variant="secondary" _on={{ onClick: closeDrawer }} />
+								<KolButton _label={isEditing ? 'Save' : 'Create'} _variant="primary" _on={{ onClick: saveDraft }} />
+								<KolButton _label="Cancel" _variant="secondary" _on={{ onClick: closeDrawer }} />
 							</div>
 						</div>
 					)}
 				</KolDrawer>
 
 				<KolTableStateful
-					_label="Benutzerverwaltung"
+					_label="User management"
 					_headers={HEADERS}
 					_data={dataRows}
 					className="block"

@@ -18,7 +18,7 @@ function renderSample(): void {
 async function findHost<K extends keyof HTMLElementTagNameMap>(selector: K): Promise<HTMLElementTagNameMap[K]> {
 	return waitFor(() => {
 		const host = document.querySelector<K>(selector);
-		expect(host?.shadowRoot, `Kein Shadow-Root für <${selector}>`).toBeTruthy();
+		expect(host?.shadowRoot, `No shadow root for <${selector}>`).toBeTruthy();
 		return host as HTMLElementTagNameMap[K];
 	});
 }
@@ -57,7 +57,7 @@ function getDrawerButton(label: string): HTMLButtonElement | undefined {
 /** fireEvent.click with a clear error when the button was not rendered. */
 function click(button: HTMLButtonElement | undefined): void {
 	if (button === undefined) {
-		throw new Error('Schaltfläche wurde nicht gerendert');
+		throw new Error('Button was not rendered');
 	}
 	fireEvent.click(button);
 }
@@ -94,41 +94,41 @@ async function checkRow(table: HTMLKolTableStatefulElement, index: number): Prom
 }
 
 describe('TableWithToolbar', () => {
-	test('„Bearbeiten“ und „Löschen“ sind vor der Auswahl deaktiviert, „Hinzufügen“ ist verfügbar.', async () => {
+	test('disables "Edit" and "Delete" before a selection and keeps "Add" available', async () => {
 		renderSample();
 		await findHost('kol-toolbar');
 
 		await waitFor(() => {
-			expect(isDisabled(getToolbarButton('Hinzufügen'))).toBe(false);
-			expect(isDisabled(getToolbarButton('Bearbeiten'))).toBe(true);
-			expect(isDisabled(getToolbarButton('Löschen'))).toBe(true);
+			expect(isDisabled(getToolbarButton('Add'))).toBe(false);
+			expect(isDisabled(getToolbarButton('Edit'))).toBe(true);
+			expect(isDisabled(getToolbarButton('Delete'))).toBe(true);
 		});
 	});
 
-	test('„Löschen“ entfernt die ausgewählte Zeile und ist danach wieder deaktiviert.', async () => {
+	test('"Delete" removes the selected row and is disabled again afterwards', async () => {
 		renderSample();
 		const table = await findHost('kol-table-stateful');
 
 		await selectSingleRow(table, 0);
 
 		await waitFor(() => {
-			expect(isDisabled(getToolbarButton('Bearbeiten'))).toBe(false);
-			expect(isDisabled(getToolbarButton('Löschen'))).toBe(false);
+			expect(isDisabled(getToolbarButton('Edit'))).toBe(false);
+			expect(isDisabled(getToolbarButton('Delete'))).toBe(false);
 		});
 
 		const rowsBefore = getBodyRowCount(table);
 		const deletedName = table.shadowRoot?.querySelector('tbody tr')?.textContent ?? '';
-		click(getToolbarButton('Löschen'));
+		click(getToolbarButton('Delete'));
 
 		await waitFor(() => expect(getBodyRowCount(table)).toBe(rowsBefore - 1));
 		expect(table.shadowRoot?.textContent).not.toContain(deletedName);
 		await waitFor(() => {
-			expect(isDisabled(getToolbarButton('Bearbeiten'))).toBe(true);
-			expect(isDisabled(getToolbarButton('Löschen'))).toBe(true);
+			expect(isDisabled(getToolbarButton('Edit'))).toBe(true);
+			expect(isDisabled(getToolbarButton('Delete'))).toBe(true);
 		});
 	});
 
-	test('Mehrfachauswahl: „Löschen“ entfernt alle gewählten Zeilen, „Bearbeiten“ bleibt gesperrt.', async () => {
+	test('multiple selection: "Delete" removes all selected rows, "Edit" stays disabled', async () => {
 		renderSample();
 		const table = await findHost('kol-table-stateful');
 		await findHost('kol-toolbar');
@@ -143,21 +143,21 @@ describe('TableWithToolbar', () => {
 		await checkRow(table, 0);
 		await checkRow(table, 1);
 
-		await waitFor(() => expect(isDisabled(getToolbarButton('Löschen'))).toBe(false));
-		expect(isDisabled(getToolbarButton('Bearbeiten'))).toBe(true);
+		await waitFor(() => expect(isDisabled(getToolbarButton('Delete'))).toBe(false));
+		expect(isDisabled(getToolbarButton('Edit'))).toBe(true);
 
 		const rowsBefore = getBodyRowCount(table);
-		click(getToolbarButton('Löschen'));
+		click(getToolbarButton('Delete'));
 
 		await waitFor(() => expect(getBodyRowCount(table)).toBe(rowsBefore - 2));
-		await waitFor(() => expect(isDisabled(getToolbarButton('Löschen'))).toBe(true));
+		await waitFor(() => expect(isDisabled(getToolbarButton('Delete'))).toBe(true));
 	});
 
-	test('„Hinzufügen“ öffnet das Formular mit einem generierten Dummy-Datensatz.', async () => {
+	test('"Add" opens the form with a generated dummy record', async () => {
 		renderSample();
 		await findHost('kol-toolbar');
 
-		click(getToolbarButton('Hinzufügen'));
+		click(getToolbarButton('Add'));
 
 		const drawer = await findHost('kol-drawer');
 		await waitFor(() => {
@@ -175,15 +175,15 @@ describe('TableWithToolbar', () => {
 		expect(emailInput?.value).toBe(`${nameInput.value.toLowerCase().replace(' ', '.')}@example.com`);
 	});
 
-	test('„Bearbeiten“ öffnet die gewählte Zeile im Formular, „Speichern“ übernimmt die Änderung.', async () => {
+	test('"Edit" opens the selected row in the form, "Save" applies the change', async () => {
 		renderSample();
 		const table = await findHost('kol-table-stateful');
 		await findHost('kol-toolbar');
 
 		await selectSingleRow(table, 0);
-		await waitFor(() => expect(isDisabled(getToolbarButton('Bearbeiten'))).toBe(false));
+		await waitFor(() => expect(isDisabled(getToolbarButton('Edit'))).toBe(false));
 
-		click(getToolbarButton('Bearbeiten'));
+		click(getToolbarButton('Edit'));
 		const drawer = await findHost('kol-drawer');
 
 		const nameInput = await waitFor(() => {
@@ -194,25 +194,25 @@ describe('TableWithToolbar', () => {
 		const oldName = nameInput.value;
 		expect(oldName.length).toBeGreaterThan(0);
 
-		fireEvent.input(nameInput, { target: { value: 'Neuer Name' } });
-		await waitFor(() => expect(getDrawerInput(0)?.value).toBe('Neuer Name'));
-		click(getDrawerButton('Speichern'));
+		fireEvent.input(nameInput, { target: { value: 'New Name' } });
+		await waitFor(() => expect(getDrawerInput(0)?.value).toBe('New Name'));
+		click(getDrawerButton('Save'));
 
 		await waitFor(() => {
 			expect(drawer._open).toBe(false);
 			expect(getDrawerInput(0)).toBeNull();
 		});
 		expect(getBodyRowCount(table)).toBe(10);
-		expect(table.shadowRoot?.textContent).toContain('Neuer Name');
+		expect(table.shadowRoot?.textContent).toContain('New Name');
 		expect(table.shadowRoot?.textContent).not.toContain(oldName);
 	});
 
-	test('„Anlegen“ fügt den Datensatz in die Tabelle ein und schließt das Formular.', async () => {
+	test('"Create" inserts the record into the table and closes the form', async () => {
 		renderSample();
 		const table = await findHost('kol-table-stateful');
 		await findHost('kol-toolbar');
 
-		click(getToolbarButton('Hinzufügen'));
+		click(getToolbarButton('Add'));
 		const drawer = await findHost('kol-drawer');
 		const nameInput = await waitFor(() => {
 			const input = getDrawerInput(0);
@@ -222,7 +222,7 @@ describe('TableWithToolbar', () => {
 		const rowsBefore = getBodyRowCount(table);
 		const createdName = nameInput.value;
 
-		click(getDrawerButton('Anlegen'));
+		click(getDrawerButton('Create'));
 
 		await waitFor(() => expect(getBodyRowCount(table)).toBe(rowsBefore + 1));
 		expect(table.shadowRoot?.textContent).toContain(createdName);
@@ -237,12 +237,12 @@ describe('TableWithToolbar', () => {
 		});
 	});
 
-	test('„Abbrechen“ verwirft den Datensatz, ohne die Tabelle zu ändern.', async () => {
+	test('"Cancel" discards the record without changing the table', async () => {
 		renderSample();
 		const table = await findHost('kol-table-stateful');
 		await findHost('kol-toolbar');
 
-		click(getToolbarButton('Hinzufügen'));
+		click(getToolbarButton('Add'));
 		const drawer = await findHost('kol-drawer');
 		await waitFor(() => {
 			const input = getDrawerInput(0);
@@ -250,7 +250,7 @@ describe('TableWithToolbar', () => {
 		});
 		const rowsBefore = getBodyRowCount(table);
 
-		click(getDrawerButton('Abbrechen'));
+		click(getDrawerButton('Cancel'));
 
 		await waitFor(() => {
 			expect(drawer._open).toBe(false);
