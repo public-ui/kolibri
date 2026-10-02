@@ -5,7 +5,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { ImageApi } from '../../internal/functional-components/image/api';
 import { imagePropsConfig } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
-import { altProp, loadingProp, sizesProp, srcProp, srcsetProp, type LoadingType } from '../../internal/props';
+import { altProp, imageCallbacksProp, loadingProp, sizesProp, srcProp, srcsetProp, type LoadingType } from '../../internal/props';
 import type { KoliBriImageEventCallbacks } from '../../schema/components/image';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -23,14 +23,14 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	@Element() private readonly host?: HTMLKolImageElement;
 
 	private readonly handleError = (event: Event): void => {
-		this._on?.onError?.(event);
+		this.getRenderProp('on').onError?.(event);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.error, event);
 		}
 	};
 
 	private readonly handleLoad = (event: Event): void => {
-		this._on?.onLoad?.(event);
+		this.getRenderProp('on').onLoad?.(event);
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.load, event);
 		}
@@ -97,11 +97,17 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 	@Prop()
 	public _on?: KoliBriImageEventCallbacks;
 
+	@Watch('_on')
+	public watchOn(value?: KoliBriImageEventCallbacks): void {
+		imageCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+	}
+
 	public componentWillLoad(): void {
 		this.initRenderProps(imagePropsConfig);
 
 		altProp.apply(this._alt, (v) => this.setRenderProp('alt', v));
 		loadingProp.apply(this._loading, (v) => this.setRenderProp('loading', v));
+		imageCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
 		sizesProp.apply(this._sizes, (v) => this.setRenderProp('sizes', v));
 		srcProp.apply(this._src, (v) => this.setRenderProp('src', v));
 		srcsetProp.apply(this._srcset, (v) => this.setRenderProp('srcset', v));
