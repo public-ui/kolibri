@@ -34,6 +34,11 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { InputRangeApi } from '../../internal/functional-components/input-range/api';
 import { inputRangePropsConfig } from '../../internal/functional-components/input-range/api';
 import {
+	BEM_CLASS_INPUT_RANGE__INPUT_NUMBER,
+	BEM_CLASS_INPUT_RANGE__INPUT_RANGE,
+	InputRangeInputsFC,
+} from '../../internal/functional-components/input-range/component';
+import {
 	accessKeyProp,
 	autoCompleteProp,
 	horizontalIconsProp,
@@ -243,10 +248,6 @@ export class KolInputRange
 		const { ariaDescribedBy, hasError } = this.getAria();
 		const ariaInvalid = hasError ? 'true' : undefined;
 		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons'), disabled });
-		const inputsWrapperStyle = {
-			// use number of digits in max or min value plus some space for the number input arrow buttons; minimum 4 digits
-			'--kolibri-input-range--input-number--width': `calc(${Math.max(String(max ?? 100).length, String(min ?? 0).length, 4)}ch + 2em)`,
-		};
 
 		return (
 			<Host>
@@ -265,10 +266,10 @@ export class KolInputRange
 						startAdornment={startAdornment}
 						endAdornment={endAdornment}
 					>
-						<div class="kol-input-range__inputs-wrapper" style={inputsWrapperStyle}>
+						<InputRangeInputsFC max={max} min={min}>
 							<InputFC
 								{...shared}
-								class="kol-input-range__input kol-input-range__input--range"
+								class={BEM_CLASS_INPUT_RANGE__INPUT_RANGE}
 								name={name ? `${name}-range` : undefined}
 								list={list}
 								type="range"
@@ -282,7 +283,7 @@ export class KolInputRange
 							/>
 							<InputFC
 								{...shared}
-								class="kol-input-range__input kol-input-range__input--number"
+								class={BEM_CLASS_INPUT_RANGE__INPUT_NUMBER}
 								name={name ? `${name}-number` : undefined}
 								list={list}
 								type="number"
@@ -291,7 +292,7 @@ export class KolInputRange
 								ariaDescribedBy={ariaDescribedBy}
 								aria-invalid={ariaInvalid}
 							/>
-						</div>
+						</InputRangeInputsFC>
 						{hasSuggestions && <SuggestionsFC id={this.id} suggestions={suggestions} />}
 					</InputContainerFC>
 				</FormFieldFC>
