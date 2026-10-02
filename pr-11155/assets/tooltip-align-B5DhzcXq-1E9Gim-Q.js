@@ -1,0 +1,1 @@
+import"./index-CVUyICcw-CyEPmeKq.js";import{i as e,v as t}from"./variant-quote-CaOfFyul-Bs9LDXdE.js";import{t as n}from"./align-Pb_LIBNe-R-DAb-t6.js";function r(e){let r=t(e);return n.includes(r)?r:`right`}var i=e(`tooltipAlign`,`right`,r,e=>n.includes(e));export{i as t};
