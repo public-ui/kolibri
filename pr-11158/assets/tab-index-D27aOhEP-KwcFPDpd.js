@@ -1,0 +1,1 @@
+import{y as e}from"./index-DV_vNR-B-CL2Ma_5d.js";import{h as t,i as n}from"./variant-quote-DmzRsnzD-BUuPeKLy.js";var r=n(`tabIndex`,0,t,void 0,{hints:(t,n)=>{typeof n==`number`&&n>0&&e(`Positive tabIndex values ("${n}") can disrupt the natural tab order. Use 0 for tabbable elements or rely on DOM order.`)}});export{r as t};
