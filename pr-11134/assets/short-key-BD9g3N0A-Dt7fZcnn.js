@@ -1,0 +1,1 @@
+import{h as e,r as t}from"./variant-quote-BlO0qvfs-Diop8M1-.js";var n=t(`accessKey`,``,e),r=t(`shortKey`,``,e);export{r as n,n as t};
