@@ -48,6 +48,26 @@ executeSnapshotTests<NavProps>(
 		{ ...baseObj, _hideLabel: true },
 		{ ...baseObj, _hasCompactButton: false },
 		{ ...baseObj, _hasCompactButton: true },
+		{ ...baseObj, _collapsible: false },
+		{ ...baseObj, _hasCompactButton: true, _hideLabel: true },
+		{ ...baseObj, _links: JSON.stringify(baseObj._links) },
+		{
+			_label: 'Nav with an active grandchild, buttons and texts',
+			_links: [
+				{
+					_label: 'Section',
+					_href: '#section',
+					_children: [
+						{ _label: 'Child', _href: '#child', _children: [{ _label: 'Grandchild', _href: '#grandchild', _active: true }] },
+						{ _label: 'Child button', _on: { onClick: () => undefined } },
+						{ _label: 'Disabled button', _disabled: true, _on: { onClick: () => undefined } },
+						{ _label: 'Child text' },
+					],
+				},
+				{ _label: 'Collapsed section', _children: [{ _label: 'Hidden child', _href: '#hidden' }] },
+			],
+		},
+		{ _label: 'Nav with an invalid entry', _links: [{ _icons: 'kolicon-home' }] as unknown as NavProps['_links'] },
 	],
 );
 
