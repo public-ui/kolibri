@@ -1,0 +1,1 @@
+import{i as e,y as t}from"./variant-quote-DhmCQpOs-BXEFv7wQ.js";import{t as n}from"./validators-BHvQVnPT-ctkp2RaX.js";function r(e){return e===``||n(e)}var i=e(`customClass`,``,t,r);export{i as t};
