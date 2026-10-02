@@ -5,9 +5,8 @@ import { stepProp } from './step';
 import { inputNumberValueProp } from './value-input-number';
 
 /**
- * Pins the numeric props of `kol-input-number` and `kol-input-range` against `validateNumber` and
- * `parseToNumber` of the legacy `InputIconController` they replace (G3a.1 of
- * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`): same accepted values, same parsed result.
+ * Pins the numeric props of `kol-input-number` and `kol-input-range`: the accepted values and the
+ * parsed result.
  */
 type PropDefinition = {
 	readonly propName: string;

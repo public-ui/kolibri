@@ -50,9 +50,8 @@ test.describe('kol-button', () => {
 	});
 
 	/*
-	 * Pins the form participation of the button ahead of the form field skeleton migration, which moves it from
-	 * `AssociatedInputController` into a shared behavior (G1.2 of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
-	 * The button creates no hidden form element, because its name is unknown when the controller is constructed (#11036).
+	 * Pins the form participation of the button through `FormAssociationBehavior`.
+	 * The button creates no hidden form element, because its name is unknown when the behavior is constructed (#11036).
 	 */
 	test.describe('Form association', () => {
 		const button = '<kol-button _label="Button" _name="action" _value="button-value"></kol-button>';

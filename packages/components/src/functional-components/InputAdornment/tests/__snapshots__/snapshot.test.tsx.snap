@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`KolInputContainerFc should render correctly 1`] = `<div class="kol-input-container__adornment kol-input-container__adornment--start"></div>`;
-
-exports[`KolInputContainerFc should render with children 1`] = `
-<div class="kol-input-container__adornment kol-input-container__adornment--start">
-  <i aria-hidden="true" class="kol-icon kol-icon__icon start-icon" hidelabel="" role="presentation"></i>
-</div>
-`;
