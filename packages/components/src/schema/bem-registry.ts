@@ -365,6 +365,9 @@ export type KoliBriComponentsBemSchema = {
 			alert: {
 				modifiers: null;
 			};
+			form: {
+				modifiers: null;
+			};
 			link: {
 				modifiers: null;
 			};
@@ -903,6 +906,7 @@ const BEM: KoliBriComponentsBemSchema = {
 	'kol-form': {
 		elements: {
 			alert: { modifiers: null },
+			form: { modifiers: null },
 			link: { modifiers: null },
 			'mandatory-fields-hint': { modifiers: null },
 		},

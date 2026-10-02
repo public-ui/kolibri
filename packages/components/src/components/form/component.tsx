@@ -7,7 +7,6 @@ import { formPropsConfig } from '../../internal/functional-components/form/api';
 import { FormFC } from '../../internal/functional-components/form/component';
 import type { FormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
 import { createFormErrorLinkItem } from '../../internal/functional-components/form/error-link-item';
-import { FormErrorListFC } from '../../internal/functional-components/form/error-list';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { errorListProp, formCallbacksProp, requiredTextProp } from '../../internal/props';
 import type { ErrorListPropType, FormProps, KolFocusOptions, KoliBriFormCallbacks, Stringified } from '../../schema';
@@ -117,10 +116,9 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	public render(): JSX.Element {
 		return (
 			<Host>
-				{this.errorLinkItems.length > 0 && (
-					<FormErrorListFC alertHeadingId={this.alertHeadingId} closerAriaDescriptionId={this.closerAriaDescriptionId} errorLinkItems={this.errorLinkItems} />
-				)}
 				<FormFC
+					alertHeadingId={this.alertHeadingId}
+					closerAriaDescriptionId={this.closerAriaDescriptionId}
 					errorList={this.getRenderProp('errorList')}
 					errorLinkItems={this.errorLinkItems}
 					handleReset={this.handleReset}
