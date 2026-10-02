@@ -39,7 +39,7 @@
 		"knip": "6.39.0",
 		"prettier": "3.9.9",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.15.0"
+		"stylelint": "17.16.0"
 	},
 	"peerDependencies": {
 		"@public-ui/components": "workspace:*",

@@ -27,20 +27,20 @@ importers:
         specifier: 4.3.0
         version: 4.3.0(prettier@3.9.9)(typescript@5.9.3)
       stylelint:
-        specifier: 17.15.0
-        version: 17.15.0(typescript@5.9.3)
+        specifier: 17.16.0
+        version: 17.16.0(typescript@5.9.3)
       stylelint-config-recommended-scss:
         specifier: 17.0.1
-        version: 17.0.1(postcss@8.5.28)(stylelint@17.15.0(typescript@5.9.3))
+        version: 17.0.1(postcss@8.5.28)(stylelint@17.16.0(typescript@5.9.3))
       stylelint-config-standard:
         specifier: 40.0.0
-        version: 40.0.0(stylelint@17.15.0(typescript@5.9.3))
+        version: 40.0.0(stylelint@17.16.0(typescript@5.9.3))
       stylelint-order:
         specifier: 8.1.1
-        version: 8.1.1(stylelint@17.15.0(typescript@5.9.3))
+        version: 8.1.1(stylelint@17.16.0(typescript@5.9.3))
       stylelint-scss:
         specifier: 7.3.0
-        version: 7.3.0(stylelint@17.15.0(typescript@5.9.3))
+        version: 7.3.0(stylelint@17.16.0(typescript@5.9.3))
 
   packages/adapters/angular/v20:
     devDependencies:
@@ -489,8 +489,8 @@ importers:
         specifier: 1.0.6
         version: 1.0.6(@stencil/core@4.38.3)
       stylelint:
-        specifier: 17.15.0
-        version: 17.15.0(typescript@5.9.3)
+        specifier: 17.16.0
+        version: 17.16.0(typescript@5.9.3)
       terser:
         specifier: 5.51.2
         version: 5.51.2
@@ -719,8 +719,8 @@ importers:
         specifier: 1.14.2
         version: 1.14.2(@testing-library/dom@10.4.1)
       stylelint:
-        specifier: 17.15.0
-        version: 17.15.0(typescript@5.9.3)
+        specifier: 17.16.0
+        version: 17.16.0(typescript@5.9.3)
       tslib:
         specifier: 2.8.1
         version: 2.8.1
@@ -810,8 +810,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0(prettier@3.9.9)(typescript@5.9.3)
       stylelint:
-        specifier: 17.15.0
-        version: 17.15.0(typescript@5.9.3)
+        specifier: 17.16.0
+        version: 17.16.0(typescript@5.9.3)
 
   packages/test-tag-name-transformer:
     devDependencies:
@@ -942,8 +942,8 @@ importers:
         specifier: 1.105.1
         version: 1.105.1
       stylelint:
-        specifier: 17.15.0
-        version: 17.15.0(typescript@5.9.3)
+        specifier: 17.16.0
+        version: 17.16.0(typescript@5.9.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -1008,8 +1008,8 @@ importers:
         specifier: 1.105.1
         version: 1.105.1
       stylelint:
-        specifier: 17.15.0
-        version: 17.15.0(typescript@5.9.3)
+        specifier: 17.16.0
+        version: 17.16.0(typescript@5.9.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -1074,8 +1074,8 @@ importers:
         specifier: 1.105.1
         version: 1.105.1
       stylelint:
-        specifier: 17.15.0
-        version: 17.15.0(typescript@5.9.3)
+        specifier: 17.16.0
+        version: 17.16.0(typescript@5.9.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -1143,8 +1143,8 @@ importers:
         specifier: 1.105.1
         version: 1.105.1
       stylelint:
-        specifier: 17.15.0
-        version: 17.15.0(typescript@5.9.3)
+        specifier: 17.16.0
+        version: 17.16.0(typescript@5.9.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -1212,8 +1212,8 @@ importers:
         specifier: 1.105.1
         version: 1.105.1
       stylelint:
-        specifier: 17.15.0
-        version: 17.15.0(typescript@5.9.3)
+        specifier: 17.16.0
+        version: 17.16.0(typescript@5.9.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -1513,8 +1513,8 @@ importers:
         specifier: 4.3.0
         version: 4.3.0(prettier@3.9.9)(typescript@5.9.3)
       stylelint:
-        specifier: 17.15.0
-        version: 17.15.0(typescript@5.9.3)
+        specifier: 17.16.0
+        version: 17.16.0(typescript@5.9.3)
 
   packages/tools/visual-tests:
     dependencies:
@@ -12864,8 +12864,8 @@ packages:
     peerDependencies:
       stylelint: ^16.8.2 || ^17.0.0
 
-  stylelint@17.15.0:
-    resolution: {integrity: sha512-mWIkesYQvQjf4Kvdeu9ns0IL8/K/wtjaGxPqsPd6DlLZvaQxGysJsocxUDrBcyHQ5VleAk4uSMat4yMrVED7PA==}
+  stylelint@17.16.0:
+    resolution: {integrity: sha512-ejlWnbJ13x1GU32+zZXa6sYQJsKKkwSdv2B4rAdO3OWdEmvhSJKcXi5pOphQYSzyaj1kXpuGJr7pcMBNfDIuPw==}
     engines: {node: '>=20.19.0'}
     hasBin: true
 
@@ -26559,31 +26559,31 @@ snapshots:
       postcss: 8.5.28
       postcss-selector-parser: 7.1.6
 
-  stylelint-config-recommended-scss@17.0.1(postcss@8.5.28)(stylelint@17.15.0(typescript@5.9.3)):
+  stylelint-config-recommended-scss@17.0.1(postcss@8.5.28)(stylelint@17.16.0(typescript@5.9.3)):
     dependencies:
       postcss-scss: 4.0.9(postcss@8.5.28)
-      stylelint: 17.15.0(typescript@5.9.3)
-      stylelint-config-recommended: 18.0.0(stylelint@17.15.0(typescript@5.9.3))
-      stylelint-scss: 7.3.0(stylelint@17.15.0(typescript@5.9.3))
+      stylelint: 17.16.0(typescript@5.9.3)
+      stylelint-config-recommended: 18.0.0(stylelint@17.16.0(typescript@5.9.3))
+      stylelint-scss: 7.3.0(stylelint@17.16.0(typescript@5.9.3))
     optionalDependencies:
       postcss: 8.5.28
 
-  stylelint-config-recommended@18.0.0(stylelint@17.15.0(typescript@5.9.3)):
+  stylelint-config-recommended@18.0.0(stylelint@17.16.0(typescript@5.9.3)):
     dependencies:
-      stylelint: 17.15.0(typescript@5.9.3)
+      stylelint: 17.16.0(typescript@5.9.3)
 
-  stylelint-config-standard@40.0.0(stylelint@17.15.0(typescript@5.9.3)):
+  stylelint-config-standard@40.0.0(stylelint@17.16.0(typescript@5.9.3)):
     dependencies:
-      stylelint: 17.15.0(typescript@5.9.3)
-      stylelint-config-recommended: 18.0.0(stylelint@17.15.0(typescript@5.9.3))
+      stylelint: 17.16.0(typescript@5.9.3)
+      stylelint-config-recommended: 18.0.0(stylelint@17.16.0(typescript@5.9.3))
 
-  stylelint-order@8.1.1(stylelint@17.15.0(typescript@5.9.3)):
+  stylelint-order@8.1.1(stylelint@17.16.0(typescript@5.9.3)):
     dependencies:
       postcss: 8.5.28
       postcss-sorting: 10.0.0(postcss@8.5.28)
-      stylelint: 17.15.0(typescript@5.9.3)
+      stylelint: 17.16.0(typescript@5.9.3)
 
-  stylelint-scss@7.3.0(stylelint@17.15.0(typescript@5.9.3)):
+  stylelint-scss@7.3.0(stylelint@17.16.0(typescript@5.9.3)):
     dependencies:
       '@csstools/css-calc': 3.3.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.0)
@@ -26596,9 +26596,9 @@ snapshots:
       postcss-resolve-nested-selector: 0.1.6
       postcss-selector-parser: 7.1.6
       postcss-value-parser: 4.2.0
-      stylelint: 17.15.0(typescript@5.9.3)
+      stylelint: 17.16.0(typescript@5.9.3)
 
-  stylelint@17.15.0(typescript@5.9.3):
+  stylelint@17.16.0(typescript@5.9.3):
     dependencies:
       '@csstools/css-calc': 3.3.0(@csstools/css-parser-algorithms@4.0.0(@csstools/css-tokenizer@4.0.0))(@csstools/css-tokenizer@4.0.0)
       '@csstools/css-parser-algorithms': 4.0.0(@csstools/css-tokenizer@4.0.0)
