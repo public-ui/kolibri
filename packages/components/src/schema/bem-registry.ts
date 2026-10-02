@@ -502,6 +502,29 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'required' | 'success' | 'touched' | 'warning'>;
 	};
+	'kol-pagination': {
+		elements: {
+			button: {
+				modifiers: Set<'first' | 'last' | 'next' | 'numbers' | 'previous' | 'selected'>;
+			};
+			entries: {
+				modifiers: null;
+			};
+			navigation: {
+				modifiers: null;
+			};
+			'navigation-list': {
+				modifiers: null;
+			};
+			'page-size-select': {
+				modifiers: null;
+			};
+			separator: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-custom-suggestions-option': {
 		modifiers: Set<'disabled'>;
 	};
@@ -989,6 +1012,17 @@ const BEM: KoliBriComponentsBemSchema = {
 			option: { modifiers: new Set(['disabled', 'selected']) },
 		},
 		modifiers: new Set(['default', 'disabled', 'error', 'info', 'required', 'success', 'touched', 'warning']),
+	},
+	'kol-pagination': {
+		elements: {
+			button: { modifiers: new Set(['first', 'last', 'next', 'numbers', 'previous', 'selected']) },
+			entries: { modifiers: null },
+			navigation: { modifiers: null },
+			'navigation-list': { modifiers: null },
+			'page-size-select': { modifiers: null },
+			separator: { modifiers: null },
+		},
+		modifiers: null,
 	},
 	'kol-custom-suggestions-option': {
 		modifiers: new Set(['disabled']),

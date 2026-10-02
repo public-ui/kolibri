@@ -3,8 +3,7 @@ import { describePublicApiContract } from './contract';
 
 /**
  * Pinned public API of `kol-pagination` (11 props, 0 methods), extracted from the legacy `shadow.tsx`
- * ahead of its skeleton migration (#9590). The migration points the pin to `component.tsx` and adds the
- * schema interface check; the pinned contract stays unchanged.
+ * before its skeleton migration (#9590); the pin checks `component.tsx` against `PaginationProps`.
  */
 const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	_boundaryCount: {
@@ -81,10 +80,10 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-pagination', component: 'pagination', file: 'shadow.tsx', pinnedApi: KOL_PAGINATION_PUBLIC_API });
+describePublicApiContract({ tag: 'kol-pagination', component: 'pagination', pinnedApi: KOL_PAGINATION_PUBLIC_API, schemaInterface: 'PaginationProps' });
 
 /**
  * Pinned surface of `kol-pagination-wc` (11 props, 0 methods): internal contract for `kol-table-stateful`,
  * which renders the tag directly. It stays pinned until `kol-table-stateful` renders the pagination itself.
  */
-describePublicApiContract({ tag: 'kol-pagination-wc', component: 'pagination', file: 'component.tsx', pinnedApi: KOL_PAGINATION_PUBLIC_API });
+describePublicApiContract({ tag: 'kol-pagination-wc', component: 'pagination', file: 'wc.tsx', pinnedApi: KOL_PAGINATION_PUBLIC_API });

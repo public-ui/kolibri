@@ -1,51 +1,46 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
 
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { PaginationApi } from '../../internal/functional-components/pagination/api';
 import { BasePaginationWebComponent } from '../../internal/functional-components/pagination/base-web-component';
-import { PaginationFC } from '../../internal/functional-components/pagination/component';
+import { PaginationContentFC } from '../../internal/functional-components/pagination/component';
 import type {
 	CustomClassPropType,
 	KoliBriPaginationButtonCallbacks,
 	LabelPropType,
 	MaxPropType,
 	PaginationHasButton,
-	PaginationProps,
 	Stringified,
 	TooltipAlignPropType,
 } from '../../schema';
 
+/**
+ * Transitional tag for `kol-table-stateful`, which renders it in its own shadow root. It renders the
+ * same pagination without a shadow root of its own, writes a page size chosen in the select to its
+ * `_pageSize` prop and is deleted once `kol-table-stateful` renders the pagination itself.
+ *
+ * @internal
+ */
 @Component({
-	tag: 'kol-pagination',
-	styleUrls: {
-		default: './style.scss',
-	},
-	shadow: true,
+	tag: 'kol-pagination-wc',
+	shadow: false,
 })
-export class KolPagination extends BasePaginationWebComponent implements PaginationProps, WebComponentInterface<PaginationApi> {
-	@Element() protected readonly host?: HTMLKolPaginationElement;
-
-	/**
-	 * The `_pageSize` value as the element sees it. A page size chosen in the select replaces it without
-	 * writing the `_pageSize` prop.
-	 */
-	@State() private pageSizeValue?: number = 1;
+export class KolPaginationWc extends BasePaginationWebComponent implements WebComponentInterface<PaginationApi> {
+	@Element() protected readonly host?: HTMLKolPaginationWcElement;
 
 	protected getPageSizeValue(): number | undefined {
-		return this.pageSizeValue;
+		return this._pageSize;
 	}
 
-	/** Applies the page size first: the state change renders, and the render reads the applied values. */
 	protected applyChosenPageSize(value: number): void {
-		this.applyPageSize(value);
-		this.pageSizeValue = value;
+		this._pageSize = value;
 	}
 
 	public render(): JSX.Element {
 		return (
-			<Host>
-				<PaginationFC {...this.getPaginationProps()} />
+			<Host class="kol-pagination">
+				<PaginationContentFC {...this.getPaginationProps()} />
 			</Host>
 		);
 	}
@@ -145,7 +140,6 @@ export class KolPagination extends BasePaginationWebComponent implements Paginat
 	@Watch('_pageSize')
 	public watchPageSize(value?: number): void {
 		this.applyPageSize(value);
-		this.pageSizeValue = value;
 	}
 
 	@Watch('_pageSizeOptions')
