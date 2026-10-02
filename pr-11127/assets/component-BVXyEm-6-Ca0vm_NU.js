@@ -1,1 +1,0 @@
-import{c as e}from"./index-FCRL_6W_-ihH4Dd1G.js";var t=({description:t,descriptionId:n})=>t?e(`span`,{class:`visually-hidden`,id:n},t):null;export{t};

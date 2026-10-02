@@ -1,1 +1,0 @@
-import"./index-FCRL_6W_-ihH4Dd1G.js";var e=[`left`,`right`],t=[`top`,`bottom`],n=[...e,...t];export{n as t};
