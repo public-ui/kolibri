@@ -1,1 +1,0 @@
-import{i as e,y as t}from"./variant-quote-DSguWhbJ-B-pdgieC.js";var n=e(`value`,void 0,t);export{n as t};
