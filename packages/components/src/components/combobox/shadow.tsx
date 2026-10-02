@@ -58,10 +58,10 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 	@Element() protected readonly host?: HTMLKolComboboxElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 	private refSuggestions: HTMLLIElement[] = [];
-	private _focusedOptionIndex: number = -1;
+	private clearButton?: HTMLKolButtonWcElement;
 
+	private _focusedOptionIndex: number = -1;
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
-	private clearButtonFocused = false;
 
 	/**
 	 * Returns the current value.
@@ -128,6 +128,8 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 			return;
 		}
 
+		this.ctaRef.el?.focus();
+
 		const emptyValue = '';
 		this._focusedOptionIndex = -1;
 		this._value = emptyValue;
@@ -139,8 +141,6 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 		this.controller.onFacade.onInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), true, emptyValue);
 		this.controller.onFacade.onChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), emptyValue);
 		this.controller.setFormAssociatedValue(emptyValue);
-
-		this.ctaRef.el?.focus();
 	}
 
 	private onInput(event: Event) {
@@ -287,6 +287,7 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 						<KolInputStateWrapperFc {...this.getInputProps()} />
 						{this.state._value && this.state._hasClearButton && (
 							<KolButtonWcTag
+								ref={(elm) => (this.clearButton = elm)}
 								_icons="kolicon-cross"
 								_label={this.translateDeleteSelection}
 								_hideLabel
@@ -298,12 +299,6 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 								_on={{
 									onClick: () => {
 										this.clearSelection();
-									},
-									onFocus: () => {
-										this.clearButtonFocused = true;
-									},
-									onBlur: () => {
-										this.clearButtonFocused = false;
 									},
 								}}
 							/>
@@ -355,6 +350,10 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 
 	@Listen('keydown')
 	public handleKeyDown(event: KeyboardEvent) {
+		if (!!this.clearButton && event.composedPath().includes(this.clearButton)) {
+			return;
+		}
+
 		const handleEvent = (isOpen?: boolean, callback?: () => void): void => {
 			event.preventDefault();
 			if (isOpen !== undefined) {
@@ -395,9 +394,7 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 			}
 			case 'Enter':
 			case 'NumpadEnter': {
-				if (this.clearButtonFocused) {
-					this.clearSelection();
-				} else if (this._isOpen) {
+				if (this._isOpen) {
 					if (this.selectFocusedOption()) {
 						this._isOpen = false;
 					}
@@ -409,10 +406,7 @@ export class KolCombobox implements ClickableElement, ComboboxAPI, FocusableElem
 			}
 			// Space key
 			case ' ': {
-				if (this.clearButtonFocused) {
-					this.clearSelection();
-					event.preventDefault();
-				} else if (this._isOpen) {
+				if (this._isOpen) {
 					if (this.selectFocusedOption()) {
 						this._isOpen = false;
 						event.preventDefault();
