@@ -2,6 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 
 import { translate } from '../../../i18n';
+import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { SpinApi } from './api';
 
@@ -47,7 +48,7 @@ export const SpinFC: FC<FunctionalComponentProps<SpinApi>> = (props) => {
 	const { show, label, variant } = props;
 
 	return (
-		<Fragment>
+		<BemRootNodeFC block="kol-spin">
 			{show ? (
 				<Fragment>
 					<span class={`kol-spin__spinner kol-spin__spinner--${variant}`}>{renderSpinVariant(variant)}</span>
@@ -60,6 +61,6 @@ export const SpinFC: FC<FunctionalComponentProps<SpinApi>> = (props) => {
 					{label || translate('kol-action-done')}
 				</span>
 			)}
-		</Fragment>
+		</BemRootNodeFC>
 	);
 };
