@@ -169,4 +169,9 @@ const KOL_SINGLE_SELECT_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-single-select', component: 'single-select', file: 'shadow.tsx', pinnedApi: KOL_SINGLE_SELECT_PUBLIC_API });
+describePublicApiContract({
+	tag: 'kol-single-select',
+	component: 'single-select',
+	pinnedApi: KOL_SINGLE_SELECT_PUBLIC_API,
+	schemaInterface: 'SingleSelectProps',
+});

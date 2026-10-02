@@ -96,6 +96,7 @@ export * from './select-value';
 export * from './selected';
 export * from './short-key';
 export * from './show';
+export * from './single-select-options';
 export * from './sizes';
 export * from './skip-nav-links';
 export * from './smart-button';
