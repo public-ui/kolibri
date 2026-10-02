@@ -1,18 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State, Watch } from '@stencil/core';
-import type {
-	ButtonOrLinkOrTextWithChildrenProps,
-	ButtonWithChildrenProps,
-	CollapsiblePropType,
-	HideLabelPropType,
-	KoliBriIconsProp,
-	LabelPropType,
-	LinkProps,
-	LinkWithChildrenProps,
-	NavAPI,
-	NavStates,
-	Stringified,
-} from '../../schema';
+import type { ButtonOrLinkOrTextWithChildrenProps, CollapsiblePropType, HideLabelPropType, LabelPropType, NavAPI, NavStates, Stringified } from '../../schema';
 import {
 	a11yHintLabelingLandmarks,
 	devHint,
@@ -25,36 +13,12 @@ import {
 
 import { KolButtonWcTag, KolLinkWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import { buildEntryIcons, getInitiallyExpanded, getLeftIcon, isButtonEntry, isLinkEntry, toggleExpanded } from '../../internal/functional-components/nav/model';
 import type { StencilUnknown } from '../../schema';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 import { watchNavLinks } from './validation';
-
-const linkValidator = (link: ButtonOrLinkOrTextWithChildrenProps): boolean => {
-	if (typeof link === 'object' && typeof link._label === 'string' /* && typeof newLink._href === 'string' */) {
-		if (Array.isArray(link._children)) {
-			return linksValidator(link._children);
-		}
-		return false;
-	}
-	return true;
-};
-
-const linksValidator = (links: ButtonOrLinkOrTextWithChildrenProps[]): boolean => {
-	if (Array.isArray(links)) {
-		return links.find(linkValidator) !== undefined;
-	}
-	return true;
-};
-
-const entryIsLink = (entryProps: ButtonOrLinkOrTextWithChildrenProps): entryProps is LinkWithChildrenProps => {
-	return typeof (entryProps as LinkProps)._href === 'string';
-};
-
-const entryIsButton = (entryProps: ButtonOrLinkOrTextWithChildrenProps): entryProps is ButtonWithChildrenProps => {
-	return (entryProps as LinkProps)._href === undefined && typeof (entryProps as ButtonWithChildrenProps)._on?.onClick === 'function';
-};
 
 /**
  * The **Nav** component renders a group of related links or navigation elements that perform an action or display content when clicked.
@@ -72,61 +36,27 @@ export class KolNav implements NavAPI {
 
 	private readonly listId = createRelatedUniqueId(this.navId, 'list');
 
-	private expandChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
-		this.state = {
-			...this.state,
-			_expandedChildren: [...this.state._expandedChildren, children],
-		};
-	}
-	private collapseChildren(children: ButtonOrLinkOrTextWithChildrenProps[]) {
-		this.state = {
-			...this.state,
-			_expandedChildren: this.state._expandedChildren.filter((searchChildren) => searchChildren !== children),
-		};
-	}
-
 	private readonly handleToggleExpansionClick = (children?: ButtonOrLinkOrTextWithChildrenProps[]): void => {
 		if (children) {
-			if (this.state._expandedChildren.includes(children)) {
-				this.collapseChildren(children);
-			} else {
-				this.expandChildren(children);
-			}
+			this.state = {
+				...this.state,
+				_expandedChildren: toggleExpanded(this.state._expandedChildren, children),
+			};
 		}
 	};
 
-	private buildIconObject(collapsible: boolean, expanded: boolean, leftIcon?: string): KoliBriIconsProp {
-		const icon = {
-			left: '',
-			right: '',
-		};
-		if (this.state._hasIconsWhenExpanded && leftIcon) {
-			icon.left = leftIcon;
-		}
-		if (this.state._hideLabel) {
-			if (leftIcon) {
-				icon.left = leftIcon;
-			} else {
-				icon.left = 'kolicon-link';
-			}
-		}
-		if (collapsible) {
-			if (expanded) {
-				icon.right = 'kolicon-minus';
-			} else {
-				icon.right = 'kolicon-plus';
-			}
-		}
-		return icon;
-	}
-
 	private entry(collapsible: boolean, hasChildren: boolean, entry: ButtonOrLinkOrTextWithChildrenProps, expanded: boolean, ariaID: string): JSX.Element {
-		const leftIcon = typeof entry._icons === 'string' ? entry._icons : typeof entry._icons?.left === 'string' ? entry._icons.left : undefined;
-		const icons = this.buildIconObject(collapsible && hasChildren, expanded, leftIcon);
+		const icons = buildEntryIcons({
+			collapsible: collapsible && hasChildren,
+			expanded,
+			hasIconsWhenExpanded: this.state._hasIconsWhenExpanded,
+			hideLabel: this.state._hideLabel,
+			leftIcon: getLeftIcon(entry),
+		});
 
 		return (
 			<div class="kol-nav__entry-wrapper">
-				{entryIsLink(entry) ? (
+				{isLinkEntry(entry) ? (
 					<KolLinkWcTag
 						class={clsx('kol-nav__entry kol-nav__entry--link', {
 							'kol-nav__entry--collapsible': collapsible,
@@ -143,14 +73,14 @@ export class KolNav implements NavAPI {
 							'kol-nav__entry--collapsible': collapsible,
 						})}
 						_label={entry._label}
-						_disabled={entryIsButton(entry) ? entry._disabled : undefined}
+						_disabled={isButtonEntry(entry) ? entry._disabled : undefined}
 						_hideLabel={this.state._hideLabel}
 						_icons={icons}
 						_ariaControls={collapsible && hasChildren && expanded ? ariaID : undefined}
 						_ariaExpanded={collapsible && hasChildren ? expanded : undefined}
 						_on={{
 							onClick: (event: MouseEvent, value: Stringified<StencilUnknown>) => {
-								if (entryIsButton(entry) && typeof entry._on.onClick === 'function') {
+								if (isButtonEntry(entry) && typeof entry._on.onClick === 'function') {
 									entry._on.onClick(event, value);
 								}
 								this.handleToggleExpansionClick(entry._children);
@@ -199,33 +129,10 @@ export class KolNav implements NavAPI {
 	};
 
 	private initializeExpandedChildren() {
-		//Reset expandedChildren before recalculation
 		this.state = {
 			...this.state,
-			_expandedChildren: [],
+			_expandedChildren: getInitiallyExpanded(this.state._links),
 		};
-		/**
-		 * Recursively process branches and expand branches which are active or have active children somewhere in the tree.
-		 * @param {ButtonOrLinkOrTextWithChildrenProps} branch
-		 * @return boolean - true indicates that the current branch or a child branch is active
-		 */
-		const handleBranch = (branch: ButtonOrLinkOrTextWithChildrenProps) => {
-			if (branch._active) {
-				if (branch._children) {
-					this.expandChildren(branch._children);
-				}
-				return true;
-			} else if (branch._children) {
-				for (const childBranch of branch._children) {
-					if (handleBranch(childBranch)) {
-						this.expandChildren(branch._children);
-						return true;
-					}
-				}
-			}
-			return false;
-		};
-		this.state._links.forEach(handleBranch);
 	}
 
 	public render(): JSX.Element {

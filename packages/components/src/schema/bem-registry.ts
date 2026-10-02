@@ -179,6 +179,32 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-nav': {
+		elements: {
+			compact: {
+				modifiers: null;
+			};
+			entry: {
+				modifiers: Set<'button' | 'collapsible' | 'link'>;
+			};
+			'entry-wrapper': {
+				modifiers: null;
+			};
+			list: {
+				modifiers: Set<'nested' | 'vertical'>;
+			};
+			'list-item': {
+				modifiers: Set<'active' | 'expanded' | 'has-children'>;
+			};
+			navigation: {
+				modifiers: null;
+			};
+			'toggle-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'is-compact'>;
+	};
 	'kol-popover-button': {
 		elements: {
 			popover: {
@@ -791,6 +817,18 @@ const BEM: KoliBriComponentsBemSchema = {
 			separator: { modifiers: null },
 		},
 		modifiers: null,
+	},
+	'kol-nav': {
+		elements: {
+			compact: { modifiers: null },
+			entry: { modifiers: new Set(['button', 'collapsible', 'link']) },
+			'entry-wrapper': { modifiers: null },
+			list: { modifiers: new Set(['nested', 'vertical']) },
+			'list-item': { modifiers: new Set(['active', 'expanded', 'has-children']) },
+			navigation: { modifiers: null },
+			'toggle-button': { modifiers: null },
+		},
+		modifiers: new Set(['is-compact']),
 	},
 	'kol-popover-button': {
 		elements: {
