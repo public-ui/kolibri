@@ -20,7 +20,7 @@ export type ApiMember = {
 	/** Prop name including the underscore prefix, or method name. */
 	name: string;
 	kind: 'prop' | 'method';
-	/** Declared type annotation as written in the source (props only, otherwise ''). */
+	/** Declared type annotation as written in the source; '' for methods and for props without one. */
 	type: string;
 	/** Whether the prop is declared required (`_href!: HrefPropType`). */
 	required: boolean;
@@ -75,12 +75,13 @@ export const extractPublicApi = (source: string): ApiMember[] => {
 				}
 				declaration = lines[next] ?? '';
 			}
-			const match = declaration.match(/public\s+(_\w+)([!?])?\s*:\s*([^;=]+?)\s*(?:=\s*([^;]+?))?\s*;\s*$/);
+			// The type annotation is optional: `public _pageSize = 1;` declares its type by the default.
+			const match = declaration.match(/public\s+(_\w+)([!?])?\s*(?::\s*([^;=]+?))?\s*(?:=\s*([^;]+?))?\s*;\s*$/);
 			if (match) {
 				members.push({
 					name: match[1],
 					kind,
-					type: match[3].trim(),
+					type: (match[3] ?? '').trim(),
 					required: match[2] === '!',
 					default: match[4] === undefined ? undefined : match[4].trim(),
 					doc: normalizeDoc(doc),
