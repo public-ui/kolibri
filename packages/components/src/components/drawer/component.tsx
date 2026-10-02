@@ -241,7 +241,7 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 		};
 	}
 
-	/** The host carries the block class — see {@link BEM_CLASS_DRAWER}. */
+	/** The host keeps the block class — see {@link BEM_CLASS_DRAWER}. */
 	public render(): JSX.Element {
 		return (
 			<Host class={BEM_CLASS_DRAWER}>
