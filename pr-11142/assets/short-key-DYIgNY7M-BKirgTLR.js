@@ -1,0 +1,1 @@
+import{b as e,o as t}from"./base-web-component-Dn1kFitn-CAhiE6oy.js";var n=t(`accessKey`,``,e),r=t(`shortKey`,``,e);export{r as n,n as t};

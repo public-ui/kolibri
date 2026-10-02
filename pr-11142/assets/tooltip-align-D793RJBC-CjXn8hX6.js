@@ -1,0 +1,1 @@
+import"./index-B_AKUKwb-DRy78-jI.js";import{b as e,o as t,p as n}from"./base-web-component-Dn1kFitn-CAhiE6oy.js";import{t as r}from"./align-Cp5tbYfY-BWYm4fIR.js";var i=t(`hideLabel`,!1,n);function a(t){let n=e(t);return r.includes(n)?n:`right`}var o=t(`tooltipAlign`,`right`,a,e=>r.includes(e));export{o as n,i as t};

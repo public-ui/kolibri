@@ -1,0 +1,1 @@
+import{a as e,b as t,o as n,v as r}from"./base-web-component-Dn1kFitn-CAhiE6oy.js";var i=n(`max`,100,r,e=>e>0),a=n(`unit`,`%`,t,e=>e.length>0),o=e(`value`,0,(e,t)=>{let n=r(e);return n<t.min?t.min:n>t.max?t.max:n},e=>e!=null);export{i as n,a as r,o as t};

@@ -1,0 +1,1 @@
+import"./index-B_AKUKwb-DRy78-jI.js";var e=[`left`,`right`],t=[`top`,`bottom`],n=[...e,...t];export{n as t};

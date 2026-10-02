@@ -1,0 +1,1 @@
+import{b as e,o as t}from"./base-web-component-Dn1kFitn-CAhiE6oy.js";var n=t(`href`,``,e,e=>typeof e==`string`,{required:!0}),r=t(`href`,``,e,e=>typeof e==`string`);export{r as n,n as t};
