@@ -1,10 +1,14 @@
 import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 
+import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
 import type { HeadingLevel } from '../../props';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { HeadingApi } from './api';
+
+const headingBem = bem.forBlock('kol-heading');
+const headlineBem = bem.forBlock('kol-headline');
 
 type HeadlineTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'strong';
 
@@ -18,7 +22,7 @@ export const HeadingFC: FC<FunctionalComponentProps<HeadingApi>> = (props) => {
 
 	if (!secondaryHeadline) {
 		return (
-			<HeadlineTag class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, 'kol-headline--single')}>
+			<HeadlineTag class={clsx(headingBem(), headlineBem({ [HeadlineTag]: true, single: true }))}>
 				{label}
 				<slot name="expert" slot="expert" />
 			</HeadlineTag>
@@ -26,12 +30,12 @@ export const HeadingFC: FC<FunctionalComponentProps<HeadingApi>> = (props) => {
 	}
 
 	return (
-		<hgroup class="kol-heading-group">
-			<HeadlineTag class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, 'kol-headline--group', 'kol-headline--primary')}>
+		<hgroup class={clsx(headingBem({ group: true }), 'kol-heading-group')}>
+			<HeadlineTag class={headlineBem({ [HeadlineTag]: true, group: true, primary: true })}>
 				{label}
 				<slot name="expert" slot="expert" />
 			</HeadlineTag>
-			<p class="kol-headline kol-headline--group kol-headline--secondary">{secondaryHeadline}</p>
+			<p class={headlineBem({ group: true, secondary: true })}>{secondaryHeadline}</p>
 		</hgroup>
 	);
 };
