@@ -198,7 +198,85 @@ test.describe(COMPONENT_NAME, () => {
 		await expect(listbox).toHaveCount(0);
 	});
 
-	test('should emit onBlur callback when focus moves from input to clear button', async ({ page }) => {
+	test('should clear input when clear button is clicked', async ({ page }) => {
+		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
+		const input = page.locator('input.kol-combobox__input');
+		const clearButton = page.locator('.kol-combobox__delete');
+
+		await input.fill('North');
+		await expect(input).toHaveValue('North');
+
+		await clearButton.click();
+
+		await expect(input).toHaveValue('');
+
+		const listbox = page.locator('.kol-custom-suggestions-options-group--open');
+		await expect(listbox).toHaveCount(0);
+	});
+
+	test('should clear input when pressing Enter on clear button', async ({ page }) => {
+		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
+		const input = page.locator('input.kol-combobox__input');
+		const clearButton = page.locator('.kol-combobox__delete');
+
+		await input.fill('North');
+		await clearButton.focus();
+		await page.keyboard.press('Enter');
+
+		await expect(input).toHaveValue('');
+		await expect(input).toBeFocused();
+	});
+
+	test('should clear input when pressing Space on clear button', async ({ page }) => {
+		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
+		const input = page.locator('input.kol-combobox__input');
+		const clearButton = page.locator('.kol-combobox__delete');
+
+		await input.fill('North');
+
+		await clearButton.focus();
+		await page.keyboard.press(' ');
+
+		await expect(input).toHaveValue('');
+		await expect(input).toBeFocused();
+	});
+
+	test('should open suggestions and select first option with keyboard after clearing via clear button', async ({ page }) => {
+		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
+
+		const input = page.locator('input.kol-combobox__input');
+		const clearButton = page.locator('.kol-combobox__delete');
+		const listbox = page.locator('.kol-custom-suggestions-options-group--open');
+
+		await input.fill('North');
+		await clearButton.click();
+
+		await expect(input).toHaveValue('');
+		await expect(input).toBeFocused();
+
+		await page.keyboard.press('ArrowDown');
+
+		await expect(listbox).toBeVisible();
+
+		await page.keyboard.press('Enter');
+
+		await expect(input).toHaveValue('North');
+	});
+
+	test('should focus clear button when pressing Tab from input', async ({ page }) => {
+		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
+		const input = page.locator('input.kol-combobox__input');
+		const clearButton = page.locator('.kol-combobox__delete');
+
+		await input.fill('North');
+		await input.focus();
+
+		await page.keyboard.press('Tab');
+
+		await expect(clearButton).toBeFocused();
+	});
+
+	test('should not emit onBlur callback when focus moves from input to clear button', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)} _value="North"></kol-combobox>`);
 		const component = page.locator('kol-combobox');
 		const input = page.locator('input.kol-combobox__input');
@@ -239,8 +317,8 @@ test.describe(COMPONENT_NAME, () => {
 		blurCallbackFired = await page.evaluate(() => (window as any).blurCallbackFired);
 		blurEventFired = await page.evaluate(() => (window as any).blurEventFired);
 
-		await expect(blurCallbackFired).toBe(true);
-		await expect(blurEventFired).toBe(true);
+		await expect(blurCallbackFired).toBe(false);
+		await expect(blurEventFired).toBe(false);
 	});
 
 	test('should emit onBlur when Tab to next element', async ({ page }) => {
