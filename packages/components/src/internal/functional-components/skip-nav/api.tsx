@@ -8,8 +8,8 @@ import type { SkipNavLinkItem } from './link-item';
  * Both props are required. Notes on prop choices:
  * - `labelWithExpertSlotProp` (not `labelProp`): the predecessor's `validateLabel` accepted any
  *   string; `labelProp` would reject one-character labels, a validation regression.
- * - `skipNavLinksProp`: `Stringified<LinkProps[]>` in, parsed array out, with the legacy
- *   `watchNavLinks` item validation and the Millersche Zahl hint (>7 entries).
+ * - `skipNavLinksProp`: `Stringified<LinkProps[]>` in, parsed array out, every entry
+ *   an object with a string `_href` or `_label`, and the Millersche Zahl hint (>7 entries).
  */
 export const skipNavPropsConfig = {
 	required: [skipNavLinksProp, labelWithExpertSlotProp],
