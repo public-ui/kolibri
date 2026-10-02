@@ -178,7 +178,16 @@ Drei parallele Spuren: a) number → range, b) date, c) file. Die Felder nutzen 
   - G3b.2: `kol-input-date` erbt direkt von `BaseFormFieldWebComponent`, mit `reset()`, dem Rückschreiben von `_value` beim Blur, wenn der Wert zwischen leer und gesetzt wechselt, Enter-Submit außer bei fokussiertem Kalender-Icon und dem unterdrückten Leerzeichen bei `_readOnly`.
   - Befund: `InputDateController.validateOn` legt einen Wrapper um `_on.onChange` in den State, den nichts liest; die Events rufen das `_on` der Prop. Die Migration übernimmt den Wrapper nicht, das Verhalten bleibt gleich.
 
-- c) FileList, Drag-&-Drop-Modifier, Browse-Button, übertragener Formularwert.
+- c) FileList, Drag-&-Drop-Modifier, Browse-Button, übertragener Formularwert. G3c besteht aus drei PRs:
+
+  ```
+  G3b.2 ─► G3c.0 Testlücken ─► G3c.1 accept-Prop + Dateinamen-Helfer ─► G3c.2 file
+  ```
+
+  - G3c.0: Jest-Snapshots für `_accept`, `_multiple`, `_required`, ein Feld ohne Namen und `_accept` mit `_multiple`, Icons und Smart-Button. e2e für mehrere Dateien, `--has-file` bei Auswahl und `reset()`, den Formularwert nach Auswahl und Drop sowie den Ist-Stand beim Drop: Dateiname ohne `--has-file`, `change` vor `input` (#10865). Befund, den die Migration 1:1 übernimmt: `reset()` wirft bei Formular-Zuordnung einen TypeError (#11110).
+  - G3c.1: `acceptProp` in `internal/props/` und ein reiner Helfer für den angezeigten Dateinamen, den die Legacy-Komponente sofort nutzt. `multipleProp` und `requiredProp` gibt es schon.
+  - G3c.2: `kol-input-file` erbt direkt von `BaseFormFieldWebComponent`. Der Browse-Button bleibt `KolButtonWcTag`, weil die Themes `.kol-input-container__button .kol-button` als Vorfahr-Beziehung selektieren (G7). Die Drag-Listener hängen dann als JSX-Listener am Container; die Legacy-Komponente hängt sie in `componentDidLoad` an und entfernt sie nie.
+
 - Zusätzliche Abnahme: `table-settings` pixelgleich; `reset()` bei date und file; Flag an und aus im Pixel-Gate.
 
 ### G4 – Auswahl-Controls: checkbox → radio (#9576, #9583)
