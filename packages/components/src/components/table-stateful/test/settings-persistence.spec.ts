@@ -1,3 +1,4 @@
+import { headerKeysChanged } from '../../../internal/functional-components/table-stateful/model';
 import type { KoliBriTableHeaders, TableHeaderCells } from '../../../schema';
 import { KolTableStateful } from '../shadow';
 
@@ -13,7 +14,6 @@ type Internal = {
 	adjustedHeaderCells?: TableHeaderCells;
 	buildHeaderCells: () => TableHeaderCells;
 	handleChangeHeaderCells: (headerCells: TableHeaderCells) => void;
-	headerKeysChanged: (previous: KoliBriTableHeaders, next: KoliBriTableHeaders) => boolean;
 };
 
 const HEADERS: KoliBriTableHeaders = {
@@ -72,11 +72,9 @@ describe('KolTableStateful settings persistence (#10344)', () => {
 	});
 
 	it('only treats a header update as structural when the column keys change', () => {
-		const table = new KolTableStateful() as unknown as Internal;
-
 		// Same keys, different labels / new reference -> not structural (settings must survive).
 		expect(
-			table.headerKeysChanged(HEADERS, {
+			headerKeysChanged(HEADERS, {
 				horizontal: [
 					[
 						{ key: 'a', label: 'A2' },
@@ -86,10 +84,10 @@ describe('KolTableStateful settings persistence (#10344)', () => {
 			}),
 		).toBe(false);
 		// Removed column -> structural.
-		expect(table.headerKeysChanged(HEADERS, { horizontal: [[{ key: 'a', label: 'A' }]] })).toBe(true);
+		expect(headerKeysChanged(HEADERS, { horizontal: [[{ key: 'a', label: 'A' }]] })).toBe(true);
 		// Reordered keys -> structural.
 		expect(
-			table.headerKeysChanged(HEADERS, {
+			headerKeysChanged(HEADERS, {
 				horizontal: [
 					[
 						{ key: 'b', label: 'B' },

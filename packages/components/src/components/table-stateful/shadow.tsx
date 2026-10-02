@@ -2,15 +2,24 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { KolPaginationWcTag, KolTableStatelessWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import type { SortData } from '../../internal/functional-components/table-stateful/model';
+import {
+	buildHeaderCells,
+	changeCellSort,
+	findHeaderCell,
+	getSelectedData,
+	hasHeadersInBothDirections,
+	headerKeysChanged,
+	initializeSortFromHeaders,
+	selectDisplayedData,
+	sortRows,
+} from '../../internal/functional-components/table-stateful/model';
 import type {
 	ChangeHeaderCellsEventPayload,
 	FixedColsPropType,
 	HasSettingsMenuPropType,
-	KoliBriDataCompareFn,
 	KoliBriPaginationButtonCallbacks,
-	KoliBriSortDirection,
 	KoliBriTableDataType,
-	KoliBriTableHeaderCell,
 	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableHeaders,
 	KoliBriTablePaginationProps,
@@ -54,13 +63,6 @@ const PAGINATION_OPTIONS = [10, 20, 50, 100];
 
 const paginationValidator = (value: unknown) => value === true || value === '' /* true */ || (typeof value === 'object' && value !== null);
 
-type SortData = {
-	label: string;
-	key: string;
-	compareFn: KoliBriDataCompareFn;
-	direction: KoliBriSortDirection;
-};
-
 /**
  * The **Table** component is primarily used for the clear presentation of data sets. It is designed to automatically determine all data-dependent values and render the table accordingly. This includes optional features such as column sorting and pagination.
  */
@@ -103,7 +105,6 @@ export class KolTableStateful implements TableAPI {
 
 	private sortData: SortData[] = [];
 	private showPagination = false;
-	private pageStartSlice = 0;
 	private pageEndSlice = 10;
 	private disableSort = false;
 
@@ -235,79 +236,20 @@ export class KolTableStateful implements TableAPI {
 		validateHasSettingsMenu(this, value);
 	}
 
-	/**
-	 * Handles sorting logic for table columns.
-	 * If multi-sort is enabled (`_allowMultiSort`), multiple columns can be sorted at once.
-	 * Otherwise, sorting is cleared when switching between columns.
-	 */
 	private changeCellSort(headerCell: KoliBriTableHeaderCellWithLogic) {
-		if (headerCell.type === undefined || headerCell.type === 'default') {
-			if (typeof headerCell.compareFn !== 'function') {
-				return;
-			}
-
-			if (!this.state._allowMultiSort && headerCell.key !== this.sortData[0]?.key) {
-				// clear when another column is sorted and multi sort is not allowed
-				this.sortData = [];
-			}
-
-			const index = this.sortData.findIndex((value) => value.key === headerCell.key);
-			if (index >= 0) {
-				const settings = this.sortData[index];
-				switch (settings.direction) {
-					case 'ASC':
-						settings.direction = 'DESC';
-						break;
-					case 'DESC':
-						this.sortData.splice(index, 1);
-						break;
-					default:
-						settings.direction = 'ASC';
-						break;
-				}
-			} else if (headerCell.key) {
-				this.sortData.push({
-					label: headerCell.label,
-					key: headerCell.key,
-					compareFn: headerCell.compareFn,
-					direction: 'ASC',
-				});
-			}
-
+		const sortData = changeCellSort(this.sortData, headerCell, this.state._allowMultiSort);
+		if (sortData) {
+			this.sortData = sortData;
 			this.updateSortedData();
 		}
 	}
 
 	private initializeSortFromHeaders(headers: KoliBriTableHeaders): boolean {
-		let hasSortedCells = false;
-		const applySort = (cells: KoliBriTableHeaderCellWithLogic[]) => {
-			this.sortData = [];
-			cells.forEach((cell) => {
-				if (cell.type !== undefined && cell.type !== 'default') {
-					return;
-				}
-
-				if (typeof cell.compareFn === 'function' && !cell.key) {
-					devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
-					return;
-				}
-				const key = cell.key;
-				if (!key) {
-					return;
-				}
-				const sortDirection = cell.sortDirection;
-				if (sortDirection === 'ASC' || sortDirection === 'DESC') {
-					if (typeof cell.compareFn === 'function') {
-						if (this.state._allowMultiSort || this.sortData.length === 0) {
-							this.sortData.push({ label: cell.label, key, compareFn: cell.compareFn, direction: sortDirection });
-						}
-						hasSortedCells = true;
-					}
-				}
-			});
-		};
-		headers.horizontal?.forEach(applySort);
-		headers.vertical?.forEach(applySort);
+		const { sortData, hasSortedCells, missingKey } = initializeSortFromHeaders(headers, this.state._allowMultiSort);
+		if (missingKey) {
+			devHint(`[KolTableStateful] A sortable column requires the 'key' property.`);
+		}
+		this.sortData = sortData;
 		return hasSortedCells;
 	}
 
@@ -337,7 +279,7 @@ export class KolTableStateful implements TableAPI {
 							// Only drop the user's settings when the column structure actually changes. A new
 							// object reference with identical keys (common with inline/non-memoized headers in
 							// React) must keep the customisation. (#10344)
-							if (this.headerKeysChanged(this.state._headers, headers)) {
+							if (headerKeysChanged(this.state._headers, headers)) {
 								this.adjustedHeaderCells = undefined;
 							}
 							const hasSortedCells = this.initializeSortFromHeaders(headers);
@@ -345,7 +287,7 @@ export class KolTableStateful implements TableAPI {
 								setTimeout(() => this.updateSortedData());
 							}
 
-							if (headers.horizontal && headers.vertical && headers.horizontal?.length > 0 && headers.vertical?.length > 0) {
+							if (hasHeadersInBothDirections(headers)) {
 								this.disableSort = true;
 								devHint(
 									`Table: You can not sort the table data, if horizontal and vertical headers are defined at the same time. (https://github.com/public-ui/kolibri/issues/2372)`,
@@ -469,37 +411,13 @@ export class KolTableStateful implements TableAPI {
 	}
 
 	private selectDisplayedData(data: KoliBriTableDataType[], pageSize: number, page: number): KoliBriTableDataType[] {
-		if (typeof pageSize === 'number' && pageSize > 0 && typeof page === 'number' && page > 0) {
-			this.pageStartSlice = pageSize * (page - 1);
-			this.pageEndSlice = pageSize * page > data.length ? data.length : pageSize * page;
-			return data.slice(this.pageStartSlice, this.pageEndSlice);
-		} else {
-			this.pageStartSlice = 0;
-			this.pageEndSlice = data.length;
-			return data;
-		}
+		const { rows, end } = selectDisplayedData(data, pageSize, page);
+		this.pageEndSlice = end;
+		return rows;
 	}
 
 	private updateSortedData = () => {
-		if (this.disableSort) {
-			setState(this, '_sortedData', this.state._data);
-			return;
-		}
-
-		const sortedData: KoliBriTableDataType[] = [...this.state._data];
-		if (this.sortData.length > 0) {
-			sortedData.sort((a: KoliBriTableDataType, b: KoliBriTableDataType) => {
-				for (let index = 0; index < this.sortData.length; index++) {
-					const data = this.sortData[index];
-					const result = data.compareFn(a, b, data.direction);
-					if (result !== 0) {
-						return data.direction === 'ASC' ? result : -result;
-					}
-				}
-				return 0;
-			});
-		}
-		setState(this, '_sortedData', sortedData);
+		setState(this, '_sortedData', sortRows(this.state._data, this.sortData, this.disableSort));
 	};
 
 	/**
@@ -536,64 +454,15 @@ export class KolTableStateful implements TableAPI {
 		);
 	}
 
-	private getHeaderCellSortState(headerCell: KoliBriTableHeaderCellWithLogic): KoliBriSortDirection | undefined {
-		if (headerCell.type !== undefined && headerCell.type !== 'default') {
-			return;
-		}
-
-		if (!this.disableSort && typeof headerCell.compareFn === 'function') {
-			if (headerCell.key) {
-				const data = this.sortData.find((value) => value.key === headerCell.key);
-				if (data?.direction) {
-					return data.direction;
-				}
-			}
-			return 'NOS';
-		}
-	}
-
-	private getHeaderCellSortOrder(headerCell: KoliBriTableHeaderCellWithLogic): number | undefined {
-		if (headerCell.type !== undefined && headerCell.type !== 'default') {
-			return;
-		}
-
-		if (!this.disableSort && this.state._allowMultiSort && typeof headerCell.compareFn === 'function' && headerCell.key) {
-			const index = this.sortData.findIndex((value) => value.key === headerCell.key);
-			if (index >= 0) {
-				return index + 1;
-			}
-		}
-	}
-
 	private handleSort({ key }: SortEventPayload) {
-		const horizontalHeaders = this.state._headers.horizontal ?? [];
-		const verticalHeaders = this.state._headers.vertical ?? [];
-		const allHeaders: KoliBriTableHeaderCellWithLogic[] = [];
-		for (const row of horizontalHeaders) {
-			if (Array.isArray(row)) {
-				allHeaders.push(...row);
-			}
-		}
-		for (const row of verticalHeaders) {
-			if (Array.isArray(row)) {
-				allHeaders.push(...row);
-			}
-		}
-		const headerCell = allHeaders.find((cell) => cell.key === key);
+		const headerCell = findHeaderCell(this.state._headers, key);
 		if (headerCell) {
 			this.changeCellSort(headerCell);
 		}
 	}
 
 	private getSelectedData(selectedKeys: KoliBriTableSelectionKeys): null | KoliBriTableDataType[] {
-		const selection = this.state._selection;
-		if (selection) {
-			const keyPropertyName = selection.keyPropertyName ?? 'id';
-			const keySet = new Set(selectedKeys.map(String));
-			const data = this.state._sortedData.filter((item) => keySet.has(String(item[keyPropertyName] as string | number)));
-			if (keyPropertyName) return data;
-		}
-		return null;
+		return getSelectedData(this.state._selection, this.state._sortedData, selectedKeys);
 	}
 
 	private handleSelectionChange(event: Event, selectedKeys: KoliBriTableSelectionKeys): void {
@@ -644,78 +513,8 @@ export class KolTableStateful implements TableAPI {
 		this.adjustedHeaderCells = headerCells;
 	};
 
-	/**
-	 * Returns true if the set or order of column keys differs between two header definitions. Used to
-	 * decide whether persisted settings are still applicable to a new `_headers` value. (#10344)
-	 */
-	private headerKeysChanged(previous: KoliBriTableHeaders, next: KoliBriTableHeaders): boolean {
-		const getKeys = (headers: KoliBriTableHeaders): string[] => [
-			...(headers.horizontal?.flatMap((row) => row.map((cell) => cell?.key).filter((key): key is string => Boolean(key))) ?? []),
-			...(headers.vertical?.flatMap((column) => column.map((cell) => cell?.key).filter((key): key is string => Boolean(key))) ?? []),
-		];
-		const previousKeys = getKeys(previous);
-		const nextKeys = getKeys(next);
-		return previousKeys.length !== nextKeys.length || previousKeys.some((key, index) => key !== nextKeys[index]);
-	}
-
-	/**
-	 * Merges the user-adjusted header cells (order, visibility, width) back onto the original
-	 * `_headers` definition, matched by `key`. Logic-only fields like `compareFn` and `actions` are
-	 * always taken from the authoritative `_headers` cell, so the adjusted cells never need to carry
-	 * (or lose) them. (#10344)
-	 */
-	private mergeAdjustedHeaderCells(adjusted: KoliBriTableHeaderCell[][]): KoliBriTableHeaderCellWithLogic[][] {
-		const originalByKey = new Map<string, KoliBriTableHeaderCellWithLogic>();
-		this.state._headers.horizontal?.forEach((row) =>
-			row.forEach((cell) => {
-				if (cell?.key) {
-					originalByKey.set(cell.key, cell);
-				}
-			}),
-		);
-
-		return adjusted.map((row) =>
-			row.map((cell) => {
-				const original = cell?.key ? originalByKey.get(cell.key) : undefined;
-				if (!original) {
-					return cell as KoliBriTableHeaderCellWithLogic;
-				}
-				// Keep logic fields from the original definition, overlay only the user-adjustable settings.
-				const merged = { ...original } as KoliBriTableHeaderCellWithLogic;
-				if (cell.visible !== undefined) merged.visible = cell.visible;
-				if (cell.width !== undefined) merged.width = cell.width;
-				if (cell.hidable !== undefined) merged.hidable = cell.hidable;
-				if (cell.sortable !== undefined) merged.sortable = cell.sortable;
-				if (cell.resizable !== undefined) merged.resizable = cell.resizable;
-				return merged;
-			}),
-		);
-	}
-
-	/**
-	 * Builds the header cells passed to the stateless table. When the user has adjusted the columns
-	 * via the settings menu (`adjustedHeaderCells`), those horizontal cells are merged onto the
-	 * original `_headers` so the customisation (visibility, width, order) is preserved. The current
-	 * sort state is always overlaid on top. (#10344)
-	 */
 	private buildHeaderCells(): TableHeaderCells {
-		const overlaySortState = (cell: KoliBriTableHeaderCellWithLogic) =>
-			cell
-				? {
-						...cell,
-						sortDirection: this.getHeaderCellSortState(cell),
-						sortOrder: this.getHeaderCellSortOrder(cell),
-					}
-				: cell;
-
-		const horizontalHeaders = this.adjustedHeaderCells?.horizontal
-			? this.mergeAdjustedHeaderCells(this.adjustedHeaderCells.horizontal)
-			: this.state._headers.horizontal;
-
-		return {
-			horizontal: horizontalHeaders?.map((row) => row.map(overlaySortState)) ?? [],
-			vertical: this.state._headers.vertical?.map((column) => column.map(overlaySortState)) ?? [],
-		};
+		return buildHeaderCells(this.state._headers, this.adjustedHeaderCells, this.sortData, this.disableSort, this.state._allowMultiSort);
 	}
 
 	public render(): JSX.Element {
