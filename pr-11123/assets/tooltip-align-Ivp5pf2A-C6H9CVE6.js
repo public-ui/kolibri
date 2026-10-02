@@ -1,0 +1,1 @@
+import"./index-sLvp4BiL-BEu8oLBy.js";import{f as e,i as t,y as n}from"./variant-quote-BGO8Y5hq-D5rMKyRB.js";import{t as r}from"./align-DaK1kk82-pfoaGp0U.js";var i=t(`hideLabel`,!1,e);function a(e){let t=n(e);return r.includes(t)?t:`right`}var o=t(`tooltipAlign`,`right`,a,e=>r.includes(e));export{o as n,i as t};
