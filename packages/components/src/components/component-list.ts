@@ -18,7 +18,7 @@ import { KolForm } from './form/component';
 import { KolHeading } from './heading/component';
 import { KolIcon } from './icon/component';
 import { KolImage } from './image/component';
-import { KolInputCheckbox } from './input-checkbox/shadow';
+import { KolInputCheckbox } from './input-checkbox/component';
 import { KolInputColor } from './input-color/component';
 import { KolInputDate } from './input-date/component';
 import { KolInputEmail } from './input-email/component';

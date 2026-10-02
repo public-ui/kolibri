@@ -1,7 +1,6 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import KolFieldControlFc, { type FieldControlProps } from '../../functional-components/FieldControl';
 import {
-	type InputCheckboxStates,
 	type InputColorStates,
 	type InputEmailStates,
 	type InputFileStates,
@@ -22,7 +21,6 @@ type InputState =
 	| InputColorStates
 	| InputFileStates
 	| InputRangeStates
-	| InputCheckboxStates
 	| InputRadioStates
 	| SelectStates;
 
@@ -47,10 +45,6 @@ function getFieldControlProps(state: InputState): FieldControlProps {
 
 	if ('_readOnly' in state) {
 		props.readonly = state._readOnly;
-	}
-
-	if ('_labelAlign' in state) {
-		props.labelAlign = state._labelAlign;
 	}
 
 	if ('_accessKey' in state) {
