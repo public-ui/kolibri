@@ -114,8 +114,8 @@ importers:
         specifier: workspace:*
         version: link:../../components
       chai:
-        specifier: 6.2.2
-        version: 6.2.2
+        specifier: 6.3.0
+        version: 6.3.0
       cross-env:
         specifier: 10.1.0
         version: 10.1.0
@@ -124,7 +124,7 @@ importers:
         version: 11.8.0
       mocha-snapshots:
         specifier: 4.2.0
-        version: 4.2.0(chai@6.2.2)(enzyme-adapter-react-16@1.15.8(enzyme@3.11.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(enzyme@3.11.0)(mocha@11.8.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 4.2.0(chai@6.3.0)(enzyme-adapter-react-16@1.15.8(enzyme@3.11.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(enzyme@3.11.0)(mocha@11.8.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       prettier:
         specifier: 3.9.9
         version: 3.9.9
@@ -6828,8 +6828,8 @@ packages:
   centra@2.7.0:
     resolution: {integrity: sha512-PbFMgMSrmgx6uxCdm57RUos9Tc3fclMvhLSATYN39XsDV29B89zZ3KA89jmY0vwSGazyU+uerqwa6t+KaodPcg==}
 
-  chai@6.2.2:
-    resolution: {integrity: sha512-NUPRluOfOiTKBKvWPtSD4PhFvWCqOi0BGStNWs57X9js7XGTprSmFoz5F0tWhR4WPjNeR9jXqdC7/UpSJTnlRg==}
+  chai@6.3.0:
+    resolution: {integrity: sha512-XWAtwJ6OHO+tj0EKCs0Y2UamnyOxseZWltU4x2U2wh8g4AigdjwvtUjvLP2tqkA/avxHEtzxNaqGq/YGNwckKg==}
     engines: {node: '>=18'}
 
   chalk-template@0.4.0:
@@ -18398,7 +18398,7 @@ snapshots:
       '@types/chai': 5.2.3
       '@vitest/spy': 4.1.11
       '@vitest/utils': 4.1.11
-      chai: 6.2.2
+      chai: 6.3.0
       tinyrainbow: 3.1.1
 
   '@vitest/mocker@4.1.11(vite@7.3.6(@types/node@26.4.0)(jiti@1.21.7)(less@4.9.0)(lightningcss@1.33.0)(sass-embedded@1.105.1)(sass@1.97.3)(terser@5.46.0)(tsx@4.23.15)(yaml@2.9.1))':
@@ -19532,7 +19532,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  chai@6.2.2: {}
+  chai@6.3.0: {}
 
   chalk-template@0.4.0:
     dependencies:
@@ -23598,9 +23598,9 @@ snapshots:
       pkg-types: 1.3.1
       ufo: 1.6.4
 
-  mocha-snapshots@4.2.0(chai@6.2.2)(enzyme-adapter-react-16@1.15.8(enzyme@3.11.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(enzyme@3.11.0)(mocha@11.8.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+  mocha-snapshots@4.2.0(chai@6.3.0)(enzyme-adapter-react-16@1.15.8(enzyme@3.11.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(enzyme@3.11.0)(mocha@11.8.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:
-      chai: 6.2.2
+      chai: 6.3.0
       colors: 1.4.0
       diff: 3.5.1
       enzyme: 3.11.0
