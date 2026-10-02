@@ -3,6 +3,7 @@ export * from './access-key';
 export * from './active';
 export * from './adjust-height';
 export * from './alert';
+export * from './alert-callbacks';
 export * from './alert-type';
 export * from './alert-variant';
 export * from './align';
