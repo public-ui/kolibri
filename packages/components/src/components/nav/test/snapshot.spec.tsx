@@ -2,7 +2,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { KolNavTag } from '../../../core/component-names';
 import type { NavProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
-import { KolNav } from '../shadow';
+import { KolNav } from '../component';
 
 const baseObj: NavProps = {
 	_label: 'Nav Label',
@@ -80,8 +80,8 @@ describe('KolNav nested navigation landmarks', () => {
 		});
 
 		const instance = page.rootInstance as KolNav;
-		instance.validateLabel('Main navigation', undefined, true);
-		instance.validateLinks([
+		instance.watchLabel('Main navigation');
+		instance.watchLinks([
 			{
 				_label: 'Section',
 				_href: '#section',

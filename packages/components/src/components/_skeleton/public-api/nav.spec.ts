@@ -48,4 +48,4 @@ const KOL_NAV_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-nav', component: 'nav', file: 'shadow.tsx', pinnedApi: KOL_NAV_PUBLIC_API });
+describePublicApiContract({ tag: 'kol-nav', component: 'nav', pinnedApi: KOL_NAV_PUBLIC_API, schemaInterface: 'NavProps' });
