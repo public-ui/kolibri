@@ -7,13 +7,23 @@ import { getBlockBem } from '../bem-root-node/block-bem';
 import type { DefaultInputProps } from './default-input-props';
 import { getDefaultInputProps } from './default-input-props';
 
-export type InputFCProps = DefaultInputProps<JSXBase.InputHTMLAttributes<HTMLInputElement>> & {
+/**
+ * Stencil only writes a property whose value changed: `null` writes the empty value on the first
+ * render, `undefined` leaves the native default untouched. A range input, for example, falls back to
+ * the middle of its range only when its value is written.
+ */
+type NullableNativeValue = string | number | null;
+
+export type InputFCProps = Omit<DefaultInputProps<JSXBase.InputHTMLAttributes<HTMLInputElement>>, 'max' | 'min' | 'step'> & {
 	msg?: Stringified<MsgPropType>;
 	touched?: boolean;
 	spellcheck?: boolean;
 	/** Rendered after the input; the input references it through `list`. */
 	suggestions?: VNode;
-	value?: string | number | string[];
+	max?: NullableNativeValue;
+	min?: NullableNativeValue;
+	step?: NullableNativeValue;
+	value?: NullableNativeValue | string[];
 } & {
 	[key: `aria-${string}`]: unknown;
 	[key: `data-${string}`]: unknown;
@@ -43,12 +53,12 @@ export const InputFC: FC<InputFCProps> = (props) => {
 		type: 'text',
 		list: suggestions && typeof other.id === 'string' ? createRelatedUniqueId(other.id, 'list') : undefined,
 		...getDefaultInputProps({ ariaDescribedBy, hideLabel, label }),
-		...other,
+		...(other as JSXBase.InputHTMLAttributes<HTMLInputElement>),
 	};
 
 	return (
 		<>
-			<input {...inputProps} value={value} />
+			<input {...inputProps} value={value as JSXBase.InputHTMLAttributes<HTMLInputElement>['value']} />
 			{suggestions}
 		</>
 	);

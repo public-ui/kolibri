@@ -1,5 +1,6 @@
 import { h } from '@stencil/core';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
+import { getInputAdornments } from './adornments';
 import { IconButtonFC } from './icon-button';
 import { InputFC } from './input';
 import { InputContainerFC } from './input-container';
@@ -16,6 +17,22 @@ describe('InputContainerFC', () => {
 	])('renders %s', async (_, props) => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<InputContainerFC {...props}>
+				<input />
+			</InputContainerFC>
+		));
+		expect(page.root).toMatchSnapshot();
+	});
+});
+
+describe('getInputAdornments', () => {
+	it('renders the field-specific content outside the icons', async () => {
+		const { startAdornment, endAdornment } = getInputAdornments({
+			icons: { left: 'kolicon-a', right: 'kolicon-b' },
+			startAdornment: h('i', { class: { start: true } }),
+			endAdornment: h('i', { class: { end: true } }),
+		});
+		const page = await renderFunctionalComponentToSpecPage(() => (
+			<InputContainerFC startAdornment={startAdornment} endAdornment={endAdornment}>
 				<input />
 			</InputContainerFC>
 		));

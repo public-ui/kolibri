@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomSuggestionsOptionFC renders default state 1`] = `
+<li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+  <span>
+    Test Option
+  </span>
+</li>
+`;
+
+exports[`CustomSuggestionsOptionFC renders selected state 1`] = `
+<li aria-selected="true" class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+  <span>
+    Test Option
+  </span>
+</li>
+`;
+
+exports[`CustomSuggestionsOptionFC renders with different index and option 1`] = `
+<li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+  <span>
+    Different Option
+  </span>
+</li>
+`;
+
+exports[`CustomSuggestionsOptionsGroupFC renders default state 1`] = `
+<ul class="kol-custom-suggestions-options-group kol-custom-suggestions-options-group--open" role="listbox">
+  <li>
+    Test Content
+  </li>
+</ul>
+`;
+
+exports[`CustomSuggestionsOptionsGroupFC renders with blocked mouse over 1`] = `
+<ul class="kol-custom-suggestions-options-group kol-custom-suggestions-options-group--cursor-hidden kol-custom-suggestions-options-group--open" role="listbox">
+  <li>
+    Test Content
+  </li>
+</ul>
+`;

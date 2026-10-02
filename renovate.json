@@ -9,7 +9,7 @@
 	"timezone": "Europe/Berlin",
 	"schedule": ["after 6pm", "before 6am"],
 	"labels": ["dependencies", "renovate", "release:engineering"],
-	"rebaseWhen": "behind-base-branch",
+	"rebaseWhen": "conflicted",
 	"prConcurrentLimit": 5,
 	"prHourlyLimit": 5,
 	"postUpdateOptions": ["pnpmDedupe"],

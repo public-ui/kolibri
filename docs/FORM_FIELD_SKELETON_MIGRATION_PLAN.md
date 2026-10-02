@@ -6,7 +6,7 @@ Stand: 27.09.2026, `@public-ui/components` 4.5.0-rc.0.
 
 ## Ausgangslage
 
-Keines der 14 Felder ist bisher migriert. Alle laufen noch auf dem Legacy-Stack:
+Vor der Migration lief keines der 14 Felder auf Skeleton. Der Legacy-Stack besteht aus:
 
 - Controller-Kette `AssociatedInputController → ControlledInputController → InputController → InputIconController → Feld-Controller`
 - State-Wrapper in `functional-component-wrappers/`, die die alten FCs in `functional-components/` rendern
@@ -81,7 +81,7 @@ Kein Produktivcode, Voraussetzung für alles. Die Gates greifen nur, wenn vorher
     - Startwert ohne Vorgabe: `kol-input-color` `#000000` (aus dem inneren Input in `componentDidLoad`), `kol-input-range` `50`, `kol-input-checkbox` `true`, `kol-input-radio` und `kol-single-select` `null`, alle anderen `undefined`.
     - G3: Payloads sind typisiert – number und range liefern Zahlen, date den ISO-String, file eine `FileList`. Für file bleibt ein Text-Input als `_syncValueBySelector`-Ziel leer.
     - G4: checkbox und radio senden kein KoliBri-`click` und keinen `onClick` (`onClick: undefined` in `shadow.tsx`). Stattdessen erreicht das native `click` den Host vor `input`/`change`.
-    - G5: `kol-single-select` sendet beim Blur zuerst das native Event, dann das KoliBri-Event und den Callback. `kol-select` setzt `_touched` am eigenen Host nicht, das innere `kol-select-wc` hält den Zustand. Außerdem überträgt `kol-select` einen Einzelwert weder in `FormData` noch in das `_syncValueBySelector`-Ziel, weil das versteckte `<select multiple>` nur Array-Werte übernimmt. Mit `_multiple` stehen alle gewählten Werte in `FormData`. Issues: #11014 (`_touched`), #11015 (Einzelwert).
+    - G5: `kol-single-select` sendet beim Blur zuerst das native Event, dann das KoliBri-Event und den Callback. `kol-select` setzt `_touched` am eigenen Host nicht, das innere `kol-select-wc` hält den Zustand. Außerdem überträgt `kol-select` einen Einzelwert weder in `FormData` noch in das `_syncValueBySelector`-Ziel, weil das versteckte `<select multiple>` nur Array-Werte übernimmt. Mit `_multiple` stehen alle gewählten Werte in `FormData`. Issues: #11014 (`_touched`, behoben in G5.2), #11015 (Einzelwert, behoben nach G5.4).
     - Radio mit Objektwerten liefert das Objekt als Payload und überträgt es als JSON-String in `FormData` und an `_syncValueBySelector`.
   - Formular-Anbindung heute: Das versteckte Element im Light DOM entsteht nur mit `register(…, { reflectInputValues: true })`, seinen `name` setzt der Controller nur im Experimental-Mode. Nur mit beidem steht das Feld in `FormData`. Der Vertrag pinnt alle drei Fälle, der Test ruft `register` dafür aus dem Build unter Test auf.
 - ✅ Visual-Samples ergänzen für msg, hint, disabled, hideLabel, infoPopover, Counter, Icons, `inputNumberButtons` an/aus und die Checkbox-Varianten. Neue Samples erzeugen neue Baselines und gehören in ein eigenes PR vor der ersten Migration.
@@ -92,7 +92,7 @@ Kein Produktivcode, Voraussetzung für alles. Die Gates greifen nur, wenn vorher
 
 ### G1 – Fundament + Pilot `kol-input-color` (#9673, #9577)
 
-Alle 14 Felder teilen Basis-Props, die Label/Hint/Msg-Hülle, die Formular-Anbindung und die Event-Logik. Das wird einmal gebaut und am dünnsten Feld geprüft, damit die Basisklasse an einem echten Fall entsteht. G1 besteht aus sechs PRs: G1.0 #11037, G1.1 #11038, G1.2 #11044, G1.3a #11045, G1.3b #11046 und G1.4.
+Alle 14 Felder teilen Basis-Props, die Label/Hint/Msg-Hülle, die Formular-Anbindung und die Event-Logik. Das wird einmal gebaut und am dünnsten Feld geprüft, damit die Basisklasse an einem echten Fall entsteht. G1 besteht aus sechs PRs: G1.0 #11037, G1.1 #11038, G1.2 #11044, G1.3a #11045, G1.3b #11046 und G1.4 #11049. Alle sind gemergt.
 
 ```
 G1.0 Testlücken ───────────────┬──────────────────────────────────────────────┐
@@ -155,17 +155,56 @@ G1.4 ─► G2.1 Props + CounterBehavior + TextAreaFC ─► G2.2 Basis + email 
 Drei parallele Spuren: a) number → range, b) date, c) file. Die Felder nutzen die Standard-Hülle, müssen aber ihren Wert umwandeln.
 
 - Eigene Input-Props für min/max/step; die vorhandenen Meter-Props (Defaults 0/100) passen nicht.
-- a) Step-Buttons und Feature-Flag `inputNumberButtons`; range mit zwei synchronen Inputs und Suggestions.
-- b) Date↔ISO-Logik aus `input-date/controller.ts` in Hilfsfunktionen, alle 5 `_type`s, Zeitzonen.
-- c) FileList, Drag-&-Drop-Modifier, Browse-Button, übertragener Formularwert.
+- a) Step-Buttons und Feature-Flag `inputNumberButtons`; range mit zwei synchronen Inputs und Suggestions. G3a besteht aus vier PRs:
+
+  ```
+  G2.5 ─► G3a.0 Testlücken ─► G3a.1 Props + Zahlen-Helfer ─► G3a.2 number ─► G3a.3 range
+  ```
+
+  - G3a.0: Jest-Snapshots für min/max/step, `_value` als Zahl, `NumberString`, `null` und `0`, die Namen und die Breitenformel von range. Befunde, die die Migration 1:1 übernimmt: #10861 (range klemmt nicht bei einer Grenze 0), #11075 (range synchronisiert beim Ziehen nicht), #11076 (range übernimmt ohne `_value` den Browser-Mittelwert), #11077 (negative und Exponent-Strings werden verworfen), #11053 (`has-value` fehlt bei number für `0`).
+  - G3a.1: `inputMinProp`, `inputMaxProp`, `stepProp` und der Zahlenwert in `internal/props/` mit einer Normalisierung, die `validateNumber` 1:1 nachbildet; reine Hilfsfunktionen für den gemerkten Werttyp, das Parsen und die Klemmung von range; `getInputAdornments()` bekommt ein `startAdornment` vor dem linken Icon.
+  - G3a.2: `kol-input-number` erbt direkt von `BaseFormFieldWebComponent`. Die Step-Buttons bleiben native `<button>` und folgen bei jedem Render dem Flag `inputNumberButtons`.
+  - G3a.3: `kol-input-range` erbt direkt von `BaseFormFieldWebComponent`, mit zwei `InputFC` und dem Datalist neben dem Wrapper.
+  - Eine gemeinsame Basis für number und range gibt es nicht: number schreibt `_value` bei jedem `input`, range erst bei `change` und klemmt dabei.
+
+- b) Date↔ISO-Logik aus `input-date/controller.ts` in Hilfsfunktionen, alle 5 `_type`s, Zeitzonen. G3b besteht aus drei PRs:
+
+  ```
+  G3a.3 ─► G3b.0 Testlücken ─► G3b.1 Props + Datums-Helfer ─► G3b.2 date
+  ```
+
+  - G3b.0: Jest-Snapshots für alle fünf `_type`s mit Wert, `_min`/`_max`, `_step` bei `time`, einen zum Typ unpassenden Wert, `null` sowie `_readOnly` und `_required`. Werte als `Date` pinnen weiter die e2e-Tests und `controller.spec.ts`, weil ein `Date` im Namen eines Snapshots von der Zeitzone abhängt.
+  - G3b.1: der Typ und die Datums-Props (`_min`, `_max`, `_value`, abhängig von `_type` und `_step`) in `internal/props/`; die Umwandlung `Date` → ISO-String, die Kalenderwoche und die Formatprüfung je Typ als reine Hilfsfunktionen, die der Legacy-Controller sofort nutzt.
+  - G3b.2: `kol-input-date` erbt direkt von `BaseFormFieldWebComponent`, mit `reset()`, dem Rückschreiben von `_value` beim Blur, wenn der Wert zwischen leer und gesetzt wechselt, Enter-Submit außer bei fokussiertem Kalender-Icon und dem unterdrückten Leerzeichen bei `_readOnly`.
+  - Befund: `InputDateController.validateOn` legt einen Wrapper um `_on.onChange` in den State, den nichts liest; die Events rufen das `_on` der Prop. Die Migration übernimmt den Wrapper nicht, das Verhalten bleibt gleich.
+
+- c) FileList, Drag-&-Drop-Modifier, Browse-Button, übertragener Formularwert. G3c besteht aus drei PRs:
+
+  ```
+  G3b.2 ─► G3c.0 Testlücken ─► G3c.1 accept-Prop + Dateinamen-Helfer ─► G3c.2 file
+  ```
+
+  - G3c.0: Jest-Snapshots für `_accept`, `_multiple`, `_required`, ein Feld ohne Namen und `_accept` mit `_multiple`, Icons und Smart-Button. e2e für mehrere Dateien, `--has-file` bei Auswahl und `reset()`, den Formularwert nach Auswahl und Drop sowie den Ist-Stand beim Drop: Dateiname ohne `--has-file`, `change` vor `input` (#10865). Befund, den die Migration 1:1 übernimmt: `reset()` wirft bei Formular-Zuordnung einen TypeError (#11110).
+  - G3c.1: `acceptProp` in `internal/props/` und ein reiner Helfer für den angezeigten Dateinamen, den die Legacy-Komponente sofort nutzt. `multipleProp` und `requiredProp` gibt es schon.
+  - G3c.2: `kol-input-file` erbt direkt von `BaseFormFieldWebComponent`. Der Browse-Button bleibt `KolButtonWcTag`, weil die Themes `.kol-input-container__button .kol-button` als Vorfahr-Beziehung selektieren (G7). Die Drag-Listener hängen dann als JSX-Listener am Container; die Legacy-Komponente hängt sie in `componentDidLoad` an und entfernt sie nie.
+
 - Zusätzliche Abnahme: `table-settings` pixelgleich; `reset()` bei date und file; Flag an und aus im Pixel-Gate.
 
 ### G4 – Auswahl-Controls: checkbox → radio (#9576, #9583)
 
 Nur diese beiden nutzen den FieldControl-Stack statt InputContainer und teilen `InputCheckboxRadioController`.
 
-- Vorbereitungs-PR: `options`-Prop und `fillKeyOptionMap` ziehen aus `input-radio/controller.ts` nach `form-field/options.ts`; G5 braucht beides ebenfalls.
-- FieldControlFC einführen, `InputCheckboxRadioController` auflösen.
+- G4 besteht aus fünf PRs:
+
+  ```
+  G3 ─► G4.0 Testlücken ─► G4.1 options ─► G4.2 FieldControl-/Checkbox-/Radio-FCs + fieldset ─► G4.3 checkbox ─► G4.4 radio
+  ```
+
+  - G4.0: Snapshots für checkbox (ohne Namen, `_required`, `_value` als String und Objekt, eigene `_icons`, `_labelAlign: 'left'` mit `_hideLabel`, indeterminate als Switch) und radio (ausgewählte Option, ohne Namen, Gruppe `_disabled`, `_required`, `_hideLabel`, Option mit `hint`, Objektwert, Label als Zahl). e2e für die Pfeiltasten-Navigation von radio, `focus()`/`click()` sowie `getValue()`, den `onInput`-Wert `null` beim Abwählen (für `table-settings`) und das Löschen von `_indeterminate` bei checkbox. Befunde, die die Migration 1:1 übernimmt: #11114.
+  - G4.1: `options`-Prop und `fillKeyOptionMap` ziehen aus `input-radio/controller.ts` nach `form-field/options.ts`; G5 braucht beides ebenfalls.
+  - G4.2: FieldControlFC, CheckboxFC und RadioFC, dazu der `fieldset`-Wurzelknoten: `BemRootNodeFC` und `FormFieldFC` bekommen `component: 'div' | 'fieldset'`, das Label eine `legend`-Variante. Die alten FCs werden Adapter, damit Hydrate-Snapshot und Pixel-Gate die neuen sofort prüfen.
+  - G4.3 und G4.4: die beiden Felder erben direkt von `BaseFormFieldWebComponent`; `InputCheckboxRadioController` wird aufgelöst.
+
 - Risiken: Theme-SCSS der Checkbox (300 LOC, verschachtelte Varianten); `indeterminate` nur als Property; Formularwert bei checked/unchecked; Objektwerte, Tastatur- und Fokus-Navigation bei Radio.
 - Zusätzliche Abnahme: alle drei Checkbox-Varianten je Theme; Tastatur-E2E für Radio; `table-settings` pixelgleich.
 
@@ -175,17 +214,24 @@ Nur diese beiden nutzen den FieldControl-Stack statt InputContainer und teilen `
 - combobox und single-select: gemeinsame Basis oder ein `ListboxBehavior` für Tastatur, open/close und focusin/out. `@Listen`-Handler folgen der Event-Handler-Policy.
 - Risiken: Options-Sync des versteckten `<select multiple>`; `pagination` hängt am Light DOM von `kol-select-wc`; `:has()`-Selektoren im CustomSuggestions-SCSS.
 - Zusätzliche Abnahme: `pagination` pixelgleich; Tastatur- und Maus-E2E für combobox und single-select; bekannte Bugs bestehen nachweislich unverändert weiter oder wurden vorher gefixt.
+- Schnitt: G5.0 Testlücken → G5.1 select-Fundament (Props, Wert-Helfer, `SelectFC`, Legacy-FCs als Adapter) → G5.2 `kol-select` und `kol-select-wc` → G5.3 `BaseListboxWebComponent` und `kol-combobox` → G5.4 `kol-single-select`.
+- G5.0: Die select-Snapshots registrieren `kol-select` und `kol-select-wc`, damit sie das native Select enthalten. Neue e2e-Tests „Keyboard and mouse“ (combobox, single-select) und „Value“ (select). Befunde in #11124 und #10841.
+- `kol-select` rendert das FC direkt in seinem Shadow DOM, ohne das innere `kol-select-wc`. Diese DOM-Änderung wird in G5.2 einzeln abgenommen. Als eigenständiges Formularfeld setzt `kol-select` `_touched` und `_value` wie alle migrierten Felder; damit ist #11014 behoben. Nach G5.4 überträgt `kol-select` auch einen Einzelwert in `FormData` und in das `_syncValueBySelector`-Ziel (#11015): Ein `<select>`-Ziel erhält je Wert eine gewählte Option, ein anderes Ziel den Wert als String, mit `_multiple` als JSON.
+- `kol-single-select` liest `_value` und `_rows` ungeprüft wie zuvor: Jeder Wert von `_value`, auch `undefined`, ist die Auswahl, und `_rows` ist der CSS-Wert `--visible-options`. Der Abgleich des Eingabetexts mit den Labels beim Verlassen des Felds (#10501, #10617) bleibt bis zu einem eigenen Fix.
 
 ### G6 – Rückbau
 
 Gelöscht wird, sobald der letzte Import weg ist. Veröffentlichte Schema-Typen bleiben stehen.
 
-| Zeitpunkt | Was gelöscht wird                                                                                                                                                               |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| nach G2   | erledigt in G2: `utils/counter-dom-updater.ts`, `InputPasswordController`, `InputTextEmailController`, `InputTextController`, `TextAreaStateWrapper`, alte `inputs/TextArea`    |
-| nach G4   | Checkbox-/Radio-Controller inkl. `InputCheckboxRadioController`, `Checkbox`-/`RadioStateWrapper`, altes `FieldControl`, alte `inputs/Checkbox`/`inputs/Radio`, alte Radio-Utils |
-| nach G5   | `SelectStateWrapper`, `NativeSelect`/`NativeOption(List)`, `CustomSuggestions*`, `Suggestions`; `kol-select-wc` erst, wenn `pagination` das FC rendert                          |
-| final     | `@deprecated/input/*`, `input-adapter-leanup/`, `functional-component-wrappers/` inkl. `getRenderStates`, Adapter aus G1.3, alte FormField-/Input-FCs, `*Watches`-Interfaces    |
+| Zeitpunkt | Was gelöscht wird                                                                                                                                                                                                                                                                                                                                                  |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| nach G2   | erledigt in G2: `utils/counter-dom-updater.ts`, `InputPasswordController`, `InputTextEmailController`, `InputTextController`, `TextAreaStateWrapper`, alte `inputs/TextArea`                                                                                                                                                                                       |
+| nach G3a  | erledigt in G3a: `InputNumberController`, `InputRangeController`, `InputIconController.isNumberString`                                                                                                                                                                                                                                                             |
+| nach G3b  | erledigt in G3b: `InputDateController`, `InputIconController.validateNumber`/`parseToNumber`                                                                                                                                                                                                                                                                       |
+| nach G3c  | erledigt in G3c: `InputFileController`; `InputIconController` bleibt für select, single-select und combobox (G5)                                                                                                                                                                                                                                                   |
+| nach G4   | erledigt in G4: `InputCheckboxController`, `InputRadioController`/`InputCheckboxRadioController`, `Checkbox`-/`Radio`-/`FieldControlStateWrapper`, altes `FieldControl`, alte `inputs/Checkbox`/`inputs/Radio`                                                                                                                                                     |
+| nach G5   | erledigt in G5.2–G5.4: `SelectController`, `ComboboxController`, `SingleSelectController`, `SelectStateWrapper`, `NativeSelect`/`NativeOption(List)`, alte `CustomSuggestionsOption(sGroup)`; offen: `kol-select-wc`; `Suggestions`, `InputStateWrapper`, `InputContainerStateWrapper` und `InputIconController` bleiben, solange `kol-input-file` sie nutzt (G3c) |
+| final     | `@deprecated/input/*`, `input-adapter-leanup/`, `functional-component-wrappers/` inkl. `getRenderStates`, Adapter aus G1.3, alte FormField-/Input-FCs, `*Watches`-Interfaces                                                                                                                                                                                       |
 
 ### G7 – Folge-Epics (außerhalb dieser Migration)
 
@@ -201,10 +247,10 @@ Gelöscht wird, sobald der letzte Import weg ist. Veröffentlichte Schema-Typen 
 4. ~~`_on`: eine gemeinsame Callback-Prop oder typisiert pro Feld? (G1.1)~~ Entschieden: gemeinsam, alle Felder deklarieren `InputTypeOnDefault`.
 5. ~~SSR-Absturz von `attachInternals(undefined)` 1:1 übernehmen oder mit eigenem PR über einen Guard absichern? (G1.2)~~ Entschieden: 1:1 übernehmen, Fix als eigener PR nach G1.2 (#11034). Ursache ist nicht ein leeres `@Element()`: In mock-doc greift `instanceof Element` in `findHostWithShadowRoot` nicht. Betroffen sind im SSR die inneren `kol-button-wc`/`kol-popover-button-wc` und mit `serializeShadowRoot: 'scoped'` alle Legacy-Felder.
 6. ~~Verhaltensverträge in Jest oder in Playwright? (G0)~~ Entschieden: Playwright, siehe G0.
-7. Namen der Input-Props für min/max/step. (G3) Das Icons-Objekt heißt `horizontalIconsProp` (G1.1).
-8. `kol-select-wc` als Übergangs-Tag behalten oder `pagination` direkt auf das FC umstellen? (G5)
-9. combobox und single-select: gemeinsame DD16-Basis oder `ListboxBehavior`? (G5)
-10. #10501 und #10617 vor oder nach der Migration fixen? (G5)
+7. ~~Namen der Input-Props für min/max/step. (G3)~~ Entschieden: `inputMinProp`, `inputMaxProp` und `stepProp`, analog zu `horizontalIconsProp` (G1.1).
+8. ~~`kol-select-wc` als Übergangs-Tag behalten oder `pagination` direkt auf das FC umstellen? (G5)~~ Entschieden: `kol-select` rendert das FC direkt. `kol-select-wc` bleibt als Übergangs-Tag für `pagination`, mit derselben Basis; die Ablösung braucht Theme-Änderungen (G7).
+9. ~~combobox und single-select: gemeinsame DD16-Basis oder `ListboxBehavior`? (G5)~~ Entschieden: gemeinsame Basis `BaseListboxWebComponent extends BaseFormFieldWebComponent`, wie `BaseTextInputWebComponent` in G2.
+10. ~~#10501 und #10617 vor oder nach der Migration fixen? (G5)~~ Entschieden: nach der Migration, als eigener PR auf dem migrierten Code. Die Migration übernimmt das Verhalten 1:1.
 
 ## Grundlagen
 

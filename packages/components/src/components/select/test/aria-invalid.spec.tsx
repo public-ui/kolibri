@@ -3,8 +3,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import type { SelectOption } from '../../../schema';
 
-import { KolSelectWc } from '../component';
-import { KolSelect } from '../shadow';
+import { KolSelect } from '../component';
 
 describe('kol-select aria-invalid', () => {
 	it('sets aria-invalid="true" when msg type is error and field is touched', async () => {
@@ -16,12 +15,11 @@ describe('kol-select aria-invalid', () => {
 		];
 
 		const page = await newSpecPage({
-			components: [KolSelect, KolSelectWc],
+			components: [KolSelect],
 			template: () => <kol-select _label="Label" _options={options} _msg={{ _description: 'Es ist ein Fehler aufgetreten', _type: 'error' }} _touched={true} />,
 		});
 
-		const selectWc = page.root?.shadowRoot?.querySelector('kol-select-wc');
-		const select = selectWc?.querySelector('select');
+		const select = page.root?.shadowRoot?.querySelector('select');
 
 		expect(select?.getAttribute('aria-invalid')).toBe('true');
 	});
@@ -35,12 +33,11 @@ describe('kol-select aria-invalid', () => {
 		];
 
 		const page = await newSpecPage({
-			components: [KolSelect, KolSelectWc],
+			components: [KolSelect],
 			template: () => <kol-select _label="Label" _options={options} _msg={{ _description: 'Eine Info', _type: 'info' }} _touched={true} />,
 		});
 
-		const selectWc = page.root?.shadowRoot?.querySelector('kol-select-wc');
-		const select = selectWc?.querySelector('select');
+		const select = page.root?.shadowRoot?.querySelector('select');
 
 		expect(select?.getAttribute('aria-invalid')).toBeNull();
 	});
@@ -54,12 +51,11 @@ describe('kol-select aria-invalid', () => {
 		];
 
 		const page = await newSpecPage({
-			components: [KolSelect, KolSelectWc],
+			components: [KolSelect],
 			template: () => <kol-select _label="Label" _options={options} _msg={{ _description: 'Es ist ein Fehler aufgetreten', _type: 'error' }} />,
 		});
 
-		const selectWc = page.root?.shadowRoot?.querySelector('kol-select-wc');
-		const select = selectWc?.querySelector('select');
+		const select = page.root?.shadowRoot?.querySelector('select');
 
 		expect(select?.getAttribute('aria-invalid')).toBeNull();
 	});
@@ -73,12 +69,11 @@ describe('kol-select aria-invalid', () => {
 		];
 
 		const page = await newSpecPage({
-			components: [KolSelect, KolSelectWc],
+			components: [KolSelect],
 			template: () => <kol-select _label="Label" _options={options} _touched={true} />,
 		});
 
-		const selectWc = page.root?.shadowRoot?.querySelector('kol-select-wc');
-		const select = selectWc?.querySelector('select');
+		const select = page.root?.shadowRoot?.querySelector('select');
 
 		expect(select?.getAttribute('aria-invalid')).toBeNull();
 	});

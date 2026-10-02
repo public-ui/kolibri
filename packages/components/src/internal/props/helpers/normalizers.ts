@@ -1,4 +1,4 @@
-import { isObject } from '../../../schema';
+import { isObject, type NumberString } from '../../../schema';
 
 export function normalizeString(value?: unknown): string | never {
 	if (typeof value === 'string') {
@@ -32,6 +32,31 @@ export function normalizeNumber(value?: unknown): number | never {
 		if (!isNaN(parsed)) {
 			return parsed;
 		}
+	}
+	throw new Error(`Invalid number: ${value as string}`);
+}
+
+const NUMBER_STRING_PATTERN = /^\d+(\.\d+)?$/;
+
+/**
+ * Whether the value is a number string the number fields accept: digits with an optional decimal
+ * part. Negative and exponent notations are not accepted (#11077).
+ */
+export function isNumberString(value: unknown): value is NumberString {
+	return typeof value === 'string' && NUMBER_STRING_PATTERN.test(value);
+}
+
+/**
+ * Normalizes a numeric value of the number fields (`kol-input-number`, `kol-input-range`): a number
+ * passes, `NaN` becomes `undefined` (the value is cleared), a number string is parsed, anything
+ * else throws.
+ */
+export function normalizeInputNumber(value?: unknown): number | never {
+	if (typeof value === 'number') {
+		return (isNaN(value) ? undefined : value) as number;
+	}
+	if (isNumberString(value)) {
+		return parseFloat(value);
 	}
 	throw new Error(`Invalid number: ${value as string}`);
 }

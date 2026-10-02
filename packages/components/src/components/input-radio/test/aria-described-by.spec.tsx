@@ -3,7 +3,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import type { RadioOption, StencilUnknown } from '../../../schema';
 
-import { KolInputRadio } from '../shadow';
+import { KolInputRadio } from '../component';
 
 const options: RadioOption<StencilUnknown>[] = [
 	{

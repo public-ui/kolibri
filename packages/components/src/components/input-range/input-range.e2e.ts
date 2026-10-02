@@ -22,6 +22,23 @@ test.describe(COMPONENT_NAME, () => {
 		testValue: EXPECTED_VALUE,
 	});
 
+	test.describe('Initial value', () => {
+		// Without `_value` the field takes the middle of the range from the native range input (#11076).
+		for (const [attributes, expected] of [
+			['_min="0" _max="5"', 3],
+			['_min="0" _max="50"', 25],
+			['_min="abc" _max="-5"', 50],
+		] as const) {
+			test(`takes ${expected} for ${attributes}`, async ({ page }) => {
+				await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" ${attributes}></${COMPONENT_NAME}>`);
+				await page.waitForChanges();
+
+				expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRangeElement) => element._value)).toBe(expected);
+				await expect(page.locator('input[type=range]')).toHaveValue(String(expected));
+			});
+		}
+	});
+
 	test.describe('Callbacks and Events', () => {
 		test('should call onFocus callback and emit focus event when input receives focus', async ({ page }) => {
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input"></${COMPONENT_NAME}>`);

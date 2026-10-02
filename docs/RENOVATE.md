@@ -91,6 +91,12 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
   Prerequisites: repo setting **Allow auto-merge** enabled, green pipelines enforced via required
   status checks on `develop`, and the runner GitHub App listed in the branch-protection bypass
   (see [Enabling Renovate](#enabling-renovate)).
+- **`rebaseWhen: conflicted`** — Renovate rebases a branch only when it conflicts with `develop`, not
+  whenever `develop` has moved on. The `Required checks` rules do not demand an up-to-date branch
+  (`strict_required_status_checks_policy: false`), and a rebase restarts the CI for about 40 minutes.
+  With `behind-base-branch`, every merge into `develop` (by people or by the runner itself, which
+  merges one pull request per run) pushed all other green dependency pull requests behind and into a new
+  rebase, so they rarely met a run in which they were both green and up to date.
 - **`baseBranchPatterns`** — runs on `develop` **and** `release/3|2|1`; the maintenance branches are
   **security-only** (all regular npm and GitHub Actions updates are disabled) so released majors stay
   stable. Security PRs still automerge when non-major; major security updates require dashboard
@@ -187,6 +193,12 @@ To activate it:
      `opened`/`edited` leaves it unreported after any push and the merge is refused with
      `Required status check "…" is expected`. Renovate runs into this on every rebase; that is what
      `pr-title-validation.yml` was missing.
+   - A workflow behind a required check that filters `pull_request` by base branch also needs
+     `edited`. A stacked pull request opened against a feature branch never matches the filter, and
+     when GitHub retargets it to `develop` after the pull request below it is merged, it sends only
+     `edited`. Without it the check stays at `Expected — Waiting for status to be reported` until the
+     next push. `codeql.yml` therefore reacts to `edited` and runs only when the base changed; a
+     title or body edit gets a concurrency group of its own, so it cannot cancel a running analysis.
    - In the target patterns of a ruleset GitHub prefixes `refs/heads/` itself. Enter `release/**/*`,
      never `refs/heads/release/**/*`, otherwise the prefix doubles and the release branches silently
      lose their protection. `gh api repos/public-ui/kolibri/rules/branches/release/3` shows what is

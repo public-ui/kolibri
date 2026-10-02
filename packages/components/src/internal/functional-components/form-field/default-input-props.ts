@@ -27,7 +27,8 @@ export type DefaultInputProps<T> = Omit<
 	},
 	'title' | 'autoCapitalize' | 'autoCorrect' | 'spellcheck'
 > & {
-	id: string;
+	/** Omitted by a secondary control the label does not reference, e.g. the range input of `kol-input-range`. */
+	id?: string;
 	ariaDescribedBy?: string[];
 	hideLabel?: boolean;
 	label?: string;

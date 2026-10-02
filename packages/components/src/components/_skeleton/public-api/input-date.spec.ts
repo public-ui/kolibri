@@ -206,4 +206,4 @@ const KOL_INPUT_DATE_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-input-date', component: 'input-date', file: 'shadow.tsx', pinnedApi: KOL_INPUT_DATE_PUBLIC_API });
+describePublicApiContract({ tag: 'kol-input-date', component: 'input-date', pinnedApi: KOL_INPUT_DATE_PUBLIC_API, schemaInterface: 'InputDateProps' });

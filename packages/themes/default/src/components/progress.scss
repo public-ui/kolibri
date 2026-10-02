@@ -3,6 +3,7 @@
 @layer kol-theme-component {
 	.kol-progress {
 		&__bar {
+			column-gap: to-rem(4);
 			&-value {
 				margin-left: to-rem(8);
 			}

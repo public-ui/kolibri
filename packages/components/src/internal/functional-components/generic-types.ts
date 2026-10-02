@@ -30,10 +30,12 @@ export type InternalOf<P> = {
 /**
  * Extracts the external (input) property types.
  * For each real key K, uses the __input_K type if present, otherwise falls back to the internal type.
+ * Only the `undefined` of the optional phantom key is removed: an external type that allows `null`
+ * (e.g. the `_value` of `kol-input-number`) keeps it.
  */
 type ExternalOf<P> = {
 	[K in keyof P as K extends `__input_${string}` | '__propInternal__' ? never : K]: `__input_${K & string}` extends keyof P
-		? NonNullable<P[`__input_${K & string}`]>
+		? Exclude<P[`__input_${K & string}`], undefined>
 		: P[K];
 };
 

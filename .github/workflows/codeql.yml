@@ -21,16 +21,24 @@ on:
     branches: ['develop', 'release/*']
   pull_request:
     branches: ['develop', 'release/*']
+    # `edited` covers a pull request whose base is changed to one of these branches, for example a
+    # stacked pull request that GitHub retargets to `develop` after the pull request below it is
+    # merged. The branch filter checks the base at the time of the event, so `opened` and
+    # `synchronize` did not start a run while the base was a feature branch. Without `edited`, the
+    # required "CodeQL" status waits on the head commit until the next push.
+    types: [opened, edited, reopened, synchronize]
   schedule:
     - cron: '23 1 * * 6'
 
+# An `edited` event without a base change (title or body) gets a group of its own. Its job is
+# skipped, and in the shared group it would cancel a running analysis that nothing restarts.
 concurrency:
-  group: ${{ github.event_name == 'pull_request' && format('workflow-{0}-pr-{1}', github.workflow, github.event.pull_request.number) || format('workflow-{0}-{1}', github.workflow, github.ref) }}
+  group: ${{ github.event.action == 'edited' && !github.event.changes.base && format('workflow-{0}-{1}', github.workflow, github.run_id) || github.event_name == 'pull_request' && format('workflow-{0}-pr-{1}', github.workflow, github.event.pull_request.number) || format('workflow-{0}-{1}', github.workflow, github.ref) }}
   cancel-in-progress: true
 
 jobs:
   analyze:
-    if: github.repository == 'public-ui/kolibri'
+    if: github.repository == 'public-ui/kolibri' && (github.event.action != 'edited' || github.event.changes.base)
     name: Analyze
     # Runner size impacts CodeQL analysis time. To learn more, please see:
     #   - https://gh.io/recommended-hardware-resources-for-running-codeql
