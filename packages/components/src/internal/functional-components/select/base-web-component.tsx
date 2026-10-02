@@ -118,7 +118,7 @@ export abstract class BaseSelectWebComponent extends BaseFormFieldWebComponent<S
 		const setValue = (list: StencilUnknown[]): void => {
 			const normalized = normalizeSelectValue(list, this.getRenderProp('options'), this._multiple);
 			this.setRenderProp('value', normalized);
-			this.formAssociation.setFormAssociatedValue(normalized as unknown as StencilUnknown);
+			this.formAssociation.setFormAssociatedValue(this.getModelValue());
 		};
 		if (value === null) {
 			setValue([null]);
