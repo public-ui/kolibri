@@ -254,7 +254,8 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 
 	// --- Callbacks ---
 
-	private readonly handleSelectionChange = (event: Event, payload: SelectionChangeEventPayload): void => {
+	/** Reports a changed selection through `onSelectionChange` and the `selectionchange` event. */
+	protected emitSelectionChange(event: Event, payload: SelectionChangeEventPayload): void {
 		const onSelectionChange = this.getRenderProp('on')[Callback.onSelectionChange];
 		if (typeof onSelectionChange === 'function') {
 			onSelectionChange(event, payload);
@@ -262,9 +263,10 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.selectionChange, payload);
 		}
-	};
+	}
 
-	private readonly handleSort = (event: MouseEvent, payload: SortEventPayload): void => {
+	/** Reports a clicked sort button through `onSort` and the `sort` event. */
+	protected emitSort(event: MouseEvent, payload: SortEventPayload): void {
 		const onSort = this.getRenderProp('on')[Callback.onSort];
 		if (typeof onSort === 'function' && payload.key) {
 			onSort(event, payload);
@@ -272,6 +274,14 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.sort, payload);
 		}
+	}
+
+	private readonly handleSelectionChange = (event: Event, payload: SelectionChangeEventPayload): void => {
+		this.emitSelectionChange(event, payload);
+	};
+
+	private readonly handleSort = (event: MouseEvent, payload: SortEventPayload): void => {
+		this.emitSort(event, payload);
 	};
 
 	/**

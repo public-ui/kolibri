@@ -387,6 +387,33 @@ test.describe('kol-table-stateful behavior', () => {
 		expect(selection).toEqual([23, 18]);
 	});
 
+	test('keeps a column hidden in the settings menu while sorting', async ({ page }) => {
+		await mount(page, { _hasSettingsMenu: true });
+		const columns = () =>
+			table(page)
+				.locator('th[aria-sort]')
+				.evaluateAll((cells) => cells.map((cell) => cell.querySelector('.kol-span__label')?.textContent ?? cell.textContent));
+		expect(await columns()).toEqual(['ID', 'Name', 'City']);
+
+		await table(page)
+			.locator('.kol-table-settings button')
+			.first()
+			.evaluate((button: HTMLButtonElement) => button.click());
+		await table(page)
+			.getByRole('checkbox', { name: 'Name' })
+			.evaluate((checkbox: HTMLInputElement) => checkbox.click());
+		await table(page)
+			.locator('.kol-table-settings__actions button')
+			.last()
+			.evaluate((button: HTMLButtonElement) => button.click());
+		await settle(page);
+		expect(await columns()).toEqual(['ID', 'City']);
+
+		await clickSort(page, 'ID');
+		expect(await columns()).toEqual(['ID', 'City']);
+		expect(await rowIds(page)).toEqual(['1', '2', '3', '4', '5']);
+	});
+
 	test('shows all rows when the pagination is switched off', async ({ page }) => {
 		await mount(page);
 		await table(page).evaluate((element: HTMLKolTableStatefulElement) => {

@@ -2,9 +2,7 @@ import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
 import type { KoliBriTableDataType, KoliBriTableHeaders } from '../../../schema';
-import { KolPaginationWc } from '../../pagination/wc';
-import { KolTableStatelessWc } from '../../table-stateless/wc';
-import { KolTableStateful } from '../shadow';
+import { KolTableStateful } from '../component';
 
 type Row = { id: number; name: string; city: string };
 
@@ -103,7 +101,7 @@ const CASES: Case[] = [
 describe('kol-table-stateful', () => {
 	it.each(CASES)('should render with %s', async (_, props) => {
 		const page = await newSpecPage({
-			components: [KolTableStateful, KolTableStatelessWc, KolPaginationWc],
+			components: [KolTableStateful],
 			template: () => h('kol-table-stateful', props),
 		});
 		await new Promise((resolve) => setTimeout(resolve));

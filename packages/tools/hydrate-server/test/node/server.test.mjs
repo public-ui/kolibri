@@ -149,7 +149,6 @@ const PROBLEMATIC_COMPONENTS = new Set([
 	'kol-form', // setTimeout in controller
 	'kol-details', // toggleTimeout
 	'kol-pagination', // Multiple setTimeout
-	'kol-pagination-wc', // Same component, actual tag name
 	'kol-toaster', // Multiple setTimeout
 	'kol-popover-button', // setTimeout + @floating-ui/dom autoUpdate
 	'kol-popover-button-wc', // Same component, actual tag name

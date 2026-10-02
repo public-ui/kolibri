@@ -81,9 +81,3 @@ const KOL_PAGINATION_PUBLIC_API: PublicApiContract = {
 };
 
 describePublicApiContract({ tag: 'kol-pagination', component: 'pagination', pinnedApi: KOL_PAGINATION_PUBLIC_API, schemaInterface: 'PaginationProps' });
-
-/**
- * Pinned surface of `kol-pagination-wc` (11 props, 0 methods): internal contract for `kol-table-stateful`,
- * which renders the tag directly. It stays pinned until `kol-table-stateful` renders the pagination itself.
- */
-describePublicApiContract({ tag: 'kol-pagination-wc', component: 'pagination', file: 'wc.tsx', pinnedApi: KOL_PAGINATION_PUBLIC_API });

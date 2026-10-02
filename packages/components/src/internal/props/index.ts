@@ -128,6 +128,7 @@ export * from './table-loading';
 export * from './table-pagination';
 export * from './table-selection';
 export * from './table-stateful-callbacks';
+export * from './table-stateful-headers';
 export * from './tabs';
 export * from './tabs-callbacks';
 export * from './toolbar-items';

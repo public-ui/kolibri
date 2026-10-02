@@ -1,10 +1,13 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
 
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { PaginationApi } from '../../internal/functional-components/pagination/api';
-import { BasePaginationWebComponent } from '../../internal/functional-components/pagination/base-web-component';
+import { paginationPropsConfig } from '../../internal/functional-components/pagination/api';
 import { PaginationFC } from '../../internal/functional-components/pagination/component';
+import type { PaginationItem, PaginationPropsStore, PaginationRenderProps } from '../../internal/functional-components/pagination/item';
+import { createPaginationItem } from '../../internal/functional-components/pagination/item';
 import type {
 	CustomClassPropType,
 	KoliBriPaginationButtonCallbacks,
@@ -23,29 +26,18 @@ import type {
 	},
 	shadow: true,
 })
-export class KolPagination extends BasePaginationWebComponent implements PaginationProps, WebComponentInterface<PaginationApi> {
-	@Element() protected readonly host?: HTMLKolPaginationElement;
+export class KolPagination extends BaseWebComponent<PaginationApi> implements PaginationProps, WebComponentInterface<PaginationApi> {
+	@Element() private readonly host?: HTMLKolPaginationElement;
 
-	/**
-	 * The `_pageSize` value as the element sees it. A page size chosen in the select replaces it without
-	 * writing the `_pageSize` prop.
-	 */
-	@State() private pageSizeValue?: number = 1;
+	/** Renders the element again after a page size was chosen in the select; it does not write `_pageSize`. */
+	@State() private renderCount = 0;
 
-	protected getPageSizeValue(): number | undefined {
-		return this.pageSizeValue;
-	}
-
-	/** Applies the page size first: the state change renders, and the render reads the applied values. */
-	protected applyChosenPageSize(value: number): void {
-		this.applyPageSize(value);
-		this.pageSizeValue = value;
-	}
+	private item!: PaginationItem;
 
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<PaginationFC {...this.getPaginationProps()} />
+				<PaginationFC {...this.item.getFcProps()} />
 			</Host>
 		);
 	}
@@ -109,80 +101,90 @@ export class KolPagination extends BasePaginationWebComponent implements Paginat
 
 	@Watch('_boundaryCount')
 	public watchBoundaryCount(value?: number): void {
-		this.applyBoundaryCount(value);
+		this.item.applyBoundaryCount(value);
 	}
 
 	@Watch('_customClass')
 	public watchCustomClass(value?: CustomClassPropType): void {
-		this.applyCustomClass(value);
+		this.item.applyCustomClass(value);
 	}
 
 	@Watch('_hasButtons')
 	public watchHasButtons(value?: boolean | Stringified<PaginationHasButton>): void {
-		this.applyHasButtons(value);
+		this.item.applyHasButtons(value);
 	}
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		this.applyLabel(value);
+		this.item.applyLabel(value);
 	}
 
 	@Watch('_max')
 	public watchMax(value?: MaxPropType): void {
-		this.applyMax(value);
+		this.item.applyMax(value);
 	}
 
 	@Watch('_on')
 	public watchOn(value?: KoliBriPaginationButtonCallbacks): void {
-		this.applyOn(value);
+		this.item.applyOn(value);
 	}
 
 	@Watch('_page')
 	public watchPage(value?: number): void {
-		this.applyPage(value);
+		this.item.applyPage(value);
 	}
 
 	@Watch('_pageSize')
 	public watchPageSize(value?: number): void {
-		this.applyPageSize(value);
-		this.pageSizeValue = value;
+		this.item.applyPageSize(value);
 	}
 
 	@Watch('_pageSizeOptions')
 	public watchPageSizeOptions(value?: Stringified<number[]>): void {
-		this.applyPageSizeOptions(value);
+		this.item.applyPageSizeOptions(value);
 	}
 
 	@Watch('_siblingCount')
 	public watchSiblingCount(value?: number): void {
-		this.applySiblingCount(value);
+		this.item.applySiblingCount(value);
 	}
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
-		this.applyTooltipAlign(value);
+		this.item.applyTooltipAlign(value);
 	}
 
 	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
-		this.initPagination();
-		this.watchBoundaryCount(this._boundaryCount);
-		this.watchCustomClass(this._customClass);
-		this.watchHasButtons(this._hasButtons);
-		this.applyLabel(this._label, true);
-		this.watchOn(this._on);
-		this.watchPage(this._page);
-		this.watchPageSize(this._pageSize);
-		this.watchPageSizeOptions(this._pageSizeOptions);
-		this.watchSiblingCount(this._siblingCount);
-		this.watchTooltipAlign(this._tooltipAlign);
-		this.watchMax(this._max);
-		// The page is applied again last: only now are page size and number of entries known to clamp it.
-		this.watchPage(this._page);
+		this.initRenderProps(paginationPropsConfig);
+		const store = {
+			get: (key: keyof PaginationRenderProps) => this.getRenderProp(key as never),
+			set: (key: keyof PaginationRenderProps, value: unknown) => this.setRenderProp(key as never, value as never),
+		} as PaginationPropsStore;
+		this.item = createPaginationItem({
+			getEventTarget: () => this.host,
+			requestRender: () => {
+				this.renderCount++;
+			},
+			store,
+		});
+		this.item.load({
+			boundaryCount: this._boundaryCount,
+			customClass: this._customClass,
+			hasButtons: this._hasButtons,
+			label: this._label,
+			max: this._max,
+			on: this._on,
+			page: this._page,
+			pageSize: this._pageSize,
+			pageSizeOptions: this._pageSizeOptions,
+			siblingCount: this._siblingCount,
+			tooltipAlign: this._tooltipAlign,
+		});
 	}
 
 	public disconnectedCallback(): void {
-		this.disconnectPagination();
+		this.item.destroy();
 	}
 }

@@ -1,9 +1,8 @@
-import { KolTableStatelessTag, KolTableStatelessWcTag } from '../../../core/component-names';
+import { KolTableStatelessTag } from '../../../core/component-names';
 import type { TableStatelessProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolTableStateless } from '../component';
-import { KolTableStatelessWc } from '../wc';
 
 const propVariants: TableStatelessProps[] = [
 	{
@@ -271,5 +270,4 @@ const propVariants: TableStatelessProps[] = [
 	},
 ];
 
-executeSnapshotTests<TableStatelessProps>(KolTableStatelessTag, [KolTableStateless, KolTableStatelessWc], propVariants);
-executeSnapshotTests<TableStatelessProps>(KolTableStatelessWcTag, [KolTableStatelessWc], propVariants);
+executeSnapshotTests<TableStatelessProps>(KolTableStatelessTag, [KolTableStateless], propVariants);
