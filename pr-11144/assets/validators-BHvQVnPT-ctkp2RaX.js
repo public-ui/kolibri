@@ -1,0 +1,1 @@
+var e=/^[a-zA-Z][a-zA-Z0-9_-]{0,60}$/,t=t=>typeof t==`string`&&e.test(t);export{t};
