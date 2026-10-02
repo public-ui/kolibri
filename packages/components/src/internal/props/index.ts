@@ -1,3 +1,4 @@
+export * from './accept';
 export * from './access-key';
 export * from './active';
 export * from './adjust-height';

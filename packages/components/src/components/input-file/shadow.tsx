@@ -34,6 +34,7 @@ import KolFormFieldStateWrapperFc, { type FormFieldStateWrapperProps } from '../
 import KolInputContainerFc from '../../functional-component-wrappers/InputContainerStateWrapper/InputContainerStateWrapper';
 import KolInputStateWrapperFc, { type InputStateWrapperProps } from '../../functional-component-wrappers/InputStateWrapper/InputStateWrapper';
 import { translate } from '../../i18n';
+import { getFileNames } from '../../internal/functional-components/form-field/file-value';
 import type { FormFieldLabelInfoPopoverProps } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
@@ -418,9 +419,7 @@ export class KolInputFile implements ClickableElement, FocusableElement, InputFi
 		if (event.dataTransfer?.files.length) {
 			const files = event.dataTransfer.files;
 			this.ctaRef.el.files = files;
-			this.filename = Array.from(files)
-				.map((file) => file.name)
-				.join(', ');
+			this.filename = getFileNames(files) ?? this.translateFilenameText;
 			this.controller.setFormAssociatedValue(files);
 			this.controller.onFacade.onChange(event, files);
 			this.controller.onFacade.onInput(event, false, files);
@@ -430,11 +429,7 @@ export class KolInputFile implements ClickableElement, FocusableElement, InputFi
 		if (this.ctaRef.el instanceof HTMLInputElement && this.ctaRef.el.type === 'file') {
 			const value = this.ctaRef.el.files;
 			this.hasFileSelected = !!value?.length;
-			this.filename = value?.length
-				? Array.from(value)
-						.map((file) => file.name)
-						.join(', ')
-				: this.translateFilenameText;
+			this.filename = getFileNames(value) ?? this.translateFilenameText;
 
 			this.controller.onFacade.onChange(event, value);
 			this.controller.setFormAssociatedValue(value);
