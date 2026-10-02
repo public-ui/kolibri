@@ -3,7 +3,6 @@ import type { Generic } from 'adopted-style-sheets';
 import type {
 	InputRadioProps,
 	InputRadioWatches,
-	Optgroup,
 	OptionsPropType,
 	PropLabelWithExpertSlot,
 	RadioOption,
@@ -13,22 +12,10 @@ import type {
 } from '../../schema';
 import { setState, validateOptions, validateRequired } from '../../schema';
 
+import { fillKeyOptionMap, normalizeOptionValues } from '../../internal/functional-components/form-field/options';
 import type { OrientationPropType } from '../../schema/props/orientation';
 import { validateOrientation } from '../../schema/props/orientation';
 import { InputController } from '../@deprecated/input/controller';
-
-export const fillKeyOptionMap = <T>(keyOptionMap: Map<string, RadioOption<T>>, options: SelectOption<T>[], preKey = ''): void => {
-	options.forEach((option, index) => {
-		const key = `${preKey}-${index}`;
-		if (typeof option === 'object' && option !== null && typeof option.label === 'string' && option.label.length > 0) {
-			if (Array.isArray((option as Optgroup<T>).options)) {
-				fillKeyOptionMap(keyOptionMap, (option as Optgroup<T>).options, key);
-			} else {
-				keyOptionMap.set(key, option as RadioOption<T>);
-			}
-		}
-	});
-};
 
 type RequiredProps = PropLabelWithExpertSlot;
 type OptionalProps = {
@@ -81,17 +68,7 @@ export class InputRadioController extends InputCheckboxRadioController implement
 		if (Array.isArray(options) && options.length > 0) {
 			this.keyOptionMap.clear();
 
-			const normalizedOptions = options.map((option: RadioOption<StencilUnknown> | string) => {
-				if (typeof option === 'object' && option !== null && typeof option.label === 'string') {
-					return {
-						...option,
-						value: option.value ?? option.label,
-					};
-				}
-				return option;
-			});
-
-			fillKeyOptionMap(this.keyOptionMap, normalizedOptions as SelectOption<StencilUnknown>[]);
+			fillKeyOptionMap(this.keyOptionMap, normalizeOptionValues(options as RadioOption<StencilUnknown>[]) as SelectOption<StencilUnknown>[]);
 		}
 	};
 
