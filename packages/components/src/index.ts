@@ -14,6 +14,7 @@ export type {
 	KoliBriTableHeaderCell,
 	KoliBriTableHeaderCellWithLogic,
 	KoliBriTableSelection,
+	KoliBriTableSelectionKeys,
 	Optgroup,
 	Option,
 	RadioOption,
