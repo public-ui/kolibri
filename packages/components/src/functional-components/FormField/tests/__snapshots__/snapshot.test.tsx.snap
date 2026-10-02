@@ -50,7 +50,7 @@ exports[`KolFormFieldFc should render correctly with div tag 1`] = `
 
 exports[`KolFormFieldFc should render correctly with fieldset tag 1`] = `
 <fieldset class="kol-form-field">
-  <label class="kol-form-field__label" htmlfor="test-id" id="test-id-label">
+  <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="test-id" id="test-id-label">
     <span class="kol-form-field__label-text kol-span">
       <span class="kol-span__container">
         <span class="kol-span__label">
@@ -59,7 +59,7 @@ exports[`KolFormFieldFc should render correctly with fieldset tag 1`] = `
         <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
       </span>
     </span>
-  </label>
+  </legend>
   <div class="kol-form-field__input"></div>
 </fieldset>
 `;

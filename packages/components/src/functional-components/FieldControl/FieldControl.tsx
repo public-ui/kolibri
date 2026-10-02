@@ -1,23 +1,9 @@
-import { Fragment, h, type FunctionalComponent as FC } from '@stencil/core';
-import type { JSXBase } from '@stencil/core/internal';
+import { h, type FunctionalComponent as FC } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { FieldControlFC, isFieldControlLabelShownAsTooltip, type FieldControlFCProps } from '../../internal/functional-components/form-field/field-control';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { TooltipFC } from '../../internal/functional-components/tooltip/component';
-import type { FormFieldLabelInfoPopoverProps } from '../../schema';
-import {
-	buildBadgeTextString,
-	getMsgType,
-	isMsgDefinedAndInputTouched,
-	showExpertSlot,
-	type AlignPropType,
-	type LabelAlignPropType,
-	type MsgPropType,
-	type Stringified,
-} from '../../schema';
-import clsx from '../../utils/clsx';
+import { buildBadgeTextString } from '../../schema';
 import { createRelatedUniqueId } from '../../utils/dev.utils';
-import KolFieldControlHintFc from '../FormFieldHint';
-import KolFieldControlLabelFc from '../FormFieldLabel';
 
 const fieldControlTooltipBehaviorPool = new Map<string, TooltipBehavior>();
 
@@ -41,155 +27,54 @@ const destroyFieldControlTooltipBehavior = (id: string): void => {
 	}
 };
 
-export type FieldControlProps = Omit<JSXBase.HTMLAttributes<HTMLElement>, 'id'> & {
-	id: string;
-	hint?: string;
-	label: string;
-	hideLabel?: boolean;
-	infoPopover?: FormFieldLabelInfoPopoverProps;
-	labelAlign?: LabelAlignPropType;
-	accessKey?: string;
-	shortKey?: string;
-	tooltipAlign?: AlignPropType;
-	disabled?: boolean;
-	msg?: Stringified<MsgPropType>;
-	touched?: boolean;
-	required?: boolean;
+/** Props of the legacy checkbox and radio fields; `FieldControlFC` receives them through the adapter below. */
+export type FieldControlProps = Omit<FieldControlFCProps, 'labelProps' | 'readOnly' | 'refInput' | 'refTooltip'> & {
 	readonly?: boolean;
-	showTooltip?: boolean;
-	tooltipFloatingRef?: (el?: HTMLDivElement) => void;
-	tooltipArrowRef?: (el?: HTMLDivElement) => void;
-
-	renderNoLabel?: boolean;
-	renderNoHint?: boolean;
-	renderNoTooltip?: boolean;
-
-	fieldControlLabelProps?: JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & {
-		component?: 'label' | 'legend';
-		showBadge?: boolean;
-	};
-	fieldControlInputProps?: JSXBase.HTMLAttributes<HTMLDivElement>;
-	fieldControlTooltipProps?: Pick<JSXBase.HTMLAttributes<HTMLElement>, 'class'>;
-	fieldControlHintProps?: JSXBase.HTMLAttributes<HTMLElement>;
+	fieldControlLabelProps?: FieldControlFCProps['labelProps'];
 };
 
-const InputContainer: FC<JSXBase.HTMLAttributes<HTMLDivElement>> = ({ class: classNames, ...other }, children) => {
-	return (
-		<div class={clsx('kol-field-control__input', classNames)} {...other}>
-			{children}
-		</div>
-	);
-};
-
+/**
+ * Adapter of the legacy checkbox and radio fields to `FieldControlFC`, removed once both are
+ * migrated. It keeps the tooltip behavior of each control in the pool above, because a functional
+ * component has no lifecycle.
+ */
 const KolFieldControlFc: FC<FieldControlProps> = (props, children) => {
-	const {
-		class: classNames,
-		id,
-		disabled,
-		label,
-		hideLabel,
-		labelAlign,
-		renderNoTooltip,
-		hint,
-		infoPopover,
-		renderNoHint,
-		accessKey,
-		shortKey,
-		msg,
-		touched,
-		required,
-		readonly,
-		tooltipAlign,
-		tooltipFloatingRef,
-		fieldControlInputProps,
-		fieldControlLabelProps,
-		fieldControlTooltipProps,
-		fieldControlHintProps,
-		...other
-	} = props;
-
-	const canShowHint = !renderNoHint;
-	const canShowTooltip = !renderNoTooltip;
-	const hasExpertSlot = showExpertSlot(label);
-	const useTooltipInsteadOfLabel = canShowTooltip && !hasExpertSlot && hideLabel;
-	const badgeText = buildBadgeTextString(accessKey, shortKey);
-	const labelId = createRelatedUniqueId(id, 'label');
-	const tooltipBehavior = useTooltipInsteadOfLabel ? getFieldControlTooltipBehavior(id) : undefined;
+	const { id, label, hideLabel, renderNoTooltip, accessKey, shortKey, tooltipAlign, readonly, fieldControlLabelProps, ...other } = props;
+	const tooltipBehavior = isFieldControlLabelShownAsTooltip({ hideLabel, label, renderNoTooltip }) ? getFieldControlTooltipBehavior(id) : undefined;
 
 	if (tooltipBehavior) {
 		tooltipBehavior.watchAlign(tooltipAlign);
-		tooltipBehavior.watchBadgeText(badgeText || '');
-		tooltipBehavior.watchId(labelId);
+		tooltipBehavior.watchBadgeText(buildBadgeTextString(accessKey, shortKey) || '');
+		tooltipBehavior.watchId(createRelatedUniqueId(id, 'label'));
 		tooltipBehavior.watchLabel(label);
 	} else {
 		destroyFieldControlTooltipBehavior(id);
 	}
 
-	const forwardedInputRef = fieldControlInputProps?.ref as ((el?: HTMLDivElement) => void) | undefined;
-	const setInputContainerRef = (el?: HTMLDivElement): void => {
-		forwardedInputRef?.(el);
-		if (tooltipBehavior && el) {
-			tooltipBehavior.initContext(el);
-			tooltipBehavior.syncListeners(undefined, el, true);
-		}
-	};
-
-	const components = [
-		<>
-			<InputContainer {...fieldControlInputProps} ref={setInputContainerRef}>
-				{children}
-			</InputContainer>
-			{useTooltipInsteadOfLabel && (
-				<div class={clsx('kol-form-field__tooltip', fieldControlTooltipProps?.class)}>
-					<TooltipFC
-						badgeText={badgeText || ''}
-						label={label}
-						align={tooltipAlign}
-						id={labelId}
-						refFloating={
-							tooltipFloatingRef ??
-							((el?: HTMLDivElement) => {
-								tooltipBehavior?.setTooltipElementRef(el);
-							})
-						}
-					/>
-				</div>
-			)}
-		</>,
-		<KolFieldControlLabelFc
-			{...(fieldControlLabelProps || {})}
+	return (
+		<FieldControlFC
+			{...other}
 			id={id}
-			baseClassName="kol-field-control"
-			class={clsx(fieldControlLabelProps?.class, {
-				['kol-field-control__label--visually-hidden']: Boolean(hideLabel),
-			})}
-			hasExpertSlot={hasExpertSlot}
 			label={label}
+			hideLabel={hideLabel}
+			renderNoTooltip={renderNoTooltip}
 			accessKey={accessKey}
 			shortKey={shortKey}
-			infoPopover={infoPopover}
-		/>,
-	];
-
-	if (labelAlign === 'left') {
-		components.reverse();
-	}
-
-	const stateCssClasses = {
-		['kol-field-control--disabled']: Boolean(disabled),
-		['kol-field-control--required']: Boolean(required),
-		['kol-field-control--touched']: Boolean(touched),
-		['kol-field-control--hide-label']: Boolean(hideLabel),
-		['kol-field-control--read-only']: Boolean(readonly),
-		[`kol-field-control--${getMsgType(msg)}`]: Boolean(isMsgDefinedAndInputTouched(msg, touched)),
-		[`kol-field-control--label-align-${labelAlign}`]: Boolean(labelAlign),
-	};
-
-	return (
-		<div class={clsx('kol-field-control', stateCssClasses, classNames)} {...other}>
-			{components}
-			{canShowHint && <KolFieldControlHintFc {...(fieldControlHintProps || {})} baseClassName="kol-field-control" id={id} hint={hint} />}
-		</div>
+			tooltipAlign={tooltipAlign}
+			readOnly={readonly}
+			labelProps={fieldControlLabelProps}
+			refInput={(el?: HTMLDivElement): void => {
+				if (tooltipBehavior && el) {
+					tooltipBehavior.initContext(el);
+					tooltipBehavior.syncListeners(undefined, el, true);
+				}
+			}}
+			refTooltip={(el?: HTMLDivElement): void => {
+				tooltipBehavior?.setTooltipElementRef(el);
+			}}
+		>
+			{children}
+		</FieldControlFC>
 	);
 };
 

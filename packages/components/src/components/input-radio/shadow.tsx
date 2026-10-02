@@ -127,13 +127,7 @@ export class KolInputRadio implements ClickableElement, FocusableElement, InputR
 			component: 'fieldset',
 			disabled: Boolean(this.state._disabled),
 			class: clsx('kol-form-field--radio'),
-			formFieldLabelProps: {
-				component: 'legend',
-				class: 'kol-form-field__label--legend',
-			},
-			formFieldInputProps: {
-				class: `kol-form-field__input--orientation-${this.state._orientation}`,
-			},
+			orientation: this.state._orientation,
 			alert: this.showAsAlert(),
 			hideLabel: false,
 			infoPopover: this._infoPopover,

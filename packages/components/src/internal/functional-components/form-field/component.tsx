@@ -49,6 +49,10 @@ export type FormFieldFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'ref
 	showBadge?: boolean;
 	tooltipAlign?: TooltipAlignPropType;
 	variant?: VariantClassNamePropType;
+	/** `fieldset` groups the options of a radio group; its label is then a `legend`. */
+	component?: 'div' | 'fieldset';
+	/** Arranges the options of a group among each other or side by side. */
+	orientation?: 'horizontal' | 'vertical';
 	/** Receives the `__input` wrapper, the reference element of the label tooltip. */
 	refInput?: (el?: HTMLDivElement) => void;
 	/** Receives the floating element of the label tooltip. */
@@ -105,6 +109,8 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 		showBadge,
 		tooltipAlign,
 		variant,
+		component = 'div',
+		orientation,
 		refInput,
 		refTooltip,
 		...other
@@ -114,9 +120,11 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 	const showMsg = isMsgDefinedAndInputTouched(msg, touched);
 	const badgeText = buildBadgeTextString(accessKey, shortKey);
 	const showTooltip = isLabelShownAsTooltip({ hideLabel, label, renderNoTooltip });
+	const isFieldset = component === 'fieldset';
 
 	return (
 		<BemRootNodeFC
+			component={component}
 			block="kol-form-field"
 			modifiers={{
 				disabled: Boolean(disabled),
@@ -133,6 +141,9 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 		>
 			{!renderNoLabel && (
 				<FormFieldLabelFC
+					component={isFieldset ? 'legend' : 'label'}
+					// `FormFieldLabelFC` renders the `__label` element itself, so only the modifier is added here.
+					class={isFieldset ? 'kol-form-field__label--legend' : undefined}
 					id={id}
 					hasExpertSlot={hasExpertSlot}
 					hideLabel={hideLabel}
@@ -144,7 +155,13 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 					infoPopover={infoPopover}
 				/>
 			)}
-			<div class={formFieldBem('input')} ref={refInput}>
+			<div
+				class={formFieldBem('input', {
+					'orientation-horizontal': orientation === 'horizontal',
+					'orientation-vertical': orientation === 'vertical',
+				})}
+				ref={refInput}
+			>
 				{children}
 				{showTooltip && (
 					<div class={formFieldBem('tooltip')}>
