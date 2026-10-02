@@ -2,11 +2,9 @@ import { KolSelectTag } from '../../../core/component-names';
 import type { SelectProps } from '../../../schema';
 import { executeInputSnapshotTests } from '../../../utils/testing';
 
-import { KolSelectWc } from '../component';
-import { KolSelect } from '../shadow';
+import { KolSelect } from '../component';
 
-/** `kol-select` renders the inner `kol-select-wc`; both are registered so the snapshots contain the native select. */
-const COMPONENTS = [KolSelect, KolSelectWc];
+const COMPONENTS = [KolSelect];
 
 const options = [
 	{

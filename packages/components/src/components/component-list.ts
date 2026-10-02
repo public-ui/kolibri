@@ -39,7 +39,7 @@ import { KolPagination } from './pagination/shadow';
 import { KolPopoverButton } from './popover-button/component';
 import { KolProgress } from './progress/component';
 import { KolQuote } from './quote/component';
-import { KolSelect } from './select/shadow';
+import { KolSelect } from './select/component';
 import { KolSingleSelect } from './single-select/shadow';
 import { KolSkipNav } from './skip-nav/component';
 import { KolSpin } from './spin/component';

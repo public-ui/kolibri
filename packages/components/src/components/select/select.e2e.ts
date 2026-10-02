@@ -143,7 +143,7 @@ test.describe(COMPONENT_NAME, () => {
 			],
 			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
 			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
-			touchedAfterBlur: false,
+			touchedAfterBlur: true,
 			initialValue: undefined,
 			formData: [],
 			experimentalFormData: [],
@@ -184,7 +184,7 @@ test.describe(COMPONENT_NAME, () => {
 				nativeEvent('click'),
 			],
 			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
-			touchedAfterBlur: false,
+			touchedAfterBlur: true,
 			initialValue: undefined,
 			formData: [],
 			experimentalFormData: [
@@ -237,6 +237,8 @@ test.describe(COMPONENT_NAME, () => {
 
 			expect(await page.evaluate(() => (window as unknown as { changed: unknown[] }).changed)).toEqual(['S']);
 			expect(await component.evaluate((element: HTMLKolSelectElement) => element.getValue())).toBe('S');
+			// The field writes the selection to `_value` (#11014).
+			expect(await component.evaluate((element: HTMLKolSelectElement) => element._value)).toBe('S');
 		});
 	});
 });

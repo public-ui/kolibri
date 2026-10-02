@@ -168,12 +168,11 @@ const KOL_SELECT_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-select', component: 'select', file: 'shadow.tsx', pinnedApi: KOL_SELECT_PUBLIC_API });
+describePublicApiContract({ tag: 'kol-select', component: 'select', pinnedApi: KOL_SELECT_PUBLIC_API, schemaInterface: 'SelectProps' });
 
 /**
  * Pinned surface of `kol-select-wc` (23 props, 3 methods): internal contract for `kol-pagination`, which
- * renders the tag directly. It stays pinned until `kol-pagination` renders the select FC (G5 of
- * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
+ * renders the tag directly. It stays pinned until `kol-pagination` renders the select FC.
  */
 const KOL_SELECT_WC_PUBLIC_API: PublicApiContract = {
 	click: {
@@ -342,4 +341,4 @@ const KOL_SELECT_WC_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-select-wc', component: 'select', file: 'component.tsx', pinnedApi: KOL_SELECT_WC_PUBLIC_API });
+describePublicApiContract({ tag: 'kol-select-wc', component: 'select', file: 'wc.tsx', pinnedApi: KOL_SELECT_WC_PUBLIC_API, schemaInterface: 'SelectProps' });
