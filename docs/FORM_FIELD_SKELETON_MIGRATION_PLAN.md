@@ -214,6 +214,9 @@ Nur diese beiden nutzen den FieldControl-Stack statt InputContainer und teilen `
 - combobox und single-select: gemeinsame Basis oder ein `ListboxBehavior` für Tastatur, open/close und focusin/out. `@Listen`-Handler folgen der Event-Handler-Policy.
 - Risiken: Options-Sync des versteckten `<select multiple>`; `pagination` hängt am Light DOM von `kol-select-wc`; `:has()`-Selektoren im CustomSuggestions-SCSS.
 - Zusätzliche Abnahme: `pagination` pixelgleich; Tastatur- und Maus-E2E für combobox und single-select; bekannte Bugs bestehen nachweislich unverändert weiter oder wurden vorher gefixt.
+- Schnitt: G5.0 Testlücken → G5.1 select-Fundament (Props, Wert-Helfer, `SelectFC`, Legacy-FCs als Adapter) → G5.2 `kol-select` und `kol-select-wc` → G5.3 `BaseListboxWebComponent` und `kol-combobox` → G5.4 `kol-single-select`.
+- G5.0: Die select-Snapshots registrieren `kol-select` und `kol-select-wc`, damit sie das native Select enthalten. Neue e2e-Tests „Keyboard and mouse“ (combobox, single-select) und „Value“ (select). Befunde in #11124 und #10841.
+- `kol-select` rendert das FC direkt in seinem Shadow DOM, ohne das innere `kol-select-wc`. Diese DOM-Änderung wird in G5.2 einzeln abgenommen. Als eigenständiges Formularfeld setzt `kol-select` `_touched` und `_value` wie alle migrierten Felder; damit ist #11014 behoben. #11015 bleibt bis zu einem eigenen Fix.
 
 ### G6 – Rückbau
 
@@ -244,9 +247,9 @@ Gelöscht wird, sobald der letzte Import weg ist. Veröffentlichte Schema-Typen 
 5. ~~SSR-Absturz von `attachInternals(undefined)` 1:1 übernehmen oder mit eigenem PR über einen Guard absichern? (G1.2)~~ Entschieden: 1:1 übernehmen, Fix als eigener PR nach G1.2 (#11034). Ursache ist nicht ein leeres `@Element()`: In mock-doc greift `instanceof Element` in `findHostWithShadowRoot` nicht. Betroffen sind im SSR die inneren `kol-button-wc`/`kol-popover-button-wc` und mit `serializeShadowRoot: 'scoped'` alle Legacy-Felder.
 6. ~~Verhaltensverträge in Jest oder in Playwright? (G0)~~ Entschieden: Playwright, siehe G0.
 7. ~~Namen der Input-Props für min/max/step. (G3)~~ Entschieden: `inputMinProp`, `inputMaxProp` und `stepProp`, analog zu `horizontalIconsProp` (G1.1).
-8. `kol-select-wc` als Übergangs-Tag behalten oder `pagination` direkt auf das FC umstellen? (G5)
-9. combobox und single-select: gemeinsame DD16-Basis oder `ListboxBehavior`? (G5)
-10. #10501 und #10617 vor oder nach der Migration fixen? (G5)
+8. ~~`kol-select-wc` als Übergangs-Tag behalten oder `pagination` direkt auf das FC umstellen? (G5)~~ Entschieden: `kol-select` rendert das FC direkt. `kol-select-wc` bleibt als Übergangs-Tag für `pagination`, mit derselben Basis; die Ablösung braucht Theme-Änderungen (G7).
+9. ~~combobox und single-select: gemeinsame DD16-Basis oder `ListboxBehavior`? (G5)~~ Entschieden: gemeinsame Basis `BaseListboxWebComponent extends BaseFormFieldWebComponent`, wie `BaseTextInputWebComponent` in G2.
+10. ~~#10501 und #10617 vor oder nach der Migration fixen? (G5)~~ Entschieden: nach der Migration, als eigener PR auf dem migrierten Code. Die Migration übernimmt das Verhalten 1:1.
 
 ## Grundlagen
 
