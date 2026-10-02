@@ -18,6 +18,12 @@ const OBJECT_OPTIONS = [
 	{ label: 'Option 2', value: { id: 2 } },
 ];
 const OBJECT_OPTIONS_ATTRIBUTE = `_options='${JSON.stringify(OBJECT_OPTIONS)}'`;
+/** Index of the focused radio input inside the shadow root, or -1 when none has the focus. */
+const focusedIndex = (page: Parameters<FillAction>[0]) =>
+	page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => {
+		const active = element.shadowRoot?.activeElement;
+		return active ? Array.from(element.shadowRoot.querySelectorAll('input')).indexOf(active as HTMLInputElement) : -1;
+	});
 const fillAction: FillAction = async (page) => {
 	await page.locator('input').first().check();
 };
@@ -102,6 +108,94 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	testInputMessage<HTMLKolInputRadioElement>(COMPONENT_NAME);
+
+	test.describe('Keyboard navigation', () => {
+		const ABC = `_options='${JSON.stringify([
+			{ label: 'A', value: 'a' },
+			{ label: 'B', value: 'b' },
+			{ label: 'C', value: 'c' },
+		])}'`;
+
+		const logEvents = async (page: Parameters<FillAction>[0]) => {
+			await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => {
+				const log: string[] = [];
+				(window as unknown as Record<string, unknown>).radioEvents = log;
+				['input', 'change'].forEach((type) => element.addEventListener(type, (event) => log.push(`${type}:${String((event as CustomEvent).detail)}`)));
+			});
+		};
+
+		test('selects the next option with ArrowDown and emits input and change', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _value="a" ${ABC}></${COMPONENT_NAME}>`);
+			await logEvents(page);
+			await page.locator('input').first().focus();
+
+			await page.keyboard.press('ArrowDown');
+			await page.waitForChanges();
+
+			expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element._value)).toBe('b');
+			expect(await focusedIndex(page)).toBe(1);
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).radioEvents)).toEqual(['input:b', 'change:b']);
+		});
+
+		test('wraps to the last option with ArrowUp', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _value="a" ${ABC}></${COMPONENT_NAME}>`);
+			await page.locator('input').first().focus();
+
+			await page.keyboard.press('ArrowUp');
+			await page.waitForChanges();
+
+			expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element._value)).toBe('c');
+			expect(await focusedIndex(page)).toBe(2);
+		});
+
+		test('skips a disabled option', async ({ page }) => {
+			const options = `_options='${JSON.stringify([
+				{ label: 'A', value: 'a' },
+				{ disabled: true, label: 'B', value: 'b' },
+				{ label: 'C', value: 'c' },
+			])}'`;
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _value="a" ${options}></${COMPONENT_NAME}>`);
+			await page.locator('input').first().focus();
+
+			await page.keyboard.press('ArrowDown');
+			await page.waitForChanges();
+
+			expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element._value)).toBe('c');
+		});
+	});
+
+	test.describe('focus() and click()', () => {
+		test('focus() focuses the selected option', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _value="option-2" ${OPTIONS_ATTRIBUTE}></${COMPONENT_NAME}>`);
+
+			await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element.focus());
+			await page.waitForChanges();
+
+			expect(await focusedIndex(page)).toBe(1);
+		});
+
+		test('focus() focuses the first enabled option without a selection', async ({ page }) => {
+			const options = `_options='${JSON.stringify([
+				{ disabled: true, label: 'A', value: 'a' },
+				{ label: 'B', value: 'b' },
+			])}'`;
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" ${options}></${COMPONENT_NAME}>`);
+
+			await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element.focus());
+			await page.waitForChanges();
+
+			expect(await focusedIndex(page)).toBe(1);
+		});
+
+		test('click() without a selection selects nothing', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" ${OPTIONS_ATTRIBUTE}></${COMPONENT_NAME}>`);
+
+			await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element.click());
+			await page.waitForChanges();
+
+			expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element._value)).toBeNull();
+		});
+	});
 
 	test.describe('value to option matching', () => {
 		const OBJECT_FIRST = { id: 1, text: 'first' };
