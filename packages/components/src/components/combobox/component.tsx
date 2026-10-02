@@ -67,6 +67,7 @@ export class KolCombobox
 {
 	@Element() protected readonly host?: HTMLKolComboboxElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+	private clearButtonRef?: HTMLKolButtonWcElement;
 
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 
@@ -180,25 +181,21 @@ export class KolCombobox
 	}
 
 	protected handleConfirmKey(event: KeyboardEvent): void {
+		// On the clear button, Enter and Space trigger its native click, which must not be prevented.
+		if (this.clearButtonRef && event.composedPath().includes(this.clearButtonRef)) {
+			return;
+		}
+
 		if (event.key === ' ') {
-			if (this.clearButtonFocused) {
-				this.clearSelection();
+			if (this.isOpen && this.selectFocusedOption()) {
+				this.isOpen = false;
 				event.preventDefault();
-			} else if (this.isOpen) {
-				if (this.selectFocusedOption()) {
-					this.isOpen = false;
-					event.preventDefault();
-				}
 			}
 			return;
 		}
 
-		if (this.clearButtonFocused) {
-			this.clearSelection();
-		} else if (this.isOpen) {
-			if (this.selectFocusedOption()) {
-				this.isOpen = false;
-			}
+		if (this.isOpen && this.selectFocusedOption()) {
+			this.isOpen = false;
 		} else {
 			this.toggleListbox();
 		}
@@ -283,6 +280,10 @@ export class KolCombobox
 			return;
 		}
 
+		// empty value removes the clear button (Chromium would send a `focusout`, which would read as leaving the field)
+		// so focus on input before clearing the input
+		this.ctaRef.el?.focus();
+
 		const emptyValue = '';
 		this.focusedIndex = -1;
 		this._value = emptyValue;
@@ -295,8 +296,6 @@ export class KolCombobox
 		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), emptyValue);
 		this.hasValue = false;
 		this.formAssociation.setFormAssociatedValue(emptyValue);
-
-		this.ctaRef.el?.focus();
 	}
 
 	// --- Event handling ---
@@ -322,6 +321,11 @@ export class KolCombobox
 	/** The input reports the blur; `focusout` on the host decides whether the focus left the field. */
 	private readonly handleInputBlur = (event: FocusEvent): void => {
 		this.handleFocusLeave(event);
+	};
+
+	/** The focus stays inside the field, so the `focus` and `blur` events of the clear button do not leave the combobox. */
+	private readonly stopClearButtonFocusEvent = (event: Event): void => {
+		event.stopPropagation();
 	};
 
 	private readonly handleDropdownKeyDown = (event: KeyboardEvent): void => {
@@ -470,6 +474,7 @@ export class KolCombobox
 							<InputFC {...this.getInputProps()} />
 							{this.getRenderProp('value') && this.getRenderProp('hasClearButton') && (
 								<KolButtonWcTag
+									ref={(el) => (this.clearButtonRef = el)}
 									_icons="kolicon-cross"
 									_label={this.translateDeleteSelection}
 									_hideLabel
@@ -478,12 +483,12 @@ export class KolCombobox
 									data-testid="combobox-delete"
 									class="kol-combobox__delete"
 									hidden={isDisabled}
+									onBlur={this.stopClearButtonFocusEvent}
+									onFocus={this.stopClearButtonFocusEvent}
 									_on={{
 										onClick: () => {
 											this.clearSelection();
 										},
-										onFocus: this.handleClearButtonFocus,
-										onBlur: this.handleClearButtonBlur,
 									}}
 								/>
 							)}
