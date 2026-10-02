@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import type { Option, StencilUnknown } from '../../../schema';
-import { KolSingleSelect } from '../shadow';
+import { KolSingleSelect } from '../component';
 
 const options: Option<StencilUnknown>[] = [
 	{ label: 'North', value: 'N' },
@@ -16,8 +16,8 @@ async function setupOpenListbox(focusedOptionIndex: number) {
 	});
 
 	const instance = page.rootInstance as KolSingleSelect;
-	instance['_isOpen'] = true;
-	instance['_focusedOptionIndex'] = focusedOptionIndex;
+	instance.isOpen = true;
+	instance['focusedIndex'] = focusedOptionIndex;
 	await page.waitForChanges();
 
 	return { page, instance };
@@ -27,11 +27,11 @@ describe('kol-single-select keyboard selection (#10870)', () => {
 	it.each(['Enter', 'NumpadEnter'])('selects the focused option and closes the listbox on %s', async (key) => {
 		const { page, instance } = await setupOpenListbox(1);
 
-		instance.handleKeyDown(new KeyboardEvent('keydown', { key }));
+		instance.handleHostKeyDown(new KeyboardEvent('keydown', { key }));
 		await page.waitForChanges();
 
-		expect(instance['_value']).toBe('S');
-		expect(instance['_isOpen']).toBe(false);
+		expect(instance._value).toBe('S');
+		expect(instance.isOpen).toBe(false);
 	});
 
 	it('handles Enter dispatched on an option exactly once and keeps the listbox closed', async () => {
@@ -44,17 +44,17 @@ describe('kol-single-select keyboard selection (#10870)', () => {
 		option?.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, composed: true }));
 		await page.waitForChanges();
 
-		expect(instance['_value']).toBe('S');
-		expect(instance['_isOpen']).toBe(false);
+		expect(instance._value).toBe('S');
+		expect(instance.isOpen).toBe(false);
 	});
 
 	it('ignores Enter on a disabled option and keeps the listbox open', async () => {
 		const { page, instance } = await setupOpenListbox(2);
 
-		instance.handleKeyDown(new KeyboardEvent('keydown', { key: 'Enter' }));
+		instance.handleHostKeyDown(new KeyboardEvent('keydown', { key: 'Enter' }));
 		await page.waitForChanges();
 
-		expect(instance['_value']).toBeNull();
-		expect(instance['_isOpen']).toBe(true);
+		expect(instance._value).toBeNull();
+		expect(instance.isOpen).toBe(true);
 	});
 });
