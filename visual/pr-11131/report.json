@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11131,
-	"head": "ab622af2da74d2b9a4276e681be91d10595597fd",
+	"head": "10715966f323f8f3938c3d2e1989c9d64274dfdf",
 	"repository": "public-ui/kolibri",
-	"runId": 36976556359,
-	"generatedAt": "2026-10-02T07:48:21.579Z",
-	"digest": "sha256:0687590b206e18ccf73275e834123865e5c8dcae42b67be5543cc8d1300cc794",
+	"runId": 36992509261,
+	"generatedAt": "2026-10-02T10:09:42.383Z",
+	"digest": "sha256:d598fc8e40edf8857e261a725841ac059e2edeae9bea4b76d7e018952b765b54",
 	"baseline": {
-		"sha": "2cdb0d268f51761efd26b878ccbe6e38498b5cac",
+		"sha": "e2fdf34f200d809c8140db943732131c4d4101e4",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -30,13 +30,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "2cdb0d268f51761efd26b878ccbe6e38498b5cac",
+					"sha": "e2fdf34f200d809c8140db943732131c4d4101e4",
 					"ref": "develop",
-					"runId": 36973088747,
+					"runId": 36984467236,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T06:28:28.328Z",
-					"digest": "sha256:246d9ca8e0e3afc5a98a0d196b19f347e6cf5e4d96d3eb200790d3c76bc144b2",
+					"createdAt": "2026-10-02T08:38:38.199Z",
+					"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:246d9ca8e0e3afc5a98a0d196b19f347e6cf5e4d96d3eb200790d3c76bc144b2",
+			"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -1909,19 +1909,19 @@
 					"name": "progress-basic--custom-units",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:aa403c730e9e0e439f687cf19085112eb64556c6f68e8dc4f0cc7317e9ba4e29"
+					"hash": "sha256:a13a14ee83514777a303305550ac38c04a77b4457110fe10ed1051e96601db07"
 				},
 				{
 					"name": "progress-basic--min-max",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:f1b4e0f8779d43f952df87f537f37f01408148ce76cd73cb07f1ba0997796b94"
+					"hash": "sha256:8b612f0f87428b53ec01342206aa8a5f1bb4c2c01ec89a16e4a09152384bb0d0"
 				},
 				{
 					"name": "progress-basic--percentages",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:25a3aa6f5b4ff9db391d1d065baeb74c8ca0a1d30623cdf9d753cee9aecb8906"
+					"hash": "sha256:551398d122eb3e518e4692fc567345cd4ffd94369121d7e524e92202926c5bf8"
 				},
 				{
 					"name": "quote-basic--basic",
@@ -2563,13 +2563,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "2cdb0d268f51761efd26b878ccbe6e38498b5cac",
+					"sha": "e2fdf34f200d809c8140db943732131c4d4101e4",
 					"ref": "develop",
-					"runId": 36973088747,
+					"runId": 36984467236,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T06:28:52.036Z",
-					"digest": "sha256:4a422f171bec796111a6350c714dde030587b4515fbe0c01644108d0368d155e",
+					"createdAt": "2026-10-02T08:37:17.285Z",
+					"digest": "sha256:f748ca500756d37fcae1e56795982b96942c7b2bf4711b767f2a04607f587831",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -2582,7 +2582,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:4a422f171bec796111a6350c714dde030587b4515fbe0c01644108d0368d155e",
+			"digest": "sha256:f748ca500756d37fcae1e56795982b96942c7b2bf4711b767f2a04607f587831",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4442,19 +4442,19 @@
 					"name": "progress-basic--custom-units",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:c1c24a602c16c00c490824767be76b43ccafc05ed1b4e89df0e210a82fd9e62f"
+					"hash": "sha256:6244fd55de58a281e194c33715b1b5fa5e5250a971fa80dc428908f389a9d940"
 				},
 				{
 					"name": "progress-basic--min-max",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:da7e304bc1d30f36bba8bff5262d80d0514b0b07524c986903247b8d51b328c6"
+					"hash": "sha256:de555e9eeeb929633441d5306ac73956ec9c5080af8a669a4ddce576981dd1ce"
 				},
 				{
 					"name": "progress-basic--percentages",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:e5a1284a5dedde4f0e48a45a4b3b55df6444c0bbb06a03d881a75bb7ccb1b35c"
+					"hash": "sha256:eb656f9fd5242b67bd63a5fe1bb1c42a8a84433ff7074cfb64b85685302c8d14"
 				},
 				{
 					"name": "quote-basic--basic",
@@ -5096,13 +5096,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "2cdb0d268f51761efd26b878ccbe6e38498b5cac",
+					"sha": "e2fdf34f200d809c8140db943732131c4d4101e4",
 					"ref": "develop",
-					"runId": 36973088747,
+					"runId": 36984467236,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T06:28:28.328Z",
-					"digest": "sha256:246d9ca8e0e3afc5a98a0d196b19f347e6cf5e4d96d3eb200790d3c76bc144b2",
+					"createdAt": "2026-10-02T08:38:38.199Z",
+					"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -5115,7 +5115,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:246d9ca8e0e3afc5a98a0d196b19f347e6cf5e4d96d3eb200790d3c76bc144b2",
+			"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -6975,19 +6975,19 @@
 					"name": "progress-basic--custom-units",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:aa403c730e9e0e439f687cf19085112eb64556c6f68e8dc4f0cc7317e9ba4e29"
+					"hash": "sha256:a13a14ee83514777a303305550ac38c04a77b4457110fe10ed1051e96601db07"
 				},
 				{
 					"name": "progress-basic--min-max",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:f1b4e0f8779d43f952df87f537f37f01408148ce76cd73cb07f1ba0997796b94"
+					"hash": "sha256:8b612f0f87428b53ec01342206aa8a5f1bb4c2c01ec89a16e4a09152384bb0d0"
 				},
 				{
 					"name": "progress-basic--percentages",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:25a3aa6f5b4ff9db391d1d065baeb74c8ca0a1d30623cdf9d753cee9aecb8906"
+					"hash": "sha256:551398d122eb3e518e4692fc567345cd4ffd94369121d7e524e92202926c5bf8"
 				},
 				{
 					"name": "quote-basic--basic",
@@ -7629,13 +7629,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "2cdb0d268f51761efd26b878ccbe6e38498b5cac",
+					"sha": "e2fdf34f200d809c8140db943732131c4d4101e4",
 					"ref": "develop",
-					"runId": 36973088747,
+					"runId": 36984467236,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T06:27:58.215Z",
-					"digest": "sha256:3994935a53674496ad89e5b25c47d5809573bf1f771248e893670c7a49714d5a",
+					"createdAt": "2026-10-02T08:37:32.906Z",
+					"digest": "sha256:00d520d7ec7edc51e49ac64265799ed9a2d070ab5b9ace49b07d3f57b25b029a",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -7648,7 +7648,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:3994935a53674496ad89e5b25c47d5809573bf1f771248e893670c7a49714d5a",
+			"digest": "sha256:00d520d7ec7edc51e49ac64265799ed9a2d070ab5b9ace49b07d3f57b25b029a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9508,19 +9508,19 @@
 					"name": "progress-basic--custom-units",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:75ae3def959a41c4f989834293299ae0716539cf2035d5a889644e4d1ad168e4"
+					"hash": "sha256:a02e510dccce842c8c5f5b0e303e8770ba0ee5dee9f3b924a59952d6279362dd"
 				},
 				{
 					"name": "progress-basic--min-max",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:7ad1b47d52734b093046078bef2bf61b3aec21b37ab81f2dd09d20c9d41c5e8b"
+					"hash": "sha256:ca1a85474b6f056cdf1bb799c23dbe743344ab8f29a3b754c4d09ffe3b2dace4"
 				},
 				{
 					"name": "progress-basic--percentages",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:f43e8dc7c49df35d739556558a2fe2e89fc86574cc0d695897d6eea138652f9e"
+					"hash": "sha256:ed0ada24e1f42b1f9e17ecab84f3c63be0e436983d65028018e3902f92d3b391"
 				},
 				{
 					"name": "quote-basic--basic",
@@ -10162,13 +10162,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "2cdb0d268f51761efd26b878ccbe6e38498b5cac",
+					"sha": "e2fdf34f200d809c8140db943732131c4d4101e4",
 					"ref": "develop",
-					"runId": 36973088747,
+					"runId": 36984467236,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T06:28:30.633Z",
-					"digest": "sha256:6bb52a608adb38c0a82f2ec772ac532308f4233d9b65b349c72af29f57848586",
+					"createdAt": "2026-10-02T08:37:17.640Z",
+					"digest": "sha256:c0ead95e226105a4810adee7b9b297fde17c8f503d2c50afbb20f306559fbb7d",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -10181,7 +10181,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6bb52a608adb38c0a82f2ec772ac532308f4233d9b65b349c72af29f57848586",
+			"digest": "sha256:c0ead95e226105a4810adee7b9b297fde17c8f503d2c50afbb20f306559fbb7d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12041,19 +12041,19 @@
 					"name": "progress-basic--custom-units",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:e9418ce2491be4aaf292e31b8e7145a51a382000a759ae7dafd078f090be3b8c"
+					"hash": "sha256:8d718d2f6133dad80ef3e0749d36cbecf2ce966798e403d7ee61378a57e018ab"
 				},
 				{
 					"name": "progress-basic--min-max",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:1aa08cafaae79cf01fb660417e8ae9b094ffaf1159689c672f4d7376c16bf289"
+					"hash": "sha256:ae7947ec5aa4e660dcc2eec111f5d72d5e9bd1cca97eeba7e518e82687ab9e7e"
 				},
 				{
 					"name": "progress-basic--percentages",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:c913eb924e4f90fb65bcc4d9eea2ce7b45031098e1ded31129ad14e2fa41e2fe"
+					"hash": "sha256:cc60dcab73371030e2e7cf5529ca8e78c0926914bce3cd96b919d8039af7fd3f"
 				},
 				{
 					"name": "quote-basic--basic",
@@ -12695,13 +12695,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "2cdb0d268f51761efd26b878ccbe6e38498b5cac",
+					"sha": "e2fdf34f200d809c8140db943732131c4d4101e4",
 					"ref": "develop",
-					"runId": 36973088747,
+					"runId": 36984467236,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T06:27:22.280Z",
-					"digest": "sha256:0d7f08fb736c35ded155898e7c5c1932f7f185297f04f5fce7ecd7d712f47da4",
+					"createdAt": "2026-10-02T08:37:19.408Z",
+					"digest": "sha256:702b9742141cd044aaff6c7ef2452e74881634367f2fabe380e10c5d1dcd8cd9",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -12714,7 +12714,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:0d7f08fb736c35ded155898e7c5c1932f7f185297f04f5fce7ecd7d712f47da4",
+			"digest": "sha256:702b9742141cd044aaff6c7ef2452e74881634367f2fabe380e10c5d1dcd8cd9",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14574,19 +14574,19 @@
 					"name": "progress-basic--custom-units",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:44cbb1c04e795dbfc096546a5e09879bb1210fb89584e5ac311e94c2a1e8faf6"
+					"hash": "sha256:552c06abb62e6b2c15b8334747f6f5ce888563f0bbf722293f61848a483aa36e"
 				},
 				{
 					"name": "progress-basic--min-max",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:2fdb2d3d9f387399fa4de3202a0b330020d04b4ff8bb46bd0be71e878303932b"
+					"hash": "sha256:37a0b37ce6c90690521c6c762a2d28e575132744079c72ce59b354a635df6eef"
 				},
 				{
 					"name": "progress-basic--percentages",
 					"route": "progress-basic",
 					"status": "unchanged",
-					"hash": "sha256:1b107dd4e20b08c6f425f97cbcc19bb7c9748a8b9c6104ef1690608c00af2302"
+					"hash": "sha256:ce5642ab43c07da987b7f60d76940dc7204927d792a055780b5f9ab0fa8e0682"
 				},
 				{
 					"name": "quote-basic--basic",
@@ -15228,12 +15228,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "2cdb0d268f51761efd26b878ccbe6e38498b5cac",
+					"sha": "e2fdf34f200d809c8140db943732131c4d4101e4",
 					"ref": "develop",
-					"runId": 36973088747,
+					"runId": 36984467236,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T06:28:38.299Z",
+					"createdAt": "2026-10-02T08:37:19.178Z",
 					"digest": "sha256:a49f9eb25f8f401ab7370360077634e0a78dbfafabd80b98cdff9aeeff8f2c8d",
 					"fallback": null,
 					"distance": 0,
