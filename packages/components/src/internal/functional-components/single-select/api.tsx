@@ -4,9 +4,9 @@ import {
 	horizontalIconsProp,
 	placeholderProp,
 	requiredProp,
+	rowsProp,
 	shortKeyProp,
 	singleSelectOptionsProp,
-	singleSelectRowsProp,
 	variantProp,
 } from '../../props';
 import type { FormFieldBaseStates } from '../form-field/api';
@@ -26,8 +26,8 @@ export const singleSelectPropsConfig = {
 		horizontalIconsProp,
 		placeholderProp,
 		requiredProp,
+		rowsProp,
 		shortKeyProp,
-		singleSelectRowsProp,
 		variantProp,
 	],
 } as const satisfies PropsConfigShape;
