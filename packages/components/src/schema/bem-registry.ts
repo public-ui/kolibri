@@ -204,11 +204,6 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'disabled' | 'open'>;
 	};
-	/**
-	 * The block class sits on the host element: everything the drawer renders is an element of it
-	 * (`kol-drawer__dialog`, `kol-drawer__wrapper`, `kol-drawer__content`), so no node inside the
-	 * shadow root carries the bare block name.
-	 */
 	'kol-drawer': {
 		elements: {
 			content: {
