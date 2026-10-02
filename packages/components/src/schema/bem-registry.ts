@@ -223,6 +223,16 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-heading': {
+		modifiers: Set<'group'>;
+	};
+	/**
+	 * The headline itself, rendered by `kol-heading` and by every component with a heading of its
+	 * own. Themes style it by level (`kol-headline--h1` … `kol-headline--strong`).
+	 */
+	'kol-headline': {
+		modifiers: Set<'group' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'primary' | 'secondary' | 'single' | 'strong'>;
+	};
 	'kol-icon': {
 		elements: {
 			icon: {
@@ -814,6 +824,12 @@ const BEM: KoliBriComponentsBemSchema = {
 			wrapper: { modifiers: new Set(['bottom', 'is-closing', 'left', 'open', 'right', 'top']) },
 		},
 		modifiers: null,
+	},
+	'kol-heading': {
+		modifiers: new Set(['group']),
+	},
+	'kol-headline': {
+		modifiers: new Set(['group', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'primary', 'secondary', 'single', 'strong']),
 	},
 	'kol-icon': {
 		elements: {
