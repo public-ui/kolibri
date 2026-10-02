@@ -47,9 +47,9 @@ import {
 	horizontalIconsProp,
 	placeholderProp,
 	requiredProp,
-	rowsProp,
 	shortKeyProp,
 	singleSelectOptionsProp,
+	singleSelectRowsProp,
 	variantProp,
 } from '../../internal/props';
 
@@ -749,7 +749,7 @@ export class KolSingleSelect
 
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {
-		rowsProp.apply(value, (v) => this.setRenderProp('rows', v));
+		singleSelectRowsProp.apply(value, (v) => this.setRenderProp('rows', v));
 	}
 
 	@Watch('_shortKey')
