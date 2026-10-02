@@ -2,7 +2,7 @@ name: PR Release Label Validation
 
 on:
   pull_request:
-    types: [opened, labeled, unlabeled, synchronize, reopened]
+    types: [opened, edited, labeled, unlabeled, synchronize, reopened]
 
 jobs:
   validate-release-label:
@@ -15,15 +15,40 @@ jobs:
         uses: actions/github-script@v9
         with:
           script: |
-            const labels = context.payload.pull_request.labels.map((l) => l.name);
-            const hasReleaseLabel = labels.some((name) => name.startsWith('release:'));
-            if (!hasReleaseLabel) {
-              core.setFailed(
-                'This PR needs a "release:*" label (e.g. release:feature, release:fix, ' +
-                  'release:improvement, release:engineering, or release:ignore) so it is ' +
-                  'categorized correctly in the changelog. ' +
-                  'A label matching the PR title is set automatically and can be adjusted by ' +
-                  'maintainers. ' +
-                  'See .github/release.yml for the available categories.',
-              );
+            // The labels are read through the API, because the event payload is a snapshot: the
+            // `set-release-label` job of `pr-release-label-automation.yml` starts on the same
+            // events and adds its label with `GITHUB_TOKEN`, which starts no `labeled` run of this
+            // workflow. Reading the current state also makes a re-run of this job meaningful.
+            const automationEvents = ['edited', 'opened', 'reopened'];
+            const attempts = automationEvents.includes(context.payload.action) ? 12 : 1;
+            const delayInMs = 10_000;
+
+            const { owner, repo } = context.repo;
+            const hasReleaseLabel = async () => {
+              const labels = await github.paginate(github.rest.issues.listLabelsOnIssue, {
+                owner,
+                repo,
+                issue_number: context.issue.number,
+                per_page: 100,
+              });
+              return labels.some((label) => label.name.startsWith('release:'));
+            };
+
+            for (let attempt = 1; attempt <= attempts; attempt++) {
+              if (await hasReleaseLabel()) {
+                return;
+              }
+              if (attempt < attempts) {
+                core.info(`No release:* label yet, waiting for the automation (attempt ${attempt} of ${attempts}).`);
+                await new Promise((resolve) => setTimeout(resolve, delayInMs));
+              }
             }
+
+            core.setFailed(
+              'This PR needs a "release:*" label (e.g. release:feature, release:fix, ' +
+                'release:improvement, release:engineering, or release:ignore) so it is ' +
+                'categorized correctly in the changelog. ' +
+                'A label matching the PR title is set automatically and can be adjusted by ' +
+                'maintainers. ' +
+                'See .github/release.yml for the available categories.',
+            );

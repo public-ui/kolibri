@@ -3,8 +3,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import type { SelectOption } from '../../../schema';
 
-import { KolSelectWc } from '../component';
-import { KolSelect } from '../shadow';
+import { KolSelect } from '../component';
 
 describe('kol-select aria-describedby', () => {
 	it('keeps aria-describedby on the select element', async () => {
@@ -16,13 +15,12 @@ describe('kol-select aria-describedby', () => {
 		];
 
 		const page = await newSpecPage({
-			components: [KolSelect, KolSelectWc],
+			components: [KolSelect],
 			template: () => <kol-select _label="Label" _hint="Hint" _options={options} />,
 		});
 
 		const formField = page.root?.shadowRoot?.querySelector('.kol-form-field');
-		const selectWc = page.root?.shadowRoot?.querySelector('kol-select-wc');
-		const select = selectWc?.querySelector('select');
+		const select = page.root?.shadowRoot?.querySelector('select');
 
 		expect(formField?.getAttribute('aria-describedby')).toBeNull();
 		expect(select?.getAttribute('aria-describedby')).toBe('select-hint-nonce');

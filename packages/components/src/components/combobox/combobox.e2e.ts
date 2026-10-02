@@ -1,11 +1,42 @@
-import { expect } from '@playwright/test';
+import { expect, type Page } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
+import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 
 const COMPONENT_NAME = 'kol-combobox';
 const TEST_VALUE = 'Hello World';
 const OPTIONS = ['North', 'South', 'West', 'East'];
+const KEYBOARD_OPTIONS = ['North', 'South', 'West', 'East', 'Northwest', 'Southeast'];
+
+type RecordingWindow = Window & { recorded: unknown[] };
+
+/** The text of the focused option, `input` while the input has the focus. */
+const getFocused = (page: Page) =>
+	page.locator(COMPONENT_NAME).evaluate((element: HTMLElement) => {
+		const active = element.shadowRoot?.activeElement;
+		return active?.tagName === 'LI' ? active.textContent : (active?.tagName.toLowerCase() ?? null);
+	});
+
+const isOpen = (page: Page) => page.locator('.kol-custom-suggestions-options-group--open').isVisible();
+
+const getOptionTexts = (page: Page) => page.locator('li.kol-custom-suggestions-option').allTextContents();
+
+/** Records the `input` and `change` events and a form submit. */
+const recordEvents = (page: Page) =>
+	page.evaluate(() => {
+		const recording = window as unknown as RecordingWindow;
+		recording.recorded = [];
+		const element = document.querySelector('kol-combobox')!;
+		element.addEventListener('input', (event) => recording.recorded.push(['input', (event as CustomEvent).detail]));
+		element.addEventListener('change', (event) => recording.recorded.push(['change', (event as CustomEvent).detail]));
+		document.querySelector('form')?.addEventListener('submit', (event) => {
+			event.preventDefault();
+			recording.recorded.push(['submit']);
+		});
+	});
+
+const readEvents = (page: Page) => page.evaluate(() => (window as unknown as RecordingWindow).recorded.splice(0));
 
 test.describe(COMPONENT_NAME, () => {
 	testInputValueReflection<HTMLKolComboboxElement>({
@@ -373,5 +404,107 @@ test.describe(COMPONENT_NAME, () => {
 			experimentalFormData: [['field', TEST_VALUE]],
 			syncedValue: TEST_VALUE,
 		},
+	});
+
+	test.describe('Keyboard and mouse', () => {
+		test.beforeEach(async ({ page }) => {
+			await setContentWithRetry(page, `<form><kol-combobox _label="Input" _suggestions='${JSON.stringify(KEYBOARD_OPTIONS)}'></kol-combobox></form>`);
+			await recordEvents(page);
+			await page.locator('input.kol-combobox__input').focus();
+		});
+
+		test('moves through the options with the arrow keys, Home, End, PageUp and PageDown', async ({ page }) => {
+			const steps: [string, string | null][] = [
+				['ArrowDown', 'North'],
+				['ArrowDown', 'South'],
+				['End', 'Southeast'],
+				['ArrowDown', 'North'],
+				['Home', 'North'],
+				['PageDown', 'North'],
+				['PageUp', 'Southeast'],
+				['ArrowUp', 'Northwest'],
+			];
+			for (const [key, focused] of steps) {
+				await page.keyboard.press(key);
+				await page.waitForChanges();
+				expect([key, await getFocused(page)]).toEqual([key, focused]);
+			}
+			expect(await isOpen(page)).toBe(true);
+		});
+
+		test('focuses the first option starting with a typed character', async ({ page }) => {
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('e');
+			await page.waitForChanges();
+			expect(await getFocused(page)).toBe('East');
+			await page.keyboard.press('s');
+			await page.waitForChanges();
+			expect(await getFocused(page)).toBe('South');
+		});
+
+		test('closes with Escape and reopens with ArrowUp one option above the last focused one', async ({ page }) => {
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('Escape');
+			await page.waitForChanges();
+			expect([await isOpen(page), await getFocused(page)]).toEqual([false, 'input']);
+			await page.keyboard.press('ArrowUp');
+			await page.waitForChanges();
+			expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'Southeast']);
+		});
+
+		test('selects with Space and Enter without submitting the form, and reopens with Enter', async ({ page }) => {
+			const component = page.locator(COMPONENT_NAME);
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('Space');
+			await page.waitForChanges();
+			expect(await readEvents(page)).toEqual([
+				['input', 'South'],
+				['change', 'South'],
+			]);
+
+			await page.keyboard.press('ArrowDown');
+			await page.keyboard.press('Enter');
+			await page.waitForChanges();
+			expect(await readEvents(page)).toEqual([
+				['input', 'West'],
+				['change', 'West'],
+			]);
+			expect([await isOpen(page), await getFocused(page)]).toEqual([false, 'input']);
+			expect(await component.evaluate((element: HTMLKolComboboxElement) => element.getValue())).toBe('West');
+			// The selection does not write the `_value` prop.
+			expect(await component.evaluate((element: HTMLKolComboboxElement) => element._value)).toBeUndefined();
+
+			await page.keyboard.press('Enter');
+			await page.waitForChanges();
+			expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'West']);
+			expect(await readEvents(page)).toEqual([]);
+		});
+
+		test('opens on matching input and closes without a match', async ({ page }) => {
+			const input = page.locator('input.kol-combobox__input');
+			await input.fill('so');
+			await page.waitForChanges();
+			expect([await isOpen(page), await getOptionTexts(page)]).toEqual([true, ['South', 'Southeast']]);
+			await input.fill('gam');
+			await page.waitForChanges();
+			expect([await isOpen(page), await getOptionTexts(page)]).toEqual([false, []]);
+		});
+
+		test('clears the value with the clear button, keeps the focus on the input and the list open', async ({ page }) => {
+			await page.locator('input.kol-combobox__input').fill('North');
+			await readEvents(page);
+			await page.locator('[data-testid="combobox-delete"] button').click();
+			await page.waitForChanges();
+			// The click commits the typed text first (native `change` of the input), then clears it.
+			expect(await readEvents(page)).toEqual([
+				['change', 'North'],
+				['input', ''],
+				['change', ''],
+			]);
+			// The list opened by the typed text stays open.
+			expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'input']);
+			expect(await page.locator('input.kol-combobox__input').inputValue()).toBe('');
+		});
 	});
 });

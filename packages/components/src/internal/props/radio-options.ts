@@ -17,7 +17,8 @@ const isValidOption = (option: unknown): boolean => {
 	return typeof label === 'string' && label.length > 0;
 };
 
-function normalizeRadioOptions(value: unknown): RadioOption<StencilUnknown>[] | never {
+/** Parses a JSON string and accepts an array of options with a non-empty string `label` each; throws otherwise. */
+export function normalizeRadioOptions(value: unknown): RadioOption<StencilUnknown>[] | never {
 	const parsed = typeof value === 'string' ? parseJson<unknown>(value) : value;
 	if (Array.isArray(parsed) && parsed.every(isValidOption)) {
 		return parsed as RadioOption<StencilUnknown>[];

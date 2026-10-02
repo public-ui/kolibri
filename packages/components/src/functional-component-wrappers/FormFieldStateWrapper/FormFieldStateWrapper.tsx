@@ -2,32 +2,18 @@ import { type FunctionalComponent as FC, h } from '@stencil/core';
 import KolFormFieldFc, { type FormFieldProps } from '../../functional-components/FormField';
 import type { TextareaStates } from '../../schema';
 import {
-	type InputCheckboxStates,
 	type InputColorStates,
 	type InputEmailStates,
 	type InputFileStates,
 	type InputNumberStates,
 	type InputPasswordStates,
-	type InputRadioStates,
 	type InputRangeStates,
 	type InputTextStates,
 	type MsgPropType,
-	type SelectStates,
 } from '../../schema';
-import { getRenderStates } from '../_helpers/getRenderStates';
 
 type InputState =
-	| InputTextStates
-	| InputEmailStates
-	| InputPasswordStates
-	| InputNumberStates
-	| InputColorStates
-	| InputFileStates
-	| InputRangeStates
-	| InputCheckboxStates
-	| InputRadioStates
-	| SelectStates
-	| TextareaStates;
+	InputTextStates | InputEmailStates | InputPasswordStates | InputNumberStates | InputColorStates | InputFileStates | InputRangeStates | TextareaStates;
 
 export type FormFieldStateWrapperProps = Partial<FormFieldProps> & {
 	state: InputState;
@@ -88,13 +74,10 @@ function getFormFieldProps(
 }
 
 const FormFieldStateWrapper: FC<FormFieldStateWrapperProps> = ({ state, counterRefs, ...other }, children) => {
-	const { ariaDescribedBy: ariaDescribedByArray } = getRenderStates(state);
-	const isRadioVariant = other.component === 'fieldset' || ('_options' in state && '_orientation' in state);
-	const ariaDescribedBy = isRadioVariant && ariaDescribedByArray.length > 0 ? ariaDescribedByArray.join(' ') : undefined;
 	const baseProps = getFormFieldProps(state, counterRefs);
 
 	return (
-		<KolFormFieldFc {...baseProps} {...other} ariaDescribedBy={ariaDescribedBy}>
+		<KolFormFieldFc {...baseProps} {...other}>
 			{children}
 		</KolFormFieldFc>
 	);

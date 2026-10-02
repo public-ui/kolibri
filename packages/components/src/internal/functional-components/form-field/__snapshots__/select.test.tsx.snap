@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectFC renders a hidden label and descriptions 1`] = `
+<select aria-describedby="hint msg" aria-label="Label" autocapitalize="off" autocorrect="off" class="kol-select" id="id">
+  <option class="kol-select__option" value="-0">
+    Eins
+  </option>
+  <optgroup class="kol-select__optgroup" label="Gruppe">
+    <option class="kol-select__option" value="-1-0">
+      Zwei
+    </option>
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-1-1">
+      Drei
+    </option>
+  </optgroup>
+</select>
+`;
+
+exports[`SelectFC renders a merged class 1`] = `
+<select autocapitalize="off" autocorrect="off" class="kol-custom kol-select" id="id">
+  <option class="kol-select__option" value="-0">
+    Eins
+  </option>
+  <optgroup class="kol-select__optgroup" label="Gruppe">
+    <option class="kol-select__option" value="-1-0">
+      Zwei
+    </option>
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-1-1">
+      Drei
+    </option>
+  </optgroup>
+</select>
+`;
+
+exports[`SelectFC renders a selected option in an optgroup 1`] = `
+<select autocapitalize="off" autocorrect="off" class="kol-select" id="id">
+  <option class="kol-select__option" value="-0">
+    Eins
+  </option>
+  <optgroup class="kol-select__optgroup" label="Gruppe">
+    <option class="kol-select__option kol-select__option--selected" selected="" value="-1-0">
+      Zwei
+    </option>
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-1-1">
+      Drei
+    </option>
+  </optgroup>
+</select>
+`;
+
+exports[`SelectFC renders a touched error 1`] = `
+<select autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="id">
+  <option class="kol-select__option" value="-0">
+    Eins
+  </option>
+  <optgroup class="kol-select__optgroup" label="Gruppe">
+    <option class="kol-select__option" value="-1-0">
+      Zwei
+    </option>
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-1-1">
+      Drei
+    </option>
+  </optgroup>
+</select>
+`;
+
+exports[`SelectFC renders disabled and required 1`] = `
+<select autocapitalize="off" autocorrect="off" class="kol-select kol-select--disabled kol-select--required" disabled="" id="id" required="">
+  <option class="kol-select__option" value="-0">
+    Eins
+  </option>
+  <optgroup class="kol-select__optgroup" label="Gruppe">
+    <option class="kol-select__option" value="-1-0">
+      Zwei
+    </option>
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-1-1">
+      Drei
+    </option>
+  </optgroup>
+</select>
+`;
+
+exports[`SelectFC renders several selected options 1`] = `
+<select autocapitalize="off" autocorrect="off" class="kol-select" id="id" multiple="" size="3">
+  <option class="kol-select__option kol-select__option--selected" selected="" value="-0">
+    Eins
+  </option>
+  <optgroup class="kol-select__optgroup" label="Gruppe">
+    <option class="kol-select__option kol-select__option--selected" selected="" value="-1-0">
+      Zwei
+    </option>
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-1-1">
+      Drei
+    </option>
+  </optgroup>
+</select>
+`;
+
+exports[`SelectFC renders the default 1`] = `
+<select autocapitalize="off" autocorrect="off" class="kol-select" id="id">
+  <option class="kol-select__option" value="-0">
+    Eins
+  </option>
+  <optgroup class="kol-select__optgroup" label="Gruppe">
+    <option class="kol-select__option" value="-1-0">
+      Zwei
+    </option>
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-1-1">
+      Drei
+    </option>
+  </optgroup>
+</select>
+`;
+
+exports[`SelectOptionFC renders a disabled option 1`] = `
+<option class="kol-select__option kol-select__option--disabled" disabled="">
+  Label
+</option>
+`;
+
+exports[`SelectOptionFC renders a selected single value 1`] = `
+<option class="kol-select__option kol-select__option--selected" selected="">
+  Label
+</option>
+`;
+
+exports[`SelectOptionFC renders the key as native value 1`] = `
+<option class="kol-select__option" value="-1">
+  Label
+</option>
+`;
+
+exports[`SelectOptionFC renders the selected attribute 1`] = `
+<option class="kol-select__option kol-select__option--selected" selected="">
+  Label
+</option>
+`;
+
+exports[`SelectOptionListFC disables the optgroups and prefixes the keys 1`] = `
+<select>
+  <option class="kol-select__option" value="-9-0">
+    Eins
+  </option>
+  <optgroup class="kol-select__optgroup kol-select__optgroup--disabled" disabled="" label="Gruppe">
+    <option class="kol-select__option" value="-9-1-0">
+      Zwei
+    </option>
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-9-1-1">
+      Drei
+    </option>
+  </optgroup>
+</select>
+`;
+
+exports[`SelectOptionListFC renders nothing without options 1`] = `<select></select>`;

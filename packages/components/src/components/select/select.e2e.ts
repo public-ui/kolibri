@@ -143,11 +143,11 @@ test.describe(COMPONENT_NAME, () => {
 			],
 			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
 			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
-			touchedAfterBlur: false,
+			touchedAfterBlur: true,
 			initialValue: undefined,
 			formData: [],
-			experimentalFormData: [],
-			syncedValue: '',
+			experimentalFormData: [['field', TEST_VALUE]],
+			syncedValue: TEST_VALUE,
 		},
 	});
 
@@ -184,15 +184,78 @@ test.describe(COMPONENT_NAME, () => {
 				nativeEvent('click'),
 			],
 			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
-			touchedAfterBlur: false,
+			touchedAfterBlur: true,
 			initialValue: undefined,
 			formData: [],
 			experimentalFormData: [
 				['field', 'W'],
 				['field', 'E'],
 			],
-			syncedValue: '',
+			syncedValue: '["W","E"]',
 		},
 		variant: '_multiple',
+	});
+
+	test.describe('Value', () => {
+		test('getValue() returns the first option without _value and the given value otherwise', async ({ page }) => {
+			await setContentWithRetry(
+				page,
+				`<kol-select _label="Input" ${OPTIONS_ATTRIBUTE}></kol-select><kol-select _label="Input" _value="W" ${OPTIONS_ATTRIBUTE}></kol-select>`,
+			);
+			const values = await page.evaluate(async () => {
+				const [first, preset] = Array.from(document.querySelectorAll('kol-select'));
+				return [await first.getValue(), await preset.getValue()];
+			});
+			expect(values).toEqual(['N', 'W']);
+		});
+
+		test('getValue() returns an array with _multiple', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-select _label="Input" _multiple ${OPTIONS_ATTRIBUTE}></kol-select>`);
+			const component = page.locator(COMPONENT_NAME);
+			await component.evaluate((element: HTMLKolSelectElement) => {
+				element._value = ['S', 'E'];
+			});
+			await page.waitForChanges();
+			expect(await component.evaluate((element: HTMLKolSelectElement) => element.getValue())).toEqual(['S', 'E']);
+		});
+
+		test('synchronizes the single value into an <input> target from the start and on _value changes (#11015)', async ({ page }) => {
+			await setContentWithRetry(page, '<head><meta name="kolibri" content="experimental-mode=true" /></head><body><input id="target" /></body>');
+			// The experimental mode is read at startup, so the field is inserted afterwards.
+			await page.evaluate(
+				(markup) => document.body.insertAdjacentHTML('beforeend', markup),
+				`<kol-select _label="Input" _sync-value-by-selector="#target" ${OPTIONS_ATTRIBUTE}></kol-select>`,
+			);
+			await page.waitForChanges();
+			await expect(page.locator('#target')).toHaveValue('N');
+
+			await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolSelectElement) => {
+				element._value = 'W';
+			});
+			await page.waitForChanges();
+			await expect(page.locator('#target')).toHaveValue('W');
+		});
+
+		test('selects the next option with ArrowDown and reports its value', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-select _label="Input" ${OPTIONS_ATTRIBUTE}></kol-select>`);
+			const component = page.locator(COMPONENT_NAME);
+			await component.evaluate((element: HTMLKolSelectElement) => {
+				element._on = {
+					onChange: (_event: Event, value?: unknown) => {
+						(window as unknown as { changed: unknown[] }).changed.push(value);
+					},
+				};
+				(window as unknown as { changed: unknown[] }).changed = [];
+			});
+
+			await page.locator('select').focus();
+			await page.keyboard.press('ArrowDown');
+			await page.waitForChanges();
+
+			expect(await page.evaluate(() => (window as unknown as { changed: unknown[] }).changed)).toEqual(['S']);
+			expect(await component.evaluate((element: HTMLKolSelectElement) => element.getValue())).toBe('S');
+			// The field writes the selection to `_value` (#11014).
+			expect(await component.evaluate((element: HTMLKolSelectElement) => element._value)).toBe('S');
+		});
 	});
 });

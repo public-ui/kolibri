@@ -1,10 +1,12 @@
 import { describe, expect, it, jest } from '@jest/globals';
 import { radioOptionsProp } from './radio-options';
 import { radioOrientationProp } from './radio-orientation';
+import { radioValueProp } from './radio-value';
 
 /**
  * Pins the props of `kol-input-radio` against the legacy validators `validateOptions` and
- * `validateOrientation` they replace (G4.1 of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
+ * `validateOrientation` and the value handling of the radio controller they replace (G4.1 and G4.4
+ * of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
  */
 type PropDefinition = {
 	apply: (value: unknown, callback: (normalized: unknown) => void) => void;
@@ -57,5 +59,24 @@ describe('radioOrientationProp', () => {
 
 	it('ignores an invalid orientation', () => {
 		expect(applied(radioOrientationProp, 'diagonal')).toEqual([]);
+	});
+});
+
+describe('radioValueProp', () => {
+	it.each([undefined, null])('applies the default null for %s', (value) => {
+		expect(applied(radioValueProp, value)).toEqual([null]);
+	});
+
+	it.each([
+		['a string', 'a'],
+		['a number', 0],
+		['false', false],
+		['an object', { id: 1 }],
+	])('accepts %s', (_name, value) => {
+		expect(applied(radioValueProp, value)).toEqual([value]);
+	});
+
+	it('reduces an array to its first entry', () => {
+		expect(applied(radioValueProp, ['a', 'b'])).toEqual(['a']);
 	});
 });

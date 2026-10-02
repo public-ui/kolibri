@@ -224,6 +224,11 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 		}
 	}
 
+	/**
+	 * A `<select>` gets one selected option per value: an array gives its items, a single value one
+	 * option, `null` and `undefined` none. Any other element gets the string value, an array or object
+	 * as JSON.
+	 */
 	private syncValue(rawValue: StencilUnknown, strValue: string | null, associatedElement?: FormAssociatedElement): void {
 		if (associatedElement) {
 			switch (this.type) {
@@ -231,19 +236,10 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 					(associatedElement as HTMLInputFileElement).files = rawValue as FileList;
 					break;
 				case 'select':
-					(associatedElement as HTMLSelectElement).querySelectorAll('option').forEach((el) => {
-						(associatedElement as HTMLSelectElement).removeChild(el);
-					});
-					if (Array.isArray(rawValue)) {
-						rawValue.forEach((rawValueItem) => {
-							const strValueItem = this.tryToStringifyValue(rawValueItem as string);
-							if (typeof strValueItem === 'string') {
-								const option = document.createElement('option');
-								option.setAttribute('value', strValueItem);
-								option.setAttribute('selected', '');
-								(associatedElement as HTMLSelectElement).appendChild(option);
-							}
-						});
+					if (associatedElement.tagName === 'SELECT') {
+						this.syncSelectOptions(rawValue, associatedElement as HTMLSelectElement);
+					} else {
+						this.syncValueAttribute(strValue, associatedElement);
 					}
 					break;
 				case 'radio':
@@ -254,14 +250,34 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 					}
 					break;
 				default:
-					if (typeof strValue === 'string') {
-						associatedElement.setAttribute('value', strValue);
-						associatedElement.value = strValue;
-					} else {
-						associatedElement.removeAttribute('value');
-						associatedElement.value = '';
-					}
+					this.syncValueAttribute(strValue, associatedElement);
 			}
+		}
+	}
+
+	private syncSelectOptions(rawValue: StencilUnknown, select: HTMLSelectElement): void {
+		select.querySelectorAll('option').forEach((el) => {
+			select.removeChild(el);
+		});
+		const values: unknown[] = Array.isArray(rawValue) ? rawValue : rawValue === null || rawValue === undefined ? [] : [rawValue];
+		values.forEach((value) => {
+			const strValueItem = this.tryToStringifyValue(value as StencilUnknown);
+			if (typeof strValueItem === 'string') {
+				const option = document.createElement('option');
+				option.setAttribute('value', strValueItem);
+				option.setAttribute('selected', '');
+				select.appendChild(option);
+			}
+		});
+	}
+
+	private syncValueAttribute(strValue: string | null, element: FormAssociatedElement): void {
+		if (typeof strValue === 'string') {
+			element.setAttribute('value', strValue);
+			element.value = strValue;
+		} else {
+			element.removeAttribute('value');
+			element.value = '';
 		}
 	}
 }

@@ -491,6 +491,23 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'checked' | 'default' | 'disabled' | 'error' | 'info' | 'required' | 'success' | 'touched' | 'warning'>;
 	};
+	'kol-select': {
+		elements: {
+			optgroup: {
+				modifiers: Set<'disabled'>;
+			};
+			option: {
+				modifiers: Set<'disabled' | 'selected'>;
+			};
+		};
+		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'required' | 'success' | 'touched' | 'warning'>;
+	};
+	'kol-custom-suggestions-option': {
+		modifiers: Set<'disabled'>;
+	};
+	'kol-custom-suggestions-options-group': {
+		modifiers: Set<'cursor-hidden' | 'open'>;
+	};
 	'kol-split-button': {
 		elements: {
 			button: {
@@ -965,6 +982,19 @@ const BEM: KoliBriComponentsBemSchema = {
 			input: { modifiers: null },
 		},
 		modifiers: new Set(['checked', 'default', 'disabled', 'error', 'info', 'required', 'success', 'touched', 'warning']),
+	},
+	'kol-select': {
+		elements: {
+			optgroup: { modifiers: new Set(['disabled']) },
+			option: { modifiers: new Set(['disabled', 'selected']) },
+		},
+		modifiers: new Set(['default', 'disabled', 'error', 'info', 'required', 'success', 'touched', 'warning']),
+	},
+	'kol-custom-suggestions-option': {
+		modifiers: new Set(['disabled']),
+	},
+	'kol-custom-suggestions-options-group': {
+		modifiers: new Set(['cursor-hidden', 'open']),
 	},
 	'kol-split-button': {
 		elements: {

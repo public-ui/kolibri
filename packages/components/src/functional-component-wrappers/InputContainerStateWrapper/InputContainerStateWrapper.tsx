@@ -11,7 +11,6 @@ import {
 	type InternalButtonProps,
 	type KoliBriHorizontalIcons,
 	type MsgPropType,
-	type SelectStates,
 	type Stringified,
 	type TextareaStates,
 } from '../../schema';
@@ -22,15 +21,7 @@ import KolInputContainerFc, { type InputContainerProps } from '../../functional-
 import { IconFC } from '../../internal/functional-components/icon/component';
 
 type InputState =
-	| TextareaStates
-	| SelectStates
-	| InputTextStates
-	| InputEmailStates
-	| InputPasswordStates
-	| InputNumberStates
-	| InputColorStates
-	| InputFileStates
-	| InputRangeStates;
+	TextareaStates | InputTextStates | InputEmailStates | InputPasswordStates | InputNumberStates | InputColorStates | InputFileStates | InputRangeStates;
 
 export type InputContainerStateWrapperProps = Partial<InputContainerProps> & {
 	state: InputState;
