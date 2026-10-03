@@ -27,6 +27,22 @@ describe('SelectFC', () => {
 		const page = await renderFunctionalComponentToSpecPage(() => <SelectFC id="id" label="Label" options={options} {...props} />);
 		expect(page.root).toMatchSnapshot();
 	});
+
+	it('forwards disabled to optgroups and options when select is disabled', async () => {
+		const optgroupOptions = [
+			{
+				label: 'Group 1',
+				options: [{ label: 'Option 1', value: '1' }],
+			},
+		];
+		const page = await renderFunctionalComponentToSpecPage(() => <SelectFC disabled={true} id="test" label="Label" options={optgroupOptions} />);
+		expect(page.root).toMatchSnapshot();
+		expect(page.root?.hasAttribute('disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('optgroup')[0].hasAttribute('disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('optgroup')[0].classList.contains('kol-select__optgroup--disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('option')[0].hasAttribute('disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('option')[0].classList.contains('kol-select__option--disabled')).toBe(true);
+	});
 });
 
 describe('SelectOptionListFC', () => {
@@ -39,6 +55,22 @@ describe('SelectOptionListFC', () => {
 		expect(page.root).toMatchSnapshot();
 	});
 
+	it('does not render an optgroup without options', async () => {
+		const emptyGroupOptions = [
+			{
+				label: 'Empty Group',
+				options: [],
+			},
+		];
+		const page = await renderFunctionalComponentToSpecPage(() => (
+			<select>
+				<SelectOptionListFC options={emptyGroupOptions} />
+			</select>
+		));
+		expect(page.root).toMatchSnapshot();
+		expect(page.root?.querySelector('optgroup')).toBeNull();
+	});
+
 	it('disables the optgroups and prefixes the keys', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<select>
@@ -46,6 +78,82 @@ describe('SelectOptionListFC', () => {
 			</select>
 		));
 		expect(page.root).toMatchSnapshot();
+	});
+
+	it('renders with disabled option group', async () => {
+		const disabledGroupOptions = [
+			{
+				label: 'Group 1',
+				disabled: true,
+				options: [{ label: 'Option 1', value: '1' }],
+			},
+		];
+		const page = await renderFunctionalComponentToSpecPage(() => (
+			<select>
+				<SelectOptionListFC options={disabledGroupOptions} />
+			</select>
+		));
+		expect(page.root).toMatchSnapshot();
+		expect(page.root?.querySelectorAll('optgroup')[0].hasAttribute('disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('optgroup')[0].classList.contains('kol-select__optgroup--disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('option')[0].hasAttribute('disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('option')[0].classList.contains('kol-select__option--disabled')).toBe(true);
+	});
+
+	it('renders option with disabled: false inside a disabled group as disabled', async () => {
+		const disabledGroupOptions = [
+			{
+				label: 'Group 1',
+				disabled: true,
+				options: [{ label: 'Option 1', value: '1', disabled: false }],
+			},
+		];
+		const page = await renderFunctionalComponentToSpecPage(() => (
+			<select>
+				<SelectOptionListFC options={disabledGroupOptions} />
+			</select>
+		));
+		expect(page.root).toMatchSnapshot();
+		expect(page.root?.querySelectorAll('optgroup')[0].hasAttribute('disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('optgroup')[0].classList.contains('kol-select__optgroup--disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('option')[0].hasAttribute('disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('option')[0].classList.contains('kol-select__option--disabled')).toBe(true);
+	});
+
+	it('renders option with disabled: false inside a disabled list as disabled', async () => {
+		const disabledListOptions = [{ label: 'Option 1', value: '1', disabled: false }];
+		const page = await renderFunctionalComponentToSpecPage(() => (
+			<select>
+				<SelectOptionListFC disabled={true} options={disabledListOptions} />
+			</select>
+		));
+		expect(page.root).toMatchSnapshot();
+		expect(page.root?.querySelectorAll('option')[0].hasAttribute('disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('option')[0].classList.contains('kol-select__option--disabled')).toBe(true);
+	});
+
+	it('renders with enabled group containing a disabled option', async () => {
+		const mixedOptions = [
+			{
+				label: 'Group 1',
+				options: [
+					{ label: 'Option 1', value: '1', disabled: true },
+					{ label: 'Option 2', value: '2', disabled: false },
+				],
+			},
+		];
+		const page = await renderFunctionalComponentToSpecPage(() => (
+			<select>
+				<SelectOptionListFC options={mixedOptions} />
+			</select>
+		));
+		expect(page.root).toMatchSnapshot();
+		expect(page.root?.querySelectorAll('optgroup')[0].hasAttribute('disabled')).toBe(false);
+		expect(page.root?.querySelectorAll('optgroup')[0].classList.contains('kol-select__optgroup--disabled')).toBe(false);
+		expect(page.root?.querySelectorAll('option')[0].hasAttribute('disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('option')[0].classList.contains('kol-select__option--disabled')).toBe(true);
+		expect(page.root?.querySelectorAll('option')[1].hasAttribute('disabled')).toBe(false);
+		expect(page.root?.querySelectorAll('option')[1].classList.contains('kol-select__option--disabled')).toBe(false);
 	});
 });
 
