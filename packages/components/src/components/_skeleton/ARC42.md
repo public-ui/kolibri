@@ -216,6 +216,32 @@ component sources and compares them against a pinned contract, using the helpers
 exactly the point: such a change is a breaking change and must be an explicit, reviewable edit. One
 file per component keeps parallel migrations free of merge conflicts.
 
+### Theming Contract (Shadow DOM Structure and BEM Classes)
+
+Besides the public API, a component exposes its rendered structure to themes: the nodes of its
+shadow DOM and the BEM classes on them, including a class on the host element. Themes, our own and
+those of consumers, select these classes. This theming contract is versioned differently from the
+public API:
+
+| Change                                                                                                                                    | Classification              | Release        |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | -------------- |
+| `@Prop`/`@Method`/`@Event`/slot, their types, defaults, documentation and behaviour, exported types                                       | breaking change             | major          |
+| internal DOM structure (added, removed or moved nodes) and the BEM classes the structure needs (renamed, added, removed or moved classes) | **theming breaking change** | at least minor |
+
+A theming breaking change is not treated as a hard breaking change, because a theme can be adapted
+to it largely automatically: the theme's own visual snapshots show every affected selector, and the
+[`zero-visual-delta-handoff`](../../../../../.claude/skills/zero-visual-delta-handoff/SKILL.md) skill
+together with `pnpm check:skeleton-selectors` drives the theme back to zero pixel differences.
+
+Rules for such a change:
+
+- The pull request adapts every theme of this repository in the same change, with zero pixel
+  differences in the visual review.
+- It carries the release label `release:theming`, so the change appears in the changelog under
+  _Theming_, and its title or description marks it as a **theming breaking change**.
+- The description lists each affected class or node with its old and new form, so theme authors
+  can adapt their selectors.
+
 ### Behavior Layer
 
 A Behavior is a reusable unit of logic that lives **inside** a WC. It extends `BaseBehavior<Api>` and:
@@ -658,6 +684,10 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Pattern_: elements that render the same FC (`kol-button`/`kol-button-wc`/`kol-button-link`/`kol-split-button`, `kol-link`/`kol-link-wc`/`kol-link-button`) share an abstract, decorator-free base class next to the element (`button/base.tsx`, `link/base.tsx`) that extends `BaseWebComponent<Api>` and holds Behaviors, handlers, `apply<Prop>()` methods and the FC render call. The concrete element declares the Stencil members and delegates from its watchers and lifecycle methods.
     - _Alternative_: copy the orchestrator into every element (the state before this decision: ~350 identical lines in `component.tsx` and `wc.tsx`), or let the variants instantiate the public element's `-wc` twin (the legacy pass-through pattern that keeps the transitional wrapper alive).
     - _Reason_: the base is not a layer between WC and FC (decision 1 stays intact) — it _is_ the WC's implementation, written once. Stencil only reads decorators and lifecycle hooks from the component class itself, so those stay there; plain methods and fields are inherited at runtime like the ones of `BaseWebComponent`. Anything that needs the host element (e.g. the form-association controller) is created from the concrete constructor after `super()`, because Stencil registers the host at the start of the component class's constructor.
+17. **DOM structure and BEM classes are a theming contract, not public API**
+    - _Pattern_: a change of the internal DOM structure or of the BEM classes it needs ships in at least a minor release as a **theming breaking change**: release label `release:theming`, old and new classes listed in the pull request, all themes of this repository adapted in the same change. See [Theming Contract](#theming-contract-shadow-dom-structure-and-bem-classes).
+    - _Alternative_: treat every class or node change as a breaking change that waits for the next major release.
+    - _Reason_: themes can be adapted to such a change largely automatically through their own visual snapshots and the zero-visual-delta workflow. Holding back structural cleanups (single BEM root, registered classes) until a major release would keep known non-conformities alive for a long time without protecting anyone more than the changelog entry does.
 
 ## 10. Quality Requirements
 
