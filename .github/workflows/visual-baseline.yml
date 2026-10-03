@@ -30,7 +30,7 @@ jobs:
     # --user 1001 (pwuser, same uid as the runner user): Firefox refuses to launch as root,
     # see https://playwright.dev/docs/ci#via-containers
     container:
-      image: mcr.microsoft.com/playwright:v1.60.0-noble
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
       options: --user 1001
     env:
       PLAYWRIGHT_IMAGE: mcr.microsoft.com/playwright:v1.60.0-noble
