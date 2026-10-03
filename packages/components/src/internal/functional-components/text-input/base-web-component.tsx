@@ -139,6 +139,7 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 
 	protected applyValue(value?: string): void {
 		this.initValue(value);
+		this.hasValue = Boolean(this.textShared.getRenderProp('value'));
 		this.counter.update(value?.length ?? 0);
 	}
 
