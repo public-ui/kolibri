@@ -81,6 +81,8 @@ export class KolTextarea
 
 	private readonly counter = new CounterBehavior(BaseWebComponent.stateLess);
 
+	private needsImmediateCounterUpdate = false;
+
 	/**
 	 * Whether the field has a value, rendered as the root class `kol-form-field--has-value`. It is a
 	 * plain field, not state, and only follows `change` (#11053).
@@ -223,6 +225,7 @@ export class KolTextarea
 	@Watch('_hasCounter')
 	public watchHasCounter(value?: boolean): void {
 		this.counter.watchHasCounter(value);
+		this.needsImmediateCounterUpdate = true;
 	}
 
 	/**
@@ -233,6 +236,7 @@ export class KolTextarea
 	@Watch('_maxLengthBehavior')
 	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
 		this.counter.watchMaxLengthBehavior(value);
+		this.needsImmediateCounterUpdate = true;
 	}
 
 	/**
@@ -458,6 +462,7 @@ export class KolTextarea
 	}
 
 	public componentDidLoad(): void {
+		this.needsImmediateCounterUpdate = false;
 		if (this.counter.hasCounter() || this.counter.hasSoftLimit()) {
 			this.counter.updateImmediate(this._value?.length ?? 0);
 		}
@@ -471,6 +476,15 @@ export class KolTextarea
 		});
 	}
 
+	public componentDidUpdate(): void {
+		if (this.needsImmediateCounterUpdate) {
+			this.needsImmediateCounterUpdate = false;
+			if (this.counter.hasCounter() || this.counter.hasSoftLimit()) {
+				this.counter.updateImmediate(this._value?.length ?? 0);
+			}
+		}
+	}
+
 	public componentDidRender(): void {
 		this.syncFormField();
 	}
@@ -481,7 +495,7 @@ export class KolTextarea
 	}
 
 	private readonly handleTextareaInput = (event: Event): void => {
-		if (this.ctaRef.el instanceof HTMLTextAreaElement) {
+		if (this.ctaRef.el) {
 			this._value = this.ctaRef.el.value;
 			if (this.getRenderProp('adjustHeight')) {
 				this.writeRows(this.measureTextareaRows(this.ctaRef.el));

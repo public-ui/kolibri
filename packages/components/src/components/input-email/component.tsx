@@ -432,6 +432,10 @@ export class KolInputEmail
 		this.didLoadTextInput();
 	}
 
+	public componentDidUpdate(): void {
+		this.didUpdateTextInput();
+	}
+
 	public componentDidRender(): void {
 		this.syncFormField();
 	}
