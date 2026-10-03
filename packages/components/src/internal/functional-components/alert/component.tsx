@@ -36,7 +36,10 @@ const UNSET_BUTTON_PROP = undefined as never;
  * All remaining HTML attributes (`id`, `role`, `aria-*`, `ref`, …) are forwarded onto the root
  * node — internal consumers (form, form-field-msg, toast-item) rely on that passthrough.
  */
-export const AlertFC: FC<FunctionalComponentProps<AlertApi>> = (props, children) => {
+/** The consumer's callbacks stay with the web component, which invokes them in its closer handler. */
+export type AlertFCProps = Omit<FunctionalComponentProps<AlertApi>, 'on'>;
+
+export const AlertFC: FC<AlertFCProps> = (props, children) => {
 	const {
 		alert,
 		class: classNames,

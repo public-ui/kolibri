@@ -26,4 +26,4 @@ const KOL_HEADING_PUBLIC_API: PublicApiContract = {
 	},
 };
 
-describePublicApiContract({ tag: 'kol-heading', component: 'heading', pinnedApi: KOL_HEADING_PUBLIC_API });
+describePublicApiContract({ tag: 'kol-heading', component: 'heading', pinnedApi: KOL_HEADING_PUBLIC_API, schemaInterface: 'HeadingProps' });

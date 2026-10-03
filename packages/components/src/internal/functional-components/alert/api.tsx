@@ -1,4 +1,4 @@
-import { alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelProp, levelProp } from '../../props';
+import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelProp, levelProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**
@@ -11,12 +11,11 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  *   2–80 character validation and accessibility hints; the empty string renders no heading.
  * - `alertProp`: renders `role="alert"` so screen readers announce the notification assertively.
  * - `alertTypeProp`/`alertVariantProp`: enum props selecting icon/color scheme and presentation.
- * - `_on` is deliberately absent: it is never rendered. The web component reads the raw prop in
- *   its closer handler (invoking `onClose` and dispatching `KolEvent.close`), so it stays a raw
- *   `@Prop` there — the same pass-through pattern `button/api.tsx` uses for `_value`.
+ * - `alertCallbacksProp`: the consumer's `onClose` callback. The web component invokes it in its
+ *   closer handler; `AlertFC` never receives it.
  */
 export const alertPropsConfig = {
-	optional: [alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelProp, levelProp],
+	optional: [alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelProp, levelProp],
 } as const satisfies PropsConfigShape;
 
 export type AlertApi = ApiFromConfig<
@@ -25,9 +24,8 @@ export type AlertApi = ApiFromConfig<
 		Callbacks: {
 			/**
 			 * Click handler bound to the closer button. Implemented by the web component, which stops
-			 * the event propagation (the predecessor button wrapper did the same), invokes the
-			 * consumer's `onClose` callback and dispatches the custom `KolEvent.close` event on the
-			 * host element.
+			 * the event propagation, invokes the consumer's `onClose` callback and dispatches the
+			 * custom `KolEvent.close` event on the host element.
 			 */
 			closerClick: (event: MouseEvent) => void;
 		};
