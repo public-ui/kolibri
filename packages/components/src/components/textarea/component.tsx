@@ -74,7 +74,7 @@ export class KolTextarea
 
 	/**
 	 * Whether the field has a value, rendered as the root class `kol-form-field--has-value`. It is a
-	 * plain field, not state, and only follows `change` (#11053).
+	 * plain field, not state: changing it does not re-render, the class follows with the next render (#11053).
 	 */
 	private hasValue = false;
 
@@ -597,6 +597,7 @@ export class KolTextarea
 	/** Applies the value without a counter update; the watcher adds it. */
 	private applyValue(value?: string): void {
 		stringValueProp.apply(value, (v) => this.setRenderProp('value', v));
+		this.hasValue = Boolean(this.getRenderProp('value'));
 		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value'));
 	}
 }
