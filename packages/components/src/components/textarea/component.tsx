@@ -163,6 +163,12 @@ export class KolTextarea
 		});
 	}
 
+	public componentDidUpdate(): void {
+		if (this.counter.hasCounter() || this.counter.hasSoftLimit()) {
+			this.counter.updateImmediate(this._value?.length ?? 0);
+		}
+	}
+
 	public disconnectedCallback(): void {
 		this.destroyFormField();
 		this.counter.destroy();
@@ -474,6 +480,7 @@ export class KolTextarea
 	@Watch('_hasCounter')
 	public watchHasCounter(value?: boolean): void {
 		this.counter.watchHasCounter(value);
+		this.counter.updateImmediate(this._value?.length ?? 0);
 	}
 
 	@Watch('_hideMsg')
@@ -515,6 +522,7 @@ export class KolTextarea
 	@Watch('_maxLengthBehavior')
 	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
 		this.counter.watchMaxLengthBehavior(value);
+		this.counter.updateImmediate(this._value?.length ?? 0);
 	}
 
 	@Watch('_msg')

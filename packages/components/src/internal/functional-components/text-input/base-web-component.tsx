@@ -159,6 +159,7 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 
 	protected applyHasCounter(value?: boolean): void {
 		this.counter.watchHasCounter(value);
+		this.counter.updateImmediate(this._value?.length ?? 0);
 	}
 
 	protected applyMaxLength(value?: number): void {
@@ -168,6 +169,7 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 
 	protected applyMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
 		this.counter.watchMaxLengthBehavior(value);
+		this.counter.updateImmediate(this._value?.length ?? 0);
 	}
 
 	// --- Event handling ---

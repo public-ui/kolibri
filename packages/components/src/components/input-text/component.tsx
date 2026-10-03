@@ -186,6 +186,10 @@ export class KolInputText
 		this.didLoadTextInput();
 	}
 
+	public componentDidUpdate(): void {
+		this.didLoadTextInput();
+	}
+
 	public disconnectedCallback(): void {
 		this.destroyTextInput();
 	}
