@@ -10,7 +10,8 @@ export const IconAllKolicons: FC = () => {
 	const [error, setError] = useState<string | null>(null);
 
 	useEffect(() => {
-		fetch('assets/kolicons/kolicons.json')
+		const controller = new AbortController();
+		fetch('assets/kolicons/kolicons.json', { signal: controller.signal })
 			.then((response) => {
 				if (!response.ok) {
 					throw new Error(`Failed to load kolicons: ${response.status} ${response.statusText}`.trim());
@@ -21,10 +22,14 @@ export const IconAllKolicons: FC = () => {
 				setIcons(data);
 			})
 			.catch((err: unknown) => {
+				if (controller.signal.aborted) {
+					return;
+				}
 				const message = err instanceof Error ? err.message : 'Failed to load kolicons';
 				setError(message);
-				console.error('Failed to load kolicons:', err);
+				console.error(err);
 			});
+		return () => controller.abort();
 	}, []);
 
 	return (
@@ -33,7 +38,11 @@ export const IconAllKolicons: FC = () => {
 				<p>This sample shows all kolicons with their names.</p>
 			</SampleDescription>
 
-			{error && <KolAlert _alert _type="error" _label={error} />}
+			{error && (
+				<KolAlert _alert _label="Kolicons could not be loaded" _type="error">
+					{error}
+				</KolAlert>
+			)}
 
 			<div className="grid grid-cols-2 gap-8 p-8">
 				{Object.entries(icons).map(([key]) => {
