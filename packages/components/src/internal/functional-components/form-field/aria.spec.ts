@@ -29,12 +29,15 @@ describe('getFormFieldAria', () => {
 		});
 	});
 
-	// Quirks pinned by the snapshots of all form fields (#11035).
-	it('references the message although it is only rendered once touched', () => {
-		expect(getFormFieldAria({ id: 'field-nonce', msg: error }).ariaDescribedBy).toEqual(['field-msg-nonce']);
+	it('does not reference the message before touched', () => {
+		expect(getFormFieldAria({ id: 'field-nonce', msg: error }).ariaDescribedBy).toEqual([]);
 	});
 
-	it('stays invalid with hideMsg, without referencing the message', () => {
-		expect(getFormFieldAria({ id: 'field-nonce', msg: error, hideMsg: true, touched: true })).toEqual({ hasError: true, hasHint: false, ariaDescribedBy: [] });
+	it('references the message with hideMsg when touched', () => {
+		expect(getFormFieldAria({ id: 'field-nonce', msg: error, hideMsg: true, touched: true })).toEqual({
+			hasError: true,
+			hasHint: false,
+			ariaDescribedBy: ['field-msg-nonce'],
+		});
 	});
 });
