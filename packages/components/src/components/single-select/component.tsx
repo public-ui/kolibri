@@ -1,6 +1,5 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
 	AriaDetailsPropType,
@@ -30,6 +29,8 @@ import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
 
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
@@ -70,6 +71,8 @@ export class KolSingleSelect
 	implements FocusableElement, SingleSelectProps, WebComponentInterface<SingleSelectApi>
 {
 	@Element() protected readonly host?: HTMLKolSingleSelectElement;
+
+	private readonly clearButton = createButtonItem(() => this.host);
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
@@ -147,7 +150,12 @@ export class KolSingleSelect
 		this.updateInputValue(this._value);
 	}
 
+	public componentDidRender(): void {
+		this.clearButton.syncListeners();
+	}
+
 	public disconnectedCallback(): void {
+		this.clearButton.destroy();
 		this.destroyFormField();
 	}
 
@@ -494,20 +502,22 @@ export class KolSingleSelect
 						<ListboxGroupFC block="kol-single-select">
 							<InputFC {...this.getInputProps()} />
 							{this.inputValue && this.getRenderProp('hasClearButton') && (
-								<KolButtonWcTag
-									_icons="kolicon-cross"
-									_label={this.translateDeleteSelection}
-									_hideLabel
-									_variant="ghost"
-									_disabled={isDisabled}
-									data-testid="single-select-delete"
-									class={BEM_CLASS_SINGLE_SELECT__DELETE}
-									hidden={isDisabled}
-									_on={{
-										onClick: this.handleClearButtonClick,
-										onFocus: this.handleClearButtonFocus,
-										onBlur: this.handleClearButtonBlur,
-									}}
+								<ButtonFC
+									{...this.clearButton.getFcProps(
+										{
+											_icons: 'kolicon-cross',
+											_label: this.translateDeleteSelection,
+											_hideLabel: true,
+											_variant: 'ghost',
+											_disabled: isDisabled,
+											_on: {
+												onClick: this.handleClearButtonClick,
+												onFocus: this.handleClearButtonFocus,
+												onBlur: this.handleClearButtonBlur,
+											},
+										},
+										{ class: BEM_CLASS_SINGLE_SELECT__DELETE, 'data-testid': 'single-select-delete', hidden: isDisabled },
+									)}
 								/>
 							)}
 							<SingleSelectToggleFC disabled={isDisabled} handleClick={this.toggleListbox} />
