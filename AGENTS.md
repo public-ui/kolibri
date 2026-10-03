@@ -34,6 +34,8 @@ This repository follows **Semantic Versioning** (SemVer) for all packages. Each 
 - **Minor version**: Incremented for adding functionality in a backwards-compatible manner.
 - **Patch version**: Incremented for backwards-compatible bug fixes.
 
+The public API of a component is its props, methods, events, slots and exported types, including their behaviour. Its internal DOM structure and the BEM classes on it are a **theming contract** instead: changing them is a **theming breaking change**, not a hard breaking change. It ships in at least a minor release, carries the label `release:theming` (changelog section _Theming_), lists the old and new classes in the pull request and adapts all themes of this repository in the same change. Theme authors adapt their themes through their own visual snapshots and the zero-visual-delta workflow. See [Theming Contract](packages/components/src/components/_skeleton/ARC42.md#theming-contract-shadow-dom-structure-and-bem-classes).
+
 If we deprecate a feature, we will mark it as deprecated in the code and documentation, but we will not remove it immediately. Instead, we will provide a migration guide (migration\*.md) for users to transition to the new feature. Also we provide a migration tool in the `packages/tools/kolibri-cli` package to help with the migration process. You have to add a migration task from the previous version to the new version in the `packages/tools/kolibri-cli/src/migrations` folder. In the migration package, are a lot of migration tasks already implemented, so you can use them as a reference.
 
 ## Project Structure
