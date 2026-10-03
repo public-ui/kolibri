@@ -179,6 +179,14 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-kolibri': {
+		elements: {
+			text: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-popover-button': {
 		elements: {
 			popover: {
@@ -789,6 +797,12 @@ const BEM: KoliBriComponentsBemSchema = {
 			'list-element': { modifiers: null },
 			'list-element-span': { modifiers: null },
 			separator: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-kolibri': {
+		elements: {
+			text: { modifiers: null },
 		},
 		modifiers: null,
 	},

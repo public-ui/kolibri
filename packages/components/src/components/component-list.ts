@@ -28,7 +28,7 @@ import { KolInputPassword } from './input-password/component';
 import { KolInputRadio } from './input-radio/component';
 import { KolInputRange } from './input-range/component';
 import { KolInputText } from './input-text/component';
-import { KolKolibri } from './kolibri/shadow';
+import { KolKolibri } from './kolibri/component';
 import { KolLinkButton } from './link-button/component';
 import { KolLink } from './link/component';
 import { KolLinkWc } from './link/wc';
