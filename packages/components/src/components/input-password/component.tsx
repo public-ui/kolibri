@@ -119,8 +119,7 @@ export class KolInputPassword
 		this.watchTooltipAlign(this._tooltipAlign);
 		this.watchVariant(this._variant);
 		this.watchIcons(this._icons);
-		// Unlike the watcher, loading gives no hint for `'on'` (#11054).
-		this.applyAutoComplete(this._autoComplete);
+		this.watchAutoComplete(this._autoComplete);
 		this.watchHasCounter(this._hasCounter);
 		this.watchMaxLengthBehavior(this._maxLengthBehavior);
 		this.initMaxLength(this._maxLength);
