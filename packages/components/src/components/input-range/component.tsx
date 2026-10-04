@@ -247,7 +247,7 @@ export class KolInputRange
 		const shared = this.getSharedInputProps();
 		const { ariaDescribedBy, hasError } = this.getAria();
 		const ariaInvalid = hasError ? 'true' : undefined;
-		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons'), disabled });
+		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
 
 		return (
 			<Host>

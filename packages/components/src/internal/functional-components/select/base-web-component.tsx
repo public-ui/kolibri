@@ -201,7 +201,7 @@ export abstract class BaseSelectWebComponent extends BaseFormFieldWebComponent<S
 
 	protected renderSelectField(): JSX.Element {
 		const disabled = this.getRenderProp('disabled');
-		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons'), disabled });
+		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
 
 		return (
 			<FormFieldFC

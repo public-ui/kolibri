@@ -1,6 +1,7 @@
 import type {
 	FormFieldLabelInfoPopoverProps,
 	InputTypeOnDefault,
+	InternalButtonProps,
 	LabelWithExpertSlotPropType,
 	MsgPropType,
 	StencilUnknown,
@@ -25,6 +26,8 @@ import {
 	touchedProp,
 } from '../../props';
 import { BaseWebComponent } from '../base-web-component';
+import type { ButtonItemFcProps } from '../button/item';
+import { createButtonItem } from '../button/item';
 import type { FormAssociationType } from '../form-association/api';
 import { FormAssociationBehavior } from '../form-association/behavior';
 import { TooltipBehavior } from '../tooltip/behavior';
@@ -63,6 +66,8 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 
 	private readonly tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
 
+	private readonly smartButton = createButtonItem(() => this.host);
+
 	/**
 	 * Whether the focus event of the current visit has been sent. It is reset only when the focus
 	 * leaves the host of an enabled field; `inputHasFocus` is reset on every blur.
@@ -87,9 +92,26 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 		this.formAssociation = new FormAssociationBehavior(BaseWebComponent.stateLess, { host: this.host, type, name });
 	}
 
+	/** Call from `componentDidRender`. */
+	protected syncFormField(): void {
+		this.smartButton.syncListeners();
+	}
+
 	/** Call from `disconnectedCallback`. */
 	protected destroyFormField(): void {
 		this.tooltipBehavior.destroy();
+		this.smartButton.destroy();
+	}
+
+	/**
+	 * `ButtonFC` props of the `_smartButton`, `undefined` without one. The smart button hides its
+	 * label and takes the disabled state of the field; its own `_hideLabel` and `_disabled` win.
+	 */
+	protected getSmartButtonFcProps(smartButton: InternalButtonProps | undefined, disabled?: boolean): ButtonItemFcProps | undefined {
+		if (typeof smartButton !== 'object' || smartButton === null) {
+			return undefined;
+		}
+		return this.smartButton.getFcProps({ _hideLabel: true, _disabled: disabled, ...smartButton }, { class: 'kol-input-container__smart-button' });
 	}
 
 	// --- Prop application (the concrete element's watchers delegate here) ---

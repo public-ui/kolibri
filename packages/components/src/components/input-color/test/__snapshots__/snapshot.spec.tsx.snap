@@ -465,7 +465,30 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input-color__input kol-input-color__input--color" id="input-color-nonce" name="field-color" type="color" value="#FFFFFF">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-button-wc _hidelabel="" _label="einblenden" class="kol-input-container__smart-button"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button">
+              <button aria-label="einblenden" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        einblenden
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1014,7 +1037,30 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
             </datalist>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-button-wc _hidelabel="" _label="einblenden" class="kol-input-container__smart-button"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button">
+              <button aria-label="einblenden" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        einblenden
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

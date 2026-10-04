@@ -154,6 +154,7 @@ export class KolInputFile
 
 	public componentDidRender(): void {
 		this.browseButton.syncListeners();
+		this.syncFormField();
 	}
 
 	public disconnectedCallback(): void {
@@ -262,8 +263,7 @@ export class KolInputFile
 		const disabled = this.getRenderProp('disabled');
 		const { startAdornment, endAdornment } = getInputAdornments({
 			icons: this.getRenderProp('icons'),
-			smartButton: this.getRenderProp('smartButton') as InternalButtonProps | undefined,
-			disabled,
+			smartButton: this.getSmartButtonFcProps(this.getRenderProp('smartButton') as InternalButtonProps | undefined, disabled),
 		});
 
 		return (

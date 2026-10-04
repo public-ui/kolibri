@@ -166,6 +166,10 @@ export class KolInputNumber
 		this.hasValue = Boolean(this.getRenderProp('value'));
 	}
 
+	public componentDidRender(): void {
+		this.syncFormField();
+	}
+
 	public disconnectedCallback(): void {
 		this.destroyFormField();
 	}
@@ -314,8 +318,7 @@ export class KolInputNumber
 		const disabled = this.getRenderProp('disabled');
 		const { startAdornment, endAdornment } = getInputAdornments({
 			icons: this.getRenderProp('icons'),
-			smartButton: this.getRenderProp('smartButton') as InternalButtonProps | undefined,
-			disabled,
+			smartButton: this.getSmartButtonFcProps(this.getRenderProp('smartButton') as InternalButtonProps | undefined, disabled),
 			startAdornment: this.renderStepButton('down'),
 			endAdornment: this.renderStepButton('up'),
 		});

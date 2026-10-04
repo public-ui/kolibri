@@ -25,8 +25,9 @@ import type {
 import { devHint } from '../../schema';
 
 import { translate } from '../../i18n';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { IconButtonFC } from '../../internal/functional-components/form-field/icon-button';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
@@ -55,6 +56,8 @@ export class KolInputPassword
 	implements ClickableElement, FocusableElement, InputPasswordProps, WebComponentInterface<InputPasswordApi>
 {
 	@Element() protected readonly host?: HTMLKolInputPasswordElement;
+
+	private readonly visibilityToggle = createButtonItem(() => this.host);
 
 	private readonly translateHidePassword = translate('kol-hide-password');
 	private readonly translateShowPassword = translate('kol-show-password');
@@ -137,7 +140,13 @@ export class KolInputPassword
 		this.didLoadTextInput();
 	}
 
+	public componentDidRender(): void {
+		this.syncFormField();
+		this.visibilityToggle.syncListeners();
+	}
+
 	public disconnectedCallback(): void {
+		this.visibilityToggle.destroy();
 		this.destroyTextInput();
 	}
 
@@ -155,15 +164,20 @@ export class KolInputPassword
 			return null;
 		}
 		return (
-			<IconButtonFC
-				componentName="button"
-				class="kol-input-password__password-toggle-button kol-input-container__smart-button"
-				data-testid="kol-input-password-toggle-button"
-				label={this.passwordVisible ? this.translateHidePassword : this.translateShowPassword}
-				buttonVariant="ghost"
-				onClick={this.handleVisibilityToggle}
-				icon={this.passwordVisible ? 'kolicon-eye-closed' : 'kolicon-eye'}
-				disabled={this._disabled}
+			<ButtonFC
+				{...this.visibilityToggle.getFcProps(
+					{
+						_label: this.passwordVisible ? this.translateHidePassword : this.translateShowPassword,
+						_icons: this.passwordVisible ? 'kolicon-eye-closed' : 'kolicon-eye',
+						_hideLabel: true,
+						_disabled: this._disabled,
+						_on: { onClick: this.handleVisibilityToggle },
+					},
+					{
+						class: 'kol-input-password__password-toggle-button kol-input-container__smart-button',
+						'data-testid': 'kol-input-password-toggle-button',
+					},
+				)}
 			/>
 		);
 	}

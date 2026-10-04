@@ -479,7 +479,7 @@ export class KolSingleSelect
 
 	public render(): JSX.Element {
 		const isDisabled = this.getRenderProp('disabled') === true;
-		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons'), disabled: isDisabled });
+		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
 
 		return (
 			<Host>

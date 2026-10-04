@@ -10,8 +10,8 @@ export type WcButtonFCProps = Partial<RequiredButtonProps & OptionalButtonProps>
 };
 
 /**
- * Renders the transitional `kol-button-wc`. It stays because the base and theme styles of the
- * form fields select its host element (pitfall 8 of the `migrate-to-skeleton` skill).
+ * Renders the transitional `kol-button-wc` for the legacy form field adapters in
+ * `functional-components/`. The skeleton form fields render `ButtonFC` through `createButtonItem`.
  */
 export const WcButtonFC: FC<WcButtonFCProps> = (props) => {
 	const { label, icons, hideLabel, disabled, onClick, ...other } = props;
@@ -40,9 +40,9 @@ type ButtonType = Partial<Omit<WcButtonFCProps, 'icons'>> & {
 export type IconButtonFCProps = IconType | ButtonType;
 
 /**
- * Icon-only button (`componentName: 'button'`) or plain icon (`componentName: 'icon'`), e.g. the
- * smart button of an input or the clear button of a text field. Props other than `label`, `icon`
- * and `onClick` are passed on last and override the defaults.
+ * Icon-only button (`componentName: 'button'`) or plain icon (`componentName: 'icon'`) of the legacy
+ * form field adapters. Props other than `label`, `icon` and `onClick` are passed on last and override
+ * the defaults.
  */
 export const IconButtonFC: FC<IconButtonFCProps> = (props) => {
 	const { componentName = 'button', label, icon, onClick, ...other } = props;

@@ -129,6 +129,10 @@ export class KolInputEmail
 		this.didLoadTextInput();
 	}
 
+	public componentDidRender(): void {
+		this.syncFormField();
+	}
+
 	public disconnectedCallback(): void {
 		this.destroyTextInput();
 	}
