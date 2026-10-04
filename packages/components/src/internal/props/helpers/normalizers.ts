@@ -36,6 +36,14 @@ export function normalizeNumber(value?: unknown): number | never {
 	throw new Error(`Invalid number: ${value as string}`);
 }
 
+/** Accepts only values of type `number`, `NaN` included, like the legacy `watchNumber`; throws otherwise. */
+export function normalizeNumberType(value?: unknown): number | never {
+	if (typeof value === 'number') {
+		return value;
+	}
+	throw new Error(`Invalid number: ${String(value)}`);
+}
+
 const NUMBER_STRING_PATTERN = /^\d+(\.\d+)?$/;
 
 /**
