@@ -337,16 +337,25 @@ const renderHeadingCell = (context: RenderContext, cell: KoliBriTableHeaderCell,
 
 /**
  * The actions of an action column: buttons and links built by the column's `actions` factory from
- * the row data.
+ * the row data. Each action sits in a classless `<span>`: the span is the flex item of the actions
+ * container and holds the inline-flex button or link in a line box, which sets its height.
  */
 const renderActionItems = (context: RenderContext, actionColumn: ActionColumnHeaderCell, rowData: KoliBriTableDataType, key: string): JSX.Element => (
 	<div class={BEM_CLASS_TABLE__CELL_ACTIONS}>
 		{actionColumn.actions(rowData).map((action, actionIndex) => {
 			const actionKey = `action-${key}-${actionIndex}`;
 			if (action.type === 'button') {
-				return <ButtonFC key={actionKey} {...context.getButtonFcProps(actionKey, action)} />;
+				return (
+					<span key={actionKey}>
+						<ButtonFC {...context.getButtonFcProps(actionKey, action)} />
+					</span>
+				);
 			} else if (action.type === 'link') {
-				return <LinkFC key={actionKey} {...context.getLinkFcProps(actionKey, action)} />;
+				return (
+					<span key={actionKey}>
+						<LinkFC {...context.getLinkFcProps(actionKey, action)} />
+					</span>
+				);
 			}
 			return null;
 		})}
