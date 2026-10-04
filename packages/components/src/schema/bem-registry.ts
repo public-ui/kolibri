@@ -205,6 +205,14 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'is-compact'>;
 	};
+	'kol-kolibri': {
+		elements: {
+			text: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-popover-button': {
 		elements: {
 			popover: {
@@ -904,6 +912,12 @@ const BEM: KoliBriComponentsBemSchema = {
 			'toggle-button': { modifiers: null },
 		},
 		modifiers: new Set(['is-compact']),
+	},
+	'kol-kolibri': {
+		elements: {
+			text: { modifiers: null },
+		},
+		modifiers: null,
 	},
 	'kol-popover-button': {
 		elements: {
