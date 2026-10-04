@@ -1,7 +1,14 @@
 import type { JSX } from '@stencil/core';
-import { h } from '@stencil/core';
+import { forceUpdate, h } from '@stencil/core';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { ButtonItem, ButtonItemFcProps, ButtonItemRootAttributes } from '../../internal/functional-components/button/item';
+import { createButtonItem } from '../../internal/functional-components/button/item';
+import { createItemPool } from '../../internal/functional-components/item-pool';
+import type { LinkFCProps } from '../../internal/functional-components/link/component';
+import type { LinkItem } from '../../internal/functional-components/link/item';
+import { createLinkItem } from '../../internal/functional-components/link/item';
+import type { EmbeddedLinkProps } from '../../internal/functional-components/link/resolve-props';
 import type { TableStatelessApi } from '../../internal/functional-components/table-stateless/api';
 import { tableStatelessPropsConfig } from '../../internal/functional-components/table-stateless/api';
 import { TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
@@ -22,6 +29,7 @@ import type { TableHeaders } from '../../internal/props/table-headers';
 import type {
 	FixedColsPropType,
 	HasSettingsMenuPropType,
+	InternalButtonProps,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
@@ -81,6 +89,20 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	private resizeDebounceTimeout?: ReturnType<typeof setTimeout>;
 	private readonly cellRenderTimeouts = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
 
+	/** The sort buttons and the action buttons, one item per key the table FC renders. */
+	private readonly buttonItems = createItemPool<ButtonItem>(
+		() => createButtonItem(() => this.host),
+		(item) => item.syncListeners(),
+		(item) => item.destroy(),
+	);
+
+	/** The action links, one item per key the table FC renders. */
+	private readonly linkItems = createItemPool<LinkItem>(
+		() => createLinkItem(() => forceUpdate(this)),
+		(item) => item.syncListeners(),
+		(item) => item.destroy(),
+	);
+
 	// --- Lifecycle ---
 
 	protected initTableRenderProps(): void {
@@ -98,6 +120,14 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	protected teardownTable(): void {
 		this.resizeObserver?.disconnect();
 		clearTimeout(this.resizeDebounceTimeout);
+		this.buttonItems.destroy();
+		this.linkItems.destroy();
+	}
+
+	/** Call from `componentDidRender`: syncs the embedded buttons and links of the last render pass. */
+	protected syncTableItems(): void {
+		this.buttonItems.endRender();
+		this.linkItems.endRender();
 	}
 
 	// --- Prop application ---
@@ -309,13 +339,22 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 
 	// --- Render ---
 
+	private readonly getButtonFcProps = (key: string, props: InternalButtonProps, rootAttributes?: ButtonItemRootAttributes): ButtonItemFcProps =>
+		this.buttonItems.get(key).getFcProps(props, rootAttributes);
+
+	private readonly getLinkFcProps = (key: string, props: EmbeddedLinkProps): LinkFCProps => this.linkItems.get(key).getFcProps(props);
+
 	protected renderTableStatelessFC(): JSX.Element {
+		this.buttonItems.beginRender();
+		this.linkItems.beginRender();
 		return (
 			<TableStatelessFC
 				data={this.getRenderProp('data')}
 				dataFoot={this.getRenderProp('dataFoot')}
 				externalLabelElements={this.getState('externalLabelElements')}
 				fixedCols={this.getRenderProp('fixedCols')}
+				getButtonFcProps={this.getButtonFcProps}
+				getLinkFcProps={this.getLinkFcProps}
 				handleRenderCell={this.handleRenderCell}
 				handleSelectionChange={this.handleSelectionChange}
 				handleSort={this.handleSort}

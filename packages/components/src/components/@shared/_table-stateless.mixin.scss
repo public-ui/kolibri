@@ -45,10 +45,8 @@
 			min-height: var(--a11y-min-size);
 		}
 
-		&__sort-button {
-			.kol-button {
-				color: inherit;
-			}
+		&__sort-button.kol-button {
+			color: inherit;
 		}
 
 		&__sort {

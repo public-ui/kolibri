@@ -17,12 +17,17 @@ import type { LinkApi } from './api';
 
 const linkBem = bem.forBlock('kol-link');
 
+export type LinkFCProps = FunctionalComponentProps<LinkApi> & {
+	/** Ref of the `.kol-link` root. */
+	ref?: (element?: HTMLElement) => void;
+};
+
 /**
  * Children replace the expert `<slot>`: a consumer that renders `LinkFC` inside its own shadow
  * root passes the expert content directly (e.g. the tree item's chevron and label), since a slot
  * there would only project that consumer's light DOM.
  */
-export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) => {
+export const LinkFC: FC<LinkFCProps> = (props, children) => {
 	const {
 		accessKey,
 		ariaControls,
@@ -42,6 +47,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) =
 		inline,
 		label,
 		on,
+		ref,
 		refAnchor,
 		refTooltip,
 		role,
@@ -74,6 +80,7 @@ export const LinkFC: FC<FunctionalComponentProps<LinkApi>> = (props, children) =
 	return (
 		<BemRootNodeFC
 			block="kol-link"
+			ref={ref}
 			class={clsx(hostClass, {
 				[customClass]: variant.includes('custom') && customClass.length > 0,
 				[classNameFromVariant(variant, 'link')]: variant.length > 0,
