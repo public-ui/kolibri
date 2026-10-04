@@ -8,7 +8,7 @@
 			&--cycle {
 				--kol-spin-size: 96;
 
-				&__element {
+				.kol-spin__loader {
 					animation: rotation 1.5s linear infinite;
 
 					&:before {

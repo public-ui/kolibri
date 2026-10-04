@@ -4,16 +4,6 @@
 	@include card();
 
 	.kol-drawer {
-		&__card {
-			box-shadow: var(--ecl-shadow-16);
-			padding: var(--ecl-spacing-m);
-		}
-
-		.kol-card {
-			box-shadow: none;
-			border: 0;
-		}
-
 		&__dialog::backdrop {
 			background-color: var(--ecl-color-overlay-light);
 		}

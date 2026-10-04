@@ -44,7 +44,7 @@
 			width: to-rem(calc((var(--kol-spin-size, 13) * 3) + 2));
 			height: to-rem(calc(var(--kol-spin-size, 13) + (var(--kol-spin-border-width) * 2)));
 
-			&__element {
+			.kol-spin__spinner-element {
 				background-color: var(--kol-spin-color, var(--kol-theme-spin-color, #000));
 				border-radius: 50%;
 				position: absolute;
@@ -72,7 +72,7 @@
 					animation: 1s infinite spin2;
 				}
 
-				&--4 {
+				&--neutral {
 					opacity: 0.6;
 					left: to-rem(calc((var(--kol-spin-size, 13) * 2) + var(--kol-spin-border-width)));
 					z-index: 0;
