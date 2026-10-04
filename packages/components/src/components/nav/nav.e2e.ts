@@ -1,4 +1,6 @@
+import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
+import type { E2EPage } from '@stencil/playwright';
 import { test } from '@stencil/playwright';
 
 const LINKS = {
@@ -106,5 +108,123 @@ test.describe('kol-nav component', () => {
 			await expect(buttons.first()).not.toBeDisabled();
 			await expect(buttons.nth(1)).toBeDisabled();
 		});
+	});
+});
+
+test.describe('kol-nav behavior', () => {
+	type Log = string[];
+
+	/** Mounts a nav with a parent text entry, a parent button entry with a callback and a plain link. */
+	const mount = async (page: Page & E2EPage, props: Record<string, unknown> = {}) => {
+		await page.setContent('<div id="root"></div>');
+		await page.evaluate((props) => {
+			const log: string[] = [];
+			(window as unknown as { log: string[] }).log = log;
+			const element = document.createElement('kol-nav');
+			element._label = 'Nav';
+			element._links = [
+				{ _label: 'Section', _children: [{ _label: 'Section child', _href: '#section-child' }] },
+				{
+					_label: 'Action',
+					_on: { onClick: (_event: Event, value: unknown) => log.push(`cb:onClick:${JSON.stringify(value)}`) },
+					_children: [{ _label: 'Action child', _href: '#action-child' }],
+				},
+				{ _label: 'Link', _href: '#link' },
+			];
+			Object.assign(element, props);
+			document.getElementById('root')?.append(element);
+		}, props);
+		await page.waitForChanges();
+	};
+
+	const readLog = (page: Page): Promise<Log> =>
+		page.evaluate(() => {
+			const log = (window as unknown as { log: string[] }).log;
+			return log.splice(0, log.length);
+		});
+
+	const entry = (page: Page, label: string) => page.locator('kol-nav .kol-nav__list-item').filter({ hasText: label }).first();
+
+	const click = async (page: Page & E2EPage, label: string) => {
+		await entry(page, label).locator('button').first().click();
+		await page.waitForChanges();
+	};
+
+	test('toggles the children of a parent entry by click', async ({ page }) => {
+		await mount(page);
+		await expect(page.locator('kol-nav .kol-nav__list--nested')).toHaveCount(0);
+
+		await click(page, 'Section');
+		await expect(entry(page, 'Section')).toHaveClass(/kol-nav__list-item--expanded/);
+		await expect(entry(page, 'Section').locator('.kol-nav__list--nested')).toHaveCount(1);
+		await expect(entry(page, 'Section').locator('.kolicon-minus')).toHaveCount(1);
+
+		await click(page, 'Section');
+		await expect(entry(page, 'Section')).not.toHaveClass(/kol-nav__list-item--expanded/);
+		await expect(entry(page, 'Section').locator('.kol-nav__list--nested')).toHaveCount(0);
+		await expect(entry(page, 'Section').locator('.kolicon-plus')).toHaveCount(1);
+	});
+
+	test('points aria-controls of an expanded entry to its nested list', async ({ page }) => {
+		await mount(page);
+		await click(page, 'Section');
+		const controls = await entry(page, 'Section').locator('button').first().getAttribute('aria-controls');
+		expect(controls).toBeTruthy();
+		await expect(page.locator(`kol-nav ul#${controls}`)).toHaveCount(1);
+		await expect(entry(page, 'Section').locator('button').first()).toHaveAttribute('aria-expanded', 'true');
+	});
+
+	test('calls the callback of a button entry and then toggles its children', async ({ page }) => {
+		await mount(page);
+		await click(page, 'Action');
+		expect(await readLog(page)).toHaveLength(1);
+		await expect(entry(page, 'Action')).toHaveClass(/kol-nav__list-item--expanded/);
+	});
+
+	test('toggles the children without collapse icons when _collapsible is false', async ({ page }) => {
+		await mount(page, { _collapsible: false });
+		await expect(page.locator('kol-nav .kolicon-plus')).toHaveCount(0);
+		await click(page, 'Section');
+		await expect(entry(page, 'Section').locator('.kol-nav__list--nested')).toHaveCount(1);
+		await expect(page.locator('kol-nav .kolicon-minus')).toHaveCount(0);
+	});
+
+	test('toggles the compact view with the compact button and keeps the _hideLabel prop', async ({ page }) => {
+		await mount(page, { _hasCompactButton: true });
+		const toggle = page.locator('kol-nav .kol-nav__toggle-button button');
+		await expect(page.locator('kol-nav .kol-nav')).not.toHaveClass(/kol-nav--is-compact/);
+		await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+
+		await toggle.click();
+		await page.waitForChanges();
+		await expect(page.locator('kol-nav .kol-nav')).toHaveClass(/kol-nav--is-compact/);
+		await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+		await expect(entry(page, 'Link').locator('.kolicon-link')).toHaveCount(1);
+		expect(await page.locator('kol-nav').evaluate((element: HTMLKolNavElement) => element._hideLabel)).toBe(false);
+
+		await toggle.click();
+		await page.waitForChanges();
+		await expect(page.locator('kol-nav .kol-nav')).not.toHaveClass(/kol-nav--is-compact/);
+	});
+
+	test('resets a manual expansion when _links changes', async ({ page }) => {
+		await mount(page);
+		await click(page, 'Section');
+		await expect(entry(page, 'Section')).toHaveClass(/kol-nav__list-item--expanded/);
+
+		await page.locator('kol-nav').evaluate((element: HTMLKolNavElement) => {
+			element._links = [...(element._links as unknown as unknown[])] as unknown as string;
+		});
+		await page.waitForChanges();
+		await expect(entry(page, 'Section')).not.toHaveClass(/kol-nav__list-item--expanded/);
+	});
+
+	test('keeps the previous links when _links gets an invalid entry', async ({ page }) => {
+		await mount(page);
+		await page.locator('kol-nav').evaluate((element: HTMLKolNavElement) => {
+			element._links = [{ _icons: 'kolicon-home' }] as unknown as string;
+		});
+		await page.waitForChanges();
+		await expect(page.locator('kol-nav .kol-nav__list > .kol-nav__list-item')).toHaveCount(3);
 	});
 });
