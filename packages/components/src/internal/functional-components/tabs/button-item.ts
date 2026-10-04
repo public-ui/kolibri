@@ -32,8 +32,8 @@ export type TabsButton = {
  * plain object with closures, like `popover-button/item.ts`, so `kol-tabs` composes one per button.
  *
  * Two pieces of the wrapper are deliberately absent:
- * - **Form association.** Tab buttons are `type="button"` without `_name`, so the wrapper's
- *   `AssociatedInputController` had no form field to write the value into.
+ * - **Form association.** Tab buttons are `type="button"` without `_name`, so there is no form
+ *   field to write the value into.
  * - **Submit/reset propagation.** Same reason: neither type is ever set.
  */
 export type TabsButtonItem = {
