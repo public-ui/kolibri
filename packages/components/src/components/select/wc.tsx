@@ -43,6 +43,9 @@ export class KolSelectWc extends BaseSelectWebComponent implements ClickableElem
 
 	@State() public id = createUniqueId('select');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	public constructor() {
@@ -104,6 +107,10 @@ export class KolSelectWc extends BaseSelectWebComponent implements ClickableElem
 		this.watchRequired(this._required);
 		this.watchRows(this._rows);
 		this.watchValue(this._value);
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
 	}
 
 	public disconnectedCallback(): void {

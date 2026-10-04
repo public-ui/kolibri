@@ -64,6 +64,9 @@ export class KolInputPassword
 
 	@State() public id = createUniqueId('input-password');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	@State() public passwordVisible = false;

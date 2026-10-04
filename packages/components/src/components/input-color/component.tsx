@@ -66,6 +66,9 @@ export class KolInputColor
 
 	@State() public id = createUniqueId('input-color');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	public constructor() {

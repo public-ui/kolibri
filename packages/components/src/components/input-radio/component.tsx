@@ -60,6 +60,9 @@ export class KolInputRadio
 
 	@State() public id = createUniqueId('input-radio');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	/** Input of the selected option, the target of `click()` and of the Enter submit. */
@@ -163,6 +166,10 @@ export class KolInputRadio
 		this.watchOrientation(this._orientation);
 		this.watchOptions(this._options);
 		this.watchValue(this._value);
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
 	}
 
 	public disconnectedCallback(): void {

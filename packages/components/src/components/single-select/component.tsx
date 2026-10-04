@@ -80,6 +80,9 @@ export class KolSingleSelect
 
 	@State() public id = createUniqueId('single-select');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	/** Whether the focus is inside the field. */
 	@State() public inputHasFocus = false;
 
@@ -151,6 +154,7 @@ export class KolSingleSelect
 	}
 
 	public componentDidRender(): void {
+		this.syncFormField();
 		this.clearButton.syncListeners();
 	}
 

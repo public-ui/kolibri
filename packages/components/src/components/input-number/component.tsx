@@ -85,6 +85,9 @@ export class KolInputNumber
 
 	@State() public id = createUniqueId('input-number');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	/** Type in which `_value` was set; `getValue()` and the events return the value in this type. */

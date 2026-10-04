@@ -80,6 +80,9 @@ export class KolTextarea
 
 	@State() public id = createUniqueId('textarea');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	public constructor() {
@@ -161,6 +164,10 @@ export class KolTextarea
 				this._rows = 1;
 			}
 		});
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
 	}
 
 	public disconnectedCallback(): void {

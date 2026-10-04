@@ -35,6 +35,27 @@ test.describe('kol-input-text', () => {
 		});
 	});
 
+	test.describe('info popover', () => {
+		test('opens and closes the info popover of the label', async ({ page }) => {
+			await page.setContent(`<kol-input-text _label="With info popover"></kol-input-text>`);
+			await page.locator('kol-input-text').evaluate((element: HTMLKolInputTextElement) => {
+				element._infoPopover = { _label: 'Info', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' };
+			});
+			const toggle = page.locator('kol-input-text .kol-popover-button button');
+			const popover = page.locator('kol-input-text .kol-popover-button__popover');
+
+			await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+			await toggle.click();
+			await expect(popover).toContainText('Ich bin ein Hinweis.');
+			await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+			expect(await popover.evaluate((element) => element.matches(':popover-open'))).toBe(true);
+
+			await toggle.click();
+			await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+			expect(await popover.evaluate((element) => element.matches(':popover-open'))).toBe(false);
+		});
+	});
+
 	testInputValueReflection<HTMLKolInputTextElement>({
 		componentName: COMPONENT_NAME,
 		testValue: TEST_VALUE,

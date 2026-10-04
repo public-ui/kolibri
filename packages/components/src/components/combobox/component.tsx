@@ -75,6 +75,9 @@ export class KolCombobox
 
 	@State() public id = createUniqueId('combobox');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	/** Whether the focus is inside the field; only `focusin` and `focusout` change it. */
 	@State() public inputHasFocus = false;
 
@@ -158,6 +161,7 @@ export class KolCombobox
 	}
 
 	public componentDidRender(): void {
+		this.syncFormField();
 		this.clearButton.syncListeners();
 	}
 

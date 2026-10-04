@@ -30,10 +30,12 @@ import type { ButtonItemFcProps } from '../button/item';
 import { createButtonItem } from '../button/item';
 import type { FormAssociationType } from '../form-association/api';
 import { FormAssociationBehavior } from '../form-association/behavior';
+import { createPopoverButtonItem } from '../popover-button/item';
 import { TooltipBehavior } from '../tooltip/behavior';
 import type { FormFieldBaseApi } from './api';
 import { getFormFieldAria } from './aria';
 import { type FormFieldFCProps, isLabelShownAsTooltip } from './component';
+import type { FormFieldInfoPopover } from './label';
 
 type FormFieldExtras = Pick<FormFieldFCProps, 'counter' | 'maxLength' | 'readOnly' | 'renderNoLabel' | 'renderNoTooltip' | 'required'> & {
 	/** Class of the field, e.g. `kol-input-color`, added to the `kol-form-field` root. */
@@ -69,6 +71,18 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	private readonly smartButton = createButtonItem(() => this.host);
 
 	/**
+	 * The concrete element owns `infoPopoverOpen` as a `@State()` field, so toggling the popover
+	 * re-renders the field; the base API does not carry it, so access goes through a cast.
+	 */
+	private readonly infoPopover = createPopoverButtonItem({
+		getFlagHost: () => this.host,
+		getOpen: () => (this as unknown as { infoPopoverOpen?: boolean }).infoPopoverOpen === true,
+		setOpen: (open) => {
+			(this as unknown as { infoPopoverOpen: boolean }).infoPopoverOpen = open;
+		},
+	});
+
+	/**
 	 * Whether the focus event of the current visit has been sent. It is reset only when the focus
 	 * leaves the host of an enabled field; `inputHasFocus` is reset on every blur.
 	 */
@@ -95,12 +109,30 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	/** Call from `componentDidRender`. */
 	protected syncFormField(): void {
 		this.smartButton.syncListeners();
+		this.infoPopover.syncListeners();
 	}
 
 	/** Call from `disconnectedCallback`. */
 	protected destroyFormField(): void {
 		this.tooltipBehavior.destroy();
 		this.smartButton.destroy();
+		this.infoPopover.destroy();
+	}
+
+	/**
+	 * The info popover of the label, `undefined` without `_infoPopover`. Its toggle button is a ghost
+	 * button by default; it always hides its label and renders inline.
+	 */
+	protected getInfoPopover(): FormFieldInfoPopover | undefined {
+		const infoPopover = this.shared.getRenderProp('infoPopover');
+		if (!infoPopover) {
+			return undefined;
+		}
+		const { _content, ...popoverButton } = infoPopover;
+		return {
+			popoverButton: this.infoPopover.getFcProps({ _variant: 'ghost', ...popoverButton, _hideLabel: true, _inline: true }),
+			content: _content,
+		};
 	}
 
 	/**
@@ -347,7 +379,7 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 			class: classNames,
 			tooltipAlign,
 			alert: this.showAsAlert(),
-			infoPopover: shared.getRenderProp('infoPopover'),
+			infoPopover: this.getInfoPopover(),
 			renderNoLabel,
 			renderNoTooltip,
 			refInput: renderNoTooltip ? undefined : this.setInputRef,

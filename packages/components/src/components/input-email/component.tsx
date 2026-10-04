@@ -55,6 +55,9 @@ export class KolInputEmail
 
 	@State() public id = createUniqueId('input-email');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	public constructor() {

@@ -66,6 +66,9 @@ export class KolInputFile
 
 	@State() public id = createUniqueId('input-file');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	@State() private filename: string = this.translateFilenameText;
