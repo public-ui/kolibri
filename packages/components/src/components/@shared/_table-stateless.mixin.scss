@@ -40,8 +40,7 @@
 		}
 
 		// table without caption but settings needs space above for the settings button
-		kol-table-settings-wc:not(:has(~ &__scroll-container &__caption)) {
-			display: block;
+		&__settings:not(:has(~ &__scroll-container &__caption)) {
 			min-height: var(--a11y-min-size);
 		}
 

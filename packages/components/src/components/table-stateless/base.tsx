@@ -12,6 +12,7 @@ import type { EmbeddedLinkProps } from '../../internal/functional-components/lin
 import type { TableStatelessApi } from '../../internal/functional-components/table-stateless/api';
 import { tableStatelessPropsConfig } from '../../internal/functional-components/table-stateless/api';
 import { TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
+import { createTableSettings } from '../../internal/functional-components/table-stateless/settings';
 import { getNumberOfCols, getPrimaryHeaders } from '../../internal/functional-components/table-stateless/table-model';
 import {
 	fixedColsProp,
@@ -96,6 +97,12 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		(item) => item.destroy(),
 	);
 
+	/** The settings menu with its state, its buttons and its dialog. */
+	private readonly settings = createTableSettings(
+		() => this.host,
+		() => forceUpdate(this),
+	);
+
 	/** The action links, one item per key the table FC renders. */
 	private readonly linkItems = createItemPool<LinkItem>(
 		() => createLinkItem(() => forceUpdate(this)),
@@ -122,12 +129,14 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		clearTimeout(this.resizeDebounceTimeout);
 		this.buttonItems.destroy();
 		this.linkItems.destroy();
+		this.settings.destroy();
 	}
 
 	/** Call from `componentDidRender`: syncs the embedded buttons and links of the last render pass. */
 	protected syncTableItems(): void {
 		this.buttonItems.endRender();
 		this.linkItems.endRender();
+		this.settings.sync();
 	}
 
 	// --- Prop application ---
@@ -342,11 +351,14 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	private readonly getButtonFcProps = (key: string, props: InternalButtonProps, rootAttributes?: ButtonItemRootAttributes): ButtonItemFcProps =>
 		this.buttonItems.get(key).getFcProps(props, rootAttributes);
 
+	private readonly renderSettings = (horizontalHeaderCells: KoliBriTableHeaderCell[][]): JSX.Element => this.settings.render(horizontalHeaderCells);
+
 	private readonly getLinkFcProps = (key: string, props: EmbeddedLinkProps): LinkFCProps => this.linkItems.get(key).getFcProps(props);
 
 	protected renderTableStatelessFC(): JSX.Element {
 		this.buttonItems.beginRender();
 		this.linkItems.beginRender();
+		this.settings.beginRender();
 		return (
 			<TableStatelessFC
 				data={this.getRenderProp('data')}
@@ -355,6 +367,7 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 				fixedCols={this.getRenderProp('fixedCols')}
 				getButtonFcProps={this.getButtonFcProps}
 				getLinkFcProps={this.getLinkFcProps}
+				renderSettings={this.renderSettings}
 				handleRenderCell={this.handleRenderCell}
 				handleSelectionChange={this.handleSelectionChange}
 				handleSort={this.handleSort}

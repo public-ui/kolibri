@@ -1,7 +1,7 @@
 import type { FunctionalComponent as FC, JSX } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 
-import { KolBadgeTag, KolTableSettingsWcTag } from '../../../core/component-names';
+import { KolBadgeTag } from '../../../core/component-names';
 import { translate } from '../../../i18n';
 import type {
 	ActionColumnHeaderCell,
@@ -65,6 +65,8 @@ export type TableStatelessFCProps = FunctionalComponentProps<TableStatelessApi> 
 	getButtonFcProps: (key: string, props: InternalButtonProps, rootAttributes?: ButtonItemRootAttributes) => ButtonItemFcProps;
 	/** `LinkFC` props of the embedded link `key`; the web component keeps one link item per key. */
 	getLinkFcProps: (key: string, props: EmbeddedLinkProps) => LinkFCProps;
+	/** Renders the settings menu; the web component keeps its state. */
+	renderSettings: (horizontalHeaderCells: KoliBriTableHeaderCell[][]) => JSX.Element;
 };
 
 /**
@@ -520,7 +522,7 @@ export const TableStatelessFC: FC<TableStatelessFCProps> = (props) => {
 
 	return (
 		<BemRootNodeFC block="kol-table" class={classNameFromVariant(variant, 'table')}>
-			{hasSettingsMenu && <KolTableSettingsWcTag _horizontalHeaderCells={headers.horizontal} />}
+			{hasSettingsMenu && props.renderSettings(headers.horizontal)}
 
 			{/* Firefox automatically makes the scroll container focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
 			 * caption to receive focus. Hence, the container opts out with `tabindex="-1"` to avoid two focusable elements.

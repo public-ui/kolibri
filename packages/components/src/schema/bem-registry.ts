@@ -664,6 +664,9 @@ export type KoliBriComponentsBemSchema = {
 			'selection-label': {
 				modifiers: Set<'disabled'>;
 			};
+			settings: {
+				modifiers: null;
+			};
 			sort: {
 				modifiers: null;
 			};
@@ -1132,6 +1135,7 @@ const BEM: KoliBriComponentsBemSchema = {
 			'selection-input': { modifiers: new Set(['checkbox', 'radio']) },
 			'selection-input-tooltip': { modifiers: null },
 			'selection-label': { modifiers: new Set(['disabled']) },
+			settings: { modifiers: null },
 			sort: { modifiers: null },
 			'sort-button': { modifiers: null },
 			'sort-order': { modifiers: null },
