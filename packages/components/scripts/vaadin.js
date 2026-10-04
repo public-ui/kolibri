@@ -52,7 +52,6 @@ const javaType = (type, required) => {
 };
 
 const BLACKLIST = [
-	'kol-alert-wc',
 	'kol-avatar-wc',
 	'kol-color',
 	'kol-counter',

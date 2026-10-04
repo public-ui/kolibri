@@ -75,7 +75,7 @@ This modular layout is the backbone for the architectural patterns described in 
 ## 2. Architecture Constraints
 
 - **Stencil** is used for authoring web components with **shadow: true** only (Shadow DOM enabled for style isolation).
-- Components without Shadow DOM (`shadow: false`) exist only as a **transitional pattern** for legacy composition (see §4 Transitional Pattern), or are implemented as **Functional Components** to avoid style conflicts and reduce the maintainability burden.
+- A component that embeds another component inside its own shadow DOM renders that component's **Functional Component** through an item (see §4 Embedded Components). The only element without Shadow DOM is the deprecated `kol-tooltip-wc`.
 - Components must compile to framework-agnostic Custom Elements.
 - Public API properties use an underscored naming convention (e.g. `_name`) to separate external inputs from internal state.
 - Documentation and code follow the `KoliBri` casing and repository conventions.
@@ -130,7 +130,7 @@ Responsibilities of the WC:
 
 A WC has **exactly one orchestrator (itself)** plus zero or more Behaviors. A WC may compose Behaviors, never other WCs.
 
-When several custom elements are tag variants of **one** FC (`kol-button`, the transitional `kol-button-wc`, `kol-button-link` and `kol-split-button` all render `ButtonFC`; `kol-link`, `kol-link-wc` and `kol-link-button` all render `LinkFC`), the orchestrator implementation is shared through an abstract base class next to the element (`components/button/base.tsx` → `BaseButtonWebComponent`, `components/link/base.tsx` → `BaseLinkWebComponent`). The base extends `BaseWebComponent<Api>`, carries no Stencil decorator and holds the composed Behaviors, the event handlers, one `apply<Prop>()` method per prop and the FC render call. The concrete element keeps everything Stencil has to see in the component class: `@Component`, `@Element`, `@State`, `@Method`, every `@Prop` with a one-line `@Watch` that calls the matching `apply<Prop>()`, and the lifecycle methods, which delegate to the base (see design decision 16).
+When several custom elements are tag variants of **one** FC (`kol-button`, `kol-button-link` and `kol-split-button` all render `ButtonFC`; `kol-link` and `kol-link-button` all render `LinkFC`), the orchestrator implementation is shared through an abstract base class next to the element (`components/button/base.tsx` → `BaseButtonWebComponent`, `components/link/base.tsx` → `BaseLinkWebComponent`). The base extends `BaseWebComponent<Api>`, carries no Stencil decorator and holds the composed Behaviors, the event handlers, one `apply<Prop>()` method per prop and the FC render call. The concrete element keeps everything Stencil has to see in the component class: `@Component`, `@Element`, `@State`, `@Method`, every `@Prop` with a one-line `@Watch` that calls the matching `apply<Prop>()`, and the lifecycle methods, which delegate to the base (see design decision 16).
 
 ```tsx
 // WC — the orchestrator (KolLink, reference implementation)
@@ -286,22 +286,22 @@ The `block` and `modifiers` keys are validated against `KoliBriComponentsBemSche
 
 **When not to use it:** `BemRootNodeFC` always renders a `<div>` root. For FCs whose semantic root is another element (e.g. `ClickButtonFC` renders a `<button>`), build the root manually with `bem.forBlock('kol-xxx')(modifiers)` instead — the same typed schema applies. `LinkFC` and `ButtonFC` use `BemRootNodeFC` (both have extra siblings — tooltip, description — alongside their interactive element, so the wrapper is required, not just one non-div root); `SkeletonFC` and `ClickButtonFC` use direct `bem.forBlock` calls because their FC root _is_ the single non-div interactive element.
 
-### Transitional Pattern (shadow:false)
+### Embedded Components (Items)
 
-When a legacy consumer renders an internal WC inside its own shadow DOM and needs to reach the inner `.kol-…` CSS classes from its stylesheets, a `shadow:true` element would encapsulate those classes behind a shadow boundary and break consumer styling. The solution is a **transitional `shadow:false` WC** that renders the FC directly into the light DOM:
+When a component renders another component inside its own shadow DOM — the close button of an alert, the sort buttons of a table, the page size select of a pagination — it renders that component's FC directly, so its own stylesheet and the theme reach the inner `.kol-…` classes. The orchestration the embedded element would own (resolved props with the element's `@Prop` defaults, Behaviors such as the tooltip, refs, event handlers) lives in an **item**: a plain object with closures, created once per embedded instance and owned by the embedding WC.
 
-```tsx
-@Component({
-	tag: 'kol-link-wc',
-	shadow: false,
-})
-export class KolLinkWc extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi> {
-	// Same orchestrator logic as KolLink, but render() returns <LinkFC …/> directly
-	// (no <Host> wrapper) so the inner DOM is reachable by consumer CSS.
-}
-```
+| Item                                                 | Renders                          |
+| ---------------------------------------------------- | -------------------------------- |
+| `createButtonItem` (`button/item.ts`)                | `ButtonFC`                       |
+| `createLinkItem` (`link/item.ts`)                    | `LinkFC`                         |
+| `createPopoverButtonItem` (`popover-button/item.ts`) | `PopoverButtonFC`                |
+| `createDialogItem` (`dialog/item.tsx`)               | `DialogFC` with a card           |
+| `PageSizeSelect` (`pagination/page-size-select.tsx`) | the select field of `kol-select` |
 
-This is temporary scaffolding. When the consumer migrates to the Skeleton pattern, it should render `LinkFC` directly (inline JSX) instead of instantiating `kol-link-wc`. Once all consumers have migrated, the transitional component is deleted.
+- `getFcProps(…)` returns the fully resolved FC props; call it once per render.
+- `syncListeners()` runs from `componentDidRender`, `destroy()` from `disconnectedCallback`.
+- A variable number of embedded instances (one action button per table row) goes through `createItemPool` (`item-pool.ts`): each render pass takes its items by key, and `endRender()` syncs them and destroys the ones the pass no longer used.
+- The KoliBri DOM events of the embedded component are dispatched on its FC root, where the embedded element used to be, so they bubble the same way.
 
 ### Schema Helper Layer
 
@@ -591,7 +591,7 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 | **Composition over inheritance**              | WCs compose Behaviors (e.g. `TooltipBehavior`) for reusable logic rather than relying on inheritance.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | **Orchestrator WC**                           | The WC is the single orchestrator: it normalizes props, manages state, and renders. No controller/aspect class sits between the element and the FC.                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | **BemRootNodeFC pattern**                     | FCs render a single root `<div>` via `BemRootNodeFC`, with a type-checked `block` and `modifiers`. Produces `<div class="kol-block kol-block--…">`; inner elements use BEM element classes.                                                                                                                                                                                                                                                                                                                                                                                        |
-| **Transitional shadow:false pattern**         | Legacy consumers that render an internal WC inside their own shadow DOM and need to reach inner `.kol-…` classes use a `shadow:false` transitional WC (`kol-link-wc`). Migrating consumers render the FC directly instead.                                                                                                                                                                                                                                                                                                                                                         |
+| **Embedded components through items**         | A component that embeds another component in its own shadow DOM renders that component's FC directly; an item (`createButtonItem`, …) owns the orchestration of each embedded instance.                                                                                                                                                                                                                                                                                                                                                                                            |
 | **Declarative rendering**                     | Functional components are pure and stateless.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | **Event-driven communication**                | User interaction is emitted as DOM events/callbacks rather than calling functions across layers.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | **Props Pattern**                             | Functional components exclusively receive Props that contain either normalized/validated external data or internal component state. Props must always be initialized.                                                                                                                                                                                                                                                                                                                                                                                                              |
@@ -616,9 +616,9 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
 4. **Shadow DOM enabled for web components (shadow: true)**
    - _Alternative_: allow some components to have `shadow: false`.
    - _Reason_: Shadow DOM ensures consistent style isolation and prevents CSS conflicts from host page styles, eliminating a category of hard-to-debug styling issues.
-5. **Transitional shadow:false WCs for legacy composition**
-   - _Alternative_: force all consumers to migrate before any refactor lands.
-   - _Reason_: a `shadow:false` WC (`kol-link-wc`) lets legacy consumers keep reaching inner `.kol-…` classes while the consumer is migrated incrementally. Once a consumer renders the FC directly, the transitional element is deleted.
+5. **Embedded components render their FC through items**
+   - _Alternative_: render a `shadow:false` element (`kol-button-wc`, …) inside the embedding component's shadow DOM, so its stylesheet reaches the inner `.kol-…` classes.
+   - _Reason_: such an element duplicates the orchestrator of the public element and puts an extra node between the embedding component and the embedded block. An item keeps one orchestration per embedded instance in the embedding WC and renders the FC root in place of the element.
 6. **Centralised validation in the WC**
    - _Alternative_: perform validation scattered inside prop watchers without schema helpers.
    - _Reason_: routing all external values through `PropDefinition.apply()` keeps validation, defaults and normalization in one reusable, testable place.
@@ -655,8 +655,8 @@ The skeleton ships as part of the `@public-ui/components` package. During build 
     - _Alternative_: expose every FC prop 1:1 as a public `@Prop` and declare props with the internal primitive types.
     - _Reason_: the public API is a compatibility contract (adapters, IntelliSense, `custom-elements.json` are generated from `prop.docs`/`method.docs`). Growing it silently (e.g. link gained `_ariaOwns`, `_customClass`, `_tabIndex`, `click()`) or dropping its documentation is a breaking change disguised as a refactor. See [§4 Public API Contract](#public-api-contract-migration-parity).
 16. **Shared orchestrator base for tag variants of one FC**
-    - _Pattern_: elements that render the same FC (`kol-button`/`kol-button-wc`/`kol-button-link`/`kol-split-button`, `kol-link`/`kol-link-wc`/`kol-link-button`) share an abstract, decorator-free base class next to the element (`button/base.tsx`, `link/base.tsx`) that extends `BaseWebComponent<Api>` and holds Behaviors, handlers, `apply<Prop>()` methods and the FC render call. The concrete element declares the Stencil members and delegates from its watchers and lifecycle methods.
-    - _Alternative_: copy the orchestrator into every element (the state before this decision: ~350 identical lines in `component.tsx` and `wc.tsx`), or let the variants instantiate the public element's `-wc` twin (the legacy pass-through pattern that keeps the transitional wrapper alive).
+    - _Pattern_: elements that render the same FC (`kol-button`/`kol-button-link`/`kol-split-button`, `kol-link`/`kol-link-button`) share an abstract, decorator-free base class next to the element (`button/base.tsx`, `link/base.tsx`) that extends `BaseWebComponent<Api>` and holds Behaviors, handlers, `apply<Prop>()` methods and the FC render call. The concrete element declares the Stencil members and delegates from its watchers and lifecycle methods.
+    - _Alternative_: copy the orchestrator into every element (the state before this decision: ~350 identical lines in `component.tsx` and `wc.tsx`), or let the variants instantiate a `shadow:false` twin of the public element.
     - _Reason_: the base is not a layer between WC and FC (decision 1 stays intact) — it _is_ the WC's implementation, written once. Stencil only reads decorators and lifecycle hooks from the component class itself, so those stay there; plain methods and fields are inherited at runtime like the ones of `BaseWebComponent`. Anything that needs the host element (e.g. the form-association controller) is created from the concrete constructor after `super()`, because Stencil registers the host at the start of the component class's constructor.
 
 ## 10. Quality Requirements

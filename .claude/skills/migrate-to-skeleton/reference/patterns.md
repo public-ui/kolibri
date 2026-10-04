@@ -168,6 +168,5 @@ packages/components/src/
         └── index.ts                 <- Re-Exporte
 ```
 
-Bleibt eine transitionale `shadow: false`-Variante nötig, liegt sie als `wc.tsx` neben der
-`component.tsx` (Vorbilder: `button/wc.tsx`, `link/wc.tsx`) — siehe
-`ARC42.md#transitional-pattern-shadowfalse` und Fallstrick 8 in `pitfalls.md`.
+Eingebettete Komponenten rendert der WC über ihren FC und ein Item — siehe
+`ARC42.md#embedded-components-items` und Fallstrick 8 in `pitfalls.md`.

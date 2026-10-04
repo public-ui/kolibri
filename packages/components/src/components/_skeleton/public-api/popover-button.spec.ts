@@ -1,5 +1,5 @@
 import type { PublicApiContract } from './contract';
-import { describePublicApiContract, extractFrom } from './contract';
+import { describePublicApiContract } from './contract';
 
 /**
  * Pinned public API of `kol-popover-button` — identical surface to the predecessor (17 props plus
@@ -147,12 +147,4 @@ describePublicApiContract({
 	component: 'popover-button',
 	pinnedApi: KOL_POPOVER_BUTTON_PUBLIC_API,
 	schemaInterface: 'PopoverButtonProps',
-});
-
-describe('kol-popover-button-wc transitional wrapper (internal contract for legacy consumers)', () => {
-	it('keeps the full predecessor surface: 18 props plus showPopover(), hidePopover(), focus() and click()', () => {
-		const extracted = extractFrom('popover-button', 'wc.tsx');
-		expect(extracted.filter((member) => member.kind === 'prop')).toHaveLength(18);
-		expect(extracted.filter((member) => member.kind === 'method').map((member) => member.name)).toEqual(['hidePopover', 'showPopover', 'focus', 'click']);
-	});
 });

@@ -1,12 +1,11 @@
 import type { PublicApiContract } from './contract';
-import { describePublicApiContract, extractFrom, findUndocumentedMembers } from './contract';
+import { describePublicApiContract } from './contract';
 
 /**
  * Pinned public API of `kol-button` — byte-identical to the predecessor on the develop branch
- * (20 props plus `getValue()`, `focus()` and `click()`). The skeleton migration moved the
- * `buttonVariantDefault` feature-flag fallback for `_variant` out of the inner `kol-button-wc`
- * and into the `kol-button` watcher, so the rendered default is unchanged while the declared
- * `@Prop` keeps its predecessor shape (no default literal).
+ * (20 props plus `getValue()`, `focus()` and `click()`). The `buttonVariantDefault` feature-flag
+ * fallback for `_variant` is applied in the `kol-button` watcher, so the declared `@Prop` keeps its
+ * predecessor shape (no default literal).
  */
 const KOL_BUTTON_PUBLIC_API: PublicApiContract = {
 	getValue: {
@@ -155,15 +154,3 @@ const KOL_BUTTON_PUBLIC_API: PublicApiContract = {
 };
 
 describePublicApiContract({ tag: 'kol-button', component: 'button', pinnedApi: KOL_BUTTON_PUBLIC_API, schemaInterface: 'ButtonProps' });
-
-describe('kol-button-wc transitional wrapper (internal contract for legacy consumers)', () => {
-	it('keeps the full predecessor surface: 23 props plus focus() and click()', () => {
-		const extracted = extractFrom('button', 'wc.tsx');
-		expect(extracted.filter((member) => member.kind === 'prop')).toHaveLength(23);
-		expect(extracted.filter((member) => member.kind === 'method').map((member) => member.name)).toEqual(['focus', 'click']);
-	});
-
-	it('documents every public member (custom-elements.json and docs-vscode are generated from prop.docs)', () => {
-		expect(findUndocumentedMembers('button', 'wc.tsx')).toEqual([]);
-	});
-});

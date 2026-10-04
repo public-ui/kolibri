@@ -210,7 +210,7 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	/**
 	 * The element that receives the KoliBri events and frames the focus of the field: the nearest host
 	 * with a shadow root, as resolved by the form association. It is the field itself, unless the field
-	 * renders without a shadow root inside another component (`kol-select-wc` in `kol-pagination`).
+	 * renders into the shadow root of another component (`PageSizeSelect` in `kol-pagination`).
 	 */
 	private get eventHost(): Element | undefined {
 		return this.formAssociation?.host ?? this.host;

@@ -58,7 +58,7 @@ import { propagateResetEventToForm, propagateSubmitEventToForm } from '../form/c
 
 /**
  * Shared orchestrator implementation for every custom element that renders `ButtonFC`:
- * `kol-button`, the transitional `kol-button-wc`, `kol-button-link` and `kol-split-button`.
+ * `kol-button`, `kol-button-link` and `kol-split-button`.
  *
  * The class carries everything that does not need a Stencil decorator — the composed
  * `TooltipBehavior`, the form-association adapter, the event handlers, one `apply*` method per

@@ -1,17 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`IconButtonFC renders a button 1`] = `
-<div>
-  <kol-button-wc _hidelabel="" _icons="kolicon-cross" _label="Clear" class="kol-input-container__smart-button"></kol-button-wc>
-</div>
-`;
-
-exports[`IconButtonFC renders an icon 1`] = `
-<div>
-  <i aria-label="Info" class="kol-icon kol-icon__icon kolicon-info" hidelabel="" role="img"></i>
-</div>
-`;
-
 exports[`InputContainerFC renders a start adornment 1`] = `
 <div class="kol-input-container">
   <div class="kol-input-container__adornment kol-input-container__adornment--start">
