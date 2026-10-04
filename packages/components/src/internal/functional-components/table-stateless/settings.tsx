@@ -44,15 +44,26 @@ const NOOP = (): void => {};
 
 /**
  * @param getHost - The table element: the feature flag host of the embedded buttons.
- * @param requestRender - Renders the table again after a change of the settings state.
+ * @param requestTableRender - Renders the table again after a change of the settings state.
  */
-export const createTableSettings = (getHost: () => HTMLElement | undefined, requestRender: () => void): TableSettings => {
+export const createTableSettings = (getHost: () => HTMLElement | undefined, requestTableRender: () => void): TableSettings => {
 	const translateTableSettings = translate('kol-table-settings');
 	const translateTableSettingsCancel = translate('kol-table-settings-cancel');
 	const translateTableSettingsApply = translate('kol-table-settings-apply');
 	const translateErrorAllInvisible = translate('kol-table-settings-error-all-invisible');
 
 	let rootElement: HTMLElement | undefined;
+
+	/**
+	 * A render the menu requested itself keeps the edited header cells: `kol-table-stateful` passes
+	 * header cells of a new identity in every render, which would discard the edits.
+	 */
+	let ownRenderRequested = false;
+	let isOwnRender = false;
+	const requestRender = (): void => {
+		ownRenderRequested = true;
+		requestTableRender();
+	};
 
 	const buttons = createItemPool<ButtonItem>(
 		() => createButtonItem(getHost),
@@ -226,9 +237,11 @@ export const createTableSettings = (getHost: () => HTMLElement | undefined, requ
 	return {
 		beginRender: (): void => {
 			buttons.beginRender();
+			isOwnRender = ownRenderRequested;
+			ownRenderRequested = false;
 		},
 		render: (horizontalHeaderCells: KoliBriTableHeaderCell[][]): JSX.Element => {
-			if (horizontalHeaderCells !== receivedHeaderCells) {
+			if (!isOwnRender && horizontalHeaderCells !== receivedHeaderCells) {
 				receivedHeaderCells = horizontalHeaderCells;
 				applyHeaderCells(horizontalHeaderCells);
 			}
