@@ -92,47 +92,51 @@ exports[`kol-table-stateless should render with _label="Table with action column
               </td>
               <td class="kol-table__cell kol-table__cell--actions kol-table__cell--align-right kol-table__cell--body" style="text-align: right;">
                 <div class="kol-table__cell-actions">
-                  <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
-                    <button aria-label="Details" class="kol-button__interactive-element" type="button">
-                      <span class="kol-button__text kol-span kol-span--hide-label">
-                        <span class="kol-span__container">
-                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-eye" role="presentation"></i>
-                          <span aria-hidden="true" class="kol-span__slot" hidden="">
-                            <slot name="expert" slot="expert"></slot>
-                          </span>
-                        </span>
-                      </span>
-                    </button>
-                    <div class="kol-button__tooltip">
-                      <div class="kol-tooltip__floating">
-                        <div class="kol-tooltip__arrow"></div>
-                        <span class="kol-span kol-tooltip__content">
+                  <span>
+                    <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+                      <button aria-label="Details" class="kol-button__interactive-element" type="button">
+                        <span class="kol-button__text kol-span kol-span--hide-label">
                           <span class="kol-span__container">
-                            <span class="kol-span__label">
-                              Details
+                            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-eye" role="presentation"></i>
+                            <span aria-hidden="true" class="kol-span__slot" hidden="">
+                              <slot name="expert" slot="expert"></slot>
                             </span>
-                            <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
                           </span>
                         </span>
+                      </button>
+                      <div class="kol-button__tooltip">
+                        <div class="kol-tooltip__floating">
+                          <div class="kol-tooltip__arrow"></div>
+                          <span class="kol-span kol-tooltip__content">
+                            <span class="kol-span__container">
+                              <span class="kol-span__label">
+                                Details
+                              </span>
+                              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                            </span>
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="kol-link kol-link--external-link kol-link--inline">
-                    <a class="kol-link__interactive-element" href="#/" rel="noopener" target="_blank">
-                      <span class="kol-link__text kol-span">
-                        <span class="kol-span__container">
-                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-external-link" role="presentation"></i>
-                          <span class="kol-span__label">
-                            View
-                          </span>
-                          <span aria-hidden="true" class="kol-span__slot" hidden="">
-                            <slot name="expert" slot="expert"></slot>
+                  </span>
+                  <span>
+                    <div class="kol-link kol-link--external-link kol-link--inline">
+                      <a class="kol-link__interactive-element" href="#/" rel="noopener" target="_blank">
+                        <span class="kol-link__text kol-span">
+                          <span class="kol-span__container">
+                            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-external-link" role="presentation"></i>
+                            <span class="kol-span__label">
+                              View
+                            </span>
+                            <span aria-hidden="true" class="kol-span__slot" hidden="">
+                              <slot name="expert" slot="expert"></slot>
+                            </span>
                           </span>
                         </span>
-                      </span>
-                      <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
-                    </a>
-                  </div>
+                        <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
+                      </a>
+                    </div>
+                  </span>
                 </div>
               </td>
             </tr>
@@ -142,47 +146,51 @@ exports[`kol-table-stateless should render with _label="Table with action column
               </td>
               <td class="kol-table__cell kol-table__cell--actions kol-table__cell--align-right kol-table__cell--body" style="text-align: right;">
                 <div class="kol-table__cell-actions">
-                  <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
-                    <button aria-label="Details" class="kol-button__interactive-element" type="button">
-                      <span class="kol-button__text kol-span kol-span--hide-label">
-                        <span class="kol-span__container">
-                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-eye" role="presentation"></i>
-                          <span aria-hidden="true" class="kol-span__slot" hidden="">
-                            <slot name="expert" slot="expert"></slot>
-                          </span>
-                        </span>
-                      </span>
-                    </button>
-                    <div class="kol-button__tooltip">
-                      <div class="kol-tooltip__floating">
-                        <div class="kol-tooltip__arrow"></div>
-                        <span class="kol-span kol-tooltip__content">
+                  <span>
+                    <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+                      <button aria-label="Details" class="kol-button__interactive-element" type="button">
+                        <span class="kol-button__text kol-span kol-span--hide-label">
                           <span class="kol-span__container">
-                            <span class="kol-span__label">
-                              Details
+                            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-eye" role="presentation"></i>
+                            <span aria-hidden="true" class="kol-span__slot" hidden="">
+                              <slot name="expert" slot="expert"></slot>
                             </span>
-                            <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
                           </span>
                         </span>
+                      </button>
+                      <div class="kol-button__tooltip">
+                        <div class="kol-tooltip__floating">
+                          <div class="kol-tooltip__arrow"></div>
+                          <span class="kol-span kol-tooltip__content">
+                            <span class="kol-span__container">
+                              <span class="kol-span__label">
+                                Details
+                              </span>
+                              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                            </span>
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="kol-link kol-link--external-link kol-link--inline">
-                    <a class="kol-link__interactive-element" href="#/" rel="noopener" target="_blank">
-                      <span class="kol-link__text kol-span">
-                        <span class="kol-span__container">
-                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-external-link" role="presentation"></i>
-                          <span class="kol-span__label">
-                            View
-                          </span>
-                          <span aria-hidden="true" class="kol-span__slot" hidden="">
-                            <slot name="expert" slot="expert"></slot>
+                  </span>
+                  <span>
+                    <div class="kol-link kol-link--external-link kol-link--inline">
+                      <a class="kol-link__interactive-element" href="#/" rel="noopener" target="_blank">
+                        <span class="kol-link__text kol-span">
+                          <span class="kol-span__container">
+                            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-external-link" role="presentation"></i>
+                            <span class="kol-span__label">
+                              View
+                            </span>
+                            <span aria-hidden="true" class="kol-span__slot" hidden="">
+                              <slot name="expert" slot="expert"></slot>
+                            </span>
                           </span>
                         </span>
-                      </span>
-                      <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
-                    </a>
-                  </div>
+                        <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
+                      </a>
+                    </div>
+                  </span>
                 </div>
               </td>
             </tr>
