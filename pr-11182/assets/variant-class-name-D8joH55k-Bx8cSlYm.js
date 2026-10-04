@@ -1,1 +1,0 @@
-import"./index-DV_vNR-B-DKBzWFZ5.js";var e=(e,t)=>{let n=``;return Array.isArray(e)&&e.forEach(e=>{n+=`kol-`+t+`--`+e+` `}),n};export{e as t};
