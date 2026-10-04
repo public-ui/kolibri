@@ -1,10 +1,9 @@
 import type { PublicApiContract } from './contract';
-import { describePublicApiContract, extractFrom, findUndocumentedMembers } from './contract';
+import { describePublicApiContract } from './contract';
 
 /**
  * Pinned public API of `kol-card`: 6 props plus `focus()` and `click()` — identical to the
- * predecessor `shadow.tsx` on the develop branch. `_headingId` stays internal to the transitional
- * `kol-card-wc`, where dialog and drawer set it.
+ * predecessor `shadow.tsx` on the develop branch.
  */
 const KOL_CARD_PUBLIC_API: PublicApiContract = {
 	focus: {
@@ -60,15 +59,3 @@ const KOL_CARD_PUBLIC_API: PublicApiContract = {
 };
 
 describePublicApiContract({ tag: 'kol-card', component: 'card', pinnedApi: KOL_CARD_PUBLIC_API, schemaInterface: 'CardProps' });
-
-describe('kol-card-wc transitional wrapper (internal contract for legacy consumers)', () => {
-	it('keeps the full predecessor surface: 7 props plus focus() and click()', () => {
-		const extracted = extractFrom('card', 'wc.tsx');
-		expect(extracted.filter((member) => member.kind === 'prop')).toHaveLength(7);
-		expect(extracted.filter((member) => member.kind === 'method').map((member) => member.name)).toEqual(['focus', 'click']);
-	});
-
-	it('documents every public member (custom-elements.json and docs-vscode are generated from prop.docs)', () => {
-		expect(findUndocumentedMembers('card', 'wc.tsx')).toEqual([]);
-	});
-});

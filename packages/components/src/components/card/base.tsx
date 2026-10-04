@@ -8,14 +8,13 @@ import { cardPropsConfig } from '../../internal/functional-components/card/api';
 import { resolveCardCloseButtonProps } from '../../internal/functional-components/card/close-button';
 import { CardFC } from '../../internal/functional-components/card/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { cardCallbacksProp, hasCloserProp, idProp, labelProp, levelProp, linkTargetProp, optionalHrefProp } from '../../internal/props';
+import { cardCallbacksProp, hasCloserProp, labelProp, levelProp, linkTargetProp, optionalHrefProp } from '../../internal/props';
 import type { HeadingLevel, HrefPropType, KoliBriCardEventCallbacks, LabelPropType, LinkTargetPropType } from '../../schema';
 import { createCtaRef } from '../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
 /**
- * Orchestrator shared by `kol-card` and the transitional `kol-card-wc` (ARC42 § 9, decision 16).
- * Both elements render the same `CardFC`; the concrete element only declares the Stencil members
+ * Orchestrator of `kol-card` (ARC42 § 9, decision 16). The element only declares the Stencil members
  * and delegates from its watchers and lifecycle hooks.
  */
 export abstract class BaseCardWebComponent extends BaseWebComponent<CardApi> {
@@ -56,17 +55,6 @@ export abstract class BaseCardWebComponent extends BaseWebComponent<CardApi> {
 
 	protected applyHasCloser(value?: boolean): void {
 		hasCloserProp.apply(value, (v) => this.setRenderProp('hasCloser', v));
-	}
-
-	/**
-	 * Only an explicit id overrides the generated one — `idProp`'s empty-string default would
-	 * otherwise strip the `aria-labelledby` target from every card that sets no id.
-	 */
-	protected applyHeadingId(value?: string): void {
-		if (value === undefined) {
-			return;
-		}
-		idProp.apply(value, (v) => this.setState('headingId', v));
 	}
 
 	protected applyHref(value?: HrefPropType): void {
