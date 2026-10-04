@@ -18,7 +18,7 @@ describe('KolInputPassword _autoComplete devHint', () => {
 	it('triggers devHint on initial load when _autoComplete is "on"', async () => {
 		await newSpecPage({
 			components: [KolInputPassword],
-			template: () => <kol-input-password _name="password" _autoComplete="on" />,
+			template: () => <kol-input-password _label="Password" _name="password" _autoComplete="on" />,
 		});
 
 		expect(Schema.devHint).toHaveBeenCalledWith(`[KolInputPassword] The 'autocomplete' option should not be set to "on" for a password input field`);
@@ -27,7 +27,7 @@ describe('KolInputPassword _autoComplete devHint', () => {
 	it('triggers devHint on runtime change to "on"', async () => {
 		const page = await newSpecPage({
 			components: [KolInputPassword],
-			template: () => <kol-input-password _name="password" _autoComplete="current-password" />,
+			template: () => <kol-input-password _label="Password" _name="password" _autoComplete="current-password" />,
 		});
 
 		expect(Schema.devHint).not.toHaveBeenCalled();
@@ -41,7 +41,7 @@ describe('KolInputPassword _autoComplete devHint', () => {
 	it('does not trigger devHint when _autoComplete is "current-password"', async () => {
 		await newSpecPage({
 			components: [KolInputPassword],
-			template: () => <kol-input-password _name="password" _autoComplete="current-password" />,
+			template: () => <kol-input-password _label="Password" _name="password" _autoComplete="current-password" />,
 		});
 
 		expect(Schema.devHint).not.toHaveBeenCalled();
