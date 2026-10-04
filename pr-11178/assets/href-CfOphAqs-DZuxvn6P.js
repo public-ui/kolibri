@@ -1,0 +1,1 @@
+import{g as e,r as t}from"./variant-quote-C_oUoZWq-DJTw1Zr7.js";var n=t(`href`,``,e,e=>typeof e==`string`,{required:!0}),r=t(`href`,``,e,e=>typeof e==`string`);export{r as n,n as t};
