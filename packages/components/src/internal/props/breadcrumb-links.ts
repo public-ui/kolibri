@@ -10,9 +10,8 @@ import { normalizeArray } from './helpers/normalizers';
  * External type is `Stringified<BreadcrumbLinkProps[]>` (JSON string when set via attribute,
  * array when set via property), internal type is the parsed array.
  *
- * Item validation mirrors the legacy `watchNavLinks` predicate: every entry must be an object
- * carrying at least a string `_href` or a string `_label`. One invalid entry rejects the whole
- * value, keeping the previously rendered links — same as the predecessor.
+ * Every entry must be an object carrying at least a string `_href` or a string `_label`. One
+ * invalid entry rejects the whole value and keeps the previously rendered links.
  */
 export type BreadcrumbLinksProp = Prop<'links', Stringified<BreadcrumbLinkProps[]>, BreadcrumbLinkProps[]>;
 
