@@ -17,7 +17,7 @@ import { resolveButtonProps } from './resolve-props';
  * Attributes the embedding component puts on the `.kol-button` root, e.g. its BEM element class,
  * a `data-testid`, `hidden` or listeners for the `KolEvent` DOM events of the button.
  */
-export type ButtonItemRootAttributes = Pick<JSXBase.HTMLAttributes<HTMLElement>, 'class' | 'hidden' | 'onBlur' | 'onFocus'> & {
+export type ButtonItemRootAttributes = Partial<Pick<JSXBase.HTMLAttributes<HTMLElement>, 'aria-current' | 'class' | 'hidden' | 'onBlur' | 'onFocus'>> & {
 	[dataAttribute: `data-${string}`]: string;
 };
 

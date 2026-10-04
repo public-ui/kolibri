@@ -1,13 +1,17 @@
 import type { FunctionalComponent as FC, JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { KolButtonWcTag, KolLinkWcTag } from '../../../core/component-names';
 import { translate } from '../../../i18n';
-import type { ButtonOrLinkOrTextWithChildrenProps, StencilUnknown, Stringified } from '../../../schema';
+import type { ButtonOrLinkOrTextWithChildrenProps, InternalButtonProps, StencilUnknown, Stringified } from '../../../schema';
 import clsx from '../../../utils/clsx';
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
 import { BemRootNodeFC } from '../bem-root-node/component';
+import { ButtonFC } from '../button/component';
+import type { ButtonItemFcProps } from '../button/item';
 import type { FunctionalComponentProps } from '../generic-types';
+import type { LinkFCProps } from '../link/component';
+import { LinkFC } from '../link/component';
+import type { EmbeddedLinkProps } from '../link/resolve-props';
 import type { NavApi } from './api';
 import { buildEntryIcons, getLeftIcon, isButtonEntry, isLinkEntry } from './model';
 
@@ -16,20 +20,28 @@ export type NavFCProps = Omit<FunctionalComponentProps<NavApi>, 'hideLabel'> & {
 	navId: string;
 	/** ID base of the nested lists. */
 	listId: string;
+	/** `ButtonFC` props of the embedded button `key`; the web component keeps one button item per key. */
+	getButtonFcProps: (key: string, props: InternalButtonProps) => ButtonItemFcProps;
+	/** `LinkFC` props of the embedded link `key`; the web component keeps one link item per key. */
+	getLinkFcProps: (key: string, props: EmbeddedLinkProps) => LinkFCProps;
 };
 
-type ListProps = Pick<NavFCProps, 'collapsible' | 'compact' | 'expandedChildren' | 'handleToggleExpansion' | 'hasIconsWhenExpanded'> & {
+type ListProps = Pick<
+	NavFCProps,
+	'collapsible' | 'compact' | 'expandedChildren' | 'getButtonFcProps' | 'getLinkFcProps' | 'handleToggleExpansion' | 'hasIconsWhenExpanded'
+> & {
 	deep: number;
 	id: string;
 	links: ButtonOrLinkOrTextWithChildrenProps[];
 };
 
 /**
- * One entry. Links stay `kol-link-wc` and buttons `kol-button-wc`, because the themes select
- * `.kol-nav__entry .kol-link`/`.kol-button` as ancestor relations.
+ * One entry. `.kol-nav__entry` stays a wrapper around the `.kol-link` or `.kol-button` root: the base
+ * and the themes style the entry as the flex item of the row and the link or button as its content
+ * (`.kol-nav__entry .kol-link`).
  */
 const renderEntry = (props: ListProps, entry: ButtonOrLinkOrTextWithChildrenProps, hasChildren: boolean, expanded: boolean, ariaId: string): JSX.Element => {
-	const { collapsible, compact, handleToggleExpansion, hasIconsWhenExpanded } = props;
+	const { collapsible, compact, getButtonFcProps, getLinkFcProps, handleToggleExpansion, hasIconsWhenExpanded } = props;
 	const icons = buildEntryIcons({
 		collapsible: collapsible && hasChildren,
 		expanded,
@@ -41,36 +53,46 @@ const renderEntry = (props: ListProps, entry: ButtonOrLinkOrTextWithChildrenProp
 	return (
 		<div class="kol-nav__entry-wrapper">
 			{isLinkEntry(entry) ? (
-				<KolLinkWcTag
+				<div
 					class={clsx('kol-nav__entry kol-nav__entry--link', {
 						'kol-nav__entry--collapsible': collapsible,
 					})}
-					{...entry}
-					_hideLabel={compact}
-					_icons={icons}
-					_ariaControls={collapsible && hasChildren && expanded ? ariaId : undefined}
-					_ariaExpanded={collapsible && hasChildren ? expanded : undefined}
-				/>
+				>
+					<LinkFC
+						{...getLinkFcProps(`link-${ariaId}`, {
+							...(entry as EmbeddedLinkProps),
+							_hideLabel: compact,
+							_icons: icons,
+							_ariaControls: collapsible && hasChildren && expanded ? ariaId : undefined,
+							_ariaExpanded: collapsible && hasChildren ? expanded : undefined,
+						})}
+					/>
+				</div>
 			) : (
-				<KolButtonWcTag
+				<div
 					class={clsx('kol-nav__entry kol-nav__entry--button', {
 						'kol-nav__entry--collapsible': collapsible,
 					})}
-					_label={entry._label}
-					_disabled={isButtonEntry(entry) ? entry._disabled : undefined}
-					_hideLabel={compact}
-					_icons={icons}
-					_ariaControls={collapsible && hasChildren && expanded ? ariaId : undefined}
-					_ariaExpanded={collapsible && hasChildren ? expanded : undefined}
-					_on={{
-						onClick: (event: MouseEvent, value: Stringified<StencilUnknown>) => {
-							if (isButtonEntry(entry) && typeof entry._on.onClick === 'function') {
-								entry._on.onClick(event, value);
-							}
-							handleToggleExpansion(entry._children);
-						},
-					}}
-				/>
+				>
+					<ButtonFC
+						{...getButtonFcProps(`button-${ariaId}`, {
+							_label: entry._label,
+							_disabled: isButtonEntry(entry) ? entry._disabled : undefined,
+							_hideLabel: compact,
+							_icons: icons,
+							_ariaControls: collapsible && hasChildren && expanded ? ariaId : undefined,
+							_ariaExpanded: collapsible && hasChildren ? expanded : undefined,
+							_on: {
+								onClick: (event: MouseEvent, value: Stringified<StencilUnknown>) => {
+									if (isButtonEntry(entry) && typeof entry._on.onClick === 'function') {
+										entry._on.onClick(event, value);
+									}
+									handleToggleExpansion(entry._children);
+								},
+							},
+						})}
+					/>
+				</div>
 			)}
 		</div>
 	);
@@ -110,6 +132,8 @@ export const NavFC: FC<NavFCProps> = ({
 	collapsible,
 	compact,
 	expandedChildren,
+	getButtonFcProps,
+	getLinkFcProps,
 	handleToggleCompact,
 	handleToggleExpansion,
 	hasCompactButton,
@@ -126,6 +150,8 @@ export const NavFC: FC<NavFCProps> = ({
 				compact={compact}
 				deep={0}
 				expandedChildren={expandedChildren}
+				getButtonFcProps={getButtonFcProps}
+				getLinkFcProps={getLinkFcProps}
 				handleToggleExpansion={handleToggleExpansion}
 				hasIconsWhenExpanded={hasIconsWhenExpanded}
 				id={listId}
@@ -134,16 +160,20 @@ export const NavFC: FC<NavFCProps> = ({
 		</nav>
 		{hasCompactButton && (
 			<div class="kol-nav__compact">
-				<KolButtonWcTag
-					class="kol-nav__toggle-button"
-					_ariaControls={navId}
-					_ariaExpanded={!compact}
-					_icons={compact ? 'kolicon-chevron-right' : 'kolicon-chevron-left'}
-					_hideLabel
-					_label={compact ? translate('kol-nav-maximize') : translate('kol-nav-minimize')}
-					_on={{ onClick: handleToggleCompact }}
-					_tooltipAlign="right"
-				></KolButtonWcTag>
+				{/* `.kol-nav__toggle-button` stays a wrapper: the themes style its `.kol-button` as a descendant. */}
+				<div class="kol-nav__toggle-button">
+					<ButtonFC
+						{...getButtonFcProps('compact-toggle', {
+							_ariaControls: navId,
+							_ariaExpanded: !compact,
+							_icons: compact ? 'kolicon-chevron-right' : 'kolicon-chevron-left',
+							_hideLabel: true,
+							_label: compact ? translate('kol-nav-maximize') : translate('kol-nav-minimize'),
+							_on: { onClick: handleToggleCompact },
+							_tooltipAlign: 'right',
+						})}
+					/>
+				</div>
 			</div>
 		)}
 	</BemRootNodeFC>

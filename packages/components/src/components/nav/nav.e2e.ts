@@ -103,7 +103,7 @@ test.describe('kol-nav component', () => {
 			});
 			await page.waitForChanges();
 
-			const buttons = nav.locator('kol-button-wc button');
+			const buttons = nav.locator('.kol-nav__entry--button button');
 			await expect(buttons).toHaveCount(2);
 			await expect(buttons.first()).not.toBeDisabled();
 			await expect(buttons.nth(1)).toBeDisabled();

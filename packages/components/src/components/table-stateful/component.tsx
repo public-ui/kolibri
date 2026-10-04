@@ -371,6 +371,8 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	public componentDidRender(): void {
 		this.updateScrollbarState();
 		this.syncTableItems();
+		this.paginationItems.top?.sync();
+		this.paginationItems.bottom?.sync();
 	}
 
 	public disconnectedCallback(): void {

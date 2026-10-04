@@ -56,10 +56,10 @@
 			}
 		}
 
-		&__button--selected .kol-button {
+		&__button--selected.kol-button {
 			opacity: 1;
 
-			&__text {
+			.kol-button__text {
 				color: var(--color-light);
 				background-color: var(--color-primary);
 				border: 0;
