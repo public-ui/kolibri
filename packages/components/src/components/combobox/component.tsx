@@ -1,6 +1,5 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
 	AriaDetailsPropType,
@@ -29,6 +28,8 @@ import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
 
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
 import type { ComboboxApi } from '../../internal/functional-components/combobox/api';
 import { comboboxPropsConfig } from '../../internal/functional-components/combobox/api';
 import { BEM_CLASS_COMBOBOX__DELETE, ComboboxToggleFC } from '../../internal/functional-components/combobox/component';
@@ -68,11 +69,14 @@ export class KolCombobox
 {
 	@Element() protected readonly host?: HTMLKolComboboxElement;
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
-	private clearButtonRef?: HTMLKolButtonWcElement;
+	private readonly clearButton = createButtonItem(() => this.host);
 
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 
 	@State() public id = createUniqueId('combobox');
+
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
 
 	/** Whether the focus is inside the field; only `focusin` and `focusout` change it. */
 	@State() public inputHasFocus = false;
@@ -156,7 +160,13 @@ export class KolCombobox
 		this.filteredSuggestions = this.getRenderProp('suggestions');
 	}
 
+	public componentDidRender(): void {
+		this.syncFormField();
+		this.clearButton.syncListeners();
+	}
+
 	public disconnectedCallback(): void {
+		this.clearButton.destroy();
 		this.destroyFormField();
 	}
 
@@ -183,7 +193,8 @@ export class KolCombobox
 
 	protected handleConfirmKey(event: KeyboardEvent): void {
 		// On the clear button, Enter and Space trigger its native click, which must not be prevented.
-		if (this.clearButtonRef && event.composedPath().includes(this.clearButtonRef)) {
+		const clearButtonRoot = this.clearButton.getRootElement();
+		if (clearButtonRoot && event.composedPath().includes(clearButtonRoot)) {
 			return;
 		}
 
@@ -451,7 +462,7 @@ export class KolCombobox
 
 	public render(): JSX.Element {
 		const isDisabled = this.getRenderProp('disabled') === true;
-		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons'), disabled: isDisabled });
+		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
 
 		return (
 			<Host>
@@ -474,23 +485,28 @@ export class KolCombobox
 						<ListboxGroupFC block="kol-combobox">
 							<InputFC {...this.getInputProps()} />
 							{this.getRenderProp('value') && this.getRenderProp('hasClearButton') && (
-								<KolButtonWcTag
-									ref={(el) => (this.clearButtonRef = el)}
-									_icons="kolicon-cross"
-									_label={this.translateDeleteSelection}
-									_hideLabel
-									_variant="ghost"
-									_disabled={isDisabled}
-									data-testid="combobox-delete"
-									class={BEM_CLASS_COMBOBOX__DELETE}
-									hidden={isDisabled}
-									onBlur={this.stopClearButtonFocusEvent}
-									onFocus={this.stopClearButtonFocusEvent}
-									_on={{
-										onClick: () => {
-											this.clearSelection();
+								<ButtonFC
+									{...this.clearButton.getFcProps(
+										{
+											_icons: 'kolicon-cross',
+											_label: this.translateDeleteSelection,
+											_hideLabel: true,
+											_variant: 'ghost',
+											_disabled: isDisabled,
+											_on: {
+												onClick: () => {
+													this.clearSelection();
+												},
+											},
 										},
-									}}
+										{
+											class: BEM_CLASS_COMBOBOX__DELETE,
+											'data-testid': 'combobox-delete',
+											hidden: isDisabled,
+											onBlur: this.stopClearButtonFocusEvent,
+											onFocus: this.stopClearButtonFocusEvent,
+										},
+									)}
 								/>
 							)}
 							<ComboboxToggleFC disabled={isDisabled} handleClick={this.toggleListbox} />

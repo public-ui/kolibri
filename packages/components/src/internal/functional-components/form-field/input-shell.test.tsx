@@ -1,7 +1,6 @@
 import { h } from '@stencil/core';
 import { renderFunctionalComponentToSpecPage } from '../../../utils/testing';
 import { getInputAdornments } from './adornments';
-import { IconButtonFC } from './icon-button';
 import { InputFC } from './input';
 import { InputContainerFC } from './input-container';
 import { SuggestionsFC } from './suggestions';
@@ -50,26 +49,6 @@ describe('InputFC', () => {
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<div>
 				<InputFC id="field-nonce" {...props} />
-			</div>
-		));
-		expect(page.root).toMatchSnapshot();
-	});
-});
-
-describe('IconButtonFC', () => {
-	it('renders a button', async () => {
-		const page = await renderFunctionalComponentToSpecPage(() => (
-			<div>
-				<IconButtonFC componentName="button" label="Clear" icon="kolicon-cross" class="kol-input-container__smart-button" />
-			</div>
-		));
-		expect(page.root).toMatchSnapshot();
-	});
-
-	it('renders an icon', async () => {
-		const page = await renderFunctionalComponentToSpecPage(() => (
-			<div>
-				<IconButtonFC componentName="icon" label="Info" icon="kolicon-info" />
 			</div>
 		));
 		expect(page.root).toMatchSnapshot();

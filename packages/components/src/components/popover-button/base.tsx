@@ -10,8 +10,7 @@ import { createUniqueId } from '../../utils/dev.utils';
 import { BaseButtonWebComponent } from '../button/base';
 
 /**
- * Shared orchestrator implementation for the popover button elements: the public
- * `kol-popover-button` and the transitional `kol-popover-button-wc`.
+ * Orchestrator implementation of `kol-popover-button`.
  *
  * Extends the button orchestration (`BaseButtonWebComponent`) with the popover: the button's
  * click is reserved for toggling the popover, and the open state is derived from the native

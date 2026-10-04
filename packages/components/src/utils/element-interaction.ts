@@ -71,17 +71,6 @@ export function directFocus(refPropName: string): MethodDecorator_ {
 }
 
 /**
- * Method decorator for `click()` on WC (non-shadow) components.
- * @param refPropName - Class property holding the clickable CtaRef
- */
-export function directClick(refPropName: string): MethodDecorator_ {
-	return makeMethodDecorator((self) => {
-		const element = (self[refPropName] as CtaRef).el;
-		return element ? setClick(element) : Promise.resolve();
-	});
-}
-
-/**
  * Method decorator for `focus()` on shadow components.
  * Waits for theming before delegating focus to the ref element.
  * @param refPropName - Class property holding the focusable CtaRef

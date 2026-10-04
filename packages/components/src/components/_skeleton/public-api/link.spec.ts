@@ -1,11 +1,11 @@
 import type { PublicApiContract } from './contract';
-import { describePublicApiContract, extractFrom, findUndocumentedMembers } from './contract';
+import { describePublicApiContract } from './contract';
 
 /**
  * Pinned public API of `kol-link` — identical to the predecessor on the develop branch
  * (18 props + focus) except `_role`, which was removed by owner decision ("keine public
  * role nur an der FC"; fulfils the deprecation announced on develop). The role exists only
- * as an internal `LinkFC` render prop and as `_role` on the transitional `kol-link-wc`.
+ * as an internal `LinkFC` render prop.
  */
 const KOL_LINK_PUBLIC_API: PublicApiContract = {
 	_accessKey: {
@@ -123,15 +123,3 @@ const KOL_LINK_PUBLIC_API: PublicApiContract = {
 };
 
 describePublicApiContract({ tag: 'kol-link', component: 'link', pinnedApi: KOL_LINK_PUBLIC_API, schemaInterface: 'LinkProps' });
-
-describe('kol-link-wc transitional wrapper (internal contract for legacy consumers)', () => {
-	it('keeps the full predecessor surface: 21 props plus focus() and click()', () => {
-		const extracted = extractFrom('link', 'wc.tsx');
-		expect(extracted.filter((member) => member.kind === 'prop')).toHaveLength(21);
-		expect(extracted.filter((member) => member.kind === 'method').map((member) => member.name)).toEqual(['focus', 'click']);
-	});
-
-	it('documents every public member (custom-elements.json and docs-vscode are generated from prop.docs)', () => {
-		expect(findUndocumentedMembers('link', 'wc.tsx')).toEqual([]);
-	});
-});

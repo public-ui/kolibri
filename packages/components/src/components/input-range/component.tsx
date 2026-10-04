@@ -78,6 +78,9 @@ export class KolInputRange
 
 	@State() public id = createUniqueId('input-range');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	/** Whether `_value` was set as a string; `getValue()` and the events return the value in this type. */
@@ -154,6 +157,10 @@ export class KolInputRange
 		if (!this._value && this.rangeRef?.value) {
 			this._value = parseFloat(this.rangeRef.value);
 		}
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
 	}
 
 	public disconnectedCallback(): void {
@@ -247,7 +254,7 @@ export class KolInputRange
 		const shared = this.getSharedInputProps();
 		const { ariaDescribedBy, hasError } = this.getAria();
 		const ariaInvalid = hasError ? 'true' : undefined;
-		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons'), disabled });
+		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
 
 		return (
 			<Host>

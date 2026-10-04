@@ -224,8 +224,10 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 	protected getTextInputAdornments(endAdornment?: VNode | null): { startAdornment: VNode[]; endAdornment: VNode[] } {
 		return getInputAdornments({
 			icons: this.textShared.getRenderProp('icons'),
-			smartButton: this.textShared.getRenderProp('smartButton') as InternalButtonProps | undefined,
-			disabled: this.textShared.getRenderProp('disabled'),
+			smartButton: this.getSmartButtonFcProps(
+				this.textShared.getRenderProp('smartButton') as InternalButtonProps | undefined,
+				this.textShared.getRenderProp('disabled'),
+			),
 			endAdornment,
 		});
 	}

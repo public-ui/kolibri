@@ -1,12 +1,18 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import { KolPopoverButtonWcTag } from '../../../core/component-names';
 import { translate } from '../../../i18n';
-import type { FormFieldLabelInfoPopoverProps } from '../../../schema';
 import { buildBadgeTextString } from '../../../schema';
 import clsx from '../../../utils/clsx';
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
+import type { PopoverButtonFCProps } from '../popover-button/component';
+import { PopoverButtonFC } from '../popover-button/component';
 import { SpanFC } from '../span/component';
+
+/** The info popover of a form field label: the resolved popover button and the popover text. */
+export type FormFieldInfoPopover = {
+	popoverButton: PopoverButtonFCProps;
+	content: string;
+};
 
 export type FormFieldLabelFCProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement | HTMLLegendElement, 'id' | 'hidden' | 'htmlFor'>> & {
 	/** `legend` labels the fieldset of a radio group. */
@@ -21,7 +27,7 @@ export type FormFieldLabelFCProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement
 	baseClassName?: string;
 	showBadge?: boolean;
 	readOnly?: boolean;
-	infoPopover?: FormFieldLabelInfoPopoverProps;
+	infoPopover?: FormFieldInfoPopover;
 };
 
 /**
@@ -63,9 +69,13 @@ export const FormFieldLabelFC: FC<FormFieldLabelFCProps> = ({
 				</span>
 			)}
 			{!hasExpertSlot && infoPopover && (
-				<KolPopoverButtonWcTag _variant="ghost" {...infoPopover} _hideLabel _inline={true}>
-					<div class="kol-popover-button__popover--styled">{infoPopover._content}</div>
-				</KolPopoverButtonWcTag>
+				/* The span is the flex item of the label: it holds the inline-block popover button in a
+				   line box, which sets the height of the label row. */
+				<span>
+					<PopoverButtonFC {...infoPopover.popoverButton}>
+						<div class="kol-popover-button__popover--styled">{infoPopover.content}</div>
+					</PopoverButtonFC>
+				</span>
 			)}
 		</Component>
 	);

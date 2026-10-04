@@ -1,13 +1,13 @@
 import { h, type FunctionalComponent as FC, type VNode } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import type { FormFieldLabelInfoPopoverProps, LabelAlignPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../../schema';
+import type { LabelAlignPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../../schema';
 import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { TooltipFC } from '../tooltip/component';
 import { FormFieldHintFC } from './hint';
-import { FormFieldLabelFC, type FormFieldLabelFCProps } from './label';
+import { FormFieldLabelFC, type FormFieldInfoPopover, type FormFieldLabelFCProps } from './label';
 
 const fieldControlBem = bem.forBlock('kol-field-control');
 
@@ -17,7 +17,7 @@ export type FieldControlFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, '
 	hint?: string;
 	hideLabel?: boolean;
 	labelAlign?: LabelAlignPropType;
-	infoPopover?: FormFieldLabelInfoPopoverProps;
+	infoPopover?: FormFieldInfoPopover;
 	accessKey?: string;
 	shortKey?: string;
 	tooltipAlign?: TooltipAlignPropType;

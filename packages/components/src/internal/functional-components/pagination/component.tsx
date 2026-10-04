@@ -1,14 +1,17 @@
-import type { FunctionalComponent as FC } from '@stencil/core';
+import type { FunctionalComponent as FC, JSX } from '@stencil/core';
 import { h } from '@stencil/core';
 
-import { KolButtonWcTag, KolSelectWcTag } from '../../../core/component-names';
 import { translate } from '../../../i18n';
+import type { InternalButtonProps } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { nonce } from '../../../utils/dev.utils';
 import { BemRootNodeFC } from '../bem-root-node/component';
+import { ButtonFC } from '../button/component';
+import type { ButtonItemFcProps, ButtonItemRootAttributes } from '../button/item';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { PaginationApi } from './api';
 import { getPageCount, getPageItems, getVisibleRange } from './model';
+import type { PageSizeSelectInput } from './page-size-select';
 
 const paginationBem = bem.forBlock('kol-pagination');
 
@@ -32,19 +35,18 @@ export type PaginationFCProps = FunctionalComponentProps<PaginationApi> & {
 	 * re-render of the pagination does not re-render the navigation buttons.
 	 */
 	navigationCallbacks: Record<NavigationPosition, { onClick: (event: Event) => void }>;
+	/** `ButtonFC` props of the page or navigation button `key`; the pagination item keeps one button item per key. */
+	getButtonFcProps: (key: string, props: InternalButtonProps, rootAttributes?: ButtonItemRootAttributes) => ButtonItemFcProps;
+	/** The page size select; the pagination item keeps it while it is rendered. */
+	renderPageSizeSelect: (input: Omit<PageSizeSelectInput, 'on'>) => JSX.Element;
 };
 
-/**
- * The content of the pagination: the visible range, the navigation and the page size select. The page
- * and navigation buttons stay `kol-button-wc` and the select stays `kol-select-wc`, because the themes
- * select `.kol-pagination__button… .kol-button…` and `.kol-pagination__page-size-select
- * .kol-form-field-select` as ancestors.
- */
+/** The content of the pagination: the visible range, the navigation and the page size select. */
 export const PaginationContentFC: FC<PaginationFCProps> = ({
 	boundaryCount,
 	customClass,
+	getButtonFcProps,
 	handlePageClick,
-	handlePageSizeChange,
 	hasButtons,
 	label,
 	max,
@@ -52,6 +54,7 @@ export const PaginationContentFC: FC<PaginationFCProps> = ({
 	page,
 	pageSize,
 	pageSizeOptions,
+	renderPageSizeSelect,
 	siblingCount,
 	tooltipAlign,
 }) => {
@@ -59,16 +62,21 @@ export const PaginationContentFC: FC<PaginationFCProps> = ({
 	const { start, end } = getVisibleRange(page, pageSize, max);
 	const navigationButton = (position: NavigationPosition, icons: Record<string, string>, buttonLabel: string, disabled: boolean) => (
 		<li>
-			<KolButtonWcTag
-				class={paginationBem('button', { [position]: true })}
-				_customClass={customClass}
-				_disabled={disabled}
-				_icons={icons}
-				_hideLabel
-				_label={buttonLabel}
-				_on={navigationCallbacks[position]}
-				_tooltipAlign={tooltipAlign}
-			></KolButtonWcTag>
+			<ButtonFC
+				{...getButtonFcProps(
+					`navigation-${position}`,
+					{
+						_customClass: customClass,
+						_disabled: disabled,
+						_icons: icons,
+						_hideLabel: true,
+						_label: buttonLabel,
+						_on: navigationCallbacks[position],
+						_tooltipAlign: tooltipAlign,
+					},
+					{ class: paginationBem('button', { [position]: true }) },
+				)}
+			/>
 		</li>
 	);
 	const pageButton = (item: number, selected: boolean) => {
@@ -77,21 +85,26 @@ export const PaginationContentFC: FC<PaginationFCProps> = ({
 		return (
 			<li key={nonce()}>
 				{selected ? (
-					<KolButtonWcTag
-						aria-current="page"
-						class={`${paginationBem('button', { selected: true })} selected`}
-						_ariaDescription={ariaDescription}
-						_customClass={customClass}
-						_label={pageText}
-					></KolButtonWcTag>
+					<ButtonFC
+						{...getButtonFcProps(
+							`page-${item}`,
+							{ _ariaDescription: ariaDescription, _customClass: customClass, _label: pageText },
+							{ 'aria-current': 'page', class: `${paginationBem('button', { selected: true })} selected` },
+						)}
+					/>
 				) : (
-					<KolButtonWcTag
-						class={paginationBem('button', { numbers: true })}
-						_ariaDescription={ariaDescription}
-						_customClass={customClass}
-						_label={pageText}
-						_on={{ onClick: (event: Event) => handlePageClick(event, item) }}
-					></KolButtonWcTag>
+					<ButtonFC
+						{...getButtonFcProps(
+							`page-${item}`,
+							{
+								_ariaDescription: ariaDescription,
+								_customClass: customClass,
+								_label: pageText,
+								_on: { onClick: (event: Event) => handlePageClick(event, item) },
+							},
+							{ class: paginationBem('button', { numbers: true }) },
+						)}
+					/>
 				)}
 			</li>
 		);
@@ -126,13 +139,9 @@ export const PaginationContentFC: FC<PaginationFCProps> = ({
 		</nav>,
 		pageSizeOptions?.length > 0 && (
 			<div class="page-size">
-				<KolSelectWcTag
-					class={paginationBem('page-size-select')}
-					_label={translate('kol-entries-per-site')}
-					_options={pageSizeOptions}
-					_on={{ onChange: handlePageSizeChange }}
-					_value={pageSize}
-				/>
+				<div class={paginationBem('page-size-select')}>
+					{renderPageSizeSelect({ label: translate('kol-entries-per-site'), options: pageSizeOptions, value: pageSize })}
+				</div>
 			</div>
 		),
 	];

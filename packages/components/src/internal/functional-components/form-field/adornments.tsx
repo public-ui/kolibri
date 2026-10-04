@@ -1,13 +1,14 @@
 import { h } from '@stencil/core';
 import type { VNode } from '@stencil/core/internal';
-import type { IconOrIconClass, InternalButtonProps, KoliBriHorizontalIcons } from '../../../schema';
+import type { IconOrIconClass, KoliBriHorizontalIcons } from '../../../schema';
+import { ButtonFC } from '../button/component';
+import type { ButtonItemFcProps } from '../button/item';
 import { IconFC } from '../icon/component';
-import { IconButtonFC } from './icon-button';
 
 type InputAdornmentsOptions = {
 	icons?: KoliBriHorizontalIcons;
-	smartButton?: InternalButtonProps;
-	disabled?: boolean;
+	/** The smart button, resolved by `getSmartButtonFcProps` of the form field base. */
+	smartButton?: ButtonItemFcProps;
 	/** Field-specific content before the left icon, e.g. the step-down button of `kol-input-number`. */
 	startAdornment?: VNode | null;
 	/** Field-specific content after the smart button and the right icon, e.g. the clear button. */
@@ -32,16 +33,9 @@ const renderIcon = (icon?: IconOrIconClass): VNode | null => {
 export const getInputAdornments = ({
 	icons,
 	smartButton,
-	disabled,
 	startAdornment,
 	endAdornment,
 }: InputAdornmentsOptions): { startAdornment: VNode[]; endAdornment: VNode[] } => ({
 	startAdornment: [startAdornment ?? null, renderIcon(icons?.left)].filter(Boolean) as VNode[],
-	endAdornment: [
-		typeof smartButton === 'object' && smartButton !== null ? (
-			<IconButtonFC componentName="button" class="kol-input-container__smart-button" {...smartButton} hideLabel={true} disabled={disabled} />
-		) : null,
-		renderIcon(icons?.right),
-		endAdornment ?? null,
-	].filter(Boolean) as VNode[],
+	endAdornment: [smartButton ? <ButtonFC {...smartButton} /> : null, renderIcon(icons?.right), endAdornment ?? null].filter(Boolean) as VNode[],
 });

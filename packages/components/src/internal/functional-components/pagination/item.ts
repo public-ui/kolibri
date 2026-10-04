@@ -1,5 +1,12 @@
 import { translate } from '../../../i18n';
-import type { CustomClassPropType, KoliBriPaginationButtonCallbacks, PaginationHasButton, Stringified, TooltipAlignPropType } from '../../../schema';
+import type {
+	CustomClassPropType,
+	InternalButtonProps,
+	KoliBriPaginationButtonCallbacks,
+	PaginationHasButton,
+	Stringified,
+	TooltipAlignPropType,
+} from '../../../schema';
 import { STATE_CHANGE_EVENT } from '../../../schema';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import { addNavLabel, removeNavLabel } from '../../../utils/unique-nav-labels';
@@ -16,13 +23,20 @@ import {
 	siblingCountProp,
 	tooltipAlignProp,
 } from '../../props';
+import type { ButtonItem, ButtonItemFcProps, ButtonItemRootAttributes } from '../button/item';
+import { createButtonItem } from '../button/item';
+import { createItemPool } from '../item-pool';
 import { buildDefaultPropsFromConfig } from '../props-from-config';
 import { paginationPropsConfig } from './api';
 import type { PaginationFCProps } from './component';
 import { clampPage, getPageCount, resolvePageSize } from './model';
+import { PageSizeSelect } from './page-size-select';
 
 /** The render props of the pagination, as `PaginationFC` receives them. */
-export type PaginationRenderProps = Omit<PaginationFCProps, 'handlePageClick' | 'handlePageSizeChange' | 'navigationCallbacks'>;
+export type PaginationRenderProps = Omit<
+	PaginationFCProps,
+	'getButtonFcProps' | 'handlePageClick' | 'handlePageSizeChange' | 'navigationCallbacks' | 'renderPageSizeSelect'
+>;
 
 /** Where the item keeps its render props; `kol-pagination` passes its own render props. */
 export type PaginationPropsStore = {
@@ -87,16 +101,21 @@ export type PaginationItem = {
 	 * render: a value passed again unchanged is not applied, even if the item changed it meanwhile.
 	 */
 	update: (input: PaginationInput) => void;
-	/** Fully resolved props for `PaginationFC` and `PaginationContentFC`. */
+	/** Fully resolved props for `PaginationFC` and `PaginationContentFC`. Call once per render. */
 	getFcProps: () => PaginationFCProps;
-	/** Removes the navigation label from the register of unique labels. */
+	/** Syncs the buttons and the page size select of the last render. Call from `componentDidRender`. */
+	sync: () => void;
+	/** Removes the navigation label from the register of unique labels and tears down the buttons and the page size select. */
 	destroy: () => void;
 };
 
 export type PaginationItemOptions = {
-	/** Element the `click`, `changepage` and `changepagesize` events are dispatched on. */
+	/**
+	 * Element the `click`, `changepage` and `changepagesize` events and the events of the page size select
+	 * are dispatched on; also the element the feature flags of the buttons are resolved against.
+	 */
 	getEventTarget: () => HTMLElement | undefined;
-	/** Renders the embedding element again after a page size was chosen in the select. */
+	/** Renders the embedding element again after a page size was chosen or the state of the select changed. */
 	requestRender: () => void;
 	/** Keeps the render props; without it the item keeps them itself. */
 	store?: PaginationPropsStore;
@@ -125,6 +144,18 @@ const createLocalStore = (): PaginationPropsStore => {
 export const createPaginationItem = (options: PaginationItemOptions): PaginationItem => {
 	const store = options.store ?? createLocalStore();
 	const translatePagination = translate('kol-pagination');
+	const buttons = createItemPool<ButtonItem>(
+		() => createButtonItem(options.getEventTarget),
+		(button) => button.syncListeners(),
+		(button) => button.destroy(),
+	);
+	const getButtonFcProps = (key: string, props: InternalButtonProps, rootAttributes?: ButtonItemRootAttributes): ButtonItemFcProps =>
+		buttons.get(key).getFcProps(props, rootAttributes);
+	const pageSizeSelects = createItemPool<PageSizeSelect>(
+		() => new PageSizeSelect(options.getEventTarget, options.requestRender),
+		(select) => select.sync(),
+		(select) => select.destroy(),
+	);
 	let pageSizeValue: number | undefined = 1;
 	let applied: PaginationInput = {};
 
@@ -193,6 +224,10 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 			});
 		}
 	};
+
+	const pageSizeSelectCallbacks = { onChange: handlePageSizeChange };
+	const renderPageSizeSelect: PaginationFCProps['renderPageSizeSelect'] = (input) =>
+		pageSizeSelects.get('page-size').render({ ...input, on: pageSizeSelectCallbacks });
 
 	/** The targets are read when the button is clicked, from the current page and number of pages. */
 	const navigationCallbacks: PaginationFCProps['navigationCallbacks'] = {
@@ -270,23 +305,37 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 				}
 			}
 		},
-		getFcProps: () => ({
-			boundaryCount: store.get('boundaryCount'),
-			customClass: store.get('customClass'),
-			handlePageClick,
-			handlePageSizeChange,
-			hasButtons: store.get('hasButtons'),
-			label: store.get('label'),
-			max: store.get('max'),
-			navigationCallbacks,
-			on: store.get('on'),
-			page: store.get('page'),
-			pageSize: store.get('pageSize'),
-			pageSizeOptions: store.get('pageSizeOptions'),
-			siblingCount: store.get('siblingCount'),
-			tooltipAlign: store.get('tooltipAlign'),
-		}),
-		destroy: () => removeNavLabel(store.get('label')),
+		getFcProps: () => {
+			buttons.beginRender();
+			pageSizeSelects.beginRender();
+			return {
+				boundaryCount: store.get('boundaryCount'),
+				customClass: store.get('customClass'),
+				getButtonFcProps,
+				handlePageClick,
+				handlePageSizeChange,
+				hasButtons: store.get('hasButtons'),
+				label: store.get('label'),
+				max: store.get('max'),
+				navigationCallbacks,
+				on: store.get('on'),
+				page: store.get('page'),
+				pageSize: store.get('pageSize'),
+				pageSizeOptions: store.get('pageSizeOptions'),
+				renderPageSizeSelect,
+				siblingCount: store.get('siblingCount'),
+				tooltipAlign: store.get('tooltipAlign'),
+			};
+		},
+		sync: () => {
+			buttons.endRender();
+			pageSizeSelects.endRender();
+		},
+		destroy: () => {
+			removeNavLabel(store.get('label'));
+			buttons.destroy();
+			pageSizeSelects.destroy();
+		},
 	};
 
 	const appliers: { [K in keyof PaginationInput]-?: (value: PaginationInput[K]) => void } = {

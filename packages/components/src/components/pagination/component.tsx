@@ -184,6 +184,10 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 		});
 	}
 
+	public componentDidRender(): void {
+		this.item.sync();
+	}
+
 	public disconnectedCallback(): void {
 		this.item.destroy();
 	}

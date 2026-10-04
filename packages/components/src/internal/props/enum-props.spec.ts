@@ -28,7 +28,7 @@ import { spinVariantOptions, variantSpinProp } from './variant-spin';
  *
  * The kept-value behavior is only observable on a *change* from a valid to an invalid value —
  * on first assignment the previous value is the default, which equals the old degraded result.
- * `kol-link` and `kol-link-wc` share these definitions, so this is their contract too.
+ * `kol-link` and `kol-link-button` share these definitions, so this is their contract too.
  */
 type EnumPropDefinition = {
 	readonly propName: string;

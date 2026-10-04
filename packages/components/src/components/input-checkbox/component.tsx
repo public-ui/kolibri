@@ -68,6 +68,9 @@ export class KolInputCheckbox
 
 	@State() public id = createUniqueId('input-checkbox');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	public constructor() {
@@ -140,6 +143,10 @@ export class KolInputCheckbox
 		this.watchValue(this._value);
 		this.watchVariant(this._variant);
 		this.watchLabelAlign(this._labelAlign);
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
 	}
 
 	public disconnectedCallback(): void {
@@ -272,7 +279,7 @@ export class KolInputCheckbox
 						hint={this.getRenderProp('hint')}
 						hideLabel={this.getRenderProp('hideLabel')}
 						labelAlign={this.getRenderProp('labelAlign')}
-						infoPopover={this.getRenderProp('infoPopover')}
+						infoPopover={this.getInfoPopover()}
 						accessKey={accessKey}
 						shortKey={shortKey}
 						tooltipAlign={this.getRenderProp('tooltipAlign')}

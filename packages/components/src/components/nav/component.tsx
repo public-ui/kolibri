@@ -1,15 +1,30 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, forceUpdate, h, Host, Prop, State, Watch } from '@stencil/core';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { ButtonItem, ButtonItemFcProps } from '../../internal/functional-components/button/item';
+import { createButtonItem } from '../../internal/functional-components/button/item';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import { createItemPool } from '../../internal/functional-components/item-pool';
+import type { LinkFCProps } from '../../internal/functional-components/link/component';
+import type { LinkItem } from '../../internal/functional-components/link/item';
+import { createLinkItem } from '../../internal/functional-components/link/item';
+import type { EmbeddedLinkProps } from '../../internal/functional-components/link/resolve-props';
 import type { NavApi } from '../../internal/functional-components/nav/api';
 import { navPropsConfig } from '../../internal/functional-components/nav/api';
 import { NavFC } from '../../internal/functional-components/nav/component';
 import type { NavChildren } from '../../internal/functional-components/nav/model';
 import { getInitiallyExpanded, toggleExpanded } from '../../internal/functional-components/nav/model';
 import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp, labelWithExpertSlotProp, navLinksProp } from '../../internal/props';
-import type { ButtonOrLinkOrTextWithChildrenProps, CollapsiblePropType, HideLabelPropType, LabelPropType, NavProps, Stringified } from '../../schema';
+import type {
+	ButtonOrLinkOrTextWithChildrenProps,
+	CollapsiblePropType,
+	HideLabelPropType,
+	InternalButtonProps,
+	LabelPropType,
+	NavProps,
+	Stringified,
+} from '../../schema';
 import { a11yHintLabelingLandmarks, devHint } from '../../schema';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
@@ -44,9 +59,36 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 		this.watchLinks(this._links);
 	}
 
+	public componentDidRender(): void {
+		this.buttonItems.endRender();
+		this.linkItems.endRender();
+	}
+
 	public disconnectedCallback(): void {
 		removeNavLabel(this.getRenderProp('label'));
+		this.buttonItems.destroy();
+		this.linkItems.destroy();
 	}
+
+	// --- Embedded buttons and links ---
+
+	/** The entry buttons and the compact toggle, one item per key the nav FC renders. */
+	private readonly buttonItems = createItemPool<ButtonItem>(
+		() => createButtonItem(() => this.host),
+		(item) => item.syncListeners(),
+		(item) => item.destroy(),
+	);
+
+	/** The entry links, one item per key the nav FC renders. */
+	private readonly linkItems = createItemPool<LinkItem>(
+		() => createLinkItem(() => forceUpdate(this)),
+		(item) => item.syncListeners(),
+		(item) => item.destroy(),
+	);
+
+	private readonly getButtonFcProps = (key: string, props: InternalButtonProps): ButtonItemFcProps => this.buttonItems.get(key).getFcProps(props);
+
+	private readonly getLinkFcProps = (key: string, props: EmbeddedLinkProps): LinkFCProps => this.linkItems.get(key).getFcProps(props);
 
 	// --- Helpers ---
 
@@ -76,12 +118,16 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 	// --- Render ---
 
 	public render(): JSX.Element {
+		this.buttonItems.beginRender();
+		this.linkItems.beginRender();
 		return (
 			<Host>
 				<NavFC
 					collapsible={this.getRenderProp('collapsible')}
 					compact={this.compact}
 					expandedChildren={this.expandedChildren}
+					getButtonFcProps={this.getButtonFcProps}
+					getLinkFcProps={this.getLinkFcProps}
 					handleToggleCompact={this.handleToggleCompact}
 					handleToggleExpansion={this.handleToggleExpansion}
 					hasCompactButton={this.getRenderProp('hasCompactButton')}
