@@ -6,8 +6,8 @@ Beschreibt ein analoges Delegationskonzept zu Focus: Ein Klick auf den KoliBri-H
 
 Dieses Dokument beschreibt das Click-Delegationskonzept sowie noch geplante Erweiterungen; Teile sind bereits implementiert, weitere folgen sukzessive.
 
-- Ist: Für Komponenten mit `delegateClick/setClick` und `@Method() click()` ist die Click-Delegation vom Host auf das primäre Innenelement bereits umgesetzt.
-- Soll: Für alle (noch nicht migrierten) interaktiven Host-Elemente soll wie bei `focus()` eine zentrale Delegate-Strategie für `click` bereitgestellt werden.
+- Ist: Komponenten mit `@Method() click()` delegieren den Klick über den Decorator `@delegateClick('ctaRef')` (`packages/components/src/utils/element-interaction.ts`) mit `delegateClick`/`setClick` (`packages/components/src/utils/element-click.ts`) auf ihr primäres Innenelement.
+- Soll: Ein Reentrancy-Schutz gegen intern erneut entstehende Click-Events (siehe Kernidee 3).
 
 ## Ziel
 
@@ -15,46 +15,31 @@ Wenn ein Konsument auf das Host-Element klickt (z. B. `kol-button`), soll nicht 
 
 Beispiele:
 
-- `kol-button` -> primaer: `<button>` in `kol-button-wc`
-- `kol-link` -> primaer: `<a>` in `kol-link-wc`
-- `kol-input-text` -> primaer: `<input>`
+- `kol-button` -> primaer: `<button class="kol-button__interactive-element">` im Shadow DOM
+- `kol-link-button` -> primaer: `<a class="kol-link__interactive-element">` im Shadow DOM
+- `kol-input-text` -> primaer: `<input>` im Shadow DOM
 
 ## Architektur
 
 ### Delegationsfluss (analog zu Focus)
 
-Variante A: Shadow -> Light DOM WC -> HTML5-Element
+Die Functional Component einer Komponente rendert das primaere HTML5-Element direkt in den Shadow DOM der Komponente. Die Delegation hat deshalb genau eine Stufe:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
 │ Shadow Component: kol-button (shadow: true)            │
-│ @Method click() -> delegateClick(host, () => setClick(wc))
+│ @Method() @delegateClick('ctaRef') click()             │
 └─────────────────────────┬───────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│ Light DOM Component: kol-button-wc (shadow: false)     │
-│ click() -> setClick(buttonRef)                          │
-└─────────────────────────┬───────────────────────────────┘
-                          ↓
+                          ↓ wartet auf data-themed, dann setClick(ctaRef.el)
 ┌─────────────────────────────────────────────────────────┐
 │ HTML5 Element: <button>                                 │
-│ tatsächlich aktiviert (native click action)            │
+│ tatsaechlich aktiviert (native click action)           │
 └─────────────────────────────────────────────────────────┘
 ```
 
-Variante B: Shadow -> HTML5-Element direkt
+### Eingebettete Komponenten
 
-```
-┌─────────────────────────────────────────────────────────┐
-│ Shadow Component: kol-input-text (shadow: true)        │
-│ @Method click() -> delegateClick(host, () => setClick(input))
-└─────────────────────────┬───────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│ HTML5 Element: <input>                                  │
-│ tatsaechlich aktiviert                                  │
-└─────────────────────────────────────────────────────────┘
-```
+Rendert eine Komponente eine andere Komponente in ihrem Shadow DOM (z. B. die Buttons von `kol-pagination`), dann rendert sie deren Functional Component ueber ein Item (`createButtonItem`, `createLinkItem`, …, siehe [ARC42 – Embedded Components (Items)](../packages/components/src/components/_skeleton/ARC42.md#embedded-components-items)). Ein eingebetteter Button ist kein eigenes Element und hat keine eigene `click()`-Methode; das `click()` der einbettenden Komponente zielt auf deren eigenes primaeres Element.
 
 ## Kernideen
 
@@ -74,13 +59,11 @@ Das waere aber aus UX- und Test-Sicht nicht authentisch:
 
 Deshalb gilt analog zu Focus: Click-Delegation darf erst starten, wenn `data-themed` gesetzt ist.
 
-## Utility Functions (Vorschlag)
+## Utility Functions
 
-Datei (neu): `packages/components/src/utils/element-click.ts`
+### `delegateClick(host, callback)` — `packages/components/src/utils/element-click.ts`
 
-### `delegateClick(host, callback)`
-
-Verantwortlich für Shadow Components (`shadow: true`). Wartet zwingend auf Theme-Readiness und führt dann die eigentliche Klick-Aktion aus.
+Wartet zwingend auf Theme-Readiness und fuehrt dann die eigentliche Klick-Aktion aus.
 
 ```typescript
 export async function delegateClick(host: HTMLElement, callback: () => Promise<void>): Promise<void> {
@@ -97,9 +80,9 @@ export async function delegateClick(host: HTMLElement, callback: () => Promise<v
 }
 ```
 
-### `setClick(element)`
+### `setClick(element)` — `packages/components/src/utils/element-click.ts`
 
-Fuehrt den nativen Klick auf dem Ziel-Element aus und validiert, dass die Aktivierung erfolgt ist.
+Fuehrt den nativen Klick auf dem Ziel-Element aus und wiederholt ihn pro Animation Frame, solange das Element noch nicht sichtbar ist.
 
 ```typescript
 export async function setClick(element: HTMLElement): Promise<void> {
@@ -114,26 +97,25 @@ export async function setClick(element: HTMLElement): Promise<void> {
 }
 ```
 
-### `isElementVisible(element)`
+### `isElementVisible(element)` (intern)
 
-Prueft, ob das Element sichtbar ist (Groesse > 0). Dies stellt sicher, dass das Element vor dem Klick vorhanden und sichtbar ist.
+Prueft ueber `getBoundingClientRect()`, ob das Element sichtbar ist (Breite und Hoehe > 0).
 
-### `waitForThemed(host)`
+### `waitForThemed(host)` — `packages/components/src/utils/element-themed.ts`
 
-Kann 1:1 aus dem Focus-Utility wiederverwendet werden.
+Wird gemeinsam mit der Focus-Delegation genutzt; Timeout nach 5000 ms.
 
 ### Konstanten
 
 ```typescript
 const MAX_CLICK_ATTEMPTS = 3;
-const MAX_TIMEOUT_DURATION = 5000;
 ```
 
 ## Komponentenregeln
 
 ### Interface
 
-Alle klickbaren Komponenten implementieren das `ClickableElement`-Interface aus `packages/components/src/utils/element-click.ts`:
+Alle klickbaren Komponenten implementieren das `ClickableElement`-Interface aus `packages/components/src/schema/interfaces/ClickableElement.ts`:
 
 ```typescript
 export interface ClickableElement {
@@ -154,51 +136,37 @@ public async click(): Promise<void> {
 
 Damit erzwingen wir API-Homogenitaet analog zum HTML-Standard.
 
-### Regel 1: Shadow Component (`shadow: true`)
+### Regel 1: Delegation ueber den Decorator
 
-Der Host delegiert nach innen via `delegateClick`:
+Das primaere Element haelt ein `CtaRef` aus `createCtaRef()`, die Methode entsteht ueber `@delegateClick`:
 
 ```typescript
 @Component({ tag: 'kol-button', shadow: true })
-export class KolButton implements ClickableElement {
-	@Element() private readonly host?: HTMLKolButtonElement;
-	private buttonWcRef?: HTMLKolButtonWcElement;
+export class KolButton extends BaseButtonWebComponent implements ButtonProps, ClickableElement {
+	@Element() protected readonly host?: HTMLKolButtonElement;
+
+	// In der Basisklasse: protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
+	// Die Functional Component setzt ihn am nativen Element: <button ref={ctaRef} …>
 
 	@Method()
-	public async click(): Promise<void> {
-		return delegateClick(this.host!, () => setClick(this.buttonWcRef!));
-	}
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 }
 ```
 
-Hinweis:
+Hinweise:
 
 - `delegateClick` wartet zwingend auf `data-themed` vor der Klick-Delegation, um konsistentes visuelles Feedback zu sichern.
+- Liefert das Praedikat von `createCtaRef(isInactive)` `true`, liest sich `ctaRef.el` als `undefined` und `click()` tut nichts, wie bei einem nativ deaktivierten Control.
 
-### Regel 2: Light DOM Component (`shadow: false`)
-
-Kein `delegateClick` notwendig. Nur `setClick` auf dem primaeren HTML-Element:
-
-```typescript
-@Component({ tag: 'kol-button-wc', shadow: false })
-export class KolButtonWc implements ClickableElement {
-	private buttonRef?: HTMLButtonElement;
-
-	@Method()
-	public async click(): Promise<void> {
-		return setClick(this.buttonRef!);
-	}
-}
-```
-
-### Regel 3: Primaeres Ziel je Komponente festlegen
+### Regel 2: Primaeres Ziel je Komponente festlegen
 
 Jede interaktive Komponente dokumentiert genau ein primaeres Klickziel:
 
 - `kol-button`: interner `<button>`
 - `kol-link`: interner `<a>`
 - `kol-input-*`: interner `<input>` bzw. `<textarea>`
-- `kol-select`: interner triggernder Button/Control
+- `kol-combobox`: interner `<input>`
 
 ## Event-Semantik
 

@@ -1,10 +1,10 @@
 # Focus Propagation Concept
 
-Beschreibt, wie der Focus durch die KoliBri-Komponentenschichten delegiert wird: Shadow DOM → (optional Light DOM) → HTML5-Element.
+Beschreibt, wie der Focus von einer KoliBri-Komponente an das fokussierbare HTML5-Element in ihrem Shadow DOM delegiert wird.
 
 ## Überblick
 
-KoliBri Web Components verwenden Shadow DOM für Style-Isolation. Da der Browser fokussierbare Elemente innerhalb eines Shadow DOM nicht direkt ansteuern kann, muss der Focus programmatisch von der öffentlichen Shadow-Komponente an das tatsächlich fokussierbare HTML5-Element weitergeleitet werden.
+KoliBri Web Components verwenden Shadow DOM für Style-Isolation. Ein `focus()` auf dem Host-Element fokussiert nicht automatisch das innere interaktive Element, deshalb leitet die Komponente den Focus programmatisch an das tatsächlich fokussierbare HTML5-Element weiter.
 
 Die zentrale Herausforderung: Bevor der Focus gesetzt werden kann, müssen die Adopted Style Sheets geladen und angewendet sein. Ohne diese Absicherung kann es zu Race Conditions kommen — der Focus wird auf ein Element gesetzt, das noch nicht vollständig gerendert ist.
 
@@ -12,42 +12,25 @@ Technisch kann ein früher `focus()` im Browser teilweise trotzdem funktionieren
 
 ## Architektur
 
-### Zwei Varianten der Focus-Delegation
-
-Es gibt zwei Varianten, je nach Komponentenaufbau:
-
-**Variante A: Shadow → Light DOM WC → HTML5-Element** (z. B. `kol-button`)
+Die Functional Component einer Komponente rendert das fokussierbare HTML5-Element direkt in den Shadow DOM der Komponente. Die Delegation hat deshalb genau eine Stufe:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
 │ Shadow Component: kol-button (shadow: true)             │
-│ focus() → delegateFocus(host, () => setFocus(wcRef))    │
+│ @Method() @delegateFocus('ctaRef') focus()              │
 └─────────────────────────┬───────────────────────────────┘
-                          ↓
+                          ↓ wartet auf data-themed, dann setFocus(ctaRef.el)
 ┌─────────────────────────────────────────────────────────┐
-│ Light DOM Component: kol-button-wc (shadow: false)      │
-│ focus() → setFocus(buttonRef)                           │
-└─────────────────────────┬───────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│ HTML5 Element: <button>                                 │
+│ HTML5 Element: <button class="kol-button__interactive-element"> │
 │ Tatsächlich fokussierbar                                │
 └─────────────────────────────────────────────────────────┘
 ```
 
-**Variante B: Shadow → HTML5-Element direkt** (z. B. `kol-input-text`)
+Dasselbe gilt für alle anderen interaktiven Komponenten, z. B. `kol-link` (`<a>`), `kol-input-text` (`<input>`) oder `kol-select` (`<select>`).
 
-```
-┌─────────────────────────────────────────────────────────┐
-│ Shadow Component: kol-input-text (shadow: true)         │
-│ focus() → delegateFocus(host, () => setFocus(inputRef)) │
-└─────────────────────────┬───────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│ HTML5 Element: <input>                                  │
-│ Tatsächlich fokussierbar                                │
-└─────────────────────────────────────────────────────────┘
-```
+### Eingebettete Komponenten
+
+Rendert eine Komponente eine andere Komponente in ihrem Shadow DOM (z. B. die Sortier-Buttons von `kol-table-stateless` oder die Buttons von `kol-pagination`), dann rendert sie deren Functional Component über ein Item (`createButtonItem`, `createLinkItem`, …, siehe [ARC42 – Embedded Components (Items)](../packages/components/src/components/_skeleton/ARC42.md#embedded-components-items)). Ein eingebetteter Button ist kein eigenes Element und hat kein eigenes `focus()`. Der Browser fokussiert sein natives `<button>` direkt, per Tab-Navigation oder Klick. Das `focus()` der einbettenden Komponente zielt auf deren eigenes primäres Element.
 
 ### Das `data-themed`-Attribut
 
@@ -61,11 +44,9 @@ Das Theme-System setzt das `data-themed`-Attribut auf Shadow-Komponenten, sobald
 
 ## Utility Functions
 
-Datei: `packages/components/src/utils/element-focus.ts`
+### `delegateFocus(host, callback)` — `packages/components/src/utils/element-focus.ts`
 
-### `delegateFocus(host, callback)`
-
-Zentrale Focus-Delegations-Funktion für **Shadow Components** (`shadow: true`). Wartet auf die Theme-Bereitschaft des Host-Elements und führt dann die Focus-Callback-Funktion aus.
+Zentrale Focus-Delegations-Funktion für Shadow Components. Wartet auf die Theme-Bereitschaft des Host-Elements und führt dann die Focus-Callback-Funktion aus.
 
 ```typescript
 export async function delegateFocus(host: HTMLElement, callback: () => Promise<void>): Promise<void> {
@@ -84,7 +65,7 @@ export async function delegateFocus(host: HTMLElement, callback: () => Promise<v
 
 **Parameter:**
 
-- `host` — Das Shadow Component Host-Element (`this.host!`)
+- `host` — Das Host-Element der Komponente
 - `callback` — Async Funktion, die `setFocus()` auf dem Ziel-Element aufruft
 
 **Verhalten:**
@@ -96,16 +77,16 @@ export async function delegateFocus(host: HTMLElement, callback: () => Promise<v
 
 Die Wartephase ist nicht nur technisch motiviert, sondern auch eine Qualitätsgrenze: Sie verhindert, dass Focus-Interaktionen in Tests oder in schneller Initialisierung auf UI-Zuständen stattfinden, die ein Nutzer so noch nicht sieht.
 
-### `setFocus(element)`
+### `setFocus(element, options?)` — `packages/components/src/utils/element-focus.ts`
 
-Fokussiert ein HTML-Element durch wiederholte Versuche pro Animation Frame. Wird sowohl in Shadow- als auch in Light-DOM-Komponenten verwendet.
+Fokussiert ein HTML-Element durch wiederholte Versuche pro Animation Frame (vereinfacht dargestellt):
 
 ```typescript
 export async function setFocus(element: HTMLElement): Promise<void> {
 	let attempts = 0;
 	do {
 		if (element) {
-			element.focus();
+			element.focus({ preventScroll: true });
 		}
 		await new Promise((r) => requestAnimationFrame(r));
 		attempts++;
@@ -118,6 +99,8 @@ export async function setFocus(element: HTMLElement): Promise<void> {
 - Ruft `element.focus()` auf und prüft pro Animation Frame, ob das Element fokussiert ist
 - Maximal `MAX_FOCUS_ATTEMPTS` (10) Versuche
 - Nutzt `isActiveElement()` für korrekte Focus-Erkennung innerhalb von Shadow DOMs
+- Der Browser scrollt beim Fokussieren nicht (`preventScroll`). Enthalten die `KolFocusOptions` `behavior`, `block` oder `inline`, scrollt `setFocus` das Element danach selbst per `scrollIntoView`.
+- `afterFocus` wird aufgerufen, sobald das Element fokussiert ist, bei `behavior: 'smooth'` erst nach dem Ende des Scrollens
 
 ### `isActiveElement(element)` (intern)
 
@@ -135,158 +118,58 @@ function isActiveElement(element: HTMLElement): boolean {
 
 **Warum nötig:** `document.activeElement` zeigt bei fokussierten Elementen innerhalb eines Shadow DOM nur den Shadow Host, nicht das tatsächlich fokussierte Element. Daher wird `shadowRoot.activeElement` geprüft.
 
-### `waitForThemed(host)` (intern)
+### `waitForThemed(host)` — `packages/components/src/utils/element-themed.ts`
 
 Wartet per MutationObserver darauf, dass das `data-themed`-Attribut auf dem Host-Element gesetzt wird.
-
-```typescript
-function waitForThemed(host: HTMLElement): Promise<void> {
-	return new Promise<void>((resolve, reject) => {
-		const observer = new MutationObserver(() => {
-			if (host.hasAttribute('data-themed')) {
-				clearTimeout(timeoutId);
-				observer.disconnect();
-				resolve();
-			}
-		});
-
-		const timeoutId = setTimeout(() => {
-			observer.disconnect();
-			reject(new Error('Timeout waiting for data-themed attribute'));
-		}, MAX_TIMEOUT_DURATION);
-
-		observer.observe(host, {
-			attributes: true,
-			attributeFilter: ['data-themed'],
-		});
-	});
-}
-```
 
 **Verhalten:**
 
 - Beobachtet Attribut-Änderungen auf dem Host-Element
-- Resolved sofort, wenn `data-themed` gesetzt wird
+- Resolved sofort, wenn `data-themed` bereits gesetzt ist oder gesetzt wird
 - Timeout nach `MAX_TIMEOUT_DURATION` (5000 ms) mit Error
-
-### Konstanten
-
-```typescript
-const MAX_FOCUS_ATTEMPTS = 10;
-const MAX_TIMEOUT_DURATION = 5000;
-```
 
 ## Umsetzung in Komponenten
 
 ### Interface
 
-Alle fokussierbaren Komponenten implementieren das `FocusableElement`-Interface:
+Alle fokussierbaren Komponenten implementieren das `FocusableElement`-Interface (`packages/components/src/schema/interfaces/FocusableElement.ts`):
 
 ```typescript
 export interface FocusableElement {
-	focus(): Promise<void>;
+	focus(options?: KolFocusOptions): Promise<void>;
 }
 ```
 
-### Regel 1: Shadow Component (`shadow: true`)
+### Ref und Decorator
 
-**Immer** `delegateFocus()` mit `setFocus()` verwenden.
-
-#### Variante A: Mit innerem WC-Element
-
-Wenn die Shadow-Komponente eine Light-DOM-Komponente (`-wc`) rendert:
+Das Ziel-Element hält ein `CtaRef` aus `createCtaRef()`; die öffentliche Methode entsteht über einen Method-Decorator aus `packages/components/src/utils/element-interaction.ts`:
 
 ```typescript
 @Component({ tag: 'kol-button', shadow: true })
-export class KolButton implements ButtonProps, FocusableElement {
-	@Element() private readonly host?: HTMLKolButtonElement;
-	private buttonWcRef?: HTMLKolButtonWcElement;
+export class KolButton extends BaseButtonWebComponent implements ButtonProps, FocusableElement {
+	@Element() protected readonly host?: HTMLKolButtonElement;
 
-	private readonly setButtonWcRef = (ref?: HTMLKolButtonWcElement) => {
-		this.buttonWcRef = ref;
-	};
+	// In der Basisklasse: protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
+	// Die Functional Component setzt ihn am nativen Element: <button ref={ctaRef} …>
 
 	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.buttonWcRef!));
-	}
-
-	public render(): JSX.Element {
-		return (
-			<KolButtonWcTag ref={this.setButtonWcRef} /* ...props */>
-				<slot name="expert" slot="expert"></slot>
-			</KolButtonWcTag>
-		);
-	}
+	@delegateFocus('ctaRef')
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 }
 ```
 
-Weitere Beispiele: `kol-link`, `kol-button-link`, `kol-link-button`, `kol-select`, `kol-accordion`, `kol-details`
+`createCtaRef(isInactive?)` nimmt optional ein Prädikat entgegen. Solange es `true` liefert, liest sich `ctaRef.el` als `undefined` und `focus()` tut nichts. So bleibt ein deaktiviertes Element ohne natives `disabled` (z. B. `<a>`) für die öffentliche Methode unerreichbar.
 
-#### Variante B: Direkt auf HTML5-Element
+### Die Decorators
 
-Wenn die Shadow-Komponente das fokussierbare HTML5-Element direkt rendert (ohne `-wc`-Zwischenschicht):
-
-```typescript
-@Component({ tag: 'kol-input-text', shadow: true })
-export class KolInputText implements InputTextAPI, FocusableElement {
-	@Element() private readonly host?: HTMLKolInputTextElement;
-	private inputRef?: HTMLInputElement;
-
-	private readonly setInputRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
-	};
-
-	@Method()
-	public async focus(): Promise<void> {
-		return delegateFocus(this.host!, () => setFocus(this.inputRef!));
-	}
-}
-```
-
-Weitere Beispiele: `kol-input-email`, `kol-input-number`, `kol-input-file`, `kol-textarea`, `kol-combobox`, `kol-single-select`, `kol-input-radio`
-
-### Regel 2: Light DOM Component (`shadow: false`)
-
-**Nur** `setFocus()` verwenden. Kein `delegateFocus()` nötig, da kein Shadow DOM vorhanden ist und das Theme-System nicht abgewartet werden muss.
-
-```typescript
-@Component({ tag: 'kol-button-wc', shadow: false })
-export class KolButtonWc implements ButtonAPI, FocusableElement {
-	private buttonRef?: HTMLButtonElement;
-
-	private readonly setButtonRef = (ref?: HTMLButtonElement) => {
-		this.buttonRef = ref;
-	};
-
-	@Method()
-	public async focus(): Promise<void> {
-		return setFocus(this.buttonRef!);
-	}
-
-	public render(): JSX.Element {
-		return (
-			<Host>
-				<button ref={this.setButtonRef}>
-					{/* content */}
-				</button>
-			</Host>
-		);
-	}
-}
-```
-
-### Zusammenfassung der Regeln
-
-| Komponente          | `shadow` | Focus-Methode                                    |
-| ------------------- | -------- | ------------------------------------------------ |
-| Shadow Component    | `true`   | `delegateFocus(this.host!, () => setFocus(ref))` |
-| Light DOM Component | `false`  | `setFocus(ref)`                                  |
+| Decorator               | Verhalten                                                                                            |
+| ----------------------- | ---------------------------------------------------------------------------------------------------- |
+| `@delegateFocus('ref')` | Wartet über `delegateFocus` auf `data-themed` und fokussiert dann `ref.el` mit `setFocus`. Standard. |
+| `@directFocus('ref')`   | Fokussiert `ref.el` mit `setFocus`, ohne auf `data-themed` zu warten (heute nur `kol-tree-item`).    |
 
 **Wichtig:**
 
-- `delegateFocus` darf **nur** in `shadow: true`-Komponenten verwendet werden
-- `setFocus` wird **in beiden Fällen** als eigentliche Focus-Funktion genutzt
-- Ref-Callbacks speichern die Referenz zum Ziel-Element (`ref={this.setXxxRef}`)
-- Alle `focus()`-Methoden sind `async` und geben `Promise<void>` zurück
-- Die `@Method()`-Dekorator macht die Methode auf dem Custom Element aufrufbar
+- Der Decorator ersetzt den Methodenrumpf; die Methode selbst bleibt leer.
+- `setFocus` ist in beiden Fällen die eigentliche Focus-Funktion.
+- Alle `focus()`-Methoden sind `async` und geben `Promise<void>` zurück.
+- Der `@Method()`-Decorator macht die Methode auf dem Custom Element aufrufbar.
