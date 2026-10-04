@@ -1,0 +1,1 @@
+import{h as e,r as t}from"./variant-quote-BlO0qvfs-6G1d1qIb.js";var n=[`horizontal`,`vertical`];function r(t){let r=e(t);if(n.includes(r))return r;throw Error(`Invalid orientation: ${r}`)}var i=t(`orientation`,`horizontal`,r);export{i as n,r as t};
