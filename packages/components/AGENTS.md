@@ -82,16 +82,10 @@ All form field components expose `_ariaDetails?: string` (space-separated elemen
 
 **How it works:**
 
-- `AssociatedInputController` (base class for all form field controllers) owns the canonical implementation in `validateAriaDetails(value?: string)`.
-- It calls `validateAriaDetails()` from `src/schema/props/aria-details.ts`, which resolves the IDs via `resolveTargets()` and assigns the result to `ElementInternals.ariaDetailsElements`.
-- `attachInternals()` is called exactly once in the `AssociatedInputController` constructor — never again in component lifecycle hooks.
-- Each component's `@Watch('_ariaDetails')` simply delegates: `this.controller.validateAriaDetails(value)`.
-- `componentWillLoad()` calls `this.validateAriaDetails(this._ariaDetails)` to initialize on first render.
-
-**Controller inheritance chain (all share `validateAriaDetails`):**  
-`InputCheckboxController → InputCheckboxRadioController → ... → InputIconController → InputController → ControlledInputController → AssociatedInputController`
-
-**Do not** add a `validateAriaDetails` override in any subcontroller — it would silently disable the implementation via method override.
+- `FormAssociationBehavior` (`src/internal/functional-components/form-association/behavior.ts`) owns the implementation in `watchAriaDetails(value?: string)`. It resolves the IDs via `resolveTargets()` and assigns the result to `ElementInternals.ariaDetailsElements`.
+- `attachInternals()` is called exactly once, in the `FormAssociationBehavior` constructor — never again in component lifecycle hooks.
+- Each field's `@Watch('_ariaDetails')` delegates to `applyAriaDetails(value)` of `BaseFormFieldWebComponent`, which applies the prop and calls `watchAriaDetails`.
+- `componentWillLoad()` calls the watcher once to initialize on first render.
 
 #### Open vs Show
 
