@@ -24,12 +24,14 @@ exports[`kol-table-stateless should render with _label="Table shows loading spin
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader kol-table__loader--shown">
-              <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
-              </span>
-              <span aria-busy="true" class="visually-hidden" role="alert">
-                kol-table-data-loading
-              </span>
+              <div class="kol-spin">
+                <span class="kol-spin__spinner kol-spin__spinner--cycle">
+                  <span class="kol-spin__loader"></span>
+                </span>
+                <span aria-busy="true" class="visually-hidden" role="alert">
+                  kol-table-data-loading
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
@@ -79,12 +81,14 @@ exports[`kol-table-stateless should render with _label="Table with action column
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader kol-table__loader--shown">
-              <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
-              </span>
-              <span aria-busy="true" class="visually-hidden" role="alert">
-                kol-table-data-loading
-              </span>
+              <div class="kol-spin">
+                <span class="kol-spin__spinner kol-spin__spinner--cycle">
+                  <span class="kol-spin__loader"></span>
+                </span>
+                <span aria-busy="true" class="visually-hidden" role="alert">
+                  kol-table-data-loading
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
@@ -502,9 +506,11 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="row" style="width: 80px;">
@@ -585,9 +591,11 @@ exports[`kol-table-stateless should render with _label="Table with merged parent
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -658,9 +666,11 @@ exports[`kol-table-stateless should render with _label="Table with multiple sele
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--selection">
@@ -720,9 +730,11 @@ exports[`kol-table-stateless should render with _label="Table with only horizont
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
@@ -774,9 +786,11 @@ exports[`kol-table-stateless should render with _label="Table with single select
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--selection">
@@ -835,12 +849,14 @@ exports[`kol-table-stateless should render with _label="Table with state column"
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader kol-table__loader--shown">
-              <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
-              </span>
-              <span aria-busy="true" class="visually-hidden" role="alert">
-                kol-table-data-loading
-              </span>
+              <div class="kol-spin">
+                <span class="kol-spin__spinner kol-spin__spinner--cycle">
+                  <span class="kol-spin__loader"></span>
+                </span>
+                <span aria-busy="true" class="visually-hidden" role="alert">
+                  kol-table-data-loading
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
@@ -904,9 +920,11 @@ exports[`kol-table-stateless should render with _label="Table with two horizonta
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="row" style="width: 90px;">
@@ -968,9 +986,11 @@ exports[`kol-table-stateless should render with _label="Table with two spanned h
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" rowspan="2" scope="row">
@@ -1026,9 +1046,11 @@ exports[`kol-table-stateless should render with _label="Table without data shows
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="1" rowspan="1">
@@ -1064,9 +1086,11 @@ exports[`kol-table-stateless should render with _label="Table without data with 
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="1" rowspan="1">
@@ -1102,9 +1126,11 @@ exports[`kol-table-stateless should render with _label="Table without data with 
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="2" rowspan="1">

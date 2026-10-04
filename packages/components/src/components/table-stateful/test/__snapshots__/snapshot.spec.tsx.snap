@@ -89,9 +89,11 @@ exports[`kol-table-stateful should render with a multiple selection 1`] = `
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--selection">
@@ -294,9 +296,11 @@ exports[`kol-table-stateful should render with an initial ascending sort 1`] = `
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -415,9 +419,11 @@ exports[`kol-table-stateful should render with an initial descending sort 1`] = 
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -492,9 +498,11 @@ exports[`kol-table-stateful should render with data and headers as JSON strings 
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -589,9 +597,11 @@ exports[`kol-table-stateful should render with data without sorting 1`] = `
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -673,9 +683,11 @@ exports[`kol-table-stateful should render with horizontal and vertical headers, 
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="row">
@@ -980,9 +992,11 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -1306,9 +1320,11 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -1709,9 +1725,11 @@ exports[`kol-table-stateful should render with pagination false 1`] = `
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -2271,9 +2289,11 @@ exports[`kol-table-stateful should render with pagination object on the second p
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -2403,9 +2423,11 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -2806,9 +2828,11 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -3048,9 +3072,11 @@ exports[`kol-table-stateful should render with pagination without data 1`] = `
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="3" rowspan="1">
@@ -3402,12 +3428,14 @@ exports[`kol-table-stateful should render with the props passed to the stateless
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader kol-table__loader--shown">
-              <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
-              </span>
-              <span aria-busy="true" class="visually-hidden" role="alert">
-                kol-table-data-loading
-              </span>
+              <div class="kol-spin">
+                <span class="kol-spin__spinner kol-spin__spinner--cycle">
+                  <span class="kol-spin__loader"></span>
+                </span>
+                <span aria-busy="true" class="visually-hidden" role="alert">
+                  kol-table-data-loading
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body kol-table__cell--sticky-left" style="left: 0px;">
@@ -3546,9 +3574,11 @@ exports[`kol-table-stateful should render with two initial sorts with multi sort
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -3667,9 +3697,11 @@ exports[`kol-table-stateful should render with two initial sorts without multi s
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
