@@ -31,14 +31,15 @@ import { createEventWithTarget, KolEvent } from '../../utils/events';
 
 import type { ComboboxApi } from '../../internal/functional-components/combobox/api';
 import { comboboxPropsConfig } from '../../internal/functional-components/combobox/api';
+import { BEM_CLASS_COMBOBOX__DELETE, ComboboxToggleFC } from '../../internal/functional-components/combobox/component';
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { IconFC } from '../../internal/functional-components/icon/component';
 import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
+import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
 import {
 	accessKeyProp,
 	hasClearButtonProp,
@@ -470,7 +471,7 @@ export class KolCombobox
 						startAdornment={startAdornment}
 						endAdornment={endAdornment}
 					>
-						<div class="kol-combobox__group">
+						<ListboxGroupFC block="kol-combobox">
 							<InputFC {...this.getInputProps()} />
 							{this.getRenderProp('value') && this.getRenderProp('hasClearButton') && (
 								<KolButtonWcTag
@@ -481,7 +482,7 @@ export class KolCombobox
 									_variant="ghost"
 									_disabled={isDisabled}
 									data-testid="combobox-delete"
-									class="kol-combobox__delete"
+									class={BEM_CLASS_COMBOBOX__DELETE}
 									hidden={isDisabled}
 									onBlur={this.stopClearButtonFocusEvent}
 									onFocus={this.stopClearButtonFocusEvent}
@@ -492,10 +493,8 @@ export class KolCombobox
 									}}
 								/>
 							)}
-							<button type="button" tabIndex={-1} class="kol-combobox-toggle" onClick={this.toggleListbox} disabled={isDisabled} hidden={isDisabled}>
-								<IconFC icons="kolicon-chevron-down" label="" />
-							</button>
-						</div>
+							<ComboboxToggleFC disabled={isDisabled} handleClick={this.toggleListbox} />
+						</ListboxGroupFC>
 						<CustomSuggestionsOptionsGroupFC
 							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
 							onKeyDown={this.handleDropdownKeyDown}
