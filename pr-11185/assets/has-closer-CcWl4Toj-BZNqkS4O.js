@@ -1,0 +1,1 @@
+import{a as e,d as t}from"./base-web-component-DmWvsvnM-Kcmlz3-P.js";var n=e(`hasCloser`,!1,t);export{n as t};
