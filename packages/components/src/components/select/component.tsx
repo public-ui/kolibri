@@ -2,6 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	AriaDetailsPropType,
+	AutoCompletePropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
 	IconsHorizontalPropType,
@@ -76,6 +77,7 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
+		this.watchAutoComplete(this._autoComplete);
 		this.watchName(this._name);
 		this.watchSyncValueBySelector(this._syncValueBySelector);
 		this.watchTouched(this._touched);
@@ -130,6 +132,11 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	 * References an external element by ID that provides accessible details for this select.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	/**
+	 * Defines whether the input can be auto-completed.
+	 */
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -254,6 +261,11 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
 		this.applyAriaDetails(value);
+	}
+
+	@Watch('_autoComplete')
+	public watchAutoComplete(value?: AutoCompletePropType): void {
+		this.applyAutoComplete(value);
 	}
 
 	@Watch('_disabled')

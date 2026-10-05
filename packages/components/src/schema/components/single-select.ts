@@ -4,6 +4,7 @@ import type {
 	MsgPropType,
 	PropAccessKey,
 	PropAriaDetails,
+	PropAutoComplete,
 	PropDisabled,
 	PropHideLabel,
 	PropHideMsg,
@@ -32,6 +33,7 @@ type OptionalProps = {
 	hasClearButton: boolean;
 } & PropAccessKey &
 	PropAriaDetails &
+	PropAutoComplete &
 	PropDisabled &
 	PropHideMsg &
 	PropHideLabel &
@@ -55,6 +57,7 @@ type OptionalStates = {
 	placeholder: string;
 	hasClearButton: boolean;
 } & PropAccessKey &
+	PropAutoComplete &
 	PropDisabled &
 	PropHideLabel &
 	KoliBriHIcons &

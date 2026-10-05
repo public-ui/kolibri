@@ -3,7 +3,6 @@ import type { VNode } from '@stencil/core/internal';
 import { propagateSubmitEventToForm } from '../../../components/form/controller';
 import type {
 	AccessKeyPropType,
-	AutoCompletePropType,
 	IconsHorizontalPropType,
 	InternalButtonProps,
 	MaxLengthBehaviorPropType,
@@ -17,7 +16,6 @@ import clsx from '../../../utils/clsx';
 import { createCtaRef } from '../../../utils/element-interaction';
 import {
 	accessKeyProp,
-	autoCompleteProp,
 	horizontalIconsProp,
 	patternProp,
 	placeholderProp,
@@ -97,10 +95,6 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 	protected applyAccessKey(value?: AccessKeyPropType): void {
 		accessKeyProp.apply(value, (v) => this.textShared.setRenderProp('accessKey', v));
 		validateAccessAndShortKey(value, this._shortKey);
-	}
-
-	protected applyAutoComplete(value?: AutoCompletePropType): void {
-		autoCompleteProp.apply(value, (v) => this.textShared.setRenderProp('autoComplete', v));
 	}
 
 	protected applyIcons(value?: IconsHorizontalPropType): void {

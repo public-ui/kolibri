@@ -2,6 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import type {
 	AriaDetailsPropType,
+	AutoCompletePropType,
 	ClickableElement,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
@@ -117,6 +118,7 @@ export class KolTextarea
 	public componentWillLoad(): void {
 		this.initRenderProps(textareaPropsConfig);
 		this.watchAriaDetails(this._ariaDetails);
+		this.watchAutoComplete(this._autoComplete);
 		this._touched = this._touched === true;
 		this.watchName(this._name);
 		this.watchSyncValueBySelector(this._syncValueBySelector);
@@ -255,6 +257,7 @@ export class KolTextarea
 			onInput: this.handleTextareaInput,
 			onKeyDown: this.handleTextareaKeyDown,
 			ariaDescribedBy: characterLimitHintId ? [...ariaDescribedBy, characterLimitHintId] : ariaDescribedBy,
+			autocomplete: this.getRenderProp('autoComplete'),
 			'aria-invalid': hasError ? 'true' : undefined,
 			...(maxLength !== undefined ? { maxLength } : {}),
 			...(shortKey ? { 'aria-keyshortcuts': shortKey } : {}),
@@ -313,6 +316,11 @@ export class KolTextarea
 	 * References an external element by ID that provides accessible details for this textarea.
 	 */
 	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	/**
+	 * Defines whether the input can be auto-completed.
+	 */
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
 
 	/**
 	 * Makes the element not focusable and ignore all events.
@@ -464,6 +472,11 @@ export class KolTextarea
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
 		this.applyAriaDetails(value);
+	}
+
+	@Watch('_autoComplete')
+	public watchAutoComplete(value?: AutoCompletePropType): void {
+		this.applyAutoComplete(value);
 	}
 
 	@Watch('_disabled')

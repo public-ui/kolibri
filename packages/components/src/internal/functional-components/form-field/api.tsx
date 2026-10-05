@@ -1,5 +1,6 @@
 import {
 	ariaDetailsProp,
+	autoCompleteProp,
 	disabledProp,
 	hideLabelProp,
 	hideMsgProp,
@@ -23,6 +24,7 @@ export const formFieldBasePropsConfig = {
 	required: [labelWithExpertSlotProp],
 	optional: [
 		ariaDetailsProp,
+		autoCompleteProp,
 		disabledProp,
 		hideLabelProp,
 		hideMsgProp,

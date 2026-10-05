@@ -4,6 +4,7 @@ import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
 	AriaDetailsPropType,
+	AutoCompletePropType,
 	FocusableElement,
 	FormFieldLabelInfoPopoverProps,
 	IconsHorizontalPropType,
@@ -119,6 +120,7 @@ export class KolSingleSelect
 		this.optionRefs = [];
 		this._touched = this._touched === true;
 		this.watchAriaDetails(this._ariaDetails);
+		this.watchAutoComplete(this._autoComplete);
 		this.watchName(this._name);
 		this.watchSyncValueBySelector(this._syncValueBySelector);
 		this.watchTouched(this._touched);
@@ -412,7 +414,7 @@ export class KolSingleSelect
 			'aria-labelledby': createRelatedUniqueId(id, 'label'),
 			autocapitalize: 'off',
 			autocorrect: 'off',
-			autocomplete: 'off',
+			autocomplete: this.getRenderProp('autoComplete'),
 			class: 'kol-single-select__input',
 			ref: this.ctaRef,
 			role: 'combobox',
@@ -552,6 +554,11 @@ export class KolSingleSelect
 	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
 	/**
+	 * Defines whether the input can be auto-completed.
+	 */
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+
+	/**
 	 * Defines the placeholder for input field. To be shown when there's no value.
 	 */
 	@Prop() public _placeholder?: string;
@@ -673,6 +680,11 @@ export class KolSingleSelect
 	@Watch('_ariaDetails')
 	public watchAriaDetails(value?: AriaDetailsPropType): void {
 		this.applyAriaDetails(value);
+	}
+
+	@Watch('_autoComplete')
+	public watchAutoComplete(value?: AutoCompletePropType): void {
+		this.applyAutoComplete(value);
 	}
 
 	@Watch('_disabled')

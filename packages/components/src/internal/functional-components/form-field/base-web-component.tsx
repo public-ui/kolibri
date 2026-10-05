@@ -1,4 +1,5 @@
 import type {
+	AutoCompletePropType,
 	FormFieldLabelInfoPopoverProps,
 	InputTypeOnDefault,
 	LabelWithExpertSlotPropType,
@@ -12,6 +13,7 @@ import { createRelatedUniqueId } from '../../../utils/dev.utils';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
 import {
 	ariaDetailsProp,
+	autoCompleteProp,
 	disabledProp,
 	hideLabelProp,
 	hideMsgProp,
@@ -97,6 +99,10 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 	protected applyAriaDetails(value?: string): void {
 		ariaDetailsProp.apply(value, (v) => this.shared.setRenderProp('ariaDetails', v));
 		this.formAssociation.watchAriaDetails(value);
+	}
+
+	protected applyAutoComplete(value?: AutoCompletePropType): void {
+		autoCompleteProp.apply(value, (v) => this.shared.setRenderProp('autoComplete', v));
 	}
 
 	protected applyDisabled(value?: boolean): void {
