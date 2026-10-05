@@ -90,7 +90,7 @@ Hintergrund: `packages/components/src/components/_skeleton/ARC42.md#schema-helpe
 Komponente in ihrem Shadow DOM (z. B. einen Button), rendert sie deren FC direkt; die Orchestrierung
 je eingebetteter Instanz liegt in einem Item (`ARC42.md#embedded-components-items`:
 `createButtonItem`, `createLinkItem`, `createPopoverButtonItem`, `createDialogItem`, für eine
-variable Anzahl `createItemPool`). Ein `shadow: false`-Element als Zwischenschicht gibt es nicht mehr.
+variable Anzahl `createItemPool`). Ein `shadow: false`-Element als Zwischenschicht gibt es nicht mehr; einzige Ausnahme ist `kol-tooltip-wc`, das unverändert erhalten bleibt.
 
 Vier Vorprüfungen:
 

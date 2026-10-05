@@ -75,7 +75,7 @@ This modular layout is the backbone for the architectural patterns described in 
 ## 2. Architecture Constraints
 
 - **Stencil** is used for authoring web components with **shadow: true** only (Shadow DOM enabled for style isolation).
-- A component that embeds another component inside its own shadow DOM renders that component's **Functional Component** through an item (see §4 Embedded Components). The only element without Shadow DOM is the deprecated `kol-tooltip-wc`.
+- A component that embeds another component inside its own shadow DOM renders that component's **Functional Component** through an item (see §4 Embedded Components). The only element without Shadow DOM is `kol-tooltip-wc`; it stays as it is.
 - Components must compile to framework-agnostic Custom Elements.
 - Public API properties use an underscored naming convention (e.g. `_name`) to separate external inputs from internal state.
 - Documentation and code follow the `KoliBri` casing and repository conventions.
