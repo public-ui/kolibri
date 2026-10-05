@@ -55,12 +55,14 @@
 		color: unset;
 	}
 
+	/* A disabled `fieldset` only groups its controls; `cursor` is inherited and would reach the
+	   operable info popover in its legend. */
 	.disabled label,
 	.disabled:focus-within label,
 	[aria-disabled='true'],
 	[aria-disabled='true']:focus,
-	[disabled],
-	[disabled]:focus {
+	[disabled]:where(:not(fieldset)),
+	[disabled]:where(:not(fieldset)):focus {
 		outline: none;
 		cursor: not-allowed;
 	}
