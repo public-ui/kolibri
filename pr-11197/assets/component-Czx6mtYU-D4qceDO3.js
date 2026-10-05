@@ -1,0 +1,1 @@
+import{c as e}from"./index-DV_vNR-B-CzhN4Yxx.js";var t=({description:t,descriptionId:n})=>t?e(`span`,{class:`visually-hidden`,id:n},t):null;export{t};
