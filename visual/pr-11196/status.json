@@ -1,0 +1,48 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "7 changed – 0 of 7 approved, review pending",
+	"computedAt": "2026-10-05T14:01:04.281Z",
+	"pr": 11196,
+	"head": "648cd4f87b8dbc2a282791fe50a3b11edcf8ba09",
+	"digest": "sha256:93ea5ad54b92f15dd77469d6b30bfd1e9c81bdc4ac80f7b3ff0be6658d1f3260",
+	"counts": {
+		"changes": 7,
+		"open": 7,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"theme-desy/badge-basic--basic-horizontal": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/badge-basic--basic-vertical": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/badge-basic--formatted-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/badge-basic--smart-button": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-badge": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/version-basic--basic": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
