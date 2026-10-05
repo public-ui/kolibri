@@ -1,0 +1,100 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "20 changed – 0 of 20 approved, review pending",
+	"computedAt": "2026-10-05T08:04:45.777Z",
+	"pr": 11190,
+	"head": "eafdd73fe80b69c170a35c9f035a9e9b95dcfd4e",
+	"digest": "sha256:0bc814e77c4e5465d55c5463827d9b2083e48b584ad1e5726fd90cbaa9df3217",
+	"counts": {
+		"changes": 20,
+		"open": 20,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/table-action-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/table-stateless-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/table-action-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/table-stateless-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/table-action-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/table-stateless-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateless-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/table-action-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/table-stateless-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-action-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-stateless-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/table-action-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/table-stateless-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
