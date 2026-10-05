@@ -6,12 +6,14 @@ import PackageJson from '@public-ui/components/package.json';
 
 import { BackPage } from './components/BackPage';
 import { Sidebar } from './components/Sidebar';
+import { useColorScheme } from './hooks/useColorScheme';
 import { useSetCurrentLocation } from './hooks/useSetCurrentLocation';
+import { useVisualBlockOutline } from './hooks/useVisualBlockOutline';
 import { HideMenusContext } from './shares/HideMenusContext';
 import { ROUTES } from './shares/routes';
 import { sampleAppDataService } from './shares/sampleAppDataService';
 import { getTheme, getThemeName, setRegisteredThemes, setStorage, setTheme } from './shares/store';
-import { PUBLIC_THEMES, UNSTYLED_THEME } from './shares/theme';
+import { DARK_CAPABLE_THEMES, PUBLIC_THEMES, UNSTYLED_THEME } from './shares/theme';
 
 import type { Route as MyRoute, Routes as MyRoutes } from './shares/types';
 
@@ -40,15 +42,17 @@ export const App: FC<Props> = ({ customThemes }) => {
 
 	useEffect(() => {
 		let isActive = true;
-		if (sampleAppDataService.isInitialized(themes)) {
-			setIsSampleAppDataInitialized(true);
+		const isInit = sampleAppDataService.isInitialized(themes);
+		const updateState = (value: boolean) => {
+			if (isActive) setIsSampleAppDataInitialized(value);
+		};
+		if (isInit) {
+			setTimeout(() => updateState(true), 0);
 			return;
 		}
-		setIsSampleAppDataInitialized(false);
+		updateState(false);
 		void sampleAppDataService.initialize(themes).then(() => {
-			if (isActive) {
-				setIsSampleAppDataInitialized(true);
-			}
+			updateState(true);
 		});
 		return () => {
 			isActive = false;
@@ -122,8 +126,8 @@ export const App: FC<Props> = ({ customThemes }) => {
 		return tree;
 	};
 
-	const ROUTE_LIST = useMemo(() => getRouteList(ROUTES), [customThemes]);
-	const ROUTE_TREE = useMemo(() => getRouteTree(ROUTES), [customThemes]);
+	const ROUTE_LIST = useMemo(() => getRouteList(ROUTES), []);
+	const ROUTE_TREE = useMemo(() => getRouteTree(ROUTES), []);
 
 	const componentList: Map<string, Option<string>> = new Map();
 	ROUTE_LIST.forEach((route) => {
@@ -138,13 +142,23 @@ export const App: FC<Props> = ({ customThemes }) => {
 
 	setTheme(theme); // set for `getTheme` usages within the application
 	useSetCurrentLocation();
+	useVisualBlockOutline();
+	const supportsDark = DARK_CAPABLE_THEMES.includes(theme);
+	const [colorScheme, setColorScheme] = useColorScheme(supportsDark);
 
-	document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
-	document.body.setAttribute('class', theme);
-	document.body.dataset.theme = theme;
+	useEffect(() => {
+		document.title = `KoliBri-Handout - ${getThemeName(getTheme())} | v${PackageJson.version}`;
+		document.body.setAttribute('class', theme);
+		document.body.dataset.theme = theme;
+	}, [theme]);
 
 	const handleThemeChange = (theme: unknown) => {
-		setSearchParams({ theme: theme as string });
+		/* The updater form keeps the other parameters – replacing the object would drop `hideMenus`,
+		   `visualBlocks` and `colorScheme` on every theme change. */
+		setSearchParams((previous) => {
+			previous.set('theme', theme as string);
+			return previous;
+		});
 		window.location.reload();
 	};
 
@@ -171,7 +185,10 @@ export const App: FC<Props> = ({ customThemes }) => {
 						routeList={ROUTE_LIST}
 						buildDate={process.env.BUILD_DATE}
 						commitHash={process.env.COMMIT_HASH}
+						colorScheme={colorScheme}
+						supportsDark={supportsDark}
 						onThemeChange={handleThemeChange}
+						onColorSchemeChange={setColorScheme}
 					/>
 				)}
 

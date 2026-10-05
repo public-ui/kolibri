@@ -1,9 +1,10 @@
 @use '../mixins/link' as *;
 @use '../functions/to-rem' as *;
+@use '~@public-ui/components/index' as components;
 
 @layer kol-theme-component {
 	@include kol-link('kol-link');
-	@include kol-link('kol-button');
+	@include kol-link('kol-button', $anchor-scoped: false, $interactive-suffix: 'interactive-element');
 
 	.kol-nav {
 		--kol-nav-item-padding-left: -16;
@@ -32,17 +33,29 @@
 					padding: to-rem(16) 0 to-rem(8) to-rem(var(--kol-nav-item-padding-left));
 				}
 
-				&:hover {
-					box-shadow: inset 0 -1px 0 var(--color-blue-100);
-					border-bottom-color: var(--color-blue-100);
+				@include components.kol-enabled-wrapper {
+					&:hover {
+						box-shadow: inset 0 -1px 0 var(--color-blue-100);
+						border-bottom-color: var(--color-blue-100);
+					}
 				}
 
 				&:hover,
-				&:focus {
+				.kol-link__interactive-element:focus,
+				.kol-button__interactive-element:focus {
 					.kol-span__label {
 						text-decoration: none;
 					}
 				}
+			}
+
+			// The kol-link / kol-button wrapper carries the 49px row box; stretch the interactive
+			// element inside so the whole row stays clickable and focusable (before the skeleton
+			// migration the anchor / button itself was the row element).
+			.kol-link__interactive-element,
+			.kol-button__interactive-element {
+				width: 100%;
+				height: 100%;
 			}
 		}
 	}

@@ -1,6 +1,6 @@
 import { KolInputText, KolTree, KolTreeItem } from '@public-ui/react-v19';
 import * as React from 'react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useHref, useMatch, useResolvedPath } from 'react-router';
 import type { Route, Routes } from '../shares/types';
 
@@ -80,7 +80,7 @@ function TreeItem({ label, to, children, open }: any) {
 
 function Navigation({ routes }: NavigationProps): React.ReactNode {
 	const [query, setQuery] = useState<string>('');
-	let filteredRoutes = filterRoutes(routes, query);
+	const filteredRoutes = useMemo(() => filterRoutes(routes, query), [routes, query]);
 
 	const buildSubTree = (parentName: string, children: Route) => {
 		return Object.keys(children).map((childName) => {
@@ -106,7 +106,6 @@ function Navigation({ routes }: NavigationProps): React.ReactNode {
 					onInput: (event: Event) => {
 						const input = event.target as HTMLInputElement;
 						setQuery(input.value);
-						filteredRoutes = filterRoutes(routes, query);
 					},
 				}}
 			/>

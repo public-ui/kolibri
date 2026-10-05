@@ -1,11 +1,11 @@
 import { KolButton, KolLinkButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { useToasterService } from '../../hooks/useToasterService';
+import { useAlert } from '../../hooks/useAlert';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonInFixedGrid: FC = () => {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,

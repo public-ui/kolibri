@@ -1,1 +1,1 @@
-export { defineCustomElements } from '../dist/types/loader';
+export { defineCustomElements } from '../dist/loader';

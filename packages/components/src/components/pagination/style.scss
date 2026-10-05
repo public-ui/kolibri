@@ -1,8 +1,10 @@
 @use '../@shared/mixins' as *;
 @use '../@shared/global' as *;
 @use '../tooltip/style.scss' as *;
+@use '../@shared/button.mixin' as *;
 @use '../@shared/pagination.mixin' as *;
 
 @layer kol-component {
+	@include kol-button-wc-box-styles('kol-button');
 	@include kol-pagination-styles;
 }

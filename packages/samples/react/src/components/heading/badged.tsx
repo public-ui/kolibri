@@ -3,6 +3,7 @@ import React from 'react';
 import { KolBadge, KolHeading } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const HeadingBadged: FC = () => (
@@ -13,7 +14,7 @@ export const HeadingBadged: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<SampleBlock id="badged">
 			<KolHeading _label="" _level={1}>
 				<span slot="expert">
 					A heading with a <KolBadge _label="Label"></KolBadge>
@@ -44,6 +45,6 @@ export const HeadingBadged: FC = () => (
 					A heading with a <KolBadge _color="#ffc0cb" _label="Label"></KolBadge>
 				</span>
 			</KolHeading>
-		</div>
+		</SampleBlock>
 	</>
 );

@@ -54,7 +54,7 @@ When creating a pull request, please follow these guidelines:
 - **PR Title:** The pull request title must follow the [Conventional Commits](https://www.conventionalcommits.org/) specification. This is enforced by automated validation in our CI pipeline.
 - **PR Title Format:** `<type>: <description>` or `<type>(<scope>): <description>`
 - **Allowed Types:** `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
-- **Description:** The description should start with a lowercase letter and clearly explain the change.
+- **Description:** The description must start with a letter (lowercase or uppercase) and clearly explain the change.
 
 **Examples of valid PR titles:**
 
@@ -62,11 +62,12 @@ When creating a pull request, please follow these guidelines:
 - `fix: resolve navigation issue on mobile devices`
 - `docs: update installation instructions`
 - `refactor(components): simplify input validation logic`
+- `test(visual-tests): Axe-Verstöße wieder als Build-Breaker auswerten`
 
 **Examples of invalid PR titles:**
 
 - `Add new feature` (missing type prefix)
-- `feat: Add feature` (description should start with lowercase)
+- `feat: 1st feature` (description must start with a letter)
 - `feature: add new button` (invalid type, should be `feat`)
 
 ### Developing
@@ -79,13 +80,39 @@ When creating a pull request, please follow these guidelines:
 6. Create a new branch for your changes
 7. Install Node.js version 22
 8. [Install PNPM](https://pnpm.io/installation) on you local machine
-9. Install all packages with `pnpm i`
-10. Build all packages within the mono repository `pnpm -r build`
-11. Navigate to the desired package in our monorepo
-12. When you want to start the project navigate to `packages/components/` and run `pnpm dev`
-13. To watch for changes navigate to `packages/samples/react/` and execute `pnpm start`. `http://localhost:8080/` will open automatically
+9. Follow the [daily workflow](#daily-workflow) below
 
 Run ESLint across the repository with `pnpm lint` (or `pnpm lint:eslint` to invoke ESLint directly); the configuration lives in `packages/*/eslint.config.cjs`. Formatting is handled by Prettier via `pnpm format`, so run format first to keep ESLint focused on code-quality rules rather than style drift.
+
+### Daily workflow
+
+Every package in the monorepo builds itself, and dependents always consume the built output of the
+packages they reference. The chain is kolicons → components → adapters → themes → sample →
+presentation. The order comes from the workspace dependencies: `pnpm -r build` builds every package
+exactly once, topologically sorted, and no package's build builds another package. No `dev` or
+`preview` script builds anything for you, so the workflow is always the same:
+
+```bash
+git pull
+pnpm i
+pnpm -r build
+
+# One terminal per package you are changing
+pnpm --filter @public-ui/components dev
+pnpm --filter @public-ui/theme-default dev
+
+# The app to look at, http://localhost:9191
+pnpm --filter @public-ui/presentation dev
+```
+
+Then work on the code: each watcher rebuilds its own package and the presentation app reloads.
+
+- A `dev` script exists in `@public-ui/components`, every theme package (`@public-ui/theme-bwst`,
+  `-default`, `-desy`, `-ecl`, `-kern`) and `@public-ui/mcp`. Packages without one, such as the
+  adapters or the icons, are rebuilt with `pnpm --filter <package> build` after a change.
+- Never run a build while a watcher is active. `pnpm -r build`, `pnpm build:deps` and the
+  components `build` start with `pnpm clear` and delete the output the watcher owns. Stop the
+  watchers, build, then start `dev` again.
 
 ### VS Code Setup
 
@@ -104,51 +131,41 @@ Refer to [new component](docs/tutorials/NEW_COMPONENT.md) tutorial.
 
 ### Switching between branches
 
-When changing the current working branch, it is important to reinstall all dependencies, as these may have changed. It is very important that all packages are built when working on dependents. This is because the packages always use the built state of the referenced packages in the mono repo.
-To avoid unexpected problems, it is therefore always advisable to build all packages once. This can be done with these steps:
-
-- Reinstall all dependencies: `pnpm i`
-- Build all packages: `pnpm -r build`
-- You can then switch to the package to be processed and start it with `pnpm start`.
-
-If it is also necessary to edit dependent packages such as `@public-ui/components`, these must be rebuilt for each change. Such packages offer the `dev` script for this purpose. This automatically rebuilds the package after each change.
+After a branch switch, dependencies and build output may no longer match the code. Stop all
+watchers and repeat the [daily workflow](#daily-workflow) from `pnpm i` on: reinstall, build
+everything, then start `dev` in the packages you are working on.
 
 ### Back porting to older Major-Versions
 
 By default, development is carried out in the `development` branch for the following version. However, if it becomes necessary to provide an issue for an older major release, such as version 1.x.x, the code change must also be merged into the corresponding release branch. In this case, it would be the `release/1` branch. It is important that the branch that was created from the `develop` is not merged into the release branch, as otherwise the next patch version will receive all the changes from the current development status.
 The simplest procedure is therefore to create a new branch from the release branch (e.g. `release/1`) and transfer the individual commits of the feature branch from the `develop` to the new branch using cherry-picking. This branch can then be merged into the release branch as normal with a new pull request.
 
-### Snapshot Testing for Visual Changes
+### Visual Review for Visual Changes
 
-The Continuous Integration (CI) pipeline incorporates automated visual regression testing using the React sample app across all available themes.
+The Continuous Integration (CI) pipeline takes screenshots of the React sample app in every theme and compares them with the baseline of the base branch. The screenshots are **not** stored in git: every push to `develop`, `main` and `release/*` publishes them as the artifact `visual-baseline-<package>`, and a pull request compares against the artifact of the commit it is merged with.
 
-When introducing visual modifications to components, themes, or the React sample app, initial test failures are expected. To address this, the
-`update-snapshots.yml` action on GitHub should be executed, followed by a **careful review** of the changes.
+When you introduce visual modifications to components, themes or the React sample app:
 
-#### How to Update Snapshots
+1. The `visual-tests (<package>)` jobs report the differences. That is expected – there is nothing to regenerate or commit.
+2. The bot comment **📸 Visual Review** on the pull request links the review page (`https://public-ui.github.io/kolibri/visual/?pr=<number>`), where every changed, added and removed screenshot can be inspected side by side, with a slider, as onion skin or as diff.
+3. A reviewer with write access approves (or rejects) the screenshots there – directly with a fine-grained GitHub token, or by pasting the generated comment on the pull request. The commit status **Visual Review** turns green once everything is approved; approvals are bound to the screenshot content and survive later pushes that do not change the screenshot again.
 
-The following methods can be used to update the snapshots.
+The full process is described in [docs/visual-review.md](docs/visual-review.md).
 
-1. **GitHub website:** Update the snapshots directly on the GitHub website by following these steps.
+#### Running the visual tests locally
 
-- Navigate to the `Actions` tab in the `kolibri` repository.
-- Execute the `03 - Update Snapshots` action.
-- Select the desired branch in which you want to update the snapshots.
-- The workflow checks out the branch, updates all snapshot files, and commits the changes to that branch.
+```bash
+pnpm snapshots:pull                          # download the current develop baseline into the snapshot folders (needs `gh auth login`)
+pnpm --filter @public-ui/theme-default test  # compare; the result is written to packages/themes/default/visual-report/
+pnpm test:update:docker default              # regenerate a baseline locally in the pinned Playwright container
+```
 
-2. **Terminal Command:** Use the [GitHub CLI (gh)](https://cli.github.com/) to run the `update-snapshots.yml` action from the local terminal. This method is recommended for updating snapshots on the current branch without navigating to the GitHub website. For terminal convenience, the [GitHub CLI (gh)](https://cli.github.com/) needs to be installed.
+Screenshots are platform specific (font rendering), so only the Docker variant produces files that match the CI.
 
-- Run the following command within the project directory to update the snapshots in your checked-out branch:
-  ```bash
-  gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD`
-  ```
-- If your want to delete all snapshots before regenerating them add `-f purge_snapshots=true` to the command:
-  ```bash
-  gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD` -f purge_snapshots=true
-  ```
-- You can also run the action on a different branch by specifying the another target branch with the `-r <branch_name>` flag. For example, to update snapshots on the `main` branch:
-  ```bash
-  gh workflow run update-snapshots.yml -r main
-  ```
+#### Text snapshots of the unit tests
 
-These steps ensure that visual snapshots are updated systematically, maintaining the integrity of the testing process.
+The `__snapshots__` files of the unit tests (components, hydrate, hydrate-server) stay in git. Update them with `pnpm test:update:unit`, or run the `03 - Update Snapshots` action on your branch:
+
+```bash
+gh workflow run update-snapshots.yml -r `git rev-parse --abbrev-ref HEAD`
+```

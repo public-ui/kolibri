@@ -74,7 +74,6 @@ const EXCLUDE_TAGS = [
 	'kol-table-settings-wc',
 	'kol-table-stateless-wc',
 	'kol-tooltip-wc',
-	'kol-tree-wc',
 ];
 const BUNDLES: {
 	components: string[];
@@ -167,11 +166,6 @@ let outputTargets: OutputTarget[] = [
 ];
 if (process.env.NODE_ENV === 'production') {
 	outputTargets = outputTargets.concat([
-		angularOutputTarget({
-			componentCorePackage: '@public-ui/components',
-			excludeComponents: EXCLUDE_TAGS,
-			directivesProxyFile: '../adapters/angular/v19/src/components.ts',
-		}),
 		angularOutputTarget({
 			componentCorePackage: '@public-ui/components',
 			excludeComponents: EXCLUDE_TAGS,

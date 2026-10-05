@@ -72,7 +72,7 @@ Du möchtest das Desy-Theme verbessern oder anpassen? So gehst du vor:
 
      ```bash
      cd kolibri/lib/packages/themes/desy
-     pnpm start
+     pnpm preview
      ```
 
    - Passe die Dateien in `src/` nach deinen Wünschen an.

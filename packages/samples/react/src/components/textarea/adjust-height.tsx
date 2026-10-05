@@ -1,7 +1,8 @@
 import type { FC } from 'react';
 import React from 'react';
 
-import { KolForm, KolTextarea } from '@public-ui/react-v19';
+import { KolTextarea } from '@public-ui/react-v19';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 const VALUE = `Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
@@ -19,8 +20,11 @@ export const TextareaAdjustHeight: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<KolForm className="w-full">
-			<KolTextarea _adjustHeight={true} _value={VALUE} _label="Text input (auto grow)" />
-		</KolForm>
+		<div className="grid gap-4">
+			<SampleBlock id="adjust-height">
+				<KolTextarea _adjustHeight={true} _value={VALUE} _label="Text input (auto grow with value)" />
+			</SampleBlock>
+			<KolTextarea _adjustHeight={true} _label="Text input (auto grow with initial 3 rows)" _rows={3} />
+		</div>
 	</>
 );

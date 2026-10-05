@@ -1,10 +1,9 @@
 import { KolTooltipWcTag } from '../../../core/component-names';
-import type { TooltipProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolTooltipWc } from '../component';
 
-executeSnapshotTests<TooltipProps>(
+executeSnapshotTests<Partial<Pick<KolTooltipWc, '_align' | '_id' | '_label'>>>(
 	KolTooltipWcTag,
 	[KolTooltipWc],
 	[

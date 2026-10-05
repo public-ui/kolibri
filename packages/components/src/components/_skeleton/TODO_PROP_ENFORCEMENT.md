@@ -11,7 +11,7 @@ Das **Prop-Dreieck** besteht aus drei Teilen — nur einer davon ist type-erzwun
 | Felddeklaration `_name!: string`    | **Ja** — via `ComponentProps<T>` in `WebComponentInterface`               | compile error                                    |
 | `@Prop()` Decorator                 | **Nein**                                                                  | kein Attribut-Binding, silent runtime bug        |
 | `@Watch('_name')` Decorator         | **Nein** (`watchName()` Methode wird erzwungen, aber nicht der Decorator) | Stencil ruft Methode nie auf, silent runtime bug |
-| Forwarding in `componentWillLoad()` | **Nein**                                                                  | Prop-Wert kommt nie im Controller an             |
+| Forwarding in `componentWillLoad()` | **Nein**                                                                  | Prop-Wert kommt nie in der WC an                 |
 
 ## Aktueller Stand
 
@@ -41,11 +41,11 @@ Ein Script/Tool, das aus `propsConfig` automatisch den WebComponent-Boilerplate 
 
 @Watch('_name')
 watchName(value?: string): void {
-    this.ctrl.watchName(value);
+    nameProp.apply(value, (v) => this.setRenderProp('name', v));
 }
 
 // in componentWillLoad():
-// name: this._name,
+// nameProp.apply(this._name, (v) => this.setRenderProp('name', v));
 ```
 
 - Eliminiert die Fehlerquelle bei neuen Props vollständig
@@ -67,7 +67,7 @@ export type WebComponentInterface<T extends ComponentApi> = ...
 
 - [ ] **Custom ESLint-Regel implementieren** für `@Prop()` + `@Watch()` Enforcement
 - [ ] **Code-Generator** für Prop-Dreieck-Boilerplate aus `propsConfig`
-- [ ] **`label` State-Disconnect im Skeleton** beheben — `@State label = 'Label'` im WebComponent und `'Click me'` im Controller sind unverbunden
+- [ ] **`label` State-Disconnect im Skeleton** beheben — `@State label = 'Label'` im WebComponent und der Default in `propsConfig` sind unverbunden
 - [ ] **`@Watch('_name')` Typo-Risiko** — `@Watch('_nane')` wäre kein TypeScript-Fehler; ESLint-Regel würde das mit abdecken
 - [ ] **Alle Komponenten auditen** (`avatar`, `click-button`, `icon`, `image`, `progress`, `quote`) auf Prop-Dreieck-Vollständigkeit
 - [ ] **A11y-Tests** für Skeleton hinzufügen — kein `*.e2e.ts` / `*.spec.ts` vorhanden

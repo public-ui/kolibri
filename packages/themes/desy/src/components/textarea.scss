@@ -6,7 +6,6 @@
 		color: var(--color-dark-blue-100);
 		background: transparent;
 		display: block;
-		min-height: to-rem(88);
 		padding: to-rem(7) 0;
 
 		font-weight: 400;
@@ -23,6 +22,10 @@
 			&::placeholder {
 				color: var(--color-black-60);
 			}
+		}
+
+		&:focus {
+			outline: none;
 		}
 	}
 }

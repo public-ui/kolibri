@@ -58,10 +58,10 @@
 			}
 		}
 
+		/* The closer renders ButtonFC directly: `__closer` and `kol-button` sit on the same element,
+		   so the former `.kol-button` color rule now targets the closer itself. */
 		&__closer {
-			.kol-button {
-				color: var(--alert-accent-color);
-			}
+			color: var(--alert-accent-color);
 
 			.kol-icon {
 				@at-root #{$root}--variant-card & {

@@ -1,7 +1,17 @@
 import { Buffer } from 'buffer';
 
-import { expect } from '@playwright/test';
-import { test } from '@stencil/playwright';
+import { expect, type Page } from '@playwright/test';
+import { type E2EPage, test } from '@stencil/playwright';
+import {
+	callback,
+	EXPERIMENTAL_MODE_HEAD,
+	insertAfterStartup,
+	kolEvent,
+	nativeEvent,
+	readFormData,
+	registerWithReflectInputValues,
+	testInputBehaviorContract,
+} from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
@@ -144,5 +154,152 @@ test.describe(COMPONENT_NAME, () => {
 			await expect(page.locator('input')).toHaveValue('');
 			await expect(page.locator('.kol-input-container__filename')).toHaveText(translate('kol-filename-text'));
 		});
+	});
+
+	test.describe('File selection state', () => {
+		test('joins the names of multiple files and returns all of them', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _multiple></${COMPONENT_NAME}>`);
+
+			await page.locator('input').setInputFiles([
+				{ name: 'a.txt', mimeType: 'text/plain', buffer: Buffer.from('a', 'utf8') },
+				{ name: 'b.txt', mimeType: 'text/plain', buffer: Buffer.from('b', 'utf8') },
+			]);
+			await page.waitForChanges();
+
+			await expect(page.locator('.kol-input-container__filename')).toHaveText('a.txt, b.txt');
+			const count = await page.locator(COMPONENT_NAME).evaluate(async (element: HTMLKolInputFileElement) => (await element.getValue())?.length);
+			expect(count).toBe(2);
+		});
+
+		test('marks the filename while a file is selected', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input"></${COMPONENT_NAME}>`);
+			const filename = page.locator('.kol-input-container__filename');
+			await expect(filename).not.toHaveClass(/kol-input-container__filename--has-file/);
+
+			await fillAction(page);
+			await page.waitForChanges();
+			await expect(filename).toHaveClass(/kol-input-container__filename--has-file/);
+
+			await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputFileElement) => element.reset());
+			await page.waitForChanges();
+			await expect(filename).not.toHaveClass(/kol-input-container__filename--has-file/);
+		});
+
+		test('submits the selected file in a native form with reflectInputValues in experimental mode', async ({ page }) => {
+			await setContentWithRetry(page, `${EXPERIMENTAL_MODE_HEAD}<body><form></form></body>`);
+			await registerWithReflectInputValues(page);
+			await insertAfterStartup(page, `<${COMPONENT_NAME} _label="Input" _name="field"></${COMPONENT_NAME}>`, 'form');
+
+			await page
+				.locator(`input.kol-input[type="file"]`)
+				.setInputFiles({ name: 'file.txt', mimeType: 'text/plain', buffer: Buffer.from('this is test', 'utf8') });
+			await page.waitForChanges();
+
+			expect(await readFormData(page)).toEqual([['field', 'file.txt']]);
+		});
+	});
+
+	test.describe('drag and drop', () => {
+		const dropFile = async (page: Page & E2EPage): Promise<void> => {
+			const dataTransfer = await page.evaluateHandle(() => {
+				const transfer = new DataTransfer();
+				transfer.items.add(new File(['content'], 'dropped.txt', { type: 'text/plain' }));
+				return transfer;
+			});
+			await page.locator('.kol-input-container').dispatchEvent('drop', { dataTransfer });
+			await page.waitForChanges();
+		};
+
+		test('accepts a dropped file when enabled', async ({ page }) => {
+			await page.setContent('<kol-input-file _label="File"></kol-input-file>');
+
+			await dropFile(page);
+
+			await expect(page.locator('.kol-input-container__filename')).toHaveText('dropped.txt');
+		});
+
+		/* A drop sets the filename but not the `--has-file` modifier, and emits `change` before `input` — unlike a
+		   selection in the native dialog (#10865). The tests pin that state through the skeleton migration. */
+		test('shows the name of a dropped file without marking it as selected', async ({ page }) => {
+			await page.setContent('<kol-input-file _label="File"></kol-input-file>');
+
+			await dropFile(page);
+
+			const filename = page.locator('.kol-input-container__filename');
+			await expect(filename).toHaveText('dropped.txt');
+			await expect(filename).not.toHaveClass(/kol-input-container__filename--has-file/);
+		});
+
+		test('emits change before input for a dropped file', async ({ page }) => {
+			await page.setContent('<kol-input-file _label="File"></kol-input-file>');
+			await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputFileElement) => {
+				const log: string[] = [];
+				(window as unknown as Record<string, unknown>).dropEvents = log;
+				['change', 'input'].forEach((type) => element.addEventListener(type, () => log.push(type)));
+			});
+
+			await dropFile(page);
+
+			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).dropEvents)).toEqual(['change', 'input']);
+		});
+
+		test('submits a dropped file in a native form with reflectInputValues in experimental mode', async ({ page }) => {
+			await setContentWithRetry(page, `${EXPERIMENTAL_MODE_HEAD}<body><form></form></body>`);
+			await registerWithReflectInputValues(page);
+			await insertAfterStartup(page, `<${COMPONENT_NAME} _label="File" _name="field"></${COMPONENT_NAME}>`, 'form');
+
+			await dropFile(page);
+
+			expect(await readFormData(page)).toEqual([['field', 'dropped.txt']]);
+		});
+
+		test('ignores a dropped file when disabled', async ({ page }) => {
+			await page.setContent('<kol-input-file _label="File" _disabled></kol-input-file>');
+			const filenameBefore = await page.locator('.kol-input-container__filename').textContent();
+
+			await dropFile(page);
+
+			/* The drag listeners sit on the container, not on the `<input disabled>`, so the native
+			   disabled state does not stop them on its own. */
+			await expect(page.locator('.kol-input-container__filename')).toHaveText(filenameBefore ?? '');
+		});
+
+		test('does not mark a disabled container as a drop target on dragover', async ({ page }) => {
+			await page.setContent('<kol-input-file _label="File" _disabled></kol-input-file>');
+
+			await page.locator('.kol-input-container').dispatchEvent('dragover');
+			await page.waitForChanges();
+
+			await expect(page.locator('.kol-input-container')).not.toHaveClass(/kol-input-container--is-dragover/);
+		});
+	});
+
+	testInputBehaviorContract<HTMLKolInputFileElement>({
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.setInputFiles({ name: 'file.txt', mimeType: 'text/plain', buffer: Buffer.from('this is test', 'utf8') });
+		},
+		inputSelector: 'input.kol-input[type="file"]',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', ['file.txt']),
+				callback('input', ['file.txt']),
+				kolEvent('change', ['file.txt']),
+				callback('change', ['file.txt']),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
+			initialValue: undefined,
+			formData: [],
+			experimentalFormData: [['field', 'file.txt']],
+			syncedValue: '',
+		},
 	});
 });

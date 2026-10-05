@@ -1,25 +1,5 @@
-@use '../@shared/global' as *;
-@use '../@shared/card.mixin' as *;
-@use '../@shared/mixins' as *;
-@use '../tooltip/style.scss' as *;
+@use '../@shared/dialog' as *;
 
 @layer kol-component {
-	@include kol-card;
-
-	.kol-dialog,
-	.kol-modal {
-		min-height: var(--a11y-min-size);
-		padding: 0;
-		border: 0;
-		/* Prevent scroll chaining from scrollable dialog content to the page. */
-		overscroll-behavior: contain;
-	}
-
-	.kol-dialog__close-button,
-	.kol-modal__close-button {
-		position: absolute;
-		top: to-rem(1);
-		right: to-rem(1);
-		z-index: 1;
-	}
+	@include kol-dialog;
 }

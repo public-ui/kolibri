@@ -5,15 +5,21 @@ import { KolButton, KolIcon, KolInputText } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 import { fetchVariantData } from '../../shares/fetchVariantData';
-import { getCustomThemes } from '../../shares/store';
+import { getTheme } from '../../shares/store';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const IconFont: FC = () => {
 	const [searchParams] = useSearchParams();
-	const theme = searchParams.get('theme') ?? getCustomThemes()?.[0]?.key;
+	const theme = searchParams.get('theme') ?? getTheme();
 	const iconVariants = useMemo(() => (theme ? fetchVariantData(theme, 'iconVariants') : []), [theme]);
 	const iconVariantsButton = useMemo(() => (theme ? fetchVariantData(theme, 'iconVariantsButton') : []), [theme]);
 	const iconVariantsInput = useMemo(() => (theme ? fetchVariantData(theme, 'iconVariantsInput') : []), [theme]);
+
+	/* Themes without variants only render the fallback text – there is nothing theme specific to snapshot. */
+	const hasIconVariants = Array.isArray(iconVariants) && iconVariants.length > 0;
+	const hasIconVariantsButton = Array.isArray(iconVariantsButton) && iconVariantsButton.length > 0;
+	const hasIconVariantsInput = Array.isArray(iconVariantsInput) && iconVariantsInput.length > 0;
 
 	return (
 		<>
@@ -21,22 +27,24 @@ export const IconFont: FC = () => {
 				<p>KolIcon renders different icon fonts depending on your theme.</p>
 			</SampleDescription>
 
-			<div className="grid grid-cols-2 gap-8 p-8">
-				{!Array.isArray(iconVariants) || iconVariants.length === 0 ? (
+			<SampleBlock id="icons" className="grid grid-cols-2 gap-8 p-8" skipSnapshot={!hasIconVariants}>
+				{!hasIconVariants ? (
 					<p>This theme has no variants for icons.</p>
 				) : (
 					iconVariants.map((element) => {
 						return (
 							<div className="flex gap-4" key={element}>
-								<KolIcon _label="" _icons={element} />
-								<span>&lt;KolIcon _icons='{element}' _label="" /&gt;</span>
+								<KolIcon _label={element} _icons={element} />
+								<span>
+									&lt;KolIcon _icons='{element}' _label="{element}" /&gt;
+								</span>
 							</div>
 						);
 					})
 				)}
-			</div>
-			<div className="grid grid-cols-2 gap-8 p-8">
-				{!Array.isArray(iconVariantsButton) || iconVariantsButton.length === 0 ? (
+			</SampleBlock>
+			<SampleBlock id="buttons" className="grid grid-cols-2 gap-8 p-8" skipSnapshot={!hasIconVariantsButton}>
+				{!hasIconVariantsButton ? (
 					<p>This theme has no variants for icons in buttons.</p>
 				) : (
 					iconVariantsButton.map((element) => {
@@ -48,9 +56,9 @@ export const IconFont: FC = () => {
 						);
 					})
 				)}
-			</div>
-			<div className="grid gap-8 p-8">
-				{!Array.isArray(iconVariantsInput) || iconVariantsInput.length === 0 ? (
+			</SampleBlock>
+			<SampleBlock id="inputs" className="grid gap-8 p-8" skipSnapshot={!hasIconVariantsInput}>
+				{!hasIconVariantsInput ? (
 					<p>This theme has no variants for icons in inputs.</p>
 				) : (
 					iconVariantsInput.map((element) => {
@@ -62,7 +70,7 @@ export const IconFont: FC = () => {
 						);
 					})
 				)}
-			</div>
+			</SampleBlock>
 		</>
 	);
 };

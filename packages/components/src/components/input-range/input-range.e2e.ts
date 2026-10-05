@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
+import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
@@ -19,6 +20,23 @@ test.describe(COMPONENT_NAME, () => {
 		componentName: COMPONENT_NAME,
 		fillAction,
 		testValue: EXPECTED_VALUE,
+	});
+
+	test.describe('Initial value', () => {
+		// Without `_value` the field takes the middle of the range from the native range input (#11076).
+		for (const [attributes, expected] of [
+			['_min="0" _max="5"', 3],
+			['_min="0" _max="50"', 25],
+			['_min="abc" _max="-5"', 50],
+		] as const) {
+			test(`takes ${expected} for ${attributes}`, async ({ page }) => {
+				await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" ${attributes}></${COMPONENT_NAME}>`);
+				await page.waitForChanges();
+
+				expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRangeElement) => element._value)).toBe(expected);
+				await expect(page.locator('input[type=range]')).toHaveValue(String(expected));
+			});
+		}
 	});
 
 	test.describe('Callbacks and Events', () => {
@@ -95,4 +113,33 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	testInputMessage<HTMLKolInputRangeElement>(COMPONENT_NAME);
+
+	testInputBehaviorContract<HTMLKolInputRangeElement>({
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.fill(TEST_VALUE);
+		},
+		inputSelector: 'input.kol-input-range__input--number',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', 10),
+				callback('input', 10),
+				kolEvent('change', 10),
+				callback('change', 10),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
+			initialValue: 50,
+			formData: [],
+			experimentalFormData: [['field', TEST_VALUE]],
+			syncedValue: TEST_VALUE,
+		},
+	});
 });

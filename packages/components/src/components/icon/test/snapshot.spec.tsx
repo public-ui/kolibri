@@ -1,10 +1,9 @@
 import { KolIconTag } from '../../../core/component-names';
-import type { IconProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolIcon } from '../component';
 
-executeSnapshotTests<IconProps>(
+executeSnapshotTests<Pick<KolIcon, '_icons' | '_label'>>(
 	KolIconTag,
 	[KolIcon],
 	[

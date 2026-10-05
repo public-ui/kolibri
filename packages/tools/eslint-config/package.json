@@ -15,15 +15,15 @@
 		"@stencil-community/eslint-plugin": "0.10.0",
 		"@typescript-eslint/eslint-plugin": "8.58.2",
 		"@typescript-eslint/parser": "8.58.2",
-		"eslint-plugin-boundaries": "7.1.0",
+		"eslint-plugin-boundaries": "7.2.0",
 		"eslint-plugin-json": "5.0.0",
 		"eslint-plugin-jsx-a11y": "6.10.2",
 		"eslint-plugin-react": "7.37.5",
 		"eslint-plugin-react-hooks": "7.1.1",
-		"globals": "17.8.0"
+		"globals": "17.13.0"
 	},
 	"devDependencies": {
-		"prettier": "3.9.6",
+		"prettier": "3.9.9",
 		"prettier-plugin-organize-imports": "4.3.0"
 	},
 	"peerDependencies": {

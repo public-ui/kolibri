@@ -1,6 +1,7 @@
 import { KolButton, KolForm, KolInputText } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const FormBasic: FC = () => {
@@ -16,14 +17,14 @@ export const FormBasic: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<KolForm className="w-full" _on={formEventHAndler}>
-				<div className="grid gap-2">
+			<SampleBlock id="form-basic" className="grid gap-2">
+				<KolForm className="w-full" _on={formEventHAndler}>
 					<KolInputText id="input1" _label="Input 1" />
 					<KolInputText id="input2" _label="Input 2" />
 					<KolInputText id="input3" _label="Input 3" />
 					<KolButton _label="Submit" _variant="primary" _type="submit" />
-				</div>
-			</KolForm>
+				</KolForm>
+			</SampleBlock>
 		</>
 	);
 };

@@ -54,7 +54,7 @@
 			line-height: 1.5;
 
 			&:not(:disabled):hover {
-				box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+				box-shadow: 0 2px 8px 2px var(--color-shadow);
 				border-color: var(--color-primary);
 			}
 

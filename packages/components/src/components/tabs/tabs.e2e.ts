@@ -77,20 +77,20 @@ test.describe('kol-tabs', () => {
 	test.describe('Tabs create button', () => {
 		test('should not show create button by default', async ({ page }) => {
 			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs"></kol-tabs>`);
-			const createButton = page.getByTestId('tabs-create-button');
+			const createButton = page.locator('kol-tabs .kol-tabs__button-create button');
 			await expect(createButton).toHaveCount(0);
 		});
 
 		test('should show create button when _has-create-button is true', async ({ page }) => {
 			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button></kol-tabs>`);
-			const createButton = page.getByTestId('tabs-create-button');
+			const createButton = page.locator('kol-tabs .kol-tabs__button-create button');
 			await expect(createButton).toBeVisible();
 		});
 
 		test('it calls the onCreate callback when create button is clicked', async ({ page }) => {
 			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button></kol-tabs>`);
 			const kolTabs = page.locator('kol-tabs');
-			const createButton = page.getByTestId('tabs-create-button');
+			const createButton = page.locator('kol-tabs .kol-tabs__button-create button');
 			const callbackPromise = kolTabs.evaluate((element: HTMLKolTabsElement) => {
 				return new Promise<void>((resolve) => {
 					element._on = {
@@ -107,7 +107,7 @@ test.describe('kol-tabs', () => {
 		test('it emits create event when create button is clicked', async ({ page }) => {
 			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button></kol-tabs>`);
 			const kolTabs = page.locator('kol-tabs');
-			const createButton = page.getByTestId('tabs-create-button');
+			const createButton = page.locator('kol-tabs .kol-tabs__button-create button');
 			const eventPromise = kolTabs.evaluate((element: HTMLKolTabsElement) => {
 				return new Promise<void>((resolve) => {
 					element.addEventListener('create', () => {
@@ -117,6 +117,30 @@ test.describe('kol-tabs', () => {
 			});
 			await createButton.click();
 			await expect(eventPromise).resolves.toBeUndefined();
+		});
+
+		test('should render the create button next to the tablist, not inside it', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button></kol-tabs>`);
+			const tablist = page.locator('kol-tabs [role="tablist"]');
+			await expect(tablist.locator('.kol-tabs__button-create')).toHaveCount(0);
+			await expect(tablist.getByRole('tab')).toHaveCount(TABS.length);
+			await expect(tablist.locator('button')).toHaveCount(TABS.length);
+			await expect(page.locator('kol-tabs .kol-tabs__button-group > .kol-tabs__button-create')).toHaveCount(1);
+		});
+
+		test('should reach the create button with the Tab key and not change the selection with arrow keys', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs" _has-create-button>
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			await kolTabs.getByRole('tab', { name: 'First tab' }).focus();
+			await page.keyboard.press('Tab');
+			const createButton = page.locator('kol-tabs .kol-tabs__button-create button');
+			await expect(createButton).toBeFocused();
+			await page.keyboard.press('ArrowRight');
+			await expect(kolTabs.getByRole('tab', { name: 'First tab' })).toHaveAttribute('aria-selected', 'true');
+			await expect(createButton).toBeFocused();
 		});
 	});
 
@@ -185,6 +209,42 @@ test.describe('kol-tabs', () => {
 
 			const finalCount = await page.evaluate(() => (window as unknown as Record<string, number>).switchCount);
 			expect(finalCount).toBe(1);
+		});
+	});
+
+	test.describe('Id generation', () => {
+		test('focuses the selected tab on switch when _label contains a comma', async ({ page }) => {
+			await page.setContent(`<kol-tabs _tabs='${JSON.stringify(TABS)}' _label="Tabs, mit Hinweis">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const kolTabs = page.locator('kol-tabs');
+			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
+			await secondTab.click();
+
+			// Ids are nonce-based and never derived from `_label`, so special characters in the
+			// label cannot break the `button#...` selector lookup in focusTabById ('nonce' in
+			// test mode, random hex otherwise).
+			const tabId = await secondTab.evaluate((el) => el.id);
+			expect(tabId).toMatch(/^tabs-(nonce|[0-9a-f]+)-tab-\d+$/);
+			await expect(secondTab).toBeFocused();
+			await expect(page.locator('.kol-tabs .selected')).toHaveCount(1);
+		});
+
+		test('generates unique tab ids for multiple instances with the same label', async ({ page }) => {
+			await page.setContent(`<kol-tabs id="first" _tabs='${JSON.stringify(TABS)}' _label="Tabs">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>
+			<kol-tabs id="second" _tabs='${JSON.stringify(TABS)}' _label="Tabs">
+				<div slot="tab-0">Contents of Tab 1</div>
+				<div slot="tab-1">Contents of Tab 2</div>
+			</kol-tabs>`);
+			const firstIds = await page.locator('#first [role="tab"]').evaluateAll((tabs) => tabs.map((tab) => tab.id));
+			const secondIds = await page.locator('#second [role="tab"]').evaluateAll((tabs) => tabs.map((tab) => tab.id));
+			expect(firstIds.length).toBe(2);
+			expect(secondIds.length).toBe(2);
+			expect(firstIds.some((id) => secondIds.includes(id))).toBe(false);
 		});
 	});
 });

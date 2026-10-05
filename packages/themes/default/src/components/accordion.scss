@@ -1,4 +1,5 @@
 @use '../mixins/to-rem' as *;
+@use '../mixins/elevation' as *;
 @use '../mixins/focus-outline' as *;
 @use '../mixins/typography' as *;
 @use '../mixins/icon' as *;
@@ -6,17 +7,28 @@
 @layer kol-theme-component {
 	@include kol-icon-theme;
 	.kol-accordion {
-		box-shadow: 0 0 4px color-mix(in srgb, black 80%, var(--color-subtle)); // darken by 80% to maintain contrast of 3:1
+		@include kol-elevation-outline;
+
+		/*
+		 * A raised panel, like a card. Only the dark branch names a surface: painting the (identical)
+		 * white on the element in light mode changes what the blurred shadow above composites against,
+		 * which moves a handful of anti-aliased pixels along its edge.
+		 */
+		background-color: light-dark(transparent, var(--color-light));
 		border-radius: var(--border-radius);
 		display: grid;
 		width: 100%;
 		height: 100%;
 
-		&:focus-within {
+		/* Belt and braces: the component already keeps a disabled summary from taking focus at all.
+		   The guard stays so no future focus path can draw a ring on a control that refuses input. */
+		&:not(.kol-accordion--disabled):focus-within {
 			@include focus-outline;
 		}
 
 		&__content {
+			// Everything slotted into the accordion stands on the accordion, not on the page behind it.
+			--kol-surface: var(--color-light);
 			padding-top: to-rem(12);
 			padding-right: to-rem(8);
 			padding-bottom: to-rem(12);
@@ -24,34 +36,28 @@
 		}
 
 		&__heading {
-			margin: 0;
-			border-bottom: 1px solid var(--color-mute-variant);
-		}
-
-		&__heading-button {
-			border-radius: var(--border-radius);
 			display: flex;
-			min-height: to-rem(35.2);
-			cursor: pointer;
+			/* The row floor used to come from the a11y min-height of the inner button, which sat inside
+			   this border; the summary carries border and floor in one box, so the border is added
+			   back. The former `to-rem(35.2)` sat on the button wrapper and never bound. */
+			min-height: calc(var(--a11y-min-size) + 1px);
+			margin: 0;
+			padding: to-rem(12) to-rem(8);
+			border-bottom: 1px solid var(--color-mute-variant);
 
-			&:focus-within {
-				.kol-button {
-					outline: 0;
-				}
+			&:not([aria-disabled='true']) {
+				cursor: pointer;
+			}
+
+			/* The ring is drawn by the block's `:focus-within` rule. */
+			&:focus {
+				outline: none;
 			}
 
 			.kol-span__container {
 				display: flex;
 				gap: 0.5em;
 				@include kol-typography-accordion;
-			}
-
-			.kol-button {
-				padding: to-rem(12) to-rem(8);
-
-				:focus {
-					outline: none;
-				}
 			}
 
 			.kol-icon {

@@ -1,3 +1,4 @@
+@use '~@public-ui/components/index' as *;
 @use '../mixins/to-rem' as *;
 @use '../mixins/focus-outline' as *;
 @use '../mixins/icon' as *;
@@ -37,11 +38,20 @@
 				padding-right: to-rem(var(--kol-nav-item-padding-right));
 				padding-left: to-rem(8);
 				gap: to-rem(8);
+
+				/* The link skeleton renders the entry as `.kol-link` wrapper inside the entry element.
+				   The wrapper must fill the entry so that trailing icons (expand) stay at the row end. */
+				flex: 1 1 auto;
 				align-items: center;
 
 				text-decoration: none;
 
-				&:focus-visible {
+				/* The UA default underline sits on the anchor itself. */
+				.kol-link__interactive-element {
+					text-decoration: none;
+				}
+
+				.kol-link__interactive-element:focus-visible {
 					@include focus-outline;
 				}
 
@@ -58,8 +68,10 @@
 					font-weight: bold;
 				}
 
-				&:hover .kol-span__label {
-					text-decoration: underline;
+				@include kol-enabled-wrapper {
+					&:hover .kol-span__label {
+						text-decoration: underline;
+					}
 				}
 			}
 		}
@@ -70,11 +82,14 @@
 
 				$root: &;
 
-				&:focus {
+				/* The class carrier is a wrapper and never receives focus. */
+				&__interactive-element:focus {
 					outline: none;
 				}
 
-				&:not([disabled]):hover {
+				/* State predicates live on the interactive element: on the wrapper `:not([disabled])`
+				   would always be true, re-enabling hover styling for disabled buttons. */
+				&__interactive-element:not([disabled]):hover {
 					--text-background-color: var(--color-primary-variant);
 					--text-border-color: var(--color-primary-variant);
 					--text-color: var(--color-light);
@@ -102,7 +117,7 @@
 					&:hover {
 						color: var(--text-color);
 						background-color: var(--text-background-color);
-						box-shadow: 0 2px 8px 2px rgb(8, 35, 48, 0.24);
+						box-shadow: 0 2px 8px 2px var(--color-shadow);
 						border-color: var(--text-border-color);
 					}
 
@@ -115,11 +130,11 @@
 						}
 					}
 
-					@at-root #{$root}:focus {
+					@at-root #{$root}__interactive-element:focus {
 						@include focus-outline;
 					}
 
-					@at-root #{$root}:disabled:hover & {
+					@at-root #{$root}__interactive-element:disabled:hover & {
 						color: var(--text-color);
 						background-color: var(--text-background-color);
 						box-shadow: none;

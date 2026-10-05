@@ -19,9 +19,26 @@ import { generateBemClassNames } from 'typed-bem';
 /**
  * Complete schema definition for all KoliBri components
  */
-type KoliBriComponentsBemSchema = {
+export type KoliBriComponentsBemSchema = {
 	'kol-abbr': {
 		modifiers: null;
+	};
+	'kol-accordion': {
+		elements: {
+			content: {
+				modifiers: null;
+			};
+			heading: {
+				modifiers: null;
+			};
+			wrapper: {
+				modifiers: null;
+			};
+			'wrapper-animation': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'disabled' | 'open'>;
 	};
 	'kol-alert': {
 		/**
@@ -56,6 +73,20 @@ type KoliBriComponentsBemSchema = {
 		 */
 		modifiers: Set<'hasCloser' | 'type-default' | 'type-error' | 'type-info' | 'type-success' | 'type-warning' | 'variant-card' | 'variant-msg'>;
 	};
+	'kol-badge': {
+		elements: {
+			label: {
+				modifiers: null;
+			};
+			'smart-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'has-smart-button'>;
+	};
+	'kol-version': {
+		modifiers: null;
+	};
 	'kol-avatar': {
 		elements: {
 			image: {
@@ -63,6 +94,131 @@ type KoliBriComponentsBemSchema = {
 			};
 			initials: {
 				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-card': {
+		elements: {
+			'close-button': {
+				modifiers: null;
+			};
+			content: {
+				modifiers: null;
+			};
+			header: {
+				modifiers: null;
+			};
+			link: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	/**
+	 * The dialog carries both its own block class and the deprecated `kol-modal` one, and marks
+	 * its variant with an element-style suffix (`kol-dialog__blank`, `kol-dialog__card`) rather
+	 * than a modifier. Both are part of the published theming surface and are kept verbatim.
+	 */
+	'kol-dialog': {
+		elements: {
+			blank: {
+				modifiers: null;
+			};
+			card: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-modal': {
+		elements: {
+			blank: {
+				modifiers: null;
+			};
+			card: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-button': {
+		elements: {
+			'interactive-element': {
+				modifiers: null;
+			};
+			text: {
+				modifiers: null;
+			};
+			tooltip: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'disabled' | 'hide-label' | 'inline' | 'standalone'>;
+	};
+	'kol-breadcrumb': {
+		elements: {
+			icon: {
+				modifiers: null;
+			};
+			link: {
+				modifiers: null;
+			};
+			list: {
+				modifiers: null;
+			};
+			'list-element': {
+				modifiers: null;
+			};
+			'list-element-span': {
+				modifiers: null;
+			};
+			separator: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-popover-button': {
+		elements: {
+			popover: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'inline' | 'open'>;
+	};
+	'kol-details': {
+		elements: {
+			content: {
+				modifiers: null;
+			};
+			heading: {
+				modifiers: null;
+			};
+			wrapper: {
+				modifiers: null;
+			};
+			'wrapper-animation': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'disabled' | 'open'>;
+	};
+	/**
+	 * The block class sits on the host element: everything the drawer renders is an element of it
+	 * (`kol-drawer__dialog`, `kol-drawer__wrapper`, `kol-drawer__content`), so no node inside the
+	 * shadow root carries the bare block name.
+	 */
+	'kol-drawer': {
+		elements: {
+			content: {
+				modifiers: null;
+			};
+			dialog: {
+				modifiers: null;
+			};
+			wrapper: {
+				modifiers: Set<'bottom' | 'is-closing' | 'left' | 'open' | 'right' | 'top'>;
 			};
 		};
 		modifiers: null;
@@ -127,6 +283,17 @@ type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'block' | 'inline'>;
 	};
+	'kol-skip-nav': {
+		elements: {
+			list: {
+				modifiers: null;
+			};
+			'list-item': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-skeleton': {
 		elements: {
 			container: {
@@ -169,6 +336,195 @@ type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'has-badge' | 'hide-label'>;
 	};
+	'kol-link': {
+		elements: {
+			'interactive-element': {
+				modifiers: null;
+			};
+			icon: {
+				modifiers: null;
+			};
+			text: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'disabled' | 'external-link' | 'hide-label' | 'inline' | 'standalone'>;
+	};
+	'kol-form': {
+		elements: {
+			alert: {
+				modifiers: null;
+			};
+			link: {
+				modifiers: null;
+			};
+			'mandatory-fields-hint': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-form-field': {
+		elements: {
+			counter: {
+				modifiers: null;
+			};
+			hint: {
+				modifiers: null;
+			};
+			input: {
+				modifiers: Set<'orientation-horizontal' | 'orientation-vertical'>;
+			};
+			label: {
+				modifiers: Set<'legend'>;
+			};
+			'label-text': {
+				modifiers: null;
+			};
+			msg: {
+				modifiers: null;
+			};
+			tooltip: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<
+			| 'default'
+			| 'disabled'
+			| 'error'
+			| 'hidden-msg'
+			| 'hide-label'
+			| 'info'
+			| 'msg-type-default'
+			| 'msg-type-error'
+			| 'msg-type-info'
+			| 'msg-type-success'
+			| 'msg-type-warning'
+			| 'radio'
+			| 'read-only'
+			| 'required'
+			| 'success'
+			| 'touched'
+			| 'warning'
+		>;
+	};
+	'kol-input': {
+		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'readonly' | 'required' | 'success' | 'touched' | 'warning'>;
+	};
+	'kol-input-container': {
+		elements: {
+			adornment: {
+				modifiers: Set<'end' | 'start'>;
+			};
+			container: {
+				modifiers: null;
+			};
+			icon: {
+				modifiers: null;
+			};
+			'smart-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'success' | 'warning'>;
+	};
+	'kol-field-control': {
+		elements: {
+			hint: {
+				modifiers: null;
+			};
+			input: {
+				modifiers: null;
+			};
+			label: {
+				modifiers: Set<'visually-hidden'>;
+			};
+			'label-text': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<
+			| 'default'
+			| 'disabled'
+			| 'error'
+			| 'hide-label'
+			| 'info'
+			| 'label-align-left'
+			| 'label-align-right'
+			| 'read-only'
+			| 'required'
+			| 'success'
+			| 'touched'
+			| 'warning'
+		>;
+	};
+	'kol-checkbox': {
+		elements: {
+			icon: {
+				modifiers: null;
+			};
+			input: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<
+			| 'checked'
+			| 'default'
+			| 'disabled'
+			| 'error'
+			| 'indeterminate'
+			| 'info'
+			| 'required'
+			| 'success'
+			| 'touched'
+			| 'variant-button'
+			| 'variant-default'
+			| 'variant-switch'
+			| 'warning'
+		>;
+	};
+	'kol-input-radio': {
+		elements: {
+			input: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'checked' | 'default' | 'disabled' | 'error' | 'info' | 'required' | 'success' | 'touched' | 'warning'>;
+	};
+	'kol-select': {
+		elements: {
+			optgroup: {
+				modifiers: Set<'disabled'>;
+			};
+			option: {
+				modifiers: Set<'disabled' | 'selected'>;
+			};
+		};
+		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'required' | 'success' | 'touched' | 'warning'>;
+	};
+	'kol-custom-suggestions-option': {
+		modifiers: Set<'disabled'>;
+	};
+	'kol-custom-suggestions-options-group': {
+		modifiers: Set<'cursor-hidden' | 'open'>;
+	};
+	'kol-split-button': {
+		elements: {
+			button: {
+				modifiers: null;
+			};
+			'horizontal-line': {
+				modifiers: null;
+			};
+			root: {
+				modifiers: null;
+			};
+			'secondary-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-spin': {
 		elements: {
 			spinner: {
@@ -178,6 +534,165 @@ type KoliBriComponentsBemSchema = {
 				modifiers: Set<'1' | '2' | '3' | 'neutral'>;
 			};
 			loader: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-table': {
+		/**
+		 * Variant classes (`kol-table--<variant>`) are consumer-defined and therefore not part of the
+		 * schema; the functional component merges them onto the root as plain classes.
+		 */
+		elements: {
+			body: {
+				modifiers: null;
+			};
+			caption: {
+				modifiers: null;
+			};
+			cell: {
+				modifiers: Set<
+					| 'actions'
+					| 'align-center'
+					| 'align-justify'
+					| 'align-left'
+					| 'align-right'
+					| 'ascending'
+					| 'body'
+					| 'descending'
+					| 'header'
+					| 'none'
+					| 'other'
+					| 'selection'
+					| 'states'
+					| 'sticky-left'
+					| 'sticky-right'
+				>;
+			};
+			'cell-actions': {
+				modifiers: null;
+			};
+			'cell-states': {
+				modifiers: null;
+			};
+			'focus-element': {
+				modifiers: null;
+			};
+			footer: {
+				modifiers: null;
+			};
+			head: {
+				modifiers: null;
+			};
+			'head-row': {
+				modifiers: null;
+			};
+			loader: {
+				modifiers: Set<'shown'>;
+			};
+			row: {
+				modifiers: Set<'body' | 'footer'>;
+			};
+			'scroll-container': {
+				modifiers: null;
+			};
+			selection: {
+				modifiers: Set<'checked' | 'indeterminate'>;
+			};
+			'selection-icon': {
+				modifiers: null;
+			};
+			'selection-input': {
+				modifiers: Set<'checkbox' | 'radio'>;
+			};
+			'selection-input-tooltip': {
+				modifiers: null;
+			};
+			'selection-label': {
+				modifiers: Set<'disabled'>;
+			};
+			sort: {
+				modifiers: null;
+			};
+			'sort-button': {
+				modifiers: null;
+			};
+			'sort-order': {
+				modifiers: null;
+			};
+			spacer: {
+				modifiers: Set<'foot' | 'head'>;
+			};
+			'spacer-line': {
+				modifiers: Set<'foot' | 'head'>;
+			};
+			table: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-tabs': {
+		elements: {
+			'button-create': {
+				modifiers: null;
+			};
+			'button-group': {
+				modifiers: null;
+			};
+			content: {
+				modifiers: null;
+			};
+			tab: {
+				modifiers: null;
+			};
+			tablist: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'align-bottom' | 'align-left' | 'align-right' | 'align-top'>;
+	};
+	'kol-textarea': {
+		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'readonly' | 'required' | 'success' | 'touched' | 'warning'>;
+	};
+	'kol-toolbar': {
+		elements: {
+			item: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'orientation-horizontal' | 'orientation-vertical'>;
+	};
+	'kol-tree': {
+		elements: {
+			'treeview-navigation': {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
+	'kol-tree-item': {
+		elements: {
+			children: {
+				modifiers: null;
+			};
+			link: {
+				modifiers: Set<'active' | 'first-level'>;
+			};
+			'link-inner': {
+				modifiers: null;
+			};
+			text: {
+				modifiers: null;
+			};
+			'toggle-button': {
+				modifiers: null;
+			};
+			'toggle-button-icon': {
+				modifiers: null;
+			};
+			'toggle-button-placeholder': {
 				modifiers: null;
 			};
 		};
@@ -209,10 +724,94 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: new Set(['hasCloser', 'type-default', 'type-error', 'type-info', 'type-success', 'type-warning', 'variant-card', 'variant-msg']),
 	},
+	'kol-badge': {
+		elements: {
+			label: { modifiers: null },
+			'smart-button': { modifiers: null },
+		},
+		modifiers: new Set(['has-smart-button']),
+	},
+	'kol-version': {
+		modifiers: null,
+	},
+	'kol-accordion': {
+		elements: {
+			content: { modifiers: null },
+			heading: { modifiers: null },
+			wrapper: { modifiers: null },
+			'wrapper-animation': { modifiers: null },
+		},
+		modifiers: new Set(['disabled', 'open']),
+	},
 	'kol-avatar': {
 		elements: {
 			image: { modifiers: null },
 			initials: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-card': {
+		elements: {
+			'close-button': { modifiers: null },
+			content: { modifiers: null },
+			header: { modifiers: null },
+			link: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-dialog': {
+		elements: {
+			blank: { modifiers: null },
+			card: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-modal': {
+		elements: {
+			blank: { modifiers: null },
+			card: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-button': {
+		elements: {
+			'interactive-element': { modifiers: null },
+			text: { modifiers: null },
+			tooltip: { modifiers: null },
+		},
+		modifiers: new Set(['disabled', 'hide-label', 'inline', 'standalone']),
+	},
+	'kol-breadcrumb': {
+		elements: {
+			icon: { modifiers: null },
+			link: { modifiers: null },
+			list: { modifiers: null },
+			'list-element': { modifiers: null },
+			'list-element-span': { modifiers: null },
+			separator: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-popover-button': {
+		elements: {
+			popover: { modifiers: null },
+		},
+		modifiers: new Set(['inline', 'open']),
+	},
+	'kol-details': {
+		elements: {
+			content: { modifiers: null },
+			heading: { modifiers: null },
+			wrapper: { modifiers: null },
+			'wrapper-animation': { modifiers: null },
+		},
+		modifiers: new Set(['disabled', 'open']),
+	},
+	'kol-drawer': {
+		elements: {
+			content: { modifiers: null },
+			dialog: { modifiers: null },
+			wrapper: { modifiers: new Set(['bottom', 'is-closing', 'left', 'open', 'right', 'top']) },
 		},
 		modifiers: null,
 	},
@@ -246,6 +845,13 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: new Set(['block', 'inline']),
 	},
+	'kol-skip-nav': {
+		elements: {
+			list: { modifiers: null },
+			'list-item': { modifiers: null },
+		},
+		modifiers: null,
+	},
 	'kol-skeleton': {
 		elements: {
 			actions: { modifiers: null },
@@ -270,11 +876,223 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: new Set(['has-badge', 'hide-label']),
 	},
+	'kol-link': {
+		elements: {
+			'interactive-element': { modifiers: null },
+			icon: { modifiers: null },
+			text: { modifiers: null },
+		},
+		modifiers: new Set(['disabled', 'external-link', 'hide-label', 'inline', 'standalone']),
+	},
+	'kol-form': {
+		elements: {
+			alert: { modifiers: null },
+			link: { modifiers: null },
+			'mandatory-fields-hint': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-form-field': {
+		elements: {
+			counter: { modifiers: null },
+			hint: { modifiers: null },
+			input: { modifiers: new Set(['orientation-horizontal', 'orientation-vertical']) },
+			label: { modifiers: new Set(['legend']) },
+			'label-text': { modifiers: null },
+			msg: { modifiers: null },
+			tooltip: { modifiers: null },
+		},
+		modifiers: new Set([
+			'default',
+			'disabled',
+			'error',
+			'hidden-msg',
+			'hide-label',
+			'info',
+			'msg-type-default',
+			'msg-type-error',
+			'msg-type-info',
+			'msg-type-success',
+			'msg-type-warning',
+			'radio',
+			'read-only',
+			'required',
+			'success',
+			'touched',
+			'warning',
+		]),
+	},
+	'kol-input': {
+		modifiers: new Set(['default', 'disabled', 'error', 'info', 'readonly', 'required', 'success', 'touched', 'warning']),
+	},
+	'kol-input-container': {
+		elements: {
+			adornment: { modifiers: new Set(['end', 'start']) },
+			container: { modifiers: null },
+			icon: { modifiers: null },
+			'smart-button': { modifiers: null },
+		},
+		modifiers: new Set(['default', 'disabled', 'error', 'info', 'success', 'warning']),
+	},
+	'kol-field-control': {
+		elements: {
+			hint: { modifiers: null },
+			input: { modifiers: null },
+			label: { modifiers: new Set(['visually-hidden']) },
+			'label-text': { modifiers: null },
+		},
+		modifiers: new Set([
+			'default',
+			'disabled',
+			'error',
+			'hide-label',
+			'info',
+			'label-align-left',
+			'label-align-right',
+			'read-only',
+			'required',
+			'success',
+			'touched',
+			'warning',
+		]),
+	},
+	'kol-checkbox': {
+		elements: {
+			icon: { modifiers: null },
+			input: { modifiers: null },
+		},
+		modifiers: new Set([
+			'checked',
+			'default',
+			'disabled',
+			'error',
+			'indeterminate',
+			'info',
+			'required',
+			'success',
+			'touched',
+			'variant-button',
+			'variant-default',
+			'variant-switch',
+			'warning',
+		]),
+	},
+	'kol-input-radio': {
+		elements: {
+			input: { modifiers: null },
+		},
+		modifiers: new Set(['checked', 'default', 'disabled', 'error', 'info', 'required', 'success', 'touched', 'warning']),
+	},
+	'kol-select': {
+		elements: {
+			optgroup: { modifiers: new Set(['disabled']) },
+			option: { modifiers: new Set(['disabled', 'selected']) },
+		},
+		modifiers: new Set(['default', 'disabled', 'error', 'info', 'required', 'success', 'touched', 'warning']),
+	},
+	'kol-custom-suggestions-option': {
+		modifiers: new Set(['disabled']),
+	},
+	'kol-custom-suggestions-options-group': {
+		modifiers: new Set(['cursor-hidden', 'open']),
+	},
+	'kol-split-button': {
+		elements: {
+			button: { modifiers: null },
+			'horizontal-line': { modifiers: null },
+			root: { modifiers: null },
+			'secondary-button': { modifiers: null },
+		},
+		modifiers: null,
+	},
 	'kol-spin': {
 		elements: {
 			loader: { modifiers: null },
 			spinner: { modifiers: new Set(['cycle', 'dot', 'none']) },
 			'spinner-element': { modifiers: new Set(['1', '2', '3', 'neutral']) },
+		},
+		modifiers: null,
+	},
+	'kol-table': {
+		elements: {
+			body: { modifiers: null },
+			caption: { modifiers: null },
+			cell: {
+				modifiers: new Set([
+					'actions',
+					'align-center',
+					'align-justify',
+					'align-left',
+					'align-right',
+					'ascending',
+					'body',
+					'descending',
+					'header',
+					'none',
+					'other',
+					'selection',
+					'states',
+					'sticky-left',
+					'sticky-right',
+				]),
+			},
+			'cell-actions': { modifiers: null },
+			'cell-states': { modifiers: null },
+			'focus-element': { modifiers: null },
+			footer: { modifiers: null },
+			head: { modifiers: null },
+			'head-row': { modifiers: null },
+			loader: { modifiers: new Set(['shown']) },
+			row: { modifiers: new Set(['body', 'footer']) },
+			'scroll-container': { modifiers: null },
+			selection: { modifiers: new Set(['checked', 'indeterminate']) },
+			'selection-icon': { modifiers: null },
+			'selection-input': { modifiers: new Set(['checkbox', 'radio']) },
+			'selection-input-tooltip': { modifiers: null },
+			'selection-label': { modifiers: new Set(['disabled']) },
+			sort: { modifiers: null },
+			'sort-button': { modifiers: null },
+			'sort-order': { modifiers: null },
+			spacer: { modifiers: new Set(['foot', 'head']) },
+			'spacer-line': { modifiers: new Set(['foot', 'head']) },
+			table: { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-tabs': {
+		elements: {
+			'button-create': { modifiers: null },
+			'button-group': { modifiers: null },
+			content: { modifiers: null },
+			tab: { modifiers: null },
+			tablist: { modifiers: null },
+		},
+		modifiers: new Set(['align-bottom', 'align-left', 'align-right', 'align-top']),
+	},
+	'kol-textarea': {
+		modifiers: new Set(['default', 'disabled', 'error', 'info', 'readonly', 'required', 'success', 'touched', 'warning']),
+	},
+	'kol-toolbar': {
+		elements: {
+			item: { modifiers: null },
+		},
+		modifiers: new Set(['orientation-horizontal', 'orientation-vertical']),
+	},
+	'kol-tree': {
+		elements: {
+			'treeview-navigation': { modifiers: null },
+		},
+		modifiers: null,
+	},
+	'kol-tree-item': {
+		elements: {
+			children: { modifiers: null },
+			link: { modifiers: new Set(['active', 'first-level']) },
+			'link-inner': { modifiers: null },
+			text: { modifiers: null },
+			'toggle-button': { modifiers: null },
+			'toggle-button-icon': { modifiers: null },
+			'toggle-button-placeholder': { modifiers: null },
 		},
 		modifiers: null,
 	},

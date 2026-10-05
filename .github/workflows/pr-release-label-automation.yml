@@ -1,0 +1,46 @@
+name: PR Release Label Automation
+
+on:
+  pull_request_target:
+    types: [opened, edited, reopened]
+
+concurrency:
+  group: workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  set-release-label:
+    # Contributors without triage permission cannot set labels themselves, so every fork pull
+    # request would fail the required `validate-release-label` check until a maintainer acts.
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Set the release label derived from the PR title
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // The mapping covers the types allowed by `validate-pr-title` and matches the
+            // categories in `.github/release.yml`.
+            const labelsByType = {
+              docs: 'release:doc',
+              feat: 'release:feature',
+              fix: 'release:fix',
+              perf: 'release:improvement',
+            };
+            const type = context.payload.pull_request.title.match(/^(\w+)(\([^)]*\))?!?:/)?.[1];
+            const label = labelsByType[type] ?? 'release:engineering';
+
+            const existingLabels = context.payload.pull_request.labels.map((l) => l.name);
+            if (existingLabels.some((name) => name.startsWith('release:'))) {
+              return;
+            }
+
+            const { owner, repo } = context.repo;
+            await github.rest.issues.addLabels({
+              owner,
+              repo,
+              issue_number: context.issue.number,
+              labels: [label],
+            });

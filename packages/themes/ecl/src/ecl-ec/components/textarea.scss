@@ -13,5 +13,9 @@
 		&::placeholder {
 			color: var(--ecl-color-dark-60);
 		}
+
+		&:focus {
+			outline: none;
+		}
 	}
 }

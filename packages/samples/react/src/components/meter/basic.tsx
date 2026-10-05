@@ -1,6 +1,7 @@
-import { KolHeading, KolMeter } from '@public-ui/react-v19';
+import { KolMeter } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const MeterBasic: FC = () => (
@@ -10,14 +11,13 @@ export const MeterBasic: FC = () => (
 		</SampleDescription>
 
 		<div className="grid gap-8">
-			<section className="grid gap-4">
-				<KolHeading _level={2} _label="Basic" />
+			<SampleBlock id="basic" heading="Basic">
 				<div className="flex flex-col gap-4">
 					<KolMeter _label="Storage used" _value={0.5} />
 					<KolMeter _label="Weight" _max={100} _value={75} _unit="kg" />
 					<KolMeter _label="Temperature" _min={-100} _max={100} _value={-50} _unit="°C" />
 				</div>
-			</section>
+			</SampleBlock>
 		</div>
 	</>
 );

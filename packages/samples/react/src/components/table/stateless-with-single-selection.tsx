@@ -1,9 +1,10 @@
 import type { KoliBriTableCell, KoliBriTableSelection, KoliBriTableSelectionKeys } from '@public-ui/components';
 import { createReactRenderElement, KolButton, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
-import React, { useEffect, useRef, useState } from 'react';
-import { useToasterService } from '../../hooks/useToasterService';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { useAlert } from '../../hooks/useAlert';
 import { getRoot } from '../../shares/react-roots';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 type SelectionValue = string | number;
@@ -20,7 +21,7 @@ const DATA = [
 type Data = (typeof DATA)[0];
 
 function KolButtonWrapper({ label }: { label: string }) {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
@@ -42,13 +43,13 @@ export const TableStatelessWithSingleSelection: FC = () => {
 
 	const kolTableStatelessRef = useRef<HTMLKolTableStatelessElement>(null);
 
-	const handleSelectionChangeEvent = ({ detail: selection }: CustomEvent<SelectionValue[]>) => {
+	const handleSelectionChangeEvent = useCallback(({ detail: selection }: CustomEvent<SelectionValue[]>) => {
 		console.log('Selection change via event', selection);
-	};
-	const handleSelectionChangeCallback = (_event: Event, selection: SelectionValue[]) => {
+	}, []);
+	const handleSelectionChangeCallback = useCallback((_event: Event, selection: SelectionValue[]) => {
 		console.log('Selection change via callback', selection);
 		setSelectedKeys(selection);
-	};
+	}, []);
 
 	useEffect(() => {
 		const tableElement = kolTableStatelessRef.current as unknown as KolTableStatelessElement | null;
@@ -58,13 +59,13 @@ export const TableStatelessWithSingleSelection: FC = () => {
 		return () => {
 			tableElement?.removeEventListener(selectionChangeEvent, handleSelectionChangeEvent);
 		};
-	}, [kolTableStatelessRef]);
+	}, [kolTableStatelessRef, handleSelectionChangeEvent]);
 
-	const renderButton = (element: HTMLElement, cell: KoliBriTableCell) => {
+	const renderButton = useCallback((element: HTMLElement, cell: KoliBriTableCell) => {
 		const data = (cell as { data?: Data }).data;
 		const id = data?.id;
 		getRoot(createReactRenderElement(element)).render(<KolButtonWrapper label={`Click ${id}`} />);
-	};
+	}, []);
 
 	return (
 		<>
@@ -72,10 +73,10 @@ export const TableStatelessWithSingleSelection: FC = () => {
 				<p>This sample shows KolTableStateless with checkboxes for selection enabled.</p>
 			</SampleDescription>
 
-			<section className="w-full">
+			<SampleBlock id="single-selection" className="w-full" fitContent>
 				<KolTableStateless
 					_label="Table with selection checkboxes"
-					_headerCells={{
+					_headers={{
 						horizontal: [
 							[
 								{ key: 'id', label: '#ID', textAlign: 'left' },
@@ -91,7 +92,7 @@ export const TableStatelessWithSingleSelection: FC = () => {
 					style={{ maxWidth: '600px' }}
 					ref={kolTableStatelessRef}
 				/>
-			</section>
+			</SampleBlock>
 		</>
 	);
 };

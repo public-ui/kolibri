@@ -35,7 +35,7 @@ import {
 import type { ComponentProps, FC } from 'react';
 import React from 'react';
 
-import { useToasterService } from '../../hooks/useToasterService';
+import { useAlert } from '../../hooks/useAlert';
 import { getRoot } from '../../shares/react-roots';
 import { getTheme, getThemeName } from '../../shares/store';
 import { TABLE_DATA, type TableDataType } from './table-data';
@@ -43,7 +43,7 @@ import { TABLE_DATA, type TableDataType } from './table-data';
 type KolButtonProps = ComponentProps<typeof KolButton>;
 
 function KolButtonWrapper(props: KolButtonProps & { style: Record<string, unknown> }) {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
 	};
@@ -182,7 +182,7 @@ const renderCellContent = (element: HTMLElement, content: React.ReactNode) => {
 };
 
 export const HandoutBasic: FC = () => {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,

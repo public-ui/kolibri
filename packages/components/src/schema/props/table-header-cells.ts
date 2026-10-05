@@ -22,7 +22,7 @@ const isHeaderRows = (rows: unknown): rows is KoliBriTableHeaderCell[][] => {
 };
 
 /* validator */
-export const validateTableHeaderCells = (component: Generic.Element.Component, value?: TableHeaderCellsPropType): void => {
+export const validateTableHeaders = (component: Generic.Element.Component, value?: TableHeaderCellsPropType): void => {
 	emptyStringByArrayHandler(value, () => {
 		objectObjectHandler(value, () => {
 			try {
@@ -32,7 +32,7 @@ export const validateTableHeaderCells = (component: Generic.Element.Component, v
 			}
 			watchValidator(
 				component,
-				'_headerCells',
+				'_headers',
 				(value): boolean => {
 					if (typeof value !== 'object' || value === null) return false;
 					const horizontal = value.horizontal;

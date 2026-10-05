@@ -1,11 +1,12 @@
-import { KolButton, KolHeading } from '@public-ui/react-v19';
+import { KolButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { useToasterService } from '../../hooks/useToasterService';
+import { useAlert } from '../../hooks/useAlert';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ButtonBaselined: FC = () => {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
@@ -21,13 +22,12 @@ export const ButtonBaselined: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Vertically Aligned Buttons" />
+				<SampleBlock id="vertically-aligned-buttons" heading="Vertically Aligned Buttons" fitContent>
 					<div className="flex flex-wrap gap-2">
 						<KolButton _label="Label-Text" _on={dummyEventHandler} />
 						<KolButton _icons="kolicon-cogwheel" _label="Label-Text with Icon" _on={dummyEventHandler} />
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

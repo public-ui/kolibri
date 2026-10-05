@@ -1,4 +1,28 @@
-import { KolDrawer } from '../shadow';
+import { KolDrawer } from '../component';
+
+type DrawerInternals = {
+	dialogRef: { el?: object };
+	wrapperRef: { el?: HTMLElement };
+	handleClose: (event: Event) => void;
+};
+
+const internals = (drawer: KolDrawer) => drawer as unknown as DrawerInternals;
+
+/**
+ * Builds a loaded drawer with a stand-in for the native dialog: jsdom implements neither
+ * `showModal()` nor `close()`, which is what the optional chaining in the component guards against.
+ */
+const setUpDrawer = (dialog: object = {}) => {
+	const drawer = new KolDrawer();
+	drawer.componentWillLoad();
+	internals(drawer).dialogRef.el = dialog;
+	return drawer;
+};
+
+/** Replays the native `close` event of the dialog, which the component listens to for teardown. */
+const fireDialogClose = (drawer: KolDrawer) => {
+	internals(drawer).handleClose({ target: internals(drawer).dialogRef.el } as unknown as Event);
+};
 
 afterEach(() => {
 	jest.restoreAllMocks();
@@ -6,16 +30,14 @@ afterEach(() => {
 
 describe('kol-drawer methods', () => {
 	it('does not throw in open when dialog showModal is unavailable', async () => {
-		const drawer = new KolDrawer();
-		(drawer as unknown as { dialogElement: object }).dialogElement = {};
+		const drawer = setUpDrawer();
 
 		await expect(drawer.open()).resolves.toBeUndefined();
 	});
 
 	it('does not throw in close flow when dialog close is unavailable', async () => {
-		const drawer = new KolDrawer();
-		(drawer as unknown as { dialogWrapperElement: HTMLElement; dialogElement: object }).dialogWrapperElement = document.createElement('div');
-		(drawer as unknown as { dialogElement: object }).dialogElement = {};
+		const drawer = setUpDrawer();
+		internals(drawer).wrapperRef.el = document.createElement('div');
 		jest.spyOn(window, 'getComputedStyle').mockReturnValue({ animationName: 'none' } as CSSStyleDeclaration);
 
 		await expect(drawer.close()).resolves.toBeUndefined();
@@ -27,14 +49,9 @@ describe('kol-drawer scroll lock', () => {
 
 	let currentDrawer: KolDrawer | undefined;
 
-	const setUpDrawer = () => {
-		const drawer = new KolDrawer();
-		(drawer as unknown as { dialogElement: object }).dialogElement = {
-			addEventListener: jest.fn(),
-			removeEventListener: jest.fn(),
-		};
-		currentDrawer = drawer;
-		return drawer;
+	const setUpLockedDrawer = () => {
+		currentDrawer = setUpDrawer();
+		return currentDrawer;
 	};
 
 	afterEach(() => {
@@ -46,7 +63,7 @@ describe('kol-drawer scroll lock', () => {
 	});
 
 	it('locks the document scroll when shown modally', async () => {
-		const drawer = setUpDrawer();
+		const drawer = setUpLockedDrawer();
 
 		await drawer.show(true);
 
@@ -54,7 +71,7 @@ describe('kol-drawer scroll lock', () => {
 	});
 
 	it('does not lock the document scroll when shown non-modally', async () => {
-		const drawer = setUpDrawer();
+		const drawer = setUpLockedDrawer();
 
 		await drawer.show(false);
 
@@ -62,18 +79,18 @@ describe('kol-drawer scroll lock', () => {
 	});
 
 	it('unlocks the document scroll when the native dialog closes', async () => {
-		const drawer = setUpDrawer();
+		const drawer = setUpLockedDrawer();
 		jest.spyOn(window, 'getComputedStyle').mockReturnValue({ animationName: 'none' } as CSSStyleDeclaration);
 
 		await drawer.show(true);
 		expect(getOverflow()).toBe('hidden');
 
-		(drawer as unknown as { handleClose: () => void }).handleClose();
+		fireDialogClose(drawer);
 		expect(getOverflow()).toBe('');
 	});
 
 	it('unlocks the document scroll when the component is disconnected while open', async () => {
-		const drawer = setUpDrawer();
+		const drawer = setUpLockedDrawer();
 
 		await drawer.show(true);
 		expect(getOverflow()).toBe('hidden');

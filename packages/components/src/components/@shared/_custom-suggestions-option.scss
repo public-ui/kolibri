@@ -2,15 +2,21 @@
 	.kol-custom-suggestions-option {
 		line-height: 1.5;
 		white-space: normal;
-		cursor: pointer;
 		overflow-wrap: break-word;
+
+		/* The `not-allowed` reset for disabled controls lives in `kol-global`, which loses to
+		   `kol-component` whatever the specificity (see `_layer-order.scss`). An unguarded pointer
+		   therefore wins and makes a dead option look selectable, focused or not. */
+		&:not(.kol-custom-suggestions-option--disabled) {
+			cursor: pointer;
+		}
 
 		.kol-custom-suggestions-options-group--cursor-hidden & {
 			cursor: none !important;
 		}
 
-		&--disabled:focus,
-		&--disabled:focus * {
+		&--disabled,
+		&--disabled * {
 			cursor: not-allowed;
 		}
 	}

@@ -19,9 +19,12 @@
 
 		&__heading {
 			margin: 0;
-		}
 
-		&__heading-button {
+			/* `global.scss` weights every `.kol-headline` at 700; the details label stays regular. */
+			.kol-headline {
+				font-weight: 400;
+			}
+
 			.kol-icon {
 				font-size: to-rem(19.2);
 			}
@@ -34,11 +37,11 @@
 				}
 
 				&__label {
-					border-bottom: 3px solid black;
+					border-bottom: 3px solid var(--color-ink);
 				}
 			}
 
-			.kol-button:focus-within {
+			&:not([aria-disabled='true']):focus {
 				@include focus-outline;
 				cursor: pointer;
 			}

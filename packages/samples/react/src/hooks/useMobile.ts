@@ -4,12 +4,10 @@ export function useMobile(): boolean {
 	const mediaQuery = matchMedia('(max-width: 1023px)');
 	const [matches, setMatches] = useState<boolean>(mediaQuery.matches);
 
-	const handleChange = () => {
-		setMatches(mediaQuery.matches);
-	};
-
 	useEffect(() => {
-		handleChange(); // handle initial value
+		const handleChange = (e: MediaQueryListEvent) => {
+			setMatches(e.matches);
+		};
 		mediaQuery.addEventListener('change', handleChange);
 
 		return () => {

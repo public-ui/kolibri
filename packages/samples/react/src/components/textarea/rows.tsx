@@ -3,6 +3,7 @@ import React from 'react';
 import { KolForm, KolTextarea } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const TextareaRows: FC = () => (
@@ -13,8 +14,10 @@ export const TextareaRows: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<KolForm className="w-full">
-			<KolTextarea _rows={10} _label="Texteingabe" />
-		</KolForm>
+		<SampleBlock id="rows">
+			<KolForm className="w-full">
+				<KolTextarea _rows={10} _label="Texteingabe" />
+			</KolForm>
+		</SampleBlock>
 	</>
 );

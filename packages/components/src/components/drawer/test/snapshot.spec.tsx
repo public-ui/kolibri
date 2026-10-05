@@ -1,19 +1,21 @@
 import { KolDrawerTag } from '../../../core/component-names';
-import type { DrawerProps } from '../../../schema';
+import type { AlignPropType, DrawerProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
-import { KolDrawer } from '../shadow';
+import { KolDrawer } from '../component';
 
-const variants = ['top', 'right', 'bottom', 'left'];
+const aligns: AlignPropType[] = ['top', 'right', 'bottom', 'left'];
 
 const testCases: DrawerProps[] = [
-	...variants.map((variant) => ({
+	...aligns.map((align) => ({
 		_label: 'Label',
 		_open: true,
-		_variant: variant,
+		_align: align,
 	})),
 	{ _label: 'Label' },
 	{ _label: 'Label', _open: false },
+	{ _label: 'Label', _open: true, _hasCloser: true },
+	{ _label: 'Label', _open: true, _level: 2 },
 ];
 
 executeSnapshotTests<DrawerProps>(KolDrawerTag, [KolDrawer], testCases);

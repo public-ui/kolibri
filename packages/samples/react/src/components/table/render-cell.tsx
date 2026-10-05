@@ -8,7 +8,7 @@ import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 
 import type { IconsPropType, KoliBriTableCell, KoliBriTableHeaders } from '@public-ui/components';
-import { useToasterService } from '../../hooks/useToasterService';
+import { useAlert } from '../../hooks/useAlert';
 
 type Data = {
 	order: number;
@@ -41,7 +41,7 @@ function generateDataEntries(n: number): Data[] {
 const DATA: Data[] = generateDataEntries(100);
 
 function KolButtonWrapper({ label, icons }: { label: string; icons: IconsPropType }) {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,

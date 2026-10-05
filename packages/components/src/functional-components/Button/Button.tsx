@@ -1,17 +1,8 @@
-import { h, type FunctionalComponent as FC } from '@stencil/core';
-import { KolButtonWcTag } from '../../core/component-names';
-import type { OptionalButtonProps, RequiredButtonProps } from '../../schema';
+import { WcButtonFC, type WcButtonFCProps } from '../../internal/functional-components/form-field/icon-button';
 
-export type ButtonProps = Partial<RequiredButtonProps & OptionalButtonProps> & {
-	label: string;
-	class?: string;
-	onClick?: (event: MouseEvent) => void;
-};
+export type ButtonProps = WcButtonFCProps;
 
-const KolButtonFc: FC<ButtonProps> = (props) => {
-	const { label, icons, hideLabel, disabled, onClick, ...other } = props;
-
-	return <KolButtonWcTag _label={label} _disabled={disabled} _icons={icons} _hideLabel={hideLabel} _on={{ onClick }} {...other} />;
-};
+/** Adapter of the legacy form fields to `WcButtonFC`, removed once no legacy field is left. */
+const KolButtonFc = WcButtonFC;
 
 export default KolButtonFc;

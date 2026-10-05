@@ -1,5 +1,6 @@
 @use './to-rem' as *;
 @use './button' as *;
+@use './focus-outline' as *;
 
 @mixin kol-card($border-radius: var(--border-radius)) {
 	.kol-card {
@@ -28,6 +29,17 @@
 
 			& ::slotted(p:last-child) {
 				margin-bottom: 0;
+			}
+		}
+
+		&__link {
+			&:focus,
+			&:hover {
+				outline: 0;
+
+				&::after {
+					@include focus-outline;
+				}
 			}
 		}
 	}

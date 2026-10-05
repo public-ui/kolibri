@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kol-breadcrumb should render with _label="Aria-Label" _links=[{"_href":"https://example.com","_label":"Label 1"},{"_href":"https://example.com","_label":"Label 2"}] 1`] = `
+<kol-breadcrumb>
+  <template shadowrootmode="open">
+    <nav aria-label="Aria-Label" class="kol-breadcrumb">
+      <ul class="kol-breadcrumb__list">
+        <li class="kol-breadcrumb__list-element">
+          <div class="kol-breadcrumb__link">
+            <div class="kol-link kol-link--standalone">
+              <a class="kol-link__interactive-element" href="https://example.com">
+                <span class="kol-link__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      Label 1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </a>
+            </div>
+          </div>
+          <i aria-hidden="true" class="kol-breadcrumb__separator kol-icon kol-icon__icon kolicon-chevron-right" role="presentation"></i>
+        </li>
+        <li class="kol-breadcrumb__list-element">
+          <span aria-current="page" class="kol-breadcrumb__list-element-span">
+            Label 2
+          </span>
+        </li>
+      </ul>
+    </nav>
+  </template>
+</kol-breadcrumb>
+`;
+
+exports[`kol-breadcrumb should render with _label="Aria-Label" _links=[{"_href":"https://example.com","_label":"Label"}] 1`] = `
+<kol-breadcrumb>
+  <template shadowrootmode="open">
+    <nav aria-label="Aria-Label" class="kol-breadcrumb">
+      <ul class="kol-breadcrumb__list">
+        <li class="kol-breadcrumb__list-element">
+          <span aria-current="page" class="kol-breadcrumb__list-element-span">
+            Label
+          </span>
+        </li>
+      </ul>
+    </nav>
+  </template>
+</kol-breadcrumb>
+`;

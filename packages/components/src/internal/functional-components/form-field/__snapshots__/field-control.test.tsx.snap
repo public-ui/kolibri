@@ -1,0 +1,261 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckboxFC renders disabled with a touched error 1`] = `
+<label class="kol-checkbox kol-checkbox--disabled kol-checkbox--error kol-checkbox--touched kol-checkbox--variant-default">
+  <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+  <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input kol-input--disabled kol-input--error kol-input--touched" disabled="" id="id" type="checkbox">
+</label>
+`;
+
+exports[`CheckboxFC renders the button variant, indeterminate 1`] = `
+<label class="kol-checkbox kol-checkbox--indeterminate kol-checkbox--variant-button">
+  <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+  <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id" indeterminate="" type="checkbox">
+</label>
+`;
+
+exports[`CheckboxFC renders the default 1`] = `
+<label class="kol-checkbox kol-checkbox--variant-default">
+  <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+  <input autocapitalize="off" autocorrect="off" class="kol-checkbox__input kol-input" id="id" type="checkbox">
+</label>
+`;
+
+exports[`CheckboxFC renders the switch variant, checked 1`] = `
+<label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-switch">
+  <i aria-hidden="true" class="kol-checkbox__icon kol-icon kol-icon__icon kolicon-check" role="presentation"></i>
+  <input autocapitalize="off" autocorrect="off" checked="" class="kol-checkbox__input kol-input" id="id" type="checkbox">
+</label>
+`;
+
+exports[`FieldControlFC renders a hidden label as tooltip 1`] = `
+<div class="kol-field-control kol-field-control--hide-label">
+  <div class="kol-field-control__input">
+    <input>
+  </div>
+  <div class="kol-form-field__tooltip">
+    <div class="kol-tooltip__floating">
+      <div class="kol-tooltip__arrow"></div>
+      <span class="kol-span kol-tooltip__content" id="id-label">
+        <span class="kol-span__container">
+          <span class="kol-span__label">
+            Label
+          </span>
+          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+        </span>
+      </span>
+    </div>
+  </div>
+  <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="id" id="id-label">
+    <span class="kol-field-control__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+</div>
+`;
+
+exports[`FieldControlFC renders a hint 1`] = `
+<div class="kol-field-control">
+  <div class="kol-field-control__input">
+    <input>
+  </div>
+  <label class="kol-field-control__label" htmlfor="id" id="id-label">
+    <span class="kol-field-control__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+  <span class="kol-field-control__hint" id="id-hint">
+    Hint
+  </span>
+</div>
+`;
+
+exports[`FieldControlFC renders a merged class 1`] = `
+<div class="kol-field-control kol-input-checkbox__field-control">
+  <div class="kol-field-control__input">
+    <input>
+  </div>
+  <label class="kol-field-control__label" htmlfor="id" id="id-label">
+    <span class="kol-field-control__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+</div>
+`;
+
+exports[`FieldControlFC renders a touched error 1`] = `
+<div class="kol-field-control kol-field-control--error kol-field-control--touched">
+  <div class="kol-field-control__input">
+    <input>
+  </div>
+  <label class="kol-field-control__label" htmlfor="id" id="id-label">
+    <span class="kol-field-control__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+</div>
+`;
+
+exports[`FieldControlFC renders disabled, required and read-only 1`] = `
+<div class="kol-field-control kol-field-control--disabled kol-field-control--read-only kol-field-control--required">
+  <div class="kol-field-control__input">
+    <input>
+  </div>
+  <label class="kol-field-control__label" htmlfor="id" id="id-label">
+    <span class="kol-field-control__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+</div>
+`;
+
+exports[`FieldControlFC renders no hint 1`] = `
+<div class="kol-field-control">
+  <div class="kol-field-control__input">
+    <input>
+  </div>
+  <label class="kol-field-control__label" htmlfor="id" id="id-label">
+    <span class="kol-field-control__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+</div>
+`;
+
+exports[`FieldControlFC renders the default 1`] = `
+<div class="kol-field-control">
+  <div class="kol-field-control__input">
+    <input>
+  </div>
+  <label class="kol-field-control__label" htmlfor="id" id="id-label">
+    <span class="kol-field-control__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+</div>
+`;
+
+exports[`FieldControlFC renders the label on the left 1`] = `
+<div class="kol-field-control kol-field-control--label-align-left">
+  <label class="kol-field-control__label" htmlfor="id" id="id-label">
+    <span class="kol-field-control__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+  <div class="kol-field-control__input">
+    <input>
+  </div>
+</div>
+`;
+
+exports[`FieldControlFC renders the label on the right 1`] = `
+<div class="kol-field-control kol-field-control--label-align-right">
+  <div class="kol-field-control__input">
+    <input>
+  </div>
+  <label class="kol-field-control__label" htmlfor="id" id="id-label">
+    <span class="kol-field-control__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+</div>
+`;
+
+exports[`FormFieldFC as fieldset renders a legend and the horizontal orientation 1`] = `
+<fieldset class="kol-form-field">
+  <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id" id="id-label">
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </legend>
+  <div class="kol-form-field__input kol-form-field__input--orientation-horizontal">
+    <input>
+  </div>
+</fieldset>
+`;
+
+exports[`FormFieldFC as fieldset renders a legend and the vertical orientation 1`] = `
+<fieldset class="kol-form-field">
+  <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id" id="id-label">
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </legend>
+  <div class="kol-form-field__input kol-form-field__input--orientation-vertical">
+    <input>
+  </div>
+</fieldset>
+`;
+
+exports[`RadioFC renders checked 1`] = `
+<label class="kol-input-radio kol-input-radio--checked">
+  <input autocapitalize="off" autocorrect="off" checked="" class="kol-input kol-input-radio__input" id="id" type="radio">
+</label>
+`;
+
+exports[`RadioFC renders disabled with a touched error 1`] = `
+<label class="kol-input-radio kol-input-radio--disabled kol-input-radio--error kol-input-radio--touched">
+  <input autocapitalize="off" autocorrect="off" class="kol-input kol-input--disabled kol-input--error kol-input--touched kol-input-radio__input" disabled="" id="id" type="radio">
+</label>
+`;
+
+exports[`RadioFC renders the default 1`] = `
+<label class="kol-input-radio">
+  <input autocapitalize="off" autocorrect="off" class="kol-input kol-input-radio__input" id="id" type="radio">
+</label>
+`;

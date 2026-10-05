@@ -34,3 +34,9 @@ export const PUBLIC_THEMES: Theme[] = [
 		key: 'desy-v11',
 	},
 ];
+
+/**
+ * Themes that ship a dark palette. Every other theme keeps its light colors whatever the color
+ * scheme says, which is what the Sidebar's hint tells the user.
+ */
+export const DARK_CAPABLE_THEMES: string[] = ['default'];

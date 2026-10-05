@@ -1,81 +1,58 @@
 import type { JSX } from '@stencil/core';
-import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Listen, Method, Prop, Watch } from '@stencil/core';
 
 import { KolTreeItemTag, KolTreeTag } from '../../core/component-names';
-import type { FocusableElement, KolFocusOptions, LabelPropType, TreeAPI, TreeStates } from '../../schema';
-import { validateLabel } from '../../schema';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { TreeApi } from '../../internal/functional-components/tree/api';
+import { treePropsConfig } from '../../internal/functional-components/tree/api';
+import { TreeFC } from '../../internal/functional-components/tree/component';
+import { labelWithExpertSlotProp } from '../../internal/props';
+import type { FocusableElement, KolFocusOptions, LabelPropType, TreeProps } from '../../schema';
+import { delegateFocus } from '../../utils/element-focus';
+import { registerOpenItemsCache, unregisterOpenItemsCache } from './open-items-cache';
+
+const isTreeItem = (element?: Element | null): element is HTMLKolTreeItemElement => element?.tagName === KolTreeItemTag.toUpperCase();
 
 /**
- * @internal
+ * @slot - Children as TreeItem Components
  */
 @Component({
-	tag: 'kol-tree-wc',
-	shadow: false,
+	tag: 'kol-tree',
+	styleUrls: {
+		default: './style.scss',
+	},
+	shadow: true,
 })
-export class KolTreeWc implements FocusableElement, TreeAPI {
-	@Element() private readonly host?: HTMLKolTreeWcElement;
+export class KolTree extends BaseWebComponent<TreeApi> implements FocusableElement, TreeProps, WebComponentInterface<TreeApi> {
+	@Element() protected readonly host?: HTMLKolTreeElement;
 
-	@State() public state: TreeStates = {
-		_label: '',
-	};
 	private observer?: MutationObserver;
 	private treeItemElements?: HTMLKolTreeItemElement[];
-	private cachedOpenItems?: HTMLKolTreeItemElement[] | undefined;
+	private cachedOpenItems?: HTMLKolTreeItemElement[];
 	private cacheValid = false;
 	private rafHandle?: number;
 
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() _label!: LabelPropType;
+	// --- Lifecycle ---
 
-	@Watch('_label') validateLabel(value?: LabelPropType): void {
-		validateLabel(this, value);
-	}
-
-	/**
-	 * Sets focus on the first focusable tree item.
-	 */
-	@Method()
-	public async focus(options?: KolFocusOptions): Promise<void> {
-		const openItems = await this.getOpenTreeItemElements();
-		await openItems?.[0]?.focus(options);
-	}
-
-	/**
-	 * Invalidates the cache for open tree items.
-	 * Called by tree-item when expand/collapse occurs.
-	 * @internal
-	 */
-	@Method()
-	public async invalidateOpenItemsCache(): Promise<void> {
-		await Promise.resolve((this.cacheValid = false));
-	}
-
-	public render(): JSX.Element {
-		return (
-			<Host onSlotchange={this.handleSlotchange.bind(this)}>
-				<nav class="kol-tree" aria-label={this.state._label}>
-					<ul class="kol-tree__treeview-navigation" role="tree" aria-label={this.state._label}>
-						<slot />
-					</ul>
-				</nav>
-			</Host>
-		);
-	}
-
-	private static isTreeItem(this: void, element?: HTMLElement | null): element is HTMLKolTreeItemElement {
-		return element?.tagName === KolTreeItemTag.toUpperCase();
+	public connectedCallback(): void {
+		if (this.host) {
+			registerOpenItemsCache(this.host, this.invalidateOpenItemsCache);
+		}
 	}
 
 	public componentWillLoad(): void {
-		this.validateLabel(this._label);
+		this.initRenderProps(treePropsConfig);
+		this.watchLabel(this._label);
 
 		this.handleTreeChange();
 		this.observeChildListMutations();
 	}
 
 	public disconnectedCallback(): void {
+		if (this.host) {
+			unregisterOpenItemsCache(this.host);
+		}
 		this.observer?.disconnect();
 		if (this.rafHandle !== undefined) {
 			cancelAnimationFrame(this.rafHandle);
@@ -83,44 +60,70 @@ export class KolTreeWc implements FocusableElement, TreeAPI {
 		}
 	}
 
-	private observeChildListMutations() {
+	// --- Public methods ---
+
+	/**
+	 * Sets focus on the first focusable tree item.
+	 */
+	@Method()
+	public async focus(options?: KolFocusOptions): Promise<void> {
+		if (this.host) {
+			await delegateFocus(this.host, async () => {
+				const openItems = await this.getOpenTreeItemElements();
+				await openItems?.[0]?.focus(options);
+			});
+		}
+	}
+
+	// --- Tree item tracking ---
+
+	/** Called by a tree item of this tree whenever it expands or collapses. */
+	private readonly invalidateOpenItemsCache = (): void => {
+		this.cacheValid = false;
+	};
+
+	private readonly handleSlotchange = (): void => {
+		this.observeTopLevelItems();
+		this.scheduleTreeChange();
+	};
+
+	private observeChildListMutations(): void {
 		this.observer = new MutationObserver(() => this.scheduleTreeChange());
 		this.observeTopLevelItems();
 	}
 
-	private handleSlotchange() {
-		this.observeTopLevelItems();
-		this.scheduleTreeChange();
-	}
-
-	private observeTopLevelItems() {
-		this.getTopLevelTreeItems()?.forEach((treeItem) => {
+	private observeTopLevelItems(): void {
+		this.getTopLevelTreeItems().forEach((treeItem) => {
 			this.observer?.observe(treeItem, { childList: true, subtree: true });
 		});
 	}
 
-	private scheduleTreeChange() {
+	private scheduleTreeChange(): void {
 		if (this.rafHandle) cancelAnimationFrame(this.rafHandle);
 		this.rafHandle = requestAnimationFrame(() => {
 			this.handleTreeChange();
 		});
 	}
 
+	/**
+	 * The tree items assigned to the default slot. Read from the host's children rather than from
+	 * the slot, because the slot is not rendered yet when `componentWillLoad` needs them.
+	 */
 	private getTopLevelTreeItems(): HTMLKolTreeItemElement[] {
-		return (this.host?.querySelector('slot')?.assignedNodes?.() as HTMLElement[])?.filter(KolTreeWc.isTreeItem);
+		return Array.from(this.host?.children ?? []).filter((element): element is HTMLKolTreeItemElement => isTreeItem(element) && !element.slot);
 	}
 
 	private handleTreeChange(): void {
 		this.treeItemElements = this.getTreeItemElements();
 		this.cacheValid = false;
-		void this.ensureActiveItemVisibility();
+		this.ensureActiveItemVisibility();
 	}
 
 	/**
 	 * Returns array of all TreeItem elements in the order they appear
 	 */
 	private getTreeItemElements(): HTMLKolTreeItemElement[] {
-		return this.getTopLevelTreeItems()?.reduce((accumulator: HTMLKolTreeItemElement[], currentValue: HTMLKolTreeItemElement) => {
+		return this.getTopLevelTreeItems().reduce((accumulator: HTMLKolTreeItemElement[], currentValue: HTMLKolTreeItemElement) => {
 			const children = currentValue.querySelectorAll(KolTreeItemTag);
 
 			return [...accumulator, currentValue, ...children];
@@ -132,23 +135,21 @@ export class KolTreeWc implements FocusableElement, TreeAPI {
 			return;
 		}
 
-		// Cache-Hit: Return cached result
 		if (this.cacheValid && this.cachedOpenItems) {
 			return this.cachedOpenItems;
 		}
 
 		const areAllParentsOpen = async (element: HTMLKolTreeItemElement): Promise<boolean> => {
-			let parent = element.parentElement as HTMLKolTreeItemElement | null;
-			while (parent && KolTreeWc.isTreeItem(parent)) {
+			let parent = element.parentElement;
+			while (isTreeItem(parent)) {
 				if (!(await parent.isOpen())) {
 					return false;
 				}
-				parent = parent.parentElement as HTMLKolTreeItemElement | null;
+				parent = parent.parentElement;
 			}
 			return true;
 		};
 
-		// Cache the result
 		this.cachedOpenItems = await Promise.all(
 			this.treeItemElements.map(async (item) => ({
 				item,
@@ -160,8 +161,36 @@ export class KolTreeWc implements FocusableElement, TreeAPI {
 		return this.cachedOpenItems;
 	}
 
+	private ensureActiveItemVisibility(): void {
+		const findActiveItem = (): HTMLKolTreeItemElement | undefined => {
+			for (const rootNode of this.getTopLevelTreeItems()) {
+				if (rootNode._active) {
+					return rootNode;
+				}
+				const childMatch = rootNode.querySelector<HTMLKolTreeItemElement>(`${KolTreeItemTag}[_active="true"]`);
+				if (childMatch?._active) {
+					return childMatch;
+				}
+			}
+		};
+
+		const expandParentElements = (element: HTMLKolTreeItemElement): void => {
+			if (isTreeItem(element.parentElement)) {
+				void element.parentElement.expand();
+				expandParentElements(element.parentElement);
+			}
+		};
+
+		const target = findActiveItem();
+		if (target) {
+			expandParentElements(target);
+		}
+	}
+
+	// --- Keyboard and focus handling ---
+
 	@Listen('keydown')
-	public async handleKeyDown(event: KeyboardEvent) {
+	public async handleKeyDown(event: KeyboardEvent): Promise<void> {
 		const openItems = await this.getOpenTreeItemElements();
 		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(KolTreeItemTag);
 		const hasModifierKeyPressed = event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
@@ -170,7 +199,7 @@ export class KolTreeWc implements FocusableElement, TreeAPI {
 			return;
 		}
 
-		const currentIndex = openItems?.findIndex((elem) => elem === currentTreeItem);
+		const currentIndex = openItems.findIndex((elem) => elem === currentTreeItem);
 
 		switch (event.key) {
 			case 'ArrowDown': {
@@ -222,20 +251,14 @@ export class KolTreeWc implements FocusableElement, TreeAPI {
 				/* Ignore events with any modifier key to avoid breaking native browser or OS shortcuts such as ⌘+L */
 				if (!hasModifierKeyPressed) {
 					const char = event.key.toLowerCase();
-					const startIndex = openItems.indexOf(currentTreeItem) + 1;
+					const startIndex = currentIndex + 1;
+					const startsWithChar = (item: HTMLKolTreeItemElement): boolean => item.getAttribute('_label')?.trim().toLowerCase().startsWith(char) ?? false;
 
-					// Search from startIndex to end
-					let matchIndex = openItems.slice(startIndex).findIndex((item) => item.getAttribute('_label')?.trim().toLowerCase().startsWith(char));
-
-					// If not found, wrap around to beginning
+					// Search from the item after the current one to the end, then wrap around.
+					let matchIndex = openItems.slice(startIndex).findIndex(startsWithChar);
 					if (matchIndex === -1) {
-						matchIndex = openItems.slice(0, startIndex).findIndex((item) => item.getAttribute('_label')?.trim().toLowerCase().startsWith(char));
-						// Adjust matchIndex if found in wrap-around
-						if (matchIndex !== -1) {
-							// matchIndex is already correct (0-based from slice(0, startIndex))
-						}
+						matchIndex = openItems.slice(0, startIndex).findIndex(startsWithChar);
 					} else {
-						// matchIndex is from slice(startIndex), so add startIndex to get actual index
 						matchIndex += startIndex;
 					}
 
@@ -257,7 +280,7 @@ export class KolTreeWc implements FocusableElement, TreeAPI {
 	}
 
 	@Listen('focusin')
-	public handleFocusIn(event: FocusEvent) {
+	public handleFocusIn(event: FocusEvent): void {
 		// Only delegate if no tree item is already focused
 		if (event.target === this.host && !document.activeElement?.closest(KolTreeItemTag)) {
 			// Defer to next frame to ensure tree is fully ready
@@ -268,37 +291,31 @@ export class KolTreeWc implements FocusableElement, TreeAPI {
 	}
 
 	@Listen('focusout')
-	public handleFocusOut(event: FocusEvent) {
+	public handleFocusOut(event: FocusEvent): void {
 		if (event.relatedTarget && !(event.relatedTarget as Element).closest(KolTreeTag)) {
 			/* Tree lost focus */
 			this.ensureActiveItemVisibility();
 		}
 	}
 
-	private ensureActiveItemVisibility() {
-		const findActiveItem = (): HTMLKolTreeItemElement | undefined => {
-			const rootNodes = (this.host?.querySelector('slot')?.assignedNodes?.() as HTMLElement[])?.filter(KolTreeWc.isTreeItem) ?? [];
-			for (const rootNode of rootNodes) {
-				if (rootNode._active) {
-					return rootNode;
-				}
-				const childMatch = rootNode.querySelector(`${KolTreeItemTag}[_active="true"]`);
-				if (childMatch && (childMatch as HTMLKolTreeItemElement)._active) {
-					return childMatch as HTMLKolTreeItemElement;
-				}
-			}
-		};
+	// --- Render ---
 
-		const expandParentElements = (element: HTMLKolTreeItemElement) => {
-			if (KolTreeWc.isTreeItem(element.parentElement)) {
-				void element.parentElement.expand();
-				expandParentElements(element.parentElement);
-			}
-		};
+	public render(): JSX.Element {
+		return (
+			<Host>
+				<TreeFC handleSlotchange={this.handleSlotchange} label={this.getRenderProp('label')} />
+			</Host>
+		);
+	}
 
-		const target = findActiveItem();
-		if (target) {
-			expandParentElements(target);
-		}
+	// --- Props + Watchers ---
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 }

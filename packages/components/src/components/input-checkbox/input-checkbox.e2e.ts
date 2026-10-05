@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
+import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
@@ -83,6 +84,44 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	testInputMessage<HTMLKolInputCheckboxElement>(COMPONENT_NAME);
+
+	test.describe('Value', () => {
+		test('getValue() returns the value when checked and null when unchecked', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _value="yes" _checked></${COMPONENT_NAME}>`);
+			const component = page.locator(COMPONENT_NAME);
+			expect(await component.evaluate((element: HTMLKolInputCheckboxElement) => element.getValue())).toBe('yes');
+
+			await page.locator('input').click();
+			await page.waitForChanges();
+
+			expect(await component.evaluate((element: HTMLKolInputCheckboxElement) => element.getValue())).toBeNull();
+		});
+
+		test('reports null to onInput when unchecked, as table-settings expects', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _checked></${COMPONENT_NAME}>`);
+			const value = page.locator(COMPONENT_NAME).evaluate(
+				(element: HTMLKolInputCheckboxElement) =>
+					new Promise<unknown>((resolve) => {
+						element._on = { onInput: (_event: Event, value: unknown) => resolve(value) };
+					}),
+			);
+			await page.waitForChanges();
+
+			await page.locator('input').click();
+
+			expect(await value).toBeNull();
+		});
+
+		test('clears _indeterminate and checks the box on click', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _indeterminate></${COMPONENT_NAME}>`);
+			const component = page.locator(COMPONENT_NAME);
+
+			await page.locator('input').click();
+			await page.waitForChanges();
+
+			expect(await component.evaluate((element: HTMLKolInputCheckboxElement) => [element._checked, element._indeterminate])).toEqual([true, false]);
+		});
+	});
 
 	test(`should reflect the _checked property on the web component`, async ({ page }) => {
 		const getCheckedProperty = () => page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputCheckboxElement) => element._checked);
@@ -241,5 +280,44 @@ test.describe(COMPONENT_NAME, () => {
 			const value = await page.locator(COMPONENT_NAME).evaluate((el: HTMLKolInputCheckboxElement) => el._ariaDetails);
 			expect(value).toBe('id1 id2');
 		});
+	});
+
+	testInputBehaviorContract<HTMLKolInputCheckboxElement>({
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.check();
+		},
+		inputSelector: 'input.kol-checkbox__input',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				nativeEvent('click'),
+				kolEvent('input', TEST_VALUE),
+				callback('input', TEST_VALUE),
+				kolEvent('change', TEST_VALUE),
+				callback('change', TEST_VALUE),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				nativeEvent('click'),
+				kolEvent('input', TEST_VALUE),
+				callback('input', TEST_VALUE),
+				kolEvent('change', TEST_VALUE),
+				callback('change', TEST_VALUE),
+			],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
+			initialValue: true,
+			formData: [],
+			experimentalFormData: [['field', 'true']],
+			syncedValue: 'true',
+		},
 	});
 });

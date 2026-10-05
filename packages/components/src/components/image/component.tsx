@@ -3,9 +3,9 @@ import { Component, Element, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ImageApi } from '../../internal/functional-components/image/api';
+import { imagePropsConfig } from '../../internal/functional-components/image/api';
 import { ImageFC } from '../../internal/functional-components/image/component';
-import { ImageController } from '../../internal/functional-components/image/controller';
-import type { LoadingType } from '../../internal/props';
+import { altProp, loadingProp, sizesProp, srcProp, srcsetProp, type LoadingType } from '../../internal/props';
 import type { KoliBriImageEventCallbacks } from '../../schema/components/image';
 import { dispatchDomEvent, KolEvent } from '../../utils/events';
 
@@ -19,9 +19,8 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 	},
 	shadow: true,
 })
-export class KolImage implements WebComponentInterface<ImageApi> {
+export class KolImage extends BaseWebComponent<ImageApi> implements WebComponentInterface<ImageApi> {
 	@Element() private readonly host?: HTMLKolImageElement;
-	private readonly ctrl = new ImageController(BaseWebComponent.stateLess);
 
 	private readonly handleError = (event: Event): void => {
 		this._on?.onError?.(event);
@@ -45,7 +44,7 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 
 	@Watch('_alt')
 	public watchAlt(value?: string): void {
-		this.ctrl.watchAlt(value);
+		altProp.apply(value, (v) => this.setRenderProp('alt', v));
 	}
 
 	/**
@@ -56,7 +55,7 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 
 	@Watch('_loading')
 	public watchLoading(value?: LoadingType): void {
-		this.ctrl.watchLoading(value);
+		loadingProp.apply(value, (v) => this.setRenderProp('loading', v));
 	}
 
 	/**
@@ -67,7 +66,7 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 
 	@Watch('_sizes')
 	public watchSizes(value?: string): void {
-		this.ctrl.watchSizes(value);
+		sizesProp.apply(value, (v) => this.setRenderProp('sizes', v));
 	}
 
 	/**
@@ -78,7 +77,7 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 
 	@Watch('_src')
 	public watchSrc(value?: string): void {
-		this.ctrl.watchSrc(value);
+		srcProp.apply(value, (v) => this.setRenderProp('src', v));
 	}
 
 	/**
@@ -89,7 +88,7 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 
 	@Watch('_srcset')
 	public watchSrcset(value?: string): void {
-		this.ctrl.watchSrcset(value);
+		srcsetProp.apply(value, (v) => this.setRenderProp('srcset', v));
 	}
 
 	/**
@@ -99,24 +98,24 @@ export class KolImage implements WebComponentInterface<ImageApi> {
 	public _on?: KoliBriImageEventCallbacks;
 
 	public componentWillLoad(): void {
-		this.ctrl.componentWillLoad({
-			alt: this._alt,
-			loading: this._loading,
-			sizes: this._sizes,
-			src: this._src,
-			srcset: this._srcset,
-		});
+		this.initRenderProps(imagePropsConfig);
+
+		altProp.apply(this._alt, (v) => this.setRenderProp('alt', v));
+		loadingProp.apply(this._loading, (v) => this.setRenderProp('loading', v));
+		sizesProp.apply(this._sizes, (v) => this.setRenderProp('sizes', v));
+		srcProp.apply(this._src, (v) => this.setRenderProp('src', v));
+		srcsetProp.apply(this._srcset, (v) => this.setRenderProp('srcset', v));
 	}
 
 	public render(): JSX.Element {
 		return (
 			<Host>
 				<ImageFC
-					alt={this.ctrl.getRenderProp('alt')}
-					loading={this.ctrl.getRenderProp('loading')}
-					sizes={this.ctrl.getRenderProp('sizes')}
-					src={this.ctrl.getRenderProp('src')}
-					srcset={this.ctrl.getRenderProp('srcset')}
+					alt={this.getRenderProp('alt')}
+					loading={this.getRenderProp('loading')}
+					sizes={this.getRenderProp('sizes')}
+					src={this.getRenderProp('src')}
+					srcset={this.getRenderProp('srcset')}
 					handleError={this.handleError}
 					handleLoad={this.handleLoad}
 				/>

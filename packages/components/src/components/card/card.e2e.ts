@@ -15,7 +15,7 @@ test.describe('kol-card', () => {
 				});
 			});
 			await page.waitForChanges();
-			await page.getByTestId('card-close-button').click();
+			await page.locator('.kol-card__close-button button').click();
 			await expect(callbackPromise).resolves.toBeUndefined();
 		});
 	});
@@ -29,7 +29,7 @@ test.describe('kol-card', () => {
 				});
 			});
 			await page.waitForChanges();
-			await page.getByTestId('card-close-button').click();
+			await page.locator('.kol-card__close-button button').click();
 			await expect(eventPromise).resolves.toBeTruthy();
 		});
 	});

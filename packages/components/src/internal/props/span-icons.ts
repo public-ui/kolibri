@@ -28,6 +28,11 @@ function normalizeSpanIcons(value: unknown): KoliBriIconsProp | never {
 	if (!value || (typeof value === 'string' && value === '')) {
 		return {};
 	}
+	// A directional icon object arrives as a JSON string whenever it is set through an HTML
+	// attribute rather than a JS property — the prop is declared `Stringified<KoliBriIconsProp>`.
+	if (typeof value === 'string' && /^[{[]/.test(value.trim())) {
+		return normalizeObject(value) as KoliBriIconsProp;
+	}
 	// If it's a string, return it as-is
 	if (typeof value === 'string') {
 		return normalizeString(value);

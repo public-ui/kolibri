@@ -21,7 +21,7 @@ const ruleFunction = (primaryOption) => {
 		const normalizedPath = filePath.replace(/\\/g, '/');
 		if (!normalizedPath.includes('/packages/themes/')) return;
 
-		const allowedLayers = ['kol-theme-global', 'kol-theme-component'];
+		const allowedLayers = ['kol-theme-global', 'kol-theme-component', 'kol-theme-forced-colors'];
 
 		root.walkAtRules('layer', (atRule) => {
 			const layerNames = atRule.params.split(',').map((name) => name.trim());

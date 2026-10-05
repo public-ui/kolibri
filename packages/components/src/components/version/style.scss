@@ -1,1 +1,7 @@
 @use '../@shared/global' as *;
+@use '../@shared/badge.mixin' as *;
+
+@layer kol-component {
+	/* The version renders `BadgeFC` inline, so the badge box has to live in this shadow root too. */
+	@include kol-badge-styles();
+}

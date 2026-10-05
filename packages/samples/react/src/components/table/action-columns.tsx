@@ -2,6 +2,7 @@ import type { KoliBriTableHeaderCellWithLogic } from '@public-ui/components';
 import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 type ProjectTask = {
@@ -20,6 +21,7 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 				type: 'action',
 				key: 'actions',
 				label: 'Actions',
+				textAlign: 'left',
 				width: 250,
 				actions: (row) => {
 					const simpleRow = row as ProjectTask;
@@ -57,6 +59,7 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 				type: 'action',
 				key: 'externalActions',
 				label: 'External Actions',
+				textAlign: 'right',
 				width: 280,
 				actions: (row) => {
 					const simpleRow = row as ProjectTask;
@@ -98,8 +101,8 @@ export const TableActionColumns: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<section className="w-full">
+		<SampleBlock id="action-columns" className="w-full">
 			<KolTableStateful _label="Tasks with action buttons" _headers={HEADERS} _data={DATA} className="block" />
-		</section>
+		</SampleBlock>
 	</>
 );

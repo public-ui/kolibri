@@ -2,6 +2,7 @@ import type { AlertTypePropType, AlertVariantPropType, HeadingLevel } from '@pub
 import { KolAlert } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 type PropsByType = {
@@ -15,29 +16,31 @@ type PropsBasic = {
 
 const AlertByType: FC<PropsByType> = ({ level, type, variant }) => (
 	<>
-		<KolAlert _label={`This is the headline level ${level} of the alert.`} _level={level} _type={type} _variant={variant}>
-			This is the text of the alert.
-		</KolAlert>
-		<KolAlert _type={type} _variant={variant}>
-			In this alert, only the text without the heading is used.
-		</KolAlert>
-		<KolAlert _label={`This is the headline level ${level} of the alert.`} _level={level} _type={type} _variant={variant} _hasCloser>
-			This is the text of the alert. With close button.
-		</KolAlert>
-		<KolAlert _type={type} _variant={variant} _hasCloser>
-			In this alert, only the text without the heading is used. With close button.
-		</KolAlert>
+		<SampleBlock id={type} className="flex flex-col gap-2">
+			<KolAlert _label={`This is the headline level ${level} of the alert.`} _level={level} _type={type} _variant={variant}>
+				This is the text of the alert.
+			</KolAlert>
+			<KolAlert _type={type} _variant={variant}>
+				In this alert, only the text without the heading is used.
+			</KolAlert>
+			<KolAlert _label={`This is the headline level ${level} of the alert.`} _level={level} _type={type} _variant={variant} _hasCloser>
+				This is the text of the alert. With close button.
+			</KolAlert>
+			<KolAlert _type={type} _variant={variant} _hasCloser>
+				In this alert, only the text without the heading is used. With close button.
+			</KolAlert>
+		</SampleBlock>
 	</>
 );
 
 export const AlertVariants: FC<PropsBasic> = ({ variant = 'msg' }) => (
-	<div className="grid gap-4">
+	<>
 		<AlertByType level={1} type="default" variant={variant} />
 		<AlertByType level={2} type="error" variant={variant} />
 		<AlertByType level={3} type="info" variant={variant} />
 		<AlertByType level={4} type="success" variant={variant} />
 		<AlertByType level={5} type="warning" variant={variant} />
-	</div>
+	</>
 );
 
 export const AlertBasic: FC<PropsBasic> = () => (

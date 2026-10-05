@@ -6,252 +6,114 @@ export const ROUTES = new Map();
  * Axe options:
  * - axe:
  *   - skip: boolean (Default: false)
- *   - skipFailures: boolean (Default: false)
+ *   - skipFailures: boolean (Default: false) – report the violations of the route without failing the test.
+ *     Reserved for routes with a known violation that is tracked as a sub-issue of #7452; remove the flag
+ *     together with the fix. `color-contrast` fails the test only for the light scheme of the default theme.
  *
  * Snapshot options:
  * - snapshot:
  *   - options:
  *     - maxDiffPixelRatio: number (Default: 0)
  *   - skip: boolean (Default: false)
+ *   - forceFullPage: boolean (Default: false) – capture the route as one full-page screenshot instead
+ *     of one element screenshot per `data-visual-block` container. Required for routes without blocks:
+ *     overlays that extend beyond any block (dialog, drawer, toast, open popover), focus-dependent
+ *     content (skip-nav) and deliberate composition tests (scenarios/*, form/basic).
  *   - viewportSize:
  *     - width (Default: 800)
  *     - height (Default: 100)
  *   - waitForTimeout: number (Default: 15000)
- *   - zoom:
- *     - options:
- *       - maxDiffPixelRatio: number (Default: 0)
- *     - skip: boolean (Default: false)
+ *
+ * There is no per-route option for the reflow pass: blocks that should additionally be captured at
+ * 320 px viewport width opt in where they are defined, via SampleBlock's `narrow` prop.
  */
 
-ROUTES.set('abbr/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('accordion/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('accordion/headlines', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('alert/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('alert/card-msg', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
+ROUTES.set('abbr/basic');
+ROUTES.set('accordion/basic');
+ROUTES.set('alert/basic');
+ROUTES.set('alert/card-msg');
 ROUTES.set('alert/html', {
 	snapshot: {
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
-ROUTES.set('avatar/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('avatar/size', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('badge/basic', {
-	snapshot: {
-		skip: true,
-	},
-});
-ROUTES.set('badge/button', {
-	snapshot: {
-		skip: true,
-	},
-});
+ROUTES.set('avatar/size');
+ROUTES.set('badge/basic');
 ROUTES.set('breadcrumb/basic', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
-		zoom: {
-			skip: true,
-		},
 		viewportSize: {
 			width: 600,
 			height: 400,
 		},
 	},
 });
-ROUTES.set('button-link/basic', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button-link/icons', {
-	snapshot: {
-		skip: true,
-	},
-});
-ROUTES.set('button-link/image', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/variants', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/disabled', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/hide-label', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/icons', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('button/short-key', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('card/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('card/headlines', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
+ROUTES.set('button-link/basic');
+ROUTES.set('button-link/icons');
+ROUTES.set('button/variants');
+ROUTES.set('button/icons');
+ROUTES.set('button/short-key');
+ROUTES.set('card/basic');
+ROUTES.set('card/linked');
+ROUTES.set('card/headlines');
 ROUTES.set('combobox/basic?noColumns', {
-	snapshot: {
-		skip: true,
+	axe: {
+		skipFailures: true,
 	},
 });
-ROUTES.set('details/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
+ROUTES.set('details/basic');
 ROUTES.set('dialog/basic?show-dialog=true', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 1920,
 			height: 600,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('drawer/basic?align=left', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 600,
 			height: 400,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('drawer/basic?align=top', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 600,
 			height: 400,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('drawer/basic?align=right', {
 	snapshot: {
+		forceFullPage: true,
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('drawer/basic?align=bottom', {
 	snapshot: {
+		forceFullPage: true,
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('drawer/basic?align=left&closer=true', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 600,
 			height: 400,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('form/basic', {
 	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
+		viewportSize: {
+			width: 300,
+			height: 600,
 		},
 	},
 });
@@ -261,65 +123,30 @@ ROUTES.set('form/error-list', {
 			width: 500,
 			height: 600,
 		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('heading/badge', {
-	axe: {
-		skipFailures: true,
-	},
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('heading/basic', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 250,
 			height: 300,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('heading/secondary');
-ROUTES.set('heading/paragraph', {
-	axe: {
-		skipFailures: true,
-	},
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
 ROUTES.set('icon/font', {
 	snapshot: {
+		// Breaks when a theme has no custom icon font
+		skip: true,
 		viewportSize: {
 			width: 250,
 			height: 345,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('image/basic', {
 	snapshot: {
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-checkbox/basic?noColumns', {
@@ -330,9 +157,6 @@ ROUTES.set('input-checkbox/basic?noColumns', {
 		viewportSize: {
 			width: 500,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -345,9 +169,6 @@ ROUTES.set('input-checkbox/button?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-checkbox/switch?noColumns', {
@@ -359,9 +180,6 @@ ROUTES.set('input-checkbox/switch?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-color/basic?noColumns', {
@@ -369,9 +187,6 @@ ROUTES.set('input-color/basic?noColumns', {
 		viewportSize: {
 			width: 500,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -381,9 +196,6 @@ ROUTES.set('input-date/basic?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-email/basic?noColumns', {
@@ -392,8 +204,13 @@ ROUTES.set('input-email/basic?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
+	},
+});
+ROUTES.set('input-email/counter?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
 		},
 	},
 });
@@ -403,9 +220,6 @@ ROUTES.set('input-file/basic?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-number/basic?noColumns', {
@@ -413,9 +227,6 @@ ROUTES.set('input-number/basic?noColumns', {
 		viewportSize: {
 			width: 500,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -425,9 +236,6 @@ ROUTES.set('input-number/number-formatter', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-password/basic?noColumns', {
@@ -436,8 +244,13 @@ ROUTES.set('input-password/basic?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
+	},
+});
+ROUTES.set('input-password/counter?noColumns', {
+	snapshot: {
+		viewportSize: {
+			width: 500,
+			height: 0,
 		},
 	},
 });
@@ -446,9 +259,6 @@ ROUTES.set('input-password/show-password?noColumns', {
 		viewportSize: {
 			width: 500,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -461,9 +271,6 @@ ROUTES.set('input-radio/basic?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-radio/horizontal?noColumns', {
@@ -471,9 +278,6 @@ ROUTES.set('input-radio/horizontal?noColumns', {
 		viewportSize: {
 			width: 500,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -483,9 +287,6 @@ ROUTES.set('input-radio/object?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-range/basic?noColumns', {
@@ -494,27 +295,14 @@ ROUTES.set('input-range/basic?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
-ROUTES.set('input-text/basic?noColumns', {
-	snapshot: {
-		skip: true,
-		zoom: {
-			skip: true,
-		},
-	},
-});
+ROUTES.set('input-text/basic?noColumns');
 ROUTES.set('input-text/message-types?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -524,9 +312,6 @@ ROUTES.set('input-text/placeholder?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-text/disabled?noColumns', {
@@ -534,9 +319,6 @@ ROUTES.set('input-text/disabled?noColumns', {
 		viewportSize: {
 			width: 500,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -546,9 +328,6 @@ ROUTES.set('input-text/readonly?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-text/counter?noColumns', {
@@ -556,9 +335,6 @@ ROUTES.set('input-text/counter?noColumns', {
 		viewportSize: {
 			width: 500,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -568,9 +344,6 @@ ROUTES.set('input-text/access-short-key?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-text/hide-label?noColumns', {
@@ -578,9 +351,6 @@ ROUTES.set('input-text/hide-label?noColumns', {
 		viewportSize: {
 			width: 800,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -590,17 +360,11 @@ ROUTES.set('input-text/hide-msg?noColumns', {
 			width: 800,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-text/text-formatter?noColumns', {
 	snapshot: {
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-text/smart-button?noColumns', {
@@ -609,25 +373,16 @@ ROUTES.set('input-text/smart-button?noColumns', {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-text/expert-slot?noColumns', {
 	snapshot: {
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-text/select-range?noColumns', {
 	snapshot: {
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-text/background?noColumns', {
@@ -636,117 +391,59 @@ ROUTES.set('input-text/background?noColumns', {
 			width: 250,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('input-text/variant?noColumns', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
 		viewportSize: {
 			width: 1000,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
+});
+ROUTES.set('input-text/clear-button?noColumns', {
+	snapshot: {},
 });
 ROUTES.set('kolibri/basic', {
 	snapshot: {
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
-ROUTES.set('link-button/basic', {
-	snapshot: {
-		skip: true,
-	},
-});
-ROUTES.set('link/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('link/icons', {
-	snapshot: {
-		skip: true,
-	},
-});
+ROUTES.set('link-button/basic');
+ROUTES.set('link-button/target');
+ROUTES.set('link/basic');
+ROUTES.set('link/icons');
 ROUTES.set('link/image', {
 	snapshot: {
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
-ROUTES.set('link/target', {
-	snapshot: {
-		skip: true,
-	},
-});
-ROUTES.set('link/link-variant', {});
+ROUTES.set('link/target');
+ROUTES.set('link/link-variant');
 ROUTES.set('modal/basic?show-dialog=true', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 1920,
 			height: 600,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('nav/aria-current', {
 	snapshot: {
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
-ROUTES.set('nav/basic', {
-	snapshot: {
-		viewportSize: {
-			width: 400,
-			height: 0,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('pagination/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('pagination/button-visibility', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('pagination/sibling-boundary', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
+ROUTES.set('nav/basic');
+ROUTES.set('pagination/basic');
+ROUTES.set('pagination/button-visibility');
+ROUTES.set('pagination/sibling-boundary');
 ROUTES.set('popover-button/basic', {
 	snapshot: {
-		zoom: {
-			skip: true,
-		},
+		forceFullPage: true,
 		viewportSize: {
 			width: 200,
 			height: 220,
@@ -754,121 +451,38 @@ ROUTES.set('popover-button/basic', {
 	},
 });
 ROUTES.set('popover-button/inline', {
-	snapshot: {},
-});
-ROUTES.set('meter/basic', {
 	snapshot: {
-		zoom: {
-			skip: true,
+		viewportSize: {
+			width: 300,
+			height: 420,
 		},
 	},
 });
-ROUTES.set('meter/optimum', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('meter/orientation', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('progress/basic', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('quote/basic', {
-	snapshot: {
-		skip: true,
-	},
-});
-ROUTES.set('quote/block', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
+ROUTES.set('meter/basic');
+ROUTES.set('meter/optimum');
+ROUTES.set('meter/orientation');
+ROUTES.set('progress/basic');
+ROUTES.set('quote/basic');
+ROUTES.set('quote/block');
 ROUTES.set('select/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('select/multiple-dropdown', {
-	snapshot: {
-		viewportSize: {
-			width: 500,
-			height: 0,
-		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('skip-nav/basic', {
 	snapshot: {
-		zoom: {
-			skip: true,
-		},
+		forceFullPage: true,
 	},
 });
-ROUTES.set('spin/basic', {
-	snapshot: {
-		viewportSize: {
-			width: 100,
-			height: 0,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
+ROUTES.set('spin/basic');
 ROUTES.set('single-select/basic?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 500,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('spin/custom', {
-	snapshot: {
-		viewportSize: {
-			width: 100,
-			height: 0,
-		},
-		zoom: {
-			skip: true,
-		},
-	},
-});
-ROUTES.set('spin/cycle', {
-	snapshot: {
-		viewportSize: {
-			width: 100,
-			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -878,9 +492,6 @@ ROUTES.set('split-button/basic', {
 			width: 300,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('table/horizontal-scrollbar', {
@@ -889,9 +500,6 @@ ROUTES.set('table/horizontal-scrollbar', {
 			width: 800,
 			height: 800,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('table/column-alignment', {
@@ -899,9 +507,6 @@ ROUTES.set('table/column-alignment', {
 		viewportSize: {
 			width: 800,
 			height: 400,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -912,9 +517,6 @@ ROUTES.set('table/sort-data', {
 			height: 400,
 		},
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('table/action-columns', {
@@ -923,8 +525,13 @@ ROUTES.set('table/action-columns', {
 			width: 1000,
 			height: 300,
 		},
-		zoom: {
-			skip: true,
+	},
+});
+ROUTES.set('table/state-columns', {
+	snapshot: {
+		viewportSize: {
+			width: 1000,
+			height: 300,
 		},
 	},
 });
@@ -934,9 +541,6 @@ ROUTES.set('table/with-footer', {
 			width: 800,
 			height: 360,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('table/with-pagination', {
@@ -944,9 +548,6 @@ ROUTES.set('table/with-pagination', {
 		viewportSize: {
 			width: 800,
 			height: 740,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -957,9 +558,6 @@ ROUTES.set('table/pagination-position', {
 			height: 400,
 		},
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('table/complex-headers', {
@@ -967,9 +565,6 @@ ROUTES.set('table/complex-headers', {
 		viewportSize: {
 			width: 800,
 			height: 400,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -979,9 +574,6 @@ ROUTES.set('table/non-hidable-columns', {
 			width: 800,
 			height: 235,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('table/stateful-with-selection', {
@@ -989,9 +581,6 @@ ROUTES.set('table/stateful-with-selection', {
 		viewportSize: {
 			width: 800,
 			height: 509,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -1001,9 +590,6 @@ ROUTES.set('table/stateful-with-single-selection', {
 			width: 800,
 			height: 370,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('table/stateless-with-selection', {
@@ -1012,9 +598,6 @@ ROUTES.set('table/stateless-with-selection', {
 			width: 800,
 			height: 495,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('table/stateless-with-single-selection', {
@@ -1022,9 +605,6 @@ ROUTES.set('table/stateless-with-single-selection', {
 		viewportSize: {
 			width: 800,
 			height: 370,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -1035,22 +615,13 @@ ROUTES.set('table/stateless', {
 			height: 400,
 		},
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('table/sticky-header', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 1300,
 			height: 1000,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -1060,9 +631,6 @@ ROUTES.set('table/sticky-cols', {
 			width: 1000,
 			height: 1000,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('table/variant', {
@@ -1071,26 +639,39 @@ ROUTES.set('table/variant', {
 			width: 1000,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
-ROUTES.set('tabs/basic', {
+ROUTES.set('table/empty', {
 	snapshot: {
-		zoom: {
-			skip: true,
+		// the empty table renders no visible box – element screenshots would fail with zero size
+		forceFullPage: true,
+		viewportSize: {
+			width: 1000,
+			height: 0,
 		},
 	},
 });
+ROUTES.set('table/stateful-async', {
+	snapshot: {
+		// loading state only (50s async delay) – the block container collapses to zero height
+		forceFullPage: true,
+		viewportSize: {
+			width: 1000,
+			height: 0,
+		},
+	},
+});
+ROUTES.set('table/stateless-async', {
+	snapshot: {
+		// The sample resolves its data after 5s, so the block would only ever show the pagination bar –
+		// and would flip to the fully rendered table whenever the runner needs longer than that.
+		skip: true,
+	},
+});
+ROUTES.set('tabs/basic');
 ROUTES.set('tabs/create-button', {
 	axe: {
 		skipFailures: true,
-	},
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('tabs/icons-only', {
@@ -1099,43 +680,25 @@ ROUTES.set('tabs/icons-only', {
 			width: 200,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
-ROUTES.set('textarea/adjust-height', {
-	snapshot: {
-		zoom: {
-			skip: true,
-		},
-	},
-});
+ROUTES.set('textarea/adjust-height');
 ROUTES.set('textarea/basic?noColumns', {
 	snapshot: {
 		viewportSize: {
 			width: 500,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('textarea/resize', {
 	snapshot: {
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('textarea/rows', {
 	snapshot: {
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('textarea/with-counter', {
@@ -1144,19 +707,14 @@ ROUTES.set('textarea/with-counter', {
 			width: 200,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('toast/configurator', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 600,
 			height: 750,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -1166,9 +724,6 @@ ROUTES.set('toolbar/basic', {
 			width: 600,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('toolbar/disabled', {
@@ -1177,22 +732,13 @@ ROUTES.set('toolbar/disabled', {
 			width: 300,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('tree/basic/home', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -1202,27 +748,22 @@ ROUTES.set('version/basic', {
 			width: 150,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('version/context', {
 	snapshot: {
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('scenarios/accordion-components', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 200,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
@@ -1231,10 +772,8 @@ ROUTES.set('scenarios/static-form', {
 		skipFailures: true,
 	},
 	snapshot: {
+		forceFullPage: true,
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('scenarios/sample-form-with-validation', {
@@ -1242,10 +781,8 @@ ROUTES.set('scenarios/sample-form-with-validation', {
 		skipFailures: true,
 	},
 	snapshot: {
+		forceFullPage: true,
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('scenarios/disabled-interactive-scenario', {
@@ -1253,10 +790,8 @@ ROUTES.set('scenarios/disabled-interactive-scenario', {
 		skipFailures: true,
 	},
 	snapshot: {
+		forceFullPage: true,
 		skip: true,
-		zoom: {
-			skip: true,
-		},
 	},
 });
 ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
@@ -1264,330 +799,290 @@ ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
 		skipFailures: true,
 	},
 	snapshot: {
-		zoom: {
-			skip: true,
-		},
+		forceFullPage: true,
+	},
+});
+
+ROUTES.set('scenarios/same-height-of-all-form-elements-with-label', {
+	axe: {
+		skipFailures: true,
+	},
+	snapshot: {
+		forceFullPage: true,
 	},
 });
 
 /* Focus tests */
 ROUTES.set('scenarios/focus-elements?component=accordion', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=badge', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=button', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=buttonLink', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=card', {
+	snapshot: {
+		forceFullPage: true,
+		viewportSize: {
+			width: 300,
+			height: 0,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=combobox', {
+	axe: {
+		skipFailures: true,
+	},
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=details', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=inputCheckbox', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=inputColor', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=inputDate', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=inputEmail', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=inputFile', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=inputFileMultiple', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=inputNumber', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=inputPassword', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=inputRadio', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=inputRange', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=inputText', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=link', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=linkButton', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=select', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=selectMultiple', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=singleSelect', {
-	axe: {
-		skipFailures: true,
-	},
-	viewportSize: {
-		width: 300,
-		height: 0,
-	},
-	zoom: {
-		skip: true,
-	},
-});
-ROUTES.set('scenarios/focus-elements?component=popoverButton', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
 		},
-		zoom: {
-			skip: true,
+	},
+});
+ROUTES.set('scenarios/focus-elements?component=popoverButton', {
+	snapshot: {
+		forceFullPage: true,
+		viewportSize: {
+			width: 300,
+			height: 0,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=skipNav', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=splitButton', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=tabs', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=textarea', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=toolbar', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=tree', {
 	snapshot: {
+		forceFullPage: true,
 		viewportSize: {
 			width: 300,
 			height: 0,
-		},
-		zoom: {
-			skip: true,
 		},
 	},
 });

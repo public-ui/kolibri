@@ -1,13 +1,5 @@
-@use '../@shared/mixins' as *;
-@use '../@shared/global' as *;
-@use './cycle' as *;
-@use './dot' as *;
+@use '../@shared/spin.mixin' as *;
 
 @layer kol-component {
-	.kol-spin {
-		&__spinner {
-			display: block;
-			position: relative;
-		}
-	}
+	@include kol-spin;
 }

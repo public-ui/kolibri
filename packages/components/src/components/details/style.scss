@@ -3,16 +3,17 @@
 @use '../host-display-block' as *;
 @use '../@shared/collapsible.mixin' as *;
 @use '../@shared/icon.mixin' as *;
-@use '../@shared/button.mixin' as *;
 
 @layer kol-component {
-	@include kol-button-styles('kol-button');
+	/* Outweighs `host-display-block`: the details host sizes to its content. */
+	:host {
+		display: inline-block;
+	}
+
+	@include kol-collapsible-styles('kol-details');
 	@include kol-icon-styles();
-	.kol-details {
-		.collapsible--open &__heading-button {
-			.kol-icon {
-				transform: rotate(90deg);
-			}
-		}
+
+	.kol-details--open .kol-details__heading .kol-icon {
+		transform: rotate(90deg);
 	}
 }

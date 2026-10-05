@@ -2,8 +2,51 @@
 
 /* For animation technique see https://css-tricks.com/css-grid-can-do-auto-height-transitions/ */
 
-@layer kol-component {
-	.collapsible {
+/*
+ * Base styles for a collapsible built on `<details>`/`<summary>`: `kol-accordion` and `kol-details`
+ * render the same DOM under their own block, so each includes this mixin with its block name.
+ *
+ * The transition duration comes from the theme's `collapsibleTransitionMs` feature flag, which the
+ * component writes to `--collapsible-transition-duration` on `<details>`.
+ */
+@mixin kol-collapsible-styles($block-classname) {
+	.#{$block-classname} {
+		/* `<summary>` is the toggle control and carries the box of the button it stands in for. */
+		&__heading {
+			display: flex;
+			min-height: var(--a11y-min-size);
+
+			/* The `not-allowed` reset for disabled controls lives in `kol-global`, which loses to
+			   `kol-component` whatever the specificity (see `_layer-order.scss`). The pointer has to
+			   exclude the disabled summary itself, or it wins and a dead control looks clickable. */
+			&:not([aria-disabled='true']) {
+				cursor: pointer;
+			}
+
+			/* Baseline box for the flex container; without it the surrounding inline flow shifts by 1px. */
+			&::before {
+				content: '\200B';
+			}
+
+			/* The heading fills the row; the label span is the flex container inside it. */
+			> .kol-headline {
+				display: flex;
+				flex: 1;
+				margin: 0;
+				text-align: left;
+
+				/* Form controls do not inherit font-weight (see `a11y.scss`); themes weight the label further in. */
+				font-weight: 400;
+
+				> .kol-span {
+					flex: 1 0 100%;
+
+					/* `.kol-span` centres its column (`_global.scss`); the summary label is start-aligned. */
+					align-items: flex-start;
+				}
+			}
+		}
+
 		@media (prefers-reduced-motion) {
 			&__wrapper-animation,
 			&__wrapper {
@@ -13,17 +56,18 @@
 
 		/* @see https://github.com/public-ui/kolibri/issues/5952 */
 		@media print {
-			:not(.collapsible--open) &__wrapper-animation {
+			&:not(.#{$block-classname}--open) &__wrapper-animation {
 				display: none;
 			}
 		}
+
 		&__wrapper {
 			/* Forces the element into its own GPU compositing layer (via 3D transform). Helps prevent rendering/layout bugs (e.g. #7511) and may improve animation performance. */
 			transform: translateZ(0);
 			display: grid;
 			grid-template-columns: minmax(0, 1fr);
 			grid-template-rows: 0fr;
-			transition: grid-template-rows 0.3s;
+			transition: grid-template-rows var(--collapsible-transition-duration, 0.3s);
 		}
 
 		&__wrapper-animation {
@@ -36,9 +80,9 @@
 			visibility: hidden;
 
 			transition:
-				transform 0.3s,
-				opacity 0.3s,
-				visibility 0.3s;
+				transform var(--collapsible-transition-duration, 0.3s),
+				opacity var(--collapsible-transition-duration, 0.3s),
+				visibility var(--collapsible-transition-duration, 0.3s);
 		}
 
 		&--open &__wrapper {
@@ -52,23 +96,9 @@
 			visibility: visible;
 		}
 
-		/*
-        * Inside a button, the caption text is always centered.
-        * So we have to align the text to the left.
-        */
-		&__heading-button button {
-			.kol-span {
-				align-items: flex-start;
-
-				&__container {
-					text-align: left;
-				}
-			}
+		&--open:focus-within {
+			position: relative;
+			z-index: 100;
 		}
-	}
-
-	.collapsible--open:focus-within {
-		position: relative;
-		z-index: 100;
 	}
 }

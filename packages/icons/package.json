@@ -1,6 +1,7 @@
 {
 	"name": "@public-ui/icons",
 	"private": true,
+	"version": "0.0.0",
 	"type": "module",
 	"devDependencies": {
 		"oslllo-svg-fixer": "6.0.1",

@@ -12,7 +12,7 @@
 		}
 
 		.kol-button {
-			@include ghost-button;
+			@include ghost-button('kol-button');
 		}
 
 		&__button--selected .kol-button {

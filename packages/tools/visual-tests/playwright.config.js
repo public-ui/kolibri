@@ -1,6 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
+import { createRequire } from 'module';
 import * as path from 'path';
 import * as process from 'process';
+import { fileURLToPath } from 'url';
+
+/** Reads a positive integer from an env var, falling back for missing, non-numeric or non-positive input. */
+const parsePositiveInt = (raw, fallback) => {
+	const parsed = parseInt(raw ?? '', 10);
+	return Number.isInteger(parsed) && parsed > 0 ? parsed : fallback;
+};
 
 // Validate and set ENVs
 const PORT = parseInt(process.env.KOLIBRI_VISUAL_TEST_PORT || '', 10);
@@ -8,6 +16,7 @@ const BASE_URL = `http://localhost:${PORT}`;
 
 const CWD = process.env.KOLIBRI_CWD ?? '';
 const HTML_REPORT_DIR = 'playwright-report';
+const VISUAL_REPORT_DIR = 'visual-report';
 const TIMEOUT = parseInt(process.env.KOLIBRI_VISUAL_TESTS_TIMEOUT || '15000', 10);
 const EXPECT_TIMEOUT = parseInt(process.env.KOLIBRI_VISUAL_TESTS_EXPECT_TIMEOUT || '5000', 10);
 const BUILD_PATH = process.env.KOLIBRI_VISUAL_TESTS_BUILD_PATH ?? '';
@@ -23,6 +32,15 @@ if (!VALID_COLOR_SCHEMES.includes(colorSchema)) {
 	);
 }
 
+/* The web server runs with the build folder as cwd, which lies outside the workspace (RUNNER_TEMP). There
+   `npx http-server` finds no local binary and downloads the package from the registry at test time –
+   since 2026-09-04 that download times out in the CI container. Resolve the dependency of this package
+   instead and run it with the current node. */
+const HTTP_SERVER_BIN = createRequire(import.meta.url).resolve('http-server/bin/http-server');
+
+/* Folder below snapshotDir that holds the baseline of the theme under test, e.g. `theme-default` or `theme-kern_v2-dark`. */
+const THEME_DIR = `theme-${THEME}${colorSchema === 'light' ? '' : `-${colorSchema}`}`;
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -37,16 +55,33 @@ export default defineConfig({
 	forbidOnly: !!process.env.CI,
 	/* Retry on CI only */
 	retries: process.env.CI ? 2 : 0,
-	/* Opt out of parallel tests on CI. */
-	workers: process.env.CI ? 1 : undefined,
+	/* Parallel workers. Local runs default to 4 (fast iteration); CI defaults to 1 for maximum
+	   snapshot stability (parallel Firefox instances can produce sub-pixel-flaky renders).
+	   `KOLIBRI_VISUAL_TESTS_WORKERS` overrides both — `snapshots-docker.mjs` sets it to 1 for every
+	   verifying run, so an acceptance result never depends on the worker count.
+	   Parsed strictly: a non-numeric or non-positive value falls back instead of yielding NaN. */
+	workers: parsePositiveInt(process.env.KOLIBRI_VISUAL_TESTS_WORKERS, process.env.CI ? 1 : 4),
 	/* Allow to override the expectation timeout for slow environments */
 	timeout: TIMEOUT,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
-	reporter: [['line'], ['html', { open: 'never', outputFolder: path.join(CWD, HTML_REPORT_DIR) }]],
+	reporter: [
+		['line'],
+		['html', { open: 'never', outputFolder: path.join(CWD, HTML_REPORT_DIR) }],
+		/* Machine-readable comparison result for the visual review (see src/visual-reporter.js). */
+		[
+			fileURLToPath(new URL('./src/visual-reporter.js', import.meta.url)),
+			{ outputDir: path.join(CWD, VISUAL_REPORT_DIR), snapshotDir: path.join(CWD, 'snapshots'), themeDir: THEME_DIR, packageDir: CWD },
+		],
+	],
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
 		/* Base URL to use in actions like `await page.goto('/')`. */
 		baseURL: BASE_URL,
+
+		/* Drives `prefers-color-scheme` in the browser context. The specs must not set this
+		   themselves – a spec level `colorScheme` overrides the project config and would pin every
+		   run to one scheme, no matter what KOLIBRI_VISUAL_TESTS_COLOR_SCHEME says. */
+		colorScheme: colorSchema,
 
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
 		trace: 'on-first-retry',
@@ -74,10 +109,10 @@ export default defineConfig({
 
 	/* Run your local dev server before starting the tests */
 	webServer: {
-		command: `npx http-server -p ${PORT}`,
+		command: `node "${HTTP_SERVER_BIN}" -p ${PORT}`,
 		cwd: path.resolve(BUILD_PATH),
 		url: BASE_URL,
 		reuseExistingServer: false,
 	},
-	snapshotPathTemplate: `{snapshotDir}/theme-${THEME}${colorSchema === 'light' ? '' : `-${colorSchema}`}/{arg}-{projectName}-{platform}{ext}`,
+	snapshotPathTemplate: `{snapshotDir}/${THEME_DIR}/{arg}-{projectName}-{platform}{ext}`,
 });

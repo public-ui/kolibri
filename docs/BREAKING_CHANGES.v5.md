@@ -93,3 +93,30 @@ Without it, copy the assets from each individual theme package you use.
 	},
 }
 ```
+
+## Removal of legacy schema types of skeleton-migrated components
+
+Components migrated to the skeleton architecture no longer carry a mutable `state` bag, so the
+`*States` and `*API` types of the legacy `Generic.Element.ComponentApi` shape describe nothing
+anymore. They were still re-exported from `@public-ui/components` (via `schema/components`) and are
+**removed**:
+
+| Component          | Removed types                                                               |
+| ------------------ | --------------------------------------------------------------------------- |
+| `kol-abbr`         | `AbbrProps`, `AbbrStates`, `AbbrAPI`                                        |
+| `kol-avatar`       | `AvatarProps`, `AvatarStates`, `AvatarAPI`                                  |
+| `kol-button`       | `ButtonStates`, `ButtonAPI`, `RequiredButtonStates`, `OptionalButtonStates` |
+| `kol-button-link`  | `ButtonLinkStates`                                                          |
+| `kol-icon`         | `IconProps`, `IconStates`, `IconWatches`, `IconAPI`, `InternalIconProps`    |
+| `kol-link`         | `LinkStates`, `LinkAPI`, `InternalLinkAPI`                                  |
+| `kol-progress`     | `ProgressProps`, `ProgressStates`, `ProgressAPI`                            |
+| `kol-quote`        | `QuoteProps`, `QuoteStates`, `QuoteAPI`                                     |
+| `kol-span`         | `SpanProps`, `SpanStates`, `SpanAPI`                                        |
+| `kol-spin`         | `SpinProps`, `SpinStates`, `SpinAPI`                                        |
+| `kol-split-button` | `SplitButtonStates`, `SplitButtonAPI`                                       |
+| `kol-tooltip`      | `TooltipProps`, `TooltipStates`, `TooltipAPI`                               |
+
+The `*Props` types of components that still have consumers (`ButtonProps`, `InternalButtonProps`,
+`LinkProps`, `ButtonLinkProps`, `LinkButtonProps`, `SplitButtonProps`, …) stay. Type the public
+props of a migrated element through the element itself, e.g. `Pick<HTMLKolAbbrElement, '_label'>`,
+or through the internal prop definitions in `src/internal/props`.

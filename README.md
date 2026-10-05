@@ -70,6 +70,8 @@ Run the build once to generate the components:
 pnpm -r build
 ```
 
+For working on the monorepo itself, see the [daily workflow](CONTRIBUTING.md#daily-workflow).
+
 ### Quick start
 
 Install the default theme and register the components:

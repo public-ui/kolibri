@@ -4,10 +4,22 @@
 @use '../@shared/input-container.mixin' as *;
 @use '../@shared/input.mixin' as *;
 @use '../@shared/mixins' as *;
+@use '../@shared/button.mixin' as *;
 
 @layer kol-component {
+	@include kol-button-wc-box-styles('kol-button');
 	@include kol-alert;
 	@include kol-form-field;
 	@include kol-input-container;
 	@include kol-input;
+
+	input[type='search'] {
+		&::-webkit-search-cancel-button {
+			display: none;
+		}
+	}
+
+	.kol-input-text__clear-button--hidden {
+		display: none;
+	}
 }

@@ -73,13 +73,13 @@
 			line-height: var(--ecl-line-height-l);
 		}
 
+		/* The closer renders ButtonFC directly: `__closer` and `kol-button` sit on the same element,
+		   so the former `.kol-button` height rule now targets the closer itself. */
 		&__closer {
-			.kol-button {
-				height: var(--a11y-min-size);
+			height: var(--a11y-min-size);
 
-				.kol-icon {
-					font-size: to-rem(24);
-				}
+			.kol-icon {
+				font-size: to-rem(24);
 			}
 		}
 	}

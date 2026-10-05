@@ -1,6 +1,7 @@
 import { KolHeading, KolPopoverButton } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const PopoverButtonInline: FC = () => {
@@ -13,10 +14,9 @@ export const PopoverButtonInline: FC = () => {
 					than 44px by 44px.
 				</p>
 			</SampleDescription>
-			<div className="flex flex-col gap-4">
+			<SampleBlock id="inline" className="flex flex-col gap-4">
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur aut dolore dolores itaque praesentium reprehenderit sed voluptatum!
-					Exercitationem ipsa magni maiores modi, placeat quas quos reprehenderit rerum sit veniam vitae.
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur aut dolore dolores itaque praesentium.
 					<KolPopoverButton _inline={true} _label="Help" _icons="kolicon-alert-info" _popoverAlign="right" _tooltipAlign="bottom" _hideLabel>
 						<div className="w-sm p-2 border border-solid border-gray">
 							<KolHeading _label="Help Information" _level={0}></KolHeading>
@@ -27,10 +27,9 @@ export const PopoverButtonInline: FC = () => {
 						</div>
 					</KolPopoverButton>
 					<br />
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur aut dolore dolores itaque praesentium reprehenderit sed voluptatum!
 					Exercitationem ipsa magni maiores modi, placeat quas quos reprehenderit rerum sit veniam vitae.
 				</p>
-			</div>
+			</SampleBlock>
 		</>
 	);
 };

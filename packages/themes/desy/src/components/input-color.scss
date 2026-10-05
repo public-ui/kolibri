@@ -5,18 +5,10 @@
 @layer kol-theme-component {
 	@include icon;
 	.kol-input-color {
-		&__inputs-wrapper {
-			height: 100%;
-			gap: to-rem(4);
-		}
-
-		&__input {
-			&--text,
-			&--color {
-				background-color: var(--color-light);
-				min-height: to-rem(36);
-				border: to-rem(1) solid var(--color-subtle);
-			}
+		&__input--color {
+			background-color: var(--color-light);
+			min-height: to-rem(36);
+			border: to-rem(1) solid var(--color-subtle);
 		}
 	}
 }

@@ -69,21 +69,32 @@
 			.kol-button__text {
 				justify-items: start;
 			}
+
+			&:has(.kol-table__loader--shown) {
+				position: relative;
+				// der body braucht etwas höhe für die darstellung der lade animation
+				min-height: calc(var(--a11y-min-size) * 3);
+			}
 		}
 
 		&__cell {
 			&--align-left {
 				text-align: left;
 
-				.kol-button__text {
+				.kol-table__sort-button .kol-button__text {
 					align-items: start;
+					text-align: start;
+				}
+
+				.kol-table__cell-actions {
+					justify-content: flex-start;
 				}
 			}
 
 			&--align-center {
 				text-align: center;
 
-				& .kol-button__text {
+				.kol-table__sort-button .kol-button__text {
 					align-items: center;
 				}
 			}
@@ -91,8 +102,13 @@
 			&--align-right {
 				text-align: right;
 
-				.kol-button__text {
+				.kol-table__sort-button .kol-button__text {
 					align-items: end;
+					text-align: end;
+				}
+
+				.kol-table__cell-actions {
+					justify-content: flex-end;
 				}
 			}
 
@@ -139,6 +155,13 @@
 			justify-content: center;
 		}
 
+		&__cell-states {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: flex-start;
+		}
+
 		&__spacer {
 			display: none;
 		}
@@ -153,11 +176,17 @@
 				min-height: var(--a11y-min-size);
 				align-items: center;
 				justify-content: center;
-				cursor: pointer;
-			}
 
-			&--disabled {
-				cursor: not-allowed;
+				/* The disabled modifier sits on the label, not on the selection wrapper: the former
+				   `&--disabled` one level up compiled to `.kol-table__selection--disabled`, which the
+				   component never renders, so the reset never applied. */
+				&:not(.kol-table__selection-label--disabled) {
+					cursor: pointer;
+				}
+
+				&--disabled {
+					cursor: not-allowed;
+				}
 			}
 
 			&-icon {
@@ -221,6 +250,19 @@
 					}
 				}
 			}
+		}
+
+		&__loader--shown {
+			background: white;
+			display: flex;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 1;
+			align-items: center;
+			justify-content: center;
 		}
 	}
 }

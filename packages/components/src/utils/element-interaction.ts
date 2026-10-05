@@ -7,13 +7,37 @@ export type CtaRef<T extends HTMLElement = HTMLElement> = {
 	el?: T;
 };
 
-export function createCtaRef<T extends HTMLElement = HTMLElement>(): CtaRef<T> {
+/**
+ * Creates the ref that `focus()` and `click()` delegate to.
+ *
+ * @param isInactive - Optional predicate; while it returns `true`, `el` reads as `undefined` and
+ *   the delegating decorators below resolve to a no-op. Components whose inner control cannot
+ *   carry a native `disabled` attribute use this to keep a disabled element out of reach of the
+ *   public `focus()`/`click()` methods, just as a native `disabled` control would be.
+ */
+export function createCtaRef<T extends HTMLElement = HTMLElement>(isInactive?: () => boolean): CtaRef<T> {
+	let element: T | undefined;
 	const ref = ((el?: T) => {
-		ref.el = el;
+		element = el;
 	}) as CtaRef<T>;
-	ref.el = undefined;
+	Object.defineProperty(ref, 'el', {
+		get: () => (isInactive?.() === true ? undefined : element),
+		set: (el?: T) => {
+			element = el;
+		},
+	});
 	return ref;
 }
+
+/**
+ * `mousedown` handler that keeps a control from taking focus on click or tap.
+ *
+ * Elements whose disabled state is only `aria-disabled` — an `<a>`, a `<summary>` — stay focusable:
+ * `tabindex="-1"` takes them out of the tab order but not out of the click focus, and focus is the
+ * default action of `mousedown`. A native `disabled` control refuses focus implicitly; these have
+ * to refuse it here.
+ */
+export const preventFocus = (event: MouseEvent): void => event.preventDefault();
 
 type MethodDecorator_ = (_target: object, _key: string, descriptor: PropertyDescriptor) => PropertyDescriptor;
 

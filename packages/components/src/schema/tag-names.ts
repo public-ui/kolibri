@@ -53,4 +53,5 @@ export enum TagEnum {
 	tooltip,
 	tree,
 	'tree-item',
+	version,
 }

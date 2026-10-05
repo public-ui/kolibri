@@ -280,14 +280,6 @@ export class InputController extends ControlledInputController implements Watche
 		this.valueChangeListeners.push(listener);
 	}
 
-	/**
-	 * Hinweis: In der Subklasse 'InputPasswordController'
-	 *          werden die Methoden onBlur und onFocus
-	 *          überschrieben.
-	 *          Es werden somit zunächst die Methoden der
-	 *          Subklasse ausgeführt und danach die der
-	 *          Oberklassen.
-	 */
 	public readonly onFacade = {
 		onBlur: this.onBlur.bind(this),
 		onChange: this.onChange.bind(this),

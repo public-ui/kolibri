@@ -18,6 +18,7 @@ export type {
 	Option,
 	RadioOption,
 	SelectOption,
+	StateColumnPropType,
 	Toast,
 	ToasterOptions,
 	W3CInputValue,

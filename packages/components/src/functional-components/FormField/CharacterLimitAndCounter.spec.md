@@ -182,7 +182,7 @@ private handleCounterKeyDown(event: KeyboardEvent, currentLength: number): void 
 }
 ```
 
-Diese Logik ist in `CounterDomUpdater.handleKeyDown(...)` gekapselt und wird von den Host-Komponenten
+Diese Logik ist in `CounterBehavior.handleKeyDown(...)` (`internal/functional-components/counter/behavior.ts`) gekapselt und wird von den Host-Komponenten
 (`kol-input-text`, `kol-input-email`, `kol-input-password`, `kol-textarea`) im `keydown`-Handler aufgerufen.
 
 ## Rendering-Einschränkungen

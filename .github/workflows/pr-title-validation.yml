@@ -1,8 +1,16 @@
 name: PR Title Validation
 
 on:
+  # `synchronize` is not optional: `validate-pr-title` is a required status check, and GitHub wants
+  # it on the pull request's *current head commit*. Without it every push leaves the check
+  # unreported on the new commit, GitHub answers a merge with
+  # `Required status check "validate-pr-title" is expected` and the pull request never becomes
+  # mergeable. Renovate hits this on every rebase. See docs/RENOVATE.md, section Troubleshooting.
   pull_request:
-    types: [opened, edited, reopened]
+    # `synchronize` is required: check runs are attached to a head SHA. Without it,
+    # every push creates a new SHA for which this required check never reports and the
+    # PR stays stuck on "Expected — Waiting for status to be reported".
+    types: [opened, edited, reopened, synchronize]
 
 jobs:
   validate-pr-title:
@@ -31,9 +39,9 @@ jobs:
             revert
           # Require a scope (optional - can be removed if not needed)
           requireScope: false
-          # Subject must start with lowercase
-          subjectPattern: ^[a-z].+$
+          # Subject must start with a letter, lowercase or uppercase (umlauts included)
+          subjectPattern: ^[A-Za-zÄÖÜäöü].+$
           subjectPatternError: |
             The subject "{subject}" found in the pull request title "{title}"
             didn't match the configured pattern. Please ensure that the subject
-            starts with a lowercase letter.
+            starts with a letter.

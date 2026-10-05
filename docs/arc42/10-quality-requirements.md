@@ -141,12 +141,12 @@ graph TB
 
 **Quality Goal:** Instant theme changes
 
-| Aspect          | Details                                        |
-| --------------- | ---------------------------------------------- |
-| **Stimulus**    | User switches theme (dark mode, high contrast) |
-| **Environment** | Application with multiple components rendered  |
-| **Response**    | Theme changes instantly across all components  |
-| **Measure**     | Visual change within 16ms (one frame)          |
+| Aspect          | Details                                                                                                      |
+| --------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Stimulus**    | User switches theme or the theme's color scheme (dark/light, provided by the theme, not by the base styling) |
+| **Environment** | Application with multiple components rendered                                                                |
+| **Response**    | Theme changes instantly across all components                                                                |
+| **Measure**     | Visual change within 16ms (one frame)                                                                        |
 
 **Acceptance Criteria:**
 

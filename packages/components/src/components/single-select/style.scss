@@ -39,6 +39,10 @@
 		.kol-custom-suggestions-options-group {
 			max-height: calc($option-height * $visible-options + to-rem(2)) !important;
 		}
+
+		&--open .kol-custom-suggestions-toggle {
+			transform: rotate(180deg);
+		}
 	}
 
 	.kol-custom-suggestions-toggle {

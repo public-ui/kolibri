@@ -1,12 +1,18 @@
 @use '../functions/to-rem' as *;
+@use './popover-button' as *;
 
 @mixin kol-form-field {
 	.kol-form-field {
 		$root: &;
 
 		&__label {
+			@include popover-button;
+
 			color: var(--color-dark-blue-100);
+
+			display: flex;
 			margin-bottom: to-rem(4);
+			align-items: flex-end;
 
 			font-weight: 700;
 			line-height: 1.25;
@@ -47,18 +53,8 @@
 			line-height: 1.25;
 		}
 
-		&--required & {
-			&__label-text {
-				&::after {
-					padding-left: 0.125em;
-				}
-			}
-
-			&__tooltip {
-				.span-label::after {
-					padding-left: 0.125em;
-				}
-			}
+		&--required .kol-span__label::after {
+			padding-left: 0.125em;
 		}
 	}
 }

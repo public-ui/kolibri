@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/hydrate-server",
-	"version": "4.3.0",
+	"version": "4.5.0-rc.3",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -50,6 +50,7 @@
 		"build:deps": "pnpm --filter @public-ui/hydrate-server^... build",
 		"format": "prettier --check src test",
 		"lint": "pnpm lint:eslint",
+		"prepare": "pnpm run build",
 		"lint:eslint": "eslint src",
 		"pretest:unit": "pnpm run build",
 		"pretest:update:unit": "pnpm run pretest:unit",
@@ -59,19 +60,19 @@
 		"test:update:unit": "cross-env SNAPSHOT_UPDATE=1 pnpm run test:mocha"
 	},
 	"dependencies": {
-		"@grpc/grpc-js": "1.14.4",
+		"@grpc/grpc-js": "1.14.5",
 		"@grpc/proto-loader": "0.8.1",
 		"@public-ui/hydrate": "workspace:*",
 		"commander": "15.0.0",
-		"fastify": "5.10.0"
+		"fastify": "5.12.5"
 	},
 	"devDependencies": {
 		"@public-ui/components": "workspace:*",
 		"@public-ui/eslint-config": "workspace:*",
 		"cross-env": "10.1.0",
 		"eslint": "9.39.5",
-		"mocha": "11.7.6",
-		"prettier": "3.9.6",
+		"mocha": "11.8.0",
+		"prettier": "3.9.9",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"

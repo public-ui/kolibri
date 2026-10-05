@@ -5,6 +5,7 @@ import {
 	KolBadge,
 	KolButton,
 	KolButtonLink,
+	KolCard,
 	KolCombobox,
 	KolDetails,
 	KolHeading,
@@ -52,6 +53,7 @@ const getFocusElements = () => {
 	));
 	focusElements.set('button', (_, ref) => <KolButton _label="Button here" ref={ref} />);
 	focusElements.set('buttonLink', (_, ref) => <KolButtonLink _label="ButtonLink here" ref={ref} />);
+	focusElements.set('card', (_, ref) => <KolCard className="w-full" _label="Card with link here" _href="#" ref={ref} />);
 	focusElements.set('combobox', (_, ref) => <KolCombobox className="w-full" _label="KolCombobox here" _suggestions={[]} ref={ref} />);
 	focusElements.set('details', (_, ref) => (
 		<KolDetails className="w-full" _label="Details here" ref={ref}>

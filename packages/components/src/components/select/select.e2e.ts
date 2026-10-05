@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
+import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
@@ -119,4 +120,142 @@ test.describe(COMPONENT_NAME, () => {
 	});
 
 	testInputMessage<HTMLKolSelectElement>(COMPONENT_NAME);
+
+	testInputBehaviorContract<HTMLKolSelectElement>({
+		additionalProperties: OPTIONS_ATTRIBUTE,
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.selectOption({ label: TEST_LABEL });
+		},
+		inputSelector: 'select.kol-select',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', TEST_VALUE),
+				callback('input', TEST_VALUE),
+				kolEvent('change', TEST_VALUE),
+				callback('change', TEST_VALUE),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
+			initialValue: undefined,
+			formData: [],
+			experimentalFormData: [['field', TEST_VALUE]],
+			syncedValue: TEST_VALUE,
+		},
+	});
+
+	testInputBehaviorContract<HTMLKolSelectElement>({
+		additionalProperties: `${OPTIONS_ATTRIBUTE} _multiple`,
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.selectOption([{ label: 'East' }, { label: 'West' }]);
+		},
+		inputSelector: 'select.kol-select',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', ['W', 'E']),
+				callback('input', ['W', 'E']),
+				kolEvent('change', ['W', 'E']),
+				callback('change', ['W', 'E']),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', ['W']),
+				callback('input', ['W']),
+				kolEvent('change', ['W']),
+				callback('change', ['W']),
+				kolEvent('click'),
+				callback('click'),
+				nativeEvent('click'),
+			],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
+			initialValue: undefined,
+			formData: [],
+			experimentalFormData: [
+				['field', 'W'],
+				['field', 'E'],
+			],
+			syncedValue: '["W","E"]',
+		},
+		variant: '_multiple',
+	});
+
+	test.describe('Value', () => {
+		test('getValue() returns the first option without _value and the given value otherwise', async ({ page }) => {
+			await setContentWithRetry(
+				page,
+				`<kol-select _label="Input" ${OPTIONS_ATTRIBUTE}></kol-select><kol-select _label="Input" _value="W" ${OPTIONS_ATTRIBUTE}></kol-select>`,
+			);
+			const values = await page.evaluate(async () => {
+				const [first, preset] = Array.from(document.querySelectorAll('kol-select'));
+				return [await first.getValue(), await preset.getValue()];
+			});
+			expect(values).toEqual(['N', 'W']);
+		});
+
+		test('getValue() returns an array with _multiple', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-select _label="Input" _multiple ${OPTIONS_ATTRIBUTE}></kol-select>`);
+			const component = page.locator(COMPONENT_NAME);
+			await component.evaluate((element: HTMLKolSelectElement) => {
+				element._value = ['S', 'E'];
+			});
+			await page.waitForChanges();
+			expect(await component.evaluate((element: HTMLKolSelectElement) => element.getValue())).toEqual(['S', 'E']);
+		});
+
+		test('synchronizes the single value into an <input> target from the start and on _value changes (#11015)', async ({ page }) => {
+			await setContentWithRetry(page, '<head><meta name="kolibri" content="experimental-mode=true" /></head><body><input id="target" /></body>');
+			// The experimental mode is read at startup, so the field is inserted afterwards.
+			await page.evaluate(
+				(markup) => document.body.insertAdjacentHTML('beforeend', markup),
+				`<kol-select _label="Input" _sync-value-by-selector="#target" ${OPTIONS_ATTRIBUTE}></kol-select>`,
+			);
+			await page.waitForChanges();
+			await expect(page.locator('#target')).toHaveValue('N');
+
+			await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolSelectElement) => {
+				element._value = 'W';
+			});
+			await page.waitForChanges();
+			await expect(page.locator('#target')).toHaveValue('W');
+		});
+
+		test('selects the next option with ArrowDown and reports its value', async ({ page }) => {
+			await setContentWithRetry(page, `<kol-select _label="Input" ${OPTIONS_ATTRIBUTE}></kol-select>`);
+			const component = page.locator(COMPONENT_NAME);
+			await component.evaluate((element: HTMLKolSelectElement) => {
+				element._on = {
+					onChange: (_event: Event, value?: unknown) => {
+						(window as unknown as { changed: unknown[] }).changed.push(value);
+					},
+				};
+				(window as unknown as { changed: unknown[] }).changed = [];
+			});
+
+			await page.locator('select').focus();
+			await page.keyboard.press('ArrowDown');
+			await page.waitForChanges();
+
+			expect(await page.evaluate(() => (window as unknown as { changed: unknown[] }).changed)).toEqual(['S']);
+			expect(await component.evaluate((element: HTMLKolSelectElement) => element.getValue())).toBe('S');
+			// The field writes the selection to `_value` (#11014).
+			expect(await component.evaluate((element: HTMLKolSelectElement) => element._value)).toBe('S');
+		});
+	});
 });

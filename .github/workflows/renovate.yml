@@ -3,20 +3,28 @@ name: Renovate
 # Self-hosted Renovate runner — see docs/RENOVATE.md.
 #
 # Triggers:
-#   - schedule:          Mondays 04:00 UTC. The repo's renovate.json additionally limits PR
-#                        creation to "before 6am on monday" (Europe/Berlin).
+#   - schedule:          night window only — every 3 hours between 18:00 and 06:00 (Europe/Berlin).
+#                        GitHub cron is UTC-only, so the hours below cover the window in both CET
+#                        (UTC+1) and CEST (UTC+2): 16/19/22/01/04 UTC == 18/21/00/03/06 Berlin in
+#                        summer and 17/20/23/02/05 Berlin in winter. The exact local window is
+#                        enforced by renovate.json ("after 6pm" / "before 6am", timezone
+#                        Europe/Berlin), so a run that falls outside it opens no PRs.
 #   - workflow_dispatch: manual "Run workflow" button; optionally tick "dry_run" to preview
 #                        what Renovate would do without creating branches/PRs.
 #
 # Auth: reuses the existing GitHub App (secrets.APP_ID / secrets.PRIVATE_KEY — the same app as
 #       "04 - Update pnpm Lock"). The app installation must grant:
-#         contents: write, pull-requests: write, issues: write (Dependency Dashboard)
-#         and workflows: write (so the github-actions manager can update .github/workflows/*).
+#         contents: write, pull-requests: write, issues: write (Dependency Dashboard),
+#         workflows: write (so the github-actions manager can update .github/workflows/*),
+#         and Dependabot alerts: read (otherwise vulnerabilityAlerts stays inactive).
 # Alternative: drop the app-token step and pass a PAT via `token: ${{ secrets.RENOVATE_TOKEN }}`.
 
 on:
   schedule:
-    - cron: '0 4 * * 1'
+    - cron: '13 16,20,0,4 * * 1-5'
+      timezone: 'Europe/Berlin'
+    - cron: '13 */4 * * 0,6'
+      timezone: 'Europe/Berlin'
   workflow_dispatch:
     inputs:
       dry_run:
@@ -52,7 +60,7 @@ jobs:
           private-key: ${{ secrets.PRIVATE_KEY }}
 
       - name: Self-hosted Renovate
-        uses: renovatebot/github-action@v46.2.0
+        uses: renovatebot/github-action@v46.3.3
         with:
           token: ${{ steps.app-token.outputs.token }}
         env:

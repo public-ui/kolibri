@@ -27,6 +27,10 @@
 			background: var(--kern-color-feedback-danger-background);
 		}
 
+		&:focus {
+			outline: none;
+		}
+
 		&[multiple][size='1'],
 		&:not([multiple]) {
 			padding-right: calc(var(--a11y-min-size) + #{to-rem(7)});

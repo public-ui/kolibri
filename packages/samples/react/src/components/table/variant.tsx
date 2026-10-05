@@ -3,6 +3,7 @@ import React, { useMemo } from 'react';
 
 import { KolTableStateful } from '@public-ui/react-v19';
 
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 import { DATE_FORMATTER } from './formatter';
 import type { Data } from './test-data';
@@ -11,7 +12,7 @@ import { DATA } from './test-data';
 import type { KoliBriTableHeaders } from '@public-ui/components';
 import { useSearchParams } from 'react-router';
 import { fetchVariantData } from '../../shares/fetchVariantData';
-import { getCustomThemes } from '../../shares/store';
+import { getTheme } from '../../shares/store';
 
 const HEADERS: KoliBriTableHeaders = {
 	horizontal: [
@@ -24,7 +25,7 @@ const HEADERS: KoliBriTableHeaders = {
 
 export const TableVariant: FC = () => {
 	const [searchParams] = useSearchParams();
-	const theme = searchParams.get('theme') ?? getCustomThemes()?.[0]?.key;
+	const theme = searchParams.get('theme') ?? getTheme();
 	const tableVariants = useMemo(() => (theme ? fetchVariantData(theme, 'tableVariants') : []), [theme]);
 
 	return (
@@ -33,7 +34,7 @@ export const TableVariant: FC = () => {
 				<p>This sample shows KolTableStateful with different variants controlled by the theme.</p>
 			</SampleDescription>
 
-			<section className="w-full flex flex-col gap-14">
+			<SampleBlock id="variants" className="w-full flex flex-col gap-14">
 				{!Array.isArray(tableVariants) || tableVariants.length === 0 ? (
 					<p>This theme has no variants for tables.</p>
 				) : (
@@ -58,7 +59,7 @@ export const TableVariant: FC = () => {
 						);
 					})
 				)}
-			</section>
+			</SampleBlock>
 		</div>
 	);
 };

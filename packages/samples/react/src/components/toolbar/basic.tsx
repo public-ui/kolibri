@@ -1,7 +1,8 @@
 import type { ToolbarItemsPropType } from '@public-ui/components';
-import { KolHeading, KolToolbar } from '@public-ui/react-v19';
+import { KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const ToolbarBasic: FC = () => {
@@ -61,13 +62,13 @@ export const ToolbarBasic: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<div className="flex flex-col gap-4">
-				<KolHeading _label="Orientation horizontal" _level={2} />
+			<SampleBlock id="horizontal" heading="Orientation horizontal" fitContent narrow>
 				<KolToolbar class="block w-fit" _label="Toolbar" _items={TOOLBAR_ITEMS} />
+			</SampleBlock>
 
-				<KolHeading _label="Orientation vertical" _level={2} />
+			<SampleBlock id="vertical" heading="Orientation vertical" fitContent>
 				<KolToolbar class="block w-fit" _label="Toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
-			</div>
+			</SampleBlock>
 		</>
 	);
 };

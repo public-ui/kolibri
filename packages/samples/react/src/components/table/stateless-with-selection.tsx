@@ -2,8 +2,9 @@ import type { KoliBriTableCell, KoliBriTableSelection, KoliBriTableSelectionKeys
 import { createReactRenderElement, KolButton, KolTableStateless } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect, useRef, useState } from 'react';
-import { useToasterService } from '../../hooks/useToasterService';
+import { useAlert } from '../../hooks/useAlert';
 import { getRoot } from '../../shares/react-roots';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 type SelectionValue = string | number;
@@ -21,7 +22,7 @@ const DATA = [
 type Data = (typeof DATA)[0];
 
 function KolButtonWrapper({ label }: { label: string }) {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
@@ -72,10 +73,10 @@ export const TableStatelessWithSelection: FC = () => {
 				<p>This sample shows KolTableStateless with checkboxes for selection enabled.</p>
 			</SampleDescription>
 
-			<section className="w-full">
+			<SampleBlock id="selection" className="w-full">
 				<KolTableStateless
 					_label="Table with selection checkboxes"
-					_headerCells={{
+					_headers={{
 						horizontal: [
 							[
 								{ key: 'id', label: '#ID', textAlign: 'left' },
@@ -91,7 +92,7 @@ export const TableStatelessWithSelection: FC = () => {
 					style={{ maxWidth: '600px' }}
 					ref={kolTableStatelessRef}
 				/>
-			</section>
+			</SampleBlock>
 		</>
 	);
 };

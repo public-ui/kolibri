@@ -2,13 +2,14 @@ import React from 'react';
 
 import type { ToolbarItemsPropType } from '@public-ui/components';
 import { KolSplitButton, KolToolbar } from '@public-ui/react-v19';
-import { useToasterService } from '../../hooks/useToasterService';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 import type { FC } from 'react';
+import { useAlert } from '../../hooks/useAlert';
 
 export const SplitButtonBasic: FC = () => {
-	const { buttonWithTextClickEventHandler } = useToasterService();
+	const { buttonWithTextClickEventHandler } = useAlert();
 	const dummyEventHandler = {
 		onClick: buttonWithTextClickEventHandler,
 	};
@@ -43,11 +44,11 @@ export const SplitButtonBasic: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<div className="flex flex-col gap-4">
+			<SampleBlock id="basic" className="flex flex-col gap-4">
 				<KolSplitButton _label="Edit" _on={dummyEventHandler}>
 					<KolToolbar _label="Action toolbar" _items={TOOLBAR_ITEMS} _orientation="vertical" />
 				</KolSplitButton>
-			</div>
+			</SampleBlock>
 		</>
 	);
 };

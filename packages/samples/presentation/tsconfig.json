@@ -8,7 +8,7 @@
 		"sourceMap": true,
 		"preserveSymlinks": true,
 		"moduleResolution": "bundler",
-		"lib": ["es2017", "dom"],
+		"lib": ["es2017", "dom", "dom.iterable"],
 		"typeRoots": ["node_modules/@types"],
 		"noUnusedLocals": true,
 		"resolveJsonModule": true,
@@ -26,6 +26,6 @@
 		"jsxFactory": "React.createElement",
 		"jsxFragmentFactory": "React.Fragment"
 	},
-	"include": ["**/*.ts", "**/*.tsx"],
+	"include": ["**/*.ts", "**/*.tsx", "**/*.d.ts"],
 	"exclude": ["node_modules", "dist"]
 }

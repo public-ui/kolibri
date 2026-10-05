@@ -44,3 +44,4 @@ Consider using one of the [framework integrations](https://public-ui.github.io/e
 2. Only alignment/position/layout!
 3. No colors/spacing/font/transform/animation/overflow!
 4. padding/margin 0 is allowed! If set, use comment.
+5. No color schemes (dark/light)! No `prefers-color-scheme`, `color-scheme` or `light-dark()` — that is theme work (see [`docs/BASE_STYLING_VS_THEMING_CONCEPT.md`](../../../../docs/BASE_STYLING_VS_THEMING_CONCEPT.md)).

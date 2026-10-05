@@ -3,6 +3,7 @@ import { KolTableStateful } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
 
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 import type { KoliBriTableHeaderCellWithLogic } from '@public-ui/components';
@@ -87,7 +88,7 @@ export const TableStatefulWithSelection: FC = () => {
 				</p>
 			</SampleDescription>
 
-			<section className="w-full">
+			<SampleBlock id="selection" className="w-full">
 				<KolTableStateful
 					_label="Tasks with action buttons"
 					_headers={HEADERS}
@@ -96,7 +97,7 @@ export const TableStatefulWithSelection: FC = () => {
 					_selection={selection}
 					_on={{ onSelectionChange: handleSelectionChangeCallback }}
 				/>
-			</section>
+			</SampleBlock>
 		</>
 	);
 };

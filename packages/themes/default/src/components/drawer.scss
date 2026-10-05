@@ -10,7 +10,13 @@ $duration: 0.4s;
 
 	.kol-drawer {
 		&__wrapper {
-			box-shadow: 0 0 4px var(--color-subtle);
+			/*
+			 * A drawer slides over the page, so in dark mode its boundary is a hard edge rather than the
+			 * blurred shadow — see `mixins/elevation.scss`. The light branch is unchanged.
+			 */
+			box-shadow:
+				0 0 4px light-dark(var(--color-subtle), transparent),
+				0 0 0 var(--border-width) var(--color-edge);
 
 			&--left {
 				animation: slideInLeft $duration forwards;

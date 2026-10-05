@@ -11,7 +11,13 @@ export const LinkButtonAriaDescription: FC = () => (
 
 		<div className="flex flex-wrap gap-2">
 			<KolLinkButton _href="#/back-page" _label="Link Button Text without area description"></KolLinkButton>
-			<KolLinkButton _href="#/back-page" _label="Link Button Text" _ariaDescription="Link Button Area Description"></KolLinkButton>
+			<KolLinkButton _href="#/back-page" _label="Link Button Text" _ariaDescription="Link Button Aria Description"></KolLinkButton>
+			<KolLinkButton
+				_href="#/back-page"
+				_label="Link Button Text"
+				_ariaDescription="Link Button Aria Description with external Link"
+				_target="_blank"
+			></KolLinkButton>
 		</div>
 	</>
 );

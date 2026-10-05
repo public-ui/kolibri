@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import type { KoliBriTableHeaderCellWithLogic, KoliBriTableHeaders, KoliBriTableSelection } from '@public-ui/components';
 import { KolHeading, KolTableStateful } from '@public-ui/react-v19';
@@ -30,7 +30,7 @@ export const TableBig: FC = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [rows, setRows] = useState<number>(50);
 	const [fixedCols, setFixedCols] = useState<[number, number]>([0, 0]);
-	var loaded = false;
+	const loaded = useRef(false);
 
 	const [headers, setHeaders] = useState<KoliBriTableHeaderCellWithLogic[]>(defaultHeaders);
 
@@ -39,7 +39,7 @@ export const TableBig: FC = () => {
 	};
 
 	function defineTable() {
-		if (loaded) {
+		if (loaded.current) {
 			return;
 		}
 
@@ -82,7 +82,7 @@ export const TableBig: FC = () => {
 			});
 		}
 
-		loaded = true;
+		loaded.current = true;
 	}
 
 	useEffect(() => defineTable(), [searchParams]);

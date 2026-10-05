@@ -8,8 +8,8 @@ import type { ComponentApi, PropsConfigShape } from '../generic-types';
  * Note: `high`, `low`, and `optimum` are intentionally omitted from this config.
  * These optional numeric props must remain nullable (undefined when not set),
  * but the renderProps pipeline enforces StrictFields (non-nullable).
- * Solution: these three props are managed separately in the Controller's `meterData` object
- * via the `getMeterData()` getter, allowing them to be undefined while the renderProps
+ * Solution: these three props are managed separately in the web component's `meterData`
+ * field, allowing them to be undefined while the renderProps
  * pipeline handles required props.
  *
  * See MeterApi.Props.Optional for the complete prop interface.

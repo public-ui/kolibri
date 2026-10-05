@@ -2,14 +2,13 @@ import { KolLinkTag } from '../../../core/component-names';
 import type { LinkProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
-import { KolLinkWc } from '../component';
-import { KolLink } from '../shadow';
+import { KolLink } from '../component';
 
 const baseObj = { _href: 'https://example.com', _icons: 'codicon codicon-home', _label: 'Label', _target: 'self' };
 
 executeSnapshotTests<LinkProps>(
 	KolLinkTag,
-	[KolLink, KolLinkWc],
+	[KolLink],
 	[
 		{ ...baseObj },
 		{ ...baseObj, _tooltipAlign: 'top' },
@@ -20,5 +19,7 @@ executeSnapshotTests<LinkProps>(
 		{ ...baseObj, _tooltipAlign: 'top', _hideLabel: true },
 
 		{ _label: 'Label', _href: '', _download: 'download-file.zip', _target: 'blank' },
+		// `download` is a presence attribute: an empty string must render as `download=""`.
+		{ ...baseObj, _download: '' },
 	],
 );

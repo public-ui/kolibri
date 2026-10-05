@@ -1,15 +1,24 @@
 @use '../mixins/to-rem' as *;
 @use './button' as *;
 @use './focus-outline' as *;
+@use '../mixins/dialog' as *;
 
 @mixin kol-table-settings-theme {
+	@include kol-dialog;
+
 	.kol-table-settings {
 		top: 0;
 		right: to-rem(5);
 
-		&__content {
-			padding: to-rem(24);
-			@include kol-button('kol-button'); // use buttons styles only in the content, not for the popover button
+		/*
+		 * The popover of the settings button carries no `--styled` modifier, so the rule in
+		 * `popover-button.scss` does not reach it and the base layer's white surface and black
+		 * border would survive.
+		 */
+		.kol-popover-button__popover {
+			--kol-surface: var(--color-overlay);
+			background: var(--color-overlay);
+			border-color: var(--color-ink);
 		}
 
 		&__error-message {
@@ -32,7 +41,7 @@
 		}
 	}
 
-	.kol-button:focus {
+	.kol-button__interactive-element:focus {
 		@include focus-outline;
 	}
 }

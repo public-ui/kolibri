@@ -3,9 +3,9 @@ import { Component, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { QuoteApi } from '../../internal/functional-components/quote/api';
+import { quotePropsConfig } from '../../internal/functional-components/quote/api';
 import { QuoteFC } from '../../internal/functional-components/quote/component';
-import { QuoteController } from '../../internal/functional-components/quote/controller';
-import type { QuoteVariantType } from '../../internal/props/variant-quote';
+import { hrefProp, labelProp, quoteProp, variantQuoteProp, type QuoteVariantType } from '../../internal/props';
 
 /**
  * The **Quote** component has two variants: a short inline (`inline`) and an indented block (`block`) variant. Both variants include a link to the source of the quote.
@@ -17,9 +17,7 @@ import type { QuoteVariantType } from '../../internal/props/variant-quote';
 	},
 	shadow: true,
 })
-export class KolQuote implements WebComponentInterface<QuoteApi> {
-	private readonly ctrl = new QuoteController(BaseWebComponent.stateLess);
-
+export class KolQuote extends BaseWebComponent<QuoteApi> implements WebComponentInterface<QuoteApi> {
 	/**
 	 * Sets the target URI of the link or citation source.
 	 */
@@ -28,7 +26,7 @@ export class KolQuote implements WebComponentInterface<QuoteApi> {
 
 	@Watch('_href')
 	public watchHref(value?: string): void {
-		this.ctrl.watchHref(value);
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
 	}
 
 	/**
@@ -39,7 +37,7 @@ export class KolQuote implements WebComponentInterface<QuoteApi> {
 
 	@Watch('_label')
 	public watchLabel(value?: string): void {
-		this.ctrl.watchLabel(value);
+		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**
@@ -50,7 +48,7 @@ export class KolQuote implements WebComponentInterface<QuoteApi> {
 
 	@Watch('_quote')
 	public watchQuote(value?: string): void {
-		this.ctrl.watchQuote(value);
+		quoteProp.apply(value, (v) => this.setRenderProp('quote', v));
 	}
 
 	/**
@@ -61,26 +59,26 @@ export class KolQuote implements WebComponentInterface<QuoteApi> {
 
 	@Watch('_variant')
 	public watchVariant(value?: QuoteVariantType): void {
-		this.ctrl.watchVariant(value);
+		variantQuoteProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 
 	public componentWillLoad(): void {
-		this.ctrl.componentWillLoad({
-			href: this._href,
-			label: this._label,
-			quote: this._quote,
-			variant: this._variant,
-		});
+		this.initRenderProps(quotePropsConfig);
+
+		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v));
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		quoteProp.apply(this._quote, (v) => this.setRenderProp('quote', v));
+		variantQuoteProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
 	}
 
 	public render(): JSX.Element {
 		return (
 			<Host>
 				<QuoteFC
-					href={this.ctrl.getRenderProp('href')}
-					label={this.ctrl.getRenderProp('label')}
-					quote={this.ctrl.getRenderProp('quote')}
-					variant={this.ctrl.getRenderProp('variant')}
+					href={this.getRenderProp('href')}
+					label={this.getRenderProp('label')}
+					quote={this.getRenderProp('quote')}
+					variant={this.getRenderProp('variant')}
 				/>
 			</Host>
 		);

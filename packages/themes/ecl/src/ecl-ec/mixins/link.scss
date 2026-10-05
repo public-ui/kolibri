@@ -1,20 +1,47 @@
-@mixin link($block-classname) {
+/*
+ * Link styles. With $anchor-scoped (default) they attach to the inner `kol-link__interactive-element`
+ * of the skeleton DOM. Otherwise they attach to the class carrier itself, whose element
+ * is the interactive one (e.g. `kol-button` in button-link), matching the component DOM
+ * before the kol-link skeleton migration.
+ */
+@mixin link-carrier {
+	color: var(--ecl-color-primary);
+
+	.kol-span__label {
+		text-decoration-thickness: from-font;
+		text-underline-offset: clamp(3px, 0.245em, 10px);
+	}
+
+	&:not([aria-disabled='true'], :disabled):hover {
+		color: var(--ecl-color-primary-140);
+	}
+}
+
+@mixin link-focus {
+	outline: 2px solid var(--ecl-color-primary);
+	border-radius: 1px;
+	outline-offset: 2px;
+}
+
+@mixin link($block-classname, $anchor-scoped: true) {
 	.#{$block-classname} {
-		color: var(--ecl-color-primary);
+		@if $anchor-scoped {
+			&__interactive-element {
+				@include link-carrier;
 
-		.kol-span__label {
-			text-decoration-thickness: from-font;
-			text-underline-offset: clamp(3px, 0.245em, 10px);
-		}
+				&:focus {
+					@include link-focus;
+				}
+			}
+		} @else {
+			@include link-carrier;
 
-		&:hover {
-			color: var(--ecl-color-primary-140);
-		}
-
-		&:focus {
-			outline: 2px solid var(--ecl-color-primary);
-			border-radius: 1px;
-			outline-offset: 2px;
+			/* The skeleton DOM makes the inner interactive element focusable; the class carrier is a
+			   wrapper that never receives focus, so the focus ring has to be scoped to the inner
+			   element to keep parity with the pre-migration component DOM. */
+			&__interactive-element:focus {
+				@include link-focus;
+			}
 		}
 	}
 }

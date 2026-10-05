@@ -191,21 +191,26 @@ themes/
    - Globale Layout-Defaults
    - Box-sizing, Font-Size-Baseline
    - Keine Farben oder Abstände
+   - Kein Color Scheme (Light/Dark)
 
 3. **Schicht 3: Basis Komponente** (von `components`)
    - Komponenten-spezifisches Layout
    - Nur strukturelles CSS
    - Keine Farben oder Abstände
+   - Kein Color Scheme (Light/Dark)
 
 4. **Schicht 4: Theme Global** (von `themes`)
    - Farben, Schriften, Abstände
    - Design-Tokens
+   - Color Schemes (Light/Dark)
    - Marken-spezifische Globals
 
 5. **Schicht 5: Theme Komponente** (von `themes`)
    - Komponenten-spezifisches Theming
    - Farben, Rahmen, Schatten
    - Vollständiges visuelles Design
+
+> Dark/Light-Color-Schemes sind ausschließlich Theme-Sache. Die Basis-Schichten 1–3 fokussieren auf Layout und bleiben scheme-neutral; siehe [Basis-Styling vs. Theming Konzept](../BASE_STYLING_VS_THEMING_CONCEPT.md).
 
 ## 5.4 Adapters-Paket (Ebene 2)
 
@@ -215,7 +220,6 @@ graph TB
         React[React Adapter]
         ReactV19[React v19 Adapter]
         ReactStandalone[React Standalone]
-        Angular19[Angular v19]
         Angular20[Angular v20]
         Angular21[Angular v21]
         Vue[Vue Adapter]
@@ -236,7 +240,6 @@ graph TB
     ReactOutput -->|generiert| React
     ReactOutput -->|generiert| ReactV19
     ReactOutput -->|generiert| ReactStandalone
-    AngularOutput -->|generiert| Angular19
     AngularOutput -->|generiert| Angular20
     AngularOutput -->|generiert| Angular21
     VueOutput -->|generiert| Vue
@@ -258,15 +261,15 @@ Alle Adapter werden **automatisch generiert** von Stencil Output Targets. Manuel
 
 ### Framework-Unterstützung
 
-| Framework   | Paket(e)                                                                     | Zweck                              |
-| ----------- | ---------------------------------------------------------------------------- | ---------------------------------- |
-| **React**   | `@public-ui/react`, `@public-ui/react-v19`, `@public-ui/react-standalone`    | React 18, 19 und Standalone-Builds |
-| **Angular** | `@public-ui/angular-v19`, `@public-ui/angular-v20`, `@public-ui/angular-v21` | Angular-Versionen 19, 20, 21       |
-| **Vue**     | `@public-ui/vue`                                                             | Vue.js-Integration                 |
-| **Solid**   | `@public-ui/solid`                                                           | SolidJS-Integration                |
-| **Svelte**  | `@public-ui/svelte`                                                          | Svelte-Integration                 |
-| **Preact**  | `@public-ui/preact`                                                          | Preact-Integration                 |
-| **Vaadin**  | `@public-ui/vaadin`                                                          | Vaadin Flow (Java) Integration     |
+| Framework   | Paket(e)                                                                  | Zweck                              |
+| ----------- | ------------------------------------------------------------------------- | ---------------------------------- |
+| **React**   | `@public-ui/react`, `@public-ui/react-v19`, `@public-ui/react-standalone` | React 18, 19 und Standalone-Builds |
+| **Angular** | `@public-ui/angular-v20`, `@public-ui/angular-v21`                        | Angular-Versionen 20, 21           |
+| **Vue**     | `@public-ui/vue`                                                          | Vue.js-Integration                 |
+| **Solid**   | `@public-ui/solid`                                                        | SolidJS-Integration                |
+| **Svelte**  | `@public-ui/svelte`                                                       | Svelte-Integration                 |
+| **Preact**  | `@public-ui/preact`                                                       | Preact-Integration                 |
+| **Vaadin**  | `@public-ui/vaadin`                                                       | Vaadin Flow (Java) Integration     |
 
 ## 5.5 Tools-Paket (Ebene 2)
 

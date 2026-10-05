@@ -152,10 +152,12 @@ export const InputDateCopyPaste: React.FC = () => {
 							}}
 						/>
 
-						<small className="opacity-80">Click the button to copy the exact German date, then paste it into the date field below.</small>
+						<p className="opacity-80" id="button-desc">
+							Click the button to copy the exact German date, then paste it into the date field below.
+						</p>
 
 						<div className="flex items-center gap-2">
-							<KolButton _label="Copy to Clipboard" _on={{ onClick: () => copyToClipboard(deValue) }} />
+							<KolButton _label="Copy to Clipboard" _on={{ onClick: () => copyToClipboard(deValue) }} aria-describedby="button-desc" />
 							{!isoFromDe && <span className="text-red-600">Invalid date</span>}
 						</div>
 

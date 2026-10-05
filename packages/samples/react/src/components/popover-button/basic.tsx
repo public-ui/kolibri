@@ -2,11 +2,11 @@ import type { ToolbarItemsPropType } from '@public-ui/components';
 import { KolHeading, KolPopoverButton, KolToolbar } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useEffect } from 'react';
-import { useToasterService } from '../../hooks/useToasterService';
+import { useAlert } from '../../hooks/useAlert';
 import { SampleDescription } from '../SampleDescription';
 
 export const PopoverButtonBasic: FC = () => {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 	const buttonRef = React.useRef<HTMLKolPopoverButtonElement | null>(null);
 
 	const dummyEventHandler = {

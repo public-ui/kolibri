@@ -295,3 +295,99 @@ test.describe('kol-tree - Focus Performance', () => {
 		await expect(item2Link).toBeFocused();
 	});
 });
+
+test.describe('kol-tree - Interaction', () => {
+	const NESTED_TREE = `
+		<kol-tree _label="Interaction Tree">
+			<kol-tree-item _label="Item 1" _href="#item1"></kol-tree-item>
+			<kol-tree-item _label="Item 2" _href="#item2">
+				<kol-tree-item _label="Item 2.1" _href="#item2.1"></kol-tree-item>
+			</kol-tree-item>
+			<kol-tree-item _label="Item 3" _href="#item3"></kol-tree-item>
+		</kol-tree>
+	`;
+
+	test('ArrowDown moves the focus to the next open item', async ({ page }) => {
+		await page.setContent(NESTED_TREE);
+		const treeItems = page.locator('kol-tree-item');
+		await expect(page.locator('kol-tree')).toHaveClass(/hydrated/);
+
+		await treeItems.nth(0).locator('.kol-link__interactive-element').first().focus();
+		await page.keyboard.press('ArrowDown');
+		await expect(treeItems.nth(1).locator('.kol-link__interactive-element').first()).toBeFocused();
+
+		// Item 2.1 is hidden while Item 2 is collapsed, so the next open item is Item 3.
+		await page.keyboard.press('ArrowDown');
+		await expect(treeItems.nth(3).locator('.kol-link__interactive-element').first()).toBeFocused();
+	});
+
+	test('ArrowRight expands and ArrowLeft collapses an item with children', async ({ page }) => {
+		await page.setContent(NESTED_TREE);
+		const item2 = page.locator('kol-tree-item').nth(1);
+		const item2Link = item2.locator('.kol-link__interactive-element').first();
+		await expect(page.locator('kol-tree')).toHaveClass(/hydrated/);
+
+		await item2Link.focus();
+		await expect(item2Link).toHaveAttribute('aria-expanded', 'false');
+
+		await page.keyboard.press('ArrowRight');
+		await expect(item2Link).toHaveAttribute('aria-expanded', 'true');
+		await expect(item2.locator('.kol-tree-item__children').first()).toBeVisible();
+
+		await page.keyboard.press('ArrowLeft');
+		await expect(item2Link).toHaveAttribute('aria-expanded', 'false');
+		await expect(item2.locator('.kol-tree-item__children').first()).toBeHidden();
+	});
+
+	test('clicking the chevron toggles the item without following the link', async ({ page }) => {
+		await page.setContent(NESTED_TREE);
+		const item2 = page.locator('kol-tree-item').nth(1);
+		const item2Link = item2.locator('.kol-link__interactive-element').first();
+		await expect(page.locator('kol-tree')).toHaveClass(/hydrated/);
+		const urlBefore = page.url();
+
+		await item2.locator('.kol-tree-item__toggle-button').first().click();
+		await expect(item2Link).toHaveAttribute('aria-expanded', 'true');
+		await expect(item2Link).toBeFocused();
+		expect(page.url()).toBe(urlBefore);
+
+		await item2.locator('.kol-tree-item__toggle-button').first().click();
+		await expect(item2Link).toHaveAttribute('aria-expanded', 'false');
+	});
+
+	test('the active item is tabbable and its ancestors are expanded', async ({ page }) => {
+		await page.setContent(`
+			<kol-tree _label="Active Tree">
+				<kol-tree-item _label="Item 1" _href="#item1"></kol-tree-item>
+				<kol-tree-item _label="Item 2" _href="#item2">
+					<kol-tree-item _label="Item 2.1" _href="#item2.1" _active="true"></kol-tree-item>
+				</kol-tree-item>
+			</kol-tree>
+		`);
+		const treeItems = page.locator('kol-tree-item');
+		await expect(page.locator('kol-tree')).toHaveClass(/hydrated/);
+
+		await expect(treeItems.nth(1).locator('.kol-link__interactive-element').first()).toHaveAttribute('aria-expanded', 'true');
+		await expect(treeItems.nth(2).locator('.kol-link__interactive-element').first()).toHaveAttribute('tabindex', '0');
+		await expect(treeItems.nth(0).locator('.kol-link__interactive-element').first()).toHaveAttribute('tabindex', '-1');
+	});
+
+	test('clicking the link dispatches the click event with the href on the tree item', async ({ page }) => {
+		await page.setContent(NESTED_TREE);
+		const item1 = page.locator('kol-tree-item').first();
+		await expect(page.locator('kol-tree')).toHaveClass(/hydrated/);
+
+		const detail = item1.evaluate(
+			(element) =>
+				new Promise<unknown>((resolve) => {
+					element.addEventListener('click', (event) => {
+						if (event instanceof CustomEvent) {
+							resolve(event.detail);
+						}
+					});
+				}),
+		);
+		await item1.locator('.kol-link__interactive-element').first().click();
+		expect(await detail).toBe('#item1');
+	});
+});

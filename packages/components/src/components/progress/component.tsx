@@ -3,9 +3,9 @@ import { Component, h, Host, Prop, State, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { ProgressApi } from '../../internal/functional-components/progress/api';
+import { progressPropsConfig } from '../../internal/functional-components/progress/api';
 import { ProgressFC } from '../../internal/functional-components/progress/component';
-import { ProgressController } from '../../internal/functional-components/progress/controller';
-import type { ProgressVariantType } from '../../internal/props';
+import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp, type ProgressVariantType } from '../../internal/props';
 
 /**
  * The **Progress** component visualizes the completion status of a task or process. It supports both determinate (percentage-based) and indeterminate variants.
@@ -18,7 +18,7 @@ import type { ProgressVariantType } from '../../internal/props';
 	shadow: true,
 })
 export class KolProgress extends BaseWebComponent<ProgressApi> implements WebComponentInterface<ProgressApi> {
-	private readonly ctrl = new ProgressController(this.stateAccess);
+	private interval?: ReturnType<typeof setInterval>;
 
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
@@ -28,7 +28,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	@Watch('_label')
 	public watchLabel(value?: string): void {
-		this.ctrl.watchLabel(value);
+		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**
@@ -39,7 +39,10 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	@Watch('_max')
 	public watchMax(value?: number): void {
-		this.ctrl.watchMax(value);
+		maxProp.apply(value, (v) => {
+			this.setRenderProp('max', v);
+			this.watchValue(this.getRawProp('value'));
+		});
 	}
 
 	/**
@@ -50,7 +53,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	@Watch('_unit')
 	public watchUnit(value?: string): void {
-		this.ctrl.watchUnit(value);
+		unitProp.apply(value, (v) => this.setRenderProp('unit', v));
 	}
 
 	/**
@@ -61,7 +64,14 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	@Watch('_value')
 	public watchValue(value?: number): void {
-		this.ctrl.watchValue(value);
+		this.setRawProp('value', value);
+		clampedNumberValueProp.apply(
+			value,
+			(v) => {
+				this.setRenderProp('value', v);
+			},
+			{ min: 0, max: this.getRenderProp('max') },
+		);
 	}
 
 	/**
@@ -72,7 +82,7 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 
 	@Watch('_variant')
 	public watchVariant(value?: ProgressVariantType): void {
-		this.ctrl.watchVariant(value);
+		variantProgressProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 
 	/**
@@ -82,28 +92,45 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	public liveValue: number = 0;
 
 	public componentWillLoad(): void {
-		this.ctrl.componentWillLoad({
-			label: this._label,
-			max: this._max,
-			unit: this._unit,
-			value: this._value,
-			variant: this._variant,
+		this.initRenderProps(progressPropsConfig);
+
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		maxProp.apply(this._max, (v) => {
+			this.setRenderProp('max', v);
+			this.watchValue(this.getRawProp('value'));
 		});
+		unitProp.apply(this._unit, (v) => this.setRenderProp('unit', v));
+		this.watchValue(this._value);
+		variantProgressProp.apply(this._variant, (v) => this.setRenderProp('variant', v));
+
+		this.setState('liveValue', this.getRenderProp('value'));
+		this.startLiveValueInterval();
 	}
 
 	public disconnectedCallback(): void {
-		this.ctrl.destroy();
+		if (this.interval) {
+			clearInterval(this.interval);
+			this.interval = undefined;
+		}
+	}
+
+	// a11y: says the value of the component every 5s
+	private startLiveValueInterval(): void {
+		this.interval = setInterval(() => {
+			const value = this.getRenderProp('value');
+			this.setState('liveValue', value);
+		}, 5000);
 	}
 
 	public render(): JSX.Element {
 		return (
 			<Host>
 				<ProgressFC
-					label={this.ctrl.getRenderProp('label')}
-					max={this.ctrl.getRenderProp('max')}
-					unit={this.ctrl.getRenderProp('unit')}
-					value={this.ctrl.getRenderProp('value')}
-					variant={this.ctrl.getRenderProp('variant')}
+					label={this.getRenderProp('label')}
+					max={this.getRenderProp('max')}
+					unit={this.getRenderProp('unit')}
+					value={this.getRenderProp('value')}
+					variant={this.getRenderProp('variant')}
 					liveValue={this.liveValue}
 				/>
 			</Host>

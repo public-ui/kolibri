@@ -2,7 +2,11 @@
 
 exports[`kol-spin should render with _show=false 1`] = `
 <kol-spin>
-  <template shadowrootmode="open"></template>
+  <template shadowrootmode="open">
+    <span aria-busy="false" class="visually-hidden" role="alert">
+      kol-action-done
+    </span>
+  </template>
 </kol-spin>
 `;
 

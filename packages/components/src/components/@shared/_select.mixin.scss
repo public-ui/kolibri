@@ -27,10 +27,6 @@
 			height: 2.75em;
 		}
 
-		&:focus {
-			outline: none;
-		}
-
 		&__option:checked::before {
 			content: '✓ ';
 		}

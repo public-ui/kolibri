@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/presentation",
-	"version": "4.3.0",
+	"version": "4.5.0-rc.3",
 	"description": "This package contains presentation samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -18,8 +18,11 @@
 		"prebuild": "kolibri-copy-assets --dest public/assets @public-ui/components @public-ui/theme-bwst @public-ui/theme-default @public-ui/theme-desy @public-ui/theme-ecl @public-ui/theme-kern @public-ui/sample-react",
 		"prepare": "pnpm prebuild",
 		"serve": "vite",
-		"start": "vite --open",
+		"dev": "vite --open",
+		"test": "vitest run",
 		"test:e2e": "playwright test",
+		"test:unit": "vitest run",
+		"test:watch": "vitest",
 		"unused": "knip"
 	},
 	"dependencies": {
@@ -33,26 +36,31 @@
 		"@public-ui/theme-kern": "workspace:*",
 		"react": "19.2.8",
 		"react-dom": "19.2.8",
-		"react-router": "8.3.0"
+		"react-router": "8.4.0"
 	},
 	"devDependencies": {
 		"@playwright/test": "1.60.0",
 		"@public-ui/eslint-config": "workspace:*",
-		"@types/node": "26.1.2",
-		"@types/react": "19.2.17",
-		"@types/react-dom": "19.2.3",
-		"@unocss/preset-mini": "66.7.5",
-		"@unocss/vite": "66.7.5",
-		"@vitejs/plugin-react-swc": "4.3.2",
+		"@testing-library/jest-dom": "7.0.1",
+		"@testing-library/react": "16.3.3",
+		"@types/node": "26.4.0",
+		"@types/react": "19.2.18",
+		"@types/react-dom": "19.2.5",
+		"@unocss/preset-mini": "66.8.1",
+		"@unocss/vite": "66.8.1",
+		"@vitejs/plugin-react-swc": "4.3.3",
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"eslint": "9.39.5",
-		"knip": "6.29.0",
-		"prettier": "3.9.6",
+		"happy-dom": "20.14.5",
+		"knip": "6.39.0",
+		"prettier": "3.9.9",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"stylelint": "17.14.1",
+		"shadow-dom-testing-library": "1.14.2",
+		"stylelint": "17.16.0",
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
-		"vite": "8.1.5"
+		"vite": "8.3.2",
+		"vitest": "4.1.11"
 	},
 	"files": [
 		"dist",

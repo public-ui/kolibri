@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import { KolHeading, KolInputCheckbox, KolNav } from '@public-ui/react-v19';
+import { KolInputCheckbox, KolNav } from '@public-ui/react-v19';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 import { LINKS, LINKS_SUB_ACTIVE, LINKS_WITHOUT_SUBMENU } from './links';
 
@@ -29,8 +30,7 @@ export const NavBasic: FC = () => {
 						}}
 					></KolInputCheckbox>
 				</section>
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Navigation without submenu" />
+				<SampleBlock id="navigation-submenu" heading="Navigation without submenu" fitContent>
 					<KolNav
 						class="block w-fit"
 						_label="Navigation without submenu"
@@ -38,13 +38,11 @@ export const NavBasic: FC = () => {
 						_hasCompactButton
 						_hasIconsWhenExpanded={hasIconsWhenExpanded}
 					/>
-				</section>
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Navigation with submenu" />
+				</SampleBlock>
+				<SampleBlock id="navigation-submenu-2" heading="Navigation with submenu" fitContent>
 					<KolNav class="block w-fit" _label="Navigation with submenu" _links={LINKS} _hasCompactButton _hasIconsWhenExpanded={hasIconsWhenExpanded} />
-				</section>
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Navigation with submenu active" />
+				</SampleBlock>
+				<SampleBlock id="navigation-submenu-active" heading="Navigation with submenu active" fitContent>
 					<KolNav
 						class="block w-fit"
 						_label="Navigation with submenu active"
@@ -52,7 +50,7 @@ export const NavBasic: FC = () => {
 						_hasCompactButton
 						_hasIconsWhenExpanded={hasIconsWhenExpanded}
 					/>
-				</section>
+				</SampleBlock>
 			</section>
 		</>
 	);

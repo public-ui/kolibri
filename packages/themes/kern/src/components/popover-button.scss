@@ -1,9 +1,5 @@
-@use '../mixins/button.mixin' as *;
+@use '../mixins/popover-button' as *;
 
 @layer kol-theme-component {
-	@include button('kol-button');
-
-	.kol-popover-button--inline .kol-button--inline {
-		--button-padding: 0;
-	}
+	@include popover-button;
 }

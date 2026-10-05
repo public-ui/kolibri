@@ -3,7 +3,7 @@
 
 @layer kol-theme-component {
 	@include kol-link('kol-link');
-	@include kol-link('kol-button');
+	@include kol-link('kol-button', $anchor-scoped: false, $interactive-suffix: 'interactive-element');
 
 	.kol-nav {
 		padding: var(--kern-metric-space-small);
@@ -23,8 +23,10 @@
 			padding-left: to-rem(var(--kol-nav-item-padding-left));
 			align-items: center;
 
-			&:hover {
-				background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
+			@include kol-enabled-wrapper {
+				&:hover {
+					background-color: var(--kern-color-action-state-indicator-tint-hover-opacity);
+				}
 			}
 		}
 

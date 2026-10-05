@@ -1,4 +1,3 @@
-npm deprecate @public-ui/angular-v19@$1 ""
 npm deprecate @public-ui/angular-v20@$1 ""
 npm deprecate @public-ui/angular-v21@$1 ""
 npm deprecate @public-ui/hydrate@$1 ""

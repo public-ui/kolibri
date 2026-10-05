@@ -48,13 +48,5 @@ export type OptionalButtonProps = {
 	PropSyncValueBySelector &
 	PropTooltipAlign;
 
-export type RequiredButtonStates = PropIcons & PropLabelWithExpertSlot & PropButtonCallbacks<StencilUnknown> & PropButtonType;
-export type OptionalButtonStates = Omit<
-	OptionalButtonProps,
-	keyof PropIcons | keyof PropLabelWithExpertSlot | keyof PropButtonCallbacks<StencilUnknown> | keyof PropButtonType
->;
-
 export type ButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
 export type InternalButtonProps = Generic.Element.Members<RequiredButtonProps, OptionalButtonProps>;
-export type ButtonStates = Generic.Element.Members<RequiredButtonStates, OptionalButtonStates>;
-export type ButtonAPI = Generic.Element.ComponentApi<RequiredButtonProps, OptionalButtonProps, RequiredButtonStates, OptionalButtonStates>;

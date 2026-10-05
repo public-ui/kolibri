@@ -63,6 +63,28 @@ test.describe('kol-drawer', () => {
 		});
 	});
 
+	test.describe('close button', () => {
+		test(`should close and report it when the close button is clicked`, async ({ page }) => {
+			await page.setContent('<kol-drawer _label="Details" _has-closer _open><div data-testid="drawer-content">Drawer content</div></kol-drawer>');
+			const kolDrawer = page.locator('kol-drawer');
+
+			const callbackPromise = kolDrawer.evaluate((element: HTMLKolDrawerElement) => {
+				return new Promise<void>((resolve) => {
+					element._on = {
+						onClose: () => {
+							resolve();
+						},
+					};
+				});
+			});
+			await page.waitForChanges();
+			await kolDrawer.locator('.kol-card__close-button button').click();
+
+			await expect(callbackPromise).resolves.toBeUndefined();
+			await expect(page.getByTestId('drawer-content')).not.toBeVisible();
+		});
+	});
+
 	test.describe('_open property', () => {
 		test(`should open initially when _open property is true`, async ({ page }) => {
 			await page.setContent('<kol-drawer _label="Details" _open><div data-testid="drawer-content">Drawer content</div></kol-drawer>');

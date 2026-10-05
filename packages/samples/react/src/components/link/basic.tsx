@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import React from 'react';
 
 import { KolLink } from '@public-ui/react-v19';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const LinkBasic: FC = () => (
@@ -13,7 +14,7 @@ export const LinkBasic: FC = () => (
 			</p>
 		</SampleDescription>
 
-		<div className="grid gap-4">
+		<SampleBlock id="basic">
 			<KolLink _href="#/back-page" _inline={false} _label="Simple Link" />
 			<KolLink _disabled _href="#/back-page" _inline={false} _label="Simple Link (disabled)" />
 			<KolLink _hideLabel _icons="kolicon-house" _href="#/back-page" _inline={false} _label="Icon Link" />
@@ -32,6 +33,6 @@ export const LinkBasic: FC = () => (
 				the entire width of the parent element, causing a line break.
 			</p>
 			<KolLink _href="#/back-page" _inline={false} _label="Special Variant Link" _variant="theme-link" />
-		</div>
+		</SampleBlock>
 	</>
 );

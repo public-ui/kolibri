@@ -28,7 +28,7 @@ jobs:
           PERSONAL_ACCESS_TOKEN: ${{ steps.app-token.outputs.token }}
         with:
           path-to-signatures: 'cla/kolibri/signatures-v1.0.json'
-          path-to-document: 'https://github.com/public-ui/kolibri/blob/main/docs/CLA.md' # e.g. a CLA or a DCO document
+          path-to-document: 'https://github.com/public-ui/kolibri/blob/develop/docs/CLA.md' # e.g. a CLA or a DCO document
           remote-organization-name: 'public-ui'
           remote-repository-name: '.github-private'
           # branch should not be protected

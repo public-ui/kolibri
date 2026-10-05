@@ -1,5 +1,6 @@
 import { cloneDeep, isObject } from 'lodash-es';
-import { Log } from '../../../schema';
+import { devWarning } from '../../../schema';
+import { normalizeCallbacksObject } from './normalizers';
 
 function safeStringify(value: unknown): string {
 	try {
@@ -7,6 +8,16 @@ function safeStringify(value: unknown): string {
 	} catch {
 		return '[unserializable]';
 	}
+}
+
+/**
+ * Logs a visible developer warning for an invalid property value. Invalid values are
+ * ignored (the render prop keeps its previous or default value), matching the behavior
+ * of the legacy `watchValidator` based validation — but visibly instead of silently.
+ */
+function warnInvalidValue(propName: string, value: unknown, cause?: unknown): void {
+	const reason = cause instanceof Error ? ` (${cause.message})` : '';
+	devWarning(`The property value ${safeStringify(value)} for '${propName}' is not valid${reason}. The value is ignored.`);
 }
 
 /**
@@ -48,6 +59,23 @@ export type ExtractPropKey<P extends Prop<string, unknown, unknown>> =
 		? K
 		: never;
 
+/**
+ * Options for prop definitions, including optional hint callbacks for developer guidance.
+ */
+export type PropDefinitionOptions<T = unknown> = {
+	/**
+	 * Whether the property is required. If true and no value is provided,
+	 * a warning will be emitted and the default value will be used.
+	 */
+	required?: boolean;
+	/**
+	 * Optional callback for emitting developer hints after successful validation.
+	 * Called with the property name and the normalized value.
+	 * Useful for accessibility and UX guidance (e.g., label length warnings).
+	 */
+	hints?: (propName: string, value: T) => void;
+};
+
 export type PropDefinition<TInternal, P extends Prop<string, unknown, unknown> = Prop<string, unknown, TInternal>> = {
 	readonly __phantomProp__?: P;
 	readonly propName: string;
@@ -62,6 +90,7 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 	defaultValue: InternalPropValue<P>,
 	normalize: (value: unknown) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>) => boolean = () => true,
+	options?: PropDefinitionOptions<InternalPropValue<P>>,
 ): PropDefinition<InternalPropValue<P>, P> {
 	return {
 		propName,
@@ -70,6 +99,9 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 		validate,
 		apply(value, callback) {
 			if (value === undefined || value === null) {
+				if (options?.required) {
+					devWarning(`The required property '_${propName}' did not receive a value. The default value is used instead.`);
+				}
 				if (this.validate(defaultValue)) {
 					callback(defaultValue);
 				} else {
@@ -80,10 +112,14 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 			try {
 				const normalized = this.normalize(value);
 				if (this.validate(normalized)) {
+					// Call hints after successful validation
+					options?.hints?.(this.propName, normalized);
 					callback(normalized);
+				} else {
+					warnInvalidValue(propName, value);
 				}
-			} catch (e) {
-				Log.debug(e);
+			} catch (error) {
+				warnInvalidValue(propName, value, error);
 			}
 		},
 	};
@@ -103,6 +139,7 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 	defaultValue: InternalPropValue<P>,
 	normalize: (value: unknown, deps: TDeps) => InternalPropValue<P> | never,
 	validate: (value: InternalPropValue<P>, deps: TDeps) => boolean = () => true,
+	options?: PropDefinitionOptions<InternalPropValue<P>>,
 ): DependentPropDefinition<InternalPropValue<P>, TDeps, P> {
 	return {
 		propName,
@@ -123,11 +160,28 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 			try {
 				const normalized = this.normalize(value, deps);
 				if (this.validate(normalized, deps)) {
+					// Call hints after successful validation
+					options?.hints?.(this.propName, normalized);
 					callback(normalized);
+				} else {
+					warnInvalidValue(propName, value);
 				}
-			} catch (e) {
-				Log.debug(e);
+			} catch (error) {
+				warnInvalidValue(propName, value, error);
 			}
 		},
 	};
+}
+
+/**
+ * Creates the prop definition for an `_on` callbacks object.
+ *
+ * Every component that exposes callbacks normalizes them identically: `apply` already handles
+ * `undefined`/`null` by falling back to the default `{}`, so the normalizer only has to verify
+ * that a non-null value is an object (`normalizeCallbacksObject`). This factory holds that one
+ * implementation; callers bind it to their own callback type (`collapsibleCallbacksProp`,
+ * `buttonCallbacksProp`, …).
+ */
+export function createCallbacksPropDefinition<T extends object>(): PropDefinition<T, SimpleProp<'on', T>> {
+	return createPropDefinition<SimpleProp<'on', T>>('on', {} as T, (value) => normalizeCallbacksObject<T>(value));
 }

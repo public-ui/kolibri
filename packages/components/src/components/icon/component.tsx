@@ -3,8 +3,9 @@ import { Component, h, Host, Prop, Watch } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { IconApi } from '../../internal/functional-components/icon/api';
+import { iconPropsConfig } from '../../internal/functional-components/icon/api';
 import { IconFC } from '../../internal/functional-components/icon/component';
-import { IconController } from '../../internal/functional-components/icon/controller';
+import { iconsProp, labelProp } from '../../internal/props';
 
 /**
  * The **Icon** component allows icons from included icon fonts to be displayed at any position.
@@ -16,9 +17,7 @@ import { IconController } from '../../internal/functional-components/icon/contro
 	},
 	shadow: true,
 })
-export class KolIcon implements WebComponentInterface<IconApi> {
-	private readonly ctrl = new IconController(BaseWebComponent.stateLess);
-
+export class KolIcon extends BaseWebComponent<IconApi> implements WebComponentInterface<IconApi> {
 	/**
 	 * Defines the icon classnames (e.g. `_icons="fa-solid fa-user"`).
 	 */
@@ -27,7 +26,7 @@ export class KolIcon implements WebComponentInterface<IconApi> {
 
 	@Watch('_icons')
 	public watchIcons(value?: string): void {
-		this.ctrl.watchIcons(value);
+		iconsProp.apply(value, (v) => this.setRenderProp('icons', v));
 	}
 
 	/**
@@ -38,20 +37,20 @@ export class KolIcon implements WebComponentInterface<IconApi> {
 
 	@Watch('_label')
 	public watchLabel(value?: string): void {
-		this.ctrl.watchLabel(value);
+		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	public componentWillLoad(): void {
-		this.ctrl.componentWillLoad({
-			icons: this._icons,
-			label: this._label,
-		});
+		this.initRenderProps(iconPropsConfig);
+
+		iconsProp.apply(this._icons, (v) => this.setRenderProp('icons', v));
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
 	}
 
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<IconFC icons={this.ctrl.getRenderProp('icons')} label={this.ctrl.getRenderProp('label')} />
+				<IconFC icons={this.getRenderProp('icons')} label={this.getRenderProp('label')} />
 			</Host>
 		);
 	}

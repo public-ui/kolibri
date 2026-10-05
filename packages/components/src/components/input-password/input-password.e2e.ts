@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { testInputCharacterLimit, testInputValueReflection } from '../../e2e';
+import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 
 const COMPONENT_NAME = 'kol-input-password';
@@ -124,5 +125,34 @@ test.describe('kol-input-password', () => {
 			await toggleButton.click();
 			await expect(input).toHaveAttribute('type', 'password');
 		});
+	});
+
+	testInputBehaviorContract<HTMLKolInputPasswordElement>({
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.fill(TEST_VALUE);
+		},
+		inputSelector: 'input.kol-input[type="password"]',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', TEST_VALUE),
+				callback('input', TEST_VALUE),
+				kolEvent('change', TEST_VALUE),
+				callback('change', TEST_VALUE),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
+			initialValue: undefined,
+			formData: [],
+			experimentalFormData: [['field', TEST_VALUE]],
+			syncedValue: TEST_VALUE,
+		},
 	});
 });

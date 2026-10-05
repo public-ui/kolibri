@@ -21,7 +21,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { SampleDescription } from '../components/SampleDescription';
-import { useToasterService } from '../hooks/useToasterService';
+import { useAlert } from '../hooks/useAlert';
 import { COUNTRY_SUGGESTIONS } from '../shares/country';
 
 const formSchema = z.object({
@@ -52,7 +52,7 @@ const formSchema = z.object({
 });
 
 export const SampleFormWithValidation: React.FC = () => {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 	const {
 		handleSubmit,
 		formState: { errors },

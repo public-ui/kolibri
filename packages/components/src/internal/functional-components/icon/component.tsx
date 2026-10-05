@@ -11,7 +11,7 @@ const BEM_CLASS_ICON = iconBem();
 const BEM_CLASS_ICON__ICON = iconBem('icon');
 
 export const IconFC: FC<FunctionalComponentProps<IconApi>> = ({ class: classNames, icons, label, ...htmlAttributes }) => {
-	// label should be trimmed by normalization in controller
+	// label is always a normalized string ('' when unset — see labelProp definition)
 	const hasAriaLabel = label?.length > 0;
 	return (
 		<i

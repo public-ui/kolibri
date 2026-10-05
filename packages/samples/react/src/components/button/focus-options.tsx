@@ -1,7 +1,8 @@
 import type { KolFocusOptions, SelectOption } from '@public-ui/components';
-import { KolButton, KolHeading, KolSelect } from '@public-ui/react-v19';
+import { KolButton, KolSelect } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React, { useCallback, useRef, useState } from 'react';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 const BEHAVIOR_OPTIONS: SelectOption<string>[] = [
@@ -83,8 +84,7 @@ export const ButtonFocusOptions: FC = () => {
 
 			<div className="grid gap-8">
 				{/* Scroll Into View Options */}
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Scroll Behavior Options" />
+				<SampleBlock id="scroll-behavior-options" heading="Scroll Behavior Options">
 					<p>
 						These options control how elements are scrolled into view. <code>preventScroll</code> and <code>focusVisible</code> are always enabled for optimal
 						focus management. Customize the scroll behavior and alignment below:
@@ -107,11 +107,10 @@ export const ButtonFocusOptions: FC = () => {
 							</div>
 						))}
 					</div>
-				</section>
+				</SampleBlock>
 
 				{/* Scroll Example */}
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Scroll Example" />
+				<SampleBlock id="scroll-example" heading="Scroll Example">
 					<p>The target button is positioned bottom-right. Scroll down and right to find it, then click &quot;Focus Target&quot; to apply scroll behavior.</p>
 
 					<div className="flex gap-4">
@@ -147,13 +146,12 @@ export const ButtonFocusOptions: FC = () => {
 							/>
 						</div>
 					</div>
-				</section>
+				</SampleBlock>
 
 				<hr />
 
 				{/* Description */}
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="About KolFocusOptions" />
+				<SampleBlock id="about-kol-focus-options" heading="About KolFocusOptions">
 					<div className="indented-text">
 						<p>KolFocusOptions enables advanced focus control with scroll-into-view behavior:</p>
 						<ul className="list-disc pl-5">
@@ -177,7 +175,7 @@ export const ButtonFocusOptions: FC = () => {
 							</li>
 						</ul>
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

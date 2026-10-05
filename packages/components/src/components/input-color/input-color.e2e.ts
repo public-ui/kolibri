@@ -2,20 +2,19 @@ import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { type E2EPage, test } from '@stencil/playwright';
 import { testInputValueReflection } from '../../e2e';
+import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
 import { testInputMessage } from '../../e2e/input-msg';
 import type { FillAction } from '../../e2e/utils/FillAction';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 
 const COMPONENT_NAME = 'kol-input-color';
 const TEST_VALUE = '#cc006e';
-const NEW_VALUE = '#00ccff';
 const fillAction: FillAction = async (page) => {
-	const textInput = page.locator('input[type="text"]');
-	await textInput.fill(TEST_VALUE);
-	await textInput.dispatchEvent('input');
+	const colorInput = page.locator('input[type="color"]');
+	await colorInput.fill(TEST_VALUE);
+	await colorInput.dispatchEvent('input');
 };
-const selectTextInput = (page: Page & E2EPage) => page.locator('input[type="text"]');
-const selectColorInput = (page: Page & E2EPage) => page.locator('input[type="color"]');
+const selectcolorInput = (page: Page & E2EPage) => page.locator('input[type="color"]');
 
 test.describe(COMPONENT_NAME, () => {
 	testInputValueReflection<HTMLKolInputColorElement>({
@@ -28,14 +27,14 @@ test.describe(COMPONENT_NAME, () => {
 		test('should call onFocus callback and emit focus event when input receives focus', async ({ page }) => {
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}>`);
 			const component = page.locator(COMPONENT_NAME);
-			const textInput = selectTextInput(page);
+			const colorInput = selectcolorInput(page);
 
 			await component.evaluate((element: HTMLKolInputColorElement) => {
 				element._on = { onFocus: () => ((window as unknown as Record<string, unknown>).focusCallback = true) };
 				element.addEventListener('focus', () => ((window as unknown as Record<string, unknown>).focusEvent = true));
 			});
 
-			await textInput.focus();
+			await colorInput.focus();
 			await page.waitForChanges();
 
 			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).focusCallback)).toBe(true);
@@ -45,7 +44,7 @@ test.describe(COMPONENT_NAME, () => {
 		test('should call onBlur callback and emit blur event when input loses focus', async ({ page }) => {
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}><button id="next">Next</button>`);
 			const component = page.locator(COMPONENT_NAME);
-			const textInput = selectTextInput(page);
+			const colorInput = selectcolorInput(page);
 			const nextButton = page.locator('#next');
 
 			await component.evaluate((element: HTMLKolInputColorElement) => {
@@ -53,7 +52,7 @@ test.describe(COMPONENT_NAME, () => {
 				element.addEventListener('blur', () => ((window as unknown as Record<string, unknown>).blurEvent = true));
 			});
 
-			await textInput.focus();
+			await colorInput.focus();
 			await page.waitForChanges();
 			await nextButton.focus();
 			await page.waitForChanges();
@@ -68,14 +67,14 @@ test.describe(COMPONENT_NAME, () => {
 
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}>`);
 			const component = page.locator(COMPONENT_NAME);
-			const textInput = selectTextInput(page);
+			const colorInput = selectcolorInput(page);
 
 			await component.evaluate((element: HTMLKolInputColorElement) => {
 				element._on = { onClick: () => ((window as unknown as Record<string, unknown>).clickCallback = true) };
 				element.addEventListener('click', () => ((window as unknown as Record<string, unknown>).clickEvent = true));
 			});
 
-			await textInput.click();
+			await colorInput.click();
 			await page.waitForChanges();
 
 			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).clickCallback)).toBe(true);
@@ -85,7 +84,7 @@ test.describe(COMPONENT_NAME, () => {
 		test('should call onChange callback and emit change event with value when the value is committed', async ({ page }) => {
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}>`);
 			const component = page.locator(COMPONENT_NAME);
-			const textInput = selectTextInput(page);
+			const colorInput = selectcolorInput(page);
 
 			await component.evaluate((element: HTMLKolInputColorElement) => {
 				element._on = { onChange: (_event: Event, value?: unknown) => ((window as unknown as Record<string, unknown>).changeValue = value) };
@@ -94,7 +93,7 @@ test.describe(COMPONENT_NAME, () => {
 
 			await fillAction(page);
 			await page.waitForChanges();
-			await textInput.dispatchEvent('change');
+			await colorInput.dispatchEvent('change');
 			await page.waitForChanges();
 
 			expect(await page.evaluate(() => (window as unknown as Record<string, unknown>).changeValue)).toBe(TEST_VALUE);
@@ -102,15 +101,87 @@ test.describe(COMPONENT_NAME, () => {
 		});
 	});
 
+	/*
+	 * Pins the tooltip that replaces the visible label with _hideLabel, ahead of the form field skeleton migration,
+	 * which moves the tooltip from a pool shared by all form fields to one behavior per field.
+	 */
+	test.describe('Tooltip with _hideLabel', () => {
+		const tooltip = '.kol-form-field__tooltip .kol-tooltip__floating';
+
+		test.beforeEach(async ({ page }) => {
+			await page.setContent(`<${COMPONENT_NAME} _label="Farbe" _hide-label></${COMPONENT_NAME}><button id="outside">Outside</button>`);
+		});
+
+		test('shows the label as tooltip while the input has the focus', async ({ page }) => {
+			await expect(page.locator(tooltip)).not.toBeVisible();
+
+			await page.locator('input.kol-input').focus();
+			await expect(page.locator(tooltip)).toBeVisible();
+			await expect(page.locator(tooltip)).toContainText('Farbe');
+
+			await page.locator('#outside').focus();
+			await expect(page.locator(tooltip)).not.toBeVisible();
+		});
+
+		test('shows the label as tooltip while the input is hovered', async ({ page }) => {
+			await page.locator('input.kol-input').hover();
+			await expect(page.locator(tooltip)).toBeVisible();
+
+			await page.locator('#outside').hover();
+			await expect(page.locator(tooltip)).not.toBeVisible();
+		});
+
+		test('hides the tooltip on Escape while the input is hovered', async ({ page }) => {
+			await page.locator('input.kol-input').hover();
+			await expect(page.locator(tooltip)).toBeVisible();
+
+			await page.keyboard.press('Escape');
+			await expect(page.locator(tooltip)).not.toBeVisible();
+		});
+
+		/*
+		 * Today's behavior, pinned unchanged: the field dispatches its own `keydown` CustomEvent on the host, which reaches
+		 * the document before the native Escape key and consumes the tooltip's one-time Escape listener (#11032).
+		 */
+		test('keeps the tooltip on Escape while the input has the focus', async ({ page }) => {
+			await page.locator('input.kol-input').focus();
+			await expect(page.locator(tooltip)).toBeVisible();
+
+			await page.keyboard.press('Escape');
+			await page.waitForTimeout(500);
+
+			await expect(page.locator(tooltip)).toBeVisible();
+		});
+	});
+
 	testInputMessage<HTMLKolInputColorElement>(COMPONENT_NAME);
 
-	test('should sync value between color input and text input', async ({ page }) => {
-		await page.setContent(`<${COMPONENT_NAME} _label="Color Picker"></${COMPONENT_NAME}>`);
-		const colorInput = selectColorInput(page);
-		const textInput = selectTextInput(page);
-		await colorInput.fill(TEST_VALUE);
-		await expect(textInput).toHaveValue(TEST_VALUE);
-		await textInput.fill(NEW_VALUE);
-		await expect(colorInput).toHaveValue(NEW_VALUE);
+	testInputBehaviorContract<HTMLKolInputColorElement>({
+		componentName: COMPONENT_NAME,
+		fillAction: async (input) => {
+			await input.fill(TEST_VALUE);
+		},
+		inputSelector: 'input.kol-input[type="color"]',
+		pinned: {
+			edit: [
+				kolEvent('focus'),
+				callback('focus'),
+				nativeEvent('focus'),
+				kolEvent('input', TEST_VALUE),
+				callback('input', TEST_VALUE),
+				kolEvent('change', TEST_VALUE),
+				callback('change', TEST_VALUE),
+				kolEvent('blur'),
+				callback('blur'),
+				nativeEvent('blur'),
+			],
+			click: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('click'), callback('click'), nativeEvent('click')],
+			keydown: [kolEvent('focus'), callback('focus'), nativeEvent('focus'), kolEvent('keydown'), callback('keydown'), nativeEvent('keydown')],
+			touchedAfterBlur: true,
+			initialValue: '#000000',
+			formData: [],
+			experimentalFormData: [['field', TEST_VALUE]],
+			syncedValue: TEST_VALUE,
+		},
 	});
 });

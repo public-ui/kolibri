@@ -1,0 +1,220 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormFieldFC renders a character limit hint 1`] = `
+<div class="kol-form-field">
+  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input">
+    <input type="text">
+  </div>
+  <span class="visually-hidden" id="field-character-limit-hint-nonce">
+    kol-character-limit-hint
+  </span>
+</div>
+`;
+
+exports[`FormFieldFC renders a counter 1`] = `
+<div class="kol-form-field">
+  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input">
+    <input type="text">
+  </div>
+  <div class="kol-form-field__counter">
+    <span aria-hidden="true" class="kol-form-field__counter" data-testid="input-counter"></span>
+    <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="field-counter-nonce"></span>
+  </div>
+</div>
+`;
+
+exports[`FormFieldFC renders a hidden label shown as tooltip 1`] = `
+<div class="kol-form-field kol-form-field--hide-label">
+  <label class="kol-form-field__label" hidden="" htmlfor="field-nonce">
+    <span class="kol-form-field__label-text kol-span kol-span--has-badge">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          L
+          <u>
+            a
+          </u>
+          bel
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+        <kbd aria-hidden="true" class="badge-text-hint">
+          A
+        </kbd>
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input">
+    <input type="text">
+    <div class="kol-form-field__tooltip">
+      <div class="kol-tooltip__floating">
+        <div class="kol-tooltip__arrow"></div>
+        <span class="kol-span kol-span--has-badge kol-tooltip__content" id="field-label-nonce">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              L
+              <u>
+                a
+              </u>
+              bel
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+            <kbd aria-hidden="true" class="badge-text-hint">
+              A
+            </kbd>
+          </span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FormFieldFC renders a hidden message 1`] = `
+<div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched">
+  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input">
+    <input type="text">
+  </div>
+</div>
+`;
+
+exports[`FormFieldFC renders a hint 1`] = `
+<div class="kol-form-field">
+  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input">
+    <input type="text">
+  </div>
+  <span class="kol-form-field__hint" id="field-hint-nonce">
+    Hint
+  </span>
+</div>
+`;
+
+exports[`FormFieldFC renders a touched error message 1`] = `
+<div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched">
+  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input">
+    <input type="text">
+  </div>
+  <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg" id="field-msg-nonce" role="alert">
+    <span class="visually-hidden">
+      kol-error
+    </span>
+    <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+    <div class="kol-alert__content">
+      Error
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FormFieldFC renders a variant and a field class 1`] = `
+<div class="kol-form-field kol-input-color">
+  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input">
+    <input type="text">
+  </div>
+</div>
+`;
+
+exports[`FormFieldFC renders no label and no hint 1`] = `
+<div class="kol-form-field">
+  <div class="kol-form-field__input">
+    <input type="text">
+  </div>
+</div>
+`;
+
+exports[`FormFieldFC renders required, read-only and disabled 1`] = `
+<div class="kol-form-field kol-form-field--disabled kol-form-field--read-only kol-form-field--required">
+  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+    <span aria-hidden="true" class="kol-form-field__label__read-only">
+      (kol-readonly)
+    </span>
+  </label>
+  <div class="kol-form-field__input">
+    <input type="text">
+  </div>
+</div>
+`;
+
+exports[`FormFieldFC renders the default 1`] = `
+<div class="kol-form-field">
+  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+    <span class="kol-form-field__label-text kol-span">
+      <span class="kol-span__container">
+        <span class="kol-span__label">
+          Label
+        </span>
+        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+      </span>
+    </span>
+  </label>
+  <div class="kol-form-field__input">
+    <input type="text">
+  </div>
+</div>
+`;

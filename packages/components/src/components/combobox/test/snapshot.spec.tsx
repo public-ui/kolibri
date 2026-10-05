@@ -2,7 +2,7 @@ import { KolComboboxTag } from '../../../core/component-names';
 import type { ComboboxProps } from '../../../schema';
 import { executeInputSnapshotTests } from '../../../utils/testing';
 
-import { KolCombobox } from '../shadow';
+import { KolCombobox } from '../component';
 
 executeInputSnapshotTests<ComboboxProps>(KolComboboxTag, [KolCombobox], {
 	_value: 'Herr',

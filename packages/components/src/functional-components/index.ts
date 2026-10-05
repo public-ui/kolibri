@@ -1,10 +1,7 @@
-export { default as KolAlertFc } from './Alert';
-export { default as KolCollapsibleFc } from './Collapsible';
 export { default as KolFormFieldFc } from './FormField';
 export { default as KolFormFieldMsgFc } from './FormFieldMsg';
 export { default as KolHeadingFc } from './Heading';
 export { default as KolInputContainerFc } from './InputContainer';
 export { default as KolInputFc } from './inputs/Input';
-export { default as KolTextareaFc } from './inputs/TextArea';
 export { default as KolSuggestionsFc } from './Suggestions';
 export { default as KolToastItemFc } from './ToastItem';

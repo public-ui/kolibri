@@ -3,8 +3,8 @@ import { Component, Element, h, Host, Method, Prop, Watch } from '@stencil/core'
 import type { AlignPropType, BadgeTextPropType, IdPropType, LabelPropType } from '../../schema';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
-import { TooltipController } from '../../internal/functional-components/tooltip/controller';
 
 /**
  * @deprecated The tooltip component is deprecated and will be removed in the next major release
@@ -17,7 +17,7 @@ import { TooltipController } from '../../internal/functional-components/tooltip/
 export class KolTooltipWc {
 	@Element() private readonly host?: HTMLKolTooltipWcElement;
 
-	private controller = new TooltipController(BaseWebComponent.stateLess);
+	private readonly tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
 
 	/**
 	 * Defines the elements badge text.
@@ -43,17 +43,17 @@ export class KolTooltipWc {
 
 	@Watch('_align')
 	public validateAlign(value?: AlignPropType): void {
-		this.controller?.watchAlign(value);
+		this.tooltipBehavior?.watchAlign(value);
 	}
 
 	@Watch('_id')
 	public validateId(value?: IdPropType): void {
-		this.controller?.watchId(value);
+		this.tooltipBehavior?.watchId(value);
 	}
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
-		this.controller?.watchLabel(value);
+		this.tooltipBehavior?.watchLabel(value);
 	}
 
 	/**
@@ -61,11 +61,11 @@ export class KolTooltipWc {
 	 */
 	@Method()
 	public hideTooltip(): Promise<void> {
-		return Promise.resolve(this.controller?.hideTooltip());
+		return Promise.resolve(this.tooltipBehavior?.hideTooltip());
 	}
 
 	public componentWillLoad(): void {
-		this.controller.componentWillLoad({
+		this.tooltipBehavior.componentWillLoad({
 			label: this._label,
 			align: this._align,
 			badgeText: this._badgeText,
@@ -74,27 +74,27 @@ export class KolTooltipWc {
 	}
 
 	public connectedCallback(): void {
-		this.controller?.initContext((this.host?.previousElementSibling ?? undefined) as HTMLElement | undefined);
+		this.tooltipBehavior?.initContext((this.host?.previousElementSibling ?? undefined) as HTMLElement | undefined);
 	}
 
 	public componentDidRender(): void {
 		if (this.host) {
-			this.controller?.handleEventListeners(this.host as HTMLElement);
+			this.tooltipBehavior?.handleEventListeners(this.host as HTMLElement);
 		}
 	}
 
 	public disconnectedCallback(): void {
-		this.controller?.destroy();
+		this.tooltipBehavior?.destroy();
 	}
 
 	public render(): JSX.Element {
 		return (
 			<Host class="kol-tooltip">
 				<TooltipFC
-					label={this.controller.getRenderProp('label')}
+					label={this.tooltipBehavior.getRenderProp('label')}
 					badgeText={this._badgeText}
-					id={this.controller.getRenderProp('id')}
-					refFloating={(el?: HTMLDivElement) => this.controller?.setTooltipElementRef(el as HTMLElement)}
+					id={this.tooltipBehavior.getRenderProp('id')}
+					refFloating={(el?: HTMLDivElement) => this.tooltipBehavior?.setTooltipElementRef(el as HTMLElement)}
 				/>
 			</Host>
 		);

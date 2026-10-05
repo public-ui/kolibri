@@ -17,10 +17,10 @@ import {
 import type { FC } from 'react';
 import React from 'react';
 import { SampleDescription } from '../components/SampleDescription';
-import { useToasterService } from '../hooks/useToasterService';
+import { useAlert } from '../hooks/useAlert';
 
 export const SameHeightOfAllInteractiveElements: FC = () => {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,

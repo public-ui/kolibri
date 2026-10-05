@@ -214,6 +214,7 @@ Fünf-Schichten-Styling-Architektur implementieren:
 - ✅ Barrierefreiheit kann nicht versehentlich gebrochen werden
 - ✅ Themes können Erscheinungsbild anpassen ohne Layout zu brechen
 - ✅ Vorhersagbare Style-Präzedenz
+- ✅ Color Schemes (Dark/Light) sind ausschließlich Theme-Sache; die Basis-Schichten bleiben scheme-neutral (siehe ADR-018)
 - ❌ Anfangs komplexer zu verstehen
 - ❌ Mehr Dateien zu warten
 - ❌ Strikte Konventionen erforderlich
@@ -446,6 +447,37 @@ SASS-Variablen exklusiv für interne Berechnungen und Styling im Basis-Theme ver
 - Design Tokens W3C-Format: Gleiche Probleme wie CSS Custom Properties für Basis-Theme
 - Keine Variablen überhaupt: Schlechte Wartbarkeit, Code-Duplizierung
 - Nur komponenten-spezifische CSS-Variablen: Durchquert noch Shadow-DOM-Grenze
+
+### ADR-018: Color Schemes (Dark/Light) leben in Themes, nicht im Basis-Styling
+
+**Status:** Akzeptiert
+
+**Kontext:**
+Die Fünf-Schichten-Styling-Architektur (ADR-008) trennt Layout (Basis-Schichten in `@public-ui/components`) von visuellem Design (Theme-Schichten in `@public-ui/theme-*`). Dark/Light-Color-Schemes waren nie explizit einer Schicht zugeordnet. Ohne Regel könnte ein Color Scheme im Basis-Styling eingeführt werden. Das würde jedes Theme an eine Basis-Farbentscheidung koppeln, die Kontrastverantwortung vom Theme wegverlagern und die `unstyled`-Baseline scheme-abhängig machen.
+
+**Entscheidung:**
+Color Schemes sind ausschließlich Theme-Sache:
+
+- Die Basis-Schichten `kol-a11y`, `kol-global` und `kol-component` fokussieren auf Layout und Struktur. Sie verwenden niemals `@media (prefers-color-scheme: …)`, die Eigenschaft `color-scheme`, `light-dark()`, scheme-abhängige Tokens oder Scheme-Modifier. Schwarz und Weiß in den Basis-Schichten bleiben ein Kontrast-Fallback, keine Farbgestaltung.
+- Themes setzen Dark/Light in `kol-theme-global` über Tokens auf `:host` um (Scheme-Umschaltung an einer Stelle: `color-scheme` + `light-dark()`, `prefers-color-scheme` oder ein Opt-in-Attribut) oder liefern einen separaten Dark-Export, der als zusätzliches Theme registriert wird. `kol-theme-component` referenziert nur Tokens.
+- `forced-colors` (Hochkontrast) ist ein Barrierefreiheitsmechanismus mit System-Farbschlüsselwörtern und bleibt in der Basis-Schicht `kol-forced-colors`. Es ist kein Dark Mode.
+
+Details: [Basis-Styling vs. Theming Konzept](../BASE_STYLING_VS_THEMING_CONCEPT.md).
+
+**Konsequenzen:**
+
+- ✅ Basis-Styling bleibt scheme-neutral; `unstyled` rendert unter `light` und `dark` identisch
+- ✅ Jedes Theme entscheidet unabhängig, ob und wie es Dark Mode anbietet
+- ✅ Kontrastnachweis (WCAG) je Scheme bleibt beim Theme, dem die Farben gehören
+- ✅ Klare Entscheidungsregel für das Verschieben von Styles zwischen Theme und Basis: ein Wert, der sich zwischen Light und Dark ändert, bleibt im Theme
+- ❌ Dark Mode gibt es nicht „umsonst“; jedes Theme muss ihn selbst umsetzen
+- ❌ Themes mit beiden Schemes benötigen Snapshots je Scheme
+
+**Betrachtete Alternativen:**
+
+- Color Scheme im Basis-Styling: Koppelt alle Themes an eine Basis-Palette, bricht die Layout-only-Regel
+- Color Scheme als Komponenten-Prop: Verlagert eine Design-Entscheidung in die Komponenten-API
+- Globale CSS Custom Properties, von der Host-Seite umgeschaltet: Nicht gekapselt, Konflikt mit ADR-009
 
 ## 9.2 Offene Entscheidungen
 

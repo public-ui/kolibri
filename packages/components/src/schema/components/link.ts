@@ -5,9 +5,6 @@ import type {
 	PropAriaControls,
 	PropAriaCurrentValue,
 	PropAriaDescription,
-	PropAriaExpanded,
-	PropAriaOwns,
-	PropCustomClass,
 	PropDisabled,
 	PropDownload,
 	PropHideLabel,
@@ -19,7 +16,6 @@ import type {
 	PropLinkTarget,
 	PropShortKey,
 	PropTooltipAlign,
-	VariantClassNamePropType,
 } from '../props';
 
 /**
@@ -46,15 +42,4 @@ export type OptionalProps = {
 	PropShortKey &
 	PropTooltipAlign;
 
-type RequiredStates = PropAriaCurrentValue & PropIcons & PropHref;
-type OptionalStates = { ariaCurrent: string } & PropAriaExpanded &
-	PropAriaOwns &
-	PropCustomClass &
-	Omit<RequiredProps & OptionalProps, keyof RequiredStates> & {
-		variant: VariantClassNamePropType;
-	};
-
 export type LinkProps = Generic.Element.Members<RequiredProps, OptionalProps>;
-export type LinkStates = Generic.Element.Members<RequiredStates, OptionalStates>;
-export type LinkAPI = Generic.Element.ComponentApi<RequiredProps, OptionalProps, RequiredStates, OptionalStates>;
-export type InternalLinkAPI = Omit<LinkAPI, 'validateVariant'>;

@@ -1,21 +1,17 @@
-import type { Generic } from 'adopted-style-sheets';
-import type { Callback } from '../enums';
-import type { EventValueOrEventCallback } from '../types/callbacks';
-import { watchValidator } from '../utils';
+import type { CollapsibleCallbacksPropType, PropCollapsibleCallbacks } from './collapsible-callbacks';
 
 /* types */
-export type DetailsCallbacksPropType<T> = {
-	[Callback.onToggle]?: EventValueOrEventCallback<MouseEvent, T>;
-};
 
 /**
- * Defines the callback functions for detail events.
+ * @deprecated Use `CollapsibleCallbacksPropType` instead. `kol-accordion` and `kol-details` share
+ * one callback contract; this alias is kept so existing imports keep compiling.
+ *
+ * Note: the shared type also carries `onClick`, which `kol-details` did not previously accept.
+ * That is an additive widening — objects that only set `onToggle` stay assignable.
  */
-export type PropDetailsCallbacks<T> = {
-	on: DetailsCallbacksPropType<T>;
-};
+export type DetailsCallbacksPropType<T> = CollapsibleCallbacksPropType<T>;
 
-/* validator */
-export const validateDetailsCallbacks = (component: Generic.Element.Component, value?: DetailsCallbacksPropType<boolean>): void => {
-	watchValidator(component, `_on`, (value) => typeof value === 'object' && value !== null, new Set(['DetailsCallbacksPropType {Events.onToggle}']), value);
-};
+/**
+ * @deprecated Use `PropCollapsibleCallbacks` instead.
+ */
+export type PropDetailsCallbacks<T> = PropCollapsibleCallbacks<T>;

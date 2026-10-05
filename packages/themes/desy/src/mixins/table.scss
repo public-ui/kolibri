@@ -71,7 +71,7 @@
 					padding: 0;
 
 					.kol-button {
-						@include ghostButton();
+						@include ghostButton('kol-button');
 
 						&__text {
 							padding: to-rem(16);
@@ -98,6 +98,10 @@
 			gap: to-rem(4);
 			@include button('kol-button');
 			@include kol-link('kol-link');
+		}
+
+		&__cell-states {
+			gap: to-rem(4);
 		}
 
 		&__sort {

@@ -23,16 +23,30 @@ import { TagEnum } from './tag-names';
 declare module 'adopted-style-sheets' {
 	interface FeatureFlagRegistry {
 		/**
-		 * Controls visibility of step-up/step-down buttons in KolInputNumber.
-		 * When unset, the component treats the flag as `'show'` (buttons visible),
+		 * Controls wether KolBreadcrumb shows the current page as the last entry.
+		 * When unset, the component treats the flag as `'show'` (current page visible),
 		 * so themes that do not declare it keep the existing behaviour.
 		 */
-		inputNumberButtons: 'show' | 'hide';
+		breadcrumbCurrentPage: 'show' | 'hide';
 		/**
 		 * Controls the standard variant for buttons/linkbuttons.
 		 * When set this is the variant used whenever no variant is provided
 		 */
 		buttonVariantDefault: VariantClassNamePropType;
+		/**
+		 * Duration in milliseconds of the open/close transition of KolAccordion and KolDetails.
+		 * The components expose it as the CSS custom property `--collapsible-transition-duration`
+		 * on their `<details>` element and keep the native `open` attribute until it has elapsed,
+		 * so a theme declares the duration here once instead of in its stylesheet.
+		 * When unset, the components use 300 ms.
+		 */
+		collapsibleTransitionMs: number;
+		/**
+		 * Controls visibility of step-up/step-down buttons in KolInputNumber.
+		 * When unset, the component treats the flag as `'show'` (buttons visible),
+		 * so themes that do not declare it keep the existing behaviour.
+		 */
+		inputNumberButtons: 'show' | 'hide';
 	}
 }
 

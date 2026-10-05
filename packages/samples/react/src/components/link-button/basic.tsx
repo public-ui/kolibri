@@ -4,17 +4,18 @@ import { KolLinkButton } from '@public-ui/react-v19';
 
 import type { FC } from 'react';
 import { useSearchParams } from 'react-router';
-import { useToasterService } from '../../hooks/useToasterService';
+import { useAlert } from '../../hooks/useAlert';
 import { fetchVariantData } from '../../shares/fetchVariantData';
-import { getCustomThemes } from '../../shares/store';
+import { getTheme } from '../../shares/store';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 export const LinkButtonBasic: FC = () => {
 	const [searchParams] = useSearchParams();
-	const theme = searchParams.get('theme') ?? getCustomThemes()?.[0]?.key;
+	const theme = searchParams.get('theme') ?? getTheme();
 	const data = useMemo(() => (theme ? fetchVariantData(theme, 'buttonVariants') : []), [theme]);
 
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
@@ -26,7 +27,7 @@ export const LinkButtonBasic: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
+				<SampleBlock id="variants">
 					<div className="flex flex-wrap gap-4 items-center">
 						{!Array.isArray(data) || data.length === 0 ? (
 							<p>This theme has no variants for this component.</p>
@@ -57,7 +58,7 @@ export const LinkButtonBasic: FC = () => {
 							})
 						)}
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

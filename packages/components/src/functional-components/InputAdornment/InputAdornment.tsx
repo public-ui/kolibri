@@ -1,20 +1,8 @@
-import { h, type FunctionalComponent as FC } from '@stencil/core';
-import type { JSXBase } from '@stencil/core/internal';
-import clsx from '../../utils/clsx';
+import { InputAdornmentFC, type InputAdornmentFCProps } from '../../internal/functional-components/form-field/input-container';
 
-export type InputAdornmentProps = JSXBase.HTMLAttributes<HTMLDivElement> & {
-	position?: 'start' | 'end';
-};
+export type InputAdornmentProps = InputAdornmentFCProps;
 
-const InputAdornment: FC<InputAdornmentProps> = ({ position = 'start', class: className, ...other }, children) => {
-	const rootClassName = `kol-input-container__adornment`;
-	const positionClassName = `${rootClassName}--${position}`;
-
-	return (
-		<div class={clsx(rootClassName, positionClassName, className)} {...other}>
-			{children}
-		</div>
-	);
-};
+/** Adapter of the legacy form fields to `InputAdornmentFC`, removed once no legacy field is left. */
+const InputAdornment = InputAdornmentFC;
 
 export default InputAdornment;

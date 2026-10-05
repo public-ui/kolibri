@@ -12,8 +12,9 @@ We have a monorepo structure with multiple packages, each with its own `package.
   - You need to run `pnpm i` at the root level. This updates the lockfile and ensures all packages are using the correct versions.
 - Never add a `packageManager` field to any `package.json` file.
 - Avoid that branch name may contain hidden characters.
+- Development workflow: `git pull` → `pnpm i` → `pnpm -r build` → `pnpm dev` only in the packages being changed → work on the code. No `dev` or `preview` script builds dependencies. Never run a build while a watcher is active, the components build clears the watcher's output. See [CONTRIBUTING.md](CONTRIBUTING.md#daily-workflow).
 - If something does not work, check in the event of an error whether all dependent submodules have been built.
-- To build a single package faster, run commands with downstream dependents using `pnpm --filter ...<package>` (e.g., `pnpm --filter ...@public-ui/sample-react build`).
+- To build a single package faster, run commands with downstream dependents using `pnpm --filter ...<package>` (e.g., `pnpm --filter ...@public-ui/sample-react build`). A package's build never builds another package: `pnpm -r build` builds each package exactly once in topological order. Build a package together with its dependencies using `pnpm --filter <package>... build` (e.g. components, which needs the kolicons font from `@public-ui/icons`).
 
 ## 🚨 Format-first rule
 
@@ -58,10 +59,12 @@ The theming is realized with adopted style sheets on web components and will be 
 ### The 5 styling layers
 
 1. **A11y Preset layer**: This layer comes out of the `adopted-style-sheets` package and contains the basic styles for accessibility. It is applied to all components.
-2. **Basis Global layer**: This layer contains the basis global styles for all components and comes out of the `@public-ui/components` package. It is applied only component specific layout styles without margins and paddings. Generally, the styling works without colors, as the colors should only be set through the custom Theme Layer.
-3. **Basis Component layer**: This layer contains the basis styles for one component and comes out of the `@public-ui/components` package. It is applied only component specific layout styles without margins and paddings. Generally, the styling works without colors, as the colors should only be set through the custom Theme Layer.
-4. **Theme Global layer**: This layer contains the global styles for all components of a theme and comes out of a own theme package, like `@public-ui/theme-default`.
+2. **Basis Global layer**: This layer contains the basis global styles for all components and comes out of the `@public-ui/components` package. It is applied only component specific layout styles without margins and paddings. Generally, the styling works without colors, as the colors should only be set through the custom Theme Layer. It never contains a color scheme (dark/light).
+3. **Basis Component layer**: This layer contains the basis styles for one component and comes out of the `@public-ui/components` package. It is applied only component specific layout styles without margins and paddings. Generally, the styling works without colors, as the colors should only be set through the custom Theme Layer. It never contains a color scheme (dark/light).
+4. **Theme Global layer**: This layer contains the global styles for all components of a theme and comes out of a own theme package, like `@public-ui/theme-default`. Color schemes (dark/light) are defined here via theme tokens.
 5. **Theme Component layer**: This layer contains the component specific styles for one component of a theme and comes out of a own theme package, like `@public-ui/theme-default`.
+
+> **Base styling vs. theming — dark/light lives in the theme.** The base styling of the components package (layers 1–3) is responsible for layout and structure only. It knows no dark/light color scheme: no `prefers-color-scheme`, no `color-scheme`, no `light-dark()`, no scheme tokens. Black and white in the base layers are a contrast fallback, not a color design. Dark/light theming is anchored and implemented exclusively in the theme packages (layers 4–5). See [`docs/BASE_STYLING_VS_THEMING_CONCEPT.md`](docs/BASE_STYLING_VS_THEMING_CONCEPT.md).
 
 ### Global accessibility styles
 
@@ -193,6 +196,8 @@ The basis global layer set the default font-size and box-sizing for all componen
 
 The custom theme layer is used to set the colors and other theme specific styles. The custom theme layer should not contain any layout styles, as these are already set in the basis global and component layers.
 
+Dark/light color schemes are implemented in the theme layers only. Define all colors that differ between light and dark as tokens on `:host` in the theme global layer and switch the scheme there (`color-scheme` + `light-dark()`, `@media (prefers-color-scheme: dark)`, or an opt-in attribute). The theme component layer only references those tokens and never contains its own scheme media queries. Alternatively, a theme may ship a separate dark export that is registered as an additional theme and switched via the `kol-theme` attribute. The base styling of the components package must never be involved in this.
+
 For example, generally the font-family is set in the theme global layer, on the `:host` element, so that all components inherit the font-family from the theme. The font-size is set in the basis global layer, so that all components inherit the font-size from the basis global layer. But it is possible to set a other base font-size in the theme global layer, if needed.
 
 ```css
@@ -221,6 +226,54 @@ In the theme component layer, you can set what ever you need to realize your own
   ...
 }
 ```
+
+### Color schemes
+
+A theme carries one palette per color scheme in a single declaration, resolved by the CSS
+`light-dark()` function:
+
+```scss
+@layer kol-theme-global {
+	:host {
+		--color-text: var(--kolibri-color-text, light-dark(#202020, #{$dark-color-text}));
+	}
+}
+```
+
+Rules that hold for every theme:
+
+- **Never declare `color-scheme` in a theme**, and never write `@media (prefers-color-scheme: …)`.
+  `color-scheme` is an inherited property and inheritance follows the flat tree, so it crosses the
+  shadow boundary on its own: each component resolves `light-dark()` against whatever the consuming
+  application has in effect where the component sits. A declaration on `:host` would replace that
+  inherited value, and the page and the components in it could then disagree — which is exactly the
+  bug this rule exists to prevent.
+- The application owns the scheme, in plain CSS: `:root { color-scheme: light dark }` to follow the
+  operating system, `color-scheme: dark` on any element to force a subtree. Consequently an
+  application that declares nothing stays light, whatever the operating system says. Dark mode is
+  opt-in; `color-scheme.css` in a theme package ships that one line plus the page colors.
+- Sass does not evaluate variables inside `var()`. Interpolate them (`#{$dark-color-text}`).
+- An application stylesheet that uses `light-dark()` must not be downlevelled. A CSS minifier
+  targeting older browsers rewrites it into a `prefers-color-scheme` media query with space
+  toggles, and that replacement ignores the `color-scheme` property. A theme's CSS is a string
+  adopted into the shadow roots at runtime and is never processed by the application's CSS
+  pipeline, so the page would follow the operating system while the components follow
+  `color-scheme`. Both sample host apps therefore pin `build.cssTarget` in their Vite config.
+- The base layer hardcodes `black` and `white` in a few places. Where it routes them through a
+  token, override the token (`--kol-a11y-font-color` / `--kol-a11y-background-color` in `a11y.scss`
+  are the sanctioned hook for the host box of every component); elsewhere restate the declaration in
+  a theme layer, which sits above `kol-a11y`, `kol-global` and `kol-component`. Keep the light
+  branch byte identical to the base value so no light snapshot moves.
+- What a theme layer cannot reach are the color stops of a `@keyframes` rule declared in the base
+  layer: an animation's own values win over any normal declaration, whatever the layer. Such a case
+  needs a change in `packages/components`.
+- Depth is a surface scale, not a shadow: a lighter surface sits higher. A light palette collapses
+  that scale onto white and draws depth with a shadow instead; a dark one carries it in the surfaces
+  and replaces the shadow with a hard edge. Since `light-dark()` is a color function and cannot
+  switch a `box-shadow` geometry, state both branches at once and switch them by their colors — the
+  shadow token transparent in dark mode, the edge token transparent in light mode. A container that
+  paints a surface of its own passes it down through `--kol-surface`, which reaches slotted
+  components too, so their host box matches the surface they were placed on.
 
 ### CSS Custom Properties and SASS Variables
 
@@ -420,6 +473,7 @@ This is clearer and doesn't require Sass variable gymnastics.
 - Do not `inherit` styles over the `:host` element, as this will override the styles of the basis global and component layers. This makes your component less robust from outside environment styles. Only the `kol-icon` inherits some specific styles, like `color`, `font-size`, `font-family` and `line-height`, as these are needed for the icon to be displayed correctly inline to this neighbored elements.
 - Do not set the default `font-family`, `font-size` or `box-sizing` in the basis or theme component layer (redundant), as these are already set in the basis global layers. If you need to set a different font-family or font-size, you can do this in the theme global layer.
 - Do not set `margin` or `padding` in the basis global and component layers. If you need to set a different margin or padding, you can do this in the theme global or component layers.
+- Do not use `@media (prefers-color-scheme: …)`, the `color-scheme` property or the `light-dark()` function in the basis global and component layers. Dark/light color schemes are a theme concern and belong exclusively in the theme global layer (see [`docs/BASE_STYLING_VS_THEMING_CONCEPT.md`](docs/BASE_STYLING_VS_THEMING_CONCEPT.md)). `forced-colors` (high contrast) is a separate accessibility mechanism and stays in the basis `kol-forced-colors` layer.
 - Do not use `overflow: hidden` in styling or theming, as it often causes issues for reuse and should be avoided.
 - **Do not use `@layer` declarations in utility files**: Helper files, mixin files, and partial files (starting with `_`) should not contain `@layer` declarations. These files are utilities and should be layer-agnostic. This is enforced by the custom Stylelint rule `kolibri/no-layer-in-utility-files`.
 - **Never use `$root` variables or `@at-root` in component mixins**: All selectors should be explicit. Use direct child/descendant nesting only when a modifier changes element behavior within a specific context.
@@ -444,6 +498,33 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 - Do not create barrel files (e.g. `index.ts` that re-export modules). Import modules directly instead.
 - Do not place constant declarations before import statements; imports must always be at the very top of the file.
 - **Scripts must be platform-independent**: All scripts in the `scripts/` folder must work on Windows, macOS, and Linux without requiring external tools or platform-specific dependencies. Use Node.js built-in modules instead of external command-line tools like `rg`, `grep`, `find`, etc.
+- Inline code documentation follows [Inline code documentation](#inline-code-documentation).
+
+### Inline code documentation
+
+We encourage inline code documentation (JSDoc in TypeScript/TSX, comments in SCSS and scripts), but only as much as necessary and as little as possible. This rule applies to every new or changed comment; when you touch code, bring the comments of the touched code in line with it.
+
+- **Document what the code cannot say itself**: the purpose of public API (`@Prop`, `@Method`, `@Event`, exported functions and types), constraints, a non-obvious reason (the "why") and known limitations.
+- **Do not repeat the code**: no comment that restates a name, a type or the next line. The TypeScript signature is the source of truth, so no `@param {string}` or `@returns {void}` type annotations.
+- **Describe the present and the future, never the past**: state what the code is and does and, where relevant, where it is heading (`@deprecated` with its replacement, a `TODO` with an issue link). Do not write history such as "previously", "changed to", "fixed", "new:", and do not refer to the diff, the pull request or a predecessor implementation. History belongs in the commit message, the pull request and the changelog. If an earlier state still matters, state the constraint that follows from it today.
+- **Write for human and AI readers alike**: clear, easy to follow and free of contradictions. One statement per fact, terms named exactly as in the code, no vague wording ("maybe", "somehow", "for now"). A comment never contradicts the code, another comment or the documentation. Update or delete a comment together with the code it describes, and link the authoritative document instead of copying it.
+- **Published API documentation stays stable**: the JSDoc of public `@Prop`, `@Method` and `@Event` members is published (`custom-elements.json`, `docs-vscode`, adapter IntelliSense). Refactorings and migrations keep it unchanged (see [Public API Contract](packages/components/src/components/_skeleton/ARC42.md#public-api-contract-migration-parity)); rewording it is a change of its own.
+
+```ts
+// ❌ Bad: repeats the signature and tells history.
+/**
+ * Sets the label.
+ * @param {string} value - the label
+ * Previously this was handled by the controller; changed in the skeleton migration.
+ */
+private setLabel(value: string): void {}
+
+// ✅ Good: states the constraint the code cannot express.
+/**
+ * Runs before the first render, because the behaviors read the normalized label in `componentWillLoad`.
+ */
+private setLabel(value: string): void {}
+```
 
 ## Linting and Formatting
 
@@ -463,7 +544,7 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 
 - Run `pnpm test` from the repository root to execute all unit and integration tests.
   - ⚠️ **Note**: Test runners (Vitest, Jest, Playwright, etc.) execute an implicit build automatically before running tests. **Do NOT run a separate `pnpm build` beforehand** — this wastes time. The test scripts handle compilation and type checking internally.
-- Visual and snapshot tests can be updated with `pnpm test:update` or via the `update-snapshots.yml` GitHub workflow (see `CONTRIBUTING.md`).
+- Text snapshots of the unit tests can be updated with `pnpm test:update:unit` or via the `update-snapshots.yml` GitHub workflow. Visual screenshots are **not** committed: differences are approved on the review page of the pull request (see `docs/visual-review.md`); `pnpm snapshots:pull` fetches the current baseline for local runs.
 - Individual packages provide their own test scripts (e.g. `pnpm --filter @public-ui/components test:unit`).
   - These also perform implicit builds, so explicit pre-build is unnecessary.
 

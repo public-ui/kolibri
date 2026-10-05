@@ -3,15 +3,13 @@
 
 @layer kol-theme-component {
 	.kol-details {
-		&__heading-button {
-			&:focus-within {
+		&__heading {
+			&:not([aria-disabled='true']):focus-within {
 				cursor: pointer;
 			}
 
-			.kol-button {
-				.kol-span__label {
-					border-bottom-color: #000;
-				}
+			.kol-span__label {
+				border-bottom-color: #000;
 			}
 
 			.kol-icon {

@@ -1,4 +1,4 @@
-import { isObject } from '../../../schema';
+import { isObject, type NumberString } from '../../../schema';
 
 export function normalizeString(value?: unknown): string | never {
 	if (typeof value === 'string') {
@@ -36,6 +36,31 @@ export function normalizeNumber(value?: unknown): number | never {
 	throw new Error(`Invalid number: ${value as string}`);
 }
 
+const NUMBER_STRING_PATTERN = /^\d+(\.\d+)?$/;
+
+/**
+ * Whether the value is a number string the number fields accept: digits with an optional decimal
+ * part. Negative and exponent notations are not accepted (#11077).
+ */
+export function isNumberString(value: unknown): value is NumberString {
+	return typeof value === 'string' && NUMBER_STRING_PATTERN.test(value);
+}
+
+/**
+ * Normalizes a numeric value of the number fields (`kol-input-number`, `kol-input-range`): a number
+ * passes, `NaN` becomes `undefined` (the value is cleared), a number string is parsed, anything
+ * else throws.
+ */
+export function normalizeInputNumber(value?: unknown): number | never {
+	if (typeof value === 'number') {
+		return (isNaN(value) ? undefined : value) as number;
+	}
+	if (isNumberString(value)) {
+		return parseFloat(value);
+	}
+	throw new Error(`Invalid number: ${value as string}`);
+}
+
 export function normalizeBoolean(value?: unknown): boolean | never {
 	if (typeof value === 'boolean') {
 		return value;
@@ -44,6 +69,34 @@ export function normalizeBoolean(value?: unknown): boolean | never {
 		return value.toLowerCase() === 'true';
 	}
 	throw new Error(`Invalid boolean: ${value as string}`);
+}
+
+/**
+ * Normalizes a value to the `'true' | 'false' | ''` tri-state token shared by the aria boolean
+ * props (`aria-expanded`, `aria-selected`, …): booleans and their string equivalents map to
+ * `'true'`/`'false'`, the empty string means "not set" and passes through, anything else throws
+ * with a message naming `propLabel` (e.g. `'aria-expanded'`).
+ */
+export function normalizeBooleanToken(value: unknown, propLabel: string): 'true' | 'false' | '' {
+	if (value === true || value === 'true') {
+		return 'true';
+	}
+	if (value === false || value === 'false') {
+		return 'false';
+	}
+	if (value === '') {
+		return '';
+	}
+	throw new Error(`Invalid ${propLabel} value: expected a boolean, got ${JSON.stringify(value)}`);
+}
+
+/**
+ * Type guard for "is this string one of the given enum options" — the membership check shared by
+ * every enum-style prop (aria-has-popup, link-role, button-type, …). Each caller still throws its
+ * own propName-specific error message around it.
+ */
+export function isEnumOption<T extends string>(value: unknown, options: readonly T[]): value is T {
+	return typeof value === 'string' && (options as readonly string[]).includes(value);
 }
 
 export function normalizeObject(value?: unknown): object | never {
@@ -70,4 +123,17 @@ export function normalizeArray(value?: unknown): unknown[] | never {
 		}
 	}
 	throw new Error(`Invalid array: ${value as string}`);
+}
+
+/**
+ * Normalizes a callbacks object (the `_on` props). The prop factory's `apply` handles undefined/null
+ * (falling back to the default `{}`) before this is reached, so we only need to verify a non-null
+ * value is an object. Generic over the component-specific callbacks type (ButtonCallbacksPropType,
+ * LinkOnCallbacksPropType, …).
+ */
+export function normalizeCallbacksObject<T>(value: unknown): T {
+	if (typeof value === 'object' && value !== null) {
+		return value as T;
+	}
+	throw new Error(`Invalid on callbacks: expected object, got ${typeof value}`);
 }

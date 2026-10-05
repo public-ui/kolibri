@@ -1,7 +1,8 @@
-import { KolButton, KolHeading, KolIcon } from '@public-ui/react-v19';
+import { KolButton, KolIcon } from '@public-ui/react-v19';
 import type { FC } from 'react';
 import React from 'react';
-import { useToasterService } from '../../hooks/useToasterService';
+import { useAlert } from '../../hooks/useAlert';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 import './expert-slot.tooltip.scss';
@@ -9,7 +10,7 @@ import './expert-slot.tooltip.scss';
 const KolTooltip = 'kol-tooltip-wc' as unknown as React.FC<{ _label: string }>;
 
 export const ButtonExpertSlot: FC = () => {
-	const { dummyClickEventHandler } = useToasterService();
+	const { dummyClickEventHandler } = useAlert();
 
 	const dummyEventHandler = {
 		onClick: dummyClickEventHandler,
@@ -25,8 +26,7 @@ export const ButtonExpertSlot: FC = () => {
 			</SampleDescription>
 
 			<div className="grid gap-8">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Buttons with Expert Slot Content" />
+				<SampleBlock id="buttons-expert-slot-content" heading="Buttons with Expert Slot Content" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _icons="kolicon-house" _label="" _variant="primary" _on={dummyEventHandler}>
 							<span slot="expert">I am more than just a button</span>
@@ -42,10 +42,9 @@ export const ButtonExpertSlot: FC = () => {
 						</KolButton>
 						<KolTooltip _label="Delete with custom text" />
 					</div>
-				</section>
+				</SampleBlock>
 
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Disabled Buttons with Expert Slot" />
+				<SampleBlock id="disabled-buttons-expert-slot" heading="Disabled Buttons with Expert Slot" fitContent>
 					<div className="flex flex-wrap gap-4">
 						<KolButton _disabled _icons="kolicon-house" _label="" _variant="primary" _on={dummyEventHandler}>
 							<span slot="expert">Disabled expert slot</span>
@@ -54,7 +53,7 @@ export const ButtonExpertSlot: FC = () => {
 							<span slot="expert">Another disabled one</span>
 						</KolButton>
 					</div>
-				</section>
+				</SampleBlock>
 			</div>
 		</>
 	);

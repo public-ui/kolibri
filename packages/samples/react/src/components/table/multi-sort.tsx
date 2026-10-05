@@ -2,7 +2,8 @@ import type { FC } from 'react';
 import React, { useState } from 'react';
 
 import type { KoliBriTableDataType, KoliBriTableHeaderCellWithLogic, KoliBriTableHeaders } from '@public-ui/components';
-import { KolButtonLink, KolHeading, KolTableStateful } from '@public-ui/react-v19';
+import { KolButtonLink, KolTableStateful } from '@public-ui/react-v19';
+import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
 const DATE_FORMATTER = Intl.DateTimeFormat('de-DE', {
@@ -125,8 +126,7 @@ export const MultiSortTable: FC = () => {
 			</SampleDescription>
 
 			<section className="w-full grid gap-6">
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Vertical" />
+				<SampleBlock id="vertical" heading="Vertical">
 					<KolButtonLink _label="Reset Table" _on={{ onClick: () => setVerticalHeader({ vertical: [[...TABLE_HEADER_CELLS]] }) }}></KolButtonLink>
 					<KolTableStateful
 						_label="Sort Table with Order and Date"
@@ -135,12 +135,11 @@ export const MultiSortTable: FC = () => {
 						className="block"
 						_allowMultiSort={true}
 					/>
-				</section>
-				<section className="grid gap-4">
-					<KolHeading _level={2} _label="Horizontal" />
+				</SampleBlock>
+				<SampleBlock id="horizontal" heading="Horizontal">
 					<KolButtonLink _label="Reset Table" _on={{ onClick: () => setHorizontalHeader({ horizontal: [[...TABLE_HEADER_CELLS]] }) }}></KolButtonLink>
 					<KolTableStateful _label="Sort Table with Order and Date" _data={BACKLOG_DATA} _headers={horizontalHeader} className="block" _allowMultiSort={true} />
-				</section>
+				</SampleBlock>
 			</section>
 		</>
 	);

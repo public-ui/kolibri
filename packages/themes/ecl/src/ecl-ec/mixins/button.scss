@@ -10,7 +10,10 @@
 		--button-focus-outline-offset: -3px;
 		--button-focus-outline-width: 1px;
 
-		&:focus {
+		/* The skeleton DOM moves the focusable element into the wrapper. The class carrier is never
+		   focused, so the theme focus ring has to be scoped to the inner element — there it also
+		   overrides the user-agent focus ring of the real control. */
+		&__interactive-element:focus {
 			outline: var(--button-focus-outline-color) solid var(--button-focus-outline-width);
 			outline-offset: var(--button-focus-outline-offset);
 		}
@@ -20,11 +23,11 @@
 			--button-border-color: var(--ecl-color-primary);
 			--button-text-color: var(--ecl-color-white);
 
-			&:focus {
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
 			}
@@ -35,14 +38,14 @@
 			--button-border-color: var(--ecl-color-primary);
 			--button-text-color: var(--ecl-color-primary);
 
-			&:focus {
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-white);
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
 				--button-text-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-primary-140);
 				--button-border-color: var(--ecl-color-primary-140);
 				--button-text-color: var(--ecl-color-white);
@@ -55,13 +58,13 @@
 			--button-border-color: transparent;
 			--button-border-width: 1px;
 
-			&:focus {
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-primary);
 				--button-focus-outline-offset: 0;
 				--button-focus-outline-width: 2px;
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-primary-20);
 				--button-border-color: var(--ecl-color-dark-80);
 			}
@@ -73,13 +76,13 @@
 			--button-border-color: transparent;
 			--button-border-width: 1px;
 
-			&:focus {
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-primary);
 				--button-focus-outline-offset: 0;
 				--button-focus-outline-width: 2px;
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-primary-20);
 				--button-border-color: var(--ecl-color-dark-80);
 			}
@@ -90,7 +93,7 @@
 			--button-border-color: var(--ecl-color-secondary);
 			--button-text-color: var(--ecl-color-dark);
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-secondary-120);
 				--button-border-color: var(--ecl-color-secondary-120);
 			}
@@ -101,33 +104,31 @@
 			--button-border-color: var(--ecl-color-error);
 			--button-text-color: var(--ecl-color-white);
 
-			&:focus {
+			&:focus-within {
 				--button-focus-outline-color: var(--ecl-color-white);
 			}
 
-			&:not(:disabled):hover {
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 				--button-background-color: var(--ecl-color-error);
 				--button-border-color: var(--ecl-color-dark);
 			}
 		}
 
 		&--ghost {
-			@include ghost-button();
+			@include ghost-button($block-classname);
 		}
 
 		&__text {
 			color: var(--button-text-color);
 			background-color: var(--button-background-color);
-			border-color: var(--button-border-color);
-			border-style: solid;
-
 			border-radius: 2px;
+
 			min-width: var(--a11y-min-size);
 			min-height: var(--a11y-min-size);
 			padding: var(--ecl-spacing-xs) var(--ecl-spacing-m);
-			border-width: var(--button-border-width);
 
 			line-height: 1.2;
+			border: var(--button-border-color) solid var(--button-border-width);
 
 			.kol-span {
 				&__container {
@@ -143,32 +144,44 @@
 				padding: var(--ecl-spacing-xs);
 			}
 		}
+
+		&--inline,
+		&--inline .#{$block-classname}__text {
+			min-width: 0;
+			min-height: 0;
+		}
 	}
 
 	.kol-close-button {
 		align-self: self-start;
 
+		/* The alert renders its closer as `ButtonFC` directly, so `kol-close-button` and the
+		   variant class sit on the same element there; the card still keeps the hook on a wrapper
+		   around the button. Both shapes stay addressed until the hook moves onto the button root
+		   everywhere. Specificity is 2 classes either way, as before the alert migration. */
+		&:is(.#{$block-classname}--normal),
 		.#{$block-classname}--normal {
-			@include ghost-button();
+			@include ghost-button($block-classname);
 
 			--kol-focus-outline-offset: -2px;
 		}
 	}
 }
 
-@mixin ghost-button() {
+@mixin ghost-button($block-classname) {
 	--button-background-color: transparent;
 	--button-border-color: transparent;
 	--button-border-width: 1px;
 	--button-text-color: var(--ecl-color-primary);
 
-	&:focus {
+	/* `:focus` never matches the wrapper; `:focus-within` covers the focus of the element inside. */
+	&:focus-within {
 		--button-focus-outline-color: var(--ecl-color-primary);
 		--button-focus-outline-offset: 0;
 		--button-focus-outline-width: 2px;
 	}
 
-	&:not(:disabled):hover {
+	&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
 		--button-background-color: var(--ecl-color-primary-20);
 		--button-border-color: var(--ecl-color-dark-80);
 		--button-text-color: var(--ecl-color-dark);

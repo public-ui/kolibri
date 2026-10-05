@@ -38,6 +38,23 @@ test.describe('kol-popover-button', () => {
 		await expect(popover).not.toBeVisible();
 	});
 
+	test('should not open the popover through showPopover() while disabled', async ({ page }) => {
+		await page.setContent(`
+			<kol-popover-button _label="Open popover" _disabled>
+				Popover content
+			</kol-popover-button>
+		`);
+
+		const popover = page.locator('.kol-popover');
+
+		await page.locator('kol-popover-button').evaluate(async (element: HTMLKolPopoverButtonElement) => await element.showPopover());
+		await page.waitForChanges();
+
+		/* The trigger is a `<button disabled>`, so the programmatic path must not be the one way
+		   around the disabled state. */
+		await expect(popover).not.toBeVisible();
+	});
+
 	test('should hide its tooltip when popover is shown', async ({ page }) => {
 		await page.setContent(`
 			<kol-popover-button _label="Toggle popover" _icons="codicon codicon-info" _hide-label>

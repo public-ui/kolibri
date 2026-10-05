@@ -68,7 +68,7 @@ Du möchtest das BWSt-Theme verbessern oder anpassen? So gehst du vor:
 
      ```bash
      cd kolibri/lib/packages/themes/bwst
-     pnpm start
+     pnpm preview
      ```
 
    - Passe die Dateien in `src/` nach deinen Wünschen an.

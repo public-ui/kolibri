@@ -9,6 +9,7 @@ import { ButtonExpertSlot } from './expert-slot';
 import { ButtonFocusOptions } from './focus-options';
 import { ButtonHideLabel } from './hide-label';
 import { ButtonIcons } from './icons';
+import { ButtonPinToggle } from './pin-toggle';
 import { ButtonRowReverseTooltip } from './row-reverse-tooltip';
 import { ButtonShortKey } from './short-key';
 import { ButtonSpinner } from './spinner';
@@ -22,6 +23,7 @@ export const BUTTON_ROUTES: Routes = {
 		disabled: ButtonDisabled,
 		'hide-label': ButtonHideLabel,
 		icons: ButtonIcons,
+		'pin-toggle': ButtonPinToggle,
 		spinner: ButtonSpinner,
 		width: ButtonWidth,
 		'access-key': ButtonAccessKey,
