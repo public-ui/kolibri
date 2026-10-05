@@ -235,7 +235,7 @@ Gelöscht wird, sobald der letzte Import weg ist. Veröffentlichte Schema-Typen 
 
 ### G7 – Folge-Epics (außerhalb dieser Migration)
 
-- ✅ Die Übergangs-Tags (`kol-button-wc`, `kol-link-wc`, `kol-popover-button-wc`, `kol-select-wc`, `kol-dialog-wc`, `kol-alert-wc`, `kol-table-settings-wc`) sind durch die Functional Components und Items ersetzt und gelöscht (G7.1–G7.7, #11167, #11172, #11174–#11178). `kol-tooltip-wc` bleibt als einzige `-wc`-Komponente unverändert erhalten.
+- ✅ Die Übergangs-Tags (`kol-button-wc`, `kol-link-wc`, `kol-popover-button-wc`, `kol-select-wc`, `kol-dialog-wc`, `kol-alert-wc`, `kol-table-settings-wc`) sind durch die Functional Components und Items ersetzt und gelöscht (G7.1–G7.7, #11167, #11172, #11174–#11178). `kol-tooltip-wc` bleibt als einzige `-wc`-Komponente erhalten: weiterhin deprecated und ausdrücklich nur für DESYBRI.
 - Umstieg auf natives `formAssociated` mit ElementInternals (Verhaltensänderung, eventuell Breaking).
 - BEM-Bereinigung mit CLI-Tasks `ScssRename*` und Migrationsguide für Custom-Themes.
 
