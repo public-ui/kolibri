@@ -1,12 +1,15 @@
 import { afterAll, beforeEach, describe, expect, it, jest } from '@jest/globals';
 import { Log } from '../../schema/utils/dev.utils';
+import { alertCallbacksProp } from './alert-callbacks';
 import { buttonCallbacksProp } from './button-callbacks';
 import { cardCallbacksProp } from './card-callbacks';
 import { collapsibleCallbacksProp } from './collapsible-callbacks';
 import { dialogCallbacksProp } from './dialog-callbacks';
 import { drawerCallbacksProp } from './drawer-callbacks';
 import { formCallbacksProp } from './form-callbacks';
+import { imageCallbacksProp } from './image-callbacks';
 import { linkCallbacksProp } from './link-callbacks';
+import { paginationCallbacksProp } from './pagination-callbacks';
 import { tableCallbacksProp } from './table-callbacks';
 import { tabsCallbacksProp } from './tabs-callbacks';
 
@@ -49,13 +52,16 @@ const onSelect = () => undefined;
 const onToggle = () => undefined;
 
 const CALLBACK_PROPS: ReadonlyArray<{ name: string; definition: PropDefinition }> = [
+	{ name: 'alertCallbacksProp', definition: alertCallbacksProp },
 	{ name: 'buttonCallbacksProp', definition: buttonCallbacksProp },
 	{ name: 'cardCallbacksProp', definition: cardCallbacksProp },
 	{ name: 'collapsibleCallbacksProp', definition: collapsibleCallbacksProp },
 	{ name: 'dialogCallbacksProp', definition: dialogCallbacksProp },
 	{ name: 'drawerCallbacksProp', definition: drawerCallbacksProp },
 	{ name: 'formCallbacksProp', definition: formCallbacksProp },
+	{ name: 'imageCallbacksProp', definition: imageCallbacksProp },
 	{ name: 'linkCallbacksProp', definition: linkCallbacksProp },
+	{ name: 'paginationCallbacksProp', definition: paginationCallbacksProp },
 	{ name: 'tableCallbacksProp', definition: tableCallbacksProp },
 	{ name: 'tabsCallbacksProp', definition: tabsCallbacksProp },
 ];
@@ -91,11 +97,14 @@ describe.each(CALLBACK_PROPS)('$name', ({ name, definition }) => {
 });
 
 describe.each([
+	{ name: 'alertCallbacksProp', definition: alertCallbacksProp },
 	{ name: 'buttonCallbacksProp', definition: buttonCallbacksProp },
 	{ name: 'cardCallbacksProp', definition: cardCallbacksProp },
 	{ name: 'collapsibleCallbacksProp', definition: collapsibleCallbacksProp },
 	{ name: 'formCallbacksProp', definition: formCallbacksProp },
+	{ name: 'imageCallbacksProp', definition: imageCallbacksProp },
 	{ name: 'linkCallbacksProp', definition: linkCallbacksProp },
+	{ name: 'paginationCallbacksProp', definition: paginationCallbacksProp },
 	{ name: 'tableCallbacksProp', definition: tableCallbacksProp },
 ])('$name', ({ definition }) => {
 	it('passes the callbacks object through by reference', () => {
