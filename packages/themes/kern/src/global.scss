@@ -47,12 +47,13 @@
 		margin: var(--kern-metric-space-small) var(--kern-metric-space-large);
 	}
 
+	/* A disabled `fieldset` only groups its controls, which are dimmed themselves. */
 	.disabled label,
 	.disabled:focus-within label,
 	[aria-disabled='true'],
 	[aria-disabled='true']:focus,
-	[disabled],
-	[disabled]:focus {
+	[disabled]:where(:not(fieldset)),
+	[disabled]:where(:not(fieldset)):focus {
 		opacity: var(--action-state-opacity-disabled, 0.4);
 	}
 }

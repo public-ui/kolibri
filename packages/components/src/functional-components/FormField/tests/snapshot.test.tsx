@@ -16,6 +16,18 @@ describe('KolFormFieldFc', () => {
 		expect(page.root?.tagName).toBe('FIELDSET');
 	});
 
+	it('should disable the fieldset of a disabled field', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => <KolFormFieldFc id="test-id" label="Test Label" component="fieldset" disabled />);
+		expect(page.root?.hasAttribute('disabled')).toBe(true);
+		expect(page.root?.className).toContain('kol-form-field--disabled');
+	});
+
+	it('should not set the disabled attribute on a disabled div', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => <KolFormFieldFc id="test-id" label="Test Label" disabled />);
+		expect(page.root?.hasAttribute('disabled')).toBe(false);
+		expect(page.root?.className).toContain('kol-form-field--disabled');
+	});
+
 	it('should render correctly with div tag', async () => {
 		const page = await renderFunctionalComponentToSpecPage(() => <KolFormFieldFc id="test-id" label="Test Label" component="div" />);
 		expect(page.root).toMatchSnapshot();

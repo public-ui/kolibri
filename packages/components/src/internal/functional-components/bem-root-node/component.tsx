@@ -31,6 +31,8 @@ type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema> = {
 	 * `label` wraps the native control of a checkbox or radio.
 	 */
 	component?: 'div' | 'fieldset' | 'label';
+	/** Native `disabled` attribute; only a `fieldset` root supports it. */
+	disabled?: boolean;
 } & Partial<Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'class'>>;
 
 /**
@@ -64,7 +66,7 @@ export const BemRootNodeFC = <TBlock extends keyof KoliBriComponentsBemSchema>(
 	children: FCChildren,
 ) => {
 	const blockBem = getBlockBem(block);
-	// The attributes are typed for a `div`; `fieldset` and `label` accept the same global attributes.
+	// The attributes are typed for a `div`; `fieldset` and `label` accept the same global attributes, `fieldset` additionally `disabled`.
 	const Root = Component as 'div';
 	return (
 		<Root class={clsx(blockBem(modifiers), hostClass)} {...rest}>
