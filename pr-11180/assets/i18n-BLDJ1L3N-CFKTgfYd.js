@@ -1,1 +1,0 @@
-import{L as e}from"./index-DV_vNR-B-BJ9iGT9K.js";import{o as t,s as n}from"./index-B2OJzlVx.js";var r=(e,r)=>(t()??n(`de`)).translate(e,r);e()&&(r=e=>e);export{r as t};
