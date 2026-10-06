@@ -1,1 +1,0 @@
-import{a as e,y as t}from"./base-web-component-DmWvsvnM-BADqSao_.js";var n=e(`accessKey`,``,t),r=e(`shortKey`,``,t);export{r as n,n as t};
