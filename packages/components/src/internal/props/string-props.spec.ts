@@ -143,7 +143,6 @@ describe('labelProp', () => {
 	it.each<[unknown, string]>([
 		['', ''],
 		['Label', 'Label'],
-		['', ''],
 		[12, '12'],
 		['a'.repeat(80), 'a'.repeat(80)],
 		['a', 'a'],
