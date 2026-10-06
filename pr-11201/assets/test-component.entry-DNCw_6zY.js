@@ -1,0 +1,1 @@
+import{l as e}from"./index-DRRU6a22-CV4-NblR.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};
