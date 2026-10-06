@@ -1,5 +1,5 @@
 import type { PublicApiContract } from './contract';
-import { describePublicApiContract, extractFrom, readSource } from './contract';
+import { describePublicApiContract } from './contract';
 
 /**
  * Pinned public API of `kol-table-stateless`: 12 props, including the deprecated `_headerCells`,
@@ -85,27 +85,4 @@ describePublicApiContract({
 	component: 'table-stateless',
 	pinnedApi: KOL_TABLE_STATELESS_PUBLIC_API,
 	schemaInterface: 'TableStatelessProps',
-});
-
-describe('kol-table-stateless-wc transitional wrapper (internal contract for legacy consumers)', () => {
-	it('keeps every prop kol-table-stateful sets, plus externalLabelElements', () => {
-		const source = readSource('table-stateless', 'wc.tsx');
-		const props = [...source.matchAll(/@Prop\(\)\s+public\s+(\w+)/g)].map((match) => match[1]);
-		expect(props.sort()).toEqual(
-			[
-				'_data',
-				'_dataFoot',
-				'_fixedCols',
-				'_hasSettingsMenu',
-				'_headers',
-				'_label',
-				'_loading',
-				'_on',
-				'_selection',
-				'_variant',
-				'externalLabelElements',
-			].sort(),
-		);
-		expect(extractFrom('table-stateless', 'wc.tsx').filter((member) => member.kind === 'method')).toHaveLength(0);
-	});
 });

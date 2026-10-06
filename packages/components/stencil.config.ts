@@ -61,19 +61,7 @@ const TAGS = [
 	'kol-tree-item',
 	'kol-version',
 ];
-const EXCLUDE_TAGS = [
-	'kol-alert-wc',
-	'kol-button-wc',
-	'kol-click-button',
-	'kol-dialog-wc',
-	'kol-link-wc',
-	'kol-pagination-wc',
-	'kol-popover-button-wc',
-	'kol-select-wc',
-	'kol-table-settings-wc',
-	'kol-table-stateless-wc',
-	'kol-tooltip-wc',
-];
+const EXCLUDE_TAGS = ['kol-click-button', 'kol-tooltip-wc'];
 const BUNDLES: {
 	components: string[];
 }[] = [];

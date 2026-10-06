@@ -159,7 +159,9 @@ export class TooltipBehavior extends BaseBehavior<TooltipApi> implements Behavio
 			this.tooltipElement.classList.remove('hide');
 			this.tooltipElement.classList.add('show');
 			this.tooltipElement.style.setProperty('display', 'block');
-			getDocument().addEventListener('keydown', this.hideTooltipByEscape, { once: true });
+			// Not `once`: the KoliBri `keydown` event of a form field reaches the document before the native
+			// Escape. `hideTooltip()` removes the listener.
+			getDocument().addEventListener('keydown', this.hideTooltipByEscape);
 
 			const target = this.previousSibling;
 			const tooltipEl = this.tooltipElement;

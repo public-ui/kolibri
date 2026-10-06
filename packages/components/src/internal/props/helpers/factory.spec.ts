@@ -1,4 +1,4 @@
-import { describe, expect, it } from '@jest/globals';
+import { describe, expect, it, jest } from '@jest/globals';
 import type { SimpleProp } from './factory';
 import { createDependentPropDefinition, createPropDefinition } from './factory';
 
@@ -55,6 +55,21 @@ describe('createPropDefinition', () => {
 			def.apply(null, callback);
 
 			expect(callback).toHaveBeenCalledWith('default');
+		});
+
+		it.each([undefined, null])('should pass every instance its own copy of an object default value for %p', (value) => {
+			type MyProp = SimpleProp<'myProp', { nested: string[] }>;
+			const def = createPropDefinition<MyProp>('myProp', { nested: [] }, (v) => v as { nested: string[] });
+
+			const callback = jest.fn<(normalized: { nested: string[] }) => void>();
+			def.apply(value, callback);
+			def.apply(value, callback);
+			const [[first], [second]] = callback.mock.calls;
+			first.nested.push('mutated');
+
+			expect(second).not.toBe(first);
+			expect(second).toEqual({ nested: [] });
+			expect(def.getDefaultValue()).toEqual({ nested: [] });
 		});
 
 		it('should normalize and apply a provided value', () => {
@@ -161,6 +176,21 @@ describe('createDependentPropDefinition', () => {
 			def.apply(null, callback, { dep: true });
 
 			expect(callback).toHaveBeenCalledWith('default');
+		});
+
+		it.each([undefined, null])('should pass every instance its own copy of an object default value for %p', (value) => {
+			type MyProp = SimpleProp<'myProp', { nested: string[] }>;
+			const def = createDependentPropDefinition<MyProp, { dep: boolean }>('myProp', { nested: [] }, (v) => v as { nested: string[] });
+
+			const callback = jest.fn<(normalized: { nested: string[] }) => void>();
+			def.apply(value, callback, { dep: true });
+			def.apply(value, callback, { dep: true });
+			const [[first], [second]] = callback.mock.calls;
+			first.nested.push('mutated');
+
+			expect(second).not.toBe(first);
+			expect(second).toEqual({ nested: [] });
+			expect(def.getDefaultValue()).toEqual({ nested: [] });
 		});
 
 		it('should normalize and apply a provided value with deps', () => {

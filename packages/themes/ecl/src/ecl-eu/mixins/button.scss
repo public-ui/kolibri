@@ -2,7 +2,6 @@
 
 @mixin kol-button($block-classname) {
 	.#{$block-classname} {
-		$root: &;
 		--kolibri-spacing: #{to-rem(4)};
 		--text-focus-outline-color: var(--color-white);
 		border-radius: 4px;
@@ -94,27 +93,26 @@
 					0 to-rem(4) to-rem(5) rgb(9 49 142 / 4%),
 					0 to-rem(-4) to-rem(4) rgb(9 49 142 / 4%);
 			}
+		}
 
-			@at-root #{$root}--secondary & {
-				padding: calc(to-rem(12) - to-rem(2)) calc(to-rem(16) - to-rem(2));
-				border: 2px solid #0e47cb;
-			}
+		&--secondary &__text {
+			padding: calc(to-rem(12) - to-rem(2)) calc(to-rem(16) - to-rem(2));
+			border: 2px solid #0e47cb;
+		}
 
-			/* TODO: the predecessor of this rule was `#{$root}--secondary.button:focus-visible &`,
-			   which never matched anything — no element carries a plain `button` class, before or
-			   after the skeleton migration. Scoping it to `#{$root}__interactive-element` would be the
-			   evident intent, but that would switch the inset focus shadow on for the first time — a
-			   visual change that needs the pixel gate and the theme owner's decision. */
+		// TODO: the predecessor of this rule was `&--secondary.button:focus-visible &__text`,
+		// which never matched anything — no element carries a plain `button` class, before or
+		// after the skeleton migration. Scoping it to `&__interactive-element` would be the
+		// evident intent, but that would switch the inset focus shadow on for the first time — a
+		// visual change that needs the pixel gate and the theme owner's decision.
+		&__interactive-element:focus-visible &__text {
+			outline: var(--text-focus-outline-color) solid to-rem(2);
+			outline-offset: -4px;
+		}
 
-			@at-root #{$root}__interactive-element:focus-visible & {
-				outline: var(--text-focus-outline-color) solid to-rem(2);
-				outline-offset: -4px;
-			}
-
-			@at-root #{$root}--hide-label & {
-				.kol-span__label {
-					display: none;
-				}
+		&--hide-label &__text {
+			.kol-span__label {
+				display: none;
 			}
 		}
 	}

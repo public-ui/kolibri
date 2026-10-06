@@ -6,7 +6,6 @@
 	@include icon;
 
 	.#{$block-classname} {
-		$root: &;
 		--a11y-min-size: #{to-rem(36)};
 		--text-background-color: transparent;
 		--text-border-color: var(--color-blue-100);
@@ -91,17 +90,17 @@
 				min-width: to-rem(120);
 				padding: to-rem(4) to-rem(16); // vertical padding results in specified container height of 36px
 			}
+		}
 
-			@at-root #{$root}--hide-label & {
-				.kol-span__label {
-					display: none;
-				}
+		&--hide-label &__text {
+			.kol-span__label {
+				display: none;
 			}
+		}
 
-			@at-root #{$root}:focus-within & {
-				@include focus-outline;
-				position: relative; // make sure focus outline is visible and not covered by adjacent element
-			}
+		&:focus-within &__text {
+			@include focus-outline;
+			position: relative; // make sure focus outline is visible and not covered by adjacent element
 		}
 
 		.kol-span__container {

@@ -408,11 +408,41 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             </span>
           </span>
         </span>
-        <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-          <div class="kol-popover-button__popover--styled">
-            Ich bin ein Hinweis.
+        <span>
+          <div class="kol-popover-button kol-popover-button--inline">
+            <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        Info
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <div class="kol-popover-button__popover--styled">
+                Ich bin ein Hinweis.
+              </div>
+            </div>
           </div>
-        </kol-popover-button-wc>
+        </span>
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">
@@ -658,7 +688,30 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-number-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-button-wc _hidelabel="" _label="einblenden" class="kol-input-container__smart-button"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button">
+              <button aria-label="einblenden" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        einblenden
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
             <button aria-hidden="true" class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
@@ -1042,11 +1095,41 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             </span>
           </span>
         </span>
-        <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-          <div class="kol-popover-button__popover--styled">
-            Ich bin ein Hinweis.
+        <span>
+          <div class="kol-popover-button kol-popover-button--inline">
+            <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+              <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        Info
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+              <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+              <div class="kol-popover-button__popover--styled">
+                Ich bin ein Hinweis.
+              </div>
+            </div>
           </div>
-        </kol-popover-button-wc>
+        </span>
       </label>
       <div class="kol-form-field__input">
         <div class="kol-input-container">
@@ -1327,7 +1410,30 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             </datalist>
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
-            <kol-button-wc _hidelabel="" _label="einblenden" class="kol-input-container__smart-button"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-input-container__smart-button">
+              <button aria-label="einblenden" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        einblenden
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
             <button aria-hidden="true" class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>

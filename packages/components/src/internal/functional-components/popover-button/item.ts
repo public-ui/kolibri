@@ -1,6 +1,6 @@
 import { getFeatureFlag } from 'adopted-style-sheets';
 
-import type { AlignPropType, IconsPropType, LabelWithExpertSlotPropType } from '../../../schema';
+import type { AlignPropType, IconsPropType, InternalButtonProps, LabelWithExpertSlotPropType, PopoverButtonProps } from '../../../schema';
 import { createUniqueId, nonce } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
@@ -16,12 +16,12 @@ import {
 	variantProp,
 } from '../../props';
 import { BaseWebComponent } from '../base-web-component';
-import type { FunctionalComponentProps } from '../generic-types';
+import { resolveButtonProps } from '../button/resolve-props';
 import { PopoverBehavior } from '../popover/behavior';
 import { buildDefaultPropsFromConfig } from '../props-from-config';
 import { TooltipBehavior } from '../tooltip/behavior';
-import type { PopoverButtonApi } from './api';
 import { popoverButtonPropsConfig } from './api';
+import type { PopoverButtonFCProps } from './component';
 
 /**
  * One orchestrated popover button embedded in another component's shadow DOM: everything
@@ -39,8 +39,12 @@ import { popoverButtonPropsConfig } from './api';
  * field, reached through the `getOpen`/`setOpen` accessors, so toggling re-renders the host.
  */
 export type PopoverButtonItem = {
-	/** Fully resolved props for `PopoverButtonFC`, with the current open state applied. */
-	getFcProps(): FunctionalComponentProps<PopoverButtonApi>;
+	/**
+	 * Fully resolved props for `PopoverButtonFC`, with the current open state applied. With
+	 * `popoverButtonProps`, the toggle button is resolved from them for this render pass, the way the
+	 * popover button elements resolve their `@Prop`s; call once per render then.
+	 */
+	getFcProps(popoverButtonProps?: PopoverButtonProps): PopoverButtonFCProps;
 	/** Closes the popover programmatically. */
 	hide(): void;
 	/** Applies a changed `disabled` value; call from the embedding component's watcher. */
@@ -55,11 +59,11 @@ export type PopoverButtonItemOptions = {
 	/** Whether the toggle button starts disabled. */
 	disabled?: boolean;
 	/**
-	 * Element the synthetic `KolEvent` DOM events are dispatched on. The predecessor dispatched
-	 * them on the `kol-popover-button-wc` host, i.e. an ancestor of the button inside the
-	 * embedding component's shadow DOM — they bubble out to the consumer from there.
+	 * Element the synthetic `KolEvent` DOM events are dispatched on, an ancestor of the button inside
+	 * the embedding component's shadow DOM; they bubble out to the consumer from there. Defaults to
+	 * the `.kol-popover-button` root.
 	 */
-	getEventTarget: () => HTMLElement | undefined;
+	getEventTarget?: () => HTMLElement | undefined;
 	/** Element the theme-scoped `buttonVariantDefault` feature flag is resolved against. */
 	getFlagHost: () => HTMLElement | undefined;
 	/** Reads the embedding component's reactive open state. */
@@ -69,7 +73,7 @@ export type PopoverButtonItemOptions = {
 	/** Icon classnames of the toggle button. */
 	icons?: IconsPropType;
 	/** Visible or semantic label of the toggle button. */
-	label: LabelWithExpertSlotPropType;
+	label?: LabelWithExpertSlotPropType;
 	/** Where to show the popover preferably. */
 	popoverAlign?: AlignPropType;
 	/** Writes the embedding component's reactive open state. */
@@ -81,6 +85,7 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 	const tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
 	const ctaRef = createCtaRef<HTMLButtonElement>();
 	let popoverElement: HTMLDivElement | undefined;
+	let rootElement: HTMLElement | undefined;
 
 	const props = buildDefaultPropsFromConfig(popoverButtonPropsConfig);
 
@@ -116,10 +121,13 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 	labelWithExpertSlotProp.apply(options.label, (v) => {
 		props.label = v;
 	});
+	// An invalid `popoverAlign` is ignored, so the behavior loads with the default then.
+	let popoverAlign = popoverAlignProp.getDefaultValue();
 	popoverAlignProp.apply(options.popoverAlign, (v) => {
-		props.popoverAlign = v;
-		popoverBehavior.componentWillLoad({ align: v });
+		popoverAlign = v;
 	});
+	props.popoverAlign = popoverAlign;
+	popoverBehavior.componentWillLoad({ align: popoverAlign });
 	variantProp.apply(getFeatureFlag('buttonVariantDefault', options.getFlagHost()) ?? 'normal', (v) => {
 		props.variant = v;
 	});
@@ -128,7 +136,7 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 	props.popoverId = createUniqueId('popover');
 
 	const dispatch = (event: KolEvent): void => {
-		const target = options.getEventTarget();
+		const target = options.getEventTarget ? options.getEventTarget() : rootElement;
 		if (target) {
 			dispatchDomEvent(target, event);
 		}
@@ -158,13 +166,57 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 	};
 	props.refTooltip = tooltipBehavior.setTooltipElementRef;
 
-	tooltipBehavior.componentWillLoad({
-		label: props.label as string,
-		align: props.tooltipAlign as AlignPropType,
-	});
+	const refRoot = (element?: HTMLElement): void => {
+		rootElement = element;
+	};
+
+	const loadTooltip = (): void => {
+		tooltipBehavior.componentWillLoad({
+			label: props.label as string,
+			align: props.tooltipAlign as AlignPropType,
+		});
+	};
+
+	/*
+	 * The `@Prop` defaults of the popover button elements: they equal those of the button elements,
+	 * except for the variant, which is `normal` instead of the `buttonVariantDefault` feature flag.
+	 */
+	const applyPopoverButtonProps = (popoverButtonProps: PopoverButtonProps): void => {
+		const resolved = resolveButtonProps(
+			{ ...popoverButtonProps, _on: undefined, _variant: popoverButtonProps._variant ?? 'normal' } as InternalButtonProps,
+			options.getFlagHost(),
+		);
+		props.accessKey = resolved.accessKey;
+		props.ariaDescription = resolved.ariaDescription;
+		props.customClass = resolved.customClass;
+		props.disabled = resolved.disabled;
+		props.hideLabel = resolved.hideLabel;
+		props.icons = resolved.icons;
+		props.id = resolved.id;
+		props.inline = resolved.inline;
+		props.label = resolved.label;
+		props.name = resolved.name;
+		props.shortKey = resolved.shortKey;
+		props.tabIndex = resolved.tabIndex;
+		props.tooltipAlign = resolved.tooltipAlign;
+		props.type = resolved.type;
+		props.variant = resolved.variant;
+		popoverAlignProp.apply(popoverButtonProps._popoverAlign ?? 'bottom', (v) => {
+			props.popoverAlign = v;
+			popoverBehavior.watchAlign(v);
+		});
+		loadTooltip();
+	};
+
+	loadTooltip();
 
 	return {
-		getFcProps: (): FunctionalComponentProps<PopoverButtonApi> => ({ ...props, popoverOpen: options.getOpen() }) as FunctionalComponentProps<PopoverButtonApi>,
+		getFcProps: (popoverButtonProps?: PopoverButtonProps): PopoverButtonFCProps => {
+			if (popoverButtonProps) {
+				applyPopoverButtonProps(popoverButtonProps);
+			}
+			return { ...props, popoverOpen: options.getOpen(), ref: refRoot } as PopoverButtonFCProps;
+		},
 		hide: (): void => popoverBehavior.setShow(false),
 		setDisabled: applyDisabled,
 		syncListeners: (): void => {

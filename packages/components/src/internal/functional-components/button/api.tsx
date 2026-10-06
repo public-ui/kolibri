@@ -114,11 +114,10 @@ export type ButtonApi = ApiFromConfig<
 /**
  * Web component interface for the public `kol-button`.
  *
- * `_ariaHasPopup`, `_id` and `_tabIndex` are internal props that only the transitional
- * `kol-button-wc` exposes — they are set by legacy consumers rendering that element inside their
- * own shadow DOM. They are part of `ButtonApi` because both elements share one functional
- * component, but they are not part of the public `kol-button` surface, so their watchers are
- * omitted here instead of being declared as no-ops.
+ * `_ariaHasPopup`, `_id` and `_tabIndex` are internal props: components that embed `ButtonFC`
+ * set them through `createButtonItem` or `resolveButtonProps`. They are part of `ButtonApi`, but
+ * not of the public `kol-button` surface, so their watchers are omitted here instead of being
+ * declared as no-ops.
  */
 export type ButtonWebComponentInterface = Omit<WebComponentInterface<ButtonApi>, 'watchAriaHasPopup' | 'watchId' | 'watchTabIndex'>;
 

@@ -13,6 +13,8 @@ export type CustomSuggestionsOptionsGroupFCProps = JSXBase.HTMLAttributes<HTMLUL
 
 export type CustomSuggestionsOptionFCProps = JSXBase.HTMLAttributes<HTMLLIElement> & {
 	disabled: boolean;
+	/** Unique per field, because the input references the focused option with `aria-activedescendant`. */
+	id: string;
 	index: number;
 	option: W3CInputValue;
 	selected: boolean;
@@ -49,10 +51,11 @@ const highlightSearchTerm = (text: string, searchTerm: string) => {
 
 /**
  * One option of the custom suggestions. It is focusable (`tabIndex=-1`), so the keyboard moves the
- * real focus into the list. Its ID `option-<index>` is not unique per field (#11124).
+ * real focus into the list.
  */
 export const CustomSuggestionsOptionFC: FC<CustomSuggestionsOptionFCProps> = ({
 	disabled,
+	id,
 	index,
 	ref,
 	selected,
@@ -64,7 +67,7 @@ export const CustomSuggestionsOptionFC: FC<CustomSuggestionsOptionFCProps> = ({
 	searchTerm,
 }) => (
 	<li
-		id={`option-${index}`}
+		id={id}
 		key={`-${index}`}
 		ref={ref}
 		data-index={index}

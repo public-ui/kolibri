@@ -169,17 +169,18 @@ describe('legacy watch helpers', () => {
 			expect(warning).toBe(`[${component.constructor.name}] The property value: (42) for '_wvInvalid' is not valid. Allowed values are: String, `);
 		});
 
-		it('adds null to the allowed values of an optional prop', () => {
+		it('lists null as allowed value of an optional prop without changing the given set', () => {
 			const allowed = new Set<string | null | undefined>(['String']);
 			watchValidator(createLegacyComponent(), '_wvOptional', isString, allowed, 42 as unknown as string);
-			expect(Array.from(allowed)).toEqual(['String', null]);
+			expect(Array.from(allowed)).toEqual(['String']);
+			expect(warningsFor('_wvOptional')).toEqual([expect.stringMatching(/Allowed values are: String, $/)]);
 		});
 
-		it('does not add null to the allowed values of a required prop', () => {
+		it('does not list null as allowed value of a required prop', () => {
 			const allowed = new Set<string | null | undefined>(['String']);
 			watchValidator(createLegacyComponent(), '_wvRequired', isString, allowed, 42 as unknown as string, { required: true });
 			expect(Array.from(allowed)).toEqual(['String']);
-			expect(warningsFor('_wvRequired')).toHaveLength(1);
+			expect(warningsFor('_wvRequired')).toEqual([expect.stringMatching(/Allowed values are: String$/)]);
 		});
 
 		it('stores the default value for undefined', () => {
@@ -215,7 +216,7 @@ describe('legacy watch helpers', () => {
 			expect(component.state).toHaveProperty('_wvUndefined', undefined);
 		});
 
-		// The inline comment of `watchValidator` mentions "UNDEFINED oder NULL", but only `undefined` falls back to the default value.
+		// Only `undefined` falls back to the default value.
 		it('treats null as an invalid value and does not use the default value', () => {
 			const component = createLegacyComponent({ _wvNull: 'old' });
 			watchValidator(component, '_wvNull', isString, new Set(['String']), null as unknown as string, { defaultValue: 'fallback' });
@@ -371,11 +372,11 @@ describe('legacy watch helpers', () => {
 			expect(component.state._wnDefault).toBe(3);
 		});
 
-		// `typeof NaN === 'number'`: without limits NaN passes the validation.
-		it('accepts NaN without limits and rejects it with a limit', () => {
+		it('rejects NaN with and without limits', () => {
 			const component = createLegacyComponent();
 			watchNumber(component, '_wnNaN', NaN);
-			expect(component.state._wnNaN).toBeNaN();
+			expect(component.state).toEqual({});
+			expect(warningsFor('_wnNaN')).toHaveLength(1);
 			const limited = createLegacyComponent();
 			watchNumber(limited, '_wnNaNLimited', NaN, { min: 0 });
 			expect(limited.state).toEqual({});
@@ -429,12 +430,17 @@ describe('legacy watch helpers', () => {
 			expect(debugSpy).not.toHaveBeenCalled();
 		});
 
-		// `Array.prototype.find` returns `undefined` both for "no invalid item" and for an invalid `undefined` item.
-		it('accepts an undefined item although the item validation rejects it', () => {
+		it('keeps the state for an undefined item the item validation rejects', () => {
 			const itemValidation = jest.fn((item: unknown) => typeof item === 'string');
-			const component = createLegacyComponent();
+			const component = createLegacyComponent({ _list: ['old'] });
 			watchJsonArrayString(component, '_list', itemValidation, ['a', undefined] as unknown as string[]);
 			expect(itemValidation).toHaveReturnedWith(false);
+			expect(component.state._list).toEqual(['old']);
+		});
+
+		it('stores an undefined item the item validation accepts', () => {
+			const component = createLegacyComponent();
+			watchJsonArrayString(component, '_list', () => true, ['a', undefined] as unknown as string[]);
 			expect(component.state._list).toEqual(['a', undefined]);
 		});
 

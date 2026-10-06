@@ -15,9 +15,9 @@ import { showProp } from './show';
 import { tableLoadingProp } from './table-loading';
 
 /**
- * Pins the boolean prop definitions built on `normalizeBoolean`: a string is compared
- * case-insensitively with `'true'`, so every other string is `false`; a non-boolean, non-string
- * value is ignored with a developer warning.
+ * Pins the boolean prop definitions built on `normalizeBoolean`: the strings `'true'` and
+ * `'false'` map to their boolean in any letter case; every other non-boolean value, the empty
+ * string included, is ignored with a developer warning.
  *
  * `devWarning` logs each distinct message once, so every invalid value below yields a message
  * unique to its prop.
@@ -71,14 +71,12 @@ describe.each(BOOLEAN_PROPS)('$name', ({ definition, defaultValue }) => {
 		['true', true],
 		['TRUE', true],
 		['false', false],
-		['', false],
-		['yes', false],
 	])('normalizes %p to %p', (value, expected) => {
 		expect(applied(definition, value)).toEqual([expected]);
 		expect(warnings()).toEqual([]);
 	});
 
-	it.each<unknown>([0, 1, {}, []])('ignores %p with a developer warning', (value) => {
+	it.each<unknown>(['', 'yes', 0, 1, {}, []])('ignores %p with a developer warning', (value) => {
 		expect(applied(definition, value)).toEqual([]);
 		expect(warnings()).toEqual([expect.stringContaining(`for '${definition.propName}' is not valid (Invalid boolean`)]);
 	});

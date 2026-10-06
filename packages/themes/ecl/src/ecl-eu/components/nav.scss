@@ -2,8 +2,6 @@
 
 @layer kol-theme-component {
 	.kol-nav {
-		$root: &;
-
 		&__navigation {
 			background-color: var(--color-blue);
 		}
@@ -25,7 +23,7 @@
 			border-width: 0;
 
 			&:not(:first-child),
-			#{$root}__list--nested & {
+			.kol-nav__list--nested & {
 				border-top-width: to-rem(2);
 			}
 		}
@@ -56,7 +54,6 @@
 
 		&__toggle-button {
 			.kol-button {
-				$root: &;
 				--kolibri-spacing: #{to-rem(4)};
 				--text-focus-outline-color: var(--color-white);
 				border-radius: 4px;
@@ -103,16 +100,16 @@
 							0 to-rem(4) to-rem(5) rgb(9 49 142 / 4%),
 							0 to-rem(-4) to-rem(4) rgb(9 49 142 / 4%);
 					}
+				}
 
-					@at-root #{$root}__interactive-element:focus-visible & {
-						outline: var(--text-focus-outline-color) solid to-rem(2);
-						outline-offset: -4px;
-					}
+				&__interactive-element:focus-visible &__text {
+					outline: var(--text-focus-outline-color) solid to-rem(2);
+					outline-offset: -4px;
+				}
 
-					@at-root #{$root}--hide-label & {
-						.kol-span__label {
-							display: none;
-						}
+				&--hide-label &__text {
+					.kol-span__label {
+						display: none;
 					}
 				}
 			}

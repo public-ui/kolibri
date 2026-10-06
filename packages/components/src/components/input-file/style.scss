@@ -35,12 +35,16 @@
 	}
 
 	.kol-input-container {
-		$root: &;
-
 		&__container {
 			display: flex;
 			overflow: hidden;
 			align-items: center;
+		}
+
+		&__button {
+			/* The button root is an item of the centered `__container` row. `height: auto` keeps it at its
+			   own height instead of the `height: 100%` of the button styles, which would stretch it to the row. */
+			height: auto;
 		}
 
 		&__filename {
@@ -51,7 +55,7 @@
 			text-overflow: ellipsis;
 		}
 
-		&:has(> #{$root}__adornment--start):has(> #{$root}__adornment--end) {
+		&:has(> .kol-input-container__adornment--start):has(> .kol-input-container__adornment--end) {
 			grid-template-columns: auto 1fr;
 		}
 	}

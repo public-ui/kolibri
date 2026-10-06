@@ -450,7 +450,8 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await getFocused(page)).toBe('South');
 		});
 
-		test('closes with Escape and reopens with ArrowUp one option above the last focused one', async ({ page }) => {
+		test('closes with Escape and reopens with ArrowUp at the last option', async ({ page }) => {
+			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Escape');
 			await page.waitForChanges();
@@ -458,6 +459,25 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowUp');
 			await page.waitForChanges();
 			expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'Southeast']);
+		});
+
+		test('moves the caret with Home and End while the list is closed', async ({ page }) => {
+			const input = page.locator('input.kol-combobox__input');
+			await input.fill('xyz');
+			await page.waitForChanges();
+			expect(await isOpen(page)).toBe(false);
+			await page.keyboard.press('Home');
+			expect(await input.evaluate((element: HTMLInputElement) => element.selectionStart)).toBe(0);
+			await page.keyboard.press('End');
+			expect(await input.evaluate((element: HTMLInputElement) => element.selectionStart)).toBe(3);
+		});
+
+		test('gives each option an ID that is unique per field', async ({ page }) => {
+			await page.keyboard.press('ArrowDown');
+			await page.waitForChanges();
+			const ids = await page.locator('li.kol-custom-suggestions-option').evaluateAll((elements) => elements.map((element) => element.id));
+			expect(new Set(ids).size).toBe(KEYBOARD_OPTIONS.length);
+			expect(ids.every((id) => /^combobox-option-\d+-/.test(id))).toBe(true);
 		});
 
 		test('selects with Space and Enter without submitting the form, and reopens with Enter', async ({ page }) => {
@@ -480,8 +500,7 @@ test.describe(COMPONENT_NAME, () => {
 			]);
 			expect([await isOpen(page), await getFocused(page)]).toEqual([false, 'input']);
 			expect(await component.evaluate((element: HTMLKolComboboxElement) => element.getValue())).toBe('West');
-			// The selection does not write the `_value` prop.
-			expect(await component.evaluate((element: HTMLKolComboboxElement) => element._value)).toBeUndefined();
+			expect(await component.evaluate((element: HTMLKolComboboxElement) => element._value)).toBe('West');
 
 			await page.keyboard.press('Enter');
 			await page.waitForChanges();

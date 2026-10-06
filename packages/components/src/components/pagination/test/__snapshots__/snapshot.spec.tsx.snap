@@ -3,14 +3,14 @@
 exports[`kol-pagination should render with _label="Label" _on={} _max=0 _page=4 _hasButtons=false _siblingCount=0 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list"></ul>
       </nav>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -18,33 +18,307 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=0 _page=4 
 exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list">
           <li>
-            <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--first"></kol-button-wc>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+              <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-first
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 1" _customclass="" _label="1" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+            <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 1
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 2" _customclass="" _label="2" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      2
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 2
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-last" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--last"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+              <button aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-last
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </nav>
-    </kol-pagination-wc>
+    </div>
+  </template>
+</kol-pagination>
+`;
+
+exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=0 _boundaryCount=-1 _siblingCount=-1 1`] = `
+<kol-pagination>
+  <template shadowrootmode="open">
+    <div class="kol-pagination">
+      <span aria-live="polite" class="kol-pagination__entries" role="status">
+        kol-table-visible-range
+      </span>
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list">
+          <li>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+              <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-first
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 1
+              </span>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true" class="kol-pagination__separator"></span>
+          </li>
+          <li>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+              <button aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-last
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -52,45 +326,554 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=2 _page=1 
 exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=10 _boundaryCount=2 _siblingCount=2 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list">
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--first"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+              <button aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-first
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 1" _customclass="" _label="1" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 1
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 2" _customclass="" _label="2" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      2
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 2
+              </span>
+            </div>
           </li>
           <li>
             <span aria-hidden="true" class="kol-pagination__separator"></span>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 8" _customclass="" _label="8" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      8
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 8
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 9" _customclass="" _label="9" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      9
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 9
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 10" _customclass="" _label="10" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+            <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      10
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 10
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-last" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--last"></kol-button-wc>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+              <button aria-label="kol-page-last" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-last
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </nav>
-    </kol-pagination-wc>
+    </div>
+  </template>
+</kol-pagination>
+`;
+
+exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=20 1`] = `
+<kol-pagination>
+  <template shadowrootmode="open">
+    <div class="kol-pagination">
+      <span aria-live="polite" class="kol-pagination__entries" role="status">
+        kol-table-visible-range
+      </span>
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list">
+          <li>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+              <button aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-first
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 1
+              </span>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true" class="kol-pagination__separator"></span>
+          </li>
+          <li>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      9
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 9
+              </span>
+            </div>
+          </li>
+          <li>
+            <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      10
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 10
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+              <button aria-label="kol-page-last" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-last
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </template>
+</kol-pagination>
+`;
+
+exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=2 _hasButtons="{\\"first\\":false,\\"next\\":false}" 1`] = `
+<kol-pagination>
+  <template shadowrootmode="open">
+    <div class="kol-pagination">
+      <span aria-live="polite" class="kol-pagination__entries" role="status">
+        kol-table-visible-range
+      </span>
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list">
+          <li>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 1
+              </span>
+            </div>
+          </li>
+          <li>
+            <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      2
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 2
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      3
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 3
+              </span>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true" class="kol-pagination__separator"></span>
+          </li>
+          <li>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      12
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 12
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+              <button aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-last
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -98,33 +881,129 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=10 _page=1
 exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=6 _hasButtons={"first":false,"last":false,"next":true,"previous":true} _boundaryCount=0 _siblingCount=1 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list">
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 5" _customclass="" _label="5" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      5
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 5
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 6" _customclass="" _label="6" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+            <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      6
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 6
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 7" _customclass="" _label="7" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      7
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 7
+              </span>
+            </div>
           </li>
           <li>
             <span aria-hidden="true" class="kol-pagination__separator"></span>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </nav>
-    </kol-pagination-wc>
+    </div>
   </template>
 </kol-pagination>
 `;
@@ -132,45 +1011,913 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=12 _page=6
 exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3 _pageSizeOptions=[5,10,20] _pageSize=5 _siblingCount=3 1`] = `
 <kol-pagination>
   <template shadowrootmode="open">
-    <kol-pagination-wc class="kol-pagination">
+    <div class="kol-pagination">
       <span aria-live="polite" class="kol-pagination__entries" role="status">
         kol-table-visible-range
       </span>
       <nav aria-label="Label" class="kol-pagination__navigation">
         <ul class="kol-pagination__navigation-list">
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-first" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--first"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+              <button aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-first
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-back" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 1" _customclass="" _label="1" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 1
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 2" _customclass="" _label="2" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      2
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 2
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 3" _customclass="" _label="3" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+            <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      3
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 3
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 4" _customclass="" _label="4" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      4
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 4
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _ariadescription="kol-page 5" _customclass="" _label="5" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      5
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 5
+              </span>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-next" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
           <li>
-            <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-last" _tooltipalign="top" class="kol-pagination__button kol-pagination__button--last"></kol-button-wc>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+              <button aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-last
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </li>
         </ul>
       </nav>
       <div class="page-size">
-        <kol-select-wc _label="kol-entries-per-site" _value="5" class="kol-pagination__page-size-select"></kol-select-wc>
+        <div class="kol-pagination__page-size-select">
+          <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
+            <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+              <span class="kol-form-field__label-text kol-span">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    kol-entries-per-site
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
+                    <slot name="expert"></slot>
+                  </span>
+                </span>
+              </span>
+            </label>
+            <div class="kol-form-field__input">
+              <div class="kol-input-container">
+                <div class="kol-input-container__container">
+                  <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce">
+                    <option class="kol-select__option kol-select__option--selected" selected="" value="-0">
+                      5
+                    </option>
+                    <option class="kol-select__option" value="-1">
+                      10
+                    </option>
+                    <option class="kol-select__option" value="-2">
+                      20
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </kol-pagination-wc>
+    </div>
+  </template>
+</kol-pagination>
+`;
+
+exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1 _pageSize=10 _pageSizeOptions="[10, 20, 50]" 1`] = `
+<kol-pagination>
+  <template shadowrootmode="open">
+    <div class="kol-pagination">
+      <span aria-live="polite" class="kol-pagination__entries" role="status">
+        kol-table-visible-range
+      </span>
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list">
+          <li>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+              <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-first
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 1
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      2
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 2
+              </span>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true" class="kol-pagination__separator"></span>
+          </li>
+          <li>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      4
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 4
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+              <button aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-last
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="page-size">
+        <div class="kol-pagination__page-size-select">
+          <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
+            <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+              <span class="kol-form-field__label-text kol-span">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    kol-entries-per-site
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
+                    <slot name="expert"></slot>
+                  </span>
+                </span>
+              </span>
+            </label>
+            <div class="kol-form-field__input">
+              <div class="kol-input-container">
+                <div class="kol-input-container__container">
+                  <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce">
+                    <option class="kol-select__option kol-select__option--selected" selected="" value="-0">
+                      10
+                    </option>
+                    <option class="kol-select__option" value="-1">
+                      20
+                    </option>
+                    <option class="kol-select__option" value="-2">
+                      50
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-pagination>
+`;
+
+exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1 _pageSize=15 _pageSizeOptions=[10,20] 1`] = `
+<kol-pagination>
+  <template shadowrootmode="open">
+    <div class="kol-pagination">
+      <span aria-live="polite" class="kol-pagination__entries" role="status">
+        kol-table-visible-range
+      </span>
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list">
+          <li>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+              <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-first
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 1
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      2
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 2
+              </span>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true" class="kol-pagination__separator"></span>
+          </li>
+          <li>
+            <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      4
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 4
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+              <button aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-last
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="page-size">
+        <div class="kol-pagination__page-size-select">
+          <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
+            <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+              <span class="kol-form-field__label-text kol-span">
+                <span class="kol-span__container">
+                  <span class="kol-span__label">
+                    kol-entries-per-site
+                  </span>
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
+                    <slot name="expert"></slot>
+                  </span>
+                </span>
+              </span>
+            </label>
+            <div class="kol-form-field__input">
+              <div class="kol-input-container">
+                <div class="kol-input-container__container">
+                  <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce">
+                    <option class="kol-select__option kol-select__option--selected" selected="" value="-0">
+                      10
+                    </option>
+                    <option class="kol-select__option" value="-1">
+                      20
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-pagination>
+`;
+
+exports[`kol-pagination should render with _label="Label" _on={} _max=100 _page=50 _customClass="custom" _tooltipAlign="bottom" 1`] = `
+<kol-pagination>
+  <template shadowrootmode="open">
+    <div class="kol-pagination">
+      <span aria-live="polite" class="kol-pagination__entries" role="status">
+        kol-table-visible-range
+      </span>
+      <nav aria-label="Label" class="kol-pagination__navigation">
+        <ul class="kol-pagination__navigation-list">
+          <li>
+            <div class="custom kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+              <button aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-first
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="custom kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+              <button aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-back
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="custom kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      1
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 1
+              </span>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true" class="kol-pagination__separator"></span>
+          </li>
+          <li>
+            <div class="custom kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      49
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 49
+              </span>
+            </div>
+          </li>
+          <li>
+            <div aria-current="page" class="custom kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      50
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 50
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="custom kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      51
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 51
+              </span>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true" class="kol-pagination__separator"></span>
+          </li>
+          <li>
+            <div class="custom kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+              <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      100
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                  </span>
+                </span>
+              </button>
+              <span class="visually-hidden" id="nonce">
+                kol-page 100
+              </span>
+            </div>
+          </li>
+          <li>
+            <div class="custom kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+              <button aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-next
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="custom kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+              <button aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
+                <span class="kol-button__text kol-span kol-span--hide-label">
+                  <span class="kol-span__container">
+                    <span aria-hidden="true" class="kol-span__slot" hidden="">
+                      <slot name="expert" slot="expert"></slot>
+                    </span>
+                    <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                  </span>
+                </span>
+              </button>
+              <div class="kol-button__tooltip">
+                <div class="kol-tooltip__floating">
+                  <div class="kol-tooltip__arrow"></div>
+                  <span class="kol-span kol-tooltip__content">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-page-last
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </template>
 </kol-pagination>
 `;

@@ -56,7 +56,7 @@ import { onLocationChange } from './ariaCurrentService';
 
 /**
  * Shared orchestrator implementation for every custom element that renders `LinkFC`:
- * `kol-link`, the transitional `kol-link-wc` and `kol-link-button`.
+ * `kol-link` and `kol-link-button`.
  *
  * The class carries everything that does not need a Stencil decorator — the composed
  * `TooltipBehavior`, the `aria-current` location subscription, the anchor click handler, one

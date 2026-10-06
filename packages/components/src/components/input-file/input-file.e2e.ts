@@ -197,6 +197,24 @@ test.describe(COMPONENT_NAME, () => {
 
 			expect(await readFormData(page)).toEqual([['field', 'file.txt']]);
 		});
+
+		test('clears the selection, the filename and the form value with reset() in a native form', async ({ page }) => {
+			await setContentWithRetry(page, `${EXPERIMENTAL_MODE_HEAD}<body><form></form></body>`);
+			await registerWithReflectInputValues(page);
+			await insertAfterStartup(page, `<${COMPONENT_NAME} _label="Input" _name="field"></${COMPONENT_NAME}>`, 'form');
+
+			await page
+				.locator(`input.kol-input[type="file"]`)
+				.setInputFiles({ name: 'file.txt', mimeType: 'text/plain', buffer: Buffer.from('this is test', 'utf8') });
+			await page.waitForChanges();
+
+			await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputFileElement) => element.reset());
+			await page.waitForChanges();
+
+			await expect(page.locator('.kol-input-container__filename')).toHaveText(translate('kol-filename-text'));
+			await expect(page.locator(`input.kol-input[type="file"]`)).toHaveValue('');
+			expect(await readFormData(page)).toEqual([['field', '']]);
+		});
 	});
 
 	test.describe('drag and drop', () => {

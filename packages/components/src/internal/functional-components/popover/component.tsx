@@ -12,13 +12,17 @@ export type PopoverFCProps = FunctionalComponentProps<PopoverApi> &
 		arrowRef?: (el?: HTMLDivElement) => void;
 	};
 
-export const PopoverFC: FC<PopoverFCProps> = (props) => {
+/**
+ * The popover content is the given children; without children, the default slot distributes the
+ * light DOM of the surrounding web component.
+ */
+export const PopoverFC: FC<PopoverFCProps> = (props, children) => {
 	const { align = 'bottom', popoverRef, arrowRef, class: classNames, ...rest } = props;
 
 	return (
 		<div {...rest} class={clsx('kol-popover', classNames)} ref={popoverRef} popover="auto">
 			<div class={clsx('kol-popover__arrow', `kol-popover__arrow--${align}`)} ref={arrowRef} />
-			<slot />
+			{children.length > 0 ? children : <slot />}
 		</div>
 	);
 };

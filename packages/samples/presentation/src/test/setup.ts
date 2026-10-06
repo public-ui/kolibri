@@ -42,10 +42,8 @@ beforeAll(async () => {
 		// tsconfig.json), because @public-ui/components does not export ./dist.
 		await Promise.all([
 			import('@public-ui/components/dist/esm/kol-button.entry.js'),
-			import('@public-ui/components/dist/esm/kol-button-wc.entry.js'),
 			import('@public-ui/components/dist/esm/kol-input-text.entry.js'),
 			import('@public-ui/components/dist/esm/kol-dialog.entry.js'),
-			import('@public-ui/components/dist/esm/kol-dialog-wc.entry.js'),
 		]);
 
 		console.log('✅ KoliBri custom elements registered successfully');

@@ -8,11 +8,8 @@ import { normalizeArray } from './helpers/normalizers';
  * linking to the form control it belongs to.
  *
  * The item predicate mirrors `ErrorListPropType`: a `message` string plus a `selector` that is
- * either a CSS selector string or an event callback. The predecessor's `validateErrorList` tested
- * `typeof v === 'string' || typeof v === 'function'` against the **entries** — never true for an
- * error object — but its result never reached the renderer, which read the raw `@Prop`. The
- * validation becomes effective with this definition; a malformed list is now rejected with a
- * developer warning instead of being rendered.
+ * either a CSS selector string or an event callback, the same shape the legacy `validateErrorList`
+ * checks. A malformed list is ignored with a developer warning instead of being rendered.
  */
 export type ErrorListProp = SimpleProp<'errorList', ErrorListPropType[]>;
 

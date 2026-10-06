@@ -16,10 +16,43 @@ test.describe('kol-input-text', () => {
 			});
 
 			await page.setContent(`<kol-input-text _label="With Smart Button" _type="text" _smart-button='${smartButton}'></kol-input-text>`);
-			const kolButton = page.locator('kol-button-wc');
+			const kolButton = page.locator('.kol-input-container__smart-button');
 			await expect(kolButton).toHaveCount(1);
 
-			await kolButton.click();
+			await page.locator('kol-input-text').evaluate((element: HTMLKolInputTextElement) => {
+				element._smartButton = {
+					_icons: 'codicon-info',
+					_label: 'Smart-Button',
+					_on: {
+						onClick: () => {
+							(window as unknown as { smartButtonClicked: boolean }).smartButtonClicked = true;
+						},
+					},
+				};
+			});
+			await kolButton.locator('button').click();
+			expect(await page.evaluate(() => (window as unknown as { smartButtonClicked?: boolean }).smartButtonClicked)).toBe(true);
+		});
+	});
+
+	test.describe('info popover', () => {
+		test('opens and closes the info popover of the label', async ({ page }) => {
+			await page.setContent(`<kol-input-text _label="With info popover"></kol-input-text>`);
+			await page.locator('kol-input-text').evaluate((element: HTMLKolInputTextElement) => {
+				element._infoPopover = { _label: 'Info', _content: 'Ich bin ein Hinweis.', _icons: 'kolicon-alert-info' };
+			});
+			const toggle = page.locator('kol-input-text .kol-popover-button button');
+			const popover = page.locator('kol-input-text .kol-popover-button__popover');
+
+			await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+			await toggle.click();
+			await expect(popover).toContainText('Ich bin ein Hinweis.');
+			await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+			expect(await popover.evaluate((element) => element.matches(':popover-open'))).toBe(true);
+
+			await toggle.click();
+			await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+			expect(await popover.evaluate((element) => element.matches(':popover-open'))).toBe(false);
 		});
 	});
 

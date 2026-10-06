@@ -22,27 +22,25 @@ test.describe('kol-link', () => {
 			await expect(callbackPromise).resolves.toBeUndefined();
 		});
 
-		['kol-link', 'kol-link-wc'].forEach((tag) => {
-			test(`should pass the internal anchor as event.target to the onClick callback (${tag})`, async ({ page }) => {
-				await page.setContent(`<${tag} _label="Link"></${tag}>`);
-				const kolLink = page.locator(tag);
+		test('should pass the internal anchor as event.target to the onClick callback', async ({ page }) => {
+			await page.setContent('<kol-link _label="Link"></kol-link>');
+			const kolLink = page.locator('kol-link');
 
-				const targetIsAnchorPromise = kolLink.evaluate((element: HTMLKolLinkElement) => {
-					return new Promise<boolean>((resolve) => {
-						element._on = {
-							onClick: (event: Event, _value: string) => {
-								resolve(event.target instanceof HTMLAnchorElement && event.target.classList.contains('kol-link__interactive-element'));
-							},
-						};
-					});
+			const targetIsAnchorPromise = kolLink.evaluate((element: HTMLKolLinkElement) => {
+				return new Promise<boolean>((resolve) => {
+					element._on = {
+						onClick: (event: Event, _value: string) => {
+							resolve(event.target instanceof HTMLAnchorElement && event.target.classList.contains('kol-link__interactive-element'));
+						},
+					};
 				});
-				await page.waitForChanges();
-
-				// Dispatch directly on the anchor to verify that setEventTarget pins the target
-				await page.locator(`${tag} a`).dispatchEvent('click');
-
-				await expect(targetIsAnchorPromise).resolves.toBe(true);
 			});
+			await page.waitForChanges();
+
+			// Dispatch directly on the anchor to verify that setEventTarget pins the target
+			await page.locator('kol-link a').dispatchEvent('click');
+
+			await expect(targetIsAnchorPromise).resolves.toBe(true);
 		});
 	});
 
