@@ -449,9 +449,8 @@ export class KolInputFile
 	};
 
 	/**
-	 * Props of the native `<input>`. The keys follow the order of the legacy state wrapper, and props
-	 * the legacy state only held once set are only passed when set: the rendered attributes keep their
-	 * order in the hydrate snapshot.
+	 * Props of the native `<input>` in a fixed key order; optional props are only passed when set. The
+	 * rendered attributes keep their order and presence, which the hydrate snapshot pins.
 	 */
 	private getInputProps(): InputFCProps {
 		const accessKey = this.getRenderProp('accessKey');

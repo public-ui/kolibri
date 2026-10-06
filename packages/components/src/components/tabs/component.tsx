@@ -89,6 +89,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	 */
 	public createButton!: TabsButton;
 
+	/** Resolved per render pass by `resolveButtons`. */
 	public tabButtons: TabsButton[] = [];
 
 	/**
@@ -414,7 +415,8 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	}
 
 	/**
-	 * Resolves the embedded buttons against the current selection.
+	 * Resolves the embedded buttons against the current selection. The props below define the rendered
+	 * tab buttons; the tabs snapshots pin them.
 	 */
 	private resolveButtons(): void {
 		const selected = this.getRenderProp('selected');

@@ -533,7 +533,7 @@ export class KolTextarea
 	}
 
 	/**
-	 * Props of the native `<textarea>` in the key order of the legacy state wrapper. `spellCheck` is
+	 * Props of the native `<textarea>` in a fixed key order, which the hydrate snapshot pins. `spellCheck` is
 	 * accepted but not rendered (#10863).
 	 */
 	private getTextareaProps(): TextAreaFCProps {

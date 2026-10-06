@@ -489,7 +489,7 @@ export class KolInputDate
 		this.destroyFormField();
 	}
 
-	/** The date props depend on the raw `_type` and `_step`, like the legacy validation. */
+	/** The date props are validated against the raw `_type` and `_step`, not their normalized values. */
 	private get dateDeps(): InputDateDeps {
 		return { type: this._type, step: this._step };
 	}
@@ -542,10 +542,10 @@ export class KolInputDate
 	};
 
 	/**
-	 * Props of the native `<input>`. The keys follow the order of the legacy state wrapper, and props
-	 * the legacy state only held once set are only passed when set: the rendered attributes keep their
-	 * order in the hydrate snapshot. Like in the legacy state, an unset step is `null`, and a value or
-	 * bound is `null` only when it is set to `null`: the first render then writes the empty value.
+	 * Props of the native `<input>` in a fixed key order; optional props are only passed when set. The
+	 * rendered attributes keep their order and presence, which the hydrate snapshot pins. An unset step is
+	 * `null`, and a value or bound is `null` only when it is set to `null`: the first render then writes the
+	 * empty value.
 	 */
 	private getInputProps(): InputFCProps {
 		const id = this.id;

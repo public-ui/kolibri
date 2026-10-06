@@ -460,10 +460,9 @@ export class KolInputRange
 	};
 
 	/**
-	 * Props both native inputs share. The keys follow the order of the legacy state wrapper, the
-	 * input-specific props follow in the JSX and the ARIA props come last; props the legacy state only
-	 * held once set are only passed when set. The rendered attributes keep their order in the hydrate
-	 * snapshot.
+	 * Props both native inputs share, in a fixed key order; the input-specific props follow in the JSX
+	 * and the ARIA props come last, and optional props are only passed when set. The rendered attributes
+	 * keep their order and presence, which the hydrate snapshot pins.
 	 */
 	private getSharedInputProps(): InputFCProps {
 		const accessKey = this.getRenderProp('accessKey');
@@ -476,7 +475,7 @@ export class KolInputRange
 			disabled: this.getRenderProp('disabled'),
 			name: undefined,
 			...(accessKey ? { accessKey } : {}),
-			// Unset numbers are `null`, like in the legacy state: the first render then writes the empty value, and the
+			// Unset numbers are `null`: the first render then writes the empty value, and the
 			// range input takes the middle of its range, which `componentDidLoad` reads as the initial value.
 			value: this.getRenderProp('value') ?? null,
 			autoComplete: this.getRenderProp('autoComplete'),

@@ -11,8 +11,9 @@ import * as ts from 'typescript';
  *
  * For every class under `src`, it also checks that no property initializer reads an own property that
  * is declared after it: directly, through an own method, getter or arrow-function property it calls.
- * A read through a callee that receives `this` (e.g. `new Behavior(this)`) and a synchronously run
- * callback (an IIFE, an array callback) are not traced.
+ * Only direct reads and direct calls are traced; every other path is not, e.g. a callee that receives
+ * `this` (`new Behavior(this)`), a synchronously run callback (an IIFE, an array callback),
+ * `call`/`apply`/`bind` and element access.
  */
 const LIFECYCLE = [
 	'connectedCallback',

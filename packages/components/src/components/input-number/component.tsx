@@ -556,10 +556,9 @@ export class KolInputNumber
 	}
 
 	/**
-	 * Props of the native `<input>`. The keys follow the order of the legacy state wrapper, and props
-	 * the legacy state only held once set are only passed when set: the rendered attributes keep their
-	 * order in the hydrate snapshot. Unset numbers are `null`, like in the legacy state, so the first
-	 * render writes their empty value.
+	 * Props of the native `<input>` in a fixed key order; optional props are only passed when set. The
+	 * rendered attributes keep their order and presence, which the hydrate snapshot pins. Unset numbers
+	 * are `null`, so the first render writes their empty value.
 	 */
 	private getInputProps(): InputFCProps {
 		const id = this.id;
