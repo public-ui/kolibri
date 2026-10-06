@@ -1,0 +1,1 @@
+import{b as e,o as t}from"./base-web-component-3R1Dy3QK-D3fWfoeQ.js";var n=t(`name`,``,e);export{n as t};
