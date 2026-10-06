@@ -1,12 +1,12 @@
 import { describe, expect, it, jest } from '@jest/globals';
-import { optionsProp } from './options';
+import { radioOptionsProp } from './radio-options';
 import { radioOrientationProp } from './radio-orientation';
 import { radioValueProp } from './radio-value';
 
 /**
  * Pins the props of `kol-input-radio` against the legacy validators `validateOptions` and
  * `validateOrientation` and the value handling of the radio controller they replace (G4.1 and G4.4
- * of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`). `optionsProp` also serves `kol-single-select`.
+ * of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
  */
 type PropDefinition = {
 	apply: (value: unknown, callback: (normalized: unknown) => void) => void;
@@ -23,31 +23,21 @@ const OPTIONS = [
 	{ label: 'B', value: { id: 2 } },
 ];
 
-describe('optionsProp', () => {
+describe('radioOptionsProp', () => {
 	it.each([undefined, null])('applies the default [] for %s', (value) => {
-		expect(applied(optionsProp, value)).toEqual([[]]);
+		expect(applied(radioOptionsProp, value)).toEqual([[]]);
 	});
 
 	it('accepts an array of options', () => {
-		expect(applied(optionsProp, OPTIONS)).toEqual([OPTIONS]);
+		expect(applied(radioOptionsProp, OPTIONS)).toEqual([OPTIONS]);
 	});
 
 	it('parses a JSON string', () => {
-		expect(applied(optionsProp, JSON.stringify(OPTIONS))).toEqual([OPTIONS]);
-	});
-
-	it('keeps disabled options and falsy values, as kol-single-select uses them', () => {
-		const options = [
-			{ label: 'A', value: 'a' },
-			{ label: 'B', value: false, disabled: true },
-			{ label: 'C', value: 0 },
-		];
-		expect(applied(optionsProp, options)).toEqual([options]);
-		expect(applied(optionsProp, JSON.stringify(options))).toEqual([options]);
+		expect(applied(radioOptionsProp, JSON.stringify(OPTIONS))).toEqual([OPTIONS]);
 	});
 
 	it('converts a number label to a string', () => {
-		expect(applied(optionsProp, [{ label: 'A' }, { label: 1, value: 1 }])).toEqual([[{ label: 'A' }, { label: '1', value: 1 }]]);
+		expect(applied(radioOptionsProp, [{ label: 'A' }, { label: 1, value: 1 }])).toEqual([[{ label: 'A' }, { label: '1', value: 1 }]]);
 	});
 
 	it.each([
@@ -60,7 +50,7 @@ describe('optionsProp', () => {
 		['an object', { label: 'A' }],
 		['an unparsable string', 'abc'],
 	])('ignores %s', (_name, value) => {
-		expect(applied(optionsProp, value)).toEqual([]);
+		expect(applied(radioOptionsProp, value)).toEqual([]);
 	});
 });
 

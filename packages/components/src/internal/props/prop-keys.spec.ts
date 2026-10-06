@@ -5,8 +5,8 @@ import path from 'node:path';
 /**
  * One prop definition per render key. Several definitions for the same key are allowed only where
  * the public props of different components are functionally different, or where a shared factory
- * types the value per component (callbacks, links); each entry names that reason. A new definition for an existing key needs a reason here, otherwise it reuses the
- * existing one.
+ * types the value per component (callbacks, links, options); each entry names that reason. A new
+ * definition for an existing key needs a reason here, otherwise it reuses the existing one.
  */
 const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
 	color: { definitions: ['colorProp', 'kolibriColorProp'], reason: 'color pair with contrast (badge, avatar) vs. RGB channels of the logo (kolibri)' },
@@ -48,7 +48,10 @@ const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
 		],
 		reason: 'typed per component callbacks; dialog, drawer and tabs keep only their known function callbacks',
 	},
-	options: { definitions: ['optionsProp', 'optionsWithOptgroupProp'], reason: 'flat options (radio, single select) vs. options with optgroups (select)' },
+	options: {
+		definitions: ['optionsWithOptgroupProp', 'radioOptionsProp', 'singleSelectOptionsProp'],
+		reason: 'options with optgroups (select) vs. flat options of the same factory (createOptionsPropDefinition), where a radio option may carry a hint',
+	},
 	orientation: { definitions: ['orientationProp', 'radioOrientationProp'], reason: "documented default 'horizontal' vs. 'vertical' of the radio group" },
 	type: {
 		definitions: ['alertTypeProp', 'buttonTypeProp', 'inputDateTypeProp', 'inputTextTypeProp'],

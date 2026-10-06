@@ -33,7 +33,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { InputRadioApi } from '../../internal/functional-components/input-radio/api';
 import { inputRadioPropsConfig } from '../../internal/functional-components/input-radio/api';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { optionsProp, radioOrientationProp, radioValueProp, requiredProp, variantProp } from '../../internal/props';
+import { radioOptionsProp, radioOrientationProp, radioValueProp, requiredProp, variantProp } from '../../internal/props';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
@@ -196,7 +196,7 @@ export class KolInputRadio
 	/** The option map keeps its entries while the list is empty. */
 	@Watch('_options')
 	public watchOptions(value?: RadioOptionsPropType): void {
-		optionsProp.apply(value, (v) => {
+		radioOptionsProp.apply(value, (v) => {
 			this.setRenderProp('options', v);
 			if (v.length > 0) {
 				this.keyOptionMap.clear();

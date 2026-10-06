@@ -2,11 +2,11 @@ import {
 	accessKeyProp,
 	hasClearButtonProp,
 	horizontalIconsProp,
-	optionsProp,
 	placeholderProp,
 	requiredProp,
 	rowsProp,
 	shortKeyProp,
+	singleSelectOptionsProp,
 	variantProp,
 } from '../../props';
 import type { FormFieldBaseStates } from '../form-field/api';
@@ -18,7 +18,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * selection.
  */
 export const singleSelectPropsConfig = {
-	required: [...formFieldBasePropsConfig.required, optionsProp],
+	required: [...formFieldBasePropsConfig.required, singleSelectOptionsProp],
 	optional: [
 		...formFieldBasePropsConfig.optional,
 		accessKeyProp,
