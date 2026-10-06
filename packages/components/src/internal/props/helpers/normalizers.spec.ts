@@ -61,19 +61,15 @@ describe('normalizeInteger', () => {
 		['5', 5],
 		['-3', -3],
 		[' 7', 7],
-		['5.9', 5],
-		['12px', 12],
-		['1e3', 1],
-		['0x10', 0],
+		['5.9', 6],
+		['1.4', 1],
+		['1e3', 1000],
+		['0x10', 16],
 	])('normalizes %p to %p', (value, expected) => {
 		expect(normalizeInteger(value)).toBe(expected);
 	});
 
-	it('passes NaN through as NaN', () => {
-		expect(normalizeInteger(NaN)).toBeNaN();
-	});
-
-	it.each<unknown>(['', 'abc', 'px12', undefined, null, true, {}, []])('throws for %p', (value) => {
+	it.each<unknown>([NaN, '', ' ', 'NaN', 'abc', 'px12', '12px', '4.5px', undefined, null, true, {}, []])('throws for %p', (value) => {
 		expect(() => normalizeInteger(value)).toThrow('Invalid integer');
 	});
 });
@@ -93,17 +89,11 @@ describe('normalizeNumber', () => {
 		['0x10', 16],
 		['Infinity', Infinity],
 		[' 7 ', 7],
-		['', 0],
-		[' ', 0],
 	])('normalizes %p to %p', (value, expected) => {
 		expect(normalizeNumber(value)).toBe(expected);
 	});
 
-	it('passes NaN through as NaN', () => {
-		expect(normalizeNumber(NaN)).toBeNaN();
-	});
-
-	it.each<unknown>(['abc', '12px', '1,5', undefined, null, true, {}, []])('throws for %p', (value) => {
+	it.each<unknown>([NaN, '', ' ', 'NaN', 'abc', '12px', '1,5', undefined, null, true, {}, []])('throws for %p', (value) => {
 		expect(() => normalizeNumber(value)).toThrow('Invalid number');
 	});
 });
@@ -155,15 +145,12 @@ describe('normalizeBoolean', () => {
 		['TRUE', true],
 		['True', true],
 		['false', false],
-		['', false],
-		[' true', false],
-		['1', false],
-		['yes', false],
+		['FALSE', false],
 	])('normalizes %p to %p', (value, expected) => {
 		expect(normalizeBoolean(value)).toBe(expected);
 	});
 
-	it.each<unknown>([0, 1, undefined, null, {}, []])('throws for %p', (value) => {
+	it.each<unknown>(['', ' true', '1', 'yes', 0, 1, undefined, null, {}, []])('throws for %p', (value) => {
 		expect(() => normalizeBoolean(value)).toThrow('Invalid boolean');
 	});
 });

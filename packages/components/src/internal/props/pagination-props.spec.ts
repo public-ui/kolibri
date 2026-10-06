@@ -23,11 +23,11 @@ const applied = (definition: PropDefinition, value: unknown): unknown[] => {
 };
 
 describe('normalizeNumberType', () => {
-	it.each([0, -1, 2.5, NaN])('accepts the number %s', (value) => {
+	it.each([0, -1, 2.5])('accepts the number %s', (value) => {
 		expect(normalizeNumberType(value)).toBe(value);
 	});
 
-	it.each(['5', null, undefined, {}])('rejects %j', (value) => {
+	it.each([NaN, '5', null, undefined, {}])('rejects %j', (value) => {
 		expect(() => normalizeNumberType(value)).toThrow();
 	});
 });
@@ -66,7 +66,7 @@ describe.each([
 		expect(applied(definition, value)).toEqual([value]);
 	});
 
-	it.each(['7', {}])('ignores %j', (value) => {
+	it.each([NaN, '7', {}])('ignores %j', (value) => {
 		expect(applied(definition, value)).toEqual([]);
 	});
 });
