@@ -1,7 +1,6 @@
 import type { AlignPropType } from '../../schema/props/align-options';
-import { createAlignNormalizer } from './helpers/align';
+import { createAlignPropDefinition } from './helpers/align';
 import type { SimpleProp } from './helpers/factory';
-import { createPropDefinition } from './helpers/factory';
 
 /**
  * Tooltip align prop for kol-link.
@@ -11,4 +10,4 @@ import { createPropDefinition } from './helpers/factory';
  */
 export type TooltipAlignProp = SimpleProp<'tooltipAlign', AlignPropType>;
 
-export const tooltipAlignProp = createPropDefinition<TooltipAlignProp>('tooltipAlign', 'right', createAlignNormalizer('tooltipAlign'));
+export const tooltipAlignProp = createAlignPropDefinition<TooltipAlignProp>('tooltipAlign', 'right');

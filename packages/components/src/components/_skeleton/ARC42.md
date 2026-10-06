@@ -360,7 +360,7 @@ Design principles:
 - **Minimal conversion**: Only obvious transformations (string numbers → numbers)
 - **Type guarantees**: Once validated, types are guaranteed throughout the component lifecycle
 - **Single source of truth for defaults**: Default values are defined explicitly in shared prop/schema helpers and consumed by components, avoiding duplicated or drifting defaults
-- **One definition per prop**: A public prop name has one definition in `internal/props` (e.g. `labelProp` for every `_label`), reused by all components. A second definition for the same render key exists only where the props of different components differ functionally (other value type, value set or documented default) or where a shared factory types the value per component (callbacks, links, options); `prop-keys.spec.ts` lists these variants with their reason. Definitions that share behavior under different keys share the implementation (`createAlignNormalizer`, `createCallbacksPropDefinition`, `createLinksPropDefinition`, `createOptionsPropDefinition`)
+- **One definition per prop**: A public prop name has one definition in `internal/props` (e.g. `labelProp` for every `_label`), reused by all components. A second definition for the same render key exists only where the props of different components differ functionally (other value type, value set or documented default) or where a shared factory types the value per component (callbacks, links, options); `prop-keys.spec.ts` lists these variants with their reason. Definitions that share behavior under different keys share the implementation (`createAlignPropDefinition`, `createCallbacksPropDefinition`, `createLinksPropDefinition`, `createOptionsPropDefinition`)
 
 #### Dual-Type Props
 

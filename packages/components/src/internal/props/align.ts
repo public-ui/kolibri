@@ -1,7 +1,6 @@
 import type { AlignPropType } from '../../schema/props/align-options';
-import { createAlignNormalizer } from './helpers/align';
+import { createAlignPropDefinition } from './helpers/align';
 import type { SimpleProp } from './helpers/factory';
-import { createPropDefinition } from './helpers/factory';
 
 /**
  * Align prop for positioning floating elements
@@ -20,4 +19,4 @@ import { createPropDefinition } from './helpers/factory';
  */
 export type AlignProp = SimpleProp<'align', AlignPropType>;
 
-export const alignProp = createPropDefinition<AlignProp>('align', 'top', createAlignNormalizer('align'));
+export const alignProp = createAlignPropDefinition<AlignProp>('align', 'top');

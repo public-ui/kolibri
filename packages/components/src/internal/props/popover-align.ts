@@ -1,7 +1,6 @@
 import type { AlignPropType } from '../../schema/props/align-options';
-import { createAlignNormalizer } from './helpers/align';
+import { createAlignPropDefinition } from './helpers/align';
 import type { SimpleProp } from './helpers/factory';
-import { createPropDefinition } from './helpers/factory';
 
 /**
  * Popover align prop.
@@ -11,4 +10,4 @@ import { createPropDefinition } from './helpers/factory';
  */
 export type PopoverAlignProp = SimpleProp<'popoverAlign', AlignPropType>;
 
-export const popoverAlignProp = createPropDefinition<PopoverAlignProp>('popoverAlign', 'bottom', createAlignNormalizer('popoverAlign'));
+export const popoverAlignProp = createAlignPropDefinition<PopoverAlignProp>('popoverAlign', 'bottom');
