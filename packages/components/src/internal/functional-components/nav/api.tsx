@@ -2,9 +2,6 @@ import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLa
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { NavChildren } from './model';
 
-/**
- * Props configuration of `kol-nav`.
- */
 export const navPropsConfig = {
 	required: [labelProp, navLinksProp],
 	optional: [collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp],

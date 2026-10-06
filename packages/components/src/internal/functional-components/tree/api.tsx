@@ -2,9 +2,6 @@ import type { KolFocusOptions } from '../../../schema';
 import { labelProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
-/**
- * Props configuration for the tree component.
- */
 export const treePropsConfig = {
 	required: [labelProp],
 } as const satisfies PropsConfigShape;

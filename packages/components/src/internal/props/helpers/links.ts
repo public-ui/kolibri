@@ -6,6 +6,9 @@ import { normalizeArray } from './normalizers';
 
 type LinkEntry = { _href?: unknown; _label?: unknown };
 
+/** The `_links` prop with entries of type `T`. */
+export type LinksProp<T extends object> = Prop<'links', Stringified<T[]>, T[]>;
+
 /**
  * The `_links` prop of a navigation component (`kol-breadcrumb`, `kol-nav`, `kol-skip-nav`).
  *
@@ -14,8 +17,8 @@ type LinkEntry = { _href?: unknown; _label?: unknown };
  * string `_href` or a string `_label`. One invalid entry rejects the whole value and keeps the
  * previous links. More than seven entries give the UI/UX hint of the Millersche Zahl for `componentName`.
  */
-export function createLinksPropDefinition<T extends object>(componentName: string): PropDefinition<T[], Prop<'links', Stringified<T[]>, T[]>> {
-	return createPropDefinition<Prop<'links', Stringified<T[]>, T[]>>(
+export function createLinksPropDefinition<T extends object>(componentName: string): PropDefinition<T[], LinksProp<T>> {
+	return createPropDefinition<LinksProp<T>>(
 		'links',
 		[],
 		(value) => normalizeArray(value) as T[],

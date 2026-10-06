@@ -1,7 +1,7 @@
-import type { LinkProps, Stringified } from '../../schema';
-import type { Prop } from './helpers/factory';
+import type { LinkProps } from '../../schema';
+import type { LinksProp } from './helpers/links';
 import { createLinksPropDefinition } from './helpers/links';
 
-export type SkipNavLinksProp = Prop<'links', Stringified<LinkProps[]>, LinkProps[]>;
+export type SkipNavLinksProp = LinksProp<LinkProps>;
 
 export const skipNavLinksProp = createLinksPropDefinition<LinkProps>('KolSkipNav');

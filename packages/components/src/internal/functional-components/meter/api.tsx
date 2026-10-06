@@ -8,7 +8,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  */
 export const meterPropsConfig = {
 	optional: [highProp, lowProp, minProp, optimumProp, orientationProp, unitProp],
-	required: [labelProp, maxProp, clampedNumberValueProp],
+	required: [clampedNumberValueProp, labelProp, maxProp],
 } as const satisfies PropsConfigShape;
 
 export type MeterApi = ApiFromConfig<typeof meterPropsConfig>;

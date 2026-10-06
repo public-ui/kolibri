@@ -82,6 +82,7 @@ const checkClass = (cls: ts.ClassDeclaration): string[] => {
 	const propNames = members.filter((member) => groupOf(member) === 'prop').map(memberName);
 	let rank = -1;
 	let lastProp: string | undefined;
+	let previousGroup: Group | undefined;
 	let lifecycleIndex = -1;
 
 	members.forEach((member) => {
@@ -92,10 +93,18 @@ const checkClass = (cls: ts.ClassDeclaration): string[] => {
 				.map((decorator) => decorator.expression)
 				.filter((expression): expression is ts.CallExpression => ts.isCallExpression(expression) && expression.expression.getText() === 'Watch')
 				.map((expression) => (expression.arguments[0] as ts.StringLiteral).text)
-				.filter((target) => propNames.includes(target));
-			if (targets.length > 0 && lastProp !== targets.sort((a, b) => propNames.indexOf(a) - propNames.indexOf(b))[0]) {
-				problems.push(`${name} does not follow its prop ${targets[0]}`);
+				.filter((target) => propNames.includes(target))
+				.sort((a, b) => propNames.indexOf(a) - propNames.indexOf(b));
+			if (targets.length > 0) {
+				// The watcher follows its first prop directly, or another watcher of that prop.
+				if (lastProp !== targets[0] || (previousGroup !== 'prop' && previousGroup !== 'watch')) {
+					problems.push(`${name} does not directly follow its prop ${targets[0]}`);
+				}
+			} else if (rank > GROUPS.indexOf('prop')) {
+				// A watcher of an inherited prop stays in the prop group.
+				problems.push(`${name} (watch of an inherited prop) comes after ${GROUPS[rank]}`);
 			}
+			previousGroup = group;
 			return;
 		}
 		const groupRank = GROUPS.indexOf(group);
@@ -114,6 +123,7 @@ const checkClass = (cls: ts.ClassDeclaration): string[] => {
 			if (index < lifecycleIndex) problems.push(`${name} is out of the lifecycle order`);
 			lifecycleIndex = index;
 		}
+		previousGroup = group;
 	});
 	return problems;
 };
