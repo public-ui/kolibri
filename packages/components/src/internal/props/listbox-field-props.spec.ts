@@ -48,7 +48,11 @@ describe('singleSelectOptionsProp', () => {
 		expect(applied(singleSelectOptionsProp, JSON.stringify(options))).toEqual([options]);
 	});
 
-	it.each([[[{ label: '' }]], [[{ label: 1 }]], [[{ value: 'a' }]], [[options[0], 'a']], [{}], ['{']])('ignores %j', (value) => {
+	it('converts a number label to a string', () => {
+		expect(applied(singleSelectOptionsProp, [{ label: 1, value: 1 }])).toEqual([[{ label: '1', value: 1 }]]);
+	});
+
+	it.each([[[{ label: '' }]], [[{ value: 'a' }]], [[options[0], 'a']], [{}], ['{']])('ignores %j', (value) => {
 		expect(applied(singleSelectOptionsProp, value)).toEqual([]);
 	});
 });

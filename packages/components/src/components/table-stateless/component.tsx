@@ -65,6 +65,7 @@ export class KolTableStateless extends BaseTableStatelessWebComponent implements
 
 	public componentDidRender(): void {
 		this.updateScrollbarState();
+		this.syncTableItems();
 	}
 
 	public disconnectedCallback(): void {

@@ -15,7 +15,8 @@ import { labelHints } from './hints/label-hints';
  * - Every interactive element must have a perceivable label (WCAG 4.1.2 Name, Role, Value)
  * - Labels must be descriptive and concise (WCAG 2.4.6 Headings and Labels)
  * - Labels must be programmatically associated with their controls (WCAG 1.3.1 Info and Relationships)
- * - Minimum 2 characters, maximum 80 characters for meaningful, concise labels
+ * - Minimum 2 characters for meaningful labels
+ * - Labels longer than 80 characters are accepted, but give a UI/UX hint to keep them concise
  * - An empty label ("") is allowed for cases where the accessible name is provided differently
  *
  * @see https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
@@ -24,6 +25,6 @@ import { labelHints } from './hints/label-hints';
  * @see https://www.w3.org/TR/accname-1.2/
  */
 export type LabelProp = SimpleProp<'label', string>;
-export const labelProp = createPropDefinition<LabelProp>('label', '', normalizeString, (v) => v === '' || (v.length >= 2 && v.length <= 80), {
+export const labelProp = createPropDefinition<LabelProp>('label', '', normalizeString, (v) => v === '' || v.length >= 2, {
 	hints: labelHints,
 });

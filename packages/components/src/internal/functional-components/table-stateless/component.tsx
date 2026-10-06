@@ -1,11 +1,12 @@
 import type { FunctionalComponent as FC, JSX } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 
-import { KolBadgeTag, KolButtonWcTag, KolLinkWcTag, KolTableSettingsWcTag } from '../../../core/component-names';
+import { KolBadgeTag } from '../../../core/component-names';
 import { translate } from '../../../i18n';
 import type {
 	ActionColumnHeaderCell,
 	AriaSort,
+	InternalButtonProps,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
@@ -17,8 +18,13 @@ import type {
 import { classNameFromVariant } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { BemRootNodeFC } from '../bem-root-node/component';
+import { ButtonFC } from '../button/component';
+import type { ButtonItemFcProps, ButtonItemRootAttributes } from '../button/item';
 import type { FunctionalComponentProps } from '../generic-types';
 import { IconFC } from '../icon/component';
+import type { LinkFCProps } from '../link/component';
+import { LinkFC } from '../link/component';
+import type { EmbeddedLinkProps } from '../link/resolve-props';
 import { SpinFC } from '../spin/component';
 import { TooltipFC } from '../tooltip/component';
 import type { TableStatelessApi } from './api';
@@ -54,7 +60,14 @@ const BEM_CLASS_TABLE__SORT_ORDER = tableBem('sort-order');
 const BEM_CLASS_TABLE__TABLE = tableBem('table');
 const BEM_CLASS_TABLE__CAPTION = `${tableBem('focus-element')} ${tableBem('caption')}`;
 
-type TableStatelessFCProps = FunctionalComponentProps<TableStatelessApi>;
+export type TableStatelessFCProps = FunctionalComponentProps<TableStatelessApi> & {
+	/** `ButtonFC` props of the embedded button `key`; the web component keeps one button item per key. */
+	getButtonFcProps: (key: string, props: InternalButtonProps, rootAttributes?: ButtonItemRootAttributes) => ButtonItemFcProps;
+	/** `LinkFC` props of the embedded link `key`; the web component keeps one link item per key. */
+	getLinkFcProps: (key: string, props: EmbeddedLinkProps) => LinkFCProps;
+	/** Renders the settings menu; the web component keeps its state. */
+	renderSettings: (horizontalHeaderCells: KoliBriTableHeaderCell[][]) => JSX.Element;
+};
 
 /**
  * Everything the render helpers derive once per render and share: the column model, the sticky
@@ -290,20 +303,25 @@ const renderHeadingCell = (context: RenderContext, cell: KoliBriTableHeaderCell,
 		>
 			{sortDirection ? (
 				<span class={BEM_CLASS_TABLE__SORT}>
-					<KolButtonWcTag
-						class={BEM_CLASS_TABLE__SORT_BUTTON}
-						_icons={{ right: sortButtonIcon }}
-						_label={cell.label}
-						_ariaDescription={getSortAriaDescription(sortOrder)}
-						_on={{
-							onClick: (event: MouseEvent) => {
-								context.handleSort(event, {
-									key: cell.key as string,
-									currentSortDirection: sortDirection,
-								});
+					<ButtonFC
+						{...context.getButtonFcProps(
+							`sort-${isVertical ? 'vertical' : 'horizontal'}-${rowIndex}-${colIndex}`,
+							{
+								_icons: { right: sortButtonIcon },
+								_label: cell.label,
+								_ariaDescription: getSortAriaDescription(sortOrder),
+								_on: {
+									onClick: (event: MouseEvent) => {
+										context.handleSort(event, {
+											key: cell.key as string,
+											currentSortDirection: sortDirection,
+										});
+									},
+								},
 							},
-						}}
-					></KolButtonWcTag>
+							{ class: BEM_CLASS_TABLE__SORT_BUTTON },
+						)}
+					/>
 					{sortOrder && (
 						<span aria-hidden="true" class={BEM_CLASS_TABLE__SORT_ORDER}>
 							{sortOrder}
@@ -319,15 +337,25 @@ const renderHeadingCell = (context: RenderContext, cell: KoliBriTableHeaderCell,
 
 /**
  * The actions of an action column: buttons and links built by the column's `actions` factory from
- * the row data.
+ * the row data. Each action sits in a classless `<span>`: the span is the flex item of the actions
+ * container and holds the inline-flex button or link in a line box, which sets its height.
  */
-const renderActionItems = (actionColumn: ActionColumnHeaderCell, rowData: KoliBriTableDataType, key: string): JSX.Element => (
+const renderActionItems = (context: RenderContext, actionColumn: ActionColumnHeaderCell, rowData: KoliBriTableDataType, key: string): JSX.Element => (
 	<div class={BEM_CLASS_TABLE__CELL_ACTIONS}>
 		{actionColumn.actions(rowData).map((action, actionIndex) => {
+			const actionKey = `action-${key}-${actionIndex}`;
 			if (action.type === 'button') {
-				return <KolButtonWcTag key={`action-${key}-${actionIndex}`} {...action} _variant={action._variant} />;
+				return (
+					<span key={actionKey}>
+						<ButtonFC {...context.getButtonFcProps(actionKey, action)} />
+					</span>
+				);
 			} else if (action.type === 'link') {
-				return <KolLinkWcTag key={`action-${key}-${actionIndex}`} {...action} />;
+				return (
+					<span key={actionKey}>
+						<LinkFC {...context.getLinkFcProps(actionKey, action)} />
+					</span>
+				);
 			}
 			return null;
 		})}
@@ -414,7 +442,7 @@ const renderTableCell = (context: RenderContext, cell: TableDataCell, rowIndex: 
 			ref={hasCustomRender ? (element) => context.handleRenderCell(cell as KoliBriTableCell & { render: KoliBriTableRender }, element) : undefined}
 		>
 			{isActionColumn && actionColumn && cell.data
-				? renderActionItems(actionColumn, cell.data, key)
+				? renderActionItems(context, actionColumn, cell.data, key)
 				: isStateColumn && stateColumn && cell.data
 					? renderStateItems(stateColumn, cell.data, key)
 					: !hasCustomRender
@@ -503,7 +531,7 @@ export const TableStatelessFC: FC<TableStatelessFCProps> = (props) => {
 
 	return (
 		<BemRootNodeFC block="kol-table" class={classNameFromVariant(variant, 'table')}>
-			{hasSettingsMenu && <KolTableSettingsWcTag _horizontalHeaderCells={headers.horizontal} />}
+			{hasSettingsMenu && props.renderSettings(headers.horizontal)}
 
 			{/* Firefox automatically makes the scroll container focusable when it has a scrollbar. We implement a similar behavior cross-browser by allowing the
 			 * caption to receive focus. Hence, the container opts out with `tabindex="-1"` to avoid two focusable elements.

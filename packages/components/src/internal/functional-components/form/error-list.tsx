@@ -11,7 +11,7 @@ const formBem = bem.forBlock('kol-form');
 const BEM_CLASS_FORM__ALERT = formBem('alert');
 const BEM_CLASS_FORM__LINK = formBem('link');
 
-type FormErrorListFCProps = {
+export type FormErrorListFCProps = {
 	/** DOM id of the alert heading, referenced by the alert content's aria-describedby. */
 	alertHeadingId: string;
 	/** DOM id the alert's closer would reference; the error list renders no closer. */

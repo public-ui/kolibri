@@ -18,10 +18,10 @@ export const TableStateless: FC = () => (
 				_headers={{
 					horizontal: [
 						[
-							{ key: 'left', label: 'left', textAlign: 'left', sortDirection: 'ASC' },
-							{ key: 'center', label: 'center', textAlign: 'center', sortDirection: 'DESC' },
-							{ key: 'right', label: 'right', textAlign: 'right', sortDirection: 'NOS' },
-							{ key: 'nosort', label: 'no sort option' },
+							{ key: 'left', label: 'left', textAlign: 'left', sortDirection: 'ASC', width: 100 },
+							{ key: 'center', label: 'center', textAlign: 'center', sortDirection: 'DESC', width: 100 },
+							{ key: 'right', label: 'right', textAlign: 'right', sortDirection: 'NOS', width: 100 },
+							{ key: 'nosort', label: 'no sort option', width: 150 },
 						],
 					],
 					vertical: [

@@ -46,7 +46,7 @@ exports[`FieldControlFC renders a hidden label as tooltip 1`] = `
       </span>
     </div>
   </div>
-  <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="id" id="id-label">
+  <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="id">
     <span class="kol-field-control__label-text kol-span">
       <span class="kol-span__container">
         <span class="kol-span__label">
@@ -208,7 +208,7 @@ exports[`FieldControlFC renders the label on the right 1`] = `
 
 exports[`FormFieldFC as fieldset renders a legend and the horizontal orientation 1`] = `
 <fieldset class="kol-form-field">
-  <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id" id="id-label">
+  <legend class="kol-form-field__label kol-form-field__label--legend" id="id-label">
     <span class="kol-form-field__label-text kol-span">
       <span class="kol-span__container">
         <span class="kol-span__label">
@@ -226,7 +226,7 @@ exports[`FormFieldFC as fieldset renders a legend and the horizontal orientation
 
 exports[`FormFieldFC as fieldset renders a legend and the vertical orientation 1`] = `
 <fieldset class="kol-form-field">
-  <legend class="kol-form-field__label kol-form-field__label--legend" htmlfor="id" id="id-label">
+  <legend class="kol-form-field__label kol-form-field__label--legend" id="id-label">
     <span class="kol-form-field__label-text kol-span">
       <span class="kol-span__container">
         <span class="kol-span__label">

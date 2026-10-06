@@ -8,8 +8,6 @@
 		--kol-nav-item-padding-left: -24;
 		--kol-nav-item-padding-right: 8;
 
-		$root: &;
-
 		&__list {
 			list-style: none;
 			// with this two properties we build a dynamic padding where each nested list has 8 + 8 = 16px more padding at its links/buttons
@@ -51,7 +49,7 @@
 					}
 				}
 
-				#{$root}__list-item--active > #{$root}__entry-wrapper & {
+				.kol-nav__list-item--active > .kol-nav__entry-wrapper & {
 					font-weight: bold;
 				}
 			}

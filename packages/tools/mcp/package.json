@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/mcp",
-	"version": "4.5.0-rc.3",
+	"version": "4.5.0-rc.4",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -73,7 +73,7 @@
 		"fuse.js": "7.5.0",
 		"glob": "13.0.6",
 		"simple-git": "3.36.0",
-		"zod": "4.4.3"
+		"zod": "4.6.5"
 	},
 	"devDependencies": {
 		"@modelcontextprotocol/inspector": "2.9.0",

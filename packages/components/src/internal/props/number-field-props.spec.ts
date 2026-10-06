@@ -5,9 +5,8 @@ import { stepProp } from './step';
 import { inputNumberValueProp } from './value-input-number';
 
 /**
- * Pins the numeric props of `kol-input-number` and `kol-input-range` against `validateNumber` and
- * `parseToNumber` of the legacy `InputIconController` they replace (G3a.1 of
- * `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`): same accepted values, same parsed result.
+ * Pins the numeric props of `kol-input-number` and `kol-input-range`: the accepted values and the
+ * parsed result.
  */
 type PropDefinition = {
 	readonly propName: string;
@@ -36,6 +35,9 @@ describe.each([
 		[-5, -5],
 		['5', 5],
 		['0.25', 0.25],
+		['-5', -5],
+		['1e3', 1000],
+		['.5', 0.5],
 	])('accepts %p as %p', (value, normalized) => {
 		expect(applied(definition, value)).toEqual([normalized]);
 	});
@@ -44,7 +46,7 @@ describe.each([
 		expect(applied(definition, NaN)).toEqual([undefined]);
 	});
 
-	it.each(['-5', '1e3', '.5', '', 'abc', {}, true])('ignores %p', (value) => {
+	it.each(['', ' 5', '0x10', 'abc', {}, true])('ignores %p', (value) => {
 		expect(applied(definition, value)).toEqual([]);
 	});
 });

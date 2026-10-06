@@ -27,13 +27,15 @@ type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema> = {
 	 */
 	class?: JSXBase.HTMLAttributes<HTMLElement>['class'];
 	/**
-	 * Element of the root node, `div` by default. `fieldset` groups the options of a radio group,
-	 * `label` wraps the native control of a checkbox or radio.
+	 * Element of the root node, `div` by default. `abbr` is the abbreviation itself, `fieldset` groups
+	 * the options of a radio group, `label` wraps the native control of a checkbox or radio, `svg` is
+	 * the root of a graphic.
 	 */
-	component?: 'div' | 'fieldset' | 'label';
+	component?: 'abbr' | 'div' | 'fieldset' | 'label' | 'svg';
 	/** Native `disabled` attribute; only a `fieldset` root supports it. */
 	disabled?: boolean;
-} & Partial<Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'class'>>;
+} & Partial<Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'class'>> &
+	Partial<Omit<JSXBase.SVGAttributes<SVGSVGElement>, 'class' | keyof JSXBase.HTMLAttributes<HTMLDivElement>>>;
 
 /**
  * Single-Root BEM wrapper for all Skeleton Functional Components.
@@ -66,7 +68,7 @@ export const BemRootNodeFC = <TBlock extends keyof KoliBriComponentsBemSchema>(
 	children: FCChildren,
 ) => {
 	const blockBem = getBlockBem(block);
-	// The attributes are typed for a `div`; `fieldset` and `label` accept the same global attributes, `fieldset` additionally `disabled`.
+	// The attributes are typed for a `div` plus the SVG attributes; `abbr`, `fieldset` and `label` accept the same global attributes, `fieldset` additionally `disabled`.
 	const Root = Component as 'div';
 	return (
 		<Root class={clsx(blockBem(modifiers), hostClass)} {...rest}>

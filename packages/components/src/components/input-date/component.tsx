@@ -82,6 +82,9 @@ export class KolInputDate
 
 	@State() public id = createUniqueId('input-date');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	/** Type in which `_value` was set; `getValue()` and the events return the value in this type. */
@@ -182,6 +185,10 @@ export class KolInputDate
 		this.watchValue(this._value);
 
 		this.hasValue = Boolean(this.getRenderProp('value'));
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
 	}
 
 	public disconnectedCallback(): void {
@@ -295,8 +302,7 @@ export class KolInputDate
 		const disabled = this.getRenderProp('disabled');
 		const { startAdornment, endAdornment } = getInputAdornments({
 			icons: this.getRenderProp('icons'),
-			smartButton: this.getRenderProp('smartButton') as InternalButtonProps | undefined,
-			disabled,
+			smartButton: this.getSmartButtonFcProps(this.getRenderProp('smartButton') as InternalButtonProps | undefined, disabled),
 		});
 
 		return (

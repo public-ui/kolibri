@@ -1,6 +1,5 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
 import type {
 	AriaDetailsPropType,
@@ -30,22 +29,26 @@ import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
 
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../../internal/functional-components/form-field/custom-suggestions';
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { IconFC } from '../../internal/functional-components/icon/component';
 import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
+import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
 import type { SingleSelectApi } from '../../internal/functional-components/single-select/api';
 import { singleSelectPropsConfig } from '../../internal/functional-components/single-select/api';
+import { BEM_CLASS_SINGLE_SELECT__DELETE, SingleSelectNoResultsFC, SingleSelectToggleFC } from '../../internal/functional-components/single-select/component';
 import {
 	accessKeyProp,
 	hasClearButtonProp,
 	horizontalIconsProp,
 	placeholderProp,
 	requiredProp,
+	rowsProp,
 	shortKeyProp,
 	singleSelectOptionsProp,
 	variantProp,
@@ -68,12 +71,17 @@ export class KolSingleSelect
 	implements FocusableElement, SingleSelectProps, WebComponentInterface<SingleSelectApi>
 {
 	@Element() protected readonly host?: HTMLKolSingleSelectElement;
+
+	private readonly clearButton = createButtonItem(() => this.host);
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 	private readonly translateNoResultsMessage = translate('kol-no-results-message');
 
 	@State() public id = createUniqueId('single-select');
+
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
 
 	/** Whether the focus is inside the field. */
 	@State() public inputHasFocus = false;
@@ -139,12 +147,19 @@ export class KolSingleSelect
 		this.watchRequired(this._required);
 		this.watchPlaceholder(this._placeholder);
 		this.watchHasClearButton(this._hasClearButton);
+		this.watchRows(this._rows);
 
 		this.filteredOptions = this.getRenderProp('options');
 		this.updateInputValue(this._value);
 	}
 
+	public componentDidRender(): void {
+		this.syncFormField();
+		this.clearButton.syncListeners();
+	}
+
 	public disconnectedCallback(): void {
+		this.clearButton.destroy();
 		this.destroyFormField();
 	}
 
@@ -403,7 +418,7 @@ export class KolSingleSelect
 			touched: this.getRenderProp('touched'),
 			msg: this.getRenderProp('msg'),
 			...(shortKey ? { 'aria-keyshortcuts': shortKey } : {}),
-			'aria-activedescendant': this.isOpen && this.focusedIndex >= 0 ? `option-${this.focusedIndex}` : undefined,
+			'aria-activedescendant': this.getActiveDescendant(),
 			'aria-autocomplete': 'both',
 			'aria-controls': createRelatedUniqueId(id, 'listbox'),
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
@@ -430,16 +445,12 @@ export class KolSingleSelect
 
 	private renderOptions(): JSX.Element | JSX.Element[] {
 		if (!Array.isArray(this.filteredOptions) || this.filteredOptions.length === 0) {
-			// role=alert lets the screen reader announce the message.
-			return (
-				<li class="kol-single-select__no-results-message" role="alert">
-					{this.translateNoResultsMessage}{' '}
-				</li>
-			);
+			return <SingleSelectNoResultsFC message={this.translateNoResultsMessage} />;
 		}
 
 		return this.filteredOptions.map((option, index) => (
 			<CustomSuggestionsOptionFC
+				id={this.getOptionId(index)}
 				index={index}
 				option={option.label}
 				searchTerm={this.inputValue}
@@ -473,7 +484,7 @@ export class KolSingleSelect
 
 	public render(): JSX.Element {
 		const isDisabled = this.getRenderProp('disabled') === true;
-		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons'), disabled: isDisabled });
+		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
 
 		return (
 			<Host>
@@ -493,38 +504,33 @@ export class KolSingleSelect
 						startAdornment={startAdornment}
 						endAdornment={endAdornment}
 					>
-						<div class="kol-single-select__group">
+						<ListboxGroupFC block="kol-single-select">
 							<InputFC {...this.getInputProps()} />
 							{this.inputValue && this.getRenderProp('hasClearButton') && (
-								<KolButtonWcTag
-									_icons="kolicon-cross"
-									_label={this.translateDeleteSelection}
-									_hideLabel
-									_variant="ghost"
-									_disabled={isDisabled}
-									data-testid="single-select-delete"
-									class="kol-single-select__delete"
-									hidden={isDisabled}
-									_on={{
-										onClick: this.handleClearButtonClick,
-										onFocus: this.handleClearButtonFocus,
-										onBlur: this.handleClearButtonBlur,
-									}}
+								<ButtonFC
+									{...this.clearButton.getFcProps(
+										{
+											_icons: 'kolicon-cross',
+											_label: this.translateDeleteSelection,
+											_hideLabel: true,
+											_variant: 'ghost',
+											_disabled: isDisabled,
+											_on: {
+												onClick: this.handleClearButtonClick,
+												onFocus: this.handleClearButtonFocus,
+												onBlur: this.handleClearButtonBlur,
+											},
+										},
+										{ class: BEM_CLASS_SINGLE_SELECT__DELETE, 'data-testid': 'single-select-delete', hidden: isDisabled },
+									)}
 								/>
 							)}
-							<IconFC
-								icons="kolicon-chevron-down"
-								label=""
-								class={clsx('kol-custom-suggestions-toggle', {
-									'kol-custom-suggestions-toggle--disabled': isDisabled,
-								})}
-								onClick={this.toggleListbox}
-							/>
-						</div>
+							<SingleSelectToggleFC disabled={isDisabled} handleClick={this.toggleListbox} />
+						</ListboxGroupFC>
 						<CustomSuggestionsOptionsGroupFC
 							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
 							onKeyDown={this.handleDropdownKeyDown}
-							style={{ '--visible-options': `${this._rows ?? 5}` }}
+							style={{ '--visible-options': `${this.getRenderProp('rows') ?? 5}` }}
 							hidden={!this.isOpen || isDisabled}
 							id={createRelatedUniqueId(this.id, 'listbox')}
 						>
@@ -754,6 +760,11 @@ export class KolSingleSelect
 	@Watch('_required')
 	public watchRequired(value?: boolean): void {
 		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	@Watch('_rows')
+	public watchRows(value?: RowsPropType): void {
+		rowsProp.apply(value, (v) => this.setRenderProp('rows', v));
 	}
 
 	@Watch('_shortKey')

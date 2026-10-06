@@ -70,7 +70,7 @@ test.describe('kol-table-settings hidable functionality', () => {
 		await applyButton.click();
 
 		// Should not show error message since ID column is always visible
-		const errorMessage = page.locator('kol-table-settings-wc kol-alert-wc');
+		const errorMessage = page.locator('.kol-table-settings__error-message');
 		await expect(errorMessage).not.toBeVisible();
 
 		// Verify that only ID column is visible in the table

@@ -1,14 +1,7 @@
 import { h, type FunctionalComponent as FC } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 import { translate } from '../../../i18n';
-import type {
-	FormFieldLabelInfoPopoverProps,
-	MaxLengthBehaviorPropType,
-	MsgPropType,
-	Stringified,
-	TooltipAlignPropType,
-	VariantClassNamePropType,
-} from '../../../schema';
+import type { MaxLengthBehaviorPropType, MsgPropType, Stringified, TooltipAlignPropType, VariantClassNamePropType } from '../../../schema';
 import { buildBadgeTextString, classNameFromVariant, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
@@ -16,6 +9,7 @@ import { createRelatedUniqueId } from '../../../utils/dev.utils';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { TooltipFC } from '../tooltip/component';
 import { FormFieldHintFC } from './hint';
+import type { FormFieldInfoPopover } from './label';
 import { FormFieldLabelFC } from './label';
 import { FormFieldMsgFC } from './msg';
 
@@ -30,7 +24,7 @@ export type FormFieldFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'ref
 	label: string;
 	hideLabel?: boolean;
 	hideMsg?: boolean;
-	infoPopover?: FormFieldLabelInfoPopoverProps;
+	infoPopover?: FormFieldInfoPopover;
 	accessKey?: string;
 	shortKey?: string;
 	counter?: {

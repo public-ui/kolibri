@@ -36,10 +36,11 @@ import { assertSelectValueMatchesMultiplicity, normalizeSelectValue } from '../f
 import type { SelectApi } from './api';
 
 /**
- * Shared orchestrator implementation of `kol-select` and its transitional tag `kol-select-wc`: the
- * option map, the value list and its normalization, the native select events and the render.
+ * Shared orchestrator implementation of `kol-select` and the page size select of the pagination
+ * (`PageSizeSelect`): the option map, the value list and its normalization, the native select
+ * events and the render.
  *
- * The concrete elements keep what Stencil has to see in the component class itself (DD16).
+ * `kol-select` keeps what Stencil has to see in the component class itself (DD16).
  */
 export abstract class BaseSelectWebComponent extends BaseFormFieldWebComponent<SelectApi> {
 	/** Read for the multiplicity check and the first option preselection, like the raw prop. */
@@ -201,7 +202,7 @@ export abstract class BaseSelectWebComponent extends BaseFormFieldWebComponent<S
 
 	protected renderSelectField(): JSX.Element {
 		const disabled = this.getRenderProp('disabled');
-		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons'), disabled });
+		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
 
 		return (
 			<FormFieldFC

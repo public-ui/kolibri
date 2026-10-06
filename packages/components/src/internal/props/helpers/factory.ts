@@ -102,8 +102,9 @@ export function createPropDefinition<P extends Prop<string, unknown, unknown>, K
 				if (options?.required) {
 					devWarning(`The required property '_${propName}' did not receive a value. The default value is used instead.`);
 				}
-				if (this.validate(defaultValue)) {
-					callback(defaultValue);
+				const fallback = this.getDefaultValue();
+				if (this.validate(fallback)) {
+					callback(fallback);
 				} else {
 					throw new Error(`Default value ${safeStringify(defaultValue)} is invalid for prop definition '${propName}'.`);
 				}
@@ -148,8 +149,9 @@ export function createDependentPropDefinition<P extends Prop<string, unknown, un
 		validate,
 		apply(value, callback, deps: TDeps) {
 			if (value === undefined || value === null) {
-				if (this.validate(defaultValue, deps)) {
-					callback(defaultValue);
+				const fallback = this.getDefaultValue();
+				if (this.validate(fallback, deps)) {
+					callback(fallback);
 				} else {
 					throw new Error(
 						`Default value ${safeStringify(defaultValue)} is invalid for prop definition '${propName}' with dependencies ${safeStringify(deps)}.`,

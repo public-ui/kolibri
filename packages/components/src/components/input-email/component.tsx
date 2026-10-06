@@ -55,6 +55,9 @@ export class KolInputEmail
 
 	@State() public id = createUniqueId('input-email');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	public constructor() {
@@ -127,6 +130,10 @@ export class KolInputEmail
 
 	public componentDidLoad(): void {
 		this.didLoadTextInput();
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
 	}
 
 	public disconnectedCallback(): void {

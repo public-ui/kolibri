@@ -3,7 +3,7 @@
 exports[`kol-abbr should render with _label="Text" 1`] = `
 <kol-abbr>
   <template shadowrootmode="open">
-    <abbr>
+    <abbr class="kol-abbr">
       <slot></slot>
     </abbr>
   </template>

@@ -1,10 +1,18 @@
 import type { JSX } from '@stencil/core';
-import { h } from '@stencil/core';
+import { forceUpdate, h } from '@stencil/core';
 
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { ButtonItem, ButtonItemFcProps, ButtonItemRootAttributes } from '../../internal/functional-components/button/item';
+import { createButtonItem } from '../../internal/functional-components/button/item';
+import { createItemPool } from '../../internal/functional-components/item-pool';
+import type { LinkFCProps } from '../../internal/functional-components/link/component';
+import type { LinkItem } from '../../internal/functional-components/link/item';
+import { createLinkItem } from '../../internal/functional-components/link/item';
+import type { EmbeddedLinkProps } from '../../internal/functional-components/link/resolve-props';
 import type { TableStatelessApi } from '../../internal/functional-components/table-stateless/api';
 import { tableStatelessPropsConfig } from '../../internal/functional-components/table-stateless/api';
 import { TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
+import { createTableSettings } from '../../internal/functional-components/table-stateless/settings';
 import { getNumberOfCols, getPrimaryHeaders } from '../../internal/functional-components/table-stateless/table-model';
 import {
 	fixedColsProp,
@@ -22,6 +30,7 @@ import type { TableHeaders } from '../../internal/props/table-headers';
 import type {
 	FixedColsPropType,
 	HasSettingsMenuPropType,
+	InternalButtonProps,
 	KoliBriTableCell,
 	KoliBriTableDataType,
 	KoliBriTableHeaderCell,
@@ -65,9 +74,9 @@ const createRowKeys = (rows: KoliBriTableDataType[], previous: Map<KoliBriTableD
 	new Map(rows.map((row) => [row, previous.get(row) ?? nonce()]));
 
 /**
- * Orchestrator shared by `kol-table-stateless` and the transitional `kol-table-stateless-wc`. Both
- * render the same `TableStatelessFC`; the concrete element only declares the Stencil members and
- * delegates from its watchers, listeners and lifecycle hooks.
+ * Orchestrator shared by `kol-table-stateless` and `kol-table-stateful`. Both render the same
+ * `TableStatelessFC`; the concrete element only declares the Stencil members and delegates from its
+ * watchers, listeners and lifecycle hooks.
  *
  * Besides the render props it owns what has a lifecycle: the scroll container's measurements
  * (scrollbar, sticky columns), the row keys, the deferred custom cell rendering and the events.
@@ -80,6 +89,26 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	private resizeObserver?: ResizeObserver;
 	private resizeDebounceTimeout?: ReturnType<typeof setTimeout>;
 	private readonly cellRenderTimeouts = new Map<HTMLElement, ReturnType<typeof setTimeout>>();
+
+	/** The sort buttons and the action buttons, one item per key the table FC renders. */
+	private readonly buttonItems = createItemPool<ButtonItem>(
+		() => createButtonItem(() => this.host),
+		(item) => item.syncListeners(),
+		(item) => item.destroy(),
+	);
+
+	/** The settings menu with its state, its buttons and its dialog. */
+	private readonly settings = createTableSettings(
+		() => this.host,
+		() => forceUpdate(this),
+	);
+
+	/** The action links, one item per key the table FC renders. */
+	private readonly linkItems = createItemPool<LinkItem>(
+		() => createLinkItem(() => forceUpdate(this)),
+		(item) => item.syncListeners(),
+		(item) => item.destroy(),
+	);
 
 	// --- Lifecycle ---
 
@@ -98,6 +127,16 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	protected teardownTable(): void {
 		this.resizeObserver?.disconnect();
 		clearTimeout(this.resizeDebounceTimeout);
+		this.buttonItems.destroy();
+		this.linkItems.destroy();
+		this.settings.destroy();
+	}
+
+	/** Call from `componentDidRender`: syncs the embedded buttons and links of the last render pass. */
+	protected syncTableItems(): void {
+		this.buttonItems.endRender();
+		this.linkItems.endRender();
+		this.settings.sync();
 	}
 
 	// --- Prop application ---
@@ -254,7 +293,8 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 
 	// --- Callbacks ---
 
-	private readonly handleSelectionChange = (event: Event, payload: SelectionChangeEventPayload): void => {
+	/** Reports a changed selection through `onSelectionChange` and the `selectionchange` event. */
+	protected emitSelectionChange(event: Event, payload: SelectionChangeEventPayload): void {
 		const onSelectionChange = this.getRenderProp('on')[Callback.onSelectionChange];
 		if (typeof onSelectionChange === 'function') {
 			onSelectionChange(event, payload);
@@ -262,9 +302,10 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.selectionChange, payload);
 		}
-	};
+	}
 
-	private readonly handleSort = (event: MouseEvent, payload: SortEventPayload): void => {
+	/** Reports a clicked sort button through `onSort` and the `sort` event. */
+	protected emitSort(event: MouseEvent, payload: SortEventPayload): void {
 		const onSort = this.getRenderProp('on')[Callback.onSort];
 		if (typeof onSort === 'function' && payload.key) {
 			onSort(event, payload);
@@ -272,6 +313,14 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.sort, payload);
 		}
+	}
+
+	private readonly handleSelectionChange = (event: Event, payload: SelectionChangeEventPayload): void => {
+		this.emitSelectionChange(event, payload);
+	};
+
+	private readonly handleSort = (event: MouseEvent, payload: SortEventPayload): void => {
+		this.emitSort(event, payload);
 	};
 
 	/**
@@ -309,13 +358,26 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 
 	// --- Render ---
 
+	private readonly getButtonFcProps = (key: string, props: InternalButtonProps, rootAttributes?: ButtonItemRootAttributes): ButtonItemFcProps =>
+		this.buttonItems.get(key).getFcProps(props, rootAttributes);
+
+	private readonly renderSettings = (horizontalHeaderCells: KoliBriTableHeaderCell[][]): JSX.Element => this.settings.render(horizontalHeaderCells);
+
+	private readonly getLinkFcProps = (key: string, props: EmbeddedLinkProps): LinkFCProps => this.linkItems.get(key).getFcProps(props);
+
 	protected renderTableStatelessFC(): JSX.Element {
+		this.buttonItems.beginRender();
+		this.linkItems.beginRender();
+		this.settings.beginRender();
 		return (
 			<TableStatelessFC
 				data={this.getRenderProp('data')}
 				dataFoot={this.getRenderProp('dataFoot')}
 				externalLabelElements={this.getState('externalLabelElements')}
 				fixedCols={this.getRenderProp('fixedCols')}
+				getButtonFcProps={this.getButtonFcProps}
+				getLinkFcProps={this.getLinkFcProps}
+				renderSettings={this.renderSettings}
 				handleRenderCell={this.handleRenderCell}
 				handleSelectionChange={this.handleSelectionChange}
 				handleSort={this.handleSort}

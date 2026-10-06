@@ -1,13 +1,13 @@
 import { h, type FunctionalComponent as FC, type VNode } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
-import type { FormFieldLabelInfoPopoverProps, LabelAlignPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../../schema';
+import type { LabelAlignPropType, MsgPropType, Stringified, TooltipAlignPropType } from '../../../schema';
 import { buildBadgeTextString, getMsgType, isMsgDefinedAndInputTouched, showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { TooltipFC } from '../tooltip/component';
 import { FormFieldHintFC } from './hint';
-import { FormFieldLabelFC, type FormFieldLabelFCProps } from './label';
+import { FormFieldLabelFC, type FormFieldInfoPopover, type FormFieldLabelFCProps } from './label';
 
 const fieldControlBem = bem.forBlock('kol-field-control');
 
@@ -17,7 +17,7 @@ export type FieldControlFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, '
 	hint?: string;
 	hideLabel?: boolean;
 	labelAlign?: LabelAlignPropType;
-	infoPopover?: FormFieldLabelInfoPopoverProps;
+	infoPopover?: FormFieldInfoPopover;
 	accessKey?: string;
 	shortKey?: string;
 	tooltipAlign?: TooltipAlignPropType;
@@ -51,7 +51,7 @@ export const isFieldControlLabelShownAsTooltip = ({
  * `labelAlign: 'left'` the label comes first. The web component owns the label tooltip and connects
  * it through `refInput` and `refTooltip`.
  *
- * The hidden label keeps its id, so with the tooltip the id appears twice (#11114). The tooltip
+ * With the tooltip, the label stays visually hidden and leaves its ID to the tooltip. The tooltip
  * wrapper uses the class `kol-form-field__tooltip`, which the themes style.
  */
 export const FieldControlFC: FC<FieldControlFCProps> = (props, children) => {
@@ -101,6 +101,7 @@ export const FieldControlFC: FC<FieldControlFCProps> = (props, children) => {
 			id={id}
 			baseClassName="kol-field-control"
 			class={hideLabel ? 'kol-field-control__label--visually-hidden' : undefined}
+			omitId={showTooltip}
 			hasExpertSlot={hasExpertSlot}
 			label={label}
 			accessKey={accessKey}

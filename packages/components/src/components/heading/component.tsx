@@ -7,7 +7,7 @@ import type { HeadingApi } from '../../internal/functional-components/heading/ap
 import { headingPropsConfig } from '../../internal/functional-components/heading/api';
 import { HeadingFC } from '../../internal/functional-components/heading/component';
 import { labelWithExpertSlotProp, levelProp, secondaryHeadlineProp } from '../../internal/props';
-import type { HeadingLevel, LabelWithExpertSlotPropType } from '../../schema';
+import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType } from '../../schema';
 
 /**
  *
@@ -20,7 +20,7 @@ import type { HeadingLevel, LabelWithExpertSlotPropType } from '../../schema';
 	},
 	shadow: true,
 })
-export class KolHeading extends BaseWebComponent<HeadingApi> implements WebComponentInterface<HeadingApi> {
+export class KolHeading extends BaseWebComponent<HeadingApi> implements HeadingProps, WebComponentInterface<HeadingApi> {
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
 	 */

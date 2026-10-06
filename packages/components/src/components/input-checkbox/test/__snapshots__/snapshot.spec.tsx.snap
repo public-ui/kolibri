@@ -99,7 +99,7 @@ exports[`kol-input-checkbox should render with _hideLabel=true _label="Label" _l
     <div class="kol-form-field kol-form-field--hide-label kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--hide-label kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -270,7 +270,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-form-field--hide-label kol-input-checkbox kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--hide-label kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -452,11 +452,41 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 </span>
               </span>
             </span>
-            <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-              <div class="kol-popover-button__popover--styled">
-                Ich bin ein Hinweis.
+            <span>
+              <div class="kol-popover-button kol-popover-button--inline">
+                <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+                  <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Info
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover-button__popover--styled">
+                    Ich bin ein Hinweis.
+                  </div>
+                </div>
               </div>
-            </kol-popover-button-wc>
+            </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--variant-default">
@@ -852,7 +882,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1021,11 +1051,41 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 </span>
               </span>
             </span>
-            <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-              <div class="kol-popover-button__popover--styled">
-                Ich bin ein Hinweis.
+            <span>
+              <div class="kol-popover-button kol-popover-button--inline">
+                <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+                  <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Info
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover-button__popover--styled">
+                    Ich bin ein Hinweis.
+                  </div>
+                </div>
               </div>
-            </kol-popover-button-wc>
+            </span>
           </label>
         </div>
       </div>
@@ -1446,7 +1506,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -1615,11 +1675,41 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 </span>
               </span>
             </span>
-            <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-              <div class="kol-popover-button__popover--styled">
-                Ich bin ein Hinweis.
+            <span>
+              <div class="kol-popover-button kol-popover-button--inline">
+                <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+                  <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Info
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover-button__popover--styled">
+                    Ich bin ein Hinweis.
+                  </div>
+                </div>
               </div>
-            </kol-popover-button-wc>
+            </span>
           </label>
         </div>
       </div>
@@ -1959,7 +2049,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
     <div class="kol-form-field kol-form-field--hide-label kol-input-checkbox kol-input-checkbox--checked kol-input-checkbox--label-align-left kol-input-checkbox--variant-default">
       <div class="kol-form-field__input">
         <div class="kol-field-control kol-field-control--hide-label kol-field-control--label-align-left kol-input-checkbox__field-control kol-input-checkbox__field-control--checked kol-input-checkbox__field-control--variant-default">
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2141,11 +2231,41 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 </span>
               </span>
             </span>
-            <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-              <div class="kol-popover-button__popover--styled">
-                Ich bin ein Hinweis.
+            <span>
+              <div class="kol-popover-button kol-popover-button--inline">
+                <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+                  <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Info
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover-button__popover--styled">
+                    Ich bin ein Hinweis.
+                  </div>
+                </div>
               </div>
-            </kol-popover-button-wc>
+            </span>
           </label>
           <div class="kol-field-control__input">
             <label class="kol-checkbox kol-checkbox--checked kol-checkbox--variant-default">
@@ -2541,7 +2661,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -2710,11 +2830,41 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 </span>
               </span>
             </span>
-            <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-              <div class="kol-popover-button__popover--styled">
-                Ich bin ein Hinweis.
+            <span>
+              <div class="kol-popover-button kol-popover-button--inline">
+                <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+                  <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Info
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover-button__popover--styled">
+                    Ich bin ein Hinweis.
+                  </div>
+                </div>
               </div>
-            </kol-popover-button-wc>
+            </span>
           </label>
         </div>
       </div>
@@ -3104,7 +3254,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3273,11 +3423,41 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 </span>
               </span>
             </span>
-            <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-              <div class="kol-popover-button__popover--styled">
-                Ich bin ein Hinweis.
+            <span>
+              <div class="kol-popover-button kol-popover-button--inline">
+                <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+                  <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Info
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover-button__popover--styled">
+                    Ich bin ein Hinweis.
+                  </div>
+                </div>
               </div>
-            </kol-popover-button-wc>
+            </span>
           </label>
         </div>
       </div>
@@ -3698,7 +3878,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -3867,11 +4047,41 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 </span>
               </span>
             </span>
-            <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-              <div class="kol-popover-button__popover--styled">
-                Ich bin ein Hinweis.
+            <span>
+              <div class="kol-popover-button kol-popover-button--inline">
+                <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+                  <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Info
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover-button__popover--styled">
+                    Ich bin ein Hinweis.
+                  </div>
+                </div>
               </div>
-            </kol-popover-button-wc>
+            </span>
           </label>
         </div>
       </div>
@@ -4230,7 +4440,7 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
               </span>
             </div>
           </div>
-          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce" id="input-checkbox-label-nonce">
+          <label class="kol-field-control__label kol-field-control__label--visually-hidden" htmlfor="input-checkbox-nonce">
             <span class="kol-field-control__label-text kol-span">
               <span class="kol-span__container">
                 <span class="kol-span__label">
@@ -4399,11 +4609,41 @@ exports[`kol-input-checkbox should render with _label="Label" _name="field" _pla
                 </span>
               </span>
             </span>
-            <kol-popover-button-wc _content="Ich bin ein Hinweis." _hidelabel="" _icons="kolicon-alert-info" _inline="" _label="Info" _variant="ghost">
-              <div class="kol-popover-button__popover--styled">
-                Ich bin ein Hinweis.
+            <span>
+              <div class="kol-popover-button kol-popover-button--inline">
+                <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--inline">
+                  <button aria-controls="popover-nonce" aria-expanded="false" aria-label="Info" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-alert-info" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            Info
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="kol-popover kol-popover-button__popover" id="popover-nonce" popover="auto">
+                  <div class="kol-popover__arrow kol-popover__arrow--bottom"></div>
+                  <div class="kol-popover-button__popover--styled">
+                    Ich bin ein Hinweis.
+                  </div>
+                </div>
               </div>
-            </kol-popover-button-wc>
+            </span>
           </label>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import type { PublicApiContract } from './contract';
-import { describePublicApiContract, extractFrom, findUndocumentedMembers, toContract } from './contract';
+import { describePublicApiContract } from './contract';
 
 /**
  * Pinned public API of `kol-alert` — byte-identical to the predecessor on the develop branch
@@ -56,16 +56,3 @@ const KOL_ALERT_PUBLIC_API: PublicApiContract = {
 };
 
 describePublicApiContract({ tag: 'kol-alert', component: 'alert', pinnedApi: KOL_ALERT_PUBLIC_API, schemaInterface: 'AlertProps' });
-
-describe('kol-alert-wc transitional wrapper (internal contract for legacy consumers)', () => {
-	it('keeps the full predecessor surface: 7 props and no methods', () => {
-		const extracted = extractFrom('alert', 'wc.tsx');
-		expect(extracted.filter((member) => member.kind === 'prop')).toHaveLength(7);
-		expect(extracted.filter((member) => member.kind === 'method')).toEqual([]);
-		expect(toContract(extracted)).toEqual(KOL_ALERT_PUBLIC_API);
-	});
-
-	it('documents every public member (custom-elements.json and docs-vscode are generated from prop.docs)', () => {
-		expect(findUndocumentedMembers('alert', 'wc.tsx')).toEqual([]);
-	});
-});

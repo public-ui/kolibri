@@ -2,8 +2,6 @@
 
 @layer kol-theme-component {
 	.kol-tree-item {
-		$root: &;
-
 		&__children {
 			display: flex;
 			flex-direction: column;

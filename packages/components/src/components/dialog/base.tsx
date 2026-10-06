@@ -25,13 +25,12 @@ import { handleCancelOverlay } from '../../utils/tooltip-open-tracking';
 const NOOP = (): void => {};
 
 /**
- * Orchestrator shared by `kol-dialog`, the deprecated `kol-modal` and the transitional
- * `kol-dialog-wc`. All three render the same `DialogFC`; the concrete element only declares the
- * Stencil members and delegates from its watchers, methods and lifecycle hooks.
+ * Orchestrator shared by `kol-dialog` and the deprecated `kol-modal`. Both render the same
+ * `DialogFC`; the concrete element only declares the Stencil members and delegates from its
+ * watchers, methods and lifecycle hooks.
  *
- * The card variant renders `CardFC` directly instead of the transitional `kol-card-wc`, so this
- * class also owns what that element used to orchestrate: the close button's resolved props, its
- * tooltip behavior and its ref.
+ * The card variant renders `CardFC` directly, so this class also owns the close button's resolved
+ * props, its tooltip behavior and its ref.
  */
 export abstract class BaseDialogWebComponent extends BaseWebComponent<DialogApi> {
 	protected abstract readonly host?: HTMLElement;

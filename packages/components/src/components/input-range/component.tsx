@@ -34,6 +34,11 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { InputRangeApi } from '../../internal/functional-components/input-range/api';
 import { inputRangePropsConfig } from '../../internal/functional-components/input-range/api';
 import {
+	BEM_CLASS_INPUT_RANGE__INPUT_NUMBER,
+	BEM_CLASS_INPUT_RANGE__INPUT_RANGE,
+	InputRangeInputsFC,
+} from '../../internal/functional-components/input-range/component';
+import {
 	accessKeyProp,
 	autoCompleteProp,
 	horizontalIconsProp,
@@ -51,6 +56,8 @@ import { propagateSubmitEventToForm } from '../form/controller';
 
 /**
  * The **Range** input type creates a slider control for selecting a numeric value within a defined range. Use the `_min`, `_max`, and `_step` properties to configure the range and step size.
+ *
+ * Like a native range input, the field always has a value: without `_value` it starts at the middle of the range and reports it as its value and form value.
  *
  * @slot - The label of the input field.
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
@@ -72,6 +79,9 @@ export class KolInputRange
 	private rangeRef?: HTMLInputElement;
 
 	@State() public id = createUniqueId('input-range');
+
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
 
 	@State() public inputHasFocus = false;
 
@@ -144,11 +154,15 @@ export class KolInputRange
 		this.watchValue(this._value);
 	}
 
-	/** Without a value the field takes the value of the native range input, which the browser sets to the middle of the range (#11076). */
+	/** Without a value the field takes the value of the native range input, which the browser sets to the middle of the range. */
 	public componentDidLoad(): void {
 		if (!this._value && this.rangeRef?.value) {
 			this._value = parseFloat(this.rangeRef.value);
 		}
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
 	}
 
 	public disconnectedCallback(): void {
@@ -165,9 +179,20 @@ export class KolInputRange
 
 	// --- Event handling ---
 
-	/** The inputs follow `_value` only on `change` (#11075). */
+	/**
+	 * Both inputs show the same value while the user enters it: the slider writes `_value`, which renders
+	 * the number input, and the number input moves the slider directly, so the typed text stays as it is
+	 * until `change` writes `_value`.
+	 */
 	private readonly handleRangeInput = (event: Event): void => {
-		this.handleInput(event, this.readValue((event.target as HTMLInputElement).value));
+		const target = event.target as HTMLInputElement;
+		const value = this.readValue(target.value);
+		if (target === this.rangeRef) {
+			this._value = value;
+		} else if (this.rangeRef && Number.isFinite(Number(value))) {
+			this.rangeRef.value = String(value);
+		}
+		this.handleInput(event, value);
 	};
 
 	private readonly handleRangeChange = (event: Event): void => {
@@ -242,11 +267,7 @@ export class KolInputRange
 		const shared = this.getSharedInputProps();
 		const { ariaDescribedBy, hasError } = this.getAria();
 		const ariaInvalid = hasError ? 'true' : undefined;
-		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons'), disabled });
-		const inputsWrapperStyle = {
-			// use number of digits in max or min value plus some space for the number input arrow buttons; minimum 4 digits
-			'--kolibri-input-range--input-number--width': `calc(${Math.max(String(max ?? 100).length, String(min ?? 0).length, 4)}ch + 2em)`,
-		};
+		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
 
 		return (
 			<Host>
@@ -265,10 +286,10 @@ export class KolInputRange
 						startAdornment={startAdornment}
 						endAdornment={endAdornment}
 					>
-						<div class="kol-input-range__inputs-wrapper" style={inputsWrapperStyle}>
+						<InputRangeInputsFC max={max} min={min}>
 							<InputFC
 								{...shared}
-								class="kol-input-range__input kol-input-range__input--range"
+								class={BEM_CLASS_INPUT_RANGE__INPUT_RANGE}
 								name={name ? `${name}-range` : undefined}
 								list={list}
 								type="range"
@@ -282,7 +303,7 @@ export class KolInputRange
 							/>
 							<InputFC
 								{...shared}
-								class="kol-input-range__input kol-input-range__input--number"
+								class={BEM_CLASS_INPUT_RANGE__INPUT_NUMBER}
 								name={name ? `${name}-number` : undefined}
 								list={list}
 								type="number"
@@ -291,7 +312,7 @@ export class KolInputRange
 								ariaDescribedBy={ariaDescribedBy}
 								aria-invalid={ariaInvalid}
 							/>
-						</div>
+						</InputRangeInputsFC>
 						{hasSuggestions && <SuggestionsFC id={this.id} suggestions={suggestions} />}
 					</InputContainerFC>
 				</FormFieldFC>

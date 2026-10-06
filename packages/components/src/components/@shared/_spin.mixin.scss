@@ -5,6 +5,13 @@
 
 @mixin kol-spin {
 	.kol-spin {
+		/*
+		 * The root only groups the spinner and its live region. It generates no box of its own, so
+		 * both stay layout children of the surrounding container, e.g. the flex container of the
+		 * table loader.
+		 */
+		display: contents;
+
 		&__spinner {
 			display: block;
 			position: relative;

@@ -27,8 +27,9 @@ import type {
 } from '../../schema';
 
 import { translate } from '../../i18n';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
-import { IconButtonFC } from '../../internal/functional-components/form-field/icon-button';
 import { InputFC } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
@@ -60,9 +61,14 @@ export class KolInputText
 {
 	@Element() protected readonly host?: HTMLKolInputTextElement;
 
+	private readonly clearButton = createButtonItem(() => this.host);
+
 	private readonly translateClearSearch = translate('kol-clear-search');
 
 	@State() public id = createUniqueId('input-text');
+
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
 
 	@State() public inputHasFocus = false;
 
@@ -186,7 +192,13 @@ export class KolInputText
 		this.didLoadTextInput();
 	}
 
+	public componentDidRender(): void {
+		this.syncFormField();
+		this.clearButton.syncListeners();
+	}
+
 	public disconnectedCallback(): void {
+		this.clearButton.destroy();
 		this.destroyTextInput();
 	}
 
@@ -225,17 +237,22 @@ export class KolInputText
 		}
 		const canClear = this.hasValue;
 		return (
-			<IconButtonFC
-				componentName="button"
-				class={clsx('kol-input-text__clear-button', 'kol-input-container__smart-button', {
-					'kol-input-text__clear-button--hidden': !canClear,
-				})}
-				data-testid="kol-input-text-clear-button"
-				label={this.translateClearSearch}
-				buttonVariant="ghost"
-				disabled={!canClear}
-				onClick={this.handleClearButtonClick}
-				icon="kolicon-cross"
+			<ButtonFC
+				{...this.clearButton.getFcProps(
+					{
+						_label: this.translateClearSearch,
+						_icons: 'kolicon-cross',
+						_hideLabel: true,
+						_disabled: !canClear,
+						_on: { onClick: this.handleClearButtonClick },
+					},
+					{
+						class: clsx('kol-input-text__clear-button', 'kol-input-container__smart-button', {
+							'kol-input-text__clear-button--hidden': !canClear,
+						}),
+						'data-testid': 'kol-input-text-clear-button',
+					},
+				)}
 			/>
 		);
 	}

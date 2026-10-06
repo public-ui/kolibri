@@ -3,11 +3,10 @@ import type { InternalButtonProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolButton } from '../component';
-import { KolButtonWc } from '../wc';
 
 executeSnapshotTests<InternalButtonProps>(
 	KolButtonTag,
-	[KolButton, KolButtonWc],
+	[KolButton],
 	[
 		{ _label: 'Label' },
 

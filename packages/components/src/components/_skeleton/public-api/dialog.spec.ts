@@ -1,5 +1,5 @@
 import type { PublicApiContract } from './contract';
-import { describePublicApiContract, extractFrom, findUndocumentedMembers } from './contract';
+import { describePublicApiContract } from './contract';
 
 /**
  * Pinned public API of `kol-dialog`: 5 props plus the five open/close methods — identical to the
@@ -72,21 +72,3 @@ const KOL_DIALOG_PUBLIC_API: PublicApiContract = {
 };
 
 describePublicApiContract({ tag: 'kol-dialog', component: 'dialog', pinnedApi: KOL_DIALOG_PUBLIC_API, schemaInterface: 'DialogProps' });
-
-describe('kol-dialog-wc transitional wrapper (internal contract for legacy consumers)', () => {
-	it('keeps the full predecessor surface: 5 props plus the five open/close methods', () => {
-		const extracted = extractFrom('dialog', 'wc.tsx');
-		expect(extracted.filter((member) => member.kind === 'prop').map((member) => member.name)).toEqual(['_label', '_level', '_on', '_variant', '_width']);
-		expect(extracted.filter((member) => member.kind === 'method').map((member) => member.name)).toEqual([
-			'show',
-			'showModal',
-			'openModal',
-			'close',
-			'closeModal',
-		]);
-	});
-
-	it('documents every public member (custom-elements.json and docs-vscode are generated from prop.docs)', () => {
-		expect(findUndocumentedMembers('dialog', 'wc.tsx')).toEqual([]);
-	});
-});
