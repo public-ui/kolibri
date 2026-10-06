@@ -13,7 +13,7 @@ This directory contains the `kol-skeleton` component blueprint — the reference
 When refactoring an existing component to match the Skeleton architecture:
 
 1. **Props Inventory** — Collect all existing `@Prop()` declarations from the current component, including their JSDoc comments, types (schema aliases), defaults and `@deprecated` markers. This inventory **is** the public API contract to preserve.
-2. **Props Migration** — Reuse the existing definition for a public prop name (e.g. `disabledProp` for every `_disabled`); a second definition for the same key needs a functional reason in `src/internal/props/prop-keys.spec.ts` (see ARC42 § Schema Helper Layer). Create dedicated prop files under `src/internal/props/` only for new props:
+2. **Props Migration** — Reuse the existing definition for a public prop name (e.g. `disabledProp` for every `_disabled`); a second definition for the same key needs one of the reasons listed in ARC42 § Schema Helper Layer, recorded in `src/internal/props/prop-keys.spec.ts`. Create dedicated prop files under `src/internal/props/` only for new props:
    - File per prop: `<prop-name>.ts` (e.g. `label.ts`, `href.ts`, `disabled.ts`)
    - Use `Prop<K, TExternal, TInternal>` or `SimpleProp<K, T>` types
    - Implement normalization and validation via `createPropDefinition<P>()`

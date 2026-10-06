@@ -105,15 +105,15 @@ const membersByName = (members: readonly ts.ClassElement[]): Map<string, ts.Clas
 const isFunctionInitializer = (member: ts.ClassElement): boolean =>
 	ts.isPropertyDeclaration(member) && !!member.initializer && (ts.isArrowFunction(member.initializer) || ts.isFunctionExpression(member.initializer));
 
+/** `checkClass` and `initializationProblems` both read the construction reads of every member; they are computed once. */
+const constructionReadsCache = new WeakMap<ts.ClassElement, Set<string>>();
+
 /**
  * Own properties an initializer reads during construction: directly, through own getters it reads, and
  * through own methods and arrow-function properties it calls. An arrow or function initializer itself
  * runs later, so it reads nothing during construction. Callbacks that run synchronously (an IIFE, an
  * array callback) are treated as deferred and not traced.
  */
-/** `checkClass` and `initializationProblems` both read the construction reads of every member; they are computed once. */
-const constructionReadsCache = new WeakMap<ts.ClassElement, Set<string>>();
-
 const constructionReads = (member: ts.ClassElement, byName: Map<string, ts.ClassElement>): Set<string> => {
 	const cached = constructionReadsCache.get(member);
 	if (cached) return cached;
