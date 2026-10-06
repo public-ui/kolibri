@@ -1,1 +1,0 @@
-import{c as e}from"./index-DRRU6a22-CV4-NblR.js";var t=(e,t)=>{let n=``;return Array.isArray(e)&&e.forEach(e=>{n+=`kol-`+t+`--`+e+` `}),n},n=({description:t,descriptionId:n})=>t?e(`span`,{class:`visually-hidden`,id:n},t):null;export{t as n,n as t};
