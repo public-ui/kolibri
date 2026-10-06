@@ -179,6 +179,40 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: null;
 	};
+	'kol-nav': {
+		elements: {
+			compact: {
+				modifiers: null;
+			};
+			entry: {
+				modifiers: Set<'button' | 'collapsible' | 'link'>;
+			};
+			'entry-wrapper': {
+				modifiers: null;
+			};
+			list: {
+				modifiers: Set<'nested' | 'vertical'>;
+			};
+			'list-item': {
+				modifiers: Set<'active' | 'expanded' | 'has-children'>;
+			};
+			navigation: {
+				modifiers: null;
+			};
+			'toggle-button': {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'is-compact'>;
+	};
+	'kol-kolibri': {
+		elements: {
+			text: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
+	};
 	'kol-popover-button': {
 		elements: {
 			popover: {
@@ -509,6 +543,29 @@ export type KoliBriComponentsBemSchema = {
 			};
 		};
 		modifiers: Set<'default' | 'disabled' | 'error' | 'info' | 'required' | 'success' | 'touched' | 'warning'>;
+	};
+	'kol-pagination': {
+		elements: {
+			button: {
+				modifiers: Set<'first' | 'last' | 'next' | 'numbers' | 'previous' | 'selected'>;
+			};
+			entries: {
+				modifiers: null;
+			};
+			navigation: {
+				modifiers: null;
+			};
+			'navigation-list': {
+				modifiers: null;
+			};
+			'page-size-select': {
+				modifiers: null;
+			};
+			separator: {
+				modifiers: null;
+			};
+		};
+		modifiers: null;
 	};
 	'kol-custom-suggestions-option': {
 		modifiers: Set<'disabled'>;
@@ -844,6 +901,24 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: null,
 	},
+	'kol-nav': {
+		elements: {
+			compact: { modifiers: null },
+			entry: { modifiers: new Set(['button', 'collapsible', 'link']) },
+			'entry-wrapper': { modifiers: null },
+			list: { modifiers: new Set(['nested', 'vertical']) },
+			'list-item': { modifiers: new Set(['active', 'expanded', 'has-children']) },
+			navigation: { modifiers: null },
+			'toggle-button': { modifiers: null },
+		},
+		modifiers: new Set(['is-compact']),
+	},
+	'kol-kolibri': {
+		elements: {
+			text: { modifiers: null },
+		},
+		modifiers: null,
+	},
 	'kol-popover-button': {
 		elements: {
 			popover: { modifiers: null },
@@ -1043,6 +1118,17 @@ const BEM: KoliBriComponentsBemSchema = {
 			option: { modifiers: new Set(['disabled', 'selected']) },
 		},
 		modifiers: new Set(['default', 'disabled', 'error', 'info', 'required', 'success', 'touched', 'warning']),
+	},
+	'kol-pagination': {
+		elements: {
+			button: { modifiers: new Set(['first', 'last', 'next', 'numbers', 'previous', 'selected']) },
+			entries: { modifiers: null },
+			navigation: { modifiers: null },
+			'navigation-list': { modifiers: null },
+			'page-size-select': { modifiers: null },
+			separator: { modifiers: null },
+		},
+		modifiers: null,
 	},
 	'kol-custom-suggestions-option': {
 		modifiers: new Set(['disabled']),

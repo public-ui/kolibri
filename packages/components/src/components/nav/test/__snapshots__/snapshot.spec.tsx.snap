@@ -42,6 +42,72 @@ exports[`KolNav nested navigation landmarks assigns a single nav id and multiple
 </kol-nav>
 `;
 
+exports[`kol-nav should render with _label="Nav Label" _links="[{\\"_label\\":\\"Homepage\\",\\"_href\\":\\"#\\"},{\\"_label\\":\\"Nav - aria-current\\",\\"_href\\":\\"#\\",\\"_active\\":true},{\\"_label\\":\\"3 Navigation point\\",\\"_href\\":\\"#\\",\\"_icons\\":\\"codicon codicon-home\\",\\"_children\\":[{\\"_label\\":\\"3.1 Navigation point\\",\\"_icons\\":\\"codicon codicon-home\\",\\"_href\\":\\"#\\"}]},{\\"_label\\":\\"6 Keine eigene Seite, mit Icon\\",\\"_icons\\":\\"codicon codicon-squirrel\\"}]" 1`] = `
+<kol-nav>
+  <template shadowrootmode="open">
+    <div class="kol-nav">
+      <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
+        <ul class="kol-nav__list">
+          <li class="kol-nav__list-item">
+            <div class="kol-nav__entry-wrapper">
+              <kol-link-wc _href="#" _label="Homepage" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+            </div>
+          </li>
+          <li class="kol-nav__list-item kol-nav__list-item--active">
+            <div class="kol-nav__entry-wrapper">
+              <kol-link-wc _active="" _href="#" _label="Nav - aria-current" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+            </div>
+          </li>
+          <li class="kol-nav__list-item kol-nav__list-item--has-children">
+            <div class="kol-nav__entry-wrapper">
+              <kol-link-wc _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+            </div>
+          </li>
+          <li class="kol-nav__list-item">
+            <div class="kol-nav__entry-wrapper">
+              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </template>
+</kol-nav>
+`;
+
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _collapsible=false 1`] = `
+<kol-nav>
+  <template shadowrootmode="open">
+    <div class="kol-nav">
+      <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
+        <ul class="kol-nav__list">
+          <li class="kol-nav__list-item">
+            <div class="kol-nav__entry-wrapper">
+              <kol-link-wc _href="#" _label="Homepage" class="kol-nav__entry kol-nav__entry--link"></kol-link-wc>
+            </div>
+          </li>
+          <li class="kol-nav__list-item kol-nav__list-item--active">
+            <div class="kol-nav__entry-wrapper">
+              <kol-link-wc _active="" _href="#" _label="Nav - aria-current" class="kol-nav__entry kol-nav__entry--link"></kol-link-wc>
+            </div>
+          </li>
+          <li class="kol-nav__list-item kol-nav__list-item--has-children">
+            <div class="kol-nav__entry-wrapper">
+              <kol-link-wc _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--link"></kol-link-wc>
+            </div>
+          </li>
+          <li class="kol-nav__list-item">
+            <div class="kol-nav__entry-wrapper">
+              <kol-button-wc _label="6 Keine eigene Seite, mit Icon" class="kol-nav__entry kol-nav__entry--button"></kol-button-wc>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </template>
+</kol-nav>
+`;
+
 exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasCompactButton=false 1`] = `
 <kol-nav>
   <template shadowrootmode="open">
@@ -70,6 +136,42 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
           </li>
         </ul>
       </nav>
+    </div>
+  </template>
+</kol-nav>
+`;
+
+exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepage","_href":"#"},{"_label":"Nav - aria-current","_href":"#","_active":true},{"_label":"3 Navigation point","_href":"#","_icons":"codicon codicon-home","_children":[{"_label":"3.1 Navigation point","_icons":"codicon codicon-home","_href":"#"}]},{"_label":"6 Keine eigene Seite, mit Icon","_icons":"codicon codicon-squirrel"}] _hasCompactButton=true _hideLabel=true 1`] = `
+<kol-nav>
+  <template shadowrootmode="open">
+    <div class="kol-nav kol-nav--is-compact">
+      <nav aria-label="Nav Label" class="kol-nav__navigation" id="kol-nav-nonce">
+        <ul class="kol-nav__list">
+          <li class="kol-nav__list-item">
+            <div class="kol-nav__entry-wrapper">
+              <kol-link-wc _hidelabel="" _href="#" _label="Homepage" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+            </div>
+          </li>
+          <li class="kol-nav__list-item kol-nav__list-item--active">
+            <div class="kol-nav__entry-wrapper">
+              <kol-link-wc _active="" _hidelabel="" _href="#" _label="Nav - aria-current" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+            </div>
+          </li>
+          <li class="kol-nav__list-item kol-nav__list-item--has-children">
+            <div class="kol-nav__entry-wrapper">
+              <kol-link-wc _hidelabel="" _href="#" _label="3 Navigation point" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+            </div>
+          </li>
+          <li class="kol-nav__list-item">
+            <div class="kol-nav__entry-wrapper">
+              <kol-button-wc _hidelabel="" _label="6 Keine eigene Seite, mit Icon" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="kol-nav__compact">
+        <kol-button-wc _ariacontrols="kol-nav-nonce" _hidelabel="" _icons="kolicon-chevron-right" _label="kol-nav-maximize" _tooltipalign="right" class="kol-nav__toggle-button"></kol-button-wc>
+      </div>
     </div>
   </template>
 </kol-nav>
@@ -270,6 +372,70 @@ exports[`kol-nav should render with _label="Nav Label" _links=[{"_label":"Homepa
             </div>
           </li>
         </ul>
+      </nav>
+    </div>
+  </template>
+</kol-nav>
+`;
+
+exports[`kol-nav should render with _label="Nav with an active grandchild, buttons and texts" _links=[{"_label":"Section","_href":"#section","_children":[{"_label":"Child","_href":"#child","_children":[{"_label":"Grandchild","_href":"#grandchild","_active":true}]},{"_label":"Child button","_on":{}},{"_label":"Disabled button","_disabled":true,"_on":{}},{"_label":"Child text"}]},{"_label":"Collapsed section","_children":[{"_label":"Hidden child","_href":"#hidden"}]}] 1`] = `
+<kol-nav>
+  <template shadowrootmode="open">
+    <div class="kol-nav">
+      <nav aria-label="Nav with an active grandchild, buttons and texts" class="kol-nav__navigation" id="kol-nav-nonce">
+        <ul class="kol-nav__list">
+          <li class="kol-nav__list-item kol-nav__list-item--expanded kol-nav__list-item--has-children">
+            <div class="kol-nav__entry-wrapper">
+              <kol-link-wc _ariacontrols="kol-nav-list-0-0-nonce" _ariaexpanded="" _href="#section" _label="Section" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+            </div>
+            <ul class="kol-nav__list kol-nav__list--nested kol-nav__list--vertical" id="kol-nav-list-0-0-nonce">
+              <li class="kol-nav__list-item kol-nav__list-item--expanded kol-nav__list-item--has-children">
+                <div class="kol-nav__entry-wrapper">
+                  <kol-link-wc _ariacontrols="kol-nav-list-0-0-1-0-nonce" _ariaexpanded="" _href="#child" _label="Child" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+                </div>
+                <ul class="kol-nav__list kol-nav__list--nested kol-nav__list--vertical" id="kol-nav-list-0-0-1-0-nonce">
+                  <li class="kol-nav__list-item kol-nav__list-item--active">
+                    <div class="kol-nav__entry-wrapper">
+                      <kol-link-wc _active="" _href="#grandchild" _label="Grandchild" class="kol-nav__entry kol-nav__entry--collapsible kol-nav__entry--link"></kol-link-wc>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+              <li class="kol-nav__list-item">
+                <div class="kol-nav__entry-wrapper">
+                  <kol-button-wc _label="Child button" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+                </div>
+              </li>
+              <li class="kol-nav__list-item">
+                <div class="kol-nav__entry-wrapper">
+                  <kol-button-wc _disabled="" _label="Disabled button" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+                </div>
+              </li>
+              <li class="kol-nav__list-item">
+                <div class="kol-nav__entry-wrapper">
+                  <kol-button-wc _label="Child text" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li class="kol-nav__list-item kol-nav__list-item--has-children">
+            <div class="kol-nav__entry-wrapper">
+              <kol-button-wc _label="Collapsed section" class="kol-nav__entry kol-nav__entry--button kol-nav__entry--collapsible"></kol-button-wc>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </template>
+</kol-nav>
+`;
+
+exports[`kol-nav should render with _label="Nav with an invalid entry" _links=[{"_icons":"kolicon-home"}] 1`] = `
+<kol-nav>
+  <template shadowrootmode="open">
+    <div class="kol-nav">
+      <nav aria-label="Nav with an invalid entry" class="kol-nav__navigation" id="kol-nav-nonce">
+        <ul class="kol-nav__list"></ul>
       </nav>
     </div>
   </template>
