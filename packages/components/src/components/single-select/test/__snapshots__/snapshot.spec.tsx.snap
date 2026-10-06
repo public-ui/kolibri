@@ -27,17 +27,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -75,17 +75,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -123,17 +123,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-custom-suggestions-toggle--disabled kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -171,17 +171,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -232,17 +232,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -286,17 +286,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -340,17 +340,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -390,17 +390,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -476,17 +476,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -524,17 +524,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -572,17 +572,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -629,17 +629,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -677,17 +677,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -728,17 +728,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -776,17 +776,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -824,17 +824,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -872,17 +872,17 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
               <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
-              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   Herr
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>

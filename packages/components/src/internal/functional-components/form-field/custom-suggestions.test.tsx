@@ -6,6 +6,7 @@ import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from './cu
 describe('CustomSuggestionsOptionFC', () => {
 	const defaultProps = {
 		disabled: false,
+		id: 'combobox-option-0-nonce',
 		index: 0,
 		option: 'Test Option',
 		selected: false,
@@ -30,7 +31,7 @@ describe('CustomSuggestionsOptionFC', () => {
 	it('renders with different index and option', async () => {
 		const page = await newSpecPage({
 			components: [],
-			template: () => <CustomSuggestionsOptionFC {...defaultProps} index={2} option="Different Option" />,
+			template: () => <CustomSuggestionsOptionFC {...defaultProps} id="combobox-option-2-nonce" index={2} option="Different Option" />,
 		});
 		expect(page.root).toMatchSnapshot();
 	});

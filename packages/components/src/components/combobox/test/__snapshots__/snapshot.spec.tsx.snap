@@ -54,19 +54,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -131,19 +131,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -208,19 +208,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -285,19 +285,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -375,19 +375,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -458,19 +458,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -541,19 +541,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -620,19 +620,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -735,19 +735,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -812,19 +812,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -889,19 +889,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -975,19 +975,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -1052,19 +1052,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -1132,19 +1132,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -1209,19 +1209,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -1286,19 +1286,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
@@ -1363,19 +1363,19 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
               </button>
             </div>
             <ul class="kol-custom-suggestions-options-group" hidden="" id="combobox-listbox-nonce" role="listbox">
-              <li class="kol-custom-suggestions-option" data-index="0" id="option-0" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="0" id="combobox-option-0-nonce" role="option" tabindex="-1">
                 <span>
                   Frau
                 </span>
               </li>
-              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="option-1" role="option" tabindex="-1">
+              <li aria-selected="true" class="kol-custom-suggestions-option" data-index="1" id="combobox-option-1-nonce" role="option" tabindex="-1">
                 <span>
                   <mark>
                     Herr
                   </mark>
                 </span>
               </li>
-              <li class="kol-custom-suggestions-option" data-index="2" id="option-2" role="option" tabindex="-1">
+              <li class="kol-custom-suggestions-option" data-index="2" id="combobox-option-2-nonce" role="option" tabindex="-1">
                 <span>
                   Divers
                 </span>
