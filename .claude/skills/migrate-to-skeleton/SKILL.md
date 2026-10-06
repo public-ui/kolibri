@@ -182,7 +182,7 @@ pnpm --filter @public-ui/components build
 - Keine neuen Barrel-Dateien.
 - ARIA-Referenz-IDs (`aria-controls`, `aria-labelledby`, `aria-describedby`, `aria-owns`) müssen pro Instanz eindeutig sein — `createUniqueId('prefix')` bzw. `createRelatedUniqueId(baseId, 'suffix')` aus `utils/dev.utils` (ARC42 DD12).
 - Event-Handler als stabile Arrow-Properties, nie `.bind(this)` bei `addEventListener`/`removeEventListener` (`ARC42.md#event-handler-policy`).
-- Member-Reihenfolge der Komponentenklasse: statics, `@Element`, `@State`, Felder, constructor, jede `@Prop` mit ihrem `@Watch`, `@Event`, `@Method`, Lifecycle, `@Listen`, Helfer, `render` (`ARC42.md#member-order`, geprüft von `component-structure.spec.ts`).
+- Member-Reihenfolge der Komponentenklasse: statics, `@Element`, `@State`, Felder, constructor, jede `@Prop`, `@Event`, `@Method`, Lifecycle, `@Listen`, Helfer, `render`; ein `@Watch` steht direkt hinter der `@Prop` oder dem `@State`, den er beobachtet (`ARC42.md#member-order`, geprüft von `component-structure.spec.ts`).
 
 ## 9. Pre-Review-Checkliste
 

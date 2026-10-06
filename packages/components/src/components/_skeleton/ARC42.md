@@ -173,7 +173,7 @@ Every Stencil component class lists its members in the same order:
 
 1. `static` members
 2. `@Element`
-3. `@State`
+3. each `@State`, directly followed by its `@Watch` method(s) if it has any
 4. other fields (refs, behaviors, translations, items)
 5. `constructor`
 6. each `@Prop`, directly followed by its `@Watch` method(s); a watcher of several props follows the first of them

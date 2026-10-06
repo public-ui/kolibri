@@ -158,9 +158,10 @@ const checkClass = (cls: ts.ClassDeclaration): string[] => {
 	const byName = membersByName(members);
 	const readEarly = new Set<string>();
 	members.forEach((member) => constructionReads(member, byName).forEach((name) => readEarly.add(name)));
-	const propNames = members.filter((member) => groupOf(member) === 'prop').map(memberName);
+	// Members a watcher may observe: a watcher directly follows its @Prop or @State.
+	const watchableNames = members.filter((member) => groupOf(member) === 'prop' || groupOf(member) === 'state').map(memberName);
 	let rank = -1;
-	let lastProp: string | undefined;
+	let lastWatchable: string | undefined;
 	let previousGroup: Group | undefined;
 	let lifecycleIndex = -1;
 
@@ -173,13 +174,13 @@ const checkClass = (cls: ts.ClassDeclaration): string[] => {
 				.filter((expression): expression is ts.CallExpression => ts.isCallExpression(expression) && expression.expression.getText() === 'Watch')
 				.map((expression) => (expression.arguments[0] as ts.StringLiteral).text);
 			watched
-				.filter((target) => byName.has(target) && !propNames.includes(target))
-				.forEach((target) => problems.push(`${name} watches ${target}, which is no @Prop; the member order places watchers of props only`));
-			const targets = watched.filter((target) => propNames.includes(target)).sort((a, b) => propNames.indexOf(a) - propNames.indexOf(b));
+				.filter((target) => byName.has(target) && !watchableNames.includes(target))
+				.forEach((target) => problems.push(`${name} watches ${target}, which is no @Prop or @State; the member order places watchers of those only`));
+			const targets = watched.filter((target) => watchableNames.includes(target)).sort((a, b) => watchableNames.indexOf(a) - watchableNames.indexOf(b));
 			if (targets.length > 0) {
-				// The watcher follows its first prop directly, or another watcher of that prop.
-				if (lastProp !== targets[0] || (previousGroup !== 'prop' && previousGroup !== 'watch')) {
-					problems.push(`${name} does not directly follow its prop ${targets[0]}`);
+				// The watcher follows its first watched member directly, or another watcher of that member.
+				if (lastWatchable !== targets[0] || !['prop', 'state', 'watch'].includes(previousGroup as Group)) {
+					problems.push(`${name} does not directly follow ${targets[0]}`);
 				}
 			} else if (watched.every((target) => !byName.has(target))) {
 				// A watcher of an inherited prop belongs to the prop group.
@@ -201,7 +202,7 @@ const checkClass = (cls: ts.ClassDeclaration): string[] => {
 		} else if (!isReadEarly) {
 			rank = groupRank;
 		}
-		if (group === 'prop') lastProp = name;
+		if (group === 'prop' || group === 'state') lastWatchable = name;
 		if (group === 'lifecycle') {
 			const index = LIFECYCLE.indexOf(name);
 			if (index < lifecycleIndex) problems.push(`${name} is out of the lifecycle order`);
