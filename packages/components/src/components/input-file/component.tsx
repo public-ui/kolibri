@@ -35,8 +35,8 @@ import { InputContainerFC } from '../../internal/functional-components/form-fiel
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputFileApi } from '../../internal/functional-components/input-file/api';
 import { inputFilePropsConfig } from '../../internal/functional-components/input-file/api';
+import { BEM_CLASS_INPUT_CONTAINER__BUTTON, InputFileNameFC } from '../../internal/functional-components/input-file/component';
 import { acceptProp, accessKeyProp, horizontalIconsProp, multipleProp, requiredProp, shortKeyProp, smartButtonProp, variantProp } from '../../internal/props';
-import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 
@@ -281,9 +281,9 @@ export class KolInputFile
 						onDragLeave={this.handleDragLeave}
 						onDrop={this.handleDrop}
 					>
-						<span class={clsx('kol-input-container__filename', { 'kol-input-container__filename--has-file': this.hasFileSelected })}>{this.filename}</span>
+						<InputFileNameFC filename={this.filename} hasFile={this.hasFileSelected} />
 						<InputFC {...this.getInputProps()} />
-						<KolButtonWcTag class="kol-input-container__button" _label={this.translateDataBrowseText} _variant="primary" _disabled={disabled} />
+						<KolButtonWcTag class={BEM_CLASS_INPUT_CONTAINER__BUTTON} _label={this.translateDataBrowseText} _variant="primary" _disabled={disabled} />
 					</InputContainerFC>
 				</FormFieldFC>
 			</Host>

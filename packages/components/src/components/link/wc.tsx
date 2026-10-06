@@ -34,9 +34,8 @@ import { BaseLinkWebComponent } from './base';
 /**
  * Transitional `kol-link-wc` — a `shadow:false` wrapper that renders `LinkFC` directly into the light DOM.
  *
- * This exists because Legacy consumers (skip-nav, tree-item, nav, breadcrumb, etc.) render
- * `<kol-link-wc>` inside their own shadow DOM and rely on being able to reach the inner `.kol-link`
- * CSS classes from their stylesheets. A `shadow:true` element would encapsulate those classes
+ * It exists for consumers that render it inside their own shadow DOM and style the inner `.kol-link`
+ * classes as descendants from their stylesheets (the users of `KolLinkWcTag`). A `shadow:true` element would encapsulate those classes
  * behind a shadow boundary, breaking consumer styling.
  *
  * When a consumer migrates to the Skeleton pattern, it renders `LinkFC` directly (see

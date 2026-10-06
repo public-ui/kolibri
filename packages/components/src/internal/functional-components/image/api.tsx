@@ -1,8 +1,8 @@
-import { altProp, loadingProp, sizesProp, srcProp, srcsetProp } from '../../props';
+import { altProp, imageCallbacksProp, loadingProp, sizesProp, srcProp, srcsetProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const imagePropsConfig = {
-	optional: [loadingProp, sizesProp, srcsetProp],
+	optional: [imageCallbacksProp, loadingProp, sizesProp, srcsetProp],
 	required: [altProp, srcProp],
 } as const satisfies PropsConfigShape;
 

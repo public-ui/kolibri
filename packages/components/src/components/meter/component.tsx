@@ -18,12 +18,6 @@ import {
 	type OrientationPropType,
 } from '../../internal/props';
 
-type MeterData = {
-	high: number | undefined;
-	low: number | undefined;
-	optimum: number | undefined;
-};
-
 @Component({
 	tag: 'kol-meter',
 	styleUrls: {
@@ -32,8 +26,6 @@ type MeterData = {
 	shadow: true,
 })
 export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponentInterface<MeterApi> {
-	private meterData: MeterData = { high: undefined, low: undefined, optimum: undefined };
-
 	/**
 	 * From this value to the max value is the high range of the meter. Below this value is the middle range.
 	 */
@@ -43,11 +35,9 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	@Watch('_high')
 	public watchHigh(value?: number): void {
 		if (value === undefined) {
-			this.meterData.high = undefined;
+			this.unsetRenderProp('high');
 		} else {
-			highProp.apply(value, (v) => {
-				this.meterData.high = v;
-			});
+			highProp.apply(value, (v) => this.setRenderProp('high', v));
 		}
 	}
 
@@ -71,11 +61,9 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	@Watch('_low')
 	public watchLow(value?: number): void {
 		if (value === undefined) {
-			this.meterData.low = undefined;
+			this.unsetRenderProp('low');
 		} else {
-			lowProp.apply(value, (v) => {
-				this.meterData.low = v;
-			});
+			lowProp.apply(value, (v) => this.setRenderProp('low', v));
 		}
 	}
 
@@ -121,11 +109,9 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	@Watch('_optimum')
 	public watchOptimum(value?: number): void {
 		if (value === undefined) {
-			this.meterData.optimum = undefined;
+			this.unsetRenderProp('optimum');
 		} else {
-			optimumProp.apply(value, (v) => {
-				this.meterData.optimum = v;
-			});
+			optimumProp.apply(value, (v) => this.setRenderProp('optimum', v));
 		}
 	}
 
@@ -190,16 +176,15 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	}
 
 	public render(): JSX.Element {
-		const { high, low, optimum } = this.meterData;
 		return (
 			<Host>
 				<MeterFC
-					high={high}
+					high={this.getRenderProp('high')}
 					label={this.getRenderProp('label')}
-					low={low}
+					low={this.getRenderProp('low')}
 					max={this.getRenderProp('max')}
 					min={this.getRenderProp('min')}
-					optimum={optimum}
+					optimum={this.getRenderProp('optimum')}
 					orientation={this.getRenderProp('orientation')}
 					unit={this.getRenderProp('unit')}
 					value={this.getRenderProp('value')}

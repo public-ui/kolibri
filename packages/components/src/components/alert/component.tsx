@@ -8,7 +8,7 @@ import { AlertFC } from '../../internal/functional-components/alert/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelProp, levelProp } from '../../internal/props';
+import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelProp, levelProp } from '../../internal/props';
 import type { AlertProps, AlertTypePropType, AlertVariantPropType, HeadingLevel, KoliBriAlertEventCallbacks, LabelPropType } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';
@@ -42,11 +42,10 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	};
 
 	private readonly handleCloserClick = (event: MouseEvent): void => {
-		// The predecessor rendered the transitional kol-button-wc, whose click handler stopped
-		// the propagation — kept so closer clicks do not leak to listeners on the alert host.
+		// Closer clicks must not reach listeners on the alert host.
 		event.stopPropagation();
 		this.closerTooltipBehavior.hideTooltip();
-		this._on?.onClose?.(new Event('Close'));
+		this.getRenderProp('on').onClose?.(new Event('Close'));
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.close);
 		}
@@ -61,6 +60,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 		this.watchHasCloser(this._hasCloser);
 		this.watchLabel(this._label);
 		this.watchLevel(this._level);
+		this.watchOn(this._on);
 		this.watchType(this._type);
 		this.watchVariant(this._variant);
 
@@ -154,6 +154,10 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	 * Defines the event callback functions for closing the alert.
 	 */
 	@Prop() public _on?: KoliBriAlertEventCallbacks;
+	@Watch('_on')
+	public watchOn(value?: KoliBriAlertEventCallbacks): void {
+		alertCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+	}
 
 	/**
 	 * Defines either the type of the component or of the components interactive element.

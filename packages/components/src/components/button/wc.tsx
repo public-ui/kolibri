@@ -32,9 +32,8 @@ import { BaseButtonWebComponent } from './base';
 /**
  * Transitional `kol-button-wc` — a `shadow:false` wrapper that renders `ButtonFC` directly into the light DOM.
  *
- * This exists because legacy consumers (accordion, badge, details, input-file, pagination,
- * popover-button, table-settings, etc.) render `<kol-button-wc>` inside their own shadow DOM
- * and rely on being able to reach the inner `.kol-button` CSS classes from their stylesheets. A
+ * It exists for consumers that render it inside their own shadow DOM and style the inner `.kol-button`
+ * classes as descendants from their stylesheets (the users of `KolButtonWcTag`). A
  * `shadow:true` element would encapsulate those classes behind a shadow boundary, breaking
  * consumer styling.
  *

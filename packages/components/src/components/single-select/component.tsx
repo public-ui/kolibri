@@ -36,16 +36,18 @@ import { CustomSuggestionsOptionFC, CustomSuggestionsOptionsGroupFC } from '../.
 import { InputFC, type InputFCProps } from '../../internal/functional-components/form-field/input';
 import { InputContainerFC } from '../../internal/functional-components/form-field/input-container';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { IconFC } from '../../internal/functional-components/icon/component';
 import { BaseListboxWebComponent } from '../../internal/functional-components/listbox/base-web-component';
+import { ListboxGroupFC } from '../../internal/functional-components/listbox/group';
 import type { SingleSelectApi } from '../../internal/functional-components/single-select/api';
 import { singleSelectPropsConfig } from '../../internal/functional-components/single-select/api';
+import { BEM_CLASS_SINGLE_SELECT__DELETE, SingleSelectNoResultsFC, SingleSelectToggleFC } from '../../internal/functional-components/single-select/component';
 import {
 	accessKeyProp,
 	hasClearButtonProp,
 	horizontalIconsProp,
 	placeholderProp,
 	requiredProp,
+	rowsProp,
 	shortKeyProp,
 	singleSelectOptionsProp,
 	variantProp,
@@ -139,6 +141,7 @@ export class KolSingleSelect
 		this.watchRequired(this._required);
 		this.watchPlaceholder(this._placeholder);
 		this.watchHasClearButton(this._hasClearButton);
+		this.watchRows(this._rows);
 
 		this.filteredOptions = this.getRenderProp('options');
 		this.updateInputValue(this._value);
@@ -430,12 +433,7 @@ export class KolSingleSelect
 
 	private renderOptions(): JSX.Element | JSX.Element[] {
 		if (!Array.isArray(this.filteredOptions) || this.filteredOptions.length === 0) {
-			// role=alert lets the screen reader announce the message.
-			return (
-				<li class="kol-single-select__no-results-message" role="alert">
-					{this.translateNoResultsMessage}{' '}
-				</li>
-			);
+			return <SingleSelectNoResultsFC message={this.translateNoResultsMessage} />;
 		}
 
 		return this.filteredOptions.map((option, index) => (
@@ -493,7 +491,7 @@ export class KolSingleSelect
 						startAdornment={startAdornment}
 						endAdornment={endAdornment}
 					>
-						<div class="kol-single-select__group">
+						<ListboxGroupFC block="kol-single-select">
 							<InputFC {...this.getInputProps()} />
 							{this.inputValue && this.getRenderProp('hasClearButton') && (
 								<KolButtonWcTag
@@ -503,7 +501,7 @@ export class KolSingleSelect
 									_variant="ghost"
 									_disabled={isDisabled}
 									data-testid="single-select-delete"
-									class="kol-single-select__delete"
+									class={BEM_CLASS_SINGLE_SELECT__DELETE}
 									hidden={isDisabled}
 									_on={{
 										onClick: this.handleClearButtonClick,
@@ -512,19 +510,12 @@ export class KolSingleSelect
 									}}
 								/>
 							)}
-							<IconFC
-								icons="kolicon-chevron-down"
-								label=""
-								class={clsx('kol-custom-suggestions-toggle', {
-									'kol-custom-suggestions-toggle--disabled': isDisabled,
-								})}
-								onClick={this.toggleListbox}
-							/>
-						</div>
+							<SingleSelectToggleFC disabled={isDisabled} handleClick={this.toggleListbox} />
+						</ListboxGroupFC>
 						<CustomSuggestionsOptionsGroupFC
 							blockSuggestionMouseOver={this.blockSuggestionMouseOver}
 							onKeyDown={this.handleDropdownKeyDown}
-							style={{ '--visible-options': `${this._rows ?? 5}` }}
+							style={{ '--visible-options': `${this.getRenderProp('rows') ?? 5}` }}
 							hidden={!this.isOpen || isDisabled}
 							id={createRelatedUniqueId(this.id, 'listbox')}
 						>
@@ -754,6 +745,11 @@ export class KolSingleSelect
 	@Watch('_required')
 	public watchRequired(value?: boolean): void {
 		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	@Watch('_rows')
+	public watchRows(value?: RowsPropType): void {
+		rowsProp.apply(value, (v) => this.setRenderProp('rows', v));
 	}
 
 	@Watch('_shortKey')
