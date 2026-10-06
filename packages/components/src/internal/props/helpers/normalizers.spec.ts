@@ -109,13 +109,16 @@ describe('normalizeNumber', () => {
 });
 
 describe('isNumberString', () => {
-	it.each<unknown>(['0', '5', '007', '12.5', '0.25'])('accepts %p', (value) => {
+	it.each<unknown>(['0', '5', '007', '12.5', '0.25', '-1', '+1', '1e3', '-2.5E-3', '.5', '5.'])('accepts %p', (value) => {
 		expect(isNumberString(value)).toBe(true);
 	});
 
-	it.each<unknown>(['', ' 5', '5 ', '-1', '+1', '1e3', '.5', '5.', '1,5', '1.2.3', 'abc', 'NaN', 5, undefined, null])('rejects %p', (value) => {
-		expect(isNumberString(value)).toBe(false);
-	});
+	it.each<unknown>(['', ' 5', '5 ', '-', '.', 'e3', '1e', '1e400', '0x10', '1,5', '1.2.3', 'abc', 'NaN', 'Infinity', 5, undefined, null])(
+		'rejects %p',
+		(value) => {
+			expect(isNumberString(value)).toBe(false);
+		},
+	);
 });
 
 describe('normalizeInputNumber', () => {
@@ -128,6 +131,9 @@ describe('normalizeInputNumber', () => {
 		['0', 0],
 		['007', 7],
 		['12.5', 12.5],
+		['-5', -5],
+		['1e3', 1000],
+		['.5', 0.5],
 	])('normalizes %p to %p', (value, expected) => {
 		expect(normalizeInputNumber(value)).toBe(expected);
 	});
@@ -136,7 +142,7 @@ describe('normalizeInputNumber', () => {
 		expect(normalizeInputNumber(NaN)).toBeUndefined();
 	});
 
-	it.each<unknown>(['', '-1', '1e3', ' 5', 'abc', undefined, null, true, {}, []])('throws for %p', (value) => {
+	it.each<unknown>(['', ' 5', '0x10', 'abc', undefined, null, true, {}, []])('throws for %p', (value) => {
 		expect(() => normalizeInputNumber(value)).toThrow('Invalid number');
 	});
 });
