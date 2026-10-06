@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11196,
-	"head": "648cd4f87b8dbc2a282791fe50a3b11edcf8ba09",
+	"head": "690c1f5d18ad97ff56b4699eea4eb36efd3ca962",
 	"repository": "public-ui/kolibri",
-	"runId": 37318968753,
-	"generatedAt": "2026-10-05T14:01:03.613Z",
-	"digest": "sha256:93ea5ad54b92f15dd77469d6b30bfd1e9c81bdc4ac80f7b3ff0be6658d1f3260",
+	"runId": 37474058417,
+	"generatedAt": "2026-10-06T14:10:38.827Z",
+	"digest": "sha256:ec3a96941c289f7bebbac7ade014c8388d927a17e2d259a5692ddcc4fc1fb4cf",
 	"baseline": {
-		"sha": "a8a0d8f12f48a036041eb8d024d7bb78b9b68b92",
+		"sha": "bc5965fb1aa3827a9c9034aceef18c0309ba0fe6",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -17,7 +17,7 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2912,
+		"unchanged": 2913,
 		"changed": 7,
 		"added": 0,
 		"removed": 0,
@@ -30,13 +30,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "a8a0d8f12f48a036041eb8d024d7bb78b9b68b92",
+					"sha": "bc5965fb1aa3827a9c9034aceef18c0309ba0fe6",
 					"ref": "develop",
-					"runId": 37287264975,
+					"runId": 37474007121,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-05T09:08:40.598Z",
-					"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
+					"createdAt": "2026-10-06T13:57:27.439Z",
+					"digest": "sha256:c5afbdb72be45a913a8edcd591ecdbd1ff2832f754c25ba9d8f4193118d2fa0d",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
+			"digest": "sha256:c5afbdb72be45a913a8edcd591ecdbd1ff2832f754c25ba9d8f4193118d2fa0d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2287,7 +2287,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:433a41d86c38d101fe9e32b63d6c221deac679cd4e6242a400c501abeda8bce0"
+					"hash": "sha256:492150b46fda0a1b667230b88eea29b090f49ac7c85ce4a58cb46ee6ae6c9e28"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -2353,13 +2353,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:cd7e46378a3b56d4e30311ddd2abab4a4053bacbd337bb2785e058aa29e2f00b"
+					"hash": "sha256:42d6bc449e0eee06d4f6f5c74a91a9bc60a467f4ee1908da2e10d81ad9f0bd2c"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:3ed151059d6c36188cf13129efc818bb4edb3a7a8e8b8d9c0e64ac0382ce5ecb"
+					"hash": "sha256:c10b880774cc4373d2871676c6d3712bb494e86b51f93124001c5b790d277686"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -2374,7 +2374,7 @@
 					"hash": "sha256:ec663d065f0e7a29a22228cd1c93b22a8c1f82d76180b48767bcd268720620d0"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table-variant",
 					"status": "unchanged",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1"
@@ -2563,13 +2563,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "a8a0d8f12f48a036041eb8d024d7bb78b9b68b92",
+					"sha": "bc5965fb1aa3827a9c9034aceef18c0309ba0fe6",
 					"ref": "develop",
-					"runId": 37287264975,
+					"runId": 37474007121,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-05T09:08:37.106Z",
-					"digest": "sha256:f748ca500756d37fcae1e56795982b96942c7b2bf4711b767f2a04607f587831",
+					"createdAt": "2026-10-06T13:57:25.707Z",
+					"digest": "sha256:c9415f7c43794240301b2ff3d5544a82d8b0195ae2269461e95b047e49112a06",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -2582,7 +2582,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:f748ca500756d37fcae1e56795982b96942c7b2bf4711b767f2a04607f587831",
+			"digest": "sha256:c9415f7c43794240301b2ff3d5544a82d8b0195ae2269461e95b047e49112a06",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4820,7 +4820,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:2ae33bfd802056de008d5c9c0e8c216991996cdd81faa2f8173b50d59fd18664"
+					"hash": "sha256:e9321e295443108b5ff9f7067fabcbcde000687dbc4e56eea8991c5282574fea"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -4886,13 +4886,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:06a7807d3c01d7e09bd352640109588e451b0600b725c8668530393f9b25b161"
+					"hash": "sha256:b7971f9e93aafb0a02e29aa728a84d0e624ce7bb43407dfd87269d9166b409db"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:d560cedda27dd26741d5fbae72719aafcbad32bf6a56e50dfc28695d61aeb474"
+					"hash": "sha256:9cfdbf39fd1f57bbcb09d3899f1ec13e7f563783ab04c984b03b5518cf8d421e"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -4907,7 +4907,7 @@
 					"hash": "sha256:a24c32d3c95e687056d3c2440f3a774cbc68d9b71e8e63fbc9f87b65555cabf9"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table-variant",
 					"status": "unchanged",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1"
@@ -5096,13 +5096,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "a8a0d8f12f48a036041eb8d024d7bb78b9b68b92",
+					"sha": "bc5965fb1aa3827a9c9034aceef18c0309ba0fe6",
 					"ref": "develop",
-					"runId": 37287264975,
+					"runId": 37474007121,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-05T09:08:40.598Z",
-					"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
+					"createdAt": "2026-10-06T13:57:27.439Z",
+					"digest": "sha256:c5afbdb72be45a913a8edcd591ecdbd1ff2832f754c25ba9d8f4193118d2fa0d",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -5115,7 +5115,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
+			"digest": "sha256:c5afbdb72be45a913a8edcd591ecdbd1ff2832f754c25ba9d8f4193118d2fa0d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7353,7 +7353,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:433a41d86c38d101fe9e32b63d6c221deac679cd4e6242a400c501abeda8bce0"
+					"hash": "sha256:492150b46fda0a1b667230b88eea29b090f49ac7c85ce4a58cb46ee6ae6c9e28"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -7419,13 +7419,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:cd7e46378a3b56d4e30311ddd2abab4a4053bacbd337bb2785e058aa29e2f00b"
+					"hash": "sha256:42d6bc449e0eee06d4f6f5c74a91a9bc60a467f4ee1908da2e10d81ad9f0bd2c"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:3ed151059d6c36188cf13129efc818bb4edb3a7a8e8b8d9c0e64ac0382ce5ecb"
+					"hash": "sha256:c10b880774cc4373d2871676c6d3712bb494e86b51f93124001c5b790d277686"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -7440,7 +7440,7 @@
 					"hash": "sha256:ec663d065f0e7a29a22228cd1c93b22a8c1f82d76180b48767bcd268720620d0"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table-variant",
 					"status": "unchanged",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1"
@@ -7629,13 +7629,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "a8a0d8f12f48a036041eb8d024d7bb78b9b68b92",
+					"sha": "bc5965fb1aa3827a9c9034aceef18c0309ba0fe6",
 					"ref": "develop",
-					"runId": 37287264975,
+					"runId": 37474007121,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-05T09:07:31.787Z",
-					"digest": "sha256:00d520d7ec7edc51e49ac64265799ed9a2d070ab5b9ace49b07d3f57b25b029a",
+					"createdAt": "2026-10-06T13:57:25.630Z",
+					"digest": "sha256:28ded854493394691fa2dabeaec505659ba041dfa9d91ca1389756aaa5fabe18",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -7648,7 +7648,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:232947c44ce0089aa609d610faddf6190c1a4089f9ddbd0cc599398a810548b6",
+			"digest": "sha256:68e2d3f712ba8f7233e31ce6b77044a442a7478c101e687d697d5c9a26a7e85b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7732,9 +7732,9 @@
 					"name": "badge-basic--basic-horizontal",
 					"route": "badge/basic",
 					"status": "changed",
-					"hash": "sha256:7d6fa748b30621fcfaeb9352b58445b3862c28d8039cd6646bd88e4102057f4f",
-					"diffPixels": 1493,
-					"diffRatio": 0.275258,
+					"hash": "sha256:aa83f9efbf2e48260424d6ba25fcbfb9a083dcb491e2d212f483cb2e41eec41d",
+					"diffPixels": 1551,
+					"diffRatio": 0.285951,
 					"sizeMismatch": {
 						"expected": [
 							226,
@@ -7742,7 +7742,7 @@
 						],
 						"actual": [
 							223,
-							22
+							19
 						]
 					},
 					"expected": "theme-desy/badge-basic--basic-horizontal.expected.png",
@@ -7753,9 +7753,9 @@
 					"name": "badge-basic--basic-vertical",
 					"route": "badge/basic",
 					"status": "changed",
-					"hash": "sha256:b5b7b2798a81ddc5e79a6a8a593873f91c046e7bfe671c58ae37fbba163f4641",
-					"diffPixels": 3749,
-					"diffRatio": 0.243284,
+					"hash": "sha256:f29b12a15692e82a4d3ae249cc3141b99a3af3673d61738336ce6f23c23f5b6f",
+					"diffPixels": 5704,
+					"diffRatio": 0.370149,
 					"sizeMismatch": {
 						"expected": [
 							127,
@@ -7763,7 +7763,7 @@
 						],
 						"actual": [
 							134,
-							109
+							97
 						]
 					},
 					"expected": "theme-desy/badge-basic--basic-vertical.expected.png",
@@ -7774,9 +7774,9 @@
 					"name": "badge-basic--formatted-label",
 					"route": "badge/basic",
 					"status": "changed",
-					"hash": "sha256:4eb5760b960742606b75e88498ac220d792a4d4361d08f37f08a7535ceb7a232",
-					"diffPixels": 3431,
-					"diffRatio": 0.153101,
+					"hash": "sha256:556747213de5c53834b511f3d9a1d3761e5122e23e287b127ef38df306cc9e5e",
+					"diffPixels": 4939,
+					"diffRatio": 0.220393,
 					"sizeMismatch": {
 						"expected": [
 							245,
@@ -7784,7 +7784,7 @@
 						],
 						"actual": [
 							270,
-							80
+							71
 						]
 					},
 					"expected": "theme-desy/badge-basic--formatted-label.expected.png",
@@ -10003,9 +10003,9 @@
 					"name": "table-state-columns--action-columns",
 					"route": "table/state-columns",
 					"status": "changed",
-					"hash": "sha256:e37b3c568ab29d6480eeadf4b6b2277ddf3008a65ce68b074b11622301c39a3e",
-					"diffPixels": 2923,
-					"diffRatio": 0.013302,
+					"hash": "sha256:1342cee0628f529f8068a1d9fb5c8d86deb473dd18c390b808950c423b1ea464",
+					"diffPixels": 3219,
+					"diffRatio": 0.014649,
 					"sizeMismatch": {
 						"expected": [
 							968,
@@ -10042,13 +10042,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:ae77c7906255bf5a99111df15662a28e645f43ed9f65b174c99bad2853d26a32"
+					"hash": "sha256:f932dfadea25f7a1ed9fc0d0b17391a24b1df1a61fef87e90454fbae065b30dc"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:5c1a83e2a7d56978b8b55308c8a9bd93ed154665adb83ac9475f6b07150a29d9"
+					"hash": "sha256:624e515d0defb6b663bd15a2b77df0962192bf220179bd7f1bebcfd23328b68a"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -10063,7 +10063,7 @@
 					"hash": "sha256:2d59e93df39ab37e46f1f1b57fcab18197e0c6276ad0285d109f9a82a9a7fc1e"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table-variant",
 					"status": "unchanged",
 					"hash": "sha256:3b0a61bdb029c15cc195f15685cd423ec817dc72241c896159576063bcb2c657"
@@ -10240,9 +10240,9 @@
 					"name": "version-basic--basic",
 					"route": "version/basic",
 					"status": "changed",
-					"hash": "sha256:ea1af7a61b6348ebc2cd03c7005855140d881ae76194324cb980b1befa052e19",
-					"diffPixels": 469,
-					"diffRatio": 0.287201,
+					"hash": "sha256:2e8fb794de4414e1ef5784c8865027c369226d093c2b28b76444afd5abed7c1d",
+					"diffPixels": 521,
+					"diffRatio": 0.319045,
 					"sizeMismatch": {
 						"expected": [
 							71,
@@ -10250,7 +10250,7 @@
 						],
 						"actual": [
 							69,
-							21
+							18
 						]
 					},
 					"expected": "theme-desy/version-basic--basic.expected.png",
@@ -10267,13 +10267,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "a8a0d8f12f48a036041eb8d024d7bb78b9b68b92",
+					"sha": "bc5965fb1aa3827a9c9034aceef18c0309ba0fe6",
 					"ref": "develop",
-					"runId": 37287264975,
+					"runId": 37474007121,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-05T09:08:22.456Z",
-					"digest": "sha256:c0ead95e226105a4810adee7b9b297fde17c8f503d2c50afbb20f306559fbb7d",
+					"createdAt": "2026-10-06T13:57:04.988Z",
+					"digest": "sha256:97b937368d8160a0bab76dbc73fe3a582e849d167c9f1d38dfdc64172a929955",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -10286,7 +10286,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:c0ead95e226105a4810adee7b9b297fde17c8f503d2c50afbb20f306559fbb7d",
+			"digest": "sha256:97b937368d8160a0bab76dbc73fe3a582e849d167c9f1d38dfdc64172a929955",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12524,7 +12524,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:65a750156e948b9ab2c0c1a566851e86bf67457cabbd3930b9b20d02784528a2"
+					"hash": "sha256:9b8f0d851d8f9b29d7905f6c85f4f6140b7509ddf1bdf09382b34d3455d770b2"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -12590,13 +12590,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:f7eb9bdfbec0126648da88fa9e47a5c3f9c6763cdd4b8fa0a1c9d0c19f99c81a"
+					"hash": "sha256:5c914746981c8515fff88e9c9feaeea975336b502fe6884bf84969c53c3dfeaf"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:bd84c55066cdfa429a47f57f389691a20c2746f617a91c06d2da4db5c808a346"
+					"hash": "sha256:9faa1e392a1d457b61d51ba23ac316b8d68d70c3be65b10c4c17bc6547ea9935"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -12611,7 +12611,7 @@
 					"hash": "sha256:19f099e9096c980a6bfed2a2096f4f45dc92bcff3bff3a6a418d45fae4d23447"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table-variant",
 					"status": "unchanged",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1"
@@ -12798,28 +12798,28 @@
 			"package": "theme-kern",
 			"themeDir": "theme-kern_v2",
 			"baseline": {
-				"files": 417,
+				"files": 418,
 				"meta": {
-					"sha": "a8a0d8f12f48a036041eb8d024d7bb78b9b68b92",
+					"sha": "bc5965fb1aa3827a9c9034aceef18c0309ba0fe6",
 					"ref": "develop",
-					"runId": 37287264975,
+					"runId": 37474007121,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-05T09:07:30.460Z",
-					"digest": "sha256:702b9742141cd044aaff6c7ef2452e74881634367f2fabe380e10c5d1dcd8cd9",
+					"createdAt": "2026-10-06T13:57:22.838Z",
+					"digest": "sha256:b964a078e47a454ca41a8f67b9a6bfda1e84e82512176941e8005b24adc3c74a",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 417,
+				"unchanged": 418,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:702b9742141cd044aaff6c7ef2452e74881634367f2fabe380e10c5d1dcd8cd9",
+			"digest": "sha256:b964a078e47a454ca41a8f67b9a6bfda1e84e82512176941e8005b24adc3c74a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15057,7 +15057,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:6baefb736a5fcead632c48516ec734af691b7c4508f207353a79174414bea73a"
+					"hash": "sha256:c511fffb38df3171f177864b3120ce78c006c5e89cadb49f081cafde31d997e4"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -15123,13 +15123,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:3b5db069fe283ffdc5be252596541e0ba3369a6ff161f66a08fe74129659c388"
+					"hash": "sha256:87ac14413decd6beaeb85650ef01e7fc9e3a3054bfe4dda6460a9865957b860a"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:6d212e2f977d83ecc2c813a28fcf85bc62ae159d0103d0d68ee86fb8288f7914"
+					"hash": "sha256:93de3555c331ef94f66f964a0f17ab585e847b83a468d4282be36e195d42c7ce"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -15144,10 +15144,16 @@
 					"hash": "sha256:52b570cc90930d0619db4dbfcce82ed328a3a0fface3c1c40f0371d8e039fe75"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-0",
 					"route": "table-variant",
 					"status": "unchanged",
-					"hash": "sha256:281cbad976b8e9a24aa18f9616fc0ed4a14989e03611dfac8bb6ea3de82939e6"
+					"hash": "sha256:2af254f8b599c639fd6c19d6e56b651c6f6654d63f98f3f4141b446ff3162da7"
+				},
+				{
+					"name": "table-variant--variant-1",
+					"route": "table-variant",
+					"status": "unchanged",
+					"hash": "sha256:1174df3ab88f261cb013f6be66f8457707c5cbc23f7b55d48636afc140b4d89f"
 				},
 				{
 					"name": "table-with-footer--with-footer",
@@ -15333,13 +15339,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "a8a0d8f12f48a036041eb8d024d7bb78b9b68b92",
+					"sha": "bc5965fb1aa3827a9c9034aceef18c0309ba0fe6",
 					"ref": "develop",
-					"runId": 37287264975,
+					"runId": 37474007121,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-05T09:07:10.453Z",
-					"digest": "sha256:a49f9eb25f8f401ab7370360077634e0a78dbfafabd80b98cdff9aeeff8f2c8d",
+					"createdAt": "2026-10-06T13:56:52.764Z",
+					"digest": "sha256:a898190eba166dee11d6278b4413461424fb64b71ab59e4450eb73d3f586c223",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -15352,7 +15358,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a49f9eb25f8f401ab7370360077634e0a78dbfafabd80b98cdff9aeeff8f2c8d",
+			"digest": "sha256:a898190eba166dee11d6278b4413461424fb64b71ab59e4450eb73d3f586c223",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17590,7 +17596,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:181908fbbefd18b864c26d63e048c73b9cb1bb6391b1bedd3254bf7e6cbb493a"
+					"hash": "sha256:947abf4a0326ed31ba22f0a986505a3f1494629088c47a4d7eb7da51a360e5e4"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -17656,13 +17662,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:2fe1e4ea3c8ce9aa6f47497e3de94dfa20fc63f98cbe2c300f0f647d65f67eb0"
+					"hash": "sha256:5a73b3b3d6974df9b1744a7b62338e814e1e9b7267b30d95b10fb15e2a08c685"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:7dc7c812b314db89a6a11879190a79032f1208f8a04f8b5823f445b763bba99a"
+					"hash": "sha256:5b68236ec70a640f9cd3bb6604249e1c24b8e5d1ff2280a9968395d840cda0f6"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -17677,7 +17683,7 @@
 					"hash": "sha256:086bc93ce4b3a1e52b8f3cb9b618f3ac1c678173e5b6448805615d5e4b56f30f"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table-variant",
 					"status": "unchanged",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1"

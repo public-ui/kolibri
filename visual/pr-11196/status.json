@@ -1,16 +1,16 @@
 {
 	"schema": 1,
-	"state": "failure",
-	"description": "1 of 7 visual changes rejected",
-	"computedAt": "2026-10-06T13:57:28.607Z",
+	"state": "pending",
+	"description": "7 changed – 2 of 7 approved, review pending",
+	"computedAt": "2026-10-06T14:10:39.488Z",
 	"pr": 11196,
-	"head": "648cd4f87b8dbc2a282791fe50a3b11edcf8ba09",
-	"digest": "sha256:93ea5ad54b92f15dd77469d6b30bfd1e9c81bdc4ac80f7b3ff0be6658d1f3260",
+	"head": "690c1f5d18ad97ff56b4699eea4eb36efd3ca962",
+	"digest": "sha256:ec3a96941c289f7bebbac7ade014c8388d927a17e2d259a5692ddcc4fc1fb4cf",
 	"counts": {
 		"changes": 7,
-		"open": 0,
-		"approved": 6,
-		"rejected": 1,
+		"open": 5,
+		"approved": 2,
+		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
@@ -19,19 +19,16 @@
 	],
 	"items": {
 		"theme-desy/badge-basic--basic-horizontal": {
-			"state": "rejected",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-desy/badge-basic--basic-vertical": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-desy/badge-basic--formatted-label": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-desy/badge-basic--smart-button": {
 			"state": "approved",
@@ -44,14 +41,12 @@
 			"by": "deleonio"
 		},
 		"theme-desy/table-state-columns--action-columns": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		},
 		"theme-desy/version-basic--basic": {
-			"state": "approved",
-			"notes": [],
-			"by": "deleonio"
+			"state": "open",
+			"notes": []
 		}
 	}
 }
