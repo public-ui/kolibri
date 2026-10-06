@@ -17,7 +17,6 @@
 	}
 
 	.kol-table {
-		$root: &;
 		$selection-width: to-rem(68);
 		--kol-table-selection-col-width: #{$selection-width};
 
@@ -42,7 +41,7 @@
 			max-height: 80vh;
 			overflow: auto;
 
-			@at-root #{$root}:has(#{$root}__focus-element:focus) & {
+			.kol-table:has(.kol-table__focus-element:focus) & {
 				outline-color: var(--color-primary-variant);
 				outline-style: solid;
 				outline-width: 3px;
@@ -208,7 +207,7 @@
 			}
 
 			//switch the colors in the table header
-			@at-root #{$root}__head-row & {
+			.kol-table__head-row & {
 				--kol-selection-input-main-color: var(--color-light);
 				--kol-selection-input-off-color: var(--color-mute);
 				--kol-selection-input-focus-color: var(--color-mute-variant);

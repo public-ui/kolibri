@@ -25,6 +25,8 @@ export type FormFieldLabelFCProps = JSXBase.HTMLAttributes<Omit<HTMLLabelElement
 	hideLabel?: boolean;
 	/** Block of the surrounding field, `kol-form-field` or `kol-field-control`. */
 	baseClassName?: string;
+	/** Leaves the ID off the label, because the label tooltip of the control carries it. */
+	omitId?: boolean;
 	showBadge?: boolean;
 	readOnly?: boolean;
 	infoPopover?: FormFieldInfoPopover;
@@ -44,6 +46,7 @@ export const FormFieldLabelFC: FC<FormFieldLabelFCProps> = ({
 	label,
 	hideLabel,
 	hasExpertSlot,
+	omitId,
 	showBadge = true,
 	readOnly,
 	infoPopover,
@@ -56,9 +59,9 @@ export const FormFieldLabelFC: FC<FormFieldLabelFCProps> = ({
 		<Component
 			{...other}
 			class={clsx(`${baseClassName}__label`, classNames)}
-			id={!useTooltipInsteadOfLabel ? createRelatedUniqueId(id, 'label') : undefined}
+			id={!useTooltipInsteadOfLabel && !omitId ? createRelatedUniqueId(id, 'label') : undefined}
 			hidden={useTooltipInsteadOfLabel}
-			htmlFor={id}
+			htmlFor={Component === 'legend' ? undefined : id}
 		>
 			<SpanFC class={`${baseClassName}__label-text`} label={hasExpertSlot ? '' : (label ?? '')} badgeText={badgeText}>
 				<slot name="expert"></slot>

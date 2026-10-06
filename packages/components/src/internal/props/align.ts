@@ -1,5 +1,5 @@
-import type { AlignPropType } from '../../schema';
-import { alignPropTypeOptions } from '../../schema';
+import type { AlignPropType } from '../../schema/props/align-options';
+import { alignPropTypeOptions } from '../../schema/props/align-options';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';

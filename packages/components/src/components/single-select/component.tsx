@@ -418,7 +418,7 @@ export class KolSingleSelect
 			touched: this.getRenderProp('touched'),
 			msg: this.getRenderProp('msg'),
 			...(shortKey ? { 'aria-keyshortcuts': shortKey } : {}),
-			'aria-activedescendant': this.isOpen && this.focusedIndex >= 0 ? `option-${this.focusedIndex}` : undefined,
+			'aria-activedescendant': this.getActiveDescendant(),
 			'aria-autocomplete': 'both',
 			'aria-controls': createRelatedUniqueId(id, 'listbox'),
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
@@ -450,6 +450,7 @@ export class KolSingleSelect
 
 		return this.filteredOptions.map((option, index) => (
 			<CustomSuggestionsOptionFC
+				id={this.getOptionId(index)}
 				index={index}
 				option={option.label}
 				searchTerm={this.inputValue}

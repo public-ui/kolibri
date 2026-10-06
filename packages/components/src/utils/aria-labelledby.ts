@@ -40,7 +40,7 @@ export const resolveTargets = (host: HTMLElement | Element | undefined, value?: 
 
 export const attachInternals = (host: HTMLElement | Element | undefined): HostInternals | undefined => {
 	// Stencil's HTMLElement typing does not expose attachInternals here.
-	const attach = (host as unknown as { attachInternals?: () => HostInternals }).attachInternals;
+	const attach = (host as unknown as { attachInternals?: () => HostInternals } | undefined)?.attachInternals;
 	if (!attach) return undefined;
 	try {
 		const internals = attach.call(host);

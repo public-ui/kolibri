@@ -275,9 +275,10 @@ export class KolCombobox
 		}
 	}
 
-	/** Reports the suggestion; the `_value` prop keeps its value (#11124). */
+	/** Writes the suggestion to `_value` and reports it. */
 	private selectOption(option: string): void {
 		const name = this.getRenderProp('name');
+		this._value = option;
 		this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, { name, value: option }, this.ctaRef.el), option);
 		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, { name, value: option }, this.ctaRef.el), option);
 		this.hasValue = !!option;
@@ -406,7 +407,7 @@ export class KolCombobox
 			class: 'kol-combobox__input',
 			type: 'text',
 			role: 'combobox',
-			'aria-activedescendant': this.isOpen && this.focusedIndex >= 0 ? `option-${this.focusedIndex}` : undefined,
+			'aria-activedescendant': this.getActiveDescendant(),
 			'aria-autocomplete': 'both',
 			'aria-controls': createRelatedUniqueId(id, 'listbox'),
 			'aria-describedby': ariaDescribedBy.length > 0 ? ariaDescribedBy.join(' ') : undefined,
@@ -434,6 +435,7 @@ export class KolCombobox
 			this.filteredSuggestions.length > 0 &&
 			this.filteredSuggestions.map((option, index) => (
 				<CustomSuggestionsOptionFC
+					id={this.getOptionId(index)}
 					disabled={false}
 					index={index}
 					option={option}

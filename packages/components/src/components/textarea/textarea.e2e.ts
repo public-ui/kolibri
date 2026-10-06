@@ -14,6 +14,26 @@ test.describe(COMPONENT_NAME, () => {
 		testValue: TEST_VALUE,
 	});
 
+	test.describe('Adjust height', () => {
+		test('grows with the content and shrinks again, but not below the rows that were set', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Textarea" _adjust-height _rows="3"></${COMPONENT_NAME}>`);
+			const textarea = page.locator('textarea');
+			const readRows = () => textarea.evaluate((element: HTMLTextAreaElement) => element.rows);
+
+			await textarea.fill('1\n2\n3\n4\n5\n6');
+			await page.waitForChanges();
+			expect(await readRows()).toBe(6);
+
+			await textarea.fill('1\n2\n3\n4');
+			await page.waitForChanges();
+			expect(await readRows()).toBe(4);
+
+			await textarea.fill('1');
+			await page.waitForChanges();
+			expect(await readRows()).toBe(3);
+		});
+	});
+
 	test.describe('Callbacks and Events', () => {
 		test('should call onFocus callback and emit focus event when textarea receives focus', async ({ page }) => {
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input"></${COMPONENT_NAME}>`);

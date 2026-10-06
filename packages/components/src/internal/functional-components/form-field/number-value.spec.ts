@@ -16,7 +16,8 @@ describe('getNumberValueType', () => {
 		[NaN, 'null'],
 		[null, 'null'],
 		[undefined, 'null'],
-		['-5', 'null'],
+		['-5', 'NumberString'],
+		['abc', 'null'],
 	])('classifies %p as %p', (value, type) => {
 		expect(getNumberValueType(value)).toBe(type);
 	});

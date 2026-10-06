@@ -40,13 +40,9 @@
 		cursor: pointer;
 	}
 
-	.kol-span {
-		$spanRoot: &;
-
-		&__label {
-			@at-root #{$spanRoot} &--hide-label & {
-				display: none;
-			}
+	.kol-span__label {
+		.kol-span .kol-span__label--hide-label & {
+			display: none;
 		}
 	}
 

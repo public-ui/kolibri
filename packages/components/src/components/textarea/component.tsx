@@ -78,6 +78,12 @@ export class KolTextarea
 	 */
 	private hasValue = false;
 
+	/** The rows the consumer set; `_adjustHeight` never shrinks the textarea below them. */
+	private minRows?: number;
+
+	/** Set while the textarea writes its measured rows to `_rows`, so the watcher keeps `minRows`. */
+	private isWritingRows = false;
+
 	@State() public id = createUniqueId('textarea');
 
 	/** Whether the info popover of the label is open. */
@@ -159,9 +165,9 @@ export class KolTextarea
 		// Runs after the first paint, so the height can be measured.
 		setTimeout(() => {
 			if (this._adjustHeight === true && this.ctaRef.el) {
-				this._rows = this.increaseTextareaHeight(this.ctaRef.el);
+				this.writeRows(this.measureTextareaRows(this.ctaRef.el));
 			} else if (!this._rows) {
-				this._rows = 1;
+				this.writeRows(1);
 			}
 		});
 	}
@@ -181,7 +187,7 @@ export class KolTextarea
 		if (this.ctaRef.el instanceof HTMLTextAreaElement) {
 			this._value = this.ctaRef.el.value;
 			if (this.getRenderProp('adjustHeight')) {
-				this._rows = this.increaseTextareaHeight(this.ctaRef.el);
+				this.writeRows(this.measureTextareaRows(this.ctaRef.el));
 			}
 			this.handleInput(event);
 		}
@@ -202,13 +208,19 @@ export class KolTextarea
 		this.counter.handleKeyDown(event, this.ctaRef.el?.value.length ?? 0);
 	};
 
+	private writeRows(rows: number): void {
+		this.isWritingRows = true;
+		this._rows = rows;
+		this.isWritingRows = false;
+	}
+
 	/**
-	 * Measures the rows the content needs. The result never falls below the current rows, so the
-	 * textarea only grows (#11051).
+	 * Measures the rows the content needs, so the textarea grows and shrinks with its content. The
+	 * result never falls below the rows the consumer set.
 	 *
 	 * @see https://stackoverflow.com/questions/17772260/textarea-auto-height
 	 */
-	private increaseTextareaHeight(el: HTMLTextAreaElement): number {
+	private measureTextareaRows(el: HTMLTextAreaElement): number {
 		// Hides the scrollbar during the measurement; the padding is removed temporarily for a correct row height.
 		el.style.overflow = 'hidden';
 		el.style.padding = '0';
@@ -219,8 +231,8 @@ export class KolTextarea
 		el.rows = currentRows;
 		el.style.padding = '';
 
-		const rows = this.getRenderProp('rows');
-		return rows && rows > nextRows ? rows : nextRows;
+		const minRows = this.minRows;
+		return minRows && minRows > nextRows ? minRows : nextRows;
 	}
 
 	// --- Render ---
@@ -561,7 +573,12 @@ export class KolTextarea
 
 	@Watch('_rows')
 	public watchRows(value?: RowsPropType): void {
-		rowsProp.apply(value, (v) => this.setRenderProp('rows', v));
+		rowsProp.apply(value, (v) => {
+			this.setRenderProp('rows', v);
+			if (!this.isWritingRows) {
+				this.minRows = v;
+			}
+		});
 	}
 
 	@Watch('_shortKey')

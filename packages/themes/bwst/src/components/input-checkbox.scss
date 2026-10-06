@@ -13,10 +13,8 @@
 	}
 
 	.kol-form-field {
-		$root: &;
-
 		&--disabled {
-			#{$root}__input {
+			.kol-form-field__input {
 				outline: none;
 			}
 		}
@@ -25,8 +23,6 @@
 	@include kol-field-control-theme;
 
 	.kol-field-control {
-		$root: &;
-
 		&--label-align-left:not(.kol-input-checkbox__field-control--variant-button) &__label {
 			padding-right: to-rem(6.4);
 		}
@@ -152,8 +148,6 @@
 	}
 
 	.kol-input-checkbox__field-control {
-		$root: &;
-
 		&--variant-button {
 			.kol-field-control {
 				&__input,

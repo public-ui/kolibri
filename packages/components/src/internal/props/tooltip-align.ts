@@ -1,5 +1,5 @@
-import type { AlignPropType } from '../../schema';
-import { alignPropTypeOptions } from '../../schema';
+import type { AlignPropType } from '../../schema/props/align-options';
+import { alignPropTypeOptions } from '../../schema/props/align-options';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
@@ -17,7 +17,7 @@ function normalizeTooltipAlign(value: unknown): AlignPropType {
 	if ((alignPropTypeOptions as readonly string[]).includes(str)) {
 		return str as AlignPropType;
 	}
-	return 'right';
+	throw new Error(`Invalid tooltipAlign value: ${str}`);
 }
 
 export const tooltipAlignProp = createPropDefinition<TooltipAlignProp>('tooltipAlign', 'right', normalizeTooltipAlign, (v) =>

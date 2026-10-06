@@ -7,8 +7,6 @@
 	@include icon;
 
 	.kol-accordion {
-		$root: &;
-
 		background: var(--color-white-100);
 		border-radius: 6px;
 
@@ -116,7 +114,7 @@
 				color: var(--color-black-60);
 			}
 
-			#{$root}__content {
+			.kol-accordion__content {
 				color: var(--color-black-70);
 			}
 		}

@@ -57,6 +57,8 @@ import { propagateSubmitEventToForm } from '../form/controller';
 /**
  * The **Range** input type creates a slider control for selecting a numeric value within a defined range. Use the `_min`, `_max`, and `_step` properties to configure the range and step size.
  *
+ * Like a native range input, the field always has a value: without `_value` it starts at the middle of the range and reports it as its value and form value.
+ *
  * @slot - The label of the input field.
  * @slot expert - Custom label content, e.g. for rich text or icons. https://public-ui.github.io/docs/concepts/expert-slot
  */
@@ -152,7 +154,7 @@ export class KolInputRange
 		this.watchValue(this._value);
 	}
 
-	/** Without a value the field takes the value of the native range input, which the browser sets to the middle of the range (#11076). */
+	/** Without a value the field takes the value of the native range input, which the browser sets to the middle of the range. */
 	public componentDidLoad(): void {
 		if (!this._value && this.rangeRef?.value) {
 			this._value = parseFloat(this.rangeRef.value);
@@ -177,9 +179,20 @@ export class KolInputRange
 
 	// --- Event handling ---
 
-	/** The inputs follow `_value` only on `change` (#11075). */
+	/**
+	 * Both inputs show the same value while the user enters it: the slider writes `_value`, which renders
+	 * the number input, and the number input moves the slider directly, so the typed text stays as it is
+	 * until `change` writes `_value`.
+	 */
 	private readonly handleRangeInput = (event: Event): void => {
-		this.handleInput(event, this.readValue((event.target as HTMLInputElement).value));
+		const target = event.target as HTMLInputElement;
+		const value = this.readValue(target.value);
+		if (target === this.rangeRef) {
+			this._value = value;
+		} else if (this.rangeRef && Number.isFinite(Number(value))) {
+			this.rangeRef.value = String(value);
+		}
+		this.handleInput(event, value);
 	};
 
 	private readonly handleRangeChange = (event: Event): void => {

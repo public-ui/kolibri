@@ -36,10 +36,14 @@ describe('radioOptionsProp', () => {
 		expect(applied(radioOptionsProp, JSON.stringify(OPTIONS))).toEqual([OPTIONS]);
 	});
 
+	it('converts a number label to a string', () => {
+		expect(applied(radioOptionsProp, [{ label: 'A' }, { label: 1, value: 1 }])).toEqual([[{ label: 'A' }, { label: '1', value: 1 }]]);
+	});
+
 	it.each([
 		['an option without label', [{ value: 'a' }]],
+		['an option with a NaN label', [{ label: NaN, value: 'a' }]],
 		['an option with an empty label', [{ label: '', value: 'a' }]],
-		['an option with a number label', [{ label: 'A' }, { label: 1, value: 1 }]],
 		['an empty string', ''],
 		['an object', { label: 'A' }],
 		['an unparsable string', 'abc'],

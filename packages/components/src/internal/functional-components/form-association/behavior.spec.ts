@@ -28,7 +28,27 @@ const createMultipleSelect = (): HTMLSelectElement => {
 	return select;
 };
 
+describe('FormAssociationBehavior host', () => {
+	it('finds the shadow host of an element inside a shadow root', () => {
+		const shadowHost = document.createElement('div');
+		const root = shadowHost.attachShadow({ mode: 'open' });
+		const inner = document.createElement('span');
+		root.appendChild(inner);
+		const behavior = new FormAssociationBehavior(BaseWebComponent.stateLess, { host: inner, type: 'text' });
+		expect(behavior.host).toBe(shadowHost);
+	});
+});
+
 describe('FormAssociationBehavior.setFormAssociatedValue', () => {
+	describe('file', () => {
+		it.each(['', null, undefined])('clears the file input for %j without throwing', (value) => {
+			const input = document.createElement('input');
+			input.setAttribute('type', 'file');
+			expect(() => syncInto('file', input, value)).not.toThrow();
+			expect(input.value).toBe('');
+		});
+	});
+
 	describe('select into a <select>', () => {
 		it('selects one option for a single value', () => {
 			expect(selectedValues(syncInto('select', createMultipleSelect(), 'E'))).toEqual(['E']);

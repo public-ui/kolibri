@@ -133,8 +133,8 @@ describe('hrefProp', () => {
 });
 
 /**
- * `labelProp` accepts the empty string or 2 to 80 characters and emits the label hints for an
- * accepted value.
+ * `labelProp` accepts the empty string or at least 2 characters and emits the label hints for an
+ * accepted value, the UI/UX hint for a label longer than 80 characters included.
  */
 describe('labelProp', () => {
 	it.each([undefined, null])('applies the default "" for %p', (value) => {
@@ -151,7 +151,7 @@ describe('labelProp', () => {
 		expect(warnings()).toEqual([]);
 	});
 
-	it.each<unknown>(['a', 1, 'b'.repeat(81)])('ignores %p with a developer warning', (value) => {
+	it.each<unknown>(['a', 1])('ignores %p with a developer warning', (value) => {
 		expect(applied(labelProp, value)).toEqual([]);
 		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid. The value is ignored.`)]);
 	});
@@ -166,7 +166,12 @@ describe('labelProp', () => {
 		expect(hints()).toEqual([expect.stringContaining('The heading or label ("ab") is inaccessible.')]);
 	});
 
-	it.each<unknown>(['Label', '12', 'c'.repeat(81)])('emits no hint for %p', (value) => {
+	it('emits the ui/ux hint for an accepted label longer than 80 characters', () => {
+		expect(applied(labelProp, 'c'.repeat(81))).toEqual(['c'.repeat(81)]);
+		expect(hints()).toEqual([expect.stringContaining('A heading or label should not be longer than 80 characters.')]);
+	});
+
+	it.each<unknown>(['Label', '12', 'd'.repeat(80)])('emits no hint for %p', (value) => {
 		applied(labelProp, value);
 		expect(hints()).toEqual([]);
 	});

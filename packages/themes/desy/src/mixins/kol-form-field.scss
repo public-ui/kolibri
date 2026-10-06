@@ -3,8 +3,6 @@
 
 @mixin kol-form-field {
 	.kol-form-field {
-		$root: &;
-
 		&__label {
 			@include popover-button;
 
@@ -17,11 +15,11 @@
 			font-weight: 700;
 			line-height: 1.25;
 
-			@at-root #{$root}--read-only & {
+			.kol-form-field--read-only & {
 				color: var(--color-black-70);
 			}
 
-			@at-root #{$root}--disabled & {
+			.kol-form-field--disabled & {
 				opacity: 1;
 				color: var(--color-black-60);
 			}

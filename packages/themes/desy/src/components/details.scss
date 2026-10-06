@@ -8,8 +8,6 @@
 	@include icon;
 
 	.kol-details {
-		$root: &;
-
 		/* The host is an inline-block, so the line box around it is sized from the block's baseline.
 		   The predecessor took that baseline from the collapsed wrapper: its content was clipped to
 		   zero height but still laid out a line box, which overflowed and pushed the surrounding line
@@ -40,7 +38,7 @@
 			   matches them now, so the ring is handed back and the two text effects are returned to
 			   their resting state. The mixin is included inside the block, so its rules carry a
 			   `.kol-details` ancestor step; the overrides need the same step to win on specificity. */
-			#{$root} &:not([aria-disabled='true']):focus {
+			.kol-details &:not([aria-disabled='true']):focus {
 				color: var(--color-blue-100);
 				outline: revert;
 
@@ -64,7 +62,7 @@
 				color: var(--color-black-60);
 			}
 
-			#{$root}__content {
+			.kol-details__content {
 				color: var(--color-black-70);
 			}
 		}
