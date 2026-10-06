@@ -4,4 +4,12 @@
 @layer kol-theme-component {
 	@include button('kol-button');
 	@include button('kol-link');
+
+	.kol-toolbar {
+		gap: to-rem(15);
+
+		hr {
+			border-color: var(--ecl-color-neutral-80);
+		}
+	}
 }
