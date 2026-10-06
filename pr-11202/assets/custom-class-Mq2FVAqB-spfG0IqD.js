@@ -1,0 +1,1 @@
+import{a as e,y as t}from"./base-web-component-DmWvsvnM-BADqSao_.js";import{t as n}from"./validators-BHvQVnPT-ctkp2RaX.js";function r(e){return e===``||n(e)}var i=e(`customClass`,``,t,r);export{i as t};
