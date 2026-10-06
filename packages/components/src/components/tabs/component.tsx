@@ -84,12 +84,12 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	};
 
 	/**
-	 * Deliberately not `@State`: both are derived from props in `componentWillRender`, so a prop
-	 * change already schedules the render that refreshes them.
+	 * Deliberately not `@State`: `createButton` and `tabButtons` are derived from props in
+	 * `componentWillRender` (`resolveButtons`), so a prop change already schedules the render that
+	 * refreshes them.
 	 */
 	public createButton!: TabsButton;
 
-	/** Resolved per render pass by `resolveButtons`. */
 	public tabButtons: TabsButton[] = [];
 
 	/**

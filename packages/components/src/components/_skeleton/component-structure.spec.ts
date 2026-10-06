@@ -11,8 +11,9 @@ import * as ts from 'typescript';
  *
  * For every class under `src`, it also checks that no property initializer reads an own property that
  * is declared after it: directly, through an own method, getter or arrow-function property it calls.
- * Only direct reads and direct calls are traced; every other path is not, e.g. a callee that receives
- * `this` (`new Behavior(this)`), a synchronously run callback (an IIFE, an array callback),
+ * Traced are reads of own properties and getters and calls of own methods and arrow-function
+ * properties, also nested through the called bodies; every other path is not, e.g. a callee that
+ * receives `this` (`new Behavior(this)`), a synchronously run callback (an IIFE, an array callback),
  * `call`/`apply`/`bind` and element access.
  */
 const LIFECYCLE = [
@@ -93,10 +94,12 @@ const immediateAccess = (node: ts.Node): { reads: Set<string>; calls: Set<string
 	return { reads, calls };
 };
 
-/** Own members by name; of a getter/setter pair the getter, which runs on a read. */
 const membersByNameCache = new WeakMap<readonly ts.ClassElement[], Map<string, ts.ClassElement>>();
 
-/** One map per member list, so the construction reads computed against it are shared by both checks. */
+/**
+ * Own members by name; of a getter/setter pair the getter, which runs on a read. One map per member
+ * list, so the construction reads computed against it are shared by both checks.
+ */
 const membersByName = (members: readonly ts.ClassElement[]): Map<string, ts.ClassElement> => {
 	const cached = membersByNameCache.get(members);
 	if (cached) return cached;

@@ -23,7 +23,7 @@ const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
 	label: {
 		definitions: ['labelProp', 'labelWithExpertSlotProp', 'paginationLabelProp'],
 		reason:
-			"labelProp checks the length ('' or at least two characters) and gives the label hints; labelWithExpertSlotProp accepts every string, '' switches the expert slot on; paginationLabelProp behaves like labelWithExpertSlotProp and is kept apart for its meaning, the label of the navigation landmark of the pagination",
+			"labelProp checks the length ('' or at least two characters) and gives the label hints; labelWithExpertSlotProp accepts every string, and in a component with an expert slot '' switches the slot on; paginationLabelProp behaves like labelWithExpertSlotProp and is kept apart for its meaning, the label of the navigation landmark of the pagination",
 	},
 	links: {
 		definitions: ['breadcrumbLinksProp', 'navLinksProp', 'skipNavLinksProp'],
