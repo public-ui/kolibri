@@ -1,1 +1,0 @@
-import{U as e}from"./index-BVjCk0pJ-CVC_gZJT.js";import{a as t}from"./base-web-component-DmWvsvnM-D9ZpO8uo.js";var n=e=>{let t=typeof e==`object`&&e?e.label:void 0;return typeof t==`string`&&t.length>0};function r(t){let r=typeof t==`string`?e(t):t;if(Array.isArray(r)&&r.every(n))return r;throw Error(`Invalid radio options`)}var i=t(`options`,[],r);export{i as n,r as t};
