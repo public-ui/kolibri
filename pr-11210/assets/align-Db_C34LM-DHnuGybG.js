@@ -1,0 +1,1 @@
+import{b as e,s as t}from"./base-web-component-3R1Dy3QK-CgSuqy2I.js";var n=[`left`,`right`],r=[`top`,`bottom`],i=[...n,...r],a=n=>r=>{let a=e(r);if(t(a,i))return a;throw Error(`Invalid ${n} value: ${a}`)};export{a as t};
