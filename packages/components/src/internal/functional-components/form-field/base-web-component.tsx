@@ -173,8 +173,10 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 		infoPopoverProp.apply(value, (v) => this.shared.setRenderProp('infoPopover', v));
 	}
 
+	/** `false` enables the expert slot, which the field renders for an empty label. */
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		labelProp.apply(value, (v) => this.shared.setRenderProp('label', v));
+		const label: unknown = value;
+		labelProp.apply(label === false ? '' : value, (v) => this.shared.setRenderProp('label', v));
 	}
 
 	protected applyMsg(value?: Stringified<MsgPropType>): void {

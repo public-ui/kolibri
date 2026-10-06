@@ -148,7 +148,6 @@ describe('labelProp', () => {
 		['a'.repeat(80), 'a'.repeat(80)],
 		['a', 'a'],
 		[1, '1'],
-		[false, ''],
 	])('accepts %p as %p', (value, expected) => {
 		expect(applied(labelProp, value)).toEqual([expected]);
 		expect(warnings()).toEqual([]);

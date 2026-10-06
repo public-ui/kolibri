@@ -217,8 +217,7 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
 		labelProp.apply(value, (v) => {
 			this.setRenderProp('label', v);
-			// The default '' of an unset label must not enable the expert slot.
-			this.setState('expertSlot', v === '' && value !== undefined && value !== null);
+			this.setState('expertSlot', value === '');
 			this.tooltipBehavior.watchLabel(this.getTooltipLabel());
 		});
 	}
