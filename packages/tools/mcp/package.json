@@ -72,7 +72,7 @@
 		"express": "5.2.1",
 		"fuse.js": "7.5.0",
 		"glob": "13.0.6",
-		"simple-git": "3.36.0",
+		"simple-git": "4.0.1",
 		"zod": "4.6.5"
 	},
 	"devDependencies": {
