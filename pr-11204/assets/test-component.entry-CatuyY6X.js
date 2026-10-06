@@ -1,0 +1,1 @@
+import{l as e}from"./index-DXG61PlX-oPC2a0hO.js";var t=class{constructor(t){e(this,t)}};export{t as test_component};
