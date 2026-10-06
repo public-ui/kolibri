@@ -120,37 +120,29 @@ describe('legacy object prop validators', () => {
 	});
 
 	/**
-	 * The predicate tests the entries for `string` or `function`, so an entry of the type
-	 * `ErrorListPropType` (an object) is never valid. The skeleton `errorListProp` checks the object
-	 * shape instead (see `internal/props/error-list.ts`). The prop name has no leading underscore.
+	 * Accepts a list of `ErrorListPropType` objects, like the skeleton `errorListProp`
+	 * (`internal/props/error-list.ts`), and stores it under `_errorList`.
 	 */
 	describe('validateErrorList', () => {
-		it('rejects a list of ErrorListPropType objects', () => {
+		it.each<[string, ErrorListPropType[]]>([
+			['a selector string', [{ message: 'Error', selector: '#field' }]],
+			['a selector callback and focus options', [{ message: 'Error', selector: () => undefined, options: { preventScroll: true } }]],
+			['an empty list', []],
+		])('stores a list with %s under "_errorList"', (_description, value) => {
 			const component = createLegacyComponent();
-			validateErrorList(component, [{ message: 'Error', selector: '#field' }]);
-			expect(component.state).toEqual({});
-			expect(warningsFor('errorList')).toHaveLength(1);
-		});
-
-		it('stores a list of strings and functions under "errorList"', () => {
-			const component = createLegacyComponent();
-			const value = ['#field', () => undefined] as unknown as ErrorListPropType[];
 			validateErrorList(component, value);
-			expect(component.state.errorList).toBe(value);
+			expect(component.state._errorList).toBe(value);
 		});
 
-		it('stores an empty list', () => {
-			const component = createLegacyComponent();
-			validateErrorList(component, []);
-			expect(component.state.errorList).toEqual([]);
-		});
-
-		it.each([[undefined], ['[]']])('keeps the state and warns for %p', (value) => {
-			const component = createLegacyComponent({ errorList: [] });
-			validateErrorList(component, value as unknown as ErrorListPropType[]);
-			expect(component.state.errorList).toEqual([]);
-			expect(warningsFor('errorList')).toHaveLength(1);
-		});
+		it.each<[unknown]>([[undefined], ['[]'], [['#field', () => undefined]], [[{ message: 'Error' }]], [[{ message: 1, selector: '#field' }]], [[null]]])(
+			'keeps the state and warns for %p',
+			(value) => {
+				const component = createLegacyComponent({ _errorList: [] });
+				validateErrorList(component, value as ErrorListPropType[]);
+				expect(component.state._errorList).toEqual([]);
+				expect(warningsFor('_errorList')).toHaveLength(1);
+			},
+		);
 	});
 
 	describe('validateFixedCols', () => {
@@ -382,9 +374,9 @@ describe('legacy object prop validators', () => {
 	});
 
 	/**
-	 * Known differences to the skeleton `variantProp` (`internal/props/variant.ts`): the legacy class
-	 * names need at least four characters (the skeleton accepts one), and `undefined` keeps the state
-	 * with a warning because the default value `{}` is invalid (the skeleton defaults to `[]`).
+	 * Known difference to the skeleton `variantProp` (`internal/props/variant.ts`): the legacy class
+	 * names need at least four characters (the skeleton accepts one). Like the skeleton, `undefined`
+	 * falls back to the default `[]`.
 	 */
 	describe('validateVariantClassName', () => {
 		it.each([
@@ -395,13 +387,14 @@ describe('legacy object prop validators', () => {
 				['primary', 'custom_variant'],
 			],
 			[[], []],
+			[undefined, []],
 		])('stores %p as %p', (value, expected) => {
-			const component = createLegacyComponent();
+			const component = createLegacyComponent({ _variant: ['old-variant'] });
 			validateVariantClassName(component, value as VariantClassNamePropType);
 			expect(component.state._variant).toEqual(expected);
 		});
 
-		it.each([['abc'], [''], ['1primary'], ['primary  custom'], [['primary', 'abc']], [{}], [undefined]])('keeps the state and warns for %p', (value) => {
+		it.each([['abc'], [''], ['1primary'], ['primary  custom'], [['primary', 'abc']], [{}]])('keeps the state and warns for %p', (value) => {
 			const component = createLegacyComponent({ _variant: ['old-variant'] });
 			validateVariantClassName(component, value as VariantClassNamePropType);
 			expect(component.state._variant).toEqual(['old-variant']);

@@ -25,13 +25,12 @@ export const validateAriaDetails = (
 	internals: HostInternals | undefined,
 	value?: AriaDetailsPropType,
 ): HTMLElement[] => {
-	watchValidator(
-		component as Generic.Element.Component,
-		'_ariaDetails',
-		(value): boolean => typeof value === 'string' || typeof value === 'undefined',
-		new Set(['string']),
-		value,
-	);
+	const isValid = (value?: unknown): boolean => typeof value === 'string' || typeof value === 'undefined';
+	watchValidator(component as Generic.Element.Component, '_ariaDetails', isValid, new Set(['string']), value);
+	if (!isValid(value)) {
+		// An invalid value is only logged: it resolves to no element and leaves the internals untouched.
+		return [];
+	}
 
 	const elements = resolveTargets(host, value);
 	if (internals) {
