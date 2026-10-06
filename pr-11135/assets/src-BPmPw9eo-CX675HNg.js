@@ -1,1 +1,0 @@
-import{i as e,v as t}from"./variant-quote-DmzRsnzD-jK8ihQU4.js";var n=e(`src`,``,t);export{n as t};
