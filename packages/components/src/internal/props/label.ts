@@ -19,7 +19,8 @@ import { labelHints } from './hints/label-hints';
  *   accessibility hint (labels of digits only, e.g. a page number, are exempt), and a label longer
  *   than 80 characters gives a UI/UX hint to keep it concise
  * - An empty label ("") is allowed for cases where the accessible name is provided differently,
- *   e.g. through the expert slot
+ *   e.g. through the expert slot; `false` enables the expert slot as well and becomes ""
+ * - Numbers and other primitives become their string
  *
  * @see https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html
  * @see https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html
@@ -27,6 +28,8 @@ import { labelHints } from './hints/label-hints';
  * @see https://www.w3.org/TR/accname-1.2/
  */
 export type LabelProp = SimpleProp<'label', string>;
-export const labelProp = createPropDefinition<LabelProp>('label', '', normalizeString, undefined, {
+const normalizeLabel = (value: unknown): string => (value === false ? '' : normalizeString(value));
+
+export const labelProp = createPropDefinition<LabelProp>('label', '', normalizeLabel, undefined, {
 	hints: labelHints,
 });

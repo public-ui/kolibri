@@ -25,7 +25,7 @@ const isValidOption = (option: unknown): boolean => {
  * `label` each; throws otherwise. A number label is converted to its string, so the fields can compare
  * and filter the labels as text.
  */
-export function normalizeOptions(value: unknown): RadioOption<StencilUnknown>[] | never {
+function normalizeOptions(value: unknown): RadioOption<StencilUnknown>[] | never {
 	const parsed = typeof value === 'string' ? parseJson<unknown>(value) : value;
 	if (Array.isArray(parsed) && parsed.every(isValidOption)) {
 		const options = parsed as RadioOption<StencilUnknown>[];
