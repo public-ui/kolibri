@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11210,
-	"head": "222a9b6b53dff0cb41c820127a05e6baf85c199d",
+	"head": "e4127e2c3887c4cfbb8cf8d04c222bc3dbd201a6",
 	"repository": "public-ui/kolibri",
-	"runId": 37458394297,
-	"generatedAt": "2026-10-06T11:59:27.979Z",
-	"digest": "sha256:4dfc8b266630727ff6008ca665610d1337d825b0c317cf33c48f40fd1e2feb3d",
+	"runId": 37466795953,
+	"generatedAt": "2026-10-06T13:09:52.658Z",
+	"digest": "sha256:a207d2810c2347adc6d177083083ab54af420980721c223079fd6e0ff45056c5",
 	"baseline": {
-		"sha": "b65266c0f50e3d1f0c24bea491593bb50420a008",
+		"sha": "bfe8c5f050f34e00a44b9a6c05d531f0483e36dd",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -30,13 +30,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "b65266c0f50e3d1f0c24bea491593bb50420a008",
+					"sha": "bfe8c5f050f34e00a44b9a6c05d531f0483e36dd",
 					"ref": "develop",
-					"runId": 37452520862,
+					"runId": 37460365740,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-06T10:57:18.219Z",
-					"digest": "sha256:f81de8932bcc1f2588c78cd907d954343c354310215d493e83b0fee341d73348",
+					"createdAt": "2026-10-06T12:07:39.709Z",
+					"digest": "sha256:c5afbdb72be45a913a8edcd591ecdbd1ff2832f754c25ba9d8f4193118d2fa0d",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:f81de8932bcc1f2588c78cd907d954343c354310215d493e83b0fee341d73348",
+			"digest": "sha256:c5afbdb72be45a913a8edcd591ecdbd1ff2832f754c25ba9d8f4193118d2fa0d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2287,7 +2287,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:433a41d86c38d101fe9e32b63d6c221deac679cd4e6242a400c501abeda8bce0"
+					"hash": "sha256:492150b46fda0a1b667230b88eea29b090f49ac7c85ce4a58cb46ee6ae6c9e28"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -2353,13 +2353,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:cd7e46378a3b56d4e30311ddd2abab4a4053bacbd337bb2785e058aa29e2f00b"
+					"hash": "sha256:42d6bc449e0eee06d4f6f5c74a91a9bc60a467f4ee1908da2e10d81ad9f0bd2c"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:3ed151059d6c36188cf13129efc818bb4edb3a7a8e8b8d9c0e64ac0382ce5ecb"
+					"hash": "sha256:c10b880774cc4373d2871676c6d3712bb494e86b51f93124001c5b790d277686"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -2563,13 +2563,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "b65266c0f50e3d1f0c24bea491593bb50420a008",
+					"sha": "bfe8c5f050f34e00a44b9a6c05d531f0483e36dd",
 					"ref": "develop",
-					"runId": 37452520862,
+					"runId": 37460365740,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-06T10:58:39.158Z",
-					"digest": "sha256:799b6e74a14f2d54e37d600bc8fe457eb5facab6acf4a0751d4b55b2da618eec",
+					"createdAt": "2026-10-06T12:08:22.328Z",
+					"digest": "sha256:c9415f7c43794240301b2ff3d5544a82d8b0195ae2269461e95b047e49112a06",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -2582,7 +2582,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:799b6e74a14f2d54e37d600bc8fe457eb5facab6acf4a0751d4b55b2da618eec",
+			"digest": "sha256:c9415f7c43794240301b2ff3d5544a82d8b0195ae2269461e95b047e49112a06",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4820,7 +4820,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:2ae33bfd802056de008d5c9c0e8c216991996cdd81faa2f8173b50d59fd18664"
+					"hash": "sha256:e9321e295443108b5ff9f7067fabcbcde000687dbc4e56eea8991c5282574fea"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -4886,13 +4886,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:06a7807d3c01d7e09bd352640109588e451b0600b725c8668530393f9b25b161"
+					"hash": "sha256:b7971f9e93aafb0a02e29aa728a84d0e624ce7bb43407dfd87269d9166b409db"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:d560cedda27dd26741d5fbae72719aafcbad32bf6a56e50dfc28695d61aeb474"
+					"hash": "sha256:9cfdbf39fd1f57bbcb09d3899f1ec13e7f563783ab04c984b03b5518cf8d421e"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -5096,13 +5096,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "b65266c0f50e3d1f0c24bea491593bb50420a008",
+					"sha": "bfe8c5f050f34e00a44b9a6c05d531f0483e36dd",
 					"ref": "develop",
-					"runId": 37452520862,
+					"runId": 37460365740,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-06T10:57:18.219Z",
-					"digest": "sha256:f81de8932bcc1f2588c78cd907d954343c354310215d493e83b0fee341d73348",
+					"createdAt": "2026-10-06T12:07:39.709Z",
+					"digest": "sha256:c5afbdb72be45a913a8edcd591ecdbd1ff2832f754c25ba9d8f4193118d2fa0d",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -5115,7 +5115,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:f81de8932bcc1f2588c78cd907d954343c354310215d493e83b0fee341d73348",
+			"digest": "sha256:c5afbdb72be45a913a8edcd591ecdbd1ff2832f754c25ba9d8f4193118d2fa0d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7353,7 +7353,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:433a41d86c38d101fe9e32b63d6c221deac679cd4e6242a400c501abeda8bce0"
+					"hash": "sha256:492150b46fda0a1b667230b88eea29b090f49ac7c85ce4a58cb46ee6ae6c9e28"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -7419,13 +7419,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:cd7e46378a3b56d4e30311ddd2abab4a4053bacbd337bb2785e058aa29e2f00b"
+					"hash": "sha256:42d6bc449e0eee06d4f6f5c74a91a9bc60a467f4ee1908da2e10d81ad9f0bd2c"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:3ed151059d6c36188cf13129efc818bb4edb3a7a8e8b8d9c0e64ac0382ce5ecb"
+					"hash": "sha256:c10b880774cc4373d2871676c6d3712bb494e86b51f93124001c5b790d277686"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -7629,13 +7629,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "b65266c0f50e3d1f0c24bea491593bb50420a008",
+					"sha": "bfe8c5f050f34e00a44b9a6c05d531f0483e36dd",
 					"ref": "develop",
-					"runId": 37452520862,
+					"runId": 37460365740,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-06T10:57:26.089Z",
-					"digest": "sha256:3c3de32f15bf6274d746d8253468069680d4415f5e676a25c4c2f103e75e9129",
+					"createdAt": "2026-10-06T12:07:27.982Z",
+					"digest": "sha256:28ded854493394691fa2dabeaec505659ba041dfa9d91ca1389756aaa5fabe18",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -7648,7 +7648,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:3c3de32f15bf6274d746d8253468069680d4415f5e676a25c4c2f103e75e9129",
+			"digest": "sha256:28ded854493394691fa2dabeaec505659ba041dfa9d91ca1389756aaa5fabe18",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9952,13 +9952,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:ae77c7906255bf5a99111df15662a28e645f43ed9f65b174c99bad2853d26a32"
+					"hash": "sha256:f932dfadea25f7a1ed9fc0d0b17391a24b1df1a61fef87e90454fbae065b30dc"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:5c1a83e2a7d56978b8b55308c8a9bd93ed154665adb83ac9475f6b07150a29d9"
+					"hash": "sha256:624e515d0defb6b663bd15a2b77df0962192bf220179bd7f1bebcfd23328b68a"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -10162,13 +10162,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "b65266c0f50e3d1f0c24bea491593bb50420a008",
+					"sha": "bfe8c5f050f34e00a44b9a6c05d531f0483e36dd",
 					"ref": "develop",
-					"runId": 37452520862,
+					"runId": 37460365740,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-06T10:57:20.687Z",
-					"digest": "sha256:2e13fb866957436dc679219fcd4e62ee7a284bde13759f749f23c385b0615567",
+					"createdAt": "2026-10-06T12:08:26.623Z",
+					"digest": "sha256:97b937368d8160a0bab76dbc73fe3a582e849d167c9f1d38dfdc64172a929955",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -10181,7 +10181,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:2e13fb866957436dc679219fcd4e62ee7a284bde13759f749f23c385b0615567",
+			"digest": "sha256:97b937368d8160a0bab76dbc73fe3a582e849d167c9f1d38dfdc64172a929955",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12419,7 +12419,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:65a750156e948b9ab2c0c1a566851e86bf67457cabbd3930b9b20d02784528a2"
+					"hash": "sha256:9b8f0d851d8f9b29d7905f6c85f4f6140b7509ddf1bdf09382b34d3455d770b2"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -12485,13 +12485,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:f7eb9bdfbec0126648da88fa9e47a5c3f9c6763cdd4b8fa0a1c9d0c19f99c81a"
+					"hash": "sha256:5c914746981c8515fff88e9c9feaeea975336b502fe6884bf84969c53c3dfeaf"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:bd84c55066cdfa429a47f57f389691a20c2746f617a91c06d2da4db5c808a346"
+					"hash": "sha256:9faa1e392a1d457b61d51ba23ac316b8d68d70c3be65b10c4c17bc6547ea9935"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -12695,13 +12695,13 @@
 			"baseline": {
 				"files": 418,
 				"meta": {
-					"sha": "b65266c0f50e3d1f0c24bea491593bb50420a008",
+					"sha": "bfe8c5f050f34e00a44b9a6c05d531f0483e36dd",
 					"ref": "develop",
-					"runId": 37452520862,
+					"runId": 37460365740,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-06T10:58:21.819Z",
-					"digest": "sha256:104d58b09508f2be3790ba919dacbc0573b045b6fb8b771196b17b568e41e744",
+					"createdAt": "2026-10-06T12:07:19.091Z",
+					"digest": "sha256:b964a078e47a454ca41a8f67b9a6bfda1e84e82512176941e8005b24adc3c74a",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -12714,7 +12714,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:104d58b09508f2be3790ba919dacbc0573b045b6fb8b771196b17b568e41e744",
+			"digest": "sha256:b964a078e47a454ca41a8f67b9a6bfda1e84e82512176941e8005b24adc3c74a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14952,7 +14952,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:6baefb736a5fcead632c48516ec734af691b7c4508f207353a79174414bea73a"
+					"hash": "sha256:c511fffb38df3171f177864b3120ce78c006c5e89cadb49f081cafde31d997e4"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -15018,13 +15018,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:3b5db069fe283ffdc5be252596541e0ba3369a6ff161f66a08fe74129659c388"
+					"hash": "sha256:87ac14413decd6beaeb85650ef01e7fc9e3a3054bfe4dda6460a9865957b860a"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:6d212e2f977d83ecc2c813a28fcf85bc62ae159d0103d0d68ee86fb8288f7914"
+					"hash": "sha256:93de3555c331ef94f66f964a0f17ab585e847b83a468d4282be36e195d42c7ce"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -15234,13 +15234,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "b65266c0f50e3d1f0c24bea491593bb50420a008",
+					"sha": "bfe8c5f050f34e00a44b9a6c05d531f0483e36dd",
 					"ref": "develop",
-					"runId": 37452520862,
+					"runId": 37460365740,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-06T10:56:45.665Z",
-					"digest": "sha256:b2984aaad523ba9c52291b03705ccec04b4feb0ce1f7428e5af708c0d659c810",
+					"createdAt": "2026-10-06T12:07:49.253Z",
+					"digest": "sha256:a898190eba166dee11d6278b4413461424fb64b71ab59e4450eb73d3f586c223",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -15253,7 +15253,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:b2984aaad523ba9c52291b03705ccec04b4feb0ce1f7428e5af708c0d659c810",
+			"digest": "sha256:a898190eba166dee11d6278b4413461424fb64b71ab59e4450eb73d3f586c223",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17491,7 +17491,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:181908fbbefd18b864c26d63e048c73b9cb1bb6391b1bedd3254bf7e6cbb493a"
+					"hash": "sha256:947abf4a0326ed31ba22f0a986505a3f1494629088c47a4d7eb7da51a360e5e4"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -17557,13 +17557,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:2fe1e4ea3c8ce9aa6f47497e3de94dfa20fc63f98cbe2c300f0f647d65f67eb0"
+					"hash": "sha256:5a73b3b3d6974df9b1744a7b62338e814e1e9b7267b30d95b10fb15e2a08c685"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:7dc7c812b314db89a6a11879190a79032f1208f8a04f8b5823f445b763bba99a"
+					"hash": "sha256:5b68236ec70a640f9cd3bb6604249e1c24b8e5d1ff2280a9968395d840cda0f6"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
