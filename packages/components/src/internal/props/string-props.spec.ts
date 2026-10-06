@@ -143,6 +143,9 @@ describe('labelProp', () => {
 	it.each<[unknown, string]>([
 		['', ''],
 		['Label', 'Label'],
+		[' padded ', ' padded '],
+		[true, 'true'],
+		[false, 'false'],
 		[12, '12'],
 		['a'.repeat(80), 'a'.repeat(80)],
 		['a', 'a'],
@@ -152,8 +155,8 @@ describe('labelProp', () => {
 		expect(warnings()).toEqual([]);
 	});
 
-	it('ignores an object with a developer warning', () => {
-		expect(applied(labelProp, { label: 'Label' })).toEqual([]);
+	it.each<unknown>([{ label: 'Label' }, []])('ignores %p with a developer warning', (value) => {
+		expect(applied(labelProp, value)).toEqual([]);
 		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid (Cannot convert object to string)`)]);
 	});
 
