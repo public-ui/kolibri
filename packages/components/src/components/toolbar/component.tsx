@@ -6,7 +6,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { ToolbarApi } from '../../internal/functional-components/toolbar/api';
 import { toolbarPropsConfig } from '../../internal/functional-components/toolbar/api';
 import { ToolbarFC } from '../../internal/functional-components/toolbar/component';
-import type { ToolbarButtonItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/item';
+import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/item';
 import { createToolbarItem } from '../../internal/functional-components/toolbar/item';
 import { labelWithExpertSlotProp, orientationProp, toolbarItemsProp } from '../../internal/props';
 import type { ClickableElement, FocusableElement, KolFocusOptions, ToolbarItemsPropType, ToolbarProps } from '../../schema';
@@ -88,7 +88,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 	 * disabled: the index is seeded with the first enabled item, but an item can be disabled again
 	 * while it is current.
 	 */
-	private getCurrentItemElement(): HTMLAnchorElement | HTMLButtonElement | undefined {
+	private getCurrentItemElement(): HTMLAnchorElement | HTMLButtonElement | HTMLHRElement | undefined {
 		const record = this.itemRecords[this.currentIndex];
 		return record && !record.disabled ? record.getElement() : undefined;
 	}
@@ -165,7 +165,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 
 	@State() public currentIndex: number = 0;
 
-	@State() public itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem> = [];
+	@State() public itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem> = [];
 
 	@State() public location: string = '';
 
