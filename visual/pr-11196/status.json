@@ -2,7 +2,7 @@
 	"schema": 1,
 	"state": "failure",
 	"description": "1 of 7 visual changes rejected",
-	"computedAt": "2026-10-06T12:06:09.811Z",
+	"computedAt": "2026-10-06T13:57:28.607Z",
 	"pr": 11196,
 	"head": "648cd4f87b8dbc2a282791fe50a3b11edcf8ba09",
 	"digest": "sha256:93ea5ad54b92f15dd77469d6b30bfd1e9c81bdc4ac80f7b3ff0be6658d1f3260",
