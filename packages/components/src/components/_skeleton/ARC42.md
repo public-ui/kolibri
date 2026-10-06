@@ -179,12 +179,12 @@ Every Stencil component class lists its members in the same order:
 6. each `@Prop`, directly followed by its `@Watch` method(s); a watcher of several props follows the first of them
 7. `@Event`
 8. `@Method`
-9. lifecycle methods in Stencil order: `connectedCallback`, `componentWillLoad`, `componentDidLoad`, `componentShouldUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillRender`, `componentDidRender`, `disconnectedCallback`
+9. lifecycle methods, grouped by phase (load, update, render, disconnect): `connectedCallback`, `componentWillLoad`, `componentDidLoad`, `componentShouldUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillRender`, `componentDidRender`, `disconnectedCallback`. This is a declaration convention, not the order in which Stencil runs the hooks (`componentWillRender` and `componentDidRender` run before `componentDidLoad`)
 10. `@Listen`
 11. private and protected helpers and handlers (methods, accessors, arrow-function fields)
 12. `render`
 
-Property initializers run in declaration order. A property whose value another initializer reads therefore stays before that property, even when its group comes later (e.g. `translateFilenameText` before the `@State` `filename` of `kol-input-file`). `component-structure.spec.ts` pins the order for all components.
+Property initializers run in declaration order. A property whose value another initializer reads therefore stays before that property, even when its group comes later (e.g. `translateFilenameText` before the `@State` `filename` of `kol-input-file`). `component-structure.spec.ts` pins the member order of all components. For every class under `src` it also checks that no initializer reads an own property declared after it, directly or through own methods, getters and arrow-function properties it calls; a read through a callee that receives `this` (e.g. `new Behavior(this)`) is not traced.
 
 ### Public API Contract (Migration Parity)
 

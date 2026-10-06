@@ -1,5 +1,6 @@
 import { describe, expect, it } from '@jest/globals';
-import * as props from './index';
+import fs from 'node:fs';
+import path from 'node:path';
 
 /**
  * One prop definition per render key. Several definitions for the same key are allowed only where
@@ -79,21 +80,26 @@ const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
 	},
 };
 
-const definitionsByKey = (): Record<string, string[]> => {
-	const byKey: Record<string, string[]> = {};
-	Object.entries(props).forEach(([name, value]) => {
-		if (typeof value === 'object' && value !== null && typeof (value as { propName?: unknown }).propName === 'string') {
-			const key = (value as { propName: string }).propName;
-			(byKey[key] ??= []).push(name);
-		}
+/** Every prop definition exported by a module of this folder, whether the barrel re-exports it or not. */
+const definitionsByKey = async (): Promise<Record<string, string[]>> => {
+	const files = fs.readdirSync(__dirname).filter((file) => /\.ts$/.test(file) && !/\.(spec|test)\.ts$/.test(file) && file !== 'index.ts');
+	const modules = (await Promise.all(files.map((file) => import(path.join(__dirname, file))))) as Record<string, unknown>[];
+	const byKey: Record<string, Set<string>> = {};
+	modules.forEach((exports) => {
+		Object.entries(exports).forEach(([name, value]) => {
+			if (typeof value === 'object' && value !== null && typeof (value as { propName?: unknown }).propName === 'string') {
+				const key = (value as { propName: string }).propName;
+				(byKey[key] ??= new Set()).add(name);
+			}
+		});
 	});
-	return byKey;
+	return Object.fromEntries(Object.entries(byKey).map(([key, names]) => [key, [...names]]));
 };
 
 describe('prop definitions per render key', () => {
-	it('has one definition per key, except for the documented functional variants', () => {
+	it('has one definition per key, except for the documented functional variants', async () => {
 		const duplicates = Object.fromEntries(
-			Object.entries(definitionsByKey())
+			Object.entries(await definitionsByKey())
 				.filter(([, names]) => names.length > 1)
 				.map(([key, names]) => [key, [...names].sort()]),
 		);

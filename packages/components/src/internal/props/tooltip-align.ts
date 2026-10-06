@@ -1,5 +1,5 @@
 import type { AlignPropType } from '../../schema/props/align-options';
-import { createAlignNormalizer } from './align';
+import { createAlignNormalizer } from './helpers/align';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 
