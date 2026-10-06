@@ -22,14 +22,12 @@
 	}
 
 	.kol-field-control {
-		$root: &;
-
 		&__label {
-			@at-root #{$root}--label-align-left & {
+			.kol-field-control--label-align-left & {
 				padding-right: to-rem(8);
 			}
 
-			@at-root #{$root}--label-align-right & {
+			.kol-field-control--label-align-right & {
 				padding-left: to-rem(8);
 			}
 		}

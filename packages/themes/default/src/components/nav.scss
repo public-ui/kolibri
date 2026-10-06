@@ -13,8 +13,6 @@
 		--kol-nav-item-padding-left: 0;
 		--kol-nav-item-padding-right: 16;
 
-		$root: &;
-
 		&__list {
 			list-style: none;
 			// with this two properties we build a dynamic padding where each nested list has 8 + 8 = 16px more padding at its links/buttons
@@ -55,16 +53,16 @@
 					@include focus-outline;
 				}
 
-				#{$root}__list & {
+				.kol-nav__list & {
 					padding-left: to-rem(var(--kol-nav-item-padding-left));
 					border-left: 2px solid transparent;
 				}
 
-				#{$root}__list-item--active > #{$root}__entry-wrapper & {
+				.kol-nav__list-item--active > .kol-nav__entry-wrapper & {
 					border-left-color: var(--color-primary);
 				}
 
-				#{$root}__list-item--active > #{$root}__entry-wrapper & {
+				.kol-nav__list-item--active > .kol-nav__entry-wrapper & {
 					font-weight: bold;
 				}
 
@@ -79,8 +77,6 @@
 		&__toggle-button {
 			.kol-button {
 				margin-bottom: to-rem(5);
-
-				$root: &;
 
 				/* The class carrier is a wrapper and never receives focus. */
 				&__interactive-element:focus {
@@ -120,26 +116,26 @@
 						box-shadow: 0 2px 8px 2px var(--color-shadow);
 						border-color: var(--text-border-color);
 					}
+				}
 
-					@at-root #{$root}--hide-label & {
-						width: unset;
-						padding: to-rem(12.8);
+				&--hide-label &__text {
+					width: unset;
+					padding: to-rem(12.8);
 
-						.kol-span__label {
-							display: none;
-						}
+					.kol-span__label {
+						display: none;
 					}
+				}
 
-					@at-root #{$root}__interactive-element:focus {
-						@include focus-outline;
-					}
+				&__interactive-element:focus {
+					@include focus-outline;
+				}
 
-					@at-root #{$root}__interactive-element:disabled:hover & {
-						color: var(--text-color);
-						background-color: var(--text-background-color);
-						box-shadow: none;
-						border-color: var(--text-border-color);
-					}
+				&__interactive-element:disabled:hover &__text {
+					color: var(--text-color);
+					background-color: var(--text-background-color);
+					box-shadow: none;
+					border-color: var(--text-border-color);
 				}
 			}
 		}

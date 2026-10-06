@@ -9,8 +9,6 @@
 
 @mixin kol-alert-theme {
 	.kol-alert {
-		$root: &;
-
 		&--variant-msg {
 			border: none;
 		}
@@ -46,48 +44,42 @@
 
 		&__container {
 			background-color: var(--color-white);
-
-			@at-root #{$root}--variant-card & {
-				gap: to-rem(8);
-			}
 		}
 
-		&__container-content {
-			@at-root #{$root}--variant-msg & {
-				padding: var(--spacing-2xs);
-			}
+		&--variant-card &__container {
+			gap: to-rem(8);
+		}
+
+		&--variant-msg &__container-content {
+			padding: var(--spacing-2xs);
 		}
 
 		/* The closer renders ButtonFC directly: `__closer` and `kol-button` sit on the same element,
 		   so the former `.kol-button` color rule now targets the closer itself. */
 		&__closer {
 			color: var(--alert-accent-color);
+		}
 
-			.kol-icon {
-				@at-root #{$root}--variant-card & {
-					font-size: to-rem(32);
-				}
-			}
+		&--variant-card &__closer .kol-icon {
+			font-size: to-rem(32);
 		}
 
 		&__icon {
 			color: var(--alert-accent-color);
-
-			@at-root #{$root}--variant-msg & {
-				margin: var(--spacing-2xs);
-
-				font-size: 1.5em;
-			}
-
-			@at-root #{$root}--variant-card & {
-				font-size: to-rem(32);
-			}
 		}
 
-		&__content {
-			@at-root #{$root}--variant-card & {
-				margin-left: to-rem(40);
-			}
+		&--variant-msg &__icon {
+			margin: var(--spacing-2xs);
+
+			font-size: 1.5em;
+		}
+
+		&--variant-card &__icon {
+			font-size: to-rem(32);
+		}
+
+		&--variant-card &__content {
+			margin-left: to-rem(40);
 		}
 	}
 }

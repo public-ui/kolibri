@@ -4,7 +4,6 @@
 @layer kol-theme-component {
 	@include kol-icon-theme;
 	.kol-tree-item {
-		$root: &;
 		--tree-item-indentation: #{to-rem(20)};
 
 		&__link {
