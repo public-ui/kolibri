@@ -28,9 +28,35 @@ import { onLocationChange } from '../link/ariaCurrentService';
 export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements BreadcrumbProps, WebComponentInterface<BreadcrumbApi> {
 	@Element() protected readonly host?: HTMLKolBreadcrumbElement;
 
+	@State() public linkItems: BreadcrumbLinkItem[] = [];
+
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
-	// --- Lifecycle ---
+	/**
+	 * Derived per render pass from the `breadcrumbCurrentPage` feature flag — deliberately not
+	 * `@State`: flag changes must not schedule renders by themselves, matching the predecessor.
+	 */
+	public showCurrentPage: boolean = true;
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines the list of links combined with their labels to render.
+	 */
+	@Prop() public _links!: Stringified<BreadcrumbLinkProps[]>;
+
+	@Watch('_links')
+	public watchLinks(value?: Stringified<BreadcrumbLinkProps[]>): void {
+		this.applyLinks(value);
+	}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(breadcrumbPropsConfig);
@@ -61,8 +87,6 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements Br
 		removeNavLabel(this.getRenderProp('label'));
 	}
 
-	// --- Label helpers ---
-
 	/**
 	 * Keeps the cross-instance nav-label uniqueness registry in sync: the previously rendered
 	 * label is unregistered (skipped on the initial pass, so a second instance with the same
@@ -77,8 +101,6 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements Br
 		addNavLabel(this.getRenderProp('label'));
 	}
 
-	// --- Link helpers ---
-
 	private applyLinks(value: Stringified<BreadcrumbLinkProps[]> | undefined): void {
 		breadcrumbLinksProp.apply(value, (links) => {
 			this.setRenderProp('links', links);
@@ -86,8 +108,6 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements Br
 			this.linkItems = links.map((link) => createBreadcrumbLinkItem(link, () => this.host));
 		});
 	}
-
-	// --- Render ---
 
 	public render(): JSX.Element {
 		// Read per render pass like the predecessor, with the host-scoped feature-flag lookup.
@@ -102,35 +122,5 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements Br
 				/>
 			</Host>
 		);
-	}
-
-	// --- States ---
-
-	@State() public linkItems: BreadcrumbLinkItem[] = [];
-
-	/**
-	 * Derived per render pass from the `breadcrumbCurrentPage` feature flag — deliberately not
-	 * `@State`: flag changes must not schedule renders by themselves, matching the predecessor.
-	 */
-	public showCurrentPage: boolean = true;
-
-	// --- Props + Watchers ---
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: LabelPropType;
-	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		this.applyLabel(value);
-	}
-
-	/**
-	 * Defines the list of links combined with their labels to render.
-	 */
-	@Prop() public _links!: Stringified<BreadcrumbLinkProps[]>;
-	@Watch('_links')
-	public watchLinks(value?: Stringified<BreadcrumbLinkProps[]>): void {
-		this.applyLinks(value);
 	}
 }

@@ -18,6 +18,12 @@ import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressPr
 	shadow: true,
 })
 export class KolProgress extends BaseWebComponent<ProgressApi> implements WebComponentInterface<ProgressApi> {
+	/**
+	 * A11y: Aria live value
+	 */
+	@State()
+	public liveValue: number = 0;
+
 	private interval?: ReturnType<typeof setInterval>;
 
 	/**
@@ -84,12 +90,6 @@ export class KolProgress extends BaseWebComponent<ProgressApi> implements WebCom
 	public watchVariant(value?: ProgressVariantType): void {
 		variantProgressProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
-
-	/**
-	 * A11y: Aria live value
-	 */
-	@State()
-	public liveValue: number = 0;
 
 	public componentWillLoad(): void {
 		this.initRenderProps(progressPropsConfig);

@@ -137,17 +137,19 @@ When several custom elements are tag variants of **one** FC (`kol-button`, `kol-
 export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi> {
 	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 
+	@Prop() public _href!: string;
+
+	@Watch('_href')
+	public watchHref(value?: string): void {
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+	}
+
 	public componentWillLoad(): void {
 		this.initRenderProps(linkPropsConfig);
 		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v));
 		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
 		// …all other props…
 		this.tooltipBehavior.componentWillLoad({ label: this.getTooltipLabel(), align: this.getRenderProp('tooltipAlign') });
-	}
-
-	@Watch('_href')
-	public watchHref(value?: string): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
 	}
 
 	public render(): JSX.Element {
@@ -164,6 +166,25 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	}
 }
 ```
+
+#### Member order
+
+Every Stencil component class lists its members in the same order:
+
+1. `static` members
+2. `@Element`
+3. `@State`
+4. other fields (refs, behaviors, translations, items)
+5. `constructor`
+6. each `@Prop`, directly followed by its `@Watch` method(s); a watcher of several props follows the first of them
+7. `@Event`
+8. `@Method`
+9. lifecycle methods in Stencil order: `connectedCallback`, `componentWillLoad`, `componentDidLoad`, `componentShouldUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillRender`, `componentDidRender`, `disconnectedCallback`
+10. `@Listen`
+11. private and protected helpers and handlers (methods, accessors, arrow-function fields)
+12. `render`
+
+Property initializers run in declaration order. A property whose value another initializer reads therefore stays before that property, even when its group comes later (e.g. `translateFilenameText` before the `@State` `filename` of `kol-input-file`). `component-structure.spec.ts` pins the order for all components.
 
 ### Public API Contract (Migration Parity)
 

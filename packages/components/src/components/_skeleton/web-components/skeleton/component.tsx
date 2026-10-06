@@ -14,38 +14,6 @@ import { createCtaRef, delegateFocus } from '../../../../utils/element-interacti
 	shadow: true,
 })
 export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebComponentInterface<SkeletonApi> {
-	private readonly buttonRef = createCtaRef<HTMLButtonElement>();
-	private intervalId?: ReturnType<typeof setTimeout>;
-
-	/**
-	 * Focuses the interactive element of the component.
-	 */
-	@Method()
-	@delegateFocus('buttonRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
-
-	/**
-	 * Toggles the visibility of the skeleton component.
-	 */
-	@Method()
-	public async toggle(): Promise<void> {
-		this.setState('show', !(this.getState('show') ?? false));
-		return Promise.resolve();
-	}
-
-	/**
-	 * Sets the name of the skeleton component.
-	 */
-	@Prop()
-	public _name!: string;
-
-	@Watch('_name')
-	public watchName(value?: string): void {
-		nameProp.apply(value, (v) => this.setRenderProp('name', v));
-	}
-
 	/**
 	 * Tracks the current count value for the skeleton.
 	 */
@@ -64,12 +32,19 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	@State()
 	public show: boolean = true;
 
-	@Listen('keydown')
-	public handleKeyDown(event: KeyboardEvent): void {
-		if (event.key === 'Enter' || event.key === ' ') {
-			Log.debug('button pressed');
-			this.handleClick();
-		}
+	private readonly buttonRef = createCtaRef<HTMLButtonElement>();
+
+	private intervalId?: ReturnType<typeof setTimeout>;
+
+	/**
+	 * Sets the name of the skeleton component.
+	 */
+	@Prop()
+	public _name!: string;
+
+	@Watch('_name')
+	public watchName(value?: string): void {
+		nameProp.apply(value, (v) => this.setRenderProp('name', v));
 	}
 
 	/**
@@ -83,21 +58,22 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 	@Event() public rendered!: EventEmitter<void>;
 
 	/**
-	 * Global keydown listener. Auto-cleaned by Stencil on component removal.
+	 * Focuses the interactive element of the component.
 	 */
-	@Listen('keydown', { target: 'window' })
-	public onKeydown(event: KeyboardEvent): void {
-		if (event.key === 'Escape') {
-			// eslint-disable-next-line no-console
-			console.log('Show should be toggled');
-			void this.toggle();
-		}
-	}
+	@Method()
+	@delegateFocus('buttonRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
-	public handleClick = (): void => {
-		Log.debug('Button clicked, count should be increased');
-		this.setState('count', (this.getState('count') ?? 0) + 1);
-	};
+	/**
+	 * Toggles the visibility of the skeleton component.
+	 */
+	@Method()
+	public async toggle(): Promise<void> {
+		this.setState('show', !(this.getState('show') ?? false));
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(skeletonPropsConfig);
@@ -122,6 +98,31 @@ export class KolSkeleton extends BaseWebComponent<SkeletonApi> implements WebCom
 			this.intervalId = undefined;
 		}
 	}
+
+	@Listen('keydown')
+	public handleKeyDown(event: KeyboardEvent): void {
+		if (event.key === 'Enter' || event.key === ' ') {
+			Log.debug('button pressed');
+			this.handleClick();
+		}
+	}
+
+	/**
+	 * Global keydown listener. Auto-cleaned by Stencil on component removal.
+	 */
+	@Listen('keydown', { target: 'window' })
+	public onKeydown(event: KeyboardEvent): void {
+		if (event.key === 'Escape') {
+			// eslint-disable-next-line no-console
+			console.log('Show should be toggled');
+			void this.toggle();
+		}
+	}
+
+	public handleClick = (): void => {
+		Log.debug('Button clicked, count should be increased');
+		this.setState('count', (this.getState('count') ?? 0) + 1);
+	};
 
 	public render(): JSX.Element {
 		return (

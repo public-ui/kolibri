@@ -29,19 +29,95 @@ import { invalidateOpenItemsCache } from '../tree/open-items-cache';
 export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeItemProps, WebComponentInterface<TreeItemApi> {
 	@Element() protected readonly host?: HTMLKolTreeItemElement;
 
+	@State() public ariaCurrent: string = '';
+
+	@State() public groupId: string = createUniqueId('tree-group');
+
+	@State() public hasChildren: boolean = false;
+
+	@State() public level: number = 0;
+
+	@State() public open: boolean = false;
+
 	protected readonly anchorRef = createCtaRef<HTMLAnchorElement>();
 
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
-	// --- @State ---
+	/**
+	 * If set (to true) the tree item is the active one.
+	 */
+	@Prop() public _active?: OpenPropType;
 
-	@State() public ariaCurrent: string = '';
-	@State() public groupId: string = createUniqueId('tree-group');
-	@State() public hasChildren: boolean = false;
-	@State() public level: number = 0;
-	@State() public open: boolean = false;
+	@Watch('_active')
+	public watchActive(value?: OpenPropType): void {
+		activeProp.apply(value, (v) => this.setRenderProp('active', v));
+	}
 
-	// --- Lifecycle ---
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+	}
+
+	/**
+	 * Opens/expands the element when truthy, closes/collapses when falsy.
+	 */
+	@Prop() public _open?: OpenPropType;
+
+	@Watch('_open')
+	public watchOpen(value?: OpenPropType): void {
+		openProp.apply(value, (v) => (this.open = v));
+	}
+
+	/**
+	 * Defines the target URI of the link.
+	 */
+	@Prop() public _href!: HrefPropType;
+
+	@Watch('_href')
+	public watchHref(value?: HrefPropType): void {
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+	}
+
+	/**
+	 * Focuses the link element.
+	 */
+	@Method()
+	@directFocus('anchorRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
+
+	/**
+	 * Expands the tree item.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async expand(): Promise<void> {
+		this.setOpen(true);
+	}
+
+	/**
+	 * Collapses the tree item.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async collapse(): Promise<void> {
+		this.setOpen(false);
+	}
+
+	/**
+	 * Returns whether the tree item is expanded.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async isOpen(): Promise<boolean> {
+		return this.open;
+	}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(treeItemPropsConfig);
@@ -68,8 +144,6 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 			this.unsubscribeOnLocationChange = undefined;
 		}
 	}
-
-	// --- Tree structure ---
 
 	private determineTreeItemDepth(): void {
 		let level = 0;
@@ -113,8 +187,6 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 		}
 	}
 
-	// --- Event handling ---
-
 	private readonly handleAnchorClick = (): void => {
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.click, this.getRenderProp('href'));
@@ -131,46 +203,6 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 		const open = this.open;
 		void this.focus().then(() => this.setOpen(!open));
 	};
-
-	// --- Public methods ---
-
-	/**
-	 * Focuses the link element.
-	 */
-	@Method()
-	@directFocus('anchorRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
-
-	/**
-	 * Expands the tree item.
-	 */
-	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async expand(): Promise<void> {
-		this.setOpen(true);
-	}
-
-	/**
-	 * Collapses the tree item.
-	 */
-	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async collapse(): Promise<void> {
-		this.setOpen(false);
-	}
-
-	/**
-	 * Returns whether the tree item is expanded.
-	 */
-	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async isOpen(): Promise<boolean> {
-		return this.open;
-	}
-
-	// --- Render ---
 
 	public render(): JSX.Element {
 		return (
@@ -191,43 +223,5 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 				/>
 			</Host>
 		);
-	}
-
-	// --- Props + Watchers ---
-
-	/**
-	 * If set (to true) the tree item is the active one.
-	 */
-	@Prop() public _active?: OpenPropType;
-	@Watch('_active')
-	public watchActive(value?: OpenPropType): void {
-		activeProp.apply(value, (v) => this.setRenderProp('active', v));
-	}
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: LabelPropType;
-	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
-	}
-
-	/**
-	 * Opens/expands the element when truthy, closes/collapses when falsy.
-	 */
-	@Prop() public _open?: OpenPropType;
-	@Watch('_open')
-	public watchOpen(value?: OpenPropType): void {
-		openProp.apply(value, (v) => (this.open = v));
-	}
-
-	/**
-	 * Defines the target URI of the link.
-	 */
-	@Prop() public _href!: HrefPropType;
-	@Watch('_href')
-	public watchHref(value?: HrefPropType): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
 	}
 }

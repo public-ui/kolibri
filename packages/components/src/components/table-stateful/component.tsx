@@ -76,24 +76,6 @@ type PaginationPosition = 'bottom' | 'top';
 export class KolTableStateful extends BaseTableStatelessWebComponent implements WebComponentInterface<TableStatefulApi> {
 	@Element() protected readonly host?: HTMLKolTableStatefulElement;
 
-	private internals?: HostInternals;
-
-	/** All rows of `_data`; the displayed page is sliced from the sorted rows. */
-	private data: KoliBriTableDataType[] = [];
-	/** The header cells of `_headers`, as given. */
-	private headers: KoliBriTableHeaders = { horizontal: [], vertical: [] };
-	private allowMultiSort = false;
-	private paginationPosition: PaginationPositionPropType = 'bottom';
-	private statefulOn: TableStatefulCallbacksPropType = {};
-	private sortData: SortData[] = [];
-	/** Sorting is switched off for good once horizontal and vertical headers are defined together. */
-	private disableSort = false;
-	private showPagination = false;
-	/** The end of the displayed slice; the pagination is rendered only while it is above 0. */
-	private pageEndSlice = 10;
-	/** Top and bottom pagination are independent; each exists while it is rendered. */
-	private readonly paginationItems: Partial<Record<PaginationPosition, PaginationItem>> = {};
-
 	/**
 	 * The header cells adjusted in the settings menu (visibility, width, order). They are reapplied on
 	 * every render, so sorting, paging, selecting or new data keep the adjustments.
@@ -106,17 +88,9 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	/** Renders the element again after a change that is not held in a prop or a state of its own. */
 	@State() private renderCount = 0;
 
-	// --- @State ---
-
 	@State() public externalLabelElements: HTMLElement[] = [];
 
 	@State() public hasScrollbar: boolean = false;
-
-	/**
-	 * Not a `@State`: the displayed rows are applied before every render, and a state change there would
-	 * start a nested render. The render that follows uses the keys anyway.
-	 */
-	public rowKeys: Map<KoliBriTableDataType, string> = new Map();
 
 	@State() public settingsChangedCounter: number = 0;
 
@@ -124,7 +98,76 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	@State() public stickyColsDisabled: boolean = false;
 
-	// --- Props + Watchers ---
+	private internals?: HostInternals;
+
+	/** All rows of `_data`; the displayed page is sliced from the sorted rows. */
+	private data: KoliBriTableDataType[] = [];
+
+	/** The header cells of `_headers`, as given. */
+	private headers: KoliBriTableHeaders = { horizontal: [], vertical: [] };
+
+	private allowMultiSort = false;
+
+	private paginationPosition: PaginationPositionPropType = 'bottom';
+
+	private statefulOn: TableStatefulCallbacksPropType = {};
+
+	private sortData: SortData[] = [];
+
+	/** Sorting is switched off for good once horizontal and vertical headers are defined together. */
+	private disableSort = false;
+
+	private showPagination = false;
+
+	/** The end of the displayed slice; the pagination is rendered only while it is above 0. */
+	private pageEndSlice = 10;
+
+	/** Top and bottom pagination are independent; each exists while it is rendered. */
+	private readonly paginationItems: Partial<Record<PaginationPosition, PaginationItem>> = {};
+
+	/**
+	 * Not a `@State`: the displayed rows are applied before every render, and a state change there would
+	 * start a nested render. The render that follows uses the keys anyway.
+	 */
+	public rowKeys: Map<KoliBriTableDataType, string> = new Map();
+
+	/**
+	 * Callbacks of the stateless table. The selection is reported through `emitSelectionChange`, the
+	 * adjusted header cells are kept by the `changeheadercells` listener.
+	 */
+	private readonly statelessOn = {
+		onSort: (_event: MouseEvent, { key }: SortEventPayload) => {
+			const headerCell = findHeaderCell(this.headers, key);
+			if (headerCell) {
+				const sortData = changeCellSort(this.sortData, headerCell, this.allowMultiSort);
+				if (sortData) {
+					this.sortData = sortData;
+					this.updateSortedData();
+				}
+			}
+		},
+	};
+
+	private readonly handlePagination: KoliBriPaginationButtonCallbacks = {
+		onClick: (event: Event, page: number) => {
+			if (typeof this.pagination._on?.onClick === 'function') {
+				this.pagination._on.onClick(event, page);
+			}
+			this.pagination = { ...this.pagination, _page: page };
+		},
+		onChangePage: (event: Event, page: number) => {
+			if (typeof this.pagination._on?.onChangePage === 'function') {
+				this.pagination._on.onChangePage(event, page);
+			}
+			this.pagination = { ...this.pagination, _page: page };
+		},
+		onChangePageSize: (event: Event, pageSize: number) => {
+			if (typeof this.pagination._on?.onChangePageSize === 'function') {
+				this.pagination._on.onChangePageSize(event, pageSize);
+			}
+			this.pagination = { ...this.pagination, _pageSize: pageSize };
+		},
+	};
 
 	/**
 	 * References an external element by ID that serves as the accessible label for this table.
@@ -300,8 +343,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.applyVariant(value);
 	}
 
-	// --- Methods ---
-
 	/**
 	 * Returns the selected rows.
 	 */
@@ -320,8 +361,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.initializeSort(this.headers);
 		this.updateSortedData();
 	}
-
-	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
 		this.initTableRenderProps();
@@ -346,6 +385,14 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.watchVariant(this._variant);
 	}
 
+	public componentDidLoad(): void {
+		// Re-resolve after mount to avoid depending on timer-based retries.
+		if (!this.externalLabelElements.length) {
+			this.resolveExternalLabel(this._ariaLabelledby);
+		}
+		this.observeScrollContainer();
+	}
+
 	/** Derives the displayed rows, the header cells and the paginations before every render. */
 	public componentWillRender(): void {
 		const { rows, end } = selectDisplayedData(
@@ -358,14 +405,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.applyHeaders(this.buildHeaderCells());
 		this.syncPagination('top', this._paginationPosition === 'top' || this._paginationPosition === 'both');
 		this.syncPagination('bottom', this._paginationPosition === 'bottom' || this._paginationPosition === 'both');
-	}
-
-	public componentDidLoad(): void {
-		// Re-resolve after mount to avoid depending on timer-based retries.
-		if (!this.externalLabelElements.length) {
-			this.resolveExternalLabel(this._ariaLabelledby);
-		}
-		this.observeScrollContainer();
 	}
 
 	public componentDidRender(): void {
@@ -381,8 +420,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		this.paginationItems.bottom?.destroy();
 	}
 
-	// --- Listeners ---
-
 	/**
 	 * Keeps the adjusted header cells before the stateless table applies them: applying them renders,
 	 * and every render derives the header cells from the adjusted ones.
@@ -397,8 +434,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	public onKeydown(event: KeyboardEvent): void {
 		this.moveCheckboxFocus(event);
 	}
-
-	// --- Sorting ---
 
 	private initializeSort(headers: KoliBriTableHeaders): boolean {
 		const { sortData, hasSortedCells, missingKey } = initializeSortFromHeaders(headers, this.allowMultiSort);
@@ -417,30 +452,9 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		return buildHeaderCells(this.headers, this.adjustedHeaderCells, this.sortData, this.disableSort, this.allowMultiSort);
 	}
 
-	// --- Callbacks of the stateless table ---
-
-	/**
-	 * Callbacks of the stateless table. The selection is reported through `emitSelectionChange`, the
-	 * adjusted header cells are kept by the `changeheadercells` listener.
-	 */
-	private readonly statelessOn = {
-		onSort: (_event: MouseEvent, { key }: SortEventPayload) => {
-			const headerCell = findHeaderCell(this.headers, key);
-			if (headerCell) {
-				const sortData = changeCellSort(this.sortData, headerCell, this.allowMultiSort);
-				if (sortData) {
-					this.sortData = sortData;
-					this.updateSortedData();
-				}
-			}
-		},
-	};
-
 	private readonly handleChangeHeaderCells = (headerCells: ChangeHeaderCellsEventPayload): void => {
 		this.adjustedHeaderCells = headerCells;
 	};
-
-	// --- Selection ---
 
 	private getSelectedData(selectedKeys: KoliBriTableSelectionKeys): KoliBriTableDataType[] | null {
 		return getSelectedData(this.getRenderProp('selection') || undefined, this.sortedData, selectedKeys);
@@ -463,29 +477,6 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 			dispatchDomEvent(this.host, KolEvent.selectionChange, selectedData);
 		}
 	}
-
-	// --- Pagination ---
-
-	private readonly handlePagination: KoliBriPaginationButtonCallbacks = {
-		onClick: (event: Event, page: number) => {
-			if (typeof this.pagination._on?.onClick === 'function') {
-				this.pagination._on.onClick(event, page);
-			}
-			this.pagination = { ...this.pagination, _page: page };
-		},
-		onChangePage: (event: Event, page: number) => {
-			if (typeof this.pagination._on?.onChangePage === 'function') {
-				this.pagination._on.onChangePage(event, page);
-			}
-			this.pagination = { ...this.pagination, _page: page };
-		},
-		onChangePageSize: (event: Event, pageSize: number) => {
-			if (typeof this.pagination._on?.onChangePageSize === 'function') {
-				this.pagination._on.onChangePageSize(event, pageSize);
-			}
-			this.pagination = { ...this.pagination, _pageSize: pageSize };
-		},
-	};
 
 	private getPaginationInput(position: PaginationPosition): PaginationInput {
 		const positionLabel = position === 'top' ? translate('kol-pagination-position-top') : translate('kol-pagination-position-bottom');
@@ -531,14 +522,10 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		}
 	}
 
-	// --- Labelling ---
-
 	private resolveExternalLabel(value?: AriaLabelledbyPropType): void {
 		this.externalLabelElements = validateAriaLabelledby(this, this.host, this.internals, value);
 		this.syncTableLabel(this.externalLabelElements);
 	}
-
-	// --- Render ---
 
 	private renderPagination(position: PaginationPosition): JSX.Element {
 		const item = this.paginationItems[position];

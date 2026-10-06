@@ -499,6 +499,7 @@ The samples are located in `packages/samples/react` and demonstrate how to use t
 - Spell "KoliBri" with this casing in all documentation and code. The only exception is the component named KolKolibri.
 - Use ESM import syntax in browser code and scripts whenever supported, instead of `require` imports.
 - Do not create barrel files (e.g. `index.ts` that re-export modules). Import modules directly instead.
+- Stencil component classes follow one member order: statics, `@Element`, `@State`, fields, constructor, each `@Prop` with its `@Watch`, `@Event`, `@Method`, lifecycle methods, `@Listen`, helpers, `render` (see the skeleton ARC42, _Member order_; pinned by `component-structure.spec.ts`).
 - Do not place constant declarations before import statements; imports must always be at the very top of the file.
 - **Scripts must be platform-independent**: All scripts in the `scripts/` folder must work on Windows, macOS, and Linux without requiring external tools or platform-specific dependencies. Use Node.js built-in modules instead of external command-line tools like `rg`, `grep`, `find`, etc.
 - Inline code documentation follows [Inline code documentation](#inline-code-documentation).
