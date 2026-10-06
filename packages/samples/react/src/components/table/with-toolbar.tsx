@@ -50,8 +50,8 @@ const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 	],
 };
 
-export const FIRST_NAMES = ['Ada', 'Bruno', 'Clara', 'Finn', 'Ida', 'Jonas', 'Lena', 'Nele', 'Otto', 'Sina'];
-export const LAST_NAMES = ['Bauer', 'Fuchs', 'Hirsch', 'Kraft', 'Lindner', 'Moor', 'Reuter', 'Schubert', 'Wagner', 'Winter'];
+const FIRST_NAMES = ['Ada', 'Bruno', 'Clara', 'Finn', 'Ida', 'Jonas', 'Lena', 'Nele', 'Otto', 'Sina'];
+const LAST_NAMES = ['Bauer', 'Fuchs', 'Hirsch', 'Kraft', 'Lindner', 'Moor', 'Reuter', 'Schubert', 'Wagner', 'Winter'];
 
 function pick<T>(values: T[]): T {
 	return values[Math.floor(Math.random() * values.length)];
