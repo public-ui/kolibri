@@ -22,9 +22,8 @@ import { BaseDialogWebComponent } from '../dialog/base';
 	shadow: true,
 })
 /*
- * `_level` and its watcher are deliberately absent: the predecessor never exposed them here, and
- * adding them would widen the public API of a deprecated component. The card variant therefore
- * always renders its heading at the default level.
+ * `_level` and its watcher are deliberately absent: adding them would widen the public API of a
+ * deprecated component. The card variant therefore always renders its heading at the default level.
  */
 export class KolModal extends BaseDialogWebComponent implements DialogProps, Omit<WebComponentInterface<DialogApi>, '_level' | 'watchLevel'> {
 	@Element() protected readonly host?: HTMLKolModalElement;

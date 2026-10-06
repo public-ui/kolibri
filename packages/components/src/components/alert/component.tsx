@@ -159,8 +159,7 @@ export class KolAlert extends BaseWebComponent<AlertApi> implements AlertProps, 
 	 * Keeps the live-region side effects in sync with the alert render prop: while `role="alert"`
 	 * is active, the device vibrates once (coarse pointers with a prior user gesture only) and a
 	 * timeout removes the role after 10 seconds so a recurring value change is announced again.
-	 * The predecessor ran both effects on every render of the functional component — the watcher
-	 * here runs them exactly once per value change.
+	 * The watcher runs both effects once per value change, not on every render.
 	 *
 	 * - https://developer.mozilla.org/de/docs/Web/API/Navigator/vibrate
 	 * - https://googlechrome.github.io/samples/vibration/

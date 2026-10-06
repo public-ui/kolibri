@@ -34,7 +34,7 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements Br
 
 	/**
 	 * Derived per render pass from the `breadcrumbCurrentPage` feature flag — deliberately not
-	 * `@State`: flag changes must not schedule renders by themselves, matching the predecessor.
+	 * `@State`: a flag change must not schedule a render by itself.
 	 */
 	public showCurrentPage: boolean = true;
 
@@ -110,7 +110,7 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements Br
 	}
 
 	public render(): JSX.Element {
-		// Read per render pass like the predecessor, with the host-scoped feature-flag lookup.
+		// Read per render pass, with the host-scoped feature-flag lookup.
 		this.showCurrentPage = getFeatureFlag('breadcrumbCurrentPage', this.host) !== 'hide';
 		return (
 			<Host>

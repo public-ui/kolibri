@@ -192,9 +192,8 @@ export class KolLinkButton extends BaseLinkWebComponent implements ClickableElem
 
 	@Watch('_role')
 	public watchRole(): void {
-		// Deliberately not forwarded: the predecessor never handed `_role` to its inner element, so a
-		// consumer-set role was never rendered. Keeping that behaviour is public API parity; the link
-		// owner's decision to drop `_role` from the public surface has not been taken here yet.
+		// Deliberately not forwarded: a consumer-set `_role` is not rendered, and the public API keeps
+		// that behaviour. Whether `_role` leaves the public surface is an open decision of the owner.
 	}
 
 	/**

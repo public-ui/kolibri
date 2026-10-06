@@ -414,8 +414,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 	}
 
 	/**
-	 * Resolves the embedded buttons against the current selection. The props are the ones the
-	 * predecessor handed its `kol-button-wc` elements.
+	 * Resolves the embedded buttons against the current selection.
 	 */
 	private resolveButtons(): void {
 		const selected = this.getRenderProp('selected');

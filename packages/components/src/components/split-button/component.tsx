@@ -186,8 +186,8 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 
 	@Watch('_on')
 	public watchOn(value?: ButtonCallbacksPropType<StencilUnknown>): void {
-		// The predecessor handed its inner button a callback object that carried `onClick` only, so
-		// `onMouseDown`/`onFocus`/`onBlur` never reached the consumer. Kept for public API parity.
+		// Only `onClick` reaches the primary button; `onMouseDown`/`onFocus`/`onBlur` are not called,
+		// and the public API keeps that behaviour.
 		this.applyOn({ onClick: value?.onClick });
 	}
 
@@ -200,9 +200,8 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 
 	@Watch('_role')
 	public watchRole(): void {
-		// Deliberately not forwarded: the predecessor never handed `_role` to its inner element, so a
-		// consumer-set role was never rendered. Keeping that behaviour is public API parity; the link
-		// owner's decision to drop `_role` from the public surface has not been taken here yet.
+		// Deliberately not forwarded: a consumer-set `_role` is not rendered, and the public API keeps
+		// that behaviour. Whether `_role` leaves the public surface is an open decision of the owner.
 	}
 
 	/**
@@ -312,8 +311,7 @@ export class KolSplitButton extends BaseButtonWebComponent implements ClickableE
 		this.watchDisabled(this._disabled);
 		this.watchHideLabel(this._hideLabel);
 		this.watchIcons(this._icons);
-		// No public `_inline`: the predecessor's inner `kol-button-wc` defaulted to `false`, so the
-		// primary button renders as `kol-button--standalone`.
+		// No public `_inline`: the primary button is never inline and renders as `kol-button--standalone`.
 		this.applyInline(false);
 		this.watchLabel(this._label);
 		this.watchName(this._name);

@@ -184,7 +184,7 @@ Every Stencil component class lists its members in the same order:
 11. helpers and handlers: the other methods, accessors and arrow-function fields, whatever their visibility
 12. `render`
 
-Property initializers run in declaration order. A property whose value another initializer reads therefore stays before that property, even when its group comes later (e.g. `translateFilenameText` before the `@State` `filename` of `kol-input-file`). `component-structure.spec.ts` pins the member order of all components. For every class under `src` it also checks that no initializer reads an own property declared after it, directly or through own methods, getters and arrow-function properties it calls; a read through a callee that receives `this` (e.g. `new Behavior(this)`) is not traced.
+Property initializers run in declaration order. A property whose value another initializer reads therefore stays before that property, even when its group comes later (e.g. `translateFilenameText` before the `@State` `filename` of `kol-input-file`). `component-structure.spec.ts` pins the member order of all components. For every class under `src` it also checks that no initializer reads an own property declared after it, directly or through own methods, getters and arrow-function properties it calls; a read through a callee that receives `this` (e.g. `new Behavior(this)`) and a read inside a synchronously run callback (an IIFE, an array callback such as `[1].map(() => this.later)`) are not traced.
 
 ### Public API Contract (Migration Parity)
 
