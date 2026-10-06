@@ -1,10 +1,7 @@
-import type { Option, StencilUnknown, Stringified } from '../../../schema';
+import type { Option, StencilUnknown } from '../../../schema';
 import { parseJson } from '../../../schema';
-import type { Prop, PropDefinition } from './factory';
+import type { ExtractPropKey, InternalPropValue, Prop, PropDefinition } from './factory';
 import { createPropDefinition } from './factory';
-
-/** The `_options` prop with options of type `T`. */
-export type OptionsProp<T extends Option<StencilUnknown>> = Prop<'options', Stringified<T[]>, T[]>;
 
 const getLabel = (option: unknown): unknown => (typeof option === 'object' && option !== null ? (option as { label?: unknown }).label : undefined);
 
@@ -21,12 +18,14 @@ const isValidOption = (option: unknown): boolean => {
  * so the fields can compare and filter the labels as text. One option without a valid label rejects the
  * whole list and keeps the previous options. The default is an empty list.
  */
-export function createOptionsPropDefinition<T extends Option<StencilUnknown>>(): PropDefinition<T[], OptionsProp<T>> {
-	return createPropDefinition<OptionsProp<T>>('options', [], (value) => {
+export function createOptionsPropDefinition<P extends Prop<'options', unknown, Option<StencilUnknown>[]>>(): PropDefinition<InternalPropValue<P>, P> {
+	return createPropDefinition<P>('options' as ExtractPropKey<P>, [] as InternalPropValue<P>, (value) => {
 		const parsed = typeof value === 'string' ? parseJson<unknown>(value) : value;
 		if (Array.isArray(parsed) && parsed.every(isValidOption)) {
-			const options = parsed as T[];
-			return options.some((option) => typeof option.label === 'number') ? options.map((option) => ({ ...option, label: String(option.label) })) : options;
+			const options = parsed as Option<StencilUnknown>[];
+			return (
+				options.some((option) => typeof option.label === 'number') ? options.map((option) => ({ ...option, label: String(option.label) })) : options
+			) as InternalPropValue<P>;
 		}
 		throw new Error('Invalid options');
 	});

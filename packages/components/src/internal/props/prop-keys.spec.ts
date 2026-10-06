@@ -114,7 +114,7 @@ const sourceFilesOutsideProps = (dir: string): string[] =>
 describe('prop definitions per render key', () => {
 	it('creates prop definitions only in internal/props', () => {
 		const outside = sourceFilesOutsideProps(SRC)
-			.filter((file) => /\bcreate(Align|Callbacks|Dependent|Links|Options)?PropDefinition\s*[<(]/.test(fs.readFileSync(file, 'utf8')))
+			.filter((file) => /\bcreate\w*PropDefinition\s*[<(]/.test(fs.readFileSync(file, 'utf8')))
 			.map((file) => path.relative(SRC, file));
 		expect(outside).toEqual([]);
 	});
