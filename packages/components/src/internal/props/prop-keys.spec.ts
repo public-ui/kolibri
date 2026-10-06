@@ -96,7 +96,26 @@ const definitionsByKey = async (): Promise<Record<string, string[]>> => {
 	return Object.fromEntries(Object.entries(byKey).map(([key, names]) => [key, [...names]]));
 };
 
+const SRC = path.join(__dirname, '..', '..');
+const PROPS_DIR = __dirname;
+
+const sourceFilesOutsideProps = (dir: string): string[] =>
+	fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+		const full = path.join(dir, entry.name);
+		if (entry.isDirectory()) {
+			return full === PROPS_DIR ? [] : sourceFilesOutsideProps(full);
+		}
+		return /\.tsx?$/.test(entry.name) && !/\.(spec|test|e2e)\.tsx?$/.test(entry.name) && !entry.name.endsWith('.d.ts') ? [full] : [];
+	});
+
 describe('prop definitions per render key', () => {
+	it('creates prop definitions only in internal/props', () => {
+		const outside = sourceFilesOutsideProps(SRC)
+			.filter((file) => /\bcreate(Dependent|Callbacks|Links)?PropDefinition\s*[<(]/.test(fs.readFileSync(file, 'utf8')))
+			.map((file) => path.relative(SRC, file));
+		expect(outside).toEqual([]);
+	});
+
 	it('has one definition per key, except for the documented functional variants', async () => {
 		const duplicates = Object.fromEntries(
 			Object.entries(await definitionsByKey())

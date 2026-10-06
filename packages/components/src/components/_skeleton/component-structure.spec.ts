@@ -11,7 +11,8 @@ import * as ts from 'typescript';
  *
  * For every class under `src`, it also checks that no property initializer reads an own property that
  * is declared after it: directly, through an own method, getter or arrow-function property it calls.
- * A read through a callee that receives `this` (e.g. `new Behavior(this)`) is not traced.
+ * A read through a callee that receives `this` (e.g. `new Behavior(this)`) and a synchronously run
+ * callback (an IIFE, an array callback) are not traced.
  */
 const LIFECYCLE = [
 	'connectedCallback',
@@ -29,18 +30,13 @@ type Group = (typeof GROUPS)[number] | 'watch';
 
 const SRC = path.join(__dirname, '..', '..');
 
-const findClassFiles = (dir: string): string[] =>
+const findSourceFiles = (dir: string): string[] =>
 	fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
 		const full = path.join(dir, entry.name);
 		if (entry.isDirectory()) {
-			return findClassFiles(full);
+			return findSourceFiles(full);
 		}
-		return /\.tsx?$/.test(entry.name) &&
-			!/\.(spec|test|e2e)\.tsx?$/.test(entry.name) &&
-			!entry.name.endsWith('.d.ts') &&
-			/\bclass\b/.test(fs.readFileSync(full, 'utf8'))
-			? [full]
-			: [];
+		return /\.tsx?$/.test(entry.name) && !/\.(spec|test|e2e)\.tsx?$/.test(entry.name) && !entry.name.endsWith('.d.ts') ? [full] : [];
 	});
 
 const decoratorNames = (member: ts.Node): string[] =>
@@ -110,9 +106,10 @@ const isFunctionInitializer = (member: ts.ClassElement): boolean =>
 	ts.isPropertyDeclaration(member) && !!member.initializer && (ts.isArrowFunction(member.initializer) || ts.isFunctionExpression(member.initializer));
 
 /**
- * Own properties an initializer reads during construction: directly, through own methods and getters
- * it reads or calls, and through arrow-function properties it calls. An arrow or function initializer
- * itself runs later, so it reads nothing during construction.
+ * Own properties an initializer reads during construction: directly, through own getters it reads, and
+ * through own methods and arrow-function properties it calls. An arrow or function initializer itself
+ * runs later, so it reads nothing during construction. Callbacks that run synchronously (an IIFE, an
+ * array callback) are treated as deferred and not traced.
  */
 const constructionReads = (member: ts.ClassElement, byName: Map<string, ts.ClassElement>): Set<string> => {
 	const result = new Set<string>();
@@ -129,7 +126,8 @@ const constructionReads = (member: ts.ClassElement, byName: Map<string, ts.Class
 					seen.add(name);
 					walk((target.initializer as ts.ArrowFunction | ts.FunctionExpression).body);
 				}
-			} else if ((ts.isMethodDeclaration(target) || ts.isGetAccessor(target)) && target.body) {
+			} else if (((ts.isMethodDeclaration(target) && calls.has(name)) || ts.isGetAccessor(target)) && target.body) {
+				// A getter runs on every read, a method only when it is called; a method reference reads nothing.
 				seen.add(name);
 				walk(target.body);
 			}
@@ -183,9 +181,14 @@ const checkClass = (cls: ts.ClassDeclaration): string[] => {
 				if (lastProp !== targets[0] || (previousGroup !== 'prop' && previousGroup !== 'watch')) {
 					problems.push(`${name} does not directly follow its prop ${targets[0]}`);
 				}
-			} else if (watched.every((target) => !byName.has(target)) && rank > GROUPS.indexOf('prop')) {
-				// A watcher of an inherited prop stays in the prop group.
-				problems.push(`${name} (watch of an inherited prop) comes after ${GROUPS[rank]}`);
+			} else if (watched.every((target) => !byName.has(target))) {
+				// A watcher of an inherited prop belongs to the prop group.
+				const propRank = GROUPS.indexOf('prop');
+				if (rank > propRank) {
+					problems.push(`${name} (watch of an inherited prop) comes after ${GROUPS[rank]}`);
+				} else {
+					rank = propRank;
+				}
 			}
 			previousGroup = group;
 			return;
@@ -209,7 +212,13 @@ const checkClass = (cls: ts.ClassDeclaration): string[] => {
 	return problems;
 };
 
-const parse = (file: string): ts.SourceFile => ts.createSourceFile(file, fs.readFileSync(file, 'utf8'), ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+type SourceInfo = { file: string; text: string; source: ts.SourceFile };
+
+/** Every source file under `src` that declares a class, read and parsed once. */
+const SOURCES: SourceInfo[] = findSourceFiles(SRC).flatMap((file) => {
+	const text = fs.readFileSync(file, 'utf8');
+	return /\bclass\b/.test(text) ? [{ file, text, source: ts.createSourceFile(file, text, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX) }] : [];
+});
 
 const classesOf = (source: ts.SourceFile): ts.ClassLikeDeclaration[] => {
 	const classes: ts.ClassLikeDeclaration[] = [];
@@ -222,14 +231,14 @@ const classesOf = (source: ts.SourceFile): ts.ClassLikeDeclaration[] => {
 };
 
 describe('Stencil component member order', () => {
-	const files = findClassFiles(SRC).filter((file) => fs.readFileSync(file, 'utf8').includes('@Component('));
+	const components = SOURCES.filter(({ text }) => text.includes('@Component('));
 
 	it('finds the components', () => {
-		expect(files.length).toBeGreaterThan(40);
+		expect(components.length).toBeGreaterThan(40);
 	});
 
-	it.each(files.map((file) => [path.relative(SRC, file), file]))('%s follows the member order', (_name, file) => {
-		const problems = classesOf(parse(file))
+	it.each(components.map(({ file, source }) => [path.relative(SRC, file), source]))('%s follows the member order', (_name, source) => {
+		const problems = classesOf(source)
 			.filter((cls): cls is ts.ClassDeclaration => ts.isClassDeclaration(cls) && decoratorNames(cls).includes('Component'))
 			.flatMap(checkClass);
 		expect(problems).toEqual([]);
@@ -238,8 +247,8 @@ describe('Stencil component member order', () => {
 
 describe('Property initialization order', () => {
 	it('reads no property in an initializer before it is declared', () => {
-		const problems = findClassFiles(SRC).flatMap((file) =>
-			classesOf(parse(file))
+		const problems = SOURCES.flatMap(({ file, source }) =>
+			classesOf(source)
 				.flatMap(initializationProblems)
 				.map((problem) => `${path.relative(SRC, file)}: ${problem}`),
 		);
