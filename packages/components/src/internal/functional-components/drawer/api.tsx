@@ -6,6 +6,8 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  *
  * Notes on prop choices:
  * - `alignProp`: the edge the drawer slides in from. Its `'top'` default is the drawer's too.
+ * - `labelProp`, not `labelWithExpertSlotProp`: the label is the heading of the card the drawer
+ *   wraps its content in, and that heading has no expert slot.
  * - `openProp` is deliberately absent: `show()`, `showModal()` and `close()` move the drawer
  *   without touching the `_open` prop, so the open state has to re-render the component on its
  *   own. It lives in {@link DrawerApi} states as `expanded` instead.

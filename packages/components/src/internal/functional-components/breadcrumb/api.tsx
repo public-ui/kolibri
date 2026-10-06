@@ -1,4 +1,4 @@
-import { breadcrumbLinksProp, labelProp } from '../../props';
+import { breadcrumbLinksProp, labelWithExpertSlotProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { BreadcrumbLinkItem } from './link-item';
 
@@ -6,11 +6,14 @@ import type { BreadcrumbLinkItem } from './link-item';
  * Props configuration for the breadcrumb component.
  *
  * Both props are required. Notes on prop choices:
+ * - `labelWithExpertSlotProp` (not `labelProp`): the predecessor's `validateLabel` accepted any
+ *   string; `labelProp` would reject one-character labels, a validation regression. The same
+ *   choice was made for the button and link migrations.
  * - `breadcrumbLinksProp`: `Stringified<BreadcrumbLinkProps[]>` in, parsed array out, every
  *   entry an object with a string `_href` or `_label`, and the Millersche Zahl hint (>7 entries).
  */
 export const breadcrumbPropsConfig = {
-	required: [breadcrumbLinksProp, labelProp],
+	required: [breadcrumbLinksProp, labelWithExpertSlotProp],
 } as const satisfies PropsConfigShape;
 
 export type BreadcrumbApi = ApiFromConfig<

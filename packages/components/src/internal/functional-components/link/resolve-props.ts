@@ -13,7 +13,7 @@ import {
 	hideLabelProp,
 	hrefProp,
 	inlineProp,
-	labelProp,
+	labelWithExpertSlotProp,
 	linkCallbacksProp,
 	linkRoleProp,
 	linkTargetProp,
@@ -84,7 +84,7 @@ export function resolveLinkProps(props: EmbeddedLinkProps): ResolvedLinkProps {
 	hideLabelProp.apply(props._hideLabel ?? LINK_ELEMENT_DEFAULTS.hideLabel, set('hideLabel'));
 	spanIconsProp.apply(props._icons, set('icons'));
 	inlineProp.apply(props._inline ?? LINK_ELEMENT_DEFAULTS.inline, set('inline'));
-	labelProp.apply(props._label, set('label'));
+	labelWithExpertSlotProp.apply(props._label, set('label'));
 	linkCallbacksProp.apply(props._on, set('on'));
 	linkRoleProp.apply(props._role, set('role'));
 	shortKeyProp.apply(props._shortKey, set('shortKey'));

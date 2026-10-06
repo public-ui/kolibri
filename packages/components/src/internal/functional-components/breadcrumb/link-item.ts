@@ -14,7 +14,7 @@ import {
 	hideLabelProp,
 	hrefProp,
 	inlineProp,
-	labelProp,
+	labelWithExpertSlotProp,
 	linkCallbacksProp,
 	linkTargetProp,
 	shortKeyProp,
@@ -75,7 +75,7 @@ export const createBreadcrumbLinkItem = (link: BreadcrumbLinkProps, getHost: () 
 	// The predecessor rendered `<kol-link-wc _inline={false} {...link}>`: the entry's own
 	// `_inline` overrode the forced `false`, anything else fell back to `false`.
 	apply(inlineProp, link._inline ?? false);
-	apply(labelProp, link._label);
+	apply(labelWithExpertSlotProp, link._label);
 	apply(linkCallbacksProp, link._on);
 	apply(shortKeyProp, link._shortKey);
 	if (typeof link._tabIndex === 'number') {

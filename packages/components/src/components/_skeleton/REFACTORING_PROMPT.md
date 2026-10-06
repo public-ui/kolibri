@@ -53,7 +53,7 @@ Bei Widersprüchen hat die ARC42.md Vorrang.
 **Bevor du die Komponente implementierst, musst du alle Props migrieren:**
 
 1. **Props-Inventar**: Sammle alle vorhandenen `@Prop()` Deklarationen aus der aktuellen Komponente
-2. **Vorhandene Definition wiederverwenden**: Für einen öffentlichen Prop-Namen gibt es eine Definition (z.B. `labelProp` für jedes `_label`); eine zweite Definition für denselben Schlüssel braucht einen fachlichen Grund in `src/internal/props/prop-keys.spec.ts` (siehe ARC42 § Schema Helper Layer). **Pro neuer Prop eine Datei** unter `src/internal/props/`:
+2. **Vorhandene Definition wiederverwenden**: Für einen öffentlichen Prop-Namen gibt es eine Definition (z.B. `disabledProp` für jedes `_disabled`); eine zweite Definition für denselben Schlüssel braucht einen fachlichen Grund in `src/internal/props/prop-keys.spec.ts` (siehe ARC42 § Schema Helper Layer). **Pro neuer Prop eine Datei** unter `src/internal/props/`:
    - Dateiname: `<prop-name>.ts` (z.B. `label.ts`, `href.ts`, `disabled.ts`)
    - Nutze `Prop<K, TExternal, TInternal>` oder `SimpleProp<K, T>`
    - Implementiere `normalize()` und `validate()` via `createPropDefinition<P>()`

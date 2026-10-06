@@ -13,7 +13,7 @@ import { addNavLabel, removeNavLabel } from '../../../utils/unique-nav-labels';
 import {
 	boundaryCountProp,
 	customClassProp,
-	labelProp,
+	labelWithExpertSlotProp,
 	pageProp,
 	pageSizeOptionsProp,
 	pageSizeProp,
@@ -194,7 +194,7 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		if (!initial) {
 			removeNavLabel(store.get('label'));
 		}
-		labelProp.apply(value ?? translatePagination, (v) => store.set('label', v));
+		labelWithExpertSlotProp.apply(value ?? translatePagination, (v) => store.set('label', v));
 		addNavLabel(store.get('label'));
 	};
 

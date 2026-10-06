@@ -19,6 +19,11 @@ const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
 		definitions: ['horizontalIconsProp', 'iconsInputCheckboxProp', 'iconsProp', 'spanIconsProp'],
 		reason: 'icons of a form field (left/right state), checkbox state icons, a single icon class, icons of a span (raw)',
 	},
+	label: {
+		definitions: ['labelProp', 'labelWithExpertSlotProp'],
+		reason:
+			"labelProp checks the length ('' or at least two characters) and gives the label hints; labelWithExpertSlotProp accepts every string, '' switches the expert slot on",
+	},
 	links: {
 		definitions: ['breadcrumbLinksProp', 'navLinksProp', 'skipNavLinksProp'],
 		reason: 'same factory (createLinksPropDefinition), typed per component entry and named in the hint',

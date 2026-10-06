@@ -13,7 +13,7 @@ import {
 	hideLabelProp,
 	idProp,
 	inlineProp,
-	labelProp,
+	labelWithExpertSlotProp,
 	linkRoleProp,
 	nameProp,
 	shortKeyProp,
@@ -30,7 +30,8 @@ import type { ApiFromConfig, PropsConfigShape, WebComponentInterface } from '../
  * `label` is the only required prop. All others are optional.
  *
  * Notes on prop choices:
- * - `labelProp`: the empty string enables the expert slot.
+ * - `labelWithExpertSlotProp` (not `labelProp`): no min/max length restriction, matching the
+ *   predecessor's `validateLabelWithExpertSlot`. The empty string enables the expert slot.
  * - `spanIconsProp` (not `iconsProp`): icons are `KoliBriIconsProp` (a string or a per-direction
  *   object), not a plain icon class string.
  * - `linkRoleProp`: the button shares the `'tab' | 'treeitem'` role union with the link
@@ -41,7 +42,7 @@ import type { ApiFromConfig, PropsConfigShape, WebComponentInterface } from '../
  *   component, which forwards them to the behavior from their watchers.
  */
 export const buttonPropsConfig = {
-	required: [labelProp],
+	required: [labelWithExpertSlotProp],
 	optional: [
 		accessKeyProp,
 		ariaControlsProp,

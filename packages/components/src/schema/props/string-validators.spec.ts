@@ -241,6 +241,7 @@ describe('legacy string prop validators', () => {
 			expect(validateLabelWithExpertSlot).toBe(validateLabel);
 		});
 
+		// Known difference to the skeleton `labelProp`: that one accepts '' or at least 2 characters only.
 		it.each([[''], ['A']])('accepts the string %p', (value) => {
 			const component = createLegacyComponent();
 			validateLabel(component, value);

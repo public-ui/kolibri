@@ -69,6 +69,7 @@ export * from './input-text-type';
 export * from './kolibri-color';
 export * from './label';
 export * from './label-align';
+export * from './label-with-expert-slot';
 export * from './labeled';
 export * from './level';
 export * from './link-callbacks';

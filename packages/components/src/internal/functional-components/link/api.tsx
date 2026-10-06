@@ -11,7 +11,7 @@ import {
 	hideLabelProp,
 	hrefProp,
 	inlineProp,
-	labelProp,
+	labelWithExpertSlotProp,
 	linkCallbacksProp,
 	linkRoleProp,
 	linkTargetProp,
@@ -29,9 +29,10 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * `href` is the only required prop. All others are optional.
  *
  * Notes on prop choices:
- * - `labelProp`: the empty string enables the expert slot. This is tracked separately via the
- *   `expertSlot` state, because the factory collapses undefined to `''` (the default), which would
- *   wrongly enable the expert slot when no label was passed.
+ * - `labelWithExpertSlotProp` (not `labelProp`): no min/max length restriction, matching the
+ *   original `validateLabelWithExpertSlot`. The empty string enables the expert slot; this is
+ *   tracked separately via the `expertSlot` state because the factory collapses undefined → ''
+ *   (the default), which would wrongly enable the expert slot when no label was passed.
  * - `spanIconsProp` (not `iconsProp`): icons are `KoliBriIconsProp` (object), not a plain string.
  * - `tooltipAlignProp`: same valid values as `alignProp` but defaults to `'right'` (matching the
  *   legacy `_tooltipAlign` default).
@@ -51,7 +52,7 @@ export const linkPropsConfig = {
 		hideLabelProp,
 		spanIconsProp,
 		inlineProp,
-		labelProp,
+		labelWithExpertSlotProp,
 		linkCallbacksProp,
 		linkRoleProp,
 		linkTargetProp,

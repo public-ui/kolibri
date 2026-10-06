@@ -8,7 +8,7 @@ import { toolbarPropsConfig } from '../../internal/functional-components/toolbar
 import { ToolbarFC } from '../../internal/functional-components/toolbar/component';
 import type { ToolbarButtonItem, ToolbarLinkItem } from '../../internal/functional-components/toolbar/item';
 import { createToolbarItem } from '../../internal/functional-components/toolbar/item';
-import { labelProp, orientationProp, toolbarItemsProp } from '../../internal/props';
+import { labelWithExpertSlotProp, orientationProp, toolbarItemsProp } from '../../internal/props';
 import type { ClickableElement, FocusableElement, KolFocusOptions, ToolbarItemsPropType, ToolbarProps } from '../../schema';
 import { KeyboardKey } from '../../schema/enums';
 import type { OrientationPropType } from '../../schema/props/orientation';
@@ -44,7 +44,7 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 
 	@Watch('_label')
 	public watchLabel(value?: string): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**

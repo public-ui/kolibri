@@ -10,7 +10,7 @@ import {
 	hideLabelProp,
 	idProp,
 	inlineProp,
-	labelProp,
+	labelWithExpertSlotProp,
 	linkRoleProp,
 	nameProp,
 	popoverAlignProp,
@@ -40,7 +40,7 @@ import type { ApiFromConfig, PropsConfigShape, WebComponentInterface } from '../
  *   They stay raw `@Prop`s on the web component, which forwards them from their watchers.
  */
 export const popoverButtonPropsConfig = {
-	required: [labelProp],
+	required: [labelWithExpertSlotProp],
 	optional: [
 		accessKeyProp,
 		ariaDescriptionProp,

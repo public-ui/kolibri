@@ -1,9 +1,13 @@
-import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp, labelProp, navLinksProp } from '../../props';
+import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp, labelWithExpertSlotProp, navLinksProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { NavChildren } from './model';
 
+/**
+ * Props configuration of `kol-nav`. `labelWithExpertSlotProp`, not `labelProp`: the label is the
+ * `aria-label` of the navigation landmark, which has no length limit.
+ */
 export const navPropsConfig = {
-	required: [labelProp, navLinksProp],
+	required: [labelWithExpertSlotProp, navLinksProp],
 	optional: [collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp],
 } as const satisfies PropsConfigShape;
 

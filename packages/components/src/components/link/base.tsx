@@ -19,7 +19,7 @@ import {
 	hideLabelProp,
 	hrefProp,
 	inlineProp,
-	labelProp,
+	labelWithExpertSlotProp,
 	linkCallbacksProp,
 	linkRoleProp,
 	linkTargetProp,
@@ -215,7 +215,7 @@ export abstract class BaseLinkWebComponent extends BaseWebComponent<LinkApi> {
 	}
 
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		labelProp.apply(value, (v) => {
+		labelWithExpertSlotProp.apply(value, (v) => {
 			this.setRenderProp('label', v);
 			this.setState('expertSlot', value === '');
 			this.tooltipBehavior.watchLabel(this.getTooltipLabel());

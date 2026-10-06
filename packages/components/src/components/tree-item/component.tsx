@@ -7,7 +7,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { TreeItemApi } from '../../internal/functional-components/tree-item/api';
 import { treeItemPropsConfig } from '../../internal/functional-components/tree-item/api';
 import { TreeItemFC } from '../../internal/functional-components/tree-item/component';
-import { activeProp, ariaCurrentValueProp, hrefProp, labelProp, openProp } from '../../internal/props';
+import { activeProp, ariaCurrentValueProp, hrefProp, labelWithExpertSlotProp, openProp } from '../../internal/props';
 import type { HrefPropType, KolFocusOptions, LabelPropType, OpenPropType, TreeItemProps } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, directFocus } from '../../utils/element-interaction';
@@ -60,7 +60,7 @@ export class KolTreeItem extends BaseWebComponent<TreeItemApi> implements TreeIt
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**
