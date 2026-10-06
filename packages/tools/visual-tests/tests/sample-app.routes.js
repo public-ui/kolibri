@@ -21,7 +21,7 @@ export const ROUTES = new Map();
  *     content (skip-nav) and deliberate composition tests (scenarios/*, form/basic).
  *   - viewportSize:
  *     - width (Default: 800)
- *     - height (Default: 100)
+ *     - height (Default: 400)
  *   - waitForTimeout: number (Default: 15000)
  *
  * There is no per-route option for the reflow pass: blocks that should additionally be captured at
@@ -346,22 +346,8 @@ ROUTES.set('input-text/access-short-key?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-text/hide-label?noColumns', {
-	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 0,
-		},
-	},
-});
-ROUTES.set('input-text/hide-msg?noColumns', {
-	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 0,
-		},
-	},
-});
+ROUTES.set('input-text/hide-label?noColumns');
+ROUTES.set('input-text/hide-msg?noColumns');
 ROUTES.set('input-text/text-formatter?noColumns', {
 	snapshot: {
 		skip: true,
