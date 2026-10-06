@@ -13,12 +13,12 @@ import { addNavLabel, removeNavLabel } from '../../../utils/unique-nav-labels';
 import {
 	boundaryCountProp,
 	customClassProp,
-	labelProp,
 	pageProp,
 	pageSizeOptionsProp,
 	pageSizeProp,
 	paginationCallbacksProp,
 	paginationHasButtonsProp,
+	paginationLabelProp,
 	paginationMaxProp,
 	siblingCountProp,
 	tooltipAlignProp,
@@ -194,7 +194,7 @@ export const createPaginationItem = (options: PaginationItemOptions): Pagination
 		if (!initial) {
 			removeNavLabel(store.get('label'));
 		}
-		labelProp.apply(value ?? translatePagination, (v) => store.set('label', v));
+		paginationLabelProp.apply(value ?? translatePagination, (v) => store.set('label', v));
 		addNavLabel(store.get('label'));
 	};
 

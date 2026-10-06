@@ -1,12 +1,12 @@
 import {
 	boundaryCountProp,
 	customClassProp,
-	labelProp,
 	pageProp,
 	pageSizeOptionsProp,
 	pageSizeProp,
 	paginationCallbacksProp,
 	paginationHasButtonsProp,
+	paginationLabelProp,
 	paginationMaxProp,
 	siblingCountProp,
 	tooltipAlignProp,
@@ -19,7 +19,16 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  */
 export const paginationPropsConfig = {
 	required: [pageProp, paginationCallbacksProp, paginationMaxProp],
-	optional: [boundaryCountProp, customClassProp, labelProp, pageSizeOptionsProp, pageSizeProp, paginationHasButtonsProp, siblingCountProp, tooltipAlignProp],
+	optional: [
+		boundaryCountProp,
+		customClassProp,
+		pageSizeOptionsProp,
+		pageSizeProp,
+		paginationHasButtonsProp,
+		paginationLabelProp,
+		siblingCountProp,
+		tooltipAlignProp,
+	],
 } as const satisfies PropsConfigShape;
 
 export type PaginationApi = ApiFromConfig<

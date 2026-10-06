@@ -17,7 +17,7 @@ import { getNumberOfCols, getPrimaryHeaders } from '../../internal/functional-co
 import {
 	fixedColsProp,
 	hasSettingsMenuProp,
-	labelProp,
+	labelWithExpertSlotProp,
 	tableCallbacksProp,
 	tableDataFootProp,
 	tableDataProp,
@@ -166,7 +166,7 @@ export abstract class BaseTableStatelessWebComponent extends BaseWebComponent<Ta
 	}
 
 	protected applyLabel(value?: string): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	protected applyLoading(value?: boolean): void {

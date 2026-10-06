@@ -1,17 +1,19 @@
 import type { KolFocusOptions } from '../../../schema';
-import { activeProp, hrefProp, labelProp } from '../../props';
+import { activeProp, hrefProp, labelWithExpertSlotProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**
  * Props configuration for the tree item component.
  *
  * Notes on prop choices:
+ * - `labelWithExpertSlotProp` (not `labelProp`): the label accepts any string; `labelProp` would
+ *   reject one-character labels.
  * - `_open` is not a render prop: `expand()` and `collapse()` switch it from the inside, so the
  *   normalized value lives in the reactive `open` state (see `States`). The `_open` watcher still
  *   routes every external value through `openProp`.
  */
 export const treeItemPropsConfig = {
-	required: [hrefProp, labelProp],
+	required: [hrefProp, labelWithExpertSlotProp],
 	optional: [activeProp],
 } as const satisfies PropsConfigShape;
 

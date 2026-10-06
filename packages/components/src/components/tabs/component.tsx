@@ -8,7 +8,7 @@ import { tabsPropsConfig } from '../../internal/functional-components/tabs/api';
 import type { TabsButton, TabsButtonItem } from '../../internal/functional-components/tabs/button-item';
 import { createTabsButtonItem } from '../../internal/functional-components/tabs/button-item';
 import { TabsFC } from '../../internal/functional-components/tabs/component';
-import { alignProp, hasCreateButtonProp, labelProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp } from '../../internal/props';
+import { alignProp, hasCreateButtonProp, labelWithExpertSlotProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp } from '../../internal/props';
 import type {
 	AlignPropType,
 	ButtonCallbacksPropType,
@@ -128,7 +128,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	/**
@@ -182,7 +182,7 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 		alignProp.apply(this._align, (v) => this.setRenderProp('align', v));
 		tabBehaviorProp.apply(this._behavior, (v) => this.setRenderProp('behavior', v));
 		hasCreateButtonProp.apply(this._hasCreateButton, (v) => this.setRenderProp('hasCreateButton', v));
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
 		tabsCallbacksProp.apply(this._on, (v) => this.setRenderProp('on', v));
 		this.applySelected(this._selected);
 		this.applyTabs(this._tabs);

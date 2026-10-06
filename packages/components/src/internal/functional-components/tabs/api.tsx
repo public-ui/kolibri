@@ -1,5 +1,5 @@
 import type { KolFocusOptions } from '../../../schema';
-import { alignProp, hasCreateButtonProp, labelProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp } from '../../props';
+import { alignProp, hasCreateButtonProp, labelWithExpertSlotProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { TabsButton } from './button-item';
 
@@ -7,13 +7,15 @@ import type { TabsButton } from './button-item';
  * Props configuration for the tabs component.
  *
  * Notes on prop choices:
+ * - `labelWithExpertSlotProp` (not `labelProp`): the predecessor's `validateLabel` accepted any
+ *   string; `labelProp` would reject one-character labels, a validation regression.
  * - `selectedProp` only checks the type. Clamping into the tab list and skipping disabled tabs
  *   needs both `_selected` and `_tabs`, so the web component resolves it after applying either.
  * - `tabsCallbacksProp` and `tabBehaviorProp` are not rendered — the web component reads them in
  *   its event handlers.
  */
 export const tabsPropsConfig = {
-	required: [labelProp, tabsProp],
+	required: [labelWithExpertSlotProp, tabsProp],
 	optional: [alignProp, hasCreateButtonProp, selectedProp, tabBehaviorProp, tabsCallbacksProp],
 } as const satisfies PropsConfigShape;
 

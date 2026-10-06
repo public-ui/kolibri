@@ -94,6 +94,7 @@ export * from './page-size';
 export * from './page-size-options';
 export * from './pagination-callbacks';
 export * from './pagination-has-buttons';
+export * from './pagination-label';
 export * from './pagination-max';
 export * from './pagination-position';
 export * from './pattern';
