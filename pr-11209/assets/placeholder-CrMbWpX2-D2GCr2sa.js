@@ -1,0 +1,1 @@
+import{b as e,o as t}from"./base-web-component-DK8TT74a-Mn20De_L.js";var n=t(`placeholder`,void 0,e);export{n as t};
