@@ -64,16 +64,8 @@ export const calcColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: num
 	}
 };
 
-const cache: Map<unknown, ColorContrast<RGB>> = new Map();
-
-export const getColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: number, dir = 1): ColorContrast<RGB> => {
-	if (cache.has(baseColor)) {
-		return cache.get(baseColor) as ColorContrast<RGB>;
-	}
-	const color = calcColorContrast(baseColor, contrastColor, ratio, dir);
-	cache.set(baseColor, color);
-	return color;
-};
+export const getColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: number, dir = 1): ColorContrast<RGB> =>
+	calcColorContrast(baseColor, contrastColor, ratio, dir);
 
 export const createContrastColorPair = (color: string | ColorPair<string>, contrastRatio = 7): ColorContrast<string> => {
 	let baseColor: RGBA = [0, 0, 0, 1];
