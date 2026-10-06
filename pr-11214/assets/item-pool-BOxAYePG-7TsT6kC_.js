@@ -1,0 +1,1 @@
+var e=(e,t,n)=>{let r=new Map,i=new Set;return{beginRender:()=>{i.clear()},get:t=>{i.add(t);let n=r.get(t);return n===void 0&&(n=e(),r.set(t,n)),n},endRender:()=>{for(let[e,a]of r)i.has(e)?t(a):(n(a),r.delete(e))},destroy:()=>{for(let e of r.values())n(e);r.clear(),i.clear()}}};export{e as t};
