@@ -66,7 +66,6 @@ const STRING_PROPS: ReadonlyArray<{ name: string; definition: PropDefinition; de
 	{ name: 'downloadProp', definition: downloadProp, defaultValue: undefined },
 	{ name: 'iconsProp', definition: iconsProp, defaultValue: 'kolicon-logo' },
 	{ name: 'idProp', definition: idProp, defaultValue: '' },
-	{ name: 'labelProp', definition: labelProp, defaultValue: '' },
 	{ name: 'linkTargetProp', definition: linkTargetProp, defaultValue: '' },
 	{ name: 'nameProp', definition: nameProp, defaultValue: '' },
 	{ name: 'optionalHrefProp', definition: optionalHrefProp, defaultValue: '' },
@@ -144,6 +143,7 @@ describe('labelProp', () => {
 	it.each<[unknown, string]>([
 		['', ''],
 		['Label', 'Label'],
+		['', ''],
 		[12, '12'],
 		['a'.repeat(80), 'a'.repeat(80)],
 		['a', 'a'],
