@@ -5,9 +5,10 @@
 		--kol-badge-border-radius: 25px; // maximal rund mit und ohne smart button
 
 		border-radius: var(--kol-badge-border-radius);
-		display: inline-flex;
+		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
+		width: fit-content;
 
 		font-family: var(--font-family);
 		font-size: to-rem(14.4);
