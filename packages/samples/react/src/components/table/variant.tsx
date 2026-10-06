@@ -35,13 +35,13 @@ export const TableVariant: FC = () => {
 			</SampleDescription>
 
 			{!Array.isArray(tableVariants) || tableVariants.length === 0 ? (
-				<SampleBlock id="variantNo">
+				<SampleBlock id="variant-no">
 					<p>This theme has no variants for tables.</p>
 				</SampleBlock>
 			) : (
 				tableVariants.map((element, index) => {
 					return (
-						<SampleBlock id={'variant' + index} className="w-full flex flex-col gap-14">
+						<SampleBlock id={'variant-' + index} className="w-full flex flex-col gap-14">
 							<KolTableStateful
 								_label={'Table with variant: ' + element}
 								_data={DATA}
