@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11203,
-	"head": "f53c24208748197a46c86e1cd9c484a6f69a8ff3",
+	"head": "d9e06421a36a7f9ae47d5802685db5dd18de81a6",
 	"repository": "public-ui/kolibri",
-	"runId": 37435709621,
-	"generatedAt": "2026-10-06T08:41:57.718Z",
-	"digest": "sha256:cfd7ef0ee8a71be87584a38e6efce23f1457b8cdf31cf67c5143ce44594b85c4",
+	"runId": 37439059845,
+	"generatedAt": "2026-10-06T09:13:57.079Z",
+	"digest": "sha256:8db991f1ffb9b683dc291b79632a0291811e2bf999cb816f357b5c9103e2cc13",
 	"baseline": {
 		"sha": "2db85583bcaa551d804440ef35bd50dbf1fa5720",
 		"ref": "develop",
@@ -19,9 +19,9 @@
 	"summary": {
 		"unchanged": 2912,
 		"changed": 0,
-		"added": 2,
-		"removed": 1,
-		"error": 6
+		"added": 8,
+		"removed": 7,
+		"error": 0
 	},
 	"packages": [
 		{
@@ -45,11 +45,11 @@
 			"summary": {
 				"unchanged": 416,
 				"changed": 0,
-				"added": 0,
-				"removed": 0,
-				"error": 1
+				"added": 1,
+				"removed": 1,
+				"error": 0
 			},
-			"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
+			"digest": "sha256:06ef953d5621eae0242123fcad58e77e301f505a1ed6003c6b76a258cf4e0799",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2374,11 +2374,18 @@
 					"hash": "sha256:ec663d065f0e7a29a22228cd1c93b22a8c1f82d76180b48767bcd268720620d0"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table/variant",
-					"status": "error",
+					"status": "added",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1",
-					"message": "Error: Route \"table/variant\": invalid data-visual-block id \"variantNo\" (must be kebab-case, max. 30 characters)"
+					"actual": "test-tag-name-transformer/table-variant--variant-no.actual.png"
+				},
+				{
+					"name": "table-variant--variants",
+					"route": "table-variant",
+					"status": "removed",
+					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1",
+					"expected": "test-tag-name-transformer/table-variant--variants.expected.png"
 				},
 				{
 					"name": "table-with-footer--with-footer",
@@ -2555,13 +2562,7 @@
 					"hash": "sha256:172f9ad75f210a1388bff2d544c91d785d381a8753e4cb35567e7ef7ec0478e9"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for table/variant",
-					"route": "table/variant",
-					"message": "Error: Route \"table/variant\": invalid data-visual-block id \"variantNo\" (must be kebab-case, max. 30 characters)"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -2585,11 +2586,11 @@
 			"summary": {
 				"unchanged": 416,
 				"changed": 0,
-				"added": 0,
-				"removed": 0,
-				"error": 1
+				"added": 1,
+				"removed": 1,
+				"error": 0
 			},
-			"digest": "sha256:f748ca500756d37fcae1e56795982b96942c7b2bf4711b767f2a04607f587831",
+			"digest": "sha256:fca0d7a16ace0c4380b8655e9b79ca179143013a67423e438c07a04800cf4fbc",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4914,11 +4915,18 @@
 					"hash": "sha256:a24c32d3c95e687056d3c2440f3a774cbc68d9b71e8e63fbc9f87b65555cabf9"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table/variant",
-					"status": "error",
+					"status": "added",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1",
-					"message": "Error: Route \"table/variant\": invalid data-visual-block id \"variantNo\" (must be kebab-case, max. 30 characters)"
+					"actual": "theme-bwst/table-variant--variant-no.actual.png"
+				},
+				{
+					"name": "table-variant--variants",
+					"route": "table-variant",
+					"status": "removed",
+					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1",
+					"expected": "theme-bwst/table-variant--variants.expected.png"
 				},
 				{
 					"name": "table-with-footer--with-footer",
@@ -5095,13 +5103,7 @@
 					"hash": "sha256:79f3d21b2ff48017667486044906ad51b05922d76b314c0e22190bb28bd03caf"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for table/variant",
-					"route": "table/variant",
-					"message": "Error: Route \"table/variant\": invalid data-visual-block id \"variantNo\" (must be kebab-case, max. 30 characters)"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -5125,11 +5127,11 @@
 			"summary": {
 				"unchanged": 416,
 				"changed": 0,
-				"added": 0,
-				"removed": 0,
-				"error": 1
+				"added": 1,
+				"removed": 1,
+				"error": 0
 			},
-			"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
+			"digest": "sha256:06ef953d5621eae0242123fcad58e77e301f505a1ed6003c6b76a258cf4e0799",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7454,11 +7456,18 @@
 					"hash": "sha256:ec663d065f0e7a29a22228cd1c93b22a8c1f82d76180b48767bcd268720620d0"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table/variant",
-					"status": "error",
+					"status": "added",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1",
-					"message": "Error: Route \"table/variant\": invalid data-visual-block id \"variantNo\" (must be kebab-case, max. 30 characters)"
+					"actual": "theme-default/table-variant--variant-no.actual.png"
+				},
+				{
+					"name": "table-variant--variants",
+					"route": "table-variant",
+					"status": "removed",
+					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1",
+					"expected": "theme-default/table-variant--variants.expected.png"
 				},
 				{
 					"name": "table-with-footer--with-footer",
@@ -7635,13 +7644,7 @@
 					"hash": "sha256:172f9ad75f210a1388bff2d544c91d785d381a8753e4cb35567e7ef7ec0478e9"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for table/variant",
-					"route": "table/variant",
-					"message": "Error: Route \"table/variant\": invalid data-visual-block id \"variantNo\" (must be kebab-case, max. 30 characters)"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -7665,11 +7668,11 @@
 			"summary": {
 				"unchanged": 416,
 				"changed": 0,
-				"added": 0,
-				"removed": 0,
-				"error": 1
+				"added": 1,
+				"removed": 1,
+				"error": 0
 			},
-			"digest": "sha256:00d520d7ec7edc51e49ac64265799ed9a2d070ab5b9ace49b07d3f57b25b029a",
+			"digest": "sha256:7d519c6950cbb025622869daae65bc800aa01ce4b944a33760dcbbb6d1e01a74",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9994,11 +9997,18 @@
 					"hash": "sha256:2d59e93df39ab37e46f1f1b57fcab18197e0c6276ad0285d109f9a82a9a7fc1e"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table/variant",
-					"status": "error",
+					"status": "added",
 					"hash": "sha256:3b0a61bdb029c15cc195f15685cd423ec817dc72241c896159576063bcb2c657",
-					"message": "Error: Route \"table/variant\": invalid data-visual-block id \"variantNo\" (must be kebab-case, max. 30 characters)"
+					"actual": "theme-desy/table-variant--variant-no.actual.png"
+				},
+				{
+					"name": "table-variant--variants",
+					"route": "table-variant",
+					"status": "removed",
+					"hash": "sha256:3b0a61bdb029c15cc195f15685cd423ec817dc72241c896159576063bcb2c657",
+					"expected": "theme-desy/table-variant--variants.expected.png"
 				},
 				{
 					"name": "table-with-footer--with-footer",
@@ -10175,13 +10185,7 @@
 					"hash": "sha256:fba6d304fea25d4db8a726c33fdc69bf9c743319f6c6d07246770cc19f255ed2"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for table/variant",
-					"route": "table/variant",
-					"message": "Error: Route \"table/variant\": invalid data-visual-block id \"variantNo\" (must be kebab-case, max. 30 characters)"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -10205,11 +10209,11 @@
 			"summary": {
 				"unchanged": 416,
 				"changed": 0,
-				"added": 0,
-				"removed": 0,
-				"error": 1
+				"added": 1,
+				"removed": 1,
+				"error": 0
 			},
-			"digest": "sha256:c0ead95e226105a4810adee7b9b297fde17c8f503d2c50afbb20f306559fbb7d",
+			"digest": "sha256:e46c112abb3843630551c3823b6d68ee1d6b3b67f612aa0c9a4ea60cc1a1f953",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12534,11 +12538,18 @@
 					"hash": "sha256:19f099e9096c980a6bfed2a2096f4f45dc92bcff3bff3a6a418d45fae4d23447"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table/variant",
-					"status": "error",
+					"status": "added",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1",
-					"message": "Error: Route \"table/variant\": invalid data-visual-block id \"variantNo\" (must be kebab-case, max. 30 characters)"
+					"actual": "theme-ecl/table-variant--variant-no.actual.png"
+				},
+				{
+					"name": "table-variant--variants",
+					"route": "table-variant",
+					"status": "removed",
+					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1",
+					"expected": "theme-ecl/table-variant--variants.expected.png"
 				},
 				{
 					"name": "table-with-footer--with-footer",
@@ -12715,13 +12726,7 @@
 					"hash": "sha256:139fd89a7de8876b67ee55b888516e5d0827f5864675e53fac57228d450fc4b1"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for table/variant",
-					"route": "table/variant",
-					"message": "Error: Route \"table/variant\": invalid data-visual-block id \"variantNo\" (must be kebab-case, max. 30 characters)"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -12749,7 +12754,7 @@
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:b8cbf0638476a2729f4854f2a289053bfc5e8a70e36a0c42c73d99812b356798",
+			"digest": "sha256:e4de124707c69ddaee587b19ca0834c582cc727030dd39b6e1ebbe8474a5a0b5",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15074,18 +15079,18 @@
 					"hash": "sha256:52b570cc90930d0619db4dbfcce82ed328a3a0fface3c1c40f0371d8e039fe75"
 				},
 				{
-					"name": "table-variant--variant0",
+					"name": "table-variant--variant-0",
 					"route": "table/variant",
 					"status": "added",
 					"hash": "sha256:2af254f8b599c639fd6c19d6e56b651c6f6654d63f98f3f4141b446ff3162da7",
-					"actual": "theme-kern/table-variant--variant0.actual.png"
+					"actual": "theme-kern/table-variant--variant-0.actual.png"
 				},
 				{
-					"name": "table-variant--variant1",
+					"name": "table-variant--variant-1",
 					"route": "table/variant",
 					"status": "added",
 					"hash": "sha256:1174df3ab88f261cb013f6be66f8457707c5cbc23f7b55d48636afc140b4d89f",
-					"actual": "theme-kern/table-variant--variant1.actual.png"
+					"actual": "theme-kern/table-variant--variant-1.actual.png"
 				},
 				{
 					"name": "table-variant--variants",
@@ -15293,11 +15298,11 @@
 			"summary": {
 				"unchanged": 416,
 				"changed": 0,
-				"added": 0,
-				"removed": 0,
-				"error": 1
+				"added": 1,
+				"removed": 1,
+				"error": 0
 			},
-			"digest": "sha256:a49f9eb25f8f401ab7370360077634e0a78dbfafabd80b98cdff9aeeff8f2c8d",
+			"digest": "sha256:7f93db4f7a617d18c9eed16ea6d9579c8ecc618a5a56924f46a0f2ecd17830c0",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17622,11 +17627,18 @@
 					"hash": "sha256:086bc93ce4b3a1e52b8f3cb9b618f3ac1c678173e5b6448805615d5e4b56f30f"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table/variant",
-					"status": "error",
+					"status": "added",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1",
-					"message": "Error: Route \"table/variant\": invalid data-visual-block id \"variantNo\" (must be kebab-case, max. 30 characters)"
+					"actual": "unstyled/table-variant--variant-no.actual.png"
+				},
+				{
+					"name": "table-variant--variants",
+					"route": "table-variant",
+					"status": "removed",
+					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1",
+					"expected": "unstyled/table-variant--variants.expected.png"
 				},
 				{
 					"name": "table-with-footer--with-footer",
@@ -17803,13 +17815,7 @@
 					"hash": "sha256:f5461b699caccf4fed8ec816929b6932a3df770dedcb2515f5069ca73fdbfc9a"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for table/variant",
-					"route": "table/variant",
-					"message": "Error: Route \"table/variant\": invalid data-visual-block id \"variantNo\" (must be kebab-case, max. 30 characters)"
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		}
 	]
