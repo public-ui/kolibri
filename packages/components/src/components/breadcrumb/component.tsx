@@ -8,7 +8,7 @@ import { BreadcrumbFC } from '../../internal/functional-components/breadcrumb/co
 import type { BreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
 import { createBreadcrumbLinkItem } from '../../internal/functional-components/breadcrumb/link-item';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { breadcrumbLinksProp, labelWithExpertSlotProp } from '../../internal/props';
+import { breadcrumbLinksProp, labelProp } from '../../internal/props';
 import type { BreadcrumbLinkProps, BreadcrumbProps, LabelPropType, Stringified } from '../../schema';
 import { a11yHintLabelingLandmarks } from '../../schema';
 import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
@@ -96,7 +96,7 @@ export class KolBreadcrumb extends BaseWebComponent<BreadcrumbApi> implements Br
 		if (!initial) {
 			removeNavLabel(this.getRenderProp('label'));
 		}
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 		a11yHintLabelingLandmarks(value);
 		addNavLabel(this.getRenderProp('label'));
 	}

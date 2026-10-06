@@ -22,7 +22,7 @@ const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
 	label: {
 		definitions: ['labelProp', 'labelWithExpertSlotProp'],
 		reason:
-			"labelProp checks the length ('' or at least two characters) and gives the label hints; labelWithExpertSlotProp accepts every string, '' switches the expert slot on",
+			"labelWithExpertSlotProp only for components with an expert slot: it accepts every string and '' switches the expert slot on; labelProp checks the length ('' or at least two characters) and gives the label hints",
 	},
 	links: {
 		definitions: ['breadcrumbLinksProp', 'navLinksProp', 'skipNavLinksProp'],

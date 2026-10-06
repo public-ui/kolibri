@@ -6,7 +6,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { VersionApi } from '../../internal/functional-components/version/api';
 import { versionPropsConfig } from '../../internal/functional-components/version/api';
 import { VersionFC } from '../../internal/functional-components/version/component';
-import { labelProp } from '../../internal/props';
+import { labelWithExpertSlotProp } from '../../internal/props';
 import type { ColorPair, KoliBriIconsProp, LabelPropType, VersionProps } from '../../schema';
 import { createContrastColorPair } from '../../schema';
 
@@ -43,12 +43,12 @@ export class KolVersion extends BaseWebComponent<VersionApi> implements VersionP
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(versionPropsConfig);
-		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
 	}
 
 	public render(): JSX.Element {

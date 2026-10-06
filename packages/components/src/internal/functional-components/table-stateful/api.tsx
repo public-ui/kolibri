@@ -3,7 +3,7 @@ import {
 	allowMultiSortProp,
 	fixedColsProp,
 	hasSettingsMenuProp,
-	labelWithExpertSlotProp,
+	labelProp,
 	paginationPositionProp,
 	tableDataFootProp,
 	tableDataProp,
@@ -19,11 +19,10 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 /**
  * Props configuration of `kol-table-stateful`. The element renders the stateless table itself; these
  * are its own props, from which it derives the render props of the stateless table (displayed rows,
- * header cells with their sort state). `labelWithExpertSlotProp` for the caption, as in the stateless
- * table.
+ * header cells with their sort state).
  */
 export const tableStatefulPropsConfig = {
-	required: [labelWithExpertSlotProp, tableDataProp, tableStatefulHeadersProp],
+	required: [labelProp, tableDataProp, tableStatefulHeadersProp],
 	optional: [
 		allowMultiSortProp,
 		fixedColsProp,
