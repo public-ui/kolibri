@@ -143,14 +143,13 @@ test.describe(COMPONENT_NAME, () => {
 		 * Today's behavior, pinned unchanged: the field dispatches its own `keydown` CustomEvent on the host, which reaches
 		 * the document before the native Escape key and consumes the tooltip's one-time Escape listener (#11032).
 		 */
-		test('keeps the tooltip on Escape while the input has the focus', async ({ page }) => {
+		test('hides the tooltip on Escape while the input has the focus', async ({ page }) => {
 			await page.locator('input.kol-input').focus();
 			await expect(page.locator(tooltip)).toBeVisible();
 
 			await page.keyboard.press('Escape');
-			await page.waitForTimeout(500);
 
-			await expect(page.locator(tooltip)).toBeVisible();
+			await expect(page.locator(tooltip)).toBeHidden();
 		});
 	});
 
