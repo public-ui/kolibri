@@ -121,10 +121,13 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 	labelWithExpertSlotProp.apply(options.label, (v) => {
 		props.label = v;
 	});
+	// An invalid `popoverAlign` is ignored, so the behavior loads with the default then.
+	let popoverAlign = popoverAlignProp.getDefaultValue();
 	popoverAlignProp.apply(options.popoverAlign, (v) => {
-		props.popoverAlign = v;
-		popoverBehavior.componentWillLoad({ align: v });
+		popoverAlign = v;
 	});
+	props.popoverAlign = popoverAlign;
+	popoverBehavior.componentWillLoad({ align: popoverAlign });
 	variantProp.apply(getFeatureFlag('buttonVariantDefault', options.getFlagHost()) ?? 'normal', (v) => {
 		props.variant = v;
 	});
