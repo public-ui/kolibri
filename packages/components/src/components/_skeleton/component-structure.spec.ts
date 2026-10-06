@@ -61,24 +61,59 @@ const groupOf = (member: ts.ClassElement): Group => {
 	return 'helper';
 };
 
-/** `this.<name>` reads of property initializers, which run during construction. */
-const readsInInitializers = (members: readonly ts.ClassElement[]): Set<string> => {
+const isFunctionNode = (node: ts.Node): boolean =>
+	ts.isArrowFunction(node) || ts.isFunctionExpression(node) || ts.isFunctionDeclaration(node) || ts.isClassExpression(node);
+
+/** `this.<name>` reads of `node` that run immediately, not inside a nested function. */
+const directReads = (node: ts.Node): Set<string> => {
 	const reads = new Set<string>();
-	const visit = (node: ts.Node, root: ts.Node): void => {
-		if (node !== root && (ts.isArrowFunction(node) || ts.isFunctionExpression(node))) return;
-		if (ts.isPropertyAccessExpression(node) && node.expression.kind === ts.SyntaxKind.ThisKeyword) reads.add(node.name.text);
-		ts.forEachChild(node, (child) => visit(child, root));
+	const visit = (child: ts.Node): void => {
+		if (child !== node && isFunctionNode(child)) return;
+		if (ts.isPropertyAccessExpression(child) && child.expression.kind === ts.SyntaxKind.ThisKeyword) reads.add(child.name.text);
+		ts.forEachChild(child, visit);
 	};
-	members.forEach((member) => {
-		if (ts.isPropertyDeclaration(member) && member.initializer && !ts.isArrowFunction(member.initializer)) visit(member.initializer, member.initializer);
-	});
+	visit(node);
 	return reads;
+};
+
+/**
+ * Own properties an initializer reads during construction, also through own methods and getters it
+ * calls. An arrow or function initializer runs later, so it reads nothing during construction.
+ */
+const constructionReads = (member: ts.ClassElement, byName: Map<string, ts.ClassElement>): Set<string> => {
+	const result = new Set<string>();
+	if (!ts.isPropertyDeclaration(member) || !member.initializer || isFunctionNode(member.initializer)) return result;
+	const seen = new Set<string>();
+	const walk = (node: ts.Node): void => {
+		directReads(node).forEach((name) => {
+			const target = byName.get(name);
+			if (!target) return;
+			if (ts.isPropertyDeclaration(target)) {
+				result.add(name);
+			} else if ((ts.isMethodDeclaration(target) || ts.isGetAccessor(target)) && target.body && !seen.has(name)) {
+				seen.add(name);
+				walk(target.body);
+			}
+		});
+	};
+	walk(member.initializer);
+	return result;
 };
 
 const checkClass = (cls: ts.ClassDeclaration): string[] => {
 	const problems: string[] = [];
 	const members = cls.members;
-	const readEarly = readsInInitializers(members);
+	const byName = new Map(members.map((member) => [memberName(member), member]));
+	const readEarly = new Set<string>();
+	members.forEach((member, index) => {
+		constructionReads(member, byName).forEach((name) => {
+			readEarly.add(name);
+			// Property initializers run in declaration order, so a property must be declared before the initializer that reads it.
+			if (members.indexOf(byName.get(name) as ts.ClassElement) > index) {
+				problems.push(`${memberName(member)} reads ${name} before it is initialized`);
+			}
+		});
+	});
 	const propNames = members.filter((member) => groupOf(member) === 'prop').map(memberName);
 	let rank = -1;
 	let lastProp: string | undefined;
@@ -89,18 +124,20 @@ const checkClass = (cls: ts.ClassDeclaration): string[] => {
 		const group = groupOf(member);
 		const name = memberName(member);
 		if (group === 'watch') {
-			const targets = (ts.getDecorators(member as ts.HasDecorators) ?? [])
+			const watched = (ts.getDecorators(member as ts.HasDecorators) ?? [])
 				.map((decorator) => decorator.expression)
 				.filter((expression): expression is ts.CallExpression => ts.isCallExpression(expression) && expression.expression.getText() === 'Watch')
-				.map((expression) => (expression.arguments[0] as ts.StringLiteral).text)
-				.filter((target) => propNames.includes(target))
-				.sort((a, b) => propNames.indexOf(a) - propNames.indexOf(b));
+				.map((expression) => (expression.arguments[0] as ts.StringLiteral).text);
+			watched
+				.filter((target) => byName.has(target) && !propNames.includes(target))
+				.forEach((target) => problems.push(`${name} watches ${target}, which is no @Prop; the member order places watchers of props only`));
+			const targets = watched.filter((target) => propNames.includes(target)).sort((a, b) => propNames.indexOf(a) - propNames.indexOf(b));
 			if (targets.length > 0) {
 				// The watcher follows its first prop directly, or another watcher of that prop.
 				if (lastProp !== targets[0] || (previousGroup !== 'prop' && previousGroup !== 'watch')) {
 					problems.push(`${name} does not directly follow its prop ${targets[0]}`);
 				}
-			} else if (rank > GROUPS.indexOf('prop')) {
+			} else if (watched.every((target) => !byName.has(target)) && rank > GROUPS.indexOf('prop')) {
 				// A watcher of an inherited prop stays in the prop group.
 				problems.push(`${name} (watch of an inherited prop) comes after ${GROUPS[rank]}`);
 			}

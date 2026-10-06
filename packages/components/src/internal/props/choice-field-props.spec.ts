@@ -6,7 +6,7 @@ import { radioValueProp } from './radio-value';
 /**
  * Pins the props of `kol-input-radio` against the legacy validators `validateOptions` and
  * `validateOrientation` and the value handling of the radio controller they replace (G4.1 and G4.4
- * of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
+ * of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`). `optionsProp` also serves `kol-single-select`.
  */
 type PropDefinition = {
 	apply: (value: unknown, callback: (normalized: unknown) => void) => void;
@@ -34,6 +34,16 @@ describe('optionsProp', () => {
 
 	it('parses a JSON string', () => {
 		expect(applied(optionsProp, JSON.stringify(OPTIONS))).toEqual([OPTIONS]);
+	});
+
+	it('keeps disabled options and falsy values, as kol-single-select uses them', () => {
+		const options = [
+			{ label: 'A', value: 'a' },
+			{ label: 'B', value: false, disabled: true },
+			{ label: 'C', value: 0 },
+		];
+		expect(applied(optionsProp, options)).toEqual([options]);
+		expect(applied(optionsProp, JSON.stringify(options))).toEqual([options]);
 	});
 
 	it('converts a number label to a string', () => {

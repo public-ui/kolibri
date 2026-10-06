@@ -10,7 +10,7 @@ import type { SkipNavLinkItem } from './link-item';
  *   an object with a string `_href` or `_label`, and the Millersche Zahl hint (>7 entries).
  */
 export const skipNavPropsConfig = {
-	required: [skipNavLinksProp, labelProp],
+	required: [labelProp, skipNavLinksProp],
 } as const satisfies PropsConfigShape;
 
 export type SkipNavApi = ApiFromConfig<

@@ -2,7 +2,7 @@ import type { AlignPropType } from '../../schema/props/align-options';
 import { alignPropTypeOptions } from '../../schema/props/align-options';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
-import { normalizeString } from './helpers/normalizers';
+import { isEnumOption, normalizeString } from './helpers/normalizers';
 
 /**
  * Normalizer of the alignment props `_align`, `_tooltipAlign` and `_popoverAlign`: they share the
@@ -12,8 +12,8 @@ export const createAlignNormalizer =
 	(propName: string) =>
 	(value: unknown): AlignPropType => {
 		const str = normalizeString(value);
-		if ((alignPropTypeOptions as readonly string[]).includes(str)) {
-			return str as AlignPropType;
+		if (isEnumOption(str, alignPropTypeOptions)) {
+			return str;
 		}
 		throw new Error(`Invalid ${propName} value: ${str}`);
 	};

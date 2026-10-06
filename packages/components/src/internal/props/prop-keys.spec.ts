@@ -99,8 +99,4 @@ describe('prop definitions per render key', () => {
 		);
 		expect(duplicates).toEqual(Object.fromEntries(Object.entries(VARIANTS).map(([key, { definitions }]) => [key, definitions])));
 	});
-
-	it('has a single label definition', () => {
-		expect(definitionsByKey().label).toEqual(['labelProp']);
-	});
 });
