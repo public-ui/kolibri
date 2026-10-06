@@ -4,9 +4,9 @@ import * as ts from 'typescript';
 
 /**
  * Pins the member order of every Stencil component class (ARC42 § Web Component Layer, member order):
- * statics, `@Element`, `@State`, other fields, constructor, each `@Prop` followed by its `@Watch`
- * methods, `@Event`, `@Method`, the lifecycle methods in the order of `LIFECYCLE`, `@Listen`, helpers
- * and handlers, `render`. A property may come earlier than its group when the initializer of a later
+ * statics, `@Element`, `@State`, other fields, constructor, `@Prop`, `@Event`, `@Method`, the
+ * lifecycle methods in the order of `LIFECYCLE`, `@Listen`, helpers and handlers, `render`. A `@Watch`
+ * method directly follows the `@Prop` or `@State` it observes. A property may come earlier than its group when the initializer of a later
  * property reads it, because property initializers run in declaration order.
  *
  * For every class under `src`, it also checks that no property initializer reads an own property that

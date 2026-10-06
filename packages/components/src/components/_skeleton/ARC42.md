@@ -181,7 +181,7 @@ Every Stencil component class lists its members in the same order:
 8. `@Method`
 9. lifecycle methods, grouped by phase (load, update, render, disconnect): `connectedCallback`, `componentWillLoad`, `componentDidLoad`, `componentShouldUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillRender`, `componentDidRender`, `disconnectedCallback`. This is a declaration convention, not the order in which Stencil runs the hooks (`componentWillRender` and `componentDidRender` run before `componentDidLoad`)
 10. `@Listen`
-11. private and protected helpers and handlers (methods, accessors, arrow-function fields)
+11. helpers and handlers: the other methods, accessors and arrow-function fields, whatever their visibility
 12. `render`
 
 Property initializers run in declaration order. A property whose value another initializer reads therefore stays before that property, even when its group comes later (e.g. `translateFilenameText` before the `@State` `filename` of `kol-input-file`). `component-structure.spec.ts` pins the member order of all components. For every class under `src` it also checks that no initializer reads an own property declared after it, directly or through own methods, getters and arrow-function properties it calls; a read through a callee that receives `this` (e.g. `new Behavior(this)`) is not traced.
@@ -360,7 +360,7 @@ Design principles:
 - **Minimal conversion**: Only obvious transformations (string numbers → numbers)
 - **Type guarantees**: Once validated, types are guaranteed throughout the component lifecycle
 - **Single source of truth for defaults**: Default values are defined explicitly in shared prop/schema helpers and consumed by components, avoiding duplicated or drifting defaults
-- **One definition per prop**: A public prop name has one definition in `internal/props` (e.g. `labelProp` for every `_label`), reused by all components. A second definition for the same render key exists only where the props of different components differ functionally (other value type, value set or documented default) or where a shared factory types the value per component (callbacks, links, options); `prop-keys.spec.ts` lists these variants with their reason. Definitions that share behavior under different keys share the implementation (`createAlignPropDefinition`, `createCallbacksPropDefinition`, `createLinksPropDefinition`, `createOptionsPropDefinition`)
+- **One definition per prop**: A public prop name has one definition in `internal/props` (e.g. `labelProp` for every `_label`), reused by all components. A second definition for the same render key exists only where the props of different components differ functionally (other value type, value set or documented default) or where a shared factory types the value per component (callbacks, links, options); `prop-keys.spec.ts` lists these variants with their reason. Definitions that share behavior share the implementation: under different keys `createAlignPropDefinition` (`_align`, `_popoverAlign`, `_tooltipAlign`), under one key the typed factories `createCallbacksPropDefinition`, `createLinksPropDefinition` and `createOptionsPropDefinition`
 
 #### Dual-Type Props
 
