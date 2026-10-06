@@ -13,7 +13,7 @@ export const AbbrBasic: FC = () => (
 
 		<SampleBlock id="basic" fitContent>
 			<span>
-				I am <KolAbbr>e.g.</KolAbbr> an abbreviation.
+				I am <KolAbbr _abbr="e.g." /> an abbreviation.
 			</span>
 		</SampleBlock>
 	</>

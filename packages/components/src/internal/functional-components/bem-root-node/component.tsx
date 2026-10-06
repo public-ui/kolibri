@@ -27,11 +27,11 @@ type BemRootNodeFCProps<TBlock extends keyof KoliBriComponentsBemSchema> = {
 	 */
 	class?: JSXBase.HTMLAttributes<HTMLElement>['class'];
 	/**
-	 * Element of the root node, `div` by default. `abbr` is the abbreviation itself, `fieldset` groups
-	 * the options of a radio group, `label` wraps the native control of a checkbox or radio, `svg` is
-	 * the root of a graphic.
+	 * Element of the root node, `div` by default. `fieldset` groups the options of a radio group,
+	 * `label` wraps the native control of a checkbox or radio, `span` is the root of an inline
+	 * component, `svg` is the root of a graphic.
 	 */
-	component?: 'abbr' | 'div' | 'fieldset' | 'label' | 'svg';
+	component?: 'div' | 'fieldset' | 'label' | 'span' | 'svg';
 } & Partial<Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'class'>> &
 	Partial<Omit<JSXBase.SVGAttributes<SVGSVGElement>, 'class' | keyof JSXBase.HTMLAttributes<HTMLDivElement>>>;
 

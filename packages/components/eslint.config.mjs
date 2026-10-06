@@ -234,6 +234,8 @@ export default [
 			...jsxA11yRecommendedRules,
 			'jsx-a11y/no-access-key': 'off',
 			'jsx-a11y/label-has-associated-control': 'off',
+			// An `abbr` with a long form opens its tooltip on keyboard focus (WCAG 1.4.13), so it has to be focusable.
+			'jsx-a11y/no-noninteractive-tabindex': ['error', { tags: ['abbr'], roles: ['tabpanel'], allowExpressionValues: true }],
 		},
 	},
 

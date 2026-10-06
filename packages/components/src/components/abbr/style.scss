@@ -1,5 +1,6 @@
 @use '../@shared/global' as *;
 @use '../@shared/abbr.mixin' as *;
+@use '../tooltip/style' as *;
 
 @layer kol-component {
 	@include kol-abbr-styles();

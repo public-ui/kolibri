@@ -21,7 +21,15 @@ import { generateBemClassNames } from 'typed-bem';
  */
 export type KoliBriComponentsBemSchema = {
 	'kol-abbr': {
-		modifiers: null;
+		elements: {
+			abbr: {
+				modifiers: null;
+			};
+			tooltip: {
+				modifiers: null;
+			};
+		};
+		modifiers: Set<'has-label'>;
 	};
 	'kol-accordion': {
 		elements: {
@@ -832,7 +840,11 @@ export const bem = generateBemClassNames<KoliBriComponentsBemSchema>();
  */
 const BEM: KoliBriComponentsBemSchema = {
 	'kol-abbr': {
-		modifiers: null,
+		elements: {
+			abbr: { modifiers: null },
+			tooltip: { modifiers: null },
+		},
+		modifiers: new Set(['has-label']),
 	},
 	'kol-alert': {
 		elements: {
