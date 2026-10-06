@@ -1,68 +1,82 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "12 changed – 0 of 12 approved, review pending",
-	"computedAt": "2026-10-06T12:35:52.425Z",
+	"state": "success",
+	"description": "12 visual changes approved by deleonio",
+	"computedAt": "2026-10-06T14:03:54.987Z",
 	"pr": 11188,
 	"head": "b6ac54c5bd63aab03678f8d03364c9095ade4fbe",
 	"digest": "sha256:3e0ec7663921c6211010f3b15262c95437cd27f0d3801d653b8b0b8a3bf31101",
 	"counts": {
 		"changes": 12,
-		"open": 12,
-		"approved": 0,
+		"open": 0,
+		"approved": 12,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"deleonio"
+	],
 	"items": {
 		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-checkbox-basic-noColumns--right-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-checkbox-button-noColumns--left-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-checkbox-button-noColumns--right-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-checkbox-switch-noColumns--left-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"test-tag-name-transformer/input-checkbox-switch-noColumns--right-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/input-checkbox-basic-noColumns--left-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/input-checkbox-basic-noColumns--right-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/input-checkbox-button-noColumns--left-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/input-checkbox-button-noColumns--right-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/input-checkbox-switch-noColumns--left-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/input-checkbox-switch-noColumns--right-disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		}
 	}
 }
