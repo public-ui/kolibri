@@ -1,0 +1,48 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "7 changed – 0 of 7 approved, review pending",
+	"computedAt": "2026-10-06T09:11:28.766Z",
+	"pr": 11209,
+	"head": "d53dec867855a255eaeee5c75137d5f5973383e9",
+	"digest": "sha256:a6461233ee8165b29f4604a4b0b2139f51c95f2e5af6dccc0f01178d9db5a0bf",
+	"counts": {
+		"changes": 7,
+		"open": 7,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/table-state-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
