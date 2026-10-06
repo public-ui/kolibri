@@ -7,5 +7,10 @@
 
 	.kol-toolbar {
 		gap: var(--kern-metric-space-default);
+
+		hr {
+			border-color: var(--kern-color-action-focus-border-inside);
+			border-style: solid;
+		}
 	}
 }
