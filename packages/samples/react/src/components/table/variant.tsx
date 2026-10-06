@@ -34,12 +34,12 @@ export const TableVariant: FC = () => {
 				<p>This sample shows KolTableStateful with different variants controlled by the theme.</p>
 			</SampleDescription>
 
-			<SampleBlock id="variants" className="w-full flex flex-col gap-14">
-				{!Array.isArray(tableVariants) || tableVariants.length === 0 ? (
-					<p>This theme has no variants for tables.</p>
-				) : (
-					tableVariants.map((element) => {
-						return (
+			{!Array.isArray(tableVariants) || tableVariants.length === 0 ? (
+				<p>This theme has no variants for tables.</p>
+			) : (
+				tableVariants.map((element) => {
+					return (
+						<SampleBlock id={'variant: ' + element} className="w-full flex flex-col gap-14">
 							<KolTableStateful
 								_label={'Table with variant: ' + element}
 								_data={DATA}
@@ -56,10 +56,10 @@ export const TableVariant: FC = () => {
 								_paginationPosition="bottom"
 								_variant={element}
 							></KolTableStateful>
-						);
-					})
-				)}
-			</SampleBlock>
+						</SampleBlock>
+					);
+				})
+			)}
 		</div>
 	);
 };
