@@ -1,80 +1,97 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "8 added, 7 removed – 0 of 15 approved, review pending",
-	"computedAt": "2026-10-06T09:13:57.618Z",
+	"state": "success",
+	"description": "15 visual changes approved by laske185",
+	"computedAt": "2026-10-06T09:23:14.503Z",
 	"pr": 11203,
 	"head": "d9e06421a36a7f9ae47d5802685db5dd18de81a6",
 	"digest": "sha256:8db991f1ffb9b683dc291b79632a0291811e2bf999cb816f357b5c9103e2cc13",
 	"counts": {
 		"changes": 15,
-		"open": 15,
-		"approved": 0,
+		"open": 0,
+		"approved": 15,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"laske185"
+	],
 	"items": {
 		"test-tag-name-transformer/table-variant--variant-no": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/table-variant--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-bwst/table-variant--variant-no": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-bwst/table-variant--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/table-variant--variant-no": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-default/table-variant--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-desy/table-variant--variant-no": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-desy/table-variant--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/table-variant--variant-no": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-ecl/table-variant--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-kern/table-variant--variant-0": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-kern/table-variant--variant-1": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"theme-kern/table-variant--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"unstyled/table-variant--variant-no": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		},
 		"unstyled/table-variant--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "laske185"
 		}
 	}
 }
