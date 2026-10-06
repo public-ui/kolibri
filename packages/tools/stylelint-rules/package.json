@@ -11,8 +11,8 @@
 		"format": "prettier --check src",
 		"lint": "pnpm lint:eslint",
 		"lint:eslint": "eslint src",
-		"test": "mocha 'src/**/*.test.js'",
-		"test:unit": "mocha 'src/**/*.test.js'",
+		"test": "mocha \"src/**/*.test.js\"",
+		"test:unit": "mocha \"src/**/*.test.js\"",
 		"unused": "knip"
 	},
 	"devDependencies": {
