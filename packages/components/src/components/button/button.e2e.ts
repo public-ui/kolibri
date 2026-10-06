@@ -51,7 +51,7 @@ test.describe('kol-button', () => {
 
 	/*
 	 * Pins the form participation of the button through `FormAssociationBehavior`.
-	 * The button creates no hidden form element, because its name is unknown when the behavior is constructed (#11036).
+	 * The button creates no hidden form element, because a button contributes nothing to the form data.
 	 */
 	test.describe('Form association', () => {
 		const button = '<kol-button _label="Button" _name="action" _value="button-value"></kol-button>';

@@ -114,7 +114,6 @@ export class KolInputFile
 	@Method()
 	// eslint-disable-next-line @typescript-eslint/require-await
 	public async reset() {
-		// The form value goes first: with a form association it throws and leaves the rest unchanged (#11110).
 		this.formAssociation.setFormAssociatedValue('');
 		this.filename = this.translateFilenameText;
 		this.hasFileSelected = false;

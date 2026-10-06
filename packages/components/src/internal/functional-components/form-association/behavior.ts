@@ -15,8 +15,14 @@ type HTMLInputFileElement = HTMLInputElement & {
 	files: FileList;
 };
 
+const NODE_TYPE_ELEMENT = 1;
+const NODE_TYPE_DOCUMENT_FRAGMENT = 11;
+
+/**
+ * Hosts that get a hidden form element with `reflectInputValues`. `kol-button` is not one of them: a
+ * button contributes nothing to the form data.
+ */
 const ASSOCIATED_TAG_NAMES = new Set([
-	'KOL-BUTTON',
 	'KOL-COMBOBOX',
 	'KOL-INPUT-CHECKBOX',
 	'KOL-INPUT-COLOR',
@@ -150,7 +156,6 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 
 	private createFormAssociatedElement(): FormAssociatedElement {
 		switch (this.type) {
-			case 'button':
 			case 'color':
 			case 'date':
 			case 'email':
@@ -182,14 +187,17 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 	/**
 	 * The associated elements must not reside within the ShadowRoot and must
 	 * reside as children in the host to be recognized by native forms.
+	 *
+	 * The walk checks `nodeType` instead of `instanceof`, because the server-side DOM (Stencil mock-doc)
+	 * has its own `Element` and `ShadowRoot` classes per window.
 	 */
 	private findHostWithShadowRoot(host?: Element): Element | undefined {
 		while (host?.shadowRoot === null && host !== document.body) {
-			const parent = host?.parentNode;
-			if (parent instanceof ShadowRoot) {
-				host = parent.host;
+			const parent: Node | null = host.parentNode;
+			if (parent?.nodeType === NODE_TYPE_DOCUMENT_FRAGMENT && 'host' in parent) {
+				host = (parent as ShadowRoot).host;
 			} else {
-				host = parent instanceof Element ? parent : undefined;
+				host = parent?.nodeType === NODE_TYPE_ELEMENT ? (parent as Element) : undefined;
 			}
 		}
 		return host;
@@ -233,7 +241,12 @@ export class FormAssociationBehavior extends BaseBehavior<FormAssociationApi> im
 		if (associatedElement) {
 			switch (this.type) {
 				case 'file':
-					(associatedElement as HTMLInputFileElement).files = rawValue as FileList;
+					// A file input takes only a `FileList`; any other value clears the selection.
+					if (typeof FileList !== 'undefined' && rawValue instanceof FileList) {
+						(associatedElement as HTMLInputFileElement).files = rawValue;
+					} else {
+						(associatedElement as HTMLInputFileElement).value = '';
+					}
 					break;
 				case 'select':
 					if (associatedElement.tagName === 'SELECT') {
