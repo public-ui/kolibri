@@ -4,8 +4,9 @@ import path from 'node:path';
 
 /**
  * One prop definition per render key. Several definitions for the same key are allowed only where
- * the public props of different components are functionally different, or where a shared factory
- * types the value per component (callbacks, links, options); each entry names that reason. A new
+ * the public props of different components are functionally different, where a shared factory
+ * types the value per component (callbacks, links, options) or where the meaning of the prop differs
+ * (the expert slot label against the pagination label); each entry names that reason. A new
  * definition for an existing key needs a reason here, otherwise it reuses the existing one.
  */
 const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
@@ -22,7 +23,7 @@ const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
 	label: {
 		definitions: ['labelProp', 'labelWithExpertSlotProp', 'paginationLabelProp'],
 		reason:
-			"labelProp checks the length ('' or at least two characters) and gives the label hints; labelWithExpertSlotProp accepts every string, '' switches the expert slot on; paginationLabelProp accepts every string for the navigation of the pagination, which has no expert slot",
+			"labelProp checks the length ('' or at least two characters) and gives the label hints; labelWithExpertSlotProp accepts every string, '' switches the expert slot on; paginationLabelProp behaves like labelWithExpertSlotProp but labels the navigation of the pagination, which has no expert slot",
 	},
 	links: {
 		definitions: ['breadcrumbLinksProp', 'navLinksProp', 'skipNavLinksProp'],

@@ -111,8 +111,14 @@ const isFunctionInitializer = (member: ts.ClassElement): boolean =>
  * runs later, so it reads nothing during construction. Callbacks that run synchronously (an IIFE, an
  * array callback) are treated as deferred and not traced.
  */
+/** `checkClass` and `initializationProblems` both read the construction reads of every member; they are computed once. */
+const constructionReadsCache = new WeakMap<ts.ClassElement, Set<string>>();
+
 const constructionReads = (member: ts.ClassElement, byName: Map<string, ts.ClassElement>): Set<string> => {
+	const cached = constructionReadsCache.get(member);
+	if (cached) return cached;
 	const result = new Set<string>();
+	constructionReadsCache.set(member, result);
 	if (!ts.isPropertyDeclaration(member) || !member.initializer || isFunctionInitializer(member)) return result;
 	const seen = new Set<string>();
 	const walk = (node: ts.Node): void => {
