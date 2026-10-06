@@ -9,7 +9,6 @@
 		background-color: var(--color-white-100);
 		border-radius: 3px;
 		padding: to-rem(4) 0;
-		gap: to-rem(4);
 		border: 1px solid var(--color-blue-100);
 
 		.kol-link,
@@ -21,17 +20,23 @@
 			}
 		}
 
+		hr {
+			border: 1px solid var(--color-blue-100);
+		}
+
 		&:focus-within {
 			outline-color: var(--color-blue-100);
 			outline-offset: 0;
 		}
-	}
 
-	.kol-toolbar--orientation-vertical {
-		padding: to-rem(4) 0;
-	}
+		&--orientation-vertical {
+			gap: to-rem(4);
+			padding: to-rem(4) 0;
+		}
 
-	.kol-toolbar--orientation-horizontal {
-		padding: 0;
+		&--orientation-horizontal {
+			gap: to-rem(16);
+			padding: 0;
+		}
 	}
 }
