@@ -1,8 +1,10 @@
-import { describe, expect, it, jest } from '@jest/globals';
+import { afterAll, beforeEach, describe, expect, it, jest } from '@jest/globals';
+import { Log } from '../../schema/utils/dev.utils';
 import { allowMultiSortProp } from './allow-multi-sort';
 import { paginationPositionProp } from './pagination-position';
 import { isTablePaginationShown, tablePaginationProp } from './table-pagination';
 import { tableStatefulCallbacksProp } from './table-stateful-callbacks';
+import { tableStatefulHeadersProp } from './table-stateful-headers';
 
 /**
  * Pins the props of `kol-table-stateful` against the legacy validators they replace (#9599).
@@ -87,5 +89,41 @@ describe('tableStatefulCallbacksProp', () => {
 
 	it.each([undefined, null])('applies an empty object for %s', (value) => {
 		expect(applied(tableStatefulCallbacksProp, value)).toEqual([{}]);
+	});
+});
+
+describe('tableStatefulHeadersProp', () => {
+	const warn = jest.spyOn(Log, 'warn').mockImplementation(() => undefined);
+	jest.spyOn(Log, 'error').mockImplementation(() => undefined);
+
+	beforeEach(() => {
+		warn.mockClear();
+	});
+
+	afterAll(() => {
+		jest.restoreAllMocks();
+	});
+
+	it('is the `headers` prop', () => {
+		expect(tableStatefulHeadersProp.propName).toBe('headers');
+	});
+
+	it.each([undefined, null])('applies empty horizontal and vertical headers for %s', (value) => {
+		expect(applied(tableStatefulHeadersProp, value)).toEqual([{ horizontal: [], vertical: [] }]);
+	});
+
+	it('stores an object as it is, without checking its cells', () => {
+		const headers = { horizontal: [[{ key: 'a', label: 'A' }]] };
+		const [normalized] = applied(tableStatefulHeadersProp, headers);
+		expect(normalized).toBe(headers);
+	});
+
+	it('parses a JSON string', () => {
+		expect(applied(tableStatefulHeadersProp, '{"vertical":[[{"label":"V"}]]}')).toEqual([{ vertical: [[{ label: 'V' }]] }]);
+	});
+
+	it.each<unknown>([1, true, 'not json', 'null'])('ignores %p with a warning', (value) => {
+		expect(applied(tableStatefulHeadersProp, value)).toEqual([]);
+		expect(warn).toHaveBeenCalled();
 	});
 });
