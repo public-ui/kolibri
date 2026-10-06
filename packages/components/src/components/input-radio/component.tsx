@@ -65,7 +65,7 @@ export class KolInputRadio
 
 	@State() public inputHasFocus = false;
 
-	/** Input of the selected option, the target of `click()` and of the Enter submit. */
+	/** Input of the selected option, the target of the Enter submit. */
 	private inputRef?: HTMLInputElement;
 	private readonly inputRefs = new Map<number, HTMLInputElement>();
 
@@ -115,16 +115,19 @@ export class KolInputRadio
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.inputRef!));
+		return delegateClick(this.host!, async () => setClick(this.getFocusableInput()!));
 	}
 
-	/** The input of the selected option, otherwise of the first enabled option. */
+	/** Whether `option` is the selected one; an option without `value` has its label as value. */
+	private isOptionSelected(option: RadioOption<StencilUnknown>): boolean {
+		return this.getRenderProp('value') === (option.value ?? option.label);
+	}
+
+	/** The input of the selected option, otherwise of the first enabled option; the target of `focus()` and `click()`. */
 	private getFocusableInput(): HTMLInputElement | undefined {
 		const options = this.getRenderProp('options');
 		const isComponentDisabled = Boolean(this.getRenderProp('disabled'));
-		const value = this.getRenderProp('value');
-
-		const selectedIndex = options.findIndex((option) => option.value === value && !isComponentDisabled && !option.disabled);
+		const selectedIndex = options.findIndex((option) => this.isOptionSelected(option) && !isComponentDisabled && !option.disabled);
 
 		if (selectedIndex !== -1) {
 			const input = this.inputRefs.get(selectedIndex);
@@ -287,7 +290,7 @@ export class KolInputRadio
 
 	private renderOption(option: RadioOption<StencilUnknown>, index: number): JSX.Element {
 		const customId = createRelatedUniqueId(this.id, String(index));
-		const selected = this.getRenderProp('value') === option.value;
+		const selected = this.isOptionSelected(option);
 		const label = option.label as string;
 
 		return (

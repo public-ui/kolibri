@@ -8,7 +8,8 @@ import { normalizeRadioOptions } from './radio-options';
  *
  * Description:
  * The options the user can choose from, as an array or as a JSON string when it is passed through an
- * HTML attribute. Every option needs a non-empty string `label`; one invalid option rejects the whole list.
+ * HTML attribute. Every option needs a non-empty string or a number as `label`; a number label becomes a
+ * string. One option without a valid label rejects the whole list.
  */
 export type SingleSelectOptionsProp = Prop<'options', OptionsPropType, Option<StencilUnknown>[]>;
 
