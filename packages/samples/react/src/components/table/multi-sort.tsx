@@ -59,6 +59,7 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
 			(data0 as BacklogEntry).assignee.localeCompare((data1 as BacklogEntry).assignee, 'de'),
 		sortDirection: 'ASC',
+		width: 200,
 	},
 	{
 		label: 'Department',
@@ -66,6 +67,7 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
 			(data0 as BacklogEntry).department.localeCompare((data1 as BacklogEntry).department, 'de'),
+		width: 200,
 	},
 	{
 		label: 'Priority',
@@ -75,6 +77,7 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
 			PRIORITY_ORDER[(data0 as BacklogEntry).priority] - PRIORITY_ORDER[(data1 as BacklogEntry).priority],
 		sortDirection: 'DESC',
+		width: 150,
 	},
 	{
 		label: 'Status',
@@ -83,6 +86,7 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 		textAlign: 'center',
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) =>
 			STATUS_ORDER[(data0 as BacklogEntry).status] - STATUS_ORDER[(data1 as BacklogEntry).status],
+		width: 150,
 	},
 	{
 		label: 'Open tickets',
@@ -90,6 +94,7 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 
 		textAlign: 'right',
 		compareFn: (data0: KoliBriTableDataType, data1: KoliBriTableDataType) => (data0 as BacklogEntry).openTickets - (data1 as BacklogEntry).openTickets,
+		width: 100,
 	},
 	{
 		label: 'Last updated',
@@ -102,6 +107,7 @@ const TABLE_HEADER_CELLS: KoliBriTableHeaderCellWithLogic[] = [
 			else if ((data1 as BacklogEntry).date < (data0 as BacklogEntry).date) return 1;
 			else return 0;
 		},
+		width: 150,
 	},
 ];
 

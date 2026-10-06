@@ -85,7 +85,7 @@ const HEADERS: KoliBriTableHeaders = {
 			{
 				label: 'Date (string)',
 				key: 'date',
-				width: 200,
+				width: 150,
 				textAlign: 'center',
 
 				/* Example 3: Render function using innerHTML. ⚠️Make sure to sanitize data to avoid XSS. */
@@ -98,7 +98,7 @@ const HEADERS: KoliBriTableHeaders = {
 			{
 				label: 'Action (react)',
 				key: 'action',
-				width: 200,
+				width: 250,
 
 				/* Example 4: Render function using React */
 				render: (el) => {
@@ -108,8 +108,8 @@ const HEADERS: KoliBriTableHeaders = {
 								display: `grid`,
 								gridAutoFlow: `column`,
 								alignItems: `end`,
-								gap: `1rem`,
-								maxWidth: `400px`,
+								gap: `4px`,
+								width: `190px`,
 							}}
 						>
 							<KolInputText _label="Input" />
