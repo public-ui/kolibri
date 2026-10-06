@@ -5,8 +5,8 @@ import type { SimpleProp } from './helpers/factory';
 /**
  * Popover align prop.
  *
- * Same valid values as {@link alignProp} ('top' | 'right' | 'bottom' | 'left') but defaults to
- * `'bottom'` to match the legacy `_popoverAlign` default.
+ * Same valid values as {@link alignProp} ('top' | 'right' | 'bottom' | 'left'); the default is
+ * `'bottom'`, the documented default of `_popoverAlign`.
  */
 export type PopoverAlignProp = SimpleProp<'popoverAlign', AlignPropType>;
 

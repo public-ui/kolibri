@@ -4,9 +4,7 @@ import { radioOrientationProp } from './radio-orientation';
 import { radioValueProp } from './radio-value';
 
 /**
- * Pins the props of `kol-input-radio` against the legacy validators `validateOptions` and
- * `validateOrientation` and the value handling of the radio controller they replace (G4.1 and G4.4
- * of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
+ * Pins the props of `kol-input-radio`: the options, the orientation and the value handling.
  */
 type PropDefinition = {
 	apply: (value: unknown, callback: (normalized: unknown) => void) => void;

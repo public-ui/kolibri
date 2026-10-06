@@ -3,8 +3,7 @@ import { hasClearButtonProp } from './has-clear-button';
 import { singleSelectOptionsProp } from './single-select-options';
 
 /**
- * Pins the props of `kol-combobox` and `kol-single-select` against the legacy validators they replace
- * (G5.3 and G5.4 of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
+ * Pins the props of `kol-combobox` and `kol-single-select`: the clear button and the options.
  */
 type PropDefinition = {
 	apply: (value: unknown, callback: (normalized: unknown) => void) => void;

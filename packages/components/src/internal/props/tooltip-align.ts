@@ -3,10 +3,11 @@ import { createAlignPropDefinition } from './helpers/align';
 import type { SimpleProp } from './helpers/factory';
 
 /**
- * Tooltip align prop for kol-link.
+ * Tooltip align prop.
  *
- * Same valid values as {@link alignProp} ('top' | 'right' | 'bottom' | 'left') but defaults to
- * `'right'` to match the legacy `_tooltipAlign` default on kol-link.
+ * Same valid values as {@link alignProp} ('top' | 'right' | 'bottom' | 'left'); the default is
+ * `'right'`, the documented default of kol-link. A component with another documented default sets it
+ * itself (e.g. `'top'` for the button elements).
  */
 export type TooltipAlignProp = SimpleProp<'tooltipAlign', AlignPropType>;
 

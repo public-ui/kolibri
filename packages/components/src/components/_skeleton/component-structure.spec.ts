@@ -94,20 +94,26 @@ const immediateAccess = (node: ts.Node): { reads: Set<string>; calls: Set<string
 };
 
 /** Own members by name; of a getter/setter pair the getter, which runs on a read. */
+const membersByNameCache = new WeakMap<readonly ts.ClassElement[], Map<string, ts.ClassElement>>();
+
+/** One map per member list, so the construction reads computed against it are shared by both checks. */
 const membersByName = (members: readonly ts.ClassElement[]): Map<string, ts.ClassElement> => {
+	const cached = membersByNameCache.get(members);
+	if (cached) return cached;
 	const byName = new Map<string, ts.ClassElement>();
 	members.forEach((member) => {
 		const name = memberName(member);
 		if (!byName.has(name) || ts.isGetAccessor(member)) byName.set(name, member);
 	});
+	membersByNameCache.set(members, byName);
 	return byName;
 };
 
 const isFunctionInitializer = (member: ts.ClassElement): boolean =>
 	ts.isPropertyDeclaration(member) && !!member.initializer && (ts.isArrowFunction(member.initializer) || ts.isFunctionExpression(member.initializer));
 
-/** `checkClass` and `initializationProblems` both read the construction reads of every member; they are computed once. */
-const constructionReadsCache = new WeakMap<ts.ClassElement, Set<string>>();
+/** Construction reads per member map and member; `checkClass` and `initializationProblems` share them. */
+const constructionReadsCache = new WeakMap<Map<string, ts.ClassElement>, Map<ts.ClassElement, Set<string>>>();
 
 /**
  * Own properties an initializer reads during construction: directly, through own getters it reads, and
@@ -116,10 +122,12 @@ const constructionReadsCache = new WeakMap<ts.ClassElement, Set<string>>();
  * array callback) are treated as deferred and not traced.
  */
 const constructionReads = (member: ts.ClassElement, byName: Map<string, ts.ClassElement>): Set<string> => {
-	const cached = constructionReadsCache.get(member);
+	const readsByMember = constructionReadsCache.get(byName) ?? new Map<ts.ClassElement, Set<string>>();
+	constructionReadsCache.set(byName, readsByMember);
+	const cached = readsByMember.get(member);
 	if (cached) return cached;
 	const result = new Set<string>();
-	constructionReadsCache.set(member, result);
+	readsByMember.set(member, result);
 	if (!ts.isPropertyDeclaration(member) || !member.initializer || isFunctionInitializer(member)) return result;
 	const seen = new Set<string>();
 	const walk = (node: ts.Node): void => {
