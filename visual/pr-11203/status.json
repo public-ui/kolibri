@@ -1,19 +1,32 @@
 {
 	"schema": 1,
 	"state": "failure",
-	"description": "7 route(s) failed before the screenshots could be compared",
-	"computedAt": "2026-10-06T07:52:56.608Z",
+	"description": "6 route(s) failed before the screenshots could be compared",
+	"computedAt": "2026-10-06T08:41:58.465Z",
 	"pr": 11203,
-	"head": "0a50ce9bb187fee46a3600b4ab2ee8138505f461",
-	"digest": "sha256:d598fc8e40edf8857e261a725841ac059e2edeae9bea4b76d7e018952b765b54",
+	"head": "f53c24208748197a46c86e1cd9c484a6f69a8ff3",
+	"digest": "sha256:cfd7ef0ee8a71be87584a38e6efce23f1457b8cdf31cf67c5143ce44594b85c4",
 	"counts": {
-		"changes": 0,
-		"open": 0,
+		"changes": 3,
+		"open": 3,
 		"approved": 0,
 		"rejected": 0,
-		"routeErrors": 7,
-		"errorItems": 7
+		"routeErrors": 6,
+		"errorItems": 6
 	},
 	"reviewers": [],
-	"items": {}
+	"items": {
+		"theme-kern/table-variant--variant0": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-variant--variant1": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/table-variant--variants": {
+			"state": "open",
+			"notes": []
+		}
+	}
 }
