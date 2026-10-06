@@ -1,1 +1,0 @@
-import{b as e,o as t}from"./base-web-component-3R1Dy3QK-CqhvQ8QT.js";var n=[`left`,`right`],r=[`top`,`bottom`],i=[...n,...r],a=t=>n=>{let r=e(n);if(i.includes(r))return r;throw Error(`Invalid ${t} value: ${r}`)},o=t(`align`,`top`,a(`align`));export{a as n,o as t};

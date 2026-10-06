@@ -1,0 +1,563 @@
+import{c as e,l as t,r as n,s as r}from"./index-D4B7blr0-BWH3orv2.js";import{n as i}from"./behavior-wk990Mt7-kL5po20T.js";import{r as a,t as o}from"./index-COjxZxjj.js";import{i as s,n as c}from"./dev.utils-CIxbic-4-DcSlo_ME.js";import"./isArray-CcrBs4JM-DiEJ1b3e.js";import{i as l,t as u}from"./base-web-component-3R1Dy3QK-DbGr07F1.js";import{r as d}from"./label-BbqINiyW-xh2hahzq.js";import{t as f}from"./tslib.es6-QNbPBOk5-DpzS01Oy.js";import"./block-bem-DxQXsOt3-CuKDDksw.js";import"./component-C0i1NzJH-De-g5qAO.js";import{t as p}from"./level-Q5lBISho-B0Wrz8lv.js";import"./disabled-CdyeAMlW-CQUlb517.js";import"./Heading-BlfO8u3C-lQxYjMin.js";import{i as m,n as h,t as g}from"./element-interaction-Cy9tx3Sx-BTUWCd5A.js";import"./component-BBCQuSzA-BjdBPUs6.js";import"./component-D5ypRj5K-Cv31SZf7.js";import"./i18n-BaCf-SDK-ylDqK6GY.js";import{t as _}from"./has-closer-BQ7zAkgZ-DkFgaSeI.js";import"./component-hbwUQuQQ-idf_cmTC.js";import"./component-CpDRsOko-BcDOb6wG.js";import"./component-B_YeODa3-C2G6Z1_6.js";import"./align-CnBEsqBq-CQnH5E5V.js";import"./variant-Df1M9rSo-DCsQIhUV.js";import"./name-D8963H-v-CdJ2wCfL.js";import"./api-0cGcl-eV-Dr3DkoL4.js";import"./resolve-props-CFz9ihBP-RY4ZEETI.js";import{n as v}from"./href-DOi-fZMu-DFHuvPhy.js";import{t as y}from"./link-target-B7A-qwaP-CPE0VEiP.js";import{n as b,t as x}from"./component-CvGft8FB-CYx1dEuy.js";var S=l(),C={required:[d],optional:[S,_,p,y,v]},w=class extends u{constructor(){super(...arguments),this.ctaRef=g(),this.closeButtonRef=g(),this.tooltipBehavior=new i(this.stateAccess),this.handleClose=()=>{var e,t;this.tooltipBehavior.hideTooltip(),(t=(e=this.getRenderProp(`on`)).onClose)==null||t.call(e,new Event(`Close`)),this.host&&a(this.host,o.close)},this.handleFocus=e=>{var t,n;(n=(t=this.getRenderProp(`on`)).onFocus)==null||n.call(t,e),this.host&&a(this.host,o.focus)},this.handleBlur=e=>{var t,n;(n=(t=this.getRenderProp(`on`)).onBlur)==null||n.call(t,e),this.host&&a(this.host,o.blur)}}initCardRenderProps(){this.initRenderProps(C),this.closeButtonProps=b(this.host),this.tooltipBehavior.componentWillLoad({label:this.closeButtonProps.label,align:this.closeButtonProps.tooltipAlign})}syncTooltipListeners(){this.closeButtonRef.el&&this.tooltipBehavior.syncListeners(void 0,this.closeButtonRef.el,!0)}destroyTooltipBehavior(){this.tooltipBehavior.destroy()}applyHasCloser(e){_.apply(e,e=>this.setRenderProp(`hasCloser`,e))}applyHref(e){v.apply(e,e=>this.setRenderProp(`href`,e))}applyLabel(e){d.apply(e,e=>this.setRenderProp(`label`,e))}applyLevel(e){p.apply(e,e=>this.setRenderProp(`level`,e))}applyOn(e){S.apply(e,e=>this.setRenderProp(`on`,e))}applyTarget(e){y.apply(e,e=>this.setRenderProp(`target`,e))}renderCardFC(){return e(x,{ariaDescriptionId:this.getState(`ariaDescriptionId`),closeButtonProps:this.closeButtonProps,handleBlur:this.handleBlur,handleClose:this.handleClose,handleFocus:this.handleFocus,hasCloser:this.getRenderProp(`hasCloser`),headingId:this.getState(`headingId`),href:this.getRenderProp(`href`),label:this.getRenderProp(`label`),level:this.getRenderProp(`level`),on:this.getRenderProp(`on`),refCloseButton:this.closeButtonRef,refCta:this.ctaRef,refTooltip:this.tooltipBehavior.setTooltipElementRef,target:this.getRenderProp(`target`)},this.renderSlot())}},T=`@charset "UTF-8";
+/*
+* This file defines the layer order for all CSS layers used in KoliBri.
+* The order is important as it determines the cascade priority.
+*
+* Layer order (lowest to highest priority):
+* 1. kol-a11y - Accessibility defaults and requirements
+* 2. kol-global - Global component styles and resets
+* 3. kol-component - Component-specific styles
+* 4. kol-theme-global - Theme-specific global styles
+* 5. kol-theme-component - Theme-specific component styles
+* 6. kol-forced-colors - Defaults for forced colors and high contrast modes
+* 7. kol-theme-forced-colors - Theme-specific styles for forced colors and high contrast modes
+*/
+@layer kol-a11y, kol-global, kol-component, kol-theme-global, kol-theme-component, kol-forced-colors, kol-theme-forced-colors;
+/* forward the rem function */
+/*
+ * Guards an interaction rule (\`:hover\`, \`:active\`, \`:focus…\`) against the disabled state.
+ *
+ * Two shapes are needed because the disabled marker sits on different elements: a native control
+ * carries \`disabled\`, an anchor or summary carries \`aria-disabled\`, and a BEM wrapper carries a
+ * \`--disabled\` modifier while its inner control carries the attribute.
+ */
+/* Wrapper variant: asks the interactive element inside, which is where the attribute lives. */
+/*
+ * This file contains all rules for accessibility.
+ */
+@layer kol-a11y {
+  :host {
+    /*
+     * Minimum size of interactive elements.
+     *
+     * The \`max(…, 44px)\` floor guarantees the WCAG 2.5.5 (AAA) target size of 44px:
+     * \`to-rem(44)\` runs the value through a \`calc()\` rem round-trip which can lose
+     * sub-pixel precision and resolve to e.g. 43.99px depending on the browser's
+     * rounding, dropping just below the required minimum.
+     */
+    --a11y-min-size: max(calc(44 * 1rem / var(--kolibri-root-font-size, 16)), 44px);
+    /*
+     * No element should be used without verifying the contrast ratio of its background and font colors.
+     * By initially setting the background color to white and the font color to black,
+     * the contrast ratio is ensured and explicit adjustment is forced.
+     */
+    --kol-a11y-font-color: black;
+    --kol-a11y-background-color: white;
+    color: var(--kol-a11y-font-color);
+    background-color: var(--kol-a11y-background-color);
+    /*
+     * Verdana is an accessible font that can be used without requiring additional loading time.
+     */
+    --kol-a11y-font-family: Verdana;
+    font-family: var(--kol-a11y-font-family);
+    /*
+     * Letter spacing is required for all texts.
+     */
+    letter-spacing: inherit;
+    /*
+     * Word spacing is required for all texts.
+     */
+    word-spacing: inherit;
+    /*
+     * Text should be aligned left by default to provide a predictable starting point.
+     */
+    text-align: left;
+  }
+  * {
+    /*
+     * This rule enables the word dividing for all texts. That is important for high zoom levels.
+     */
+    hyphens: auto;
+    /*
+     * This rule enables the word dividing for all texts. That is important for high zoom levels.
+     */
+    word-break: break-word;
+  }
+  /*
+   * All interactive elements should have a minimum size of to-rem(44).
+   */
+  /* input:not([type='checkbox'], [type='radio'], [type='range']), */
+  /* option, */
+  /* select, */
+  /* textarea, */
+  button,
+  .kol-input .input {
+    min-width: var(--a11y-min-size);
+    min-height: var(--a11y-min-size);
+  }
+  /*
+   * Some interactive elements should not inherit the font-family and font-size.
+   */
+  a,
+  button,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  input,
+  option,
+  select,
+  textarea {
+    /*
+     * All elements should inherit the text color from his parent element.
+     */
+    color: inherit;
+    /*
+     * All elements should inherit the font family from his parent element.
+     */
+    font-family: inherit;
+    /*
+     * All elements should inherit the font size from his parent element.
+     */
+    font-size: inherit;
+    /*
+     * Letter spacing is required for all texts.
+     */
+    letter-spacing: inherit;
+    /*
+     * Word spacing is required for all texts.
+     */
+    word-spacing: inherit;
+  }
+  /**
+  * Sometimes we need the semantic element for accessibility reasons,
+  * but we don't want to show it.
+  *
+  * - https://www.a11yproject.com/posts/how-to-hide-content/
+  */
+  .visually-hidden {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+    clip-path: inset(50%);
+  }
+}
+/*
+ * This file contains all rules for forced-colors and highcontrast modes
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/system-color to see all color keywords the browsers are providing
+ */
+@layer kol-forced-colors {
+  @media (forced-colors: active) {
+    .kol-button__text {
+      color: ButtonText;
+      background-color: ButtonFace;
+      border: 2px solid ButtonBorder;
+    }
+    .kol-button--disabled .kol-button__text {
+      color: GrayText;
+      border-color: GrayText;
+    }
+    /*
+     * Forced colors drop author colors, so the only way a disabled control still reads as
+     * disabled is the \`GrayText\` system color. \`kol-button\` had it; the controls whose disabled
+     * state is \`aria-disabled\` (anchor, summary) and the native form controls did not.
+     */
+    .kol-link__interactive-element[aria-disabled=true],
+    .kol-accordion__heading[aria-disabled=true],
+    .kol-details__heading[aria-disabled=true] {
+      color: GrayText;
+    }
+    .kol-link__interactive-element[aria-disabled=true] .kol-icon,
+    .kol-link__interactive-element[aria-disabled=true] .kol-span__label,
+    .kol-accordion__heading[aria-disabled=true] .kol-icon,
+    .kol-accordion__heading[aria-disabled=true] .kol-span__label,
+    .kol-details__heading[aria-disabled=true] .kol-icon,
+    .kol-details__heading[aria-disabled=true] .kol-span__label {
+      color: GrayText;
+    }
+    input:disabled,
+    select:disabled,
+    textarea:disabled {
+      color: GrayText;
+      border-color: GrayText;
+    }
+    .kol-card,
+    .kol-dialog,
+    .kol-modal {
+      color: CanvasText;
+      background-color: Canvas;
+      border: 1px solid ButtonBorder;
+    }
+    .kol-pagination__button--selected .kol-button {
+      opacity: 1;
+    }
+    .kol-pagination__button--selected .kol-button__text {
+      color: SelectedItemText;
+      background-color: SelectedItem;
+    }
+    /* focus styles */
+    .kol-button__interactive-element:focus-visible,
+    .kol-link__interactive-element:focus-visible {
+      outline: 2px solid Highlight;
+      outline-offset: 2px;
+    }
+  }
+}
+@layer kol-global {
+  /*
+   * Dieses CSS stellt sicher, dass der Standard-Style
+   * von A und Button resettet werden.
+   */
+  :is(a, button) {
+    background-color: transparent;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    /* 100% needed for custom width from outside */
+  }
+  /*
+   * Ensure elements with hidden attribute to be actually not visible
+   * @see https://meowni.ca/hidden.is.a.lie.html
+   */
+  [hidden] {
+    display: none !important;
+  }
+  .badge-text-hint {
+    color: black;
+    background-color: white;
+  }
+}
+@layer kol-global {
+  :host {
+    /*
+     * The max-width is needed to prevent the table from overflowing the
+     * parent node, if the table is wider than the parent node.
+     */
+    max-width: 100%;
+    font-size: calc(16 * 1rem / var(--kolibri-root-font-size, 16));
+  }
+  * {
+    /*
+     * We prefer to box-sizing: border-box for all elements.
+     */
+    box-sizing: border-box;
+  }
+  .kol-span {
+    /* KolSpan is a layout component with icons in all directions and a label text in the middle. */
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    /* The sub span in KolSpan is the horizontal span with icon left and right and the label text in the middle. */
+  }
+  .kol-span__container {
+    display: flex;
+    align-items: center;
+  }
+  a,
+  button {
+    cursor: pointer;
+  }
+  .kol-span .kol-span__label--hide-label .kol-span__label {
+    display: none;
+  }
+  /* Reset browser agent style. */
+  button:disabled {
+    color: unset;
+  }
+  .disabled label,
+  .disabled:focus-within label,
+  [aria-disabled=true],
+  [aria-disabled=true]:focus,
+  [disabled],
+  [disabled]:focus {
+    outline: none;
+    cursor: not-allowed;
+  }
+  [aria-disabled=true]:focus .kol-span,
+  [disabled]:focus .kol-span {
+    outline: none !important;
+  }
+  .hastooltip {
+    z-index: 900 !important;
+  }
+}
+@font-face {
+  font-family: "kolicons";
+  src: url("kolicons.eot?t=1791277862350"); /* IE9*/
+  src: url("kolicons.eot?t=1791277862350#iefix") format("embedded-opentype"), url("kolicons.woff2?t=1791277862350") format("woff2"), url("kolicons.woff?t=1791277862350") format("woff"), url("kolicons.ttf?t=1791277862350") format("truetype"), url("kolicons.svg?t=1791277862350#kolicons") format("svg"); /* iOS 4.1- */
+}
+@layer kol-component {
+  [class^=kolicon-], [class*=" kolicon-"] {
+    font-family: "kolicons";
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .kolicon-alert-error::before {
+    content: "\\ea01";
+  }
+  .kolicon-alert-info::before {
+    content: "\\ea02";
+  }
+  .kolicon-alert-success::before {
+    content: "\\ea03";
+  }
+  .kolicon-alert-warning::before {
+    content: "\\ea04";
+  }
+  .kolicon-check::before {
+    content: "\\ea05";
+  }
+  .kolicon-chevron-double-left::before {
+    content: "\\ea06";
+  }
+  .kolicon-chevron-double-right::before {
+    content: "\\ea07";
+  }
+  .kolicon-chevron-down::before {
+    content: "\\ea08";
+  }
+  .kolicon-chevron-left::before {
+    content: "\\ea09";
+  }
+  .kolicon-chevron-right::before {
+    content: "\\ea0a";
+  }
+  .kolicon-chevron-up::before {
+    content: "\\ea0b";
+  }
+  .kolicon-cogwheel::before {
+    content: "\\ea0c";
+  }
+  .kolicon-cross::before {
+    content: "\\ea0d";
+  }
+  .kolicon-eye-closed::before {
+    content: "\\ea0e";
+  }
+  .kolicon-eye::before {
+    content: "\\ea0f";
+  }
+  .kolicon-house::before {
+    content: "\\ea10";
+  }
+  .kolicon-kolibri::before {
+    content: "\\ea11";
+  }
+  .kolicon-link-external::before {
+    content: "\\ea12";
+  }
+  .kolicon-link::before {
+    content: "\\ea13";
+  }
+  .kolicon-minus::before {
+    content: "\\ea14";
+  }
+  .kolicon-pin-pinned::before {
+    content: "\\ea15";
+  }
+  .kolicon-pin-unpinned::before {
+    content: "\\ea16";
+  }
+  .kolicon-plus::before {
+    content: "\\ea17";
+  }
+  .kolicon-settings::before {
+    content: "\\ea18";
+  }
+  .kolicon-sort-asc::before {
+    content: "\\ea19";
+  }
+  .kolicon-sort-desc::before {
+    content: "\\ea1a";
+  }
+  .kolicon-sort-neutral::before {
+    content: "\\ea1b";
+  }
+  .kolicon-up::before {
+    content: "\\ea1c";
+  }
+  .kolicon-version::before {
+    content: "\\ea1d";
+  }
+}
+@layer kol-component {
+  .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  .kol-tooltip {
+    display: contents;
+  }
+  .kol-tooltip__floating {
+    opacity: 0;
+    display: none;
+    position: fixed;
+    /* Avoid layout interference - see https://floating-ui.com/docs/computePosition */
+    top: 0;
+    left: 0;
+    /* Can be used to specify the tooltip-width from the outside. Unset by default.  */
+    width: var(--kol-tooltip-width, max-content);
+    min-width: calc(8 * 1rem / var(--kolibri-root-font-size, 16));
+    max-width: 90vw;
+    max-height: 90vh;
+    animation-direction: normal;
+    /* Can be used to specify the animation duration from the outside. 250ms by default. */
+    animation-duration: var(--kolibri-tooltip-animation-duration, 250ms);
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+  }
+  .kol-tooltip__floating.hide {
+    animation-name: hideTooltip;
+  }
+  .kol-tooltip__floating.show {
+    animation-name: showTooltip;
+  }
+  .kol-tooltip__arrow {
+    transform: rotate(45deg);
+    color: black;
+    background-color: white;
+    position: absolute;
+    z-index: 999;
+    width: calc(10 * 1rem / var(--kolibri-root-font-size, 16));
+    height: calc(10 * 1rem / var(--kolibri-root-font-size, 16));
+  }
+  .kol-tooltip__content {
+    color: black;
+    background-color: white;
+    position: relative;
+    z-index: 1000;
+  }
+  @keyframes hideTooltip {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
+  @keyframes showTooltip {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+/*
+ * Button styles for a skeleton block whose interactive element sits inside the BEM root:
+ * \`kol-button\` renders \`<div class="kol-button"><button class="kol-button__interactive-element">\`,
+ * \`kol-link\` renders \`<div class="kol-link"><a class="kol-link__interactive-element">\`.
+ *
+ * Overlaps with \`kol-embedded-button-box-styles\` below: both target the block class itself and disagree
+ * on \`display\` and \`text-align\`. A stylesheet that includes both therefore depends on order or
+ * specificity — today that only happens where the caller nests one of them (e.g. \`_alert.mixin\`
+ * nests this one under \`.kol-alert\`, which wins). Include only one per block unless the nesting
+ * makes the winner explicit.
+ */
+/*
+ * Minimal box replication for shadow trees that render \`ButtonFC\` without including
+ * \`kol-button-styles\`. The \`kol-global\` reset (\`background\`, \`width\`, \`margin\`, \`padding\`,
+ * \`border\`) and the a11y layer \`min-height\`/\`min-width\` apply to the native button, on top of the
+ * UA \`inline-block\`, but not to the \`div\` root that carries the \`kol-button\` class. This mixin
+ * replicates that outer box on the root, while the inner \`kol-button__interactive-element\` degrades
+ * to a plain block container to avoid the inline-level baseline gap the UA \`inline-block\` would add
+ * below it.
+ *
+ * Mutually exclusive with \`kol-button-styles\` above — see the collision note there.
+ */
+@layer kol-component {
+  .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  .kol-card .kol-icon {
+    color: inherit;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+  .kol-card :host {
+    display: inline-block;
+  }
+  .kol-card .kol-button {
+    display: flex;
+    height: 100%;
+    min-height: var(--a11y-min-size);
+    text-decoration-line: none;
+    /* The interactive element is the flex container positioning the text, so it carries the
+       box the root element used to be. The UA default underline sits on that element too,
+       so suppressing \`text-decoration\` on the wrapper alone is not enough. */
+  }
+  .kol-card .kol-button__interactive-element {
+    display: flex;
+    flex: 1;
+    text-align: left;
+    text-decoration-line: none;
+    /* A flex container only exposes a baseline if it has an in-flow text box to derive one
+       from; without it the surrounding inline formatting context falls back to the bottom
+       margin edge and everything after the element shifts by 1px. The zero-width space
+       supplies that box. Measured, not assumed: removing it turns \`popover-button/inline\`
+       and \`input-file/basic\` red against the develop baseline (the box grows 179→180px). */
+  }
+  .kol-card .kol-button__interactive-element::before {
+    content: "​";
+  }
+  .kol-card .kol-button__text {
+    flex: 1 0 100%;
+  }
+  .kol-card .kol-button {
+    /* The tooltip wrapper holds only the absolutely positioned floating tooltip. In the legacy
+       DOM it sat in a block flow and collapsed to zero height; as a flex/grid item it would
+       stretch to the container height instead, adding phantom rows to the layout. */
+  }
+  .kol-card .kol-button__tooltip {
+    height: 0;
+  }
+  .kol-card .kol-button--external-link > .kolicon-link-external::before {
+    content: none;
+  }
+  .kol-card .kol-button--external-link .kol-button__interactive-element > .kolicon-link-external::before {
+    content: none;
+  }
+  .kol-card {
+    /* Visible with forced colors  */
+    outline: transparent solid calc(1 * 1rem / var(--kolibri-root-font-size, 16));
+    display: grid;
+    height: 100%;
+    overflow: visible;
+    grid-template-areas: "header  close" "content content";
+    grid-template-columns: 1fr min-content;
+    grid-template-rows: min-content 1fr;
+  }
+  .kol-card__header {
+    align-self: start;
+    grid-area: header;
+  }
+  .kol-card__content {
+    align-self: stretch;
+    grid-area: content;
+  }
+  .kol-card__close-button {
+    grid-area: close;
+  }
+  .kol-card:has(.kol-card__link) {
+    position: relative;
+  }
+  .kol-card__link::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    cursor: pointer;
+  }
+}`,E=class extends w{constructor(e){super(),t(this,e),this.ariaDescriptionId=s(),this.headingId=c(`card-heading`),this._hasCloser=!1,this._level=0}watchHasCloser(e){this.applyHasCloser(e)}watchHref(e){this.applyHref(e)}watchLabel(e){this.applyLabel(e)}watchLevel(e){this.applyLevel(e)}watchOn(e){this.applyOn(e)}watchTarget(e){this.applyTarget(e)}async focus(e){}async click(){}componentWillLoad(){this.initCardRenderProps(),this.watchHasCloser(this._hasCloser),this.watchHref(this._href),this.watchLabel(this._label),this.watchLevel(this._level),this.watchOn(this._on),this.watchTarget(this._target)}componentDidRender(){this.syncTooltipListeners()}disconnectedCallback(){this.destroyTooltipBehavior()}renderSlot(){return e(`slot`,null)}render(){return e(n,{key:`ca4e7b9ea573310182632df30d3deee217da69da`},this.renderCardFC())}get host(){return r(this)}static get watchers(){return{_hasCloser:[`watchHasCloser`],_href:[`watchHref`],_label:[`watchLabel`],_level:[`watchLevel`],_on:[`watchOn`],_target:[`watchTarget`]}}};f([m(`ctaRef`)],E.prototype,`focus`,null),f([h(`ctaRef`)],E.prototype,`click`,null),E.style={default:T};export{E as kol_card};
