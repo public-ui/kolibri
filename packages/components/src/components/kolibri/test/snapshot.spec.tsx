@@ -63,8 +63,8 @@ describe('Test KolKolibri', () => {
 	it.each([
 		['a 3-digit hex color', '#fff', 'rgb(255,255,255)'],
 		['an 8-digit hex color', '#11223344', 'rgb(17,34,51)'],
-		['a color pair, which does not color the logo', { backgroundColor: '#ff0000', foregroundColor: '#ffffff' }, 'rgb(undefined,undefined,undefined)'],
-		['a color pair as JSON, which does not color the logo', '{"backgroundColor":"#ff0000","foregroundColor":"#ffffff"}', 'rgb(undefined,undefined,undefined)'],
+		['a color pair in its foreground color', { backgroundColor: '#ff0000', foregroundColor: '#ffffff' }, 'rgb(255,255,255)'],
+		['a color pair as JSON in its foreground color', '{"backgroundColor":"#ff0000","foregroundColor":"#ffffff"}', 'rgb(255,255,255)'],
 		['an invalid color, which keeps the default', 'red', 'rgb(0,60,120)'],
 	])('renders %s', async (_, color, fill) => {
 		expect(await renderLogo({ _color: color })).toMatchObject({ fill, labelFill: fill });
