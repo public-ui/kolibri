@@ -272,8 +272,10 @@ test.describe('kol-tabs', () => {
 			const firstTab = kolTabs.getByRole('tab', { name: 'First Tab' });
 			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
 
-			await secondTab.focus();
+			await firstTab.focus();
 			await page.keyboard.press('ArrowRight');
+			await expect(secondTab).toBeFocused();
+			await page.keyboard.press('ArrowLeft');
 			await expect(firstTab).toBeFocused();
 		});
 
@@ -286,7 +288,9 @@ test.describe('kol-tabs', () => {
 			const firstTab = kolTabs.getByRole('tab', { name: 'First Tab' });
 			const secondTab = kolTabs.getByRole('tab', { name: 'Second Tab' });
 
-			await secondTab.focus();
+			await firstTab.focus();
+			await page.keyboard.press('ArrowRight');
+			await expect(secondTab).toBeFocused();
 			await page.keyboard.press('ArrowRight');
 			await expect(firstTab).toBeFocused();
 		});
