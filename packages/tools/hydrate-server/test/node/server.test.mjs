@@ -151,7 +151,6 @@ const PROBLEMATIC_COMPONENTS = new Set([
 	'kol-pagination', // Multiple setTimeout
 	'kol-toaster', // Multiple setTimeout
 	'kol-popover-button', // setTimeout + @floating-ui/dom autoUpdate
-	'kol-popover-button-wc', // Same component, actual tag name
 	'kol-popover', // addEventListener zu document.body ohne disconnectedCallback
 	'kol-accordion', // setTimeout ohne disconnectedCallback
 	'kol-single-select', // setTimeout ohne disconnectedCallback

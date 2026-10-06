@@ -6,11 +6,11 @@
 
 @layer kol-component {
 	@include kol-badge-styles();
-	@include kol-button-wc-box-styles('kol-button');
+	@include kol-embedded-button-box-styles('kol-button');
 
 	.kol-badge {
 		.kol-badge__smart-button {
-			width: auto; // overrides kol-button-wc-box-styles, which would claim the whole badge
+			width: auto; // overrides kol-embedded-button-box-styles, which would claim the whole badge
 
 			order: 3; // needed to push the button behind the br and at the end of the badge
 		}

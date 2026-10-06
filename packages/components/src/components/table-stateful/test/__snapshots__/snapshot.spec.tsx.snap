@@ -37,7 +37,24 @@ exports[`kol-table-stateful should render with a multiple selection 1`] = `
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -45,7 +62,24 @@ exports[`kol-table-stateful should render with a multiple selection 1`] = `
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -55,9 +89,11 @@ exports[`kol-table-stateful should render with a multiple selection 1`] = `
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--selection">
@@ -208,7 +244,24 @@ exports[`kol-table-stateful should render with an initial ascending sort 1`] = `
             <tr class="kol-table__head-row">
               <th aria-sort="ascending" class="kol-table__cell kol-table__cell--ascending kol-table__cell--header" data-sort="sort-ASC" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-asc" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -216,7 +269,24 @@ exports[`kol-table-stateful should render with an initial ascending sort 1`] = `
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -226,9 +296,11 @@ exports[`kol-table-stateful should render with an initial ascending sort 1`] = `
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -295,7 +367,24 @@ exports[`kol-table-stateful should render with an initial descending sort 1`] = 
             <tr class="kol-table__head-row">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -303,7 +392,24 @@ exports[`kol-table-stateful should render with an initial descending sort 1`] = 
               </th>
               <th aria-sort="descending" class="kol-table__cell kol-table__cell--descending kol-table__cell--header" data-sort="sort-DESC" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-desc" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -313,9 +419,11 @@ exports[`kol-table-stateful should render with an initial descending sort 1`] = 
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -390,9 +498,11 @@ exports[`kol-table-stateful should render with data and headers as JSON strings 
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -435,7 +545,24 @@ exports[`kol-table-stateful should render with data without sorting 1`] = `
             <tr class="kol-table__head-row">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -443,7 +570,24 @@ exports[`kol-table-stateful should render with data without sorting 1`] = `
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -453,9 +597,11 @@ exports[`kol-table-stateful should render with data without sorting 1`] = `
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -537,9 +683,11 @@ exports[`kol-table-stateful should render with horizontal and vertical headers, 
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="row">
@@ -575,30 +723,209 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
           <nav aria-label="kol-table-pagination-label" class="kol-pagination__navigation">
             <ul class="kol-pagination__navigation-list">
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-first" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--first"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+                  <button aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-first
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-back" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+                  <button aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-back
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 1" _customclass="" _label="1" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+                <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          1
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 1
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 2" _customclass="" _label="2" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+                <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          2
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 2
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 3" _customclass="" _label="3" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+                <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          3
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 3
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-next" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+                <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+                  <button aria-label="kol-page-next" class="kol-button__interactive-element" disabled="" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-next
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-last" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--last"></kol-button-wc>
+                <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+                  <button aria-label="kol-page-last" class="kol-button__interactive-element" disabled="" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-last
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>
           <div class="page-size">
-            <kol-select-wc _label="kol-entries-per-site" _value="10" class="kol-pagination__page-size-select"></kol-select-wc>
+            <div class="kol-pagination__page-size-select">
+              <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
+                <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+                  <span class="kol-form-field__label-text kol-span">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-entries-per-site
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert"></slot>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+                <div class="kol-form-field__input">
+                  <div class="kol-input-container">
+                    <div class="kol-input-container__container">
+                      <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce">
+                        <option class="kol-select__option kol-select__option--selected" selected="" value="-0">
+                          10
+                        </option>
+                        <option class="kol-select__option" value="-1">
+                          20
+                        </option>
+                        <option class="kol-select__option" value="-2">
+                          50
+                        </option>
+                        <option class="kol-select__option" value="-3">
+                          100
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -613,7 +940,24 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
             <tr class="kol-table__head-row">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -621,7 +965,24 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -631,9 +992,11 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -681,30 +1044,209 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
           <nav aria-label="kol-table-pagination-label" class="kol-pagination__navigation">
             <ul class="kol-pagination__navigation-list">
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-first" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--first"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+                  <button aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-first
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-back" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+                  <button aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-back
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 1" _customclass="" _label="1" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+                <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          1
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 1
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 2" _customclass="" _label="2" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+                <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          2
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 2
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 3" _customclass="" _label="3" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+                <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          3
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 3
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-next" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+                <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+                  <button aria-label="kol-page-next" class="kol-button__interactive-element" disabled="" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-next
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-last" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--last"></kol-button-wc>
+                <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+                  <button aria-label="kol-page-last" class="kol-button__interactive-element" disabled="" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-last
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>
           <div class="page-size">
-            <kol-select-wc _label="kol-entries-per-site" _value="10" class="kol-pagination__page-size-select"></kol-select-wc>
+            <div class="kol-pagination__page-size-select">
+              <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
+                <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+                  <span class="kol-form-field__label-text kol-span">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-entries-per-site
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert"></slot>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+                <div class="kol-form-field__input">
+                  <div class="kol-input-container">
+                    <div class="kol-input-container__container">
+                      <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce">
+                        <option class="kol-select__option kol-select__option--selected" selected="" value="-0">
+                          10
+                        </option>
+                        <option class="kol-select__option" value="-1">
+                          20
+                        </option>
+                        <option class="kol-select__option" value="-2">
+                          50
+                        </option>
+                        <option class="kol-select__option" value="-3">
+                          100
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -726,7 +1268,24 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
             <tr class="kol-table__head-row">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -734,7 +1293,24 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -744,9 +1320,11 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -871,30 +1449,209 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
           <nav aria-label="kol-table-pagination-label" class="kol-pagination__navigation">
             <ul class="kol-pagination__navigation-list">
               <li>
-                <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-first" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--first"></kol-button-wc>
+                <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+                  <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-first
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-back" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+                <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+                  <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-back
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 1" _customclass="" _label="1" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+                <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          1
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 1
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 2" _customclass="" _label="2" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+                <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          2
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 2
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 3" _customclass="" _label="3" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+                <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          3
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 3
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-next" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+                  <button aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-next
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-last" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--last"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+                  <button aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-last
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>
           <div class="page-size">
-            <kol-select-wc _label="kol-entries-per-site" _value="10" class="kol-pagination__page-size-select"></kol-select-wc>
+            <div class="kol-pagination__page-size-select">
+              <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
+                <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+                  <span class="kol-form-field__label-text kol-span">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-entries-per-site
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert"></slot>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+                <div class="kol-form-field__input">
+                  <div class="kol-input-container">
+                    <div class="kol-input-container__container">
+                      <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce">
+                        <option class="kol-select__option kol-select__option--selected" selected="" value="-0">
+                          10
+                        </option>
+                        <option class="kol-select__option" value="-1">
+                          20
+                        </option>
+                        <option class="kol-select__option" value="-2">
+                          50
+                        </option>
+                        <option class="kol-select__option" value="-3">
+                          100
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -916,7 +1673,24 @@ exports[`kol-table-stateful should render with pagination false 1`] = `
             <tr class="kol-table__head-row">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -924,7 +1698,24 @@ exports[`kol-table-stateful should render with pagination false 1`] = `
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -934,9 +1725,11 @@ exports[`kol-table-stateful should render with pagination false 1`] = `
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -1211,36 +2004,225 @@ exports[`kol-table-stateful should render with pagination object on the second p
           <nav aria-label="kol-table-pagination-label" class="kol-pagination__navigation">
             <ul class="kol-pagination__navigation-list">
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-first" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--first"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+                  <button aria-label="kol-page-first" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-first
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-back" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+                  <button aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-back
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 1" _customclass="" _label="1" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+                <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          1
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 1
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 2" _customclass="" _label="2" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+                <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          2
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 2
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 3" _customclass="" _label="3" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+                <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          3
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 3
+                  </span>
+                </div>
               </li>
               <li>
                 <span aria-hidden="true" class="kol-pagination__separator"></span>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 5" _customclass="" _label="5" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+                <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          5
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 5
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-next" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+                  <button aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-next
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-last" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--last"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+                  <button aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-last
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>
           <div class="page-size">
-            <kol-select-wc _label="kol-entries-per-site" _value="5" class="kol-pagination__page-size-select"></kol-select-wc>
+            <div class="kol-pagination__page-size-select">
+              <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
+                <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+                  <span class="kol-form-field__label-text kol-span">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-entries-per-site
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert"></slot>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+                <div class="kol-form-field__input">
+                  <div class="kol-input-container">
+                    <div class="kol-input-container__container">
+                      <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce">
+                        <option class="kol-select__option kol-select__option--selected" selected="" value="-0">
+                          5
+                        </option>
+                        <option class="kol-select__option" value="-1">
+                          10
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1255,7 +2237,24 @@ exports[`kol-table-stateful should render with pagination object on the second p
             <tr class="kol-table__head-row">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -1263,7 +2262,24 @@ exports[`kol-table-stateful should render with pagination object on the second p
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -1273,9 +2289,11 @@ exports[`kol-table-stateful should render with pagination object on the second p
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -1353,7 +2371,24 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
             <tr class="kol-table__head-row">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -1361,7 +2396,24 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -1371,9 +2423,11 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -1498,30 +2552,209 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
           <nav aria-label="kol-table-pagination-label" class="kol-pagination__navigation">
             <ul class="kol-pagination__navigation-list">
               <li>
-                <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-first" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--first"></kol-button-wc>
+                <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--first">
+                  <button aria-label="kol-page-first" class="kol-button__interactive-element" disabled="" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-double-left" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-first
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-back" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+                <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+                  <button aria-label="kol-page-back" class="kol-button__interactive-element" disabled="" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-back
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 1" _customclass="" _label="1" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+                <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          1
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 1
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 2" _customclass="" _label="2" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+                <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          2
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 2
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 3" _customclass="" _label="3" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+                <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          3
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 3
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-next" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+                  <button aria-label="kol-page-next" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-next
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-last" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--last"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--last">
+                  <button aria-label="kol-page-last" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-double-right" role="presentation"></i>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-last
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>
           <div class="page-size">
-            <kol-select-wc _label="kol-entries-per-site" _value="10" class="kol-pagination__page-size-select"></kol-select-wc>
+            <div class="kol-pagination__page-size-select">
+              <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
+                <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+                  <span class="kol-form-field__label-text kol-span">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-entries-per-site
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert"></slot>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+                <div class="kol-form-field__input">
+                  <div class="kol-input-container">
+                    <div class="kol-input-container__container">
+                      <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce">
+                        <option class="kol-select__option kol-select__option--selected" selected="" value="-0">
+                          10
+                        </option>
+                        <option class="kol-select__option" value="-1">
+                          20
+                        </option>
+                        <option class="kol-select__option" value="-2">
+                          50
+                        </option>
+                        <option class="kol-select__option" value="-3">
+                          100
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1543,7 +2776,24 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
             <tr class="kol-table__head-row">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -1551,7 +2801,24 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -1561,9 +2828,11 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -1600,21 +2869,136 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
           <nav aria-label="kol-table-pagination-label" class="kol-pagination__navigation">
             <ul class="kol-pagination__navigation-list">
               <li>
-                <kol-button-wc _customclass="" _hidelabel="" _label="kol-page-back" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--previous"></kol-button-wc>
+                <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--previous">
+                  <button aria-label="kol-page-back" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-left" role="presentation"></i>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-back
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 1" _customclass="" _label="1" class="kol-pagination__button kol-pagination__button--numbers"></kol-button-wc>
+                <div class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--numbers">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          1
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 1
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _ariadescription="kol-page 2" _customclass="" _label="2" aria-current="page" class="kol-pagination__button kol-pagination__button--selected selected"></kol-button-wc>
+                <div aria-current="page" class="kol-button kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--selected selected">
+                  <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                    <span class="kol-button__text kol-span">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          2
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                      </span>
+                    </span>
+                  </button>
+                  <span class="visually-hidden" id="nonce">
+                    kol-page 2
+                  </span>
+                </div>
               </li>
               <li>
-                <kol-button-wc _customclass="" _disabled="" _hidelabel="" _label="kol-page-next" _tooltipalign="bottom" class="kol-pagination__button kol-pagination__button--next"></kol-button-wc>
+                <div class="kol-button kol-button--disabled kol-button--hide-label kol-button--normal kol-button--standalone kol-pagination__button kol-pagination__button--next">
+                  <button aria-label="kol-page-next" class="kol-button__interactive-element" disabled="" type="button">
+                    <span class="kol-button__text kol-span kol-span--hide-label">
+                      <span class="kol-span__container">
+                        <span aria-hidden="true" class="kol-span__slot" hidden="">
+                          <slot name="expert" slot="expert"></slot>
+                        </span>
+                        <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-chevron-right" role="presentation"></i>
+                      </span>
+                    </span>
+                  </button>
+                  <div class="kol-button__tooltip">
+                    <div class="kol-tooltip__floating">
+                      <div class="kol-tooltip__arrow"></div>
+                      <span class="kol-span kol-tooltip__content">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            kol-page-next
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </li>
             </ul>
           </nav>
           <div class="page-size">
-            <kol-select-wc _label="kol-entries-per-site" _value="10" class="kol-pagination__page-size-select"></kol-select-wc>
+            <div class="kol-pagination__page-size-select">
+              <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
+                <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+                  <span class="kol-form-field__label-text kol-span">
+                    <span class="kol-span__container">
+                      <span class="kol-span__label">
+                        kol-entries-per-site
+                      </span>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert"></slot>
+                      </span>
+                    </span>
+                  </span>
+                </label>
+                <div class="kol-form-field__input">
+                  <div class="kol-input-container">
+                    <div class="kol-input-container__container">
+                      <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce">
+                        <option class="kol-select__option kol-select__option--selected" selected="" value="-0">
+                          10
+                        </option>
+                        <option class="kol-select__option" value="-1">
+                          20
+                        </option>
+                        <option class="kol-select__option" value="-2">
+                          50
+                        </option>
+                        <option class="kol-select__option" value="-3">
+                          100
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1636,7 +3020,24 @@ exports[`kol-table-stateful should render with pagination without data 1`] = `
             <tr class="kol-table__head-row">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -1644,7 +3045,24 @@ exports[`kol-table-stateful should render with pagination without data 1`] = `
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -1654,9 +3072,11 @@ exports[`kol-table-stateful should render with pagination without data 1`] = `
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="3" rowspan="1">
@@ -1675,7 +3095,278 @@ exports[`kol-table-stateful should render with the props passed to the stateless
 <kol-table-stateful class="kol-table-stateful">
   <template shadowrootmode="open">
     <div class="kol-table kol-table--custom">
-      <kol-table-settings-wc></kol-table-settings-wc>
+      <div class="kol-table__settings">
+        <div class="kol-table-settings">
+          <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+            <button aria-label="kol-table-settings" class="kol-button__interactive-element" type="button">
+              <span class="kol-button__text kol-span kol-span--hide-label">
+                <span class="kol-span__container">
+                  <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-settings" role="presentation"></i>
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
+                    <slot name="expert" slot="expert"></slot>
+                  </span>
+                </span>
+              </span>
+            </button>
+            <div class="kol-button__tooltip">
+              <div class="kol-tooltip__floating">
+                <div class="kol-tooltip__arrow"></div>
+                <span class="kol-span kol-tooltip__content">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-table-settings
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <dialog aria-labelledby="dialog-heading-nonce" aria-modal="true" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: fit-content;">
+          <article aria-labelledby="dialog-heading-nonce" class="kol-card">
+            <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="dialog-heading-nonce">
+              kol-table-settings
+            </strong>
+            <div class="kol-card__content">
+              <div class="kol-table-settings__content">
+                <form>
+                  <div class="kol-table-settings__columns">
+                    <div class="kol-table-settings__column">
+                      <kol-input-checkbox _checked="" _hidelabel="" _label="kol-table-settings-column-hidable" _value=""></kol-input-checkbox>
+                      <span class="kol-table-settings__column-label">
+                        ID
+                      </span>
+                      <kol-input-number _hidelabel="" _label="kol-table-settings-column-width" _min="1"></kol-input-number>
+                      <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-up">
+                        <button aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" disabled="" type="button">
+                          <span class="kol-button__text kol-span kol-span--hide-label">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-up" role="presentation"></i>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <div class="kol-button__tooltip">
+                          <div class="kol-tooltip__floating">
+                            <div class="kol-tooltip__arrow"></div>
+                            <span class="kol-span kol-tooltip__content">
+                              <span class="kol-span__container">
+                                <span class="kol-span__label">
+                                  kol-table-settings-not-move
+                                </span>
+                                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-down">
+                        <button aria-label="kol-table-settings-move-down" class="kol-button__interactive-element" type="button">
+                          <span class="kol-button__text kol-span kol-span--hide-label">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <div class="kol-button__tooltip">
+                          <div class="kol-tooltip__floating">
+                            <div class="kol-tooltip__arrow"></div>
+                            <span class="kol-span kol-tooltip__content">
+                              <span class="kol-span__container">
+                                <span class="kol-span__label">
+                                  kol-table-settings-move-down
+                                </span>
+                                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="kol-table-settings__column">
+                      <kol-input-checkbox _checked="" _hidelabel="" _label="kol-table-settings-column-hidable" _value=""></kol-input-checkbox>
+                      <span class="kol-table-settings__column-label">
+                        Name
+                      </span>
+                      <kol-input-number _hidelabel="" _label="kol-table-settings-column-width" _min="1"></kol-input-number>
+                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-up">
+                        <button aria-label="kol-table-settings-move-up" class="kol-button__interactive-element" type="button">
+                          <span class="kol-button__text kol-span kol-span--hide-label">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-up" role="presentation"></i>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <div class="kol-button__tooltip">
+                          <div class="kol-tooltip__floating">
+                            <div class="kol-tooltip__arrow"></div>
+                            <span class="kol-span kol-tooltip__content">
+                              <span class="kol-span__container">
+                                <span class="kol-span__label">
+                                  kol-table-settings-move-up
+                                </span>
+                                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-down">
+                        <button aria-label="kol-table-settings-move-down" class="kol-button__interactive-element" type="button">
+                          <span class="kol-button__text kol-span kol-span--hide-label">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <div class="kol-button__tooltip">
+                          <div class="kol-tooltip__floating">
+                            <div class="kol-tooltip__arrow"></div>
+                            <span class="kol-span kol-tooltip__content">
+                              <span class="kol-span__container">
+                                <span class="kol-span__label">
+                                  kol-table-settings-move-down
+                                </span>
+                                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="kol-table-settings__column">
+                      <kol-input-checkbox _checked="" _hidelabel="" _label="kol-table-settings-column-hidable" _value=""></kol-input-checkbox>
+                      <span class="kol-table-settings__column-label">
+                        City
+                      </span>
+                      <kol-input-number _hidelabel="" _label="kol-table-settings-column-width" _min="1"></kol-input-number>
+                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-up">
+                        <button aria-label="kol-table-settings-move-up" class="kol-button__interactive-element" type="button">
+                          <span class="kol-button__text kol-span kol-span--hide-label">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-up" role="presentation"></i>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <div class="kol-button__tooltip">
+                          <div class="kol-tooltip__floating">
+                            <div class="kol-tooltip__arrow"></div>
+                            <span class="kol-span kol-tooltip__content">
+                              <span class="kol-span__container">
+                                <span class="kol-span__label">
+                                  kol-table-settings-move-up
+                                </span>
+                                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-down">
+                        <button aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" disabled="" type="button">
+                          <span class="kol-button__text kol-span kol-span--hide-label">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <div class="kol-button__tooltip">
+                          <div class="kol-tooltip__floating">
+                            <div class="kol-tooltip__arrow"></div>
+                            <span class="kol-span kol-tooltip__content">
+                              <span class="kol-span__container">
+                                <span class="kol-span__label">
+                                  kol-table-settings-not-move
+                                </span>
+                                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="kol-table-settings__actions">
+                    <div class="kol-button kol-button--secondary kol-button--standalone" data-testid="table-settings-cancel">
+                      <button class="kol-button__interactive-element" type="button">
+                        <span class="kol-button__text kol-span">
+                          <span class="kol-span__container">
+                            <span class="kol-span__label">
+                              kol-table-settings-cancel
+                            </span>
+                            <span aria-hidden="true" class="kol-span__slot" hidden="">
+                              <slot name="expert" slot="expert"></slot>
+                            </span>
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="kol-button kol-button--primary kol-button--standalone" data-testid="table-settings-apply">
+                      <button class="kol-button__interactive-element" type="submit">
+                        <span class="kol-button__text kol-span">
+                          <span class="kol-span__container">
+                            <span class="kol-span__label">
+                              kol-table-settings-apply
+                            </span>
+                            <span aria-hidden="true" class="kol-span__slot" hidden="">
+                              <slot name="expert" slot="expert"></slot>
+                            </span>
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="kol-card__close-button kol-close-button">
+              <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+                <button aria-label="kol-close" class="kol-button__interactive-element" type="button">
+                  <span class="kol-button__text kol-span kol-span--hide-label">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                    </span>
+                  </span>
+                </button>
+                <div class="kol-button__tooltip">
+                  <div class="kol-tooltip__floating">
+                    <div class="kol-tooltip__arrow"></div>
+                    <span class="kol-span kol-tooltip__content">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          kol-close
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </dialog>
+      </div>
       <div class="kol-table__scroll-container">
         <table aria-labelledby="caption" class="kol-table__table" style="min-width: 0px;">
           <caption class="kol-table__caption kol-table__focus-element" id="caption">
@@ -1685,7 +3376,24 @@ exports[`kol-table-stateful should render with the props passed to the stateless
             <tr class="kol-table__head-row">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none kol-table__cell--sticky-left" data-sort="sort-NOS" scope="col" style="left: 0px;">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -1693,7 +3401,24 @@ exports[`kol-table-stateful should render with the props passed to the stateless
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -1703,12 +3428,14 @@ exports[`kol-table-stateful should render with the props passed to the stateless
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader kol-table__loader--shown">
-              <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
-              </span>
-              <span aria-busy="true" class="visually-hidden" role="alert">
-                kol-table-data-loading
-              </span>
+              <div class="kol-spin">
+                <span class="kol-spin__spinner kol-spin__spinner--cycle">
+                  <span class="kol-spin__loader"></span>
+                </span>
+                <span aria-busy="true" class="visually-hidden" role="alert">
+                  kol-table-data-loading
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body kol-table__cell--sticky-left" style="left: 0px;">
@@ -1789,7 +3516,24 @@ exports[`kol-table-stateful should render with two initial sorts with multi sort
             <tr class="kol-table__head-row">
               <th aria-sort="descending" class="kol-table__cell kol-table__cell--descending kol-table__cell--header" data-sort="sort-DESC" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort – kol-table-sort-order" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-desc" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort – kol-table-sort-order
+                    </span>
+                  </div>
                   <span aria-hidden="true" class="kol-table__sort-order">
                     1
                   </span>
@@ -1800,7 +3544,24 @@ exports[`kol-table-stateful should render with two initial sorts with multi sort
               </th>
               <th aria-sort="ascending" class="kol-table__cell kol-table__cell--ascending kol-table__cell--header" data-sort="sort-ASC" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort – kol-table-sort-order" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-asc" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort – kol-table-sort-order
+                    </span>
+                  </div>
                   <span aria-hidden="true" class="kol-table__sort-order">
                     2
                   </span>
@@ -1813,9 +3574,11 @@ exports[`kol-table-stateful should render with two initial sorts with multi sort
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -1882,7 +3645,24 @@ exports[`kol-table-stateful should render with two initial sorts without multi s
             <tr class="kol-table__head-row">
               <th aria-sort="descending" class="kol-table__cell kol-table__cell--descending kol-table__cell--header" data-sort="sort-DESC" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="ID" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            ID
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-desc" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" scope="col">
@@ -1890,7 +3670,24 @@ exports[`kol-table-stateful should render with two initial sorts without multi s
               </th>
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" data-sort="sort-NOS" scope="col">
                 <span class="kol-table__sort">
-                  <kol-button-wc _ariadescription="kol-sort" _label="City" class="kol-table__sort-button"></kol-button-wc>
+                  <div class="kol-button kol-button--normal kol-button--standalone kol-table__sort-button">
+                    <button aria-describedby="nonce" class="kol-button__interactive-element" type="button">
+                      <span class="kol-button__text kol-span">
+                        <span class="kol-span__container">
+                          <span class="kol-span__label">
+                            City
+                          </span>
+                          <span aria-hidden="true" class="kol-span__slot" hidden="">
+                            <slot name="expert" slot="expert"></slot>
+                          </span>
+                          <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--right kolicon-sort-neutral" role="presentation"></i>
+                        </span>
+                      </span>
+                    </button>
+                    <span class="visually-hidden" id="nonce">
+                      kol-sort
+                    </span>
+                  </div>
                 </span>
               </th>
             </tr>
@@ -1900,9 +3697,11 @@ exports[`kol-table-stateful should render with two initial sorts without multi s
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">

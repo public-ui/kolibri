@@ -15,7 +15,7 @@
 			@include ghost-button('kol-button');
 		}
 
-		&__button--selected .kol-button {
+		&__button--selected.kol-button {
 			--button-background-color: var(--ecl-color-primary);
 			--button-border-color: var(--ecl-color-primary);
 			--button-border-width: 1px;

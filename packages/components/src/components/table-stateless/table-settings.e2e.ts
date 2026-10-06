@@ -129,7 +129,7 @@ test.describe('kol-table-settings', () => {
 			const applyButton = page.locator('.kol-table-settings__actions').locator('button').last();
 			await applyButton.click();
 
-			const errorMessage = page.locator('kol-table-settings-wc kol-alert-wc');
+			const errorMessage = page.locator('.kol-table-settings__error-message');
 			await expect(errorMessage).toBeVisible();
 		});
 
@@ -150,7 +150,7 @@ test.describe('kol-table-settings', () => {
 			await checkboxes.first().click();
 			await applyButton.click();
 
-			const errorMessage = page.locator('kol-table-settings-wc kol-alert-wc');
+			const errorMessage = page.locator('.kol-table-settings__error-message');
 			await expect(errorMessage).not.toBeVisible();
 		});
 	});

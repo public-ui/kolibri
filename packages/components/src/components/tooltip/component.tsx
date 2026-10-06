@@ -7,7 +7,7 @@ import { TooltipBehavior } from '../../internal/functional-components/tooltip/be
 import { TooltipFC } from '../../internal/functional-components/tooltip/component';
 
 /**
- * @deprecated The tooltip component is deprecated and will be removed in the next major release
+ * @deprecated The tooltip element is deprecated. It is kept only for DESYBRI; do not use it in new code.
  * @internal
  */
 @Component({

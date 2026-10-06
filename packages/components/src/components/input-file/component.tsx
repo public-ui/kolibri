@@ -24,8 +24,9 @@ import type {
 } from '../../schema';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 
-import { KolButtonWcTag } from '../../core/component-names';
 import { translate } from '../../i18n';
+import { ButtonFC } from '../../internal/functional-components/button/component';
+import { createButtonItem } from '../../internal/functional-components/button/item';
 import { getInputAdornments } from '../../internal/functional-components/form-field/adornments';
 import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
 import { FormFieldFC } from '../../internal/functional-components/form-field/component';
@@ -60,9 +61,13 @@ export class KolInputFile
 	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	private readonly translateDataBrowseText = translate('kol-data-browse-text');
+	private readonly browseButton = createButtonItem(() => this.host);
 	private readonly translateFilenameText = translate('kol-filename-text');
 
 	@State() public id = createUniqueId('input-file');
+
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
 
 	@State() public inputHasFocus = false;
 
@@ -150,7 +155,13 @@ export class KolInputFile
 		this.watchVariant(this._variant);
 	}
 
+	public componentDidRender(): void {
+		this.browseButton.syncListeners();
+		this.syncFormField();
+	}
+
 	public disconnectedCallback(): void {
+		this.browseButton.destroy();
 		this.destroyFormField();
 	}
 
@@ -255,8 +266,7 @@ export class KolInputFile
 		const disabled = this.getRenderProp('disabled');
 		const { startAdornment, endAdornment } = getInputAdornments({
 			icons: this.getRenderProp('icons'),
-			smartButton: this.getRenderProp('smartButton') as InternalButtonProps | undefined,
-			disabled,
+			smartButton: this.getSmartButtonFcProps(this.getRenderProp('smartButton') as InternalButtonProps | undefined, disabled),
 		});
 
 		return (
@@ -283,7 +293,12 @@ export class KolInputFile
 					>
 						<InputFileNameFC filename={this.filename} hasFile={this.hasFileSelected} />
 						<InputFC {...this.getInputProps()} />
-						<KolButtonWcTag class={BEM_CLASS_INPUT_CONTAINER__BUTTON} _label={this.translateDataBrowseText} _variant="primary" _disabled={disabled} />
+						<ButtonFC
+							{...this.browseButton.getFcProps(
+								{ _label: this.translateDataBrowseText, _variant: 'primary', _disabled: disabled },
+								{ class: BEM_CLASS_INPUT_CONTAINER__BUTTON },
+							)}
+						/>
 					</InputContainerFC>
 				</FormFieldFC>
 			</Host>

@@ -1,21 +1,21 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import { KolDialogWc } from '../wc';
+import { KolDialog } from '../component';
 
-describe('kol-dialog-wc scroll lock', () => {
+describe('kol-dialog scroll lock', () => {
 	const getOverflow = () => document.documentElement.style.getPropertyValue('overflow');
-	let currentComponent: KolDialogWc | undefined;
+	let currentComponent: KolDialog | undefined;
 
 	const setUpPage = async () => {
 		const page = await newSpecPage({
-			components: [KolDialogWc],
-			template: () => <kol-dialog-wc _label="Test" _variant="blank" />,
+			components: [KolDialog],
+			template: () => <kol-dialog _label="Test" _variant="blank" />,
 		});
 		await page.waitForChanges();
-		const component = page.rootInstance as KolDialogWc;
+		const component = page.rootInstance as KolDialog;
 		currentComponent = component;
-		const dialog = page.root?.querySelector('dialog');
+		const dialog = page.root?.shadowRoot?.querySelector('dialog');
 		expect(dialog).not.toBeNull();
 		return { component, dialog: dialog! };
 	};

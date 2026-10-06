@@ -83,33 +83,30 @@
 			background: var(--kern-color-feedback-danger-background);
 		}
 
-		&__smart-button {
-			.kol-button {
-				color: var(--kern-color-feedback-info,);
+		&__smart-button.kol-button {
+			color: var(--kern-color-feedback-info,);
 
-				font-size: to-rem(24);
-				border-left: 1px solid var(--border-color);
-				transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
+			font-size: to-rem(24);
+			border-left: 1px solid var(--border-color);
+			transition: all 80ms cubic-bezier(0.65, 0, 0.35, 1);
 
-				/* `.kol-button` is a wrapper since the skeleton migration: the `disabled` attribute and
-				   the focus sit on the button inside it. `:has(:disabled)` and `:focus-within` keep these
-				   rules on the wrapper, i.e. on the same box (border-left included) they styled before. */
-				&:has(:disabled) {
-					opacity: var(--kern-color-action-state-opacity-disabled);
-				}
+			/* The `disabled` attribute and the focus sit on the button inside the root: `:has(:disabled)`
+			   and `:focus-within` style the root, the box that carries the left border. */
+			&:has(:disabled) {
+				opacity: var(--kern-color-action-state-opacity-disabled);
+			}
 
-				&:not(:has(:disabled)):hover {
-					background: var(--kern-color-action-state-indicator-tint-hover-opacity);
-					border-radius: var(--kern-metric-border-radius-default);
-				}
+			&:not(:has(:disabled)):hover {
+				background: var(--kern-color-action-state-indicator-tint-hover-opacity);
+				border-radius: var(--kern-metric-border-radius-default);
+			}
 
-				&:focus-within {
-					color: var(--kern-color-layout-background-default);
-					background-color: var(--kern-color-form-input-border);
-					outline: var(--kern-color-form-input-border) solid 2px;
-					border: 1 solid var(--kern-color-form-input-border);
-					outline-offset: 2px;
-				}
+			&:focus-within {
+				color: var(--kern-color-layout-background-default);
+				background-color: var(--kern-color-form-input-border);
+				outline: var(--kern-color-form-input-border) solid 2px;
+				border: 1 solid var(--kern-color-form-input-border);
+				outline-offset: 2px;
 			}
 		}
 

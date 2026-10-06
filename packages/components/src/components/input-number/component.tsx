@@ -85,6 +85,9 @@ export class KolInputNumber
 
 	@State() public id = createUniqueId('input-number');
 
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
 	@State() public inputHasFocus = false;
 
 	/** Type in which `_value` was set; `getValue()` and the events return the value in this type. */
@@ -164,6 +167,10 @@ export class KolInputNumber
 		this.watchValue(this._value);
 
 		this.hasValue = Boolean(this.getRenderProp('value'));
+	}
+
+	public componentDidRender(): void {
+		this.syncFormField();
 	}
 
 	public disconnectedCallback(): void {
@@ -314,8 +321,7 @@ export class KolInputNumber
 		const disabled = this.getRenderProp('disabled');
 		const { startAdornment, endAdornment } = getInputAdornments({
 			icons: this.getRenderProp('icons'),
-			smartButton: this.getRenderProp('smartButton') as InternalButtonProps | undefined,
-			disabled,
+			smartButton: this.getSmartButtonFcProps(this.getRenderProp('smartButton') as InternalButtonProps | undefined, disabled),
 			startAdornment: this.renderStepButton('down'),
 			endAdornment: this.renderStepButton('up'),
 		});

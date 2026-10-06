@@ -238,11 +238,6 @@ export type KoliBriComponentsBemSchema = {
 		};
 		modifiers: Set<'disabled' | 'open'>;
 	};
-	/**
-	 * The block class sits on the host element: everything the drawer renders is an element of it
-	 * (`kol-drawer__dialog`, `kol-drawer__wrapper`, `kol-drawer__content`), so no node inside the
-	 * shadow root carries the bare block name.
-	 */
 	'kol-drawer': {
 		elements: {
 			content: {
@@ -256,6 +251,16 @@ export type KoliBriComponentsBemSchema = {
 			};
 		};
 		modifiers: null;
+	};
+	'kol-heading': {
+		modifiers: Set<'group'>;
+	};
+	/**
+	 * The headline itself, rendered by `kol-heading` and by every component with a heading of its
+	 * own. Themes style it by level (`kol-headline--h1` … `kol-headline--strong`).
+	 */
+	'kol-headline': {
+		modifiers: Set<'group' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'primary' | 'secondary' | 'single' | 'strong'>;
 	};
 	'kol-icon': {
 		elements: {
@@ -387,6 +392,9 @@ export type KoliBriComponentsBemSchema = {
 	'kol-form': {
 		elements: {
 			alert: {
+				modifiers: null;
+			};
+			form: {
 				modifiers: null;
 			};
 			link: {
@@ -721,6 +729,9 @@ export type KoliBriComponentsBemSchema = {
 			'selection-label': {
 				modifiers: Set<'disabled'>;
 			};
+			settings: {
+				modifiers: null;
+			};
 			sort: {
 				modifiers: null;
 			};
@@ -942,6 +953,12 @@ const BEM: KoliBriComponentsBemSchema = {
 		},
 		modifiers: null,
 	},
+	'kol-heading': {
+		modifiers: new Set(['group']),
+	},
+	'kol-headline': {
+		modifiers: new Set(['group', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'primary', 'secondary', 'single', 'strong']),
+	},
 	'kol-icon': {
 		elements: {
 			icon: { modifiers: null },
@@ -1014,6 +1031,7 @@ const BEM: KoliBriComponentsBemSchema = {
 	'kol-form': {
 		elements: {
 			alert: { modifiers: null },
+			form: { modifiers: null },
 			link: { modifiers: null },
 			'mandatory-fields-hint': { modifiers: null },
 		},
@@ -1218,6 +1236,7 @@ const BEM: KoliBriComponentsBemSchema = {
 			'selection-input': { modifiers: new Set(['checkbox', 'radio']) },
 			'selection-input-tooltip': { modifiers: null },
 			'selection-label': { modifiers: new Set(['disabled']) },
+			settings: { modifiers: null },
 			sort: { modifiers: null },
 			'sort-button': { modifiers: null },
 			'sort-order': { modifiers: null },

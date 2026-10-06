@@ -3,11 +3,10 @@ import type { PopoverButtonProps } from '../../../schema';
 import { executeSnapshotTests } from '../../../utils/testing';
 
 import { KolPopoverButton } from '../component';
-import { KolPopoverButtonWc } from '../wc';
 
 executeSnapshotTests<PopoverButtonProps>(
 	KolPopoverButtonTag,
-	[KolPopoverButton, KolPopoverButtonWc],
+	[KolPopoverButton],
 	[
 		{ _label: 'Click to toggle' },
 

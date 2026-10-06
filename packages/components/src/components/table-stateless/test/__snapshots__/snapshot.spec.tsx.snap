@@ -24,12 +24,14 @@ exports[`kol-table-stateless should render with _label="Table shows loading spin
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader kol-table__loader--shown">
-              <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
-              </span>
-              <span aria-busy="true" class="visually-hidden" role="alert">
-                kol-table-data-loading
-              </span>
+              <div class="kol-spin">
+                <span class="kol-spin__spinner kol-spin__spinner--cycle">
+                  <span class="kol-spin__loader"></span>
+                </span>
+                <span aria-busy="true" class="visually-hidden" role="alert">
+                  kol-table-data-loading
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
@@ -79,12 +81,14 @@ exports[`kol-table-stateless should render with _label="Table with action column
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader kol-table__loader--shown">
-              <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
-              </span>
-              <span aria-busy="true" class="visually-hidden" role="alert">
-                kol-table-data-loading
-              </span>
+              <div class="kol-spin">
+                <span class="kol-spin__spinner kol-spin__spinner--cycle">
+                  <span class="kol-spin__loader"></span>
+                </span>
+                <span aria-busy="true" class="visually-hidden" role="alert">
+                  kol-table-data-loading
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
@@ -92,8 +96,51 @@ exports[`kol-table-stateless should render with _label="Table with action column
               </td>
               <td class="kol-table__cell kol-table__cell--actions kol-table__cell--align-right kol-table__cell--body" style="text-align: right;">
                 <div class="kol-table__cell-actions">
-                  <kol-button-wc _hidelabel="" _icons="kolicon-eye" _label="Details" type="button"></kol-button-wc>
-                  <kol-link-wc _href="#/" _icons="kolicon-external-link" _label="View" _target="_blank" type="link"></kol-link-wc>
+                  <span>
+                    <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+                      <button aria-label="Details" class="kol-button__interactive-element" type="button">
+                        <span class="kol-button__text kol-span kol-span--hide-label">
+                          <span class="kol-span__container">
+                            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-eye" role="presentation"></i>
+                            <span aria-hidden="true" class="kol-span__slot" hidden="">
+                              <slot name="expert" slot="expert"></slot>
+                            </span>
+                          </span>
+                        </span>
+                      </button>
+                      <div class="kol-button__tooltip">
+                        <div class="kol-tooltip__floating">
+                          <div class="kol-tooltip__arrow"></div>
+                          <span class="kol-span kol-tooltip__content">
+                            <span class="kol-span__container">
+                              <span class="kol-span__label">
+                                Details
+                              </span>
+                              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </span>
+                  <span>
+                    <div class="kol-link kol-link--external-link kol-link--inline">
+                      <a class="kol-link__interactive-element" href="#/" rel="noopener" target="_blank">
+                        <span class="kol-link__text kol-span">
+                          <span class="kol-span__container">
+                            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-external-link" role="presentation"></i>
+                            <span class="kol-span__label">
+                              View
+                            </span>
+                            <span aria-hidden="true" class="kol-span__slot" hidden="">
+                              <slot name="expert" slot="expert"></slot>
+                            </span>
+                          </span>
+                        </span>
+                        <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
+                      </a>
+                    </div>
+                  </span>
                 </div>
               </td>
             </tr>
@@ -103,8 +150,51 @@ exports[`kol-table-stateless should render with _label="Table with action column
               </td>
               <td class="kol-table__cell kol-table__cell--actions kol-table__cell--align-right kol-table__cell--body" style="text-align: right;">
                 <div class="kol-table__cell-actions">
-                  <kol-button-wc _hidelabel="" _icons="kolicon-eye" _label="Details" type="button"></kol-button-wc>
-                  <kol-link-wc _href="#/" _icons="kolicon-external-link" _label="View" _target="_blank" type="link"></kol-link-wc>
+                  <span>
+                    <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+                      <button aria-label="Details" class="kol-button__interactive-element" type="button">
+                        <span class="kol-button__text kol-span kol-span--hide-label">
+                          <span class="kol-span__container">
+                            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-eye" role="presentation"></i>
+                            <span aria-hidden="true" class="kol-span__slot" hidden="">
+                              <slot name="expert" slot="expert"></slot>
+                            </span>
+                          </span>
+                        </span>
+                      </button>
+                      <div class="kol-button__tooltip">
+                        <div class="kol-tooltip__floating">
+                          <div class="kol-tooltip__arrow"></div>
+                          <span class="kol-span kol-tooltip__content">
+                            <span class="kol-span__container">
+                              <span class="kol-span__label">
+                                Details
+                              </span>
+                              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </span>
+                  <span>
+                    <div class="kol-link kol-link--external-link kol-link--inline">
+                      <a class="kol-link__interactive-element" href="#/" rel="noopener" target="_blank">
+                        <span class="kol-link__text kol-span">
+                          <span class="kol-span__container">
+                            <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-external-link" role="presentation"></i>
+                            <span class="kol-span__label">
+                              View
+                            </span>
+                            <span aria-hidden="true" class="kol-span__slot" hidden="">
+                              <slot name="expert" slot="expert"></slot>
+                            </span>
+                          </span>
+                        </span>
+                        <i aria-label="kol-open-link-in-tab" class="kol-icon kol-icon__icon kol-link__icon kolicon-link-external" role="img"></i>
+                      </a>
+                    </div>
+                  </span>
                 </div>
               </td>
             </tr>
@@ -120,7 +210,278 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
 <kol-table-stateless>
   <template shadowrootmode="open">
     <div class="kol-table">
-      <kol-table-settings-wc></kol-table-settings-wc>
+      <div class="kol-table__settings">
+        <div class="kol-table-settings">
+          <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+            <button aria-label="kol-table-settings" class="kol-button__interactive-element" type="button">
+              <span class="kol-button__text kol-span kol-span--hide-label">
+                <span class="kol-span__container">
+                  <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-settings" role="presentation"></i>
+                  <span aria-hidden="true" class="kol-span__slot" hidden="">
+                    <slot name="expert" slot="expert"></slot>
+                  </span>
+                </span>
+              </span>
+            </button>
+            <div class="kol-button__tooltip">
+              <div class="kol-tooltip__floating">
+                <div class="kol-tooltip__arrow"></div>
+                <span class="kol-span kol-tooltip__content">
+                  <span class="kol-span__container">
+                    <span class="kol-span__label">
+                      kol-table-settings
+                    </span>
+                    <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <dialog aria-labelledby="dialog-heading-nonce" aria-modal="true" class="kol-dialog kol-dialog__card kol-modal kol-modal__card" style="width: fit-content;">
+          <article aria-labelledby="dialog-heading-nonce" class="kol-card">
+            <strong class="kol-card__header kol-headline kol-headline--single kol-headline--strong" id="dialog-heading-nonce">
+              kol-table-settings
+            </strong>
+            <div class="kol-card__content">
+              <div class="kol-table-settings__content">
+                <form>
+                  <div class="kol-table-settings__columns">
+                    <div class="kol-table-settings__column">
+                      <kol-input-checkbox _checked="" _hidelabel="" _label="kol-table-settings-column-hidable" _value=""></kol-input-checkbox>
+                      <span class="kol-table-settings__column-label">
+                        Header1
+                      </span>
+                      <kol-input-number _hidelabel="" _label="kol-table-settings-column-width" _min="1" _value="140"></kol-input-number>
+                      <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-up">
+                        <button aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" disabled="" type="button">
+                          <span class="kol-button__text kol-span kol-span--hide-label">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-up" role="presentation"></i>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <div class="kol-button__tooltip">
+                          <div class="kol-tooltip__floating">
+                            <div class="kol-tooltip__arrow"></div>
+                            <span class="kol-span kol-tooltip__content">
+                              <span class="kol-span__container">
+                                <span class="kol-span__label">
+                                  kol-table-settings-not-move
+                                </span>
+                                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-down">
+                        <button aria-label="kol-table-settings-move-down" class="kol-button__interactive-element" type="button">
+                          <span class="kol-button__text kol-span kol-span--hide-label">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <div class="kol-button__tooltip">
+                          <div class="kol-tooltip__floating">
+                            <div class="kol-tooltip__arrow"></div>
+                            <span class="kol-span kol-tooltip__content">
+                              <span class="kol-span__container">
+                                <span class="kol-span__label">
+                                  kol-table-settings-move-down
+                                </span>
+                                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="kol-table-settings__column">
+                      <kol-input-checkbox _checked="" _hidelabel="" _label="kol-table-settings-column-hidable" _value=""></kol-input-checkbox>
+                      <span class="kol-table-settings__column-label">
+                        Header2
+                      </span>
+                      <kol-input-number _hidelabel="" _label="kol-table-settings-column-width" _min="1" _value="130"></kol-input-number>
+                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-up">
+                        <button aria-label="kol-table-settings-move-up" class="kol-button__interactive-element" type="button">
+                          <span class="kol-button__text kol-span kol-span--hide-label">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-up" role="presentation"></i>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <div class="kol-button__tooltip">
+                          <div class="kol-tooltip__floating">
+                            <div class="kol-tooltip__arrow"></div>
+                            <span class="kol-span kol-tooltip__content">
+                              <span class="kol-span__container">
+                                <span class="kol-span__label">
+                                  kol-table-settings-move-up
+                                </span>
+                                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-down">
+                        <button aria-label="kol-table-settings-move-down" class="kol-button__interactive-element" type="button">
+                          <span class="kol-button__text kol-span kol-span--hide-label">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <div class="kol-button__tooltip">
+                          <div class="kol-tooltip__floating">
+                            <div class="kol-tooltip__arrow"></div>
+                            <span class="kol-span kol-tooltip__content">
+                              <span class="kol-span__container">
+                                <span class="kol-span__label">
+                                  kol-table-settings-move-down
+                                </span>
+                                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="kol-table-settings__column">
+                      <kol-input-checkbox _checked="" _hidelabel="" _label="kol-table-settings-column-hidable" _value=""></kol-input-checkbox>
+                      <span class="kol-table-settings__column-label">
+                        Header3
+                      </span>
+                      <kol-input-number _hidelabel="" _label="kol-table-settings-column-width" _min="1" _value="120"></kol-input-number>
+                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-up">
+                        <button aria-label="kol-table-settings-move-up" class="kol-button__interactive-element" type="button">
+                          <span class="kol-button__text kol-span kol-span--hide-label">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-up" role="presentation"></i>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <div class="kol-button__tooltip">
+                          <div class="kol-tooltip__floating">
+                            <div class="kol-tooltip__arrow"></div>
+                            <span class="kol-span kol-tooltip__content">
+                              <span class="kol-span__container">
+                                <span class="kol-span__label">
+                                  kol-table-settings-move-up
+                                </span>
+                                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-down">
+                        <button aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" disabled="" type="button">
+                          <span class="kol-button__text kol-span kol-span--hide-label">
+                            <span class="kol-span__container">
+                              <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-chevron-down" role="presentation"></i>
+                              <span aria-hidden="true" class="kol-span__slot" hidden="">
+                                <slot name="expert" slot="expert"></slot>
+                              </span>
+                            </span>
+                          </span>
+                        </button>
+                        <div class="kol-button__tooltip">
+                          <div class="kol-tooltip__floating">
+                            <div class="kol-tooltip__arrow"></div>
+                            <span class="kol-span kol-tooltip__content">
+                              <span class="kol-span__container">
+                                <span class="kol-span__label">
+                                  kol-table-settings-not-move
+                                </span>
+                                <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                              </span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="kol-table-settings__actions">
+                    <div class="kol-button kol-button--secondary kol-button--standalone" data-testid="table-settings-cancel">
+                      <button class="kol-button__interactive-element" type="button">
+                        <span class="kol-button__text kol-span">
+                          <span class="kol-span__container">
+                            <span class="kol-span__label">
+                              kol-table-settings-cancel
+                            </span>
+                            <span aria-hidden="true" class="kol-span__slot" hidden="">
+                              <slot name="expert" slot="expert"></slot>
+                            </span>
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="kol-button kol-button--primary kol-button--standalone" data-testid="table-settings-apply">
+                      <button class="kol-button__interactive-element" type="submit">
+                        <span class="kol-button__text kol-span">
+                          <span class="kol-span__container">
+                            <span class="kol-span__label">
+                              kol-table-settings-apply
+                            </span>
+                            <span aria-hidden="true" class="kol-span__slot" hidden="">
+                              <slot name="expert" slot="expert"></slot>
+                            </span>
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="kol-card__close-button kol-close-button">
+              <div class="kol-button kol-button--hide-label kol-button--normal kol-button--standalone">
+                <button aria-label="kol-close" class="kol-button__interactive-element" type="button">
+                  <span class="kol-button__text kol-span kol-span--hide-label">
+                    <span class="kol-span__container">
+                      <i aria-hidden="true" class="kol-icon kol-icon__icon kol-span__icon kol-span__icon--left kolicon-cross" role="presentation"></i>
+                      <span aria-hidden="true" class="kol-span__slot" hidden="">
+                        <slot name="expert" slot="expert"></slot>
+                      </span>
+                    </span>
+                  </span>
+                </button>
+                <div class="kol-button__tooltip">
+                  <div class="kol-tooltip__floating">
+                    <div class="kol-tooltip__arrow"></div>
+                    <span class="kol-span kol-tooltip__content">
+                      <span class="kol-span__container">
+                        <span class="kol-span__label">
+                          kol-close
+                        </span>
+                        <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </dialog>
+      </div>
       <div class="kol-table__scroll-container">
         <table aria-labelledby="caption" class="kol-table__table" style="min-width: calc(80px + 80px + 80px + 140px + 130px + 120px);">
           <caption class="kol-table__caption kol-table__focus-element" id="caption">
@@ -145,9 +506,11 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="row" style="width: 80px;">
@@ -228,9 +591,11 @@ exports[`kol-table-stateless should render with _label="Table with merged parent
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--body">
@@ -301,9 +666,11 @@ exports[`kol-table-stateless should render with _label="Table with multiple sele
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--selection">
@@ -363,9 +730,11 @@ exports[`kol-table-stateless should render with _label="Table with only horizont
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
@@ -417,9 +786,11 @@ exports[`kol-table-stateless should render with _label="Table with single select
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--selection">
@@ -478,12 +849,14 @@ exports[`kol-table-stateless should render with _label="Table with state column"
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader kol-table__loader--shown">
-              <span class="kol-spin__spinner kol-spin__spinner--cycle">
-                <span class="kol-spin__loader kol-spin__spinner--cycle__element"></span>
-              </span>
-              <span aria-busy="true" class="visually-hidden" role="alert">
-                kol-table-data-loading
-              </span>
+              <div class="kol-spin">
+                <span class="kol-spin__spinner kol-spin__spinner--cycle">
+                  <span class="kol-spin__loader"></span>
+                </span>
+                <span aria-busy="true" class="visually-hidden" role="alert">
+                  kol-table-data-loading
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td class="kol-table__cell kol-table__cell--align-left kol-table__cell--body" style="text-align: left;">
@@ -547,9 +920,11 @@ exports[`kol-table-stateless should render with _label="Table with two horizonta
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--align-left kol-table__cell--header kol-table__cell--none" scope="row" style="width: 90px;">
@@ -611,9 +986,11 @@ exports[`kol-table-stateless should render with _label="Table with two spanned h
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <th aria-sort="none" class="kol-table__cell kol-table__cell--header kol-table__cell--none" rowspan="2" scope="row">
@@ -669,9 +1046,11 @@ exports[`kol-table-stateless should render with _label="Table without data shows
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="1" rowspan="1">
@@ -707,9 +1086,11 @@ exports[`kol-table-stateless should render with _label="Table without data with 
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="1" rowspan="1">
@@ -745,9 +1126,11 @@ exports[`kol-table-stateless should render with _label="Table without data with 
           </thead>
           <tbody class="kol-table__body">
             <div class="kol-table__loader">
-              <span aria-busy="false" class="visually-hidden" role="alert">
-                kol-table-data-loaded
-              </span>
+              <div class="kol-spin">
+                <span aria-busy="false" class="visually-hidden" role="alert">
+                  kol-table-data-loaded
+                </span>
+              </div>
             </div>
             <tr class="kol-table__row kol-table__row--body">
               <td aria-atomic="false" aria-live="polite" aria-relevant="text" class="kol-table__cell kol-table__cell--body" colspan="2" rowspan="1">
