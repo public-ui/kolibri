@@ -9,7 +9,7 @@ import {
 	disabledProp,
 	hideLabelProp,
 	inlineProp,
-	labelWithExpertSlotProp,
+	labelProp,
 	popoverAlignProp,
 	spanIconsProp,
 	tooltipAlignProp,
@@ -118,7 +118,7 @@ export const createPopoverButtonItem = (options: PopoverButtonItemOptions): Popo
 	buttonTypeProp.apply('button', (v) => {
 		props.type = v;
 	});
-	labelWithExpertSlotProp.apply(options.label, (v) => {
+	labelProp.apply(options.label, (v) => {
 		props.label = v;
 	});
 	// An invalid `popoverAlign` is ignored, so the behavior loads with the default then.

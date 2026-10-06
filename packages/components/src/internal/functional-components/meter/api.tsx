@@ -1,4 +1,4 @@
-import { highProp, labelProp, lowProp, maxProp, minProp, numberValueProp, optimumProp, orientationProp, unitProp } from '../../props';
+import { clampedNumberValueProp, highProp, labelProp, lowProp, maxProp, minProp, optimumProp, orientationProp, unitProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**
@@ -8,7 +8,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  */
 export const meterPropsConfig = {
 	optional: [highProp, lowProp, minProp, optimumProp, orientationProp, unitProp],
-	required: [labelProp, maxProp, numberValueProp],
+	required: [labelProp, maxProp, clampedNumberValueProp],
 } as const satisfies PropsConfigShape;
 
 export type MeterApi = ApiFromConfig<typeof meterPropsConfig>;

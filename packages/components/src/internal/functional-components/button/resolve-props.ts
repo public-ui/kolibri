@@ -14,7 +14,7 @@ import {
 	hideLabelProp,
 	idProp,
 	inlineProp,
-	labelWithExpertSlotProp,
+	labelProp,
 	linkRoleProp,
 	nameProp,
 	shortKeyProp,
@@ -70,7 +70,7 @@ export function resolveButtonProps(props: InternalButtonProps, host?: HTMLElemen
 		};
 	};
 
-	labelWithExpertSlotProp.apply(props._label, set('label'));
+	labelProp.apply(props._label, set('label'));
 	accessKeyProp.apply(props._accessKey, set('accessKey'));
 	ariaControlsProp.apply(props._ariaControls, set('ariaControls'));
 	ariaDescriptionProp.apply(props._ariaDescription, set('ariaDescription'));

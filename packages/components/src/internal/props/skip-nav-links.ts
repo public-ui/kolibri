@@ -1,26 +1,7 @@
 import type { LinkProps, Stringified } from '../../schema';
-import { uiUxHintMillerscheZahl } from '../../schema/utils/a11y.tipps';
 import type { Prop } from './helpers/factory';
-import { createPropDefinition } from './helpers/factory';
-import { normalizeArray } from './helpers/normalizers';
+import { createLinksPropDefinition } from './helpers/links';
 
-/**
- * SkipNav links prop.
- *
- * External type is `Stringified<LinkProps[]>` (JSON string when set via attribute,
- * array when set via property), internal type is the parsed array.
- *
- * Every entry must be an object carrying at least a string `_href` or a string `_label`. One
- * invalid entry rejects the whole value and keeps the previously rendered links.
- */
 export type SkipNavLinksProp = Prop<'links', Stringified<LinkProps[]>, LinkProps[]>;
 
-export const skipNavLinksProp = createPropDefinition<SkipNavLinksProp>(
-	'links',
-	[],
-	(value) => normalizeArray(value) as LinkProps[],
-	(items) => items.every((item) => typeof item === 'object' && (typeof item._href === 'string' || typeof item._label === 'string')),
-	{
-		hints: (_propName, items) => uiUxHintMillerscheZahl('KolSkipNav', items.length),
-	},
-);
+export const skipNavLinksProp = createLinksPropDefinition<LinkProps>('KolSkipNav');

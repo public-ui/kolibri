@@ -6,7 +6,7 @@ import {
 	hintProp,
 	infoPopoverProp,
 	inputCallbacksProp,
-	labelWithExpertSlotProp,
+	labelProp,
 	msgProp,
 	nameProp,
 	tooltipAlignProp,
@@ -20,7 +20,7 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * `WebComponentInterface` requires a watcher for every config prop.
  */
 export const formFieldBasePropsConfig = {
-	required: [labelWithExpertSlotProp],
+	required: [labelProp],
 	optional: [
 		ariaDetailsProp,
 		disabledProp,

@@ -8,7 +8,6 @@ import { minProp } from './min';
 import { optimumProp } from './optimum';
 import { selectedProp } from './selected';
 import { tabIndexProp } from './tab-index';
-import { numberValueProp } from './value-number';
 import { clampedNumberValueProp } from './value-number-clamped';
 
 /**
@@ -104,34 +103,6 @@ describe('maxProp', () => {
 	});
 });
 
-describe('numberValueProp', () => {
-	it.each([undefined, null])('applies the default 0 for %p', (value) => {
-		expect(applied(numberValueProp, value)).toEqual([0]);
-	});
-
-	it.each<[unknown, number]>([
-		[0, 0],
-		[5, 5],
-		['5', 5],
-	])('normalizes %p to %p', (value, expected) => {
-		expect(applied(numberValueProp, value)).toEqual([expected]);
-	});
-
-	it('ignores a negative value with a developer warning', () => {
-		expect(applied(numberValueProp, -1)).toEqual([]);
-		expect(warnings()).toEqual([expect.stringContaining(`for 'value' is not valid. The value is ignored.`)]);
-	});
-
-	it.each<[unknown, string]>([
-		['abc', 'abc'],
-		['', ''],
-		[NaN, 'NaN'],
-	])('ignores the non-numeric value %p with a developer warning', (value, printed) => {
-		expect(applied(numberValueProp, value)).toEqual([]);
-		expect(warnings()).toEqual([expect.stringContaining(`for 'value' is not valid (Invalid number: ${printed})`)]);
-	});
-});
-
 describe('clampedNumberValueProp', () => {
 	const deps = { min: 0, max: 10 };
 	const appliedWith = (value: unknown, dependencies: { min: number; max: number }): unknown[] => {
@@ -171,9 +142,9 @@ describe('clampedNumberValueProp', () => {
 		expect(warnings()).toEqual([expect.stringContaining(`for 'value' is not valid (Invalid number: ${printed})`)]);
 	});
 
-	// `numberValueProp` already logs the identical warning for `NaN` under the prop name `value`.
-	it('ignores NaN', () => {
+	it('ignores NaN with a developer warning', () => {
 		expect(appliedWith(NaN, deps)).toEqual([]);
+		expect(warnings()).toEqual([expect.stringContaining(`for 'value' is not valid (Invalid number: NaN)`)]);
 	});
 });
 

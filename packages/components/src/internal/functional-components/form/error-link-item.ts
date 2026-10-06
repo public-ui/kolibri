@@ -1,7 +1,7 @@
 import type { ErrorListPropType, KolFocusOptions } from '../../../schema';
 import { setEventTarget } from '../../../schema';
 import { nonce } from '../../../utils/dev.utils';
-import { hrefProp, labelWithExpertSlotProp, linkCallbacksProp } from '../../props';
+import { hrefProp, labelProp, linkCallbacksProp } from '../../props';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { LinkApi } from '../link/api';
 import { linkPropsConfig } from '../link/api';
@@ -42,7 +42,7 @@ export const createFormErrorLinkItem = (error: ErrorListPropType, handleSelector
 
 	// The predecessor set an empty href: the entry never navigates, it focuses a form control.
 	hrefProp.apply('', (href) => (renderProps.href = href));
-	labelWithExpertSlotProp.apply(error.message, (label) => (renderProps.label = label));
+	labelProp.apply(error.message, (label) => (renderProps.label = label));
 	linkCallbacksProp.apply(
 		{
 			onClick: typeof error.selector === 'string' ? (): void => handleSelector(String(error.selector), error.options) : error.selector,

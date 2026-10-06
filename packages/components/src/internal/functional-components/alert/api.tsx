@@ -7,8 +7,6 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * All props are optional — an alert without a label renders icon and content only.
  *
  * Notes on prop choices:
- * - `labelProp` (not `labelWithExpertSlotProp`): the alert has no expert slot. It keeps the shared
- *   2–80 character validation and accessibility hints; the empty string renders no heading.
  * - `alertProp`: renders `role="alert"` so screen readers announce the notification assertively.
  * - `alertTypeProp`/`alertVariantProp`: enum props selecting icon/color scheme and presentation.
  * - `alertCallbacksProp`: the consumer's `onClose` callback. The web component invokes it in its

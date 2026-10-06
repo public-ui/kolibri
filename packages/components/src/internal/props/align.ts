@@ -5,6 +5,20 @@ import { createPropDefinition } from './helpers/factory';
 import { normalizeString } from './helpers/normalizers';
 
 /**
+ * Normalizer of the alignment props `_align`, `_tooltipAlign` and `_popoverAlign`: they share the
+ * values 'top' | 'right' | 'bottom' | 'left'. Any other value throws, so it is ignored with a warning.
+ */
+export const createAlignNormalizer =
+	(propName: string) =>
+	(value: unknown): AlignPropType => {
+		const str = normalizeString(value);
+		if ((alignPropTypeOptions as readonly string[]).includes(str)) {
+			return str as AlignPropType;
+		}
+		throw new Error(`Invalid ${propName} value: ${str}`);
+	};
+
+/**
  * Align prop for positioning floating elements
  *
  * Description:
@@ -21,15 +35,4 @@ import { normalizeString } from './helpers/normalizers';
  */
 export type AlignProp = SimpleProp<'align', AlignPropType>;
 
-export const alignProp = createPropDefinition<AlignProp>(
-	'align',
-	'top',
-	(value) => {
-		const str = normalizeString(value);
-		if ((alignPropTypeOptions as readonly string[]).includes(str)) {
-			return str as AlignPropType;
-		}
-		throw new Error(`Invalid align value: ${str}`);
-	},
-	(v) => (alignPropTypeOptions as readonly string[]).includes(v),
-);
+export const alignProp = createPropDefinition<AlignProp>('align', 'top', createAlignNormalizer('align'));

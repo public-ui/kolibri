@@ -8,8 +8,6 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * Notes on prop choices:
  * - `optionalHrefProp`, not `hrefProp`: a card without a link target is the normal case, so the
  *   required variant's dev warning would fire on almost every card.
- * - `labelProp`, not `labelWithExpertSlotProp`: the card renders its label as a heading and has
- *   no expert slot for it.
  */
 export const cardPropsConfig = {
 	required: [labelProp],

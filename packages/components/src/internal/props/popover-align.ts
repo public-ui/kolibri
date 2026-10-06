@@ -1,8 +1,7 @@
 import type { AlignPropType } from '../../schema/props/align-options';
-import { alignPropTypeOptions } from '../../schema/props/align-options';
+import { createAlignNormalizer } from './align';
 import type { SimpleProp } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
-import { normalizeString } from './helpers/normalizers';
 
 /**
  * Popover align prop.
@@ -12,14 +11,4 @@ import { normalizeString } from './helpers/normalizers';
  */
 export type PopoverAlignProp = SimpleProp<'popoverAlign', AlignPropType>;
 
-function normalizePopoverAlign(value: unknown): AlignPropType {
-	const str = normalizeString(value);
-	if ((alignPropTypeOptions as readonly string[]).includes(str)) {
-		return str as AlignPropType;
-	}
-	throw new Error(`Invalid popoverAlign value: ${str}`);
-}
-
-export const popoverAlignProp = createPropDefinition<PopoverAlignProp>('popoverAlign', 'bottom', normalizePopoverAlign, (v) =>
-	(alignPropTypeOptions as readonly string[]).includes(v),
-);
+export const popoverAlignProp = createPropDefinition<PopoverAlignProp>('popoverAlign', 'bottom', createAlignNormalizer('popoverAlign'));

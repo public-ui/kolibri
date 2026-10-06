@@ -14,7 +14,7 @@ import {
 	hideLabelProp,
 	hrefProp,
 	inlineProp,
-	labelWithExpertSlotProp,
+	labelProp,
 	linkCallbacksProp,
 	linkTargetProp,
 	shortKeyProp,
@@ -75,7 +75,7 @@ export const createSkipNavLinkItem = (link: LinkProps, getHost: () => HTMLElemen
 	// The predecessor rendered `<kol-link-wc>`, whose `_inline` @Prop defaults to `true` — keep that
 	// default explicit so the links stay inline (no standalone a11y min-size).
 	apply(inlineProp, link._inline ?? true);
-	apply(labelWithExpertSlotProp, link._label);
+	apply(labelProp, link._label);
 	apply(linkCallbacksProp, link._on);
 	apply(shortKeyProp, link._shortKey);
 	if (typeof link._tabIndex === 'number') {

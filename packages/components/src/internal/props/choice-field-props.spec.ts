@@ -1,5 +1,5 @@
 import { describe, expect, it, jest } from '@jest/globals';
-import { radioOptionsProp } from './radio-options';
+import { optionsProp } from './options';
 import { radioOrientationProp } from './radio-orientation';
 import { radioValueProp } from './radio-value';
 
@@ -23,32 +23,34 @@ const OPTIONS = [
 	{ label: 'B', value: { id: 2 } },
 ];
 
-describe('radioOptionsProp', () => {
+describe('optionsProp', () => {
 	it.each([undefined, null])('applies the default [] for %s', (value) => {
-		expect(applied(radioOptionsProp, value)).toEqual([[]]);
+		expect(applied(optionsProp, value)).toEqual([[]]);
 	});
 
 	it('accepts an array of options', () => {
-		expect(applied(radioOptionsProp, OPTIONS)).toEqual([OPTIONS]);
+		expect(applied(optionsProp, OPTIONS)).toEqual([OPTIONS]);
 	});
 
 	it('parses a JSON string', () => {
-		expect(applied(radioOptionsProp, JSON.stringify(OPTIONS))).toEqual([OPTIONS]);
+		expect(applied(optionsProp, JSON.stringify(OPTIONS))).toEqual([OPTIONS]);
 	});
 
 	it('converts a number label to a string', () => {
-		expect(applied(radioOptionsProp, [{ label: 'A' }, { label: 1, value: 1 }])).toEqual([[{ label: 'A' }, { label: '1', value: 1 }]]);
+		expect(applied(optionsProp, [{ label: 'A' }, { label: 1, value: 1 }])).toEqual([[{ label: 'A' }, { label: '1', value: 1 }]]);
 	});
 
 	it.each([
 		['an option without label', [{ value: 'a' }]],
 		['an option with a NaN label', [{ label: NaN, value: 'a' }]],
+		['a list with a non-object entry', [{ label: 'A' }, 'a']],
+		['an unparsable JSON string', '{'],
 		['an option with an empty label', [{ label: '', value: 'a' }]],
 		['an empty string', ''],
 		['an object', { label: 'A' }],
 		['an unparsable string', 'abc'],
 	])('ignores %s', (_name, value) => {
-		expect(applied(radioOptionsProp, value)).toEqual([]);
+		expect(applied(optionsProp, value)).toEqual([]);
 	});
 });
 

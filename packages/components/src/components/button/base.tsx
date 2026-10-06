@@ -23,7 +23,7 @@ import {
 	hideLabelProp,
 	idProp,
 	inlineProp,
-	labelWithExpertSlotProp,
+	labelProp,
 	linkRoleProp,
 	nameProp,
 	shortKeyProp,
@@ -242,7 +242,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	}
 
 	protected applyLabel(value?: LabelWithExpertSlotPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => {
+		labelProp.apply(value, (v) => {
 			this.setRenderProp('label', v);
 			this.tooltipBehavior.watchLabel(v);
 		});

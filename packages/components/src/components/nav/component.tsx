@@ -15,7 +15,7 @@ import { navPropsConfig } from '../../internal/functional-components/nav/api';
 import { NavFC } from '../../internal/functional-components/nav/component';
 import type { NavChildren } from '../../internal/functional-components/nav/model';
 import { getInitiallyExpanded, toggleExpanded } from '../../internal/functional-components/nav/model';
-import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp, labelWithExpertSlotProp, navLinksProp } from '../../internal/props';
+import { collapsibleProp, hasCompactButtonProp, hasIconsWhenExpandedProp, hideLabelProp, labelProp, navLinksProp } from '../../internal/props';
 import type {
 	ButtonOrLinkOrTextWithChildrenProps,
 	CollapsiblePropType,
@@ -166,7 +166,7 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 		if (!initial) {
 			removeNavLabel(this.getRenderProp('label'));
 		}
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 		a11yHintLabelingLandmarks(value);
 		addNavLabel(this.getRenderProp('label'));
 	}

@@ -8,8 +8,6 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * `label` is the only required prop. All others are optional.
  *
  * Notes on prop choices:
- * - `labelProp` (not `labelWithExpertSlotProp`): the label labels the toggle button and has no
- *   expert slot. It keeps the shared 2–80 character validation and accessibility hints.
  * - `openProp`: the toggle state. The public `_open` prop stays mutable and reflected on the web
  *   component; the render prop mirrors it for the functional component.
  */

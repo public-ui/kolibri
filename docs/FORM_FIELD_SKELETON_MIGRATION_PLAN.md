@@ -112,7 +112,7 @@ G1.1 Props ─┬─► G1.2 FormAssociationBehavior (+ kol-button) ─► SSR-F
 4. **`BaseFormFieldWebComponent`** (DD16): `apply*` der Basis-Props, ein eigenes `TooltipBehavior` pro Instanz statt der modulglobalen Map in `FormField.tsx`, Formular-Anbindung, Event-Behandlung als Ersatz für `InputController` (Reihenfolge: KoliBri-Event, dann Callback) und Render-Helfer. Damit wird `kol-input-color` migriert.
    - Die Basis ist generisch über die Feld-API. Sie greift über einen dokumentierten Self-Cast (`shared`) auf die Basis-Props zu und liefert die FormField-Props mit `getFormFieldProps()`. Gerendert wird in der konkreten Klasse, wie bei `BaseButtonWebComponent`.
    - Die Props an `InputFC` bildet die konkrete Klasse in der Schlüsselreihenfolge der alten State-Wrapper. Props, die der Legacy-State nur bei gesetztem Wert enthielt, zum Beispiel `accessKey` und `aria-keyshortcuts`, übergibt sie nur, wenn ein Wert gesetzt ist. Nur so bleiben die Attributreihenfolge im Hydrate-Snapshot und das DOM unverändert.
-   - `_label={false}` bleibt wie bisher der Expert-Slot (`''`). `labelWithExpertSlotProp` allein würde daraus den String `'false'` machen.
+   - `_label={false}` bleibt wie bisher der Expert-Slot (`''`). `labelProp` allein würde daraus den String `'false'` machen.
 
 Entscheidungen:
 

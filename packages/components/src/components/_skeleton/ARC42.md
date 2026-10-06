@@ -147,7 +147,7 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	public componentWillLoad(): void {
 		this.initRenderProps(linkPropsConfig);
 		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v));
-		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
+		labelProp.apply(this._label, (v) => this.setRenderProp('label', v));
 		// …all other props…
 		this.tooltipBehavior.componentWillLoad({ label: this.getTooltipLabel(), align: this.getRenderProp('tooltipAlign') });
 	}
@@ -360,6 +360,7 @@ Design principles:
 - **Minimal conversion**: Only obvious transformations (string numbers → numbers)
 - **Type guarantees**: Once validated, types are guaranteed throughout the component lifecycle
 - **Single source of truth for defaults**: Default values are defined explicitly in shared prop/schema helpers and consumed by components, avoiding duplicated or drifting defaults
+- **One definition per prop**: A public prop name has one definition in `internal/props` (e.g. `labelProp` for every `_label`), reused by all components. A second definition for the same render key exists only where the props of different components differ functionally (other value type, value set or documented default); `prop-keys.spec.ts` lists these variants with their reason. Definitions that share behavior under different keys share the implementation (`createCallbacksPropDefinition`, `createLinksPropDefinition`, `createAlignNormalizer`)
 
 #### Dual-Type Props
 

@@ -5,8 +5,6 @@ import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
  * Props configuration for the dialog component.
  *
  * Notes on prop choices:
- * - `labelProp`, not `labelWithExpertSlotProp`: the label is either the `aria-label` of the blank
- *   variant or the card's heading text — neither has an expert slot.
  * - `levelProp` only reaches the card variant's heading; the blank variant renders no heading.
  */
 export const dialogPropsConfig = {

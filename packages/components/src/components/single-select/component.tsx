@@ -46,11 +46,11 @@ import {
 	accessKeyProp,
 	hasClearButtonProp,
 	horizontalIconsProp,
+	optionsProp,
 	placeholderProp,
 	requiredProp,
 	rowsProp,
 	shortKeyProp,
-	singleSelectOptionsProp,
 	variantProp,
 } from '../../internal/props';
 
@@ -725,7 +725,7 @@ export class KolSingleSelect
 	}
 
 	private applyOptions(value?: OptionsPropType): void {
-		singleSelectOptionsProp.apply(value, (v) => this.setRenderProp('options', v));
+		optionsProp.apply(value, (v) => this.setRenderProp('options', v));
 	}
 
 	public render(): JSX.Element {

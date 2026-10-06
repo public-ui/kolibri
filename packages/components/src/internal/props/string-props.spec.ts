@@ -11,7 +11,6 @@ import { hrefProp, optionalHrefProp } from './href';
 import { iconsProp } from './icons';
 import { idProp } from './id';
 import { labelProp } from './label';
-import { labelWithExpertSlotProp } from './label-with-expert-slot';
 import { linkTargetProp } from './link-target';
 import { nameProp } from './name';
 import { quoteProp } from './quote';
@@ -67,7 +66,7 @@ const STRING_PROPS: ReadonlyArray<{ name: string; definition: PropDefinition; de
 	{ name: 'downloadProp', definition: downloadProp, defaultValue: undefined },
 	{ name: 'iconsProp', definition: iconsProp, defaultValue: 'kolicon-logo' },
 	{ name: 'idProp', definition: idProp, defaultValue: '' },
-	{ name: 'labelWithExpertSlotProp', definition: labelWithExpertSlotProp, defaultValue: '' },
+	{ name: 'labelProp', definition: labelProp, defaultValue: '' },
 	{ name: 'linkTargetProp', definition: linkTargetProp, defaultValue: '' },
 	{ name: 'nameProp', definition: nameProp, defaultValue: '' },
 	{ name: 'optionalHrefProp', definition: optionalHrefProp, defaultValue: '' },
@@ -133,8 +132,9 @@ describe('hrefProp', () => {
 });
 
 /**
- * `labelProp` accepts the empty string or at least 2 characters and emits the label hints for an
- * accepted value, the UI/UX hint for a label longer than 80 characters included.
+ * `labelProp` accepts every string, like the legacy `validateLabel`, and emits the label hints: the
+ * a11y hint for fewer than three readable characters (digits only exempt) and the UI/UX hint for a
+ * label longer than 80 characters.
  */
 describe('labelProp', () => {
 	it.each([undefined, null])('applies the default "" for %p', (value) => {
@@ -146,14 +146,11 @@ describe('labelProp', () => {
 		['Label', 'Label'],
 		[12, '12'],
 		['a'.repeat(80), 'a'.repeat(80)],
+		['a', 'a'],
+		[1, '1'],
 	])('accepts %p as %p', (value, expected) => {
 		expect(applied(labelProp, value)).toEqual([expected]);
 		expect(warnings()).toEqual([]);
-	});
-
-	it.each<unknown>(['a', 1])('ignores %p with a developer warning', (value) => {
-		expect(applied(labelProp, value)).toEqual([]);
-		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid. The value is ignored.`)]);
 	});
 
 	it('ignores an object with a developer warning', () => {
@@ -161,9 +158,9 @@ describe('labelProp', () => {
 		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid (Cannot convert object to string)`)]);
 	});
 
-	it('emits the a11y hint for an accepted label with fewer than three readable characters', () => {
-		expect(applied(labelProp, 'ab')).toEqual(['ab']);
-		expect(hints()).toEqual([expect.stringContaining('The heading or label ("ab") is inaccessible.')]);
+	it.each(['Z', 'ab'])('emits the a11y hint for the label %p with fewer than three readable characters', (value) => {
+		expect(applied(labelProp, value)).toEqual([value]);
+		expect(hints()).toEqual([expect.stringContaining(`The heading or label ("${value}") is inaccessible.`)]);
 	});
 
 	it('emits the ui/ux hint for an accepted label longer than 80 characters', () => {
@@ -171,7 +168,7 @@ describe('labelProp', () => {
 		expect(hints()).toEqual([expect.stringContaining('A heading or label should not be longer than 80 characters.')]);
 	});
 
-	it.each<unknown>(['Label', '12', 'd'.repeat(80)])('emits no hint for %p', (value) => {
+	it.each<unknown>(['Label', '1', '12', 'd'.repeat(80)])('emits no hint for %p', (value) => {
 		applied(labelProp, value);
 		expect(hints()).toEqual([]);
 	});
