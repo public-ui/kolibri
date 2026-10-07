@@ -128,6 +128,24 @@ describe('resolveContext', () => {
 		assert.equal((await resolveContext({ eventName: 'issue_comment', event: issue, api, repository: REPO })).mode, 'skip');
 	});
 
+	it('recomputes the status when the trigger workflow relays a changed review text', async () => {
+		const api = fakeApi({ 'repos/public-ui/kolibri/commits/head1/pulls': [OPEN_PULL] });
+		const run = { id: 9, event: 'pull_request_review', conclusion: 'success', head_sha: 'head1' };
+		assert.deepEqual(await resolveContext({ eventName: 'workflow_run', event: { workflow_run: run }, api, repository: REPO }), {
+			mode: 'status',
+			pr: 42,
+			head: 'head1',
+			runId: null,
+			reason: 'review changed',
+		});
+
+		const withoutBlock = { workflow_run: { ...run, conclusion: 'skipped' } };
+		assert.equal((await resolveContext({ eventName: 'workflow_run', event: withoutBlock, api, repository: REPO })).mode, 'skip');
+
+		const closed = fakeApi({ 'repos/public-ui/kolibri/commits/head1/pulls': [{ ...OPEN_PULL, state: 'closed' }] });
+		assert.equal((await resolveContext({ eventName: 'workflow_run', event: { workflow_run: run }, api: closed, repository: REPO })).mode, 'skip');
+	});
+
 	it('marks a fresh push pending, unless only ignored files changed', async () => {
 		const event = { action: 'synchronize', pull_request: { number: 42, head: { sha: 'head2' } } };
 		const code = fakeApi({ 'repos/public-ui/kolibri/pulls/42/files': [{ filename: 'README.md' }, { filename: 'packages/x/y.ts' }] });
