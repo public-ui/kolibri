@@ -10,7 +10,10 @@ export type ToolbarItemPropType =
 	  } & InternalButtonProps)
 	| ({
 			type: 'link';
-	  } & LinkProps);
+	  } & LinkProps)
+	| {
+			type: 'hr';
+	  };
 export type ToolbarItemsPropType = ToolbarItemPropType[];
 
 /**

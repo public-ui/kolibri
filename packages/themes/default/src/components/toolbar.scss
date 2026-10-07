@@ -10,38 +10,52 @@
 	.kol-toolbar {
 		// A raised bar; the buttons and links on it stand on the bar, not on the page.
 		--kol-surface: var(--color-light);
+		--kol-toolbar-item-border-radius: 0;
+
 		background-color: var(--color-light);
 		border-radius: var(--border-radius);
-	}
 
-	.kol-link__text,
-	.kol-button__text {
-		border-radius: 0;
+		&--orientation-horizontal {
+			.kol-toolbar__item {
+				.kol-span {
+					border-right: 0;
+				}
 
-		.kol-toolbar--orientation-horizontal & {
-			border-right: 0;
+				&:first-child .kol-span {
+					--kol-toolbar-item-border-radius: var(--border-radius) 0 0 var(--border-radius);
+				}
+
+				&:last-child .kol-span {
+					--kol-toolbar-item-border-radius: 0 var(--border-radius) var(--border-radius) 0;
+					border-right: var(--border-width) solid var(--text-border-color);
+				}
+			}
 		}
 
-		.kol-toolbar--orientation-vertical & {
-			border-bottom: 0;
+		&--orientation-vertical {
+			.kol-toolbar__item {
+				.kol-span {
+					border-bottom: 0;
+				}
+
+				&:first-child .kol-span {
+					--kol-toolbar-item-border-radius: var(--border-radius) var(--border-radius) 0 0;
+				}
+
+				&:last-child .kol-span {
+					--kol-toolbar-item-border-radius: 0 0 var(--border-radius) var(--border-radius);
+					border-bottom: var(--border-width) solid var(--text-border-color);
+				}
+			}
 		}
 
-		.kol-toolbar--orientation-vertical .kol-toolbar__item:first-child & {
-			border-radius: var(--border-radius) var(--border-radius) 0 0;
+		.kol-toolbar__item .kol-span {
+			border-radius: var(--kol-toolbar-item-border-radius);
 		}
 
-		.kol-toolbar--orientation-horizontal .kol-toolbar__item:first-child & {
-			border-radius: var(--border-radius) 0 0 var(--border-radius);
-		}
-
-		.kol-toolbar--orientation-vertical .kol-toolbar__item:last-child & {
-			border-radius: 0 0 var(--border-radius) var(--border-radius);
-			border-bottom: var(--border-width) solid var(--text-border-color);
-		}
-
-		.kol-toolbar--orientation-horizontal .kol-toolbar__item:last-child & {
-			border-radius: 0 var(--border-radius) var(--border-radius) 0;
-			border-right: var(--border-width) solid var(--text-border-color);
+		hr {
+			border-color: var(--color-text);
+			border-style: solid;
 		}
 	}
 }
