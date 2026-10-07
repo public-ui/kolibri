@@ -1,19 +1,48 @@
 {
 	"schema": 1,
-	"state": "failure",
-	"description": "7 route(s) failed before the screenshots could be compared",
-	"computedAt": "2026-10-07T10:39:20.995Z",
+	"state": "pending",
+	"description": "7 removed – 0 of 7 approved, review pending",
+	"computedAt": "2026-10-07T11:20:10.846Z",
 	"pr": 11222,
-	"head": "f667117e6946038fd5b239477e95f8f913df5cf1",
+	"head": "965a0070827e585cc75f339a492bfaabbf0ab734",
 	"digest": "sha256:deb1b9a04e8fd32f378177039802af760daf596e77dd80cfa121d33384750493",
 	"counts": {
-		"changes": 0,
-		"open": 0,
+		"changes": 7,
+		"open": 7,
 		"approved": 0,
 		"rejected": 0,
-		"routeErrors": 7,
-		"errorItems": 7
+		"routeErrors": 0,
+		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {}
+	"items": {
+		"test-tag-name-transformer/button-variants--variants": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/button-variants--variants": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/button-variants--variants": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-variants--variants": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/button-variants--variants": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/button-variants--variants": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/button-variants--variants": {
+			"state": "open",
+			"notes": []
+		}
+	}
 }

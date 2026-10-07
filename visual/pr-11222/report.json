@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11222,
-	"head": "f667117e6946038fd5b239477e95f8f913df5cf1",
+	"head": "965a0070827e585cc75f339a492bfaabbf0ab734",
 	"repository": "public-ui/kolibri",
-	"runId": 37606745564,
-	"generatedAt": "2026-10-07T10:39:20.465Z",
+	"runId": 37611672822,
+	"generatedAt": "2026-10-07T11:20:10.172Z",
 	"digest": "sha256:deb1b9a04e8fd32f378177039802af760daf596e77dd80cfa121d33384750493",
 	"baseline": {
-		"sha": "6c680f2d5a1b9afe7a1b594525f463a129a33edc",
+		"sha": "e8a635e72facd2a435a351465981006579e72339",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -20,8 +20,8 @@
 		"unchanged": 2913,
 		"changed": 0,
 		"added": 0,
-		"removed": 0,
-		"error": 7
+		"removed": 7,
+		"error": 0
 	},
 	"packages": [
 		{
@@ -30,12 +30,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "6c680f2d5a1b9afe7a1b594525f463a129a33edc",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37594931768,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T08:44:03.000Z",
+					"createdAt": "2026-10-07T10:37:36.191Z",
 					"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
 					"fallback": null,
 					"distance": 0,
@@ -46,8 +46,8 @@
 				"unchanged": 416,
 				"changed": 0,
 				"added": 0,
-				"removed": 0,
-				"error": 1
+				"removed": 1,
+				"error": 0
 			},
 			"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
 			"items": [
@@ -281,10 +281,10 @@
 				},
 				{
 					"name": "button-variants--variants",
-					"route": "button/variants",
-					"status": "error",
+					"route": "button-variants",
+					"status": "removed",
 					"hash": "sha256:2fa19f5e49a1e7f32b0b5fd3abc26be2947ad089a08e7e98bfb67a53e442b653",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
+					"expected": "test-tag-name-transformer/button-variants--variants.expected.png"
 				},
 				{
 					"name": "card-basic--basic",
@@ -2555,13 +2555,7 @@
 					"hash": "sha256:172f9ad75f210a1388bff2d544c91d785d381a8753e4cb35567e7ef7ec0478e9"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for button/variants",
-					"route": "button/variants",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -2570,12 +2564,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "6c680f2d5a1b9afe7a1b594525f463a129a33edc",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37594931768,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T08:44:40.092Z",
+					"createdAt": "2026-10-07T10:39:32.427Z",
 					"digest": "sha256:141a1421871a249c4dda652452966b67bb18b06ba9c298ad315d95aaec269d78",
 					"fallback": null,
 					"distance": 0,
@@ -2586,8 +2580,8 @@
 				"unchanged": 416,
 				"changed": 0,
 				"added": 0,
-				"removed": 0,
-				"error": 1
+				"removed": 1,
+				"error": 0
 			},
 			"digest": "sha256:141a1421871a249c4dda652452966b67bb18b06ba9c298ad315d95aaec269d78",
 			"items": [
@@ -2821,10 +2815,10 @@
 				},
 				{
 					"name": "button-variants--variants",
-					"route": "button/variants",
-					"status": "error",
+					"route": "button-variants",
+					"status": "removed",
 					"hash": "sha256:208eef99f7450dc0fa22973a5795fb1f7e5f66afab8cdeb3d85cc03eca2202ba",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
+					"expected": "theme-bwst/button-variants--variants.expected.png"
 				},
 				{
 					"name": "card-basic--basic",
@@ -5095,13 +5089,7 @@
 					"hash": "sha256:79f3d21b2ff48017667486044906ad51b05922d76b314c0e22190bb28bd03caf"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for button/variants",
-					"route": "button/variants",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -5110,12 +5098,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "6c680f2d5a1b9afe7a1b594525f463a129a33edc",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37594931768,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T08:44:03.000Z",
+					"createdAt": "2026-10-07T10:37:36.191Z",
 					"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
 					"fallback": null,
 					"distance": 0,
@@ -5126,8 +5114,8 @@
 				"unchanged": 416,
 				"changed": 0,
 				"added": 0,
-				"removed": 0,
-				"error": 1
+				"removed": 1,
+				"error": 0
 			},
 			"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
 			"items": [
@@ -5361,10 +5349,10 @@
 				},
 				{
 					"name": "button-variants--variants",
-					"route": "button/variants",
-					"status": "error",
+					"route": "button-variants",
+					"status": "removed",
 					"hash": "sha256:2fa19f5e49a1e7f32b0b5fd3abc26be2947ad089a08e7e98bfb67a53e442b653",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
+					"expected": "theme-default/button-variants--variants.expected.png"
 				},
 				{
 					"name": "card-basic--basic",
@@ -7635,13 +7623,7 @@
 					"hash": "sha256:172f9ad75f210a1388bff2d544c91d785d381a8753e4cb35567e7ef7ec0478e9"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for button/variants",
-					"route": "button/variants",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -7650,12 +7632,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "6c680f2d5a1b9afe7a1b594525f463a129a33edc",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37594931768,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T08:44:06.089Z",
+					"createdAt": "2026-10-07T10:41:09.343Z",
 					"digest": "sha256:c216c08f43fa5577c76b55c5b1f67f43ea9e917970de1203e5403430b522c815",
 					"fallback": null,
 					"distance": 0,
@@ -7666,8 +7648,8 @@
 				"unchanged": 416,
 				"changed": 0,
 				"added": 0,
-				"removed": 0,
-				"error": 1
+				"removed": 1,
+				"error": 0
 			},
 			"digest": "sha256:c216c08f43fa5577c76b55c5b1f67f43ea9e917970de1203e5403430b522c815",
 			"items": [
@@ -7901,10 +7883,10 @@
 				},
 				{
 					"name": "button-variants--variants",
-					"route": "button/variants",
-					"status": "error",
+					"route": "button-variants",
+					"status": "removed",
 					"hash": "sha256:7671560a4d04dfcaa979e16c282ffd41e91ecf83c1dc1845fc745327c0b91e0b",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
+					"expected": "theme-desy/button-variants--variants.expected.png"
 				},
 				{
 					"name": "card-basic--basic",
@@ -10175,13 +10157,7 @@
 					"hash": "sha256:fba6d304fea25d4db8a726c33fdc69bf9c743319f6c6d07246770cc19f255ed2"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for button/variants",
-					"route": "button/variants",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -10190,12 +10166,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "6c680f2d5a1b9afe7a1b594525f463a129a33edc",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37594931768,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T08:42:47.729Z",
+					"createdAt": "2026-10-07T10:38:28.653Z",
 					"digest": "sha256:61074ce1d28d1f49d7fc3e61820fba94c70eb71339d467fcfaf56f35377b556d",
 					"fallback": null,
 					"distance": 0,
@@ -10206,8 +10182,8 @@
 				"unchanged": 416,
 				"changed": 0,
 				"added": 0,
-				"removed": 0,
-				"error": 1
+				"removed": 1,
+				"error": 0
 			},
 			"digest": "sha256:61074ce1d28d1f49d7fc3e61820fba94c70eb71339d467fcfaf56f35377b556d",
 			"items": [
@@ -10441,10 +10417,10 @@
 				},
 				{
 					"name": "button-variants--variants",
-					"route": "button/variants",
-					"status": "error",
+					"route": "button-variants",
+					"status": "removed",
 					"hash": "sha256:ecc5bc8e3200d454a537284ad5b369ff644b24767bb16c376254fe4e716ae560",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
+					"expected": "theme-ecl/button-variants--variants.expected.png"
 				},
 				{
 					"name": "card-basic--basic",
@@ -12715,13 +12691,7 @@
 					"hash": "sha256:139fd89a7de8876b67ee55b888516e5d0827f5864675e53fac57228d450fc4b1"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for button/variants",
-					"route": "button/variants",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -12730,12 +12700,12 @@
 			"baseline": {
 				"files": 418,
 				"meta": {
-					"sha": "6c680f2d5a1b9afe7a1b594525f463a129a33edc",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37594931768,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T08:42:25.295Z",
+					"createdAt": "2026-10-07T10:38:17.578Z",
 					"digest": "sha256:20275e56661647f997626748305f1510ee1c598c03d982cd8bf8ff910993688d",
 					"fallback": null,
 					"distance": 0,
@@ -12746,8 +12716,8 @@
 				"unchanged": 417,
 				"changed": 0,
 				"added": 0,
-				"removed": 0,
-				"error": 1
+				"removed": 1,
+				"error": 0
 			},
 			"digest": "sha256:20275e56661647f997626748305f1510ee1c598c03d982cd8bf8ff910993688d",
 			"items": [
@@ -12981,10 +12951,10 @@
 				},
 				{
 					"name": "button-variants--variants",
-					"route": "button/variants",
-					"status": "error",
+					"route": "button-variants",
+					"status": "removed",
 					"hash": "sha256:2e1ec1215c16b7460da3e35c42208c2b8af9576c23cd10015745c410449ed827",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
+					"expected": "theme-kern/button-variants--variants.expected.png"
 				},
 				{
 					"name": "card-basic--basic",
@@ -15261,13 +15231,7 @@
 					"hash": "sha256:d9945a845d56ae3c13b8bd7e9805c581e56573a31c65f8fc1656e40f60366206"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for button/variants",
-					"route": "button/variants",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -15276,12 +15240,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "6c680f2d5a1b9afe7a1b594525f463a129a33edc",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37594931768,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T08:45:46.214Z",
+					"createdAt": "2026-10-07T10:38:10.349Z",
 					"digest": "sha256:7e5ab2e71a7c443f0a9dee7a7540ff08c83571f083047cf62610c272a765a330",
 					"fallback": null,
 					"distance": 0,
@@ -15292,8 +15256,8 @@
 				"unchanged": 416,
 				"changed": 0,
 				"added": 0,
-				"removed": 0,
-				"error": 1
+				"removed": 1,
+				"error": 0
 			},
 			"digest": "sha256:7e5ab2e71a7c443f0a9dee7a7540ff08c83571f083047cf62610c272a765a330",
 			"items": [
@@ -15527,10 +15491,10 @@
 				},
 				{
 					"name": "button-variants--variants",
-					"route": "button/variants",
-					"status": "error",
+					"route": "button-variants",
+					"status": "removed",
 					"hash": "sha256:bba29520372fa1c8714995290fd128bd72ca71a731f871a6c35e24cf301f1373",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
+					"expected": "unstyled/button-variants--variants.expected.png"
 				},
 				{
 					"name": "card-basic--basic",
@@ -17801,13 +17765,7 @@
 					"hash": "sha256:f5461b699caccf4fed8ec816929b6932a3df770dedcb2515f5069ca73fdbfc9a"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for button/variants",
-					"route": "button/variants",
-					"message": "Error: Route \"button/variants\": no data-visual-block containers found. Mark the sample's variant blocks with data-visual-block (see SampleBlock) or set snapshot.forceFullPage in sample-app.routes.js."
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		}
 	]
