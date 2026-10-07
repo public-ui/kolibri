@@ -34,9 +34,11 @@ featureHint(`[KolBadge] Optimierung des _color-Properties (rgba, rgb, hex usw.).
 export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, FocusableElement, WebComponentInterface<BadgeApi> {
 	@Element() protected readonly host?: HTMLKolBadgeElement;
 
-	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
+	@State() public labelId: string = createUniqueId('badge-label');
 
-	// --- Composed behaviors ---
+	@State() public ariaDescriptionId: string = nonce();
+
+	protected readonly ctaRef = createCtaRef<HTMLButtonElement>();
 
 	/**
 	 * Stays idle while no smart button is configured — it is only fed in `applySmartButton`, and
@@ -45,7 +47,61 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 	 */
 	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 
-	// --- Lifecycle ---
+	/**
+	 * The smart button's normalized `ButtonFC` render props, or `undefined` while no smart button
+	 * is configured. Not a `@State`: it is recomputed inside `applySmartButton`, whose
+	 * `setRenderProp` call already drives the re-render.
+	 */
+	private smartButtonProps?: ResolvedButtonProps;
+
+	/**
+	 * Defines the backgroundColor and foregroundColor.
+	 */
+	@Prop() public _color?: Stringified<PropColor> = '#000';
+
+	@Watch('_color')
+	public watchColor(value?: Stringified<PropColor>): void {
+		colorProp.apply(value, (v) => this.setRenderProp('color', v));
+	}
+
+	/**
+	 * Defines the icon classnames.
+	 */
+	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
+
+	@Watch('_icons')
+	public watchIcons(value?: Stringified<KoliBriIconsProp>): void {
+		spanIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+	}
+
+	/**
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
+	 */
+	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
+
+	@Watch('_smartButton')
+	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
+		this.applySmartButton(value);
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(badgePropsConfig);
@@ -90,8 +146,6 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 		});
 	}
 
-	// --- Event handling ---
-
 	private readonly handleClick = (event: MouseEvent): void => {
 		event.stopPropagation();
 		this.tooltipBehavior.hideTooltip();
@@ -128,19 +182,6 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 		}
 	};
 
-	// --- Public methods ---
-
-	/**
-	 * Sets focus on the internal element.
-	 */
-	@Method()
-	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
-
-	// --- Render ---
-
 	public render(): JSX.Element {
 		const smartButton = this.getRenderProp('smartButton');
 		const resolvedButton = this.smartButtonProps;
@@ -168,56 +209,5 @@ export class KolBadge extends BaseWebComponent<BadgeApi> implements BadgeProps, 
 				/>
 			</Host>
 		);
-	}
-
-	// --- @State ---
-
-	@State() public labelId: string = createUniqueId('badge-label');
-
-	@State() public ariaDescriptionId: string = nonce();
-
-	/**
-	 * The smart button's normalized `ButtonFC` render props, or `undefined` while no smart button
-	 * is configured. Not a `@State`: it is recomputed inside `applySmartButton`, whose
-	 * `setRenderProp` call already drives the re-render.
-	 */
-	private smartButtonProps?: ResolvedButtonProps;
-
-	// --- Props + Watchers ---
-
-	/**
-	 * Defines the backgroundColor and foregroundColor.
-	 */
-	@Prop() public _color?: Stringified<PropColor> = '#000';
-	@Watch('_color')
-	public watchColor(value?: Stringified<PropColor>): void {
-		colorProp.apply(value, (v) => this.setRenderProp('color', v));
-	}
-
-	/**
-	 * Defines the icon classnames.
-	 */
-	@Prop() public _icons?: Stringified<KoliBriIconsProp>;
-	@Watch('_icons')
-	public watchIcons(value?: Stringified<KoliBriIconsProp>): void {
-		spanIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
-	}
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: LabelPropType;
-	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
-	}
-
-	/**
-	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
-	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
-	@Watch('_smartButton')
-	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
-		this.applySmartButton(value);
 	}
 }

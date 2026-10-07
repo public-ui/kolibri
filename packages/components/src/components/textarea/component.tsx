@@ -69,7 +69,16 @@ export class KolTextarea
 	implements ClickableElement, FocusableElement, TextareaProps, WebComponentInterface<TextareaApi>
 {
 	@Element() protected readonly host?: HTMLKolTextareaElement;
+
+	@State() public id = createUniqueId('textarea');
+
+	/** Whether the info popover of the label is open. */
+	@State() public infoPopoverOpen = false;
+
+	@State() public inputHasFocus = false;
+
 	protected readonly ctaRef = createCtaRef<HTMLTextAreaElement>();
+
 	private readonly counter = new CounterBehavior(BaseWebComponent.stateLess);
 
 	/**
@@ -84,16 +93,308 @@ export class KolTextarea
 	/** Set while the textarea writes its measured rows to `_rows`, so the watcher keeps `minRows`. */
 	private isWritingRows = false;
 
-	@State() public id = createUniqueId('textarea');
-
-	/** Whether the info popover of the label is open. */
-	@State() public infoPopoverOpen = false;
-
-	@State() public inputHasFocus = false;
-
 	public constructor() {
 		super();
 		this.initFormAssociation('textarea', this._name);
+	}
+
+	/**
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
+	 */
+	@Prop() public _accessKey?: string;
+
+	@Watch('_accessKey')
+	public watchAccessKey(value?: string): void {
+		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		validateAccessAndShortKey(value, this._shortKey);
+	}
+
+	/**
+	 * Adjusts the height of the element to its content.
+	 * @TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
+	 */
+	@Prop() public _adjustHeight?: boolean = false;
+
+	@Watch('_adjustHeight')
+	public watchAdjustHeight(value?: boolean): void {
+		adjustHeightProp.apply(value, (v) => this.setRenderProp('adjustHeight', v));
+	}
+
+	/**
+	 * References an external element by ID that provides accessible details for this textarea.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public watchAriaDetails(value?: AriaDetailsPropType): void {
+		this.applyAriaDetails(value);
+	}
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _disabled?: boolean = false;
+
+	@Watch('_disabled')
+	public watchDisabled(value?: boolean): void {
+		this.applyDisabled(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideMsg?: boolean = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: boolean): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideLabel?: boolean = false;
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: boolean): void {
+		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Defines the hint text.
+	 */
+	@Prop() public _hint?: string = '';
+
+	@Watch('_hint')
+	public watchHint(value?: string): void {
+		this.applyHint(value);
+	}
+
+	/**
+	 * Defines the icon classnames.
+	 */
+	@Prop() public _icons?: IconsHorizontalPropType;
+
+	@Watch('_icons')
+	public watchIcons(value?: IconsHorizontalPropType): void {
+		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+	}
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+
+	@Watch('_infoPopover')
+	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		this.applyInfoPopover(value);
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines the maximum number of input characters.
+	 */
+	@Prop() public _maxLength?: number;
+
+	@Watch('_maxLength')
+	public watchMaxLength(value?: number): void {
+		this.counter.watchMaxLength(value);
+		this.counter.updateImmediate(this._value?.length ?? 0);
+	}
+
+	/**
+	 * Shows a character counter for the input element.
+	 */
+	@Prop() public _hasCounter?: boolean = false;
+
+	@Watch('_hasCounter')
+	public watchHasCounter(value?: boolean): void {
+		this.counter.watchHasCounter(value);
+	}
+
+	/**
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
+	 */
+	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
+
+	@Watch('_maxLengthBehavior')
+	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.counter.watchMaxLengthBehavior(value);
+	}
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: Stringified<MsgPropType>;
+
+	@Watch('_msg')
+	public watchMsg(value?: Stringified<MsgPropType>): void {
+		this.applyMsg(value);
+	}
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType;
+
+	@Watch('_name')
+	public watchName(value?: NamePropType): void {
+		this.applyName(value);
+	}
+
+	/**
+	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 */
+	@Prop() public _on?: InputTypeOnDefault;
+
+	@Watch('_on')
+	public watchOn(value?: InputTypeOnDefault): void {
+		this.applyOn(value);
+	}
+
+	/**
+	 * Defines the placeholder for input field. To be shown when there's no value.
+	 */
+	@Prop() public _placeholder?: string;
+
+	@Watch('_placeholder')
+	public watchPlaceholder(value?: string): void {
+		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
+	}
+
+	/**
+	 * Makes the input element read only.
+	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _readOnly?: boolean = false;
+
+	@Watch('_readOnly')
+	public watchReadOnly(value?: boolean): void {
+		readOnlyProp.apply(value, (v) => this.setRenderProp('readOnly', v));
+	}
+
+	/**
+	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
+	 * In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `vertical` (default) and `none`.
+	 */
+	@Prop() public _resize?: TextareaResizePropType = 'vertical';
+
+	@Watch('_resize')
+	public watchResize(value?: TextareaResizePropType): void {
+		resizeProp.apply(value, (v) => this.setRenderProp('resize', v));
+	}
+
+	/**
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _required?: boolean = false;
+
+	@Watch('_required')
+	public watchRequired(value?: boolean): void {
+		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	/**
+	 * Maximum number of visible rows of the element.
+	 */
+	@Prop({ mutable: true, reflect: false }) public _rows?: RowsPropType;
+
+	@Watch('_rows')
+	public watchRows(value?: RowsPropType): void {
+		rowsProp.apply(value, (v) => {
+			this.setRenderProp('rows', v);
+			if (!this.isWritingRows) {
+				this.minRows = v;
+			}
+		});
+	}
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		validateAccessAndShortKey(this._accessKey, value);
+	}
+
+	/**
+	 * Defines whether the browser should check the spelling and grammar.
+	 */
+	@Prop() public _spellCheck?: SpellCheckPropType;
+
+	@Watch('_spellCheck')
+	public watchSpellCheck(value?: SpellCheckPropType): void {
+		spellCheckProp.apply(value, (v) => this.setRenderProp('spellCheck', v));
+	}
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
+
+	/**
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+
+	@Watch('_touched')
+	public watchTouched(value?: boolean): void {
+		this.applyTouched(value);
+	}
+
+	/**
+	 * Defines the value of the element.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
+
+	@Watch('_value')
+	public watchValue(value?: string): void {
+		this.applyValue(value);
+		this.counter.update(value?.length ?? 0);
+	}
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 
 	/**
@@ -120,8 +421,6 @@ export class KolTextarea
 	@Method()
 	@delegateClick('ctaRef')
 	public async click(): Promise<void> {}
-
-	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
 		this.initRenderProps(textareaPropsConfig);
@@ -181,8 +480,6 @@ export class KolTextarea
 		this.counter.destroy();
 	}
 
-	// --- Event handling ---
-
 	private readonly handleTextareaInput = (event: Event): void => {
 		if (this.ctaRef.el instanceof HTMLTextAreaElement) {
 			this._value = this.ctaRef.el.value;
@@ -235,10 +532,8 @@ export class KolTextarea
 		return minRows && minRows > nextRows ? minRows : nextRows;
 	}
 
-	// --- Render ---
-
 	/**
-	 * Props of the native `<textarea>` in the key order of the legacy state wrapper. `spellCheck` is
+	 * Props of the native `<textarea>` in a fixed key order, which the hydrate snapshot pins. `spellCheck` is
 	 * accepted but not rendered (#10863).
 	 */
 	private getTextareaProps(): TextAreaFCProps {
@@ -280,6 +575,12 @@ export class KolTextarea
 		};
 	}
 
+	/** Applies the value without a counter update; the watcher adds it. */
+	private applyValue(value?: string): void {
+		stringValueProp.apply(value, (v) => this.setRenderProp('value', v));
+		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value'));
+	}
+
 	public render(): JSX.Element {
 		const disabled = this.getRenderProp('disabled');
 		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
@@ -313,314 +614,5 @@ export class KolTextarea
 				</FormFieldFC>
 			</Host>
 		);
-	}
-
-	// --- Props ---
-
-	/**
-	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
-	 */
-	@Prop() public _accessKey?: string;
-
-	/**
-	 * Adjusts the height of the element to its content.
-	 * @TODO: change back to AdjustHeightPropType after stencil #4663 has been resolved
-	 */
-	@Prop() public _adjustHeight?: boolean = false;
-
-	/**
-	 * References an external element by ID that provides accessible details for this textarea.
-	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
-
-	/**
-	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideMsg?: boolean = false;
-
-	/**
-	 * Hides the caption by default and displays the caption text with a tooltip when the
-	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideLabel?: boolean = false;
-
-	/**
-	 * Defines the hint text.
-	 */
-	@Prop() public _hint?: string = '';
-
-	/**
-	 * Defines the icon classnames.
-	 */
-	@Prop() public _icons?: IconsHorizontalPropType;
-
-	/**
-	 * Defines the informational popover after the label.
-	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
-	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
-
-	/**
-	 * Defines the maximum number of input characters.
-	 */
-	@Prop() public _maxLength?: number;
-
-	/**
-	 * Shows a character counter for the input element.
-	 */
-	@Prop() public _hasCounter?: boolean = false;
-
-	/**
-	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
-	 */
-	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
-
-	/**
-	 * Defines the properties for a message rendered as Alert component.
-	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
-
-	/**
-	 * Defines the technical name of an input field.
-	 */
-	@Prop() public _name?: NamePropType;
-
-	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
-	 */
-	@Prop() public _on?: InputTypeOnDefault;
-
-	/**
-	 * Defines the placeholder for input field. To be shown when there's no value.
-	 */
-	@Prop() public _placeholder?: string;
-
-	/**
-	 * Makes the input element read only.
-	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _readOnly?: boolean = false;
-
-	/**
-	 * Defines whether and in which direction the size of the input can be changed by the user. (https://developer.mozilla.org/de/docs/Web/CSS/resize)
-	 * In version 3 (v3), horizontal resizing is abolished. The corresponding property is then reduced to the properties `vertical` (default) and `none`.
-	 */
-	@Prop() public _resize?: TextareaResizePropType = 'vertical';
-
-	/**
-	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _required?: boolean = false;
-
-	/**
-	 * Maximum number of visible rows of the element.
-	 */
-	@Prop({ mutable: true, reflect: false }) public _rows?: RowsPropType;
-
-	/**
-	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
-	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
-
-	/**
-	 * Defines whether the browser should check the spelling and grammar.
-	 */
-	@Prop() public _spellCheck?: SpellCheckPropType;
-
-	/**
-	 * Selector for synchronizing the value with another input element.
-	 * @internal
-	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
-
-	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
-
-	/**
-	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
-
-	/**
-	 * Defines the value of the element.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: string;
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: VariantClassNamePropType;
-
-	// --- Watchers ---
-
-	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
-		validateAccessAndShortKey(value, this._shortKey);
-	}
-
-	@Watch('_adjustHeight')
-	public watchAdjustHeight(value?: boolean): void {
-		adjustHeightProp.apply(value, (v) => this.setRenderProp('adjustHeight', v));
-	}
-
-	@Watch('_ariaDetails')
-	public watchAriaDetails(value?: AriaDetailsPropType): void {
-		this.applyAriaDetails(value);
-	}
-
-	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
-		this.applyDisabled(value);
-	}
-
-	@Watch('_hasCounter')
-	public watchHasCounter(value?: boolean): void {
-		this.counter.watchHasCounter(value);
-	}
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
-		this.applyHideMsg(value);
-	}
-
-	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
-		this.applyHideLabel(value);
-	}
-
-	@Watch('_hint')
-	public watchHint(value?: string): void {
-		this.applyHint(value);
-	}
-
-	@Watch('_icons')
-	public watchIcons(value?: IconsHorizontalPropType): void {
-		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
-	}
-
-	@Watch('_infoPopover')
-	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
-		this.applyInfoPopover(value);
-	}
-
-	@Watch('_label')
-	public watchLabel(value?: LabelWithExpertSlotPropType): void {
-		this.applyLabel(value);
-	}
-
-	@Watch('_maxLength')
-	public watchMaxLength(value?: number): void {
-		this.counter.watchMaxLength(value);
-		this.counter.updateImmediate(this._value?.length ?? 0);
-	}
-
-	@Watch('_maxLengthBehavior')
-	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
-		this.counter.watchMaxLengthBehavior(value);
-	}
-
-	@Watch('_msg')
-	public watchMsg(value?: Stringified<MsgPropType>): void {
-		this.applyMsg(value);
-	}
-
-	@Watch('_name')
-	public watchName(value?: NamePropType): void {
-		this.applyName(value);
-	}
-
-	@Watch('_on')
-	public watchOn(value?: InputTypeOnDefault): void {
-		this.applyOn(value);
-	}
-
-	@Watch('_placeholder')
-	public watchPlaceholder(value?: string): void {
-		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
-	}
-
-	@Watch('_readOnly')
-	public watchReadOnly(value?: boolean): void {
-		readOnlyProp.apply(value, (v) => this.setRenderProp('readOnly', v));
-	}
-
-	@Watch('_required')
-	public watchRequired(value?: boolean): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
-	}
-
-	@Watch('_resize')
-	public watchResize(value?: TextareaResizePropType): void {
-		resizeProp.apply(value, (v) => this.setRenderProp('resize', v));
-	}
-
-	@Watch('_rows')
-	public watchRows(value?: RowsPropType): void {
-		rowsProp.apply(value, (v) => {
-			this.setRenderProp('rows', v);
-			if (!this.isWritingRows) {
-				this.minRows = v;
-			}
-		});
-	}
-
-	@Watch('_shortKey')
-	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
-		validateAccessAndShortKey(this._accessKey, value);
-	}
-
-	@Watch('_spellCheck')
-	public watchSpellCheck(value?: SpellCheckPropType): void {
-		spellCheckProp.apply(value, (v) => this.setRenderProp('spellCheck', v));
-	}
-
-	@Watch('_syncValueBySelector')
-	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		this.applySyncValueBySelector(value);
-	}
-
-	@Watch('_tooltipAlign')
-	public watchTooltipAlign(value?: TooltipAlignPropType): void {
-		this.applyTooltipAlign(value);
-	}
-
-	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
-		this.applyTouched(value);
-	}
-
-	@Watch('_value')
-	public watchValue(value?: string): void {
-		this.applyValue(value);
-		this.counter.update(value?.length ?? 0);
-	}
-
-	@Watch('_variant')
-	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
-	}
-
-	/** Applies the value without a counter update; the watcher adds it. */
-	private applyValue(value?: string): void {
-		stringValueProp.apply(value, (v) => this.setRenderProp('value', v));
-		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value'));
 	}
 }

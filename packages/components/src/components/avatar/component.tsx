@@ -52,6 +52,9 @@ const normalizeInitials = (value: string): string => {
 	},
 })
 export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebComponentInterface<AvatarApi> {
+	@State()
+	public initials: string = '';
+
 	/**
 	 * Defines the backgroundColor and foregroundColor.
 	 */
@@ -87,9 +90,6 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	public watchSrc(value?: string): void {
 		srcProp.apply(value, (v) => this.setRenderProp('src', v));
 	}
-
-	@State()
-	public initials: string = '';
 
 	public componentWillLoad(): void {
 		this.initRenderProps(avatarPropsConfig);

@@ -75,6 +75,24 @@ export const getColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: numb
 	return color;
 };
 
+/**
+ * Adjusts the foreground in the direction the YIQ brightness of the background suggests. YIQ is only
+ * an estimate of the WCAG contrast ratio: for medium bright backgrounds such as `#00aa00` it suggests
+ * a light foreground, although even white stays below the ratio there. If the suggested direction does
+ * not reach the ratio, the opposite direction is tried and the foreground with the higher WCAG contrast
+ * ratio wins, which is black or white at the latest.
+ */
+const chooseColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: number): ColorContrast<RGB> => {
+	const dir = getContrastYIQ(baseColor[0], baseColor[1], baseColor[2]);
+	const suggested = getColorContrast(baseColor, contrastColor, ratio, dir);
+	if (suggested.contrast >= ratio) {
+		return suggested;
+	}
+	// Bypasses the cache of `getColorContrast`, which ignores the direction.
+	const opposite = calcColorContrast(baseColor, contrastColor, ratio, -dir);
+	return opposite.contrast > suggested.contrast ? opposite : suggested;
+};
+
 export const createContrastColorPair = (color: string | ColorPair<string>, contrastRatio = 7): ColorContrast<string> => {
 	let baseColor: RGBA = [0, 0, 0, 1];
 	let contrastColor: RGBA = [255, 255, 255, 1];
@@ -89,13 +107,7 @@ export const createContrastColorPair = (color: string | ColorPair<string>, contr
 			contrastColor = baseColor;
 		}
 	}
-	const yiq = getContrastYIQ(baseColor[0], baseColor[1], baseColor[2]);
-	const colorContrast = getColorContrast(
-		[baseColor[0], baseColor[1], baseColor[2]],
-		[contrastColor[0], contrastColor[1], contrastColor[2]],
-		contrastRatio,
-		yiq,
-	);
+	const colorContrast = chooseColorContrast([baseColor[0], baseColor[1], baseColor[2]], [contrastColor[0], contrastColor[1], contrastColor[2]], contrastRatio);
 	contrastColor = [...colorContrast.foreground, 1];
 
 	return {

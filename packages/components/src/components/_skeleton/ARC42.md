@@ -137,17 +137,19 @@ When several custom elements are tag variants of **one** FC (`kol-button`, `kol-
 export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentInterface<LinkApi> {
 	private readonly tooltipBehavior = new TooltipBehavior(this.stateAccess);
 
+	@Prop() public _href!: string;
+
+	@Watch('_href')
+	public watchHref(value?: string): void {
+		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
+	}
+
 	public componentWillLoad(): void {
 		this.initRenderProps(linkPropsConfig);
 		hrefProp.apply(this._href, (v) => this.setRenderProp('href', v));
 		labelWithExpertSlotProp.apply(this._label, (v) => this.setRenderProp('label', v));
 		// …all other props…
 		this.tooltipBehavior.componentWillLoad({ label: this.getTooltipLabel(), align: this.getRenderProp('tooltipAlign') });
-	}
-
-	@Watch('_href')
-	public watchHref(value?: string): void {
-		hrefProp.apply(value, (v) => this.setRenderProp('href', v));
 	}
 
 	public render(): JSX.Element {
@@ -164,6 +166,25 @@ export class KolLink extends BaseWebComponent<LinkApi> implements WebComponentIn
 	}
 }
 ```
+
+#### Member order
+
+Every Stencil component class lists its members in the same order:
+
+1. `static` members
+2. `@Element`
+3. each `@State`, directly followed by its `@Watch` method(s) if it has any
+4. other fields (refs, behaviors, translations, items)
+5. `constructor`
+6. each `@Prop`, directly followed by its `@Watch` method(s); a watcher of several props follows the first of them
+7. `@Event`
+8. `@Method`
+9. lifecycle methods, grouped by phase (load, update, render, disconnect): `connectedCallback`, `componentWillLoad`, `componentDidLoad`, `componentShouldUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillRender`, `componentDidRender`, `disconnectedCallback`. This is a declaration convention, not the order in which Stencil runs the hooks (`componentWillRender` and `componentDidRender` run before `componentDidLoad`)
+10. `@Listen`
+11. helpers and handlers: the other methods, accessors and arrow-function fields, whatever their visibility
+12. `render`
+
+Property initializers run in declaration order. A property whose value another initializer reads therefore stays before that property, even when its group comes later (e.g. `translateFilenameText` before the `@State` `filename` of `kol-input-file`). `component-structure.spec.ts` pins the member order of all components. For every class under `src` it also checks that no initializer reads an own property declared after it, directly (`this.x`), through own getters it reads (`this.derived`) or through own methods and arrow-function properties it calls (`this.compute()`), also nested through the called bodies. Every other path is not traced, e.g. a callee that receives `this` (`new Behavior(this)`), a synchronously run callback (an IIFE, `[1].map(() => this.later)`), `call`/`apply`/`bind` and element access (`this['x']`); keep such reads behind the property they read.
 
 ### Public API Contract (Migration Parity)
 
@@ -339,6 +360,7 @@ Design principles:
 - **Minimal conversion**: Only obvious transformations (string numbers → numbers)
 - **Type guarantees**: Once validated, types are guaranteed throughout the component lifecycle
 - **Single source of truth for defaults**: Default values are defined explicitly in shared prop/schema helpers and consumed by components, avoiding duplicated or drifting defaults
+- **One definition per prop**: A public prop name has one definition in `internal/props` (e.g. `disabledProp` for every `_disabled`), reused by all components. A second definition for the same render key exists only where the props of different components differ functionally (other value type, value set or documented default), where a shared factory types the value per component (callbacks, links, options), or where the meaning of the prop differs (`paginationLabelProp`, the label of the navigation landmark of the pagination, beside `labelWithExpertSlotProp`); `prop-keys.spec.ts` lists these variants with their reason. Definitions that share behavior share the implementation, except a variant kept apart for its meaning (`paginationLabelProp`): under different keys `createAlignPropDefinition` (`_align`, `_popoverAlign`, `_tooltipAlign`), under one key the typed factories `createCallbacksPropDefinition`, `createLinksPropDefinition` and `createOptionsPropDefinition`
 
 #### Dual-Type Props
 

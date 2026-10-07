@@ -22,33 +22,57 @@ import { BaseDialogWebComponent } from '../dialog/base';
 	shadow: true,
 })
 /*
- * `_level` and its watcher are deliberately absent: the predecessor never exposed them here, and
- * adding them would widen the public API of a deprecated component. The card variant therefore
- * always renders its heading at the default level.
+ * `_level` and its watcher are deliberately absent: adding them would widen the public API of a
+ * deprecated component. The card variant therefore always renders its heading at the default level.
  */
 export class KolModal extends BaseDialogWebComponent implements DialogProps, Omit<WebComponentInterface<DialogApi>, '_level' | 'watchLevel'> {
 	@Element() protected readonly host?: HTMLKolModalElement;
 
-	// --- Lifecycle ---
+	@State() public ariaDescriptionId: string = nonce();
 
-	public componentWillLoad(): void {
-		this.initDialogRenderProps();
+	@State() public headingId: string = createUniqueId('dialog-heading');
 
-		this.watchLabel(this._label);
-		this.watchOn(this._on);
-		this.watchVariant(this._variant);
-		this.watchWidth(this._width);
+	@State() public modal: boolean = true;
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		this.applyLabel(value);
 	}
 
-	public componentDidRender(): void {
-		this.syncCardCloseTooltipListeners();
+	/**
+	 * Defines the modal callback functions.
+	 */
+	@Prop() public _on?: KoliBriDialogEventCallbacks;
+
+	@Watch('_on')
+	public watchOn(value?: KoliBriDialogEventCallbacks): void {
+		this.applyOn(value);
 	}
 
-	public disconnectedCallback(): void {
-		this.teardownDialog();
+	/**
+	 * Defines the variant of the modal.
+	 */
+	@Prop() public _variant?: ModalVariantPropType = 'blank';
+
+	@Watch('_variant')
+	public watchVariant(value?: ModalVariantPropType): void {
+		this.applyVariant(value);
 	}
 
-	// --- Public methods ---
+	/**
+	 * Defines the width of the modal. (max-width: 100%)
+	 */
+	@Prop() public _width?: string = '100%';
+
+	@Watch('_width')
+	public watchWidth(value?: string): void {
+		this.applyWidth(value);
+	}
 
 	/**
 	 * Opens the modal dialog.
@@ -94,7 +118,22 @@ export class KolModal extends BaseDialogWebComponent implements DialogProps, Omi
 		await this.close();
 	}
 
-	// --- Render ---
+	public componentWillLoad(): void {
+		this.initDialogRenderProps();
+
+		this.watchLabel(this._label);
+		this.watchOn(this._on);
+		this.watchVariant(this._variant);
+		this.watchWidth(this._width);
+	}
+
+	public componentDidRender(): void {
+		this.syncCardCloseTooltipListeners();
+	}
+
+	public disconnectedCallback(): void {
+		this.teardownDialog();
+	}
 
 	protected renderSlot(): JSX.Element {
 		return <slot />;
@@ -102,51 +141,5 @@ export class KolModal extends BaseDialogWebComponent implements DialogProps, Omi
 
 	public render(): JSX.Element {
 		return <Host>{this.renderDialogFC()}</Host>;
-	}
-
-	// --- @State ---
-
-	@State() public ariaDescriptionId: string = nonce();
-
-	@State() public headingId: string = createUniqueId('dialog-heading');
-
-	@State() public modal: boolean = true;
-
-	// --- Props + Watchers ---
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: LabelPropType;
-	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		this.applyLabel(value);
-	}
-
-	/**
-	 * Defines the modal callback functions.
-	 */
-	@Prop() public _on?: KoliBriDialogEventCallbacks;
-	@Watch('_on')
-	public watchOn(value?: KoliBriDialogEventCallbacks): void {
-		this.applyOn(value);
-	}
-
-	/**
-	 * Defines the variant of the modal.
-	 */
-	@Prop() public _variant?: ModalVariantPropType = 'blank';
-	@Watch('_variant')
-	public watchVariant(value?: ModalVariantPropType): void {
-		this.applyVariant(value);
-	}
-
-	/**
-	 * Defines the width of the modal. (max-width: 100%)
-	 */
-	@Prop() public _width?: string = '100%';
-	@Watch('_width')
-	public watchWidth(value?: string): void {
-		this.applyWidth(value);
 	}
 }

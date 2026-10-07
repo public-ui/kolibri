@@ -216,9 +216,11 @@ jobs:
           while read -r DIR; do
             [ -z "$DIR" ] && continue
             echo "Publishing package from ${DIR}"
+            # stdin is the package list: lifecycle scripts (e.g. npm-run-all2 in a prepare script)
+            # would otherwise consume the remaining lines and end the loop early.
             (
               cd "$DIR"
-              bash "${GITHUB_WORKSPACE}/scripts/safe-publish.sh" --access public --provenance --no-git-checks --tag "${{env.prefix}}${TAG}" "${EXTRA[@]}"
+              bash "${GITHUB_WORKSPACE}/scripts/safe-publish.sh" --access public --provenance --no-git-checks --tag "${{env.prefix}}${TAG}" "${EXTRA[@]}" < /dev/null
             )
           done <<< "$PACKAGE_DIRS"
 

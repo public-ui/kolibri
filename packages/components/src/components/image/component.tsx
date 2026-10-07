@@ -22,20 +22,6 @@ import { dispatchDomEvent, KolEvent } from '../../utils/events';
 export class KolImage extends BaseWebComponent<ImageApi> implements WebComponentInterface<ImageApi> {
 	@Element() private readonly host?: HTMLKolImageElement;
 
-	private readonly handleError = (event: Event): void => {
-		this.getRenderProp('on').onError?.(event);
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.error, event);
-		}
-	};
-
-	private readonly handleLoad = (event: Event): void => {
-		this.getRenderProp('on').onLoad?.(event);
-		if (this.host) {
-			dispatchDomEvent(this.host, KolEvent.load, event);
-		}
-	};
-
 	/**
 	 * Sets the alternative text of the image.
 	 */
@@ -112,6 +98,20 @@ export class KolImage extends BaseWebComponent<ImageApi> implements WebComponent
 		srcProp.apply(this._src, (v) => this.setRenderProp('src', v));
 		srcsetProp.apply(this._srcset, (v) => this.setRenderProp('srcset', v));
 	}
+
+	private readonly handleError = (event: Event): void => {
+		this.getRenderProp('on').onError?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.error, event);
+		}
+	};
+
+	private readonly handleLoad = (event: Event): void => {
+		this.getRenderProp('on').onLoad?.(event);
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.load, event);
+		}
+	};
 
 	public render(): JSX.Element {
 		return (

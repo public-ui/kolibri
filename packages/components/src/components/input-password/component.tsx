@@ -57,11 +57,6 @@ export class KolInputPassword
 {
 	@Element() protected readonly host?: HTMLKolInputPasswordElement;
 
-	private readonly visibilityToggle = createButtonItem(() => this.host);
-
-	private readonly translateHidePassword = translate('kol-hide-password');
-	private readonly translateShowPassword = translate('kol-show-password');
-
 	@State() public id = createUniqueId('input-password');
 
 	/** Whether the info popover of the label is open. */
@@ -71,9 +66,309 @@ export class KolInputPassword
 
 	@State() public passwordVisible = false;
 
+	private readonly visibilityToggle = createButtonItem(() => this.host);
+
+	private readonly translateHidePassword = translate('kol-hide-password');
+
+	private readonly translateShowPassword = translate('kol-show-password');
+
 	public constructor() {
 		super();
 		this.initFormAssociation('password', this._name);
+	}
+
+	/**
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
+	 */
+	@Prop() public _accessKey?: string;
+
+	@Watch('_accessKey')
+	public watchAccessKey(value?: string): void {
+		this.applyAccessKey(value);
+	}
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public watchAriaDetails(value?: AriaDetailsPropType): void {
+		this.applyAriaDetails(value);
+	}
+
+	/**
+	 * Defines whether the input can be auto-completed.
+	 */
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+
+	@Watch('_autoComplete')
+	public watchAutoComplete(value?: AutoCompletePropType): void {
+		this.applyAutoComplete(value);
+		if (value === 'on') {
+			devHint(`[KolInputPassword] The 'autocomplete' option should not be set to "on" for a password input field`);
+		}
+	}
+
+	/**
+	 * Shows a character counter for the input element.
+	 */
+	@Prop() public _hasCounter?: boolean = false;
+
+	@Watch('_hasCounter')
+	public watchHasCounter(value?: boolean): void {
+		this.applyHasCounter(value);
+	}
+
+	/**
+	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
+	 */
+	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
+
+	@Watch('_maxLengthBehavior')
+	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
+		this.applyMaxLengthBehavior(value);
+	}
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _disabled?: boolean = false;
+
+	@Watch('_disabled')
+	public watchDisabled(value?: boolean): void {
+		this.applyDisabled(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideMsg?: boolean = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: boolean): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideLabel?: boolean = false;
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: boolean): void {
+		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Defines the hint text.
+	 */
+	@Prop() public _hint?: string = '';
+
+	@Watch('_hint')
+	public watchHint(value?: string): void {
+		this.applyHint(value);
+	}
+
+	/**
+	 * Defines the icon classnames.
+	 */
+	@Prop() public _icons?: IconsHorizontalPropType;
+
+	@Watch('_icons')
+	public watchIcons(value?: IconsHorizontalPropType): void {
+		this.applyIcons(value);
+	}
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+
+	@Watch('_infoPopover')
+	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		this.applyInfoPopover(value);
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines the maximum number of input characters.
+	 */
+	@Prop() public _maxLength?: number;
+
+	@Watch('_maxLength')
+	public watchMaxLength(value?: number): void {
+		this.applyMaxLength(value);
+	}
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: Stringified<MsgPropType>;
+
+	@Watch('_msg')
+	public watchMsg(value?: Stringified<MsgPropType>): void {
+		this.applyMsg(value);
+	}
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType;
+
+	@Watch('_name')
+	public watchName(value?: NamePropType): void {
+		this.applyName(value);
+	}
+
+	/**
+	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 */
+	@Prop() public _on?: InputTypeOnDefault;
+
+	@Watch('_on')
+	public watchOn(value?: InputTypeOnDefault): void {
+		this.applyOn(value);
+	}
+
+	/**
+	 * Defines a validation pattern for the input field.
+	 */
+	@Prop() public _pattern?: string;
+
+	@Watch('_pattern')
+	public watchPattern(value?: string): void {
+		this.applyPattern(value);
+	}
+
+	/**
+	 * Defines the placeholder for input field. To be shown when there's no value.
+	 */
+	@Prop() public _placeholder?: string;
+
+	@Watch('_placeholder')
+	public watchPlaceholder(value?: string): void {
+		this.applyPlaceholder(value);
+	}
+
+	/**
+	 * Makes the input element read only.
+	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _readOnly?: boolean = false;
+
+	@Watch('_readOnly')
+	public watchReadOnly(value?: boolean): void {
+		this.applyReadOnly(value);
+	}
+
+	/**
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _required?: boolean = false;
+
+	@Watch('_required')
+	public watchRequired(value?: boolean): void {
+		this.applyRequired(value);
+	}
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		this.applyShortKey(value);
+	}
+
+	/**
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
+	 */
+	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
+
+	@Watch('_smartButton')
+	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
+		this.applySmartButton(value);
+	}
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
+
+	/**
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+
+	@Watch('_touched')
+	public watchTouched(value?: boolean): void {
+		this.applyTouched(value);
+	}
+
+	/**
+	 * Defines the value of the element.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
+
+	@Watch('_value')
+	public watchValue(value?: string): void {
+		this.applyValue(value);
+	}
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		this.applyVariant(value);
+	}
+
+	/**
+	 * Activates the show password button
+	 */
+	@Prop() public _visibilityToggle?: VisibilityTogglePropType = false;
+
+	@Watch('_visibilityToggle')
+	public watchVisibilityToggle(value?: VisibilityTogglePropType): void {
+		visibilityToggleProp.apply(value, (v) => this.setRenderProp('visibilityToggle', v));
 	}
 
 	/**
@@ -101,8 +396,6 @@ export class KolInputPassword
 	@delegateClick('ctaRef')
 	public async click(): Promise<void> {}
 
-	// --- Lifecycle ---
-
 	public componentWillLoad(): void {
 		this.initRenderProps(inputPasswordPropsConfig);
 		this.unsetRenderProp('smartButton');
@@ -125,8 +418,7 @@ export class KolInputPassword
 		this.watchTooltipAlign(this._tooltipAlign);
 		this.watchVariant(this._variant);
 		this.watchIcons(this._icons);
-		// Unlike the watcher, loading gives no hint for `'on'` (#11054).
-		this.applyAutoComplete(this._autoComplete);
+		this.watchAutoComplete(this._autoComplete);
 		this.watchHasCounter(this._hasCounter);
 		this.watchMaxLengthBehavior(this._maxLengthBehavior);
 		this.initMaxLength(this._maxLength);
@@ -153,14 +445,10 @@ export class KolInputPassword
 		this.destroyTextInput();
 	}
 
-	// --- Event handling ---
-
 	private readonly handleVisibilityToggle = (): void => {
 		this.passwordVisible = !this.passwordVisible;
 		this.ctaRef.el?.focus();
 	};
-
-	// --- Render ---
 
 	private getVisibilityToggle(): JSX.Element | null {
 		if (!this.getRenderProp('visibilityToggle')) {
@@ -203,303 +491,5 @@ export class KolInputPassword
 				</FormFieldFC>
 			</Host>
 		);
-	}
-
-	// --- Props ---
-
-	/**
-	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
-	 */
-	@Prop() public _accessKey?: string;
-
-	/**
-	 * References an external element by ID that provides accessible details for this input.
-	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
-	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
-
-	/**
-	 * Defines whether the input can be auto-completed.
-	 */
-	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
-
-	/**
-	 * Shows a character counter for the input element.
-	 */
-	@Prop() public _hasCounter?: boolean = false;
-
-	/**
-	 * Defines the behavior when maxLength is set. 'hard' sets the maxlength attribute, 'soft' shows a character counter without preventing input.
-	 */
-	@Prop() public _maxLengthBehavior?: MaxLengthBehaviorPropType = 'hard';
-
-	/**
-	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideMsg?: boolean = false;
-
-	/**
-	 * Hides the caption by default and displays the caption text with a tooltip when the
-	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideLabel?: boolean = false;
-
-	/**
-	 * Defines the hint text.
-	 */
-	@Prop() public _hint?: string = '';
-
-	/**
-	 * Defines the icon classnames.
-	 */
-	@Prop() public _icons?: IconsHorizontalPropType;
-
-	/**
-	 * Defines the informational popover after the label.
-	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
-	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
-
-	/**
-	 * Defines the maximum number of input characters.
-	 */
-	@Prop() public _maxLength?: number;
-
-	/**
-	 * Defines the properties for a message rendered as Alert component.
-	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
-
-	/**
-	 * Defines the technical name of an input field.
-	 */
-	@Prop() public _name?: NamePropType;
-
-	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
-	 */
-	@Prop() public _on?: InputTypeOnDefault;
-
-	/**
-	 * Defines a validation pattern for the input field.
-	 */
-	@Prop() public _pattern?: string;
-
-	/**
-	 * Defines the placeholder for input field. To be shown when there's no value.
-	 */
-	@Prop() public _placeholder?: string;
-
-	/**
-	 * Makes the input element read only.
-	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _readOnly?: boolean = false;
-
-	/**
-	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _required?: boolean = false;
-
-	/**
-	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
-	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
-
-	/**
-	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
-	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
-
-	/**
-	 * Selector for synchronizing the value with another input element.
-	 * @internal
-	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
-
-	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
-
-	/**
-	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
-
-	/**
-	 * Defines the value of the element.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: string;
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: VariantClassNamePropType;
-
-	/**
-	 * Activates the show password button
-	 */
-	@Prop() public _visibilityToggle?: VisibilityTogglePropType = false;
-
-	// --- Watchers ---
-
-	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
-		this.applyAccessKey(value);
-	}
-
-	@Watch('_ariaDetails')
-	public watchAriaDetails(value?: AriaDetailsPropType): void {
-		this.applyAriaDetails(value);
-	}
-
-	@Watch('_autoComplete')
-	public watchAutoComplete(value?: AutoCompletePropType): void {
-		this.applyAutoComplete(value);
-		if (value === 'on') {
-			devHint(`[KolInputPassword] The 'autocomplete' option should not be set to "on" for a password input field`);
-		}
-	}
-
-	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
-		this.applyDisabled(value);
-	}
-
-	@Watch('_hasCounter')
-	public watchHasCounter(value?: boolean): void {
-		this.applyHasCounter(value);
-	}
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
-		this.applyHideMsg(value);
-	}
-
-	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
-		this.applyHideLabel(value);
-	}
-
-	@Watch('_hint')
-	public watchHint(value?: string): void {
-		this.applyHint(value);
-	}
-
-	@Watch('_icons')
-	public watchIcons(value?: IconsHorizontalPropType): void {
-		this.applyIcons(value);
-	}
-
-	@Watch('_infoPopover')
-	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
-		this.applyInfoPopover(value);
-	}
-
-	@Watch('_label')
-	public watchLabel(value?: LabelWithExpertSlotPropType): void {
-		this.applyLabel(value);
-	}
-
-	@Watch('_maxLength')
-	public watchMaxLength(value?: number): void {
-		this.applyMaxLength(value);
-	}
-
-	@Watch('_maxLengthBehavior')
-	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
-		this.applyMaxLengthBehavior(value);
-	}
-
-	@Watch('_msg')
-	public watchMsg(value?: Stringified<MsgPropType>): void {
-		this.applyMsg(value);
-	}
-
-	@Watch('_name')
-	public watchName(value?: NamePropType): void {
-		this.applyName(value);
-	}
-
-	@Watch('_on')
-	public watchOn(value?: InputTypeOnDefault): void {
-		this.applyOn(value);
-	}
-
-	@Watch('_pattern')
-	public watchPattern(value?: string): void {
-		this.applyPattern(value);
-	}
-
-	@Watch('_placeholder')
-	public watchPlaceholder(value?: string): void {
-		this.applyPlaceholder(value);
-	}
-
-	@Watch('_readOnly')
-	public watchReadOnly(value?: boolean): void {
-		this.applyReadOnly(value);
-	}
-
-	@Watch('_required')
-	public watchRequired(value?: boolean): void {
-		this.applyRequired(value);
-	}
-
-	@Watch('_shortKey')
-	public watchShortKey(value?: ShortKeyPropType): void {
-		this.applyShortKey(value);
-	}
-
-	@Watch('_smartButton')
-	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
-		this.applySmartButton(value);
-	}
-
-	@Watch('_syncValueBySelector')
-	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		this.applySyncValueBySelector(value);
-	}
-
-	@Watch('_tooltipAlign')
-	public watchTooltipAlign(value?: TooltipAlignPropType): void {
-		this.applyTooltipAlign(value);
-	}
-
-	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
-		this.applyTouched(value);
-	}
-
-	@Watch('_value')
-	public watchValue(value?: string): void {
-		this.applyValue(value);
-	}
-
-	@Watch('_variant')
-	public watchVariant(value?: VariantClassNamePropType): void {
-		this.applyVariant(value);
-	}
-
-	@Watch('_visibilityToggle')
-	public watchVisibilityToggle(value?: VisibilityTogglePropType): void {
-		visibilityToggleProp.apply(value, (v) => this.setRenderProp('visibilityToggle', v));
 	}
 }

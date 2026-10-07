@@ -44,6 +44,16 @@ export class KolAccordion
 
 	private readonly accordionId = createUniqueId('accordion');
 
+	@State() public controlId: string = createRelatedUniqueId(this.accordionId, 'control');
+
+	@State() public detailsOpen: boolean = false;
+
+	@State() public expanded: boolean = false;
+
+	@State() public headingId: string = createRelatedUniqueId(this.accordionId, 'heading');
+
+	@State() public transitionMs: number = DEFAULT_COLLAPSIBLE_TRANSITION_MS;
+
 	/* A disabled `<summary>` stays technically focusable, unlike the `<button disabled>` it replaced.
 	   Emptying the ref keeps the public `focus()` and `click()` methods from reaching it. */
 	protected readonly ctaRef = createCtaRef<HTMLElement>(() => this.getRenderProp('disabled') === true);
@@ -56,15 +66,85 @@ export class KolAccordion
 		setExpanded: (value) => (this.expanded = value),
 	});
 
-	// --- @State ---
+	private readonly handleToggle = createCollapsibleToggleHandler({
+		getHost: () => this.host,
+		getOn: () => this.getRenderProp('on'),
+		isDisabled: () => this.getRenderProp('disabled') === true,
+		isOpen: () => this.getRenderProp('open') === true,
+		setOpen: (open) => (this._open = open),
+	});
 
-	@State() public controlId: string = createRelatedUniqueId(this.accordionId, 'control');
-	@State() public detailsOpen: boolean = false;
-	@State() public expanded: boolean = false;
-	@State() public headingId: string = createRelatedUniqueId(this.accordionId, 'heading');
-	@State() public transitionMs: number = DEFAULT_COLLAPSIBLE_TRANSITION_MS;
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 */
+	@Prop() public _disabled?: boolean = false;
 
-	// --- Lifecycle ---
+	@Watch('_disabled')
+	public watchDisabled(value?: boolean): void {
+		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+	}
+
+	/**
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 */
+	@Prop() public _level?: HeadingLevel = 0;
+
+	@Watch('_level')
+	public watchLevel(value?: HeadingLevel): void {
+		levelProp.apply(value, (v) => this.setRenderProp('level', v));
+	}
+
+	/**
+	 * Defines the callback functions for the collapsible.
+	 */
+	@Prop() public _on?: CollapsibleCallbacksPropType<boolean>;
+
+	@Watch('_on')
+	public watchOn(value?: CollapsibleCallbacksPropType<boolean>): void {
+		collapsibleCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+	}
+
+	/**
+	 * Opens/expands the element when truthy, closes/collapses when falsy.
+	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
+
+	@Watch('_open')
+	public watchOpen(value?: boolean): void {
+		openProp.apply(value, (v) => {
+			this.setRenderProp('open', v);
+			/* The very first pass runs during componentWillLoad: render the final state straight
+			   away instead of animating into it. */
+			this.openAnimation.syncOpen(v, this.hasLoaded);
+		});
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
+
+	/**
+	 * Triggers a click on the heading toggle button.
+	 */
+	@Method()
+	@delegateClick('ctaRef')
+	public async click(): Promise<void> {}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(collapsiblePropsConfig);
@@ -84,36 +164,6 @@ export class KolAccordion
 	public disconnectedCallback(): void {
 		this.openAnimation.dispose();
 	}
-
-	// --- Event handling ---
-
-	private readonly handleToggle = createCollapsibleToggleHandler({
-		getHost: () => this.host,
-		getOn: () => this.getRenderProp('on'),
-		isDisabled: () => this.getRenderProp('disabled') === true,
-		isOpen: () => this.getRenderProp('open') === true,
-		setOpen: (open) => (this._open = open),
-	});
-
-	// --- Public methods ---
-
-	/**
-	 * Sets focus on the internal element.
-	 */
-	@Method()
-	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
-
-	/**
-	 * Triggers a click on the heading toggle button.
-	 */
-	@Method()
-	@delegateClick('ctaRef')
-	public async click(): Promise<void> {}
-
-	// --- Render ---
 
 	public render(): JSX.Element {
 		return (
@@ -138,58 +188,5 @@ export class KolAccordion
 				</CollapsibleFC>
 			</Host>
 		);
-	}
-
-	// --- Props + Watchers ---
-
-	/**
-	 * Makes the element not focusable and ignore all events.
-	 */
-	@Prop() public _disabled?: boolean = false;
-	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
-		disabledProp.apply(value, (v) => this.setRenderProp('disabled', v));
-	}
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: LabelPropType;
-	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
-	}
-
-	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
-	 */
-	@Prop() public _level?: HeadingLevel = 0;
-	@Watch('_level')
-	public watchLevel(value?: HeadingLevel): void {
-		levelProp.apply(value, (v) => this.setRenderProp('level', v));
-	}
-
-	/**
-	 * Defines the callback functions for the collapsible.
-	 */
-	@Prop() public _on?: CollapsibleCallbacksPropType<boolean>;
-	@Watch('_on')
-	public watchOn(value?: CollapsibleCallbacksPropType<boolean>): void {
-		collapsibleCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
-	}
-
-	/**
-	 * Opens/expands the element when truthy, closes/collapses when falsy.
-	 * @TODO: Change type back to `OpenPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _open?: boolean = false;
-	@Watch('_open')
-	public watchOpen(value?: boolean): void {
-		openProp.apply(value, (v) => {
-			this.setRenderProp('open', v);
-			/* The very first pass runs during componentWillLoad: render the final state straight
-			   away instead of animating into it. */
-			this.openAnimation.syncOpen(v, this.hasLoaded);
-		});
 	}
 }

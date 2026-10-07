@@ -64,7 +64,6 @@ export class KolInputCheckbox
 	implements ClickableElement, FocusableElement, InputCheckboxProps, WebComponentInterface<InputCheckboxApi>
 {
 	@Element() protected readonly host?: HTMLKolInputCheckboxElement;
-	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	@State() public id = createUniqueId('input-checkbox');
 
@@ -73,21 +72,256 @@ export class KolInputCheckbox
 
 	@State() public inputHasFocus = false;
 
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+
 	public constructor() {
 		super();
 		this.initFormAssociation('checkbox', this._name);
 	}
 
 	/**
-	 * The value the field reports: `_value` while `_checked`, otherwise `null`. It reads the raw
-	 * `_checked`, because the field writes it on every toggle.
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
 	 */
-	private getModelValue(): StencilUnknown {
-		return this._checked ? this.getRenderProp('value') : null;
+	@Prop() public _accessKey?: string;
+
+	@Watch('_accessKey')
+	public watchAccessKey(value?: string): void {
+		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		validateAccessAndShortKey(value, this._shortKey);
 	}
 
-	private syncFormAssociatedValue(): void {
-		this.formAssociation.setFormAssociatedValue(this.getModelValue());
+	/**
+	 * Defines whether the checkbox is checked or not. Can be read and written.
+	 * @TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
+
+	@Watch('_checked')
+	public watchChecked(value?: boolean): void {
+		checkedProp.apply(value, (v) => this.setRenderProp('checked', v));
+		this.syncFormAssociatedValue();
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideMsg?: boolean = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: boolean): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _disabled?: boolean = false;
+
+	@Watch('_disabled')
+	public watchDisabled(value?: boolean): void {
+		this.applyDisabled(value);
+	}
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideLabel?: boolean = false;
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: boolean): void {
+		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Defines the hint text.
+	 */
+	@Prop() public _hint?: string = '';
+
+	@Watch('_hint')
+	public watchHint(value?: string): void {
+		this.applyHint(value);
+	}
+
+	/**
+	 * Defines the icon classnames.
+	 */
+	@Prop() public _icons?: Stringified<InputCheckboxIconsProp>;
+
+	/** Merges the given icons into the current ones, so the other states keep their icons. */
+	@Watch('_icons')
+	public watchIcons(value?: Stringified<InputCheckboxIconsProp>): void {
+		iconsInputCheckboxProp.apply(value, (v) => this.setRenderProp('icons', { ...this.getRenderProp('icons'), ...v }));
+	}
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+
+	@Watch('_infoPopover')
+	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		this.applyInfoPopover(value);
+	}
+
+	/**
+	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
+	 * @TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _indeterminate?: boolean;
+
+	@Watch('_indeterminate')
+	public watchIndeterminate(value?: boolean): void {
+		indeterminateProp.apply(value, (v) => this.setRenderProp('indeterminate', v));
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines which alignment should be used for presentation.
+	 */
+	@Prop() public _labelAlign?: LabelAlignPropType = 'right';
+
+	@Watch('_labelAlign')
+	public watchLabelAlign(value?: LabelAlignPropType): void {
+		labelAlignProp.apply(value, (v) => this.setRenderProp('labelAlign', v));
+	}
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: Stringified<MsgPropType>;
+
+	@Watch('_msg')
+	public watchMsg(value?: Stringified<MsgPropType>): void {
+		this.applyMsg(value);
+	}
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType;
+
+	@Watch('_name')
+	public watchName(value?: NamePropType): void {
+		this.applyName(value);
+	}
+
+	/**
+	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 */
+	@Prop() public _on?: InputTypeOnDefault;
+
+	@Watch('_on')
+	public watchOn(value?: InputTypeOnDefault): void {
+		this.applyOn(value);
+	}
+
+	/**
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _required?: boolean = false;
+
+	@Watch('_required')
+	public watchRequired(value?: boolean): void {
+		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public watchAriaDetails(value?: AriaDetailsPropType): void {
+		this.applyAriaDetails(value);
+	}
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		validateAccessAndShortKey(this._accessKey, value);
+	}
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
+
+	/**
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+
+	@Watch('_touched')
+	public watchTouched(value?: boolean): void {
+		this.applyTouched(value);
+	}
+
+	/**
+	 * Defines the value of the element.
+	 */
+	@Prop() public _value: StencilUnknown = true;
+
+	/**
+	 * `null` and `undefined` are kept as value instead of falling back to the default `true`: the
+	 * checked checkbox then reports and submits no value.
+	 */
+	@Watch('_value')
+	public watchValue(value: StencilUnknown): void {
+		if (value === null || value === undefined) {
+			this.setRenderProp('value', value as unknown as NonNullable<StencilUnknown>);
+		} else {
+			checkboxValueProp.apply(value, (v) => this.setRenderProp('value', v));
+		}
+		this.syncFormAssociatedValue();
+	}
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: InputCheckboxVariantPropType = 'default';
+
+	@Watch('_variant')
+	public watchVariant(value?: InputCheckboxVariantPropType): void {
+		variantInputCheckboxProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 
 	/**
@@ -114,8 +348,6 @@ export class KolInputCheckbox
 	@Method()
 	@delegateClick('ctaRef')
 	public async click(): Promise<void> {}
-
-	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
 		this.initRenderProps(inputCheckboxPropsConfig);
@@ -153,7 +385,17 @@ export class KolInputCheckbox
 		this.destroyFormField();
 	}
 
-	// --- Event handling ---
+	/**
+	 * The value the field reports: `_value` while `_checked`, otherwise `null`. It reads the raw
+	 * `_checked`, because the field writes it on every toggle.
+	 */
+	private getModelValue(): StencilUnknown {
+		return this._checked ? this.getRenderProp('value') : null;
+	}
+
+	private syncFormAssociatedValue(): void {
+		this.formAssociation.setFormAssociatedValue(this.getModelValue());
+	}
 
 	private readonly handleCheckboxInput = (event: Event): void => {
 		this._checked = !this._checked;
@@ -200,8 +442,6 @@ export class KolInputCheckbox
 			event.preventDefault();
 		}
 	};
-
-	// --- Render ---
 
 	private getIcon(): string {
 		const icons = this.getRenderProp('icons');
@@ -296,254 +536,5 @@ export class KolInputCheckbox
 				</FormFieldFC>
 			</Host>
 		);
-	}
-
-	// --- Props ---
-
-	/**
-	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
-	 */
-	@Prop() public _accessKey?: string;
-
-	/**
-	 * Defines whether the checkbox is checked or not. Can be read and written.
-	 * @TODO: Change type back to `CheckedPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _checked?: boolean = false;
-
-	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideMsg?: boolean = false;
-
-	/**
-	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Hides the caption by default and displays the caption text with a tooltip when the
-	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideLabel?: boolean = false;
-
-	/**
-	 * Defines the hint text.
-	 */
-	@Prop() public _hint?: string = '';
-
-	/**
-	 * Defines the icon classnames.
-	 */
-	@Prop() public _icons?: Stringified<InputCheckboxIconsProp>;
-
-	/**
-	 * Defines the informational popover after the label.
-	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
-
-	/**
-	 * Puts the checkbox in the indeterminate state, does not change the value of _checked.
-	 * @TODO: Change type back to `IndeterminatePropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _indeterminate?: boolean;
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
-	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
-
-	/**
-	 * Defines which alignment should be used for presentation.
-	 */
-	@Prop() public _labelAlign?: LabelAlignPropType = 'right';
-
-	/**
-	 * Defines the properties for a message rendered as Alert component.
-	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
-
-	/**
-	 * Defines the technical name of an input field.
-	 */
-	@Prop() public _name?: NamePropType;
-
-	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
-	 */
-	@Prop() public _on?: InputTypeOnDefault;
-
-	/**
-	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _required?: boolean = false;
-
-	/**
-	 * References an external element by ID that provides accessible details for this input.
-	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
-	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
-
-	/**
-	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
-	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
-
-	/**
-	 * Selector for synchronizing the value with another input element.
-	 * @internal
-	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
-
-	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
-
-	/**
-	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
-
-	/**
-	 * Defines the value of the element.
-	 */
-	@Prop() public _value: StencilUnknown = true;
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: InputCheckboxVariantPropType = 'default';
-
-	// --- Watchers ---
-
-	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
-		validateAccessAndShortKey(value, this._shortKey);
-	}
-
-	@Watch('_ariaDetails')
-	public watchAriaDetails(value?: AriaDetailsPropType): void {
-		this.applyAriaDetails(value);
-	}
-
-	@Watch('_checked')
-	public watchChecked(value?: boolean): void {
-		checkedProp.apply(value, (v) => this.setRenderProp('checked', v));
-		this.syncFormAssociatedValue();
-	}
-
-	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
-		this.applyDisabled(value);
-	}
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
-		this.applyHideMsg(value);
-	}
-
-	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
-		this.applyHideLabel(value);
-	}
-
-	@Watch('_hint')
-	public watchHint(value?: string): void {
-		this.applyHint(value);
-	}
-
-	/** Merges the given icons into the current ones, so the other states keep their icons. */
-	@Watch('_icons')
-	public watchIcons(value?: Stringified<InputCheckboxIconsProp>): void {
-		iconsInputCheckboxProp.apply(value, (v) => this.setRenderProp('icons', { ...this.getRenderProp('icons'), ...v }));
-	}
-
-	@Watch('_indeterminate')
-	public watchIndeterminate(value?: boolean): void {
-		indeterminateProp.apply(value, (v) => this.setRenderProp('indeterminate', v));
-	}
-
-	@Watch('_infoPopover')
-	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
-		this.applyInfoPopover(value);
-	}
-
-	@Watch('_label')
-	public watchLabel(value?: LabelWithExpertSlotPropType): void {
-		this.applyLabel(value);
-	}
-
-	@Watch('_labelAlign')
-	public watchLabelAlign(value?: LabelAlignPropType): void {
-		labelAlignProp.apply(value, (v) => this.setRenderProp('labelAlign', v));
-	}
-
-	@Watch('_msg')
-	public watchMsg(value?: Stringified<MsgPropType>): void {
-		this.applyMsg(value);
-	}
-
-	@Watch('_name')
-	public watchName(value?: NamePropType): void {
-		this.applyName(value);
-	}
-
-	@Watch('_on')
-	public watchOn(value?: InputTypeOnDefault): void {
-		this.applyOn(value);
-	}
-
-	@Watch('_required')
-	public watchRequired(value?: boolean): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
-	}
-
-	@Watch('_shortKey')
-	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
-		validateAccessAndShortKey(this._accessKey, value);
-	}
-
-	@Watch('_syncValueBySelector')
-	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		this.applySyncValueBySelector(value);
-	}
-
-	@Watch('_tooltipAlign')
-	public watchTooltipAlign(value?: TooltipAlignPropType): void {
-		this.applyTooltipAlign(value);
-	}
-
-	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
-		this.applyTouched(value);
-	}
-
-	/**
-	 * `null` and `undefined` are kept as value instead of falling back to the default `true`: the
-	 * checked checkbox then reports and submits no value.
-	 */
-	@Watch('_value')
-	public watchValue(value: StencilUnknown): void {
-		if (value === null || value === undefined) {
-			this.setRenderProp('value', value as unknown as NonNullable<StencilUnknown>);
-		} else {
-			checkboxValueProp.apply(value, (v) => this.setRenderProp('value', v));
-		}
-		this.syncFormAssociatedValue();
-	}
-
-	@Watch('_variant')
-	public watchVariant(value?: InputCheckboxVariantPropType): void {
-		variantInputCheckboxProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 }

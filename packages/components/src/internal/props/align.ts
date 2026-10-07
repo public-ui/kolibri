@@ -1,8 +1,6 @@
 import type { AlignPropType } from '../../schema/props/align-options';
-import { alignPropTypeOptions } from '../../schema/props/align-options';
+import { createAlignPropDefinition } from './helpers/align';
 import type { SimpleProp } from './helpers/factory';
-import { createPropDefinition } from './helpers/factory';
-import { normalizeString } from './helpers/normalizers';
 
 /**
  * Align prop for positioning floating elements
@@ -21,15 +19,4 @@ import { normalizeString } from './helpers/normalizers';
  */
 export type AlignProp = SimpleProp<'align', AlignPropType>;
 
-export const alignProp = createPropDefinition<AlignProp>(
-	'align',
-	'top',
-	(value) => {
-		const str = normalizeString(value);
-		if ((alignPropTypeOptions as readonly string[]).includes(str)) {
-			return str as AlignPropType;
-		}
-		throw new Error(`Invalid align value: ${str}`);
-	},
-	(v) => (alignPropTypeOptions as readonly string[]).includes(v),
-);
+export const alignProp = createAlignPropDefinition<AlignProp>('align', 'top');
