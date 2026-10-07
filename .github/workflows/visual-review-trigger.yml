@@ -1,0 +1,24 @@
+name: Visual Review Trigger
+
+# Tells the "Visual Review" workflow that the text of a pull-request review changed.
+#
+# `pull_request_review` runs in the context of the pull request: the workflow file comes from its
+# merge ref and a fork gets a read-only token, so this event cannot set the commit status itself.
+# This workflow therefore holds no permission and does nothing; "Visual Review" listens for its
+# completion (`workflow_run`), runs in the context of the base repository and recomputes the status
+# from the published report (see docs/visual-review.md).
+on:
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+
+permissions: {}
+
+jobs:
+  relay:
+    # Only reviews that carry (or carried, before an edit) a visual-review block concern the status.
+    # Every other review ends as "skipped", which "Visual Review" ignores without starting a runner.
+    if: contains(github.event.review.body, 'visual-review:v1') || contains(github.event.changes.body.from, 'visual-review:v1')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hand over to the Visual Review workflow
+        run: echo "The review text changed – the Visual Review workflow recomputes the status."

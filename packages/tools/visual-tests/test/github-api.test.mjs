@@ -44,4 +44,18 @@ describe('github-api', () => {
 		await assert.rejects(api.get('repos/o/r/forbidden'), /403 Error: \{"message":"nope"\}/);
 		assert.equal(await api.post('repos/o/r/statuses/x', {}), null);
 	});
+
+	it('posts GraphQL queries, returns their data and throws on the errors of a 200 response', async () => {
+		const calls = [];
+		globalThis.fetch = async (url, init) => {
+			calls.push({ url, body: JSON.parse(init.body) });
+			return response(
+				calls.length === 1 ? { data: { viewer: { login: 'alice' } } } : { data: null, errors: [{ message: 'no access' }, { message: 'try later' }] },
+			);
+		};
+		const api = createApi({ token: 't', graphqlUrl: 'https://ghe.example.test/api/graphql' });
+		assert.deepEqual(await api.graphql('query ($n: Int!) { viewer { login } }', { n: 1 }), { viewer: { login: 'alice' } });
+		assert.deepEqual(calls[0], { url: 'https://ghe.example.test/api/graphql', body: { query: 'query ($n: Int!) { viewer { login } }', variables: { n: 1 } } });
+		await assert.rejects(api.graphql('query { viewer { login } }'), /GraphQL: no access; try later/);
+	});
 });

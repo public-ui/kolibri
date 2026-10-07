@@ -44,13 +44,82 @@ export async function listComments(token: string, repository: string, pr: number
 	return comments;
 }
 
-export function findOwnReview(comments: Comment[], login: string): { comment: Comment; draft: ReviewDraft } | null {
-	for (const comment of comments) {
-		if (comment.user.login !== login) continue;
-		const draft = parseReviewComment(comment.body);
-		if (draft) return { comment, draft };
+/** The text of a submitted pull-request review. */
+interface Review {
+	body: string;
+	login: string;
+	updatedAt: string;
+}
+
+interface ReviewsPage {
+	data?: {
+		repository: {
+			pullRequest: {
+				reviews: {
+					pageInfo: { hasNextPage: boolean; endCursor: string | null };
+					nodes: { author: { login: string } | null; body: string; state: string; submittedAt: string | null; lastEditedAt: string | null }[];
+				};
+			};
+		};
+	};
+	errors?: { message: string }[];
+}
+
+/* Mirror of the query in scripts/visual-review/update-review.mjs – the status workflow reads the same reviews. Keep both in sync. */
+const REVIEWS_QUERY = `query ($owner: String!, $name: String!, $pr: Int!, $after: String) {
+	repository(owner: $owner, name: $name) {
+		pullRequest(number: $pr) {
+			reviews(first: 100, after: $after) {
+				pageInfo { hasNextPage endCursor }
+				nodes { author { login } body state submittedAt lastEditedAt }
+			}
+		}
 	}
-	return null;
+}`;
+// A pending review is not submitted yet; dismissing a review withdraws it.
+const IGNORED_REVIEW_STATES = new Set(['DISMISSED', 'PENDING']);
+
+/** GraphQL instead of REST, because only GraphQL tells when the text of a review was edited. */
+export async function listReviews(token: string, repository: string, pr: number): Promise<Review[]> {
+	const [owner, name] = repository.split('/');
+	const reviews: Review[] = [];
+	let after: string | null = null;
+	for (let page = 1; page < 20; page += 1) {
+		const result: ReviewsPage = await request<ReviewsPage>(token, 'POST', 'graphql', { query: REVIEWS_QUERY, variables: { owner, name, pr, after } });
+		if (!result.data || (result.errors?.length ?? 0) > 0) {
+			throw new Error(`GraphQL: ${result.errors?.map((error) => error.message).join('; ') ?? 'no data'}`);
+		}
+		const { nodes, pageInfo } = result.data.repository.pullRequest.reviews;
+		for (const node of nodes) {
+			if (IGNORED_REVIEW_STATES.has(node.state) || !node.author) continue;
+			reviews.push({ body: node.body, login: node.author.login, updatedAt: node.lastEditedAt ?? node.submittedAt ?? '' });
+		}
+		if (!pageInfo.hasNextPage) break;
+		after = pageInfo.endCursor;
+	}
+	return reviews;
+}
+
+/**
+ * The reviewer's newest verdict among their comments and review texts – the one the status workflow
+ * counts. `commentId` is set when that verdict is a comment the page can edit; a review text is
+ * superseded by a new comment instead.
+ */
+export function findOwnReview(comments: Comment[], reviews: Review[], login: string): { commentId: number | null; draft: ReviewDraft } | null {
+	const candidates = [
+		...comments
+			.filter((comment) => comment.user.login === login)
+			.map((comment) => ({ body: comment.body, commentId: comment.id, updatedAt: comment.updated_at })),
+		...reviews.filter((review) => review.login === login).map((review) => ({ body: review.body, commentId: null, updatedAt: review.updatedAt })),
+	];
+	let newest: { commentId: number | null; draft: ReviewDraft; updatedAt: string } | null = null;
+	for (const candidate of candidates) {
+		const draft = parseReviewComment(candidate.body);
+		if (!draft) continue;
+		if (!newest || Date.parse(candidate.updatedAt) >= Date.parse(newest.updatedAt))
+			newest = { commentId: candidate.commentId, draft, updatedAt: candidate.updatedAt };
+	}
+	return newest && { commentId: newest.commentId, draft: newest.draft };
 }
 
 export async function saveReview(token: string, repository: string, pr: number, body: string, existingId: number | null): Promise<void> {
