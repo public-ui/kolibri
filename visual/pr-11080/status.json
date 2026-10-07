@@ -1,48 +1,57 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "7 changed – 0 of 7 approved, review pending",
-	"computedAt": "2026-09-30T17:16:41.675Z",
+	"state": "success",
+	"description": "7 visual changes approved by deleonio",
+	"computedAt": "2026-10-07T08:31:27.187Z",
 	"pr": 11080,
 	"head": "d1103092e669fc6bd5b9544d1ca7901f7e4df89f",
 	"digest": "sha256:cc295ec8e9cffef69f979f1535d3428014315783a829a4960ca152eccec429eb",
 	"counts": {
 		"changes": 7,
-		"open": 7,
-		"approved": 0,
+		"open": 0,
+		"approved": 7,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"deleonio"
+	],
 	"items": {
 		"test-tag-name-transformer/link-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-bwst/link-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-default/link-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-desy/link-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-ecl/link-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"theme-kern/link-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		},
 		"unstyled/link-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "deleonio"
 		}
 	}
 }
