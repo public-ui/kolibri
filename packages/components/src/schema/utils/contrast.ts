@@ -64,16 +64,8 @@ export const calcColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: num
 	}
 };
 
-const cache: Map<unknown, ColorContrast<RGB>> = new Map();
-
-export const getColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: number, dir = 1): ColorContrast<RGB> => {
-	if (cache.has(baseColor)) {
-		return cache.get(baseColor) as ColorContrast<RGB>;
-	}
-	const color = calcColorContrast(baseColor, contrastColor, ratio, dir);
-	cache.set(baseColor, color);
-	return color;
-};
+export const getColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: number, dir = 1): ColorContrast<RGB> =>
+	calcColorContrast(baseColor, contrastColor, ratio, dir);
 
 /**
  * Adjusts the foreground in the direction the YIQ brightness of the background suggests. YIQ is only
@@ -84,11 +76,10 @@ export const getColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: numb
  */
 const chooseColorContrast = (baseColor: RGB, contrastColor: RGB, ratio: number): ColorContrast<RGB> => {
 	const dir = getContrastYIQ(baseColor[0], baseColor[1], baseColor[2]);
-	const suggested = getColorContrast(baseColor, contrastColor, ratio, dir);
+	const suggested = calcColorContrast(baseColor, contrastColor, ratio, dir);
 	if (suggested.contrast >= ratio) {
 		return suggested;
 	}
-	// Bypasses the cache of `getColorContrast`, which ignores the direction.
 	const opposite = calcColorContrast(baseColor, contrastColor, ratio, -dir);
 	return opposite.contrast > suggested.contrast ? opposite : suggested;
 };
