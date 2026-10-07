@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "35 changed – 0 of 35 approved, review pending",
-	"computedAt": "2026-10-06T13:36:28.552Z",
+	"description": "25 changed – 0 of 25 approved, review pending",
+	"computedAt": "2026-10-07T10:17:16.476Z",
 	"pr": 11213,
-	"head": "bb0db7b94173783f449f029c65f275f8719b648e",
-	"digest": "sha256:9446d4c6d9b795e4d20743691be8b4b53b3fe874d8c75a3260c3b0e132e00841",
+	"head": "88240d0ddeab9f036ae07e11214fed956d25f421",
+	"digest": "sha256:85281459834db7dd1922f3cf9e5d5c81b37e8a956831e0c3ffaa667fddd81a21",
 	"counts": {
-		"changes": 35,
-		"open": 35,
+		"changes": 25,
+		"open": 25,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -16,14 +16,6 @@
 	},
 	"reviewers": [],
 	"items": {
-		"test-tag-name-transformer/popover-button-basic": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
-		},
 		"test-tag-name-transformer/toolbar-basic--horizontal": {
 			"state": "open",
 			"notes": []
@@ -33,18 +25,6 @@
 			"notes": []
 		},
 		"test-tag-name-transformer/toolbar-basic--vertical": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/toolbar-disabled--disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/popover-button-basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/scenarios-focus-elements-component-toolbar": {
 			"state": "open",
 			"notes": []
 		},
@@ -60,18 +40,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-bwst/toolbar-disabled--disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/popover-button-basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-default/toolbar-basic--horizontal": {
 			"state": "open",
 			"notes": []
@@ -81,10 +49,6 @@
 			"notes": []
 		},
 		"theme-default/toolbar-basic--vertical": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/toolbar-disabled--disabled": {
 			"state": "open",
 			"notes": []
 		},
@@ -105,10 +69,6 @@
 			"notes": []
 		},
 		"theme-desy/toolbar-disabled--disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/popover-button-basic": {
 			"state": "open",
 			"notes": []
 		},
