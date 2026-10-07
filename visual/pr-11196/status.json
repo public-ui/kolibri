@@ -1,52 +1,58 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "7 changed – 2 of 7 approved, review pending",
-	"computedAt": "2026-10-06T14:10:39.488Z",
+	"state": "success",
+	"description": "7 visual changes approved by deleonio, BF150",
+	"computedAt": "2026-10-07T05:21:15.605Z",
 	"pr": 11196,
 	"head": "690c1f5d18ad97ff56b4699eea4eb36efd3ca962",
 	"digest": "sha256:ec3a96941c289f7bebbac7ade014c8388d927a17e2d259a5692ddcc4fc1fb4cf",
 	"counts": {
 		"changes": 7,
-		"open": 5,
-		"approved": 2,
+		"open": 0,
+		"approved": 7,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [
-		"deleonio"
+		"deleonio",
+		"BF150"
 	],
 	"items": {
 		"theme-desy/badge-basic--basic-horizontal": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/badge-basic--basic-vertical": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/badge-basic--formatted-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/badge-basic--smart-button": {
 			"state": "approved",
 			"notes": [],
-			"by": "deleonio"
+			"by": "BF150"
 		},
 		"theme-desy/scenarios-focus-elements-component-badge": {
 			"state": "approved",
 			"notes": [],
-			"by": "deleonio"
+			"by": "BF150"
 		},
 		"theme-desy/table-state-columns--action-columns": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/version-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		}
 	}
 }
