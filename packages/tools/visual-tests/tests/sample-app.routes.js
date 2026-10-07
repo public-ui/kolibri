@@ -49,7 +49,6 @@ ROUTES.set('breadcrumb/basic', {
 });
 ROUTES.set('button-link/basic');
 ROUTES.set('button-link/icons');
-ROUTES.set('button/variants');
 ROUTES.set('button/icons');
 ROUTES.set('button/short-key');
 ROUTES.set('card/basic');
