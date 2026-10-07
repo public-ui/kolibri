@@ -68,10 +68,6 @@ export class KolCombobox
 	implements ClickableElement, ComboboxProps, FocusableElement, WebComponentInterface<ComboboxApi>
 {
 	@Element() protected readonly host?: HTMLKolComboboxElement;
-	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
-	private readonly clearButton = createButtonItem(() => this.host);
-
-	private readonly translateDeleteSelection = translate('kol-delete-selection');
 
 	@State() public id = createUniqueId('combobox');
 
@@ -91,12 +87,250 @@ export class KolCombobox
 	 */
 	@State() public filteredSuggestions?: SuggestionsPropType;
 
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
+
+	private readonly clearButton = createButtonItem(() => this.host);
+
+	private readonly translateDeleteSelection = translate('kol-delete-selection');
+
 	/** Whether the field has a value, for the class `has-value`; it follows each `change`. */
 	private hasValue = false;
 
 	public constructor() {
 		super();
 		this.initFormAssociation('combobox', this._name);
+	}
+
+	/**
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
+	 */
+	@Prop() public _accessKey?: string;
+
+	@Watch('_accessKey')
+	public watchAccessKey(value?: string): void {
+		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		validateAccessAndShortKey(value, this._shortKey);
+	}
+
+	/**
+	 * References an external element by ID that provides accessible details for this combobox.
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public watchAriaDetails(value?: AriaDetailsPropType): void {
+		this.applyAriaDetails(value);
+	}
+
+	/**
+	 * Defines the placeholder for input field. To be shown when there's no value.
+	 */
+	@Prop() public _placeholder?: string;
+
+	@Watch('_placeholder')
+	public watchPlaceholder(value?: string): void {
+		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
+	}
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 */
+	@Prop() public _disabled?: boolean = false;
+
+	@Watch('_disabled')
+	public watchDisabled(value?: boolean): void {
+		this.applyDisabled(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideMsg?: boolean = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: boolean): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideLabel?: boolean = false;
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: boolean): void {
+		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Defines the hint text.
+	 */
+	@Prop() public _hint?: string = '';
+
+	@Watch('_hint')
+	public watchHint(value?: string): void {
+		this.applyHint(value);
+	}
+
+	/**
+	 * Defines the icon classnames.
+	 */
+	@Prop() public _icons?: IconsHorizontalPropType;
+
+	@Watch('_icons')
+	public watchIcons(value?: IconsHorizontalPropType): void {
+		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+	}
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+
+	@Watch('_infoPopover')
+	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		this.applyInfoPopover(value);
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: Stringified<MsgPropType>;
+
+	@Watch('_msg')
+	public watchMsg(value?: Stringified<MsgPropType>): void {
+		this.applyMsg(value);
+	}
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType;
+
+	@Watch('_name')
+	public watchName(value?: NamePropType): void {
+		this.applyName(value);
+	}
+
+	/**
+	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 */
+	@Prop() public _on?: InputTypeOnDefault;
+
+	@Watch('_on')
+	public watchOn(value?: InputTypeOnDefault): void {
+		this.applyOn(value);
+	}
+
+	/**
+	 * Shows the clear button if enabled.
+	 */
+	@Prop() public _hasClearButton?: boolean = true;
+
+	@Watch('_hasClearButton')
+	public watchHasClearButton(value?: boolean): void {
+		hasClearButtonProp.apply(value, (v) => this.setRenderProp('hasClearButton', v));
+	}
+
+	/**
+	 * Suggestions to provide for the input.
+	 */
+	@Prop() public _suggestions!: SuggestionsPropType;
+
+	/** Assigns the raw prop to the filtered suggestions, then filters them by the `_value` prop. */
+	@Watch('_suggestions')
+	public watchSuggestions(value?: SuggestionsPropType): void {
+		this.applySuggestions(value);
+		this.filteredSuggestions = value;
+		this.setFilteredSuggestionsByQuery(this._value);
+	}
+
+	/**
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _required?: boolean = false;
+
+	@Watch('_required')
+	public watchRequired(value?: boolean): void {
+		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		validateAccessAndShortKey(this._accessKey, value);
+	}
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
+
+	/**
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+
+	@Watch('_touched')
+	public watchTouched(value?: boolean): void {
+		this.applyTouched(value);
+	}
+
+	/**
+	 * Defines the value of the element.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _value?: string;
+
+	@Watch('_value')
+	public watchValue(value?: string): void {
+		this.applyValue(value);
+		this.formAssociation.setFormAssociatedValue(value as string);
+	}
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 
 	/**
@@ -123,8 +357,6 @@ export class KolCombobox
 	@Method()
 	@delegateClick('ctaRef')
 	public async click(): Promise<void> {}
-
-	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
 		this.initRenderProps(comboboxPropsConfig);
@@ -170,7 +402,35 @@ export class KolCombobox
 		this.destroyFormField();
 	}
 
-	// --- Listbox ---
+	@Listen('keydown')
+	public handleHostKeyDown(event: KeyboardEvent): void {
+		this.handleListboxKeyDown(event);
+	}
+
+	@Listen('mousemove')
+	public handleMouseEvent(): void {
+		this.handleListboxMouseMove();
+	}
+
+	@Listen('focusin')
+	public handleFocusIn(event: FocusEvent): void {
+		if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
+			this.handleFocus(event);
+		}
+	}
+
+	@Listen('focusout')
+	public handleFocusOut(event: FocusEvent): void {
+		const relatedTarget = event.relatedTarget as HTMLElement | null;
+		const isFocusInside = relatedTarget && (relatedTarget === this.host || this.host?.contains(relatedTarget));
+
+		if (this.inputHasFocus && !isFocusInside) {
+			this.handleBlur(event);
+			if (this.isOpen) {
+				this.isOpen = false;
+			}
+		}
+	}
 
 	protected getOptionCount(): number {
 		return Array.isArray(this.filteredSuggestions) ? this.filteredSuggestions.length : 0;
@@ -311,8 +571,6 @@ export class KolCombobox
 		this.formAssociation.setFormAssociatedValue(emptyValue);
 	}
 
-	// --- Event handling ---
-
 	private readonly handleComboboxInput = (event: Event): void => {
 		const value = (event.target as HTMLInputElement).value;
 		this.setRenderProp('value', value);
@@ -347,38 +605,6 @@ export class KolCombobox
 			this.focusSuggestionStartingWith(event.key);
 		}
 	};
-
-	@Listen('keydown')
-	public handleHostKeyDown(event: KeyboardEvent): void {
-		this.handleListboxKeyDown(event);
-	}
-
-	@Listen('mousemove')
-	public handleMouseEvent(): void {
-		this.handleListboxMouseMove();
-	}
-
-	@Listen('focusin')
-	public handleFocusIn(event: FocusEvent): void {
-		if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
-			this.handleFocus(event);
-		}
-	}
-
-	@Listen('focusout')
-	public handleFocusOut(event: FocusEvent): void {
-		const relatedTarget = event.relatedTarget as HTMLElement | null;
-		const isFocusInside = relatedTarget && (relatedTarget === this.host || this.host?.contains(relatedTarget));
-
-		if (this.inputHasFocus && !isFocusInside) {
-			this.handleBlur(event);
-			if (this.isOpen) {
-				this.isOpen = false;
-			}
-		}
-	}
-
-	// --- Render ---
 
 	private getInputProps(): InputFCProps {
 		const { ariaDescribedBy, hasError } = this.getAria();
@@ -462,6 +688,17 @@ export class KolCombobox
 		);
 	}
 
+	private applySuggestions(value?: SuggestionsPropType): void {
+		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
+	}
+
+	/** `undefined` and `null` keep the current value. */
+	private applyValue(value?: string): void {
+		if (value !== undefined && value !== null) {
+			stringValueProp.apply(value, (v) => this.setRenderProp('value', v));
+		}
+	}
+
 	public render(): JSX.Element {
 		const isDisabled = this.getRenderProp('disabled') === true;
 		const { startAdornment, endAdornment } = getInputAdornments({ icons: this.getRenderProp('icons') });
@@ -525,252 +762,5 @@ export class KolCombobox
 				</FormFieldFC>
 			</Host>
 		);
-	}
-
-	// --- Props ---
-
-	/**
-	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
-	 */
-	@Prop() public _accessKey?: string;
-
-	/**
-	 * References an external element by ID that provides accessible details for this combobox.
-	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
-
-	/**
-	 * Defines the placeholder for input field. To be shown when there's no value.
-	 */
-	@Prop() public _placeholder?: string;
-
-	/**
-	 * Makes the element not focusable and ignore all events.
-	 */
-	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideMsg?: boolean = false;
-
-	/**
-	 * Hides the caption by default and displays the caption text with a tooltip when the
-	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideLabel?: boolean = false;
-
-	/**
-	 * Defines the hint text.
-	 */
-	@Prop() public _hint?: string = '';
-
-	/**
-	 * Defines the icon classnames.
-	 */
-	@Prop() public _icons?: IconsHorizontalPropType;
-
-	/**
-	 * Defines the informational popover after the label.
-	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
-	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
-
-	/**
-	 * Defines the properties for a message rendered as Alert component.
-	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
-
-	/**
-	 * Defines the technical name of an input field.
-	 */
-	@Prop() public _name?: NamePropType;
-
-	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
-	 */
-	@Prop() public _on?: InputTypeOnDefault;
-
-	/**
-	 * Shows the clear button if enabled.
-	 */
-	@Prop() public _hasClearButton?: boolean = true;
-
-	/**
-	 * Suggestions to provide for the input.
-	 */
-	@Prop() public _suggestions!: SuggestionsPropType;
-
-	/**
-	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _required?: boolean = false;
-
-	/**
-	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
-	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
-
-	/**
-	 * Selector for synchronizing the value with another input element.
-	 * @internal
-	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
-
-	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
-
-	/**
-	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
-
-	/**
-	 * Defines the value of the element.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: string;
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: VariantClassNamePropType;
-
-	// --- Watchers ---
-
-	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
-		validateAccessAndShortKey(value, this._shortKey);
-	}
-
-	@Watch('_ariaDetails')
-	public watchAriaDetails(value?: AriaDetailsPropType): void {
-		this.applyAriaDetails(value);
-	}
-
-	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
-		this.applyDisabled(value);
-	}
-
-	@Watch('_hasClearButton')
-	public watchHasClearButton(value?: boolean): void {
-		hasClearButtonProp.apply(value, (v) => this.setRenderProp('hasClearButton', v));
-	}
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
-		this.applyHideMsg(value);
-	}
-
-	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
-		this.applyHideLabel(value);
-	}
-
-	@Watch('_hint')
-	public watchHint(value?: string): void {
-		this.applyHint(value);
-	}
-
-	@Watch('_icons')
-	public watchIcons(value?: IconsHorizontalPropType): void {
-		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
-	}
-
-	@Watch('_infoPopover')
-	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
-		this.applyInfoPopover(value);
-	}
-
-	@Watch('_label')
-	public watchLabel(value?: LabelWithExpertSlotPropType): void {
-		this.applyLabel(value);
-	}
-
-	@Watch('_msg')
-	public watchMsg(value?: Stringified<MsgPropType>): void {
-		this.applyMsg(value);
-	}
-
-	@Watch('_name')
-	public watchName(value?: NamePropType): void {
-		this.applyName(value);
-	}
-
-	@Watch('_on')
-	public watchOn(value?: InputTypeOnDefault): void {
-		this.applyOn(value);
-	}
-
-	@Watch('_placeholder')
-	public watchPlaceholder(value?: string): void {
-		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
-	}
-
-	@Watch('_required')
-	public watchRequired(value?: boolean): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
-	}
-
-	@Watch('_shortKey')
-	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
-		validateAccessAndShortKey(this._accessKey, value);
-	}
-
-	private applySuggestions(value?: SuggestionsPropType): void {
-		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
-	}
-
-	/** Assigns the raw prop to the filtered suggestions, then filters them by the `_value` prop. */
-	@Watch('_suggestions')
-	public watchSuggestions(value?: SuggestionsPropType): void {
-		this.applySuggestions(value);
-		this.filteredSuggestions = value;
-		this.setFilteredSuggestionsByQuery(this._value);
-	}
-
-	@Watch('_syncValueBySelector')
-	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		this.applySyncValueBySelector(value);
-	}
-
-	@Watch('_tooltipAlign')
-	public watchTooltipAlign(value?: TooltipAlignPropType): void {
-		this.applyTooltipAlign(value);
-	}
-
-	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
-		this.applyTouched(value);
-	}
-
-	/** `undefined` and `null` keep the current value. */
-	private applyValue(value?: string): void {
-		if (value !== undefined && value !== null) {
-			stringValueProp.apply(value, (v) => this.setRenderProp('value', v));
-		}
-	}
-
-	@Watch('_value')
-	public watchValue(value?: string): void {
-		this.applyValue(value);
-		this.formAssociation.setFormAssociatedValue(value as string);
-	}
-
-	@Watch('_variant')
-	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 }

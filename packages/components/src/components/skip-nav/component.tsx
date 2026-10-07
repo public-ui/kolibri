@@ -28,10 +28,39 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements FocusableElement, SkipNavProps, WebComponentInterface<SkipNavApi> {
 	@Element() protected readonly host?: HTMLKolSkipNavElement;
 
+	@State() public linkItems: SkipNavLinkItem[] = [];
+
 	/** Anchor of the first skip link, used as the delegation target for `focus()`. */
 	protected readonly ctaRef = createCtaRef<HTMLAnchorElement>();
 
-	// --- Lifecycle ---
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines the list of links combined with their labels to render.
+	 */
+	@Prop() public _links!: Stringified<LinkProps[]>;
+
+	@Watch('_links')
+	public watchLinks(value?: Stringified<LinkProps[]>): void {
+		this.applyLinks(value);
+	}
+
+	/**
+	 * Sets focus on the internal element.
+	 */
+	@Method()
+	@delegateFocus('ctaRef')
+	// @ts-expect-error: options parameter will be implemented by the decorator.
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	public async focus(options?: KolFocusOptions): Promise<void> {}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(skipNavPropsConfig);
@@ -50,8 +79,6 @@ export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements Focusabl
 		removeNavLabel(this.getRenderProp('label'));
 	}
 
-	// --- Label helpers ---
-
 	/**
 	 * Keeps the cross-instance nav-label uniqueness registry in sync: the previously rendered
 	 * label is unregistered (skipped on the initial pass, so a second instance with the same
@@ -66,8 +93,6 @@ export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements Focusabl
 		addNavLabel(this.getRenderProp('label'));
 	}
 
-	// --- Link helpers ---
-
 	private applyLinks(value: Stringified<LinkProps[]> | undefined): void {
 		skipNavLinksProp.apply(value, (links) => {
 			this.setRenderProp('links', links);
@@ -76,48 +101,11 @@ export class KolSkipNav extends BaseWebComponent<SkipNavApi> implements Focusabl
 		});
 	}
 
-	// --- Render ---
-
 	public render(): JSX.Element {
 		return (
 			<Host>
 				<SkipNavFC label={this.getRenderProp('label')} links={this.getRenderProp('links')} linkItems={this.linkItems} />
 			</Host>
 		);
-	}
-
-	// --- Public methods ---
-
-	/**
-	 * Sets focus on the internal element.
-	 */
-	@Method()
-	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
-
-	// --- States ---
-
-	@State() public linkItems: SkipNavLinkItem[] = [];
-
-	// --- Props + Watchers ---
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: LabelPropType;
-	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		this.applyLabel(value);
-	}
-
-	/**
-	 * Defines the list of links combined with their labels to render.
-	 */
-	@Prop() public _links!: Stringified<LinkProps[]>;
-	@Watch('_links')
-	public watchLinks(value?: Stringified<LinkProps[]>): void {
-		this.applyLinks(value);
 	}
 }

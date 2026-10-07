@@ -28,12 +28,37 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 	@Element() protected readonly host?: HTMLKolTreeElement;
 
 	private observer?: MutationObserver;
+
 	private treeItemElements?: HTMLKolTreeItemElement[];
+
 	private cachedOpenItems?: HTMLKolTreeItemElement[];
+
 	private cacheValid = false;
+
 	private rafHandle?: number;
 
-	// --- Lifecycle ---
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+	}
+
+	/**
+	 * Sets focus on the first focusable tree item.
+	 */
+	@Method()
+	public async focus(options?: KolFocusOptions): Promise<void> {
+		if (this.host) {
+			await delegateFocus(this.host, async () => {
+				const openItems = await this.getOpenTreeItemElements();
+				await openItems?.[0]?.focus(options);
+			});
+		}
+	}
 
 	public connectedCallback(): void {
 		if (this.host) {
@@ -60,22 +85,114 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 		}
 	}
 
-	// --- Public methods ---
+	@Listen('keydown')
+	public async handleKeyDown(event: KeyboardEvent): Promise<void> {
+		const openItems = await this.getOpenTreeItemElements();
+		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(KolTreeItemTag);
+		const hasModifierKeyPressed = event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
 
-	/**
-	 * Sets focus on the first focusable tree item.
-	 */
-	@Method()
-	public async focus(options?: KolFocusOptions): Promise<void> {
-		if (this.host) {
-			await delegateFocus(this.host, async () => {
-				const openItems = await this.getOpenTreeItemElements();
-				await openItems?.[0]?.focus(options);
+		if (!openItems || !currentTreeItem) {
+			return;
+		}
+
+		const currentIndex = openItems.findIndex((elem) => elem === currentTreeItem);
+
+		switch (event.key) {
+			case 'ArrowDown': {
+				await openItems[currentIndex + 1]?.focus();
+				event.preventDefault();
+				break;
+			}
+			case 'ArrowUp': {
+				await openItems[currentIndex - 1]?.focus();
+				event.preventDefault();
+				break;
+			}
+			case 'Right':
+			case 'ArrowRight': {
+				event.preventDefault();
+				if (await currentTreeItem.isOpen()) {
+					await openItems[currentIndex + 1]?.focus();
+				} else {
+					await currentTreeItem.expand();
+				}
+				break;
+			}
+			case 'Left':
+			case 'ArrowLeft': {
+				event.preventDefault();
+				if (await currentTreeItem.isOpen()) {
+					await currentTreeItem.collapse();
+				} else {
+					const parentItem = currentTreeItem.parentElement as HTMLKolTreeItemElement | null;
+					const parentIndex = parentItem ? openItems.indexOf(parentItem) : -1;
+					if (parentIndex !== -1) {
+						await openItems[parentIndex]?.focus();
+					}
+				}
+
+				break;
+			}
+			case 'Home': {
+				await openItems[0]?.focus();
+				event.preventDefault();
+				break;
+			}
+			case 'End': {
+				await openItems[openItems.length - 1]?.focus();
+				event.preventDefault();
+				break;
+			}
+			case event.key.match(/^[a-zA-Z0-9]$/)?.input: {
+				/* Ignore events with any modifier key to avoid breaking native browser or OS shortcuts such as ⌘+L */
+				if (!hasModifierKeyPressed) {
+					const char = event.key.toLowerCase();
+					const startIndex = currentIndex + 1;
+					const startsWithChar = (item: HTMLKolTreeItemElement): boolean => item.getAttribute('_label')?.trim().toLowerCase().startsWith(char) ?? false;
+
+					// Search from the item after the current one to the end, then wrap around.
+					let matchIndex = openItems.slice(startIndex).findIndex(startsWithChar);
+					if (matchIndex === -1) {
+						matchIndex = openItems.slice(0, startIndex).findIndex(startsWithChar);
+					} else {
+						matchIndex += startIndex;
+					}
+
+					if (matchIndex !== -1) {
+						await openItems[matchIndex]?.focus();
+						event.preventDefault();
+					}
+				}
+				break;
+			}
+			case '*': {
+				const siblings = currentTreeItem.parentElement?.querySelectorAll(KolTreeItemTag);
+				siblings?.forEach((element) => {
+					void element.expand();
+				});
+				break;
+			}
+		}
+	}
+
+	@Listen('focusin')
+	public handleFocusIn(event: FocusEvent): void {
+		// Only delegate if no tree item is already focused
+		if (event.target === this.host && !document.activeElement?.closest(KolTreeItemTag)) {
+			// Defer to next frame to ensure tree is fully ready
+			requestAnimationFrame(() => {
+				void this.focus();
 			});
 		}
 	}
 
-	// --- Tree item tracking ---
+	@Listen('focusout')
+	public handleFocusOut(event: FocusEvent): void {
+		if (event.relatedTarget && !(event.relatedTarget as Element).closest(KolTreeTag)) {
+			/* Tree lost focus */
+			this.ensureActiveItemVisibility();
+		}
+	}
 
 	/** Called by a tree item of this tree whenever it expands or collapses. */
 	private readonly invalidateOpenItemsCache = (): void => {
@@ -187,135 +304,11 @@ export class KolTree extends BaseWebComponent<TreeApi> implements FocusableEleme
 		}
 	}
 
-	// --- Keyboard and focus handling ---
-
-	@Listen('keydown')
-	public async handleKeyDown(event: KeyboardEvent): Promise<void> {
-		const openItems = await this.getOpenTreeItemElements();
-		const currentTreeItem: HTMLKolTreeItemElement | undefined | null = document.activeElement?.closest(KolTreeItemTag);
-		const hasModifierKeyPressed = event.metaKey || event.altKey || event.ctrlKey || event.shiftKey;
-
-		if (!openItems || !currentTreeItem) {
-			return;
-		}
-
-		const currentIndex = openItems.findIndex((elem) => elem === currentTreeItem);
-
-		switch (event.key) {
-			case 'ArrowDown': {
-				await openItems[currentIndex + 1]?.focus();
-				event.preventDefault();
-				break;
-			}
-			case 'ArrowUp': {
-				await openItems[currentIndex - 1]?.focus();
-				event.preventDefault();
-				break;
-			}
-			case 'Right':
-			case 'ArrowRight': {
-				event.preventDefault();
-				if (await currentTreeItem.isOpen()) {
-					await openItems[currentIndex + 1]?.focus();
-				} else {
-					await currentTreeItem.expand();
-				}
-				break;
-			}
-			case 'Left':
-			case 'ArrowLeft': {
-				event.preventDefault();
-				if (await currentTreeItem.isOpen()) {
-					await currentTreeItem.collapse();
-				} else {
-					const parentItem = currentTreeItem.parentElement as HTMLKolTreeItemElement | null;
-					const parentIndex = parentItem ? openItems.indexOf(parentItem) : -1;
-					if (parentIndex !== -1) {
-						await openItems[parentIndex]?.focus();
-					}
-				}
-
-				break;
-			}
-			case 'Home': {
-				await openItems[0]?.focus();
-				event.preventDefault();
-				break;
-			}
-			case 'End': {
-				await openItems[openItems.length - 1]?.focus();
-				event.preventDefault();
-				break;
-			}
-			case event.key.match(/^[a-zA-Z0-9]$/)?.input: {
-				/* Ignore events with any modifier key to avoid breaking native browser or OS shortcuts such as ⌘+L */
-				if (!hasModifierKeyPressed) {
-					const char = event.key.toLowerCase();
-					const startIndex = currentIndex + 1;
-					const startsWithChar = (item: HTMLKolTreeItemElement): boolean => item.getAttribute('_label')?.trim().toLowerCase().startsWith(char) ?? false;
-
-					// Search from the item after the current one to the end, then wrap around.
-					let matchIndex = openItems.slice(startIndex).findIndex(startsWithChar);
-					if (matchIndex === -1) {
-						matchIndex = openItems.slice(0, startIndex).findIndex(startsWithChar);
-					} else {
-						matchIndex += startIndex;
-					}
-
-					if (matchIndex !== -1) {
-						await openItems[matchIndex]?.focus();
-						event.preventDefault();
-					}
-				}
-				break;
-			}
-			case '*': {
-				const siblings = currentTreeItem.parentElement?.querySelectorAll(KolTreeItemTag);
-				siblings?.forEach((element) => {
-					void element.expand();
-				});
-				break;
-			}
-		}
-	}
-
-	@Listen('focusin')
-	public handleFocusIn(event: FocusEvent): void {
-		// Only delegate if no tree item is already focused
-		if (event.target === this.host && !document.activeElement?.closest(KolTreeItemTag)) {
-			// Defer to next frame to ensure tree is fully ready
-			requestAnimationFrame(() => {
-				void this.focus();
-			});
-		}
-	}
-
-	@Listen('focusout')
-	public handleFocusOut(event: FocusEvent): void {
-		if (event.relatedTarget && !(event.relatedTarget as Element).closest(KolTreeTag)) {
-			/* Tree lost focus */
-			this.ensureActiveItemVisibility();
-		}
-	}
-
-	// --- Render ---
-
 	public render(): JSX.Element {
 		return (
 			<Host>
 				<TreeFC handleSlotchange={this.handleSlotchange} label={this.getRenderProp('label')} />
 			</Host>
 		);
-	}
-
-	// --- Props + Watchers ---
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: LabelPropType;
-	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 }

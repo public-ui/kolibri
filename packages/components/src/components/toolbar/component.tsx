@@ -29,9 +29,70 @@ const ARROW_KEYS: KeyboardKey[] = [KeyboardKey.ArrowUp, KeyboardKey.ArrowDown, K
 export class KolToolbar extends BaseWebComponent<ToolbarApi> implements ClickableElement, FocusableElement, ToolbarProps, WebComponentInterface<ToolbarApi> {
 	@Element() protected readonly host?: HTMLKolToolbarElement;
 
+	@State() public currentIndex: number = 0;
+
+	@State() public itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem> = [];
+
+	@State() public location: string = '';
+
 	private unsubscribeOnLocationChange?: UnsubscribeFunction;
 
-	// --- Lifecycle ---
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: string;
+
+	@Watch('_label')
+	public watchLabel(value?: string): void {
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+	}
+
+	/**
+	 * Defines the functional elements of toolbar to render (e.g. kol-link, kol-button).
+	 */
+	@Prop() public _items!: ToolbarItemsPropType;
+
+	@Watch('_items')
+	public watchItems(value?: ToolbarItemsPropType): void {
+		toolbarItemsProp.apply(value, (items) => {
+			this.setRenderProp('items', items);
+			this.itemRecords.forEach((record) => record.destroy());
+			this.itemRecords = items.map((item) => createToolbarItem(item, () => this.host));
+			this.setFirstEnabledItemIndex();
+		});
+	}
+
+	/**
+	 * Defines whether the orientation of the component is horizontal or vertical.
+	 */
+	@Prop() public _orientation?: OrientationPropType;
+
+	@Watch('_orientation')
+	public watchOrientation(value?: OrientationPropType): void {
+		orientationProp.apply(value, (v) => this.setRenderProp('orientation', v));
+	}
+
+	/**
+	 * Sets focus on the currently active toolbar item.
+	 */
+	@Method()
+	public async focus(options?: KolFocusOptions): Promise<void> {
+		const element = this.getCurrentItemElement();
+		if (element) {
+			return delegateFocus(this.host!, () => setFocus(element, options));
+		}
+	}
+
+	/**
+	 * Triggers a click on the currently active toolbar item.
+	 */
+	@Method()
+	public async click(): Promise<void> {
+		const element = this.getCurrentItemElement();
+		if (element) {
+			return delegateClick(this.host!, async () => setClick(element));
+		}
+	}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(toolbarPropsConfig);
@@ -57,31 +118,31 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 		this.itemRecords.forEach((record) => record.destroy());
 	}
 
-	// --- Public methods ---
+	@Listen('keydown')
+	public handleKeyDown(event: KeyboardEvent): void {
+		const pressedKey = event.code as KeyboardKey;
+		if (!ARROW_KEYS.includes(pressedKey)) return;
+		event.preventDefault();
 
-	/**
-	 * Sets focus on the currently active toolbar item.
-	 */
-	@Method()
-	public async focus(options?: KolFocusOptions): Promise<void> {
-		const element = this.getCurrentItemElement();
-		if (element) {
-			return delegateFocus(this.host!, () => setFocus(element, options));
+		if (this.itemRecords.length === 0) return;
+		const step = pressedKey === KeyboardKey.ArrowUp || pressedKey === KeyboardKey.ArrowLeft ? -1 : 1;
+		const nextIndex = this.findNextEnabledItemIndex(this.currentIndex, step);
+
+		if (nextIndex === undefined || nextIndex === this.currentIndex) {
+			return;
 		}
+
+		this.currentIndex = nextIndex;
+		void this.itemRecords[nextIndex].getElement()?.focus();
 	}
 
 	/**
-	 * Triggers a click on the currently active toolbar item.
+	 * Resets the roving tabindex to the first enabled item once focus leaves the toolbar.
 	 */
-	@Method()
-	public async click(): Promise<void> {
-		const element = this.getCurrentItemElement();
-		if (element) {
-			return delegateClick(this.host!, async () => setClick(element));
-		}
+	@Listen('focusout', { capture: true })
+	public handleFocusout(event: FocusEvent): void {
+		if (event.target === this.host) this.setFirstEnabledItemIndex();
 	}
-
-	// --- Roving tabindex ---
 
 	/**
 	 * The interactive element the roving tabindex points at, or `undefined` while that item is
@@ -117,36 +178,6 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 		return undefined;
 	}
 
-	// --- Listeners ---
-
-	@Listen('keydown')
-	public handleKeyDown(event: KeyboardEvent): void {
-		const pressedKey = event.code as KeyboardKey;
-		if (!ARROW_KEYS.includes(pressedKey)) return;
-		event.preventDefault();
-
-		if (this.itemRecords.length === 0) return;
-		const step = pressedKey === KeyboardKey.ArrowUp || pressedKey === KeyboardKey.ArrowLeft ? -1 : 1;
-		const nextIndex = this.findNextEnabledItemIndex(this.currentIndex, step);
-
-		if (nextIndex === undefined || nextIndex === this.currentIndex) {
-			return;
-		}
-
-		this.currentIndex = nextIndex;
-		void this.itemRecords[nextIndex].getElement()?.focus();
-	}
-
-	/**
-	 * Resets the roving tabindex to the first enabled item once focus leaves the toolbar.
-	 */
-	@Listen('focusout', { capture: true })
-	public handleFocusout(event: FocusEvent): void {
-		if (event.target === this.host) this.setFirstEnabledItemIndex();
-	}
-
-	// --- Render ---
-
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -159,47 +190,5 @@ export class KolToolbar extends BaseWebComponent<ToolbarApi> implements Clickabl
 				/>
 			</Host>
 		);
-	}
-
-	// --- States ---
-
-	@State() public currentIndex: number = 0;
-
-	@State() public itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem> = [];
-
-	@State() public location: string = '';
-
-	// --- Props + Watchers ---
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: string;
-	@Watch('_label')
-	public watchLabel(value?: string): void {
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
-	}
-
-	/**
-	 * Defines the functional elements of toolbar to render (e.g. kol-link, kol-button).
-	 */
-	@Prop() public _items!: ToolbarItemsPropType;
-	@Watch('_items')
-	public watchItems(value?: ToolbarItemsPropType): void {
-		toolbarItemsProp.apply(value, (items) => {
-			this.setRenderProp('items', items);
-			this.itemRecords.forEach((record) => record.destroy());
-			this.itemRecords = items.map((item) => createToolbarItem(item, () => this.host));
-			this.setFirstEnabledItemIndex();
-		});
-	}
-
-	/**
-	 * Defines whether the orientation of the component is horizontal or vertical.
-	 */
-	@Prop() public _orientation?: OrientationPropType;
-	@Watch('_orientation')
-	public watchOrientation(value?: OrientationPropType): void {
-		orientationProp.apply(value, (v) => this.setRenderProp('orientation', v));
 	}
 }

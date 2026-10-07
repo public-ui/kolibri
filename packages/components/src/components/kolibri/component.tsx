@@ -20,20 +20,6 @@ import type { KolibriProps, PropColor, Stringified } from '../../schema';
 export class KolKolibri extends BaseWebComponent<KolibriApi> implements KolibriProps, WebComponentInterface<KolibriApi> {
 	private readonly translateKolibriLogo = translate('kol-kolibri-logo');
 
-	public componentWillLoad(): void {
-		this.initRenderProps(kolibriPropsConfig);
-		this.watchColor(this._color);
-		this.watchLabeled(this._labeled);
-	}
-
-	public render(): JSX.Element {
-		return (
-			<Host>
-				<KolibriFC ariaLabel={this.translateKolibriLogo} color={this.getRenderProp('color')} labeled={this.getRenderProp('labeled')} />
-			</Host>
-		);
-	}
-
 	/**
 	 * Defines the color of the logo and label.
 	 */
@@ -52,5 +38,19 @@ export class KolKolibri extends BaseWebComponent<KolibriApi> implements KolibriP
 	@Watch('_labeled')
 	public watchLabeled(value?: boolean): void {
 		labeledProp.apply(value, (v) => this.setRenderProp('labeled', v));
+	}
+
+	public componentWillLoad(): void {
+		this.initRenderProps(kolibriPropsConfig);
+		this.watchColor(this._color);
+		this.watchLabeled(this._labeled);
+	}
+
+	public render(): JSX.Element {
+		return (
+			<Host>
+				<KolibriFC ariaLabel={this.translateKolibriLogo} color={this.getRenderProp('color')} labeled={this.getRenderProp('labeled')} />
+			</Host>
+		);
 	}
 }

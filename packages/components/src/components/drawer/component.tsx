@@ -37,8 +37,19 @@ const NOOP = (): void => {};
 export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProps, WebComponentInterface<DrawerApi> {
 	@Element() private readonly host?: HTMLKolDrawerElement;
 
+	@State() public ariaDescriptionId: string = nonce();
+
+	/** Named `expanded` because the deprecated `open()` method occupies the member name `open`. */
+	@State() public expanded: boolean = false;
+
+	@State() public headingId: string = createUniqueId('drawer-heading');
+
+	@State() public modal: boolean = true;
+
 	private readonly dialogRef = createCtaRef<HTMLDialogElement>();
+
 	private readonly wrapperRef = createCtaRef<HTMLDivElement>();
+
 	private readonly cardCloseButtonRef = createCtaRef<HTMLButtonElement>();
 
 	/** Drives the card close button's tooltip — it renders with `hideLabel`, so its label lives there. */
@@ -47,42 +58,72 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 	/** Resolved once in `componentWillLoad`: the close button's configuration never changes. */
 	private cardCloseButtonProps!: ResolvedButtonProps;
 
-	// --- Lifecycle ---
+	/**
+	 * Defines the visual orientation of the component.
+	 */
+	@Prop() public _align?: AlignPropType;
 
-	public componentWillLoad(): void {
-		this.initRenderProps(drawerPropsConfig);
+	@Watch('_align')
+	public watchAlign(value?: AlignPropType): void {
+		alignProp.apply(value, (v) => this.setRenderProp('align', v));
+	}
 
-		this.cardCloseButtonProps = resolveCardCloseButtonProps(this.host);
-		this.cardCloseTooltipBehavior.componentWillLoad({
-			label: this.cardCloseButtonProps.label,
-			align: this.cardCloseButtonProps.tooltipAlign,
+	/**
+	 * Defines whether the element can be closed.
+	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hasCloser?: boolean = false;
+
+	@Watch('_hasCloser')
+	public watchHasCloser(value?: boolean): void {
+		hasCloserProp.apply(value, (v) => this.setRenderProp('hasCloser', v));
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelPropType): void {
+		labelProp.apply(value, (v) => this.setRenderProp('label', v));
+	}
+
+	/**
+	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
+	 */
+	@Prop() public _level?: HeadingLevel = 0;
+
+	@Watch('_level')
+	public watchLevel(value?: HeadingLevel): void {
+		levelProp.apply(value, (v) => this.setRenderProp('level', v));
+	}
+
+	/**
+	 * Specifies the EventCallback function to be called when the drawer is closing.
+	 */
+	@Prop() public _on?: KoliBriModalEventCallbacks;
+
+	@Watch('_on')
+	public watchOn(value?: KoliBriModalEventCallbacks): void {
+		drawerCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
+	}
+
+	/**
+	 * Opens/expands the element when truthy, closes/collapses when falsy.
+	 */
+	@Prop() public _open?: OpenPropType;
+
+	@Watch('_open')
+	public watchOpen(value?: OpenPropType): void {
+		openProp.apply(value, (v) => {
+			this.setState('expanded', v);
+			// Before the first render there is no dialog to drive — `componentDidLoad` does it.
+			if (this.dialogRef.el) {
+				this.openOrCloseBasedOnState();
+			}
 		});
-
-		this.watchAlign(this._align);
-		this.watchHasCloser(this._hasCloser);
-		this.watchLabel(this._label);
-		this.watchLevel(this._level);
-		this.watchOn(this._on);
-		this.watchOpen(this._open);
 	}
-
-	/** The `<dialog>` only exists after the first render, so an initially open drawer opens here. */
-	public componentDidLoad(): void {
-		this.openOrCloseBasedOnState();
-	}
-
-	public componentDidRender(): void {
-		if (this.cardCloseButtonRef.el) {
-			this.cardCloseTooltipBehavior.syncListeners(undefined, this.cardCloseButtonRef.el, true);
-		}
-	}
-
-	public disconnectedCallback(): void {
-		unlockScroll(this);
-		this.cardCloseTooltipBehavior.destroy();
-	}
-
-	// --- Public methods ---
 
 	/**
 	 * Opens the drawer. Pass true to open as a modal drawer.
@@ -119,7 +160,38 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 		this.closeDrawer();
 	}
 
-	// --- Drawer control ---
+	public componentWillLoad(): void {
+		this.initRenderProps(drawerPropsConfig);
+
+		this.cardCloseButtonProps = resolveCardCloseButtonProps(this.host);
+		this.cardCloseTooltipBehavior.componentWillLoad({
+			label: this.cardCloseButtonProps.label,
+			align: this.cardCloseButtonProps.tooltipAlign,
+		});
+
+		this.watchAlign(this._align);
+		this.watchHasCloser(this._hasCloser);
+		this.watchLabel(this._label);
+		this.watchLevel(this._level);
+		this.watchOn(this._on);
+		this.watchOpen(this._open);
+	}
+
+	/** The `<dialog>` only exists after the first render, so an initially open drawer opens here. */
+	public componentDidLoad(): void {
+		this.openOrCloseBasedOnState();
+	}
+
+	public componentDidRender(): void {
+		if (this.cardCloseButtonRef.el) {
+			this.cardCloseTooltipBehavior.syncListeners(undefined, this.cardCloseButtonRef.el, true);
+		}
+	}
+
+	public disconnectedCallback(): void {
+		unlockScroll(this);
+		this.cardCloseTooltipBehavior.destroy();
+	}
 
 	/*
 	 * The optional chaining on the native methods is a workaround for HTMLDialogElement not being
@@ -174,8 +246,6 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 		}
 	}
 
-	// --- Event handling ---
-
 	private readonly handleAnimationEnd = (event: AnimationEvent): void => {
 		if (event.animationName.includes('slideOut')) {
 			this.dialogRef.el?.close?.();
@@ -218,8 +288,6 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 		this.cardCloseTooltipBehavior.hideTooltip();
 		this.closeDrawer();
 	};
-
-	// --- Render ---
 
 	private buildCardProps(): CardFCProps {
 		return {
@@ -265,79 +333,5 @@ export class KolDrawer extends BaseWebComponent<DrawerApi> implements DrawerProp
 				</DrawerFC>
 			</Host>
 		);
-	}
-
-	// --- @State ---
-
-	@State() public ariaDescriptionId: string = nonce();
-
-	/** Named `expanded` because the deprecated `open()` method occupies the member name `open`. */
-	@State() public expanded: boolean = false;
-
-	@State() public headingId: string = createUniqueId('drawer-heading');
-
-	@State() public modal: boolean = true;
-
-	// --- Props + Watchers ---
-
-	/**
-	 * Defines the visual orientation of the component.
-	 */
-	@Prop() public _align?: AlignPropType;
-	@Watch('_align')
-	public watchAlign(value?: AlignPropType): void {
-		alignProp.apply(value, (v) => this.setRenderProp('align', v));
-	}
-
-	/**
-	 * Defines whether the element can be closed.
-	 * @TODO: Change type back to `HasCloserPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hasCloser?: boolean = false;
-	@Watch('_hasCloser')
-	public watchHasCloser(value?: boolean): void {
-		hasCloserProp.apply(value, (v) => this.setRenderProp('hasCloser', v));
-	}
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: LabelPropType;
-	@Watch('_label')
-	public watchLabel(value?: LabelPropType): void {
-		labelProp.apply(value, (v) => this.setRenderProp('label', v));
-	}
-
-	/**
-	 * Defines which H-level from 1-6 the heading has. 0 specifies no heading and is shown as bold text.
-	 */
-	@Prop() public _level?: HeadingLevel = 0;
-	@Watch('_level')
-	public watchLevel(value?: HeadingLevel): void {
-		levelProp.apply(value, (v) => this.setRenderProp('level', v));
-	}
-
-	/**
-	 * Specifies the EventCallback function to be called when the drawer is closing.
-	 */
-	@Prop() public _on?: KoliBriModalEventCallbacks;
-	@Watch('_on')
-	public watchOn(value?: KoliBriModalEventCallbacks): void {
-		drawerCallbacksProp.apply(value, (v) => this.setRenderProp('on', v));
-	}
-
-	/**
-	 * Opens/expands the element when truthy, closes/collapses when falsy.
-	 */
-	@Prop() public _open?: OpenPropType;
-	@Watch('_open')
-	public watchOpen(value?: OpenPropType): void {
-		openProp.apply(value, (v) => {
-			this.setState('expanded', v);
-			// Before the first render there is no dialog to drive — `componentDidLoad` does it.
-			if (this.dialogRef.el) {
-				this.openOrCloseBasedOnState();
-			}
-		});
 	}
 }
