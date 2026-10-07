@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "28 added, 7 removed – 0 of 35 approved, review pending",
-	"computedAt": "2026-10-07T11:59:54.951Z",
+	"description": "38 changed, 28 added, 7 removed – 0 of 73 approved, review pending",
+	"computedAt": "2026-10-07T13:14:27.335Z",
 	"pr": 11222,
-	"head": "bfda66c6550cc589a165ce9091d5fa8d050d6ab1",
-	"digest": "sha256:68dc373eb972d8bac6f575db230399c22763b2d1cb5798ccebe5261de0099e46",
+	"head": "1392c9db92c8c799ac6f96783a9e0d9cd4682cd9",
+	"digest": "sha256:195dad1fee3103edd28e7056a98169880ef7f7c0cb190880b3ddd8f61ae75570",
 	"counts": {
-		"changes": 35,
-		"open": 35,
+		"changes": 73,
+		"open": 73,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -76,6 +76,46 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-desy/alert-basic--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-basic--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-basic--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-basic--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-basic--warning": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-card-msg--default": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-card-msg--error": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-card-msg--info": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-card-msg--success": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/alert-card-msg--warning": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-desy/button-basic--disabled": {
 			"state": "open",
 			"notes": []
@@ -92,7 +132,119 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-desy/button-icons--all-positions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-icons--basic-positions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-icons--icon-string": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-icons--large-icon": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-icons--multiple-positions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-short-key--hide-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-short-key--inline-icons": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-short-key--short-keys": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-desy/button-variants--variants": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/dialog-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/drawer-basic-align-left": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/drawer-basic-align-left-closer-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/drawer-basic-align-top": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/link-button-basic--variants": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/link-button-target--target": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/modal-basic-show-dialog-true": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/popover-button-inline--inline": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-button": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-linkButton": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-popoverButton": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-same-height-of-all-interactive-elements": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-action-columns--action-columns": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateful-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateless-with-selection--selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/table-stateless-with-single-selection--single-selection": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/toast-configurator": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/toolbar-basic--horizontal": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/toolbar-basic--horizontal-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/toolbar-basic--vertical": {
 			"state": "open",
 			"notes": []
 		},
