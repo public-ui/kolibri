@@ -1,120 +1,147 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "25 changed – 0 of 25 approved, review pending",
-	"computedAt": "2026-10-07T10:17:16.476Z",
+	"state": "success",
+	"description": "25 visual changes approved by BF150",
+	"computedAt": "2026-10-07T10:20:00.958Z",
 	"pr": 11213,
 	"head": "88240d0ddeab9f036ae07e11214fed956d25f421",
 	"digest": "sha256:85281459834db7dd1922f3cf9e5d5c81b37e8a956831e0c3ffaa667fddd81a21",
 	"counts": {
 		"changes": 25,
-		"open": 25,
-		"approved": 0,
+		"open": 0,
+		"approved": 25,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"BF150"
+	],
 	"items": {
 		"test-tag-name-transformer/toolbar-basic--horizontal": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"test-tag-name-transformer/toolbar-basic--horizontal-320": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"test-tag-name-transformer/toolbar-basic--vertical": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-bwst/toolbar-basic--horizontal": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-bwst/toolbar-basic--horizontal-320": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-bwst/toolbar-basic--vertical": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/toolbar-basic--horizontal": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/toolbar-basic--horizontal-320": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/toolbar-basic--vertical": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/toolbar-basic--horizontal": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/toolbar-basic--horizontal-320": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/toolbar-basic--vertical": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/toolbar-disabled--disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/toolbar-basic--horizontal": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/toolbar-basic--horizontal-320": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/toolbar-basic--vertical": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/toolbar-disabled--disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-kern/toolbar-basic--horizontal": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-kern/toolbar-basic--horizontal-320": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-kern/toolbar-basic--vertical": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"unstyled/toolbar-basic--horizontal": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"unstyled/toolbar-basic--horizontal-320": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"unstyled/toolbar-basic--vertical": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		}
 	}
 }
