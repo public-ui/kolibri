@@ -1,1 +1,0 @@
-import{b as e,o as t,s as n}from"./base-web-component-3R1Dy3QK-Bc8h6Tb0.js";var r=[`left`,`right`],i=[`top`,`bottom`],a=[...r,...i];function o(r,i){return t(r,i,t=>{let i=e(t);if(n(i,a))return i;throw Error(`Invalid ${r} value: ${i}`)})}export{o as t};

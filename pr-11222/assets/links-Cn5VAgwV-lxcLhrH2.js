@@ -1,1 +1,0 @@
-import{et as e}from"./index-DsCeQ9Ys-C83kMfPT.js";import{d as t,o as n}from"./base-web-component-3R1Dy3QK-Bc8h6Tb0.js";function r(r){return n(`links`,[],e=>t(e),e=>e.every(e=>typeof e==`object`&&!!e&&(typeof e._href==`string`||typeof e._label==`string`)),{hints:(t,n)=>e(r,n.length)})}export{r as t};
