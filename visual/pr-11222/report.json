@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11222,
-	"head": "2d08841fe2dc6b9d53d61b056c0695caab5c5247",
+	"head": "bfda66c6550cc589a165ce9091d5fa8d050d6ab1",
 	"repository": "public-ui/kolibri",
-	"runId": 37613409029,
-	"generatedAt": "2026-10-07T11:35:17.872Z",
-	"digest": "sha256:deb1b9a04e8fd32f378177039802af760daf596e77dd80cfa121d33384750493",
+	"runId": 37615757919,
+	"generatedAt": "2026-10-07T11:59:54.443Z",
+	"digest": "sha256:68dc373eb972d8bac6f575db230399c22763b2d1cb5798ccebe5261de0099e46",
 	"baseline": {
 		"sha": "e8a635e72facd2a435a351465981006579e72339",
 		"ref": "develop",
@@ -19,7 +19,7 @@
 	"summary": {
 		"unchanged": 2913,
 		"changed": 0,
-		"added": 0,
+		"added": 28,
 		"removed": 7,
 		"error": 0
 	},
@@ -45,11 +45,11 @@
 			"summary": {
 				"unchanged": 416,
 				"changed": 0,
-				"added": 0,
+				"added": 4,
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
+			"digest": "sha256:c183376c087c55968cc889ced72cb26793dd0123d6c606a6721a51e3086a782a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -164,6 +164,34 @@
 					"route": "breadcrumb-basic",
 					"status": "unchanged",
 					"hash": "sha256:810f7c370611d156f716635e17155db57e61279228f1ed14b6b782ff45b30a9c"
+				},
+				{
+					"name": "button-basic--disabled",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:99792f0d12925fb65fa634d5444157c02614b985c70cddafb38e0d20bec74ae2",
+					"actual": "test-tag-name-transformer/button-basic--disabled.actual.png"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:4073268fff3ae6a177f3e24d91f74726001a7465d93519861a6af73f5686b695",
+					"actual": "test-tag-name-transformer/button-basic--hide-label.actual.png"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:bfbd139042271db88af70d0768b3cdee70b43c207206b61432d1a4d9235bb4ff",
+					"actual": "test-tag-name-transformer/button-basic--icon-positions.actual.png"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:8f34d461763ab603c913b6bb54ffd984a9bb188b323a8169a778f18d15e824d1",
+					"actual": "test-tag-name-transformer/button-basic--variants.actual.png"
 				},
 				{
 					"name": "button-icons--all-positions",
@@ -2579,11 +2607,11 @@
 			"summary": {
 				"unchanged": 416,
 				"changed": 0,
-				"added": 0,
+				"added": 4,
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:141a1421871a249c4dda652452966b67bb18b06ba9c298ad315d95aaec269d78",
+			"digest": "sha256:35d0117d0430f745de02048899067f794f1e2c42370df3b2eaca0372184118f6",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2698,6 +2726,34 @@
 					"route": "breadcrumb-basic",
 					"status": "unchanged",
 					"hash": "sha256:fab11db92722586ec759990d4a64bf3ed366f83f9b9c5a8ee43f3bb7b8a6768b"
+				},
+				{
+					"name": "button-basic--disabled",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:e9ba4fb6a5ed43565ab36784ec73b4dadc702520114777ce798874ce3233376c",
+					"actual": "theme-bwst/button-basic--disabled.actual.png"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:cc8c138f586b48fcfa138317fe7aa9bd8faba9e2eaa9c412576c0c7922ea1132",
+					"actual": "theme-bwst/button-basic--hide-label.actual.png"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:69a82d62e755b41d63e9733c10c7553cbfd3ec315c64d230700303415c199589",
+					"actual": "theme-bwst/button-basic--icon-positions.actual.png"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:7e009da9e03e50e75c0b125352fb389558cd040adb64843576f629515fc7c77b",
+					"actual": "theme-bwst/button-basic--variants.actual.png"
 				},
 				{
 					"name": "button-icons--all-positions",
@@ -5113,11 +5169,11 @@
 			"summary": {
 				"unchanged": 416,
 				"changed": 0,
-				"added": 0,
+				"added": 4,
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
+			"digest": "sha256:c183376c087c55968cc889ced72cb26793dd0123d6c606a6721a51e3086a782a",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5232,6 +5288,34 @@
 					"route": "breadcrumb-basic",
 					"status": "unchanged",
 					"hash": "sha256:810f7c370611d156f716635e17155db57e61279228f1ed14b6b782ff45b30a9c"
+				},
+				{
+					"name": "button-basic--disabled",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:99792f0d12925fb65fa634d5444157c02614b985c70cddafb38e0d20bec74ae2",
+					"actual": "theme-default/button-basic--disabled.actual.png"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:4073268fff3ae6a177f3e24d91f74726001a7465d93519861a6af73f5686b695",
+					"actual": "theme-default/button-basic--hide-label.actual.png"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:bfbd139042271db88af70d0768b3cdee70b43c207206b61432d1a4d9235bb4ff",
+					"actual": "theme-default/button-basic--icon-positions.actual.png"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:8f34d461763ab603c913b6bb54ffd984a9bb188b323a8169a778f18d15e824d1",
+					"actual": "theme-default/button-basic--variants.actual.png"
 				},
 				{
 					"name": "button-icons--all-positions",
@@ -7647,11 +7731,11 @@
 			"summary": {
 				"unchanged": 416,
 				"changed": 0,
-				"added": 0,
+				"added": 4,
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:c216c08f43fa5577c76b55c5b1f67f43ea9e917970de1203e5403430b522c815",
+			"digest": "sha256:767860b3f6caf290e2bd82ca1dea02e7a4af386219bde31d444922cdfedd2599",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7766,6 +7850,34 @@
 					"route": "breadcrumb-basic",
 					"status": "unchanged",
 					"hash": "sha256:282383e0f4f651b777e31a198ca853d7a7fcaf6e34db12fd6a515938687491d2"
+				},
+				{
+					"name": "button-basic--disabled",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:9e2b5ef5ebf9f46720f7e58d49efbf66910313f11381c6842ab68b49b199e008",
+					"actual": "theme-desy/button-basic--disabled.actual.png"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:3c81b8d3cd508e7b8a8586f8406ab6f6798cf5251d24a9044bda36261ce17d31",
+					"actual": "theme-desy/button-basic--hide-label.actual.png"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:5a3f59b8c2046de4de62e77c00faa49b7dcd35c1b79208bdd65ad35b87fb17e8",
+					"actual": "theme-desy/button-basic--icon-positions.actual.png"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:bd1146688a4f6daf9b97dac4af5c08b629deaa9afda718c3b7aa664a71f32a66",
+					"actual": "theme-desy/button-basic--variants.actual.png"
 				},
 				{
 					"name": "button-icons--all-positions",
@@ -10181,11 +10293,11 @@
 			"summary": {
 				"unchanged": 416,
 				"changed": 0,
-				"added": 0,
+				"added": 4,
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:61074ce1d28d1f49d7fc3e61820fba94c70eb71339d467fcfaf56f35377b556d",
+			"digest": "sha256:077abb50ab6adcb2743f13e79fdf8707ac07bae02f293411980dc9207dbe0aab",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10300,6 +10412,34 @@
 					"route": "breadcrumb-basic",
 					"status": "unchanged",
 					"hash": "sha256:9085d965fbbab8aba5a976fe7f8dc985e02a4702007821b721922475902538f0"
+				},
+				{
+					"name": "button-basic--disabled",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:c802d4dfbb10a20d4db3b799a06f87c344b48ea5d37d965b7e0a0adb0d99e5ab",
+					"actual": "theme-ecl/button-basic--disabled.actual.png"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:b11d02ce278c1f193b5522bacd6fdb54fb4f63a390df72836f6e9ec7c0fe8c63",
+					"actual": "theme-ecl/button-basic--hide-label.actual.png"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:abb44243776ecfa3d505b080f96a53a586b7254658076880f688057c5bb16b31",
+					"actual": "theme-ecl/button-basic--icon-positions.actual.png"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:1b35add7ba434875a4d970a800114d5abc3926457f2a8133576c209aa7f5efdd",
+					"actual": "theme-ecl/button-basic--variants.actual.png"
 				},
 				{
 					"name": "button-icons--all-positions",
@@ -12715,11 +12855,11 @@
 			"summary": {
 				"unchanged": 417,
 				"changed": 0,
-				"added": 0,
+				"added": 4,
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:20275e56661647f997626748305f1510ee1c598c03d982cd8bf8ff910993688d",
+			"digest": "sha256:e0b1938a47f7ceeef7f024661d4bbdceb154deabbc3c9c311f0e43b075aa4c08",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12834,6 +12974,34 @@
 					"route": "breadcrumb-basic",
 					"status": "unchanged",
 					"hash": "sha256:d4daf5d2ec4f65ea253813f02c2b5f05cf202d30272d283c1f9571ac02ccc4e2"
+				},
+				{
+					"name": "button-basic--disabled",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:8ddd7fe6a8d3e8106f3475e37da18b64307bc8cf6fd4f945f44d78e6400ddd5a",
+					"actual": "theme-kern/button-basic--disabled.actual.png"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:1423cdb42b33e4702ff548e5d02fcf55e68c6a54742c68c2b6b1f01d24c8ed71",
+					"actual": "theme-kern/button-basic--hide-label.actual.png"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:b4f9474ad12553af1a92e0b607fab546e4eb85da8c8cf51dd538a4e36f229923",
+					"actual": "theme-kern/button-basic--icon-positions.actual.png"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:f0e6d161ce6ce9e3cdfaf4fb6d64f3747a33ee3e1fae385e009a1eb164feaf22",
+					"actual": "theme-kern/button-basic--variants.actual.png"
 				},
 				{
 					"name": "button-icons--all-positions",
@@ -15255,11 +15423,11 @@
 			"summary": {
 				"unchanged": 416,
 				"changed": 0,
-				"added": 0,
+				"added": 4,
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:7e5ab2e71a7c443f0a9dee7a7540ff08c83571f083047cf62610c272a765a330",
+			"digest": "sha256:3c27023f5ffc37d866d54b774a8004705e3d5959a3ba0089eb7aed107257d71b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15374,6 +15542,34 @@
 					"route": "breadcrumb-basic",
 					"status": "unchanged",
 					"hash": "sha256:a3c335c1b9616b33af393b610bfd5d9fb351056a712a2673e96a1b7bf388ad5f"
+				},
+				{
+					"name": "button-basic--disabled",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:59579dcd17d1922960f1b0597d8bbc4ad65385e047d56b8aa4037ca3532ee8b1",
+					"actual": "unstyled/button-basic--disabled.actual.png"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:a6132e2a98fe5be377223dda1c2a29a8af688b00451bfd1101a9f4fa157e0f1d",
+					"actual": "unstyled/button-basic--hide-label.actual.png"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:51d17abe036a77f5c4d23e8d0555c31063c7546fe91442597119f094cdffb288",
+					"actual": "unstyled/button-basic--icon-positions.actual.png"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button/basic",
+					"status": "added",
+					"hash": "sha256:a6132e2a98fe5be377223dda1c2a29a8af688b00451bfd1101a9f4fa157e0f1d",
+					"actual": "unstyled/button-basic--variants.actual.png"
 				},
 				{
 					"name": "button-icons--all-positions",

@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "7 removed – 0 of 7 approved, review pending",
-	"computedAt": "2026-10-07T11:35:18.366Z",
+	"description": "28 added, 7 removed – 0 of 35 approved, review pending",
+	"computedAt": "2026-10-07T11:59:54.951Z",
 	"pr": 11222,
-	"head": "2d08841fe2dc6b9d53d61b056c0695caab5c5247",
-	"digest": "sha256:deb1b9a04e8fd32f378177039802af760daf596e77dd80cfa121d33384750493",
+	"head": "bfda66c6550cc589a165ce9091d5fa8d050d6ab1",
+	"digest": "sha256:68dc373eb972d8bac6f575db230399c22763b2d1cb5798ccebe5261de0099e46",
 	"counts": {
-		"changes": 7,
-		"open": 7,
+		"changes": 35,
+		"open": 35,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -16,7 +16,39 @@
 	},
 	"reviewers": [],
 	"items": {
+		"test-tag-name-transformer/button-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/button-basic--hide-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/button-basic--icon-positions": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/button-basic--variants": {
+			"state": "open",
+			"notes": []
+		},
 		"test-tag-name-transformer/button-variants--variants": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/button-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/button-basic--hide-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/button-basic--icon-positions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/button-basic--variants": {
 			"state": "open",
 			"notes": []
 		},
@@ -24,7 +56,39 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-default/button-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/button-basic--hide-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/button-basic--icon-positions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/button-basic--variants": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-default/button-variants--variants": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-basic--hide-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-basic--icon-positions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/button-basic--variants": {
 			"state": "open",
 			"notes": []
 		},
@@ -32,11 +96,59 @@
 			"state": "open",
 			"notes": []
 		},
+		"theme-ecl/button-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/button-basic--hide-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/button-basic--icon-positions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/button-basic--variants": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-ecl/button-variants--variants": {
 			"state": "open",
 			"notes": []
 		},
+		"theme-kern/button-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/button-basic--hide-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/button-basic--icon-positions": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/button-basic--variants": {
+			"state": "open",
+			"notes": []
+		},
 		"theme-kern/button-variants--variants": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/button-basic--disabled": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/button-basic--hide-label": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/button-basic--icon-positions": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/button-basic--variants": {
 			"state": "open",
 			"notes": []
 		},
