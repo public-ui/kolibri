@@ -117,37 +117,22 @@ export class KolTabs extends BaseWebComponent<TabsApi> implements ClickableEleme
 
 	private nextPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
 		const nextOffset = offset + step;
-
-		if (nextOffset < tabs.length) {
-			if (tabs[nextOffset]._disabled) {
-				return this.nextPossibleTabIndex(tabs, offset, step + 1);
-			}
-			return nextOffset;
-		}
-
-		return offset;
+		return this.selectNextNotDisabledTab(nextOffset, tabs, true);
 	};
 
 	private prevPossibleTabIndex = (tabs: TabButtonProps[], offset: number, step = 1): number => {
 		const nextOffset = offset - step;
-
-		if (nextOffset >= 0) {
-			if (tabs[nextOffset]._disabled) {
-				return this.prevPossibleTabIndex(tabs, offset, step + 1);
-			}
-			return nextOffset;
-		}
-
-		return offset;
+		return this.selectNextNotDisabledTab(nextOffset, tabs, false);
 	};
 
 	private selectNextNotDisabledTab = (selected: number, tabs: TabButtonProps[], upOrDown = true, initialSelected?: number): number => {
 		if (selected > tabs.length - 1) {
-			selected = tabs.length - 1;
-		}
-		if (selected < 0) {
 			selected = 0;
 		}
+		if (selected < 0) {
+			selected = tabs.length - 1;
+		}
+
 		if (Array.isArray(tabs) && tabs[selected]) {
 			if (tabs[selected]._disabled) {
 				if (upOrDown === true) {

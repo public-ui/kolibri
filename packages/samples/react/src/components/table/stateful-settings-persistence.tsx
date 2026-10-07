@@ -70,7 +70,6 @@ export const TableStatefulSettingsPersistence: FC = () => {
 				_headers={buildHeaders()}
 				_data={DATA}
 				className="block"
-				style={{ maxWidth: '900px' }}
 			/>
 		</>
 	);

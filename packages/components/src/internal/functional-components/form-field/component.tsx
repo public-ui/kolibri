@@ -43,7 +43,7 @@ export type FormFieldFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'ref
 	showBadge?: boolean;
 	tooltipAlign?: TooltipAlignPropType;
 	variant?: VariantClassNamePropType;
-	/** `fieldset` groups the options of a radio group; its label is then a `legend`. */
+	/** `fieldset` groups the options of a radio group; its label is then a `legend` and `disabled` disables the `fieldset`. */
 	component?: 'div' | 'fieldset';
 	/** Arranges the options of a group among each other or side by side. */
 	orientation?: 'horizontal' | 'vertical';
@@ -130,6 +130,8 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 				...(showMsg ? getMsgTypeModifiers(msg) : {}),
 			}}
 			class={clsx(variant && classNameFromVariant(variant, 'form-field'), classNames)}
+			// A disabled `fieldset` marks the whole group, legend included, as an inactive control (WCAG 1.4.3).
+			disabled={isFieldset && disabled ? true : undefined}
 			aria-describedby={ariaDescribedBy}
 			{...other}
 		>

@@ -152,12 +152,13 @@
 		padding: 0 0.3em;
 	}
 
+	/* A disabled `fieldset` only groups its controls, which are dimmed themselves. */
 	.disabled label,
 	.disabled:focus-within label,
 	[aria-disabled='true'],
 	[aria-disabled='true']:focus,
-	[disabled],
-	[disabled]:focus {
+	[disabled]:where(:not(fieldset)),
+	[disabled]:where(:not(fieldset)):focus {
 		opacity: 0.5;
 	}
 }

@@ -14,7 +14,7 @@ type ProjectTask = {
 const HEADERS: { horizontal: KoliBriTableHeaderCellWithLogic[][] } = {
 	horizontal: [
 		[
-			{ key: 'project', label: 'Project' },
+			{ key: 'project', label: 'Project', width: 200 },
 			{ key: 'owner', label: 'Owner', width: 140 },
 			{
 				label: 'ID',
