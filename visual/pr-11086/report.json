@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11086,
-	"head": "ab048236992c8c214ae20666af6279391a3ad55d",
+	"head": "e3627b743bf2d6cea2fb7b2e42e37bac8af67713",
 	"repository": "public-ui/kolibri",
-	"runId": 37630424643,
-	"generatedAt": "2026-10-07T14:01:30.129Z",
-	"digest": "sha256:a7599d010b5bed5f85f0616e7521739e77daec5ae56e1ebdb569471d2993c176",
+	"runId": 37656673709,
+	"generatedAt": "2026-10-07T17:26:28.445Z",
+	"digest": "sha256:6809b1a21d8c24082993304030c03694b10bedbe7a820769cdce776a4780df9b",
 	"baseline": {
-		"sha": "e8a635e72facd2a435a351465981006579e72339",
+		"sha": "2be5030e413457ca65b4e303d53e6f2d31b06824",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -30,13 +30,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "e8a635e72facd2a435a351465981006579e72339",
+					"sha": "2be5030e413457ca65b4e303d53e6f2d31b06824",
 					"ref": "develop",
-					"runId": 37607554330,
+					"runId": 37637670053,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T10:37:36.191Z",
-					"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
+					"createdAt": "2026-10-07T14:39:58.745Z",
+					"digest": "sha256:eadb35fe61ec50b226112fc42ced9227f974b3ba6056b288044ab0904f2b2444",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
+			"digest": "sha256:eadb35fe61ec50b226112fc42ced9227f974b3ba6056b288044ab0904f2b2444",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2521,19 +2521,19 @@
 					"name": "toolbar-basic--horizontal",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:3633cbc8c4e2c268bd0c23d508d53fff45a907e558916fa8d007f38c310a8ecc"
+					"hash": "sha256:9e51bcd077a939d0f5f4e96f7dde6e989ea5d96562c49fb8b819e2f13c7570af"
 				},
 				{
 					"name": "toolbar-basic--horizontal-320",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:feec99c7a0963eb72c9c06e9ca1f24457320e7986219d09b40ff21f257b2f452"
+					"hash": "sha256:a12bf323241c83f95c5cf52ec0a5b5caf503b5495d8beaf20ffb573499e4cb53"
 				},
 				{
 					"name": "toolbar-basic--vertical",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:8f7a05c7e56754fe6f04be566d413674f923d88e9d9b12ac377cec472a9ad9c0"
+					"hash": "sha256:bc7e916804a5fe3358c0a8a70b049c54bd08c9353596301334e334871318e81a"
 				},
 				{
 					"name": "toolbar-disabled--disabled",
@@ -2563,13 +2563,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "e8a635e72facd2a435a351465981006579e72339",
+					"sha": "2be5030e413457ca65b4e303d53e6f2d31b06824",
 					"ref": "develop",
-					"runId": 37607554330,
+					"runId": 37637670053,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T10:39:32.427Z",
-					"digest": "sha256:141a1421871a249c4dda652452966b67bb18b06ba9c298ad315d95aaec269d78",
+					"createdAt": "2026-10-07T14:39:28.615Z",
+					"digest": "sha256:8a04600e94d55e42bb9e0d0004d311efa3ae6fe619d9735e98a32fea1454e859",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -2582,7 +2582,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:141a1421871a249c4dda652452966b67bb18b06ba9c298ad315d95aaec269d78",
+			"digest": "sha256:8a04600e94d55e42bb9e0d0004d311efa3ae6fe619d9735e98a32fea1454e859",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5054,19 +5054,19 @@
 					"name": "toolbar-basic--horizontal",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:b944f1af26825a824601d25c77ecd6c33bd42917df4cb896231eb23e5e1495df"
+					"hash": "sha256:e2ab24b9080b9f37abc6b067db4a206dfb64c5d57791ac73784559fc93198b2f"
 				},
 				{
 					"name": "toolbar-basic--horizontal-320",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:6b7ea59fd6e2315fb469e72375c8357f8f551bb140136e6523bf59f9a71b44b7"
+					"hash": "sha256:5973d140f1716484e370bf3d3474f36bc5a1ee11a649a80e4f628e5d80e5646b"
 				},
 				{
 					"name": "toolbar-basic--vertical",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:5868873f95cf6ed618dcef8b7036e906040a29ea1e21f80a6e4bf09f1bfc0ea6"
+					"hash": "sha256:89df548db9feadac4e6ef113850e1b7eb6acaea7405a781fede3a60cde4c05a6"
 				},
 				{
 					"name": "toolbar-disabled--disabled",
@@ -5096,13 +5096,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "e8a635e72facd2a435a351465981006579e72339",
+					"sha": "2be5030e413457ca65b4e303d53e6f2d31b06824",
 					"ref": "develop",
-					"runId": 37607554330,
+					"runId": 37637670053,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T10:37:36.191Z",
-					"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
+					"createdAt": "2026-10-07T14:39:58.745Z",
+					"digest": "sha256:eadb35fe61ec50b226112fc42ced9227f974b3ba6056b288044ab0904f2b2444",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -5115,7 +5115,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
+			"digest": "sha256:eadb35fe61ec50b226112fc42ced9227f974b3ba6056b288044ab0904f2b2444",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7587,19 +7587,19 @@
 					"name": "toolbar-basic--horizontal",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:3633cbc8c4e2c268bd0c23d508d53fff45a907e558916fa8d007f38c310a8ecc"
+					"hash": "sha256:9e51bcd077a939d0f5f4e96f7dde6e989ea5d96562c49fb8b819e2f13c7570af"
 				},
 				{
 					"name": "toolbar-basic--horizontal-320",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:feec99c7a0963eb72c9c06e9ca1f24457320e7986219d09b40ff21f257b2f452"
+					"hash": "sha256:a12bf323241c83f95c5cf52ec0a5b5caf503b5495d8beaf20ffb573499e4cb53"
 				},
 				{
 					"name": "toolbar-basic--vertical",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:8f7a05c7e56754fe6f04be566d413674f923d88e9d9b12ac377cec472a9ad9c0"
+					"hash": "sha256:bc7e916804a5fe3358c0a8a70b049c54bd08c9353596301334e334871318e81a"
 				},
 				{
 					"name": "toolbar-disabled--disabled",
@@ -7629,13 +7629,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "e8a635e72facd2a435a351465981006579e72339",
+					"sha": "2be5030e413457ca65b4e303d53e6f2d31b06824",
 					"ref": "develop",
-					"runId": 37607554330,
+					"runId": 37637670053,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T10:41:09.343Z",
-					"digest": "sha256:c216c08f43fa5577c76b55c5b1f67f43ea9e917970de1203e5403430b522c815",
+					"createdAt": "2026-10-07T14:40:06.364Z",
+					"digest": "sha256:572ee9da93d5552896a36d3f114762dc2b953ac6f6189a9f9e47710d21afac4a",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -7648,7 +7648,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:54f5674d67ee4ac0e29ede5d47020d5c08ae3ef94f4f2880508e90e4bf95bf7d",
+			"digest": "sha256:fdf06cdfa2d490096c70c1a5a9cf403d9172a9547667392f45b8feeb65175723",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9742,7 +9742,7 @@
 					"name": "scenarios-focus-elements-component-toolbar",
 					"route": "scenarios-focus-elements-component-toolbar",
 					"status": "unchanged",
-					"hash": "sha256:ce638d4dc20a6c932736916fd68c063531d18fb4cff5d412dbc0b110cd53621d"
+					"hash": "sha256:0d3060562d10f9378aa9e3abd87d97723754c6bf551ab4af0bf784e5c1d79fa6"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -10150,25 +10150,25 @@
 					"name": "toolbar-basic--horizontal",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:91954f8a8788babb836ec0355543a5dfebc89a8deeb42d8c4a9132b1cca7b456"
+					"hash": "sha256:fc7e4a853c9df1c7a948a2d412dc7967997d74bb4d2dc94dae8ec5de7bcfb863"
 				},
 				{
 					"name": "toolbar-basic--horizontal-320",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:83ac988d24ab4624094c113b46a9f0a4344360800a959381a51265c8f6b7836c"
+					"hash": "sha256:ef701cd064dd1d427a3c75d8c8b59c46d06141c7dbd04e5c85700f001d602770"
 				},
 				{
 					"name": "toolbar-basic--vertical",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:f379e98eda4c12e6c2e50e62210f43a340681e57b5a17664a82f60c7d723e9a3"
+					"hash": "sha256:744cb9eee53d60227b2890a46d18bc1a285b01980fe74dc8a0f2ec67277ae2c3"
 				},
 				{
 					"name": "toolbar-disabled--disabled",
 					"route": "toolbar-disabled",
 					"status": "unchanged",
-					"hash": "sha256:9b47e83389b79b63d3c98939af4b7e9fee764075b329f18b707bdf29a50a7caa"
+					"hash": "sha256:7c7495d8e733922ac16451e7d6d87fcd31bab5207c65d801472bab4e40dc331c"
 				},
 				{
 					"name": "tree-basic-home--tree",
@@ -10192,13 +10192,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "e8a635e72facd2a435a351465981006579e72339",
+					"sha": "2be5030e413457ca65b4e303d53e6f2d31b06824",
 					"ref": "develop",
-					"runId": 37607554330,
+					"runId": 37637670053,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T10:38:28.653Z",
-					"digest": "sha256:61074ce1d28d1f49d7fc3e61820fba94c70eb71339d467fcfaf56f35377b556d",
+					"createdAt": "2026-10-07T14:39:46.368Z",
+					"digest": "sha256:a0cfc6ecb8273d9f4ca2170c3f2ce6a53b95d150f97b497affead4de2da6aa74",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -10211,7 +10211,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:61074ce1d28d1f49d7fc3e61820fba94c70eb71339d467fcfaf56f35377b556d",
+			"digest": "sha256:a0cfc6ecb8273d9f4ca2170c3f2ce6a53b95d150f97b497affead4de2da6aa74",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12275,7 +12275,7 @@
 					"name": "scenarios-focus-elements-component-toolbar",
 					"route": "scenarios-focus-elements-component-toolbar",
 					"status": "unchanged",
-					"hash": "sha256:5e2bc99e3fc028a15f5d10d18fd721e46be83aaf213b4110c8febe89e935563d"
+					"hash": "sha256:97f33441a504c5847b3376517cf494daa5a0b9efb404b75d4b2de5fdc908e119"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -12683,25 +12683,25 @@
 					"name": "toolbar-basic--horizontal",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:d479a990602ee4b8e89dffbcc382ce9bf3d88237496793dc339ac323a6f045d8"
+					"hash": "sha256:0130c1e134734ac00eb6f34a9c74bc594daa8fd988ea02aea370331b26ce98cd"
 				},
 				{
 					"name": "toolbar-basic--horizontal-320",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:4740a09fd067228e114fd1d89c48a2a834d6b82ae308eb7948ccb12b5b0a7287"
+					"hash": "sha256:d84d99da35d6a241247fadbdb33bbac521196cc39641e4813065a69b8383b3e6"
 				},
 				{
 					"name": "toolbar-basic--vertical",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:2575c747d8fbcad86ff9d79605d9c8f377a969f4f583bba8f1828364e602882f"
+					"hash": "sha256:770c0f2b40d0cde14af74bda09aba816d75383a5e831f0b459ff2745db6f5e83"
 				},
 				{
 					"name": "toolbar-disabled--disabled",
 					"route": "toolbar-disabled",
 					"status": "unchanged",
-					"hash": "sha256:5e2ad77398ff28716a9a21fd1becfd9011d7167d760e4ea619166173e856ab2f"
+					"hash": "sha256:b9d41d9eaf4a95f202777a0251129adf60da91603a27afebadef682950a4f276"
 				},
 				{
 					"name": "tree-basic-home--tree",
@@ -12725,13 +12725,13 @@
 			"baseline": {
 				"files": 418,
 				"meta": {
-					"sha": "e8a635e72facd2a435a351465981006579e72339",
+					"sha": "2be5030e413457ca65b4e303d53e6f2d31b06824",
 					"ref": "develop",
-					"runId": 37607554330,
+					"runId": 37637670053,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T10:38:17.578Z",
-					"digest": "sha256:20275e56661647f997626748305f1510ee1c598c03d982cd8bf8ff910993688d",
+					"createdAt": "2026-10-07T14:40:11.119Z",
+					"digest": "sha256:759ef533598395b3096515e3a70df825f7b740992a9562eaef83e09ea6b6da75",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -12744,7 +12744,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:bca217e52167d2a16765b0d7b14e90a5578ee84ce11098683e38c3f0fa1279d9",
+			"digest": "sha256:75af092d1a0c74b3841dce9fc2008fcc065e341efedae1529cff6227675b1df4",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15252,19 +15252,19 @@
 					"name": "toolbar-basic--horizontal",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:12a04397af795a8e36238331aeb2f1110e054b4873ee61ff6b61a6f3defb8c52"
+					"hash": "sha256:b878e39b26b559e4c8df8b3bdab527c2a6c3226852ffaf81745afc9363c45153"
 				},
 				{
 					"name": "toolbar-basic--horizontal-320",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:4052adbb5847c2a52f7a5456fa80f79912ea5b76213215353c18145e466278ed"
+					"hash": "sha256:ec655e47b16d27f5ff256907dca7ec6ac2d665581197b59613902ad15633aa95"
 				},
 				{
 					"name": "toolbar-basic--vertical",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:75b9963a08277cc09815f68f51e0093142f0a2d334f48e43af4f2a7831826d53"
+					"hash": "sha256:3f42e64570a319cadbb72b188f52f9fa7c3dad24536845b6510055407be889eb"
 				},
 				{
 					"name": "toolbar-disabled--disabled",
@@ -15294,13 +15294,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "e8a635e72facd2a435a351465981006579e72339",
+					"sha": "2be5030e413457ca65b4e303d53e6f2d31b06824",
 					"ref": "develop",
-					"runId": 37607554330,
+					"runId": 37637670053,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-07T10:38:10.349Z",
-					"digest": "sha256:7e5ab2e71a7c443f0a9dee7a7540ff08c83571f083047cf62610c272a765a330",
+					"createdAt": "2026-10-07T14:39:09.226Z",
+					"digest": "sha256:a70cf1d9660e968cf49e232e3c09d7cfa9abb5da11aaf4517057744bec01c5ab",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -15313,7 +15313,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:7e5ab2e71a7c443f0a9dee7a7540ff08c83571f083047cf62610c272a765a330",
+			"digest": "sha256:a70cf1d9660e968cf49e232e3c09d7cfa9abb5da11aaf4517057744bec01c5ab",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17785,19 +17785,19 @@
 					"name": "toolbar-basic--horizontal",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:89c86d771cfc5272ed145d2f23d1bea8ea47780158a38b2d3104acc50a20ffbb"
+					"hash": "sha256:a65cc0b9cfce3a7a15346e7e419435937a2244d5ffb364036cfb8133ecea7d39"
 				},
 				{
 					"name": "toolbar-basic--horizontal-320",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:ec50acedeb3516b38ab077cfb4d74c7ae306d9ed25c4a6ec111fa03ce387a393"
+					"hash": "sha256:44aa07332f8cb47865ebd510f8dad3b48e904a3f6a25a2698d7d86b353f6d6ea"
 				},
 				{
 					"name": "toolbar-basic--vertical",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:9ada4f1b45e4602992b746a16e6244c941ce1fe7ea4551e34e7d08832d460800"
+					"hash": "sha256:4bfbfc6f221ce2912ecd595b7c968aaef6301d48f448cc6d7526466c1a0e55f9"
 				},
 				{
 					"name": "toolbar-disabled--disabled",
