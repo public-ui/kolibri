@@ -6,7 +6,9 @@
 	@include button('kol-link');
 
 	.kol-toolbar {
-		gap: to-rem(15);
+		&--orientation-horizontal {
+			gap: to-rem(15);
+		}
 
 		hr {
 			border-color: var(--ecl-color-neutral-80);

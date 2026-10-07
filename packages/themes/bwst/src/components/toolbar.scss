@@ -19,11 +19,11 @@
 					border-right: 0;
 				}
 
-				&:first-child {
+				&:first-child .kol-span {
 					--kol-toolbar-item-border-radius: var(--border-radius) 0 0 var(--border-radius);
 				}
 
-				&:last-child {
+				&:last-child .kol-span {
 					--kol-toolbar-item-border-radius: 0 var(--border-radius) var(--border-radius) 0;
 					border-right: var(--border-width) solid var(--text-border-color);
 				}
@@ -36,11 +36,11 @@
 					border-bottom: 0;
 				}
 
-				&:first-child {
+				&:first-child .kol-span {
 					--kol-toolbar-item-border-radius: var(--border-radius) var(--border-radius) 0 0;
 				}
 
-				&:last-child {
+				&:last-child .kol-span {
 					--kol-toolbar-item-border-radius: 0 0 var(--border-radius) var(--border-radius);
 					border-bottom: var(--border-width) solid var(--text-border-color);
 				}
