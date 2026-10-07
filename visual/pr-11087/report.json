@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11087,
-	"head": "f4c50f97b7ccf4b2adee2e99c6e784d32acca3f4",
+	"head": "36a73f3d57eb76da2a21f5dd47743cd43350712f",
 	"repository": "public-ui/kolibri",
-	"runId": 37083931563,
-	"generatedAt": "2026-10-03T01:11:07.589Z",
-	"digest": "sha256:d598fc8e40edf8857e261a725841ac059e2edeae9bea4b76d7e018952b765b54",
+	"runId": 37629935124,
+	"generatedAt": "2026-10-07T13:51:24.238Z",
+	"digest": "sha256:deb1b9a04e8fd32f378177039802af760daf596e77dd80cfa121d33384750493",
 	"baseline": {
-		"sha": "21b2203b6bf3186fc73a1c03146155ebc7995c8e",
+		"sha": "e8a635e72facd2a435a351465981006579e72339",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -17,7 +17,7 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2919,
+		"unchanged": 2920,
 		"changed": 0,
 		"added": 0,
 		"removed": 0,
@@ -30,13 +30,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "21b2203b6bf3186fc73a1c03146155ebc7995c8e",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37004319033,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T12:09:51.890Z",
-					"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
+					"createdAt": "2026-10-07T10:37:36.191Z",
+					"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -49,7 +49,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
+			"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -421,7 +421,7 @@
 					"name": "input-checkbox-basic-noColumns--left-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:2f244f74148dc0573f294d8ad57d8bcff0304c5c453d60c2d8fde17272c3ff97"
+					"hash": "sha256:e322dfcfa39a17d07c62428cd94cc42aad8096b25a8607aaf888f2bd492542ab"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-error",
@@ -493,7 +493,7 @@
 					"name": "input-checkbox-basic-noColumns--right-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:7ce5d0a3a815a661459c7bd04961a7d2490061811b44255b9dc5d6a9c8c02d80"
+					"hash": "sha256:e29bca181f81eaa9568695928bf32c3dac778be2e930e78f4e35e2c7ec99a426"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-error",
@@ -565,7 +565,7 @@
 					"name": "input-checkbox-button-noColumns--left-disabled",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:8fd0dd5be040d8a41ab4d1460210595bb304a9cd20dedf4f4e1cf3770809193c"
+					"hash": "sha256:5d85e36f77a910f6a67cec95f8bd33e85ca6641ed0c347947390cd0b75d8fa4f"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-error",
@@ -637,7 +637,7 @@
 					"name": "input-checkbox-button-noColumns--right-disabled",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:de576ad0157f64b58f53b48090488b06af0cc6e21a8210de3f9e37cd347a4091"
+					"hash": "sha256:28cfd41a0a5f8e005c94cc952e85ee7cd1095671522073e0700c10f6b42ce69b"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-error",
@@ -709,7 +709,7 @@
 					"name": "input-checkbox-switch-noColumns--left-disabled",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:cd91f68263376209d83abdf41db4dc24933a04abc572838ce0d39379d1409ca8"
+					"hash": "sha256:0e5b9cecacd949052b7ae7454289a9a2edc5b6d78dbfdd0018335f52e2983967"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-error",
@@ -781,7 +781,7 @@
 					"name": "input-checkbox-switch-noColumns--right-disabled",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:0c47cc4b1cd7b1c6f46a2562244e3151fec03437a66cc66d9d97ec2062d6d038"
+					"hash": "sha256:07fcef8913f7ed7b8b4b8995847a30aa4160e53087c5cf6ce09ce55125fd7c81"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-error",
@@ -1777,7 +1777,7 @@
 					"name": "link-basic--basic",
 					"route": "link-basic",
 					"status": "unchanged",
-					"hash": "sha256:86daf491bb81211e92b0b521cc8013490244877d6304006d6d5029e853b5ce60"
+					"hash": "sha256:7a2a5caf1f503b55bdfc09b22252b1ae6155d983350591295b45e95d4982df32"
 				},
 				{
 					"name": "link-button-basic--variants",
@@ -2287,7 +2287,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:433a41d86c38d101fe9e32b63d6c221deac679cd4e6242a400c501abeda8bce0"
+					"hash": "sha256:492150b46fda0a1b667230b88eea29b090f49ac7c85ce4a58cb46ee6ae6c9e28"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -2329,7 +2329,7 @@
 					"name": "table-state-columns--action-columns",
 					"route": "table-state-columns",
 					"status": "unchanged",
-					"hash": "sha256:c5a274e5b88395bb76727f50687c0cf3f6586f62a67b6554ac49a7df74d04a88"
+					"hash": "sha256:e12872b691ed1043a9d7c8042319d81dd3dbe41a0f4b1c80e191afab4f594702"
 				},
 				{
 					"name": "table-stateful-async",
@@ -2353,13 +2353,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:cd7e46378a3b56d4e30311ddd2abab4a4053bacbd337bb2785e058aa29e2f00b"
+					"hash": "sha256:42d6bc449e0eee06d4f6f5c74a91a9bc60a467f4ee1908da2e10d81ad9f0bd2c"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:3ed151059d6c36188cf13129efc818bb4edb3a7a8e8b8d9c0e64ac0382ce5ecb"
+					"hash": "sha256:c10b880774cc4373d2871676c6d3712bb494e86b51f93124001c5b790d277686"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -2374,7 +2374,7 @@
 					"hash": "sha256:ec663d065f0e7a29a22228cd1c93b22a8c1f82d76180b48767bcd268720620d0"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table-variant",
 					"status": "unchanged",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1"
@@ -2563,13 +2563,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "21b2203b6bf3186fc73a1c03146155ebc7995c8e",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37004319033,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T12:09:28.792Z",
-					"digest": "sha256:f748ca500756d37fcae1e56795982b96942c7b2bf4711b767f2a04607f587831",
+					"createdAt": "2026-10-07T10:39:32.427Z",
+					"digest": "sha256:141a1421871a249c4dda652452966b67bb18b06ba9c298ad315d95aaec269d78",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -2582,7 +2582,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:f748ca500756d37fcae1e56795982b96942c7b2bf4711b767f2a04607f587831",
+			"digest": "sha256:141a1421871a249c4dda652452966b67bb18b06ba9c298ad315d95aaec269d78",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4310,7 +4310,7 @@
 					"name": "link-basic--basic",
 					"route": "link-basic",
 					"status": "unchanged",
-					"hash": "sha256:af24130cbd3883cdbb9ec481c8ad23de10931812d5a6096eab48282876c0bb0a"
+					"hash": "sha256:a8f498bf8ec376b5e357db9d5451c7446282a4188291f7a4764a5a0ec98ee25a"
 				},
 				{
 					"name": "link-button-basic--variants",
@@ -4820,7 +4820,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:2ae33bfd802056de008d5c9c0e8c216991996cdd81faa2f8173b50d59fd18664"
+					"hash": "sha256:e9321e295443108b5ff9f7067fabcbcde000687dbc4e56eea8991c5282574fea"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -4862,7 +4862,7 @@
 					"name": "table-state-columns--action-columns",
 					"route": "table-state-columns",
 					"status": "unchanged",
-					"hash": "sha256:f595b1c9250387ca215c76d5a95bbb77554cac90efbe249302441f1d35318674"
+					"hash": "sha256:fc857553582f4fb3f3532c29a9e202740d53940862625593e87fd7d5eee1df00"
 				},
 				{
 					"name": "table-stateful-async",
@@ -4886,13 +4886,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:06a7807d3c01d7e09bd352640109588e451b0600b725c8668530393f9b25b161"
+					"hash": "sha256:b7971f9e93aafb0a02e29aa728a84d0e624ce7bb43407dfd87269d9166b409db"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:d560cedda27dd26741d5fbae72719aafcbad32bf6a56e50dfc28695d61aeb474"
+					"hash": "sha256:9cfdbf39fd1f57bbcb09d3899f1ec13e7f563783ab04c984b03b5518cf8d421e"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -4907,7 +4907,7 @@
 					"hash": "sha256:a24c32d3c95e687056d3c2440f3a774cbc68d9b71e8e63fbc9f87b65555cabf9"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table-variant",
 					"status": "unchanged",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1"
@@ -5096,13 +5096,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "21b2203b6bf3186fc73a1c03146155ebc7995c8e",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37004319033,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T12:09:51.890Z",
-					"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
+					"createdAt": "2026-10-07T10:37:36.191Z",
+					"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -5115,7 +5115,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8b8d88beafd81a3d053500a2f7c77281fc8c54c57fe3ce15a94ce58cf4a0d48c",
+			"digest": "sha256:be5448a8b4a0fd67e95c1310b8d4414a6c6121affce928c2006e8ebf13e6f069",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5487,7 +5487,7 @@
 					"name": "input-checkbox-basic-noColumns--left-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:2f244f74148dc0573f294d8ad57d8bcff0304c5c453d60c2d8fde17272c3ff97"
+					"hash": "sha256:e322dfcfa39a17d07c62428cd94cc42aad8096b25a8607aaf888f2bd492542ab"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--left-error",
@@ -5559,7 +5559,7 @@
 					"name": "input-checkbox-basic-noColumns--right-disabled",
 					"route": "input-checkbox-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:7ce5d0a3a815a661459c7bd04961a7d2490061811b44255b9dc5d6a9c8c02d80"
+					"hash": "sha256:e29bca181f81eaa9568695928bf32c3dac778be2e930e78f4e35e2c7ec99a426"
 				},
 				{
 					"name": "input-checkbox-basic-noColumns--right-error",
@@ -5631,7 +5631,7 @@
 					"name": "input-checkbox-button-noColumns--left-disabled",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:8fd0dd5be040d8a41ab4d1460210595bb304a9cd20dedf4f4e1cf3770809193c"
+					"hash": "sha256:5d85e36f77a910f6a67cec95f8bd33e85ca6641ed0c347947390cd0b75d8fa4f"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--left-error",
@@ -5703,7 +5703,7 @@
 					"name": "input-checkbox-button-noColumns--right-disabled",
 					"route": "input-checkbox-button-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:de576ad0157f64b58f53b48090488b06af0cc6e21a8210de3f9e37cd347a4091"
+					"hash": "sha256:28cfd41a0a5f8e005c94cc952e85ee7cd1095671522073e0700c10f6b42ce69b"
 				},
 				{
 					"name": "input-checkbox-button-noColumns--right-error",
@@ -5775,7 +5775,7 @@
 					"name": "input-checkbox-switch-noColumns--left-disabled",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:cd91f68263376209d83abdf41db4dc24933a04abc572838ce0d39379d1409ca8"
+					"hash": "sha256:0e5b9cecacd949052b7ae7454289a9a2edc5b6d78dbfdd0018335f52e2983967"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--left-error",
@@ -5847,7 +5847,7 @@
 					"name": "input-checkbox-switch-noColumns--right-disabled",
 					"route": "input-checkbox-switch-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:0c47cc4b1cd7b1c6f46a2562244e3151fec03437a66cc66d9d97ec2062d6d038"
+					"hash": "sha256:07fcef8913f7ed7b8b4b8995847a30aa4160e53087c5cf6ce09ce55125fd7c81"
 				},
 				{
 					"name": "input-checkbox-switch-noColumns--right-error",
@@ -6843,7 +6843,7 @@
 					"name": "link-basic--basic",
 					"route": "link-basic",
 					"status": "unchanged",
-					"hash": "sha256:86daf491bb81211e92b0b521cc8013490244877d6304006d6d5029e853b5ce60"
+					"hash": "sha256:7a2a5caf1f503b55bdfc09b22252b1ae6155d983350591295b45e95d4982df32"
 				},
 				{
 					"name": "link-button-basic--variants",
@@ -7353,7 +7353,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:433a41d86c38d101fe9e32b63d6c221deac679cd4e6242a400c501abeda8bce0"
+					"hash": "sha256:492150b46fda0a1b667230b88eea29b090f49ac7c85ce4a58cb46ee6ae6c9e28"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -7395,7 +7395,7 @@
 					"name": "table-state-columns--action-columns",
 					"route": "table-state-columns",
 					"status": "unchanged",
-					"hash": "sha256:c5a274e5b88395bb76727f50687c0cf3f6586f62a67b6554ac49a7df74d04a88"
+					"hash": "sha256:e12872b691ed1043a9d7c8042319d81dd3dbe41a0f4b1c80e191afab4f594702"
 				},
 				{
 					"name": "table-stateful-async",
@@ -7419,13 +7419,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:cd7e46378a3b56d4e30311ddd2abab4a4053bacbd337bb2785e058aa29e2f00b"
+					"hash": "sha256:42d6bc449e0eee06d4f6f5c74a91a9bc60a467f4ee1908da2e10d81ad9f0bd2c"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:3ed151059d6c36188cf13129efc818bb4edb3a7a8e8b8d9c0e64ac0382ce5ecb"
+					"hash": "sha256:c10b880774cc4373d2871676c6d3712bb494e86b51f93124001c5b790d277686"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -7440,7 +7440,7 @@
 					"hash": "sha256:ec663d065f0e7a29a22228cd1c93b22a8c1f82d76180b48767bcd268720620d0"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table-variant",
 					"status": "unchanged",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1"
@@ -7629,13 +7629,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "21b2203b6bf3186fc73a1c03146155ebc7995c8e",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37004319033,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T12:08:36.899Z",
-					"digest": "sha256:00d520d7ec7edc51e49ac64265799ed9a2d070ab5b9ace49b07d3f57b25b029a",
+					"createdAt": "2026-10-07T10:41:09.343Z",
+					"digest": "sha256:c216c08f43fa5577c76b55c5b1f67f43ea9e917970de1203e5403430b522c815",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -7648,7 +7648,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:00d520d7ec7edc51e49ac64265799ed9a2d070ab5b9ace49b07d3f57b25b029a",
+			"digest": "sha256:c216c08f43fa5577c76b55c5b1f67f43ea9e917970de1203e5403430b522c815",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9376,7 +9376,7 @@
 					"name": "link-basic--basic",
 					"route": "link-basic",
 					"status": "unchanged",
-					"hash": "sha256:d413e431216cc4b4f3e18ad35361f623286b9478e1bb0f03b512381d005a36c2"
+					"hash": "sha256:015f40546783932c484f97ac1824c32501f9c4f488a2f9e2bd4d17117a428dac"
 				},
 				{
 					"name": "link-button-basic--variants",
@@ -9928,7 +9928,7 @@
 					"name": "table-state-columns--action-columns",
 					"route": "table-state-columns",
 					"status": "unchanged",
-					"hash": "sha256:940fb57699ea3ff827189577154b5049db9b84e1441221a6ebe96e714c3e04ae"
+					"hash": "sha256:b84b5f4fae5a7ce2e03c5d2abeb5d8c2131eaf30adb188c766d1bad97bcbc0ee"
 				},
 				{
 					"name": "table-stateful-async",
@@ -9952,13 +9952,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:ae77c7906255bf5a99111df15662a28e645f43ed9f65b174c99bad2853d26a32"
+					"hash": "sha256:f932dfadea25f7a1ed9fc0d0b17391a24b1df1a61fef87e90454fbae065b30dc"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:5c1a83e2a7d56978b8b55308c8a9bd93ed154665adb83ac9475f6b07150a29d9"
+					"hash": "sha256:624e515d0defb6b663bd15a2b77df0962192bf220179bd7f1bebcfd23328b68a"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -9973,7 +9973,7 @@
 					"hash": "sha256:2d59e93df39ab37e46f1f1b57fcab18197e0c6276ad0285d109f9a82a9a7fc1e"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table-variant",
 					"status": "unchanged",
 					"hash": "sha256:3b0a61bdb029c15cc195f15685cd423ec817dc72241c896159576063bcb2c657"
@@ -10162,13 +10162,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "21b2203b6bf3186fc73a1c03146155ebc7995c8e",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37004319033,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T12:08:24.449Z",
-					"digest": "sha256:c0ead95e226105a4810adee7b9b297fde17c8f503d2c50afbb20f306559fbb7d",
+					"createdAt": "2026-10-07T10:38:28.653Z",
+					"digest": "sha256:61074ce1d28d1f49d7fc3e61820fba94c70eb71339d467fcfaf56f35377b556d",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -10181,7 +10181,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:c0ead95e226105a4810adee7b9b297fde17c8f503d2c50afbb20f306559fbb7d",
+			"digest": "sha256:61074ce1d28d1f49d7fc3e61820fba94c70eb71339d467fcfaf56f35377b556d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -11909,7 +11909,7 @@
 					"name": "link-basic--basic",
 					"route": "link-basic",
 					"status": "unchanged",
-					"hash": "sha256:a0694abea59eb5d753c5a451f3565021ad99989db80f33ac9f2de7ff78b8f616"
+					"hash": "sha256:ffd7c3ea8f73d6ce0d5b6466f428a7f4b37e3b7f5a937571a7709502c0b94525"
 				},
 				{
 					"name": "link-button-basic--variants",
@@ -12419,7 +12419,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:65a750156e948b9ab2c0c1a566851e86bf67457cabbd3930b9b20d02784528a2"
+					"hash": "sha256:9b8f0d851d8f9b29d7905f6c85f4f6140b7509ddf1bdf09382b34d3455d770b2"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -12461,7 +12461,7 @@
 					"name": "table-state-columns--action-columns",
 					"route": "table-state-columns",
 					"status": "unchanged",
-					"hash": "sha256:8084c74e7d102fa9d90863b0f40f6a758e23cb906628a6f09ccb3d53dec29bbb"
+					"hash": "sha256:65cee1de92db8ef418b0d1c8fcfd5ffdb59ba6b4aa92e9ac56b7d5394866f0e2"
 				},
 				{
 					"name": "table-stateful-async",
@@ -12485,13 +12485,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:f7eb9bdfbec0126648da88fa9e47a5c3f9c6763cdd4b8fa0a1c9d0c19f99c81a"
+					"hash": "sha256:5c914746981c8515fff88e9c9feaeea975336b502fe6884bf84969c53c3dfeaf"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:bd84c55066cdfa429a47f57f389691a20c2746f617a91c06d2da4db5c808a346"
+					"hash": "sha256:9faa1e392a1d457b61d51ba23ac316b8d68d70c3be65b10c4c17bc6547ea9935"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -12506,7 +12506,7 @@
 					"hash": "sha256:19f099e9096c980a6bfed2a2096f4f45dc92bcff3bff3a6a418d45fae4d23447"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table-variant",
 					"status": "unchanged",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1"
@@ -12693,28 +12693,28 @@
 			"package": "theme-kern",
 			"themeDir": "theme-kern_v2",
 			"baseline": {
-				"files": 417,
+				"files": 418,
 				"meta": {
-					"sha": "21b2203b6bf3186fc73a1c03146155ebc7995c8e",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37004319033,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T12:08:23.150Z",
-					"digest": "sha256:702b9742141cd044aaff6c7ef2452e74881634367f2fabe380e10c5d1dcd8cd9",
+					"createdAt": "2026-10-07T10:38:17.578Z",
+					"digest": "sha256:20275e56661647f997626748305f1510ee1c598c03d982cd8bf8ff910993688d",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 417,
+				"unchanged": 418,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:702b9742141cd044aaff6c7ef2452e74881634367f2fabe380e10c5d1dcd8cd9",
+			"digest": "sha256:20275e56661647f997626748305f1510ee1c598c03d982cd8bf8ff910993688d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14442,7 +14442,7 @@
 					"name": "link-basic--basic",
 					"route": "link-basic",
 					"status": "unchanged",
-					"hash": "sha256:26d047822aafc2b1cd5536ab087f9608a8955b4a5c42f21784cc410e1b2f1115"
+					"hash": "sha256:3828206f77d06da1f4e2c4c67be049d520850e0143cb39a55751c1ebf6d699ff"
 				},
 				{
 					"name": "link-button-basic--variants",
@@ -14952,7 +14952,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:6baefb736a5fcead632c48516ec734af691b7c4508f207353a79174414bea73a"
+					"hash": "sha256:c511fffb38df3171f177864b3120ce78c006c5e89cadb49f081cafde31d997e4"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -14994,7 +14994,7 @@
 					"name": "table-state-columns--action-columns",
 					"route": "table-state-columns",
 					"status": "unchanged",
-					"hash": "sha256:729173e3a31528bab98e0b0a0bc51245f6a695f10e54f90c214804441b97182d"
+					"hash": "sha256:7a910e948e07a83141ea37216a6660ecdf373719ff57b47a5b9dc56c8674d09c"
 				},
 				{
 					"name": "table-stateful-async",
@@ -15018,13 +15018,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:3b5db069fe283ffdc5be252596541e0ba3369a6ff161f66a08fe74129659c388"
+					"hash": "sha256:87ac14413decd6beaeb85650ef01e7fc9e3a3054bfe4dda6460a9865957b860a"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:6d212e2f977d83ecc2c813a28fcf85bc62ae159d0103d0d68ee86fb8288f7914"
+					"hash": "sha256:93de3555c331ef94f66f964a0f17ab585e847b83a468d4282be36e195d42c7ce"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -15039,10 +15039,16 @@
 					"hash": "sha256:52b570cc90930d0619db4dbfcce82ed328a3a0fface3c1c40f0371d8e039fe75"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-0",
 					"route": "table-variant",
 					"status": "unchanged",
-					"hash": "sha256:281cbad976b8e9a24aa18f9616fc0ed4a14989e03611dfac8bb6ea3de82939e6"
+					"hash": "sha256:2af254f8b599c639fd6c19d6e56b651c6f6654d63f98f3f4141b446ff3162da7"
+				},
+				{
+					"name": "table-variant--variant-1",
+					"route": "table-variant",
+					"status": "unchanged",
+					"hash": "sha256:1174df3ab88f261cb013f6be66f8457707c5cbc23f7b55d48636afc140b4d89f"
 				},
 				{
 					"name": "table-with-footer--with-footer",
@@ -15228,13 +15234,13 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "21b2203b6bf3186fc73a1c03146155ebc7995c8e",
+					"sha": "e8a635e72facd2a435a351465981006579e72339",
 					"ref": "develop",
-					"runId": 37004319033,
+					"runId": 37607554330,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-02T12:08:04.434Z",
-					"digest": "sha256:a49f9eb25f8f401ab7370360077634e0a78dbfafabd80b98cdff9aeeff8f2c8d",
+					"createdAt": "2026-10-07T10:38:10.349Z",
+					"digest": "sha256:7e5ab2e71a7c443f0a9dee7a7540ff08c83571f083047cf62610c272a765a330",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
@@ -15247,7 +15253,7 @@
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a49f9eb25f8f401ab7370360077634e0a78dbfafabd80b98cdff9aeeff8f2c8d",
+			"digest": "sha256:7e5ab2e71a7c443f0a9dee7a7540ff08c83571f083047cf62610c272a765a330",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -16975,7 +16981,7 @@
 					"name": "link-basic--basic",
 					"route": "link-basic",
 					"status": "unchanged",
-					"hash": "sha256:86a607dc6e2fbc9e075f2252c8ebf3d50f0868b3296529ed7355d3630b2570a9"
+					"hash": "sha256:29bc9ffbdd0269853f02ce04b88d4ee4467ac299dbb34ab242294d5547ce5844"
 				},
 				{
 					"name": "link-button-basic--variants",
@@ -17485,7 +17491,7 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:181908fbbefd18b864c26d63e048c73b9cb1bb6391b1bedd3254bf7e6cbb493a"
+					"hash": "sha256:947abf4a0326ed31ba22f0a986505a3f1494629088c47a4d7eb7da51a360e5e4"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -17527,7 +17533,7 @@
 					"name": "table-state-columns--action-columns",
 					"route": "table-state-columns",
 					"status": "unchanged",
-					"hash": "sha256:ca10ddb7e60a5ecf5525eee494981b29bb6d1ebb2f9a1684dc71a0a60d50c3ab"
+					"hash": "sha256:a7d97d9516a605ffa446f37ddb89322839d7bb076ba95f9791b0dfea69dccb72"
 				},
 				{
 					"name": "table-stateful-async",
@@ -17551,13 +17557,13 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:2fe1e4ea3c8ce9aa6f47497e3de94dfa20fc63f98cbe2c300f0f647d65f67eb0"
+					"hash": "sha256:5a73b3b3d6974df9b1744a7b62338e814e1e9b7267b30d95b10fb15e2a08c685"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:7dc7c812b314db89a6a11879190a79032f1208f8a04f8b5823f445b763bba99a"
+					"hash": "sha256:5b68236ec70a640f9cd3bb6604249e1c24b8e5d1ff2280a9968395d840cda0f6"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -17572,7 +17578,7 @@
 					"hash": "sha256:086bc93ce4b3a1e52b8f3cb9b618f3ac1c678173e5b6448805615d5e4b56f30f"
 				},
 				{
-					"name": "table-variant--variants",
+					"name": "table-variant--variant-no",
 					"route": "table-variant",
 					"status": "unchanged",
 					"hash": "sha256:df413cf8d56d5ba0faf26d215d4c0fd9a9db30086880ec77249d9b30b688c5c1"
