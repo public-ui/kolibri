@@ -7,10 +7,12 @@
 
 	.#{$block-classname} {
 		--a11y-min-size: #{to-rem(36)};
+		--button-main-color: var(--color-blue-100);
+		--button-hover-color: var(--color-blue-100-06);
 		--text-background-color: transparent;
-		--text-border-color: var(--color-blue-100);
+		--text-border-color: var(--button-main-color);
 		--text-border-width: var(--border-width-none);
-		--text-color: var(--color-blue-100);
+		--text-color: var(--button-main-color);
 
 		font-family: var(--font-family);
 
@@ -22,43 +24,37 @@
 			outline: none;
 		}
 
+		&--destructive {
+			--button-main-color: var(--color-red-100);
+			--button-hover-color: var(--color-red-100-06);
+		}
+
 		&--primary {
-			@include primaryButton($block-classname);
+			@include primaryButton;
 		}
 
-		&--secondary,
-		&--normal {
-			@include secondaryButton($block-classname);
+		&--secondary {
+			@include secondaryButton;
 		}
 
-		&--danger {
-			--text-border-color: var(--color-red-100);
-			--text-border-width: var(--border-width-m);
-			--text-color: var(--color-red-100);
-
-			/* On the wrapper `[disabled]` is never present and `:focus` never matches: `:has(:disabled)`
-			   asks the interactive element inside, `:focus-within` covers its focus. */
-			&:not(:has(:disabled), .#{$block-classname}--disabled):hover,
-			&:focus-within {
-				.#{$block-classname}__text::before {
-					background-color: var(--color-red-100-06);
-				}
-			}
-
-			&:has(:disabled) {
-				--text-background-color: var(--color-white-100);
-				--text-border-color: var(--color-black-60);
-				--text-color: var(--color-black-60);
-			}
+		&--tertiary {
+			@include tertiaryButton;
 		}
 
-		&--tertiary,
-		&--ghost {
-			@include ghostButton($block-classname);
+		&.kol-close-button {
+			@include tertiaryButton;
 		}
 
 		&:has(:disabled) {
 			opacity: 1;
+			--button-main-color: var(--color-black-60);
+		}
+
+		&:not(:has(:disabled), .#{$block-classname}--disabled):hover,
+		&:focus-within {
+			.#{$block-classname}__text::before {
+				background-color: var(--button-hover-color);
+			}
 		}
 
 		&__text {
@@ -133,87 +129,29 @@
 			}
 		}
 	}
-
-	/* The alert renders its closer as `ButtonFC` directly, so `kol-close-button` and the variant
-	   class sit on the same element there; the card still keeps the hook on a wrapper around the
-	   button. Both shapes stay addressed until the hook moves onto the button root everywhere.
-	   Specificity is 2 classes either way, as before the alert migration. */
-	.kol-close-button:is(.kol-button--normal),
-	.kol-close-button .kol-button--normal {
-		--text-background-color: transparent;
-		--text-border-width: var(--border-width-none);
-		--text-color: var(--color-blue-100);
-
-		/* See `--danger` above: the state predicates belong to the element inside the wrapper. */
-		&:not(:has(:disabled), .#{$block-classname}--disabled):hover,
-		&:focus-within {
-			.#{$block-classname}__text::before {
-				background-color: var(--color-dark-blue-100-06);
-			}
-		}
-
-		&:active {
-			.#{$block-classname}__text::before {
-				background-color: var(--color-dark-blue-100-09);
-			}
-		}
-	}
 }
 
-@mixin primaryButton($block-classname) {
-	--text-background-color: var(--color-blue-100);
-	--text-border-color: var(--color-blue-100);
+@mixin primaryButton() {
+	--text-background-color: var(--button-main-color);
+	--text-border-color: var(--button-main-color);
 	--text-border-width: var(--border-width-m);
 	--text-color: var(--color-white-100);
-
-	&:has(:disabled) {
-		--text-background-color: var(--color-black-60);
-		--text-border-color: var(--color-black-60);
-	}
-
-	/* The mixin is included on the wrapper: `[disabled]` sits on the element inside it and `:focus`
-	   never matches the wrapper, so `:has(:disabled)` and `:focus-within` are used instead. */
-	&:not(:has(:disabled), .#{$block-classname}--disabled):hover .kol-span::before,
-	&:focus-within .kol-span::before {
-		background-color: var(--color-black-100-12);
-	}
+	--button-hover-color: var(--color-black-100-12);
 
 	&:active .kol-span::before {
 		background-color: var(--color-black-100-24);
 	}
 }
 
-@mixin secondaryButton($block-classname) {
+@mixin secondaryButton() {
 	--text-background-color: var(--color-white-100);
-	--text-border-color: var(--color-blue-100);
+	--text-border-color: var(--button-main-color);
 	--text-border-width: var(--border-width-m);
-	--text-color: var(--color-blue-100);
-
-	&:has(:disabled) {
-		--text-background-color: var(--color-white-100);
-		--text-border-color: var(--color-black-60);
-		--text-color: var(--color-black-60);
-	}
-
-	/* See `primaryButton`. */
-	&:not(:has(:disabled), .#{$block-classname}--disabled):hover .kol-span::before,
-	&:focus-within .kol-span::before {
-		background-color: var(--color-blue-100-06);
-	}
+	--text-color: var(--button-main-color);
 }
 
-@mixin ghostButton($block-classname) {
+@mixin tertiaryButton() {
 	--text-background-color: transparent;
 	--text-border-width: var(--border-width-none);
-	--text-color: var(--color-blue-100);
-
-	&:has(:disabled) {
-		--text-color: var(--color-black-60);
-	}
-
-	/* See `primaryButton`. */
-	&:not(:has(:disabled), .#{$block-classname}--disabled):hover .kol-span::before,
-	&:focus-within .kol-span::before {
-		background-color: var(--color-blue-100-06);
-	}
+	--text-color: var(--button-main-color);
 }

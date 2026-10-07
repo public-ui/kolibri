@@ -8,7 +8,7 @@
 		right: to-rem(8);
 
 		& > .kol-button {
-			@include ghostButton('kol-button');
+			@include tertiaryButton;
 		}
 
 		&__error-message {
