@@ -83,8 +83,8 @@ describe('SelectOptionListFC', () => {
 	it('renders with disabled option group', async () => {
 		const disabledGroupOptions = [
 			{
-				label: 'Group 1',
 				disabled: true,
+				label: 'Group 1',
 				options: [{ label: 'Option 1', value: '1' }],
 			},
 		];
@@ -103,9 +103,9 @@ describe('SelectOptionListFC', () => {
 	it('renders option with disabled: false inside a disabled group as disabled', async () => {
 		const disabledGroupOptions = [
 			{
-				label: 'Group 1',
 				disabled: true,
-				options: [{ label: 'Option 1', value: '1', disabled: false }],
+				label: 'Group 1',
+				options: [{ disabled: false, label: 'Option 1', value: '1' }],
 			},
 		];
 		const page = await renderFunctionalComponentToSpecPage(() => (
@@ -121,7 +121,7 @@ describe('SelectOptionListFC', () => {
 	});
 
 	it('renders option with disabled: false inside a disabled list as disabled', async () => {
-		const disabledListOptions = [{ label: 'Option 1', value: '1', disabled: false }];
+		const disabledListOptions = [{ disabled: false, label: 'Option 1', value: '1' }];
 		const page = await renderFunctionalComponentToSpecPage(() => (
 			<select>
 				<SelectOptionListFC disabled={true} options={disabledListOptions} />
@@ -137,8 +137,8 @@ describe('SelectOptionListFC', () => {
 			{
 				label: 'Group 1',
 				options: [
-					{ label: 'Option 1', value: '1', disabled: true },
-					{ label: 'Option 2', value: '2', disabled: false },
+					{ disabled: true, label: 'Option 1', value: '1' },
+					{ disabled: false, label: 'Option 2', value: '2' },
 				],
 			},
 		];

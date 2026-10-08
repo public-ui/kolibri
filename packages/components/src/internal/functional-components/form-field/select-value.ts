@@ -24,8 +24,12 @@ export const assertSelectValueMatchesMultiplicity = (value: unknown, multiple: b
 };
 
 /** The options of the list, with the options of each optgroup in place of the optgroup. */
-const flattenSelectOptions = (options: SelectOptionsList): Option<StencilUnknown>[] =>
-	options.flatMap((entry) => ('options' in entry && Array.isArray(entry.options) ? flattenSelectOptions(entry.options) : [entry as Option<StencilUnknown>]));
+const flattenSelectOptions = (options: SelectOptionsList, groupDisabled = false): Option<StencilUnknown>[] =>
+	options.flatMap((entry) =>
+		'options' in entry && Array.isArray(entry.options)
+			? flattenSelectOptions(entry.options, Boolean(groupDisabled || entry.disabled))
+			: [{ ...(entry as Option<StencilUnknown>), disabled: Boolean(groupDisabled || (entry as Option<StencilUnknown>).disabled) }],
+	);
 
 /**
  * Keeps only the values that belong to an option. Then, in single mode (`multiple === false`, not
