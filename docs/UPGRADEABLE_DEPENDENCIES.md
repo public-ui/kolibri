@@ -8,17 +8,18 @@
 
 ## 🔴 Critical (Breaking Changes – Manual Work Required)
 
-### 1. **@stencil/core** | 4.38.3 (pinned) → 4.43.5 (patch, BLOCKED) / 5.0.0-alpha.7 (major)
+### 1. **@stencil/core** | 4.45.2 (latest 4.x) / 5.0.0-alpha.7 (major)
 
-- **Status:** ⚠️ Pinned to 4.38.3 — every newer 4.x release changes runtime behavior
-  (verified 2026-06-11 by E2E A/B bisect on this codebase):
-  - 4.39.0 / 4.40.0: build fails (SCSS parse error in input-date; fixed in 4.40.1)
-  - 4.40.1: tooltip no longer hides when a popover opens
-    (popover-button.e2e.ts:41 fails consistently); CI visual tests fail across all
-    themes; hydrate output differs (e.g. kol-input-file browse button renders
-    `kol-button--normal` → behavior drift in SSR output)
-  - 4.41.0 – 4.43.5: native Popover API broken — `showPopover()` elements stay
-    hidden (kol-popover, kol-popover-button, kol-split-button, table settings)
+- **Status:** ✅ On the latest 4.x release. The component, hydrate and E2E suites (popover,
+  popover-button, split-button, table settings, tooltip) pass on 4.45.2.
+- **Local patch:** `patches/@stencil__core@4.45.2.patch` (registered in `pnpm-workspace.yaml`).
+  Since 4.43.2 the spec test transpiler resolves base classes from other files through
+  `tsGetSourceFile`, whose compiler host parses without parent nodes; `getText()` on such a node
+  throws, so every spec of a component that extends an imported base class fails to run. The patch
+  passes `setParentNodes` to `createCompilerHost`. A version bump has to move or drop the patch.
+- **Re-test checklist for every bump:** unit snapshots (`pnpm --filter @public-ui/components test:unit`),
+  hydrate snapshots (`pnpm --filter @public-ui/hydrate test:unit`), the components E2E suite and the
+  visual tests of all themes.
 - **Breaking Changes (v5):**
   - v5.0.0-alpha.7 is not production-ready (alpha channel)
   - Multiple output-target packages block v5 upgrade:
@@ -28,10 +29,8 @@
     - @public-ui/stencil-vue-output-target
   - @stencil/playwright requires >=4.13.0, conflicts with 5.x
 - **Risk:** VERY HIGH – Core platform dependency
-- **Recommendation:** Stay on 4.38.3; before any future bump, run the popover/tooltip
-  E2E suites and the visual tests against the candidate version
-- **Effort:** Would require coordinating 4+ downstream packages plus resolving the
-  popover/tooltip regressions (upstream fix or component-side adaptation)
+- **Recommendation:** Stay on 4.x until the output targets support v5
+- **Effort:** Would require coordinating 4+ downstream packages
 
 ### 2. **eslint** | 9.39.4 → 10.1.0
 
@@ -252,8 +251,8 @@
    - @public-ui/stencil-solid-output-target (requires >=2.17.2)
    - @public-ui/stencil-vue-output-target (requires >=4)
    - @stencil/playwright (requires >=4.13.0)
-   ACTION: Keep on 4.38.3 — 4.39+ regresses popover/tooltip behavior (see Critical #1);
-   v5 additionally blocked until output-targets are v5-compatible
+   ACTION: Stay on the latest 4.x (see Critical #1);
+   v5 blocked until output-targets are v5-compatible
 
 2. eslint@10.0.0 blocks:
    - @stencil-community/eslint-plugin (requires ^8.0.0 || ^9.0.0)
