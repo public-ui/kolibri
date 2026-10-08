@@ -10,6 +10,7 @@
 		--button-hover-text-color: var(--ecl-color-primary-180);
 		--button-text-color: var(--button-main-color);
 		--button-border-width: 1px;
+		--button-border-color: transparent;
 
 		&__interactive-element:focus {
 			outline: var(--ecl-color-primary) solid 2px;
