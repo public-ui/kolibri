@@ -2,17 +2,17 @@
 	"schema": 1,
 	"state": "failure",
 	"description": "980 route(s) failed before the screenshots could be compared",
-	"computedAt": "2026-10-05T09:18:41.074Z",
+	"computedAt": "2026-10-08T20:20:17.259Z",
 	"pr": 11168,
-	"head": "7597156892a8e4bb8d4eeacec6b83d4f102ee040",
-	"digest": "sha256:d598fc8e40edf8857e261a725841ac059e2edeae9bea4b76d7e018952b765b54",
+	"head": "a9c782291f8cf52cfe1b8eb611fec10077046594",
+	"digest": "sha256:b1f6f48bd0583094e2835d008117d8b9ae797bfdb882da150b43cb0ca828427f",
 	"counts": {
 		"changes": 0,
 		"open": 0,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 980,
-		"errorItems": 2919
+		"errorItems": 2920
 	},
 	"reviewers": [],
 	"items": {}
