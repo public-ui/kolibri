@@ -41,7 +41,7 @@
 			@include tertiaryButton;
 		}
 
-		&.kol-close-button {
+		.kol-close-button & {
 			@include tertiaryButton;
 		}
 
