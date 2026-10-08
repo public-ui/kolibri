@@ -148,7 +148,7 @@ When you introduce visual modifications to components, themes or the React sampl
 
 1. The `visual-tests (<package>)` jobs report the differences. That is expected – there is nothing to regenerate or commit.
 2. The bot comment **📸 Visual Review** on the pull request links the review page (`https://public-ui.github.io/kolibri/visual/?pr=<number>`), where every changed, added and removed screenshot can be inspected side by side, with a slider, as onion skin or as diff.
-3. A reviewer with write access approves (or rejects) the screenshots there – directly with a fine-grained GitHub token, or by pasting the generated comment on the pull request. The commit status **Visual Review** turns green once everything is approved; approvals are bound to the screenshot content and survive later pushes that do not change the screenshot again.
+3. A reviewer with write access approves (or rejects) the screenshots there – directly with a fine-grained GitHub token, or by pasting the generated comment on the pull request, as a comment or as the text of a review. The commit status **Visual Review** turns green once everything is approved; approvals are bound to the screenshot content and survive later pushes that do not change the screenshot again.
 
 The full process is described in [docs/visual-review.md](docs/visual-review.md).
 

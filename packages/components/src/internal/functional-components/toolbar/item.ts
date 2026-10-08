@@ -19,7 +19,7 @@ type ToolbarItemBase = {
 	/** Whether the item refuses interaction; the roving tabindex skips it. */
 	disabled: boolean;
 	/** The item's interactive element, once rendered. */
-	getElement(): HTMLAnchorElement | HTMLButtonElement | undefined;
+	getElement(): HTMLAnchorElement | HTMLButtonElement | HTMLHRElement | undefined;
 	/**
 	 * Ref for the item's wrapper. The public `KolEvent` DOM events are dispatched on it, i.e. on
 	 * the node that the transitional `kol-button-wc`/`kol-link-wc` host occupied before.
@@ -46,6 +46,10 @@ export type ToolbarLinkItem = ToolbarItemBase & {
 	getFcProps(tabIndex: number, location: string): FunctionalComponentProps<LinkApi>;
 };
 
+export type ToolbarHRItem = ToolbarItemBase & {
+	type: 'hr';
+};
+
 /**
  * One orchestrated toolbar entry: everything `ButtonFC` or `LinkFC` needs to render it, plus the
  * lifecycle hooks the toolbar has to drive — what the transitional `kol-button-wc` and
@@ -59,8 +63,17 @@ export type ToolbarLinkItem = ToolbarItemBase & {
  * only where the entry leaves the prop unset, and an entry's own `_tabIndex` wins over the roving
  * tabindex, exactly like the predecessor's `{...defaults} {...item}` spread.
  */
-export const createToolbarItem = (item: ToolbarItemPropType, getFlagHost: () => HTMLElement | undefined): ToolbarButtonItem | ToolbarLinkItem =>
-	item.type === 'link' ? createLinkItem(item, getFlagHost) : createButtonItem(item, getFlagHost);
+export const createToolbarItem = (
+	item: ToolbarItemPropType,
+	getFlagHost: () => HTMLElement | undefined,
+): ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem => {
+	if (item.type === 'link') {
+		return createLinkItem(item, getFlagHost);
+	} else if (item.type === 'button') {
+		return createButtonItem(item, getFlagHost);
+	}
+	return createHRItem();
+};
 
 const createButtonItem = (item: Extract<ToolbarItemPropType, { type: 'button' }>, getFlagHost: () => HTMLElement | undefined): ToolbarButtonItem => {
 	const tooltipBehavior = new TooltipBehavior(BaseWebComponent.stateLess);
@@ -191,5 +204,18 @@ const createLinkItem = (item: Extract<ToolbarItemPropType, { type: 'link' }>, ge
 			}
 		},
 		destroy: () => tooltipBehavior.destroy(),
+	};
+};
+
+const createHRItem = (): ToolbarHRItem => {
+	const ctaRef = createCtaRef<HTMLHRElement>();
+
+	return {
+		type: 'hr',
+		disabled: true,
+		getElement: () => ctaRef.el,
+		refWrapper: () => {},
+		syncListeners: () => {},
+		destroy: () => {},
 	};
 };

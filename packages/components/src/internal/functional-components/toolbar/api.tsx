@@ -1,7 +1,7 @@
 import type { KolFocusOptions } from '../../../schema';
 import { labelWithExpertSlotProp, orientationProp, toolbarItemsProp } from '../../props';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
-import type { ToolbarButtonItem, ToolbarLinkItem } from './item';
+import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
 
 /**
  * Props configuration for the toolbar component.
@@ -32,7 +32,7 @@ export type ToolbarApi = ApiFromConfig<
 			 * Orchestration records for the items (everything `ButtonFC` or `LinkFC` needs, built by
 			 * `createToolbarItem`), rebuilt whenever `_items` changes.
 			 */
-			itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem>;
+			itemRecords: Array<ToolbarButtonItem | ToolbarLinkItem | ToolbarHRItem>;
 			/**
 			 * The current location reported by the aria-current service, `''` until one is reported.
 			 * Drives the links' `aria-current`.

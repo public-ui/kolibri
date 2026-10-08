@@ -533,8 +533,7 @@ export class KolTextarea
 	}
 
 	/**
-	 * Props of the native `<textarea>` in a fixed key order, which the hydrate snapshot pins. `spellCheck` is
-	 * accepted but not rendered (#10863).
+	 * Props of the native `<textarea>` in a fixed key order, which the hydrate snapshot pins.
 	 */
 	private getTextareaProps(): TextAreaFCProps {
 		const id = this.id;
@@ -556,6 +555,7 @@ export class KolTextarea
 			readonly: this.getRenderProp('readOnly'),
 			required: this.getRenderProp('required'),
 			placeholder: this.getRenderProp('placeholder'),
+			spellcheck: this.getRenderProp('spellCheck'),
 			touched: this.getRenderProp('touched'),
 			msg: this.getRenderProp('msg'),
 			ref: this.ctaRef,

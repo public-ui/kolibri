@@ -3,7 +3,8 @@
  *
  *   publish    a CI run of a pull request finished → download its reports, publish, compute the status
  *   no-visual  the CI run skipped the visual tests → nothing to review, status success
- *   status     a reviewer comment changed → recompute the status from the published report
+ *   status     a reviewer comment or the text of a review changed → recompute the status from the
+ *              published report
  *   pending    a pull request was pushed → status pending until its CI run finishes
  *   docs-only  the push touched only files ci.yml ignores → CI never runs, status success
  *   skip       nothing to do (bot comment, closed pull request, cancelled run, …)
@@ -52,6 +53,14 @@ export async function resolveContext({ eventName, event, api, repository }) {
 	switch (eventName) {
 		case 'workflow_run': {
 			const run = event.workflow_run;
+			// The "Visual Review Trigger" workflow relays a changed review text; it ends as "skipped" for
+			// reviews without a visual-review block.
+			if (run.event === 'pull_request_review') {
+				if (run.conclusion !== 'success') return skip(`review trigger was ${run.conclusion}`);
+				const pull = await findOpenPull({ api, repository, run });
+				if (!pull) return skip(`no open pull request for ${run.head_sha}`);
+				return { mode: 'status', pr: pull.number, head: pull.head.sha, runId: null, reason: 'review changed' };
+			}
 			if (run.event !== 'pull_request') return skip(`run of a ${run.event} event`);
 			if (run.conclusion === 'cancelled') return skip('run was cancelled');
 			const pull = await findOpenPull({ api, repository, run });
