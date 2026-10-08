@@ -13,9 +13,10 @@
 - **Status:** ✅ On the latest 4.x release. The component, hydrate and E2E suites (popover,
   popover-button, split-button, table settings, tooltip) pass on 4.45.2.
 - **Local patch:** `patches/@stencil__core@4.45.2.patch` (registered in `pnpm-workspace.yaml`).
-  Since 4.43.2 the spec test transpiler resolves base classes from other files through
+  Since 4.39.0 the spec test transpiler resolves base classes from other files through
   `tsGetSourceFile`, whose compiler host parses without parent nodes; `getText()` on such a node
-  throws, so every spec of a component that extends an imported base class fails to run. The patch
+  throws, so every spec of a component whose imported base class extends another class fails to
+  run. The patch
   passes `setParentNodes` to `createCompilerHost`. A version bump has to move or drop the patch.
 - **Re-test checklist for every bump:** unit snapshots (`pnpm --filter @public-ui/components test:unit`),
   hydrate snapshots (`pnpm --filter @public-ui/hydrate test:unit`), the components E2E suite and the
