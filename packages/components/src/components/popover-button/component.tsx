@@ -220,7 +220,7 @@ export class KolPopoverButton
 	/**
 	 * Defines which variant should be used for presentation.
 	 */
-	@Prop() public _variant?: VariantClassNamePropType = 'normal';
+	@Prop() public _variant?: VariantClassNamePropType;
 
 	@Watch('_variant')
 	public watchVariant(value?: VariantClassNamePropType): void {
