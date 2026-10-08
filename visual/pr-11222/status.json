@@ -1,400 +1,497 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "60 changed, 28 added, 7 removed – 0 of 95 approved, review pending",
-	"computedAt": "2026-10-08T12:58:15.488Z",
+	"state": "success",
+	"description": "95 visual changes approved by BF150",
+	"computedAt": "2026-10-08T13:42:05.645Z",
 	"pr": 11222,
 	"head": "f5ff28568b8673ac1f2301916fba44f4707a9f95",
 	"digest": "sha256:2f4b75b00038ce5e131cfe0b2f83dbfc132fccdd8d253e5e4b97445425b3d1fa",
 	"counts": {
 		"changes": 95,
-		"open": 95,
-		"approved": 0,
+		"open": 0,
+		"approved": 95,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"BF150"
+	],
 	"items": {
 		"test-tag-name-transformer/button-basic--disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"test-tag-name-transformer/button-basic--hide-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"test-tag-name-transformer/button-basic--icon-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"test-tag-name-transformer/button-basic--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"test-tag-name-transformer/button-variants--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-bwst/button-basic--disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-bwst/button-basic--hide-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-bwst/button-basic--icon-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-bwst/button-basic--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-bwst/button-variants--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/button-basic--disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/button-basic--hide-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/button-basic--icon-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/button-basic--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-default/button-variants--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/alert-basic--default": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/alert-basic--error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/alert-basic--info": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/alert-basic--success": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/alert-basic--warning": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/alert-card-msg--default": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/alert-card-msg--error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/alert-card-msg--info": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/alert-card-msg--success": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/alert-card-msg--warning": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/button-basic--disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/button-basic--hide-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/button-basic--icon-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/button-basic--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/button-variants--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/link-button-basic--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-desy/toast-configurator": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-basic--disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-basic--hide-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-basic--icon-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-basic--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-icons--all-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-icons--basic-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-icons--icon-string": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-icons--large-icon": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-icons--multiple-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-short-key--hide-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-short-key--inline-icons": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-short-key--short-keys": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/button-variants--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/dialog-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/drawer-basic-align-left": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/drawer-basic-align-left-closer-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/drawer-basic-align-top": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/form-basic--form-basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/input-file-basic-noColumns--hide-label-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/input-file-basic-noColumns--label-access-key": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/input-file-basic-noColumns--label-black-bg": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/input-file-basic-noColumns--label-error": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/input-file-basic-noColumns--label-msg-default": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/input-file-basic-noColumns--label-msg-info": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/input-file-basic-noColumns--label-msg-success": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/input-file-basic-noColumns--label-msg-warning": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/input-file-basic-noColumns--label-multiple": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/input-file-basic-noColumns--label-short-key": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/link-button-basic--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/link-button-target--target": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/modal-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/popover-button-basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/popover-button-inline--inline": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/scenarios-focus-elements-component-button": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/scenarios-focus-elements-component-inputFile": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/scenarios-focus-elements-component-inputFileMultiple": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/scenarios-focus-elements-component-linkButton": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/scenarios-focus-elements-component-popoverButton": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/scenarios-focus-elements-component-splitButton": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/scenarios-focus-elements-component-toolbar": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/scenarios-same-height-of-all-form-elements-with-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/scenarios-same-height-of-all-interactive-elements": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/split-button-basic--basic": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/table-action-columns--action-columns": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/table-stateful-with-selection--selection": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/table-stateful-with-single-selection--single-selection": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/table-stateless-with-selection--selection": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/table-stateless-with-single-selection--single-selection": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/toast-configurator": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/toolbar-basic--horizontal": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/toolbar-basic--horizontal-320": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/toolbar-basic--vertical": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-ecl/toolbar-disabled--disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-kern/button-basic--disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-kern/button-basic--hide-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-kern/button-basic--icon-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-kern/button-basic--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"theme-kern/button-variants--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"unstyled/button-basic--disabled": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"unstyled/button-basic--hide-label": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"unstyled/button-basic--icon-positions": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"unstyled/button-basic--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		},
 		"unstyled/button-variants--variants": {
-			"state": "open",
-			"notes": []
+			"state": "approved",
+			"notes": [],
+			"by": "BF150"
 		}
 	}
 }
