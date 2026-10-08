@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "79 changed, 28 added, 7 removed – 0 of 114 approved, review pending",
-	"computedAt": "2026-10-08T09:12:02.314Z",
+	"description": "60 changed, 28 added, 7 removed – 0 of 95 approved, review pending",
+	"computedAt": "2026-10-08T12:58:15.488Z",
 	"pr": 11222,
-	"head": "ee2e72f1253a0b3c4188d93a2cc78bd23a896e01",
-	"digest": "sha256:13a739282c2dab381bdc3c5a3f50e892a177c34626d8739cb098ff5c83bb94ac",
+	"head": "f5ff28568b8673ac1f2301916fba44f4707a9f95",
+	"digest": "sha256:2f4b75b00038ce5e131cfe0b2f83dbfc132fccdd8d253e5e4b97445425b3d1fa",
 	"counts": {
-		"changes": 114,
-		"open": 114,
+		"changes": 95,
+		"open": 95,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -196,10 +196,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-ecl/combobox-basic-noColumns--label-error": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-ecl/dialog-basic-show-dialog-true": {
 			"state": "open",
 			"notes": []
@@ -217,42 +213,6 @@
 			"notes": []
 		},
 		"theme-ecl/form-basic--form-basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-basic-noColumns--left-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-basic-noColumns--right-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-button-noColumns--left-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-button-noColumns--right-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-switch-noColumns--left-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-checkbox-switch-noColumns--right-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-color-basic-noColumns--label-info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-date-basic-noColumns--label-datetime-seconds": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-email-basic-noColumns--label-info-popover": {
 			"state": "open",
 			"notes": []
 		},
@@ -293,30 +253,6 @@
 			"notes": []
 		},
 		"theme-ecl/input-file-basic-noColumns--label-short-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-number-basic-noColumns--label-icons-error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-password-basic-noColumns--label-icons-error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-radio-basic-noColumns--label-horizontal": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-range-basic-noColumns--label-error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-text-basic-noColumns--info-popover": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/input-text-basic-noColumns--readonly-popover": {
 			"state": "open",
 			"notes": []
 		},
@@ -376,14 +312,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-ecl/select-basic-noColumns--label-multiple-error": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/single-select-basic-noColumns--label-error": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-ecl/split-button-basic--basic": {
 			"state": "open",
 			"notes": []
@@ -405,10 +333,6 @@
 			"notes": []
 		},
 		"theme-ecl/table-stateless-with-single-selection--single-selection": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/textarea-basic-noColumns--label-error": {
 			"state": "open",
 			"notes": []
 		},
