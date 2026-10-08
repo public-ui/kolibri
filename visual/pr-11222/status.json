@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "85 changed, 28 added, 7 removed – 0 of 120 approved, review pending",
-	"computedAt": "2026-10-08T08:39:47.552Z",
+	"description": "79 changed, 28 added, 7 removed – 0 of 114 approved, review pending",
+	"computedAt": "2026-10-08T09:12:02.314Z",
 	"pr": 11222,
-	"head": "2f20ba332f8ef52086a40f3837b9020842ae7a07",
-	"digest": "sha256:a2229c5e440c2486c09b40bed924dfabd90389fd8edb3dc030a6cd5269d67c4c",
+	"head": "ee2e72f1253a0b3c4188d93a2cc78bd23a896e01",
+	"digest": "sha256:13a739282c2dab381bdc3c5a3f50e892a177c34626d8739cb098ff5c83bb94ac",
 	"counts": {
-		"changes": 120,
-		"open": 120,
+		"changes": 114,
+		"open": 114,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -137,14 +137,6 @@
 			"notes": []
 		},
 		"theme-desy/link-button-basic--variants": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/popover-button-inline--inline": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/scenarios-focus-elements-component-popoverButton": {
 			"state": "open",
 			"notes": []
 		},
@@ -337,22 +329,6 @@
 			"notes": []
 		},
 		"theme-ecl/modal-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/pagination-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/pagination-basic--basic-320": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/pagination-button-visibility--button-visibility": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/pagination-sibling-boundary--sibling-boundary": {
 			"state": "open",
 			"notes": []
 		},

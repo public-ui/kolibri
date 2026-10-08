@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11222,
-	"head": "2f20ba332f8ef52086a40f3837b9020842ae7a07",
+	"head": "ee2e72f1253a0b3c4188d93a2cc78bd23a896e01",
 	"repository": "public-ui/kolibri",
-	"runId": 37747895914,
-	"generatedAt": "2026-10-08T08:39:46.820Z",
-	"digest": "sha256:a2229c5e440c2486c09b40bed924dfabd90389fd8edb3dc030a6cd5269d67c4c",
+	"runId": 37752124654,
+	"generatedAt": "2026-10-08T09:12:01.443Z",
+	"digest": "sha256:13a739282c2dab381bdc3c5a3f50e892a177c34626d8739cb098ff5c83bb94ac",
 	"baseline": {
 		"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2828,
-		"changed": 85,
+		"unchanged": 2834,
+		"changed": 79,
 		"added": 28,
 		"removed": 7,
 		"error": 0
@@ -7729,13 +7729,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 402,
-				"changed": 14,
+				"unchanged": 404,
+				"changed": 12,
 				"added": 4,
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:8ef089c532ffac8928ba512862201d7488870882a4416db727e160ef00aa3bc5",
+			"digest": "sha256:83e8eb0f71ccf24f81657c39ec09a04050a3a9f66fd5ebe82aab8bcfc0d0147e",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9721,14 +9721,9 @@
 				},
 				{
 					"name": "popover-button-inline--inline",
-					"route": "popover-button/inline",
-					"status": "changed",
-					"hash": "sha256:2fd5509913e753447e8b0ddd84c3af220b1a076a9c6de33b946b4231070c4197",
-					"diffPixels": 178,
-					"diffRatio": 0.003629,
-					"expected": "theme-desy/popover-button-inline--inline.expected.png",
-					"actual": "theme-desy/popover-button-inline--inline.actual.png",
-					"diff": "theme-desy/popover-button-inline--inline.diff.png"
+					"route": "popover-button-inline",
+					"status": "unchanged",
+					"hash": "sha256:1f3901150ec3fd27e6bf1207e7ef7d3134db39ce2ece359c239bd91d7e74916a"
 				},
 				{
 					"name": "progress-basic--custom-units",
@@ -9888,14 +9883,9 @@
 				},
 				{
 					"name": "scenarios-focus-elements-component-popoverButton",
-					"route": "scenarios/focus-elements?component=popoverButton",
-					"status": "changed",
-					"hash": "sha256:1e027b0e2310adb1af016617650e5f06d2b273ee2a9e55cc1dbf3f16dd48b8f8",
-					"diffPixels": 1567,
-					"diffRatio": 0.0757,
-					"expected": "theme-desy/scenarios-focus-elements-component-popoverButton.expected.png",
-					"actual": "theme-desy/scenarios-focus-elements-component-popoverButton.actual.png",
-					"diff": "theme-desy/scenarios-focus-elements-component-popoverButton.diff.png"
+					"route": "scenarios-focus-elements-component-popoverButton",
+					"status": "unchanged",
+					"hash": "sha256:72c3a19f7e8c9e1d0920e153585c09983ad66164cecd8cd2f0e42f9ab21ed12b"
 				},
 				{
 					"name": "scenarios-focus-elements-component-select",
@@ -10411,13 +10401,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 345,
-				"changed": 71,
+				"unchanged": 349,
+				"changed": 67,
 				"added": 4,
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:853b129c18d03715475d24c42d03834ddf74714ccf59df3e7b1657024977e704",
+			"digest": "sha256:3fd69bd0cae39db519d298ad0743c3caa82a41791d56e99787f1dd4b5a086bfa",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10537,14 +10527,14 @@
 					"name": "button-basic--disabled",
 					"route": "button/basic",
 					"status": "added",
-					"hash": "sha256:7239201ca12139e3c76772ff223f0e18c78dd93cf30cc7a892726e7b2f60eff2",
+					"hash": "sha256:e60c63d051e38a387e6059a15d75657919673007a12ea202cc862494fb8fb214",
 					"actual": "theme-ecl/button-basic--disabled.actual.png"
 				},
 				{
 					"name": "button-basic--hide-label",
 					"route": "button/basic",
 					"status": "added",
-					"hash": "sha256:5fd64d8fbdf0fb0a2205db83498f7882e9d0861812912068ca88d93b09afbaaf",
+					"hash": "sha256:2b61f4e2e35f91e81d196bbeeb393f2d69ce4d3e290631e5253cc90a760c9592",
 					"actual": "theme-ecl/button-basic--hide-label.actual.png"
 				},
 				{
@@ -10558,7 +10548,7 @@
 					"name": "button-basic--variants",
 					"route": "button/basic",
 					"status": "added",
-					"hash": "sha256:cafacf1faf24be2430873c6bdf9e0b4e32199fe1f703a0814f99837202110e39",
+					"hash": "sha256:893c7cb7979ef9113535e54428df306191e92264a8a1c73cf68981607d9cbe19",
 					"actual": "theme-ecl/button-basic--variants.actual.png"
 				},
 				{
@@ -10851,9 +10841,9 @@
 					"name": "form-basic--form-basic",
 					"route": "form/basic",
 					"status": "changed",
-					"hash": "sha256:2b6cd9eb9738c652eabc5bb51a5ba52f9aea442f757c42dd95adc0b38d227388",
-					"diffPixels": 242,
-					"diffRatio": 0.002544,
+					"hash": "sha256:044a7991aa339d320e62264155a7052400b63a502d2ec4e541d0b8c265819a58",
+					"diffPixels": 237,
+					"diffRatio": 0.002491,
 					"expected": "theme-ecl/form-basic--form-basic.expected.png",
 					"actual": "theme-ecl/form-basic--form-basic.actual.png",
 					"diff": "theme-ecl/form-basic--form-basic.diff.png"
@@ -11693,9 +11683,9 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:a0a97f069724b0fdaf54f0947ecc612ac6324c83272b8857edbefc1b5e93ef11",
-					"diffPixels": 221,
-					"diffRatio": 0.005133,
+					"hash": "sha256:ea3f309df4e0320e1f7a9b67ab3bd1c29c43721466fa6ec34c0847b0fd61717d",
+					"diffPixels": 215,
+					"diffRatio": 0.004993,
 					"expected": "theme-ecl/input-file-basic-noColumns--hide-label-error.expected.png",
 					"actual": "theme-ecl/input-file-basic-noColumns--hide-label-error.actual.png",
 					"diff": "theme-ecl/input-file-basic-noColumns--hide-label-error.diff.png"
@@ -11704,9 +11694,9 @@
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:22c806ae1165c9c28f490a1e2e2e7c20f7d9e70ae744b6f570a03aa4dc0bd313",
-					"diffPixels": 221,
-					"diffRatio": 0.006054,
+					"hash": "sha256:79383739dd3b40959c0993aca69ae51ae335c7c8475bb4a16fe1a7d58f5bdbfc",
+					"diffPixels": 213,
+					"diffRatio": 0.005835,
 					"expected": "theme-ecl/input-file-basic-noColumns--label-access-key.expected.png",
 					"actual": "theme-ecl/input-file-basic-noColumns--label-access-key.actual.png",
 					"diff": "theme-ecl/input-file-basic-noColumns--label-access-key.diff.png"
@@ -11715,9 +11705,9 @@
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:2095986936bbd8cb22012f9d56ab8a0b82c12dfe220e21588685d8f600f38176",
-					"diffPixels": 221,
-					"diffRatio": 0.005024,
+					"hash": "sha256:135478b56c2be1fb0d4c184a5f551ac1b4b7f446f2aacfae3775d45d03aa0547",
+					"diffPixels": 213,
+					"diffRatio": 0.004842,
 					"expected": "theme-ecl/input-file-basic-noColumns--label-black-bg.expected.png",
 					"actual": "theme-ecl/input-file-basic-noColumns--label-black-bg.actual.png",
 					"diff": "theme-ecl/input-file-basic-noColumns--label-black-bg.diff.png"
@@ -11732,9 +11722,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:b80be54428cab1658f696db01b3c34a835c0e31b8d50d599b168b01260d38d90",
-					"diffPixels": 247,
-					"diffRatio": 0.004256,
+					"hash": "sha256:ba6e4081116d2c51aa1454355fc6ab270f262136604436d860da1e8263e18cb9",
+					"diffPixels": 241,
+					"diffRatio": 0.004153,
 					"expected": "theme-ecl/input-file-basic-noColumns--label-error.expected.png",
 					"actual": "theme-ecl/input-file-basic-noColumns--label-error.actual.png",
 					"diff": "theme-ecl/input-file-basic-noColumns--label-error.diff.png"
@@ -11743,9 +11733,9 @@
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:87b6b3a5d66e978eafe655f082d43b79fdddee19249d0515a5a28de067172753",
-					"diffPixels": 221,
-					"diffRatio": 0.004455,
+					"hash": "sha256:6928c926ca2db75819c1ac7c88887e87ba7179c4da99f2c4d1e81fa28358d91c",
+					"diffPixels": 213,
+					"diffRatio": 0.004294,
 					"expected": "theme-ecl/input-file-basic-noColumns--label-msg-default.expected.png",
 					"actual": "theme-ecl/input-file-basic-noColumns--label-msg-default.actual.png",
 					"diff": "theme-ecl/input-file-basic-noColumns--label-msg-default.diff.png"
@@ -11754,9 +11744,9 @@
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:e6d9f0ab44970f3908437834d799334c1406447f5d7d4e8c85ed6fe3f55e3f21",
-					"diffPixels": 221,
-					"diffRatio": 0.004455,
+					"hash": "sha256:a16432315babaeb12d470648ba7c59a6ad57431dac36da7bd38bf5fd65926188",
+					"diffPixels": 213,
+					"diffRatio": 0.004294,
 					"expected": "theme-ecl/input-file-basic-noColumns--label-msg-info.expected.png",
 					"actual": "theme-ecl/input-file-basic-noColumns--label-msg-info.actual.png",
 					"diff": "theme-ecl/input-file-basic-noColumns--label-msg-info.diff.png"
@@ -11765,9 +11755,9 @@
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:249e4bed70b9bf41202743860539e6fe41232f6e0ce13a61d93ebcfbb4da1245",
-					"diffPixels": 221,
-					"diffRatio": 0.004455,
+					"hash": "sha256:251d706ba69e7c5e437e64b9e70734f47dbbae0c9e162a780707aa16619438ea",
+					"diffPixels": 213,
+					"diffRatio": 0.004294,
 					"expected": "theme-ecl/input-file-basic-noColumns--label-msg-success.expected.png",
 					"actual": "theme-ecl/input-file-basic-noColumns--label-msg-success.actual.png",
 					"diff": "theme-ecl/input-file-basic-noColumns--label-msg-success.diff.png"
@@ -11776,9 +11766,9 @@
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:dab49acb78f0b8a1e6f0a1414c0f475e64e72d7bb0a799541df9022eb3256080",
-					"diffPixels": 221,
-					"diffRatio": 0.004455,
+					"hash": "sha256:970464acb5ff82b0bdaa87cc24a99c26b55fe2fb335508eaa15907386432d458",
+					"diffPixels": 213,
+					"diffRatio": 0.004294,
 					"expected": "theme-ecl/input-file-basic-noColumns--label-msg-warning.expected.png",
 					"actual": "theme-ecl/input-file-basic-noColumns--label-msg-warning.actual.png",
 					"diff": "theme-ecl/input-file-basic-noColumns--label-msg-warning.diff.png"
@@ -11787,9 +11777,9 @@
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:25d68d2e05bcdea5687da9a624a8f2ac3ab271f9d49c663c60f00d6cc174179c",
-					"diffPixels": 221,
-					"diffRatio": 0.006054,
+					"hash": "sha256:9224b11ffcfdcfc88c6d1f00210c2bf8adb864ad0b375d7bce22d460baea1a59",
+					"diffPixels": 213,
+					"diffRatio": 0.005835,
 					"expected": "theme-ecl/input-file-basic-noColumns--label-multiple.expected.png",
 					"actual": "theme-ecl/input-file-basic-noColumns--label-multiple.actual.png",
 					"diff": "theme-ecl/input-file-basic-noColumns--label-multiple.diff.png"
@@ -11798,9 +11788,9 @@
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:1e9ab0f268750bb81756a6e0fe17104edbdd262112653a0d3fbc16f915fbd209",
-					"diffPixels": 221,
-					"diffRatio": 0.006054,
+					"hash": "sha256:f64cadb8c0de65e468a0569da61fedb21f1486e524d4f1660c1670d8ff1da853",
+					"diffPixels": 213,
+					"diffRatio": 0.005835,
 					"expected": "theme-ecl/input-file-basic-noColumns--label-short-key.expected.png",
 					"actual": "theme-ecl/input-file-basic-noColumns--label-short-key.actual.png",
 					"diff": "theme-ecl/input-file-basic-noColumns--label-short-key.diff.png"
@@ -12475,9 +12465,9 @@
 					"name": "link-button-basic--variants",
 					"route": "link-button/basic",
 					"status": "changed",
-					"hash": "sha256:257f56fa314d67963e1f8089a207dd270b7dc14b08f47002d4cf6f6cb02e5066",
-					"diffPixels": 30609,
-					"diffRatio": 0.177926,
+					"hash": "sha256:726111327d6509be0f03c3cd1bb598a4af698e304391be4d377069294f3698d7",
+					"diffPixels": 30730,
+					"diffRatio": 0.17863,
 					"sizeMismatch": {
 						"expected": [
 							768,
@@ -12588,55 +12578,35 @@
 				},
 				{
 					"name": "pagination-basic--basic",
-					"route": "pagination/basic",
-					"status": "changed",
-					"hash": "sha256:180f69920fb077de0533030e6bcba03e4e8a82cbaf80b649e7b83af39ddf704e",
-					"diffPixels": 2,
-					"diffRatio": 0.000003,
-					"expected": "theme-ecl/pagination-basic--basic.expected.png",
-					"actual": "theme-ecl/pagination-basic--basic.actual.png",
-					"diff": "theme-ecl/pagination-basic--basic.diff.png"
+					"route": "pagination-basic",
+					"status": "unchanged",
+					"hash": "sha256:008f9542c718387133c2a60e53e55ebf55c8352da1b28cffdf0f312a50f491cc"
 				},
 				{
 					"name": "pagination-basic--basic-320",
-					"route": "pagination/basic",
-					"status": "changed",
-					"hash": "sha256:8876f868b0647a450b685c71a85e48a771aa67a96e5aba9d3833b04b3378e254",
-					"diffPixels": 2,
-					"diffRatio": 0.000005,
-					"expected": "theme-ecl/pagination-basic--basic-320.expected.png",
-					"actual": "theme-ecl/pagination-basic--basic-320.actual.png",
-					"diff": "theme-ecl/pagination-basic--basic-320.diff.png"
+					"route": "pagination-basic",
+					"status": "unchanged",
+					"hash": "sha256:1f391669f78dcae2586199759cf023df40afc4981d79ee1554772ebd1ee19e75"
 				},
 				{
 					"name": "pagination-button-visibility--button-visibility",
-					"route": "pagination/button-visibility",
-					"status": "changed",
-					"hash": "sha256:6c87e8186e0dbe392df65b8456e96cfb2931f9d58c5b2b15ad03efa4a3581d1c",
-					"diffPixels": 2,
-					"diffRatio": 0.000011,
-					"expected": "theme-ecl/pagination-button-visibility--button-visibility.expected.png",
-					"actual": "theme-ecl/pagination-button-visibility--button-visibility.actual.png",
-					"diff": "theme-ecl/pagination-button-visibility--button-visibility.diff.png"
+					"route": "pagination-button-visibility",
+					"status": "unchanged",
+					"hash": "sha256:52c096b73a72908f130194e22125947d3e2e43a32b70d0d8a1d985b4134a8592"
 				},
 				{
 					"name": "pagination-sibling-boundary--sibling-boundary",
-					"route": "pagination/sibling-boundary",
-					"status": "changed",
-					"hash": "sha256:0e8f2c5caf318dbeea0906803042a77e925019c7c7fe78d7776871cc0225fb3c",
-					"diffPixels": 2,
-					"diffRatio": 0.000002,
-					"expected": "theme-ecl/pagination-sibling-boundary--sibling-boundary.expected.png",
-					"actual": "theme-ecl/pagination-sibling-boundary--sibling-boundary.actual.png",
-					"diff": "theme-ecl/pagination-sibling-boundary--sibling-boundary.diff.png"
+					"route": "pagination-sibling-boundary",
+					"status": "unchanged",
+					"hash": "sha256:0e9e885db52c5e5cceec14f4b5049437663f63964e1d400a11a0c9f7207f20c6"
 				},
 				{
 					"name": "popover-button-basic",
 					"route": "popover-button/basic",
 					"status": "changed",
-					"hash": "sha256:c76fae3d3e17f1dbea48bf1152b8cd0971cf96e1015b50595a2ceacd444db5da",
-					"diffPixels": 1236,
-					"diffRatio": 0.028091,
+					"hash": "sha256:b29ef5c3febbcddb9ad0d8f0892f45f790ffe72ac5933d035124ce79ddaa11b3",
+					"diffPixels": 1232,
+					"diffRatio": 0.028,
 					"expected": "theme-ecl/popover-button-basic.expected.png",
 					"actual": "theme-ecl/popover-button-basic.actual.png",
 					"diff": "theme-ecl/popover-button-basic.diff.png"
@@ -12645,9 +12615,9 @@
 					"name": "popover-button-inline--inline",
 					"route": "popover-button/inline",
 					"status": "changed",
-					"hash": "sha256:60eddb4957c87a8d1c086a70a81541af9e3c7737dda1198f75d763475d74cfd8",
-					"diffPixels": 179,
-					"diffRatio": 0.00367,
+					"hash": "sha256:98f28fb3863778649ea31a4a12a273312db4b01d7b678d27d5e0eb5ede524712",
+					"diffPixels": 163,
+					"diffRatio": 0.003342,
 					"expected": "theme-ecl/popover-button-inline--inline.expected.png",
 					"actual": "theme-ecl/popover-button-inline--inline.actual.png",
 					"diff": "theme-ecl/popover-button-inline--inline.diff.png"
@@ -12763,7 +12733,7 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios/focus-elements?component=inputFile",
 					"status": "changed",
-					"hash": "sha256:efca9c09d56d354ac36eae833c8dcfbac31ea8ab23944a547b8e433299c69c04",
+					"hash": "sha256:8e5d27771dcda701ece97d14f7793ab6df800c255ca8ef863163cec87be91294",
 					"diffPixels": 214,
 					"diffRatio": 0.006485,
 					"expected": "theme-ecl/scenarios-focus-elements-component-inputFile.expected.png",
@@ -12774,7 +12744,7 @@
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios/focus-elements?component=inputFileMultiple",
 					"status": "changed",
-					"hash": "sha256:292de0392c6a97b4a7b65476120166f190818444c030c93ad67bda70744c857d",
+					"hash": "sha256:9266de2fc5804c4b7f90dbca4170ebed22efbb18c3e4047a6ac822d18867db49",
 					"diffPixels": 214,
 					"diffRatio": 0.006485,
 					"expected": "theme-ecl/scenarios-focus-elements-component-inputFileMultiple.expected.png",
@@ -12832,9 +12802,9 @@
 					"name": "scenarios-focus-elements-component-popoverButton",
 					"route": "scenarios/focus-elements?component=popoverButton",
 					"status": "changed",
-					"hash": "sha256:177889215bc01a6c3c06ab77b5af0572cf58e5593070562f9edf7193d67a69d6",
-					"diffPixels": 2031,
-					"diffRatio": 0.087922,
+					"hash": "sha256:22f6443a582b3243e672b7c4ba37d54cad055a7f7b5b43050502bb4056d340ca",
+					"diffPixels": 2026,
+					"diffRatio": 0.087706,
 					"expected": "theme-ecl/scenarios-focus-elements-component-popoverButton.expected.png",
 					"actual": "theme-ecl/scenarios-focus-elements-component-popoverButton.actual.png",
 					"diff": "theme-ecl/scenarios-focus-elements-component-popoverButton.diff.png"
@@ -12907,9 +12877,9 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios/same-height-of-all-form-elements-with-label",
 					"status": "changed",
-					"hash": "sha256:a99977ac311681ce547dc476fc01f5ad98e72cbed41ca559b7ed4fb8c3d73010",
-					"diffPixels": 21523,
-					"diffRatio": 0.046068,
+					"hash": "sha256:0148117f2968ac27b7748639a8256e0b661b977668f9af9d5d61854129a43a21",
+					"diffPixels": 21527,
+					"diffRatio": 0.046077,
 					"sizeMismatch": {
 						"expected": [
 							800,
@@ -12928,9 +12898,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:785740c609604e101bf20b585209155d067132f1ec3e7d7567bb6984ff06ab9b",
-					"diffPixels": 1708,
-					"diffRatio": 0.005446,
+					"hash": "sha256:33601a94a3adae8787a12bd9dbc814dc769f22d9c51c5bcdec01caf2bb08c8c1",
+					"diffPixels": 1702,
+					"diffRatio": 0.005427,
 					"expected": "theme-ecl/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "theme-ecl/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "theme-ecl/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -13124,9 +13094,9 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table/action-columns",
 					"status": "changed",
-					"hash": "sha256:280146d141975551c5fdcfe68d7f0db209306208940749c9de639772d8a3b06c",
-					"diffPixels": 1336,
-					"diffRatio": 0.005799,
+					"hash": "sha256:d54eec2f648c344e89b7b068cc5599df2e3b9916ecfbd20cf371ff8081d9badf",
+					"diffPixels": 1364,
+					"diffRatio": 0.005921,
 					"expected": "theme-ecl/table-action-columns--action-columns.expected.png",
 					"actual": "theme-ecl/table-action-columns--action-columns.actual.png",
 					"diff": "theme-ecl/table-action-columns--action-columns.diff.png"
@@ -13194,9 +13164,9 @@
 					"name": "table-stateful-with-single-selection--single-selection",
 					"route": "table/stateful-with-single-selection",
 					"status": "changed",
-					"hash": "sha256:cbbca32fc9f56c63ac7be472c916929a7483c8284115943ce9b5124d16068aa1",
-					"diffPixels": 1008,
-					"diffRatio": 0.003348,
+					"hash": "sha256:b6cbc6d93669e4f7031e4191aa958bdccac668154d4e22c00ac3ef8ab750b864",
+					"diffPixels": 1016,
+					"diffRatio": 0.003375,
 					"expected": "theme-ecl/table-stateful-with-single-selection--single-selection.expected.png",
 					"actual": "theme-ecl/table-stateful-with-single-selection--single-selection.actual.png",
 					"diff": "theme-ecl/table-stateful-with-single-selection--single-selection.diff.png"
@@ -13403,9 +13373,9 @@
 					"name": "toolbar-basic--horizontal",
 					"route": "toolbar/basic",
 					"status": "changed",
-					"hash": "sha256:bfaf8b79ed797450e9dedca0eef912a5fb963444c439ad9527e07d35ed00e673",
-					"diffPixels": 5019,
-					"diffRatio": 0.085789,
+					"hash": "sha256:0b9579a73b88357a451a96f6b12f364e04ac91fbe8fccf56679132b0edc4d362",
+					"diffPixels": 5046,
+					"diffRatio": 0.086251,
 					"expected": "theme-ecl/toolbar-basic--horizontal.expected.png",
 					"actual": "theme-ecl/toolbar-basic--horizontal.actual.png",
 					"diff": "theme-ecl/toolbar-basic--horizontal.diff.png"
@@ -13414,9 +13384,9 @@
 					"name": "toolbar-basic--horizontal-320",
 					"route": "toolbar/basic",
 					"status": "changed",
-					"hash": "sha256:d879f1059c349fd7d179214a3fefb9ac1cf8faf361c4482609eae959527bd70a",
-					"diffPixels": 5018,
-					"diffRatio": 0.107553,
+					"hash": "sha256:80372f52d31c98c7ffeee090004f401612756aeb4077cea984733b6456febd8e",
+					"diffPixels": 5037,
+					"diffRatio": 0.10796,
 					"expected": "theme-ecl/toolbar-basic--horizontal-320.expected.png",
 					"actual": "theme-ecl/toolbar-basic--horizontal-320.actual.png",
 					"diff": "theme-ecl/toolbar-basic--horizontal-320.diff.png"
@@ -13425,9 +13395,9 @@
 					"name": "toolbar-basic--vertical",
 					"route": "toolbar/basic",
 					"status": "changed",
-					"hash": "sha256:b040cf140dfdb71bdb1f0509033516b10110af8e5f103b3bf42de598a8ec1304",
-					"diffPixels": 6126,
-					"diffRatio": 0.17449,
+					"hash": "sha256:57ddf74d0a4a985d33c689c1aeaaa96858503bfa5866fac630e9817ba5930573",
+					"diffPixels": 6131,
+					"diffRatio": 0.174633,
 					"expected": "theme-ecl/toolbar-basic--vertical.expected.png",
 					"actual": "theme-ecl/toolbar-basic--vertical.actual.png",
 					"diff": "theme-ecl/toolbar-basic--vertical.diff.png"
