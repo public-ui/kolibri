@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11222,
-	"head": "4fe709db889e79430eb66f4f611fb6e85d6e981e",
+	"head": "2f20ba332f8ef52086a40f3837b9020842ae7a07",
 	"repository": "public-ui/kolibri",
-	"runId": 37739366120,
-	"generatedAt": "2026-10-08T07:10:31.955Z",
-	"digest": "sha256:9b4c36d564ec9efa2c238c40bc52a3cb4991f89ff28ed90235c461a5a830d103",
+	"runId": 37747895914,
+	"generatedAt": "2026-10-08T08:39:46.820Z",
+	"digest": "sha256:a2229c5e440c2486c09b40bed924dfabd90389fd8edb3dc030a6cd5269d67c4c",
 	"baseline": {
-		"sha": "62a65c5b3e0674ce1b763b6cee362f2ee5691e07",
+		"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2821,
-		"changed": 92,
+		"unchanged": 2828,
+		"changed": 85,
 		"added": 28,
 		"removed": 7,
 		"error": 0
@@ -30,12 +30,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62a65c5b3e0674ce1b763b6cee362f2ee5691e07",
+					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
 					"ref": "develop",
-					"runId": 37724423124,
+					"runId": 37746323129,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T03:55:34.670Z",
+					"createdAt": "2026-10-08T08:01:58.614Z",
 					"digest": "sha256:eadb35fe61ec50b226112fc42ced9227f974b3ba6056b288044ab0904f2b2444",
 					"fallback": null,
 					"distance": 0,
@@ -2592,12 +2592,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62a65c5b3e0674ce1b763b6cee362f2ee5691e07",
+					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
 					"ref": "develop",
-					"runId": 37724423124,
+					"runId": 37746323129,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T03:55:33.793Z",
+					"createdAt": "2026-10-08T08:00:41.445Z",
 					"digest": "sha256:8a04600e94d55e42bb9e0d0004d311efa3ae6fe619d9735e98a32fea1454e859",
 					"fallback": null,
 					"distance": 0,
@@ -5154,12 +5154,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62a65c5b3e0674ce1b763b6cee362f2ee5691e07",
+					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
 					"ref": "develop",
-					"runId": 37724423124,
+					"runId": 37746323129,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T03:55:34.670Z",
+					"createdAt": "2026-10-08T08:01:58.614Z",
 					"digest": "sha256:eadb35fe61ec50b226112fc42ced9227f974b3ba6056b288044ab0904f2b2444",
 					"fallback": null,
 					"distance": 0,
@@ -7716,26 +7716,26 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62a65c5b3e0674ce1b763b6cee362f2ee5691e07",
+					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
 					"ref": "develop",
-					"runId": 37724423124,
+					"runId": 37746323129,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T03:54:57.814Z",
-					"digest": "sha256:572ee9da93d5552896a36d3f114762dc2b953ac6f6189a9f9e47710d21afac4a",
+					"createdAt": "2026-10-08T08:01:00.856Z",
+					"digest": "sha256:c128f0af58fef692b81ba55c4da3c69b41f501b83eb1a93bed807b3aa1c38e32",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 397,
-				"changed": 19,
+				"unchanged": 402,
+				"changed": 14,
 				"added": 4,
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:89f5d739dba865a4f1fc169a73a06de0ef534de977f6ec6525d06092068eff54",
+			"digest": "sha256:8ef089c532ffac8928ba512862201d7488870882a4416db727e160ef00aa3bc5",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7919,25 +7919,25 @@
 					"name": "badge-basic--basic-horizontal",
 					"route": "badge-basic",
 					"status": "unchanged",
-					"hash": "sha256:9142caf855d18219d7213824457d4579b7a8c154ddcec207de818ccb5de57df1"
+					"hash": "sha256:aa83f9efbf2e48260424d6ba25fcbfb9a083dcb491e2d212f483cb2e41eec41d"
 				},
 				{
 					"name": "badge-basic--basic-vertical",
 					"route": "badge-basic",
 					"status": "unchanged",
-					"hash": "sha256:e72324f2e8329ab6f8f7b67c93e6676902d10144d7d051e795ea616419cc69c4"
+					"hash": "sha256:f29b12a15692e82a4d3ae249cc3141b99a3af3673d61738336ce6f23c23f5b6f"
 				},
 				{
 					"name": "badge-basic--formatted-label",
 					"route": "badge-basic",
 					"status": "unchanged",
-					"hash": "sha256:b8531672236299886f2ab5a90b94720d514d27cf0a5ded768c3571301e7c56e2"
+					"hash": "sha256:556747213de5c53834b511f3d9a1d3761e5122e23e287b127ef38df306cc9e5e"
 				},
 				{
 					"name": "badge-basic--smart-button",
 					"route": "badge-basic",
 					"status": "unchanged",
-					"hash": "sha256:61fde81a4d64df76d7660ac3c5e34ec8f68f3152b0eaa801a6b5c61b1fbe4cc9"
+					"hash": "sha256:12728c088b2c95588ea9981969970a4c9c3f344b0c6879a36b1fcd0afb4cb267"
 				},
 				{
 					"name": "breadcrumb-basic--basic",
@@ -8168,14 +8168,9 @@
 				},
 				{
 					"name": "dialog-basic-show-dialog-true",
-					"route": "dialog/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:a544c2fd236f4d47cd96b591ef1555aaad2fdc9b057c19a3823f2202e27eaf2e",
-					"diffPixels": 252,
-					"diffRatio": 0.000219,
-					"expected": "theme-desy/dialog-basic-show-dialog-true.expected.png",
-					"actual": "theme-desy/dialog-basic-show-dialog-true.actual.png",
-					"diff": "theme-desy/dialog-basic-show-dialog-true.diff.png"
+					"route": "dialog-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:4e370f5d7539a0e3a12b6c0fa679a5e5ced0e4720609ba5ccfc8cd39918741e0"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -9672,14 +9667,9 @@
 				},
 				{
 					"name": "modal-basic-show-dialog-true",
-					"route": "modal/basic?show-dialog=true",
-					"status": "changed",
-					"hash": "sha256:d6c1f43881798fccb4880a180c02e599bba59ced0bf1766e8a86e1042cb2a721",
-					"diffPixels": 252,
-					"diffRatio": 0.000219,
-					"expected": "theme-desy/modal-basic-show-dialog-true.expected.png",
-					"actual": "theme-desy/modal-basic-show-dialog-true.actual.png",
-					"diff": "theme-desy/modal-basic-show-dialog-true.diff.png"
+					"route": "modal-basic-show-dialog-true",
+					"status": "unchanged",
+					"hash": "sha256:2c31078a0eb7b094ed07c84bdaf9a25a775ddcae97e403933590dc31cf65587c"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
@@ -9786,7 +9776,7 @@
 					"name": "scenarios-focus-elements-component-badge",
 					"route": "scenarios-focus-elements-component-badge",
 					"status": "unchanged",
-					"hash": "sha256:617535c035afc74a681b5ba098d278cb6efdda6eb37f8e4e72db96963f40fad6"
+					"hash": "sha256:a8ff08e342d4adee8b5b41954914f17374020c99918ced2241f9a46e4e8a88fe"
 				},
 				{
 					"name": "scenarios-focus-elements-component-button",
@@ -10169,7 +10159,7 @@
 					"name": "table-state-columns--action-columns",
 					"route": "table-state-columns",
 					"status": "unchanged",
-					"hash": "sha256:b84b5f4fae5a7ce2e03c5d2abeb5d8c2131eaf30adb188c766d1bad97bcbc0ee"
+					"hash": "sha256:f427f644ea9880c1f4883c46ec8e6550e4e957e19279fa44ae4d7228eff0da60"
 				},
 				{
 					"name": "table-stateful-async",
@@ -10364,36 +10354,21 @@
 				},
 				{
 					"name": "toolbar-basic--horizontal",
-					"route": "toolbar/basic",
-					"status": "changed",
-					"hash": "sha256:4809962077763889425584ac1a4e8fbe3a518f4365b31c8833d395a3af863f35",
-					"diffPixels": 158,
-					"diffRatio": 0.003057,
-					"expected": "theme-desy/toolbar-basic--horizontal.expected.png",
-					"actual": "theme-desy/toolbar-basic--horizontal.actual.png",
-					"diff": "theme-desy/toolbar-basic--horizontal.diff.png"
+					"route": "toolbar-basic",
+					"status": "unchanged",
+					"hash": "sha256:fc7e4a853c9df1c7a948a2d412dc7967997d74bb4d2dc94dae8ec5de7bcfb863"
 				},
 				{
 					"name": "toolbar-basic--horizontal-320",
-					"route": "toolbar/basic",
-					"status": "changed",
-					"hash": "sha256:33f9d5fdd32b1ba30669f09d2ddb7cba4c487bfbf781c215f5e5dc8cd4d08b69",
-					"diffPixels": 158,
-					"diffRatio": 0.003836,
-					"expected": "theme-desy/toolbar-basic--horizontal-320.expected.png",
-					"actual": "theme-desy/toolbar-basic--horizontal-320.actual.png",
-					"diff": "theme-desy/toolbar-basic--horizontal-320.diff.png"
+					"route": "toolbar-basic",
+					"status": "unchanged",
+					"hash": "sha256:ef701cd064dd1d427a3c75d8c8b59c46d06141c7dbd04e5c85700f001d602770"
 				},
 				{
 					"name": "toolbar-basic--vertical",
-					"route": "toolbar/basic",
-					"status": "changed",
-					"hash": "sha256:85706ef41b4f32ee85ab9292f51f216d15f5d82604450591a41976b52e5f56bb",
-					"diffPixels": 158,
-					"diffRatio": 0.004553,
-					"expected": "theme-desy/toolbar-basic--vertical.expected.png",
-					"actual": "theme-desy/toolbar-basic--vertical.actual.png",
-					"diff": "theme-desy/toolbar-basic--vertical.diff.png"
+					"route": "toolbar-basic",
+					"status": "unchanged",
+					"hash": "sha256:744cb9eee53d60227b2890a46d18bc1a285b01980fe74dc8a0f2ec67277ae2c3"
 				},
 				{
 					"name": "toolbar-disabled--disabled",
@@ -10411,7 +10386,7 @@
 					"name": "version-basic--basic",
 					"route": "version-basic",
 					"status": "unchanged",
-					"hash": "sha256:fba6d304fea25d4db8a726c33fdc69bf9c743319f6c6d07246770cc19f255ed2"
+					"hash": "sha256:2e8fb794de4414e1ef5784c8865027c369226d093c2b28b76444afd5abed7c1d"
 				}
 			],
 			"errors": [],
@@ -10423,12 +10398,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62a65c5b3e0674ce1b763b6cee362f2ee5691e07",
+					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
 					"ref": "develop",
-					"runId": 37724423124,
+					"runId": 37746323129,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T03:54:02.275Z",
+					"createdAt": "2026-10-08T08:00:43.351Z",
 					"digest": "sha256:a0cfc6ecb8273d9f4ca2170c3f2ce6a53b95d150f97b497affead4de2da6aa74",
 					"fallback": null,
 					"distance": 0,
@@ -10436,13 +10411,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 343,
-				"changed": 73,
+				"unchanged": 345,
+				"changed": 71,
 				"added": 4,
 				"removed": 1,
 				"error": 0
 			},
-			"digest": "sha256:ef729b8f97482605e9fd26dc2ccb5fd33c6e9584e1c3439afc31d51c4dbc1432",
+			"digest": "sha256:853b129c18d03715475d24c42d03834ddf74714ccf59df3e7b1657024977e704",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10576,7 +10551,7 @@
 					"name": "button-basic--icon-positions",
 					"route": "button/basic",
 					"status": "added",
-					"hash": "sha256:8cdc1a88a87d8d5a895e5335961ccd6a8fee43a5fda1613af5c635b2b46e49c7",
+					"hash": "sha256:ee6d086768329ec7460666992a7dabbcae066876ae46296a1d85f5cb2860ca3f",
 					"actual": "theme-ecl/button-basic--icon-positions.actual.png"
 				},
 				{
@@ -10590,9 +10565,9 @@
 					"name": "button-icons--all-positions",
 					"route": "button/icons",
 					"status": "changed",
-					"hash": "sha256:714a56692379923077ec186c84e623247947919fe691d061f2df3fb81c52059a",
-					"diffPixels": 639,
-					"diffRatio": 0.047772,
+					"hash": "sha256:3e812e5eb8bb1bf751cd3061127b4d23471833187a9d1ed02b40982f546d6ddb",
+					"diffPixels": 159,
+					"diffRatio": 0.011887,
 					"expected": "theme-ecl/button-icons--all-positions.expected.png",
 					"actual": "theme-ecl/button-icons--all-positions.actual.png",
 					"diff": "theme-ecl/button-icons--all-positions.diff.png"
@@ -10601,9 +10576,9 @@
 					"name": "button-icons--basic-positions",
 					"route": "button/icons",
 					"status": "changed",
-					"hash": "sha256:b694e3d0f401d6fd67cf863431a8d8c63ec89492346ae8940779da6dc64c28ed",
-					"diffPixels": 1714,
-					"diffRatio": 0.058731,
+					"hash": "sha256:e3e23a775e48b21d98a4dbf75c2cd2a1b90390013c65abf6b8f5f55b5aa4ebc5",
+					"diffPixels": 442,
+					"diffRatio": 0.015145,
 					"expected": "theme-ecl/button-icons--basic-positions.expected.png",
 					"actual": "theme-ecl/button-icons--basic-positions.actual.png",
 					"diff": "theme-ecl/button-icons--basic-positions.diff.png"
@@ -10612,9 +10587,9 @@
 					"name": "button-icons--icon-string",
 					"route": "button/icons",
 					"status": "changed",
-					"hash": "sha256:355f820a614e873bcb7b4eb35999af2caaeb69201ff9d0ab316f261027205917",
-					"diffPixels": 1543,
-					"diffRatio": 0.079189,
+					"hash": "sha256:5975af12bfb5105ead32e87c230004a5de4c014e86479813dc68a4b423cc0a19",
+					"diffPixels": 568,
+					"diffRatio": 0.029151,
 					"expected": "theme-ecl/button-icons--icon-string.expected.png",
 					"actual": "theme-ecl/button-icons--icon-string.actual.png",
 					"diff": "theme-ecl/button-icons--icon-string.diff.png"
@@ -10623,9 +10598,9 @@
 					"name": "button-icons--large-icon",
 					"route": "button/icons",
 					"status": "changed",
-					"hash": "sha256:cb7e3b1605d41f1cca7fb9caffdbbc29b7310df0bcebb0f3ad70dfff8642d21e",
-					"diffPixels": 3329,
-					"diffRatio": 0.295386,
+					"hash": "sha256:6789b450197e2d2ea07601040759a3e2244b24167f51c482d16a6e5076c1bfec",
+					"diffPixels": 2935,
+					"diffRatio": 0.260426,
 					"expected": "theme-ecl/button-icons--large-icon.expected.png",
 					"actual": "theme-ecl/button-icons--large-icon.actual.png",
 					"diff": "theme-ecl/button-icons--large-icon.diff.png"
@@ -10634,9 +10609,9 @@
 					"name": "button-icons--multiple-positions",
 					"route": "button/icons",
 					"status": "changed",
-					"hash": "sha256:1f422e09cb0b3421fe611d2f83896c8acae5a41b53d514fc0e9a401d2d158bab",
-					"diffPixels": 1139,
-					"diffRatio": 0.048035,
+					"hash": "sha256:06f2e523c7694eb9f4e79f7f00d9abc4a963f2cca19c3974c44813280623f588",
+					"diffPixels": 287,
+					"diffRatio": 0.012104,
 					"expected": "theme-ecl/button-icons--multiple-positions.expected.png",
 					"actual": "theme-ecl/button-icons--multiple-positions.actual.png",
 					"diff": "theme-ecl/button-icons--multiple-positions.diff.png"
@@ -10711,9 +10686,9 @@
 					"name": "button-short-key--hide-label",
 					"route": "button/short-key",
 					"status": "changed",
-					"hash": "sha256:109764994266ebb50c345e3683568330d235fcb7b58bc358ab405b0715c1382d",
-					"diffPixels": 210,
-					"diffRatio": 0.079545,
+					"hash": "sha256:5bf535992dda77b28868b14c4a0206a92c6347c66ba1154b755962f41fb3b976",
+					"diffPixels": 22,
+					"diffRatio": 0.008333,
 					"expected": "theme-ecl/button-short-key--hide-label.expected.png",
 					"actual": "theme-ecl/button-short-key--hide-label.actual.png",
 					"diff": "theme-ecl/button-short-key--hide-label.diff.png"
@@ -10722,9 +10697,9 @@
 					"name": "button-short-key--inline-icons",
 					"route": "button/short-key",
 					"status": "changed",
-					"hash": "sha256:3cddd871866189a8fa30e9dabd82cd7c09d0f6854d555598c4a1740058878055",
-					"diffPixels": 737,
-					"diffRatio": 0.076136,
+					"hash": "sha256:734b305040e556d556ef1f52173d7bb59e7efe32135a073e782169bf2a5940af",
+					"diffPixels": 229,
+					"diffRatio": 0.023657,
 					"expected": "theme-ecl/button-short-key--inline-icons.expected.png",
 					"actual": "theme-ecl/button-short-key--inline-icons.actual.png",
 					"diff": "theme-ecl/button-short-key--inline-icons.diff.png"
@@ -10733,9 +10708,9 @@
 					"name": "button-short-key--short-keys",
 					"route": "button/short-key",
 					"status": "changed",
-					"hash": "sha256:e6a969b899fe783d2edc4424646b26c23dccf87d2a2748260b1ea2966d263a57",
-					"diffPixels": 2078,
-					"diffRatio": 0.071774,
+					"hash": "sha256:25cf2712ea59e474e2208902ffc969e7303fc60bfbc2af5b25934b1bad3a253a",
+					"diffPixels": 634,
+					"diffRatio": 0.021898,
 					"expected": "theme-ecl/button-short-key--short-keys.expected.png",
 					"actual": "theme-ecl/button-short-key--short-keys.actual.png",
 					"diff": "theme-ecl/button-short-key--short-keys.diff.png"
@@ -10749,25 +10724,15 @@
 				},
 				{
 					"name": "card-basic--basic",
-					"route": "card/basic",
-					"status": "changed",
-					"hash": "sha256:96e58053eccb4c2e2896ce27a91fd50c59085040a6d374628c66be169023e7ee",
-					"diffPixels": 154,
-					"diffRatio": 0.001714,
-					"expected": "theme-ecl/card-basic--basic.expected.png",
-					"actual": "theme-ecl/card-basic--basic.actual.png",
-					"diff": "theme-ecl/card-basic--basic.diff.png"
+					"route": "card-basic",
+					"status": "unchanged",
+					"hash": "sha256:aace4a21423d02a9b8cc2c033356d18a73aafbf5a19df2576dc6f020876b475a"
 				},
 				{
 					"name": "card-basic--basic-320",
-					"route": "card/basic",
-					"status": "changed",
-					"hash": "sha256:8ec358ea0adc039e311c449bc927f6ed14195926890872ea2143d0fb16335e2c",
-					"diffPixels": 114,
-					"diffRatio": 0.00159,
-					"expected": "theme-ecl/card-basic--basic-320.expected.png",
-					"actual": "theme-ecl/card-basic--basic-320.actual.png",
-					"diff": "theme-ecl/card-basic--basic-320.diff.png"
+					"route": "card-basic",
+					"status": "unchanged",
+					"hash": "sha256:6534ae1ab390b63f09947c5bdcc626271fe1c477ef924b5cdf4264be98929e19"
 				},
 				{
 					"name": "card-headlines--headlines",
@@ -10803,9 +10768,9 @@
 					"name": "combobox-basic-noColumns--label-error",
 					"route": "combobox/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:6850dd2fbcb042b6ebde913637812c90720344647691fe89dca7e2977a997abd",
-					"diffPixels": 3584,
-					"diffRatio": 0.044025,
+					"hash": "sha256:4b7f0fe3580138be0312cc6d54b8c17d3de75119ab64e0b7c27fc4b73e4f868a",
+					"diffPixels": 3467,
+					"diffRatio": 0.042588,
 					"sizeMismatch": {
 						"expected": [
 							768,
@@ -10842,9 +10807,9 @@
 					"name": "dialog-basic-show-dialog-true",
 					"route": "dialog/basic?show-dialog=true",
 					"status": "changed",
-					"hash": "sha256:589c021cbe93f30f655849ca8ee772f742d1b9df1e0b51b99cea135e325533d1",
-					"diffPixels": 914,
-					"diffRatio": 0.000793,
+					"hash": "sha256:e7380715fcefe139320e6fdd2c7c7042bb9a6c5952f8f3eae7ca844766cf50dc",
+					"diffPixels": 766,
+					"diffRatio": 0.000665,
 					"expected": "theme-ecl/dialog-basic-show-dialog-true.expected.png",
 					"actual": "theme-ecl/dialog-basic-show-dialog-true.actual.png",
 					"diff": "theme-ecl/dialog-basic-show-dialog-true.diff.png"
@@ -10853,9 +10818,9 @@
 					"name": "drawer-basic-align-left",
 					"route": "drawer/basic?align=left",
 					"status": "changed",
-					"hash": "sha256:0163c80bc196d642f83868cdae114365120bdd31b937777a1af572d04429c962",
-					"diffPixels": 451,
-					"diffRatio": 0.001879,
+					"hash": "sha256:91dd77c7a5f6939adb1843640bf256671defbada01189f56f0971794908e6885",
+					"diffPixels": 135,
+					"diffRatio": 0.000562,
 					"expected": "theme-ecl/drawer-basic-align-left.expected.png",
 					"actual": "theme-ecl/drawer-basic-align-left.actual.png",
 					"diff": "theme-ecl/drawer-basic-align-left.diff.png"
@@ -10864,9 +10829,9 @@
 					"name": "drawer-basic-align-left-closer-true",
 					"route": "drawer/basic?align=left&closer=true",
 					"status": "changed",
-					"hash": "sha256:257b1dde1524ae75ca74524697dcae76e45327640e1eaa1b5d22bb3e7a90ecb8",
-					"diffPixels": 1015,
-					"diffRatio": 0.004229,
+					"hash": "sha256:7425b1f373e7573d62cf54e965d2ea156c618f068d122f8473c52827e81c9335",
+					"diffPixels": 547,
+					"diffRatio": 0.002279,
 					"expected": "theme-ecl/drawer-basic-align-left-closer-true.expected.png",
 					"actual": "theme-ecl/drawer-basic-align-left-closer-true.actual.png",
 					"diff": "theme-ecl/drawer-basic-align-left-closer-true.diff.png"
@@ -10875,9 +10840,9 @@
 					"name": "drawer-basic-align-top",
 					"route": "drawer/basic?align=top",
 					"status": "changed",
-					"hash": "sha256:eaae18f6853bf8eae3d118690c3188de6ef2809a99f603038fb6a728805f642e",
-					"diffPixels": 451,
-					"diffRatio": 0.001879,
+					"hash": "sha256:97b69f425aa9428f160d20920fb0d6cf2f25c371a5f985da0748c53f6b7154a4",
+					"diffPixels": 135,
+					"diffRatio": 0.000562,
 					"expected": "theme-ecl/drawer-basic-align-top.expected.png",
 					"actual": "theme-ecl/drawer-basic-align-top.actual.png",
 					"diff": "theme-ecl/drawer-basic-align-top.diff.png"
@@ -10963,9 +10928,9 @@
 					"name": "input-checkbox-basic-noColumns--left-info-popover",
 					"route": "input-checkbox/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:b690343f152998ef979ca53bfc55d7148a0b3c3224a2344662def53dc3e15419",
-					"diffPixels": 137,
-					"diffRatio": 0.006653,
+					"hash": "sha256:64f201731f09f3a15eb3e82003773c9d0efc992bc31d474f108aa2ac2da125ad",
+					"diffPixels": 6,
+					"diffRatio": 0.000291,
 					"expected": "theme-ecl/input-checkbox-basic-noColumns--left-info-popover.expected.png",
 					"actual": "theme-ecl/input-checkbox-basic-noColumns--left-info-popover.actual.png",
 					"diff": "theme-ecl/input-checkbox-basic-noColumns--left-info-popover.diff.png"
@@ -11040,9 +11005,9 @@
 					"name": "input-checkbox-basic-noColumns--right-info-popover",
 					"route": "input-checkbox/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:2d6d6e8944d1cd145205d159966b3770118d6bd5e9de022aae326848cb32a367",
-					"diffPixels": 137,
-					"diffRatio": 0.006653,
+					"hash": "sha256:81be18e2ec03e1146ab469860dba58779a5cc9f492ebe72513fbd7643bb325ec",
+					"diffPixels": 6,
+					"diffRatio": 0.000291,
 					"expected": "theme-ecl/input-checkbox-basic-noColumns--right-info-popover.expected.png",
 					"actual": "theme-ecl/input-checkbox-basic-noColumns--right-info-popover.actual.png",
 					"diff": "theme-ecl/input-checkbox-basic-noColumns--right-info-popover.diff.png"
@@ -11117,9 +11082,9 @@
 					"name": "input-checkbox-button-noColumns--left-info-popover",
 					"route": "input-checkbox/button?noColumns",
 					"status": "changed",
-					"hash": "sha256:3d0d059a4551b9d62abe496aa4c71d243ac10262b1fa93f12fa6f3e05a3ea97e",
-					"diffPixels": 137,
-					"diffRatio": 0.006653,
+					"hash": "sha256:3cb31a1d5946dffd1424f0fa0273445e1bbfabec58e03301362d754c0e981518",
+					"diffPixels": 6,
+					"diffRatio": 0.000291,
 					"expected": "theme-ecl/input-checkbox-button-noColumns--left-info-popover.expected.png",
 					"actual": "theme-ecl/input-checkbox-button-noColumns--left-info-popover.actual.png",
 					"diff": "theme-ecl/input-checkbox-button-noColumns--left-info-popover.diff.png"
@@ -11194,9 +11159,9 @@
 					"name": "input-checkbox-button-noColumns--right-info-popover",
 					"route": "input-checkbox/button?noColumns",
 					"status": "changed",
-					"hash": "sha256:e03379ee4d607edf489d92bc6a6b27a87e35d84c31d08212eac46c564f27687a",
-					"diffPixels": 137,
-					"diffRatio": 0.006653,
+					"hash": "sha256:4e8cd81adc4318fd2fa5075558614da2c34caf2cea2aabf12384f69904949394",
+					"diffPixels": 6,
+					"diffRatio": 0.000291,
 					"expected": "theme-ecl/input-checkbox-button-noColumns--right-info-popover.expected.png",
 					"actual": "theme-ecl/input-checkbox-button-noColumns--right-info-popover.actual.png",
 					"diff": "theme-ecl/input-checkbox-button-noColumns--right-info-popover.diff.png"
@@ -11271,9 +11236,9 @@
 					"name": "input-checkbox-switch-noColumns--left-info-popover",
 					"route": "input-checkbox/switch?noColumns",
 					"status": "changed",
-					"hash": "sha256:aad7aa20bb1f06bd70061fb798b9ef76ab999ba5e73dd21620481a791b1248c8",
-					"diffPixels": 137,
-					"diffRatio": 0.006653,
+					"hash": "sha256:74384c2d07ed9bc2c0d691efcf99808e8cb31ed39a1ef0a3876506dee1fcd9c3",
+					"diffPixels": 6,
+					"diffRatio": 0.000291,
 					"expected": "theme-ecl/input-checkbox-switch-noColumns--left-info-popover.expected.png",
 					"actual": "theme-ecl/input-checkbox-switch-noColumns--left-info-popover.actual.png",
 					"diff": "theme-ecl/input-checkbox-switch-noColumns--left-info-popover.diff.png"
@@ -11348,9 +11313,9 @@
 					"name": "input-checkbox-switch-noColumns--right-info-popover",
 					"route": "input-checkbox/switch?noColumns",
 					"status": "changed",
-					"hash": "sha256:664f0a3ff606744c9e0dadc4bc6ec756667280a7e12c4d351702ff2a84e35e04",
-					"diffPixels": 135,
-					"diffRatio": 0.006556,
+					"hash": "sha256:b9008d01c0dd54ded51856105967f8ef90564fbbb38c3d1912ba26d1c6488f8a",
+					"diffPixels": 5,
+					"diffRatio": 0.000243,
 					"expected": "theme-ecl/input-checkbox-switch-noColumns--right-info-popover.expected.png",
 					"actual": "theme-ecl/input-checkbox-switch-noColumns--right-info-popover.actual.png",
 					"diff": "theme-ecl/input-checkbox-switch-noColumns--right-info-popover.diff.png"
@@ -11407,9 +11372,9 @@
 					"name": "input-color-basic-noColumns--label-info-popover",
 					"route": "input-color/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:59a0438b3b03ca1f6ab4bfd8c7673af20f8c0da5fcbf5b2fc3d1c5bf28b7e2cd",
-					"diffPixels": 2021,
-					"diffRatio": 0.055364,
+					"hash": "sha256:66d6fcd2e8a4e5ebc210fe3e49fdbfcc604d647d7287271e6d01c304f3b89ce2",
+					"diffPixels": 1905,
+					"diffRatio": 0.052186,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -11488,9 +11453,9 @@
 					"name": "input-date-basic-noColumns--label-datetime-seconds",
 					"route": "input-date/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:9204ecce4f0675541c2c936667406aa8acd67e80eb2b84ae29aeca1cd0ebba00",
-					"diffPixels": 2544,
-					"diffRatio": 0.043838,
+					"hash": "sha256:565a18cf1a85693f99be4b533dfc83b6313d629a3e92d1d3048dff94e6461b07",
+					"diffPixels": 2428,
+					"diffRatio": 0.041839,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -11659,9 +11624,9 @@
 					"name": "input-email-basic-noColumns--label-info-popover",
 					"route": "input-email/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:ca3d63c25d3596b21a160bf9a9d1f0616ad6672cc94d30118d2d69c931873c5e",
-					"diffPixels": 2013,
-					"diffRatio": 0.055145,
+					"hash": "sha256:833b1def5c65d5e518bc78425dd7dc5d234e3a57d4d54747eec0e40e9570240d",
+					"diffPixels": 1895,
+					"diffRatio": 0.051912,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -11767,9 +11732,9 @@
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:eb09db6dff56521992e21c60f472c2071bf9d6e6fa2f7c219a26ce63400098ef",
-					"diffPixels": 364,
-					"diffRatio": 0.006272,
+					"hash": "sha256:b80be54428cab1658f696db01b3c34a835c0e31b8d50d599b168b01260d38d90",
+					"diffPixels": 247,
+					"diffRatio": 0.004256,
 					"expected": "theme-ecl/input-file-basic-noColumns--label-error.expected.png",
 					"actual": "theme-ecl/input-file-basic-noColumns--label-error.actual.png",
 					"diff": "theme-ecl/input-file-basic-noColumns--label-error.diff.png"
@@ -11874,9 +11839,9 @@
 					"name": "input-number-basic-noColumns--label-icons-error",
 					"route": "input-number/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:8c7b8f26aeb864df220d119b69e314b385e532750872e3abbaca62ef6e986b53",
-					"diffPixels": 2397,
-					"diffRatio": 0.048319,
+					"hash": "sha256:1c8bce9f0895b823b8a64d55c0b33cc7607b3a56037f283f79855226a67f239a",
+					"diffPixels": 2280,
+					"diffRatio": 0.04596,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -11973,9 +11938,9 @@
 					"name": "input-password-basic-noColumns--label-icons-error",
 					"route": "input-password/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:5264a1c680e0578b029d8338a8ff32d03fef37761c8f86db98efc20c49fbb32b",
-					"diffPixels": 2472,
-					"diffRatio": 0.042597,
+					"hash": "sha256:c0e55f13c402e46dfef977a3849430ddc260219f804874016a0d9ff3547f32ec",
+					"diffPixels": 2354,
+					"diffRatio": 0.040564,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -12066,9 +12031,9 @@
 					"name": "input-radio-basic-noColumns--label-horizontal",
 					"route": "input-radio/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:11a63d25fdef511fa946beeb68b5cce506d1e73000a1284b2d6a76205e6d1e5b",
-					"diffPixels": 693,
-					"diffRatio": 0.021154,
+					"hash": "sha256:526de87afb82ddfd96e9d3a4ebda9dba2999c68c07406be8439df067e30c197e",
+					"diffPixels": 563,
+					"diffRatio": 0.017186,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -12141,9 +12106,9 @@
 					"name": "input-range-basic-noColumns--label-error",
 					"route": "input-range/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:31fe547e30a2b0c9ee9d61941b426399e74cbfb5a877f1cb03cd5cb91bd80a19",
-					"diffPixels": 1455,
-					"diffRatio": 0.023029,
+					"hash": "sha256:bd62388a0d0ba10e9a6673a5b2ff6019ac1c16e8aba0dfe4a4ecec9d0f13f813",
+					"diffPixels": 1337,
+					"diffRatio": 0.021162,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -12264,9 +12229,9 @@
 					"name": "input-text-basic-noColumns--info-popover",
 					"route": "input-text/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:375f0df287837c0913e5cfa99517ca6832b8dcd3a7f42f11c6dcf858f0c4b256",
-					"diffPixels": 3388,
-					"diffRatio": 0.056557,
+					"hash": "sha256:8ad013f1799eecaf868f769083c211e480a9ff2d353ae423fa5ad2896b4199d7",
+					"diffPixels": 3272,
+					"diffRatio": 0.054621,
 					"sizeMismatch": {
 						"expected": [
 							768,
@@ -12285,9 +12250,9 @@
 					"name": "input-text-basic-noColumns--readonly-popover",
 					"route": "input-text/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:60f85ccfb2a9b83a4dc6a8134ba1793ce5633b11a30f966fe496492d0ae92181",
-					"diffPixels": 3388,
-					"diffRatio": 0.056557,
+					"hash": "sha256:238b107b96aa67c7ba85e12e731928fef9993fd1cd3aa94a74f5f836712fd351",
+					"diffPixels": 3270,
+					"diffRatio": 0.054587,
 					"sizeMismatch": {
 						"expected": [
 							768,
@@ -12531,9 +12496,9 @@
 					"name": "link-button-target--target",
 					"route": "link-button/target",
 					"status": "changed",
-					"hash": "sha256:957ccdd025b785fb6877a2c877c83aeddb78c939f516d45f27e95f32302a14df",
-					"diffPixels": 2399,
-					"diffRatio": 0.070993,
+					"hash": "sha256:468c6319ea9ba7628f9c87fd8f753c52d16a6cc74995f4be83138aef89f367f7",
+					"diffPixels": 882,
+					"diffRatio": 0.026101,
 					"expected": "theme-ecl/link-button-target--target.expected.png",
 					"actual": "theme-ecl/link-button-target--target.actual.png",
 					"diff": "theme-ecl/link-button-target--target.diff.png"
@@ -12596,9 +12561,9 @@
 					"name": "modal-basic-show-dialog-true",
 					"route": "modal/basic?show-dialog=true",
 					"status": "changed",
-					"hash": "sha256:b1034e5916dcf038a03f595b775007b85cf64fdde693a0a9febb230eb7f6e941",
-					"diffPixels": 914,
-					"diffRatio": 0.000793,
+					"hash": "sha256:6da74acb5f917c38160376b06bb5937c0f3baea9d8e002e0276ee593dc32db21",
+					"diffPixels": 766,
+					"diffRatio": 0.000665,
 					"expected": "theme-ecl/modal-basic-show-dialog-true.expected.png",
 					"actual": "theme-ecl/modal-basic-show-dialog-true.actual.png",
 					"diff": "theme-ecl/modal-basic-show-dialog-true.diff.png"
@@ -12669,9 +12634,9 @@
 					"name": "popover-button-basic",
 					"route": "popover-button/basic",
 					"status": "changed",
-					"hash": "sha256:63564b100a8ab8465b277e21423f50439863a1aa25a660d626fcafd76097ed3d",
-					"diffPixels": 2048,
-					"diffRatio": 0.046545,
+					"hash": "sha256:c76fae3d3e17f1dbea48bf1152b8cd0971cf96e1015b50595a2ceacd444db5da",
+					"diffPixels": 1236,
+					"diffRatio": 0.028091,
 					"expected": "theme-ecl/popover-button-basic.expected.png",
 					"actual": "theme-ecl/popover-button-basic.actual.png",
 					"diff": "theme-ecl/popover-button-basic.diff.png"
@@ -12680,9 +12645,9 @@
 					"name": "popover-button-inline--inline",
 					"route": "popover-button/inline",
 					"status": "changed",
-					"hash": "sha256:f55555a858fbe2b45a5b66474eb75309c3b8a4b8e737dab65e5d14334960370b",
-					"diffPixels": 51,
-					"diffRatio": 0.001046,
+					"hash": "sha256:60eddb4957c87a8d1c086a70a81541af9e3c7737dda1198f75d763475d74cfd8",
+					"diffPixels": 179,
+					"diffRatio": 0.00367,
 					"expected": "theme-ecl/popover-button-inline--inline.expected.png",
 					"actual": "theme-ecl/popover-button-inline--inline.actual.png",
 					"diff": "theme-ecl/popover-button-inline--inline.diff.png"
@@ -12739,9 +12704,9 @@
 					"name": "scenarios-focus-elements-component-button",
 					"route": "scenarios/focus-elements?component=button",
 					"status": "changed",
-					"hash": "sha256:69f58f6fff6399c03a45f65ac0aa90277d363050065bfee170eb0050a8997b12",
-					"diffPixels": 1772,
-					"diffRatio": 0.07671,
+					"hash": "sha256:bd1c8ea68c2a41c16522c0a450af5e285ae561f041125a5657c51397e9074910",
+					"diffPixels": 1478,
+					"diffRatio": 0.063983,
 					"expected": "theme-ecl/scenarios-focus-elements-component-button.expected.png",
 					"actual": "theme-ecl/scenarios-focus-elements-component-button.actual.png",
 					"diff": "theme-ecl/scenarios-focus-elements-component-button.diff.png"
@@ -12856,9 +12821,9 @@
 					"name": "scenarios-focus-elements-component-linkButton",
 					"route": "scenarios/focus-elements?component=linkButton",
 					"status": "changed",
-					"hash": "sha256:402a9ed6a6cc0fa61cb22a03eac49f11c3e642e09258f796ec6db39497f04a73",
-					"diffPixels": 2114,
-					"diffRatio": 0.092719,
+					"hash": "sha256:f90e6542bc44086f4a5f6c7f09af2a9811253531c4c9460f2f381318558a6318",
+					"diffPixels": 1762,
+					"diffRatio": 0.077281,
 					"expected": "theme-ecl/scenarios-focus-elements-component-linkButton.expected.png",
 					"actual": "theme-ecl/scenarios-focus-elements-component-linkButton.actual.png",
 					"diff": "theme-ecl/scenarios-focus-elements-component-linkButton.diff.png"
@@ -12867,9 +12832,9 @@
 					"name": "scenarios-focus-elements-component-popoverButton",
 					"route": "scenarios/focus-elements?component=popoverButton",
 					"status": "changed",
-					"hash": "sha256:3fb663e1776ec8b86589359d9ad4a327e88f831de590c3c9b18650ece942a2f9",
-					"diffPixels": 1985,
-					"diffRatio": 0.085931,
+					"hash": "sha256:177889215bc01a6c3c06ab77b5af0572cf58e5593070562f9edf7193d67a69d6",
+					"diffPixels": 2031,
+					"diffRatio": 0.087922,
 					"expected": "theme-ecl/scenarios-focus-elements-component-popoverButton.expected.png",
 					"actual": "theme-ecl/scenarios-focus-elements-component-popoverButton.actual.png",
 					"diff": "theme-ecl/scenarios-focus-elements-component-popoverButton.diff.png"
@@ -12902,9 +12867,9 @@
 					"name": "scenarios-focus-elements-component-splitButton",
 					"route": "scenarios/focus-elements?component=splitButton",
 					"status": "changed",
-					"hash": "sha256:fe9a9229efb8fa36430ee98fdc76ca6b64271c927231bd26e18280b1319d1bce",
-					"diffPixels": 2040,
-					"diffRatio": 0.089474,
+					"hash": "sha256:bbedbdfce4cc3dcc8309b66f4a74658a4bb78e65b75291ef738b62185b305ef8",
+					"diffPixels": 2288,
+					"diffRatio": 0.100351,
 					"expected": "theme-ecl/scenarios-focus-elements-component-splitButton.expected.png",
 					"actual": "theme-ecl/scenarios-focus-elements-component-splitButton.actual.png",
 					"diff": "theme-ecl/scenarios-focus-elements-component-splitButton.diff.png"
@@ -12925,9 +12890,9 @@
 					"name": "scenarios-focus-elements-component-toolbar",
 					"route": "scenarios/focus-elements?component=toolbar",
 					"status": "changed",
-					"hash": "sha256:050b0774be94b481251f91f21c9706cbfd8b652ba4a50765aa88e333b8654be3",
-					"diffPixels": 1312,
-					"diffRatio": 0.056797,
+					"hash": "sha256:ead1b55fdb854c1d72d473c694b99923b21d5924a348ee4744345f1782861848",
+					"diffPixels": 824,
+					"diffRatio": 0.035671,
 					"expected": "theme-ecl/scenarios-focus-elements-component-toolbar.expected.png",
 					"actual": "theme-ecl/scenarios-focus-elements-component-toolbar.actual.png",
 					"diff": "theme-ecl/scenarios-focus-elements-component-toolbar.diff.png"
@@ -12963,9 +12928,9 @@
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios/same-height-of-all-interactive-elements",
 					"status": "changed",
-					"hash": "sha256:040e5f2f1c7929c4367913fc8f576a0ded295557296d78a8120ccc80dfb0d4b6",
-					"diffPixels": 2610,
-					"diffRatio": 0.008323,
+					"hash": "sha256:785740c609604e101bf20b585209155d067132f1ec3e7d7567bb6984ff06ab9b",
+					"diffPixels": 1708,
+					"diffRatio": 0.005446,
 					"expected": "theme-ecl/scenarios-same-height-of-all-interactive-elements.expected.png",
 					"actual": "theme-ecl/scenarios-same-height-of-all-interactive-elements.actual.png",
 					"diff": "theme-ecl/scenarios-same-height-of-all-interactive-elements.diff.png"
@@ -13016,9 +12981,9 @@
 					"name": "select-basic-noColumns--label-multiple-error",
 					"route": "select/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:a4f4221d9f794da01f9c9d77b34356d025e22d7f3518eda49ce0a478a57267b8",
-					"diffPixels": 1932,
-					"diffRatio": 0.015817,
+					"hash": "sha256:e052a9bb208cbe482cb3e101dbe7f37425375661a14c2d2c6b201e1ed5f89afe",
+					"diffPixels": 1815,
+					"diffRatio": 0.014859,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -13079,9 +13044,9 @@
 					"name": "single-select-basic-noColumns--label-error",
 					"route": "single-select/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:177108ea76e2d1ac22744d068802b5869a26a613a9b0911c5991e7c70791a26d",
-					"diffPixels": 2415,
-					"diffRatio": 0.04778,
+					"hash": "sha256:3b9c6b01fe91b4b576ee37cff3ad2dcd5cfe4a9a86b07c44c48ab6d764b15d77",
+					"diffPixels": 2298,
+					"diffRatio": 0.045465,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -13148,9 +13113,9 @@
 					"name": "split-button-basic--basic",
 					"route": "split-button/basic",
 					"status": "changed",
-					"hash": "sha256:55095b5e2c475caeb4e4ca096ab2a3c931cc9daefaae222c9dc55941fbef75a4",
-					"diffPixels": 8,
-					"diffRatio": 0.000678,
+					"hash": "sha256:510caa8912380a97fd42f4be78db84e24a3e2bc7dc151a1995fab5ab04b54bea",
+					"diffPixels": 59,
+					"diffRatio": 0.005003,
 					"expected": "theme-ecl/split-button-basic--basic.expected.png",
 					"actual": "theme-ecl/split-button-basic--basic.actual.png",
 					"diff": "theme-ecl/split-button-basic--basic.diff.png"
@@ -13159,9 +13124,9 @@
 					"name": "table-action-columns--action-columns",
 					"route": "table/action-columns",
 					"status": "changed",
-					"hash": "sha256:382b3d3b2d85e4c6034e5ceb995e145ae100780d6d22ec868c16fd411370dd73",
-					"diffPixels": 1632,
-					"diffRatio": 0.007084,
+					"hash": "sha256:280146d141975551c5fdcfe68d7f0db209306208940749c9de639772d8a3b06c",
+					"diffPixels": 1336,
+					"diffRatio": 0.005799,
 					"expected": "theme-ecl/table-action-columns--action-columns.expected.png",
 					"actual": "theme-ecl/table-action-columns--action-columns.actual.png",
 					"diff": "theme-ecl/table-action-columns--action-columns.diff.png"
@@ -13218,9 +13183,9 @@
 					"name": "table-stateful-with-selection--selection",
 					"route": "table/stateful-with-selection",
 					"status": "changed",
-					"hash": "sha256:0b7a16b28c695ed490b2f565ce5a46f2ceca986b58749436846de5657788e096",
-					"diffPixels": 640,
-					"diffRatio": 0.002023,
+					"hash": "sha256:f439f2656fbade79cdd2b6626f02c46769a9fdaaf837e4d0bb907ecf0f50aec4",
+					"diffPixels": 48,
+					"diffRatio": 0.000152,
 					"expected": "theme-ecl/table-stateful-with-selection--selection.expected.png",
 					"actual": "theme-ecl/table-stateful-with-selection--selection.actual.png",
 					"diff": "theme-ecl/table-stateful-with-selection--selection.diff.png"
@@ -13240,9 +13205,9 @@
 					"name": "table-stateless-with-selection--selection",
 					"route": "table/stateless-with-selection",
 					"status": "changed",
-					"hash": "sha256:e74a443255514386356f7b11cff3f3654b89c619ecb34b67b74e7ec3f48e5df3",
-					"diffPixels": 1358,
-					"diffRatio": 0.003746,
+					"hash": "sha256:e5dce4eab31aabb1c2386a63c366361a2e5ffd714b4e73436f22444e09275ee0",
+					"diffPixels": 456,
+					"diffRatio": 0.001258,
 					"expected": "theme-ecl/table-stateless-with-selection--selection.expected.png",
 					"actual": "theme-ecl/table-stateless-with-selection--selection.actual.png",
 					"diff": "theme-ecl/table-stateless-with-selection--selection.diff.png"
@@ -13251,9 +13216,9 @@
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table/stateless-with-single-selection",
 					"status": "changed",
-					"hash": "sha256:134ea71e69e8ce35cca539143f89adc7ac71d23f87bfa44250caeedb0d0b190e",
-					"diffPixels": 1202,
-					"diffRatio": 0.00634,
+					"hash": "sha256:9e73bef00fb0e8309bf73a6a5f1185142e9feddae849732303c1571176c84776",
+					"diffPixels": 368,
+					"diffRatio": 0.001941,
 					"expected": "theme-ecl/table-stateless-with-single-selection--single-selection.expected.png",
 					"actual": "theme-ecl/table-stateless-with-single-selection--single-selection.actual.png",
 					"diff": "theme-ecl/table-stateless-with-single-selection--single-selection.diff.png"
@@ -13352,9 +13317,9 @@
 					"name": "textarea-basic-noColumns--label-error",
 					"route": "textarea/basic?noColumns",
 					"status": "changed",
-					"hash": "sha256:382a6501e7b1e100f290eaa3cec7a3b8bde0b5e3371d0462fb5a31d9b6fac133",
-					"diffPixels": 1534,
-					"diffRatio": 0.026222,
+					"hash": "sha256:f29fc9cc189c0e7d78454922e0e3eddad7ca48c528b0baab059fef8c47b87c77",
+					"diffPixels": 1416,
+					"diffRatio": 0.024205,
 					"sizeMismatch": {
 						"expected": [
 							468,
@@ -13427,9 +13392,9 @@
 					"name": "toast-configurator",
 					"route": "toast/configurator",
 					"status": "changed",
-					"hash": "sha256:057ea754f42465ae1e93ec8d53200f660f0201927a6cf77bcab4e93eb6d5483b",
-					"diffPixels": 1602,
-					"diffRatio": 0.00356,
+					"hash": "sha256:7efeda2e135d490d344eb042e0b2bb82e814ee5b5d900269d6bb495ef1c0c8be",
+					"diffPixels": 389,
+					"diffRatio": 0.000864,
 					"expected": "theme-ecl/toast-configurator.expected.png",
 					"actual": "theme-ecl/toast-configurator.actual.png",
 					"diff": "theme-ecl/toast-configurator.diff.png"
@@ -13438,9 +13403,9 @@
 					"name": "toolbar-basic--horizontal",
 					"route": "toolbar/basic",
 					"status": "changed",
-					"hash": "sha256:a645376050f761bf044cee1bc9287113a64494c0b8c2f68b8e42ba90e0d89e76",
-					"diffPixels": 5835,
-					"diffRatio": 0.099737,
+					"hash": "sha256:bfaf8b79ed797450e9dedca0eef912a5fb963444c439ad9527e07d35ed00e673",
+					"diffPixels": 5019,
+					"diffRatio": 0.085789,
 					"expected": "theme-ecl/toolbar-basic--horizontal.expected.png",
 					"actual": "theme-ecl/toolbar-basic--horizontal.actual.png",
 					"diff": "theme-ecl/toolbar-basic--horizontal.diff.png"
@@ -13449,9 +13414,9 @@
 					"name": "toolbar-basic--horizontal-320",
 					"route": "toolbar/basic",
 					"status": "changed",
-					"hash": "sha256:63351d2c73f9cddec6bf3c1ab551e0fef2becbb02ce03a14e8879a6687157423",
-					"diffPixels": 5938,
-					"diffRatio": 0.127272,
+					"hash": "sha256:d879f1059c349fd7d179214a3fefb9ac1cf8faf361c4482609eae959527bd70a",
+					"diffPixels": 5018,
+					"diffRatio": 0.107553,
 					"expected": "theme-ecl/toolbar-basic--horizontal-320.expected.png",
 					"actual": "theme-ecl/toolbar-basic--horizontal-320.actual.png",
 					"diff": "theme-ecl/toolbar-basic--horizontal-320.diff.png"
@@ -13460,9 +13425,9 @@
 					"name": "toolbar-basic--vertical",
 					"route": "toolbar/basic",
 					"status": "changed",
-					"hash": "sha256:0d4ce321a931d85a3b041acb8028dae0a2043af7f3f42de8af412100f37571e2",
-					"diffPixels": 7389,
-					"diffRatio": 0.210465,
+					"hash": "sha256:b040cf140dfdb71bdb1f0509033516b10110af8e5f103b3bf42de598a8ec1304",
+					"diffPixels": 6126,
+					"diffRatio": 0.17449,
 					"expected": "theme-ecl/toolbar-basic--vertical.expected.png",
 					"actual": "theme-ecl/toolbar-basic--vertical.actual.png",
 					"diff": "theme-ecl/toolbar-basic--vertical.diff.png"
@@ -13471,9 +13436,9 @@
 					"name": "toolbar-disabled--disabled",
 					"route": "toolbar/disabled",
 					"status": "changed",
-					"hash": "sha256:dbad08fda5390382e8c9936e275a165c9c0a60ecde83e8bbe1ac1dc3b31fb0b0",
-					"diffPixels": 1112,
-					"diffRatio": 0.040284,
+					"hash": "sha256:59f7a27a0f4987de2e33a6d4b9bb62cb7b5f3d6d56a0a3f3e7c1860bf077cc9e",
+					"diffPixels": 196,
+					"diffRatio": 0.0071,
 					"expected": "theme-ecl/toolbar-disabled--disabled.expected.png",
 					"actual": "theme-ecl/toolbar-disabled--disabled.actual.png",
 					"diff": "theme-ecl/toolbar-disabled--disabled.diff.png"
@@ -13500,12 +13465,12 @@
 			"baseline": {
 				"files": 418,
 				"meta": {
-					"sha": "62a65c5b3e0674ce1b763b6cee362f2ee5691e07",
+					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
 					"ref": "develop",
-					"runId": 37724423124,
+					"runId": 37746323129,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T03:54:05.287Z",
+					"createdAt": "2026-10-08T08:00:41.331Z",
 					"digest": "sha256:759ef533598395b3096515e3a70df825f7b740992a9562eaef83e09ea6b6da75",
 					"fallback": null,
 					"distance": 0,
@@ -16068,12 +16033,12 @@
 			"baseline": {
 				"files": 417,
 				"meta": {
-					"sha": "62a65c5b3e0674ce1b763b6cee362f2ee5691e07",
+					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
 					"ref": "develop",
-					"runId": 37724423124,
+					"runId": 37746323129,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T03:53:08.570Z",
+					"createdAt": "2026-10-08T08:00:16.971Z",
 					"digest": "sha256:a70cf1d9660e968cf49e232e3c09d7cfa9abb5da11aaf4517057744bec01c5ab",
 					"fallback": null,
 					"distance": 0,

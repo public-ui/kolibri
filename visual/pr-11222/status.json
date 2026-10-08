@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "92 changed, 28 added, 7 removed – 0 of 127 approved, review pending",
-	"computedAt": "2026-10-08T07:10:32.742Z",
+	"description": "85 changed, 28 added, 7 removed – 0 of 120 approved, review pending",
+	"computedAt": "2026-10-08T08:39:47.552Z",
 	"pr": 11222,
-	"head": "4fe709db889e79430eb66f4f611fb6e85d6e981e",
-	"digest": "sha256:9b4c36d564ec9efa2c238c40bc52a3cb4991f89ff28ed90235c461a5a830d103",
+	"head": "2f20ba332f8ef52086a40f3837b9020842ae7a07",
+	"digest": "sha256:a2229c5e440c2486c09b40bed924dfabd90389fd8edb3dc030a6cd5269d67c4c",
 	"counts": {
-		"changes": 127,
-		"open": 127,
+		"changes": 120,
+		"open": 120,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -136,15 +136,7 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-desy/dialog-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-desy/link-button-basic--variants": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/modal-basic-show-dialog-true": {
 			"state": "open",
 			"notes": []
 		},
@@ -157,18 +149,6 @@
 			"notes": []
 		},
 		"theme-desy/toast-configurator": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/toolbar-basic--horizontal": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/toolbar-basic--horizontal-320": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/toolbar-basic--vertical": {
 			"state": "open",
 			"notes": []
 		},
@@ -221,14 +201,6 @@
 			"notes": []
 		},
 		"theme-ecl/button-variants--variants": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/card-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/card-basic--basic-320": {
 			"state": "open",
 			"notes": []
 		},
