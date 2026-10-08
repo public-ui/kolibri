@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11226,
-	"head": "4c0ccc353ec803e7a2ce8b289a0e0ed1f2d27749",
+	"head": "7f83b3a1c459e776a37d61e01317c6d279168f85",
 	"repository": "public-ui/kolibri",
-	"runId": 37795942668,
-	"generatedAt": "2026-10-08T15:21:55.465Z",
-	"digest": "sha256:79263c1e345122f2e73bd01f4efff697b75d74e8ad41d2a32a7814a43f751b8c",
+	"runId": 37800887719,
+	"generatedAt": "2026-10-08T15:41:51.134Z",
+	"digest": "sha256:b1f6f48bd0583094e2835d008117d8b9ae797bfdb882da150b43cb0ca828427f",
 	"baseline": {
 		"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2913,
-		"changed": 7,
+		"unchanged": 2920,
+		"changed": 0,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 416,
-				"changed": 1,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:125f993de202cee8b011d3645570c69f92ed56edb090158745afd677acfaa7c8",
+			"digest": "sha256:eadb35fe61ec50b226112fc42ced9227f974b3ba6056b288044ab0904f2b2444",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -1895,14 +1895,9 @@
 				},
 				{
 					"name": "popover-button-basic",
-					"route": "popover-button/basic",
-					"status": "changed",
-					"hash": "sha256:621893af205b194c16cfae126552e78f9f19cf36282bdd7a93dc5de444d8573e",
-					"diffPixels": 2108,
-					"diffRatio": 0.047909,
-					"expected": "test-tag-name-transformer/popover-button-basic.expected.png",
-					"actual": "test-tag-name-transformer/popover-button-basic.actual.png",
-					"diff": "test-tag-name-transformer/popover-button-basic.diff.png"
+					"route": "popover-button-basic",
+					"status": "unchanged",
+					"hash": "sha256:531cb6c8cf5c7f78735213855e7e393756eecb8fb729ac1ff40ed74ea1775019"
 				},
 				{
 					"name": "popover-button-inline--inline",
@@ -2581,13 +2576,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 416,
-				"changed": 1,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6fafa35d94c87d5d1199002711a18d9b647be4f98edc10d8cd457aa187b845b9",
+			"digest": "sha256:8a04600e94d55e42bb9e0d0004d311efa3ae6fe619d9735e98a32fea1454e859",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4433,14 +4428,9 @@
 				},
 				{
 					"name": "popover-button-basic",
-					"route": "popover-button/basic",
-					"status": "changed",
-					"hash": "sha256:015bddc4ba76521be8b2f9dc6f3564bd7f0082cfb88a7265a461b98d5c474718",
-					"diffPixels": 1630,
-					"diffRatio": 0.037045,
-					"expected": "theme-bwst/popover-button-basic.expected.png",
-					"actual": "theme-bwst/popover-button-basic.actual.png",
-					"diff": "theme-bwst/popover-button-basic.diff.png"
+					"route": "popover-button-basic",
+					"status": "unchanged",
+					"hash": "sha256:a1f9feb51cd9d7d322a58f2c7c7cdd3713153540e4a027b9f94cf72cf27b49c3"
 				},
 				{
 					"name": "popover-button-inline--inline",
@@ -5119,13 +5109,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 416,
-				"changed": 1,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:125f993de202cee8b011d3645570c69f92ed56edb090158745afd677acfaa7c8",
+			"digest": "sha256:eadb35fe61ec50b226112fc42ced9227f974b3ba6056b288044ab0904f2b2444",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -6971,14 +6961,9 @@
 				},
 				{
 					"name": "popover-button-basic",
-					"route": "popover-button/basic",
-					"status": "changed",
-					"hash": "sha256:621893af205b194c16cfae126552e78f9f19cf36282bdd7a93dc5de444d8573e",
-					"diffPixels": 2108,
-					"diffRatio": 0.047909,
-					"expected": "theme-default/popover-button-basic.expected.png",
-					"actual": "theme-default/popover-button-basic.actual.png",
-					"diff": "theme-default/popover-button-basic.diff.png"
+					"route": "popover-button-basic",
+					"status": "unchanged",
+					"hash": "sha256:531cb6c8cf5c7f78735213855e7e393756eecb8fb729ac1ff40ed74ea1775019"
 				},
 				{
 					"name": "popover-button-inline--inline",
@@ -7657,13 +7642,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 416,
-				"changed": 1,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:b6544030df4a4abd9e020eae122b2ae59387edf5032f680a027f471e7e616eb9",
+			"digest": "sha256:c128f0af58fef692b81ba55c4da3c69b41f501b83eb1a93bed807b3aa1c38e32",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9509,14 +9494,9 @@
 				},
 				{
 					"name": "popover-button-basic",
-					"route": "popover-button/basic",
-					"status": "changed",
-					"hash": "sha256:e6a7c84c54419bb10433a8269442beb4cbe04c87e7e18dc72eb17e05d9c1c101",
-					"diffPixels": 1562,
-					"diffRatio": 0.0355,
-					"expected": "theme-desy/popover-button-basic.expected.png",
-					"actual": "theme-desy/popover-button-basic.actual.png",
-					"diff": "theme-desy/popover-button-basic.diff.png"
+					"route": "popover-button-basic",
+					"status": "unchanged",
+					"hash": "sha256:86eb65b7118eb8f2bbee21dc1495cfc2ab7addb44f78d9b9580041d55d9ffce7"
 				},
 				{
 					"name": "popover-button-inline--inline",
@@ -10195,13 +10175,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 416,
-				"changed": 1,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:16533dd9c3df1226a88c313080a8fbd0c64bd9f9452216eb4a6ab914d8bd0530",
+			"digest": "sha256:a0cfc6ecb8273d9f4ca2170c3f2ce6a53b95d150f97b497affead4de2da6aa74",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12047,14 +12027,9 @@
 				},
 				{
 					"name": "popover-button-basic",
-					"route": "popover-button/basic",
-					"status": "changed",
-					"hash": "sha256:f6841970a401c98dd6ce3b933187c413e9d5141ee710ce3a41717eb65b625abc",
-					"diffPixels": 668,
-					"diffRatio": 0.015182,
-					"expected": "theme-ecl/popover-button-basic.expected.png",
-					"actual": "theme-ecl/popover-button-basic.actual.png",
-					"diff": "theme-ecl/popover-button-basic.diff.png"
+					"route": "popover-button-basic",
+					"status": "unchanged",
+					"hash": "sha256:28cb0995d0b0681a62ad41bf2501c811234a69e40ad76cc183122b97d8616099"
 				},
 				{
 					"name": "popover-button-inline--inline",
@@ -12733,13 +12708,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 417,
-				"changed": 1,
+				"unchanged": 418,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:9af35124d9a96cd0daa89a42384185c9cc1ff7158d29ed1300d36dea73935575",
+			"digest": "sha256:759ef533598395b3096515e3a70df825f7b740992a9562eaef83e09ea6b6da75",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14585,14 +14560,9 @@
 				},
 				{
 					"name": "popover-button-basic",
-					"route": "popover-button/basic",
-					"status": "changed",
-					"hash": "sha256:d4ee19b5f383db73aaf19af1c6c97cb2dd3ab0f1717ff1cca60edae91012e4d3",
-					"diffPixels": 2671,
-					"diffRatio": 0.060705,
-					"expected": "theme-kern/popover-button-basic.expected.png",
-					"actual": "theme-kern/popover-button-basic.actual.png",
-					"diff": "theme-kern/popover-button-basic.diff.png"
+					"route": "popover-button-basic",
+					"status": "unchanged",
+					"hash": "sha256:df4c55487a11c1c86a215ff8e52eeff41a5997c11e6e69ebe98ac5565d16fdd5"
 				},
 				{
 					"name": "popover-button-inline--inline",
@@ -15277,13 +15247,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 416,
-				"changed": 1,
+				"unchanged": 417,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:dd824770a4f9745d56413b5f7494af23b39e9846827677344ee479f3609b704e",
+			"digest": "sha256:a70cf1d9660e968cf49e232e3c09d7cfa9abb5da11aaf4517057744bec01c5ab",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17129,14 +17099,9 @@
 				},
 				{
 					"name": "popover-button-basic",
-					"route": "popover-button/basic",
-					"status": "changed",
-					"hash": "sha256:7df73c479fb0285f39de1527afe402fe22a9f299986ba7f7c0abe5da1ed2ca6e",
-					"diffPixels": 715,
-					"diffRatio": 0.01625,
-					"expected": "unstyled/popover-button-basic.expected.png",
-					"actual": "unstyled/popover-button-basic.actual.png",
-					"diff": "unstyled/popover-button-basic.diff.png"
+					"route": "popover-button-basic",
+					"status": "unchanged",
+					"hash": "sha256:dbf0b8c90e878d386a503eed99eeaa1e62c226c42933b07deeded072837d863f"
 				},
 				{
 					"name": "popover-button-inline--inline",
