@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "110 changed, 28 added, 7 removed – 0 of 145 approved, review pending",
-	"computedAt": "2026-10-07T14:30:15.917Z",
+	"description": "92 changed, 28 added, 7 removed – 0 of 127 approved, review pending",
+	"computedAt": "2026-10-08T07:10:32.742Z",
 	"pr": 11222,
-	"head": "e8e6f38452cda4bdb305730dee45c9e3890e51e8",
-	"digest": "sha256:a56672cd8d68c8203048efc66bd65f98bb434d9543244708cd952f10cdc7a792",
+	"head": "4fe709db889e79430eb66f4f611fb6e85d6e981e",
+	"digest": "sha256:9b4c36d564ec9efa2c238c40bc52a3cb4991f89ff28ed90235c461a5a830d103",
 	"counts": {
-		"changes": 145,
-		"open": 145,
+		"changes": 127,
+		"open": 127,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -132,63 +132,11 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-desy/button-link-basic--access-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/button-link-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/button-link-basic--disabled": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/button-link-basic--short-key": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/button-link-icons--all": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/button-link-icons--bottom": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/button-link-icons--hide-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/button-link-icons--left": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/button-link-icons--right": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/button-link-icons--top": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-desy/button-variants--variants": {
 			"state": "open",
 			"notes": []
 		},
-		"theme-desy/card-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/card-basic--basic-320": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-desy/dialog-basic-show-dialog-true": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/drawer-basic-align-left-closer-true": {
 			"state": "open",
 			"notes": []
 		},
@@ -200,31 +148,11 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-desy/nav-basic--navigation-submenu": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/nav-basic--navigation-submenu-2": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/nav-basic--navigation-submenu-active": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-desy/popover-button-inline--inline": {
 			"state": "open",
 			"notes": []
 		},
 		"theme-desy/scenarios-focus-elements-component-popoverButton": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/scenarios-focus-elements-component-splitButton": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/split-button-basic--basic": {
 			"state": "open",
 			"notes": []
 		},
