@@ -12,12 +12,12 @@ const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
 	horizontal: [
 		[
 			{ label: 'ID', key: 'id', textAlign: 'right', width: 160, sortDirection: 'NOS' },
-			{ label: 'Common name', key: 'common_name', textAlign: 'left', width: 160, sortDirection: 'NOS' },
-			{ label: 'Scientific name', key: 'scientific_name', textAlign: 'left', width: 160, sortDirection: 'NOS' },
-			{ label: 'Conservation status', key: 'conservation_status', textAlign: 'left', width: 160, sortDirection: 'NOS' },
-			{ label: 'Habitat', key: 'habitat', textAlign: 'left', width: 160, sortDirection: 'NOS' },
-			{ label: 'Diet', key: 'diet', textAlign: 'left', width: 160, sortDirection: 'NOS' },
-			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 160, sortDirection: 'NOS' },
+			{ label: 'Common name', key: 'common_name', textAlign: 'left', width: 160 },
+			{ label: 'Scientific name', key: 'scientific_name', textAlign: 'left', width: 160 },
+			{ label: 'Conservation status', key: 'conservation_status', textAlign: 'left', width: 160 },
+			{ label: 'Habitat', key: 'habitat', textAlign: 'left', width: 160 },
+			{ label: 'Diet', key: 'diet', textAlign: 'left', width: 160 },
+			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 160 },
 		],
 	],
 };
@@ -26,12 +26,12 @@ const HEADERS_HORIZONTAL_SORT: KoliBriTableHeaders = {
 	horizontal: [
 		[
 			{ label: 'ID', key: 'id', textAlign: 'right', width: 160, sortDirection: 'ASC' },
-			{ label: 'Common name', key: 'common_name', textAlign: 'left', width: 160, sortDirection: 'ASC' },
-			{ label: 'Scientific name', key: 'scientific_name', textAlign: 'left', width: 160, sortDirection: 'ASC' },
-			{ label: 'Conservation status', key: 'conservation_status', textAlign: 'left', width: 160, sortDirection: 'ASC' },
-			{ label: 'Habitat', key: 'habitat', textAlign: 'left', width: 160, sortDirection: 'ASC' },
-			{ label: 'Diet', key: 'diet', textAlign: 'left', width: 160, sortDirection: 'ASC' },
-			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 160, sortDirection: 'ASC' },
+			{ label: 'Common name', key: 'common_name', textAlign: 'left', width: 160 },
+			{ label: 'Scientific name', key: 'scientific_name', textAlign: 'left', width: 160 },
+			{ label: 'Conservation status', key: 'conservation_status', textAlign: 'left', width: 160 },
+			{ label: 'Habitat', key: 'habitat', textAlign: 'left', width: 160 },
+			{ label: 'Diet', key: 'diet', textAlign: 'left', width: 160 },
+			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 160 },
 		],
 	],
 };
