@@ -24,7 +24,9 @@
 			outline: none;
 		}
 
-		&--destructive {
+		// danger is not part of desy, but for backwards compatibility added
+		&--destructive,
+		&--danger {
 			--button-main-color: var(--color-red-100);
 			--button-hover-color: var(--color-red-100-06);
 		}
@@ -38,10 +40,6 @@
 		}
 
 		&--tertiary {
-			@include tertiaryButton;
-		}
-
-		.kol-close-button & {
 			@include tertiaryButton;
 		}
 
@@ -128,6 +126,10 @@
 				font-size: inherit;
 			}
 		}
+	}
+
+	.kol-close-button .#{$block-classname} {
+		@include tertiaryButton;
 	}
 }
 

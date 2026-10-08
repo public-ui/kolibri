@@ -98,6 +98,6 @@ export const ECL_EC = KoliBri.createTheme(
 		'KOL-VERSION': versionCss,
 	},
 	{
-		buttonVariantDefault: 'secondary',
+		buttonVariantDefault: 'tertiary',
 	},
 );
