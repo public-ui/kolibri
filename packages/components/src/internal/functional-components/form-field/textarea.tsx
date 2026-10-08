@@ -10,6 +10,7 @@ export type TextAreaFCProps = DefaultInputProps<JSXBase.TextareaHTMLAttributes<H
 	value?: string;
 	touched?: boolean;
 	msg?: Stringified<MsgPropType>;
+	spellcheck?: boolean;
 } & {
 	[key: `aria-${string}`]: unknown;
 	[key: `data-${string}`]: unknown;
