@@ -5,48 +5,46 @@ import React, { useEffect, useState } from 'react';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
+import type { KoliBriSortDirection, SortEventPayload } from '../../../../../components/dist/types/schema';
 import type { ComplexData } from './test-complex-data';
 import { COMPLEX_DATA } from './test-complex-data';
 
-const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
-	horizontal: [
-		[
-			{ label: 'ID', key: 'id', textAlign: 'right', width: 160, sortDirection: 'NOS' },
-			{ label: 'Common name', key: 'common_name', textAlign: 'left', width: 160 },
-			{ label: 'Scientific name', key: 'scientific_name', textAlign: 'left', width: 160 },
-			{ label: 'Conservation status', key: 'conservation_status', textAlign: 'left', width: 160 },
-			{ label: 'Habitat', key: 'habitat', textAlign: 'left', width: 160 },
-			{ label: 'Diet', key: 'diet', textAlign: 'left', width: 160 },
-			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 160 },
-		],
-	],
-};
-
-const HEADERS_HORIZONTAL_SORT: KoliBriTableHeaders = {
-	horizontal: [
-		[
-			{ label: 'ID', key: 'id', textAlign: 'right', width: 160, sortDirection: 'ASC' },
-			{ label: 'Common name', key: 'common_name', textAlign: 'left', width: 160 },
-			{ label: 'Scientific name', key: 'scientific_name', textAlign: 'left', width: 160 },
-			{ label: 'Conservation status', key: 'conservation_status', textAlign: 'left', width: 160 },
-			{ label: 'Habitat', key: 'habitat', textAlign: 'left', width: 160 },
-			{ label: 'Diet', key: 'diet', textAlign: 'left', width: 160 },
-			{ label: 'Geographic range', key: 'geographic_range', textAlign: 'left', width: 160 },
-		],
-	],
-};
-
 export const TableStatelessAsync: FC = () => {
-	const getAsyncData = () => new Promise<{ COMPLEX_DATA: ComplexData[] }>((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 5000));
-	const loadData = () => {
+	const [sortID, setSortID] = useState<KoliBriSortDirection>('NOS');
+	const [sortName, setSortName] = useState<KoliBriSortDirection>('NOS');
+
+	const HEADERS_HORIZONTAL: KoliBriTableHeaders = {
+		horizontal: [
+			[
+				{ label: 'ID', key: 'id', textAlign: 'right', width: 160, sortDirection: sortID },
+				{ label: 'Common name', key: 'common_name', textAlign: 'left', width: 160, sortDirection: sortName },
+			],
+		],
+	};
+
+	const getAsyncData = () => new Promise<{ COMPLEX_DATA: ComplexData[] }>((resolve) => setTimeout(() => resolve({ COMPLEX_DATA }), 500));
+	const loadData = (event?: MouseEvent, sortEvent?: SortEventPayload) => {
 		setLoading(true);
 		getAsyncData().then((result: Awaited<ReturnType<typeof getAsyncData>>) => {
 			setComplexData(result.COMPLEX_DATA.slice(0, 15));
 
-			if (header === HEADERS_HORIZONTAL) {
-				setHeader(HEADERS_HORIZONTAL_SORT);
-			} else {
-				setHeader(HEADERS_HORIZONTAL);
+			if (sortEvent?.key === 'id') {
+				if (sortID === 'NOS') {
+					setSortID('ASC');
+					//ID sortiert Name nicht mit (multisort) -> NVDA liest jede sortierung vor
+					//setSortName('NOS');
+				} else {
+					setSortID('NOS');
+				}
+			} else if (sortEvent?.key === 'common_name') {
+				if (sortName === 'NOS') {
+					//Name sortiert ID mit (single sort) -> NVDA liest nicht vor
+					setSortID('NOS');
+					setSortName('ASC');
+				} else {
+					//Name sortiert ID nicht mit -> NVDA liest  vor
+					setSortName('NOS');
+				}
 			}
 
 			setLoading(false);
@@ -55,7 +53,6 @@ export const TableStatelessAsync: FC = () => {
 
 	const [complexData, setComplexData] = useState<ComplexData[]>([]);
 	const [loading, setLoading] = useState<boolean>(true);
-	const [header, setHeader] = useState<KoliBriTableHeaders>(HEADERS_HORIZONTAL);
 
 	useEffect(() => loadData(), []);
 
@@ -72,10 +69,10 @@ export const TableStatelessAsync: FC = () => {
 				<KolTableStateless
 					_label="Table for demonstration purposes"
 					_loading={loading}
-					_headers={header}
+					_headers={HEADERS_HORIZONTAL}
 					_data={complexData}
 					_on={{
-						onSort: () => loadData(),
+						onSort: (event: MouseEvent, sortEvent: SortEventPayload) => loadData(event, sortEvent),
 					}}
 				/>
 				<KolPagination
