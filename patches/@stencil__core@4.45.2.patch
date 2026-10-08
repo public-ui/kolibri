@@ -1,0 +1,13 @@
+diff --git a/compiler/stencil.js b/compiler/stencil.js
+index 5f11b8622559aa49ef2e40bb0a7e4f0c68d892c3..84b5f5620900c9996ea3f8954aff5034fc13d14c 100644
+--- a/compiler/stencil.js
++++ b/compiler/stencil.js
+@@ -260476,7 +260476,7 @@ var tsGetSourceFile = (config, module2) => {
+     return null;
+   }
+   const compilerOptions = { ...config.tsCompilerOptions };
+-  const host = import_typescript15.default.createCompilerHost(compilerOptions);
++  const host = import_typescript15.default.createCompilerHost(compilerOptions, true);
+   const program3 = import_typescript15.default.createProgram([module2.resolvedModule.resolvedFileName], compilerOptions, host);
+   return program3.getSourceFile(module2.resolvedModule.resolvedFileName);
+ };

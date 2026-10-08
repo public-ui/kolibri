@@ -892,7 +892,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
           <div class="page-size">
             <div class="kol-pagination__page-size-select">
               <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-                <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+                <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
                   <span class="kol-form-field__label-text kol-span">
                     <span class="kol-span__container">
                       <span class="kol-span__label">
@@ -1213,7 +1213,7 @@ exports[`kol-table-stateful should render with pagination as JSON string on both
           <div class="page-size">
             <div class="kol-pagination__page-size-select">
               <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-                <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+                <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
                   <span class="kol-form-field__label-text kol-span">
                     <span class="kol-span__container">
                       <span class="kol-span__label">
@@ -1618,7 +1618,7 @@ exports[`kol-table-stateful should render with pagination as empty string 1`] = 
           <div class="page-size">
             <div class="kol-pagination__page-size-select">
               <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-                <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+                <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
                   <span class="kol-form-field__label-text kol-span">
                     <span class="kol-span__container">
                       <span class="kol-span__label">
@@ -2195,7 +2195,7 @@ exports[`kol-table-stateful should render with pagination object on the second p
           <div class="page-size">
             <div class="kol-pagination__page-size-select">
               <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-                <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+                <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
                   <span class="kol-form-field__label-text kol-span">
                     <span class="kol-span__container">
                       <span class="kol-span__label">
@@ -2721,7 +2721,7 @@ exports[`kol-table-stateful should render with pagination true 1`] = `
           <div class="page-size">
             <div class="kol-pagination__page-size-select">
               <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-                <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+                <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
                   <span class="kol-form-field__label-text kol-span">
                     <span class="kol-span__container">
                       <span class="kol-span__label">
@@ -2965,7 +2965,7 @@ exports[`kol-table-stateful should render with pagination with boundary and sibl
           <div class="page-size">
             <div class="kol-pagination__page-size-select">
               <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-                <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+                <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
                   <span class="kol-form-field__label-text kol-span">
                     <span class="kol-span__container">
                       <span class="kol-span__label">

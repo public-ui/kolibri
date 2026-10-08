@@ -27,6 +27,7 @@ packages:
   - packages/tools/stylelint-rules
   - packages/tools/visual-tests
   - packages/unstyled
+
 allowBuilds:
   '@evilmartians/lefthook': true
   '@modelcontextprotocol/ext-apps': true
@@ -42,3 +43,10 @@ allowBuilds:
   protobufjs: true
   ttf2woff2: true
   unrs-resolver: true
+
+patchedDependencies:
+  # Since 4.43.2 the spec test transpiler resolves base classes from other files through
+  # `tsGetSourceFile`, whose compiler host parses without parent nodes. `getText()` on such a node
+  # throws, so every spec of a component that extends an imported base class fails to run.
+  # Drop the patch once Stencil passes `setParentNodes` to `createCompilerHost` itself.
+  '@stencil/core@4.45.2': patches/@stencil__core@4.45.2.patch

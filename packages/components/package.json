@@ -115,7 +115,7 @@
 		"@public-ui/stylelint-rules": "workspace:*",
 		"@revolist/svelte-output-target": "0.0.7",
 		"@stencil-community/postcss": "2.2.0",
-		"@stencil/core": "4.38.3",
+		"@stencil/core": "4.45.2",
 		"@stencil/playwright": "0.5.1",
 		"@stencil/sass": "3.3.2",
 		"@types/jest": "29.5.14",
