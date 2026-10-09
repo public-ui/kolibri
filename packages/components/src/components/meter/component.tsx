@@ -17,6 +17,7 @@ import {
 	unitProp,
 	type OrientationPropType,
 } from '../../internal/props';
+import { LabelPropType } from '../../schema';
 
 @Component({
 	tag: 'kol-meter',
@@ -48,7 +49,7 @@ export class KolMeter extends BaseWebComponent<MeterApi> implements WebComponent
 	public _label!: string;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
+	public watchLabel(value?: LabelPropType): void {
 		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 

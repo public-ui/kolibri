@@ -16,7 +16,7 @@ export const AccordionBasic: FC = () => (
 		</SampleDescription>
 
 		<SampleBlock id="basic">
-			<KolAccordion _label="Heading Accordion Tab 1 (open)" _open>
+			<KolAccordion _label={[{ text: 'Acquirer', lang: 'en' }, { text: '-Gutschrift' }]} _open>
 				<p>Contents Accordion Tab 1</p>
 			</KolAccordion>
 			<KolAccordion _label="Heading Accordion Tab 2">

@@ -3,6 +3,7 @@ import { h } from '@stencil/core';
 
 import { getHeadlineTag } from '../../../functional-components/Heading/Heading';
 import { translate } from '../../../i18n';
+import { trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
@@ -86,7 +87,8 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 				<ButtonFC
 					accessKey=""
 					ariaControls=""
-					ariaDescription={label.trim()}
+					ariaDescription={trimLabel(label)}
+
 					ariaDescriptionId={closerAriaDescriptionId}
 					ariaExpanded={UNSET_BUTTON_PROP}
 					ariaHasPopup=""

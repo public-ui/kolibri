@@ -15,7 +15,7 @@ import type {
 	StateColumnHeaderCell,
 	StateColumnPropType,
 } from '../../../schema';
-import { classNameFromVariant } from '../../../schema';
+import { classNameFromVariant, trimLabel } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
@@ -567,7 +567,7 @@ export const TableStatelessFC: FC<TableStatelessFCProps> = (props) => {
 					<tbody class={BEM_CLASS_TABLE__BODY}>
 						<div class={tableBem('loader', { shown: loading })}>
 							<SpinFC
-								label={(loading ? translate('kol-table-data-loading') : translate('kol-table-data-loaded')).replace('{{caption}}', label)}
+								label={(loading ? translate('kol-table-data-loading') : translate('kol-table-data-loaded')).replace('{{caption}}', trimLabel(label))}
 								show={loading}
 								variant="cycle"
 							/>

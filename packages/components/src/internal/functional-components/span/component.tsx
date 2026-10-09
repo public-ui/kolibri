@@ -2,7 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { Fragment, h } from '@stencil/core';
 import { isString } from 'lodash-es';
 
-import type { IconOrIconClass, KoliBriAllIcons, KoliBriCustomIcon, KoliBriIconsProp } from '../../../schema';
+import type { IconOrIconClass, KoliBriAllIcons, KoliBriCustomIcon, KoliBriIconsProp, LabelPropType } from '../../../schema';
 import { showExpertSlot } from '../../../schema';
 import { bem } from '../../../schema/bem-registry';
 import clsx from '../../../utils/clsx';
@@ -58,17 +58,30 @@ function renderUnderlinedBadgeText(label: string, badgeText: string) {
 	);
 }
 
-function renderLabel(label: string, hideLabel: boolean, allowMarkdown: boolean | undefined, badgeText: string | undefined) {
-	if (hideLabel || !isString(label)) {
+function renderLabel(label: LabelPropType, hideLabel: boolean, allowMarkdown: boolean | undefined, badgeText: string | undefined) {
+	if (hideLabel) {
 		return null;
+	} // eslint-disable-next-line no-console
+	console.log(label);
+
+	if (Array.isArray(label)) {
+		let parsedLabel = '';
+		label.forEach((labelSegment) => {
+			parsedLabel += <span lang={labelSegment.lang}>{labelSegment.text}</span>;
+		});
+		// eslint-disable-next-line no-console
+		console.log(parsedLabel);
+
+		return <span class={spanBem('label')}>{parsedLabel}</span>;
+	} else {
+		if (allowMarkdown) {
+			return <span class={clsx(spanBem('label'), 'md')} innerHTML={md(label)} />;
+		}
+		if (badgeText) {
+			return <span class={spanBem('label')}>{renderUnderlinedBadgeText(label, badgeText)}</span>;
+		}
+		return <span class={spanBem('label')}>{label}</span>;
 	}
-	if (allowMarkdown) {
-		return <span class={clsx(spanBem('label'), 'md')} innerHTML={md(label)} />;
-	}
-	if (badgeText) {
-		return <span class={spanBem('label')}>{renderUnderlinedBadgeText(label, badgeText)}</span>;
-	}
-	return <span class={spanBem('label')}>{label}</span>;
 }
 
 export const SpanFC: FC<

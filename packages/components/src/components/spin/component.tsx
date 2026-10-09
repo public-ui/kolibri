@@ -6,6 +6,7 @@ import type { SpinApi } from '../../internal/functional-components/spin/api';
 import { spinPropsConfig } from '../../internal/functional-components/spin/api';
 import { SpinFC } from '../../internal/functional-components/spin/component';
 import { labelProp, showProp, variantSpinProp, type SpinVariantType } from '../../internal/props';
+import { LabelPropType } from '../../schema';
 
 @Component({
 	tag: 'kol-spin',
@@ -30,10 +31,10 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
 	@Prop()
-	public _label?: string;
+	public _label?: LabelPropType;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
+	public watchLabel(value?: LabelPropType): void {
 		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 
