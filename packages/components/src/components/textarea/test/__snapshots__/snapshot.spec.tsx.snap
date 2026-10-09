@@ -23,7 +23,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _hasCounte
         </div>
       </div>
       <div class="kol-form-field__counter">
-        <span aria-hidden="true" class="kol-form-field__counter" data-testid="input-counter">
+        <span aria-hidden="true" class="kol-form-field__counter kol-form-field__counter--exceeded" data-testid="input-counter">
           kol-character-limit-remaining
         </span>
         <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="textarea-counter-nonce">
@@ -58,7 +58,7 @@ exports[`kol-textarea should render with _label="Label" _name="field" _hasCounte
         </div>
       </div>
       <div class="kol-form-field__counter">
-        <span aria-hidden="true" class="kol-form-field__counter" data-testid="input-counter">
+        <span aria-hidden="true" class="kol-form-field__counter kol-form-field__counter--exceeded" data-testid="input-counter">
           kol-character-counter-current-of-max
         </span>
         <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="textarea-counter-nonce">

@@ -143,11 +143,10 @@ export class CounterBehavior extends BaseBehavior<CounterApi> implements Behavio
 	private updateVisual(currentLength: number, { maxLength, maxLengthBehavior }: CounterLimit): void {
 		if (!this.visualSpan) return;
 		this.visualSpan.innerText = getCounterVisualText(maxLengthBehavior, maxLength, currentLength);
-		if (maxLengthBehavior === 'soft' && typeof maxLength === 'number' && currentLength > maxLength) {
-			this.visualSpan.classList.add('kol-form-field__counter--exceeded');
-		} else {
-			this.visualSpan.classList.remove('kol-form-field__counter--exceeded');
-		}
+		this.visualSpan.classList.toggle(
+			'kol-form-field__counter--exceeded',
+			maxLengthBehavior === 'soft' && typeof maxLength === 'number' && currentLength > maxLength,
+		);
 	}
 
 	private updateAria(currentLength: number, { maxLength, maxLengthBehavior }: CounterLimit, forceReannounce = false): void {

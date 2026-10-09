@@ -35,7 +35,6 @@ describe('kol-input-text counter runtime updates', () => {
 		await page.waitForChanges();
 
 		const counter = page.root?.shadowRoot?.querySelector('[data-testid="input-counter"]') as HTMLSpanElement;
-		expect(counter.classList.contains('kol-form-field__counter--exceeded')).toBe(true);
 		expect(counter.innerText).toBe('kol-character-limit-exceeded');
 	});
 

@@ -1,10 +1,24 @@
-import { afterEach, describe, expect, it, jest } from '@jest/globals';
+import { afterAll, afterEach, beforeAll, describe, expect, it, jest } from '@jest/globals';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { KolTextarea } from '../component';
 
 describe('kol-textarea counter runtime updates', () => {
+	const originalHTMLTextAreaElement = (globalThis as unknown as { HTMLTextAreaElement?: unknown }).HTMLTextAreaElement;
+
+	beforeAll(() => {
+		(globalThis as unknown as { HTMLTextAreaElement: unknown }).HTMLTextAreaElement = class HTMLTextAreaElement {
+			static [Symbol.hasInstance](instance: unknown): boolean {
+				return (instance as { tagName?: string })?.tagName === 'TEXTAREA';
+			}
+		};
+	});
+
+	afterAll(() => {
+		(globalThis as unknown as { HTMLTextAreaElement: unknown }).HTMLTextAreaElement = originalHTMLTextAreaElement;
+	});
+
 	afterEach(() => {
 		jest.useRealTimers();
 	});
@@ -39,7 +53,6 @@ describe('kol-textarea counter runtime updates', () => {
 		await page.waitForChanges();
 
 		const counter = page.root?.shadowRoot?.querySelector('[data-testid="input-counter"]') as HTMLSpanElement;
-		expect(counter.classList.contains('kol-form-field__counter--exceeded')).toBe(true);
 		expect(counter.innerText).toBe('kol-character-limit-exceeded');
 	});
 

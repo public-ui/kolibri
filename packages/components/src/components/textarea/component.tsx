@@ -495,7 +495,7 @@ export class KolTextarea
 	}
 
 	private readonly handleTextareaInput = (event: Event): void => {
-		if (this.ctaRef.el) {
+		if (this.ctaRef.el instanceof HTMLTextAreaElement) {
 			this._value = this.ctaRef.el.value;
 			if (this.getRenderProp('adjustHeight')) {
 				this.writeRows(this.measureTextareaRows(this.ctaRef.el));
