@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/hydrate-server",
-	"version": "4.5.0-rc.6",
+	"version": "4.5.0-rc.7",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -60,7 +60,7 @@
 		"test:update:unit": "cross-env SNAPSHOT_UPDATE=1 pnpm run test:mocha"
 	},
 	"dependencies": {
-		"@grpc/grpc-js": "1.14.5",
+		"@grpc/grpc-js": "1.14.6",
 		"@grpc/proto-loader": "0.8.1",
 		"@public-ui/hydrate": "workspace:*",
 		"commander": "15.0.0",

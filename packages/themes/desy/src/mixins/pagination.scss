@@ -22,7 +22,7 @@
 		}
 
 		.kol-button {
-			@include ghostButton('kol-button');
+			@include tertiaryButton;
 
 			&__text {
 				min-width: unset !important; // override style from button mixin
