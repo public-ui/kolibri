@@ -1,19 +1,244 @@
 {
 	"schema": 1,
-	"state": "success",
-	"description": "No visual changes",
-	"computedAt": "2026-10-09T14:35:05.157Z",
+	"state": "pending",
+	"description": "56 added – 0 of 56 approved, review pending",
+	"computedAt": "2026-10-09T14:53:20.254Z",
 	"pr": 11204,
-	"head": "2e3bbd59208296f6d57109b1730a8656e5b1b6c6",
-	"digest": "sha256:d598fc8e40edf8857e261a725841ac059e2edeae9bea4b76d7e018952b765b54",
+	"head": "9f44dcd70b08f2fcd4e0d21bd9cccdffe27d0096",
+	"digest": "sha256:fa40d50707c31d0c04ad63e6e186a0cd0aa62e45b1ddea4bc3830fe27291f415",
 	"counts": {
-		"changes": 0,
-		"open": 0,
+		"changes": 56,
+		"open": 56,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {}
+	"items": {
+		"test-tag-name-transformer/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		}
+	}
 }
