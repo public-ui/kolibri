@@ -1,6 +1,6 @@
 ---
 name: pr-extern-review
-description: Prüft Pull Requests externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue. Befehle - `audit` (Standard) liefert eine Ampel-Tabelle mit den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn / hint / ready), einem Gesamtstatus (grün / gelb / rot) und Out-of-Scope- und Folge-Ticket-Hinweisen; `comment` schreibt je PR einen klaren Kommentar an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Tickets an und verlinkt sie mit dem PR als Ursprung; `consolidate` setzt die issue-relevanten Verbesserungen aller gemergten oder geschlossenen PRs in einem Sammel-PR um, der alle betroffenen Tickets schließt. Nutze diesen Skill immer, wenn der Nutzer PRs von Externen, Contributorn oder der Community prüfen, kommentieren oder daraus Folge-Tickets anlegen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die offenen PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an", "setz die Nachbesserungen der gemergten PRs in einem PR um" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
+description: Prüft Pull Requests externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue. Befehle - `audit` (Standard) liefert eine Ampel-Tabelle mit den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn / hint / ready), einem Gesamtstatus (grün / gelb / rot) und Out-of-Scope- und Folge-Ticket-Hinweisen; `comment` schreibt je PR einen klaren Kommentar an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Tickets an und verlinkt sie mit dem PR als Ursprung; `consolidate` setzt die issue-relevanten Verbesserungen aller gemergten oder geschlossenen PRs in einem Sammel-PR um, der alle betroffenen Tickets schließt; `labels` setzt die vom Audit empfohlenen `release:*`-Labels. Nutze diesen Skill immer, wenn der Nutzer PRs von Externen, Contributorn oder der Community prüfen, kommentieren oder daraus Folge-Tickets anlegen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die offenen PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an", "setz die Nachbesserungen der gemergten PRs in einem PR um", "korrigier die Release-Labels" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
 ---
 
 # Externe PRs prüfen
@@ -15,13 +15,13 @@ Dieser Skill prüft jeden PR auf drei Fragen und fasst das Ergebnis immer im sel
 
 ## Befehle
 
-Aufruf: `/pr-extern-review [audit|comment|tickets|consolidate] <PRs> [IDs]`
+Aufruf: `/pr-extern-review [audit|comment|tickets|consolidate|labels] <PRs> [IDs]`
 
 - **`<PRs>`:** PR-Nummern oder -Links, oder `author:<login>` für alle offenen PRs eines Contributors.
 - **`[IDs]`:** nur bei `tickets` und `consolidate`, z. B. `OOS-2 FU-1`, um einzelne Punkte auszuwählen.
 - Ohne Befehl gilt `audit`. Auch eine Bitte in normalen Worten wählt den passenden Befehl
   („kommentiere die PRs“ → `comment`, „leg die Folgetickets an“ → `tickets`, „setz die Nachbesserungen
-  der gemergten PRs um“ → `consolidate`).
+  der gemergten PRs um“ → `consolidate`, „korrigier die Release-Labels“ → `labels`).
 
 | Befehl        | Was er tut                                                                                                                                     | Schreibt auf GitHub?           | Abschnitt |
 | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | --------- |
@@ -29,12 +29,13 @@ Aufruf: `/pr-extern-review [audit|comment|tickets|consolidate] <PRs> [IDs]`
 | `comment`     | Schreibt je offenem, nicht grünem PR einen Kommentar an den Autor: was im Scope des Issues bis Grün zu tun ist.                                | ja, ein Kommentar je PR        | 7         |
 | `tickets`     | Legt Folge-Tickets an und verlinkt sie mit dem PR als Ursprung.                                                                                | ja, ein Issue je Folgethema    | 8         |
 | `consolidate` | Setzt die issue-relevanten Verbesserungen aller gemergten oder geschlossenen PRs in einem Sammel-PR um, der alle betroffenen Tickets schließt. | ja, Branch, Commits und ein PR | 9         |
+| `labels`      | Setzt die vom Audit empfohlenen `release:*`-Labels an den PRs.                                                                                 | ja, nur `release:*`-Labels     | 10        |
 
-`comment`, `tickets` und `consolidate` bauen auf dem Ergebnis von `audit` auf. Liegt in der Unterhaltung kein Audit für
+`comment`, `tickets`, `consolidate` und `labels` bauen auf dem Ergebnis von `audit` auf. Liegt in der Unterhaltung kein Audit für
 genau diese PRs auf dem aktuellen Head vor, zuerst `audit` ausführen und die Tabelle zeigen.
 
-Der Aufruf von `comment`, `tickets` oder `consolidate` ist die Zustimmung zum Schreiben. Ohne diesen Aufruf schreibt der
-Skill nichts: Er kommentiert nicht, setzt keine Labels und legt keine Tickets an. Freigaben (Approve)
+Der Aufruf von `comment`, `tickets`, `consolidate` oder `labels` ist die Zustimmung zum Schreiben. Ohne diesen Aufruf
+schreibt der Skill nichts: Er kommentiert nicht, setzt oder entfernt keine Labels und legt keine Tickets an. Freigaben (Approve)
 und Merges macht er nie.
 
 ## 1. PRs bestimmen
@@ -131,6 +132,9 @@ Gegen `AGENTS.md` und die verlinkten Regeln prüfen, unter anderem:
 - Doku, die dem neuen Code widerspricht (z. B. ein Plan in `docs/`, der den Fehler noch als offen führt).
 - Tests: Ist der Fall aus dem Issue getestet? Für jede betroffene Komponente? Würde ein Test die
   gefundenen Fehler aufdecken?
+- Release-Labels: Passen die `release:*`-Labels zur Änderung (Regeln in Abschnitt 5, Block
+  **Release-Labels**)? Ein fehlendes oder falsches Label ist **hint**. Labels setzt nicht der Autor,
+  sondern ein Maintainer über `labels`; das Label macht den PR deshalb nicht rot.
 - Die PR-Beschreibung passt zum tatsächlichen Diff. Eine veraltete Beschreibung ist **hint**, weil sie
   in die Release-Notes einfließt.
 - Überflüssige, jetzt redundante Zuweisungen oder toter Code ist **hint**.
@@ -209,9 +213,35 @@ Auf Deutsch, knapp. Immer in dieser Reihenfolge:
    - **ID:** `FU-n`, fortlaufend über alle PRs der Ausgabe, wie `OOS-n`.
    - **Folge-Ticket?:** ja, optional (mit Bedingung) oder nein.
 
-6. Was nicht überflüssig ist, obwohl es so aussieht (z. B. doppelte Logik, weil eine Komponente nicht von
+6. Der Block **Release-Labels**: je PR die gesetzten und die empfohlenen `release:*`-Labels. Nur PRs
+   auflisten, bei denen beides abweicht.
+
+   | PR  | Gesetzt | Empfohlen | Begründung |
+   | --- | ------- | --------- | ---------- |
+
+   Die Kategorien stehen in `.github/release.yml`. Ein Hauptlabel nach der wichtigsten Änderung, dazu
+   die Zusatzlabels, wenn sie zutreffen:
+
+   | Label                     | Art    | Wann                                                                                   |
+   | ------------------------- | ------ | -------------------------------------------------------------------------------------- |
+   | `release:breaking-change` | Haupt  | Inkompatible Änderung der öffentlichen API (Props, Methoden, Events, Slots, Typen).    |
+   | `release:feature`         | Haupt  | Neue Funktion oder neues Sample (`feat`).                                              |
+   | `release:fix`             | Haupt  | Behebt ein Fehlverhalten (`fix`).                                                      |
+   | `release:improvement`     | Haupt  | Verbessert bestehendes Verhalten, das kein Fehler war, z. B. Performance (`perf`).     |
+   | `release:engineering`     | Haupt  | Intern ohne Wirkung für Nutzer: Refactoring, Tests, CI, Tooling.                       |
+   | `release:doc`             | Haupt  | Nur Dokumentation (`docs`).                                                            |
+   | `release:sample`          | Zusatz | Der PR ändert Samples (`packages/samples`).                                            |
+   | `release:theming`         | Zusatz | Theming-Vertrag: neue oder geänderte DOM-Elemente oder BEM-Klassen, siehe `AGENTS.md`. |
+   | `release:ignore`          | –      | Nie empfehlen oder setzen; das entscheidet ein Maintainer.                             |
+   - Maßgeblich ist der Inhalt des Diffs, nicht der PR-Titel. Die Automation
+     (`pr-release-label-automation.yml`) leitet das Hauptlabel nur aus dem Titel ab und setzt es nur,
+     wenn noch keines gesetzt ist.
+   - Falsch ist ein Hauptlabel, das der Inhalt nicht trägt, z. B. `release:improvement` an einem
+     Bugfix. Es wird gegen das passende ersetzt.
+
+7. Was nicht überflüssig ist, obwohl es so aussieht (z. B. doppelte Logik, weil eine Komponente nicht von
    der gemeinsamen Basis erbt), damit niemand das Falsche entfernt. Nur wenn es solche Fälle gibt.
-7. Offen benennen, was nicht geprüft wurde (z. B. Tests nicht lokal ausgeführt, weil `node_modules` fehlen).
+8. Offen benennen, was nicht geprüft wurde (z. B. Tests nicht lokal ausgeführt, weil `node_modules` fehlen).
 
 ## 6. Folgeaktionen anbieten
 
@@ -219,6 +249,7 @@ Am Ende des Audits eine kurze Frage mit den passenden Befehlen:
 
 - **`comment`** für die offenen PRs, die nicht grün sind.
 - **`tickets`** für die OOS- und FU-Punkte mit „Folge-Ticket: ja“.
+- **`labels`** für die PRs im Block **Release-Labels**.
 - **`consolidate`**, wenn gemergte oder geschlossene PRs nicht grün sind und ihre Nachbesserungen im Repo
   umgesetzt werden können.
 - **Beobachten:** den PRs folgen und bei neuen Commits erneut `audit` ausführen.
@@ -242,6 +273,8 @@ Scope seines Issues** ändern muss, klar und ohne Ampel-Jargon.
      ist eine Änderung an diesem PR und gehört damit in den Scope.
    - Themen außerhalb des Issues (FU, Folge-Tickets) werden **nicht** vom Autor verlangt. Gibt es dafür
      schon ein Ticket, in einem Satz darauf verweisen („tracked separately in #…“).
+   - Release-Labels werden nicht vom Autor verlangt, weil er sie nicht setzen kann. Weicht ein Label ab,
+     in einem Satz vermerken, dass die Maintainer es setzen, und dem Nutzer `labels` anbieten.
    - Kein Punkt, der nicht aus dem Audit stammt.
 5. **Form:** Englisch (Sprache der PRs), freundlich, knapp, nach diesem Muster:
 
@@ -360,7 +393,8 @@ Ziel: Was bei gemergten oder geschlossenen PRs nicht grün war, kann der Autor d
 5. **PR anlegen**, bereit zum Review (kein Draft), gegen `develop`:
    - **Titel:** Conventional Commit, der den Zweck nennt, z. B.
      `fix: follow-ups from the review of external pull requests`.
-   - **Label:** das `release:*`-Label nach der wichtigsten Änderung (`release:fix` bei Verhaltens-
+   - **Label:** nach den Regeln im Block **Release-Labels** (Abschnitt 5), das Hauptlabel nach der
+     wichtigsten Änderung (`release:fix` bei Verhaltens-
      korrekturen, sonst `release:engineering`), bei geänderten DOM- oder BEM-Klassen zusätzlich
      `release:theming`.
    - **Beschreibung** auf Englisch, nach diesem Muster:
@@ -384,6 +418,24 @@ Ziel: Was bei gemergten oder geschlossenen PRs nicht grün war, kann der Autor d
 
 6. **Antwort im Chat:** Link zum Sammel-PR, die umgesetzten Punkte mit ihren Tickets und die
    übersprungenen Punkte mit Grund. Danach anbieten, den PR zu beobachten und bis Grün zu bringen.
+
+## 10. Befehl `labels`: Release-Labels setzen
+
+Ziel: Jeder PR landet im Changelog in der richtigen Kategorie. Das Audit empfiehlt nur; erst dieser Befehl
+ändert Labels, nie automatisch.
+
+1. **Auswahl:** die genannten PRs mit einer Abweichung im Block **Release-Labels** des Audits. Ohne
+   Abweichung nichts tun.
+2. **Gemergte PRs:** nur ändern, solange der PR in keinem veröffentlichten Release steht (`merged_at`
+   liegt nach dem Datum des letzten Releases, `get_latest_release` bzw. `gh release view`). Sonst
+   überspringen, weil der Changelog schon erzeugt ist, und das im Chat nennen.
+3. **Ändern:** nur `release:*`-Labels anfassen. Das empfohlene Hauptlabel setzen, ein abweichendes
+   Hauptlabel entfernen, Zusatzlabels (`release:sample`, `release:theming`) nur ergänzen. `release:ignore`
+   nie setzen oder entfernen. Andere Labels nicht ändern.
+4. **Kein Kommentar:** Das Ändern eines Labels erscheint in der Zeitleiste des PRs. Einen Kommentar dafür
+   nicht posten.
+5. **Antwort im Chat:** eine Tabelle mit PR, Labels vorher, Labels nachher und den übersprungenen PRs mit
+   Grund.
 
 ## Referenzbeispiel
 
