@@ -2,7 +2,7 @@
 
 exports[`FormFieldFC renders a character limit hint 1`] = `
 <div class="kol-form-field">
-  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+  <label class="kol-form-field__label" for="field-nonce" id="field-label-nonce">
     <span class="kol-form-field__label-text kol-span">
       <span class="kol-span__container">
         <span class="kol-span__label">
@@ -23,7 +23,7 @@ exports[`FormFieldFC renders a character limit hint 1`] = `
 
 exports[`FormFieldFC renders a counter 1`] = `
 <div class="kol-form-field">
-  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+  <label class="kol-form-field__label" for="field-nonce" id="field-label-nonce">
     <span class="kol-form-field__label-text kol-span">
       <span class="kol-span__container">
         <span class="kol-span__label">
@@ -45,7 +45,7 @@ exports[`FormFieldFC renders a counter 1`] = `
 
 exports[`FormFieldFC renders a hidden label shown as tooltip 1`] = `
 <div class="kol-form-field kol-form-field--hide-label">
-  <label class="kol-form-field__label" hidden="" htmlfor="field-nonce">
+  <label class="kol-form-field__label" for="field-nonce" hidden="">
     <span class="kol-form-field__label-text kol-span kol-span--has-badge">
       <span class="kol-span__container">
         <span class="kol-span__label">
@@ -90,7 +90,7 @@ exports[`FormFieldFC renders a hidden label shown as tooltip 1`] = `
 
 exports[`FormFieldFC renders a hidden message 1`] = `
 <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched">
-  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+  <label class="kol-form-field__label" for="field-nonce" id="field-label-nonce">
     <span class="kol-form-field__label-text kol-span">
       <span class="kol-span__container">
         <span class="kol-span__label">
@@ -108,7 +108,7 @@ exports[`FormFieldFC renders a hidden message 1`] = `
 
 exports[`FormFieldFC renders a hint 1`] = `
 <div class="kol-form-field">
-  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+  <label class="kol-form-field__label" for="field-nonce" id="field-label-nonce">
     <span class="kol-form-field__label-text kol-span">
       <span class="kol-span__container">
         <span class="kol-span__label">
@@ -129,7 +129,7 @@ exports[`FormFieldFC renders a hint 1`] = `
 
 exports[`FormFieldFC renders a touched error message 1`] = `
 <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched">
-  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+  <label class="kol-form-field__label" for="field-nonce" id="field-label-nonce">
     <span class="kol-form-field__label-text kol-span">
       <span class="kol-span__container">
         <span class="kol-span__label">
@@ -156,7 +156,7 @@ exports[`FormFieldFC renders a touched error message 1`] = `
 
 exports[`FormFieldFC renders a variant and a field class 1`] = `
 <div class="kol-form-field kol-input-color">
-  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+  <label class="kol-form-field__label" for="field-nonce" id="field-label-nonce">
     <span class="kol-form-field__label-text kol-span">
       <span class="kol-span__container">
         <span class="kol-span__label">
@@ -182,7 +182,7 @@ exports[`FormFieldFC renders no label and no hint 1`] = `
 
 exports[`FormFieldFC renders required, read-only and disabled 1`] = `
 <div class="kol-form-field kol-form-field--disabled kol-form-field--read-only kol-form-field--required">
-  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+  <label class="kol-form-field__label" for="field-nonce" id="field-label-nonce">
     <span class="kol-form-field__label-text kol-span">
       <span class="kol-span__container">
         <span class="kol-span__label">
@@ -203,7 +203,7 @@ exports[`FormFieldFC renders required, read-only and disabled 1`] = `
 
 exports[`FormFieldFC renders the default 1`] = `
 <div class="kol-form-field">
-  <label class="kol-form-field__label" htmlfor="field-nonce" id="field-label-nonce">
+  <label class="kol-form-field__label" for="field-nonce" id="field-label-nonce">
     <span class="kol-form-field__label-text kol-span">
       <span class="kol-span__container">
         <span class="kol-span__label">
