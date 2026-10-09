@@ -181,7 +181,6 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 
 	protected readonly handleTextChange = (event: Event, value?: unknown): void => {
 		this.handleChange(event, value);
-		this.hasValue = Boolean(value ?? (event.target as HTMLInputElement).value);
 	};
 
 	protected readonly handleTextFocus = (event: FocusEvent): void => {

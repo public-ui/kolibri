@@ -454,7 +454,6 @@ export class KolTextarea
 		this.watchRows(this._rows);
 		this.watchSpellCheck(this._spellCheck);
 		this.applyValue(this._value);
-		this.hasValue = Boolean(this.getRenderProp('value'));
 	}
 
 	public componentDidLoad(): void {
@@ -492,7 +491,6 @@ export class KolTextarea
 
 	private readonly handleTextareaChange = (event: Event): void => {
 		this.handleChange(event);
-		this.hasValue = Boolean((event.target as HTMLTextAreaElement).value);
 	};
 
 	private readonly handleTextareaFocus = (event: FocusEvent): void => {
