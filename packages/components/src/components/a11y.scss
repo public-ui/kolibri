@@ -113,16 +113,16 @@
 	*/
 	.visually-hidden {
 		position: fixed !important;
-		top: 0 !important;
-		left: 0 !important;
-		width: 1px !important;
-		height: 1px !important;
+		top: 0;
+		left: 0;
+		width: 1px;
+		height: 1px;
 		margin: 0 !important;
 		padding: 0 !important;
-		overflow: hidden !important;
+		overflow: hidden;
 
-		white-space: nowrap !important;
-		border: 0 !important;
-		clip-path: inset(50%) !important;
+		white-space: nowrap;
+		border: 0;
+		clip-path: inset(50%);
 	}
 }

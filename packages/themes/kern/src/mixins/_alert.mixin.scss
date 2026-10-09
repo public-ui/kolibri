@@ -3,6 +3,7 @@
 
 @mixin kol-alert {
 	.kol-alert {
+		position: relative;
 		flex-direction: column;
 		--alert-accent-color: var(--kern-color-form-input-border);
 		--alert-background-color: var(--kern-color-layout-background-default);
