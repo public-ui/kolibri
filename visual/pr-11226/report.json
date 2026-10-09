@@ -1,13 +1,13 @@
 {
 	"schema": 1,
 	"pr": 11226,
-	"head": "47500c039d466467979e0454e0c8340f9dd1281d",
+	"head": "fb87531194c683fcd69fb52884522b71b8d53bcf",
 	"repository": "public-ui/kolibri",
-	"runId": 37823348398,
-	"generatedAt": "2026-10-08T18:32:58.904Z",
-	"digest": "sha256:b1f6f48bd0583094e2835d008117d8b9ae797bfdb882da150b43cb0ca828427f",
+	"runId": 37900364209,
+	"generatedAt": "2026-10-09T07:54:36.040Z",
+	"digest": "sha256:888b0d0e0cbf13e6d656e7971bc1ef524b875ab6fecc22c201c94da895000acc",
 	"baseline": {
-		"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
+		"sha": "65fa8d67f03b178b838e3d7a01f4202e58bedd41",
 		"ref": "develop",
 		"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 		"playwright": "1.60.0",
@@ -17,7 +17,7 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2920,
+		"unchanged": 2941,
 		"changed": 0,
 		"added": 0,
 		"removed": 0,
@@ -28,28 +28,28 @@
 			"package": "test-tag-name-transformer",
 			"themeDir": "theme-default",
 			"baseline": {
-				"files": 417,
+				"files": 420,
 				"meta": {
-					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
+					"sha": "65fa8d67f03b178b838e3d7a01f4202e58bedd41",
 					"ref": "develop",
-					"runId": 37746323129,
+					"runId": 37898352481,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T08:01:58.614Z",
-					"digest": "sha256:eadb35fe61ec50b226112fc42ced9227f974b3ba6056b288044ab0904f2b2444",
+					"createdAt": "2026-10-09T07:27:06.503Z",
+					"digest": "sha256:fe5cda0825fc49d156b12f55735dd4e15b9657580f98519425a31c58f837b787",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 417,
+				"unchanged": 420,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:eadb35fe61ec50b226112fc42ced9227f974b3ba6056b288044ab0904f2b2444",
+			"digest": "sha256:fe5cda0825fc49d156b12f55735dd4e15b9657580f98519425a31c58f837b787",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -166,6 +166,30 @@
 					"hash": "sha256:810f7c370611d156f716635e17155db57e61279228f1ed14b6b782ff45b30a9c"
 				},
 				{
+					"name": "button-basic--disabled",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:99792f0d12925fb65fa634d5444157c02614b985c70cddafb38e0d20bec74ae2"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:4073268fff3ae6a177f3e24d91f74726001a7465d93519861a6af73f5686b695"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:bfbd139042271db88af70d0768b3cdee70b43c207206b61432d1a4d9235bb4ff"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:8f34d461763ab603c913b6bb54ffd984a9bb188b323a8169a778f18d15e824d1"
+				},
+				{
 					"name": "button-icons--all-positions",
 					"route": "button-icons",
 					"status": "unchanged",
@@ -278,12 +302,6 @@
 					"route": "button-short-key",
 					"status": "unchanged",
 					"hash": "sha256:48f3318947a33a7fdd2118a4b8d6102685a5070faa1c0939e79920d8a066bcfb"
-				},
-				{
-					"name": "button-variants--variants",
-					"route": "button-variants",
-					"status": "unchanged",
-					"hash": "sha256:2fa19f5e49a1e7f32b0b5fd3abc26be2947ad089a08e7e98bfb67a53e442b653"
 				},
 				{
 					"name": "card-basic--basic",
@@ -2561,28 +2579,28 @@
 			"package": "theme-bwst",
 			"themeDir": "theme-bwst",
 			"baseline": {
-				"files": 417,
+				"files": 420,
 				"meta": {
-					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
+					"sha": "65fa8d67f03b178b838e3d7a01f4202e58bedd41",
 					"ref": "develop",
-					"runId": 37746323129,
+					"runId": 37898352481,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T08:00:41.445Z",
-					"digest": "sha256:8a04600e94d55e42bb9e0d0004d311efa3ae6fe619d9735e98a32fea1454e859",
+					"createdAt": "2026-10-09T07:26:51.833Z",
+					"digest": "sha256:a58ad7d4126cba7633de0bcd67f2be6bb50b9ca19ad511e04c18a8c21c7d505d",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 417,
+				"unchanged": 420,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8a04600e94d55e42bb9e0d0004d311efa3ae6fe619d9735e98a32fea1454e859",
+			"digest": "sha256:a58ad7d4126cba7633de0bcd67f2be6bb50b9ca19ad511e04c18a8c21c7d505d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2699,6 +2717,30 @@
 					"hash": "sha256:fab11db92722586ec759990d4a64bf3ed366f83f9b9c5a8ee43f3bb7b8a6768b"
 				},
 				{
+					"name": "button-basic--disabled",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:e9ba4fb6a5ed43565ab36784ec73b4dadc702520114777ce798874ce3233376c"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:cc8c138f586b48fcfa138317fe7aa9bd8faba9e2eaa9c412576c0c7922ea1132"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:69a82d62e755b41d63e9733c10c7553cbfd3ec315c64d230700303415c199589"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:7e009da9e03e50e75c0b125352fb389558cd040adb64843576f629515fc7c77b"
+				},
+				{
 					"name": "button-icons--all-positions",
 					"route": "button-icons",
 					"status": "unchanged",
@@ -2811,12 +2853,6 @@
 					"route": "button-short-key",
 					"status": "unchanged",
 					"hash": "sha256:75e1a5d98f599a5bce4e9a566274d2c137a551d8c7faf22ac74c2af43f78e6dc"
-				},
-				{
-					"name": "button-variants--variants",
-					"route": "button-variants",
-					"status": "unchanged",
-					"hash": "sha256:208eef99f7450dc0fa22973a5795fb1f7e5f66afab8cdeb3d85cc03eca2202ba"
 				},
 				{
 					"name": "card-basic--basic",
@@ -5094,28 +5130,28 @@
 			"package": "theme-default",
 			"themeDir": "theme-default",
 			"baseline": {
-				"files": 417,
+				"files": 420,
 				"meta": {
-					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
+					"sha": "65fa8d67f03b178b838e3d7a01f4202e58bedd41",
 					"ref": "develop",
-					"runId": 37746323129,
+					"runId": 37898352481,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T08:01:58.614Z",
-					"digest": "sha256:eadb35fe61ec50b226112fc42ced9227f974b3ba6056b288044ab0904f2b2444",
+					"createdAt": "2026-10-09T07:27:06.503Z",
+					"digest": "sha256:fe5cda0825fc49d156b12f55735dd4e15b9657580f98519425a31c58f837b787",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 417,
+				"unchanged": 420,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:eadb35fe61ec50b226112fc42ced9227f974b3ba6056b288044ab0904f2b2444",
+			"digest": "sha256:fe5cda0825fc49d156b12f55735dd4e15b9657580f98519425a31c58f837b787",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5232,6 +5268,30 @@
 					"hash": "sha256:810f7c370611d156f716635e17155db57e61279228f1ed14b6b782ff45b30a9c"
 				},
 				{
+					"name": "button-basic--disabled",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:99792f0d12925fb65fa634d5444157c02614b985c70cddafb38e0d20bec74ae2"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:4073268fff3ae6a177f3e24d91f74726001a7465d93519861a6af73f5686b695"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:bfbd139042271db88af70d0768b3cdee70b43c207206b61432d1a4d9235bb4ff"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:8f34d461763ab603c913b6bb54ffd984a9bb188b323a8169a778f18d15e824d1"
+				},
+				{
 					"name": "button-icons--all-positions",
 					"route": "button-icons",
 					"status": "unchanged",
@@ -5344,12 +5404,6 @@
 					"route": "button-short-key",
 					"status": "unchanged",
 					"hash": "sha256:48f3318947a33a7fdd2118a4b8d6102685a5070faa1c0939e79920d8a066bcfb"
-				},
-				{
-					"name": "button-variants--variants",
-					"route": "button-variants",
-					"status": "unchanged",
-					"hash": "sha256:2fa19f5e49a1e7f32b0b5fd3abc26be2947ad089a08e7e98bfb67a53e442b653"
 				},
 				{
 					"name": "card-basic--basic",
@@ -7627,28 +7681,28 @@
 			"package": "theme-desy",
 			"themeDir": "theme-desyv11",
 			"baseline": {
-				"files": 417,
+				"files": 420,
 				"meta": {
-					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
+					"sha": "65fa8d67f03b178b838e3d7a01f4202e58bedd41",
 					"ref": "develop",
-					"runId": 37746323129,
+					"runId": 37898352481,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T08:01:00.856Z",
-					"digest": "sha256:c128f0af58fef692b81ba55c4da3c69b41f501b83eb1a93bed807b3aa1c38e32",
+					"createdAt": "2026-10-09T07:26:19.334Z",
+					"digest": "sha256:36ae37bc5867808784599d3f8a7654e4c1ba53ddc3799c49e9844301ac723ec2",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 417,
+				"unchanged": 420,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:c128f0af58fef692b81ba55c4da3c69b41f501b83eb1a93bed807b3aa1c38e32",
+			"digest": "sha256:36ae37bc5867808784599d3f8a7654e4c1ba53ddc3799c49e9844301ac723ec2",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7666,61 +7720,61 @@
 					"name": "alert-basic--default",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:f741b70f39b8b404b7ff4708a2f492e33a899758dcf6663cbf292e66fd43ce4c"
+					"hash": "sha256:4ea19f5c0687474c07956f21fa6c33bb3890bf629640667844a6a377798841f5"
 				},
 				{
 					"name": "alert-basic--error",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:ac790cdac4bf98d621f0ac9bd96795211aaade33d1c3ab195de30f44af44802b"
+					"hash": "sha256:3d46fa9c8c89e659359a35030ca798e12fda931f4d409faa6de5360b87ea8658"
 				},
 				{
 					"name": "alert-basic--info",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:b25f7f99e2da7433d9a213342fa765f794ae657cccabb06b575b02bc2540258b"
+					"hash": "sha256:00ca23e82983cf188f04dbc5016441fcb24d6a53d41cdff857143d3a093027df"
 				},
 				{
 					"name": "alert-basic--success",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:d074a9fe201912b6c04a75f0b99e04b47e4623a2247a6408b43d2d67cad32a49"
+					"hash": "sha256:567d3aa3990848b4225d0d92b39f87d897b08b93b62a6194bafd21c704dbbfa2"
 				},
 				{
 					"name": "alert-basic--warning",
 					"route": "alert-basic",
 					"status": "unchanged",
-					"hash": "sha256:3ef3b671b2a0668667bd5c60861d357f8a1c164406bfb44a68f8d78c0251c529"
+					"hash": "sha256:bd097c1c3615fcdb62f4dfa069e2103b58fd68c22d65e9a22601df6aff149a5b"
 				},
 				{
 					"name": "alert-card-msg--default",
 					"route": "alert-card-msg",
 					"status": "unchanged",
-					"hash": "sha256:c22f0c7acd719c14317307e3cf70ed4b45bf6acbb64fa2818b9e040b674d3973"
+					"hash": "sha256:57b2266dcf03d0da8084c616928f3d915648ea1f71eaea908b0991456df3da97"
 				},
 				{
 					"name": "alert-card-msg--error",
 					"route": "alert-card-msg",
 					"status": "unchanged",
-					"hash": "sha256:91aed7f6bc7ac30339d951f7873f143432775903e9b84578234c050c774f472d"
+					"hash": "sha256:10aa7e80f787409a7cb52201e9aee3a3c5088a1ebe04d28e4ddb408ee8f3f28b"
 				},
 				{
 					"name": "alert-card-msg--info",
 					"route": "alert-card-msg",
 					"status": "unchanged",
-					"hash": "sha256:32739d50d73cf29512bee6af26fc4da825bf099779c93ba435c64d3babb65bbf"
+					"hash": "sha256:890c4f3e0ebfd2d159c689c2b9248ba3ec0cd58ed24feaff0e4c78272003e7a5"
 				},
 				{
 					"name": "alert-card-msg--success",
 					"route": "alert-card-msg",
 					"status": "unchanged",
-					"hash": "sha256:4d542e9756d297de68fb38c16ff0ef2dd1859c1afcf84d10e9eac3b718eae77d"
+					"hash": "sha256:d7b1d3d4d94ea0b94b6909ce4ad18b83ed008333bc91e0c7da579272c9e04bb5"
 				},
 				{
 					"name": "alert-card-msg--warning",
 					"route": "alert-card-msg",
 					"status": "unchanged",
-					"hash": "sha256:c05872b957e730b6fb93fe634a061d6c15d10697a34300ec4568b9f2ac6adcc6"
+					"hash": "sha256:51069aa0951523c4cd9323f164dd99e5524eda23e3535f7a0976bf54c7d9f2a2"
 				},
 				{
 					"name": "avatar-size--size",
@@ -7763,6 +7817,30 @@
 					"route": "breadcrumb-basic",
 					"status": "unchanged",
 					"hash": "sha256:282383e0f4f651b777e31a198ca853d7a7fcaf6e34db12fd6a515938687491d2"
+				},
+				{
+					"name": "button-basic--disabled",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:e507b7600a32705fc93601771c8d702155b57e292fa2833439142f294372db21"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:cc8a4fb529bc05b4e11b76ecafaa51e1ecc6cae7eca5816f6d0ab0fd991ef1f6"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:5a3f59b8c2046de4de62e77c00faa49b7dcd35c1b79208bdd65ad35b87fb17e8"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:250e00e34b40b3cf4bd02b9b8aaab5d14954419f125867f1df07db1e6efa83f5"
 				},
 				{
 					"name": "button-icons--all-positions",
@@ -7879,12 +7957,6 @@
 					"hash": "sha256:456820e1bd94281fa17427ce7f8a0a2c70fbc3a08229f68dfd025c439bab20b4"
 				},
 				{
-					"name": "button-variants--variants",
-					"route": "button-variants",
-					"status": "unchanged",
-					"hash": "sha256:7671560a4d04dfcaa979e16c282ffd41e91ecf83c1dc1845fc745327c0b91e0b"
-				},
-				{
 					"name": "card-basic--basic",
 					"route": "card-basic",
 					"status": "unchanged",
@@ -7954,7 +8026,7 @@
 					"name": "dialog-basic-show-dialog-true",
 					"route": "dialog-basic-show-dialog-true",
 					"status": "unchanged",
-					"hash": "sha256:4e370f5d7539a0e3a12b6c0fa679a5e5ced0e4720609ba5ccfc8cd39918741e0"
+					"hash": "sha256:98fa4d58a5389bdda0a93350e4aedf09ccb96301ef6bb19d280b376eec8e84c2"
 				},
 				{
 					"name": "drawer-basic-align-left",
@@ -7966,7 +8038,7 @@
 					"name": "drawer-basic-align-left-closer-true",
 					"route": "drawer-basic-align-left-closer-true",
 					"status": "unchanged",
-					"hash": "sha256:211f9ef1b7a7cf9d98656dbff816c8dc471e2e354c398a0d808383de38a36aa9"
+					"hash": "sha256:2e6f41154ed734178d19b78288c3283c032365959d13265b11471c56709f0899"
 				},
 				{
 					"name": "drawer-basic-align-top",
@@ -9382,7 +9454,7 @@
 					"name": "link-button-basic--variants",
 					"route": "link-button-basic",
 					"status": "unchanged",
-					"hash": "sha256:85c8a42adf55293c96a516ec77b858863cd333b9e89818fb936ff6c5ffb4a0e4"
+					"hash": "sha256:14cb6c0e0f6bf75753b490c18aae38bc1a25cc1ee26c5006fd125c3eb8bb0aee"
 				},
 				{
 					"name": "link-button-target--target",
@@ -9448,7 +9520,7 @@
 					"name": "modal-basic-show-dialog-true",
 					"route": "modal-basic-show-dialog-true",
 					"status": "unchanged",
-					"hash": "sha256:2c31078a0eb7b094ed07c84bdaf9a25a775ddcae97e403933590dc31cf65587c"
+					"hash": "sha256:5de4d0979274f27c4b25fc0f3b8520431fedabe8d8cec85effdb5196b19d1730"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
@@ -10114,7 +10186,7 @@
 					"name": "toast-configurator",
 					"route": "toast-configurator",
 					"status": "unchanged",
-					"hash": "sha256:d5d0bedd3e191d386ab0b754429ef8073410316732181f6ed8c86b4d945b6322"
+					"hash": "sha256:4a08523d281f1b0e64f70b77ed203a2a3b155c93c525ff7bf5687c35e84af73a"
 				},
 				{
 					"name": "toolbar-basic--horizontal",
@@ -10160,28 +10232,28 @@
 			"package": "theme-ecl",
 			"themeDir": "theme-ecl_ec",
 			"baseline": {
-				"files": 417,
+				"files": 420,
 				"meta": {
-					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
+					"sha": "65fa8d67f03b178b838e3d7a01f4202e58bedd41",
 					"ref": "develop",
-					"runId": 37746323129,
+					"runId": 37898352481,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T08:00:43.351Z",
-					"digest": "sha256:a0cfc6ecb8273d9f4ca2170c3f2ce6a53b95d150f97b497affead4de2da6aa74",
+					"createdAt": "2026-10-09T07:25:59.509Z",
+					"digest": "sha256:43677f3f39143d4b321a9535404bcb3efef2ddbfe00aceb3abfc7aaa291612fe",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 417,
+				"unchanged": 420,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a0cfc6ecb8273d9f4ca2170c3f2ce6a53b95d150f97b497affead4de2da6aa74",
+			"digest": "sha256:43677f3f39143d4b321a9535404bcb3efef2ddbfe00aceb3abfc7aaa291612fe",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10298,34 +10370,58 @@
 					"hash": "sha256:9085d965fbbab8aba5a976fe7f8dc985e02a4702007821b721922475902538f0"
 				},
 				{
+					"name": "button-basic--disabled",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:e60c63d051e38a387e6059a15d75657919673007a12ea202cc862494fb8fb214"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:2b61f4e2e35f91e81d196bbeeb393f2d69ce4d3e290631e5253cc90a760c9592"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:ee6d086768329ec7460666992a7dabbcae066876ae46296a1d85f5cb2860ca3f"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:893c7cb7979ef9113535e54428df306191e92264a8a1c73cf68981607d9cbe19"
+				},
+				{
 					"name": "button-icons--all-positions",
 					"route": "button-icons",
 					"status": "unchanged",
-					"hash": "sha256:2e979fd09eb2ee26fad220bd55ad6b0015a04ed19bed67f0b82da432eb39bff9"
+					"hash": "sha256:3e812e5eb8bb1bf751cd3061127b4d23471833187a9d1ed02b40982f546d6ddb"
 				},
 				{
 					"name": "button-icons--basic-positions",
 					"route": "button-icons",
 					"status": "unchanged",
-					"hash": "sha256:07f66b541b6a39e59e63b9ef12da6a25a689caa227ccca1d1af104ebf56faa87"
+					"hash": "sha256:e3e23a775e48b21d98a4dbf75c2cd2a1b90390013c65abf6b8f5f55b5aa4ebc5"
 				},
 				{
 					"name": "button-icons--icon-string",
 					"route": "button-icons",
 					"status": "unchanged",
-					"hash": "sha256:80d83ba7a8dbc9268ebc5b215082d0d9b96e5ce12dc04a56bdc11f81ba97bd01"
+					"hash": "sha256:5975af12bfb5105ead32e87c230004a5de4c014e86479813dc68a4b423cc0a19"
 				},
 				{
 					"name": "button-icons--large-icon",
 					"route": "button-icons",
 					"status": "unchanged",
-					"hash": "sha256:e00d896af56e70a909e4fe67e06ce7acffc0d66cdc2574a080eaf0f6154933a8"
+					"hash": "sha256:6789b450197e2d2ea07601040759a3e2244b24167f51c482d16a6e5076c1bfec"
 				},
 				{
 					"name": "button-icons--multiple-positions",
 					"route": "button-icons",
 					"status": "unchanged",
-					"hash": "sha256:4fba97304d624d7fdcfa98900490d48cc309766e7215743cd99dfcda9c7fe1ea"
+					"hash": "sha256:06f2e523c7694eb9f4e79f7f00d9abc4a963f2cca19c3974c44813280623f588"
 				},
 				{
 					"name": "button-link-basic--access-key",
@@ -10397,25 +10493,19 @@
 					"name": "button-short-key--hide-label",
 					"route": "button-short-key",
 					"status": "unchanged",
-					"hash": "sha256:8f3cb81966aaace75548e08d5c2d157eb24809c1c76e5ed363f96d231811c01e"
+					"hash": "sha256:5bf535992dda77b28868b14c4a0206a92c6347c66ba1154b755962f41fb3b976"
 				},
 				{
 					"name": "button-short-key--inline-icons",
 					"route": "button-short-key",
 					"status": "unchanged",
-					"hash": "sha256:d28850172701a93fe172d8f79964aca6c1ad970716f754b2ba7034350629796f"
+					"hash": "sha256:734b305040e556d556ef1f52173d7bb59e7efe32135a073e782169bf2a5940af"
 				},
 				{
 					"name": "button-short-key--short-keys",
 					"route": "button-short-key",
 					"status": "unchanged",
-					"hash": "sha256:423e15bb1a1a5eaf8dc4e04abfef9b93daa0f1e513d45f8f33c46682b883428d"
-				},
-				{
-					"name": "button-variants--variants",
-					"route": "button-variants",
-					"status": "unchanged",
-					"hash": "sha256:ecc5bc8e3200d454a537284ad5b369ff644b24767bb16c376254fe4e716ae560"
+					"hash": "sha256:25cf2712ea59e474e2208902ffc969e7303fc60bfbc2af5b25934b1bad3a253a"
 				},
 				{
 					"name": "card-basic--basic",
@@ -10487,31 +10577,31 @@
 					"name": "dialog-basic-show-dialog-true",
 					"route": "dialog-basic-show-dialog-true",
 					"status": "unchanged",
-					"hash": "sha256:c7ad0512c3ba1048ece4bc2445fd53cd79d8ed5f1a49e13fbb9a5fce1189668b"
+					"hash": "sha256:e7380715fcefe139320e6fdd2c7c7042bb9a6c5952f8f3eae7ca844766cf50dc"
 				},
 				{
 					"name": "drawer-basic-align-left",
 					"route": "drawer-basic-align-left",
 					"status": "unchanged",
-					"hash": "sha256:65c8cf6c932ba594fd94b66406aed83f741acb203344c224fa25a852e01e5a57"
+					"hash": "sha256:91dd77c7a5f6939adb1843640bf256671defbada01189f56f0971794908e6885"
 				},
 				{
 					"name": "drawer-basic-align-left-closer-true",
 					"route": "drawer-basic-align-left-closer-true",
 					"status": "unchanged",
-					"hash": "sha256:cf6d59ebe304676424b37573d4451a11a15da54f054405248ae16c8d51250b72"
+					"hash": "sha256:7425b1f373e7573d62cf54e965d2ea156c618f068d122f8473c52827e81c9335"
 				},
 				{
 					"name": "drawer-basic-align-top",
 					"route": "drawer-basic-align-top",
 					"status": "unchanged",
-					"hash": "sha256:9af5fd9c4d2e6ed06aa097f594f09f61eac3f390ea8f19d8c2f59f54c9171b5a"
+					"hash": "sha256:97b69f425aa9428f160d20920fb0d6cf2f25c371a5f985da0748c53f6b7154a4"
 				},
 				{
 					"name": "form-basic--form-basic",
 					"route": "form-basic",
 					"status": "unchanged",
-					"hash": "sha256:901a7864028ba4576898540bec80816e37dbfaf4f659cfc0159b5a0edd048eda"
+					"hash": "sha256:044a7991aa339d320e62264155a7052400b63a502d2ec4e541d0b8c265819a58"
 				},
 				{
 					"name": "form-error-list--error-list",
@@ -11273,67 +11363,67 @@
 					"name": "input-file-basic-noColumns--hide-label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:5bdf3436270cec506a89683a83bc89b48c4db628ecd87e81597f101711dec368"
+					"hash": "sha256:ea3f309df4e0320e1f7a9b67ab3bd1c29c43721466fa6ec34c0847b0fd61717d"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-access-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:bea06a445ece0c050f0e444d0e9e7b7ae32ff8eda6cfeec36b020164165981dd"
+					"hash": "sha256:79383739dd3b40959c0993aca69ae51ae335c7c8475bb4a16fe1a7d58f5bdbfc"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-black-bg",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:1c4a52aa85e893cbbd485c463f67a1ba27d7dfaf3897323a6cc8c93bbf8df58b"
+					"hash": "sha256:135478b56c2be1fb0d4c184a5f551ac1b4b7f446f2aacfae3775d45d03aa0547"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-disabled",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:2a280fb4f206975e9fe6b2e668dd6486ca8c5d2924d07b6b4e8a41caf0634dbc"
+					"hash": "sha256:c107e47c0ebe9744e13612c105f83c65602db320351b3fb7114a30eda54292fc"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-error",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:6c8eae94680f86cb214b49d3794ed7d4bc9f0ba578ca93ec7d0c66d07294efb7"
+					"hash": "sha256:35e5d34a5be134d455990458edb9077670f598e0cfdfb1f6ce36d2f1dbef35e7"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-default",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:c046556138918c5d943ba23dd58ebdb370b6fce43afc3dc76fe1f581c1c75c2c"
+					"hash": "sha256:6928c926ca2db75819c1ac7c88887e87ba7179c4da99f2c4d1e81fa28358d91c"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-info",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:f319dda69c6402c786b100b2d49ced4d35db9a41e8263450f2837e6d381dd06a"
+					"hash": "sha256:a16432315babaeb12d470648ba7c59a6ad57431dac36da7bd38bf5fd65926188"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-success",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:ddda4ca21faa3c443d350877e5dd2448f2bf53b3a42a1736d3d04f4231670b0e"
+					"hash": "sha256:251d706ba69e7c5e437e64b9e70734f47dbbae0c9e162a780707aa16619438ea"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-msg-warning",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:14f6943782add878afc450e9afd4b2fa5bbf15e7f5990ddc26e4699d69317638"
+					"hash": "sha256:970464acb5ff82b0bdaa87cc24a99c26b55fe2fb335508eaa15907386432d458"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-multiple",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:d7d553b29e4412d1a5fb63e6a4b808591e0e688d48cad49f374fe3f8fc520987"
+					"hash": "sha256:9224b11ffcfdcfc88c6d1f00210c2bf8adb864ad0b375d7bce22d460baea1a59"
 				},
 				{
 					"name": "input-file-basic-noColumns--label-short-key",
 					"route": "input-file-basic-noColumns",
 					"status": "unchanged",
-					"hash": "sha256:b6a96ea111bb850ea427113aa1b0d3ad2039bbb9dafab05d4639e93ed1464f75"
+					"hash": "sha256:f64cadb8c0de65e468a0569da61fedb21f1486e524d4f1660c1670d8ff1da853"
 				},
 				{
 					"name": "input-number-basic-noColumns--hide-label-msg-error",
@@ -11915,13 +12005,13 @@
 					"name": "link-button-basic--variants",
 					"route": "link-button-basic",
 					"status": "unchanged",
-					"hash": "sha256:77f80ae790ec1b4f96bb1ff3c5c77bc86853abd3b24a37e17a473351eb8bd68c"
+					"hash": "sha256:726111327d6509be0f03c3cd1bb598a4af698e304391be4d377069294f3698d7"
 				},
 				{
 					"name": "link-button-target--target",
 					"route": "link-button-target",
 					"status": "unchanged",
-					"hash": "sha256:cc5ab0b0c0ab4499466e1b8b937f50a994de64238f1ad8a610385e6f7826df59"
+					"hash": "sha256:468c6319ea9ba7628f9c87fd8f753c52d16a6cc74995f4be83138aef89f367f7"
 				},
 				{
 					"name": "link-icons--icons",
@@ -11981,7 +12071,7 @@
 					"name": "modal-basic-show-dialog-true",
 					"route": "modal-basic-show-dialog-true",
 					"status": "unchanged",
-					"hash": "sha256:8c8db0da91c931cb4401f21c78a2e358e734f178d63aed968ddad694320c2646"
+					"hash": "sha256:6da74acb5f917c38160376b06bb5937c0f3baea9d8e002e0276ee593dc32db21"
 				},
 				{
 					"name": "nav-basic--navigation-submenu",
@@ -12029,13 +12119,13 @@
 					"name": "popover-button-basic",
 					"route": "popover-button-basic",
 					"status": "unchanged",
-					"hash": "sha256:28cb0995d0b0681a62ad41bf2501c811234a69e40ad76cc183122b97d8616099"
+					"hash": "sha256:b29ef5c3febbcddb9ad0d8f0892f45f790ffe72ac5933d035124ce79ddaa11b3"
 				},
 				{
 					"name": "popover-button-inline--inline",
 					"route": "popover-button-inline",
 					"status": "unchanged",
-					"hash": "sha256:b95a875ecdb7ad986ee9a444ceb996ddffb5554bfe6dd61113345687ef68957f"
+					"hash": "sha256:98f28fb3863778649ea31a4a12a273312db4b01d7b678d27d5e0eb5ede524712"
 				},
 				{
 					"name": "progress-basic--custom-units",
@@ -12089,7 +12179,7 @@
 					"name": "scenarios-focus-elements-component-button",
 					"route": "scenarios-focus-elements-component-button",
 					"status": "unchanged",
-					"hash": "sha256:2139973984c13613f1c80e25f09ff2679c64b1ffd25e92ece66c5c2ea1542655"
+					"hash": "sha256:bd1c8ea68c2a41c16522c0a450af5e285ae561f041125a5657c51397e9074910"
 				},
 				{
 					"name": "scenarios-focus-elements-component-buttonLink",
@@ -12143,13 +12233,13 @@
 					"name": "scenarios-focus-elements-component-inputFile",
 					"route": "scenarios-focus-elements-component-inputFile",
 					"status": "unchanged",
-					"hash": "sha256:dde37715fd617bfbcd6cf0d61955e97848b83f34612f5f8d8b079d62e8efe1f3"
+					"hash": "sha256:8e5d27771dcda701ece97d14f7793ab6df800c255ca8ef863163cec87be91294"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputFileMultiple",
 					"route": "scenarios-focus-elements-component-inputFileMultiple",
 					"status": "unchanged",
-					"hash": "sha256:5720647e0b11151ee7e4f0ceedafc2e480e3305ede277bb6e083eb528df683df"
+					"hash": "sha256:9266de2fc5804c4b7f90dbca4170ebed22efbb18c3e4047a6ac822d18867db49"
 				},
 				{
 					"name": "scenarios-focus-elements-component-inputNumber",
@@ -12191,13 +12281,13 @@
 					"name": "scenarios-focus-elements-component-linkButton",
 					"route": "scenarios-focus-elements-component-linkButton",
 					"status": "unchanged",
-					"hash": "sha256:5b57a282c3a0620dc167327f7d3e1f7927c75bdc66cab65c865133da9450403c"
+					"hash": "sha256:f90e6542bc44086f4a5f6c7f09af2a9811253531c4c9460f2f381318558a6318"
 				},
 				{
 					"name": "scenarios-focus-elements-component-popoverButton",
 					"route": "scenarios-focus-elements-component-popoverButton",
 					"status": "unchanged",
-					"hash": "sha256:208f1153fbd8fe46a768121b38eb6f63729de295734da5251fc486916c7561b7"
+					"hash": "sha256:22f6443a582b3243e672b7c4ba37d54cad055a7f7b5b43050502bb4056d340ca"
 				},
 				{
 					"name": "scenarios-focus-elements-component-select",
@@ -12227,7 +12317,7 @@
 					"name": "scenarios-focus-elements-component-splitButton",
 					"route": "scenarios-focus-elements-component-splitButton",
 					"status": "unchanged",
-					"hash": "sha256:41501cce1311e102c7c09ff5dcbd0a704298afd3dfa425d33e87b1235bf2ae76"
+					"hash": "sha256:bbedbdfce4cc3dcc8309b66f4a74658a4bb78e65b75291ef738b62185b305ef8"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tabs",
@@ -12245,7 +12335,7 @@
 					"name": "scenarios-focus-elements-component-toolbar",
 					"route": "scenarios-focus-elements-component-toolbar",
 					"status": "unchanged",
-					"hash": "sha256:97f33441a504c5847b3376517cf494daa5a0b9efb404b75d4b2de5fdc908e119"
+					"hash": "sha256:ead1b55fdb854c1d72d473c694b99923b21d5924a348ee4744345f1782861848"
 				},
 				{
 					"name": "scenarios-focus-elements-component-tree",
@@ -12257,13 +12347,13 @@
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
-					"hash": "sha256:a9b6ab0cc74869f8c737a69ed55ce7d811c62a0cc9f7a1ae1c670481feb01482"
+					"hash": "sha256:0148117f2968ac27b7748639a8256e0b661b977668f9af9d5d61854129a43a21"
 				},
 				{
 					"name": "scenarios-same-height-of-all-interactive-elements",
 					"route": "scenarios-same-height-of-all-interactive-elements",
 					"status": "unchanged",
-					"hash": "sha256:d6de8663a237751ca318184b2463fde023c3211bcb89cba07bf33b62c1e82c8f"
+					"hash": "sha256:33601a94a3adae8787a12bd9dbc814dc769f22d9c51c5bcdec01caf2bb08c8c1"
 				},
 				{
 					"name": "select-basic-noColumns--hide-label-error",
@@ -12413,13 +12503,13 @@
 					"name": "split-button-basic--basic",
 					"route": "split-button-basic",
 					"status": "unchanged",
-					"hash": "sha256:b7a75921cc9065f64f29c5f9a850440360e1bee97f884963c51abe3bff5e915e"
+					"hash": "sha256:510caa8912380a97fd42f4be78db84e24a3e2bc7dc151a1995fab5ab04b54bea"
 				},
 				{
 					"name": "table-action-columns--action-columns",
 					"route": "table-action-columns",
 					"status": "unchanged",
-					"hash": "sha256:9b8f0d851d8f9b29d7905f6c85f4f6140b7509ddf1bdf09382b34d3455d770b2"
+					"hash": "sha256:d54eec2f648c344e89b7b068cc5599df2e3b9916ecfbd20cf371ff8081d9badf"
 				},
 				{
 					"name": "table-column-alignment--column-alignment",
@@ -12473,25 +12563,25 @@
 					"name": "table-stateful-with-selection--selection",
 					"route": "table-stateful-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:0e77b9f775b98d3691b8405bd7efec98eefd885b2ea186be2db9a9ad385200e6"
+					"hash": "sha256:f439f2656fbade79cdd2b6626f02c46769a9fdaaf837e4d0bb907ecf0f50aec4"
 				},
 				{
 					"name": "table-stateful-with-single-selection--single-selection",
 					"route": "table-stateful-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:6e77d7c604241f069e78b2721169589b5bd3e94a1a07be1735f35965cee0eb95"
+					"hash": "sha256:b6cbc6d93669e4f7031e4191aa958bdccac668154d4e22c00ac3ef8ab750b864"
 				},
 				{
 					"name": "table-stateless-with-selection--selection",
 					"route": "table-stateless-with-selection",
 					"status": "unchanged",
-					"hash": "sha256:5c914746981c8515fff88e9c9feaeea975336b502fe6884bf84969c53c3dfeaf"
+					"hash": "sha256:e5dce4eab31aabb1c2386a63c366361a2e5ffd714b4e73436f22444e09275ee0"
 				},
 				{
 					"name": "table-stateless-with-single-selection--single-selection",
 					"route": "table-stateless-with-single-selection",
 					"status": "unchanged",
-					"hash": "sha256:9faa1e392a1d457b61d51ba23ac316b8d68d70c3be65b10c4c17bc6547ea9935"
+					"hash": "sha256:9e73bef00fb0e8309bf73a6a5f1185142e9feddae849732303c1571176c84776"
 				},
 				{
 					"name": "table-sticky-cols--sticky-cols",
@@ -12647,31 +12737,31 @@
 					"name": "toast-configurator",
 					"route": "toast-configurator",
 					"status": "unchanged",
-					"hash": "sha256:4e768fbe124929a29e1971f418d3d2b18d4723e722f868daa18f1e042f856266"
+					"hash": "sha256:7efeda2e135d490d344eb042e0b2bb82e814ee5b5d900269d6bb495ef1c0c8be"
 				},
 				{
 					"name": "toolbar-basic--horizontal",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:0130c1e134734ac00eb6f34a9c74bc594daa8fd988ea02aea370331b26ce98cd"
+					"hash": "sha256:0b9579a73b88357a451a96f6b12f364e04ac91fbe8fccf56679132b0edc4d362"
 				},
 				{
 					"name": "toolbar-basic--horizontal-320",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:d84d99da35d6a241247fadbdb33bbac521196cc39641e4813065a69b8383b3e6"
+					"hash": "sha256:80372f52d31c98c7ffeee090004f401612756aeb4077cea984733b6456febd8e"
 				},
 				{
 					"name": "toolbar-basic--vertical",
 					"route": "toolbar-basic",
 					"status": "unchanged",
-					"hash": "sha256:770c0f2b40d0cde14af74bda09aba816d75383a5e831f0b459ff2745db6f5e83"
+					"hash": "sha256:57ddf74d0a4a985d33c689c1aeaaa96858503bfa5866fac630e9817ba5930573"
 				},
 				{
 					"name": "toolbar-disabled--disabled",
 					"route": "toolbar-disabled",
 					"status": "unchanged",
-					"hash": "sha256:b9d41d9eaf4a95f202777a0251129adf60da91603a27afebadef682950a4f276"
+					"hash": "sha256:59f7a27a0f4987de2e33a6d4b9bb62cb7b5f3d6d56a0a3f3e7c1860bf077cc9e"
 				},
 				{
 					"name": "tree-basic-home--tree",
@@ -12693,28 +12783,28 @@
 			"package": "theme-kern",
 			"themeDir": "theme-kern_v2",
 			"baseline": {
-				"files": 418,
+				"files": 421,
 				"meta": {
-					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
+					"sha": "65fa8d67f03b178b838e3d7a01f4202e58bedd41",
 					"ref": "develop",
-					"runId": 37746323129,
+					"runId": 37898352481,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T08:00:41.331Z",
-					"digest": "sha256:759ef533598395b3096515e3a70df825f7b740992a9562eaef83e09ea6b6da75",
+					"createdAt": "2026-10-09T07:24:54.028Z",
+					"digest": "sha256:a9b1c49512cdd09af717cdc4478249f4733943224002fb8bbe05c89f923fb19b",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 418,
+				"unchanged": 421,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:759ef533598395b3096515e3a70df825f7b740992a9562eaef83e09ea6b6da75",
+			"digest": "sha256:a9b1c49512cdd09af717cdc4478249f4733943224002fb8bbe05c89f923fb19b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12831,6 +12921,30 @@
 					"hash": "sha256:d4daf5d2ec4f65ea253813f02c2b5f05cf202d30272d283c1f9571ac02ccc4e2"
 				},
 				{
+					"name": "button-basic--disabled",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:8ddd7fe6a8d3e8106f3475e37da18b64307bc8cf6fd4f945f44d78e6400ddd5a"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:1423cdb42b33e4702ff548e5d02fcf55e68c6a54742c68c2b6b1f01d24c8ed71"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:b4f9474ad12553af1a92e0b607fab546e4eb85da8c8cf51dd538a4e36f229923"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:f0e6d161ce6ce9e3cdfaf4fb6d64f3747a33ee3e1fae385e009a1eb164feaf22"
+				},
+				{
 					"name": "button-icons--all-positions",
 					"route": "button-icons",
 					"status": "unchanged",
@@ -12943,12 +13057,6 @@
 					"route": "button-short-key",
 					"status": "unchanged",
 					"hash": "sha256:80eb64dd926496edbf86aca7fd873c92a2e125e7553c026c7c42b05b22511684"
-				},
-				{
-					"name": "button-variants--variants",
-					"route": "button-variants",
-					"status": "unchanged",
-					"hash": "sha256:2e1ec1215c16b7460da3e35c42208c2b8af9576c23cd10015745c410449ed827"
 				},
 				{
 					"name": "card-basic--basic",
@@ -15232,28 +15340,28 @@
 			"package": "unstyled",
 			"themeDir": "theme-unstyled",
 			"baseline": {
-				"files": 417,
+				"files": 420,
 				"meta": {
-					"sha": "60033863bd704d3fe65d7f6c2a21c5894f0ed76e",
+					"sha": "65fa8d67f03b178b838e3d7a01f4202e58bedd41",
 					"ref": "develop",
-					"runId": 37746323129,
+					"runId": 37898352481,
 					"image": "mcr.microsoft.com/playwright:v1.60.0-noble",
 					"playwright": "1.60.0",
-					"createdAt": "2026-10-08T08:00:16.971Z",
-					"digest": "sha256:a70cf1d9660e968cf49e232e3c09d7cfa9abb5da11aaf4517057744bec01c5ab",
+					"createdAt": "2026-10-09T07:25:22.150Z",
+					"digest": "sha256:77761647059376025c9a4e1eb3baac57dbf3a0b776f536fdd58018f9cca9315b",
 					"fallback": null,
 					"distance": 0,
 					"imageMismatch": false
 				}
 			},
 			"summary": {
-				"unchanged": 417,
+				"unchanged": 420,
 				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a70cf1d9660e968cf49e232e3c09d7cfa9abb5da11aaf4517057744bec01c5ab",
+			"digest": "sha256:77761647059376025c9a4e1eb3baac57dbf3a0b776f536fdd58018f9cca9315b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15370,6 +15478,30 @@
 					"hash": "sha256:a3c335c1b9616b33af393b610bfd5d9fb351056a712a2673e96a1b7bf388ad5f"
 				},
 				{
+					"name": "button-basic--disabled",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:59579dcd17d1922960f1b0597d8bbc4ad65385e047d56b8aa4037ca3532ee8b1"
+				},
+				{
+					"name": "button-basic--hide-label",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:a6132e2a98fe5be377223dda1c2a29a8af688b00451bfd1101a9f4fa157e0f1d"
+				},
+				{
+					"name": "button-basic--icon-positions",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:51d17abe036a77f5c4d23e8d0555c31063c7546fe91442597119f094cdffb288"
+				},
+				{
+					"name": "button-basic--variants",
+					"route": "button-basic",
+					"status": "unchanged",
+					"hash": "sha256:a6132e2a98fe5be377223dda1c2a29a8af688b00451bfd1101a9f4fa157e0f1d"
+				},
+				{
 					"name": "button-icons--all-positions",
 					"route": "button-icons",
 					"status": "unchanged",
@@ -15482,12 +15614,6 @@
 					"route": "button-short-key",
 					"status": "unchanged",
 					"hash": "sha256:453360dc1a76074030e61a8a75a18f9bdbfb4ee4d2d7a1c55774e106fd996a3f"
-				},
-				{
-					"name": "button-variants--variants",
-					"route": "button-variants",
-					"status": "unchanged",
-					"hash": "sha256:bba29520372fa1c8714995290fd128bd72ca71a731f871a6c35e24cf301f1373"
 				},
 				{
 					"name": "card-basic--basic",
