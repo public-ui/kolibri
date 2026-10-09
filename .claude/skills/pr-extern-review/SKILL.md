@@ -1,15 +1,15 @@
 ---
 name: pr-extern-review
-description: Prüft Pull Requests externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue. Befehle - `audit` (Standard) liefert eine Ampel-Tabelle mit den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn / hint / ready), einem Gesamtstatus (grün / gelb / rot) und Out-of-Scope- und Folge-Ticket-Hinweisen; `comment` schreibt je PR einen klaren Kommentar an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Tickets an und verlinkt sie mit dem PR als Ursprung; `consolidate` setzt die issue-relevanten Verbesserungen aller gemergten oder geschlossenen PRs in einem Sammel-PR um, der alle betroffenen Tickets schließt; `labels` setzt die vom Audit empfohlenen `release:*`-Labels. Nutze diesen Skill immer, wenn der Nutzer PRs von Externen, Contributorn oder der Community prüfen, kommentieren oder daraus Folge-Tickets anlegen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die offenen PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an", "setz die Nachbesserungen der gemergten PRs in einem PR um", "korrigier die Release-Labels" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
+description: Prüft Pull Requests externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue und führt die Folgeschritte aus. Befehle - `audit` (Standard, schreibt nichts) liefert eine Ampel-Tabelle mit Status (Draft, Ready, Gemergt, Geschlossen), Gesamtstatus (grün, gelb, rot) und den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn, hint, ready), dazu Out-of-Scope-Änderungen, Folgepunkte und Label-Empfehlungen; `comment` schreibt je offenem PR einen Kommentar an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Issues an, die den PR als Ursprung nennen; `consolidate` setzt die Folgepunkte gemergter PRs, die ihr ursprüngliches Issue vervollständigen, in einem Sammel-PR um, der die zugehörigen Tickets schließt; `labels` setzt die empfohlenen `release:*`-Labels. Nutze diesen Skill immer, wenn der Nutzer PRs von Externen, Contributorn oder der Community prüfen, kommentieren, labeln oder daraus Folge-Issues oder einen Sammel-PR machen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an", "setz die Nachbesserungen der gemergten PRs in einem PR um", "korrigier die Release-Labels" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
 ---
 
 # Externe PRs prüfen
 
 Externe PRs lösen meist ein konkretes Issue, bringen aber oft Änderungen mit, die das Issue nicht
-verlangt, oder umgehen Regeln aus `AGENTS.md`. Code von außen ist außerdem nicht vertrauenswürdig.
-Dieser Skill prüft jeden PR auf drei Fragen und fasst das Ergebnis immer im selben Format zusammen:
+verlangt, oder umgehen Regeln aus `AGENTS.md`. Code von außen ist nicht vertrauenswürdig. Dieser Skill
+beantwortet für jeden PR drei Fragen, immer im selben Format:
 
-1. Löst der PR genau das Issue, vollständig, korrekt und ohne Überflüssiges?
+1. Löst der PR genau sein Issue: vollständig, korrekt und ohne Überflüssiges?
 2. Ist der Code sauber und hält er die Konventionen des Repos ein?
 3. Ist der Code sicher?
 
@@ -17,50 +17,75 @@ Dieser Skill prüft jeden PR auf drei Fragen und fasst das Ergebnis immer im sel
 
 Aufruf: `/pr-extern-review [audit|comment|tickets|consolidate|labels] <PRs> [IDs]`
 
-- **`<PRs>`:** PR-Nummern oder -Links, oder `author:<login>` für alle offenen PRs eines Contributors.
-- **`[IDs]`:** nur bei `tickets` und `consolidate`, z. B. `OOS-2 FU-1`, um einzelne Punkte auszuwählen.
-- Ohne Befehl gilt `audit`. Auch eine Bitte in normalen Worten wählt den passenden Befehl
-  („kommentiere die PRs“ → `comment`, „leg die Folgetickets an“ → `tickets`, „setz die Nachbesserungen
-  der gemergten PRs um“ → `consolidate`, „korrigier die Release-Labels“ → `labels`).
+- **`<PRs>`:** PR-Nummern, PR-Links oder `author:<login>`.
+- **`[IDs]`:** nur bei `tickets` und `consolidate`. Wählt einzelne Folgepunkte aus, z. B. `OOS-2 FU-1`.
+- Ohne Befehl gilt `audit`. Eine Bitte in normalen Worten wählt den passenden Befehl.
 
-| Befehl        | Was er tut                                                                                                                                     | Schreibt auf GitHub?           | Abschnitt |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | --------- |
-| `audit`       | Prüft die PRs und gibt die Ampel-Tabelle mit Out-of-Scope- und Folge-Ticket-Hinweisen aus.                                                     | nein                           | 1–6       |
-| `comment`     | Schreibt je offenem, nicht grünem PR einen Kommentar an den Autor: was im Scope des Issues bis Grün zu tun ist.                                | ja, ein Kommentar je PR        | 7         |
-| `tickets`     | Legt Folge-Tickets an und verlinkt sie mit dem PR als Ursprung.                                                                                | ja, ein Issue je Folgethema    | 8         |
-| `consolidate` | Setzt die issue-relevanten Verbesserungen aller gemergten oder geschlossenen PRs in einem Sammel-PR um, der alle betroffenen Tickets schließt. | ja, Branch, Commits und ein PR | 9         |
-| `labels`      | Setzt die vom Audit empfohlenen `release:*`-Labels an den PRs.                                                                                 | ja, nur `release:*`-Labels     | 10        |
+| Befehl        | Ergebnis                                                                               | Schreibt auf GitHub     | Abschnitt |
+| ------------- | -------------------------------------------------------------------------------------- | ----------------------- | --------- |
+| `audit`       | Ampel-Tabelle, Out-of-Scope-Änderungen, Folgepunkte, Label-Empfehlungen                | nichts                  | 2–7       |
+| `comment`     | Je offenem, nicht grünem PR ein Kommentar: was der Autor bis Grün ändern muss          | ein Kommentar je PR     | 8         |
+| `tickets`     | Je Folgepunkt ein Folge-Issue, das den PR als Ursprung nennt                           | ein Issue je Folgepunkt | 9         |
+| `consolidate` | Ein Sammel-PR mit allen Folgepunkten **Bezug: Issue** gemergter oder geschlossener PRs | Branch, Commits, ein PR | 10        |
+| `labels`      | Die empfohlenen `release:*`-Labels an den PRs                                          | nur `release:*`-Labels  | 11        |
 
-`comment`, `tickets`, `consolidate` und `labels` bauen auf dem Ergebnis von `audit` auf. Liegt in der Unterhaltung kein Audit für
-genau diese PRs auf dem aktuellen Head vor, zuerst `audit` ausführen und die Tabelle zeigen.
+Regeln für alle Befehle:
 
-Der Aufruf von `comment`, `tickets`, `consolidate` oder `labels` ist die Zustimmung zum Schreiben. Ohne diesen Aufruf
-schreibt der Skill nichts: Er kommentiert nicht, setzt oder entfernt keine Labels und legt keine Tickets an. Freigaben (Approve)
-und Merges macht er nie.
+- `comment`, `tickets`, `consolidate` und `labels` setzen ein Audit derselben PRs auf deren aktuellem
+  Head voraus. Fehlt es oder hat sich ein Head geändert, zuerst `audit` ausführen und die Tabelle zeigen.
+- Der Aufruf eines schreibenden Befehls ist die Zustimmung zum Schreiben. Ohne diesen Aufruf schreibt der
+  Skill nichts: keinen Kommentar, kein Label, kein Issue, keinen Commit.
+- Freigaben (Approve) und Merges macht der Skill nie.
 
-## 1. PRs bestimmen
+## 1. Begriffe
 
-- Hat der Nutzer PR-Links oder -Nummern genannt, genau diese prüfen. Bereits gemergte oder geschlossene
-  PRs prüfen, wenn der Nutzer sie ausdrücklich nennt, z. B. als Referenz. Die Spalte **Status** der
-  Tabelle zeigt, welche PRs Draft, Ready, gemergt oder geschlossen sind.
-- Hat der Nutzer einen Contributor genannt, dessen offene PRs holen
-  (`gh pr list --repo public-ui/kolibri --author <login> --state open` oder die GitHub-MCP-Suche
-  `author:<login> is:open`).
-- Bei einer Folgeprüfung („neuer Stand?“) zuerst alle zuvor genannten PRs erneut abrufen: Gemergte oder
-  geschlossene PRs nennen, neue Commits und neue Kommentare des Autors zusammenfassen und dann nur den
-  neuen Stand bewerten.
+Diese Begriffe gelten im ganzen Skill genau so:
 
-## 2. Je PR die Fakten sammeln
+| Begriff                  | Bedeutung                                                                                                                                                         |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Issue**                | Das Issue, das der PR mit `Fixes #…`/`Closes #…` verlinkt, samt den Einschränkungen, die Maintainer im Issue oder im PR gesetzt haben.                            |
+| **Scope**                | Alles, was nötig ist, damit das Issue vollständig, korrekt und sauber gelöst ist. Auch ein vom Issue verlangter Test oder Doku, die dem neuen Code widerspricht.  |
+| **Befund**               | Ein konkreter Mangel mit Datei, Zeile und Fehlerszenario. Ergibt in einer Spalte **warn** oder **hint**.                                                          |
+| **OOS-n**                | Out-of-Scope-Änderung: Code **im Diff des PRs**, den das Issue nicht verlangt.                                                                                    |
+| **FU-n**                 | Folgepunkt: etwas, das **nicht im Diff** steht, aber erledigt werden sollte, z. B. ein fehlender Test oder derselbe Fehler an anderer Stelle.                     |
+| **Bezug**                | Jeder OOS- und FU-Punkt hat genau einen Bezug: **Issue** (vervollständigt das Issue des PRs) oder **neu** (eigenes Thema). OOS-Punkte haben immer **Bezug: neu**. |
+| **Folge-Issue / Ticket** | Ein GitHub-Issue, das `tickets` für einen OOS- oder FU-Punkt anlegt.                                                                                              |
 
-Bei mehreren PRs je PR einen Subagenten parallel starten (nur lesen, nichts posten, nichts pushen) und
-die Befunde selbst gegenprüfen, bevor sie in die Tabelle kommen. Ein Subagent-Bericht ist keine
-Verifikation.
+Wer was erledigt, folgt aus Status und Bezug:
+
+| PR-Status            | Befund im Scope           | OOS-Punkt (Bezug: neu)                                                         | FU-Punkt, Bezug: Issue    | FU-Punkt, Bezug: neu |
+| -------------------- | ------------------------- | ------------------------------------------------------------------------------ | ------------------------- | -------------------- |
+| Draft, Ready         | Autor, über `comment`     | Autor nimmt die Änderung heraus (`comment`), Thema ggf. als Ticket (`tickets`) | Autor, über `comment`     | `tickets`            |
+| Gemergt, Geschlossen | `tickets` + `consolidate` | `tickets`                                                                      | `tickets` + `consolidate` | `tickets`            |
+
+Beispiele aus dem Referenzlauf (Abschnitt 12):
+
+- **FU-1, Bezug: Issue.** #10718 verlangt ausdrücklich einen Test, #11083 hat ihn nicht geliefert. Der
+  Test vervollständigt #10718.
+- **FU-6, Bezug: neu.** #11072 hat den CLA-Link von `main` auf `develop` umgestellt. Dass auch 28 READMEs
+  auf `blob/main` verlinken, ist derselbe Fehler, aber nicht Teil von #10484.
+- **OOS-1, Bezug: neu.** #11082 rendert leere Optgroups nicht mehr. Das hat mit deaktivierten Gruppen
+  (#10864) nichts zu tun.
+
+## 2. PRs bestimmen
+
+- Nennt der Nutzer PRs, genau diese prüfen, auch gemergte und geschlossene.
+- Nennt der Nutzer einen Contributor, alle seine PRs holen (`gh pr list --repo public-ui/kolibri --author
+<login> --state all` oder die GitHub-MCP-Suche `author:<login>`). Sagt er „offene“, nur die offenen.
+- Bei einer Folgeprüfung („neuer Stand?“) zuerst alle zuvor genannten PRs neu abrufen. Neue Commits,
+  neue Kommentare und neu gemergte oder geschlossene PRs nennen. PRs ohne Änderung seit dem letzten Audit
+  nicht neu prüfen, sondern ihre Bewertung übernehmen und das sagen.
+
+## 3. Fakten sammeln
+
+Bei mehreren PRs je PR einen Subagenten parallel starten: nur lesen, nichts posten, nichts pushen. Jeden
+**warn** aus einem Subagent-Bericht selbst am Code bestätigen, bevor er in die Tabelle kommt.
 
 1. **PR lesen:** Beschreibung, Labels, Commits, Kommentare, Review-Threads, Check-Runs und den Kommentar
    „Visual Review“ des Bots.
-2. **Issue lesen:** das verlinkte Issue (`Fixes #…`) mit allen Kommentaren. Daraus die
-   Akzeptanzkriterien ableiten, auch Einschränkungen, die Maintainer im Issue oder im PR gesetzt haben.
-3. **Diff lokal holen**, immer gegen die Merge-Basis:
+2. **Issue lesen:** mit allen Kommentaren. Daraus die Akzeptanzkriterien ableiten, auch Vorgaben von
+   Maintainern im PR (z. B. bei #11074: „No gap, padding, margin in basis styling“).
+3. **Diff holen:**
 
    ```bash
    git fetch origin develop
@@ -69,79 +94,72 @@ Verifikation.
    git diff origin/develop...pr-<nr>
    ```
 
-   Bei einem **bereits gemergten** PR ist dieser Diff leer, weil sein Head schon in `develop` liegt. Dann
-   gegen die Basis-SHA des PRs vergleichen (`base.sha` aus den PR-Daten) und die Dateiliste mit der
-   GitHub-Ansicht des PRs (`get_files`) abgleichen. Hat der Branch zwischendurch `develop` eingemergt,
-   enthält der lokale Diff sonst fremde Änderungen.
+   **Gemergter PR:** Der Diff oben ist leer, weil der Head schon in `develop` liegt. Stattdessen gegen die
+   Basis-SHA des PRs (`base.sha` aus den PR-Daten) vergleichen und die Dateiliste mit `get_files` bzw.
+   `gh pr view --json files` abgleichen. In allen folgenden Befehlen steht dann `<base-sha>...pr-<nr>`
+   statt `origin/develop...pr-<nr>`.
 
    ```bash
    git fetch origin <base-sha>
    git diff --stat <base-sha>...pr-<nr>
    ```
 
-   In allen folgenden Befehlen steht `origin/develop...pr-<nr>` dann für `<base-sha>...pr-<nr>`.
+4. **Nichts ausführen:** den PR-Branch nicht auschecken und keine Skripte, Tests oder Builds aus dem PR
+   starten, solange die Sicherheitsprüfung (Abschnitt 4.3) nicht durch ist.
+5. **Konflikte** (nur offene PRs): `git merge-tree --write-tree origin/develop pr-<nr>`. Ändern mehrere
+   offene PRs dieselben Dateien, auch die PRs untereinander prüfen.
 
-   Den PR-Branch nicht auschecken und keine Skripte, Tests oder Builds aus dem PR ausführen, solange die
-   Sicherheitsprüfung (Abschnitt 3.3) nicht durch ist. Code aus einem fremden PR ist nicht
-   vertrauenswürdig.
-
-4. **Konflikte prüfen** (nur bei offenen PRs): `git merge-tree --write-tree origin/develop pr-<nr>`. Bei
-   mehreren PRs, die dieselben Dateien ändern, auch die PRs untereinander prüfen.
-
-## 3. Die drei Spalten bewerten
+## 4. Die drei Spalten bewerten
 
 Jede Spalte bekommt genau einen Wert:
 
 | Wert         | Bedeutung                                                                                                                       |
 | ------------ | ------------------------------------------------------------------------------------------------------------------------------- |
-| ⚠️ **warn**  | Muss geändert werden: Das Issue ist nicht, unvollständig oder falsch gelöst, oder eine Änderung hat eine riskante Nebenwirkung. |
-| 💡 **hint**  | Sollte geändert werden, blockiert aber nicht. Dazu zählen harmlose Änderungen außerhalb des Issues.                             |
-| ✅ **ready** | In Ordnung.                                                                                                                     |
+| ⚠️ **warn**  | Muss geändert werden. Das Issue ist nicht, unvollständig oder falsch gelöst, oder eine Änderung hat eine riskante Nebenwirkung. |
+| 💡 **hint**  | Sollte geändert werden, blockiert aber nicht.                                                                                   |
+| ✅ **ready** | Kein Befund.                                                                                                                    |
 
-Jeder **warn** und jeder **hint** braucht einen konkreten Befund mit Datei (und Zeile, wo sinnvoll) und
-ein nachvollziehbares Fehlerszenario. Spekulative Befunde streichen. Bevor ein **warn** vergeben wird,
-den Befund selbst am Code bestätigen.
+Jeder **warn** und **hint** braucht Datei, Zeile und ein Fehlerszenario. Was sich nicht konkret belegen
+lässt, entfällt.
 
-### 3.1 Minimalistisch & korrekt zum Issue
+### 4.1 Minimalistisch & korrekt zum Issue
 
-- Ist jedes Akzeptanzkriterium des Issues erfüllt? Fehlende Fälle, Randfälle und Regressionen gegen das
-  bestehende Verhalten suchen. Der Fehler ist auch im Umfeld zu prüfen: Gibt es eine zweite Stelle, die
-  dieselbe Logik braucht (z. B. Rendern **und** Normalisieren eines Werts)?
+Prüfen:
+
+- Ist jedes Akzeptanzkriterium erfüllt?
+- Braucht eine zweite Stelle dieselbe Korrektur? Beispiel #11082: `disabled` musste beim Rendern **und**
+  bei der Vorauswahl (`select-value.ts`) wirken.
 - Ist jede geänderte Zeile für das Issue nötig? Jede Datei im Diff einzeln gegen das Issue halten.
-- Eine Änderung außerhalb des Issues ist:
-  - **hint**, wenn sie harmlos ist (kein Effekt im Browser, nur Testumgebung, Aufräumen, eine kleine
-    Verhaltensänderung ohne Risiko). Sie kommt zusätzlich in den Out-of-Scope-Block (Abschnitt 5).
-  - **warn**, wenn sie eine riskante Nebenwirkung hat, z. B. global wirkt, eine öffentliche API ändert
-    oder Themes die Übersteuerung nimmt.
-- Eine Lösung, die das Issue trifft, aber weiter reicht als nötig (z. B. `!important` auf allen
-  Eigenschaften statt nur auf den nachweislich nötigen), ist **warn**, wenn die Mehrwirkung riskant ist,
-  sonst **hint**.
 
-### 3.2 Sauber & ordentlich
+Bewerten:
 
-Gegen `AGENTS.md` und die verlinkten Regeln prüfen, unter anderem:
+| Fall                                                                                             | Wert     | Beispiel                                                                                                             |
+| ------------------------------------------------------------------------------------------------ | -------- | -------------------------------------------------------------------------------------------------------------------- |
+| Akzeptanzkriterium fehlt oder ist falsch umgesetzt                                               | **warn** | #11084 (erste Fassung): `componentDidUpdate` hob nach jedem Render die Verzögerung der `aria-live`-Ansage auf.       |
+| Lösung reicht weiter als nötig, mit riskanter Wirkung                                            | **warn** | #11086: `!important` auf allen Eigenschaften von `.visually-hidden` wirkt global und nimmt Themes die Übersteuerung. |
+| Änderung außerhalb des Issues mit riskanter Wirkung (API, global, Themes)                        | **warn** | Ein PR ändert nebenbei den Default einer öffentlichen Prop.                                                          |
+| Harmlose Änderung außerhalb des Issues → zusätzlich OOS-Punkt                                    | **hint** | #11084: `classList.add`/`remove` statt `toggle`, nur wegen der Testumgebung.                                         |
+| Lücke zum Issue in einem Randbereich, die das Issue nur am Rand berührt → FU-Punkt, Bezug: Issue | **hint** | #11074: Das selten genutzte Theme `ECL_EU` bekam den Abstand nicht.                                                  |
 
-- Theming-Vertrag: Neue oder geänderte DOM-Elemente oder BEM-Klassen brauchen das Label
-  `release:theming`, die alten und neuen Klassen in der PR-Beschreibung und angepasste Themes im selben PR.
-- Basis-Styling ohne Farbschema, kein `overflow: hidden`, `!important` nur mit Begründung, keine
-  `@layer` in Utility-Dateien.
-- Alphabetische Reihenfolge (Listen, Import-Specifier, Union-Literale, Objekt-Schlüssel in Testdaten),
-  Member-Reihenfolge der Stencil-Klassen, keine Barrel-Dateien, exakte Versionsnummern.
-- Inline-Dokumentation beschreibt den Ist-Zustand, keine Historie, kein Widerspruch zum Code.
-- Deprecations mit Migrationsaufgabe in `packages/tools/kolibri-cli`.
-- Doku, die dem neuen Code widerspricht (z. B. ein Plan in `docs/`, der den Fehler noch als offen führt).
-- Tests: Ist der Fall aus dem Issue getestet? Für jede betroffene Komponente? Würde ein Test die
-  gefundenen Fehler aufdecken?
-- Release-Labels: Passen die `release:*`-Labels zur Änderung (Regeln in Abschnitt 5, Block
-  **Release-Labels**)? Ein fehlendes oder falsches Label ist **hint**. Labels setzt nicht der Autor,
-  sondern ein Maintainer über `labels`; das Label macht den PR deshalb nicht rot.
-- Die PR-Beschreibung passt zum tatsächlichen Diff. Eine veraltete Beschreibung ist **hint**, weil sie
-  in die Release-Notes einfließt.
-- Überflüssige, jetzt redundante Zuweisungen oder toter Code ist **hint**.
+### 4.2 Sauber & ordentlich
 
-### 3.3 Sicher
+Gegen `AGENTS.md` prüfen. Typische Befunde und ihr Wert:
 
-Jede hinzugefügte Zeile des gesamten Diffs lesen, nicht nur die der Tests. Zusätzlich gezielt suchen:
+| Befund                                                                                                                                                                   | Wert     |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| Vom Issue verlangter Test fehlt (→ FU-Punkt, Bezug: Issue)                                                                                                               | **hint** |
+| Test prüft weniger als sein Name sagt (→ FU-Punkt, Bezug: Issue). Beispiel #11085: Der Test ruft den Watcher direkt auf und findet eine fehlende `@Watch`-Bindung nicht. | **hint** |
+| Doku widerspricht dem neuen Code (→ FU-Punkt, Bezug: Issue). Beispiel #11073: Der Migrationsplan führt den behobenen Fehler noch als offen.                              | **hint** |
+| Überflüssiger oder jetzt redundanter Code. Beispiel #11087: drei `hasValue`-Zuweisungen, die `applyValue()` schon erledigt.                                              | **hint** |
+| PR-Beschreibung passt nicht zum Diff (fließt in die Release-Notes)                                                                                                       | **hint** |
+| Release-Label fehlt oder ist falsch (Regeln in Abschnitt 6.6). Labels setzen Maintainer, nicht der Autor.                                                                | **hint** |
+| Theming-Vertrag verletzt: neue oder geänderte DOM-Elemente oder BEM-Klassen ohne angepasste Themes oder ohne Liste der Klassen in der PR-Beschreibung                    | **warn** |
+| Regelverstoß aus `AGENTS.md` mit Wirkung: `overflow: hidden`, Farbschema im Basis-Styling, `!important` ohne Begründung, Deprecation ohne Migrationsaufgabe              | **warn** |
+| Regelverstoß aus `AGENTS.md` ohne Wirkung: Reihenfolge (Listen, Imports, Union-Literale, Objekt-Schlüssel in Testdaten), Member-Reihenfolge, Kommentar mit Historie      | **hint** |
+
+### 4.3 Sicher
+
+Jede hinzugefügte Zeile des Diffs lesen, auch in Tests und Snapshots. Zusätzlich suchen:
 
 ```bash
 git diff origin/develop...pr-<nr> | grep '^+' | grep -v '^+++' | grep -niE \
@@ -151,323 +169,376 @@ git diff origin/develop...pr-<nr> -- '*.snap' | grep '^+' | grep -c '\${'
 git diff --name-only origin/develop...pr-<nr>
 ```
 
-- Treffer einzeln bewerten. Nicht jeder Treffer ist schädlich, aber jeder braucht eine Begründung.
-- Nicht-ASCII-Zeichen sind in deutschen Texten normal. Unsichtbare oder bidirektionale Unicode-Zeichen
-  im Code sind **warn**.
-- Snapshot-Dateien sind für Jest JavaScript: `${…}` oder Code außerhalb von Markup ist **warn**.
-- Änderungen an `package.json`, Lockfile, `.github/`, `scripts/`, Build- oder Testkonfiguration sind
-  besonders genau zu prüfen und ohne Bezug zum Issue **warn**.
-- XSS über `innerHTML` oder ungeprüfte Inhalte, geschwächte Typ- oder Eingabeprüfungen mit realem Risiko:
-  **warn**.
-- CI-Ergebnisse (insbesondere CodeQL) nennen, aber nicht als Ersatz für das Lesen des Diffs nehmen.
-
-## 4. Gesamtstatus
-
-Der Gesamtstatus ergibt sich nur aus den drei Spalten:
-
-| Gesamt | Regel                                  |
-| ------ | -------------------------------------- |
-| 🟢     | alle drei Spalten **ready**            |
-| 🟡     | mindestens ein **hint**, kein **warn** |
-| 🔴     | mindestens ein **warn**                |
-
-Rote CI, ein offenes Visual Review oder Merge-Konflikte fließen als Befund in die passende Spalte ein
-(meist „Minimalistisch & korrekt“ oder „Sauber“), nicht direkt in den Gesamtstatus.
-
-## 5. Ausgabe
-
-Auf Deutsch, knapp. Immer in dieser Reihenfolge:
-
-1. Ein Satz zum Stand: wie viele PRs Draft, Ready, gemergt und geschlossen sind.
-2. Die Tabelle, eine Zeile je PR:
-
-   | PR  | Status | Gesamt | Kurzbeschreibung | Minimalistisch & korrekt zum Issue | Sauber & ordentlich | Sicher |
-   | --- | ------ | ------ | ---------------- | ---------------------------------- | ------------------- | ------ |
-   - **PR:** Markdown-Link auf den PR, Kurztitel und Issue-Nummer.
-   - **Status:** der Zustand des PRs auf GitHub: 📝 Draft, 🔵 Ready (offen, bereit zum Review), 🟣 Gemergt
-     oder ⚫ Geschlossen (ohne Merge). Die Zeilen in dieser Reihenfolge sortieren, innerhalb eines Status
-     absteigend nach PR-Nummer.
-   - **Kurzbeschreibung:** ein Satz, was der PR leistet und ob das Issue gelöst ist.
-   - **Spalten:** Wert und ein knapper Befund. Out-of-Scope-Änderungen nur mit ihrer ID (`OOS-n`)
-     referenzieren.
-
-3. Die Legende:
-
-   - **Gesamt:** 🟢 alle Spalten **ready** · 🟡 mindestens ein **hint**, kein **warn** · 🔴 mindestens ein **warn**
-   - **Spalten:** ⚠️ **warn** muss geändert werden · 💡 **hint** sollte geändert werden, blockiert aber nicht · ✅ **ready** ok
-
-4. Der Block **Out-of-Scope-Hinweise**, wenn es welche gibt:
-
-   | ID  | PR  | Änderung | Bewertung | Folge-Ticket? |
-   | --- | --- | -------- | --------- | ------------- |
-   - **Bewertung:** harmlos oder riskant, mit kurzer Begründung.
-   - **Folge-Ticket?:** ob ein eigenes Issue sinnvoll ist (z. B. für einen Fehler in der Testumgebung oder
-     eine bereits gemergte, undokumentierte Verhaltensänderung) und ob die Änderung aus dem PR heraus soll.
-
-5. Der Block **Weitere Folge-Tickets**, wenn es welche gibt. Er sammelt, was kein Out-of-Scope-Diff ist,
-   aber ein eigenes Issue verdient: eine Lücke zum Issue in einem bereits gemergten PR (z. B. ein vom Issue
-   verlangter Test fehlt) oder ein Befund im Umfeld, der denselben Fehler an anderer Stelle zeigt.
-
-   | ID  | PR  | Thema | Folge-Ticket? |
-   | --- | --- | ----- | ------------- |
-   - **ID:** `FU-n`, fortlaufend über alle PRs der Ausgabe, wie `OOS-n`.
-   - **Folge-Ticket?:** ja, optional (mit Bedingung) oder nein.
-
-6. Der Block **Release-Labels**: je PR die gesetzten und die empfohlenen `release:*`-Labels. Nur PRs
-   auflisten, bei denen beides abweicht.
-
-   | PR  | Gesetzt | Empfohlen | Begründung |
-   | --- | ------- | --------- | ---------- |
-
-   Die Kategorien stehen in `.github/release.yml`. Ein Hauptlabel nach der wichtigsten Änderung, dazu
-   die Zusatzlabels, wenn sie zutreffen:
-
-   | Label                     | Art    | Wann                                                                                   |
-   | ------------------------- | ------ | -------------------------------------------------------------------------------------- |
-   | `release:breaking-change` | Haupt  | Inkompatible Änderung der öffentlichen API (Props, Methoden, Events, Slots, Typen).    |
-   | `release:feature`         | Haupt  | Neue Funktion oder neues Sample (`feat`).                                              |
-   | `release:fix`             | Haupt  | Behebt ein Fehlverhalten (`fix`).                                                      |
-   | `release:improvement`     | Haupt  | Verbessert bestehendes Verhalten, das kein Fehler war, z. B. Performance (`perf`).     |
-   | `release:engineering`     | Haupt  | Intern ohne Wirkung für Nutzer: Refactoring, Tests, CI, Tooling.                       |
-   | `release:doc`             | Haupt  | Nur Dokumentation (`docs`).                                                            |
-   | `release:sample`          | Zusatz | Der PR ändert Samples (`packages/samples`).                                            |
-   | `release:theming`         | Zusatz | Theming-Vertrag: neue oder geänderte DOM-Elemente oder BEM-Klassen, siehe `AGENTS.md`. |
-   | `release:ignore`          | –      | Nie empfehlen oder setzen; das entscheidet ein Maintainer.                             |
-   - Maßgeblich ist der Inhalt des Diffs, nicht der PR-Titel. Die Automation
-     (`pr-release-label-automation.yml`) leitet das Hauptlabel nur aus dem Titel ab und setzt es nur,
-     wenn noch keines gesetzt ist.
-   - Falsch ist ein Hauptlabel, das der Inhalt nicht trägt, z. B. `release:improvement` an einem
-     Bugfix. Es wird gegen das passende ersetzt.
+| Fund                                                                                                                                                                                     | Wert                               |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| Treffer der Suche mit harmlosem Zweck. Beispiel #11081: `fetch('assets/kolicons/kolicons.json')`, statisch und relativ.                                                                  | **ready**, Zweck nennen            |
+| Unsichtbare oder bidirektionale Unicode-Zeichen im Code (Umlaute in deutschen Texten sind normal)                                                                                        | **warn**                           |
+| `${…}` oder Code außerhalb von Markup in `.snap`-Dateien (Jest lädt sie als JavaScript)                                                                                                  | **warn**                           |
+| Änderung an `package.json`, Lockfile, `.github/`, `scripts/` oder Build-/Testkonfiguration ohne Bezug zum Issue                                                                          | **warn**                           |
+| Workflow-Änderung mit Bezug zum Issue: Trigger, `permissions`, Secrets und die Interpolation fremder Eingaben in `run:` einzeln prüfen. Beispiel #11072: nur ein fester String geändert. | **ready**, wenn unverändert sicher |
+| XSS über `innerHTML` oder ungeprüfte Inhalte, geschwächte Eingabeprüfung mit realem Risiko                                                                                               | **warn**                           |
 
-7. Was nicht überflüssig ist, obwohl es so aussieht (z. B. doppelte Logik, weil eine Komponente nicht von
-   der gemeinsamen Basis erbt), damit niemand das Falsche entfernt. Nur wenn es solche Fälle gibt.
-8. Offen benennen, was nicht geprüft wurde (z. B. Tests nicht lokal ausgeführt, weil `node_modules` fehlen).
+CI-Ergebnisse (insbesondere CodeQL) nennen, aber das Lesen des Diffs nicht durch sie ersetzen.
 
-## 6. Folgeaktionen anbieten
+## 5. Gesamtstatus
 
-Am Ende des Audits eine kurze Frage mit den passenden Befehlen:
+Der Gesamtstatus folgt allein aus den drei Spalten:
 
-- **`comment`** für die offenen PRs, die nicht grün sind.
-- **`tickets`** für die OOS- und FU-Punkte mit „Folge-Ticket: ja“.
-- **`labels`** für die PRs im Block **Release-Labels**.
-- **`consolidate`**, wenn gemergte oder geschlossene PRs nicht grün sind und ihre Nachbesserungen im Repo
-  umgesetzt werden können.
-- **Beobachten:** den PRs folgen und bei neuen Commits erneut `audit` ausführen.
+| Gesamt | Regel                                  | Beispiel              |
+| ------ | -------------------------------------- | --------------------- |
+| 🟢     | alle drei Spalten **ready**            | #11081, #11072        |
+| 🟡     | mindestens ein **hint**, kein **warn** | #11087: zwei **hint** |
+| 🔴     | mindestens ein **warn**                | #11086: ein **warn**  |
 
-## 7. Befehl `comment`: Nachbesserung im Scope des Issues anfordern
+Rote CI, ein offenes Visual Review oder Merge-Konflikte sind Befunde in der passenden Spalte, keine
+eigene Regel für den Gesamtstatus.
 
-Ziel: ein Kommentar je PR, nach dessen Umsetzung der PR grün ist. Er nennt nur, was **dieser PR im
-Scope seines Issues** ändern muss, klar und ohne Ampel-Jargon.
+## 6. Ausgabe des Audits
 
-1. **Auswahl:** nur offene PRs mit Gesamtstatus 🟡 oder 🔴. Grüne, gemergte und geschlossene PRs
-   überspringen und das in der Antwort nennen.
-2. **Aktuellen Stand sichern:** den Head erneut abrufen. Hat er sich seit dem Audit geändert, zuerst neu
-   auditieren.
-3. **Doppelungen vermeiden:** die bisherigen Kommentare lesen. Steht ein Punkt schon unbeantwortet in
-   einem früheren Kommentar, auf diesen verweisen statt ihn zu wiederholen. Ist nichts Neues offen, keinen
-   Kommentar schreiben und das dem Nutzer sagen.
-4. **Inhalt:**
-   - Jeder **warn** und jeder **hint** des PRs wird ein nummerierter Punkt mit Datei, Ursache und
-     konkretem Vorschlag.
-   - Out-of-Scope-Änderungen (OOS) stehen unter „Please remove“, mit Bezug auf das Issue. Das Herausnehmen
-     ist eine Änderung an diesem PR und gehört damit in den Scope.
-   - Themen außerhalb des Issues (FU, Folge-Tickets) werden **nicht** vom Autor verlangt. Gibt es dafür
-     schon ein Ticket, in einem Satz darauf verweisen („tracked separately in #…“).
-   - Release-Labels werden nicht vom Autor verlangt, weil er sie nicht setzen kann. Weicht ein Label ab,
-     in einem Satz vermerken, dass die Maintainer es setzen, und dem Nutzer `labels` anbieten.
-   - Kein Punkt, der nicht aus dem Audit stammt.
-5. **Form:** Englisch (Sprache der PRs), freundlich, knapp, nach diesem Muster:
+Auf Deutsch, knapp, in dieser Reihenfolge. Leere Blöcke weglassen.
 
-   ```markdown
-   Hi @<author>, thanks for the PR! To get it ready for merge, please address the following. Everything here is within the scope of #<issue>.
-
-   **Required**
-
-   1. `<file>`: <what is wrong and why>. <what to change>.
-
-   **Recommended**
-
-   2. `<file>`: <what is wrong>. <what to change>.
-
-   **Please remove (not part of #<issue>)**
-
-   3. `<file>`: <change>. <why it is not needed here>.
-
-   <Optional: Not part of this PR: <topic> is tracked separately in #<ticket>.>
-
-   Thanks!
-
-   ---
-
-   _Generated by [Claude Code](https://claude.ai/code)_
-   ```
-
-   - **Required** enthält die **warn**-Punkte, **Recommended** die **hint**-Punkte außer OOS. Leere
-     Abschnitte weglassen; die Nummerierung läuft über alle Abschnitte durch.
-   - Der Footer steht immer am Ende.
-
-6. **Posten:** als normaler PR-Kommentar (`add_issue_comment` bzw. `gh pr comment`), nicht als Review mit
-   Zeilenkommentaren.
-7. **Antwort im Chat:** je PR den Link zum Kommentar und die Zahl der Punkte. Danach anbieten, die PRs zu
-   beobachten.
-
-## 8. Befehl `tickets`: Folge-Tickets anlegen und mit dem PR verlinken
-
-Ziel: je Folgethema ein eigenes Issue, das den PR als Ursprung nennt, damit der Befund nicht im PR
-untergeht.
-
-1. **Auswahl:** ohne `[IDs]` alle OOS- und FU-Punkte mit „Folge-Ticket: ja“ aus dem Audit der genannten
-   PRs. Mit `[IDs]` genau diese, auch wenn sie „optional“ markiert sind. Punkte, die laut Audit
-   zusammengehören (z. B. „zusammen mit OOS-2“), werden ein Ticket.
-2. **Dubletten prüfen:** vor dem Anlegen offene und geschlossene Issues nach dem Thema durchsuchen
-   (`search_issues` bzw. `gh issue list --search`). Gibt es schon eines, kein neues anlegen, sondern es im
-   Chat nennen.
-3. **Inhalt:** Deutsch, im Stil der bestehenden Folge-Issues des Repos, nach diesem Muster:
-
-   ```markdown
-   Gefunden im Review von #<PR> (<OOS-n/FU-n>). <Ein Satz zum Bezug, z. B. „Die Änderung gehört nicht zu #<issue> und wird dort herausgenommen.“>
-
-   ## Befund
-
-   - **Betroffen:** `<Datei>` …
-   - **Ursache:** …
-   - **Folge:** <konkretes Szenario>
-
-   ## Vorschlag
-
-   …
-
-   ## Akzeptanzkriterien
-
-   - [ ] …
-
-   Refs #<PR>, #<issue>
-   ```
-
-   - **Titel:** knapp und für sich verständlich, mit Komponente vorn (z. B. „kol-select: leere Optgroups
-     werden nicht mehr gerendert – Verhalten dokumentieren“).
-   - **Typ:** `Bug` für Fehlverhalten, `Task` für Doku, Tests und Aufräumen.
-   - **Labels:** keine `release:*`-Labels setzen, die gehören an PRs.
-   - Keine Zuweisung, kein Milestone. Das entscheidet das Team.
-
-4. **Verlinken:** Die Nennung von `#<PR>` im Text erzeugt im PR automatisch einen Querverweis auf das neue
-   Issue. Ist der PR noch offen und wird danach `comment` ausgeführt, verweist der Kommentar auf das
-   Ticket (Abschnitt 7). Einen eigenen Kommentar nur für den Link nicht posten.
-5. **Antwort im Chat:** eine Tabelle mit ID, neuem Issue (Link und Titel) und Ursprungs-PR, dazu die
-   übersprungenen Punkte mit Grund (Dublette, „Folge-Ticket: nein“).
-
-## 9. Befehl `consolidate`: Nachbesserungen gemergter PRs in einem Sammel-PR umsetzen
-
-Ziel: Was bei gemergten oder geschlossenen PRs nicht grün war, kann der Autor dort nicht mehr nachbessern.
-`consolidate` setzt diese Punkte selbst um, gesammelt in **einem** PR, der jedes betroffene Ticket mit
-`Closes #…` schließt.
-
-1. **Auswahl der PRs:** nur PRs mit Status 🟣 Gemergt oder ⚫ Geschlossen und Gesamtstatus 🟡 oder 🔴. Offene
-   PRs (Draft, Ready) sind Sache ihres Autors und gehen über `comment`. Bei einem geschlossenen,
-   **nicht** gemergten PR ist sein Code nicht in `develop`: nur Punkte übernehmen, die sich auf
-   `develop` beziehen (z. B. das Issue ist weiter offen und der Fix fehlt ganz), sonst überspringen.
-2. **Auswahl der Punkte:** nur **issue-relevante** Verbesserungen, also alles, was das jeweilige Issue
-   vollständig, korrekt und sauber löst:
-   - **warn** und **hint** aus „Minimalistisch & korrekt“ und „Sauber & ordentlich“, die eine Änderung im
-     Repo brauchen (fehlender Test aus dem Issue, nicht abgedeckte Stelle, Doku im Widerspruch zum Code,
-     jetzt überflüssiger Code).
-   - FU-Punkte, die eine Lücke zum ursprünglichen Issue schließen.
-   - **Nicht** dazu gehören: eine veraltete PR-Beschreibung (lässt sich im Repo nicht beheben, im Chat
-     nennen, damit der Changelog sie berücksichtigt), OOS-Punkte und FU-Punkte zu neuen Themen. Diese
-     bleiben eigene Tickets und eigene PRs, sonst wird der Sammel-PR selbst unscharf.
-   - Mit `[IDs]` genau diese Punkte. Eine Auswahl, die die Regeln oben verletzt, im Chat begründet
-     ablehnen.
-3. **Tickets sicherstellen:** Jeder Punkt braucht ein offenes Issue, das der Sammel-PR schließt. Fehlt
-   es, zuerst mit `tickets` (Abschnitt 8) anlegen. Das ursprüngliche Issue des PRs ist meist schon
-   geschlossen und wird nur referenziert. Ist es noch offen und schließt der Punkt es vollständig, schließt
-   der Sammel-PR auch dieses.
-4. **Umsetzen:**
-   - Den Branch von aktuellem `develop` anlegen. Gibt die Sitzung einen Branch vor, diesen nehmen, sonst
-     `fix/pr-extern-review-followups-<YYYY-MM-DD>`.
-   - Je Punkt ein eigener Commit nach Conventional Commits, im Body `Refs #<Ticket>` und der Ursprungs-PR.
-   - Minimal bleiben: nur was der Punkt verlangt. Neue Befunde während der Umsetzung nicht mitnehmen,
-     sondern als FU-Punkt im Chat nennen.
-   - Alle Regeln aus `AGENTS.md` gelten, insbesondere: `pnpm format` vor jedem Commit, für SCSS
-     `lint:stylelint --fix`, die Unit-Tests der geänderten Pakete laufen lassen, Theming-Vertrag und
-     zero visual delta beachten.
-5. **PR anlegen**, bereit zum Review (kein Draft), gegen `develop`:
-   - **Titel:** Conventional Commit, der den Zweck nennt, z. B.
-     `fix: follow-ups from the review of external pull requests`.
-   - **Label:** nach den Regeln im Block **Release-Labels** (Abschnitt 5), das Hauptlabel nach der
-     wichtigsten Änderung (`release:fix` bei Verhaltens-
-     korrekturen, sonst `release:engineering`), bei geänderten DOM- oder BEM-Klassen zusätzlich
-     `release:theming`.
-   - **Beschreibung** auf Englisch, nach diesem Muster:
-
-     ```markdown
-     ## Summary
-
-     Follow-ups from the review of merged external pull requests. Each item completes the issue of its original PR.
-
-     | Item | Original PR | Original issue | Change                 |
-     | ---- | ----------- | -------------- | ---------------------- |
-     | FU-1 | #<PR>       | #<issue>       | <what this PR changes> |
-
-     Closes #<ticket-1>
-     Closes #<ticket-2>
-
-     Refs #<PR-1>, #<PR-2>
-     ```
-
-     Je Ticket eine eigene Zeile `Closes #…`, damit GitHub jedes einzeln schließt.
-
-6. **Antwort im Chat:** Link zum Sammel-PR, die umgesetzten Punkte mit ihren Tickets und die
-   übersprungenen Punkte mit Grund. Danach anbieten, den PR zu beobachten und bis Grün zu bringen.
-
-## 10. Befehl `labels`: Release-Labels setzen
-
-Ziel: Jeder PR landet im Changelog in der richtigen Kategorie. Das Audit empfiehlt nur; erst dieser Befehl
-ändert Labels, nie automatisch.
-
-1. **Auswahl:** die genannten PRs mit einer Abweichung im Block **Release-Labels** des Audits. Ohne
-   Abweichung nichts tun.
-2. **Gemergte PRs:** nur ändern, solange der PR in keinem veröffentlichten Release steht (`merged_at`
-   liegt nach dem Datum des letzten Releases, `get_latest_release` bzw. `gh release view`). Sonst
-   überspringen, weil der Changelog schon erzeugt ist, und das im Chat nennen.
-3. **Ändern:** nur `release:*`-Labels anfassen. Das empfohlene Hauptlabel setzen, ein abweichendes
-   Hauptlabel entfernen, Zusatzlabels (`release:sample`, `release:theming`) nur ergänzen. `release:ignore`
-   nie setzen oder entfernen. Andere Labels nicht ändern.
-   - Die aktuellen Labels über die PR-Daten lesen (`pull_request_read` mit `get` bzw. `gh pr view`); die
-     Issue-Abfrage findet PRs nicht.
-   - `issue_write` mit `update` ersetzt die ganze Label-Liste. Deshalb die vollständige neue Liste
-     übergeben, mit allen Labels außerhalb von `release:*` unverändert (alternativ `gh pr edit
---add-label/--remove-label`).
-4. **Kein Kommentar:** Das Ändern eines Labels erscheint in der Zeitleiste des PRs. Einen Kommentar dafür
-   nicht posten.
-5. **Antwort im Chat:** eine Tabelle mit PR, Labels vorher, Labels nachher und den übersprungenen PRs mit
-   Grund.
-
-## Referenzbeispiel
-
-Bewertung vom Oktober 2026 für vier PRs eines externen Contributors. #11082 war bei der Bewertung schon
-gemergt und wurde als Referenz aufgenommen.
-
-| PR                                                                                                   | Status     | Gesamt | Kurzbeschreibung                                                                             | Minimalistisch & korrekt zum Issue                                                                                                                                                                                                  | Sauber & ordentlich                                                                             | Sicher       |
-| ---------------------------------------------------------------------------------------------------- | ---------- | ------ | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------ |
-| [#11087](https://github.com/public-ui/kolibri/pull/11087) `has-value` sofort (#11053)                | 🔵 Ready   | 🟡     | Korrekt und klein.                                                                           | 💡 **hint**: drei jetzt überflüssige Zuweisungen an `hasValue`                                                                                                                                                                      | 💡 **hint**: Die PR-Beschreibung ist veraltet (`kol-input-number`).                             | ✅ **ready** |
-| [#11086](https://github.com/public-ui/kolibri/pull/11086) `aria-describedby`/`aria-invalid` (#11035) | 🔵 Ready   | 🔴     | Die ARIA-Logik ist korrekt, und es gibt keine visuellen Änderungen.                          | ⚠️ **warn**: `!important` auf allen Eigenschaften von `.visually-hidden`. Das wirkt global, Themes können es nicht mehr übersteuern. Nötig ist es nur für die belegten Eigenschaften (`position`, `margin`, `padding`). Dazu OOS-4. | 💡 **hint**: Das Label `release:theming` fehlt, obwohl ein zusätzliches Element gerendert wird. | ✅ **ready** |
-| [#11084](https://github.com/public-ui/kolibri/pull/11084) Zähler zur Laufzeit (#11052)               | 🔵 Ready   | 🟡     | Der Fehler ist korrekt behoben, und die Verzögerung der Screenreader-Ansage bleibt erhalten. | 💡 **hint**: zwei Änderungen außerhalb des Issues (OOS-2, OOS-3)                                                                                                                                                                    | ✅ **ready**                                                                                    | ✅ **ready** |
-| [#11082](https://github.com/public-ui/kolibri/pull/11082) Select: deaktivierte Optgroups (#10864)    | 🟣 Gemergt | 🟡     | Die Weitergabe von `disabled` und die Vorauswahl sind korrekt behoben.                       | 💡 **hint**: eine Änderung außerhalb des Issues (OOS-1)                                                                                                                                                                             | ✅ **ready**                                                                                    | ✅ **ready** |
-
-**Out-of-Scope-Hinweise**
-
-| ID    | PR     | Änderung                                                                                                                                                           | Bewertung                                                    | Folge-Ticket?                                                                             |
-| ----- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
-| OOS-1 | #11082 | Leere Optgroups (`{ label, options: [] }`) werden nicht mehr gerendert (`select.tsx`), mit eigenem Test.                                                           | harmlos, bereits in `develop`                                | Ticket, das die Änderung nachträglich dokumentiert, ggf. mit Changelog-Eintrag.           |
-| OOS-2 | #11084 | Im Zähler ersetzt `classList.add`/`remove` das `classList.toggle(token, force)`, weil das Test-DOM `force` falsch auswertet. 7 Unit-Snapshots ändern sich dadurch. | harmlos, im Browser ohne Wirkung                             | Ticket „Test-DOM: `classList.toggle(force)` falsch ausgewertet“. Aus dem PR herausnehmen. |
-| OOS-3 | #11084 | `instanceof HTMLTextAreaElement` in `textarea.handleTextareaInput` wird zu einer reinen Null-Prüfung.                                                              | harmlos, `ctaRef` ist typisiert                              | Zusammen mit OOS-2. Aus dem PR herausnehmen.                                              |
-| OOS-4 | #11086 | `position: relative` an `.kol-alert` im Theme kern entfernt.                                                                                                       | harmlos, durch `position: fixed !important` nicht mehr nötig | Kein Ticket. Aus dem PR herausnehmen.                                                     |
-
-Was dieses Beispiel zeigt:
-
-- Eine harmlose Verhaltensänderung außerhalb des Issues (OOS-1) ist **hint**, kein **warn**, und kommt
-  in den Out-of-Scope-Block.
-- Eine Lösung, die das Issue trifft, aber global mehr bewirkt als nötig (#11086), ist **warn**.
+### 6.1 Stand
+
+Ein Satz mit der Zahl der PRs je Status, z. B. „3 Ready · 10 gemergt · 0 Draft · 0 geschlossen ohne
+Merge“. Bei einer Folgeprüfung zusätzlich, was sich seit dem letzten Audit geändert hat.
+
+### 6.2 Tabelle
+
+| PR  | Status | Gesamt | Kurzbeschreibung | Minimalistisch & korrekt zum Issue | Sauber & ordentlich | Sicher |
+| --- | ------ | ------ | ---------------- | ---------------------------------- | ------------------- | ------ |
+
+- **PR:** Markdown-Link, Kurztitel, Issue-Nummer. Beispiel: `[#11083](…) Link: kein leeres aria-label (#10718)`.
+- **Status:** 📝 Draft · 🔵 Ready · 🟣 Gemergt · ⚫ Geschlossen (ohne Merge). Zeilen in dieser Reihenfolge,
+  innerhalb eines Status absteigend nach PR-Nummer.
+- **Kurzbeschreibung:** ein Satz, was der PR leistet und ob das Issue gelöst ist.
+- **Spalten:** Wert und ein knapper Befund. OOS- und FU-Punkte nur mit ihrer ID nennen, z. B.
+  „💡 **hint**: Test aus dem Issue fehlt (FU-1)“.
+
+### 6.3 Legende
+
+- **Gesamt:** 🟢 alle Spalten **ready** · 🟡 mindestens ein **hint**, kein **warn** · 🔴 mindestens ein **warn**
+- **Spalten:** ⚠️ **warn** muss geändert werden · 💡 **hint** sollte geändert werden, blockiert aber nicht · ✅ **ready** ok
+
+### 6.4 Out-of-Scope-Änderungen
+
+| ID  | PR  | Änderung im Diff | Bewertung | Folge-Ticket? |
+| --- | --- | ---------------- | --------- | ------------- |
+
+- Bezug ist immer **neu**, deshalb keine eigene Spalte.
+- **Bewertung:** harmlos oder riskant, mit Grund.
+- **Folge-Ticket?:** **ja**, **optional (Bedingung)** oder **nein**, und bei offenen PRs der Zusatz „aus
+  dem PR herausnehmen“.
+
+### 6.5 Folgepunkte
+
+| ID  | PR  | Thema | Bezug | Folge-Ticket? |
+| --- | --- | ----- | ----- | ------------- |
+
+- **Bezug:** **Issue** oder **neu** (Abschnitt 1). Im Zweifel **neu**.
+- IDs `OOS-n` und `FU-n` laufen jeweils fortlaufend über alle PRs der Ausgabe.
+
+### 6.6 Release-Labels
+
+Nur PRs, deren gesetzte Labels von der Empfehlung abweichen:
+
+| PR  | Gesetzt | Empfohlen | Begründung |
+| --- | ------- | --------- | ---------- |
+
+Ein Hauptlabel nach der wichtigsten Änderung, dazu Zusatzlabels, wenn sie zutreffen. Maßgeblich ist der
+Inhalt des Diffs, nicht der PR-Titel (die Automation `pr-release-label-automation.yml` leitet das Label
+nur aus dem Titel ab). Kategorien aus `.github/release.yml`:
+
+| Label                     | Art    | Wann                                                                               | Beispiel                       |
+| ------------------------- | ------ | ---------------------------------------------------------------------------------- | ------------------------------ |
+| `release:breaking-change` | Haupt  | Inkompatible Änderung der öffentlichen API (Props, Methoden, Events, Slots, Typen) |                                |
+| `release:feature`         | Haupt  | Neue Funktion oder neues Sample                                                    | #11080 (neues Sample)          |
+| `release:fix`             | Haupt  | Behebt ein Fehlverhalten                                                           | #11062 (Listener nie entfernt) |
+| `release:improvement`     | Haupt  | Verbessert Verhalten, das kein Fehler war, z. B. Performance                       |                                |
+| `release:engineering`     | Haupt  | Ohne Wirkung für Nutzer der Bibliothek: Refactoring, Tests, CI, Tooling            | #11072 (nur `cla.yml`)         |
+| `release:doc`             | Haupt  | Nur Dokumentation                                                                  |                                |
+| `release:sample`          | Zusatz | Der PR ändert Samples (`packages/samples`)                                         | #11079 (Sample entfernt)       |
+| `release:theming`         | Zusatz | Neue oder geänderte DOM-Elemente oder BEM-Klassen                                  | #11086 (zusätzliches Element)  |
+| `release:ignore`          | –      | Nie empfehlen, nie setzen, nie entfernen                                           |                                |
+
+Ein falsches Hauptlabel wird ersetzt, z. B. `release:improvement` → `release:fix` bei #11062.
+
+### 6.7 Nicht überflüssig
+
+Was wie ein Befund aussieht, aber keiner ist, mit Grund. Verhindert, dass jemand das Falsche entfernt.
+Beispiele:
+
+- #11084: Die doppelte Flag-Logik in `textarea` ist nötig, weil `kol-textarea` nicht von der gemeinsamen
+  Basis der Textfelder erbt.
+- #11074: `column-gap` steht in fünf Themes statt einmal in der Basis, weil der Maintainer das so
+  verlangt hat.
+
+### 6.8 Nicht geprüft
+
+Offen nennen, was nicht geprüft wurde, z. B. „Tests nicht lokal ausgeführt, CI ist grün“.
+
+## 7. Folgeaktionen anbieten
+
+Am Ende des Audits nur die Befehle anbieten, die etwas zu tun hätten, jeweils mit den konkreten PRs bzw.
+IDs. Beispiel:
+
+- `comment 11084 11086 11087`: die drei offenen PRs sind nicht grün.
+- `tickets` für OOS-1, OOS-2+3, FU-1, FU-2, FU-3, FU-6.
+- `consolidate 11083 11085 11073`: FU-1, FU-2, FU-3 haben **Bezug: Issue**.
+- `labels 11086 11062 11079 11072`.
+
+## 8. Befehl `comment`
+
+**Zweck:** ein Kommentar je PR, nach dessen Umsetzung der PR grün ist.
+
+**Auswahl:** nur PRs mit Status Draft oder Ready und Gesamtstatus 🟡 oder 🔴. Grüne, gemergte und
+geschlossene PRs überspringen und das nennen.
+
+**Vorher:**
+
+1. Den Head neu abrufen. Hat er sich seit dem Audit geändert, zuerst neu auditieren.
+2. Die bisherigen Kommentare lesen. Steht ein Punkt schon unbeantwortet in einem früheren Kommentar,
+   darauf verweisen statt ihn zu wiederholen. Ist nichts Neues offen, nichts posten und das sagen.
+
+**Inhalt:**
+
+| Aus dem Audit          | Im Kommentar                                                             |
+| ---------------------- | ------------------------------------------------------------------------ |
+| **warn**               | Abschnitt **Required**                                                   |
+| **hint** (außer Label) | Abschnitt **Recommended**                                                |
+| OOS-Punkt              | Abschnitt **Please remove (not part of #…)**: die Änderung zurücknehmen  |
+| FU-Punkt, Bezug: Issue | **Required** oder **Recommended**, je nach Wert in der Tabelle           |
+| FU-Punkt, Bezug: neu   | nicht verlangen; gibt es ein Ticket, ein Satz „tracked separately in #…“ |
+| Label-Abweichung       | nicht verlangen; ein Satz, dass die Maintainer das Label setzen          |
+
+Jeder Punkt nennt Datei und Zeile, was falsch ist, warum, und was zu ändern ist. Kein Punkt, der nicht
+aus dem Audit stammt. Kein Ampel-Jargon (kein „warn“, „hint“, „OOS“).
+
+**Form:** Englisch (Sprache der PRs), freundlich, knapp. Leere Abschnitte weglassen; die Nummerierung läuft
+durch. Der Footer steht immer am Ende.
+
+```markdown
+Hi @<author>, thanks for the PR! To get it ready for merge, please address the following. Everything here is within the scope of #<issue>.
+
+**Required**
+
+1. `<file>:<line>`: <what is wrong and why>. <what to change>.
+
+**Recommended**
+
+2. `<file>:<line>`: <what is wrong>. <what to change>.
+
+**Please remove (not part of #<issue>)**
+
+3. `<file>:<line>`: <change>. <why it is not needed here>.
+
+Not part of this PR: <topic> is tracked separately in #<ticket>.
+
+Thanks!
+
+---
+
+_Generated by [Claude Code](https://claude.ai/code)_
+```
+
+Beispiel für einen Punkt unter **Please remove** (#11084):
+
+> `packages/components/src/components/textarea/component.tsx:497` (`handleTextareaInput`): the check
+> `this.ctaRef.el instanceof HTMLTextAreaElement` was relaxed to `this.ctaRef.el`. This is unrelated to
+> #11052. Please restore it, and adapt the test setup instead if it needs this.
+
+**Posten:** als normaler PR-Kommentar (`add_issue_comment` bzw. `gh pr comment`), nicht als Review.
+
+**Antwort im Chat:** je PR Link zum Kommentar und die Zahl der Punkte, dazu was für Maintainer offen
+bleibt (z. B. ein Label).
+
+## 9. Befehl `tickets`
+
+**Zweck:** je Folgepunkt ein Folge-Issue, damit er nicht im PR untergeht.
+
+**Auswahl:**
+
+- Ohne `[IDs]`: alle OOS- und FU-Punkte der genannten PRs mit „Folge-Ticket: ja“.
+- Mit `[IDs]` oder ausdrücklich genannten PRs: auch Punkte mit „optional“. Die Bedingung steht dann im
+  Ticket (Beispiel #11240: „Zuerst entscheiden, ob `ECL_EU` gepflegt wird“).
+- Punkte, die laut Audit zusammengehören, werden ein Ticket (Beispiel: OOS-2 und OOS-3 → #11236).
+
+**Dubletten:** vor dem Anlegen offene und geschlossene Issues zum Thema suchen (`search_issues` bzw.
+`gh issue list --search`). Gibt es eines, kein neues anlegen, sondern es nennen. Das geschlossene
+Ursprungs-Issue des PRs ist keine Dublette.
+
+**Inhalt:** Deutsch, nach diesem Muster:
+
+```markdown
+Gefunden im Review von #<PR> (<ID>). <Ein Satz zum Bezug.>
+
+## Befund
+
+- **Betroffen:** `<Datei>:<Zeile>` …
+- **Ursache:** …
+- **Folge:** <konkretes Szenario>
+
+## Vorschlag
+
+…
+
+## Akzeptanzkriterien
+
+- [ ] …
+
+Refs #<PR>, #<Issue>
+```
+
+- **Erster Satz nach Bezug:**
+  - Bezug: Issue → „#<PR> hat #<Issue> behoben, <was fehlt>.“ Beispiel #11234: „#10718 verlangt neben
+    dem Fix ausdrücklich einen Test. #11083 hat nur den Fix geliefert.“
+  - Bezug: neu → „Die Änderung gehört nicht zu #<Issue>.“ oder „Derselbe Fehler steht an anderer
+    Stelle.“ Beispiel #11238.
+- **Unbestätigte Annahmen** als solche kennzeichnen und zuerst einen Nachweis verlangen. Beispiel #11236:
+  „Ursache (laut #11084, noch zu bestätigen)“.
+- **Titel:** Komponente vorn, für sich verständlich. Beispiel: „kol-link: Test für `_hide-label` ohne
+  Label fehlt (zweites Kriterium aus #10718)“.
+- **Typ:** `Bug` für Fehlverhalten, `Task` für Tests, Doku und Aufräumen.
+- Keine Labels, keine Zuweisung, kein Milestone.
+
+**Verlinken:** `Refs #<PR>` erzeugt im PR automatisch einen Querverweis. Keinen eigenen Kommentar für den
+Link posten.
+
+**Antwort im Chat:** Tabelle mit ID, neuem Issue (Link, Titel, Typ) und Ursprungs-PR, dazu übersprungene
+Punkte mit Grund.
+
+## 10. Befehl `consolidate`
+
+**Zweck:** Folgepunkte gemergter PRs kann deren Autor nicht mehr nachbessern. `consolidate` setzt sie in
+**einem** Sammel-PR um, der die zugehörigen Folge-Issues schließt.
+
+**Auswahl, in genau dieser Reihenfolge:**
+
+1. **PRs:** nur die genannten PRs mit Status 🟣 Gemergt oder ⚫ Geschlossen und Gesamtstatus 🟡 oder 🔴.
+   Offene PRs gehen über `comment`. Bei einem geschlossenen, **nicht** gemergten PR liegt sein Code nicht
+   in `develop`: Punkte nur übernehmen, wenn sie sich auf `develop` beziehen, sonst überspringen.
+2. **Punkte:** nur FU-Punkte mit **Bezug: Issue** und Befunde in den Spalten „Minimalistisch & korrekt“
+   oder „Sauber & ordentlich“, die eine Änderung im Repo brauchen.
+3. **Nie dabei:**
+   - OOS-Punkte (immer Bezug: neu),
+   - FU-Punkte mit **Bezug: neu**,
+   - veraltete PR-Beschreibungen (nicht im Repo behebbar; im Chat für den Changelog nennen),
+   - Labels (dafür gibt es `labels`).
+4. **Mit `[IDs]`** genau diese Punkte. Verstößt eine ID gegen Schritt 2 oder 3, sie ablehnen und den Grund
+   nennen.
+
+Beispiel aus dem Referenzlauf, Aufruf `consolidate 11083 11085 11073 11062 11082 11072`:
+
+| Punkt                               | Folge-Issue | Im Sammel-PR | Grund                                             |
+| ----------------------------------- | ----------- | ------------ | ------------------------------------------------- |
+| FU-1 Link-Test (#11083)             | #11234      | ja           | Bezug: Issue, #10718 verlangt den Test            |
+| FU-2 Password-Test (#11085)         | #11237      | ja           | Bezug: Issue, der Test zu #11054 ist zu schwach   |
+| FU-3 Textarea Doku + Test (#11073)  | #11235      | ja           | Bezug: Issue, Doku und Test zu #10863             |
+| FU-4 Tooltip-Test (#11062)          | #11239      | ja           | Bezug: Issue, Test zum Fix von #11033             |
+| OOS-1 leere Optgroups (#11082)      | #11233      | nein         | OOS-Punkt, eigenes Thema mit eigener Entscheidung |
+| FU-6 Links auf `blob/main` (#11072) | #11238      | nein         | Bezug: neu, gehört nicht zu #10484                |
+| PR-Beschreibung #11079, #11080      | –           | nein         | nicht im Repo behebbar                            |
+
+**Tickets sicherstellen:** Jeder Punkt braucht ein offenes Folge-Issue. Fehlt es, zuerst wie in
+Abschnitt 9 anlegen. Ist das Ursprungs-Issue noch offen und erledigt der Punkt es vollständig, schließt der
+Sammel-PR es mit.
+
+**Umsetzen:**
+
+- Branch von aktuellem `develop`. Gibt die Sitzung einen Branch vor, diesen nehmen, sonst
+  `fix/pr-extern-review-followups-<YYYY-MM-DD>`.
+- Ein Commit je Punkt nach Conventional Commits, im Body `Refs #<Folge-Issue>, #<Ursprungs-PR>`.
+- Nur was der Punkt verlangt. Neue Funde während der Umsetzung als FU-Punkt im Chat nennen, nicht
+  mitnehmen.
+- Alle Regeln aus `AGENTS.md`: `pnpm format` vor jedem Commit, bei SCSS `lint:stylelint --fix`,
+  Unit-Tests der geänderten Pakete, Theming-Vertrag, zero visual delta.
+
+**PR anlegen:** gegen `develop`, bereit zum Review (kein Draft).
+
+- **Titel:** z. B. `fix: follow-ups from the review of external pull requests` (`test:` oder `docs:`, wenn
+  nur Tests bzw. Doku enthalten sind).
+- **Label:** nach Abschnitt 6.6, Hauptlabel nach der wichtigsten Änderung.
+- **Beschreibung** auf Englisch, je Folge-Issue eine eigene `Closes`-Zeile, damit GitHub jedes schließt:
+
+  ```markdown
+  ## Summary
+
+  Follow-ups from the review of merged external pull requests. Each item completes the issue of its original PR.
+
+  | Item | Original PR | Original issue | Change                              |
+  | ---- | ----------- | -------------- | ----------------------------------- |
+  | FU-1 | #11083      | #10718         | Test for `_hideLabel` without label |
+
+  Closes #11234
+
+  Refs #11083
+  ```
+
+**Antwort im Chat:** Link zum Sammel-PR, umgesetzte Punkte mit Folge-Issues, übersprungene Punkte mit
+Grund. Danach anbieten, den PR bis Grün zu begleiten.
+
+## 11. Befehl `labels`
+
+**Zweck:** Jeder PR landet im Changelog in der richtigen Kategorie. Das Audit empfiehlt nur, erst dieser
+Befehl ändert Labels.
+
+**Auswahl:** die genannten PRs mit einer Abweichung in Abschnitt 6.6. Gemergte PRs nur, solange sie in
+keinem veröffentlichten Release stehen (`merged_at` liegt nach dem letzten Release, `list_releases` bzw.
+`gh release list`). Sonst überspringen, weil der Changelog schon erzeugt ist.
+
+**Ändern:**
+
+- Nur `release:*`-Labels. Das empfohlene Hauptlabel setzen, ein falsches Hauptlabel entfernen,
+  Zusatzlabels nur ergänzen. `release:ignore` nie anfassen.
+- Aktuelle Labels über die PR-Daten lesen (`pull_request_read` mit `get` bzw. `gh pr view`). Die
+  Issue-Abfrage findet PRs nicht.
+- `issue_write` mit `update` ersetzt die **ganze** Label-Liste. Deshalb die vollständige neue Liste
+  übergeben, mit allen Labels außerhalb von `release:*` (alternativ `gh pr edit --add-label/--remove-label`).
+
+Beispiel: #11062 trägt `release:improvement`, behebt aber einen Fehler → neue Liste `["release:fix"]`.
+
+**Kein Kommentar:** Die Änderung steht in der Zeitleiste des PRs.
+
+**Antwort im Chat:** Tabelle mit PR, Status, Labels vorher und nachher, dazu übersprungene PRs mit Grund.
+
+## 12. Referenzlauf
+
+Audit vom Oktober 2026 über die 13 PRs eines externen Contributors (gekürzt auf die lehrreichen Zeilen).
+
+| PR                                                                                    | Status     | Gesamt | Kurzbeschreibung                                                  | Minimalistisch & korrekt zum Issue                                                                                                   | Sauber & ordentlich                                             | Sicher                                             |
+| ------------------------------------------------------------------------------------- | ---------- | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------- | -------------------------------------------------- |
+| [#11087](https://github.com/public-ui/kolibri/pull/11087) `has-value` sofort (#11053) | 🔵 Ready   | 🟡     | Korrekt und klein.                                                | 💡 **hint**: drei jetzt überflüssige Zuweisungen an `hasValue`                                                                       | 💡 **hint**: Die PR-Beschreibung nennt noch `kol-input-number`. | ✅ **ready**                                       |
+| [#11086](https://github.com/public-ui/kolibri/pull/11086) aria (#11035)               | 🔵 Ready   | 🔴     | Die ARIA-Logik ist korrekt, das Visual Review zeigt 0 Änderungen. | ⚠️ **warn**: `!important` auf allen Eigenschaften von `.visually-hidden`, nötig nur für `position`, `margin`, `padding`. Dazu OOS-4. | 💡 **hint**: `release:theming` fehlt.                           | ✅ **ready**                                       |
+| [#11084](https://github.com/public-ui/kolibri/pull/11084) Zähler (#11052)             | 🔵 Ready   | 🟡     | Korrekt, die Verzögerung der Ansage bleibt erhalten.              | 💡 **hint**: zwei Änderungen außerhalb des Issues (OOS-2, OOS-3)                                                                     | ✅ **ready**                                                    | ✅ **ready**                                       |
+| [#11083](https://github.com/public-ui/kolibri/pull/11083) Link-`aria-label` (#10718)  | 🟣 Gemergt | 🟡     | Mit einer Zeile minimal behoben.                                  | ✅ **ready**                                                                                                                         | 💡 **hint**: Der vom Issue verlangte Test fehlt (FU-1).         | ✅ **ready**                                       |
+| [#11082](https://github.com/public-ui/kolibri/pull/11082) Optgroups (#10864)          | 🟣 Gemergt | 🟡     | `disabled` wirkt beim Rendern und bei der Vorauswahl.             | 💡 **hint**: eine Änderung außerhalb des Issues (OOS-1)                                                                              | ✅ **ready**                                                    | ✅ **ready**                                       |
+| [#11081](https://github.com/public-ui/kolibri/pull/11081) Icon-Pfade (#10382)         | 🟣 Gemergt | 🟢     | Alle Kriterien erfüllt.                                           | ✅ **ready**                                                                                                                         | ✅ **ready**                                                    | ✅ **ready**: `fetch` statisch und relativ         |
+| [#11072](https://github.com/public-ui/kolibri/pull/11072) CLA-Link (#10484)           | 🟣 Gemergt | 🟢     | Eine Zeile in `cla.yml`, genau wie verlangt.                      | ✅ **ready**                                                                                                                         | ✅ **ready**                                                    | ✅ **ready**: Trigger, Secrets, Rechte unverändert |
+
+**Out-of-Scope-Änderungen**
+
+| ID    | PR     | Änderung im Diff                                                              | Bewertung                        | Folge-Ticket?                        |
+| ----- | ------ | ----------------------------------------------------------------------------- | -------------------------------- | ------------------------------------ |
+| OOS-1 | #11082 | Leere Optgroups werden nicht mehr gerendert.                                  | harmlos, bereits in `develop`    | ja → #11233                          |
+| OOS-2 | #11084 | `classList.add`/`remove` statt `toggle`, wegen der Testumgebung; 7 Snapshots. | harmlos, im Browser ohne Wirkung | ja → #11236; aus dem PR herausnehmen |
+| OOS-3 | #11084 | `instanceof HTMLTextAreaElement` zu reiner Null-Prüfung gelockert.            | harmlos                          | mit OOS-2; aus dem PR herausnehmen   |
+| OOS-4 | #11086 | `position: relative` an `.kol-alert` im Theme kern entfernt.                  | harmlos, nicht mehr nötig        | nein; aus dem PR herausnehmen        |
+
+**Folgepunkte**
+
+| ID   | PR     | Thema                                                       | Bezug | Folge-Ticket?                                 |
+| ---- | ------ | ----------------------------------------------------------- | ----- | --------------------------------------------- |
+| FU-1 | #11083 | Test für `_hideLabel` ohne `_label`                         | Issue | ja → #11234                                   |
+| FU-2 | #11085 | Test über echte Prop-Änderung statt direkten Watcher-Aufruf | Issue | ja → #11237                                   |
+| FU-3 | #11073 | Migrationsplan aktualisieren, Test für `_spellCheck: false` | Issue | ja → #11235                                   |
+| FU-4 | #11062 | Regressionstest für An- und Abmelden des Escape-Listeners   | Issue | optional → #11239                             |
+| FU-5 | #11074 | Progress-Styling für `ECL_EU`                               | Issue | optional (wenn ECL_EU gepflegt wird) → #11240 |
+| FU-6 | #11072 | 28 READMEs und 9 Stylelint-Regeln verlinken `blob/main`     | neu   | ja → #11238                                   |
+
+Was dieser Lauf zeigt:
+
 - Ein einziger **hint** reicht, damit ein PR nicht grün ist (#11087).
-- Nicht überflüssig war die doppelte Flag-Logik in `textarea` (#11084), weil `kol-textarea` nicht von der
-  gemeinsamen Basis der Textfelder erbt.
+- Eine harmlose Änderung außerhalb des Issues ist **hint** plus OOS-Punkt (OOS-1), eine riskante
+  Mehrwirkung ist **warn** (#11086).
+- Derselbe Fehler an anderer Stelle ist ein Folgepunkt mit **Bezug: neu** (FU-6), ein vom Issue
+  verlangter Test dagegen **Bezug: Issue** (FU-1).
+- `consolidate` nimmt nur FU-1 bis FU-5, nie OOS-1 oder FU-6 (Tabelle in Abschnitt 10).
