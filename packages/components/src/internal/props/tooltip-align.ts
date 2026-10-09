@@ -1,25 +1,14 @@
-import type { AlignPropType } from '../../schema';
-import { alignPropTypeOptions } from '../../schema';
+import type { AlignPropType } from '../../schema/props/align-options';
+import { createAlignPropDefinition } from './helpers/align';
 import type { SimpleProp } from './helpers/factory';
-import { createPropDefinition } from './helpers/factory';
-import { normalizeString } from './helpers/normalizers';
 
 /**
- * Tooltip align prop for kol-link.
+ * Tooltip align prop.
  *
- * Same valid values as {@link alignProp} ('top' | 'right' | 'bottom' | 'left') but defaults to
- * `'right'` to match the legacy `_tooltipAlign` default on kol-link.
+ * Same valid values as {@link alignProp} ('top' | 'right' | 'bottom' | 'left'); the default is
+ * `'right'`, the documented default of kol-link. A component with another documented default sets it
+ * itself (e.g. `'top'` for the button elements).
  */
 export type TooltipAlignProp = SimpleProp<'tooltipAlign', AlignPropType>;
 
-function normalizeTooltipAlign(value: unknown): AlignPropType {
-	const str = normalizeString(value);
-	if ((alignPropTypeOptions as readonly string[]).includes(str)) {
-		return str as AlignPropType;
-	}
-	return 'right';
-}
-
-export const tooltipAlignProp = createPropDefinition<TooltipAlignProp>('tooltipAlign', 'right', normalizeTooltipAlign, (v) =>
-	(alignPropTypeOptions as readonly string[]).includes(v),
-);
+export const tooltipAlignProp = createAlignPropDefinition<TooltipAlignProp>('tooltipAlign', 'right');

@@ -3,8 +3,6 @@
 
 @mixin kol-input-theme {
 	.kol-input-container {
-		$root: &;
-
 		// A raised surface; the buttons and icons inside it stand on the field, not on the page.
 		--kol-surface: var(--color-light);
 		background-color: var(--color-light);
@@ -50,7 +48,7 @@
 			border-width: 1px;
 			border-bottom: 2px solid var(--color-subtle);
 
-			#{$root}__container {
+			.kol-input-container__container {
 				padding-top: 1px;
 			}
 		}

@@ -25,13 +25,13 @@ describe('kolibriColorProp', () => {
 	});
 
 	it.each([[{ backgroundColor: '#ff0000', foregroundColor: '#ffffff' }], ['{"backgroundColor":"#ff0000","foregroundColor":"#ffffff"}']])(
-		'accepts the color pair %j without channels',
+		'takes the foreground color of the color pair %j',
 		(value) => {
-			expect(applied(kolibriColorProp, value)).toEqual([{}]);
+			expect(applied(kolibriColorProp, value)).toEqual([{ red: 255, green: 255, blue: 255 }]);
 		},
 	);
 
-	it.each(['red', '#12', '', 3, '{"backgroundColor":"#ff0000"}'])('ignores %j', (value) => {
+	it.each(['red', '#12', '', 3, '{"backgroundColor":"#ff0000"}', { backgroundColor: '#ff0000', foregroundColor: 'nonsense' }])('ignores %j', (value) => {
 		expect(applied(kolibriColorProp, value)).toEqual([]);
 	});
 

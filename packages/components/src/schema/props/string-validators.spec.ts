@@ -207,11 +207,13 @@ describe('legacy string prop validators', () => {
 			expect(validate(createLegacyComponent(), undefined, internals, `${propName}-target`)).toEqual([target]);
 		});
 
-		// The validation only warns; `resolveTargets` then calls `trim` on the invalid value.
-		it('warns and throws a TypeError for a number', () => {
+		it.each<unknown>([1, { id: 'target' }])('only warns for the invalid value %p and resolves no element', (value) => {
 			const component = createLegacyComponent();
-			expect(() => validate(component, undefined, undefined, 1 as unknown as string)).toThrow(TypeError);
+			const internals = createInternals();
+			const previous = internals[internalsKey];
+			expect(validate(component, undefined, internals, value as string)).toEqual([]);
 			expect(component.state).toEqual({});
+			expect(internals[internalsKey]).toBe(previous);
 			expect(warningsFor(propName)).toHaveLength(1);
 		});
 	});
@@ -239,7 +241,7 @@ describe('legacy string prop validators', () => {
 			expect(validateLabelWithExpertSlot).toBe(validateLabel);
 		});
 
-		// Known difference to the skeleton `labelProp`: that one accepts '' or 2 to 80 characters only.
+		// Known difference to the skeleton `labelProp`: that one accepts '' or at least 2 characters only.
 		it.each([[''], ['A']])('accepts the string %p', (value) => {
 			const component = createLegacyComponent();
 			validateLabel(component, value);
@@ -255,6 +257,7 @@ describe('legacy string prop validators', () => {
 		});
 
 		// The options are typed as `WatchStringOptions`, but `validateLabel` validates with `typeof value === 'string'` only.
+		// This is the published behaviour of the legacy validator and is kept.
 		it('ignores minLength and maxLength of the options', () => {
 			const component = createLegacyComponent();
 			validateLabel(component, 'ab', { minLength: 3 });
@@ -288,11 +291,14 @@ describe('legacy string prop validators', () => {
 			expect(afterPatch).toHaveBeenCalledWith('Label', component.state, component, '_label');
 		});
 
-		// `watchValidator` adds `null` to the allowed values it is given, and `validateLabel` passes one shared set.
-		it('lists null as allowed value for a required label once an optional label was invalid', () => {
+		// `validateLabel` passes one shared set of allowed values; `watchValidator` adds `null` to a copy only.
+		it('does not list null as allowed value for a required label after an optional label was invalid', () => {
 			validateLabel(createLegacyComponent(), 1 as unknown as string);
 			validateLabel(createLegacyComponent(), 2 as unknown as string, { required: true });
-			expect(warningsFor('_label').pop()).toMatch(/Allowed values are: string, $/);
+			expect(warningsFor('_label')).toEqual([
+				expect.stringMatching(/\(1\).*Allowed values are: string, $/),
+				expect.stringMatching(/\(2\).*Allowed values are: string$/),
+			]);
 		});
 	});
 

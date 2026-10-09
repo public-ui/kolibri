@@ -13,6 +13,8 @@ import { access, mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { extractComponentTags, extractMarkdownDescription, extractSampleDescription } from './index-metadata.mjs';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PACKAGE_ROOT = path.resolve(__dirname, '..');
@@ -273,6 +275,7 @@ async function collectMarkdownFromDirectory(directory, { groupPrefix, recursive,
 			id: docIdSegments.join('/'),
 			group,
 			name: displayName,
+			description: extractMarkdownDescription(code),
 			path: normalizedRepoPath,
 			absolutePath,
 			code,
@@ -356,6 +359,8 @@ async function generateSampleIndex() {
 					id: sampleIdSegments.join('/'),
 					group,
 					name,
+					description: extractSampleDescription(code),
+					tags: extractComponentTags(code),
 					path: path.relative(REPO_ROOT, absolutePath),
 					code,
 					kind: entryKind,

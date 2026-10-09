@@ -1,12 +1,12 @@
 @use '../functions/to-rem' as *;
 @use './icon' as *;
+@use './button' as *;
 
 @mixin alert {
 	@include icon;
+	@include button('kol-alert__closer');
 
 	.kol-alert {
-		$root: &;
-
 		--alert-msg-text-color: var(--alert-accent-color);
 		color: var(--color-dark-blue-100);
 		background: var(--alert-background-color, #fdfefe);
@@ -28,25 +28,27 @@
 			grid-template-rows: min-content min-content;
 			border: var(--border-width-s) solid var(--alert-accent-color);
 
-			&:not(:has(#{$root}__heading)) {
+			&:not(:has(.kol-alert__heading)) {
 				grid-template-areas: 'icon content close';
 				grid-template-rows: min-content;
 
-				#{$root}__content {
+				.kol-alert__content {
 					padding-top: to-rem(12);
 				}
 			}
 
-			&:not(:has(#{$root}__closer)) {
+			&:not(:has(.kol-alert__closer)) {
 				padding-right: to-rem(36);
 			}
 
-			#{$root}__heading,
-			#{$root}__icon {
+			.kol-alert__heading,
+			.kol-alert__icon {
 				padding-top: to-rem(12);
 			}
 
-			#{$root}__closer {
+			.kol-alert__closer {
+				align-items: flex-start;
+
 				font-size: to-rem(24);
 			}
 		}
@@ -55,15 +57,15 @@
 			color: var(--alert-msg-text-color);
 			display: block;
 
-			&:has(#{$root}__closer) {
+			&:has(.kol-alert__closer) {
 				padding-right: to-rem(26);
 			}
 
-			&:has(#{$root}__icon) {
+			&:has(.kol-alert__icon) {
 				padding-left: to-rem(20);
 			}
 
-			/* The closer renders ButtonFC directly: `#{$root}__closer` and `kol-button` sit on the
+			/* The closer renders ButtonFC directly: `.kol-alert__closer` and `kol-button` sit on the
 			   same element, so the former `.kol-button` box rules now target the closer itself. The
 			   closer used to inherit `color` from `.kol-alert--variant-msg` (line above); now that
 			   `kol-button` sits on the same element, `.kol-close-button:is(.kol-button--normal)` in
@@ -71,11 +73,11 @@
 			   at `.kol-button__text { color: var(--text-color) }` — both are 2-class selectors, so
 			   whichever comes later in the compiled stylesheet wins regardless of intent. Re-declare
 			   `--text-color` here (3-class, `&.kol-button`) so the accent color wins deterministically. */
-			#{$root}__closer.kol-button {
+			.kol-alert__closer.kol-button {
 				--text-color: var(--alert-msg-text-color);
 			}
 
-			#{$root}__closer {
+			.kol-alert__closer {
 				position: absolute;
 				/* `top` used to resolve via the element's static position (no explicit `top`). With
 				   a block-display closer that always resolved to 0; the `display: flex` ButtonFC
@@ -99,13 +101,13 @@
 				}
 			}
 
-			#{$root}__heading,
-			#{$root}__content {
+			.kol-alert__heading,
+			.kol-alert__content {
 				display: inline;
 				margin-right: to-rem(4);
 			}
 
-			#{$root}__icon {
+			.kol-alert__icon {
 				display: flex;
 				position: absolute;
 				top: 0;
@@ -114,7 +116,7 @@
 				align-items: center;
 			}
 
-			&#{$root}--type-default {
+			&.kol-alert--type-default {
 				padding-left: 0;
 			}
 		}
@@ -168,11 +170,11 @@
 		&__icon {
 			color: var(--alert-accent-color);
 
-			#{$root}--variant-card & {
+			.kol-alert--variant-card & {
 				font-size: to-rem(24);
 			}
 
-			#{$root}--variant-msg & {
+			.kol-alert--variant-msg & {
 				font-size: to-rem(16);
 
 				&::before {
@@ -180,7 +182,7 @@
 				}
 			}
 
-			#{$root}--type-default & {
+			.kol-alert--type-default & {
 				display: none;
 			}
 		}

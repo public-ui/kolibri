@@ -81,7 +81,6 @@ export class KolInputNumber
 	implements ClickableElement, FocusableElement, InputNumberProps, WebComponentInterface<InputNumberApi>
 {
 	@Element() protected readonly host?: HTMLKolInputNumberElement;
-	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	@State() public id = createUniqueId('input-number');
 
@@ -89,6 +88,8 @@ export class KolInputNumber
 	@State() public infoPopoverOpen = false;
 
 	@State() public inputHasFocus = false;
+
+	protected readonly ctaRef = createCtaRef<HTMLInputElement>();
 
 	/** Type in which `_value` was set; `getValue()` and the events return the value in this type. */
 	private valueType: NumberValueType = 'null';
@@ -103,6 +104,298 @@ export class KolInputNumber
 	public constructor() {
 		super();
 		this.initFormAssociation('number', this._name);
+	}
+
+	/**
+	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
+	 */
+	@Prop() public _accessKey?: string;
+
+	@Watch('_accessKey')
+	public watchAccessKey(value?: string): void {
+		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
+		validateAccessAndShortKey(value, this._shortKey);
+	}
+
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
+
+	@Watch('_ariaDetails')
+	public watchAriaDetails(value?: AriaDetailsPropType): void {
+		this.applyAriaDetails(value);
+	}
+
+	/**
+	 * Defines whether the input can be auto-completed.
+	 */
+	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
+
+	@Watch('_autoComplete')
+	public watchAutoComplete(value?: AutoCompletePropType): void {
+		autoCompleteProp.apply(value, (v) => this.setRenderProp('autoComplete', v));
+	}
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _disabled?: boolean = false;
+
+	@Watch('_disabled')
+	public watchDisabled(value?: boolean): void {
+		this.applyDisabled(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideMsg?: boolean = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: boolean): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideLabel?: boolean = false;
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: boolean): void {
+		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Defines the hint text.
+	 */
+	@Prop() public _hint?: string = '';
+
+	@Watch('_hint')
+	public watchHint(value?: string): void {
+		this.applyHint(value);
+	}
+
+	/**
+	 * Defines the icon classnames.
+	 */
+	@Prop() public _icons?: IconsHorizontalPropType;
+
+	@Watch('_icons')
+	public watchIcons(value?: IconsHorizontalPropType): void {
+		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
+	}
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+
+	@Watch('_infoPopover')
+	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		this.applyInfoPopover(value);
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines the maximum value of the element.
+	 */
+	@Prop() public _max?: number | NumberString;
+
+	@Watch('_max')
+	public watchMax(value?: number | NumberString): void {
+		inputMaxProp.apply(value, (v) => this.setRenderProp('max', v));
+	}
+
+	/**
+	 * Defines the smallest possible input value.
+	 */
+	@Prop() public _min?: number | NumberString;
+
+	@Watch('_min')
+	public watchMin(value?: number | NumberString): void {
+		inputMinProp.apply(value, (v) => this.setRenderProp('min', v));
+	}
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: Stringified<MsgPropType>;
+
+	@Watch('_msg')
+	public watchMsg(value?: Stringified<MsgPropType>): void {
+		this.applyMsg(value);
+	}
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType;
+
+	@Watch('_name')
+	public watchName(value?: NamePropType): void {
+		this.applyName(value);
+	}
+
+	/**
+	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 */
+	@Prop() public _on?: InputTypeOnDefault;
+
+	@Watch('_on')
+	public watchOn(value?: InputTypeOnDefault): void {
+		this.applyOn(value);
+	}
+
+	/**
+	 * Defines the placeholder for input field. To be shown when there's no value.
+	 */
+	@Prop() public _placeholder?: string;
+
+	@Watch('_placeholder')
+	public watchPlaceholder(value?: string): void {
+		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
+	}
+
+	/**
+	 * Makes the input element read only.
+	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _readOnly?: boolean = false;
+
+	@Watch('_readOnly')
+	public watchReadOnly(value?: boolean): void {
+		readOnlyProp.apply(value, (v) => this.setRenderProp('readOnly', v));
+	}
+
+	/**
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _required?: boolean = false;
+
+	@Watch('_required')
+	public watchRequired(value?: boolean): void {
+		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	/**
+	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
+	 */
+	@Prop() public _shortKey?: ShortKeyPropType;
+
+	@Watch('_shortKey')
+	public watchShortKey(value?: ShortKeyPropType): void {
+		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
+		validateAccessAndShortKey(this._accessKey, value);
+	}
+
+	/**
+	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
+	 */
+	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
+
+	@Watch('_smartButton')
+	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
+		if (value === undefined || value === null) {
+			this.unsetRenderProp('smartButton');
+		} else {
+			smartButtonProp.apply(value, (v) => this.setRenderProp('smartButton', v));
+		}
+	}
+
+	/**
+	 * Suggestions to provide for the input.
+	 */
+	@Prop() public _suggestions?: SuggestionsPropType;
+
+	@Watch('_suggestions')
+	public watchSuggestions(value?: SuggestionsPropType): void {
+		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
+	}
+
+	/**
+	 * Defines the step size for value changes.
+	 */
+	@Prop() public _step?: number | NumberString;
+
+	@Watch('_step')
+	public watchStep(value?: number | NumberString): void {
+		stepProp.apply(value, (v) => this.setRenderProp('step', v));
+	}
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
+
+	/**
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+
+	@Watch('_touched')
+	public watchTouched(value?: boolean): void {
+		this.applyTouched(value);
+	}
+
+	/**
+	 * Defines the value of the element.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString | null;
+
+	/** A value reset to `null` keeps the remembered type. */
+	@Watch('_value')
+	public watchValue(value?: number | NumberString | null): void {
+		inputNumberValueProp.apply(value, (v) => this.setRenderProp('value', v));
+		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value') ?? null);
+		if (value !== undefined && value !== null) {
+			this.valueType = getNumberValueType(value);
+		}
+	}
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 
 	/**
@@ -129,8 +422,6 @@ export class KolInputNumber
 	@Method()
 	@delegateClick('ctaRef')
 	public async click(): Promise<void> {}
-
-	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
 		this.initRenderProps(inputNumberPropsConfig);
@@ -177,8 +468,6 @@ export class KolInputNumber
 		this.destroyFormField();
 	}
 
-	// --- Value ---
-
 	private remapValue(value?: number | null): number | NumberString | null {
 		return remapNumberValue(value, this.valueType);
 	}
@@ -187,8 +476,6 @@ export class KolInputNumber
 	private readInputValue(): number | NumberString | null {
 		return this.remapValue(parseInputNumberValue(this.ctaRef.el?.value));
 	}
-
-	// --- Event handling ---
 
 	/** Writes the value before the input event is dispatched, so the watcher has run when listeners read it. */
 	private readonly handleNumberInput = (event: Event): void => {
@@ -247,8 +534,6 @@ export class KolInputNumber
 		this.step(event, 'up');
 	};
 
-	// --- Render ---
-
 	/** The theme decides with the feature flag `inputNumberButtons` whether the step buttons are shown. */
 	private renderStepButton(direction: 'down' | 'up'): VNode | null {
 		if (this._disabled || this._readOnly || getFeatureFlag('inputNumberButtons', this.host) === 'hide') {
@@ -271,10 +556,9 @@ export class KolInputNumber
 	}
 
 	/**
-	 * Props of the native `<input>`. The keys follow the order of the legacy state wrapper, and props
-	 * the legacy state only held once set are only passed when set: the rendered attributes keep their
-	 * order in the hydrate snapshot. Unset numbers are `null`, like in the legacy state, so the first
-	 * render writes their empty value.
+	 * Props of the native `<input>` in a fixed key order; optional props are only passed when set. The
+	 * rendered attributes keep their order and presence, which the hydrate snapshot pins. Unset numbers
+	 * are `null`, so the first render writes their empty value.
 	 */
 	private getInputProps(): InputFCProps {
 		const id = this.id;
@@ -352,301 +636,5 @@ export class KolInputNumber
 				</FormFieldFC>
 			</Host>
 		);
-	}
-
-	// --- Props ---
-
-	/**
-	 * Defines the key combination that can be used to trigger or focus the component's interactive element.
-	 */
-	@Prop() public _accessKey?: string;
-
-	/**
-	 * References an external element by ID that provides accessible details for this input.
-	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
-	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
-
-	/**
-	 * Defines whether the input can be auto-completed.
-	 */
-	@Prop() public _autoComplete?: AutoCompletePropType = 'off';
-
-	/**
-	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideMsg?: boolean = false;
-
-	/**
-	 * Hides the caption by default and displays the caption text with a tooltip when the
-	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideLabel?: boolean = false;
-
-	/**
-	 * Defines the hint text.
-	 */
-	@Prop() public _hint?: string = '';
-
-	/**
-	 * Defines the icon classnames.
-	 */
-	@Prop() public _icons?: IconsHorizontalPropType;
-
-	/**
-	 * Defines the informational popover after the label.
-	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
-	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
-
-	/**
-	 * Defines the maximum value of the element.
-	 */
-	@Prop() public _max?: number | NumberString;
-
-	/**
-	 * Defines the smallest possible input value.
-	 */
-	@Prop() public _min?: number | NumberString;
-
-	/**
-	 * Defines the properties for a message rendered as Alert component.
-	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
-
-	/**
-	 * Defines the technical name of an input field.
-	 */
-	@Prop() public _name?: NamePropType;
-
-	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
-	 */
-	@Prop() public _on?: InputTypeOnDefault;
-
-	/**
-	 * Defines the placeholder for input field. To be shown when there's no value.
-	 */
-	@Prop() public _placeholder?: string;
-
-	/**
-	 * Makes the input element read only.
-	 * @TODO: Change type back to `ReadOnlyPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _readOnly?: boolean = false;
-
-	/**
-	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _required?: boolean = false;
-
-	/**
-	 * Adds a visual shortcut hint after the label and instructs the screen reader to read the shortcut aloud.
-	 */
-	@Prop() public _shortKey?: ShortKeyPropType;
-
-	/**
-	 * Allows to add a button with an arbitrary action within the element (_hide-label only).
-	 */
-	@Prop() public _smartButton?: Stringified<InternalButtonProps>;
-
-	/**
-	 * Suggestions to provide for the input.
-	 */
-	@Prop() public _suggestions?: SuggestionsPropType;
-
-	/**
-	 * Defines the step size for value changes.
-	 */
-	@Prop() public _step?: number | NumberString;
-
-	/**
-	 * Selector for synchronizing the value with another input element.
-	 * @internal
-	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
-
-	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
-
-	/**
-	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
-
-	/**
-	 * Defines the value of the element.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _value?: number | NumberString | null;
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: VariantClassNamePropType;
-
-	// --- Watchers ---
-
-	@Watch('_accessKey')
-	public watchAccessKey(value?: string): void {
-		accessKeyProp.apply(value, (v) => this.setRenderProp('accessKey', v));
-		validateAccessAndShortKey(value, this._shortKey);
-	}
-
-	@Watch('_ariaDetails')
-	public watchAriaDetails(value?: AriaDetailsPropType): void {
-		this.applyAriaDetails(value);
-	}
-
-	@Watch('_autoComplete')
-	public watchAutoComplete(value?: AutoCompletePropType): void {
-		autoCompleteProp.apply(value, (v) => this.setRenderProp('autoComplete', v));
-	}
-
-	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
-		this.applyDisabled(value);
-	}
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
-		this.applyHideMsg(value);
-	}
-
-	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
-		this.applyHideLabel(value);
-	}
-
-	@Watch('_hint')
-	public watchHint(value?: string): void {
-		this.applyHint(value);
-	}
-
-	@Watch('_icons')
-	public watchIcons(value?: IconsHorizontalPropType): void {
-		horizontalIconsProp.apply(value, (v) => this.setRenderProp('icons', v));
-	}
-
-	@Watch('_infoPopover')
-	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
-		this.applyInfoPopover(value);
-	}
-
-	@Watch('_label')
-	public watchLabel(value?: LabelWithExpertSlotPropType): void {
-		this.applyLabel(value);
-	}
-
-	@Watch('_max')
-	public watchMax(value?: number | NumberString): void {
-		inputMaxProp.apply(value, (v) => this.setRenderProp('max', v));
-	}
-
-	@Watch('_min')
-	public watchMin(value?: number | NumberString): void {
-		inputMinProp.apply(value, (v) => this.setRenderProp('min', v));
-	}
-
-	@Watch('_msg')
-	public watchMsg(value?: Stringified<MsgPropType>): void {
-		this.applyMsg(value);
-	}
-
-	@Watch('_name')
-	public watchName(value?: NamePropType): void {
-		this.applyName(value);
-	}
-
-	@Watch('_on')
-	public watchOn(value?: InputTypeOnDefault): void {
-		this.applyOn(value);
-	}
-
-	@Watch('_placeholder')
-	public watchPlaceholder(value?: string): void {
-		placeholderProp.apply(value, (v) => this.setRenderProp('placeholder', v));
-	}
-
-	@Watch('_readOnly')
-	public watchReadOnly(value?: boolean): void {
-		readOnlyProp.apply(value, (v) => this.setRenderProp('readOnly', v));
-	}
-
-	@Watch('_required')
-	public watchRequired(value?: boolean): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
-	}
-
-	@Watch('_shortKey')
-	public watchShortKey(value?: ShortKeyPropType): void {
-		shortKeyProp.apply(value, (v) => this.setRenderProp('shortKey', v));
-		validateAccessAndShortKey(this._accessKey, value);
-	}
-
-	@Watch('_smartButton')
-	public watchSmartButton(value?: Stringified<InternalButtonProps>): void {
-		if (value === undefined || value === null) {
-			this.unsetRenderProp('smartButton');
-		} else {
-			smartButtonProp.apply(value, (v) => this.setRenderProp('smartButton', v));
-		}
-	}
-
-	@Watch('_step')
-	public watchStep(value?: number | NumberString): void {
-		stepProp.apply(value, (v) => this.setRenderProp('step', v));
-	}
-
-	@Watch('_suggestions')
-	public watchSuggestions(value?: SuggestionsPropType): void {
-		suggestionsProp.apply(value, (v) => this.setRenderProp('suggestions', v));
-	}
-
-	@Watch('_syncValueBySelector')
-	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		this.applySyncValueBySelector(value);
-	}
-
-	@Watch('_tooltipAlign')
-	public watchTooltipAlign(value?: TooltipAlignPropType): void {
-		this.applyTooltipAlign(value);
-	}
-
-	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
-		this.applyTouched(value);
-	}
-
-	/** A value reset to `null` keeps the remembered type. */
-	@Watch('_value')
-	public watchValue(value?: number | NumberString | null): void {
-		inputNumberValueProp.apply(value, (v) => this.setRenderProp('value', v));
-		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value') ?? null);
-		if (value !== undefined && value !== null) {
-			this.valueType = getNumberValueType(value);
-		}
-	}
-
-	@Watch('_variant')
-	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 }

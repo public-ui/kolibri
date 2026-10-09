@@ -1,11 +1,10 @@
 import rgba from 'color-rgba';
 
 import type { ColorPair, PropColor, Stringified } from '../../schema';
-import { devHint } from '../../schema';
 import type { Prop } from './helpers/factory';
 import { createPropDefinition } from './helpers/factory';
 
-/** The color channels of the KoliBri logo; a color pair leaves them empty. */
+/** The color channels of the KoliBri logo. */
 export type KolibriColor = { red?: number; green?: number; blue?: number };
 
 export type KolibriColorProp = Prop<'color', Stringified<PropColor>, KolibriColor>;
@@ -30,26 +29,28 @@ const parseColorPair = (value: string): ColorPair | undefined => {
 	return undefined;
 };
 
-const toChannels = (hex: string): KolibriColor => {
-	const [red, green, blue] = rgba(hex);
+/** Throws for a color that `color-rgba` cannot parse. */
+const toChannels = (color: string): KolibriColor => {
+	const channels = rgba(color);
+	if (!Array.isArray(channels) || channels.length < 3) {
+		throw new Error(`Invalid KoliBri color: ${color}`);
+	}
+	const [red, green, blue] = channels;
 	return { red, green, blue };
 };
 
 /**
- * Color of `kol-kolibri`: a hex string (3, 4, 6 or 8 digits) becomes its color channels. A color pair
- * (as object, with a hint, or as JSON) is accepted but cannot color the logo: it leaves the channels
- * empty, so the logo renders `rgb(undefined,undefined,undefined)`.
+ * Color of `kol-kolibri`: a hex string (3, 4, 6 or 8 digits) becomes its color channels. Of a color
+ * pair (as object or as JSON), the logo takes the `foregroundColor`; a pair whose `foregroundColor` is
+ * no valid color is rejected.
  */
 export const kolibriColorProp = createPropDefinition<KolibriColorProp>('color', toChannels('#003c78'), (value: unknown) => {
 	if (typeof value === 'string' && HEX_REGEX.test(value)) {
 		return toChannels(value);
 	}
-	if (isColorPair(value)) {
-		devHint(`[KolKolibri] You used the complex color schema. For the KoliBri we use need the color as hex string.`);
-		return {};
-	}
-	if (typeof value === 'string' && parseColorPair(value)) {
-		return {};
+	const pair = isColorPair(value) ? value : typeof value === 'string' ? parseColorPair(value) : undefined;
+	if (pair) {
+		return toChannels(pair.foregroundColor);
 	}
 	throw new Error('Invalid KoliBri color: expected a hex string or a color pair.');
 });

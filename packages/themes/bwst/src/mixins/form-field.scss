@@ -5,8 +5,6 @@
 
 @mixin kol-form-field-theme {
 	.kol-form-field {
-		$root: &;
-
 		gap: to-rem(4);
 
 		&--error:not(&--hide-msg) {

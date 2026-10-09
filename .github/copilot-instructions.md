@@ -487,6 +487,7 @@ The repository uses GitHub Actions with these key workflows:
 - `ci.yml` – Main CI pipeline (build, lint, test, visual comparison per theme)
 - `visual-baseline.yml` – Publishes the visual baseline of every base-branch commit as an artifact
 - `visual-review.yml` – Publishes the visual differences of a pull request and sets the status "Visual Review"
+- `visual-review-trigger.yml` – Permissionless relay: tells `visual-review.yml` that the text of a pull-request review changed
 - `update-snapshots.yml` – Regenerates the text snapshots of the unit tests
 
 ### Visual Snapshots

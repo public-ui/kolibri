@@ -79,23 +79,37 @@ export const SelectOptionListFC: FC<SelectOptionListFCProps> = ({
 				const key = [preKey, `-${index}`].join('');
 
 				if ('options' in option) {
+					if (!option.options?.length) {
+						return null;
+					}
+
+					const isOptgroupDisabled = Boolean(disabled || option.disabled);
 					const { label, ...other } = option;
 
 					return (
 						<optgroup
-							class={selectBem('optgroup', { disabled: Boolean(disabled) })}
+							class={selectBem('optgroup', { disabled: isOptgroupDisabled })}
 							key={key}
 							{...OptionGroupProps}
 							label={label?.toString()}
-							disabled={disabled}
+							disabled={isOptgroupDisabled}
 						>
-							<SelectOptionListFC OptionGroupProps={OptionGroupProps} OptionProps={OptionProps} value={selectedValue} preKey={key} {...other} />
+							<SelectOptionListFC
+								OptionGroupProps={OptionGroupProps}
+								OptionProps={OptionProps}
+								value={selectedValue}
+								preKey={key}
+								{...other}
+								disabled={isOptgroupDisabled}
+							/>
 						</optgroup>
 					);
 				}
 
 				if ('value' in option) {
-					return <SelectOptionFC key={key} {...OptionProps} index={key} selectedValue={selectedValue} {...option} />;
+					return (
+						<SelectOptionFC key={key} {...OptionProps} index={key} selectedValue={selectedValue} {...option} disabled={Boolean(disabled || option.disabled)} />
+					);
 				}
 
 				return null;
@@ -143,7 +157,7 @@ export const SelectFC: FC<SelectFCProps> = (props) => {
 
 	return (
 		<select {...selectProps}>
-			<SelectOptionListFC options={options} value={value} OptionGroupProps={OptionGroupProps} OptionProps={OptionProps} />
+			<SelectOptionListFC OptionGroupProps={OptionGroupProps} OptionProps={OptionProps} disabled={disabled} options={options} value={value} />
 		</select>
 	);
 };

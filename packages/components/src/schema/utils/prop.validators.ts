@@ -165,20 +165,20 @@ export function watchValidator<T>(
 		setState(component, propName, value, options.hooks);
 	} else if (value === undefined && options.required !== true && validationFunction(options.defaultValue as T)) {
 		/**
-		 * Triff zu, wenn der Wert entweder ...
-		 * - UNDEFINED oder NULL
-		 * - und NICHT REQUIRED
-		 * ... ist.
+		 * Applies when the value is `undefined` and the prop is NOT required. `null` does not fall back
+		 * to the default: unless the validation function accepts it, it is logged as an invalid value.
 		 */
 		setState(component, propName, options.defaultValue, options.hooks);
 	} else {
 		/**
-		 * Triff zu, wenn der Wert NICHT valide ist.
+		 * Applies when the value is NOT valid. The allowed values are copied, because callers pass
+		 * shared module constants.
 		 */
+		const allowedValues = new Set(requiredGeneric);
 		if (!options.required) {
-			requiredGeneric.add(null);
+			allowedValues.add(null);
 		}
-		logWarn(component, propName, value, requiredGeneric);
+		logWarn(component, propName, value, allowedValues);
 	}
 }
 
@@ -205,6 +205,7 @@ export const watchNumber = (component: Generic.Element.Component, propName: stri
 		propName,
 		(value): boolean =>
 			typeof value === 'number' &&
+			!isNaN(value) &&
 			(typeof options?.min === 'undefined' || (typeof options?.min === 'number' && value >= options.min)) &&
 			(typeof options?.max === 'undefined' || (typeof options?.max === 'number' && value <= options.max)),
 		new Set(['Number']),
@@ -233,8 +234,9 @@ export const watchJsonArrayString = <T>(
 					// value behält den ursprünglichen Wert
 				}
 				if (Array.isArray(value)) {
-					const invalid = value.find((item: T) => !itemValidation(item));
-					if (invalid === undefined && arrayValidation(value)) {
+					const invalidIndex = value.findIndex((item: T) => !itemValidation(item));
+					const invalid: unknown = invalidIndex === -1 ? undefined : value[invalidIndex];
+					if (invalidIndex === -1 && arrayValidation(value)) {
 						setState(component, propName, value, options.hooks);
 					} else {
 						objectObjectHandler(invalid, () => {

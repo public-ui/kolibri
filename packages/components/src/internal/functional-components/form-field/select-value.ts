@@ -1,4 +1,4 @@
-import type { StencilUnknown } from '../../../schema';
+import type { Option, StencilUnknown } from '../../../schema';
 import type { SelectOptionsList } from '../../props/options-with-optgroup';
 
 /**
@@ -23,14 +23,30 @@ export const assertSelectValueMatchesMultiplicity = (value: unknown, multiple: b
 	}
 };
 
+/** The options of the list, with the options of each optgroup in place of the optgroup. */
+const flattenSelectOptions = (options: SelectOptionsList, groupDisabled = false): Option<StencilUnknown>[] =>
+	options.flatMap((entry) =>
+		'options' in entry && Array.isArray(entry.options)
+			? flattenSelectOptions(entry.options, Boolean(groupDisabled || entry.disabled))
+			: [{ ...(entry as Option<StencilUnknown>), disabled: Boolean(groupDisabled || (entry as Option<StencilUnknown>).disabled) }],
+	);
+
 /**
- * Preselects the first option: with options, in single mode (`multiple === false`, not merely
- * falsy) and without a value, the value becomes the value of the first entry, which is `undefined`
- * for an optgroup. Any other value is kept as it is, also when it matches no option.
+ * Keeps only the values that belong to an option. Then, in single mode (`multiple === false`, not
+ * merely falsy) without a value, the value becomes the value of the first enabled option, which is
+ * the option the native select shows. Without options, the value is kept as it is, because the
+ * options can follow the value.
  */
 export const normalizeSelectValue = (value: StencilUnknown[], options: SelectOptionsList, multiple: boolean | undefined): StencilUnknown[] => {
-	if (options.length > 0 && multiple === false && value.length === 0) {
-		return [(options[0] as { value?: StencilUnknown }).value];
+	if (options.length === 0) {
+		return value;
 	}
-	return value;
+	const flatOptions = flattenSelectOptions(options);
+	const optionValues = flatOptions.map((option) => option.value);
+	const filtered = value.every((item) => optionValues.includes(item)) ? value : value.filter((item) => optionValues.includes(item));
+	if (multiple === false && filtered.length === 0) {
+		const firstEnabled = flatOptions.find((option) => option.disabled !== true);
+		return firstEnabled ? [firstEnabled.value] : filtered;
+	}
+	return filtered;
 };

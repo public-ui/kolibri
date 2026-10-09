@@ -187,13 +187,24 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await focusedIndex(page)).toBe(1);
 		});
 
-		test('click() without a selection selects nothing', async ({ page }) => {
+		test('click() without a selection selects the first enabled option', async ({ page }) => {
 			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" ${OPTIONS_ATTRIBUTE}></${COMPONENT_NAME}>`);
 
 			await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element.click());
 			await page.waitForChanges();
 
-			expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element._value)).toBeNull();
+			expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element._value)).toBe(OPTIONS[0].value);
+		});
+
+		test('shows an option without value as checked once it is selected', async ({ page }) => {
+			await setContentWithRetry(page, `<${COMPONENT_NAME} _label="Input" _options='${JSON.stringify([{ label: 'A' }, { label: 'B' }])}'></${COMPONENT_NAME}>`);
+
+			await page.locator('input[type=radio]').nth(1).click();
+			await page.waitForChanges();
+
+			expect(await page.locator(COMPONENT_NAME).evaluate((element: HTMLKolInputRadioElement) => element._value)).toBe('B');
+			await expect(page.locator('input[type=radio]').nth(1)).toBeChecked();
+			await expect(page.locator('.kol-input-radio').nth(1)).toHaveClass(/kol-input-radio--checked/);
 		});
 	});
 

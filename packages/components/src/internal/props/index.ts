@@ -146,7 +146,6 @@ export * from './touched';
 export * from './unit';
 export * from './value-input-date';
 export * from './value-input-number';
-export * from './value-number';
 export * from './value-number-clamped';
 export * from './value-string';
 export * from './variant';

@@ -46,15 +46,15 @@ export class KolAbbr extends BaseWebComponent<AbbrApi> implements WebComponentIn
 	 */
 	@Prop() public _abbr?: string;
 
-	/**
-	 * Defines the long form of the abbreviation, e.g. `zum Beispiel`. It is shown as a tooltip on hover and keyboard focus and is announced as the description of the abbreviation.
-	 */
-	@Prop() public _label?: LabelPropType;
-
 	@Watch('_abbr')
 	public watchAbbr(value?: string): void {
 		abbrProp.apply(value, (v) => this.setRenderProp('abbr', v));
 	}
+
+	/**
+	 * Defines the long form of the abbreviation, e.g. `zum Beispiel`. It is shown as a tooltip on hover and keyboard focus and is announced as the description of the abbreviation.
+	 */
+	@Prop() public _label?: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {

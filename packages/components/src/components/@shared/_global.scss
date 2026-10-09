@@ -40,13 +40,9 @@
 		cursor: pointer;
 	}
 
-	.kol-span {
-		$spanRoot: &;
-
-		&__label {
-			@at-root #{$spanRoot} &--hide-label & {
-				display: none;
-			}
+	.kol-span__label {
+		.kol-span .kol-span__label--hide-label & {
+			display: none;
 		}
 	}
 
@@ -55,12 +51,14 @@
 		color: unset;
 	}
 
+	/* A disabled `fieldset` only groups its controls; `cursor` is inherited and would reach the
+	   operable info popover in its legend. */
 	.disabled label,
 	.disabled:focus-within label,
 	[aria-disabled='true'],
 	[aria-disabled='true']:focus,
-	[disabled],
-	[disabled]:focus {
+	[disabled]:where(:not(fieldset)),
+	[disabled]:where(:not(fieldset)):focus {
 		outline: none;
 		cursor: not-allowed;
 	}

@@ -51,7 +51,7 @@ export const isFieldControlLabelShownAsTooltip = ({
  * `labelAlign: 'left'` the label comes first. The web component owns the label tooltip and connects
  * it through `refInput` and `refTooltip`.
  *
- * The hidden label keeps its id, so with the tooltip the id appears twice (#11114). The tooltip
+ * With the tooltip, the label stays visually hidden and leaves its ID to the tooltip. The tooltip
  * wrapper uses the class `kol-form-field__tooltip`, which the themes style.
  */
 export const FieldControlFC: FC<FieldControlFCProps> = (props, children) => {
@@ -101,6 +101,7 @@ export const FieldControlFC: FC<FieldControlFCProps> = (props, children) => {
 			id={id}
 			baseClassName="kol-field-control"
 			class={hideLabel ? 'kol-field-control__label--visually-hidden' : undefined}
+			omitId={showTooltip}
 			hasExpertSlot={hasExpertSlot}
 			label={label}
 			accessKey={accessKey}

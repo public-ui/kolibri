@@ -19,6 +19,10 @@
 
 	:host {
 		--ecl-color-primary: var(--ecl-color-primary-100);
+
+		--ecl-color-primary-50: #f2f6ff;
+
+		// alte primary farben
 		--ecl-color-primary-180: #051036;
 		--ecl-color-primary-160: #0a1f6c;
 		--ecl-color-primary-140: #0f2fa2;
@@ -28,6 +32,7 @@
 		--ecl-color-primary-60: #89a1f4;
 		--ecl-color-primary-40: #b1c0f8;
 		--ecl-color-primary-20: #d8e0fb;
+
 		--ecl-color-secondary: var(--ecl-color-secondary-100);
 		--ecl-color-secondary-180: #8f5600;
 		--ecl-color-secondary-160: #e08700;
@@ -40,6 +45,7 @@
 		--ecl-color-secondary-20: #fff2de;
 		--ecl-color-dark: var(--ecl-color-dark-100);
 		--ecl-color-dark-100: #26324b;
+		--ecl-color-dark-110: #151b29;
 		--ecl-color-dark-80: #546fa6;
 		--ecl-color-dark-60: #9ac;
 		--ecl-color-dark-06-o: rgb(38, 50, 75, 0.06);
@@ -152,12 +158,13 @@
 		padding: 0 0.3em;
 	}
 
+	/* A disabled `fieldset` only groups its controls, which are dimmed themselves. */
 	.disabled label,
 	.disabled:focus-within label,
 	[aria-disabled='true'],
 	[aria-disabled='true']:focus,
-	[disabled],
-	[disabled]:focus {
+	[disabled]:where(:not(fieldset)),
+	[disabled]:where(:not(fieldset)):focus {
 		opacity: 0.5;
 	}
 }

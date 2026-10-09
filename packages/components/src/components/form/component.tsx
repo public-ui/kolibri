@@ -43,14 +43,60 @@ const FOCUS_ERROR_LIST_DELAY = 250;
 export class KolForm extends BaseWebComponent<FormApi> implements FormProps, WebComponentInterface<FormApi> {
 	@Element() private readonly host?: HTMLKolFormElement;
 
+	@State() public errorLinkItems: FormErrorLinkItem[] = [];
+
 	/**
 	 * Ids of the error-list alert. Plain fields rather than `@State()`: both are created once per
 	 * instance and never change, so nothing would re-render on them.
 	 */
 	private readonly alertHeadingId = createUniqueId('alert-heading');
+
 	private readonly closerAriaDescriptionId = nonce();
 
-	// --- Lifecycle ---
+	/**
+	 * A list of error objects that each describe an issue encountered in the form.
+	 * Each error object contains a message and a selector for identifying the form element related to the error.
+	 */
+	@Prop() public _errorList?: ErrorListPropType[];
+
+	@Watch('_errorList')
+	public watchErrorList(value?: ErrorListPropType[]): void {
+		errorListProp.apply(value, (errorList) => {
+			this.setRenderProp('errorList', errorList);
+			this.errorLinkItems = errorList.map((error) => createFormErrorLinkItem(error, this.focusErrorTarget));
+		});
+	}
+
+	/**
+	 * Defines the callback functions for form events.
+	 */
+	@Prop() public _on?: KoliBriFormCallbacks;
+
+	@Watch('_on')
+	public watchOn(value?: KoliBriFormCallbacks): void {
+		formCallbacksProp.apply(value, (on) => this.setRenderProp('on', on));
+	}
+
+	/**
+	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
+	 */
+	@Prop() public _requiredText?: Stringified<boolean> = true;
+
+	@Watch('_requiredText')
+	public watchRequiredText(value?: Stringified<boolean>): void {
+		requiredTextProp.apply(value, (requiredText) => this.setRenderProp('requiredText', requiredText));
+	}
+
+	/**
+	 * Scrolls to the error list and focuses the first link.
+	 */
+	@Method()
+	// eslint-disable-next-line @typescript-eslint/require-await
+	public async focusErrorList(options?: KolFocusOptions): Promise<void> {
+		setTimeout(() => {
+			this.errorLinkItems[0]?.focus(options ?? SCROLL_OPTIONS_FALLBACK);
+		}, FOCUS_ERROR_LIST_DELAY);
+	}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(formPropsConfig);
@@ -58,8 +104,6 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 		this.watchOn(this._on);
 		this.watchRequiredText(this._requiredText);
 	}
-
-	// --- Event handling ---
 
 	/**
 	 * Bound to the form element's `submit`. Not every submit reaches it: a button inside the form
@@ -98,21 +142,6 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 		}
 	};
 
-	// --- Public methods ---
-
-	/**
-	 * Scrolls to the error list and focuses the first link.
-	 */
-	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async focusErrorList(options?: KolFocusOptions): Promise<void> {
-		setTimeout(() => {
-			this.errorLinkItems[0]?.focus(options ?? SCROLL_OPTIONS_FALLBACK);
-		}, FOCUS_ERROR_LIST_DELAY);
-	}
-
-	// --- Render ---
-
 	public render(): JSX.Element {
 		return (
 			<Host>
@@ -128,42 +157,5 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 				/>
 			</Host>
 		);
-	}
-
-	// --- @State ---
-
-	@State() public errorLinkItems: FormErrorLinkItem[] = [];
-
-	// --- Props + Watchers ---
-
-	/**
-	 * A list of error objects that each describe an issue encountered in the form.
-	 * Each error object contains a message and a selector for identifying the form element related to the error.
-	 */
-	@Prop() public _errorList?: ErrorListPropType[];
-	@Watch('_errorList')
-	public watchErrorList(value?: ErrorListPropType[]): void {
-		errorListProp.apply(value, (errorList) => {
-			this.setRenderProp('errorList', errorList);
-			this.errorLinkItems = errorList.map((error) => createFormErrorLinkItem(error, this.focusErrorTarget));
-		});
-	}
-
-	/**
-	 * Defines the callback functions for form events.
-	 */
-	@Prop() public _on?: KoliBriFormCallbacks;
-	@Watch('_on')
-	public watchOn(value?: KoliBriFormCallbacks): void {
-		formCallbacksProp.apply(value, (on) => this.setRenderProp('on', on));
-	}
-
-	/**
-	 * Defines whether the mandatory-fields-hint should be shown. A string overrides the default text.
-	 */
-	@Prop() public _requiredText?: Stringified<boolean> = true;
-	@Watch('_requiredText')
-	public watchRequiredText(value?: Stringified<boolean>): void {
-		requiredTextProp.apply(value, (requiredText) => this.setRenderProp('requiredText', requiredText));
 	}
 }

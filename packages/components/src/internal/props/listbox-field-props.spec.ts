@@ -3,8 +3,7 @@ import { hasClearButtonProp } from './has-clear-button';
 import { singleSelectOptionsProp } from './single-select-options';
 
 /**
- * Pins the props of `kol-combobox` and `kol-single-select` against the legacy validators they replace
- * (G5.3 and G5.4 of `docs/FORM_FIELD_SKELETON_MIGRATION_PLAN.md`).
+ * Pins the props of `kol-combobox` and `kol-single-select`: the clear button and the options.
  */
 type PropDefinition = {
 	apply: (value: unknown, callback: (normalized: unknown) => void) => void;
@@ -34,6 +33,7 @@ describe('singleSelectOptionsProp', () => {
 	const options = [
 		{ label: 'A', value: 'a' },
 		{ label: 'B', value: false, disabled: true },
+		{ label: 'C', value: 0 },
 	];
 
 	it.each([undefined, null])('applies the default [] for %s', (value) => {
@@ -48,7 +48,11 @@ describe('singleSelectOptionsProp', () => {
 		expect(applied(singleSelectOptionsProp, JSON.stringify(options))).toEqual([options]);
 	});
 
-	it.each([[[{ label: '' }]], [[{ label: 1 }]], [[{ value: 'a' }]], [[options[0], 'a']], [{}], ['{']])('ignores %j', (value) => {
+	it('converts a number label to a string', () => {
+		expect(applied(singleSelectOptionsProp, [{ label: 1, value: 1 }])).toEqual([[{ label: '1', value: 1 }]]);
+	});
+
+	it.each([[[{ label: '' }]], [[{ value: 'a' }]], [[options[0], 'a']], [{}], ['{']])('ignores %j', (value) => {
 		expect(applied(singleSelectOptionsProp, value)).toEqual([]);
 	});
 });

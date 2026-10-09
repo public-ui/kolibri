@@ -23,8 +23,6 @@
 		}
 
 		&__input {
-			$input: &;
-
 			&--number {
 				width: var(--kolibri-input-range--input-number--width);
 				text-align: right;
@@ -44,32 +42,34 @@
 				line-height: 1.5;
 				appearance: none;
 				border: 1px solid black;
+			}
 
-				&::-webkit-slider-thumb {
-					@at-root #{$input}:not(:disabled)#{&} {
-						cursor: pointer;
-					}
-					background-color: black;
-					border-radius: 20px;
-					width: to-rem(20);
-					height: to-rem(20);
-					-webkit-appearance: none;
+			&:not(:disabled).kol-input-range__input--range::-webkit-slider-thumb {
+				cursor: pointer;
+			}
 
-					@media (prefers-contrast: more) or (forced-colors: active) {
-						outline: 1px solid currentColor;
-					}
+			&--range::-webkit-slider-thumb {
+				background-color: black;
+				border-radius: 20px;
+				width: to-rem(20);
+				height: to-rem(20);
+				-webkit-appearance: none;
+
+				@media (prefers-contrast: more) or (forced-colors: active) {
+					outline: 1px solid currentColor;
 				}
+			}
 
-				&::-moz-range-thumb {
-					@at-root #{$input}:not(:disabled)#{&} {
-						cursor: pointer;
-					}
-					background-color: black;
-					border-radius: 20px;
-					width: to-rem(20);
-					height: to-rem(20);
-					-moz-appearance: none;
-				}
+			&:not(:disabled).kol-input-range__input--range::-moz-range-thumb {
+				cursor: pointer;
+			}
+
+			&--range::-moz-range-thumb {
+				background-color: black;
+				border-radius: 20px;
+				width: to-rem(20);
+				height: to-rem(20);
+				-moz-appearance: none;
 			}
 		}
 	}

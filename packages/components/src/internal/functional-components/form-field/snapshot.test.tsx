@@ -24,4 +24,18 @@ describe('FormFieldFC', () => {
 		));
 		expect(page.root).toMatchSnapshot();
 	});
+
+	it('disables the fieldset of a disabled field', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => (
+			<FormFieldFC id="field-nonce" label="Label" refTooltip={noop} component="fieldset" disabled />
+		));
+		expect(page.root?.hasAttribute('disabled')).toBe(true);
+		expect(page.root?.className).toContain('kol-form-field--disabled');
+	});
+
+	it('does not set the disabled attribute on a disabled div', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => <FormFieldFC id="field-nonce" label="Label" refTooltip={noop} disabled />);
+		expect(page.root?.hasAttribute('disabled')).toBe(false);
+		expect(page.root?.className).toContain('kol-form-field--disabled');
+	});
 });

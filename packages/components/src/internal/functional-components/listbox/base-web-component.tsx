@@ -1,3 +1,4 @@
+import { createRelatedUniqueId } from '../../../utils/dev.utils';
 import type { CtaRef } from '../../../utils/element-interaction';
 import type { FormFieldBaseApi } from '../form-field/api';
 import { BaseFormFieldWebComponent } from '../form-field/base-web-component';
@@ -19,6 +20,8 @@ export abstract class BaseListboxWebComponent<Api extends FormFieldBaseApi> exte
 	public abstract blockSuggestionMouseOver: boolean;
 
 	protected abstract readonly ctaRef: CtaRef<HTMLInputElement>;
+	/** Declared with `@State()` by the concrete class. */
+	public abstract id: string;
 
 	/** Index of the focused option, `-1` for none. */
 	protected focusedIndex = -1;
@@ -35,6 +38,16 @@ export abstract class BaseListboxWebComponent<Api extends FormFieldBaseApi> exte
 	protected abstract focusLastOption(): void;
 	/** Enter, NumpadEnter and Space. */
 	protected abstract handleConfirmKey(event: KeyboardEvent): void;
+
+	/** ID of the option at `index`, unique per field. */
+	protected getOptionId(index: number): string {
+		return createRelatedUniqueId(this.id, `option-${index}`);
+	}
+
+	/** Value of `aria-activedescendant` on the input: the focused option of the open list. */
+	protected getActiveDescendant(): string | undefined {
+		return this.isOpen && this.focusedIndex >= 0 ? this.getOptionId(this.focusedIndex) : undefined;
+	}
 
 	protected focusOption(index: number): void {
 		this.focusedIndex = index;
@@ -98,10 +111,12 @@ export abstract class BaseListboxWebComponent<Api extends FormFieldBaseApi> exte
 				this.handleListboxEvent(event, true, () => this.moveFocus(1));
 				break;
 			case 'Up':
-			case 'ArrowUp':
+			case 'ArrowUp': {
 				this.blockSuggestionMouseOver = true;
-				this.handleListboxEvent(event, true, () => this.moveFocus(-1, -1));
+				const wasOpen = this.isOpen;
+				this.handleListboxEvent(event, true, () => (wasOpen ? this.moveFocus(-1, -1) : this.focusLastOption()));
 				break;
+			}
 			case 'Tab':
 				if (this.isOpen) {
 					this.isOpen = false;
@@ -122,20 +137,17 @@ export abstract class BaseListboxWebComponent<Api extends FormFieldBaseApi> exte
 				this.handleConfirmKey(event);
 				break;
 			case 'Home':
-				this.blockSuggestionMouseOver = true;
-				this.handleListboxEvent(event, undefined, () => {
-					if (this.isOpen) {
-						this.focusFirstOption();
-					}
-				});
+				// With a closed list, Home and End move the caret of the input.
+				if (this.isOpen) {
+					this.blockSuggestionMouseOver = true;
+					this.handleListboxEvent(event, undefined, () => this.focusFirstOption());
+				}
 				break;
 			case 'End':
-				this.blockSuggestionMouseOver = true;
-				this.handleListboxEvent(event, undefined, () => {
-					if (this.isOpen) {
-						this.focusLastOption();
-					}
-				});
+				if (this.isOpen) {
+					this.blockSuggestionMouseOver = true;
+					this.handleListboxEvent(event, undefined, () => this.focusLastOption());
+				}
 				break;
 			case 'PageUp':
 				this.blockSuggestionMouseOver = true;

@@ -151,7 +151,9 @@ const STRICT_ENUM_PROPS: ReadonlyArray<{ name: string; definition: EnumPropDefin
 	{ name: 'alignProp', definition: alignProp, defaultValue: 'top', options: alignPropTypeOptions },
 	{ name: 'loadingProp', definition: loadingProp, defaultValue: 'lazy', options: ['eager', 'lazy'] },
 	{ name: 'orientationProp', definition: orientationProp, defaultValue: 'horizontal', options: orientationOptions },
+	{ name: 'popoverAlignProp', definition: popoverAlignProp, defaultValue: 'bottom', options: alignPropTypeOptions },
 	{ name: 'tabBehaviorProp', definition: tabBehaviorProp, defaultValue: 'select-automatic', options: ['select-automatic', 'select-manual'] },
+	{ name: 'tooltipAlignProp', definition: tooltipAlignProp, defaultValue: 'right', options: alignPropTypeOptions },
 	{ name: 'variantDialogProp', definition: variantDialogProp, defaultValue: 'blank', options: ['blank', 'card'] },
 	{ name: 'variantProgressProp', definition: variantProgressProp, defaultValue: 'bar', options: progressVariantOptions },
 	{ name: 'variantQuoteProp', definition: variantQuoteProp, defaultValue: 'inline', options: ['block', 'inline'] },
@@ -190,14 +192,12 @@ describe.each(STRICT_ENUM_PROPS)('$name', ({ name, definition, defaultValue, opt
 });
 
 /**
- * Enum props that degrade an unknown string to their default instead of ignoring it, without a
- * developer warning. A non-string value that `normalizeString` cannot convert is still ignored
+ * `ariaCurrentValueProp` degrades an unknown string to its default instead of ignoring it, without
+ * a developer warning. A non-string value that `normalizeString` cannot convert is still ignored
  * with a warning.
  */
 const DEGRADING_ENUM_PROPS: ReadonlyArray<{ name: string; definition: EnumPropDefinition; defaultValue: string; options: readonly string[] }> = [
 	{ name: 'ariaCurrentValueProp', definition: ariaCurrentValueProp, defaultValue: 'page', options: ARIA_CURRENT_VALUE_OPTIONS },
-	{ name: 'popoverAlignProp', definition: popoverAlignProp, defaultValue: 'bottom', options: alignPropTypeOptions },
-	{ name: 'tooltipAlignProp', definition: tooltipAlignProp, defaultValue: 'right', options: alignPropTypeOptions },
 ];
 
 describe.each(DEGRADING_ENUM_PROPS)('$name', ({ definition, defaultValue, options }) => {

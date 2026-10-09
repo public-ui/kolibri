@@ -29,6 +29,11 @@ export class KolTooltipWc {
 	 */
 	@Prop() public _align?: AlignPropType = 'top';
 
+	@Watch('_align')
+	public validateAlign(value?: AlignPropType): void {
+		this.tooltipBehavior?.watchAlign(value);
+	}
+
 	/**
 	 * Defines the internal ID of the primary component element.
 	 * @deprecated Will be removed in next major release. The ID is now generated internally and cannot be set via props.
@@ -36,20 +41,15 @@ export class KolTooltipWc {
 	 */
 	@Prop() public _id?: IdPropType;
 
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label!: LabelPropType;
-
-	@Watch('_align')
-	public validateAlign(value?: AlignPropType): void {
-		this.tooltipBehavior?.watchAlign(value);
-	}
-
 	@Watch('_id')
 	public validateId(value?: IdPropType): void {
 		this.tooltipBehavior?.watchId(value);
 	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label!: LabelPropType;
 
 	@Watch('_label')
 	public validateLabel(value?: LabelPropType): void {
@@ -64,6 +64,10 @@ export class KolTooltipWc {
 		return Promise.resolve(this.tooltipBehavior?.hideTooltip());
 	}
 
+	public connectedCallback(): void {
+		this.tooltipBehavior?.initContext((this.host?.previousElementSibling ?? undefined) as HTMLElement | undefined);
+	}
+
 	public componentWillLoad(): void {
 		this.tooltipBehavior.componentWillLoad({
 			label: this._label,
@@ -71,10 +75,6 @@ export class KolTooltipWc {
 			badgeText: this._badgeText,
 			id: this._id,
 		});
-	}
-
-	public connectedCallback(): void {
-		this.tooltipBehavior?.initContext((this.host?.previousElementSibling ?? undefined) as HTMLElement | undefined);
 	}
 
 	public componentDidRender(): void {

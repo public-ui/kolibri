@@ -34,127 +34,115 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 
 	private item!: PaginationItem;
 
-	public render(): JSX.Element {
-		return (
-			<Host>
-				<PaginationFC {...this.item.getFcProps()} />
-			</Host>
-		);
-	}
-
 	/**
 	 * Defines the amount of pages to show next to the outer arrow buttons.
 	 */
 	@Prop() public _boundaryCount?: number = 1;
-
-	/**
-	 * Defines the custom class attribute if _variant="custom" is set.
-	 */
-	@Prop() public _customClass?: CustomClassPropType;
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
-	 */
-	@Prop() public _label?: LabelPropType;
-
-	/**
-	 * Defines which navigation buttons to render (first, last, next, previous buttons).
-	 */
-	@Prop() public _hasButtons?: boolean | Stringified<PaginationHasButton> = true;
-
-	/**
-	 * Defines the current page.
-	 */
-	@Prop() public _page!: number;
-
-	/**
-	 * Defines the amount of entries to show per page.
-	 */
-	@Prop({ mutable: true, reflect: false }) public _pageSize = 1;
-
-	/**
-	 * Defines the options for the page-size-select.
-	 */
-	@Prop() public _pageSizeOptions: Stringified<number[]> = [];
-
-	/**
-	 * Gibt an, auf welche Callback-Events reagiert werden.
-	 */
-	@Prop() public _on!: KoliBriPaginationButtonCallbacks;
-
-	/**
-	 * Defines the amount of pages to show next to the current page.
-	 */
-	@Prop() public _siblingCount?: number = 1;
-
-	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
-
-	/**
-	 * Defines the maximum value of the element.
-	 */
-	@Prop() public _max!: MaxPropType;
-
-	// --- Watchers ---
 
 	@Watch('_boundaryCount')
 	public watchBoundaryCount(value?: number): void {
 		this.item.applyBoundaryCount(value);
 	}
 
+	/**
+	 * Defines the custom class attribute if _variant="custom" is set.
+	 */
+	@Prop() public _customClass?: CustomClassPropType;
+
 	@Watch('_customClass')
 	public watchCustomClass(value?: CustomClassPropType): void {
 		this.item.applyCustomClass(value);
 	}
 
-	@Watch('_hasButtons')
-	public watchHasButtons(value?: boolean | Stringified<PaginationHasButton>): void {
-		this.item.applyHasButtons(value);
-	}
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
+	 */
+	@Prop() public _label?: LabelPropType;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
 		this.item.applyLabel(value);
 	}
 
-	@Watch('_max')
-	public watchMax(value?: MaxPropType): void {
-		this.item.applyMax(value);
+	/**
+	 * Defines which navigation buttons to render (first, last, next, previous buttons).
+	 */
+	@Prop() public _hasButtons?: boolean | Stringified<PaginationHasButton> = true;
+
+	@Watch('_hasButtons')
+	public watchHasButtons(value?: boolean | Stringified<PaginationHasButton>): void {
+		this.item.applyHasButtons(value);
 	}
 
-	@Watch('_on')
-	public watchOn(value?: KoliBriPaginationButtonCallbacks): void {
-		this.item.applyOn(value);
-	}
+	/**
+	 * Defines the current page.
+	 */
+	@Prop() public _page!: number;
 
 	@Watch('_page')
 	public watchPage(value?: number): void {
 		this.item.applyPage(value);
 	}
 
+	/**
+	 * Defines the amount of entries to show per page.
+	 */
+	@Prop({ mutable: true, reflect: false }) public _pageSize = 1;
+
 	@Watch('_pageSize')
 	public watchPageSize(value?: number): void {
 		this.item.applyPageSize(value);
 	}
+
+	/**
+	 * Defines the options for the page-size-select.
+	 */
+	@Prop() public _pageSizeOptions: Stringified<number[]> = [];
 
 	@Watch('_pageSizeOptions')
 	public watchPageSizeOptions(value?: Stringified<number[]>): void {
 		this.item.applyPageSizeOptions(value);
 	}
 
+	/**
+	 * Gibt an, auf welche Callback-Events reagiert werden.
+	 */
+	@Prop() public _on!: KoliBriPaginationButtonCallbacks;
+
+	@Watch('_on')
+	public watchOn(value?: KoliBriPaginationButtonCallbacks): void {
+		this.item.applyOn(value);
+	}
+
+	/**
+	 * Defines the amount of pages to show next to the current page.
+	 */
+	@Prop() public _siblingCount?: number = 1;
+
 	@Watch('_siblingCount')
 	public watchSiblingCount(value?: number): void {
 		this.item.applySiblingCount(value);
 	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
 
 	@Watch('_tooltipAlign')
 	public watchTooltipAlign(value?: TooltipAlignPropType): void {
 		this.item.applyTooltipAlign(value);
 	}
 
-	// --- Lifecycle ---
+	/**
+	 * Defines the maximum value of the element.
+	 */
+	@Prop() public _max!: MaxPropType;
+
+	@Watch('_max')
+	public watchMax(value?: MaxPropType): void {
+		this.item.applyMax(value);
+	}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(paginationPropsConfig);
@@ -190,5 +178,13 @@ export class KolPagination extends BaseWebComponent<PaginationApi> implements Pa
 
 	public disconnectedCallback(): void {
 		this.item.destroy();
+	}
+
+	public render(): JSX.Element {
+		return (
+			<Host>
+				<PaginationFC {...this.item.getFcProps()} />
+			</Host>
+		);
 	}
 }

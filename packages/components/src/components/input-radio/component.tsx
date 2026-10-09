@@ -65,8 +65,9 @@ export class KolInputRadio
 
 	@State() public inputHasFocus = false;
 
-	/** Input of the selected option, the target of `click()` and of the Enter submit. */
+	/** Input of the selected option, the target of the Enter submit. */
 	private inputRef?: HTMLInputElement;
+
 	private readonly inputRefs = new Map<number, HTMLInputElement>();
 
 	/** Option of each input value (`-<index>`), with `value ?? label` as value. */
@@ -80,17 +81,209 @@ export class KolInputRadio
 		this.initFormAssociation('radio', this._name);
 	}
 
-	private readonly setSelectedInputRef = (ref?: HTMLInputElement) => {
-		this.inputRef = ref;
-	};
+	/**
+	 * References an external element by ID that provides accessible details for this input.
+	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
+	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
+	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
+	 */
+	@Prop() public _ariaDetails?: AriaDetailsPropType;
 
-	private readonly setOptionInputRef = (index: number) => (ref?: HTMLInputElement) => {
-		if (ref) {
-			this.inputRefs.set(index, ref);
+	@Watch('_ariaDetails')
+	public watchAriaDetails(value?: AriaDetailsPropType): void {
+		this.applyAriaDetails(value);
+	}
+
+	/**
+	 * Makes the element not focusable and ignore all events.
+	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _disabled?: boolean = false;
+
+	@Watch('_disabled')
+	public watchDisabled(value?: boolean): void {
+		this.applyDisabled(value);
+	}
+
+	/**
+	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
+	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideMsg?: boolean = false;
+
+	@Watch('_hideMsg')
+	public watchHideMsg(value?: boolean): void {
+		this.applyHideMsg(value);
+	}
+
+	/**
+	 * Hides the caption by default and displays the caption text with a tooltip when the
+	 * interactive element is focused or the mouse is over it.
+	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _hideLabel?: boolean = false;
+
+	@Watch('_hideLabel')
+	public watchHideLabel(value?: boolean): void {
+		this.applyHideLabel(value);
+	}
+
+	/**
+	 * Defines the hint text.
+	 */
+	@Prop() public _hint?: string = '';
+
+	@Watch('_hint')
+	public watchHint(value?: string): void {
+		this.applyHint(value);
+	}
+
+	/**
+	 * Defines the informational popover after the label.
+	 */
+	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
+
+	@Watch('_infoPopover')
+	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
+		this.applyInfoPopover(value);
+	}
+
+	/**
+	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
+	 */
+	@Prop() public _label!: LabelWithExpertSlotPropType;
+
+	@Watch('_label')
+	public watchLabel(value?: LabelWithExpertSlotPropType): void {
+		this.applyLabel(value);
+	}
+
+	/**
+	 * Defines the properties for a message rendered as Alert component.
+	 */
+	@Prop() public _msg?: Stringified<MsgPropType>;
+
+	@Watch('_msg')
+	public watchMsg(value?: Stringified<MsgPropType>): void {
+		this.applyMsg(value);
+	}
+
+	/**
+	 * Defines the technical name of an input field.
+	 */
+	@Prop() public _name?: NamePropType;
+
+	@Watch('_name')
+	public watchName(value?: NamePropType): void {
+		this.applyName(value);
+	}
+
+	/**
+	 * Gibt die EventCallback-Funktionen für das Input-Event an.
+	 */
+	@Prop() public _on?: InputTypeOnDefault;
+
+	@Watch('_on')
+	public watchOn(value?: InputTypeOnDefault): void {
+		this.applyOn(value);
+	}
+
+	/**
+	 * Options the user can choose from.
+	 */
+	@Prop() public _options?: RadioOptionsPropType;
+
+	/** The option map keeps its entries while the list is empty. */
+	@Watch('_options')
+	public watchOptions(value?: RadioOptionsPropType): void {
+		radioOptionsProp.apply(value, (v) => {
+			this.setRenderProp('options', v);
+			if (v.length > 0) {
+				this.keyOptionMap.clear();
+				fillKeyOptionMap(this.keyOptionMap, normalizeOptionValues(v) as SelectOption<StencilUnknown>[]);
+			}
+		});
+	}
+
+	/**
+	 * Defines whether the orientation of the component is horizontal or vertical.
+	 */
+	@Prop() public _orientation?: OrientationPropType = 'vertical';
+
+	@Watch('_orientation')
+	public watchOrientation(value?: OrientationPropType): void {
+		radioOrientationProp.apply(value, (v) => this.setRenderProp('orientation', v));
+	}
+
+	/**
+	 * Makes the input element required.
+	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop() public _required?: boolean = false;
+
+	@Watch('_required')
+	public watchRequired(value?: boolean): void {
+		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
+	}
+
+	/**
+	 * Selector for synchronizing the value with another input element.
+	 * @internal
+	 */
+	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
+
+	@Watch('_syncValueBySelector')
+	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
+		this.applySyncValueBySelector(value);
+	}
+
+	/**
+	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
+	 */
+	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
+
+	@Watch('_tooltipAlign')
+	public watchTooltipAlign(value?: TooltipAlignPropType): void {
+		this.applyTooltipAlign(value);
+	}
+
+	/**
+	 * Shows if the input was touched by a user.
+	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
+	 */
+	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
+
+	@Watch('_touched')
+	public watchTouched(value?: boolean): void {
+		this.applyTouched(value);
+	}
+
+	/**
+	 * Defines the value of the element.
+	 * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
+	 */
+	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
+
+	/** `null` and `undefined` are kept as value instead of falling back to the default. */
+	@Watch('_value')
+	public watchValue(value: StencilUnknown): void {
+		if (value === null || value === undefined) {
+			this.setRenderProp('value', value as unknown as NonNullable<StencilUnknown>);
 		} else {
-			this.inputRefs.delete(index);
+			radioValueProp.apply(value, (v) => this.setRenderProp('value', v));
 		}
-	};
+		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value'));
+	}
+
+	/**
+	 * Defines which variant should be used for presentation.
+	 */
+	@Prop() public _variant?: VariantClassNamePropType;
+
+	@Watch('_variant')
+	public watchVariant(value?: VariantClassNamePropType): void {
+		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
+	}
 
 	/**
 	 * Returns the current value.
@@ -115,34 +308,8 @@ export class KolInputRadio
 	 */
 	@Method()
 	public async click(): Promise<void> {
-		return delegateClick(this.host!, async () => setClick(this.inputRef!));
+		return delegateClick(this.host!, async () => setClick(this.getFocusableInput()!));
 	}
-
-	/** The input of the selected option, otherwise of the first enabled option. */
-	private getFocusableInput(): HTMLInputElement | undefined {
-		const options = this.getRenderProp('options');
-		const isComponentDisabled = Boolean(this.getRenderProp('disabled'));
-		const value = this.getRenderProp('value');
-
-		const selectedIndex = options.findIndex((option) => option.value === value && !isComponentDisabled && !option.disabled);
-
-		if (selectedIndex !== -1) {
-			const input = this.inputRefs.get(selectedIndex);
-			if (input) {
-				return input;
-			}
-		}
-
-		const firstEnabledIndex = options.findIndex((option) => !isComponentDisabled && !option.disabled);
-
-		if (firstEnabledIndex !== -1) {
-			return this.inputRefs.get(firstEnabledIndex);
-		}
-
-		return undefined;
-	}
-
-	// --- Lifecycle ---
 
 	public componentWillLoad(): void {
 		this.initRenderProps(inputRadioPropsConfig);
@@ -178,7 +345,44 @@ export class KolInputRadio
 		this.optionTooltips.clear();
 	}
 
-	// --- Event handling ---
+	private readonly setSelectedInputRef = (ref?: HTMLInputElement) => {
+		this.inputRef = ref;
+	};
+
+	private readonly setOptionInputRef = (index: number) => (ref?: HTMLInputElement) => {
+		if (ref) {
+			this.inputRefs.set(index, ref);
+		} else {
+			this.inputRefs.delete(index);
+		}
+	};
+
+	/** Whether `option` is the selected one; an option without `value` has its label as value. */
+	private isOptionSelected(option: RadioOption<StencilUnknown>): boolean {
+		return this.getRenderProp('value') === (option.value ?? option.label);
+	}
+
+	/** The input of the selected option, otherwise of the first enabled option; the target of `focus()` and `click()`. */
+	private getFocusableInput(): HTMLInputElement | undefined {
+		const options = this.getRenderProp('options');
+		const isComponentDisabled = Boolean(this.getRenderProp('disabled'));
+		const selectedIndex = options.findIndex((option) => this.isOptionSelected(option) && !isComponentDisabled && !option.disabled);
+
+		if (selectedIndex !== -1) {
+			const input = this.inputRefs.get(selectedIndex);
+			if (input) {
+				return input;
+			}
+		}
+
+		const firstEnabledIndex = options.findIndex((option) => !isComponentDisabled && !option.disabled);
+
+		if (firstEnabledIndex !== -1) {
+			return this.inputRefs.get(firstEnabledIndex);
+		}
+
+		return undefined;
+	}
 
 	private getOptionOfEvent(event: Event): RadioOption<StencilUnknown> | undefined {
 		return event.target instanceof HTMLInputElement ? this.keyOptionMap.get(event.target.value) : undefined;
@@ -209,8 +413,6 @@ export class KolInputRadio
 			});
 		}
 	};
-
-	// --- Render ---
 
 	/**
 	 * Connects the label tooltip of an option, or tears it down while its label is visible. A
@@ -287,7 +489,7 @@ export class KolInputRadio
 
 	private renderOption(option: RadioOption<StencilUnknown>, index: number): JSX.Element {
 		const customId = createRelatedUniqueId(this.id, String(index));
-		const selected = this.getRenderProp('value') === option.value;
+		const selected = this.isOptionSelected(option);
 		const label = option.label as string;
 
 		return (
@@ -331,213 +533,5 @@ export class KolInputRadio
 				</FormFieldFC>
 			</Host>
 		);
-	}
-
-	// --- Props ---
-
-	/**
-	 * References an external element by ID that provides accessible details for this input.
-	 * Uses ElementInternals.ariaDetailsElements to cross the Shadow DOM boundary.
-	 * Supported by desktop screen readers (NVDA, JAWS with Chrome/Firefox).
-	 * Not yet supported by mobile screen readers (TalkBack, VoiceOver iOS).
-	 */
-	@Prop() public _ariaDetails?: AriaDetailsPropType;
-
-	/**
-	 * Makes the element not focusable and ignore all events.
-	 * @TODO: Change type back to `DisabledPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _disabled?: boolean = false;
-
-	/**
-	 * Hides the error message but leaves it in the DOM for the input's aria-describedby.
-	 * @TODO: Change type back to `HideMsgPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideMsg?: boolean = false;
-
-	/**
-	 * Hides the caption by default and displays the caption text with a tooltip when the
-	 * interactive element is focused or the mouse is over it.
-	 * @TODO: Change type back to `HideLabelPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _hideLabel?: boolean = false;
-
-	/**
-	 * Defines the hint text.
-	 */
-	@Prop() public _hint?: string = '';
-
-	/**
-	 * Defines the informational popover after the label.
-	 */
-	@Prop() public _infoPopover?: FormFieldLabelInfoPopoverProps;
-
-	/**
-	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.). Set to `false` to enable the expert slot.
-	 */
-	@Prop() public _label!: LabelWithExpertSlotPropType;
-
-	/**
-	 * Defines the properties for a message rendered as Alert component.
-	 */
-	@Prop() public _msg?: Stringified<MsgPropType>;
-
-	/**
-	 * Defines the technical name of an input field.
-	 */
-	@Prop() public _name?: NamePropType;
-
-	/**
-	 * Gibt die EventCallback-Funktionen für das Input-Event an.
-	 */
-	@Prop() public _on?: InputTypeOnDefault;
-
-	/**
-	 * Options the user can choose from.
-	 */
-	@Prop() public _options?: RadioOptionsPropType;
-
-	/**
-	 * Defines whether the orientation of the component is horizontal or vertical.
-	 */
-	@Prop() public _orientation?: OrientationPropType = 'vertical';
-
-	/**
-	 * Makes the input element required.
-	 * @TODO: Change type back to `RequiredPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop() public _required?: boolean = false;
-
-	/**
-	 * Selector for synchronizing the value with another input element.
-	 * @internal
-	 */
-	@Prop() public _syncValueBySelector?: SyncValueBySelectorPropType;
-
-	/**
-	 * Defines where to show the Tooltip preferably: top, right, bottom or left.
-	 */
-	@Prop() public _tooltipAlign?: TooltipAlignPropType = 'top';
-
-	/**
-	 * Shows if the input was touched by a user.
-	 * @TODO: Change type back to `TouchedPropType` after Stencil#4663 has been resolved.
-	 */
-	@Prop({ mutable: true, reflect: true }) public _touched?: boolean = false;
-
-	/**
-	 * Defines the value of the element.
-	 * @see Known bug: https://github.com/ionic-team/stencil/issues/3902
-	 */
-	@Prop({ mutable: true, reflect: true }) public _value: StencilUnknown = null;
-
-	/**
-	 * Defines which variant should be used for presentation.
-	 */
-	@Prop() public _variant?: VariantClassNamePropType;
-
-	// --- Watchers ---
-
-	@Watch('_ariaDetails')
-	public watchAriaDetails(value?: AriaDetailsPropType): void {
-		this.applyAriaDetails(value);
-	}
-
-	@Watch('_disabled')
-	public watchDisabled(value?: boolean): void {
-		this.applyDisabled(value);
-	}
-
-	@Watch('_hideMsg')
-	public watchHideMsg(value?: boolean): void {
-		this.applyHideMsg(value);
-	}
-
-	@Watch('_hideLabel')
-	public watchHideLabel(value?: boolean): void {
-		this.applyHideLabel(value);
-	}
-
-	@Watch('_hint')
-	public watchHint(value?: string): void {
-		this.applyHint(value);
-	}
-
-	@Watch('_infoPopover')
-	public watchInfoPopover(value?: FormFieldLabelInfoPopoverProps): void {
-		this.applyInfoPopover(value);
-	}
-
-	@Watch('_label')
-	public watchLabel(value?: LabelWithExpertSlotPropType): void {
-		this.applyLabel(value);
-	}
-
-	@Watch('_msg')
-	public watchMsg(value?: Stringified<MsgPropType>): void {
-		this.applyMsg(value);
-	}
-
-	@Watch('_name')
-	public watchName(value?: NamePropType): void {
-		this.applyName(value);
-	}
-
-	@Watch('_on')
-	public watchOn(value?: InputTypeOnDefault): void {
-		this.applyOn(value);
-	}
-
-	/** The option map keeps its entries while the list is empty. */
-	@Watch('_options')
-	public watchOptions(value?: RadioOptionsPropType): void {
-		radioOptionsProp.apply(value, (v) => {
-			this.setRenderProp('options', v);
-			if (v.length > 0) {
-				this.keyOptionMap.clear();
-				fillKeyOptionMap(this.keyOptionMap, normalizeOptionValues(v) as SelectOption<StencilUnknown>[]);
-			}
-		});
-	}
-
-	@Watch('_orientation')
-	public watchOrientation(value?: OrientationPropType): void {
-		radioOrientationProp.apply(value, (v) => this.setRenderProp('orientation', v));
-	}
-
-	@Watch('_required')
-	public watchRequired(value?: boolean): void {
-		requiredProp.apply(value, (v) => this.setRenderProp('required', v));
-	}
-
-	@Watch('_syncValueBySelector')
-	public watchSyncValueBySelector(value?: SyncValueBySelectorPropType): void {
-		this.applySyncValueBySelector(value);
-	}
-
-	@Watch('_tooltipAlign')
-	public watchTooltipAlign(value?: TooltipAlignPropType): void {
-		this.applyTooltipAlign(value);
-	}
-
-	@Watch('_touched')
-	public watchTouched(value?: boolean): void {
-		this.applyTouched(value);
-	}
-
-	/** `null` and `undefined` are kept as value instead of falling back to the default. */
-	@Watch('_value')
-	public watchValue(value: StencilUnknown): void {
-		if (value === null || value === undefined) {
-			this.setRenderProp('value', value as unknown as NonNullable<StencilUnknown>);
-		} else {
-			radioValueProp.apply(value, (v) => this.setRenderProp('value', v));
-		}
-		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value'));
-	}
-
-	@Watch('_variant')
-	public watchVariant(value?: VariantClassNamePropType): void {
-		variantProp.apply(value, (v) => this.setRenderProp('variant', v));
 	}
 }

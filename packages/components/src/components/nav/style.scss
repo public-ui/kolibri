@@ -8,13 +8,11 @@
 	@include kol-icon-styles();
 	@include kol-embedded-button-box-styles('kol-button');
 	.kol-nav {
-		$root: &;
-
 		display: grid;
 		place-items: center;
 
 		&__navigation {
-			#{$root}:not(#{$root}--is-compact) & {
+			.kol-nav:not(.kol-nav--is-compact) & {
 				width: 100%;
 			}
 

@@ -34,16 +34,52 @@ describe('normalizeSelectValue', () => {
 		expect(normalizeSelectValue([], options, false)).toEqual([1]);
 	});
 
-	it('preselects undefined when the first entry is an optgroup', () => {
-		expect(normalizeSelectValue([], [{ label: 'Gruppe', options }], false)).toEqual([undefined]);
+	it('preselects the first option of an optgroup that comes first', () => {
+		expect(normalizeSelectValue([], [{ label: 'Gruppe', options }], false)).toEqual([1]);
+	});
+
+	it('skips disabled options for the preselection', () => {
+		expect(normalizeSelectValue([], [{ label: 'Null', value: 0, disabled: true }, ...options], false)).toEqual([1]);
+	});
+
+	it('skips options of a disabled optgroup for the preselection', () => {
+		expect(
+			normalizeSelectValue(
+				[],
+				[
+					{
+						disabled: true,
+						label: 'G',
+						options: [{ label: 'A', value: 'a' }],
+					},
+					{ label: 'B', value: 'b' },
+				],
+				false,
+			),
+		).toEqual(['b']);
+	});
+
+	it('preselects nothing when every option is disabled', () => {
+		expect(normalizeSelectValue([], [{ label: 'Null', value: 0, disabled: true }], false)).toEqual([]);
+	});
+
+	it('replaces a value outside the options by the first option in single mode', () => {
+		expect(normalizeSelectValue(['x'], options, false)).toEqual([1]);
+	});
+
+	it('removes the values outside the options in multiple mode', () => {
+		expect(normalizeSelectValue([2, 'x'], options, true)).toEqual([2]);
+	});
+
+	it('finds the values of the options inside an optgroup', () => {
+		expect(normalizeSelectValue([2], [{ label: 'Gruppe', options }], true)).toEqual([2]);
 	});
 
 	it.each([
 		['a value', [2], options, false],
-		['a value outside the options', ['x'], options, false],
 		['multiple mode', [], options, true],
 		['an undefined multiple flag', [], options, undefined],
-		['no options', [], [], false],
+		['no options', ['x'], [], false],
 	])('keeps the value with %s', (_name, value, list, multiple) => {
 		const result = normalizeSelectValue(value, list, multiple);
 		expect(result).toBe(value);

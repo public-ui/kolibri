@@ -4,7 +4,11 @@
  */
 import * as fs from 'node:fs';
 
-export function createApi({ token = process.env.GITHUB_TOKEN, baseUrl = process.env.GITHUB_API_URL ?? 'https://api.github.com' } = {}) {
+export function createApi({
+	token = process.env.GITHUB_TOKEN,
+	baseUrl = process.env.GITHUB_API_URL ?? 'https://api.github.com',
+	graphqlUrl = process.env.GITHUB_GRAPHQL_URL ?? 'https://api.github.com/graphql',
+} = {}) {
 	if (!token) throw new Error('GITHUB_TOKEN is required');
 
 	async function request(method, path, { body, accept = 'application/vnd.github+json' } = {}) {
@@ -47,11 +51,21 @@ export function createApi({ token = process.env.GITHUB_TOKEN, baseUrl = process.
 		return items;
 	}
 
+	/** Runs a GraphQL query and returns its `data`; GraphQL reports errors in the body of a 200 response. */
+	async function graphql(query, variables) {
+		const result = await json('POST', graphqlUrl, { body: { query, variables } });
+		if (result.errors?.length > 0) {
+			throw new Error(`GraphQL: ${result.errors.map((error) => error.message).join('; ')}`);
+		}
+		return result.data;
+	}
+
 	return {
 		get: (path) => json('GET', path),
-		post: (path, body) => json('POST', path, { body }),
-		patch: (path, body) => json('PATCH', path, { body }),
+		graphql,
 		paginate,
+		patch: (path, body) => json('PATCH', path, { body }),
+		post: (path, body) => json('POST', path, { body }),
 	};
 }
 

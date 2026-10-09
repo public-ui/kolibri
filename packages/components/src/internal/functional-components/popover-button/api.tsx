@@ -53,7 +53,6 @@ export const popoverButtonPropsConfig = {
 		hideLabelProp,
 		idProp,
 		inlineProp,
-		labelWithExpertSlotProp,
 		linkRoleProp,
 		nameProp,
 		popoverAlignProp,

@@ -43,34 +43,13 @@ import { addNavLabel, removeNavLabel } from '../../utils/unique-nav-labels';
 export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebComponentInterface<NavApi> {
 	@Element() protected readonly host?: HTMLKolNavElement;
 
+	@State() public compact: boolean = false;
+
+	@State() public expandedChildren: NavChildren[] = [];
+
 	private readonly navId = createUniqueId('kol-nav');
 
 	private readonly listId = createRelatedUniqueId(this.navId, 'list');
-
-	// --- Lifecycle ---
-
-	public componentWillLoad(): void {
-		this.initRenderProps(navPropsConfig);
-		this.watchCollapsible(this._collapsible);
-		this.watchHideLabel(this._hideLabel);
-		this.watchHasCompactButton(this._hasCompactButton);
-		this.watchHasIconsWhenExpanded(this._hasIconsWhenExpanded);
-		this.applyLabel(this._label, true);
-		this.watchLinks(this._links);
-	}
-
-	public componentDidRender(): void {
-		this.buttonItems.endRender();
-		this.linkItems.endRender();
-	}
-
-	public disconnectedCallback(): void {
-		removeNavLabel(this.getRenderProp('label'));
-		this.buttonItems.destroy();
-		this.linkItems.destroy();
-	}
-
-	// --- Embedded buttons and links ---
 
 	/** The entry buttons and the compact toggle, one item per key the nav FC renders. */
 	private readonly buttonItems = createItemPool<ButtonItem>(
@@ -85,69 +64,6 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 		(item) => item.syncListeners(),
 		(item) => item.destroy(),
 	);
-
-	private readonly getButtonFcProps = (key: string, props: InternalButtonProps): ButtonItemFcProps => this.buttonItems.get(key).getFcProps(props);
-
-	private readonly getLinkFcProps = (key: string, props: EmbeddedLinkProps): LinkFCProps => this.linkItems.get(key).getFcProps(props);
-
-	// --- Helpers ---
-
-	/**
-	 * Keeps the register of unique navigation labels in sync: the previous label is removed (not on the
-	 * initial pass, so a second instance with the same label still warns), then the current one is added.
-	 */
-	private applyLabel(value: LabelPropType | undefined, initial = false): void {
-		if (!initial) {
-			removeNavLabel(this.getRenderProp('label'));
-		}
-		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
-		a11yHintLabelingLandmarks(value);
-		addNavLabel(this.getRenderProp('label'));
-	}
-
-	private readonly handleToggleExpansion = (children?: NavChildren): void => {
-		if (children) {
-			this.expandedChildren = toggleExpanded(this.expandedChildren, children);
-		}
-	};
-
-	private readonly handleToggleCompact = (): void => {
-		this.compact = !this.compact;
-	};
-
-	// --- Render ---
-
-	public render(): JSX.Element {
-		this.buttonItems.beginRender();
-		this.linkItems.beginRender();
-		return (
-			<Host>
-				<NavFC
-					collapsible={this.getRenderProp('collapsible')}
-					compact={this.compact}
-					expandedChildren={this.expandedChildren}
-					getButtonFcProps={this.getButtonFcProps}
-					getLinkFcProps={this.getLinkFcProps}
-					handleToggleCompact={this.handleToggleCompact}
-					handleToggleExpansion={this.handleToggleExpansion}
-					hasCompactButton={this.getRenderProp('hasCompactButton')}
-					hasIconsWhenExpanded={this.getRenderProp('hasIconsWhenExpanded')}
-					label={this.getRenderProp('label')}
-					links={this.getRenderProp('links')}
-					listId={this.listId}
-					navId={this.navId}
-				/>
-			</Host>
-		);
-	}
-
-	// --- States ---
-
-	@State() public compact: boolean = false;
-
-	@State() public expandedChildren: NavChildren[] = [];
-
-	// --- Props + Watchers ---
 
 	/**
 	 * Defines if navigation nodes can be collapsed or not. Enabled by default.
@@ -215,5 +131,77 @@ export class KolNav extends BaseWebComponent<NavApi> implements NavProps, WebCom
 		navLinksProp.apply(value, (v) => this.setRenderProp('links', v));
 		devHint(`[KolNav] The navigation structure is not yet validated recursively.`);
 		this.expandedChildren = getInitiallyExpanded(this.getRenderProp('links'));
+	}
+
+	public componentWillLoad(): void {
+		this.initRenderProps(navPropsConfig);
+		this.watchCollapsible(this._collapsible);
+		this.watchHideLabel(this._hideLabel);
+		this.watchHasCompactButton(this._hasCompactButton);
+		this.watchHasIconsWhenExpanded(this._hasIconsWhenExpanded);
+		this.applyLabel(this._label, true);
+		this.watchLinks(this._links);
+	}
+
+	public componentDidRender(): void {
+		this.buttonItems.endRender();
+		this.linkItems.endRender();
+	}
+
+	public disconnectedCallback(): void {
+		removeNavLabel(this.getRenderProp('label'));
+		this.buttonItems.destroy();
+		this.linkItems.destroy();
+	}
+
+	private readonly getButtonFcProps = (key: string, props: InternalButtonProps): ButtonItemFcProps => this.buttonItems.get(key).getFcProps(props);
+
+	private readonly getLinkFcProps = (key: string, props: EmbeddedLinkProps): LinkFCProps => this.linkItems.get(key).getFcProps(props);
+
+	/**
+	 * Keeps the register of unique navigation labels in sync: the previous label is removed (not on the
+	 * initial pass, so a second instance with the same label still warns), then the current one is added.
+	 */
+	private applyLabel(value: LabelPropType | undefined, initial = false): void {
+		if (!initial) {
+			removeNavLabel(this.getRenderProp('label'));
+		}
+		labelWithExpertSlotProp.apply(value, (v) => this.setRenderProp('label', v));
+		a11yHintLabelingLandmarks(value);
+		addNavLabel(this.getRenderProp('label'));
+	}
+
+	private readonly handleToggleExpansion = (children?: NavChildren): void => {
+		if (children) {
+			this.expandedChildren = toggleExpanded(this.expandedChildren, children);
+		}
+	};
+
+	private readonly handleToggleCompact = (): void => {
+		this.compact = !this.compact;
+	};
+
+	public render(): JSX.Element {
+		this.buttonItems.beginRender();
+		this.linkItems.beginRender();
+		return (
+			<Host>
+				<NavFC
+					collapsible={this.getRenderProp('collapsible')}
+					compact={this.compact}
+					expandedChildren={this.expandedChildren}
+					getButtonFcProps={this.getButtonFcProps}
+					getLinkFcProps={this.getLinkFcProps}
+					handleToggleCompact={this.handleToggleCompact}
+					handleToggleExpansion={this.handleToggleExpansion}
+					hasCompactButton={this.getRenderProp('hasCompactButton')}
+					hasIconsWhenExpanded={this.getRenderProp('hasIconsWhenExpanded')}
+					label={this.getRenderProp('label')}
+					links={this.getRenderProp('links')}
+					listId={this.listId}
+					navId={this.navId}
+				/>
+			</Host>
+		);
 	}
 }

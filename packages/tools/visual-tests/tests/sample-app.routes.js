@@ -51,7 +51,7 @@ ROUTES.set('breadcrumb/basic', {
 });
 ROUTES.set('button-link/basic');
 ROUTES.set('button-link/icons');
-ROUTES.set('button/variants');
+ROUTES.set('button/basic');
 ROUTES.set('button/icons');
 ROUTES.set('button/short-key');
 ROUTES.set('card/basic');
@@ -152,9 +152,6 @@ ROUTES.set('image/basic', {
 	},
 });
 ROUTES.set('input-checkbox/basic?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -163,9 +160,6 @@ ROUTES.set('input-checkbox/basic?noColumns', {
 	},
 });
 ROUTES.set('input-checkbox/button?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -174,9 +168,6 @@ ROUTES.set('input-checkbox/button?noColumns', {
 	},
 });
 ROUTES.set('input-checkbox/switch?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -265,9 +256,6 @@ ROUTES.set('input-password/show-password?noColumns', {
 	},
 });
 ROUTES.set('input-radio/basic?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 500,
@@ -788,9 +776,6 @@ ROUTES.set('scenarios/sample-form-with-validation', {
 	},
 });
 ROUTES.set('scenarios/disabled-interactive-scenario', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		skip: true,
