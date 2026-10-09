@@ -30,6 +30,22 @@ function decodeEntities(text) {
 }
 
 /**
+ * Removes HTML comments. An unclosed `<!--` hides the rest of the text, as it does in a browser.
+ * Removing a comment can join its surroundings into a new opener (`<!-<!---->-`), so the removal
+ * repeats until no opener remains.
+ */
+function stripHtmlComments(text) {
+	let result = text;
+	let start = result.indexOf('<!--');
+	while (start !== -1) {
+		const end = result.indexOf('-->', start + 4);
+		result = end === -1 ? result.slice(0, start) : result.slice(0, start) + result.slice(end + 3);
+		start = result.indexOf('<!--');
+	}
+	return result;
+}
+
+/**
  * Returns the plain text of the first `<SampleDescription>` block of a React sample.
  */
 export function extractSampleDescription(code) {
@@ -73,7 +89,7 @@ export function extractMarkdownDescription(code) {
 		content = content.slice(frontMatter[0].length);
 	}
 
-	content = content.replace(/<!--[\s\S]*?-->/g, '').replace(/^(```|~~~)[\s\S]*?^\1/gm, '');
+	content = stripHtmlComments(content).replace(/^(```|~~~)[\s\S]*?^\1/gm, '');
 
 	for (const block of content.split(/\n\s*\n/)) {
 		const lines = block

@@ -54,6 +54,12 @@ test('extractMarkdownDescription returns the first prose paragraph', () => {
 	assert.equal(extractMarkdownDescription('# Only a heading'), undefined);
 });
 
+test('extractMarkdownDescription leaves no HTML comment opener behind', () => {
+	assert.equal(extractMarkdownDescription('# T\n\nVisible text that comes first <!-<!---->- hidden text.'), 'Visible text that comes first');
+	assert.equal(extractMarkdownDescription('# T\n\nVisible paragraph that is long enough.\n\n<!-- unclosed'), 'Visible paragraph that is long enough.');
+	assert.equal(extractMarkdownDescription('# T\n\n<!-- unclosed\n\nHidden paragraph that is long enough.'), undefined);
+});
+
 test('extractComponentTags collects React adapters and custom elements', () => {
 	const code = `
 		import { KolForm, KolInputDate } from '@public-ui/react-v19';
