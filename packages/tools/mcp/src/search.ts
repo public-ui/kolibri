@@ -8,6 +8,8 @@ const FUSE_OPTIONS: IFuseOptions<SampleEntry> = {
 	shouldSort: true,
 	threshold: 0.4, // Default threshold for single-word queries
 	minMatchCharLength: 2,
+	// Descriptions are prose of up to 300 characters, so a term must match anywhere in a field, not only near its start.
+	ignoreLocation: true,
 	// useExtendedSearch is set dynamically based on query type
 	keys: [
 		{ name: 'id', weight: 0.2 },
