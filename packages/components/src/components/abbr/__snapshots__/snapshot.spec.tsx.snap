@@ -1,11 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`kol-abbr should render with _label="Text" 1`] = `
+exports[`kol-abbr should render with _abbr="m" 1`] = `
 <kol-abbr>
   <template shadowrootmode="open">
-    <abbr class="kol-abbr">
-      <slot></slot>
-    </abbr>
+    <span class="kol-abbr">
+      <abbr class="kol-abbr__abbr">
+        m
+      </abbr>
+    </span>
+  </template>
+</kol-abbr>
+`;
+
+exports[`kol-abbr should render with _abbr="z. B." _label="zum Beispiel" 1`] = `
+<kol-abbr>
+  <template shadowrootmode="open">
+    <span class="kol-abbr kol-abbr--has-label">
+      <abbr aria-describedby="abbr-tooltip-nonce" class="kol-abbr__abbr" tabindex="0">
+        z. B.
+      </abbr>
+      <span class="kol-abbr__tooltip">
+        <div class="kol-tooltip__floating">
+          <div class="kol-tooltip__arrow"></div>
+          <span class="kol-span kol-tooltip__content" id="abbr-tooltip-nonce">
+            <span class="kol-span__container">
+              <span class="kol-span__label">
+                zum Beispiel
+              </span>
+              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+            </span>
+          </span>
+        </div>
+      </span>
+    </span>
+  </template>
+</kol-abbr>
+`;
+
+exports[`kol-abbr should render with _abbr="z. B." 1`] = `
+<kol-abbr>
+  <template shadowrootmode="open">
+    <span class="kol-abbr">
+      <abbr class="kol-abbr__abbr">
+        z. B.
+      </abbr>
+    </span>
+  </template>
+</kol-abbr>
+`;
+
+exports[`kol-abbr should render with _label="zum Beispiel" 1`] = `
+<kol-abbr>
+  <template shadowrootmode="open">
+    <span class="kol-abbr kol-abbr--has-label">
+      <abbr aria-describedby="abbr-tooltip-nonce" class="kol-abbr__abbr" tabindex="0">
+        <span>
+          <slot></slot>
+        </span>
+      </abbr>
+      <span class="kol-abbr__tooltip">
+        <div class="kol-tooltip__floating">
+          <div class="kol-tooltip__arrow"></div>
+          <span class="kol-span kol-tooltip__content" id="abbr-tooltip-nonce">
+            <span class="kol-span__container">
+              <span class="kol-span__label">
+                zum Beispiel
+              </span>
+              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+            </span>
+          </span>
+        </div>
+      </span>
+    </span>
   </template>
 </kol-abbr>
 `;

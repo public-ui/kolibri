@@ -29,6 +29,8 @@ export const ROUTES = new Map();
  */
 
 ROUTES.set('abbr/basic');
+ROUTES.set('abbr/long-form');
+ROUTES.set('abbr/variants');
 ROUTES.set('accordion/basic');
 ROUTES.set('alert/basic');
 ROUTES.set('alert/card-msg');

@@ -108,7 +108,7 @@ By default the block container spans the full sample width, so narrow samples pr
 ```tsx
 <SampleBlock id="basic" fitContent>
 	<span>
-		I am <KolAbbr>e.g.</KolAbbr> an abbreviation.
+		I am <KolAbbr _abbr="e.g." /> an abbreviation.
 	</span>
 </SampleBlock>
 ```
