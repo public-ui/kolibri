@@ -1,6 +1,6 @@
 ---
 name: pr-extern-review
-description: Prüft Pull Requests externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue und liefert eine Ampel-Tabelle mit den drei Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn / hint / ready), einem Gesamtstatus (grün / gelb / rot) und einem Block mit Out-of-Scope-Hinweisen samt Angebot für Folge-Tickets. Nutze diesen Skill immer, wenn der Nutzer PRs von Externen, Contributorn oder der Community prüfen lassen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die offenen PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
+description: Prüft Pull Requests externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue. Befehle - `audit` (Standard) liefert eine Ampel-Tabelle mit den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn / hint / ready), einem Gesamtstatus (grün / gelb / rot) und Out-of-Scope- und Folge-Ticket-Hinweisen; `comment` schreibt je PR einen klaren Kommentar an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Tickets an und verlinkt sie mit dem PR als Ursprung. Nutze diesen Skill immer, wenn der Nutzer PRs von Externen, Contributorn oder der Community prüfen, kommentieren oder daraus Folge-Tickets anlegen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die offenen PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
 ---
 
 # Externe PRs prüfen
@@ -13,9 +13,27 @@ Dieser Skill prüft jeden PR auf drei Fragen und fasst das Ergebnis immer im sel
 2. Ist der Code sauber und hält er die Konventionen des Repos ein?
 3. Ist der Code sicher?
 
-Das Ergebnis ist **eine Tabelle im Chat**. Der Skill ändert von selbst nichts: Er kommentiert nicht,
-setzt keine Labels, gibt nichts frei, mergt nicht und legt keine Tickets an. Das entscheidet der Nutzer.
-Am Ende werden die passenden Folgeaktionen angeboten (siehe Abschnitt 6).
+## Befehle
+
+Aufruf: `/pr-extern-review [audit|comment|tickets] <PRs> [IDs]`
+
+- **`<PRs>`:** PR-Nummern oder -Links, oder `author:<login>` für alle offenen PRs eines Contributors.
+- **`[IDs]`:** nur bei `tickets`, z. B. `OOS-2 FU-1`, um einzelne Tickets auszuwählen.
+- Ohne Befehl gilt `audit`. Auch eine Bitte in normalen Worten wählt den passenden Befehl
+  („kommentiere die PRs“ → `comment`, „leg die Folgetickets an“ → `tickets`).
+
+| Befehl    | Was er tut                                                                                                      | Schreibt auf GitHub?        | Abschnitt |
+| --------- | --------------------------------------------------------------------------------------------------------------- | --------------------------- | --------- |
+| `audit`   | Prüft die PRs und gibt die Ampel-Tabelle mit Out-of-Scope- und Folge-Ticket-Hinweisen aus.                      | nein                        | 1–6       |
+| `comment` | Schreibt je offenem, nicht grünem PR einen Kommentar an den Autor: was im Scope des Issues bis Grün zu tun ist. | ja, ein Kommentar je PR     | 7         |
+| `tickets` | Legt Folge-Tickets an und verlinkt sie mit dem PR als Ursprung.                                                 | ja, ein Issue je Folgethema | 8         |
+
+`comment` und `tickets` bauen auf dem Ergebnis von `audit` auf. Liegt in der Unterhaltung kein Audit für
+genau diese PRs auf dem aktuellen Head vor, zuerst `audit` ausführen und die Tabelle zeigen.
+
+Der Aufruf von `comment` oder `tickets` ist die Zustimmung zum Schreiben. Ohne diesen Aufruf schreibt der
+Skill nichts: Er kommentiert nicht, setzt keine Labels und legt keine Tickets an. Freigaben (Approve)
+und Merges macht er nie.
 
 ## 1. PRs bestimmen
 
@@ -177,28 +195,126 @@ Auf Deutsch, knapp. Immer in dieser Reihenfolge:
    - **Folge-Ticket?:** ob ein eigenes Issue sinnvoll ist (z. B. für einen Fehler in der Testumgebung oder
      eine bereits gemergte, undokumentierte Verhaltensänderung) und ob die Änderung aus dem PR heraus soll.
 
-5. Was nicht überflüssig ist, obwohl es so aussieht (z. B. doppelte Logik, weil eine Komponente nicht von
+5. Der Block **Weitere Folge-Tickets**, wenn es welche gibt. Er sammelt, was kein Out-of-Scope-Diff ist,
+   aber ein eigenes Issue verdient: eine Lücke zum Issue in einem bereits gemergten PR (z. B. ein vom Issue
+   verlangter Test fehlt) oder ein Befund im Umfeld, der denselben Fehler an anderer Stelle zeigt.
+
+   | ID  | PR  | Thema | Folge-Ticket? |
+   | --- | --- | ----- | ------------- |
+   - **ID:** `FU-n`, fortlaufend über alle PRs der Ausgabe, wie `OOS-n`.
+   - **Folge-Ticket?:** ja, optional (mit Bedingung) oder nein.
+
+6. Was nicht überflüssig ist, obwohl es so aussieht (z. B. doppelte Logik, weil eine Komponente nicht von
    der gemeinsamen Basis erbt), damit niemand das Falsche entfernt. Nur wenn es solche Fälle gibt.
-6. Offen benennen, was nicht geprüft wurde (z. B. Tests nicht lokal ausgeführt, weil `node_modules` fehlen).
+7. Offen benennen, was nicht geprüft wurde (z. B. Tests nicht lokal ausgeführt, weil `node_modules` fehlen).
 
 ## 6. Folgeaktionen anbieten
 
-Am Ende eine kurze Frage mit den passenden Aktionen. Erst nach Zustimmung ausführen:
+Am Ende des Audits eine kurze Frage mit den passenden Befehlen:
 
-- **Nachbesserung anfordern:** je PR ein Kommentar an den Autor, auf Englisch (Sprache der PRs), mit
-  jedem **warn** und **hint** als nummerierter Punkt (Datei, Ursache, Vorschlag) und den
-  Out-of-Scope-Punkten mit der Bitte, sie herauszunehmen. Jeder Kommentar endet mit:
+- **`comment`** für die offenen PRs, die nicht grün sind.
+- **`tickets`** für die OOS- und FU-Punkte mit „Folge-Ticket: ja“.
+- **Beobachten:** den PRs folgen und bei neuen Commits erneut `audit` ausführen.
 
-  ```
-  ---
-  _Generated by [Claude Code](https://claude.ai/code)_
-  ```
+## 7. Befehl `comment`: Nachbesserung im Scope des Issues anfordern
 
-- **Folge-Tickets anlegen:** für die OOS-Punkte mit „Folge-Ticket: ja“. Erst als Entwurf im Chat zeigen,
-  dann anlegen.
-- **Beobachten:** den PRs folgen und bei neuen Commits erneut mit diesem Skill prüfen.
+Ziel: ein Kommentar je PR, nach dessen Umsetzung der PR grün ist. Er nennt nur, was **dieser PR im
+Scope seines Issues** ändern muss, klar und ohne Ampel-Jargon.
 
-Freigaben (Approve) und Merges macht der Skill nicht.
+1. **Auswahl:** nur offene PRs mit Gesamtstatus 🟡 oder 🔴. Grüne, gemergte und geschlossene PRs
+   überspringen und das in der Antwort nennen.
+2. **Aktuellen Stand sichern:** den Head erneut abrufen. Hat er sich seit dem Audit geändert, zuerst neu
+   auditieren.
+3. **Doppelungen vermeiden:** die bisherigen Kommentare lesen. Steht ein Punkt schon unbeantwortet in
+   einem früheren Kommentar, auf diesen verweisen statt ihn zu wiederholen. Ist nichts Neues offen, keinen
+   Kommentar schreiben und das dem Nutzer sagen.
+4. **Inhalt:**
+   - Jeder **warn** und jeder **hint** des PRs wird ein nummerierter Punkt mit Datei, Ursache und
+     konkretem Vorschlag.
+   - Out-of-Scope-Änderungen (OOS) stehen unter „Please remove“, mit Bezug auf das Issue. Das Herausnehmen
+     ist eine Änderung an diesem PR und gehört damit in den Scope.
+   - Themen außerhalb des Issues (FU, Folge-Tickets) werden **nicht** vom Autor verlangt. Gibt es dafür
+     schon ein Ticket, in einem Satz darauf verweisen („tracked separately in #…“).
+   - Kein Punkt, der nicht aus dem Audit stammt.
+5. **Form:** Englisch (Sprache der PRs), freundlich, knapp, nach diesem Muster:
+
+   ```markdown
+   Hi @<author>, thanks for the PR! To get it ready for merge, please address the following. Everything here is within the scope of #<issue>.
+
+   **Required**
+
+   1. `<file>`: <what is wrong and why>. <what to change>.
+
+   **Recommended**
+
+   2. `<file>`: <what is wrong>. <what to change>.
+
+   **Please remove (not part of #<issue>)**
+
+   3. `<file>`: <change>. <why it is not needed here>.
+
+   <Optional: Not part of this PR: <topic> is tracked separately in #<ticket>.>
+
+   Thanks!
+
+   ---
+
+   _Generated by [Claude Code](https://claude.ai/code)_
+   ```
+
+   - **Required** enthält die **warn**-Punkte, **Recommended** die **hint**-Punkte außer OOS. Leere
+     Abschnitte weglassen; die Nummerierung läuft über alle Abschnitte durch.
+   - Der Footer steht immer am Ende.
+
+6. **Posten:** als normaler PR-Kommentar (`add_issue_comment` bzw. `gh pr comment`), nicht als Review mit
+   Zeilenkommentaren.
+7. **Antwort im Chat:** je PR den Link zum Kommentar und die Zahl der Punkte. Danach anbieten, die PRs zu
+   beobachten.
+
+## 8. Befehl `tickets`: Folge-Tickets anlegen und mit dem PR verlinken
+
+Ziel: je Folgethema ein eigenes Issue, das den PR als Ursprung nennt, damit der Befund nicht im PR
+untergeht.
+
+1. **Auswahl:** ohne `[IDs]` alle OOS- und FU-Punkte mit „Folge-Ticket: ja“ aus dem Audit der genannten
+   PRs. Mit `[IDs]` genau diese, auch wenn sie „optional“ markiert sind. Punkte, die laut Audit
+   zusammengehören (z. B. „zusammen mit OOS-2“), werden ein Ticket.
+2. **Dubletten prüfen:** vor dem Anlegen offene und geschlossene Issues nach dem Thema durchsuchen
+   (`search_issues` bzw. `gh issue list --search`). Gibt es schon eines, kein neues anlegen, sondern es im
+   Chat nennen.
+3. **Inhalt:** Deutsch, im Stil der bestehenden Folge-Issues des Repos, nach diesem Muster:
+
+   ```markdown
+   Gefunden im Review von #<PR> (<OOS-n/FU-n>). <Ein Satz zum Bezug, z. B. „Die Änderung gehört nicht zu #<issue> und wird dort herausgenommen.“>
+
+   ## Befund
+
+   - **Betroffen:** `<Datei>` …
+   - **Ursache:** …
+   - **Folge:** <konkretes Szenario>
+
+   ## Vorschlag
+
+   …
+
+   ## Akzeptanzkriterien
+
+   - [ ] …
+
+   Refs #<PR>, #<issue>
+   ```
+
+   - **Titel:** knapp und für sich verständlich, mit Komponente vorn (z. B. „kol-select: leere Optgroups
+     werden nicht mehr gerendert – Verhalten dokumentieren“).
+   - **Typ:** `Bug` für Fehlverhalten, `Task` für Doku, Tests und Aufräumen.
+   - **Labels:** keine `release:*`-Labels setzen, die gehören an PRs.
+   - Keine Zuweisung, kein Milestone. Das entscheidet das Team.
+
+4. **Verlinken:** Die Nennung von `#<PR>` im Text erzeugt im PR automatisch einen Querverweis auf das neue
+   Issue. Ist der PR noch offen und wird danach `comment` ausgeführt, verweist der Kommentar auf das
+   Ticket (Abschnitt 7). Einen eigenen Kommentar nur für den Link nicht posten.
+5. **Antwort im Chat:** eine Tabelle mit ID, neuem Issue (Link und Titel) und Ursprungs-PR, dazu die
+   übersprungenen Punkte mit Grund (Dublette, „Folge-Ticket: nein“).
 
 ## Referenzbeispiel
 
