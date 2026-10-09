@@ -1,6 +1,6 @@
 ---
 name: pr-extern-review
-description: Prüft Pull Requests externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue. Befehle - `audit` (Standard) liefert eine Ampel-Tabelle mit den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn / hint / ready), einem Gesamtstatus (grün / gelb / rot) und Out-of-Scope- und Folge-Ticket-Hinweisen; `comment` schreibt je PR einen klaren Kommentar an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Tickets an und verlinkt sie mit dem PR als Ursprung. Nutze diesen Skill immer, wenn der Nutzer PRs von Externen, Contributorn oder der Community prüfen, kommentieren oder daraus Folge-Tickets anlegen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die offenen PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
+description: Prüft Pull Requests externer Contributor im KoliBri-Repo gegen ihr verlinktes Issue. Befehle - `audit` (Standard) liefert eine Ampel-Tabelle mit den Spalten "Minimalistisch & korrekt zum Issue", "Sauber & ordentlich" und "Sicher" (warn / hint / ready), einem Gesamtstatus (grün / gelb / rot) und Out-of-Scope- und Folge-Ticket-Hinweisen; `comment` schreibt je PR einen klaren Kommentar an den Autor, was im Scope des Issues bis Grün zu tun ist; `tickets` legt Folge-Tickets an und verlinkt sie mit dem PR als Ursprung; `consolidate` setzt die issue-relevanten Verbesserungen aller gemergten oder geschlossenen PRs in einem Sammel-PR um, der alle betroffenen Tickets schließt. Nutze diesen Skill immer, wenn der Nutzer PRs von Externen, Contributorn oder der Community prüfen, kommentieren oder daraus Folge-Tickets anlegen will – auch bei Formulierungen wie "sind die PRs korrekt und sicher", "review die offenen PRs von <Name>", "gibt es einen neuen Stand bei den PRs", "ist da Schadcode drin", "ist der PR mergebar", "Ampel für die PRs", "fordere den Autor zur Nachbesserung auf", "kommentiere den PR", "leg die Folgetickets an", "setz die Nachbesserungen der gemergten PRs in einem PR um" oder wenn eine Liste von PR-Links ohne weitere Anweisung kommt.
 ---
 
 # Externe PRs prüfen
@@ -15,31 +15,33 @@ Dieser Skill prüft jeden PR auf drei Fragen und fasst das Ergebnis immer im sel
 
 ## Befehle
 
-Aufruf: `/pr-extern-review [audit|comment|tickets] <PRs> [IDs]`
+Aufruf: `/pr-extern-review [audit|comment|tickets|consolidate] <PRs> [IDs]`
 
 - **`<PRs>`:** PR-Nummern oder -Links, oder `author:<login>` für alle offenen PRs eines Contributors.
-- **`[IDs]`:** nur bei `tickets`, z. B. `OOS-2 FU-1`, um einzelne Tickets auszuwählen.
+- **`[IDs]`:** nur bei `tickets` und `consolidate`, z. B. `OOS-2 FU-1`, um einzelne Punkte auszuwählen.
 - Ohne Befehl gilt `audit`. Auch eine Bitte in normalen Worten wählt den passenden Befehl
-  („kommentiere die PRs“ → `comment`, „leg die Folgetickets an“ → `tickets`).
+  („kommentiere die PRs“ → `comment`, „leg die Folgetickets an“ → `tickets`, „setz die Nachbesserungen
+  der gemergten PRs um“ → `consolidate`).
 
-| Befehl    | Was er tut                                                                                                      | Schreibt auf GitHub?        | Abschnitt |
-| --------- | --------------------------------------------------------------------------------------------------------------- | --------------------------- | --------- |
-| `audit`   | Prüft die PRs und gibt die Ampel-Tabelle mit Out-of-Scope- und Folge-Ticket-Hinweisen aus.                      | nein                        | 1–6       |
-| `comment` | Schreibt je offenem, nicht grünem PR einen Kommentar an den Autor: was im Scope des Issues bis Grün zu tun ist. | ja, ein Kommentar je PR     | 7         |
-| `tickets` | Legt Folge-Tickets an und verlinkt sie mit dem PR als Ursprung.                                                 | ja, ein Issue je Folgethema | 8         |
+| Befehl        | Was er tut                                                                                                                                     | Schreibt auf GitHub?           | Abschnitt |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | --------- |
+| `audit`       | Prüft die PRs und gibt die Ampel-Tabelle mit Out-of-Scope- und Folge-Ticket-Hinweisen aus.                                                     | nein                           | 1–6       |
+| `comment`     | Schreibt je offenem, nicht grünem PR einen Kommentar an den Autor: was im Scope des Issues bis Grün zu tun ist.                                | ja, ein Kommentar je PR        | 7         |
+| `tickets`     | Legt Folge-Tickets an und verlinkt sie mit dem PR als Ursprung.                                                                                | ja, ein Issue je Folgethema    | 8         |
+| `consolidate` | Setzt die issue-relevanten Verbesserungen aller gemergten oder geschlossenen PRs in einem Sammel-PR um, der alle betroffenen Tickets schließt. | ja, Branch, Commits und ein PR | 9         |
 
-`comment` und `tickets` bauen auf dem Ergebnis von `audit` auf. Liegt in der Unterhaltung kein Audit für
+`comment`, `tickets` und `consolidate` bauen auf dem Ergebnis von `audit` auf. Liegt in der Unterhaltung kein Audit für
 genau diese PRs auf dem aktuellen Head vor, zuerst `audit` ausführen und die Tabelle zeigen.
 
-Der Aufruf von `comment` oder `tickets` ist die Zustimmung zum Schreiben. Ohne diesen Aufruf schreibt der
+Der Aufruf von `comment`, `tickets` oder `consolidate` ist die Zustimmung zum Schreiben. Ohne diesen Aufruf schreibt der
 Skill nichts: Er kommentiert nicht, setzt keine Labels und legt keine Tickets an. Freigaben (Approve)
 und Merges macht er nie.
 
 ## 1. PRs bestimmen
 
 - Hat der Nutzer PR-Links oder -Nummern genannt, genau diese prüfen. Bereits gemergte oder geschlossene
-  PRs prüfen, wenn der Nutzer sie ausdrücklich nennt, z. B. als Referenz. In der Tabelle mit
-  „bereits gemergt“ kennzeichnen.
+  PRs prüfen, wenn der Nutzer sie ausdrücklich nennt, z. B. als Referenz. Die Spalte **Status** der
+  Tabelle zeigt, welche PRs Draft, Ready, gemergt oder geschlossen sind.
 - Hat der Nutzer einen Contributor genannt, dessen offene PRs holen
   (`gh pr list --repo public-ui/kolibri --author <login> --state open` oder die GitHub-MCP-Suche
   `author:<login> is:open`).
@@ -172,12 +174,15 @@ Rote CI, ein offenes Visual Review oder Merge-Konflikte fließen als Befund in d
 
 Auf Deutsch, knapp. Immer in dieser Reihenfolge:
 
-1. Ein Satz zum Stand: welche PRs offen, welche inzwischen gemergt oder geschlossen sind.
+1. Ein Satz zum Stand: wie viele PRs Draft, Ready, gemergt und geschlossen sind.
 2. Die Tabelle, eine Zeile je PR:
 
-   | PR  | Gesamt | Kurzbeschreibung | Minimalistisch & korrekt zum Issue | Sauber & ordentlich | Sicher |
-   | --- | ------ | ---------------- | ---------------------------------- | ------------------- | ------ |
+   | PR  | Status | Gesamt | Kurzbeschreibung | Minimalistisch & korrekt zum Issue | Sauber & ordentlich | Sicher |
+   | --- | ------ | ------ | ---------------- | ---------------------------------- | ------------------- | ------ |
    - **PR:** Markdown-Link auf den PR, Kurztitel und Issue-Nummer.
+   - **Status:** der Zustand des PRs auf GitHub: 📝 Draft, 🔵 Ready (offen, bereit zum Review), 🟣 Gemergt
+     oder ⚫ Geschlossen (ohne Merge). Die Zeilen in dieser Reihenfolge sortieren, innerhalb eines Status
+     absteigend nach PR-Nummer.
    - **Kurzbeschreibung:** ein Satz, was der PR leistet und ob das Issue gelöst ist.
    - **Spalten:** Wert und ein knapper Befund. Out-of-Scope-Änderungen nur mit ihrer ID (`OOS-n`)
      referenzieren.
@@ -214,6 +219,8 @@ Am Ende des Audits eine kurze Frage mit den passenden Befehlen:
 
 - **`comment`** für die offenen PRs, die nicht grün sind.
 - **`tickets`** für die OOS- und FU-Punkte mit „Folge-Ticket: ja“.
+- **`consolidate`**, wenn gemergte oder geschlossene PRs nicht grün sind und ihre Nachbesserungen im Repo
+  umgesetzt werden können.
 - **Beobachten:** den PRs folgen und bei neuen Commits erneut `audit` ausführen.
 
 ## 7. Befehl `comment`: Nachbesserung im Scope des Issues anfordern
@@ -316,17 +323,79 @@ untergeht.
 5. **Antwort im Chat:** eine Tabelle mit ID, neuem Issue (Link und Titel) und Ursprungs-PR, dazu die
    übersprungenen Punkte mit Grund (Dublette, „Folge-Ticket: nein“).
 
+## 9. Befehl `consolidate`: Nachbesserungen gemergter PRs in einem Sammel-PR umsetzen
+
+Ziel: Was bei gemergten oder geschlossenen PRs nicht grün war, kann der Autor dort nicht mehr nachbessern.
+`consolidate` setzt diese Punkte selbst um, gesammelt in **einem** PR, der jedes betroffene Ticket mit
+`Closes #…` schließt.
+
+1. **Auswahl der PRs:** nur PRs mit Status 🟣 Gemergt oder ⚫ Geschlossen und Gesamtstatus 🟡 oder 🔴. Offene
+   PRs (Draft, Ready) sind Sache ihres Autors und gehen über `comment`. Bei einem geschlossenen,
+   **nicht** gemergten PR ist sein Code nicht in `develop`: nur Punkte übernehmen, die sich auf
+   `develop` beziehen (z. B. das Issue ist weiter offen und der Fix fehlt ganz), sonst überspringen.
+2. **Auswahl der Punkte:** nur **issue-relevante** Verbesserungen, also alles, was das jeweilige Issue
+   vollständig, korrekt und sauber löst:
+   - **warn** und **hint** aus „Minimalistisch & korrekt“ und „Sauber & ordentlich“, die eine Änderung im
+     Repo brauchen (fehlender Test aus dem Issue, nicht abgedeckte Stelle, Doku im Widerspruch zum Code,
+     jetzt überflüssiger Code).
+   - FU-Punkte, die eine Lücke zum ursprünglichen Issue schließen.
+   - **Nicht** dazu gehören: eine veraltete PR-Beschreibung (lässt sich im Repo nicht beheben, im Chat
+     nennen, damit der Changelog sie berücksichtigt), OOS-Punkte und FU-Punkte zu neuen Themen. Diese
+     bleiben eigene Tickets und eigene PRs, sonst wird der Sammel-PR selbst unscharf.
+   - Mit `[IDs]` genau diese Punkte. Eine Auswahl, die die Regeln oben verletzt, im Chat begründet
+     ablehnen.
+3. **Tickets sicherstellen:** Jeder Punkt braucht ein offenes Issue, das der Sammel-PR schließt. Fehlt
+   es, zuerst mit `tickets` (Abschnitt 8) anlegen. Das ursprüngliche Issue des PRs ist meist schon
+   geschlossen und wird nur referenziert. Ist es noch offen und schließt der Punkt es vollständig, schließt
+   der Sammel-PR auch dieses.
+4. **Umsetzen:**
+   - Den Branch von aktuellem `develop` anlegen. Gibt die Sitzung einen Branch vor, diesen nehmen, sonst
+     `fix/pr-extern-review-followups-<YYYY-MM-DD>`.
+   - Je Punkt ein eigener Commit nach Conventional Commits, im Body `Refs #<Ticket>` und der Ursprungs-PR.
+   - Minimal bleiben: nur was der Punkt verlangt. Neue Befunde während der Umsetzung nicht mitnehmen,
+     sondern als FU-Punkt im Chat nennen.
+   - Alle Regeln aus `AGENTS.md` gelten, insbesondere: `pnpm format` vor jedem Commit, für SCSS
+     `lint:stylelint --fix`, die Unit-Tests der geänderten Pakete laufen lassen, Theming-Vertrag und
+     zero visual delta beachten.
+5. **PR anlegen**, bereit zum Review (kein Draft), gegen `develop`:
+   - **Titel:** Conventional Commit, der den Zweck nennt, z. B.
+     `fix: follow-ups from the review of external pull requests`.
+   - **Label:** das `release:*`-Label nach der wichtigsten Änderung (`release:fix` bei Verhaltens-
+     korrekturen, sonst `release:engineering`), bei geänderten DOM- oder BEM-Klassen zusätzlich
+     `release:theming`.
+   - **Beschreibung** auf Englisch, nach diesem Muster:
+
+     ```markdown
+     ## Summary
+
+     Follow-ups from the review of merged external pull requests. Each item completes the issue of its original PR.
+
+     | Item | Original PR | Original issue | Change                 |
+     | ---- | ----------- | -------------- | ---------------------- |
+     | FU-1 | #<PR>       | #<issue>       | <what this PR changes> |
+
+     Closes #<ticket-1>
+     Closes #<ticket-2>
+
+     Refs #<PR-1>, #<PR-2>
+     ```
+
+     Je Ticket eine eigene Zeile `Closes #…`, damit GitHub jedes einzeln schließt.
+
+6. **Antwort im Chat:** Link zum Sammel-PR, die umgesetzten Punkte mit ihren Tickets und die
+   übersprungenen Punkte mit Grund. Danach anbieten, den PR zu beobachten und bis Grün zu bringen.
+
 ## Referenzbeispiel
 
-Bewertung vom Oktober 2026 für vier PRs eines externen Contributors (#11082 war bei der Bewertung schon
-gemergt und wurde als Referenz aufgenommen).
+Bewertung vom Oktober 2026 für vier PRs eines externen Contributors. #11082 war bei der Bewertung schon
+gemergt und wurde als Referenz aufgenommen.
 
-| PR                                                                                                                     | Gesamt | Kurzbeschreibung                                                                             | Minimalistisch & korrekt zum Issue                                                                                                                                                                                                  | Sauber & ordentlich                                                                             | Sicher       |
-| ---------------------------------------------------------------------------------------------------------------------- | ------ | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------ |
-| [#11082](https://github.com/public-ui/kolibri/pull/11082) Select: deaktivierte Optgroups (#10864), **bereits gemergt** | 🟡     | Die Weitergabe von `disabled` und die Vorauswahl sind korrekt behoben.                       | 💡 **hint**: eine Änderung außerhalb des Issues (OOS-1)                                                                                                                                                                             | ✅ **ready**                                                                                    | ✅ **ready** |
-| [#11084](https://github.com/public-ui/kolibri/pull/11084) Zähler zur Laufzeit (#11052)                                 | 🟡     | Der Fehler ist korrekt behoben, und die Verzögerung der Screenreader-Ansage bleibt erhalten. | 💡 **hint**: zwei Änderungen außerhalb des Issues (OOS-2, OOS-3)                                                                                                                                                                    | ✅ **ready**                                                                                    | ✅ **ready** |
-| [#11086](https://github.com/public-ui/kolibri/pull/11086) `aria-describedby`/`aria-invalid` (#11035)                   | 🔴     | Die ARIA-Logik ist korrekt, und es gibt keine visuellen Änderungen.                          | ⚠️ **warn**: `!important` auf allen Eigenschaften von `.visually-hidden`. Das wirkt global, Themes können es nicht mehr übersteuern. Nötig ist es nur für die belegten Eigenschaften (`position`, `margin`, `padding`). Dazu OOS-4. | 💡 **hint**: Das Label `release:theming` fehlt, obwohl ein zusätzliches Element gerendert wird. | ✅ **ready** |
-| [#11087](https://github.com/public-ui/kolibri/pull/11087) `has-value` sofort (#11053)                                  | 🟡     | Korrekt und klein.                                                                           | 💡 **hint**: drei jetzt überflüssige Zuweisungen an `hasValue`                                                                                                                                                                      | 💡 **hint**: Die PR-Beschreibung ist veraltet (`kol-input-number`).                             | ✅ **ready** |
+| PR                                                                                                   | Status     | Gesamt | Kurzbeschreibung                                                                             | Minimalistisch & korrekt zum Issue                                                                                                                                                                                                  | Sauber & ordentlich                                                                             | Sicher       |
+| ---------------------------------------------------------------------------------------------------- | ---------- | ------ | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------ |
+| [#11087](https://github.com/public-ui/kolibri/pull/11087) `has-value` sofort (#11053)                | 🔵 Ready   | 🟡     | Korrekt und klein.                                                                           | 💡 **hint**: drei jetzt überflüssige Zuweisungen an `hasValue`                                                                                                                                                                      | 💡 **hint**: Die PR-Beschreibung ist veraltet (`kol-input-number`).                             | ✅ **ready** |
+| [#11086](https://github.com/public-ui/kolibri/pull/11086) `aria-describedby`/`aria-invalid` (#11035) | 🔵 Ready   | 🔴     | Die ARIA-Logik ist korrekt, und es gibt keine visuellen Änderungen.                          | ⚠️ **warn**: `!important` auf allen Eigenschaften von `.visually-hidden`. Das wirkt global, Themes können es nicht mehr übersteuern. Nötig ist es nur für die belegten Eigenschaften (`position`, `margin`, `padding`). Dazu OOS-4. | 💡 **hint**: Das Label `release:theming` fehlt, obwohl ein zusätzliches Element gerendert wird. | ✅ **ready** |
+| [#11084](https://github.com/public-ui/kolibri/pull/11084) Zähler zur Laufzeit (#11052)               | 🔵 Ready   | 🟡     | Der Fehler ist korrekt behoben, und die Verzögerung der Screenreader-Ansage bleibt erhalten. | 💡 **hint**: zwei Änderungen außerhalb des Issues (OOS-2, OOS-3)                                                                                                                                                                    | ✅ **ready**                                                                                    | ✅ **ready** |
+| [#11082](https://github.com/public-ui/kolibri/pull/11082) Select: deaktivierte Optgroups (#10864)    | 🟣 Gemergt | 🟡     | Die Weitergabe von `disabled` und die Vorauswahl sind korrekt behoben.                       | 💡 **hint**: eine Änderung außerhalb des Issues (OOS-1)                                                                                                                                                                             | ✅ **ready**                                                                                    | ✅ **ready** |
 
 **Out-of-Scope-Hinweise**
 
