@@ -1,1 +1,0 @@
-import{a as e,g as t,i as n,y as r}from"./base-web-component-2jzKhlYV-UpoWiluE.js";var i=e(`max`,100,t,e=>e>0),a=e(`unit`,`%`,r,e=>e.length>0),o=n(`value`,0,(e,n)=>{let r=t(e);return r<n.min?n.min:r>n.max?n.max:r},e=>e!=null);export{i as n,a as r,o as t};
