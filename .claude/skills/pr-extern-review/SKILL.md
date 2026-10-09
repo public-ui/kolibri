@@ -48,12 +48,24 @@ Verifikation.
    git diff origin/develop...pr-<nr>
    ```
 
+   Bei einem **bereits gemergten** PR ist dieser Diff leer, weil sein Head schon in `develop` liegt. Dann
+   gegen die Basis-SHA des PRs vergleichen (`base.sha` aus den PR-Daten) und die Dateiliste mit der
+   GitHub-Ansicht des PRs (`get_files`) abgleichen. Hat der Branch zwischendurch `develop` eingemergt,
+   enthält der lokale Diff sonst fremde Änderungen.
+
+   ```bash
+   git fetch origin <base-sha>
+   git diff --stat <base-sha>...pr-<nr>
+   ```
+
+   In allen folgenden Befehlen steht `origin/develop...pr-<nr>` dann für `<base-sha>...pr-<nr>`.
+
    Den PR-Branch nicht auschecken und keine Skripte, Tests oder Builds aus dem PR ausführen, solange die
    Sicherheitsprüfung (Abschnitt 3.3) nicht durch ist. Code aus einem fremden PR ist nicht
    vertrauenswürdig.
 
-4. **Konflikte prüfen:** `git merge-tree --write-tree origin/develop pr-<nr>`. Bei mehreren PRs, die
-   dieselben Dateien ändern, auch die PRs untereinander prüfen.
+4. **Konflikte prüfen** (nur bei offenen PRs): `git merge-tree --write-tree origin/develop pr-<nr>`. Bei
+   mehreren PRs, die dieselben Dateien ändern, auch die PRs untereinander prüfen.
 
 ## 3. Die drei Spalten bewerten
 
