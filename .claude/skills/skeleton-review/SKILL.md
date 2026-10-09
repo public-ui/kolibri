@@ -135,14 +135,14 @@ Schweregrad **Breaking Theming**.
 
 Befunde absteigend nach Schweregrad sortieren:
 
-| Schweregrad           | Bedeutung                                                                                    |
-| --------------------- | -------------------------------------------------------------------------------------------- |
-| Blocker (Architektur) | Verstoß gegen R1–R5                                                                          |
-| Blocker (Bug/A11y)    | fehlerhaftes Verhalten oder Barriere                                                         |
-| Breaking API          | erfordert ein Major-Release                                                                  |
+| Schweregrad           | Bedeutung                                                                                  |
+| --------------------- | ------------------------------------------------------------------------------------------ |
+| Blocker (Architektur) | Verstoß gegen R1–R5                                                                        |
+| Blocker (Bug/A11y)    | fehlerhaftes Verhalten oder Barriere                                                       |
+| Breaking API          | erfordert ein Major-Release                                                                |
 | Breaking Theming      | DOM-/BEM-Änderung; Minor-Release mit Label `release:theming`, alle Themes im Repo anpassen |
-| UX/visuell            | sichtbare Abweichung ohne Bruch                                                              |
-| Polish                | Konventionen, Doku, Kleinigkeiten                                                            |
+| UX/visuell            | sichtbare Abweichung ohne Bruch                                                            |
+| Polish                | Konventionen, Doku, Kleinigkeiten                                                          |
 
 Pro Befund:
 
