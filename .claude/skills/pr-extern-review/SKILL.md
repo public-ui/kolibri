@@ -432,6 +432,11 @@ Ziel: Jeder PR landet im Changelog in der richtigen Kategorie. Das Audit empfieh
 3. **Ändern:** nur `release:*`-Labels anfassen. Das empfohlene Hauptlabel setzen, ein abweichendes
    Hauptlabel entfernen, Zusatzlabels (`release:sample`, `release:theming`) nur ergänzen. `release:ignore`
    nie setzen oder entfernen. Andere Labels nicht ändern.
+   - Die aktuellen Labels über die PR-Daten lesen (`pull_request_read` mit `get` bzw. `gh pr view`); die
+     Issue-Abfrage findet PRs nicht.
+   - `issue_write` mit `update` ersetzt die ganze Label-Liste. Deshalb die vollständige neue Liste
+     übergeben, mit allen Labels außerhalb von `release:*` unverändert (alternativ `gh pr edit
+--add-label/--remove-label`).
 4. **Kein Kommentar:** Das Ändern eines Labels erscheint in der Zeitleiste des PRs. Einen Kommentar dafür
    nicht posten.
 5. **Antwort im Chat:** eine Tabelle mit PR, Labels vorher, Labels nachher und den übersprungenen PRs mit
