@@ -1,14 +1,14 @@
 {
 	"schema": 1,
 	"state": "pending",
-	"description": "98 added – 0 of 98 approved, review pending",
-	"computedAt": "2026-10-09T02:39:38.066Z",
+	"description": "56 added – 0 of 56 approved, review pending",
+	"computedAt": "2026-10-09T06:51:25.879Z",
 	"pr": 11232,
-	"head": "d66e87d25455710d999d1493ae303506fbfce8a4",
-	"digest": "sha256:bba5d51ecf1b5f62b19c995ac4d8046b5c23d575785863c20859b95a008ccb40",
+	"head": "ce3d4be50ef558ab5d8846fe5feaa8572b04c272",
+	"digest": "sha256:e3f1d44e1699bf627370ab5f6424377b2d4c4016925ab25cdf61cf97da7e5bf6",
 	"counts": {
-		"changes": 98,
-		"open": 98,
+		"changes": 56,
+		"open": 56,
 		"approved": 0,
 		"rejected": 0,
 		"routeErrors": 0,
@@ -32,22 +32,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"test-tag-name-transformer/abbr-variants--abbr-slot": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/abbr-variants--empty": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/abbr-variants--empty-strings": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/abbr-variants--label-only": {
-			"state": "open",
-			"notes": []
-		},
 		"test-tag-name-transformer/abbr-variants--long-label": {
 			"state": "open",
 			"notes": []
@@ -57,14 +41,6 @@
 			"notes": []
 		},
 		"test-tag-name-transformer/abbr-variants--slot-label": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/abbr-variants--slot-markup": {
-			"state": "open",
-			"notes": []
-		},
-		"test-tag-name-transformer/abbr-variants--slot-markup-label": {
 			"state": "open",
 			"notes": []
 		},
@@ -88,22 +64,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-bwst/abbr-variants--abbr-slot": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/abbr-variants--empty": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/abbr-variants--empty-strings": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/abbr-variants--label-only": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-bwst/abbr-variants--long-label": {
 			"state": "open",
 			"notes": []
@@ -113,14 +73,6 @@
 			"notes": []
 		},
 		"theme-bwst/abbr-variants--slot-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/abbr-variants--slot-markup": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/abbr-variants--slot-markup-label": {
 			"state": "open",
 			"notes": []
 		},
@@ -144,22 +96,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-default/abbr-variants--abbr-slot": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/abbr-variants--empty": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/abbr-variants--empty-strings": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/abbr-variants--label-only": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-default/abbr-variants--long-label": {
 			"state": "open",
 			"notes": []
@@ -169,14 +105,6 @@
 			"notes": []
 		},
 		"theme-default/abbr-variants--slot-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/abbr-variants--slot-markup": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/abbr-variants--slot-markup-label": {
 			"state": "open",
 			"notes": []
 		},
@@ -200,22 +128,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-desy/abbr-variants--abbr-slot": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/abbr-variants--empty": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/abbr-variants--empty-strings": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/abbr-variants--label-only": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-desy/abbr-variants--long-label": {
 			"state": "open",
 			"notes": []
@@ -225,14 +137,6 @@
 			"notes": []
 		},
 		"theme-desy/abbr-variants--slot-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/abbr-variants--slot-markup": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/abbr-variants--slot-markup-label": {
 			"state": "open",
 			"notes": []
 		},
@@ -256,22 +160,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-ecl/abbr-variants--abbr-slot": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/abbr-variants--empty": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/abbr-variants--empty-strings": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/abbr-variants--label-only": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-ecl/abbr-variants--long-label": {
 			"state": "open",
 			"notes": []
@@ -281,14 +169,6 @@
 			"notes": []
 		},
 		"theme-ecl/abbr-variants--slot-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/abbr-variants--slot-markup": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/abbr-variants--slot-markup-label": {
 			"state": "open",
 			"notes": []
 		},
@@ -312,22 +192,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"theme-kern/abbr-variants--abbr-slot": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/abbr-variants--empty": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/abbr-variants--empty-strings": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/abbr-variants--label-only": {
-			"state": "open",
-			"notes": []
-		},
 		"theme-kern/abbr-variants--long-label": {
 			"state": "open",
 			"notes": []
@@ -337,14 +201,6 @@
 			"notes": []
 		},
 		"theme-kern/abbr-variants--slot-label": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/abbr-variants--slot-markup": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/abbr-variants--slot-markup-label": {
 			"state": "open",
 			"notes": []
 		},
@@ -368,22 +224,6 @@
 			"state": "open",
 			"notes": []
 		},
-		"unstyled/abbr-variants--abbr-slot": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/abbr-variants--empty": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/abbr-variants--empty-strings": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/abbr-variants--label-only": {
-			"state": "open",
-			"notes": []
-		},
 		"unstyled/abbr-variants--long-label": {
 			"state": "open",
 			"notes": []
@@ -393,14 +233,6 @@
 			"notes": []
 		},
 		"unstyled/abbr-variants--slot-label": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/abbr-variants--slot-markup": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/abbr-variants--slot-markup-label": {
 			"state": "open",
 			"notes": []
 		},

@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11232,
-	"head": "d66e87d25455710d999d1493ae303506fbfce8a4",
+	"head": "ce3d4be50ef558ab5d8846fe5feaa8572b04c272",
 	"repository": "public-ui/kolibri",
-	"runId": 37873301595,
-	"generatedAt": "2026-10-09T02:39:37.465Z",
-	"digest": "sha256:bba5d51ecf1b5f62b19c995ac4d8046b5c23d575785863c20859b95a008ccb40",
+	"runId": 37893346795,
+	"generatedAt": "2026-10-09T06:51:25.292Z",
+	"digest": "sha256:e3f1d44e1699bf627370ab5f6424377b2d4c4016925ab25cdf61cf97da7e5bf6",
 	"baseline": {
 		"sha": "da98ff4ff02f54736f4434ddbdf4ec678819be9a",
 		"ref": "develop",
@@ -19,7 +19,7 @@
 	"summary": {
 		"unchanged": 2919,
 		"changed": 0,
-		"added": 98,
+		"added": 56,
 		"removed": 0,
 		"error": 0
 	},
@@ -45,11 +45,11 @@
 			"summary": {
 				"unchanged": 417,
 				"changed": 0,
-				"added": 14,
+				"added": 8,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:57a47700eb19f6f11a53a161bb9eeffd2987892db09587f24e9920de18553527",
+			"digest": "sha256:0f16175d3ffabacf9f84c1422b5b278c4bdabbcd3ecc5e2b5de586c89a9cb480",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -86,34 +86,6 @@
 					"actual": "test-tag-name-transformer/abbr-variants--abbr-only.actual.png"
 				},
 				{
-					"name": "abbr-variants--abbr-slot",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:44be5e3c1f93bb56c6ee51cdab4d0f3a5d3269f22a95eff63abba95f4b562347",
-					"actual": "test-tag-name-transformer/abbr-variants--abbr-slot.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:0cc02aa16d7ec7b6935f95a8c0fcecb15bf6cf1521fef4acfa8732bb7492a01f",
-					"actual": "test-tag-name-transformer/abbr-variants--empty.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty-strings",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:44be5e3c1f93bb56c6ee51cdab4d0f3a5d3269f22a95eff63abba95f4b562347",
-					"actual": "test-tag-name-transformer/abbr-variants--empty-strings.actual.png"
-				},
-				{
-					"name": "abbr-variants--label-only",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:0cc02aa16d7ec7b6935f95a8c0fcecb15bf6cf1521fef4acfa8732bb7492a01f",
-					"actual": "test-tag-name-transformer/abbr-variants--label-only.actual.png"
-				},
-				{
 					"name": "abbr-variants--long-label",
 					"route": "abbr/variants",
 					"status": "added",
@@ -133,20 +105,6 @@
 					"status": "added",
 					"hash": "sha256:9621e343f3dfd8b4abb20d44a8c9719d467e7fbd8edd2d21398e4bdef41a5647",
 					"actual": "test-tag-name-transformer/abbr-variants--slot-label.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:6d0fcef46543499d305232b3a34125146abb6ad956e01d4a9e9289849a0b62e2",
-					"actual": "test-tag-name-transformer/abbr-variants--slot-markup.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup-label",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:6d0fcef46543499d305232b3a34125146abb6ad956e01d4a9e9289849a0b62e2",
-					"actual": "test-tag-name-transformer/abbr-variants--slot-markup-label.actual.png"
 				},
 				{
 					"name": "abbr-variants--slot-only",
@@ -2676,11 +2634,11 @@
 			"summary": {
 				"unchanged": 417,
 				"changed": 0,
-				"added": 14,
+				"added": 8,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:079b24f0da33ba8ee0d97254a0999302896e1d3f3181fbac0d172a08fafe4f84",
+			"digest": "sha256:35d09a3f826dc5374d75b73413e39e062bd6964b9e83e61296d7bfc8b9ad3bcc",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2717,34 +2675,6 @@
 					"actual": "theme-bwst/abbr-variants--abbr-only.actual.png"
 				},
 				{
-					"name": "abbr-variants--abbr-slot",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:f36f4be9a130b2160be6b65233d4da4e109e040e6e4292eaecaa76ac061aee68",
-					"actual": "theme-bwst/abbr-variants--abbr-slot.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:72280ad14778107472c11420fe9faed63e7c40463237ed36eed4794df3e48cb1",
-					"actual": "theme-bwst/abbr-variants--empty.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty-strings",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:f36f4be9a130b2160be6b65233d4da4e109e040e6e4292eaecaa76ac061aee68",
-					"actual": "theme-bwst/abbr-variants--empty-strings.actual.png"
-				},
-				{
-					"name": "abbr-variants--label-only",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:72280ad14778107472c11420fe9faed63e7c40463237ed36eed4794df3e48cb1",
-					"actual": "theme-bwst/abbr-variants--label-only.actual.png"
-				},
-				{
 					"name": "abbr-variants--long-label",
 					"route": "abbr/variants",
 					"status": "added",
@@ -2764,20 +2694,6 @@
 					"status": "added",
 					"hash": "sha256:587844b81db9c2c875265a0b2f2aabda88b79d59bf2f9f3584ee8a2f759d2735",
 					"actual": "theme-bwst/abbr-variants--slot-label.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:4a1ebbc5173267e7505d52d4481332cb06d0bc70deead2e5d7e99a3ca22eb40f",
-					"actual": "theme-bwst/abbr-variants--slot-markup.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup-label",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:4a1ebbc5173267e7505d52d4481332cb06d0bc70deead2e5d7e99a3ca22eb40f",
-					"actual": "theme-bwst/abbr-variants--slot-markup-label.actual.png"
 				},
 				{
 					"name": "abbr-variants--slot-only",
@@ -5307,11 +5223,11 @@
 			"summary": {
 				"unchanged": 417,
 				"changed": 0,
-				"added": 14,
+				"added": 8,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:57a47700eb19f6f11a53a161bb9eeffd2987892db09587f24e9920de18553527",
+			"digest": "sha256:0f16175d3ffabacf9f84c1422b5b278c4bdabbcd3ecc5e2b5de586c89a9cb480",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5348,34 +5264,6 @@
 					"actual": "theme-default/abbr-variants--abbr-only.actual.png"
 				},
 				{
-					"name": "abbr-variants--abbr-slot",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:44be5e3c1f93bb56c6ee51cdab4d0f3a5d3269f22a95eff63abba95f4b562347",
-					"actual": "theme-default/abbr-variants--abbr-slot.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:0cc02aa16d7ec7b6935f95a8c0fcecb15bf6cf1521fef4acfa8732bb7492a01f",
-					"actual": "theme-default/abbr-variants--empty.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty-strings",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:44be5e3c1f93bb56c6ee51cdab4d0f3a5d3269f22a95eff63abba95f4b562347",
-					"actual": "theme-default/abbr-variants--empty-strings.actual.png"
-				},
-				{
-					"name": "abbr-variants--label-only",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:0cc02aa16d7ec7b6935f95a8c0fcecb15bf6cf1521fef4acfa8732bb7492a01f",
-					"actual": "theme-default/abbr-variants--label-only.actual.png"
-				},
-				{
 					"name": "abbr-variants--long-label",
 					"route": "abbr/variants",
 					"status": "added",
@@ -5395,20 +5283,6 @@
 					"status": "added",
 					"hash": "sha256:9621e343f3dfd8b4abb20d44a8c9719d467e7fbd8edd2d21398e4bdef41a5647",
 					"actual": "theme-default/abbr-variants--slot-label.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:6d0fcef46543499d305232b3a34125146abb6ad956e01d4a9e9289849a0b62e2",
-					"actual": "theme-default/abbr-variants--slot-markup.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup-label",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:6d0fcef46543499d305232b3a34125146abb6ad956e01d4a9e9289849a0b62e2",
-					"actual": "theme-default/abbr-variants--slot-markup-label.actual.png"
 				},
 				{
 					"name": "abbr-variants--slot-only",
@@ -7938,11 +7812,11 @@
 			"summary": {
 				"unchanged": 417,
 				"changed": 0,
-				"added": 14,
+				"added": 8,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:97cad9640f3b4444e9dd8598e0c3d2787722dc58b5b14a97996ec2659320ae31",
+			"digest": "sha256:effe2a30c615365506c6de508ebdb83870d52a090f7fc4b8386bf89c0a89a39b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7979,34 +7853,6 @@
 					"actual": "theme-desy/abbr-variants--abbr-only.actual.png"
 				},
 				{
-					"name": "abbr-variants--abbr-slot",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:446c6ececacb1477ae96e8ee239af1cc9cc5cbdbe7bc56921fd3bf2719ed2e11",
-					"actual": "theme-desy/abbr-variants--abbr-slot.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:72280ad14778107472c11420fe9faed63e7c40463237ed36eed4794df3e48cb1",
-					"actual": "theme-desy/abbr-variants--empty.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty-strings",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:446c6ececacb1477ae96e8ee239af1cc9cc5cbdbe7bc56921fd3bf2719ed2e11",
-					"actual": "theme-desy/abbr-variants--empty-strings.actual.png"
-				},
-				{
-					"name": "abbr-variants--label-only",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:72280ad14778107472c11420fe9faed63e7c40463237ed36eed4794df3e48cb1",
-					"actual": "theme-desy/abbr-variants--label-only.actual.png"
-				},
-				{
 					"name": "abbr-variants--long-label",
 					"route": "abbr/variants",
 					"status": "added",
@@ -8026,20 +7872,6 @@
 					"status": "added",
 					"hash": "sha256:467f91f0eca2609e213e1cba20180c65c3867a6f055e78dc33b98e7344346b6a",
 					"actual": "theme-desy/abbr-variants--slot-label.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:b1c799ddfd1b4eb9bd1fe97891b25e0c65537fd8c58bd0456b3a574e66cf6893",
-					"actual": "theme-desy/abbr-variants--slot-markup.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup-label",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:4a1ebbc5173267e7505d52d4481332cb06d0bc70deead2e5d7e99a3ca22eb40f",
-					"actual": "theme-desy/abbr-variants--slot-markup-label.actual.png"
 				},
 				{
 					"name": "abbr-variants--slot-only",
@@ -10569,11 +10401,11 @@
 			"summary": {
 				"unchanged": 417,
 				"changed": 0,
-				"added": 14,
+				"added": 8,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:2a5aee858fc3fa64b5c37717d0ca4603684f91093333b8bfb7069bff6c5aadb8",
+			"digest": "sha256:747e46849d49d2e614b487a0fb7fae549bb95b77477ed25e0ded2a3198afdbf3",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10610,34 +10442,6 @@
 					"actual": "theme-ecl/abbr-variants--abbr-only.actual.png"
 				},
 				{
-					"name": "abbr-variants--abbr-slot",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:acd5fb6bc4e433c7b81fa6dbb4e79eca7c7c9c4c61e34d8d66ae8e110f919a00",
-					"actual": "theme-ecl/abbr-variants--abbr-slot.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:4391d5ffb59042008b0c734c83e7ce33ae842fc00673fddff9f352e9593e9954",
-					"actual": "theme-ecl/abbr-variants--empty.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty-strings",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:acd5fb6bc4e433c7b81fa6dbb4e79eca7c7c9c4c61e34d8d66ae8e110f919a00",
-					"actual": "theme-ecl/abbr-variants--empty-strings.actual.png"
-				},
-				{
-					"name": "abbr-variants--label-only",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:4391d5ffb59042008b0c734c83e7ce33ae842fc00673fddff9f352e9593e9954",
-					"actual": "theme-ecl/abbr-variants--label-only.actual.png"
-				},
-				{
 					"name": "abbr-variants--long-label",
 					"route": "abbr/variants",
 					"status": "added",
@@ -10657,20 +10461,6 @@
 					"status": "added",
 					"hash": "sha256:79fbbb7caea1b1a870751b4bd04992cd8b6ec8d82613801b29fea1bab1df994f",
 					"actual": "theme-ecl/abbr-variants--slot-label.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:d1175ea3d85e5e9e230f74887d1040ad86c0aa06090157c981858434f4119738",
-					"actual": "theme-ecl/abbr-variants--slot-markup.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup-label",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:d1175ea3d85e5e9e230f74887d1040ad86c0aa06090157c981858434f4119738",
-					"actual": "theme-ecl/abbr-variants--slot-markup-label.actual.png"
 				},
 				{
 					"name": "abbr-variants--slot-only",
@@ -13200,11 +12990,11 @@
 			"summary": {
 				"unchanged": 417,
 				"changed": 0,
-				"added": 14,
+				"added": 8,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:5655bec855d2492a58231e1d99ac6e76a33ba89c3f16af7a42279f713ba53212",
+			"digest": "sha256:e82178fb994a19accb0ccfec583651875e27285cac274629f01d22161dfac020",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -13241,34 +13031,6 @@
 					"actual": "theme-kern/abbr-variants--abbr-only.actual.png"
 				},
 				{
-					"name": "abbr-variants--abbr-slot",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:312494a03f801a80c07fd710b7ad207b73835880ccbd141e3353afa34f736868",
-					"actual": "theme-kern/abbr-variants--abbr-slot.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:e37f5c50102970b222dca5af57f067feec2cad61a7cb8c15450be5d4c7a0bd99",
-					"actual": "theme-kern/abbr-variants--empty.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty-strings",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:312494a03f801a80c07fd710b7ad207b73835880ccbd141e3353afa34f736868",
-					"actual": "theme-kern/abbr-variants--empty-strings.actual.png"
-				},
-				{
-					"name": "abbr-variants--label-only",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:e37f5c50102970b222dca5af57f067feec2cad61a7cb8c15450be5d4c7a0bd99",
-					"actual": "theme-kern/abbr-variants--label-only.actual.png"
-				},
-				{
 					"name": "abbr-variants--long-label",
 					"route": "abbr/variants",
 					"status": "added",
@@ -13288,20 +13050,6 @@
 					"status": "added",
 					"hash": "sha256:994a471ddcf8544089ada88f434539f904fa37c19c2bc47d396b3d29ca86ce64",
 					"actual": "theme-kern/abbr-variants--slot-label.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:594a5c3f826f28d4a7922980a77015740029f1ba6db48c088596265149371304",
-					"actual": "theme-kern/abbr-variants--slot-markup.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup-label",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:594a5c3f826f28d4a7922980a77015740029f1ba6db48c088596265149371304",
-					"actual": "theme-kern/abbr-variants--slot-markup-label.actual.png"
 				},
 				{
 					"name": "abbr-variants--slot-only",
@@ -15831,11 +15579,11 @@
 			"summary": {
 				"unchanged": 417,
 				"changed": 0,
-				"added": 14,
+				"added": 8,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:8400e2f93339c3c5a3cec7bbc0a0427d53e8dea0aca13eb6e7f12506013399c4",
+			"digest": "sha256:4bceba8192076f1aa96da04cd64504faa0f1cde5239442bac036250a6c064f30",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15872,73 +15620,31 @@
 					"actual": "unstyled/abbr-variants--abbr-only.actual.png"
 				},
 				{
-					"name": "abbr-variants--abbr-slot",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:5983fbcc5de25a368113540930a7d07143e2477d4db31cf71c7b807af386f77e",
-					"actual": "unstyled/abbr-variants--abbr-slot.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:72280ad14778107472c11420fe9faed63e7c40463237ed36eed4794df3e48cb1",
-					"actual": "unstyled/abbr-variants--empty.actual.png"
-				},
-				{
-					"name": "abbr-variants--empty-strings",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:ab489e5dc57e8411589b680afa67dfbfbe02f8beb6d05f8a8b0f1ac019655bcf",
-					"actual": "unstyled/abbr-variants--empty-strings.actual.png"
-				},
-				{
-					"name": "abbr-variants--label-only",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:92cda0aecdf9c592872b57c26fda3103aadfc4a411cdf45207bc7c83b82da401",
-					"actual": "unstyled/abbr-variants--label-only.actual.png"
-				},
-				{
 					"name": "abbr-variants--long-label",
 					"route": "abbr/variants",
 					"status": "added",
-					"hash": "sha256:e9ff11f019f3c1203188619e0822b48653b40ce9e002a6b331eff55a3b3b1da9",
+					"hash": "sha256:44cb311466912f417e3a1f785b7742fb1707c96ca6ceecea977d1b43fd6e0d1c",
 					"actual": "unstyled/abbr-variants--long-label.actual.png"
 				},
 				{
 					"name": "abbr-variants--long-label-320",
 					"route": "abbr/variants",
 					"status": "added",
-					"hash": "sha256:aff0cc1cecc314bb018b70312995a8bca6d6640658589409b9884bc0914cf194",
+					"hash": "sha256:115a347207c76d72424ccdeef36e500777f1f265290669cb2111eac9d7c72f6c",
 					"actual": "unstyled/abbr-variants--long-label-320.actual.png"
 				},
 				{
 					"name": "abbr-variants--slot-label",
 					"route": "abbr/variants",
 					"status": "added",
-					"hash": "sha256:49152d7f86e008f5be7b4d99fc4bb653944f129d2b8cad3d499c031dd58c943e",
+					"hash": "sha256:59c5331e8ccd32c089f34b4ca81df14f2b1801ae1b5467924bb01d234113a0fe",
 					"actual": "unstyled/abbr-variants--slot-label.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:4a1ebbc5173267e7505d52d4481332cb06d0bc70deead2e5d7e99a3ca22eb40f",
-					"actual": "unstyled/abbr-variants--slot-markup.actual.png"
-				},
-				{
-					"name": "abbr-variants--slot-markup-label",
-					"route": "abbr/variants",
-					"status": "added",
-					"hash": "sha256:4a1ebbc5173267e7505d52d4481332cb06d0bc70deead2e5d7e99a3ca22eb40f",
-					"actual": "unstyled/abbr-variants--slot-markup-label.actual.png"
 				},
 				{
 					"name": "abbr-variants--slot-only",
 					"route": "abbr/variants",
 					"status": "added",
-					"hash": "sha256:308422d5b49ac780aa0d7c7e9ff870c574589a8208f6e14ddeb62e9c9a5304b2",
+					"hash": "sha256:5983fbcc5de25a368113540930a7d07143e2477d4db31cf71c7b807af386f77e",
 					"actual": "unstyled/abbr-variants--slot-only.actual.png"
 				},
 				{
