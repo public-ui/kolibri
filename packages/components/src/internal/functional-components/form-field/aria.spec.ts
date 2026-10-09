@@ -33,8 +33,8 @@ describe('getFormFieldAria', () => {
 		expect(getFormFieldAria({ id: 'field-nonce', msg: error }).ariaDescribedBy).toEqual([]);
 	});
 
-	it('references the message with hideMsg when touched', () => {
-		expect(getFormFieldAria({ id: 'field-nonce', msg: error, hideMsg: true, touched: true })).toEqual({
+	it('references the message when touched', () => {
+		expect(getFormFieldAria({ id: 'field-nonce', msg: error, touched: true })).toEqual({
 			hasError: true,
 			hasHint: false,
 			ariaDescribedBy: ['field-msg-nonce'],

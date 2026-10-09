@@ -295,7 +295,6 @@ export abstract class BaseFormFieldWebComponent<Api extends FormFieldBaseApi> ex
 			msg: shared.getRenderProp('msg'),
 			hint: shared.getRenderProp('hint'),
 			touched: shared.getRenderProp('touched'),
-			hideMsg: shared.getRenderProp('hideMsg'),
 		});
 	}
 

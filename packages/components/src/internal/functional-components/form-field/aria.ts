@@ -7,7 +7,6 @@ type FormFieldAriaInput = {
 	msg?: Stringified<MsgPropType>;
 	hint?: string;
 	touched?: boolean;
-	hideMsg?: boolean;
 };
 
 type FormFieldAria = {

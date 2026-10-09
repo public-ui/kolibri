@@ -67,5 +67,18 @@ describe('kol-input-text aria-describedby', () => {
 		const msgEl = page.root?.shadowRoot?.querySelector('#input-text-msg-nonce');
 		expect(msgEl).not.toBeNull();
 		expect(msgEl?.classList.contains('visually-hidden')).toBe(true);
+		expect(msgEl?.getAttribute('role')).toBeNull();
+	});
+
+	it('suppresses alert role on visually hidden msg even when _alert is true', async () => {
+		const page = await newSpecPage({
+			components: [KolInputText],
+			template: () => <kol-input-text _label="Label" _msg={{ _description: 'Fehler', _type: 'error', _alert: true }} _hideMsg={true} _touched={true} />,
+		});
+
+		const msgEl = page.root?.shadowRoot?.querySelector('#input-text-msg-nonce');
+		expect(msgEl).not.toBeNull();
+		expect(msgEl?.classList.contains('visually-hidden')).toBe(true);
+		expect(msgEl?.getAttribute('role')).toBeNull();
 	});
 });

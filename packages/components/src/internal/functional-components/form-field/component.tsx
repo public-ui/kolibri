@@ -171,7 +171,7 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 					<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id={createRelatedUniqueId(id, 'counter')} ref={counter.ariaRef} />
 				</div>
 			)}
-			{showMsg && <FormFieldMsgFC id={id} alert={hideMsg ? false : alert} msg={msg} class={hideMsg ? 'visually-hidden' : undefined} />}
+			{showMsg && <FormFieldMsgFC id={id} alert={alert} hideMsg={hideMsg} msg={msg} />}
 			{!renderNoHint && <FormFieldHintFC id={id} hint={hint} />}
 			{typeof maxLength === 'number' && !counter && (
 				// The hidden character limit hint is only rendered without a counter: the counter spans
