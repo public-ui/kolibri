@@ -1,0 +1,412 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "98 added – 0 of 98 approved, review pending",
+	"computedAt": "2026-10-09T02:39:38.066Z",
+	"pr": 11232,
+	"head": "d66e87d25455710d999d1493ae303506fbfce8a4",
+	"digest": "sha256:bba5d51ecf1b5f62b19c995ac4d8046b5c23d575785863c20859b95a008ccb40",
+	"counts": {
+		"changes": 98,
+		"open": 98,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--abbr-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--empty": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--empty-strings": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--label-only": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--slot-markup": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--slot-markup-label": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--abbr-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--empty": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--empty-strings": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--label-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--slot-markup": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--slot-markup-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--abbr-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--empty": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--empty-strings": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--label-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--slot-markup": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--slot-markup-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--abbr-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--empty": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--empty-strings": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--label-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--slot-markup": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--slot-markup-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--abbr-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--empty": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--empty-strings": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--label-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--slot-markup": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--slot-markup-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--abbr-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--empty": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--empty-strings": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--label-only": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--slot-markup": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--slot-markup-label": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-long-form--long-form": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--abbr-label": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--abbr-label-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--abbr-only": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--abbr-slot": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--empty": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--empty-strings": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--label-only": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--long-label": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--long-label-320": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--slot-label": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--slot-markup": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--slot-markup-label": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/abbr-variants--slot-only": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
