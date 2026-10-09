@@ -1,0 +1,1 @@
+import{b as e,o as t}from"./base-web-component-DuCGC_Ft-CMp50ZRh.js";var n=t(`name`,``,e);export{n as t};

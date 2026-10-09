@@ -1,1 +1,0 @@
-import"./index-DXG61PlX-oPC2a0hO.js";var e=[`left`,`right`],t=[`top`,`bottom`],n=[...e,...t];export{n as t};
