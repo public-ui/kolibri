@@ -435,6 +435,10 @@ export class KolInputPassword
 		this.didLoadTextInput();
 	}
 
+	public componentDidUpdate(): void {
+		this.didUpdateTextInput();
+	}
+
 	public componentDidRender(): void {
 		this.syncFormField();
 		this.visibilityToggle.syncListeners();

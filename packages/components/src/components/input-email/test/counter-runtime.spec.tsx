@@ -1,0 +1,94 @@
+import { afterEach, describe, expect, it, jest } from '@jest/globals';
+import { h } from '@stencil/core';
+import { newSpecPage } from '@stencil/core/testing';
+
+import { KolInputEmail } from '../component';
+
+describe('kol-input-email counter runtime updates', () => {
+	afterEach(() => {
+		jest.useRealTimers();
+	});
+
+	it('populates counter immediately when _hasCounter is toggled to true at runtime', async () => {
+		const page = await newSpecPage({
+			components: [KolInputEmail],
+			template: () => <kol-input-email _label="Label" _maxLength={20} _value="test@example.com" />,
+		});
+
+		expect(page.root?.shadowRoot?.querySelector('[data-testid="input-counter"]')).toBeNull();
+
+		const component = page.root as HTMLKolInputEmailElement;
+		component._hasCounter = true;
+		await page.waitForChanges();
+
+		const counter = page.root?.shadowRoot?.querySelector('[data-testid="input-counter"]') as HTMLSpanElement;
+		expect(counter).not.toBeNull();
+		expect(counter.innerText).toBe('kol-character-counter-current-of-max');
+	});
+
+	it('updates counter immediately when _maxLengthBehavior is changed at runtime', async () => {
+		const page = await newSpecPage({
+			components: [KolInputEmail],
+			template: () => <kol-input-email _label="Label" _hasCounter={true} _maxLength={5} _maxLengthBehavior="hard" _value="test@example.com" />,
+		});
+
+		expect(page.root?.shadowRoot?.querySelector('[data-testid="input-counter"]')).not.toBeNull();
+
+		const component = page.root as HTMLKolInputEmailElement;
+		component._maxLengthBehavior = 'soft';
+		await page.waitForChanges();
+
+		const counter = page.root?.shadowRoot?.querySelector('[data-testid="input-counter"]') as HTMLSpanElement;
+		expect(counter.innerText).toBe('kol-character-limit-exceeded');
+	});
+
+	describe('accessibility regressions', () => {
+		it('debounces aria-live counter updates while typing', async () => {
+			const page = await newSpecPage({
+				components: [KolInputEmail],
+				template: () => <kol-input-email _label="Label" _hasCounter={true} _maxLength={5} _maxLengthBehavior="soft" _value="" />,
+			});
+
+			jest.useFakeTimers({ doNotFake: ['nextTick', 'setImmediate'] });
+
+			const visualCounter = page.root?.shadowRoot?.querySelector('[data-testid="input-counter"]') as HTMLSpanElement;
+			const ariaCounter = page.root?.shadowRoot?.querySelector('[data-testid="input-counter-aria"]') as HTMLSpanElement;
+			const input = page.root?.shadowRoot?.querySelector('input') as HTMLInputElement;
+
+			expect(visualCounter.innerText).toBe('kol-character-limit-remaining');
+			expect(ariaCounter.innerText).toBe('kol-character-limit-remaining');
+
+			input.value = 'Exceeded';
+			input.dispatchEvent(new Event('input'));
+			await page.waitForChanges();
+
+			expect(visualCounter.innerText).toBe('kol-character-limit-exceeded');
+			expect(ariaCounter.innerText).toBe('kol-character-limit-remaining');
+
+			jest.advanceTimersByTime(1000);
+			expect(ariaCounter.innerText).toBe('kol-character-limit-exceeded');
+		});
+
+		it('re-announces counter with marker on focus', async () => {
+			const page = await newSpecPage({
+				components: [KolInputEmail],
+				template: () => <kol-input-email _label="Label" _hasCounter={true} _maxLength={20} _value="test@example.com" />,
+			});
+
+			jest.useFakeTimers({ doNotFake: ['nextTick', 'setImmediate'] });
+
+			const ariaCounter = page.root?.shadowRoot?.querySelector('[data-testid="input-counter-aria"]') as HTMLSpanElement;
+			const input = page.root?.shadowRoot?.querySelector('input') as HTMLInputElement;
+
+			expect(ariaCounter.innerText).toBe('kol-character-counter-current-of-max-aria');
+
+			input.dispatchEvent(new FocusEvent('focus'));
+			await page.waitForChanges();
+
+			expect(ariaCounter.innerText.endsWith('\u00a0')).toBe(false);
+
+			jest.advanceTimersByTime(1000);
+			expect(ariaCounter.innerText.endsWith('\u00a0')).toBe(true);
+		});
+	});
+});
