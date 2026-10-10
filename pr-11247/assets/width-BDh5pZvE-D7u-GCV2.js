@@ -1,1 +1,0 @@
-import{b as e,o as t}from"./base-web-component-3R1Dy3QK-Dj4SpfKo.js";function n(e){if(typeof e!=`object`||!e)throw Error(`Invalid on callbacks: expected object, got ${typeof e}`);let{onCancel:t,onClose:n}=e,r={};return typeof t==`function`&&(r.onCancel=t),typeof n==`function`&&(r.onClose=n),r}var r=t(`on`,{},n),i=t(`width`,`100%`,e);export{i as n,r as t};
