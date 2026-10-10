@@ -38,4 +38,15 @@ describe('FormFieldFC', () => {
 		expect(page.root?.hasAttribute('disabled')).toBe(false);
 		expect(page.root?.className).toContain('kol-form-field--disabled');
 	});
+
+	it('suppresses the alert role on a hidden message even with _alert: true', async () => {
+		const page = await renderFunctionalComponentToSpecPage(() => (
+			<FormFieldFC id="field-nonce" label="Label" refTooltip={noop} msg={{ _type: 'error', _description: 'Error', _alert: true }} touched hideMsg alert>
+				<input type="text" />
+			</FormFieldFC>
+		));
+		const msgEl = page.root?.querySelector('.kol-form-field__msg');
+		expect(msgEl?.getAttribute('role')).toBeNull();
+		expect(msgEl?.classList.contains('visually-hidden')).toBe(true);
+	});
 });
