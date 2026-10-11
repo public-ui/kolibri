@@ -53,7 +53,7 @@
 		"eslint": "9.39.5",
 		"happy-dom": "20.14.6",
 		"knip": "6.39.0",
-		"prettier": "3.9.9",
+		"prettier": "3.9.10",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"shadow-dom-testing-library": "1.14.2",
 		"stylelint": "17.16.0",
