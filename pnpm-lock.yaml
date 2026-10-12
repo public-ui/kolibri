@@ -1453,8 +1453,8 @@ importers:
         version: 4.6.6
     devDependencies:
       '@modelcontextprotocol/inspector':
-        specifier: 2.9.0
-        version: 2.9.0(@types/node@26.4.0)(@types/react@19.3.0)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.0)(react-dom@19.3.0(react@19.3.0))(sass-embedded@1.105.1)(sass@1.105.1)(terser@5.51.2)(tsx@4.23.15)
+        specifier: 2.10.1
+        version: 2.10.1(@types/node@26.4.0)(@types/react@19.3.0)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.0)(react-dom@19.3.0(react@19.3.0))(sass-embedded@1.105.1)(sass@1.105.1)(terser@5.51.2)(tsx@4.23.15)
       '@public-ui/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
@@ -3976,8 +3976,16 @@ packages:
       react-dom:
         optional: true
 
-  '@modelcontextprotocol/inspector@2.9.0':
-    resolution: {integrity: sha512-77VWBmsA18jdxQ1vqbu8SNRSC2h5uBHyUq6wTmlqEDeVIST7YEVta0OyFCDf/6VSQKbZ3ia7Qb+9bZtlTcB+tw==}
+  '@modelcontextprotocol/ext-tasks@0.2.2':
+    resolution: {integrity: sha512-qpyxUGaameAdtFF09NVPhe82xo70kkED7Kel5c+jAfPTUAh/V5xzWjd9iRBIZFNhK+r9egGIFglDZh0kPbXeoA==}
+    peerDependencies:
+      '@modelcontextprotocol/client': ^2.0.0
+    peerDependenciesMeta:
+      '@modelcontextprotocol/client':
+        optional: true
+
+  '@modelcontextprotocol/inspector@2.10.1':
+    resolution: {integrity: sha512-5lU14Qms3MNQQ+3OUKKYPWewWh9cUsPCmJrZ3vsQTSR4O9UAXfmIcZiSx5gDgvJtrXRXGn7E1gIDC5TY7cI1pQ==}
     engines: {node: '>=22.19.0'}
     hasBin: true
 
@@ -16578,12 +16586,19 @@ snapshots:
       react: 19.3.0
       react-dom: 19.3.0(react@19.3.0)
 
-  '@modelcontextprotocol/inspector@2.9.0(@types/node@26.4.0)(@types/react@19.3.0)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.0)(react-dom@19.3.0(react@19.3.0))(sass-embedded@1.105.1)(sass@1.105.1)(terser@5.51.2)(tsx@4.23.15)':
+  '@modelcontextprotocol/ext-tasks@0.2.2(@modelcontextprotocol/client@2.2.0)':
+    dependencies:
+      zod: 4.6.6
+    optionalDependencies:
+      '@modelcontextprotocol/client': 2.2.0
+
+  '@modelcontextprotocol/inspector@2.10.1(@types/node@26.4.0)(@types/react@19.3.0)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.0)(react-dom@19.3.0(react@19.3.0))(sass-embedded@1.105.1)(sass@1.105.1)(terser@5.51.2)(tsx@4.23.15)':
     dependencies:
       '@hono/node-server': 2.1.0(hono@4.13.13)
       '@modelcontextprotocol/client': 2.2.0
       '@modelcontextprotocol/core': 2.2.0
       '@modelcontextprotocol/ext-apps': 2.0.0(@modelcontextprotocol/client@2.2.0)(@modelcontextprotocol/core@2.2.0)(@modelcontextprotocol/server@2.2.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(zod@4.6.6)
+      '@modelcontextprotocol/ext-tasks': 0.2.2(@modelcontextprotocol/client@2.2.0)
       '@modelcontextprotocol/server': 2.2.0
       '@napi-rs/keyring': 1.3.0
       '@vitejs/plugin-react': 6.0.5(vite@8.3.4(@types/node@26.4.0)(esbuild@0.28.2)(jiti@2.7.0)(less@4.9.0)(sass-embedded@1.105.1)(sass@1.105.1)(terser@5.51.2)(tsx@4.23.15)(yaml@2.9.1))
