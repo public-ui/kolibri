@@ -32,7 +32,15 @@ export const HeadingFC: FC<FunctionalComponentProps<HeadingApi>> = (props) => {
 	return (
 		<hgroup class={headingBem({ group: true })}>
 			<HeadlineTag class={headlineBem({ [HeadlineTag]: true, group: true, primary: true })}>
-				{label}
+				{Array.isArray(label) ? (
+					<span>
+						{label.map((labelSegment) => {
+							return <span lang={labelSegment.lang}>{labelSegment.text}</span>;
+						})}
+					</span>
+				) : (
+					{ label }
+				)}
 				<slot name="expert" slot="expert" />
 			</HeadlineTag>
 			<p class={headlineBem({ group: true, secondary: true })}>{secondaryHeadline}</p>

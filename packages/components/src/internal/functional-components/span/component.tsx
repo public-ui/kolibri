@@ -61,18 +61,16 @@ function renderUnderlinedBadgeText(label: string, badgeText: string) {
 function renderLabel(label: LabelPropType, hideLabel: boolean, allowMarkdown: boolean | undefined, badgeText: string | undefined) {
 	if (hideLabel) {
 		return null;
-	} // eslint-disable-next-line no-console
-	console.log(label);
+	}
 
 	if (Array.isArray(label)) {
-		let parsedLabel = '';
-		label.forEach((labelSegment) => {
-			parsedLabel += <span lang={labelSegment.lang}>{labelSegment.text}</span>;
-		});
-		// eslint-disable-next-line no-console
-		console.log(parsedLabel);
-
-		return <span class={spanBem('label')}>{parsedLabel}</span>;
+		return (
+			<span class={spanBem('label')}>
+				{label.map((labelSegment) => {
+					return <span lang={labelSegment.lang}>{labelSegment.text}</span>;
+				})}
+			</span>
+		);
 	} else {
 		if (allowMarkdown) {
 			return <span class={clsx(spanBem('label'), 'md')} innerHTML={md(label)} />;

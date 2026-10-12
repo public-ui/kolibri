@@ -79,7 +79,15 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 					class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, alertBem('heading', { [`h${level}`]: true }), 'kol-headline--single')}
 					id={headingId}
 				>
-					{label}
+					{Array.isArray(label) ? (
+						<span>
+							{label.map((labelSegment) => {
+								return <span lang={labelSegment.lang}>{labelSegment.text}</span>;
+							})}
+						</span>
+					) : (
+						{ label }
+					)}
 				</HeadlineTag>
 			)}
 
