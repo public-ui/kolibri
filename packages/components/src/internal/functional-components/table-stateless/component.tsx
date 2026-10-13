@@ -25,6 +25,7 @@ import { IconFC } from '../icon/component';
 import type { LinkFCProps } from '../link/component';
 import { LinkFC } from '../link/component';
 import type { EmbeddedLinkProps } from '../link/resolve-props';
+import { renderLabelWithLang } from '../span/component';
 import { SpinFC } from '../spin/component';
 import { TooltipFC } from '../tooltip/component';
 import type { TableStatelessApi } from './api';
@@ -547,7 +548,7 @@ export const TableStatelessFC: FC<TableStatelessFCProps> = (props) => {
 					{/* eslint-disable jsx-a11y/no-noninteractive-tabindex -- caption tabIndex enables keyboard access to scrollable overflow */}
 					{showInternalCaption && (
 						<caption class={BEM_CLASS_TABLE__CAPTION} id="caption" tabindex={hasScrollbar ? '0' : undefined}>
-							{label}
+							{renderLabelWithLang(label)}
 						</caption>
 					)}
 					{/* eslint-enable jsx-a11y/no-noninteractive-tabindex */}

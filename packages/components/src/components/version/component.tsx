@@ -39,7 +39,7 @@ export class KolVersion extends BaseWebComponent<VersionApi> implements VersionP
 	/**
 	 * Defines the visible or semantic label of the component (e.g. aria-label, label, headline, caption, summary, etc.).
 	 */
-	@Prop() public _label!: LabelPropType;
+	@Prop() public _label!: string;
 
 	@Watch('_label')
 	public watchLabel(value?: LabelPropType): void {
