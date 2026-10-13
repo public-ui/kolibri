@@ -1,0 +1,1 @@
+import{i as e}from"./index-K64C1-SO.js";var t=new Map;function n(n){let r=t.get(n);return r||(r=e.forBlock(n),t.set(n,r)),r}export{n as t};
