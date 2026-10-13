@@ -6,7 +6,7 @@ import type { SpinApi } from '../../internal/functional-components/spin/api';
 import { spinPropsConfig } from '../../internal/functional-components/spin/api';
 import { SpinFC } from '../../internal/functional-components/spin/component';
 import { labelProp, showProp, variantSpinProp, type SpinVariantType } from '../../internal/props';
-import { LabelPropType } from '../../schema';
+import type { LabelPropType } from '../../schema';
 
 @Component({
 	tag: 'kol-spin',

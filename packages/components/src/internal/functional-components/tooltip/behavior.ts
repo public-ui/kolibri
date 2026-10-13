@@ -1,5 +1,6 @@
 import { autoUpdate } from '@floating-ui/dom';
-import { getDocument, LabelPropType } from '../../../schema';
+import type { LabelPropType } from '../../../schema';
+import { getDocument } from '../../../schema';
 import { alignFloatingElements } from '../../../utils/align-floating-elements';
 import { hideOverlay, showOverlay } from '../../../utils/overlay';
 import { tooltipClosed, tooltipOpened } from '../../../utils/tooltip-open-tracking';

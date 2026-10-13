@@ -17,7 +17,7 @@ import {
 	unitProp,
 	type OrientationPropType,
 } from '../../internal/props';
-import { LabelPropType } from '../../schema';
+import type { LabelPropType } from '../../schema';
 
 @Component({
 	tag: 'kol-meter',
