@@ -1,15 +1,31 @@
 import React from 'react';
 
-import { KolAccordion, KolAlert, KolButton, KolInputText, KolLink, KolTabs } from '@public-ui/react-v19';
+import {
+	KolAccordion,
+	KolAlert,
+	KolBadge,
+	KolBreadcrumb,
+	KolButton,
+	KolButtonLink,
+	KolCard,
+	KolHeading,
+	KolInputCheckbox,
+	KolInputText,
+	KolLink,
+	KolLinkButton,
+	KolTabs,
+} from '@public-ui/react-v19';
 import { SampleBlock } from '../components/SampleBlock';
 import { SampleDescription } from '../components/SampleDescription';
 
 import type { FC } from 'react';
 
 export const LabelLang: FC = () => {
+	const defaultLabel = [{ text: 'Acquirer', lang: 'en' }, { text: '-Gutschrift' }];
+
 	const tabs = [
 		{
-			_label: [{ text: 'Acquirer', lang: 'en' }, { text: '-Gutschrift' }],
+			_label: defaultLabel,
 		},
 		{
 			_label: 'Second Tab',
@@ -24,21 +40,54 @@ export const LabelLang: FC = () => {
 
 			<div className="grid gap-4">
 				<SampleBlock id="label-lang-accordion">
-					<KolAccordion _label={[{ text: 'Acquirer', lang: 'en' }, { text: '-Gutschrift' }]}>
+					<KolAccordion _label={defaultLabel}>
 						<p>Contents Accordion</p>
 					</KolAccordion>
 				</SampleBlock>
 				<SampleBlock id="label-lang-alert">
-					<KolAlert _label={[{ text: 'Acquirer', lang: 'en' }, { text: '-Gutschrift' }]}>This is the text of the alert.</KolAlert>
+					<KolAlert _label={defaultLabel}>This is the text of the alert.</KolAlert>
+				</SampleBlock>
+				<SampleBlock id="label-lang-badge">
+					<KolBadge _label={defaultLabel}></KolBadge>
+				</SampleBlock>
+				<SampleBlock id="label-lang-breadcrumb">
+					<KolBreadcrumb
+						_label={defaultLabel}
+						_links={[
+							{
+								_label: defaultLabel,
+								_href: '#/',
+							},
+							{
+								_label: defaultLabel,
+								_href: '#/',
+							},
+						]}
+					/>
 				</SampleBlock>
 				<SampleBlock id="label-lang-button">
-					<KolButton _label={[{ text: 'Acquirer', lang: 'en' }, { text: '-Gutschrift' }]} />
+					<KolButton _label={defaultLabel} />
+				</SampleBlock>
+				<SampleBlock id="label-lang-button-link">
+					<KolButtonLink _label={defaultLabel} />
+				</SampleBlock>
+				<SampleBlock id="label-lang-card">
+					<KolCard _label={defaultLabel}>Inhaltsbereich</KolCard>
+				</SampleBlock>
+				<SampleBlock id="label-lang-heading">
+					<KolHeading _label={defaultLabel} _level={1} />
+				</SampleBlock>
+				<SampleBlock id="label-lang-checkbox">
+					<KolInputCheckbox _label={defaultLabel} />
 				</SampleBlock>
 				<SampleBlock id="label-lang-input">
-					<KolInputText _label={[{ text: 'Acquirer', lang: 'en' }, { text: '-Gutschrift' }]} />
+					<KolInputText _label={defaultLabel} />
 				</SampleBlock>
 				<SampleBlock id="label-lang-link">
-					<KolLink _label={[{ text: 'Acquirer', lang: 'en' }, { text: '-Gutschrift' }]} _href="" />
+					<KolLink _label={defaultLabel} _href="" />
+				</SampleBlock>
+				<SampleBlock id="label-lang-link">
+					<KolLinkButton _label={defaultLabel} _href="" />
 				</SampleBlock>
 				<SampleBlock id="label-lang-tabs">
 					<KolTabs _tabs={tabs} _label="Regular tabs"></KolTabs>

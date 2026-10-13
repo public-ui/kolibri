@@ -9,6 +9,7 @@ import clsx from '../../../utils/clsx';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import { ButtonFC } from '../button/component';
 import type { FunctionalComponentProps } from '../generic-types';
+import { renderLabelWithLang } from '../span/component';
 import type { AlertApi } from './api';
 import { AlertIconFC } from './icon';
 
@@ -79,15 +80,7 @@ export const AlertFC: FC<AlertFCProps> = (props, children) => {
 					class={clsx('kol-headline', `kol-headline--${HeadlineTag}`, alertBem('heading', { [`h${level}`]: true }), 'kol-headline--single')}
 					id={headingId}
 				>
-					{Array.isArray(label) ? (
-						<span>
-							{label.map((labelSegment) => {
-								return <span lang={labelSegment.lang}>{labelSegment.text}</span>;
-							})}
-						</span>
-					) : (
-						{ label }
-					)}
+					{renderLabelWithLang(label)}
 				</HeadlineTag>
 			)}
 
