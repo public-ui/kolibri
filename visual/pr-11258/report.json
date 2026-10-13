@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11258,
-	"head": "c1f088b62488199d5dd3f42197c2bd3f96bbca70",
+	"head": "61d646b9cd548a10f23120085d82962c88d31a45",
 	"repository": "public-ui/kolibri",
-	"runId": 38397242760,
-	"generatedAt": "2026-10-13T12:46:20.347Z",
-	"digest": "sha256:6b16cc7bacc3a5d31eb952cb307b9c13b66bc4c39dc8770aa3fc5aecfabfef22",
+	"runId": 38404725642,
+	"generatedAt": "2026-10-13T13:44:34.006Z",
+	"digest": "sha256:268babec6c0170c803ef79187d4704d5cd059cba6710c5ad4a0fcbc3d0ca668f",
 	"baseline": {
 		"sha": "258ac902aff5618c817b5ecb996095c873a5c6cc",
 		"ref": "develop",
@@ -17,8 +17,8 @@
 		"consistent": true
 	},
 	"summary": {
-		"unchanged": 2934,
-		"changed": 7,
+		"unchanged": 2941,
+		"changed": 0,
 		"added": 0,
 		"removed": 0,
 		"error": 0
@@ -43,13 +43,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 419,
-				"changed": 1,
+				"unchanged": 420,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6326bb3653bd31830bbd98fbf82c59d90301b0baaeeea1678cca29ec5322b9ff",
+			"digest": "sha256:e37a6759bd53085308b476e496993321d0488150c64acd106c01ddd4f541564f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -59,14 +59,9 @@
 				},
 				{
 					"name": "accordion-basic--basic",
-					"route": "accordion/basic",
-					"status": "changed",
-					"hash": "sha256:fdb442399368e6dd3a350a5f9ede69979317eed04b35e39cb059e31d344ff3e4",
-					"diffPixels": 161,
-					"diffRatio": 0.000555,
-					"expected": "test-tag-name-transformer/accordion-basic--basic.expected.png",
-					"actual": "test-tag-name-transformer/accordion-basic--basic.actual.png",
-					"diff": "test-tag-name-transformer/accordion-basic--basic.diff.png"
+					"route": "accordion-basic",
+					"status": "unchanged",
+					"hash": "sha256:5c275c03d375dea9789a182da311da865b18f0fd82b27edb70cae3fea6a0ddc8"
 				},
 				{
 					"name": "alert-basic--default",
@@ -2577,7 +2572,13 @@
 					"hash": "sha256:172f9ad75f210a1388bff2d544c91d785d381a8753e4cb35567e7ef7ec0478e9"
 				}
 			],
-			"errors": [],
+			"errors": [
+				{
+					"test": "snapshot for scenarios/label-lang",
+					"route": "scenarios/label-lang",
+					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
+				}
+			],
 			"otherFailures": []
 		},
 		{
@@ -2599,13 +2600,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 419,
-				"changed": 1,
+				"unchanged": 420,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:587d6323e7ea0fff48c091a4ee0b0ca5500ccbce5ce464f3e9727a15d61dc356",
+			"digest": "sha256:a58ad7d4126cba7633de0bcd67f2be6bb50b9ca19ad511e04c18a8c21c7d505d",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2615,14 +2616,9 @@
 				},
 				{
 					"name": "accordion-basic--basic",
-					"route": "accordion/basic",
-					"status": "changed",
-					"hash": "sha256:11c301c024926034d0e05edcb21808e86866db274cfc7ef2ec0030fe860af920",
-					"diffPixels": 143,
-					"diffRatio": 0.000482,
-					"expected": "theme-bwst/accordion-basic--basic.expected.png",
-					"actual": "theme-bwst/accordion-basic--basic.actual.png",
-					"diff": "theme-bwst/accordion-basic--basic.diff.png"
+					"route": "accordion-basic",
+					"status": "unchanged",
+					"hash": "sha256:3034a022714feb3eaa8921ad0bc3dba29bfe370bd297ba1e6ea1e0e26cba4d8b"
 				},
 				{
 					"name": "alert-basic--default",
@@ -5133,7 +5129,13 @@
 					"hash": "sha256:79f3d21b2ff48017667486044906ad51b05922d76b314c0e22190bb28bd03caf"
 				}
 			],
-			"errors": [],
+			"errors": [
+				{
+					"test": "snapshot for scenarios/label-lang",
+					"route": "scenarios/label-lang",
+					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
+				}
+			],
 			"otherFailures": []
 		},
 		{
@@ -5155,13 +5157,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 419,
-				"changed": 1,
+				"unchanged": 420,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:6326bb3653bd31830bbd98fbf82c59d90301b0baaeeea1678cca29ec5322b9ff",
+			"digest": "sha256:e37a6759bd53085308b476e496993321d0488150c64acd106c01ddd4f541564f",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -5171,14 +5173,9 @@
 				},
 				{
 					"name": "accordion-basic--basic",
-					"route": "accordion/basic",
-					"status": "changed",
-					"hash": "sha256:fdb442399368e6dd3a350a5f9ede69979317eed04b35e39cb059e31d344ff3e4",
-					"diffPixels": 161,
-					"diffRatio": 0.000555,
-					"expected": "theme-default/accordion-basic--basic.expected.png",
-					"actual": "theme-default/accordion-basic--basic.actual.png",
-					"diff": "theme-default/accordion-basic--basic.diff.png"
+					"route": "accordion-basic",
+					"status": "unchanged",
+					"hash": "sha256:5c275c03d375dea9789a182da311da865b18f0fd82b27edb70cae3fea6a0ddc8"
 				},
 				{
 					"name": "alert-basic--default",
@@ -7689,7 +7686,13 @@
 					"hash": "sha256:172f9ad75f210a1388bff2d544c91d785d381a8753e4cb35567e7ef7ec0478e9"
 				}
 			],
-			"errors": [],
+			"errors": [
+				{
+					"test": "snapshot for scenarios/label-lang",
+					"route": "scenarios/label-lang",
+					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
+				}
+			],
 			"otherFailures": []
 		},
 		{
@@ -7711,13 +7714,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 419,
-				"changed": 1,
+				"unchanged": 420,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:80f7395a645f1cda63edb4337ba999636918b3fc02805c8797de57b323c7ae93",
+			"digest": "sha256:36ae37bc5867808784599d3f8a7654e4c1ba53ddc3799c49e9844301ac723ec2",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7727,14 +7730,9 @@
 				},
 				{
 					"name": "accordion-basic--basic",
-					"route": "accordion/basic",
-					"status": "changed",
-					"hash": "sha256:a6c87fe23fd3c595e1cccd3298cb01aa38b7a7ebb304cb09074c9be65a01e5ff",
-					"diffPixels": 107,
-					"diffRatio": 0.000295,
-					"expected": "theme-desy/accordion-basic--basic.expected.png",
-					"actual": "theme-desy/accordion-basic--basic.actual.png",
-					"diff": "theme-desy/accordion-basic--basic.diff.png"
+					"route": "accordion-basic",
+					"status": "unchanged",
+					"hash": "sha256:aa36fd4f6dfc1a4408f2af86b2aa592072b86d963e308617ba3517fe35302e25"
 				},
 				{
 					"name": "alert-basic--default",
@@ -10245,7 +10243,13 @@
 					"hash": "sha256:2e8fb794de4414e1ef5784c8865027c369226d093c2b28b76444afd5abed7c1d"
 				}
 			],
-			"errors": [],
+			"errors": [
+				{
+					"test": "snapshot for scenarios/label-lang",
+					"route": "scenarios/label-lang",
+					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
+				}
+			],
 			"otherFailures": []
 		},
 		{
@@ -10267,13 +10271,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 419,
-				"changed": 1,
+				"unchanged": 420,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:a53ba1588a3bb81aecfe516aae74dddd1fd1a08010a3a0b784805ce81b57f88e",
+			"digest": "sha256:43677f3f39143d4b321a9535404bcb3efef2ddbfe00aceb3abfc7aaa291612fe",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -10283,14 +10287,9 @@
 				},
 				{
 					"name": "accordion-basic--basic",
-					"route": "accordion/basic",
-					"status": "changed",
-					"hash": "sha256:65e7e2e2cef47418584e076a374916593ebba10aa09efcafcc35e63445c8a3fd",
-					"diffPixels": 87,
-					"diffRatio": 0.00024,
-					"expected": "theme-ecl/accordion-basic--basic.expected.png",
-					"actual": "theme-ecl/accordion-basic--basic.actual.png",
-					"diff": "theme-ecl/accordion-basic--basic.diff.png"
+					"route": "accordion-basic",
+					"status": "unchanged",
+					"hash": "sha256:c55a92e86e0dbdbbfdf49e5148527386096914af3e2bfee649cc8f4341e93811"
 				},
 				{
 					"name": "alert-basic--default",
@@ -12801,7 +12800,13 @@
 					"hash": "sha256:139fd89a7de8876b67ee55b888516e5d0827f5864675e53fac57228d450fc4b1"
 				}
 			],
-			"errors": [],
+			"errors": [
+				{
+					"test": "snapshot for scenarios/label-lang",
+					"route": "scenarios/label-lang",
+					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
+				}
+			],
 			"otherFailures": []
 		},
 		{
@@ -12823,13 +12828,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 420,
-				"changed": 1,
+				"unchanged": 421,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:76be107a6caaa8d1b7e99f1e035e1a39ecce9b0a67ab4cf98d8c60a16ae3c811",
+			"digest": "sha256:a9b1c49512cdd09af717cdc4478249f4733943224002fb8bbe05c89f923fb19b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12839,14 +12844,9 @@
 				},
 				{
 					"name": "accordion-basic--basic",
-					"route": "accordion/basic",
-					"status": "changed",
-					"hash": "sha256:7b22df90e4bcea54be540c72b5bfe3770fef87ad439aafa4bda44709da9363ad",
-					"diffPixels": 355,
-					"diffRatio": 0.000975,
-					"expected": "theme-kern/accordion-basic--basic.expected.png",
-					"actual": "theme-kern/accordion-basic--basic.actual.png",
-					"diff": "theme-kern/accordion-basic--basic.diff.png"
+					"route": "accordion-basic",
+					"status": "unchanged",
+					"hash": "sha256:4fe0852d755c38959508d6fd46014ed0579a53a0b8442b57bebd92192d6d7e43"
 				},
 				{
 					"name": "alert-basic--default",
@@ -15363,7 +15363,13 @@
 					"hash": "sha256:d9945a845d56ae3c13b8bd7e9805c581e56573a31c65f8fc1656e40f60366206"
 				}
 			],
-			"errors": [],
+			"errors": [
+				{
+					"test": "snapshot for scenarios/label-lang",
+					"route": "scenarios/label-lang",
+					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
+				}
+			],
 			"otherFailures": []
 		},
 		{
@@ -15385,13 +15391,13 @@
 				}
 			},
 			"summary": {
-				"unchanged": 419,
-				"changed": 1,
+				"unchanged": 420,
+				"changed": 0,
 				"added": 0,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:bb12aac740db7f30e0901c8ca3d47a53b097c0ab5fe81fcbbd7533835444b488",
+			"digest": "sha256:77761647059376025c9a4e1eb3baac57dbf3a0b776f536fdd58018f9cca9315b",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -15401,14 +15407,9 @@
 				},
 				{
 					"name": "accordion-basic--basic",
-					"route": "accordion/basic",
-					"status": "changed",
-					"hash": "sha256:d68b453a3ecb98f56a0c0f248612b44f7109b75658c9359804f400cd00102693",
-					"diffPixels": 74,
-					"diffRatio": 0.000292,
-					"expected": "unstyled/accordion-basic--basic.expected.png",
-					"actual": "unstyled/accordion-basic--basic.actual.png",
-					"diff": "unstyled/accordion-basic--basic.diff.png"
+					"route": "accordion-basic",
+					"status": "unchanged",
+					"hash": "sha256:d84c36d0c1953a0dcbf4d9b65b5cf9ac8788ef02af69b058735806123e65cda5"
 				},
 				{
 					"name": "alert-basic--default",
@@ -17919,7 +17920,13 @@
 					"hash": "sha256:f5461b699caccf4fed8ec816929b6932a3df770dedcb2515f5069ca73fdbfc9a"
 				}
 			],
-			"errors": [],
+			"errors": [
+				{
+					"test": "snapshot for scenarios/label-lang",
+					"route": "scenarios/label-lang",
+					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
+				}
+			],
 			"otherFailures": []
 		}
 	]

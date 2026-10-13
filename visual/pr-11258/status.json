@@ -1,48 +1,19 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "7 changed – 0 of 7 approved, review pending",
-	"computedAt": "2026-10-13T12:46:20.989Z",
+	"state": "failure",
+	"description": "7 route(s) failed before the screenshots could be compared",
+	"computedAt": "2026-10-13T13:44:35.089Z",
 	"pr": 11258,
-	"head": "c1f088b62488199d5dd3f42197c2bd3f96bbca70",
-	"digest": "sha256:6b16cc7bacc3a5d31eb952cb307b9c13b66bc4c39dc8770aa3fc5aecfabfef22",
+	"head": "61d646b9cd548a10f23120085d82962c88d31a45",
+	"digest": "sha256:268babec6c0170c803ef79187d4704d5cd059cba6710c5ad4a0fcbc3d0ca668f",
 	"counts": {
-		"changes": 7,
-		"open": 7,
+		"changes": 0,
+		"open": 0,
 		"approved": 0,
 		"rejected": 0,
-		"routeErrors": 0,
+		"routeErrors": 7,
 		"errorItems": 0
 	},
 	"reviewers": [],
-	"items": {
-		"test-tag-name-transformer/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-bwst/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-default/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-desy/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-ecl/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"theme-kern/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
-		},
-		"unstyled/accordion-basic--basic": {
-			"state": "open",
-			"notes": []
-		}
-	}
+	"items": {}
 }
