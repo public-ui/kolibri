@@ -6,6 +6,7 @@ import type { SpinApi } from '../../internal/functional-components/spin/api';
 import { spinPropsConfig } from '../../internal/functional-components/spin/api';
 import { SpinFC } from '../../internal/functional-components/spin/component';
 import { labelProp, showProp, variantSpinProp, type SpinVariantType } from '../../internal/props';
+import type { LabelPropType } from '../../schema';
 
 @Component({
 	tag: 'kol-spin',
@@ -33,7 +34,7 @@ export class KolSpin extends BaseWebComponent<SpinApi> implements WebComponentIn
 	public _label?: string;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
+	public watchLabel(value?: LabelPropType): void {
 		labelProp.apply(value, (v) => this.setRenderProp('label', v));
 	}
 

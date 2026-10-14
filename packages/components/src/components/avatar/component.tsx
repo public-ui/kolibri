@@ -6,7 +6,7 @@ import { AvatarFC } from '../../internal/functional-components/avatar/component'
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { colorProp, labelProp, srcProp } from '../../internal/props';
-import type { ColorPair } from '../../schema';
+import { trimLabel, type ColorPair, type LabelPropType } from '../../schema';
 
 /**
  * Formats a single name as an initial by taking the first character and converting it to uppercase.
@@ -28,8 +28,9 @@ const formatNameAsInitial = (name: string): string => {
  * @param value The input value to normalize as initials
  * @returns The normalized initials string
  */
-const normalizeInitials = (value: string): string => {
-	const names = value.trim().split(/\s+/); // split by any whitespace characters
+const normalizeInitials = (value: LabelPropType): string => {
+	const trimmedVal = trimLabel(value);
+	const names = trimmedVal.split(/\s+/); // split by any whitespace characters
 	const first = names[0];
 	const last = names[names.length - 1];
 
@@ -38,7 +39,7 @@ const normalizeInitials = (value: string): string => {
 		return `${formatNameAsInitial(first)}${formatNameAsInitial(last)}`;
 	}
 
-	return formatNameAsInitial(value);
+	return formatNameAsInitial(trimmedVal);
 };
 
 /**
@@ -73,7 +74,7 @@ export class KolAvatar extends BaseWebComponent<AvatarApi> implements WebCompone
 	public _label!: string;
 
 	@Watch('_label')
-	public watchLabel(value?: string): void {
+	public watchLabel(value?: LabelPropType): void {
 		labelProp.apply(value, (v) => {
 			this.setRenderProp('label', v);
 			this.setState('initials', normalizeInitials(v));

@@ -11,7 +11,6 @@ import { hrefProp, optionalHrefProp } from './href';
 import { iconsProp } from './icons';
 import { idProp } from './id';
 import { labelProp } from './label';
-import { labelWithExpertSlotProp } from './label-with-expert-slot';
 import { linkTargetProp } from './link-target';
 import { nameProp } from './name';
 import { quoteProp } from './quote';
@@ -67,7 +66,6 @@ const STRING_PROPS: ReadonlyArray<{ name: string; definition: PropDefinition; de
 	{ name: 'downloadProp', definition: downloadProp, defaultValue: undefined },
 	{ name: 'iconsProp', definition: iconsProp, defaultValue: 'kolicon-logo' },
 	{ name: 'idProp', definition: idProp, defaultValue: '' },
-	{ name: 'labelWithExpertSlotProp', definition: labelWithExpertSlotProp, defaultValue: '' },
 	{ name: 'linkTargetProp', definition: linkTargetProp, defaultValue: '' },
 	{ name: 'nameProp', definition: nameProp, defaultValue: '' },
 	{ name: 'optionalHrefProp', definition: optionalHrefProp, defaultValue: '' },
@@ -151,14 +149,9 @@ describe('labelProp', () => {
 		expect(warnings()).toEqual([]);
 	});
 
-	it.each<unknown>(['a', 1])('ignores %p with a developer warning', (value) => {
-		expect(applied(labelProp, value)).toEqual([]);
-		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid. The value is ignored.`)]);
-	});
-
 	it('ignores an object with a developer warning', () => {
 		expect(applied(labelProp, { label: 'Label' })).toEqual([]);
-		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid (Cannot convert object to string)`)]);
+		expect(warnings()).toEqual([expect.stringContaining(`for 'label' is not valid (Cannot convert object to LabelPropType)`)]);
 	});
 
 	it('emits the a11y hint for an accepted label with fewer than three readable characters', () => {

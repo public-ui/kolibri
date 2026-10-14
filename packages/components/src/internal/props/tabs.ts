@@ -20,7 +20,10 @@ export const tabsProp = createPropDefinition<TabsProp>(
 	'tabs',
 	[],
 	(value) => normalizeArray(value) as TabButtonProps[],
-	(items) => items.every((item) => typeof item === 'object' && item !== null && typeof item._label === 'string' && item._label.length > 0),
+	(items) =>
+		items.every(
+			(item) => typeof item === 'object' && item !== null && (Array.isArray(item._label) || (typeof item._label === 'string' && item._label.length > 0)),
+		),
 	{
 		hints: (_propName, items) => uiUxHintMillerscheZahl('KolTabs', items.length),
 	},
