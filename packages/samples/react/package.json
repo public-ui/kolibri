@@ -20,7 +20,7 @@
 		"@hookform/resolvers": "5.9.1",
 		"@public-ui/react-hook-form-adapter": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
-		"@stencil/core": "4.38.3",
+		"@stencil/core": "4.45.2",
 		"@types/node": "26.4.0",
 		"@types/papaparse": "5.5.2",
 		"papaparse": "5.7.0",
