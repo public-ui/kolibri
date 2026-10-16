@@ -76,7 +76,7 @@
 		"prettier-plugin-organize-imports": "4.3.0",
 		"rollup": "4.64.7",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass-embedded": "1.105.1",
+		"sass-embedded": "1.105.2",
 		"stylelint": "17.16.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"
