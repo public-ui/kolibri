@@ -370,11 +370,9 @@ export class KolInputText
 	 */
 	@Prop({ mutable: true, reflect: true }) public _value?: string;
 
-	/** Unlike the other text inputs, `has-value` follows every value change here, not only `change` (#11053). */
 	@Watch('_value')
 	public watchValue(value?: string): void {
 		this.applyValue(value);
-		this.hasValue = Boolean(value);
 	}
 
 	/**
