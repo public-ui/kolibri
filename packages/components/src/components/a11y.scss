@@ -112,14 +112,17 @@
 	* - https://www.a11yproject.com/posts/how-to-hide-content/
 	*/
 	.visually-hidden {
-		position: fixed;
+		position: fixed !important;
 		top: 0;
 		left: 0;
 		width: 1px;
 		height: 1px;
+		margin: 0 !important;
+		padding: 0 !important;
 		overflow: hidden;
 
 		white-space: nowrap;
+		border: 0;
 		clip-path: inset(50%);
 	}
 }
