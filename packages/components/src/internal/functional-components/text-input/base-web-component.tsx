@@ -63,6 +63,8 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 
 	protected readonly counter = new CounterBehavior(BaseWebComponent.stateLess);
 
+	protected needsImmediateCounterUpdate = false;
+
 	/**
 	 * Whether the field has a value, rendered as the root class `has-value`. It is a plain field, not
 	 * state: changing it does not re-render, the class follows with the next render (#11053).
@@ -81,8 +83,19 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 
 	/** Call from `componentDidLoad`: fills the counter spans once they exist. */
 	protected didLoadTextInput(): void {
+		this.needsImmediateCounterUpdate = false;
 		if (this.counter.hasCounter() || this.counter.hasSoftLimit()) {
 			this.counter.updateImmediate(this._value?.length ?? 0);
+		}
+	}
+
+	/** Call from `componentDidUpdate`: fills the counter spans once they exist after a runtime toggle. */
+	protected didUpdateTextInput(): void {
+		if (this.needsImmediateCounterUpdate) {
+			this.needsImmediateCounterUpdate = false;
+			if (this.counter.hasCounter() || this.counter.hasSoftLimit()) {
+				this.counter.updateImmediate(this._value?.length ?? 0);
+			}
 		}
 	}
 
@@ -159,6 +172,7 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 
 	protected applyHasCounter(value?: boolean): void {
 		this.counter.watchHasCounter(value);
+		this.needsImmediateCounterUpdate = true;
 	}
 
 	protected applyMaxLength(value?: number): void {
@@ -168,6 +182,7 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 
 	protected applyMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
 		this.counter.watchMaxLengthBehavior(value);
+		this.needsImmediateCounterUpdate = true;
 	}
 
 	// --- Event handling ---
