@@ -32,8 +32,8 @@ describe('KolInputPassword _autoComplete devHint', () => {
 
 		expect(Schema.devHint).not.toHaveBeenCalled();
 
-		const component = page.rootInstance as KolInputPassword;
-		component.watchAutoComplete('on');
+		page.root!._autoComplete = 'on';
+		await page.waitForChanges();
 
 		expect(Schema.devHint).toHaveBeenCalledWith(`[KolInputPassword] The 'autocomplete' option should not be set to "on" for a password input field`);
 	});
