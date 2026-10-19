@@ -34,6 +34,7 @@
 		"portfinder": "1.0.38"
 	},
 	"devDependencies": {
+		"@babel/core": "7.29.7",
 		"@babel/eslint-parser": "7.29.7",
 		"@babel/plugin-syntax-import-attributes": "7.29.7",
 		"@babel/preset-env": "7.29.7",
