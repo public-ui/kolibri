@@ -14,13 +14,11 @@ import { ButtonRowReverseTooltip } from './row-reverse-tooltip';
 import { ButtonShortKey } from './short-key';
 import { ButtonSpinner } from './spinner';
 import { ButtonTooltipAlign } from './tooltip-align';
-import { ButtonVariants } from './variants';
 import { ButtonWidth } from './width';
 
 export const BUTTON_ROUTES: Routes = {
 	button: {
 		basic: ButtonBasic,
-		variants: ButtonVariants,
 		disabled: ButtonDisabled,
 		'hide-label': ButtonHideLabel,
 		icons: ButtonIcons,

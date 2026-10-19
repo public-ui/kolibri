@@ -53,36 +53,6 @@
 	}
 
 	@if $anchor-scoped {
-		.#{$block-classname}--secondary & {
-			color: var(--color-dark-blue-100);
-
-			&:hover,
-			&:focus {
-				text-decoration: underline;
-			}
-
-			&:focus {
-				outline: var(--outline-width) solid var(--color-dark-blue-100);
-				border-radius: var(--radius-s);
-				outline-offset: var(--outline-offset);
-			}
-		}
-
-		.#{$block-classname}--tertiary & {
-			color: var(--color-black-70);
-
-			&:hover,
-			&:focus {
-				text-decoration: underline;
-			}
-
-			&:focus {
-				outline: var(--outline-width) solid var(--color-black-70);
-				border-radius: var(--radius-s);
-				outline-offset: var(--outline-offset);
-			}
-		}
-
 		.#{$block-classname}--small & {
 			color: var(--color-black-70);
 
@@ -97,34 +67,6 @@
 		@if $interactive-suffix {
 			$hover-focus: '& .#{$block-classname}__#{$interactive-suffix}:is(:hover, :focus)';
 			$focus: '& .#{$block-classname}__#{$interactive-suffix}:focus';
-		}
-
-		&--secondary {
-			color: var(--color-dark-blue-100);
-
-			#{$hover-focus} {
-				text-decoration: underline;
-			}
-
-			#{$focus} {
-				outline: var(--outline-width) solid var(--color-dark-blue-100);
-				border-radius: var(--radius-s);
-				outline-offset: var(--outline-offset);
-			}
-		}
-
-		&--tertiary {
-			color: var(--color-black-70);
-
-			#{$hover-focus} {
-				text-decoration: underline;
-			}
-
-			#{$focus} {
-				outline: var(--outline-width) solid var(--color-black-70);
-				border-radius: var(--radius-s);
-				outline-offset: var(--outline-offset);
-			}
 		}
 
 		&--small {

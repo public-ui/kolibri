@@ -98,7 +98,7 @@ export const DesyV11 = KoliBri.createTheme(
 	},
 	{
 		breadcrumbCurrentPage: 'hide',
-		buttonVariantDefault: 'normal',
+		buttonVariantDefault: 'secondary',
 	},
 );
 

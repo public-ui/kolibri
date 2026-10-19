@@ -42,6 +42,23 @@ describe('normalizeSelectValue', () => {
 		expect(normalizeSelectValue([], [{ label: 'Null', value: 0, disabled: true }, ...options], false)).toEqual([1]);
 	});
 
+	it('skips options of a disabled optgroup for the preselection', () => {
+		expect(
+			normalizeSelectValue(
+				[],
+				[
+					{
+						disabled: true,
+						label: 'G',
+						options: [{ label: 'A', value: 'a' }],
+					},
+					{ label: 'B', value: 'b' },
+				],
+				false,
+			),
+		).toEqual(['b']);
+	});
+
 	it('preselects nothing when every option is disabled', () => {
 		expect(normalizeSelectValue([], [{ label: 'Null', value: 0, disabled: true }], false)).toEqual([]);
 	});

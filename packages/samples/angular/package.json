@@ -25,8 +25,8 @@
 		"zone.js": "0.16.3"
 	},
 	"devDependencies": {
-		"@angular-devkit/build-angular": "21.2.26",
-		"@angular/cli": "21.2.26",
+		"@angular-devkit/build-angular": "21.2.27",
+		"@angular/cli": "21.2.27",
 		"@angular/compiler-cli": "21.2.25",
 		"@types/jasmine": "6.0.0",
 		"@tailwindcss/postcss": "4.3.3",
@@ -38,9 +38,9 @@
 		"karma-jasmine-html-reporter": "2.3.0",
 		"karma-coverage": "2.2.1",
 		"jasmine-core": "6.3.0",
-		"knip": "6.39.0",
-		"postcss": "8.5.29",
-		"prettier": "3.9.9",
+		"knip": "6.42.0",
+		"postcss": "8.5.31",
+		"prettier": "3.9.10",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"tailwindcss": "3.4.19",
 		"typescript": "5.9.3"

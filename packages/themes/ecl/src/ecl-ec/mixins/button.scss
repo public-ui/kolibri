@@ -5,117 +5,71 @@
 	@include icon();
 
 	.#{$block-classname} {
-		--button-border-width: 2px;
-		--button-focus-outline-color: var(--ecl-color-dark);
-		--button-focus-outline-offset: -3px;
-		--button-focus-outline-width: 1px;
+		--button-main-color: var(--ecl-color-primary);
+		--button-hover-background-color: var(--ecl-color-primary-50);
+		--button-hover-text-color: var(--ecl-color-primary-180);
+		--button-text-color: var(--button-main-color);
+		--button-border-width: 1px;
+		--button-border-color: transparent;
 
-		/* The skeleton DOM moves the focusable element into the wrapper. The class carrier is never
-		   focused, so the theme focus ring has to be scoped to the inner element — there it also
-		   overrides the user-agent focus ring of the real control. */
 		&__interactive-element:focus {
-			outline: var(--button-focus-outline-color) solid var(--button-focus-outline-width);
-			outline-offset: var(--button-focus-outline-offset);
+			outline: var(--ecl-color-primary) solid 2px;
+			outline-offset: 2px;
 		}
 
+		&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+			--button-background-color: var(--button-hover-background-color);
+			--button-border-color: var(--ecl-color-primary-180);
+			--button-text-color: var(--button-hover-text-color);
+		}
+
+		// danger is not part of ecl, but for backwards compatibility added
+		&--danger,
 		&--primary {
-			--button-background-color: var(--ecl-color-primary);
-			--button-border-color: var(--ecl-color-primary);
+			--button-background-color: var(--button-main-color);
+			--button-border-color: var(--button-main-color);
 			--button-text-color: var(--ecl-color-white);
-
-			&:focus-within {
-				--button-focus-outline-color: var(--ecl-color-white);
-			}
-
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
-				--button-background-color: var(--ecl-color-primary-140);
-				--button-border-color: var(--ecl-color-primary-140);
-			}
+			--button-hover-background-color: var(--ecl-color-primary-180);
+			--button-hover-text-color: var(--ecl-color-white);
 		}
 
 		&--secondary {
+			--button-border-color: var(--button-main-color);
 			--button-background-color: var(--ecl-color-white);
-			--button-border-color: var(--ecl-color-primary);
-			--button-text-color: var(--ecl-color-primary);
-
-			&:focus-within {
-				--button-focus-outline-color: var(--ecl-color-white);
-				--button-background-color: var(--ecl-color-primary-140);
-				--button-border-color: var(--ecl-color-primary-140);
-				--button-text-color: var(--ecl-color-white);
-			}
-
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
-				--button-background-color: var(--ecl-color-primary-140);
-				--button-border-color: var(--ecl-color-primary-140);
-				--button-text-color: var(--ecl-color-white);
-			}
 		}
 
 		&--tertiary {
-			--button-background-color: var(--ecl-color-white);
-			--button-text-color: var(--ecl-color-dark);
+			--button-background-color: transparent;
 			--button-border-color: transparent;
-			--button-border-width: 1px;
-
-			&:focus-within {
-				--button-focus-outline-color: var(--ecl-color-primary);
-				--button-focus-outline-offset: 0;
-				--button-focus-outline-width: 2px;
-			}
-
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
-				--button-background-color: var(--ecl-color-primary-20);
-				--button-border-color: var(--ecl-color-dark-80);
-			}
 		}
 
-		&--normal {
-			--button-background-color: var(--ecl-color-white);
+		// danger is not part of ecl, but for backwards compatibility added
+		&--danger,
+		&--highlight {
+			--button-main-color: var(--ecl-color-secondary);
 			--button-text-color: var(--ecl-color-dark);
-			--button-border-color: transparent;
-			--button-border-width: 1px;
-
-			&:focus-within {
-				--button-focus-outline-color: var(--ecl-color-primary);
-				--button-focus-outline-offset: 0;
-				--button-focus-outline-width: 2px;
-			}
-
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
-				--button-background-color: var(--ecl-color-primary-20);
-				--button-border-color: var(--ecl-color-dark-80);
-			}
+			--button-hover-background-color: var(--ecl-color-secondary-80);
+			--button-hover-text-color: var(--ecl-color-dark);
 		}
 
-		&--call-to-action {
-			--button-background-color: var(--ecl-color-secondary);
-			--button-border-color: var(--ecl-color-secondary);
-			--button-text-color: var(--ecl-color-dark);
-
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
-				--button-background-color: var(--ecl-color-secondary-120);
-				--button-border-color: var(--ecl-color-secondary-120);
-			}
+		&--neutral {
+			--button-main-color: var(--ecl-color-dark-110);
 		}
 
-		&--danger {
-			--button-background-color: var(--ecl-color-error);
-			--button-border-color: var(--ecl-color-error);
+		&--neutral &--primary {
 			--button-text-color: var(--ecl-color-white);
-
-			&:focus-within {
-				--button-focus-outline-color: var(--ecl-color-white);
-			}
-
-			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
-				--button-background-color: var(--ecl-color-error);
-				--button-border-color: var(--ecl-color-dark);
-			}
+			--button-hover-background-color: var(--ecl-color-dark);
 		}
 
-		&--ghost {
-			@include ghost-button($block-classname);
+		&--inverted {
+			--button-main-color: var(--ecl-color-white);
+			--button-text-color: var(--ecl-color-dark-110);
+			--button-hover-background-color: var(--ecl-color-neutral-40);
+			--button-hover-text-color: var(--ecl-color-dark);
+
+			&:not(:disabled, [aria-disabled='true'], .#{$block-classname}--disabled):hover {
+				--button-border-color: var(--ecl-color-neutral-40);
+			}
 		}
 
 		&__text {

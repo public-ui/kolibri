@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SelectFC forwards disabled to optgroups and options when select is disabled 1`] = `
+<select autocapitalize="off" autocorrect="off" class="kol-select kol-select--disabled" disabled="" id="test">
+  <optgroup class="kol-select__optgroup kol-select__optgroup--disabled" disabled="" label="Group 1">
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0-0">
+      Option 1
+    </option>
+  </optgroup>
+</select>
+`;
+
 exports[`SelectFC renders a hidden label and descriptions 1`] = `
 <select aria-describedby="hint msg" aria-label="Label" autocapitalize="off" autocorrect="off" class="kol-select" id="id">
   <option class="kol-select__option" value="-0">
@@ -66,11 +76,11 @@ exports[`SelectFC renders a touched error 1`] = `
 
 exports[`SelectFC renders disabled and required 1`] = `
 <select autocapitalize="off" autocorrect="off" class="kol-select kol-select--disabled kol-select--required" disabled="" id="id" required="">
-  <option class="kol-select__option" value="-0">
+  <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
     Eins
   </option>
-  <optgroup class="kol-select__optgroup" label="Gruppe">
-    <option class="kol-select__option" value="-1-0">
+  <optgroup class="kol-select__optgroup kol-select__optgroup--disabled" disabled="" label="Gruppe">
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-1-0">
       Zwei
     </option>
     <option class="kol-select__option kol-select__option--disabled" disabled="" value="-1-1">
@@ -138,11 +148,11 @@ exports[`SelectOptionFC renders the selected attribute 1`] = `
 
 exports[`SelectOptionListFC disables the optgroups and prefixes the keys 1`] = `
 <select>
-  <option class="kol-select__option" value="-9-0">
+  <option class="kol-select__option kol-select__option--disabled" disabled="" value="-9-0">
     Eins
   </option>
   <optgroup class="kol-select__optgroup kol-select__optgroup--disabled" disabled="" label="Gruppe">
-    <option class="kol-select__option" value="-9-1-0">
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-9-1-0">
       Zwei
     </option>
     <option class="kol-select__option kol-select__option--disabled" disabled="" value="-9-1-1">
@@ -152,4 +162,47 @@ exports[`SelectOptionListFC disables the optgroups and prefixes the keys 1`] = `
 </select>
 `;
 
+exports[`SelectOptionListFC does not render an optgroup without options 1`] = `<select></select>`;
+
 exports[`SelectOptionListFC renders nothing without options 1`] = `<select></select>`;
+
+exports[`SelectOptionListFC renders option with disabled: false inside a disabled group as disabled 1`] = `
+<select>
+  <optgroup class="kol-select__optgroup kol-select__optgroup--disabled" disabled="" label="Group 1">
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0-0">
+      Option 1
+    </option>
+  </optgroup>
+</select>
+`;
+
+exports[`SelectOptionListFC renders option with disabled: false inside a disabled list as disabled 1`] = `
+<select>
+  <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
+    Option 1
+  </option>
+</select>
+`;
+
+exports[`SelectOptionListFC renders with disabled option group 1`] = `
+<select>
+  <optgroup class="kol-select__optgroup kol-select__optgroup--disabled" disabled="" label="Group 1">
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0-0">
+      Option 1
+    </option>
+  </optgroup>
+</select>
+`;
+
+exports[`SelectOptionListFC renders with enabled group containing a disabled option 1`] = `
+<select>
+  <optgroup class="kol-select__optgroup" label="Group 1">
+    <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0-0">
+      Option 1
+    </option>
+    <option class="kol-select__option" value="-0-1">
+      Option 2
+    </option>
+  </optgroup>
+</select>
+`;

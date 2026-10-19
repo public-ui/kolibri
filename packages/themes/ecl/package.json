@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/theme-ecl",
-	"version": "4.5.0-rc.6",
+	"version": "4.5.0",
 	"license": "EUPL-1.2",
 	"homepage": "https://public-ui.github.io",
 	"repository": {
@@ -78,12 +78,12 @@
 		"eslint": "9.39.5",
 		"nodemon": "3.1.14",
 		"npm-run-all2": "9.0.3",
-		"postcss": "8.5.29",
-		"prettier": "3.9.9",
+		"postcss": "8.5.31",
+		"prettier": "3.9.10",
 		"prettier-plugin-organize-imports": "4.3.0",
-		"rollup": "4.64.0",
+		"rollup": "4.64.10",
 		"rollup-plugin-postcss": "4.0.2",
-		"sass-embedded": "1.105.1",
+		"sass-embedded": "1.105.2",
 		"stylelint": "17.16.0",
 		"typescript": "5.9.3",
 		"unbuild": "3.6.1"

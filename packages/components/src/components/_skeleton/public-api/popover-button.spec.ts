@@ -137,7 +137,6 @@ const KOL_POPOVER_BUTTON_PUBLIC_API: PublicApiContract = {
 		kind: 'prop',
 		type: 'VariantClassNamePropType',
 		required: false,
-		default: "'normal'",
 		doc: 'Defines which variant should be used for presentation.',
 	},
 };
