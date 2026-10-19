@@ -95,7 +95,7 @@
 			"automerge": true
 		},
 		{
-			"description": "Stencil: require manual approval for ALL updates (every 4.39+ release breaks Popover API, tooltips and visual tests).",
+			"description": "Stencil: require manual approval for ALL updates (@stencil/core carries a local pnpm patch, and every release changes runtime behavior that the E2E and visual tests have to confirm).",
 			"matchPackageNames": ["@stencil/*", "@stencil-community/*"],
 			"groupName": "Stencil",
 			"automerge": false,

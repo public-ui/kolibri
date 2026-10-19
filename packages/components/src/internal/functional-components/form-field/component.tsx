@@ -22,6 +22,8 @@ export type FormFieldFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'ref
 	msg?: Stringified<MsgPropType>;
 	hint?: string;
 	label: string;
+	/** Space-separated IDs the root element references through `aria-describedby`. */
+	ariaDescribedBy?: string;
 	hideLabel?: boolean;
 	hideMsg?: boolean;
 	infoPopover?: FormFieldInfoPopover;

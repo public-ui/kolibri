@@ -4,7 +4,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -84,7 +84,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _alert="" _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -161,7 +161,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field kol-form-field--disabled">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -238,7 +238,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field kol-form-field--hide-label">
-      <label class="kol-form-field__label" hidden="" htmlfor="combobox-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -328,7 +328,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -408,7 +408,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -491,7 +491,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -572,7 +572,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -653,7 +653,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -765,7 +765,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _touched="" _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -842,7 +842,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _touched="" _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -928,7 +928,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1005,7 +1005,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _readonly="" _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1082,7 +1082,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1162,7 +1162,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _touched="" _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field kol-form-field--touched">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1239,7 +1239,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field kol-form-field--custom">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1316,7 +1316,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
 <kol-combobox _value="Herr">
   <template shadowrootmode="open">
     <div class="has-value kol-combobox kol-form-field">
-      <label class="kol-form-field__label" htmlfor="combobox-nonce" id="combobox-label-nonce">
+      <label class="kol-form-field__label" for="combobox-nonce" id="combobox-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">

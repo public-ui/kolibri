@@ -4,7 +4,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _hasCoun
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--has-counter kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -24,7 +24,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _hasCoun
         </div>
       </div>
       <div class="kol-form-field__counter">
-        <span aria-hidden="true" class="kol-form-field__counter kol-form-field__counter--exceeded" data-testid="input-counter">
+        <span aria-hidden="true" class="kol-form-field__counter" data-testid="input-counter">
           kol-character-limit-remaining
         </span>
         <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="input-text-counter-nonce">
@@ -40,7 +40,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _hasCoun
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--has-counter kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -60,7 +60,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _hasCoun
         </div>
       </div>
       <div class="kol-form-field__counter">
-        <span aria-hidden="true" class="kol-form-field__counter kol-form-field__counter--exceeded" data-testid="input-counter">
+        <span aria-hidden="true" class="kol-form-field__counter" data-testid="input-counter">
           kol-character-counter-current-of-max
         </span>
         <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="input-text-counter-nonce">
@@ -76,7 +76,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _hasCoun
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--has-counter kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -96,7 +96,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _hasCoun
         </div>
       </div>
       <div class="kol-form-field__counter">
-        <span aria-hidden="true" class="kol-form-field__counter kol-form-field__counter--exceeded" data-testid="input-counter">
+        <span aria-hidden="true" class="kol-form-field__counter" data-testid="input-counter">
           kol-character-counter-current
         </span>
         <span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id="input-text-counter-nonce">
@@ -112,7 +112,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _maxLeng
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--has-counter kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -143,7 +143,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _maxLeng
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -174,7 +174,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _pattern
 <kol-input-text>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--required kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -202,7 +202,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -233,7 +233,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _alert="" _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -261,7 +261,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--disabled kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -289,7 +289,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--hide-label kol-input-text text">
-      <label class="kol-form-field__label" hidden="" htmlfor="input-text-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -330,7 +330,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -361,7 +361,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -395,7 +395,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -427,7 +427,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -459,7 +459,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -522,7 +522,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _touched="" _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -550,7 +550,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _touched="" _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -587,7 +587,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -615,7 +615,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--read-only kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -646,7 +646,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -677,7 +677,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -732,7 +732,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _touched="" _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--touched kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -760,7 +760,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-form-field--custom kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -788,7 +788,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _placeho
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text text">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -816,7 +816,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _type="s
 <kol-input-text _value="Value">
   <template shadowrootmode="open">
     <div class="has-value kol-form-field kol-input-text search">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -872,7 +872,7 @@ exports[`kol-input-text should render with _label="Label" _name="field" _type="s
 <kol-input-text>
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-text search">
-      <label class="kol-form-field__label" htmlfor="input-text-nonce" id="input-text-label-nonce">
+      <label class="kol-form-field__label" for="input-text-nonce" id="input-text-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">

@@ -4,7 +4,7 @@ exports[`kol-input-range should render with _label="Label" _max=10 _min=1 _name=
 <kol-input-range _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -35,7 +35,7 @@ exports[`kol-input-range should render with _label="Label" _max=100000 _min=-50 
 <kol-input-range _value="10">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -66,7 +66,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -100,7 +100,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -131,7 +131,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -162,7 +162,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--hide-label kol-input-range range">
-      <label class="kol-form-field__label" hidden="" htmlfor="input-range-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -206,7 +206,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -240,7 +240,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -277,7 +277,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -312,7 +312,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -347,7 +347,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -413,7 +413,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -444,7 +444,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -484,7 +484,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -515,7 +515,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -546,7 +546,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -580,7 +580,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -626,7 +626,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -669,7 +669,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -712,7 +712,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--hide-label kol-input-range range">
-      <label class="kol-form-field__label" hidden="" htmlfor="input-range-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -768,7 +768,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -814,7 +814,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -863,7 +863,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -910,7 +910,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -957,7 +957,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1035,7 +1035,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1078,7 +1078,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1130,7 +1130,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1173,7 +1173,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1216,7 +1216,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1262,7 +1262,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1305,7 +1305,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1348,7 +1348,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1391,7 +1391,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1422,7 +1422,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1453,7 +1453,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _placeh
 <kol-input-range _placeholder="Hier steht ein Platzhaltertext" _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1484,7 +1484,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _sugges
 <kol-input-range _value="1">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1519,7 +1519,7 @@ exports[`kol-input-range should render with _label="Label" _name="field" _value=
 <kol-input-range _value="5">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-range range">
-      <label class="kol-form-field__label" htmlfor="input-range-nonce" id="input-range-label-nonce">
+      <label class="kol-form-field__label" for="input-range-nonce" id="input-range-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
