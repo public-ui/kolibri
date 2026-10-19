@@ -37,15 +37,20 @@ const getKoliBri = (): Record<string, unknown> => {
 
 export { getKoliBri };
 
-export const initKoliBri = (): void => {
-	initMeta();
-	Log.debug(
-		`
+/**
+ * The browser console collapses consecutive spaces of a logged string. Non-breaking spaces keep the ASCII art aligned.
+ */
+const LOGO = `
 ,--. ,--.         ,--. ,--. ,-----.           ,--.
 |  .'   /  ,---.  |  | \`--' |  |) /_  ,--.--. \`--'
 |  .   '  | .-. | |  | ,--. |  .-.  \\ |  .--' ,--.
 |  |\\   \\ | '-' | |  | |  | |  '--' / |  |    |  |
-\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'
+\`--' \`--´  \`---´  \`--' \`--' \`------´  \`--'    \`--'`.replace(/ /g, ' ');
+
+export const initKoliBri = (): void => {
+	initMeta();
+	Log.debug(
+		`${LOGO}
 🚹 The accessible HTML-Standard | 👉 https://public-ui.github.io | ${Env.kolibriVersion}
 	`,
 		{
