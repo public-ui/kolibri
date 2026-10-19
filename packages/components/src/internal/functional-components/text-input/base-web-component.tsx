@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
 import type { VNode } from '@stencil/core/internal';
-import { propagateSubmitEventToForm } from '../../../components/form/controller';
+import { submitFormOnEnter } from '../../../components/form/controller';
 import type {
 	AccessKeyPropType,
 	AutoCompletePropType,
@@ -192,12 +192,7 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 	protected readonly handleTextKeyDown = (event: KeyboardEvent): void => {
 		this.handleKeyDown(event);
 		this.counter.handleKeyDown(event, this.ctaRef.el?.value.length ?? 0);
-		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-			propagateSubmitEventToForm({
-				form: this.host,
-				ref: this.ctaRef.el,
-			});
-		}
+		submitFormOnEnter(event, { form: this.host, ref: this.ctaRef.el });
 	};
 
 	// --- Render ---
