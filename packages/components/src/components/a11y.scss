@@ -112,6 +112,12 @@
 	* - https://www.a11yproject.com/posts/how-to-hide-content/
 	*/
 	.visually-hidden {
+		/*
+		 * Theme layers take precedence over kol-a11y; !important is required on
+		 * position, margin, and padding to prevent theme rules from keeping visually
+		 * hidden messages in the layout flow (e.g. desy `.kol-alert { position: relative }`
+		 * and `&__msg { margin-top }`).
+		 */
 		position: fixed !important;
 		top: 0;
 		left: 0;
