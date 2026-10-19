@@ -9,6 +9,7 @@ on:
       - latest
       - v2-latest
       - v1-latest
+  workflow_dispatch:
 
 concurrency:
   group: 'workflow-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}'
