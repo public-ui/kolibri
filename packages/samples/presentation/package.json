@@ -1,6 +1,6 @@
 {
 	"name": "@public-ui/presentation",
-	"version": "4.5.0-rc.7",
+	"version": "4.5.0",
 	"description": "This package contains presentation samples for the KoliBri/Public UI",
 	"license": "EUPL-1.2",
 	"repository": {
@@ -51,16 +51,16 @@
 		"@vitejs/plugin-react-swc": "4.3.3",
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"eslint": "9.39.5",
-		"happy-dom": "20.14.5",
-		"knip": "6.39.0",
-		"prettier": "3.9.9",
+		"happy-dom": "20.14.6",
+		"knip": "6.42.0",
+		"prettier": "3.9.10",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"shadow-dom-testing-library": "1.14.2",
 		"stylelint": "17.16.0",
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
-		"vite": "8.3.2",
-		"vitest": "4.1.11"
+		"vite": "8.3.4",
+		"vitest": "4.1.12"
 	},
 	"files": [
 		"dist",

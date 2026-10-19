@@ -139,6 +139,7 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 
 	protected applyValue(value?: string): void {
 		this.initValue(value);
+		this.hasValue = Boolean(this.textShared.getRenderProp('value'));
 		this.counter.update(value?.length ?? 0);
 	}
 
@@ -180,7 +181,6 @@ export abstract class BaseTextInputWebComponent<Api extends TextInputBaseApi> ex
 
 	protected readonly handleTextChange = (event: Event, value?: unknown): void => {
 		this.handleChange(event, value);
-		this.hasValue = Boolean(value ?? (event.target as HTMLInputElement).value);
 	};
 
 	protected readonly handleTextFocus = (event: FocusEvent): void => {

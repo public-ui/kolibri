@@ -1,16 +1,16 @@
 {
-	"version": "4.5.0-rc.7",
+	"version": "4.5.0",
 	"devDependencies": {
-		"@evilmartians/lefthook": "2.1.17",
-		"js-yaml": "5.4.3",
-		"license-report": "6.8.5",
+		"@evilmartians/lefthook": "2.2.2",
+		"js-yaml": "5.5.0",
+		"license-report": "6.8.6",
 		"npm-run-all2": "9.0.3",
-		"prettier": "3.9.9",
+		"prettier": "3.9.10",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "17.16.0",
 		"stylelint-config-recommended-scss": "17.0.1",
 		"stylelint-config-standard": "40.0.0",
-		"stylelint-order": "8.1.1",
+		"stylelint-order": "8.1.2",
 		"stylelint-scss": "7.3.0"
 	},
 	"engines": {
