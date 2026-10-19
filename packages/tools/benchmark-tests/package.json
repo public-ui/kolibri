@@ -23,7 +23,7 @@
 		"@wdio/mocha-framework": "9.32.0",
 		"@wdio/spec-reporter": "9.32.0",
 		"chromedriver": "151.0.5",
-		"knip": "6.39.0",
+		"knip": "6.42.0",
 		"prettier": "3.9.10",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"rimraf": "6.1.3",
