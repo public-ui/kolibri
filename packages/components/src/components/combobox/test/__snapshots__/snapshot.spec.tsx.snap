@@ -49,7 +49,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -126,7 +126,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -203,7 +203,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" disabled="" hidden="" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" disabled="" hidden="" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -280,7 +280,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -370,7 +370,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -453,7 +453,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -536,7 +536,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -615,7 +615,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -730,7 +730,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -807,7 +807,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -884,7 +884,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -970,7 +970,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -1047,7 +1047,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -1127,7 +1127,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -1204,7 +1204,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -1281,7 +1281,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
@@ -1358,7 +1358,7 @@ exports[`kol-combobox should render with _label="Label" _name="field" _placehold
                   </div>
                 </div>
               </div>
-              <button class="kol-combobox-toggle" tabindex="-1" type="button">
+              <button aria-controls="combobox-listbox-nonce" aria-expanded="false" aria-label="kol-show-suggestions" class="kol-combobox-toggle" tabindex="-1" type="button">
                 <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
               </button>
             </div>
