@@ -70,7 +70,7 @@
 		}
 
 		&--required {
-			& &__label:has(.kol-span__slot[hidden])::after,
+			.kol-field-control__label-text:has(.kol-span__slot[hidden])::after,
 			.kol-tooltip__content .kol-span__label::after {
 				content: '*' / '';
 			}
