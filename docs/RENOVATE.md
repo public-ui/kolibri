@@ -97,10 +97,11 @@ The committed [`renovate.json`](../renovate.json) is tailored to this repo. High
   With `behind-base-branch`, every merge into `develop` (by people or by the runner itself, which
   merges one pull request per run) pushed all other green dependency pull requests behind and into a new
   rebase, so they rarely met a run in which they were both green and up to date.
-- **`baseBranchPatterns`** — runs on `develop` **and** `release/3|2|1`; the maintenance branches are
-  **security-only** (all regular npm and GitHub Actions updates are disabled) so released majors stay
-  stable. Security PRs still automerge when non-major; major security updates require dashboard
-  approval.
+- **`baseBranchPatterns`** — runs on `develop` and on the LTS branch `release/4`, both with the same
+  rules. `release/3|2|1` are paused: their package rules stay in place and make them **security-only**
+  (all regular npm and GitHub Actions updates are disabled) as soon as they are added back to
+  `baseBranchPatterns`. Security PRs then automerge when non-major; major security updates require
+  dashboard approval.
 - **`lockFileMaintenance`** — weekly `pnpm-lock.yaml` refresh (replaces the manual
   `04 - Update pnpm Lock` workflow runs).
 - **`configMigration: true`** — Renovate keeps `renovate.json` itself up to date when built-in
@@ -311,10 +312,11 @@ fixierten Major-Version halten (`angular/v20|v21`, `react*`), sichere Updates au
 - **npm-check-updates** ist nur ein CLI ohne eigene Automatisierung (läuft heute im Workflow
   `auto-dependency-updater.yml`).
 
-Neu hinzugekommen: `automergeStrategy: merge` folgt der Merge-Commit-Konvention des Repos,
-und die `release/*`-Branches werden auf **Security-only** umgestellt — reguläre npm- und
-GitHub-Actions-Updates werden dort komplett deaktiviert, während Vulnerability-Alert-PRs
-weiterhin (bei Nicht-Major) automatisch mergen.
+`automergeStrategy: merge` folgt der Merge-Commit-Konvention des Repos. Renovate läuft auf `develop`
+und dem LTS-Branch `release/4` mit denselben Regeln. `release/1`–`release/3` sind pausiert; ihre
+Regeln stellen sie auf **Security-only**, sobald sie wieder in `baseBranchPatterns` stehen: reguläre
+npm- und GitHub-Actions-Updates sind dort komplett deaktiviert, Vulnerability-Alert-PRs mergen
+(bei Nicht-Major) automatisch.
 
 Die fertige [`renovate.json`](../renovate.json) liegt im Repo-Root (geprüft mit dem offiziellen
 `renovate-config-validator`), und der self-hosted Runner-Workflow
