@@ -101,7 +101,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: ['develop', 'release/3', 'release/2']
+        branch: ['develop', 'release/4', 'release/3', 'release/2']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
