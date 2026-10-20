@@ -69,10 +69,6 @@
 			}
 		}
 
-		&--required &--hide-label {
-			content: '*' / '';
-		}
-
 		&--required {
 			& &__label:has(.kol-span__slot[hidden])::after,
 			.kol-tooltip__content .kol-span__label::after {
