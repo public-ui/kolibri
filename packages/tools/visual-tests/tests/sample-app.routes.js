@@ -55,11 +55,7 @@ ROUTES.set('button/short-key');
 ROUTES.set('card/basic');
 ROUTES.set('card/linked');
 ROUTES.set('card/headlines');
-ROUTES.set('combobox/basic?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
-});
+ROUTES.set('combobox/basic?noColumns');
 ROUTES.set('details/basic');
 ROUTES.set('dialog/basic?show-dialog=true', {
 	snapshot: {
@@ -368,9 +364,6 @@ ROUTES.set('input-text/background?noColumns', {
 	},
 });
 ROUTES.set('input-text/variant?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 1000,
@@ -730,9 +723,6 @@ ROUTES.set('version/context', {
 	},
 });
 ROUTES.set('scenarios/accordion-components', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		viewportSize: {
@@ -742,18 +732,12 @@ ROUTES.set('scenarios/accordion-components', {
 	},
 });
 ROUTES.set('scenarios/static-form', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		skip: true,
 	},
 });
 ROUTES.set('scenarios/sample-form-with-validation', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		skip: true,
@@ -766,18 +750,12 @@ ROUTES.set('scenarios/disabled-interactive-scenario', {
 	},
 });
 ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 	},
 });
 
 ROUTES.set('scenarios/same-height-of-all-form-elements-with-label', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 	},
@@ -830,9 +808,6 @@ ROUTES.set('scenarios/focus-elements?component=card', {
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=combobox', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		viewportSize: {
