@@ -1,24 +1,27 @@
 {
 	"schema": 1,
-	"state": "pending",
-	"description": "126 changed – 0 of 126 approved, review pending",
-	"computedAt": "2026-10-20T09:09:24.830Z",
+	"state": "failure",
+	"description": "1 of 126 visual changes rejected",
+	"computedAt": "2026-10-20T09:35:52.256Z",
 	"pr": 11297,
 	"head": "1b046a064ce85fd14ef7200b90a6dc57e6ffcf29",
 	"digest": "sha256:73ca76a90f33f59711cac9b8bbf70ec10e314b0e66881e595539c5ce2e536161",
 	"counts": {
 		"changes": 126,
-		"open": 126,
+		"open": 125,
 		"approved": 0,
-		"rejected": 0,
+		"rejected": 1,
 		"routeErrors": 0,
 		"errorItems": 0
 	},
-	"reviewers": [],
+	"reviewers": [
+		"laske185"
+	],
 	"items": {
 		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-error": {
-			"state": "open",
-			"notes": []
+			"state": "rejected",
+			"notes": [],
+			"by": "laske185"
 		},
 		"test-tag-name-transformer/input-checkbox-basic-noColumns--left-info-popover": {
 			"state": "open",
