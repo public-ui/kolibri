@@ -37,7 +37,7 @@ import { radioOptionsProp, radioOrientationProp, radioValueProp, requiredProp, v
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';
-import { propagateSubmitEventToForm } from '../form/controller';
+import { submitFormOnEnter } from '../form/controller';
 
 /**
  * The **InputRadio** input type consists of a collection of radio elements, providing a choice between different values. Only a single value can be selected at a time. Selected radio elements are typically represented by a filled, visually highlighted circle.
@@ -406,12 +406,7 @@ export class KolInputRadio
 	private readonly handleRadioKeyDown = (event: KeyboardEvent): void => {
 		this.handleKeyDown(event);
 
-		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-			propagateSubmitEventToForm({
-				form: this.host,
-				ref: this.inputRef,
-			});
-		}
+		submitFormOnEnter(event, { form: this.host, ref: this.inputRef });
 	};
 
 	/**

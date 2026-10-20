@@ -56,7 +56,7 @@ import {
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { propagateSubmitEventToForm } from '../form/controller';
+import { submitFormOnEnter } from '../form/controller';
 
 const STEP_BUTTON_CLASS = 'kol-input-number__step-button';
 
@@ -504,12 +504,7 @@ export class KolInputNumber
 	/** Enter submits the surrounding `kol-form`, like in a native form. */
 	private readonly handleNumberKeyDown = (event: KeyboardEvent): void => {
 		this.handleKeyDown(event);
-		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-			propagateSubmitEventToForm({
-				form: this.host,
-				ref: this.ctaRef.el,
-			});
-		}
+		submitFormOnEnter(event, { form: this.host, ref: this.ctaRef.el });
 	};
 
 	/** `stepUp()`/`stepDown()` fire no events, so the step sends `input` and `change` like the native spin buttons. */
