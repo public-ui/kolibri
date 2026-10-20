@@ -8,18 +8,19 @@ import { AlertFC } from '../alert/component';
 
 export type FormFieldMsgFCProps = JSXBase.HTMLAttributes<HTMLElement> & {
 	alert?: AlertPropType;
+	hideMsg?: boolean;
 	msg?: Stringified<MsgPropType>;
 	id: IdPropType;
 };
 
 /** Validation message of a form field, rendered as an inline alert. */
-export const FormFieldMsgFC: FC<FormFieldMsgFCProps> = ({ alert, msg, id, class: classNames, ...other }) => {
+export const FormFieldMsgFC: FC<FormFieldMsgFCProps> = ({ alert, hideMsg, msg, id, class: classNames, ...other }) => {
 	const message = normalizeMsg(msg);
 
 	return (
 		<AlertFC
-			alert={message?._alert ?? alert === true}
-			class={clsx('kol-form-field__msg', classNames)}
+			alert={hideMsg ? false : (message?._alert ?? alert === true)}
+			class={clsx('kol-form-field__msg', hideMsg && 'visually-hidden', classNames)}
 			closerAriaDescriptionId={nonce()}
 			handleCloserClick={() => undefined}
 			hasCloser={false}
