@@ -81,6 +81,8 @@ export class KolTextarea
 
 	private readonly counter = new CounterBehavior(BaseWebComponent.stateLess);
 
+	private needsImmediateCounterUpdate = false;
+
 	/**
 	 * Whether the field has a value, rendered as the root class `kol-form-field--has-value`. It is a
 	 * plain field, not state: changing it does not re-render, the class follows with the next render (#11053).
@@ -223,6 +225,7 @@ export class KolTextarea
 	@Watch('_hasCounter')
 	public watchHasCounter(value?: boolean): void {
 		this.counter.watchHasCounter(value);
+		this.needsImmediateCounterUpdate = true;
 	}
 
 	/**
@@ -233,6 +236,7 @@ export class KolTextarea
 	@Watch('_maxLengthBehavior')
 	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
 		this.counter.watchMaxLengthBehavior(value);
+		this.needsImmediateCounterUpdate = true;
 	}
 
 	/**
@@ -457,6 +461,7 @@ export class KolTextarea
 	}
 
 	public componentDidLoad(): void {
+		this.needsImmediateCounterUpdate = false;
 		if (this.counter.hasCounter() || this.counter.hasSoftLimit()) {
 			this.counter.updateImmediate(this._value?.length ?? 0);
 		}
@@ -468,6 +473,15 @@ export class KolTextarea
 				this.writeRows(1);
 			}
 		});
+	}
+
+	public componentDidUpdate(): void {
+		if (this.needsImmediateCounterUpdate) {
+			this.needsImmediateCounterUpdate = false;
+			if (this.counter.hasCounter() || this.counter.hasSoftLimit()) {
+				this.counter.updateImmediate(this._value?.length ?? 0);
+			}
+		}
 	}
 
 	public componentDidRender(): void {

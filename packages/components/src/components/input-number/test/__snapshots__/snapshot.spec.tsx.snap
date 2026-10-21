@@ -490,13 +490,22 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             </button>
           </div>
           <div class="kol-input-container__container">
-            <input aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-number-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
+            <input aria-describedby="input-number-msg-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-number-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button aria-hidden="true" class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
               <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="input-number-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </div>
@@ -575,7 +584,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             </button>
           </div>
           <div class="kol-input-container__container">
-            <input aria-describedby="input-number-msg-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-number-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-number-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
           </div>
           <div class="kol-input-container__adornment kol-input-container__adornment--end">
             <button aria-hidden="true" class="kol-input-container__smart-button kol-input-number__step-button kol-input-number__step-button-up" data-testid="kol-input-number-step-up" tabindex="-1" type="button">
@@ -1182,7 +1191,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             </button>
           </div>
           <div class="kol-input-container__container">
-            <input aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-number-nonce" list="input-number-list-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
+            <input aria-describedby="input-number-msg-nonce" aria-invalid="true" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-input--error kol-input--touched" id="input-number-nonce" list="input-number-list-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="input-number-list-nonce">
               <option value="1"></option>
               <option value="2"></option>
@@ -1194,6 +1203,15 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
               <i aria-hidden="true" class="kol-icon kol-icon__icon kolicon-plus" role="presentation"></i>
             </button>
           </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="input-number-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </div>
@@ -1277,7 +1295,7 @@ exports[`kol-input-number should render with _label="Label" _name="field" _place
             </button>
           </div>
           <div class="kol-input-container__container">
-            <input aria-describedby="input-number-msg-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-number-nonce" list="input-number-list-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
+            <input autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input" id="input-number-nonce" list="input-number-list-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" type="number">
             <datalist id="input-number-list-nonce">
               <option value="1"></option>
               <option value="2"></option>

@@ -58,7 +58,7 @@ import type { InputDateDeps } from '../../internal/props/helpers/iso-date';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { propagateSubmitEventToForm } from '../form/controller';
+import { submitFormOnEnter } from '../form/controller';
 
 /**
  * The **Date** input type creates an input field for date values. These can be specific dates as well as weeks, months, or time values.
@@ -520,22 +520,10 @@ export class KolInputDate
 		}
 	};
 
-	private isNativeCalendarIconFocused(): boolean {
-		if (!this.ctaRef.el || typeof window === 'undefined' || typeof window.getComputedStyle !== 'function') {
-			return false;
-		}
-		return window.getComputedStyle(this.ctaRef.el).content.includes('native-icon-focused');
-	}
-
-	/** Enter submits the surrounding `kol-form`, unless it opens the native calendar; Space does not open it while read-only. */
+	/** Enter submits the surrounding `kol-form`, unless it opens the native calendar (see `submitFormOnEnter`); Space does not open it while read-only. */
 	private readonly handleDateKeyDown = (event: KeyboardEvent): void => {
 		this.handleKeyDown(event);
-		if ((event.code === 'Enter' || event.code === 'NumpadEnter') && !this.isNativeCalendarIconFocused()) {
-			propagateSubmitEventToForm({
-				form: this.host,
-				ref: this.ctaRef.el,
-			});
-		}
+		submitFormOnEnter(event, { form: this.host, ref: this.ctaRef.el });
 		if (this.getRenderProp('readOnly') && event.code === 'Space') {
 			event.preventDefault();
 		}

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="kolibri-logo-colorful-title kolibri-logo-colorful-desc">
+	<title id="kolibri-logo-colorful-title">KoliBri</title>
+	<desc id="kolibri-logo-colorful-desc">Kolibri-Logo aus sechs Segmenten in farblindensicheren Farben (Okabe-Ito-Palette) mit Markenblau als Anker.</desc>
+	<!--
+		Farbblindensichere Palette (angelehnt an Okabe-Ito, https://davidmathlogic.com/colorblindness/).
+		Benachbarte Segmente unterscheiden sich zusätzlich durch Luminanz und weiße Trennfugen,
+		sodass die Form nicht vom Farbsehen allein abhängt (WCAG 1.4.1).
+	-->
+	<g>
+		<!-- Körper: Orange -->
+		<path d="M353 322L213 304V434L353 322Z" fill="#E69F00" />
+		<!-- Unterer Flügel: Zinnoberrot -->
+		<path d="M209 564V304L149 434L209 564Z" fill="#D55E00" />
+		<!-- Kopf: Blaugrün -->
+		<path d="M357 316L417 250L361 210L275 244L357 316Z" fill="#009E73" />
+		<!-- Oberer Flügel: Blau -->
+		<path d="M329 218L237 92L250 222L272 241L329 218Z" fill="#0072B2" />
+		<!-- Schnabel: Markenblau -->
+		<path d="M353 318L35 36L213 300L353 318Z" fill="#003C78" />
+		<!-- Schwanz: Himmelblau -->
+		<path d="M391 286L565 272L421 252L391 286Z" fill="#56B4E9" />
+	</g>
+</svg>

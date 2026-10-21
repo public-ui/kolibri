@@ -93,6 +93,8 @@ export class KolCombobox
 
 	private readonly translateDeleteSelection = translate('kol-delete-selection');
 
+	private readonly translateShowSuggestions = translate('kol-show-suggestions');
+
 	/** Whether the field has a value, for the class `has-value`; it follows each `change`. */
 	private hasValue = false;
 
@@ -748,7 +750,13 @@ export class KolCombobox
 									)}
 								/>
 							)}
-							<ComboboxToggleFC disabled={isDisabled} handleClick={this.toggleListbox} />
+							<ComboboxToggleFC
+								disabled={isDisabled}
+								expanded={this.isOpen}
+								handleClick={this.toggleListbox}
+								label={this.translateShowSuggestions}
+								listboxId={createRelatedUniqueId(this.id, 'listbox')}
+							/>
 						</ListboxGroupFC>
 						<CustomSuggestionsOptionsGroupFC
 							blockSuggestionMouseOver={this.blockSuggestionMouseOver}

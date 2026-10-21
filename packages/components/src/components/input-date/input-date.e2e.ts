@@ -1,3 +1,4 @@
+import type { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
 import { test } from '@stencil/playwright';
 import { callback, kolEvent, nativeEvent, testInputBehaviorContract } from '../../e2e/input-behavior-contract';
@@ -330,6 +331,53 @@ test.describe('kol-input-date', () => {
 	});
 
 	testInputMessage<HTMLKolInputDateElement>('kol-input-date');
+
+	test.describe('Enter in a kol-form', () => {
+		const setUpForm = async (page: Page) => {
+			await page.setContent('<kol-form><kol-input-date _label="Date input"></kol-input-date></kol-form>');
+			await page.locator('kol-form').evaluate((element: HTMLKolFormElement) => {
+				(window as unknown as { submitCount: number }).submitCount = 0;
+				element._on = {
+					onSubmit: () => {
+						(window as unknown as { submitCount: number }).submitCount++;
+					},
+				};
+			});
+		};
+
+		const getSubmitCount = (page: Page) => page.evaluate(() => (window as unknown as { submitCount: number }).submitCount);
+
+		test('submits the form on Enter in the date field', async ({ page }) => {
+			await setUpForm(page);
+			await page.locator('input').focus();
+			await page.keyboard.press('Enter');
+			await expect.poll(() => getSubmitCount(page)).toBe(1);
+		});
+
+		test('does not submit the form when a keydown listener prevents the default', async ({ page }) => {
+			await setUpForm(page);
+			await page.locator('input').evaluate((input: HTMLInputElement) => {
+				input.addEventListener('keydown', (event) => event.preventDefault());
+			});
+			await page.locator('input').focus();
+			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
+			expect(await getSubmitCount(page)).toBe(0);
+		});
+
+		test('does not submit the form when Enter opens the native calendar', async ({ page }) => {
+			await setUpForm(page);
+			await page.locator('input').focus();
+			// Day, month and year are the first three tab stops of the date input, the calendar icon is the fourth.
+			for (let i = 0; i < 3; i++) {
+				await page.keyboard.press('Tab');
+			}
+			await page.keyboard.press('Enter');
+			await page.waitForTimeout(100);
+			expect(await page.locator('input').evaluate((input: HTMLInputElement) => input.matches(':open'))).toBe(true);
+			expect(await getSubmitCount(page)).toBe(0);
+		});
+	});
 
 	testInputBehaviorContract<HTMLKolInputDateElement>({
 		componentName: 'kol-input-date',

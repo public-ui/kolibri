@@ -45,6 +45,7 @@ export default {
 	'pagination-position-top': 'top',
 	readonly: 'read-only',
 	'show-password': 'Show password',
+	'show-suggestions': 'Show suggestions',
 	sort: 'sort',
 	'split-button-dropdown-label-open': 'Show options',
 	success: 'Success',
