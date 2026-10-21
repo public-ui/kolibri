@@ -1,0 +1,19 @@
+{
+	"schema": 1,
+	"state": "failure",
+	"description": "980 route(s) failed before the screenshots could be compared",
+	"computedAt": "2026-10-21T01:08:08.366Z",
+	"pr": 11310,
+	"head": "381cbf5a1e83db3181fe4c3ee59470f67444122d",
+	"digest": "sha256:70fcbc6218a0e26fc4f25d27aacf97903d59157d7ab4d484d874383796b3e4ff",
+	"counts": {
+		"changes": 0,
+		"open": 0,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 980,
+		"errorItems": 2941
+	},
+	"reviewers": [],
+	"items": {}
+}
