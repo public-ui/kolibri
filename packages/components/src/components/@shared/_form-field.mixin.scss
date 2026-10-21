@@ -21,9 +21,9 @@
 			}
 		}
 
-		&--required & {
-			&__label-text:has(.kol-span__slot[hidden]) .kol-span__label::after,
-			&__tooltip .kol-tooltip__content .kol-span__label::after {
+		&--required {
+			.kol-form-field__label-text:has(.kol-span__slot[hidden]) .kol-span__label::after,
+			&:not(:has(.kol-form-field__label--legend)) .kol-form-field__input .kol-tooltip__content .kol-span__label::after {
 				content: '*' / '';
 			}
 		}
