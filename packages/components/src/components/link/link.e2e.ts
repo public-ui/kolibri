@@ -146,8 +146,8 @@ test.describe('kol-link', () => {
 
 	test.describe('test props', () => {
 		test('should not contain aria-label when _hideLabel is set and _label is not defined', async ({ page }) => {
-			await page.setContent('<kol-link _label="" _hideLabel _href="#target"></kol-link>');
-			await expect(page.locator('kol-link')).not.toHaveAttribute('aria-label');
+			await page.setContent('<kol-link _hideLabel _href="#target"></kol-link>');
+			await expect(page.locator('kol-link a')).not.toHaveAttribute('aria-label');
 		});
 	});
 });
