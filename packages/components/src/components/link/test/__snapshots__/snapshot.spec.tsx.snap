@@ -1,5 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`kol-link should render with _href="#" _hideLabel=true _label="   " 1`] = `
+<kol-link>
+  <template shadowrootmode="open">
+    <div class="kol-link kol-link--hide-label kol-link--inline">
+      <a class="kol-link__interactive-element" href="#">
+        <span class="kol-link__text kol-span kol-span--hide-label">
+          <span class="kol-span__container">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </a>
+      <div class="kol-link__tooltip">
+        <div class="kol-tooltip__floating">
+          <div class="kol-tooltip__arrow"></div>
+          <span class="kol-span kol-tooltip__content">
+            <span class="kol-span__container">
+              <span class="kol-span__label"></span>
+              <span aria-hidden="true" class="kol-span__slot" hidden=""></span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-link>
+`;
+
+exports[`kol-link should render with _href="#" _hideLabel=true 1`] = `
+<kol-link>
+  <template shadowrootmode="open">
+    <div class="kol-link kol-link--hide-label kol-link--inline">
+      <a class="kol-link__interactive-element" href="#">
+        <span class="kol-link__text kol-span kol-span--hide-label">
+          <span class="kol-span__container">
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </a>
+      <div class="kol-link__tooltip">
+        <div class="kol-tooltip__floating" hidden="">
+          <div class="kol-tooltip__arrow"></div>
+          <span class="kol-span kol-tooltip__content">
+            <span class="kol-span__container">
+              <span class="kol-span__slot"></span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-link>
+`;
+
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _download="" 1`] = `
 <kol-link>
   <template shadowrootmode="open">
