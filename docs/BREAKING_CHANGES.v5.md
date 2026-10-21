@@ -120,3 +120,26 @@ The `*Props` types of components that still have consumers (`ButtonProps`, `Inte
 `LinkProps`, `ButtonLinkProps`, `LinkButtonProps`, `SplitButtonProps`, …) stay. Type the public
 props of a migrated element through the element itself, e.g. `Pick<HTMLKolAbbrElement, '_label'>`,
 or through the internal prop definitions in `src/internal/props`.
+
+## `kol-abbr`: the default slot is replaced by `_abbr`
+
+Since version 4.5, `kol-abbr` takes the abbreviation through the property `_abbr` and its long form
+through `_label`. The long form is shown as a tooltip on hover and keyboard focus and is announced as
+the description of the abbreviation. The default slot is **deprecated** in version 4 and will be
+**removed in version 5**. Markup in the slot is not rendered already in version 4: an abbreviation
+is plain text, and `kol-abbr` is no tooltip for arbitrary content (use `kol-popover-button` for that).
+
+**Before (v4):**
+
+```html
+<kol-abbr>z. B.</kol-abbr>
+```
+
+**After:**
+
+```html
+<kol-abbr _abbr="z. B." _label="zum Beispiel"></kol-abbr>
+```
+
+The migration CLI (`kolibri migrate`) moves plain text content into `_abbr`. Content with markup or
+expressions stays unchanged and has to be migrated by hand.
