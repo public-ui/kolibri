@@ -1,0 +1,100 @@
+{
+	"schema": 1,
+	"state": "pending",
+	"description": "13 changed, 7 added – 0 of 20 approved, review pending",
+	"computedAt": "2026-10-21T07:07:35.815Z",
+	"pr": 11316,
+	"head": "fafe566a399b6ec243c555d971860f29612ec950",
+	"digest": "sha256:e7c7466f35d116f85c41ec8c74d80b9291ed92ab37be346f30b28ed95a15c313",
+	"counts": {
+		"changes": 20,
+		"open": 20,
+		"approved": 0,
+		"rejected": 0,
+		"routeErrors": 0,
+		"errorItems": 0
+	},
+	"reviewers": [],
+	"items": {
+		"test-tag-name-transformer/scenarios-focus-elements-component-tabs": {
+			"state": "open",
+			"notes": []
+		},
+		"test-tag-name-transformer/tabs-basic--sticky": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/scenarios-focus-elements-component-tabs": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/tabs-basic--sticky": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-bwst/tabs-create-button--create-button": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/scenarios-focus-elements-component-tabs": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-default/tabs-basic--sticky": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/scenarios-focus-elements-component-tabs": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-desy/tabs-basic--sticky": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/scenarios-focus-elements-component-tabs": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/tabs-basic--icons": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/tabs-basic--regular": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/tabs-basic--sticky": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-ecl/tabs-create-button--create-button": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/scenarios-focus-elements-component-tabs": {
+			"state": "open",
+			"notes": []
+		},
+		"theme-kern/tabs-basic--sticky": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/scenarios-focus-elements-component-tabs": {
+			"state": "open",
+			"notes": []
+		},
+		"unstyled/tabs-basic--sticky": {
+			"state": "open",
+			"notes": []
+		}
+	}
+}
