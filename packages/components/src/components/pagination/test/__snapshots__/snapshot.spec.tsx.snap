@@ -1225,7 +1225,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=25 _page=3
       <div class="page-size">
         <div class="kol-pagination__page-size-select">
           <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-            <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+            <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
               <span class="kol-form-field__label-text kol-span">
                 <span class="kol-span__container">
                   <span class="kol-span__label">
@@ -1444,7 +1444,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
       <div class="page-size">
         <div class="kol-pagination__page-size-select">
           <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-            <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+            <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
               <span class="kol-form-field__label-text kol-span">
                 <span class="kol-span__container">
                   <span class="kol-span__label">
@@ -1663,7 +1663,7 @@ exports[`kol-pagination should render with _label="Label" _on={} _max=40 _page=1
       <div class="page-size">
         <div class="kol-pagination__page-size-select">
           <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-            <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+            <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
               <span class="kol-form-field__label-text kol-span">
                 <span class="kol-span__container">
                   <span class="kol-span__label">

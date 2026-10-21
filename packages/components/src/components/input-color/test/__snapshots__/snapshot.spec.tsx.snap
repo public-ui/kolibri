@@ -4,7 +4,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -35,7 +35,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _alert="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -63,7 +63,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -91,7 +91,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--hide-label kol-input-color">
-      <label class="kol-form-field__label" hidden="" htmlfor="input-color-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -132,7 +132,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -163,7 +163,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -197,7 +197,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -229,7 +229,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -261,7 +261,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -324,7 +324,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -361,7 +361,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -398,7 +398,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -426,7 +426,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _readonly="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -454,7 +454,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -485,7 +485,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -540,7 +540,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -576,7 +576,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _alert="" _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -609,7 +609,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -642,7 +642,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--hide-label kol-input-color">
-      <label class="kol-form-field__label" hidden="" htmlfor="input-color-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -688,7 +688,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -724,7 +724,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -763,7 +763,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -800,7 +800,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -837,7 +837,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -905,7 +905,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -947,7 +947,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--msg-type-error kol-form-field--touched kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -989,7 +989,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1022,7 +1022,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _readonly="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1055,7 +1055,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1091,7 +1091,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1151,7 +1151,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1184,7 +1184,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1217,7 +1217,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1250,7 +1250,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext" _touched="">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--touched kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1278,7 +1278,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1306,7 +1306,7 @@ exports[`kol-input-color should render with _label="Label" _name="field" _placeh
 <kol-input-color _placeholder="Hier steht ein Platzhaltertext">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-input-color">
-      <label class="kol-form-field__label" htmlfor="input-color-nonce" id="input-color-label-nonce">
+      <label class="kol-form-field__label" for="input-color-nonce" id="input-color-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
