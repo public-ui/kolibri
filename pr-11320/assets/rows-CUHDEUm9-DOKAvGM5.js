@@ -1,0 +1,1 @@
+import{_ as e,o as t}from"./base-web-component-Bcoukts3-C2fg5j0C.js";var n=t(`rows`,void 0,e,e=>e===void 0||e>=1);export{n as t};
