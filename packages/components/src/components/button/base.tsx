@@ -283,7 +283,7 @@ export abstract class BaseButtonWebComponent extends BaseWebComponent<ButtonApi>
 	}
 
 	protected applyTooltipAlign(value?: TooltipAlignPropType): void {
-		tooltipAlignProp.apply(value, (v) => {
+		tooltipAlignProp.apply(value ?? 'top', (v) => {
 			this.setRenderProp('tooltipAlign', v);
 			this.tooltipBehavior.watchAlign(v);
 		});
