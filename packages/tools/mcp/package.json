@@ -69,7 +69,7 @@
 	"dependencies": {
 		"@modelcontextprotocol/sdk": "1.32.1",
 		"@public-ui/components": "workspace:*",
-		"express": "5.2.1",
+		"express": "5.3.0",
 		"fuse.js": "7.5.0",
 		"glob": "13.0.6",
 		"simple-git": "3.36.0",
