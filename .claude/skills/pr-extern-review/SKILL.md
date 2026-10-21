@@ -72,6 +72,10 @@ Beispiele aus dem Referenzlauf (Abschnitt 12):
 - Nennt der Nutzer PRs, genau diese prüfen, auch gemergte und geschlossene.
 - Nennt der Nutzer einen Contributor, alle seine PRs holen (`gh pr list --repo public-ui/kolibri --author
 <login> --state all` oder die GitHub-MCP-Suche `author:<login>`). Sagt er „offene“, nur die offenen.
+- Externe Contributor erkennt der Skill am Quell-Branch: Kommt der Head aus einem geforkten Repo, ist der
+  PR extern (`isCrossRepository` bzw. `headRepositoryOwner` in den PR-Daten). PRs mit Branch im Repo
+  `public-ui/kolibri` selbst sind intern und gehören nicht in dieses Audit, auch wenn der Autor unbekannt
+  ist. Kein Login-Rätseln, keine Annahmen über Teamzugehörigkeit.
 - Bei einer Folgeprüfung („neuer Stand?“) zuerst alle zuvor genannten PRs neu abrufen. Neue Commits,
   neue Kommentare und neu gemergte oder geschlossene PRs nennen. PRs ohne Änderung seit dem letzten Audit
   nicht neu prüfen, sondern ihre Bewertung übernehmen und das sagen.

@@ -125,6 +125,20 @@ We recommend using [Visual Studio Code](https://code.visualstudio.com/):
 
 All tests run via GitHub Actions when you open a pull request. Monitor them under the **Actions** tab.
 
+#### E2E tests (Playwright)
+
+The Playwright tests of the components live next to the components as `*.e2e.ts` files (e.g. `packages/components/src/components/badge/badge.e2e.ts`). Run a single file or test from `packages/components`; the arguments are passed on to `playwright test`:
+
+```bash
+cd packages/components
+
+pnpm test:e2e src/components/badge/badge.e2e.ts              # one file
+pnpm test:e2e src/components/badge/badge.e2e.ts -g "title"   # one test by (part of) its title
+pnpm test:e2e src/components/badge/badge.e2e.ts:42           # one test by line number
+```
+
+Useful flags: `--headed` (visible browser), `--ui` (Playwright UI mode), `--debug` (inspector). After a run, `pnpm exec playwright show-report` opens the HTML report.
+
 ### Develop new component
 
 Refer to [new component](docs/tutorials/NEW_COMPONENT.md) tutorial.
