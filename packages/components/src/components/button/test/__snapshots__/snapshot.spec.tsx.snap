@@ -212,3 +212,29 @@ exports[`kol-button should render with _label="Label" 1`] = `
   </template>
 </kol-button>
 `;
+
+exports[`kol-button should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+<kol-button>
+  <template shadowrootmode="open">
+    <div class="kol-button kol-button--normal kol-button--standalone">
+      <button class="kol-button__interactive-element" type="button">
+        <span class="kol-button__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </button>
+    </div>
+  </template>
+</kol-button>
+`;

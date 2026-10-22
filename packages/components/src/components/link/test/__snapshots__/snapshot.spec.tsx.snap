@@ -57,6 +57,32 @@ exports[`kol-link should render with _href="#" _hideLabel=true 1`] = `
 </kol-link>
 `;
 
+exports[`kol-link should render with _href="#" _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] 1`] = `
+<kol-link>
+  <template shadowrootmode="open">
+    <div class="kol-link kol-link--inline">
+      <a class="kol-link__interactive-element" href="#">
+        <span class="kol-link__text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert" slot="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </a>
+    </div>
+  </template>
+</kol-link>
+`;
+
 exports[`kol-link should render with _href="https://example.com" _icons="codicon codicon-home" _label="Label" _target="self" _download="" 1`] = `
 <kol-link>
   <template shadowrootmode="open">

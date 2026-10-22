@@ -904,3 +904,56 @@ exports[`kol-single-select should render with _label="Label" _name="field" _plac
   </template>
 </kol-single-select>
 `;
+
+exports[`kol-single-select should render with _label=[{"text":"partly english","lang":"en"},{"text":"Label"}] _name="field" _placeholder="Hier steht ein Platzhaltertext" _options=[{"label":"Frau","value":"Frau","disabled":true},{"label":"Herr","value":"Herr"},{"label":"Divers","value":"Divers"}] 1`] = `
+<kol-single-select>
+  <template shadowrootmode="open">
+    <div class="kol-form-field kol-single-select">
+      <label class="kol-form-field__label" for="single-select-nonce" id="single-select-label-nonce">
+        <span class="kol-form-field__label-text kol-span">
+          <span class="kol-span__container">
+            <span class="kol-span__label">
+              <span lang="en">
+                partly english
+              </span>
+              <span>
+                Label
+              </span>
+            </span>
+            <span aria-hidden="true" class="kol-span__slot" hidden="">
+              <slot name="expert"></slot>
+            </span>
+          </span>
+        </span>
+      </label>
+      <div class="kol-form-field__input">
+        <div class="kol-input-container">
+          <div class="kol-input-container__container">
+            <div class="kol-single-select__group">
+              <input aria-autocomplete="both" aria-controls="single-select-listbox-nonce" aria-expanded="false" aria-labelledby="single-select-label-nonce" autocapitalize="off" autocomplete="off" autocorrect="off" class="kol-input kol-single-select__input" id="single-select-nonce" name="field" placeholder="Hier steht ein Platzhaltertext" role="combobox" type="text" value="">
+              <i aria-hidden="true" class="kol-custom-suggestions-toggle kol-icon kol-icon__icon kolicon-chevron-down" role="presentation"></i>
+            </div>
+            <ul class="kol-custom-suggestions-options-group" hidden="" id="single-select-listbox-nonce" role="listbox" style="--visible-options: 5;">
+              <li aria-disabled="true" class="kol-custom-suggestions-option kol-custom-suggestions-option--disabled" data-index="0" id="single-select-option-0-nonce" role="option" tabindex="-1">
+                <span>
+                  Frau
+                </span>
+              </li>
+              <li class="kol-custom-suggestions-option" data-index="1" id="single-select-option-1-nonce" role="option" tabindex="-1">
+                <span>
+                  Herr
+                </span>
+              </li>
+              <li class="kol-custom-suggestions-option" data-index="2" id="single-select-option-2-nonce" role="option" tabindex="-1">
+                <span>
+                  Divers
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</kol-single-select>
+`;
