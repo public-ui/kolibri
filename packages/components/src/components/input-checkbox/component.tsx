@@ -44,7 +44,7 @@ import {
 } from '../../internal/props';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
-import { propagateSubmitEventToForm } from '../form/controller';
+import { submitFormOnEnter } from '../form/controller';
 
 /**
  * The **Checkbox** input type generates a rectangular box that can be activated and deactivated by clicking. When activated, a colored checkmark is shown inside the box.
@@ -410,12 +410,7 @@ export class KolInputCheckbox
 	private readonly handleCheckboxKeyDown = (event: KeyboardEvent): void => {
 		this.handleKeyDown(event);
 
-		if (event.code === 'Enter' || event.code === 'NumpadEnter') {
-			propagateSubmitEventToForm({
-				form: this.host,
-				ref: this.ctaRef.el,
-			});
-		}
+		submitFormOnEnter(event, { form: this.host, ref: this.ctaRef.el });
 	};
 
 	/** A disabled checkbox keeps `inputHasFocus` on blur. */

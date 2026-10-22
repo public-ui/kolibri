@@ -69,8 +69,8 @@
 			}
 		}
 
-		&--required & {
-			&__label-text:has(.kol-span__slot[hidden])::after,
+		&--required {
+			.kol-field-control__label-text:has(.kol-span__slot[hidden])::after,
 			.kol-tooltip__content .kol-span__label::after {
 				content: '*' / '';
 			}

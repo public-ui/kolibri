@@ -45,7 +45,7 @@ node scripts/snapshots-docker.mjs --reset                # Volume verwerfen (Neu
 git diff --name-only origin/develop...HEAD -- '*.png' | wc -l
 
 # Vor jedem Lauf: Ergebnisordner als root im Volume aufräumen (sonst EACCES im Reporter):
-docker run --rm -u 0 -v kolibri-visual-tests-work:/work mcr.microsoft.com/playwright:v1.60.0-noble \
+docker run --rm -u 0 -v kolibri-visual-tests-work:/work mcr.microsoft.com/playwright:v1.63.0-noble \
   bash -c 'rm -rf /work/repo/packages/themes/<theme>/test-results /work/repo/packages/themes/<theme>/playwright-report'
 ```
 

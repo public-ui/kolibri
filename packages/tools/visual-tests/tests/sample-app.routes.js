@@ -21,7 +21,7 @@ export const ROUTES = new Map();
  *     content (skip-nav) and deliberate composition tests (scenarios/*, form/basic).
  *   - viewportSize:
  *     - width (Default: 800)
- *     - height (Default: 100)
+ *     - height (Default: 400)
  *   - waitForTimeout: number (Default: 15000)
  *
  * There is no per-route option for the reflow pass: blocks that should additionally be captured at
@@ -55,11 +55,7 @@ ROUTES.set('button/short-key');
 ROUTES.set('card/basic');
 ROUTES.set('card/linked');
 ROUTES.set('card/headlines');
-ROUTES.set('combobox/basic?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
-});
+ROUTES.set('combobox/basic?noColumns');
 ROUTES.set('details/basic');
 ROUTES.set('dialog/basic?show-dialog=true', {
 	snapshot: {
@@ -334,22 +330,8 @@ ROUTES.set('input-text/access-short-key?noColumns', {
 		},
 	},
 });
-ROUTES.set('input-text/hide-label?noColumns', {
-	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 0,
-		},
-	},
-});
-ROUTES.set('input-text/hide-msg?noColumns', {
-	snapshot: {
-		viewportSize: {
-			width: 800,
-			height: 0,
-		},
-	},
-});
+ROUTES.set('input-text/hide-label?noColumns');
+ROUTES.set('input-text/hide-msg?noColumns');
 ROUTES.set('input-text/text-formatter?noColumns', {
 	snapshot: {
 		skip: true,
@@ -382,9 +364,6 @@ ROUTES.set('input-text/background?noColumns', {
 	},
 });
 ROUTES.set('input-text/variant?noColumns', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		viewportSize: {
 			width: 1000,
@@ -744,9 +723,6 @@ ROUTES.set('version/context', {
 	},
 });
 ROUTES.set('scenarios/accordion-components', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		viewportSize: {
@@ -756,18 +732,12 @@ ROUTES.set('scenarios/accordion-components', {
 	},
 });
 ROUTES.set('scenarios/static-form', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		skip: true,
 	},
 });
 ROUTES.set('scenarios/sample-form-with-validation', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		skip: true,
@@ -780,18 +750,12 @@ ROUTES.set('scenarios/disabled-interactive-scenario', {
 	},
 });
 ROUTES.set('scenarios/same-height-of-all-interactive-elements', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 	},
 });
 
 ROUTES.set('scenarios/same-height-of-all-form-elements-with-label', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 	},
@@ -844,9 +808,6 @@ ROUTES.set('scenarios/focus-elements?component=card', {
 	},
 });
 ROUTES.set('scenarios/focus-elements?component=combobox', {
-	axe: {
-		skipFailures: true,
-	},
 	snapshot: {
 		forceFullPage: true,
 		viewportSize: {

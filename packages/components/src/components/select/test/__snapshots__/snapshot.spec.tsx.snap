@@ -4,7 +4,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -45,7 +45,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -83,7 +83,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -121,7 +121,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hide-label kol-form-field-select">
-      <label class="kol-form-field__label" hidden="" htmlfor="select-nonce">
+      <label class="kol-form-field__label" for="select-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -172,7 +172,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -187,7 +187,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -199,6 +199,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
               </option>
             </select>
           </div>
+        </div>
+      </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
         </div>
       </div>
     </div>
@@ -210,7 +219,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -225,7 +234,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -239,6 +248,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
     </div>
   </template>
 </kol-select>
@@ -248,7 +266,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -286,7 +304,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -327,7 +345,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -365,7 +383,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -403,7 +421,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--hide-label kol-form-field-select">
-      <label class="kol-form-field__label" hidden="" htmlfor="select-nonce">
+      <label class="kol-form-field__label" for="select-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -454,7 +472,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -495,7 +513,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -539,7 +557,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -581,7 +599,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -623,7 +641,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -696,7 +714,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -734,7 +752,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -775,7 +793,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -790,7 +808,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -804,6 +822,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          This is a combined error message
+        </div>
+      </div>
     </div>
   </template>
 </kol-select>
@@ -813,7 +840,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -851,7 +878,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hidden-msg kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -889,7 +916,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -930,7 +957,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -974,7 +1001,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1016,7 +1043,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1058,7 +1085,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1131,7 +1158,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1146,7 +1173,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -1160,6 +1187,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
     </div>
   </template>
 </kol-select>
@@ -1169,7 +1205,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1216,7 +1252,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1231,7 +1267,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <select aria-describedby="select-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" name="field">
+            <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -1254,7 +1290,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1295,7 +1331,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1333,7 +1369,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1371,7 +1407,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hide-label kol-form-field-select">
-      <label class="kol-form-field__label" hidden="" htmlfor="select-nonce">
+      <label class="kol-form-field__label" for="select-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1422,7 +1458,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1463,7 +1499,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1507,7 +1543,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1549,7 +1585,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1591,7 +1627,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1664,7 +1700,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1679,7 +1715,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" multiple="" name="field">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" multiple="" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -1693,6 +1729,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
     </div>
   </template>
 </kol-select>
@@ -1702,7 +1747,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1749,7 +1794,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1764,7 +1809,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <select aria-describedby="select-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" multiple="" name="field">
+            <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" multiple="" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -1787,7 +1832,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1825,7 +1870,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1866,7 +1911,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1904,7 +1949,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1945,7 +1990,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -1983,7 +2028,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2021,7 +2066,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hide-label kol-form-field-select">
-      <label class="kol-form-field__label" hidden="" htmlfor="select-nonce">
+      <label class="kol-form-field__label" for="select-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2072,7 +2117,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2113,7 +2158,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2157,7 +2202,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2199,7 +2244,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2241,7 +2286,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2314,7 +2359,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2329,7 +2374,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" multiple="" name="field">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" multiple="" name="field">
               <option class="kol-select__option kol-select__option--disabled kol-select__option--selected" disabled="" selected="" value="-0">
                 Frau
               </option>
@@ -2343,6 +2388,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
     </div>
   </template>
 </kol-select>
@@ -2352,7 +2406,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2399,7 +2453,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2414,7 +2468,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <select aria-describedby="select-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" multiple="" name="field">
+            <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" multiple="" name="field">
               <option class="kol-select__option kol-select__option--disabled kol-select__option--selected" disabled="" selected="" value="-0">
                 Frau
               </option>
@@ -2437,7 +2491,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2475,7 +2529,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2516,7 +2570,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2554,7 +2608,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2592,7 +2646,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2630,7 +2684,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2668,7 +2722,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2706,7 +2760,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2744,7 +2798,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2785,7 +2839,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2823,7 +2877,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2861,7 +2915,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hide-label kol-form-field-select">
-      <label class="kol-form-field__label" hidden="" htmlfor="select-nonce">
+      <label class="kol-form-field__label" for="select-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2912,7 +2966,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2953,7 +3007,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -2997,7 +3051,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3039,7 +3093,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3081,7 +3135,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3154,7 +3208,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3169,7 +3223,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -3183,6 +3237,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
     </div>
   </template>
 </kol-select>
@@ -3192,7 +3255,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3239,7 +3302,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3254,7 +3317,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <select aria-describedby="select-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" name="field">
+            <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -3277,7 +3340,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3318,7 +3381,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3356,7 +3419,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3394,7 +3457,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hide-label kol-form-field-select">
-      <label class="kol-form-field__label" hidden="" htmlfor="select-nonce">
+      <label class="kol-form-field__label" for="select-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3445,7 +3508,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3486,7 +3549,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3530,7 +3593,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3572,7 +3635,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3614,7 +3677,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3687,7 +3750,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3702,7 +3765,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" multiple="" name="field" size="3">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" multiple="" name="field" size="3">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -3716,6 +3779,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
     </div>
   </template>
 </kol-select>
@@ -3725,7 +3797,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3772,7 +3844,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3787,7 +3859,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <select aria-describedby="select-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" multiple="" name="field" size="3">
+            <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" multiple="" name="field" size="3">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -3810,7 +3882,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3848,7 +3920,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3889,7 +3961,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3927,7 +3999,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -3965,7 +4037,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4003,7 +4075,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4041,7 +4113,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4082,7 +4154,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4120,7 +4192,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4158,7 +4230,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4196,7 +4268,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4237,7 +4309,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4278,7 +4350,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4316,7 +4388,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4354,7 +4426,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hide-label kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" hidden="" htmlfor="select-nonce">
+      <label class="kol-form-field__label" for="select-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4405,7 +4477,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4446,7 +4518,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4490,7 +4562,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4532,7 +4604,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4574,7 +4646,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4647,7 +4719,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--required kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4662,7 +4734,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--required kol-select--touched" id="select-nonce" name="field" required="">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--required kol-select--touched" id="select-nonce" name="field" required="">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -4676,6 +4748,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
     </div>
   </template>
 </kol-select>
@@ -4685,7 +4766,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--msg-type-error kol-form-field--required kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4732,7 +4813,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4747,7 +4828,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <select aria-describedby="select-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-select kol-select--required" id="select-nonce" name="field" required="">
+            <select autocapitalize="off" autocorrect="off" class="kol-select kol-select--required" id="select-nonce" name="field" required="">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -4770,7 +4851,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4808,7 +4889,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4849,7 +4930,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4887,7 +4968,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4925,7 +5006,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--required kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -4963,7 +5044,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5001,7 +5082,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5042,7 +5123,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5080,7 +5161,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5118,7 +5199,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hide-label kol-form-field-select">
-      <label class="kol-form-field__label" hidden="" htmlfor="select-nonce">
+      <label class="kol-form-field__label" for="select-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5169,7 +5250,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5210,7 +5291,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5254,7 +5335,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5296,7 +5377,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5338,7 +5419,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5411,7 +5492,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5426,7 +5507,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -5440,6 +5521,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
     </div>
   </template>
 </kol-select>
@@ -5449,7 +5539,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5496,7 +5586,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5511,7 +5601,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <select aria-describedby="select-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" name="field">
+            <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -5534,7 +5624,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5572,7 +5662,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5613,7 +5703,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5651,7 +5741,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5689,7 +5779,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Herr" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5727,7 +5817,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5768,7 +5858,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5806,7 +5896,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5844,7 +5934,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hide-label kol-form-field-select">
-      <label class="kol-form-field__label" hidden="" htmlfor="select-nonce">
+      <label class="kol-form-field__label" for="select-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5895,7 +5985,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5936,7 +6026,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -5980,7 +6070,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6022,7 +6112,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6064,7 +6154,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6137,7 +6227,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6152,7 +6242,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -6166,6 +6256,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
     </div>
   </template>
 </kol-select>
@@ -6175,7 +6274,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6222,7 +6321,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6237,7 +6336,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <select aria-describedby="select-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" name="field">
+            <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" name="field">
               <option class="kol-select__option kol-select__option--disabled" disabled="" value="-0">
                 Frau
               </option>
@@ -6260,7 +6359,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6298,7 +6397,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6339,7 +6438,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6377,7 +6476,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6415,7 +6514,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="Unbekannt" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6453,7 +6552,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6491,7 +6590,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6529,7 +6628,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6572,7 +6671,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6612,7 +6711,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6652,7 +6751,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hide-label kol-form-field-select">
-      <label class="kol-form-field__label" hidden="" htmlfor="select-nonce">
+      <label class="kol-form-field__label" for="select-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6705,7 +6804,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6748,7 +6847,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6794,7 +6893,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6838,7 +6937,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6882,7 +6981,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6957,7 +7056,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -6972,7 +7071,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
               <optgroup class="kol-select__optgroup" label="Gruppe">
                 <option class="kol-select__option kol-select__option--selected" selected="" value="-0-0">
                   Eins
@@ -6988,6 +7087,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
     </div>
   </template>
 </kol-select>
@@ -6997,7 +7105,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7046,7 +7154,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7061,7 +7169,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <select aria-describedby="select-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" name="field">
+            <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" name="field">
               <optgroup class="kol-select__optgroup" label="Gruppe">
                 <option class="kol-select__option kol-select__option--selected" selected="" value="-0-0">
                   Eins
@@ -7086,7 +7194,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7126,7 +7234,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7169,7 +7277,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7209,7 +7317,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7249,7 +7357,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7289,7 +7397,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7335,7 +7443,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _alert="" _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7378,7 +7486,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--disabled kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7421,7 +7529,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--hide-label kol-form-field-select">
-      <label class="kol-form-field__label" hidden="" htmlfor="select-nonce">
+      <label class="kol-form-field__label" for="select-nonce" hidden="">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7477,7 +7585,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7523,7 +7631,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7572,7 +7680,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7619,7 +7727,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7666,7 +7774,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7744,7 +7852,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--hidden-msg kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7759,7 +7867,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container kol-input-container--error">
           <div class="kol-input-container__container">
-            <select aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
+            <select aria-describedby="select-msg-nonce" aria-invalid="true" autocapitalize="off" autocorrect="off" class="kol-select kol-select--error kol-select--touched" id="select-nonce" name="field">
               <option class="kol-select__option" value="-0">
                 Keine Angabe
               </option>
@@ -7778,6 +7886,15 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
           </div>
         </div>
       </div>
+      <div class="kol-alert kol-alert--type-error kol-alert--variant-msg kol-form-field__msg visually-hidden" id="select-msg-nonce">
+        <span class="visually-hidden">
+          kol-error
+        </span>
+        <i aria-hidden="true" class="kol-alert__icon kol-icon kol-icon__icon kolicon-alert-error" role="presentation"></i>
+        <div class="kol-alert__content">
+          Es ist ein Fehler aufgetreten
+        </div>
+      </div>
     </div>
   </template>
 </kol-select>
@@ -7787,7 +7904,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--error kol-form-field--has-value kol-form-field--msg-type-error kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7839,7 +7956,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7854,7 +7971,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
       <div class="kol-form-field__input">
         <div class="kol-input-container">
           <div class="kol-input-container__container">
-            <select aria-describedby="select-msg-nonce" autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" name="field">
+            <select autocapitalize="off" autocorrect="off" class="kol-select" id="select-nonce" name="field">
               <option class="kol-select__option" value="-0">
                 Keine Angabe
               </option>
@@ -7882,7 +7999,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _readonly="" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7925,7 +8042,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span kol-span--has-badge">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -7971,7 +8088,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _touched="" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field--touched kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -8014,7 +8131,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--custom kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">
@@ -8057,7 +8174,7 @@ exports[`kol-select should render with _label="Label" _name="field" _placeholder
 <kol-select _placeholder="Hier steht ein Platzhaltertext" _value="2" class="kol-select">
   <template shadowrootmode="open">
     <div class="kol-form-field kol-form-field--has-value kol-form-field-select">
-      <label class="kol-form-field__label" htmlfor="select-nonce" id="select-label-nonce">
+      <label class="kol-form-field__label" for="select-nonce" id="select-label-nonce">
         <span class="kol-form-field__label-text kol-span">
           <span class="kol-span__container">
             <span class="kol-span__label">

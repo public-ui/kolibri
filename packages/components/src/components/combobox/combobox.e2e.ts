@@ -184,6 +184,19 @@ test.describe(COMPONENT_NAME, () => {
 		await expect(listbox).toBeVisible();
 	});
 
+	test('names the toggle button and reflects the state of the listbox on it', async ({ page }) => {
+		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
+		const toggle = page.locator('button.kol-combobox-toggle');
+		const listboxId = await page.locator('.kol-custom-suggestions-options-group').getAttribute('id');
+		await expect(toggle).toHaveAccessibleName(/\S/);
+		await expect(toggle).toHaveAttribute('aria-controls', listboxId!);
+		await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+		await toggle.click();
+		await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+		await toggle.click();
+		await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+	});
+
 	test('should close listbox when pressing Escape', async ({ page }) => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)}></kol-combobox>`);
 		const input = page.locator('input.kol-combobox__input');

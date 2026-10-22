@@ -81,9 +81,11 @@ export class KolTextarea
 
 	private readonly counter = new CounterBehavior(BaseWebComponent.stateLess);
 
+	private needsImmediateCounterUpdate = false;
+
 	/**
 	 * Whether the field has a value, rendered as the root class `kol-form-field--has-value`. It is a
-	 * plain field, not state, and only follows `change` (#11053).
+	 * plain field, not state: changing it does not re-render, the class follows with the next render (#11053).
 	 */
 	private hasValue = false;
 
@@ -223,6 +225,7 @@ export class KolTextarea
 	@Watch('_hasCounter')
 	public watchHasCounter(value?: boolean): void {
 		this.counter.watchHasCounter(value);
+		this.needsImmediateCounterUpdate = true;
 	}
 
 	/**
@@ -233,6 +236,7 @@ export class KolTextarea
 	@Watch('_maxLengthBehavior')
 	public watchMaxLengthBehavior(value?: MaxLengthBehaviorPropType): void {
 		this.counter.watchMaxLengthBehavior(value);
+		this.needsImmediateCounterUpdate = true;
 	}
 
 	/**
@@ -454,10 +458,10 @@ export class KolTextarea
 		this.watchRows(this._rows);
 		this.watchSpellCheck(this._spellCheck);
 		this.applyValue(this._value);
-		this.hasValue = Boolean(this.getRenderProp('value'));
 	}
 
 	public componentDidLoad(): void {
+		this.needsImmediateCounterUpdate = false;
 		if (this.counter.hasCounter() || this.counter.hasSoftLimit()) {
 			this.counter.updateImmediate(this._value?.length ?? 0);
 		}
@@ -469,6 +473,15 @@ export class KolTextarea
 				this.writeRows(1);
 			}
 		});
+	}
+
+	public componentDidUpdate(): void {
+		if (this.needsImmediateCounterUpdate) {
+			this.needsImmediateCounterUpdate = false;
+			if (this.counter.hasCounter() || this.counter.hasSoftLimit()) {
+				this.counter.updateImmediate(this._value?.length ?? 0);
+			}
+		}
 	}
 
 	public componentDidRender(): void {
@@ -492,7 +505,6 @@ export class KolTextarea
 
 	private readonly handleTextareaChange = (event: Event): void => {
 		this.handleChange(event);
-		this.hasValue = Boolean((event.target as HTMLTextAreaElement).value);
 	};
 
 	private readonly handleTextareaFocus = (event: FocusEvent): void => {
@@ -578,6 +590,7 @@ export class KolTextarea
 	/** Applies the value without a counter update; the watcher adds it. */
 	private applyValue(value?: string): void {
 		stringValueProp.apply(value, (v) => this.setRenderProp('value', v));
+		this.hasValue = Boolean(this.getRenderProp('value'));
 		this.formAssociation.setFormAssociatedValue(this.getRenderProp('value'));
 	}
 

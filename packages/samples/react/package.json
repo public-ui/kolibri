@@ -17,10 +17,10 @@
 		"unused": "knip"
 	},
 	"dependencies": {
-		"@hookform/resolvers": "5.9.1",
+		"@hookform/resolvers": "5.9.2",
 		"@public-ui/react-hook-form-adapter": "workspace:*",
 		"@public-ui/react-v19": "workspace:*",
-		"@stencil/core": "4.38.3",
+		"@stencil/core": "4.45.2",
 		"@types/node": "26.4.0",
 		"@types/papaparse": "5.5.2",
 		"papaparse": "5.7.0",
@@ -29,15 +29,15 @@
 		"tslib": "2.8.1",
 		"typescript": "5.9.3",
 		"world_countries_lists": "3.3.0",
-		"zod": "4.6.5"
+		"zod": "4.6.7"
 	},
 	"devDependencies": {
 		"@types/react": "19.2.18",
 		"@types/react-dom": "19.2.5",
 		"adopted-style-sheets": "1.1.9-rc.25",
 		"eslint": "9.39.5",
-		"knip": "6.39.0",
-		"prettier": "3.9.9",
+		"knip": "6.42.1",
+		"prettier": "3.9.10",
 		"prettier-plugin-organize-imports": "4.3.0",
 		"stylelint": "17.16.0"
 	},

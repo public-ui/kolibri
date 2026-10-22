@@ -22,6 +22,8 @@ export type FormFieldFCProps = Omit<JSXBase.HTMLAttributes<HTMLDivElement>, 'ref
 	msg?: Stringified<MsgPropType>;
 	hint?: string;
 	label: LabelPropType;
+	/** Space-separated IDs the root element references through `aria-describedby`. */
+	ariaDescribedBy?: string;
 	hideLabel?: boolean;
 	hideMsg?: boolean;
 	infoPopover?: FormFieldInfoPopover;
@@ -171,7 +173,7 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 					<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id={createRelatedUniqueId(id, 'counter')} ref={counter.ariaRef} />
 				</div>
 			)}
-			{showMsg && !hideMsg && <FormFieldMsgFC id={id} alert={alert} msg={msg} />}
+			{showMsg && <FormFieldMsgFC id={id} alert={alert} hideMsg={hideMsg} msg={msg} />}
 			{!renderNoHint && <FormFieldHintFC id={id} hint={hint} />}
 			{typeof maxLength === 'number' && !counter && (
 				// The hidden character limit hint is only rendered without a counter: the counter spans
