@@ -134,7 +134,7 @@ export const LabelLang: FC = () => {
 						]}
 					></KolToolbar>
 				</SampleBlock>
-				<SampleBlock id="label-lang-tabs">
+				<SampleBlock id="label-lang-tree">
 					<KolTree _label="Tree">
 						<KolTreeItem _label={defaultLabel} _href="#/" />
 					</KolTree>
