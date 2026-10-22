@@ -557,8 +557,8 @@ export class KolSingleSelect
 	}
 
 	/**
-	 * Sends the payload `{ value: null }` (#10841) as value of the `input` and `change` events and as
-	 * form value, then opens the listbox.
+	 * Sends `null` (#10841) as value of the `input` and `change` events and as form value, like
+	 * `selectOption` sends the option value, then opens the listbox.
 	 */
 	private clearSelection(): void {
 		if (this.getRenderProp('disabled') === true) {
@@ -572,8 +572,8 @@ export class KolSingleSelect
 		this.filteredOptions = [...this.getRenderProp('options')];
 
 		const detail = { name: this.getRenderProp('name'), value: emptyValue };
-		this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), { value: emptyValue });
-		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), { value: emptyValue });
+		this.handleInput(createEventWithTarget<EventDetail>(KolEvent.input, detail, this.ctaRef.el), emptyValue);
+		this.handleChange(createEventWithTarget<EventDetail>(KolEvent.change, detail, this.ctaRef.el), emptyValue);
 
 		this.ctaRef.el?.focus();
 		this.isOpen = true;

@@ -434,7 +434,7 @@ test.describe(COMPONENT_NAME, () => {
 			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBe('a');
 		});
 
-		test('reports the object { value: null } when the selection is cleared', async ({ page }) => {
+		test('reports null when the selection is cleared', async ({ page }) => {
 			const component = page.locator(COMPONENT_NAME);
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
@@ -442,8 +442,8 @@ test.describe(COMPONENT_NAME, () => {
 			await page.locator('[data-testid="single-select-delete"] button').click();
 			await page.waitForChanges();
 			expect(await readEvents(page)).toEqual([
-				['input', { value: null }],
-				['change', { value: null }],
+				['input', null],
+				['change', null],
 			]);
 			expect(await component.evaluate((element: HTMLKolSingleSelectElement) => element._value)).toBeNull();
 			expect([await isOpen(page), await getFocused(page)]).toEqual([true, 'input']);
