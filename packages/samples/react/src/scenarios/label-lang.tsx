@@ -27,6 +27,7 @@ import {
 import { SampleBlock } from '../components/SampleBlock';
 import { SampleDescription } from '../components/SampleDescription';
 
+import { KoliBriTableHeaders } from '@public-ui/components';
 import type { FC } from 'react';
 
 export const LabelLang: FC = () => {
@@ -51,6 +52,10 @@ export const LabelLang: FC = () => {
 			_label: 'Second Tab',
 		},
 	];
+
+	const HEADER: KoliBriTableHeaders = {
+		horizontal: [[{ label: 'ID', key: 'id', width: 160 }]],
+	};
 
 	return (
 		<>
@@ -113,7 +118,7 @@ export const LabelLang: FC = () => {
 					<KolQuote _href="https://public-ui.github.io/docs" _label={defaultLabel} _quote="Quote." _variant="inline" />
 				</SampleBlock>
 				<SampleBlock id="label-lang-table">
-					<KolTableStateful _label={defaultLabel}></KolTableStateful>
+					<KolTableStateful _label={defaultLabel} _data={[]} _headers={HEADER}></KolTableStateful>
 				</SampleBlock>
 				<SampleBlock id="label-lang-tabs">
 					<KolTabs _tabs={tabs} _label="Regular tabs"></KolTabs>
