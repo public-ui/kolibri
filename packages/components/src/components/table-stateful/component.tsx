@@ -52,7 +52,7 @@ import type {
 	TableStatefulCallbacksPropType,
 	VariantClassNamePropType,
 } from '../../schema';
-import { devHint } from '../../schema';
+import { devHint, trimLabel } from '../../schema';
 import { Callback } from '../../schema/enums';
 import { validateAriaLabelledby, type AriaLabelledbyPropType } from '../../schema/props/aria-labelledby';
 import { attachInternals, type HostInternals } from '../../utils/aria-labelledby';
@@ -493,7 +493,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 			max: this.pagination._max || this.data.length,
 			label: translate('kol-table-pagination-label', {
 				placeholders: {
-					label: `${this.getRenderProp('label')} (${positionLabel})`,
+					label: `${trimLabel(this.getRenderProp('label'))} (${positionLabel})`,
 				},
 			}),
 		};
