@@ -5,10 +5,6 @@ import { useAlert } from '../../hooks/useAlert';
 import { SampleBlock } from '../SampleBlock';
 import { SampleDescription } from '../SampleDescription';
 
-import './expert-slot.tooltip.scss';
-
-const KolTooltip = 'kol-tooltip-wc' as unknown as React.FC<{ _label: string }>;
-
 export const ButtonExpertSlot: FC = () => {
 	const { dummyClickEventHandler } = useAlert();
 
@@ -40,7 +36,6 @@ export const ButtonExpertSlot: FC = () => {
 						<KolButton _label="" _variant="danger" _on={dummyEventHandler}>
 							<KolIcon _icons="kolicon-alert-warning" _label="Delete with custom text" slot="expert" />
 						</KolButton>
-						<KolTooltip _label="Delete with custom text" />
 					</div>
 				</SampleBlock>
 

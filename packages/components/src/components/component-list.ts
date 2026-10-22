@@ -44,7 +44,6 @@ import { KolTabs } from './tabs/component';
 import { KolTextarea } from './textarea/component';
 import { KolToastContainer } from './toaster/shadow';
 import { KolToolbar } from './toolbar/component';
-import { KolTooltipWc } from './tooltip/component';
 import { KolTreeItem } from './tree-item/component';
 import { KolTree } from './tree/component';
 import { KolVersion } from './version/component';
@@ -96,7 +95,6 @@ export const COMPONENTS = [
 	KolTextarea,
 	KolToastContainer,
 	KolToolbar,
-	KolTooltipWc,
 	KolTree,
 	KolTreeItem,
 	KolVersion,
