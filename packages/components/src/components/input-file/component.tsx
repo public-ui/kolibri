@@ -26,6 +26,7 @@ import { validateAccessAndShortKey } from '../../schema/validators/access-and-sh
 
 import { createButtonItem } from '../../internal/functional-components/button/item';
 import { BaseFormFieldWebComponent } from '../../internal/functional-components/form-field/base-web-component';
+import { FormFieldFC } from '../../internal/functional-components/form-field/component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { InputFileApi } from '../../internal/functional-components/input-file/api';
 import { inputFilePropsConfig } from '../../internal/functional-components/input-file/api';
@@ -329,6 +330,7 @@ export class KolInputFile
 
 		if (this.ctaRef.el) {
 			this.ctaRef.el.value = '';
+			this.destroyFormField();
 		}
 	}
 
@@ -374,7 +376,17 @@ export class KolInputFile
 	public render(): JSX.Element {
 		return (
 			<Host>
-				<input type="file" id="test" name="test" class="kol-button--primary" />
+				<FormFieldFC
+					{...this.getFormFieldProps({
+						class: 'kol-input-file file',
+						accessKey: this.getRenderProp('accessKey') || undefined,
+						shortKey: this.getRenderProp('shortKey') || undefined,
+						variant: this.getRenderProp('variant'),
+						required: this.getRenderProp('required'),
+					})}
+				>
+					<input type="file" id="test" name="test" class="kol-input kol-input--touched" />
+				</FormFieldFC>
 			</Host>
 		);
 	}
