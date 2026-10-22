@@ -1,11 +1,11 @@
 {
 	"schema": 1,
 	"pr": 11258,
-	"head": "590fa5c153965de0e7a0b06110efb9dbd2ca00a6",
+	"head": "235cfd878029c745d4b4569788a347fdb92b452a",
 	"repository": "public-ui/kolibri",
-	"runId": 39729836702,
-	"generatedAt": "2026-10-22T06:07:09.684Z",
-	"digest": "sha256:70fcbc6218a0e26fc4f25d27aacf97903d59157d7ab4d484d874383796b3e4ff",
+	"runId": 39734176958,
+	"generatedAt": "2026-10-22T06:48:20.140Z",
+	"digest": "sha256:d4f5a56955314b49cc3e80246adaf7a4fa5160a12cb20c3840a021dd6239110f",
 	"baseline": {
 		"sha": "6adf4ea670a3626b54b6b0bd700b415ffb617c9b",
 		"ref": "release/4",
@@ -19,7 +19,7 @@
 	"summary": {
 		"unchanged": 2941,
 		"changed": 0,
-		"added": 0,
+		"added": 147,
 		"removed": 0,
 		"error": 0
 	},
@@ -45,11 +45,11 @@
 			"summary": {
 				"unchanged": 420,
 				"changed": 0,
-				"added": 0,
+				"added": 21,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:9ece9d54852eabb9a9d9006c25b2d7cd7f0b5d59505d623d95ad8a4e6af57579",
+			"digest": "sha256:d800a6e83dfbcd4217650a46b64e797de7e87de872ebf6cfa681f44a35d39489",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -2140,6 +2140,153 @@
 					"hash": "sha256:876c7d41165a62e410eeefd2bd75c03436de57fdf26773dd81624d352e52d303"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:5e6ad72941e19cae037d32ad4f92d18080cff57acc83e325e02d86b301fded4d",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-accordion.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:b45a45d9acdeb3dbad3c61f6176e9a5a65572e9e9aeffd8eb306613e84ffee37",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-alert.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:3fd48ba968f684c912746a7d3772cb87e0054c31b04be2c3ec23d18a46740b5f",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-badge.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:5a6f7d3dc652f5e758c4d92f14f4b9ecd150feff6f4e7754a5b56c1345325bd3",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-breadcrumb.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:088a5711ed728bf678902844087f8559f41c3052866a278a643731e28725e508",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:22c35dfcc2d5b47d18db2ba0cb79d8209f41b65b305bda9ec29bef7f34926526",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-button-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:2c38d23c4d2ebc751c3ad7dfa10d85a0c0703daa6fadb9be6e5f637641d810d3",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-card.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:1beafbe5c11461e3362e93f41ccf347a21dbfd2a646ba3b466e418e30f281f62",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-checkbox.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:a65265cef5a49aba6738df39e1d2d405222dbba6f90255d9aca5ff2a63344aae",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-heading.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:54b2de06479c6a47d582090261c07b2b5dc40595eed0d6461c1559893db2091d",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-input.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:22c35dfcc2d5b47d18db2ba0cb79d8209f41b65b305bda9ec29bef7f34926526",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:088a5711ed728bf678902844087f8559f41c3052866a278a643731e28725e508",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-link-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:c75496518cff942578046e4885a1199bc5f994a4533bb469c61f1cf57348e5ed",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-meter.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:67859bb600c57b5b2a17f0f832b5f1db691debb0b084359a040f18cd1f91f3ea",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-nav.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:088a5711ed728bf678902844087f8559f41c3052866a278a643731e28725e508",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-popover.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:48fe79d7954ef4f0b2f7075f8f44f81f3e07458aabd576b83ca8c16a9291bc7a",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-progress.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:1a3dc287d320ad1600ce0a3e4762f14a8a78ba8a8a1afb83cafd5eb06cfc3fdf",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-quote.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:65778aaa2c491d552dd3fd30d69e4ab2b547b2f5de6a1a4510e2ca1a2185bfe0",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-table.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:42930201f673037c20336f619726d8a02319d5b1dcca149114e28aba71cf1930",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-tabs.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:d82cf05c34607f0ebdd61b4d392568386ea591fa1036ff001cbb8193aa482ee3",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-toolbar.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:53839e122c7c2f751be3c1ffa82a3344ac747d6b049a7ebec2668265f4419012",
+					"actual": "test-tag-name-transformer/scenarios-label-lang--label-lang-tree.actual.png"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -2572,13 +2719,7 @@
 					"hash": "sha256:785077b9fda9fd10e1f0099722d8e6c169fa8d03b152d4b44bd6e1de6e61d2c0"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for scenarios/label-lang",
-					"route": "scenarios/label-lang",
-					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -2602,11 +2743,11 @@
 			"summary": {
 				"unchanged": 420,
 				"changed": 0,
-				"added": 0,
+				"added": 21,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:ee0b0eed7674b19122641b4fa322a50d36ae97c3cb3ad911d1347e094be94558",
+			"digest": "sha256:9cf9b023277846734f3321f5894681b72c24a8f2b4bd274d9b21577f0c3788ff",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -4697,6 +4838,153 @@
 					"hash": "sha256:3ebec977568e5780b72bb93b5bd6d3ab6d0bfea8d5fba50012d3f145f1e86594"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:f8f81e271d0f48001f6f3609604c21d7bd89f03ac5f8ccf15f2296e82d659f57",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-accordion.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:d4e04b281950260c569c19ef72eb3f982a23902745e3aef9373ba920e89db1c5",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-alert.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:a1dd0c7aa4636a12cdb2fee7b0d8a365ffb9b0bdce54dd70e4a509bc965a12b8",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-badge.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:d22766c1c5b4e257698d9676ba1f51dbee4b45e86363d462b221fcf794e665e3",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-breadcrumb.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:e16129e1170db75c7552b1d2680f65b1c63a393ba83ecf4bb6f6d02d4b6a552d",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:8109d2b7faa40873350f83bdeb1158c4eb44c54ebfae24a3f1302a7340c22d63",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-button-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:478b1722184a484778adc7a06e0a6bbbc44141c3c63bb54cee615948e54beb28",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-card.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:9a0c0d3f20237fbcdefdf464c55a1c84aa91734cef9c2c260b114b268fe46d8f",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-checkbox.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:ecac74c6bfb92fd568262244e31a9abb94d1b927c638b67a57bdadbde5ce55c5",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-heading.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:fb2e85c5451e1210b2914c8dca786e0142e5dfa79622125108f2e3a146a88993",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-input.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:8109d2b7faa40873350f83bdeb1158c4eb44c54ebfae24a3f1302a7340c22d63",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:e16129e1170db75c7552b1d2680f65b1c63a393ba83ecf4bb6f6d02d4b6a552d",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-link-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:d23cc3f7681df7745b3c564da960f2368bc78188affaa2b790c9af00ba492535",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-meter.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:ab9d87d3526375cccf79f029b9f2fb6a38c99ee792c8f0d9464d70293b9aaaff",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-nav.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:e16129e1170db75c7552b1d2680f65b1c63a393ba83ecf4bb6f6d02d4b6a552d",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-popover.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:9024fd9fb49d22e2f620e8bedbd1fce1f4638a1f9cb42554602b7995266a9a5c",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-progress.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:e1a221ffeb14db4ed077b0be22187d93ae6bad92a2ca086a469f35609ba1a358",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-quote.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:a9e5c97f61ea7eb6790c1718d5748f44f271dd719d795bc451f1a543038fe66e",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-table.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:69d88aa744b5051c81f4861dea78c739cdc27898a94dad88358a8badab0cd2a5",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-tabs.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:6e553facf7a5a702ed158ac937ff503360993a32719f2c0646fdebbf92b8b24a",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-toolbar.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:1ab27e3cd667cc7724d743e0420d9aef4b59d130d1a79dceb35c572e2d2b5f0b",
+					"actual": "theme-bwst/scenarios-label-lang--label-lang-tree.actual.png"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -5129,13 +5417,7 @@
 					"hash": "sha256:adadea32c7858fefa68d84eb5f14d961467a729a6b916e284f66c60d2e63b31a"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for scenarios/label-lang",
-					"route": "scenarios/label-lang",
-					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -5159,11 +5441,11 @@
 			"summary": {
 				"unchanged": 420,
 				"changed": 0,
-				"added": 0,
+				"added": 21,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:9ece9d54852eabb9a9d9006c25b2d7cd7f0b5d59505d623d95ad8a4e6af57579",
+			"digest": "sha256:d800a6e83dfbcd4217650a46b64e797de7e87de872ebf6cfa681f44a35d39489",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -7254,6 +7536,153 @@
 					"hash": "sha256:876c7d41165a62e410eeefd2bd75c03436de57fdf26773dd81624d352e52d303"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:5e6ad72941e19cae037d32ad4f92d18080cff57acc83e325e02d86b301fded4d",
+					"actual": "theme-default/scenarios-label-lang--label-lang-accordion.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:b45a45d9acdeb3dbad3c61f6176e9a5a65572e9e9aeffd8eb306613e84ffee37",
+					"actual": "theme-default/scenarios-label-lang--label-lang-alert.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:3fd48ba968f684c912746a7d3772cb87e0054c31b04be2c3ec23d18a46740b5f",
+					"actual": "theme-default/scenarios-label-lang--label-lang-badge.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:5a6f7d3dc652f5e758c4d92f14f4b9ecd150feff6f4e7754a5b56c1345325bd3",
+					"actual": "theme-default/scenarios-label-lang--label-lang-breadcrumb.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:088a5711ed728bf678902844087f8559f41c3052866a278a643731e28725e508",
+					"actual": "theme-default/scenarios-label-lang--label-lang-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:22c35dfcc2d5b47d18db2ba0cb79d8209f41b65b305bda9ec29bef7f34926526",
+					"actual": "theme-default/scenarios-label-lang--label-lang-button-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:2c38d23c4d2ebc751c3ad7dfa10d85a0c0703daa6fadb9be6e5f637641d810d3",
+					"actual": "theme-default/scenarios-label-lang--label-lang-card.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:1beafbe5c11461e3362e93f41ccf347a21dbfd2a646ba3b466e418e30f281f62",
+					"actual": "theme-default/scenarios-label-lang--label-lang-checkbox.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:a65265cef5a49aba6738df39e1d2d405222dbba6f90255d9aca5ff2a63344aae",
+					"actual": "theme-default/scenarios-label-lang--label-lang-heading.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:54b2de06479c6a47d582090261c07b2b5dc40595eed0d6461c1559893db2091d",
+					"actual": "theme-default/scenarios-label-lang--label-lang-input.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:22c35dfcc2d5b47d18db2ba0cb79d8209f41b65b305bda9ec29bef7f34926526",
+					"actual": "theme-default/scenarios-label-lang--label-lang-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:088a5711ed728bf678902844087f8559f41c3052866a278a643731e28725e508",
+					"actual": "theme-default/scenarios-label-lang--label-lang-link-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:c75496518cff942578046e4885a1199bc5f994a4533bb469c61f1cf57348e5ed",
+					"actual": "theme-default/scenarios-label-lang--label-lang-meter.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:67859bb600c57b5b2a17f0f832b5f1db691debb0b084359a040f18cd1f91f3ea",
+					"actual": "theme-default/scenarios-label-lang--label-lang-nav.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:088a5711ed728bf678902844087f8559f41c3052866a278a643731e28725e508",
+					"actual": "theme-default/scenarios-label-lang--label-lang-popover.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:48fe79d7954ef4f0b2f7075f8f44f81f3e07458aabd576b83ca8c16a9291bc7a",
+					"actual": "theme-default/scenarios-label-lang--label-lang-progress.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:1a3dc287d320ad1600ce0a3e4762f14a8a78ba8a8a1afb83cafd5eb06cfc3fdf",
+					"actual": "theme-default/scenarios-label-lang--label-lang-quote.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:65778aaa2c491d552dd3fd30d69e4ab2b547b2f5de6a1a4510e2ca1a2185bfe0",
+					"actual": "theme-default/scenarios-label-lang--label-lang-table.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:42930201f673037c20336f619726d8a02319d5b1dcca149114e28aba71cf1930",
+					"actual": "theme-default/scenarios-label-lang--label-lang-tabs.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:d82cf05c34607f0ebdd61b4d392568386ea591fa1036ff001cbb8193aa482ee3",
+					"actual": "theme-default/scenarios-label-lang--label-lang-toolbar.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:53839e122c7c2f751be3c1ffa82a3344ac747d6b049a7ebec2668265f4419012",
+					"actual": "theme-default/scenarios-label-lang--label-lang-tree.actual.png"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -7686,13 +8115,7 @@
 					"hash": "sha256:785077b9fda9fd10e1f0099722d8e6c169fa8d03b152d4b44bd6e1de6e61d2c0"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for scenarios/label-lang",
-					"route": "scenarios/label-lang",
-					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -7716,11 +8139,11 @@
 			"summary": {
 				"unchanged": 420,
 				"changed": 0,
-				"added": 0,
+				"added": 21,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:0e12d58cd34443f8feb05f6e55fe2b45205163b0e7f10d380bdeec98e1ca944f",
+			"digest": "sha256:e494bde4009fc5e46f8c105539bd72759114344ed77dd28b2b4c09aeaa7d5b7c",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -9811,6 +10234,153 @@
 					"hash": "sha256:ce01cf023979683c7ae571e6bc969123709fdd621401216d49da445db004bf61"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:398a363b4b87397f3cef5912b0705d835e26573e82f8f0be8937a7e2ad556894",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-accordion.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:e09187ddadacffe77a759aafb806557b7de164a5fd8da56b579f90d3b743ce23",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-alert.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:95a4968667029ca36b564dbd6d22a2d959366a7ebc95752e4456e9b6cf965a1c",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-badge.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:fe6b771f969dbb9f1d3b105bdf1c1f504c90c32825eca400ccc0080c15cd6a0b",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-breadcrumb.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:db10c65399b5bf69887f4421754611d0530bb401db6d857eb13f301ed6a09bf8",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:60b5650ba7b3b8cac0d5982f89566d53e6d3d29978525f721a78527956efae0b",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-button-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:de996d268cada8ae28d17c2e0c4f54927b238e3af561abd8ae8777dddca3cf64",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-card.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:5f72f57948fe05743669a986989b26585116974079fdeb4c3db2f140a8a1de94",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-checkbox.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:0ec8ef3b45d49cfd89b48cf16c639c1769a87daf9865b49d60930f6e52eb3cfa",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-heading.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:7bc1892f51012f04f72d2c9311d79f47851bf9dd626a7cced18f64a88bad259f",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-input.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:4daf3e5bffef8acc3517b13aa8dcf9f967d1483d0b84155c6b9a2676ebbeb5eb",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:5c9772afda73f3b9f75dfca326215e114eef233b340f99b2e3e945d5733e5a3c",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-link-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:2d0bce5b64577f7b4f3e7d39311ec2e81a0e23d45f8c3b2d7ff2fd0c021b96a5",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-meter.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:60d2174cf591a7e9b81d9fa1ae3b28dbfce5548e9acafd6cbc47c05d42ca94e9",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-nav.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:5c9772afda73f3b9f75dfca326215e114eef233b340f99b2e3e945d5733e5a3c",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-popover.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:8fcfc66bef559ee2a593dd8566539e6ed4656a00606c40e86ec7f767823f40d1",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-progress.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:34605061ceb06e782e99beb32e05e13f330ac9b48bd7f9c036af9b8e9ba27ef4",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-quote.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:b11a5bf5c3fb1922b4981ef19455843a0de7b8cc0dd7c95476ed35a8e0c5e17a",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-table.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:ae94341873a7e035012b3328fe8f5b80aebce79b35236bbe01dce2370eb13ea5",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-tabs.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:986b023f1336d43fdf0f20fcadcf6b7823cef8cdbff05f88edc82ab274405a5a",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-toolbar.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:38c9106d134bc35646d03857f8556e8f7e281f62312d0790aaf5b1d7219fdd63",
+					"actual": "theme-desy/scenarios-label-lang--label-lang-tree.actual.png"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -10243,13 +10813,7 @@
 					"hash": "sha256:c8536adfe726424b3f3fedec9c6f16d22587e289129d23d2ac5f9ab81e7736e9"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for scenarios/label-lang",
-					"route": "scenarios/label-lang",
-					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -10273,11 +10837,11 @@
 			"summary": {
 				"unchanged": 420,
 				"changed": 0,
-				"added": 0,
+				"added": 21,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:c306758daf845dd6ca74bf625363d3ab00068ecf81c7ca1adff53892bbadfd27",
+			"digest": "sha256:ad3f992ae2d13469894d759efe016756f9bbfbd911a44eed261f5b9aef740155",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -12368,6 +12932,153 @@
 					"hash": "sha256:8f1b1fb8c05428326b5866097d229b33f485ff0e5722f5bb8566a74fcb8878aa"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:0a92b3b5e86c29fa4424551907658b1da9691df098ac08d797e45a022db81347",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-accordion.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:aaa278edf7da4afc3392909b4f3b5321f9a7a736735ca20fb84ff4f0a5b2c551",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-alert.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:119612d65346e8a2694d7a4139c4742a9c14f43c3807ce1e88f5c7c4925a733a",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-badge.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:2522dcee7a063309a1adb61b1cdebc4a381ad06f02122a4e7b2ef7794c2b8666",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-breadcrumb.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:dea8c67c2bec117772c93175b6a098cd8afbb5b4974264817081ba4baaf727f1",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:85f4fd50f6d06fe4b34cca9adfbbced4077c609f247c45221d81a6d138546816",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-button-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:3555210a8b93a8ab9ddb142806ba8b4277b510336f1c4c45ea18eef5355995ec",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-card.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:0933a8eca22eba69f7359dc55e68fed1ff18fe6c9c7e1f59765e03554c700b49",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-checkbox.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:45f4e73c22a85418fb7be0a49b1b794e8c039d233a7a5bc855d53134f04ca276",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-heading.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:53270a04ae8cd61296bd755507089d9a008ad7daa6e4217dcabede52cfd5e318",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-input.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:85f4fd50f6d06fe4b34cca9adfbbced4077c609f247c45221d81a6d138546816",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:dea8c67c2bec117772c93175b6a098cd8afbb5b4974264817081ba4baaf727f1",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-link-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:6dadfc629776c9189c1da0ef210aef2ce8897c2698bfc5cdcb8a8f80b9f7deae",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-meter.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:1027065f80d999d24e8ed63ee52b48864f3fdcaf3a7aaa3aa0d6626f3eaa99a5",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-nav.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:dea8c67c2bec117772c93175b6a098cd8afbb5b4974264817081ba4baaf727f1",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-popover.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:db23b320659a1023b94bf16706a07fe6efcec4aebaab37e247109ef7320618b1",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-progress.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:ca467eb6637babc02166841285c6d54c85b5f6294e56c6c654baed07016b00f8",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-quote.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:7ffafd7ecace4e506e4721c5ae7544d4866fd7f8b6b7402e0c7eac7275eace13",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-table.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:1a84f9857fa013004fdf100eb8417efff2bd0768f83d6ed5b18f3814093bb564",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-tabs.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:271223f69c507aaa63e47e81bd49c0644c15c92ad7f1b7702658993707eb4077",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-toolbar.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:9b007d876144142dd6b681bf78b59f1608c1005141ef299cad16379962afe1d6",
+					"actual": "theme-ecl/scenarios-label-lang--label-lang-tree.actual.png"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -12800,13 +13511,7 @@
 					"hash": "sha256:971b8091b318d399a64ba35fb7daf74574f41c1f059765eb8ca46d86f2a63bc5"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for scenarios/label-lang",
-					"route": "scenarios/label-lang",
-					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -12830,11 +13535,11 @@
 			"summary": {
 				"unchanged": 421,
 				"changed": 0,
-				"added": 0,
+				"added": 21,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:da6726b606d1bc2c3858d9571c14726259a8030b5d718547d876051807c44bd2",
+			"digest": "sha256:ec7ca0dca6e75fb59c3f623bd0a49845ec8fd07017f3400d97a66caabf560458",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -14925,6 +15630,153 @@
 					"hash": "sha256:1972d4e074754b1ed5dc619d0a9002fb54482833c040267626f97ce1d327ea94"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:7218a6cddbcbf266c879389e0b6635bb5c57111877b4c13df6c8a87ed810013e",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-accordion.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:40a69748d37cdc89cf550b3572854dfe1cd0e6d7dcced7a1d0779702591f9cdb",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-alert.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:8f5648e1c9c8952faad9d1084c7e112af3bb9c0e7ecde0beb54858ec260d6d6b",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-badge.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:a3ba22cf7486abc9681bfef8f1b070341fabe7c72ac6aa549ddf7a70bd6424fa",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-breadcrumb.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:6794f19b9b11bbc17577d6726cc7205f881dca2875e63814f0fc8416669c6f0c",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:b4ef315877d785174019ac7976291c3bdb781234ba2192019a96efe9ccb4a55a",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-button-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:e4c3f22dfa62cea40cc24ea69df0711aebc33e24e2549edb52c64bf6f6278d5e",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-card.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:8315f797f8a2078a52a27b87649d54e2a6a307f3e18f9a218e168feacace5e7d",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-checkbox.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:a7e61b5d3486d2779866e60ffc2629a67feafb420b24e655bc0e108a1fe62d6d",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-heading.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:f9bed1266ffe1f35c48b1183346cc42e8f683139a4df4987ffcc6df3de0a9ce0",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-input.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:b4ef315877d785174019ac7976291c3bdb781234ba2192019a96efe9ccb4a55a",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:6794f19b9b11bbc17577d6726cc7205f881dca2875e63814f0fc8416669c6f0c",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-link-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:e42c2166d233c697672aa25e2a0a807cae8d8d025903bff347b8c91f3ee40b9e",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-meter.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:efe5dbf6224ec26112de3ca37d72edcf5546f88e67c7f4ab6e23829a37329fd6",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-nav.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:6794f19b9b11bbc17577d6726cc7205f881dca2875e63814f0fc8416669c6f0c",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-popover.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:b0c5d38fb643b8cb21c5e2b5ff86c77ffa859e180b883f4dd9ae9472d21b620a",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-progress.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:42d74ccb13a1f5d5b1074791d747310e812e8ffe14f43dc168843e8d2265aa57",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-quote.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:468f46dff408569320c48cf001f3ffe9f605d9556e984bb7b8adf353adfef6e3",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-table.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:2a29b2dd9b63105a2573c16d1b5ddd664f99c406ed5c1c556dd411dd2e492834",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-tabs.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:e7c7648586bcccf525aff31a2066f70dbd17a94099ed6d05ac0dbadc403e9dc4",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-toolbar.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:ee880e4ebfde995dc11d54f15de096b183009c00d38810ed0492f69b2524df4c",
+					"actual": "theme-kern/scenarios-label-lang--label-lang-tree.actual.png"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -15363,13 +16215,7 @@
 					"hash": "sha256:a41b6ac77aa790b90b2ab94d1e6fc472a4d40bc962ca36c3e5411934eb59621c"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for scenarios/label-lang",
-					"route": "scenarios/label-lang",
-					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		},
 		{
@@ -15393,11 +16239,11 @@
 			"summary": {
 				"unchanged": 420,
 				"changed": 0,
-				"added": 0,
+				"added": 21,
 				"removed": 0,
 				"error": 0
 			},
-			"digest": "sha256:65729fa7fd042be9c3dd796d7efae529ddd7fb60ab0aa26babc2a17b9df55ecd",
+			"digest": "sha256:8d8fac712508270358527824c901717e7546dc23b790c8dcf9ad114540767bf4",
 			"items": [
 				{
 					"name": "abbr-basic--basic",
@@ -17488,6 +18334,153 @@
 					"hash": "sha256:b53ee8de8a64510d5a69c654b298f2f491362c43235d325fd25d62afd0b57bfb"
 				},
 				{
+					"name": "scenarios-label-lang--label-lang-accordion",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:016f25fea3e5b7e70d2f9e769c2470c3410465e2540816ebbdbba53e1e84a5d0",
+					"actual": "unstyled/scenarios-label-lang--label-lang-accordion.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-alert",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:8b476f32ea2e5f8f22d9890c1064a541f8caa1475742bcef9932b334d3794497",
+					"actual": "unstyled/scenarios-label-lang--label-lang-alert.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-badge",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:f4d6d3a63c6c58e12c889e3c788eaf4ac434518f7ee9669a4b9bd3fefdaabbc5",
+					"actual": "unstyled/scenarios-label-lang--label-lang-badge.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-breadcrumb",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:a177563b7f61bf1ce008243edccfebfe9400eb7fdbb42d1d7759384cf8e91a1d",
+					"actual": "unstyled/scenarios-label-lang--label-lang-breadcrumb.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:eac8a1c7722e519929e83abfb901a8e52ef2be28ddaefb456b0a704adfe2e1da",
+					"actual": "unstyled/scenarios-label-lang--label-lang-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-button-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:ddf7585dfb0224fedd2c82f376e2563a85835799700e36d13f8c7f31f1d82bb1",
+					"actual": "unstyled/scenarios-label-lang--label-lang-button-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-card",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:b4d3fb73bf89471fe99da7473435d3124354d3221d62e2d65768ba27d22e7d97",
+					"actual": "unstyled/scenarios-label-lang--label-lang-card.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-checkbox",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:b41d6f63eebaf4bdc9432ea929024c227d4fd169764564be2bd959110c0013b3",
+					"actual": "unstyled/scenarios-label-lang--label-lang-checkbox.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-heading",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:b363336640e7d4487b2d7f1301ec2b0c2fe2205b6d9707b682232b3112d9939b",
+					"actual": "unstyled/scenarios-label-lang--label-lang-heading.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-input",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:6a3ff21f1ba4138553916728a027b09cc0dc60d52d2ebb53cc4ef49683d7529f",
+					"actual": "unstyled/scenarios-label-lang--label-lang-input.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:f92d74fce6418abb5ae343cc5c2aa7fb00ae8b91a976be180d4ca4e079d3e95c",
+					"actual": "unstyled/scenarios-label-lang--label-lang-link.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-link-button",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:b879212b082bbc7614ed9ee8f31cc6449acb172783cac886d6060d360baa40bd",
+					"actual": "unstyled/scenarios-label-lang--label-lang-link-button.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-meter",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:2d0bce5b64577f7b4f3e7d39311ec2e81a0e23d45f8c3b2d7ff2fd0c021b96a5",
+					"actual": "unstyled/scenarios-label-lang--label-lang-meter.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-nav",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:1820940f3a1058cd967e7fd147311c97c4148849d4a039f6877fb8fd8ed9775c",
+					"actual": "unstyled/scenarios-label-lang--label-lang-nav.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-popover",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:b879212b082bbc7614ed9ee8f31cc6449acb172783cac886d6060d360baa40bd",
+					"actual": "unstyled/scenarios-label-lang--label-lang-popover.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-progress",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:3ff486ea232594703b236d04613db0a41df62fd1dcd0231ddabaa9a6fcd22b45",
+					"actual": "unstyled/scenarios-label-lang--label-lang-progress.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-quote",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:0dc2f9f2da7900b069bcd70a98c7fce634173bf1c5fb1a6ae05cd9654514d847",
+					"actual": "unstyled/scenarios-label-lang--label-lang-quote.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-table",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:ad9595d4e41759e288667a63cb8eb26ce5a0ecf04ace5b2708a8e89786327af0",
+					"actual": "unstyled/scenarios-label-lang--label-lang-table.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tabs",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:5199f7e4b42c131f938a492321a4ba49eec567648b8a99b92993e76d08b3ac46",
+					"actual": "unstyled/scenarios-label-lang--label-lang-tabs.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-toolbar",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:d8765043f3ef45e25e24c00b113938087d6de52fa78bc3e629f00ce3ec8f7cf2",
+					"actual": "unstyled/scenarios-label-lang--label-lang-toolbar.actual.png"
+				},
+				{
+					"name": "scenarios-label-lang--label-lang-tree",
+					"route": "scenarios/label-lang",
+					"status": "added",
+					"hash": "sha256:e40342cba158b532a265174cac0938fe080e4051d559ad23b285667e7b202f53",
+					"actual": "unstyled/scenarios-label-lang--label-lang-tree.actual.png"
+				},
+				{
 					"name": "scenarios-same-height-of-all-form-elements-with-label",
 					"route": "scenarios-same-height-of-all-form-elements-with-label",
 					"status": "unchanged",
@@ -17920,13 +18913,7 @@
 					"hash": "sha256:6dd7a0ad18c89c99c55aaebed3c7a24417b21ced02d037a714fc22d89f9650c5"
 				}
 			],
-			"errors": [
-				{
-					"test": "snapshot for scenarios/label-lang",
-					"route": "scenarios/label-lang",
-					"message": "Error: Route \"scenarios/label-lang\": duplicate data-visual-block id \"label-lang-tabs\""
-				}
-			],
+			"errors": [],
 			"otherFailures": []
 		}
 	]
