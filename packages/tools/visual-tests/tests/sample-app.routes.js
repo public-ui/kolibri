@@ -636,11 +636,7 @@ ROUTES.set('table/stateless-async', {
 	},
 });
 ROUTES.set('tabs/basic');
-ROUTES.set('tabs/create-button', {
-	axe: {
-		skipFailures: true,
-	},
-});
+ROUTES.set('tabs/create-button');
 ROUTES.set('tabs/icons-only', {
 	snapshot: {
 		viewportSize: {
