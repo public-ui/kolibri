@@ -14,7 +14,6 @@ import { RHFBasic } from './react-hook-form/basic';
 import { RHFDisabled } from './react-hook-form/disabled';
 import { SameHeightOfAllFormElements } from './same-height-of-all-form-elements-with-label';
 import { SameHeightOfAllInteractiveElements } from './same-height-of-all-interactive-elements';
-import { SampleFormWithValidation } from './sample-form-with-validation';
 import { Skeleton } from './skeleton';
 import { StaticForm } from './static-form';
 import { ToolbarItemOrder } from './toolbar-item-order';
@@ -36,7 +35,6 @@ export const SCENARIO_ROUTES: Routes = {
 		'same-height-of-all-interactive-elements': SameHeightOfAllInteractiveElements,
 		'same-height-of-all-form-elements-with-label': SameHeightOfAllFormElements,
 		'static-form': StaticForm,
-		'sample-form-with-validation': SampleFormWithValidation,
 		'table-horizontal-scrollbar-advanced': TableHorizontalScrollAdvanced,
 		'toolbar-item-order': ToolbarItemOrder,
 		'tooltip-positioning': TooltipPositioning,
