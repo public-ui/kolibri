@@ -13,5 +13,6 @@ executeSnapshotTests<TreeItemProps>(
 		{ _label: 'Label', _href: 'https://example.com', _open: true },
 		{ _label: 'Label', _href: 'https://example.com', _active: false },
 		{ _label: 'Label', _href: 'https://example.com', _active: true },
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }], _href: 'https://example.com' },
 	],
 );

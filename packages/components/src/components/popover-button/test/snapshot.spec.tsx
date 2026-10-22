@@ -17,5 +17,7 @@ executeSnapshotTests<PopoverButtonProps>(
 		{ _label: 'Click to toggle', _inline: true },
 
 		{ _label: 'Click to toggle', _popoverAlign: 'top' },
+
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }] },
 	],
 );

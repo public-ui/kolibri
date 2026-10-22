@@ -27,11 +27,11 @@ import {
 import { SampleBlock } from '../components/SampleBlock';
 import { SampleDescription } from '../components/SampleDescription';
 
-import { KoliBriTableHeaders } from '@public-ui/components';
+import type { KoliBriTableHeaders } from '@public-ui/components';
 import type { FC } from 'react';
 
 export const LabelLang: FC = () => {
-	const defaultLabel = [{ text: 'Acquirer', lang: 'en' }, { text: '-Gutschrift' }];
+	const defaultLabel = [{ text: 'Partly english', lang: 'en' }, { text: 'Label' }];
 
 	const navLinks = [
 		{
@@ -123,7 +123,7 @@ export const LabelLang: FC = () => {
 				<SampleBlock id="label-lang-tabs">
 					<KolTabs _tabs={tabs} _label="Regular tabs"></KolTabs>
 				</SampleBlock>
-				<SampleBlock id="label-lang-tabs">
+				<SampleBlock id="label-lang-toolbar">
 					<KolToolbar
 						_label="Toolbar"
 						_items={[

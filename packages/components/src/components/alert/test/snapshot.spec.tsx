@@ -25,7 +25,14 @@ function buildByType(_type: AlertType) {
 executeSnapshotTests<AlertProps>(
 	KolAlertTag,
 	[KolAlert],
-	[...buildByType('default'), ...buildByType('error'), ...buildByType('info'), ...buildByType('success'), ...buildByType('warning')],
+	[
+		...buildByType('default'),
+		...buildByType('error'),
+		...buildByType('info'),
+		...buildByType('success'),
+		...buildByType('warning'),
+		{ _label: [{ text: 'partly english', lang: 'en' }, { text: 'Label' }] },
+	],
 );
 
 describe('KolAlert slot', () => {
