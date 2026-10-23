@@ -1,4 +1,4 @@
-import { executeSnapshotTests } from '../../../../utils/testing';
+import { executeSnapshotTests } from '../../utils/testing';
 
 import { KolSkeleton } from './component';
 
