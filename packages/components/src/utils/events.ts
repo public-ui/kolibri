@@ -17,6 +17,7 @@ enum KolEvent {
 	reset = 'reset',
 	select = 'select',
 	selectionChange = 'selectionchange',
+	sortChange = 'sortchange',
 	sort = 'sort',
 	submit = 'submit',
 	toggle = 'toggle',

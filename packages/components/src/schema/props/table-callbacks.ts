@@ -15,14 +15,20 @@ export type SortEventPayload = {
 export type SelectionChangeEventPayload = KoliBriTableSelectionKeys;
 export type StatefulSelectionChangeEventPayload = KoliBriTableDataType[] | null;
 export type ChangeHeaderCellsEventPayload = TableHeaderCells;
+export type SortChangeEventPayload = {
+	header: TableHeaderCells;
+	sortedData: KoliBriTableDataType[];
+};
 
 export type TableCallbacksPropType = {
-	[Callback.onSort]?: EventValueOrEventCallback<MouseEvent, SortEventPayload>;
-	[Callback.onSelectionChange]?: EventValueOrEventCallback<Event, SelectionChangeEventPayload>;
 	[Callback.onChangeHeaderCells]?: EventValueOrEventCallback<Event, ChangeHeaderCellsEventPayload>;
+	[Callback.onSelectionChange]?: EventValueOrEventCallback<Event, SelectionChangeEventPayload>;
+	[Callback.onSort]?: EventValueOrEventCallback<MouseEvent, SortEventPayload>;
+	[Callback.onSortChange]?: EventValueOrEventCallback<Event, SortChangeEventPayload>;
 };
 export type TableStatefulCallbacksPropType = {
 	[Callback.onSelectionChange]?: EventValueOrEventCallback<Event, StatefulSelectionChangeEventPayload>;
+	[Callback.onSortChange]?: EventValueOrEventCallback<Event, SortChangeEventPayload>;
 };
 /**
  * Defines the callback functions for table events.

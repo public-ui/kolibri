@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
 
@@ -43,6 +44,7 @@ import type {
 	LabelPropType,
 	PaginationPositionPropType,
 	SelectionChangeEventPayload,
+	SortChangeEventPayload,
 	SortEventPayload,
 	Stringified,
 	TableDataFootPropType,
@@ -446,6 +448,11 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 
 	private readonly updateSortedData = (): void => {
 		this.sortedData = sortRows(this.data, this.sortData, this.disableSort);
+		const sortChangePayload: SortChangeEventPayload = {
+			header: this.getRenderProp('headers'),
+			sortedData: this.sortedData,
+		};
+		this.emitSortChange(sortChangePayload);
 	};
 
 	private buildHeaderCells(): TableHeaderCells {
@@ -475,6 +482,19 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 		}
 		if (this.host) {
 			dispatchDomEvent(this.host, KolEvent.selectionChange, selectedData);
+		}
+	}
+
+	/** Reports changed sorting through `onSortChange` and the `sortchange` event. */
+	protected emitSortChange(payload: SortChangeEventPayload): void {
+		const onSortChange = this.statefulOn[Callback.onSortChange];
+
+		if (typeof onSortChange === 'function') {
+			const customEvent = new CustomEvent(KolEvent.sortChange);
+			onSortChange(customEvent, payload);
+		}
+		if (this.host) {
+			dispatchDomEvent(this.host, KolEvent.sortChange, payload);
 		}
 	}
 
