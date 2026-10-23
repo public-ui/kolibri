@@ -1,1 +1,0 @@
-import{_ as e,a as t,o as n}from"./base-web-component-CNC53tZy-Bk4NdD-X.js";var r=[`left`,`right`],i=[`top`,`bottom`],a=[...r,...i];function o(r,i){return t(r,i,t=>{let i=e(t);if(n(i,a))return i;throw Error(`Invalid ${r} value: ${i}`)})}export{o as t};
