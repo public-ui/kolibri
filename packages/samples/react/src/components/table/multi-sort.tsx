@@ -140,6 +140,9 @@ export const MultiSortTable: FC = () => {
 						_headers={verticallHeader}
 						className="block"
 						_allowMultiSort={true}
+						_on={{
+							onSortChange: (_e, payload) => console.log('sort changed', payload),
+						}}
 					/>
 				</SampleBlock>
 				<SampleBlock id="horizontal" heading="Horizontal">

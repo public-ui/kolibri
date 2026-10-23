@@ -57,7 +57,16 @@ export const TableStatefulResetSort: FC = () => {
 
 			<section className="w-full grid gap-4">
 				<KolButton _label="Reset Sort" _on={{ onClick: handleResetSort }} />
-				<KolTableStateful ref={tableRef} _label="Table with resettable sort" _data={DATA} _headers={HEADERS} className="block" />
+				<KolTableStateful
+					ref={tableRef}
+					_label="Table with resettable sort"
+					_data={DATA}
+					_headers={HEADERS}
+					className="block"
+					_on={{
+						onSortChange: (_e, payload) => console.log('sort changed', payload),
+					}}
+				/>
 			</section>
 		</>
 	);
