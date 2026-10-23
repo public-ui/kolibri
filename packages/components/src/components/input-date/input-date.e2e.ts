@@ -7,11 +7,15 @@ import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 import type { Iso8601 } from '../../schema';
 
 /**
- * Local calendar day in the timezone of the page, as `YYYY-MM-DD`. The date field works on local
- * calendar days: a Date value and the value read back differ as UTC instants whenever the test
- * timezone is not UTC, so days are compared in the timezone of the page.
+ * Local calendar day of an ISO instant in the timezone of the page, as `YYYY-MM-DD`. The date
+ * field works on local calendar days, and the test runner may run in another timezone than the
+ * page, so days are formatted inside the page.
  */
-const localDay = (date: Date): string => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+const pageLocalDay = (page: Page, iso: string): Promise<string> =>
+	page.evaluate((iso: string) => {
+		const date = new Date(iso);
+		return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+	}, iso);
 
 test.describe('kol-input-date', () => {
 	test.describe('when value is Date object', () => {
@@ -96,11 +100,9 @@ test.describe('kol-input-date', () => {
 
 					if (value instanceof Date) {
 						expect(getValue).toBeInstanceOf(Date);
-						const expectedDay = await page.evaluate((iso: string) => {
-							const date = new Date(iso);
-							return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-						}, value.toISOString());
-						expect(localDay(getValue as Date)).toBe(expectedDay);
+						const expectedDay = await pageLocalDay(page, value.toISOString());
+						const returnedDay = await pageLocalDay(page, (getValue as Date).toISOString());
+						expect(returnedDay).toBe(expectedDay);
 					} else {
 						expect(getValue).toBe(value);
 					}
@@ -123,7 +125,8 @@ test.describe('kol-input-date', () => {
 
 					if (value instanceof Date) {
 						expect(valueDomProperty).toBeInstanceOf(Date);
-						expect(localDay(valueDomProperty as Date)).toBe(NEW_DATE);
+						const reflectedDay = await pageLocalDay(page, (valueDomProperty as Date).toISOString());
+						expect(reflectedDay).toBe(NEW_DATE);
 					} else {
 						expect(valueDomProperty).toBe(NEW_DATE);
 					}
