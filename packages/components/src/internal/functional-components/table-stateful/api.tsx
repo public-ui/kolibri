@@ -1,4 +1,4 @@
-import type { KoliBriTableDataType, KoliBriTableHeaderCell } from '../../../schema';
+import type { KoliBriTableDataType, KoliBriTableHeaderCell, SortChangeEventPayload } from '../../../schema';
 import {
 	allowMultiSortProp,
 	fixedColsProp,
@@ -41,6 +41,10 @@ export const tableStatefulPropsConfig = {
 export type TableStatefulApi = ApiFromConfig<
 	typeof tableStatefulPropsConfig,
 	{
+		Callbacks: {
+			/** A selection checkbox or radio changed; the payload is the complete new selection. */
+			sortChange: (event: Event, payload: SortChangeEventPayload) => void;
+		};
 		Listeners: {
 			/** The settings menu applied new horizontal header cells. */
 			changeHeaderCells: CustomEvent<KoliBriTableHeaderCell[][]>;
