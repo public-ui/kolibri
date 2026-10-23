@@ -6,6 +6,13 @@ import { testInputMessage } from '../../e2e/input-msg';
 import { setContentWithRetry } from '../../e2e/utils/setContentWithRetry';
 import type { Iso8601 } from '../../schema';
 
+/**
+ * Local calendar day in the timezone of the page, as `YYYY-MM-DD`. The date field works on local
+ * calendar days: a Date value and the value read back differ as UTC instants whenever the test
+ * timezone is not UTC, so days are compared in the timezone of the page.
+ */
+const localDay = (date: Date): string => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
 test.describe('kol-input-date', () => {
 	test.describe('when value is Date object', () => {
 		const TEST_DATE = new Date('2020-03-03T03:02:01.099Z');
@@ -89,7 +96,11 @@ test.describe('kol-input-date', () => {
 
 					if (value instanceof Date) {
 						expect(getValue).toBeInstanceOf(Date);
-						expect((getValue as Date).toISOString().split('T')[0]).toBe(value.toISOString().split('T')[0]);
+						const expectedDay = await page.evaluate((iso: string) => {
+							const date = new Date(iso);
+							return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+						}, value.toISOString());
+						expect(localDay(getValue as Date)).toBe(expectedDay);
 					} else {
 						expect(getValue).toBe(value);
 					}
@@ -112,7 +123,7 @@ test.describe('kol-input-date', () => {
 
 					if (value instanceof Date) {
 						expect(valueDomProperty).toBeInstanceOf(Date);
-						expect((valueDomProperty as Date).toISOString().split('T')[0]).toBe(new Date(NEW_DATE).toISOString().split('T')[0]);
+						expect(localDay(valueDomProperty as Date)).toBe(NEW_DATE);
 					} else {
 						expect(valueDomProperty).toBe(NEW_DATE);
 					}
