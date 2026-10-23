@@ -1,0 +1,1 @@
+import{c as e}from"./index-BOxmVLNq-B3RKa6PB.js";var t=(e,t)=>{let n=``;return Array.isArray(e)&&e.forEach(e=>{n+=`kol-`+t+`--`+e+` `}),n},n=({description:t,descriptionId:n})=>t?e(`span`,{class:`visually-hidden`,id:n},t):null;export{t as n,n as t};
