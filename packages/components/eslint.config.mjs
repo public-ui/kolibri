@@ -142,7 +142,7 @@ export default [
 
 	// Skeleton blueprint import rules
 	{
-		files: ['src/components/_skeleton/web-components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
+		files: ['src/components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
 		plugins: {
 			boundaries: boundariesPlugin,
 		},
@@ -153,6 +153,13 @@ export default [
 				},
 			},
 			'boundaries/elements': [
+				{ type: 'web-components', pattern: 'src/components', mode: 'folder' },
+				{ type: 'core', pattern: 'src/core', mode: 'folder' },
+				{ type: 'i18n', pattern: 'src/i18n.ts', mode: 'file' },
+				{ type: 'utils', pattern: 'src/utils', mode: 'folder' },
+				{ type: 'e2e-helpers', pattern: 'src/e2e', mode: 'folder' },
+				/* Pre-migration heritage: only deprecated components (kol-toast-container) import from here. */
+				{ type: 'legacy-functional-components', pattern: 'src/functional-components', mode: 'folder' },
 				{ type: 'skeleton-web-components', pattern: 'src/components/_skeleton/web-components', mode: 'folder' },
 				{
 					type: 'skeleton-functional-components',
@@ -177,6 +184,28 @@ export default [
 					default: 'disallow',
 					checkUnknownLocals: true,
 					rules: [
+						{
+							from: { type: 'web-components' },
+							allow: {
+								to: {
+									type: [
+										'web-components',
+										'skeleton-web-components',
+										'skeleton-functional-components',
+										'internal-functional-components',
+										'internal-props',
+										'focus-decorator-utils',
+										'schema',
+										'testing-utils',
+										'core',
+										'i18n',
+										'utils',
+										'e2e-helpers',
+										'legacy-functional-components',
+									],
+								},
+							},
+						},
 						{
 							from: { type: 'skeleton-web-components' },
 							allow: {
