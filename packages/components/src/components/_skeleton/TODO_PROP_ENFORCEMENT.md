@@ -67,11 +67,8 @@ export type WebComponentInterface<T extends ComponentApi> = ...
 
 - [ ] **Custom ESLint-Regel implementieren** für `@Prop()` + `@Watch()` Enforcement
 - [ ] **Code-Generator** für Prop-Dreieck-Boilerplate aus `propsConfig`
-- [ ] **`label` State-Disconnect im Skeleton** beheben — `@State label = 'Label'` im WebComponent und der Default in `propsConfig` sind unverbunden
 - [ ] **`@Watch('_name')` Typo-Risiko** — `@Watch('_nane')` wäre kein TypeScript-Fehler; ESLint-Regel würde das mit abdecken
-- [ ] **Alle Komponenten auditen** (`avatar`, `click-button`, `icon`, `image`, `progress`, `quote`) auf Prop-Dreieck-Vollständigkeit
-- [ ] **A11y-Tests** für Skeleton hinzufügen — kein `*.e2e.ts` / `*.spec.ts` vorhanden
-- [ ] **`event.preventDefault()` in `ClickButtonFC`** prüfen — blockiert alle Keyboard-Events (NVDA/JAWS-Test nötig)
+- [ ] **Alle Komponenten auditen** (`avatar`, `icon`, `image`, `progress`, `quote`) auf Prop-Dreieck-Vollständigkeit
 - [ ] **JSDoc `@remarks`** auf `WebComponentInterface<T>` in `generic-types.ts` ergänzen
 
 ## Accessibility-Risiko
