@@ -187,6 +187,7 @@ export const createDialogItem = (
 								hasCloser: true,
 								headingId,
 								href: '',
+								image: '',
 								label,
 								level,
 								on: {},

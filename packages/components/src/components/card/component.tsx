@@ -14,6 +14,7 @@ import type {
 	LabelPropType,
 	LinkTargetPropType,
 } from '../../schema';
+import { ImagePropType } from '../../schema/props/image';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { BaseCardWebComponent } from './base';
@@ -60,6 +61,16 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 	@Watch('_href')
 	public watchHref(value?: HrefPropType): void {
 		this.applyHref(value);
+	}
+
+	/**
+	 * Sets the image URI for the card image.
+	 */
+	@Prop() public _image?: ImagePropType;
+
+	@Watch('_image')
+	public watchImage(value?: ImagePropType): void {
+		this.applyImage(value);
 	}
 
 	/**
@@ -123,6 +134,7 @@ export class KolCard extends BaseCardWebComponent implements CardProps, Clickabl
 
 		this.watchHasCloser(this._hasCloser);
 		this.watchHref(this._href);
+		this.watchImage(this._image);
 		this.watchLabel(this._label);
 		this.watchLevel(this._level);
 		this.watchOn(this._on);

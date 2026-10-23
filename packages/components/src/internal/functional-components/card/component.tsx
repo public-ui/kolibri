@@ -13,6 +13,7 @@ const cardBem = bem.forBlock('kol-card');
 const BEM_CLASS_CARD__CLOSE_BUTTON = cardBem('close-button');
 const BEM_CLASS_CARD__CONTENT = cardBem('content');
 const BEM_CLASS_CARD__HEADER = cardBem('header');
+const BEM_CLASS_CARD__IMAGE = cardBem('image');
 const BEM_CLASS_CARD__LINK = cardBem('link');
 
 /**
@@ -59,6 +60,7 @@ export const CardFC: FC<CardFCProps> = (props, children) => {
 		hasCloser,
 		headingId,
 		href,
+		image,
 		label,
 		level,
 		refCloseButton,
@@ -66,6 +68,8 @@ export const CardFC: FC<CardFCProps> = (props, children) => {
 		refTooltip,
 		target,
 	} = props;
+
+	//TODO: add alt for image
 
 	return (
 		<article aria-labelledby={headingId} class={clsx(cardBem(), hostClass)}>
@@ -76,6 +80,7 @@ export const CardFC: FC<CardFCProps> = (props, children) => {
 			) : (
 				<CardHeadingFC headingId={headingId} label={label} level={level} />
 			)}
+			{image && <img src={image} alt="TODO" class={BEM_CLASS_CARD__IMAGE} />}
 			<div class={BEM_CLASS_CARD__CONTENT}>{children}</div>
 			{hasCloser && (
 				<div class={clsx(BEM_CLASS_CARD__CLOSE_BUTTON, 'kol-close-button')}>
