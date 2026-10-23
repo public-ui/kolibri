@@ -6,7 +6,7 @@ import { clickButtonPropsConfig } from '../../../../internal/functional-componen
 import { ClickButtonFC } from '../../../../internal/functional-components/click-button/component';
 import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
 import { labelProp } from '../../../../internal/props';
-import { Log, type KolFocusOptions } from '../../../../schema';
+import type { KolFocusOptions } from '../../../../schema';
 import { createCtaRef, delegateFocus } from '../../../../utils/element-interaction';
 
 /**
@@ -47,7 +47,7 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	}
 
 	public handleClick = (): void => {
-		Log.debug('Button clicked');
+		console.log(this, 'button clicked');
 	};
 
 	public render(): JSX.Element {

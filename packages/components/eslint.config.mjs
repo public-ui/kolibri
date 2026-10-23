@@ -148,6 +148,14 @@ export default [
 		},
 	},
 
+	// The blueprint demo components log their interactions by design; the e2e observes the log.
+	{
+		files: ['src/components/_skeleton/web-components/**/*.{ts,tsx}'],
+		rules: {
+			'no-console': 'off',
+		},
+	},
+
 	// Skeleton blueprint import rules
 	{
 		files: ['src/components/_skeleton/web-components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
