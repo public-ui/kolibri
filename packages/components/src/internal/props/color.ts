@@ -49,7 +49,7 @@ function normalizer(value: unknown): ColorPair {
 	// The array form `['<background>', '<foreground>']` was part of the accepted contract of earlier
 	// versions; it is restored for backwards compatibility.
 	if (Array.isArray(candidate)) {
-		const [background, foreground] = candidate;
+		const [background, foreground] = candidate as unknown[];
 		if (typeof background === 'string' && typeof foreground === 'string' && isHexString(background) && isHexString(foreground)) {
 			const colors = createContrastColorPair({ background, foreground });
 			return {
