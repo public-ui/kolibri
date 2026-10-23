@@ -396,6 +396,10 @@ export class KolInputPassword
 	@delegateClick('ctaRef')
 	public async click(): Promise<void> {}
 
+	public connectedCallback(): void {
+		super.connectedCallback();
+		this.visibilityToggle.syncListeners();
+	}
 	public componentWillLoad(): void {
 		this.initRenderProps(inputPasswordPropsConfig);
 		this.unsetRenderProp('smartButton');
