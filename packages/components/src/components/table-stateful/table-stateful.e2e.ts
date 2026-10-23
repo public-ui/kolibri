@@ -1,7 +1,7 @@
 import { expect, type Page } from '@playwright/test';
 import type { E2EPage } from '@stencil/playwright';
 import { test } from '@stencil/playwright';
-import type { KoliBriTableDataType, KoliBriTableHeaders, TableHeaderCells } from '../../schema';
+import type { KoliBriTableDataType, KoliBriTableHeaders, SortChangeEventPayload, TableHeaderCells } from '../../schema';
 
 const DATA = [{ id: '1001' }, { id: '1002' }];
 const DATA_NUM = [{ id: 1001 }, { id: 1002 }];
@@ -54,6 +54,59 @@ test.describe('kol-table-stateful', () => {
 				await kolTableStateful.getByLabel(`Selection for ${DATA[0].id}`).check();
 
 				await expect(callbackPromise).resolves.toEqual([DATA[0]]);
+			});
+
+			test('it calls the onSortChange callback when the sort changes', async ({ page }) => {
+				await page.setContent(`<kol-table-stateful
+								_label="Table Stateful"
+								_data='${JSON.stringify(SORTABLE_DATA)}'
+						/>`);
+
+				await page.locator('kol-table-stateful').evaluate((element: HTMLKolTableStatefulElement) => {
+					const HEADERS_SORTABLE: KoliBriTableHeaders = {
+						horizontal: [
+							[
+								{
+									key: 'id',
+									label: 'ID',
+									compareFn: (a, b) => String(a.id).localeCompare(String(b.id)),
+									sortDirection: 'ASC',
+								},
+							],
+						],
+					};
+					element._headers = HEADERS_SORTABLE as unknown as string;
+				});
+
+				await page.waitForChanges();
+
+				const kolTableStateful = page.locator('kol-table-stateful');
+				const callbackPromise = kolTableStateful.evaluate((element: HTMLKolTableStatefulElement) => {
+					return new Promise<SortChangeEventPayload>((resolve) => {
+						element._on = {
+							onSortChange: (_event, payload) => {
+								resolve(payload);
+							},
+						};
+					});
+				});
+
+				await kolTableStateful.getByRole('button', { name: 'ID' }).click();
+
+				const payload = await callbackPromise;
+
+				expect(payload.sortedData).toEqual([{ id: '1002' }, { id: '1001' }]);
+				expect(payload.headers).toMatchObject({
+					horizontal: [
+						[
+							{
+								key: 'id',
+								label: 'ID',
+								sortDirection: 'DESC',
+							},
+						],
+					],
+				});
 			});
 		});
 
