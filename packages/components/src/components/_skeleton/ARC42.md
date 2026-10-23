@@ -2,13 +2,13 @@
 
 ## 1. Introduction and Goals
 
-The `kol-skeleton` component blueprint demonstrates how KoliBri web components can be built in a highly maintainable and decoupled fashion. It is designed as a minimal, yet complete, reference implementation for new components.
+The skeleton architecture demonstrates how KoliBri web components can be built in a highly maintainable and decoupled fashion. It serves as the reference for new components.
 
 The architecture is organized into **two layers** plus an optional reusable unit of logic:
 
-- **[Web Component (WC)](./web-components/skeleton/component.tsx)** — the orchestrator. It owns the Stencil lifecycle (`@Prop`/`@State`/`@Watch`/`@Method`), normalizes incoming props, manages reactive state, composes optional Behaviors, and feeds fully resolved render props to the Functional Component.
+- **Web Component (WC)** — the orchestrator. It owns the Stencil lifecycle (`@Prop`/`@State`/`@Watch`/`@Method`), normalizes incoming props, manages reactive state, composes optional Behaviors, and feeds fully resolved render props to the Functional Component.
 - **[Behaviors](../../internal/functional-components/base-behavior.ts)** — optional, composable logic modules (e.g. `TooltipBehavior`). A WC may compose zero or more Behaviors. They manage their own render props but receive state access from their host WC.
-- **[Functional Component (FC)](../../internal/functional-components/skeleton/component.tsx)** — a pure, stateless renderer. It renders solely from the props handed to it and never mutates state.
+- **Functional Component (FC)** — a pure, stateless renderer. It renders solely from the props handed to it and never mutates state.
 - **[Schema helpers](../../internal/props/)** — house prop types, normalization and validation helpers shared across layers.
 
 Primary goals:
@@ -21,30 +21,16 @@ Primary goals:
 
 ### Blueprint Layout
 
-The skeleton mirrors the structure recommended for production-ready components. The web component definitions live inside `_skeleton/`, while reusable internals (functional components, behaviors, prop schemas) reside in the shared `src/internal/` directory. Each folder holds a single responsibility to make the pipeline explicit:
+The skeleton mirrors the structure recommended for production-ready components. The architecture docs and public API contracts live inside `_skeleton/`, while reusable internals (functional components, behaviors, prop schemas) reside in the shared `src/internal/` directory. Each folder holds a single responsibility to make the pipeline explicit:
 
 ```text
 src/
 ├── components/
-│   └── _skeleton/                     # Blueprint directory
-│       ├── web-components/
-│       │   ├── skeleton/              # Skeleton custom element
-│       │   │   ├── component.tsx      # Orchestrator: props, watchers, lifecycle, render
-│       │   │   └── snapshot.spec.tsx  # Snapshot test (Jest) — co-located
-│       │   └── click-button/          # Click-button custom element
-│       │       ├── component.tsx
-│       │       ├── interaction.e2e.ts  # Interaction test (Playwright)
-│       │       └── snapshot.spec.tsx
+│   └── _skeleton/                     # Architecture docs and public API contracts
 │       ├── AGENTS.md                  # Agent instructions for this blueprint
 │       └── ARC42.md                   # This document
 └── internal/                          # Shared internals (not inside _skeleton/)
     ├── functional-components/
-    │   ├── skeleton/                  # Skeleton-specific logic
-    │   │   ├── api.tsx                # Type definitions + props config
-    │   │   └── component.tsx          # Stateless functional component
-    │   ├── click-button/              # Reusable button FC
-    │   │   ├── api.tsx
-    │   │   └── component.tsx
     │   ├── tooltip/                   # Tooltip behavior + FC
     │   │   ├── api.tsx
     │   │   ├── behavior.ts            # TooltipBehavior
@@ -65,12 +51,6 @@ src/
 ```
 
 This modular layout is the backbone for the architectural patterns described in the following chapters.
-
-### Usage Example
-
-```html
-<kol-skeleton _name="Example"></kol-skeleton>
-```
 
 ## 2. Architecture Constraints
 
@@ -331,7 +311,7 @@ The `block` and `modifiers` keys are validated against `KoliBriComponentsBemSche
 
 **Registration requirement:** before using `BemRootNodeFC block="kol-xxx"`, the block must be registered in `src/schema/bem-registry.ts` in **both** places — the exported `KoliBriComponentsBemSchema` type (required for compilation) and the runtime `BEM` const (consumed by the `kolibri-cli` SCSS generator). Type-only registration compiles and renders, but silently breaks theme SCSS generation.
 
-**When not to use it:** `BemRootNodeFC` always renders a `<div>` root. For FCs whose semantic root is another element (e.g. `ClickButtonFC` renders a `<button>`), build the root manually with `bem.forBlock('kol-xxx')(modifiers)` instead — the same typed schema applies. `LinkFC` and `ButtonFC` use `BemRootNodeFC` (both have extra siblings — tooltip, description — alongside their interactive element, so the wrapper is required, not just one non-div root); `SkeletonFC` and `ClickButtonFC` use direct `bem.forBlock` calls because their FC root _is_ the single non-div interactive element.
+**When not to use it:** `BemRootNodeFC` always renders a `<div>` root. For FCs whose semantic root is another element (e.g. a `<button>`), build the root manually with `bem.forBlock('kol-xxx')(modifiers)` instead — the same typed schema applies. `LinkFC` and `ButtonFC` use `BemRootNodeFC` (both have extra siblings — tooltip, description — alongside their interactive element, so the wrapper is required, not just one non-div root); a direct `bem.forBlock` call is used when the FC root _is_ the single non-div interactive element.
 
 ### Embedded Components (Items)
 
@@ -509,7 +489,7 @@ const nameProp = createPropDefinition<NameProp>('name', '', normalizeString);
 ```
 
 ```tsx
-// Web Component (web-components/skeleton/component.tsx)
+// Web Component
 @Prop() public _name!: string;
 
 @Watch('_name')
