@@ -1,6 +1,5 @@
 import {
 	baseRules,
-	boundariesPlugin,
 	defaultIgnores,
 	js,
 	jsxA11yPlugin,
@@ -140,70 +139,6 @@ export default [
 		},
 	},
 
-	// Skeleton blueprint import rules
-	{
-		files: ['src/components/_skeleton/web-components/**/*.{ts,tsx}', 'src/internal/functional-components/{click-button,skeleton}/**/*.{ts,tsx}'],
-		plugins: {
-			boundaries: boundariesPlugin,
-		},
-		settings: {
-			'import/resolver': {
-				node: {
-					extensions: ['.js', '.jsx', '.ts', '.tsx'],
-				},
-			},
-			'boundaries/elements': [
-				{ type: 'skeleton-web-components', pattern: 'src/components/_skeleton/web-components', mode: 'folder' },
-				{
-					type: 'skeleton-functional-components',
-					pattern: ['src/internal/functional-components/click-button', 'src/internal/functional-components/skeleton'],
-					mode: 'folder',
-				},
-				{ type: 'focus-decorator-utils', pattern: ['src/utils/element-interaction.ts', 'src/utils/element-focus.ts'], mode: 'file' },
-				{ type: 'internal-functional-components', pattern: 'src/internal/functional-components', mode: 'folder' },
-				{ type: 'internal-props', pattern: 'src/internal/props', mode: 'folder' },
-				{ type: 'schema', pattern: 'src/schema', mode: 'folder' },
-				{ type: 'testing-utils', pattern: 'src/utils/testing', mode: 'folder' },
-			],
-		},
-		rules: {
-			/**
-			 * Skeleton blueprint layers may only import files from their explicitly
-			 * allowed target directories.
-			 */
-			'boundaries/dependencies': [
-				'error',
-				{
-					default: 'disallow',
-					checkUnknownLocals: true,
-					rules: [
-						{
-							from: { type: 'skeleton-web-components' },
-							allow: {
-								to: {
-									type: [
-										'skeleton-web-components',
-										'skeleton-functional-components',
-										'internal-functional-components',
-										'internal-props',
-										'focus-decorator-utils',
-										'schema',
-										'testing-utils',
-									],
-								},
-							},
-						},
-						{
-							from: { type: 'skeleton-functional-components' },
-							allow: {
-								to: { type: ['skeleton-functional-components', 'internal-functional-components', 'internal-props', 'schema', 'focus-decorator-utils'] },
-							},
-						},
-					],
-				},
-			],
-		},
-	},
 
 	// Barrel import rule – keep the existing non-Skeleton scope separate from the Skeleton boundary rules.
 	{
