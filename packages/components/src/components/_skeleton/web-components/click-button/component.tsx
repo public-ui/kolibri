@@ -6,7 +6,7 @@ import { clickButtonPropsConfig } from '../../../../internal/functional-componen
 import { ClickButtonFC } from '../../../../internal/functional-components/click-button/component';
 import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
 import { labelProp } from '../../../../internal/props';
-import type { KolFocusOptions } from '../../../../schema';
+import { Log, type KolFocusOptions } from '../../../../schema';
 import { createCtaRef, delegateFocus } from '../../../../utils/element-interaction';
 
 /**
@@ -35,9 +35,10 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	 */
 	@Method()
 	@delegateFocus('buttonRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		void options;
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(clickButtonPropsConfig);
@@ -46,8 +47,7 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	}
 
 	public handleClick = (): void => {
-		// eslint-disable-next-line no-console
-		console.log(this, 'button clicked');
+		Log.debug('Button clicked');
 	};
 
 	public render(): JSX.Element {

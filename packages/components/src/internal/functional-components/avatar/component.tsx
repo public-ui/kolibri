@@ -6,9 +6,10 @@ import { bem } from '../../../schema/bem-registry';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { AvatarApi } from './api';
 
-const BEM_BLOCK_AVATAR = 'kol-avatar';
-const BEM_CLASS_AVATAR__IMAGE = bem(BEM_BLOCK_AVATAR, 'image');
-const BEM_CLASS_AVATAR__INITIALS = bem(BEM_BLOCK_AVATAR, 'initials');
+const avatarBem = bem.forBlock('kol-avatar');
+const BEM_CLASS_AVATAR = avatarBem();
+const BEM_CLASS_AVATAR__IMAGE = avatarBem('image');
+const BEM_CLASS_AVATAR__INITIALS = avatarBem('initials');
 
 export const AvatarFC: FC<FunctionalComponentProps<AvatarApi>> = (props) => {
 	const { color, initials, label, src } = props;
@@ -16,7 +17,7 @@ export const AvatarFC: FC<FunctionalComponentProps<AvatarApi>> = (props) => {
 	return (
 		<div
 			aria-label={translate('kol-avatar-alt', { placeholders: { name: label } })}
-			class="kol-avatar"
+			class={BEM_CLASS_AVATAR}
 			role="img"
 			style={{
 				backgroundColor: color.backgroundColor,

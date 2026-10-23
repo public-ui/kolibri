@@ -108,34 +108,29 @@ export class Logger {
 
 	public debug(msg: unknown | unknown[], options?: LogShieldOptions): void {
 		if (isDevModeOrForceLog(options?.forceLog)) {
-			// eslint-disable-next-line no-console
 			console.debug(...getShield(this.label, options), ...mapToArray(msg));
 		}
 	}
 
 	public info(msg: unknown | unknown[], options?: LogShieldOptions): void {
 		if (isDevModeOrForceLog(options?.forceLog)) {
-			// eslint-disable-next-line no-console
 			console.info(...getShield(this.label, options), ...mapToArray(msg));
 		}
 	}
 
 	public trace(msg: unknown | unknown[], options?: LogShieldOptions): void {
 		if (isDevModeOrForceLog(options?.forceLog)) {
-			// eslint-disable-next-line no-console
 			console.trace(...getShield(this.label, options), ...mapToArray(msg));
 		}
 	}
 
 	public warn(msg: unknown | unknown[], options?: LogShieldOptions): void {
 		if (isDevModeOrForceLog(options?.forceLog)) {
-			// eslint-disable-next-line no-console
 			console.warn(...getShield(this.label, options), ...mapToArray(msg));
 		}
 	}
 
 	public error(msg: unknown | unknown[], options?: LogShieldOptions): void {
-		// eslint-disable-next-line no-console
 		console.error(...getShield(this.label, options), ...mapToArray(msg));
 	}
 
