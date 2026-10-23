@@ -125,7 +125,7 @@ Risiken: Zusammenbau von `aria-describedby` (hint, msg, Counter, Hinweis zur Zei
 
 ### G2 – Textfelder: email → password → text, danach textarea (#9579, #9582, #9585, #9602)
 
-Die vier Felder hängen heute in der Kette `InputPasswordController → InputTextEmailController → InputText/InputEmail` und teilen placeholder, autoComplete, maxLength/hasCounter/maxLengthBehavior und den Counter. pattern haben nur die drei Inputs. `spellCheck` rendern input-text und textarea (seit #11073, behob #10863).
+Die vier Felder hängen heute in der Kette `InputPasswordController → InputTextEmailController → InputText/InputEmail` und teilen placeholder, autoComplete, maxLength/hasCounter/maxLengthBehavior und den Counter. pattern haben nur die drei Inputs. `spellCheck` rendern input-text und textarea (#10863 wurde in #11073 behoben).
 
 G2 besteht aus sechs PRs:
 
@@ -144,7 +144,7 @@ G1.4 ─► G2.1 Props + CounterBehavior + TextAreaFC ─► G2.2 Basis + email 
   - Icons und Smart-Button der Input-Container bildet `getInputAdornments()` (`form-field/adornments.tsx`) für alle migrierten Felder, auch für `kol-input-color`.
 - G2.3: `kol-input-password` auf `BaseTextInputWebComponent`, mit `visibilityToggle` und dem State `passwordVisible`. Der Kompatibilitätszweig `_variant === 'visibility-toggle'` (#10247) entfällt: Legacy verglich den bereits zu einem Array normalisierten `_variant` mit einem String, der Zweig griff also nie. Der G2.0-Snapshot pinnt das. `input-password/controller.ts` bleibt bis G2.4, weil `InputTextController` davon erbt.
 - G2.4: `kol-input-text` auf `BaseTextInputWebComponent`, mit `type` (auch als Root-Klasse), `spellCheck`, `suggestions`, Clear-Button bei `type="search"` und den fünf Selection-Methoden. `has-value` folgt hier wie bisher jeder Wertänderung. Mit dem Feld fällt die Controller-Kette `InputPasswordController → InputTextEmailController → InputTextController` weg.
-- G2.5: `kol-textarea` erbt direkt von `BaseFormFieldWebComponent` und komponiert das `CounterBehavior`; die drei Zähler-Watcher wiederholen die Einzeiler der Textbasis, eine dritte Basisebene ist nicht erlaubt. Übernommen werden die Zeilenberechnung von `_adjustHeight` (wächst nur, #11051), das `setTimeout` in `componentDidLoad` für `_rows` und `style.resize`; `spellCheck` wird gerendert (seit #11073, behob #10863). Mit dem Feld fallen `CounterDomUpdater`, `TextAreaStateWrapper` und das alte `inputs/TextArea` samt Adapter-Test weg.
+- G2.5: `kol-textarea` erbt direkt von `BaseFormFieldWebComponent` und komponiert das `CounterBehavior`; die drei Zähler-Watcher wiederholen die Einzeiler der Textbasis, eine dritte Basisebene ist nicht erlaubt. Übernommen werden die Zeilenberechnung von `_adjustHeight` (wächst nur, #11051), das `setTimeout` in `componentDidLoad` für `_rows` und `style.resize`; `spellCheck` wird gerendert (#10863 wurde in #11073 behoben). Mit dem Feld fallen `CounterDomUpdater`, `TextAreaStateWrapper` und das alte `inputs/TextArea` samt Adapter-Test weg.
 - `CounterBehavior` ersetzt `utils/counter-dom-updater.ts`; das direkte DOM-Update ohne Re-Render bleibt erhalten.
 - textarea erbt direkt von `BaseFormFieldWebComponent` und nutzt das CounterBehavior.
 - Risiken: Selection-API und `_type` search/url/tel von input-text; Clear-Button und Visibility-Toggle; Datalist-IDs; `_adjustHeight`/`_resize` bei textarea.
