@@ -6,17 +6,14 @@ test.describe('kol-input-text reconnect', () => {
 		await page.setContent('<kol-input-text _label="Search" _type="search" _value="Text"></kol-input-text>');
 		const host = page.locator('kol-input-text');
 		const clearButton = host.locator('.kol-input-text__clear-button button');
-		/** The tooltip class changes a moment after hover (over-focus timeout). */
-		const tooltipClass = async (): Promise<string | null> => {
-			await page.waitForTimeout(600);
-			return page.locator('.kol-tooltip__floating').getAttribute('class');
-		};
+		const tooltipClass = (): Promise<string | null> => page.locator('.kol-tooltip__floating').getAttribute('class');
 
-		// Sanity before the detach: the tooltip of the clear button shows on hover.
+		// Sanity before the detach: the tooltip of the clear button shows on hover. The class flips
+		// a moment after the hover (over-focus timeout), so the assertion polls.
 		await clearButton.hover();
-		await expect(await tooltipClass()).toContain('show');
+		await expect.poll(tooltipClass, { timeout: 5_000 }).toContain('show');
 		await page.mouse.move(0, 0);
-		await expect(await tooltipClass()).toContain('hide');
+		await expect.poll(tooltipClass, { timeout: 5_000 }).toContain('hide');
 
 		// Detach and reattach without any further state change: no re-render happens.
 		await host.evaluate((element) => {
@@ -26,9 +23,8 @@ test.describe('kol-input-text reconnect', () => {
 			parent.insertBefore(element, next);
 		});
 		await page.waitForChanges();
-		await page.waitForTimeout(300);
 
 		await clearButton.hover();
-		await expect(await tooltipClass()).toContain('show');
+		await expect.poll(tooltipClass, { timeout: 5_000 }).toContain('show');
 	});
 });
