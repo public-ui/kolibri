@@ -16,7 +16,7 @@ export type SelectionChangeEventPayload = KoliBriTableSelectionKeys;
 export type StatefulSelectionChangeEventPayload = KoliBriTableDataType[] | null;
 export type ChangeHeaderCellsEventPayload = TableHeaderCells;
 export type SortChangeEventPayload = {
-	header: TableHeaderCells;
+	headers: TableHeaderCells;
 	sortedData: KoliBriTableDataType[];
 };
 

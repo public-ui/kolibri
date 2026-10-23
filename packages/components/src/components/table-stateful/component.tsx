@@ -449,7 +449,7 @@ export class KolTableStateful extends BaseTableStatelessWebComponent implements 
 	private readonly updateSortedData = (): void => {
 		this.sortedData = sortRows(this.data, this.sortData, this.disableSort);
 		const sortChangePayload: SortChangeEventPayload = {
-			header: this.getRenderProp('headers'),
+			headers: this.getRenderProp('headers'),
 			sortedData: this.sortedData,
 		};
 		this.emitSortChange(sortChangePayload);
