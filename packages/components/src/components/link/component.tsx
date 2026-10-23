@@ -1,8 +1,6 @@
 import type { JSX } from '@stencil/core';
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import type { LinkApi } from '../../internal/functional-components/link/api';
 import type {
 	AccessKeyPropType,
 	AriaCurrentValuePropType,
@@ -11,7 +9,6 @@ import type {
 	FocusableElement,
 	HrefPropType,
 	InlinePropType,
-	KolFocusOptions,
 	KoliBriIconsProp,
 	LabelWithExpertSlotPropType,
 	LinkOnCallbacksPropType,
@@ -37,7 +34,7 @@ import { BaseLinkWebComponent } from './base';
 	},
 	shadow: true,
 })
-export class KolLink extends BaseLinkWebComponent implements FocusableElement, LinkProps, WebComponentInterface<LinkApi> {
+export class KolLink extends BaseLinkWebComponent implements FocusableElement, LinkProps {
 	@Element() protected readonly host?: HTMLKolLinkElement;
 
 	@State() public ariaCurrent: string = '';
@@ -224,9 +221,10 @@ export class KolLink extends BaseLinkWebComponent implements FocusableElement, L
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: FocusOptions): Promise<void> {
+		void options;
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.initLinkRenderProps();

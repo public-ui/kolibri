@@ -253,7 +253,7 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
                         Header1
                       </span>
                       <kol-input-number _hidelabel="" _label="kol-table-settings-column-width" _min="1" _value="140"></kol-input-number>
-                      <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-up">
+                      <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone">
                         <button aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" disabled="" type="button">
                           <span class="kol-button__text kol-span kol-span--hide-label">
                             <span class="kol-span__container">
@@ -278,7 +278,7 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
                           </div>
                         </div>
                       </div>
-                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-down">
+                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone">
                         <button aria-label="kol-table-settings-move-down" class="kol-button__interactive-element" type="button">
                           <span class="kol-button__text kol-span kol-span--hide-label">
                             <span class="kol-span__container">
@@ -310,7 +310,7 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
                         Header2
                       </span>
                       <kol-input-number _hidelabel="" _label="kol-table-settings-column-width" _min="1" _value="130"></kol-input-number>
-                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-up">
+                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone">
                         <button aria-label="kol-table-settings-move-up" class="kol-button__interactive-element" type="button">
                           <span class="kol-button__text kol-span kol-span--hide-label">
                             <span class="kol-span__container">
@@ -335,7 +335,7 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
                           </div>
                         </div>
                       </div>
-                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-down">
+                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone">
                         <button aria-label="kol-table-settings-move-down" class="kol-button__interactive-element" type="button">
                           <span class="kol-button__text kol-span kol-span--hide-label">
                             <span class="kol-span__container">
@@ -367,7 +367,7 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
                         Header3
                       </span>
                       <kol-input-number _hidelabel="" _label="kol-table-settings-column-width" _min="1" _value="120"></kol-input-number>
-                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-up">
+                      <div class="kol-button kol-button--ghost kol-button--hide-label kol-button--standalone">
                         <button aria-label="kol-table-settings-move-up" class="kol-button__interactive-element" type="button">
                           <span class="kol-button__text kol-span kol-span--hide-label">
                             <span class="kol-span__container">
@@ -392,7 +392,7 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
                           </div>
                         </div>
                       </div>
-                      <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone" data-testid="table-settings-move-down">
+                      <div class="kol-button kol-button--disabled kol-button--ghost kol-button--hide-label kol-button--standalone">
                         <button aria-label="kol-table-settings-not-move" class="kol-button__interactive-element" disabled="" type="button">
                           <span class="kol-button__text kol-span kol-span--hide-label">
                             <span class="kol-span__container">
@@ -420,7 +420,7 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
                     </div>
                   </div>
                   <div class="kol-table-settings__actions">
-                    <div class="kol-button kol-button--secondary kol-button--standalone" data-testid="table-settings-cancel">
+                    <div class="kol-button kol-button--secondary kol-button--standalone">
                       <button class="kol-button__interactive-element" type="button">
                         <span class="kol-button__text kol-span">
                           <span class="kol-span__container">
@@ -434,7 +434,7 @@ exports[`kol-table-stateless should render with _label="Table with horizontal an
                         </span>
                       </button>
                     </div>
-                    <div class="kol-button kol-button--primary kol-button--standalone" data-testid="table-settings-apply">
+                    <div class="kol-button kol-button--primary kol-button--standalone">
                       <button class="kol-button__interactive-element" type="submit">
                         <span class="kol-button__text kol-span">
                           <span class="kol-span__container">

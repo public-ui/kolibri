@@ -297,9 +297,8 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	 * Returns the selected values.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown[] | StencilUnknown | undefined> {
-		return this.getModelValue();
+	public getValue(): Promise<StencilUnknown[] | StencilUnknown | undefined> {
+		return Promise.resolve(this.getModelValue());
 	}
 
 	/**
@@ -307,9 +306,10 @@ export class KolSelect extends BaseSelectWebComponent implements FocusableElemen
 	 */
 	@Method()
 	@delegateFocus('ctaRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		void options;
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(selectPropsConfig);

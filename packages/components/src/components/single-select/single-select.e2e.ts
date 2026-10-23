@@ -130,7 +130,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.waitForChanges();
 			await page.waitForTimeout(500);
 
-			const clearButton = page.getByTestId('single-select-delete');
+			const clearButton = page.locator('.kol-single-select__delete button');
 			await expect(clearButton).toHaveCount(1);
 			await clearButton.click({ force: true });
 
@@ -154,7 +154,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.getByRole('listbox').getByText(TEST_LABEL).click({ force: true });
 			await expect(input).toHaveValue(TEST_LABEL);
 
-			const clearButton = page.getByTestId('single-select-delete');
+			const clearButton = page.locator('.kol-single-select__delete button');
 			await expect(clearButton).not.toBeVisible();
 		});
 
@@ -439,7 +439,7 @@ test.describe(COMPONENT_NAME, () => {
 			await page.keyboard.press('ArrowDown');
 			await page.keyboard.press('Enter');
 			await readEvents(page);
-			await page.locator('[data-testid="single-select-delete"] button').click();
+			await page.locator('.kol-single-select__delete button').click();
 			await page.waitForChanges();
 			expect(await readEvents(page)).toEqual([
 				['input', { value: null }],

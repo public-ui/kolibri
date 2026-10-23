@@ -169,8 +169,8 @@ export const FormFieldFC: FC<FormFieldFCProps> = (props, children) => {
 			</div>
 			{counter && !(counter.maxLengthBehavior === 'soft' && typeof counter.maxLength !== 'number') && (
 				<div class={formFieldBem('counter')}>
-					<span data-testid="input-counter" aria-hidden="true" class={formFieldBem('counter')} ref={counter.visualRef} />
-					<span aria-live="polite" class="visually-hidden" data-testid="input-counter-aria" id={createRelatedUniqueId(id, 'counter')} ref={counter.ariaRef} />
+					<span aria-hidden="true" class={formFieldBem('counter')} ref={counter.visualRef} />
+					<span aria-live="polite" class="visually-hidden" id={createRelatedUniqueId(id, 'counter')} ref={counter.ariaRef} />
 				</div>
 			)}
 			{showMsg && <FormFieldMsgFC id={id} alert={alert} hideMsg={hideMsg} msg={msg} />}

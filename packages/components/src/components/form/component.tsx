@@ -91,11 +91,11 @@ export class KolForm extends BaseWebComponent<FormApi> implements FormProps, Web
 	 * Scrolls to the error list and focuses the first link.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async focusErrorList(options?: KolFocusOptions): Promise<void> {
+	public focusErrorList(options?: KolFocusOptions): Promise<void> {
 		setTimeout(() => {
 			this.errorLinkItems[0]?.focus(options ?? SCROLL_OPTIONS_FALLBACK);
 		}, FOCUS_ERROR_LIST_DELAY);
+		return Promise.resolve();
 	}
 
 	public componentWillLoad(): void {

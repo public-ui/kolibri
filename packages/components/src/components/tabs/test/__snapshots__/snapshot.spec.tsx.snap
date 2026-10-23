@@ -5,7 +5,7 @@ exports[`kol-tabs should render with _label="Text" _selected=1 _tabs=[{"_icons":
   <template shadowrootmode="open">
     <div class="kol-tabs kol-tabs--align-top">
       <div class="kol-tabs__button-group">
-        <div aria-label="Text" class="kol-tabs__tablist" role="tablist">
+        <div aria-label="Text" class="kol-tabs__tablist" role="tablist" tabindex="-1">
           <div class="kol-tabs__tab">
             <div class="kol-button kol-button--normal kol-button--standalone">
               <button aria-controls="tabs-nonce-panel-0" aria-selected="false" class="kol-button__interactive-element" id="tabs-nonce-tab-0" role="tab" tabindex="-1" type="button">

@@ -289,9 +289,8 @@ export class KolInputRadio
 	 * Returns the current value.
 	 */
 	@Method()
-	// eslint-disable-next-line @typescript-eslint/require-await
-	public async getValue(): Promise<StencilUnknown> {
-		return this._value;
+	public getValue(): Promise<StencilUnknown> {
+		return Promise.resolve(this._value);
 	}
 
 	/**

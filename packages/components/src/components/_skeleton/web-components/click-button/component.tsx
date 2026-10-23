@@ -35,9 +35,10 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	 */
 	@Method()
 	@delegateFocus('buttonRef')
-	// @ts-expect-error: options parameter will be implemented by the decorator.
-	// eslint-disable-next-line @typescript-eslint/no-unused-vars
-	public async focus(options?: KolFocusOptions): Promise<void> {}
+	public focus(options?: KolFocusOptions): Promise<void> {
+		void options;
+		return Promise.resolve();
+	}
 
 	public componentWillLoad(): void {
 		this.initRenderProps(clickButtonPropsConfig);
@@ -46,7 +47,6 @@ export class KolClickButton extends BaseWebComponent<ClickButtonApi> implements 
 	}
 
 	public handleClick = (): void => {
-		// eslint-disable-next-line no-console
 		console.log(this, 'button clicked');
 	};
 

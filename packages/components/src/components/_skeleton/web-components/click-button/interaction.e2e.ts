@@ -12,6 +12,6 @@ test.describe('kol-click-button', () => {
 			logMessages.push(msg.text());
 		});
 		await page.getByRole('button', { name: 'Click' }).click();
-		expect(logMessages.length).toBeGreaterThan(0);
+		expect(logMessages.some((text) => text.includes('button clicked'))).toBe(true);
 	});
 });

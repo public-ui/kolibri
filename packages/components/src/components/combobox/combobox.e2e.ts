@@ -316,7 +316,7 @@ test.describe(COMPONENT_NAME, () => {
 		await page.setContent(`<kol-combobox _label="Input" _suggestions=${JSON.stringify(OPTIONS)} _value="North"></kol-combobox>`);
 		const component = page.locator('kol-combobox');
 		const input = page.locator('input.kol-combobox__input');
-		const clearButton = page.locator('[data-testid="combobox-delete"]');
+		const clearButton = page.locator('.kol-combobox__delete button');
 
 		let blurCallbackFired = false;
 		let blurEventFired = false;
@@ -534,7 +534,7 @@ test.describe(COMPONENT_NAME, () => {
 		test('clears the value with the clear button, keeps the focus on the input and closes the list', async ({ page }) => {
 			await page.locator('input.kol-combobox__input').fill('North');
 			await readEvents(page);
-			await page.locator('[data-testid="combobox-delete"] button').click();
+			await page.locator('.kol-combobox__delete button').click();
 			await page.waitForChanges();
 			// The click commits the typed text first (native `change` of the input), then clears it.
 			expect(await readEvents(page)).toEqual([
