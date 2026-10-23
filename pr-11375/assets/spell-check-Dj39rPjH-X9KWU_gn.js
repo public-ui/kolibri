@@ -1,1 +1,0 @@
-import{a as e,l as t}from"./base-web-component-CNC53tZy-CNf-2JGq.js";var n=e(`spellCheck`,void 0,t);export{n as t};

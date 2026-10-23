@@ -1,1 +1,0 @@
-import{_ as e,a as t,i as n,m as r}from"./base-web-component-CNC53tZy-CNf-2JGq.js";var i=t(`max`,100,r,e=>e>0),a=t(`unit`,`%`,e,e=>e.length>0);function o(e,t){return e<t.min?t.min:e>t.max?t.max:e}var s=n(`value`,0,(e,t)=>o(r(e),t),e=>typeof e==`number`&&!isNaN(e)),c=Object.assign(Object.assign({},s),{apply(e,t,n){s.apply(e,e=>t(o(e,n)),n)}});export{i as n,a as r,c as t};
