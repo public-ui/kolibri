@@ -1,4 +1,5 @@
-import { labelWithExpertSlotProp, skipNavLinksProp } from '../../props';
+import { labelWithExpertSlotProp } from '../../props/label-with-expert-slot';
+import { skipNavLinksProp } from '../../props/skip-nav-links';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { SkipNavLinkItem } from './link-item';
 

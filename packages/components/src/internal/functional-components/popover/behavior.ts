@@ -1,6 +1,6 @@
 import { autoUpdate } from '@floating-ui/dom';
 import { alignFloatingElements } from '../../../utils/align-floating-elements';
-import { alignProp } from '../../props';
+import { alignProp } from '../../props/align';
 import { BaseBehavior } from '../base-behavior';
 import type { BehaviorInterface, ResolvedInputProps, StateAccess } from '../generic-types';
 import type { PopoverApi } from './api';

@@ -5,7 +5,12 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { ProgressApi } from '../../internal/functional-components/progress/api';
 import { progressPropsConfig } from '../../internal/functional-components/progress/api';
 import { ProgressFC } from '../../internal/functional-components/progress/component';
-import { clampedNumberValueProp, labelProp, maxProp, unitProp, variantProgressProp, type ProgressVariantType } from '../../internal/props';
+import { labelProp } from '../../internal/props/label';
+import { maxProp } from '../../internal/props/max';
+import { unitProp } from '../../internal/props/unit';
+import { clampedNumberValueProp } from '../../internal/props/value-number-clamped';
+import type { ProgressVariantType } from '../../internal/props/variant-progress';
+import { variantProgressProp } from '../../internal/props/variant-progress';
 
 /**
  * The **Progress** component visualizes the completion status of a task or process. It supports both determinate (percentage-based) and indeterminate variants.

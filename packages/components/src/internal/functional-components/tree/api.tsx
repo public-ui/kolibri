@@ -1,5 +1,5 @@
 import type { KolFocusOptions } from '../../../schema';
-import { labelWithExpertSlotProp } from '../../props';
+import { labelWithExpertSlotProp } from '../../props/label-with-expert-slot';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

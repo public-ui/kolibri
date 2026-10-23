@@ -7,7 +7,8 @@ import { skipNavPropsConfig } from '../../internal/functional-components/skip-na
 import { SkipNavFC } from '../../internal/functional-components/skip-nav/component';
 import type { SkipNavLinkItem } from '../../internal/functional-components/skip-nav/link-item';
 import { createSkipNavLinkItem } from '../../internal/functional-components/skip-nav/link-item';
-import { labelWithExpertSlotProp, skipNavLinksProp } from '../../internal/props';
+import { labelWithExpertSlotProp } from '../../internal/props/label-with-expert-slot';
+import { skipNavLinksProp } from '../../internal/props/skip-nav-links';
 import type { FocusableElement, KolFocusOptions, LabelPropType, LinkProps, SkipNavProps, Stringified } from '../../schema';
 import { a11yHintLabelingLandmarks } from '../../schema';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';

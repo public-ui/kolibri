@@ -1,4 +1,7 @@
-import { alignProp, badgeTextProp, idProp, labelProp } from '../../props';
+import { alignProp } from '../../props/align';
+import { badgeTextProp } from '../../props/badge-text';
+import { idProp } from '../../props/id';
+import { labelProp } from '../../props/label';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const tooltipPropsConfig = {

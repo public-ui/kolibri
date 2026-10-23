@@ -1,19 +1,17 @@
 import type { KoliBriTableDataType, KoliBriTableHeaderCell } from '../../../schema';
-import {
-	allowMultiSortProp,
-	fixedColsProp,
-	hasSettingsMenuProp,
-	labelWithExpertSlotProp,
-	paginationPositionProp,
-	tableDataFootProp,
-	tableDataProp,
-	tableLoadingProp,
-	tablePaginationProp,
-	tableSelectionProp,
-	tableStatefulCallbacksProp,
-	tableStatefulHeadersProp,
-	variantProp,
-} from '../../props';
+import { allowMultiSortProp } from '../../props/allow-multi-sort';
+import { fixedColsProp } from '../../props/fixed-cols';
+import { hasSettingsMenuProp } from '../../props/has-settings-menu';
+import { labelWithExpertSlotProp } from '../../props/label-with-expert-slot';
+import { paginationPositionProp } from '../../props/pagination-position';
+import { tableDataProp } from '../../props/table-data';
+import { tableDataFootProp } from '../../props/table-data-foot';
+import { tableLoadingProp } from '../../props/table-loading';
+import { tablePaginationProp } from '../../props/table-pagination';
+import { tableSelectionProp } from '../../props/table-selection';
+import { tableStatefulCallbacksProp } from '../../props/table-stateful-callbacks';
+import { tableStatefulHeadersProp } from '../../props/table-stateful-headers';
+import { variantProp } from '../../props/variant';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

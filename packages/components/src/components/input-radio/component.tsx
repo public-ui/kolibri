@@ -33,7 +33,11 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { InputRadioApi } from '../../internal/functional-components/input-radio/api';
 import { inputRadioPropsConfig } from '../../internal/functional-components/input-radio/api';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { radioOptionsProp, radioOrientationProp, radioValueProp, requiredProp, variantProp } from '../../internal/props';
+import { radioOptionsProp } from '../../internal/props/radio-options';
+import { radioOrientationProp } from '../../internal/props/radio-orientation';
+import { radioValueProp } from '../../internal/props/radio-value';
+import { requiredProp } from '../../internal/props/required';
+import { variantProp } from '../../internal/props/variant';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, setClick } from '../../utils/element-click';
 import { delegateFocus, setFocus } from '../../utils/element-focus';

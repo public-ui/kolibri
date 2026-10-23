@@ -10,7 +10,12 @@ import { drawerPropsConfig } from '../../internal/functional-components/drawer/a
 import { DrawerFC } from '../../internal/functional-components/drawer/component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { alignProp, drawerCallbacksProp, hasCloserProp, labelProp, levelProp, openProp } from '../../internal/props';
+import { alignProp } from '../../internal/props/align';
+import { drawerCallbacksProp } from '../../internal/props/drawer-callbacks';
+import { hasCloserProp } from '../../internal/props/has-closer';
+import { labelProp } from '../../internal/props/label';
+import { levelProp } from '../../internal/props/level';
+import { openProp } from '../../internal/props/open';
 import type { AlignPropType, DrawerProps, HeadingLevel, KoliBriModalEventCallbacks, LabelPropType, OpenPropType } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';
 import { createCtaRef } from '../../utils/element-interaction';

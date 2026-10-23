@@ -9,29 +9,27 @@ import { ButtonFC } from '../../internal/functional-components/button/component'
 import { FormAssociationBehavior } from '../../internal/functional-components/form-association/behavior';
 import type { FunctionalComponentProps } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import {
-	accessKeyProp,
-	ariaControlsProp,
-	ariaDescriptionProp,
-	ariaExpandedProp,
-	ariaHasPopupProp,
-	ariaSelectedProp,
-	buttonCallbacksProp,
-	buttonTypeProp,
-	customClassProp,
-	disabledProp,
-	hideLabelProp,
-	idProp,
-	inlineProp,
-	labelWithExpertSlotProp,
-	linkRoleProp,
-	nameProp,
-	shortKeyProp,
-	spanIconsProp,
-	tabIndexProp,
-	tooltipAlignProp,
-	variantProp,
-} from '../../internal/props';
+import { accessKeyProp } from '../../internal/props/access-key';
+import { ariaControlsProp } from '../../internal/props/aria-controls';
+import { ariaDescriptionProp } from '../../internal/props/aria-description';
+import { ariaExpandedProp } from '../../internal/props/aria-expanded';
+import { ariaHasPopupProp } from '../../internal/props/aria-has-popup';
+import { ariaSelectedProp } from '../../internal/props/aria-selected';
+import { buttonCallbacksProp } from '../../internal/props/button-callbacks';
+import { buttonTypeProp } from '../../internal/props/button-type';
+import { customClassProp } from '../../internal/props/custom-class';
+import { disabledProp } from '../../internal/props/disabled';
+import { hideLabelProp } from '../../internal/props/hide-label';
+import { idProp } from '../../internal/props/id';
+import { inlineProp } from '../../internal/props/inline';
+import { labelWithExpertSlotProp } from '../../internal/props/label-with-expert-slot';
+import { linkRoleProp } from '../../internal/props/link-role';
+import { nameProp } from '../../internal/props/name';
+import { shortKeyProp } from '../../internal/props/short-key';
+import { spanIconsProp } from '../../internal/props/span-icons';
+import { tabIndexProp } from '../../internal/props/tab-index';
+import { tooltipAlignProp } from '../../internal/props/tooltip-align';
+import { variantProp } from '../../internal/props/variant';
 import type {
 	AccessKeyPropType,
 	AlternativeButtonLinkRolePropType,

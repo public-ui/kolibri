@@ -4,17 +4,15 @@ import type { AlignPropType, IconsPropType, InternalButtonProps, LabelWithExpert
 import { createUniqueId, nonce } from '../../../utils/dev.utils';
 import { createCtaRef } from '../../../utils/element-interaction';
 import { dispatchDomEvent, KolEvent } from '../../../utils/events';
-import {
-	buttonTypeProp,
-	disabledProp,
-	hideLabelProp,
-	inlineProp,
-	labelWithExpertSlotProp,
-	popoverAlignProp,
-	spanIconsProp,
-	tooltipAlignProp,
-	variantProp,
-} from '../../props';
+import { buttonTypeProp } from '../../props/button-type';
+import { disabledProp } from '../../props/disabled';
+import { hideLabelProp } from '../../props/hide-label';
+import { inlineProp } from '../../props/inline';
+import { labelWithExpertSlotProp } from '../../props/label-with-expert-slot';
+import { popoverAlignProp } from '../../props/popover-align';
+import { spanIconsProp } from '../../props/span-icons';
+import { tooltipAlignProp } from '../../props/tooltip-align';
+import { variantProp } from '../../props/variant';
 import { BaseWebComponent } from '../base-web-component';
 import { resolveButtonProps } from '../button/resolve-props';
 import { PopoverBehavior } from '../popover/behavior';

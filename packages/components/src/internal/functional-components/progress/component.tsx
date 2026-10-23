@@ -2,7 +2,7 @@ import type { FunctionalComponent as FC } from '@stencil/core';
 import { h } from '@stencil/core';
 import { translate } from '../../../i18n';
 
-import type { ProgressVariantType } from '../../props';
+import type { ProgressVariantType } from '../../props/variant-progress';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { ProgressApi } from './api';
 

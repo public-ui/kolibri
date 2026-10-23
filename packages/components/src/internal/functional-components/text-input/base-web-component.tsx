@@ -15,19 +15,17 @@ import type {
 import { validateAccessAndShortKey } from '../../../schema/validators/access-and-short-key';
 import clsx from '../../../utils/clsx';
 import { createCtaRef } from '../../../utils/element-interaction';
-import {
-	accessKeyProp,
-	autoCompleteProp,
-	horizontalIconsProp,
-	patternProp,
-	placeholderProp,
-	readOnlyProp,
-	requiredProp,
-	shortKeyProp,
-	smartButtonProp,
-	stringValueProp,
-	variantProp,
-} from '../../props';
+import { accessKeyProp } from '../../props/access-key';
+import { autoCompleteProp } from '../../props/auto-complete';
+import { horizontalIconsProp } from '../../props/horizontal-icons';
+import { patternProp } from '../../props/pattern';
+import { placeholderProp } from '../../props/placeholder';
+import { readOnlyProp } from '../../props/read-only';
+import { requiredProp } from '../../props/required';
+import { shortKeyProp } from '../../props/short-key';
+import { smartButtonProp } from '../../props/smart-button';
+import { stringValueProp } from '../../props/value-string';
+import { variantProp } from '../../props/variant';
 import { BaseWebComponent } from '../base-web-component';
 import { CounterBehavior } from '../counter/behavior';
 import { getInputAdornments } from '../form-field/adornments';

@@ -1,5 +1,10 @@
 import type { KolFocusOptions } from '../../../schema';
-import { cardCallbacksProp, hasCloserProp, labelProp, levelProp, linkTargetProp, optionalHrefProp } from '../../props';
+import { cardCallbacksProp } from '../../props/card-callbacks';
+import { hasCloserProp } from '../../props/has-closer';
+import { optionalHrefProp } from '../../props/href';
+import { labelProp } from '../../props/label';
+import { levelProp } from '../../props/level';
+import { linkTargetProp } from '../../props/link-target';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

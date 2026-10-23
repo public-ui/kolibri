@@ -6,7 +6,9 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { HeadingApi } from '../../internal/functional-components/heading/api';
 import { headingPropsConfig } from '../../internal/functional-components/heading/api';
 import { HeadingFC } from '../../internal/functional-components/heading/component';
-import { labelWithExpertSlotProp, levelProp, secondaryHeadlineProp } from '../../internal/props';
+import { labelWithExpertSlotProp } from '../../internal/props/label-with-expert-slot';
+import { levelProp } from '../../internal/props/level';
+import { secondaryHeadlineProp } from '../../internal/props/secondary-headline';
 import type { HeadingLevel, HeadingProps, LabelWithExpertSlotPropType } from '../../schema';
 
 /**

@@ -34,20 +34,18 @@ import { TextAreaFC, type TextAreaFCProps } from '../../internal/functional-comp
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import type { TextareaApi } from '../../internal/functional-components/textarea/api';
 import { textareaPropsConfig } from '../../internal/functional-components/textarea/api';
-import {
-	accessKeyProp,
-	adjustHeightProp,
-	horizontalIconsProp,
-	placeholderProp,
-	readOnlyProp,
-	requiredProp,
-	resizeProp,
-	rowsProp,
-	shortKeyProp,
-	spellCheckProp,
-	stringValueProp,
-	variantProp,
-} from '../../internal/props';
+import { accessKeyProp } from '../../internal/props/access-key';
+import { adjustHeightProp } from '../../internal/props/adjust-height';
+import { horizontalIconsProp } from '../../internal/props/horizontal-icons';
+import { placeholderProp } from '../../internal/props/placeholder';
+import { readOnlyProp } from '../../internal/props/read-only';
+import { requiredProp } from '../../internal/props/required';
+import { resizeProp } from '../../internal/props/resize';
+import { rowsProp } from '../../internal/props/rows';
+import { shortKeyProp } from '../../internal/props/short-key';
+import { spellCheckProp } from '../../internal/props/spell-check';
+import { stringValueProp } from '../../internal/props/value-string';
+import { variantProp } from '../../internal/props/variant';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';

@@ -1,5 +1,7 @@
 import type { KolFocusOptions } from '../../../schema';
-import { labelWithExpertSlotProp, orientationProp, toolbarItemsProp } from '../../props';
+import { labelWithExpertSlotProp } from '../../props/label-with-expert-slot';
+import { orientationProp } from '../../props/orientation';
+import { toolbarItemsProp } from '../../props/toolbar-items';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { ToolbarButtonItem, ToolbarHRItem, ToolbarLinkItem } from './item';
 

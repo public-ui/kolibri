@@ -1,4 +1,5 @@
-import { kolibriColorProp, labeledProp } from '../../props';
+import { kolibriColorProp } from '../../props/kolibri-color';
+import { labeledProp } from '../../props/labeled';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const kolibriPropsConfig = {

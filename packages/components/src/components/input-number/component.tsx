@@ -37,22 +37,20 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import { IconFC } from '../../internal/functional-components/icon/component';
 import type { InputNumberApi } from '../../internal/functional-components/input-number/api';
 import { inputNumberPropsConfig } from '../../internal/functional-components/input-number/api';
-import {
-	accessKeyProp,
-	autoCompleteProp,
-	horizontalIconsProp,
-	inputMaxProp,
-	inputMinProp,
-	inputNumberValueProp,
-	placeholderProp,
-	readOnlyProp,
-	requiredProp,
-	shortKeyProp,
-	smartButtonProp,
-	stepProp,
-	suggestionsProp,
-	variantProp,
-} from '../../internal/props';
+import { accessKeyProp } from '../../internal/props/access-key';
+import { autoCompleteProp } from '../../internal/props/auto-complete';
+import { horizontalIconsProp } from '../../internal/props/horizontal-icons';
+import { inputMaxProp } from '../../internal/props/input-max';
+import { inputMinProp } from '../../internal/props/input-min';
+import { placeholderProp } from '../../internal/props/placeholder';
+import { readOnlyProp } from '../../internal/props/read-only';
+import { requiredProp } from '../../internal/props/required';
+import { shortKeyProp } from '../../internal/props/short-key';
+import { smartButtonProp } from '../../internal/props/smart-button';
+import { stepProp } from '../../internal/props/step';
+import { suggestionsProp } from '../../internal/props/suggestions';
+import { inputNumberValueProp } from '../../internal/props/value-input-number';
+import { variantProp } from '../../internal/props/variant';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';

@@ -3,7 +3,7 @@ import { Fragment, h } from '@stencil/core';
 
 import { translate } from '../../../i18n';
 import { bem } from '../../../schema/bem-registry';
-import type { SpinVariantType } from '../../props';
+import type { SpinVariantType } from '../../props/variant-spin';
 import { BemRootNodeFC } from '../bem-root-node/component';
 import type { FunctionalComponentProps } from '../generic-types';
 import type { SpinApi } from './api';

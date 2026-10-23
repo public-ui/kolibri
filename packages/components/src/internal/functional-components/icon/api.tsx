@@ -1,4 +1,5 @@
-import { iconsProp, labelProp } from '../../props';
+import { iconsProp } from '../../props/icons';
+import { labelProp } from '../../props/label';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const iconPropsConfig = {

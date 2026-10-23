@@ -5,18 +5,16 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { MeterApi } from '../../internal/functional-components/meter/api';
 import { meterPropsConfig } from '../../internal/functional-components/meter/api';
 import { MeterFC } from '../../internal/functional-components/meter/component';
-import {
-	clampedNumberValueProp,
-	highProp,
-	labelProp,
-	lowProp,
-	maxProp,
-	minProp,
-	optimumProp,
-	orientationProp,
-	unitProp,
-	type OrientationPropType,
-} from '../../internal/props';
+import { highProp } from '../../internal/props/high';
+import { labelProp } from '../../internal/props/label';
+import { lowProp } from '../../internal/props/low';
+import { maxProp } from '../../internal/props/max';
+import { minProp } from '../../internal/props/min';
+import { optimumProp } from '../../internal/props/optimum';
+import type { OrientationPropType } from '../../internal/props/orientation';
+import { orientationProp } from '../../internal/props/orientation';
+import { unitProp } from '../../internal/props/unit';
+import { clampedNumberValueProp } from '../../internal/props/value-number-clamped';
 
 @Component({
 	tag: 'kol-meter',

@@ -14,19 +14,17 @@ import { tableStatelessPropsConfig } from '../../internal/functional-components/
 import { TableStatelessFC } from '../../internal/functional-components/table-stateless/component';
 import { createTableSettings } from '../../internal/functional-components/table-stateless/settings';
 import { getNumberOfCols, getPrimaryHeaders } from '../../internal/functional-components/table-stateless/table-model';
-import {
-	fixedColsProp,
-	hasSettingsMenuProp,
-	labelWithExpertSlotProp,
-	tableCallbacksProp,
-	tableDataFootProp,
-	tableDataProp,
-	tableHeadersProp,
-	tableLoadingProp,
-	tableSelectionProp,
-	variantProp,
-} from '../../internal/props';
+import { fixedColsProp } from '../../internal/props/fixed-cols';
+import { hasSettingsMenuProp } from '../../internal/props/has-settings-menu';
+import { labelWithExpertSlotProp } from '../../internal/props/label-with-expert-slot';
+import { tableCallbacksProp } from '../../internal/props/table-callbacks';
+import { tableDataProp } from '../../internal/props/table-data';
+import { tableDataFootProp } from '../../internal/props/table-data-foot';
 import type { TableHeaders } from '../../internal/props/table-headers';
+import { tableHeadersProp } from '../../internal/props/table-headers';
+import { tableLoadingProp } from '../../internal/props/table-loading';
+import { tableSelectionProp } from '../../internal/props/table-selection';
+import { variantProp } from '../../internal/props/variant';
 import type {
 	FixedColsPropType,
 	HasSettingsMenuPropType,

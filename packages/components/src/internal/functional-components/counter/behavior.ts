@@ -1,6 +1,8 @@
 import type { MaxLengthBehaviorPropType } from '../../../schema';
 import { createRelatedUniqueId } from '../../../utils/dev.utils';
-import { hasCounterProp, maxLengthBehaviorProp, maxLengthProp } from '../../props';
+import { hasCounterProp } from '../../props/has-counter';
+import { maxLengthProp } from '../../props/max-length';
+import { maxLengthBehaviorProp } from '../../props/max-length-behavior';
 import { BaseBehavior } from '../base-behavior';
 import type { FormFieldFCProps } from '../form-field/component';
 import type { BehaviorInterface, ResolvedInputProps, StateAccess } from '../generic-types';

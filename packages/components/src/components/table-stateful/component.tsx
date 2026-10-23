@@ -19,17 +19,14 @@ import {
 	selectDisplayedData,
 	sortRows,
 } from '../../internal/functional-components/table-stateful/model';
-import {
-	allowMultiSortProp,
-	paginationPositionProp,
-	tableDataFootProp,
-	tableDataProp,
-	tablePaginationProp,
-	tableStatefulCallbacksProp,
-	tableStatefulHeadersProp,
-} from '../../internal/props';
+import { allowMultiSortProp } from '../../internal/props/allow-multi-sort';
+import { paginationPositionProp } from '../../internal/props/pagination-position';
+import { tableDataProp } from '../../internal/props/table-data';
+import { tableDataFootProp } from '../../internal/props/table-data-foot';
 import type { TablePagination } from '../../internal/props/table-pagination';
-import { isTablePaginationShown } from '../../internal/props/table-pagination';
+import { isTablePaginationShown, tablePaginationProp } from '../../internal/props/table-pagination';
+import { tableStatefulCallbacksProp } from '../../internal/props/table-stateful-callbacks';
+import { tableStatefulHeadersProp } from '../../internal/props/table-stateful-headers';
 import type {
 	ChangeHeaderCellsEventPayload,
 	FixedColsPropType,
