@@ -30,7 +30,7 @@ const LIFECYCLE = [
 const GROUPS = ['static', 'element', 'state', 'field', 'constructor', 'prop', 'event', 'method', 'lifecycle', 'listen', 'helper', 'render'] as const;
 type Group = (typeof GROUPS)[number] | 'watch';
 
-const SRC = path.join(__dirname, '..', '..');
+const SRC = __dirname;
 
 const findSourceFiles = (dir: string): string[] =>
 	fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {

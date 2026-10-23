@@ -1,13 +1,13 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Host, Listen, Method, Prop, State, Watch } from '@stencil/core';
-import { BaseWebComponent } from '../../../../internal/functional-components/base-web-component';
-import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
-import type { SkeletonApi } from '../../../../internal/functional-components/skeleton/api';
-import { skeletonPropsConfig } from '../../../../internal/functional-components/skeleton/api';
-import { SkeletonFC } from '../../../../internal/functional-components/skeleton/component';
-import { nameProp } from '../../../../internal/props';
-import { Log, type KolFocusOptions } from '../../../../schema';
-import { createCtaRef, delegateFocus } from '../../../../utils/element-interaction';
+import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
+import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
+import type { SkeletonApi } from '../../internal/functional-components/skeleton/api';
+import { skeletonPropsConfig } from '../../internal/functional-components/skeleton/api';
+import { SkeletonFC } from '../../internal/functional-components/skeleton/component';
+import { nameProp } from '../../internal/props';
+import { Log, type KolFocusOptions } from '../../schema';
+import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 
 @Component({
 	tag: 'kol-skeleton',
