@@ -1,4 +1,10 @@
-import { alertCallbacksProp, alertProp, alertTypeProp, alertVariantProp, hasCloserProp, labelProp, levelProp } from '../../props';
+import { alertProp } from '../../props/alert';
+import { alertCallbacksProp } from '../../props/alert-callbacks';
+import { alertTypeProp } from '../../props/alert-type';
+import { alertVariantProp } from '../../props/alert-variant';
+import { hasCloserProp } from '../../props/has-closer';
+import { labelProp } from '../../props/label';
+import { levelProp } from '../../props/level';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

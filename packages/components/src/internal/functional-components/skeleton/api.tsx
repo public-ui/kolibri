@@ -1,5 +1,5 @@
 import type { KolFocusOptions } from '../../../schema';
-import { nameProp } from '../../props';
+import { nameProp } from '../../props/name';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const skeletonPropsConfig = {

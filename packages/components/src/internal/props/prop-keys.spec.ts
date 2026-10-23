@@ -89,17 +89,17 @@ const VARIANTS: Record<string, { definitions: string[]; reason: string }> = {
 	},
 };
 
-/** The modules of this folder and its subfolders, without specs and barrels. */
+/** The modules of this folder and its subfolders, without specs. */
 const propModules = (dir: string): string[] =>
 	fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
 		const full = path.join(dir, entry.name);
 		if (entry.isDirectory()) {
 			return propModules(full);
 		}
-		return /\.ts$/.test(entry.name) && !/\.(spec|test)\.ts$/.test(entry.name) && entry.name !== 'index.ts' ? [full] : [];
+		return /\.ts$/.test(entry.name) && !/\.(spec|test)\.ts$/.test(entry.name) ? [full] : [];
 	});
 
-/** Every prop definition exported by a module of this folder or its subfolders, whether the barrel re-exports it or not. */
+/** Every prop definition exported by a module of this folder or its subfolders. */
 const definitionsByKey = async (): Promise<Record<string, string[]>> => {
 	const modules = (await Promise.all(propModules(__dirname).map((file) => import(file)))) as Record<string, unknown>[];
 	const byKey: Record<string, Set<string>> = {};

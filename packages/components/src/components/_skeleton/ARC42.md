@@ -60,9 +60,12 @@ src/
         │   └── normalizers.ts         # normalizeString, normalizeInteger, etc.
         ├── label.ts                   # LabelProp
         ├── name.ts                    # NameProp
-        ├── show.ts                    # ShowProp
-        └── index.ts                   # Re-exports
+        └── show.ts                    # ShowProp
 ```
+
+Every prop is imported directly from its file (`import { labelProp } from '../../internal/props/label'`),
+never through a barrel `index.ts` — the repository convention in the root `AGENTS.md` forbids barrel
+files, so the props layer follows it like every other layer.
 
 This modular layout is the backbone for the architectural patterns described in the following chapters.
 

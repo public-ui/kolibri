@@ -10,7 +10,11 @@ import type { DialogApi } from '../../internal/functional-components/dialog/api'
 import { dialogPropsConfig } from '../../internal/functional-components/dialog/api';
 import { dialogBlockClass, DialogFC } from '../../internal/functional-components/dialog/component';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { dialogCallbacksProp, labelProp, levelProp, variantDialogProp, widthProp } from '../../internal/props';
+import { dialogCallbacksProp } from '../../internal/props/dialog-callbacks';
+import { labelProp } from '../../internal/props/label';
+import { levelProp } from '../../internal/props/level';
+import { variantDialogProp } from '../../internal/props/variant-dialog';
+import { widthProp } from '../../internal/props/width';
 import type { HeadingLevel, KoliBriDialogEventCallbacks, LabelPropType } from '../../schema';
 import type { ModalVariantPropType } from '../../schema/props/variant/modal';
 import { createCtaRef } from '../../utils/element-interaction';

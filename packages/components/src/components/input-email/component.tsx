@@ -30,7 +30,8 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { InputEmailApi } from '../../internal/functional-components/input-email/api';
 import { inputEmailPropsConfig } from '../../internal/functional-components/input-email/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
-import { multipleProp, suggestionsProp } from '../../internal/props';
+import { multipleProp } from '../../internal/props/multiple';
+import { suggestionsProp } from '../../internal/props/suggestions';
 import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';
 

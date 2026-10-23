@@ -5,7 +5,9 @@ import { avatarPropsConfig } from '../../internal/functional-components/avatar/a
 import { AvatarFC } from '../../internal/functional-components/avatar/component';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { colorProp, labelProp, srcProp } from '../../internal/props';
+import { colorProp } from '../../internal/props/color';
+import { labelProp } from '../../internal/props/label';
+import { srcProp } from '../../internal/props/src';
 import type { ColorPair } from '../../schema';
 
 /**

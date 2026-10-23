@@ -38,18 +38,16 @@ import {
 	BEM_CLASS_INPUT_RANGE__INPUT_RANGE,
 	InputRangeInputsFC,
 } from '../../internal/functional-components/input-range/component';
-import {
-	accessKeyProp,
-	autoCompleteProp,
-	horizontalIconsProp,
-	inputMaxProp,
-	inputMinProp,
-	inputNumberValueProp,
-	shortKeyProp,
-	stepProp,
-	suggestionsProp,
-	variantProp,
-} from '../../internal/props';
+import { accessKeyProp } from '../../internal/props/access-key';
+import { autoCompleteProp } from '../../internal/props/auto-complete';
+import { horizontalIconsProp } from '../../internal/props/horizontal-icons';
+import { inputMaxProp } from '../../internal/props/input-max';
+import { inputMinProp } from '../../internal/props/input-min';
+import { shortKeyProp } from '../../internal/props/short-key';
+import { stepProp } from '../../internal/props/step';
+import { suggestionsProp } from '../../internal/props/suggestions';
+import { inputNumberValueProp } from '../../internal/props/value-input-number';
+import { variantProp } from '../../internal/props/variant';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { submitFormOnEnter } from '../form/controller';

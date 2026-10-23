@@ -1,4 +1,5 @@
-import { breadcrumbLinksProp, labelWithExpertSlotProp } from '../../props';
+import { breadcrumbLinksProp } from '../../props/breadcrumb-links';
+import { labelWithExpertSlotProp } from '../../props/label-with-expert-slot';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 import type { BreadcrumbLinkItem } from './link-item';
 

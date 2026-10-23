@@ -7,7 +7,8 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { KolibriApi } from '../../internal/functional-components/kolibri/api';
 import { kolibriPropsConfig } from '../../internal/functional-components/kolibri/api';
 import { KolibriFC } from '../../internal/functional-components/kolibri/component';
-import { kolibriColorProp, labeledProp } from '../../internal/props';
+import { kolibriColorProp } from '../../internal/props/kolibri-color';
+import { labeledProp } from '../../internal/props/labeled';
 import type { KolibriProps, PropColor, Stringified } from '../../schema';
 
 @Component({

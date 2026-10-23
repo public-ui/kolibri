@@ -1,7 +1,7 @@
 import type { EventEmitter } from '@stencil/core';
 import type { JSXBase } from '@stencil/core/internal';
 
-import type { Prop } from '../props';
+import type { Prop } from '../props/helpers/factory';
 
 // ============================================================================
 // Utility Types

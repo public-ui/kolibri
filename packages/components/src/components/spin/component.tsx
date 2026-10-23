@@ -5,7 +5,10 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { SpinApi } from '../../internal/functional-components/spin/api';
 import { spinPropsConfig } from '../../internal/functional-components/spin/api';
 import { SpinFC } from '../../internal/functional-components/spin/component';
-import { labelProp, showProp, variantSpinProp, type SpinVariantType } from '../../internal/props';
+import { labelProp } from '../../internal/props/label';
+import { showProp } from '../../internal/props/show';
+import type { SpinVariantType } from '../../internal/props/variant-spin';
+import { variantSpinProp } from '../../internal/props/variant-spin';
 
 @Component({
 	tag: 'kol-spin',

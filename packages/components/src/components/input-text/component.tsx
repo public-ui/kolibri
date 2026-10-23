@@ -36,7 +36,9 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { InputTextApi } from '../../internal/functional-components/input-text/api';
 import { inputTextPropsConfig } from '../../internal/functional-components/input-text/api';
 import { BaseTextInputWebComponent } from '../../internal/functional-components/text-input/base-web-component';
-import { inputTextTypeProp, spellCheckProp, suggestionsProp } from '../../internal/props';
+import { inputTextTypeProp } from '../../internal/props/input-text-type';
+import { spellCheckProp } from '../../internal/props/spell-check';
+import { suggestionsProp } from '../../internal/props/suggestions';
 import clsx from '../../utils/clsx';
 import { createUniqueId } from '../../utils/dev.utils';
 import { delegateClick, delegateFocus } from '../../utils/element-interaction';

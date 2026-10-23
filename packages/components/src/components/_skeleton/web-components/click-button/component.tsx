@@ -5,7 +5,7 @@ import type { ClickButtonApi } from '../../../../internal/functional-components/
 import { clickButtonPropsConfig } from '../../../../internal/functional-components/click-button/api';
 import { ClickButtonFC } from '../../../../internal/functional-components/click-button/component';
 import type { WebComponentInterface } from '../../../../internal/functional-components/generic-types';
-import { labelProp } from '../../../../internal/props';
+import { labelProp } from '../../../../internal/props/label';
 import type { KolFocusOptions } from '../../../../schema';
 import { createCtaRef, delegateFocus } from '../../../../utils/element-interaction';
 

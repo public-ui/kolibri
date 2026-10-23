@@ -1,26 +1,24 @@
-import {
-	accessKeyProp,
-	ariaControlsProp,
-	ariaCurrentValueProp,
-	ariaDescriptionProp,
-	ariaExpandedProp,
-	ariaOwnsProp,
-	customClassProp,
-	disabledProp,
-	downloadProp,
-	hideLabelProp,
-	hrefProp,
-	inlineProp,
-	labelWithExpertSlotProp,
-	linkCallbacksProp,
-	linkRoleProp,
-	linkTargetProp,
-	shortKeyProp,
-	spanIconsProp,
-	tabIndexProp,
-	tooltipAlignProp,
-	variantProp,
-} from '../../props';
+import { accessKeyProp } from '../../props/access-key';
+import { ariaControlsProp } from '../../props/aria-controls';
+import { ariaCurrentValueProp } from '../../props/aria-current-value';
+import { ariaDescriptionProp } from '../../props/aria-description';
+import { ariaExpandedProp } from '../../props/aria-expanded';
+import { ariaOwnsProp } from '../../props/aria-owns';
+import { customClassProp } from '../../props/custom-class';
+import { disabledProp } from '../../props/disabled';
+import { downloadProp } from '../../props/download';
+import { hideLabelProp } from '../../props/hide-label';
+import { hrefProp } from '../../props/href';
+import { inlineProp } from '../../props/inline';
+import { labelWithExpertSlotProp } from '../../props/label-with-expert-slot';
+import { linkCallbacksProp } from '../../props/link-callbacks';
+import { linkRoleProp } from '../../props/link-role';
+import { linkTargetProp } from '../../props/link-target';
+import { shortKeyProp } from '../../props/short-key';
+import { spanIconsProp } from '../../props/span-icons';
+import { tabIndexProp } from '../../props/tab-index';
+import { tooltipAlignProp } from '../../props/tooltip-align';
+import { variantProp } from '../../props/variant';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

@@ -6,7 +6,7 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { VersionApi } from '../../internal/functional-components/version/api';
 import { versionPropsConfig } from '../../internal/functional-components/version/api';
 import { VersionFC } from '../../internal/functional-components/version/component';
-import { labelProp } from '../../internal/props';
+import { labelProp } from '../../internal/props/label';
 import type { ColorPair, KoliBriIconsProp, LabelPropType, VersionProps } from '../../schema';
 import { createContrastColorPair } from '../../schema';
 

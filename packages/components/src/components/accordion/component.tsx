@@ -9,7 +9,11 @@ import { CollapsibleFC } from '../../internal/functional-components/collapsible/
 import { createCollapsibleOpenAnimation, DEFAULT_COLLAPSIBLE_TRANSITION_MS } from '../../internal/functional-components/collapsible/open-animation';
 import { createCollapsibleToggleHandler } from '../../internal/functional-components/collapsible/toggle-handler';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
-import { collapsibleCallbacksProp, disabledProp, labelProp, levelProp, openProp } from '../../internal/props';
+import { collapsibleCallbacksProp } from '../../internal/props/collapsible-callbacks';
+import { disabledProp } from '../../internal/props/disabled';
+import { labelProp } from '../../internal/props/label';
+import { levelProp } from '../../internal/props/level';
+import { openProp } from '../../internal/props/open';
 import type {
 	AccordionProps,
 	ClickableElement,

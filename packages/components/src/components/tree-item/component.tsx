@@ -7,7 +7,11 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { TreeItemApi } from '../../internal/functional-components/tree-item/api';
 import { treeItemPropsConfig } from '../../internal/functional-components/tree-item/api';
 import { TreeItemFC } from '../../internal/functional-components/tree-item/component';
-import { activeProp, ariaCurrentValueProp, hrefProp, labelWithExpertSlotProp, openProp } from '../../internal/props';
+import { activeProp } from '../../internal/props/active';
+import { ariaCurrentValueProp } from '../../internal/props/aria-current-value';
+import { hrefProp } from '../../internal/props/href';
+import { labelWithExpertSlotProp } from '../../internal/props/label-with-expert-slot';
+import { openProp } from '../../internal/props/open';
 import type { HrefPropType, KolFocusOptions, LabelPropType, OpenPropType, TreeItemProps } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { createCtaRef, directFocus } from '../../utils/element-interaction';

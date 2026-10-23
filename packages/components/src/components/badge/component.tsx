@@ -9,7 +9,10 @@ import type { ResolvedButtonProps } from '../../internal/functional-components/b
 import { resolveButtonProps } from '../../internal/functional-components/button/resolve-props';
 import type { WebComponentInterface } from '../../internal/functional-components/generic-types';
 import { TooltipBehavior } from '../../internal/functional-components/tooltip/behavior';
-import { colorProp, labelWithExpertSlotProp, smartButtonProp, spanIconsProp } from '../../internal/props';
+import { colorProp } from '../../internal/props/color';
+import { labelWithExpertSlotProp } from '../../internal/props/label-with-expert-slot';
+import { smartButtonProp } from '../../internal/props/smart-button';
+import { spanIconsProp } from '../../internal/props/span-icons';
 import type { BadgeProps, FocusableElement, InternalButtonProps, KolFocusOptions, KoliBriIconsProp, LabelPropType, PropColor, Stringified } from '../../schema';
 import { featureHint, objectObjectHandler, setEventTarget } from '../../schema';
 import { createUniqueId, nonce } from '../../utils/dev.utils';

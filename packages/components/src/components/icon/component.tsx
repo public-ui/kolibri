@@ -5,7 +5,8 @@ import type { WebComponentInterface } from '../../internal/functional-components
 import type { IconApi } from '../../internal/functional-components/icon/api';
 import { iconPropsConfig } from '../../internal/functional-components/icon/api';
 import { IconFC } from '../../internal/functional-components/icon/component';
-import { iconsProp, labelProp } from '../../internal/props';
+import { iconsProp } from '../../internal/props/icons';
+import { labelProp } from '../../internal/props/label';
 
 /**
  * The **Icon** component allows icons from included icon fonts to be displayed at any position.

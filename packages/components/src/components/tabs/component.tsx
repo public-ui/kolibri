@@ -8,7 +8,13 @@ import { tabsPropsConfig } from '../../internal/functional-components/tabs/api';
 import type { TabsButton, TabsButtonItem } from '../../internal/functional-components/tabs/button-item';
 import { createTabsButtonItem } from '../../internal/functional-components/tabs/button-item';
 import { TabsFC } from '../../internal/functional-components/tabs/component';
-import { alignProp, hasCreateButtonProp, labelWithExpertSlotProp, selectedProp, tabBehaviorProp, tabsCallbacksProp, tabsProp } from '../../internal/props';
+import { alignProp } from '../../internal/props/align';
+import { hasCreateButtonProp } from '../../internal/props/has-create-button';
+import { labelWithExpertSlotProp } from '../../internal/props/label-with-expert-slot';
+import { selectedProp } from '../../internal/props/selected';
+import { tabBehaviorProp } from '../../internal/props/tab-behavior';
+import { tabsProp } from '../../internal/props/tabs';
+import { tabsCallbacksProp } from '../../internal/props/tabs-callbacks';
 import type {
 	AlignPropType,
 	ButtonCallbacksPropType,

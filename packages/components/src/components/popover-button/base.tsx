@@ -4,7 +4,7 @@ import { h } from '@stencil/core';
 import { BaseWebComponent } from '../../internal/functional-components/base-web-component';
 import { PopoverButtonFC } from '../../internal/functional-components/popover-button/component';
 import { PopoverBehavior } from '../../internal/functional-components/popover/behavior';
-import { popoverAlignProp } from '../../internal/props';
+import { popoverAlignProp } from '../../internal/props/popover-align';
 import type { PopoverAlignPropType } from '../../schema';
 import { createUniqueId } from '../../utils/dev.utils';
 import { BaseButtonWebComponent } from '../button/base';

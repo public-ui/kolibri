@@ -1,5 +1,9 @@
 import type { IconsPropType, KolFocusOptions } from '../../../schema';
-import { collapsibleCallbacksProp, disabledProp, labelProp, levelProp, openProp } from '../../props';
+import { collapsibleCallbacksProp } from '../../props/collapsible-callbacks';
+import { disabledProp } from '../../props/disabled';
+import { labelProp } from '../../props/label';
+import { levelProp } from '../../props/level';
+import { openProp } from '../../props/open';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 /**

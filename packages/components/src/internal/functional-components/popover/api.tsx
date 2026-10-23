@@ -1,4 +1,4 @@
-import { alignProp } from '../../props';
+import { alignProp } from '../../props/align';
 import type { ApiFromConfig, PropsConfigShape } from '../generic-types';
 
 export const popoverPropsConfig = {
