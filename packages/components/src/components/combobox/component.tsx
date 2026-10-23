@@ -25,6 +25,7 @@ import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
+import { containsDeepActiveElement } from '../../utils/element-focus';
 import { createCtaRef, delegateClick, delegateFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
 
@@ -416,7 +417,7 @@ export class KolCombobox
 
 	@Listen('focusin')
 	public handleFocusIn(event: FocusEvent): void {
-		if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
+		if (containsDeepActiveElement(this.host) && !this.inputHasFocus) {
 			this.handleFocus(event);
 		}
 	}

@@ -26,6 +26,7 @@ import type { EventDetail } from '../../schema/interfaces/EventDetail';
 import { validateAccessAndShortKey } from '../../schema/validators/access-and-short-key';
 import clsx from '../../utils/clsx';
 import { createRelatedUniqueId, createUniqueId } from '../../utils/dev.utils';
+import { containsDeepActiveElement } from '../../utils/element-focus';
 import { createCtaRef, delegateFocus } from '../../utils/element-interaction';
 import { createEventWithTarget, KolEvent } from '../../utils/events';
 
@@ -425,7 +426,7 @@ export class KolSingleSelect
 	@Listen('focusin')
 	public handleFocusIn(event: FocusEvent): void {
 		setTimeout(() => {
-			if (this.host?.contains(document.activeElement) && !this.inputHasFocus) {
+			if (containsDeepActiveElement(this.host) && !this.inputHasFocus) {
 				this.handleFocus(event);
 			}
 		});
@@ -436,7 +437,7 @@ export class KolSingleSelect
 	public handleFocusOut(event: FocusEvent): void {
 		this.selectOptionByInputValue();
 		setTimeout(() => {
-			if (this.inputHasFocus && !this.host?.contains(document.activeElement)) {
+			if (this.inputHasFocus && !containsDeepActiveElement(this.host)) {
 				this.handleBlur(event);
 				this.isOpen = false;
 			}
