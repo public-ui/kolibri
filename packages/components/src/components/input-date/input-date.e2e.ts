@@ -407,4 +407,19 @@ test.describe('kol-input-date', () => {
 			syncedValue: '2024-05-10',
 		},
 	});
+
+	test.describe('reset', () => {
+		test('removes the has-value class immediately', async ({ page }) => {
+			await page.setContent('<kol-input-date _label="Date" _value="2026-01-01"></kol-input-date>');
+
+			const formField = page.locator('kol-input-date .kol-form-field');
+			await expect(formField).toHaveClass(/has-value/);
+
+			await page.locator('kol-input-date').evaluate((element: HTMLKolInputDateElement) => element.reset());
+			await page.waitForChanges();
+
+			await expect(formField).not.toHaveClass(/has-value/);
+			await expect(page.locator('kol-input-date input')).toHaveValue('');
+		});
+	});
 });
