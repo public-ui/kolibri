@@ -22,4 +22,3 @@ executeSnapshotTests<TextareaProps>(
 		{ _label: 'Label', _name: 'field', _spellCheck: false },
 	],
 );
-
