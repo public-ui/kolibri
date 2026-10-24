@@ -1,1 +1,0 @@
-import{_ as e,b as t,o as n}from"./base-web-component-Dm4Kvhb6--O-Bx1i0.js";var r=n(`max`,100,e,e=>e>0),i=n(`unit`,`%`,t,e=>e.length>0);export{i as n,r as t};

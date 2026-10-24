@@ -1,1 +1,0 @@
-import{b as e,o as t}from"./base-web-component-Dm4Kvhb6--O-Bx1i0.js";var n=t(`placeholder`,void 0,e);export{n as t};
