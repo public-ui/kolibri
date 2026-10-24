@@ -52,7 +52,7 @@ describe('button elements _tooltipAlign fallback (#11217)', () => {
 			html: '<kol-popover-button _label="Popover"></kol-popover-button>',
 		});
 
-		const button = page.root as (HTMLElement & KolPopoverButton) | null;
+		const button = page.root as unknown as KolPopoverButton | null;
 		const instance = page.rootInstance as KolPopoverButton;
 
 		expect(instance.getRenderProp('tooltipAlign')).toBe('top');
