@@ -1,1 +1,0 @@
-import{b as e,o as t}from"./base-web-component-_kT2ZNmM-DFokWPqx.js";var n=[`horizontal`,`vertical`];function r(t){let r=e(t);if(n.includes(r))return r;throw Error(`Invalid orientation: ${r}`)}var i=t(`orientation`,`horizontal`,r);export{i as n,r as t};
